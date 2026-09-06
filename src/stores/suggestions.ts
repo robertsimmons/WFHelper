@@ -1,5 +1,6 @@
 import { derived, get, writable, type Readable } from "svelte/store";
 
+import { cachedPlatPrices } from "../lib/suggest/acquisition/platPrices.js";
 import {
   dismiss,
   pruneDismissals,
@@ -7,6 +8,7 @@ import {
   type DismissalState,
 } from "../lib/suggest/dismissals.js";
 import { buildFeed, collectSuggestions, type SuggestionFeed } from "../lib/suggest/engine.js";
+import { acquisitionProvider } from "../lib/suggest/providers/acquisition.js";
 import { dailiesProvider } from "../lib/suggest/providers/dailies.js";
 import { masteryProvider } from "../lib/suggest/providers/mastery.js";
 import { relicsProvider } from "../lib/suggest/providers/relics.js";
@@ -19,10 +21,12 @@ import { setTrackerState, trackerState } from "./dailies.js";
 import { inventoryData, inventoryModifiedAt, itemDb } from "./data.js";
 import { dropPools } from "./dropPools.js";
 import { masteryData } from "./mastery.js";
+import { priceCacheRevision } from "./pricing.js";
 import { relicDb } from "./relics.js";
 import { suggestionPreferences } from "./suggestionPrefs.js";
 import { worldData } from "./world.js";
 import { SUGGESTION_CATEGORIES } from "../types/suggest.js";
+import type { PlatPriceLookup } from "../lib/suggest/acquisition/types.js";
 import type {
   SuggestionCategory,
   SuggestionProvider,
@@ -35,6 +39,7 @@ const PROVIDERS: readonly SuggestionProvider[] = [
   dailiesProvider,
   vendorsProvider,
   relicsProvider,
+  acquisitionProvider,
   masteryProvider,
 ];
 /** Urgency is a slope, not a countdown; the cards run their own second timer. */
@@ -62,6 +67,19 @@ const dismissalStore = writable<DismissalState>(loadDismissals());
 // is the only place they exist.
 let liveFingerprints: ReadonlyMap<string, string> = new Map();
 
+// The lookup's identity is what tells the acquisition sweep its prices moved, so
+// it is rebuilt only when the cache actually revises.
+let platRevision = -1;
+let platLookup: PlatPriceLookup = cachedPlatPrices();
+
+function platPrices(revision: number): PlatPriceLookup {
+  if (revision !== platRevision) {
+    platRevision = revision;
+    platLookup = cachedPlatPrices();
+  }
+  return platLookup;
+}
+
 export const suggestionFeed: Readable<SuggestionFeed> = derived(
   [
     worldData,
@@ -70,6 +88,7 @@ export const suggestionFeed: Readable<SuggestionFeed> = derived(
     itemDb,
     masteryData,
     relicDb,
+    priceCacheRevision,
     trackerState,
     dismissalStore,
     suggestionPreferences,
@@ -84,6 +103,7 @@ export const suggestionFeed: Readable<SuggestionFeed> = derived(
     $itemDb,
     $mastery,
     $relicDb,
+    $priceRevision,
     $tracker,
     $dismissals,
     $prefs,
@@ -98,6 +118,7 @@ export const suggestionFeed: Readable<SuggestionFeed> = derived(
       itemDb: $itemDb,
       mastery: $mastery,
       relicDb: $relicDb,
+      plat: platPrices($priceRevision),
       tracker: $tracker,
       prefs: $prefs,
       dropPools: $dropPools,

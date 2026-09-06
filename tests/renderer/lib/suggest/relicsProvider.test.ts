@@ -93,6 +93,7 @@ function context(
     inventoryModifiedAt: null,
     mastery: null,
     relicDb: database,
+    plat: null,
     tracker: tracker(),
     prefs: { ...defaultPreferences(), activities, options: { ...DEFAULT_OPTIONS, ...options } },
     dropPools: {},

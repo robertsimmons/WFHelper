@@ -1,4 +1,5 @@
 import type { MessageKey, Translator } from "../lib/i18n.js";
+import type { AcquisitionTarget, PlatPriceLookup } from "../lib/suggest/acquisition/types.js";
 import type { TrackerState } from "../lib/world/dailies.js";
 import type { DropRow } from "../../config/shared/dropTypes.js";
 import type { ItemDbEntry, MasteryData, RawInventoryData } from "./inventory.js";
@@ -148,6 +149,8 @@ export interface SuggestionDetails {
   expiry?: string | null | undefined;
   /** Days the player picks between, in the order they come round. */
   options?: SuggestionOptionGroup[] | undefined;
+  /** Everything the acquisition resolver worked out about one piece of gear. */
+  acquisition?: AcquisitionTarget | undefined;
 }
 
 export interface Suggestion {
@@ -186,6 +189,9 @@ export interface SuggestionContext {
   inventoryModifiedAt: number | null;
   mastery: MasteryData | null;
   relicDb: RelicDatabase | null;
+  /** Median plat by market name, out of the cache the app already holds; a
+   *  provider never fetches, so null simply leaves a route unpriced. */
+  plat: PlatPriceLookup | null;
   tracker: TrackerState;
   prefs: SuggestionPreferences;
   /** Drop rows per tracker task id; a missing key means the pool is not loaded. */

@@ -3,7 +3,7 @@
   import { tr } from "../../lib/i18n.js";
   import { gradeClass } from "../../lib/suggest/circuit.js";
   import { resolveDropArt } from "../../lib/suggest/dropPools.js";
-  import { ownedReward } from "../../lib/suggest/ownedRewards.js";
+  import { ownedRewardFor, type OwnedReward } from "../../lib/suggest/ownedRewards.js";
   import { clockStore } from "../../lib/timers.js";
   import { componentOwnership, itemDb } from "../../stores/data.js";
   import ItemImage from "../ItemImage.svelte";
@@ -73,6 +73,15 @@
     return resolveDropArt($itemDb, option.name, option.uniqueName);
   }
 
+  function ownedText(owned: OwnedReward): string {
+    return owned.built === undefined
+      ? $tr("nextUp.optionOwned", { count: String(owned.owned) })
+      : $tr("nextUp.optionOwnedBuilt", {
+          count: String(owned.owned),
+          built: String(owned.built),
+        });
+  }
+
   function work(choice: SuggestionChoice): MessageKey {
     if (choice.kind === "frame") return FRAME_WORK[choice.state];
     return choice.state === "done" ? "nextUp.choiceAdapterOwned" : "nextUp.choiceAdapterWanted";
@@ -85,6 +94,7 @@
       : null,
   );
   const why = $derived(suggestion.whyWithReward ?? suggestion.why);
+  const rewardOwned = $derived(ownedRewardFor(suggestion.reward, $itemDb, $componentOwnership));
   const details = $derived(suggestion.details);
   const pool = $derived(details?.pool ?? []);
   const missions = $derived(details?.missions ?? []);
@@ -142,7 +152,8 @@
                       class="font-display text-base font-semibold leading-none {gradeClass(
                         choice.grade,
                       )}"
-                      title={$tr("nextUp.choiceGrade", { grade: choice.grade })}>{choice.grade}</span
+                      title={$tr("nextUp.choiceGrade", { grade: choice.grade })}
+                      >{choice.grade}</span
                     >
                   {/if}
                   <WikiButton fallbackName={choice.name} />
@@ -191,7 +202,12 @@
           {#if suggestion.reward}
             <div class={ROW}>
               <span class={LABEL}>{$tr("nextUp.detailsReward")}</span>
-              <span class="text-sm text-text-primary">{suggestion.reward.name}</span>
+              <span class="flex flex-wrap items-baseline gap-2">
+                <span class="text-sm text-text-primary">{suggestion.reward.name}</span>
+                {#if rewardOwned}
+                  <span class="text-xs tabular-nums text-text-muted">{ownedText(rewardOwned)}</span>
+                {/if}
+              </span>
             </div>
           {/if}
 
@@ -259,7 +275,7 @@
             <div class="flex flex-wrap gap-2">
               {#each group.options as option (option.name)}
                 {@const art = optionArt(option)}
-                {@const owned = ownedReward(option.uniqueName, $itemDb, $componentOwnership)}
+                {@const owned = ownedRewardFor(option, $itemDb, $componentOwnership)}
                 <div
                   class="flex min-w-0 items-center gap-2 rounded-[var(--radius-md)] border
                          border-border px-2 py-1"
@@ -282,14 +298,7 @@
                       >
                     {/if}
                     {#if owned}
-                      <span class="text-xs tabular-nums text-text-muted">
-                        {owned.built === undefined
-                          ? $tr("nextUp.optionOwned", { count: String(owned.owned) })
-                          : $tr("nextUp.optionOwnedBuilt", {
-                              count: String(owned.owned),
-                              built: String(owned.built),
-                            })}
-                      </span>
+                      <span class="text-xs tabular-nums text-text-muted">{ownedText(owned)}</span>
                     {/if}
                   </span>
                 </div>

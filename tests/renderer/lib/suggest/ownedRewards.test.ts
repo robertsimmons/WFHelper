@@ -1,0 +1,63 @@
+import { describe, expect, it } from "vitest";
+
+import { ownedRewardFor } from "../../../../src/lib/suggest/ownedRewards.js";
+import type { ItemDbEntry } from "../../../../src/types/inventory.js";
+
+const FORMA = "/Lotus/Types/Recipes/Components/FormaBlueprint";
+const SHARD = "/Lotus/Types/Gameplay/NarmerSorties/ArchonCrystalRed";
+const ADAPTER = "/Lotus/Types/Recipes/Components/MeleeIncarnonAdapterBlueprint";
+const ADAPTER_BUILT = "/Lotus/Types/Items/MiscItems/MeleeIncarnonAdapter";
+const PACK = "/Lotus/Types/BoosterPacks/CalendarPack";
+
+const ITEM_DB = {
+  [FORMA]: { name: "Forma Blueprint" },
+  [SHARD]: { name: "Crimson Archon Shard" },
+  [ADAPTER]: { name: "Melee Incarnon Adapter Blueprint", buildsProduct: ADAPTER_BUILT },
+  [PACK]: { name: "Calendar Pack" },
+} as unknown as Record<string, ItemDbEntry>;
+
+const OWNERSHIP = new Map([
+  [FORMA, 12],
+  [SHARD, 3],
+  [ADAPTER, 2],
+  [ADAPTER_BUILT, 1],
+]);
+
+describe("ownedRewardFor", () => {
+  it("counts a reward the world state named by uniqueName", () => {
+    expect(
+      ownedRewardFor({ name: "Crimson Archon Shard", uniqueName: SHARD }, ITEM_DB, OWNERSHIP),
+    ).toEqual({ owned: 3 });
+  });
+
+  it("counts a reward the drop pool named only in words", () => {
+    expect(ownedRewardFor({ name: "Forma Blueprint" }, ITEM_DB, OWNERSHIP)).toEqual({ owned: 12 });
+  });
+
+  it("splits a blueprint from the copies already built", () => {
+    expect(
+      ownedRewardFor({ name: "Melee Incarnon Adapter Blueprint" }, ITEM_DB, OWNERSHIP),
+    ).toEqual({ owned: 2, built: 1 });
+  });
+
+  it("reports nothing owned rather than nothing at all", () => {
+    expect(ownedRewardFor({ name: "Forma Blueprint" }, ITEM_DB, new Map([[SHARD, 1]]))).toEqual({
+      owned: 0,
+    });
+  });
+
+  it("says nothing for a name no item answers to", () => {
+    expect(ownedRewardFor({ name: "Riven Sliver" }, ITEM_DB, OWNERSHIP)).toBeNull();
+  });
+
+  it("says nothing for a pack, which is counted by what it grants", () => {
+    expect(
+      ownedRewardFor({ name: "Calendar Pack", uniqueName: PACK }, ITEM_DB, OWNERSHIP),
+    ).toBeNull();
+  });
+
+  it("says nothing before an inventory has been read", () => {
+    expect(ownedRewardFor({ name: "Forma Blueprint" }, ITEM_DB, new Map())).toBeNull();
+    expect(ownedRewardFor(null, ITEM_DB, OWNERSHIP)).toBeNull();
+  });
+});

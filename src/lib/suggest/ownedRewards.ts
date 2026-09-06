@@ -5,7 +5,7 @@ import type { ItemDbEntry } from "../../types/inventory.js";
 /** Packs and bundles grant their contents, so a count of the wrapper says nothing. */
 const PACK_PATH = /\/(?:BoosterPacks|Packages)\//i;
 
-interface OwnedReward {
+export interface OwnedReward {
   owned: number;
   /** Copies of the item already built, where the reward is its blueprint. */
   built?: number | undefined;
@@ -29,6 +29,21 @@ export function ownedRewardByName(
   ownership: Map<string, number>,
 ): OwnedReward | null {
   return ownedReward(resolveRewardUniqueName(name, itemDb), itemDb, ownership);
+}
+
+/** The count for a reward named either way, or null where none can be trusted:
+ *  an ownership map is empty because no inventory was read, not because the
+ *  player owns nothing. */
+export function ownedRewardFor(
+  reward: { name: string; uniqueName?: string | undefined } | null | undefined,
+  itemDb: Record<string, ItemDbEntry>,
+  ownership: Map<string, number>,
+): OwnedReward | null {
+  if (!reward || ownership.size === 0) return null;
+  return (
+    ownedReward(reward.uniqueName, itemDb, ownership) ??
+    ownedRewardByName(reward.name, itemDb, ownership)
+  );
 }
 
 /** Four characters holds every real count, so a column of them stays lined up. */

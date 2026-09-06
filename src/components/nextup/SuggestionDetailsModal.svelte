@@ -12,6 +12,7 @@
   import type { MessageKey } from "../../lib/i18n.js";
   import type {
     ChoiceState,
+    MissionOpinion,
     RewardTier,
     Suggestion,
     SuggestionChoice,
@@ -43,6 +44,12 @@
     wanted: "nextUp.choiceNeedsFrame",
     subsume: "nextUp.choiceNeedsSubsume",
     done: "nextUp.choiceNeedsNothing",
+  };
+
+  /** The same tones the card gives a mission name in its why line. */
+  const MISSION_TONE: Record<MissionOpinion, string> = {
+    good: "text-success",
+    bad: "text-danger",
   };
 
   const TIER_LABELS: Record<RewardTier, MessageKey> = {
@@ -200,16 +207,14 @@
               <span class={LABEL}>{$tr("nextUp.detailsMissions")}</span>
               <span class="flex flex-wrap gap-x-2 gap-y-1 text-sm text-text-primary">
                 {#each missions as mission (mission.name)}
-                  <span>
+                  <span class={mission.opinion ? MISSION_TONE[mission.opinion] : ""}>
                     {mission.name}
                     {#if mission.opinion}
-                      <span class={mission.opinion === "good" ? "text-success" : "text-warning"}
-                        >({$tr(
-                          mission.opinion === "good"
-                            ? "nextUp.detailsMissionGood"
-                            : "nextUp.detailsMissionBad",
-                        )})</span
-                      >
+                      ({$tr(
+                        mission.opinion === "good"
+                          ? "nextUp.detailsMissionGood"
+                          : "nextUp.detailsMissionBad",
+                      )})
                     {/if}
                   </span>
                 {/each}

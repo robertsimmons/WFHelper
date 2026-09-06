@@ -8,7 +8,12 @@
   import { nightwaveArt } from "../../stores/suggestionPrefs.js";
   import SuggestionDetailsModal from "./SuggestionDetailsModal.svelte";
   import ItemImage from "../ItemImage.svelte";
-  import type { ChoiceState, Suggestion, WhySegment } from "../../types/suggest.js";
+  import type {
+    ChoiceState,
+    Suggestion,
+    SuggestionDetails,
+    WhySegment,
+  } from "../../types/suggest.js";
 
   interface Props {
     suggestion: Suggestion;
@@ -39,6 +44,12 @@
     bad: "text-danger",
   };
 
+  function missionSegments(missions: SuggestionDetails["missions"]): WhySegment[] {
+    return (missions ?? []).map((mission) =>
+      mission.opinion === "bad" ? { text: mission.name, tone: "bad" } : { text: mission.name },
+    );
+  }
+
   const choices = $derived(suggestion.choices ?? []);
   const art = $derived(
     suggestion.reward && choices.length === 0
@@ -57,7 +68,15 @@
     art && suggestion.why ? suggestion.why : (suggestion.whyWithReward ?? suggestion.why),
   );
   // Segments spell out the plain line, so they only stand where that line does.
-  const segments = $derived(why === suggestion.why ? (suggestion.whySegments ?? []) : []);
+  // A task the provider left plain falls back to its mission list, which reads
+  // the same way and carries the same warning.
+  const segments = $derived(
+    suggestion.whySegments?.length
+      ? why === suggestion.why
+        ? suggestion.whySegments
+        : []
+      : missionSegments(suggestion.details?.missions),
+  );
 
   const complete = $derived(suggestion.complete);
   const progress = $derived(suggestion.progress);

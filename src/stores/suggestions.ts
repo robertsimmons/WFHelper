@@ -9,6 +9,7 @@ import {
 import { buildFeed, collectSuggestions, type SuggestionFeed } from "../lib/suggest/engine.js";
 import { dailiesProvider } from "../lib/suggest/providers/dailies.js";
 import { masteryProvider } from "../lib/suggest/providers/mastery.js";
+import { relicsProvider } from "../lib/suggest/providers/relics.js";
 import { vendorsProvider } from "../lib/suggest/providers/vendors.js";
 import { tr } from "../lib/i18n.js";
 import { readStorage, writeStorage } from "../lib/persistence.js";
@@ -31,6 +32,7 @@ const FILTER_KEY = "next-up-filters";
 const PROVIDERS: readonly SuggestionProvider[] = [
   dailiesProvider,
   vendorsProvider,
+  relicsProvider,
   masteryProvider,
 ];
 /** Urgency is a slope, not a countdown; the cards run their own second timer. */

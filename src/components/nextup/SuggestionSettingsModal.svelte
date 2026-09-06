@@ -20,6 +20,12 @@
     MASTERY_FORMA_FILTER,
     MASTERY_MODE_FILTER,
   } from "../../lib/suggest/providers/mastery.js";
+  import {
+    RELICS_ACTIVITY,
+    RELIC_GOALS,
+    relicGoalKey,
+    type RelicGoal,
+  } from "../../lib/suggest/providers/relics.js";
   import { BUILTIN_TASKS, trackerGroup } from "../../lib/world/dailies.js";
   import { componentOwnership, itemDb } from "../../stores/data.js";
   import {
@@ -64,6 +70,11 @@
     { id: MASTERY_FORMA_FILTER, label: "nextUp.settingsMasteryForma" },
     { id: MASTERY_MODE_FILTER, label: "nextUp.settingsMasteryMode" },
   ];
+
+  const GOAL_LABELS: Record<RelicGoal, MessageKey> = {
+    platinum: "nextUp.settingsGoalPlatinum",
+    ducats: "nextUp.settingsGoalDucats",
+  };
 
   const OPINION_OPTIONS: ReadonlyArray<{ value: MissionOpinion | null; label: MessageKey }> = [
     { value: "good", label: "nextUp.settingsGood" },
@@ -189,6 +200,17 @@
     addName = "";
   }
 
+  const relicGoal = $derived(
+    RELIC_GOALS.find((goal) => prefs.activities[relicGoalKey(goal)] !== "never") ?? RELIC_GOALS[0],
+  );
+
+  /** One goal at a time, so picking one turns the rest off. */
+  function pickGoal(goal: RelicGoal): void {
+    for (const entry of RELIC_GOALS) {
+      setActivityPref(relicGoalKey(entry), entry === goal ? "normal" : "never");
+    }
+  }
+
   function selectTab(next: Tab): void {
     tab = next;
     resetArmed = false;
@@ -222,6 +244,24 @@
           onClick={() => setActivityPref(id, option.value)}
         >
           {$tr(option.label)}
+        </ThemedButton>
+      {/each}
+    </div>
+  </div>
+{/snippet}
+
+{#snippet goalRow()}
+  <div
+    class="flex items-center justify-between gap-3 rounded-[var(--radius-md)] px-1.5 py-1
+           hover:bg-bg-hover"
+  >
+    <span class="min-w-0 truncate text-sm text-text-secondary">
+      {$tr("nextUp.settingsRelicGoal")}
+    </span>
+    <div class="flex shrink-0 gap-1">
+      {#each RELIC_GOALS as goal (goal)}
+        <ThemedButton size="compact" active={relicGoal === goal} onClick={() => pickGoal(goal)}>
+          {$tr(GOAL_LABELS[goal])}
         </ThemedButton>
       {/each}
     </div>
@@ -288,6 +328,9 @@
           {/if}
         {/each}
       {:else if tab === "goals"}
+        {@render groupHeading($tr("nextUp.sectionRelics"))}
+        {@render prefRow($tr("nextUp.settingsRelics"), RELICS_ACTIVITY, ACTIVITY_OPTIONS)}
+        {@render goalRow()}
         {@render groupHeading($tr("nextUp.sectionMastery"))}
         <p class="m-0 mb-2 text-xs text-text-secondary">{$tr("nextUp.settingsMasteryHelp")}</p>
         {@render prefRow($tr("nextUp.settingsMastery"), MASTERY_ACTIVITY, ACTIVITY_OPTIONS)}

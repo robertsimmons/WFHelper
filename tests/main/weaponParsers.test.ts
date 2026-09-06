@@ -176,7 +176,7 @@ describe("classifyStatement", () => {
   });
 
   it("drops a statement too long to read as a location", () => {
-    expect(classifyStatement(`Bought from the Market. ${"x".repeat(220)}`)).toBeNull();
+    expect(classifyStatement(`Bought from the Market. ${"x".repeat(300)}`)).toBeNull();
   });
 });
 

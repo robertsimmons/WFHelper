@@ -175,7 +175,7 @@ const SENTENCE_BREAK = /(?<=[.!?])\s+(?=[A-Z"'(])/;
 /** Trade rules, sale prices, platinum bundles, prerequisites and history are
  *  not a way to go and get the weapon. */
 const NOISE =
-  /can be sold for|\btrad(?:e|ed|ing|eable|able)\b|Mastery Rank of at least|stock changes with each appearance|free weapon slot|pre-installed|is no longer|was (?:available|initially|originally)|has been (?:vaulted|removed)|Baro Ki'Teer's stock|\bbundle\b|\bPlatinum\b|\bAccess requires\b|\bwill not be (?:given|awarded|received)\b/i;
+  /can be sold for|\btrad(?:e|ed|ing|eable|able)\b|Mastery Rank of at least|stock changes with each appearance|free weapon slot|pre-installed|is no longer|was (?:available|initially|originally)|has been (?:vaulted|removed)|Baro Ki'Teer's stock|\bbundle\b|\bPlatinum\b|^Access requires\b|\bwill not be (?:given|awarded|received)\b/i;
 
 /** A sentence that names no way of getting anything is context, not a source. */
 const ACQUIRED =
@@ -248,7 +248,7 @@ export function statementParts(statement) {
   return "both";
 }
 
-const MAX_WHERE = 240;
+const MAX_WHERE = 260;
 /** A vendor the sentence names only by pronoun is unusable on its own line. */
 const PRONOUN_SUBJECT = /^(?:She|He|They)\b/;
 

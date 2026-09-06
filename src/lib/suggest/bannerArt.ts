@@ -45,6 +45,54 @@ const TASK_ART: Record<string, BannerArt> = {
     position: "50% 50%",
     fit: "contain",
   },
+  archonHunt: banner(
+    new URL("../../../assets/nextup/archon-hunt.webp", import.meta.url).href,
+    "100% 50%",
+  ),
+  netracells: banner(
+    new URL("../../../assets/nextup/netracells.webp", import.meta.url).href,
+    "0% 50%",
+  ),
+  bird3: banner(new URL("../../../assets/nextup/bird3.webp", import.meta.url).href, "100% 50%"),
+  simaris: banner(new URL("../../../assets/nextup/simaris.webp", import.meta.url).href, "50% 50%"),
+  sortie: banner(new URL("../../../assets/nextup/sortie.webp", import.meta.url).href, "0% 50%"),
+  syndicateStanding: banner(
+    new URL("../../../assets/nextup/syndicate-standing.webp", import.meta.url).href,
+    "100% 50%",
+  ),
+  steelPathHonors: banner(
+    new URL("../../../assets/nextup/steel-path-honors.webp", import.meta.url).href,
+    "100% 50%",
+  ),
+  ayatanHunt: banner(
+    new URL("../../../assets/nextup/ayatan-hunt.webp", import.meta.url).href,
+    "100% 50%",
+  ),
+  calendar1999: banner(
+    new URL("../../../assets/nextup/calendar-1999.webp", import.meta.url).href,
+    "100% 50%",
+  ),
+  codaWeapons: banner(
+    new URL("../../../assets/nextup/coda-weapons.webp", import.meta.url).href,
+    "0% 50%",
+  ),
+  tenetMelee: banner(
+    new URL("../../../assets/nextup/tenet-melee.webp", import.meta.url).href,
+    "100% 50%",
+  ),
+  baro: banner(new URL("../../../assets/nextup/baro.webp", import.meta.url).href, "100% 50%"),
+  varzia: banner(new URL("../../../assets/nextup/varzia.webp", import.meta.url).href, "100% 50%"),
+  darvo: banner(new URL("../../../assets/nextup/darvo.webp", import.meta.url).href, "0% 50%"),
+  clem: banner(new URL("../../../assets/nextup/clem.webp", import.meta.url).href, "100% 50%"),
+  acrithis: banner(
+    new URL("../../../assets/nextup/acrithis.webp", import.meta.url).href,
+    "100% 50%",
+  ),
+  yonta: banner(new URL("../../../assets/nextup/yonta.webp", import.meta.url).href, "100% 50%"),
+  palladino: banner(
+    new URL("../../../assets/nextup/palladino.webp", import.meta.url).href,
+    "100% 50%",
+  ),
 };
 
 /** Art for the tasks whose reward no item picture can stand for. */

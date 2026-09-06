@@ -1,10 +1,13 @@
-import { curated, type CuratedSource } from "./curated.js";
+import { curated, type CuratedLookup, type CuratedSource } from "./curated.js";
+import { nemesisSteps } from "./nemesis.js";
 import { relicCost } from "./relics.js";
 import { UNKNOWN_DIFFICULTY, type Ratings } from "./ratings.js";
 import type { RawInventoryData } from "../../../types/inventory.js";
 import type { RelicDatabase } from "../../../types/relics.js";
 import type {
   AcquisitionPath,
+  IncarnonInfo,
+  NemesisPlan,
   PartPlan,
   PartState,
   PathCost,
@@ -45,6 +48,9 @@ const CURATED_KINDS: Record<string, PathKind> = {
 const CIRCUIT_WHERE = "The Circuit, Duviri - normal mode weekly frame rotation";
 const RELIC_WHERE = "Void Fissures - crack the relics that drop each part";
 const TRADE_WHERE = "warframe.market - buy the parts from another player";
+
+/** The Steel Path Circuit is a shorter run than the normal-mode frame rotation. */
+const ADAPTER_EFFORT = 0.6;
 
 /** Partial cover still helps, but a path that finishes the item beats one that does not. */
 const PARTIAL_PENALTY = 0.15;
@@ -141,15 +147,30 @@ export interface PathInputs {
   relicDb: RelicDatabase | null | undefined;
   plat: PlatPriceLookup | null | undefined;
   ratings: Ratings;
+  /** The item itself is still missing, not only parts of it. */
+  wanted?: boolean;
+  /** Defaults to the shipped Warframe table. */
+  curated?: CuratedLookup;
+  /** Sources the app derives rather than reads out of a table. */
+  extraSources?: readonly CuratedSource[];
+  nemesis?: NemesisPlan | null;
+  incarnon?: IncarnonInfo | null;
+}
+
+function sourcesFor(input: PathInputs): CuratedSource[] {
+  const table = (input.curated ?? curated)(input.name).sources;
+  return [...table, ...(input.extraSources ?? [])];
 }
 
 function curatedPaths(input: PathInputs, missing: readonly PartState[]): AcquisitionPath[] {
   const difficulty = input.ratings.difficulty(input.name);
   const out: AcquisitionPath[] = [];
   let index = 0;
-  for (const source of curated(input.name).sources) {
+  for (const source of sourcesFor(input)) {
     const kind = CURATED_KINDS[source.kind];
     if (!kind) continue;
+    // The nemesis run is modelled step by step, so a table row naming it would double up.
+    if (kind === "nemesis" && input.nemesis) continue;
     const covers = coveredBy(source, missing);
     if (covers.length === 0) continue;
     const credits = kind === "market" ? creditsFromWhere(source.where) : null;
@@ -168,11 +189,57 @@ function curatedPaths(input: PathInputs, missing: readonly PartState[]): Acquisi
   return out;
 }
 
+/** The adapter is a Steel Path Circuit reward, not a part of any build, so it
+ *  stands alone: it covers nothing and still completes what the player wants. */
+function adapterPath(input: PathInputs, incarnon: IncarnonInfo): AcquisitionPath {
+  const week = incarnon.week === null ? "" : `, week ${incarnon.week}`;
+  return {
+    id: "incarnon",
+    kind: "circuit",
+    covers: [],
+    complete: true,
+    steps: [
+      {
+        kind: "circuit",
+        where: `Steel Path Circuit${week} - pick the ${input.name} Incarnon Genesis`,
+        parts: [],
+      },
+    ],
+    cost: { credits: null, plat: null, relics: null },
+    effort: ADAPTER_EFFORT,
+  };
+}
+
+function nemesisPath(input: PathInputs, plan: NemesisPlan, missing: readonly PartState[]) {
+  return makePath(
+    "nemesis",
+    "nemesis",
+    nemesisSteps(plan),
+    missing,
+    missing.length,
+    input.ratings.difficulty(input.name),
+    { credits: null, plat: null, relics: null },
+  );
+}
+
+/** A nemesis weapon and anything else the item DB has no recipe for is handed
+ *  over whole, so the item itself stands in for the parts a build would list. */
+function wholeItem(name: string): PartState {
+  return { uniqueName: "", name, role: "main", required: 1, owned: 0, missing: 1 };
+}
+
 export function buildPaths(input: PathInputs): AcquisitionPath[] {
-  const missing = input.parts.missing;
-  if (missing.length === 0) return [];
+  const missing =
+    input.wanted && !input.parts.known ? [wholeItem(input.name)] : input.parts.missing;
+  if (missing.length === 0) {
+    const incarnon = input.incarnon;
+    return incarnon && !incarnon.owned ? [adapterPath(input, incarnon)] : [];
+  }
   const difficulty = input.ratings.difficulty(input.name);
   const paths = curatedPaths(input, missing);
+
+  if (input.nemesis) paths.push(nemesisPath(input, input.nemesis, missing));
+  if (input.incarnon && !input.incarnon.owned) paths.push(adapterPath(input, input.incarnon));
 
   if (input.isPrime) {
     const relics = relicCost(missing, input.inventory, input.relicDb);
@@ -189,7 +256,7 @@ export function buildPaths(input: PathInputs): AcquisitionPath[] {
     );
   }
 
-  if (curated(input.name).circuit) {
+  if ((input.curated ?? curated)(input.name).circuit) {
     paths.push(
       makePath(
         "circuit",

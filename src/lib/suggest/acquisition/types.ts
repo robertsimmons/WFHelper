@@ -3,8 +3,42 @@ import type { RelicDatabase } from "../../../types/relics.js";
 
 export type AcquisitionKind = "warframe" | "weapon";
 
-/** Owning it and having fed it to the Helminth are separate wins. */
-export type NeedReason = "mastery" | "subsume";
+/** Archwing covers arch-gun and arch-melee; companion is the sentinel's gun. */
+export type WeaponClass = "primary" | "secondary" | "melee" | "archwing" | "companion";
+
+/** Owning it, feeding it to the Helminth, adapting it and priming it are four
+ *  separate wins, and each one is its own reason to farm. */
+export type NeedReason = "mastery" | "subsume" | "incarnon" | "prime";
+
+export type NemesisFamily = "kuva" | "tenet" | "coda";
+
+/** Percentage window the weapon's elemental bonus rolls in. */
+export interface NemesisBonusRange {
+  min: number;
+  max: number;
+}
+
+export interface NemesisPlan {
+  family: NemesisFamily;
+  /** Quests and ranks gating the system; empty when nothing named them. */
+  requires: string[];
+  /** Where the candidate that becomes the nemesis is found; null when unknown. */
+  spawn: string | null;
+  /** Progenitor elements the family can roll; empty when nothing listed them. */
+  elements: string[];
+  /** Null when nothing has stated the window; never a guess. */
+  bonus: NemesisBonusRange | null;
+  /** A repeat kill raises the bonus by valence fusion rather than adding a copy. */
+  valenceFusion: boolean;
+}
+
+export interface IncarnonInfo {
+  grade: string | null;
+  upgradePath: string | null;
+  /** Steel Path Circuit rotation week offering the adapter; null when unknown. */
+  week: number | null;
+  owned: boolean;
+}
 
 /** The item's own blueprint comes from somewhere else than its component ones. */
 export type PartRole = "main" | "component";
@@ -110,7 +144,13 @@ export interface AcquisitionTarget {
   displayName?: string | undefined;
   imageUrl: string | null;
   kind: AcquisitionKind;
+  /** Null for a Warframe. */
+  weaponClass: WeaponClass | null;
   isPrime: boolean;
+  /** Set only for a weapon a nemesis carries; the path is then a nemesis run. */
+  nemesis: NemesisPlan | null;
+  /** Set only for a weapon with a known Incarnon Genesis adapter. */
+  incarnon: IncarnonInfo | null;
   /** Never empty: a target with nothing left to win is not returned at all. */
   needs: NeedReason[];
   parts: PartPlan;
@@ -135,6 +175,11 @@ export interface AcquisitionContext {
   plat?: PlatPriceLookup | null | undefined;
   /** Farm-difficulty and power tables shipped later; read defensively. */
   ratings?: unknown;
-  /** Restricts the sweep to these item names; every frame otherwise. */
+  /** Weapon sources, same shape as the shipped frame table plus an optional
+   *  `nemesis` block. Shipped later; read defensively. */
+  curatedWeapons?: unknown;
+  /** Restricts the sweep to these item names; every target otherwise. */
   only?: readonly string[] | undefined;
+  /** Restricts the sweep to these kinds; both otherwise. */
+  kinds?: readonly AcquisitionKind[] | undefined;
 }

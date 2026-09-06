@@ -1,4 +1,4 @@
-import { curated, nameKey } from "./curated.js";
+import { curated, nameKey, type CuratedLookup } from "./curated.js";
 
 /**
  * Farm-difficulty and power tables are produced separately and may not exist.
@@ -69,19 +69,19 @@ function buildTable(source: unknown): Map<string, RatingEntry> {
   return out;
 }
 
-export function createRatings(source?: unknown): Ratings {
+export function createRatings(source?: unknown, fallback: CuratedLookup = curated): Ratings {
   const table = buildTable(source);
   const entry = (name: string): RatingEntry | null => table.get(nameKey(name)) ?? null;
 
   const label = (name: string): string | null =>
-    difficultyWord(entry(name)?.difficulty) ?? curated(name).difficulty;
+    difficultyWord(entry(name)?.difficulty) ?? fallback(name).difficulty;
 
   return {
     difficultyLabel: label,
     difficulty(name) {
       const supplied = difficultyNumber(entry(name)?.difficulty);
       if (supplied !== null) return supplied;
-      return difficultyNumber(curated(name).difficulty);
+      return difficultyNumber(fallback(name).difficulty);
     },
     rank(name) {
       const value = entry(name)?.rank;

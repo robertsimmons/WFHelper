@@ -37,6 +37,10 @@ import type { CalendarDay, WorldState } from "../../../types/world.js";
 /** Vendors and alerts are their own thing and are not covered here yet. */
 const COVERED_GROUPS = new Set<TrackerGroup>(["daily", "weekly"]);
 
+/** Tracker rows that stay in the World tab but never become a card. Incursions
+ *  rotate constantly and are best read in-game, so a card for them is noise. */
+const NOT_SUGGESTED = new Set(["spIncursions"]);
+
 /** Where the curated tables have no opinion, a category is worth what it always was. */
 const BASE_VALUE: Record<"daily" | "weekly" | "nightwave", number> = {
   daily: 0.45,
@@ -315,6 +319,7 @@ export const dailiesProvider: SuggestionProvider = {
     for (const task of trackerList(tracker)) {
       const group = trackerGroup(task.period, task.group);
       if (!COVERED_GROUPS.has(group)) continue;
+      if (NOT_SUGGESTED.has(task.id)) continue;
       if (tracker.hidden.includes(task.id)) continue;
       const activity = prefs.activities[task.id] ?? "normal";
       if (activity === "never") continue;

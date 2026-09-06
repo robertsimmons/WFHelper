@@ -58,6 +58,18 @@ describe("dailiesProvider", () => {
     expect(collected).not.toContain("dailies:codaWeapons");
   });
 
+  it("leaves steel path incursions to the tracker and off the feed", () => {
+    const periodKey = `daily:${nextDailyResetUtc(new Date(NOW)).toISOString()}`;
+    const collected = ids(
+      context({
+        tracker: tracker({ progress: { spIncursions: { key: periodKey, count: 2 } } }),
+        prefs: prefs({ spIncursions: "normal" }),
+      }),
+    );
+    expect(collected).not.toContain("dailies:spIncursions");
+    expect(collected).toContain("dailies:simaris");
+  });
+
   it("drops a task already done this period", () => {
     const periodKey = `daily:${nextDailyResetUtc(new Date(NOW)).toISOString()}`;
     const ctx = context({
@@ -668,10 +680,10 @@ describe("dailiesProvider drop pools", () => {
   });
 
   it("leaves a task with no pool and no named reward alone", () => {
-    const incursions = draft(context({ t: echoT }), "dailies:spIncursions");
-    expect(incursions?.reward).toBeUndefined();
-    expect(incursions?.whyWithReward).toBeUndefined();
-    expect(incursions?.why).toBe("nextUp.whyRemaining(remaining=5,target=5)");
+    const netracells = draft(context({ t: echoT }), "dailies:netracells");
+    expect(netracells?.reward).toBeUndefined();
+    expect(netracells?.whyWithReward).toBeUndefined();
+    expect(netracells?.why).toBe("nextUp.whyRemaining(remaining=5,target=5)");
   });
 });
 

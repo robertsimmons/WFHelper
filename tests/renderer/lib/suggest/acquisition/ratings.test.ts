@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 
+import { curated } from "../../../../../src/lib/suggest/acquisition/curated.js";
 import {
   createRatings,
   UNKNOWN_DIFFICULTY,
@@ -29,7 +30,7 @@ describe("createRatings", () => {
     ["a number", 7],
   ])("tolerates %s in place of a ratings table", (_label, table) => {
     const ratings = createRatings(table);
-    expect(ratings.rank("Mag")).toBeNull();
+    expect(ratings.rank("Nonesuch")).toBeNull();
     expect(ratings.popularity("Mag")).toBeNull();
     expect(ratings.difficulty("Mag")).toBe(UNKNOWN_DIFFICULTY);
   });
@@ -37,9 +38,10 @@ describe("createRatings", () => {
   it("tolerates a null entry and wrong-typed fields", () => {
     const ratings = createRatings({
       Mag: null,
+      Nonesuch: { difficulty: {}, rank: 42, popularity: "high" },
       Volt: { difficulty: {}, rank: 42, popularity: "high" },
     });
-    expect(ratings.rank("Volt")).toBeNull();
+    expect(ratings.rank("Nonesuch")).toBeNull();
     expect(ratings.popularity("Volt")).toBeNull();
     expect(ratings.difficultyLabel("Volt")).toBe("easy");
   });
@@ -66,5 +68,15 @@ describe("createRatings", () => {
   it("matches names through the table's ampersand spelling", () => {
     const ratings = createRatings({ "Sirius & Orion": { rank: "A" } });
     expect(ratings.rank("Sirius And Orion")).toBe("A");
+  });
+
+  it("falls back to the shipped overframe tier when no rank is supplied", () => {
+    expect(createRatings().rank("Saryn")).toMatch(/^[SABCD]$/);
+  });
+
+  it("lets a supplied rank win over the shipped tier", () => {
+    const ratings = createRatings({ Saryn: { rank: "Z" } }, curated, () => "B");
+    expect(ratings.rank("Saryn")).toBe("Z");
+    expect(ratings.rank("Volt")).toBe("B");
   });
 });

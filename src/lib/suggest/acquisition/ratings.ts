@@ -1,4 +1,5 @@
 import { curated, nameKey, type CuratedLookup } from "./curated.js";
+import { rankTiers, type RankTiers } from "./rankings.js";
 
 /**
  * Farm-difficulty and power tables are produced separately and may not exist.
@@ -12,7 +13,7 @@ export interface Ratings {
   difficulty(name: string): number | null;
   /** The word behind the number, for display. */
   difficultyLabel(name: string): string | null;
-  /** Power/popularity tier letter. Null is unknown. */
+  /** Overframe tier letter, S down to D. Null is unknown. */
   rank(name: string): string | null;
   /** 0..1 share of players running it. Null is unknown. */
   popularity(name: string): number | null;
@@ -69,7 +70,11 @@ function buildTable(source: unknown): Map<string, RatingEntry> {
   return out;
 }
 
-export function createRatings(source?: unknown, fallback: CuratedLookup = curated): Ratings {
+export function createRatings(
+  source?: unknown,
+  fallback: CuratedLookup = curated,
+  tiers: RankTiers = rankTiers,
+): Ratings {
   const table = buildTable(source);
   const entry = (name: string): RatingEntry | null => table.get(nameKey(name)) ?? null;
 
@@ -85,7 +90,8 @@ export function createRatings(source?: unknown, fallback: CuratedLookup = curate
     },
     rank(name) {
       const value = entry(name)?.rank;
-      return typeof value === "string" && value.trim() ? value.trim() : null;
+      if (typeof value === "string" && value.trim()) return value.trim();
+      return tiers(name);
     },
     popularity(name) {
       return unitInterval(entry(name)?.popularity);

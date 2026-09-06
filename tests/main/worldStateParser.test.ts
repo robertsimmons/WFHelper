@@ -623,6 +623,86 @@ describe("worldStateParser sortie, archon hunt, nightwave and alerts", () => {
   });
 });
 
+describe("worldStateParser global boosts", () => {
+  const now = Date.now();
+
+  interface ParsedBoosts {
+    globalBoosts: Array<{
+      kind: string;
+      multiplier: number;
+      activation: string | null;
+      expiry: string | null;
+    }>;
+  }
+  const parseBoosts = (raw: Parameters<typeof parser.parseRaw>[0]) =>
+    (parser.parseRaw(raw) as unknown as ParsedBoosts).globalBoosts;
+
+  type RawUpgrade = NonNullable<
+    NonNullable<Parameters<typeof parser.parseRaw>[0]>["GlobalUpgrades"]
+  >[number];
+
+  function upgrade(overrides: Partial<RawUpgrade> = {}): RawUpgrade {
+    return {
+      UpgradeType: "GAMEPLAY_KILL_XP_AMOUNT",
+      OperationType: "MULTIPLY",
+      Value: 2,
+      Activation: dateLong(now - 60_000),
+      ExpiryDate: dateLong(now + 3600_000),
+      ...overrides,
+    };
+  }
+
+  it("yields no boosts for a payload carrying none", () => {
+    expect(parseBoosts({ ActiveMissions: [] })).toEqual([]);
+  });
+
+  it("normalizes a live affinity boost to its kind, multiplier and window", () => {
+    const boosts = parseBoosts({ GlobalUpgrades: [upgrade()] });
+    expect(boosts).toHaveLength(1);
+    expect(boosts[0]).toMatchObject({ kind: "affinity", multiplier: 2 });
+    expect(boosts[0].activation).toBe(new Date(now - 60_000).toISOString());
+    expect(boosts[0].expiry).toBe(new Date(now + 3600_000).toISOString());
+  });
+
+  it("drops a boost whose window has closed", () => {
+    const expired = upgrade({
+      Activation: dateLong(now - 7200_000),
+      ExpiryDate: dateLong(now - 60_000),
+    });
+    expect(parseBoosts({ GlobalUpgrades: [expired] })).toEqual([]);
+  });
+
+  it("keeps a boost DE has scheduled but not started", () => {
+    const upcoming = upgrade({
+      Activation: dateLong(now + 3600_000),
+      ExpiryDate: dateLong(now + 7200_000),
+    });
+    expect(parseBoosts({ GlobalUpgrades: [upcoming] })).toHaveLength(1);
+  });
+
+  it("maps the other shipped kinds and drops one it has no name for", () => {
+    const boosts = parseBoosts({
+      GlobalUpgrades: [
+        upgrade({ UpgradeType: "GAMEPLAY_PICKUP_AMOUNT", Value: 3 }),
+        upgrade({ UpgradeType: "GAMEPLAY_MONEY_PICKUP_AMOUNT" }),
+        upgrade({ UpgradeType: "GAMEPLAY_MONEY_REWARD_AMOUNT" }),
+        upgrade({ UpgradeType: "GAMEPLAY_SOMETHING_NEW" }),
+      ],
+    });
+    expect(boosts.map((boost) => boost.kind)).toEqual(["resources", "credits", "creditChance"]);
+    expect(boosts[0].multiplier).toBe(3);
+  });
+
+  it("ignores an upgrade that is not a multiplier", () => {
+    expect(parseBoosts({ GlobalUpgrades: [upgrade({ OperationType: "ADD" })] })).toEqual([]);
+  });
+
+  it("survives GlobalUpgrades arriving as something other than an array", () => {
+    const raw = { GlobalUpgrades: {} } as unknown as Parameters<typeof parser.parseRaw>[0];
+    expect(parseBoosts(raw)).toEqual([]);
+  });
+});
+
 describe("worldStateParser.parseBountyCycleBounties", () => {
   interface SeedBounty {
     syndicate: string;

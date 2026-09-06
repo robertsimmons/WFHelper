@@ -236,6 +236,7 @@ export function emptyWorldState(): Record<string, unknown> {
     invasions: [],
     bounties: [],
     dailyDeals: [],
+    globalBoosts: [],
   };
 }
 
@@ -314,6 +315,22 @@ const HUB_NODE: Record<string, string> = {
   "Relay Node 12": "Kronia Relay (Saturn)",
   "Relay Node 17": "Orcus Relay (Pluto)",
   "Relay Node 20": "Leonov Relay (Europa)",
+};
+
+/** Mirrors GlobalBoost in src/types/world.ts; services stay out of renderer types. */
+interface GlobalBoost {
+  kind: "affinity" | "resources" | "credits" | "creditChance";
+  multiplier: number;
+  activation: string | null;
+  expiry: string | null;
+}
+
+/** DE's four shipped boost kinds; anything else is dropped rather than guessed at. */
+const GLOBAL_BOOST_KIND: Record<string, GlobalBoost["kind"]> = {
+  GAMEPLAY_KILL_XP_AMOUNT: "affinity",
+  GAMEPLAY_PICKUP_AMOUNT: "resources",
+  GAMEPLAY_MONEY_PICKUP_AMOUNT: "credits",
+  GAMEPLAY_MONEY_REWARD_AMOUNT: "creditChance",
 };
 
 function resolveDictValue(value: unknown): string | null {
@@ -1445,6 +1462,22 @@ export function parseRaw(raw: WorldStateRaw | null): Record<string, unknown> | n
       };
     });
 
+  // A boost DE has announced but not started yet is kept; the renderer decides
+  // whether the window is open, since world state outlives the fetch that built it.
+  const globalBoosts: GlobalBoost[] = asList(raw.GlobalUpgrades)
+    .filter(
+      (upgrade) =>
+        GLOBAL_BOOST_KIND[upgrade.UpgradeType || ""] &&
+        upgrade.OperationType === "MULTIPLY" &&
+        Number(upgrade.ExpiryDate?.["$date"]?.["$numberLong"] || 0) > nowMs,
+    )
+    .map((upgrade) => ({
+      kind: GLOBAL_BOOST_KIND[upgrade.UpgradeType || ""],
+      multiplier: Number(upgrade.Value) || 1,
+      activation: deDate(upgrade.Activation),
+      expiry: deDate(upgrade.ExpiryDate),
+    }));
+
   return {
     fissures: allFissures,
     voidTrader,
@@ -1464,5 +1497,6 @@ export function parseRaw(raw: WorldStateRaw | null): Record<string, unknown> | n
     invasions: rawInvasions,
     bounties: rawBounties,
     dailyDeals,
+    globalBoosts,
   };
 }

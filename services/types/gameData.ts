@@ -265,6 +265,15 @@ interface DailyDealRaw {
   AmountSold?: number;
 }
 
+/** Server-wide boost. The window field is `ExpiryDate` here, not `Expiry`. */
+interface GlobalUpgradeRaw {
+  UpgradeType?: string;
+  OperationType?: string;
+  Value?: number;
+  Activation?: WorldStateDate;
+  ExpiryDate?: WorldStateDate;
+}
+
 export interface WorldStateRaw {
   ActiveMissions?: ActiveMissionRaw[];
   VoidStorms?: VoidStormRaw[];
@@ -281,6 +290,7 @@ export interface WorldStateRaw {
   SyndicateMissions?: SyndicateMissionRaw[];
   Invasions?: InvasionRaw[];
   DailyDeals?: DailyDealRaw[];
+  GlobalUpgrades?: GlobalUpgradeRaw[];
 }
 
 interface DescentRaw {

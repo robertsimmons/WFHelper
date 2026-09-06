@@ -215,6 +215,15 @@ interface DailyDeal {
   expiry?: string | null;
 }
 
+/** One scheduled server-wide multiplier. Upgrade kinds DE ships that we have no
+ *  mapping for are dropped, so an unknown kind never reaches here. */
+export interface GlobalBoost {
+  kind: "affinity" | "resources" | "credits" | "creditChance";
+  multiplier: number;
+  activation: string | null;
+  expiry: string | null;
+}
+
 export interface WorldState {
   vaultTrader?: VaultTrader | null;
   voidTrader?: VaultTrader | null;
@@ -235,5 +244,6 @@ export interface WorldState {
   invasions?: Invasion[];
   bounties?: SyndicateBounty[];
   bountyRotation?: string;
+  globalBoosts?: GlobalBoost[];
   [key: string]: unknown;
 }

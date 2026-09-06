@@ -9,7 +9,15 @@ export type SidebarViewName = Exclude<ViewName, "setup">;
 /** Views loaded on first visit. Everything else is in the initial bundle. */
 export type LazyViewName = Extract<
   ViewName,
-  "dashboard" | "world" | "syndicates" | "market" | "analytics" | "relics" | "wiki" | "arbi"
+  | "dashboard"
+  | "nextUp"
+  | "world"
+  | "syndicates"
+  | "market"
+  | "analytics"
+  | "relics"
+  | "wiki"
+  | "arbi"
 >;
 
 type LazyViewComponent = Component<Record<string, never>>;
@@ -19,6 +27,7 @@ export const LAZY_VIEW_LOADERS: Record<
   () => Promise<{ default: LazyViewComponent }>
 > = {
   dashboard: () => import("../views/DashboardView.svelte"),
+  nextUp: () => import("../views/NextUpView.svelte"),
   world: () => import("../views/WorldView.svelte"),
   syndicates: () => import("../views/SyndicatesView.svelte"),
   market: () => import("../views/MarketView.svelte"),
@@ -36,6 +45,7 @@ export const VIEW_LABEL_KEYS: Record<ViewName, MessageKey> = {
   setup: "nav.setup",
   dashboard: "nav.dashboard",
   inventory: "common.inventory",
+  nextUp: "common.nextUp",
   foundry: "common.foundry",
   mastery: "common.mastery",
   stats: "common.stats",
@@ -55,6 +65,7 @@ export const VIEW_LABEL_KEYS: Record<ViewName, MessageKey> = {
 const SIDEBAR_VIEW_HIDEABLE: Record<SidebarViewName, boolean> = {
   dashboard: true,
   inventory: false,
+  nextUp: true,
   foundry: true,
   mastery: true,
   stats: true,

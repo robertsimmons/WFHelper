@@ -5,6 +5,7 @@ export const VIEW_NAMES = [
   "setup",
   "dashboard",
   "inventory",
+  "nextUp",
   "foundry",
   "mastery",
   "stats",

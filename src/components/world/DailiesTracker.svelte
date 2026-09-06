@@ -30,10 +30,8 @@
   import {
     addCustomTask,
     expiryPeriodKey,
-    loadTracker,
     pruneDynamicProgress,
     removeCustomTask,
-    saveTracker,
     setTrackerCount,
     setTrackerPeriod,
     setTrackerTarget,
@@ -54,6 +52,7 @@
     trackerLive,
   } from "../../lib/world/dailiesLive.js";
   import { loadCollapsedSections, toggleCollapsedSection } from "../../lib/world/useWorldView.js";
+  import { setTrackerState, trackerState } from "../../stores/dailies.js";
 
   const GROUP_TITLES: Record<TrackerGroup, MessageKey> = {
     daily: "dailies.groupDaily",
@@ -78,7 +77,7 @@
 
   const clock = clockStore(1000);
 
-  let tracker = $state<TrackerState>(loadTracker());
+  const tracker = $derived($trackerState);
   let collapsed = $state<Record<string, boolean>>(loadCollapsedSections());
   let editing = $state(false);
   let expanded = $state<Record<string, boolean>>({});
@@ -295,9 +294,7 @@
   function commit(next: TrackerState): void {
     // No world state at all means the empty live lists prove nothing; a present
     // one with no acts or alerts genuinely means those rows are gone.
-    const pruned = wd ? pruneDynamicProgress(next, liveIds) : next;
-    tracker = pruned;
-    saveTracker(pruned);
+    setTrackerState(wd ? pruneDynamicProgress(next, liveIds) : next);
   }
 
   function toggleSection(key: string): void {

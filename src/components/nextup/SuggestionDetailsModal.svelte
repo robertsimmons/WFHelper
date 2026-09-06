@@ -92,8 +92,7 @@
       missions.length > 0 ||
       options.length > 0 ||
       expiryDate ||
-      progress ||
-      suggestion.wiki,
+      progress,
     ),
   );
 </script>
@@ -101,7 +100,12 @@
 <ModalShell ariaLabel={suggestion.title} {onClose}>
   <div class="detail-panel p-4">
     <div class="mb-3 flex items-start justify-between gap-2">
-      <h3 class="m-0 font-display text-lg text-text-primary">{suggestion.title}</h3>
+      <span class="flex min-w-0 items-center gap-2">
+        <h3 class="m-0 truncate font-display text-lg text-text-primary">{suggestion.title}</h3>
+        {#if suggestion.wiki}
+          <span class="shrink-0"><WikiButton fallbackName={suggestion.wiki} /></span>
+        {/if}
+      </span>
       <button
         class="btn-secondary btn-sm !px-2"
         aria-label={$tr("common.close")}
@@ -230,10 +234,6 @@
               <span class={LABEL}>{$tr("nextUp.detailsTimeLeft")}</span>
               <span class="text-sm text-text-primary">{timeTo(expiryDate, $clock)}</span>
             </div>
-          {/if}
-
-          {#if suggestion.wiki}
-            <span class="mt-2 self-start"><WikiButton fallbackName={suggestion.wiki} /></span>
           {/if}
 
           {#if !hasExtra}

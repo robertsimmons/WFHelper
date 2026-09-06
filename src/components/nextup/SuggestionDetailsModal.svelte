@@ -1,8 +1,10 @@
 <script lang="ts">
   import { parseIsoDate, timeTo } from "../../lib/format.js";
   import { tr } from "../../lib/i18n.js";
+  import { send } from "../../lib/ipc.js";
   import { gradeClass } from "../../lib/suggest/circuit.js";
   import { resolveDropArt } from "../../lib/suggest/dropPools.js";
+  import { overframeUrl } from "../../lib/suggest/overframe.js";
   import { ownedRewardFor, type OwnedReward } from "../../lib/suggest/ownedRewards.js";
   import { clockStore } from "../../lib/timers.js";
   import { componentOwnership, itemDb } from "../../stores/data.js";
@@ -112,7 +114,29 @@
       progress,
     ),
   );
+
+  function openOverframe(href: string): void {
+    send("open-external", href);
+  }
 </script>
+
+{#snippet overframeLink(name: string | null | undefined)}
+  {@const href = overframeUrl(name)}
+  {#if href}
+    <button
+      class="detail-wiki-btn"
+      title={$tr("nextUp.overframeTitle")}
+      onclick={() => openOverframe(href)}
+    >
+      <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor" aria-hidden="true">
+        <path
+          d="M8 1.5 14 5v6L8 14.5 2 11V5l6-3.5zm0 1.73L3.5 5.86v4.28L8 12.77l4.5-2.63V5.86L8 3.23z"
+        />
+      </svg>
+      <span>{$tr("nextUp.overframe")}</span>
+    </button>
+  {/if}
+{/snippet}
 
 <ModalShell ariaLabel={suggestion.title} {onClose}>
   <div class="detail-panel p-4">
@@ -122,6 +146,7 @@
         {#if suggestion.wiki}
           <span class="shrink-0"><WikiButton fallbackName={suggestion.wiki} /></span>
         {/if}
+        <span class="shrink-0">{@render overframeLink(suggestion.wiki)}</span>
       </span>
       <button
         class="btn-secondary btn-sm !px-2"
@@ -157,6 +182,7 @@
                     >
                   {/if}
                   <WikiButton fallbackName={choice.name} />
+                  {@render overframeLink(choice.name)}
                 </span>
                 <span
                   class="text-xs font-semibold uppercase tracking-[0.08em] {STATE_COLOR[

@@ -16,6 +16,7 @@
   } from "../../lib/suggest/preferences.js";
   import { compactCount, ownedRewardByName } from "../../lib/suggest/ownedRewards.js";
   import { WEIGHT_MAX, WEIGHT_STEP } from "../../lib/suggest/score.js";
+  import { ACQUISITION_ACTIVITY } from "../../lib/suggest/providers/acquisition.js";
   import { MASTERY_ACTIVITY } from "../../lib/suggest/providers/mastery.js";
   import { RELICS_ACTIVITY } from "../../lib/suggest/providers/relics.js";
   import { BUILTIN_TASKS, trackerGroup } from "../../lib/world/dailies.js";
@@ -388,6 +389,8 @@
         {#each MASTERY_FILTERS as row (row.key)}
           {@render optionRow($tr(row.label), row.key)}
         {/each}
+        {@render groupHeading($tr("nextUp.sectionAcquisition"))}
+        {@render prefRow($tr("nextUp.settingsAcquisition"), ACQUISITION_ACTIVITY, ACTIVITY_OPTIONS)}
       {:else if tab === "rewards"}
         <div class="mb-2 flex flex-wrap items-center gap-2">
           <input

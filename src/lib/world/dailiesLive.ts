@@ -91,7 +91,7 @@ export function bird3ShardColor(nowMs: number): string {
  *  leaves the rest to the wiki link. */
 const CALENDAR_DAY_CAP = 15;
 
-function dayOfYearUtc(nowMs: number): number {
+export function dayOfYearUtc(nowMs: number): number {
   const now = new Date(nowMs);
   const start = Date.UTC(now.getUTCFullYear(), 0, 1);
   const today = Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate());
@@ -100,7 +100,7 @@ function dayOfYearUtc(nowMs: number): number {
 
 /** DE numbers calendar days by day-of-year; a season numbered from its own start
  *  would match nothing, so an empty upcoming list falls back to the whole list. */
-function upcomingCalendarDays(days: CalendarDay[], nowMs: number): CalendarDay[] {
+export function upcomingCalendarDays(days: CalendarDay[], nowMs: number): CalendarDay[] {
   const today = dayOfYearUtc(nowMs);
   const upcoming = days.filter((entry) => entry.day >= today);
   return (upcoming.length > 0 ? upcoming : days).slice(0, CALENDAR_DAY_CAP);

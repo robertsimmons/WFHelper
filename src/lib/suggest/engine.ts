@@ -1,24 +1,28 @@
-import { categoryKey, isDismissed, suggestionKey, type DismissalState } from "./dismissals.js";
+import { isDismissed, suggestionKey, type DismissalState } from "./dismissals.js";
 import { scoreSignals } from "./score.js";
-import type {
-  Suggestion,
-  SuggestionCategory,
-  SuggestionContext,
-  SuggestionProvider,
+import {
+  SUGGESTION_CATEGORIES,
+  type Suggestion,
+  type SuggestionCategory,
+  type SuggestionContext,
+  type SuggestionProvider,
 } from "../../types/suggest.js";
 
-interface SuggestionGroup {
-  category: SuggestionCategory;
-  fingerprint: string;
-  suggestions: Suggestion[];
-}
-
 export interface SuggestionFeed {
-  groups: SuggestionGroup[];
+  /** Everything worth doing, best first. The view filters and pages it. */
+  suggestions: Suggestion[];
+  /** Live count per category, so a filter can show what it would reveal. */
+  counts: Record<SuggestionCategory, number>;
   /** How many suggestions the user is currently choosing not to see. */
   hiddenCount: number;
   /** Every live dismissal key against its current fingerprint, for pruning. */
   fingerprints: Map<string, string>;
+}
+
+/** A band, not a penalty: a turned-down activity keeps its own ranking, below
+ *  everything else, however good its score is. */
+function band(suggestion: Suggestion): number {
+  return suggestion.deprioritized ? 1 : 0;
 }
 
 export function collectSuggestions(
@@ -28,49 +32,42 @@ export function collectSuggestions(
   return providers
     .flatMap((provider) => provider.collect(ctx))
     .map((draft) => ({ ...draft, score: scoreSignals(draft.signals) }))
-    .sort((a, b) => b.score - a.score || a.id.localeCompare(b.id));
+    .sort((a, b) => band(a) - band(b) || b.score - a.score || a.id.localeCompare(b.id));
 }
 
-/** Members define the category, so a rotation changes it and lifts its dismissal. */
-function groupFingerprint(suggestions: readonly Suggestion[]): string {
-  return suggestions
-    .map((suggestion) => suggestion.fingerprint)
-    .sort()
-    .join("|");
+function emptyCounts(): Record<SuggestionCategory, number> {
+  return { daily: 0, weekly: 0, nightwave: 0 };
 }
 
 export function buildFeed(
   suggestions: readonly Suggestion[],
   dismissals: DismissalState,
 ): SuggestionFeed {
-  const byCategory = new Map<SuggestionCategory, Suggestion[]>();
-  for (const suggestion of suggestions) {
-    const members = byCategory.get(suggestion.category);
-    if (members) members.push(suggestion);
-    else byCategory.set(suggestion.category, [suggestion]);
-  }
-
   const fingerprints = new Map<string, string>();
-  const groups: SuggestionGroup[] = [];
+  const visible: Suggestion[] = [];
+  const counts = emptyCounts();
   let hiddenCount = 0;
 
-  for (const [category, members] of byCategory) {
-    const fingerprint = groupFingerprint(members);
-    fingerprints.set(categoryKey(category), fingerprint);
-    for (const member of members) fingerprints.set(suggestionKey(member.id), member.fingerprint);
-
-    if (isDismissed(dismissals, categoryKey(category), fingerprint)) {
-      hiddenCount += members.length;
+  for (const suggestion of suggestions) {
+    fingerprints.set(suggestionKey(suggestion.id), suggestion.fingerprint);
+    if (isDismissed(dismissals, suggestionKey(suggestion.id), suggestion.fingerprint)) {
+      hiddenCount += 1;
       continue;
     }
-
-    const visible = members.filter(
-      (member) => !isDismissed(dismissals, suggestionKey(member.id), member.fingerprint),
-    );
-    hiddenCount += members.length - visible.length;
-    if (visible.length > 0) groups.push({ category, fingerprint, suggestions: visible });
+    visible.push(suggestion);
+    counts[suggestion.category] += 1;
   }
 
-  groups.sort((a, b) => (b.suggestions[0]?.score ?? 0) - (a.suggestions[0]?.score ?? 0));
-  return { groups, hiddenCount, fingerprints };
+  return { suggestions: visible, counts, hiddenCount, fingerprints };
+}
+
+/** Ranked order is the whole point, so filtering never reorders what survives. */
+export function filterByCategory(
+  suggestions: readonly Suggestion[],
+  active: readonly SuggestionCategory[],
+): Suggestion[] {
+  if (active.length === 0 || active.length === SUGGESTION_CATEGORIES.length) {
+    return [...suggestions];
+  }
+  return suggestions.filter((suggestion) => active.includes(suggestion.category));
 }

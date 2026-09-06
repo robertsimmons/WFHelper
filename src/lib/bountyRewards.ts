@@ -100,6 +100,7 @@ const jobCache = new Map<string, Promise<BountyStageRewards[]>>();
 interface NameLookupEntry {
   imageUrl?: string;
   category?: string;
+  uniqueName?: string;
 }
 let _nameToEntryMap: Map<string, NameLookupEntry> | undefined;
 let _lastItemDbRef: Record<string, ItemDbEntry> | undefined;
@@ -110,7 +111,7 @@ function getNameToEntryMap(
   if (!itemDb) return undefined;
   if (itemDb === _lastItemDbRef && _nameToEntryMap) return _nameToEntryMap;
   const m = new Map<string, NameLookupEntry>();
-  for (const entry of Object.values(itemDb)) {
+  for (const [uniqueName, entry] of Object.entries(itemDb)) {
     if (entry.name) {
       const key = entry.name.toLowerCase();
       const existing = m.get(key);
@@ -122,7 +123,7 @@ function getNameToEntryMap(
         if (!existing.imageUrl && imageUrl) existing.imageUrl = imageUrl;
         if (!existing.category && category) existing.category = category;
       } else {
-        const lookup: NameLookupEntry = {};
+        const lookup: NameLookupEntry = { uniqueName };
         if (imageUrl) lookup.imageUrl = imageUrl;
         if (category) lookup.category = category;
         m.set(key, lookup);
@@ -322,10 +323,7 @@ export function resolveRewardUniqueName(
   itemName: string,
   itemDb?: Record<string, ItemDbEntry>,
 ): string | undefined {
-  if (!itemName || !itemDb) return undefined;
+  if (!itemName) return undefined;
   const stripped = stripQuantityPrefix(itemName).trim().toLowerCase();
-  for (const [uniqueName, entry] of Object.entries(itemDb)) {
-    if (entry.name?.toLowerCase() === stripped) return uniqueName;
-  }
-  return undefined;
+  return getNameToEntryMap(itemDb)?.get(stripped)?.uniqueName;
 }

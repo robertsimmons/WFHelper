@@ -250,6 +250,8 @@ export interface CircuitChoice {
   displayName?: string;
   imageUrl: string;
   owned: boolean;
+  /** The item itself is in the inventory; a frame fed to the Helminth is not. */
+  inInventory: boolean;
   /** Fed to the Helminth. Refines `owned`, never replaces it. */
   subsumed?: boolean;
   uniqueName: string;
@@ -453,16 +455,18 @@ function incarnonAdapterOwned(
 function toCircuitChoice(entry: ResolvedEntry, sets: OwnedSets): CircuitChoice {
   const subsumed = isSubsumedFrame(entry, entry.uniqueName, sets.subsumed);
   const nameKey = circuitNameKey(entry.name);
-  const owned = nameKey.endsWith(INCARNON_SUFFIX)
+  const isFrame = WARFRAME_CATS.has(entryCategory(entry));
+  const inInventory = nameKey.endsWith(INCARNON_SUFFIX)
     ? incarnonAdapterOwned(entry.uniqueName, nameKey.slice(0, -INCARNON_SUFFIX.length), sets)
-    : WARFRAME_CATS.has(entryCategory(entry))
-      ? sets.ownedSuits.has(entry.uniqueName) || subsumed
+    : isFrame
+      ? sets.ownedSuits.has(entry.uniqueName)
       : sets.ownedWeapons.has(entry.uniqueName);
   return {
     name: entry.name,
     ...(entry.displayName ? { displayName: entry.displayName } : {}),
     imageUrl: entry.imageUrl,
-    owned,
+    owned: isFrame ? inInventory || subsumed : inInventory,
+    inInventory,
     ...(subsumed ? { subsumed: true } : {}),
     uniqueName: entry.uniqueName,
   };
@@ -513,14 +517,19 @@ function circuitResolver(
     names.map((name) => {
       const baseKey = circuitNameKey(name);
       const match = byName.get(baseKey);
-      if (!match) return { name, imageUrl: "", owned: false, uniqueName: "" };
+      if (!match) {
+        return { name, imageUrl: "", owned: false, inInventory: false, uniqueName: "" };
+      }
 
       const imageUrl = incarnonArt.get(baseKey) || match.imageUrl;
       const choice = toCircuitChoice({ ...match, imageUrl }, sets);
       // Steel Path rewards the adapter, so ownership tracks the adapter (spare
       // unlocker or installed on any weapon variant), never the base weapon.
       const adapter = incarnonAdapters.get(baseKey);
-      if (adapter) choice.owned = incarnonAdapterOwned(adapter, baseKey, sets);
+      if (adapter) {
+        choice.owned = incarnonAdapterOwned(adapter, baseKey, sets);
+        choice.inInventory = choice.owned;
+      }
       return choice;
     });
 }

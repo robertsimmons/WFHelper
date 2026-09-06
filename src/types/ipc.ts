@@ -16,7 +16,7 @@ import type {
   WfmUpdateOrderInput,
   WfmUserProfile,
 } from "./market.js";
-import type { DropSearchMode, DropSearchResult } from "../../config/shared/dropTypes.js";
+import type { DropRow, DropSearchMode, DropSearchResult } from "../../config/shared/dropTypes.js";
 import type {
   WorkbenchExecuteResult,
   WorkbenchOverrideAck,
@@ -312,6 +312,10 @@ export interface IpcInvokeMap {
   searchDrops: {
     args: [query: string, mode: DropSearchMode];
     return: DropSearchResult;
+  };
+  getDropPool: {
+    args: [prefixes: readonly string[]];
+    return: DropRow[];
   };
   getLinuxDisplay: {
     args: [];

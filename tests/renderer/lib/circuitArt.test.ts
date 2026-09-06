@@ -135,6 +135,24 @@ describe("subsumed circuit frames", () => {
     expect(frame.subsumed).toBeUndefined();
   });
 
+  it("separates holding the frame from having fed it, without moving owned", () => {
+    const [fed] = resolveCircuitChoices(["Excalibur"], DB, SUBSUMED_INVENTORY);
+    const [held] = resolveCircuitChoices(["Excalibur"], DB, { Suits: [{ ItemType: EXCALIBUR }] });
+    const [neither] = resolveCircuitChoices(["Excalibur"], DB, null);
+
+    expect([fed.owned, fed.inInventory]).toEqual([true, false]);
+    expect([held.owned, held.inInventory]).toEqual([true, true]);
+    expect([neither.owned, neither.inInventory]).toEqual([false, false]);
+  });
+
+  it("tracks an adapter the same way in both fields", () => {
+    const [spare] = resolveCircuitChoices(["Torid"], DB, { MiscItems: [{ ItemType: ADAPTER }] });
+    const [none] = resolveCircuitChoices(["Torid"], DB, { LongGuns: [{ ItemType: TORID }] });
+
+    expect([spare.owned, spare.inInventory]).toEqual([true, true]);
+    expect([none.owned, none.inInventory]).toEqual([false, false]);
+  });
+
   it("never flags a weapon", () => {
     const [torid] = resolveCircuitChoices(["Torid"], DB, SUBSUMED_INVENTORY);
 

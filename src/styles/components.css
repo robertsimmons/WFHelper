@@ -33,12 +33,14 @@
     padding-top: 1.5rem;
   }
 
-  #content.stats-active {
+  #content.stats-active,
+  #content.nextup-active {
     display: flex;
     flex-direction: column;
     overflow: hidden;
   }
-  #content.stats-active > .view {
+  #content.stats-active > .view,
+  #content.nextup-active > .view {
     flex: 1;
     min-height: 0;
     display: flex;

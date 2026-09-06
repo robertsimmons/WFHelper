@@ -322,6 +322,10 @@ function placeSearchField(row: DropRow): string {
   return row.kind === "dojo" ? `${row.place} Dojo` : row.place;
 }
 
+function collapseSpace(value: string): string {
+  return value.replace(/\s+/g, " ").trim();
+}
+
 /** Substring search by item (default), place or enemy, ranked: prefix > word-start > contains. */
 export function searchDrops(
   query: string,
@@ -354,6 +358,25 @@ export function searchDrops(
   );
 
   return { rows: scored.slice(0, limit).map((s) => s.row), total: scored.length };
+}
+
+/** Whole reward pools by place prefix. Upstream place names carry stray runs of
+ *  whitespace, so both sides are collapsed before the prefix test. */
+export function dropsForPlaces(prefixes: readonly string[], limit = 300): DropRow[] {
+  const needles = prefixes
+    .map((prefix) => collapseSpace(String(prefix || "")).toLowerCase())
+    .filter(Boolean);
+  if (!needles.length) return [];
+
+  const matched = rows.filter((row) => {
+    const place = collapseSpace(row.place).toLowerCase();
+    return needles.some((needle) => place.startsWith(needle));
+  });
+
+  matched.sort(
+    (a, b) => b.chance - a.chance || a.item.localeCompare(b.item) || a.place.localeCompare(b.place),
+  );
+  return matched.slice(0, limit);
 }
 
 export function flattenForTest(data: unknown): DropRow[] {

@@ -327,6 +327,7 @@
           data-view={$currentView}
           style={viewScopeStyle}
           class:stats-active={$currentView === "stats"}
+          class:nextup-active={$currentView === "nextUp"}
           class:setup-active={$currentView === "setup"}
         >
           {#if $currentView === "setup"}

@@ -1,7 +1,6 @@
 import { derived, get, writable, type Readable } from "svelte/store";
 
 import {
-  categoryKey,
   dismiss,
   pruneDismissals,
   suggestionKey,
@@ -14,8 +13,11 @@ import { readStorage, writeStorage } from "../lib/persistence.js";
 import { clockStore } from "../lib/timers.js";
 import { setTrackerCount } from "../lib/world/dailies.js";
 import { setTrackerState, trackerState } from "./dailies.js";
-import { inventoryData, inventoryModifiedAt } from "./data.js";
+import { inventoryData, inventoryModifiedAt, itemDb } from "./data.js";
+import { dropPools } from "./dropPools.js";
+import { suggestionPreferences } from "./suggestionPrefs.js";
 import { worldData } from "./world.js";
+import { SUGGESTION_CATEGORIES } from "../types/suggest.js";
 import type {
   SuggestionCategory,
   SuggestionProvider,
@@ -23,6 +25,7 @@ import type {
 } from "../types/suggest.js";
 
 const STORAGE_KEY = "next-up-dismissals";
+const FILTER_KEY = "next-up-filters";
 const PROVIDERS: readonly SuggestionProvider[] = [dailiesProvider];
 /** Urgency is a slope, not a countdown; the cards run their own second timer. */
 const CLOCK_MS = 30_000;
@@ -54,17 +57,34 @@ export const suggestionFeed: Readable<SuggestionFeed> = derived(
     worldData,
     inventoryData,
     inventoryModifiedAt,
+    itemDb,
     trackerState,
     dismissalStore,
+    suggestionPreferences,
+    dropPools,
     tr,
     clockStore(CLOCK_MS),
   ],
-  ([$world, $inventory, $inventoryModifiedAt, $tracker, $dismissals, $tr, $now]) => {
+  ([
+    $world,
+    $inventory,
+    $inventoryModifiedAt,
+    $itemDb,
+    $tracker,
+    $dismissals,
+    $prefs,
+    $dropPools,
+    $tr,
+    $now,
+  ]) => {
     const suggestions = collectSuggestions(PROVIDERS, {
       world: $world,
       inventory: $inventory,
       inventoryModifiedAt: $inventoryModifiedAt,
+      itemDb: $itemDb,
       tracker: $tracker,
+      prefs: $prefs,
+      dropPools: $dropPools,
       nowMs: $now,
       t: $tr,
     });
@@ -78,10 +98,6 @@ function commit(key: string, fingerprint: string): void {
   const next = dismiss(pruneDismissals(get(dismissalStore), liveFingerprints), key, fingerprint);
   dismissalStore.set(next);
   writeStorage(STORAGE_KEY, JSON.stringify(next));
-}
-
-export function dismissCategory(category: SuggestionCategory, fingerprint: string): void {
-  commit(categoryKey(category), fingerprint);
 }
 
 export function dismissSuggestion(id: string, fingerprint: string): void {
@@ -98,4 +114,30 @@ export function completeTask(completion: TrackerCompletion, count: number): void
 export function restoreAllSuggestions(): void {
   dismissalStore.set({});
   writeStorage(STORAGE_KEY, "{}");
+}
+
+function loadFilters(): SuggestionCategory[] {
+  const raw = readStorage(FILTER_KEY);
+  if (!raw) return [...SUGGESTION_CATEGORIES];
+  try {
+    const parsed: unknown = JSON.parse(raw);
+    if (!Array.isArray(parsed)) return [...SUGGESTION_CATEGORIES];
+    const picked = SUGGESTION_CATEGORIES.filter((category) => parsed.includes(category));
+    // Every box unticked would leave nothing to suggest, so it reads as "all".
+    return picked.length > 0 ? picked : [...SUGGESTION_CATEGORIES];
+  } catch {
+    return [...SUGGESTION_CATEGORIES];
+  }
+}
+
+export const categoryFilter = writable<SuggestionCategory[]>(loadFilters());
+
+export function toggleCategoryFilter(category: SuggestionCategory): void {
+  const current = get(categoryFilter);
+  const next = current.includes(category)
+    ? current.filter((entry) => entry !== category)
+    : SUGGESTION_CATEGORIES.filter((entry) => entry === category || current.includes(entry));
+  const resolved = next.length > 0 ? next : [...SUGGESTION_CATEGORIES];
+  categoryFilter.set(resolved);
+  writeStorage(FILTER_KEY, JSON.stringify(resolved));
 }

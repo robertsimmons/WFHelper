@@ -1,15 +1,6 @@
-import type { SuggestionCategory } from "../../types/suggest.js";
-
-/**
- * Dismissal key to the fingerprint it was made against. Storing the fingerprint
- * is what makes "not right now" temporary: once the world moves on the stored
- * one stops matching and the suggestion comes back on its own.
- */
+/** Dismissal key to the fingerprint it was made against; once that fingerprint
+ *  no longer matches, the suggestion comes back. */
 export type DismissalState = Record<string, string>;
-
-export function categoryKey(category: SuggestionCategory): string {
-  return `cat:${category}`;
-}
 
 export function suggestionKey(id: string): string {
   return `sug:${id}`;

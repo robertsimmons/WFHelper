@@ -22,6 +22,7 @@ import {
   DB_GET_CODEX_SCANS,
   DB_GET_RELIC_DATABASE,
   DROP_SEARCH,
+  DROP_POOL,
   APP_UPDATE_CHECK,
   SYSTEM_CONFIRM,
   APP_UPDATE_STATE,
@@ -45,6 +46,8 @@ import { isObject } from "./ipcValidators";
 import { toNonEmptyString } from "../config/shared/stringValidation";
 
 const log = withScope("systemIpc");
+
+const MAX_DROP_POOL_PREFIXES = 16;
 
 function register(): void {
   handleAuthorized(DB_GET_ITEM_DATABASE, assertMainRendererSender, () =>
@@ -102,6 +105,24 @@ function register(): void {
       log.warn("[Drops] ensureLoaded failed:", normalizeErrorMessage(error));
     }
     return dropData.searchDrops(query, mode);
+  });
+
+  handleAuthorized(DROP_POOL, assertMainRendererSender, async (_event, payload: unknown) => {
+    if (!isObject(payload)) return [];
+    const raw = payload.prefixes;
+    if (!Array.isArray(raw) || !raw.length || raw.length > MAX_DROP_POOL_PREFIXES) return [];
+    const prefixes: string[] = [];
+    for (const entry of raw) {
+      const prefix = toNonEmptyString(entry, 200);
+      if (!prefix) return [];
+      prefixes.push(prefix);
+    }
+    try {
+      await dropData.ensureLoaded();
+    } catch (error) {
+      log.warn("[Drops] ensureLoaded failed:", normalizeErrorMessage(error));
+    }
+    return dropData.dropsForPlaces(prefixes);
   });
 
   // window.confirm leaves renderer keyboard input dead on Windows after it

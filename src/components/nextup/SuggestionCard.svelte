@@ -1,27 +1,55 @@
 <script lang="ts">
-  import { fade } from "svelte/transition";
-
-  import { timeTo } from "../../lib/format.js";
   import { tr } from "../../lib/i18n.js";
-  import { clockStore } from "../../lib/timers.js";
-  import WikiButton from "../WikiButton.svelte";
-  import type { Suggestion } from "../../types/suggest.js";
+  import { resolveDropArt } from "../../lib/suggest/dropPools.js";
+  import { CARD_HEIGHT, CARD_WIDTH } from "../../lib/suggest/grid.js";
+  import { itemDb } from "../../stores/data.js";
+  import SuggestionDetailsModal from "./SuggestionDetailsModal.svelte";
+  import ItemImage from "../ItemImage.svelte";
+  import type { ChoiceState, Suggestion, WhySegment } from "../../types/suggest.js";
 
   interface Props {
     suggestion: Suggestion;
     onComplete: (count: number) => void;
     onDismiss: () => void;
-    onLink: () => void;
   }
 
-  const { suggestion, onComplete, onDismiss, onLink }: Props = $props();
+  const { suggestion, onComplete, onDismiss }: Props = $props();
 
   /** Long enough to read the card as done before the feed drops it. */
   const DONE_DWELL_MS = 700;
 
-  const clock = clockStore(1000);
-  const expiry = $derived(suggestion.expiry ? new Date(suggestion.expiry) : null);
-  const countdown = $derived(expiry ? timeTo(expiry, $clock) : "");
+  const ART_HEIGHT = CARD_HEIGHT / 2;
+
+  const ICON_BTN =
+    "flex h-6 w-6 cursor-pointer items-center justify-center rounded border border-border " +
+    "bg-bg-base text-text-muted transition-[border-color,color,background-color] duration-150 " +
+    "hover:border-border-strong hover:text-text-primary";
+
+  const STRIP: Record<ChoiceState, string> = {
+    wanted: "border-success bg-success/10",
+    subsume: "border-warning bg-warning/10",
+    done: "border-border opacity-40",
+  };
+
+  const TONE: Record<NonNullable<WhySegment["tone"]>, string> = {
+    good: "text-success",
+    bad: "text-danger",
+  };
+
+  const choices = $derived(suggestion.choices ?? []);
+  const art = $derived(
+    suggestion.reward && choices.length === 0
+      ? resolveDropArt($itemDb, suggestion.reward.name, suggestion.reward.uniqueName)
+      : null,
+  );
+  // The name comes back into the line when no art carries it, and rather than
+  // leave the line blank.
+  const why = $derived(
+    art && suggestion.why ? suggestion.why : (suggestion.whyWithReward ?? suggestion.why),
+  );
+  // Segments spell out the plain line, so they only stand where that line does.
+  const segments = $derived(why === suggestion.why ? (suggestion.whySegments ?? []) : []);
+
   const complete = $derived(suggestion.complete);
   const progress = $derived(suggestion.progress);
   const progressPercent = $derived(
@@ -31,86 +59,178 @@
   );
 
   let done = $state(false);
+  let detailsOpen = $state(false);
 
   function markDone(target: number): void {
     if (done) return;
     done = true;
     setTimeout(() => onComplete(target), DONE_DWELL_MS);
   }
+
+  function openDetails(): void {
+    detailsOpen = true;
+  }
+
+  function onCardKey(event: KeyboardEvent): void {
+    if (event.key !== "Enter" && event.key !== " ") return;
+    event.preventDefault();
+    openDetails();
+  }
+
+  // The controls sit inside the card's own click target.
+  function clickDone(event: MouseEvent, target: number): void {
+    event.stopPropagation();
+    markDone(target);
+  }
+
+  function clickAddRun(event: MouseEvent, next: number): void {
+    event.stopPropagation();
+    onComplete(next);
+  }
+
+  function clickDismiss(event: MouseEvent): void {
+    event.stopPropagation();
+    onDismiss();
+  }
 </script>
 
-<article
-  out:fade={{ duration: 250 }}
-  class="flex flex-col gap-2 rounded-[var(--radius-lg)] border bg-bg-soft p-3
-         transition-colors duration-200 {done
+<!-- Every card is the same box: a fixed art band over rows of fixed height, so
+     no control ever moves and no card ever stretches its neighbours. -->
+<div
+  class="flex shrink-0 cursor-pointer flex-col overflow-hidden rounded-[var(--radius-lg)] border
+         bg-bg-raised transition-colors duration-200 focus-visible:outline
+         focus-visible:outline-2 focus-visible:outline-accent {done
     ? 'border-success/60 opacity-70'
-    : 'border-border hover:border-border-strong'}"
+    : 'border-border hover:border-border-strong hover:bg-bg-hover'}"
+  style="width: {CARD_WIDTH}px; height: {CARD_HEIGHT}px"
+  role="button"
+  tabindex="0"
+  aria-label={$tr("common.openDetailsFor", { name: suggestion.title })}
+  onclick={openDetails}
+  onkeydown={onCardKey}
 >
-  <header class="flex items-start justify-between gap-3">
-    <h3 class="m-0 font-display text-base font-medium text-text-primary">{suggestion.title}</h3>
-    {#if countdown}
-      <span class="shrink-0 whitespace-nowrap text-xs text-text-muted">
-        {$tr("nextUp.timeLeft", { time: countdown })}
-      </span>
-    {/if}
-  </header>
-
-  {#if suggestion.why}
-    <p class="m-0 text-sm text-text-secondary">{suggestion.why}</p>
-  {/if}
-
-  {#if progress}
-    <div class="flex items-center gap-2">
-      <div class="h-1.5 flex-1 overflow-hidden rounded-full bg-bg-deep">
-        <div class="h-full rounded-full bg-accent" style="width: {progressPercent}%"></div>
-      </div>
-      <span class="text-xs text-text-muted">{progress.current}/{progress.required}</span>
-      {#if complete && !done}
-        <button
-          class="cursor-pointer rounded border border-border bg-bg-base px-2 py-0.5 text-xs
-                 text-text-secondary transition-[border-color,color] duration-150
-                 hover:border-border-strong hover:text-text-primary"
-          onclick={() => onComplete(progress.current + 1)}>{$tr("nextUp.addRun")}</button
-        >
-      {/if}
-    </div>
-  {/if}
-
-  <footer class="mt-1 flex items-center justify-between gap-3">
-    {#if complete}
-      <button
-        class="cursor-pointer rounded px-3 py-1 text-sm font-semibold transition-colors
-               duration-150 {done
-          ? 'bg-success text-bg-base'
-          : 'bg-accent text-bg-base hover:brightness-110'}"
-        disabled={done}
-        onclick={() => markDone(complete.target)}
+  <div
+    class="flex w-full shrink-0 overflow-hidden border-b border-border bg-bg-deep"
+    style="height: {ART_HEIGHT}px"
+  >
+    {#each choices as choice (choice.name)}
+      <div
+        class="relative flex min-w-0 flex-1 items-center justify-center overflow-hidden
+               border-b-[3px] p-1 {STRIP[choice.state]}"
+        title={choice.name}
       >
-        {done ? $tr("nextUp.doneMarked") : $tr("nextUp.done")}
-      </button>
-    {:else}
-      <span></span>
+        {#if choice.grade}
+          <span
+            class="absolute right-1 top-0.5 z-[1] font-display text-[0.625rem] font-semibold
+                   leading-none text-accent">{choice.grade}</span
+          >
+        {/if}
+        <ItemImage src={choice.imageUrl} alt={choice.name} cls="max-h-full max-w-full" />
+        <span
+          class="choice-name absolute inset-x-0 bottom-0.5 truncate px-0.5 text-center
+                 text-[0.625rem] font-semibold leading-tight text-text-primary"
+        >
+          {choice.name}
+        </span>
+      </div>
+    {/each}
+    {#if choices.length === 0 && art}
+      <div class="flex w-full items-center justify-center p-1.5" title={art.name}>
+        <ItemImage src={art.imageUrl} alt={art.name} cls="max-h-full max-w-full" />
+      </div>
     {/if}
-    <button
-      class="cursor-pointer rounded border border-border bg-transparent px-2.5 py-1 text-sm
-             text-text-muted transition-[border-color,color] duration-150
-             hover:border-border-strong hover:text-text-secondary"
-      onclick={onDismiss}>{$tr("nextUp.dismiss")}</button
-    >
-  </footer>
+  </div>
 
-  {#if suggestion.link || suggestion.wiki}
-    <div class="flex items-center gap-3 border-t border-border/60 pt-2">
-      {#if suggestion.link}
-        <button
-          class="cursor-pointer border-0 bg-transparent p-0 text-xs text-text-muted underline
-                 underline-offset-2 transition-colors duration-150 hover:text-text-secondary"
-          onclick={onLink}>{$tr(suggestion.link.labelKey)}</button
+  <div class="flex min-h-0 flex-1 flex-col gap-1.5 p-2">
+    <div class="grid h-6 grid-cols-[minmax(0,1fr)_1.5rem_1.5rem] items-center gap-x-3">
+      <h3
+        class="m-0 truncate font-display text-sm font-medium leading-5 text-text-primary"
+        title={suggestion.title}
+      >
+        {suggestion.title}
+      </h3>
+      <span class="h-6 w-6">
+        {#if complete}
+          <button
+            class="flex h-6 w-6 cursor-pointer items-center justify-center rounded border
+                   transition-colors duration-150 {done
+              ? 'border-success bg-success text-bg-base'
+              : 'border-accent bg-accent text-bg-base hover:brightness-110'}"
+            disabled={done}
+            title={done ? $tr("nextUp.doneMarked") : $tr("nextUp.done")}
+            aria-label={done ? $tr("nextUp.doneMarked") : $tr("nextUp.done")}
+            onclick={(event) => clickDone(event, complete.target)}
+          >
+            <svg viewBox="0 0 16 16" class="h-3.5 w-3.5" aria-hidden="true">
+              <path
+                d="M3.2 8.4 6.3 11.6 12.8 4.6"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </button>
+        {/if}
+      </span>
+      <button
+        class={ICON_BTN}
+        title={$tr("nextUp.dismiss")}
+        aria-label={$tr("nextUp.dismiss")}
+        onclick={clickDismiss}
+      >
+        <svg viewBox="0 0 16 16" class="h-3 w-3" aria-hidden="true">
+          <path
+            d="M4 4 12 12M12 4 4 12"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+          />
+        </svg>
+      </button>
+    </div>
+
+    <p class="m-0 h-4 truncate text-xs leading-4 text-text-secondary" title={why}>
+      {#if segments.length > 0}{#each segments as segment, index (index)}<span
+            class={segment.tone ? TONE[segment.tone] : ""}
+            >{index > 0 ? ", " : ""}{segment.text}</span
+          >{/each}{:else}{why}{/if}
+    </p>
+
+    <div class="mt-auto grid h-6 grid-cols-[minmax(0,1fr)_2.25rem_1.5rem] items-center gap-x-2">
+      {#if progress}
+        <div class="h-1.5 overflow-hidden rounded-full bg-bg-deep">
+          <div class="h-full rounded-full bg-accent" style="width: {progressPercent}%"></div>
+        </div>
+        <span class="text-right text-[0.625rem] leading-none text-text-muted"
+          >{progress.current}/{progress.required}</span
         >
       {/if}
-      {#if suggestion.wiki}
-        <WikiButton fallbackName={suggestion.wiki} />
-      {/if}
+      <span class="col-start-3 h-6 w-6">
+        {#if progress && complete && !done}
+          <button
+            class="{ICON_BTN} font-display text-[0.6875rem] font-semibold leading-none"
+            title={$tr("nextUp.addRunTitle")}
+            aria-label={$tr("nextUp.addRunTitle")}
+            onclick={(event) => clickAddRun(event, progress.current + 1)}
+            >{$tr("nextUp.addRun")}</button
+          >
+        {/if}
+      </span>
     </div>
-  {/if}
-</article>
+  </div>
+</div>
+
+{#if detailsOpen}
+  <SuggestionDetailsModal {suggestion} onClose={() => (detailsOpen = false)} />
+{/if}
+
+<style>
+  /* Stroke under the fill keeps the name readable over any artwork. */
+  .choice-name {
+    -webkit-text-stroke: 2px var(--bg-deep);
+    paint-order: stroke fill;
+  }
+</style>

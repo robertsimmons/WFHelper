@@ -4,7 +4,12 @@ import path from "node:path";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 import type { DropRow } from "../../config/shared/dropTypes";
-import { flattenForTest, searchDrops, setRowsForTest } from "../../services/dropData";
+import {
+  dropsForPlaces,
+  flattenForTest,
+  searchDrops,
+  setRowsForTest,
+} from "../../services/dropData";
 
 let tmpDir = "";
 // Non-null swaps the bundled dojo table for this text, to exercise a bad file.
@@ -379,5 +384,71 @@ describe("dropData dojo research", () => {
         kind: "dojo",
       },
     ]);
+  });
+});
+
+describe("dropData.dropsForPlaces", () => {
+  beforeEach(() => {
+    setRowsForTest([
+      {
+        item: "Amber Archon Shard",
+        place: "Entrati Netracell Coffer (Level 0 - 100)",
+        rarity: "Uncommon",
+        chance: 17.5,
+        kind: "bounty",
+      },
+      {
+        item: "Entrati Lanthorn",
+        place: "Entrati Netracell Coffer",
+        rarity: "Common",
+        chance: 100,
+        kind: "bounty",
+      },
+      {
+        item: "3X Arcane Ice",
+        place: "The Descendia:  Infernum 20 Triple Arcane Rewards (Steel Path)",
+        rarity: "Rare",
+        chance: 3.7,
+        kind: "bounty",
+      },
+      { item: "Melee Riven Mod", place: "Sortie", rarity: "Rare", chance: 9.8, kind: "sortie" },
+      {
+        item: "100 Endo",
+        place: "Apollodorus (Mercury), Rotation A",
+        rarity: "Common",
+        chance: 50,
+        kind: "mission",
+      },
+    ]);
+  });
+
+  it("returns every row whose place starts with a prefix, best chance first", () => {
+    const rows = dropsForPlaces(["Entrati Netracell Coffer"]);
+    expect(rows.map((r) => r.item)).toEqual(["Entrati Lanthorn", "Amber Archon Shard"]);
+  });
+
+  it("collapses runs of whitespace on both sides of the prefix test", () => {
+    const rows = dropsForPlaces(["The Descendia: Infernum 20 Triple Arcane Rewards (Steel Path)"]);
+    expect(rows).toHaveLength(1);
+    expect(rows[0].item).toBe("3X Arcane Ice");
+  });
+
+  it("matches case insensitively and accepts several prefixes", () => {
+    const rows = dropsForPlaces(["sortie", "ENTRATI NETRACELL COFFER"]);
+    expect(rows.map((r) => r.item)).toEqual([
+      "Entrati Lanthorn",
+      "Amber Archon Shard",
+      "Melee Riven Mod",
+    ]);
+  });
+
+  it("returns nothing for a prefix that matches no place", () => {
+    expect(dropsForPlaces(["Zariman Bounty"])).toEqual([]);
+    expect(dropsForPlaces([])).toEqual([]);
+    expect(dropsForPlaces(["   "])).toEqual([]);
+  });
+
+  it("caps the result at the limit", () => {
+    expect(dropsForPlaces(["Entrati Netracell Coffer"], 1)).toHaveLength(1);
   });
 });

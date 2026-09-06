@@ -73,9 +73,14 @@
     );
   }
 
+  // The tracker's vendors group also carries the Tenet and Coda rows, which no
+  // provider reads; rating those here would rate nothing.
+  const VENDOR_ACTIVITY_IDS = ["baro", "varzia", "darvo"];
+
   const ACTIVITY_GROUPS: ReadonlyArray<{ title: MessageKey; ids: string[] }> = [
     { title: "dailies.groupWeekly", ids: activityIds("weekly") },
     { title: "dailies.groupDaily", ids: activityIds("daily") },
+    { title: "dailies.groupVendors", ids: VENDOR_ACTIVITY_IDS },
     { title: "dailies.groupNightwave", ids: [NIGHTWAVE_ACTIVITY] },
   ];
 

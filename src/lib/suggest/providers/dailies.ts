@@ -14,6 +14,7 @@ import {
   trackerLive,
   upcomingCalendarDays,
 } from "../../world/dailiesLive.js";
+import { affinityBoost } from "../boosts.js";
 import { readCircuit } from "../circuit.js";
 import { summarizeDropPool } from "../dropPools.js";
 import { missionOpinion, readMissions, type MissionRead } from "../missionTypes.js";
@@ -274,6 +275,15 @@ function missionSegments(prefs: SuggestionPreferences, names: readonly string[])
   );
 }
 
+/** Tasks a kill-XP boost actually changes the worth of: the daily Focus cap fills
+ *  at the boosted rate, and Steel Path Circuit is the Undercroft run you bring
+ *  your own gear to. Normal Circuit hands out a random loadout, so it levels
+ *  nothing of yours. */
+const AFFINITY_TASKS = new Set(["dailyFocus", "circuitSteelPath"]);
+
+/** Enough to lift a levelling run past its neighbours, not to clear the board. */
+const AFFINITY_BOOST_VALUE = 0.12;
+
 const ELITE_BONUS = 0.05;
 
 /** Runs a five-run task costs about this much more than a one-and-done. */
@@ -299,6 +309,7 @@ export const dailiesProvider: SuggestionProvider = {
     const now = new Date(nowMs);
     const auto = autoTrackerState(inventory, world, nowMs, inventoryModifiedAt);
     const expiries = trackerExpiries(world);
+    const boost = affinityBoost(world, nowMs);
     const drafts: SuggestionDraft[] = [];
 
     for (const task of trackerList(tracker)) {
@@ -340,7 +351,12 @@ export const dailiesProvider: SuggestionProvider = {
         segments.length > 0
           ? segments.map((segment) => segment.text).join(", ")
           : missionWhy(missions, t);
+      const boostLine =
+        boost !== null && AFFINITY_TASKS.has(task.id)
+          ? t("nextUp.whyAffinityBoost", { multiplier: String(boost) })
+          : null;
       const rest = [
+        boostLine,
         missionLine,
         task.target > 1
           ? t("nextUp.whyRemaining", { remaining: String(remaining), target: String(task.target) })
@@ -361,6 +377,8 @@ export const dailiesProvider: SuggestionProvider = {
         .join(" - ");
       const art = rewardArt(task.id, reward, pool);
       const period = periodKey ?? task.id;
+      const value =
+        circuit?.value ?? reward?.value ?? taskRewardValue(task.id) ?? BASE_VALUE[category];
 
       drafts.push({
         id: `dailies:${task.id}`,
@@ -374,8 +392,7 @@ export const dailiesProvider: SuggestionProvider = {
         choices: circuit?.choices,
         whyWithReward: withReward === why ? undefined : withReward,
         signals: {
-          value:
-            circuit?.value ?? reward?.value ?? taskRewardValue(task.id) ?? BASE_VALUE[category],
+          value: boostLine ? clamp01(value + AFFINITY_BOOST_VALUE) : value,
           effort: circuit?.effort ?? effortFor(task.target) + missionEffort(missions),
           urgency: urgencyFromExpiry(expiry, nowMs),
         },

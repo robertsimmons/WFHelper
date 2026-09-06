@@ -9,7 +9,7 @@ import type { TrackerState } from "../../../../src/lib/world/dailies.js";
 import type { DropRow } from "../../../../config/shared/dropTypes.js";
 import type { ItemDbEntry, RawInventoryData } from "../../../../src/types/inventory.js";
 import type { ActivityPref, SuggestionContext } from "../../../../src/types/suggest.js";
-import type { CalendarDay, WorldState } from "../../../../src/types/world.js";
+import type { CalendarDay, GlobalBoost, WorldState } from "../../../../src/types/world.js";
 
 const NOW = Date.parse("2026-09-05T12:00:00Z");
 const t = ((key: string) => key) as unknown as Translator;
@@ -883,5 +883,77 @@ describe("dailiesProvider ranking against progress", () => {
 
     expect(started?.progress).toEqual({ current: 3, required: 5 });
     expect(started?.score).toBe(fresh?.score);
+  });
+});
+
+describe("dailiesProvider under a server-wide affinity boost", () => {
+  const HOUR = 60 * 60_000;
+
+  function boostWorld(overrides: Partial<GlobalBoost> = {}): WorldState {
+    const boost: GlobalBoost = {
+      kind: "affinity",
+      multiplier: 2,
+      activation: new Date(NOW - HOUR).toISOString(),
+      expiry: new Date(NOW + HOUR).toISOString(),
+      ...overrides,
+    };
+    return { globalBoosts: [boost] } as unknown as WorldState;
+  }
+
+  function boosted(world: WorldState | null, id: string) {
+    return draft(context({ world, t: echoT }), id);
+  }
+
+  it("says so on the daily focus cap and pays more for it", () => {
+    const live = boosted(boostWorld(), "dailies:dailyFocus");
+    const plain = boosted(null, "dailies:dailyFocus");
+    expect(live?.why).toContain("nextUp.whyAffinityBoost(multiplier=2)");
+    expect(live?.signals.value ?? 0).toBeGreaterThan(plain?.signals.value ?? 0);
+  });
+
+  it("says so on steel path circuit, which you run on your own gear", () => {
+    const live = boosted(boostWorld(), "dailies:circuitSteelPath");
+    expect(live?.why).toContain("nextUp.whyAffinityBoost(multiplier=2)");
+  });
+
+  it("carries the multiplier DE actually shipped", () => {
+    const live = boosted(boostWorld({ multiplier: 3 }), "dailies:dailyFocus");
+    expect(live?.why).toContain("nextUp.whyAffinityBoost(multiplier=3)");
+  });
+
+  it("leaves tasks the boost does not help where they were", () => {
+    const world = boostWorld();
+    for (const id of ["dailies:circuitNormal", "dailies:netracells", "dailies:sortie"]) {
+      expect(boosted(world, id)?.why).not.toContain("nextUp.whyAffinityBoost");
+      expect(boosted(world, id)?.signals.value).toBe(boosted(null, id)?.signals.value);
+    }
+  });
+
+  it("ignores a boost whose window has closed", () => {
+    const past = boostWorld({
+      activation: new Date(NOW - 3 * HOUR).toISOString(),
+      expiry: new Date(NOW - HOUR).toISOString(),
+    });
+    expect(boosted(past, "dailies:dailyFocus")?.why).not.toContain("nextUp.whyAffinityBoost");
+  });
+
+  it("ignores a boost that has not started yet", () => {
+    const upcoming = boostWorld({
+      activation: new Date(NOW + HOUR).toISOString(),
+      expiry: new Date(NOW + 3 * HOUR).toISOString(),
+    });
+    expect(boosted(upcoming, "dailies:dailyFocus")?.why).not.toContain("nextUp.whyAffinityBoost");
+  });
+
+  it("ignores a live boost that is not affinity", () => {
+    const resources = boostWorld({ kind: "resources" });
+    const focus = boosted(resources, "dailies:dailyFocus");
+    expect(focus?.why).not.toContain("nextUp.whyAffinityBoost");
+    expect(focus?.signals.value).toBe(boosted(null, "dailies:dailyFocus")?.signals.value);
+  });
+
+  it("does nothing for a world state carrying no boosts at all", () => {
+    const empty = { globalBoosts: [] } as unknown as WorldState;
+    expect(boosted(empty, "dailies:dailyFocus")?.why).not.toContain("nextUp.whyAffinityBoost");
   });
 });

@@ -1,6 +1,7 @@
 <script lang="ts">
   import { parseIsoDate, timeTo } from "../../lib/format.js";
   import { tr } from "../../lib/i18n.js";
+  import { gradeClass } from "../../lib/suggest/circuit.js";
   import { resolveDropArt } from "../../lib/suggest/dropPools.js";
   import { ownedReward } from "../../lib/suggest/ownedRewards.js";
   import { clockStore } from "../../lib/timers.js";
@@ -29,7 +30,7 @@
   const STATE_LABEL: Record<ChoiceState, MessageKey> = {
     wanted: "nextUp.choiceTakeIt",
     subsume: "nextUp.choiceSubsumeOnly",
-    done: "nextUp.choiceNothingLeft",
+    done: "common.owned",
   };
 
   const STATE_COLOR: Record<ChoiceState, string> = {
@@ -125,6 +126,14 @@
                   <strong class="truncate font-display text-base text-text-primary"
                     >{choice.name}</strong
                   >
+                  {#if choice.grade}
+                    <span
+                      class="font-display text-base font-semibold leading-none {gradeClass(
+                        choice.grade,
+                      )}"
+                      title={$tr("nextUp.choiceGrade", { grade: choice.grade })}>{choice.grade}</span
+                    >
+                  {/if}
                   <WikiButton fallbackName={choice.name} />
                 </span>
                 <span
@@ -133,21 +142,16 @@
                   ]}">{$tr(STATE_LABEL[choice.state])}</span
                 >
               </div>
-              {#each choice.sources ?? [] as source (source.where)}
-                <span class="text-sm text-text-secondary">
-                  {$tr("nextUp.choiceSource", { where: source.where, kind: source.kind })}
-                </span>
-              {/each}
-              {#if choice.grade}
-                <span class="text-sm text-text-secondary"
-                  >{$tr("nextUp.choiceGrade", { grade: choice.grade })}</span
-                >
-              {/if}
               {#if choice.upgradePath}
                 <span class="text-sm text-text-secondary"
                   >{$tr("nextUp.choiceUpgradePath", { path: choice.upgradePath })}</span
                 >
               {/if}
+              {#each choice.sources ?? [] as source (source.where)}
+                <span class="text-sm text-text-secondary">
+                  {$tr("nextUp.choiceSource", { where: source.where, kind: source.kind })}
+                </span>
+              {/each}
               {#if choice.kind === "frame"}
                 <span class="text-sm text-text-secondary">
                   {choice.difficulty

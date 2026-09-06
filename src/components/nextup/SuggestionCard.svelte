@@ -1,6 +1,7 @@
 <script lang="ts">
   import { tr } from "../../lib/i18n.js";
   import { bannerAside, bannerFor } from "../../lib/suggest/bannerArt.js";
+  import { gradeClass } from "../../lib/suggest/circuit.js";
   import { resolveDropArt } from "../../lib/suggest/dropPools.js";
   import { CARD_HEIGHT, CARD_WIDTH } from "../../lib/suggest/grid.js";
   import { itemDb } from "../../stores/data.js";
@@ -139,7 +140,7 @@
         {#if choice.grade}
           <span
             class="absolute right-1 top-0.5 z-[1] font-display text-[0.625rem] font-semibold
-                   leading-none text-accent">{choice.grade}</span
+                   leading-none {gradeClass(choice.grade)}">{choice.grade}</span
           >
         {/if}
         <ItemImage src={choice.imageUrl} alt={choice.name} cls="max-h-full max-w-full" />

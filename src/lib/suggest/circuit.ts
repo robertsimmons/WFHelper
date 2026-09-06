@@ -37,6 +37,21 @@ const GRADE_VALUE: Record<string, number> = {
 
 const DIFFICULTY_VALUE: Record<string, number> = { hard: 0.9, normal: 0.7, easy: 0.3 };
 
+// The riven --grade-* tokens run S green through F red, which reads as "S is a
+// win" rather than as a tier, so the Circuit letters take their own ramp.
+const GRADE_CLASS: Record<string, string> = {
+  S: "text-[var(--relic-requiem)]",
+  A: "text-success",
+  B: "text-warning",
+  C: "text-danger",
+  F: "text-danger",
+};
+
+/** Tailwind class for a letter grade; a suffixed grade takes its letter's colour. */
+export function gradeClass(grade: string | null | undefined): string {
+  return GRADE_CLASS[grade?.charAt(0).toUpperCase() ?? ""] ?? "text-text-muted";
+}
+
 /** An unresearched frame or adapter is unknown, never bad. */
 const UNRATED_FRAME_VALUE = 0.7;
 const UNRATED_ADAPTER_VALUE = 0.56;

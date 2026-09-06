@@ -176,6 +176,12 @@
         class="relative flex w-full items-center p-1.5 {bannerAside(backdrop)}"
         title={art.name}
       >
+        {#if suggestion.grade}
+          <span
+            class="absolute right-1 top-0.5 z-[1] font-display text-[0.625rem] font-semibold
+                   leading-none {gradeClass(suggestion.grade)}">{suggestion.grade}</span
+          >
+        {/if}
         <ItemImage src={art.imageUrl} alt={art.name} cls="max-h-full max-w-full" />
       </div>
     {:else if standIn}

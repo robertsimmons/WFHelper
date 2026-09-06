@@ -183,6 +183,7 @@ export const acquisitionProvider: SuggestionProvider = {
           why: segments.map((segment) => segment.text).join(" - "),
           whySegments: segments,
           reward: { name: target.name, uniqueName: target.uniqueName },
+          ...(target.rank ? { grade: target.rank } : {}),
           // Easiest first is the whole point, so value has to run with effort
           // rather than against the scorer's own effort penalty.
           signals: { value: 1 - effort, effort, urgency: 0 },

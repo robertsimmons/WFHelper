@@ -163,6 +163,8 @@ export interface Suggestion {
    *  in wherever this is absent. */
   whySegments?: WhySegment[] | undefined;
   reward?: SuggestionReward | undefined;
+  /** Letter grade for the reward itself, drawn over its art as a choice's is. */
+  grade?: string | undefined;
   /** What the week is offering to pick from; strips replace the reward art. */
   choices?: SuggestionChoice[] | undefined;
   /** The same line with the reward named, for when its art does not resolve. */

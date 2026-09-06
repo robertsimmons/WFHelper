@@ -178,4 +178,17 @@ describe("acquisitionProvider", () => {
     expect(run?.steps.some((step) => /Requiem/.test(step.where))).toBe(true);
     expect(bramma.title).toBe("nextUp.acquisitionGet");
   });
+
+  it("carries the resolver's tier grade through to the card", () => {
+    const mag = draftFor(collect(), MAG);
+    expect(mag.grade).toMatch(/^[SABCD]$/);
+    expect(mag.grade).toBe(mag.details?.acquisition?.rank);
+  });
+
+  it("leaves an unranked target with no grade at all", () => {
+    const draft = collect({ itemDb: manyFrames(1) })[0];
+    expect(draft.details?.acquisition?.rank).toBeNull();
+    expect(draft.grade).toBeUndefined();
+    expect("grade" in draft).toBe(false);
+  });
 });

@@ -1,10 +1,11 @@
 <script lang="ts">
-  import { parseIsoDate, timeTo } from "../../lib/format.js";
+  import { formatNumber, parseIsoDate, timeTo } from "../../lib/format.js";
   import { tr } from "../../lib/i18n.js";
   import { send } from "../../lib/ipc.js";
   import { gradeClass } from "../../lib/suggest/circuit.js";
   import { resolveDropArt } from "../../lib/suggest/dropPools.js";
   import { overframeUrl } from "../../lib/suggest/overframe.js";
+  import { pathKindLabel } from "../../lib/suggest/providers/acquisition.js";
   import { ownedRewardFor, type OwnedReward } from "../../lib/suggest/ownedRewards.js";
   import { clockStore } from "../../lib/timers.js";
   import { componentOwnership, itemDb } from "../../stores/data.js";
@@ -12,6 +13,11 @@
   import ModalShell from "../ModalShell.svelte";
   import WikiButton from "../WikiButton.svelte";
   import type { MessageKey } from "../../lib/i18n.js";
+  import type {
+    AcquisitionPath,
+    NeedReason,
+    PartState,
+  } from "../../lib/suggest/acquisition/types.js";
   import type {
     ChoiceState,
     MissionOpinion,
@@ -70,6 +76,47 @@
 
   const ROW = "grid grid-cols-[7rem_minmax(0,1fr)] items-baseline gap-3 py-1";
   const LABEL = "text-xs font-semibold uppercase tracking-[0.08em] text-text-muted";
+  const CHIP = "rounded-[var(--radius-sm)] border border-border px-1.5 py-0.5 text-[0.6875rem]";
+
+  const NEED_LABEL: Record<NeedReason, MessageKey> = {
+    mastery: "nextUp.acqNeedMastery",
+    subsume: "nextUp.acqNeedSubsume",
+    incarnon: "nextUp.acqNeedIncarnon",
+    prime: "nextUp.acqNeedPrime",
+  };
+
+  /** The whole point is easiest first; past this the list stops being a shortlist. */
+  const ROUTE_LIMIT = 6;
+  const LIST_LIMIT = 8;
+
+  function costChips(path: AcquisitionPath): string[] {
+    const chips: string[] = [];
+    if (path.cost.credits !== null) {
+      chips.push($tr("nextUp.acqCredits", { credits: formatNumber(path.cost.credits) }));
+    }
+    const plat = path.cost.plat;
+    const set = plat?.set ?? null;
+    const parts = plat?.partsTotal ?? null;
+    if (set !== null) chips.push($tr("nextUp.acqPlatSet", { plat: String(Math.round(set)) }));
+    // Buying the set and buying every part are two prices only when they differ.
+    if (parts !== null && parts !== set) {
+      chips.push($tr("nextUp.acqPlatParts", { plat: String(Math.round(parts)) }));
+    }
+    const relics = path.cost.relics;
+    if (relics?.known) {
+      chips.push(
+        $tr(relics.held >= relics.needed ? "nextUp.acqRelicsReady" : "nextUp.acqRelicsShort", {
+          held: String(relics.held),
+          needed: String(relics.needed),
+        }),
+      );
+    }
+    return chips;
+  }
+
+  function partClass(part: PartState): string {
+    return part.missing === 0 ? "text-success" : "text-text-secondary";
+  }
 
   function optionArt(option: SuggestionOption) {
     return resolveDropArt($itemDb, option.name, option.uniqueName);
@@ -101,6 +148,14 @@
   const pool = $derived(details?.pool ?? []);
   const missions = $derived(details?.missions ?? []);
   const options = $derived(details?.options ?? []);
+  const acq = $derived(details?.acquisition ?? null);
+  const acqParts = $derived(
+    acq?.parts.known ? [...(acq.parts.main ? [acq.parts.main] : []), ...acq.parts.components] : [],
+  );
+  const acqMaterials = $derived(
+    (acq?.parts.materials ?? []).filter((row) => row.missing > 0).slice(0, LIST_LIMIT),
+  );
+  const acqPaths = $derived((acq?.paths ?? []).slice(0, ROUTE_LIMIT));
   const expiryDate = $derived(parseIsoDate(details?.expiry ?? null));
   const progress = $derived(suggestion.progress);
   const hasExtra = $derived(
@@ -332,6 +387,193 @@
             </div>
           </div>
         {/each}
+      </div>
+    {/if}
+
+    {#if acq}
+      <div class="mt-3 flex flex-col gap-3 border-t border-border pt-3">
+        <div class="flex flex-col">
+          <div class={ROW}>
+            <span class={LABEL}>{$tr("nextUp.acqNeeds")}</span>
+            <span class="flex flex-wrap gap-1.5">
+              {#each acq.needs as need (need)}
+                <span class="{CHIP} text-text-primary">{$tr(NEED_LABEL[need])}</span>
+              {/each}
+            </span>
+          </div>
+
+          {#if acq.difficulty}
+            <div class={ROW}>
+              <span class={LABEL}>{$tr("nextUp.acqDifficulty")}</span>
+              <span class="text-sm capitalize text-text-primary">{acq.difficulty}</span>
+            </div>
+          {/if}
+
+          {#if acq.parts.known}
+            <div class={ROW}>
+              <span class={LABEL}>{$tr("nextUp.acqFoundry")}</span>
+              <span class="flex flex-wrap items-baseline gap-2 text-sm text-text-primary">
+                <span class="tabular-nums"
+                  >{$tr("nextUp.acqFoundryCredits", {
+                    credits: formatNumber(acq.parts.credits),
+                  })}</span
+                >
+                <span class="text-xs {acq.parts.buildable ? 'text-success' : 'text-text-muted'}"
+                  >{$tr(
+                    acq.parts.buildable ? "nextUp.acqFoundryReady" : "nextUp.acqFoundryWaiting",
+                  )}</span
+                >
+              </span>
+            </div>
+          {/if}
+
+          {#if acq.nemesis}
+            <div class={ROW}>
+              <span class={LABEL}>{$tr("nextUp.acqNemesis")}</span>
+              <span class="flex flex-wrap items-baseline gap-x-2 text-sm text-text-primary">
+                <span class="capitalize">{acq.nemesis.family}</span>
+                {#if acq.nemesis.bonus}
+                  <span class="text-xs text-text-secondary"
+                    >{$tr("nextUp.acqNemesisBonus", {
+                      min: String(acq.nemesis.bonus.min),
+                      max: String(acq.nemesis.bonus.max),
+                    })}</span
+                  >
+                {/if}
+                {#if acq.nemesis.elements.length > 0}
+                  <span class="text-xs text-text-secondary"
+                    >{$tr("nextUp.acqNemesisElements", {
+                      elements: acq.nemesis.elements.join(", "),
+                    })}</span
+                  >
+                {/if}
+              </span>
+            </div>
+          {/if}
+        </div>
+
+        {#if acqParts.length > 0}
+          <div class="flex flex-col gap-1">
+            <span class={LABEL}>{$tr("nextUp.acqParts")}</span>
+            <div class="flex flex-col divide-y divide-border">
+              {#each acqParts as part (part.name)}
+                <div class="grid grid-cols-[minmax(0,1fr)_auto] items-baseline gap-3 py-1">
+                  <span class="flex min-w-0 items-baseline gap-2">
+                    {#if part.role === "main"}
+                      <span
+                        class="shrink-0 text-[0.625rem] font-semibold uppercase
+                               tracking-[0.08em] text-accent">{$tr("nextUp.acqPartMain")}</span
+                      >
+                    {/if}
+                    <span class="truncate text-sm text-text-primary"
+                      >{part.displayName ?? part.name}</span
+                    >
+                  </span>
+                  <span class="shrink-0 text-xs tabular-nums {partClass(part)}">
+                    {part.missing === 0
+                      ? $tr("nextUp.acqPartDone")
+                      : $tr("nextUp.acqPartHave", {
+                          owned: String(part.owned),
+                          required: String(part.required),
+                        })}
+                  </span>
+                </div>
+              {/each}
+            </div>
+          </div>
+        {/if}
+
+        {#if acqMaterials.length > 0}
+          <div class="flex flex-col gap-1">
+            <span class={LABEL}>{$tr("nextUp.acqMaterials")}</span>
+            <span class="flex flex-wrap gap-1.5">
+              {#each acqMaterials as row (row.uniqueName)}
+                <span class="{CHIP} text-text-secondary"
+                  >{row.displayName ?? row.name}
+                  <span class="tabular-nums text-text-muted"
+                    >{$tr("nextUp.acqPartCount", { count: String(row.missing) })}</span
+                  ></span
+                >
+              {/each}
+            </span>
+          </div>
+        {/if}
+
+        <div class="flex flex-col gap-2">
+          <span class={LABEL}>{$tr("nextUp.acqRoutes")}</span>
+          {#if acqPaths.length === 0}
+            <p class="m-0 text-sm text-text-muted">{$tr("nextUp.acqNoRoutes")}</p>
+          {/if}
+          {#each acqPaths as path (path.id)}
+            <div class="flex flex-col gap-1.5 rounded-[var(--radius-md)] border border-border p-2">
+              <div class="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
+                <span class="flex min-w-0 items-baseline gap-2">
+                  <strong class="font-display text-sm text-text-primary"
+                    >{$tr(pathKindLabel(path.kind))}</strong
+                  >
+                  {#if !path.complete && path.covers.length > 0}
+                    <span class="truncate text-xs text-text-muted"
+                      >{$tr("nextUp.acqRouteCovers", { parts: path.covers.join(", ") })}</span
+                    >
+                  {/if}
+                </span>
+                <span class="flex flex-wrap gap-1.5">
+                  {#each costChips(path) as chip (chip)}
+                    <span class="{CHIP} tabular-nums text-text-secondary">{chip}</span>
+                  {/each}
+                </span>
+              </div>
+
+              {#if path.steps.length === 1}
+                <p class="m-0 text-sm leading-snug text-text-secondary">{path.steps[0].where}</p>
+              {:else}
+                <ol
+                  class="m-0 flex list-decimal flex-col gap-1 pl-5 text-sm leading-snug
+                         text-text-secondary"
+                >
+                  {#each path.steps as step, index (index)}
+                    <li>{step.where}</li>
+                  {/each}
+                </ol>
+              {/if}
+
+              {#if path.cost.relics?.known}
+                {#if path.cost.relics.rows.length === 0}
+                  <p class="m-0 text-xs text-text-muted">{$tr("nextUp.acqRelicsNone")}</p>
+                {:else}
+                  <span class="flex flex-wrap gap-1.5">
+                    {#each path.cost.relics.rows.slice(0, LIST_LIMIT) as row (row.relic + row.part)}
+                      <span class="{CHIP} text-text-secondary"
+                        >{$tr("nextUp.acqRelicRow", { relic: row.relic, part: row.part })}
+                        <span
+                          class="tabular-nums {row.held > 0 ? 'text-success' : 'text-text-muted'}"
+                          >({$tr("nextUp.acqRelicHeld", { held: String(row.held) })})</span
+                        ></span
+                      >
+                    {/each}
+                  </span>
+                {/if}
+              {/if}
+
+              {#if path.cost.plat && path.cost.plat.parts.length > 1}
+                <span class="flex flex-wrap gap-1.5">
+                  {#each path.cost.plat.parts as row (row.name)}
+                    <span class="{CHIP} text-text-secondary"
+                      >{row.name}
+                      <span class="tabular-nums text-text-muted"
+                        >({row.plat === null
+                          ? $tr("nextUp.acqPlatUnpriced")
+                          : $tr("nextUp.acqPlatEach", {
+                              plat: String(Math.round(row.plat)),
+                            })})</span
+                      ></span
+                    >
+                  {/each}
+                </span>
+              {/if}
+            </div>
+          {/each}
+        </div>
       </div>
     {/if}
   </div>

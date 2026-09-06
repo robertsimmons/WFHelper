@@ -2,6 +2,9 @@ import { describe, expect, it } from "vitest";
 
 import { vendorsProvider } from "../../../../src/lib/suggest/providers/vendors.js";
 import { defaultPreferences } from "../../../../src/lib/suggest/preferences.js";
+import { ownedRewardFor } from "../../../../src/lib/suggest/ownedRewards.js";
+import { vendorOffers } from "../../../../src/lib/suggest/vendorOffers.js";
+import type { ItemDbEntry } from "../../../../src/types/inventory.js";
 import type { Translator } from "../../../../src/lib/i18n.js";
 import type { TrackerState } from "../../../../src/lib/world/dailies.js";
 import type { ActivityPref, SuggestionContext } from "../../../../src/types/suggest.js";
@@ -60,8 +63,10 @@ function draft(ctx: SuggestionContext, id: string) {
 }
 
 describe("vendorsProvider", () => {
-  it("suggests nothing without world data", () => {
-    expect(ids(context())).toEqual([]);
+  it("says nothing about a travelling vendor without world data", () => {
+    expect(ids(context())).not.toContain("vendors:baro");
+    expect(ids(context())).not.toContain("vendors:varzia");
+    expect(ids(context())).not.toContain("vendors:darvo");
   });
 
   it("says nothing about a vendor who has not arrived", () => {
@@ -77,7 +82,8 @@ describe("vendorsProvider", () => {
         expiry: new Date(NOW + 96 * HOUR).toISOString(),
       },
     } as unknown as WorldState;
-    expect(ids(context({ world }))).toEqual([]);
+    expect(ids(context({ world }))).not.toContain("vendors:baro");
+    expect(ids(context({ world }))).not.toContain("vendors:varzia");
   });
 
   it("suggests Baro while he is in the relay", () => {
@@ -128,7 +134,7 @@ describe("vendorsProvider", () => {
 
   it("hides a vendor rated never and keeps one rated low, last", () => {
     const world = baroWorld(40 * HOUR);
-    expect(ids(context({ world, prefs: prefs({ baro: "never" }) }))).toEqual([]);
+    expect(ids(context({ world, prefs: prefs({ baro: "never" }) }))).not.toContain("vendors:baro");
     const low = draft(context({ world, prefs: prefs({ baro: "low" }) }), "vendors:baro");
     expect(low?.deprioritized).toBe(true);
   });
@@ -165,6 +171,52 @@ describe("vendorsProvider", () => {
     expect(darvo?.signals.urgency).toBeGreaterThan(0);
   });
 
+  it("keeps the real manifest and offers no curated stand-in for it", () => {
+    const baro = draft(context({ world: baroWorld(40 * HOUR) }), "vendors:baro");
+    expect(baro?.details?.pool).toEqual(["Primed Continuity", "Primed Flow"]);
+    expect(baro?.reward).toBeUndefined();
+  });
+
+  it("suggests a vendor world state says nothing about", () => {
+    const palladino = draft(context(), "vendors:palladino");
+    expect(palladino?.category).toBe("vendor");
+    expect(palladino?.details?.pool).toBeUndefined();
+    expect(palladino?.details?.expiry).toBe("2026-09-07T00:00:00.000Z");
+  });
+
+  it("puts the most valuable curated offering on the card", () => {
+    const palladino = draft(context(), "vendors:palladino");
+    expect(palladino?.reward?.name).toBe(vendorOffers("palladino")[0].name);
+    const coda = draft(context(), "vendors:codaWeapons");
+    expect(coda?.reward).toEqual({ name: "Coda Pox", uniqueName: expect.any(String) });
+  });
+
+  it("counts down a four-day vendor to its own rotation", () => {
+    const coda = draft(context(), "vendors:codaWeapons");
+    expect(coda?.details?.expiry).toBe("2026-09-09T00:00:00.000Z");
+    const later = draft(context({ nowMs: NOW + 3 * 24 * HOUR }), "vendors:codaWeapons");
+    expect(later?.signals.urgency).toBeGreaterThan(coda?.signals.urgency ?? 0);
+  });
+
+  it("leaves a vendor the curated table never named exactly as it was", () => {
+    expect(vendorOffers("darvo")).toEqual([]);
+    expect(vendorOffers("nobody")).toEqual([]);
+    const world = {
+      dailyDeals: [{ item: "Rubico Prime", expiry: new Date(NOW + 6 * HOUR).toISOString() }],
+    } as unknown as WorldState;
+    const darvo = draft(context({ world }), "vendors:darvo");
+    expect(darvo?.details?.pool).toEqual(["Rubico Prime"]);
+    expect(darvo?.reward).toBeUndefined();
+  });
+
+  it("hides a curated vendor rated never and keeps one rated low, last", () => {
+    expect(ids(context({ prefs: prefs({ palladino: "never" }) }))).not.toContain(
+      "vendors:palladino",
+    );
+    const low = draft(context({ prefs: prefs({ palladino: "low" }) }), "vendors:palladino");
+    expect(low?.deprioritized).toBe(true);
+  });
+
   it("says nothing about a deal that sold out or expired", () => {
     const soldOut = {
       dailyDeals: [
@@ -176,11 +228,31 @@ describe("vendorsProvider", () => {
         },
       ],
     } as unknown as WorldState;
-    expect(ids(context({ world: soldOut }))).toEqual([]);
+    expect(ids(context({ world: soldOut }))).not.toContain("vendors:darvo");
 
     const expired = {
       dailyDeals: [{ item: "Rubico Prime", expiry: new Date(NOW - HOUR).toISOString() }],
     } as unknown as WorldState;
-    expect(ids(context({ world: expired }))).toEqual([]);
+    expect(ids(context({ world: expired }))).not.toContain("vendors:darvo");
+  });
+
+  it("counts what the player owns and has built of a curated offering", () => {
+    const CLEM_BP = "/Lotus/Types/Recipes/Components/ClemBallBlueprint";
+    const CLEM = "/Lotus/Types/Restoratives/Consumable/ClemBall";
+    const itemDb = {
+      [CLEM_BP]: { name: "Clem Clone Blueprint", buildsProduct: CLEM },
+    } as unknown as Record<string, ItemDbEntry>;
+    const offer = vendorOffers("clem")[0];
+    expect(offer.uniqueName).toBe(CLEM_BP);
+    expect(
+      ownedRewardFor(
+        offer,
+        itemDb,
+        new Map([
+          [CLEM_BP, 3],
+          [CLEM, 2],
+        ]),
+      ),
+    ).toEqual({ owned: 3, built: 2 });
   });
 });

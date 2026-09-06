@@ -7,6 +7,7 @@
   import { overframeUrl } from "../../lib/suggest/overframe.js";
   import { pathKindLabel } from "../../lib/suggest/providers/acquisition.js";
   import { ownedRewardFor, type OwnedReward } from "../../lib/suggest/ownedRewards.js";
+  import { vendorOffers } from "../../lib/suggest/vendorOffers.js";
   import { clockStore } from "../../lib/timers.js";
   import { componentOwnership, itemDb } from "../../stores/data.js";
   import ItemImage from "../ItemImage.svelte";
@@ -18,6 +19,7 @@
     NeedReason,
     PartState,
   } from "../../lib/suggest/acquisition/types.js";
+  import type { VendorOffer } from "../../lib/suggest/vendorOffers.js";
   import type {
     ChoiceState,
     MissionOpinion,
@@ -122,6 +124,10 @@
     return resolveDropArt($itemDb, option.name, option.uniqueName);
   }
 
+  function offerArt(offer: VendorOffer) {
+    return resolveDropArt($itemDb, offer.name, offer.uniqueName);
+  }
+
   function ownedText(owned: OwnedReward): string {
     return owned.built === undefined
       ? $tr("nextUp.optionOwned", { count: String(owned.owned) })
@@ -148,6 +154,9 @@
   const pool = $derived(details?.pool ?? []);
   const missions = $derived(details?.missions ?? []);
   const options = $derived(details?.options ?? []);
+  // The real stock wins wherever world state carries one; the curated table only
+  // names vendors it cannot describe.
+  const offers = $derived(pool.length > 0 ? [] : vendorOffers(suggestion.complete?.taskId ?? ""));
   const acq = $derived(details?.acquisition ?? null);
   const acqParts = $derived(
     acq?.parts.known ? [...(acq.parts.main ? [acq.parts.main] : []), ...acq.parts.components] : [],
@@ -163,6 +172,7 @@
       art ||
       suggestion.reward ||
       pool.length > 0 ||
+      offers.length > 0 ||
       missions.length > 0 ||
       options.length > 0 ||
       expiryDate ||
@@ -345,6 +355,37 @@
       </div>
     {/if}
 
+    {#if offers.length > 0}
+      <div class="mt-3 flex flex-col gap-2 border-t border-border pt-3">
+        <span class={LABEL}>{$tr("nextUp.detailsOffers")}</span>
+        <div class="flex flex-wrap gap-2">
+          {#each offers as offer (offer.name)}
+            {@const art = offerArt(offer)}
+            {@const owned = ownedRewardFor(offer, $itemDb, $componentOwnership)}
+            <div
+              class="flex min-w-0 items-center gap-2 rounded-[var(--radius-md)] border
+                     border-border px-2 py-1"
+            >
+              <span
+                class="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden
+                       rounded-[var(--radius-sm)] bg-black/20"
+              >
+                {#if art}
+                  <ItemImage src={art.imageUrl} alt={offer.name} cls="max-h-10 max-w-10" />
+                {/if}
+              </span>
+              <span class="flex min-w-0 flex-col">
+                <span class="truncate text-sm text-text-primary">{offer.name}</span>
+                {#if owned}
+                  <span class="text-xs tabular-nums text-text-muted">{ownedText(owned)}</span>
+                {/if}
+              </span>
+            </div>
+          {/each}
+        </div>
+      </div>
+    {/if}
+
     {#if options.length > 0}
       <div class="mt-3 flex flex-col gap-3 border-t border-border pt-3">
         <span class={LABEL}>{$tr("nextUp.detailsOptions")}</span>
@@ -401,6 +442,15 @@
               {/each}
             </span>
           </div>
+
+          {#if acq.rank}
+            <div class={ROW}>
+              <span class={LABEL}>{$tr("nextUp.acqRank")}</span>
+              <span class="font-display text-base font-semibold leading-none {gradeClass(acq.rank)}"
+                >{acq.rank}</span
+              >
+            </div>
+          {/if}
 
           {#if acq.difficulty}
             <div class={ROW}>

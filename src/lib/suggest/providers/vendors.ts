@@ -1,8 +1,14 @@
-import { activeWindow } from "../../format.js";
+import { activeWindow, nextDailyResetUtc, nextWeeklyResetUtc } from "../../format.js";
 import type { MessageKey } from "../../i18n.js";
-import { trackerCount, trackerList, trackerPeriodKey } from "../../world/dailies.js";
+import {
+  fourDayResetIso,
+  trackerCount,
+  trackerList,
+  trackerPeriodKey,
+} from "../../world/dailies.js";
 import { trackerExpiries, trackerLive } from "../../world/dailiesLive.js";
 import { urgencyFromExpiry } from "../score.js";
+import { vendorOffers } from "../vendorOffers.js";
 import type {
   SuggestionContext,
   SuggestionDraft,
@@ -10,15 +16,56 @@ import type {
 } from "../../../types/suggest.js";
 import type { VaultTrader, WorldState } from "../../../types/world.js";
 
-type VendorId = "baro" | "varzia" | "darvo";
+type VendorId =
+  | "baro"
+  | "varzia"
+  | "darvo"
+  | "palladino"
+  | "acrithis"
+  | "bird3"
+  | "yonta"
+  | "tenetMelee"
+  | "codaWeapons";
 
-const VENDOR_IDS: readonly string[] = ["baro", "varzia", "darvo"];
+const VENDOR_IDS: readonly string[] = [
+  "baro",
+  "varzia",
+  "darvo",
+  "palladino",
+  "acrithis",
+  "bird3",
+  "yonta",
+  "tenetMelee",
+  "codaWeapons",
+];
 
-/** Baro's stop is the rarest of the three; Darvo's deal comes round every day. */
-const VALUE: Record<VendorId, number> = { baro: 0.7, varzia: 0.55, darvo: 0.35 };
+/** Baro's stop is the rarest of the three travellers; Darvo's deal comes round
+ *  every day. The standing vendors are worth a trip once their rotation turns. */
+const VALUE: Record<VendorId, number> = {
+  baro: 0.7,
+  varzia: 0.55,
+  darvo: 0.35,
+  palladino: 0.5,
+  acrithis: 0.5,
+  bird3: 0.55,
+  yonta: 0.4,
+  tenetMelee: 0.45,
+  codaWeapons: 0.45,
+};
 
-/** Ducats and Aya are farmed; Darvo's discount is still platinum out of pocket. */
-const EFFORT: Record<VendorId, number> = { baro: 0.2, varzia: 0.2, darvo: 0.3 };
+/** Ducats and Aya are farmed; Darvo's discount is still platinum out of pocket.
+ *  The rest are priced in currencies that take a run of their own to earn. */
+const EFFORT: Record<VendorId, number> = {
+  baro: 0.2,
+  varzia: 0.2,
+  darvo: 0.3,
+  palladino: 0.5,
+  acrithis: 0.5,
+  bird3: 0.4,
+  yonta: 0.5,
+  tenetMelee: 0.7,
+  codaWeapons: 0.7,
+};
 
 /** The details view lays the stock out as one wrapping line. */
 const STOCK_LIMIT = 12;
@@ -51,10 +98,25 @@ function darvoPresence(deal: DailyDeal | undefined, nowMs: number): Presence | n
   return { expiry: deal.expiry ?? null, stock: [deal.item] };
 }
 
-function presenceOf(id: VendorId, world: WorldState | null, nowMs: number): Presence | null {
+/** A vendor world state carries no manifest for is simply always there, so the
+ *  window that matters is the reset that rerolls what they are holding. */
+function curatedPresence(period: string, now: Date): Presence {
+  if (period === "daily") return { expiry: nextDailyResetUtc(now).toISOString(), stock: [] };
+  if (period === "weekly") return { expiry: nextWeeklyResetUtc(now).toISOString(), stock: [] };
+  return { expiry: fourDayResetIso(period, now), stock: [] };
+}
+
+function presenceOf(
+  id: VendorId,
+  period: string,
+  world: WorldState | null,
+  now: Date,
+  nowMs: number,
+): Presence | null {
   if (id === "baro") return traderPresence(world?.voidTrader, nowMs);
   if (id === "varzia") return traderPresence(world?.vaultTrader, nowMs);
-  return darvoPresence(world?.dailyDeals?.[0], nowMs);
+  if (id === "darvo") return darvoPresence(world?.dailyDeals?.[0], nowMs);
+  return curatedPresence(period, now);
 }
 
 export const vendorsProvider: SuggestionProvider = {
@@ -72,7 +134,7 @@ export const vendorsProvider: SuggestionProvider = {
       const activity = prefs.activities[task.id] ?? "normal";
       if (activity === "never") continue;
 
-      const here = presenceOf(task.id as VendorId, world, nowMs);
+      const here = presenceOf(task.id as VendorId, task.period, world, now, nowMs);
       if (!here) continue;
 
       const periodKey = trackerPeriodKey(task.period, now, expiries);
@@ -80,12 +142,14 @@ export const vendorsProvider: SuggestionProvider = {
       if (done >= task.target) continue;
 
       const live = trackerLive(task.id, world, t, nowMs);
+      const best = vendorOffers(task.id)[0];
 
       drafts.push({
         id: `vendors:${task.id}`,
         category: "vendor",
         title: task.label ?? t(`dailies.task.${task.id}` as MessageKey),
         why: live.detail ?? t("nextUp.whyVendorHere"),
+        reward: best ? { name: best.name, uniqueName: best.uniqueName } : undefined,
         signals: {
           value: VALUE[task.id as VendorId],
           effort: EFFORT[task.id as VendorId],

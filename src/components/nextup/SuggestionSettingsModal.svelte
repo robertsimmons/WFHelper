@@ -15,6 +15,11 @@
     type RewardOverride,
   } from "../../lib/suggest/preferences.js";
   import { compactCount, ownedRewardByName } from "../../lib/suggest/ownedRewards.js";
+  import {
+    MASTERY_ACTIVITY,
+    MASTERY_FORMA_FILTER,
+    MASTERY_MODE_FILTER,
+  } from "../../lib/suggest/providers/mastery.js";
   import { BUILTIN_TASKS, trackerGroup } from "../../lib/world/dailies.js";
   import { componentOwnership, itemDb } from "../../stores/data.js";
   import {
@@ -35,10 +40,11 @@
 
   const { onClose }: Props = $props();
 
-  type Tab = "activities" | "rewards" | "missions";
+  type Tab = "activities" | "goals" | "rewards" | "missions";
 
   const TABS: ReadonlyArray<{ id: Tab; label: MessageKey }> = [
     { id: "activities", label: "nextUp.settingsActivities" },
+    { id: "goals", label: "nextUp.settingsGoals" },
     { id: "rewards", label: "nextUp.settingsRewards" },
     { id: "missions", label: "nextUp.settingsMissionTypes" },
   ];
@@ -47,6 +53,16 @@
     { value: "never", label: "nextUp.settingsNever" },
     { value: "low", label: "nextUp.settingsLow" },
     { value: "normal", label: "nextUp.settingsNormal" },
+  ];
+
+  const FILTER_OPTIONS: ReadonlyArray<{ value: ActivityPref; label: MessageKey }> = [
+    { value: "never", label: "nextUp.settingsHide" },
+    { value: "normal", label: "nextUp.settingsShow" },
+  ];
+
+  const MASTERY_FILTERS: ReadonlyArray<{ id: string; label: MessageKey }> = [
+    { id: MASTERY_FORMA_FILTER, label: "nextUp.settingsMasteryForma" },
+    { id: MASTERY_MODE_FILTER, label: "nextUp.settingsMasteryMode" },
   ];
 
   const OPINION_OPTIONS: ReadonlyArray<{ value: MissionOpinion | null; label: MessageKey }> = [
@@ -188,6 +204,30 @@
   }
 </script>
 
+{#snippet prefRow(
+  label: string,
+  id: string,
+  options: ReadonlyArray<{ value: ActivityPref; label: MessageKey }>,
+)}
+  <div
+    class="flex items-center justify-between gap-3 rounded-[var(--radius-md)] px-1.5 py-1
+           hover:bg-bg-hover"
+  >
+    <span class="min-w-0 truncate text-sm text-text-secondary">{label}</span>
+    <div class="flex shrink-0 gap-1">
+      {#each options as option (option.value)}
+        <ThemedButton
+          size="compact"
+          active={(prefs.activities[id] ?? "normal") === option.value}
+          onClick={() => setActivityPref(id, option.value)}
+        >
+          {$tr(option.label)}
+        </ThemedButton>
+      {/each}
+    </div>
+  </div>
+{/snippet}
+
 {#snippet groupHeading(label: string)}
   <h4
     class="m-0 mb-1 mt-3 text-[0.7rem] font-semibold uppercase tracking-[0.08em] text-text-muted
@@ -223,23 +263,7 @@
         {#each ACTIVITY_GROUPS as group (group.title)}
           {@render groupHeading($tr(group.title))}
           {#each group.ids as id (id)}
-            <div
-              class="flex items-center justify-between gap-3 rounded-[var(--radius-md)] px-1.5 py-1
-                     hover:bg-bg-hover"
-            >
-              <span class="min-w-0 truncate text-sm text-text-secondary">{activityLabel(id)}</span>
-              <div class="flex shrink-0 gap-1">
-                {#each ACTIVITY_OPTIONS as option (option.value)}
-                  <ThemedButton
-                    size="compact"
-                    active={(prefs.activities[id] ?? "normal") === option.value}
-                    onClick={() => setActivityPref(id, option.value)}
-                  >
-                    {$tr(option.label)}
-                  </ThemedButton>
-                {/each}
-              </div>
-            </div>
+            {@render prefRow(activityLabel(id), id, ACTIVITY_OPTIONS)}
           {/each}
           {#if group.title === "dailies.groupNightwave"}
             <div
@@ -262,6 +286,13 @@
               </div>
             </div>
           {/if}
+        {/each}
+      {:else if tab === "goals"}
+        {@render groupHeading($tr("nextUp.sectionMastery"))}
+        <p class="m-0 mb-2 text-xs text-text-secondary">{$tr("nextUp.settingsMasteryHelp")}</p>
+        {@render prefRow($tr("nextUp.settingsMastery"), MASTERY_ACTIVITY, ACTIVITY_OPTIONS)}
+        {#each MASTERY_FILTERS as row (row.id)}
+          {@render prefRow($tr(row.label), row.id, FILTER_OPTIONS)}
         {/each}
       {:else if tab === "rewards"}
         <div class="mb-2 flex flex-wrap items-center gap-2">

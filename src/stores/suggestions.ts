@@ -8,6 +8,7 @@ import {
 } from "../lib/suggest/dismissals.js";
 import { buildFeed, collectSuggestions, type SuggestionFeed } from "../lib/suggest/engine.js";
 import { dailiesProvider } from "../lib/suggest/providers/dailies.js";
+import { masteryProvider } from "../lib/suggest/providers/mastery.js";
 import { vendorsProvider } from "../lib/suggest/providers/vendors.js";
 import { tr } from "../lib/i18n.js";
 import { readStorage, writeStorage } from "../lib/persistence.js";
@@ -27,7 +28,11 @@ import type {
 
 const STORAGE_KEY = "next-up-dismissals";
 const FILTER_KEY = "next-up-filters";
-const PROVIDERS: readonly SuggestionProvider[] = [dailiesProvider, vendorsProvider];
+const PROVIDERS: readonly SuggestionProvider[] = [
+  dailiesProvider,
+  vendorsProvider,
+  masteryProvider,
+];
 /** Urgency is a slope, not a countdown; the cards run their own second timer. */
 const CLOCK_MS = 30_000;
 

@@ -71,14 +71,39 @@ export function itemDb(): Record<string, ItemDbEntry> {
 
 interface InventoryShape {
   suits?: string[];
+  longGuns?: string[];
+  pistols?: string[];
+  melee?: string[];
+  spaceGuns?: string[];
+  sentinelWeapons?: string[];
+  /** Owned rifles carrying the installed Incarnon Genesis feature bit. */
+  incarnon?: string[];
   recipes?: Record<string, number>;
   misc?: Record<string, number>;
   subsumed?: string[];
 }
 
+const INCARNON_FEATURE = 512;
+
+function gear(itemTypes: string[] | undefined): Array<{ ItemType: string; XP: number }> {
+  return (itemTypes ?? []).map((ItemType) => ({ ItemType, XP: 1_500_000 }));
+}
+
 export function inventory(shape: InventoryShape = {}): RawInventoryData {
   return {
-    Suits: (shape.suits ?? []).map((ItemType) => ({ ItemType, XP: 1_500_000 })),
+    Suits: gear(shape.suits),
+    LongGuns: [
+      ...gear(shape.longGuns),
+      ...(shape.incarnon ?? []).map((ItemType) => ({
+        ItemType,
+        XP: 1_500_000,
+        Features: INCARNON_FEATURE,
+      })),
+    ],
+    Pistols: gear(shape.pistols),
+    Melee: gear(shape.melee),
+    SpaceGuns: gear(shape.spaceGuns),
+    SentinelWeapons: gear(shape.sentinelWeapons),
     Recipes: Object.entries(shape.recipes ?? {}).map(([ItemType, ItemCount]) => ({
       ItemType,
       ItemCount,
@@ -120,5 +145,134 @@ export function relicDb(): RelicDatabase {
       },
     },
     byUniqueName: { [LITH_M1]: { groupKey: "Lith M1", quality: "intact" } },
+  };
+}
+
+export const BRATON = "/Lotus/Weapons/Tenno/Rifle/BratonRifle";
+export const BRATON_BP = "/Lotus/Types/Recipes/Weapons/BratonBlueprint";
+export const BRATON_BARREL = "/Lotus/Types/Recipes/Weapons/BratonBarrel";
+export const BRATON_RECEIVER = "/Lotus/Types/Recipes/Weapons/BratonReceiver";
+export const BRATON_ADAPTER = "/Lotus/Types/Items/MiscItems/IncarnonAdapters/BratonIncarnonAdapter";
+
+export const BRATONP = "/Lotus/Weapons/Tenno/Rifle/PrimeBratonRifle";
+export const BRATONP_BP = "/Lotus/Types/Recipes/Weapons/BratonPrimeBlueprint";
+export const BRATONP_BARREL = "/Lotus/Types/Recipes/Weapons/BratonPrimeBarrel";
+
+export const AKBOLTO = "/Lotus/Weapons/Tenno/Pistol/AkboltoPistol";
+export const AKBOLTO_BP = "/Lotus/Types/Recipes/Weapons/AkboltoBlueprint";
+
+export const NIKANA = "/Lotus/Weapons/Tenno/Melee/Swords/Nikana";
+export const NIKANA_BP = "/Lotus/Types/Recipes/Weapons/NikanaBlueprint";
+
+export const CORVAS = "/Lotus/Weapons/Tenno/Archwing/Primary/CorvasCannon";
+export const CORVAS_BP = "/Lotus/Types/Recipes/Weapons/CorvasBlueprint";
+
+export const SWEEPER = "/Lotus/Types/Sentinels/SentinelWeapons/SentinelSweeper";
+export const SWEEPER_BP = "/Lotus/Types/Recipes/Weapons/SweeperBlueprint";
+
+export const KUVA_BRAMMA = "/Lotus/Weapons/Grineer/KuvaLich/Primary/KuvaBrammaBow";
+export const TENET_LIVIA = "/Lotus/Weapons/Corpus/Melee/Sister/TenetLivia";
+export const CODA_MOTOVORE = "/Lotus/Weapons/Infested/Melee/Coda/CodaMotovore";
+
+export const EXALTED_SWORD = "/Lotus/Weapons/Tenno/Melee/PowerSuits/ExcaliburSword";
+export const LITH_B1 = "/Lotus/Types/Game/Projections/T1VoidProjectionBratonPrimeA";
+
+export function weapon(
+  name: string,
+  productCategory: string,
+  blueprint: string,
+  components: string[] = [],
+): ItemDbEntry {
+  return {
+    name,
+    productCategory,
+    masterable: true,
+    imageUrl: `https://example.test/${name.replace(/\s+/g, "")}.png`,
+    wikiaUrl: `https://wiki.test/${name.replace(/\s+/g, "_")}`,
+    ...(/\sPrime$/.test(name) ? { isPrime: true } : {}),
+    recipe: {
+      buildPrice: 15_000,
+      buildTime: 43_200,
+      num: 1,
+      blueprintUniqueName: blueprint,
+      ingredients: [
+        ...components.map((uniqueName) => ({ uniqueName, count: 1 })),
+        { uniqueName: OROKIN_CELL, count: 1 },
+      ],
+    },
+  };
+}
+
+export function unbuilt(name: string, productCategory: string): ItemDbEntry {
+  return {
+    name,
+    productCategory,
+    masterable: true,
+    imageUrl: `https://example.test/${name.replace(/\s+/g, "")}.png`,
+    wikiaUrl: `https://wiki.test/${name.replace(/\s+/g, "_")}`,
+  };
+}
+
+export function weaponDb(): Record<string, ItemDbEntry> {
+  return {
+    [BRATON]: weapon("Braton", "LongGuns", BRATON_BP, [BRATON_BARREL, BRATON_RECEIVER]),
+    [BRATON_BP]: { name: "Braton Blueprint", buildsProduct: BRATON },
+    [BRATON_BARREL]: part("Braton Barrel"),
+    [BRATON_RECEIVER]: part("Braton Receiver"),
+    [BRATON_ADAPTER]: { name: "Braton Incarnon Genesis", category: "Misc" },
+
+    [BRATONP]: weapon("Braton Prime", "LongGuns", BRATONP_BP, [BRATONP_BARREL]),
+    [BRATONP_BP]: { name: "Braton Prime Blueprint", buildsProduct: BRATONP },
+    [BRATONP_BARREL]: part("Braton Prime Barrel"),
+
+    [AKBOLTO]: weapon("Akbolto", "Pistols", AKBOLTO_BP),
+    [AKBOLTO_BP]: { name: "Akbolto Blueprint", buildsProduct: AKBOLTO },
+
+    [NIKANA]: weapon("Nikana", "Melee", NIKANA_BP),
+    [NIKANA_BP]: { name: "Nikana Blueprint", buildsProduct: NIKANA },
+
+    [CORVAS]: weapon("Corvas", "SpaceGuns", CORVAS_BP),
+    [CORVAS_BP]: { name: "Corvas Blueprint", buildsProduct: CORVAS },
+
+    [SWEEPER]: weapon("Sweeper", "SentinelWeapons", SWEEPER_BP),
+    [SWEEPER_BP]: { name: "Sweeper Blueprint", buildsProduct: SWEEPER },
+
+    // A nemesis hands the weapon over whole; there is no recipe to walk.
+    [KUVA_BRAMMA]: unbuilt("Kuva Bramma", "LongGuns"),
+    [TENET_LIVIA]: unbuilt("Tenet Livia", "Melee"),
+    [CODA_MOTOVORE]: unbuilt("Coda Motovore", "Melee"),
+
+    [OROKIN_CELL]: { name: "Orokin Cell", category: "Resource" },
+    [EXALTED_SWORD]: { name: "Excalibur Sword", productCategory: "Melee" },
+  };
+}
+
+export function weaponRelicDb(): RelicDatabase {
+  return {
+    groups: {
+      "Lith B1": {
+        key: "Lith B1",
+        name: "Lith B1",
+        tier: "Lith",
+        code: "B1",
+        imageUrl: null,
+        qualities: {
+          intact: {
+            uniqueName: LITH_B1,
+            rewards: [
+              {
+                name: "Braton Prime Barrel",
+                uniqueName: BRATONP_BARREL,
+                rarity: "common",
+                chance: 25.33,
+                urlName: null,
+                ducats: 15,
+              },
+            ],
+          },
+        },
+      },
+    },
+    byUniqueName: { [LITH_B1]: { groupKey: "Lith B1", quality: "intact" } },
   };
 }

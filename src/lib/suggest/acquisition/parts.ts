@@ -29,6 +29,9 @@ export interface FrameEntry {
 export function isFrameEntry(uniqueName: string, entry: ItemDbEntry | undefined): boolean {
   if (!entry?.name) return false;
   if (entry.exalted === true || entry.isBuildComponent === true) return false;
+  // Every augment mod lives under its frame's Powersuits path, and there are
+  // more of those than there are frames.
+  if (entry.masterable !== true) return false;
   const product = String(entry.productCategory ?? "");
   if (product) return product === "Suits";
   if (/^warframes?$/i.test(String(entry.category ?? ""))) return true;

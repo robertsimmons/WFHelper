@@ -31,7 +31,11 @@ const PATH_CLASS: Array<[RegExp, WeaponClass]> = [
 
 /** Recipes, store fronts, quest props and cosmetics are never a target. */
 const EXCLUDED_PATH =
-  /\/(?:Recipes|StoreItems|OperatorLoadOuts|QuestVersions|PrototypeVersions|Cosmetics?|Decorations?|NPC|Test|Developers?)\//i;
+  /\/(?:Recipes|StoreItems|OperatorLoadOuts|QuestVersions|PrototypeVersions|Cosmetics?|Decorations?|Enemies|NPC|Test|Developers?)\//i;
+
+/** Mods, stances, skins and bait all sit under the weapon path they belong to,
+ *  and the item DB holds more of them than it holds weapons. */
+const NOT_A_WEAPON_CATEGORY = /^(?:mod|cosmetic|skin|resource|gear|arcane)$/i;
 
 /** Exalted gear is granted by the frame that carries it, so it is not farmed.
  *  It reaches the item DB flagged, typed, or only by its Powersuits path. */
@@ -51,6 +55,8 @@ export interface WeaponEntry {
 
 function excluded(uniqueName: string, entry: ItemDbEntry): boolean {
   if (entry.exalted === true || entry.isBuildComponent === true) return true;
+  if (entry.masterable === false) return true;
+  if (NOT_A_WEAPON_CATEGORY.test(String(entry.category ?? ""))) return true;
   if (entry.productCategory === "SpecialItems") return true;
   if (typeof entry.type === "string" && /exalted/i.test(entry.type)) return true;
   if (EXALTED_PATH.test(uniqueName)) return true;

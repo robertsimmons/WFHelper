@@ -173,6 +173,14 @@ describe("resolveAcquisition", () => {
     expect(targets[0].paths[0].kind).toBe("market");
   });
 
+  it("leaves the augment mods parked under a frame's path out of it", () => {
+    const db = itemDb();
+    db["/Lotus/Powersuits/Trinity/LinkAugmentCard"] = { name: "Abating Link", category: "Mod" };
+    expect(resolveAcquisition(context({ itemDb: db })).map((target) => target.name)).not.toContain(
+      "Abating Link",
+    );
+  });
+
   it("survives an empty item database", () => {
     expect(resolveAcquisition({ itemDb: {}, inventory: null })).toEqual([]);
   });

@@ -25,6 +25,8 @@ function context(overrides: Partial<SuggestionContext> = {}): SuggestionContext 
     inventory: null,
     itemDb: {},
     inventoryModifiedAt: null,
+    mastery: null,
+    relicDb: null,
     tracker: tracker(),
     prefs: prefs(),
     dropPools: {},

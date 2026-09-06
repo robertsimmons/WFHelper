@@ -1,7 +1,8 @@
 import type { MessageKey, Translator } from "../lib/i18n.js";
 import type { TrackerState } from "../lib/world/dailies.js";
 import type { DropRow } from "../../config/shared/dropTypes.js";
-import type { ItemDbEntry, RawInventoryData } from "./inventory.js";
+import type { ItemDbEntry, MasteryData, RawInventoryData } from "./inventory.js";
+import type { RelicDatabase } from "./relics.js";
 import type { WorldState } from "./world.js";
 
 /** Which section a suggestion lands in, and what the filter checkboxes narrow by. */
@@ -162,6 +163,8 @@ export interface SuggestionContext {
   inventory: RawInventoryData | null;
   itemDb: Record<string, ItemDbEntry>;
   inventoryModifiedAt: number | null;
+  mastery: MasteryData | null;
+  relicDb: RelicDatabase | null;
   tracker: TrackerState;
   prefs: SuggestionPreferences;
   /** Drop rows per tracker task id; a missing key means the pool is not loaded. */

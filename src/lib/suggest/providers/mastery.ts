@@ -1,9 +1,6 @@
-import { get } from "svelte/store";
-
 import { itemLabel } from "../../itemLabel.js";
 import { buildMasteryRoadmap, type MasteryRoadmapSourceItem } from "../../masteryRoadmap.js";
 import { clamp01 } from "../score.js";
-import { masteryData } from "../../../stores/mastery.js";
 import type { ParsedItem } from "../../../types/inventory.js";
 import type {
   SuggestionContext,
@@ -93,7 +90,7 @@ export const masteryProvider: SuggestionProvider = {
     const activity = prefs.activities[MASTERY_ACTIVITY] ?? "normal";
     if (activity === "never") return [];
 
-    const owned = (get(masteryData)?.items ?? []).filter((item) => item.currentlyOwned === true);
+    const owned = (ctx.mastery?.items ?? []).filter((item) => item.currentlyOwned === true);
     const roadmap = buildMasteryRoadmap(owned.map(sourceItem));
 
     return roadmap.easy

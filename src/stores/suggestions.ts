@@ -18,6 +18,8 @@ import { setTrackerCount } from "../lib/world/dailies.js";
 import { setTrackerState, trackerState } from "./dailies.js";
 import { inventoryData, inventoryModifiedAt, itemDb } from "./data.js";
 import { dropPools } from "./dropPools.js";
+import { masteryData } from "./mastery.js";
+import { relicDb } from "./relics.js";
 import { suggestionPreferences } from "./suggestionPrefs.js";
 import { worldData } from "./world.js";
 import { SUGGESTION_CATEGORIES } from "../types/suggest.js";
@@ -66,6 +68,8 @@ export const suggestionFeed: Readable<SuggestionFeed> = derived(
     inventoryData,
     inventoryModifiedAt,
     itemDb,
+    masteryData,
+    relicDb,
     trackerState,
     dismissalStore,
     suggestionPreferences,
@@ -78,6 +82,8 @@ export const suggestionFeed: Readable<SuggestionFeed> = derived(
     $inventory,
     $inventoryModifiedAt,
     $itemDb,
+    $mastery,
+    $relicDb,
     $tracker,
     $dismissals,
     $prefs,
@@ -90,6 +96,8 @@ export const suggestionFeed: Readable<SuggestionFeed> = derived(
       inventory: $inventory,
       inventoryModifiedAt: $inventoryModifiedAt,
       itemDb: $itemDb,
+      mastery: $mastery,
+      relicDb: $relicDb,
       tracker: $tracker,
       prefs: $prefs,
       dropPools: $dropPools,

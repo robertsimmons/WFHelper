@@ -1,12 +1,9 @@
-import { get } from "svelte/store";
-
 import { QUALITY_MODES } from "../../relic/relicConstants.js";
 import { parseOwnedRelics } from "../../relic/relicInventory.js";
 import { computeSquadEV } from "../../relic/relicMath.js";
 import { getCachedPriceState } from "../../wfm/priceCache.js";
 import { missionOpinion } from "../missionTypes.js";
 import { clamp01, urgencyFromExpiry } from "../score.js";
-import { relicDb } from "../../../stores/relics.js";
 import { normalizeDucats } from "../../../../config/shared/numeric.js";
 import { rendererPriceCacheKey } from "../../../../config/shared/wfmCacheKeys.js";
 import type { MessageKey } from "../../i18n.js";
@@ -206,7 +203,7 @@ function candidates(
   goal: RelicGoal,
   fissures: Map<string, FissurePick>,
 ): Candidate[] {
-  const db = get(relicDb);
+  const db = ctx.relicDb;
   if (!db || fissures.size === 0) return [];
   const owned = parseOwnedRelics(ctx.inventory, db);
   const rows: Candidate[] = [];

@@ -78,6 +78,12 @@ function tracker(): TrackerState {
   return { progress: {}, hidden: [], periods: {}, custom: [], seq: 0 };
 }
 
+let database: RelicDatabase | null = null;
+
+function loadDb(): void {
+  database = db();
+}
+
 function context(
   world: WorldState | null,
   activities: Record<string, ActivityPref> = {},
@@ -87,6 +93,8 @@ function context(
     inventory: inventory(),
     itemDb: {},
     inventoryModifiedAt: null,
+    mastery: null,
+    relicDb: database,
     tracker: tracker(),
     prefs: { ...defaultPreferences(), activities },
     dropPools: {},
@@ -99,17 +107,27 @@ function only(world: WorldState | null, activities: Record<string, ActivityPref>
   return relicsProvider.collect(context(world, activities))[0] as SuggestionDraft | undefined;
 }
 
-afterEach(() => relicDb.set(null));
+afterEach(() => {
+  database = null;
+  relicDb.set(null);
+});
 
 describe("relicsProvider", () => {
-  it("says nothing while no fissure matches a relic the player holds", () => {
+  it("takes its relic database from the context, not the store behind it", () => {
     relicDb.set(db());
+    expect(relicsProvider.collect(context(fissures("Capture")))).toEqual([]);
+    loadDb();
+    expect(only(fissures("Capture"))?.id).toBe("relics:Meso F3");
+  });
+
+  it("says nothing while no fissure matches a relic the player holds", () => {
+    loadDb();
     expect(relicsProvider.collect(context(fissures("Capture", "Axi")))).toEqual([]);
     expect(relicsProvider.collect(context(null))).toEqual([]);
   });
 
   it("runs the best grade held when the goal is platinum", () => {
-    relicDb.set(db());
+    loadDb();
     const draft = only(fissures("Capture"));
     expect(draft?.id).toBe("relics:Meso F3");
     expect(draft?.why).toContain("relics.quality.radiant");
@@ -117,14 +135,14 @@ describe("relicsProvider", () => {
   });
 
   it("runs the cheapest grade held when the goal is ducats", () => {
-    relicDb.set(db());
+    loadDb();
     const draft = only(fissures("Capture"), { [relicGoalKey("platinum")]: "never" });
     expect(draft?.why).toContain("relics.quality.intact");
     expect(draft?.fingerprint).toContain("ducats|intact");
   });
 
   it("values a run off the price cache when the goal is platinum", () => {
-    relicDb.set(db());
+    loadDb();
     setCachedPrice("wukong_prime_blueprint", 100);
     setCachedPrice("mag_prime_chassis", 5);
     const priced = only(fissures("Capture"));
@@ -132,7 +150,7 @@ describe("relicsProvider", () => {
   });
 
   it("prefers a fissure the player likes and charges for one they do not", () => {
-    relicDb.set(db());
+    loadDb();
     const world = {
       fissures: [
         { tier: "Meso", missionType: "Interception", node: "Ophelia (Uranus)", expiry: SOON },
@@ -147,7 +165,7 @@ describe("relicsProvider", () => {
   });
 
   it("keeps a turned-down domain below everything else rather than dropping it", () => {
-    relicDb.set(db());
+    loadDb();
     expect(only(fissures("Capture"), { [RELICS_ACTIVITY]: "low" })?.deprioritized).toBe(true);
     expect(
       relicsProvider.collect(context(fissures("Capture"), { [RELICS_ACTIVITY]: "never" })),

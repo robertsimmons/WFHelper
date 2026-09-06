@@ -20,12 +20,16 @@ function tracker(): TrackerState {
   return { progress: {}, hidden: [], periods: {}, custom: [], seq: 0 };
 }
 
+let mastery: MasteryData | null = null;
+
 function context(activities: Record<string, ActivityPref> = {}): SuggestionContext {
   return {
     world: null,
     inventory: null,
     itemDb: {},
     inventoryModifiedAt: null,
+    mastery,
+    relicDb: null,
     tracker: tracker(),
     prefs: { ...defaultPreferences(), activities },
     dropPools: {},
@@ -60,7 +64,7 @@ function item(overrides: Partial<ParsedItem>): ParsedItem {
 }
 
 function loadMastery(items: ParsedItem[]): void {
-  masteryData.set({
+  mastery = {
     items,
     stats: {
       total: items.length,
@@ -69,16 +73,26 @@ function loadMastery(items: ParsedItem[]): void {
       missing: 0,
       byCategory: {},
     },
-  } as MasteryData);
+  } as MasteryData;
 }
 
 function ids(activities: Record<string, ActivityPref> = {}): string[] {
   return masteryProvider.collect(context(activities)).map((draft) => draft.id);
 }
 
-afterEach(() => masteryData.set(null));
+afterEach(() => {
+  mastery = null;
+  masteryData.set(null);
+});
 
 describe("masteryProvider", () => {
+  it("takes its gear from the context, not the store behind it", () => {
+    masteryData.set({ items: [item({})], stats: {} } as unknown as MasteryData);
+    expect(ids()).toEqual([]);
+    loadMastery([item({})]);
+    expect(ids()).toEqual(["mastery:/Braton"]);
+  });
+
   it("suggests nothing when there is nothing left to level", () => {
     loadMastery([
       item({ name: "Maxed", uniqueName: "/Maxed", status: "mastered", rank: 30 }),

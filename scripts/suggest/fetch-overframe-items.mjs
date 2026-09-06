@@ -135,7 +135,7 @@ if (unvisited > MAX_UNVISITED) {
   process.exit(1);
 }
 
-writeJsonAtomic(ITEMS_FILE, { items });
-writeJsonAtomic(MODS_FILE, popularMods);
+await writeJsonAtomic(ITEMS_FILE, { items });
+await writeJsonAtomic(MODS_FILE, popularMods);
 console.log(`wrote ${ITEMS_FILE} with ${Object.keys(items).length} items`);
 console.log(`wrote ${MODS_FILE} with ${withMods} mod lists`);

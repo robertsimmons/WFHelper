@@ -27,7 +27,7 @@ if (named < MIN_NAMED) {
   process.exit(1);
 }
 
-writeJsonAtomic(OUT_FILE, rankings);
+await writeJsonAtomic(OUT_FILE, rankings);
 const perCategory = new Map();
 for (const entry of entries) {
   perCategory.set(entry.category, (perCategory.get(entry.category) ?? 0) + 1);

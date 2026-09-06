@@ -2,16 +2,20 @@ import { describe, expect, it } from "vitest";
 
 import {
   ACTIVITY_PREFS,
+  DEFAULT_OPTIONS,
   MISSION_TYPE_NAMES,
   UNRATED,
   defaultPreferences,
   mergePreferences,
+  migrateLegacyOptions,
+  parseOptions,
   parseOverrides,
   type SuggestionOverrides,
 } from "../../../../src/lib/suggest/preferences.js";
+import type { ActivityPref } from "../../../../src/types/suggest.js";
 
 function overrides(partial: Partial<SuggestionOverrides> = {}): SuggestionOverrides {
-  return { rewards: {}, missionTypes: {}, activities: {}, ...partial };
+  return { rewards: {}, missionTypes: {}, activities: {}, options: {}, ...partial };
 }
 
 describe("defaultPreferences", () => {
@@ -84,5 +88,54 @@ describe("MISSION_TYPE_NAMES", () => {
   it("lists one row per type, both spellings behind it", () => {
     expect(MISSION_TYPE_NAMES).toContain("Exterminate");
     expect(MISSION_TYPE_NAMES).not.toContain("Extermination");
+  });
+});
+
+describe("parseOptions", () => {
+  it("keeps only fields spelled with the type they carry", () => {
+    const raw = JSON.stringify({ relicGoal: "ducats", masteryForma: false, masteryOwnMode: "no" });
+    expect(parseOptions(raw)).toEqual({ relicGoal: "ducats", masteryForma: false });
+  });
+
+  it("falls back to nothing for a goal it does not ship", () => {
+    expect(parseOptions(JSON.stringify({ relicGoal: "endo" }))).toEqual({});
+    expect(parseOptions(null)).toEqual({});
+    expect(parseOptions("[1,2]")).toEqual({});
+  });
+});
+
+describe("migrateLegacyOptions", () => {
+  function legacy(activities: Record<string, ActivityPref>) {
+    return migrateLegacyOptions(activities, {});
+  }
+
+  it("lifts a stored synthetic key onto the typed option", () => {
+    expect(legacy({ "mastery:forma": "never" }).options).toEqual({ masteryForma: false });
+    expect(legacy({ "mastery:mode": "never" }).options).toEqual({ masteryOwnMode: false });
+  });
+
+  it("reads the relic goal off the key that was not turned off", () => {
+    expect(legacy({ "relics:goal:platinum": "never" }).options).toEqual({ relicGoal: "ducats" });
+    expect(legacy({ "relics:goal:ducats": "never" }).options).toEqual({ relicGoal: "platinum" });
+  });
+
+  it("clears the synthetic keys and leaves real activities alone", () => {
+    const { activities } = legacy({
+      "mastery:forma": "never",
+      "relics:goal:platinum": "never",
+      sortie: "low",
+    });
+    expect(activities).toEqual({ sortie: "low" });
+  });
+
+  it("takes nothing from a store that never held one", () => {
+    const { options } = legacy({ sortie: "low" });
+    expect(options).toEqual({});
+    expect(mergePreferences(defaultPreferences(), overrides()).options).toEqual(DEFAULT_OPTIONS);
+  });
+
+  it("lets a value already stored under the typed shape win", () => {
+    const migrated = migrateLegacyOptions({ "mastery:forma": "never" }, { masteryForma: true });
+    expect(migrated.options).toEqual({ masteryForma: true });
   });
 });

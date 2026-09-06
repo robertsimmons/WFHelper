@@ -12,10 +12,6 @@ import type {
 /** The whole domain answers to one activity setting, as Nightwave's acts do. */
 export const MASTERY_ACTIVITY = "mastery";
 
-/** Filters, not activities: "never" hides that class of gear, "normal" keeps it. */
-export const MASTERY_FORMA_FILTER = "mastery:forma";
-export const MASTERY_MODE_FILTER = "mastery:mode";
-
 /** Past this rank, gear with a higher cap only climbs on Forma. */
 const FORMA_GATE_RANK = 30;
 
@@ -58,10 +54,8 @@ function needsFormaDump(item: Levelable): boolean {
 }
 
 function keeps(prefs: SuggestionPreferences, item: Levelable): boolean {
-  if (prefs.activities[MASTERY_FORMA_FILTER] === "never" && needsFormaDump(item)) return false;
-  if (prefs.activities[MASTERY_MODE_FILTER] === "never" && OWN_MODE_CATEGORIES.has(item.category)) {
-    return false;
-  }
+  if (!prefs.options.masteryForma && needsFormaDump(item)) return false;
+  if (!prefs.options.masteryOwnMode && OWN_MODE_CATEGORIES.has(item.category)) return false;
   return true;
 }
 

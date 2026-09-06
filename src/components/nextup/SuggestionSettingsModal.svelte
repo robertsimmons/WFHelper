@@ -15,17 +15,8 @@
     type RewardOverride,
   } from "../../lib/suggest/preferences.js";
   import { compactCount, ownedRewardByName } from "../../lib/suggest/ownedRewards.js";
-  import {
-    MASTERY_ACTIVITY,
-    MASTERY_FORMA_FILTER,
-    MASTERY_MODE_FILTER,
-  } from "../../lib/suggest/providers/mastery.js";
-  import {
-    RELICS_ACTIVITY,
-    RELIC_GOALS,
-    relicGoalKey,
-    type RelicGoal,
-  } from "../../lib/suggest/providers/relics.js";
+  import { MASTERY_ACTIVITY } from "../../lib/suggest/providers/mastery.js";
+  import { RELICS_ACTIVITY } from "../../lib/suggest/providers/relics.js";
   import { BUILTIN_TASKS, trackerGroup } from "../../lib/world/dailies.js";
   import { componentOwnership, itemDb } from "../../stores/data.js";
   import {
@@ -35,10 +26,18 @@
     setNightwaveArt,
     setMissionOpinion,
     setRewardTier,
+    setSuggestionOption,
     suggestionOverrides,
     suggestionPreferences,
   } from "../../stores/suggestionPrefs.js";
-  import type { ActivityPref, MissionOpinion, RewardTier } from "../../types/suggest.js";
+  import { RELIC_GOALS } from "../../types/suggest.js";
+  import type {
+    ActivityPref,
+    MissionOpinion,
+    RelicGoal,
+    RewardTier,
+    SuggestionOptions,
+  } from "../../types/suggest.js";
 
   interface Props {
     onClose: () => void;
@@ -61,14 +60,18 @@
     { value: "normal", label: "nextUp.settingsNormal" },
   ];
 
-  const FILTER_OPTIONS: ReadonlyArray<{ value: ActivityPref; label: MessageKey }> = [
-    { value: "never", label: "nextUp.settingsHide" },
-    { value: "normal", label: "nextUp.settingsShow" },
+  const FILTER_OPTIONS: ReadonlyArray<{ value: boolean; label: MessageKey }> = [
+    { value: false, label: "nextUp.settingsHide" },
+    { value: true, label: "nextUp.settingsShow" },
   ];
 
-  const MASTERY_FILTERS: ReadonlyArray<{ id: string; label: MessageKey }> = [
-    { id: MASTERY_FORMA_FILTER, label: "nextUp.settingsMasteryForma" },
-    { id: MASTERY_MODE_FILTER, label: "nextUp.settingsMasteryMode" },
+  type BooleanOption = {
+    [K in keyof SuggestionOptions]: SuggestionOptions[K] extends boolean ? K : never;
+  }[keyof SuggestionOptions];
+
+  const MASTERY_FILTERS: ReadonlyArray<{ key: BooleanOption; label: MessageKey }> = [
+    { key: "masteryForma", label: "nextUp.settingsMasteryForma" },
+    { key: "masteryOwnMode", label: "nextUp.settingsMasteryMode" },
   ];
 
   const GOAL_LABELS: Record<RelicGoal, MessageKey> = {
@@ -200,17 +203,6 @@
     addName = "";
   }
 
-  const relicGoal = $derived(
-    RELIC_GOALS.find((goal) => prefs.activities[relicGoalKey(goal)] !== "never") ?? RELIC_GOALS[0],
-  );
-
-  /** One goal at a time, so picking one turns the rest off. */
-  function pickGoal(goal: RelicGoal): void {
-    for (const entry of RELIC_GOALS) {
-      setActivityPref(relicGoalKey(entry), entry === goal ? "normal" : "never");
-    }
-  }
-
   function selectTab(next: Tab): void {
     tab = next;
     resetArmed = false;
@@ -260,8 +252,32 @@
     </span>
     <div class="flex shrink-0 gap-1">
       {#each RELIC_GOALS as goal (goal)}
-        <ThemedButton size="compact" active={relicGoal === goal} onClick={() => pickGoal(goal)}>
+        <ThemedButton
+          size="compact"
+          active={prefs.options.relicGoal === goal}
+          onClick={() => setSuggestionOption("relicGoal", goal as RelicGoal)}
+        >
           {$tr(GOAL_LABELS[goal])}
+        </ThemedButton>
+      {/each}
+    </div>
+  </div>
+{/snippet}
+
+{#snippet optionRow(label: string, key: BooleanOption)}
+  <div
+    class="flex items-center justify-between gap-3 rounded-[var(--radius-md)] px-1.5 py-1
+           hover:bg-bg-hover"
+  >
+    <span class="min-w-0 truncate text-sm text-text-secondary">{label}</span>
+    <div class="flex shrink-0 gap-1">
+      {#each FILTER_OPTIONS as option (option.label)}
+        <ThemedButton
+          size="compact"
+          active={prefs.options[key] === option.value}
+          onClick={() => setSuggestionOption(key, option.value)}
+        >
+          {$tr(option.label)}
         </ThemedButton>
       {/each}
     </div>
@@ -334,8 +350,8 @@
         {@render groupHeading($tr("nextUp.sectionMastery"))}
         <p class="m-0 mb-2 text-xs text-text-secondary">{$tr("nextUp.settingsMasteryHelp")}</p>
         {@render prefRow($tr("nextUp.settingsMastery"), MASTERY_ACTIVITY, ACTIVITY_OPTIONS)}
-        {#each MASTERY_FILTERS as row (row.id)}
-          {@render prefRow($tr(row.label), row.id, FILTER_OPTIONS)}
+        {#each MASTERY_FILTERS as row (row.key)}
+          {@render optionRow($tr(row.label), row.key)}
         {/each}
       {:else if tab === "rewards"}
         <div class="mb-2 flex flex-wrap items-center gap-2">

@@ -39,12 +39,26 @@ export type RewardTier = "great" | "good" | "ok" | "low";
 export type MissionOpinion = "good" | "bad";
 export type ActivityPref = "never" | "low" | "normal";
 
+export const RELIC_GOALS = ["platinum", "ducats"] as const;
+export type RelicGoal = (typeof RELIC_GOALS)[number];
+
+/** Settings a provider reads that rate nothing, so they have no place in the
+ *  activity map: one pick and two filters. */
+export interface SuggestionOptions {
+  relicGoal: RelicGoal;
+  /** Whether the mastery shortlist may offer gear that only ranks on Forma. */
+  masteryForma: boolean;
+  /** Whether it may offer gear that only levels in its own game mode. */
+  masteryOwnMode: boolean;
+}
+
 /** Reward and mission keys are normalized names; activity keys are tracker task
  *  ids, plus "nightwave" for the whole act group. */
 export interface SuggestionPreferences {
   rewards: Record<string, RewardTier>;
   missionTypes: Record<string, MissionOpinion>;
   activities: Record<string, ActivityPref>;
+  options: SuggestionOptions;
 }
 
 /** Enough to tick a tracked task off without leaving the tab. */

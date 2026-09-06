@@ -1,11 +1,10 @@
 import { afterEach, describe, expect, it } from "vitest";
 
-import { defaultPreferences } from "../../../../src/lib/suggest/preferences.js";
 import {
-  RELICS_ACTIVITY,
-  relicGoalKey,
-  relicsProvider,
-} from "../../../../src/lib/suggest/providers/relics.js";
+  DEFAULT_OPTIONS,
+  defaultPreferences,
+} from "../../../../src/lib/suggest/preferences.js";
+import { RELICS_ACTIVITY, relicsProvider } from "../../../../src/lib/suggest/providers/relics.js";
 import { setCachedPrice } from "../../../../src/lib/wfm/priceCache.js";
 import { relicDb } from "../../../../src/stores/relics.js";
 import type { Translator } from "../../../../src/lib/i18n.js";
@@ -16,6 +15,7 @@ import type {
   ActivityPref,
   SuggestionContext,
   SuggestionDraft,
+  SuggestionOptions,
 } from "../../../../src/types/suggest.js";
 import type { WorldState } from "../../../../src/types/world.js";
 
@@ -87,6 +87,7 @@ function loadDb(): void {
 function context(
   world: WorldState | null,
   activities: Record<string, ActivityPref> = {},
+  options: Partial<SuggestionOptions> = {},
 ): SuggestionContext {
   return {
     world,
@@ -96,15 +97,21 @@ function context(
     mastery: null,
     relicDb: database,
     tracker: tracker(),
-    prefs: { ...defaultPreferences(), activities },
+    prefs: { ...defaultPreferences(), activities, options: { ...DEFAULT_OPTIONS, ...options } },
     dropPools: {},
     nowMs: NOW,
     t,
   };
 }
 
-function only(world: WorldState | null, activities: Record<string, ActivityPref> = {}) {
-  return relicsProvider.collect(context(world, activities))[0] as SuggestionDraft | undefined;
+function only(
+  world: WorldState | null,
+  activities: Record<string, ActivityPref> = {},
+  options: Partial<SuggestionOptions> = {},
+) {
+  return relicsProvider.collect(context(world, activities, options))[0] as
+    | SuggestionDraft
+    | undefined;
 }
 
 afterEach(() => {
@@ -136,7 +143,7 @@ describe("relicsProvider", () => {
 
   it("runs the cheapest grade held when the goal is ducats", () => {
     loadDb();
-    const draft = only(fissures("Capture"), { [relicGoalKey("platinum")]: "never" });
+    const draft = only(fissures("Capture"), {}, { relicGoal: "ducats" });
     expect(draft?.why).toContain("relics.quality.intact");
     expect(draft?.fingerprint).toContain("ducats|intact");
   });

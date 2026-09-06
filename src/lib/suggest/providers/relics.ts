@@ -9,6 +9,7 @@ import { rendererPriceCacheKey } from "../../../../config/shared/wfmCacheKeys.js
 import type { MessageKey } from "../../i18n.js";
 import type {
   MissionOpinion,
+  RelicGoal,
   SuggestionContext,
   SuggestionDraft,
   SuggestionPreferences,
@@ -24,19 +25,6 @@ import type { WorldState } from "../../../types/world.js";
 
 /** The whole domain answers to one activity setting, as Nightwave's acts do. */
 export const RELICS_ACTIVITY = "relics";
-
-export const RELIC_GOALS = ["platinum", "ducats"] as const;
-export type RelicGoal = (typeof RELIC_GOALS)[number];
-
-export function relicGoalKey(goal: RelicGoal): string {
-  return `relics:goal:${goal}`;
-}
-
-/** One goal at a time: picking one marks the others "never", so the first that
- *  still stands is the pick, and an untouched install chases platinum. */
-function goalOf(prefs: SuggestionPreferences): RelicGoal {
-  return RELIC_GOALS.find((goal) => prefs.activities[relicGoalKey(goal)] !== "never") ?? "platinum";
-}
 
 /** Which grade to reach for first, best held or cheapest held. */
 const REFINEMENT_ORDER: Record<RelicGoal, readonly RelicQuality[]> = {
@@ -232,7 +220,7 @@ export const relicsProvider: SuggestionProvider = {
     const activity = prefs.activities[RELICS_ACTIVITY] ?? "normal";
     if (activity === "never") return [];
 
-    const goal = goalOf(prefs);
+    const goal = prefs.options.relicGoal;
     const fissures = fissuresByTier(prefs, world, nowMs);
 
     return candidates(ctx, goal, fissures).map(({ group, held, fissure, value }) => {

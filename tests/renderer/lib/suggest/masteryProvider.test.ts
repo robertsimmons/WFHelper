@@ -1,16 +1,21 @@
 import { afterEach, describe, expect, it } from "vitest";
 
-import { defaultPreferences } from "../../../../src/lib/suggest/preferences.js";
+import {
+  DEFAULT_OPTIONS,
+  defaultPreferences,
+} from "../../../../src/lib/suggest/preferences.js";
 import {
   MASTERY_ACTIVITY,
-  MASTERY_FORMA_FILTER,
-  MASTERY_MODE_FILTER,
   masteryProvider,
 } from "../../../../src/lib/suggest/providers/mastery.js";
 import { masteryData } from "../../../../src/stores/mastery.js";
 import type { Translator } from "../../../../src/lib/i18n.js";
 import type { MasteryData, ParsedItem } from "../../../../src/types/inventory.js";
-import type { ActivityPref, SuggestionContext } from "../../../../src/types/suggest.js";
+import type {
+  ActivityPref,
+  SuggestionContext,
+  SuggestionOptions,
+} from "../../../../src/types/suggest.js";
 import type { TrackerState } from "../../../../src/lib/world/dailies.js";
 
 const NOW = Date.parse("2026-09-05T12:00:00Z");
@@ -22,7 +27,10 @@ function tracker(): TrackerState {
 
 let mastery: MasteryData | null = null;
 
-function context(activities: Record<string, ActivityPref> = {}): SuggestionContext {
+function context(
+  activities: Record<string, ActivityPref> = {},
+  options: Partial<SuggestionOptions> = {},
+): SuggestionContext {
   return {
     world: null,
     inventory: null,
@@ -31,7 +39,7 @@ function context(activities: Record<string, ActivityPref> = {}): SuggestionConte
     mastery,
     relicDb: null,
     tracker: tracker(),
-    prefs: { ...defaultPreferences(), activities },
+    prefs: { ...defaultPreferences(), activities, options: { ...DEFAULT_OPTIONS, ...options } },
     dropPools: {},
     nowMs: NOW,
     t,
@@ -76,8 +84,11 @@ function loadMastery(items: ParsedItem[]): void {
   } as MasteryData;
 }
 
-function ids(activities: Record<string, ActivityPref> = {}): string[] {
-  return masteryProvider.collect(context(activities)).map((draft) => draft.id);
+function ids(
+  activities: Record<string, ActivityPref> = {},
+  options: Partial<SuggestionOptions> = {},
+): string[] {
+  return masteryProvider.collect(context(activities, options)).map((draft) => draft.id);
 }
 
 afterEach(() => {
@@ -121,12 +132,12 @@ describe("masteryProvider", () => {
       item({ name: "Braton", uniqueName: "/Braton", rank: 20 }),
     ]);
     expect(ids()).toContain("mastery:/Bramma");
-    expect(ids({ [MASTERY_FORMA_FILTER]: "never" })).toEqual(["mastery:/Braton"]);
+    expect(ids({}, { masteryForma: false })).toEqual(["mastery:/Braton"]);
   });
 
   it("counts a lich weapon short of rank 30 as an ordinary grind", () => {
     loadMastery([item({ name: "Kuva Bramma", uniqueName: "/Bramma", rank: 12, maxRank: 40 })]);
-    expect(ids({ [MASTERY_FORMA_FILTER]: "never" })).toEqual(["mastery:/Bramma"]);
+    expect(ids({}, { masteryForma: false })).toEqual(["mastery:/Bramma"]);
   });
 
   it("hides gear that only levels in its own mode when asked", () => {
@@ -134,7 +145,7 @@ describe("masteryProvider", () => {
       item({ name: "Odonata", uniqueName: "/Odonata", category: "Archwing" }),
       item({ name: "Braton", uniqueName: "/Braton" }),
     ]);
-    expect(ids({ [MASTERY_MODE_FILTER]: "never" })).toEqual(["mastery:/Braton"]);
+    expect(ids({}, { masteryOwnMode: false })).toEqual(["mastery:/Braton"]);
   });
 
   it("carries the rank as progress and fingerprints on it", () => {

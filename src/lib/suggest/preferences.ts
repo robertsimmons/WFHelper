@@ -2,10 +2,13 @@ import missionData from "../../data/suggest/missionTypes.json";
 import rewardData from "../../data/suggest/rewardValues.json";
 import { normalizeType } from "./missionTypes.js";
 import { normalizeName } from "./rewards.js";
+import { RELIC_GOALS } from "../../types/suggest.js";
 import type {
   ActivityPref,
   MissionOpinion,
+  RelicGoal,
   RewardTier,
+  SuggestionOptions,
   SuggestionPreferences,
 } from "../../types/suggest.js";
 
@@ -31,7 +34,20 @@ export interface SuggestionOverrides {
   rewards: Record<string, RewardOverride>;
   missionTypes: Record<string, MissionOverride>;
   activities: Record<string, ActivityPref>;
+  options: Partial<SuggestionOptions>;
 }
+
+export const DEFAULT_OPTIONS: SuggestionOptions = {
+  relicGoal: "platinum",
+  masteryForma: true,
+  masteryOwnMode: true,
+};
+
+/** Synthetic activity ids these settings were stored under before they had a
+ *  typed home; read once, on load, and then dropped. */
+const LEGACY_FORMA_KEY = "mastery:forma";
+const LEGACY_MODE_KEY = "mastery:mode";
+const legacyGoalKey = (goal: RelicGoal): string => `relics:goal:${goal}`;
 
 /** The whole settings vocabulary for mission types, curated and unrated alike. */
 export const MISSION_TYPE_NAMES: readonly string[] = [...missionData.all].sort((a, b) =>
@@ -60,7 +76,12 @@ export const REWARD_DISPLAY_NAMES: Readonly<Record<string, string>> = Object.fro
 );
 
 export function defaultPreferences(): SuggestionPreferences {
-  return { rewards: shippedRewards(), missionTypes: shippedMissionTypes(), activities: {} };
+  return {
+    rewards: shippedRewards(),
+    missionTypes: shippedMissionTypes(),
+    activities: {},
+    options: { ...DEFAULT_OPTIONS },
+  };
 }
 
 function mergeRatings<T extends string>(
@@ -83,6 +104,7 @@ export function mergePreferences(
     rewards: mergeRatings(defaults.rewards, overrides.rewards),
     missionTypes: mergeRatings(defaults.missionTypes, overrides.missionTypes),
     activities: { ...defaults.activities, ...overrides.activities },
+    options: { ...defaults.options, ...overrides.options },
   };
 }
 
@@ -105,4 +127,57 @@ export function parseOverrides<T extends string>(
   } catch {
     return {};
   }
+}
+
+function parseJsonObject(raw: string | null): Record<string, unknown> | null {
+  if (!raw) return null;
+  try {
+    const parsed: unknown = JSON.parse(raw);
+    if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) return null;
+    return parsed as Record<string, unknown>;
+  } catch {
+    return null;
+  }
+}
+
+export function parseOptions(raw: string | null): Partial<SuggestionOptions> {
+  const parsed = parseJsonObject(raw);
+  if (!parsed) return {};
+  const options: Partial<SuggestionOptions> = {};
+  const goal = parsed["relicGoal"];
+  if (typeof goal === "string" && (RELIC_GOALS as readonly string[]).includes(goal)) {
+    options.relicGoal = goal as RelicGoal;
+  }
+  if (typeof parsed["masteryForma"] === "boolean") options.masteryForma = parsed["masteryForma"];
+  if (typeof parsed["masteryOwnMode"] === "boolean") {
+    options.masteryOwnMode = parsed["masteryOwnMode"];
+  }
+  return options;
+}
+
+/** Lifts the settings that used to live as synthetic activity ids onto the typed
+ *  shape, and clears the ids so nothing reads them twice. A value already stored
+ *  under the new shape wins. */
+export function migrateLegacyOptions(
+  activities: Readonly<Record<string, ActivityPref>>,
+  stored: Partial<SuggestionOptions>,
+): { activities: Record<string, ActivityPref>; options: Partial<SuggestionOptions> } {
+  const options: Partial<SuggestionOptions> = { ...stored };
+  const legacyGoals = RELIC_GOALS.map(legacyGoalKey);
+
+  if (options.masteryForma === undefined && activities[LEGACY_FORMA_KEY] !== undefined) {
+    options.masteryForma = activities[LEGACY_FORMA_KEY] !== "never";
+  }
+  if (options.masteryOwnMode === undefined && activities[LEGACY_MODE_KEY] !== undefined) {
+    options.masteryOwnMode = activities[LEGACY_MODE_KEY] !== "never";
+  }
+  if (options.relicGoal === undefined && legacyGoals.some((key) => key in activities)) {
+    options.relicGoal =
+      RELIC_GOALS.find((goal) => activities[legacyGoalKey(goal)] !== "never") ??
+      DEFAULT_OPTIONS.relicGoal;
+  }
+
+  const rest: Record<string, ActivityPref> = { ...activities };
+  for (const key of [LEGACY_FORMA_KEY, LEGACY_MODE_KEY, ...legacyGoals]) delete rest[key];
+  return { activities: rest, options };
 }

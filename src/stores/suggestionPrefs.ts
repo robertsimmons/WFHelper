@@ -10,6 +10,8 @@ import {
   UNRATED,
   defaultPreferences,
   mergePreferences,
+  migrateLegacyOptions,
+  parseOptions,
   parseOverrides,
   type MissionOverride,
   type NightwaveArt,
@@ -19,11 +21,17 @@ import {
 import { readStorage, writeStorage } from "../lib/persistence.js";
 import { normalizeName } from "../lib/suggest/rewards.js";
 import { SUGGESTION_CATEGORIES } from "../types/suggest.js";
-import type { ActivityPref, SuggestionCategory, SuggestionPreferences } from "../types/suggest.js";
+import type {
+  ActivityPref,
+  SuggestionCategory,
+  SuggestionOptions,
+  SuggestionPreferences,
+} from "../types/suggest.js";
 
 const REWARD_KEY = "next-up-reward-tiers";
 const MISSION_KEY = "next-up-mission-types";
 const ACTIVITY_KEY = "next-up-activities";
+const OPTIONS_KEY = "next-up-options";
 const NIGHTWAVE_ART_KEY = "next-up-nightwave-art";
 const COLLAPSED_KEY = "next-up-collapsed-sections";
 
@@ -33,10 +41,15 @@ const MISSION_VALUES: readonly MissionOverride[] = [...MISSION_OPINIONS, UNRATED
 const DEFAULTS = defaultPreferences();
 
 function load(): SuggestionOverrides {
+  const migrated = migrateLegacyOptions(
+    parseOverrides(readStorage(ACTIVITY_KEY), ACTIVITY_PREFS),
+    parseOptions(readStorage(OPTIONS_KEY)),
+  );
   return {
     rewards: parseOverrides(readStorage(REWARD_KEY), REWARD_VALUES),
     missionTypes: parseOverrides(readStorage(MISSION_KEY), MISSION_VALUES),
-    activities: parseOverrides(readStorage(ACTIVITY_KEY), ACTIVITY_PREFS),
+    activities: migrated.activities,
+    options: migrated.options,
   };
 }
 
@@ -58,6 +71,7 @@ function commit(next: SuggestionOverrides): void {
   writeStorage(REWARD_KEY, JSON.stringify(next.rewards));
   writeStorage(MISSION_KEY, JSON.stringify(next.missionTypes));
   writeStorage(ACTIVITY_KEY, JSON.stringify(next.activities));
+  writeStorage(OPTIONS_KEY, JSON.stringify(next.options));
 }
 
 function withEntry<T>(map: Record<string, T>, key: string, value: T | null): Record<string, T> {
@@ -88,6 +102,14 @@ export function setActivityPref(id: string, pref: ActivityPref): void {
     ...current,
     activities: withEntry(current.activities, id, pref === "normal" ? null : pref),
   });
+}
+
+export function setSuggestionOption<K extends keyof SuggestionOptions>(
+  key: K,
+  value: SuggestionOptions[K],
+): void {
+  const current = get(overrides);
+  commit({ ...current, options: { ...current.options, [key]: value } });
 }
 
 function loadNightwaveArt(): NightwaveArt {
@@ -134,6 +156,6 @@ export function toggleSectionCollapsed(category: SuggestionCategory): void {
 }
 
 export function resetSuggestionPreferences(): void {
-  commit({ rewards: {}, missionTypes: {}, activities: {} });
+  commit({ rewards: {}, missionTypes: {}, activities: {}, options: {} });
   setNightwaveArt(DEFAULT_NIGHTWAVE_ART);
 }

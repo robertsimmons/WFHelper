@@ -1,17 +1,38 @@
-import type { Translator } from "../lib/i18n.js";
+import type { MessageKey, Translator } from "../lib/i18n.js";
 import type { TrackerState } from "../lib/world/dailies.js";
 import type { DropRow } from "../../config/shared/dropTypes.js";
 import type { ItemDbEntry, RawInventoryData } from "./inventory.js";
 import type { WorldState } from "./world.js";
 
-/** What the filter checkboxes narrow by; the feed itself is one ranked list. */
-export type SuggestionCategory = "daily" | "weekly" | "nightwave";
+/** Which section a suggestion lands in, and what the filter checkboxes narrow by. */
+export type SuggestionCategory =
+  | "daily"
+  | "weekly"
+  | "nightwave"
+  | "vendor"
+  | "relics"
+  | "acquisition"
+  | "mastery";
 
-export const SUGGESTION_CATEGORIES: readonly SuggestionCategory[] = [
-  "daily",
-  "weekly",
-  "nightwave",
+export interface SuggestionSection {
+  category: SuggestionCategory;
+  titleKey: MessageKey;
+}
+
+/** Section order on screen, time-boxed first. A new domain is a new row. */
+export const SUGGESTION_SECTIONS: readonly SuggestionSection[] = [
+  { category: "daily", titleKey: "dailies.groupDaily" },
+  { category: "weekly", titleKey: "dailies.groupWeekly" },
+  { category: "nightwave", titleKey: "dailies.groupNightwave" },
+  { category: "vendor", titleKey: "nextUp.sectionVendor" },
+  { category: "relics", titleKey: "nextUp.sectionRelics" },
+  { category: "acquisition", titleKey: "nextUp.sectionAcquisition" },
+  { category: "mastery", titleKey: "nextUp.sectionMastery" },
 ];
+
+export const SUGGESTION_CATEGORIES: readonly SuggestionCategory[] = SUGGESTION_SECTIONS.map(
+  (section) => section.category,
+);
 
 export type RewardTier = "great" | "good" | "ok" | "low";
 export type MissionOpinion = "good" | "bad";

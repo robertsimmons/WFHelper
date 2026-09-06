@@ -1,11 +1,8 @@
 import { describe, expect, it } from "vitest";
 
 import { suggestionKey } from "../../../../src/lib/suggest/dismissals.js";
-import {
-  buildFeed,
-  collectSuggestions,
-  filterByCategory,
-} from "../../../../src/lib/suggest/engine.js";
+import { buildFeed, collectSuggestions } from "../../../../src/lib/suggest/engine.js";
+import { SUGGESTION_CATEGORIES } from "../../../../src/types/suggest.js";
 import type {
   Suggestion,
   SuggestionCategory,
@@ -78,60 +75,49 @@ describe("collectSuggestions", () => {
 });
 
 describe("buildFeed", () => {
-  it("keeps one ranked list across categories", () => {
+  it("groups suggestions under their own category", () => {
     const feed = buildFeed(scored([draft("a", "daily", 0.3), draft("b", "weekly", 0.9)]), {});
-    expect(feed.suggestions.map((s) => s.id)).toEqual(["b", "a"]);
+    expect(feed.sections.daily.map((s) => s.id)).toEqual(["a"]);
+    expect(feed.sections.weekly.map((s) => s.id)).toEqual(["b"]);
     expect(feed.hiddenCount).toBe(0);
   });
 
-  it("counts each category for the filters", () => {
+  it("ranks within a section rather than across the feed", () => {
     const feed = buildFeed(
-      scored([draft("a", "daily", 0.3), draft("b", "weekly", 0.9), draft("c", "weekly", 0.5)]),
+      scored([
+        draft("a", "daily", 0.3),
+        draft("b", "weekly", 0.9),
+        draft("c", "weekly", 0.5),
+        { ...draft("d", "weekly", 0.95), deprioritized: true },
+      ]),
       {},
     );
-    expect(feed.counts).toEqual({ daily: 1, weekly: 2, nightwave: 0 });
+    expect(feed.sections.weekly.map((s) => s.id)).toEqual(["b", "c", "d"]);
+  });
+
+  it("gives every declared category a section, empty or not", () => {
+    const feed = buildFeed(scored([draft("a", "daily", 0.3)]), {});
+    expect(Object.keys(feed.sections).sort()).toEqual([...SUGGESTION_CATEGORIES].sort());
+    expect(feed.sections.mastery).toEqual([]);
   });
 
   it("hides a suggestion dismissed against its current fingerprint", () => {
     const suggestions = scored([draft("a", "daily", 0.5), draft("b", "daily", 0.4)]);
     const feed = buildFeed(suggestions, { [suggestionKey("a")]: "fp-a" });
-    expect(feed.suggestions.map((s) => s.id)).toEqual(["b"]);
+    expect(feed.sections.daily.map((s) => s.id)).toEqual(["b"]);
     expect(feed.hiddenCount).toBe(1);
-    expect(feed.counts.daily).toBe(1);
   });
 
   it("brings a dismissed suggestion back once its fingerprint changes", () => {
     const dismissals = { [suggestionKey("a")]: "fp-a" };
-    expect(buildFeed(scored([draft("a", "daily", 0.5)]), dismissals).suggestions).toEqual([]);
+    expect(buildFeed(scored([draft("a", "daily", 0.5)]), dismissals).sections.daily).toEqual([]);
 
     const after = scored([draft("a", "daily", 0.5, "rotated")]);
-    expect(buildFeed(after, dismissals).suggestions).toHaveLength(1);
+    expect(buildFeed(after, dismissals).sections.daily).toHaveLength(1);
   });
 
   it("reports the fingerprints a dismissal store can be pruned against", () => {
     const feed = buildFeed(scored([draft("a", "daily", 0.5)]), {});
     expect(feed.fingerprints.get(suggestionKey("a"))).toBe("fp-a");
-  });
-});
-
-describe("filterByCategory", () => {
-  const suggestions = scored([
-    draft("a", "daily", 0.9),
-    draft("b", "weekly", 0.5),
-    draft("c", "nightwave", 0.3),
-  ]);
-
-  it("narrows to the picked categories without reordering", () => {
-    expect(filterByCategory(suggestions, ["nightwave", "daily"]).map((s) => s.id)).toEqual([
-      "a",
-      "c",
-    ]);
-  });
-
-  it("treats every category and none alike, since neither narrows anything", () => {
-    expect(filterByCategory(suggestions, []).map((s) => s.id)).toEqual(["a", "b", "c"]);
-    expect(
-      filterByCategory(suggestions, ["daily", "weekly", "nightwave"]).map((s) => s.id),
-    ).toEqual(["a", "b", "c"]);
   });
 });

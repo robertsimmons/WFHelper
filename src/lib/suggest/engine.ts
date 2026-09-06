@@ -9,10 +9,8 @@ import {
 } from "../../types/suggest.js";
 
 export interface SuggestionFeed {
-  /** Everything worth doing, best first. The view filters and pages it. */
-  suggestions: Suggestion[];
-  /** Live count per category, so a filter can show what it would reveal. */
-  counts: Record<SuggestionCategory, number>;
+  /** Everything worth doing, grouped by section and best first within each. */
+  sections: Record<SuggestionCategory, Suggestion[]>;
   /** How many suggestions the user is currently choosing not to see. */
   hiddenCount: number;
   /** Every live dismissal key against its current fingerprint, for pruning. */
@@ -35,8 +33,10 @@ export function collectSuggestions(
     .sort((a, b) => band(a) - band(b) || b.score - a.score || a.id.localeCompare(b.id));
 }
 
-function emptyCounts(): Record<SuggestionCategory, number> {
-  return { daily: 0, weekly: 0, nightwave: 0 };
+function emptySections(): Record<SuggestionCategory, Suggestion[]> {
+  const sections = {} as Record<SuggestionCategory, Suggestion[]>;
+  for (const category of SUGGESTION_CATEGORIES) sections[category] = [];
+  return sections;
 }
 
 export function buildFeed(
@@ -44,8 +44,7 @@ export function buildFeed(
   dismissals: DismissalState,
 ): SuggestionFeed {
   const fingerprints = new Map<string, string>();
-  const visible: Suggestion[] = [];
-  const counts = emptyCounts();
+  const sections = emptySections();
   let hiddenCount = 0;
 
   for (const suggestion of suggestions) {
@@ -54,20 +53,8 @@ export function buildFeed(
       hiddenCount += 1;
       continue;
     }
-    visible.push(suggestion);
-    counts[suggestion.category] += 1;
+    sections[suggestion.category].push(suggestion);
   }
 
-  return { suggestions: visible, counts, hiddenCount, fingerprints };
-}
-
-/** Ranked order is the whole point, so filtering never reorders what survives. */
-export function filterByCategory(
-  suggestions: readonly Suggestion[],
-  active: readonly SuggestionCategory[],
-): Suggestion[] {
-  if (active.length === 0 || active.length === SUGGESTION_CATEGORIES.length) {
-    return [...suggestions];
-  }
-  return suggestions.filter((suggestion) => active.includes(suggestion.category));
+  return { sections, hiddenCount, fingerprints };
 }

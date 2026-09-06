@@ -18,12 +18,14 @@ import {
 } from "../lib/suggest/preferences.js";
 import { readStorage, writeStorage } from "../lib/persistence.js";
 import { normalizeName } from "../lib/suggest/rewards.js";
-import type { ActivityPref, SuggestionPreferences } from "../types/suggest.js";
+import { SUGGESTION_CATEGORIES } from "../types/suggest.js";
+import type { ActivityPref, SuggestionCategory, SuggestionPreferences } from "../types/suggest.js";
 
 const REWARD_KEY = "next-up-reward-tiers";
 const MISSION_KEY = "next-up-mission-types";
 const ACTIVITY_KEY = "next-up-activities";
 const NIGHTWAVE_ART_KEY = "next-up-nightwave-art";
+const COLLAPSED_KEY = "next-up-collapsed-sections";
 
 const REWARD_VALUES: readonly RewardOverride[] = [...REWARD_TIERS, UNRATED];
 const MISSION_VALUES: readonly MissionOverride[] = [...MISSION_OPINIONS, UNRATED];
@@ -102,6 +104,33 @@ export const nightwaveArt: Readable<NightwaveArt> = { subscribe: art.subscribe }
 export function setNightwaveArt(next: NightwaveArt): void {
   art.set(next);
   writeStorage(NIGHTWAVE_ART_KEY, next);
+}
+
+function loadCollapsed(): SuggestionCategory[] {
+  const raw = readStorage(COLLAPSED_KEY);
+  if (!raw) return [];
+  try {
+    const parsed: unknown = JSON.parse(raw);
+    if (!Array.isArray(parsed)) return [];
+    return SUGGESTION_CATEGORIES.filter((category) => parsed.includes(category));
+  } catch {
+    return [];
+  }
+}
+
+const collapsed = writable<SuggestionCategory[]>(loadCollapsed());
+
+export const collapsedSections: Readable<SuggestionCategory[]> = {
+  subscribe: collapsed.subscribe,
+};
+
+export function toggleSectionCollapsed(category: SuggestionCategory): void {
+  const current = get(collapsed);
+  const next = current.includes(category)
+    ? current.filter((entry) => entry !== category)
+    : [...current, category];
+  collapsed.set(next);
+  writeStorage(COLLAPSED_KEY, JSON.stringify(next));
 }
 
 export function resetSuggestionPreferences(): void {

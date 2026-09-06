@@ -21,7 +21,6 @@ import { NIGHTWAVE_ACTIVITY } from "../preferences.js";
 import { rewardTier, rewardValue, taskRewardValue } from "../rewards.js";
 import { clamp01, urgencyFromExpiry } from "../score.js";
 import type {
-  SuggestionCategory,
   SuggestionContext,
   SuggestionDetails,
   SuggestionDraft,
@@ -38,7 +37,7 @@ import type { CalendarDay, WorldState } from "../../../types/world.js";
 const COVERED_GROUPS = new Set<TrackerGroup>(["daily", "weekly"]);
 
 /** Where the curated tables have no opinion, a category is worth what it always was. */
-const BASE_VALUE: Record<SuggestionCategory, number> = {
+const BASE_VALUE: Record<"daily" | "weekly" | "nightwave", number> = {
   daily: 0.45,
   weekly: 0.6,
   nightwave: 0.5,
@@ -319,7 +318,7 @@ export const dailiesProvider: SuggestionProvider = {
 
       const live = task.label ? {} : trackerLive(task.id, world, t, nowMs);
       const expiry = live.expiry ?? periodResetIso(task.period, now);
-      const category: SuggestionCategory = group === "weekly" ? "weekly" : "daily";
+      const category = group === "weekly" ? "weekly" : "daily";
       // The week's own choices say more than a pool or a rotation reward would.
       const circuit = task.label ? null : readCircuit(ctx, task.id);
       const reward = task.label || circuit ? null : namedReward(prefs, task.id, world, nowMs);

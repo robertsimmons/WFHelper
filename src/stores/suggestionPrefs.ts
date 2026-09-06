@@ -3,13 +3,16 @@ import { derived, get, writable, type Readable } from "svelte/store";
 import { normalizeType } from "../lib/suggest/missionTypes.js";
 import {
   ACTIVITY_PREFS,
+  DEFAULT_NIGHTWAVE_ART,
   MISSION_OPINIONS,
+  NIGHTWAVE_ART_IDS,
   REWARD_TIERS,
   UNRATED,
   defaultPreferences,
   mergePreferences,
   parseOverrides,
   type MissionOverride,
+  type NightwaveArt,
   type RewardOverride,
   type SuggestionOverrides,
 } from "../lib/suggest/preferences.js";
@@ -20,6 +23,7 @@ import type { ActivityPref, SuggestionPreferences } from "../types/suggest.js";
 const REWARD_KEY = "next-up-reward-tiers";
 const MISSION_KEY = "next-up-mission-types";
 const ACTIVITY_KEY = "next-up-activities";
+const NIGHTWAVE_ART_KEY = "next-up-nightwave-art";
 
 const REWARD_VALUES: readonly RewardOverride[] = [...REWARD_TIERS, UNRATED];
 const MISSION_VALUES: readonly MissionOverride[] = [...MISSION_OPINIONS, UNRATED];
@@ -84,6 +88,23 @@ export function setActivityPref(id: string, pref: ActivityPref): void {
   });
 }
 
+function loadNightwaveArt(): NightwaveArt {
+  const raw = readStorage(NIGHTWAVE_ART_KEY);
+  return NIGHTWAVE_ART_IDS.includes(raw as NightwaveArt)
+    ? (raw as NightwaveArt)
+    : DEFAULT_NIGHTWAVE_ART;
+}
+
+const art = writable<NightwaveArt>(loadNightwaveArt());
+
+export const nightwaveArt: Readable<NightwaveArt> = { subscribe: art.subscribe };
+
+export function setNightwaveArt(next: NightwaveArt): void {
+  art.set(next);
+  writeStorage(NIGHTWAVE_ART_KEY, next);
+}
+
 export function resetSuggestionPreferences(): void {
   commit({ rewards: {}, missionTypes: {}, activities: {} });
+  setNightwaveArt(DEFAULT_NIGHTWAVE_ART);
 }

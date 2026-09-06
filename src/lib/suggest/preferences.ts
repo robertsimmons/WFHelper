@@ -15,6 +15,11 @@ export const UNRATED = "none";
 /** Acts rotate, so the whole group answers to one activity setting. */
 export const NIGHTWAVE_ACTIVITY = "nightwave";
 
+/** Seasons come and go; the card art for the group is the player's pick. */
+export const NIGHTWAVE_ART_IDS = ["amir", "nora"] as const;
+export type NightwaveArt = (typeof NIGHTWAVE_ART_IDS)[number];
+export const DEFAULT_NIGHTWAVE_ART: NightwaveArt = "amir";
+
 export const REWARD_TIERS: readonly RewardTier[] = ["great", "good", "ok", "low"];
 export const MISSION_OPINIONS: readonly MissionOpinion[] = ["good", "bad"];
 export const ACTIVITY_PREFS: readonly ActivityPref[] = ["never", "low", "normal"];

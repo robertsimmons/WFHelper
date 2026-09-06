@@ -51,3 +51,4 @@ Each is shippable alone, in order.
 - a way to estimate the pain of a farm. maybe research reddit combined with drop tables to come up with ranking / estimate? The value here is determining if something is difficult or not, and the time estimate to know "oh you should REALLY get this one from circuit this week"
 - add sortie mission coloring and such the same as archon hunt
 - circuit steel path deatils - we can tighten this up a lot. Instead of "nothing left" say "owned".. Grade can just be the letter (maybe color coded? S = purple, a = green, b = yellow, c = red), probably put upgrade path just right after it.
+- details modal for Next Up, the "wiki" link should be in the title somewhere, not the bottom left. after title? or next to close button?

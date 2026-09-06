@@ -207,12 +207,22 @@ function poolReward(ctx: SuggestionContext, taskId: string): PoolReward | null {
   };
 }
 
+/** Tasks that always pay the same thing, which no pool or world state names. */
+const FIXED_REWARD: Record<string, SuggestionReward> = {
+  ayatanHunt: {
+    name: "Ayatan Anasa Sculpture",
+    uniqueName: "/Lotus/Types/Items/FusionTreasures/OroFusexF",
+  },
+};
+
 function rewardArt(
+  taskId: string,
   reward: NamedReward | null,
   pool: PoolReward | null,
 ): SuggestionReward | undefined {
   if (reward) return { name: reward.name, uniqueName: reward.uniqueName };
-  return pool ? { name: pool.item } : undefined;
+  if (pool) return { name: pool.item };
+  return FIXED_REWARD[taskId];
 }
 
 /** Mission types the player has an opinion about, for the tasks that list them. */
@@ -350,7 +360,7 @@ export const dailiesProvider: SuggestionProvider = {
       ]
         .filter(Boolean)
         .join(" - ");
-      const art = rewardArt(reward, pool);
+      const art = rewardArt(task.id, reward, pool);
       const period = periodKey ?? task.id;
 
       drafts.push({

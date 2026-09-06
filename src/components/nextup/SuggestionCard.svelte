@@ -1,8 +1,10 @@
 <script lang="ts">
   import { tr } from "../../lib/i18n.js";
+  import { bannerAside, bannerFor } from "../../lib/suggest/bannerArt.js";
   import { resolveDropArt } from "../../lib/suggest/dropPools.js";
   import { CARD_HEIGHT, CARD_WIDTH } from "../../lib/suggest/grid.js";
   import { itemDb } from "../../stores/data.js";
+  import { nightwaveArt } from "../../stores/suggestionPrefs.js";
   import SuggestionDetailsModal from "./SuggestionDetailsModal.svelte";
   import ItemImage from "../ItemImage.svelte";
   import type { ChoiceState, Suggestion, WhySegment } from "../../types/suggest.js";
@@ -42,6 +44,12 @@
       ? resolveDropArt($itemDb, suggestion.reward.name, suggestion.reward.uniqueName)
       : null,
   );
+  const banner = $derived(
+    choices.length === 0 ? bannerFor(suggestion.id, suggestion.category, $nightwaveArt) : null,
+  );
+  const backdrop = $derived(banner?.fit === "cover" ? banner : null);
+  // Stands in only where nothing else pictures the task.
+  const standIn = $derived(!art && banner?.fit === "contain" ? banner : null);
   // The name comes back into the line when no art carries it, and rather than
   // leave the line blank.
   const why = $derived(
@@ -110,9 +118,18 @@
   onkeydown={onCardKey}
 >
   <div
-    class="flex w-full shrink-0 overflow-hidden border-b border-border bg-bg-deep"
+    class="relative flex w-full shrink-0 overflow-hidden border-b border-border bg-bg-deep"
     style="height: {ART_HEIGHT}px"
   >
+    {#if backdrop}
+      <img
+        class="absolute inset-0 h-full w-full object-cover"
+        style="object-position: {backdrop.position}"
+        src={backdrop.url}
+        alt=""
+        aria-hidden="true"
+      />
+    {/if}
     {#each choices as choice (choice.name)}
       <div
         class="relative flex min-w-0 flex-1 items-center justify-center overflow-hidden
@@ -135,8 +152,15 @@
       </div>
     {/each}
     {#if choices.length === 0 && art}
-      <div class="flex w-full items-center justify-center p-1.5" title={art.name}>
+      <div
+        class="relative flex w-full items-center p-1.5 {bannerAside(backdrop)}"
+        title={art.name}
+      >
         <ItemImage src={art.imageUrl} alt={art.name} cls="max-h-full max-w-full" />
+      </div>
+    {:else if standIn}
+      <div class="relative flex w-full items-center justify-center p-1.5">
+        <img src={standIn.url} alt="" class="max-h-full max-w-full object-contain" />
       </div>
     {/if}
   </div>

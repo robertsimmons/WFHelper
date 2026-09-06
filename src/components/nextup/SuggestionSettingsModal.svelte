@@ -7,6 +7,7 @@
   import {
     MISSION_TYPE_NAMES,
     NIGHTWAVE_ACTIVITY,
+    NIGHTWAVE_ART_IDS,
     REWARD_DISPLAY_NAMES,
     REWARD_TIERS,
     UNRATED,
@@ -17,8 +18,10 @@
   import { BUILTIN_TASKS, trackerGroup } from "../../lib/world/dailies.js";
   import { componentOwnership, itemDb } from "../../stores/data.js";
   import {
+    nightwaveArt,
     resetSuggestionPreferences,
     setActivityPref,
+    setNightwaveArt,
     setMissionOpinion,
     setRewardTier,
     suggestionOverrides,
@@ -51,6 +54,11 @@
     { value: null, label: "nextUp.settingsNoOpinion" },
     { value: "bad", label: "nextUp.settingsBad" },
   ];
+
+  const NIGHTWAVE_ART_LABELS: Record<(typeof NIGHTWAVE_ART_IDS)[number], MessageKey> = {
+    amir: "nextUp.settingsArtAmir",
+    nora: "nextUp.settingsArtNora",
+  };
 
   const TIER_LABELS: Record<RewardTier, MessageKey> = {
     great: "nextUp.settingsTierGreat",
@@ -228,6 +236,27 @@
               </div>
             </div>
           {/each}
+          {#if group.title === "dailies.groupNightwave"}
+            <div
+              class="flex items-center justify-between gap-3 rounded-[var(--radius-md)] px-1.5 py-1
+                     hover:bg-bg-hover"
+            >
+              <span class="min-w-0 truncate text-sm text-text-secondary">
+                {$tr("nextUp.settingsNightwaveArt")}
+              </span>
+              <div class="flex shrink-0 gap-1">
+                {#each NIGHTWAVE_ART_IDS as art (art)}
+                  <ThemedButton
+                    size="compact"
+                    active={$nightwaveArt === art}
+                    onClick={() => setNightwaveArt(art)}
+                  >
+                    {$tr(NIGHTWAVE_ART_LABELS[art])}
+                  </ThemedButton>
+                {/each}
+              </div>
+            </div>
+          {/if}
         {/each}
       {:else if tab === "rewards"}
         <div class="mb-2 flex flex-wrap items-center gap-2">

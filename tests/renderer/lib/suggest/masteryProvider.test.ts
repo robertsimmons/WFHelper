@@ -1,9 +1,6 @@
 import { afterEach, describe, expect, it } from "vitest";
 
-import {
-  DEFAULT_OPTIONS,
-  defaultPreferences,
-} from "../../../../src/lib/suggest/preferences.js";
+import { DEFAULT_OPTIONS, defaultPreferences } from "../../../../src/lib/suggest/preferences.js";
 import {
   MASTERY_ACTIVITY,
   masteryProvider,

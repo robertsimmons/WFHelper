@@ -2,8 +2,10 @@ import { describe, expect, it } from "vitest";
 
 import { suggestionKey } from "../../../../src/lib/suggest/dismissals.js";
 import { buildFeed, collectSuggestions } from "../../../../src/lib/suggest/engine.js";
+import { defaultPreferences } from "../../../../src/lib/suggest/preferences.js";
 import { SUGGESTION_CATEGORIES } from "../../../../src/types/suggest.js";
 import type {
+  ScoreWeights,
   Suggestion,
   SuggestionCategory,
   SuggestionContext,
@@ -11,7 +13,12 @@ import type {
   SuggestionProvider,
 } from "../../../../src/types/suggest.js";
 
-const CTX = {} as SuggestionContext;
+function ctx(weights: Partial<ScoreWeights> = {}): SuggestionContext {
+  const prefs = defaultPreferences();
+  return { prefs: { ...prefs, weights: { ...prefs.weights, ...weights } } } as SuggestionContext;
+}
+
+const CTX = ctx();
 
 function draft(
   id: string,
@@ -119,5 +126,36 @@ describe("buildFeed", () => {
   it("reports the fingerprints a dismissal store can be pruned against", () => {
     const feed = buildFeed(scored([draft("a", "daily", 0.5)]), {});
     expect(feed.fingerprints.get(suggestionKey("a"))).toBe("fp-a");
+  });
+});
+
+describe("scoring weights", () => {
+  function signals(id: string, value: number, urgency: number, effort: number): SuggestionDraft {
+    return { ...draft(id, "daily", value), signals: { value, urgency, effort } };
+  }
+
+  const PAYOFF = signals("payoff", 0.9, 0, 0);
+  const DEADLINE = signals("deadline", 0.3, 1, 0);
+  const COSTLY = signals("costly", 0.9, 0, 1);
+  const MIDDLING = signals("middling", 0.5, 0, 0);
+
+  function order(drafts: SuggestionDraft[], weights: Partial<ScoreWeights> = {}): string[] {
+    return collectSuggestions([provider(drafts)], ctx(weights)).map((s) => s.id);
+  }
+
+  it("scores on the shipped weights when the user has changed nothing", () => {
+    const [deadline, payoff] = collectSuggestions([provider([PAYOFF, DEADLINE])], CTX);
+    expect(deadline?.score).toBeCloseTo(0.3 * 1 + 1 * 0.8, 10);
+    expect(payoff?.score).toBeCloseTo(0.9 * 1, 10);
+  });
+
+  it("reorders the feed once a weight moves", () => {
+    expect(order([PAYOFF, DEADLINE])).toEqual(["deadline", "payoff"]);
+    expect(order([PAYOFF, DEADLINE], { urgency: 0 })).toEqual(["payoff", "deadline"]);
+  });
+
+  it("stops charging for effort once its weight is zero", () => {
+    expect(order([COSTLY, MIDDLING])).toEqual(["middling", "costly"]);
+    expect(order([COSTLY, MIDDLING], { effort: 0 })).toEqual(["costly", "middling"]);
   });
 });

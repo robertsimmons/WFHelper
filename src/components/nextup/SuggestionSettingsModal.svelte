@@ -15,17 +15,20 @@
     type RewardOverride,
   } from "../../lib/suggest/preferences.js";
   import { compactCount, ownedRewardByName } from "../../lib/suggest/ownedRewards.js";
+  import { WEIGHT_MAX, WEIGHT_STEP } from "../../lib/suggest/score.js";
   import { MASTERY_ACTIVITY } from "../../lib/suggest/providers/mastery.js";
   import { RELICS_ACTIVITY } from "../../lib/suggest/providers/relics.js";
   import { BUILTIN_TASKS, trackerGroup } from "../../lib/world/dailies.js";
   import { componentOwnership, itemDb } from "../../stores/data.js";
   import {
     nightwaveArt,
+    resetScoreWeights,
     resetSuggestionPreferences,
     setActivityPref,
     setNightwaveArt,
     setMissionOpinion,
     setRewardTier,
+    setScoreWeight,
     setSuggestionOption,
     suggestionOverrides,
     suggestionPreferences,
@@ -36,6 +39,7 @@
     MissionOpinion,
     RelicGoal,
     RewardTier,
+    ScoreWeightKey,
     SuggestionOptions,
   } from "../../types/suggest.js";
 
@@ -45,13 +49,20 @@
 
   const { onClose }: Props = $props();
 
-  type Tab = "activities" | "goals" | "rewards" | "missions";
+  type Tab = "activities" | "goals" | "rewards" | "missions" | "ranking";
 
   const TABS: ReadonlyArray<{ id: Tab; label: MessageKey }> = [
     { id: "activities", label: "nextUp.settingsActivities" },
     { id: "goals", label: "nextUp.settingsGoals" },
     { id: "rewards", label: "nextUp.settingsRewards" },
     { id: "missions", label: "nextUp.settingsMissionTypes" },
+    { id: "ranking", label: "nextUp.settingsRanking" },
+  ];
+
+  const WEIGHT_ROWS: ReadonlyArray<{ key: ScoreWeightKey; label: MessageKey }> = [
+    { key: "value", label: "nextUp.settingsWeightValue" },
+    { key: "urgency", label: "nextUp.settingsWeightUrgency" },
+    { key: "effort", label: "nextUp.settingsWeightEffort" },
   ];
 
   const ACTIVITY_OPTIONS: ReadonlyArray<{ value: ActivityPref; label: MessageKey }> = [
@@ -284,6 +295,30 @@
   </div>
 {/snippet}
 
+{#snippet weightRow(label: string, key: ScoreWeightKey)}
+  <div
+    class="flex items-center justify-between gap-3 rounded-[var(--radius-md)] px-1.5 py-1
+           hover:bg-bg-hover"
+  >
+    <span class="min-w-0 truncate text-sm text-text-secondary">{label}</span>
+    <div class="flex shrink-0 items-center gap-2">
+      <input
+        type="range"
+        min="0"
+        max={WEIGHT_MAX}
+        step={WEIGHT_STEP}
+        class="w-40 accent-accent"
+        aria-label={label}
+        value={prefs.weights[key]}
+        oninput={(e) => setScoreWeight(key, Number((e.target as HTMLInputElement).value))}
+      />
+      <span class="w-9 shrink-0 text-right text-xs tabular-nums text-text-primary">
+        {prefs.weights[key].toFixed(2)}
+      </span>
+    </div>
+  </div>
+{/snippet}
+
 {#snippet groupHeading(label: string)}
   <h4
     class="m-0 mb-1 mt-3 text-[0.7rem] font-semibold uppercase tracking-[0.08em] text-text-muted
@@ -423,7 +458,7 @@
             {/each}
           {/if}
         {/each}
-      {:else}
+      {:else if tab === "missions"}
         <p class="m-0 mb-2 text-xs text-text-secondary">{$tr("nextUp.settingsMissionHelp")}</p>
         {#each missionRows as row (row.key)}
           <div
@@ -444,6 +479,16 @@
             </div>
           </div>
         {/each}
+      {:else}
+        <p class="m-0 mb-2 text-xs text-text-secondary">{$tr("nextUp.settingsRankingHelp")}</p>
+        {#each WEIGHT_ROWS as row (row.key)}
+          {@render weightRow($tr(row.label), row.key)}
+        {/each}
+        <div class="mt-3 px-1.5">
+          <ThemedButton size="compact" onClick={resetScoreWeights}>
+            {$tr("nextUp.settingsWeightsReset")}
+          </ThemedButton>
+        </div>
       {/if}
     </div>
 

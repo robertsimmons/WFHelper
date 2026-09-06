@@ -52,6 +52,12 @@ export interface SuggestionOptions {
   masteryOwnMode: boolean;
 }
 
+export const SCORE_WEIGHT_KEYS = ["value", "urgency", "effort"] as const;
+export type ScoreWeightKey = (typeof SCORE_WEIGHT_KEYS)[number];
+
+/** How far each raw signal moves a suggestion up or down the ranking. */
+export type ScoreWeights = Record<ScoreWeightKey, number>;
+
 /** Reward and mission keys are normalized names; activity keys are tracker task
  *  ids, plus "nightwave" for the whole act group. */
 export interface SuggestionPreferences {
@@ -59,6 +65,7 @@ export interface SuggestionPreferences {
   missionTypes: Record<string, MissionOpinion>;
   activities: Record<string, ActivityPref>;
   options: SuggestionOptions;
+  weights: ScoreWeights;
 }
 
 /** Enough to tick a tracked task off without leaving the tab. */

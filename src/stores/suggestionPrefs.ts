@@ -13,6 +13,7 @@ import {
   migrateLegacyOptions,
   parseOptions,
   parseOverrides,
+  parseWeights,
   type MissionOverride,
   type NightwaveArt,
   type RewardOverride,
@@ -23,6 +24,7 @@ import { normalizeName } from "../lib/suggest/rewards.js";
 import { SUGGESTION_CATEGORIES } from "../types/suggest.js";
 import type {
   ActivityPref,
+  ScoreWeightKey,
   SuggestionCategory,
   SuggestionOptions,
   SuggestionPreferences,
@@ -32,6 +34,7 @@ const REWARD_KEY = "next-up-reward-tiers";
 const MISSION_KEY = "next-up-mission-types";
 const ACTIVITY_KEY = "next-up-activities";
 const OPTIONS_KEY = "next-up-options";
+const WEIGHTS_KEY = "next-up-weights";
 const NIGHTWAVE_ART_KEY = "next-up-nightwave-art";
 const COLLAPSED_KEY = "next-up-collapsed-sections";
 
@@ -50,6 +53,7 @@ function load(): SuggestionOverrides {
     missionTypes: parseOverrides(readStorage(MISSION_KEY), MISSION_VALUES),
     activities: migrated.activities,
     options: migrated.options,
+    weights: parseWeights(readStorage(WEIGHTS_KEY)),
   };
 }
 
@@ -72,6 +76,7 @@ function commit(next: SuggestionOverrides): void {
   writeStorage(MISSION_KEY, JSON.stringify(next.missionTypes));
   writeStorage(ACTIVITY_KEY, JSON.stringify(next.activities));
   writeStorage(OPTIONS_KEY, JSON.stringify(next.options));
+  writeStorage(WEIGHTS_KEY, JSON.stringify(next.weights));
 }
 
 function withEntry<T>(map: Record<string, T>, key: string, value: T | null): Record<string, T> {
@@ -110,6 +115,15 @@ export function setSuggestionOption<K extends keyof SuggestionOptions>(
 ): void {
   const current = get(overrides);
   commit({ ...current, options: { ...current.options, [key]: value } });
+}
+
+export function setScoreWeight(key: ScoreWeightKey, value: number): void {
+  const current = get(overrides);
+  commit({ ...current, weights: { ...current.weights, [key]: value } });
+}
+
+export function resetScoreWeights(): void {
+  commit({ ...get(overrides), weights: {} });
 }
 
 function loadNightwaveArt(): NightwaveArt {
@@ -156,6 +170,6 @@ export function toggleSectionCollapsed(category: SuggestionCategory): void {
 }
 
 export function resetSuggestionPreferences(): void {
-  commit({ rewards: {}, missionTypes: {}, activities: {}, options: {} });
+  commit({ rewards: {}, missionTypes: {}, activities: {}, options: {}, weights: {} });
   setNightwaveArt(DEFAULT_NIGHTWAVE_ART);
 }

@@ -15,7 +15,7 @@ import {
 import type { ActivityPref } from "../../../../src/types/suggest.js";
 
 function overrides(partial: Partial<SuggestionOverrides> = {}): SuggestionOverrides {
-  return { rewards: {}, missionTypes: {}, activities: {}, options: {}, ...partial };
+  return { rewards: {}, missionTypes: {}, activities: {}, options: {}, weights: {}, ...partial };
 }
 
 describe("defaultPreferences", () => {

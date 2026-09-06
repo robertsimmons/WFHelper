@@ -29,7 +29,7 @@ export function collectSuggestions(
 ): Suggestion[] {
   return providers
     .flatMap((provider) => provider.collect(ctx))
-    .map((draft) => ({ ...draft, score: scoreSignals(draft.signals) }))
+    .map((draft) => ({ ...draft, score: scoreSignals(draft.signals, ctx.prefs.weights) }))
     .sort((a, b) => band(a) - band(b) || b.score - a.score || a.id.localeCompare(b.id));
 }
 

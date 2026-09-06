@@ -2,12 +2,14 @@ import missionData from "../../data/suggest/missionTypes.json";
 import rewardData from "../../data/suggest/rewardValues.json";
 import { normalizeType } from "./missionTypes.js";
 import { normalizeName } from "./rewards.js";
-import { RELIC_GOALS } from "../../types/suggest.js";
+import { DEFAULT_WEIGHTS, WEIGHT_MAX } from "./score.js";
+import { RELIC_GOALS, SCORE_WEIGHT_KEYS } from "../../types/suggest.js";
 import type {
   ActivityPref,
   MissionOpinion,
   RelicGoal,
   RewardTier,
+  ScoreWeights,
   SuggestionOptions,
   SuggestionPreferences,
 } from "../../types/suggest.js";
@@ -35,6 +37,7 @@ export interface SuggestionOverrides {
   missionTypes: Record<string, MissionOverride>;
   activities: Record<string, ActivityPref>;
   options: Partial<SuggestionOptions>;
+  weights: Partial<ScoreWeights>;
 }
 
 export const DEFAULT_OPTIONS: SuggestionOptions = {
@@ -81,6 +84,7 @@ export function defaultPreferences(): SuggestionPreferences {
     missionTypes: shippedMissionTypes(),
     activities: {},
     options: { ...DEFAULT_OPTIONS },
+    weights: { ...DEFAULT_WEIGHTS },
   };
 }
 
@@ -105,6 +109,7 @@ export function mergePreferences(
     missionTypes: mergeRatings(defaults.missionTypes, overrides.missionTypes),
     activities: { ...defaults.activities, ...overrides.activities },
     options: { ...defaults.options, ...overrides.options },
+    weights: { ...defaults.weights, ...overrides.weights },
   };
 }
 
@@ -180,4 +185,19 @@ export function migrateLegacyOptions(
   const rest: Record<string, ActivityPref> = { ...activities };
   for (const key of [LEGACY_FORMA_KEY, LEGACY_MODE_KEY, ...legacyGoals]) delete rest[key];
   return { activities: rest, options };
+}
+
+/** A stored weight outside the slider's range is pulled back into it, so a
+ *  hand-edited file cannot make one signal the only one that counts. */
+export function parseWeights(raw: string | null): Partial<ScoreWeights> {
+  const parsed = parseJsonObject(raw);
+  if (!parsed) return {};
+  const weights: Partial<ScoreWeights> = {};
+  for (const key of SCORE_WEIGHT_KEYS) {
+    const value = parsed[key];
+    if (typeof value === "number" && Number.isFinite(value)) {
+      weights[key] = Math.min(WEIGHT_MAX, Math.max(0, value));
+    }
+  }
+  return weights;
 }

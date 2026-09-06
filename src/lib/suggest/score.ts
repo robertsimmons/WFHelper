@@ -1,4 +1,4 @@
-import type { SuggestionSignals } from "../../types/suggest.js";
+import type { ScoreWeights, SuggestionSignals } from "../../types/suggest.js";
 
 /** Beyond this a deadline adds nothing; inside it, urgency climbs linearly. */
 const URGENCY_HORIZON_MS = 72 * 60 * 60_000;
@@ -18,13 +18,11 @@ export function urgencyFromExpiry(expiry: string | null | undefined, nowMs: numb
   return clamp01(1 - remaining / URGENCY_HORIZON_MS);
 }
 
-interface ScoreWeights {
-  value: number;
-  urgency: number;
-  effort: number;
-}
+export const DEFAULT_WEIGHTS: ScoreWeights = { value: 1, urgency: 0.8, effort: 0.5 };
 
-const DEFAULT_WEIGHTS: ScoreWeights = { value: 1, urgency: 0.8, effort: 0.5 };
+/** A weight past this would let one signal swamp the other two. */
+export const WEIGHT_MAX = 2;
+export const WEIGHT_STEP = 0.05;
 
 export function scoreSignals(
   signals: SuggestionSignals,

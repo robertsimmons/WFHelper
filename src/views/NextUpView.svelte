@@ -43,7 +43,7 @@
   };
 
   const SORT_LABELS: Record<AcquisitionSort, MessageKey> = {
-    recommended: "nextUp.sortRecommended",
+    recommended: "common.recommended",
     difficulty: "nextUp.sortDifficulty",
     tier: "nextUp.sortTier",
     plat: "nextUp.sortPlat",

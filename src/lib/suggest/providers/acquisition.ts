@@ -42,13 +42,13 @@ const MATERIALS_EFFORT = 0.35;
 const NO_ROUTE_EFFORT = 1;
 
 const KIND_LABEL: Record<PathKind, MessageKey> = {
-  market: "nextUp.acqKindMarket",
+  market: "common.market",
   trade: "nextUp.acqKindTrade",
   lab: "nextUp.acqKindLab",
   junction: "nextUp.acqKindJunction",
-  quest: "nextUp.acqKindQuest",
+  quest: "common.quest",
   boss: "nextUp.acqKindBoss",
-  mission: "nextUp.acqKindMission",
+  mission: "common.mission",
   bounty: "nextUp.acqKindBounty",
   vendor: "nextUp.acqKindVendor",
   relics: "nextUp.acqKindRelics",

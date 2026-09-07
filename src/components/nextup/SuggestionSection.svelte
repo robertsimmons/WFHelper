@@ -19,7 +19,7 @@
   const { title, suggestions, collapsed, onToggle, onComplete, onDismiss, controls }: Props =
     $props();
 
-  const label = $derived($tr(collapsed ? "nextUp.sectionExpand" : "nextUp.sectionCollapse"));
+  const label = $derived($tr(collapsed ? "layout.expandSection" : "layout.collapseSection"));
 </script>
 
 <section>

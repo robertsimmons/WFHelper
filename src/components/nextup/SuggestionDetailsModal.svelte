@@ -461,7 +461,7 @@
 
           {#if acq.parts.known}
             <div class={ROW}>
-              <span class={LABEL}>{$tr("nextUp.acqFoundry")}</span>
+              <span class={LABEL}>{$tr("common.foundry")}</span>
               <span class="flex flex-wrap items-baseline gap-2 text-sm text-text-primary">
                 <span class="tabular-nums"
                   >{$tr("nextUp.acqFoundryCredits", {

@@ -70,7 +70,7 @@
   const DIFFICULTY_LABELS: Record<string, MessageKey> = {
     trivial: "nextUp.settingsDifficultyTrivial",
     easy: "nextUp.settingsDifficultyEasy",
-    normal: "nextUp.settingsDifficultyNormal",
+    normal: "common.normal",
     hard: "nextUp.settingsDifficultyHard",
     brutal: "nextUp.settingsDifficultyBrutal",
   };
@@ -84,7 +84,7 @@
   const ACTIVITY_OPTIONS: ReadonlyArray<{ value: ActivityPref; label: MessageKey }> = [
     { value: "never", label: "nextUp.settingsNever" },
     { value: "low", label: "nextUp.settingsLow" },
-    { value: "normal", label: "nextUp.settingsNormal" },
+    { value: "normal", label: "common.normal" },
   ];
 
   const FILTER_OPTIONS: ReadonlyArray<{ value: boolean; label: MessageKey }> = [
@@ -102,8 +102,8 @@
   ];
 
   const GOAL_LABELS: Record<RelicGoal, MessageKey> = {
-    platinum: "nextUp.settingsGoalPlatinum",
-    ducats: "nextUp.settingsGoalDucats",
+    platinum: "common.platinum",
+    ducats: "common.ducats",
   };
 
   const OPINION_OPTIONS: ReadonlyArray<{ value: MissionOpinion | null; label: MessageKey }> = [
@@ -444,10 +444,10 @@
           {/if}
         {/each}
       {:else if tab === "goals"}
-        {@render groupHeading($tr("nextUp.sectionRelics"))}
+        {@render groupHeading($tr("common.relics"))}
         {@render prefRow($tr("nextUp.settingsRelics"), RELICS_ACTIVITY, ACTIVITY_OPTIONS)}
         {@render goalRow()}
-        {@render groupHeading($tr("nextUp.sectionMastery"))}
+        {@render groupHeading($tr("common.mastery"))}
         <p class="m-0 mb-2 text-xs text-text-secondary">{$tr("nextUp.settingsMasteryHelp")}</p>
         {@render prefRow($tr("nextUp.settingsMastery"), MASTERY_ACTIVITY, ACTIVITY_OPTIONS)}
         {#each MASTERY_FILTERS as row (row.key)}
@@ -562,9 +562,7 @@
             <span class="min-w-0 truncate text-sm text-text-secondary">{row.label}</span>
             <div class="flex shrink-0 items-center gap-1">
               <ThemedSelect
-                bind:value={
-                  () => row.tier, (value) => setAcquisitionTier(row.key, String(value))
-                }
+                bind:value={() => row.tier, (value) => setAcquisitionTier(row.key, String(value))}
               >
                 {#each ACQUISITION_TIERS as tier (tier)}
                   <option value={tier}>{tier}</option>
@@ -572,8 +570,7 @@
               </ThemedSelect>
               <ThemedSelect
                 bind:value={
-                  () => row.difficulty,
-                  (value) => setAcquisitionDifficulty(row.key, String(value))
+                  () => row.difficulty, (value) => setAcquisitionDifficulty(row.key, String(value))
                 }
               >
                 {#each ACQUISITION_DIFFICULTIES as word (word)}

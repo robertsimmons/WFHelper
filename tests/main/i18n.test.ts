@@ -16,7 +16,8 @@ const ENGLISH_ONLY = ["common.whisperBuy", "common.whisperSell"];
 
 // Trade shorthand, grade letters and relic tier names read the same everywhere,
 // so de.json leaves them out and the English fallback serves them.
-const LANGUAGE_NEUTRAL = /^(appearance\.label\.grade|inventory\.wt[bs]|relics\.tier\.)/;
+const LANGUAGE_NEUTRAL =
+  /^(appearance\.label\.grade|inventory\.wt[bs]|relics\.tier\.|nextUp\.settingsArt)/;
 
 // Names the game's own Chinese client leaves in English, so the fallback is the
 // correct rendering rather than a gap.
@@ -30,7 +31,26 @@ const CHINESE_NAMES_IN_ENGLISH = new Set([
 ]);
 
 // Same text today, but each names a distinct UI role and must stay free to diverge.
-const ALLOWED_TWINS = new Set(["setup.step.finish"]);
+const ALLOWED_TWINS = new Set([
+  "setup.step.finish",
+  // Next Up restates a word another view already owns; German has one word for
+  // each, and neither side may be pinned to the other's wording.
+  "nextUp.acqDifficulty",
+  "nextUp.acqKindBounty",
+  "nextUp.acqPartCount",
+  "nextUp.acqParts",
+  "nextUp.detailsMissions",
+  "nextUp.detailsProgress",
+  "nextUp.detailsProgressValue",
+  "nextUp.kindMelee",
+  "nextUp.sectionAcquisition",
+  "nextUp.sectionVendor",
+  "nextUp.settingsAdd",
+  "nextUp.settingsBad",
+  "nextUp.settingsGood",
+  "nextUp.settingsHide",
+  "nextUp.whyToday",
+]);
 
 function sourceFiles(dir: string, out: string[] = []): string[] {
   for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {

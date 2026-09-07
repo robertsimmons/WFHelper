@@ -172,10 +172,7 @@
       </div>
     {/each}
     {#if choices.length === 0 && art}
-      <div
-        class="relative flex w-full items-center p-1.5 {bannerAside(backdrop)}"
-        title={art.name}
-      >
+      <div class="relative flex w-full items-center p-1.5 {bannerAside(backdrop)}" title={art.name}>
         {#if suggestion.grade}
           <span
             class="absolute right-1 top-0.5 z-[1] font-display text-[0.625rem] font-semibold
@@ -226,8 +223,8 @@
       </span>
       <button
         class={ICON_BTN}
-        title={$tr("nextUp.dismiss")}
-        aria-label={$tr("nextUp.dismiss")}
+        title={$tr("common.dismiss")}
+        aria-label={$tr("common.dismiss")}
         onclick={clickDismiss}
       >
         <svg viewBox="0 0 16 16" class="h-3 w-3" aria-hidden="true">

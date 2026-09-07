@@ -30,9 +30,9 @@ export const SUGGESTION_SECTIONS: readonly SuggestionSection[] = [
   { category: "weekly", titleKey: "dailies.groupWeekly" },
   { category: "nightwave", titleKey: "dailies.groupNightwave" },
   { category: "vendor", titleKey: "nextUp.sectionVendor" },
-  { category: "relics", titleKey: "nextUp.sectionRelics" },
+  { category: "relics", titleKey: "common.relics" },
   { category: "acquisition", titleKey: "nextUp.sectionAcquisition" },
-  { category: "mastery", titleKey: "nextUp.sectionMastery" },
+  { category: "mastery", titleKey: "common.mastery" },
 ];
 
 export const SUGGESTION_CATEGORIES: readonly SuggestionCategory[] = SUGGESTION_SECTIONS.map(

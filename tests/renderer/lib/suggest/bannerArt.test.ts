@@ -24,7 +24,6 @@ const ART = [
   "codaWeapons",
   "tenetMelee",
   "baro",
-  "varzia",
   "darvo",
   "clem",
   "acrithis",

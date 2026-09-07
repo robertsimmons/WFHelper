@@ -81,7 +81,6 @@ const TASK_ART: Record<string, BannerArt> = {
     "100% 50%",
   ),
   baro: banner(new URL("../../../assets/nextup/baro.webp", import.meta.url).href, "100% 50%"),
-  varzia: banner(new URL("../../../assets/nextup/varzia.webp", import.meta.url).href, "100% 50%"),
   darvo: banner(new URL("../../../assets/nextup/darvo.webp", import.meta.url).href, "0% 50%"),
   clem: banner(new URL("../../../assets/nextup/clem.webp", import.meta.url).href, "100% 50%"),
   acrithis: banner(

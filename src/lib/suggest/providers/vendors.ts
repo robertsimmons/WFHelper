@@ -18,7 +18,6 @@ import type { VaultTrader, WorldState } from "../../../types/world.js";
 
 type VendorId =
   | "baro"
-  | "varzia"
   | "darvo"
   | "palladino"
   | "acrithis"
@@ -29,7 +28,6 @@ type VendorId =
 
 const VENDOR_IDS: readonly string[] = [
   "baro",
-  "varzia",
   "darvo",
   "palladino",
   "acrithis",
@@ -39,11 +37,10 @@ const VENDOR_IDS: readonly string[] = [
   "codaWeapons",
 ];
 
-/** Baro's stop is the rarest of the three travellers; Darvo's deal comes round
+/** Baro's stop is the rarer of the two travellers; Darvo's deal comes round
  *  every day. The standing vendors are worth a trip once their rotation turns. */
 const VALUE: Record<VendorId, number> = {
   baro: 0.7,
-  varzia: 0.55,
   darvo: 0.35,
   palladino: 0.5,
   acrithis: 0.5,
@@ -53,11 +50,10 @@ const VALUE: Record<VendorId, number> = {
   codaWeapons: 0.45,
 };
 
-/** Ducats and Aya are farmed; Darvo's discount is still platinum out of pocket.
- *  The rest are priced in currencies that take a run of their own to earn. */
+/** Ducats are farmed; Darvo's discount is still platinum out of pocket. The rest
+ *  are priced in currencies that take a run of their own to earn. */
 const EFFORT: Record<VendorId, number> = {
   baro: 0.2,
-  varzia: 0.2,
   darvo: 0.3,
   palladino: 0.5,
   acrithis: 0.5,
@@ -114,7 +110,6 @@ function presenceOf(
   nowMs: number,
 ): Presence | null {
   if (id === "baro") return traderPresence(world?.voidTrader, nowMs);
-  if (id === "varzia") return traderPresence(world?.vaultTrader, nowMs);
   if (id === "darvo") return darvoPresence(world?.dailyDeals?.[0], nowMs);
   return curatedPresence(period, now);
 }
@@ -155,8 +150,8 @@ export const vendorsProvider: SuggestionProvider = {
           effort: EFFORT[task.id as VendorId],
           urgency: urgencyFromExpiry(here.expiry, nowMs),
         },
-        // Baro and Varzia key off the visit's activation, Darvo off the deal's
-        // expiry, so a dismissal lifts as soon as the vendor rotates.
+        // Baro keys off the visit's activation, Darvo off the deal's expiry, so
+        // a dismissal lifts as soon as the vendor rotates.
         fingerprint: periodKey ?? `${task.id}:${here.expiry ?? ""}`,
         deprioritized: activity === "low",
         complete: { taskId: task.id, periodKey, count: done, target: task.target },

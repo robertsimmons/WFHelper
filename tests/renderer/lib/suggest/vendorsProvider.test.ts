@@ -65,7 +65,6 @@ function draft(ctx: SuggestionContext, id: string) {
 describe("vendorsProvider", () => {
   it("says nothing about a travelling vendor without world data", () => {
     expect(ids(context())).not.toContain("vendors:baro");
-    expect(ids(context())).not.toContain("vendors:varzia");
     expect(ids(context())).not.toContain("vendors:darvo");
   });
 
@@ -77,12 +76,18 @@ describe("vendorsProvider", () => {
         location: "Larunda Relay (Mercury)",
         inventory: [],
       },
-      vaultTrader: {
-        activation: new Date(NOW + 48 * HOUR).toISOString(),
-        expiry: new Date(NOW + 96 * HOUR).toISOString(),
-      },
     } as unknown as WorldState;
     expect(ids(context({ world }))).not.toContain("vendors:baro");
+  });
+
+  it("says nothing about Varzia, who Next Up no longer covers", () => {
+    const world = {
+      vaultTrader: {
+        activation: new Date(NOW - 24 * HOUR).toISOString(),
+        expiry: new Date(NOW + 24 * HOUR).toISOString(),
+        inventory: [{ uniqueName: "/Lotus/Types/Relic", item: "Lith A1 Relic" }],
+      },
+    } as unknown as WorldState;
     expect(ids(context({ world }))).not.toContain("vendors:varzia");
   });
 
@@ -137,19 +142,6 @@ describe("vendorsProvider", () => {
     expect(ids(context({ world, prefs: prefs({ baro: "never" }) }))).not.toContain("vendors:baro");
     const low = draft(context({ world, prefs: prefs({ baro: "low" }) }), "vendors:baro");
     expect(low?.deprioritized).toBe(true);
-  });
-
-  it("suggests Varzia while Prime Resurgence is running", () => {
-    const world = {
-      vaultTrader: {
-        activation: new Date(NOW - 24 * HOUR).toISOString(),
-        expiry: new Date(NOW + 24 * HOUR).toISOString(),
-        inventory: [{ uniqueName: "/Lotus/Types/Relic", item: "Lith A1 Relic" }],
-      },
-    } as unknown as WorldState;
-    const varzia = draft(context({ world }), "vendors:varzia");
-    expect(varzia?.details?.pool).toEqual(["Lith A1 Relic"]);
-    expect(varzia?.signals.urgency).toBeGreaterThan(0);
   });
 
   it("suggests Darvo's deal, which carries no arrival time", () => {

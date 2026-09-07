@@ -20,10 +20,10 @@ const OWNED_PERCENT = 70;
 /** Of that owned gear, the share left part-ranked so Mastery still has cards. */
 const PART_RANKED_PERCENT = 15;
 
-/** Budgets sit well above the medians they were set from - cold ~1775ms with a
- *  ~2100ms cold-disk worst case, re-entry ~62ms, a filter click ~42ms, a page
- *  click ~14ms - so variance never fails CI while the ~1350ms re-entry this once
- *  cost still does. */
+/** Budgets sit well above the medians they were set from - cold ~1790ms with a ~2200ms
+ *  cold-disk worst case, re-entry ~56ms, a filter click ~42ms, a page click ~14ms - so variance
+ *  never fails CI while the ~1350ms re-entry this once cost still does. Cold is bimodal: one
+ *  run in four lands near 900ms, so a three-run sample reads the median as half what it is. */
 const COLD_BUDGET_MS = 4000;
 const REENTRY_BUDGET_MS = 500;
 const INTERACTION_BUDGET_MS = 400;

@@ -7,9 +7,12 @@ import { clamp01, urgencyFromExpiry } from "../score.js";
 import { normalizeDucats } from "../../../../config/shared/numeric.js";
 import { rendererPriceCacheKey } from "../../../../config/shared/wfmCacheKeys.js";
 import type { MessageKey } from "../../i18n.js";
+import type { SortDirection } from "../../../types/filters.js";
 import type {
   MissionOpinion,
+  RelicEra,
   RelicGoal,
+  RelicSort,
   SuggestionContext,
   SuggestionDraft,
   SuggestionPreferences,
@@ -186,6 +189,38 @@ interface Candidate {
   value: number;
 }
 
+function inEras(eras: readonly RelicEra[], tier: string): boolean {
+  if (eras.length === 0) return true;
+  const wanted = tier.toLowerCase();
+  return eras.some((era) => era.toLowerCase() === wanted);
+}
+
+/** Lower sorts earlier under every mode, so the arrow reads the same way in all
+ *  three; a payout is negated because more of it is better. Null is unpriced,
+ *  and sorts last. */
+function sortValue(row: Candidate, sort: RelicSort): number | null {
+  if (sort === "recommended") return -row.value;
+  const ev = expectedValue(row.held.rewards, sort);
+  return ev == null ? null : -ev;
+}
+
+function compareRelics(
+  sort: RelicSort,
+  direction: SortDirection,
+): (a: Candidate, b: Candidate) => number {
+  const flip = direction === "desc" ? -1 : 1;
+  return (a, b) => {
+    const left = sortValue(a, sort);
+    const right = sortValue(b, sort);
+    if (left === null || right === null) {
+      if (left !== right) return left === null ? 1 : -1;
+    } else if (left !== right) {
+      return (left - right) * flip;
+    }
+    return b.value - a.value || a.group.name.localeCompare(b.group.name);
+  };
+}
+
 function candidates(
   ctx: SuggestionContext,
   goal: RelicGoal,
@@ -193,12 +228,14 @@ function candidates(
 ): Candidate[] {
   const db = ctx.relicDb;
   if (!db || fissures.size === 0) return [];
+  const { relicEras, relicSort, relicSortDir } = ctx.prefs.options;
   const owned = parseOwnedRelics(ctx.inventory, db);
   const rows: Candidate[] = [];
 
   for (const [groupKey, counts] of Object.entries(owned)) {
     const group = db.groups[groupKey];
     if (!group) continue;
+    if (!inEras(relicEras, group.tier || "")) continue;
     const fissure = fissures.get((group.tier || "").toLowerCase());
     if (!fissure) continue;
     const held = bestHeld(group, counts, goal);
@@ -207,9 +244,7 @@ function candidates(
     rows.push({ group, held, fissure, value });
   }
 
-  return rows
-    .sort((a, b) => b.value - a.value || a.group.name.localeCompare(b.group.name))
-    .slice(0, SUGGESTION_LIMIT);
+  return rows.sort(compareRelics(relicSort, relicSortDir)).slice(0, SUGGESTION_LIMIT);
 }
 
 export const relicsProvider: SuggestionProvider = {

@@ -7,7 +7,7 @@ import { relicDb } from "../../../../src/stores/relics.js";
 import type { Translator } from "../../../../src/lib/i18n.js";
 import type { TrackerState } from "../../../../src/lib/world/dailies.js";
 import type { RawInventoryData } from "../../../../src/types/inventory.js";
-import type { RelicDatabase, RelicReward } from "../../../../src/types/relics.js";
+import type { RelicDatabase, RelicGroup, RelicReward } from "../../../../src/types/relics.js";
 import type {
   ActivityPref,
   SuggestionContext,
@@ -175,5 +175,133 @@ describe("relicsProvider", () => {
     expect(
       relicsProvider.collect(context(fissures("Capture"), { [RELICS_ACTIVITY]: "never" })),
     ).toEqual([]);
+  });
+});
+
+const MESO_A = "/Relic/MesoA1Intact";
+const MESO_B = "/Relic/MesoB2Intact";
+const LITH_C = "/Relic/LithC4Intact";
+const MESO_D = "/Relic/MesoD5Intact";
+
+function shelf(name: string, tier: string, uniqueName: string, drop: RelicReward): RelicGroup {
+  return {
+    key: name,
+    name,
+    tier,
+    code: name.slice(-2),
+    imageUrl: null,
+    qualities: { intact: { uniqueName, rewards: [drop] } },
+  };
+}
+
+// One drop each at the same chance, so a relic's order is its drop's worth.
+const ASH = reward("Ash Prime Systems", 25, 100, "ash_prime_systems");
+const BRATON = reward("Braton Prime Blueprint", 25, 15, "braton_prime_blueprint");
+const FROST = reward("Frost Prime Blueprint", 25, 45, "frost_prime_blueprint");
+const NYX = reward("Nyx Prime Blueprint", 25, 30, "nyx_prime_blueprint");
+
+const SHELF: Array<[string, string, string, RelicReward]> = [
+  ["Meso A1", "Meso", MESO_A, ASH],
+  ["Meso B2", "Meso", MESO_B, BRATON],
+  ["Lith C4", "Lith", LITH_C, FROST],
+];
+
+function shelfDb(extra: Array<[string, string, string, RelicReward]> = []): RelicDatabase {
+  const groups: Record<string, RelicGroup> = {};
+  const byUniqueName: RelicDatabase["byUniqueName"] = {};
+  for (const [name, tier, uniqueName, drop] of [...SHELF, ...extra]) {
+    groups[name] = shelf(name, tier, uniqueName, drop);
+    byUniqueName[uniqueName] = { groupKey: name, quality: "intact" };
+  }
+  return { groups, byUniqueName };
+}
+
+function shelfInventory(uniqueNames: readonly string[]): RawInventoryData {
+  return { MiscItems: uniqueNames.map((ItemType) => ({ ItemType, ItemCount: 3 })) };
+}
+
+const OPEN_TIERS = {
+  fissures: [
+    { tier: "Meso", missionType: "Capture", node: "Bode (Ceres)", expiry: SOON, isHard: false },
+    { tier: "Lith", missionType: "Capture", node: "Everest (Earth)", expiry: SOON, isHard: false },
+  ],
+} as unknown as WorldState;
+
+function shelfIds(
+  options: Partial<SuggestionOptions>,
+  extra: Array<[string, string, string, RelicReward]> = [],
+): string[] {
+  const held = [MESO_A, MESO_B, LITH_C, ...extra.map(([, , uniqueName]) => uniqueName)];
+  const ctx: SuggestionContext = {
+    ...context(OPEN_TIERS, {}, options),
+    relicDb: shelfDb(extra),
+    inventory: shelfInventory(held),
+  };
+  return relicsProvider.collect(ctx).map((draft) => draft.id);
+}
+
+function priceShelf(): void {
+  setCachedPrice("ash_prime_systems", 5);
+  setCachedPrice("braton_prime_blueprint", 90);
+  setCachedPrice("frost_prime_blueprint", 50);
+}
+
+describe("relicsProvider era filter", () => {
+  it("drops every relic of an era the player has unticked", () => {
+    expect(shelfIds({ relicEras: ["Lith", "Neo", "Axi", "Requiem"] })).toEqual(["relics:Lith C4"]);
+    expect(shelfIds({ relicEras: ["Meso"] }).sort()).toEqual(["relics:Meso A1", "relics:Meso B2"]);
+  });
+
+  it("reads no era at all as every era", () => {
+    expect(shelfIds({ relicEras: [] })).toHaveLength(3);
+  });
+});
+
+describe("relicsProvider sort", () => {
+  it("leads with the fattest platinum run and flips on the arrow", () => {
+    priceShelf();
+    const sort = { relicSort: "platinum", relicGoal: "ducats" } as const;
+    expect(shelfIds(sort)).toEqual(["relics:Meso B2", "relics:Lith C4", "relics:Meso A1"]);
+    expect(shelfIds({ ...sort, relicSortDir: "desc" })).toEqual([
+      "relics:Meso A1",
+      "relics:Lith C4",
+      "relics:Meso B2",
+    ]);
+  });
+
+  it("leads with the fattest ducat run when the sort asks for ducats", () => {
+    priceShelf();
+    const sort = { relicSort: "ducats", relicGoal: "platinum" } as const;
+    expect(shelfIds(sort)).toEqual(["relics:Meso A1", "relics:Lith C4", "relics:Meso B2"]);
+    expect(shelfIds({ ...sort, relicSortDir: "desc" })).toEqual([
+      "relics:Meso B2",
+      "relics:Lith C4",
+      "relics:Meso A1",
+    ]);
+  });
+
+  it("keeps the engine's own ranking under recommended, which the goal drives", () => {
+    priceShelf();
+    expect(shelfIds({ relicSort: "recommended", relicGoal: "ducats" })).toEqual([
+      "relics:Meso A1",
+      "relics:Lith C4",
+      "relics:Meso B2",
+    ]);
+    expect(shelfIds({ relicSort: "recommended", relicGoal: "platinum" })).toEqual([
+      "relics:Meso B2",
+      "relics:Lith C4",
+      "relics:Meso A1",
+    ]);
+  });
+
+  it("never leads with an unpriced relic, whichever way the arrow points", () => {
+    priceShelf();
+    const unpriced: Array<[string, string, string, RelicReward]> = [
+      ["Meso D5", "Meso", MESO_D, NYX],
+    ];
+    expect(shelfIds({ relicSort: "platinum" }, unpriced)).not.toContain("relics:Meso D5");
+    expect(shelfIds({ relicSort: "platinum", relicSortDir: "desc" }, unpriced)).not.toContain(
+      "relics:Meso D5",
+    );
   });
 });

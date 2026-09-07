@@ -13,8 +13,6 @@
     type RelicSort,
   } from "../../../types/suggest.js";
 
-  // The boxes persist and read back; the relics provider does not narrow on
-  // them yet.
   const ERA_LABELS: Record<RelicEra, MessageKey> = {
     Lith: "nextUp.eraLith",
     Meso: "nextUp.eraMeso",

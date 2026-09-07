@@ -40,24 +40,29 @@
   }
 </script>
 
-<div class="flex flex-wrap items-center gap-2.5">
-  {#each RELIC_ERAS as era (era)}
-    <label class="flex cursor-pointer select-none items-center gap-1 text-xs text-text-secondary">
-      <input
-        type="checkbox"
-        data-relic-era={era}
-        checked={options.relicEras.includes(era)}
-        onchange={() => toggleSuggestionList("relicEras", RELIC_ERAS, era)}
-      />
-      {$tr(ERA_LABELS[era])}
-    </label>
-  {/each}
+<div class="flex min-w-0 flex-1 flex-wrap items-center justify-end gap-x-3 gap-y-1.5">
+  <div class="flex flex-wrap items-center justify-end gap-x-2.5 gap-y-1">
+    {#each RELIC_ERAS as era (era)}
+      <label
+        class="flex cursor-pointer select-none items-center gap-1 whitespace-nowrap text-xs
+               text-text-secondary"
+      >
+        <input
+          type="checkbox"
+          data-relic-era={era}
+          checked={options.relicEras.includes(era)}
+          onchange={() => toggleSuggestionList("relicEras", RELIC_ERAS, era)}
+        />
+        {$tr(ERA_LABELS[era])}
+      </label>
+    {/each}
+  </div>
+  <SortControl
+    value={options.relicSort}
+    options={sortOptions}
+    direction={options.relicSortDir}
+    onSelect={pickSort}
+    onToggleDirection={() =>
+      setSuggestionOption("relicSortDir", options.relicSortDir === "asc" ? "desc" : "asc")}
+  />
 </div>
-<SortControl
-  value={options.relicSort}
-  options={sortOptions}
-  direction={options.relicSortDir}
-  onSelect={pickSort}
-  onToggleDirection={() =>
-    setSuggestionOption("relicSortDir", options.relicSortDir === "asc" ? "desc" : "asc")}
-/>

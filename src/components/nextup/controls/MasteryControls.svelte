@@ -12,9 +12,12 @@
   const picked = $derived($suggestionPreferences.options.masteryKinds);
 </script>
 
-<div class="flex flex-wrap items-center gap-2.5">
+<div class="flex min-w-0 flex-1 flex-wrap items-center justify-end gap-x-2.5 gap-y-1">
   {#each MASTERY_KINDS as kind (kind)}
-    <label class="flex cursor-pointer select-none items-center gap-1 text-xs text-text-secondary">
+    <label
+      class="flex cursor-pointer select-none items-center gap-1 whitespace-nowrap text-xs
+             text-text-secondary"
+    >
       <input
         type="checkbox"
         data-mastery-kind={kind}

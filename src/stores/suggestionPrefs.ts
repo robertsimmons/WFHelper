@@ -2,12 +2,15 @@ import { derived, get, writable, type Readable } from "svelte/store";
 
 import { normalizeType } from "../lib/suggest/missionTypes.js";
 import {
+  ACQUISITION_DIFFICULTIES,
+  ACQUISITION_TIERS,
   ACTIVITY_PREFS,
   DEFAULT_NIGHTWAVE_ART,
   MISSION_OPINIONS,
   NIGHTWAVE_ART_IDS,
   REWARD_TIERS,
   UNRATED,
+  acquisitionKey,
   defaultPreferences,
   mergePreferences,
   migrateLegacyOptions,
@@ -33,6 +36,8 @@ import type {
 const REWARD_KEY = "next-up-reward-tiers";
 const MISSION_KEY = "next-up-mission-types";
 const ACTIVITY_KEY = "next-up-activities";
+const ACQ_TIER_KEY = "next-up-acquisition-tiers";
+const ACQ_DIFFICULTY_KEY = "next-up-acquisition-difficulty";
 const OPTIONS_KEY = "next-up-options";
 const WEIGHTS_KEY = "next-up-weights";
 const NIGHTWAVE_ART_KEY = "next-up-nightwave-art";
@@ -52,6 +57,11 @@ function load(): SuggestionOverrides {
     rewards: parseOverrides(readStorage(REWARD_KEY), REWARD_VALUES),
     missionTypes: parseOverrides(readStorage(MISSION_KEY), MISSION_VALUES),
     activities: migrated.activities,
+    acquisitionTiers: parseOverrides(readStorage(ACQ_TIER_KEY), ACQUISITION_TIERS),
+    acquisitionDifficulty: parseOverrides(
+      readStorage(ACQ_DIFFICULTY_KEY),
+      ACQUISITION_DIFFICULTIES,
+    ),
     options: migrated.options,
     weights: parseWeights(readStorage(WEIGHTS_KEY)),
   };
@@ -75,6 +85,8 @@ function commit(next: SuggestionOverrides): void {
   writeStorage(REWARD_KEY, JSON.stringify(next.rewards));
   writeStorage(MISSION_KEY, JSON.stringify(next.missionTypes));
   writeStorage(ACTIVITY_KEY, JSON.stringify(next.activities));
+  writeStorage(ACQ_TIER_KEY, JSON.stringify(next.acquisitionTiers));
+  writeStorage(ACQ_DIFFICULTY_KEY, JSON.stringify(next.acquisitionDifficulty));
   writeStorage(OPTIONS_KEY, JSON.stringify(next.options));
   writeStorage(WEIGHTS_KEY, JSON.stringify(next.weights));
 }
@@ -106,6 +118,27 @@ export function setActivityPref(id: string, pref: ActivityPref): void {
   commit({
     ...current,
     activities: withEntry(current.activities, id, pref === "normal" ? null : pref),
+  });
+}
+
+/** Null drops the override, so the item goes back to the shipped rating. */
+export function setAcquisitionTier(name: string, tier: string | null): void {
+  const current = get(overrides);
+  commit({
+    ...current,
+    acquisitionTiers: withEntry(current.acquisitionTiers, acquisitionKey(name), tier),
+  });
+}
+
+export function setAcquisitionDifficulty(name: string, difficulty: string | null): void {
+  const current = get(overrides);
+  commit({
+    ...current,
+    acquisitionDifficulty: withEntry(
+      current.acquisitionDifficulty,
+      acquisitionKey(name),
+      difficulty,
+    ),
   });
 }
 
@@ -170,6 +203,14 @@ export function toggleSectionCollapsed(category: SuggestionCategory): void {
 }
 
 export function resetSuggestionPreferences(): void {
-  commit({ rewards: {}, missionTypes: {}, activities: {}, options: {}, weights: {} });
+  commit({
+    rewards: {},
+    missionTypes: {},
+    activities: {},
+    acquisitionTiers: {},
+    acquisitionDifficulty: {},
+    options: {},
+    weights: {},
+  });
   setNightwaveArt(DEFAULT_NIGHTWAVE_ART);
 }

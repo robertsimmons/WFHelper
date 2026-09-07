@@ -4,13 +4,17 @@
   import ThemedSelect from "../ThemedSelect.svelte";
   import { tr, type MessageKey } from "../../lib/i18n.js";
   import { normalizeType } from "../../lib/suggest/missionTypes.js";
+  import { createRatings } from "../../lib/suggest/acquisition/ratings.js";
   import {
+    ACQUISITION_DIFFICULTIES,
+    ACQUISITION_TIERS,
     MISSION_TYPE_NAMES,
     NIGHTWAVE_ACTIVITY,
     NIGHTWAVE_ART_IDS,
     REWARD_DISPLAY_NAMES,
     REWARD_TIERS,
     UNRATED,
+    acquisitionKey,
     defaultPreferences,
     type RewardOverride,
   } from "../../lib/suggest/preferences.js";
@@ -25,6 +29,8 @@
     nightwaveArt,
     resetScoreWeights,
     resetSuggestionPreferences,
+    setAcquisitionDifficulty,
+    setAcquisitionTier,
     setActivityPref,
     setNightwaveArt,
     setMissionOpinion,
@@ -50,15 +56,24 @@
 
   const { onClose }: Props = $props();
 
-  type Tab = "activities" | "goals" | "rewards" | "missions" | "ranking";
+  type Tab = "activities" | "goals" | "rewards" | "missions" | "gear" | "ranking";
 
   const TABS: ReadonlyArray<{ id: Tab; label: MessageKey }> = [
     { id: "activities", label: "nextUp.settingsActivities" },
     { id: "goals", label: "nextUp.settingsGoals" },
     { id: "rewards", label: "nextUp.settingsRewards" },
     { id: "missions", label: "nextUp.settingsMissionTypes" },
+    { id: "gear", label: "nextUp.settingsGear" },
     { id: "ranking", label: "nextUp.settingsRanking" },
   ];
+
+  const DIFFICULTY_LABELS: Record<string, MessageKey> = {
+    trivial: "nextUp.settingsDifficultyTrivial",
+    easy: "nextUp.settingsDifficultyEasy",
+    normal: "nextUp.settingsDifficultyNormal",
+    hard: "nextUp.settingsDifficultyHard",
+    brutal: "nextUp.settingsDifficultyBrutal",
+  };
 
   const WEIGHT_ROWS: ReadonlyArray<{ key: ScoreWeightKey; label: MessageKey }> = [
     { key: "value", label: "nextUp.settingsWeightValue" },
@@ -184,6 +199,39 @@
     return picked;
   });
 
+  const SHIPPED_RATINGS = createRatings();
+  const DEFAULT_TIER = "B";
+  const DEFAULT_DIFFICULTY = "normal";
+
+  function shippedTier(key: string): string {
+    const rank = SHIPPED_RATINGS.rank(key);
+    return rank && ACQUISITION_TIERS.includes(rank) ? rank : DEFAULT_TIER;
+  }
+
+  function shippedDifficulty(key: string): string {
+    const word = SHIPPED_RATINGS.difficultyLabel(key);
+    return word && ACQUISITION_DIFFICULTIES.includes(word) ? word : DEFAULT_DIFFICULTY;
+  }
+
+  const gearNames = $derived(new Map(itemNames.map((name) => [acquisitionKey(name), name])));
+
+  const gearRows = $derived.by(() => {
+    const needle = filter.trim().toLowerCase();
+    const keys = new Set([
+      ...Object.keys(prefs.acquisitionTiers),
+      ...Object.keys(prefs.acquisitionDifficulty),
+    ]);
+    return [...keys]
+      .map((key) => ({
+        key,
+        label: gearNames.get(key) ?? rewardLabel(key),
+        tier: prefs.acquisitionTiers[key] ?? shippedTier(key),
+        difficulty: prefs.acquisitionDifficulty[key] ?? shippedDifficulty(key),
+      }))
+      .filter((row) => !needle || row.label.toLowerCase().includes(needle))
+      .sort((a, b) => a.label.localeCompare(b.label));
+  });
+
   const missionRows = $derived(
     MISSION_TYPE_NAMES.map((name) => {
       const key = normalizeType(name);
@@ -213,6 +261,22 @@
     if (!name) return;
     setRewardTier(name, "good");
     addName = "";
+  }
+
+  /** A new row starts on what the app already thinks, so the player edits an
+   *  opinion rather than an empty one. */
+  function addGear(): void {
+    const name = addName.trim();
+    if (!name) return;
+    const key = acquisitionKey(name);
+    setAcquisitionTier(key, shippedTier(key));
+    setAcquisitionDifficulty(key, shippedDifficulty(key));
+    addName = "";
+  }
+
+  function revertGear(key: string): void {
+    setAcquisitionTier(key, null);
+    setAcquisitionDifficulty(key, null);
   }
 
   function selectTab(next: Tab): void {
@@ -460,6 +524,69 @@
               </div>
             {/each}
           {/if}
+        {/each}
+      {:else if tab === "gear"}
+        <p class="m-0 mb-2 text-xs text-text-secondary">{$tr("nextUp.settingsGearHelp")}</p>
+        <div class="mb-2 flex flex-wrap items-center gap-2">
+          <input
+            class={TEXT_INPUT_CLASS}
+            type="search"
+            bind:value={filter}
+            placeholder={$tr("nextUp.settingsFilter")}
+            aria-label={$tr("nextUp.settingsFilter")}
+          />
+          <input
+            class={TEXT_INPUT_CLASS}
+            type="text"
+            list={DATALIST_ID}
+            bind:value={addName}
+            placeholder={$tr("nextUp.settingsAddItem")}
+            aria-label={$tr("nextUp.settingsAddItem")}
+          />
+          <ThemedButton onClick={addGear}>{$tr("nextUp.settingsAdd")}</ThemedButton>
+          <datalist id={DATALIST_ID}>
+            {#each addSuggestions as name (name)}
+              <option value={name}></option>
+            {/each}
+          </datalist>
+        </div>
+
+        {#if gearRows.length === 0}
+          <p class="m-0 text-sm text-text-muted">{$tr("nextUp.settingsNoGear")}</p>
+        {/if}
+        {#each gearRows as row (row.key)}
+          <div
+            class="flex items-center justify-between gap-3 rounded-[var(--radius-md)] px-1.5 py-1
+                   hover:bg-bg-hover"
+          >
+            <span class="min-w-0 truncate text-sm text-text-secondary">{row.label}</span>
+            <div class="flex shrink-0 items-center gap-1">
+              <ThemedSelect
+                bind:value={
+                  () => row.tier, (value) => setAcquisitionTier(row.key, String(value))
+                }
+              >
+                {#each ACQUISITION_TIERS as tier (tier)}
+                  <option value={tier}>{tier}</option>
+                {/each}
+              </ThemedSelect>
+              <ThemedSelect
+                bind:value={
+                  () => row.difficulty,
+                  (value) => setAcquisitionDifficulty(row.key, String(value))
+                }
+              >
+                {#each ACQUISITION_DIFFICULTIES as word (word)}
+                  <option value={word}>{$tr(DIFFICULTY_LABELS[word] ?? word)}</option>
+                {/each}
+              </ThemedSelect>
+              <ThemedButton
+                size="compact"
+                title={$tr("nextUp.settingsRevert")}
+                onClick={() => revertGear(row.key)}>&#8634;</ThemedButton
+              >
+            </div>
+          </div>
         {/each}
       {:else if tab === "missions"}
         <p class="m-0 mb-2 text-xs text-text-secondary">{$tr("nextUp.settingsMissionHelp")}</p>

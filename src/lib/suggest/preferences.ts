@@ -1,5 +1,7 @@
 import missionData from "../../data/suggest/missionTypes.json";
 import rewardData from "../../data/suggest/rewardValues.json";
+import { DIFFICULTY_WORDS } from "./acquisition/ratings.js";
+import { TIERS } from "./acquisition/rankings.js";
 import { normalizeType } from "./missionTypes.js";
 import { normalizeName } from "./rewards.js";
 import { DEFAULT_WEIGHTS, WEIGHT_MAX } from "./score.js";
@@ -25,6 +27,12 @@ export const NIGHTWAVE_ART_IDS = ["amir", "nora"] as const;
 export type NightwaveArt = (typeof NIGHTWAVE_ART_IDS)[number];
 export const DEFAULT_NIGHTWAVE_ART: NightwaveArt = "amir";
 
+/** What the player may overrule a shipped acquisition rating with. */
+export const ACQUISITION_TIERS: readonly string[] = TIERS;
+export const ACQUISITION_DIFFICULTIES: readonly string[] = DIFFICULTY_WORDS;
+
+export { nameKey as acquisitionKey } from "./acquisition/curated.js";
+
 export const REWARD_TIERS: readonly RewardTier[] = ["great", "good", "ok", "low"];
 export const MISSION_OPINIONS: readonly MissionOpinion[] = ["good", "bad"];
 export const ACTIVITY_PREFS: readonly ActivityPref[] = ["never", "low", "normal"];
@@ -36,6 +44,8 @@ export interface SuggestionOverrides {
   rewards: Record<string, RewardOverride>;
   missionTypes: Record<string, MissionOverride>;
   activities: Record<string, ActivityPref>;
+  acquisitionTiers: Record<string, string>;
+  acquisitionDifficulty: Record<string, string>;
   options: Partial<SuggestionOptions>;
   weights: Partial<ScoreWeights>;
 }
@@ -83,6 +93,8 @@ export function defaultPreferences(): SuggestionPreferences {
     rewards: shippedRewards(),
     missionTypes: shippedMissionTypes(),
     activities: {},
+    acquisitionTiers: {},
+    acquisitionDifficulty: {},
     options: { ...DEFAULT_OPTIONS },
     weights: { ...DEFAULT_WEIGHTS },
   };
@@ -108,6 +120,11 @@ export function mergePreferences(
     rewards: mergeRatings(defaults.rewards, overrides.rewards),
     missionTypes: mergeRatings(defaults.missionTypes, overrides.missionTypes),
     activities: { ...defaults.activities, ...overrides.activities },
+    acquisitionTiers: { ...defaults.acquisitionTiers, ...overrides.acquisitionTiers },
+    acquisitionDifficulty: {
+      ...defaults.acquisitionDifficulty,
+      ...overrides.acquisitionDifficulty,
+    },
     options: { ...defaults.options, ...overrides.options },
     weights: { ...defaults.weights, ...overrides.weights },
   };

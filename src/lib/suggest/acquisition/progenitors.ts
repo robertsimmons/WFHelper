@@ -37,7 +37,8 @@ export function createProgenitors(source?: unknown): NemesisProgenitor[] {
       warframes: warframes.sort((a, b) => a.localeCompare(b)),
     }))
     .sort(
-      (a, b) => elementRank(a.element) - elementRank(b.element) || a.element.localeCompare(b.element),
+      (a, b) =>
+        elementRank(a.element) - elementRank(b.element) || a.element.localeCompare(b.element),
     );
 }
 

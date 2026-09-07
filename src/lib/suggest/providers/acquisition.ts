@@ -1,4 +1,7 @@
+import { get } from "svelte/store";
+
 import { formatNumber } from "../../format.js";
+import { overframeRankingsRevision } from "../../../stores/overframeRankings.js";
 import { resolveAcquisition } from "../acquisition/index.js";
 import { clamp01 } from "../score.js";
 import type { MessageKey } from "../../i18n.js";
@@ -11,9 +14,15 @@ import type {
 import type {
   SuggestionContext,
   SuggestionDraft,
+  SuggestionPreferences,
   SuggestionProvider,
   WhySegment,
 } from "../../../types/suggest.js";
+
+interface RatingEntry {
+  rank?: string;
+  difficulty?: string;
+}
 
 /** The whole domain answers to one activity setting, as Nightwave's acts do. */
 export const ACQUISITION_ACTIVITY = "acquisition";
@@ -142,16 +151,39 @@ function whySegments(target: AcquisitionTarget, t: SuggestionContext["t"]): WhyS
 
 let cached: { keys: readonly unknown[]; targets: AcquisitionTarget[] } | null = null;
 
+/** The player's own tier and difficulty in the shape the resolver reads supplied
+ *  ratings in, which is what puts them above the shipped and overframe tables.
+ *  Storing them by name is also what carries them over a data regeneration. */
+export function acquisitionRatings(prefs: SuggestionPreferences): Record<string, RatingEntry> {
+  const source: Record<string, RatingEntry> = {};
+  for (const [name, rank] of Object.entries(prefs.acquisitionTiers)) source[name] = { rank };
+  for (const [name, difficulty] of Object.entries(prefs.acquisitionDifficulty)) {
+    source[name] = { ...source[name], difficulty };
+  }
+  return source;
+}
+
 /** The sweep walks the whole item database, and the feed re-derives on a timer;
  *  only a change to what it reads can change what it returns. */
 function targetsFor(ctx: SuggestionContext): AcquisitionTarget[] {
-  const keys = [ctx.itemDb, ctx.inventory, ctx.relicDb, ctx.plat] as const;
+  const { prefs } = ctx;
+  const keys = [
+    ctx.itemDb,
+    ctx.inventory,
+    ctx.relicDb,
+    ctx.plat,
+    prefs.acquisitionTiers,
+    prefs.acquisitionDifficulty,
+    // A refreshed overframe table changes every rank the sweep just cached.
+    get(overframeRankingsRevision),
+  ] as const;
   if (cached && keys.every((key, index) => cached?.keys[index] === key)) return cached.targets;
   const targets = resolveAcquisition({
     itemDb: ctx.itemDb,
     inventory: ctx.inventory,
     relicDb: ctx.relicDb,
     plat: ctx.plat,
+    ratings: acquisitionRatings(prefs),
   });
   cached = { keys, targets };
   return targets;

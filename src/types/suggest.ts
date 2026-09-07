@@ -65,6 +65,10 @@ export interface SuggestionPreferences {
   rewards: Record<string, RewardTier>;
   missionTypes: Record<string, MissionOpinion>;
   activities: Record<string, ActivityPref>;
+  /** Tier letters the player has overruled, by normalized item name. */
+  acquisitionTiers: Record<string, string>;
+  /** Farm-difficulty words the player has overruled, by normalized item name. */
+  acquisitionDifficulty: Record<string, string>;
   options: SuggestionOptions;
   weights: ScoreWeights;
 }

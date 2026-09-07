@@ -1,12 +1,20 @@
 <script lang="ts">
   import { onMount } from "svelte";
 
+  import SortControl from "../components/SortControl.svelte";
   import SuggestionSection from "../components/nextup/SuggestionSection.svelte";
   import SuggestionSettingsModal from "../components/nextup/SuggestionSettingsModal.svelte";
-  import { tr } from "../lib/i18n.js";
+  import { tr, type MessageKey } from "../lib/i18n.js";
+  import { ACQUISITION_SORTS, type AcquisitionSort } from "../lib/suggest/acquisition/sort.js";
+  import { sortAcquisitionSuggestions } from "../lib/suggest/providers/acquisition.js";
   import { mountWorldPolling } from "../lib/world/useWorldView.js";
   import { ensureDropPools } from "../stores/dropPools.js";
-  import { collapsedSections, toggleSectionCollapsed } from "../stores/suggestionPrefs.js";
+  import {
+    collapsedSections,
+    setSuggestionOption,
+    suggestionPreferences,
+    toggleSectionCollapsed,
+  } from "../stores/suggestionPrefs.js";
   import {
     categoryFilter,
     completeTask,
@@ -15,7 +23,18 @@
     suggestionFeed,
     toggleCategoryFilter,
   } from "../stores/suggestions.js";
-  import { SUGGESTION_SECTIONS, type Suggestion } from "../types/suggest.js";
+  import {
+    SUGGESTION_SECTIONS,
+    type Suggestion,
+    type SuggestionSection as Section,
+  } from "../types/suggest.js";
+
+  const SORT_LABELS: Record<AcquisitionSort, MessageKey> = {
+    recommended: "nextUp.sortRecommended",
+    difficulty: "nextUp.sortDifficulty",
+    tier: "nextUp.sortTier",
+    plat: "nextUp.sortPlat",
+  };
 
   let settingsOpen = $state(false);
 
@@ -34,10 +53,43 @@
     ),
   );
 
+  const options = $derived($suggestionPreferences.options);
+
+  const sortOptions = $derived(
+    ACQUISITION_SORTS.map((key) => [key, $tr(SORT_LABELS[key])] as const),
+  );
+
   function complete(suggestion: Suggestion, count: number): void {
     if (suggestion.complete) completeTask(suggestion.complete, count);
   }
+
+  function suggestionsFor(section: Section): Suggestion[] {
+    const list = feed.sections[section.category];
+    return section.category === "acquisition"
+      ? sortAcquisitionSuggestions(list, options.acquisitionSort, options.acquisitionSortDir)
+      : list;
+  }
+
+  function pickSort(value: string): void {
+    if ((ACQUISITION_SORTS as readonly string[]).includes(value)) {
+      setSuggestionOption("acquisitionSort", value as AcquisitionSort);
+    }
+  }
 </script>
+
+{#snippet acquisitionControls()}
+  <SortControl
+    value={options.acquisitionSort}
+    options={sortOptions}
+    direction={options.acquisitionSortDir}
+    onSelect={pickSort}
+    onToggleDirection={() =>
+      setSuggestionOption(
+        "acquisitionSortDir",
+        options.acquisitionSortDir === "asc" ? "desc" : "asc",
+      )}
+  />
+{/snippet}
 
 <section class="view active">
   <div class="view-header">
@@ -88,11 +140,12 @@
       {#each shown as section (section.category)}
         <SuggestionSection
           title={$tr(section.titleKey)}
-          suggestions={feed.sections[section.category]}
+          suggestions={suggestionsFor(section)}
           collapsed={$collapsedSections.includes(section.category)}
           onToggle={() => toggleSectionCollapsed(section.category)}
           onComplete={complete}
           onDismiss={(suggestion) => dismissSuggestion(suggestion.id, suggestion.fingerprint)}
+          controls={section.category === "acquisition" ? acquisitionControls : undefined}
         />
       {/each}
     {/if}

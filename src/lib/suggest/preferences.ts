@@ -2,10 +2,12 @@ import missionData from "../../data/suggest/missionTypes.json";
 import rewardData from "../../data/suggest/rewardValues.json";
 import { DIFFICULTY_WORDS } from "./acquisition/ratings.js";
 import { TIERS } from "./acquisition/rankings.js";
+import { ACQUISITION_SORTS, DEFAULT_ACQUISITION_SORT } from "./acquisition/sort.js";
 import { normalizeType } from "./missionTypes.js";
 import { normalizeName } from "./rewards.js";
 import { DEFAULT_WEIGHTS, WEIGHT_MAX } from "./score.js";
 import { RELIC_GOALS, SCORE_WEIGHT_KEYS } from "../../types/suggest.js";
+import type { AcquisitionSort } from "./acquisition/sort.js";
 import type {
   ActivityPref,
   MissionOpinion,
@@ -54,6 +56,8 @@ export const DEFAULT_OPTIONS: SuggestionOptions = {
   relicGoal: "platinum",
   masteryForma: true,
   masteryOwnMode: true,
+  acquisitionSort: DEFAULT_ACQUISITION_SORT,
+  acquisitionSortDir: "asc",
 };
 
 /** Synthetic activity ids these settings were stored under before they had a
@@ -174,6 +178,12 @@ export function parseOptions(raw: string | null): Partial<SuggestionOptions> {
   if (typeof parsed["masteryOwnMode"] === "boolean") {
     options.masteryOwnMode = parsed["masteryOwnMode"];
   }
+  const sort = parsed["acquisitionSort"];
+  if (typeof sort === "string" && (ACQUISITION_SORTS as readonly string[]).includes(sort)) {
+    options.acquisitionSort = sort as AcquisitionSort;
+  }
+  const direction = parsed["acquisitionSortDir"];
+  if (direction === "asc" || direction === "desc") options.acquisitionSortDir = direction;
   return options;
 }
 

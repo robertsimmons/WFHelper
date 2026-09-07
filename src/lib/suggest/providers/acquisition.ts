@@ -3,8 +3,11 @@ import { get } from "svelte/store";
 import { formatNumber } from "../../format.js";
 import { overframeRankingsRevision } from "../../../stores/overframeRankings.js";
 import { resolveAcquisition } from "../acquisition/index.js";
+import { compareAcquisition, type AcquisitionSort } from "../acquisition/sort.js";
 import { clamp01 } from "../score.js";
 import type { MessageKey } from "../../i18n.js";
+import type { SortDirection } from "../../../types/filters.js";
+import type { Suggestion } from "../../../types/suggest.js";
 import type {
   AcquisitionPath,
   AcquisitionTarget,
@@ -70,15 +73,6 @@ function effortFor(target: AcquisitionTarget): number {
   if (target.paths.length > 0) return clamp01(target.effort);
   if (!target.parts.known || target.parts.missing.length > 0) return NO_ROUTE_EFFORT;
   return target.parts.buildable ? READY_EFFORT : MATERIALS_EFFORT;
-}
-
-/** Hundreds of items tie on effort at the same route, so price breaks the tie:
- *  the cheaper one is the genuinely easier win, and a name never is. */
-function priceFor(target: AcquisitionTarget): number {
-  const cost = target.paths[0]?.cost;
-  if (!cost) return Number.POSITIVE_INFINITY;
-  const plat = cost.plat?.set ?? cost.plat?.partsTotal ?? null;
-  return plat ?? cost.credits ?? Number.POSITIVE_INFINITY;
 }
 
 function titleKey(target: AcquisitionTarget): MessageKey {
@@ -189,6 +183,25 @@ function targetsFor(ctx: SuggestionContext): AcquisitionTarget[] {
   return targets;
 }
 
+/** The feed ranks every section by score, so the section's own order is put back
+ *  on afterwards; the effort each card was scored on is the tie-breaker. */
+export function sortAcquisitionSuggestions(
+  suggestions: readonly Suggestion[],
+  sort: AcquisitionSort,
+  direction: SortDirection,
+): Suggestion[] {
+  const compare = compareAcquisition(sort, direction);
+  return [...suggestions].sort((a, b) => {
+    const left = a.details?.acquisition;
+    const right = b.details?.acquisition;
+    if (!left || !right) return 0;
+    return compare(
+      { target: left, effort: a.signals.effort },
+      { target: right, effort: b.signals.effort },
+    );
+  });
+}
+
 export const acquisitionProvider: SuggestionProvider = {
   id: "acquisition",
 
@@ -198,11 +211,8 @@ export const acquisitionProvider: SuggestionProvider = {
     if (activity === "never") return [];
 
     return targetsFor(ctx)
-      .map((target) => ({ target, effort: effortFor(target), price: priceFor(target) }))
-      .sort(
-        (a, b) =>
-          a.effort - b.effort || a.price - b.price || a.target.name.localeCompare(b.target.name),
-      )
+      .map((target) => ({ target, effort: effortFor(target) }))
+      .sort(compareAcquisition(prefs.options.acquisitionSort, prefs.options.acquisitionSortDir))
       .slice(0, SUGGESTION_LIMIT)
       .map(({ target, effort }) => {
         const total = totalParts(target.parts);

@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 
 import { resolveAcquisition } from "../../../../src/lib/suggest/acquisition/index.js";
+import { recommendScore } from "../../../../src/lib/suggest/acquisition/recommend.js";
 import { DEFAULT_OPTIONS, defaultPreferences } from "../../../../src/lib/suggest/preferences.js";
 import {
   ACQUISITION_ACTIVITY,
@@ -97,14 +98,18 @@ describe("acquisitionProvider", () => {
     expect(new Set(drafts.map((draft) => draft.category))).toEqual(new Set(["acquisition"]));
   });
 
-  it("offers the targets the resolver ranked easiest, in that order", () => {
+  it("offers every target the resolver found, best recommended first", () => {
     const db = itemDb();
     const targets = resolveAcquisition({ itemDb: db, inventory: null });
     const drafts = collect({ itemDb: db });
-    expect(drafts.map((draft) => draft.id)).toEqual(
-      targets.map((target) => `acquisition:${target.uniqueName}`),
+    expect(new Set(drafts.map((draft) => draft.id))).toEqual(
+      new Set(targets.map((target) => `acquisition:${target.uniqueName}`)),
     );
-    expect(drafts[0].id).toBe(`acquisition:${MAG}`);
+    const scores = drafts.map((draft) => {
+      const target = draft.details?.acquisition;
+      return recommendScore(target?.rank ?? null, target?.difficulty ?? null);
+    });
+    expect([...scores].sort((a, b) => b - a)).toEqual(scores);
   });
 
   it("keeps value running with the resolver's effort so the scorer agrees", () => {
@@ -113,8 +118,6 @@ describe("acquisitionProvider", () => {
       expect(draft.signals.value).toBeCloseTo(1 - draft.signals.effort);
       expect(draft.signals.urgency).toBe(0);
     }
-    const efforts = drafts.map((draft) => draft.signals.effort);
-    expect([...efforts].sort((a, b) => a - b)).toEqual(efforts);
   });
 
   it("drops the domain on never and keeps it last on low", () => {
@@ -133,7 +136,7 @@ describe("acquisitionProvider", () => {
     expect(draft.signals.effort).toBe(1);
   });
 
-  it("puts a build the foundry would take today at the front", () => {
+  it("reads a build the foundry would take today as ready and all but free", () => {
     const drafts = collect({
       inventory: inventory({
         recipes: { [MAG_BP]: 1 },
@@ -141,7 +144,6 @@ describe("acquisitionProvider", () => {
       }),
     });
     const mag = draftFor(drafts, MAG);
-    expect(drafts[0].id).toBe(`acquisition:${MAG}`);
     expect(mag.signals.effort).toBeLessThan(0.1);
     expect(mag.whySegments).toEqual([{ text: "nextUp.whyAcqReady", tone: "good" }]);
   });

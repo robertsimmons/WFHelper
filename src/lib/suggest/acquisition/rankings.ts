@@ -1,3 +1,4 @@
+import { preferFreshRankings } from "../../../stores/overframeRankings.js";
 import { nameKey } from "./curated.js";
 
 /** Overframe averages its tier votes on a 1..5 scale where 1 is the top tier. */
@@ -70,4 +71,4 @@ function shipped(): unknown {
   return (module as { default?: unknown }).default ?? module;
 }
 
-export const rankTiers: RankTiers = createRankTiers(shipped());
+export const rankTiers: RankTiers = preferFreshRankings(createRankTiers, shipped());

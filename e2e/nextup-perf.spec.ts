@@ -20,9 +20,10 @@ const OWNED_PERCENT = 70;
 /** Of that owned gear, the share left part-ranked so Mastery still has cards. */
 const PART_RANKED_PERCENT = 15;
 
-/** Budgets sit well above the medians they were set from - cold ~1055ms with a
- *  ~2100ms cold-disk worst case, re-entry ~68ms, every filter click 14-50ms - so
- *  variance never fails CI while the ~1350ms re-entry this once cost still does. */
+/** Budgets sit well above the medians they were set from - cold ~1775ms with a
+ *  ~2100ms cold-disk worst case, re-entry ~62ms, a filter click ~42ms, a page
+ *  click ~14ms - so variance never fails CI while the ~1350ms re-entry this once
+ *  cost still does. */
 const COLD_BUDGET_MS = 4000;
 const REENTRY_BUDGET_MS = 500;
 const INTERACTION_BUDGET_MS = 400;
@@ -247,6 +248,22 @@ async function sectionSamples(
   return { collapse, expand };
 }
 
+/** A page holds one row, so every section but the shortest has a second page;
+ *  a section that fits on one leaves both arrows disabled and is not sampled. */
+async function pagerSamples(page: Page, id: string): Promise<{ next: Sample[]; prev: Sample[] }> {
+  const next = `[data-section-page-next="${id}"]`;
+  const prev = `[data-section-page-prev="${id}"]`;
+  const forward: Sample[] = [];
+  const back: Sample[] = [];
+  if ((await page.locator(next).count()) === 0) return { next: forward, prev: back };
+  if (!(await page.locator(next).isEnabled())) return { next: forward, prev: back };
+  for (let run = 0; run < RUNS; run += 1) {
+    forward.push(await measure(page, { type: "click", selector: next }));
+    back.push(await measure(page, { type: "click", selector: prev }));
+  }
+  return { next: forward, prev: back };
+}
+
 async function leaveNextUp(page: Page): Promise<void> {
   await page.locator('#sidebar [data-view="inventory"]').click();
   await expect(page.locator("[data-suggestion-card]")).toHaveCount(0, { timeout: 30_000 });
@@ -276,7 +293,7 @@ function describeSamples(name: string, samples: readonly Sample[]): string {
   return `  ${name}:\n    ${each}`;
 }
 
-test("Next Up render cost: cold entry, re-entry and every filter control", async () => {
+test("Next Up render cost: cold entry, re-entry, paging and every filter control", async () => {
   test.setTimeout(15 * 60_000);
 
   let prep: ElectronTestHarness | undefined;
@@ -313,6 +330,7 @@ test("Next Up render cost: cold entry, re-entry and every filter control", async
   let relicEra!: Sample[];
   let masteryKind!: Sample[];
   let section!: { collapse: Sample[]; expand: Sample[] };
+  let pager!: { next: Sample[]; prev: Sample[] };
   let harness: ElectronTestHarness | undefined;
   try {
     harness = await launchElectronTestHarness("wfh-nextup-perf-warm-", {
@@ -329,6 +347,9 @@ test("Next Up render cost: cold entry, re-entry and every filter control", async
     }
 
     await expect(page.locator("[data-acquisition-kind]").first()).toBeVisible({ timeout: 30_000 });
+    // Paged before the filters narrow anything, so the section still has the
+    // second page the arrows need.
+    pager = await pagerSamples(page, "acquisition");
     toggle = await toggleSamples(page, "data-acquisition-kind");
     section = await sectionSamples(page, "acquisition");
     // Tasks and relics need live world state, so neither is guaranteed a card.
@@ -346,6 +367,8 @@ test("Next Up render cost: cold entry, re-entry and every filter control", async
   };
   const interactions = {
     "acquisition kind toggle": stat(toggle, elapsed),
+    "page next": stat(pager.next, elapsed),
+    "page previous": stat(pager.prev, elapsed),
     "section collapse": stat(section.collapse, elapsed),
     "section expand": stat(section.expand, elapsed),
     "task kind toggle": stat(taskKind, elapsed),
@@ -357,6 +380,8 @@ test("Next Up render cost: cold entry, re-entry and every filter control", async
     ["cold", cold],
     ["re-entry", reentry],
     ["acquisition kind toggle", toggle],
+    ["page next", pager.next],
+    ["page previous", pager.prev],
     ["section collapse", section.collapse],
     ["section expand", section.expand],
     ["task kind toggle", taskKind],
@@ -415,6 +440,7 @@ test("Next Up render cost: cold entry, re-entry and every filter control", async
   expect(summary.reentry.runs).toBe(RUNS);
   expect(interactions["acquisition kind toggle"].runs).toBeGreaterThan(0);
   expect(interactions["section expand"].runs).toBe(RUNS);
+  expect(interactions["page next"].runs, "acquisition never offered a second page").toBe(RUNS);
 
   expect(summary.cold.median, "cold entry").toBeLessThan(COLD_BUDGET_MS);
   expect(summary.reentry.median, "tab re-entry").toBeLessThan(REENTRY_BUDGET_MS);

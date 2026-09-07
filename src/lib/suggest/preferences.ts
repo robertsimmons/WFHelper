@@ -7,12 +7,21 @@ import { ACQUISITION_SORTS, DEFAULT_ACQUISITION_SORT } from "./acquisition/sort.
 import { normalizeType } from "./missionTypes.js";
 import { normalizeName } from "./rewards.js";
 import { DEFAULT_WEIGHTS, WEIGHT_MAX } from "./score.js";
-import { RELIC_GOALS, SCORE_WEIGHT_KEYS } from "../../types/suggest.js";
+import {
+  MASTERY_KINDS,
+  RELIC_ERAS,
+  RELIC_GOALS,
+  RELIC_SORTS,
+  SCORE_WEIGHT_KEYS,
+  TASK_KINDS,
+} from "../../types/suggest.js";
 import type { AcquisitionSort } from "./acquisition/sort.js";
 import type {
   ActivityPref,
+  MasteryKind,
   MissionOpinion,
   RelicGoal,
+  RelicSort,
   RewardTier,
   ScoreWeights,
   SuggestionOptions,
@@ -55,8 +64,11 @@ export interface SuggestionOverrides {
 
 export const DEFAULT_OPTIONS: SuggestionOptions = {
   relicGoal: "platinum",
-  masteryForma: true,
-  masteryOwnMode: true,
+  taskKinds: [...TASK_KINDS],
+  relicEras: [...RELIC_ERAS],
+  relicSort: "recommended",
+  relicSortDir: "asc",
+  masteryKinds: [...MASTERY_KINDS],
   acquisitionSort: DEFAULT_ACQUISITION_SORT,
   acquisitionSortDir: "asc",
   acquisitionKinds: [...ACQUISITION_INCLUDES],
@@ -66,6 +78,8 @@ export const DEFAULT_OPTIONS: SuggestionOptions = {
  *  typed home; read once, on load, and then dropped. */
 const LEGACY_FORMA_KEY = "mastery:forma";
 const LEGACY_MODE_KEY = "mastery:mode";
+/** The boolean the Forma entry in `masteryKinds` replaced. */
+const LEGACY_FORMA_OPTION = "masteryForma";
 const legacyGoalKey = (goal: RelicGoal): string => `relics:goal:${goal}`;
 
 /** The whole settings vocabulary for mission types, curated and unrated alike. */
@@ -118,21 +132,67 @@ function mergeRatings<T extends string>(
   return merged;
 }
 
+/** The acquisition sweep keys its cache on the merged maps by identity, so a
+ *  merge that changed nothing has to hand back the object it handed back last
+ *  time; a fresh spread would re-walk every masterable item on every toggle. */
+function perField<A, B, R>(merge: (a: A, b: B) => R): (a: A, b: B) => R {
+  let last: { a: A; b: B; result: R } | null = null;
+  return (a, b) => {
+    if (last && last.a === a && last.b === b) return last.result;
+    const result = merge(a, b);
+    last = { a, b, result };
+    return result;
+  };
+}
+
+const mergeRewards = perField(mergeRatings<RewardTier>);
+const mergeMissions = perField(mergeRatings<MissionOpinion>);
+const mergeActivities = perField(
+  (defaults: Record<string, ActivityPref>, overrides: Record<string, ActivityPref>) => ({
+    ...defaults,
+    ...overrides,
+  }),
+);
+const mergeTiers = perField(
+  (defaults: Record<string, string>, overrides: Record<string, string>) => ({
+    ...defaults,
+    ...overrides,
+  }),
+);
+const mergeDifficulty = perField(
+  (defaults: Record<string, string>, overrides: Record<string, string>) => ({
+    ...defaults,
+    ...overrides,
+  }),
+);
+const mergeOptions = perField(
+  (defaults: SuggestionOptions, overrides: Partial<SuggestionOptions>): SuggestionOptions => ({
+    ...defaults,
+    ...overrides,
+  }),
+);
+const mergeWeights = perField(
+  (defaults: ScoreWeights, overrides: Partial<ScoreWeights>): ScoreWeights => ({
+    ...defaults,
+    ...overrides,
+  }),
+);
+
 export function mergePreferences(
   defaults: SuggestionPreferences,
   overrides: SuggestionOverrides,
 ): SuggestionPreferences {
   return {
-    rewards: mergeRatings(defaults.rewards, overrides.rewards),
-    missionTypes: mergeRatings(defaults.missionTypes, overrides.missionTypes),
-    activities: { ...defaults.activities, ...overrides.activities },
-    acquisitionTiers: { ...defaults.acquisitionTiers, ...overrides.acquisitionTiers },
-    acquisitionDifficulty: {
-      ...defaults.acquisitionDifficulty,
-      ...overrides.acquisitionDifficulty,
-    },
-    options: { ...defaults.options, ...overrides.options },
-    weights: { ...defaults.weights, ...overrides.weights },
+    rewards: mergeRewards(defaults.rewards, overrides.rewards),
+    missionTypes: mergeMissions(defaults.missionTypes, overrides.missionTypes),
+    activities: mergeActivities(defaults.activities, overrides.activities),
+    acquisitionTiers: mergeTiers(defaults.acquisitionTiers, overrides.acquisitionTiers),
+    acquisitionDifficulty: mergeDifficulty(
+      defaults.acquisitionDifficulty,
+      overrides.acquisitionDifficulty,
+    ),
+    options: mergeOptions(defaults.options, overrides.options),
+    weights: mergeWeights(defaults.weights, overrides.weights),
   };
 }
 
@@ -168,6 +228,12 @@ function parseJsonObject(raw: string | null): Record<string, unknown> | null {
   }
 }
 
+/** Order comes from the shipped list, never from the stored array, so a
+ *  hand-edited file cannot reorder what the boxes read. */
+function parseList<T extends string>(value: unknown, allowed: readonly T[]): T[] | null {
+  return Array.isArray(value) ? allowed.filter((entry) => value.includes(entry)) : null;
+}
+
 export function parseOptions(raw: string | null): Partial<SuggestionOptions> {
   const parsed = parseJsonObject(raw);
   if (!parsed) return {};
@@ -176,10 +242,19 @@ export function parseOptions(raw: string | null): Partial<SuggestionOptions> {
   if (typeof goal === "string" && (RELIC_GOALS as readonly string[]).includes(goal)) {
     options.relicGoal = goal as RelicGoal;
   }
-  if (typeof parsed["masteryForma"] === "boolean") options.masteryForma = parsed["masteryForma"];
-  if (typeof parsed["masteryOwnMode"] === "boolean") {
-    options.masteryOwnMode = parsed["masteryOwnMode"];
+  const tasks = parseList(parsed["taskKinds"], TASK_KINDS);
+  if (tasks) options.taskKinds = tasks;
+  const eras = parseList(parsed["relicEras"], RELIC_ERAS);
+  if (eras) options.relicEras = eras;
+  const relicSort = parsed["relicSort"];
+  if (typeof relicSort === "string" && (RELIC_SORTS as readonly string[]).includes(relicSort)) {
+    options.relicSort = relicSort as RelicSort;
   }
+  const relicDir = parsed["relicSortDir"];
+  if (relicDir === "asc" || relicDir === "desc") options.relicSortDir = relicDir;
+  const masteryKinds = parseList(parsed["masteryKinds"], MASTERY_KINDS);
+  if (masteryKinds) options.masteryKinds = masteryKinds;
+  else if (parsed[LEGACY_FORMA_OPTION] === false) options.masteryKinds = withoutForma();
   const sort = parsed["acquisitionSort"];
   if (typeof sort === "string" && (ACQUISITION_SORTS as readonly string[]).includes(sort)) {
     options.acquisitionSort = sort as AcquisitionSort;
@@ -193,6 +268,10 @@ export function parseOptions(raw: string | null): Partial<SuggestionOptions> {
   return options;
 }
 
+function withoutForma(): MasteryKind[] {
+  return MASTERY_KINDS.filter((kind) => kind !== "forma");
+}
+
 /** Lifts the settings that used to live as synthetic activity ids onto the typed
  *  shape, and clears the ids so nothing reads them twice. A value already stored
  *  under the new shape wins. */
@@ -203,11 +282,8 @@ export function migrateLegacyOptions(
   const options: Partial<SuggestionOptions> = { ...stored };
   const legacyGoals = RELIC_GOALS.map(legacyGoalKey);
 
-  if (options.masteryForma === undefined && activities[LEGACY_FORMA_KEY] !== undefined) {
-    options.masteryForma = activities[LEGACY_FORMA_KEY] !== "never";
-  }
-  if (options.masteryOwnMode === undefined && activities[LEGACY_MODE_KEY] !== undefined) {
-    options.masteryOwnMode = activities[LEGACY_MODE_KEY] !== "never";
+  if (options.masteryKinds === undefined && activities[LEGACY_FORMA_KEY] === "never") {
+    options.masteryKinds = withoutForma();
   }
   if (options.relicGoal === undefined && legacyGoals.some((key) => key in activities)) {
     options.relicGoal =

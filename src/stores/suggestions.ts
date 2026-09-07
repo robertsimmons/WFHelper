@@ -25,16 +25,10 @@ import { priceCacheRevision } from "./pricing.js";
 import { relicDb } from "./relics.js";
 import { suggestionPreferences } from "./suggestionPrefs.js";
 import { worldData } from "./world.js";
-import { SUGGESTION_CATEGORIES } from "../types/suggest.js";
 import type { PlatPriceLookup } from "../lib/suggest/acquisition/types.js";
-import type {
-  SuggestionCategory,
-  SuggestionProvider,
-  TrackerCompletion,
-} from "../types/suggest.js";
+import type { SuggestionProvider, TrackerCompletion } from "../types/suggest.js";
 
 const STORAGE_KEY = "next-up-dismissals";
-const FILTER_KEY = "next-up-filters";
 const PROVIDERS: readonly SuggestionProvider[] = [
   dailiesProvider,
   vendorsProvider,
@@ -80,6 +74,12 @@ function platPrices(revision: number): PlatPriceLookup {
   return platLookup;
 }
 
+// Leaving the tab drops the only subscriber this derived has, so Svelte tears
+// it down and rebuilds it on re-entry. Every input is a store value replaced
+// wholesale, so identical inputs can only produce the feed already built; the
+// derived stays a derived, and nothing recomputes while another tab is up.
+let memo: { inputs: readonly unknown[]; feed: SuggestionFeed } | null = null;
+
 export const suggestionFeed: Readable<SuggestionFeed> = derived(
   [
     worldData,
@@ -96,21 +96,26 @@ export const suggestionFeed: Readable<SuggestionFeed> = derived(
     tr,
     clockStore(CLOCK_MS),
   ],
-  ([
-    $world,
-    $inventory,
-    $inventoryModifiedAt,
-    $itemDb,
-    $mastery,
-    $relicDb,
-    $priceRevision,
-    $tracker,
-    $dismissals,
-    $prefs,
-    $dropPools,
-    $tr,
-    $now,
-  ]) => {
+  (inputs) => {
+    if (memo && inputs.every((value, index) => memo?.inputs[index] === value)) {
+      liveFingerprints = memo.feed.fingerprints;
+      return memo.feed;
+    }
+    const [
+      $world,
+      $inventory,
+      $inventoryModifiedAt,
+      $itemDb,
+      $mastery,
+      $relicDb,
+      $priceRevision,
+      $tracker,
+      $dismissals,
+      $prefs,
+      $dropPools,
+      $tr,
+      $now,
+    ] = inputs;
     const suggestions = collectSuggestions(PROVIDERS, {
       world: $world,
       inventory: $inventory,
@@ -127,6 +132,7 @@ export const suggestionFeed: Readable<SuggestionFeed> = derived(
     });
     const feed = buildFeed(suggestions, $dismissals);
     liveFingerprints = feed.fingerprints;
+    memo = { inputs: [...inputs], feed };
     return feed;
   },
 );
@@ -151,30 +157,4 @@ export function completeTask(completion: TrackerCompletion, count: number): void
 export function restoreAllSuggestions(): void {
   dismissalStore.set({});
   writeStorage(STORAGE_KEY, "{}");
-}
-
-function loadFilters(): SuggestionCategory[] {
-  const raw = readStorage(FILTER_KEY);
-  if (!raw) return [...SUGGESTION_CATEGORIES];
-  try {
-    const parsed: unknown = JSON.parse(raw);
-    if (!Array.isArray(parsed)) return [...SUGGESTION_CATEGORIES];
-    const picked = SUGGESTION_CATEGORIES.filter((category) => parsed.includes(category));
-    // Every box unticked would leave nothing to suggest, so it reads as "all".
-    return picked.length > 0 ? picked : [...SUGGESTION_CATEGORIES];
-  } catch {
-    return [...SUGGESTION_CATEGORIES];
-  }
-}
-
-export const categoryFilter = writable<SuggestionCategory[]>(loadFilters());
-
-export function toggleCategoryFilter(category: SuggestionCategory): void {
-  const current = get(categoryFilter);
-  const next = current.includes(category)
-    ? current.filter((entry) => entry !== category)
-    : SUGGESTION_CATEGORIES.filter((entry) => entry === category || current.includes(entry));
-  const resolved = next.length > 0 ? next : [...SUGGESTION_CATEGORIES];
-  categoryFilter.set(resolved);
-  writeStorage(FILTER_KEY, JSON.stringify(resolved));
 }

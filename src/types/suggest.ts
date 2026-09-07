@@ -215,6 +215,9 @@ export interface Suggestion {
   fingerprint: string;
   /** Kept, but ranked below everything the player has not turned down. */
   deprioritized?: boolean | undefined;
+  /** Where the provider put this in its own order. A section whose controls
+   *  order it reads this instead of the score. */
+  order?: number | undefined;
   progress?: { current: number; required: number } | undefined;
   complete?: TrackerCompletion | undefined;
   wiki?: string | undefined;

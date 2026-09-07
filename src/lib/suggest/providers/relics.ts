@@ -264,10 +264,11 @@ export const relicsProvider: SuggestionProvider = {
     const goal = prefs.options.relicGoal;
     const fissures = fissuresByTier(prefs, world, nowMs);
 
-    return candidates(ctx, goal, fissures).map(({ group, held, fissure, value }) => {
+    return candidates(ctx, goal, fissures).map(({ group, held, fissure, value }, order) => {
       const art = headlineReward(held.rewards, goal);
       return {
         id: `relics:${group.key}`,
+        order,
         category: "relics" as const,
         title: t("nextUp.relicCrack", { relic: group.name }),
         why: [

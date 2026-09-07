@@ -4,11 +4,9 @@ import { formatNumber } from "../../format.js";
 import { overframeRankingsRevision } from "../../../stores/overframeRankings.js";
 import { resolveAcquisition } from "../acquisition/index.js";
 import { includesTarget } from "../acquisition/kinds.js";
-import { compareAcquisition, type AcquisitionSort } from "../acquisition/sort.js";
+import { compareAcquisition } from "../acquisition/sort.js";
 import { clamp01 } from "../score.js";
 import type { MessageKey } from "../../i18n.js";
-import type { SortDirection } from "../../../types/filters.js";
-import type { Suggestion } from "../../../types/suggest.js";
 import type {
   AcquisitionPath,
   AcquisitionTarget,
@@ -184,25 +182,6 @@ function targetsFor(ctx: SuggestionContext): AcquisitionTarget[] {
   return targets;
 }
 
-/** The feed ranks every section by score, so the section's own order is put back
- *  on afterwards; the effort each card was scored on is the tie-breaker. */
-export function sortAcquisitionSuggestions(
-  suggestions: readonly Suggestion[],
-  sort: AcquisitionSort,
-  direction: SortDirection,
-): Suggestion[] {
-  const compare = compareAcquisition(sort, direction);
-  return [...suggestions].sort((a, b) => {
-    const left = a.details?.acquisition;
-    const right = b.details?.acquisition;
-    if (!left || !right) return 0;
-    return compare(
-      { target: left, effort: a.signals.effort },
-      { target: right, effort: b.signals.effort },
-    );
-  });
-}
-
 export const acquisitionProvider: SuggestionProvider = {
   id: "acquisition",
 
@@ -216,12 +195,13 @@ export const acquisitionProvider: SuggestionProvider = {
       .map((target) => ({ target, effort: effortFor(target) }))
       .sort(compareAcquisition(prefs.options.acquisitionSort, prefs.options.acquisitionSortDir))
       .slice(0, SUGGESTION_LIMIT)
-      .map(({ target, effort }) => {
+      .map(({ target, effort }, order) => {
         const total = totalParts(target.parts);
         const owned = ownedParts(target.parts);
         const segments = whySegments(target, t);
         return {
           id: `acquisition:${target.uniqueName}`,
+          order,
           category: "acquisition" as const,
           title: t(titleKey(target), { item: target.displayName ?? target.name }),
           why: segments.map((segment) => segment.text).join(" - "),

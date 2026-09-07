@@ -8,7 +8,6 @@
   import RelicsControls from "../components/nextup/controls/RelicsControls.svelte";
   import TasksControls from "../components/nextup/controls/TasksControls.svelte";
   import { tr } from "../lib/i18n.js";
-  import { sortAcquisitionSuggestions } from "../lib/suggest/providers/acquisition.js";
   import { mountWorldPolling } from "../lib/world/useWorldView.js";
   import { ensureDropPools } from "../stores/dropPools.js";
   import {
@@ -60,9 +59,11 @@
     return picked.length === 0 || picked.includes(category as TaskKind);
   }
 
-  /** A turned-down suggestion keeps its own ranking, below everything else,
+  /** A section whose controls choose the order keeps the one its provider chose;
+   *  the rest rank by score, with a turned-down suggestion banded below the rest
    *  exactly as the engine banded it before the sections were split up. */
   function rank(a: Suggestion, b: Suggestion): number {
+    if (a.order != null && b.order != null) return a.order - b.order;
     return (
       Number(a.deprioritized === true) - Number(b.deprioritized === true) ||
       b.score - a.score ||
@@ -71,13 +72,6 @@
   }
 
   function suggestionsFor(section: Section): Suggestion[] {
-    if (section.id === "acquisition") {
-      return sortAcquisitionSuggestions(
-        feed.sections.acquisition,
-        options.acquisitionSort,
-        options.acquisitionSortDir,
-      );
-    }
     const categories =
       section.id === "tasks" ? section.categories.filter(shows) : section.categories;
     return categories.flatMap((category) => feed.sections[category]).sort(rank);
@@ -123,6 +117,7 @@
     {:else}
       {#each shown as row (row.section.id)}
         <SuggestionSection
+          id={row.section.id}
           title={$tr(row.section.titleKey)}
           suggestions={row.suggestions}
           collapsed={$collapsedSections.includes(row.section.id)}

@@ -14,17 +14,17 @@
   } from "../../../types/suggest.js";
 
   const ERA_LABELS: Record<RelicEra, MessageKey> = {
-    Lith: "nextUp.eraLith",
-    Meso: "nextUp.eraMeso",
-    Neo: "nextUp.eraNeo",
-    Axi: "nextUp.eraAxi",
-    Requiem: "nextUp.eraRequiem",
+    Lith: "relics.tier.lith",
+    Meso: "relics.tier.meso",
+    Neo: "relics.tier.neo",
+    Axi: "relics.tier.axi",
+    Requiem: "relics.tier.requiem",
   };
 
   const SORT_LABELS: Record<RelicSort, MessageKey> = {
-    recommended: "nextUp.relicSortRecommended",
-    platinum: "nextUp.relicSortPlatinum",
-    ducats: "nextUp.relicSortDucats",
+    recommended: "common.recommended",
+    platinum: "common.platinum",
+    ducats: "common.ducats",
   };
 
   const options = $derived($suggestionPreferences.options);

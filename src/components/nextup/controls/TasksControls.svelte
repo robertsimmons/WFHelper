@@ -4,10 +4,10 @@
   import { TASK_KINDS, type TaskKind } from "../../../types/suggest.js";
 
   const LABELS: Record<TaskKind, MessageKey> = {
-    daily: "nextUp.taskDaily",
-    weekly: "nextUp.taskWeekly",
-    vendor: "nextUp.taskVendor",
-    nightwave: "nextUp.taskNightwave",
+    daily: "dailies.groupDaily",
+    weekly: "dailies.groupWeekly",
+    vendor: "dailies.groupVendors",
+    nightwave: "dailies.groupNightwave",
   };
 
   const picked = $derived($suggestionPreferences.options.taskKinds);

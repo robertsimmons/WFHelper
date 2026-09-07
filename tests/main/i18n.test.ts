@@ -44,11 +44,9 @@ const ALLOWED_TWINS = new Set([
   "nextUp.detailsProgressValue",
   "nextUp.kindMelee",
   "nextUp.sectionAcquisition",
-  "nextUp.sectionVendor",
   "nextUp.settingsAdd",
   "nextUp.settingsBad",
   "nextUp.settingsGood",
-  "nextUp.settingsHide",
   "nextUp.whyToday",
 ]);
 

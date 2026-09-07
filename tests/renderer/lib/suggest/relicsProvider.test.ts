@@ -315,6 +315,12 @@ describe("relicsProvider sort", () => {
     ]);
   });
 
+  it("still turns over on the arrow when nothing is priced and every relic ties", () => {
+    const asc = shelfIds({ relicSort: "platinum" });
+    expect(asc).toHaveLength(3);
+    expect(shelfIds({ relicSort: "platinum", relicSortDir: "desc" })).toEqual([...asc].reverse());
+  });
+
   it("never leads with an unpriced relic, whichever way the arrow points", () => {
     priceShelf();
     const unpriced: Array<[string, string, string, RelicReward]> = [

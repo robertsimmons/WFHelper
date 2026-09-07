@@ -223,7 +223,9 @@ function compareRelics(
     } else if (left !== right) {
       return (left - right) * flip;
     }
-    return b.value - a.value || a.group.name.localeCompare(b.group.name);
+    // Unpriced relics all tie, so the arrow only means anything if it turns the
+    // tie-break over too.
+    return (b.value - a.value || a.group.name.localeCompare(b.group.name)) * flip;
   };
 }
 

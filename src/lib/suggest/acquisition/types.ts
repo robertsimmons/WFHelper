@@ -1,5 +1,6 @@
 import type { ItemDbEntry, RawInventoryData } from "../../../types/inventory.js";
 import type { RelicDatabase } from "../../../types/relics.js";
+import type { NemesisProgenitor } from "./progenitors.js";
 
 export type AcquisitionKind = "warframe" | "weapon";
 
@@ -26,6 +27,8 @@ export interface NemesisPlan {
   spawn: string | null;
   /** Progenitor elements the family can roll; empty when nothing listed them. */
   elements: string[];
+  /** Which Warframe rolls which element; empty for a family with no progenitor. */
+  progenitors: NemesisProgenitor[];
   /** Null when nothing has stated the window; never a guess. */
   bonus: NemesisBonusRange | null;
   /** A repeat kill raises the bonus by valence fusion rather than adding a copy. */

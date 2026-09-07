@@ -52,6 +52,7 @@ export {
 export { buildOwnership, isFrameEntry, listFrames } from "./parts.js";
 export { isWeaponEntry, listWeapons, weaponClass } from "./weapons.js";
 export { nemesisFamily } from "./nemesis.js";
+export { createProgenitors, progenitors, type NemesisProgenitor } from "./progenitors.js";
 
 const NO_PATH_EFFORT = 1;
 

@@ -30,6 +30,7 @@ describe("nemesis weapons", () => {
       requires: ["The War Within"],
       spawn: expect.stringContaining("Kuva Larvling"),
       elements: expect.arrayContaining(["Heat", "Radiation"]),
+      progenitors: expect.any(Array),
       bonus: { min: 25, max: 60 },
       valenceFusion: true,
     });
@@ -76,6 +77,27 @@ describe("nemesis weapons", () => {
     const lines = steps(coda);
     expect(lines.some((line) => line.includes("node"))).toBe(false);
     expect(lines.join(" | ")).toContain("the bonus itself is a roll");
+  });
+
+  it("buys the Coda weapon off Eleanor rather than sending the player progenitor hunting", () => {
+    const lines = steps(target("Coda Motovore")).join(" | ");
+    expect(lines).toContain("Eleanor");
+    expect(lines).toContain("Live Heartcells");
+    expect(lines).not.toContain("progenitor");
+  });
+
+  it("walks the Coda grind on its own meter and mods", () => {
+    const lines = steps(target("Coda Motovore")).join(" | ");
+    expect(lines).toContain("Malware Disinfection");
+    expect(lines).toContain("Antivirus");
+    expect(lines).not.toContain("Murmur");
+    expect(lines).not.toContain("Requiem");
+  });
+
+  it("names the progenitor Warframes for a Kuva weapon and none for a Coda one", () => {
+    const heat = target("Kuva Bramma").nemesis?.progenitors.find((row) => row.element === "Heat");
+    expect(heat?.warframes).toContain("Chroma");
+    expect(target("Coda Motovore").nemesis?.progenitors).toEqual([]);
   });
 
   it("takes the spawn and the roll from curated data when it has them", () => {

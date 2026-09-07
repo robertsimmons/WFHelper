@@ -1,4 +1,6 @@
+import { PROGENITOR_ELEMENTS, progenitors } from "./progenitors.js";
 import type { CuratedNemesis } from "./curated.js";
+import type { NemesisProgenitor } from "./progenitors.js";
 import type {
   NemesisBonusRange,
   NemesisFamily,
@@ -22,17 +24,18 @@ interface FamilyFacts {
   spawn: string | null;
   elements: string[];
   bonus: NemesisBonusRange | null;
+  /** Coda weapons are bought outright, so no progenitor decides their element. */
+  progenitor: boolean;
+  /** How the weapon's element is settled, before the bonus clause. */
+  element: string;
+  /** The meter that reveals the sequence, and the mods that sequence is made of. */
+  meter: string;
+  sequence: string;
+  /** Null where nothing states where the mods come from. */
+  modSource: string | null;
 }
 
-const PROGENITOR_ELEMENTS = [
-  "Impact",
-  "Heat",
-  "Cold",
-  "Electricity",
-  "Toxin",
-  "Magnetic",
-  "Radiation",
-];
+const PROGENITOR_TEXT = "Kill it with the progenitor Warframe for the element you want";
 
 const FACTS: Record<NemesisFamily, FamilyFacts> = {
   kuva: {
@@ -42,6 +45,11 @@ const FACTS: Record<NemesisFamily, FamilyFacts> = {
     spawn: "Kill a Kuva Larvling on a level 20+ Grineer node - it shows the weapon it will carry",
     elements: PROGENITOR_ELEMENTS,
     bonus: { min: 25, max: 60 },
+    progenitor: true,
+    element: PROGENITOR_TEXT,
+    meter: "Murmur",
+    sequence: "Requiem",
+    modSource: "Requiem relics",
   },
   tenet: {
     hunted: "Sister of Parvos",
@@ -50,6 +58,11 @@ const FACTS: Record<NemesisFamily, FamilyFacts> = {
     spawn: "Kill a Candidate on a level 20+ Corpus node - it shows the weapon it will carry",
     elements: PROGENITOR_ELEMENTS,
     bonus: { min: 25, max: 60 },
+    progenitor: true,
+    element: PROGENITOR_TEXT,
+    meter: "Murmur",
+    sequence: "Requiem",
+    modSource: "Requiem relics",
   },
   coda: {
     hunted: "Coda",
@@ -58,6 +71,13 @@ const FACTS: Record<NemesisFamily, FamilyFacts> = {
     spawn: null,
     elements: [],
     bonus: null,
+    progenitor: false,
+    element:
+      "Buy the weapon from Eleanor at Höllvania Central Mall for 10 Live Heartcells - her stock " +
+      "carries whatever element the rotation currently has, and it re-rolls every 4 days",
+    meter: "Malware Disinfection",
+    sequence: "Antivirus",
+    modSource: null,
   },
 };
 
@@ -80,6 +100,7 @@ export function nemesisPlan(
   name: string,
   weapon: WeaponClass,
   supplied: CuratedNemesis | null,
+  table: NemesisProgenitor[] = progenitors,
 ): NemesisPlan | null {
   const family = supplied?.family ?? nemesisFamily(name);
   if (!family) return null;
@@ -90,6 +111,7 @@ export function nemesisPlan(
     requires: supplied?.requires.length ? supplied.requires : facts.requires,
     spawn: supplied?.spawn ?? facts.spawn,
     elements: supplied?.elements.length ? supplied.elements : facts.elements,
+    progenitors: facts.progenitor ? table : [],
     bonus: supplied?.bonus ?? facts.bonus,
     valenceFusion: true,
   };
@@ -102,7 +124,7 @@ function bonusText(plan: NemesisPlan): string {
 
 function elementText(plan: NemesisPlan): string {
   const list = plan.elements.length ? ` (${plan.elements.join(", ")})` : "";
-  return `Kill it with the progenitor Warframe for the element you want${list} - ${bonusText(plan)}`;
+  return `${FACTS[plan.family].element}${list} - ${bonusText(plan)}`;
 }
 
 /** The steps of one nemesis run, in the order the player walks them. A step the
@@ -117,11 +139,11 @@ export function nemesisSteps(plan: NemesisPlan): PathStep[] {
   if (plan.spawn) step(plan.spawn);
   step(elementText(plan));
   step(
-    `Run the ${facts.hunted}'s territory and kill its thralls - each filled Murmur bar reveals one Requiem of the three-mod sequence`,
+    `Run the ${facts.hunted}'s territory and kill its thralls - each filled ${facts.meter} bar reveals one ${facts.sequence} of the three-mod sequence`,
   );
-  step("Requiem mods drop from Requiem relics");
+  if (facts.modSource) step(`${facts.sequence} mods drop from ${facts.modSource}`);
   step(
-    `Parazon the ${facts.hunted} with the right Requiem order - killing it hands the weapon over, converting it does not`,
+    `Parazon the ${facts.hunted} with the right ${facts.sequence} order - killing it hands the weapon over, converting it does not`,
   );
   if (plan.valenceFusion) {
     step("A second kill of the same weapon raises the bonus by valence fusion");

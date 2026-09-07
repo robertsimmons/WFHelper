@@ -72,11 +72,15 @@ describe("nemesis weapons", () => {
   it("leaves out the step nothing has told it, rather than guessing", () => {
     const coda = target("Coda Motovore");
     expect(coda.nemesis?.spawn).toBeNull();
-    expect(coda.nemesis?.bonus).toBeNull();
     expect(coda.nemesis?.elements).toEqual([]);
     const lines = steps(coda);
     expect(lines.some((line) => line.includes("node"))).toBe(false);
-    expect(lines.join(" | ")).toContain("the bonus itself is a roll");
+  });
+
+  it("carries the same valence fusion window on a Coda as on a Kuva", () => {
+    const coda = target("Coda Motovore");
+    expect(coda.nemesis?.bonus).toEqual({ min: 25, max: 60 });
+    expect(steps(coda).join(" | ")).toContain("25-60% roll");
   });
 
   it("buys the Coda weapon off Eleanor rather than sending the player progenitor hunting", () => {

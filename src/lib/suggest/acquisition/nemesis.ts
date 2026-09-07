@@ -70,7 +70,7 @@ const FACTS: Record<NemesisFamily, FamilyFacts> = {
     requires: ["The Hex"],
     spawn: null,
     elements: [],
-    bonus: null,
+    bonus: { min: 25, max: 60 },
     progenitor: false,
     element:
       "Buy the weapon from Eleanor at Höllvania Central Mall for 10 Live Heartcells - her stock " +

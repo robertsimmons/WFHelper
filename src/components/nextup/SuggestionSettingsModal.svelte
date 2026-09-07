@@ -432,8 +432,9 @@
                   <span class="min-w-0 truncate text-sm text-text-secondary">{row.label}</span>
                   {#if row.owned?.built !== undefined}
                     <span
-                      class="shrink-0 font-display text-xs font-semibold tabular-nums text-warning"
-                      title={$tr("nextUp.tileInFoundry", { count: String(row.owned.built) })}
+                      class="shrink-0 font-display text-xs font-semibold tabular-nums
+                             text-text-secondary"
+                      title={$tr("nextUp.tileBuilt", { count: String(row.owned.built) })}
                       >x{compactCount(row.owned.built)}</span
                     >
                   {/if}

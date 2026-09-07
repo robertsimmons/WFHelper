@@ -255,6 +255,27 @@ describe("relicsProvider era filter", () => {
   it("reads no era at all as every era", () => {
     expect(shelfIds({ relicEras: [] })).toHaveLength(3);
   });
+
+  it("leaves a tier the boxes cannot name alone", () => {
+    const VANGUARD = "/Relic/VanguardV1Intact";
+    const world = {
+      fissures: [
+        { tier: "Lith", missionType: "Capture", node: "Everest (Earth)", expiry: SOON },
+        { tier: "Vanguard", missionType: "Capture", node: "Kappa (Sedna)", expiry: SOON },
+      ],
+    } as unknown as WorldState;
+    const ctx: SuggestionContext = {
+      ...context(world, {}, { relicEras: ["Lith"] }),
+      relicDb: shelfDb([["Vanguard V1", "Vanguard", VANGUARD, NYX]]),
+      inventory: shelfInventory([MESO_A, MESO_B, LITH_C, VANGUARD]),
+    };
+    expect(
+      relicsProvider
+        .collect(ctx)
+        .map((draft) => draft.id)
+        .sort(),
+    ).toEqual(["relics:Lith C4", "relics:Vanguard V1"]);
+  });
 });
 
 describe("relicsProvider sort", () => {

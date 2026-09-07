@@ -6,6 +6,7 @@ import { missionOpinion } from "../missionTypes.js";
 import { clamp01, urgencyFromExpiry } from "../score.js";
 import { normalizeDucats } from "../../../../config/shared/numeric.js";
 import { rendererPriceCacheKey } from "../../../../config/shared/wfmCacheKeys.js";
+import { RELIC_ERAS } from "../../../types/suggest.js";
 import type { MessageKey } from "../../i18n.js";
 import type { SortDirection } from "../../../types/filters.js";
 import type {
@@ -189,10 +190,15 @@ interface Candidate {
   value: number;
 }
 
+const matches = (era: RelicEra, tier: string): boolean => era.toLowerCase() === tier;
+
+/** Vanguard relics reach the database with no box of their own, and a tier the
+ *  boxes cannot name is not a tier they narrow. */
 function inEras(eras: readonly RelicEra[], tier: string): boolean {
   if (eras.length === 0) return true;
   const wanted = tier.toLowerCase();
-  return eras.some((era) => era.toLowerCase() === wanted);
+  if (!RELIC_ERAS.some((era) => matches(era, wanted))) return true;
+  return eras.some((era) => matches(era, wanted));
 }
 
 /** Lower sorts earlier under every mode, so the arrow reads the same way in all

@@ -423,15 +423,18 @@
               >
                 <span class="flex min-w-0 items-center gap-2">
                   <span
-                    class="w-[4ch] shrink-0 text-right text-xs tabular-nums text-text-muted"
-                    title={row.owned && compactCount(row.owned.owned) !== String(row.owned.owned)
-                      ? String(row.owned.owned)
-                      : undefined}>{row.owned ? compactCount(row.owned.owned) : ""}</span
+                    class="w-[5ch] shrink-0 text-right font-display text-xs font-semibold
+                           tabular-nums text-success"
+                    title={row.owned
+                      ? $tr("nextUp.tileInInventory", { count: String(row.owned.owned) })
+                      : undefined}>{row.owned ? `x${compactCount(row.owned.owned)}` : ""}</span
                   >
                   <span class="min-w-0 truncate text-sm text-text-secondary">{row.label}</span>
                   {#if row.owned?.built !== undefined}
-                    <span class="shrink-0 text-xs tabular-nums text-text-muted"
-                      >{$tr("nextUp.settingsBuilt", { built: String(row.owned.built) })}</span
+                    <span
+                      class="shrink-0 font-display text-xs font-semibold tabular-nums text-warning"
+                      title={$tr("nextUp.tileInFoundry", { count: String(row.owned.built) })}
+                      >x{compactCount(row.owned.built)}</span
                     >
                   {/if}
                 </span>

@@ -59,7 +59,12 @@ interface StoredCopy {
   doc: AdversaryVendorsDoc;
 }
 
+// A session left open across a batch flip would otherwise serve the doc that
+// named the old batch for as long as it stays open.
+const MEMORY_TTL_MS = 6 * 60 * 60 * 1000;
+
 let _memoryDoc: AdversaryVendorsDoc | null = null;
+let _memoryDocAt = 0;
 let _inFlight: Promise<AdversaryVendorsDoc | null> | null = null;
 
 function isRecord(value: unknown): value is Record<string, unknown> {
@@ -183,10 +188,10 @@ async function requestVendors(cached: StoredCopy | null): Promise<AdversaryVendo
 
 /**
  * Wiki-sourced elements and bonus percentages, or null when the backend has none.
- * Resolved once per session; the stored copy answers a failed request.
+ * The stored copy answers a failed request.
  */
 export async function loadAdversaryVendors(): Promise<AdversaryVendorsDoc | null> {
-  if (_memoryDoc) return _memoryDoc;
+  if (_memoryDoc && Date.now() - _memoryDocAt < MEMORY_TTL_MS) return _memoryDoc;
   if (_inFlight) return _inFlight;
   if (!isBackendLiteConfigured()) return null;
 
@@ -202,6 +207,7 @@ export async function loadAdversaryVendors(): Promise<AdversaryVendorsDoc | null
   })()
     .then((doc) => {
       _memoryDoc = doc;
+      _memoryDocAt = Date.now();
       return doc;
     })
     .finally(() => {
@@ -213,5 +219,6 @@ export async function loadAdversaryVendors(): Promise<AdversaryVendorsDoc | null
 
 export function resetAdversaryVendorsCacheForTest(): void {
   _memoryDoc = null;
+  _memoryDocAt = 0;
   _inFlight = null;
 }

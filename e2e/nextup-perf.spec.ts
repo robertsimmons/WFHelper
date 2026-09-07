@@ -20,9 +20,9 @@ const OWNED_PERCENT = 70;
 /** Of that owned gear, the share left part-ranked so Mastery still has cards. */
 const PART_RANKED_PERCENT = 15;
 
-/** Budgets sit well above the medians they were set from - cold ~1808ms,
- *  re-entry ~70ms, every filter click ~42ms - so machine variance never fails
- *  CI while a return to the ~1350ms re-entry this feed once cost still does. */
+/** Budgets sit well above the medians they were set from - cold ~1055ms with a
+ *  ~2100ms cold-disk worst case, re-entry ~68ms, every filter click 14-50ms - so
+ *  variance never fails CI while the ~1350ms re-entry this once cost still does. */
 const COLD_BUDGET_MS = 4000;
 const REENTRY_BUDGET_MS = 500;
 const INTERACTION_BUDGET_MS = 400;

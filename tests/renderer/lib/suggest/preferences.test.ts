@@ -102,8 +102,15 @@ describe("MISSION_TYPE_NAMES", () => {
 
 describe("parseOptions", () => {
   it("keeps only fields spelled with the type they carry", () => {
-    const raw = JSON.stringify({ relicGoal: "ducats", masteryForma: false, masteryOwnMode: "no" });
-    expect(parseOptions(raw)).toEqual({ relicGoal: "ducats", masteryForma: false });
+    const raw = JSON.stringify({ relicGoal: "ducats", relicSort: "endo", relicEras: ["Neo", "?"] });
+    expect(parseOptions(raw)).toEqual({ relicGoal: "ducats", relicEras: ["Neo"] });
+  });
+
+  it("lifts the Forma boolean the kind list replaced onto the list", () => {
+    expect(parseOptions(JSON.stringify({ masteryForma: false }))).toEqual({
+      masteryKinds: ["frame", "weapon"],
+    });
+    expect(parseOptions(JSON.stringify({ masteryForma: true }))).toEqual({});
   });
 
   it("falls back to nothing for a goal it does not ship", () => {
@@ -119,8 +126,10 @@ describe("migrateLegacyOptions", () => {
   }
 
   it("lifts a stored synthetic key onto the typed option", () => {
-    expect(legacy({ "mastery:forma": "never" }).options).toEqual({ masteryForma: false });
-    expect(legacy({ "mastery:mode": "never" }).options).toEqual({ masteryOwnMode: false });
+    expect(legacy({ "mastery:forma": "never" }).options).toEqual({
+      masteryKinds: ["frame", "weapon"],
+    });
+    expect(legacy({ "mastery:mode": "never" }).options).toEqual({});
   });
 
   it("reads the relic goal off the key that was not turned off", () => {
@@ -144,7 +153,10 @@ describe("migrateLegacyOptions", () => {
   });
 
   it("lets a value already stored under the typed shape win", () => {
-    const migrated = migrateLegacyOptions({ "mastery:forma": "never" }, { masteryForma: true });
-    expect(migrated.options).toEqual({ masteryForma: true });
+    const migrated = migrateLegacyOptions(
+      { "mastery:forma": "never" },
+      { masteryKinds: ["forma"] },
+    );
+    expect(migrated.options).toEqual({ masteryKinds: ["forma"] });
   });
 });

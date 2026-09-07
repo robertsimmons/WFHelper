@@ -36,18 +36,14 @@
     setMissionOpinion,
     setRewardTier,
     setScoreWeight,
-    setSuggestionOption,
     suggestionOverrides,
     suggestionPreferences,
   } from "../../stores/suggestionPrefs.js";
-  import { RELIC_GOALS } from "../../types/suggest.js";
   import type {
     ActivityPref,
     MissionOpinion,
-    RelicGoal,
     RewardTier,
     ScoreWeightKey,
-    SuggestionOptions,
   } from "../../types/suggest.js";
 
   interface Props {
@@ -86,25 +82,6 @@
     { value: "low", label: "nextUp.settingsLow" },
     { value: "normal", label: "common.normal" },
   ];
-
-  const FILTER_OPTIONS: ReadonlyArray<{ value: boolean; label: MessageKey }> = [
-    { value: false, label: "nextUp.settingsHide" },
-    { value: true, label: "nextUp.settingsShow" },
-  ];
-
-  type BooleanOption = {
-    [K in keyof SuggestionOptions]: SuggestionOptions[K] extends boolean ? K : never;
-  }[keyof SuggestionOptions];
-
-  const MASTERY_FILTERS: ReadonlyArray<{ key: BooleanOption; label: MessageKey }> = [
-    { key: "masteryForma", label: "nextUp.settingsMasteryForma" },
-    { key: "masteryOwnMode", label: "nextUp.settingsMasteryMode" },
-  ];
-
-  const GOAL_LABELS: Record<RelicGoal, MessageKey> = {
-    platinum: "common.platinum",
-    ducats: "common.ducats",
-  };
 
   const OPINION_OPTIONS: ReadonlyArray<{ value: MissionOpinion | null; label: MessageKey }> = [
     { value: "good", label: "nextUp.settingsGood" },
@@ -318,48 +295,6 @@
   </div>
 {/snippet}
 
-{#snippet goalRow()}
-  <div
-    class="flex items-center justify-between gap-3 rounded-[var(--radius-md)] px-1.5 py-1
-           hover:bg-bg-hover"
-  >
-    <span class="min-w-0 truncate text-sm text-text-secondary">
-      {$tr("nextUp.settingsRelicGoal")}
-    </span>
-    <div class="flex shrink-0 gap-1">
-      {#each RELIC_GOALS as goal (goal)}
-        <ThemedButton
-          size="compact"
-          active={prefs.options.relicGoal === goal}
-          onClick={() => setSuggestionOption("relicGoal", goal as RelicGoal)}
-        >
-          {$tr(GOAL_LABELS[goal])}
-        </ThemedButton>
-      {/each}
-    </div>
-  </div>
-{/snippet}
-
-{#snippet optionRow(label: string, key: BooleanOption)}
-  <div
-    class="flex items-center justify-between gap-3 rounded-[var(--radius-md)] px-1.5 py-1
-           hover:bg-bg-hover"
-  >
-    <span class="min-w-0 truncate text-sm text-text-secondary">{label}</span>
-    <div class="flex shrink-0 gap-1">
-      {#each FILTER_OPTIONS as option (option.label)}
-        <ThemedButton
-          size="compact"
-          active={prefs.options[key] === option.value}
-          onClick={() => setSuggestionOption(key, option.value)}
-        >
-          {$tr(option.label)}
-        </ThemedButton>
-      {/each}
-    </div>
-  </div>
-{/snippet}
-
 {#snippet weightRow(label: string, key: ScoreWeightKey)}
   <div
     class="flex items-center justify-between gap-3 rounded-[var(--radius-md)] px-1.5 py-1
@@ -446,13 +381,8 @@
       {:else if tab === "goals"}
         {@render groupHeading($tr("common.relics"))}
         {@render prefRow($tr("nextUp.settingsRelics"), RELICS_ACTIVITY, ACTIVITY_OPTIONS)}
-        {@render goalRow()}
         {@render groupHeading($tr("common.mastery"))}
-        <p class="m-0 mb-2 text-xs text-text-secondary">{$tr("nextUp.settingsMasteryHelp")}</p>
         {@render prefRow($tr("nextUp.settingsMastery"), MASTERY_ACTIVITY, ACTIVITY_OPTIONS)}
-        {#each MASTERY_FILTERS as row (row.key)}
-          {@render optionRow($tr(row.label), row.key)}
-        {/each}
         {@render groupHeading($tr("nextUp.sectionAcquisition"))}
         {@render prefRow($tr("nextUp.settingsAcquisition"), ACQUISITION_ACTIVITY, ACTIVITY_OPTIONS)}
       {:else if tab === "rewards"}

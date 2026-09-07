@@ -124,26 +124,23 @@ describe("masteryProvider", () => {
     expect(ids()).toEqual(["mastery:/Nearly", "mastery:/Halfway", "mastery:/Fresh"]);
   });
 
-  it("keeps Forma dumps until the player turns them off", () => {
+  it("keeps Forma dumps until the player unticks the box", () => {
     loadMastery([
       item({ name: "Kuva Bramma", uniqueName: "/Bramma", rank: 30, maxRank: 40 }),
       item({ name: "Braton", uniqueName: "/Braton", rank: 20 }),
     ]);
     expect(ids()).toContain("mastery:/Bramma");
-    expect(ids({}, { masteryForma: false })).toEqual(["mastery:/Braton"]);
+    expect(ids({}, { masteryKinds: ["frame", "weapon"] })).toEqual(["mastery:/Braton"]);
   });
 
   it("counts a lich weapon short of rank 30 as an ordinary grind", () => {
     loadMastery([item({ name: "Kuva Bramma", uniqueName: "/Bramma", rank: 12, maxRank: 40 })]);
-    expect(ids({}, { masteryForma: false })).toEqual(["mastery:/Bramma"]);
+    expect(ids({}, { masteryKinds: ["frame", "weapon"] })).toEqual(["mastery:/Bramma"]);
   });
 
-  it("hides gear that only levels in its own mode when asked", () => {
-    loadMastery([
-      item({ name: "Odonata", uniqueName: "/Odonata", category: "Archwing" }),
-      item({ name: "Braton", uniqueName: "/Braton" }),
-    ]);
-    expect(ids({}, { masteryOwnMode: false })).toEqual(["mastery:/Braton"]);
+  it("reads an empty kind list as every kind", () => {
+    loadMastery([item({ name: "Kuva Bramma", uniqueName: "/Bramma", rank: 30, maxRank: 40 })]);
+    expect(ids({}, { masteryKinds: [] })).toEqual(["mastery:/Bramma"]);
   });
 
   it("carries the rank as progress and fingerprints on it", () => {

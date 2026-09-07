@@ -15,9 +15,6 @@ export const MASTERY_ACTIVITY = "mastery";
 /** Past this rank, gear with a higher cap only climbs on Forma. */
 const FORMA_GATE_RANK = 30;
 
-/** Gear that earns affinity only in its own game mode. */
-const OWN_MODE_CATEGORIES = new Set(["Archwing", "Amps", "Necramech"]);
-
 /** Ranking a Warframe from nothing is the biggest single mastery win there is. */
 const MASTERY_POINT_REFERENCE = 6000;
 
@@ -53,9 +50,11 @@ function needsFormaDump(item: Levelable): boolean {
   return item.maxRank > FORMA_GATE_RANK && item.rank >= FORMA_GATE_RANK;
 }
 
+/** Frames and weapons are still every item this reads; only the Forma entry
+ *  narrows anything yet. */
 function keeps(prefs: SuggestionPreferences, item: Levelable): boolean {
-  if (!prefs.options.masteryForma && needsFormaDump(item)) return false;
-  if (!prefs.options.masteryOwnMode && OWN_MODE_CATEGORIES.has(item.category)) return false;
+  const kinds = prefs.options.masteryKinds;
+  if (kinds.length > 0 && !kinds.includes("forma") && needsFormaDump(item)) return false;
   return true;
 }
 

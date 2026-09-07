@@ -227,7 +227,7 @@
           <div class="grid grid-cols-[72px_minmax(0,1fr)] items-start gap-3 py-3">
             <span
               class="flex h-18 w-18 items-center justify-center overflow-hidden
-                     rounded-[var(--radius-md)] bg-black/20"
+                     rounded-[var(--radius-md)] bg-bg-deep"
             >
               <ItemImage src={choice.imageUrl} alt={choice.name} cls="max-h-18 max-w-18" />
             </span>
@@ -282,7 +282,7 @@
         {#if art}
           <span
             class="flex h-28 w-28 shrink-0 items-center justify-center overflow-hidden
-                   rounded-[var(--radius-md)] bg-black/20"
+                   rounded-[var(--radius-md)] bg-bg-deep"
           >
             <ItemImage src={art.imageUrl} alt={art.name} cls="max-h-28 max-w-28" />
           </span>
@@ -368,7 +368,7 @@
             >
               <span
                 class="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden
-                       rounded-[var(--radius-sm)] bg-black/20"
+                       rounded-[var(--radius-sm)] bg-bg-deep"
               >
                 {#if art}
                   <ItemImage src={art.imageUrl} alt={offer.name} cls="max-h-10 max-w-10" />
@@ -404,7 +404,7 @@
                 >
                   <span
                     class="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden
-                           rounded-[var(--radius-sm)] bg-black/20"
+                           rounded-[var(--radius-sm)] bg-bg-deep"
                   >
                     {#if art}
                       <ItemImage src={art.imageUrl} alt={option.name} cls="max-h-10 max-w-10" />

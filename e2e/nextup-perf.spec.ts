@@ -81,7 +81,7 @@ async function measure(
     };
 
     let blockedMs = 0;
-    let observer: PerformanceObserver | null = null;
+    let observer: PerformanceObserver | null;
     try {
       observer = new PerformanceObserver((list) => {
         for (const entry of list.getEntries()) blockedMs += entry.duration;

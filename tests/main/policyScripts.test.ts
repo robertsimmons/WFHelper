@@ -10,11 +10,25 @@ const EMPTY_GIT_CONFIG = path.join(os.tmpdir(), "wfh-policy-empty.gitconfig");
 const EMPTY_XDG_CONFIG = path.join(os.tmpdir(), "wfh-policy-xdg");
 fs.writeFileSync(EMPTY_GIT_CONFIG, "");
 fs.mkdirSync(EMPTY_XDG_CONFIG, { recursive: true });
+/** A hook run exports these, and they outrank `cwd`: leaving one set points
+ *  every git call in this file at the real repository instead of its sandbox. */
+const INHERITED_GIT_VARS = [
+  "GIT_DIR",
+  "GIT_WORK_TREE",
+  "GIT_INDEX_FILE",
+  "GIT_COMMON_DIR",
+  "GIT_OBJECT_DIRECTORY",
+  "GIT_ALTERNATE_OBJECT_DIRECTORIES",
+  "GIT_NAMESPACE",
+  "GIT_PREFIX",
+] as const;
+
 const CLEAN_GIT_ENV = {
   ...process.env,
   GIT_CONFIG_GLOBAL: EMPTY_GIT_CONFIG,
   GIT_CONFIG_NOSYSTEM: "1",
   XDG_CONFIG_HOME: EMPTY_XDG_CONFIG,
+  ...Object.fromEntries(INHERITED_GIT_VARS.map((name) => [name, undefined])),
 };
 
 const tempDirs: string[] = [];

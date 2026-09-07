@@ -52,11 +52,10 @@
 
   const { onClose }: Props = $props();
 
-  type Tab = "activities" | "goals" | "rewards" | "missions" | "gear" | "ranking";
+  type Tab = "activities" | "rewards" | "missions" | "gear" | "ranking";
 
   const TABS: ReadonlyArray<{ id: Tab; label: MessageKey }> = [
     { id: "activities", label: "nextUp.settingsActivities" },
-    { id: "goals", label: "nextUp.settingsGoals" },
     { id: "rewards", label: "nextUp.settingsRewards" },
     { id: "missions", label: "nextUp.settingsMissionTypes" },
     { id: "gear", label: "nextUp.settingsGear" },
@@ -111,7 +110,10 @@
   // provider reads; rating those here would rate nothing.
   const VENDOR_ACTIVITY_IDS = ["baro", "darvo"];
 
+  const GOAL_ACTIVITY_IDS = [RELICS_ACTIVITY, ACQUISITION_ACTIVITY, MASTERY_ACTIVITY];
+
   const ACTIVITY_GROUPS: ReadonlyArray<{ title: MessageKey; ids: string[] }> = [
+    { title: "nextUp.settingsGoals", ids: GOAL_ACTIVITY_IDS },
     { title: "dailies.groupWeekly", ids: activityIds("weekly") },
     { title: "dailies.groupDaily", ids: activityIds("daily") },
     { title: "dailies.groupVendors", ids: VENDOR_ACTIVITY_IDS },
@@ -134,10 +136,15 @@
   const prefs = $derived($suggestionPreferences);
   const overrides = $derived($suggestionOverrides);
 
+  const ACTIVITY_LABELS: Record<string, MessageKey> = {
+    [NIGHTWAVE_ACTIVITY]: "nextUp.settingsNightwave",
+    [RELICS_ACTIVITY]: "common.relics",
+    [ACQUISITION_ACTIVITY]: "nextUp.sectionAcquisition",
+    [MASTERY_ACTIVITY]: "common.mastery",
+  };
+
   function activityLabel(id: string): string {
-    return id === NIGHTWAVE_ACTIVITY
-      ? $tr("nextUp.settingsNightwave")
-      : $tr(`dailies.task.${id}` as MessageKey);
+    return $tr(ACTIVITY_LABELS[id] ?? (`dailies.task.${id}` as MessageKey));
   }
 
   /** A user-added item is only ever known by what was typed, so title-case it. */
@@ -378,13 +385,6 @@
             </div>
           {/if}
         {/each}
-      {:else if tab === "goals"}
-        {@render groupHeading($tr("common.relics"))}
-        {@render prefRow($tr("nextUp.settingsRelics"), RELICS_ACTIVITY, ACTIVITY_OPTIONS)}
-        {@render groupHeading($tr("common.mastery"))}
-        {@render prefRow($tr("nextUp.settingsMastery"), MASTERY_ACTIVITY, ACTIVITY_OPTIONS)}
-        {@render groupHeading($tr("nextUp.sectionAcquisition"))}
-        {@render prefRow($tr("nextUp.settingsAcquisition"), ACQUISITION_ACTIVITY, ACTIVITY_OPTIONS)}
       {:else if tab === "rewards"}
         <div class="mb-2 flex flex-wrap items-center gap-2">
           <input

@@ -18,7 +18,7 @@ export function buildOwnership(
   return aggregateComponentOwnership(usable);
 }
 
-export interface FrameEntry {
+interface FrameEntry {
   uniqueName: string;
   entry: ItemDbEntry;
   name: string;
@@ -26,7 +26,7 @@ export interface FrameEntry {
 
 /** Exalted weapons, Necramechs and Archwings share the Powersuits path, so the
  *  product category has to agree before a row counts as a Warframe. */
-export function isFrameEntry(uniqueName: string, entry: ItemDbEntry | undefined): boolean {
+function isFrameEntry(uniqueName: string, entry: ItemDbEntry | undefined): boolean {
   if (!entry?.name) return false;
   if (entry.exalted === true || entry.isBuildComponent === true) return false;
   // Every augment mod lives under its frame's Powersuits path, and there are

@@ -11,7 +11,7 @@ export interface OwnedReward {
   built?: number | undefined;
 }
 
-export function ownedReward(
+function ownedReward(
   uniqueName: string | null | undefined,
   itemDb: Record<string, ItemDbEntry>,
   ownership: Map<string, number>,

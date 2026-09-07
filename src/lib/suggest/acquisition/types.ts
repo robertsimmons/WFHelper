@@ -44,7 +44,7 @@ export interface IncarnonInfo {
 }
 
 /** The item's own blueprint comes from somewhere else than its component ones. */
-export type PartRole = "main" | "component";
+type PartRole = "main" | "component";
 
 export type PathKind =
   | "market"

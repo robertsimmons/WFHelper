@@ -1,7 +1,7 @@
 import type { NightwaveArt } from "./preferences.js";
 import type { SuggestionCategory } from "../../types/suggest.js";
 
-export interface BannerArt {
+interface BannerArt {
   url: string;
   /** CSS object-position; the band crops whatever falls outside it. */
   position: string;

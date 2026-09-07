@@ -8,12 +8,12 @@ export const MAG_CHASSIS = "/Lotus/Types/Recipes/Warframes/MagChassisComponent";
 export const MAG_SYSTEMS = "/Lotus/Types/Recipes/Warframes/MagSystemsComponent";
 
 export const MAGP = "/Lotus/Powersuits/Mag/MagPrime";
-export const MAGP_BP = "/Lotus/Types/Recipes/Warframes/MagPrimeBlueprint";
+const MAGP_BP = "/Lotus/Types/Recipes/Warframes/MagPrimeBlueprint";
 export const MAGP_NEURO = "/Lotus/Types/Recipes/Warframes/MagPrimeNeuropticsComponent";
 
-export const VOLT = "/Lotus/Powersuits/Volt/Volt";
-export const VOLT_BP = "/Lotus/Types/Recipes/Warframes/VoltBlueprint";
-export const VOLT_NEURO = "/Lotus/Types/Recipes/Warframes/VoltNeuropticsComponent";
+const VOLT = "/Lotus/Powersuits/Volt/Volt";
+const VOLT_BP = "/Lotus/Types/Recipes/Warframes/VoltBlueprint";
+const VOLT_NEURO = "/Lotus/Types/Recipes/Warframes/VoltNeuropticsComponent";
 
 export const OROKIN_CELL = "/Lotus/Types/Items/MiscItems/OrokinCell";
 export const LITH_M1 = "/Lotus/Types/Game/Projections/T1VoidProjectionMagPrimeA";
@@ -151,33 +151,33 @@ export function relicDb(): RelicDatabase {
 export const BRATON = "/Lotus/Weapons/Tenno/Rifle/BratonRifle";
 export const BRATON_BP = "/Lotus/Types/Recipes/Weapons/BratonBlueprint";
 export const BRATON_BARREL = "/Lotus/Types/Recipes/Weapons/BratonBarrel";
-export const BRATON_RECEIVER = "/Lotus/Types/Recipes/Weapons/BratonReceiver";
+const BRATON_RECEIVER = "/Lotus/Types/Recipes/Weapons/BratonReceiver";
 export const BRATON_ADAPTER = "/Lotus/Types/Items/MiscItems/IncarnonAdapters/BratonIncarnonAdapter";
 
-export const BRATONP = "/Lotus/Weapons/Tenno/Rifle/PrimeBratonRifle";
-export const BRATONP_BP = "/Lotus/Types/Recipes/Weapons/BratonPrimeBlueprint";
+const BRATONP = "/Lotus/Weapons/Tenno/Rifle/PrimeBratonRifle";
+const BRATONP_BP = "/Lotus/Types/Recipes/Weapons/BratonPrimeBlueprint";
 export const BRATONP_BARREL = "/Lotus/Types/Recipes/Weapons/BratonPrimeBarrel";
 
 export const AKBOLTO = "/Lotus/Weapons/Tenno/Pistol/AkboltoPistol";
-export const AKBOLTO_BP = "/Lotus/Types/Recipes/Weapons/AkboltoBlueprint";
+const AKBOLTO_BP = "/Lotus/Types/Recipes/Weapons/AkboltoBlueprint";
 
 export const NIKANA = "/Lotus/Weapons/Tenno/Melee/Swords/Nikana";
-export const NIKANA_BP = "/Lotus/Types/Recipes/Weapons/NikanaBlueprint";
+const NIKANA_BP = "/Lotus/Types/Recipes/Weapons/NikanaBlueprint";
 
 export const CORVAS = "/Lotus/Weapons/Tenno/Archwing/Primary/CorvasCannon";
-export const CORVAS_BP = "/Lotus/Types/Recipes/Weapons/CorvasBlueprint";
+const CORVAS_BP = "/Lotus/Types/Recipes/Weapons/CorvasBlueprint";
 
 export const SWEEPER = "/Lotus/Types/Sentinels/SentinelWeapons/SentinelSweeper";
-export const SWEEPER_BP = "/Lotus/Types/Recipes/Weapons/SweeperBlueprint";
+const SWEEPER_BP = "/Lotus/Types/Recipes/Weapons/SweeperBlueprint";
 
 export const KUVA_BRAMMA = "/Lotus/Weapons/Grineer/KuvaLich/Primary/KuvaBrammaBow";
-export const TENET_LIVIA = "/Lotus/Weapons/Corpus/Melee/Sister/TenetLivia";
-export const CODA_MOTOVORE = "/Lotus/Weapons/Infested/Melee/Coda/CodaMotovore";
+const TENET_LIVIA = "/Lotus/Weapons/Corpus/Melee/Sister/TenetLivia";
+const CODA_MOTOVORE = "/Lotus/Weapons/Infested/Melee/Coda/CodaMotovore";
 
-export const EXALTED_SWORD = "/Lotus/Weapons/Tenno/Melee/PowerSuits/ExcaliburSword";
+const EXALTED_SWORD = "/Lotus/Weapons/Tenno/Melee/PowerSuits/ExcaliburSword";
 export const LITH_B1 = "/Lotus/Types/Game/Projections/T1VoidProjectionBratonPrimeA";
 
-export function weapon(
+function weapon(
   name: string,
   productCategory: string,
   blueprint: string,
@@ -203,7 +203,7 @@ export function weapon(
   };
 }
 
-export function unbuilt(name: string, productCategory: string): ItemDbEntry {
+function unbuilt(name: string, productCategory: string): ItemDbEntry {
   return {
     name,
     productCategory,

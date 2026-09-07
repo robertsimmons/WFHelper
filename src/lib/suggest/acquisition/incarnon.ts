@@ -48,7 +48,7 @@ function week(value: unknown): number | null {
   return typeof value === "number" && Number.isFinite(value) ? value : null;
 }
 
-export interface IncarnonLookup {
+interface IncarnonLookup {
   /** Null when no adapter is known for the weapon. */
   (name: string): IncarnonInfo | null;
 }

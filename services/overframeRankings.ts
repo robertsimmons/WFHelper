@@ -57,7 +57,7 @@ function isRow(value: unknown): value is OverframeRankingRow {
 
 /** A table with no usable row is treated as no table at all, so a truncated or
  *  reshaped payload never replaces good data. */
-export function reviveRankings(raw: unknown): OverframeRankings | null {
+function reviveRankings(raw: unknown): OverframeRankings | null {
   if (!raw || typeof raw !== "object" || Array.isArray(raw)) return null;
   const parsed = raw as Partial<OverframeRankings>;
   if (typeof parsed.fetchedAt !== "string" || !Date.parse(parsed.fetchedAt)) return null;

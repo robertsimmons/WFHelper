@@ -46,7 +46,7 @@ const FIXED_GUN = /\/FixedGun/i;
 /** Amps, K-Drives and Railjack armaments are masterable but not built like a weapon. */
 const NOT_A_WEAPON_PATH = /\/(?:OperatorAmps?|OperatorAmplifiers?|Hoverboards?|CrewShip)/i;
 
-export interface WeaponEntry {
+interface WeaponEntry {
   uniqueName: string;
   entry: ItemDbEntry;
   name: string;
@@ -69,10 +69,7 @@ function excluded(uniqueName: string, entry: ItemDbEntry): boolean {
 }
 
 /** Null for anything that is not a weapon the player can go and get. */
-export function weaponClass(
-  uniqueName: string,
-  entry: ItemDbEntry | undefined,
-): WeaponClass | null {
+function weaponClass(uniqueName: string, entry: ItemDbEntry | undefined): WeaponClass | null {
   if (!entry?.name) return null;
   if (excluded(uniqueName, entry)) return null;
   const product = PRODUCT_CLASS[String(entry.productCategory ?? "")];
@@ -83,10 +80,6 @@ export function weaponClass(
     if (pattern.test(uniqueName)) return weapon;
   }
   return null;
-}
-
-export function isWeaponEntry(uniqueName: string, entry: ItemDbEntry | undefined): boolean {
-  return weaponClass(uniqueName, entry) !== null;
 }
 
 export function listWeapons(itemDb: Record<string, ItemDbEntry>): WeaponEntry[] {

@@ -87,7 +87,7 @@ function carriedByNemesis(family: NemesisFamily, weapon: WeaponClass): boolean {
 }
 
 /** The name prefix is the whole signal: the item DB has no nemesis flag. */
-export function nemesisFamily(name: string): NemesisFamily | null {
+function nemesisFamily(name: string): NemesisFamily | null {
   for (const [pattern, family] of FAMILY_PREFIX) {
     if (pattern.test(name)) return family;
   }

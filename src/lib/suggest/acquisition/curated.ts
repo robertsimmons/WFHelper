@@ -17,7 +17,7 @@ export interface CuratedNemesis {
   bonus: NemesisBonusRange | null;
 }
 
-export interface CuratedEntry {
+interface CuratedEntry {
   difficulty: string | null;
   circuit: boolean;
   sources: CuratedSource[];

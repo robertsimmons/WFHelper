@@ -82,7 +82,7 @@ function platFor(name: string, plat: PlatPriceLookup | null | undefined): number
   return typeof value === "number" && Number.isFinite(value) && value > 0 ? value : null;
 }
 
-export function platCost(
+function platCost(
   itemName: string,
   parts: readonly PartState[],
   plat: PlatPriceLookup | null | undefined,
@@ -139,7 +139,7 @@ function makePath(
   };
 }
 
-export interface PathInputs {
+interface PathInputs {
   name: string;
   isPrime: boolean;
   parts: PartPlan;

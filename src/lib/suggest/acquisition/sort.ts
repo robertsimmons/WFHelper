@@ -26,7 +26,7 @@ export function platFor(target: AcquisitionTarget): number | null {
 
 /** Hundreds of items tie at the same route, so price breaks the tie: the cheaper
  *  one is the genuinely easier win, and a name never is. */
-export function priceFor(target: AcquisitionTarget): number {
+function priceFor(target: AcquisitionTarget): number {
   const cost = target.paths[0]?.cost;
   if (!cost) return Number.POSITIVE_INFINITY;
   const plat = cost.plat?.set ?? cost.plat?.partsTotal ?? null;

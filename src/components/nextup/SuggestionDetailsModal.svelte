@@ -165,6 +165,11 @@
     (acq?.parts.materials ?? []).filter((row) => row.missing > 0).slice(0, LIST_LIMIT),
   );
   const acqPaths = $derived((acq?.paths ?? []).slice(0, ROUTE_LIMIT));
+  const progenitors = $derived(acq?.nemesis?.progenitors ?? []);
+  let pickedElement = $state("");
+  const pickedProgenitor = $derived(
+    progenitors.find((row) => row.element === pickedElement) ?? progenitors[0] ?? null,
+  );
   const expiryDate = $derived(parseIsoDate(details?.expiry ?? null));
   const progress = $derived(suggestion.progress);
   const hasExtra = $derived(
@@ -501,6 +506,32 @@
             </div>
           {/if}
         </div>
+
+        {#if pickedProgenitor}
+          <div class="flex flex-col gap-1">
+            <span class={LABEL}>{$tr("nextUp.acqProgenitors")}</span>
+            <span class="flex flex-wrap gap-1.5">
+              {#each progenitors as row (row.element)}
+                <button
+                  class="{CHIP} cursor-pointer transition-colors duration-150 {row.element ===
+                  pickedProgenitor.element
+                    ? 'border-accent bg-accent text-bg-base'
+                    : 'text-text-secondary hover:text-text-primary'}"
+                  aria-pressed={row.element === pickedProgenitor.element}
+                  onclick={() => (pickedElement = row.element)}>{row.element}</button
+                >
+              {/each}
+            </span>
+            <p class="m-0 text-sm leading-snug text-text-secondary">
+              {pickedProgenitor.warframes.join(", ")}
+            </p>
+            <span class="text-xs tabular-nums text-text-muted"
+              >{$tr("nextUp.acqProgenitorCount", {
+                count: String(pickedProgenitor.warframes.length),
+              })}</span
+            >
+          </div>
+        {/if}
 
         {#if acqParts.length > 0}
           <div class="flex flex-col gap-1">

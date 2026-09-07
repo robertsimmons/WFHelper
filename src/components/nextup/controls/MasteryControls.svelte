@@ -3,8 +3,6 @@
   import { suggestionPreferences, toggleSuggestionList } from "../../../stores/suggestionPrefs.js";
   import { MASTERY_KINDS, type MasteryKind } from "../../../types/suggest.js";
 
-  // Only the Forma box narrows anything yet; the mastery provider does not read
-  // frames apart from weapons.
   const LABELS: Record<MasteryKind, MessageKey> = {
     frame: "nextUp.masteryKindFrame",
     weapon: "nextUp.masteryKindWeapon",

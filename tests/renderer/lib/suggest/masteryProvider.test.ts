@@ -143,6 +143,69 @@ describe("masteryProvider", () => {
     expect(ids({}, { masteryKinds: [] })).toEqual(["mastery:/Bramma"]);
   });
 
+  it("narrows to frames", () => {
+    loadMastery([
+      item({ name: "Volt", uniqueName: "/Volt", category: "Warframes" }),
+      item({ name: "Braton", uniqueName: "/Braton", category: "Primary" }),
+      item({ name: "Lex", uniqueName: "/Lex", category: "Secondary" }),
+      item({ name: "Skana", uniqueName: "/Skana", category: "Melee" }),
+      item({ name: "Mote Amp", uniqueName: "/Mote", category: "Amps" }),
+      item({ name: "Voidrig", uniqueName: "/Voidrig", category: "Necramech" }),
+    ]);
+    expect(ids({}, { masteryKinds: ["frame"] })).toEqual(["mastery:/Volt"]);
+    expect(ids({}, { masteryKinds: ["weapon"] })).toEqual([
+      "mastery:/Braton",
+      "mastery:/Lex",
+      "mastery:/Mote",
+      "mastery:/Skana",
+      "mastery:/Voidrig",
+    ]);
+  });
+
+  it("splits the one Archwing category on the suit path", () => {
+    loadMastery([
+      item({
+        name: "Odonata",
+        uniqueName: "/Lotus/Powersuits/Archwing/StandardJetPack/StandardJetPack",
+        category: "Archwing",
+      }),
+      item({
+        name: "Corvas",
+        uniqueName: "/Lotus/Weapons/Tenno/Archwing/Primary/ThanoTechArchGun/ThanoTechArchGun",
+        category: "Archwing",
+      }),
+    ]);
+    expect(ids({}, { masteryKinds: ["frame"] })).toEqual([
+      "mastery:/Lotus/Powersuits/Archwing/StandardJetPack/StandardJetPack",
+    ]);
+    expect(ids({}, { masteryKinds: ["weapon"] })).toEqual([
+      "mastery:/Lotus/Weapons/Tenno/Archwing/Primary/ThanoTechArchGun/ThanoTechArchGun",
+    ]);
+  });
+
+  it("keeps gear no box names rather than hiding it", () => {
+    loadMastery([
+      item({ name: "Kubrow", uniqueName: "/Kubrow", category: "Companions" }),
+      item({ name: "Bright Purity", uniqueName: "/KDrive", category: "Misc" }),
+      item({ name: "Braton", uniqueName: "/Braton", category: "Primary" }),
+    ]);
+    expect(ids({}, { masteryKinds: ["frame"] })).toEqual(["mastery:/KDrive", "mastery:/Kubrow"]);
+  });
+
+  it("counts a Forma dump as a Forma grind, not as the gear it rides on", () => {
+    loadMastery([
+      item({
+        name: "Voidrig",
+        uniqueName: "/Voidrig",
+        category: "Necramech",
+        rank: 30,
+        maxRank: 40,
+      }),
+    ]);
+    expect(ids({}, { masteryKinds: ["weapon"] })).toEqual([]);
+    expect(ids({}, { masteryKinds: ["forma"] })).toEqual(["mastery:/Voidrig"]);
+  });
+
   it("carries the rank as progress and fingerprints on it", () => {
     loadMastery([item({ rank: 12 })]);
     const draft = masteryProvider.collect(context())[0];

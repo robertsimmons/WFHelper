@@ -3,6 +3,7 @@ import { buildMasteryRoadmap, type MasteryRoadmapSourceItem } from "../../master
 import { clamp01 } from "../score.js";
 import type { ParsedItem } from "../../../types/inventory.js";
 import type {
+  MasteryKind,
   SuggestionContext,
   SuggestionDraft,
   SuggestionPreferences,
@@ -29,7 +30,16 @@ interface Levelable {
   rank: number;
   maxRank: number;
   category: string;
+  uniqueName?: string;
 }
+
+const FRAME_CATEGORIES = new Set(["Warframes"]);
+
+const WEAPON_CATEGORIES = new Set(["Primary", "Secondary", "Melee", "Amps", "Necramech"]);
+
+/** One Archwing category holds the suits and their guns alike, so the database
+ *  path breaks the tie the way the mastery service's own affinity rate does. */
+const ARCH_SUIT_PATH = /\/(?:SpaceSuits?|Powersuits\/Archwing)\//i;
 
 function ranksLeft(item: Levelable): number {
   return Math.max(0, item.maxRank - item.rank);
@@ -50,12 +60,25 @@ function needsFormaDump(item: Levelable): boolean {
   return item.maxRank > FORMA_GATE_RANK && item.rank >= FORMA_GATE_RANK;
 }
 
-/** Frames and weapons are still every item this reads; only the Forma entry
- *  narrows anything yet. */
+/** A Forma dump is its own grind, so it answers to that box rather than to the
+ *  one its gear would otherwise sit under. */
+function kindOf(item: Levelable): MasteryKind | null {
+  if (needsFormaDump(item)) return "forma";
+  if (FRAME_CATEGORIES.has(item.category)) return "frame";
+  if (WEAPON_CATEGORIES.has(item.category)) return "weapon";
+  if (item.category === "Archwing") {
+    return ARCH_SUIT_PATH.test(item.uniqueName ?? "") ? "frame" : "weapon";
+  }
+  return null;
+}
+
 function keeps(prefs: SuggestionPreferences, item: Levelable): boolean {
   const kinds = prefs.options.masteryKinds;
-  if (kinds.length > 0 && !kinds.includes("forma") && needsFormaDump(item)) return false;
-  return true;
+  if (kinds.length === 0) return true;
+  const kind = kindOf(item);
+  // Companions, K-Drives and the rest have no box of their own; hiding them
+  // behind one that does not name them would lose the grind silently.
+  return kind === null || kinds.includes(kind);
 }
 
 /** Nothing here is being bought or farmed, so only the roadmap's own read of

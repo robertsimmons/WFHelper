@@ -6,6 +6,7 @@
   const LABELS: Record<MasteryKind, MessageKey> = {
     frame: "nextUp.masteryKindFrame",
     weapon: "nextUp.masteryKindWeapon",
+    companion: "nextUp.masteryKindCompanion",
     forma: "nextUp.masteryKindForma",
   };
 

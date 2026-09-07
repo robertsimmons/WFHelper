@@ -183,13 +183,48 @@ describe("masteryProvider", () => {
     ]);
   });
 
-  it("keeps gear no box names rather than hiding it", () => {
+  it("puts pets, sentinels and K-Drives alike under the companion box", () => {
     loadMastery([
       item({ name: "Kubrow", uniqueName: "/Kubrow", category: "Companions" }),
       item({ name: "Bright Purity", uniqueName: "/KDrive", category: "Misc" }),
       item({ name: "Braton", uniqueName: "/Braton", category: "Primary" }),
     ]);
-    expect(ids({}, { masteryKinds: ["frame"] })).toEqual(["mastery:/KDrive", "mastery:/Kubrow"]);
+    expect(ids({}, { masteryKinds: ["companion"] })).toEqual([
+      "mastery:/KDrive",
+      "mastery:/Kubrow",
+    ]);
+    expect(ids({}, { masteryKinds: ["frame"] })).toEqual([]);
+  });
+
+  it("files the Plexus with the companions its profile category names", () => {
+    loadMastery([
+      item({
+        name: "Plexus",
+        uniqueName: "/Lotus/Types/Game/CrewShip/RailjackHarness",
+        category: "Companions",
+      }),
+    ]);
+    expect(ids({}, { masteryKinds: ["companion"] })).toEqual([
+      "mastery:/Lotus/Types/Game/CrewShip/RailjackHarness",
+    ]);
+    expect(ids({}, { masteryKinds: ["frame", "weapon", "forma"] })).toEqual([]);
+  });
+
+  it("counts a companion past rank 30 as a Forma grind", () => {
+    loadMastery([
+      item({ name: "Hound", uniqueName: "/Hound", category: "Companions", rank: 30, maxRank: 40 }),
+    ]);
+    expect(ids({}, { masteryKinds: ["companion"] })).toEqual([]);
+    expect(ids({}, { masteryKinds: ["forma"] })).toEqual(["mastery:/Hound"]);
+  });
+
+  it("keeps gear no box names rather than hiding it", () => {
+    loadMastery([
+      item({ name: "Unknown", uniqueName: "/Unknown", category: "Other" }),
+      item({ name: "Braton", uniqueName: "/Braton", category: "Primary" }),
+    ]);
+    expect(ids({}, { masteryKinds: ["frame"] })).toEqual(["mastery:/Unknown"]);
+    expect(ids({}, { masteryKinds: ["companion"] })).toEqual(["mastery:/Unknown"]);
   });
 
   it("counts a Forma dump as a Forma grind, not as the gear it rides on", () => {

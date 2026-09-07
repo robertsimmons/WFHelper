@@ -37,6 +37,10 @@ const FRAME_CATEGORIES = new Set(["Warframes"]);
 
 const WEAPON_CATEGORIES = new Set(["Primary", "Secondary", "Melee", "Amps", "Necramech"]);
 
+/** The K-Drive override files boards under `Misc`, and the profile files the
+ *  Plexus under `Companions`; both answer to the companion box. */
+const COMPANION_CATEGORIES = new Set(["Companions", "Misc"]);
+
 /** One Archwing category holds the suits and their guns alike, so the database
  *  path breaks the tie the way the mastery service's own affinity rate does. */
 const ARCH_SUIT_PATH = /\/(?:SpaceSuits?|Powersuits\/Archwing)\//i;
@@ -66,6 +70,7 @@ function kindOf(item: Levelable): MasteryKind | null {
   if (needsFormaDump(item)) return "forma";
   if (FRAME_CATEGORIES.has(item.category)) return "frame";
   if (WEAPON_CATEGORIES.has(item.category)) return "weapon";
+  if (COMPANION_CATEGORIES.has(item.category)) return "companion";
   if (item.category === "Archwing") {
     return ARCH_SUIT_PATH.test(item.uniqueName ?? "") ? "frame" : "weapon";
   }
@@ -76,8 +81,8 @@ function keeps(prefs: SuggestionPreferences, item: Levelable): boolean {
   const kinds = prefs.options.masteryKinds;
   if (kinds.length === 0) return true;
   const kind = kindOf(item);
-  // Companions, K-Drives and the rest have no box of their own; hiding them
-  // behind one that does not name them would lose the grind silently.
+  // `Other` is the category resolver's fallback, so no box can honestly name
+  // what lands there; hiding it would lose the grind where nobody would look.
   return kind === null || kinds.includes(kind);
 }
 

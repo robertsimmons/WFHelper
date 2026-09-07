@@ -67,7 +67,7 @@ export type RelicEra = (typeof RELIC_ERAS)[number];
 export const RELIC_SORTS = ["recommended", "platinum", "ducats"] as const;
 export type RelicSort = (typeof RELIC_SORTS)[number];
 
-export const MASTERY_KINDS = ["frame", "weapon", "forma"] as const;
+export const MASTERY_KINDS = ["frame", "weapon", "companion", "forma"] as const;
 export type MasteryKind = (typeof MASTERY_KINDS)[number];
 
 /** What each section narrows and orders by, and the one goal that rates nothing

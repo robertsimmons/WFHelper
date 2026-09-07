@@ -62,9 +62,7 @@ export function ownedRewardFor(
  *  pending one, which ownership has already deducted the blueprint for. Null is
  *  an unread inventory, which is never "the player has none". */
 export function ownsAny(owned: OwnedReward | null | undefined): boolean {
-  return Boolean(
-    owned && (owned.owned > 0 || (owned.built ?? 0) > 0 || (owned.pending ?? 0) > 0),
-  );
+  return Boolean(owned && (owned.owned > 0 || (owned.built ?? 0) > 0 || (owned.pending ?? 0) > 0));
 }
 
 /** Four characters holds every real count, so a column of them stays lined up. */

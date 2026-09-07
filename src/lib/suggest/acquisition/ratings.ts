@@ -1,13 +1,9 @@
 import { curated, nameKey, type CuratedLookup } from "./curated.js";
 import { rankTiers, type RankTiers } from "./rankings.js";
 
-/**
- * Farm-difficulty and power tables are produced separately and may not exist.
- * Every read goes through here: an absent table, an absent key, a null entry
- * and a wrong-typed field all read as unknown, and unknown never ranks worse
- * than rated. Dropping richer data in later changes ranking quality without
- * touching a call site.
- */
+/** The rating tables are produced separately and may not exist. An absent
+ *  table, key, null entry or wrong-typed field all read as unknown, and
+ *  unknown never ranks worse than rated. */
 export interface Ratings {
   /** 0..1, higher is a harder farm. Null is unknown. */
   difficulty(name: string): number | null;

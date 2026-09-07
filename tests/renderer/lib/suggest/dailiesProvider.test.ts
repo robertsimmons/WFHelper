@@ -714,9 +714,9 @@ describe("dailiesProvider drop pools", () => {
       context({ dropPools: { sortie: SORTIE_POOL }, t: echoT }),
       "dailies:sortie",
     );
-    expect(sortie?.why).toBe("Endo, Kuva, Riven Mods");
+    expect(sortie?.why).toBe("Riven Mods, Endo, Kuva");
     expect(sortie?.whyWithReward).toBeUndefined();
-    expect(sortie?.reward?.name).toBe("4000 Endo");
+    expect(sortie?.reward?.name).toBe("Melee Riven Mod");
   });
 
   it("appends the labels to the task's own detail instead of replacing it", () => {
@@ -732,7 +732,7 @@ describe("dailiesProvider drop pools", () => {
       context({ world, dropPools: { sortie: SORTIE_POOL }, t: echoT }),
       "dailies:sortie",
     );
-    expect(sortie?.why).toBe("dailies.boss(name=Vor) - Endo, Kuva, Riven Mods");
+    expect(sortie?.why).toBe("dailies.boss(name=Vor) - Riven Mods, Endo, Kuva");
   });
 
   it("leaves the score to the shipped tables, whatever the pool holds", () => {

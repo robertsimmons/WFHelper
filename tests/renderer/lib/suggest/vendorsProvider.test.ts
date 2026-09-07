@@ -1,6 +1,11 @@
-import { describe, expect, it } from "vitest";
+import { afterEach, describe, expect, it } from "vitest";
 
 import { vendorsProvider } from "../../../../src/lib/suggest/providers/vendors.js";
+import {
+  resetValenceDocForTest,
+  setValenceDocForTest,
+} from "../../../../src/lib/suggest/valence.js";
+import type { AdversaryVendorsDoc } from "../../../../src/lib/world/adversaryVendors.js";
 import { defaultPreferences } from "../../../../src/lib/suggest/preferences.js";
 import { ownedRewardFor } from "../../../../src/lib/suggest/ownedRewards.js";
 import { vendorOffers } from "../../../../src/lib/suggest/vendorOffers.js";
@@ -54,6 +59,21 @@ function baroWorld(leavesInMs: number): WorldState {
   } as unknown as WorldState;
 }
 
+/** Batch A is Eleanor's live rotation at NOW; Coda Motovore carries the top roll. */
+function valenceDoc(motovoreBonus: number): AdversaryVendorsDoc {
+  return {
+    generatedAt: NOW,
+    coda: {
+      batch: "A",
+      items: [
+        { name: "Coda Motovore", element: "Cold", bonus: motovoreBonus },
+        { name: "Coda Pox", element: "Impact", bonus: 25 },
+      ],
+    },
+    tenet: [],
+  };
+}
+
 function ids(ctx: SuggestionContext): string[] {
   return vendorsProvider.collect(ctx).map((draft) => draft.id);
 }
@@ -63,6 +83,10 @@ function draft(ctx: SuggestionContext, id: string) {
 }
 
 describe("vendorsProvider", () => {
+  afterEach(() => {
+    resetValenceDocForTest();
+  });
+
   it("says nothing about a travelling vendor without world data", () => {
     expect(ids(context())).not.toContain("vendors:baro");
     expect(ids(context())).not.toContain("vendors:darvo");
@@ -226,6 +250,39 @@ describe("vendorsProvider", () => {
       dailyDeals: [{ item: "Rubico Prime", expiry: new Date(NOW - HOUR).toISOString() }],
     } as unknown as WorldState;
     expect(ids(context({ world: expired }))).not.toContain("vendors:darvo");
+  });
+
+  it("names the best roll on offer and pushes the vendor up for it", () => {
+    setValenceDocForTest(valenceDoc(49.2));
+    const coda = draft(context(), "vendors:codaWeapons");
+    expect(coda?.reward?.name).toBe("Coda Motovore");
+    expect(coda?.signals.value).toBeGreaterThan(
+      draft(context({ prefs: prefs() }), "vendors:palladino")?.signals.value ?? 1,
+    );
+    expect(coda?.whySegments?.[1]).toEqual({ text: "nextUp.whyValenceTwoAway" });
+    expect(coda?.details?.pool?.[0]).toBe("nextUp.valenceOffer");
+  });
+
+  it("marks a roll one purchase from the cap as worth the trip", () => {
+    setValenceDocForTest(valenceDoc(53.1));
+    const coda = draft(context(), "vendors:codaWeapons");
+    expect(coda?.whySegments?.[1]).toEqual({ text: "nextUp.whyValenceOneAway", tone: "good" });
+    expect(coda?.signals.value).toBe(0.8);
+  });
+
+  it("tops the vendor out for a roll already at the cap", () => {
+    setValenceDocForTest(valenceDoc(60));
+    const coda = draft(context(), "vendors:codaWeapons");
+    expect(coda?.whySegments?.[1]).toEqual({ text: "nextUp.whyValenceCapped", tone: "good" });
+    expect(coda?.signals.value).toBe(1);
+  });
+
+  it("leaves an unreported rotation exactly where the table puts it", () => {
+    setValenceDocForTest(null);
+    const coda = draft(context(), "vendors:codaWeapons");
+    expect(coda?.signals.value).toBe(0.45);
+    expect(coda?.whySegments).toBeUndefined();
+    expect(coda?.reward?.name).toBe(vendorOffers("codaWeapons")[0].name);
   });
 
   it("counts what the player owns and has built of a curated offering", () => {

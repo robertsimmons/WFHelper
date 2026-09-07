@@ -105,6 +105,7 @@
       <label class="flex cursor-pointer select-none items-center gap-1 text-xs text-text-secondary">
         <input
           type="checkbox"
+          data-acquisition-kind={kind}
           checked={options.acquisitionKinds.includes(kind)}
           onchange={() => toggleKind(kind)}
         />

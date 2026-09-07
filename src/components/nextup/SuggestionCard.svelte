@@ -131,6 +131,7 @@
     ? 'border-success/60 opacity-70'
     : 'border-border hover:border-border-strong hover:bg-bg-hover'}"
   style="width: {CARD_WIDTH}px; height: {CARD_HEIGHT}px"
+  data-suggestion-card={suggestion.category}
   role="button"
   tabindex="0"
   aria-label={$tr("common.openDetailsFor", { name: suggestion.title })}

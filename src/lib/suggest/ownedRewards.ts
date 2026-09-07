@@ -46,6 +46,12 @@ export function ownedRewardFor(
   );
 }
 
+/** A built copy counts: the blueprint is spent but the item is in hand. Null is
+ *  an unread inventory, which is never "the player has none". */
+export function ownsAny(owned: OwnedReward | null | undefined): boolean {
+  return Boolean(owned && (owned.owned > 0 || (owned.built ?? 0) > 0));
+}
+
 /** Four characters holds every real count, so a column of them stays lined up. */
 export function compactCount(count: number): string {
   if (count < 10_000) return String(count);

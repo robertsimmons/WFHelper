@@ -1,15 +1,24 @@
 <script lang="ts">
+  import weapons from "../../data/suggest/weapons.json";
   import { formatNumber, parseIsoDate, timeTo } from "../../lib/format.js";
   import { tr } from "../../lib/i18n.js";
   import { send } from "../../lib/ipc.js";
+  import { createCurated } from "../../lib/suggest/acquisition/curated.js";
+  import { progenitors as frameProgenitors } from "../../lib/suggest/acquisition/progenitors.js";
+  import { rankTiers } from "../../lib/suggest/acquisition/rankings.js";
   import { gradeClass } from "../../lib/suggest/circuit.js";
   import { resolveDropArt } from "../../lib/suggest/dropPools.js";
   import { overframeUrl } from "../../lib/suggest/overframe.js";
   import { pathKindLabel } from "../../lib/suggest/providers/acquisition.js";
-  import { ownedRewardFor, type OwnedReward } from "../../lib/suggest/ownedRewards.js";
+  import { ownedRewardFor, ownsAny, type OwnedReward } from "../../lib/suggest/ownedRewards.js";
+  import { rewardTier } from "../../lib/suggest/rewards.js";
+  import { valenceDoc, valenceOffers } from "../../lib/suggest/valence.js";
   import { vendorOffers } from "../../lib/suggest/vendorOffers.js";
   import { clockStore } from "../../lib/timers.js";
   import { componentOwnership, itemDb } from "../../stores/data.js";
+  import { overframeRankingsRevision } from "../../stores/overframeRankings.js";
+  import { suggestionPreferences } from "../../stores/suggestionPrefs.js";
+  import ItemTile from "./ItemTile.svelte";
   import ItemImage from "../ItemImage.svelte";
   import ModalShell from "../ModalShell.svelte";
   import WikiButton from "../WikiButton.svelte";
@@ -17,16 +26,14 @@
   import type {
     AcquisitionPath,
     NeedReason,
-    PartState,
+    NemesisBonusRange,
   } from "../../lib/suggest/acquisition/types.js";
-  import type { VendorOffer } from "../../lib/suggest/vendorOffers.js";
   import type {
     ChoiceState,
     MissionOpinion,
     RewardTier,
     Suggestion,
     SuggestionChoice,
-    SuggestionOption,
   } from "../../types/suggest.js";
 
   interface Props {
@@ -37,11 +44,13 @@
   const { suggestion, onClose }: Props = $props();
 
   const clock = clockStore(1000);
+  // The vendor rotation only turns over between openings, so it is read once.
+  const openedAtMs = Date.now();
 
   const STATE_LABEL: Record<ChoiceState, MessageKey> = {
     wanted: "nextUp.choiceTakeIt",
     subsume: "nextUp.choiceSubsumeOnly",
-    done: "common.owned",
+    done: "nextUp.done",
   };
 
   const STATE_COLOR: Record<ChoiceState, string> = {
@@ -60,20 +69,6 @@
   const MISSION_TONE: Record<MissionOpinion, string> = {
     good: "text-success",
     bad: "text-danger",
-  };
-
-  const TIER_LABELS: Record<RewardTier, MessageKey> = {
-    great: "nextUp.settingsTierGreat",
-    good: "nextUp.settingsGood",
-    ok: "nextUp.settingsTierOk",
-    low: "nextUp.settingsLow",
-  };
-
-  const TIER_COLOR: Record<RewardTier, string> = {
-    great: "text-success",
-    good: "text-success",
-    ok: "text-text-secondary",
-    low: "text-text-muted",
   };
 
   const ROW = "grid grid-cols-[7rem_minmax(0,1fr)] items-baseline gap-3 py-1";
@@ -116,30 +111,51 @@
     return chips;
   }
 
-  function partClass(part: PartState): string {
-    return part.missing === 0 ? "text-success" : "text-text-secondary";
-  }
-
-  function optionArt(option: SuggestionOption) {
-    return resolveDropArt($itemDb, option.name, option.uniqueName);
-  }
-
-  function offerArt(offer: VendorOffer) {
-    return resolveDropArt($itemDb, offer.name, offer.uniqueName);
-  }
-
-  function ownedText(owned: OwnedReward): string {
-    return owned.built === undefined
-      ? $tr("nextUp.optionOwned", { count: String(owned.owned) })
-      : $tr("nextUp.optionOwnedBuilt", {
-          count: String(owned.owned),
-          built: String(owned.built),
-        });
-  }
-
   function work(choice: SuggestionChoice): MessageKey {
     if (choice.kind === "frame") return FRAME_WORK[choice.state];
-    return choice.state === "done" ? "nextUp.choiceAdapterOwned" : "nextUp.choiceAdapterWanted";
+    return choice.state === "done" ? "nextUp.choiceNeedsNothing" : "nextUp.choiceNeedsAdapter";
+  }
+
+  const weaponCurated = createCurated(weapons);
+
+  const FRAME_ELEMENT = new Map(
+    frameProgenitors.flatMap((row) => row.warframes.map((frame) => [frame, row.element] as const)),
+  );
+
+  interface Tile {
+    name: string;
+    imageUrl: string | null;
+    grade: string | null;
+    tier: RewardTier | null;
+    owned: OwnedReward | null;
+    element: string | null;
+    bonus: NemesisBonusRange | number | null;
+    have: boolean;
+  }
+
+  interface TileFacts {
+    tier?: RewardTier | null | undefined;
+    element?: string | null | undefined;
+    bonus?: number | null | undefined;
+  }
+
+  function itemTile(
+    item: { name: string; uniqueName?: string | undefined },
+    facts: TileFacts = {},
+  ): Tile {
+    const art = resolveDropArt($itemDb, item.name, item.uniqueName);
+    const owned = ownedRewardFor(item, $itemDb, $componentOwnership);
+    return {
+      name: art?.name ?? item.name,
+      imageUrl: art?.imageUrl ?? null,
+      grade: rankTiers(item.name),
+      tier: facts.tier ?? rewardTier($suggestionPreferences, item.name),
+      owned,
+      element: facts.element ?? null,
+      // The roll the vendor is actually holding beats the window it rolls in.
+      bonus: facts.bonus ?? weaponCurated(item.name).nemesis?.bonus ?? null,
+      have: ownsAny(owned),
+    };
   }
 
   const choices = $derived(suggestion.choices ?? []);
@@ -149,14 +165,17 @@
       : null,
   );
   const why = $derived(suggestion.whyWithReward ?? suggestion.why);
-  const rewardOwned = $derived(ownedRewardFor(suggestion.reward, $itemDb, $componentOwnership));
   const details = $derived(suggestion.details);
   const pool = $derived(details?.pool ?? []);
   const missions = $derived(details?.missions ?? []);
   const options = $derived(details?.options ?? []);
+  const taskId = $derived(suggestion.complete?.taskId ?? "");
+  // Whatever the wiki caught the adversary vendor holding this rotation. Empty
+  // until the doc lands, which reads as unknown rather than as no stock.
+  const valenceRows = $derived(valenceOffers(valenceDoc(), taskId, openedAtMs));
   // The real stock wins wherever world state carries one; the curated table only
   // names vendors it cannot describe.
-  const offers = $derived(pool.length > 0 ? [] : vendorOffers(suggestion.complete?.taskId ?? ""));
+  const offers = $derived(pool.length > 0 ? [] : vendorOffers(taskId));
   const acq = $derived(details?.acquisition ?? null);
   const acqParts = $derived(
     acq?.parts.known ? [...(acq.parts.main ? [acq.parts.main] : []), ...acq.parts.components] : [],
@@ -172,12 +191,47 @@
   );
   const expiryDate = $derived(parseIsoDate(details?.expiry ?? null));
   const progress = $derived(suggestion.progress);
+
+  // A refreshed Overframe table replaces the bundled one in place, so the tiers
+  // only recompute when the revision is read here.
+  const rewardTileModel = $derived.by(() => {
+    void $overframeRankingsRevision;
+    return suggestion.reward ? itemTile(suggestion.reward) : null;
+  });
+  const offerTiles = $derived.by(() => {
+    void $overframeRankingsRevision;
+    if (valenceRows.length === 0) return offers.map((offer) => itemTile(offer));
+    const curatedOffers = vendorOffers(taskId);
+    return valenceRows.map((row) => {
+      const needle = row.name.toLowerCase();
+      const known = curatedOffers.find((offer) => offer.name.toLowerCase() === needle);
+      return itemTile(known ?? { name: row.name }, { element: row.element, bonus: row.bonus });
+    });
+  });
+  const optionTiles = $derived.by(() => {
+    void $overframeRankingsRevision;
+    return options.map((group) => ({
+      day: group.day,
+      tiles: group.options.map((option) => itemTile(option, { tier: option.tier ?? null })),
+    }));
+  });
+  const partTiles = $derived(
+    acqParts.map((part) => ({
+      key: part.uniqueName,
+      main: part.role === "main",
+      label: part.displayName ?? part.name,
+      imageUrl: resolveDropArt($itemDb, part.name, part.uniqueName)?.imageUrl ?? null,
+      owned: { owned: part.owned },
+      required: part.missing === 0 ? null : part.required,
+      have: part.missing === 0,
+    })),
+  );
   const hasExtra = $derived(
     Boolean(
       art ||
       suggestion.reward ||
       pool.length > 0 ||
-      offers.length > 0 ||
+      offerTiles.length > 0 ||
       missions.length > 0 ||
       options.length > 0 ||
       expiryDate ||
@@ -227,59 +281,44 @@
     </div>
 
     {#if choices.length > 0}
-      <div class="flex flex-col divide-y divide-border">
+      <div class="flex flex-col gap-2">
         {#each choices as choice (choice.name)}
-          <div class="grid grid-cols-[72px_minmax(0,1fr)] items-start gap-3 py-3">
-            <span
-              class="flex h-18 w-18 items-center justify-center overflow-hidden
-                     rounded-[var(--radius-md)] bg-bg-deep"
-            >
-              <ItemImage src={choice.imageUrl} alt={choice.name} cls="max-h-18 max-w-18" />
-            </span>
-            <div class="flex min-w-0 flex-col gap-1">
-              <div class="flex flex-wrap items-center justify-between gap-x-3 gap-y-1">
-                <span class="flex min-w-0 items-center gap-1">
-                  <strong class="truncate font-display text-base text-text-primary"
-                    >{choice.name}</strong
-                  >
-                  {#if choice.grade}
-                    <span
-                      class="font-display text-base font-semibold leading-none {gradeClass(
-                        choice.grade,
-                      )}"
-                      title={$tr("nextUp.choiceGrade", { grade: choice.grade })}
-                      >{choice.grade}</span
-                    >
-                  {/if}
-                  <WikiButton fallbackName={choice.name} />
-                  {@render overframeLink(choice.name)}
-                </span>
-                <span
-                  class="text-xs font-semibold uppercase tracking-[0.08em] {STATE_COLOR[
-                    choice.state
-                  ]}">{$tr(STATE_LABEL[choice.state])}</span
-                >
-              </div>
-              {#if choice.upgradePath}
-                <span class="text-sm text-text-secondary"
-                  >{$tr("nextUp.choiceUpgradePath", { path: choice.upgradePath })}</span
-                >
-              {/if}
-              {#each choice.sources ?? [] as source (source.where)}
-                <span class="text-sm text-text-secondary">
-                  {$tr("nextUp.choiceSource", { where: source.where, kind: source.kind })}
-                </span>
-              {/each}
-              {#if choice.kind === "frame"}
-                <span class="text-sm text-text-secondary">
-                  {choice.difficulty
-                    ? $tr("nextUp.choiceDifficulty", { value: choice.difficulty })
-                    : $tr("nextUp.choiceDifficultyUnrated")}
-                </span>
-              {/if}
-              <span class="text-sm text-text-muted">{$tr(work(choice))}</span>
-            </div>
-          </div>
+          <ItemTile
+            name={choice.name}
+            imageUrl={choice.imageUrl}
+            grade={choice.grade}
+            element={choice.kind === "frame" ? (FRAME_ELEMENT.get(choice.name) ?? null) : null}
+            have={choice.state === "done"}
+            size="md"
+            stretch
+          >
+            {#snippet actions()}
+              <WikiButton fallbackName={choice.name} />
+              {@render overframeLink(choice.name)}
+              <span
+                class="ml-auto shrink-0 pl-2 text-xs font-semibold uppercase tracking-[0.08em]
+                       {STATE_COLOR[choice.state]}">{$tr(STATE_LABEL[choice.state])}</span
+              >
+            {/snippet}
+            {#if choice.upgradePath}
+              <span class="text-sm text-text-secondary"
+                >{$tr("nextUp.choiceUpgradePath", { path: choice.upgradePath })}</span
+              >
+            {/if}
+            {#each choice.sources ?? [] as source (source.where)}
+              <span class="text-sm text-text-secondary">
+                {$tr("nextUp.choiceSource", { where: source.where, kind: source.kind })}
+              </span>
+            {/each}
+            {#if choice.kind === "frame"}
+              <span class="text-sm text-text-secondary">
+                {choice.difficulty
+                  ? $tr("nextUp.choiceDifficulty", { value: choice.difficulty })
+                  : $tr("nextUp.choiceDifficultyUnrated")}
+              </span>
+            {/if}
+            <span class="text-sm text-text-muted">{$tr(work(choice))}</span>
+          </ItemTile>
         {/each}
       </div>
     {:else}
@@ -295,19 +334,23 @@
         <div class="flex min-w-0 flex-1 flex-col">
           <p class="m-0 text-sm leading-relaxed text-text-secondary">{why}</p>
 
-          {#if suggestion.reward}
+          {#if rewardTileModel}
             <div class={ROW}>
               <span class={LABEL}>{$tr("nextUp.detailsReward")}</span>
-              <span class="flex flex-wrap items-baseline gap-2">
-                <span class="text-sm text-text-primary">{suggestion.reward.name}</span>
-                {#if rewardOwned}
-                  <span class="text-xs tabular-nums text-text-muted">{ownedText(rewardOwned)}</span>
-                {/if}
+              <span class="flex min-w-0">
+                <ItemTile
+                  name={rewardTileModel.name}
+                  showArt={false}
+                  grade={rewardTileModel.grade}
+                  tier={rewardTileModel.tier}
+                  owned={rewardTileModel.owned}
+                  bonus={rewardTileModel.bonus}
+                />
               </span>
             </div>
           {/if}
 
-          {#if pool.length > 0}
+          {#if pool.length > 0 && valenceRows.length === 0}
             <div class={ROW}>
               <span class={LABEL}>{$tr("nextUp.detailsPool")}</span>
               <span class="text-sm text-text-primary">{pool.join(", ")}</span>
@@ -360,32 +403,21 @@
       </div>
     {/if}
 
-    {#if offers.length > 0}
+    {#if offerTiles.length > 0}
       <div class="mt-3 flex flex-col gap-2 border-t border-border pt-3">
         <span class={LABEL}>{$tr("nextUp.detailsOffers")}</span>
         <div class="flex flex-wrap gap-2">
-          {#each offers as offer (offer.name)}
-            {@const art = offerArt(offer)}
-            {@const owned = ownedRewardFor(offer, $itemDb, $componentOwnership)}
-            <div
-              class="flex min-w-0 items-center gap-2 rounded-[var(--radius-md)] border
-                     border-border px-2 py-1"
-            >
-              <span
-                class="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden
-                       rounded-[var(--radius-sm)] bg-bg-deep"
-              >
-                {#if art}
-                  <ItemImage src={art.imageUrl} alt={offer.name} cls="max-h-10 max-w-10" />
-                {/if}
-              </span>
-              <span class="flex min-w-0 flex-col">
-                <span class="truncate text-sm text-text-primary">{offer.name}</span>
-                {#if owned}
-                  <span class="text-xs tabular-nums text-text-muted">{ownedText(owned)}</span>
-                {/if}
-              </span>
-            </div>
+          {#each offerTiles as tile, index (index)}
+            <ItemTile
+              name={tile.name}
+              imageUrl={tile.imageUrl}
+              grade={tile.grade}
+              tier={tile.tier}
+              owned={tile.owned}
+              element={tile.element}
+              bonus={tile.bonus}
+              have={tile.have}
+            />
           {/each}
         </div>
       </div>
@@ -394,41 +426,23 @@
     {#if options.length > 0}
       <div class="mt-3 flex flex-col gap-3 border-t border-border pt-3">
         <span class={LABEL}>{$tr("nextUp.detailsOptions")}</span>
-        {#each options as group (group.day)}
+        {#each optionTiles as group (group.day)}
           <div class="flex flex-col gap-1">
             <span class="text-sm text-text-secondary"
               >{$tr("dailies.calendarDay", { day: String(group.day) })}</span
             >
             <div class="flex flex-wrap gap-2">
-              {#each group.options as option (option.name)}
-                {@const art = optionArt(option)}
-                {@const owned = ownedRewardFor(option, $itemDb, $componentOwnership)}
-                <div
-                  class="flex min-w-0 items-center gap-2 rounded-[var(--radius-md)] border
-                         border-border px-2 py-1"
-                >
-                  <span
-                    class="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden
-                           rounded-[var(--radius-sm)] bg-bg-deep"
-                  >
-                    {#if art}
-                      <ItemImage src={art.imageUrl} alt={option.name} cls="max-h-10 max-w-10" />
-                    {/if}
-                  </span>
-                  <span class="flex min-w-0 flex-col">
-                    <span class="truncate text-sm text-text-primary">{option.name}</span>
-                    {#if option.tier}
-                      <span
-                        class="text-xs font-semibold uppercase tracking-[0.08em] {TIER_COLOR[
-                          option.tier
-                        ]}">{$tr(TIER_LABELS[option.tier])}</span
-                      >
-                    {/if}
-                    {#if owned}
-                      <span class="text-xs tabular-nums text-text-muted">{ownedText(owned)}</span>
-                    {/if}
-                  </span>
-                </div>
+              {#each group.tiles as tile, index (index)}
+                <ItemTile
+                  name={tile.name}
+                  imageUrl={tile.imageUrl}
+                  grade={tile.grade}
+                  tier={tile.tier}
+                  owned={tile.owned}
+                  element={tile.element}
+                  bonus={tile.bonus}
+                  have={tile.have}
+                />
               {/each}
             </div>
           </div>
@@ -533,32 +547,28 @@
           </div>
         {/if}
 
-        {#if acqParts.length > 0}
+        {#if partTiles.length > 0}
           <div class="flex flex-col gap-1">
             <span class={LABEL}>{$tr("nextUp.acqParts")}</span>
-            <div class="flex flex-col divide-y divide-border">
-              {#each acqParts as part (part.name)}
-                <div class="grid grid-cols-[minmax(0,1fr)_auto] items-baseline gap-3 py-1">
-                  <span class="flex min-w-0 items-baseline gap-2">
-                    {#if part.role === "main"}
+            <div class="flex flex-col gap-1.5">
+              {#each partTiles as tile (tile.key)}
+                <ItemTile
+                  name={tile.label}
+                  imageUrl={tile.imageUrl}
+                  owned={tile.owned}
+                  required={tile.required}
+                  have={tile.have}
+                  stretch
+                >
+                  {#snippet actions()}
+                    {#if tile.main}
                       <span
-                        class="shrink-0 text-[0.625rem] font-semibold uppercase
-                               tracking-[0.08em] text-accent">{$tr("nextUp.acqPartMain")}</span
+                        class="shrink-0 text-[0.625rem] font-semibold uppercase tracking-[0.08em]
+                               text-accent">{$tr("nextUp.acqPartMain")}</span
                       >
                     {/if}
-                    <span class="truncate text-sm text-text-primary"
-                      >{part.displayName ?? part.name}</span
-                    >
-                  </span>
-                  <span class="shrink-0 text-xs tabular-nums {partClass(part)}">
-                    {part.missing === 0
-                      ? $tr("nextUp.acqPartDone")
-                      : $tr("nextUp.acqPartHave", {
-                          owned: String(part.owned),
-                          required: String(part.required),
-                        })}
-                  </span>
-                </div>
+                  {/snippet}
+                </ItemTile>
               {/each}
             </div>
           </div>

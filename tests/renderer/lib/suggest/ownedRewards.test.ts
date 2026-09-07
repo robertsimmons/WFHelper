@@ -1,6 +1,10 @@
 import { describe, expect, it } from "vitest";
 
-import { ownedRewardFor } from "../../../../src/lib/suggest/ownedRewards.js";
+import {
+  compactCount,
+  ownedRewardFor,
+  ownsAny,
+} from "../../../../src/lib/suggest/ownedRewards.js";
 import type { ItemDbEntry } from "../../../../src/types/inventory.js";
 
 const FORMA = "/Lotus/Types/Recipes/Components/FormaBlueprint";
@@ -59,5 +63,28 @@ describe("ownedRewardFor", () => {
   it("says nothing before an inventory has been read", () => {
     expect(ownedRewardFor({ name: "Forma Blueprint" }, ITEM_DB, new Map())).toBeNull();
     expect(ownedRewardFor(null, ITEM_DB, OWNERSHIP)).toBeNull();
+  });
+});
+
+describe("ownsAny", () => {
+  it("counts a copy already built as one the player has", () => {
+    expect(ownsAny({ owned: 0, built: 1 })).toBe(true);
+    expect(ownsAny({ owned: 2 })).toBe(true);
+  });
+
+  it("says no only for a count that was actually read as zero", () => {
+    expect(ownsAny({ owned: 0 })).toBe(false);
+    expect(ownsAny({ owned: 0, built: 0 })).toBe(false);
+    expect(ownsAny(null)).toBe(false);
+    expect(ownsAny(undefined)).toBe(false);
+  });
+});
+
+describe("compactCount", () => {
+  it("keeps a real count whole and shortens the rest to four characters", () => {
+    expect(compactCount(0)).toBe("0");
+    expect(compactCount(9999)).toBe("9999");
+    expect(compactCount(10_000)).toBe("10k");
+    expect(compactCount(2_500_000)).toBe("2M");
   });
 });

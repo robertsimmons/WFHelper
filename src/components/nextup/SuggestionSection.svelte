@@ -2,7 +2,7 @@
   import { tr } from "../../lib/i18n.js";
   import { CARD_GAP } from "../../lib/suggest/grid.js";
   import SuggestionCard from "./SuggestionCard.svelte";
-  import type { Snippet } from "svelte";
+  import type { Component } from "svelte";
   import type { Suggestion } from "../../types/suggest.js";
 
   interface Props {
@@ -12,12 +12,15 @@
     onToggle: () => void;
     onComplete: (suggestion: Suggestion, count: number) => void;
     onDismiss: (suggestion: Suggestion) => void;
-    /** What this section alone narrows or orders by; nothing for most of them. */
-    controls?: Snippet | undefined;
+    /** The section's own filters and sort, as a component so each section owns
+     *  one file; it reads the preference store rather than taking props. */
+    controls: Component<Record<string, never>>;
   }
 
   const { title, suggestions, collapsed, onToggle, onComplete, onDismiss, controls }: Props =
     $props();
+
+  const Controls = $derived(controls);
 
   const label = $derived($tr(collapsed ? "layout.expandSection" : "layout.collapseSection"));
 </script>
@@ -30,8 +33,8 @@
       {title}
       <span class="font-normal text-text-muted">({suggestions.length})</span>
     </h3>
-    {#if controls && !collapsed}
-      {@render controls()}
+    {#if !collapsed}
+      <Controls />
     {/if}
     <button
       class="flex cursor-pointer items-center rounded border border-border bg-bg-surface px-2 py-1

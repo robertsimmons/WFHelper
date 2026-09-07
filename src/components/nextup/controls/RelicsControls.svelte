@@ -1,0 +1,65 @@
+<script lang="ts">
+  import SortControl from "../../SortControl.svelte";
+  import { tr, type MessageKey } from "../../../lib/i18n.js";
+  import {
+    setSuggestionOption,
+    suggestionPreferences,
+    toggleSuggestionList,
+  } from "../../../stores/suggestionPrefs.js";
+  import {
+    RELIC_ERAS,
+    RELIC_SORTS,
+    type RelicEra,
+    type RelicSort,
+  } from "../../../types/suggest.js";
+
+  // The boxes persist and read back; the relics provider does not narrow on
+  // them yet.
+  const ERA_LABELS: Record<RelicEra, MessageKey> = {
+    Lith: "nextUp.eraLith",
+    Meso: "nextUp.eraMeso",
+    Neo: "nextUp.eraNeo",
+    Axi: "nextUp.eraAxi",
+    Requiem: "nextUp.eraRequiem",
+  };
+
+  const SORT_LABELS: Record<RelicSort, MessageKey> = {
+    recommended: "nextUp.relicSortRecommended",
+    platinum: "nextUp.relicSortPlatinum",
+    ducats: "nextUp.relicSortDucats",
+  };
+
+  const options = $derived($suggestionPreferences.options);
+
+  const sortOptions = $derived(RELIC_SORTS.map((key) => [key, $tr(SORT_LABELS[key])] as const));
+
+  /** Sorting by a payout is also picking it: the goal decides which relics get
+   *  offered at all, so the two can never disagree. */
+  function pickSort(value: string): void {
+    if (!(RELIC_SORTS as readonly string[]).includes(value)) return;
+    setSuggestionOption("relicSort", value as RelicSort);
+    if (value === "platinum" || value === "ducats") setSuggestionOption("relicGoal", value);
+  }
+</script>
+
+<div class="flex flex-wrap items-center gap-2.5">
+  {#each RELIC_ERAS as era (era)}
+    <label class="flex cursor-pointer select-none items-center gap-1 text-xs text-text-secondary">
+      <input
+        type="checkbox"
+        data-relic-era={era}
+        checked={options.relicEras.includes(era)}
+        onchange={() => toggleSuggestionList("relicEras", RELIC_ERAS, era)}
+      />
+      {$tr(ERA_LABELS[era])}
+    </label>
+  {/each}
+</div>
+<SortControl
+  value={options.relicSort}
+  options={sortOptions}
+  direction={options.relicSortDir}
+  onSelect={pickSort}
+  onToggleDirection={() =>
+    setSuggestionOption("relicSortDir", options.relicSortDir === "asc" ? "desc" : "asc")}
+/>

@@ -19,24 +19,39 @@ export type SuggestionCategory =
   | "acquisition"
   | "mastery";
 
+export const SUGGESTION_CATEGORIES: readonly SuggestionCategory[] = [
+  "daily",
+  "weekly",
+  "nightwave",
+  "vendor",
+  "relics",
+  "acquisition",
+  "mastery",
+];
+
+/** The categories the Tasks section pools, in the order its boxes read. */
+export const TASK_KINDS = ["daily", "weekly", "vendor", "nightwave"] as const;
+export type TaskKind = (typeof TASK_KINDS)[number];
+
+export type SuggestionSectionId = "tasks" | "relics" | "acquisition" | "mastery";
+
 export interface SuggestionSection {
-  category: SuggestionCategory;
+  id: SuggestionSectionId;
   titleKey: MessageKey;
+  /** Everything the section draws, ranked as one grid rather than grouped. */
+  categories: readonly SuggestionCategory[];
 }
 
 /** Section order on screen, time-boxed first. A new domain is a new row. */
 export const SUGGESTION_SECTIONS: readonly SuggestionSection[] = [
-  { category: "daily", titleKey: "dailies.groupDaily" },
-  { category: "weekly", titleKey: "dailies.groupWeekly" },
-  { category: "nightwave", titleKey: "dailies.groupNightwave" },
-  { category: "vendor", titleKey: "nextUp.sectionVendor" },
-  { category: "relics", titleKey: "common.relics" },
-  { category: "acquisition", titleKey: "nextUp.sectionAcquisition" },
-  { category: "mastery", titleKey: "common.mastery" },
+  { id: "tasks", titleKey: "nextUp.sectionTasks", categories: TASK_KINDS },
+  { id: "relics", titleKey: "common.relics", categories: ["relics"] },
+  { id: "acquisition", titleKey: "nextUp.sectionAcquisition", categories: ["acquisition"] },
+  { id: "mastery", titleKey: "common.mastery", categories: ["mastery"] },
 ];
 
-export const SUGGESTION_CATEGORIES: readonly SuggestionCategory[] = SUGGESTION_SECTIONS.map(
-  (section) => section.category,
+export const SUGGESTION_SECTION_IDS: readonly SuggestionSectionId[] = SUGGESTION_SECTIONS.map(
+  (section) => section.id,
 );
 
 export type RewardTier = "great" | "good" | "ok" | "low";
@@ -46,18 +61,28 @@ export type ActivityPref = "never" | "low" | "normal";
 export const RELIC_GOALS = ["platinum", "ducats"] as const;
 export type RelicGoal = (typeof RELIC_GOALS)[number];
 
-/** Settings a provider reads that rate nothing, so they have no place in the
- *  activity map: one pick and two filters. */
+export const RELIC_ERAS = ["Lith", "Meso", "Neo", "Axi", "Requiem"] as const;
+export type RelicEra = (typeof RELIC_ERAS)[number];
+
+export const RELIC_SORTS = ["recommended", "platinum", "ducats"] as const;
+export type RelicSort = (typeof RELIC_SORTS)[number];
+
+export const MASTERY_KINDS = ["frame", "weapon", "forma"] as const;
+export type MasteryKind = (typeof MASTERY_KINDS)[number];
+
+/** What each section narrows and orders by, and the one goal that rates nothing
+ *  and so has no place in the activity map. Every list here reads an empty
+ *  selection as "all", so unticking the last box can never empty a section. */
 export interface SuggestionOptions {
   relicGoal: RelicGoal;
-  /** Whether the mastery shortlist may offer gear that only ranks on Forma. */
-  masteryForma: boolean;
-  /** Whether it may offer gear that only levels in its own game mode. */
-  masteryOwnMode: boolean;
-  /** How the acquisition section picks and orders what it offers. */
+  taskKinds: TaskKind[];
+  relicEras: RelicEra[];
+  /** Platinum and ducats each pick a goal as well as an order. */
+  relicSort: RelicSort;
+  relicSortDir: SortDirection;
+  masteryKinds: MasteryKind[];
   acquisitionSort: AcquisitionSort;
   acquisitionSortDir: SortDirection;
-  /** Which kinds of gear it offers at all; empty reads as every one of them. */
   acquisitionKinds: AcquisitionInclude[];
 }
 

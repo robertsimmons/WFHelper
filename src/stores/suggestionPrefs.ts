@@ -24,13 +24,13 @@ import {
 } from "../lib/suggest/preferences.js";
 import { readStorage, writeStorage } from "../lib/persistence.js";
 import { normalizeName } from "../lib/suggest/rewards.js";
-import { SUGGESTION_CATEGORIES } from "../types/suggest.js";
+import { SUGGESTION_SECTION_IDS } from "../types/suggest.js";
 import type {
   ActivityPref,
   ScoreWeightKey,
-  SuggestionCategory,
   SuggestionOptions,
   SuggestionPreferences,
+  SuggestionSectionId,
 } from "../types/suggest.js";
 
 const REWARD_KEY = "next-up-reward-tiers";
@@ -150,6 +150,25 @@ export function setSuggestionOption<K extends keyof SuggestionOptions>(
   commit({ ...current, options: { ...current.options, [key]: value } });
 }
 
+/** Every list option the section headers tick boxes for. */
+type ListOption = {
+  [K in keyof SuggestionOptions]: SuggestionOptions[K] extends string[] ? K : never;
+}[keyof SuggestionOptions];
+
+/** Unticking the last box reads as "all", so a header can never empty its own
+ *  section, and order comes from the shipped list rather than the click order. */
+export function toggleSuggestionList<K extends ListOption>(
+  key: K,
+  all: readonly SuggestionOptions[K][number][],
+  value: SuggestionOptions[K][number],
+): void {
+  const current = mergePreferences(DEFAULTS, get(overrides)).options[key] as readonly string[];
+  const next = all.filter((entry) =>
+    entry === value ? !current.includes(entry) : current.includes(entry),
+  );
+  setSuggestionOption(key, (next.length > 0 ? next : [...all]) as SuggestionOptions[K]);
+}
+
 export function setScoreWeight(key: ScoreWeightKey, value: number): void {
   const current = get(overrides);
   commit({ ...current, weights: { ...current.weights, [key]: value } });
@@ -175,29 +194,27 @@ export function setNightwaveArt(next: NightwaveArt): void {
   writeStorage(NIGHTWAVE_ART_KEY, next);
 }
 
-function loadCollapsed(): SuggestionCategory[] {
+function loadCollapsed(): SuggestionSectionId[] {
   const raw = readStorage(COLLAPSED_KEY);
   if (!raw) return [];
   try {
     const parsed: unknown = JSON.parse(raw);
     if (!Array.isArray(parsed)) return [];
-    return SUGGESTION_CATEGORIES.filter((category) => parsed.includes(category));
+    return SUGGESTION_SECTION_IDS.filter((id) => parsed.includes(id));
   } catch {
     return [];
   }
 }
 
-const collapsed = writable<SuggestionCategory[]>(loadCollapsed());
+const collapsed = writable<SuggestionSectionId[]>(loadCollapsed());
 
-export const collapsedSections: Readable<SuggestionCategory[]> = {
+export const collapsedSections: Readable<SuggestionSectionId[]> = {
   subscribe: collapsed.subscribe,
 };
 
-export function toggleSectionCollapsed(category: SuggestionCategory): void {
+export function toggleSectionCollapsed(id: SuggestionSectionId): void {
   const current = get(collapsed);
-  const next = current.includes(category)
-    ? current.filter((entry) => entry !== category)
-    : [...current, category];
+  const next = current.includes(id) ? current.filter((entry) => entry !== id) : [...current, id];
   collapsed.set(next);
   writeStorage(COLLAPSED_KEY, JSON.stringify(next));
 }

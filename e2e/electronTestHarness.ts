@@ -92,16 +92,10 @@ export async function launchElectronTestHarness(
   }
 }
 
-/**
- * Sets the viewport in CSS pixels, which is what layout assertions mean.
- *
- * setViewportSize sets the *device* viewport, and the app then divides it by a
- * zoom derived from the display's shortest edge (config/runtime/uiScale.ts):
- * 1.15 on a 1440p panel, 0.9 on a small CI display. A raw 1800 therefore lands
- * at 1565 CSS px on a developer monitor and 2000 on CI, so width-sensitive
- * specs pass in one place and fail in the other. Measuring the zoom and
- * scaling through it makes 1800 mean 1800 everywhere.
- */
+/** Sets the viewport in CSS pixels, which is what layout assertions mean:
+ *  setViewportSize sets the *device* viewport, which the app then divides by a
+ *  zoom derived from the display's shortest edge (config/runtime/uiScale.ts),
+ *  so a raw width means different CSS widths on different machines. */
 export async function setLayoutViewport(page: Page, width: number, height: number): Promise<void> {
   await page.setViewportSize({ width, height });
   const applied = await page.evaluate(() => window.innerWidth);

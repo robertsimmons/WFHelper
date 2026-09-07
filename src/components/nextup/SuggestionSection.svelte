@@ -6,6 +6,7 @@
   import type { Suggestion } from "../../types/suggest.js";
 
   interface Props {
+    id: string;
     title: string;
     suggestions: Suggestion[];
     collapsed: boolean;
@@ -17,7 +18,7 @@
     controls: Component<Record<string, never>>;
   }
 
-  const { title, suggestions, collapsed, onToggle, onComplete, onDismiss, controls }: Props =
+  const { id, title, suggestions, collapsed, onToggle, onComplete, onDismiss, controls }: Props =
     $props();
 
   const Controls = $derived(controls);
@@ -25,7 +26,7 @@
   const label = $derived($tr(collapsed ? "layout.expandSection" : "layout.collapseSection"));
 </script>
 
-<section>
+<section data-suggestion-section={id}>
   <div class="mb-2 flex flex-wrap items-center gap-2">
     <h3
       class="m-0 mr-auto font-display text-sm font-bold uppercase tracking-[0.08em] text-text-primary"
@@ -40,6 +41,7 @@
       class="flex cursor-pointer items-center rounded border border-border bg-bg-surface px-2 py-1
              text-text-secondary transition-[border-color,color] duration-150
              hover:border-border-strong hover:text-text-primary"
+      data-section-toggle={id}
       aria-expanded={!collapsed}
       title={label}
       aria-label={label}

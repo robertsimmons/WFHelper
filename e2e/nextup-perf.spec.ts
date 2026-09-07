@@ -20,13 +20,12 @@ const OWNED_PERCENT = 70;
 /** Of that owned gear, the share left part-ranked so Mastery still has cards. */
 const PART_RANKED_PERCENT = 15;
 
-const KIND_TOGGLE_ORDER = ["companion", "archwing", "melee", "secondary", "primary"] as const;
-
-// --------------------------------------------------------------------------
-// BUDGET ASSERTIONS GO HERE. Nothing is asserted yet - this spec exists to
-// find out what "good" is. Once a target lands, gate on the medians, e.g.
-//   expect(summary.reentry.median).toBeLessThan(REENTRY_BUDGET_MS);
-// --------------------------------------------------------------------------
+/** Budgets sit well above the medians they were set from - cold ~1808ms,
+ *  re-entry ~70ms, every filter click ~42ms - so machine variance never fails
+ *  CI while a return to the ~1350ms re-entry this feed once cost still does. */
+const COLD_BUDGET_MS = 4000;
+const REENTRY_BUDGET_MS = 500;
+const INTERACTION_BUDGET_MS = 400;
 
 interface Sample {
   /** Click to the frame after the cards are on screen. */
@@ -62,16 +61,12 @@ function stat(samples: readonly Sample[], pick: (sample: Sample) => number): Sta
   };
 }
 
-/**
- * Every number here is taken inside the renderer: the clock starts on the
- * synthetic click and stops two frames after the cards exist, so nothing in it
- * is Playwright's CDP round trip. `idleMs` is the control - an unblocked
- * two-frame wait is ~32ms, and anything far above that means the window was
- * throttled and the run should not be trusted.
- */
+/** Timed inside the renderer, so no CDP round trip is in the number. `idleMs`
+ *  is the control: an unblocked two-frame wait is ~32ms, and far above that
+ *  means the window was throttled and the run should not be trusted. */
 async function measure(
   page: Page,
-  action: { type: "nav" } | { type: "toggle"; kind: string },
+  action: { type: "nav" } | { type: "click"; selector: string },
 ): Promise<Sample> {
   return page.evaluate(async (arg) => {
     const frame = () => new Promise<void>((resolve) => requestAnimationFrame(() => resolve()));
@@ -95,10 +90,7 @@ async function measure(
     await painted();
     const idleMs = performance.now() - idleStart;
 
-    const selector =
-      arg.type === "nav"
-        ? '#sidebar [data-view="nextUp"]'
-        : `[data-acquisition-kind="${arg.kind}"]`;
+    const selector = arg.type === "nav" ? '#sidebar [data-view="nextUp"]' : arg.selector;
     const target = document.querySelector<HTMLElement>(selector);
     if (!target) throw new Error(`perf target missing: ${selector}`);
 
@@ -114,7 +106,8 @@ async function measure(
       await new Promise<void>((resolve, reject) => {
         const tick = () => {
           if (document.querySelector("[data-suggestion-card]")) resolve();
-          else if (performance.now() > deadline) reject(new Error("no suggestion card ever painted"));
+          else if (performance.now() > deadline)
+            reject(new Error("no suggestion card ever painted"));
           else requestAnimationFrame(tick);
         };
         tick();
@@ -153,12 +146,9 @@ interface FixtureBuild {
   owned: number;
 }
 
-/**
- * No committed fixture covers a lived-in account, so one is derived from the
- * shipped item database: a deterministic share of every masterable frame and
- * weapon is marked owned, which is what decides how much gear the acquisition
- * sweep still has to plan a route for.
- */
+/** No committed fixture covers a lived-in account, so a deterministic share of
+ *  every masterable frame and weapon in the shipped item database is marked
+ *  owned; that share is what the acquisition sweep's cost scales with. */
 async function buildInventory(page: Page): Promise<FixtureBuild> {
   return page.evaluate(
     async (arg) => {
@@ -223,6 +213,40 @@ async function buildInventory(page: Page): Promise<FixtureBuild> {
 
 const VIEWPORT = { width: 1600, height: 1000 };
 
+/** One box narrows its section to that kind alone and clicking it again puts
+ *  every kind back. A narrowing that empties the section takes the box with it,
+ *  which ends the scenario rather than leaving the run measuring nothing. */
+async function toggleSamples(page: Page, attribute: string): Promise<Sample[]> {
+  const values = await page
+    .locator(`[${attribute}]`)
+    .evaluateAll((nodes, attr) => nodes.map((node) => node.getAttribute(attr) ?? ""), attribute);
+  const usable = values.filter(Boolean);
+  const samples: Sample[] = [];
+  for (let run = 0; run < RUNS && usable.length > 0; run += 1) {
+    const selector = `[${attribute}="${usable[run % usable.length]!}"]`;
+    samples.push(await measure(page, { type: "click", selector }));
+    if ((await page.locator(selector).count()) === 0) break;
+    await page.locator(selector).click();
+    await page.waitForTimeout(200);
+  }
+  return samples;
+}
+
+async function sectionSamples(
+  page: Page,
+  id: string,
+): Promise<{ collapse: Sample[]; expand: Sample[] }> {
+  const selector = `[data-section-toggle="${id}"]`;
+  const collapse: Sample[] = [];
+  const expand: Sample[] = [];
+  if ((await page.locator(selector).count()) === 0) return { collapse, expand };
+  for (let run = 0; run < RUNS; run += 1) {
+    collapse.push(await measure(page, { type: "click", selector }));
+    expand.push(await measure(page, { type: "click", selector }));
+  }
+  return { collapse, expand };
+}
+
 async function leaveNextUp(page: Page): Promise<void> {
   await page.locator('#sidebar [data-view="inventory"]').click();
   await expect(page.locator("[data-suggestion-card]")).toHaveCount(0, { timeout: 30_000 });
@@ -252,7 +276,7 @@ function describeSamples(name: string, samples: readonly Sample[]): string {
   return `  ${name}:\n    ${each}`;
 }
 
-test("Next Up render cost: cold, re-entry and acquisition toggle", async () => {
+test("Next Up render cost: cold entry, re-entry and every filter control", async () => {
   test.setTimeout(15 * 60_000);
 
   let prep: ElectronTestHarness | undefined;
@@ -263,9 +287,10 @@ test("Next Up render cost: cold, re-entry and acquisition toggle", async () => {
   } finally {
     await closeElectronTestHarness(prep);
   }
-  expect(fixture.owned, "synthetic account owns nothing - fixture is not realistic").toBeGreaterThan(
-    100,
-  );
+  expect(
+    fixture.owned,
+    "synthetic account owns nothing - fixture is not realistic",
+  ).toBeGreaterThan(100);
 
   const cold: Sample[] = [];
   for (let run = 0; run < RUNS; run += 1) {
@@ -283,7 +308,11 @@ test("Next Up render cost: cold, re-entry and acquisition toggle", async () => {
   }
 
   const reentry: Sample[] = [];
-  const toggle: Sample[] = [];
+  let toggle!: Sample[];
+  let taskKind!: Sample[];
+  let relicEra!: Sample[];
+  let masteryKind!: Sample[];
+  let section!: { collapse: Sample[]; expand: Sample[] };
   let harness: ElectronTestHarness | undefined;
   try {
     harness = await launchElectronTestHarness("wfh-nextup-perf-warm-", {
@@ -300,22 +329,43 @@ test("Next Up render cost: cold, re-entry and acquisition toggle", async () => {
     }
 
     await expect(page.locator("[data-acquisition-kind]").first()).toBeVisible({ timeout: 30_000 });
-    for (let run = 0; run < RUNS; run += 1) {
-      const kind = KIND_TOGGLE_ORDER[run % KIND_TOGGLE_ORDER.length]!;
-      toggle.push(await measure(page, { type: "toggle", kind }));
-      // Put the box back so every sample starts from the same six-kind state.
-      await page.locator(`[data-acquisition-kind="${kind}"]`).click();
-      await page.waitForTimeout(200);
-    }
+    toggle = await toggleSamples(page, "data-acquisition-kind");
+    section = await sectionSamples(page, "acquisition");
+    // Tasks and relics need live world state, so neither is guaranteed a card.
+    taskKind = await toggleSamples(page, "data-task-kind");
+    relicEra = await toggleSamples(page, "data-relic-era");
+    masteryKind = await toggleSamples(page, "data-mastery-kind");
   } finally {
     await closeElectronTestHarness(harness);
   }
 
+  const elapsed = (sample: Sample): number => sample.elapsedMs;
   const summary = {
-    cold: stat(cold, (sample) => sample.elapsedMs),
-    reentry: stat(reentry, (sample) => sample.elapsedMs),
-    toggle: stat(toggle, (sample) => sample.elapsedMs),
+    cold: stat(cold, elapsed),
+    reentry: stat(reentry, elapsed),
   };
+  const interactions = {
+    "acquisition kind toggle": stat(toggle, elapsed),
+    "section collapse": stat(section.collapse, elapsed),
+    "section expand": stat(section.expand, elapsed),
+    "task kind toggle": stat(taskKind, elapsed),
+    "relic era toggle": stat(relicEra, elapsed),
+    "mastery kind toggle": stat(masteryKind, elapsed),
+  };
+
+  const scenarios: ReadonlyArray<readonly [string, readonly Sample[]]> = [
+    ["cold", cold],
+    ["re-entry", reentry],
+    ["acquisition kind toggle", toggle],
+    ["section collapse", section.collapse],
+    ["section expand", section.expand],
+    ["task kind toggle", taskKind],
+    ["relic era toggle", relicEra],
+    ["mastery kind toggle", masteryKind],
+  ];
+  const detail = scenarios
+    .filter(([, samples]) => samples.length > 0)
+    .map(([name, samples]) => describeSamples(name, samples));
 
   const lines = [
     "",
@@ -328,11 +378,9 @@ test("Next Up render cost: cold, re-entry and acquisition toggle", async () => {
     "| --- | --- | --- | --- |",
     row("cold (launch -> Next Up -> cards painted)", summary.cold),
     row("re-entry (other tab -> Next Up -> cards painted)", summary.reentry),
-    row("acquisition kind toggle (click -> grid repainted)", summary.toggle),
+    ...Object.entries(interactions).map(([name, value]) => row(name, value)),
     "",
-    describeSamples("cold", cold),
-    describeSamples("re-entry", reentry),
-    describeSamples("toggle", toggle),
+    ...detail,
     "",
   ];
   console.log(lines.join("\n"));
@@ -351,19 +399,27 @@ test("Next Up render cost: cold, re-entry and acquisition toggle", async () => {
     "| --- | --- | --- | --- |",
     row("Cold (launch -> Next Up -> cards painted)", summary.cold),
     row("Re-entry (other tab -> Next Up -> cards painted)", summary.reentry),
-    row("Acquisition kind toggle (click -> grid repainted)", summary.toggle),
+    ...Object.entries(interactions).map(([name, value]) => row(name, value)),
     "",
     "Per-run detail (elapsed / sync = blocked inside the click handler / longtask / idle control):",
     "",
     "```",
-    describeSamples("cold", cold),
-    describeSamples("re-entry", reentry),
-    describeSamples("toggle", toggle),
+    ...detail,
     "```",
     "",
   ].join("\n");
   fs.mkdirSync(path.dirname(OUT_FILE), { recursive: true });
   fs.writeFileSync(OUT_FILE, report, "utf8");
 
+  expect(summary.cold.runs).toBe(RUNS);
   expect(summary.reentry.runs).toBe(RUNS);
+  expect(interactions["acquisition kind toggle"].runs).toBeGreaterThan(0);
+  expect(interactions["section expand"].runs).toBe(RUNS);
+
+  expect(summary.cold.median, "cold entry").toBeLessThan(COLD_BUDGET_MS);
+  expect(summary.reentry.median, "tab re-entry").toBeLessThan(REENTRY_BUDGET_MS);
+  for (const [name, value] of Object.entries(interactions)) {
+    if (value.runs === 0) continue;
+    expect(value.median, name).toBeLessThan(INTERACTION_BUDGET_MS);
+  }
 });

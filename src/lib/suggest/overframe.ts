@@ -55,20 +55,35 @@ export function overframeUrlIn(
 }
 
 // A glob rather than an import: the data build owns the file and it may not exist.
-const loaded = import.meta.glob("../../data/suggest/overframeItems.json", { eager: true });
+const loaded = import.meta.glob("../../data/suggest/overframeItems.json");
 
-function shippedIndex(): Map<string, OverframeEntry> {
-  const module = Object.values(loaded)[0];
-  const raw =
-    module && typeof module === "object" ? (module as { default?: unknown }).default : null;
-  return overframeIndex(raw ?? module);
+let index: Map<string, OverframeEntry> | null = null;
+
+/** Three quarters of a megabyte of rows for one hyperlink, so it is fetched
+ *  beside the view rather than inside its chunk. The load starts the moment the
+ *  feed's module graph does, and the only caller is a modal the player has to
+ *  open, so it has always landed by the time a url is asked for. */
+function preload(): void {
+  const open = Object.values(loaded)[0];
+  if (!open) {
+    index = new Map();
+    return;
+  }
+  void open()
+    .then((module) => {
+      const raw = module && typeof module === "object" ? (module as { default?: unknown }) : null;
+      index = overframeIndex(raw?.default ?? module);
+    })
+    .catch(() => {
+      index = new Map();
+    });
 }
 
-const INDEX = shippedIndex();
+preload();
 
 export function overframeUrl(
   name: string | null | undefined,
   uniqueName?: string | null | undefined,
 ): string | null {
-  return overframeUrlIn(INDEX, name, uniqueName);
+  return index ? overframeUrlIn(index, name, uniqueName) : null;
 }

@@ -103,6 +103,8 @@ describe("weapon sources", () => {
     expect(targets.map((row) => row.effort)).toEqual(
       [...targets.map((row) => row.effort)].sort((a, b) => a - b),
     );
-    expect(new Set(targets.map((row) => row.kind))).toEqual(new Set(["warframe", "weapon"]));
+    expect(new Set(targets.map((row) => row.kind))).toEqual(
+      new Set(["warframe", "archwing", "weapon"]),
+    );
   });
 });

@@ -2,10 +2,10 @@ import type { ItemDbEntry, RawInventoryData } from "../../../types/inventory.js"
 import type { RelicDatabase } from "../../../types/relics.js";
 import type { NemesisProgenitor } from "./progenitors.js";
 
-export type AcquisitionKind = "warframe" | "weapon";
+export type AcquisitionKind = "warframe" | "archwing" | "weapon";
 
-/** Archwing covers arch-gun and arch-melee; companion is the sentinel's gun. */
-export type WeaponClass = "primary" | "secondary" | "melee" | "archwing" | "companion";
+/** Companion is the sentinel's gun, not the pet that carries it. */
+export type WeaponClass = "primary" | "secondary" | "melee" | "archgun" | "archmelee" | "companion";
 
 /** Owning it, feeding it to the Helminth, adapting it and priming it are four
  *  separate wins, and each one is its own reason to farm. */
@@ -147,7 +147,7 @@ export interface AcquisitionTarget {
   displayName?: string | undefined;
   imageUrl: string | null;
   kind: AcquisitionKind;
-  /** Null for a Warframe. */
+  /** Null for a Warframe or an Archwing suit. */
   weaponClass: WeaponClass | null;
   isPrime: boolean;
   /** Set only for a weapon a nemesis carries; the path is then a nemesis run. */
@@ -183,6 +183,6 @@ export interface AcquisitionContext {
   curatedWeapons?: unknown;
   /** Restricts the sweep to these item names; every target otherwise. */
   only?: readonly string[] | undefined;
-  /** Restricts the sweep to these kinds; both otherwise. */
+  /** Restricts the sweep to these kinds; every one of them otherwise. */
   kinds?: readonly AcquisitionKind[] | undefined;
 }

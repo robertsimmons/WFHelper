@@ -2,7 +2,7 @@ import { buildSubsumedFamilySet, isFrameSubsumed, isSubsumableFrame } from "../.
 import { createCurated, curated, mergeCurated, type CuratedSource } from "./curated.js";
 import { createIncarnonLookup } from "./incarnon.js";
 import { ergoGlastSource, nemesisPlan } from "./nemesis.js";
-import { buildOwnership, buildPartPlans, listFrames, ownsItem } from "./parts.js";
+import { buildOwnership, buildPartPlans, listArchwings, listFrames, ownsItem } from "./parts.js";
 import { buildPaths } from "./paths.js";
 import { createRatings } from "./ratings.js";
 import { baseWeaponName, listWeapons } from "./weapons.js";
@@ -98,6 +98,25 @@ export function resolveAcquisition(ctx: AcquisitionContext): AcquisitionTarget[]
         kind: "warframe",
         weaponClass: null,
         needs,
+        nemesis: null,
+        incarnon: null,
+        extraSources: [],
+        build: true,
+      });
+    }
+  }
+
+  if (!kinds || kinds.has("archwing")) {
+    for (const suit of listArchwings(itemDb)) {
+      if (only && !only.has(suit.name.toLowerCase())) continue;
+      if (ownsItem(suit.uniqueName, ownership)) continue;
+      wanted.push({
+        uniqueName: suit.uniqueName,
+        name: suit.name,
+        entry: suit.entry,
+        kind: "archwing",
+        weaponClass: null,
+        needs: ["mastery"],
         nemesis: null,
         incarnon: null,
         extraSources: [],

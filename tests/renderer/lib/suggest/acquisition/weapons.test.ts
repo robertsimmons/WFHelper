@@ -13,6 +13,8 @@ import {
   inventory,
   LITH_B1,
   NIKANA,
+  ODONATA,
+  ONORIX,
   SWEEPER,
   weaponDb,
   weaponRelicDb,
@@ -43,9 +45,25 @@ describe("weapon enumeration", () => {
     expect(classes.get("Braton")).toBe("primary");
     expect(classes.get("Akbolto")).toBe("secondary");
     expect(classes.get("Nikana")).toBe("melee");
-    expect(classes.get("Corvas")).toBe("archwing");
+    expect(classes.get("Corvas")).toBe("archgun");
+    expect(classes.get("Onorix")).toBe("archmelee");
     expect(classes.get("Sweeper")).toBe("companion");
-    for (const row of targets) expect(row.kind).toBe("weapon");
+    for (const row of targets) {
+      expect(row.kind).toBe(row.name === "Odonata" ? "archwing" : "weapon");
+    }
+  });
+
+  it("wants the archwing suit itself, with no weapon class on it", () => {
+    const odonata = target("Odonata");
+    expect(odonata.kind).toBe("archwing");
+    expect(odonata.weaponClass).toBeNull();
+    expect(odonata.needs).toEqual(["mastery"]);
+  });
+
+  it("drops an archwing suit already flown", () => {
+    const owned = inventory({ spaceSuits: [ODONATA] });
+    const names = resolveAcquisition(context({ inventory: owned })).map((row) => row.name);
+    expect(names).not.toContain("Odonata");
   });
 
   it("skips exalted gear and the blueprints and parts of a build", () => {
@@ -81,10 +99,16 @@ describe("weapon enumeration", () => {
   });
 
   it("drops an owned archwing gun, melee and sentinel weapon alike", () => {
-    const owned = inventory({ melee: [NIKANA], spaceGuns: [CORVAS], sentinelWeapons: [SWEEPER] });
+    const owned = inventory({
+      melee: [NIKANA],
+      spaceGuns: [CORVAS],
+      spaceMelee: [ONORIX],
+      sentinelWeapons: [SWEEPER],
+    });
     const names = resolveAcquisition(context({ inventory: owned })).map((row) => row.name);
     expect(names).not.toContain("Nikana");
     expect(names).not.toContain("Corvas");
+    expect(names).not.toContain("Onorix");
     expect(names).not.toContain("Sweeper");
   });
 
@@ -92,8 +116,11 @@ describe("weapon enumeration", () => {
     const db = { ...weaponDb(), "/Lotus/Powersuits/Volt/Volt": frame("Volt", "/bp", []) };
     const weapons = resolveAcquisition({ itemDb: db, inventory: null, kinds: ["weapon"] });
     const frames = resolveAcquisition({ itemDb: db, inventory: null, kinds: ["warframe"] });
+    const suits = resolveAcquisition({ itemDb: db, inventory: null, kinds: ["archwing"] });
     expect(weapons.map((row) => row.name)).not.toContain("Volt");
+    expect(weapons.map((row) => row.name)).not.toContain("Odonata");
     expect(frames.map((row) => row.name)).toEqual(["Volt"]);
+    expect(suits.map((row) => row.name)).toEqual(["Odonata"]);
   });
 });
 

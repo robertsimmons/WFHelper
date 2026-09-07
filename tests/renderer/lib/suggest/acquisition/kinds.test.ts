@@ -17,8 +17,11 @@ function target(kind: AcquisitionKind, weaponClass: WeaponClass | null): Acquisi
 }
 
 const FRAME = target("warframe", null);
+const SUIT = target("archwing", null);
 const RIFLE = target("weapon", "primary");
 const BLADE = target("weapon", "melee");
+const ARCH_GUN = target("weapon", "archgun");
+const ARCH_BLADE = target("weapon", "archmelee");
 
 describe("includeOf", () => {
   it("reads a frame as a frame and a weapon as its class", () => {
@@ -27,10 +30,25 @@ describe("includeOf", () => {
     expect(includeOf(BLADE)).toBe("melee");
   });
 
+  it("keeps the archwing suit apart from the guns and melee it carries", () => {
+    expect(includeOf(SUIT)).toBe("archwing");
+    expect(includeOf(ARCH_GUN)).toBe("archgun");
+    expect(includeOf(ARCH_BLADE)).toBe("archmelee");
+  });
+
   it("covers every weapon class the resolver can return", () => {
-    const classes: WeaponClass[] = ["primary", "secondary", "melee", "archwing", "companion"];
+    const classes: WeaponClass[] = [
+      "primary",
+      "secondary",
+      "melee",
+      "archgun",
+      "archmelee",
+      "companion",
+    ];
     for (const weapon of classes) expect(includeOf(target("weapon", weapon))).toBe(weapon);
-    expect(new Set<string>(ACQUISITION_INCLUDES)).toEqual(new Set(["warframe", ...classes]));
+    expect(new Set<string>(ACQUISITION_INCLUDES)).toEqual(
+      new Set(["warframe", "archwing", ...classes]),
+    );
   });
 
   it("reports no kind for a weapon nothing classed", () => {
@@ -52,8 +70,18 @@ describe("includesTarget", () => {
     expect(includesTarget(picked, FRAME)).toBe(false);
   });
 
+  it("ticking the suit does not tick its guns", () => {
+    const picked: AcquisitionInclude[] = ["archwing"];
+    expect(includesTarget(picked, SUIT)).toBe(true);
+    expect(includesTarget(picked, ARCH_GUN)).toBe(false);
+    expect(includesTarget(picked, ARCH_BLADE)).toBe(false);
+    expect(includesTarget(["archgun"], ARCH_BLADE)).toBe(false);
+  });
+
   it("reads an empty selection as every kind", () => {
-    for (const item of [FRAME, RIFLE, BLADE]) expect(includesTarget([], item)).toBe(true);
+    for (const item of [FRAME, SUIT, RIFLE, BLADE, ARCH_GUN, ARCH_BLADE]) {
+      expect(includesTarget([], item)).toBe(true);
+    }
   });
 
   it("never hides a target it cannot class", () => {

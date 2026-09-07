@@ -38,11 +38,27 @@ function isFrameEntry(uniqueName: string, entry: ItemDbEntry | undefined): boole
   return FRAME_PATH.test(uniqueName);
 }
 
-export function listFrames(itemDb: Record<string, ItemDbEntry>): FrameEntry[] {
+const ARCHWING_PATH = /\/Archwing\//i;
+
+/** The suit itself. Its guns and melee are weapons and are swept as such. */
+function isArchwingEntry(uniqueName: string, entry: ItemDbEntry | undefined): boolean {
+  if (!entry?.name) return false;
+  if (entry.exalted === true || entry.isBuildComponent === true) return false;
+  if (entry.masterable !== true) return false;
+  const product = String(entry.productCategory ?? "");
+  if (product) return product === "SpaceSuits";
+  if (/^archwings?$/i.test(String(entry.category ?? ""))) return true;
+  return ARCHWING_PATH.test(uniqueName) && FRAME_PATH.test(uniqueName);
+}
+
+function listSuits(
+  itemDb: Record<string, ItemDbEntry>,
+  matches: (uniqueName: string, entry: ItemDbEntry | undefined) => boolean,
+): FrameEntry[] {
   const seen = new Set<string>();
   const out: FrameEntry[] = [];
   for (const [uniqueName, entry] of Object.entries(itemDb)) {
-    if (!isFrameEntry(uniqueName, entry)) continue;
+    if (!matches(uniqueName, entry)) continue;
     const name = String(entry.name);
     const key = name.toLowerCase();
     if (seen.has(key)) continue;
@@ -51,6 +67,14 @@ export function listFrames(itemDb: Record<string, ItemDbEntry>): FrameEntry[] {
   }
   out.sort((a, b) => a.name.localeCompare(b.name));
   return out;
+}
+
+export function listFrames(itemDb: Record<string, ItemDbEntry>): FrameEntry[] {
+  return listSuits(itemDb, isFrameEntry);
+}
+
+export function listArchwings(itemDb: Record<string, ItemDbEntry>): FrameEntry[] {
+  return listSuits(itemDb, isArchwingEntry);
 }
 
 export function ownsItem(uniqueName: string, ownership: Map<string, number>): boolean {

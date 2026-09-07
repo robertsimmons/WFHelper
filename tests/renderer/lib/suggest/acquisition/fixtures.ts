@@ -75,6 +75,8 @@ interface InventoryShape {
   pistols?: string[];
   melee?: string[];
   spaceGuns?: string[];
+  spaceMelee?: string[];
+  spaceSuits?: string[];
   sentinelWeapons?: string[];
   /** Owned rifles carrying the installed Incarnon Genesis feature bit. */
   incarnon?: string[];
@@ -103,6 +105,8 @@ export function inventory(shape: InventoryShape = {}): RawInventoryData {
     Pistols: gear(shape.pistols),
     Melee: gear(shape.melee),
     SpaceGuns: gear(shape.spaceGuns),
+    SpaceMelee: gear(shape.spaceMelee),
+    SpaceSuits: gear(shape.spaceSuits),
     SentinelWeapons: gear(shape.sentinelWeapons),
     Recipes: Object.entries(shape.recipes ?? {}).map(([ItemType, ItemCount]) => ({
       ItemType,
@@ -166,6 +170,12 @@ const NIKANA_BP = "/Lotus/Types/Recipes/Weapons/NikanaBlueprint";
 
 export const CORVAS = "/Lotus/Weapons/Tenno/Archwing/Primary/CorvasCannon";
 const CORVAS_BP = "/Lotus/Types/Recipes/Weapons/CorvasBlueprint";
+
+export const ONORIX = "/Lotus/Weapons/Tenno/Archwing/Melee/OnorixAxe";
+const ONORIX_BP = "/Lotus/Types/Recipes/Weapons/OnorixBlueprint";
+
+export const ODONATA = "/Lotus/Powersuits/Archwing/Odonata/Odonata";
+const ODONATA_BP = "/Lotus/Types/Recipes/Archwing/OdonataBlueprint";
 
 export const SWEEPER = "/Lotus/Types/Sentinels/SentinelWeapons/SentinelSweeper";
 const SWEEPER_BP = "/Lotus/Types/Recipes/Weapons/SweeperBlueprint";
@@ -233,6 +243,12 @@ export function weaponDb(): Record<string, ItemDbEntry> {
 
     [CORVAS]: weapon("Corvas", "SpaceGuns", CORVAS_BP),
     [CORVAS_BP]: { name: "Corvas Blueprint", buildsProduct: CORVAS },
+
+    [ONORIX]: weapon("Onorix", "SpaceMelee", ONORIX_BP),
+    [ONORIX_BP]: { name: "Onorix Blueprint", buildsProduct: ONORIX },
+
+    [ODONATA]: weapon("Odonata", "SpaceSuits", ODONATA_BP),
+    [ODONATA_BP]: { name: "Odonata Blueprint", buildsProduct: ODONATA },
 
     [SWEEPER]: weapon("Sweeper", "SentinelWeapons", SWEEPER_BP),
     [SWEEPER_BP]: { name: "Sweeper Blueprint", buildsProduct: SWEEPER },

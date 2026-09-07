@@ -6,8 +6,8 @@ const PRODUCT_CLASS: Record<string, WeaponClass> = {
   LongGuns: "primary",
   Pistols: "secondary",
   Melee: "melee",
-  SpaceGuns: "archwing",
-  SpaceMelee: "archwing",
+  SpaceGuns: "archgun",
+  SpaceMelee: "archmelee",
   SentinelWeapons: "companion",
 };
 
@@ -16,13 +16,13 @@ const CATEGORY_CLASS: Record<string, WeaponClass> = {
   primary: "primary",
   secondary: "secondary",
   melee: "melee",
-  "arch-gun": "archwing",
-  "arch-melee": "archwing",
+  "arch-gun": "archgun",
+  "arch-melee": "archmelee",
 };
 
 const PATH_CLASS: Array<[RegExp, WeaponClass]> = [
-  [/\/SpaceGuns?\//i, "archwing"],
-  [/\/SpaceMelee\//i, "archwing"],
+  [/\/SpaceGuns?\//i, "archgun"],
+  [/\/SpaceMelee\//i, "archmelee"],
   [/\/Sentinels\/[^/]*Weapons?\//i, "companion"],
   [/\/LongGuns\//i, "primary"],
   [/\/Pistols\//i, "secondary"],

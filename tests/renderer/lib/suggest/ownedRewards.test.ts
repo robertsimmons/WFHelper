@@ -46,6 +46,29 @@ describe("ownedRewardFor", () => {
     });
   });
 
+  it("reports the builds the foundry is running for it", () => {
+    expect(
+      ownedRewardFor(
+        { name: "Melee Incarnon Adapter Blueprint" },
+        ITEM_DB,
+        OWNERSHIP,
+        new Map([[ADAPTER, 2]]),
+      ),
+    ).toEqual({ owned: 2, built: 1, pending: 2 });
+  });
+
+  it("counts a build for a reward the drop pool named only in words", () => {
+    expect(
+      ownedRewardFor({ name: "Forma Blueprint" }, ITEM_DB, OWNERSHIP, new Map([[FORMA, 1]])),
+    ).toEqual({ owned: 12, pending: 1 });
+  });
+
+  it("leaves the foundry count off when nothing is building", () => {
+    expect(
+      ownedRewardFor({ name: "Forma Blueprint" }, ITEM_DB, OWNERSHIP, new Map([[ADAPTER, 3]])),
+    ).toEqual({ owned: 12 });
+  });
+
   it("says nothing for a name no item answers to", () => {
     expect(ownedRewardFor({ name: "Riven Sliver" }, ITEM_DB, OWNERSHIP)).toBeNull();
   });
@@ -66,6 +89,10 @@ describe("ownsAny", () => {
   it("counts a copy already built as one the player has", () => {
     expect(ownsAny({ owned: 0, built: 1 })).toBe(true);
     expect(ownsAny({ owned: 2 })).toBe(true);
+  });
+
+  it("counts a copy the foundry is building, whose blueprint owned no longer holds", () => {
+    expect(ownsAny({ owned: 0, pending: 1 })).toBe(true);
   });
 
   it("says no only for a count that was actually read as zero", () => {

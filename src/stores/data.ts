@@ -1,7 +1,7 @@
 import { writable, derived } from "svelte/store";
 import { ownedComponentCount } from "../../config/shared/componentNames.js";
 import { aggregateComponentOwnership } from "../../config/shared/componentOwnership.js";
-import { withoutFoundryPending } from "../../config/shared/foundryPending.js";
+import { pendingBuildCounts, withoutFoundryPending } from "../../config/shared/foundryPending.js";
 import { parseInventory } from "../lib/inventory.js";
 import { parseFoundry } from "../lib/inventory/foundryResources.js";
 import { gameRefKey } from "../lib/marketNaming.js";
@@ -35,6 +35,17 @@ const usableInventory = derived(
 export const componentOwnership = derived(
   usableInventory,
   ($inv): Map<string, number> => ($inv ? aggregateComponentOwnership($inv) : new Map()),
+);
+
+/** uniqueName -> builds the foundry is running, keyed by blueprint and product.
+ *  Empty while foundry claims count as owned, because then componentOwnership
+ *  already includes them and the two counts would report the same copy twice. */
+export const foundryPending = derived(
+  [inventoryData, hideFoundryClaims, itemDb],
+  ([$inv, $hide, $db]): Map<string, number> =>
+    $inv && $hide
+      ? pendingBuildCounts($inv.PendingRecipes, (uniqueName) => $db[uniqueName]?.buildsProduct)
+      : new Map(),
 );
 
 /** Enrich raw db components with ownership counts from the reactive ownership map. */

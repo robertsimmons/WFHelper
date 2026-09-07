@@ -163,10 +163,18 @@
           title={$tr("nextUp.tileNeeded", { required: String(required) })}>/{required}</span
         >
       {/if}
-      {#if owned.built !== undefined}
+      <!-- Zero is not worth a badge here: green already says how many are in hand. -->
+      {#if owned.pending}
         <span
           class="text-warning"
-          title={$tr("nextUp.tileInFoundry", { count: String(owned.built) })}
+          title={$tr("nextUp.tileInFoundry", { count: String(owned.pending) })}
+          >x{compactCount(owned.pending)}</span
+        >
+      {/if}
+      {#if owned.built}
+        <span
+          class="text-text-secondary"
+          title={$tr("nextUp.tileBuilt", { count: String(owned.built) })}
           >x{compactCount(owned.built)}</span
         >
       {/if}

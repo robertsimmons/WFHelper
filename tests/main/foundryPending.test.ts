@@ -1,7 +1,11 @@
 import { describe, expect, it } from "vitest";
 
 import { aggregateComponentOwnership } from "../../config/shared/componentOwnership";
-import { pendingRecipeCounts, withoutFoundryPending } from "../../config/shared/foundryPending";
+import {
+  pendingBuildCounts,
+  pendingRecipeCounts,
+  withoutFoundryPending,
+} from "../../config/shared/foundryPending";
 
 const HILDRYN = "/Lotus/Types/Recipes/WarframeRecipes/HildrynPrimeBlueprint";
 const FORMA = "/Lotus/Types/Recipes/Components/FormaBlueprint";
@@ -25,6 +29,40 @@ describe("pendingRecipeCounts", () => {
   it("ignores junk entries and non-arrays", () => {
     expect(pendingRecipeCounts(null).size).toBe(0);
     expect(pendingRecipeCounts([null, {}, { ItemType: 7 }]).size).toBe(0);
+  });
+});
+
+describe("pendingBuildCounts", () => {
+  const HILDRYN_BUILT = "/Lotus/Powersuits/Hildryn/HildrynPrime";
+  const buildsProduct = (uniqueName: string): string | undefined =>
+    uniqueName === HILDRYN ? HILDRYN_BUILT : undefined;
+
+  it("keys a build under the blueprint and under what it builds", () => {
+    const counts = pendingBuildCounts([{ ItemType: HILDRYN }], buildsProduct);
+
+    expect(counts.get(HILDRYN)).toBe(1);
+    expect(counts.get(HILDRYN_BUILT)).toBe(1);
+  });
+
+  it("keys only the blueprint where the db maps no product", () => {
+    const counts = pendingBuildCounts([{ ItemType: FORMA }], buildsProduct);
+
+    expect([...counts.keys()]).toEqual([FORMA]);
+  });
+
+  it("matches pendingRecipeCounts with no product lookup", () => {
+    expect(pendingBuildCounts([{ ItemType: HILDRYN }])).toEqual(
+      pendingRecipeCounts([{ ItemType: HILDRYN }]),
+    );
+  });
+
+  it("leaves a product that is itself building on its own count", () => {
+    const counts = pendingBuildCounts(
+      [{ ItemType: HILDRYN }, { ItemType: HILDRYN_BUILT }],
+      buildsProduct,
+    );
+
+    expect(counts.get(HILDRYN_BUILT)).toBe(1);
   });
 });
 

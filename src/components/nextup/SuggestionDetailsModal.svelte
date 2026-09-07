@@ -14,7 +14,7 @@
   import { valenceDoc, valenceOffers } from "../../lib/suggest/valence.js";
   import { vendorOffers } from "../../lib/suggest/vendorOffers.js";
   import { clockStore } from "../../lib/timers.js";
-  import { componentOwnership, itemDb } from "../../stores/data.js";
+  import { componentOwnership, foundryPending, itemDb } from "../../stores/data.js";
   import { overframeRankingsRevision } from "../../stores/overframeRankings.js";
   import { suggestionPreferences } from "../../stores/suggestionPrefs.js";
   import ItemTile from "./ItemTile.svelte";
@@ -141,7 +141,7 @@
     facts: TileFacts = {},
   ): Tile {
     const art = resolveDropArt($itemDb, item.name, item.uniqueName);
-    const owned = ownedRewardFor(item, $itemDb, $componentOwnership);
+    const owned = ownedRewardFor(item, $itemDb, $componentOwnership, $foundryPending);
     return {
       name: art?.name ?? item.name,
       imageUrl: art?.imageUrl ?? null,

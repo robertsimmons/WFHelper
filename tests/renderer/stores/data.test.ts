@@ -98,3 +98,35 @@ describe("hideFoundryClaims", () => {
     });
   });
 });
+
+describe("foundryPending", () => {
+  const BLUEPRINT = "/Lotus/Types/Recipes/WarframeRecipes/HildrynPrimeBlueprint";
+  const BUILT = "/Lotus/Powersuits/Hildryn/HildrynPrime";
+
+  beforeEach(() => {
+    vi.resetModules();
+  });
+
+  async function pending(hide: boolean): Promise<Map<string, number>> {
+    const stores = await import("../../../src/stores/data.js");
+    const prefs = await import("../../../src/stores/preferences.js");
+    prefs.hideFoundryClaims.set(hide);
+    stores.inventoryData.set({ PendingRecipes: [{ ItemType: BLUEPRINT }] });
+    stores.itemDb.set({
+      [BLUEPRINT]: { name: "Hildryn Prime Blueprint", buildsProduct: BUILT },
+    });
+
+    return get(stores.foundryPending);
+  }
+
+  it("counts the build under both the blueprint and the frame", async () => {
+    const counts = await pending(true);
+
+    expect(counts.get(BLUEPRINT)).toBe(1);
+    expect(counts.get(BUILT)).toBe(1);
+  });
+
+  it("stays empty while the ownership count still holds the foundry copy", async () => {
+    expect((await pending(false)).size).toBe(0);
+  });
+});

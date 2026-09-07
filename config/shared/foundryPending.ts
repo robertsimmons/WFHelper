@@ -28,6 +28,26 @@ export function pendingRecipeCounts(pendingRecipes: unknown): Map<string, number
   return counts;
 }
 
+/** pendingRecipeCounts, plus the same count under whatever each blueprint builds,
+ *  so a lookup lands whichever of the two names the caller is holding. */
+export function pendingBuildCounts(
+  pendingRecipes: unknown,
+  buildsProduct?: (uniqueName: string) => string | null | undefined,
+): Map<string, number> {
+  const byBlueprint = pendingRecipeCounts(pendingRecipes);
+  if (!buildsProduct) return byBlueprint;
+
+  const counts = new Map(byBlueprint);
+  for (const [blueprint, count] of byBlueprint) {
+    const product = buildsProduct(blueprint);
+    // A product that is itself a pending blueprint would double its own count.
+    if (product && !byBlueprint.has(product)) {
+      counts.set(product, (counts.get(product) || 0) + count);
+    }
+  }
+  return counts;
+}
+
 /** Same inventory minus the foundry-committed Recipes copies. isReusable spares
  *  consumeOnUse=false blueprints, which survive their own build. */
 export function withoutFoundryPending<T extends InventorySlices>(

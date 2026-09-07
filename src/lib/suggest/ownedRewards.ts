@@ -9,17 +9,27 @@ export interface OwnedReward {
   owned: number;
   /** Copies of the item already built, where the reward is its blueprint. */
   built?: number | undefined;
+  /** Builds the foundry is running for it right now. Absent, never zero: a caller
+   *  with no pending map has not read the foundry rather than found it idle. */
+  pending?: number | undefined;
 }
 
 function ownedReward(
   uniqueName: string | null | undefined,
   itemDb: Record<string, ItemDbEntry>,
   ownership: Map<string, number>,
+  foundryPending?: Map<string, number>,
 ): OwnedReward | null {
   if (!uniqueName || PACK_PATH.test(uniqueName)) return null;
   const owned = ownedComponentCount(uniqueName, ownership);
   const product = itemDb[uniqueName]?.buildsProduct;
-  return product ? { owned, built: ownedComponentCount(product, ownership) } : { owned };
+  // One build is keyed under both its names, so a max over aliases never doubles it.
+  const pending = foundryPending ? ownedComponentCount(uniqueName, foundryPending) : 0;
+  return {
+    owned,
+    ...(product ? { built: ownedComponentCount(product, ownership) } : {}),
+    ...(pending > 0 ? { pending } : {}),
+  };
 }
 
 /** The settings table is keyed by item name, so the count needs the item first. */
@@ -27,8 +37,9 @@ export function ownedRewardByName(
   name: string,
   itemDb: Record<string, ItemDbEntry>,
   ownership: Map<string, number>,
+  foundryPending?: Map<string, number>,
 ): OwnedReward | null {
-  return ownedReward(resolveRewardUniqueName(name, itemDb), itemDb, ownership);
+  return ownedReward(resolveRewardUniqueName(name, itemDb), itemDb, ownership, foundryPending);
 }
 
 /** The count for a reward named either way, or null where none can be trusted:
@@ -38,18 +49,22 @@ export function ownedRewardFor(
   reward: { name: string; uniqueName?: string | undefined } | null | undefined,
   itemDb: Record<string, ItemDbEntry>,
   ownership: Map<string, number>,
+  foundryPending?: Map<string, number>,
 ): OwnedReward | null {
   if (!reward || ownership.size === 0) return null;
   return (
-    ownedReward(reward.uniqueName, itemDb, ownership) ??
-    ownedRewardByName(reward.name, itemDb, ownership)
+    ownedReward(reward.uniqueName, itemDb, ownership, foundryPending) ??
+    ownedRewardByName(reward.name, itemDb, ownership, foundryPending)
   );
 }
 
-/** A built copy counts: the blueprint is spent but the item is in hand. Null is
+/** A built copy counts: the blueprint is spent but the item is in hand. So does a
+ *  pending one, which ownership has already deducted the blueprint for. Null is
  *  an unread inventory, which is never "the player has none". */
 export function ownsAny(owned: OwnedReward | null | undefined): boolean {
-  return Boolean(owned && (owned.owned > 0 || (owned.built ?? 0) > 0));
+  return Boolean(
+    owned && (owned.owned > 0 || (owned.built ?? 0) > 0 || (owned.pending ?? 0) > 0),
+  );
 }
 
 /** Four characters holds every real count, so a column of them stays lined up. */

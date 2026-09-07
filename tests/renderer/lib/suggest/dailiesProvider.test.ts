@@ -223,14 +223,40 @@ describe("dailiesProvider reward promotion", () => {
     expect(calendar?.why).toBe("nextUp.whyToday");
   });
 
-  it("picks the best reward in range, not the nearest", () => {
+  it("pictures the next payday, not the best one in the week", () => {
     const world = calendarWorld([
       { day: TODAY_OF_YEAR, events: [{ kind: "reward", label: "Kuva" }] },
       { day: TODAY_OF_YEAR + 3, events: [{ kind: "reward", label: "Umbra Forma" }] },
     ]);
     const calendar = draft(context({ world, t: echoT }), "dailies:calendar1999");
-    expect(calendar?.whyWithReward).toBe("nextUp.whyRewardInDays(reward=Umbra Forma,days=3)");
+    expect(calendar?.whyWithReward).toBe("nextUp.whyRewardToday(reward=Kuva)");
+    expect(calendar?.reward?.name).toBe("Kuva");
+  });
+
+  it("pictures the better of the next payday's two options", () => {
+    const world = calendarWorld([
+      {
+        day: TODAY_OF_YEAR + 2,
+        events: [
+          { kind: "reward", label: "Kuva" },
+          { kind: "reward", label: "Umbra Forma" },
+        ],
+      },
+      { day: TODAY_OF_YEAR + 4, events: [{ kind: "reward", label: "Aura Forma" }] },
+    ]);
+    const calendar = draft(context({ world, t: echoT }), "dailies:calendar1999");
     expect(calendar?.reward?.name).toBe("Umbra Forma");
+    expect(calendar?.why).toBe("nextUp.whyInDays(days=2) - Kuva / Umbra Forma");
+  });
+
+  it("passes over a payday nothing rates rather than picturing it", () => {
+    const world = calendarWorld([
+      { day: TODAY_OF_YEAR + 1, events: [{ kind: "reward", label: "Photor Somachord Tone" }] },
+      { day: TODAY_OF_YEAR + 2, events: [{ kind: "reward", label: "Umbra Forma" }] },
+    ]);
+    const calendar = draft(context({ world, t: echoT }), "dailies:calendar1999");
+    expect(calendar?.reward?.name).toBe("Umbra Forma");
+    expect(calendar?.why).toBe("nextUp.whyInDays(days=2)");
   });
 
   it("ignores a reward too far out to be a reason to log in", () => {
@@ -246,11 +272,12 @@ describe("dailiesProvider reward promotion", () => {
   // the case that made the calendar card promote nothing at all.
   it("still promotes when the season's day numbers are not this year's", () => {
     const world = calendarWorld([
-      { day: 97, events: [{ kind: "reward", label: "Kuva" }] },
-      { day: 144, events: [{ kind: "reward", label: "Topaz Archon Shard" }] },
+      { day: 97, events: [{ kind: "reward", label: "Topaz Archon Shard" }] },
+      { day: 144, events: [{ kind: "reward", label: "Kuva" }] },
     ]);
     const calendar = draft(context({ world, t: echoT }), "dailies:calendar1999");
     expect(calendar?.signals.value).toBeGreaterThan(WEEKLY_BASE);
+    // Running order, so the first listed day is the nearest one we can claim.
     expect(calendar?.why).toBe("nextUp.whyUpcoming");
     expect(calendar?.whyWithReward).toBe("nextUp.whyRewardUpcoming(reward=Topaz Archon Shard)");
   });
@@ -385,7 +412,7 @@ describe("dailiesProvider calendar choices", () => {
     expect(calendar?.why).toBe("Winter");
   });
 
-  it("reads a lone reward beside buffs as no pick at all", () => {
+  it("lists the reward of a day that offers it beside buffs, and keeps the buffs out", () => {
     const calendar = draft(
       context({
         world: calendarWorld([
@@ -401,7 +428,12 @@ describe("dailiesProvider calendar choices", () => {
       }),
       "dailies:calendar1999",
     );
-    expect(calendar?.details?.options).toBeUndefined();
+    expect(calendar?.details?.options).toEqual([
+      {
+        day: TODAY_OF_YEAR + 2,
+        options: [{ name: "Umbra Forma", uniqueName: undefined, tier: "great" }],
+      },
+    ]);
   });
 
   it("reads a day with one event as what that day is, not a pick", () => {
@@ -413,7 +445,7 @@ describe("dailiesProvider calendar choices", () => {
     expect(calendar?.why).toBe("Winter");
   });
 
-  it("leaves a lone reward day to the promoted reward alone", () => {
+  it("lists a single-reward day but keeps it off the card's pick line", () => {
     const calendar = draft(
       context({
         world: calendarWorld([
@@ -423,8 +455,38 @@ describe("dailiesProvider calendar choices", () => {
       }),
       "dailies:calendar1999",
     );
-    expect(calendar?.details?.options).toBeUndefined();
+    expect(calendar?.details?.options).toEqual([
+      {
+        day: TODAY_OF_YEAR + 2,
+        options: [{ name: "Umbra Forma", uniqueName: undefined, tier: "great" }],
+      },
+    ]);
     expect(calendar?.why).toBe("nextUp.whyInDays(days=2)");
+  });
+
+  it("lists every upcoming payday, single-reward days among the picks", () => {
+    const calendar = draft(
+      context({
+        world: calendarWorld([
+          ...CALENDAR_CHOICES,
+          { day: TODAY_OF_YEAR + 6, events: [{ kind: "reward", label: "Umbra Forma" }] },
+          {
+            day: TODAY_OF_YEAR + 8,
+            events: [
+              { kind: "reward", label: "Forma" },
+              { kind: "reward", label: "Endo" },
+            ],
+          },
+        ]),
+        t: echoT,
+      }),
+      "dailies:calendar1999",
+    );
+    expect(calendar?.details?.options?.map((group) => group.day)).toEqual([
+      TODAY_OF_YEAR + 2,
+      TODAY_OF_YEAR + 6,
+      TODAY_OF_YEAR + 8,
+    ]);
   });
 });
 

@@ -69,46 +69,41 @@ const ARCHON_SHARDS: Record<string, string> = {
   Nira: "Amber Archon Shard",
 };
 
-/** Higher value wins; between equals, the one the player reaches first. */
-function beats(candidate: NamedReward, best: NamedReward | null): boolean {
-  if (!best) return true;
-  if (candidate.value !== best.value) return candidate.value > best.value;
-  return (candidate.inDays ?? Infinity) < (best.inDays ?? Infinity);
-}
-
-/** Best rated reward among the days the World tab is showing. That list is a
- *  countdown only while the season's day numbers are this year's; when they are
- *  not, it falls back to a running order, and a day distance would be fiction. */
-function bestCalendarReward(
+/** The next payday, and the better of what that day offers; a day nothing rates
+ *  is passed over. The day list is a countdown only while the season's day
+ *  numbers are this year's; when they are not it falls back to a running order,
+ *  and a day distance would be fiction. */
+function nextCalendarReward(
   prefs: SuggestionPreferences,
   days: CalendarDay[] | undefined,
   nowMs: number,
 ): NamedReward | null {
   if (!days?.length) return null;
   const today = dayOfYearUtc(nowMs);
-  let best: NamedReward | null = null;
   for (const day of upcomingCalendarDays(days, nowMs)) {
     const inDays = day.day - today;
     if (inDays > CALENDAR_LOOKAHEAD_DAYS) continue;
+    let best: NamedReward | null = null;
     for (const event of day.events) {
       if (event.kind !== "reward") continue;
       const value = rewardValue(prefs, event.label);
       if (value === null) continue;
-      const candidate: NamedReward = {
+      if (best && value <= best.value) continue;
+      best = {
         name: event.label,
         uniqueName: event.uniqueName,
         value,
         inDays: inDays < 0 ? null : inDays,
         mention: true,
       };
-      if (beats(candidate, best)) best = candidate;
     }
+    if (best) return best;
   }
-  return best;
+  return null;
 }
 
-/** A day the season lists more than one reward for is a pick between them; a lone
- *  reward is simply what that day is, and a day of buffs is not a reward at all. */
+/** Every upcoming day the season pays out on, in order; a day of buffs or
+ *  challenges alone is not a payday. */
 function calendarOptionGroups(
   prefs: SuggestionPreferences,
   days: CalendarDay[] | undefined,
@@ -118,7 +113,7 @@ function calendarOptionGroups(
   const groups: SuggestionOptionGroup[] = [];
   for (const day of upcomingCalendarDays(days, nowMs)) {
     const rewards = day.events.filter((event) => event.kind === "reward");
-    if (rewards.length < 2) continue;
+    if (rewards.length === 0) continue;
     const options: SuggestionOption[] = rewards.map((event) => ({
       name: event.label,
       uniqueName: event.uniqueName,
@@ -129,12 +124,14 @@ function calendarOptionGroups(
   return groups;
 }
 
-/** The card has one line, so it names the nearest picks and clamps. */
+/** The card has one line, so it names the nearest picks and clamps. A day with a
+ *  single reward is no pick, and the promoted reward's art already stands for it. */
 const CALENDAR_CHOICE_DAYS = 3;
 
 function optionsWhy(groups: SuggestionOptionGroup[]): string | null {
-  if (groups.length === 0) return null;
-  return groups
+  const picks = groups.filter((group) => group.options.length > 1);
+  if (picks.length === 0) return null;
+  return picks
     .slice(0, CALENDAR_CHOICE_DAYS)
     .map((group) => group.options.map((option) => option.name).join(" / "))
     .join(", ");
@@ -148,7 +145,7 @@ function namedReward(
   nowMs: number,
 ): NamedReward | null {
   if (!wd) return null;
-  if (taskId === "calendar1999") return bestCalendarReward(prefs, wd.calendarSeason?.days, nowMs);
+  if (taskId === "calendar1999") return nextCalendarReward(prefs, wd.calendarSeason?.days, nowMs);
   if (taskId === "steelPathHonors") {
     const name = wd.steelPath?.currentReward?.name;
     const value = rewardValue(prefs, name);

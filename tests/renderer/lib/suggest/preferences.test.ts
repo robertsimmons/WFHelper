@@ -108,7 +108,7 @@ describe("parseOptions", () => {
 
   it("lifts the Forma boolean the kind list replaced onto the list", () => {
     expect(parseOptions(JSON.stringify({ masteryForma: false }))).toEqual({
-      masteryKinds: ["frame", "weapon"],
+      masteryKinds: ["frame", "weapon", "companion"],
     });
     expect(parseOptions(JSON.stringify({ masteryForma: true }))).toEqual({});
   });
@@ -127,7 +127,7 @@ describe("migrateLegacyOptions", () => {
 
   it("lifts a stored synthetic key onto the typed option", () => {
     expect(legacy({ "mastery:forma": "never" }).options).toEqual({
-      masteryKinds: ["frame", "weapon"],
+      masteryKinds: ["frame", "weapon", "companion"],
     });
     expect(legacy({ "mastery:mode": "never" }).options).toEqual({});
   });

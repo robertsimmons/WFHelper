@@ -57,6 +57,7 @@ export interface PreloadAPI {
   getDropPool: (
     prefixes: IpcInvokeMap["getDropPool"]["args"][0],
   ) => Promise<IpcInvokeMap["getDropPool"]["return"]>;
+  getOverframeRankings: () => Promise<IpcInvokeMap["getOverframeRankings"]["return"]>;
   confirmDialog: (
     payload: IpcInvokeMap["confirmDialog"]["args"][0],
   ) => Promise<IpcInvokeMap["confirmDialog"]["return"]>;

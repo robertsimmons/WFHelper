@@ -17,6 +17,7 @@ import type {
   WfmUserProfile,
 } from "./market.js";
 import type { DropRow, DropSearchMode, DropSearchResult } from "../../config/shared/dropTypes.js";
+import type { OverframeRankings } from "../../config/shared/overframeRankingTypes.js";
 import type {
   WorkbenchExecuteResult,
   WorkbenchOverrideAck,
@@ -316,6 +317,10 @@ export interface IpcInvokeMap {
   getDropPool: {
     args: [prefixes: readonly string[]];
     return: DropRow[];
+  };
+  getOverframeRankings: {
+    args: [];
+    return: OverframeRankings | null;
   };
   getLinuxDisplay: {
     args: [];

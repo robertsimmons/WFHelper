@@ -19,6 +19,7 @@ export const DB_GET_MASTERY = "get-mastery-progress";
 export const DB_GET_CODEX_SCANS = "get-codex-scans";
 export const DROP_SEARCH = "drop-search";
 export const DROP_POOL = "drop-pool";
+export const DB_GET_OVERFRAME_RANKINGS = "get-overframe-rankings";
 
 export const WFM_SIGNIN = "wfm:signin";
 export const WFM_SIGNOUT = "wfm:signout";

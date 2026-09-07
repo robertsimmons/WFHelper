@@ -9,6 +9,7 @@ import * as masteryHelper from "../services/masteryHelper";
 import * as codexProfile from "../services/codexProfile";
 import * as relicService from "../services/relicService";
 import * as dropData from "../services/dropData";
+import * as overframeRankings from "../services/overframeRankings";
 import * as autoUpdater from "../services/autoUpdater";
 import { normalizeErrorMessage } from "../config/shared/errors";
 import { isAllowedExternalHost } from "../config/runtime/security";
@@ -23,6 +24,7 @@ import {
   DB_GET_RELIC_DATABASE,
   DROP_SEARCH,
   DROP_POOL,
+  DB_GET_OVERFRAME_RANKINGS,
   APP_UPDATE_CHECK,
   SYSTEM_CONFIRM,
   APP_UPDATE_STATE,
@@ -124,6 +126,10 @@ function register(): void {
     }
     return dropData.dropsForPlaces(prefixes);
   });
+
+  handleAuthorized(DB_GET_OVERFRAME_RANKINGS, assertMainRendererSender, () =>
+    overframeRankings.getRefreshedRankings(),
+  );
 
   // window.confirm leaves renderer keyboard input dead on Windows after it
   // closes (Chromium bug), so destructive confirmations use the native dialog.

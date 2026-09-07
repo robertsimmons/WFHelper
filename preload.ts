@@ -17,6 +17,7 @@ import {
   DB_GET_RELIC_DATABASE,
   DROP_SEARCH,
   DROP_POOL,
+  DB_GET_OVERFRAME_RANKINGS,
   DB_GET_WFM_ITEMS,
   DB_GET_MASTERY,
   DB_GET_CODEX_SCANS,
@@ -205,6 +206,7 @@ try {
     searchDrops: (query, mode): Ret<"searchDrops"> =>
       ipcRenderer.invoke(DROP_SEARCH, { query, mode }),
     getDropPool: (prefixes): Ret<"getDropPool"> => ipcRenderer.invoke(DROP_POOL, { prefixes }),
+    getOverframeRankings: inv<"getOverframeRankings">(DB_GET_OVERFRAME_RANKINGS),
     confirmDialog: inv<"confirmDialog">(SYSTEM_CONFIRM),
     checkForAppUpdates: inv<"checkForAppUpdates">(APP_UPDATE_CHECK),
     getAppUpdateState: inv<"getAppUpdateState">(APP_UPDATE_STATE),

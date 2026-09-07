@@ -28,6 +28,7 @@ import type { ItemDbEntry, RawInventoryData } from "../../../../src/types/invent
 import type { RelicDatabase } from "../../../../src/types/relics.js";
 import type {
   ActivityPref,
+  SuggestionOptions,
   SuggestionContext,
   SuggestionDraft,
 } from "../../../../src/types/suggest.js";
@@ -45,6 +46,7 @@ interface Shape {
   inventory?: RawInventoryData | null;
   relicDb?: RelicDatabase | null;
   activities?: Record<string, ActivityPref>;
+  options?: Partial<SuggestionOptions>;
 }
 
 function context(shape: Shape = {}): SuggestionContext {
@@ -60,7 +62,7 @@ function context(shape: Shape = {}): SuggestionContext {
     prefs: {
       ...defaultPreferences(),
       activities: shape.activities ?? {},
-      options: { ...DEFAULT_OPTIONS },
+      options: { ...DEFAULT_OPTIONS, ...shape.options },
     },
     dropPools: {},
     nowMs: NOW,
@@ -179,6 +181,25 @@ describe("acquisitionProvider", () => {
     expect(run?.steps.length).toBeGreaterThan(3);
     expect(run?.steps.some((step) => /Requiem/.test(step.where))).toBe(true);
     expect(bramma.title).toBe("nextUp.acquisitionGet");
+  });
+
+  it("offers only the kinds of gear the section is set to include", () => {
+    const db = weaponDb();
+    const frames = collect({ itemDb: db, options: { acquisitionKinds: ["warframe"] } });
+    expect(frames).toEqual([]);
+    const melee = collect({ itemDb: db, options: { acquisitionKinds: ["melee"] } });
+    expect(melee.length).toBeGreaterThan(0);
+    for (const draft of melee) {
+      expect(draft.details?.acquisition?.weaponClass).toBe("melee");
+    }
+  });
+
+  it("offers every kind when the section includes none of them", () => {
+    const db = weaponDb();
+    const classes = collect({ itemDb: db, options: { acquisitionKinds: [] } }).map(
+      (draft) => draft.details?.acquisition?.weaponClass,
+    );
+    expect(new Set(classes).size).toBeGreaterThan(1);
   });
 
   it("carries the resolver's tier grade through to the card", () => {

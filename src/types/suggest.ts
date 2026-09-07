@@ -1,4 +1,5 @@
 import type { MessageKey, Translator } from "../lib/i18n.js";
+import type { AcquisitionInclude } from "../lib/suggest/acquisition/kinds.js";
 import type { AcquisitionSort } from "../lib/suggest/acquisition/sort.js";
 import type { AcquisitionTarget, PlatPriceLookup } from "../lib/suggest/acquisition/types.js";
 import type { TrackerState } from "../lib/world/dailies.js";
@@ -56,6 +57,8 @@ export interface SuggestionOptions {
   /** How the acquisition section picks and orders what it offers. */
   acquisitionSort: AcquisitionSort;
   acquisitionSortDir: SortDirection;
+  /** Which kinds of gear it offers at all; empty reads as every one of them. */
+  acquisitionKinds: AcquisitionInclude[];
 }
 
 export const SCORE_WEIGHT_KEYS = ["value", "urgency", "effort"] as const;

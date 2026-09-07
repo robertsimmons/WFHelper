@@ -2,6 +2,7 @@ import missionData from "../../data/suggest/missionTypes.json";
 import rewardData from "../../data/suggest/rewardValues.json";
 import { DIFFICULTY_WORDS } from "./acquisition/ratings.js";
 import { TIERS } from "./acquisition/rankings.js";
+import { ACQUISITION_INCLUDES } from "./acquisition/kinds.js";
 import { ACQUISITION_SORTS, DEFAULT_ACQUISITION_SORT } from "./acquisition/sort.js";
 import { normalizeType } from "./missionTypes.js";
 import { normalizeName } from "./rewards.js";
@@ -58,6 +59,7 @@ export const DEFAULT_OPTIONS: SuggestionOptions = {
   masteryOwnMode: true,
   acquisitionSort: DEFAULT_ACQUISITION_SORT,
   acquisitionSortDir: "asc",
+  acquisitionKinds: [...ACQUISITION_INCLUDES],
 };
 
 /** Synthetic activity ids these settings were stored under before they had a
@@ -184,6 +186,10 @@ export function parseOptions(raw: string | null): Partial<SuggestionOptions> {
   }
   const direction = parsed["acquisitionSortDir"];
   if (direction === "asc" || direction === "desc") options.acquisitionSortDir = direction;
+  const kinds = parsed["acquisitionKinds"];
+  if (Array.isArray(kinds)) {
+    options.acquisitionKinds = ACQUISITION_INCLUDES.filter((kind) => kinds.includes(kind));
+  }
   return options;
 }
 

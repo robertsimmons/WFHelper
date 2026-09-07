@@ -5,6 +5,10 @@
   import SuggestionSection from "../components/nextup/SuggestionSection.svelte";
   import SuggestionSettingsModal from "../components/nextup/SuggestionSettingsModal.svelte";
   import { tr, type MessageKey } from "../lib/i18n.js";
+  import {
+    ACQUISITION_INCLUDES,
+    type AcquisitionInclude,
+  } from "../lib/suggest/acquisition/kinds.js";
   import { ACQUISITION_SORTS, type AcquisitionSort } from "../lib/suggest/acquisition/sort.js";
   import { sortAcquisitionSuggestions } from "../lib/suggest/providers/acquisition.js";
   import { mountWorldPolling } from "../lib/world/useWorldView.js";
@@ -28,6 +32,15 @@
     type Suggestion,
     type SuggestionSection as Section,
   } from "../types/suggest.js";
+
+  const KIND_LABELS: Record<AcquisitionInclude, MessageKey> = {
+    warframe: "nextUp.kindWarframe",
+    primary: "nextUp.kindPrimary",
+    secondary: "nextUp.kindSecondary",
+    melee: "nextUp.kindMelee",
+    archwing: "nextUp.kindArchwing",
+    companion: "nextUp.kindCompanion",
+  };
 
   const SORT_LABELS: Record<AcquisitionSort, MessageKey> = {
     recommended: "nextUp.sortRecommended",
@@ -75,9 +88,30 @@
       setSuggestionOption("acquisitionSort", value as AcquisitionSort);
     }
   }
+
+  /** Unticking the last box reads as "all", exactly as the section filters do. */
+  function toggleKind(kind: AcquisitionInclude): void {
+    const current = options.acquisitionKinds;
+    const next = ACQUISITION_INCLUDES.filter((entry) =>
+      entry === kind ? !current.includes(kind) : current.includes(entry),
+    );
+    setSuggestionOption("acquisitionKinds", next.length > 0 ? next : [...ACQUISITION_INCLUDES]);
+  }
 </script>
 
 {#snippet acquisitionControls()}
+  <div class="flex flex-wrap items-center gap-2.5">
+    {#each ACQUISITION_INCLUDES as kind (kind)}
+      <label class="flex cursor-pointer select-none items-center gap-1 text-xs text-text-secondary">
+        <input
+          type="checkbox"
+          checked={options.acquisitionKinds.includes(kind)}
+          onchange={() => toggleKind(kind)}
+        />
+        {$tr(KIND_LABELS[kind])}
+      </label>
+    {/each}
+  </div>
   <SortControl
     value={options.acquisitionSort}
     options={sortOptions}

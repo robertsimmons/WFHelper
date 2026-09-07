@@ -3,6 +3,7 @@ import { get } from "svelte/store";
 import { formatNumber } from "../../format.js";
 import { overframeRankingsRevision } from "../../../stores/overframeRankings.js";
 import { resolveAcquisition } from "../acquisition/index.js";
+import { includesTarget } from "../acquisition/kinds.js";
 import { compareAcquisition, type AcquisitionSort } from "../acquisition/sort.js";
 import { clamp01 } from "../score.js";
 import type { MessageKey } from "../../i18n.js";
@@ -211,6 +212,7 @@ export const acquisitionProvider: SuggestionProvider = {
     if (activity === "never") return [];
 
     return targetsFor(ctx)
+      .filter((target) => includesTarget(prefs.options.acquisitionKinds, target))
       .map((target) => ({ target, effort: effortFor(target) }))
       .sort(compareAcquisition(prefs.options.acquisitionSort, prefs.options.acquisitionSortDir))
       .slice(0, SUGGESTION_LIMIT)

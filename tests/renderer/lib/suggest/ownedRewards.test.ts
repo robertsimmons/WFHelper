@@ -1,10 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import {
-  compactCount,
-  ownedRewardFor,
-  ownsAny,
-} from "../../../../src/lib/suggest/ownedRewards.js";
+import { compactCount, ownedRewardFor, ownsAny } from "../../../../src/lib/suggest/ownedRewards.js";
 import type { ItemDbEntry } from "../../../../src/types/inventory.js";
 
 const FORMA = "/Lotus/Types/Recipes/Components/FormaBlueprint";

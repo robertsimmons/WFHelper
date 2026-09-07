@@ -158,12 +158,15 @@
         >x{compactCount(owned.owned)}</span
       >
       {#if required !== null && required !== undefined}
-        <span class="text-text-muted" title={$tr("nextUp.tileNeeded", { required: String(required) })}
-          >/{required}</span
+        <span
+          class="text-text-muted"
+          title={$tr("nextUp.tileNeeded", { required: String(required) })}>/{required}</span
         >
       {/if}
       {#if owned.built !== undefined}
-        <span class="text-warning" title={$tr("nextUp.tileInFoundry", { count: String(owned.built) })}
+        <span
+          class="text-warning"
+          title={$tr("nextUp.tileInFoundry", { count: String(owned.built) })}
           >x{compactCount(owned.built)}</span
         >
       {/if}

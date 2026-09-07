@@ -162,6 +162,19 @@ describe("resolveDropArt", () => {
     ).toEqual({ imageUrl: "https://cdn/kuva.png", name: "Calendar Kuva Bundle Small" });
   });
 
+  it("stands any weapon class of riven in with the blank riven card", () => {
+    for (const name of ["Rifle Riven Mod", "Melee Riven Mod", "Kitgun Riven Mod"]) {
+      const art = resolveDropArt(itemDb, name);
+      expect(art?.name).toBe(name);
+      expect(art?.imageUrl).toContain("RivenTemplate");
+    }
+  });
+
+  it("keeps the riven card away from mods that are not rivens", () => {
+    expect(resolveDropArt(itemDb, "Riven Sliver")).toBeNull();
+    expect(resolveDropArt(itemDb, "Serration")).toBeNull();
+  });
+
   it("returns null when nothing resolves", () => {
     expect(resolveDropArt(itemDb, "Legendary Core")).toBeNull();
     expect(resolveDropArt(itemDb, "Forma", "/Lotus/Types/Nope")).not.toBeNull();

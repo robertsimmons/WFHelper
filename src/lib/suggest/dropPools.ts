@@ -95,6 +95,12 @@ const PACK_ART_STAND_IN: Record<string, string> = {
     "/Lotus/Upgrades/CosmeticEnhancers/Offensive/AbilityStrengthForMaxHealth",
 };
 
+/** A riven is rolled per player, so no item export pictures one and the name-based
+ *  lookup would settle for the generic mod icon. The weapon class varies, the
+ *  blank riven card does not. */
+const RIVEN_TEMPLATE_URL = new URL("../../../assets/RivenTemplate.webp", import.meta.url).href;
+const RIVEN_MOD = /\briven mods?\b/i;
+
 /** uniqueName first because calendar rewards carry one; otherwise by display name. */
 export function resolveDropArt(
   itemDb: Record<string, ItemDbEntry>,
@@ -107,6 +113,7 @@ export function resolveDropArt(
   }
   const standIn = uniqueName ? itemDb[PACK_ART_STAND_IN[uniqueName] ?? ""] : undefined;
   if (standIn?.imageUrl) return { imageUrl: standIn.imageUrl, name: displayName(item) };
+  if (RIVEN_MOD.test(item)) return { imageUrl: RIVEN_TEMPLATE_URL, name: displayName(item) };
   const imageUrl = resolveRewardIcon(item, itemDb);
   return imageUrl ? { imageUrl, name: displayName(item) } : null;
 }

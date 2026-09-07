@@ -32,6 +32,17 @@ const ART = [
   "palladino",
 ];
 
+const VENDOR_ART = [
+  "baro",
+  "darvo",
+  "palladino",
+  "acrithis",
+  "bird3",
+  "yonta",
+  "codaWeapons",
+  "tenetMelee",
+];
+
 const NO_ART = ["circuitNormal", "circuitSteelPath", "spIncursions"];
 
 describe("bannerFor", () => {
@@ -42,6 +53,11 @@ describe("bannerFor", () => {
 
   it.each(ART)("resolves art for the dailies-prefixed %s", (id) => {
     expect(bannerFor(`dailies:${id}`, DAILY, "nora")).toEqual(bannerFor(id, DAILY, "nora"));
+  });
+
+  it.each(VENDOR_ART)("resolves art for the vendors-prefixed %s", (id) => {
+    const art = bannerFor(`vendors:${id}`, "vendor", "nora");
+    expect(art?.url).toMatch(/assets\/nextup\/.+\.webp$/);
   });
 
   it.each(NO_ART)("leaves %s without a banner", (id) => {

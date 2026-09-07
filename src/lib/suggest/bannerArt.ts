@@ -102,7 +102,8 @@ export function bannerFor(
   nightwave: NightwaveArt,
 ): BannerArt | null {
   if (category === "nightwave") return NIGHTWAVE[nightwave];
-  return TASK_ART[id.replace(/^dailies:/, "")] ?? null;
+  // The table is keyed by tracker task id; every provider prefixes its own name.
+  return TASK_ART[id.replace(/^[^:]+:/, "")] ?? null;
 }
 
 /** The reward art sits clear of whatever the banner is anchored on. */

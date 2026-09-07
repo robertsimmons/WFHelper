@@ -3,7 +3,7 @@
   import { bannerAside, bannerFor } from "../../lib/suggest/bannerArt.js";
   import { gradeClass } from "../../lib/suggest/circuit.js";
   import { resolveDropArt } from "../../lib/suggest/dropPools.js";
-  import { CARD_HEIGHT, CARD_WIDTH } from "../../lib/suggest/grid.js";
+  import { CARD_HEIGHT } from "../../lib/suggest/grid.js";
   import { itemDb } from "../../stores/data.js";
   import { nightwaveArt } from "../../stores/suggestionPrefs.js";
   import SuggestionDetailsModal from "./SuggestionDetailsModal.svelte";
@@ -125,12 +125,12 @@
 <!-- Every card is the same box: a fixed art band over rows of fixed height, so
      no control ever moves and no card ever stretches its neighbours. -->
 <div
-  class="flex shrink-0 cursor-pointer flex-col overflow-hidden rounded-[var(--radius-lg)] border
+  class="flex w-full cursor-pointer flex-col overflow-hidden rounded-[var(--radius-lg)] border
          bg-bg-raised transition-colors duration-200 focus-visible:outline
          focus-visible:outline-2 focus-visible:outline-accent {done
     ? 'border-success/60 opacity-70'
     : 'border-border hover:border-border-strong hover:bg-bg-hover'}"
-  style="width: {CARD_WIDTH}px; height: {CARD_HEIGHT}px"
+  style="height: {CARD_HEIGHT}px"
   data-suggestion-card={suggestion.category}
   role="button"
   tabindex="0"

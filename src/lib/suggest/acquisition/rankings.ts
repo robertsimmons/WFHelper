@@ -1,7 +1,7 @@
 import { nameKey } from "./curated.js";
 
 /** Overframe averages its tier votes on a 1..5 scale where 1 is the top tier. */
-const TIERS = ["S", "A", "B", "C", "D"] as const;
+export const TIERS = ["S", "A", "B", "C", "D"] as const;
 
 const WARFRAME_CATEGORY_ID = 0;
 

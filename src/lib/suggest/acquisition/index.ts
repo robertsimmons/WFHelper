@@ -41,7 +41,15 @@ export type {
   RelicHolding,
   WeaponClass,
 } from "./types.js";
-export { createRatings, UNKNOWN_DIFFICULTY, type Ratings } from "./ratings.js";
+export {
+  createRatings,
+  difficultyValue,
+  DIFFICULTY_WORDS,
+  UNKNOWN_DIFFICULTY,
+  type Ratings,
+} from "./ratings.js";
+export { recommendScore, tierOrder, tierPoints } from "./recommend.js";
+export { TIERS } from "./rankings.js";
 export {
   createCurated,
   curated,

@@ -22,6 +22,9 @@ export interface Ratings {
 /** Neutral, so an unrated item sorts exactly where a normal one does. */
 export const UNKNOWN_DIFFICULTY = 0.5;
 
+/** The difficulty vocabulary the settings offer, easiest first. */
+export const DIFFICULTY_WORDS = ["trivial", "easy", "normal", "hard", "brutal"] as const;
+
 const WORD_DIFFICULTY: Record<string, number> = {
   trivial: 0.1,
   easy: 0.25,
@@ -52,7 +55,8 @@ function difficultyWord(value: unknown): string | null {
   return typeof value === "string" && value.trim() ? value.trim().toLowerCase() : null;
 }
 
-function difficultyNumber(value: unknown): number | null {
+/** A word or a 0..1 number as a number; null when it is neither. */
+export function difficultyValue(value: unknown): number | null {
   const direct = unitInterval(value);
   if (direct !== null) return direct;
   const word = difficultyWord(value);
@@ -84,9 +88,9 @@ export function createRatings(
   return {
     difficultyLabel: label,
     difficulty(name) {
-      const supplied = difficultyNumber(entry(name)?.difficulty);
+      const supplied = difficultyValue(entry(name)?.difficulty);
       if (supplied !== null) return supplied;
-      return difficultyNumber(fallback(name).difficulty);
+      return difficultyValue(fallback(name).difficulty);
     },
     rank(name) {
       const value = entry(name)?.rank;

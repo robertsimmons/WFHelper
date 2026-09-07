@@ -1,3 +1,4 @@
+import { RIVEN_TEMPLATE_URL } from "../assetUrls.js";
 import { resolveRewardIcon } from "../bountyRewards.js";
 import type { DropRow } from "../../../config/shared/dropTypes.js";
 import type { ItemDbEntry } from "../../types/inventory.js";
@@ -98,7 +99,6 @@ const PACK_ART_STAND_IN: Record<string, string> = {
 /** A riven is rolled per player, so no item export pictures one and the name-based
  *  lookup would settle for the generic mod icon. The weapon class varies, the
  *  blank riven card does not. */
-const RIVEN_TEMPLATE_URL = new URL("../../../assets/RivenTemplate.webp", import.meta.url).href;
 const RIVEN_MOD = /\briven mods?\b/i;
 
 /** uniqueName first because calendar rewards carry one; otherwise by display name. */

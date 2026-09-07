@@ -1,9 +1,8 @@
 <script lang="ts">
-  import weapons from "../../data/suggest/weapons.json";
   import { formatNumber, parseIsoDate, timeTo } from "../../lib/format.js";
   import { tr } from "../../lib/i18n.js";
   import { send } from "../../lib/ipc.js";
-  import { createCurated } from "../../lib/suggest/acquisition/curated.js";
+  import { curatedWeapon } from "../../lib/suggest/acquisition/curatedWeapons.js";
   import { progenitors as frameProgenitors } from "../../lib/suggest/acquisition/progenitors.js";
   import { rankTiers } from "../../lib/suggest/acquisition/rankings.js";
   import { gradeClass } from "../../lib/suggest/circuit.js";
@@ -116,8 +115,6 @@
     return choice.state === "done" ? "nextUp.choiceNeedsNothing" : "nextUp.choiceNeedsAdapter";
   }
 
-  const weaponCurated = createCurated(weapons);
-
   const FRAME_ELEMENT = new Map(
     frameProgenitors.flatMap((row) => row.warframes.map((frame) => [frame, row.element] as const)),
   );
@@ -153,7 +150,7 @@
       owned,
       element: facts.element ?? null,
       // The roll the vendor is actually holding beats the window it rolls in.
-      bonus: facts.bonus ?? weaponCurated(item.name).nemesis?.bonus ?? null,
+      bonus: facts.bonus ?? curatedWeapon(item.name).nemesis?.bonus ?? null,
       have: ownsAny(owned),
     };
   }

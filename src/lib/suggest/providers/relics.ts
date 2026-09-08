@@ -6,7 +6,9 @@ import { parseOwnedRelics } from "../../relic/relicInventory.js";
 import { computeSquadEV } from "../../relic/relicMath.js";
 import { getCachedPriceState } from "../../wfm/priceCache.js";
 import { missionOpinion } from "../missionTypes.js";
+import { rewardWorth } from "../rewards.js";
 import { clamp01, urgencyFromExpiry } from "../score.js";
+import { resolveRewardUniqueName } from "../../bountyRewards.js";
 import { normalizeDucats } from "../../../../config/shared/numeric.js";
 import { rendererPriceCacheKey } from "../../../../config/shared/wfmCacheKeys.js";
 import { RELIC_ERAS } from "../../../types/suggest.js";
@@ -20,9 +22,12 @@ import type {
   RelicSort,
   SuggestionContext,
   SuggestionDraft,
+  SuggestionPoolRow,
   SuggestionPreferences,
   SuggestionProvider,
+  SuggestionReward,
 } from "../../../types/suggest.js";
+import type { ItemDbEntry } from "../../../types/inventory.js";
 import type {
   OwnedQualityCounts,
   RelicDatabase,
@@ -171,6 +176,35 @@ function headlineReward(rewards: RelicReward[], goal: RelicGoal): RelicReward | 
   );
 }
 
+/** The part the goal is chasing, in the shape a card can picture. The relic
+ *  table keys a component by the recipe path `@wfcd/items` gave it, which the
+ *  item database does not carry, so the name is what actually joins; the table's
+ *  own mirrored icon is the art of last resort. */
+function partReward(reward: RelicReward, itemDb: Record<string, ItemDbEntry>): SuggestionReward {
+  const uniqueName = resolveRewardUniqueName(reward.name, itemDb) ?? reward.uniqueName ?? undefined;
+  return {
+    name: reward.name,
+    uniqueName,
+    ...(reward.imageUrl ? { imageUrl: reward.imageUrl } : {}),
+  };
+}
+
+/** Everything one crack pays, rated where the ladder places it and carrying the
+ *  chance the relic table gives it, so a card can name the notable drops on the
+ *  same footing a drop pool is named on. Read through `rewardWorth`, which logs
+ *  no coverage gap: listing a drop is not a claim that the app rates it. */
+function poolRows(
+  prefs: SuggestionPreferences,
+  rewards: readonly RelicReward[],
+): SuggestionPoolRow[] {
+  return rewards.map((reward) => ({
+    name: reward.name,
+    uniqueName: reward.uniqueName ?? undefined,
+    chance: reward.chance,
+    worth: rewardWorth(prefs, reward.name) ?? undefined,
+  }));
+}
+
 /** Both payouts, whichever goal the player picked: the card compares them. */
 function relicFacts(held: Held, fissure: FissurePick): RelicFacts {
   return {
@@ -310,11 +344,15 @@ function relicKeys(ctx: SuggestionContext): readonly unknown[] {
   return [
     ctx.relicDb,
     ctx.inventory,
+    // The part a card pictures is joined by name against the item database, and
+    // the drops it lists are rated off the ladder.
+    ctx.itemDb,
     ctx.world,
     ctx.nowMs,
     ctx.t,
     prefs.activities,
     prefs.missionTypes,
+    prefs.worth,
     relicGoal,
     relicSort,
     relicSortDir,
@@ -346,7 +384,7 @@ function relicDrafts(ctx: SuggestionContext): SuggestionDraft[] {
         t("nextUp.whyRelicFissure", { mission: fissure.missionType, node: fissure.node }),
         payoffWhy(held.ev, goal, t),
       ].join(" - "),
-      reward: art ? { name: art.name, uniqueName: art.uniqueName ?? undefined } : undefined,
+      reward: art ? partReward(art, ctx.itemDb) : undefined,
       signals: {
         value,
         effort: effortFor(fissure),
@@ -358,7 +396,7 @@ function relicDrafts(ctx: SuggestionContext): SuggestionDraft[] {
       deprioritized: activity === "low",
       wiki: group.name,
       details: {
-        pool: held.rewards.slice(0, POOL_LIMIT).map((reward) => reward.name),
+        pool: poolRows(prefs, held.rewards.slice(0, POOL_LIMIT)),
         missions: [{ name: fissure.missionType, opinion: fissure.opinion }],
         expiry: fissure.expiry,
         relic: relicFacts(held, fissure),

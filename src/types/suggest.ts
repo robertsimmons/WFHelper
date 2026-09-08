@@ -157,6 +157,10 @@ export interface SuggestionReward {
   /** English item name, for the itemDb join and the tile's tooltip. */
   name: string;
   uniqueName?: string | undefined;
+  /** Art the provider already holds, for a reward the item database cannot
+   *  place: prime components reach the relic tables under a recipe path no
+   *  manifest entry carries. Last resort, behind every itemDb join. */
+  imageUrl?: string | undefined;
   /**
    * Set where the reward is one of several kinds and which one is not knowable
    * in advance: every kind it can be, best chance first. `name` is then the

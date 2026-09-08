@@ -1,3 +1,6 @@
+import { get } from "svelte/store";
+
+import { overframeRankingsRevision } from "../../../stores/overframeRankings.js";
 import { nextDailyResetUtc, nextWeeklyResetUtc } from "../../format.js";
 import type { MessageKey } from "../../i18n.js";
 import {
@@ -430,131 +433,163 @@ function effortFor(runs: number): number {
   return runs <= 0 ? 0 : clamp01(runs / (runs + EFFORT_HALF_RUNS));
 }
 
+let cached: { keys: readonly unknown[]; drafts: SuggestionDraft[] } | null = null;
+
+/** Live world state, the tracker's own marks and the feed's 30-second clock all
+ *  change these cards honestly, so every one of them is a key. The section's
+ *  filter boxes are not read here at all, which is what makes a tick cheap. */
+function dailyKeys(ctx: SuggestionContext): readonly unknown[] {
+  const { prefs } = ctx;
+  return [
+    ctx.tracker,
+    ctx.world,
+    ctx.inventory,
+    ctx.inventoryModifiedAt,
+    ctx.itemDb,
+    ctx.dropPools,
+    ctx.nowMs,
+    ctx.t,
+    prefs.activities,
+    prefs.worth,
+    prefs.missionTypes,
+    // Circuit picks are worth their tier letter, which a refreshed table moves.
+    get(overframeRankingsRevision),
+  ];
+}
+
+function dailyDrafts(ctx: SuggestionContext): SuggestionDraft[] {
+  const { tracker, world, inventory, inventoryModifiedAt, prefs, nowMs, t } = ctx;
+  const now = new Date(nowMs);
+  const auto = autoTrackerState(inventory, world, nowMs, inventoryModifiedAt);
+  const expiries = trackerExpiries(world);
+  const boost = affinityBoost(world, nowMs);
+  const drafts: SuggestionDraft[] = [];
+  // Netracells and both Archimedea modes pay out of one weekly allowance of
+  // five runs, so what is left of it is what any of them is still worth doing.
+  const vaultLeft =
+    WEEKLY_VAULT_LIMIT -
+    vaultRunsUsed(
+      tracker,
+      trackerPeriodKey("weekly", now, expiries),
+      nowMs,
+      auto[VAULT_ALLOWANCE_TASK]?.count ?? 0,
+    );
+
+  for (const task of trackerList(tracker)) {
+    const group = trackerGroup(task.period, task.group);
+    if (!COVERED_GROUPS.has(group)) continue;
+    if (NOT_SUGGESTED.has(task.id)) continue;
+    if (tracker.hidden.includes(task.id)) continue;
+    const activity = prefs.activities[task.id] ?? "normal";
+    if (activity === "never") continue;
+
+    const periodKey = trackerPeriodKey(task.period, now, expiries);
+    const done = Math.max(
+      trackerCount(tracker, task.id, periodKey, nowMs),
+      auto[task.id]?.count ?? 0,
+    );
+    const remaining = task.target - done;
+    if (remaining <= 0) continue;
+    // A spent allowance retires all three, whatever each row's own count reads.
+    if (vaultLeft <= 0 && VAULT_RUN_TASKS.includes(task.id)) continue;
+
+    const live = task.label ? {} : trackerLive(task.id, world, t, nowMs);
+    const expiry = live.expiry ?? periodResetIso(task.period, now);
+    const category = group === "weekly" ? "weekly" : "daily";
+    // The week's own choices say more than a pool or a rotation reward would.
+    const circuit = task.label ? null : readCircuit(ctx, task.id);
+    const reward = task.label || circuit ? null : namedReward(prefs, task.id, world, nowMs);
+    const pool = reward || task.label || circuit ? null : poolReward(ctx, task.id);
+    const missionNames = task.label ? [] : missionsFor(task.id, world);
+    const missions = readMissions(prefs, missionNames);
+    const segments =
+      task.id === "archonHunt" ? missionSegments(prefs, missionNames) : ([] as WhySegment[]);
+    const options =
+      task.id === "calendar1999" ? calendarOptionGroups(prefs, world?.calendarSeason, nowMs) : [];
+    const picks = optionsWhy(options);
+    // A named reward is the better headline, so it stands in for the task's own
+    // detail; a pool label is weaker and only ever appends to it.
+    const named = rewardWhy(reward, t);
+    const headline = circuit?.why ?? named ?? picks ?? live.detail;
+    const missionLine =
+      segments.length > 0
+        ? segments.map((segment) => segment.text).join(", ")
+        : missionWhy(missions, t);
+    const boostLine =
+      boost !== null && AFFINITY_TASKS.has(task.id)
+        ? t("nextUp.whyAffinityBoost", { multiplier: String(boost) })
+        : null;
+    const rest = [
+      boostLine,
+      missionLine,
+      task.target > 1
+        ? t("nextUp.whyRemaining", { remaining: String(remaining), target: String(task.target) })
+        : null,
+    ];
+    // Art stands in for the text only where it pictures one thing.
+    const carried = reward?.mention === true;
+    // A promoted reward takes the headline, so the picks follow it instead.
+    const trailingPicks = carried ? picks : null;
+    const withReward = [headline, trailingPicks, pool?.text, ...rest].filter(Boolean).join(" - ");
+    const why = [
+      carried ? plainRewardWhy(reward, t) : headline,
+      trailingPicks,
+      pool?.single ? null : pool?.text,
+      ...rest,
+    ]
+      .filter(Boolean)
+      .join(" - ");
+    const art = rewardArt(task.id, reward, pool);
+    const period = periodKey ?? task.id;
+    // The week's own picks are the whole of what Circuit pays. Everything else
+    // is worth the best thing it resolved, from world state, its drop pool or
+    // the curated table - a resolved reward can never demote its own task.
+    const value = circuit
+      ? circuit.value
+      : bestOf([reward?.value, pool?.value, taskWorth(prefs, task.id)]);
+    // A boost lifts a levelling run past its neighbours, never past its group.
+    const boosted = boostLine
+      ? Math.min(bandCeiling(groupForWorth(value)), value + AFFINITY_BOOST_VALUE)
+      : value;
+
+    drafts.push({
+      id: `dailies:${task.id}`,
+      category,
+      title: task.label ?? t(`dailies.task.${task.id}` as MessageKey),
+      why,
+      // Segments stand for the whole line, so a line that grew past them is
+      // left to the plain string.
+      whySegments: why === missionLine && segments.length > 0 ? segments : undefined,
+      reward: art,
+      choices: circuit?.choices,
+      whyWithReward: withReward === why ? undefined : withReward,
+      signals: {
+        value: boosted,
+        effort: circuit?.effort ?? effortFor(remaining) + missionEffort(missions),
+        urgency: urgencyFromExpiry(expiry, nowMs, windowFor(task.period, world)),
+      },
+      // The promoted reward is what the card is about, so a dismissal lifts
+      // once a better one comes round rather than riding out the whole season.
+      fingerprint: reward ? `${period}|${reward.name}` : period,
+      deprioritized: activity === "low",
+      progress: task.target > 1 ? { current: done, required: task.target } : undefined,
+      complete: { taskId: task.id, periodKey, count: done, target: task.target },
+      wiki: task.wiki,
+      details: detailsFor(prefs, missionNames, pool, expiry, options),
+    });
+  }
+
+  return drafts;
+}
+
 export const dailiesProvider: SuggestionProvider = {
   id: "dailies",
 
   collect(ctx: SuggestionContext): SuggestionDraft[] {
-    const { tracker, world, inventory, inventoryModifiedAt, prefs, nowMs, t } = ctx;
-    const now = new Date(nowMs);
-    const auto = autoTrackerState(inventory, world, nowMs, inventoryModifiedAt);
-    const expiries = trackerExpiries(world);
-    const boost = affinityBoost(world, nowMs);
-    const drafts: SuggestionDraft[] = [];
-    // Netracells and both Archimedea modes pay out of one weekly allowance of
-    // five runs, so what is left of it is what any of them is still worth doing.
-    const vaultLeft =
-      WEEKLY_VAULT_LIMIT -
-      vaultRunsUsed(
-        tracker,
-        trackerPeriodKey("weekly", now, expiries),
-        nowMs,
-        auto[VAULT_ALLOWANCE_TASK]?.count ?? 0,
-      );
-
-    for (const task of trackerList(tracker)) {
-      const group = trackerGroup(task.period, task.group);
-      if (!COVERED_GROUPS.has(group)) continue;
-      if (NOT_SUGGESTED.has(task.id)) continue;
-      if (tracker.hidden.includes(task.id)) continue;
-      const activity = prefs.activities[task.id] ?? "normal";
-      if (activity === "never") continue;
-
-      const periodKey = trackerPeriodKey(task.period, now, expiries);
-      const done = Math.max(
-        trackerCount(tracker, task.id, periodKey, nowMs),
-        auto[task.id]?.count ?? 0,
-      );
-      const remaining = task.target - done;
-      if (remaining <= 0) continue;
-      // A spent allowance retires all three, whatever each row's own count reads.
-      if (vaultLeft <= 0 && VAULT_RUN_TASKS.includes(task.id)) continue;
-
-      const live = task.label ? {} : trackerLive(task.id, world, t, nowMs);
-      const expiry = live.expiry ?? periodResetIso(task.period, now);
-      const category = group === "weekly" ? "weekly" : "daily";
-      // The week's own choices say more than a pool or a rotation reward would.
-      const circuit = task.label ? null : readCircuit(ctx, task.id);
-      const reward = task.label || circuit ? null : namedReward(prefs, task.id, world, nowMs);
-      const pool = reward || task.label || circuit ? null : poolReward(ctx, task.id);
-      const missionNames = task.label ? [] : missionsFor(task.id, world);
-      const missions = readMissions(prefs, missionNames);
-      const segments =
-        task.id === "archonHunt" ? missionSegments(prefs, missionNames) : ([] as WhySegment[]);
-      const options =
-        task.id === "calendar1999" ? calendarOptionGroups(prefs, world?.calendarSeason, nowMs) : [];
-      const picks = optionsWhy(options);
-      // A named reward is the better headline, so it stands in for the task's own
-      // detail; a pool label is weaker and only ever appends to it.
-      const named = rewardWhy(reward, t);
-      const headline = circuit?.why ?? named ?? picks ?? live.detail;
-      const missionLine =
-        segments.length > 0
-          ? segments.map((segment) => segment.text).join(", ")
-          : missionWhy(missions, t);
-      const boostLine =
-        boost !== null && AFFINITY_TASKS.has(task.id)
-          ? t("nextUp.whyAffinityBoost", { multiplier: String(boost) })
-          : null;
-      const rest = [
-        boostLine,
-        missionLine,
-        task.target > 1
-          ? t("nextUp.whyRemaining", { remaining: String(remaining), target: String(task.target) })
-          : null,
-      ];
-      // Art stands in for the text only where it pictures one thing.
-      const carried = reward?.mention === true;
-      // A promoted reward takes the headline, so the picks follow it instead.
-      const trailingPicks = carried ? picks : null;
-      const withReward = [headline, trailingPicks, pool?.text, ...rest].filter(Boolean).join(" - ");
-      const why = [
-        carried ? plainRewardWhy(reward, t) : headline,
-        trailingPicks,
-        pool?.single ? null : pool?.text,
-        ...rest,
-      ]
-        .filter(Boolean)
-        .join(" - ");
-      const art = rewardArt(task.id, reward, pool);
-      const period = periodKey ?? task.id;
-      // The week's own picks are the whole of what Circuit pays. Everything else
-      // is worth the best thing it resolved, from world state, its drop pool or
-      // the curated table - a resolved reward can never demote its own task.
-      const value = circuit
-        ? circuit.value
-        : bestOf([reward?.value, pool?.value, taskWorth(prefs, task.id)]);
-      // A boost lifts a levelling run past its neighbours, never past its group.
-      const boosted = boostLine
-        ? Math.min(bandCeiling(groupForWorth(value)), value + AFFINITY_BOOST_VALUE)
-        : value;
-
-      drafts.push({
-        id: `dailies:${task.id}`,
-        category,
-        title: task.label ?? t(`dailies.task.${task.id}` as MessageKey),
-        why,
-        // Segments stand for the whole line, so a line that grew past them is
-        // left to the plain string.
-        whySegments: why === missionLine && segments.length > 0 ? segments : undefined,
-        reward: art,
-        choices: circuit?.choices,
-        whyWithReward: withReward === why ? undefined : withReward,
-        signals: {
-          value: boosted,
-          effort: circuit?.effort ?? effortFor(remaining) + missionEffort(missions),
-          urgency: urgencyFromExpiry(expiry, nowMs, windowFor(task.period, world)),
-        },
-        // The promoted reward is what the card is about, so a dismissal lifts
-        // once a better one comes round rather than riding out the whole season.
-        fingerprint: reward ? `${period}|${reward.name}` : period,
-        deprioritized: activity === "low",
-        progress: task.target > 1 ? { current: done, required: task.target } : undefined,
-        complete: { taskId: task.id, periodKey, count: done, target: task.target },
-        wiki: task.wiki,
-        details: detailsFor(prefs, missionNames, pool, expiry, options),
-      });
-    }
-
+    const keys = dailyKeys(ctx);
+    if (cached && keys.every((key, index) => cached?.keys[index] === key)) return cached.drafts;
+    const drafts = dailyDrafts(ctx);
+    cached = { keys, drafts };
     return drafts;
   },
 };

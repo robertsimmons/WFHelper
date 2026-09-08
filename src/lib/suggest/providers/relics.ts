@@ -1,3 +1,6 @@
+import { get } from "svelte/store";
+
+import { priceCacheRevision } from "../../../stores/pricing.js";
 import { QUALITY_MODES } from "../../relic/relicConstants.js";
 import { parseOwnedRelics } from "../../relic/relicInventory.js";
 import { computeSquadEV } from "../../relic/relicMath.js";
@@ -22,6 +25,7 @@ import type {
 } from "../../../types/suggest.js";
 import type {
   OwnedQualityCounts,
+  RelicDatabase,
   RelicGroup,
   RelicQuality,
   RelicReward,
@@ -223,14 +227,18 @@ function sortValue(row: Candidate, sort: RelicSort): number | null {
   return expectedValue(row.held.rewards, sort);
 }
 
-function compareRelics(
-  sort: RelicSort,
-  direction: SortDirection,
-): (a: Candidate, b: Candidate) => number {
+interface Ranked {
+  row: Candidate;
+  /** Read once per row: the comparator asks O(n log n) times and every answer
+   *  is another squad-EV pass over the reward table. */
+  key: number | null;
+}
+
+function compareRelics(direction: SortDirection): (a: Ranked, b: Ranked) => number {
   const flip = direction === "desc" ? -1 : 1;
   return (a, b) => {
-    const left = sortValue(a, sort);
-    const right = sortValue(b, sort);
+    const left = a.key;
+    const right = b.key;
     if (left === null || right === null) {
       if (left !== right) return left === null ? 1 : -1;
     } else if (left !== right) {
@@ -238,8 +246,26 @@ function compareRelics(
     }
     // Unpriced relics all tie, so the arrow only means anything if it turns the
     // tie-break over too.
-    return (b.value - a.value || a.group.name.localeCompare(b.group.name)) * flip;
+    return (b.row.value - a.row.value || a.row.group.name.localeCompare(b.row.group.name)) * flip;
   };
+}
+
+/** The shelf, parsed once per inventory: every era or sort toggle walks the
+ *  same MiscItems list otherwise. */
+let ownedCache: {
+  inventory: SuggestionContext["inventory"];
+  db: RelicDatabase;
+  owned: ReturnType<typeof parseOwnedRelics>;
+} | null = null;
+
+function ownedRelics(
+  inventory: SuggestionContext["inventory"],
+  db: RelicDatabase,
+): ReturnType<typeof parseOwnedRelics> {
+  if (ownedCache?.inventory === inventory && ownedCache.db === db) return ownedCache.owned;
+  const owned = parseOwnedRelics(inventory, db);
+  ownedCache = { inventory, db, owned };
+  return owned;
 }
 
 function candidates(
@@ -250,7 +276,7 @@ function candidates(
   const db = ctx.relicDb;
   if (!db || fissures.size === 0) return [];
   const { relicEras, relicSort, relicSortDir } = ctx.prefs.options;
-  const owned = parseOwnedRelics(ctx.inventory, db);
+  const owned = ownedRelics(ctx.inventory, db);
   const rows: Candidate[] = [];
 
   for (const [groupKey, counts] of Object.entries(owned)) {
@@ -265,53 +291,90 @@ function candidates(
     rows.push({ group, held, fissure, value });
   }
 
-  return rows.sort(compareRelics(relicSort, relicSortDir)).slice(0, SUGGESTION_LIMIT);
+  return rows
+    .map((row) => ({ row, key: sortValue(row, relicSort) }))
+    .sort(compareRelics(relicSortDir))
+    .slice(0, SUGGESTION_LIMIT)
+    .map((ranked) => ranked.row);
+}
+
+let cached: { keys: readonly unknown[]; drafts: SuggestionDraft[] } | null = null;
+
+/** Everything a relic card says comes off the shelf, the live fissure table and
+ *  what the market cache last quoted, so only a change to one of those can
+ *  change the feed. The era boxes are keyed by the names they hold: the toggle
+ *  that ticks one rebuilds the array. */
+function relicKeys(ctx: SuggestionContext): readonly unknown[] {
+  const { prefs } = ctx;
+  const { relicGoal, relicSort, relicSortDir, relicEras } = prefs.options;
+  return [
+    ctx.relicDb,
+    ctx.inventory,
+    ctx.world,
+    ctx.nowMs,
+    ctx.t,
+    prefs.activities,
+    prefs.missionTypes,
+    relicGoal,
+    relicSort,
+    relicSortDir,
+    relicEras.join(","),
+    get(priceCacheRevision),
+  ];
+}
+
+function relicDrafts(ctx: SuggestionContext): SuggestionDraft[] {
+  const { prefs, world, nowMs, t } = ctx;
+  const activity = prefs.activities[RELICS_ACTIVITY] ?? "normal";
+  if (activity === "never") return [];
+
+  const goal = prefs.options.relicGoal;
+  const fissures = fissuresByTier(prefs, world, nowMs);
+
+  return candidates(ctx, goal, fissures).map(({ group, held, fissure, value }, order) => {
+    const art = headlineReward(held.rewards, goal);
+    return {
+      id: `relics:${group.key}`,
+      order,
+      category: "relics" as const,
+      title: t("nextUp.relicCrack", { relic: group.name }),
+      why: [
+        t("nextUp.whyRelicRefinement", {
+          count: String(held.count),
+          quality: t(`relics.quality.${held.quality}` as MessageKey),
+        }),
+        t("nextUp.whyRelicFissure", { mission: fissure.missionType, node: fissure.node }),
+        payoffWhy(held.ev, goal, t),
+      ].join(" - "),
+      reward: art ? { name: art.name, uniqueName: art.uniqueName ?? undefined } : undefined,
+      signals: {
+        value,
+        effort: effortFor(fissure),
+        urgency: urgencyFromExpiry(fissure.expiry, nowMs) * FISSURE_URGENCY,
+      },
+      // The window and the refinement are what the card is about, so a
+      // dismissal lifts once the fissure rotates or the goal changes.
+      fingerprint: `${goal}|${held.quality}|${fissure.node}|${fissure.expiry}`,
+      deprioritized: activity === "low",
+      wiki: group.name,
+      details: {
+        pool: held.rewards.slice(0, POOL_LIMIT).map((reward) => reward.name),
+        missions: [{ name: fissure.missionType, opinion: fissure.opinion }],
+        expiry: fissure.expiry,
+        relic: relicFacts(held, fissure),
+      },
+    };
+  });
 }
 
 export const relicsProvider: SuggestionProvider = {
   id: "relics",
 
   collect(ctx: SuggestionContext): SuggestionDraft[] {
-    const { prefs, world, nowMs, t } = ctx;
-    const activity = prefs.activities[RELICS_ACTIVITY] ?? "normal";
-    if (activity === "never") return [];
-
-    const goal = prefs.options.relicGoal;
-    const fissures = fissuresByTier(prefs, world, nowMs);
-
-    return candidates(ctx, goal, fissures).map(({ group, held, fissure, value }, order) => {
-      const art = headlineReward(held.rewards, goal);
-      return {
-        id: `relics:${group.key}`,
-        order,
-        category: "relics" as const,
-        title: t("nextUp.relicCrack", { relic: group.name }),
-        why: [
-          t("nextUp.whyRelicRefinement", {
-            count: String(held.count),
-            quality: t(`relics.quality.${held.quality}` as MessageKey),
-          }),
-          t("nextUp.whyRelicFissure", { mission: fissure.missionType, node: fissure.node }),
-          payoffWhy(held.ev, goal, t),
-        ].join(" - "),
-        reward: art ? { name: art.name, uniqueName: art.uniqueName ?? undefined } : undefined,
-        signals: {
-          value,
-          effort: effortFor(fissure),
-          urgency: urgencyFromExpiry(fissure.expiry, nowMs) * FISSURE_URGENCY,
-        },
-        // The window and the refinement are what the card is about, so a
-        // dismissal lifts once the fissure rotates or the goal changes.
-        fingerprint: `${goal}|${held.quality}|${fissure.node}|${fissure.expiry}`,
-        deprioritized: activity === "low",
-        wiki: group.name,
-        details: {
-          pool: held.rewards.slice(0, POOL_LIMIT).map((reward) => reward.name),
-          missions: [{ name: fissure.missionType, opinion: fissure.opinion }],
-          expiry: fissure.expiry,
-          relic: relicFacts(held, fissure),
-        },
-      };
-    });
+    const keys = relicKeys(ctx);
+    if (cached && keys.every((key, index) => cached?.keys[index] === key)) return cached.drafts;
+    const drafts = relicDrafts(ctx);
+    cached = { keys, drafts };
+    return drafts;
   },
 };

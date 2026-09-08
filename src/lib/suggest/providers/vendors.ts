@@ -1,3 +1,6 @@
+import { get } from "svelte/store";
+
+import { overframeRankingsRevision } from "../../../stores/overframeRankings.js";
 import { activeWindow, nextDailyResetUtc, nextWeeklyResetUtc } from "../../format.js";
 import type { MessageKey } from "../../i18n.js";
 import {
@@ -264,80 +267,112 @@ function rewardFor(
   return offers.find((offer) => offer.name.toLowerCase() === needle) ?? offers[0];
 }
 
+let cached: { keys: readonly unknown[]; drafts: SuggestionDraft[] } | null = null;
+
+/** A stall's card is its live manifest, the curated table read at this instant,
+ *  and what the player already holds. `valenceDoc` is called on every pass
+ *  whatever the cache says: the first call is what starts the fetch. */
+function vendorKeys(ctx: SuggestionContext): readonly unknown[] {
+  return [
+    ctx.tracker,
+    ctx.world,
+    ctx.inventory,
+    ctx.itemDb,
+    ctx.nowMs,
+    ctx.t,
+    ctx.prefs.activities,
+    ctx.prefs.worth,
+    valenceDoc(),
+    // Rolls carry a tier letter, and a refreshed overframe table moves them.
+    get(overframeRankingsRevision),
+  ];
+}
+
+function vendorDrafts(ctx: SuggestionContext): SuggestionDraft[] {
+  const { tracker, world, prefs, itemDb, nowMs, t } = ctx;
+  const now = new Date(nowMs);
+  const expiries = trackerExpiries(world);
+  const valence = valenceDoc();
+  const ownership = buildOwnership(ctx.inventory, itemDb);
+  const drafts: SuggestionDraft[] = [];
+
+  for (const task of trackerList(tracker)) {
+    if (!VENDOR_IDS.includes(task.id)) continue;
+    if (tracker.hidden.includes(task.id)) continue;
+    const activity = prefs.activities[task.id] ?? "normal";
+    if (activity === "never") continue;
+
+    const here = presenceOf(task.id as VendorId, task.period, world, now, nowMs);
+    if (!here) continue;
+
+    const periodKey = trackerPeriodKey(task.period, now, expiries);
+    const done = trackerCount(tracker, task.id, periodKey, nowMs);
+    if (done >= task.target) continue;
+
+    const live = trackerLive(task.id, world, t, nowMs);
+    const rolls = valenceOffersFor(valence, task.id, nowMs, ctx.inventory, ctx.itemDb);
+    const best = rewardFor(task.id, nowMs, rolls[0]);
+    const segments = whySegments(live.detail ?? t("nextUp.whyVendorHere"), rolls, t);
+    const pool = here.stock.length > 0 ? here.stock : valencePool(rolls, t);
+    const id = `vendors:${task.id}`;
+    setValenceRows(id, rolls);
+
+    const held = VALENCE_VENDORS.includes(task.id)
+      ? rolls.length > 0
+        ? rolls.map((roll) => ({ name: roll.name, gain: roll.gain }))
+        : null
+      : heldOffers(here.stock, task.id, nowMs, itemDb, ownership);
+    const stall = held === null ? null : bestStall(prefs, held);
+
+    drafts.push({
+      id,
+      category: "vendor",
+      title: task.label ?? t(`dailies.task.${task.id}` as MessageKey),
+      why: segments.map((segment) => segment.text).join(", "),
+      whySegments: segments.length > 1 ? segments : undefined,
+      reward: best ? { name: best.name, uniqueName: best.uniqueName } : undefined,
+      ...(rolls[0]?.tier ? { tier: rolls[0].tier } : {}),
+      signals: {
+        value: isFlatFiller(task.id)
+          ? bandFloor("filler")
+          : held === null
+            ? unknownStallWorth(prefs, task.id, nowMs)
+            : (stall?.worth ?? UNPLACED_WORTH),
+        // A vendor trip is near-free once the currency is banked, and effort
+        // orders nothing regardless.
+        effort: 0,
+        urgency: urgencyFromExpiry(here.expiry, nowMs),
+        // Nothing on the table needing buying leaves the card at zero worth
+        // rather than dropping it, so the trip is not forgotten.
+        ...(stall ? { gain: stall.gain } : {}),
+      },
+      // Baro keys off the visit's activation, Darvo off the deal's expiry, so
+      // a dismissal lifts as soon as the vendor rotates.
+      fingerprint: periodKey ?? `${task.id}:${here.expiry ?? ""}`,
+      deprioritized: activity === "low",
+      complete: { taskId: task.id, periodKey, count: done, target: task.target },
+      wiki: task.wiki,
+      details: {
+        pool: pool.length > 0 ? pool : undefined,
+        expiry: here.expiry,
+      },
+    });
+  }
+
+  return drafts;
+}
+
 export const vendorsProvider: SuggestionProvider = {
   id: "vendors",
 
+  // The valence rows the cards read back are parked in `valence.ts` during the
+  // collect below. Nothing else writes that table, so a hit leaves exactly the
+  // rows an identical pass already put there.
   collect(ctx: SuggestionContext): SuggestionDraft[] {
-    const { tracker, world, prefs, itemDb, nowMs, t } = ctx;
-    const now = new Date(nowMs);
-    const expiries = trackerExpiries(world);
-    const valence = valenceDoc();
-    const ownership = buildOwnership(ctx.inventory, itemDb);
-    const drafts: SuggestionDraft[] = [];
-
-    for (const task of trackerList(tracker)) {
-      if (!VENDOR_IDS.includes(task.id)) continue;
-      if (tracker.hidden.includes(task.id)) continue;
-      const activity = prefs.activities[task.id] ?? "normal";
-      if (activity === "never") continue;
-
-      const here = presenceOf(task.id as VendorId, task.period, world, now, nowMs);
-      if (!here) continue;
-
-      const periodKey = trackerPeriodKey(task.period, now, expiries);
-      const done = trackerCount(tracker, task.id, periodKey, nowMs);
-      if (done >= task.target) continue;
-
-      const live = trackerLive(task.id, world, t, nowMs);
-      const rolls = valenceOffersFor(valence, task.id, nowMs, ctx.inventory, ctx.itemDb);
-      const best = rewardFor(task.id, nowMs, rolls[0]);
-      const segments = whySegments(live.detail ?? t("nextUp.whyVendorHere"), rolls, t);
-      const pool = here.stock.length > 0 ? here.stock : valencePool(rolls, t);
-      const id = `vendors:${task.id}`;
-      setValenceRows(id, rolls);
-
-      const held = VALENCE_VENDORS.includes(task.id)
-        ? rolls.length > 0
-          ? rolls.map((roll) => ({ name: roll.name, gain: roll.gain }))
-          : null
-        : heldOffers(here.stock, task.id, nowMs, itemDb, ownership);
-      const stall = held === null ? null : bestStall(prefs, held);
-
-      drafts.push({
-        id,
-        category: "vendor",
-        title: task.label ?? t(`dailies.task.${task.id}` as MessageKey),
-        why: segments.map((segment) => segment.text).join(", "),
-        whySegments: segments.length > 1 ? segments : undefined,
-        reward: best ? { name: best.name, uniqueName: best.uniqueName } : undefined,
-        ...(rolls[0]?.tier ? { tier: rolls[0].tier } : {}),
-        signals: {
-          value: isFlatFiller(task.id)
-            ? bandFloor("filler")
-            : held === null
-              ? unknownStallWorth(prefs, task.id, nowMs)
-              : (stall?.worth ?? UNPLACED_WORTH),
-          // A vendor trip is near-free once the currency is banked, and effort
-          // orders nothing regardless.
-          effort: 0,
-          urgency: urgencyFromExpiry(here.expiry, nowMs),
-          // Nothing on the table needing buying leaves the card at zero worth
-          // rather than dropping it, so the trip is not forgotten.
-          ...(stall ? { gain: stall.gain } : {}),
-        },
-        // Baro keys off the visit's activation, Darvo off the deal's expiry, so
-        // a dismissal lifts as soon as the vendor rotates.
-        fingerprint: periodKey ?? `${task.id}:${here.expiry ?? ""}`,
-        deprioritized: activity === "low",
-        complete: { taskId: task.id, periodKey, count: done, target: task.target },
-        wiki: task.wiki,
-        details: {
-          pool: pool.length > 0 ? pool : undefined,
-          expiry: here.expiry,
-        },
-      });
-    }
-
+    const keys = vendorKeys(ctx);
+    if (cached && keys.every((key, index) => cached?.keys[index] === key)) return cached.drafts;
+    const drafts = vendorDrafts(ctx);
+    cached = { keys, drafts };
     return drafts;
   },
 };

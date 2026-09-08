@@ -49,8 +49,10 @@
   const ROW = "grid grid-cols-[7rem_minmax(0,1fr)] items-center gap-3 py-1";
   const LABEL = "text-xs font-semibold uppercase tracking-[0.08em] text-text-muted";
   const CHIP = "rounded-[var(--radius-sm)] border border-border px-1.5 py-0.5 text-[0.6875rem]";
-  /** Equal cells, so a tier letter lands in the same place on every row. */
-  const TILE_GRID = "grid grid-cols-[repeat(auto-fill,minmax(11rem,1fr))] gap-2";
+  /** Equal cells, so a tier letter lands in the same place on every row. The
+   *  track floor is what a full item name needs beside its art: below it the
+   *  drop tables read as "Tauforged Amber Archon Sh...". */
+  const TILE_GRID = "grid grid-cols-[repeat(auto-fill,minmax(18rem,1fr))] gap-2";
   /** The slot the header keeps for the tier, so the title starts where every
    *  tile name below it starts. */
   const TIER_SLOT = "flex w-8 shrink-0 justify-center";
@@ -599,7 +601,9 @@
 {/snippet}
 
 <ModalShell ariaLabel={suggestion.title} {onClose}>
-  <div class="detail-panel p-4">
+  <!-- Wider than the shared panel: this one lists whole drop tables, and three
+       tracks of full item names is what they take. -->
+  <div class="detail-panel w-[1180px] max-w-[95vw] p-4">
     <div class="mb-3 flex items-start justify-between gap-2">
       <!-- Inset by a tile's own padding, so the header letter and every tile
            letter below it share one column. -->
@@ -699,6 +703,7 @@
                   cls="absolute inset-0 m-auto max-h-20 max-w-20 {index === 0
                     ? '-translate-x-3 -translate-y-3'
                     : 'translate-x-3 translate-y-3'}"
+                  eager
                 />
               {/each}
             {:else}
@@ -707,6 +712,7 @@
                 fallbackSrc={artPieces[0].fallbackUrl}
                 alt={artPieces[0].name}
                 cls="max-h-28 max-w-28"
+                eager
               />
             {/if}
           </span>

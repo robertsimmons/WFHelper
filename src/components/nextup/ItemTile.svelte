@@ -105,7 +105,9 @@
       class="relative flex shrink-0 items-center justify-center overflow-hidden
              rounded-[var(--radius-sm)] bg-bg-deep {ART[size]}"
     >
-      <ItemImage src={imageUrl ?? null} alt={name} cls={IMG[size]} />
+      <!-- A tile is on screen the moment the panel opens, so there is nothing
+           to defer; deferring left half a drop table blank. -->
+      <ItemImage src={imageUrl ?? null} alt={name} cls={IMG[size]} eager />
       <!-- Pinned where every card in the app pins a badge, so the name below
            never has to share its line with the letter. -->
       <span class="absolute left-0 top-0">

@@ -5,6 +5,7 @@
   import { tr } from "../../lib/i18n.js";
   import { send } from "../../lib/ipc.js";
   import { progenitors as frameProgenitors } from "../../lib/suggest/acquisition/progenitors.js";
+  import { tierOrder } from "../../lib/suggest/acquisition/recommend.js";
   import { itemTiers } from "../../lib/suggest/acquisition/tiers.js";
   import { resolveDropArt } from "../../lib/suggest/dropPools.js";
   import { overframeUrl } from "../../lib/suggest/overframe.js";
@@ -12,10 +13,12 @@
   import { ownedRewardFor, ownsAny, type OwnedReward } from "../../lib/suggest/ownedRewards.js";
   import { nightwaveRowFor } from "../../lib/suggest/providers/nightwave.js";
   import { liveVendorOffers } from "../../lib/suggest/providers/vendors.js";
+  import { rewardWorth } from "../../lib/suggest/rewards.js";
   import { valenceRowsFor } from "../../lib/suggest/valence.js";
   import { codaBatch } from "../../lib/world/dailiesLive.js";
   import { componentOwnership, foundryPending, itemDb } from "../../stores/data.js";
   import { overframeRankingsRevision } from "../../stores/overframeRankings.js";
+  import { suggestionPreferences } from "../../stores/suggestionPrefs.js";
   import { worldData } from "../../stores/world.js";
   import { CHIP_TONE, TONE, cardClock } from "./chips.js";
   import { plainName, rewardArt } from "./rewardArt.js";
@@ -110,6 +113,8 @@
     tile: Tile;
     cost: string[];
     chance: number | null;
+    /** Where the player's ladder places the drop; null is unplaced. */
+    worth: RewardWorth | null;
   }
 
   /** One value the header strip carries. Position and colour say what it is; the
@@ -163,6 +168,10 @@
       if (value !== other) return value - other;
     }
     return 0;
+  }
+
+  function worthRank(worth: RewardWorth | null): number {
+    return worth ? WORTH_RANK[worth] : UNRATED_RANK;
   }
 
   /** Two picks that compare equal are a coin flip, so nothing is highlighted. */
@@ -365,17 +374,49 @@
     return chips;
   }
 
-  const poolTiles = $derived.by((): PoolTile[] => {
-    void $overframeRankingsRevision;
-    return pool.map((row) => ({
+  /** How the section this card sits in is ordered. A section with no sort
+   *  control has none, and its lists read the ladder and then the odds. */
+  const sectionSort = $derived.by((): string | null => {
+    const picked = $suggestionPreferences.options;
+    if (suggestion.category === "relics") return picked.relicSort;
+    if (suggestion.category === "acquisition") return picked.acquisitionSort;
+    return null;
+  });
+
+  /** Best first: the sort the player picked wherever a row can answer it, then
+   *  where the ladder puts the drop, the odds of seeing it, and the tier - which
+   *  is what carries a stall of gear the ladder places none of. */
+  function poolScore(row: PoolTile): number[] {
+    const tier = tierOrder(row.tile.tier);
+    const ladder = [worthRank(row.worth), -(row.chance ?? 0), tier ?? UNRATED_RANK];
+    return sectionSort === "tier" ? [tier ?? UNRATED_RANK, ...ladder] : ladder;
+  }
+
+  function comparePool(a: PoolTile, b: PoolTile): number {
+    return compareScores(poolScore(a), poolScore(b)) || a.tile.name.localeCompare(b.tile.name);
+  }
+
+  /** A bare stock name carries no rating of its own, so the ladder is read here
+   *  the way the drop-pool providers read it for their own rows. */
+  function poolTile(row: SuggestionPoolRow): PoolTile {
+    return {
       tile: itemTile(row),
       cost: priceChips(row.name),
       chance: row.chance ?? null,
-    }));
+      worth: row.worth ?? rewardWorth($suggestionPreferences, row.name),
+    };
+  }
+
+  const poolTiles = $derived.by((): PoolTile[] => {
+    void $overframeRankingsRevision;
+    return pool.map(poolTile).sort(comparePool);
   });
   const offerTiles = $derived.by(() => {
     void $overframeRankingsRevision;
-    return offers.map((offer) => itemTile(offer));
+    return offers
+      .map(poolTile)
+      .sort(comparePool)
+      .map((row) => row.tile);
   });
   const valenceTiles = $derived.by(() => {
     void $overframeRankingsRevision;
@@ -402,6 +443,12 @@
     if (rewardMembers.length < 2 || pool.length > 0) return [];
     return rewardMembers.map((member) => itemTile(member));
   });
+  /** A family label names no member, so where the rows below already list every
+   *  possibility the headline would only draw the family a second time. */
+  const familyOnly = $derived(
+    rewardMembers.length > 1 &&
+      (memberTiles.length > 0 || (poolTiles.length > 0 && valenceRows.length === 0)),
+  );
   const optionTiles = $derived.by(() => {
     void $overframeRankingsRevision;
     return options.map((group) => {
@@ -623,7 +670,7 @@
     {:else}
       <div class="flex gap-4">
         <div class="flex min-w-0 flex-1 flex-col gap-1">
-          {#if rewardTile}
+          {#if rewardTile && !familyOnly}
             <ItemTile
               name={rewardTile.name}
               showArt={false}

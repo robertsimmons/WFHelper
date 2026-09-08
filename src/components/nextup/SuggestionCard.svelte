@@ -179,9 +179,9 @@
     choices.length > 0 ? choicesState(choices.map((choice) => choice.state)) : null,
   );
 
-  // Tasks whose pool is the same every week. There is nothing to say about them
-  // that the art, the bar and the pool list in the details do not already say.
-  const CONSTANT_REWARD = new Set(["netracells", "deepArchimedea", "temporalArchimedea"]);
+  // There is nothing to say about these that the art, the bar and the lists in
+  // the details do not already say.
+  const NO_LINE = new Set(["netracells", "deepArchimedea", "temporalArchimedea", "calendar1999"]);
   const taskKey = $derived(suggestion.id.replace(/^[^:]+:/, ""));
 
   /** What the bar and its count already read as, in the provider's own wording,
@@ -205,7 +205,7 @@
   // sentence goes: a choice card's line only ever named a pick its own strips
   // draw, and an acquisition line leads with the state before its route.
   const line = $derived.by((): CardLine => {
-    if (valence || choices.length > 0 || CONSTANT_REWARD.has(taskKey)) {
+    if (valence || choices.length > 0 || NO_LINE.has(taskKey)) {
       return { segments: [], text: "" };
     }
     const supplied = suggestion.whySegments ?? [];
@@ -477,7 +477,9 @@
         >
       {/if}
       <span class="col-start-3 h-6 w-6">
-        {#if progress && complete}
+        <!-- A target of one is ticked off, never counted up; the bar beside it
+             is a shared allowance the stepper would step in the wrong units. -->
+        {#if progress && complete && complete.target > 1}
           <!-- Marked done takes the button out of use, never off the card. -->
           <button
             class="{ICON_BTN} font-display text-[0.6875rem] font-semibold leading-none

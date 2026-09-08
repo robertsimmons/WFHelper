@@ -35,6 +35,10 @@ function banner(
 /** What the portraits whose subject sat under the reward art needed to clear it. */
 const NUDGE_RIGHT = 30;
 
+/** The same clearance at less magnification, for the portraits the art already
+ *  frames close. */
+const NUDGE_CLOSE = 16;
+
 const DESCENDIA = banner(
   new URL("../../../assets/nextup/descendia.webp", import.meta.url).href,
   "50% 0%",
@@ -121,7 +125,7 @@ const TASK_ART: Record<string, BannerArt> = {
     new URL("../../../assets/nextup/acrithis.webp", import.meta.url).href,
     "100% 50%",
     undefined,
-    NUDGE_RIGHT,
+    NUDGE_CLOSE,
   ),
   yonta: banner(
     new URL("../../../assets/nextup/yonta.webp", import.meta.url).href,
@@ -133,7 +137,7 @@ const TASK_ART: Record<string, BannerArt> = {
     new URL("../../../assets/nextup/palladino.webp", import.meta.url).href,
     "100% 50%",
     undefined,
-    NUDGE_RIGHT,
+    NUDGE_CLOSE,
   ),
   varzia: banner(new URL("../../../assets/nextup/varzia.webp", import.meta.url).href, "100% 30%"),
 };

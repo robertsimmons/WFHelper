@@ -125,14 +125,16 @@
   }
 
   function itemTile(
-    item: { name: string; uniqueName?: string | undefined },
+    item: { name: string; uniqueName?: string | undefined; imageUrl?: string | undefined },
     facts: TileFacts = {},
   ): Tile {
     const art = resolveDropArt($itemDb, item.name, item.uniqueName);
     const owned = ownedRewardFor(item, $itemDb, $componentOwnership, $foundryPending);
     return {
       name: plainName(art?.name ?? item.name),
-      imageUrl: art?.imageUrl ?? null,
+      // The provider's own icon is the last resort behind every itemDb join:
+      // prime components reach the relic tables under a path no manifest has.
+      imageUrl: art?.imageUrl ?? item.imageUrl ?? null,
       tier: facts.tier ?? itemTiers(item.name),
       owned,
       element: facts.element ?? null,

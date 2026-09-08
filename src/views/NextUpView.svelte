@@ -109,7 +109,7 @@
     >
   </div>
 
-  <div class="flex min-h-0 flex-1 flex-col gap-5 overflow-y-auto">
+  <div class="flex min-h-0 flex-1 flex-col gap-5 overflow-y-auto pr-4">
     {#if shown.length === 0}
       <div class="empty-state">
         <p>{$tr(feed.hiddenCount > 0 ? "nextUp.emptyDismissed" : "nextUp.empty")}</p>

@@ -10,6 +10,9 @@
   export let cls = "item-img";
   // Second-chance source (e.g. DE artwork when the mirrored WFM thumb 404s).
   export let fallbackSrc: string | null = null;
+  // Art a fixed-size feed always draws: it is on screen the moment it mounts, so
+  // there is nothing to defer and deferring it left remounted cards blank.
+  export let eager = false;
 
   let lastSrc: string | null = null;
   let failed = false;
@@ -57,7 +60,13 @@
 </script>
 
 {#if effectiveSrc && !failed}
-  <img class={mergedImageClass} src={effectiveSrc} {alt} loading="lazy" on:error={onError} />
+  <img
+    class={mergedImageClass}
+    src={effectiveSrc}
+    {alt}
+    loading={eager ? "eager" : "lazy"}
+    on:error={onError}
+  />
 {:else}
   <div class={mergedPlaceholderClass} title={$tr("common.noImageAvailable")}>
     <svg

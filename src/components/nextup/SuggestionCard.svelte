@@ -290,8 +290,11 @@
   >
     {#if backdrop}
       <img
-        class="absolute inset-0 h-full w-full object-cover"
-        style="object-position: {backdrop.position}"
+        class="absolute inset-y-0 h-full max-w-none object-cover {(backdrop.widen ?? 0) < 0
+          ? 'right-0'
+          : 'left-0'}"
+        style="object-position: {backdrop.position};
+               width: calc(100% + {Math.abs(backdrop.widen ?? 0) * 2}px)"
         src={backdrop.url}
         alt=""
         aria-hidden="true"
@@ -306,7 +309,7 @@
         <span class="over-art absolute right-0.5 top-0.5 z-[1]">
           <TierBadge tier={choiceTiers[index]} />
         </span>
-        <ItemImage src={choice.imageUrl} alt={choice.name} cls="max-h-full max-w-full" />
+        <ItemImage src={choice.imageUrl} alt={choice.name} cls="max-h-full max-w-full" eager />
         <span
           class="choice-name absolute inset-x-0 bottom-0.5 truncate px-0.5 text-center
                  text-[0.625rem] font-semibold leading-tight text-text-primary"
@@ -320,12 +323,8 @@
         class="relative flex h-full w-full items-center p-1.5 {bannerAside(backdrop)}"
         title={artPieces.map((piece) => piece.name).join(" / ")}
       >
-        <!-- A plate under the art, because a thin icon or a missing-art
-             placeholder disappears into a banner. -->
         <span
-          class="relative flex h-full items-center justify-center {backdrop
-            ? 'w-[46%] rounded-[var(--radius-md)] bg-bg-deep/70'
-            : 'w-full'}"
+          class="relative flex h-full items-center justify-center {backdrop ? 'w-[46%]' : 'w-full'}"
         >
           {#if reward.mode === "cycle"}
             <!-- Every frame is stacked in the one fixed box and only its opacity
@@ -346,6 +345,7 @@
                   fallbackSrc={piece.fallbackUrl}
                   alt={piece.name}
                   cls="max-h-full max-w-full"
+                  eager
                 />
               </span>
             {/each}
@@ -362,6 +362,7 @@
                     ? "max-h-[72%] max-w-[48%] -translate-y-[14%]"
                     : "max-h-[72%] max-w-[48%] -ml-3 translate-y-[14%]"
                   : "max-h-full max-w-full"}
+                eager
               />
             {/each}
           {/if}

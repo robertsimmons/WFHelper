@@ -9,11 +9,31 @@ interface BannerArt {
   /** Overrides the side `bannerAside` infers, for art whose subject does not
    *  sit on the edge the anchor pulls towards. */
   aside?: "start" | "end" | "center";
+  /** Px of picture hung off one edge and cropped, which is the only horizontal
+   *  travel there is: the art is a hair narrower than the band it covers, so
+   *  `position` cannot move it sideways at all. Positive keeps the left edge and
+   *  slides the subject right, negative keeps the right edge; the band's height
+   *  is fixed, so the picture loses top and bottom in exchange. */
+  widen?: number;
 }
 
-function banner(url: string, position: string, aside?: BannerArt["aside"]): BannerArt {
-  return { url, position, fit: "cover", ...(aside ? { aside } : {}) };
+function banner(
+  url: string,
+  position: string,
+  aside?: BannerArt["aside"],
+  widen?: number,
+): BannerArt {
+  return {
+    url,
+    position,
+    fit: "cover",
+    ...(aside ? { aside } : {}),
+    ...(widen ? { widen } : {}),
+  };
 }
+
+/** What the portraits whose subject sat under the reward art needed to clear it. */
+const NUDGE_RIGHT = 30;
 
 const DESCENDIA = banner(
   new URL("../../../assets/nextup/descendia.webp", import.meta.url).href,
@@ -73,13 +93,14 @@ const TASK_ART: Record<string, BannerArt> = {
   ayatanHunt: banner(
     new URL("../../../assets/nextup/ayatan-hunt.webp", import.meta.url).href,
     "100% 50%",
+    undefined,
+    NUDGE_RIGHT,
   ),
-  // Anchored left because the console sits right of centre in the art: pulling
-  // the crop the other way is what parked it in the middle of the band.
   calendar1999: banner(
     new URL("../../../assets/nextup/calendar-1999.webp", import.meta.url).href,
     "0% 50%",
     "start",
+    NUDGE_RIGHT,
   ),
   codaWeapons: banner(
     new URL("../../../assets/nextup/coda-weapons.webp", import.meta.url).href,
@@ -95,11 +116,20 @@ const TASK_ART: Record<string, BannerArt> = {
   acrithis: banner(
     new URL("../../../assets/nextup/acrithis.webp", import.meta.url).href,
     "100% 50%",
+    undefined,
+    NUDGE_RIGHT,
   ),
-  yonta: banner(new URL("../../../assets/nextup/yonta.webp", import.meta.url).href, "100% 50%"),
+  yonta: banner(
+    new URL("../../../assets/nextup/yonta.webp", import.meta.url).href,
+    "100% 50%",
+    undefined,
+    NUDGE_RIGHT,
+  ),
   palladino: banner(
     new URL("../../../assets/nextup/palladino.webp", import.meta.url).href,
     "100% 50%",
+    undefined,
+    NUDGE_RIGHT,
   ),
   varzia: banner(new URL("../../../assets/nextup/varzia.webp", import.meta.url).href, "100% 30%"),
 };

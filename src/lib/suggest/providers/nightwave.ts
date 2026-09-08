@@ -17,6 +17,7 @@ import type {
 import type {
   LadderGroup,
   SuggestionContext,
+  SuggestionDetails,
   SuggestionDraft,
   SuggestionProvider,
   WhySegment,
@@ -212,6 +213,14 @@ function nitainStillNeeded(itemDb: Record<string, ItemDbEntry>): boolean | null 
 
 const NITAIN: StapleKey = "nitain extract";
 
+/** The season's own end, which is when the shop, its Creds and everything
+ *  priced in them turn over. Null wherever world state has not named it, and an
+ *  unknown window draws no pill rather than a guessed one. */
+function seasonDetails(world: SuggestionContext["world"]): SuggestionDetails | undefined {
+  const expiry = world?.nightwave?.expiry ?? null;
+  return expiry ? { expiry } : undefined;
+}
+
 function groupFor(offer: StapleOffer, held: number, nitainNeeded: boolean | null): LadderGroup {
   if (held > 0) return "useful";
   if (offer.key === NITAIN && nitainNeeded === false) return "useful";
@@ -226,6 +235,7 @@ function stockDraft(
   low: boolean,
 ): SuggestionDraft | null {
   const { prefs, itemDb, t } = ctx;
+  const details = seasonDetails(ctx.world);
   const level = prefs.nightwaveStock[offer.key] ?? DEFAULT_NIGHTWAVE_STOCK;
   if (level <= 0) return null;
   const held = heldCount(offer, itemDb, ownership);
@@ -270,6 +280,7 @@ function stockDraft(
     deprioritized: low,
     progress: { current: held, required: level },
     wiki: WIKI,
+    ...(details ? { details } : {}),
   };
 }
 
@@ -338,6 +349,7 @@ function partsDraft(
   low: boolean,
 ): SuggestionDraft | null {
   const { itemDb, mastery, prefs, t } = ctx;
+  const details = seasonDetails(ctx.world);
   const built = builtFor(offer, itemDb);
   const held = partsHeld(offer, itemDb, ownership);
   const total = offer.parts.length;
@@ -381,6 +393,7 @@ function partsDraft(
     deprioritized: low,
     ...(held === null ? {} : { progress: { current: held, required: total } }),
     wiki: offer.wiki,
+    ...(details ? { details } : {}),
   };
 }
 

@@ -407,9 +407,10 @@ function missionWhy(read: MissionRead, t: SuggestionContext["t"]): string | null
 /** The Archon Hunt card is its mission list, so the line is toned rather than
  *  summarized. Mission names are game terms and stay English. */
 function missionSegments(prefs: SuggestionPreferences, names: readonly string[]): WhySegment[] {
-  return names.map((name) =>
-    missionOpinion(prefs, name) === "bad" ? { text: name, tone: "bad" } : { text: name },
-  );
+  return names.map((name) => {
+    const opinion = missionOpinion(prefs, name);
+    return opinion ? { text: name, tone: opinion } : { text: name };
+  });
 }
 
 /** Tasks a kill-XP boost actually changes the worth of: the daily Focus cap fills

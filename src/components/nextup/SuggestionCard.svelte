@@ -287,8 +287,13 @@
         title={artPieces.map((piece) => piece.name).join(" / ")}
       >
         <!-- Two pictures, stair-stepped, where the drop is one of them and no
-             single piece of art is the truth. -->
-        <span class="flex h-full items-center">
+             single piece of art is the truth. A plate under them, because a
+             thin icon or a missing-art placeholder disappears into a banner. -->
+        <span
+          class="flex h-full items-center {backdrop
+            ? 'rounded-[var(--radius-md)] bg-bg-deep/70 px-1.5'
+            : ''}"
+        >
           {#each artPieces as piece, index (piece.name)}
             <ItemImage
               src={piece.imageUrl}

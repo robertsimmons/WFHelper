@@ -1,11 +1,11 @@
 import { ownedComponentCount } from "../../../../config/shared/componentNames.js";
 import { resolveRewardUniqueName } from "../../bountyRewards.js";
 import { buildOwnership, ownsItem, unbuiltResourceNeed } from "../acquisition/parts.js";
-import { FULL_GAIN, NO_GAIN, leastGain, masteryGain } from "../gain.js";
+import { FULL_GAIN, NO_GAIN, PARTIAL_GAIN, leastGain, masteryGain } from "../gain.js";
 import { NIGHTWAVE_ACTIVITY } from "../preferences.js";
 import { rewardValue } from "../rewards.js";
 import { clamp01 } from "../score.js";
-import { UNPLACED_WORTH, ladderWorth, normalizeName } from "../worthLadder.js";
+import { UNPLACED_WORTH, normalizeName } from "../worthLadder.js";
 import { DEFAULT_NIGHTWAVE_STOCK, NIGHTWAVE_STAPLES } from "../../../types/suggest.js";
 import type { MessageKey } from "../../i18n.js";
 import type {
@@ -15,7 +15,6 @@ import type {
   RawInventoryData,
 } from "../../../types/inventory.js";
 import type {
-  LadderGroup,
   SuggestionContext,
   SuggestionDetails,
   SuggestionDraft,
@@ -221,10 +220,17 @@ function seasonDetails(world: SuggestionContext["world"]): SuggestionDetails | u
   return expiry ? { expiry } : undefined;
 }
 
-function groupFor(offer: StapleOffer, held: number, nitainNeeded: boolean | null): LadderGroup {
-  if (held > 0) return "useful";
-  if (offer.key === NITAIN && nitainNeeded === false) return "useful";
-  return "must";
+/** What a top-up still advances. The shortfall against the level the player set
+ *  carries it; a staple nothing unbuilt calls for advances less, whatever the
+ *  pile looks like. Worth is the ladder's alone. */
+function stockGain(
+  offer: StapleOffer,
+  held: number,
+  level: number,
+  needed: boolean | null,
+): number {
+  const idle = offer.key === NITAIN && needed === false ? PARTIAL_GAIN : FULL_GAIN;
+  return leastGain(clamp01((level - held) / level), idle);
 }
 
 function stockDraft(
@@ -267,12 +273,12 @@ function stockDraft(
     whySegments: segments,
     reward: { name: offer.name, ...(item ? { uniqueName: item.uniqueName } : {}) },
     signals: {
-      value: ladderWorth(groupFor(offer, held, nitainNeeded), offer.key),
+      value: rewardValue(prefs, offer.name) ?? UNPLACED_WORTH,
       // A Cred purchase costs nothing once the acts are done, and effort orders
       // nothing regardless.
       effort: 0,
       urgency: 0,
-      gain: clamp01((level - held) / level),
+      gain: stockGain(offer, held, level, nitainNeeded),
     },
     // Every copy bought or spent changes the shortfall, so a dismissal lifts as
     // soon as the pile moves.
@@ -397,6 +403,23 @@ function partsDraft(
   };
 }
 
+let cached: {
+  inventory: RawInventoryData | null;
+  itemDb: Record<string, ItemDbEntry>;
+  ownership: Map<string, number>;
+} | null = null;
+
+/** The owned-copies map is a walk of the whole inventory, and the feed
+ *  re-derives on a timer; only a change to what it reads can change it. */
+function ownershipFor(ctx: SuggestionContext): Map<string, number> {
+  if (cached && cached.inventory === ctx.inventory && cached.itemDb === ctx.itemDb) {
+    return cached.ownership;
+  }
+  const ownership = buildOwnership(ctx.inventory, ctx.itemDb);
+  cached = { inventory: ctx.inventory, itemDb: ctx.itemDb, ownership };
+  return ownership;
+}
+
 export const nightwaveProvider: SuggestionProvider = {
   id: "nightwave",
 
@@ -406,7 +429,7 @@ export const nightwaveProvider: SuggestionProvider = {
     const activity = ctx.prefs.activities[NIGHTWAVE_ACTIVITY] ?? "normal";
     if (activity === "never") return [];
     const low = activity === "low";
-    const ownership = buildOwnership(ctx.inventory, ctx.itemDb);
+    const ownership = ownershipFor(ctx);
     const nitainNeeded = nitainStillNeeded(ctx.itemDb);
     const drafts: SuggestionDraft[] = [];
     for (const offer of STAPLES) {

@@ -1,7 +1,11 @@
 import { itemLabel } from "../../itemLabel.js";
-import { buildMasteryRoadmap, type MasteryRoadmapSourceItem } from "../../masteryRoadmap.js";
+import {
+  buildMasteryRoadmap,
+  type MasteryRoadmap,
+  type MasteryRoadmapSourceItem,
+} from "../../masteryRoadmap.js";
 import { clamp01 } from "../score.js";
-import type { ParsedItem } from "../../../types/inventory.js";
+import type { MasteryData, ParsedItem } from "../../../types/inventory.js";
 import type {
   MasteryKind,
   SuggestionContext,
@@ -104,6 +108,19 @@ function itemKey(item: ParsedItem): string {
   return item.uniqueName || item.internalName;
 }
 
+let cached: { mastery: MasteryData | null; easy: MasteryRoadmap["easy"] } | null = null;
+
+/** Two full passes over the roster, and the feed re-derives on a timer, so the
+ *  roadmap is rebuilt only when the roster it reads is a different object. The
+ *  boxes and the activity setting are read after this and cost nothing. */
+function easyFor(ctx: SuggestionContext): MasteryRoadmap["easy"] {
+  if (cached && cached.mastery === ctx.mastery) return cached.easy;
+  const owned = (ctx.mastery?.items ?? []).filter((item) => item.currentlyOwned === true);
+  const easy = buildMasteryRoadmap(owned.map(sourceItem)).easy;
+  cached = { mastery: ctx.mastery, easy };
+  return easy;
+}
+
 export const masteryProvider: SuggestionProvider = {
   id: "mastery",
 
@@ -112,10 +129,7 @@ export const masteryProvider: SuggestionProvider = {
     const activity = prefs.activities[MASTERY_ACTIVITY] ?? "normal";
     if (activity === "never") return [];
 
-    const owned = (ctx.mastery?.items ?? []).filter((item) => item.currentlyOwned === true);
-    const roadmap = buildMasteryRoadmap(owned.map(sourceItem));
-
-    return roadmap.easy
+    return easyFor(ctx)
       .filter((item) => keeps(prefs, item))
       .sort((a, b) => effortFor(a) - effortFor(b) || a.name.localeCompare(b.name))
       .slice(0, SUGGESTION_LIMIT)

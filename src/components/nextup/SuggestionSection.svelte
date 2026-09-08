@@ -43,12 +43,16 @@
 
   /** No section owns a height region of its own: they share one scrolling
    *  column. The honest budget is that column's visible height split between
-   *  the sections in it. */
+   *  the sections actually in it — a section with no cards does not render, so
+   *  two of the four present get half the column each, not a quarter. */
   $effect(() => {
     const column = host?.parentElement;
     if (!column) return;
     const measure = (): void => {
-      const peers = Math.max(1, column.children.length);
+      const peers = Math.max(
+        1,
+        column.querySelectorAll(":scope > [data-suggestion-section]").length,
+      );
       const gap = Number.parseFloat(getComputedStyle(column).rowGap) || 0;
       share = (column.clientHeight - gap * (peers - 1)) / peers;
     };

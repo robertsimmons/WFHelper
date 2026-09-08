@@ -38,10 +38,14 @@ function gridColumns(width: number, minWidth: number): number {
   return Math.max(1, Math.floor((width + CARD_GAP) / (minWidth + CARD_GAP)));
 }
 
-/** An unmeasured height reads as one row, which is what fits everywhere. */
+/** An unmeasured height reads as one row, which is what fits everywhere.
+ *
+ *  Rounded, not floored: a row is claimed once most of it is on screen. Flooring
+ *  left the second row 13px short of its budget at 1600x1000, which spent half
+ *  the window on nothing to save the reader a few pixels of scrolling. */
 function gridRows(height: number): number {
   if (!Number.isFinite(height) || height <= 0) return 1;
-  const fit = Math.floor((height + CARD_GAP) / (CARD_HEIGHT + CARD_GAP));
+  const fit = Math.round((height + CARD_GAP) / (CARD_HEIGHT + CARD_GAP));
   return Math.min(MAX_GRID_ROWS, Math.max(1, fit));
 }
 

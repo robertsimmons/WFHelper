@@ -28,6 +28,8 @@
     element?: string | null | undefined;
     /** The roll this copy carries, or the window it rolls in. */
     bonus?: NemesisBonusRange | number | null | undefined;
+    /** The roll the player's own copy carries, drawn beside their count. */
+    ownedBonus?: number | null | undefined;
     /** What the stall or the foundry charges, already formatted. */
     cost?: readonly string[] | null | undefined;
     /** A resource, which the player always wants more of. Read off `owned` when
@@ -51,6 +53,7 @@
     required = null,
     element = null,
     bonus = null,
+    ownedBonus = null,
     cost = null,
     stacks = null,
     have = undefined,
@@ -80,6 +83,11 @@
       : typeof bonus === "number"
         ? $tr("nextUp.tileBonusExact", { bonus: bonus.toFixed(1) })
         : $tr("nextUp.tileBonus", { min: String(bonus.min), max: String(bonus.max) }),
+  );
+  const ownedBonusText = $derived(
+    ownedBonus === null || ownedBonus === undefined
+      ? null
+      : $tr("nextUp.tileBonusExact", { bonus: ownedBonus.toFixed(1) }),
   );
   const dim = $derived(tileDims(have, stacks, owned));
   const counts = $derived(tileCounts(owned));
@@ -130,6 +138,9 @@
                 class={TONE.plain}
                 title={$tr("nextUp.tileNeeded", { required: String(required) })}>/{required}</span
               >
+            {/if}
+            {#if count.kind === "inventory" && ownedBonusText}
+              <span title={$tr("nextUp.tileOwnedBonusTitle")}>{ownedBonusText}</span>
             {/if}
           </span>
         {/each}

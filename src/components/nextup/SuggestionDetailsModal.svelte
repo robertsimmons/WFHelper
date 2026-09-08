@@ -99,6 +99,8 @@
     owned: OwnedReward | null;
     element: string | null;
     bonus: NemesisBonusRange | number | null;
+    /** Only an adversary offer knows what the player's own copy rolled. */
+    ownedBonus?: number | null;
     have: boolean;
   }
 
@@ -383,7 +385,12 @@
         { tier: row.tier, element: row.element, bonus: row.bonus },
       );
       // Nothing on the table lifts a finished weapon, so it reads as owned.
-      return { ...tile, name: row.displayName ?? tile.name, have: row.verdict === "done" };
+      return {
+        ...tile,
+        name: row.displayName ?? tile.name,
+        ownedBonus: row.owned,
+        have: row.verdict === "done",
+      };
     });
   });
   /** Every kind the reward can be, where the pool does not already list them. */
@@ -467,6 +474,7 @@
     owned={tile.owned}
     element={tile.element}
     bonus={tile.bonus}
+    ownedBonus={tile.ownedBonus}
     have={tile.have}
     stretch
   ></ItemTile>

@@ -231,12 +231,17 @@ function rollFields(roll: ValenceOffer): Record<string, string> {
   };
 }
 
+/** The stalls that come and go, so being here is news. Every other vendor is
+ *  always there and their card only exists while they are, which is what makes
+ *  saying it noise. */
+const TRANSIENT: readonly string[] = ["baro", "varzia", "darvo"];
+
 function whySegments(
-  presence: string,
+  presence: string | null,
   rolls: readonly ValenceOffer[],
   t: SuggestionContext["t"],
 ): WhySegment[] {
-  const segments: WhySegment[] = [{ text: presence }];
+  const segments: WhySegment[] = presence ? [{ text: presence }] : [];
   const roll = rolls[0];
   if (!roll) return segments;
   // Every weapon on the table is already finished, so the rotation itself is
@@ -312,7 +317,9 @@ function vendorDrafts(ctx: SuggestionContext): SuggestionDraft[] {
     const live = trackerLive(task.id, world, t, nowMs);
     const rolls = valenceOffersFor(valence, task.id, nowMs, ctx.inventory, ctx.itemDb);
     const best = rewardFor(task.id, nowMs, rolls[0]);
-    const segments = whySegments(live.detail ?? t("nextUp.whyVendorHere"), rolls, t);
+    const presence =
+      live.detail ?? (TRANSIENT.includes(task.id) ? t("nextUp.whyVendorHere") : null);
+    const segments = whySegments(presence, rolls, t);
     const pool = here.stock.length > 0 ? here.stock : valencePool(rolls, t);
     const id = `vendors:${task.id}`;
     setValenceRows(id, rolls);

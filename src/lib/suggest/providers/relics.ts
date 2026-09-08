@@ -196,10 +196,14 @@ function partReward(reward: RelicReward, itemDb: Record<string, ItemDbEntry>): S
 function poolRows(
   prefs: SuggestionPreferences,
   rewards: readonly RelicReward[],
+  itemDb: Record<string, ItemDbEntry>,
 ): SuggestionPoolRow[] {
   return rewards.map((reward) => ({
     name: reward.name,
-    uniqueName: reward.uniqueName ?? undefined,
+    // The same join and the same last resort the card's own art goes through, so
+    // a tile and the picture above it can never disagree.
+    uniqueName: resolveRewardUniqueName(reward.name, itemDb) ?? reward.uniqueName ?? undefined,
+    ...(reward.imageUrl ? { imageUrl: reward.imageUrl } : {}),
     chance: reward.chance,
     worth: rewardWorth(prefs, reward.name) ?? undefined,
   }));
@@ -396,7 +400,7 @@ function relicDrafts(ctx: SuggestionContext): SuggestionDraft[] {
       deprioritized: activity === "low",
       wiki: group.name,
       details: {
-        pool: poolRows(prefs, held.rewards.slice(0, POOL_LIMIT)),
+        pool: poolRows(prefs, held.rewards.slice(0, POOL_LIMIT), ctx.itemDb),
         missions: [{ name: fissure.missionType, opinion: fissure.opinion }],
         expiry: fissure.expiry,
         relic: relicFacts(held, fissure),

@@ -175,6 +175,9 @@ export interface SuggestionPoolRow {
   /** Drop-table name, count prefix and all, for the art and inventory joins. */
   name: string;
   uniqueName?: string | undefined;
+  /** Art the provider already holds, on the same terms as a reward's: a last
+   *  resort for a row the item database cannot place. */
+  imageUrl?: string | undefined;
   /** Percent per run, best roll where several tables of the pool carry it. */
   chance?: number | undefined;
   /** Curated worth, where the ladder places the name. */

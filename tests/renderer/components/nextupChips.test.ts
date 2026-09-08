@@ -2,8 +2,14 @@ import { describe, expect, it } from "vitest";
 
 import {
   choicesState,
+  COUNT_LABEL,
+  COUNT_TITLE,
   STATE_CHIP,
+  tierBorderClass,
   tierLetter,
+  tierTextClass,
+  tileCounts,
+  tileDims,
   timeLeftText,
   valencePercent,
   valenceTone,
@@ -28,19 +34,106 @@ describe("StateChip", () => {
     expect(Object.keys(STATE_CHIP).sort()).toEqual([...CHIPS].sort());
   });
 
-  it("labels each chip with a key English defines", () => {
-    for (const state of CHIPS) expect(en).toHaveProperty(STATE_CHIP[state].label);
+  it("labels each chip it draws with a key English defines", () => {
+    for (const state of CHIPS) {
+      const chip = STATE_CHIP[state];
+      if (chip) expect(en).toHaveProperty(chip.label);
+    }
   });
 
   it("tones the outstanding states apart, off the card's own palette", () => {
-    expect(STATE_CHIP.wanted.tone).toContain("success");
-    expect(STATE_CHIP.subsume.tone).toContain("warning");
-    expect(STATE_CHIP.done.tone).toContain("muted");
+    expect(STATE_CHIP.wanted?.tone).toContain("success");
+    expect(STATE_CHIP.subsume?.tone).toContain("warning");
   });
 
-  it("reads ownership the same either way, so a choice state is never borrowed", () => {
-    expect(STATE_CHIP.owned.label).toBe(STATE_CHIP.done.label);
-    expect(STATE_CHIP.owned.tone).toBe(STATE_CHIP.done.tone);
+  it("draws no chip for something in hand, either way, so no tile says owned", () => {
+    expect(STATE_CHIP.done).toBeNull();
+    expect(STATE_CHIP.owned).toBeNull();
+  });
+});
+
+describe("tileCounts", () => {
+  it("draws nothing at all for an unread inventory, rather than a zero", () => {
+    expect(tileCounts(null)).toEqual([]);
+    expect(tileCounts(undefined)).toEqual([]);
+  });
+
+  it("reports a read inventory holding none, muted rather than green", () => {
+    const [count] = tileCounts({ owned: 0 });
+    expect(count?.kind).toBe("inventory");
+    expect(count?.value).toBe(0);
+    expect(count?.tone).not.toContain("success");
+  });
+
+  it("greens a count the player actually holds", () => {
+    expect(tileCounts({ owned: 3 })[0]?.tone).toContain("success");
+  });
+
+  it("says nothing of a foundry or a shelf with nothing on it", () => {
+    expect(tileCounts({ owned: 1, pending: 0, built: 0 }).map((c) => c.kind)).toEqual([
+      "inventory",
+    ]);
+  });
+
+  it("yellows a built copy the same as one the foundry is running", () => {
+    const counts = tileCounts({ owned: 1, pending: 2, built: 4 });
+    expect(counts.map((c) => c.kind)).toEqual(["inventory", "foundry", "built"]);
+    expect(counts[1]?.tone).toContain("warning");
+    expect(counts[2]?.tone).toBe(counts[1]?.tone);
+  });
+
+  it("labels and titles every count off keys English defines", () => {
+    for (const count of tileCounts({ owned: 1, pending: 1, built: 1 })) {
+      expect(en).toHaveProperty(COUNT_LABEL[count.kind]);
+      expect(en).toHaveProperty(COUNT_TITLE[count.kind]);
+    }
+  });
+});
+
+describe("tileDims", () => {
+  it("never dims a resource, however much is in hand", () => {
+    expect(tileDims(true, true, null)).toBe(false);
+    expect(tileDims(true, null, { owned: 9, stacks: true })).toBe(false);
+  });
+
+  it("never dims a tile that was not told the item is gear", () => {
+    expect(tileDims(true, null, null)).toBe(false);
+    expect(tileDims(true, undefined, { owned: 1 })).toBe(false);
+  });
+
+  it("dims gear with nothing left owed, from either source", () => {
+    expect(tileDims(true, false, null)).toBe(true);
+    expect(tileDims(true, null, { owned: 1, stacks: false })).toBe(true);
+  });
+
+  it("keeps a tile that still owes something at full contrast", () => {
+    expect(tileDims(false, false, null)).toBe(false);
+    expect(tileDims(undefined, false, null)).toBe(false);
+  });
+
+  it("lets the caller override what the count claims", () => {
+    expect(tileDims(true, true, { owned: 1, stacks: false })).toBe(false);
+  });
+});
+
+describe("tier colours", () => {
+  const LETTERS = ["S", "A", "B", "C", "D", "F"];
+
+  it("colours every tier in the ladder, D included", () => {
+    for (const letter of LETTERS) {
+      expect(tierTextClass(letter)).not.toBe(tierTextClass(null));
+      expect(tierBorderClass(letter)).not.toBe(tierBorderClass(null));
+    }
+  });
+
+  it("gives a suffixed tier its letter's colour", () => {
+    expect(tierTextClass("A-")).toBe(tierTextClass("A"));
+    expect(tierBorderClass("S+")).toBe(tierBorderClass("S"));
+  });
+
+  it("leaves an unrated tier plain", () => {
+    expect(tierTextClass(null)).toBe("text-text-muted");
+    expect(tierBorderClass("")).toBe("border-border");
   });
 });
 

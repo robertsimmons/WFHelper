@@ -289,8 +289,10 @@
     return rewardIndex.index;
   }
 
+  const typingName = $derived(addNeedle.length >= PREFIX);
+
   const addSuggestions = $derived(
-    tab === "value" ? suggestNames(rewardNames($itemDb)) : ([] as string[]),
+    tab === "value" && typingName ? suggestNames(rewardNames($itemDb)) : ([] as string[]),
   );
 
   let dragKey = $state<string | null>(null);
@@ -362,7 +364,7 @@
 
   const gearByKey = $derived(new Map(gearNames.map((name) => [acquisitionKey(name), name])));
 
-  const gearIndex = $derived(gearNames.length > 0 ? indexNames(gearNames) : NO_NAMES);
+  const gearIndex = $derived(typingName ? indexNames(gearNames) : NO_NAMES);
   const tierSuggestions = $derived(suggestNames(gearIndex));
 
   const tierRows = $derived(

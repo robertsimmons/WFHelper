@@ -8,7 +8,14 @@
   import { itemDb } from "../../stores/data.js";
   import { overframeRankingsRevision } from "../../stores/overframeRankings.js";
   import { nightwaveArt } from "../../stores/suggestionPrefs.js";
-  import { cardClock, choicesState, valencePercent, valenceTone } from "./chips.js";
+  import {
+    CHIP_TONE,
+    TONE,
+    cardClock,
+    choicesState,
+    valencePercent,
+    valenceTone,
+  } from "./chips.js";
   import StateChip from "./StateChip.svelte";
   import SuggestionDetailsModal from "./SuggestionDetailsModal.svelte";
   import TierBadge from "./TierBadge.svelte";
@@ -41,15 +48,20 @@
     "hover:border-border-strong hover:text-text-primary";
 
   const STRIP: Record<ChoiceState, string> = {
-    wanted: "border-success bg-success/10",
-    subsume: "border-warning bg-warning/10",
+    wanted: CHIP_TONE.good,
+    subsume: CHIP_TONE.warn,
     done: "border-border opacity-40",
   };
 
-  const TONE: Record<NonNullable<WhySegment["tone"]>, string> = {
-    good: "text-success",
-    bad: "text-danger",
+  const SEGMENT_TONE: Record<NonNullable<WhySegment["tone"]>, string> = {
+    good: TONE.good,
+    bad: TONE.bad,
   };
+
+  /** DE prefixes its calendar packs; the card is already about the Calendar. */
+  function plainName(name: string): string {
+    return name.replace(/^Calendar\s+/i, "");
+  }
 
   /** The valence offer as fields, with the item's own tier joined on. */
   interface ValenceRow {
@@ -68,19 +80,32 @@
     text: string;
   }
 
+  interface ArtPiece {
+    name: string;
+    imageUrl: string;
+  }
+
+  /** A mission the player rates reads as its colour, never as a word. */
   function missionSegments(missions: SuggestionDetails["missions"]): WhySegment[] {
     return (missions ?? []).map((mission) =>
-      mission.opinion === "bad" ? { text: mission.name, tone: "bad" } : { text: mission.name },
+      mission.opinion ? { text: mission.name, tone: mission.opinion } : { text: mission.name },
     );
   }
 
   const choices = $derived(suggestion.choices ?? []);
   const details = $derived(suggestion.details);
-  const art = $derived(
-    suggestion.reward && choices.length === 0
-      ? resolveDropArt($itemDb, suggestion.reward.name, suggestion.reward.uniqueName)
-      : null,
-  );
+  // A reward that could be one of several kinds pictures the first two rather
+  // than asserting either, so nothing on the band claims to be the drop.
+  const artPieces = $derived.by((): ArtPiece[] => {
+    const reward = suggestion.reward;
+    if (!reward || choices.length > 0) return [];
+    const members = reward.oneOf?.length ? reward.oneOf.slice(0, 2) : [reward];
+    return members
+      .map((member) => resolveDropArt($itemDb, member.name, member.uniqueName))
+      .filter((hit): hit is NonNullable<typeof hit> => hit !== null)
+      .map((hit) => ({ name: plainName(hit.name), imageUrl: hit.imageUrl }));
+  });
+  const art = $derived(artPieces[0] ?? null);
   const banner = $derived(
     choices.length === 0 ? bannerFor(suggestion.id, suggestion.category, $nightwaveArt) : null,
   );
@@ -163,6 +188,7 @@
     }
     return { segments, text: why };
   });
+  const hasLine = $derived(line.segments.length > 0 || line.text.length > 0);
 
   const complete = $derived(suggestion.complete);
   const progress = $derived(suggestion.progress);
@@ -256,8 +282,27 @@
       </div>
     {/each}
     {#if choices.length === 0 && art}
-      <div class="relative flex w-full items-center p-1.5 {bannerAside(backdrop)}" title={art.name}>
-        <ItemImage src={art.imageUrl} alt={art.name} cls="max-h-full max-w-full" />
+      <div
+        class="relative flex h-full w-full items-center p-1.5 {bannerAside(backdrop)}"
+        title={artPieces.map((piece) => piece.name).join(" / ")}
+      >
+        <!-- Two pictures, stair-stepped, where the drop is one of them and no
+             single piece of art is the truth. -->
+        <span class="flex h-full items-center">
+          {#each artPieces as piece, index (piece.name)}
+            <ItemImage
+              src={piece.imageUrl}
+              alt={piece.name}
+              cls={artPieces.length > 1
+                ? index === 0
+                  ? "max-h-[72%] -translate-y-[14%]"
+                  : "max-h-[72%] -ml-3 translate-y-[14%]"
+                : backdrop
+                  ? "max-h-full max-w-[46%]"
+                  : "max-h-full max-w-full"}
+            />
+          {/each}
+        </span>
       </div>
     {:else if standIn}
       <div class="relative flex w-full items-center justify-center p-1.5">
@@ -283,7 +328,7 @@
         >
           {suggestion.title}
         </h3>
-        <TimeLeft expiry={details?.expiry} nowMs={$cardClock} />
+        <TimeLeft expiry={details?.expiry} nowMs={$cardClock} reserve />
       </div>
       <span class="h-6 w-6">
         {#if complete}
@@ -348,10 +393,10 @@
         <span class="shrink-0 text-xs leading-4 tabular-nums {bonusTone}" title={valenceTitle}
           >{$tr("nextUp.tileBonusExact", { bonus: valencePercent(valence.bonus) })}</span
         >
-      {:else}
+      {:else if hasLine}
         <p class="m-0 min-w-0 flex-1 truncate text-xs leading-4 text-text-secondary" title={why}>
           {#if line.segments.length > 0}{#each line.segments as segment, index (index)}<span
-                class={segment.tone ? TONE[segment.tone] : ""}
+                class={segment.tone ? SEGMENT_TONE[segment.tone] : ""}
                 >{index > 0 ? ", " : ""}{segment.text}</span
               >{/each}{:else}{line.text}{/if}
         </p>
@@ -368,9 +413,12 @@
         >
       {/if}
       <span class="col-start-3 h-6 w-6">
-        {#if progress && complete && !done}
+        {#if progress && complete}
+          <!-- Marked done takes the button out of use, never off the card. -->
           <button
-            class="{ICON_BTN} font-display text-[0.6875rem] font-semibold leading-none"
+            class="{ICON_BTN} font-display text-[0.6875rem] font-semibold leading-none
+                   disabled:cursor-default disabled:opacity-40"
+            disabled={done}
             title={$tr("nextUp.addRunTitle")}
             aria-label={$tr("nextUp.addRunTitle")}
             onclick={(event) => clickAddRun(event, progress.current + 1)}

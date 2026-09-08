@@ -182,6 +182,7 @@
   const choices = $derived(suggestion.choices ?? []);
   const details = $derived(suggestion.details);
   const acq = $derived(details?.acquisition ?? null);
+  const relic = $derived(details?.relic ?? null);
   // The family label names no member, so its members are what the reader picks
   // an art pair from and what the possibilities list draws.
   const rewardMembers = $derived<readonly SuggestionReward[]>(suggestion.reward?.oneOf ?? []);
@@ -295,6 +296,39 @@
         title: $tr("nextUp.factBatch"),
         tone: CHIP_TONE.plain,
       });
+    }
+    // What is held, where it cracks, and what one crack pays. An unpriced drop
+    // table draws nothing rather than a zero.
+    if (relic) {
+      out.push({
+        value: $tr("nextUp.whyRelicRefinement", {
+          count: String(relic.count),
+          quality: $tr(`relics.quality.${relic.quality}` as MessageKey),
+        }),
+        title: $tr("relics.qualityLabel"),
+        tone: CHIP_TONE.plain,
+      });
+      out.push({
+        value: relic.node,
+        title: $tr("nextUp.factNode"),
+        tone: CHIP_TONE.plain,
+      });
+      if (relic.platinum !== null) {
+        const value = String(Math.round(relic.platinum));
+        out.push({
+          value: $tr("nextUp.acqPlatEach", { plat: value }),
+          title: $tr("nextUp.whyRelicPlat", { value }),
+          tone: CHIP_TONE.plain,
+        });
+      }
+      if (relic.ducats !== null) {
+        const value = String(Math.round(relic.ducats));
+        out.push({
+          value: $tr("world.baro.ducatsShort", { count: value }),
+          title: $tr("nextUp.whyRelicDucats", { value }),
+          tone: CHIP_TONE.plain,
+        });
+      }
     }
     // Every card in Acquisition is owed the item; only a subsume-only card is
     // owed something else, so that is the one need worth a chip.
@@ -538,7 +572,7 @@
 
     {#if facts.length > 0}
       <div class="mb-3 flex flex-wrap gap-1.5">
-        {#each facts as fact (fact.value)}
+        {#each facts as fact, index (index)}
           <span class="{CHIP} font-semibold {fact.tone}" title={fact.title}>{fact.value}</span>
         {/each}
       </div>

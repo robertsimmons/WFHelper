@@ -64,12 +64,21 @@ export function rewardNameKeys(value: string | null | undefined): string[] {
   return [key, key.slice(0, -1)];
 }
 
-/** Four characters holds every real count, so a column of them stays lined up,
- *  and a high resource count reads compact: "6k", never "6,000". */
+/** A decimal below ten of a unit, so scaling a count never costs a digit that
+ *  was carrying meaning: 1500 is "1.5k", not the "1k" a floor would claim. */
+function scaled(count: number, unit: number, suffix: string): string {
+  const value = count / unit;
+  const text = value < 10 ? value.toFixed(1).replace(/\.0$/, "") : String(Math.round(value));
+  return `${text}${suffix}`;
+}
+
+/** Five characters holds every real count, so a column of them stays lined up,
+ *  and a high resource count reads compact: "6k", never "6,000". The cutover is
+ *  where the k reading would round to a thousand of them. */
 export function compactCount(count: number): string {
   if (count < 1_000) return String(count);
-  if (count < 1_000_000) return `${Math.floor(count / 1_000)}k`;
-  return `${Math.floor(count / 1_000_000)}m`;
+  if (count < 999_500) return scaled(count, 1_000, "k");
+  return scaled(count, 1_000_000, "m");
 }
 
 /** A count folded back into the name it counts: "6k Endo". One of a thing adds

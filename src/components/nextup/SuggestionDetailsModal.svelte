@@ -18,6 +18,7 @@
   import { overframeRankingsRevision } from "../../stores/overframeRankings.js";
   import { worldData } from "../../stores/world.js";
   import { CHIP_TONE, TONE, cardClock } from "./chips.js";
+  import { plainName, rewardArt } from "./rewardArt.js";
   import ItemTile from "./ItemTile.svelte";
   import StateChip from "./StateChip.svelte";
   import TierBadge from "./TierBadge.svelte";
@@ -54,11 +55,6 @@
   /** The whole point is easiest first; past this the list stops being a shortlist. */
   const ROUTE_LIMIT = 6;
   const LIST_LIMIT = 8;
-
-  /** DE prefixes its calendar packs; the modal is already about the Calendar. */
-  function plainName(name: string): string {
-    return name.replace(/^Calendar\s+/i, "");
-  }
 
   /** A rare drop needs its decimals; a common one does not. */
   function chanceText(chance: number): string {
@@ -186,14 +182,11 @@
   // The family label names no member, so its members are what the reader picks
   // an art pair from and what the possibilities list draws.
   const rewardMembers = $derived<readonly SuggestionReward[]>(suggestion.reward?.oneOf ?? []);
-  const artPieces = $derived.by(() => {
-    const reward = suggestion.reward;
-    if (!reward) return [];
-    const members = rewardMembers.length > 0 ? rewardMembers.slice(0, 2) : [reward];
-    return members
-      .map((member) => resolveDropArt($itemDb, member.name, member.uniqueName))
-      .filter((hit): hit is NonNullable<typeof hit> => hit !== null);
-  });
+  // Still, and only two: a modal is read rather than scanned, and the rows below
+  // it list every possibility with what the player holds of each.
+  const artPieces = $derived(
+    rewardArt($itemDb, suggestion.reward, details?.pool ?? []).pieces.slice(0, 2),
+  );
   // A stall's pool is what it is holding, not what drops off anything.
   const poolLabel = $derived<MessageKey>(
     suggestion.category === "vendor" ? "nextUp.detailsStock" : "nextUp.detailsPool",

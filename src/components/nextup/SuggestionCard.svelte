@@ -2,7 +2,6 @@
   import { tr } from "../../lib/i18n.js";
   import { itemTiers } from "../../lib/suggest/acquisition/tiers.js";
   import { bannerAside, bannerFor } from "../../lib/suggest/bannerArt.js";
-  import { resolveDropArt } from "../../lib/suggest/dropPools.js";
   import { CARD_HEIGHT } from "../../lib/suggest/grid.js";
   import { valenceRowsFor } from "../../lib/suggest/valence.js";
   import { itemDb } from "../../stores/data.js";
@@ -16,6 +15,7 @@
     valencePercent,
     valenceTone,
   } from "./chips.js";
+  import { ART_CYCLE_MS, artCycle, rewardArt, type RewardArt } from "./rewardArt.js";
   import StateChip from "./StateChip.svelte";
   import SuggestionDetailsModal from "./SuggestionDetailsModal.svelte";
   import TierBadge from "./TierBadge.svelte";
@@ -58,11 +58,6 @@
     bad: TONE.bad,
   };
 
-  /** DE prefixes its calendar packs; the card is already about the Calendar. */
-  function plainName(name: string): string {
-    return name.replace(/^Calendar\s+/i, "");
-  }
-
   /** The valence offer as fields, with the item's own tier joined on. */
   interface ValenceRow {
     name: string;
@@ -80,11 +75,6 @@
     text: string;
   }
 
-  interface ArtPiece {
-    name: string;
-    imageUrl: string;
-  }
-
   /** A mission the player rates reads as its colour, never as a word. */
   function missionSegments(missions: SuggestionDetails["missions"]): WhySegment[] {
     return (missions ?? []).map((mission) =>
@@ -94,18 +84,21 @@
 
   const choices = $derived(suggestion.choices ?? []);
   const details = $derived(suggestion.details);
-  // A reward that could be one of several kinds pictures the first two rather
-  // than asserting either, so nothing on the band claims to be the drop.
-  const artPieces = $derived.by((): ArtPiece[] => {
-    const reward = suggestion.reward;
-    if (!reward || choices.length > 0) return [];
-    const members = reward.oneOf?.length ? reward.oneOf.slice(0, 2) : [reward];
-    return members
-      .map((member) => resolveDropArt($itemDb, member.name, member.uniqueName))
-      .filter((hit): hit is NonNullable<typeof hit> => hit !== null)
-      .map((hit) => ({ name: plainName(hit.name), imageUrl: hit.imageUrl }));
-  });
+  // A reward that could be one of several kinds never claims to be one of them:
+  // a known colour draws its two grades at once, an unknown one steps through
+  // the family.
+  const reward = $derived.by(
+    (): RewardArt =>
+      choices.length > 0
+        ? { mode: "single", pieces: [] }
+        : rewardArt($itemDb, suggestion.reward, details?.pool ?? []),
+  );
+  const artPieces = $derived(reward.pieces);
   const art = $derived(artPieces[0] ?? null);
+  // The frame every rotating card is on, off the one shared interval.
+  const frame = $derived(
+    reward.mode === "cycle" ? Math.floor($artCycle / ART_CYCLE_MS) % artPieces.length : 0,
+  );
   const banner = $derived(
     choices.length === 0 ? bannerFor(suggestion.id, suggestion.category, $nightwaveArt) : null,
   );
@@ -177,16 +170,48 @@
     choices.length > 0 ? choicesState(choices.map((choice) => choice.state)) : null,
   );
 
+  // Tasks whose pool is the same every week. There is nothing to say about them
+  // that the art, the bar and the pool list in the details do not already say.
+  const CONSTANT_REWARD = new Set(["netracells", "deepArchimedea", "temporalArchimedea"]);
+  const taskKey = $derived(suggestion.id.replace(/^[^:]+:/, ""));
+
+  /** What the bar and its count already read as, in the provider's own wording,
+   *  so the line never says the progress twice. */
+  const barSays = $derived.by((): string[] => {
+    const bar = suggestion.progress;
+    if (!bar) return [];
+    const remaining = String(Math.max(0, bar.required - bar.current));
+    const target = String(bar.required);
+    return [
+      $tr("nextUp.whyRemaining", { remaining, target }),
+      $tr("nextUp.whyAcqParts", { missing: remaining, total: target }),
+      $tr("nextUp.whyAcqPartsOne", { missing: remaining, total: target }),
+      $tr("nextUp.whyNightwaveStock", { held: String(bar.current), level: target }),
+    ];
+  });
+
+  const spare = (text: string): boolean => barSays.includes(text.trim());
+
   // The chip and the field row say what the sentence spelled out, so the
   // sentence goes: a choice card's line only ever named a pick its own strips
   // draw, and an acquisition line leads with the state before its route.
   const line = $derived.by((): CardLine => {
-    if (valence || choices.length > 0) return { segments: [], text: "" };
+    if (valence || choices.length > 0 || CONSTANT_REWARD.has(taskKey)) {
+      return { segments: [], text: "" };
+    }
     const supplied = suggestion.whySegments ?? [];
     if (details?.acquisition && supplied.length > 0) {
-      return { segments: supplied.slice(1), text: "" };
+      return { segments: supplied.slice(1).filter((part) => !spare(part.text)), text: "" };
     }
-    return { segments, text: why };
+    if (segments.length > 0)
+      return { segments: segments.filter((part) => !spare(part.text)), text: "" };
+    return {
+      segments: [],
+      text: why
+        .split(" - ")
+        .filter((part) => !spare(part))
+        .join(" - "),
+    };
   });
   const hasLine = $derived(line.segments.length > 0 || line.text.length > 0);
 
@@ -286,27 +311,39 @@
         class="relative flex h-full w-full items-center p-1.5 {bannerAside(backdrop)}"
         title={artPieces.map((piece) => piece.name).join(" / ")}
       >
-        <!-- Two pictures, stair-stepped, where the drop is one of them and no
-             single piece of art is the truth. A plate under them, because a
-             thin icon or a missing-art placeholder disappears into a banner. -->
+        <!-- A plate under the art, because a thin icon or a missing-art
+             placeholder disappears into a banner. -->
         <span
-          class="flex h-full items-center {backdrop
-            ? 'rounded-[var(--radius-md)] bg-bg-deep/70 px-1.5'
-            : ''}"
+          class="relative flex h-full items-center justify-center {backdrop
+            ? 'w-[46%] rounded-[var(--radius-md)] bg-bg-deep/70'
+            : 'w-full'}"
         >
-          {#each artPieces as piece, index (piece.name)}
-            <ItemImage
-              src={piece.imageUrl}
-              alt={piece.name}
-              cls={artPieces.length > 1
-                ? index === 0
-                  ? "max-h-[72%] -translate-y-[14%]"
-                  : "max-h-[72%] -ml-3 translate-y-[14%]"
-                : backdrop
-                  ? "max-h-full max-w-[46%]"
+          {#if reward.mode === "cycle"}
+            <!-- Every frame is stacked in the one fixed box and only its opacity
+                 changes, so the family steps past without anything moving. -->
+            {#each artPieces as piece, index (piece.name)}
+              <ItemImage
+                src={piece.imageUrl}
+                alt={piece.name}
+                cls="absolute inset-0 m-auto max-h-full max-w-full transition-opacity
+                     duration-700 {index === frame ? 'opacity-100' : 'opacity-0'}"
+              />
+            {/each}
+          {:else}
+            <!-- Stair-stepped: the drop is one of these grades and no single
+                 piece of art is the truth. -->
+            {#each artPieces as piece, index (piece.name)}
+              <ItemImage
+                src={piece.imageUrl}
+                alt={piece.name}
+                cls={artPieces.length > 1
+                  ? index === 0
+                    ? "max-h-[72%] max-w-[48%] -translate-y-[14%]"
+                    : "max-h-[72%] max-w-[48%] -ml-3 translate-y-[14%]"
                   : "max-h-full max-w-full"}
-            />
-          {/each}
+              />
+            {/each}
+          {/if}
         </span>
       </div>
     {:else if standIn}

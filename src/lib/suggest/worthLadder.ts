@@ -1,4 +1,5 @@
 import data from "../../data/suggest/rewardValues.json";
+import { normalizeRewardName, parseQuantityName } from "../../../config/shared/quantityPrefix.js";
 import { LADDER_GROUPS, type LadderGroup, type WorthGroup } from "../../types/suggest.js";
 
 /** Each group owns a band, and an entry interpolates within its group's band, so
@@ -32,26 +33,13 @@ const LADDER: LadderData = data.ladder;
 
 /** One pile, many spellings: rewards arrive counted ("3x Forma", "50,000 Kuva",
  *  "10k Kuva") and as either the blueprint or the built item. */
-const COUNT_PREFIX = /^(\d[\d,]*)\s*([xk])?\s+/;
-const BLUEPRINT_SUFFIX = /\s+blueprint$/;
-
 export function normalizeName(name: string): string {
-  return name
-    .toLowerCase()
-    .replace(/\s+/g, " ")
-    .trim()
-    .replace(COUNT_PREFIX, "")
-    .replace(BLUEPRINT_SUFFIX, "")
-    .trim();
+  return normalizeRewardName(name);
 }
 
 /** How many of the thing the name is counting; 1 when it counts nothing. */
 export function rewardCount(name: string | null | undefined): number {
-  const match = COUNT_PREFIX.exec((name ?? "").toLowerCase().replace(/\s+/g, " ").trim());
-  if (!match?.[1]) return 1;
-  const digits = Number(match[1].replace(/,/g, ""));
-  if (!Number.isFinite(digits) || digits <= 0) return 1;
-  return match[2] === "k" ? digits * 1000 : digits;
+  return parseQuantityName(name).count ?? 1;
 }
 
 interface Placement {

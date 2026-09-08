@@ -3,6 +3,7 @@ import { normalizeErrorMessage } from "../config/shared/errors";
 import { fetchWithTimeout } from "../config/shared/fetchWithTimeout";
 import { gameTextToDisplay, stripGameTokens } from "../config/shared/gameMarkup";
 import { MISSION_TYPE_LABELS } from "../config/shared/missionTypes";
+import { countedName, parseQuantityName } from "../config/shared/quantityPrefix";
 import type {
   AlertRaw,
   CalendarDayRaw,
@@ -118,30 +119,56 @@ function resolveBaroIcon(itemPath: string): string | null {
   return null;
 }
 
-/** Lazy-loaded item lookup: maps Lotus item paths -> { name: string } from ExportResources + ExportRecipes */
-let _itemLookup: Record<
-  string,
-  { name?: string; era?: string; category?: string; resultType?: string }
-> | null = null;
-function getItemLookup(): Record<
-  string,
-  { name?: string; era?: string; category?: string; resultType?: string }
-> {
+interface ItemLookupEntry {
+  name?: string;
+  era?: string;
+  category?: string;
+  resultType?: string;
+  /** Endo, or Dirac on a Railjack bundle. */
+  fusionPoints?: number;
+  credits?: number;
+  components?: { typeName?: string; purchaseQuantity?: number }[];
+}
+
+/** Every export family a reward path can name. The bundle families carry the
+ *  quantity a name alone throws away, and without them a fusion bundle, an
+ *  arcane or a market package renders as its camel-split path. */
+const ITEM_NAME_EXPORTS = [
+  "ExportResources",
+  "ExportRecipes",
+  "ExportUpgrades",
+  "ExportGear",
+  "ExportRelics",
+  "ExportKeys",
+  "ExportWeapons",
+  "ExportWarframes",
+  "ExportSentinels",
+  "ExportFusionBundles",
+  "ExportArcanes",
+  "ExportBundles",
+  "ExportBoosterPacks",
+  "ExportCreditBundles",
+  "ExportFlavour",
+  "ExportCustoms",
+] as const;
+
+/** The families whose bare path tail is the only name a reward arrives under. */
+const BUNDLE_EXPORTS = [
+  "ExportFusionBundles",
+  "ExportArcanes",
+  "ExportBundles",
+  "ExportBoosterPacks",
+  "ExportCreditBundles",
+] as const;
+
+/** Lazy-loaded item lookup: maps Lotus item paths -> its export entry. */
+let _itemLookup: Record<string, ItemLookupEntry> | null = null;
+function getItemLookup(): Record<string, ItemLookupEntry> {
   if (_itemLookup) return _itemLookup;
   _itemLookup = {};
   try {
     const pep = require("warframe-public-export-plus");
-    for (const key of [
-      "ExportResources",
-      "ExportRecipes",
-      "ExportUpgrades",
-      "ExportGear",
-      "ExportRelics",
-      "ExportKeys",
-      "ExportWeapons",
-      "ExportWarframes",
-      "ExportSentinels",
-    ]) {
+    for (const key of ITEM_NAME_EXPORTS) {
       const data = pep?.[key];
       if (data && typeof data === "object") {
         Object.assign(_itemLookup, data);
@@ -150,19 +177,9 @@ function getItemLookup(): Record<
   } catch {
     try {
       const pkgDir = path.dirname(require.resolve("warframe-public-export-plus/package.json"));
-      for (const file of [
-        "ExportResources.json",
-        "ExportRecipes.json",
-        "ExportUpgrades.json",
-        "ExportGear.json",
-        "ExportRelics.json",
-        "ExportKeys.json",
-        "ExportWeapons.json",
-        "ExportWarframes.json",
-        "ExportSentinels.json",
-      ]) {
+      for (const key of ITEM_NAME_EXPORTS) {
         try {
-          const data = JSON.parse(fs.readFileSync(path.join(pkgDir, file), "utf8"));
+          const data = JSON.parse(fs.readFileSync(path.join(pkgDir, `${key}.json`), "utf8"));
           if (data && typeof data === "object") Object.assign(_itemLookup, data);
         } catch {
           /* skip missing file */
@@ -175,29 +192,112 @@ function getItemLookup(): Record<
   return _itemLookup;
 }
 
-/** Resolve a Lotus item path (e.g. /Lotus/Types/Items/...) to a display name */
-function resolveItemName(itemPath: string): string {
-  const items = getItemLookup();
-  const entry = items[itemPath];
-  if (entry?.name) {
-    const resolved = resolveDictValue(entry.name);
-    if (resolved) return stripGameTokens(resolved);
-  }
-  // Recipe fallback: resolve name via resultType (e.g. MummyQuestKeyBlueprint -> "Sands of Inaros Blueprint")
-  if (entry?.resultType) {
-    const result = items[entry.resultType];
-    if (result?.name) {
-      const resolved = resolveDictValue(result.name);
-      if (resolved) return `${stripGameTokens(resolved)} Blueprint`;
+/** Comparable tail of a path, or of a name already split into words, so
+ *  "CircuitSilverSteelPathFusionBundle" and those same words spaced apart land
+ *  on one key. */
+function tailKey(value: string): string {
+  return (value.split("/").pop() || value).toLowerCase().replace(/[^a-z0-9]/g, "");
+}
+
+/** Circuit and the calendar name a bundle by its bare path tail. Only the bundle
+ *  families are indexed by tail: a mod's tail is shared by every mod of its
+ *  shape, where these are unique across all five. A tail two paths disagree on
+ *  is dropped rather than guessed at. */
+let _bundleTailIndex: Map<string, string> | null = null;
+function bundleTailIndex(): Map<string, string> {
+  if (_bundleTailIndex) return _bundleTailIndex;
+  const index = new Map<string, string>();
+  for (const exportKey of BUNDLE_EXPORTS) {
+    for (const itemPath of Object.keys(loadPepExport(exportKey))) {
+      const key = tailKey(itemPath);
+      const held = index.get(key);
+      index.set(key, held === undefined || held === itemPath ? itemPath : "");
     }
   }
-  // Relic fallback: ExportRelics entries have era + category but no name
-  if (entry?.era && entry?.category) return `${entry.era} ${entry.category} Relic`;
-  // Fallback: extract readable name from path slug
+  _bundleTailIndex = index;
+  return index;
+}
+
+function lookupItemEntry(itemPath: string): ItemLookupEntry | undefined {
+  const items = getItemLookup();
+  const direct = items[itemPath];
+  if (direct) return direct;
+  // A store path spells its family mid-path ("/Types/StoreItems/Boosters/"), so
+  // no direct key matches it.
+  const byTail = bundleTailIndex().get(tailKey(itemPath));
+  return byTail ? items[byTail] : undefined;
+}
+
+function entryDisplayName(entry: ItemLookupEntry | undefined): string | null {
+  if (!entry) return null;
+  const resolved = resolveDictValue(entry.name);
+  if (resolved) return stripGameTokens(resolved);
+  // Recipe fallback: resolve via resultType (MummyQuestKeyBlueprint -> "Sands of
+  // Inaros Blueprint").
+  if (entry.resultType) {
+    const result = getItemLookup()[entry.resultType];
+    const resultName = resolveDictValue(result?.name);
+    if (resultName) return `${stripGameTokens(resultName)} Blueprint`;
+  }
+  // Relic fallback: ExportRelics entries have era + category but no name.
+  if (entry.era && entry.category) return `${entry.era} ${entry.category} Relic`;
+  return null;
+}
+
+/** What the reward pays, from the export rather than from its name: a fusion
+ *  bundle carries `fusionPoints`, a credit cache `credits`, and a single-item
+ *  package its `purchaseQuantity`. A package of several things pays no one
+ *  count. */
+function exportCount(entry: ItemLookupEntry | undefined): number | null {
+  if (!entry) return null;
+  if (typeof entry.fusionPoints === "number" && entry.fusionPoints > 0) return entry.fusionPoints;
+  if (typeof entry.credits === "number" && entry.credits > 0) return entry.credits;
+  const components = Array.isArray(entry.components) ? entry.components : [];
+  if (components.length !== 1) return null;
+  const quantity = Number(components[0]?.purchaseQuantity);
+  return Number.isFinite(quantity) && quantity > 1 ? quantity : null;
+}
+
+interface ResolvedReward {
+  name: string;
+  /** What the reward pays, or null where the data does not say. */
+  count: number | null;
+}
+
+/** A reward path as what it actually pays: the 6,000-Endo fusion bundle resolves
+ *  to Endo and 6000, not to "Circuit Silver Steel Path Fusion Bundle". */
+function resolveReward(itemPath: string): ResolvedReward {
+  const entry = lookupItemEntry(itemPath);
+  const count = exportCount(entry);
+  const components = Array.isArray(entry?.components) ? entry.components : [];
+  const grant = count !== null && components.length === 1 ? components[0]?.typeName : undefined;
+  const named =
+    (grant ? entryDisplayName(lookupItemEntry(storeItemPath(grant))) : null) ??
+    entryDisplayName(entry);
+
+  if (named) {
+    // DE writes the count into the name as well ("6000 x Kuva"), so drop it only
+    // where the export agrees - "3 Day Mod Drop Chance Booster" keeps its 3.
+    const parsed = parseQuantityName(named);
+    if (count !== null && parsed.count === count && parsed.name) {
+      return { name: parsed.name, count };
+    }
+    return { name: named, count };
+  }
+
   const readable = prettifyPathSlug(itemPath);
   // Glyphs are stored as "AvatarImage..." in data - display as "Glyph ..."
-  if (readable.startsWith("Avatar Image")) return readable.replace("Avatar Image", "Glyph").trim();
-  return readable;
+  const name = readable.startsWith("Avatar Image")
+    ? readable.replace("Avatar Image", "Glyph").trim()
+    : readable;
+  return { name, count: null };
+}
+
+/** Resolve a Lotus item path (e.g. /Lotus/Types/Items/...) to a display name,
+ *  with the quantity it pays folded in where the export names one. */
+function resolveItemName(itemPath: string): string {
+  const resolved = resolveReward(itemPath);
+  return countedName(resolved.count, resolved.name);
 }
 
 const FACTION_LABEL: Record<string, string> = {
@@ -515,11 +615,23 @@ export function parseCircuitChoices(
 
   return CIRCUIT_CATEGORIES.map(([tag, category]) => ({
     category,
-    // Split internal camel-case names for display.
     choices: (categories.find((entry) => entry?.Category === tag)?.Choices || [])
       .filter((name): name is string => typeof name === "string")
-      .map((name) => name.replace(/([a-z0-9])([A-Z])/g, "$1 $2")),
+      .map(circuitChoiceLabel),
   })).filter((entry) => entry.choices.length > 0);
+}
+
+/** Circuit names its rewards by bare path tail, which reads as a mangled path
+ *  for the bundle families - "CircuitSilverSteelPathFusionBundle" is 6k Endo.
+ *  Frames and incarnon adapters keep their camel-split name, which is the
+ *  spelling the item database is matched by. */
+function circuitChoiceLabel(name: string): string {
+  const itemPath = bundleTailIndex().get(tailKey(name));
+  if (itemPath) {
+    const resolved = resolveReward(itemPath);
+    if (resolved.name) return countedName(resolved.count, resolved.name);
+  }
+  return name.replace(/([a-z0-9])([A-Z])/g, "$1 $2");
 }
 
 // Keep Circuit empty when the fallback is unavailable.
@@ -535,7 +647,7 @@ async function fetchDuviriChoices(): Promise<Array<{ category: string; choices: 
         const e = (entry || {}) as Record<string, unknown>;
         const category = typeof e.category === "string" ? e.category : "";
         const choices = Array.isArray(e.choices)
-          ? e.choices.filter((c): c is string => typeof c === "string")
+          ? e.choices.filter((c): c is string => typeof c === "string").map(circuitChoiceLabel)
           : [];
         return { category, choices };
       })
@@ -1097,6 +1209,8 @@ interface CalendarEvent {
   label: string;
   description?: string;
   uniqueName?: string;
+  /** What the reward pays, where the export names a quantity. */
+  count?: number;
 }
 
 /** A few calendar dict values are shouted; only this row rewrites them, since
@@ -1123,7 +1237,13 @@ function parseCalendarEvent(event: CalendarEventRaw): CalendarEvent | null {
   }
   if (event.reward) {
     const uniqueName = storeItemPath(event.reward);
-    return { kind: "reward", label: calendarLabel(resolveItemName(uniqueName)), uniqueName };
+    const resolved = resolveReward(uniqueName);
+    return {
+      kind: "reward",
+      label: calendarLabel(countedName(resolved.count, resolved.name)),
+      uniqueName,
+      ...(resolved.count !== null ? { count: resolved.count } : {}),
+    };
   }
   if (event.upgrade) return { kind: "upgrade", label: prettifyPathSlug(event.upgrade) };
   return null;

@@ -170,6 +170,8 @@ interface CalendarDayEvent {
   description?: string;
   /** Reward item path, so the renderer can join the item database for an icon. */
   uniqueName?: string;
+  /** What the reward pays, where the export names a quantity. */
+  count?: number;
 }
 
 /** One dated slot of the 1999 calendar; main resolves the events for display. */

@@ -1,7 +1,7 @@
 import { log } from "./log.js";
 import { BOUNTY_FALLBACK_ICON_URLS } from "./assetUrls.js";
 import { fetchWithTimeout } from "../../config/shared/fetchWithTimeout.js";
-import { stripQuantityPrefix } from "../../config/shared/quantityPrefix.js";
+import { normalizeRewardName, rewardNameKeys } from "../../config/shared/quantityPrefix.js";
 import type { ItemDbEntry } from "../types/inventory.js";
 
 const DROPS_BASE_URL = "https://drops.warframestat.us/data";
@@ -38,15 +38,14 @@ function resolveRewardIconPath(
 ): string | undefined {
   if (!itemName) return undefined;
 
-  const stripped = stripQuantityPrefix(itemName).trim();
-  const lowerStripped = stripped.toLowerCase();
+  const stripped = normalizeRewardName(itemName);
 
   // Category overrides (by name pattern)
-  if (/\bcredits?\b/i.test(stripped)) return BOUNTY_FALLBACK_ICON_URLS.credits;
-  if (/\bendo\b/i.test(stripped)) return BOUNTY_FALLBACK_ICON_URLS.endo;
+  if (/\bcredits?\b/.test(stripped)) return BOUNTY_FALLBACK_ICON_URLS.credits;
+  if (/\bendo\b/.test(stripped)) return BOUNTY_FALLBACK_ICON_URLS.endo;
 
   if (nameToEntry) {
-    const entry = nameToEntry.get(lowerStripped) ?? nameToEntry.get(itemName.toLowerCase());
+    const entry = lookupByName(nameToEntry, itemName);
     if (entry?.category === "Mod") return BOUNTY_FALLBACK_ICON_URLS.mod;
     if (entry?.imageUrl) return entry.imageUrl;
   }
@@ -101,9 +100,48 @@ interface NameLookupEntry {
   imageUrl?: string;
   category?: string;
   uniqueName?: string;
+  /** Lower is preferred on a name collision. */
+  rank?: number;
 }
 let _nameToEntryMap: Map<string, NameLookupEntry> | undefined;
 let _lastItemDbRef: Record<string, ItemDbEntry> | undefined;
+
+/** A wrapper the inventory holds no row for. All 51 fusion bundles are named
+ *  "Endo", so a plain first-wins index answers "Endo" with a path nothing can
+ *  ever be counted under. */
+const WRAPPER_PATH = /\/(?:FusionBundles|BoosterPacks|Packages|StoreItems)\//i;
+
+function pathRank(uniqueName: string): number {
+  return WRAPPER_PATH.test(uniqueName) ? 1 : 0;
+}
+
+function indexName(
+  m: Map<string, NameLookupEntry>,
+  name: string | undefined,
+  uniqueName: string,
+  entry: ItemDbEntry,
+): void {
+  const key = normalizeRewardName(name);
+  if (!key) return;
+  const imageUrl = typeof entry.imageUrl === "string" ? entry.imageUrl : undefined;
+  const category = entry.category ?? undefined;
+  const rank = pathRank(uniqueName);
+  const existing = m.get(key);
+  if (!existing) {
+    const lookup: NameLookupEntry = { uniqueName, rank };
+    if (imageUrl) lookup.imageUrl = imageUrl;
+    if (category) lookup.category = category;
+    m.set(key, lookup);
+    return;
+  }
+  // Keep the best imageUrl - don't overwrite a good URL with nothing.
+  if (!existing.imageUrl && imageUrl) existing.imageUrl = imageUrl;
+  if (!existing.category && category) existing.category = category;
+  if (rank < (existing.rank ?? 0)) {
+    existing.uniqueName = uniqueName;
+    existing.rank = rank;
+  }
+}
 
 function getNameToEntryMap(
   itemDb?: Record<string, ItemDbEntry>,
@@ -112,27 +150,25 @@ function getNameToEntryMap(
   if (itemDb === _lastItemDbRef && _nameToEntryMap) return _nameToEntryMap;
   const m = new Map<string, NameLookupEntry>();
   for (const [uniqueName, entry] of Object.entries(itemDb)) {
-    if (entry.name) {
-      const key = entry.name.toLowerCase();
-      const existing = m.get(key);
-      const imageUrl =
-        entry.imageUrl && typeof entry.imageUrl === "string" ? entry.imageUrl : undefined;
-      const category = entry.category ?? undefined;
-      if (existing) {
-        // Keep the best imageUrl - don't overwrite a good URL with nothing
-        if (!existing.imageUrl && imageUrl) existing.imageUrl = imageUrl;
-        if (!existing.category && category) existing.category = category;
-      } else {
-        const lookup: NameLookupEntry = { uniqueName };
-        if (imageUrl) lookup.imageUrl = imageUrl;
-        if (category) lookup.category = category;
-        m.set(key, lookup);
-      }
-    }
+    indexName(m, entry.name, uniqueName, entry);
+    // The active game language spells a reward differently from the English
+    // name, and a drop table can arrive in either.
+    if (entry.displayName) indexName(m, entry.displayName, uniqueName, entry);
   }
   _lastItemDbRef = itemDb;
   _nameToEntryMap = m;
   return m;
+}
+
+function lookupByName(
+  nameToEntry: Map<string, NameLookupEntry>,
+  itemName: string,
+): NameLookupEntry | undefined {
+  for (const key of rewardNameKeys(itemName)) {
+    const entry = nameToEntry.get(key);
+    if (entry) return entry;
+  }
+  return undefined;
 }
 
 async function fetchDropsFile(file: string, rootKey: string): Promise<RawBountyLevel[]> {
@@ -324,6 +360,6 @@ export function resolveRewardUniqueName(
   itemDb?: Record<string, ItemDbEntry>,
 ): string | undefined {
   if (!itemName) return undefined;
-  const stripped = stripQuantityPrefix(itemName).trim().toLowerCase();
-  return getNameToEntryMap(itemDb)?.get(stripped)?.uniqueName;
+  const nameToEntry = getNameToEntryMap(itemDb);
+  return nameToEntry ? lookupByName(nameToEntry, itemName)?.uniqueName : undefined;
 }

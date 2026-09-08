@@ -1,6 +1,14 @@
 import { ownedComponentCount } from "../../../config/shared/componentNames.js";
+import { currencyOwnershipKey } from "../../../config/shared/componentOwnership.js";
+import {
+  compactCount,
+  normalizeRewardName,
+  rewardNameKeys,
+} from "../../../config/shared/quantityPrefix.js";
 import { resolveRewardUniqueName } from "../bountyRewards.js";
 import type { ItemDbEntry } from "../../types/inventory.js";
+
+export { compactCount };
 
 /** Packs and bundles grant their contents, so a count of the wrapper says nothing. */
 const PACK_PATH = /\/(?:BoosterPacks|Packages)\//i;
@@ -18,12 +26,9 @@ const PACK_GRANTS: Record<string, string> = {
 };
 
 /** Endo and Dirac rewards are fusion bundles: a grant of an account balance the
- *  inventory holds no row for, so any count of one reads zero and lies. */
+ *  inventory holds no row for, so any count of one path reads zero and lies.
+ *  The balance itself is readable, and the resolved name reaches it. */
 const FUSION_BUNDLE_PATH = /\/FusionBundles\//i;
-
-/** Drop and calendar names carry the amount ("1,500X Endo"), and the shared
- *  prefix strip stops at a thousands separator. */
-const COUNT_PREFIX = /^\d[\d,]*\s*[xk]?\s+/i;
 
 export interface OwnedReward {
   owned: number;
@@ -59,12 +64,26 @@ function ownedReward(
   const product = itemDb[path]?.buildsProduct;
   // One build is keyed under both its names, so a max over aliases never doubles it.
   const pending = foundryPending ? ownedComponentCount(path, foundryPending) : 0;
+  const built = product ? ownedComponentCount(product, ownership) : 0;
+  // A path no export names is not a path the player owns none of: it is a path
+  // the reward was spelled wrong under, and its name still has a chance.
+  if (owned === 0 && built === 0 && pending === 0 && !itemDb[path]) return null;
   return {
     owned,
     stacks: rewardStacks(path, itemDb),
-    ...(product ? { built: ownedComponentCount(product, ownership) } : {}),
+    ...(product ? { built } : {}),
     ...(pending > 0 ? { pending } : {}),
   };
+}
+
+/** Endo, credits, platinum and Regal Aya are account balances rather than
+ *  inventory rows, and a currency is always worth more of. */
+function ownedCurrency(name: string, ownership: Map<string, number>): OwnedReward | null {
+  for (const key of rewardNameKeys(name)) {
+    const owned = ownership.get(currencyOwnershipKey(key));
+    if (owned !== undefined) return { owned, stacks: true };
+  }
+  return null;
 }
 
 /** The settings table is keyed by item name, so the count needs the item first. */
@@ -74,8 +93,10 @@ export function ownedRewardByName(
   ownership: Map<string, number>,
   foundryPending?: Map<string, number>,
 ): OwnedReward | null {
-  const bare = name.replace(COUNT_PREFIX, "").trim();
-  return ownedReward(resolveRewardUniqueName(bare, itemDb), itemDb, ownership, foundryPending);
+  return (
+    ownedCurrency(normalizeRewardName(name), ownership) ??
+    ownedReward(resolveRewardUniqueName(name, itemDb), itemDb, ownership, foundryPending)
+  );
 }
 
 /** The count for a reward named either way, or null where none can be trusted:
@@ -99,11 +120,4 @@ export function ownedRewardFor(
  *  an unread inventory, which is never "the player has none". */
 export function ownsAny(owned: OwnedReward | null | undefined): boolean {
   return Boolean(owned && (owned.owned > 0 || (owned.built ?? 0) > 0 || (owned.pending ?? 0) > 0));
-}
-
-/** Four characters holds every real count, so a column of them stays lined up. */
-export function compactCount(count: number): string {
-  if (count < 10_000) return String(count);
-  if (count < 1_000_000) return `${Math.floor(count / 1_000)}k`;
-  return `${Math.floor(count / 1_000_000)}M`;
 }

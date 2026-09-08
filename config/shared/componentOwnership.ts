@@ -5,8 +5,34 @@ interface InventoryItemWithType {
 
 const DEFAULT_OWNED_COUNT = 1;
 
-/** Stacked slices carry a count; built gear is one row per copy. */
-const STACKED_COLLECTIONS = ["MiscItems", "Recipes"] as const;
+/** Stacked slices carry a count; built gear is one row per copy. A rolled mod or
+ *  riven in `Upgrades` carries no count and so counts as the one copy it is,
+ *  which the per-ItemType sum then adds up. */
+const STACKED_COLLECTIONS = [
+  "MiscItems",
+  "Recipes",
+  "FusionTreasures",
+  "RawUpgrades",
+  "Upgrades",
+  "Arcanes",
+  "LevelKeys",
+] as const;
+
+/** Currency the account holds as a top-level scalar with no inventory row to
+ *  count. `PrimeTokens` is Regal Aya, not Aya. */
+const CURRENCY_FIELDS: Record<string, string> = {
+  endo: "FusionPoints",
+  credits: "RegularCredits",
+  platinum: "PremiumCredits",
+  "regal aya": "PrimeTokens",
+};
+
+/** Currency shares the ownership map under a prefix no Lotus path can collide
+ *  with, so a reward count needs one map and not two. Keys are normalized
+ *  reward names. */
+export function currencyOwnershipKey(name: string): string {
+  return `currency:${name}`;
+}
 
 /** Built gear lives in its own collection, and a built weapon or frame can be a
  *  recipe ingredient - Aklex Prime consumes two built Lex Primes. Reading only
@@ -64,6 +90,15 @@ export function aggregateComponentOwnership(inventory: unknown): Map<string, num
       const itemType = entryItemType(entry);
       // One row is one copy here; an ItemCount on built gear is not a stack.
       if (itemType) addOwned(owned, itemType, 1);
+    }
+  }
+
+  for (const [name, field] of Object.entries(CURRENCY_FIELDS)) {
+    const raw = slices[field];
+    // A field the payload omits stays absent, so the caller reads unknown rather
+    // than a balance of zero.
+    if (typeof raw === "number" && Number.isFinite(raw)) {
+      owned.set(currencyOwnershipKey(name), raw);
     }
   }
 

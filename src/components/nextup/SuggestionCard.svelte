@@ -95,10 +95,19 @@
   );
   const artPieces = $derived(reward.pieces);
   const art = $derived(artPieces[0] ?? null);
-  // The frame every rotating card is on, off the one shared interval.
-  const frame = $derived(
-    reward.mode === "cycle" ? Math.floor($artCycle / ART_CYCLE_MS) % artPieces.length : 0,
+  // The frame every rotating card is on, off the one shared interval. Each card
+  // starts at its own point in its family, so a row of them never shows the
+  // same colour at the same moment.
+  const phase = $derived(
+    [...suggestion.id].reduce((sum, character) => sum + character.charCodeAt(0), 0),
   );
+  const frame = $derived(
+    reward.mode === "cycle" ? (Math.floor($artCycle / ART_CYCLE_MS) + phase) % artPieces.length : 0,
+  );
+  // The frame before it stays lit underneath while the new one rises over it, so
+  // the box cross-fades between two pictures and is never empty. Fading one out
+  // as the other came in left every rotating card dim for the whole transition.
+  const under = $derived((frame - 1 + artPieces.length) % artPieces.length);
   const banner = $derived(
     choices.length === 0 ? bannerFor(suggestion.id, suggestion.category, $nightwaveArt) : null,
   );
@@ -321,18 +330,24 @@
           {#if reward.mode === "cycle"}
             <!-- Every frame is stacked in the one fixed box and only its opacity
                  changes, so the family steps past without anything moving. -->
-            {#each artPieces as piece, index (piece.name)}
-              <ItemImage
-                src={piece.imageUrl}
-                alt={piece.name}
-                cls="absolute inset-0 m-auto max-h-full max-w-full transition-opacity
-                     duration-700 {index === frame ? 'opacity-100' : 'opacity-0'}"
-              />
+            {#each artPieces as piece, index (index)}
+              <!-- The frame's own box owns the fade, so a missing-art
+                   placeholder never fights it for the opacity. -->
+              <span
+                class="absolute inset-0 flex items-center justify-center transition-opacity
+                       duration-500 {index === frame
+                  ? 'z-[2] opacity-100'
+                  : index === under
+                    ? 'z-[1] opacity-100'
+                    : 'opacity-0'}"
+              >
+                <ItemImage src={piece.imageUrl} alt={piece.name} cls="max-h-full max-w-full" />
+              </span>
             {/each}
           {:else}
             <!-- Stair-stepped: the drop is one of these grades and no single
                  piece of art is the truth. -->
-            {#each artPieces as piece, index (piece.name)}
+            {#each artPieces as piece, index (index)}
               <ItemImage
                 src={piece.imageUrl}
                 alt={piece.name}

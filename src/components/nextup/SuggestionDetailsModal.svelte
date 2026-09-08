@@ -631,7 +631,7 @@
             {#if artPieces.length > 1}
               <!-- Stair-stepped: the drop is one of these and no single picture
                    is the truth. -->
-              {#each artPieces as piece, index (piece.name)}
+              {#each artPieces as piece, index (index)}
                 <ItemImage
                   src={piece.imageUrl}
                   alt={piece.name}

@@ -13,6 +13,14 @@ export function plainName(name: string): string {
   return name.replace(/^Calendar\s+/i, "");
 }
 
+/** Drop tables carry the count in the name. "2X Amber Archon Shard" is the same
+ *  shard as "Amber Archon Shard", and only the bare name joins on anything. */
+const COUNT_PREFIX = /^\d[\d,]*\s*[xk]?\s+/i;
+
+function bareName(name: string): string {
+  return name.replace(/\s+/g, " ").trim().replace(COUNT_PREFIX, "").trim();
+}
+
 function words(name: string): string[] {
   return name.trim().split(/\s+/);
 }
@@ -53,12 +61,21 @@ function familyMembers(
   const out: SuggestionReward[] = [...members];
   for (const entry of pool) {
     const row = typeof entry === "string" ? { name: entry } : entry;
-    const key = row.name.toLowerCase();
-    if (seen.has(key) || tail(row.name) !== family) continue;
+    const name = bareName(row.name);
+    const key = name.toLowerCase();
+    if (!name || seen.has(key) || tail(name) !== family) continue;
     seen.add(key);
-    out.push({ name: row.name, uniqueName: row.uniqueName });
+    out.push({ name, uniqueName: row.uniqueName });
   }
   return out;
+}
+
+/** One member per kind, so a rotation steps through the family rather than
+ *  showing one colour several times over. */
+function oneEach(members: readonly SuggestionReward[]): SuggestionReward[] {
+  return members.filter(
+    (member, index) => !members.slice(0, index).some((other) => sameKind(member.name, other.name)),
+  );
 }
 
 /** Flip to false and every reward art goes back to one still picture. */
@@ -92,14 +109,25 @@ export interface RewardArt {
   pieces: ArtPiece[];
 }
 
+/**
+ * Art for each member that has any, one picture per distinct image. Two names
+ * the database resolves to the same icon are one frame, not two: a rotation
+ * that repeats a picture reads as stuck, and two identical frames in a pair
+ * read as that one item rather than as a choice between kinds.
+ */
 function resolve(
   itemDb: Record<string, ItemDbEntry>,
   members: readonly SuggestionReward[],
 ): ArtPiece[] {
-  return members
-    .map((member) => resolveDropArt(itemDb, member.name, member.uniqueName))
-    .filter((hit): hit is NonNullable<typeof hit> => hit !== null)
-    .map((hit) => ({ name: plainName(hit.name), imageUrl: hit.imageUrl }));
+  const seen = new Set<string>();
+  const out: ArtPiece[] = [];
+  for (const member of members) {
+    const hit = resolveDropArt(itemDb, member.name, member.uniqueName);
+    if (!hit?.imageUrl || seen.has(hit.imageUrl)) continue;
+    seen.add(hit.imageUrl);
+    out.push({ name: plainName(hit.name), imageUrl: hit.imageUrl });
+  }
+  return out;
 }
 
 /**
@@ -115,13 +143,16 @@ export function rewardArt(
   if (!reward) return { mode: "single", pieces: [] };
   const members = familyMembers(reward, pool);
   if (members.length < 2) return { mode: "single", pieces: resolve(itemDb, [reward]) };
-  const kinds = members.filter(
-    (member, index) => !members.slice(0, index).some((other) => sameKind(member.name, other.name)),
-  );
+  const kinds = oneEach(members);
   // One kind in two grades: the colour is known, so there is nothing to step
   // through and the pair says all of it at once.
-  if (kinds.length < 2) return { mode: "pair", pieces: resolve(itemDb, members.slice(0, 2)) };
-  const pieces = resolve(itemDb, members.slice(0, MAX_CYCLE));
+  if (kinds.length < 2) {
+    const pieces = resolve(itemDb, members.slice(0, 2));
+    return pieces.length > 1
+      ? { mode: "pair", pieces }
+      : { mode: "single", pieces: pieces.slice(0, 1) };
+  }
+  const pieces = resolve(itemDb, kinds.slice(0, MAX_CYCLE));
   if (ROTATE_REWARD_ART && !REDUCED_MOTION && pieces.length > 1) {
     return { mode: "cycle", pieces };
   }
@@ -133,5 +164,9 @@ export function rewardArt(
       (member) =>
         words(member.name).length !== words(lead.name).length && !sameKind(member.name, lead.name),
     ) ?? members[1];
-  return { mode: "pair", pieces: resolve(itemDb, [lead, other]) };
+  const still = pieces.length > 1 ? pieces : resolve(itemDb, [lead, other]);
+  // Whatever the family said, one picture is one picture: a mode is chosen off
+  // what actually resolved, so no card is ever handed an empty box.
+  if (still.length > 1) return { mode: "pair", pieces: still.slice(0, 2) };
+  return { mode: "single", pieces: still.slice(0, 1) };
 }

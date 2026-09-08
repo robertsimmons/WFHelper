@@ -453,18 +453,22 @@ function entryCount(state: TrackerState, id: string, key: string): number {
   return entry && entry.key === key ? entry.count : 0;
 }
 
+/** `autoUsed` is what the inventory sync already read off the shared allowance;
+ *  a spender steps from that where it is further along, or a run the game has
+ *  already reported would swallow the one being ticked off. */
 export function setTrackerCount(
   state: TrackerState,
   id: string,
   periodKey: string | null,
   count: number,
+  autoUsed = 0,
 ): TrackerState {
   const key = periodKey ?? state.progress[id]?.key ?? "";
   const clamped = Math.max(0, Math.min(Math.trunc(count), MAX_TARGET));
   const progress = { ...state.progress, [id]: { key, count: clamped } };
   if (VAULT_RUN_SPENDERS.includes(id)) {
-    const spent =
-      entryCount(state, VAULT_ALLOWANCE_TASK, key) + clamped - entryCount(state, id, key);
+    const used = Math.max(entryCount(state, VAULT_ALLOWANCE_TASK, key), autoUsed);
+    const spent = used + clamped - entryCount(state, id, key);
     progress[VAULT_ALLOWANCE_TASK] = {
       key,
       count: Math.max(0, Math.min(spent, WEEKLY_VAULT_LIMIT)),

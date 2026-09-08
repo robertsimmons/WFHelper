@@ -40,6 +40,10 @@
     trackerGroup,
     trackerList,
     trackerPeriodKey,
+    vaultRunsUsed,
+    VAULT_ALLOWANCE_TASK,
+    VAULT_RUN_SPENDERS,
+    WEEKLY_VAULT_LIMIT,
     type TrackerGroup,
     type TrackerState,
     type TrackerUserPeriod,
@@ -138,7 +142,19 @@
       done: count >= target,
       auto: autoCount >= target,
       autoCount,
-      progress: autoTask?.progress,
+      // The two Archimedea rows count against the shared allowance, so what they
+      // show is the whole of it - runs the sync found and runs ticked off by hand.
+      progress: VAULT_RUN_SPENDERS.includes(base.id)
+        ? {
+            current: vaultRunsUsed(
+              tracker,
+              base.periodKey,
+              nowMs,
+              auto[VAULT_ALLOWANCE_TASK]?.count ?? 0,
+            ),
+            required: WEEKLY_VAULT_LIMIT,
+          }
+        : autoTask?.progress,
       hidden: tracker.hidden.includes(base.id),
       custom: false,
       dynamic: false,
@@ -342,7 +358,15 @@
 
   function toggleDone(row: Row): void {
     if (row.auto) return;
-    commit(setTrackerCount(tracker, row.id, row.periodKey, row.done ? 0 : row.target));
+    commit(
+      setTrackerCount(
+        tracker,
+        row.id,
+        row.periodKey,
+        row.done ? 0 : row.target,
+        auto[VAULT_ALLOWANCE_TASK]?.count ?? 0,
+      ),
+    );
   }
 
   function bump(row: Row, delta: number): void {

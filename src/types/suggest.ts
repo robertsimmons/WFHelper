@@ -133,9 +133,13 @@ export const DEFAULT_NIGHTWAVE_STOCK = 5;
 
 /** Enough to tick a tracked task off without leaving the tab. */
 export interface TrackerCompletion {
+  /** The row the tick writes, which is the shared counter itself where several
+   *  cards spend one allowance rather than a count of their own. */
   taskId: string;
   periodKey: string | null;
+  /** What that row reads now, so a step lands one above it. */
   count: number;
+  /** What that row reads once this card is done with it. */
   target: number;
 }
 

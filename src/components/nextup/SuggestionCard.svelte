@@ -477,9 +477,10 @@
         >
       {/if}
       <span class="col-start-3 h-6 w-6">
-        <!-- A target of one is ticked off, never counted up; the bar beside it
-             is a shared allowance the stepper would step in the wrong units. -->
-        {#if progress && complete && complete.target > 1}
+        <!-- The count the step writes is the provider's, in the units the bar's
+             own row keeps: a shared allowance is stepped by one run, not by one
+             of whichever card asked. -->
+        {#if progress && complete}
           <!-- Marked done takes the button out of use, never off the card. -->
           <button
             class="{ICON_BTN} font-display text-[0.6875rem] font-semibold leading-none
@@ -487,7 +488,7 @@
             disabled={done}
             title={$tr("nextUp.addRunTitle")}
             aria-label={$tr("nextUp.addRunTitle")}
-            onclick={(event) => clickAddRun(event, progress.current + 1)}
+            onclick={(event) => clickAddRun(event, complete.count + 1)}
             >{$tr("nextUp.addRun")}</button
           >
         {/if}

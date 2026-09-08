@@ -157,6 +157,24 @@ export interface SuggestionReward {
   /** English item name, for the itemDb join and the tile's tooltip. */
   name: string;
   uniqueName?: string | undefined;
+  /**
+   * Set where the reward is one of several kinds and which one is not knowable
+   * in advance: every kind it can be, best chance first. `name` is then the
+   * family's own plural label, which resolves no art and names no member.
+   */
+  oneOf?: SuggestionReward[] | undefined;
+}
+
+/** One thing a pool pays. A bare name is all a stall's stock line carries; a
+ *  drop row also carries the chance its table gives it. */
+export interface SuggestionPoolRow {
+  /** Drop-table name, count prefix and all, for the art and inventory joins. */
+  name: string;
+  uniqueName?: string | undefined;
+  /** Percent per run, best roll where several tables of the pool carry it. */
+  chance?: number | undefined;
+  /** Curated worth, where the ladder places the name. */
+  worth?: RewardWorth | undefined;
 }
 
 /** What a choice still owes the player: everything, a subsume, or nothing. */
@@ -209,8 +227,9 @@ export interface SuggestionOptionGroup {
 
 /** What the card face has no room for; only the details view reads it. */
 export interface SuggestionDetails {
-  /** Reward families the activity's drop pool pays, by name. */
-  pool?: string[] | undefined;
+  /** Everything the activity's pool pays, unfiltered. A drop pool supplies rows;
+   *  a stall's stock is still a plain list of names. */
+  pool?: readonly (SuggestionPoolRow | string)[] | undefined;
   /** The task's mission types, with the player's rating where they have one. */
   missions?: { name: string; opinion: MissionOpinion | null }[] | undefined;
   /** End of the window the suggestion is scored against. */

@@ -5,13 +5,17 @@ import {
   trackerGroup,
   trackerList,
   trackerPeriodKey,
+  vaultRunsUsed,
+  VAULT_ALLOWANCE_TASK,
+  VAULT_RUN_TASKS,
+  WEEKLY_VAULT_LIMIT,
   type TrackerGroup,
 } from "../../world/dailies.js";
 import { autoTrackerState } from "../../world/dailiesAuto.js";
 import { dayOfYearUtc, trackerExpiries, trackerLive } from "../../world/dailiesLive.js";
 import { affinityBoost } from "../boosts.js";
 import { readCircuit } from "../circuit.js";
-import { summarizeDropPool } from "../dropPools.js";
+import { dropPoolRows, summarizeDropPool, type DropFamily } from "../dropPools.js";
 import { missionOpinion, readMissions, type MissionRead } from "../missionTypes.js";
 import { bestWorth, rewardWorth, rewardValue, taskWorth } from "../rewards.js";
 import { clamp01, urgencyFromExpiry } from "../score.js";
@@ -23,10 +27,12 @@ import type {
   SuggestionDraft,
   SuggestionOptionGroup,
   SuggestionPreferences,
+  SuggestionPoolRow,
   SuggestionProvider,
   SuggestionReward,
   WhySegment,
 } from "../../../types/suggest.js";
+import type { DropRow } from "../../../../config/shared/dropTypes.js";
 import type { CalendarDay, WorldState } from "../../../types/world.js";
 
 /** Vendors and alerts are their own thing and are not covered here yet. */
@@ -89,14 +95,23 @@ interface NamedReward {
   inDays?: number | null;
   /** False when the task's own detail line already names the reward. */
   mention: boolean;
+  /** Every kind the reward can be, where the exact one is not knowable. */
+  oneOf?: SuggestionReward[] | undefined;
 }
 
-/** DE names the shard after the Archon, so the boss is the reward. */
-const ARCHON_SHARDS: Record<string, string> = {
-  Boreal: "Azure Archon Shard",
-  Amar: "Crimson Archon Shard",
-  Nira: "Amber Archon Shard",
+/** DE names the shard after the Archon, so the boss fixes the colour. Whether it
+ *  comes tauforged is not knowable in advance, so the hunt pays one of the two
+ *  and the plain shard is never asserted. */
+const ARCHON_SHARD_COLOURS: Record<string, string> = {
+  Boreal: "Azure",
+  Amar: "Crimson",
+  Nira: "Amber",
 };
+
+/** The colour's two shards, plain first, as the drop tables order them. */
+function archonShardSet(colour: string): string[] {
+  return [`${colour} Archon Shard`, `Tauforged ${colour} Archon Shard`];
+}
 
 type CalendarSeason = NonNullable<WorldState["calendarSeason"]>;
 
@@ -238,9 +253,17 @@ function namedReward(
     return name && value !== null ? { name, value, mention: false } : null;
   }
   if (taskId === "archonHunt") {
-    const name = ARCHON_SHARDS[wd.archonHunt?.boss ?? ""];
-    const value = rewardValue(prefs, name);
-    return name && value !== null ? { name, value, mention: true } : null;
+    const colour = ARCHON_SHARD_COLOURS[wd.archonHunt?.boss ?? ""];
+    if (!colour) return null;
+    const shards = archonShardSet(colour);
+    const value = bestWorth(prefs, shards);
+    if (value === null) return null;
+    return {
+      name: `${colour} Archon Shards`,
+      value,
+      mention: true,
+      oneOf: shards.map((name) => ({ name })),
+    };
   }
   return null;
 }
@@ -269,14 +292,35 @@ function plainRewardWhy(reward: NamedReward | null, t: SuggestionContext["t"]): 
 interface PoolReward {
   /** Reward families the pool pays, comma-joined for the why line. */
   text: string;
-  /** The same families, unjoined, for the details view. */
-  families: string[];
-  /** Drop-table name of the top family, for the art join. */
-  item: string;
+  /** The top family, as one thing or as the set it is. */
+  reward: SuggestionReward;
+  /** Every row the pool pays, for the details view. */
+  rows: SuggestionPoolRow[];
   /** Art can only stand in for the text when there is one thing to picture. */
   single: boolean;
   /** The best thing in the pool, which is the reason to run it. */
   value: number;
+}
+
+/** A family of one is that item; a family of several is the set, so no member's
+ *  name is asserted as the reward. */
+function familyReward(family: DropFamily): SuggestionReward {
+  if (family.members.length === 1) return { name: family.members[0].item };
+  return {
+    name: family.label,
+    oneOf: family.variants.map((member) => ({ name: member.item })),
+  };
+}
+
+/** Every row the pool pays, rated where the ladder places it. The ladder is read
+ *  through `rewardWorth`, which logs no coverage gap: the rating pass already
+ *  saw each name, and a listing is not a claim that the app rates it. */
+function poolRows(prefs: SuggestionPreferences, rows: readonly DropRow[]): SuggestionPoolRow[] {
+  return dropPoolRows(rows).map((row) => ({
+    name: row.item,
+    chance: row.chance,
+    worth: rewardWorth(prefs, row.item) ?? undefined,
+  }));
 }
 
 /** What an activity pays when world state names nothing: the pool labels the
@@ -287,11 +331,10 @@ function poolReward(ctx: SuggestionContext, taskId: string): PoolReward | null {
   const families = summarizeDropPool(rows, (name) => rewardValue(ctx.prefs, name));
   const top = families[0];
   if (!top) return null;
-  const labels = families.map((family) => family.label);
   return {
-    text: labels.join(", "),
-    families: labels,
-    item: top.item,
+    text: families.map((family) => family.label).join(", "),
+    reward: familyReward(top),
+    rows: poolRows(ctx.prefs, rows),
     single: families.length === 1,
     value:
       bestWorth(
@@ -314,8 +357,8 @@ function rewardArt(
   reward: NamedReward | null,
   pool: PoolReward | null,
 ): SuggestionReward | undefined {
-  if (reward) return { name: reward.name, uniqueName: reward.uniqueName };
-  if (pool) return { name: pool.item };
+  if (reward) return { name: reward.name, uniqueName: reward.uniqueName, oneOf: reward.oneOf };
+  if (pool) return pool.reward;
   return FIXED_REWARD[taskId];
 }
 
@@ -340,7 +383,7 @@ function detailsFor(
   }));
   if (missions.length === 0 && !pool && !expiry && options.length === 0) return undefined;
   return {
-    pool: pool?.families,
+    pool: pool?.rows,
     missions: missions.length > 0 ? missions : undefined,
     expiry,
     options: options.length > 0 ? options : undefined,
@@ -396,6 +439,16 @@ export const dailiesProvider: SuggestionProvider = {
     const expiries = trackerExpiries(world);
     const boost = affinityBoost(world, nowMs);
     const drafts: SuggestionDraft[] = [];
+    // Netracells and both Archimedea modes pay out of one weekly allowance of
+    // five runs, so what is left of it is what any of them is still worth doing.
+    const vaultLeft =
+      WEEKLY_VAULT_LIMIT -
+      vaultRunsUsed(
+        tracker,
+        trackerPeriodKey("weekly", now, expiries),
+        nowMs,
+        auto[VAULT_ALLOWANCE_TASK]?.count ?? 0,
+      );
 
     for (const task of trackerList(tracker)) {
       const group = trackerGroup(task.period, task.group);
@@ -412,6 +465,8 @@ export const dailiesProvider: SuggestionProvider = {
       );
       const remaining = task.target - done;
       if (remaining <= 0) continue;
+      // A spent allowance retires all three, whatever each row's own count reads.
+      if (vaultLeft <= 0 && VAULT_RUN_TASKS.includes(task.id)) continue;
 
       const live = task.label ? {} : trackerLive(task.id, world, t, nowMs);
       const expiry = live.expiry ?? periodResetIso(task.period, now);

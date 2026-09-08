@@ -98,15 +98,46 @@ describe("summarizeDropPool", () => {
   it("names what a sortie pays, unrated fluff dropped", () => {
     const families = summarizeDropPool(SORTIE, rated);
     expect(families.map((f) => f.label)).toEqual(["Endo", "Kuva", "Riven Mods"]);
-    expect(families.map((f) => f.item)).toEqual(["4000 Endo", "6000X Kuva", "Rifle Riven Mod"]);
+    expect(families.map((f) => f.members[0].item)).toEqual([
+      "4000 Endo",
+      "6000X Kuva",
+      "Melee Riven Mod",
+    ]);
   });
 
   it("collapses netracell shards into one family", () => {
     const families = summarizeDropPool(NETRACELLS, rated);
     expect(families[0].label).toBe("Archon Shards");
-    expect(families[0].item).toBe("Amber Archon Shard");
     expect(families[0].chance).toBeCloseTo(65.01, 2);
     expect(families.map((f) => f.label)).not.toContain("Entrati Lanthorn");
+  });
+
+  it("carries every shard the coffer can pay, not one of them", () => {
+    const family = summarizeDropPool(NETRACELLS, rated)[0];
+    expect(family.members.map((member) => member.name)).toEqual([
+      "Amber Archon Shard",
+      "Azure Archon Shard",
+      "Crimson Archon Shard",
+      "Tauforged Amber Archon Shard",
+      "Tauforged Azure Archon Shard",
+      "Tauforged Crimson Archon Shard",
+    ]);
+  });
+
+  it("pictures a family with one member per variant, plain against tauforged", () => {
+    const family = summarizeDropPool(NETRACELLS, rated)[0];
+    expect(family.variants.map((member) => member.name)).toEqual([
+      "Amber Archon Shard",
+      "Tauforged Amber Archon Shard",
+    ]);
+  });
+
+  it("makes a lone member its own family and its own variant", () => {
+    const family = summarizeDropPool(NETRACELLS, rated).find(
+      (entry) => entry.label === "Melee Arcane Adapter",
+    );
+    expect(family?.members).toHaveLength(1);
+    expect(family?.variants.map((member) => member.name)).toEqual(["Melee Arcane Adapter"]);
   });
 
   it("keeps a lone member's own name unpluralised", () => {

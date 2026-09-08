@@ -46,6 +46,17 @@ interface BuiltinTrackerDef extends TrackerDef {
   labelKey: MessageKey;
 }
 
+/**
+ * Netracells and both Archimedea modes draw on one weekly allowance of five
+ * reward-bearing runs - the game's single 0/5 counter - not a budget each. The
+ * allowance is counted under the Netracell row, whose stepper spends it
+ * directly; the two Archimedea rows spend one run each on completion.
+ */
+export const WEEKLY_VAULT_LIMIT = 5;
+export const VAULT_ALLOWANCE_TASK = "netracells";
+export const VAULT_RUN_SPENDERS: readonly string[] = ["deepArchimedea", "temporalArchimedea"];
+export const VAULT_RUN_TASKS: readonly string[] = [VAULT_ALLOWANCE_TASK, ...VAULT_RUN_SPENDERS];
+
 const STORAGE_KEY = "world-dailies";
 const MAX_CUSTOM_TASKS = 30;
 const MAX_LABEL_LENGTH = 60;
@@ -424,6 +435,24 @@ export function trackerCount(
   return expiryMs !== null && expiryMs <= nowMs ? 0 : entry.count;
 }
 
+/** Runs already spent from the weekly allowance, by hand or by the inventory
+ *  sync, whichever is further along. */
+export function vaultRunsUsed(
+  state: TrackerState,
+  periodKey: string | null,
+  nowMs: number,
+  autoUsed = 0,
+): number {
+  const used = Math.max(trackerCount(state, VAULT_ALLOWANCE_TASK, periodKey, nowMs), autoUsed);
+  return Math.min(used, WEEKLY_VAULT_LIMIT);
+}
+
+/** Counted against the shared allowance, since the entry is the allowance. */
+function entryCount(state: TrackerState, id: string, key: string): number {
+  const entry = state.progress[id];
+  return entry && entry.key === key ? entry.count : 0;
+}
+
 export function setTrackerCount(
   state: TrackerState,
   id: string,
@@ -432,7 +461,16 @@ export function setTrackerCount(
 ): TrackerState {
   const key = periodKey ?? state.progress[id]?.key ?? "";
   const clamped = Math.max(0, Math.min(Math.trunc(count), MAX_TARGET));
-  return { ...state, progress: { ...state.progress, [id]: { key, count: clamped } } };
+  const progress = { ...state.progress, [id]: { key, count: clamped } };
+  if (VAULT_RUN_SPENDERS.includes(id)) {
+    const spent =
+      entryCount(state, VAULT_ALLOWANCE_TASK, key) + clamped - entryCount(state, id, key);
+    progress[VAULT_ALLOWANCE_TASK] = {
+      key,
+      count: Math.max(0, Math.min(spent, WEEKLY_VAULT_LIMIT)),
+    };
+  }
+  return { ...state, progress };
 }
 
 /** Rotating Nightwave acts and alerts would grow the store forever otherwise. */

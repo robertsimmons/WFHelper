@@ -1,6 +1,7 @@
 import { toFiniteNumber } from "../../../config/shared/numeric.js";
 import { DAY_MS, nextDailyResetUtc, nextWeeklyResetUtc, WEEK_MS } from "../format.js";
 import type { MessageKey } from "../i18n.js";
+import { VAULT_ALLOWANCE_TASK, VAULT_RUN_SPENDERS, WEEKLY_VAULT_LIMIT } from "./dailies.js";
 import type { RawInventoryData } from "../../types/inventory.js";
 import type { WorldState } from "../../types/world.js";
 
@@ -83,8 +84,9 @@ function kahlDone(inv: RawInventoryData, nowMs: number): boolean {
   });
 }
 
-/** Netracell runs this week; the count is stale once its reset date has passed. */
-function netracellCount(inv: RawInventoryData, nowMs: number): number | null {
+/** Runs spent from the week's shared allowance - Netracells and both Archimedea
+ *  modes draw on the one count. Stale once its reset date has passed. */
+function vaultRunsSpent(inv: RawInventoryData, nowMs: number): number | null {
   const count = toFiniteNumber(inv.EntratiVaultCountLastPeriod);
   if (count === null) return null;
   const resetMs = deDateMs(inv.EntratiVaultCountResetDate);
@@ -103,6 +105,10 @@ function conquestScore(inv: RawInventoryData, field: string, nowMs: number): Aut
     count: 0,
     detail: { key: "dailies.conquestScore", params: { score: String(score) } },
   };
+}
+
+function vaultProgress(spent: number): { current: number; required: number } {
+  return { current: Math.min(spent, WEEKLY_VAULT_LIMIT), required: WEEKLY_VAULT_LIMIT };
 }
 
 /** Remaining-pool fields (DailyAffiliation*, DailyFocus): 0 means capped. */
@@ -208,13 +214,20 @@ export function autoTrackerState(
   if (rewardMatches(inv.LastSortieReward, wd?.sortie?.id)) out.sortie = { count: 1 };
   if (rewardMatches(inv.LastLiteSortieReward, wd?.archonHunt?.id)) out.archonHunt = { count: 1 };
 
-  const netracells = netracellCount(inv, nowMs);
-  if (netracells !== null) out.netracells = { count: netracells };
+  const spent = vaultRunsSpent(inv, nowMs);
+  if (spent !== null) out[VAULT_ALLOWANCE_TASK] = { count: spent };
 
   const deep = conquestScore(inv, "EntratiLabConquestCacheScoreMission", nowMs);
   if (deep) out.deepArchimedea = deep;
   const temporal = conquestScore(inv, "EchoesHexConquestCacheScoreMission", nowMs);
   if (temporal) out.temporalArchimedea = temporal;
+  // Both Archimedea modes are paid out of the same allowance, so their rows show
+  // what is left of it rather than a target of their own.
+  if (spent !== null) {
+    for (const id of VAULT_RUN_SPENDERS) {
+      out[id] = { ...out[id], count: out[id]?.count ?? 0, progress: vaultProgress(spent) };
+    }
+  }
 
   const now = new Date(nowMs);
   const weekStartMs = nextWeeklyResetUtc(now).getTime() - WEEK_MS;

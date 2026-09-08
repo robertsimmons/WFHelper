@@ -86,13 +86,11 @@ const TASK_ART: Record<string, BannerArt> = {
   bird3: banner(new URL("../../../assets/nextup/bird3.webp", import.meta.url).href, "100% 50%"),
   simaris: banner(new URL("../../../assets/nextup/simaris.webp", import.meta.url).href, "50% 50%"),
   sortie: banner(new URL("../../../assets/nextup/sortie.webp", import.meta.url).href, "0% 50%"),
-  // Closed in on the lit console along the bottom, which is this banner's
-  // subject the way a vendor's portrait is theirs.
+  // The standing panel is this banner's subject the way a vendor's portrait is
+  // theirs, and it stands on the left with the relay window to its right.
   syndicateStanding: banner(
     new URL("../../../assets/nextup/syndicate-standing.webp", import.meta.url).href,
-    "50% 100%",
-    undefined,
-    110,
+    "0% 50%",
   ),
   steelPathHonors: banner(
     new URL("../../../assets/nextup/steel-path-honors.webp", import.meta.url).href,
@@ -101,8 +99,6 @@ const TASK_ART: Record<string, BannerArt> = {
   ayatanHunt: banner(
     new URL("../../../assets/nextup/ayatan-hunt.webp", import.meta.url).href,
     "100% 50%",
-    undefined,
-    NUDGE_RIGHT,
   ),
   calendar1999: banner(
     new URL("../../../assets/nextup/calendar-1999.webp", import.meta.url).href,

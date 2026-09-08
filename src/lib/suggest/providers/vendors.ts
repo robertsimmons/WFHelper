@@ -16,14 +16,7 @@ import { ownedRewardFor } from "../ownedRewards.js";
 import { bestWorth, rewardValue } from "../rewards.js";
 import { urgencyFromExpiry } from "../score.js";
 import { UNPLACED_WORTH, UNRESOLVED_WORTH, bandFloor } from "../worthLadder.js";
-import {
-  bestValenceOffer,
-  setValenceRows,
-  valenceDoc,
-  valenceOffersFor,
-  type ValenceOffer,
-  type ValenceVerdict,
-} from "../valence.js";
+import { setValenceRows, valenceDoc, valenceOffersFor, type ValenceOffer } from "../valence.js";
 import { vendorOffers, type VendorOffer } from "../vendorOffers.js";
 import { resolveRewardUniqueName } from "../../bountyRewards.js";
 import type {
@@ -31,7 +24,6 @@ import type {
   SuggestionDraft,
   SuggestionPreferences,
   SuggestionProvider,
-  WhySegment,
 } from "../../../types/suggest.js";
 import type { ItemDbEntry } from "../../../types/inventory.js";
 import type { VaultTrader, WorldState } from "../../../types/world.js";
@@ -209,66 +201,21 @@ function presenceOf(
   return curatedPresence(period, now);
 }
 
-const WHY_KEY: Record<ValenceVerdict, MessageKey> = {
-  done: "nextUp.whyValenceNothing",
-  secondCopy: "nextUp.whyValenceSecondCopy",
-  caps: "nextUp.whyValenceCaps",
-  ready: "nextUp.whyValenceReady",
-  short: "nextUp.whyValence",
-};
-
-/** Only an offer that puts the cap in reach is worth the trip on its own. */
-const WORTH_THE_TRIP: readonly ValenceVerdict[] = ["caps", "ready"];
-
-/** The wiki always reports one decimal place, so a whole number reads as one. */
-function rollFields(roll: ValenceOffer): Record<string, string> {
-  return {
-    name: roll.displayName ?? roll.name,
-    element: roll.element,
-    bonus: roll.bonus.toFixed(1),
-    owned: roll.owned === null ? "" : roll.owned.toFixed(1),
-    result: roll.result.toFixed(1),
-  };
-}
-
 /** Vendors whose live line the card would only say a second time: the art and
  *  the tier badge already carry the shard this week is holding. */
 const ART_SAYS_IT: readonly string[] = ["bird3"];
 
-function whySegments(
-  detail: string | null,
-  rolls: readonly ValenceOffer[],
-  t: SuggestionContext["t"],
-): WhySegment[] {
-  const segments: WhySegment[] = detail ? [{ text: detail }] : [];
-  const roll = rolls[0];
-  if (!roll) return segments;
-  // Every weapon on the table is already finished, so the rotation itself is
-  // the only reason left to look.
-  if (!bestValenceOffer(rolls)) {
-    segments.push({ text: t(WHY_KEY.done) });
-    return segments;
-  }
-  const text = t(WHY_KEY[roll.verdict], rollFields(roll));
-  segments.push(WORTH_THE_TRIP.includes(roll.verdict) ? { text, tone: "good" } : { text });
-  return segments;
-}
-
-function valencePool(rolls: readonly ValenceOffer[], t: SuggestionContext["t"]): string[] {
-  return rolls.slice(0, STOCK_LIMIT).map((roll) => t("nextUp.valenceOffer", rollFields(roll)));
-}
-
-/** The weapon actually worth buying this rotation, where the curated table can
- *  name it; art and ownership both hang off the curated unique name. */
+/** What the card pictures. The rolls are ordered by gain, so the head of them is
+ *  the offer worth buying, and the art comes off that offer's own identity: a
+ *  fall back to the head of the curated table pictured a different weapon from
+ *  the one the field row names. */
 function rewardFor(
   taskId: string,
   nowMs: number,
   roll: ValenceOffer | undefined,
 ): VendorOffer | undefined {
-  const offers = liveVendorOffers(taskId, nowMs);
-  if (!roll) return offers[0];
-  const needle = roll.name.toLowerCase();
-  return offers.find((offer) => offer.name.toLowerCase() === needle) ?? offers[0];
+  if (!roll) return liveVendorOffers(taskId, nowMs)[0];
+  return { name: roll.name, ...(roll.uniqueName ? { uniqueName: roll.uniqueName } : {}) };
 }
 
 let cached: { keys: readonly unknown[]; drafts: SuggestionDraft[] } | null = null;
@@ -318,8 +265,6 @@ function vendorDrafts(ctx: SuggestionContext): SuggestionDraft[] {
     const best = rewardFor(task.id, nowMs, rolls[0]);
     // A vendor who is away has no card at all, so no card says a vendor is here.
     const detail = ART_SAYS_IT.includes(task.id) ? null : (live.detail ?? null);
-    const segments = whySegments(detail, rolls, t);
-    const pool = here.stock.length > 0 ? here.stock : valencePool(rolls, t);
     const id = `vendors:${task.id}`;
     setValenceRows(id, rolls);
 
@@ -334,8 +279,7 @@ function vendorDrafts(ctx: SuggestionContext): SuggestionDraft[] {
       id,
       category: "vendor",
       title: task.label ?? t(`dailies.task.${task.id}` as MessageKey),
-      why: segments.map((segment) => segment.text).join(", "),
-      whySegments: segments.length > 1 ? segments : undefined,
+      why: detail ?? "",
       reward: best ? { name: best.name, uniqueName: best.uniqueName } : undefined,
       ...(rolls[0]?.tier ? { tier: rolls[0].tier } : {}),
       signals: {
@@ -359,7 +303,7 @@ function vendorDrafts(ctx: SuggestionContext): SuggestionDraft[] {
       complete: { taskId: task.id, periodKey, count: done, target: task.target },
       wiki: task.wiki,
       details: {
-        pool: pool.length > 0 ? pool : undefined,
+        pool: here.stock.length > 0 ? here.stock : undefined,
         expiry: here.expiry,
       },
     });

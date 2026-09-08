@@ -384,10 +384,13 @@
         { name: row.name, uniqueName: row.uniqueName },
         { tier: row.tier, element: row.element, bonus: row.bonus },
       );
-      // Nothing on the table lifts a finished weapon, so it reads as owned.
+      // A weapon with no roll of the player's own is one they do not hold, so
+      // the count group goes rather than reading x0 beside a blank percentage.
+      // Nothing on the table lifts a finished weapon, so that one reads as owned.
       return {
         ...tile,
         name: row.displayName ?? tile.name,
+        owned: row.owned === null ? null : tile.owned,
         ownedBonus: row.owned,
         have: row.verdict === "done",
       };

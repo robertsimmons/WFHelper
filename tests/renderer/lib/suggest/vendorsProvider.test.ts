@@ -316,8 +316,6 @@ describe("vendorsProvider", () => {
     setValenceDocForTest(valenceDoc(49.2));
     const coda = draft(context(), "vendors:codaWeapons");
     expect(coda?.reward?.name).toBe("Coda Motovore");
-    expect(coda?.whySegments?.[1]).toEqual({ text: "nextUp.whyValence" });
-    expect(coda?.details?.pool?.[0]).toBe("nextUp.valenceOffer");
     expect(coda?.signals.value).toBeLessThan(
       draft(context({ prefs: prefs() }), "vendors:palladino")?.signals.value ?? 0,
     );
@@ -326,14 +324,13 @@ describe("vendorsProvider", () => {
   it("marks an offer over the threshold as worth the trip", () => {
     setValenceDocForTest(valenceDoc(53.1));
     const coda = draft(context(), "vendors:codaWeapons");
-    expect(coda?.whySegments?.[1]).toEqual({ text: "nextUp.whyValenceReady", tone: "good" });
     expect(coda?.signals.value).toBeCloseTo(MOTOVORE_WORTH * 0.8, 10);
   });
 
   it("tops the vendor out for the offer that caps a weapon the player owns", () => {
     setValenceDocForTest(valenceDoc(53.1));
     const coda = draft(codaContext(40), "vendors:codaWeapons");
-    expect(coda?.whySegments?.[1]).toEqual({ text: "nextUp.whyValenceCaps", tone: "good" });
+    expect(coda?.reward?.name).toBe("Coda Motovore");
     expect(coda?.signals.value).toBeCloseTo(MOTOVORE_WORTH, 10);
   });
 
@@ -343,7 +340,6 @@ describe("vendorsProvider", () => {
     // copy caps it; the 25% Pox on the same table cannot be beaten by a roll.
     const coda = draft(codaContext(57), "vendors:codaWeapons");
     expect(coda?.reward?.name).toBe("Coda Motovore");
-    expect(coda?.whySegments?.[1]).toEqual({ text: "nextUp.whyValenceSecondCopy" });
     expect(coda?.signals.value).toBeCloseTo(MOTOVORE_WORTH * 0.5, 10);
   });
 
@@ -353,7 +349,6 @@ describe("vendorsProvider", () => {
     expect(coda?.id).toBe("vendors:codaWeapons");
     expect(coda?.signals.value).toBe(0);
     expect(coda?.signals.gain).toBeUndefined();
-    expect(coda?.whySegments?.[1]).toEqual({ text: "nextUp.whyValenceNothing" });
   });
 
   it("reads an unreported rotation as unknown rather than as empty", () => {

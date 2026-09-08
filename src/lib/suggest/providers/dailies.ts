@@ -465,15 +465,15 @@ function dailyDrafts(ctx: SuggestionContext): SuggestionDraft[] {
   const boost = affinityBoost(world, nowMs);
   const drafts: SuggestionDraft[] = [];
   // Netracells and both Archimedea modes pay out of one weekly allowance of
-  // five runs, so what is left of it is what any of them is still worth doing.
-  const vaultLeft =
-    WEEKLY_VAULT_LIMIT -
-    vaultRunsUsed(
-      tracker,
-      trackerPeriodKey("weekly", now, expiries),
-      nowMs,
-      auto[VAULT_ALLOWANCE_TASK]?.count ?? 0,
-    );
+  // five runs, so what is left of it is what any of them is still worth doing,
+  // and all three cards draw that one count rather than a budget each.
+  const vaultUsed = vaultRunsUsed(
+    tracker,
+    trackerPeriodKey("weekly", now, expiries),
+    nowMs,
+    auto[VAULT_ALLOWANCE_TASK]?.count ?? 0,
+  );
+  const vaultLeft = WEEKLY_VAULT_LIMIT - vaultUsed;
 
   for (const task of trackerList(tracker)) {
     const group = trackerGroup(task.period, task.group);
@@ -572,7 +572,11 @@ function dailyDrafts(ctx: SuggestionContext): SuggestionDraft[] {
       // once a better one comes round rather than riding out the whole season.
       fingerprint: reward ? `${period}|${reward.name}` : period,
       deprioritized: activity === "low",
-      progress: task.target > 1 ? { current: done, required: task.target } : undefined,
+      progress: VAULT_RUN_TASKS.includes(task.id)
+        ? { current: vaultUsed, required: WEEKLY_VAULT_LIMIT }
+        : task.target > 1
+          ? { current: done, required: task.target }
+          : undefined,
       complete: { taskId: task.id, periodKey, count: done, target: task.target },
       wiki: task.wiki,
       details: detailsFor(prefs, missionNames, pool, expiry, options),

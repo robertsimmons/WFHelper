@@ -166,6 +166,7 @@ function targetsFor(ctx: SuggestionContext): AcquisitionTarget[] {
   const keys = [
     ctx.itemDb,
     ctx.inventory,
+    ctx.mastery,
     ctx.relicDb,
     ctx.plat,
     prefs.acquisitionTiers,
@@ -177,6 +178,7 @@ function targetsFor(ctx: SuggestionContext): AcquisitionTarget[] {
   const targets = resolveAcquisition({
     itemDb: ctx.itemDb,
     inventory: ctx.inventory,
+    mastery: ctx.mastery,
     relicDb: ctx.relicDb,
     plat: ctx.plat,
     ratings: acquisitionRatings(prefs),

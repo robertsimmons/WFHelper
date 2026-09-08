@@ -1,4 +1,5 @@
 import { buildSubsumedFamilySet, isFrameSubsumed, isSubsumableFrame } from "../../helminth.js";
+import { advances, masteryGain } from "../gain.js";
 import { createCurated, curated, mergeCurated, type CuratedSource } from "./curated.js";
 import { createIncarnonLookup } from "./incarnon.js";
 import { ergoGlastSource, nemesisPlan } from "./nemesis.js";
@@ -6,7 +7,7 @@ import { buildOwnership, buildPartPlans, listArchwings, listFrames, ownsItem } f
 import { buildPaths } from "./paths.js";
 import { createRatings } from "./ratings.js";
 import { baseWeaponName, listWeapons } from "./weapons.js";
-import type { ItemDbEntry } from "../../../types/inventory.js";
+import type { ItemDbEntry, MasteryData, MasteryStatus } from "../../../types/inventory.js";
 import type {
   AcquisitionContext,
   AcquisitionKind,
@@ -32,6 +33,27 @@ const EMPTY_PLAN: PartPlan = {
 
 function isPrimeEntry(name: string, entry: ItemDbEntry): boolean {
   return entry.isPrime === true || /\sprime$/i.test(name);
+}
+
+/** Whether the roster has this item finished. Selling or dissolving the gear
+ *  never gives the XP back, so mastery answers "does the player still need one
+ *  of these" where the inventory row alone cannot. A part-ranked or unlisted
+ *  item is not finished: an unread roster is never "already done". */
+function createMasteryLookup(
+  mastery: MasteryData | null | undefined,
+): (uniqueName: string, name: string) => boolean {
+  const byKey = new Map<string, MasteryStatus>();
+  const remember = (key: string, status: MasteryStatus): void => {
+    // One name can carry several rows; the finished one is the honest read.
+    if (byKey.get(key) !== "mastered") byKey.set(key, status);
+  };
+  for (const item of mastery?.items ?? []) {
+    if (!item.status) continue;
+    if (item.uniqueName) remember(item.uniqueName, item.status);
+    if (item.name) remember(item.name.toLowerCase(), item.status);
+  }
+  return (uniqueName, name) =>
+    !advances(masteryGain(byKey.get(uniqueName) ?? byKey.get(name.toLowerCase())));
 }
 
 /** Owning it and subsuming it are separate wins, and each is its own reason to farm. */
@@ -78,6 +100,7 @@ export function resolveAcquisition(ctx: AcquisitionContext): AcquisitionTarget[]
   const lookup = mergeCurated(weaponCurated, curated);
   const ratings = createRatings(ctx.ratings, lookup);
   const incarnonFor = createIncarnonLookup(ctx.inventory, itemDb);
+  const isMastered = createMasteryLookup(ctx.mastery);
   const only = ctx.only ? new Set(ctx.only.map((name) => name.toLowerCase())) : null;
   const kinds = ctx.kinds ? new Set(ctx.kinds) : null;
 
@@ -88,7 +111,12 @@ export function resolveAcquisition(ctx: AcquisitionContext): AcquisitionTarget[]
       if (only && !only.has(frame.name.toLowerCase())) continue;
       const subsumable = isSubsumableFrame(frame.name);
       const subsumed = subsumable && isFrameSubsumed(frame.name, subsumedFamilies);
-      const owned = ownsItem(frame.uniqueName, ownership) || subsumed;
+      // A mastered frame that was sold still owes its subsume, so the mastery
+      // reason goes and the subsume one stays.
+      const owned =
+        ownsItem(frame.uniqueName, ownership) ||
+        subsumed ||
+        isMastered(frame.uniqueName, frame.name);
       const needs = frameNeeds(owned, subsumable, subsumed);
       if (needs.length === 0) continue;
       wanted.push({
@@ -109,7 +137,7 @@ export function resolveAcquisition(ctx: AcquisitionContext): AcquisitionTarget[]
   if (!kinds || kinds.has("archwing")) {
     for (const suit of listArchwings(itemDb)) {
       if (only && !only.has(suit.name.toLowerCase())) continue;
-      if (ownsItem(suit.uniqueName, ownership)) continue;
+      if (ownsItem(suit.uniqueName, ownership) || isMastered(suit.uniqueName, suit.name)) continue;
       wanted.push({
         uniqueName: suit.uniqueName,
         name: suit.name,
@@ -137,7 +165,10 @@ export function resolveAcquisition(ctx: AcquisitionContext): AcquisitionTarget[]
       const incarnon = incarnonFor(weapon.name);
       const base = baseWeaponName(weapon.name);
       const primeUpgrade = !owned && base !== null && ownedByName.get(base.toLowerCase()) === true;
-      const needs = weaponNeeds(owned, incarnon, primeUpgrade);
+      // Mastery is banked for good, so a weapon the roster has finished is not
+      // a farm any more even once it has been sold or dissolved.
+      const masteryDone = owned || isMastered(weapon.uniqueName, weapon.name);
+      const needs = weaponNeeds(masteryDone, incarnon, primeUpgrade);
       if (needs.length === 0) continue;
       const glast = ergoGlastSource(weapon.name, weapon.weaponClass);
       wanted.push({

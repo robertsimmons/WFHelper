@@ -1,4 +1,4 @@
-import type { ItemDbEntry, RawInventoryData } from "../../../types/inventory.js";
+import type { ItemDbEntry, MasteryData, RawInventoryData } from "../../../types/inventory.js";
 import type { RelicDatabase } from "../../../types/relics.js";
 import type { NemesisProgenitor } from "./progenitors.js";
 
@@ -173,6 +173,10 @@ export type PlatPriceLookup = (name: string) => number | null;
 export interface AcquisitionContext {
   itemDb: Record<string, ItemDbEntry>;
   inventory: RawInventoryData | null;
+  /** Mastery is banked for good, so the roster says what the player is finished
+   *  with whether or not the gear is still in the account. Absent reads as an
+   *  unknown roster, which is never "already done". */
+  mastery?: MasteryData | null | undefined;
   /** Prime parts come out of relics; absent leaves the path unpriced, not hidden. */
   relicDb?: RelicDatabase | null | undefined;
   plat?: PlatPriceLookup | null | undefined;

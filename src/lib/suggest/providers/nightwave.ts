@@ -59,8 +59,10 @@ interface PartsOffer {
   /** Ladder entry, in the filler group, so the player can move it. */
   entry: string;
   titleKey: MessageKey;
-  /** One entry per part, spelled every way a database might name it: a recipe
-   *  is named after the thing it builds, which is not always the shop's wording. */
+  /** One entry per part, each key either an item-database name or a uniqueName
+   *  path, which is the only handle on a part no export names at all. Several
+   *  keys stand for one part: a recipe is named after the thing it builds, which
+   *  is not always the shop's wording. */
   parts: readonly (readonly string[])[];
   /** Price of one part. */
   cred: number;
@@ -74,6 +76,12 @@ interface PartsOffer {
 /** The Nightwave landing craft. Its own name in the item database is just
  *  "Nightwave", which several other things could answer to. */
 const NORA_SHIP = "/Lotus/Types/Items/Ships/NoraShip";
+
+/** Its four parts. No DE export names them, so the item database holds no entry
+ *  to look up: these paths are DE's own, out of the image manifest, and they are
+ *  what the inventory rows carry. The blueprint is the part the shop sells; the
+ *  component is what the foundry turns it into. */
+const NORA_SHIP_RECIPES = "/Lotus/Types/Recipes/LandingCraftRecipes/NightwaveShip";
 
 /** A landing craft carries productCategory "Ships", which is the inventory
  *  slice it lands in, and neither the component read nor `buildBaroOwnedSet`
@@ -96,14 +104,24 @@ const PARTS_OFFERS: readonly PartsOffer[] = [
     titleKey: "nextUp.nightwaveCraftParts",
     // Four parts, not three: the craft's own blueprint is bought like a segment.
     parts: [
-      ["Nightwave Blueprint", "Nightwave Landing Craft Blueprint"],
-      ["Nightwave Avionics Blueprint"],
-      ["Nightwave Engines Blueprint"],
-      ["Nightwave Fuselage Blueprint"],
+      [`${NORA_SHIP_RECIPES}/NoraShipBlueprint`],
+      [
+        `${NORA_SHIP_RECIPES}/NoraShipAvionicsBlueprint`,
+        `${NORA_SHIP_RECIPES}/NoraShipAvionicsComponent`,
+      ],
+      [
+        `${NORA_SHIP_RECIPES}/NoraShipEnginesBlueprint`,
+        `${NORA_SHIP_RECIPES}/NoraShipEnginesComponent`,
+      ],
+      [
+        `${NORA_SHIP_RECIPES}/NoraShipFuselageBlueprint`,
+        `${NORA_SHIP_RECIPES}/NoraShipFuselageComponent`,
+      ],
     ],
     cred: 35,
-    // The craft's own name is "Nightwave"; the wiki's wording is the card's.
-    builds: "Nightwave Landing Craft",
+    // The item database's own name for the craft, so its art resolves by name
+    // as well as by path; the card's own wording comes from its title key.
+    builds: "Nightwave",
     buildsUniqueName: NORA_SHIP,
     wiki: "Nightwave",
   },
@@ -255,9 +273,9 @@ function stockDraft(
   };
 }
 
-/** Parts of a set already in hand; null when the item DB cannot name them, which
- *  is unknown rather than none. Building the set consumes them, so a count of
- *  none says nothing on its own about whether the thing is already built. */
+/** Parts of a set already in hand; null when nothing can name a part, which is
+ *  unknown rather than none. Building the set consumes them, so a count of none
+ *  says nothing on its own about whether the thing is already built. */
 function partsHeld(
   offer: PartsOffer,
   itemDb: Record<string, ItemDbEntry>,
@@ -266,22 +284,27 @@ function partsHeld(
   if (ownership.size === 0) return null;
   let held = 0;
   for (const part of offer.parts) {
-    const entry = firstEntryFor(part, itemDb);
-    if (!entry) return null;
-    if (ownedComponentCount(entry.uniqueName, ownership) > 0) held += 1;
+    const keys = partKeys(part, itemDb);
+    if (keys.length === 0) return null;
+    if (keys.some((key) => ownedComponentCount(key, ownership) > 0)) held += 1;
   }
   return held;
 }
 
-function firstEntryFor(
-  names: readonly string[],
-  itemDb: Record<string, ItemDbEntry>,
-): { uniqueName: string; entry: ItemDbEntry } | null {
-  for (const name of names) {
-    const hit = entryFor(name, itemDb);
-    if (hit) return hit;
+/** Every uniqueName that proves one part is in hand: the part itself, and the
+ *  blueprint either side of it, since a bought blueprint the foundry has not
+ *  cooked yet is a part the player holds rather than one still to buy. */
+function partKeys(part: readonly string[], itemDb: Record<string, ItemDbEntry>): string[] {
+  const keys = new Set<string>();
+  for (const key of part) {
+    const uniqueName = key.startsWith("/") ? key : entryFor(key, itemDb)?.uniqueName;
+    if (!uniqueName) continue;
+    keys.add(uniqueName);
+    const entry = itemDb[uniqueName];
+    if (entry?.recipe?.blueprintUniqueName) keys.add(entry.recipe.blueprintUniqueName);
+    if (entry?.buildsProduct) keys.add(entry.buildsProduct);
   }
-  return null;
+  return [...keys];
 }
 
 function builtFor(

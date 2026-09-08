@@ -668,10 +668,15 @@
     {/if}
 
     {#if valenceTiles.length > 0}
-      <div class="mt-3 flex flex-col gap-1.5 border-t border-border pt-3">
-        {#each valenceTiles as tile, index (index)}
-          {@render itemRow(tile)}
-        {/each}
+      <div class="mt-3 border-t border-border pt-3">
+        <div class={ROW}>
+          <span class={LABEL}>{$tr("nextUp.detailsStock")}</span>
+          <div class="flex flex-col gap-1.5">
+            {#each valenceTiles as tile, index (index)}
+              {@render itemRow(tile)}
+            {/each}
+          </div>
+        </div>
       </div>
     {:else if extraOffers}
       <div class="mt-3 border-t border-border pt-3">

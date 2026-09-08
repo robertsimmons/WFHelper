@@ -12,6 +12,7 @@ import type { SortDirection } from "../../../types/filters.js";
 import type {
   MissionOpinion,
   RelicEra,
+  RelicFacts,
   RelicGoal,
   RelicSort,
   SuggestionContext,
@@ -166,6 +167,17 @@ function headlineReward(rewards: RelicReward[], goal: RelicGoal): RelicReward | 
   );
 }
 
+/** Both payouts, whichever goal the player picked: the card compares them. */
+function relicFacts(held: Held, fissure: FissurePick): RelicFacts {
+  return {
+    count: held.count,
+    quality: held.quality,
+    node: fissure.node,
+    platinum: expectedValue(held.rewards, "platinum"),
+    ducats: expectedValue(held.rewards, "ducats"),
+  };
+}
+
 function effortFor(fissure: FissurePick): number {
   const mission =
     fissure.opinion === "bad"
@@ -297,6 +309,7 @@ export const relicsProvider: SuggestionProvider = {
           pool: held.rewards.slice(0, POOL_LIMIT).map((reward) => reward.name),
           missions: [{ name: fissure.missionType, opinion: fissure.opinion }],
           expiry: fissure.expiry,
+          relic: relicFacts(held, fissure),
         },
       };
     });

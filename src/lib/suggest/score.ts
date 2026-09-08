@@ -47,14 +47,24 @@ export interface Orderable {
   deprioritized?: boolean | undefined;
 }
 
-/** Worth is what the reward is; gain is whether this player still needs it.
- *  Absent gain reads as 1, and zero gain is dropped rather than ordered. */
+/** What the reward is, which is the only thing that bands a suggestion. */
+export function worthOf(signals: SuggestionSignals): number {
+  return clamp01(signals.value);
+}
+
+/** Absent gain reads as 1, and zero gain is dropped rather than ordered. */
+function gainFactor(signals: SuggestionSignals): number {
+  return clamp01(signals.gain ?? 1);
+}
+
+/** Worth against gain: a tie-break inside a band, never the band itself. Gain
+ *  filters — a half-gain offer of a great reward is still a great reward. */
 export function effectiveWorth(signals: SuggestionSignals): number {
-  return clamp01(signals.value) * clamp01(signals.gain ?? 1);
+  return worthOf(signals) * gainFactor(signals);
 }
 
 export function worthGroupOf(suggestion: Orderable): WorthGroup {
-  return groupForWorth(effectiveWorth(suggestion.signals));
+  return groupForWorth(worthOf(suggestion.signals));
 }
 
 /** How long the window has left. No live deadline reads as forever, which is
@@ -102,7 +112,8 @@ export function orderingScore(suggestion: Orderable, nowMs: number): number {
   return (
     turnedDown * 1000 +
     (ORDER_BANDS - band) * 10 +
-    effectiveWorth(suggestion.signals) +
-    nearness(timeLeftMs(suggestion, nowMs)) * 1e-4
+    worthOf(suggestion.signals) +
+    effectiveWorth(suggestion.signals) * 1e-4 +
+    nearness(timeLeftMs(suggestion, nowMs)) * 1e-6
   );
 }

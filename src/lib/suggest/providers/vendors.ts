@@ -12,7 +12,7 @@ import { FULL_GAIN, advances, ownedGain } from "../gain.js";
 import { ownedRewardFor } from "../ownedRewards.js";
 import { bestWorth, rewardValue } from "../rewards.js";
 import { urgencyFromExpiry } from "../score.js";
-import { UNPLACED_WORTH, UNRESOLVED_WORTH, bandCeiling } from "../worthLadder.js";
+import { UNPLACED_WORTH, UNRESOLVED_WORTH, bandFloor } from "../worthLadder.js";
 import {
   bestValenceOffer,
   setValenceRows,
@@ -112,15 +112,28 @@ function heldOffers(
   return names.map((name) => ({ name, gain: ownershipGain(name, itemDb, ownership) }));
 }
 
+/** The offer a stall is worth the trip for, and how far it advances the player.
+ *  The two stay apart: worth bands the card, gain only picks between offers and
+ *  breaks ties inside the band. */
+interface Stall {
+  worth: number;
+  gain: number;
+}
+
 /** A card stands for a whole stall, so it is worth the best thing on the table
  *  that this player still needs: most stalls hold one rotating slot that ever
- *  matters. Nothing needed is zero worth, which still shows the card. */
-function stallWorth(prefs: SuggestionPreferences, held: readonly HeldOffer[]): number {
-  let best = 0;
+ *  matters. Null is nothing needed, which still shows the card at zero worth. */
+function bestStall(prefs: SuggestionPreferences, held: readonly HeldOffer[]): Stall | null {
+  let best: Stall | null = null;
+  let bestScore = 0;
   for (const offer of held) {
     if (!advances(offer.gain)) continue;
-    const worth = (rewardValue(prefs, offer.name) ?? UNPLACED_WORTH) * offer.gain;
-    if (worth > best) best = worth;
+    const worth = rewardValue(prefs, offer.name) ?? UNPLACED_WORTH;
+    const score = worth * offer.gain;
+    if (best === null || score > bestScore) {
+      best = { worth, gain: offer.gain };
+      bestScore = score;
+    }
   }
   return best;
 }
@@ -136,7 +149,8 @@ function unknownStallWorth(prefs: SuggestionPreferences, taskId: string, nowMs: 
 
 /** Vendors whose stock is never worth pricing. Darvo discounts one arbitrary
  *  market item, and Varzia sells vaulted relics by the fistful; neither is a
- *  reason to log in, and both are only here so the trip is not forgotten. */
+ *  reason to log in, and both are only here so the trip is not forgotten, so
+ *  they sit at the foot of filler rather than anywhere inside it. */
 const FLAT_FILLER: readonly string[] = ["darvo", "varzia"];
 
 function isFlatFiller(taskId: string): boolean {
@@ -287,6 +301,7 @@ export const vendorsProvider: SuggestionProvider = {
           ? rolls.map((roll) => ({ name: roll.name, gain: roll.gain }))
           : null
         : heldOffers(here.stock, task.id, nowMs, itemDb, ownership);
+      const stall = held === null ? null : bestStall(prefs, held);
 
       drafts.push({
         id,
@@ -298,14 +313,17 @@ export const vendorsProvider: SuggestionProvider = {
         ...(rolls[0]?.tier ? { tier: rolls[0].tier } : {}),
         signals: {
           value: isFlatFiller(task.id)
-            ? bandCeiling("filler")
+            ? bandFloor("filler")
             : held === null
               ? unknownStallWorth(prefs, task.id, nowMs)
-              : stallWorth(prefs, held),
+              : (stall?.worth ?? UNPLACED_WORTH),
           // A vendor trip is near-free once the currency is banked, and effort
           // orders nothing regardless.
           effort: 0,
           urgency: urgencyFromExpiry(here.expiry, nowMs),
+          // Nothing on the table needing buying leaves the card at zero worth
+          // rather than dropping it, so the trip is not forgotten.
+          ...(stall ? { gain: stall.gain } : {}),
         },
         // Baro keys off the visit's activation, Darvo off the deal's expiry, so
         // a dismissal lifts as soon as the vendor rotates.

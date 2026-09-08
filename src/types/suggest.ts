@@ -6,7 +6,7 @@ import type { TrackerState } from "../lib/world/dailies.js";
 import type { DropRow } from "../../config/shared/dropTypes.js";
 import type { SortDirection } from "./filters.js";
 import type { ItemDbEntry, MasteryData, RawInventoryData } from "./inventory.js";
-import type { RelicDatabase } from "./relics.js";
+import type { RelicDatabase, RelicQuality } from "./relics.js";
 import type { WorldState } from "./world.js";
 
 /** Which section a suggestion lands in, and what the filter checkboxes narrow by. */
@@ -238,6 +238,21 @@ export interface SuggestionDetails {
   options?: SuggestionOptionGroup[] | undefined;
   /** Everything the acquisition resolver worked out about one piece of gear. */
   acquisition?: AcquisitionTarget | undefined;
+  /** What a relic suggestion holds and what one crack of it pays. */
+  relic?: RelicFacts | undefined;
+}
+
+/** The facts a relic card and its modal both draw, rather than a sentence. */
+export interface RelicFacts {
+  /** Copies held at the refinement this suggestion is about. */
+  count: number;
+  quality: RelicQuality;
+  /** Node the live fissure is on. */
+  node: string;
+  /** Solo expected platinum of one crack; null when nothing prices the drops. */
+  platinum: number | null;
+  /** Solo expected ducats of one crack. */
+  ducats: number | null;
 }
 
 export interface Suggestion {

@@ -37,7 +37,8 @@ One ordered list of reward entries. An entry is an item, a currency or a standin
 - Groups, best first: **Must-have, Want, Useful, Filler, Junk**, and **Unplaced**.
 - A group owns a numeric band; an entry's position inside its group interpolates within that band. Moving groups jumps the worth, reordering nudges it. No numbers are typed.
 - Quantity scales inside the entry, so `3x Forma` beats `1x Forma` without a second entry.
-- A resolved reward that is not on the ladder lands in **Unplaced** at zero worth, and settings shows the count. Nothing scores off a category default, so a coverage gap is visible rather than becoming a middling score.
+- A resolved reward that is not on the ladder lands in **Unplaced** at zero worth, and settings shows the count. Nothing scores off a category default, so a coverage gap is visible rather than becoming a middling score. A caller naming a group for an entry the ladder does not place gets Unplaced too, not that group's floor.
+- An entry the player moves to another group lands at the foot of its new band until they drag it.
 
 ## Gain
 
@@ -59,7 +60,9 @@ The vendor's card picks its best offer by gain, not by the highest percentage, a
 
 Worth leads. Time only ever decides a cutoff, never the headline: a low-worth thing about to expire is still a low-worth thing.
 
-Bands, best first. Within every band, order by worth, then by time left.
+Bands, best first. Within every band, order by worth, then by gain, then by time left.
+
+Worth alone bands a suggestion. Gain filters — zero gain is gone — and breaks ties inside a band; it never demotes one, so a half-gain offer of a must-have is still a must-have.
 
 Effort does not order anything. It is collected and stored, and it reads nowhere. Most of it was invented — vendor trips are near-free once the currency is banked, and no table is ever going to rate every Nightwave act honestly, so a cost signal that guesses is worse than none. A task the player does not want is turned off, not made expensive: that is what the per-activity `never` and `low` settings are for.
 
@@ -69,6 +72,7 @@ Effort does not order anything. It is collected and stored, and it reads nowhere
 | 2 | Must-have and Want, whatever their window |
 | 3 | Useful or better with under 24 hours left |
 | 4 | Useful with over 24 hours, then Filler, then Junk |
+| 5 | Everything set to `low`, in its own order below all four bands |
 
 Anything at zero gain is not ordered at all — it is gone.
 

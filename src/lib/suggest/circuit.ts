@@ -1,10 +1,13 @@
 import incarnons from "../../data/suggest/incarnons.json";
 import warframes from "../../data/suggest/warframes.json";
+import { itemTiers } from "./acquisition/tiers.js";
+import { bandWorthAt } from "./worthLadder.js";
 import { circuitChoices, resolveCircuitChoices, type CircuitChoice } from "../world.js";
 import type { Translator } from "../i18n.js";
 import type {
   ChoiceSource,
   ChoiceState,
+  LadderGroup,
   SuggestionChoice,
   SuggestionContext,
 } from "../../types/suggest.js";
@@ -19,48 +22,28 @@ interface IncarnonEntry {
   upgradePath?: string;
 }
 
-const TIER_VALUE_BY_LETTER: Record<string, number> = {
-  "S+": 1.0,
-  S: 0.92,
-  "S-": 0.86,
-  "A+": 0.8,
-  A: 0.75,
-  "A-": 0.7,
-  "B+": 0.62,
-  B: 0.56,
-  "B-": 0.5,
-  "C+": 0.42,
-  C: 0.36,
-  "C-": 0.3,
-  F: 0.1,
-};
+/** A tier is not a worth. It says where inside a ladder group a pick sits, so
+ *  the group the player moves in settings is what moves the Circuit. A suffixed
+ *  tier takes its letter's position. */
+const TIER_POSITION: Record<string, number> = { S: 0, A: 0.33, B: 0.66, C: 1, D: 1, F: 1 };
 
-const EFFORT_VALUE: Record<string, number> = { hard: 0.9, normal: 0.7, easy: 0.3 };
+/** An unrated pick is unknown, never bad. */
+const UNRATED_POSITION = 0.66;
 
-// The riven --grade-* tokens run S green through F red, which reads as "S is a
-// win" rather than as a tier, so the Circuit letters take their own ramp.
-const TIER_CLASS: Record<string, string> = {
-  S: "text-[var(--relic-requiem)]",
-  A: "text-success",
-  B: "text-warning",
-  C: "text-danger",
-  F: "text-danger",
-};
-
-/** Tailwind class for a tier letter; a suffixed tier takes its letter's colour. */
-export function tierClass(tier: string | null | undefined): string {
-  return TIER_CLASS[tier?.charAt(0).toUpperCase() ?? ""] ?? "text-text-muted";
+function tierLetter(tier: string | null | undefined): string {
+  return tier?.charAt(0).toUpperCase() ?? "";
 }
 
-/** An unresearched frame or adapter is unknown, never bad. */
-const UNRATED_FRAME_VALUE = 0.7;
-const UNRATED_ADAPTER_VALUE = 0.56;
+function tierWorth(group: LadderGroup, tier: string | null | undefined): number {
+  return bandWorthAt(group, TIER_POSITION[tierLetter(tier)] ?? UNRATED_POSITION);
+}
 
-/** The frame is in hand; only the Helminth feed is still outstanding. */
-const SUBSUME_ONLY_VALUE = 0.4;
+/** A pick the player does not own yet is the gear itself, which is a want. */
+const OUTSTANDING: LadderGroup = "want";
 
-/** Nothing left to win, but the run is still the player's to make. */
-const NOTHING_LEFT_VALUE = 0.1;
+/** Nothing left to win, so the week pays nothing; the run is still the player's
+ *  to make, so it sinks rather than vanishing. */
+const NOTHING_LEFT = bandWorthAt("junk", 1);
 
 const NORMAL_EFFORT = 0.85;
 const STEEL_PATH_EFFORT = 0.6;
@@ -90,7 +73,21 @@ function effortWord(name: string): string | undefined {
 }
 
 function frameValue(name: string): number {
-  return EFFORT_VALUE[effortWord(name) ?? ""] ?? UNRATED_FRAME_VALUE;
+  return tierWorth(OUTSTANDING, itemTiers(name));
+}
+
+/** No subsume-tier table ships yet, so every subsume reads as unrated. One
+ *  letter back from here is the whole hookup: Overframe rates abilities under
+ *  its own category, and `rankings.json` carries those rows with a null name. */
+function subsumeTier(_frame: string): string | undefined {
+  return undefined;
+}
+
+/** Only the Helminth feed is left, which is part of what the frame was worth: a
+ *  middling subsume is useful, a top one is still a want. */
+function subsumeValue(name: string): number {
+  const letter = subsumeTier(name);
+  return tierWorth(tierLetter(letter) === "S" ? OUTSTANDING : "useful", letter);
 }
 
 function tier(name: string): string | undefined {
@@ -102,7 +99,7 @@ function upgradePath(name: string): string | undefined {
 }
 
 function adapterValue(name: string): number {
-  return TIER_VALUE_BY_LETTER[tier(name) ?? ""] ?? UNRATED_ADAPTER_VALUE;
+  return tierWorth(OUTSTANDING, tier(name));
 }
 
 function sources(name: string): ChoiceSource[] {
@@ -124,7 +121,7 @@ function frameState(choice: CircuitChoice): ChoiceState {
 function frameStateValue(choice: CircuitChoice): number {
   const state = frameState(choice);
   if (state === "done") return 0;
-  return state === "subsume" ? SUBSUME_ONLY_VALUE : frameValue(choice.name);
+  return state === "subsume" ? subsumeValue(choice.name) : frameValue(choice.name);
 }
 
 function best(
@@ -169,7 +166,7 @@ function readNormal(resolved: CircuitChoice[], t: Translator): CircuitRead {
       effort: effortWord(choice.name),
       sources: sources(choice.name),
     })),
-    value: Math.max(pick ? frameStateValue(pick) : 0, NOTHING_LEFT_VALUE),
+    value: Math.max(pick ? frameStateValue(pick) : 0, NOTHING_LEFT),
     effort: NORMAL_EFFORT,
     why: normalWhy(pick, t),
   };
@@ -200,7 +197,7 @@ function readSteelPath(resolved: CircuitChoice[], t: Translator): CircuitRead {
       tier: tier(choice.name),
       upgradePath: upgradePath(choice.name),
     })),
-    value: Math.max(pick ? adapterValue(pick.name) : 0, NOTHING_LEFT_VALUE),
+    value: Math.max(pick ? adapterValue(pick.name) : 0, NOTHING_LEFT),
     effort: STEEL_PATH_EFFORT,
     why: steelPathWhy(pick, wanted.length, t),
   };

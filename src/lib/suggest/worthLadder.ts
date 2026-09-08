@@ -1,4 +1,5 @@
 import data from "../../data/suggest/rewardValues.json";
+import { noteUnplaced } from "./unplaced.js";
 import { normalizeRewardName, parseQuantityName } from "../../../config/shared/quantityPrefix.js";
 import { LADDER_GROUPS, type LadderGroup, type WorthGroup } from "../../types/suggest.js";
 
@@ -176,7 +177,14 @@ function bandWorth(group: WorthGroup, key: string, positions: LadderPositions): 
   const picked = positions[key];
   if (picked !== undefined) return band.high - clampPosition(picked) * (band.high - band.low);
   const shipped = SHIPPED.get(key);
-  if (!shipped || shipped.group !== group) return band.low;
+  // The ladder places this nowhere, so whatever group a caller named for it, it
+  // has no worth to interpolate. A band floor here would invent one.
+  if (!shipped) {
+    noteUnplaced(key);
+    return UNPLACED_WORTH;
+  }
+  // Moved out of the group it ships in, so it lands at the foot of the new band.
+  if (shipped.group !== group) return band.low;
   if (shipped.size <= 1) return band.high;
   return band.high - (shipped.index / (shipped.size - 1)) * (band.high - band.low);
 }
@@ -188,7 +196,10 @@ export function ladderWorthAt(
   key: string,
   count = 1,
 ): number {
-  if (group === "unplaced") return UNPLACED_WORTH;
+  if (group === "unplaced") {
+    noteUnplaced(key);
+    return UNPLACED_WORTH;
+  }
   const base = bandWorth(group, key, positions);
   return Math.min(1, base + quantityLift(group, key, count));
 }
@@ -209,6 +220,19 @@ export function groupForWorth(worth: number): WorthGroup {
 /** The top of a group's band, which a bonus may lift an entry to but not past. */
 export function bandCeiling(group: WorthGroup): number {
   return group === "unplaced" ? UNPLACED_WORTH : BANDS[group].high;
+}
+
+/** The foot of a group's band: where something belongs in a group without being
+ *  worth pricing inside it. */
+export function bandFloor(group: WorthGroup): number {
+  return group === "unplaced" ? UNPLACED_WORTH : BANDS[group].low;
+}
+
+/** Where a position inside a group's band lands, for a reward the ladder cannot
+ *  name but a tier can rate. */
+export function bandWorthAt(group: LadderGroup, position: number): number {
+  const band = BANDS[group];
+  return band.high - clampPosition(position) * (band.high - band.low);
 }
 
 /** Best first, so a group compares as a number wherever order matters. */

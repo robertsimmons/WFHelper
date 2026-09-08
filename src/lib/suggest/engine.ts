@@ -1,6 +1,6 @@
 import { isDismissed, suggestionKey, type DismissalState } from "./dismissals.js";
 import { advances, gainOf } from "./gain.js";
-import { bandFor, effectiveWorth, orderingScore, timeLeftMs } from "./score.js";
+import { bandFor, effectiveWorth, orderingScore, timeLeftMs, worthOf } from "./score.js";
 import { unplacedCount } from "./unplaced.js";
 import {
   SUGGESTION_CATEGORIES,
@@ -28,12 +28,13 @@ function turnedDown(suggestion: Suggestion): number {
   return suggestion.deprioritized ? 1 : 0;
 }
 
-/** Bands first, then worth, then time left. A section whose controls choose its
- *  order reads `order` instead. Effort orders nothing. */
+/** Bands first, then worth, then gain, then time left. A section whose controls
+ *  choose its order reads `order` instead. Effort orders nothing. */
 export function compareSuggestions(a: Suggestion, b: Suggestion, nowMs: number): number {
   return (
     turnedDown(a) - turnedDown(b) ||
     bandFor(a, nowMs) - bandFor(b, nowMs) ||
+    worthOf(b.signals) - worthOf(a.signals) ||
     effectiveWorth(b.signals) - effectiveWorth(a.signals) ||
     timeLeftMs(a, nowMs) - timeLeftMs(b, nowMs) ||
     a.id.localeCompare(b.id)

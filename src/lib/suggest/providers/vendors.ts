@@ -11,19 +11,24 @@ import {
 } from "../../world/dailies.js";
 import { bird3ShardColor, trackerExpiries, trackerLive } from "../../world/dailiesLive.js";
 import { buildOwnership } from "../acquisition/parts.js";
+import { tierOrder } from "../acquisition/recommend.js";
+import { itemTiers } from "../acquisition/tiers.js";
+import { resolveDropArt } from "../dropPools.js";
 import { FULL_GAIN, advances, ownedGain } from "../gain.js";
 import { ownedRewardFor } from "../ownedRewards.js";
-import { bestWorth, rewardValue } from "../rewards.js";
+import { bestWorth, rewardValue, rewardWorth } from "../rewards.js";
 import { urgencyFromExpiry } from "../score.js";
 import { UNPLACED_WORTH, UNRESOLVED_WORTH, bandFloor } from "../worthLadder.js";
 import { setValenceRows, valenceDoc, valenceOffersFor, type ValenceOffer } from "../valence.js";
 import { vendorOffers, type VendorOffer } from "../vendorOffers.js";
 import { resolveRewardUniqueName } from "../../bountyRewards.js";
 import type {
+  RewardWorth,
   SuggestionContext,
   SuggestionDraft,
   SuggestionPreferences,
   SuggestionProvider,
+  SuggestionReward,
 } from "../../../types/suggest.js";
 import type { ItemDbEntry } from "../../../types/inventory.js";
 import type { VaultTrader, WorldState } from "../../../types/world.js";
@@ -213,17 +218,58 @@ function presenceOf(
  *  the tier badge already carry the shard this week is holding. */
 const ART_SAYS_IT: readonly string[] = ["bird3"];
 
+/** An unrated name sorts behind every rated one rather than ahead of "low". */
+const WORTH_RANK: Record<RewardWorth, number> = { great: 0, good: 1, ok: 2, low: 3 };
+const UNRATED_RANK = 4;
+
+/** The order the stall's own stock list reads in: where the ladder places the
+ *  name, then the tier letter that carries the gear it places none of. */
+function stockOrder(prefs: SuggestionPreferences, name: string): [number, number] {
+  const worth = rewardWorth(prefs, name);
+  return [worth ? WORTH_RANK[worth] : UNRATED_RANK, tierOrder(itemTiers(name)) ?? UNRATED_RANK];
+}
+
+/** The head of the stock list that the item database can actually picture:
+ *  packs and accessory sets carry no entry of their own, and the card would draw
+ *  a placeholder for one. */
+function stockArt(
+  prefs: SuggestionPreferences,
+  stock: readonly string[],
+  itemDb: Record<string, ItemDbEntry>,
+): SuggestionReward | undefined {
+  const ordered = [...stock].sort((a, b) => {
+    const left = stockOrder(prefs, a);
+    const right = stockOrder(prefs, b);
+    return left[0] - right[0] || left[1] - right[1] || a.localeCompare(b);
+  });
+  for (const name of ordered) {
+    const art = resolveDropArt(itemDb, name);
+    if (art?.imageUrl) return { name: art.name, imageUrl: art.imageUrl };
+  }
+  return undefined;
+}
+
 /** What the card pictures. The rolls are ordered by gain, so the head of them is
  *  the offer worth buying, and the art comes off that offer's own identity: a
  *  fall back to the head of the curated table pictured a different weapon from
- *  the one the field row names. */
+ *  the one the field row names. A live manifest is the stall's real stock, so
+ *  the best of that stands for it ahead of anything curated. */
 function rewardFor(
   taskId: string,
   nowMs: number,
   roll: ValenceOffer | undefined,
-): VendorOffer | undefined {
-  if (!roll) return liveVendorOffers(taskId, nowMs)[0];
-  return { name: roll.name, ...(roll.uniqueName ? { uniqueName: roll.uniqueName } : {}) };
+  stock: readonly string[],
+  prefs: SuggestionPreferences,
+  itemDb: Record<string, ItemDbEntry>,
+): SuggestionReward | undefined {
+  if (roll) {
+    return { name: roll.name, ...(roll.uniqueName ? { uniqueName: roll.uniqueName } : {}) };
+  }
+  const held = stock.length > 0 ? stockArt(prefs, stock, itemDb) : undefined;
+  if (held) return held;
+  const offer = liveVendorOffers(taskId, nowMs)[0];
+  if (!offer) return undefined;
+  return { name: offer.name, ...(offer.uniqueName ? { uniqueName: offer.uniqueName } : {}) };
 }
 
 let cached: { keys: readonly unknown[]; drafts: SuggestionDraft[] } | null = null;
@@ -270,7 +316,7 @@ function vendorDrafts(ctx: SuggestionContext): SuggestionDraft[] {
 
     const live = trackerLive(task.id, world, t, nowMs);
     const rolls = valenceOffersFor(valence, task.id, nowMs, ctx.inventory, ctx.itemDb);
-    const best = rewardFor(task.id, nowMs, rolls[0]);
+    const best = rewardFor(task.id, nowMs, rolls[0], here.stock, prefs, itemDb);
     // A vendor who is away has no card at all, so no card says a vendor is here.
     const detail = ART_SAYS_IT.includes(task.id) ? null : (live.detail ?? null);
     const id = `vendors:${task.id}`;
@@ -288,7 +334,7 @@ function vendorDrafts(ctx: SuggestionContext): SuggestionDraft[] {
       category: "vendor",
       title: task.label ?? t(`dailies.task.${task.id}` as MessageKey),
       why: detail ?? "",
-      reward: best ? { name: best.name, uniqueName: best.uniqueName } : undefined,
+      reward: best,
       ...(rolls[0]?.tier ? { tier: rolls[0].tier } : {}),
       signals: {
         value: isFlatFiller(task.id)

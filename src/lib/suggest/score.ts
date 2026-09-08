@@ -78,13 +78,32 @@ export function timeLeftMs(suggestion: Orderable, nowMs: number): number {
   return remaining > 0 ? remaining : Number.POSITIVE_INFINITY;
 }
 
-/** One band per ladder group, so the feed reads in the ladder's own order. */
-export const ORDER_BANDS = groupRank("unplaced") + 1;
+/** How long until the opportunity itself is gone. A window that only rerolls
+ *  what is on offer never takes it away: the stall is still there afterwards
+ *  holding something else, so there is no deadline to be near. Time left still
+ *  orders such a card inside its band; it just cannot promote it out of one. */
+function deadlineLeftMs(suggestion: Orderable, nowMs: number): number {
+  if (suggestion.details?.rerolls === true) return Number.POSITIVE_INFINITY;
+  return timeLeftMs(suggestion, nowMs);
+}
 
-/** Worth alone bands a card, so a closing window can never lift a lesser reward
- *  past a better one. Time left orders inside a band and nowhere else. */
-export function bandFor(suggestion: Orderable): number {
-  return groupRank(worthGroupOf(suggestion)) + 1;
+const CLOSING_MS = 6 * HOUR_MS;
+const TODAY_MS = 24 * HOUR_MS;
+
+/** Useful is the floor for anything a closing deadline may promote. */
+const PROMOTABLE = groupRank("useful");
+
+export const ORDER_BANDS = 4;
+
+/** Worth leads; a deadline only ever decides a cutoff. A low-worth thing about
+ *  to expire is still a low-worth thing. */
+export function bandFor(suggestion: Orderable, nowMs: number): number {
+  const rank = groupRank(worthGroupOf(suggestion));
+  const left = deadlineLeftMs(suggestion, nowMs);
+  if (rank <= PROMOTABLE && left < CLOSING_MS) return 1;
+  if (rank <= groupRank("want")) return 2;
+  if (rank <= PROMOTABLE && left < TODAY_MS) return 3;
+  return 4;
 }
 
 /** Nearness as a bounded, monotone stand-in for time left. */
@@ -97,7 +116,7 @@ function nearness(left: number): number {
  *  authority, so anything that sorts by score alone agrees with
  *  `compareSuggestions`. */
 export function orderingScore(suggestion: Orderable, nowMs: number): number {
-  const band = bandFor(suggestion);
+  const band = bandFor(suggestion, nowMs);
   const turnedDown = suggestion.deprioritized === true ? 0 : 1;
   return (
     turnedDown * 1000 +

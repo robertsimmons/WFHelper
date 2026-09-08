@@ -33,7 +33,7 @@ function turnedDown(suggestion: Suggestion): number {
 export function compareSuggestions(a: Suggestion, b: Suggestion, nowMs: number): number {
   return (
     turnedDown(a) - turnedDown(b) ||
-    bandFor(a) - bandFor(b) ||
+    bandFor(a, nowMs) - bandFor(b, nowMs) ||
     worthOf(b.signals) - worthOf(a.signals) ||
     effectiveWorth(b.signals) - effectiveWorth(a.signals) ||
     timeLeftMs(a, nowMs) - timeLeftMs(b, nowMs) ||

@@ -364,7 +364,19 @@ describe("vendorsProvider", () => {
     const bird3 = draft(context(), "vendors:bird3");
     expect(bird3?.signals.value).toBeCloseTo(worth("Azure Archon Shard"), 10);
     expect(worthGroupOf(bird3!)).toBe("must");
-    expect(bandFor(bird3!)).toBe(1);
+    expect(bandFor(bird3!, NOW)).toBe(2);
+  });
+
+  it("keeps a stall in its own band as its rotation is about to reroll", () => {
+    // The grid flips in four hours and Eleanor is still there afterwards holding
+    // new rolls, so the window is not a deadline and cannot promote her over an
+    // Archon Shard task with days of its week left.
+    setValenceDocForTest(null);
+    const nowMs = Date.parse("2026-09-08T20:00:00Z");
+    const coda = draft(context({ nowMs }), "vendors:codaWeapons");
+    expect(worthGroupOf(coda!)).toBe("want");
+    expect(coda?.details?.rerolls).toBe(true);
+    expect(bandFor(coda!, nowMs)).toBe(2);
   });
 
   it("promotes the shard Bird 3 is holding this week, not the top of the table", () => {

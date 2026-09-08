@@ -241,6 +241,9 @@ export interface SuggestionDetails {
   missions?: { name: string; opinion: MissionOpinion | null }[] | undefined;
   /** End of the window the suggestion is scored against. */
   expiry?: string | null | undefined;
+  /** The window rerolls what is on offer rather than taking the offer away, so
+   *  nothing is lost when it fires and a closing one is not a deadline. */
+  rerolls?: boolean | undefined;
   /** Days the player picks between, in the order they come round. */
   options?: SuggestionOptionGroup[] | undefined;
   /** Everything the acquisition resolver worked out about one piece of gear. */

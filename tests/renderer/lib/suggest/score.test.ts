@@ -35,6 +35,15 @@ function orderable(name: string, hours: number | null, effort = 0.2): Orderable 
   };
 }
 
+/** The same window, closing at the same hour, rerolling what is on offer rather
+ *  than taking it away - a stall's rotation grid rather than a deadline. */
+function rerolling(name: string, hours: number): Orderable {
+  return {
+    signals: { value: worthOf(name), effort: 0.2, urgency: 0 },
+    details: { expiry: hoursOut(hours), rerolls: true },
+  };
+}
+
 describe("clamp01", () => {
   it("pins values into 0..1 and treats junk as 0", () => {
     expect(clamp01(-3)).toBe(0);
@@ -119,34 +128,52 @@ describe("timeLeftMs", () => {
 });
 
 describe("bandFor", () => {
-  it("bands a card by its worth group, whatever its window", () => {
-    expect(bandFor(orderable("Umbra Forma", 5))).toBe(1);
-    expect(bandFor(orderable("Umbra Forma", 100))).toBe(1);
-    expect(bandFor(orderable("Umbra Forma", null))).toBe(1);
+  it("puts a closing useful-or-better ahead of a must-have with days left", () => {
+    expect(bandFor(orderable("Kuva", 5), NOW)).toBe(1);
+    expect(bandFor(orderable("Umbra Forma", 5), NOW)).toBe(1);
+    expect(bandFor(orderable("Umbra Forma", 100), NOW)).toBe(2);
   });
 
-  it("reads one band per ladder group, best first", () => {
-    expect(bandFor(orderable("Forma", 20))).toBe(2);
-    expect(bandFor(orderable("Kuva", 20))).toBe(3);
-    expect(bandFor(orderable("Focus Points", 1))).toBe(4);
-    expect(bandFor(orderable("Credits", 1))).toBe(5);
+  it("holds must-have and want in band two whatever their window", () => {
+    expect(bandFor(orderable("Umbra Forma", null), NOW)).toBe(2);
+    expect(bandFor(orderable("Forma", 20), NOW)).toBe(2);
+    expect(bandFor(orderable("Forma", 500), NOW)).toBe(2);
   });
 
-  it("never lets a closing window lift a lesser reward past a better one", () => {
-    // A want-band weapon rotation four hours from rerolling used to land in
-    // band one, above every Archon Shard task with days of its week left.
-    expect(bandFor(orderable("Forma", 4))).toBeGreaterThan(bandFor(orderable("Umbra Forma", 500)));
-    expect(bandFor(orderable("Kuva", 1))).toBeGreaterThan(bandFor(orderable("Forma", 500)));
+  it("promotes a useful thing inside the day, and no further", () => {
+    expect(bandFor(orderable("Kuva", 20), NOW)).toBe(3);
+    expect(bandFor(orderable("Kuva", 30), NOW)).toBe(4);
+  });
+
+  it("never promotes filler or junk on a closing window alone", () => {
+    expect(bandFor(orderable("Focus Points", 1), NOW)).toBe(4);
+    expect(bandFor(orderable("Credits", 1), NOW)).toBe(4);
+  });
+
+  it("never promotes a window that only rerolls what is on offer", () => {
+    // A want-band weapon rotation hours from rerolling used to land in band one,
+    // above every Archon Shard task with days of its week left. Nothing is lost
+    // when a rotation fires, so it stays in the band its worth earns.
+    expect(bandFor(rerolling("Forma", 4), NOW)).toBe(2);
+    expect(bandFor(rerolling("Umbra Forma", 4), NOW)).toBe(2);
+    expect(bandFor(rerolling("Kuva", 4), NOW)).toBe(4);
+    expect(bandFor(rerolling("Forma", 4), NOW)).toBeGreaterThan(bandFor(orderable("Kuva", 4), NOW));
   });
 });
 
 describe("orderingScore", () => {
   it("agrees with the bands, best first", () => {
-    expect(orderingScore(orderable("Umbra Forma", 100), NOW)).toBeGreaterThan(
-      orderingScore(orderable("Forma", 5), NOW),
+    expect(orderingScore(orderable("Kuva", 5), NOW)).toBeGreaterThan(
+      orderingScore(orderable("Umbra Forma", 100), NOW),
     );
-    expect(orderingScore(orderable("Forma", 500), NOW)).toBeGreaterThan(
-      orderingScore(orderable("Kuva", 1), NOW),
+    expect(orderingScore(orderable("Umbra Forma", 100), NOW)).toBeGreaterThan(
+      orderingScore(orderable("Kuva", 20), NOW),
+    );
+  });
+
+  it("leaves a rerolling window below a must-have it cannot outrank", () => {
+    expect(orderingScore(orderable("Umbra Forma", 100), NOW)).toBeGreaterThan(
+      orderingScore(rerolling("Forma", 4), NOW),
     );
   });
 

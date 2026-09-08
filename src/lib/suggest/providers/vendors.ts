@@ -157,6 +157,10 @@ type DailyDeal = NonNullable<WorldState["dailyDeals"]>[number];
 interface Presence {
   /** End of the window the vendor is scored against. */
   expiry: string | null;
+  /** The window rerolls the stall's stock rather than closing the stall, so
+   *  missing it costs the player nothing: only a trader who leaves, or an
+   *  allowance that goes unspent, is a deadline. */
+  rerolls?: boolean;
   stock: string[];
 }
 
@@ -181,11 +185,15 @@ function darvoPresence(deal: DailyDeal | undefined, nowMs: number): Presence | n
 }
 
 /** A vendor world state carries no manifest for is simply always there, so the
- *  window that matters is the reset that rerolls what they are holding. */
+ *  window that matters is the reset that rerolls what they are holding. A daily
+ *  or weekly reset spends an allowance with it, so an unspent one is lost; a
+ *  rotation grid spends nothing, and only swaps the stall's stock. */
 function curatedPresence(period: string, now: Date): Presence {
   if (period === "daily") return { expiry: nextDailyResetUtc(now).toISOString(), stock: [] };
   if (period === "weekly") return { expiry: nextWeeklyResetUtc(now).toISOString(), stock: [] };
-  return { expiry: fourDayResetIso(period, now), stock: [] };
+  const rotation = fourDayResetIso(period, now);
+  if (rotation === null) return { expiry: null, stock: [] };
+  return { expiry: rotation, rerolls: true, stock: [] };
 }
 
 function presenceOf(
@@ -305,6 +313,7 @@ function vendorDrafts(ctx: SuggestionContext): SuggestionDraft[] {
       details: {
         pool: here.stock.length > 0 ? here.stock : undefined,
         expiry: here.expiry,
+        ...(here.rerolls === true ? { rerolls: true } : {}),
       },
     });
   }

@@ -4,6 +4,8 @@
   import ModalShell from "../ModalShell.svelte";
   import ThemedButton from "../ThemedButton.svelte";
   import ThemedSelect from "../ThemedSelect.svelte";
+  import TierBadge from "./TierBadge.svelte";
+  import { COUNT_LABEL, COUNT_TITLE, tileCounts } from "./chips.js";
   import { tr, type MessageKey } from "../../lib/i18n.js";
   import { normalizeType } from "../../lib/suggest/missionTypes.js";
   import { createRatings } from "../../lib/suggest/acquisition/ratings.js";
@@ -17,7 +19,11 @@
     acquisitionKey,
     defaultPreferences,
   } from "../../lib/suggest/preferences.js";
-  import { compactCount, ownedRewardByName } from "../../lib/suggest/ownedRewards.js";
+  import {
+    compactCount,
+    ownedRewardFor,
+    type OwnedReward,
+  } from "../../lib/suggest/ownedRewards.js";
   import { orderEntries } from "../../lib/suggest/worthLadder.js";
   import { unplacedNames } from "../../lib/suggest/unplaced.js";
   import { listArchwings, listFrames } from "../../lib/suggest/acquisition/parts.js";
@@ -117,11 +123,37 @@
   const ROW_CLASS =
     "flex items-center justify-between gap-3 rounded-[var(--radius-md)] px-1.5 py-1 " +
     "hover:bg-bg-hover";
+  // The tile's own count and micro-label metrics, so a settings row reads as the
+  // same thing a card does.
+  const MICRO =
+    "font-display text-[0.5625rem] font-semibold uppercase leading-none tracking-[0.08em]";
+  const COUNT_CLASS =
+    "flex shrink-0 items-baseline gap-1 font-display text-[0.6875rem] font-semibold tabular-nums";
+  const FIELD_LABEL =
+    "font-display text-[0.7rem] font-semibold uppercase tracking-[0.08em] text-text-muted";
+  /** Long enough that a whole word lands as one rebuild, short enough to feel live. */
+  const TYPING_MS = 150;
 
   let tab = $state<Tab>("value");
-  let filter = $state("");
+  let search = $state("");
+  let needle = $state("");
   let addName = $state("");
+  let addNeedle = $state("");
   let resetArmed = $state(false);
+  let searchTimer: ReturnType<typeof setTimeout> | undefined;
+  let addTimer: ReturnType<typeof setTimeout> | undefined;
+
+  function typeSearch(value: string): void {
+    search = value;
+    clearTimeout(searchTimer);
+    searchTimer = setTimeout(() => (needle = value.trim().toLowerCase()), TYPING_MS);
+  }
+
+  function typeAdd(value: string): void {
+    addName = value;
+    clearTimeout(addTimer);
+    addTimer = setTimeout(() => (addNeedle = value.trim().toLowerCase()), TYPING_MS);
+  }
 
   const prefs = $derived($suggestionPreferences);
   const overrides = $derived($suggestionOverrides);
@@ -142,7 +174,6 @@
   }
 
   function matches(label: string): boolean {
-    const needle = filter.trim().toLowerCase();
     return !needle || label.toLowerCase().includes(needle);
   }
 
@@ -152,13 +183,28 @@
     key: string;
     label: string;
     index: number;
-    owned: ReturnType<typeof ownedRewardByName>;
+    tier: string | null;
+    owned: OwnedReward | null;
   }
 
   interface LadderSection {
     group: LadderGroup;
     keys: string[];
     rows: LadderRow[];
+  }
+
+  const SHIPPED_RATINGS = createRatings();
+  const DEFAULT_TIER = "B";
+
+  function shippedTier(key: string): string {
+    const tier = SHIPPED_RATINGS.tier(key);
+    return tier && ACQUISITION_TIERS.includes(tier) ? tier : DEFAULT_TIER;
+  }
+
+  /** What the row is rated at right now: the player's own letter, else the one
+   *  the item ships with. Null for a currency or standing, which carries none. */
+  function ratedTier(label: string): string | null {
+    return prefs.acquisitionTiers[acquisitionKey(label)] ?? SHIPPED_RATINGS.tier(label);
   }
 
   const ladder = $derived.by((): LadderSection[] => {
@@ -174,7 +220,11 @@
       const rows = keys
         .map((key, index) => ({ key, index, label: rewardLabel(key) }))
         .filter((row) => matches(row.label))
-        .map((row) => ({ ...row, owned: ownedRewardByName(row.label, db, ownership) }));
+        .map((row) => ({
+          ...row,
+          tier: ratedTier(row.label),
+          owned: ownedRewardFor({ name: row.label }, db, ownership),
+        }));
       return { group, keys, rows };
     });
   });
@@ -190,24 +240,58 @@
       .sort((a, b) => a.label.localeCompare(b.label)),
   );
 
-  const itemNames = $derived(
-    Object.values($itemDb)
-      .map((entry) => entry.name)
-      .filter((name): name is string => Boolean(name)),
-  );
+  /** Names bucketed by the first two letters of each of their words, so a
+   *  keystroke reads one bucket instead of walking the whole item database. */
+  type NameIndex = Map<string, string[]>;
 
-  function suggestNames(names: readonly string[]): string[] {
-    const needle = addName.trim().toLowerCase();
-    if (needle.length < 2) return [];
-    const picked: string[] = [];
+  const PREFIX = 2;
+  const NO_NAMES: NameIndex = new Map();
+  const WORD_BREAK = /[^\p{L}\p{N}]+/u;
+
+  function wordsOf(name: string): string[] {
+    return name.toLowerCase().split(WORD_BREAK).filter(Boolean);
+  }
+
+  function indexNames(names: Iterable<string>): NameIndex {
+    const index: NameIndex = new Map();
     for (const name of names) {
+      for (const word of wordsOf(name)) {
+        if (word.length < PREFIX) continue;
+        const bucket = index.get(word.slice(0, PREFIX));
+        if (!bucket) index.set(word.slice(0, PREFIX), [name]);
+        else if (bucket[bucket.length - 1] !== name) bucket.push(name);
+      }
+    }
+    return index;
+  }
+
+  function suggestNames(index: NameIndex): string[] {
+    if (addNeedle.length < PREFIX) return [];
+    const bucket = index.get(addNeedle.slice(0, PREFIX)) ?? [];
+    const picked: string[] = [];
+    for (const name of bucket) {
       if (picked.length >= SUGGESTION_LIMIT) break;
-      if (name.toLowerCase().includes(needle) && !picked.includes(name)) picked.push(name);
+      if (wordsOf(name).some((word) => word.startsWith(addNeedle))) picked.push(name);
     }
     return picked;
   }
 
-  const addSuggestions = $derived(suggestNames(itemNames));
+  // One build per item database rather than one per keystroke, and none at all
+  // for a tab that is not showing.
+  let rewardIndex: { db: unknown; index: NameIndex } | null = null;
+
+  function rewardNames(db: Record<string, { name?: string | undefined }>): NameIndex {
+    if (rewardIndex?.db !== db) {
+      const names: string[] = [];
+      for (const entry of Object.values(db)) if (entry.name) names.push(entry.name);
+      rewardIndex = { db, index: indexNames(names) };
+    }
+    return rewardIndex.index;
+  }
+
+  const addSuggestions = $derived(
+    tab === "value" ? suggestNames(rewardNames($itemDb)) : ([] as string[]),
+  );
 
   let dragKey = $state<string | null>(null);
   let dropAt = $state<{ group: LadderGroup; index: number } | null>(null);
@@ -263,17 +347,11 @@
     setRewardWorth(key, value as WorthGroup);
   }
 
-  const SHIPPED_RATINGS = createRatings();
-  const DEFAULT_TIER = "B";
-
-  function shippedTier(key: string): string {
-    const tier = SHIPPED_RATINGS.tier(key);
-    return tier && ACQUISITION_TIERS.includes(tier) ? tier : DEFAULT_TIER;
-  }
-
   /** Only masterable gear carries a tier, so the tab offers exactly what the
-   *  acquisition sweep counts as gear - never a resource, mod or skin. */
+   *  acquisition sweep counts as gear - never a resource, mod or skin. The three
+   *  sweeps run for the tab that shows them and no other. */
   const gearNames = $derived.by(() => {
+    if (tab !== "tier") return [] as string[];
     const db = $itemDb;
     const names = new SvelteSet<string>();
     for (const entry of listFrames(db)) names.add(entry.name);
@@ -284,7 +362,8 @@
 
   const gearByKey = $derived(new Map(gearNames.map((name) => [acquisitionKey(name), name])));
 
-  const tierSuggestions = $derived(suggestNames(gearNames));
+  const gearIndex = $derived(gearNames.length > 0 ? indexNames(gearNames) : NO_NAMES);
+  const tierSuggestions = $derived(suggestNames(gearIndex));
 
   const tierRows = $derived(
     Object.keys(prefs.acquisitionTiers)
@@ -294,6 +373,10 @@
         tier: prefs.acquisitionTiers[key] ?? shippedTier(key),
       }))
       .filter((row) => matches(row.label))
+      .map((row) => ({
+        ...row,
+        owned: ownedRewardFor({ name: row.label }, $itemDb, $componentOwnership),
+      }))
       .sort((a, b) => a.label.localeCompare(b.label)),
   );
 
@@ -323,11 +406,17 @@
     setNightwaveStock(key, typed === "" ? null : Number(typed));
   }
 
+  function clearTyping(): void {
+    clearTimeout(addTimer);
+    addName = "";
+    addNeedle = "";
+  }
+
   function addItem(): void {
     const name = addName.trim();
     if (!name) return;
     setRewardWorth(name, "want");
-    addName = "";
+    clearTyping();
   }
 
   /** A new row starts on what the app already thinks, so the player edits an
@@ -339,12 +428,18 @@
     const key = acquisitionKey(name);
     if (!gearByKey.has(key)) return;
     setAcquisitionTier(key, shippedTier(key));
-    addName = "";
+    clearTyping();
   }
 
+  /** A search only ever means the list under it, so it does not follow the
+   *  player to a tab listing something else. */
   function selectTab(next: Tab): void {
     tab = next;
     resetArmed = false;
+    clearTyping();
+    clearTimeout(searchTimer);
+    search = "";
+    needle = "";
     if (next === "value") unplacedKeys = unplacedNames();
   }
 
@@ -404,25 +499,57 @@
   </ThemedSelect>
 {/snippet}
 
-{#snippet nameCell(label: string, owned: ReturnType<typeof ownedRewardByName>)}
+{#snippet nameCell(label: string, tier: string | null, owned: OwnedReward | null)}
   <span class="flex min-w-0 items-center gap-2">
-    <span
-      class="w-[5ch] shrink-0 text-right font-display text-xs font-semibold tabular-nums {owned &&
-      owned.owned > 0
-        ? 'text-success'
-        : 'text-text-muted'}"
-      title={owned ? $tr("nextUp.tileInInventory", { count: String(owned.owned) }) : undefined}
-      >{owned ? `x${compactCount(owned.owned)}` : ""}</span
-    >
+    <!-- The slot is held whether or not the row carries a letter, so the names
+         below each other still line up. -->
+    <span class="flex w-[2ch] shrink-0 justify-center"><TierBadge {tier} /></span>
     <span class="min-w-0 truncate text-sm text-text-secondary">{label}</span>
-    {#if owned?.built !== undefined}
+    {#each tileCounts(owned) as count (count.kind)}
       <span
-        class="shrink-0 font-display text-xs font-semibold tabular-nums text-text-secondary"
-        title={$tr("nextUp.tileBuilt", { count: String(owned.built) })}
-        >x{compactCount(owned.built)}</span
+        class="{COUNT_CLASS} {count.tone}"
+        title={$tr(COUNT_TITLE[count.kind], { count: String(count.value) })}
       >
-    {/if}
+        <span class={MICRO}>{$tr(COUNT_LABEL[count.kind])}</span>
+        <span>x{compactCount(count.value)}</span>
+      </span>
+    {/each}
   </span>
+{/snippet}
+
+{#snippet addBox(datalistId: string, names: readonly string[], onAdd: () => void)}
+  <div class="mb-3 rounded-[var(--radius-md)] border border-border px-2 py-1.5">
+    {@render groupHeading($tr("nextUp.settingsAddHeading"))}
+    <div class="flex flex-wrap items-center gap-2">
+      <input
+        class="{TEXT_INPUT_CLASS} min-w-0 flex-1"
+        type="text"
+        list={datalistId}
+        value={addName}
+        oninput={(event) => typeAdd(event.currentTarget.value)}
+        placeholder={$tr("nextUp.settingsAddItem")}
+        aria-label={$tr("nextUp.settingsAddItem")}
+      />
+      <ThemedButton onClick={onAdd}>{$tr("nextUp.settingsAdd")}</ThemedButton>
+      <datalist id={datalistId}>
+        {#each names as name (name)}
+          <option value={name}></option>
+        {/each}
+      </datalist>
+    </div>
+  </div>
+{/snippet}
+
+{#snippet searchRow()}
+  <label class="mb-1 flex items-center gap-2 px-1.5">
+    <span class={FIELD_LABEL}>{$tr("nextUp.settingsSearchList")}</span>
+    <input
+      class="{TEXT_INPUT_CLASS} min-w-0 flex-1"
+      type="search"
+      value={search}
+      oninput={(event) => typeSearch(event.currentTarget.value)}
+    />
+  </label>
 {/snippet}
 
 {#snippet dropStrip(group: LadderGroup, index: number, label: string | null)}
@@ -462,29 +589,8 @@
     <div class="max-h-[52vh] min-h-[18rem] overflow-y-auto pr-1">
       {#if tab === "value"}
         <p class="m-0 mb-2 text-xs text-text-secondary">{$tr("nextUp.settingsValueHelp")}</p>
-        <div class="mb-2 flex flex-wrap items-center gap-2">
-          <input
-            class={TEXT_INPUT_CLASS}
-            type="search"
-            bind:value={filter}
-            placeholder={$tr("nextUp.settingsFilter")}
-            aria-label={$tr("nextUp.settingsFilter")}
-          />
-          <input
-            class={TEXT_INPUT_CLASS}
-            type="text"
-            list={DATALIST_ID}
-            bind:value={addName}
-            placeholder={$tr("nextUp.settingsAddItem")}
-            aria-label={$tr("nextUp.settingsAddItem")}
-          />
-          <ThemedButton onClick={addItem}>{$tr("nextUp.settingsAdd")}</ThemedButton>
-          <datalist id={DATALIST_ID}>
-            {#each addSuggestions as name (name)}
-              <option value={name}></option>
-            {/each}
-          </datalist>
-        </div>
+        {@render addBox(DATALIST_ID, addSuggestions, addItem)}
+        {@render searchRow()}
 
         <div class="mb-2 rounded-[var(--radius-md)] border border-border px-2 py-1.5">
           <div class="flex items-baseline justify-between gap-2">
@@ -532,7 +638,7 @@
             >
               <span class="flex min-w-0 items-center gap-1">
                 {@render dragHandle(row.key)}
-                {@render nameCell(row.label, row.owned)}
+                {@render nameCell(row.label, row.tier, row.owned)}
               </span>
               <div class="flex shrink-0 items-center gap-1">
                 <ThemedButton
@@ -632,37 +738,16 @@
           {/each}
         </div>
       {:else}
-        <p class="m-0 mb-2 text-xs text-text-secondary">{$tr("nextUp.settingsGearHelp")}</p>
-        <div class="mb-2 flex flex-wrap items-center gap-2">
-          <input
-            class={TEXT_INPUT_CLASS}
-            type="search"
-            bind:value={filter}
-            placeholder={$tr("nextUp.settingsFilter")}
-            aria-label={$tr("nextUp.settingsFilter")}
-          />
-          <input
-            class={TEXT_INPUT_CLASS}
-            type="text"
-            list={TIER_DATALIST_ID}
-            bind:value={addName}
-            placeholder={$tr("nextUp.settingsAddItem")}
-            aria-label={$tr("nextUp.settingsAddItem")}
-          />
-          <ThemedButton onClick={addTier}>{$tr("nextUp.settingsAdd")}</ThemedButton>
-          <datalist id={TIER_DATALIST_ID}>
-            {#each tierSuggestions as name (name)}
-              <option value={name}></option>
-            {/each}
-          </datalist>
-        </div>
+        <p class="m-0 mb-2 text-xs text-text-secondary">{$tr("nextUp.settingsTierHelp")}</p>
+        {@render addBox(TIER_DATALIST_ID, tierSuggestions, addTier)}
+        {@render searchRow()}
 
         {#if tierRows.length === 0}
-          <p class="m-0 text-sm text-text-muted">{$tr("nextUp.settingsNoGear")}</p>
+          <p class="m-0 text-sm text-text-muted">{$tr("nextUp.settingsNoTiers")}</p>
         {/if}
         {#each tierRows as row (row.key)}
           <div class={ROW_CLASS}>
-            <span class="min-w-0 truncate text-sm text-text-secondary">{row.label}</span>
+            {@render nameCell(row.label, row.tier, row.owned)}
             <div class="flex shrink-0 items-center gap-1">
               <ThemedSelect
                 bind:value={() => row.tier, (value) => setAcquisitionTier(row.key, String(value))}

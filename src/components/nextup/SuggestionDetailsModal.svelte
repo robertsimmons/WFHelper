@@ -514,7 +514,9 @@
 <ModalShell ariaLabel={suggestion.title} {onClose}>
   <div class="detail-panel p-4">
     <div class="mb-3 flex items-start justify-between gap-2">
-      <span class="flex min-w-0 items-center gap-2">
+      <!-- Inset by a tile's own padding, so the header letter and every tile
+           letter below it share one column. -->
+      <span class="flex min-w-0 items-center gap-2 pl-2">
         <!-- The same slot every tile below keeps, so the letters share a column
              and the title starts where the names do. -->
         <span class={TIER_SLOT}><TierBadge tier={headerTier} size="md" /></span>

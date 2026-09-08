@@ -119,36 +119,34 @@ describe("timeLeftMs", () => {
 });
 
 describe("bandFor", () => {
-  it("puts a closing useful-or-better ahead of a must-have with days left", () => {
-    expect(bandFor(orderable("Kuva", 5), NOW)).toBe(1);
-    expect(bandFor(orderable("Umbra Forma", 5), NOW)).toBe(1);
-    expect(bandFor(orderable("Umbra Forma", 100), NOW)).toBe(2);
+  it("bands a card by its worth group, whatever its window", () => {
+    expect(bandFor(orderable("Umbra Forma", 5))).toBe(1);
+    expect(bandFor(orderable("Umbra Forma", 100))).toBe(1);
+    expect(bandFor(orderable("Umbra Forma", null))).toBe(1);
   });
 
-  it("holds must-have and want in band two whatever their window", () => {
-    expect(bandFor(orderable("Umbra Forma", null), NOW)).toBe(2);
-    expect(bandFor(orderable("Forma", 20), NOW)).toBe(2);
-    expect(bandFor(orderable("Forma", 500), NOW)).toBe(2);
+  it("reads one band per ladder group, best first", () => {
+    expect(bandFor(orderable("Forma", 20))).toBe(2);
+    expect(bandFor(orderable("Kuva", 20))).toBe(3);
+    expect(bandFor(orderable("Focus Points", 1))).toBe(4);
+    expect(bandFor(orderable("Credits", 1))).toBe(5);
   });
 
-  it("promotes a useful thing inside the day, and no further", () => {
-    expect(bandFor(orderable("Kuva", 20), NOW)).toBe(3);
-    expect(bandFor(orderable("Kuva", 30), NOW)).toBe(4);
-  });
-
-  it("never promotes filler or junk on a closing window alone", () => {
-    expect(bandFor(orderable("Focus Points", 1), NOW)).toBe(4);
-    expect(bandFor(orderable("Credits", 1), NOW)).toBe(4);
+  it("never lets a closing window lift a lesser reward past a better one", () => {
+    // A want-band weapon rotation four hours from rerolling used to land in
+    // band one, above every Archon Shard task with days of its week left.
+    expect(bandFor(orderable("Forma", 4))).toBeGreaterThan(bandFor(orderable("Umbra Forma", 500)));
+    expect(bandFor(orderable("Kuva", 1))).toBeGreaterThan(bandFor(orderable("Forma", 500)));
   });
 });
 
 describe("orderingScore", () => {
   it("agrees with the bands, best first", () => {
-    expect(orderingScore(orderable("Kuva", 5), NOW)).toBeGreaterThan(
-      orderingScore(orderable("Umbra Forma", 100), NOW),
-    );
     expect(orderingScore(orderable("Umbra Forma", 100), NOW)).toBeGreaterThan(
-      orderingScore(orderable("Kuva", 20), NOW),
+      orderingScore(orderable("Forma", 5), NOW),
+    );
+    expect(orderingScore(orderable("Forma", 500), NOW)).toBeGreaterThan(
+      orderingScore(orderable("Kuva", 1), NOW),
     );
   });
 

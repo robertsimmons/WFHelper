@@ -364,7 +364,7 @@ describe("vendorsProvider", () => {
     const bird3 = draft(context(), "vendors:bird3");
     expect(bird3?.signals.value).toBeCloseTo(worth("Azure Archon Shard"), 10);
     expect(worthGroupOf(bird3!)).toBe("must");
-    expect(bandFor(bird3!, NOW)).toBe(2);
+    expect(bandFor(bird3!)).toBe(1);
   });
 
   it("promotes the shard Bird 3 is holding this week, not the top of the table", () => {

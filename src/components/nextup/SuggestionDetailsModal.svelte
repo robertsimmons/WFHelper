@@ -634,6 +634,7 @@
               {#each artPieces as piece, index (index)}
                 <ItemImage
                   src={piece.imageUrl}
+                  fallbackSrc={piece.fallbackUrl}
                   alt={piece.name}
                   cls="absolute inset-0 m-auto max-h-20 max-w-20 {index === 0
                     ? '-translate-x-3 -translate-y-3'
@@ -643,6 +644,7 @@
             {:else}
               <ItemImage
                 src={artPieces[0].imageUrl}
+                fallbackSrc={artPieces[0].fallbackUrl}
                 alt={artPieces[0].name}
                 cls="max-h-28 max-w-28"
               />

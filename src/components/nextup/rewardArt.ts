@@ -6,6 +6,8 @@ import type { SuggestionPoolRow, SuggestionReward } from "../../types/suggest.js
 export interface ArtPiece {
   name: string;
   imageUrl: string;
+  /** Second chance for a mirrored icon that 404s, where the provider held one. */
+  fallbackUrl: string | null;
 }
 
 /** DE prefixes its calendar packs; a card about the Calendar says it twice. */
@@ -114,6 +116,10 @@ export interface RewardArt {
  * the database resolves to the same icon are one frame, not two: a rotation
  * that repeats a picture reads as stuck, and two identical frames in a pair
  * read as that one item rather than as a choice between kinds.
+ *
+ * The provider's own art is the last resort behind every itemDb join, so a
+ * member the database cannot place still gets a picture rather than dropping
+ * out of the family.
  */
 function resolve(
   itemDb: Record<string, ItemDbEntry>,
@@ -123,9 +129,15 @@ function resolve(
   const out: ArtPiece[] = [];
   for (const member of members) {
     const hit = resolveDropArt(itemDb, member.name, member.uniqueName);
-    if (!hit?.imageUrl || seen.has(hit.imageUrl)) continue;
-    seen.add(hit.imageUrl);
-    out.push({ name: plainName(hit.name), imageUrl: hit.imageUrl });
+    const supplied = member.imageUrl ?? null;
+    const imageUrl = hit?.imageUrl || supplied;
+    if (!imageUrl || seen.has(imageUrl)) continue;
+    seen.add(imageUrl);
+    out.push({
+      name: plainName(hit?.name ?? member.name),
+      imageUrl,
+      fallbackUrl: supplied === imageUrl ? null : supplied,
+    });
   }
   return out;
 }

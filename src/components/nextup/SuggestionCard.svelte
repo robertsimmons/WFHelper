@@ -341,7 +341,12 @@
                     ? 'z-[1] opacity-100'
                     : 'opacity-0'}"
               >
-                <ItemImage src={piece.imageUrl} alt={piece.name} cls="max-h-full max-w-full" />
+                <ItemImage
+                  src={piece.imageUrl}
+                  fallbackSrc={piece.fallbackUrl}
+                  alt={piece.name}
+                  cls="max-h-full max-w-full"
+                />
               </span>
             {/each}
           {:else}
@@ -350,6 +355,7 @@
             {#each artPieces as piece, index (index)}
               <ItemImage
                 src={piece.imageUrl}
+                fallbackSrc={piece.fallbackUrl}
                 alt={piece.name}
                 cls={artPieces.length > 1
                   ? index === 0

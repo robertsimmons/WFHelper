@@ -9,11 +9,11 @@ interface BannerArt {
   /** Overrides the side `bannerAside` infers, for art whose subject does not
    *  sit on the edge the anchor pulls towards. */
   aside?: "start" | "end" | "center";
-  /** Px of picture hung off one edge and cropped, which is the only horizontal
-   *  travel there is: the art is a hair narrower than the band it covers, so
-   *  `position` cannot move it sideways at all. Positive keeps the left edge and
-   *  slides the subject right, negative keeps the right edge; the band's height
-   *  is fixed, so the picture loses top and bottom in exchange. */
+  /** Px of picture hung off one edge and cropped. The art is a hair narrower
+   *  than the band it covers, so `position` alone can move nothing: widening it
+   *  slides the subject sideways (positive keeps the left edge, negative the
+   *  right) and overflows the fixed height, which is what gives `position`'s y
+   *  something to pan over. */
   widen?: number;
 }
 
@@ -82,9 +82,13 @@ const TASK_ART: Record<string, BannerArt> = {
   bird3: banner(new URL("../../../assets/nextup/bird3.webp", import.meta.url).href, "100% 50%"),
   simaris: banner(new URL("../../../assets/nextup/simaris.webp", import.meta.url).href, "50% 50%"),
   sortie: banner(new URL("../../../assets/nextup/sortie.webp", import.meta.url).href, "0% 50%"),
+  // Closed in on the lit console along the bottom, which is this banner's
+  // subject the way a vendor's portrait is theirs.
   syndicateStanding: banner(
     new URL("../../../assets/nextup/syndicate-standing.webp", import.meta.url).href,
-    "100% 50%",
+    "50% 100%",
+    undefined,
+    110,
   ),
   steelPathHonors: banner(
     new URL("../../../assets/nextup/steel-path-honors.webp", import.meta.url).href,

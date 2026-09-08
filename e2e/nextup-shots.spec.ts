@@ -12,16 +12,13 @@ import {
   writeHarnessInventory,
   type ElectronTestHarness,
 } from "./electronTestHarness";
+import { buildInventory } from "./nextupFixture";
 
 const OUT_DIR = process.env.WFH_SHOTS_OUT ?? "C:/Users/rober/.claude/robotron/scratch/nextup-shots";
 
 /** Wide enough for a full row of the 200px cards the narrow sections draw, and
  *  the height `grid.ts` sizes a page for. */
 const VIEWPORT = { width: 1600, height: 1000 };
-
-/** Matches `nextup-perf.spec.ts`, so the sections carry the same synthetic account. */
-const OWNED_PERCENT = 70;
-const PART_RANKED_PERCENT = 15;
 
 const SETTINGS_TABS = ["Value", "Mission types", "Activities", "Nightwave acts", "Tier"] as const;
 
@@ -67,76 +64,6 @@ async function shootElement(page: Page, target: Locator, name: string): Promise<
   written.push(file);
 }
 
-interface OwnedRow {
-  ItemType: string;
-  ItemCount?: number;
-}
-
-type SyntheticInventory = Record<string, OwnedRow[]> & {
-  XPInfo: Array<{ ItemType: string; XP: number }>;
-};
-
-/** The same deterministic slice of the shipped item database the perf spec owns,
- *  plus a relic shelf, so relics has stock whenever a fissure is up. */
-async function buildInventory(page: Page): Promise<SyntheticInventory> {
-  return page.evaluate(
-    async (arg) => {
-      const db = (await window.api.getItemDatabase()) as unknown as Record<
-        string,
-        {
-          name?: string;
-          masterable?: boolean;
-          exalted?: boolean;
-          isBuildComponent?: boolean;
-          productCategory?: string;
-        }
-      >;
-
-      const collections = [
-        "Suits",
-        "LongGuns",
-        "Pistols",
-        "Melee",
-        "SpaceGuns",
-        "SpaceMelee",
-        "SentinelWeapons",
-        "Sentinels",
-      ];
-      const excluded = /\/(?:Recipes|StoreItems|QuestVersions|PrototypeVersions|Test)\//i;
-
-      const bucket = (text: string): number => {
-        let hash = 0x811c9dc5;
-        for (let index = 0; index < text.length; index += 1) {
-          hash ^= text.charCodeAt(index);
-          hash = Math.imul(hash, 0x01000193) >>> 0;
-        }
-        return hash % 100;
-      };
-
-      const inventory: Record<string, unknown[]> = { XPInfo: [], MiscItems: [] };
-      for (const key of collections) inventory[key] = [];
-      const xp = inventory.XPInfo as Array<{ ItemType: string; XP: number }>;
-      const misc = inventory.MiscItems as Array<{ ItemType: string; ItemCount: number }>;
-
-      for (const [uniqueName, entry] of Object.entries(db)) {
-        if (/VoidProjection/i.test(uniqueName)) misc.push({ ItemType: uniqueName, ItemCount: 3 });
-        if (!entry?.name || entry.masterable !== true) continue;
-        if (entry.exalted === true || entry.isBuildComponent === true) continue;
-        const category = String(entry.productCategory ?? "");
-        if (!collections.includes(category)) continue;
-        if (excluded.test(uniqueName)) continue;
-        const slot = bucket(uniqueName);
-        if (slot >= arg.ownedPercent) continue;
-        (inventory[category] as unknown[]).push({ ItemType: uniqueName });
-        xp.push({ ItemType: uniqueName, XP: slot < arg.partRankedPercent ? 40_000 : 900_000 });
-      }
-
-      return inventory as never;
-    },
-    { ownedPercent: OWNED_PERCENT, partRankedPercent: PART_RANKED_PERCENT },
-  );
-}
-
 async function closeModal(page: Page): Promise<void> {
   const dialog = page.locator('[role="dialog"]');
   await page.keyboard.press("Escape");
@@ -161,8 +88,17 @@ async function captureDetails(page: Page, name: string, card: Locator): Promise<
     missing.push(`${name}: card clicked but no details modal opened`);
     return;
   }
+  // A window nothing is looking at never advances a CSS animation, so the
+  // panel's fade-in sits at opacity 0 in every capture until it is finished by
+  // hand: the shots came back as a dimmed feed with no modal on it.
+  await panel.first().evaluate((node) => {
+    for (const animation of node.getAnimations()) animation.finish();
+  });
   await page.waitForTimeout(500);
-  await shootElement(page, panel.first(), name);
+  // The panel is fixed-position, so scrollIntoView cannot bring it anywhere and
+  // a computed crop lands on the feed behind the backdrop instead. The whole
+  // viewport is the modal plus a dimmed border, which reviews fine.
+  await shootPage(page, name);
   console.log(`  ${name}: ${title}`);
   await closeModal(page);
 }
@@ -228,7 +164,9 @@ test("Next Up screenshots: every section, a details modal per card shape and eve
     const page = harness.page;
     await setLayoutViewport(page, VIEWPORT.width, VIEWPORT.height);
 
-    writeHarnessInventory(harness, await buildInventory(page));
+    const fixture = await buildInventory(page);
+    console.log(`  fixture: ${fixture.owned} of ${fixture.masterable} masterable owned`);
+    writeHarnessInventory(harness, fixture.inventory);
     await page.reload();
     await expect(page.locator("#sidebar")).toBeVisible({ timeout: 90_000 });
     await setLayoutViewport(page, VIEWPORT.width, VIEWPORT.height);

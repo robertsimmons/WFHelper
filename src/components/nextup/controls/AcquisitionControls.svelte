@@ -46,9 +46,9 @@
   }
 </script>
 
-<!-- Eight boxes outgrow the header row. Claiming the free space and wrapping
-     inside it keeps the section's collapse button beside the title. -->
-<div class="flex min-w-0 flex-1 flex-wrap items-center justify-end gap-x-3 gap-y-1.5">
+<!-- Eight boxes outgrow the header row, so this group takes a line of its own
+     under the title rather than shrinking below its content and spilling out. -->
+<div class="flex min-w-0 flex-auto flex-wrap items-center justify-end gap-x-3 gap-y-1.5">
   <div class="flex flex-wrap items-center justify-end gap-x-2.5 gap-y-1">
     {#each ACQUISITION_INCLUDES as kind (kind)}
       <label

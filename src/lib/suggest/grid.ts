@@ -28,9 +28,8 @@ export function gridTemplateFor(id: SuggestionSectionId): string {
   return `repeat(auto-fill, minmax(${cardMinWidthFor(id)}px, 1fr))`;
 }
 
-/** One row keeps all four sections and their pagers inside a 1000px window. A
- *  deeper page would also have to reserve the rows a short section cannot fill. */
-const GRID_ROWS = 1;
+/** Never a third row: a page the reader has to scroll to finish is not a page. */
+const MAX_GRID_ROWS = 2;
 
 /** Mirrors `gridTemplateFor`, so a page holds exactly the tracks the browser
  *  laid out. */
@@ -39,8 +38,22 @@ function gridColumns(width: number, minWidth: number): number {
   return Math.max(1, Math.floor((width + CARD_GAP) / (minWidth + CARD_GAP)));
 }
 
-export function pageSizeFor(width: number, id: SuggestionSectionId): number {
-  return gridColumns(width, cardMinWidthFor(id)) * GRID_ROWS;
+/** An unmeasured height reads as one row, which is what fits everywhere. */
+function gridRows(height: number): number {
+  if (!Number.isFinite(height) || height <= 0) return 1;
+  const fit = Math.floor((height + CARD_GAP) / (CARD_HEIGHT + CARD_GAP));
+  return Math.min(MAX_GRID_ROWS, Math.max(1, fit));
+}
+
+/** The px a page's rows occupy, reserved so a short last page does not pull the
+ *  sections below it up the column. */
+export function gridMinHeightFor(height: number): number {
+  const rows = gridRows(height);
+  return rows * CARD_HEIGHT + (rows - 1) * CARD_GAP;
+}
+
+export function pageSizeFor(width: number, id: SuggestionSectionId, height = 0): number {
+  return gridColumns(width, cardMinWidthFor(id)) * gridRows(height);
 }
 
 export function pageCountFor(total: number, pageSize: number): number {

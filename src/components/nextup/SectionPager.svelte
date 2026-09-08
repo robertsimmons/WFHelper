@@ -5,10 +5,12 @@
     id: string;
     page: number;
     pageCount: number;
+    /** A collapsed section still draws its pager, so the title never shifts. */
+    disabled?: boolean;
     onPage: (page: number) => void;
   }
 
-  const { id, page, pageCount, onPage }: Props = $props();
+  const { id, page, pageCount, disabled = false, onPage }: Props = $props();
 
   const ARROW =
     "flex h-6 w-6 shrink-0 cursor-pointer items-center justify-center rounded border " +
@@ -28,7 +30,7 @@
   <button
     class={ARROW}
     data-section-page-prev={id}
-    disabled={page <= 0}
+    disabled={disabled || page <= 0}
     title={$tr("nextUp.pagePrevious")}
     aria-label={$tr("nextUp.pagePrevious")}
     onclick={() => onPage(page - 1)}>&lsaquo;</button
@@ -36,7 +38,7 @@
   <button
     class={ARROW}
     data-section-page-next={id}
-    disabled={page >= pageCount - 1}
+    disabled={disabled || page >= pageCount - 1}
     title={$tr("nextUp.pageNext")}
     aria-label={$tr("nextUp.pageNext")}
     onclick={() => onPage(page + 1)}>&rsaquo;</button

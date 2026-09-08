@@ -2,7 +2,6 @@ import { derived, get, writable, type Readable } from "svelte/store";
 
 import { normalizeType } from "../lib/suggest/missionTypes.js";
 import {
-  ACQUISITION_EFFORTS,
   ACQUISITION_TIERS,
   ACTIVITY_PREFS,
   DEFAULT_NIGHTWAVE_ART,
@@ -19,7 +18,6 @@ import {
   parseNightwaveStock,
   parseOptions,
   parseOverrides,
-  parseWeights,
   type MissionOverride,
   type NightwaveArt,
   type WorthOverride,
@@ -43,9 +41,7 @@ const ORDER_KEY = "next-up-reward-order";
 const MISSION_KEY = "next-up-mission-types";
 const ACTIVITY_KEY = "next-up-activities";
 const ACQ_TIER_KEY = "next-up-acquisition-tiers";
-const ACQ_EFFORT_KEY = "next-up-acquisition-difficulty";
 const OPTIONS_KEY = "next-up-options";
-const WEIGHTS_KEY = "next-up-weights";
 const NIGHTWAVE_ART_KEY = "next-up-nightwave-art";
 const NIGHTWAVE_STOCK_KEY = "next-up-nightwave-stock";
 const COLLAPSED_KEY = "next-up-collapsed-sections";
@@ -53,6 +49,40 @@ const COLLAPSED_KEY = "next-up-collapsed-sections";
 const MISSION_VALUES: readonly MissionOverride[] = [...MISSION_OPINIONS, UNRATED];
 
 const DEFAULTS = defaultPreferences();
+
+/** The key each field is stored under, so a mutation writes the one key it
+ *  changed rather than rewriting all of them. */
+const STORAGE_KEYS: Readonly<Record<keyof SuggestionOverrides, string>> = {
+  rewards: REWARD_KEY,
+  rewardOrder: ORDER_KEY,
+  missionTypes: MISSION_KEY,
+  activities: ACTIVITY_KEY,
+  acquisitionTiers: ACQ_TIER_KEY,
+  nightwaveStock: NIGHTWAVE_STOCK_KEY,
+  options: OPTIONS_KEY,
+};
+
+/** The merges downstream key on a field's identity, and the acquisition sweep
+ *  walks the whole item database when its own key moves, so every field with
+ *  nothing in it shares one object: a reset only changes the identity of a
+ *  field that actually held an override. */
+const NONE: Readonly<Record<string, never>> = Object.freeze({});
+
+function stable<T extends object>(stored: T): T {
+  return Object.keys(stored).length === 0 ? (NONE as T) : stored;
+}
+
+function noOverrides(): SuggestionOverrides {
+  return {
+    rewards: NONE,
+    rewardOrder: NONE,
+    missionTypes: NONE,
+    activities: NONE,
+    acquisitionTiers: NONE,
+    nightwaveStock: NONE,
+    options: NONE,
+  };
+}
 
 /** Overrides stored on the four-tier scale the worth ladder replaced are read
  *  as the group they became, so a player's own placements survive the change. */
@@ -69,15 +99,13 @@ function load(): SuggestionOverrides {
     parseOptions(readStorage(OPTIONS_KEY)),
   );
   return {
-    rewards: loadWorth(),
-    rewardOrder: parseLadderOrder(readStorage(ORDER_KEY)),
-    missionTypes: parseOverrides(readStorage(MISSION_KEY), MISSION_VALUES),
-    activities: migrated.activities,
-    acquisitionTiers: parseOverrides(readStorage(ACQ_TIER_KEY), ACQUISITION_TIERS),
-    acquisitionEffort: parseOverrides(readStorage(ACQ_EFFORT_KEY), ACQUISITION_EFFORTS),
-    nightwaveStock: parseNightwaveStock(readStorage(NIGHTWAVE_STOCK_KEY)),
-    options: migrated.options,
-    weights: parseWeights(readStorage(WEIGHTS_KEY)),
+    rewards: stable(loadWorth()),
+    rewardOrder: stable(parseLadderOrder(readStorage(ORDER_KEY))),
+    missionTypes: stable(parseOverrides(readStorage(MISSION_KEY), MISSION_VALUES)),
+    activities: stable(migrated.activities),
+    acquisitionTiers: stable(parseOverrides(readStorage(ACQ_TIER_KEY), ACQUISITION_TIERS)),
+    nightwaveStock: stable(parseNightwaveStock(readStorage(NIGHTWAVE_STOCK_KEY))),
+    options: stable(migrated.options),
   };
 }
 
@@ -99,16 +127,14 @@ export const suggestionPreferences: Readable<SuggestionPreferences> = derived(
 /** Positions reach the scorer through the ladder module rather than through
  *  `SuggestionPreferences`, so they are published before the store fires. */
 function commit(next: SuggestionOverrides): void {
+  const previous = get(overrides);
   setLadderPositions(next.rewardOrder);
   overrides.set(next);
-  writeStorage(REWARD_KEY, JSON.stringify(next.rewards));
-  writeStorage(ORDER_KEY, JSON.stringify(next.rewardOrder));
-  writeStorage(MISSION_KEY, JSON.stringify(next.missionTypes));
-  writeStorage(ACTIVITY_KEY, JSON.stringify(next.activities));
-  writeStorage(ACQ_TIER_KEY, JSON.stringify(next.acquisitionTiers));
-  writeStorage(ACQ_EFFORT_KEY, JSON.stringify(next.acquisitionEffort));
-  writeStorage(NIGHTWAVE_STOCK_KEY, JSON.stringify(next.nightwaveStock));
-  writeStorage(OPTIONS_KEY, JSON.stringify(next.options));
+  for (const field of Object.keys(STORAGE_KEYS) as (keyof SuggestionOverrides)[]) {
+    if (previous[field] !== next[field]) {
+      writeStorage(STORAGE_KEYS[field], JSON.stringify(next[field]));
+    }
+  }
 }
 
 function withEntry<T>(map: Record<string, T>, key: string, value: T | null): Record<string, T> {
@@ -178,14 +204,6 @@ export function setAcquisitionTier(name: string, tier: string | null): void {
   commit({
     ...current,
     acquisitionTiers: withEntry(current.acquisitionTiers, acquisitionKey(name), tier),
-  });
-}
-
-export function setAcquisitionEffort(name: string, difficulty: string | null): void {
-  const current = get(overrides);
-  commit({
-    ...current,
-    acquisitionEffort: withEntry(current.acquisitionEffort, acquisitionKey(name), difficulty),
   });
 }
 
@@ -267,17 +285,8 @@ export function toggleSectionCollapsed(id: SuggestionSectionId): void {
   writeStorage(COLLAPSED_KEY, JSON.stringify(next));
 }
 
+/** The art goes first so the feed rebuilds behind one store write rather than two. */
 export function resetSuggestionPreferences(): void {
-  commit({
-    rewards: {},
-    rewardOrder: {},
-    missionTypes: {},
-    activities: {},
-    acquisitionTiers: {},
-    acquisitionEffort: {},
-    nightwaveStock: {},
-    options: {},
-    weights: {},
-  });
   setNightwaveArt(DEFAULT_NIGHTWAVE_ART);
+  commit(noOverrides());
 }

@@ -1,11 +1,10 @@
 import missionData from "../../data/suggest/missionTypes.json";
-import { EFFORT_WORDS } from "./acquisition/ratings.js";
 import { TIERS } from "./acquisition/tiers.js";
 import { ACQUISITION_INCLUDES } from "./acquisition/kinds.js";
 import { ACQUISITION_SORTS, DEFAULT_ACQUISITION_SORT } from "./acquisition/sort.js";
 import { normalizeType } from "./missionTypes.js";
 import { legacyWorth } from "./rewards.js";
-import { DEFAULT_WEIGHTS, WEIGHT_MAX } from "./score.js";
+import { DEFAULT_WEIGHTS } from "./score.js";
 import {
   FOOT_POSITION,
   LADDER_DISPLAY_NAMES,
@@ -21,7 +20,6 @@ import {
   RELIC_ERAS,
   RELIC_GOALS,
   RELIC_SORTS,
-  SCORE_WEIGHT_KEYS,
   TASK_KINDS,
   WORTH_GROUPS,
 } from "../../types/suggest.js";
@@ -34,7 +32,6 @@ import type {
   RelicGoal,
   RelicSort,
   RewardWorth,
-  ScoreWeights,
   SuggestionOptions,
   SuggestionPreferences,
   WorthGroup,
@@ -53,7 +50,6 @@ export const DEFAULT_NIGHTWAVE_ART: NightwaveArt = "amir";
 
 /** What the player may overrule a shipped acquisition rating with. */
 export const ACQUISITION_TIERS: readonly string[] = TIERS;
-export const ACQUISITION_EFFORTS: readonly string[] = EFFORT_WORDS;
 
 export { nameKey as acquisitionKey } from "./acquisition/curated.js";
 
@@ -98,10 +94,8 @@ export interface SuggestionOverrides {
   missionTypes: Record<string, MissionOverride>;
   activities: Record<string, ActivityPref>;
   acquisitionTiers: Record<string, string>;
-  acquisitionEffort: Record<string, string>;
   nightwaveStock: Record<string, number>;
   options: Partial<SuggestionOptions>;
-  weights: Partial<ScoreWeights>;
 }
 
 /** The Cred shop rotation is never published, so only the always-available
@@ -226,12 +220,6 @@ const mergeTiers = perField(
     ...overrides,
   }),
 );
-const mergeEffort = perField(
-  (defaults: Record<string, string>, overrides: Record<string, string>) => ({
-    ...defaults,
-    ...overrides,
-  }),
-);
 const mergeStock = perField(
   (defaults: Record<string, number>, overrides: Record<string, number>) => ({
     ...defaults,
@@ -244,29 +232,34 @@ const mergeOptions = perField(
     ...overrides,
   }),
 );
-const mergeWeights = perField(
-  (defaults: ScoreWeights, overrides: Partial<ScoreWeights>): ScoreWeights => ({
-    ...defaults,
-    ...overrides,
-  }),
-);
+/** The feed's own memo keys on this object by identity, so a merge whose every
+ *  field came back unchanged has to hand back the object it handed back last
+ *  time; a fresh wrapper misses that memo and rebuilds the whole feed. */
+let merged: SuggestionPreferences | null = null;
+
+function sameFields(a: SuggestionPreferences, b: SuggestionPreferences): boolean {
+  return (Object.keys(b) as (keyof SuggestionPreferences)[]).every((key) => a[key] === b[key]);
+}
 
 export function mergePreferences(
   defaults: SuggestionPreferences,
   overrides: SuggestionOverrides,
 ): SuggestionPreferences {
   const worth = mergeWorth(defaults.worth, overrides.rewards);
-  return {
+  const next: SuggestionPreferences = {
     worth,
     rewards: tiersFor(worth),
     missionTypes: mergeMissions(defaults.missionTypes, overrides.missionTypes),
     activities: mergeActivities(defaults.activities, overrides.activities),
     acquisitionTiers: mergeTiers(defaults.acquisitionTiers, overrides.acquisitionTiers),
-    acquisitionEffort: mergeEffort(defaults.acquisitionEffort, overrides.acquisitionEffort),
+    acquisitionEffort: defaults.acquisitionEffort,
     nightwaveStock: mergeStock(defaults.nightwaveStock, overrides.nightwaveStock),
     options: mergeOptions(defaults.options, overrides.options),
-    weights: mergeWeights(defaults.weights, overrides.weights),
+    weights: defaults.weights,
   };
+  if (merged && sameFields(merged, next)) return merged;
+  merged = next;
+  return next;
 }
 
 /** Anything the stored JSON does not spell exactly right is dropped, not guessed. */
@@ -399,19 +392,4 @@ export function parseNightwaveStock(raw: string | null): Record<string, number> 
     stock[name] = value;
   }
   return stock;
-}
-
-/** A stored weight outside the slider's range is pulled back into it, so a
- *  hand-edited file cannot make one signal the only one that counts. */
-export function parseWeights(raw: string | null): Partial<ScoreWeights> {
-  const parsed = parseJsonObject(raw);
-  if (!parsed) return {};
-  const weights: Partial<ScoreWeights> = {};
-  for (const key of SCORE_WEIGHT_KEYS) {
-    const value = parsed[key];
-    if (typeof value === "number" && Number.isFinite(value)) {
-      weights[key] = Math.min(WEIGHT_MAX, Math.max(0, value));
-    }
-  }
-  return weights;
 }

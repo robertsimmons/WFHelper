@@ -26,10 +26,8 @@ function overrides(partial: Partial<SuggestionOverrides> = {}): SuggestionOverri
     missionTypes: {},
     activities: {},
     acquisitionTiers: {},
-    acquisitionEffort: {},
     nightwaveStock: {},
     options: {},
-    weights: {},
     ...partial,
   };
 }

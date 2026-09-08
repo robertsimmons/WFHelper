@@ -1,10 +1,9 @@
 import { describe, expect, it } from "vitest";
 
-import { defaultPreferences, parseWeights } from "../../../../src/lib/suggest/preferences.js";
+import { defaultPreferences } from "../../../../src/lib/suggest/preferences.js";
 import { rewardValue } from "../../../../src/lib/suggest/rewards.js";
 import {
   DEFAULT_WEIGHTS,
-  WEIGHT_MAX,
   bandFor,
   clamp01,
   effectiveWorth,
@@ -173,19 +172,5 @@ describe("orderingScore", () => {
 describe("DEFAULT_WEIGHTS", () => {
   it("is what the preferences ship", () => {
     expect(defaultPreferences().weights).toEqual(DEFAULT_WEIGHTS);
-  });
-});
-
-describe("parseWeights", () => {
-  it("keeps only finite numbers, pulled back into the slider's range", () => {
-    const raw = JSON.stringify({ value: 1.5, urgency: -4, effort: "0.2", nonsense: 1 });
-    expect(parseWeights(raw)).toEqual({ value: 1.5, urgency: 0 });
-    expect(parseWeights(JSON.stringify({ value: 99 }))).toEqual({ value: WEIGHT_MAX });
-  });
-
-  it("falls back to nothing for anything unusable", () => {
-    expect(parseWeights(null)).toEqual({});
-    expect(parseWeights("not json")).toEqual({});
-    expect(parseWeights(JSON.stringify({ value: Number.NaN }))).toEqual({});
   });
 });

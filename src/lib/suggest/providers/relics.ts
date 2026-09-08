@@ -39,7 +39,7 @@ const REFINEMENT_ORDER: Record<RelicGoal, readonly RelicQuality[]> = {
 /** A run worth this much is as good as this feed gets. */
 const VALUE_REFERENCE: Record<RelicGoal, number> = { platinum: 40, ducats: 60 };
 
-/** An unpriced relic is still worth cracking; it is just not worth ranking. */
+/** An unpriced relic is still worth cracking; its value cannot order it. */
 const BASE_VALUE = 0.4;
 
 const BASE_EFFORT = 0.25;
@@ -50,8 +50,9 @@ const STEEL_PATH_EFFORT = 0.1;
 /** Fissures rotate all day, so a closing one is a nudge, not a deadline. */
 const FISSURE_URGENCY = 0.5;
 
-/** One card per relic, and the feed is a shortlist. */
-const SUGGESTION_LIMIT = 3;
+/** Deep enough that the pager runs out only when the shelf does. Unmeasured:
+ *  a lift needs a perf run behind it. */
+const SUGGESTION_LIMIT = 40;
 
 /** The details view lays the drops out as one wrapping line. */
 const POOL_LIMIT = 8;
@@ -114,7 +115,7 @@ function rewardValue(reward: RelicReward, goal: RelicGoal): number | null {
   return goal === "ducats" ? normalizeDucats(reward.ducats) : platPrice(reward);
 }
 
-/** Solo EV of one crack, on the same maths the Relics tab ranks by. */
+/** Solo EV of one crack, on the same maths the Relics tab orders by. */
 function expectedValue(rewards: RelicReward[], goal: RelicGoal): number | null {
   const values = rewards.map((reward) => rewardValue(reward, goal));
   if (!values.some((value) => value != null)) return null;
@@ -201,13 +202,13 @@ function inEras(eras: readonly RelicEra[], tier: string): boolean {
   return eras.some((era) => matches(era, wanted));
 }
 
-/** Lower sorts earlier under every mode, so the arrow reads the same way in all
- *  three; a payout is negated because more of it is better. Null is unpriced,
- *  and sorts last. */
+/** Lower sorts earlier, as `compareAcquisition` orders the section beside this
+ *  one: a payout is itself, so ascending really is the cheap end first, while a
+ *  recommendation is a position, so ascending is the best of them. Null is
+ *  unpriced, and sorts last whichever way the arrow points. */
 function sortValue(row: Candidate, sort: RelicSort): number | null {
   if (sort === "recommended") return -row.value;
-  const ev = expectedValue(row.held.rewards, sort);
-  return ev == null ? null : -ev;
+  return expectedValue(row.held.rewards, sort);
 }
 
 function compareRelics(

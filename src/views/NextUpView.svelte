@@ -60,9 +60,9 @@
   }
 
   /** A section whose controls choose the order keeps the one its provider chose;
-   *  the rest rank by score, with a turned-down suggestion banded below the rest
-   *  exactly as the engine banded it before the sections were split up. */
-  function rank(a: Suggestion, b: Suggestion): number {
+   *  the rest read the band, worth and time left the engine already folded into
+   *  the score, turned-down suggestions below the rest. */
+  function byScore(a: Suggestion, b: Suggestion): number {
     if (a.order != null && b.order != null) return a.order - b.order;
     return (
       Number(a.deprioritized === true) - Number(b.deprioritized === true) ||
@@ -74,7 +74,7 @@
   function suggestionsFor(section: Section): Suggestion[] {
     const categories =
       section.id === "tasks" ? section.categories.filter(shows) : section.categories;
-    return categories.flatMap((category) => feed.sections[category]).sort(rank);
+    return categories.flatMap((category) => feed.sections[category]).sort(byScore);
   }
 
   const shown = $derived(

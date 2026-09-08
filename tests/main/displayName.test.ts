@@ -16,8 +16,17 @@ describe("sanitizeDisplayName", () => {
     expect(sanitizeDisplayName(null)).toBe("");
   });
 
-  it("does not touch a mid-string angle bracket", () => {
+  it("does not touch a mid-string angle bracket that is prose, not markup", () => {
     expect(sanitizeDisplayName("Foo <bar> Baz")).toBe("Foo <bar> Baz");
+  });
+
+  it("strips a mid-string game token, which the 1999 decorations are full of", () => {
+    expect(sanitizeDisplayName("Kinemantik<RETRO_TM> A/V Receiver")).toBe(
+      "Kinemantik A/V Receiver",
+    );
+    expect(sanitizeDisplayName("KineBasik<RETRO_TM> Gas Can (Large)")).toBe(
+      "KineBasik Gas Can (Large)",
+    );
   });
 
   it("keeps a bare marker rather than returning a blank name", () => {

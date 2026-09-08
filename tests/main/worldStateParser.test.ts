@@ -531,6 +531,29 @@ describe("worldStateParser sortie, archon hunt, nightwave and alerts", () => {
     });
   });
 
+  it("names the element a nightwave act's damage-type icon stands for", () => {
+    const parsed = parseDailies({
+      SeasonInfo: {
+        ...window,
+        Season: 18,
+        Phase: 0,
+        ActiveChallenges: [
+          {
+            _id: { $oid: "poison1" },
+            Daily: true,
+            ...window,
+            Challenge: "/Lotus/Types/Challenges/Seasons/Daily/SeasonDailyKillEnemiesWithPoison",
+          },
+        ],
+      },
+    });
+    expect(parsed.nightwave?.challenges[0]).toMatchObject({
+      title: "Poisoner",
+      // DE ships "Kill |COUNT| Enemies with <DT_POISON>Toxin Damage."
+      description: "Kill 150 Enemies with Toxin Damage.",
+    });
+  });
+
   it("resolves alerts and drops expired ones", () => {
     const parsed = parseDailies({
       Alerts: [

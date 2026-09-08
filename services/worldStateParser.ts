@@ -1,6 +1,7 @@
 import { withScope } from "./logger";
 import { normalizeErrorMessage } from "../config/shared/errors";
 import { fetchWithTimeout } from "../config/shared/fetchWithTimeout";
+import { gameTextToDisplay, stripGameTokens } from "../config/shared/gameMarkup";
 import { MISSION_TYPE_LABELS } from "../config/shared/missionTypes";
 import type {
   AlertRaw,
@@ -174,29 +175,20 @@ function getItemLookup(): Record<
   return _itemLookup;
 }
 
-/** Dict values embed icon tags such as "<SHARD_BLUE_SIMPLE>" that have no glyph
- *  outside the game, so display names drop them. */
-function stripDictTags(value: string): string {
-  return value
-    .replace(/<[A-Z0-9_]+>/g, " ")
-    .replace(/\s{2,}/g, " ")
-    .trim();
-}
-
 /** Resolve a Lotus item path (e.g. /Lotus/Types/Items/...) to a display name */
 function resolveItemName(itemPath: string): string {
   const items = getItemLookup();
   const entry = items[itemPath];
   if (entry?.name) {
     const resolved = resolveDictValue(entry.name);
-    if (resolved) return stripDictTags(resolved);
+    if (resolved) return stripGameTokens(resolved);
   }
   // Recipe fallback: resolve name via resultType (e.g. MummyQuestKeyBlueprint -> "Sands of Inaros Blueprint")
   if (entry?.resultType) {
     const result = items[entry.resultType];
     if (result?.name) {
       const resolved = resolveDictValue(result.name);
-      if (resolved) return `${stripDictTags(resolved)} Blueprint`;
+      if (resolved) return `${stripGameTokens(resolved)} Blueprint`;
     }
   }
   // Relic fallback: ExportRelics entries have era + category but no name
@@ -812,15 +804,11 @@ function resolveChallengeInfo(challengePath: string, allyName?: string): { desc?
   return null;
 }
 
-/** Strip markup tags from challenge description text. */
+/** Challenge text as the player should read it: game markup out, counts filled. */
 function cleanChallengeText(text: string, allyName?: string, count?: number): string {
-  let cleaned = text
-    .replace(/\|COUNT\|/g, count != null ? String(count) : "X")
-    .replace(/\|ALLY\|/g, allyName || "Ally")
-    .replace(/\|OPEN_COLOR\|[^|]*\|CLOSE_COLOR\|\s*/g, "")
-    .replace(/\n/g, " ")
-    .trim();
-  return cleaned;
+  return gameTextToDisplay(text, {
+    values: { COUNT: count ?? null, ALLY: allyName || "Ally" },
+  });
 }
 
 /** Extract ally display name from oracle path (e.g. `.../QuincyAllyAgent` -> `Quincy`). */
@@ -1161,7 +1149,11 @@ function parseNightwaveChallenge(raw: SeasonChallengeRaw) {
   const challengePath = raw.Challenge || "";
   const entry = getChallengeLookup()[challengePath];
   const requiredCount = Number(entry?.requiredCount) || 0;
-  const title = localizedDictValue(entry?.name) || prettifyPathSlug(challengePath) || "Unknown";
+  const named = localizedDictValue(entry?.name);
+  const title =
+    (named && cleanChallengeText(named, undefined, requiredCount)) ||
+    prettifyPathSlug(challengePath) ||
+    "Unknown";
   // The description key is the name key with its _Name tail swapped. Roughly one
   // act in ten has no description value, and then the title stands alone.
   const description = localizedDictValue(entry?.name?.replace(/_Name$/, "_Description"));
@@ -1288,10 +1280,12 @@ export function parseRaw(raw: WorldStateRaw | null): Record<string, unknown> | n
         activation: deDate(varziaRaw.Activation),
         expiry: deDate(varziaRaw.Expiry),
         location: HUB_NODE[varziaRaw.Node] || varziaRaw.Node || "Varzia",
-        inventory: (varziaRaw.Manifest || []).map((i) => ({
-          uniqueName: storeItemPath(i.ItemType),
-          item: (i.ItemType || "").split("/").pop() || "",
-        })),
+        inventory: (varziaRaw.Manifest || []).map((i) => {
+          const un = storeItemPath(i.ItemType);
+          // Resolved like Baro's: a raw path tail matches no curated name, so
+          // anything reading her stock by name places none of it.
+          return { uniqueName: un, item: resolveItemName(un) };
+        }),
       }
     : null;
 

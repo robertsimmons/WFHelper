@@ -1,53 +1,87 @@
-import data from "../../data/suggest/rewardValues.json";
-import type { RewardTier, SuggestionPreferences } from "../../types/suggest.js";
+import { noteUnplaced } from "./unplaced.js";
+import {
+  UNPLACED_WORTH,
+  UNRESOLVED_WORTH,
+  ladderWorth,
+  normalizeName,
+  rewardCount,
+  taskRewardNames,
+} from "./worthLadder.js";
+import type { RewardWorth, SuggestionPreferences, WorthGroup } from "../../types/suggest.js";
 
-const TIER_VALUE: Record<RewardTier, number> = { great: 0.95, good: 0.7, ok: 0.4, low: 0.1 };
+export { normalizeName, rewardCount, UNPLACED_WORTH, UNRESOLVED_WORTH };
 
-/** One pile, many spellings: rewards arrive counted ("3x Forma", "50,000 Kuva",
- *  "10k Kuva") and as either the blueprint or the built item. */
-const COUNT_PREFIX = /^\d[\d,]*\s*[xk]?\s+/;
-const BLUEPRINT_SUFFIX = /\s+blueprint$/;
+/** The four-tier scale the tile and settings components draw. Worth is the
+ *  ladder's job; this only says which colour a name renders in. */
+const LEGACY_WORTH: Record<WorthGroup, RewardWorth | null> = {
+  must: "great",
+  want: "good",
+  useful: "ok",
+  filler: "low",
+  junk: "low",
+  unplaced: null,
+};
 
-export function normalizeName(name: string): string {
-  return name
-    .toLowerCase()
-    .replace(/\s+/g, " ")
-    .trim()
-    .replace(COUNT_PREFIX, "")
-    .replace(BLUEPRINT_SUFFIX, "")
-    .trim();
+export function legacyWorth(group: WorthGroup): RewardWorth | null {
+  return LEGACY_WORTH[group];
 }
 
-function buildTaskValues(): Map<string, number> {
-  const index = new Map<string, number>();
-  for (const [tier, ids] of Object.entries(data.tasks)) {
-    const value = TIER_VALUE[tier as RewardTier];
-    if (value === undefined) continue;
-    for (const id of ids) index.set(id, value);
-  }
-  return index;
-}
-
-const TASK_VALUES = buildTaskValues();
-
-/** Null means unrated, which the caller reads as no opinion - never as bad. */
-export function rewardTier(
+/** Which ladder group a reward sits in, or null when nothing places it. */
+export function worthGroup(
   prefs: SuggestionPreferences,
   name: string | null | undefined,
-): RewardTier | null {
+): WorthGroup | null {
   if (!name) return null;
-  return prefs.rewards[normalizeName(name)] ?? null;
+  return prefs.worth[normalizeName(name)] ?? null;
 }
 
+/** Null means unplaced, which the caller reads as no opinion - never as bad. */
+export function rewardWorth(
+  prefs: SuggestionPreferences,
+  name: string | null | undefined,
+): RewardWorth | null {
+  const group = worthGroup(prefs, name);
+  return group === null ? null : LEGACY_WORTH[group];
+}
+
+/** Where a reward lands on the ladder, counting included. Null for a name the
+ *  ladder does not place; the name is logged so settings can show the gap. */
 export function rewardValue(
   prefs: SuggestionPreferences,
   name: string | null | undefined,
+  count?: number,
 ): number | null {
-  const tier = rewardTier(prefs, name);
-  return tier === null ? null : TIER_VALUE[tier];
+  if (!name) return null;
+  const key = normalizeName(name);
+  if (!key) return null;
+  const group = prefs.worth[key];
+  if (group === undefined || group === "unplaced") {
+    noteUnplaced(key);
+    return null;
+  }
+  return ladderWorth(group, key, count ?? rewardCount(name));
 }
 
-/** Fallback for tasks whose reward is fixed but never named in world state. */
-export function taskRewardValue(taskId: string): number | null {
-  return TASK_VALUES.get(taskId) ?? null;
+/** The best of everything a suggestion resolved. An unplaced name still counts
+ *  as resolved, at zero, so a gap cannot lift anything. */
+export function bestWorth(
+  prefs: SuggestionPreferences,
+  names: readonly (string | null | undefined)[],
+): number | null {
+  let best: number | null = null;
+  for (const name of names) {
+    if (!name) continue;
+    const worth = rewardValue(prefs, name) ?? UNPLACED_WORTH;
+    if (best === null || worth > best) best = worth;
+  }
+  return best;
 }
+
+/** What the curated table says a task pays, for tasks whose payout neither world
+ *  state nor a drop pool ever names. */
+export function taskWorth(prefs: SuggestionPreferences, taskId: string): number | null {
+  const names = taskRewardNames(taskId);
+  return names.length === 0 ? null : bestWorth(prefs, names);
+}
+
+export { taskRewardNames };

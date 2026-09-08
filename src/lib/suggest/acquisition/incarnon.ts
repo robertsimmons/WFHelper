@@ -87,7 +87,7 @@ export function createIncarnonLookup(
     const row = TABLE.get(nameKey(name));
     if (!row || text(row.source) !== "circuit") return null;
     return {
-      grade: text(row.grade),
+      tier: text(row.grade),
       upgradePath: text(row.upgradePath),
       week: week(row.week),
       owned: owned.has(adapterKey(name)),

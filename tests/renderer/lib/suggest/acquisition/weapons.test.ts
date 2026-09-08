@@ -133,9 +133,9 @@ describe("weapon incarnon adapters", () => {
     expect(braton.paths[0].steps[0].where).toContain("Steel Path Circuit, week 1");
   });
 
-  it("carries the adapter grade and upgrade path", () => {
+  it("carries the adapter tier and upgrade path", () => {
     expect(target("Braton").incarnon).toEqual({
-      grade: "A",
+      tier: "A",
       upgradePath: "0121",
       week: 1,
       owned: false,

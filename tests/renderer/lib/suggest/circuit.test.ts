@@ -1,25 +1,25 @@
 import { describe, expect, it } from "vitest";
 
-import { gradeClass } from "../../../../src/lib/suggest/circuit.js";
+import { tierClass } from "../../../../src/lib/suggest/circuit.js";
 
-describe("gradeClass", () => {
+describe("tierClass", () => {
   it("gives each tier its own colour", () => {
-    expect(gradeClass("S")).toBe("text-[var(--relic-requiem)]");
-    expect(gradeClass("A")).toBe("text-success");
-    expect(gradeClass("B")).toBe("text-warning");
-    expect(gradeClass("C")).toBe("text-danger");
+    expect(tierClass("S")).toBe("text-[var(--relic-requiem)]");
+    expect(tierClass("A")).toBe("text-success");
+    expect(tierClass("B")).toBe("text-warning");
+    expect(tierClass("C")).toBe("text-danger");
   });
 
-  it("colours a suffixed grade as its letter", () => {
-    expect(gradeClass("S+")).toBe(gradeClass("S"));
-    expect(gradeClass("A-")).toBe(gradeClass("A"));
-    expect(gradeClass("b+")).toBe(gradeClass("B"));
+  it("colours a suffixed tier as its letter", () => {
+    expect(tierClass("S+")).toBe(tierClass("S"));
+    expect(tierClass("A-")).toBe(tierClass("A"));
+    expect(tierClass("b+")).toBe(tierClass("B"));
   });
 
-  it("falls back to muted for an unrated or missing grade", () => {
-    expect(gradeClass(undefined)).toBe("text-text-muted");
-    expect(gradeClass(null)).toBe("text-text-muted");
-    expect(gradeClass("")).toBe("text-text-muted");
-    expect(gradeClass("Z")).toBe("text-text-muted");
+  it("falls back to muted for an unrated or missing tier", () => {
+    expect(tierClass(undefined)).toBe("text-text-muted");
+    expect(tierClass(null)).toBe("text-text-muted");
+    expect(tierClass("")).toBe("text-text-muted");
+    expect(tierClass("Z")).toBe("text-text-muted");
   });
 });

@@ -2,18 +2,18 @@
   import { tr } from "../../lib/i18n.js";
   import {
     CARD_GAP,
-    CARD_MIN_WIDTH,
     clampPage,
+    gridTemplateFor,
     pageCountFor,
     pageSizeFor,
   } from "../../lib/suggest/grid.js";
   import SectionPager from "./SectionPager.svelte";
   import SuggestionCard from "./SuggestionCard.svelte";
   import type { Component } from "svelte";
-  import type { Suggestion } from "../../types/suggest.js";
+  import type { Suggestion, SuggestionSectionId } from "../../types/suggest.js";
 
   interface Props {
-    id: string;
+    id: SuggestionSectionId;
     title: string;
     suggestions: Suggestion[];
     collapsed: boolean;
@@ -35,7 +35,7 @@
   let page = $state(0);
   let width = $state(0);
 
-  const pageSize = $derived(pageSizeFor(width));
+  const pageSize = $derived(pageSizeFor(width, id));
   const pageCount = $derived(pageCountFor(suggestions.length, pageSize));
   // The page is only ever clamped, never persisted: world state drops and adds
   // cards under the reader, and a stored page would point at other cards.
@@ -78,8 +78,7 @@
   {#if !collapsed}
     <div
       class="grid content-start"
-      style="gap: {CARD_GAP}px;
-             grid-template-columns: repeat(auto-fill, minmax({CARD_MIN_WIDTH}px, 1fr))"
+      style="gap: {CARD_GAP}px; grid-template-columns: {gridTemplateFor(id)}"
       bind:clientWidth={width}
     >
       {#each shown as suggestion (suggestion.id)}

@@ -1,13 +1,20 @@
 <script lang="ts">
   import { tr } from "../../lib/i18n.js";
+  import { itemTiers } from "../../lib/suggest/acquisition/tiers.js";
   import { bannerAside, bannerFor } from "../../lib/suggest/bannerArt.js";
-  import { gradeClass } from "../../lib/suggest/circuit.js";
   import { resolveDropArt } from "../../lib/suggest/dropPools.js";
   import { CARD_HEIGHT } from "../../lib/suggest/grid.js";
+  import { valenceRowsFor } from "../../lib/suggest/valence.js";
   import { itemDb } from "../../stores/data.js";
+  import { overframeRankingsRevision } from "../../stores/overframeRankings.js";
   import { nightwaveArt } from "../../stores/suggestionPrefs.js";
+  import { cardClock, choicesState, valencePercent, valenceTone } from "./chips.js";
+  import StateChip from "./StateChip.svelte";
   import SuggestionDetailsModal from "./SuggestionDetailsModal.svelte";
+  import TierBadge from "./TierBadge.svelte";
+  import TimeLeft from "./TimeLeft.svelte";
   import ItemImage from "../ItemImage.svelte";
+  import type { ValenceVerdict } from "../../lib/suggest/valence.js";
   import type {
     ChoiceState,
     Suggestion,
@@ -44,6 +51,23 @@
     bad: "text-danger",
   };
 
+  /** The valence offer as fields, with the item's own tier joined on. */
+  interface ValenceRow {
+    name: string;
+    tier: string | null;
+    element: string;
+    bonus: number;
+    owned: number | null;
+    result: number;
+    verdict: ValenceVerdict;
+  }
+
+  /** What the face draws in the one line under the title. */
+  interface CardLine {
+    segments: WhySegment[];
+    text: string;
+  }
+
   function missionSegments(missions: SuggestionDetails["missions"]): WhySegment[] {
     return (missions ?? []).map((mission) =>
       mission.opinion === "bad" ? { text: mission.name, tone: "bad" } : { text: mission.name },
@@ -51,6 +75,7 @@
   }
 
   const choices = $derived(suggestion.choices ?? []);
+  const details = $derived(suggestion.details);
   const art = $derived(
     suggestion.reward && choices.length === 0
       ? resolveDropArt($itemDb, suggestion.reward.name, suggestion.reward.uniqueName)
@@ -75,8 +100,69 @@
       ? why === suggestion.why
         ? suggestion.whySegments
         : []
-      : missionSegments(suggestion.details?.missions),
+      : missionSegments(details?.missions),
   );
+
+  // A refreshed Overframe table replaces the bundled one in place, so the tiers
+  // only recompute when the revision is read here.
+  const choiceTiers = $derived.by(() => {
+    void $overframeRankingsRevision;
+    return choices.map((choice) => choice.tier ?? itemTiers(choice.name));
+  });
+  const rewardTier = $derived.by(() => {
+    void $overframeRankingsRevision;
+    if (suggestion.tier) return suggestion.tier;
+    return suggestion.reward ? itemTiers(suggestion.reward.name) : null;
+  });
+
+  // Empty for every card that is not an adversary vendor, so the field row is
+  // scoped by the offer itself rather than by the category. The rows are already
+  // ordered by gain, so the head of them is the offer worth buying.
+  const valence = $derived.by((): ValenceRow | null => {
+    void $cardClock;
+    const offer = valenceRowsFor(suggestion.id)[0];
+    if (!offer) return null;
+    return {
+      name: offer.displayName ?? offer.name,
+      tier: offer.tier,
+      element: offer.element,
+      bonus: offer.bonus,
+      owned: offer.owned,
+      result: offer.result,
+      verdict: offer.verdict,
+    };
+  });
+
+  // The provider already decided which offers put the cap in reach, so the
+  // percentage tones off its verdict rather than off a second copy of the
+  // threshold. Reading the fused result instead coloured a weapon the player
+  // already holds over the threshold and left an unowned one plain.
+  const bonusTone = $derived(valence ? valenceTone(valence.verdict) : "");
+  const valenceTitle = $derived.by((): string => {
+    if (!valence) return $tr("nextUp.tileBonusTitle");
+    const result = valencePercent(valence.result);
+    return valence.owned === null
+      ? $tr("nextUp.valenceFromNone", { result })
+      : $tr("nextUp.valenceFused", { owned: valencePercent(valence.owned), result });
+  });
+
+  // Only a choice card's states differ from one another; everything in
+  // Acquisition is by definition still needed, so a chip there says nothing.
+  const cardState = $derived(
+    choices.length > 0 ? choicesState(choices.map((choice) => choice.state)) : null,
+  );
+
+  // The chip and the field row say what the sentence spelled out, so the
+  // sentence goes: a choice card's line only ever named a pick its own strips
+  // draw, and an acquisition line leads with the state before its route.
+  const line = $derived.by((): CardLine => {
+    if (valence || choices.length > 0) return { segments: [], text: "" };
+    const supplied = suggestion.whySegments ?? [];
+    if (details?.acquisition && supplied.length > 0) {
+      return { segments: supplied.slice(1), text: "" };
+    }
+    return { segments, text: why };
+  });
 
   const complete = $derived(suggestion.complete);
   const progress = $derived(suggestion.progress);
@@ -151,18 +237,15 @@
         aria-hidden="true"
       />
     {/if}
-    {#each choices as choice (choice.name)}
+    {#each choices as choice, index (choice.name)}
       <div
         class="relative flex min-w-0 flex-1 items-center justify-center overflow-hidden
                border-b-[3px] p-1 {STRIP[choice.state]}"
         title={choice.name}
       >
-        {#if choice.grade}
-          <span
-            class="absolute right-1 top-0.5 z-[1] font-display text-[0.625rem] font-semibold
-                   leading-none {gradeClass(choice.grade)}">{choice.grade}</span
-          >
-        {/if}
+        <span class="over-art absolute right-0.5 top-0.5 z-[1]">
+          <TierBadge tier={choiceTiers[index]} />
+        </span>
         <ItemImage src={choice.imageUrl} alt={choice.name} cls="max-h-full max-w-full" />
         <span
           class="choice-name absolute inset-x-0 bottom-0.5 truncate px-0.5 text-center
@@ -174,12 +257,6 @@
     {/each}
     {#if choices.length === 0 && art}
       <div class="relative flex w-full items-center p-1.5 {bannerAside(backdrop)}" title={art.name}>
-        {#if suggestion.grade}
-          <span
-            class="absolute right-1 top-0.5 z-[1] font-display text-[0.625rem] font-semibold
-                   leading-none {gradeClass(suggestion.grade)}">{suggestion.grade}</span
-          >
-        {/if}
         <ItemImage src={art.imageUrl} alt={art.name} cls="max-h-full max-w-full" />
       </div>
     {:else if standIn}
@@ -187,16 +264,27 @@
         <img src={standIn.url} alt="" class="max-h-full max-w-full object-contain" />
       </div>
     {/if}
+    <!-- The band's own corner, so the letter lands in one place whether art
+         resolved or not. The field row rates the weapon it names instead. -->
+    {#if choices.length === 0 && !valence}
+      <span class="absolute right-1 top-1 z-[2]">
+        <TierBadge tier={rewardTier} size="md" chip />
+      </span>
+    {/if}
   </div>
 
   <div class="flex min-h-0 flex-1 flex-col gap-1.5 p-2">
     <div class="grid h-6 grid-cols-[minmax(0,1fr)_1.5rem_1.5rem] items-center gap-x-3">
-      <h3
-        class="m-0 truncate font-display text-sm font-medium leading-5 text-text-primary"
-        title={suggestion.title}
-      >
-        {suggestion.title}
-      </h3>
+      <div class="flex min-w-0 items-center gap-2">
+        <h3
+          class="m-0 min-w-0 flex-1 truncate font-display text-sm font-medium leading-5
+                 text-text-primary"
+          title={suggestion.title}
+        >
+          {suggestion.title}
+        </h3>
+        <TimeLeft expiry={details?.expiry} nowMs={$cardClock} />
+      </div>
       <span class="h-6 w-6">
         {#if complete}
           <button
@@ -240,12 +328,35 @@
       </button>
     </div>
 
-    <p class="m-0 h-4 truncate text-xs leading-4 text-text-secondary" title={why}>
-      {#if segments.length > 0}{#each segments as segment, index (index)}<span
-            class={segment.tone ? TONE[segment.tone] : ""}
-            >{index > 0 ? ", " : ""}{segment.text}</span
-          >{/each}{:else}{why}{/if}
-    </p>
+    <!-- One fixed row for what the card is about: the state as a chip, then
+         either the offer's own fields or the line the provider wrote. -->
+    <div class="flex h-4 min-w-0 items-center gap-1.5">
+      {#if cardState}
+        <StateChip state={cardState} />
+      {/if}
+      {#if valence}
+        <span class="min-w-0 truncate text-xs leading-4 text-text-primary" title={valence.name}
+          >{valence.name}</span
+        >
+        <TierBadge tier={valence.tier} />
+        {#if valence.element}
+          <span
+            class="shrink-0 text-xs leading-4 text-text-secondary"
+            title={$tr("nextUp.tileElementTitle")}>{valence.element}</span
+          >
+        {/if}
+        <span class="shrink-0 text-xs leading-4 tabular-nums {bonusTone}" title={valenceTitle}
+          >{$tr("nextUp.tileBonusExact", { bonus: valencePercent(valence.bonus) })}</span
+        >
+      {:else}
+        <p class="m-0 min-w-0 flex-1 truncate text-xs leading-4 text-text-secondary" title={why}>
+          {#if line.segments.length > 0}{#each line.segments as segment, index (index)}<span
+                class={segment.tone ? TONE[segment.tone] : ""}
+                >{index > 0 ? ", " : ""}{segment.text}</span
+              >{/each}{:else}{line.text}{/if}
+        </p>
+      {/if}
+    </div>
 
     <div class="mt-auto grid h-6 grid-cols-[minmax(0,1fr)_2.25rem_1.5rem] items-center gap-x-2">
       {#if progress}
@@ -277,7 +388,8 @@
 
 <style>
   /* Stroke under the fill keeps the name readable over any artwork. */
-  .choice-name {
+  .choice-name,
+  .over-art {
     -webkit-text-stroke: 2px var(--bg-deep);
     paint-order: stroke fill;
   }

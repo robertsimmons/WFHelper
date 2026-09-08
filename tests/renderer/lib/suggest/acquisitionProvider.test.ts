@@ -8,6 +8,7 @@ import {
   acquisitionProvider,
 } from "../../../../src/lib/suggest/providers/acquisition.js";
 import {
+  BRATON,
   frame,
   inventory,
   itemDb,
@@ -84,7 +85,9 @@ function draftFor(drafts: SuggestionDraft[], uniqueName: string): SuggestionDraf
 function manyFrames(count: number): Record<string, ItemDbEntry> {
   const db: Record<string, ItemDbEntry> = { [OROKIN_CELL]: { name: "Orokin Cell" } };
   for (let index = 0; index < count; index += 1) {
-    const name = `Testframe ${String.fromCharCode(65 + index)}`;
+    // Numbered, not lettered: past 26 the letters wrap into lowercase and the
+    // resolver folds "Testframe a" into "Testframe A".
+    const name = `Testframe ${index}`;
     const unique = `/Lotus/Powersuits/Test/Test${index}`;
     const blueprint = `${unique}Blueprint`;
     db[unique] = frame(name, blueprint, []);
@@ -94,10 +97,14 @@ function manyFrames(count: number): Record<string, ItemDbEntry> {
 }
 
 describe("acquisitionProvider", () => {
-  it("caps the section rather than flooding the feed", () => {
+  it("pages the whole sweep rather than a shortlist of it", () => {
     const drafts = collect({ itemDb: manyFrames(12) });
-    expect(drafts).toHaveLength(6);
+    expect(drafts).toHaveLength(12);
     expect(new Set(drafts.map((draft) => draft.category))).toEqual(new Set(["acquisition"]));
+  });
+
+  it("stops at the guardrail on an account with more gear open than that", () => {
+    expect(collect({ itemDb: manyFrames(45) })).toHaveLength(40);
   });
 
   it("offers every target the resolver found, best recommended first", () => {
@@ -109,7 +116,7 @@ describe("acquisitionProvider", () => {
     );
     const scores = drafts.map((draft) => {
       const target = draft.details?.acquisition;
-      return recommendScore(target?.rank ?? null, target?.difficulty ?? null);
+      return recommendScore(target?.tier ?? null, target?.difficulty ?? null);
     });
     expect([...scores].sort((a, b) => b - a)).toEqual(scores);
   });
@@ -157,6 +164,26 @@ describe("acquisitionProvider", () => {
     expect(mag.fingerprint).toBe(`${MAG}|mastery+subsume|1/4`);
   });
 
+  it("says nothing about gear whose only open reason is an Incarnon adapter", () => {
+    const drafts = collect({
+      itemDb: weaponDb(),
+      inventory: inventory({ longGuns: [BRATON] }),
+    });
+    const braton = drafts.find((entry) => entry.id === `acquisition:${BRATON}`);
+    expect(braton).toBeUndefined();
+  });
+
+  it("carries what is still wanted as gain, with a subsume worth less", () => {
+    const mag = draftFor(collect(), MAG);
+    expect(mag.details?.acquisition?.needs).toContain("mastery");
+    expect(mag.signals.gain).toBe(1);
+
+    const subsumed = draftFor(collect({ inventory: inventory({ suits: [MAG] }) }), MAG);
+    expect(subsumed.details?.acquisition?.needs).toEqual(["subsume"]);
+    expect(subsumed.signals.gain).toBeLessThan(1);
+    expect(subsumed.signals.gain).toBeGreaterThan(0);
+  });
+
   it("counts the relics a Prime needs against the ones held", () => {
     const withRelics = draftFor(
       collect({ relicDb: relicDb(), inventory: inventory({ misc: { [LITH_M1]: 3 } }) }),
@@ -202,16 +229,16 @@ describe("acquisitionProvider", () => {
     expect(new Set(classes).size).toBeGreaterThan(1);
   });
 
-  it("carries the resolver's tier grade through to the card", () => {
+  it("carries the resolver's tier through to the card", () => {
     const mag = draftFor(collect(), MAG);
-    expect(mag.grade).toMatch(/^[SABCD]$/);
-    expect(mag.grade).toBe(mag.details?.acquisition?.rank);
+    expect(mag.tier).toMatch(/^[SABCD]$/);
+    expect(mag.tier).toBe(mag.details?.acquisition?.tier);
   });
 
-  it("leaves an unranked target with no grade at all", () => {
+  it("leaves an untiered target with no tier at all", () => {
     const draft = collect({ itemDb: manyFrames(1) })[0];
-    expect(draft.details?.acquisition?.rank).toBeNull();
-    expect(draft.grade).toBeUndefined();
-    expect("grade" in draft).toBe(false);
+    expect(draft.details?.acquisition?.tier).toBeNull();
+    expect(draft.tier).toBeUndefined();
+    expect("tier" in draft).toBe(false);
   });
 });

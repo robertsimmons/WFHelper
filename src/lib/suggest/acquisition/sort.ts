@@ -1,4 +1,4 @@
-import { difficultyValue } from "./ratings.js";
+import { effortValue } from "./ratings.js";
 import { recommendScore, tierOrder } from "./recommend.js";
 import type { AcquisitionTarget } from "./types.js";
 import type { SortDirection } from "../../../types/filters.js";
@@ -37,17 +37,17 @@ function priceFor(target: AcquisitionTarget): number {
 export function sortValue(target: AcquisitionTarget, sort: AcquisitionSort): number | null {
   switch (sort) {
     case "difficulty":
-      return difficultyValue(target.difficulty);
+      return effortValue(target.difficulty);
     case "tier":
-      return tierOrder(target.rank);
+      return tierOrder(target.tier);
     case "plat":
       return platFor(target);
     default:
       // The formula reads a missing half as neutral, but an item with neither
       // half rated is unknown, and unknown never leads the list.
-      return target.rank === null && target.difficulty === null
+      return target.tier === null && target.difficulty === null
         ? null
-        : -recommendScore(target.rank, target.difficulty);
+        : -recommendScore(target.tier, target.difficulty);
   }
 }
 

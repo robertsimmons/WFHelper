@@ -137,6 +137,21 @@ describe("resolveDropArt", () => {
     },
     "/Lotus/Types/Items/MiscItems/Forma": { name: "Forma", imageUrl: "https://cdn/forma.png" },
     "/Lotus/Types/Items/MiscItems/Kuva": { name: "Kuva", imageUrl: "https://cdn/kuva.png" },
+    "/Lotus/Upgrades/Mods/Randomized/LotusRifleRandomModRare": {
+      name: "Rifle Riven Mod",
+      category: "Mod",
+      imageUrl: "https://mirror/mod-art/RifleRivenMod.webp",
+    },
+    "/Lotus/Upgrades/Mods/Randomized/LotusModularPistolRandomModRare": {
+      name: "Kitgun Riven Mod",
+      category: "Mod",
+      imageUrl: "https://mirror/mod-art/KitgunRivenMod.webp",
+    },
+    "/Lotus/Upgrades/Mods/Randomized/RawSentinelWeaponRandomMod": {
+      name: "Companion Weapon Riven Mod",
+      category: "Mod",
+      imageUrl: "https://mirror/mod-art/CompanionWeaponRivenMod.webp",
+    },
   };
 
   it("prefers an exact uniqueName hit", () => {
@@ -162,11 +177,32 @@ describe("resolveDropArt", () => {
     ).toEqual({ imageUrl: "https://cdn/kuva.png", name: "Calendar Kuva Bundle Small" });
   });
 
-  it("stands any weapon class of riven in with the blank riven card", () => {
-    for (const name of ["Rifle Riven Mod", "Melee Riven Mod", "Kitgun Riven Mod"]) {
-      const art = resolveDropArt(itemDb, name);
-      expect(art?.name).toBe(name);
-      expect(art?.imageUrl).toContain("RivenTemplate");
+  it("pictures a riven with the veiled card for its own weapon class", () => {
+    expect(resolveDropArt(itemDb, "Kitgun Riven Mod")).toEqual({
+      imageUrl: "https://mirror/mod-art/KitgunRivenMod.webp",
+      name: "Kitgun Riven Mod",
+    });
+    expect(resolveDropArt(itemDb, "Companion Weapon Riven Mod")?.imageUrl).toContain(
+      "CompanionWeaponRivenMod",
+    );
+  });
+
+  it("pictures a pool that names no weapon class with the rifle card", () => {
+    expect(resolveDropArt(itemDb, "Riven Mod")).toEqual({
+      imageUrl: "https://mirror/mod-art/RifleRivenMod.webp",
+      name: "Riven Mod",
+    });
+  });
+
+  it("bundles a card for the class no database placed", () => {
+    const art = resolveDropArt(itemDb, "Melee Riven Mod");
+    expect(art?.name).toBe("Melee Riven Mod");
+    expect(art?.imageUrl).toContain("RivenCard");
+  });
+
+  it("keeps the riven card off the Rivens view template", () => {
+    for (const name of ["Riven Mod", "Melee Riven Mod"]) {
+      expect(resolveDropArt(itemDb, name)?.imageUrl).not.toContain("RivenTemplate");
     }
   });
 

@@ -6,10 +6,13 @@ interface BannerArt {
   /** CSS object-position; the band crops whatever falls outside it. */
   position: string;
   fit: "cover" | "contain";
+  /** Overrides the side `bannerAside` infers, for art whose subject does not
+   *  sit on the edge the anchor pulls towards. */
+  aside?: "start" | "end" | "center";
 }
 
-function banner(url: string, position: string): BannerArt {
-  return { url, position, fit: "cover" };
+function banner(url: string, position: string, aside?: BannerArt["aside"]): BannerArt {
+  return { url, position, fit: "cover", ...(aside ? { aside } : {}) };
 }
 
 const DESCENDIA = banner(
@@ -18,9 +21,12 @@ const DESCENDIA = banner(
 );
 
 const NIGHTWAVE: Record<NightwaveArt, BannerArt> = {
+  // Taller than the band, so the crop is vertical only and the face keeps the
+  // right half of every width.
   amir: banner(
     new URL("../../../assets/nextup/nightwave-amir.webp", import.meta.url).href,
     "50% 15%",
+    "start",
   ),
   nora: banner(
     new URL("../../../assets/nextup/nightwave-nora.webp", import.meta.url).href,
@@ -68,9 +74,12 @@ const TASK_ART: Record<string, BannerArt> = {
     new URL("../../../assets/nextup/ayatan-hunt.webp", import.meta.url).href,
     "100% 50%",
   ),
+  // Anchored left because the console sits right of centre in the art: pulling
+  // the crop the other way is what parked it in the middle of the band.
   calendar1999: banner(
     new URL("../../../assets/nextup/calendar-1999.webp", import.meta.url).href,
-    "100% 50%",
+    "0% 50%",
+    "start",
   ),
   codaWeapons: banner(
     new URL("../../../assets/nextup/coda-weapons.webp", import.meta.url).href,
@@ -92,7 +101,12 @@ const TASK_ART: Record<string, BannerArt> = {
     new URL("../../../assets/nextup/palladino.webp", import.meta.url).href,
     "100% 50%",
   ),
+  varzia: banner(new URL("../../../assets/nextup/varzia.webp", import.meta.url).href, "100% 30%"),
 };
+
+/** The Cred shop is Nora's too, and its provider files those cards under the
+ *  vendor category rather than her own. */
+const NIGHTWAVE_SHOP = /^nightwave:/;
 
 /** Art for the tasks whose reward no item picture can stand for. */
 export function bannerFor(
@@ -100,13 +114,14 @@ export function bannerFor(
   category: SuggestionCategory,
   nightwave: NightwaveArt,
 ): BannerArt | null {
-  if (category === "nightwave") return NIGHTWAVE[nightwave];
+  if (category === "nightwave" || NIGHTWAVE_SHOP.test(id)) return NIGHTWAVE[nightwave];
   // The table is keyed by tracker task id; every provider prefixes its own name.
   return TASK_ART[id.replace(/^[^:]+:/, "")] ?? null;
 }
 
 /** The reward art sits clear of whatever the banner is anchored on. */
 export function bannerAside(art: BannerArt | null): string {
+  if (art?.aside) return `justify-${art.aside}`;
   if (art?.position.startsWith("100%")) return "justify-start";
   if (art?.position.startsWith("0%")) return "justify-end";
   return "justify-center";

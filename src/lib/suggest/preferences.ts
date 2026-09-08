@@ -1,31 +1,43 @@
 import missionData from "../../data/suggest/missionTypes.json";
-import rewardData from "../../data/suggest/rewardValues.json";
-import { DIFFICULTY_WORDS } from "./acquisition/ratings.js";
-import { TIERS } from "./acquisition/rankings.js";
+import { EFFORT_WORDS } from "./acquisition/ratings.js";
+import { TIERS } from "./acquisition/tiers.js";
 import { ACQUISITION_INCLUDES } from "./acquisition/kinds.js";
 import { ACQUISITION_SORTS, DEFAULT_ACQUISITION_SORT } from "./acquisition/sort.js";
 import { normalizeType } from "./missionTypes.js";
-import { normalizeName } from "./rewards.js";
+import { legacyWorth } from "./rewards.js";
 import { DEFAULT_WEIGHTS, WEIGHT_MAX } from "./score.js";
 import {
+  FOOT_POSITION,
+  LADDER_DISPLAY_NAMES,
+  TOP_POSITION,
+  normalizeName,
+  shippedPlacements,
+} from "./worthLadder.js";
+import {
+  DEFAULT_NIGHTWAVE_STOCK,
+  LADDER_GROUPS,
   MASTERY_KINDS,
+  NIGHTWAVE_STAPLES,
   RELIC_ERAS,
   RELIC_GOALS,
   RELIC_SORTS,
   SCORE_WEIGHT_KEYS,
   TASK_KINDS,
+  WORTH_GROUPS,
 } from "../../types/suggest.js";
 import type { AcquisitionSort } from "./acquisition/sort.js";
 import type {
   ActivityPref,
+  LadderGroup,
   MasteryKind,
   MissionOpinion,
   RelicGoal,
   RelicSort,
-  RewardTier,
+  RewardWorth,
   ScoreWeights,
   SuggestionOptions,
   SuggestionPreferences,
+  WorthGroup,
 } from "../../types/suggest.js";
 
 /** An override carrying this drops the shipped rating instead of replacing it. */
@@ -41,25 +53,63 @@ export const DEFAULT_NIGHTWAVE_ART: NightwaveArt = "amir";
 
 /** What the player may overrule a shipped acquisition rating with. */
 export const ACQUISITION_TIERS: readonly string[] = TIERS;
-export const ACQUISITION_DIFFICULTIES: readonly string[] = DIFFICULTY_WORDS;
+export const ACQUISITION_EFFORTS: readonly string[] = EFFORT_WORDS;
 
 export { nameKey as acquisitionKey } from "./acquisition/curated.js";
 
-export const REWARD_TIERS: readonly RewardTier[] = ["great", "good", "ok", "low"];
+/** The ladder groups the settings ladder draws, best first. */
+export const WORTH_LADDER: readonly LadderGroup[] = LADDER_GROUPS;
+
+/** The four-tier scale the ladder replaced, read out of storage and projected
+ *  onto `rewards` for the tiles that still draw worth as a tier. */
+export const REWARD_WORTHS: readonly RewardWorth[] = ["great", "good", "ok", "low"];
 export const MISSION_OPINIONS: readonly MissionOpinion[] = ["good", "bad"];
 export const ACTIVITY_PREFS: readonly ActivityPref[] = ["never", "low", "normal"];
 
-export type RewardOverride = RewardTier | typeof UNRATED;
+/** A stored override may still be spelled on the four-tier scale the ladder
+ *  replaced; both spellings are read, and only the ladder group is stored. */
+const LEGACY_GROUP: Record<RewardWorth, WorthGroup> = {
+  great: "must",
+  good: "want",
+  ok: "useful",
+  low: "junk",
+};
+
+export type WorthOverride = WorthGroup | RewardWorth | typeof UNRATED;
 export type MissionOverride = MissionOpinion | typeof UNRATED;
 
+/** Everything `parseOverrides` accepts out of storage for a reward row. */
+export const WORTH_OVERRIDES: readonly WorthOverride[] = [
+  ...WORTH_GROUPS,
+  ...REWARD_WORTHS,
+  UNRATED,
+];
+
+export function canonicalWorth(value: WorthOverride): WorthGroup | typeof UNRATED {
+  if (value === UNRATED) return UNRATED;
+  return (LEGACY_GROUP as Record<string, WorthGroup | undefined>)[value] ?? (value as WorthGroup);
+}
+
 export interface SuggestionOverrides {
-  rewards: Record<string, RewardOverride>;
+  rewards: Record<string, WorthGroup | typeof UNRATED>;
+  /** Where the player dragged an entry inside its group's band. Absent for
+   *  every group the player has left in the order it ships in. */
+  rewardOrder: Record<string, number>;
   missionTypes: Record<string, MissionOverride>;
   activities: Record<string, ActivityPref>;
   acquisitionTiers: Record<string, string>;
-  acquisitionDifficulty: Record<string, string>;
+  acquisitionEffort: Record<string, string>;
+  nightwaveStock: Record<string, number>;
   options: Partial<SuggestionOptions>;
   weights: Partial<ScoreWeights>;
+}
+
+/** The Cred shop rotation is never published, so only the always-available
+ *  staples are ever suggested, and only below the level kept here. */
+export function shippedNightwaveStock(): Record<string, number> {
+  const stock: Record<string, number> = {};
+  for (const name of NIGHTWAVE_STAPLES) stock[name] = DEFAULT_NIGHTWAVE_STOCK;
+  return stock;
 }
 
 export const DEFAULT_OPTIONS: SuggestionOptions = {
@@ -87,10 +137,13 @@ export const MISSION_TYPE_NAMES: readonly string[] = [...missionData.all].sort((
   a.localeCompare(b),
 );
 
-function shippedRewards(): Record<string, RewardTier> {
-  const rewards: Record<string, RewardTier> = {};
-  for (const tier of REWARD_TIERS) {
-    for (const name of rewardData.items[tier]) rewards[normalizeName(name)] = tier;
+/** The four-tier view of a set of ladder placements, for the components that
+ *  still draw worth as a tier. Nothing scores off it. */
+function asTiers(worth: Readonly<Record<string, WorthGroup>>): Record<string, RewardWorth> {
+  const rewards: Record<string, RewardWorth> = {};
+  for (const [key, group] of Object.entries(worth)) {
+    const tier = legacyWorth(group);
+    if (tier) rewards[key] = tier;
   }
   return rewards;
 }
@@ -103,18 +156,19 @@ function shippedMissionTypes(): Record<string, MissionOpinion> {
   return missionTypes;
 }
 
-/** Normalized key to the spelling the curated tables ship, for display. */
-export const REWARD_DISPLAY_NAMES: Readonly<Record<string, string>> = Object.fromEntries(
-  REWARD_TIERS.flatMap((tier) => rewardData.items[tier].map((name) => [normalizeName(name), name])),
-);
+/** Normalized key to the spelling the ladder ships, for display. */
+export const REWARD_DISPLAY_NAMES: Readonly<Record<string, string>> = LADDER_DISPLAY_NAMES;
 
 export function defaultPreferences(): SuggestionPreferences {
+  const worth = shippedPlacements();
   return {
-    rewards: shippedRewards(),
+    worth,
+    rewards: asTiers(worth),
     missionTypes: shippedMissionTypes(),
     activities: {},
     acquisitionTiers: {},
-    acquisitionDifficulty: {},
+    acquisitionEffort: {},
+    nightwaveStock: shippedNightwaveStock(),
     options: { ...DEFAULT_OPTIONS },
     weights: { ...DEFAULT_WEIGHTS },
   };
@@ -145,8 +199,21 @@ function perField<A, B, R>(merge: (a: A, b: B) => R): (a: A, b: B) => R {
   };
 }
 
-const mergeRewards = perField(mergeRatings<RewardTier>);
+const mergeWorth = perField(mergeRatings<WorthGroup>);
 const mergeMissions = perField(mergeRatings<MissionOpinion>);
+
+/** The tier view is only ever read; it is rebuilt when the placements move and
+ *  handed back by identity otherwise. */
+let tierSource: Readonly<Record<string, WorthGroup>> | null = null;
+let tierView: Record<string, RewardWorth> = {};
+
+function tiersFor(worth: Readonly<Record<string, WorthGroup>>): Record<string, RewardWorth> {
+  if (worth !== tierSource) {
+    tierSource = worth;
+    tierView = asTiers(worth);
+  }
+  return tierView;
+}
 const mergeActivities = perField(
   (defaults: Record<string, ActivityPref>, overrides: Record<string, ActivityPref>) => ({
     ...defaults,
@@ -159,8 +226,14 @@ const mergeTiers = perField(
     ...overrides,
   }),
 );
-const mergeDifficulty = perField(
+const mergeEffort = perField(
   (defaults: Record<string, string>, overrides: Record<string, string>) => ({
+    ...defaults,
+    ...overrides,
+  }),
+);
+const mergeStock = perField(
+  (defaults: Record<string, number>, overrides: Record<string, number>) => ({
     ...defaults,
     ...overrides,
   }),
@@ -182,15 +255,15 @@ export function mergePreferences(
   defaults: SuggestionPreferences,
   overrides: SuggestionOverrides,
 ): SuggestionPreferences {
+  const worth = mergeWorth(defaults.worth, overrides.rewards);
   return {
-    rewards: mergeRewards(defaults.rewards, overrides.rewards),
+    worth,
+    rewards: tiersFor(worth),
     missionTypes: mergeMissions(defaults.missionTypes, overrides.missionTypes),
     activities: mergeActivities(defaults.activities, overrides.activities),
     acquisitionTiers: mergeTiers(defaults.acquisitionTiers, overrides.acquisitionTiers),
-    acquisitionDifficulty: mergeDifficulty(
-      defaults.acquisitionDifficulty,
-      overrides.acquisitionDifficulty,
-    ),
+    acquisitionEffort: mergeEffort(defaults.acquisitionEffort, overrides.acquisitionEffort),
+    nightwaveStock: mergeStock(defaults.nightwaveStock, overrides.nightwaveStock),
     options: mergeOptions(defaults.options, overrides.options),
     weights: mergeWeights(defaults.weights, overrides.weights),
   };
@@ -294,6 +367,38 @@ export function migrateLegacyOptions(
   const rest: Record<string, ActivityPref> = { ...activities };
   for (const key of [LEGACY_FORMA_KEY, LEGACY_MODE_KEY, ...legacyGoals]) delete rest[key];
   return { activities: rest, options };
+}
+
+/** A position is a fraction of its group's band, so a hand-edited file is
+ *  clamped back into that band rather than allowed to lift an entry into the
+ *  group above. Keys renormalize on the way in, so one saved under a counted
+ *  or blueprint spelling still finds its row. */
+export function parseLadderOrder(raw: string | null): Record<string, number> {
+  const parsed = parseJsonObject(raw);
+  if (!parsed) return {};
+  const positions: Record<string, number> = {};
+  for (const [key, value] of Object.entries(parsed)) {
+    const name = normalizeName(key);
+    if (!name || typeof value !== "number" || !Number.isFinite(value)) continue;
+    positions[name] = Math.min(FOOT_POSITION, Math.max(TOP_POSITION, value));
+  }
+  return positions;
+}
+
+/** A keep-on-hand level is a count of items, so a fraction, a negative or a
+ *  non-number is dropped rather than rounded, and the staple falls back to what
+ *  it ships at. Keys are renormalized on the way in the way a worth override is,
+ *  and a key no longer staple is kept, so trimming the list loses no level. */
+export function parseNightwaveStock(raw: string | null): Record<string, number> {
+  const parsed = parseJsonObject(raw);
+  if (!parsed) return {};
+  const stock: Record<string, number> = {};
+  for (const [key, value] of Object.entries(parsed)) {
+    const name = normalizeName(key);
+    if (!name || typeof value !== "number" || !Number.isSafeInteger(value) || value < 0) continue;
+    stock[name] = value;
+  }
+  return stock;
 }
 
 /** A stored weight outside the slider's range is pulled back into it, so a

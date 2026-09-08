@@ -248,6 +248,21 @@ describe("masteryProvider", () => {
     expect(draft?.fingerprint).toBe("/Braton|12");
   });
 
+  it("pages the roadmap rather than a shortlist, and stops at the guardrail", () => {
+    const gear = (count: number) =>
+      Array.from({ length: count }, (_, index) =>
+        item({
+          name: `Rifle ${index}`,
+          internalName: `/Rifle${index}`,
+          uniqueName: `/Rifle${index}`,
+        }),
+      );
+    loadMastery(gear(12));
+    expect(ids()).toHaveLength(12);
+    loadMastery(gear(45));
+    expect(ids()).toHaveLength(40);
+  });
+
   it("keeps a turned-down domain below everything else rather than dropping it", () => {
     loadMastery([item({})]);
     expect(masteryProvider.collect(context({ [MASTERY_ACTIVITY]: "low" }))[0]?.deprioritized).toBe(

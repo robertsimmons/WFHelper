@@ -1,6 +1,9 @@
 import { afterEach, describe, expect, it } from "vitest";
 
-import { vendorsProvider } from "../../../../src/lib/suggest/providers/vendors.js";
+import {
+  liveVendorOffers,
+  vendorsProvider,
+} from "../../../../src/lib/suggest/providers/vendors.js";
 import {
   resetValenceDocForTest,
   setValenceDocForTest,
@@ -8,7 +11,10 @@ import {
 import type { AdversaryVendorsDoc } from "../../../../src/lib/world/adversaryVendors.js";
 import { defaultPreferences } from "../../../../src/lib/suggest/preferences.js";
 import { ownedRewardFor } from "../../../../src/lib/suggest/ownedRewards.js";
+import { rewardValue } from "../../../../src/lib/suggest/rewards.js";
+import { bandFor, worthGroupOf } from "../../../../src/lib/suggest/score.js";
 import { vendorOffers } from "../../../../src/lib/suggest/vendorOffers.js";
+import { UNRESOLVED_WORTH } from "../../../../src/lib/suggest/worthLadder.js";
 import type { ItemDbEntry } from "../../../../src/types/inventory.js";
 import type { Translator } from "../../../../src/lib/i18n.js";
 import type { TrackerState } from "../../../../src/lib/world/dailies.js";
@@ -26,6 +32,13 @@ function tracker(overrides: Partial<TrackerState> = {}): TrackerState {
 function prefs(activities: Record<string, ActivityPref> = {}) {
   return { ...defaultPreferences(), activities };
 }
+
+/** Where the shipped worth ladder puts a reward, which is the only worth input. */
+function worth(name: string): number {
+  return rewardValue(defaultPreferences(), name) ?? 0;
+}
+
+const MOTOVORE_WORTH = worth("Coda Motovore");
 
 function context(overrides: Partial<SuggestionContext> = {}): SuggestionContext {
   return {
@@ -74,6 +87,39 @@ function valenceDoc(motovoreBonus: number): AdversaryVendorsDoc {
   };
 }
 
+const MOTOVORE = "/Lotus/Weapons/Infested/InfestedLich/Melee/InfestedHammer/InfLichHammerWeapon";
+const POX = "/Lotus/Weapons/Infested/InfestedLich/Pistols/CodaPox";
+
+const VALENCE_ITEM_DB = {
+  [MOTOVORE]: { name: "Coda Motovore" },
+  [POX]: { name: "Coda Pox" },
+} as unknown as Record<string, ItemDbEntry>;
+
+/** A weapon row shaped as the real export writes it: the valence upgrade sits on
+ *  the weapon itself and its percentage is encoded in the fingerprint. */
+function ownedWeapon(itemType: string, percent: number) {
+  const value = Math.round(((percent - 25) / 35) * 0x3fffffff);
+  return {
+    ItemType: itemType,
+    UpgradeType: "/Lotus/Weapons/Grineer/KuvaLich/Upgrades/InnateDamageRandomMod",
+    UpgradeFingerprint: JSON.stringify({
+      compat: itemType,
+      buffs: [{ Tag: "InnateHeatDamage", Value: value }],
+    }),
+  };
+}
+
+/** The player holding a Motovore at `motovore`, and optionally a Pox too. */
+function codaContext(motovore: number, pox?: number): SuggestionContext {
+  return context({
+    itemDb: VALENCE_ITEM_DB,
+    inventory: {
+      Melee: [ownedWeapon(MOTOVORE, motovore)],
+      Pistols: pox === undefined ? [] : [ownedWeapon(POX, pox)],
+    } as unknown as SuggestionContext["inventory"],
+  });
+}
+
 function ids(ctx: SuggestionContext): string[] {
   return vendorsProvider.collect(ctx).map((draft) => draft.id);
 }
@@ -104,12 +150,26 @@ describe("vendorsProvider", () => {
     expect(ids(context({ world }))).not.toContain("vendors:baro");
   });
 
-  it("says nothing about Varzia, who Next Up no longer covers", () => {
+  it("suggests Varzia while her window is open, with her own manifest", () => {
     const world = {
       vaultTrader: {
         activation: new Date(NOW - 24 * HOUR).toISOString(),
         expiry: new Date(NOW + 24 * HOUR).toISOString(),
         inventory: [{ uniqueName: "/Lotus/Types/Relic", item: "Lith A1 Relic" }],
+      },
+    } as unknown as WorldState;
+    const varzia = draft(context({ world }), "vendors:varzia");
+    expect(varzia?.category).toBe("vendor");
+    expect(varzia?.details?.pool).toEqual(["Lith A1 Relic"]);
+    expect(varzia?.wiki).toBe("Prime Resurgence");
+  });
+
+  it("says nothing about Varzia before her window opens", () => {
+    const world = {
+      vaultTrader: {
+        activation: new Date(NOW + 24 * HOUR).toISOString(),
+        expiry: new Date(NOW + 72 * HOUR).toISOString(),
+        inventory: [],
       },
     } as unknown as WorldState;
     expect(ids(context({ world }))).not.toContain("vendors:varzia");
@@ -252,37 +312,172 @@ describe("vendorsProvider", () => {
     expect(ids(context({ world: expired }))).not.toContain("vendors:darvo");
   });
 
-  it("names the best roll on offer and pushes the vendor up for it", () => {
+  it("sinks a rotation holding nothing over the fusion threshold", () => {
     setValenceDocForTest(valenceDoc(49.2));
     const coda = draft(context(), "vendors:codaWeapons");
     expect(coda?.reward?.name).toBe("Coda Motovore");
-    expect(coda?.signals.value).toBeGreaterThan(
-      draft(context({ prefs: prefs() }), "vendors:palladino")?.signals.value ?? 1,
-    );
-    expect(coda?.whySegments?.[1]).toEqual({ text: "nextUp.whyValenceTwoAway" });
+    expect(coda?.whySegments?.[1]).toEqual({ text: "nextUp.whyValence" });
     expect(coda?.details?.pool?.[0]).toBe("nextUp.valenceOffer");
+    expect(coda?.signals.value).toBeLessThan(
+      draft(context({ prefs: prefs() }), "vendors:palladino")?.signals.value ?? 0,
+    );
   });
 
-  it("marks a roll one purchase from the cap as worth the trip", () => {
+  it("marks an offer over the threshold as worth the trip", () => {
     setValenceDocForTest(valenceDoc(53.1));
     const coda = draft(context(), "vendors:codaWeapons");
-    expect(coda?.whySegments?.[1]).toEqual({ text: "nextUp.whyValenceOneAway", tone: "good" });
-    expect(coda?.signals.value).toBe(0.8);
+    expect(coda?.whySegments?.[1]).toEqual({ text: "nextUp.whyValenceReady", tone: "good" });
+    expect(coda?.signals.value).toBeCloseTo(MOTOVORE_WORTH * 0.8, 10);
   });
 
-  it("tops the vendor out for a roll already at the cap", () => {
-    setValenceDocForTest(valenceDoc(60));
-    const coda = draft(context(), "vendors:codaWeapons");
-    expect(coda?.whySegments?.[1]).toEqual({ text: "nextUp.whyValenceCapped", tone: "good" });
-    expect(coda?.signals.value).toBe(1);
+  it("tops the vendor out for the offer that caps a weapon the player owns", () => {
+    setValenceDocForTest(valenceDoc(53.1));
+    const coda = draft(codaContext(40), "vendors:codaWeapons");
+    expect(coda?.whySegments?.[1]).toEqual({ text: "nextUp.whyValenceCaps", tone: "good" });
+    expect(coda?.signals.value).toBeCloseTo(MOTOVORE_WORTH, 10);
   });
 
-  it("leaves an unreported rotation exactly where the table puts it", () => {
+  it("picks the offer that advances the player over the higher roll", () => {
+    setValenceDocForTest(valenceDoc(53.1));
+    // The player's own Motovore is already over the threshold, so any second
+    // copy caps it; the 25% Pox on the same table cannot be beaten by a roll.
+    const coda = draft(codaContext(57), "vendors:codaWeapons");
+    expect(coda?.reward?.name).toBe("Coda Motovore");
+    expect(coda?.whySegments?.[1]).toEqual({ text: "nextUp.whyValenceSecondCopy" });
+    expect(coda?.signals.value).toBeCloseTo(MOTOVORE_WORTH * 0.5, 10);
+  });
+
+  it("shows the vendor at zero worth when nothing on offer helps", () => {
+    setValenceDocForTest(valenceDoc(53.1));
+    const coda = draft(codaContext(60, 60), "vendors:codaWeapons");
+    expect(coda?.id).toBe("vendors:codaWeapons");
+    expect(coda?.signals.value).toBe(0);
+    expect(coda?.signals.gain).toBeUndefined();
+    expect(coda?.whySegments?.[1]).toEqual({ text: "nextUp.whyValenceNothing" });
+  });
+
+  it("reads an unreported rotation as unknown rather than as empty", () => {
     setValenceDocForTest(null);
     const coda = draft(context(), "vendors:codaWeapons");
-    expect(coda?.signals.value).toBe(0.45);
+    // The best weapon the rotation could hold, since nothing says what it does.
+    expect(coda?.signals.value).toBeCloseTo(worth("Coda Bubonico"), 10);
     expect(coda?.whySegments).toBeUndefined();
     expect(coda?.reward?.name).toBe(vendorOffers("codaWeapons")[0].name);
+  });
+
+  it("scores a stall off the worth ladder, not a per-vendor constant", () => {
+    const bird3 = draft(context(), "vendors:bird3");
+    expect(bird3?.signals.value).toBeCloseTo(worth("Azure Archon Shard"), 10);
+    expect(worthGroupOf(bird3!)).toBe("must");
+    expect(bandFor(bird3!, NOW)).toBe(2);
+  });
+
+  it("promotes the shard Bird 3 is holding this week, not the top of the table", () => {
+    // The ladder rates the three colours apart, so a card written off the static
+    // table headlines Azure and prices Azure two weeks in three.
+    const weeks = [
+      ["2026-08-24T12:00:00Z", "Crimson Archon Shard"],
+      ["2026-08-31T12:00:00Z", "Azure Archon Shard"],
+      ["2026-09-07T12:00:00Z", "Amber Archon Shard"],
+    ] as const;
+    for (const [iso, name] of weeks) {
+      const nowMs = Date.parse(iso);
+      expect(liveVendorOffers("bird3", nowMs).map((offer) => offer.name)).toEqual([name]);
+      const bird3 = draft(context({ nowMs }), "vendors:bird3");
+      expect(bird3?.reward?.name).toBe(name);
+      expect(bird3?.reward?.uniqueName).toBe(
+        vendorOffers("bird3").find((offer) => offer.name === name)?.uniqueName,
+      );
+      expect(bird3?.signals.value).toBeCloseTo(worth(name), 10);
+    }
+  });
+
+  it("leaves a stall whose stock does not rotate on its whole table", () => {
+    const acrithis = liveVendorOffers("acrithis", NOW);
+    expect(acrithis).toEqual(vendorOffers("acrithis"));
+    expect(acrithis.length).toBeGreaterThan(1);
+  });
+
+  it("prices Darvo and Varzia flat, whatever they happen to be holding", () => {
+    // Darvo discounts one arbitrary market item and Varzia sells vaulted relics
+    // by the fistful, so neither stall is worth pricing. They show so the trip
+    // is not forgotten, and nothing more.
+    const world = {
+      vaultTrader: {
+        activation: new Date(NOW - 24 * HOUR).toISOString(),
+        expiry: new Date(NOW + 24 * HOUR).toISOString(),
+        inventory: [{ uniqueName: "/Lotus/Types/Relic", item: "Lith A1 Relic" }],
+      },
+      dailyDeals: [{ item: "Rubico Prime", expiry: new Date(NOW + 6 * HOUR).toISOString() }],
+    } as unknown as WorldState;
+
+    const varzia = draft(context({ world }), "vendors:varzia");
+    const darvo = draft(context({ world }), "vendors:darvo");
+    expect(varzia).toBeDefined();
+    expect(darvo).toBeDefined();
+    expect(worthGroupOf(varzia!)).toBe("filler");
+    expect(worthGroupOf(darvo!)).toBe("filler");
+  });
+
+  it("is worth the best thing on the table, never a sum or an average", () => {
+    const acrithis = draft(context(), "vendors:acrithis");
+    // Her table runs to two dozen offers; the adapter at the top of it is the
+    // whole of what she is worth.
+    expect(acrithis?.signals.value).toBeCloseTo(worth("Primary Arcane Adapter"), 10);
+    expect(draft(context(), "vendors:yonta")?.signals.value).toBeCloseTo(worth("Kuva"), 10);
+  });
+
+  it("keeps a stall worth a resource the player already has plenty of", () => {
+    const AZURE = "/Lotus/Types/Gameplay/NarmerSorties/ArchonCrystalBoreal";
+    const ctx = context({
+      itemDb: { [AZURE]: { name: "Azure Archon Shard" } } as unknown as Record<string, ItemDbEntry>,
+      inventory: {
+        MiscItems: [{ ItemType: AZURE, ItemCount: 9 }],
+      } as unknown as SuggestionContext["inventory"],
+    });
+    expect(draft(ctx, "vendors:bird3")?.signals.value).toBeCloseTo(worth("Azure Archon Shard"), 10);
+  });
+
+  it("stops counting mastery gear on the table the player already owns", () => {
+    const BUBONICO =
+      "/Lotus/Weapons/Infested/InfestedLich/LongGuns/CodaBubonico/CodaBubonicoCannon";
+    const world = {
+      voidTrader: {
+        activation: new Date(NOW - 4 * HOUR).toISOString(),
+        expiry: new Date(NOW + 40 * HOUR).toISOString(),
+        inventory: [{ item: "Coda Bubonico" }, { item: "Kuva" }],
+      },
+    } as unknown as WorldState;
+    const itemDb = {
+      [BUBONICO]: { name: "Coda Bubonico", masterable: true },
+    } as unknown as Record<string, ItemDbEntry>;
+    const stocked = draft(context({ world, itemDb }), "vendors:baro");
+    expect(stocked?.signals.value).toBeCloseTo(worth("Coda Bubonico"), 10);
+
+    const owned = draft(
+      context({
+        world,
+        itemDb,
+        inventory: {
+          LongGuns: [{ ItemType: BUBONICO }],
+        } as unknown as SuggestionContext["inventory"],
+      }),
+      "vendors:baro",
+    );
+    expect(owned?.signals.value).toBeCloseTo(worth("Kuva"), 10);
+  });
+
+  it("reads a stall whose manifest has not landed as unknown, not worthless", () => {
+    const world = {
+      voidTrader: {
+        activation: new Date(NOW - 4 * HOUR).toISOString(),
+        expiry: new Date(NOW + 40 * HOUR).toISOString(),
+        inventory: [],
+      },
+    } as unknown as WorldState;
+    const baro = draft(context({ world }), "vendors:baro");
+    expect(baro?.signals.value).toBe(UNRESOLVED_WORTH);
+    expect(baro?.signals.value).toBeGreaterThan(0);
   });
 
   it("counts what the player owns and has built of a curated offering", () => {
@@ -302,6 +497,6 @@ describe("vendorsProvider", () => {
           [CLEM, 2],
         ]),
       ),
-    ).toEqual({ owned: 3, built: 2 });
+    ).toEqual({ owned: 3, built: 2, stacks: true });
   });
 });

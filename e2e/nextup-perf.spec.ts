@@ -186,13 +186,17 @@ async function buildInventory(page: Page): Promise<FixtureBuild> {
         return hash % 100;
       };
 
-      const inventory: Record<string, unknown[]> = { XPInfo: [] };
+      const inventory: Record<string, unknown[]> = { XPInfo: [], MiscItems: [] };
       for (const key of collections) inventory[key] = [];
       const xp = inventory.XPInfo as Array<{ ItemType: string; XP: number }>;
+      const misc = inventory.MiscItems as Array<{ ItemType: string; ItemCount: number }>;
 
       let masterable = 0;
       let owned = 0;
       for (const [uniqueName, entry] of Object.entries(db)) {
+        // A relic shelf, without which the whole Relics section is absent and
+        // the run measures three of the four at their cap rather than four.
+        if (/VoidProjection/i.test(uniqueName)) misc.push({ ItemType: uniqueName, ItemCount: 3 });
         if (!entry?.name || entry.masterable !== true) continue;
         if (entry.exalted === true || entry.isBuildComponent === true) continue;
         const category = String(entry.productCategory ?? "");

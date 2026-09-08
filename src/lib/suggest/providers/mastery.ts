@@ -19,8 +19,9 @@ const FORMA_GATE_RANK = 30;
 /** Ranking a Warframe from nothing is the biggest single mastery win there is. */
 const MASTERY_POINT_REFERENCE = 6000;
 
-/** The feed is a shortlist; the Mastery tab is where the whole roadmap lives. */
-const SUGGESTION_LIMIT = 5;
+/** Deep enough that the pager runs out only when the roadmap does. Unmeasured:
+ *  a lift needs a perf run behind it. */
+const SUGGESTION_LIMIT = 40;
 
 /** How close a thing is to done is what makes it easy, so that carries the
  *  value; the mastery on offer only separates two equally short grinds. */
@@ -124,10 +125,8 @@ export const masteryProvider: SuggestionProvider = {
           id: `mastery:${itemKey(item)}`,
           category: "mastery" as const,
           title: t("nextUp.masteryLevel", { item: itemLabel(item) }),
-          why: [
-            t("nextUp.whyMasteryRank", { rank: String(item.rank), max: String(item.maxRank) }),
-            t("nextUp.whyMasteryPoints", { points: String(points) }),
-          ].join(" - "),
+          // The rank bar already reads as the rank and what is left of it.
+          why: "",
           reward: { name: item.name, uniqueName: item.uniqueName },
           signals: { value: valueFor(item, points), effort: effortFor(item), urgency: 0 },
           // Any rank earned changes the grind, so a dismissal lifts once the

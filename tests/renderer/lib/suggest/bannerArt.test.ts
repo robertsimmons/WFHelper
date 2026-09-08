@@ -33,6 +33,7 @@ const ART = [
 
 const VENDOR_ART = [
   "baro",
+  "varzia",
   "darvo",
   "palladino",
   "acrithis",
@@ -69,6 +70,13 @@ describe("bannerFor", () => {
       expect(bannerFor("someUnknownTask", category, "nora")).toBeNull();
     },
   );
+
+  it("backs a Cred offering with the same art, though the shop files it as a vendor", () => {
+    for (const id of ["nightwave:vauban", "nightwave:landingCraft", "nightwave:nitain"]) {
+      expect(bannerFor(id, "vendor", "amir")?.url).toContain("nightwave-amir");
+      expect(bannerFor(id, "vendor", "nora")).toEqual(bannerFor("kahl", "nightwave", "nora"));
+    }
+  });
 
   it("takes the nightwave art from the preference, whatever the task id", () => {
     expect(bannerFor("kahl", "nightwave", "amir")?.url).toContain("nightwave-amir");

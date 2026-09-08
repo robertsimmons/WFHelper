@@ -15,7 +15,7 @@ import type {
 
 interface Shape {
   name: string;
-  rank?: string | null;
+  tier?: string | null;
   difficulty?: string | null;
   plat?: number | null;
   effort?: number;
@@ -55,7 +55,7 @@ function row(shape: Shape): SortRow {
     },
     paths: shape.plat === undefined ? [] : [path(shape.plat)],
     difficulty: shape.difficulty ?? null,
-    rank: shape.rank ?? null,
+    tier: shape.tier ?? null,
     wiki: null,
     effort: shape.effort ?? 0.5,
   } as AcquisitionTarget;
@@ -71,8 +71,8 @@ function order(
 }
 
 const RATED = [
-  row({ name: "EasyA", rank: "A", difficulty: "easy", plat: 200 }),
-  row({ name: "HardS", rank: "S", difficulty: "brutal", plat: 20 }),
+  row({ name: "EasyA", tier: "A", difficulty: "easy", plat: 200 }),
+  row({ name: "HardS", tier: "S", difficulty: "brutal", plat: 20 }),
   row({ name: "Unknown" }),
 ];
 
@@ -106,9 +106,9 @@ describe("compareAcquisition", () => {
 
   it("breaks a tie on effort, then on name", () => {
     const rows = [
-      row({ name: "Slow", rank: "A", difficulty: "easy", effort: 0.9 }),
-      row({ name: "Quick", rank: "A", difficulty: "easy", effort: 0.1 }),
-      row({ name: "Also", rank: "A", difficulty: "easy", effort: 0.1 }),
+      row({ name: "Slow", tier: "A", difficulty: "easy", effort: 0.9 }),
+      row({ name: "Quick", tier: "A", difficulty: "easy", effort: 0.1 }),
+      row({ name: "Also", tier: "A", difficulty: "easy", effort: 0.1 }),
     ];
     expect(order(rows, "recommended")).toEqual(["Also", "Quick", "Slow"]);
   });
@@ -124,8 +124,8 @@ describe("sortValue", () => {
   });
 
   it("still scores an item rated on only one of the two halves", () => {
-    const halfRated = row({ name: "Tiered", rank: "A" }).target;
-    const rated = row({ name: "Rated", rank: "A", difficulty: "normal" }).target;
+    const halfRated = row({ name: "Tiered", tier: "A" }).target;
+    const rated = row({ name: "Rated", tier: "A", difficulty: "normal" }).target;
     expect(sortValue(halfRated, "recommended")).toBe(sortValue(rated, "recommended"));
   });
 });

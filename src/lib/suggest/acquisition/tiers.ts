@@ -8,9 +8,9 @@ const WARFRAME_CATEGORY_ID = 0;
 
 const PRIME_SUFFIX = / prime$/;
 
-export type RankTiers = (name: string) => string | null;
+export type ItemTiers = (name: string) => string | null;
 
-interface RankingRow {
+interface TierRow {
   score: number;
   warframe: boolean;
 }
@@ -21,7 +21,7 @@ function tierFor(score: number): string | null {
   return TIERS[index] ?? null;
 }
 
-function readRow(value: unknown): RankingRow | null {
+function readRow(value: unknown): TierRow | null {
   if (!value || typeof value !== "object" || Array.isArray(value)) return null;
   const raw = value as Record<string, unknown>;
   const score = raw.averageScore;
@@ -32,8 +32,8 @@ function readRow(value: unknown): RankingRow | null {
   };
 }
 
-function buildTable(source: unknown): Map<string, RankingRow> {
-  const out = new Map<string, RankingRow>();
+function buildTable(source: unknown): Map<string, TierRow> {
+  const out = new Map<string, TierRow>();
   if (!source || typeof source !== "object") return out;
   const items = (source as { items?: unknown }).items;
   if (!items || typeof items !== "object" || Array.isArray(items)) return out;
@@ -45,8 +45,8 @@ function buildTable(source: unknown): Map<string, RankingRow> {
 }
 
 /** Nothing about the file is trusted: it is generated, optional, and may lag
- *  the shape this expects. An unreadable row simply leaves the item unranked. */
-export function createRankTiers(source?: unknown): RankTiers {
+ *  the shape this expects. An unreadable row simply leaves the item untiered. */
+export function createItemTiers(source?: unknown): ItemTiers {
   const table = buildTable(source);
   return (name) => {
     const key = nameKey(name);
@@ -71,4 +71,4 @@ function shipped(): unknown {
   return (module as { default?: unknown }).default ?? module;
 }
 
-export const rankTiers: RankTiers = preferFreshRankings(createRankTiers, shipped());
+export const itemTiers: ItemTiers = preferFreshRankings(createItemTiers, shipped());

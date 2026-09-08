@@ -1,7 +1,7 @@
 import { curated, type CuratedLookup, type CuratedSource } from "./curated.js";
 import { nemesisSteps } from "./nemesis.js";
 import { relicCost } from "./relics.js";
-import { UNKNOWN_DIFFICULTY, type Ratings } from "./ratings.js";
+import { UNKNOWN_EFFORT, type Ratings } from "./ratings.js";
 import type { RawInventoryData } from "../../../types/inventory.js";
 import type { RelicDatabase } from "../../../types/relics.js";
 import type {
@@ -55,7 +55,7 @@ const ADAPTER_EFFORT = 0.6;
 /** Partial cover still helps, but a path that finishes the item beats one that does not. */
 const PARTIAL_PENALTY = 0.15;
 /** Difficulty pulls a path half a step either way; unknown sits at the middle. */
-const DIFFICULTY_SWING = 0.3;
+const EFFORT_SWING = 0.3;
 const RELICS_IN_HAND_BONUS = 0.15;
 const RELICS_EMPTY_PENALTY = 0.1;
 const UNPRICED_PENALTY = 0.1;
@@ -107,7 +107,7 @@ function effortFor(
 ): number {
   let effort = BASE_EFFORT[kind];
   if (!complete) effort += PARTIAL_PENALTY;
-  effort += ((difficulty ?? UNKNOWN_DIFFICULTY) - UNKNOWN_DIFFICULTY) * DIFFICULTY_SWING;
+  effort += ((difficulty ?? UNKNOWN_EFFORT) - UNKNOWN_EFFORT) * EFFORT_SWING;
   if (cost.relics?.known) {
     effort += cost.relics.held >= cost.relics.needed ? -RELICS_IN_HAND_BONUS : 0;
     if (cost.relics.held === 0) effort += RELICS_EMPTY_PENALTY;
@@ -163,7 +163,7 @@ function sourcesFor(input: PathInputs): CuratedSource[] {
 }
 
 function curatedPaths(input: PathInputs, missing: readonly PartState[]): AcquisitionPath[] {
-  const difficulty = input.ratings.difficulty(input.name);
+  const difficulty = input.ratings.effort(input.name);
   const out: AcquisitionPath[] = [];
   let index = 0;
   for (const source of sourcesFor(input)) {
@@ -217,7 +217,7 @@ function nemesisPath(input: PathInputs, plan: NemesisPlan, missing: readonly Par
     nemesisSteps(plan),
     missing,
     missing.length,
-    input.ratings.difficulty(input.name),
+    input.ratings.effort(input.name),
     { credits: null, plat: null, relics: null },
   );
 }
@@ -235,7 +235,7 @@ export function buildPaths(input: PathInputs): AcquisitionPath[] {
     const incarnon = input.incarnon;
     return incarnon && !incarnon.owned ? [adapterPath(input, incarnon)] : [];
   }
-  const difficulty = input.ratings.difficulty(input.name);
+  const difficulty = input.ratings.effort(input.name);
   const paths = curatedPaths(input, missing);
 
   if (input.nemesis) paths.push(nemesisPath(input, input.nemesis, missing));

@@ -127,11 +127,11 @@ describe("resolveAcquisition", () => {
     expect(find(targets, "Mag Prime").difficulty).toBeNull();
   });
 
-  it("surfaces a supplied power rank over the shipped overframe tier", () => {
+  it("surfaces a supplied power tier over the shipped overframe tier", () => {
     const targets = resolveAcquisition(context({ ratings: { Volt: { rank: "Z" } } }));
-    expect(find(targets, "Volt").rank).toBe("Z");
-    expect(find(targets, "Mag").rank).toMatch(/^[SABCD]$/);
-    expect(find(targets, "Mag Prime").rank).toBe(find(targets, "Mag").rank);
+    expect(find(targets, "Volt").tier).toBe("Z");
+    expect(find(targets, "Mag").tier).toMatch(/^[SABCD]$/);
+    expect(find(targets, "Mag Prime").tier).toBe(find(targets, "Mag").tier);
   });
 
   it("counts the relics the player already holds for a Prime", () => {

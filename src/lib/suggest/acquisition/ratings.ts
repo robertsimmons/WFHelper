@@ -1,27 +1,27 @@
 import { curated, nameKey, type CuratedLookup } from "./curated.js";
-import { rankTiers, type RankTiers } from "./rankings.js";
+import { itemTiers, type ItemTiers } from "./tiers.js";
 
 /** The rating tables are produced separately and may not exist. An absent
  *  table, key, null entry or wrong-typed field all read as unknown, and
- *  unknown never ranks worse than rated. */
+ *  unknown never sorts worse than rated. */
 export interface Ratings {
   /** 0..1, higher is a harder farm. Null is unknown. */
-  difficulty(name: string): number | null;
+  effort(name: string): number | null;
   /** The word behind the number, for display. */
-  difficultyLabel(name: string): string | null;
+  effortLabel(name: string): string | null;
   /** Overframe tier letter, S down to D. Null is unknown. */
-  rank(name: string): string | null;
+  tier(name: string): string | null;
   /** 0..1 share of players running it. Null is unknown. */
   popularity(name: string): number | null;
 }
 
 /** Neutral, so an unrated item sorts exactly where a normal one does. */
-export const UNKNOWN_DIFFICULTY = 0.5;
+export const UNKNOWN_EFFORT = 0.5;
 
-/** The difficulty vocabulary the settings offer, easiest first. */
-export const DIFFICULTY_WORDS = ["trivial", "easy", "normal", "hard", "brutal"] as const;
+/** The effort vocabulary the settings offer, easiest first. */
+export const EFFORT_WORDS = ["trivial", "easy", "normal", "hard", "brutal"] as const;
 
-const WORD_DIFFICULTY: Record<string, number> = {
+const WORD_EFFORT: Record<string, number> = {
   trivial: 0.1,
   easy: 0.25,
   normal: 0.5,
@@ -30,6 +30,7 @@ const WORD_DIFFICULTY: Record<string, number> = {
   brutal: 0.9,
 };
 
+/** Field names are the shipped JSON's, not the vocabulary's. */
 interface RatingEntry {
   difficulty?: unknown;
   rank?: unknown;
@@ -47,16 +48,16 @@ function unitInterval(value: unknown): number | null {
   return Math.max(0, Math.min(1, value));
 }
 
-function difficultyWord(value: unknown): string | null {
+function effortWord(value: unknown): string | null {
   return typeof value === "string" && value.trim() ? value.trim().toLowerCase() : null;
 }
 
 /** A word or a 0..1 number as a number; null when it is neither. */
-export function difficultyValue(value: unknown): number | null {
+export function effortValue(value: unknown): number | null {
   const direct = unitInterval(value);
   if (direct !== null) return direct;
-  const word = difficultyWord(value);
-  return word === null ? null : (WORD_DIFFICULTY[word] ?? null);
+  const word = effortWord(value);
+  return word === null ? null : (WORD_EFFORT[word] ?? null);
 }
 
 function buildTable(source: unknown): Map<string, RatingEntry> {
@@ -73,22 +74,22 @@ function buildTable(source: unknown): Map<string, RatingEntry> {
 export function createRatings(
   source?: unknown,
   fallback: CuratedLookup = curated,
-  tiers: RankTiers = rankTiers,
+  tiers: ItemTiers = itemTiers,
 ): Ratings {
   const table = buildTable(source);
   const entry = (name: string): RatingEntry | null => table.get(nameKey(name)) ?? null;
 
   const label = (name: string): string | null =>
-    difficultyWord(entry(name)?.difficulty) ?? fallback(name).difficulty;
+    effortWord(entry(name)?.difficulty) ?? fallback(name).difficulty;
 
   return {
-    difficultyLabel: label,
-    difficulty(name) {
-      const supplied = difficultyValue(entry(name)?.difficulty);
+    effortLabel: label,
+    effort(name) {
+      const supplied = effortValue(entry(name)?.difficulty);
       if (supplied !== null) return supplied;
-      return difficultyValue(fallback(name).difficulty);
+      return effortValue(fallback(name).difficulty);
     },
-    rank(name) {
+    tier(name) {
       const value = entry(name)?.rank;
       if (typeof value === "string" && value.trim()) return value.trim();
       return tiers(name);

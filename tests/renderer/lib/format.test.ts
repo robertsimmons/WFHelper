@@ -1,8 +1,10 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 import {
+  DAY_MS,
   cycleTimeDisplay,
   formatBuildTime,
+  formatCompactDuration,
   formatNumber,
   formatTimeRemaining,
   nextDailyResetUtc,
@@ -60,6 +62,14 @@ describe("format helpers", () => {
     expect(formatBuildTime(45)).toBe("45s");
     expect(formatBuildTime(3600)).toBe("1h");
     expect(formatBuildTime(49 * 3600 + 10 * 60)).toBe("2d 1h 10m");
+  });
+
+  it("formats a compact duration and gives nothing back once it is spent", () => {
+    expect(formatCompactDuration(2 * DAY_MS + 4 * 3_600_000)).toBe("2d 4h");
+    expect(formatCompactDuration(3 * 3_600_000 + 12 * 60_000)).toBe("3h 12m");
+    expect(formatCompactDuration(18 * 60_000)).toBe("18m");
+    expect(formatCompactDuration(0)).toBe("");
+    expect(formatCompactDuration(-1)).toBe("");
   });
 
   it("computes daily and weekly UTC reset boundaries", () => {

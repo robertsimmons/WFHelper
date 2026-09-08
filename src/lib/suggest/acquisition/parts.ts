@@ -136,6 +136,21 @@ function toPartPlan(planned: PlannedItem): PartPlan {
   };
 }
 
+/** What every unbuilt target the last sweep planned still calls for, summed
+ *  recursively, by uniqueName. Null until a sweep has run, which is not the same
+ *  as nothing needing anything. */
+let resourceNeed: Map<string, number> | null = null;
+
+export function unbuiltResourceNeed(): ReadonlyMap<string, number> | null {
+  return resourceNeed;
+}
+
+/** The sweep is the only writer; a caller reaches for this to run the case where
+ *  no sweep has happened yet. */
+export function resetUnbuiltResourceNeedForTest(): void {
+  resourceNeed = null;
+}
+
 /** One pass over every target, so a single spare part cannot complete two of them. */
 export function buildPartPlans(
   targets: readonly { uniqueName: string; name: string; entry: ItemDbEntry }[],
@@ -150,6 +165,7 @@ export function buildPartPlans(
     masteryXpRemaining: 0,
   }));
   const plan = buildMasteryPlan(pins, itemDb, ownership);
+  resourceNeed = new Map(plan.totals.map((row) => [row.uniqueName, row.needed]));
   const out = new Map<string, PartPlan>();
   for (const item of plan.items) out.set(item.uniqueName, toPartPlan(item));
   return out;

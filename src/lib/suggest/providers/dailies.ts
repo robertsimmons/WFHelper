@@ -8,24 +8,19 @@ import {
   type TrackerGroup,
 } from "../../world/dailies.js";
 import { autoTrackerState } from "../../world/dailiesAuto.js";
-import {
-  dayOfYearUtc,
-  trackerExpiries,
-  trackerLive,
-  upcomingCalendarDays,
-} from "../../world/dailiesLive.js";
+import { dayOfYearUtc, trackerExpiries, trackerLive } from "../../world/dailiesLive.js";
 import { affinityBoost } from "../boosts.js";
 import { readCircuit } from "../circuit.js";
 import { summarizeDropPool } from "../dropPools.js";
 import { missionOpinion, readMissions, type MissionRead } from "../missionTypes.js";
-import { NIGHTWAVE_ACTIVITY } from "../preferences.js";
-import { rewardTier, rewardValue, taskRewardValue } from "../rewards.js";
+import { bestWorth, rewardWorth, rewardValue, taskWorth } from "../rewards.js";
 import { clamp01, urgencyFromExpiry } from "../score.js";
+import { UNPLACED_WORTH, UNRESOLVED_WORTH, bandCeiling, groupForWorth } from "../worthLadder.js";
 import type {
+  RewardWorth,
   SuggestionContext,
   SuggestionDetails,
   SuggestionDraft,
-  SuggestionOption,
   SuggestionOptionGroup,
   SuggestionPreferences,
   SuggestionProvider,
@@ -41,12 +36,46 @@ const COVERED_GROUPS = new Set<TrackerGroup>(["daily", "weekly"]);
  *  rotate constantly and are best read in-game, so a card for them is noise. */
 const NOT_SUGGESTED = new Set(["spIncursions"]);
 
-/** Where the curated tables have no opinion, a category is worth what it always was. */
-const BASE_VALUE: Record<"daily" | "weekly" | "nightwave", number> = {
-  daily: 0.45,
-  weekly: 0.6,
-  nightwave: 0.5,
+const DAY_MS = 24 * 60 * 60_000;
+const WEEK_MS = 7 * DAY_MS;
+
+/** Urgency is measured against the window's own length, so a weekly climbs
+ *  across its week exactly as a daily climbs across its day. */
+const PERIOD_WINDOW_MS: Record<string, number> = {
+  daily: DAY_MS,
+  sortie: DAY_MS,
+  darvo: DAY_MS,
+  weekly: WEEK_MS,
+  archon: WEEK_MS,
+  steelPath: WEEK_MS,
+  descendia: WEEK_MS,
 };
+
+/** The whole season is the calendar's window, so a payday inside it registers
+ *  as a window closing rather than as no deadline at all. */
+function seasonWindowMs(wd: WorldState | null): number | null {
+  const season = wd?.calendarSeason;
+  const start = season?.activation ? Date.parse(season.activation) : Number.NaN;
+  const end = season?.expiry ? Date.parse(season.expiry) : Number.NaN;
+  if (!Number.isFinite(start) || !Number.isFinite(end) || end <= start) return null;
+  return end - start;
+}
+
+function windowFor(period: string, wd: WorldState | null): number {
+  if (period === "calendar1999") return seasonWindowMs(wd) ?? WEEK_MS;
+  return PERIOD_WINDOW_MS[period] ?? WEEK_MS;
+}
+
+/** The best of everything a task resolved; nothing resolved is not a middling
+ *  score, it is a floor. */
+function bestOf(values: readonly (number | null | undefined)[]): number {
+  let best: number | null = null;
+  for (const value of values) {
+    if (value === null || value === undefined) continue;
+    if (best === null || value > best) best = value;
+  }
+  return best ?? UNRESOLVED_WORTH;
+}
 
 /** A dated calendar reward further out than this is not a reason to log in today. */
 const CALENDAR_LOOKAHEAD_DAYS = 7;
@@ -69,57 +98,107 @@ const ARCHON_SHARDS: Record<string, string> = {
   Nira: "Amber Archon Shard",
 };
 
-/** The next payday, and the better of what that day offers; a day nothing rates
- *  is passed over. The day list is a countdown only while the season's day
- *  numbers are this year's; when they are not it falls back to a running order,
- *  and a day distance would be fiction. */
+type CalendarSeason = NonNullable<WorldState["calendarSeason"]>;
+
+/** How many days the season itself covers, from its start where world state
+ *  carries one and from now where it does not. */
+function seasonSpanDays(season: CalendarSeason, nowMs: number): number {
+  const start = Date.parse(season.activation ?? "");
+  const end = Date.parse(season.expiry ?? "");
+  if (!Number.isFinite(end)) return CALENDAR_LOOKAHEAD_DAYS;
+  const from = Number.isFinite(start) ? Math.min(start, nowMs) : nowMs;
+  return Math.max(0, Math.ceil((end - from) / DAY_MS));
+}
+
+/** The days still on offer, and whether their numbers are dates. DE numbers a
+ *  season against the 1999 calendar's own year, so a live Summer season ships
+ *  days 185-271 inside one real week. A numbering too wide for the season's
+ *  window reads as a running order, where no day distance exists. */
+function seasonDays(
+  season: CalendarSeason,
+  nowMs: number,
+): { days: CalendarDay[]; dated: boolean } {
+  const days = season.days ?? [];
+  if (days.length === 0) return { days, dated: false };
+  const numbers = days.map((day) => day.day);
+  if (Math.max(...numbers) - Math.min(...numbers) <= seasonSpanDays(season, nowMs)) {
+    const today = dayOfYearUtc(nowMs);
+    const upcoming = days.filter((day) => day.day >= today);
+    if (upcoming.length > 0) return { days: upcoming, dated: true };
+  }
+  return { days, dated: false };
+}
+
+/** The reward the card pictures. A dated season's nearest payday is the reason
+ *  to log in today; an undated one has none, so the best it pays wins. A day
+ *  the ladder places nothing on still pays out, so it stands in once nothing
+ *  placed is left, at the zero worth an unplaced name carries. */
 function nextCalendarReward(
   prefs: SuggestionPreferences,
-  days: CalendarDay[] | undefined,
+  season: CalendarSeason | null | undefined,
   nowMs: number,
 ): NamedReward | null {
-  if (!days?.length) return null;
+  if (!season) return null;
+  const { days, dated } = seasonDays(season, nowMs);
   const today = dayOfYearUtc(nowMs);
-  for (const day of upcomingCalendarDays(days, nowMs)) {
-    const inDays = day.day - today;
-    if (inDays > CALENDAR_LOOKAHEAD_DAYS) continue;
-    let best: NamedReward | null = null;
+  let best: NamedReward | null = null;
+  let unplaced: NamedReward | null = null;
+  for (const day of days) {
+    const inDays = dated ? day.day - today : null;
+    if (inDays !== null && inDays > CALENDAR_LOOKAHEAD_DAYS) continue;
+    let onDay: NamedReward | null = null;
     for (const event of day.events) {
       if (event.kind !== "reward") continue;
       const value = rewardValue(prefs, event.label);
-      if (value === null) continue;
-      if (best && value <= best.value) continue;
-      best = {
+      const named: NamedReward = {
         name: event.label,
         uniqueName: event.uniqueName,
-        value,
-        inDays: inDays < 0 ? null : inDays,
+        value: value ?? UNPLACED_WORTH,
+        inDays,
         mention: true,
       };
+      if (value === null) {
+        unplaced ??= named;
+        continue;
+      }
+      if (!onDay || value > onDay.value) onDay = named;
     }
-    if (best) return best;
+    if (!onDay) continue;
+    if (dated) return onDay;
+    if (!best || onDay.value > best.value) best = onDay;
   }
-  return null;
+  return best ?? unplaced;
 }
 
-/** Every upcoming day the season pays out on, in order; a day of buffs or
- *  challenges alone is not a payday. */
+/** The tile's worth band, read through rewardValue on the way so a name the
+ *  ladder does not place is recorded as a coverage gap rather than only
+ *  rendering unrated. */
+function optionWorth(prefs: SuggestionPreferences, name: string): RewardWorth | undefined {
+  return rewardValue(prefs, name) === null ? undefined : (rewardWorth(prefs, name) ?? undefined);
+}
+
+/** Every payday the season has left, in the order it hands them out; a day of
+ *  buffs or challenges alone is not a payday. The card's line clamps this, the
+ *  details view shows all of it. */
 function calendarOptionGroups(
   prefs: SuggestionPreferences,
-  days: CalendarDay[] | undefined,
+  season: CalendarSeason | null | undefined,
   nowMs: number,
 ): SuggestionOptionGroup[] {
-  if (!days?.length) return [];
+  if (!season) return [];
   const groups: SuggestionOptionGroup[] = [];
-  for (const day of upcomingCalendarDays(days, nowMs)) {
+  for (const day of seasonDays(season, nowMs).days) {
     const rewards = day.events.filter((event) => event.kind === "reward");
     if (rewards.length === 0) continue;
-    const options: SuggestionOption[] = rewards.map((event) => ({
-      name: event.label,
-      uniqueName: event.uniqueName,
-      tier: rewardTier(prefs, event.label) ?? undefined,
-    }));
-    groups.push({ day: day.day, options });
+    groups.push({
+      day: day.day,
+      options: rewards.map((event) => ({
+        name: event.label,
+        uniqueName: event.uniqueName,
+        displayName: rewardLabel(event.label),
+        worth: optionWorth(prefs, event.label),
+      })),
+    });
   }
   return groups;
 }
@@ -128,12 +207,18 @@ function calendarOptionGroups(
  *  single reward is no pick, and the promoted reward's art already stands for it. */
 const CALENDAR_CHOICE_DAYS = 3;
 
+/** Text only: the card is already about the Calendar, so the prefix DE puts on
+ *  its packs is noise. Worth, art and the unplaced ledger keep the full name. */
+function rewardLabel(name: string): string {
+  return name.replace(/^Calendar\s+/i, "");
+}
+
 function optionsWhy(groups: SuggestionOptionGroup[]): string | null {
   const picks = groups.filter((group) => group.options.length > 1);
   if (picks.length === 0) return null;
   return picks
     .slice(0, CALENDAR_CHOICE_DAYS)
-    .map((group) => group.options.map((option) => option.name).join(" / "))
+    .map((group) => group.options.map((option) => rewardLabel(option.name)).join(" / "))
     .join(", ");
 }
 
@@ -145,7 +230,7 @@ function namedReward(
   nowMs: number,
 ): NamedReward | null {
   if (!wd) return null;
-  if (taskId === "calendar1999") return nextCalendarReward(prefs, wd.calendarSeason?.days, nowMs);
+  if (taskId === "calendar1999") return nextCalendarReward(prefs, wd.calendarSeason, nowMs);
   if (taskId === "steelPathHonors") {
     const name = wd.steelPath?.currentReward?.name;
     const value = rewardValue(prefs, name);
@@ -163,12 +248,13 @@ function namedReward(
 /** The shard or item on offer; a dated calendar reward says how far off it is. */
 function rewardWhy(reward: NamedReward | null, t: SuggestionContext["t"]): string | null {
   if (!reward || !reward.mention) return null;
+  const label = rewardLabel(reward.name);
   // Item names stay English, matched against the game, so one stands alone.
-  if (reward.inDays === undefined) return reward.name;
-  if (reward.inDays === null) return t("nextUp.whyRewardUpcoming", { reward: reward.name });
-  if (reward.inDays === 0) return t("nextUp.whyRewardToday", { reward: reward.name });
-  if (reward.inDays === 1) return t("nextUp.whyRewardTomorrow", { reward: reward.name });
-  return t("nextUp.whyRewardInDays", { reward: reward.name, days: String(reward.inDays) });
+  if (reward.inDays === undefined) return label;
+  if (reward.inDays === null) return t("nextUp.whyRewardUpcoming", { reward: label });
+  if (reward.inDays === 0) return t("nextUp.whyRewardToday", { reward: label });
+  if (reward.inDays === 1) return t("nextUp.whyRewardTomorrow", { reward: label });
+  return t("nextUp.whyRewardInDays", { reward: label, days: String(reward.inDays) });
 }
 
 /** The same line with the name left to the art tile; null when only the name was there. */
@@ -189,10 +275,12 @@ interface PoolReward {
   item: string;
   /** Art can only stand in for the text when there is one thing to picture. */
   single: boolean;
+  /** The best thing in the pool, which is the reason to run it. */
+  value: number;
 }
 
-/** What an activity pays when world state names nothing. A pool labels the card
- *  and picks its art; it never feeds the score. */
+/** What an activity pays when world state names nothing: the pool labels the
+ *  card, picks its art, and is worth the best row on the ladder. */
 function poolReward(ctx: SuggestionContext, taskId: string): PoolReward | null {
   const rows = ctx.dropPools[taskId];
   if (!rows?.length) return null;
@@ -205,6 +293,11 @@ function poolReward(ctx: SuggestionContext, taskId: string): PoolReward | null {
     families: labels,
     item: top.item,
     single: families.length === 1,
+    value:
+      bestWorth(
+        ctx.prefs,
+        rows.map((row) => row.item),
+      ) ?? UNPLACED_WORTH,
   };
 }
 
@@ -285,21 +378,12 @@ const AFFINITY_TASKS = new Set(["dailyFocus", "circuitSteelPath"]);
 /** Enough to lift a levelling run past its neighbours, not to clear the board. */
 const AFFINITY_BOOST_VALUE = 0.12;
 
-const ELITE_BONUS = 0.05;
+/** Runs cost more than one run but nowhere near proportionally, and the count
+ *  that matters is what is still owed: four Netracells down is one run away. */
+const EFFORT_HALF_RUNS = 4;
 
-/** Runs a five-run task costs about this much more than a one-and-done. */
-const EFFORT_RUNS = 5;
-
-/** The task's own cost, not what is left of it: progress must not re-rank a card. */
-function effortFor(target: number): number {
-  return clamp01(target / EFFORT_RUNS);
-}
-
-/** An act's requirement counts kills, pickups or missions depending on the act,
- *  so it cannot be read as runs; the tier is the only comparable cost we have. */
-function nightwaveEffort(isDaily: boolean, isElite: boolean): number {
-  if (isDaily) return 0.2;
-  return isElite ? 0.75 : 0.5;
+function effortFor(runs: number): number {
+  return runs <= 0 ? 0 : clamp01(runs / (runs + EFFORT_HALF_RUNS));
 }
 
 export const dailiesProvider: SuggestionProvider = {
@@ -341,9 +425,7 @@ export const dailiesProvider: SuggestionProvider = {
       const segments =
         task.id === "archonHunt" ? missionSegments(prefs, missionNames) : ([] as WhySegment[]);
       const options =
-        task.id === "calendar1999"
-          ? calendarOptionGroups(prefs, world?.calendarSeason?.days, nowMs)
-          : [];
+        task.id === "calendar1999" ? calendarOptionGroups(prefs, world?.calendarSeason, nowMs) : [];
       const picks = optionsWhy(options);
       // A named reward is the better headline, so it stands in for the task's own
       // detail; a pool label is weaker and only ever appends to it.
@@ -379,8 +461,16 @@ export const dailiesProvider: SuggestionProvider = {
         .join(" - ");
       const art = rewardArt(task.id, reward, pool);
       const period = periodKey ?? task.id;
-      const value =
-        circuit?.value ?? reward?.value ?? taskRewardValue(task.id) ?? BASE_VALUE[category];
+      // The week's own picks are the whole of what Circuit pays. Everything else
+      // is worth the best thing it resolved, from world state, its drop pool or
+      // the curated table - a resolved reward can never demote its own task.
+      const value = circuit
+        ? circuit.value
+        : bestOf([reward?.value, pool?.value, taskWorth(prefs, task.id)]);
+      // A boost lifts a levelling run past its neighbours, never past its group.
+      const boosted = boostLine
+        ? Math.min(bandCeiling(groupForWorth(value)), value + AFFINITY_BOOST_VALUE)
+        : value;
 
       drafts.push({
         id: `dailies:${task.id}`,
@@ -394,9 +484,9 @@ export const dailiesProvider: SuggestionProvider = {
         choices: circuit?.choices,
         whyWithReward: withReward === why ? undefined : withReward,
         signals: {
-          value: boostLine ? clamp01(value + AFFINITY_BOOST_VALUE) : value,
-          effort: circuit?.effort ?? effortFor(task.target) + missionEffort(missions),
-          urgency: urgencyFromExpiry(expiry, nowMs),
+          value: boosted,
+          effort: circuit?.effort ?? effortFor(remaining) + missionEffort(missions),
+          urgency: urgencyFromExpiry(expiry, nowMs, windowFor(task.period, world)),
         },
         // The promoted reward is what the card is about, so a dismissal lifts
         // once a better one comes round rather than riding out the whole season.
@@ -406,35 +496,6 @@ export const dailiesProvider: SuggestionProvider = {
         complete: { taskId: task.id, periodKey, count: done, target: task.target },
         wiki: task.wiki,
         details: detailsFor(prefs, missionNames, pool, expiry, options),
-      });
-    }
-
-    const nightwave = prefs.activities[NIGHTWAVE_ACTIVITY] ?? "normal";
-
-    for (const act of nightwave === "never" ? [] : (world?.nightwave?.challenges ?? [])) {
-      const id = `nw:${act.id}`;
-      if (tracker.hidden.includes(id)) continue;
-
-      const periodKey = act.expiry ? `nw:${act.expiry}` : null;
-      const progress = auto[id]?.progress;
-      const done = Math.max(trackerCount(tracker, id, periodKey, nowMs), auto[id]?.count ?? 0);
-      if (done > 0) continue;
-
-      drafts.push({
-        id: `dailies:${id}`,
-        category: "nightwave",
-        title: act.title,
-        why: act.description,
-        signals: {
-          value: BASE_VALUE.nightwave + (act.isElite ? ELITE_BONUS : 0),
-          effort: nightwaveEffort(act.isDaily, act.isElite),
-          urgency: urgencyFromExpiry(act.expiry, nowMs),
-        },
-        fingerprint: periodKey ?? id,
-        deprioritized: nightwave === "low",
-        progress,
-        complete: { taskId: id, periodKey, count: 0, target: 1 },
-        details: act.expiry ? { expiry: act.expiry } : undefined,
       });
     }
 

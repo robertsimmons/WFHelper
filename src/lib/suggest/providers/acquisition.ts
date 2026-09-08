@@ -5,6 +5,7 @@ import { overframeRankingsRevision } from "../../../stores/overframeRankings.js"
 import { resolveAcquisition } from "../acquisition/index.js";
 import { includesTarget } from "../acquisition/kinds.js";
 import { compareAcquisition } from "../acquisition/sort.js";
+import { advances, needsGain } from "../gain.js";
 import { clamp01 } from "../score.js";
 import type { MessageKey } from "../../i18n.js";
 import type {
@@ -21,6 +22,7 @@ import type {
   WhySegment,
 } from "../../../types/suggest.js";
 
+/** Field names are the shipped ratings JSON's, not the vocabulary's. */
 interface RatingEntry {
   rank?: string;
   difficulty?: string;
@@ -29,8 +31,9 @@ interface RatingEntry {
 /** The whole domain answers to one activity setting, as Nightwave's acts do. */
 export const ACQUISITION_ACTIVITY = "acquisition";
 
-/** The feed is a shortlist; there is a whole game's worth of gear behind it. */
-const SUGGESTION_LIMIT = 6;
+/** Deep enough that the pager runs out only when the sweep does. Unmeasured:
+ *  a lift needs a perf run behind it. */
+const SUGGESTION_LIMIT = 40;
 
 /** Every part is in hand and the foundry will take it: nothing left to farm. */
 const READY_EFFORT = 0.05;
@@ -144,14 +147,14 @@ function whySegments(target: AcquisitionTarget, t: SuggestionContext["t"]): WhyS
 
 let cached: { keys: readonly unknown[]; targets: AcquisitionTarget[] } | null = null;
 
-/** The player's own tier and difficulty in the shape the resolver reads supplied
+/** The player's own tier and effort in the shape the resolver reads supplied
  *  ratings in, which is what puts them above the shipped and overframe tables.
  *  Storing them by name is also what carries them over a data regeneration. */
 export function acquisitionRatings(prefs: SuggestionPreferences): Record<string, RatingEntry> {
   const source: Record<string, RatingEntry> = {};
-  for (const [name, rank] of Object.entries(prefs.acquisitionTiers)) source[name] = { rank };
-  for (const [name, difficulty] of Object.entries(prefs.acquisitionDifficulty)) {
-    source[name] = { ...source[name], difficulty };
+  for (const [name, tier] of Object.entries(prefs.acquisitionTiers)) source[name] = { rank: tier };
+  for (const [name, effort] of Object.entries(prefs.acquisitionEffort)) {
+    source[name] = { ...source[name], difficulty: effort };
   }
   return source;
 }
@@ -166,8 +169,8 @@ function targetsFor(ctx: SuggestionContext): AcquisitionTarget[] {
     ctx.relicDb,
     ctx.plat,
     prefs.acquisitionTiers,
-    prefs.acquisitionDifficulty,
-    // A refreshed overframe table changes every rank the sweep just cached.
+    prefs.acquisitionEffort,
+    // A refreshed overframe table changes every tier the sweep just cached.
     get(overframeRankingsRevision),
   ] as const;
   if (cached && keys.every((key, index) => cached?.keys[index] === key)) return cached.targets;
@@ -190,35 +193,41 @@ export const acquisitionProvider: SuggestionProvider = {
     const activity = prefs.activities[ACQUISITION_ACTIVITY] ?? "normal";
     if (activity === "never") return [];
 
-    return targetsFor(ctx)
-      .filter((target) => includesTarget(prefs.options.acquisitionKinds, target))
-      .map((target) => ({ target, effort: effortFor(target) }))
-      .sort(compareAcquisition(prefs.options.acquisitionSort, prefs.options.acquisitionSortDir))
-      .slice(0, SUGGESTION_LIMIT)
-      .map(({ target, effort }, order) => {
-        const total = totalParts(target.parts);
-        const owned = ownedParts(target.parts);
-        const segments = whySegments(target, t);
-        return {
-          id: `acquisition:${target.uniqueName}`,
-          order,
-          category: "acquisition" as const,
-          title: t(titleKey(target), { item: target.displayName ?? target.name }),
-          why: segments.map((segment) => segment.text).join(" - "),
-          whySegments: segments,
-          reward: { name: target.name, uniqueName: target.uniqueName },
-          ...(target.rank ? { grade: target.rank } : {}),
-          // Easiest first is the whole point, so value has to run with effort
-          // rather than against the scorer's own effort penalty.
-          signals: { value: 1 - effort, effort, urgency: 0 },
-          // Every part handed in changes the grind, so a dismissal lifts once
-          // the player has actually got one of them.
-          fingerprint: `${target.uniqueName}|${target.needs.join("+")}|${owned}/${total}`,
-          deprioritized: activity === "low",
-          ...(total > 0 ? { progress: { current: owned, required: total } } : {}),
-          wiki: target.name,
-          details: { acquisition: target },
-        };
-      });
+    return (
+      targetsFor(ctx)
+        // A weapon already mastered and a frame already owned and subsumed are
+        // finished; the resolver still lists gear whose only open reason is an
+        // Incarnon adapter, which is not a reason to build anything.
+        .filter((target) => advances(needsGain(target.needs)))
+        .filter((target) => includesTarget(prefs.options.acquisitionKinds, target))
+        .map((target) => ({ target, effort: effortFor(target) }))
+        .sort(compareAcquisition(prefs.options.acquisitionSort, prefs.options.acquisitionSortDir))
+        .slice(0, SUGGESTION_LIMIT)
+        .map(({ target, effort }, order) => {
+          const total = totalParts(target.parts);
+          const owned = ownedParts(target.parts);
+          const segments = whySegments(target, t);
+          return {
+            id: `acquisition:${target.uniqueName}`,
+            order,
+            category: "acquisition" as const,
+            title: t(titleKey(target), { item: target.displayName ?? target.name }),
+            why: segments.map((segment) => segment.text).join(" - "),
+            whySegments: segments,
+            reward: { name: target.name, uniqueName: target.uniqueName },
+            ...(target.tier ? { tier: target.tier } : {}),
+            // Easiest first is the whole point, so value has to run with effort
+            // rather than against the scorer's own effort penalty.
+            signals: { value: 1 - effort, effort, urgency: 0, gain: needsGain(target.needs) },
+            // Every part handed in changes the grind, so a dismissal lifts once
+            // the player has actually got one of them.
+            fingerprint: `${target.uniqueName}|${target.needs.join("+")}|${owned}/${total}`,
+            deprioritized: activity === "low",
+            ...(total > 0 ? { progress: { current: owned, required: total } } : {}),
+            wiki: target.name,
+            details: { acquisition: target },
+          };
+        })
+    );
   },
 };

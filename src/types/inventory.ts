@@ -95,6 +95,12 @@ export interface RawInventoryEntry {
   CompletionDate?: unknown;
   /** Parts fitted to a modular build (kitgun, zaw, amp, K-Drive, Moa). */
   ModularParts?: string[];
+  /** The upgrade fitted to the row itself. Kuva, Tenet and Coda weapons carry
+   *  `.../KuvaLich/Upgrades/InnateDamageRandomMod` for their valence bonus. */
+  UpgradeType?: string;
+  /** JSON string; `{ compat, buffs: [{ Tag, Value }] }`. The valence bonus reads
+   *  its element off `Tag` and its percentage off the encoded `Value`. */
+  UpgradeFingerprint?: string;
   [key: string]: unknown;
 }
 

@@ -5,6 +5,26 @@ import type { ItemDbEntry } from "../../types/inventory.js";
 /** Packs and bundles grant their contents, so a count of the wrapper says nothing. */
 const PACK_PATH = /\/(?:BoosterPacks|Packages)\//i;
 
+/** A pack of one stacking resource counts as that resource - the 1999 calendar
+ *  pays its Kuva and Vosfor through these wrappers. Packs that roll their
+ *  contents still count as nothing. */
+const PACK_GRANTS: Record<string, string> = {
+  "/Lotus/Types/StoreItems/Packages/Calendar/CalendarKuvaBundleSmall":
+    "/Lotus/Types/Items/MiscItems/Kuva",
+  "/Lotus/Types/StoreItems/Packages/Calendar/CalendarKuvaBundleLarge":
+    "/Lotus/Types/Items/MiscItems/Kuva",
+  "/Lotus/Types/StoreItems/Packages/Calendar/CalendarVosforPack":
+    "/Lotus/Types/Items/MiscItems/DistillPoints",
+};
+
+/** Endo and Dirac rewards are fusion bundles: a grant of an account balance the
+ *  inventory holds no row for, so any count of one reads zero and lies. */
+const FUSION_BUNDLE_PATH = /\/FusionBundles\//i;
+
+/** Drop and calendar names carry the amount ("1,500X Endo"), and the shared
+ *  prefix strip stops at a thousands separator. */
+const COUNT_PREFIX = /^\d[\d,]*\s*[xk]?\s+/i;
+
 export interface OwnedReward {
   owned: number;
   /** Copies of the item already built, where the reward is its blueprint. */
@@ -12,6 +32,19 @@ export interface OwnedReward {
   /** Builds the foundry is running for it right now. Absent, never zero: a caller
    *  with no pending map has not read the foundry rather than found it idle. */
   pending?: number | undefined;
+  /** A resource, which the player always wants more of, rather than gear that is
+   *  earned once. */
+  stacks?: boolean | undefined;
+}
+
+/** Mastery gear is paid for once, which is what `masterable` marks; everything
+ *  else piles up. An item no export names stacks, since resources are what the
+ *  reward tables are thickest with. */
+export function rewardStacks(
+  uniqueName: string | null | undefined,
+  itemDb: Record<string, ItemDbEntry>,
+): boolean {
+  return !uniqueName || itemDb[uniqueName]?.masterable !== true;
 }
 
 function ownedReward(
@@ -20,13 +53,15 @@ function ownedReward(
   ownership: Map<string, number>,
   foundryPending?: Map<string, number>,
 ): OwnedReward | null {
-  if (!uniqueName || PACK_PATH.test(uniqueName)) return null;
-  const owned = ownedComponentCount(uniqueName, ownership);
-  const product = itemDb[uniqueName]?.buildsProduct;
+  const path = uniqueName ? (PACK_GRANTS[uniqueName] ?? uniqueName) : uniqueName;
+  if (!path || PACK_PATH.test(path) || FUSION_BUNDLE_PATH.test(path)) return null;
+  const owned = ownedComponentCount(path, ownership);
+  const product = itemDb[path]?.buildsProduct;
   // One build is keyed under both its names, so a max over aliases never doubles it.
-  const pending = foundryPending ? ownedComponentCount(uniqueName, foundryPending) : 0;
+  const pending = foundryPending ? ownedComponentCount(path, foundryPending) : 0;
   return {
     owned,
+    stacks: rewardStacks(path, itemDb),
     ...(product ? { built: ownedComponentCount(product, ownership) } : {}),
     ...(pending > 0 ? { pending } : {}),
   };
@@ -39,7 +74,8 @@ export function ownedRewardByName(
   ownership: Map<string, number>,
   foundryPending?: Map<string, number>,
 ): OwnedReward | null {
-  return ownedReward(resolveRewardUniqueName(name, itemDb), itemDb, ownership, foundryPending);
+  const bare = name.replace(COUNT_PREFIX, "").trim();
+  return ownedReward(resolveRewardUniqueName(bare, itemDb), itemDb, ownership, foundryPending);
 }
 
 /** The count for a reward named either way, or null where none can be trusted:

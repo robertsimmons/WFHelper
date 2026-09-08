@@ -6,26 +6,36 @@ import {
   trackerList,
   trackerPeriodKey,
 } from "../../world/dailies.js";
-import { trackerExpiries, trackerLive } from "../../world/dailiesLive.js";
+import { bird3ShardColor, trackerExpiries, trackerLive } from "../../world/dailiesLive.js";
+import { buildOwnership } from "../acquisition/parts.js";
+import { FULL_GAIN, advances, ownedGain } from "../gain.js";
+import { ownedRewardFor } from "../ownedRewards.js";
+import { bestWorth, rewardValue } from "../rewards.js";
 import { urgencyFromExpiry } from "../score.js";
+import { UNPLACED_WORTH, UNRESOLVED_WORTH, bandCeiling } from "../worthLadder.js";
 import {
+  bestValenceOffer,
+  setValenceRows,
   valenceDoc,
-  valenceOffers,
-  valenceValueFloor,
+  valenceOffersFor,
   type ValenceOffer,
-  type ValenceTier,
+  type ValenceVerdict,
 } from "../valence.js";
 import { vendorOffers, type VendorOffer } from "../vendorOffers.js";
+import { resolveRewardUniqueName } from "../../bountyRewards.js";
 import type {
   SuggestionContext,
   SuggestionDraft,
+  SuggestionPreferences,
   SuggestionProvider,
   WhySegment,
 } from "../../../types/suggest.js";
+import type { ItemDbEntry } from "../../../types/inventory.js";
 import type { VaultTrader, WorldState } from "../../../types/world.js";
 
 type VendorId =
   | "baro"
+  | "varzia"
   | "darvo"
   | "palladino"
   | "acrithis"
@@ -36,6 +46,7 @@ type VendorId =
 
 const VENDOR_IDS: readonly string[] = [
   "baro",
+  "varzia",
   "darvo",
   "palladino",
   "acrithis",
@@ -45,34 +56,92 @@ const VENDOR_IDS: readonly string[] = [
   "codaWeapons",
 ];
 
-/** Baro's stop is the rarer of the two travellers; Darvo's deal comes round
- *  every day. The standing vendors are worth a trip once their rotation turns. */
-const VALUE: Record<VendorId, number> = {
-  baro: 0.7,
-  darvo: 0.35,
-  palladino: 0.5,
-  acrithis: 0.5,
-  bird3: 0.55,
-  yonta: 0.4,
-  tenetMelee: 0.45,
-  codaWeapons: 0.45,
-};
-
-/** Ducats are farmed; Darvo's discount is still platinum out of pocket. The rest
- *  are priced in currencies that take a run of their own to earn. */
-const EFFORT: Record<VendorId, number> = {
-  baro: 0.2,
-  darvo: 0.3,
-  palladino: 0.5,
-  acrithis: 0.5,
-  bird3: 0.4,
-  yonta: 0.5,
-  tenetMelee: 0.7,
-  codaWeapons: 0.7,
-};
+/** The two stalls whose stock comes off the rotation table rather than world
+ *  state, so an unread table is an unknown rotation and not an empty one. */
+const VALENCE_VENDORS: readonly string[] = ["tenetMelee", "codaWeapons"];
 
 /** The details view lays the stock out as one wrapping line. */
 const STOCK_LIMIT = 12;
+
+/** Bird 3 holds one Archon Shard colour a week off a three-week rotation, so
+ *  the whole curated list is the rotation and only one row of it is his stock. */
+const BIRD3 = "bird3";
+
+/** What the curated table says a vendor is holding now: the whole table for a
+ *  stall whose stock does not move, and this week's row where it does. */
+export function liveVendorOffers(taskId: string, nowMs: number): VendorOffer[] {
+  const offers = vendorOffers(taskId);
+  if (taskId !== BIRD3) return offers;
+  const color = bird3ShardColor(nowMs).toLowerCase();
+  const held = offers.filter((offer) => offer.name.toLowerCase().startsWith(color));
+  return held.length > 0 ? held : offers;
+}
+
+/** One thing a stall is holding, against what this player already has. */
+interface HeldOffer {
+  name: string;
+  gain: number;
+}
+
+/** Mastery gear pays once, so owning it ends the reason to buy it. Resources,
+ *  mods, arcanes and adapters stack, so a second is as good as the first. */
+function ownershipGain(
+  name: string,
+  itemDb: Record<string, ItemDbEntry>,
+  ownership: Map<string, number>,
+): number {
+  const uniqueName = resolveRewardUniqueName(name, itemDb);
+  if (!uniqueName) return FULL_GAIN;
+  const stacks = itemDb[uniqueName]?.masterable !== true;
+  return ownedGain(ownedRewardFor({ name, uniqueName }, itemDb, ownership), stacks);
+}
+
+/** What the stall is holding: its live manifest where world state carries one,
+ *  and the curated table for the vendors it does not. Null is a stall nothing
+ *  named, which is unknown rather than empty. */
+function heldOffers(
+  stock: readonly string[],
+  taskId: string,
+  nowMs: number,
+  itemDb: Record<string, ItemDbEntry>,
+  ownership: Map<string, number>,
+): HeldOffer[] | null {
+  const names =
+    stock.length > 0 ? stock : liveVendorOffers(taskId, nowMs).map((offer) => offer.name);
+  if (names.length === 0) return null;
+  return names.map((name) => ({ name, gain: ownershipGain(name, itemDb, ownership) }));
+}
+
+/** A card stands for a whole stall, so it is worth the best thing on the table
+ *  that this player still needs: most stalls hold one rotating slot that ever
+ *  matters. Nothing needed is zero worth, which still shows the card. */
+function stallWorth(prefs: SuggestionPreferences, held: readonly HeldOffer[]): number {
+  let best = 0;
+  for (const offer of held) {
+    if (!advances(offer.gain)) continue;
+    const worth = (rewardValue(prefs, offer.name) ?? UNPLACED_WORTH) * offer.gain;
+    if (worth > best) best = worth;
+  }
+  return best;
+}
+
+/** A stall whose stock has not loaded is unknown, not worthless: score it off
+ *  what the vendor could be holding, and settle for a floor when nothing names
+ *  even that. */
+function unknownStallWorth(prefs: SuggestionPreferences, taskId: string, nowMs: number): number {
+  const names = liveVendorOffers(taskId, nowMs).map((offer) => offer.name);
+  if (names.length === 0) return UNRESOLVED_WORTH;
+  return bestWorth(prefs, names) ?? UNRESOLVED_WORTH;
+}
+
+/** Vendors whose stock is never worth pricing. Darvo discounts one arbitrary
+ *  market item, and Varzia sells vaulted relics by the fistful; neither is a
+ *  reason to log in, and both are only here so the trip is not forgotten. */
+const FLAT_FILLER: readonly string[] = ["darvo", "varzia"];
+
+function isFlatFiller(taskId: string): boolean {
+  return FLAT_FILLER.includes(taskId);
+}
 
 type DailyDeal = NonNullable<WorldState["dailyDeals"]>[number];
 
@@ -118,32 +187,49 @@ function presenceOf(
   nowMs: number,
 ): Presence | null {
   if (id === "baro") return traderPresence(world?.voidTrader, nowMs);
+  if (id === "varzia") return traderPresence(world?.vaultTrader, nowMs);
   if (id === "darvo") return darvoPresence(world?.dailyDeals?.[0], nowMs);
   return curatedPresence(period, now);
 }
 
-const WHY_KEY: Record<ValenceTier, MessageKey> = {
-  capped: "nextUp.whyValenceCapped",
-  oneAway: "nextUp.whyValenceOneAway",
-  twoAway: "nextUp.whyValenceTwoAway",
-  ordinary: "nextUp.whyValence",
+const WHY_KEY: Record<ValenceVerdict, MessageKey> = {
+  done: "nextUp.whyValenceNothing",
+  secondCopy: "nextUp.whyValenceSecondCopy",
+  caps: "nextUp.whyValenceCaps",
+  ready: "nextUp.whyValenceReady",
+  short: "nextUp.whyValence",
 };
+
+/** Only an offer that puts the cap in reach is worth the trip on its own. */
+const WORTH_THE_TRIP: readonly ValenceVerdict[] = ["caps", "ready"];
 
 /** The wiki always reports one decimal place, so a whole number reads as one. */
 function rollFields(roll: ValenceOffer): Record<string, string> {
-  return { name: roll.name, element: roll.element, bonus: roll.bonus.toFixed(1) };
+  return {
+    name: roll.displayName ?? roll.name,
+    element: roll.element,
+    bonus: roll.bonus.toFixed(1),
+    owned: roll.owned === null ? "" : roll.owned.toFixed(1),
+    result: roll.result.toFixed(1),
+  };
 }
 
 function whySegments(
   presence: string,
-  roll: ValenceOffer | undefined,
+  rolls: readonly ValenceOffer[],
   t: SuggestionContext["t"],
 ): WhySegment[] {
   const segments: WhySegment[] = [{ text: presence }];
+  const roll = rolls[0];
   if (!roll) return segments;
-  const text = t(WHY_KEY[roll.tier], rollFields(roll));
-  const worthIt = roll.tier === "capped" || roll.tier === "oneAway";
-  segments.push(worthIt ? { text, tone: "good" } : { text });
+  // Every weapon on the table is already finished, so the rotation itself is
+  // the only reason left to look.
+  if (!bestValenceOffer(rolls)) {
+    segments.push({ text: t(WHY_KEY.done) });
+    return segments;
+  }
+  const text = t(WHY_KEY[roll.verdict], rollFields(roll));
+  segments.push(WORTH_THE_TRIP.includes(roll.verdict) ? { text, tone: "good" } : { text });
   return segments;
 }
 
@@ -153,8 +239,12 @@ function valencePool(rolls: readonly ValenceOffer[], t: SuggestionContext["t"]):
 
 /** The weapon actually worth buying this rotation, where the curated table can
  *  name it; art and ownership both hang off the curated unique name. */
-function rewardFor(taskId: string, roll: ValenceOffer | undefined): VendorOffer | undefined {
-  const offers = vendorOffers(taskId);
+function rewardFor(
+  taskId: string,
+  nowMs: number,
+  roll: ValenceOffer | undefined,
+): VendorOffer | undefined {
+  const offers = liveVendorOffers(taskId, nowMs);
   if (!roll) return offers[0];
   const needle = roll.name.toLowerCase();
   return offers.find((offer) => offer.name.toLowerCase() === needle) ?? offers[0];
@@ -164,10 +254,11 @@ export const vendorsProvider: SuggestionProvider = {
   id: "vendors",
 
   collect(ctx: SuggestionContext): SuggestionDraft[] {
-    const { tracker, world, prefs, nowMs, t } = ctx;
+    const { tracker, world, prefs, itemDb, nowMs, t } = ctx;
     const now = new Date(nowMs);
     const expiries = trackerExpiries(world);
     const valence = valenceDoc();
+    const ownership = buildOwnership(ctx.inventory, itemDb);
     const drafts: SuggestionDraft[] = [];
 
     for (const task of trackerList(tracker)) {
@@ -184,24 +275,36 @@ export const vendorsProvider: SuggestionProvider = {
       if (done >= task.target) continue;
 
       const live = trackerLive(task.id, world, t, nowMs);
-      const rolls = valenceOffers(valence, task.id, nowMs);
-      const best = rewardFor(task.id, rolls[0]);
-      const segments = whySegments(live.detail ?? t("nextUp.whyVendorHere"), rolls[0], t);
+      const rolls = valenceOffersFor(valence, task.id, nowMs, ctx.inventory, ctx.itemDb);
+      const best = rewardFor(task.id, nowMs, rolls[0]);
+      const segments = whySegments(live.detail ?? t("nextUp.whyVendorHere"), rolls, t);
       const pool = here.stock.length > 0 ? here.stock : valencePool(rolls, t);
+      const id = `vendors:${task.id}`;
+      setValenceRows(id, rolls);
+
+      const held = VALENCE_VENDORS.includes(task.id)
+        ? rolls.length > 0
+          ? rolls.map((roll) => ({ name: roll.name, gain: roll.gain }))
+          : null
+        : heldOffers(here.stock, task.id, nowMs, itemDb, ownership);
 
       drafts.push({
-        id: `vendors:${task.id}`,
+        id,
         category: "vendor",
         title: task.label ?? t(`dailies.task.${task.id}` as MessageKey),
         why: segments.map((segment) => segment.text).join(", "),
         whySegments: segments.length > 1 ? segments : undefined,
         reward: best ? { name: best.name, uniqueName: best.uniqueName } : undefined,
+        ...(rolls[0]?.tier ? { tier: rolls[0].tier } : {}),
         signals: {
-          value: Math.max(
-            VALUE[task.id as VendorId],
-            rolls[0] ? valenceValueFloor(rolls[0].tier) : 0,
-          ),
-          effort: EFFORT[task.id as VendorId],
+          value: isFlatFiller(task.id)
+            ? bandCeiling("filler")
+            : held === null
+              ? unknownStallWorth(prefs, task.id, nowMs)
+              : stallWorth(prefs, held),
+          // A vendor trip is near-free once the currency is banked, and effort
+          // orders nothing regardless.
+          effort: 0,
           urgency: urgencyFromExpiry(here.expiry, nowMs),
         },
         // Baro keys off the visit's activation, Darvo off the deal's expiry, so

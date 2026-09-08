@@ -1,5 +1,7 @@
 import { isDismissed, suggestionKey, type DismissalState } from "./dismissals.js";
-import { scoreSignals } from "./score.js";
+import { advances, gainOf } from "./gain.js";
+import { bandFor, effectiveWorth, orderingScore, timeLeftMs } from "./score.js";
+import { unplacedCount } from "./unplaced.js";
 import {
   SUGGESTION_CATEGORIES,
   type Suggestion,
@@ -13,14 +15,34 @@ export interface SuggestionFeed {
   sections: Record<SuggestionCategory, Suggestion[]>;
   /** How many suggestions the user is currently choosing not to see. */
   hiddenCount: number;
+  /** Resolved reward names the worth ladder has no place for, so settings can
+   *  show the coverage gap rather than a middling score hiding it. */
+  unplacedCount: number;
   /** Every live dismissal key against its current fingerprint, for pruning. */
   fingerprints: Map<string, string>;
 }
 
-/** A band, not a penalty: a turned-down activity keeps its own ranking, below
- *  everything else, however good its score is. */
-function band(suggestion: Suggestion): number {
+/** A band, not a penalty: a turned-down activity keeps its own order, below
+ *  everything else, however good its worth is. */
+function turnedDown(suggestion: Suggestion): number {
   return suggestion.deprioritized ? 1 : 0;
+}
+
+/** Bands first, then worth, then time left. A section whose controls choose its
+ *  order reads `order` instead. Effort orders nothing. */
+export function compareSuggestions(a: Suggestion, b: Suggestion, nowMs: number): number {
+  return (
+    turnedDown(a) - turnedDown(b) ||
+    bandFor(a, nowMs) - bandFor(b, nowMs) ||
+    effectiveWorth(b.signals) - effectiveWorth(a.signals) ||
+    timeLeftMs(a, nowMs) - timeLeftMs(b, nowMs) ||
+    a.id.localeCompare(b.id)
+  );
+}
+
+/** Nothing this player stands to gain from is not a suggestion at all. */
+function stillWanted(suggestion: Suggestion): boolean {
+  return advances(gainOf(suggestion.signals));
 }
 
 export function collectSuggestions(
@@ -29,8 +51,9 @@ export function collectSuggestions(
 ): Suggestion[] {
   return providers
     .flatMap((provider) => provider.collect(ctx))
-    .map((draft) => ({ ...draft, score: scoreSignals(draft.signals, ctx.prefs.weights) }))
-    .sort((a, b) => band(a) - band(b) || b.score - a.score || a.id.localeCompare(b.id));
+    .map((draft) => ({ ...draft, score: orderingScore(draft, ctx.nowMs) }))
+    .filter(stillWanted)
+    .sort((a, b) => compareSuggestions(a, b, ctx.nowMs));
 }
 
 function emptySections(): Record<SuggestionCategory, Suggestion[]> {
@@ -56,5 +79,5 @@ export function buildFeed(
     sections[suggestion.category].push(suggestion);
   }
 
-  return { sections, hiddenCount, fingerprints };
+  return { sections, hiddenCount, unplacedCount: unplacedCount(), fingerprints };
 }

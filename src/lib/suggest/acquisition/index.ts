@@ -195,8 +195,8 @@ export function resolveAcquisition(ctx: AcquisitionContext): AcquisitionTarget[]
       needs: item.needs,
       parts,
       paths,
-      difficulty: ratings.difficultyLabel(item.name),
-      rank: ratings.rank(item.name),
+      difficulty: ratings.effortLabel(item.name),
+      tier: ratings.tier(item.name),
       wiki: item.entry.wikiaUrl ?? null,
       effort: paths[0]?.effort ?? NO_PATH_EFFORT,
     };

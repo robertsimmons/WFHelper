@@ -8,12 +8,14 @@ const SHARD = "/Lotus/Types/Gameplay/NarmerSorties/ArchonCrystalRed";
 const ADAPTER = "/Lotus/Types/Recipes/Components/MeleeIncarnonAdapterBlueprint";
 const ADAPTER_BUILT = "/Lotus/Types/Items/MiscItems/MeleeIncarnonAdapter";
 const PACK = "/Lotus/Types/BoosterPacks/CalendarPack";
+const BRATON = "/Lotus/Weapons/Tenno/Rifle/PrimeBratonRifle";
 
 const ITEM_DB = {
   [FORMA]: { name: "Forma Blueprint" },
   [SHARD]: { name: "Crimson Archon Shard" },
   [ADAPTER]: { name: "Melee Incarnon Adapter Blueprint", buildsProduct: ADAPTER_BUILT },
   [PACK]: { name: "Calendar Pack" },
+  [BRATON]: { name: "Braton Prime", masterable: true },
 } as unknown as Record<string, ItemDbEntry>;
 
 const OWNERSHIP = new Map([
@@ -21,29 +23,40 @@ const OWNERSHIP = new Map([
   [SHARD, 3],
   [ADAPTER, 2],
   [ADAPTER_BUILT, 1],
+  [BRATON, 1],
 ]);
 
 describe("ownedRewardFor", () => {
   it("counts a reward the world state named by uniqueName", () => {
     expect(
       ownedRewardFor({ name: "Crimson Archon Shard", uniqueName: SHARD }, ITEM_DB, OWNERSHIP),
-    ).toEqual({ owned: 3 });
+    ).toEqual({ owned: 3, stacks: true });
   });
 
   it("counts a reward the drop pool named only in words", () => {
-    expect(ownedRewardFor({ name: "Forma Blueprint" }, ITEM_DB, OWNERSHIP)).toEqual({ owned: 12 });
+    expect(ownedRewardFor({ name: "Forma Blueprint" }, ITEM_DB, OWNERSHIP)).toEqual({
+      owned: 12,
+      stacks: true,
+    });
   });
 
   it("splits a blueprint from the copies already built", () => {
     expect(
       ownedRewardFor({ name: "Melee Incarnon Adapter Blueprint" }, ITEM_DB, OWNERSHIP),
-    ).toEqual({ owned: 2, built: 1 });
+    ).toEqual({ owned: 2, built: 1, stacks: true });
   });
 
   it("reports nothing owned rather than nothing at all", () => {
     expect(ownedRewardFor({ name: "Forma Blueprint" }, ITEM_DB, new Map([[SHARD, 1]]))).toEqual({
       owned: 0,
+      stacks: true,
     });
+  });
+
+  it("marks mastery gear as earned once rather than stacking", () => {
+    expect(
+      ownedRewardFor({ name: "Braton Prime", uniqueName: BRATON }, ITEM_DB, OWNERSHIP),
+    ).toEqual({ owned: 1, stacks: false });
   });
 
   it("reports the builds the foundry is running for it", () => {
@@ -54,19 +67,19 @@ describe("ownedRewardFor", () => {
         OWNERSHIP,
         new Map([[ADAPTER, 2]]),
       ),
-    ).toEqual({ owned: 2, built: 1, pending: 2 });
+    ).toEqual({ owned: 2, built: 1, pending: 2, stacks: true });
   });
 
   it("counts a build for a reward the drop pool named only in words", () => {
     expect(
       ownedRewardFor({ name: "Forma Blueprint" }, ITEM_DB, OWNERSHIP, new Map([[FORMA, 1]])),
-    ).toEqual({ owned: 12, pending: 1 });
+    ).toEqual({ owned: 12, pending: 1, stacks: true });
   });
 
   it("leaves the foundry count off when nothing is building", () => {
     expect(
       ownedRewardFor({ name: "Forma Blueprint" }, ITEM_DB, OWNERSHIP, new Map([[ADAPTER, 3]])),
-    ).toEqual({ owned: 12 });
+    ).toEqual({ owned: 12, stacks: true });
   });
 
   it("says nothing for a name no item answers to", () => {

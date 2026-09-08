@@ -5,22 +5,29 @@ import {
   DEFAULT_OPTIONS,
   MISSION_TYPE_NAMES,
   UNRATED,
+  WORTH_OVERRIDES,
+  canonicalWorth,
   defaultPreferences,
   mergePreferences,
   migrateLegacyOptions,
+  parseLadderOrder,
+  parseNightwaveStock,
   parseOptions,
   parseOverrides,
   type SuggestionOverrides,
 } from "../../../../src/lib/suggest/preferences.js";
+import { DEFAULT_NIGHTWAVE_STOCK, NIGHTWAVE_STAPLES } from "../../../../src/types/suggest.js";
 import type { ActivityPref } from "../../../../src/types/suggest.js";
 
 function overrides(partial: Partial<SuggestionOverrides> = {}): SuggestionOverrides {
   return {
     rewards: {},
+    rewardOrder: {},
     missionTypes: {},
     activities: {},
     acquisitionTiers: {},
-    acquisitionDifficulty: {},
+    acquisitionEffort: {},
+    nightwaveStock: {},
     options: {},
     weights: {},
     ...partial,
@@ -30,8 +37,17 @@ function overrides(partial: Partial<SuggestionOverrides> = {}): SuggestionOverri
 describe("defaultPreferences", () => {
   it("keys the curated tables by their normalized names", () => {
     const prefs = defaultPreferences();
+    expect(prefs.worth["umbra forma"]).toBe("must");
     expect(prefs.rewards["umbra forma"]).toBe("great");
     expect(prefs.missionTypes["spy"]).toBe("bad");
+  });
+
+  it("projects every ladder group onto the four tiers the components draw", () => {
+    const prefs = defaultPreferences();
+    expect(prefs.rewards["forma"]).toBe("good");
+    expect(prefs.rewards["kuva"]).toBe("ok");
+    expect(prefs.rewards["focus points"]).toBe("low");
+    expect(prefs.rewards["credits"]).toBe("low");
   });
 
   it("rates no activity, so everything starts normal", () => {
@@ -43,10 +59,36 @@ describe("mergePreferences", () => {
   it("lets an override win over the shipped rating", () => {
     const merged = mergePreferences(
       defaultPreferences(),
-      overrides({ rewards: { kuva: "great" }, missionTypes: { spy: "good" } }),
+      overrides({ rewards: { kuva: "must" }, missionTypes: { spy: "good" } }),
     );
+    expect(merged.worth["kuva"]).toBe("must");
     expect(merged.rewards["kuva"]).toBe("great");
     expect(merged.missionTypes["spy"]).toBe("good");
+  });
+
+  it("reads an override stored on the scale the ladder replaced", () => {
+    expect(canonicalWorth("great")).toBe("must");
+    expect(canonicalWorth("good")).toBe("want");
+    expect(canonicalWorth("ok")).toBe("useful");
+    expect(canonicalWorth("low")).toBe("junk");
+    expect(canonicalWorth("filler")).toBe("filler");
+    expect(canonicalWorth(UNRATED)).toBe(UNRATED);
+  });
+
+  it("keeps every stored override, whichever scale it was spelled on", () => {
+    const raw = JSON.stringify({ kuva: "great", forma: "junk", endo: "nonsense" });
+    const stored = parseOverrides(raw, WORTH_OVERRIDES);
+    expect(stored).toEqual({ kuva: "great", forma: "junk" });
+    const merged = mergePreferences(
+      defaultPreferences(),
+      overrides({
+        rewards: Object.fromEntries(
+          Object.entries(stored).map(([key, value]) => [key, canonicalWorth(value)]),
+        ),
+      }),
+    );
+    expect(merged.worth["kuva"]).toBe("must");
+    expect(merged.worth["forma"]).toBe("junk");
   });
 
   it("drops the shipped rating when the override is the unrated sentinel", () => {
@@ -158,5 +200,106 @@ describe("migrateLegacyOptions", () => {
       { masteryKinds: ["forma"] },
     );
     expect(migrated.options).toEqual({ masteryKinds: ["forma"] });
+  });
+});
+
+describe("parseLadderOrder", () => {
+  it("keys a stored position the way the ladder keys everything else", () => {
+    const raw = JSON.stringify({ "Umbra Forma": 0, "3x Forma": 0.5, "Kuva Blueprint": 1 });
+    expect(parseLadderOrder(raw)).toEqual({ "umbra forma": 0, forma: 0.5, kuva: 1 });
+  });
+
+  it("pulls a hand-edited position back inside the band", () => {
+    expect(parseLadderOrder(JSON.stringify({ kuva: -4, forma: 9 }))).toEqual({
+      kuva: 0,
+      forma: 1,
+    });
+  });
+
+  it("drops anything that is not a position", () => {
+    const raw = JSON.stringify({ kuva: "top", forma: null, endo: Number.NaN, "": 0.5 });
+    expect(parseLadderOrder(raw)).toEqual({});
+  });
+
+  it("falls back to no chosen order at all", () => {
+    expect(parseLadderOrder(null)).toEqual({});
+    expect(parseLadderOrder("not json")).toEqual({});
+    expect(parseLadderOrder("[0.5]")).toEqual({});
+  });
+
+  it("leaves a store that predates the order untouched rather than resetting it", () => {
+    // Everything a pre-ladder store held: worth on the four-tier scale, and no
+    // order key at all.
+    const stored = parseOverrides(JSON.stringify({ kuva: "great" }), WORTH_OVERRIDES);
+    const merged = mergePreferences(
+      defaultPreferences(),
+      overrides({
+        rewards: Object.fromEntries(
+          Object.entries(stored).map(([key, value]) => [key, canonicalWorth(value)]),
+        ),
+        rewardOrder: parseLadderOrder(null),
+      }),
+    );
+    expect(merged.worth["kuva"]).toBe("must");
+    expect(merged.worth["umbra forma"]).toBe("must");
+    expect(merged.rewards["kuva"]).toBe("great");
+  });
+});
+
+describe("parseNightwaveStock", () => {
+  it("keeps a whole count and renormalizes the key it was stored under", () => {
+    const raw = JSON.stringify({ "Orokin  Catalyst": 3, "NITAIN EXTRACT": 0 });
+    expect(parseNightwaveStock(raw)).toEqual({ "orokin catalyst": 3, "nitain extract": 0 });
+  });
+
+  it("drops anything that is not a count of items", () => {
+    const raw = JSON.stringify({
+      "orokin catalyst": "3",
+      "orokin reactor": -1,
+      "nitain extract": 2.5,
+      forma: Number.NaN,
+      "": 4,
+    });
+    expect(parseNightwaveStock(raw)).toEqual({});
+  });
+
+  it("keeps a level stored for a name that is no longer a staple", () => {
+    expect(parseNightwaveStock(JSON.stringify({ forma: 7 }))).toEqual({ forma: 7 });
+  });
+
+  it("falls back to no chosen level at all", () => {
+    expect(parseNightwaveStock(null)).toEqual({});
+    expect(parseNightwaveStock("not json")).toEqual({});
+    expect(parseNightwaveStock("[3]")).toEqual({});
+  });
+});
+
+describe("nightwave keep-on-hand levels", () => {
+  it("ships every staple at the default level", () => {
+    const stock = defaultPreferences().nightwaveStock;
+    for (const name of NIGHTWAVE_STAPLES) expect(stock[name]).toBe(DEFAULT_NIGHTWAVE_STOCK);
+  });
+
+  it("lets a chosen level win, staple by staple", () => {
+    const merged = mergePreferences(
+      defaultPreferences(),
+      overrides({ nightwaveStock: { "nitain extract": 0 } }),
+    );
+    expect(merged.nightwaveStock["nitain extract"]).toBe(0);
+    expect(merged.nightwaveStock["orokin catalyst"]).toBe(DEFAULT_NIGHTWAVE_STOCK);
+  });
+
+  it("leaves a store that predates the levels on the defaults rather than resetting it", () => {
+    const merged = mergePreferences(
+      defaultPreferences(),
+      overrides({
+        rewards: { kuva: "must" },
+        nightwaveStock: parseNightwaveStock(null),
+      }),
+    );
+    expect(merged.worth["kuva"]).toBe("must");
+    for (const name of NIGHTWAVE_STAPLES) {
+      expect(merged.nightwaveStock[name]).toBe(DEFAULT_NIGHTWAVE_STOCK);
+    }
   });
 });

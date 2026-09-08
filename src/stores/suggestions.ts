@@ -11,6 +11,7 @@ import { buildFeed, collectSuggestions, type SuggestionFeed } from "../lib/sugge
 import { acquisitionProvider } from "../lib/suggest/providers/acquisition.js";
 import { dailiesProvider } from "../lib/suggest/providers/dailies.js";
 import { masteryProvider } from "../lib/suggest/providers/mastery.js";
+import { nightwaveProvider } from "../lib/suggest/providers/nightwave.js";
 import { relicsProvider } from "../lib/suggest/providers/relics.js";
 import { vendorsProvider } from "../lib/suggest/providers/vendors.js";
 import { tr } from "../lib/i18n.js";
@@ -29,12 +30,14 @@ import type { PlatPriceLookup } from "../lib/suggest/acquisition/types.js";
 import type { SuggestionProvider, TrackerCompletion } from "../types/suggest.js";
 
 const STORAGE_KEY = "next-up-dismissals";
+// Nightwave reads the acquisition sweep's build totals, so it follows it.
 const PROVIDERS: readonly SuggestionProvider[] = [
   dailiesProvider,
   vendorsProvider,
   relicsProvider,
   acquisitionProvider,
   masteryProvider,
+  nightwaveProvider,
 ];
 /** Urgency is a slope, not a countdown; the cards run their own second timer. */
 const CLOCK_MS = 30_000;

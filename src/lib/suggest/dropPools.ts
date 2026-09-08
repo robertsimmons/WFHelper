@@ -1,5 +1,5 @@
-import { RIVEN_TEMPLATE_URL } from "../assetUrls.js";
-import { resolveRewardIcon } from "../bountyRewards.js";
+import { RIVEN_CARD_URL } from "../assetUrls.js";
+import { resolveRewardIcon, resolveRewardUniqueName } from "../bountyRewards.js";
 import type { DropRow } from "../../../config/shared/dropTypes.js";
 import type { ItemDbEntry } from "../../types/inventory.js";
 
@@ -96,10 +96,38 @@ const PACK_ART_STAND_IN: Record<string, string> = {
     "/Lotus/Upgrades/CosmeticEnhancers/Offensive/AbilityStrengthForMaxHealth",
 };
 
-/** A riven is rolled per player, so no item export pictures one and the name-based
- *  lookup would settle for the generic mod icon. The weapon class varies, the
- *  blank riven card does not. */
+/** A riven is rolled per player, so no item export pictures the one on offer and
+ *  the name-based lookup would settle for the flat mod icon. DE ships one
+ *  randomized mod per weapon class, and each of those carries the veiled card
+ *  art the wiki mirrors. */
 const RIVEN_MOD = /\briven mods?\b/i;
+
+/** Longest first, so "Companion Weapon" is not read as a plain rifle. */
+const RIVEN_CLASSES = [
+  "Companion Weapon",
+  "Archgun",
+  "Shotgun",
+  "Kitgun",
+  "Pistol",
+  "Melee",
+  "Rifle",
+  "Zaw",
+] as const;
+
+/** A pool that names no class means any of them, and the rifle card is the one
+ *  that reads as "a riven". */
+const GENERIC_RIVEN_CLASS = "Rifle";
+
+/** The veiled card for the class the reward names, off the item database, whose
+ *  riven entries already carry the mirrored card art. The bundled card stands in
+ *  where no database has been read. */
+function rivenArt(itemDb: Record<string, ItemDbEntry>, name: string): DropArt {
+  const lower = name.toLowerCase();
+  const weapon = RIVEN_CLASSES.find((riven) => lower.includes(riven.toLowerCase()));
+  const uniqueName = resolveRewardUniqueName(`${weapon ?? GENERIC_RIVEN_CLASS} Riven Mod`, itemDb);
+  const imageUrl = uniqueName ? itemDb[uniqueName]?.imageUrl : undefined;
+  return { imageUrl: imageUrl || RIVEN_CARD_URL, name };
+}
 
 /** uniqueName first because calendar rewards carry one; otherwise by display name. */
 export function resolveDropArt(
@@ -113,7 +141,7 @@ export function resolveDropArt(
   }
   const standIn = uniqueName ? itemDb[PACK_ART_STAND_IN[uniqueName] ?? ""] : undefined;
   if (standIn?.imageUrl) return { imageUrl: standIn.imageUrl, name: displayName(item) };
-  if (RIVEN_MOD.test(item)) return { imageUrl: RIVEN_TEMPLATE_URL, name: displayName(item) };
+  if (RIVEN_MOD.test(item)) return rivenArt(itemDb, displayName(item));
   const imageUrl = resolveRewardIcon(item, itemDb);
   return imageUrl ? { imageUrl, name: displayName(item) } : null;
 }

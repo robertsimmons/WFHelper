@@ -77,6 +77,11 @@ export function formatBuildTime(seconds: number): string {
   return formatDurationMs(seconds * 1000, "buildCompact");
 }
 
+/** "2d 4h", "3h 12m", "18m"; empty for anything already elapsed. */
+export function formatCompactDuration(durationMs: number): string {
+  return formatDurationMs(durationMs, "buildCompact");
+}
+
 /** True only inside a fully dated window; an unparseable bound reads as closed. */
 export function activeWindow(
   activationIso: string | null | undefined,

@@ -1,5 +1,6 @@
 <script lang="ts">
   import SortControl from "../../SortControl.svelte";
+  import { defaultSortDirection } from "../../../lib/filters.js";
   import { tr, type MessageKey } from "../../../lib/i18n.js";
   import {
     setSuggestionOption,
@@ -36,6 +37,9 @@
   function pickSort(value: string): void {
     if (!(RELIC_SORTS as readonly string[]).includes(value)) return;
     setSuggestionOption("relicSort", value as RelicSort);
+    // A payout reads best-first, a recommendation reads top-first; the shared
+    // table owns which way each key leans so the arrow never contradicts itself.
+    setSuggestionOption("relicSortDir", defaultSortDirection(value));
     if (value === "platinum" || value === "ducats") setSuggestionOption("relicGoal", value);
   }
 </script>

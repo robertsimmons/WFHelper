@@ -1,3 +1,4 @@
+import { stripGameTokensFromKey } from "../../../../config/shared/gameMarkup.js";
 import warframes from "../../../data/suggest/warframes.json";
 import type { NemesisBonusRange, NemesisFamily } from "./types.js";
 
@@ -28,9 +29,10 @@ export type CuratedLookup = (name: string) => CuratedEntry;
 
 const EMPTY: CuratedEntry = { difficulty: null, circuit: false, sources: [], nemesis: null };
 
-/** The tables spell "Ack & Brunt" where the game exports "Ack And Brunt". */
+/** The tables spell "Ack & Brunt" where the game exports "Ack And Brunt", and a
+ *  scraped name can still carry the client's `<ARCHWING>` style icon markup. */
 export function nameKey(name: string): string {
-  return name
+  return stripGameTokensFromKey(name)
     .toLowerCase()
     .replace(/\s*&\s*/g, " and ")
     .replace(/\s+/g, " ")

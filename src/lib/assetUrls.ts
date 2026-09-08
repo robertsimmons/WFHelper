@@ -3,6 +3,10 @@ import type { ItemDbEntry } from "../types/inventory.js";
 
 export const PLATINUM_ICON_URL = new URL("../../assets/Platinum.png", import.meta.url).href;
 export const RIVEN_TEMPLATE_URL = new URL("../../assets/RivenTemplate.webp", import.meta.url).href;
+/** A whole veiled-riven card, for a reward tile. The template above is the
+ *  Rivens view's frame, whose lower panel is empty because that view prints
+ *  stat text into it. */
+export const RIVEN_CARD_URL = new URL("../../assets/RivenCard.webp", import.meta.url).href;
 export const FORMA_ICON_URL = new URL("../../assets/Forma.webp", import.meta.url).href;
 export const APP_LOGO_URL = new URL("../../assets/logo.png", import.meta.url).href;
 export const CREDITS_ICON_URL = new URL("../../assets/Bounties/Credits.png", import.meta.url).href;

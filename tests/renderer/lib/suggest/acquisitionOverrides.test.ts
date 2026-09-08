@@ -12,7 +12,7 @@ function prefs(
   tiers: Record<string, string> = {},
   difficulty: Record<string, string> = {},
 ): SuggestionPreferences {
-  return { ...defaultPreferences(), acquisitionTiers: tiers, acquisitionDifficulty: difficulty };
+  return { ...defaultPreferences(), acquisitionTiers: tiers, acquisitionEffort: difficulty };
 }
 
 function target(name: string, preferences: SuggestionPreferences) {
@@ -45,8 +45,8 @@ describe("acquisitionRatings", () => {
 
 describe("a player's own rating", () => {
   it("beats the overframe tier the sweep would otherwise read", () => {
-    expect(target("Volt", prefs()).rank).not.toBe("S");
-    expect(target("Volt", prefs({ volt: "S" })).rank).toBe("S");
+    expect(target("Volt", prefs()).tier).not.toBe("S");
+    expect(target("Volt", prefs({ volt: "S" })).tier).toBe("S");
   });
 
   it("beats the shipped difficulty word", () => {
@@ -55,9 +55,9 @@ describe("a player's own rating", () => {
   });
 
   it("rates an item the shipped tables say nothing about", () => {
-    expect(target("Mag", prefs()).rank).not.toBe("D");
+    expect(target("Mag", prefs()).tier).not.toBe("D");
     const rated = target("Mag", prefs({ mag: "D" }, { mag: "hard" }));
-    expect(rated.rank).toBe("D");
+    expect(rated.tier).toBe("D");
     expect(rated.difficulty).toBe("hard");
   });
 
@@ -74,14 +74,14 @@ describe("a player's own rating", () => {
         }),
         () => regenerated,
       );
-      expect(ratings.rank("Volt")).toBe("S");
-      expect(ratings.difficultyLabel("Volt")).toBe("brutal");
+      expect(ratings.tier("Volt")).toBe("S");
+      expect(ratings.effortLabel("Volt")).toBe("brutal");
     }
   });
 
   it("leaves an item the player has not touched on the shipped rating", () => {
     const ratings = createRatings(acquisitionRatings(prefs({ volt: "S" })), curated, () => "C");
-    expect(ratings.rank("Mag")).toBe("C");
-    expect(ratings.difficultyLabel("Volt")).toBe("easy");
+    expect(ratings.tier("Mag")).toBe("C");
+    expect(ratings.effortLabel("Volt")).toBe("easy");
   });
 });

@@ -1,7 +1,7 @@
 import { writable, type Readable } from "svelte/store";
 
 import { invoke } from "../lib/ipc.js";
-import type { RankTiers } from "../lib/suggest/acquisition/rankings.js";
+import type { ItemTiers } from "../lib/suggest/acquisition/tiers.js";
 
 let fresh: unknown = null;
 let request: Promise<void> | null = null;
@@ -32,11 +32,11 @@ export function loadOverframeRankings(): Promise<void> {
  *  the bundled one until then. `build` is passed in so this never imports the
  *  loader it serves. */
 export function preferFreshRankings(
-  build: (source: unknown) => RankTiers,
+  build: (source: unknown) => ItemTiers,
   bundled: unknown,
-): RankTiers {
+): ItemTiers {
   let source: unknown;
-  let tiers: RankTiers | null = null;
+  let tiers: ItemTiers | null = null;
   return (name) => {
     void loadOverframeRankings();
     const next = fresh ?? bundled;

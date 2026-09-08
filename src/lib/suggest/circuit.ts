@@ -19,7 +19,7 @@ interface IncarnonEntry {
   upgradePath?: string;
 }
 
-const GRADE_VALUE: Record<string, number> = {
+const TIER_VALUE_BY_LETTER: Record<string, number> = {
   "S+": 1.0,
   S: 0.92,
   "S-": 0.86,
@@ -35,11 +35,11 @@ const GRADE_VALUE: Record<string, number> = {
   F: 0.1,
 };
 
-const DIFFICULTY_VALUE: Record<string, number> = { hard: 0.9, normal: 0.7, easy: 0.3 };
+const EFFORT_VALUE: Record<string, number> = { hard: 0.9, normal: 0.7, easy: 0.3 };
 
 // The riven --grade-* tokens run S green through F red, which reads as "S is a
 // win" rather than as a tier, so the Circuit letters take their own ramp.
-const GRADE_CLASS: Record<string, string> = {
+const TIER_CLASS: Record<string, string> = {
   S: "text-[var(--relic-requiem)]",
   A: "text-success",
   B: "text-warning",
@@ -47,9 +47,9 @@ const GRADE_CLASS: Record<string, string> = {
   F: "text-danger",
 };
 
-/** Tailwind class for a letter grade; a suffixed grade takes its letter's colour. */
-export function gradeClass(grade: string | null | undefined): string {
-  return GRADE_CLASS[grade?.charAt(0).toUpperCase() ?? ""] ?? "text-text-muted";
+/** Tailwind class for a tier letter; a suffixed tier takes its letter's colour. */
+export function tierClass(tier: string | null | undefined): string {
+  return TIER_CLASS[tier?.charAt(0).toUpperCase() ?? ""] ?? "text-text-muted";
 }
 
 /** An unresearched frame or adapter is unknown, never bad. */
@@ -82,27 +82,27 @@ function keyed<T>(table: Record<string, T>): Map<string, T> {
   return new Map(Object.entries(table).map(([name, value]) => [nameKey(name), value]));
 }
 
-const GRADES = keyed<IncarnonEntry>(incarnons);
+const INCARNONS = keyed<IncarnonEntry>(incarnons);
 const SOURCES = keyed<WarframeEntry>(warframes);
 
-function difficulty(name: string): string | undefined {
+function effortWord(name: string): string | undefined {
   return SOURCES.get(nameKey(name))?.difficulty;
 }
 
 function frameValue(name: string): number {
-  return DIFFICULTY_VALUE[difficulty(name) ?? ""] ?? UNRATED_FRAME_VALUE;
+  return EFFORT_VALUE[effortWord(name) ?? ""] ?? UNRATED_FRAME_VALUE;
 }
 
-function grade(name: string): string | undefined {
-  return GRADES.get(nameKey(name))?.grade;
+function tier(name: string): string | undefined {
+  return INCARNONS.get(nameKey(name))?.grade;
 }
 
 function upgradePath(name: string): string | undefined {
-  return GRADES.get(nameKey(name))?.upgradePath;
+  return INCARNONS.get(nameKey(name))?.upgradePath;
 }
 
 function adapterValue(name: string): number {
-  return GRADE_VALUE[grade(name) ?? ""] ?? UNRATED_ADAPTER_VALUE;
+  return TIER_VALUE_BY_LETTER[tier(name) ?? ""] ?? UNRATED_ADAPTER_VALUE;
 }
 
 function sources(name: string): ChoiceSource[] {
@@ -166,7 +166,7 @@ function readNormal(resolved: CircuitChoice[], t: Translator): CircuitRead {
       imageUrl: choice.imageUrl,
       kind: "frame",
       state: frameState(choice),
-      difficulty: difficulty(choice.name),
+      effort: effortWord(choice.name),
       sources: sources(choice.name),
     })),
     value: Math.max(pick ? frameStateValue(pick) : 0, NOTHING_LEFT_VALUE),
@@ -183,7 +183,7 @@ function adapterState(choice: CircuitChoice): ChoiceState {
 function steelPathWhy(pick: CircuitChoice | null, count: number, t: Translator): string {
   if (!pick) return t("nextUp.whyIncarnonAllOwned");
   const weapon = display(pick);
-  const letter = grade(pick.name);
+  const letter = tier(pick.name);
   if (!letter) return t("nextUp.whyIncarnon", { weapon, count: String(count) });
   return t("nextUp.whyIncarnonGraded", { weapon, grade: letter, count: String(count) });
 }
@@ -197,7 +197,7 @@ function readSteelPath(resolved: CircuitChoice[], t: Translator): CircuitRead {
       imageUrl: choice.imageUrl,
       kind: "adapter",
       state: adapterState(choice),
-      grade: grade(choice.name),
+      tier: tier(choice.name),
       upgradePath: upgradePath(choice.name),
     })),
     value: Math.max(pick ? adapterValue(pick.name) : 0, NOTHING_LEFT_VALUE),

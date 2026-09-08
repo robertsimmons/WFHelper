@@ -36,7 +36,7 @@ export interface NemesisPlan {
 }
 
 export interface IncarnonInfo {
-  grade: string | null;
+  tier: string | null;
   upgradePath: string | null;
   /** Steel Path Circuit rotation week offering the adapter; null when unknown. */
   week: number | null;
@@ -161,7 +161,7 @@ export interface AcquisitionTarget {
   /** Curated or supplied difficulty word; null when nothing has rated it. */
   difficulty: string | null;
   /** Supplied power/popularity tier; null is unknown, never bad. */
-  rank: string | null;
+  tier: string | null;
   wiki: string | null;
   /** Effort of the easiest path, or 1 when no path is known. */
   effort: number;

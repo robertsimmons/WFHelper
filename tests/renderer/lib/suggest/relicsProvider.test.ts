@@ -2,7 +2,7 @@ import { afterEach, describe, expect, it } from "vitest";
 
 import { DEFAULT_OPTIONS, defaultPreferences } from "../../../../src/lib/suggest/preferences.js";
 import { RELICS_ACTIVITY, relicsProvider } from "../../../../src/lib/suggest/providers/relics.js";
-import { setCachedPrice } from "../../../../src/lib/wfm/priceCache.js";
+import { __test__ as priceCache, setCachedPrice } from "../../../../src/lib/wfm/priceCache.js";
 import { relicDb } from "../../../../src/stores/relics.js";
 import type { Translator } from "../../../../src/lib/i18n.js";
 import type { TrackerState } from "../../../../src/lib/world/dailies.js";
@@ -279,25 +279,28 @@ describe("relicsProvider era filter", () => {
 });
 
 describe("relicsProvider sort", () => {
-  it("leads with the fattest platinum run and flips on the arrow", () => {
+  // A payout sorts as a payout, the way the acquisition section beside this one
+  // sorts plat: ascending is the cheap end, and the arrow is the fat end. The
+  // arrow used to mean best-first in one section and cheapest-first in the other.
+  it("puts the leanest platinum run first and the fattest under the arrow", () => {
     priceShelf();
     const sort = { relicSort: "platinum", relicGoal: "ducats" } as const;
-    expect(shelfIds(sort)).toEqual(["relics:Meso B2", "relics:Lith C4", "relics:Meso A1"]);
-    expect(shelfIds({ ...sort, relicSortDir: "desc" })).toEqual([
-      "relics:Meso A1",
-      "relics:Lith C4",
-      "relics:Meso B2",
-    ]);
-  });
-
-  it("leads with the fattest ducat run when the sort asks for ducats", () => {
-    priceShelf();
-    const sort = { relicSort: "ducats", relicGoal: "platinum" } as const;
     expect(shelfIds(sort)).toEqual(["relics:Meso A1", "relics:Lith C4", "relics:Meso B2"]);
     expect(shelfIds({ ...sort, relicSortDir: "desc" })).toEqual([
       "relics:Meso B2",
       "relics:Lith C4",
       "relics:Meso A1",
+    ]);
+  });
+
+  it("orders a ducat sort by ducats, on the same reading of the arrow", () => {
+    priceShelf();
+    const sort = { relicSort: "ducats", relicGoal: "platinum" } as const;
+    expect(shelfIds(sort)).toEqual(["relics:Meso B2", "relics:Lith C4", "relics:Meso A1"]);
+    expect(shelfIds({ ...sort, relicSortDir: "desc" })).toEqual([
+      "relics:Meso A1",
+      "relics:Lith C4",
+      "relics:Meso B2",
     ]);
   });
 
@@ -316,9 +319,26 @@ describe("relicsProvider sort", () => {
   });
 
   it("still turns over on the arrow when nothing is priced and every relic ties", () => {
+    priceCache.clearPriceCache();
     const asc = shelfIds({ relicSort: "platinum" });
     expect(asc).toHaveLength(3);
     expect(shelfIds({ relicSort: "platinum", relicSortDir: "desc" })).toEqual([...asc].reverse());
+  });
+
+  /** NextUpView reads `order` ahead of score, so the sort only reaches the cards
+   *  if the provider hands the section its positions in the order it chose. */
+  it("hands the section the positions the sort put the relics in", () => {
+    priceShelf();
+    const ctx: SuggestionContext = {
+      ...context(OPEN_TIERS, {}, { relicSort: "ducats", relicSortDir: "desc" }),
+      relicDb: shelfDb(),
+      inventory: shelfInventory([MESO_A, MESO_B, LITH_C]),
+    };
+    expect(relicsProvider.collect(ctx).map((draft) => [draft.id, draft.order])).toEqual([
+      ["relics:Meso A1", 0],
+      ["relics:Lith C4", 1],
+      ["relics:Meso B2", 2],
+    ]);
   });
 
   it("never leads with an unpriced relic, whichever way the arrow points", () => {
@@ -326,9 +346,25 @@ describe("relicsProvider sort", () => {
     const unpriced: Array<[string, string, string, RelicReward]> = [
       ["Meso D5", "Meso", MESO_D, NYX],
     ];
-    expect(shelfIds({ relicSort: "platinum" }, unpriced)).not.toContain("relics:Meso D5");
-    expect(shelfIds({ relicSort: "platinum", relicSortDir: "desc" }, unpriced)).not.toContain(
-      "relics:Meso D5",
-    );
+    // The list is not a shortlist any more, so an unpriced relic still has a
+    // card; the arrow may never lift it off the bottom of the sort.
+    const asc = shelfIds({ relicSort: "platinum" }, unpriced);
+    const desc = shelfIds({ relicSort: "platinum", relicSortDir: "desc" }, unpriced);
+    expect(asc).toContain("relics:Meso D5");
+    expect(asc[asc.length - 1]).toBe("relics:Meso D5");
+    expect(desc[desc.length - 1]).toBe("relics:Meso D5");
+  });
+
+  it("pages the whole shelf rather than a shortlist, and stops at the guardrail", () => {
+    const spare = (count: number): Array<[string, string, string, RelicReward]> =>
+      Array.from({ length: count }, (_, index) => [
+        `Meso X${index}`,
+        "Meso",
+        `/Relic/MesoX${index}Intact`,
+        NYX,
+      ]);
+    // Three relics are on the shelf already, so twelve more is fifteen cards.
+    expect(shelfIds({}, spare(12))).toHaveLength(15);
+    expect(shelfIds({}, spare(45))).toHaveLength(40);
   });
 });

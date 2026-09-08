@@ -682,7 +682,9 @@ describe("inventory parsing", () => {
         {
           ItemType: "/Lotus/Upgrades/Mods/PointStrike",
           ItemCount: 1,
-          UpgradeFingerprint: 123456789,
+          // Declared a string, deliberately not one here: the point is that a
+          // fingerprint of any shape is never read as a rank.
+          UpgradeFingerprint: 123456789 as unknown as string,
         },
       ],
     };

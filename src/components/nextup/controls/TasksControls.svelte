@@ -7,7 +7,6 @@
     daily: "dailies.groupDaily",
     weekly: "dailies.groupWeekly",
     vendor: "dailies.groupVendors",
-    nightwave: "dailies.groupNightwave",
   };
 
   const picked = $derived($suggestionPreferences.options.taskKinds);

@@ -1,10 +1,9 @@
-// DE dict values carry a leading category marker (`<ARCHWING> Amesha`, `<ENDO>`).
-const LEADING_BRACKET_TOKEN = /^<[^>]{1,24}>\s*/;
+import { stripGameTokens } from "./gameMarkup";
 
 export function sanitizeDisplayName(name: string | null | undefined): string {
   const raw = String(name || "").trim();
   // If the marker is the entire name, keep it rather than render blank.
-  return raw.replace(LEADING_BRACKET_TOKEN, "").trim() || raw;
+  return stripGameTokens(raw) || raw;
 }
 
 // Language keys end in `Name`; drop it to avoid labels such as "Archon Crystal Green Name".

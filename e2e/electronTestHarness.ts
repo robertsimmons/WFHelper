@@ -22,6 +22,8 @@ interface ElectronTestHarnessOptions {
   skipLanguageSeed?: boolean;
   /** JSON files to drop into userData before launch, keyed by file name. */
   userDataFiles?: Record<string, unknown>;
+  /** Let the window appear. Off by default so a run never steals focus. */
+  showWindow?: boolean;
 }
 
 export interface ElectronTestHarness {
@@ -52,6 +54,7 @@ export async function launchElectronTestHarness(
   const env = { ...process.env } as Record<string, string>;
   delete env.ELECTRON_RUN_AS_NODE;
   env.WFHELPER_DISABLE_KEYBOARD_HOOK = "1";
+  if (options.showWindow !== true) env.WFHELPER_NEVER_SHOW = "1";
   env.LOCALAPPDATA = localAppData;
   env.WFHELPER_USER_DATA = userData;
 

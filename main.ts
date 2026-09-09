@@ -56,6 +56,8 @@ const log = withScope("Main");
 
 const MAIN_WINDOW_ENTRY_FILE = path.join(app.getAppPath(), "renderer", "dist", "index.html");
 
+const NEVER_SHOW_WINDOW = process.env.WFHELPER_NEVER_SHOW === "1";
+
 // Safe mode drops every user-authored layer (custom CSS, stored layouts) for one
 // load, so a broken customisation cannot lock the user out of Settings. The env
 // var is the same switch for tests, which cannot add argv to a packaged launch.
@@ -199,6 +201,7 @@ function revealMainWindow(): void {
     if (ctx.mainWindow) autoUpdater.initialize(ctx.mainWindow);
     return;
   }
+  if (NEVER_SHOW_WINDOW) return;
   if (window.isMinimized()) window.restore();
   window.show();
   window.focus();
@@ -234,6 +237,9 @@ function createWindow(): void {
       contextIsolation: true,
       nodeIntegration: false,
       sandbox: true,
+      // A never-shown window is treated as occluded, which throttles rAF to a
+      // crawl — screenshots come back blank and frame-timed measurements lie.
+      ...(NEVER_SHOW_WINDOW ? { backgroundThrottling: false } : {}),
     },
   });
 
@@ -250,6 +256,7 @@ function createWindow(): void {
   let windowShown = false;
   const showMainWindow = (via: string): void => {
     if (windowShown || mainWindow.isDestroyed()) return;
+    if (NEVER_SHOW_WINDOW) return;
     windowShown = true;
     if (mainWindowShowTimer) clearTimeout(mainWindowShowTimer);
     mainWindowShowTimer = null;

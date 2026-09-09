@@ -2,6 +2,12 @@
 
 Vision: `overall-epic-plan.md`. Tab name not locked.
 
+THIS FILE: The main goal of this file is "What should we do next". It is NOT a history log.
+- Top has some very terse overall instructions / information.
+- Slices / and Misc are "to do" work.
+- When something is noted that we want to do later, it should be added as a slice or misc note.
+- Once something is done, we should remove it.
+
 ## Spine
 
 A suggestion engine in `src/lib/suggest/`. Every slice below plugs into it; adding a domain is adding a provider file, never touching the tab.
@@ -66,11 +72,13 @@ Worth alone bands a suggestion. Gain filters — zero gain is gone — and break
 
 Effort does not order anything. It is collected and stored, and it reads nowhere. Most of it was invented — vendor trips are near-free once the currency is banked, and no table is ever going to rate every Nightwave act honestly, so a cost signal that guesses is worse than none. A task the player does not want is turned off, not made expensive: that is what the per-activity `never` and `low` settings are for.
 
+Only a deadline promotes. A window that merely rerolls what is on offer — a stall's 4-day rotation grid, where the vendor never leaves and no allowance goes unspent — takes nothing away when it fires, so it orders by time left inside its band and never jumps one. A daily or weekly reset, a trader leaving and a fissure closing all lose the opportunity, and promote. The provider that builds the window says which it made; nothing keys off a vendor id.
+
 | Band | Holds |
 |---|---|
-| 1 | Useful or better with under 6 hours left — ahead of a must-have that still has days |
+| 1 | Useful or better with under 6 hours of a deadline — ahead of a must-have that still has days |
 | 2 | Must-have and Want, whatever their window |
-| 3 | Useful or better with under 24 hours left |
+| 3 | Useful or better with under 24 hours of a deadline |
 | 4 | Useful with over 24 hours, then Filler, then Junk |
 | 5 | Everything set to `low`, in its own order below all four bands |
 
@@ -112,3 +120,4 @@ Each is shippable alone, in order.
 - For tasks - have a "snooze" that mabye asks 1h 6h 24h that bumps it to the bottom just for that time frame?
 - need relic ranking - should be a mix of "has stuff you need" and "what fissure is on rotation compared to settings". It might ac tually be mission type sort first, then by value (MR highest, then ducats/pp)
 - relic cards need some basic info - probably what mission type(s) are currently up, color coded. notable parts it has. as well as maybe suggestion on how much to refine them depending on your goal? Could show all three in a list or something, like: MR: common, Ducats: Radiant, Platinum: Radiant
+- syndicate - can we detect which ones they're positive on, and suggest top mods to buy?

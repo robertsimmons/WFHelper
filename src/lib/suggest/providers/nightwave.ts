@@ -181,6 +181,25 @@ function credSegment(
   return { text: t(each ? WHY_CRED_EACH : WHY_CRED, { cred: String(offer.cred) }) };
 }
 
+let blueprints: { itemDb: Record<string, ItemDbEntry>; byProduct: Map<string, string> } | null =
+  null;
+
+/** The blueprint that builds each item, which only the blueprint's own row
+ *  names. A name lookup cannot stand in for it: "Orokin Catalyst Blueprint"
+ *  normalizes to the catalyst, so it answers with the item itself. */
+function blueprintFor(uniqueName: string, itemDb: Record<string, ItemDbEntry>): string | null {
+  const named = itemDb[uniqueName]?.recipe?.blueprintUniqueName;
+  if (named) return named;
+  if (!blueprints || blueprints.itemDb !== itemDb) {
+    const byProduct = new Map<string, string>();
+    for (const [path, entry] of Object.entries(itemDb)) {
+      if (entry.buildsProduct) byProduct.set(entry.buildsProduct, path);
+    }
+    blueprints = { itemDb, byProduct };
+  }
+  return blueprints.byProduct.get(uniqueName) ?? null;
+}
+
 /** What the player holds of a staple: the item, plus any blueprint for it, which
  *  is a catalyst the foundry has not cooked yet rather than none at all. Null is
  *  an unread inventory, which is never "the player has none". */
@@ -191,11 +210,11 @@ function heldCount(
 ): number | null {
   if (ownership.size === 0) return null;
   const item = entryFor(offer.name, itemDb);
-  const blueprint = entryFor(`${offer.name} Blueprint`, itemDb);
-  if (!item && !blueprint) return null;
+  if (!item) return null;
+  const blueprint = blueprintFor(item.uniqueName, itemDb);
   return (
-    (item ? ownedComponentCount(item.uniqueName, ownership) : 0) +
-    (blueprint ? ownedComponentCount(blueprint.uniqueName, ownership) : 0)
+    ownedComponentCount(item.uniqueName, ownership) +
+    (blueprint ? ownedComponentCount(blueprint, ownership) : 0)
   );
 }
 
@@ -420,26 +439,57 @@ function ownershipFor(ctx: SuggestionContext): Map<string, number> {
   return ownership;
 }
 
+function nightwaveDrafts(ctx: SuggestionContext): SuggestionDraft[] {
+  // The rows only ever stand for the cards this pass produced.
+  rows.clear();
+  const activity = ctx.prefs.activities[NIGHTWAVE_ACTIVITY] ?? "normal";
+  if (activity === "never") return [];
+  const low = activity === "low";
+  const ownership = ownershipFor(ctx);
+  const nitainNeeded = nitainStillNeeded(ctx.itemDb);
+  const drafts: SuggestionDraft[] = [];
+  for (const offer of STAPLES) {
+    const draft = stockDraft(offer, ctx, ownership, nitainNeeded, low);
+    if (draft) drafts.push(draft);
+  }
+  for (const offer of PARTS_OFFERS) {
+    const draft = partsDraft(offer, ctx, ownership, low);
+    if (draft) drafts.push(draft);
+  }
+  return drafts;
+}
+
+let draftCache: { keys: readonly unknown[]; drafts: SuggestionDraft[] } | null = null;
+
+/** Every staple and set the cards read comes off the season, the pile, the item
+ *  database, the acquisition sweep's own totals and the levels the player set;
+ *  nothing here follows the clock. */
+function nightwaveKeys(ctx: SuggestionContext): readonly unknown[] {
+  return [
+    ctx.world,
+    ctx.inventory,
+    ctx.itemDb,
+    ctx.mastery,
+    ctx.t,
+    ctx.prefs.activities,
+    ctx.prefs.worth,
+    ctx.prefs.nightwaveStock,
+    unbuiltResourceNeed(),
+  ];
+}
+
 export const nightwaveProvider: SuggestionProvider = {
   id: "nightwave",
 
+  // The offer rows the cards read back are parked in the module table above, so
+  // a hit leaves exactly the rows an identical pass already put there.
   collect(ctx: SuggestionContext): SuggestionDraft[] {
-    // The rows only ever stand for the cards this pass produced.
-    rows.clear();
-    const activity = ctx.prefs.activities[NIGHTWAVE_ACTIVITY] ?? "normal";
-    if (activity === "never") return [];
-    const low = activity === "low";
-    const ownership = ownershipFor(ctx);
-    const nitainNeeded = nitainStillNeeded(ctx.itemDb);
-    const drafts: SuggestionDraft[] = [];
-    for (const offer of STAPLES) {
-      const draft = stockDraft(offer, ctx, ownership, nitainNeeded, low);
-      if (draft) drafts.push(draft);
+    const keys = nightwaveKeys(ctx);
+    if (draftCache && keys.every((key, index) => draftCache?.keys[index] === key)) {
+      return draftCache.drafts;
     }
-    for (const offer of PARTS_OFFERS) {
-      const draft = partsDraft(offer, ctx, ownership, low);
-      if (draft) drafts.push(draft);
-    }
+    const drafts = nightwaveDrafts(ctx);
+    draftCache = { keys, drafts };
     return drafts;
   },
 };

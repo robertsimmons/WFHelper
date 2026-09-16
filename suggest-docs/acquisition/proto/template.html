@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Acquisition prototype</title>
+<style>
+:root{
+  --bg-deep:#060a12; --bg-base:#0a0e17; --bg-surface:#111827; --bg-raised:#1a2234;
+  --accent:#d4a843; --text-primary:#e8e4dc; --text-secondary:#8b93a5; --text-muted:#8d9ab3;
+  --success:#4ade80; --warning:#fbbf24; --danger:#f87171;
+  --border:rgba(212,168,67,.14); --border-subtle:rgba(212,168,67,.07);
+  --grade-s:#4ade80; --grade-a:#6aab7a; --grade-b:#facc15; --grade-c:#f97316; --grade-d:#f97316;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg-base);color:var(--text-primary);
+  font:13px/1.45 "Segoe UI",system-ui,sans-serif}
+.wrap{max-width:1180px;margin:0 auto;padding:20px 18px 80px}
+h2{font:600 11px/1 "Segoe UI",sans-serif;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--text-secondary);margin:26px 0 10px}
+h2:first-child{margin-top:0}
+
+/* ---------- cards ---------- */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(258px,1fr));gap:12px}
+.card{background:var(--bg-surface);border:1px solid var(--border);border-radius:8px;
+  overflow:hidden;cursor:pointer;transition:border-color .12s}
+.card:hover{border-color:var(--accent)}
+.art{position:relative;height:104px;display:flex;align-items:flex-end;padding:8px 10px;
+  background:linear-gradient(150deg,#243049,#141c2e 62%,#0d1424)}
+.art .nm{font:600 15px/1 "Segoe UI",sans-serif;letter-spacing:.02em;
+  text-shadow:0 2px 8px rgba(0,0,0,.85)}
+.tier{position:absolute;top:7px;right:8px;width:21px;height:21px;border-radius:4px;
+  display:grid;place-items:center;font:700 12px/1 "Segoe UI",sans-serif;color:#0a0e17}
+.tier.s{background:var(--grade-s)}.tier.a{background:var(--grade-a)}
+.tier.b{background:var(--grade-b)}.tier.c{background:var(--grade-c)}
+.tier.d{background:var(--grade-d)}.tier.none{background:#3a4257;color:var(--text-muted)}
+.badge{position:absolute;bottom:8px;right:8px;font-size:10px;letter-spacing:.06em;
+  text-transform:uppercase;padding:2px 6px;border-radius:3px;
+  background:rgba(6,10,18,.72);border:1px solid var(--border);color:var(--accent)}
+.body{padding:9px 10px 10px}
+.line{display:flex;justify-content:space-between;gap:10px;font-size:12px}
+.line .sub{color:var(--text-secondary);text-align:right}
+.ready{color:var(--success)}
+.meter{display:flex;gap:2px;margin:8px 0 9px}
+.meter i{flex:1;height:4px;border-radius:1px;background:rgba(255,255,255,.08)}
+.acts{display:flex;gap:6px}
+button{font:inherit;border-radius:5px;border:1px solid var(--border);cursor:pointer;
+  padding:5px 9px;background:var(--bg-raised);color:var(--text-primary)}
+button:hover{border-color:var(--accent)}
+button.primary{background:var(--accent);border-color:var(--accent);color:#161005;font-weight:600}
+button.ghost{background:transparent;color:var(--text-secondary)}
+
+/* ---------- working on ---------- */
+.pins{display:flex;gap:10px;flex-wrap:wrap}
+.pin{display:flex;gap:10px;align-items:center;width:262px;padding:8px 10px;cursor:pointer;
+  background:var(--bg-surface);border:1px solid var(--border);border-radius:8px}
+.pin:hover{border-color:var(--accent)}
+.pin .thumb{width:46px;height:40px;border-radius:5px;flex:none;
+  background:linear-gradient(150deg,#243049,#111827)}
+.pin b{display:block;font-size:13px;font-weight:600}
+.pin span{font-size:11px;color:var(--text-secondary)}
+
+/* ---------- filters ---------- */
+.filters{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:12px}
+.filters button{font-size:12px;color:var(--text-secondary)}
+.filters button.on{color:var(--text-primary);border-color:var(--accent)}
+
+/* ---------- plan ---------- */
+.plan{display:none}
+.plan.show{display:block}
+.list.hide{display:none}
+.phead{display:flex;gap:14px;align-items:flex-start;margin-bottom:6px}
+.phead .art{width:190px;height:88px;border-radius:7px;flex:none}
+.ptitle{font:600 21px/1.15 "Segoe UI",sans-serif}
+.prices{margin-top:5px;font-size:12px;color:var(--text-secondary)}
+.prices .sep{opacity:.4;padding:0 6px}
+.prices .money{color:var(--warning)}
+.pmeta{margin-top:7px;display:flex;gap:10px;align-items:center}
+.pmeta .meter{width:104px;margin:0}
+.ptools{margin:12px 0 18px;display:flex;gap:7px}
+
+.grp{border-top:1px solid var(--border-subtle);padding:13px 0 4px}
+.grp:first-of-type{border-top:none}
+.ghead{display:flex;justify-content:space-between;gap:14px;align-items:baseline}
+.gplace{font:600 12px/1.2 "Segoe UI",sans-serif;letter-spacing:.1em;text-transform:uppercase}
+.gact{color:var(--text-secondary);font-weight:400;letter-spacing:.02em;text-transform:none;
+  font-size:12px;margin-left:9px}
+.gmeta{color:var(--text-secondary);font-size:12px;white-space:nowrap}
+.gsub{margin-top:3px;font-size:12px;color:var(--accent);display:flex;gap:9px;flex-wrap:wrap}
+.gsub .mode{color:var(--text-muted)}
+.rows{margin:8px 0 0;padding:0;list-style:none}
+.rows li{display:flex;align-items:baseline;gap:9px;padding:3px 0;font-size:13px}
+.rows .box{width:13px;height:13px;border:1px solid var(--text-muted);border-radius:3px;
+  flex:none;position:relative;top:2px}
+.rows li.done .box{background:var(--success);border-color:var(--success)}
+.rows li.done .label{color:var(--text-muted);text-decoration:line-through}
+.rows .qty{color:var(--accent);font-variant-numeric:tabular-nums;min-width:44px}
+.rows .label{flex:1}
+.rows .alt{color:var(--text-secondary);font-size:12px}
+.rows .note{color:var(--text-secondary);font-size:12px;font-variant-numeric:tabular-nums}
+.gsub .live.open{color:var(--success)}
+.gsub .live.blocked{color:var(--danger)}
+.gsub .live.waiting{color:var(--warning)}
+.gsub .cur{color:var(--text-muted)}
+.gsubloc{margin-left:9px;font-size:12px;font-weight:400;letter-spacing:.02em;
+  text-transform:none;color:var(--accent)}
+.grp.skipped{opacity:.42}
+.grp.skipped .rows li .label{text-decoration:line-through}
+.skipnote{font-style:italic}
+.notes{margin:7px 0 0;padding:0;list-style:none;font-size:12px}
+.notes li{padding:1px 0;color:var(--text-secondary)}
+.notes li.cond::before{content:"!";color:var(--warning);font-weight:700;margin-right:7px}
+.notes li.bonus::before{content:"+";color:var(--success);font-weight:700;margin-right:7px}
+details{margin-top:6px;font-size:12px}
+summary{cursor:pointer;color:var(--accent);list-style:none}
+summary::-webkit-details-marker{display:none}
+summary::before{content:"\203A";margin-right:7px;font-weight:700}
+details p{margin:5px 0 0 15px;color:var(--text-secondary);max-width:74ch}
+.maplink{font-size:11px;color:var(--text-muted);border:1px solid var(--border-subtle);
+  border-radius:3px;padding:1px 6px;cursor:not-allowed}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div id="list" class="list">
+    <h2>Working on</h2>
+    <div id="pins" class="pins"></div>
+    <h2>Acquisition</h2>
+    <div class="filters">
+      <button class="on">Warframes</button>
+      <button>Weapons 0/3</button>
+      <button>Companions 0/4</button>
+      <button>Archwing 0/3</button>
+      <button>Other 0/3</button>
+    </div>
+    <div id="grid" class="grid"></div>
+  </div>
+  <div id="plan" class="plan"></div>
+</div>
+<script>
+const PLANS = /*__PLANS__*/[];
+</script>
+<script src="app.js"></script>
+</body>
+</html>

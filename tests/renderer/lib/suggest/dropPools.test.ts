@@ -74,6 +74,8 @@ const RATED = new Set(
     "Orokin Catalyst",
     "Rifle Riven Mod",
     "Shotgun Riven Mod",
+    "Pistol Riven Mod",
+    "Melee Riven Mod",
     "Zaw Riven Mod",
     "Kitgun Riven Mod",
     "Melee Arcane Adapter",
@@ -97,11 +99,11 @@ const rated = (name: string): number | null => {
 describe("summarizeDropPool", () => {
   it("names what a sortie pays, unrated fluff dropped", () => {
     const families = summarizeDropPool(SORTIE, rated);
-    expect(families.map((f) => f.label)).toEqual(["Endo", "Kuva", "Riven Mods"]);
+    expect(families.map((f) => f.label)).toEqual(["Riven Mods", "Endo", "Kuva"]);
     expect(families.map((f) => f.members[0].item)).toEqual([
+      "Melee Riven Mod",
       "4000 Endo",
       "6000X Kuva",
-      "Melee Riven Mod",
     ]);
   });
 

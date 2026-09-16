@@ -618,3 +618,48 @@ describe("mastery planner missing filter", () => {
     expect(missingOnly([{ uniqueName: "b", missing: 0 }])).toEqual([]);
   });
 });
+
+describe("allocation is a choice the caller makes", () => {
+  const db: Record<string, ItemDbEntry> = {
+    "/Lotus/Weapons/Alpha": entry("Alpha", {
+      buildPrice: 0,
+      buildTime: 0,
+      num: 1,
+      ingredients: [{ uniqueName: FERRITE, count: 3000 }],
+    }),
+    "/Lotus/Weapons/Beta": entry("Beta", {
+      buildPrice: 0,
+      buildTime: 0,
+      num: 1,
+      ingredients: [{ uniqueName: FERRITE, count: 2000 }],
+    }),
+    [FERRITE]: entry("Ferrite"),
+  };
+
+  const pins = [pin("/Lotus/Weapons/Alpha", "Alpha"), pin("/Lotus/Weapons/Beta", "Beta")];
+
+  function ferriteRows(plan: ReturnType<typeof buildMasteryPlan>) {
+    return plan.items.map((item) => item.resources.find((row) => row.uniqueName === FERRITE));
+  }
+
+  it("hands the pile out pin by pin by default", () => {
+    const plan = buildMasteryPlan(pins, db, new Map([[FERRITE, 4000]]));
+    expect(ferriteRows(plan)[0]).toMatchObject({ owned: 3000, missing: 0 });
+    expect(ferriteRows(plan)[1]).toMatchObject({ owned: 1000, missing: 1000 });
+  });
+
+  it("measures every pin against the whole pile when allocation is off", () => {
+    const plan = buildMasteryPlan(pins, db, new Map([[FERRITE, 4000]]), { allocate: false });
+    expect(ferriteRows(plan)[0]).toMatchObject({ owned: 4000, missing: 0 });
+    expect(ferriteRows(plan)[1]).toMatchObject({ owned: 4000, missing: 0 });
+    // The total still measures the summed need once against the same pile.
+    expect(totalFor(plan, FERRITE)).toEqual({ needed: 5000, owned: 4000, missing: 1000 });
+  });
+
+  it("leaves the caller's ownership map untouched either way", () => {
+    const ownership = new Map([[FERRITE, 4000]]);
+    buildMasteryPlan(pins, db, ownership);
+    buildMasteryPlan(pins, db, ownership, { allocate: false });
+    expect(ownership.get(FERRITE)).toBe(4000);
+  });
+});

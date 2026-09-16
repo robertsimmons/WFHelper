@@ -37,6 +37,7 @@ interface ParsedDailies {
         label: string;
         description?: string;
         uniqueName?: string;
+        count?: number;
       }>;
     }>;
   } | null;
@@ -442,7 +443,7 @@ describe("worldStateParser sortie, archon hunt, nightwave and alerts", () => {
     expect(day?.events[0]?.label).toBe("Archon Shard");
   });
 
-  it("prettifies a store item the exports do not carry", () => {
+  it("names a booster the bundle exports carry, duration and all", () => {
     const [day] = calendarDays([
       {
         day: 23,
@@ -454,7 +455,24 @@ describe("worldStateParser sortie, archon hunt, nightwave and alerts", () => {
         ],
       },
     ]);
-    expect(day?.events[0]?.label).toBe("Mod Drop Chance Booster 3 Day");
+    expect(day?.events[0]?.label).toBe("3 Day Mod Drop Chance Booster");
+    // The 3 says how long the booster runs, so it is no count of boosters.
+    expect(day?.events[0]?.count).toBeUndefined();
+  });
+
+  it("prettifies a store item the exports do not carry", () => {
+    const [day] = calendarDays([
+      {
+        day: 23,
+        events: [
+          {
+            type: "CET_REWARD",
+            reward: "/Lotus/StoreItems/Types/Boosters/ModDropChanceBooster5DayStoreItem",
+          },
+        ],
+      },
+    ]);
+    expect(day?.events[0]?.label).toBe("Mod Drop Chance Booster 5 Day");
   });
 
   it("emits calendar perk choices as upgrade events", () => {

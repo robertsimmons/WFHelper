@@ -4,7 +4,7 @@ import { formatNumber } from "../../format.js";
 import { overframeRankingsRevision } from "../../../stores/overframeRankings.js";
 import { resolveAcquisition } from "../acquisition/index.js";
 import { includesTarget } from "../acquisition/kinds.js";
-import { compareAcquisition } from "../acquisition/sort.js";
+import { compareAcquisition, sortRow } from "../acquisition/sort.js";
 import { advances, needsGain } from "../gain.js";
 import { clamp01 } from "../score.js";
 import type { MessageKey } from "../../i18n.js";
@@ -67,6 +67,40 @@ function totalParts(parts: PartPlan): number {
 
 function ownedParts(parts: PartPlan): number {
   return totalParts(parts) - parts.missing.length;
+}
+
+/** The progress read under the card's art. */
+export interface PartsRead {
+  have: number;
+  need: number;
+  /** The plural modular gear counts head parts in; null counts plain parts. */
+  unitKey: MessageKey | null;
+  ready: boolean;
+}
+
+/** Null where no recipe is known: there is no count to report, which is not the
+ *  same as a count of none. Modular gear counts banked head parts instead,
+ *  which no foundry run ever finishes off in one go. */
+export function partsRead(target: AcquisitionTarget): PartsRead | null {
+  const modular = target.modular;
+  if (modular) {
+    return {
+      have: modular.owned,
+      need: modular.heads.length,
+      unitKey: modular.headLabelKey,
+      ready: false,
+    };
+  }
+  const parts = target.parts;
+  if (!parts.known) return null;
+  const need = totalParts(parts);
+  if (need === 0) return null;
+  return {
+    have: ownedParts(parts),
+    need,
+    unitKey: null,
+    ready: parts.missing.length === 0 && parts.buildable,
+  };
 }
 
 /** A resolver effort of 1 means "no path known", which is not the same as a
@@ -202,8 +236,8 @@ export const acquisitionProvider: SuggestionProvider = {
         // Incarnon adapter, which is not a reason to build anything.
         .filter((target) => advances(needsGain(target.needs)))
         .filter((target) => includesTarget(prefs.options.acquisitionKinds, target))
-        .map((target) => ({ target, effort: effortFor(target) }))
-        .sort(compareAcquisition(prefs.options.acquisitionSort, prefs.options.acquisitionSortDir))
+        .map((target) => sortRow(target, effortFor(target), prefs.options.acquisitionSort))
+        .sort(compareAcquisition(prefs.options.acquisitionSortDir))
         .slice(0, SUGGESTION_LIMIT)
         .map(({ target, effort }, order) => {
           const total = totalParts(target.parts);

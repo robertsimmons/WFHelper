@@ -1,0 +1,193 @@
+{
+  "name": "Kullervo",
+  "kind": "warframe",
+  "verifiedOn": "2026-09-08",
+  "masteryRank": 0,
+  "prerequisites": [
+    { "order": 1, "type": "junction", "name": "Uranus Junction (on Saturn)", "note": "Gates The Duviri Paradox since Update 36.0.8." },
+    { "order": 2, "type": "quest", "name": "The Duviri Paradox", "note": "Solo-only main quest. Completing it unlocks Duviri, the Dormizone and Acrithis." }
+  ],
+  "routes": [
+    {
+      "kind": "vendor",
+      "where": "Acrithis - Dormizone (also found wandering Duviri in her carriage, and at The King's Palace after a Mood Spiral completes)",
+      "parts": [
+        { "part": "Kullervo Blueprint (main)", "cost": 15 },
+        { "part": "Kullervo Neuroptics Blueprint", "cost": 9 },
+        { "part": "Kullervo Chassis Blueprint", "cost": 9 },
+        { "part": "Kullervo Systems Blueprint", "cost": 9 }
+      ],
+      "dropRate": 1.0,
+      "currency": {
+        "name": "Kullervo's Bane",
+        "totalNeeded": 42,
+        "tradeable": false,
+        "boosterAffected": false
+      },
+      "conditions": ["The Duviri Paradox complete"],
+      "notes": "Deterministic purchase. All RNG lives in earning the Bane, not in the shop. Acrithis also sells Rauta parts for Bane (12/6/6/6) and 100,000 Credits for 15."
+    },
+    {
+      "kind": "mission",
+      "where": "Duviri - Kullervo's Hold (side objective inside The Duviri Experience); also appears as a main stage objective in the second half of a Spiral in The Duviri Experience or The Lone Story",
+      "parts": ["Kullervo's Bane currency, 4-6 per run (6-8 on Steel Path)"],
+      "dropRate": null,
+      "dropTable": {
+        "normal": { "4": 0.30, "5": 0.40, "6": 0.30 },
+        "steelPath": { "6": 0.30, "7": 0.40, "8": 0.30 }
+      },
+      "conditions": [
+        "Spiral mood must be Anger, Sorrow or Fear - Kullervo's Hold does not exist during Joy or Envy",
+        "Mood rotates every 120 minutes, so 3 of 5 moods are usable",
+        "Both tasks must be cleared in the same run: defeat the Kullervo boss AND defeat the Orowyrm to complete the Spiral",
+        "Steel Path Duviri pays 6-8 Bane per run instead of 4-6; see community.recommendedMode before choosing it"
+      ],
+      "notes": "Run The Duviri Experience rather than The Lone Story: the Hold only shows up as an optional side objective there. If The Warden is missing from above the arena, the Kullervo fight is instead scheduled as a later main Spiral objective. Bane is not affected by Resource Boosters."
+    },
+    {
+      "kind": "mission",
+      "where": "Duviri - Orowyrm fight at the end of any Spiral; Undercroft side portals; Isleweaver (The Fragmented duet boss)",
+      "parts": ["Pathos Clamp (main blueprint build material)"],
+      "dropRate": null,
+      "dropTable": {
+        "orowyrm": { "normal": 10, "steelPath": 15 },
+        "isleweaver": { "normal": 10, "steelPath": 15 },
+        "undercroftSidePortal": { "normal": 1, "steelPath": 3 }
+      },
+      "conditions": ["Any mood spiral"],
+      "notes": "Only 10 clamps are needed for Kullervo, so a single Orowyrm kill covers it. Not affected by Resource Boosters."
+    }
+  ],
+  "runEstimate": {
+    "banePerRunNormal": "4-6 (avg 5)",
+    "banePerRunSteelPath": "6-8 (avg 7)",
+    "runsNormal": "7-11",
+    "runsSteelPath": "6-7",
+    "note": "42 Bane total. Every run must land in an Anger/Sorrow/Fear window, so real elapsed time is dominated by waiting out Joy and Envy moods (2 hours each) if you play in short sessions."
+  },
+  "purchase": {
+    "market": { "currency": "platinum", "amount": 325, "note": "Buys the fully built Warframe outright." },
+    "credits": null,
+    "vendorStanding": null,
+    "vendorCurrency": { "vendor": "Acrithis", "currency": "Kullervo's Bane", "mainBlueprint": 15, "perComponent": 9, "total": 42 }
+  },
+  "materials": [
+    { "name": "Pathos Clamp", "quantity": 10, "usedIn": "Main blueprint", "whereFarmed": "Duviri: 10 from each Orowyrm kill (15 on Steel Path), 10 from Isleweaver (15 SP), 1 per Undercroft side portal (3 SP).", "harvestable": false },
+    { "name": "Lamentus", "quantity": 50, "usedIn": "Neuroptics", "whereFarmed": "Duviri: drops from Dax enemies in the open world. Does NOT drop from Dax inside the Undercroft. Stall on the prisoner-liberation side objective without entering the completion circle to keep waves spawning.", "harvestable": false },
+    { "name": "Tasoma Extract", "quantity": 50, "usedIn": "Neuroptics", "whereFarmed": "Duviri caves only, 2-4 per node. Fly under the landscape on a Kaithe to spot cave mouths; Riding Intrinsics Rank 5 (Smooth Path) helps locate them.", "harvestable": true },
+    { "name": "Saggen Pearl", "quantity": 100, "usedIn": "Neuroptics", "whereFarmed": "Duviri: Blinkpads (main source), Materlith nodes, Undercroft portals, Owl and Shawzin puzzles, fishing spots, and Komi/Tamm herding rewards. Available in most regions during all moods.", "harvestable": true },
+    { "name": "Connla Sprout", "quantity": 100, "usedIn": "Neuroptics", "whereFarmed": "Duviri plant node, near water and caves. Densest at Lunaro Court; also Neighbor's Outlook, Archarbor (Joy/Envy/Sorrow only), The Amphitheater (Joy/Envy/Anger/Fear).", "harvestable": true },
+    { "name": "Nacreous Pebble", "quantity": 125, "usedIn": "Chassis", "whereFarmed": "Duviri Maw Feeding (fishing). Any fishing spot works and the same spot can be reused indefinitely.", "harvestable": true },
+    { "name": "Kovnik", "quantity": 100, "usedIn": "Chassis", "whereFarmed": "Duviri plant node. Yao Shrub, Lunaro Court and Neighbor's Outlook (near water, all moods), Royalstead Pastures, Mathila's Farm, Moirai Crossing, Primrose Village. Occasionally in Teshin's Cave.", "harvestable": true },
+    { "name": "Rune Marrow", "quantity": 75, "usedIn": "Chassis", "whereFarmed": "Runic Compact containers, which only spawn in The Undercroft / The Circuit, 7-11 per Undercroft tile. Guaranteed drop from Corrupted Vor and Corrupted Jackal there.", "harvestable": true },
+    { "name": "Ueymag", "quantity": 200, "usedIn": "Chassis 100, Systems 100", "whereFarmed": "Duviri U-shaped cactus plant. Densest in Kullervo's Hold (Anger/Fear/Sorrow) and Chamber of the Muses; also Soprano Springs, Artisan Hamlet, Fair Shores Hamlet, Watershed Hamlet.", "harvestable": true },
+    { "name": "Aggristone", "quantity": 100, "usedIn": "Systems", "whereFarmed": "Destroy Aggristone Formations across the Duviri landscape; also awarded from Spiral objectives and The Circuit.", "harvestable": true },
+    { "name": "Eevani", "quantity": 100, "usedIn": "Systems", "whereFarmed": "Duviri ground plant. Archarbor is the best spot (Joy/Envy/Sorrow moods only); The Amphitheater in lower quantity (Joy/Envy/Anger/Fear); occasional drops in Teshin's Cave.", "harvestable": true },
+    { "name": "Ariette Scale", "quantity": 360, "usedIn": "Systems", "whereFarmed": "Duviri Maw Feeding (fishing) spoil. Same fishing spot can be reused indefinitely.", "harvestable": true }
+  ],
+  "buildTimes": {
+    "neuroptics": { "hours": 12, "credits": 15000, "rushPlatinum": 25 },
+    "chassis": { "hours": 12, "credits": 15000, "rushPlatinum": 25 },
+    "systems": { "hours": 12, "credits": 15000, "rushPlatinum": 25 },
+    "final": { "hours": 72, "credits": 30000, "rushPlatinum": 50 },
+    "totalCredits": 75000,
+    "totalHoursSequential": 84,
+    "note": "Components build in parallel; realistic wall clock 12h then 72h = 84h."
+  },
+  "effort": 7,
+  "effortWhy": "42 Bane at 4-6 per run, and every run is gated behind a rotating 2-hour mood window (Anger, Sorrow or Fear) plus a three-phase boss and an Orowyrm kill in the same session; the eleven Duviri build resources add a separate fishing, plant and cave sweep.",
+  "gotchas": [
+    "Bane only pays out if you defeat the Kullervo boss AND kill the Orowyrm in the same run; killing Kullervo and leaving gives nothing.",
+    "Kullervo's Hold only exists during Anger, Sorrow and Fear spirals, so two of the five 2-hour mood windows are dead time.",
+    "Run The Duviri Experience, not The Lone Story: the Hold appears as a side objective only in the Experience.",
+    "If The Warden is not standing above the arena, the fight has been scheduled as a later main Spiral objective instead, so do not wait for him.",
+    "You fight as the Drifter by default; Transference Sync to a modded Warframe if the fight is going badly.",
+    "Kullervo takes 0.5x damage from primaries and 0.667x from secondaries but 1.1x from Finishers, so melee and finishers are the fast way through all three phases.",
+    "Bring at least 5 Decrees before speaking to The Warden; the fight is three sequential health bars.",
+    "Phase 1 applies Collective Curse, which shares damage between marked players, and Storm of Ukko, a knife-rain field you can interrupt with a precise Sirocco shot.",
+    "Phase 2 spawns five spectral copies that throw exploding blades; phase 3 spawns Persecutor Liminus, and killing all of them turns them on Kullervo before he starts aerial laser barrages best dodged from a Kaithe.",
+    "Kullervo's Bane is untradeable and immune to Resource Boosters, as are Pathos Clamps.",
+    "Steel Path Duviri raises Bane to 6-8 per run and Pathos Clamps to 15 per Orowyrm, cutting the run count by roughly a third; players report the longer Steel Path run more than eats that saving, so run normal.",
+    "Public squads are the main time sink: 40+ minute decree farming, refusing the Undercroft, and stalled Orowyrm fights. Farm solo.",
+    "Rune Marrow only spawns in the Undercroft or The Circuit, so it will never appear during open-world Duviri gathering.",
+    "Lamentus does not drop from Undercroft Dax, only from open-world Duviri Dax.",
+    "Take the Bountiful Harvest decree before gathering; it doubles plant and Maw Feeding pickups.",
+    "Ariette Scale at 360 is by far the largest single requirement and comes only from Maw Feeding, so plan a dedicated fishing session.",
+    "Ueymag is densest inside Kullervo's Hold itself, so gather it on the same runs you farm Bane.",
+    "Resources are kept when you earn a Decree, so you can abandon a run after gathering without losing the pickups."
+  ],
+  "sources": [
+    "https://wiki.warframe.com/w/Kullervo",
+    "https://wiki.warframe.com/w/Kullervo_(Boss)",
+    "https://wiki.warframe.com/w/Kullervo%27s_Hold",
+    "https://wiki.warframe.com/w/Kullervo%27s_Bane",
+    "https://wiki.warframe.com/w/Acrithis",
+    "https://wiki.warframe.com/w/Pathos_Clamp",
+    "https://wiki.warframe.com/w/Duviri",
+    "https://wiki.warframe.com/w/The_Duviri_Paradox",
+    "https://wiki.warframe.com/w/Lamentus",
+    "https://wiki.warframe.com/w/Tasoma_Extract",
+    "https://wiki.warframe.com/w/Saggen_Pearl",
+    "https://wiki.warframe.com/w/Connla_Sprout",
+    "https://wiki.warframe.com/w/Nacreous_Pebble",
+    "https://wiki.warframe.com/w/Kovnik",
+    "https://wiki.warframe.com/w/Rune_Marrow",
+    "https://wiki.warframe.com/w/Ueymag",
+    "https://wiki.warframe.com/w/Aggristone",
+    "https://wiki.warframe.com/w/Eevani",
+    "https://wiki.warframe.com/w/Ariette_Scale"
+  ],
+  "discarded": [
+    "forums.warframe.com thread bodies (topic 1404201 'How to Farm Kullervo Parts' and topic 1386624 'the grind for Kullervo is absurd') returned HTTP 403 to the fetcher, so no forum advice was used as fact. Forum search snippets restated the same 4-6 / 6-8 Bane figures the wiki gives, so nothing conflicted.",
+    "An early summary implied Kullervo's Bane drops from the boss kill alone. Discarded against the wiki, which states both the boss and the Orowyrm must be cleared in the same run.",
+    "Community (Reddit) names the ~300 build plants as Dracroots, Yao Shrubs and Maw Fangs. Wrong against the wiki material list: the plant requirements are Connla Sprout 100, Kovnik 100 and Eevani 100. The ~300 total is right, the names are not. Yao Shrub is a Kovnik spawn location, not a resource."
+  ],
+  "unknowns": [
+    { "field": "routes[].dropRate for Kullervo's Bane", "reason": "Bane is a guaranteed payout with a variable quantity, not a percentage drop, so dropRate is null and the quantity distribution is given in dropTable instead." },
+    { "field": "mood spiral rotation order", "reason": "The wiki gives the 120-minute duration and the five moods but not a fixed cycle order, so the app cannot predict the next Anger/Sorrow/Fear window from the wiki alone." },
+    { "field": "'crimes' mechanic detail in the boss fight", "reason": "The wiki says three randomly chosen crimes open across the phases but does not document what each one does." }
+  ],
+  "community": {
+    "source": "r/Warframe, four Kullervo threads including a large recent complaint thread",
+    "painLevel": "high",
+    "recommendedMode": "Solo, normal (not Steel Path), The Duviri Experience. Near-unanimous: the +2 Bane on Steel Path does not pay for the longer, fiddlier run, and public squads are the single biggest time sink.",
+    "preferredRoute": "Acrithis vendor route, fed by Kullervo's Hold runs in The Duviri Experience. The Lone Story is rejected because Kullervo only appears there if randomly selected as the main objective.",
+    "timeEstimate": {
+      "perRunSoloNormal": "13-17 min, 25-30 with bad objective rolls",
+      "runsForFullSet": "8-10",
+      "undercroftSolo": "Alchemy and Void Flood 2-3 min each; Defense, Survival and Excavation are the slow ones",
+      "isleweaverSteelPath": "~5 min per run for ~15 Pathos Clamps"
+    },
+    "traps": [
+      "Public lobbies: squads farm decrees 40+ minutes before touching objectives, refuse the Undercroft, or stall on Orowyrm mechanics; one reported run hit 50 minutes and collapsed.",
+      "Steel Path Orowyrm adds a ring-alignment puzzle before you can transfer in; two players fiddling with the wheels at once undo each other.",
+      "The Orowyrm has no traversal animation, so climbing it looks broken: jump off and re-grapple repeatedly to move up the segments.",
+      "The energy ring it sends down on a ~30 second telegraphed cycle knocks you off; hop off and re-grapple through it.",
+      "Being forced onto a Kaithe for Wyrmlings is optional; step outside the ring of fire or wall-latch and shoot them.",
+      "Alchemy solo is fast but the progress bar crawls with 3-4 players."
+    ],
+    "tips": [
+      "Take 8-10 decrees before talking to The Warden; with maxed intrinsics or a strong amp and melee some players skip decrees entirely.",
+      "Plant grind is widely called worse than the Bane grind: take the resource-doubling decree, harvest, then complete one decree or objective to force a save and extract, keeping the plants without finishing the Orowyrm.",
+      "Chasing the Orowyrm on Kaithe: shoot its thrown orbs with the Orvius for a speed-boost current, or hold sprint, aim slightly down to build fall speed and jump mid-dive to convert it forward.",
+      "Wrathful Advance is the most cited reason people farm him at all; several players say buying him for platinum was their best plat purchase.",
+      "A Kullervo Prime is widely expected (speculation, no source), and some players are deliberately not farming a second copy to subsume."
+    ]
+  },
+  "conflicts": [
+    {
+      "field": "routes[1] Steel Path recommendation",
+      "wiki": "Steel Path Duviri pays 6-8 Bane per run versus 4-6, cutting the run count by roughly a third.",
+      "community": "Steel Path is a trap: the extra ~2 Bane does not offset the longer run and the extra Orowyrm puzzle. Run normal.",
+      "show": "community",
+      "note": "Both are true. Show the wiki payout numbers as fact, show normal difficulty as the recommendation."
+    },
+    {
+      "field": "gotchas - decree count before the fight",
+      "wiki": "Bring at least 5 Decrees before speaking to The Warden.",
+      "community": "8-10 decrees, or none at all with maxed intrinsics and a strong amp/melee build.",
+      "show": "wiki",
+      "note": "Not a contradiction; the wiki floor holds and the community number is the comfortable target."
+    }
+  ]
+}

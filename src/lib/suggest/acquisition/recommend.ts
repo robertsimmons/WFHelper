@@ -1,17 +1,23 @@
-import { UNKNOWN_EFFORT, effortValue } from "./ratings.js";
-
-/** What a tier letter is worth. An unrated item scores the middle letter, so a
- *  missing tier never sinks it. */
+/** What a tier letter is worth. */
 const TIER_POINTS: Record<string, number> = { S: 5, A: 4, B: 3, C: 2, D: 1 };
-const UNTIERED_POINTS = 3;
 
-/** What the grimmest farm gives back. Wide enough that a really easy A-tier
- *  outscores a very hard S-tier, narrow enough that the tier still leads. */
-const EFFORT_POINTS = 3;
+/** Overframe averages its votes on a 1..5 scale with 1 at the top, and the tier
+ *  letter is that average rounded. */
+const TIER_SCORE: Record<string, number> = { S: 1, A: 2, B: 3, C: 4, D: 5 };
 
-export function tierPoints(tier: string | null | undefined): number {
-  if (!tier) return UNTIERED_POINTS;
-  return TIER_POINTS[tier.trim().toUpperCase()] ?? UNTIERED_POINTS;
+const TIER_SCALE = 5;
+
+/** The score behind a letter, lower is better; null for a letter nothing
+ *  recognises. A score rounding to a different letter is a player's own
+ *  override, so the midpoint stands instead. */
+export function tierScore(
+  tier: string | null | undefined,
+  score: number | null = null,
+): number | null {
+  const midpoint = tier ? TIER_SCORE[tier.trim().toUpperCase()] : undefined;
+  if (midpoint === undefined) return null;
+  if (score === null || !Number.isFinite(score) || score <= 0) return midpoint;
+  return Math.round(Math.min(score, TIER_SCALE)) === midpoint ? score : midpoint;
 }
 
 /** Sort order for a tier letter, best first; unknown sorts last, not middling. */
@@ -19,16 +25,4 @@ export function tierOrder(tier: string | null | undefined): number | null {
   if (!tier) return null;
   const points = TIER_POINTS[tier.trim().toUpperCase()];
   return points === undefined ? null : -points;
-}
-
-/**
- * Tier points less an effort toll, higher is a better thing to farm next.
- * Both halves read the middle when nothing has rated the item.
- */
-export function recommendScore(
-  tier: string | null | undefined,
-  difficulty: string | number | null | undefined,
-): number {
-  const toll = effortValue(difficulty) ?? UNKNOWN_EFFORT;
-  return tierPoints(tier) - toll * EFFORT_POINTS;
 }

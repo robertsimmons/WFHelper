@@ -1,6 +1,10 @@
 import { describe, expect, it } from "vitest";
 
 import {
+  ACQUISITION_INCLUDES,
+  ACQUISITION_NONE,
+} from "../../../../src/lib/suggest/acquisition/kinds.js";
+import {
   ACTIVITY_PREFS,
   DEFAULT_OPTIONS,
   MISSION_TYPE_NAMES,
@@ -157,6 +161,47 @@ describe("parseOptions", () => {
     expect(parseOptions(JSON.stringify({ relicGoal: "endo" }))).toEqual({});
     expect(parseOptions(null)).toEqual({});
     expect(parseOptions("[1,2]")).toEqual({});
+  });
+
+  it("reads an acquisition list that was never narrowed as the empty one", () => {
+    const legacy = [
+      "warframe",
+      "primary",
+      "secondary",
+      "melee",
+      "archwing",
+      "archgun",
+      "archmelee",
+      "companion",
+    ];
+    expect(parseOptions(JSON.stringify({ acquisitionKinds: legacy }))).toEqual({
+      acquisitionKinds: [],
+    });
+    expect(parseOptions(JSON.stringify({ acquisitionKinds: [...ACQUISITION_INCLUDES] }))).toEqual({
+      acquisitionKinds: [],
+    });
+  });
+
+  it("keeps a narrowed acquisition list exactly as it was picked", () => {
+    expect(parseOptions(JSON.stringify({ acquisitionKinds: ["melee", "warframe"] }))).toEqual({
+      acquisitionKinds: ["warframe", "melee"],
+    });
+  });
+
+  it("drops an acquisition kind it does not ship", () => {
+    expect(parseOptions(JSON.stringify({ acquisitionKinds: ["warframe", "zaw"] }))).toEqual({
+      acquisitionKinds: ["warframe"],
+    });
+  });
+
+  it("reads back a cleared acquisition row as cleared rather than as every kind", () => {
+    expect(parseOptions(JSON.stringify({ acquisitionKinds: [ACQUISITION_NONE] }))).toEqual({
+      acquisitionKinds: [ACQUISITION_NONE],
+    });
+    // The reserved spelling wins: a list holding it was never a narrowing.
+    expect(
+      parseOptions(JSON.stringify({ acquisitionKinds: [ACQUISITION_NONE, "warframe"] })),
+    ).toEqual({ acquisitionKinds: [ACQUISITION_NONE] });
   });
 });
 

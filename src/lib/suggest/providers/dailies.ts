@@ -117,6 +117,13 @@ function archonShardSet(colour: string): string[] {
   return [`${colour} Archon Shard`, `Tauforged ${colour} Archon Shard`];
 }
 
+/** Both grades, sharing the noun they both end in, joined the way every other
+ *  one-of-N line joins its possibilities. The colour is known, so a plural or a
+ *  bare family name would drop the one fact the card is for. */
+function archonShardName(colour: string): string {
+  return `${colour} / Tauforged ${colour} Archon Shard`;
+}
+
 type CalendarSeason = NonNullable<WorldState["calendarSeason"]>;
 
 /** How many days the season itself covers, from its start where world state
@@ -263,7 +270,7 @@ function namedReward(
     const value = bestWorth(prefs, shards);
     if (value === null) return null;
     return {
-      name: `${colour} Archon Shards`,
+      name: archonShardName(colour),
       value,
       mention: true,
       oneOf: shards.map((name) => ({ name })),

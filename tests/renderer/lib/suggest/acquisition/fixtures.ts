@@ -78,9 +78,16 @@ interface InventoryShape {
   spaceMelee?: string[];
   spaceSuits?: string[];
   sentinelWeapons?: string[];
+  sentinels?: string[];
+  kubrowPets?: string[];
+  mechSuits?: string[];
+  /** Head parts fitted to a build DE keeps under a generic ItemType. */
+  modularParts?: string[];
   /** Owned rifles carrying the installed Incarnon Genesis feature bit. */
   incarnon?: string[];
   recipes?: Record<string, number>;
+  /** Blueprints the foundry is cooking right now, one entry per build. */
+  pending?: string[];
   misc?: Record<string, number>;
   subsumed?: string[];
 }
@@ -108,10 +115,18 @@ export function inventory(shape: InventoryShape = {}): RawInventoryData {
     SpaceMelee: gear(shape.spaceMelee),
     SpaceSuits: gear(shape.spaceSuits),
     SentinelWeapons: gear(shape.sentinelWeapons),
+    Sentinels: gear(shape.sentinels),
+    KubrowPets: gear(shape.kubrowPets),
+    MechSuits: gear(shape.mechSuits),
+    MoaPets: (shape.modularParts ?? []).map((part) => ({
+      ItemType: MOA_BUILD,
+      ModularParts: [part],
+    })),
     Recipes: Object.entries(shape.recipes ?? {}).map(([ItemType, ItemCount]) => ({
       ItemType,
       ItemCount,
     })),
+    PendingRecipes: (shape.pending ?? []).map((ItemType) => ({ ItemType })),
     MiscItems: Object.entries(shape.misc ?? {}).map(([ItemType, ItemCount]) => ({
       ItemType,
       ItemCount,
@@ -290,5 +305,218 @@ export function weaponRelicDb(): RelicDatabase {
       },
     },
     byUniqueName: { [LITH_B1]: { groupKey: "Lith B1", quality: "intact" } },
+  };
+}
+
+export const CARRIER = "/Lotus/Types/Sentinels/SentinelPowersuits/CarrierPowerSuit";
+const CARRIER_BP = "/Lotus/Types/Recipes/Weapons/CarrierBlueprint";
+
+export const SAHASA = "/Lotus/Types/Game/KubrowPet/AdventurerKubrowPetPowerSuit";
+const SAHASA_BP = "/Lotus/Types/Recipes/Weapons/SahasaBlueprint";
+
+export const PANZER = "/Lotus/Types/Friendly/Pets/CreaturePets/ArmoredInfestedCatbrowPetPowerSuit";
+
+export const VOIDRIG = "/Lotus/Powersuits/EntratiMech/NechroTech";
+const VOIDRIG_BP = "/Lotus/Types/Recipes/Warframes/VoidrigBlueprint";
+
+const MOA_BUILD = "/Lotus/Types/Friendly/Pets/MoaPets/MoaPetPowerSuit";
+export const OLORO_MOA = "/Lotus/Types/Friendly/Pets/MoaPets/MoaPetParts/MoaPetHeadOloro";
+export const PARA_MOA = "/Lotus/Types/Friendly/Pets/MoaPets/MoaPetParts/MoaPetHeadPara";
+const MOA_LEG = "/Lotus/Types/Friendly/Pets/MoaPets/MoaPetParts/MoaPetLegA";
+
+export const DORMA_HOUND =
+  "/Lotus/Types/Friendly/Pets/ZanukaPets/ZanukaPetParts/ZanukaPetPartHeadA";
+
+export const RAPLAK_PRISM =
+  "/Lotus/Weapons/Sentients/OperatorAmplifiers/Set1/Barrel/SentAmpSet1BarrelPartA";
+const LOHRIN_BRACE = "/Lotus/Weapons/Sentients/OperatorAmplifiers/Set1/Grip/SentAmpSet1GripPartC";
+
+export const RUNWAY =
+  "/Lotus/Types/Vehicles/Hoverboard/HoverboardParts/PartComponents/HoverboardCorpusC/HoverboardCorpusCDeck";
+
+function head(name: string, masterable: boolean): ItemDbEntry {
+  return {
+    name,
+    // DE exports every modular part as a pistol, head parts included.
+    productCategory: "Pistols",
+    masterable,
+    imageUrl: `https://example.test/${name.replace(/\s+/g, "")}.png`,
+  };
+}
+
+/** Every masterable kind the sweep classes off something other than a recipe. */
+export function companionDb(): Record<string, ItemDbEntry> {
+  return {
+    [CARRIER]: {
+      ...weapon("Carrier", "Sentinels", CARRIER_BP),
+      category: "Sentinels",
+    },
+    [CARRIER_BP]: { name: "Carrier Blueprint", buildsProduct: CARRIER },
+
+    [SAHASA]: { ...weapon("Sahasa Kubrow", "KubrowPets", SAHASA_BP), category: "Pets" },
+    [SAHASA_BP]: { name: "Sahasa Kubrow Blueprint", buildsProduct: SAHASA },
+    [PANZER]: { ...unbuilt("Panzer Vulpaphyla", "KubrowPets"), category: "Pets" },
+
+    [VOIDRIG]: { ...weapon("Voidrig", "MechSuits", VOIDRIG_BP), category: "Warframes" },
+    [VOIDRIG_BP]: { name: "Voidrig Blueprint", buildsProduct: VOIDRIG },
+
+    [OLORO_MOA]: head("Oloro Moa", true),
+    [PARA_MOA]: head("Para Moa", true),
+    [MOA_LEG]: head("Drimper Bracket", false),
+
+    [DORMA_HOUND]: head("Dorma Hound", true),
+
+    // The item database flags no amp part masterable, so the path is the rule.
+    [RAPLAK_PRISM]: head("Raplak Prism", false),
+    [LOHRIN_BRACE]: head("Lohrin Brace", false),
+
+    [RUNWAY]: head("Runway", true),
+
+    [OROKIN_CELL]: { name: "Orokin Cell", category: "Resource" },
+  };
+}
+
+// Spinnerex and Dorrclave, uniqueNames and recipe shape straight out of the
+// game export. Every part here is itself built from a blueprint of its own,
+// which is what a prime part - farmed whole, held under a "...Blueprint"
+// spelling - never is.
+export const SPINNEREX = "/Lotus/Weapons/Tenno/Melee/Whips/SpiderWhip/SpiderWhipWeapon";
+export const SPINNEREX_BP = "/Lotus/Types/Recipes/Weapons/SpinnerexBlueprint";
+export const SPINNEREX_BLADE = "/Lotus/Types/Recipes/Weapons/WeaponParts/SpinnerexBlade";
+export const SPINNEREX_HANDLE = "/Lotus/Types/Recipes/Weapons/WeaponParts/SpinnerexHandle";
+export const SPINNEREX_STRING = "/Lotus/Types/Recipes/Weapons/WeaponParts/SpinnerexString";
+
+const DORR = "/Lotus/Types/Recipes/Weapons/WeaponParts/TnDagathBladeWhip";
+export const DORRCLAVE = "/Lotus/Weapons/Tenno/Melee/Swords/TnDagathBladeWhip/TnDagathBladeWhip";
+export const DORRCLAVE_BP = `${DORR}Blueprint`;
+export const DORRCLAVE_BLADE = `${DORR}Blade`;
+export const DORRCLAVE_HILT = `${DORR}Hilt`;
+export const DORRCLAVE_HOOK = `${DORR}Hook`;
+export const DORRCLAVE_STRING = `${DORR}String`;
+
+/** The blueprint that builds a part, spelled the way the inventory holds it. */
+export function blueprintOf(partUniqueName: string): string {
+  return `${partUniqueName}Blueprint`;
+}
+
+const TEMPORAL_DUST = "/Lotus/Types/Gameplay/DuviriMITW/Resources/DuviriMurmurItemA";
+const ENTRATI_OBOLS = "/Lotus/Types/Gameplay/EntratiLab/Resources/EntratiLabMiscItemA";
+const VAINTHORN = "/Lotus/Types/Items/MiscItems/DagathAbyssItem";
+const FERRITE = "/Lotus/Types/Items/MiscItems/Ferrite";
+const RUBEDO = "/Lotus/Types/Items/MiscItems/Rubedo";
+
+const AKBOLTOP = "/Lotus/Weapons/Tenno/Pistols/PrimeAkbolto/PrimeAkBoltoWeapon";
+export const AKBOLTOP_BP = "/Lotus/Types/Recipes/Weapons/AkboltoPrimeBlueprint";
+export const AKBOLTOP_BARREL = "/Lotus/Types/Recipes/Weapons/WeaponParts/AkboltoPrimeBarrel";
+export const AKBOLTOP_RECEIVER = "/Lotus/Types/Recipes/Weapons/WeaponParts/AkboltoPrimeReceiver";
+export const AKBOLTOP_LINK = "/Lotus/Types/Recipes/Weapons/WeaponParts/AkboltoPrimeLink";
+
+interface Ingredient {
+  uniqueName: string;
+  count: number;
+}
+
+function melee(name: string, blueprint: string, ingredients: Ingredient[]): ItemDbEntry {
+  return {
+    name,
+    productCategory: "Melee",
+    masterable: true,
+    imageUrl: `https://example.test/${name.replace(/\s+/g, "")}.png`,
+    wikiaUrl: `https://wiki.test/${name.replace(/\s+/g, "_")}`,
+    recipe: { buildPrice: 20_000, buildTime: 43_200, num: 1, blueprintUniqueName: blueprint, ingredients },
+  };
+}
+
+/** A part the player builds, and the blueprint that builds it. They are two
+ *  items: the foundry takes the part, and the blueprint only lets you start. */
+function buildablePart(
+  uniqueName: string,
+  name: string,
+  materials: readonly Ingredient[],
+): Record<string, ItemDbEntry> {
+  return {
+    [uniqueName]: {
+      ...part(name),
+      recipe: {
+        buildPrice: 5_000,
+        buildTime: 3_600,
+        num: 1,
+        blueprintUniqueName: blueprintOf(uniqueName),
+        ingredients: [...materials],
+      },
+    },
+    [blueprintOf(uniqueName)]: {
+      name: `${name} Blueprint`,
+      buildsProduct: uniqueName,
+      isBuildComponent: true,
+    },
+  };
+}
+
+function one(uniqueName: string): Ingredient {
+  return { uniqueName, count: 1 };
+}
+
+/** Two melee weapons whose parts are each built from a blueprint of their own,
+ *  beside a Prime whose parts are farmed whole and reach the inventory under a
+ *  "...Blueprint" spelling. The pair is what tells a real blueprint from a part
+ *  the inventory happens to spell like one. */
+export function techrotDb(): Record<string, ItemDbEntry> {
+  return {
+    [SPINNEREX]: melee("Spinnerex", SPINNEREX_BP, [
+      one(SPINNEREX_BLADE),
+      one(SPINNEREX_STRING),
+      one(SPINNEREX_HANDLE),
+    ]),
+    [SPINNEREX_BP]: { name: "Spinnerex Blueprint", buildsProduct: SPINNEREX },
+    ...buildablePart(SPINNEREX_BLADE, "Spinnerex Blade", [
+      { uniqueName: TEMPORAL_DUST, count: 150 },
+      { uniqueName: ENTRATI_OBOLS, count: 1_200 },
+    ]),
+    ...buildablePart(SPINNEREX_STRING, "Spinnerex String", [
+      { uniqueName: TEMPORAL_DUST, count: 100 },
+      { uniqueName: ENTRATI_OBOLS, count: 900 },
+    ]),
+    ...buildablePart(SPINNEREX_HANDLE, "Spinnerex Handle", [
+      { uniqueName: ENTRATI_OBOLS, count: 350 },
+    ]),
+
+    [DORRCLAVE]: melee("Dorrclave", DORRCLAVE_BP, [
+      one(DORRCLAVE_BLADE),
+      one(DORRCLAVE_HILT),
+      one(DORRCLAVE_STRING),
+      one(DORRCLAVE_HOOK),
+    ]),
+    [DORRCLAVE_BP]: { name: "Dorrclave Blueprint", buildsProduct: DORRCLAVE },
+    ...buildablePart(DORRCLAVE_BLADE, "Dorrclave Blade", [
+      { uniqueName: VAINTHORN, count: 20 },
+      { uniqueName: FERRITE, count: 750 },
+    ]),
+    ...buildablePart(DORRCLAVE_HILT, "Dorrclave Hilt", [{ uniqueName: VAINTHORN, count: 20 }]),
+    ...buildablePart(DORRCLAVE_STRING, "Dorrclave String", [{ uniqueName: VAINTHORN, count: 20 }]),
+    ...buildablePart(DORRCLAVE_HOOK, "Dorrclave Hook", [
+      { uniqueName: VAINTHORN, count: 20 },
+      { uniqueName: RUBEDO, count: 500 },
+    ]),
+
+    [AKBOLTOP]: {
+      ...melee("Akbolto Prime", AKBOLTOP_BP, [
+        { uniqueName: AKBOLTOP_BARREL, count: 2 },
+        { uniqueName: AKBOLTOP_RECEIVER, count: 2 },
+        one(AKBOLTOP_LINK),
+      ]),
+      productCategory: "Pistols",
+      isPrime: true,
+    },
+    [AKBOLTOP_BP]: { name: "Akbolto Prime Blueprint", buildsProduct: AKBOLTOP },
+    [AKBOLTOP_BARREL]: part("Akbolto Prime Barrel"),
+    [AKBOLTOP_RECEIVER]: part("Akbolto Prime Receiver"),
+    [AKBOLTOP_LINK]: part("Akbolto Prime Link"),
+
+    [TEMPORAL_DUST]: { name: "Temporal Dust", category: "Resource" },
+    [ENTRATI_OBOLS]: { name: "Entrati Obols", category: "Resource" },
+    [VAINTHORN]: { name: "Vainthorn", category: "Resource" },
+    [FERRITE]: { name: "Ferrite", category: "Resource" },
+    [RUBEDO]: { name: "Rubedo", category: "Resource" },
   };
 }

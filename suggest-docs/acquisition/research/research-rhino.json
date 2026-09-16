@@ -1,0 +1,140 @@
+{
+  "name": "Rhino",
+  "kind": "Warframe",
+  "masteryRank": 0,
+  "slots": [
+    { "type": "Warframe slot", "quantity": 1, "note": "Needed to claim the built frame from the Foundry." }
+  ],
+  "prerequisites": [
+    { "type": "quest", "name": "Awakening / Vor's Prize", "note": "Standard new-player opening; unlocks Earth and the star chart." },
+    { "type": "junction", "name": "Venus Junction (on Earth)", "note": "Tasks: complete The Teacher, equip Dreamer's Bond in the aura slot, upgrade Dreamer's Bond, start building a Taxon Sentinel, complete the Junction. Unlocks Venus." },
+    { "type": "node", "name": "Fossa, Venus", "note": "Reached along the Venus chain E Gate > Fortuna > Kiliken > Fossa." },
+    { "type": "credits", "name": "35,000 credits", "note": "Market price of the main Rhino blueprint." }
+  ],
+  "routes": [
+    {
+      "kind": "market",
+      "where": "In-game Market (blueprint tab)",
+      "parts": ["Rhino Blueprint (main)"],
+      "dropRate": null,
+      "conditions": [],
+      "notes": "35,000 credits. Only source of the main blueprint outside The Circuit."
+    },
+    {
+      "kind": "boss",
+      "where": "Fossa, Venus - Assassination (Jackal, spawns at level 8)",
+      "parts": ["Rhino Neuroptics Blueprint", "Rhino Chassis Blueprint", "Rhino Systems Blueprint"],
+      "dropRate": {
+        "Rhino Neuroptics Blueprint": 0.3872,
+        "Rhino Chassis Blueprint": 0.3872,
+        "Rhino Systems Blueprint": 0.2256
+      },
+      "conditions": [],
+      "notes": "Table sums to 100%; every clear yields exactly one component blueprint. Systems is the bottleneck at 22.56%."
+    },
+    {
+      "kind": "circuit",
+      "where": "The Circuit (Duviri) - Normal mode, Week 2 of the 12-week rotation",
+      "parts": ["Rhino Neuroptics Blueprint (Tier 2)", "Rhino Chassis Blueprint (Tier 5)", "Rhino Systems Blueprint (Tier 8)", "Rhino Blueprint (Tier 10)"],
+      "dropRate": null,
+      "conditions": [
+        "The Duviri Paradox quest completed",
+        "Rhino must be the frame you pick that week (offered alongside Loki and Mag)",
+        "Week 2 of the rotation must be live"
+      ],
+      "notes": "Deterministic tier rewards, not a drop roll, so dropRate is null by design. Rhino's week also grants the Ironclad Charge augment."
+    }
+  ],
+  "purchase": {
+    "platinum": 375,
+    "what": "Fully built Rhino from the Market, includes a Warframe slot",
+    "credits": 35000,
+    "creditsBuys": "Main blueprint only",
+    "vendorStanding": null
+  },
+  "materials": [
+    { "name": "Alloy Plate", "quantity": 150, "usedIn": ["Neuroptics"], "whereFarmed": "Gabii, Ceres (Survival, Dark Sector); Zariman endless nodes (Oro Works, Everview Arc, Tuvul Commons)", "harvestable": false },
+    { "name": "Polymer Bundle", "quantity": 250, "usedIn": ["Neuroptics 150", "Systems 100"], "whereFarmed": "Assur, Uranus (Survival, Dark Sector); Ophelia, Uranus (Survival)", "harvestable": false },
+    { "name": "Rubedo", "quantity": 1200, "usedIn": ["Neuroptics 500", "Chassis 300", "Systems 400"], "whereFarmed": "Zeugma, Phobos (Survival, Dark Sector, ~250 per 5 min); Valefor, Europa (Defense)", "harvestable": false },
+    { "name": "Neurodes", "quantity": 2, "usedIn": ["Neuroptics 1", "Main frame 1"], "whereFarmed": "Magnacidium, Deimos (Lephantis assassination, 1-2 per run); Plato, Lua (Exterminate, Sentients); Neuroptic Mass containers on Earth", "harvestable": false },
+    { "name": "Circuits", "quantity": 700, "usedIn": ["Chassis 450", "Systems 250"], "whereFarmed": "Seimeni, Ceres (Defense, Dark Sector); Gabii, Ceres (Survival, Dark Sector); Tessera, Venus (Defense)", "harvestable": false },
+    { "name": "Ferrite", "quantity": 1500, "usedIn": ["Chassis 1000", "Systems 500"], "whereFarmed": "Apollodorus, Mercury (Survival); Terminus, Mercury (Sabotage)", "harvestable": false },
+    { "name": "Credits", "quantity": 70000, "usedIn": ["Neuroptics 15000", "Chassis 15000", "Systems 15000", "Main frame 25000"], "whereFarmed": "Foundry cost; farm on Index (Neptune) or Profit-Taker", "harvestable": false }
+  ],
+  "buildTimes": {
+    "Neuroptics": { "hours": 12, "credits": 15000, "rushPlatinum": 25 },
+    "Chassis": { "hours": 12, "credits": 15000, "rushPlatinum": 25 },
+    "Systems": { "hours": 12, "credits": 15000, "rushPlatinum": 25 },
+    "Rhino (final)": { "hours": 24, "credits": 25000, "rushPlatinum": 50, "note": "Wiki lists 'Time: 1 Day(s)' for the main frame." },
+    "criticalPathHours": 36,
+    "criticalPathNote": "All three components can build in parallel, so 12h + 24h if the parts are in hand."
+  },
+  "effort": 3,
+  "effortWhy": "One low-level boss with a 100%-component table; a handful of Fossa runs plus a 35k credit blueprint.",
+  "gotchas": [
+    "Systems is 22.56% against 38.72% for the other two, so it is usually the last piece and the reason a run count balloons.",
+    "The main blueprint is a Market purchase; killing Jackal forever will never drop it.",
+    "Killing the Jackal is also a Venus Junction (the one on Venus that unlocks Mercury) task, so the farm overlaps with normal star-chart progression.",
+    "You need a free Warframe slot before the Foundry will let you claim the finished frame.",
+    "The Circuit route only offers Rhino on week 2 of a 12-week rotation and only if you pick him over Loki and Mag that week."
+  ],
+  "community": {
+    "painLevel": "very low; treated as one of the two or three easiest frames to acquire",
+    "recommendedMode": "Solo, normal star chart. Jackal spawns at level 8, so no group or Steel Path benefit; Steel Path is not a condition on the drop table.",
+    "preferredRoute": "Boss route (Fossa Jackal) for the three components plus the 35,000-credit Market blueprint. The Circuit is a fallback only when Rhino's week is live and you pick him over Loki and Mag.",
+    "timeEstimate": "~3+ Jackal runs typical, more with bad Systems RNG. No hour figures reported.",
+    "traps": [
+      "Fossa can show as a high-level node when a Nightmare Mode or Invasion variant is overlaid. Click the node and pick the plain Assassination version.",
+      "Re-running Fossa for the main blueprint never works; it is a Market purchase only. Most-repeated wasted-time report in the threads.",
+      "The node occasionally fails on load; re-queue rather than restarting."
+    ],
+    "tips": [
+      "Break a leg during the stagger phase; new players report doing zero damage and assuming they are underpowered.",
+      "Fossa is on the left side of the Venus map near the Junction.",
+      "Rhino Prime is vaulted; its relics come only from Varzia (Prime Resurgence) for Aya. Check for an unvaulting before farming Aya."
+    ],
+    "sentiment": "Effective but simple; some suggest Koumei as an early frame that teaches more mechanics. Nobody disputes Rhino works.",
+    "sources": ["r/Warframe Rhino-farming beginner threads and a frequently reposted early-frame acquisition list"]
+  },
+  "conflicts": [
+    {
+      "wikiClaim": "Jackal spawns at level 8 on Fossa, Venus, with no Nightmare or Steel Path condition on the Rhino drop table.",
+      "communityClaim": "Players repeatedly find Fossa displayed as a high-level node and assume Rhino is gated behind harder content.",
+      "show": "wiki",
+      "why": "Both are true at once: the base Assassination is level 8, and the high-level display is a Nightmare or Invasion overlay on the same node. Show the wiki level and surface the overlay as a trap."
+    }
+  ],
+  "sources": [
+    "https://wiki.warframe.com/w/Rhino",
+    "https://wiki.warframe.com/w/Rhino/Prime",
+    "https://wiki.warframe.com/w/Jackal",
+    "https://wiki.warframe.com/w/The_Circuit",
+    "https://wiki.warframe.com/w/Junction",
+    "https://wiki.warframe.com/w/Venus",
+    "https://wiki.warframe.com/w/Neurodes",
+    "https://wiki.warframe.com/w/Rubedo",
+    "https://wiki.warframe.com/w/Alloy_Plate",
+    "https://wiki.warframe.com/w/Polymer_Bundle",
+    "https://wiki.warframe.com/w/Circuits",
+    "https://wiki.warframe.com/w/Ferrite",
+    "https://forums.warframe.com/topic/944490-where-do-i-farm-rhino/"
+  ],
+  "discarded": [
+    {
+      "claim": "Forum reports of 25-40+ Jackal runs with no Systems drop, and of Jackal 'not dropping' Systems at all.",
+      "why": "Posts date from the 2013-2016 drop-table era and predate the current table. The wiki table sums to 100% with Systems at 22.56%, so a component drops every clear. Kept only as an anecdote that RNG streaks happen."
+    },
+    {
+      "claim": "Jackal has a Steel Path variant relevant to Rhino farming.",
+      "why": "The wiki Jackal page does not describe one, and no Steel Path condition appears on the Rhino drop table. Reported as absent rather than guessed."
+    },
+    {
+      "claim": "Community: Koumei is the better early frame to farm instead of Rhino.",
+      "why": "Taste, not acquisition. Kept in community.sentiment only; it changes no route, cost or effort figure."
+    }
+  ],
+  "unknowns": [
+    { "field": "routes[boss].conditions", "note": "No day/night, Fass/Vome, spiral or Steel Path condition applies to the Jackal fight per the wiki." },
+    { "field": "The Circuit tier reward chance", "note": "Circuit tier rewards are deterministic picks, so no numeric rate exists to report." }
+  ]
+}

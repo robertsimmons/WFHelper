@@ -85,11 +85,19 @@ function noOverrides(): SuggestionOverrides {
 }
 
 /** Overrides stored on the four-tier scale the worth ladder replaced are read
- *  as the group they became, so a player's own placements survive the change. */
+ *  as the group they became, so a player's own placements survive the change.
+ *  The migration is written straight back: a later change only rewrites the keys
+ *  it touched, so a scale left in storage would be read as legacy forever. */
 function loadWorth(): Record<string, WorthGroup | typeof UNRATED> {
   const stored = parseOverrides(readStorage(REWARD_KEY), WORTH_OVERRIDES);
   const migrated: Record<string, WorthGroup | typeof UNRATED> = {};
-  for (const [key, value] of Object.entries(stored)) migrated[key] = canonicalWorth(value);
+  let moved = false;
+  for (const [key, value] of Object.entries(stored)) {
+    const group = canonicalWorth(value);
+    if (group !== value) moved = true;
+    migrated[key] = group;
+  }
+  if (moved) writeStorage(REWARD_KEY, JSON.stringify(migrated));
   return migrated;
 }
 

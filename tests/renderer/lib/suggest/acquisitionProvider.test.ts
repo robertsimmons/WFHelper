@@ -1,7 +1,8 @@
 import { describe, expect, it } from "vitest";
 
 import { resolveAcquisition } from "../../../../src/lib/suggest/acquisition/index.js";
-import { recommendScore } from "../../../../src/lib/suggest/acquisition/recommend.js";
+import { ACQUISITION_NONE } from "../../../../src/lib/suggest/acquisition/kinds.js";
+import { readyBand } from "../../../../src/lib/suggest/acquisition/sort.js";
 import { DEFAULT_OPTIONS, defaultPreferences } from "../../../../src/lib/suggest/preferences.js";
 import {
   ACQUISITION_ACTIVITY,
@@ -114,11 +115,12 @@ describe("acquisitionProvider", () => {
     expect(new Set(drafts.map((draft) => draft.id))).toEqual(
       new Set(targets.map((target) => `acquisition:${target.uniqueName}`)),
     );
-    const scores = drafts.map((draft) => {
+    const bands = drafts.map((draft) => {
       const target = draft.details?.acquisition;
-      return recommendScore(target?.tier ?? null, target?.difficulty ?? null);
+      return target ? readyBand(target) : Number.MAX_SAFE_INTEGER;
     });
-    expect([...scores].sort((a, b) => b - a)).toEqual(scores);
+    expect([...bands].sort((a, b) => a - b)).toEqual(bands);
+    expect(drafts.map((draft) => draft.order)).toEqual(drafts.map((_, index) => index));
   });
 
   it("keeps value running with the resolver's effort so the scorer agrees", () => {
@@ -227,6 +229,11 @@ describe("acquisitionProvider", () => {
       (draft) => draft.details?.acquisition?.weaponClass,
     );
     expect(new Set(classes).size).toBeGreaterThan(1);
+  });
+
+  it("offers nothing at all on the row's own cleared selection", () => {
+    const cleared: Partial<SuggestionOptions> = { acquisitionKinds: [ACQUISITION_NONE] };
+    expect(collect({ itemDb: weaponDb(), options: cleared })).toEqual([]);
   });
 
   it("carries the resolver's tier through to the card", () => {

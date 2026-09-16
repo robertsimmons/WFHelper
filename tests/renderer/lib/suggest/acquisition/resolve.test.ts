@@ -2,6 +2,9 @@ import { describe, expect, it } from "vitest";
 
 import { resolveAcquisition } from "../../../../../src/lib/suggest/acquisition/index.js";
 import {
+  CARRIER,
+  companionDb,
+  DORMA_HOUND,
   inventory,
   itemDb,
   LITH_M1,
@@ -11,13 +14,21 @@ import {
   MAG_NEURO,
   MAG_SYSTEMS,
   MAGP_NEURO,
+  OLORO_MOA,
   OROKIN_CELL,
+  PANZER,
+  PARA_MOA,
+  RAPLAK_PRISM,
   relicDb,
+  RUNWAY,
+  SAHASA,
+  VOIDRIG,
 } from "./fixtures.js";
 import type {
   AcquisitionContext,
   AcquisitionTarget,
 } from "../../../../../src/lib/suggest/acquisition/types.js";
+import type { MasteryData } from "../../../../../src/types/inventory.js";
 
 function context(overrides: Partial<AcquisitionContext> = {}): AcquisitionContext {
   return { itemDb: itemDb(), inventory: null, ...overrides };
@@ -189,5 +200,137 @@ describe("resolveAcquisition", () => {
   it("survives an inventory the reader never filled in", () => {
     const ctx = context({ inventory: {} as never, ratings: undefined, relicDb: null, plat: null });
     expect(resolveAcquisition(ctx)).toHaveLength(3);
+  });
+});
+
+describe("resolveAcquisition beyond frames and weapons", () => {
+  function companions(overrides: Partial<AcquisitionContext> = {}): AcquisitionTarget[] {
+    return resolveAcquisition({ itemDb: companionDb(), inventory: null, ...overrides });
+  }
+
+  function kindOf(targets: AcquisitionTarget[], name: string): string {
+    return find(targets, name).kind;
+  }
+
+  it("classes the sentinel, the beasts and the Necramech apart", () => {
+    const targets = companions();
+    expect(kindOf(targets, "Carrier")).toBe("sentinel");
+    expect(kindOf(targets, "Sahasa Kubrow")).toBe("beast");
+    expect(kindOf(targets, "Panzer Vulpaphyla")).toBe("beast");
+    expect(kindOf(targets, "Voidrig")).toBe("necramech");
+    for (const name of ["Carrier", "Sahasa Kubrow", "Voidrig"]) {
+      expect(find(targets, name).needs).toEqual(["mastery"]);
+    }
+  });
+
+  it("walks the recipe of a sentinel the same way it walks a frame's", () => {
+    const carrier = find(companions(), "Carrier");
+    expect(carrier.parts.known).toBe(true);
+    expect(carrier.parts.main?.name).toBe("Carrier Blueprint");
+    expect(carrier.weaponClass).toBeNull();
+    expect(carrier.modular).toBeNull();
+  });
+
+  it("drops a sentinel, a beast or a Necramech already in the account", () => {
+    const ctx = {
+      inventory: inventory({
+        sentinels: [CARRIER],
+        kubrowPets: [SAHASA],
+        mechSuits: [VOIDRIG],
+      }),
+    };
+    const names = companions(ctx).map((target) => target.name);
+    expect(names).not.toContain("Carrier");
+    expect(names).not.toContain("Sahasa Kubrow");
+    expect(names).not.toContain("Voidrig");
+    expect(names).toContain("Panzer Vulpaphyla");
+  });
+
+  it("reads a subspecies fitted to a build as owned", () => {
+    const ctx = { inventory: inventory({ modularParts: [PANZER] }) };
+    expect(companions(ctx).map((target) => target.name)).not.toContain("Panzer Vulpaphyla");
+  });
+
+  it("never returns a Hound model as a secondary weapon", () => {
+    const hound = find(companions(), "Hound");
+    expect(hound.kind).toBe("modular");
+    expect(companions().map((target) => target.name)).not.toContain("Dorma Hound");
+  });
+
+  it("returns one target per modular gear type, not one per head part", () => {
+    const names = companions().map((target) => target.name);
+    expect(names).toContain("Moa");
+    expect(names).toContain("Hound");
+    expect(names).toContain("Amp");
+    expect(names).toContain("K-Drive");
+    expect(names).not.toContain("Oloro Moa");
+    expect(names).not.toContain("Runway");
+  });
+
+  it("counts the head parts a card reads its progress off", () => {
+    const moa = find(companions(), "Moa");
+    expect(moa.modular?.gear).toBe("moa");
+    expect(moa.modular?.heads.map((head) => head.name)).toEqual(["Oloro Moa", "Para Moa"]);
+    expect(moa.modular?.owned).toBe(0);
+    expect(moa.modular?.headLabelKey).toBe("nextUp.modularHeadModels");
+  });
+
+  it("leaves the parts that are only stats and looks out of the count", () => {
+    const targets = companions();
+    expect(find(targets, "Amp").modular?.heads.map((head) => head.name)).toEqual(["Raplak Prism"]);
+    expect(find(targets, "Moa").modular?.heads).toHaveLength(2);
+  });
+
+  it("classes an amp prism the item database never flagged masterable", () => {
+    const amp = find(companions(), "Amp");
+    expect(amp.kind).toBe("modular");
+    expect(amp.modular?.gear).toBe("amp");
+  });
+
+  it("gilds everything but the K-Drive", () => {
+    const targets = companions();
+    expect(find(targets, "Moa").modular?.requiresGilding).toBe(true);
+    expect(find(targets, "Hound").modular?.requiresGilding).toBe(true);
+    expect(find(targets, "Amp").modular?.requiresGilding).toBe(true);
+    expect(find(targets, "K-Drive").modular?.requiresGilding).toBe(false);
+  });
+
+  it("banks the mastery of a head part fitted to a build", () => {
+    const ctx = { inventory: inventory({ modularParts: [OLORO_MOA] }) };
+    const moa = find(companions(ctx), "Moa");
+    expect(moa.modular?.owned).toBe(1);
+    expect(moa.modular?.heads.find((head) => head.name === "Oloro Moa")?.owned).toBe(true);
+  });
+
+  it("keeps banked mastery after the build is gone", () => {
+    const mastery = { items: [{ name: "Oloro Moa", status: "mastered" }] } as MasteryData;
+    const moa = find(companions({ mastery }), "Moa");
+    expect(moa.modular?.owned).toBe(1);
+  });
+
+  it("drops a gear type whose every head part is banked", () => {
+    const ctx = { inventory: inventory({ modularParts: [OLORO_MOA, PARA_MOA, DORMA_HOUND] }) };
+    const names = companions(ctx).map((target) => target.name);
+    expect(names).not.toContain("Moa");
+    expect(names).not.toContain("Hound");
+    expect(names).toContain("Amp");
+  });
+
+  it("narrows the sweep to a single kind", () => {
+    const targets = companions({ kinds: ["necramech"] });
+    expect(targets.map((target) => target.name)).toEqual(["Voidrig"]);
+  });
+
+  it("returns no modular gear at all from an item database that holds none", () => {
+    expect(resolveAcquisition({ itemDb: itemDb(), inventory: null }).map((t) => t.modular)).toEqual(
+      [null, null, null],
+    );
+  });
+
+  it("still names the head parts a K-Drive needs no gilding for", () => {
+    const board = find(companions(), "K-Drive");
+    expect(board.modular?.heads.map((head) => head.uniqueName)).toEqual([RUNWAY]);
+    expect(board.modular?.headLabelKey).toBe("nextUp.modularHeadBoards");
+    expect(find(companions(), "Amp").modular?.heads[0].uniqueName).toBe(RAPLAK_PRISM);
   });
 });

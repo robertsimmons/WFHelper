@@ -130,9 +130,9 @@ async function measure(
 
 const VIEWPORT = { width: 1600, height: 1000 };
 
-/** One box narrows its section to that kind alone and clicking it again puts
- *  every kind back. A narrowing that empties the section takes the box with it,
- *  which ends the scenario rather than leaving the run measuring nothing. */
+/** One box drops its kind from the section and clicking it again puts it back.
+ *  A narrowing that empties the section leaves the section and its boxes on the
+ *  page, so the pair of clicks always lands. */
 async function toggleSamples(page: Page, attribute: string): Promise<Sample[]> {
   const values = await page
     .locator(`[${attribute}]`)
@@ -142,7 +142,6 @@ async function toggleSamples(page: Page, attribute: string): Promise<Sample[]> {
   for (let run = 0; run < RUNS && usable.length > 0; run += 1) {
     const selector = `[${attribute}="${usable[run % usable.length]!}"]`;
     samples.push(await measure(page, { type: "click", selector }));
-    if ((await page.locator(selector).count()) === 0) break;
     await page.locator(selector).click();
     await page.waitForTimeout(200);
   }

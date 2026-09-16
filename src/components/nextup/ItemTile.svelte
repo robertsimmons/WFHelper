@@ -5,14 +5,17 @@
     CHIP_TONE,
     COUNT_LABEL,
     COUNT_TITLE,
+    TILE_MICRO,
     TONE,
     tierBorderClass,
     tileCounts,
     tileDims,
+    winChip,
   } from "./chips.js";
   import TierBadge from "./TierBadge.svelte";
   import ItemImage from "../ItemImage.svelte";
   import type { NemesisBonusRange } from "../../lib/suggest/acquisition/types.js";
+  import type { ChoiceStatus } from "../../types/suggest.js";
   import type { Snippet } from "svelte";
 
   interface Props {
@@ -32,6 +35,9 @@
     ownedBonus?: number | null | undefined;
     /** What the stall or the foundry charges, already formatted. */
     cost?: readonly string[] | null | undefined;
+    /** Independent wins, each drawn whether or not it is banked. A finished one
+     *  stays on the tile: which half is done is the question being asked. */
+    statuses?: readonly ChoiceStatus[] | null | undefined;
     /** A resource, which the player always wants more of. Read off `owned` when
      *  that carries it; only a definite false ever dims. */
     stacks?: boolean | null | undefined;
@@ -55,6 +61,7 @@
     bonus = null,
     ownedBonus = null,
     cost = null,
+    statuses = null,
     stacks = null,
     have = undefined,
     size = "sm",
@@ -70,8 +77,6 @@
   const BADGE = { sm: "xs", md: "sm" } as const;
   const NAME = { sm: "text-sm", md: "font-display text-base" };
   const COUNT = "flex shrink-0 items-baseline gap-1 font-display font-semibold tabular-nums";
-  const MICRO =
-    "font-display text-[0.5625rem] font-semibold uppercase leading-none tracking-[0.08em]";
   const META =
     "flex min-w-0 flex-wrap items-center gap-x-2 gap-y-0.5 text-[0.6875rem] leading-tight";
 
@@ -89,9 +94,12 @@
       ? null
       : $tr("nextUp.tileBonusExact", { bonus: ownedBonus.toFixed(1) }),
   );
-  const dim = $derived(tileDims(have, stacks, owned));
+  // A tile that spells out each win has nothing left for the fade to say, and
+  // fading it is what made a finished choice unreadable.
+  const dim = $derived((statuses ?? []).length === 0 && tileDims(have, stacks, owned));
   const counts = $derived(tileCounts(owned));
   const costs = $derived(cost ?? []);
+  const wins = $derived((statuses ?? []).map((status) => ({ status, chip: winChip(status) })));
   const hasMeta = $derived(counts.length > 0 || Boolean(element || bonusText || actions));
 </script>
 
@@ -133,7 +141,7 @@
             class="{COUNT} {count.tone}"
             title={$tr(COUNT_TITLE[count.kind], { count: String(count.value) })}
           >
-            <span class={MICRO}>{$tr(COUNT_LABEL[count.kind])}</span>
+            <span class={TILE_MICRO}>{$tr(COUNT_LABEL[count.kind])}</span>
             <span>x{compactCount(count.value)}</span>
             {#if count.kind === "inventory" && required !== null && required !== undefined}
               <span
@@ -158,10 +166,23 @@
       </span>
     {/if}
 
+    {#if wins.length > 0}
+      <!-- Every win, answered in words: two independent facts never share one
+           chip, and a banked one still draws. -->
+      <span class={META}>
+        {#each wins as win (win.status.win)}
+          <span
+            class="rounded-[var(--radius-sm)] border px-1 py-0.5 font-semibold leading-none
+                   {win.chip.tone}">{$tr(win.chip.label)}</span
+          >
+        {/each}
+      </span>
+    {/if}
+
     {#if costs.length > 0}
       <!-- Its own line, so a price never reads as one of the counts above it. -->
       <span class={META} title={$tr("nextUp.tileCostTitle")}>
-        <span class="{MICRO} {TONE.plain}">{$tr("nextUp.tileCostLabel")}</span>
+        <span class="{TILE_MICRO} {TONE.plain}">{$tr("nextUp.tileCostLabel")}</span>
         {#each costs as chip (chip)}
           <span
             class="rounded-[var(--radius-sm)] border px-1 py-0.5 leading-none tabular-nums

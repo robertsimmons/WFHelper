@@ -1,5 +1,7 @@
+import { planRating } from "./plan/index.js";
 import { effortValue } from "./ratings.js";
-import { recommendScore, tierOrder } from "./recommend.js";
+import { tierOrder, tierScore } from "./recommend.js";
+import { itemTierScore } from "./tiers.js";
 import type { AcquisitionTarget } from "./types.js";
 import type { SortDirection } from "../../../types/filters.js";
 
@@ -12,6 +14,11 @@ export interface SortRow {
   target: AcquisitionTarget;
   /** What the provider worked the farm out to cost, as the tie-breaker. */
   effort: number;
+  /** Every key a comparison reads, worked out once. The comparator runs
+   *  O(n log n) times over a few thousand rows and each key behind it is a
+   *  name normalize and a table lookup. */
+  keys: readonly (number | null)[];
+  price: number;
 }
 
 /** The cheapest plat any known route asks; null for a target nothing prices. */
@@ -33,42 +40,72 @@ function priceFor(target: AcquisitionTarget): number {
   return plat ?? cost.credits ?? Number.POSITIVE_INFINITY;
 }
 
-/** Lower sorts earlier under every mode; null is unknown and sorts last. */
-export function sortValue(target: AcquisitionTarget, sort: AcquisitionSort): number | null {
+const READY_BAND = 0;
+const MATERIALS_BAND = 1;
+/** No recipe to walk, so no blueprint count puts it anywhere: behind them all. */
+const NO_RECIPE_BAND = Number.MAX_SAFE_INTEGER;
+
+/** Closest to ready first: the foundry would take it now, then every blueprint
+ *  in hand and only raw materials short, then one band per blueprint still to
+ *  find, so two short sorts behind one short. */
+export function readyBand(target: AcquisitionTarget): number {
+  const modular = target.modular;
+  // Each head part is its own build, so a gear type is as far from ready as the
+  // heads it has still to bank.
+  if (modular) return MATERIALS_BAND + (modular.heads.length - modular.owned);
+  const parts = target.parts;
+  if (!parts.known) return NO_RECIPE_BAND;
+  if (parts.missing.length > 0) return MATERIALS_BAND + parts.missing.length;
+  return parts.buildable ? READY_BAND : MATERIALS_BAND;
+}
+
+/** What a mode orders by, first key first. Lower sorts earlier; null is unknown
+ *  and sorts last within its own key. */
+export function sortKeys(target: AcquisitionTarget, sort: AcquisitionSort): (number | null)[] {
   switch (sort) {
     case "difficulty":
-      return effortValue(target.difficulty);
+      return [effortValue(target.difficulty)];
     case "tier":
-      return tierOrder(target.tier);
+      return [tierOrder(target.tier)];
     case "plat":
-      return platFor(target);
+      return [platFor(target)];
     default:
-      // The formula reads a missing half as neutral, but an item with neither
-      // half rated is unknown, and unknown never leads the list.
-      return target.tier === null && target.difficulty === null
-        ? null
-        : -recommendScore(target.tier, target.difficulty);
+      return [
+        readyBand(target),
+        tierScore(target.tier, itemTierScore(target.name)),
+        planRating(target.name).effort,
+      ];
   }
+}
+
+export function sortRow(
+  target: AcquisitionTarget,
+  effort: number,
+  sort: AcquisitionSort,
+): SortRow {
+  return { target, effort, keys: sortKeys(target, sort), price: priceFor(target) };
+}
+
+function rankKey(left: number | null, right: number | null, flip: number): number {
+  if (left === null || right === null) {
+    if (left === right) return 0;
+    return left === null ? 1 : -1;
+  }
+  return left === right ? 0 : (left - right) * flip;
 }
 
 /** An unrated item never leads the list, whichever way the arrow points. */
 export function compareAcquisition(
-  sort: AcquisitionSort,
   direction: SortDirection = "asc",
 ): (a: SortRow, b: SortRow) => number {
   const flip = direction === "desc" ? -1 : 1;
   return (a, b) => {
-    const left = sortValue(a.target, sort);
-    const right = sortValue(b.target, sort);
-    if (left === null || right === null) {
-      if (left !== right) return left === null ? 1 : -1;
-    } else if (left !== right) {
-      return (left - right) * flip;
+    const left = a.keys;
+    const right = b.keys;
+    for (let index = 0; index < left.length; index += 1) {
+      const rank = rankKey(left[index] ?? null, right[index] ?? null, flip);
+      if (rank !== 0) return rank;
     }
-    return (
-      a.effort - b.effort ||
-      priceFor(a.target) - priceFor(b.target) ||
-      a.target.name.localeCompare(b.target.name)
-    );
+    return a.effort - b.effort || a.price - b.price || a.target.name.localeCompare(b.target.name);
   };
 }

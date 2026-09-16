@@ -57,6 +57,34 @@ function order(drafts: SuggestionDraft[]): string[] {
   return scored(drafts).map((suggestion) => suggestion.id);
 }
 
+describe("collectSuggestions identity", () => {
+  it("hands back the same suggestion for a draft a provider did not rebuild", () => {
+    const drafts = [draft("a", "acquisition", 5), draft("b", "vendor", 4)];
+    const first = scored(drafts);
+    const second = scored(drafts);
+    expect(second[0]).toBe(first[0]);
+    expect(second[1]).toBe(first[1]);
+  });
+
+  it("re-scores a draft the clock has moved on from", () => {
+    const drafts = [closing(draft("late", "vendor", 5), 2)];
+    const first = collectSuggestions([provider(drafts)], CTX);
+    const later = collectSuggestions([provider(drafts)], {
+      ...CTX,
+      nowMs: NOW + HOUR,
+    } as SuggestionContext);
+    expect(later[0]).not.toBe(first[0]);
+    expect(later[0]?.score).not.toBe(first[0]?.score);
+  });
+
+  it("builds a fresh suggestion for a draft a provider did rebuild", () => {
+    const first = scored([draft("a", "acquisition", 5)]);
+    const second = scored([draft("a", "acquisition", 5)]);
+    expect(second[0]).not.toBe(first[0]);
+    expect(second[0]).toEqual(first[0]);
+  });
+});
+
 describe("collectSuggestions", () => {
   it("orders by worth, best first", () => {
     expect(

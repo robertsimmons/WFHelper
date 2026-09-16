@@ -7,6 +7,7 @@ import {
   type Suggestion,
   type SuggestionCategory,
   type SuggestionContext,
+  type SuggestionDraft,
   type SuggestionProvider,
 } from "../../types/suggest.js";
 
@@ -46,13 +47,27 @@ function stillWanted(suggestion: Suggestion): boolean {
   return advances(gainOf(suggestion.signals));
 }
 
+/** A card's every `$derived` re-runs on a new `suggestion` object, so a draft a
+ *  provider handed back unchanged has to score to the object it scored to last
+ *  time. The score is `orderingScore` alone, so the clock is the only other
+ *  input a hit has to match. */
+const scored = new WeakMap<SuggestionDraft, { nowMs: number; suggestion: Suggestion }>();
+
+function score(draft: SuggestionDraft, nowMs: number): Suggestion {
+  const last = scored.get(draft);
+  if (last && last.nowMs === nowMs) return last.suggestion;
+  const suggestion = { ...draft, score: orderingScore(draft, nowMs) };
+  scored.set(draft, { nowMs, suggestion });
+  return suggestion;
+}
+
 export function collectSuggestions(
   providers: readonly SuggestionProvider[],
   ctx: SuggestionContext,
 ): Suggestion[] {
   return providers
     .flatMap((provider) => provider.collect(ctx))
-    .map((draft) => ({ ...draft, score: orderingScore(draft, ctx.nowMs) }))
+    .map((draft) => score(draft, ctx.nowMs))
     .filter(stillWanted)
     .sort((a, b) => compareSuggestions(a, b, ctx.nowMs));
 }

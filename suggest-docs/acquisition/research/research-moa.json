@@ -1,0 +1,341 @@
+{
+  "name": "MOA (Companion)",
+  "kind": "Modular robotic companion",
+  "masteryRank": null,
+  "masteryRankNote": "No MR gate on Legs' shop or on MOA parts. Gate is the Vox Solaris quest plus Solaris United rank.",
+  "prerequisites": [
+    { "step": 1, "what": "Reach Venus", "detail": "Complete the Venus Junction from Earth to unlock Fortuna." },
+    { "step": 2, "what": "Complete 'The Teacher' quest", "detail": "Wiki lists it as the prior main quest before Vox Solaris." },
+    { "step": 3, "what": "Complete the Vox Solaris quest", "detail": "Start by talking to Eudico in Fortuna. Unlocks Legs' full MOA shop, The Business (fishing), Smokefinger (mining), Ticker (debt-bonds)." },
+    { "step": 4, "what": "Solaris United Rank 0 Neutral", "detail": "Legs sells the cheapest part of each category at Neutral, so building an ungilded MOA needs no rank grind." },
+    { "step": 5, "what": "Solaris United Rank 3 Doer", "detail": "Hard requirement to gild. Ungilded MOAs earn no mastery and cannot be polarized, renamed or given a Focus Lens." },
+    { "step": 6, "what": "10 Training Debt-Bonds banked for gilding", "detail": "Separate from the 2 + 2 + 2 Training Debt-Bonds spent on rank-ups to Doer." }
+  ],
+  "routes": [
+    {
+      "kind": "vendor",
+      "where": "Legs, Fortuna (left side of town), Solaris United standing",
+      "partsYielded": "Blueprints for all four part categories (Model, Core, Gyro, Bracket)",
+      "dropRate": null,
+      "conditions": "Vox Solaris complete; part-specific SU rank; 500-4,000 standing per blueprint",
+      "notes": "Also the assembly and gilding NPC."
+    },
+    {
+      "kind": "vendor",
+      "where": "Legs, Fortuna, 'Today's Special'",
+      "partsYielded": "One fully assembled, gilded MOA with a randomized Model/Core/Gyro/Bracket combination, rotating daily",
+      "dropRate": null,
+      "conditions": "Platinum purchase; combination is not chosen by the player",
+      "notes": "Wiki does not publish the platinum price."
+    },
+    {
+      "kind": "bounty",
+      "where": "Orb Vallis Bounty 1 (level 5-15), from Eudico in Fortuna",
+      "partsYielded": "Training Debt-Bonds (x2 per drop)",
+      "dropRate": "Stage 2 20.00%, Stage 3 20.00%, Stage 4 19.33%, Stage 5 46.00%",
+      "conditions": "Rewards are per-stage; resource boosters do not apply to bounty rewards",
+      "notes": "Main source of the 10 Training Debt-Bonds gilding costs plus the 6 spent on rank-ups."
+    },
+    {
+      "kind": "vendor",
+      "where": "Ticker, Fortuna",
+      "partsYielded": "Debt-Bonds of all tiers, bought as 'cases'",
+      "dropRate": null,
+      "conditions": "5,000-350,000 credits and 0-2 additional resources per case; stock fully refreshes on an 8-hour timer; always at least 3 Common, 1 Uncommon, 1 Rare case available",
+      "notes": "Credit-and-resource shortcut for the Training Debt-Bond requirement. Per-bond price is not fixed."
+    },
+    {
+      "kind": "gathering",
+      "where": "Orb Vallis, Venus",
+      "partsYielded": "Every crafting material for MOA parts except Morphics, Plastids, Circuits, Rubedo, Oxium and Control Module",
+      "dropRate": null,
+      "conditions": "Mining needs a Nosam Cutter or Sunpoint Plasma Drill; fishing needs a Shock Spear from The Business; ores/gems must be refined or cut by Smokefinger; servofish must be dismantled by The Business",
+      "notes": "Warm/cold weather cycle gates which servofish spawn."
+    },
+    {
+      "kind": "donation",
+      "where": "Legs, Fortuna",
+      "partsYielded": "Standing, in exchange for a finished MOA",
+      "dropRate": null,
+      "conditions": "Rank 30 ungilded = 1,800 standing; gilded = 2,400 standing; gilded with an Orokin Reactor = 3,600 standing",
+      "notes": "The only way to clear a MOA you no longer want. Parts are never recovered."
+    }
+  ],
+  "modularParts": {
+    "note": "Four categories, one part from each. 4 Models x 4 Cores x 8 Gyros x 5 Brackets = 640 combinations. Every part: 24 h build, 50,000 credits, rushable for 25 Platinum, untradable.",
+    "Model": {
+      "determines": "Head/turret appearance, the two Precept mods the MOA comes with, and all Mastery Rank affinity",
+      "parts": [
+        { "name": "Para", "rank": "0 Neutral", "standing": 500, "grants": "Whiplash Mine, Anti-Grav Grenade", "role": "offensive", "buildHours": 24, "credits": 50000, "materials": [ { "name": "Mytocardia Spore", "qty": 20 }, { "name": "Smooth Phasmin", "qty": 10 }, { "name": "Axidrol Alloy", "qty": 30 }, { "name": "Morphics", "qty": 2 } ] },
+        { "name": "Lambeo", "rank": "1 Outworlder", "standing": 1000, "grants": "Stasis Field, Shockwave Actuators", "role": "defensive", "buildHours": 24, "credits": 50000, "materials": [ { "name": "Gorgaricus Spore", "qty": 20 }, { "name": "Heart Noctrul", "qty": 10 }, { "name": "Venerdo Alloy", "qty": 30 }, { "name": "Morphics", "qty": 2 } ] },
+        { "name": "Oloro", "rank": "2 Rapscallion", "standing": 2000, "grants": "Tractor Beam, Security Override", "role": "utility", "buildHours": 24, "credits": 50000, "materials": [ { "name": "Thermal Sludge", "qty": 20 }, { "name": "Goblite Tears", "qty": 10 }, { "name": "Travocyte Alloy", "qty": 30 }, { "name": "Morphics", "qty": 2 } ] },
+        { "name": "Nychus", "rank": "3 Doer", "standing": 3000, "grants": "Blast Shield, Hard Engage", "role": "close-quarters", "buildHours": 24, "credits": 50000, "materials": [ { "name": "Gorgaricus Spore", "qty": 20 }, { "name": "Goblite Tears", "qty": 10 }, { "name": "Venerdo Alloy", "qty": 20 }, { "name": "Morphics", "qty": 2 } ] }
+      ]
+    },
+    "Core": {
+      "determines": "Rear appearance plus percentage modifiers to base Health / Shields / Armor",
+      "parts": [
+        { "name": "Drex", "rank": "0 Neutral", "standing": 500, "stats": "+10% Health, +15% Shields, +5% Armor", "buildHours": 24, "credits": 50000, "materials": [ { "name": "Smooth Phasmin", "qty": 15 }, { "name": "Travocyte Alloy", "qty": 25 }, { "name": "Axidrol Alloy", "qty": 25 }, { "name": "Brickie Muon Battery", "qty": 10 } ] },
+        { "name": "Krisys", "rank": "1 Outworlder", "standing": 1000, "stats": "+10% Health, +5% Shields, +15% Armor", "buildHours": 24, "credits": 50000, "materials": [ { "name": "Heart Noctrul", "qty": 15 }, { "name": "Axidrol Alloy", "qty": 25 }, { "name": "Venerdo Alloy", "qty": 25 }, { "name": "Brickie Muon Battery", "qty": 10 } ] },
+        { "name": "Alcrom", "rank": "2 Rapscallion", "standing": 2000, "stats": "+10% Health, +10% Shields, +10% Armor", "buildHours": 24, "credits": 50000, "materials": [ { "name": "Smooth Phasmin", "qty": 15 }, { "name": "Travocyte Alloy", "qty": 25 }, { "name": "Axidrol Alloy", "qty": 25 }, { "name": "Brickie Muon Battery", "qty": 10 } ] },
+        { "name": "Lehan", "rank": "4 Cove", "standing": 4000, "stats": "+15% Health, +0% Shields, +15% Armor", "buildHours": 24, "credits": 50000, "materials": [ { "name": "Star Amarast", "qty": 5 }, { "name": "Hespazym Alloy", "qty": 10 }, { "name": "Venerdo Alloy", "qty": 25 }, { "name": "Eye-Eye Rotoblade", "qty": 10 } ] }
+      ]
+    },
+    "Gyro": {
+      "determines": "Front appearance plus a second set of Health / Shields / Armor modifiers",
+      "parts": [
+        { "name": "Trux", "rank": "0 Neutral", "standing": 500, "stats": "+5% Health, -5% Shields, +10% Armor", "buildHours": 24, "credits": 50000, "materials": [ { "name": "Thermal Sludge", "qty": 20 }, { "name": "Heart Noctrul", "qty": 5 }, { "name": "Echowinder Anoscopic Sensor", "qty": 10 }, { "name": "Plastids", "qty": 1000 } ] },
+        { "name": "Harpen", "rank": "1 Outworlder", "standing": 1000, "stats": "+5% Health, +10% Shields, -5% Armor", "buildHours": 24, "credits": 50000, "materials": [ { "name": "Mytocardia Spore", "qty": 20 }, { "name": "Smooth Phasmin", "qty": 5 }, { "name": "Tink Dissipator Coil", "qty": 10 }, { "name": "Circuits", "qty": 1000 } ] },
+        { "name": "Aegron", "rank": "2 Rapscallion", "standing": 2000, "stats": "-5% Health, +5% Shields, +10% Armor", "buildHours": 24, "credits": 50000, "materials": [ { "name": "Thermal Sludge", "qty": 20 }, { "name": "Heart Noctrul", "qty": 5 }, { "name": "Brickie Muon Battery", "qty": 10 }, { "name": "Plastids", "qty": 1000 } ] },
+        { "name": "Munit", "rank": "3 Doer", "standing": 3000, "stats": "+10% Health, -5% Shields, +5% Armor", "buildHours": 24, "credits": 50000, "materials": [ { "name": "Mytocardia Spore", "qty": 20 }, { "name": "Heart Noctrul", "qty": 5 }, { "name": "Scrubber Exa Brain", "qty": 10 }, { "name": "Circuits", "qty": 1000 } ] },
+        { "name": "Hextra", "rank": "3 Doer", "standing": 3000, "stats": "+10% Health, +5% Shields, -5% Armor", "buildHours": 24, "credits": 50000, "materials": [ { "name": "Gorgaricus Spore", "qty": 20 }, { "name": "Goblite Tears", "qty": 5 }, { "name": "Eye-Eye Rotoblade", "qty": 10 }, { "name": "Rubedo", "qty": 1000 } ] },
+        { "name": "Phazor", "rank": "4 Cove", "standing": 4000, "stats": "-5% Health, +10% Shields, +5% Armor", "buildHours": 24, "credits": 50000, "materials": [ { "name": "Gorgaricus Spore", "qty": 20 }, { "name": "Goblite Tears", "qty": 5 }, { "name": "Sapcaddy Venedo Case", "qty": 10 }, { "name": "Rubedo", "qty": 1000 } ] },
+        { "name": "Atheca", "rank": "4 Cove", "standing": 4000, "stats": "+20% Health, -5% Shields, -5% Armor", "buildHours": 24, "credits": 50000, "materials": [ { "name": "Tepa Nodule", "qty": 20 }, { "name": "Star Amarast", "qty": 5 }, { "name": "Tromyzon Entroplasma", "qty": 5 }, { "name": "Control Module", "qty": 2 } ] },
+        { "name": "Tyli", "rank": "4 Cove", "standing": 4000, "stats": "+10% Health, -10% Shields, +10% Armor", "buildHours": 24, "credits": 50000, "materials": [ { "name": "Thermal Sludge", "qty": 20 }, { "name": "Star Amarast", "qty": 5 }, { "name": "Mirewinder Parallel Biode", "qty": 10 }, { "name": "Oxium", "qty": 1200 } ] }
+      ]
+    },
+    "Bracket": {
+      "determines": "Leg appearance and mod polarities. Every bracket carries four Penjaga polarities; the bracket adds at most one more.",
+      "parts": [
+        { "name": "Drimper", "rank": "0 Neutral", "standing": 500, "polarity": "none extra", "buildHours": 24, "credits": 50000, "materials": [ { "name": "Mytocardia Spore", "qty": 15 }, { "name": "Thermal Sludge", "qty": 15 }, { "name": "Travocyte Alloy", "qty": 25 }, { "name": "Axidrol Alloy", "qty": 25 } ] },
+        { "name": "Tian", "rank": "0 Neutral", "standing": 500, "polarity": "+1 Vazarin", "buildHours": 24, "credits": 50000, "materials": [ { "name": "Tepa Nodule", "qty": 15 }, { "name": "Travocyte Alloy", "qty": 40 }, { "name": "Smooth Phasmin", "qty": 20 }, { "name": "Echowinder Anoscopic Sensor", "qty": 15 } ] },
+        { "name": "Jonsin", "rank": "1 Outworlder", "standing": 1000, "polarity": "+1 Madurai", "buildHours": 24, "credits": 50000, "materials": [ { "name": "Tepa Nodule", "qty": 15 }, { "name": "Axidrol Alloy", "qty": 40 }, { "name": "Heart Noctrul", "qty": 20 }, { "name": "Brickie Muon Battery", "qty": 15 } ] },
+        { "name": "Gauth", "rank": "2 Rapscallion", "standing": 2000, "polarity": "+1 Naramon", "buildHours": 24, "credits": 50000, "materials": [ { "name": "Tepa Nodule", "qty": 15 }, { "name": "Venerdo Alloy", "qty": 40 }, { "name": "Goblite Tears", "qty": 20 }, { "name": "Tink Dissipator Coil", "qty": 15 } ] },
+        { "name": "Hona", "rank": "3 Doer", "standing": 3000, "polarity": "+1 Naramon", "buildHours": 24, "credits": 50000, "materials": [ { "name": "Mytocardia Spore", "qty": 15 }, { "name": "Venerdo Alloy", "qty": 40 }, { "name": "Goblite Tears", "qty": 20 }, { "name": "Brickie Muon Battery", "qty": 15 } ] }
+      ]
+    }
+  },
+  "howPartsCombine": {
+    "assembly": [
+      "Buy one blueprint from each of the four categories from Legs with standing.",
+      "Build each blueprint in the Foundry: 24 h, 50,000 credits each (200,000 credits for a set). All four can build in parallel.",
+      "Return to Legs, pick 'Configure a MOA Companion', choose one Model + Core + Gyro + Bracket, preview the stats.",
+      "Pay 4,000 credits to assemble instantly. No second build timer.",
+      "Needs a free companion slot."
+    ],
+    "statMath": {
+      "base": { "health": 350, "shields": 350, "armor": 350 },
+      "rule": "Core and Gyro percentages apply to the 350 base. Total of the three stats always sums to 1190 whatever the combination.",
+      "ranges": { "health": "367-473", "shields": "315-438", "armor": "350-438" }
+    },
+    "ungildedLimits": "Cannot be renamed, customized, polarized, given a Focus Lens, and earns no Mastery Rank affinity. Can take an Orokin Reactor.",
+    "gilding": {
+      "requires": [ "Solaris United Rank 3 Doer", "MOA leveled to Rank 30", "Return to Legs" ],
+      "cost": { "standing": 5000, "trainingDebtBonds": 10 },
+      "effects": [
+        "Level resets to 0; the 30 ranks must be re-earned for the mastery.",
+        "Unlocks custom name (24 characters, hyphens only for punctuation).",
+        "Unlocks Mastery Rank affinity gain, polarization, Focus Lens, customization.",
+        "One polarity must be chosen during gilding.",
+        "Visual appearance changes."
+      ]
+    },
+    "mastery": {
+      "perModel": 6000,
+      "maxTotal": 24000,
+      "rule": "Only the Model category grants mastery, and only once per unique Model. A second gilded MOA using an already-mastered Model gives nothing no matter what Core/Gyro/Bracket it uses. Four Models exist, so 24,000 is the ceiling.",
+      "requiresGild": true
+    },
+    "trading": {
+      "playerTrading": "None. Parts and assembled MOAs are untradable.",
+      "disassembly": "Not possible. Components cannot be recovered from an assembled MOA.",
+      "disposal": "Donate to Legs for standing: 1,800 (rank 30 ungilded), 2,400 (gilded), 3,600 (gilded with an Orokin Reactor)."
+    }
+  },
+  "purchase": {
+    "option": "Legs' 'Today's Special' sells one fully assembled, gilded MOA for Platinum.",
+    "platinumPrice": null,
+    "caveat": "The Model/Core/Gyro/Bracket combination is randomized daily and cannot be chosen. Buying it still grants the Model's 6,000 mastery if that Model is new to you.",
+    "rushBuild": "25 Platinum rushes any single part's 24 h build."
+  },
+  "materials": [
+    { "name": "Mytocardia Spore", "quantity": "up to 20 per part", "whereFarmed": "Shoot Mytocardia Sacs in Orb Vallis (1-3 each); mushroom forest west of Coolant Reservoir and the lake south of Transit Depot. Also Fortuna bounty rewards.", "harvestable": true },
+    { "name": "Gorgaricus Spore", "quantity": "up to 20 per part", "whereFarmed": "Shoot the purple (mature) sacs hanging under giant mushroom caps in Orb Vallis and let them fall. Also bounty rewards and resource containers.", "harvestable": true },
+    { "name": "Thermal Sludge", "quantity": "15-20 per part", "whereFarmed": "Special containers in Corpus encampments across Orb Vallis; Fortuna bounties (25% for 5 at level 5-15 stage 1, 25% for 15 at level 10-30 stage 1).", "harvestable": true },
+    { "name": "Tepa Nodule", "quantity": "15-20 per part", "whereFarmed": "Harvest glowing nodule plant clusters in Orb Vallis caves, 3-4 per harvest. Also Eudico bounty rewards.", "harvestable": true },
+    { "name": "Smooth Phasmin", "quantity": "5-20 per part", "whereFarmed": "Mine Phasmin (common gem, blue veins) in Orb Vallis, cut by Smokefinger.", "harvestable": true },
+    { "name": "Heart Noctrul", "quantity": "5-20 per part", "whereFarmed": "Mine Noctrul (common gem) in Orb Vallis, cut by Smokefinger.", "harvestable": true },
+    { "name": "Goblite Tears", "quantity": "5-20 per part", "whereFarmed": "Mine Goblite (uncommon gem) in Orb Vallis, cut by Smokefinger.", "harvestable": true },
+    { "name": "Star Amarast", "quantity": "5 per part", "whereFarmed": "Mine Amarast (rare gem) in Orb Vallis, cut by Smokefinger. Sunpoint Plasma Drill strongly preferred for rare veins.", "harvestable": true },
+    { "name": "Axidrol Alloy", "quantity": "25-40 per part", "whereFarmed": "Refined by Smokefinger from Axidite ore (common, red veins), Orb Vallis.", "harvestable": true },
+    { "name": "Travocyte Alloy", "quantity": "25-40 per part", "whereFarmed": "Refined by Smokefinger from Travoride ore (common), Orb Vallis.", "harvestable": true },
+    { "name": "Venerdo Alloy", "quantity": "20-40 per part", "whereFarmed": "Refined by Smokefinger from Venerol ore (uncommon), Orb Vallis.", "harvestable": true },
+    { "name": "Hespazym Alloy", "quantity": "10 (Lehan core)", "whereFarmed": "Refined by Smokefinger from Hesperon ore (rare), Orb Vallis.", "harvestable": true },
+    { "name": "Brickie Muon Battery", "quantity": "10-15 per part", "whereFarmed": "Catch Brickie servofish (common) in Orb Vallis ponds and rivers during warm weather, dismantled by The Business.", "harvestable": true },
+    { "name": "Echowinder Anoscopic Sensor", "quantity": "10-15 per part", "whereFarmed": "Catch Echowinder (common) in lakes during warm weather; dismantled by The Business.", "harvestable": true },
+    { "name": "Tink Dissipator Coil", "quantity": "10-15 per part", "whereFarmed": "Catch Tink (common) in ponds and rivers during cold weather; dismantled by The Business.", "harvestable": true },
+    { "name": "Scrubber Exa Brain", "quantity": "10 (Munit gyro)", "whereFarmed": "Catch Scrubber (common) in caves, any weather; dismantled by The Business.", "harvestable": true },
+    { "name": "Eye-Eye Rotoblade", "quantity": "10 per part", "whereFarmed": "Catch Eye-Eye (uncommon) in ponds during warm weather, narrow-spectrum bait; dismantled by The Business.", "harvestable": true },
+    { "name": "Sapcaddy Venedo Case", "quantity": "10 (Phazor gyro)", "whereFarmed": "Catch Sapcaddy (common) in lakes during cold weather; dismantled by The Business.", "harvestable": true },
+    { "name": "Mirewinder Parallel Biode", "quantity": "10 (Tyli gyro)", "whereFarmed": "Catch Mirewinder (uncommon) in caves with Mirewinder Bait; dismantled by The Business.", "harvestable": true },
+    { "name": "Tromyzon Entroplasma", "quantity": "5 (Atheca gyro)", "whereFarmed": "Catch Tromyzon (rare Orokin servofish) at pond hotspots during cold weather with Tromyzon Bait; dismantled by The Business.", "harvestable": true },
+    { "name": "Morphics", "quantity": "2 per Model", "whereFarmed": "Common star chart rare resource: Mercury, Mars, Phobos, Pluto, Eris.", "harvestable": false },
+    { "name": "Plastids", "quantity": "1000 (Trux, Aegron gyros)", "whereFarmed": "Star chart resource: Saturn, Phobos, Eris, Uranus.", "harvestable": false },
+    { "name": "Circuits", "quantity": "1000 (Harpen, Munit gyros)", "whereFarmed": "Star chart resource: Venus, Ceres, Mercury.", "harvestable": false },
+    { "name": "Rubedo", "quantity": "1000 (Hextra, Phazor gyros)", "whereFarmed": "Star chart resource: Earth, Phobos, Europa, Pluto, Sedna.", "harvestable": false },
+    { "name": "Oxium", "quantity": "1200 (Tyli gyro)", "whereFarmed": "Dropped by Oxium Ospreys, Corpus tilesets (Venus, Neptune, Corpus Ship survival).", "harvestable": false },
+    { "name": "Control Module", "quantity": "2 (Atheca gyro)", "whereFarmed": "Star chart rare resource: Neptune, Europa, Void.", "harvestable": false },
+    { "name": "Training Debt-Bond", "quantity": "10 for gilding, plus 6 across rank-ups to Doer", "whereFarmed": "Orb Vallis Bounty 1 (x2 per drop, 19-46% by stage) or bought from Ticker with credits and star chart resources. Untradable.", "harvestable": false },
+    { "name": "Shelter Debt-Bond", "quantity": "3 (Rapscallion) + 3 (Doer)", "whereFarmed": "Orb Vallis bounties or Ticker.", "harvestable": false },
+    { "name": "Medical Debt-Bond", "quantity": "4 (Doer rank-up)", "whereFarmed": "Orb Vallis bounties or Ticker.", "harvestable": false }
+  ],
+  "buildTimes": {
+    "perPartHours": 24,
+    "perPartCredits": 50000,
+    "partsPerMoa": 4,
+    "foundryCreditTotal": 200000,
+    "assembly": { "hours": 0, "credits": 4000, "where": "Legs, Fortuna" },
+    "criticalPath": "24 h wall clock if all four parts are queued in the Foundry at once, then instant assembly. The real clock is the standing grind to Doer plus leveling the MOA to 30 twice (once to qualify for gilding, once after gilding resets it) for the mastery.",
+    "rush": "25 Platinum per part."
+  },
+  "dailyStandingCap": {
+    "formula": "16,000 + (Mastery Rank x 500) per day",
+    "example": "MR10 = 21,000/day; MR16 = 24,000/day",
+    "caveat": "The wiki states this formula for Faction syndicates and says Neutral syndicates such as Solaris United 'each have their own Daily Standing Cap' without publishing a separate Solaris United number. Treat as best available.",
+    "standingBudget": {
+      "rankUpsToDoer": 71000,
+      "rankUpDetail": "Rank-ups consume standing equal to the rank ceiling: 5,000 (Neutral to Outworlder) + 22,000 (to Rapscallion) + 44,000 (to Doer).",
+      "cheapestPartSet": 2000,
+      "mostExpensivePartSet": 14000,
+      "gilding": 5000,
+      "minimumTotalToGildedMoa": 78000,
+      "daysAtMR10": "about 4 days of capped standing"
+    },
+    "rankLadder": [
+      { "rank": 0, "title": "Neutral", "standingCeiling": 5000, "rankUpCost": null },
+      { "rank": 1, "title": "Outworlder", "standingCeiling": 22000, "rankUpCost": "5,000 standing, 2 Training Debt-Bonds, 10,000 credits" },
+      { "rank": 2, "title": "Rapscallion", "standingCeiling": 44000, "rankUpCost": "22,000 standing, 2 Training + 3 Shelter Debt-Bonds, 25,000 credits" },
+      { "rank": 3, "title": "Doer", "standingCeiling": 70000, "rankUpCost": "44,000 standing, 2 Training + 3 Shelter + 4 Medical Debt-Bonds, 50,000 credits" },
+      { "rank": 4, "title": "Cove", "standingCeiling": 99000, "rankUpCost": "70,000 standing, 5 Advances + 4 Medical + 3 Shelter Debt-Bonds, 100,000 credits" },
+      { "rank": 5, "title": "Old Mate", "standingCeiling": 132000, "rankUpCost": "99,000 standing, 5 Familial + 5 Advances + 3 Medical Debt-Bonds, 200,000 credits" }
+    ],
+    "standingSources": [ "Eudico bounties", "Fish to The Business", "Conservation", "Raw gems to Smokefinger", "Max-ranked Kitguns to Rude Zuud", "Max-ranked MOAs to Legs", "Debt-Bonds to Ticker", "Granum Crowns / Xoris rescues in Granum Void" ]
+  },
+  "community": {
+    "painLevel": "no RNG anywhere, but the highest up-front cost of any companion in the game; the real job is four MOAs, not one",
+    "headline": "Each Model carries two precepts and each of the four has at least one worth owning, so the practical goal is one MOA per Model. That is 16 parts, four gildings and eight level-to-30 passes, not one build.",
+    "recommendedMode": "Solo, normal. Gorgaricus sacs frequently fail to drop spores in multiplayer, and the standing farm is solo work anyway.",
+    "preferredRoute": "Legs' standing route for the blueprints, with Conservation as the standing engine behind it. Today's Special is worth a look only when it rolls a Model you do not already own.",
+    "modelPriority": [
+      {"model": "Nychus", "precepts": "Blast Shield, Hard Engage", "verdict": "Build first. Blast Shield with Manifold Bond lets the MOA abuse shield gating and makes it arguably the tankiest companion in the game. Hard Engage is widely panned: it overrides the MOA's AI and overwrites weapon damage types against Manifold Bond."},
+      {"model": "Oloro", "precepts": "Security Override, Tractor Beam", "verdict": "Security Override auto-hacks consoles, the MOA's genuinely unique trick, strong in Spy and Archon Spy. Tractor Beam is a novelty."},
+      {"model": "Para", "precepts": "Whiplash Mine, Anti-Grav Grenade", "verdict": "Whiplash Mine is a good 20m grouping tool. Anti-Grav Grenade is niche."},
+      {"model": "Lambeo", "precepts": "Stasis Field, Shockwave Actuators", "verdict": "Stasis Field gives 60% damage reduction against enemy gunfire over a wide area. Shockwave Actuators is dead weight."}
+    ],
+    "partSelection": "Core and Gyro only matter for clearing 343 base shields for Reinforced Bond, and Blast Shield pushes you past that anyway, which frees mod space. Bracket is the polarity pick: Tian's Vazarin saves a Forma. Model is fashion once you own all four. Any Sentinel weapon except Deconstructor; Verglas and Helstrum are the usual picks.",
+    "standingFarm": "Conservation is the most-recommended method: Loki for invisibility with Rest & Rage subsumed to sleep animals, rare Kubrodons at roughly 8,000 standing in about 5 minutes. Mining works but is slower.",
+    "costForAllFourModels": {
+      "source": "derived from the wiki figures above, not from community numbers",
+      "foundryAndAssemblyCredits": 816000,
+      "rankUpCreditsToDoer": 85000,
+      "standing": 103500,
+      "standingBreakdown": "71,000 rank-ups to Doer, plus 12,500 in blueprints (Models at 500 + 1,000 + 2,000 + 3,000, plus a 500-standing Core, Gyro and Bracket for each of the four MOAs), plus 5,000 gilding x4",
+      "trainingDebtBonds": 46,
+      "trainingDebtBondBreakdown": "6 across the rank-ups to Doer, plus 10 per gilding x4",
+      "shelterDebtBondsToDoer": 6,
+      "excludes": "Smokefinger refining fees, Ticker debt-bond cases (5,000-350,000 credits each) and any part above the 500-standing tier"
+    },
+    "timeEstimate": {
+      "community": "4+ days minimum, realistically about a week, for one MOA including resource gathering",
+      "wikiDerived": "24 h of Foundry time per MOA with all four parts queued together; about 103,500 standing for all four Models is roughly 5 days at an MR10 cap of 21,000/day",
+      "note": "Gilding resets rank, so the full set is eight level-to-30 passes."
+    },
+    "traps": [
+      "Personality modules cost 50 platinum each and lower DPS: the MOA plays emotes mid-combat and dies more. Keep a second loadout without one.",
+      "MOAs cannot use Resourceful Retriever or the other loot mods, which is a hard dealbreaker for farming runs and the usual reason players stay on beast companions.",
+      "MOAs do not keep up with fast movement (Titania pixie mode, Wukong cloud), which cancels much of the auto-hack advantage since you wait at the console for them anyway.",
+      "Hard Engage overrides the MOA's AI, overwrites weapon damage types against Manifold Bond, and does not proc what its description implies. Skip it.",
+      "Nautilus groups better and Diriga primes better; the MOA's case is versatility, not being best-in-class."
+    ],
+    "tips": [
+      "Nychus is a Doer-rank blueprint, so the standing grind to Doer is unavoidable if you want the Model that matters.",
+      "Community claim, not confirmed on the wiki pages read: a Model's precepts can be equipped on any MOA, two at a time, which is what makes building all four a one-time unlock rather than four permanent companions.",
+      "Consensus is to build MOAs when you have credits and standing to burn, not as a priority farm."
+    ]
+  },
+  "conflicts": [
+    {
+      "field": "buildTimes.criticalPath",
+      "wiki": "All four parts build in parallel: 24 h wall clock per MOA, then instant assembly.",
+      "community": "Four separate builds each with their own timer, so 4+ days minimum and realistically about a week.",
+      "show": "wiki",
+      "why": "The wiki is right about the Foundry. The community week is resource gathering and standing, which the app should show as the standing budget instead of as build time."
+    },
+    {
+      "field": "buildTimes / credits",
+      "wiki": "204,000 credits per MOA (4 x 50,000 Foundry plus 4,000 assembly), 816,000 for four, plus 85,000 in rank-up credits to Doer.",
+      "community": "Roughly 1.5 million credits total, including mineral refining and assembly.",
+      "show": "wiki",
+      "why": "The wiki figure is verifiable. The extra several hundred thousand is unpublished Smokefinger refining and Ticker case cost, so show 901,000 for four gilded MOAs and note refining sits on top."
+    },
+    {
+      "field": "prerequisites step 4",
+      "wiki": "Legs sells the cheapest part of each category at Rank 0 Neutral; Doer (Rank 3) is required only for gilding. Old Mate is Rank 5, not Rank 3.",
+      "community": "Fortuna rank 3 (Old Mate progression) minimum, because Legs will not sell you anything before that.",
+      "show": "wiki",
+      "why": "An ungilded MOA needs no rank grind at all. Doer is still needed in practice for gilding and for the Nychus blueprint, which is why the community reads it as a hard gate."
+    }
+  ],
+  "effort": 6,
+  "effortRevisedFrom": 5,
+  "effortWhy": "The realistic job is one MOA per Model: about 103,500 standing, 900,000 credits, 16 parts of Orb Vallis mining and fishing, and eight level-to-30 passes, all with no RNG to shortcut.",
+  "effortReadings": [
+    {"goal": "One gilded MOA", "effort": 5, "why": "About 78,000 standing to Doer plus the cheapest part set, 204,000 credits, and two level-to-30 passes."},
+    {"goal": "All four Models, gilded, for the precepts and the 24,000 mastery", "effort": 6, "why": "Four times the parts, credits and levelling on top of the same one-time rank grind."}
+  ],
+  "youtubeChangedRating": false,
+  "gotchas": [
+    "Gilding needs Solaris United rank Doer, so the cheap rank-0 parts do not let you skip the standing grind if you want mastery.",
+    "Gilding resets the MOA to rank 0, so you level it to 30 twice: once to qualify, once to bank the mastery.",
+    "Only the Model grants mastery, 6,000 once per unique Model, so a second MOA on the same Model is worth zero mastery regardless of the other three parts.",
+    "An assembled MOA can never be taken apart or traded; a wrong combination is only recoverable by donating it to Legs for standing.",
+    "Rank-ups consume standing, so reaching Doer costs 71,000 earned standing, not 44,000.",
+    "Training Debt-Bonds are untradable and you need 16 in total across rank-ups and gilding, so start banking them from your first bounty runs.",
+    "Ticker's stock rotates on an 8-hour timer, so check between bounty sessions rather than waiting a day.",
+    "Orb Vallis weather cycles warm and cold, and several servofish only spawn in one of them (Tink, Sapcaddy and Tromyzon cold, Echowinder and Eye-Eye warm).",
+    "Gorgaricus sacs frequently fail to drop spores in multiplayer; the wiki recommends farming them solo.",
+    "The four blueprints all take 24 h, so queue all four in the same Foundry session or you turn one day into four."
+  ],
+  "sources": {
+    "wiki": [
+      "https://wiki.warframe.com/w/MOA_(Companion)",
+      "https://wiki.warframe.com/w/Model",
+      "https://wiki.warframe.com/w/Core_(Component)",
+      "https://wiki.warframe.com/w/Gyro",
+      "https://wiki.warframe.com/w/Bracket",
+      "https://wiki.warframe.com/w/Legs",
+      "https://wiki.warframe.com/w/Solaris_United",
+      "https://wiki.warframe.com/w/Debt-Bond",
+      "https://wiki.warframe.com/w/Ticker",
+      "https://wiki.warframe.com/w/Standing",
+      "https://wiki.warframe.com/w/Syndicate",
+      "https://wiki.warframe.com/w/Vox_Solaris_(Quest)",
+      "https://wiki.warframe.com/w/Servofish",
+      "https://wiki.warframe.com/w/Mining",
+      "https://wiki.warframe.com/w/Orb_Vallis",
+      "https://wiki.warframe.com/w/Mytocardia_Spore",
+      "https://wiki.warframe.com/w/Gorgaricus_Spore",
+      "https://wiki.warframe.com/w/Thermal_Sludge",
+      "https://wiki.warframe.com/w/Tepa_Nodule"
+    ],
+    "youtube": [
+      "https://youtu.be/9keqTAjUAZc (QuadLyStop, MOA Types of Warframe, 2022)",
+      "https://youtu.be/y0lJBaistG4 (Ryan Mee, How to Build a Moa, 2018)"
+    ]
+  },
+  "discarded": [
+    { "claim": "Core and Gyro stat percentages listed on the individual Core and Gyro wiki pages (e.g. Drex +5.0/+7.5/+2.5, Trux +2.5/-2.5/+5.0).", "why": "Half the values on the MOA (Companion) page. Only the MOA page values reproduce the wiki's own published stat ranges (health 367-473, shields 315-438, armor 350-438) and the 1190 stat total against the 350 base, so the MOA page values are used." },
+    { "claim": "Community: about 30,000 Solaris United standing for a MOA.", "why": "Wrong against the wiki. One gilded MOA is a 78,000 standing minimum (71,000 in rank-ups to Doer, 2,000 for the cheapest part set, 5,000 to gild), and about 103,500 for all four Models." },
+    { "claim": "Community: about 40 Shelter Debt-Bonds.", "why": "Wrong bond type. The wiki needs 6 Shelter Debt-Bonds to reach Doer. The ~40 figure lines up with Training Debt-Bonds for four gildings (46: 6 across rank-ups plus 10 per gild), so it is recorded there instead." },
+    { "claim": "YouTube build advice (Verglas robotic weapon, Blast Shield shield-gate reset, Helstrum for status priming).", "why": "Mod and weapon loadout, not acquisition. Kept out of the acquisition record; none of it contradicts the wiki route." },
+    { "claim": "YouTube comment that precept mod slot order sets the MOA's behavior priority.", "why": "Plausible and matches companion precept behavior, but not confirmed on the wiki pages read, so it is not recorded as fact." }
+  ],
+  "unknowns": [
+    { "field": "purchase.platinumPrice", "note": "Wiki confirms Legs sells assembled gilded MOAs for Platinum under 'Today's Special' but publishes no price." },
+    { "field": "dailyStandingCap for Solaris United specifically", "note": "Wiki gives 16,000 + MR x 500 for Faction syndicates and states Neutral syndicates have their own cap without listing it." },
+    { "field": "masteryRank", "note": "No MR requirement found for Legs' shop, MOA parts or gilding." },
+    { "field": "Vox Solaris quest length", "note": "Wiki does not state a duration." },
+    { "field": "Ticker per-bond price for Training Debt-Bonds", "note": "Sold inside randomized 'cases' at 5,000-350,000 credits plus 0-2 resources; no fixed unit price is published." },
+    { "field": "Companion slot cost", "note": "Wiki pages read do not state whether an empty companion slot is required; assumed yes, unverified." }
+  ]
+}

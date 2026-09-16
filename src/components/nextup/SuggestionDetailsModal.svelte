@@ -11,7 +11,10 @@
   import { overframeUrl } from "../../lib/suggest/overframe.js";
   import { pathKindLabel } from "../../lib/suggest/providers/acquisition.js";
   import { ownedRewardFor, ownsAny, type OwnedReward } from "../../lib/suggest/ownedRewards.js";
-  import { nightwaveRowFor } from "../../lib/suggest/providers/nightwave.js";
+  import {
+    nightwaveRowFor,
+    type NightwaveOfferRow,
+  } from "../../lib/suggest/providers/nightwave.js";
   import { liveVendorOffers } from "../../lib/suggest/providers/vendors.js";
   import { rewardWorth } from "../../lib/suggest/rewards.js";
   import { valenceRowsFor } from "../../lib/suggest/valence.js";
@@ -20,10 +23,10 @@
   import { overframeRankingsRevision } from "../../stores/overframeRankings.js";
   import { suggestionPreferences } from "../../stores/suggestionPrefs.js";
   import { worldData } from "../../stores/world.js";
-  import { CHIP_TONE, TONE, cardClock } from "./chips.js";
+  import { CHIP_TONE, TILE_MICRO, TONE, cardClock, valencePercent, valenceTone } from "./chips.js";
   import { plainName, rewardArt } from "./rewardArt.js";
+  import AcquisitionTree from "./AcquisitionTree.svelte";
   import ItemTile from "./ItemTile.svelte";
-  import StateChip from "./StateChip.svelte";
   import TierBadge from "./TierBadge.svelte";
   import TimeLeft from "./TimeLeft.svelte";
   import ItemImage from "../ItemImage.svelte";
@@ -34,6 +37,7 @@
   import type {
     RewardWorth,
     Suggestion,
+    SuggestionCategory,
     SuggestionOption,
     SuggestionPoolRow,
     SuggestionReward,
@@ -46,8 +50,28 @@
 
   const { suggestion, onClose }: Props = $props();
 
+  /** What a bare `3/5` counts, which is a different thing in every section. A
+   *  category with no honest word for it draws no row. */
+  const PROGRESS_LABEL: Partial<Record<SuggestionCategory, MessageKey>> = {
+    daily: "nextUp.detailsRuns",
+    weekly: "nextUp.detailsRuns",
+    nightwave: "nextUp.detailsRuns",
+    relics: "nextUp.detailsRuns",
+    acquisition: "nextUp.acqParts",
+  };
+
+  /** The Cred shop files its cards under `vendor` alongside the stalls, so the
+   *  row it parked is what tells the two apart. Nothing it sells is a run: a
+   *  purchase counts parts of a set, and a staple's shortfall is already the
+   *  first thing the why line says. */
+  const CRED_PROGRESS: Record<NightwaveOfferRow["kind"], MessageKey | null> = {
+    stock: null,
+    parts: "nextUp.acqParts",
+  };
+
   const ROW = "grid grid-cols-[7rem_minmax(0,1fr)] items-center gap-3 py-1";
   const LABEL = "text-xs font-semibold uppercase tracking-[0.08em] text-text-muted";
+  const COUNT = "font-display text-xs font-semibold tabular-nums text-text-secondary";
   const CHIP = "rounded-[var(--radius-sm)] border border-border px-1.5 py-0.5 text-[0.6875rem]";
   /** Equal cells, so a tier letter lands in the same place on every row. The
    *  track floor is what a full item name needs beside its art: below it the
@@ -107,6 +131,13 @@
     /** Only an adversary offer knows what the player's own copy rolled. */
     ownedBonus?: number | null;
     have: boolean;
+  }
+
+  /** A stall's weapon, plus what buying it would leave the player's own copy at,
+   *  which is the only reason the trip is worth making. */
+  interface ValenceTile extends Tile {
+    after: number;
+    afterTone: string;
   }
 
   /** One thing a pool pays, at the price its manifest puts on it and the chance
@@ -232,12 +263,24 @@
     (acq?.parts.materials ?? []).filter((row) => row.missing > 0).slice(0, LIST_LIMIT),
   );
   const acqPaths = $derived((acq?.paths ?? []).slice(0, ROUTE_LIMIT));
+  // A blueprint carries no recipe of its own, so the tree roots at the product
+  // it builds. Nothing to root means the flat part and material lists stand in.
+  const treeRoot = $derived.by((): string | null => {
+    const entry = acq ? $itemDb[acq.uniqueName] : null;
+    if (entry?.recipe) return acq?.uniqueName ?? null;
+    const product = entry?.buildsProduct;
+    return product && $itemDb[product]?.recipe ? product : null;
+  });
   const progenitors = $derived(acq?.nemesis?.progenitors ?? []);
   let pickedElement = $state("");
   const pickedProgenitor = $derived(
     progenitors.find((row) => row.element === pickedElement) ?? progenitors[0] ?? null,
   );
   const credRow = $derived(nightwaveRowFor(suggestion.id));
+  const progress = $derived(suggestion.progress);
+  const progressLabel = $derived(
+    credRow ? CRED_PROGRESS[credRow.kind] : (PROGRESS_LABEL[suggestion.category] ?? null),
+  );
 
   /** The header's letter: the tier of the thing the card is about. */
   const headerTier = $derived.by(() => {
@@ -420,7 +463,7 @@
       .sort(comparePool)
       .map((row) => row.tile);
   });
-  const valenceTiles = $derived.by(() => {
+  const valenceTiles = $derived.by((): ValenceTile[] => {
     void $overframeRankingsRevision;
     return valenceRows.map((row) => {
       const tile = itemTile(
@@ -435,6 +478,8 @@
         name: row.displayName ?? tile.name,
         owned: row.owned === null ? null : tile.owned,
         ownedBonus: row.owned,
+        after: row.result,
+        afterTone: valenceTone(row.verdict),
         have: row.verdict === "done",
       };
     });
@@ -532,6 +577,31 @@
   ></ItemTile>
 {/snippet}
 
+<!-- An adversary's stall reads as the weapon, the roll on offer, the roll the
+     player already holds, and what buying it leaves them at. -->
+{#snippet valenceRow(row: ValenceTile)}
+  <ItemTile
+    name={row.name}
+    imageUrl={row.imageUrl}
+    tier={row.tier}
+    owned={row.owned}
+    element={row.element}
+    bonus={row.bonus}
+    ownedBonus={row.ownedBonus}
+    have={row.have}
+    stretch
+  >
+    {#snippet actions()}
+      <span class="ml-auto flex shrink-0 items-baseline gap-1 pl-2">
+        <span class="{TILE_MICRO} {TONE.plain}">{$tr("nextUp.valenceAfter")}</span>
+        <span class="tabular-nums {row.afterTone}"
+          >{$tr("nextUp.tileBonusExact", { bonus: valencePercent(row.after) })}</span
+        >
+      </span>
+    {/snippet}
+  </ItemTile>
+{/snippet}
+
 <!-- Stall stock reads as the item, what the manifest charges and what a run
      pays out at. -->
 {#snippet poolRow(row: PoolTile)}
@@ -598,6 +668,20 @@
       </span>
     </div>
   {/if}
+
+  <!-- Acquisition counts parts, and the parts list carries that total. -->
+  {#if progress && progressLabel && !acq}
+    <div class={ROW}>
+      <span class={LABEL}>{$tr(progressLabel)}</span>
+      <span
+        class={COUNT}
+        title={$tr("nextUp.detailsProgressValue", {
+          current: String(progress.current),
+          target: String(progress.required),
+        })}>{progress.current}/{progress.required}</span
+      >
+    </div>
+  {/if}
 {/snippet}
 
 <ModalShell ariaLabel={suggestion.title} {onClose}>
@@ -643,6 +727,7 @@
             imageUrl={choice.imageUrl}
             tier={choice.tier}
             element={choice.kind === "frame" ? (FRAME_ELEMENT.get(choice.name) ?? null) : null}
+            statuses={choice.statuses}
             have={choice.state === "done"}
             stacks={false}
             size="md"
@@ -651,7 +736,6 @@
             {#snippet actions()}
               <WikiButton fallbackName={choice.name} />
               {@render overframeLink(choice.name)}
-              <span class="ml-auto shrink-0 pl-2"><StateChip state={choice.state} /></span>
             {/snippet}
             {#if choice.upgradePath || choice.sources?.length}
               <span class="flex flex-wrap gap-1.5">
@@ -726,7 +810,7 @@
           <span class={LABEL}>{$tr("nextUp.detailsStock")}</span>
           <div class="flex flex-col gap-1.5">
             {#each valenceTiles as tile, index (index)}
-              {@render itemRow(tile)}
+              {@render valenceRow(tile)}
             {/each}
           </div>
         </div>
@@ -762,9 +846,15 @@
 
     {#if acq}
       <div class="mt-3 flex flex-col gap-3 border-t border-border pt-3">
-        {#if acq.parts.known || acq.nemesis}
+        <!-- The whole bill at a glance: what is still short, nested the way the
+             foundry nests it, with the prices and counts pinned beside it. -->
+        {#if treeRoot}
+          <AcquisitionTree target={acq} root={treeRoot} />
+        {/if}
+
+        {#if (acq.parts.known && !treeRoot) || acq.nemesis}
           <div class="flex flex-col">
-            {#if acq.parts.known}
+            {#if acq.parts.known && !treeRoot}
               <div class={ROW}>
                 <span class={LABEL}>{$tr("common.foundry")}</span>
                 <!-- Green is buildable now; plain is still short. -->
@@ -811,7 +901,7 @@
           </div>
         {/if}
 
-        {#if partTiles.length > 0}
+        {#if partTiles.length > 0 && !treeRoot}
           <div class="flex flex-col gap-1">
             <span class={LABEL}>{$tr("nextUp.acqParts")}</span>
             <div class="flex flex-col gap-1.5">
@@ -830,7 +920,7 @@
           </div>
         {/if}
 
-        {#if materialTiles.length > 0}
+        {#if materialTiles.length > 0 && !treeRoot}
           <div class="flex flex-col gap-1">
             <span class={LABEL}>{$tr("nextUp.detailsMaterials")}</span>
             <div class={TILE_GRID}>

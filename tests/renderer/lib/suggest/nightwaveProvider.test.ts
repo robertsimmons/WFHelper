@@ -12,7 +12,6 @@ import {
 } from "../../../../src/lib/suggest/providers/nightwave.js";
 import { rewardValue } from "../../../../src/lib/suggest/rewards.js";
 import { worthGroupOf } from "../../../../src/lib/suggest/score.js";
-import { ladderWorth } from "../../../../src/lib/suggest/worthLadder.js";
 import type { Translator } from "../../../../src/lib/i18n.js";
 import type {
   ItemDbEntry,
@@ -40,10 +39,14 @@ const VAUBAN_CHASSIS = "/Lotus/Types/Recipes/Suits/SuitParts/TrapperChassisCompo
 const VAUBAN_HELMET = "/Lotus/Types/Recipes/Suits/SuitParts/TrapperHelmetComponent";
 const VAUBAN_SYSTEMS = "/Lotus/Types/Recipes/Suits/SuitParts/TrapperSystemsComponent";
 const CRAFT = "/Lotus/Types/Items/Ships/NoraShip";
-const CRAFT_MAIN = "/Lotus/Types/Recipes/LandingCraftRecipes/Nora/NoraLandingCraftBlueprint";
-const CRAFT_AVIONICS = "/Lotus/Types/Recipes/LandingCraftRecipes/Nora/NoraAvionicsBlueprint";
-const CRAFT_ENGINES = "/Lotus/Types/Recipes/LandingCraftRecipes/Nora/NoraEnginesBlueprint";
-const CRAFT_FUSELAGE = "/Lotus/Types/Recipes/LandingCraftRecipes/Nora/NoraFuselageBlueprint";
+/** No export names the craft's parts, so the provider holds DE's own paths and
+ *  the inventory rows are all there is to match on. */
+const CRAFT_RECIPES = "/Lotus/Types/Recipes/LandingCraftRecipes/NightwaveShip";
+const CRAFT_MAIN = `${CRAFT_RECIPES}/NoraShipBlueprint`;
+const CRAFT_MAIN_BUILT = `${CRAFT_RECIPES}/NoraShipComponent`;
+const CRAFT_AVIONICS = `${CRAFT_RECIPES}/NoraShipAvionicsBlueprint`;
+const CRAFT_ENGINES = `${CRAFT_RECIPES}/NoraShipEnginesBlueprint`;
+const CRAFT_FUSELAGE = `${CRAFT_RECIPES}/NoraShipFuselageBlueprint`;
 /** Something unbuilt whose recipe still asks for Nitain. */
 const HELIOS = "/Lotus/Types/Sentinels/SentinelPreceptsHelios";
 
@@ -61,10 +64,6 @@ const ITEM_DB: Record<string, ItemDbEntry> = {
   [VAUBAN_HELMET]: { name: "Vauban Neuroptics", imageUrl: "neuroptics.png" },
   [VAUBAN_SYSTEMS]: { name: "Vauban Systems", imageUrl: "systems.png" },
   [CRAFT]: { name: "Nightwave", imageUrl: "nightwave.png" },
-  [CRAFT_MAIN]: { name: "Nightwave Blueprint", imageUrl: "craft.png" },
-  [CRAFT_AVIONICS]: { name: "Nightwave Avionics Blueprint", imageUrl: "avionics.png" },
-  [CRAFT_ENGINES]: { name: "Nightwave Engines Blueprint", imageUrl: "engines.png" },
-  [CRAFT_FUSELAGE]: { name: "Nightwave Fuselage Blueprint", imageUrl: "fuselage.png" },
   [HELIOS]: {
     name: "Helios",
     imageUrl: "helios.png",
@@ -155,17 +154,18 @@ describe("nightwaveProvider stock cards", () => {
     expect(collected).not.toContain("nightwave:nitain");
   });
 
-  it("places a staple below the keep-on-hand level in useful", () => {
+  it("takes a staple's worth from the ladder rather than from the pile", () => {
     const card = draft(context({ inventory: stacks({ [CATALYST]: 3 }) }), "nightwave:catalyst");
-    expect(card?.signals.value).toBe(ladderWorth("useful", "orokin catalyst"));
+    expect(card?.signals.value).toBe(rewardValue(defaultPreferences(), "Orokin Catalyst"));
+    expect(worthGroupOf({ signals: card?.signals ?? { value: 0, effort: 0, urgency: 0 } })).toBe(
+      "want",
+    );
     expect(card?.progress).toEqual({ current: 3, required: 5 });
   });
 
-  it("places a staple at zero in must-have", () => {
+  it("gains everything on a staple at zero, and says so", () => {
     const card = draft(context(), "nightwave:reactor");
-    expect(worthGroupOf({ signals: card?.signals ?? { value: 0, effort: 0, urgency: 0 } })).toBe(
-      "must",
-    );
+    expect(card?.signals.gain).toBe(1);
     expect(card?.whySegments?.[0]?.tone).toBe("bad");
   });
 
@@ -219,27 +219,28 @@ describe("nightwaveProvider stock cards", () => {
 });
 
 describe("the Nitain exception", () => {
-  it("keeps Nitain at zero must-have while something unbuilt still needs it", () => {
+  it("keeps Nitain at a full gain while something unbuilt still needs it", () => {
     sweepNeedingNitain();
     const card = draft(context(), "nightwave:nitain");
-    expect(card?.signals.value).toBe(ladderWorth("must", "nitain extract"));
+    expect(card?.signals.value).toBe(rewardValue(defaultPreferences(), "Nitain Extract"));
+    expect(card?.signals.gain).toBe(1);
   });
 
-  it("drops Nitain at zero to useful once everything that uses it is built", () => {
+  it("halves Nitain's gain once everything that uses it is built", () => {
     sweepNeedingNothing();
     const card = draft(context(), "nightwave:nitain");
-    expect(card?.signals.value).toBe(ladderWorth("useful", "nitain extract"));
+    expect(card?.signals.gain).toBe(0.5);
   });
 
   it("treats an unswept plan as unknown rather than as nothing needing Nitain", () => {
     const card = draft(context(), "nightwave:nitain");
-    expect(card?.signals.value).toBe(ladderWorth("must", "nitain extract"));
+    expect(card?.signals.gain).toBe(1);
   });
 
   it("leaves the other staples out of the build check", () => {
     sweepNeedingNothing();
     const card = draft(context(), "nightwave:reactor");
-    expect(card?.signals.value).toBe(ladderWorth("must", "orokin reactor"));
+    expect(card?.signals.gain).toBe(1);
   });
 });
 
@@ -319,15 +320,12 @@ describe("nightwaveProvider filler cards", () => {
   });
 
   it("accepts either spelling of the craft's main blueprint", () => {
-    const wikiWording: Record<string, ItemDbEntry> = {
-      ...ITEM_DB,
-      [CRAFT_MAIN]: { name: "Nightwave Landing Craft Blueprint", imageUrl: "craft.png" },
-    };
     const inventory: RawInventoryData = {
       MiscItems: [{ ItemType: CATALYST, ItemCount: 1 }],
-      Recipes: [{ ItemType: CRAFT_MAIN, ItemCount: 1 }],
+      // Cooked, so the row carries the component rather than the blueprint.
+      Recipes: [{ ItemType: CRAFT_MAIN_BUILT, ItemCount: 1 }],
     };
-    const card = draft(context({ inventory, itemDb: wikiWording }), "nightwave:landingCraft");
+    const card = draft(context({ inventory }), "nightwave:landingCraft");
     expect(card?.progress).toEqual({ current: 1, required: 4 });
   });
 });
@@ -342,6 +340,29 @@ describe("the nightwave activity setting", () => {
     expect(
       drafts(context({ prefs: prefs({ activities: low }) })).every((d) => d.deprioritized),
     ).toBe(true);
+  });
+});
+
+describe("what a second pass costs", () => {
+  it("hands back the same cards when nothing it reads has moved", () => {
+    const ctx = context();
+    const first = drafts(ctx);
+    expect(drafts(ctx)).toBe(first);
+    expect(first.every((card, index) => card === first[index])).toBe(true);
+  });
+
+  it("rebuilds when the shelf behind it does", () => {
+    const first = drafts(context());
+    const moved = drafts(context({ inventory: stacks({ [CATALYST]: 4 }) }));
+    expect(moved).not.toBe(first);
+  });
+
+  it("rebuilds when the sweep re-reads what is still unbuilt", () => {
+    const ctx = context();
+    sweepNeedingNitain();
+    const needed = draft(ctx, "nightwave:nitain");
+    sweepNeedingNothing();
+    expect(draft(ctx, "nightwave:nitain")).not.toBe(needed);
   });
 });
 

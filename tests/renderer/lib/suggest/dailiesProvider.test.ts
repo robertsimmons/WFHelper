@@ -7,7 +7,7 @@ import { dailiesProvider } from "../../../../src/lib/suggest/providers/dailies.j
 import { rewardWorth, taskWorth } from "../../../../src/lib/suggest/rewards.js";
 import { worthGroupOf } from "../../../../src/lib/suggest/score.js";
 import { clearUnplacedForTest, unplacedNames } from "../../../../src/lib/suggest/unplaced.js";
-import { UNRESOLVED_WORTH } from "../../../../src/lib/suggest/worthLadder.js";
+import { UNRESOLVED_WORTH, bandFloor } from "../../../../src/lib/suggest/worthLadder.js";
 import type { Translator } from "../../../../src/lib/i18n.js";
 import type { TrackerState } from "../../../../src/lib/world/dailies.js";
 import type { DropRow } from "../../../../config/shared/dropTypes.js";
@@ -354,7 +354,7 @@ describe("dailiesProvider reward promotion", () => {
     const world = { archonHunt: { boss: "Boreal", missions: [] } } as unknown as WorldState;
     const resolved = draft(context({ world }), "dailies:archonHunt");
     const curated = draft(context(), "dailies:archonHunt");
-    expect(resolved?.reward?.name).toBe("Azure Archon Shard");
+    expect(resolved?.reward?.name).toBe("Azure / Tauforged Azure Archon Shard");
     expect(resolved?.signals.value ?? 0).toBeGreaterThanOrEqual(curated?.signals.value ?? 1);
     expect(worthGroupOf(resolved!)).toBe("must");
   });
@@ -731,17 +731,23 @@ describe("dailiesProvider mission and shard reasons", () => {
       context({ world: archonWorld("Boreal", ["Capture"]), t: echoT }),
       "dailies:archonHunt",
     );
-    expect(hunt?.reward).toEqual({ name: "Azure Archon Shard", uniqueName: undefined });
-    expect(hunt?.whyWithReward).toContain("Azure Archon Shard");
-    expect(hunt?.why).not.toContain("Azure Archon Shard");
+    // The boss fixes the colour and only the grade is unknown, so both grades
+    // are named and the colour stays in each.
+    expect(hunt?.reward).toEqual({
+      name: "Azure / Tauforged Azure Archon Shard",
+      uniqueName: undefined,
+      oneOf: [{ name: "Azure Archon Shard" }, { name: "Tauforged Azure Archon Shard" }],
+    });
+    expect(hunt?.whyWithReward).toContain("Azure / Tauforged Azure Archon Shard");
+    expect(hunt?.why).not.toContain("Azure / Tauforged Azure Archon Shard");
   });
 
   it("reads each Archon to its own shard", () => {
     const named = (boss: string) =>
       draft(context({ world: archonWorld(boss, []), t: echoT }), "dailies:archonHunt")?.reward
         ?.name;
-    expect(named("Amar")).toBe("Crimson Archon Shard");
-    expect(named("Nira")).toBe("Amber Archon Shard");
+    expect(named("Amar")).toBe("Crimson / Tauforged Crimson Archon Shard");
+    expect(named("Nira")).toBe("Amber / Tauforged Amber Archon Shard");
   });
 
   it("charges a slow mission type as effort", () => {
@@ -762,31 +768,28 @@ describe("dailiesProvider mission and shard reasons", () => {
       "dailies:archonHunt",
     );
     expect(hunt?.why).toBe("Spy, Capture, Defense");
-    expect(hunt?.whyWithReward).toBe("Azure Archon Shard - Spy, Capture, Defense");
+    expect(hunt?.whyWithReward).toBe(
+      "Azure / Tauforged Azure Archon Shard - Spy, Capture, Defense",
+    );
   });
 
-  it("tones the mission the player dislikes and leaves the rest plain", () => {
+  it("tones every mission the player has an opinion of, and no other", () => {
     const hunt = draft(
       context({ world: archonWorld("Boreal", ["Spy", "Capture", "Defense"]), t: echoT }),
       "dailies:archonHunt",
     );
     expect(hunt?.whySegments).toEqual([
       { text: "Spy", tone: "bad" },
-      { text: "Capture" },
+      { text: "Capture", tone: "good" },
       { text: "Defense" },
     ]);
   });
 
-  it("tones nothing for a week the player dislikes none of", () => {
+  it("leaves a mission type nothing rates plain", () => {
     const hunt = draft(
-      context({ world: archonWorld("Boreal", ["Capture", "Exterminate", "Defense"]), t: echoT }),
+      context({ world: archonWorld("Boreal", ["Defense", "Survival"]), t: echoT }),
       "dailies:archonHunt",
     );
-    expect(hunt?.whySegments).toEqual([
-      { text: "Capture" },
-      { text: "Exterminate" },
-      { text: "Defense" },
-    ]);
     expect(hunt?.whySegments?.every((segment) => segment.tone === undefined)).toBe(true);
   });
 
@@ -924,7 +927,9 @@ describe("dailiesProvider drop pools", () => {
       context({ dropPools: { netracells: NETRACELL_POOL }, t: echoT }),
       "dailies:netracells",
     );
-    expect(netracells?.reward?.name).toBe("Amber Archon Shard");
+    // A coffer is not colour-fixed the way a hunt is: it pays any of the three
+    // colours in either grade, so there is no colour to keep in the name.
+    expect(netracells?.reward?.name).toBe("Archon Shards");
     // Several families, so the tile stands beside the labels rather than for them.
     expect(netracells?.why).toBe(
       "Archon Shards, Melee Arcane Adapter - nextUp.whyRemaining(remaining=5,target=5)",
@@ -937,7 +942,7 @@ describe("dailiesProvider drop pools", () => {
       context({ dropPools: { netracells: SHARDS_ONLY_POOL }, t: echoT }),
       "dailies:netracells",
     );
-    expect(netracells?.reward?.name).toBe("Amber Archon Shard");
+    expect(netracells?.reward?.name).toBe("Archon Shards");
     expect(netracells?.why).toBe("nextUp.whyRemaining(remaining=5,target=5)");
     expect(netracells?.whyWithReward).toBe(
       "Archon Shards - nextUp.whyRemaining(remaining=5,target=5)",
@@ -1054,7 +1059,8 @@ const subsumes = (suits: string[], fed: string[]): RawInventoryData =>
 describe("dailiesProvider normal Circuit", () => {
   it("values the week by the best frame the player still needs", () => {
     const circuit = draft(circuitContext(), "dailies:circuitNormal");
-    expect(circuit?.signals.value).toBeCloseTo(0.7);
+    // Gear the player does not own yet is a want; the tier only places it inside.
+    expect(worthGroupOf(circuit!)).toBe("want");
     expect(circuit?.signals.effort).toBe(0.85);
     expect(circuit?.why).toBe("nextUp.whyCircuitFrame(frame=Gara)");
     expect(circuit?.whyWithReward).toBeUndefined();
@@ -1074,7 +1080,7 @@ describe("dailiesProvider normal Circuit", () => {
   it("ranks a frame that only needs subsuming below one the player lacks", () => {
     const held = draft(circuitContext(owns(FRAMES)), "dailies:circuitNormal");
     const missing = draft(circuitContext(), "dailies:circuitNormal");
-    expect(held?.signals.value).toBe(0.4);
+    expect(worthGroupOf(held!)).toBe("useful");
     expect(held?.why).toBe("nextUp.whyCircuitSubsume(frame=Gara)");
     expect(missing?.signals.value).toBeGreaterThan(held?.signals.value ?? 0);
   });
@@ -1082,14 +1088,15 @@ describe("dailiesProvider normal Circuit", () => {
   it("keeps the card at a floor when every frame is owned and subsumed", () => {
     const circuit = draft(circuitContext(subsumes(FRAMES, FRAMES)), "dailies:circuitNormal");
     expect(circuit?.choices?.every((choice) => choice.state === "done")).toBe(true);
-    expect(circuit?.signals.value).toBe(0.1);
+    expect(circuit?.signals.value).toBe(bandFloor("junk"));
     expect(circuit?.why).toBe("nextUp.whyCircuitAllOwned");
   });
 
-  it("reads a frame the tables say nothing about as an ordinary farm", () => {
-    const rated = draft(circuitContext(), "dailies:circuitNormal");
+  it("reads a frame the tables say nothing about as unknown, never as bad", () => {
     const unrated = draft(circuitContext(null, [UNRATED_FRAME]), "dailies:circuitNormal");
-    expect(unrated?.signals.value).toBe(rated?.signals.value);
+    const held = draft(circuitContext(owns(FRAMES)), "dailies:circuitNormal");
+    expect(worthGroupOf(unrated!)).toBe("want");
+    expect(unrated?.signals.value ?? 0).toBeGreaterThan(held?.signals.value ?? 1);
     expect(unrated?.why).toBe(`nextUp.whyCircuitFrame(frame=${UNRATED_FRAME})`);
   });
 
@@ -1140,7 +1147,7 @@ describe("dailiesProvider Steel Path Circuit", () => {
 
   it("keeps the card at a floor when every adapter is owned", () => {
     const circuit = draft(circuitContext(owns([], ADAPTERS)), "dailies:circuitSteelPath");
-    expect(circuit?.signals.value).toBe(0.1);
+    expect(circuit?.signals.value).toBe(bandFloor("junk"));
     expect(circuit?.why).toBe("nextUp.whyIncarnonAllOwned");
   });
 

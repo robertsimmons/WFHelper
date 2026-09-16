@@ -6,6 +6,18 @@
  *  leading "x2" is never one. */
 const QUANTITY_PREFIX = /^(\d[\d,]*)\s*([xk])?\s+/i;
 
+/** A bare number the name owns rather than counts: how long a booster runs
+ *  ("3 Day Mod Drop Chance Booster") or how old an anniversary is ("10 Year
+ *  Anniversary Community Sigil"). An x or a k still marks a count, so
+ *  "2X Day Of The Dead Glyph" keeps its two. */
+const NAMED_UNIT = /^(?:year|day|hour|minute|second|week|month)s?\b/i;
+
+function quantityPrefix(value: string): RegExpExecArray | null {
+  const match = QUANTITY_PREFIX.exec(value);
+  if (!match) return null;
+  return !match[2] && NAMED_UNIT.test(value.slice(match[0].length)) ? null : match;
+}
+
 /** Blueprint and built item are one pile. */
 const BLUEPRINT_SUFFIX = /\s+blueprint$/i;
 
@@ -13,11 +25,12 @@ const BLUEPRINT_SUFFIX = /\s+blueprint$/i;
 const TRAILING_NOISE = /[\s*.,:;!?]+$/;
 
 export function hasQuantityPrefix(value: string): boolean {
-  return QUANTITY_PREFIX.test(value);
+  return quantityPrefix(value) !== null;
 }
 
 export function stripQuantityPrefix(value: string): string {
-  return value.replace(QUANTITY_PREFIX, "");
+  const match = quantityPrefix(value);
+  return match ? value.slice(match[0].length) : value;
 }
 
 export interface QuantityName {
@@ -38,7 +51,7 @@ export function parseQuantityName(value: string | null | undefined): QuantityNam
   let name = (value ?? "").replace(/\s+/g, " ").trim();
   let count: number | null = null;
   for (;;) {
-    const match = QUANTITY_PREFIX.exec(name);
+    const match = quantityPrefix(name);
     const found = match ? prefixCount(match) : null;
     if (!match || found === null) break;
     count = count === null ? found : count * found;
@@ -64,24 +77,16 @@ export function rewardNameKeys(value: string | null | undefined): string[] {
   return [key, key.slice(0, -1)];
 }
 
-/** A decimal below ten of a unit, so scaling a count never costs a digit that
- *  was carrying meaning: 1500 is "1.5k", not the "1k" a floor would claim. */
-function scaled(count: number, unit: number, suffix: string): string {
-  const value = count / unit;
-  const text = value < 10 ? value.toFixed(1).replace(/\.0$/, "") : String(Math.round(value));
-  return `${text}${suffix}`;
-}
-
-/** Five characters holds every real count, so a column of them stays lined up,
- *  and a high resource count reads compact: "6k", never "6,000". The cutover is
- *  where the k reading would round to a thousand of them. */
+/** Four characters holds every real count, so a column of them stays lined up.
+ *  A count that fits stays whole; only a wider one reads compact, and then a
+ *  floor never claims a unit the count has not reached. */
 export function compactCount(count: number): string {
-  if (count < 1_000) return String(count);
-  if (count < 999_500) return scaled(count, 1_000, "k");
-  return scaled(count, 1_000_000, "m");
+  if (count < 10_000) return String(count);
+  if (count < 1_000_000) return `${Math.floor(count / 1_000)}k`;
+  return `${Math.floor(count / 1_000_000)}M`;
 }
 
-/** A count folded back into the name it counts: "6k Endo". One of a thing adds
+/** A count folded back into the name it counts: "4000 Endo". One of a thing adds
  *  nothing, and an unknown count must add nothing rather than guess. */
 export function countedName(count: number | null, name: string): string {
   return count !== null && count > 1 ? `${compactCount(count)} ${name}` : name;

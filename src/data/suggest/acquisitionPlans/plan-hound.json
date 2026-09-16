@@ -1,0 +1,771 @@
+{
+  "name": "Hound",
+  "kind": "companion",
+  "effort": 8,
+  "tradeable": "blueprints only",
+  "progress": {
+    "have": 1,
+    "need": 3,
+    "unit": "Models"
+  },
+  "badges": [
+    {
+      "text": "vanquish, never convert",
+      "tone": "warn"
+    },
+    {
+      "text": "MR 5",
+      "tone": "info"
+    }
+  ],
+  "prices": [
+    {
+      "label": "eight parts, foundry",
+      "amount": "400,000 cr",
+      "money": false
+    },
+    {
+      "label": "rush a part",
+      "amount": "25 p",
+      "money": false
+    }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "STAR CHART",
+      "sub": null,
+      "activity": "quests and access",
+      "meta": "one-time",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "The War Within",
+          "note": null,
+          "alt": null,
+          "done": true
+        },
+        {
+          "qty": null,
+          "label": "Call of the Tempestarii",
+          "note": null,
+          "alt": null,
+          "done": true
+        },
+        {
+          "qty": null,
+          "label": "Mastery Rank 5",
+          "note": null,
+          "alt": null,
+          "done": true
+        },
+        {
+          "qty": null,
+          "label": "Railjack, Intrinsics rank 3",
+          "note": "for the Neptune Proxima showdown",
+          "alt": null,
+          "done": true
+        },
+        {
+          "qty": "2",
+          "label": "free Companion slot",
+          "note": "one for the Hound, one for its Model weapon",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Legs does not sell Hound parts; her standing list is MOA parts only, and she just assembles and gilds"
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "relics",
+      "place": "KUVA SIPHON, ANY",
+      "sub": null,
+      "activity": "Requiem relics",
+      "meta": "3 mods a Sister",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "3",
+          "label": "Requiem mods, one full sequence",
+          "note": "also 5% from any Hound kill",
+          "alt": "or 10 Riven Slivers each at Palladino",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Each Sister needs her own three-Requiem sequence, guessed in the right order before she can be vanquished"
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "boss",
+      "place": "HYDRA, PLUTO",
+      "sub": null,
+      "activity": "Capture, then the Granum Void",
+      "meta": "~8 Sisters",
+      "mode": "solo, normal, not Steel Path",
+      "live": {
+        "state": "waiting",
+        "text": "Sister at 40% influence, 3 nodes"
+      },
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Bhaira Model",
+          "note": "Null Audit precept, Lacerten weapon",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Dorma Model",
+          "note": "Repo Audit precept, Batoten weapon",
+          "alt": null,
+          "done": true
+        },
+        {
+          "qty": null,
+          "label": "Hec Model",
+          "note": "Equilibrium Audit precept, Akaten weapon",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "2",
+          "label": "Adlet Core",
+          "note": "350 health / 450 shields / 350 armor",
+          "alt": "or buy the blueprint from another player",
+          "done": false
+        },
+        {
+          "qty": "2",
+          "label": "Cela Bracket",
+          "note": "+15% shields, Reflex Denial",
+          "alt": "or buy the blueprint from another player",
+          "done": false
+        },
+        {
+          "qty": "2",
+          "label": "Frak Stabilizer",
+          "note": "Vazarin polarity, Focused Prospectus",
+          "alt": "or buy the blueprint from another player",
+          "done": false
+        },
+        {
+          "qty": "20",
+          "label": "Spectral Debris",
+          "note": "5% from Errant Specters inside the Void",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "8",
+          "label": "Zenith Granum Crown",
+          "note": "Treasurer, 2-5 min into the mission",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Vanquish, never convert: a converted Sister hands over no Hound, no component blueprint and no Tenet weapon",
+        "Every vanquish drops exactly one random blueprint out of twelve, so four Sisters is the floor and about eight is the realistic average",
+        "The Hound a vanquished Sister mails you arrives fully built but ungilded, and still needs rank 30, gilding, then rank 30 again to be worth anything",
+        "A second Hound sharing a Model you already gilded is worth zero mastery, whatever its other parts",
+        "A Parazon Mercy on the downed Candidate is what creates the Sister in the first place",
+        "The Treasurer despawns if you take too long, and its Zenith crown is consumed on every Granum Void entry"
+      ],
+      "bonuses": [
+        "Each vanquish also hands over her Tenet weapon and her own fully built Hound",
+        "Component blueprints trade between players, so a missing Model can be bought outright; built parts and assembled Hounds never trade"
+      ],
+      "disclosures": [
+        {
+          "title": "the fast Sister loop",
+          "body": "Solo, normal, not Steel Path, Capture on Hydra, Pluto. A squad raises the kill requirement inside the Granum Void, so run it alone. Waypoint a gold hand first, kill the capture target, then come back and insert the Zenith crown; if no hand has shown up halfway through the tile, restart, and if one spawns within roughly 200m of extraction the Sister may not appear at all. Inside the Void the spawn cap is about 20 enemies and nothing new arrives until that batch is dead, so stay on top of them with a chaining or nuking weapon rather than spreading out. Equip the Xoris: heavy-attack the Granum ghosts to charge it, then detonate on the captured Solaris target for a large time extension, and kill 25 Parvos units for the time triangles they drop. Kill the Treasurer every cycle for the next crown, and hit Replay on the white end screen to re-run instantly."
+        },
+        {
+          "title": "which Core, Bracket and Stabilizer to keep",
+          "body": "Only the Model earns mastery, so the other nine blueprints are stat and precept picks and duplicates cost nothing. Take Adlet for the 450 base shields and pair it with Cela (+15%) or Zubb (+10%): Reinforced Bond wants at least 343 base shields, and Urga at -5% is the only bracket that can miss, dropping a 350-shield Core to 332.5. Frak is the stabilizer pick for its Vazarin polarity and the cheapest material list of the three, all star-chart resources plus Nitain. The Hound a Sister mails you rolls its own Core, Bracket and Stabilizer, so check its base shields against 343 before you build Reinforced Bond around it."
+        }
+      ]
+    },
+    {
+      "type": "currency",
+      "place": "ORB VALLIS, VENUS",
+      "sub": null,
+      "activity": "Conservation, plus Bounty 1 for the bonds",
+      "meta": "185,000 cr",
+      "mode": "solo, normal",
+      "live": {
+        "state": "open",
+        "text": "Warm now, 12m left"
+      },
+      "skip": null,
+      "earns": {
+        "currency": "Solaris United standing",
+        "amount": "168,000"
+      },
+      "spends": [],
+      "map": "orb-vallis",
+      "rows": [
+        {
+          "qty": "168,000",
+          "label": "Solaris United standing",
+          "note": "Doer to gild, Cove for the Marquise Thyst blueprint",
+          "alt": "or sell raw gems to Smokefinger",
+          "done": false
+        },
+        {
+          "qty": "36",
+          "label": "Training Debt-Bond",
+          "note": "10 per gild, 6 across the rank-ups",
+          "alt": "or Ticker's cases, 5,000-350,000 cr each",
+          "done": false
+        },
+        {
+          "qty": "9",
+          "label": "Shelter Debt-Bond",
+          "note": null,
+          "alt": "or Ticker",
+          "done": false
+        },
+        {
+          "qty": "8",
+          "label": "Medical Debt-Bond",
+          "note": null,
+          "alt": "or Ticker",
+          "done": false
+        },
+        {
+          "qty": "5",
+          "label": "Advances Debt-Bond",
+          "note": "Cove rank-up only",
+          "alt": "or Ticker",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Doer is needed only to gild; assembly at Legs costs no standing at all",
+        "Daily standing cap is 16,000 plus 500 per mastery rank, so this is about eight capped days at MR10"
+      ],
+      "bonuses": [
+        "Conservation runs about 8,000 standing every five minutes with Loki and a subsumed Rest & Rage"
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "FORTUNA, VENUS",
+      "sub": null,
+      "activity": "Solaris United rank-ups to Cove",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [
+        {
+          "currency": "Solaris United standing",
+          "amount": "141,000"
+        }
+      ],
+      "map": "orb-vallis",
+      "rows": [
+        {
+          "qty": null,
+          "label": "Outworlder",
+          "note": "5,000 standing, 2 Training",
+          "alt": null,
+          "done": true
+        },
+        {
+          "qty": null,
+          "label": "Rapscallion",
+          "note": "22,000 standing, 2 Training + 3 Shelter",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Doer",
+          "note": "44,000 standing, 2 Training + 3 Shelter + 4 Medical",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Cove",
+          "note": "70,000 standing, 3 Shelter + 4 Medical + 5 Advances",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Rank-ups consume standing on top of the daily ceiling, so Doer costs 71,000 earned and Cove another 70,000",
+        "Doer is the rank gilding needs; Cove is one above it and buys nothing here except the Marquise Thyst blueprint"
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "ORB VALLIS, VENUS",
+      "sub": null,
+      "activity": "Mining, refined by Smokefinger",
+      "meta": "~2 sweeps",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [
+        {
+          "currency": "Solaris United standing",
+          "amount": "12,000"
+        }
+      ],
+      "map": "orb-vallis",
+      "rows": [
+        {
+          "qty": "70",
+          "label": "Travocyte Alloy",
+          "note": "Travoride ore, common",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "50",
+          "label": "Venerdo Alloy",
+          "note": "Venerol ore, uncommon",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "40",
+          "label": "Hespazym Alloy",
+          "note": "Hesperon ore, rare veins",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "2",
+          "label": "Marquise Thyst",
+          "note": "3 Thyst + 10,000 cr each",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The Marquise Thyst refining blueprint sits at Solaris United rank Cove and 12,000 standing, one rank above the Doer you need to gild",
+        "Rare Hesperon veins want a Sunpoint Plasma Drill rather than the starter Nosam Cutter"
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "ORB VALLIS, VENUS",
+      "sub": null,
+      "activity": "Fishing, cut by The Business",
+      "meta": "~2 passes",
+      "mode": null,
+      "live": {
+        "state": "open",
+        "text": "Warm now, 12m left"
+      },
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "orb-vallis",
+      "rows": [
+        {
+          "qty": "30",
+          "label": "Brickie Muon Battery",
+          "note": "Brickie, ponds and rivers, warm",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "10",
+          "label": "Eye-Eye Rotoblade",
+          "note": "Eye-Eye, ponds, warm, narrow-spectrum bait",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "10",
+          "label": "Sapcaddy Venedo Case",
+          "note": "Sapcaddy, lakes, cold",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "10",
+          "label": "Mirewinder Parallel Biode",
+          "note": "Mirewinder, caves, Mirewinder Bait",
+          "alt": null,
+          "done": true
+        }
+      ],
+      "conditions": [
+        "Sapcaddy is cold-cycle only and the rest are warm, so this is two passes either side of one weather flip"
+      ],
+      "bonuses": ["Spare servofish sell to The Business for the standing the gilding needs"],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "ORB VALLIS, VENUS",
+      "sub": "Temple of Profit",
+      "activity": "Kyta Raknoids",
+      "meta": "20% a kill",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "orb-vallis",
+      "rows": [
+        {
+          "qty": "10",
+          "label": "Sola Toroid",
+          "note": "20% from Kyta Raknoids, ~2% otherwise",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": ["Cave pick-ups around the Temple hand them over without a fight"],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "PLAINS OF EIDOLON, EARTH",
+      "sub": null,
+      "activity": "Mining and Iradite deposits",
+      "meta": "~1 sweep",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "plains",
+      "rows": [
+        {
+          "qty": "80",
+          "label": "Coprite Alloy",
+          "note": "Coprun ore, red veins",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "50",
+          "label": "Iradite",
+          "note": "5 guaranteed a deposit in Narmer bounties",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "2",
+          "label": "Radian Sentirum",
+          "note": "3 Sentirum + 10,000 cr each",
+          "alt": null,
+          "done": true
+        }
+      ],
+      "conditions": [],
+      "bonuses": ["Narmer bounty deposits pay 5 Iradite each against 1-2 at low-level bounties"],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "CAMBION DRIFT, DEIMOS",
+      "sub": null,
+      "activity": "Mining, refined by Otak",
+      "meta": "rare veins",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [
+        {
+          "currency": "Entrati standing",
+          "amount": "8,000"
+        }
+      ],
+      "map": "cambion",
+      "rows": [
+        {
+          "qty": "2",
+          "label": "Trapezium Xenorhast",
+          "note": "teal veins, Otak blueprint",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Xenorhast needs an Advanced Nosam Cutter or a Sunpoint Plasma Drill; the starter cutter will not take it",
+        "Otak's refining blueprint sits at Entrati rank Associate, 8,000 standing"
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "MOT, VOID",
+      "sub": null,
+      "activity": "Survival",
+      "meta": "~20 min",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "5,000",
+          "label": "Ferrite",
+          "note": null,
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "3,000",
+          "label": "Rubedo",
+          "note": null,
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": ["One Void Survival covers both, so no separate Mercury and Phobos trips"],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "DRACO, CERES",
+      "sub": null,
+      "activity": "Interception, Dark Sector",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "1,200",
+          "label": "Circuits",
+          "note": "600 per Frak stabilizer",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": ["The Dark Sector resource bonus applies"],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "ASSUR, URANUS",
+      "sub": null,
+      "activity": "Survival",
+      "meta": "rare drop",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "10",
+          "label": "Gallium",
+          "note": "5 per Model",
+          "alt": "or Lieutenant Lech Kril on War, Mars",
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "NIGHTWAVE",
+      "sub": null,
+      "activity": "Nora's evergreen offerings",
+      "meta": "15 Cred for 5",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "6",
+          "label": "Nitain Extract",
+          "note": "3 per Frak stabilizer",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Nitain has no mission drop; Nightwave Cred is the only source"],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "queue all eight parts at once",
+      "meta": "24h in parallel, 400,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Bhaira Model",
+          "note": null,
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Hec Model",
+          "note": null,
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "2",
+          "label": "Adlet Core",
+          "note": null,
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "2",
+          "label": "Cela Bracket",
+          "note": null,
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "2",
+          "label": "Frak Stabilizer",
+          "note": null,
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Every component is the same 24 h and 50,000 credits, so queued together the whole set is one day"
+      ],
+      "bonuses": ["The Dorma set is skipped entirely; that Sister already mailed a built Hound"],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "LEGS, FORTUNA",
+      "sub": null,
+      "activity": "Build Hound",
+      "meta": "4,000 cr each, instant",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "orb-vallis",
+      "rows": [
+        {
+          "qty": "2",
+          "label": "assembled Hound",
+          "note": "Bhaira and Hec",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Assembly costs credits only, no standing and no rank",
+        "Two free Companion slots per Hound: one for the Hound, one for its Model weapon"
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "LEGS, FORTUNA",
+      "sub": null,
+      "activity": "gild at rank 30",
+      "meta": "10 bonds each",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [
+        {
+          "currency": "Solaris United standing",
+          "amount": "15,000"
+        }
+      ],
+      "map": "orb-vallis",
+      "rows": [
+        {
+          "qty": null,
+          "label": "Bhaira, gilded",
+          "note": "and its Lacerten",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Dorma, gilded",
+          "note": "and its Batoten",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Hec, gilded",
+          "note": "and its Akaten",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The Sister's gift Hound gets no exemption: rank 30, gild, rank 30 again like the two you built",
+        "Gilding resets to rank 0, so every Model is two level-to-30 passes",
+        "Gilding needs Solaris United rank Doer; an ungilded Hound banks nothing"
+      ],
+      "bonuses": ["Each Model's bundled melee is its own mastery entry on top of the Model"],
+      "disclosures": []
+    }
+  ]
+}

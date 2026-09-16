@@ -30,7 +30,12 @@ function itemTileTags(): string[] {
 
 describe("suggestion details modal", () => {
   it("gives every named item a tier", () => {
-    const untiered = itemTileTags().filter((tag) => !/\btier=/.test(tag));
+    // The reward's own letter is the header's: the two share a column, so a
+    // tier on that one tile would draw the same letter twice, stacked.
+    expect(source()).toContain('<TierBadge tier={headerTier} size="md" />');
+    const untiered = itemTileTags()
+      .filter((tag) => !/\bname=\{rewardTile\.name\}/.test(tag))
+      .filter((tag) => !/\btier=/.test(tag));
     expect(untiered).toEqual([]);
     expect(itemTileTags().length).toBeGreaterThan(1);
   });
@@ -42,9 +47,12 @@ describe("suggestion details modal", () => {
     }
   });
 
-  it("reads choice state off the shared chip rather than a sentence", () => {
+  it("draws every win a choice can bank, not one chip standing for both", () => {
     const text = source();
-    expect(text).toContain("<StateChip state={choice.state} />");
+    // One state could never say whether a frame is mastered AND whether it has
+    // been fed to the Helminth, so the modal draws the list of wins instead.
+    expect(text).toContain("statuses={choice.statuses}");
+    expect(text).not.toContain("<StateChip");
     for (const key of ["nextUp.choiceTakeIt", "nextUp.choiceSubsumeOnly"]) {
       expect(text).not.toContain(key);
     }
@@ -52,9 +60,6 @@ describe("suggestion details modal", () => {
 
   it("marks what the player already owns on the tile, not in a chip beside it", () => {
     const text = source();
-    // The tile dims itself off `have`; a done chip next to it said the same
-    // thing a second time.
-    expect(text).not.toContain('<StateChip state="done" />');
     expect(text).toContain("have: ownsAny(owned)");
     expect(text).toContain('have: row.verdict === "done"');
   });
@@ -102,12 +107,14 @@ describe("suggestion details modal", () => {
 
   it("draws the roll, what is held and what a purchase makes", () => {
     const text = source();
-    for (const key of ["nextUp.valenceYours", "nextUp.valenceAfter"]) {
-      expect(en).toHaveProperty(key);
-      expect(text).toContain(key);
-    }
+    // The player's own roll rides the tile beside their count; only what a
+    // purchase would leave the weapon at needs a word of its own.
+    expect(text).not.toContain("nextUp.valenceYours");
+    expect(text).toContain("ownedBonus={row.ownedBonus}");
+    expect(en).toHaveProperty("nextUp.valenceAfter");
+    expect(text).toContain("nextUp.valenceAfter");
     // An unowned weapon has no percentage, and must never print one.
-    expect(text).toContain("row.owned !== null");
+    expect(text).toContain("owned: row.owned === null ? null : tile.owned");
     // The verdict tones a figure and dims a finished row; it is never a sentence.
     expect(text).toContain('row.verdict === "done"');
     expect(text).not.toContain("VERDICT_LABEL");

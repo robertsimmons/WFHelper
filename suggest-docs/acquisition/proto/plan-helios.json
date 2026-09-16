@@ -1,0 +1,456 @@
+{
+  "name": "Helios",
+  "kind": "sentinel",
+  "effort": 5,
+  "tradeable": null,
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "parts"
+  },
+  "badges": [
+    {
+      "text": "clan research",
+      "tone": "info"
+    },
+    {
+      "text": "15d of research",
+      "tone": "warn"
+    }
+  ],
+  "prices": [
+    {
+      "label": "dojo blueprint",
+      "amount": "15,000 cr",
+      "money": false
+    },
+    {
+      "label": "built",
+      "amount": "75 p",
+      "money": false
+    }
+  ],
+  "groups": [
+    {
+      "type": "farm",
+      "place": "KELASHIN, NEPTUNE",
+      "sub": null,
+      "activity": "Survival, Dark Sector, the five that start the chain",
+      "meta": "just enough to start",
+      "mode": null,
+      "live": null,
+      "skip": {
+        "reason": "The chain is already unlocked, so nothing starts it"
+      },
+      "earns": null,
+      "spends": [],
+      "map": "kelashin",
+      "rows": [
+        {
+          "qty": "5",
+          "label": "Fieldron Sample",
+          "note": "opens Fieldron research",
+          "alt": "or Wahiba, Mars / Kadesh, Mars",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Do this trip before anything else. Five samples start a 360h serial timer, and every other step waits on it",
+        "Fieldron Samples are untradeable and unbuyable, so a clanmate cannot hand them over",
+        "Stage one also takes 100 Rubedo, 500 Nano Spores and 200 Polymer Bundle from the dojo vault"
+      ],
+      "bonuses": [
+        "Samples drop across all Corpus territory: Venus, Phobos, Jupiter, Europa, Neptune and Pluto"
+      ],
+      "disclosures": [
+        {
+          "title": "no drop rate exists",
+          "body": "The wiki lists no mission or enemy drop table for Fieldron Sample, so there is no rate to plan against. Kelashin, Wahiba and Kadesh are the wiki's own suggested nodes, not measured ones."
+        }
+      ]
+    },
+    {
+      "type": "research",
+      "place": "CLAN DOJO",
+      "sub": "Energy Lab",
+      "activity": "queue the chain, in order",
+      "meta": "360h serial, 35,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": {
+        "reason": "Energy Lab chain finished years ago in an established clan"
+      },
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Fieldron",
+          "note": "72h, 5,000 cr, 2,000 affinity",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Prova",
+          "note": "72h, 5,000 cr",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Dera",
+          "note": "72h, 7,500 cr",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Lanka",
+          "note": "72h, 10,000 cr",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Helios",
+          "note": "72h, 7,500 cr",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Strictly serial: each stage unlocks the next, so nothing here overlaps and the whole chain is 15 days from an empty lab",
+        "The Energy Lab room must already be built; the wiki does not publish its construction cost",
+        "Ghost-clan figures. A Moon clan pays up to x100 on every research resource below",
+        "In an established clan this whole group is already done and the plan starts at the dojo console"
+      ],
+      "bonuses": [
+        "The chain hands you Prova, Dera and Lanka along the way, all mastery you would otherwise skip"
+      ],
+      "disclosures": [
+        {
+          "title": "what each stage consumes",
+          "body": "Fieldron: 5 Fieldron Sample, 100 Rubedo, 500 Nano Spores, 200 Polymer Bundle. Prova: 5 Fieldron Sample, 100 Rubedo, 500 Nano Spores, 200 Polymer Bundle. Dera: 5 Fieldron Sample, 200 Circuits, 500 Nano Spores, 250 Polymer Bundle. Lanka: 10 Fieldron Sample, 500 Ferrite, 250 Plastids, 500 Polymer Bundle. Helios: 7 Fieldron Sample, 100 Oxium, 750 Ferrite, 350 Nano Spores."
+        }
+      ]
+    },
+    {
+      "type": "farm",
+      "place": "KELASHIN, NEPTUNE",
+      "sub": null,
+      "activity": "Survival, Dark Sector, the bulk Fieldron run",
+      "meta": "the long one",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "kelashin",
+      "rows": [
+        {
+          "qty": "100",
+          "label": "Fieldron Sample",
+          "note": "10 per Fieldron craft, x10",
+          "alt": "or Wahiba, Mars / Kadesh, Mars",
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "CARME, JUPITER",
+      "sub": null,
+      "activity": "Mobile Defense",
+      "meta": "~2 runs",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "carme",
+      "rows": [
+        {
+          "qty": "5,000",
+          "label": "Salvage",
+          "note": "500 per Fieldron, x10",
+          "alt": "or Olympus, Mars",
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [
+        "Up to ~3,000 a run here, which is the fastest Salvage node on the list"
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "PISCINAS, SATURN",
+      "sub": null,
+      "activity": "Survival, Dark Sector",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "piscinas",
+      "rows": [
+        {
+          "qty": "2,500",
+          "label": "Plastids",
+          "note": "250 per Fieldron, x10",
+          "alt": "or Helene, Saturn",
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "APOLLODORUS, MERCURY",
+      "sub": null,
+      "activity": "Survival",
+      "meta": "~4,000 Ferrite per 10 min",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "apollodorus",
+      "rows": [
+        {
+          "qty": "5,000",
+          "label": "Ferrite",
+          "note": "the Helios build",
+          "alt": "or Terminus, Mercury",
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "IO, JUPITER",
+      "sub": null,
+      "activity": "Defense",
+      "meta": "~80 per 10 waves",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "io",
+      "rows": [
+        {
+          "qty": "300",
+          "label": "Oxium",
+          "note": "the Helios build",
+          "alt": "or Cetus / Fortuna bounty stages 1-2, 100-200 a stage",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Oxium Ospreys have to be killed by a player; the ones that self-destruct drop nothing"
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "TESHUB, VOID",
+      "sub": null,
+      "activity": "Exterminate",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "teshub",
+      "rows": [
+        {
+          "qty": "10",
+          "label": "Control Module",
+          "note": "1 per Fieldron",
+          "alt": "or Hepit, Void (Capture)",
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [
+        "Void drops these more often than Neptune or Europa"
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "ZEUGMA, PHOBOS",
+      "sub": null,
+      "activity": "Survival, Dark Sector",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": {
+        "reason": "Feeds the finished Fieldron and Prova research only"
+      },
+      "earns": null,
+      "spends": [],
+      "map": "zeugma",
+      "rows": [
+        {
+          "qty": "200",
+          "label": "Rubedo",
+          "note": "Fieldron and Prova research",
+          "alt": null,
+          "done": true
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "DRACO, CERES",
+      "sub": null,
+      "activity": "Interception",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": {
+        "reason": "Feeds the finished Dera research only"
+      },
+      "earns": null,
+      "spends": [],
+      "map": "draco",
+      "rows": [
+        {
+          "qty": "200",
+          "label": "Circuits",
+          "note": "Dera research",
+          "alt": "or Malva, Venus",
+          "done": true
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "craft",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "start all ten at once",
+      "meta": "12h, 150,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "10",
+          "label": "Fieldron",
+          "note": "1 per craft",
+          "alt": "or 3 per Corpus Invasion reward",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The blueprint comes from the Energy Lab, so this waits on the Fieldron research finishing, not on the whole chain"
+      ],
+      "bonuses": [
+        "Foundry builds run in parallel: all ten finish in one 12h window if the inputs are in hand",
+        "Rare and reinforced Corpus storage containers and Orb Vallis tier-4 bounties drop finished Fieldron, which cuts the count"
+      ],
+      "disclosures": [
+        {
+          "title": "why ten Fieldron is the real cost",
+          "body": "Each craft is 15,000 credits, 10 Fieldron Sample, 1 Control Module, 500 Salvage and 250 Plastids. Ten of them is 150,000 credits, 100 Fieldron Sample, 10 Control Modules, 5,000 Salvage and 2,500 Plastids. That is the Helios grind; the sentinel itself is cheap."
+        }
+      ]
+    },
+    {
+      "type": "vendor",
+      "place": "CLAN DOJO",
+      "sub": "Energy Lab",
+      "activity": "buy the blueprint",
+      "meta": "15,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Helios Blueprint",
+          "note": "cheapest sentinel blueprint in the dojo",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Helios research has to be finished, which is the tail end of the 360h chain",
+        "Cephalon Simaris does not sell this. He sells Detect Vulnerability, the Helios precept mod, for 75,000 standing"
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "then",
+      "meta": "24h, 5,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Helios",
+          "note": "10 Fieldron, 300 Oxium, 5,000 Ferrite",
+          "alt": "or 75 p built from the Market",
+          "done": false
+        },
+        {
+          "qty": "1",
+          "label": "Forma",
+          "note": "consumed by the build",
+          "alt": "or 20 p in the Market",
+          "done": true
+        }
+      ],
+      "conditions": [
+        "Two companion slots go at claim time, one for Helios and one for the bundled Deconstructor. A single free slot is not enough",
+        "A Forma you build costs 35,000 credits, 1 Morphics, 1 Neural Sensors, 1 Neurodes, 1 Orokin Cell and 23h, so budget it before starting"
+      ],
+      "bonuses": [
+        "Ships with the Deconstructor, a sentinel weapon usable only by Helios and Helios Prime",
+        "75 p for a built Helios skips the entire chain and is cheaper than rushing any part of it"
+      ],
+      "disclosures": [
+        {
+          "title": "Helios Prime is a different item",
+          "body": "Helios Prime is relic-farmed. None of this research progresses it."
+        }
+      ]
+    }
+  ]
+}

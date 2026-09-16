@@ -46,6 +46,11 @@ const FIXED_GUN = /\/FixedGun/i;
 /** Amps, K-Drives and Railjack armaments are masterable but not built like a weapon. */
 const NOT_A_WEAPON_PATH = /\/(?:OperatorAmps?|OperatorAmplifiers?|Hoverboards?|CrewShip)/i;
 
+/** A Hound model and a MOA model are exported as pistols, as every modular part
+ *  is; the sweep returns them as modular gear instead. The sentinel path stays
+ *  out of this: a sentinel's own gun really is a weapon. */
+const PET_BUILD_PATH = /\/(?:ZanukaPets|CreaturePets|MoaPets)\//i;
+
 interface WeaponEntry {
   uniqueName: string;
   entry: ItemDbEntry;
@@ -62,6 +67,7 @@ function excluded(uniqueName: string, entry: ItemDbEntry): boolean {
   if (EXALTED_PATH.test(uniqueName)) return true;
   if (EXCLUDED_PATH.test(uniqueName)) return true;
   if (NOT_A_WEAPON_PATH.test(uniqueName)) return true;
+  if (PET_BUILD_PATH.test(uniqueName)) return true;
   if (MODULAR_PART_PATH.test(uniqueName)) return true;
   if (FIXED_GUN.test(uniqueName)) return true;
   const name = String(entry.name ?? "").toLowerCase();

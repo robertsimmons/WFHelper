@@ -46,7 +46,7 @@ function buildTable(source: unknown): Map<string, TierRow> {
 
 /** Nothing about the file is trusted: it is generated, optional, and may lag
  *  the shape this expects. An unreadable row simply leaves the item untiered. */
-export function createItemTiers(source?: unknown): ItemTiers {
+function createRows(source?: unknown): (name: string) => TierRow | null {
   const table = buildTable(source);
   return (name) => {
     const key = nameKey(name);
@@ -56,10 +56,26 @@ export function createItemTiers(source?: unknown): ItemTiers {
       const baseRow = table.get(base) ?? null;
       // A Prime frame and its base are one thing to rate, and the Prime's own
       // row carries a handful of votes; weapon Primes are genuinely separate.
-      if (baseRow && (row ? row.warframe : baseRow.warframe)) return tierFor(baseRow.score);
+      if (baseRow && (row ? row.warframe : baseRow.warframe)) return baseRow;
     }
+    return row;
+  };
+}
+
+export function createItemTiers(source?: unknown): ItemTiers {
+  const rows = createRows(source);
+  return (name) => {
+    const row = rows(name);
     return row ? tierFor(row.score) : null;
   };
+}
+
+/** The average behind the letter; null for an item the table never rated. */
+type TierScores = (name: string) => number | null;
+
+function createTierScores(source?: unknown): TierScores {
+  const rows = createRows(source);
+  return (name) => rows(name)?.score ?? null;
 }
 
 // A glob rather than an import: the data build owns the file and it may not exist.
@@ -71,4 +87,16 @@ function shipped(): unknown {
   return (module as { default?: unknown }).default ?? module;
 }
 
-export const itemTiers: ItemTiers = preferFreshRankings(createItemTiers, shipped());
+let scores: TierScores = () => null;
+
+export const itemTiers: ItemTiers = preferFreshRankings((source) => {
+  scores = createTierScores(source);
+  return createItemTiers(source);
+}, shipped());
+
+/** Reading the letter is what rebuilds the score table off the freshest source,
+ *  so the two can never answer from different tables. */
+export function itemTierScore(name: string): number | null {
+  itemTiers(name);
+  return scores(name);
+}

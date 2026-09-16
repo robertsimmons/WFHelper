@@ -1,0 +1,184 @@
+{
+  "name": "Cyte-09",
+  "kind": "warframe",
+  "verifiedOn": "2026-09-08",
+  "masteryRank": 0,
+  "prerequisites": [
+    { "order": 1, "type": "quest", "name": "Heart of Deimos", "note": "Required before Whispers in the Walls." },
+    { "order": 2, "type": "quest", "name": "The New War", "note": "Required before Whispers in the Walls." },
+    { "order": 3, "type": "quest", "name": "Whispers in the Walls", "note": "Starts from a Loid inbox message at the Necralisk." },
+    { "order": 4, "type": "junction", "name": "Uranus Junction (on Saturn)", "note": "Gates The Duviri Paradox." },
+    { "order": 5, "type": "quest", "name": "The Duviri Paradox", "note": "Solo-only. Required for The Hex quest." },
+    { "order": 6, "type": "quest", "name": "The Lotus Eaters", "note": "Auto-starts after Whispers in the Walls. Required for The Hex quest." },
+    { "order": 7, "type": "quest", "name": "The Hex", "note": "Started from the Codex; type KALYMOS to confirm. ~1.5 hours, uninterruptible. Awards the Cyte-09 main blueprint and unlocks Hollvania, its bounties and The Hex syndicate." },
+    { "order": 8, "type": "syndicateRank", "name": "The Hex - Rank 2 'Fresh Slice'", "note": "Only needed for the buy-the-parts route (Amir). Rank 4 'Hot & Fresh' needed to re-buy the main blueprint." }
+  ],
+  "routes": [
+    {
+      "kind": "quest",
+      "where": "The Hex quest (Codex)",
+      "parts": ["Cyte-09 Blueprint (main)"],
+      "dropRate": 1.0,
+      "conditions": ["Quest chain above completed"],
+      "notes": "Guaranteed one-time award. Everyone who has access to Hollvania already owns this blueprint."
+    },
+    {
+      "kind": "bounty",
+      "where": "Hollvania Central Mall Bounty, Lvl 75-80 (bounty board in the mall garage)",
+      "parts": ["Cyte-09 Neuroptics Blueprint"],
+      "dropRate": 0.1163,
+      "conditions": ["The Hex quest complete", "Bounty level tier must be the 75-80 one"],
+      "notes": "Uncommon-tier reward. Stage/rotation within the bounty is not broken out on the wiki reward page; treat as a per-completion roll."
+    },
+    {
+      "kind": "bounty",
+      "where": "Hollvania Central Mall Bounty, Lvl 65-70 (bounty board in the mall garage)",
+      "parts": ["Cyte-09 Chassis Blueprint"],
+      "dropRate": 0.122,
+      "conditions": ["The Hex quest complete", "Bounty level tier must be the 65-70 one"],
+      "notes": "Uncommon-tier reward."
+    },
+    {
+      "kind": "bounty",
+      "where": "Hollvania Central Mall Bounty, Lvl 85-90 (bounty board in the mall garage)",
+      "parts": ["Cyte-09 Systems Blueprint"],
+      "dropRate": 0.1333,
+      "conditions": ["The Hex quest complete", "Bounty level tier must be the 85-90 one"],
+      "notes": "Uncommon-tier reward. Highest of the three rates."
+    },
+    {
+      "kind": "vendor",
+      "where": "Amir Beckett, Hollvania Central Mall - The Hex syndicate offerings",
+      "parts": ["Cyte-09 Neuroptics Blueprint", "Cyte-09 Chassis Blueprint", "Cyte-09 Systems Blueprint"],
+      "dropRate": 1.0,
+      "standingCostPerPart": 20000,
+      "standingTotalForParts": 60000,
+      "rankRequired": "Rank 2 - Fresh Slice",
+      "conditions": ["The Hex syndicate at Rank 2 or higher"],
+      "notes": "Deterministic alternative to the bounty RNG. Standing is earned from Hollvania bounties, trading Hex Treasures to Leticia (750-2,500 each) and Temporal Archimedea (15,000 for all three missions)."
+    },
+    {
+      "kind": "vendor",
+      "where": "Amir Beckett, Hollvania Central Mall - The Hex syndicate offerings",
+      "parts": ["Cyte-09 Blueprint (main)"],
+      "dropRate": 1.0,
+      "standingCostPerPart": 50000,
+      "rankRequired": "Rank 4 - Hot & Fresh",
+      "conditions": ["The Hex syndicate at Rank 4 or higher"],
+      "notes": "Replacement copy only; the quest already grants one."
+    }
+  ],
+  "dailyStandingCap": {
+    "formula": "16000 + (Mastery Rank x 500)",
+    "note": "The Hex has its own standing pool; Hex Treasures cannot be traded past the daily Hex limit. At MR10 that is 21,000/day, so the full 60,000 standing for all three parts is roughly 3 days of dailies."
+  },
+  "purchase": {
+    "market": { "currency": "platinum", "amount": 370, "note": "Buys the fully built Warframe outright, skipping every farm." },
+    "credits": null,
+    "vendorStanding": { "vendor": "Amir Beckett (The Hex)", "parts": 20000, "mainBlueprint": 50000 }
+  },
+  "materials": [
+    { "name": "Efervon Sample", "quantity": 80, "usedIn": "Neuroptics 60, Systems 20", "whereFarmed": "Hollvania: enemy drops, loot containers and Efervon Sample Stockpiles. Bounty rewards: Lvl 65-70 at 14.63% for 20, Lvl 115-120 at 14% for 50.", "harvestable": false },
+    { "name": "Techrot Chitin", "quantity": 40, "usedIn": "Neuroptics", "whereFarmed": "Hollvania enemies and loot containers. Best: Exterminate at Rhu Manor or Mausoleum East, 14.29% for 10; also Central Mall bounties at 11.63-12%.", "harvestable": false },
+    { "name": "Neural Sensors", "quantity": 2, "usedIn": "Neuroptics", "whereFarmed": "Jupiter - Elara (Survival), Sinai (Dark Sector Defense), Themisto (Alad V assassination), Cameria (Dark Sector Survival); Kuva Fortress - Taveuni.", "harvestable": false },
+    { "name": "Argon Crystal", "quantity": 1, "usedIn": "Neuroptics", "whereFarmed": "Void - Teshub, Hepit, Ani, Stribog, Ukko, Oxomoco, Mot, Marduk. ~2 Argon Deposits per map, 1-2 crystals each.", "harvestable": true },
+    { "name": "Hollvanian Pitchweave Fragment", "quantity": 200, "usedIn": "Chassis", "whereFarmed": "Hollvania Central Mall bounties: Lvl 75-80 at 18.6% for 30, Lvl 65-70 at 12.2% for 20, Lvl 115-120 at 12% for 50. Also enemies and containers in Hollvania.", "harvestable": false },
+    { "name": "Experimental Arc-Relay", "quantity": 10, "usedIn": "Chassis 6, Systems 4", "whereFarmed": "Hollvania Exterminate at Rhu Manor or Mausoleum East, 14.29% for 10; Central Mall bounties Lvl 95-100 at 12.96% for 6, Lvl 115-120 at 12% for 10.", "harvestable": false },
+    { "name": "Techrot Motherboard", "quantity": 14, "usedIn": "Chassis 8, Systems 6", "whereFarmed": "Hollvania underground Techrot areas (enemies and containers). Best bounty: Lvl 115-120 at 10% for 8; Lvl 85-90 and 75-80 also carry it at lower rates.", "harvestable": false },
+    { "name": "Alloy Plate", "quantity": 1000, "usedIn": "Chassis", "whereFarmed": "Ceres - Gabii (Dark Sector Survival), Draco, Casta, Cinxia, Kiste; Venus - Tessera, Aphrodite, Kiliken; Sedna - Berehynia.", "harvestable": false },
+    { "name": "Circuits", "quantity": 500, "usedIn": "Systems", "whereFarmed": "Ceres - Seimeni (Dark Sector Defense), Gabii; Venus - Tessera, Romula, Malva. Titan Extractor on Venus or Ceres works passively.", "harvestable": false },
+    { "name": "Orokin Cell", "quantity": 1, "usedIn": "Main blueprint", "whereFarmed": "Ceres - Exta (Vor/Kril assassination), Lex, Gabii; Saturn - Titan, Piscinas; Deimos - Magnacidium (Lephantis).", "harvestable": false }
+  ],
+  "buildTimes": {
+    "neuroptics": { "hours": 12, "credits": 15000, "rushPlatinum": 50 },
+    "chassis": { "hours": 12, "credits": 15000, "rushPlatinum": 50 },
+    "systems": { "hours": 12, "credits": 15000, "rushPlatinum": 50 },
+    "final": { "hours": 72, "credits": 25000, "rushPlatinum": 50 },
+    "totalCredits": 70000,
+    "totalHoursSequential": 84,
+    "note": "The three components build in parallel, so realistic wall clock is 12h then 72h = 84h."
+  },
+  "effort": 5,
+  "effortRevisedFrom": 6,
+  "effortWhy": "Once the quest chain is done, the route players actually take is ~3 days of daily-capped Hex standing to buy all three parts from Amir; the bounty rolls are optional and widely advised against.",
+  "gotchas": [
+    "The main blueprint is a quest reward, so anyone who can reach Hollvania already has it; only the three components need farming.",
+    "Each component drops from a different bounty level tier, so grabbing whatever bounty is on the board wastes runs.",
+    "Cyte-09 blueprints do not drop from the H-09 Apex boss encounter; only Central Mall bounties and Amir sell them.",
+    "The Hex quest locks you out of all other Warframe content for roughly 90 minutes once started.",
+    "Amir sells the parts at 20,000 standing each from Rank 2, which is usually faster and always deterministic compared with the bounty rolls.",
+    "Resource and Drop Chance Boosters do not apply to bounty rewards or end-of-mission rewards, only to in-mission pickups.",
+    "Argon Crystals halve every day at 00:00 GMT once they enter the decaying state, so farm the single crystal last.",
+    "Techrot Motherboard is the tightest component resource at 14 total and its best rate is on the Lvl 115-120 bounty, well above the tiers that drop the parts."
+  ],
+  "sources": [
+    "https://wiki.warframe.com/w/Cyte-09",
+    "https://wiki.warframe.com/w/The_Hex_(Quest)",
+    "https://wiki.warframe.com/w/The_Hex_(Syndicate)",
+    "https://wiki.warframe.com/w/H%C3%B6llvania_Central_Mall",
+    "https://wiki.warframe.com/w/H%C3%B6llvania_Central_Mall/Rewards",
+    "https://wiki.warframe.com/w/H%C3%B6llvania",
+    "https://wiki.warframe.com/w/Efervon_Sample",
+    "https://wiki.warframe.com/w/Techrot_Chitin",
+    "https://wiki.warframe.com/w/H%C3%B6llvanian_Pitchweave_Fragment",
+    "https://wiki.warframe.com/w/Experimental_Arc-Relay",
+    "https://wiki.warframe.com/w/Techrot_Motherboard",
+    "https://wiki.warframe.com/w/Neural_Sensors",
+    "https://wiki.warframe.com/w/Argon_Crystal",
+    "https://wiki.warframe.com/w/Alloy_Plate",
+    "https://wiki.warframe.com/w/Circuits",
+    "https://wiki.warframe.com/w/Orokin_Cell",
+    "https://wiki.warframe.com/w/Standing",
+    "https://wiki.warframe.com/w/Whispers_in_the_Walls",
+    "https://wiki.warframe.com/w/The_Lotus_Eaters",
+    "https://wiki.warframe.com/w/The_Duviri_Paradox"
+  ],
+  "discarded": [
+    "forums.warframe.com thread bodies (topics 1429095, 1430679, 1432409, 1426680) returned HTTP 403 to the fetcher, so no forum claim was used for any value here. Only the wiki was used for facts.",
+    "A search snippet suggesting a player averaged ~5 minutes per Hollvania bounty run was not used as a data value because the underlying post could not be opened and verified.",
+    "Community claim that the Cyte-09 main blueprint drops at ~3.7%. Wrong: the wiki gives it as a guaranteed one-time award from The Hex quest, with Amir selling a replacement copy for 50,000 standing at Rank 4.",
+    "Community warning that players misname the parts vendor as Quincy was checked against the wiki. The vendor is Amir Beckett, which is what this file already records; no correction was needed."
+  ],
+  "unknowns": [
+    { "field": "routes[].stage", "reason": "The wiki reward page lists the bounty drop tables without stage or rotation headings, so which stage of the bounty rolls the part could not be confirmed." },
+    { "field": "bounty tier list", "reason": "A complete list of Hollvania Central Mall bounty level tiers was not extractable; confirmed tiers seen in wiki drop tables are 65-70, 75-80, 85-90, 95-100 and 115-120." }
+  ],
+  "community": {
+    "source": "r/Warframe threads on Hollvania bounty drop rates, Systems blueprint availability, the Prex card location and early acquisition",
+    "painLevel": "moderate",
+    "recommendedMode": "Normal difficulty, group or solo as you like; nobody calls the content hard, only low-yield. Run bounties for standing, not for part rolls.",
+    "preferredRoute": "Buy all three components from Amir Beckett at 20,000 standing each (Rank 2). Treated as the pity system and preferred for being deterministic; part drops from bounties are a bonus, not a plan.",
+    "timeEstimate": {
+      "standingRoute": "~3 days of the daily Hex standing cap for all three parts",
+      "note": "No verified per-run bounty time was reported."
+    },
+    "traps": [
+      "Bounty mission types rotate and each type carries a fixed reward, so the bounty that drops Systems may not be on the board at all; you can be able to buy a part long before you can farm it.",
+      "Grinding bounties past the daily standing cap: the part rolls are low and the standing, which is the real currency here, has stopped accruing.",
+      "The Stage Defense mission that also rewards Cyte-09 is locked behind a higher Hex rank, unlocked when you meet Flare.",
+      "No player can sell you the blueprints: Cyte-09 is not tradeable and has no Prime, so it is platinum or the quests.",
+      "Prex card is near the plant across from the blue door to the backrooms; if the pickup prompt does not appear, leave and re-enter the hub."
+    ],
+    "tips": [
+      "The vendor is Amir; players routinely say Quincy by mistake.",
+      "Bring a loot-radar frame or use the Parallax ship's air support to locate Hollvania collectibles.",
+      "Frame sentiment is strongly positive, so the grind is generally judged worth finishing rather than abandoning."
+    ]
+  },
+  "conflicts": [
+    {
+      "field": "routes[].dropRate and drop sources",
+      "wiki": "Components drop only from Hollvania Central Mall bounties at 11.63-13.33%, each from its own level tier, or from Amir.",
+      "community": "Blueprints also come from Hex-area Survival (~1% Rot A, ~2% Rot B, ~5% Rot C) and Capture (well under 2%) rotations.",
+      "show": "wiki",
+      "note": "Community numbers are unsourced and likely pre-change; the community itself also names a rank-locked Stage Defense reward source the wiki reward page does not list."
+    },
+    {
+      "field": "routes[].notes bounty roll model",
+      "wiki": "Treat each bounty completion at the right level tier as a per-completion roll for that part.",
+      "community": "Reward is fixed per mission type and mission types rotate, so a part can be unavailable to farm for a while.",
+      "show": "wiki",
+      "note": "Show the wiki model; surface the rotation as a trap so an empty board is not read as bad luck."
+    }
+  ]
+}

@@ -1,6 +1,10 @@
 import missionData from "../../data/suggest/missionTypes.json";
 import { TIERS } from "./acquisition/tiers.js";
-import { ACQUISITION_INCLUDES } from "./acquisition/kinds.js";
+import {
+  ACQUISITION_INCLUDES,
+  ACQUISITION_NONE,
+  type AcquisitionInclude,
+} from "./acquisition/kinds.js";
 import { ACQUISITION_SORTS, DEFAULT_ACQUISITION_SORT } from "./acquisition/sort.js";
 import { normalizeType } from "./missionTypes.js";
 import { legacyWorth } from "./rewards.js";
@@ -124,6 +128,17 @@ const LEGACY_FORMA_KEY = "mastery:forma";
 const LEGACY_MODE_KEY = "mastery:mode";
 /** The boolean the Forma entry in `masteryKinds` replaced. */
 const LEGACY_FORMA_OPTION = "masteryForma";
+/** Every kind the acquisition row offered before it grouped them. */
+const LEGACY_ACQUISITION_INCLUDES: readonly AcquisitionInclude[] = [
+  "warframe",
+  "primary",
+  "secondary",
+  "melee",
+  "archwing",
+  "archgun",
+  "archmelee",
+  "companion",
+];
 const legacyGoalKey = (goal: RelicGoal): string => `relics:goal:${goal}`;
 
 /** The whole settings vocabulary for mission types, curated and unrated alike. */
@@ -329,13 +344,28 @@ export function parseOptions(raw: string | null): Partial<SuggestionOptions> {
   if (direction === "asc" || direction === "desc") options.acquisitionSortDir = direction;
   const kinds = parsed["acquisitionKinds"];
   if (Array.isArray(kinds)) {
-    options.acquisitionKinds = ACQUISITION_INCLUDES.filter((kind) => kinds.includes(kind));
+    if (kinds.includes(ACQUISITION_NONE)) options.acquisitionKinds = [ACQUISITION_NONE];
+    else {
+      const picked = ACQUISITION_INCLUDES.filter((kind) => kinds.includes(kind));
+      options.acquisitionKinds = readsAsAll(picked) ? [] : picked;
+    }
   }
   return options;
 }
 
 function withoutForma(): MasteryKind[] {
   return MASTERY_KINDS.filter((kind) => kind !== "forma");
+}
+
+/** A list naming every kind the row offered when it was written was never
+ *  narrowed, so it is stored as the empty list that reads as "all" rather than
+ *  as a selection that would hide every kind added since. */
+function readsAsAll(picked: readonly AcquisitionInclude[]): boolean {
+  if (picked.length === ACQUISITION_INCLUDES.length) return true;
+  return (
+    picked.length === LEGACY_ACQUISITION_INCLUDES.length &&
+    LEGACY_ACQUISITION_INCLUDES.every((kind) => picked.includes(kind))
+  );
 }
 
 /** Lifts the settings that used to live as synthetic activity ids onto the typed

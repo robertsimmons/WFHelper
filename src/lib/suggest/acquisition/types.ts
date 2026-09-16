@@ -1,8 +1,16 @@
 import type { ItemDbEntry, MasteryData, RawInventoryData } from "../../../types/inventory.js";
 import type { RelicDatabase } from "../../../types/relics.js";
+import type { MessageKey } from "../../i18n.js";
 import type { NemesisProgenitor } from "./progenitors.js";
 
-export type AcquisitionKind = "warframe" | "archwing" | "weapon";
+export type AcquisitionKind =
+  | "warframe"
+  | "archwing"
+  | "weapon"
+  | "sentinel"
+  | "beast"
+  | "necramech"
+  | "modular";
 
 /** Companion is the sentinel's gun, not the pet that carries it. */
 export type WeaponClass = "primary" | "secondary" | "melee" | "archgun" | "archmelee" | "companion";
@@ -10,6 +18,30 @@ export type WeaponClass = "primary" | "secondary" | "melee" | "archgun" | "archm
 /** Owning it, feeding it to the Helminth, adapting it and priming it are four
  *  separate wins, and each one is its own reason to farm. */
 export type NeedReason = "mastery" | "subsume" | "incarnon" | "prime";
+
+/** Gear built from a head part plus looks. Kitguns and zaws are assembled the
+ *  same way but reach the sweep as ordinary weapons. */
+export type ModularGear = "moa" | "hound" | "amp" | "kdrive";
+
+export interface ModularHead {
+  uniqueName: string;
+  name: string;
+  displayName?: string | undefined;
+  imageUrl: string | null;
+  /** Banked mastery survives selling the build, and rebuilding earns nothing. */
+  owned: boolean;
+}
+
+export interface ModularPlan {
+  gear: ModularGear;
+  /** Plural the progress line counts in: Models, Prisms, Boards. */
+  headLabelKey: MessageKey;
+  /** Every head part of the type, the banked ones included. */
+  heads: ModularHead[];
+  owned: number;
+  /** Rank 30 then a gilding bank the mastery; a K-Drive skips the gilding. */
+  requiresGilding: boolean;
+}
 
 export type NemesisFamily = "kuva" | "tenet" | "coda";
 
@@ -147,8 +179,10 @@ export interface AcquisitionTarget {
   displayName?: string | undefined;
   imageUrl: string | null;
   kind: AcquisitionKind;
-  /** Null for a Warframe or an Archwing suit. */
+  /** Null for anything that is not a weapon. */
   weaponClass: WeaponClass | null;
+  /** Set only for modular gear, where one target stands for the whole type. */
+  modular: ModularPlan | null;
   isPrime: boolean;
   /** Set only for a weapon a nemesis carries; the path is then a nemesis run. */
   nemesis: NemesisPlan | null;

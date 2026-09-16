@@ -1,0 +1,581 @@
+{
+  "name": "MOA",
+  "kind": "companion",
+  "effort": 6,
+  "tradeable": false,
+  "progress": {
+    "have": 1,
+    "need": 4,
+    "unit": "Models"
+  },
+  "badges": [
+    {
+      "text": "Doer gate",
+      "tone": "warn"
+    }
+  ],
+  "prices": [
+    {
+      "label": "four sets, foundry",
+      "amount": "816,000 cr",
+      "money": false
+    },
+    {
+      "label": "rush a part",
+      "amount": "25 p",
+      "money": false
+    }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "FORTUNA, VENUS",
+      "sub": null,
+      "activity": "Vox Solaris, from Eudico",
+      "meta": "one-time",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "orb-vallis",
+      "rows": [
+        {
+          "qty": null,
+          "label": "Venus Junction",
+          "note": null,
+          "alt": null,
+          "done": true
+        },
+        {
+          "qty": null,
+          "label": "The Teacher",
+          "note": null,
+          "alt": null,
+          "done": true
+        },
+        {
+          "qty": null,
+          "label": "Vox Solaris quest",
+          "note": "opens Legs' full shop",
+          "alt": null,
+          "done": true
+        }
+      ],
+      "conditions": ["No mastery rank is required anywhere on this plan"],
+      "bonuses": [
+        "Also opens The Business for fishing, Smokefinger for mining and Ticker for debt-bonds"
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "currency",
+      "place": "ORB VALLIS, VENUS",
+      "sub": null,
+      "activity": "Conservation, rare Kubrodons",
+      "meta": "~8,000 per 5 min",
+      "mode": "solo, normal",
+      "live": {
+        "state": "open",
+        "text": "Warm now, 12m left"
+      },
+      "skip": null,
+      "earns": {
+        "currency": "Solaris United standing",
+        "amount": "103,500"
+      },
+      "spends": [],
+      "map": "orb-vallis",
+      "rows": [
+        {
+          "qty": "103,500",
+          "label": "Solaris United standing",
+          "note": "71,000 of it burns on rank-ups",
+          "alt": "or sell raw gems to Smokefinger",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Daily standing cap is 16,000 plus 500 per mastery rank, so this is about five capped days at MR10",
+        "Rank-ups consume standing on top of the ceiling, so Doer costs 71,000 earned, not 44,000"
+      ],
+      "bonuses": [
+        "Loki with Rest & Rage subsumed makes the capture loop about 8,000 standing every five minutes"
+      ],
+      "disclosures": [
+        {
+          "title": "why conservation and not bounties",
+          "body": "Conservation is the fastest standing per minute on the Vallis and it is solo-friendly, which the rest of this plan wants anyway. Mining pays too but runs slower and competes with the ore you already need for the parts. Bounties are worth running only for the debt-bonds in the next group."
+        }
+      ]
+    },
+    {
+      "type": "bounty",
+      "place": "ORB VALLIS, VENUS",
+      "sub": null,
+      "activity": "Bounty 1, level 5-15, from Eudico",
+      "meta": "2 bonds a drop",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "orb-vallis",
+      "rows": [
+        {
+          "qty": "46",
+          "label": "Training Debt-Bond",
+          "note": "46% at stage 5",
+          "alt": "or Ticker's cases, 5,000-350,000 cr each",
+          "done": false
+        },
+        {
+          "qty": "6",
+          "label": "Shelter Debt-Bond",
+          "note": null,
+          "alt": "or Ticker",
+          "done": false
+        },
+        {
+          "qty": "4",
+          "label": "Medical Debt-Bond",
+          "note": null,
+          "alt": "or Ticker",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Debt-bonds are untradable, so bank them from the first bounty run rather than at the end",
+        "Ticker's stock refreshes on an 8-hour timer, not daily"
+      ],
+      "bonuses": [
+        "Bounty stages also drop Thermal Sludge, Tepa Nodules and Mytocardia Spores this plan needs later"
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "FORTUNA, VENUS",
+      "sub": null,
+      "activity": "Solaris United rank-ups to Doer",
+      "meta": "85,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [
+        {
+          "currency": "Solaris United standing",
+          "amount": "71,000"
+        }
+      ],
+      "map": "orb-vallis",
+      "rows": [
+        {
+          "qty": null,
+          "label": "Outworlder",
+          "note": "5,000 standing, 2 Training",
+          "alt": null,
+          "done": true
+        },
+        {
+          "qty": null,
+          "label": "Rapscallion",
+          "note": "22,000 standing, 2 Training + 3 Shelter",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Doer",
+          "note": "44,000 standing, 2 Training + 3 Shelter + 4 Medical",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Doer is both the gild rank and the Nychus blueprint rank, so the grind is unavoidable for mastery",
+        "An ungilded MOA needs no rank at all; Legs sells the cheapest part of every category at Neutral"
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "LEGS, FORTUNA",
+      "sub": null,
+      "activity": "buy the sixteen blueprints",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [
+        {
+          "currency": "Solaris United standing",
+          "amount": "12,500"
+        }
+      ],
+      "map": "orb-vallis",
+      "rows": [
+        {
+          "qty": null,
+          "label": "Para Model",
+          "note": "Whiplash Mine, Anti-Grav Grenade",
+          "alt": null,
+          "done": true
+        },
+        {
+          "qty": null,
+          "label": "Lambeo Model",
+          "note": "Stasis Field, Shockwave Actuators",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Oloro Model",
+          "note": "Security Override, Tractor Beam",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Nychus Model",
+          "note": "Blast Shield, Hard Engage",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "4",
+          "label": "Drex Core",
+          "note": "500 standing each",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "4",
+          "label": "Trux Gyro",
+          "note": "500 standing each",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "4",
+          "label": "Tian Bracket",
+          "note": "500 standing each, +1 Vazarin",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Only the Model earns mastery; Core, Gyro and Bracket are stats and looks",
+        "Each Model has to reach rank 30, be gilded, then reach rank 30 again before its 6,000 lands",
+        "A second MOA on a Model you already gilded is worth zero, whatever the other three parts are",
+        "Nychus sits behind Doer; Para, Lambeo and Oloro sell at Neutral, Outworlder and Rapscallion"
+      ],
+      "bonuses": [
+        "Legs' Today's Special sells one assembled gilded MOA for platinum, worth a look only on a day it rolls a Model you do not own"
+      ],
+      "disclosures": [
+        {
+          "title": "which Core, Gyro and Bracket to pair",
+          "body": "Core and Gyro only matter for clearing 343 base shields so Reinforced Bond stays live. Drex's +15% shields against the 350 base clears it even with Trux's -5%, and Nychus' Blast Shield pushes past it anyway. Tian is the bracket pick at the same 500 standing because its extra Vazarin saves a Forma; every bracket already carries four Penjaga. Run the same cheap three on all four builds, since nothing above the 500-standing tier changes the mastery."
+        }
+      ]
+    },
+    {
+      "type": "farm",
+      "place": "ORB VALLIS, VENUS",
+      "sub": null,
+      "activity": "Mining, spores and nodules",
+      "meta": "~3 sweeps",
+      "mode": "solo, normal",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "orb-vallis",
+      "rows": [
+        {
+          "qty": "290",
+          "label": "Travocyte Alloy",
+          "note": "Travoride ore, cut by Smokefinger",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "150",
+          "label": "Smooth Phasmin",
+          "note": "Phasmin, common blue veins",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "130",
+          "label": "Axidrol Alloy",
+          "note": "Axidite ore, common red veins",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "100",
+          "label": "Thermal Sludge",
+          "note": "Corpus encampment containers",
+          "alt": "or 15 a drop from a level 10-30 bounty stage",
+          "done": false
+        },
+        {
+          "qty": "60",
+          "label": "Tepa Nodule",
+          "note": "cave nodule clusters, 3-4 a harvest",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "50",
+          "label": "Venerdo Alloy",
+          "note": "Venerol ore, uncommon",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "40",
+          "label": "Gorgaricus Spore",
+          "note": "purple sacs under the mushroom caps",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "30",
+          "label": "Heart Noctrul",
+          "note": "Noctrul, common gem",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "20",
+          "label": "Mytocardia Spore",
+          "note": "sacs, 1-3 each",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "20",
+          "label": "Goblite Tears",
+          "note": "Goblite, uncommon gem",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Gorgaricus sacs often fail to drop in a squad, so run this one solo"],
+      "bonuses": [
+        "Raw gems handed to Smokefinger pay back into the standing this plan is already spending"
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "ORB VALLIS, VENUS",
+      "sub": null,
+      "activity": "Fishing, cut by The Business",
+      "meta": "~2 passes",
+      "mode": null,
+      "live": {
+        "state": "open",
+        "text": "Warm now, 12m left"
+      },
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "orb-vallis",
+      "rows": [
+        {
+          "qty": "100",
+          "label": "Echowinder Anoscopic Sensor",
+          "note": "Echowinder, lakes, warm",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "40",
+          "label": "Brickie Muon Battery",
+          "note": "Brickie, ponds and rivers, warm",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Both servofish are warm-cycle only, so check the Vallis weather before you spear"
+      ],
+      "bonuses": ["Spare servofish sell to The Business for more Solaris United standing"],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "ZEUGMA, PHOBOS",
+      "sub": null,
+      "activity": "Survival, Dark Sector",
+      "meta": "~20 min",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "4,000",
+          "label": "Plastids",
+          "note": "1,000 per Trux gyro",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "8",
+          "label": "Morphics",
+          "note": "2 per Model",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [
+        "Phobos carries both, so this replaces separate Saturn and Mercury trips, and the Dark Sector bonus applies to each"
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "queue all sixteen parts at once",
+      "meta": "24h in parallel, 800,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "4",
+          "label": "Models",
+          "note": "Para, Lambeo, Oloro, Nychus",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "4",
+          "label": "Drex Core",
+          "note": null,
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "4",
+          "label": "Trux Gyro",
+          "note": null,
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "4",
+          "label": "Tian Bracket",
+          "note": null,
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Every part is the same 24 h and 50,000 credits, so one queue is a single day and four queues is four days"
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "LEGS, FORTUNA",
+      "sub": null,
+      "activity": "Configure a MOA Companion",
+      "meta": "4,000 cr each, instant",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "orb-vallis",
+      "rows": [
+        {
+          "qty": "4",
+          "label": "assembled MOA",
+          "note": "one per Model",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Each assembly needs a free companion slot",
+        "An assembled MOA can never be dismantled or traded; a wrong combination only clears by donating it back to Legs"
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "LEGS, FORTUNA",
+      "sub": null,
+      "activity": "gild at rank 30",
+      "meta": "10 bonds each",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [
+        {
+          "currency": "Solaris United standing",
+          "amount": "20,000"
+        }
+      ],
+      "map": "orb-vallis",
+      "rows": [
+        {
+          "qty": null,
+          "label": "Para, gilded",
+          "note": null,
+          "alt": null,
+          "done": true
+        },
+        {
+          "qty": null,
+          "label": "Lambeo, gilded",
+          "note": null,
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Oloro, gilded",
+          "note": null,
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Nychus, gilded",
+          "note": null,
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Gilding is what banks the mastery, and it resets the MOA to rank 0, so every Model is two trips to rank 30",
+        "An ungilded MOA banks nothing and cannot be polarized, renamed or given a Focus Lens"
+      ],
+      "bonuses": [
+        "Once milked, a gilded rank-30 MOA donates back to Legs for 2,400 standing, or 3,600 with an Orokin Reactor"
+      ],
+      "disclosures": []
+    }
+  ]
+}

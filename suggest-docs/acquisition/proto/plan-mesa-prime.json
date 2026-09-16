@@ -1,0 +1,509 @@
+{
+  "name": "Mesa Prime",
+  "kind": "warframe-prime",
+  "effort": 7,
+  "tradeable": true,
+  "progress": {
+    "have": 1,
+    "need": 4,
+    "unit": "parts"
+  },
+  "badges": [
+    {
+      "text": "vaulted",
+      "tone": "warn"
+    }
+  ],
+  "prices": [
+    {
+      "label": "set, player trade",
+      "amount": "~450 p",
+      "money": false
+    },
+    {
+      "label": "Regal Aya bundle",
+      "amount": "$79.99",
+      "money": true
+    }
+  ],
+  "groups": [
+    {
+      "type": "currency",
+      "place": "CETUS, EARTH",
+      "sub": null,
+      "activity": "Tier 5 bounty, Konzu",
+      "meta": "~55 min at ~20/hr",
+      "mode": "solo, normal",
+      "live": null,
+      "skip": null,
+      "earns": {
+        "currency": "Aya",
+        "amount": "18"
+      },
+      "spends": [],
+      "map": "plains-of-eidolon",
+      "rows": [
+        {
+          "qty": "18",
+          "label": "Aya",
+          "note": "1 Aya per relic",
+          "alt": "or buy Aya from players at 5-8 p each",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Check the live Varzia rotation first: if Mesa is currently unvaulted her relics drop from missions normally and this farm is unnecessary",
+        "Take a bounty from Konzu then fail stage 1 on purpose. Every plains camp stays locked at 40-60, so you re-take bounties from the Grineer tents instead of flying back to Cetus",
+        "Steel Path adds nothing to Aya rates"
+      ],
+      "bonuses": [
+        "Volt or Nova, not optional: Speed buffs the escort drone, Nova's portal teleports it. Keep the portal exit near ground level and stay close or the drone refuses it",
+        "Search and Rescue and Find the Hidden Artifact have the fewest stages that make you stand and wait, 3-5 minutes each",
+        "Overfarmed Aya trades at 5-8 p, commonly 6 for 36 p, so a long session is a platinum farm too"
+      ],
+      "disclosures": [
+        {
+          "title": "Cambion Drift instead",
+          "body": "Lower Aya per bounty but arguably better total return: shorter tilesets, works with almost any frame, and Mother Tokens are uncapped where Cetus standing is not. Tokens buy relic packs, which loop back into relics and Aya, and Endo, Ayatan stars and Kuva accumulate alongside. Bring Nova; Loid still gets stuck on Isolation Vault stages. Orb Vallis gets mentioned but has no rate evidence behind it."
+        },
+        {
+          "title": "traps that eat the tier 5 rate",
+          "body": "Flying back to Cetus between bounties. Skipping the fail-stage-1 trick and getting slow low-level bounties. Bringing a frame with no drone support. Cave Exterminate stages and rock-snagged drones. Aya-per-hour numbers from older guides predate the removal of the bounty-rerolling exploit; ~20 an hour is the post-nerf figure."
+        }
+      ]
+    },
+    {
+      "type": "vendor",
+      "place": "MAROO'S BAZAAR, MARS",
+      "sub": null,
+      "activity": "Varzia, 1 Aya per relic",
+      "meta": null,
+      "mode": null,
+      "live": {
+        "state": "waiting",
+        "text": "Mesa rotation, 19d left"
+      },
+      "skip": null,
+      "earns": null,
+      "spends": [
+        {
+          "currency": "Aya",
+          "amount": "18"
+        }
+      ],
+      "map": "maroos-bazaar",
+      "rows": [
+        {
+          "qty": "6",
+          "label": "Vanguard P1",
+          "note": "Blueprint, Common 25.33% intact",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "6",
+          "label": "Axi M1",
+          "note": "Chassis, Common 25.33% intact",
+          "alt": null,
+          "done": true
+        },
+        {
+          "qty": "6",
+          "label": "Lith M3",
+          "note": "Neuroptics, Rare 2% intact",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "6",
+          "label": "Lith D5",
+          "note": "Systems, Uncommon 11% intact",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Varzia carries Mesa relics only while a Mesa rotation is live; stock rotates every 28 days at 18:00 UTC",
+        "No mission drops these relics. Farming fissures hoping for Mesa relics is wasted time"
+      ],
+      "bonuses": [
+        "Varzia is also on the Orbiter Market console, which saves the trip to Mars every rotation"
+      ],
+      "disclosures": [
+        {
+          "title": "the relics not picked",
+          "body": "Blueprint also sits at Uncommon 11% in Lith C6, Lith D1, Lith N9, Lith P7, Meso P3, Meso R2, Neo Z2 and Neo Z3; Vanguard P1 is the only Common one. Chassis is Common in all ten of its relics, so Axi H4, Lith R1, Lith S10, Meso C4, Meso L2, Neo A3, Neo C1, Neo R4 and Vanguard E1 are interchangeable with Axi M1. Neuroptics is Rare 2% in every relic that holds it: Lith M4, Lith M5, Axi M3, Axi M4 and Vanguard M1 are the same odds as Lith M3. Systems is Uncommon 11% in Neo H3 and Vanguard C1 as well, and Rare 2% in Lith M6, Neo M2 and Neo M3, which are the ones to avoid."
+        }
+      ]
+    },
+    {
+      "type": "fissure",
+      "place": "ANY VOID FISSURE",
+      "sub": null,
+      "activity": "match the relic era; Vanguard runs at Axi tier",
+      "meta": "~24 cracks",
+      "mode": "public squad",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Mesa Prime Blueprint",
+          "note": "25.33% Intact",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Mesa Prime Chassis",
+          "note": "25.33% Intact",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Mesa Prime Neuroptics",
+          "note": "10% Radiant",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Mesa Prime Systems",
+          "note": "11% Intact",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Equip the relic before launch and collect 10 Reactant. Falling short does not consume the relic",
+        "Neuroptics is the Rare slot in every relic that holds it, so it is the part that stalls the set"
+      ],
+      "bonuses": [
+        "Radiant the Neuroptics relic: 100 traces turns 2% into 10%. Do the same for a rare-slot Systems relic if you are running one",
+        "Run Vanguard P1 and the Chassis relics Intact. Refining lowers Common odds, which is the wrong direction for both",
+        "A full squad gives four reward rolls to choose from",
+        "Spare Commons sell for 15 ducats each, and Intact is the refinement level that maximises them"
+      ],
+      "disclosures": [
+        {
+          "title": "refinement table",
+          "body": "Intact 0 traces: 25.33% each Common, 11% Uncommon, 2% Rare. Exceptional 25 traces: 23.33 / 13 / 4. Flawless 50 traces: 20 / 17 / 6. Radiant 100 traces: 16.67 / 20 / 10. A crack pays 6-30 traces when you collect 10 Reactant, plus 5 for every squadmate who picks your reward."
+        }
+      ]
+    },
+    {
+      "type": "farm",
+      "place": "APOLLODORUS, MERCURY",
+      "sub": null,
+      "activity": "Survival",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "apollodorus",
+      "rows": [
+        {
+          "qty": "1,250",
+          "label": "Ferrite",
+          "note": "Neuroptics",
+          "alt": null,
+          "done": true
+        },
+        {
+          "qty": "450",
+          "label": "Polymer Bundle",
+          "note": "Chassis",
+          "alt": "or Assur / Ophelia, Uranus",
+          "done": false
+        },
+        {
+          "qty": "5",
+          "label": "Morphics",
+          "note": "Systems",
+          "alt": "or Wahiba, Mars",
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "PISCINAS, SATURN",
+      "sub": null,
+      "activity": "Survival, Dark Sector",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "piscinas",
+      "rows": [
+        {
+          "qty": "575",
+          "label": "Nano Spores",
+          "note": "Chassis",
+          "alt": "or Akkad, Eris",
+          "done": false
+        },
+        {
+          "qty": "5",
+          "label": "Orokin Cell",
+          "note": "Blueprint",
+          "alt": "or Terrorem, Deimos",
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "CAMERIA, JUPITER",
+      "sub": null,
+      "activity": "Survival",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "cameria",
+      "rows": [
+        {
+          "qty": "625",
+          "label": "Salvage",
+          "note": "Systems",
+          "alt": "or Wahiba, Mars",
+          "done": false
+        },
+        {
+          "qty": "2",
+          "label": "Neural Sensors",
+          "note": "Neuroptics",
+          "alt": "or Alad V, Themisto",
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "DRACO, CERES",
+      "sub": null,
+      "activity": "Interception",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "draco",
+      "rows": [
+        {
+          "qty": "275",
+          "label": "Circuits",
+          "note": "Systems",
+          "alt": "or Malva, Venus",
+          "done": true
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "ZEUGMA, PHOBOS",
+      "sub": null,
+      "activity": "Survival, Dark Sector",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "zeugma",
+      "rows": [
+        {
+          "qty": "350",
+          "label": "Rubedo",
+          "note": "Neuroptics",
+          "alt": null,
+          "done": true
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "ASSUR, URANUS",
+      "sub": null,
+      "activity": "Survival",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "assur",
+      "rows": [
+        {
+          "qty": "3",
+          "label": "Gallium",
+          "note": "Chassis",
+          "alt": "or Lieutenant Lech Kril, War, Mars",
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "NIGHTWAVE",
+      "sub": null,
+      "activity": "evergreen offerings",
+      "meta": "15 cred",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "2",
+          "label": "Nitain Extract",
+          "note": "Chassis",
+          "alt": "5 for 15 Nightwave Cred",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "There is no farmable Nitain node worth running; caches sit at 0.67-2% and Ghoul bounties at 3.57-4.72%"
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "VOID",
+      "sub": null,
+      "activity": "Survival or Defense",
+      "meta": "last, right before the build",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "void",
+      "rows": [
+        {
+          "qty": "3",
+          "label": "Control Module",
+          "note": "Systems",
+          "alt": "or Hyena Pack, Psamathe",
+          "done": false
+        },
+        {
+          "qty": "2",
+          "label": "Argon Crystal",
+          "note": "Neuroptics",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Argon Crystal decays after acquisition, so this trip comes last, with the Neuroptics ready to build"
+      ],
+      "bonuses": [
+        "The same missions drop Rubedo and Ferrite if you came up short"
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "start all three now",
+      "meta": "12h each, 45,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Mesa Prime Neuroptics",
+          "note": null,
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Mesa Prime Chassis",
+          "note": null,
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Mesa Prime Systems",
+          "note": null,
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [
+        "25 p rushes any one of them, but all three run in parallel anyway"
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "then",
+      "meta": "72h, 25,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Mesa Prime",
+          "note": null,
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "84h of build timers end to end, so the last part dropping is not the last thing standing between you and the frame",
+        "Needs a free Warframe slot before the Foundry will let you claim it"
+      ],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

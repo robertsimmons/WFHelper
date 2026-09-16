@@ -1,0 +1,467 @@
+{
+  "name": "Kullervo",
+  "kind": "warframe",
+  "effort": 7,
+  "tradeable": false,
+  "progress": {
+    "have": 0,
+    "need": 4,
+    "unit": "parts"
+  },
+  "badges": [
+    {
+      "text": "Duviri",
+      "tone": "info"
+    },
+    {
+      "text": "mood-gated",
+      "tone": "warn"
+    }
+  ],
+  "prices": [
+    {
+      "label": "build",
+      "amount": "75,000 cr",
+      "money": false
+    },
+    {
+      "label": "built",
+      "amount": "325 p",
+      "money": false
+    }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "SATURN",
+      "sub": null,
+      "activity": "Uranus Junction, then the quest",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Uranus Junction",
+          "note": "gates Duviri since 36.0.8",
+          "alt": null,
+          "done": true
+        },
+        {
+          "qty": null,
+          "label": "The Duviri Paradox",
+          "note": "solo only",
+          "alt": null,
+          "done": true
+        }
+      ],
+      "conditions": [
+        "The Duviri Paradox is solo-only, so nobody can carry you through it"
+      ],
+      "bonuses": [
+        "Completing it unlocks Duviri, the Dormizone and Acrithis"
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "boss",
+      "place": "DUVIRI",
+      "sub": "Kullervo's Hold",
+      "activity": "The Duviri Experience, Kullervo then the Orowyrm",
+      "meta": "8-10 runs, 13-17 min each",
+      "mode": "solo, normal",
+      "live": {
+        "state": "open",
+        "text": "Anger now, 47m left"
+      },
+      "skip": null,
+      "earns": {
+        "currency": "Kullervo's Bane",
+        "amount": "42"
+      },
+      "spends": [],
+      "map": "kullervos-hold",
+      "rows": [
+        {
+          "qty": "42",
+          "label": "Kullervo's Bane",
+          "note": "4-6 a run",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "200",
+          "label": "Ueymag",
+          "note": "densest inside the Hold",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "10",
+          "label": "Pathos Clamp",
+          "note": "10 a kill, 15 on Steel Path",
+          "alt": "or 1 per Undercroft side portal",
+          "done": true
+        }
+      ],
+      "conditions": [
+        "Bane pays out only if the Kullervo boss and the Orowyrm both die in the same run; killing Kullervo and leaving gives nothing",
+        "Kullervo's Hold does not exist during Joy or Envy, so two of the five 2-hour mood windows are dead time",
+        "Steel Path pays 6-8 Bane a run instead of 4-6, but the longer run costs more than the extra Bane is worth",
+        "Run The Duviri Experience, not The Lone Story; the Hold is a side objective only in the Experience",
+        "If The Warden is not above the arena the fight is scheduled as a later main objective, so do not wait for him",
+        "Pathos Clamps are immune to Resource Boosters"
+      ],
+      "bonuses": [
+        "Ueymag for both the Chassis and the Systems comes off these same runs",
+        "Resources are kept once you earn a Decree, so an abandoned run still keeps the pickups",
+        "The Orowyrm that ends every Bane run drops all 10 Pathos Clamps in one kill"
+      ],
+      "disclosures": [
+        {
+          "title": "how to beat Kullervo",
+          "body": "Three sequential health bars, fought as the Drifter. Primaries do half damage and secondaries two thirds, but finishers do 1.1x, so melee and finishers are the way through. Phase 1 is Collective Curse and the Storm of Ukko knife rain, which a precise Sirocco shot interrupts; phase 2 spawns five blade-throwing copies; phase 3 spawns Persecutor Liminus, and killing them all turns them on Kullervo before his aerial laser barrages, best dodged from a Kaithe. Bring at least 5 Decrees before speaking to The Warden, and Transference Sync to a modded Warframe if it goes badly."
+        },
+        {
+          "title": "why public squads go wrong",
+          "body": "Squads farm decrees for 40+ minutes before touching an objective, refuse the Undercroft, and stall on Orowyrm mechanics; one reported run hit 50 minutes and collapsed. Solo, Alchemy and Void Flood take 2-3 minutes each, while the same Alchemy bar crawls with 3-4 players."
+        },
+        {
+          "title": "climbing the Orowyrm",
+          "body": "It has no traversal animation, so climbing looks broken: jump off and re-grapple repeatedly to move up the segments. The telegraphed energy ring on a ~30 second cycle knocks you off, so hop off and re-grapple through it. Wyrmlings do not need a Kaithe; step outside the ring of fire or wall-latch and shoot them."
+        }
+      ]
+    },
+    {
+      "type": "farm",
+      "place": "DUVIRI",
+      "sub": "Maw Feeding",
+      "activity": "fishing",
+      "meta": "one long session",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "maw-feeding",
+      "rows": [
+        {
+          "qty": "125",
+          "label": "Nacreous Pebble",
+          "note": null,
+          "alt": null,
+          "done": true
+        },
+        {
+          "qty": "360",
+          "label": "Ariette Scale",
+          "note": "the largest single requirement",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Any mood; one fishing spot can be reused indefinitely"
+      ],
+      "bonuses": [
+        "Take Bountiful Harvest first; it doubles Maw Feeding pickups"
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "DUVIRI",
+      "sub": "Lunaro Court",
+      "activity": "plant gathering",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "lunaro-court",
+      "rows": [
+        {
+          "qty": "100",
+          "label": "Connla Sprout",
+          "note": "densest here",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "100",
+          "label": "Kovnik",
+          "note": "near water",
+          "alt": "or Neighbor's Outlook, any mood",
+          "done": true
+        }
+      ],
+      "conditions": [
+        "Any mood; this is the one plant stop Joy and Envy do not block"
+      ],
+      "bonuses": [
+        "Bountiful Harvest doubles plant pickups"
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "DUVIRI",
+      "sub": "Archarbor",
+      "activity": "plant gathering",
+      "meta": null,
+      "mode": null,
+      "live": {
+        "state": "blocked",
+        "text": "Sorrow in 2h 47m, Amphitheater open now"
+      },
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "archarbor",
+      "rows": [
+        {
+          "qty": "100",
+          "label": "Eevani",
+          "note": "best density in Duviri",
+          "alt": "or The Amphitheater in Joy, Envy, Anger or Fear",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Archarbor only grows during Joy, Envy or Sorrow, two of which are the moods that shut Kullervo's Hold"
+      ],
+      "bonuses": [
+        "Fills the dead Joy and Envy windows the Bane farm cannot use"
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "DUVIRI",
+      "sub": null,
+      "activity": "Dax, Blinkpads and Aggristone formations",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "duviri-landscape",
+      "rows": [
+        {
+          "qty": "50",
+          "label": "Lamentus",
+          "note": "open-world Dax only",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "100",
+          "label": "Saggen Pearl",
+          "note": "Blinkpads, any mood",
+          "alt": null,
+          "done": true
+        },
+        {
+          "qty": "100",
+          "label": "Aggristone",
+          "note": "destroy the formations",
+          "alt": "or Spiral objective and Circuit rewards",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Lamentus does not drop from Dax inside the Undercroft"
+      ],
+      "bonuses": [
+        "Stall the prisoner-liberation objective short of the completion circle to keep Dax waves spawning"
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "DUVIRI",
+      "sub": "Caves",
+      "activity": "Tasoma gathering",
+      "meta": "2-4 a node",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "duviri-caves",
+      "rows": [
+        {
+          "qty": "50",
+          "label": "Tasoma Extract",
+          "note": "caves only",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Any mood, but it grows nowhere except inside caves"
+      ],
+      "bonuses": [
+        "Fly under the landscape on a Kaithe to spot cave mouths; Riding Intrinsics Rank 5 helps"
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "THE UNDERCROFT",
+      "sub": null,
+      "activity": "Runic Compact containers",
+      "meta": "7-11 a tile",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "undercroft",
+      "rows": [
+        {
+          "qty": "75",
+          "label": "Rune Marrow",
+          "note": null,
+          "alt": "or The Circuit",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Only spawns in the Undercroft or The Circuit, never during open-world Duviri gathering"
+      ],
+      "bonuses": [
+        "Guaranteed from Corrupted Vor and Corrupted Jackal down there"
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "DORMIZONE",
+      "sub": null,
+      "activity": "Acrithis",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [
+        {
+          "currency": "Kullervo's Bane",
+          "amount": "42"
+        }
+      ],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Kullervo Blueprint",
+          "note": "15 Bane",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Neuroptics Blueprint",
+          "note": "9 Bane",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Chassis Blueprint",
+          "note": "9 Bane",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Systems Blueprint",
+          "note": "9 Bane",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Bane is untradeable, so the shop is the only source for all four blueprints"
+      ],
+      "bonuses": [
+        "She also wanders Duviri in her carriage and stands at The King's Palace after a Mood Spiral completes",
+        "She sells 100,000 credits for 15 Bane"
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "start all three now",
+      "meta": "12h each, 45,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Neuroptics",
+          "note": null,
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Chassis",
+          "note": null,
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Systems",
+          "note": null,
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "then",
+      "meta": "72h, 30,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Kullervo",
+          "note": "eats the 10 Pathos Clamps",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Needs a free Warframe slot before the Foundry will let you claim it"
+      ],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

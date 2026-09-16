@@ -26,6 +26,9 @@ const ALLOWLIST = new Set([
   "priceQueueFullError",
   // Test seam bag, parallel to wfmClient's `__test__`.
   "__schedulerTest__",
+  // Schema guard for the authored plan JSON; the renderer trusts what it reads.
+  "authoredPlans",
+  "validatePlan",
 ]);
 
 // Where exports are *defined* (main production tree).

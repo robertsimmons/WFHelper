@@ -101,7 +101,7 @@ describe("effectiveWorth", () => {
     expect(effectiveWorth({ value: 0.8, effort: 0, urgency: 0, gain: 0 })).toBe(0);
   });
 
-  it("bands a suggestion by what it is actually worth to this player", () => {
+  it("bands a suggestion on worth alone, so a half gain cannot demote it", () => {
     expect(
       worthGroupOf({ signals: { value: worthOf("Umbra Forma"), effort: 0, urgency: 0 } }),
     ).toBe("must");
@@ -109,7 +109,7 @@ describe("effectiveWorth", () => {
       worthGroupOf({
         signals: { value: worthOf("Umbra Forma"), effort: 0, urgency: 0, gain: 0.5 },
       }),
-    ).toBe("useful");
+    ).toBe("must");
   });
 });
 

@@ -1,18 +1,31 @@
 import { buildSubsumedFamilySet, isFrameSubsumed, isSubsumableFrame } from "../../helminth.js";
-import { advances, masteryGain } from "../gain.js";
+import { createMasteryLookup } from "../masteryRoster.js";
 import { createCurated, curated, mergeCurated, type CuratedSource } from "./curated.js";
 import { createIncarnonLookup } from "./incarnon.js";
 import { ergoGlastSource, nemesisPlan } from "./nemesis.js";
-import { buildOwnership, buildPartPlans, listArchwings, listFrames, ownsItem } from "./parts.js";
+import {
+  buildOwnership,
+  buildPartPlans,
+  fittedModularParts,
+  listArchwings,
+  listBeasts,
+  listFrames,
+  listModularGear,
+  listNecramechs,
+  listSentinels,
+  ownsItem,
+  type GearEntry,
+} from "./parts.js";
 import { buildPaths } from "./paths.js";
 import { createRatings } from "./ratings.js";
 import { baseWeaponName, listWeapons } from "./weapons.js";
-import type { ItemDbEntry, MasteryData, MasteryStatus } from "../../../types/inventory.js";
+import type { ItemDbEntry } from "../../../types/inventory.js";
 import type {
   AcquisitionContext,
   AcquisitionKind,
   AcquisitionTarget,
   IncarnonInfo,
+  ModularPlan,
   NeedReason,
   NemesisPlan,
   PartPlan,
@@ -33,27 +46,6 @@ const EMPTY_PLAN: PartPlan = {
 
 function isPrimeEntry(name: string, entry: ItemDbEntry): boolean {
   return entry.isPrime === true || /\sprime$/i.test(name);
-}
-
-/** Whether the roster has this item finished. Selling or dissolving the gear
- *  never gives the XP back, so mastery answers "does the player still need one
- *  of these" where the inventory row alone cannot. A part-ranked or unlisted
- *  item is not finished: an unread roster is never "already done". */
-function createMasteryLookup(
-  mastery: MasteryData | null | undefined,
-): (uniqueName: string, name: string) => boolean {
-  const byKey = new Map<string, MasteryStatus>();
-  const remember = (key: string, status: MasteryStatus): void => {
-    // One name can carry several rows; the finished one is the honest read.
-    if (byKey.get(key) !== "mastered") byKey.set(key, status);
-  };
-  for (const item of mastery?.items ?? []) {
-    if (!item.status) continue;
-    if (item.uniqueName) remember(item.uniqueName, item.status);
-    if (item.name) remember(item.name.toLowerCase(), item.status);
-  }
-  return (uniqueName, name) =>
-    !advances(masteryGain(byKey.get(uniqueName) ?? byKey.get(name.toLowerCase())));
 }
 
 /** Owning it and subsuming it are separate wins, and each is its own reason to farm. */
@@ -78,12 +70,24 @@ function weaponNeeds(
   return needs;
 }
 
+/** Every kind whose whole recipe hangs off one item database row, so the sweep
+ *  is the same walk for all of them. */
+const PLAIN_KINDS: ReadonlyArray<
+  readonly [AcquisitionKind, (itemDb: Record<string, ItemDbEntry>) => GearEntry[]]
+> = [
+  ["archwing", listArchwings],
+  ["sentinel", listSentinels],
+  ["beast", listBeasts],
+  ["necramech", listNecramechs],
+];
+
 interface Wanted {
   uniqueName: string;
   name: string;
   entry: ItemDbEntry;
   kind: AcquisitionKind;
   weaponClass: WeaponClass | null;
+  modular: ModularPlan | null;
   needs: NeedReason[];
   nemesis: NemesisPlan | null;
   incarnon: IncarnonInfo | null;
@@ -101,6 +105,9 @@ export function resolveAcquisition(ctx: AcquisitionContext): AcquisitionTarget[]
   const ratings = createRatings(ctx.ratings, lookup);
   const incarnonFor = createIncarnonLookup(ctx.inventory, itemDb);
   const isMastered = createMasteryLookup(ctx.mastery);
+  const fitted = fittedModularParts(ctx.inventory);
+  const isFinished = (uniqueName: string, name: string): boolean =>
+    ownsItem(uniqueName, ownership) || fitted.has(uniqueName) || isMastered(uniqueName, name);
   const only = ctx.only ? new Set(ctx.only.map((name) => name.toLowerCase())) : null;
   const kinds = ctx.kinds ? new Set(ctx.kinds) : null;
 
@@ -125,6 +132,7 @@ export function resolveAcquisition(ctx: AcquisitionContext): AcquisitionTarget[]
         entry: frame.entry,
         kind: "warframe",
         weaponClass: null,
+        modular: null,
         needs,
         nemesis: null,
         incarnon: null,
@@ -134,21 +142,44 @@ export function resolveAcquisition(ctx: AcquisitionContext): AcquisitionTarget[]
     }
   }
 
-  if (!kinds || kinds.has("archwing")) {
-    for (const suit of listArchwings(itemDb)) {
-      if (only && !only.has(suit.name.toLowerCase())) continue;
-      if (ownsItem(suit.uniqueName, ownership) || isMastered(suit.uniqueName, suit.name)) continue;
+  for (const [kind, list] of PLAIN_KINDS) {
+    if (kinds && !kinds.has(kind)) continue;
+    for (const gear of list(itemDb)) {
+      if (only && !only.has(gear.name.toLowerCase())) continue;
+      if (isFinished(gear.uniqueName, gear.name)) continue;
       wanted.push({
-        uniqueName: suit.uniqueName,
-        name: suit.name,
-        entry: suit.entry,
-        kind: "archwing",
+        uniqueName: gear.uniqueName,
+        name: gear.name,
+        entry: gear.entry,
+        kind,
         weaponClass: null,
+        modular: null,
         needs: ["mastery"],
         nemesis: null,
         incarnon: null,
         extraSources: [],
         build: true,
+      });
+    }
+  }
+
+  if (!kinds || kinds.has("modular")) {
+    for (const gear of listModularGear(itemDb, isFinished)) {
+      if (only && !only.has(gear.name.toLowerCase())) continue;
+      if (gear.plan.owned === gear.plan.heads.length) continue;
+      wanted.push({
+        uniqueName: gear.uniqueName,
+        name: gear.name,
+        entry: gear.entry,
+        kind: "modular",
+        weaponClass: null,
+        modular: gear.plan,
+        needs: ["mastery"],
+        nemesis: null,
+        incarnon: null,
+        extraSources: [],
+        // Each head part carries its own recipe; the type itself has none.
+        build: false,
       });
     }
   }
@@ -177,6 +208,7 @@ export function resolveAcquisition(ctx: AcquisitionContext): AcquisitionTarget[]
         entry: weapon.entry,
         kind: "weapon",
         weaponClass: weapon.weaponClass,
+        modular: null,
         needs,
         nemesis: nemesisPlan(
           weapon.name,
@@ -220,6 +252,7 @@ export function resolveAcquisition(ctx: AcquisitionContext): AcquisitionTarget[]
       imageUrl: item.entry.imageUrl ?? null,
       kind: item.kind,
       weaponClass: item.weaponClass,
+      modular: item.modular,
       isPrime,
       nemesis: item.nemesis,
       incarnon: item.incarnon,

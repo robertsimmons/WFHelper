@@ -324,7 +324,9 @@ describe("vendorsProvider", () => {
   it("marks an offer over the threshold as worth the trip", () => {
     setValenceDocForTest(valenceDoc(53.1));
     const coda = draft(context(), "vendors:codaWeapons");
-    expect(coda?.signals.value).toBeCloseTo(MOTOVORE_WORTH * 0.8, 10);
+    // Worth is the weapon's own; how far the roll carries this player is gain.
+    expect(coda?.signals.value).toBeCloseTo(MOTOVORE_WORTH, 10);
+    expect(coda?.signals.gain).toBeCloseTo(0.8, 10);
   });
 
   it("tops the vendor out for the offer that caps a weapon the player owns", () => {
@@ -340,7 +342,8 @@ describe("vendorsProvider", () => {
     // copy caps it; the 25% Pox on the same table cannot be beaten by a roll.
     const coda = draft(codaContext(57), "vendors:codaWeapons");
     expect(coda?.reward?.name).toBe("Coda Motovore");
-    expect(coda?.signals.value).toBeCloseTo(MOTOVORE_WORTH * 0.5, 10);
+    expect(coda?.signals.value).toBeCloseTo(MOTOVORE_WORTH, 10);
+    expect(coda?.signals.gain).toBeCloseTo(0.5, 10);
   });
 
   it("shows the vendor at zero worth when nothing on offer helps", () => {

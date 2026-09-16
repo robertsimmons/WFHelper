@@ -3,7 +3,7 @@ import { clockStore } from "../../lib/timers.js";
 import type { MessageKey } from "../../lib/i18n.js";
 import type { OwnedReward } from "../../lib/suggest/ownedRewards.js";
 import type { ValenceVerdict } from "../../lib/suggest/valence.js";
-import type { ChoiceState } from "../../types/suggest.js";
+import type { ChoiceState, ChoiceStatus, ChoiceWin } from "../../types/suggest.js";
 
 /** What a chip can say. Ownership is a fact about the player's inventory, not
  *  one of the choices a Circuit week puts in front of them. */
@@ -26,6 +26,11 @@ export const CHIP_TONE = {
   bad: "border-danger/60 bg-danger/10 text-danger",
   plain: `border-border bg-bg-deep ${TONE.plain}`,
 } as const;
+
+/** The label a figure inside a tile wears. Carries no colour: the figure beside
+ *  it takes the tone. */
+export const TILE_MICRO =
+  "font-display text-[0.5625rem] font-semibold uppercase leading-none tracking-[0.08em]";
 
 /** What a count means. Green is the player's inventory; yellow is a copy the
  *  foundry has made or is making. */
@@ -136,6 +141,22 @@ export const STATE_CHIP: Record<ChipState, { label: MessageKey; tone: string } |
   done: null,
   owned: null,
 };
+
+/** Each win says so in words, both halves drawn whatever the answer: a banked
+ *  one that went quiet is the thing the reader could not tell apart. */
+const WIN_LABEL: Record<ChoiceWin, { done: MessageKey; todo: MessageKey }> = {
+  mastery: { done: "common.mastered", todo: "common.notMastered" },
+  subsume: { done: "common.subsumed", todo: "filters.notSubsumed" },
+  adapter: { done: "nextUp.winAdapterOwned", todo: "nextUp.winAdapterTodo" },
+};
+
+export function winChip(status: ChoiceStatus): { label: MessageKey; tone: string } {
+  const labels = WIN_LABEL[status.win];
+  return {
+    label: status.done ? labels.done : labels.todo,
+    tone: status.done ? CHIP_TONE.good : CHIP_TONE.warn,
+  };
+}
 
 /** A pill reads in minutes, and every card in the feed shares the one interval. */
 export const CARD_CLOCK_MS = 30_000;

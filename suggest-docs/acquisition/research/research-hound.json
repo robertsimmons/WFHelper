@@ -1,0 +1,202 @@
+{
+  "name": "Hound",
+  "kind": "modular-companion",
+  "masteryRank": 5,
+  "premiseCorrection": "Hound parts are NOT sold for standing. Every Model, Core, Bracket and Stabilizer blueprint drops from a vanquished Sister of Parvos. Legs in Fortuna only assembles the four finished parts and gilds the result; her standing offerings are MOA parts only.",
+  "prerequisites": [
+    {"what": "The War Within", "type": "quest"},
+    {"what": "Call of the Tempestarii", "type": "quest"},
+    {"what": "Mastery Rank 5", "type": "mastery"},
+    {"what": "Railjack with Intrinsics rank 3", "type": "system", "detail": "Needed to reach Neptune Proxima for the Sister confrontation"},
+    {"what": "Zenith Granum Crown", "type": "item", "detail": "Dropped by a Treasurer that spawns 2-5 minutes into a level 30+ non-endless Corpus Ship mission; opens the Nightmare Granum Void where the Sister Candidate spawns"},
+    {"what": "Requiem Mods", "type": "item", "detail": "Three-mod sequence per Sister. From Requiem relics (Kuva Siphon missions), Hound drops (5% per kill), Palladino (10 Riven Slivers each), or trading"},
+    {"what": "Fortuna / Legs access", "type": "location", "detail": "Venus - Orb Vallis hub; Legs performs the assembly"},
+    {"what": "Solaris United Rank 3 (Doer)", "type": "syndicate", "detail": "Required only for gilding, not for assembly"},
+    {"what": "Two free Companion slots", "type": "inventory", "detail": "One for the Hound, one for its Model weapon"}
+  ],
+  "howPartsCombine": {
+    "categories": 4,
+    "optionsPerCategory": 3,
+    "combinations": 81,
+    "rule": "One Model + one Core + one Bracket + one Stabilizer, each built separately in the Foundry, then combined by Legs into a single Hound. The Model also supplies the Hound's weapon (a separate inventory item).",
+    "assembly": {"vendor": "Legs, Fortuna", "action": "Build Hound", "credits": 4000, "time": "instant", "standingCost": 0},
+    "gilding": {"vendor": "Legs, Fortuna", "syndicate": "Solaris United", "rank": "Doer (Rank 3)", "houndRankRequired": 30, "cost": {"trainingDebtBonds": 10, "standing": 5000}, "note": "Ungilded Hounds earn no mastery; gilding resets the Hound to rank 0 and allows a polarity"},
+    "mastery": {"maxPoints": 27000, "fromModels": 18000, "fromWeapons": 9000, "condition": "Only gilded Hounds award mastery"},
+    "trading": "Hound component blueprints are tradeable. Built components and assembled Hounds are not."
+  },
+  "modularParts": [
+    {"category": "Model", "determines": "Head appearance, the Hound's exclusive weapon, and one precept mod", "parts": [
+      {"name": "Bhaira", "weapon": "Lacerten", "precept": "Null Audit", "source": "Vanquished Sister of Parvos", "buildHours": 24, "credits": 50000, "rushPlatinum": 25, "materials": [{"name": "Spectral Debris", "quantity": 5}, {"name": "Gallium", "quantity": 5}, {"name": "Marquise Thyst", "quantity": 2}, {"name": "Eye-Eye Rotoblade", "quantity": 10}]},
+      {"name": "Dorma", "weapon": "Batoten", "precept": "Repo Audit", "source": "Vanquished Sister of Parvos", "buildHours": 24, "credits": 50000, "rushPlatinum": 25, "materials": [{"name": "Spectral Debris", "quantity": 5}, {"name": "Gallium", "quantity": 5}, {"name": "Radian Sentirum", "quantity": 2}, {"name": "Mirewinder Parallel Biode", "quantity": 10}]},
+      {"name": "Hec", "weapon": "Akaten", "precept": "Equilibrium Audit", "source": "Vanquished Sister of Parvos", "buildHours": 24, "credits": 50000, "rushPlatinum": 25, "materials": [{"name": "Spectral Debris", "quantity": 5}, {"name": "Gallium", "quantity": 5}, {"name": "Trapezium Xenorhast", "quantity": 2}, {"name": "Sapcaddy Venedo Case", "quantity": 10}]}
+    ]},
+    {"category": "Core", "determines": "Torso appearance and base Health/Shield/Armor", "parts": [
+      {"name": "Adlet", "stats": "350 Health / 450 Shields / 350 Armor", "source": "Vanquished Sister of Parvos", "buildHours": 24, "credits": 50000, "rushPlatinum": 25, "materials": [{"name": "Spectral Debris", "quantity": 5}, {"name": "Coprite Alloy", "quantity": 40}, {"name": "Venerdo Alloy", "quantity": 25}, {"name": "Rubedo", "quantity": 1500}]},
+      {"name": "Garmr", "stats": "350 Health / 350 Shields / 450 Armor", "source": "Vanquished Sister of Parvos", "buildHours": 24, "credits": 50000, "rushPlatinum": 25, "materials": [{"name": "Spectral Debris", "quantity": 5}, {"name": "Axidrol Alloy", "quantity": 40}, {"name": "Devolved Namalon", "quantity": 25}, {"name": "Rubedo", "quantity": 1500}]},
+      {"name": "Raiju", "stats": "450 Health / 350 Shields / 350 Armor", "source": "Vanquished Sister of Parvos", "buildHours": 24, "credits": 50000, "rushPlatinum": 25, "materials": [{"name": "Spectral Debris", "quantity": 5}, {"name": "Adramal Alloy", "quantity": 40}, {"name": "Fersteel Alloy", "quantity": 25}, {"name": "Rubedo", "quantity": 1500}]}
+    ]},
+    {"category": "Bracket", "determines": "Leg appearance, percentage stat modifiers, and one precept mod", "parts": [
+      {"name": "Cela", "stats": "+10% Health / +15% Shields / -5% Armor", "precept": "Reflex Denial", "source": "Vanquished Sister of Parvos", "buildHours": 24, "credits": 50000, "rushPlatinum": 25, "materials": [{"name": "Sola Toroid", "quantity": 5}, {"name": "Iradite", "quantity": 25}, {"name": "Travocyte Alloy", "quantity": 35}, {"name": "Brickie Muon Battery", "quantity": 15}]},
+      {"name": "Urga", "stats": "+15% Health / -5% Shields / +10% Armor", "precept": "Diversified Denial", "source": "Vanquished Sister of Parvos", "buildHours": 24, "credits": 50000, "rushPlatinum": 25, "materials": [{"name": "Calda Toroid", "quantity": 5}, {"name": "Thermal Sludge", "quantity": 25}, {"name": "Pyrotic Alloy", "quantity": 25}, {"name": "Brickie Muon Battery", "quantity": 15}]},
+      {"name": "Zubb", "stats": "-5% Health / +10% Shields / +15% Armor", "precept": "Evasion Denial", "source": "Vanquished Sister of Parvos", "buildHours": 24, "credits": 50000, "rushPlatinum": 25, "materials": [{"name": "Vega Toroid", "quantity": 5}, {"name": "Travocyte Alloy", "quantity": 25}, {"name": "Axidrol Alloy", "quantity": 25}, {"name": "Brickie Muon Battery", "quantity": 15}]}
+    ]},
+    {"category": "Stabilizer", "determines": "Tail appearance, mod polarity, and one precept mod", "parts": [
+      {"name": "Frak", "polarity": "Vazarin", "precept": "Focused Prospectus", "source": "Vanquished Sister of Parvos", "buildHours": 24, "credits": 50000, "rushPlatinum": 25, "materials": [{"name": "Ferrite", "quantity": 2500}, {"name": "Circuits", "quantity": 600}, {"name": "Hespazym Alloy", "quantity": 20}, {"name": "Nitain Extract", "quantity": 3}]},
+      {"name": "Hinta", "polarity": "Madurai", "precept": "Synergized Prospectus", "source": "Vanquished Sister of Parvos", "buildHours": 24, "credits": 50000, "rushPlatinum": 25, "materials": [{"name": "Alloy Plate", "quantity": 2500}, {"name": "Circuits", "quantity": 600}, {"name": "Auroxium Alloy", "quantity": 20}, {"name": "Nitain Extract", "quantity": 3}]},
+      {"name": "Wanz", "polarity": "Naramon", "precept": "Aerial Prospectus", "source": "Vanquished Sister of Parvos", "buildHours": 24, "credits": 50000, "rushPlatinum": 25, "materials": [{"name": "Salvage", "quantity": 2500}, {"name": "Circuits", "quantity": 600}, {"name": "Thaumic Distillate", "quantity": 20}, {"name": "Nitain Extract", "quantity": 3}]}
+    ]}
+  ],
+  "routes": [
+    {"kind": "nemesis", "where": "Corpus Ship missions level 30+ (Venus, Phobos, Jupiter, Neptune, Pluto, plus Steel Path) -> Nightmare Granum Void with a Zenith Granum Crown; Sister influence nodes; final showdown in Neptune Proxima", "parts": ["1 random Hound component blueprint per vanquished Sister (one of 12: 3 Models, 3 Cores, 3 Brackets, 3 Stabilizers)"], "dropRate": 1.0, "conditions": ["Zenith Granum Crown consumed per Granum Void entry", "Parazon Mercy on the downed Candidate creates the Sister", "Correct three-Requiem sequence needed to vanquish", "Railjack Intrinsics rank 3 for the Neptune Proxima confrontation"], "notes": "Drop is guaranteed but the specific part is random, so expect roughly 8 Sisters to cover all four categories and 12 or more for a specific loadout. Vanquishing also grants the Sister's own randomly generated Hound as a companion and her Tenet weapon."},
+    {"kind": "mission", "where": "Granum Void (Corpus Ship tileset), Errant Specters", "parts": ["Spectral Debris"], "dropRate": 0.05, "conditions": ["Granum Void run, crown consumed"], "notes": "Needed 5x per Model and 5x per Core; farmed on the same crown runs used to make Sisters."},
+    {"kind": "modular", "where": "Legs, Fortuna (Venus)", "parts": ["Assembled Hound"], "dropRate": null, "conditions": ["All four components built", "Two free Companion slots"], "notes": "4,000 credits, instant, no standing cost."},
+    {"kind": "vendor", "where": "Legs, Fortuna - gilding", "parts": ["Gilded Hound"], "dropRate": null, "conditions": ["Solaris United rank Doer", "Hound at rank 30"], "notes": "10 Training Debt-Bonds + 5,000 Solaris United standing. Required for mastery."},
+    {"kind": "vendor", "where": "Player trading", "parts": ["Any Hound component blueprint"], "dropRate": null, "conditions": [], "notes": "Blueprints trade; built components and assembled Hounds do not."}
+  ],
+  "purchase": {"marketCredits": null, "marketPlatinum": null, "vendorStanding": null, "note": "No Market or standing purchase exists for Hound parts. The only shortcut is buying component blueprints from other players for platinum. Legs sells MOA parts for Solaris United standing, not Hound parts."},
+  "materials": [
+    {"name": "Spectral Debris", "quantity": 10, "whereFarmed": "Errant Specters in the Granum Void (Corpus Ship tileset), 5% drop", "harvestable": false},
+    {"name": "Gallium", "quantity": 5, "whereFarmed": "Assur (Uranus) or Lieutenant Lech Kril (War, Mars)", "harvestable": false},
+    {"name": "Rubedo", "quantity": 1500, "whereFarmed": "Any Void Survival/Defense or Zeugma (Phobos)", "harvestable": false},
+    {"name": "Ferrite", "quantity": 2500, "whereFarmed": "Any Void Survival/Defense, Tikal (Earth) or Apollodorus (Mercury); Frak only", "harvestable": false},
+    {"name": "Alloy Plate", "quantity": 2500, "whereFarmed": "Gabii or Draco (Ceres), Malva (Venus); Hinta only", "harvestable": false},
+    {"name": "Salvage", "quantity": 2500, "whereFarmed": "Cameria (Jupiter) or Wahiba (Mars); Wanz only", "harvestable": false},
+    {"name": "Circuits", "quantity": 600, "whereFarmed": "Draco (Ceres) or Malva (Venus)", "harvestable": false},
+    {"name": "Nitain Extract", "quantity": 3, "whereFarmed": "Nightwave offerings, 5x for 15 Nightwave Cred (evergreen)", "harvestable": false},
+    {"name": "Marquise Thyst", "quantity": 2, "whereFarmed": "Orb Vallis blue gem veins (Thyst), mined; refined 3 Thyst + 10,000cr via Smokefinger blueprint (Solaris United rank Cove, 12,000 standing)", "harvestable": true},
+    {"name": "Radian Sentirum", "quantity": 2, "whereFarmed": "Plains of Eidolon blue gem veins (Sentirum), mined; refined 3 Sentirum + 10,000cr via Old Man Suumbaat blueprint (Ostron rank Surah, 10,000 standing)", "harvestable": true},
+    {"name": "Trapezium Xenorhast", "quantity": 2, "whereFarmed": "Cambion Drift teal gem veins (Xenorhast, rare - needs Advanced Nosam Cutter or Sunpoint Plasma Drill), mined; refined via Otak blueprint (Entrati rank Associate, 8,000 standing)", "harvestable": true},
+    {"name": "Eye-Eye Rotoblade", "quantity": 10, "whereFarmed": "Orb Vallis fishing (Eye-Eye), cut by The Business in Fortuna", "harvestable": true},
+    {"name": "Mirewinder Parallel Biode", "quantity": 10, "whereFarmed": "Orb Vallis fishing (Mirewinder), cut by The Business in Fortuna", "harvestable": true},
+    {"name": "Sapcaddy Venedo Case", "quantity": 10, "whereFarmed": "Orb Vallis fishing (Sapcaddy), cut by The Business in Fortuna", "harvestable": true},
+    {"name": "Brickie Muon Battery", "quantity": 15, "whereFarmed": "Orb Vallis fishing (Brickie), cut by The Business in Fortuna", "harvestable": true},
+    {"name": "Coprite Alloy", "quantity": 40, "whereFarmed": "Refined from Coprun ore, Plains of Eidolon red veins, mined", "harvestable": true},
+    {"name": "Fersteel Alloy", "quantity": 25, "whereFarmed": "Refined from Ferros ore, Plains of Eidolon red veins, mined", "harvestable": true},
+    {"name": "Auroxium Alloy", "quantity": 20, "whereFarmed": "Refined from Auron ore, Plains of Eidolon red veins, mined", "harvestable": true},
+    {"name": "Venerdo Alloy", "quantity": 25, "whereFarmed": "Refined from Venerol ore, Orb Vallis red veins, mined", "harvestable": true},
+    {"name": "Axidrol Alloy", "quantity": 40, "whereFarmed": "Refined from Axidite ore, Orb Vallis, mined; blueprint from Smokefinger (Solaris United Neutral, 1,000 standing), 20 Axidite + 500 Ferrite + 100 Rubedo yields 20", "harvestable": true},
+    {"name": "Travocyte Alloy", "quantity": 35, "whereFarmed": "Refined from Travoride ore, Orb Vallis, mined", "harvestable": true},
+    {"name": "Pyrotic Alloy", "quantity": 25, "whereFarmed": "Refined from Pyrol ore, Orb Vallis, mined", "harvestable": true},
+    {"name": "Hespazym Alloy", "quantity": 20, "whereFarmed": "Refined from Hesperon ore, Orb Vallis, mined", "harvestable": true},
+    {"name": "Adramal Alloy", "quantity": 40, "whereFarmed": "Refined from Adramalium, Cambion Drift yellow lesions, mined; Otak blueprint (Entrati Neutral, 1,000 standing), recipe also needs 20 Travoride, 600 Plastids, 15 Lucent Teroglobe", "harvestable": true},
+    {"name": "Devolved Namalon", "quantity": 25, "whereFarmed": "Refined from Namalon, Cambion Drift yellow lesions, mined; Otak blueprint (Entrati rank Stranger, 2,000 standing), recipe also needs 20 Ferros, 160 Rubedo, 15 Lucent Teroglobe", "harvestable": true},
+    {"name": "Thaumic Distillate", "quantity": 20, "whereFarmed": "Crafted, not gathered: Otak blueprint (Entrati rank Acquaintance, 4,000 standing), 20 Thaumica + 20 Venerol + 4 Gallium + 15 Lucent Teroglobe yields 20", "harvestable": false},
+    {"name": "Sola Toroid", "quantity": 5, "whereFarmed": "Temple of Profit, Orb Vallis - Kyta Raknoids 20%, other enemies ~2%, plus cave pick-ups", "harvestable": true},
+    {"name": "Calda Toroid", "quantity": 5, "whereFarmed": "Enrichment Labs, Orb Vallis - Scyto Raknoids 20%, other enemies ~2%, plus cave pick-ups", "harvestable": true},
+    {"name": "Vega Toroid", "quantity": 5, "whereFarmed": "Spaceport, Orb Vallis - Mite Raknoids 1%, other enemies ~2%, plus cave pick-ups", "harvestable": true},
+    {"name": "Iradite", "quantity": 25, "whereFarmed": "Plains of Eidolon deposits, destroyed with attacks; 1-2 per deposit at low level bounties, 3-5 at 40-60, 5 guaranteed in Narmer bounties", "harvestable": true},
+    {"name": "Thermal Sludge", "quantity": 25, "whereFarmed": "Special containers in Corpus encampments across Orb Vallis; also a bounty reward", "harvestable": true}
+  ],
+  "materialsNote": "Quantities are for one Hound of a single chosen configuration. Which alloys, gems, fish parts and toroids you need depends entirely on which Model/Core/Bracket/Stabilizer you build; the list covers every option.",
+  "buildTimes": {
+    "components": [
+      {"name": "Model (any)", "hours": 24, "credits": 50000, "rushPlatinum": 25},
+      {"name": "Core (any)", "hours": 24, "credits": 50000, "rushPlatinum": 25},
+      {"name": "Bracket (any)", "hours": 24, "credits": 50000, "rushPlatinum": 25},
+      {"name": "Stabilizer (any)", "hours": 24, "credits": 50000, "rushPlatinum": 25}
+    ],
+    "final": {"name": "Hound assembly at Legs", "hours": 0, "credits": 4000, "rushPlatinum": null},
+    "totalCredits": 204000,
+    "minimumWallClockHours": 24,
+    "note": "All four components can build in parallel if you have four Foundry slots free, so 24 hours end to end; assembly is instant."
+  },
+  "community": {
+    "painLevel": "moderate-to-high, and mostly avoidable: most players never build a Hound",
+    "headline": "Every vanquished Sister mails you a fully built Hound in her own random configuration, so owning one is a by-product of the Sister you were already hunting for her Tenet weapon. Building is only for a chosen configuration, the precept mods, and mastery.",
+    "verifiedAgainstWiki": [
+      {"claim": "Every vanquished Sister gives you a fully built Hound", "verdict": "confirmed", "wiki": "Vanquishing grants the Sister's own randomly generated Hound as a companion, plus her Tenet weapon."},
+      {"claim": "Converting a Sister instead of vanquishing yields nothing", "verdict": "consistent, not explicit", "wiki": "The wiki lists the Hound and the component blueprint as vanquish rewards and documents no conversion reward, but never states the negative outright."}
+    ],
+    "recommendedMode": "Solo, normal, not Steel Path, for the Sister creation run: Capture on Pluto (Hydra) is the cited node, and a squad raises the Granum Void kill requirement. The exception is the final confrontation, where community reports say a full squad yields an extra part from each other player's Sister; the wiki does not document that.",
+    "preferredRoute": "The nemesis route, vanquish only. For a specific loadout, trading component blueprints is the repeatedly recommended shortcut over grinding more Sisters.",
+    "timeEstimate": {
+      "partsObserved": "several players report roughly 1 part across 7-12 Sisters, even in squads",
+      "note": "Contradicts the wiki's guaranteed per-vanquish drop, see conflicts. No reliable per-Sister clock was cited."
+    },
+    "traps": [
+      "Converting a Sister instead of vanquishing: no Hound, no blueprint, no Tenet weapon. This is the single most common confusion.",
+      "Building a Hound before checking the ones your vanquished Sisters already mailed you.",
+      "Squadding the Sister-creation run: a team raises the kill count required in the Granum Void.",
+      "If the gold hand spawns within roughly 200m of extraction the Sister may not spawn. If you have not found a hand halfway through the tile, restart.",
+      "Spreading out inside the Granum Void: there is roughly a 20-enemy spawn cap and nothing new spawns until the current batch is cleared.",
+      "Chasing a specific progenitor element on the Tenet weapon: a valence override from Eleanor at the Hex (about 20,000 standing) resets it after 4-5 forma."
+    ],
+    "tips": [
+      "Equip the Xoris: heavy-attack the Granum ghosts to charge it, then detonate on the captured Solaris target for a large Granum Void time extension.",
+      "Waypoint a gold hand first, kill the capture target, then return and insert the Zenith crown.",
+      "Kill 25 Parvos units inside the Void; the triangles they drop add time.",
+      "Chaining or nuking weapons clear the spawn batch fastest: Larkspur with an infinite-archgun-ammo companion, or a nuke frame.",
+      "Kill the Treasurer every cycle for the next Zenith crown.",
+      "Tenet weapons run on a knockout system: down the Sister, look at the weapon, and extract without holding interact to cycle an unwanted one out of your pool. Pre-cycle before a new Tenet weapon releases to get it in 1-2 runs on launch day.",
+      "Replay on the white end screen re-runs the mission instantly.",
+      "For Reinforced Bond you want at least 343 base shields. Derived from the wiki stats, only the Urga bracket (-5% shields) can miss: a 350-shield Core with Urga lands at 332.5, so pair Urga with the Adlet core (450) or pick Cela or Zubb."
+    ]
+  },
+  "conflicts": [
+    {
+      "field": "routes[0].dropRate",
+      "wiki": "One random component blueprint is guaranteed per vanquished Sister (drop rate 1.0).",
+      "community": "Several players report roughly 1 part across 7-12 Sisters, even in groups; the guaranteed drop may not hold or may be bugged.",
+      "show": "wiki",
+      "why": "Wiki stays authoritative and the reports are anecdotal, but the app should not present a part per Sister as a schedule."
+    }
+  ],
+  "effort": 6,
+  "effortRevisedFrom": 8,
+  "effortWhy": "One vanquished Sister mails a fully built Hound, so owning one is a single nemesis cycle behind the quest, Railjack and Requiem gating.",
+  "effortReadings": [
+    {"goal": "Own a working Hound", "effort": 6, "why": "Free with the first vanquished Sister; the cost is the gating around one nemesis cycle, not repetition."},
+    {"goal": "One of each component, gilded, for full mastery", "effort": 8, "why": "Roughly eight Sisters to cover all four categories and twelve or more for a chosen loadout, plus open-world mining, fishing and standing-gated refining blueprints."}
+  ],
+  "gotchas": [
+    "Legs does not sell Hound parts. Her standing list is MOA parts only; every Hound blueprint comes from a vanquished Sister.",
+    "Each vanquish gives exactly one random blueprint out of twelve, so four Sisters is the floor and about eight is the realistic average to cover all four categories.",
+    "Converting a Sister instead of vanquishing her is not documented as giving a component blueprint - vanquish if you want parts.",
+    "A Zenith Granum Crown only drops from a Treasurer in a level 30+ Corpus Ship mission, and the Treasurer despawns if you take too long.",
+    "You need two free Companion slots to claim the Hound: one for the Hound, one for its Model weapon.",
+    "An ungilded Hound earns zero mastery; gilding needs Solaris United rank Doer, Hound rank 30, 10 Training Debt-Bonds and 5,000 standing.",
+    "Component blueprints trade, built components and assembled Hounds do not, so buy blueprints before you build anything.",
+    "The gem and alloy refining blueprints are themselves standing-gated: Marquise Thyst needs Solaris United rank Cove, Radian Sentirum needs Ostron rank Surah, Trapezium Xenorhast needs Entrati rank Associate.",
+    "Core alloys cross open worlds - Adramal Alloy needs Cambion Adramalium plus Orb Vallis Travoride, and Devolved Namalon needs Cambion Namalon plus Plains Ferros, both plus Lucent Teroglobe.",
+    "Thaumic Distillate for the Wanz stabilizer is crafted from Otak's blueprint, not fished or mined.",
+    "Xenorhast is a rare Cambion Drift gem that needs an Advanced Nosam Cutter or Sunpoint Plasma Drill to extract."
+  ],
+  "sources": [
+    "https://wiki.warframe.com/w/Hound_(Companion)",
+    "https://wiki.warframe.com/w/Hound",
+    "https://wiki.warframe.com/w/Sisters_of_Parvos",
+    "https://wiki.warframe.com/w/Sisters_of_Parvos/Main",
+    "https://wiki.warframe.com/w/Granum_Void",
+    "https://wiki.warframe.com/w/Legs",
+    "https://wiki.warframe.com/w/Model",
+    "https://wiki.warframe.com/w/Core_(Component)",
+    "https://wiki.warframe.com/w/Bracket",
+    "https://wiki.warframe.com/w/Stabilizer_(Component)",
+    "https://wiki.warframe.com/w/Spectral_Debris",
+    "https://wiki.warframe.com/w/Mining",
+    "https://wiki.warframe.com/w/Fishing",
+    "https://wiki.warframe.com/w/Toroid",
+    "https://wiki.warframe.com/w/Iradite",
+    "https://wiki.warframe.com/w/Thermal_Sludge",
+    "https://wiki.warframe.com/w/Marquise_Thyst",
+    "https://wiki.warframe.com/w/Radian_Sentirum",
+    "https://wiki.warframe.com/w/Trapezium_Xenorhast",
+    "https://wiki.warframe.com/w/Xenorhast",
+    "https://wiki.warframe.com/w/Adramal_Alloy",
+    "https://wiki.warframe.com/w/Devolved_Namalon",
+    "https://wiki.warframe.com/w/Axidrol_Alloy",
+    "https://wiki.warframe.com/w/Thaumic_Distillate",
+    "https://wiki.warframe.com/w/Nitain_Extract",
+    "https://wiki.warframe.com/w/Resources"
+  ],
+  "discarded": [
+    {"claim": "Task premise and community summaries stating Hound parts are bought from a vendor with syndicate standing", "why": "The wiki is explicit that component blueprints drop from vanquished Sisters and that Legs' standing offerings are MOA parts; Legs only assembles and gilds."},
+    {"claim": "Community: the Hound part combination is mostly cosmetic and only base shields matter", "why": "Wrong against the wiki: the Model sets the Hound's exclusive weapon and a precept, the Bracket and Stabilizer each add a precept, the Stabilizer sets the polarity, and the Core sets base Health/Shields/Armor. Only appearance is purely cosmetic."},
+    {"claim": "Warframe forum thread 1406597 on how many Sisters are needed", "why": "forums.warframe.com returned HTTP 403, so nothing from it was used."},
+    {"claim": "Resources page summary placing Sentirum and Xenorhast in Orb Vallis and Thermal Sludge in the Cambion Drift", "why": "The dedicated resource pages put Sentirum in the Plains of Eidolon, Xenorhast in the Cambion Drift and Thermal Sludge in Orb Vallis containers; the specific pages were used."}
+  ],
+  "unknowns": [
+    {"field": "per-part drop chance from a Sister", "value": null, "note": "Wiki states one random component blueprint is guaranteed per vanquish but gives no per-part table."},
+    {"field": "murmur count / number of territory missions per Sister", "value": null, "note": "Not stated numerically on the wiki pages checked."}
+  ]
+}

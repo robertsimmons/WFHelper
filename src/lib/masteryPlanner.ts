@@ -64,6 +64,9 @@ export type PlannerSort = "mastery_xp" | "completeness" | "name";
 // asks for is a raw material the bill counts against the inventory pool.
 const RECIPE_PATH = /\/Types\/Recipes\//i;
 
+// `isCraftable` is only safe here because buildCraftingTree strips the recipe
+// off an ExportResources row: hundreds of resources convert into one another,
+// and a conversion recipe must never read as a component of the parent build.
 function isPartLike(node: CraftingTreeNode): boolean {
   return node.isCraftable || node.isBlueprintItem === true || RECIPE_PATH.test(node.uniqueName);
 }
@@ -108,13 +111,14 @@ function collectNode(
   depth: number,
   state: CollectState,
   budget: Map<string, number>,
+  allocate: boolean,
 ): void {
   if (needed <= 0) return;
 
   let remaining = needed;
   if (depth > 0 && isPartLike(node)) {
-    // Read live: one part can appear twice in a tree, and earlier pins already
-    // spent their share of the same pile.
+    // Read live: one part can appear twice in a tree, and under allocation
+    // earlier pins already spent their share of the same pile.
     const owned = Math.min(ownedComponentCount(node.uniqueName, budget), remaining);
     consumeOwned(budget, node.uniqueName, owned);
     remaining -= owned;
@@ -140,11 +144,18 @@ function collectNode(
 
   for (const child of node.children) {
     if (child.isBlueprintItem) {
-      collectNode(child, recipe.reusableBlueprint ? 1 : runs, depth + 1, state, budget);
+      collectNode(child, recipe.reusableBlueprint ? 1 : runs, depth + 1, state, budget, allocate);
       continue;
     }
     // Children were sized for fullRuns, so child.count is a multiple of it.
-    collectNode(child, Math.ceil((child.count * runs) / fullRuns), depth + 1, state, budget);
+    collectNode(
+      child,
+      Math.ceil((child.count * runs) / fullRuns),
+      depth + 1,
+      state,
+      budget,
+      allocate,
+    );
   }
 }
 
@@ -153,6 +164,7 @@ function planPin(
   itemDb: Record<string, ItemDbEntry>,
   budget: Map<string, number>,
   pool: Map<string, number>,
+  allocate: boolean,
 ): PlannedItem {
   const base = {
     uniqueName: pin.uniqueName,
@@ -191,13 +203,17 @@ function planPin(
   }));
 
   const state: CollectState = { resources: new Map(), credits: 0 };
-  collectNode(tree, 1, 0, state, budget);
+  collectNode(tree, 1, 0, state, budget, allocate);
 
   const resources: PlannerResource[] = [...state.resources.entries()].map(([uniqueName, tally]) => {
-    // Take this pin's share of the pile so the rows below a shared material add
-    // up to the total row instead of each claiming the whole pool.
-    const owned = Math.min(ownedComponentCount(uniqueName, pool), tally.needed);
-    consumeOwned(pool, uniqueName, owned);
+    const held = ownedComponentCount(uniqueName, pool);
+    // Allocated: take this pin's share of the pile so the rows below a shared
+    // material add up to the total row. Independent: the row must report the
+    // whole pile, uncapped - it is an answer about this item on its own, and
+    // capping it at `needed` would make a deep stock indistinguishable from a
+    // bare sufficiency.
+    const owned = allocate ? Math.min(held, tally.needed) : held;
+    if (allocate) consumeOwned(pool, uniqueName, owned);
     return {
       uniqueName,
       name: tally.name,
@@ -225,23 +241,38 @@ function planPin(
   };
 }
 
-// One plan per pin. Owned parts AND raw materials are allocated to pins in
-// order, so a single spare cannot satisfy two of them. The total row still
-// measures the summed need once against the untouched inventory pool.
+export interface MasteryPlanOptions {
+  /** Hand one pool out pin by pin (the default), or measure every pin against
+   *  the full inventory on its own. */
+  allocate?: boolean;
+}
+
+// One plan per pin. Allocated, owned parts AND raw materials are handed to pins
+// in order, so a single spare cannot satisfy two of them - what the planner tab
+// needs to answer "if I build these in this order, what runs out". A sweep that
+// pins every unbuilt item in the game instead asks a separate question of each
+// row, so it turns allocation off: an item's ownership figures must not depend
+// on what else happened to be in the same call. The total row always measures
+// the summed need once against the untouched inventory pool.
 export function buildMasteryPlan(
   pins: readonly PlannerPin[],
   itemDb: Record<string, ItemDbEntry>,
   ownership: Map<string, number>,
+  options: MasteryPlanOptions = {},
 ): MasteryPlan {
-  const budget = new Map(ownership);
-  const materials = new Map(ownership);
+  const allocate = options.allocate !== false;
+  const shared = allocate ? { budget: new Map(ownership), pool: new Map(ownership) } : null;
   const totals = new Map<string, PlannerResource>();
   const items: PlannedItem[] = [];
   let totalCredits = 0;
   let craftableCount = 0;
 
   for (const pin of pins) {
-    const planned = planPin(pin, itemDb, budget, materials);
+    // Unallocated pins each get a fresh copy: a part listed twice in one tree
+    // still spends from one pile, but nothing carries to the next pin.
+    const budget = shared?.budget ?? new Map(ownership);
+    const materials = shared?.pool ?? new Map(ownership);
+    const planned = planPin(pin, itemDb, budget, materials, allocate);
     items.push(planned);
     totalCredits += planned.credits;
     if (planned.craftableNow && planned.hasRecipe) craftableCount += 1;

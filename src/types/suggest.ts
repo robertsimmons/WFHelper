@@ -191,6 +191,15 @@ export interface SuggestionPoolRow {
 /** What a choice still owes the player: everything, a subsume, or nothing. */
 export type ChoiceState = "wanted" | "subsume" | "done";
 
+/** One win a choice can bank. Mastery is banked for good and the Helminth feed
+ *  is a separate act, so no single state could ever say both. */
+export type ChoiceWin = "mastery" | "subsume" | "adapter";
+
+export interface ChoiceStatus {
+  win: ChoiceWin;
+  done: boolean;
+}
+
 /** One place a choice can be farmed, straight out of the shipped table. */
 export interface ChoiceSource {
   kind: string;
@@ -204,6 +213,9 @@ export interface SuggestionChoice {
   /** Which detail rows the modal draws, and whether a subsume is even possible. */
   kind: "frame" | "adapter";
   state: ChoiceState;
+  /** Every win this choice can bank, each with its own answer. The card reads
+   *  `state`; anything that has room draws these instead. */
+  statuses?: ChoiceStatus[] | undefined;
   /** Tier letter, where the choices are rated against each other. */
   tier?: string | undefined;
   /** Unresearched placeholder for most frames; surfaced as it stands. */

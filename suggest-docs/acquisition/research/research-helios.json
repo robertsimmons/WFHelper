@@ -1,0 +1,194 @@
+{
+  "name": "Helios",
+  "kind": "Sentinel (companion)",
+  "masteryRank": 0,
+  "slots": [
+    { "type": "Companion slot", "quantity": 2, "note": "One for Helios, one for its Deconstructor weapon; both are consumed when claimed from the Foundry." }
+  ],
+  "includedItems": [
+    { "name": "Deconstructor", "kind": "Sentinel weapon", "masteryRank": 0, "note": "Automatically granted with Helios. No separate blueprint, cost or build time. Usable only by Helios and Helios Prime." }
+  ],
+  "prerequisites": [
+    { "type": "clan", "name": "Membership in a clan with a dojo", "note": "No solo route exists." },
+    { "type": "dojo room", "name": "Energy Lab built in the dojo", "note": "Wiki does not list the Energy Lab's own construction cost; reported as unknown rather than invented." },
+    { "type": "clan research", "name": "Energy Lab research chain", "note": "Fieldron > Prova > Dera > Lanka > Helios, in that order." },
+    { "type": "credits", "name": "15,000 credits", "note": "Dojo price of the Helios blueprint once research completes." }
+  ],
+  "researchChain": [
+    { "order": 1, "name": "Fieldron", "prerequisite": null, "clanAffinity": 2000, "credits": 5000, "resources": { "Fieldron Sample": 5, "Rubedo": 100, "Nano Spores": 500, "Polymer Bundle": 200 }, "researchHours": 72, "dojoBlueprintCredits": 15000 },
+    { "order": 2, "name": "Prova", "prerequisite": "Fieldron", "clanAffinity": 3000, "credits": 5000, "resources": { "Fieldron Sample": 5, "Rubedo": 100, "Nano Spores": 500, "Polymer Bundle": 200 }, "researchHours": 72, "dojoBlueprintCredits": 15000 },
+    { "order": 3, "name": "Dera", "prerequisite": "Prova", "clanAffinity": 3000, "credits": 7500, "resources": { "Fieldron Sample": 5, "Circuits": 200, "Nano Spores": 500, "Polymer Bundle": 250 }, "researchHours": 72, "dojoBlueprintCredits": 15000 },
+    { "order": 4, "name": "Lanka", "prerequisite": "Dera", "clanAffinity": 3000, "credits": 10000, "resources": { "Fieldron Sample": 10, "Ferrite": 500, "Plastids": 250, "Polymer Bundle": 500 }, "researchHours": 72, "dojoBlueprintCredits": 15000 },
+    { "order": 5, "name": "Helios", "prerequisite": "Lanka", "clanAffinity": 3000, "credits": 7500, "resources": { "Fieldron Sample": 7, "Oxium": 100, "Ferrite": 750, "Nano Spores": 350 }, "researchHours": 72, "dojoBlueprintCredits": 15000 }
+  ],
+  "researchChainNotes": "Costs shown are Ghost-clan (x1). Clan tier scales research resource costs up to x100 at Moon. Serial research time from an empty Energy Lab is 360 hours (15 days). In an established clan this whole section is already done and the step is just 'buy the blueprint'.",
+  "routes": [
+    {
+      "kind": "lab",
+      "where": "Clan Dojo - Energy Lab console",
+      "parts": ["Helios Blueprint (single blueprint; Helios has no separate component parts)"],
+      "dropRate": null,
+      "conditions": ["Helios research completed in the Energy Lab", "Lanka researched first"],
+      "notes": "15,000 credits. Cheapest sentinel blueprint in the dojo."
+    },
+    {
+      "kind": "market",
+      "where": "In-game Market",
+      "parts": ["Helios (fully built)"],
+      "dropRate": null,
+      "conditions": [],
+      "notes": "75 platinum, skips the entire research chain and the Forma."
+    }
+  ],
+  "purchase": {
+    "platinum": 75,
+    "what": "Fully built Helios from the Market",
+    "credits": 15000,
+    "creditsBuys": "Dojo blueprint only, after research",
+    "vendorStanding": null
+  },
+  "materials": [
+    { "name": "Fieldron", "quantity": 10, "whereFarmed": "Crafted in the Foundry from the Energy Lab blueprint; also 3 per Corpus Invasion reward, rare/reinforced Corpus storage containers, and Orb Vallis tier-4 bounties", "harvestable": false, "note": "Each craft yields 1 and costs 15,000 credits, 10 Fieldron Samples, 1 Control Module, 500 Salvage, 250 Plastids, 12h. Ten of them is the real cost of Helios." },
+    { "name": "Oxium", "quantity": 300, "whereFarmed": "Io, Jupiter (Defense, ~80 per 10 waves); Outer Terminus, Pluto (Defense); Elara, Jupiter (Survival); Cetus and Fortuna bounty stages 1-2 (100-200 per stage)", "harvestable": false, "note": "Oxium Ospreys must be killed by a player; self-destructs drop nothing." },
+    { "name": "Ferrite", "quantity": 5000, "whereFarmed": "Apollodorus, Mercury (Survival, ~4,000 per 10 min); Terminus, Mercury (Sabotage)", "harvestable": false },
+    { "name": "Forma", "quantity": 1, "whereFarmed": "Void relic common/uncommon reward across all four relic tiers; Orokin Derelict Defense rot C (22.56%); Steel Path Circuit tiers 1-4 (4.43%); Sorties and Archon Hunts (2.5-3%); Nakak in Cetus for 3,000 standing + 5,000 credits; Teshin's weekly Steel Path offers; daily tribute; Nightwave", "harvestable": false, "note": "Buildable Forma costs 35,000 credits, 1 Morphics, 1 Neural Sensors, 1 Neurodes, 1 Orokin Cell, 23h build (rush 10 plat). Market: 20 platinum each, 35 for a 3-pack." },
+    { "name": "Credits", "quantity": 5000, "whereFarmed": "Foundry cost for the Helios build itself", "harvestable": false }
+  ],
+  "intermediateBuilds": [
+    {
+      "name": "Fieldron",
+      "countNeeded": 10,
+      "perCraft": { "credits": 15000, "Fieldron Sample": 10, "Control Module": 1, "Salvage": 500, "Plastids": 250 },
+      "buildHours": 12,
+      "rushPlatinum": 5,
+      "totalIfAllCrafted": { "credits": 150000, "Fieldron Sample": 100, "Control Module": 10, "Salvage": 5000, "Plastids": 2500 },
+      "componentFarms": {
+        "Fieldron Sample": "Corpus territory on Venus, Phobos, Jupiter, Europa, Neptune, Pluto (drops of 1). Suggested nodes: Kelashin, Neptune (Survival, Dark Sector); Wahiba, Mars (Survival, Dark Sector); Kadesh, Mars (Defense, Dark Sector). Untradeable and unbuyable.",
+        "Control Module": "Teshub, Void (Exterminate); Hepit, Void (Capture). Higher Void drop chance than Neptune or Europa.",
+        "Salvage": "Carme, Jupiter (Mobile Defense, up to ~3,000 a run); Elara, Jupiter (Survival); Olympus, Mars (Disruption)",
+        "Plastids": "Helene, Saturn (Defense); Ophelia, Uranus (Survival); Piscinas, Saturn (Survival, Dark Sector)"
+      },
+      "note": "Foundry builds run in parallel, so all ten can finish in one 12h window if the inputs are in hand."
+    },
+    {
+      "name": "Forma",
+      "countNeeded": 1,
+      "perCraft": { "credits": 35000, "Morphics": 1, "Neural Sensors": 1, "Neurodes": 1, "Orokin Cell": 1 },
+      "buildHours": 23,
+      "rushPlatinum": 10,
+      "componentFarms": {
+        "Morphics": "Mars - Hellas (Exterminate), Gradivus (Sabotage), Augustus (Excavation), Olympus (Disruption)",
+        "Neural Sensors": "Jupiter - Elara (Survival), Sinai (Defense, Dark Sector), Themisto (Alad V assassination); Taveuni, Kuva Fortress (Exterminate)",
+        "Neurodes": "Magnacidium, Deimos (Lephantis assassination, 1-2 per run); Plato, Lua (Exterminate)",
+        "Orokin Cell": "Titan, Saturn (Survival); Magnacidium, Deimos (Lephantis); Exta, Ceres (Assassination); Gabii, Ceres (Survival, Dark Sector)"
+      },
+      "note": "Skippable by using a Forma already in inventory or buying one for 20 platinum."
+    }
+  ],
+  "buildTimes": {
+    "Helios (final)": { "hours": 24, "credits": 5000, "rushPlatinum": 35 },
+    "components": null,
+    "componentsNote": "Helios is a single-blueprint build; it has no Carapace/Cerebrum/Systems parts.",
+    "criticalPathHours": 24,
+    "criticalPathNote": "24h for Helios itself, plus 12h for Fieldron and 23h for Forma if those are not already in hand, plus up to 360h of dojo research in a clan that has none of the chain."
+  },
+  "effort": 5,
+  "effortWhy": "Trivial in an established clan, but from scratch it is a five-deep Energy Lab chain, ~15 days of research timers, 10 crafted Fieldron and a Forma.",
+  "gotchas": [
+    "Helios eats two companion slots, one for the sentinel and one for the bundled Deconstructor; a single free slot is not enough.",
+    "The 10 Fieldron are the real grind, not the sentinel: that is 100 Fieldron Samples, 10 Control Modules, 5,000 Salvage and 2,500 Plastids if you craft them all.",
+    "Fieldron Samples are untradeable and cannot be bought with platinum, so a friendly clanmate cannot hand them over.",
+    "Research resource costs scale with clan tier up to x100 for a Moon clan, so the numbers above are Ghost-clan figures only.",
+    "The build consumes a Forma, which is otherwise relic or 20-platinum currency; budget it before starting the build.",
+    "Helios Prime exists and is a separate relic-farmed item; researching Helios does not progress it.",
+    "Buying Helios for 75 platinum skips the entire chain and is cheaper than rushing any part of it."
+  ],
+  "corrections": [
+    {
+      "field": "prerequisites / researchChain / routes",
+      "suspectedError": "That Helios is a flat Cephalon Simaris standing purchase and the five-deep Energy Lab chain was our misread.",
+      "recheckedAgainst": ["https://wiki.warframe.com/w/Helios", "https://wiki.warframe.com/w/Energy_Lab", "https://wiki.warframe.com/w/Lanka"],
+      "wikiSays": "Helios is researched in the Clan Dojo Energy Lab, prerequisite Lanka; Lanka requires Dera, Dera requires Prova, Prova requires Fieldron, Fieldron has no prerequisite. Research: 3,000 clan affinity, 7,500 credits, 7 Fieldron Sample, 100 Oxium, 750 Ferrite, 350 Nano Spores, 72h. Dojo blueprint 15,000 credits. Build 24h, 5,000 credits, 10 Fieldron, 300 Oxium, 5,000 Ferrite, 1 Forma. Market 75 platinum. Ships with the Deconstructor.",
+      "outcome": "No change. The recheck confirmed the existing file field-for-field, including the five-deep chain and the 360h serial figure. Cephalon Simaris sells no Helios blueprint.",
+      "whatWasActuallyWrong": "The community claim, not the wiki read. Its likely origin is Simaris selling Detect Vulnerability, the Helios precept mod, for 75,000 standing (and the Heliocor blueprint at the same price).",
+      "checkedOn": "2026-09-08"
+    }
+  ],
+  "community": {
+    "sourceRejected": true,
+    "painLevel": null,
+    "recommendedMode": null,
+    "preferredRoute": null,
+    "timeEstimate": null,
+    "note": "The note's route, ratings and time estimates all describe farming Cephalon Simaris standing, which is not how Helios is acquired. Nothing in it applies to the acquisition checklist. The scanning material is kept only because Helios owners do return to Simaris for Detect Vulnerability at 75,000 standing.",
+    "traps": [
+      "Shade's Ghost and Huras Kubrow's Cloak break invisibility on scan; Ivara's Prowl does not.",
+      "Alerted enemies give reduced standing; back off and let them settle.",
+      "Sentinel Assault Mode and beast Elusive Posture make the pet alert everything.",
+      "The gear wheel is unusable in Duviri, so no scanning there."
+    ],
+    "tips": [
+      "Applies to Simaris standing (Detect Vulnerability), not to getting Helios itself.",
+      "Steel Path Orb Vallis or Plains, Archwing at ~130-150m: above ~100m enemies cannot detect you, so every scan is a stealth scan. Reported 3-10 minutes to cap daily standing.",
+      "Turn on enemy highlighting in Accessibility options.",
+      "Do the daily Synthesis Target scans first, then turn in; the ~5k-10k turn-in bonus does not count against the daily cap.",
+      "Buy the two Simaris scanner widgets first.",
+      "Spy cameras are scannable for ~130 standing each."
+    ],
+    "sources": ["four r/Warframe Cephalon Simaris standing threads (3mo, 6mo, ~1y old)"]
+  },
+  "conflicts": [
+    {
+      "wikiClaim": "Helios blueprint is 15,000 credits from the Clan Dojo Energy Lab console after a Fieldron > Prova > Dera > Lanka > Helios research chain, or 75 platinum built from the Market.",
+      "communityClaim": "Helios is a flat standing purchase from Cephalon Simaris in the Sanctuary, with no research at all.",
+      "show": "wiki",
+      "why": "Rechecked directly against the wiki. Simaris sells no Helios blueprint; the community route does not exist."
+    }
+  ],
+  "sources": [
+    "https://wiki.warframe.com/w/Helios",
+    "https://wiki.warframe.com/w/Detect_Vulnerability",
+    "https://wiki.warframe.com/w/Cephalon_Simaris",
+    "https://wiki.warframe.com/w/Energy_Lab",
+    "https://wiki.warframe.com/w/Lanka",
+    "https://wiki.warframe.com/w/Dera",
+    "https://wiki.warframe.com/w/Prova",
+    "https://wiki.warframe.com/w/Fieldron",
+    "https://wiki.warframe.com/w/Fieldron_Sample",
+    "https://wiki.warframe.com/w/Deconstructor",
+    "https://wiki.warframe.com/w/Sentinel",
+    "https://wiki.warframe.com/w/Forma",
+    "https://wiki.warframe.com/w/Oxium",
+    "https://wiki.warframe.com/w/Ferrite",
+    "https://wiki.warframe.com/w/Control_Module",
+    "https://wiki.warframe.com/w/Salvage",
+    "https://wiki.warframe.com/w/Plastids",
+    "https://wiki.warframe.com/w/Orokin_Cell",
+    "https://wiki.warframe.com/w/Neural_Sensors",
+    "https://wiki.warframe.com/w/Morphics",
+    "https://forums.warframe.com/topic/198407-helios-is-not-even-worth-the-research/"
+  ],
+  "discarded": [
+    {
+      "claim": "Forum advice to skip Helios entirely as 'not worth the research' and Deconstructor as 'total garbage'.",
+      "why": "Opinion from the 2013-2014 threads about combat value, not acquisition. Kept out of the route data; it does not change the effort rating because the route itself is unchanged."
+    },
+    {
+      "claim": "Helios has Carapace / Cerebrum / Systems component parts like a Warframe.",
+      "why": "The wiki manufacturing box lists a single blueprint with total costs only. No component breakdown exists; reported as null rather than fabricated."
+    },
+    {
+      "claim": "Community: Helios is a straight standing purchase from Cephalon Simaris in the Sanctuary, no research.",
+      "why": "False against the wiki, verified 2026-09-08. Helios is Energy Lab research gated behind Lanka. Simaris sells the Helios precept mod Detect Vulnerability for 75,000 standing, which is the likely source of the mix-up. See corrections."
+    },
+    {
+      "claim": "Community: pain level low but daily-capped; 3-10 minutes a day of Steel Path stealth scanning gets you Helios.",
+      "why": "Rests on the rejected Simaris route, so it rates the wrong grind. No effect on effort. Scanning technique retained under community.tips for Detect Vulnerability only."
+    }
+  ],
+  "unknowns": [
+    { "field": "prerequisites - Energy Lab construction cost", "note": "The Energy Lab wiki page does not list the room's own build cost or requirements. Null rather than guessed." },
+    { "field": "Fieldron Sample drop rate", "note": "Wiki states 'No mission drop tables with this item' and 'No enemy drop tables with this item'. No numeric rate exists to report; suggested nodes are the wiki's own opinion-flagged list." },
+    { "field": "routes[].dropRate", "note": "Both routes are purchases, not drops, so no rate applies." }
+  ]
+}

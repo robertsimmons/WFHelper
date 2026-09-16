@@ -4,7 +4,7 @@
   import { itemDb, wfmItems, componentOwnership, inventoryData } from "../stores/data.js";
   import { createPriceLoader } from "../lib/priceState.js";
   import { resolveItemPriceLookup } from "../lib/componentResolution.js";
-  import { buildCraftingTree } from "../lib/craftingTree.js";
+  import { buildCraftingTree, takeCraftingTreeRequest } from "../lib/craftingTree.js";
   import { buildParsedItemFromDb } from "../lib/parsedItemFromDb.js";
   import ItemImage from "../components/ItemImage.svelte";
   import DropsList from "../components/DropsList.svelte";
@@ -74,7 +74,8 @@
       navigationStack = [];
     }
     selectedComp = null;
-    showCraftingTree = pendingShowCraftingTree ?? false;
+    const treeRequested = takeCraftingTreeRequest();
+    showCraftingTree = pendingShowCraftingTree ?? treeRequested;
     // eslint-disable-next-line no-useless-assignment -- persists between reactive runs
     pendingShowCraftingTree = null;
     // eslint-disable-next-line no-useless-assignment -- persists between reactive runs

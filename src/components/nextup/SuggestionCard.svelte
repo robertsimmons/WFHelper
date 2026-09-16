@@ -1,8 +1,14 @@
 <script lang="ts">
   import { tr } from "../../lib/i18n.js";
+  import {
+    planRating,
+    type PlanBadge,
+    type PlanBadgeTone,
+  } from "../../lib/suggest/acquisition/plan/index.js";
   import { itemTiers } from "../../lib/suggest/acquisition/tiers.js";
   import { bannerAside, bannerFor } from "../../lib/suggest/bannerArt.js";
   import { CARD_HEIGHT } from "../../lib/suggest/grid.js";
+  import { partsRead, type PartsRead } from "../../lib/suggest/providers/acquisition.js";
   import { valenceRowsFor } from "../../lib/suggest/valence.js";
   import { itemDb } from "../../stores/data.js";
   import { overframeRankingsRevision } from "../../stores/overframeRankings.js";
@@ -33,9 +39,26 @@
     suggestion: Suggestion;
     onComplete: (count: number) => void;
     onDismiss: () => void;
+    /** Acquisition's read under the art and its effort meter. Left out, the
+     *  card takes both off the suggestion's own target, and a card with no
+     *  target draws neither. */
+    partsRead?: PartsRead | null | undefined;
+    /** 1..10; null is unrated and draws an empty meter. */
+    effort?: number | null | undefined;
+    /** The one shortcut or gate the art band carries; null draws nothing. */
+    badge?: PlanBadge | null | undefined;
+    onWorkOnThis?: (() => void) | undefined;
   }
 
-  const { suggestion, onComplete, onDismiss }: Props = $props();
+  const {
+    suggestion,
+    onComplete,
+    onDismiss,
+    partsRead: suppliedRead,
+    effort: suppliedEffort,
+    badge: suppliedBadge,
+    onWorkOnThis,
+  }: Props = $props();
 
   /** Long enough to read the card as done before the feed drops it. */
   const DONE_DWELL_MS = 700;
@@ -46,6 +69,25 @@
     "flex h-6 w-6 cursor-pointer items-center justify-center rounded border border-border " +
     "bg-bg-base text-text-muted transition-[border-color,color,background-color] duration-150 " +
     "hover:border-border-strong hover:text-text-primary";
+
+  const BADGE_TONE: Record<PlanBadgeTone, string> = {
+    circuit: "text-accent",
+    info: "text-info",
+    warn: "text-warning",
+  };
+
+  const EFFORT_STEPS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+  const EFFORT_TRACK = "bg-[color:var(--effort-track)]";
+
+  /** The whole lit run takes one colour, and segment five is always segment
+   *  five, so two meters read against each other at a glance. */
+  function effortFill(effort: number): string {
+    if (effort <= 3) return "bg-[color:var(--effort-light)]";
+    if (effort <= 5) return "bg-[color:var(--effort-fair)]";
+    if (effort <= 7) return "bg-[color:var(--effort-heavy)]";
+    return "bg-[color:var(--effort-grim)]";
+  }
 
   const STRIP: Record<ChoiceState, string> = {
     wanted: CHIP_TONE.good,
@@ -84,6 +126,24 @@
 
   const choices = $derived(suggestion.choices ?? []);
   const details = $derived(suggestion.details);
+  const target = $derived(details?.acquisition ?? null);
+  const read = $derived(suppliedRead ?? (target ? partsRead(target) : null));
+  const effort = $derived(suppliedEffort ?? (target ? planRating(target.name).effort : null));
+  const badge = $derived(suppliedBadge ?? (target ? planRating(target.name).badge : null));
+  // The meter holds its place whether or not anything has rated the item, so an
+  // unrated one reads as unknown rather than as easy.
+  const acquisitionFace = $derived(target !== null || suppliedRead != null);
+  const readText = $derived.by((): string => {
+    if (!read) return "";
+    if (read.ready) return $tr("nextUp.acqReadyToBuild");
+    const counts = { have: read.have, need: read.need };
+    const unit = read.unitKey ? $tr(read.unitKey) : null;
+    if (unit !== null) return $tr("nextUp.acqProgressUnit", { ...counts, unit });
+    return $tr(read.need === 1 ? "nextUp.acqProgressPart" : "nextUp.acqProgressParts", counts);
+  });
+  const effortLabel = $derived(
+    effort === null ? $tr("nextUp.acqEffortUnrated") : $tr("nextUp.acqEffortLabel", { effort }),
+  );
   // A reward that could be one of several kinds never claims to be one of them:
   // a known colour draws its two grades at once, an unknown one steps through
   // the family.
@@ -266,6 +326,11 @@
     event.stopPropagation();
     onDismiss();
   }
+
+  function clickWorkOnThis(event: MouseEvent): void {
+    event.stopPropagation();
+    onWorkOnThis?.();
+  }
 </script>
 
 <!-- Every card is the same box: a fixed art band over rows of fixed height, so
@@ -278,6 +343,7 @@
     : 'border-border hover:border-border-strong hover:bg-bg-hover'}"
   style="height: {CARD_HEIGHT}px"
   data-suggestion-card={suggestion.category}
+  data-suggestion-reward={suggestion.reward?.uniqueName}
   role="button"
   tabindex="0"
   aria-label={$tr("common.openDetailsFor", { name: suggestion.title })}
@@ -380,6 +446,14 @@
         <TierBadge tier={rewardTier} size="md" chip />
       </span>
     {/if}
+    <!-- The one place a timed shortcut or a gate reads on the card. -->
+    {#if badge}
+      <span
+        class="absolute bottom-1 right-1 z-[2] rounded-[var(--radius-sm)] border border-border
+               bg-bg-deep/70 px-1.5 text-[0.625rem] uppercase leading-4 tracking-[0.06em]
+               {BADGE_TONE[badge.tone]}">{badge.text}</span
+      >
+    {/if}
   </div>
 
   <div class="flex min-h-0 flex-1 flex-col gap-1.5 p-2">
@@ -443,6 +517,11 @@
       {#if cardState}
         <StateChip state={cardState} />
       {/if}
+      {#if read}
+        <span class="shrink-0 text-xs leading-4 {read.ready ? 'text-success' : 'text-text-primary'}"
+          >{readText}</span
+        >
+      {/if}
       {#if valence}
         <span class="min-w-0 truncate text-xs leading-4 text-text-primary" title={valence.name}
           >{valence.name}</span
@@ -458,7 +537,12 @@
           >{$tr("nextUp.tileBonusExact", { bonus: valencePercent(valence.bonus) })}</span
         >
       {:else if hasLine}
-        <p class="m-0 min-w-0 flex-1 truncate text-xs leading-4 text-text-secondary" title={why}>
+        <p
+          class="m-0 min-w-0 flex-1 truncate text-xs leading-4 text-text-secondary {read
+            ? 'text-right'
+            : ''}"
+          title={why}
+        >
           {#if line.segments.length > 0}{#each line.segments as segment, index (index)}<span
                 class={segment.tone ? SEGMENT_TONE[segment.tone] : ""}
                 >{index > 0 ? ", " : ""}{segment.text}</span
@@ -467,33 +551,55 @@
       {/if}
     </div>
 
-    <div class="mt-auto grid h-6 grid-cols-[minmax(0,1fr)_2.25rem_1.5rem] items-center gap-x-2">
-      {#if progress}
-        <div class="h-1.5 overflow-hidden rounded-full bg-bg-deep">
-          <div class="h-full rounded-full bg-accent" style="width: {progressPercent}%"></div>
-        </div>
-        <span class="text-right text-[0.625rem] leading-none text-text-muted"
-          >{progress.current}/{progress.required}</span
-        >
-      {/if}
-      <span class="col-start-3 h-6 w-6">
-        <!-- The count the step writes is the provider's, in the units the bar's
-             own row keeps: a shared allowance is stepped by one run, not by one
-             of whichever card asked. -->
-        {#if progress && complete}
-          <!-- Marked done takes the button out of use, never off the card. -->
+    {#if acquisitionFace}
+      <div class="mt-auto flex h-6 items-center gap-2">
+        <span class="flex flex-1 gap-[2px]" role="img" aria-label={effortLabel}>
+          {#each EFFORT_STEPS as step (step)}
+            <span
+              class="h-1 flex-1 rounded-[1px] {effort !== null && step <= effort
+                ? effortFill(effort)
+                : EFFORT_TRACK}"
+            ></span>
+          {/each}
+        </span>
+        {#if onWorkOnThis}
           <button
-            class="{ICON_BTN} font-display text-[0.6875rem] font-semibold leading-none
-                   disabled:cursor-default disabled:opacity-40"
-            disabled={done}
-            title={$tr("nextUp.addRunTitle")}
-            aria-label={$tr("nextUp.addRunTitle")}
-            onclick={(event) => clickAddRun(event, complete.count + 1)}
-            >{$tr("nextUp.addRun")}</button
+            class="flex h-6 shrink-0 cursor-pointer items-center rounded-[var(--radius-sm)]
+                   border border-accent bg-accent px-2 font-display text-[0.6875rem]
+                   font-semibold leading-none text-text-on-accent hover:brightness-110"
+            onclick={clickWorkOnThis}>{$tr("nextUp.acqWorkOnThis")}</button
           >
         {/if}
-      </span>
-    </div>
+      </div>
+    {:else}
+      <div class="mt-auto grid h-6 grid-cols-[minmax(0,1fr)_2.25rem_1.5rem] items-center gap-x-2">
+        {#if progress}
+          <div class="h-1.5 overflow-hidden rounded-full bg-bg-deep">
+            <div class="h-full rounded-full bg-accent" style="width: {progressPercent}%"></div>
+          </div>
+          <span class="text-right text-[0.625rem] leading-none text-text-muted"
+            >{progress.current}/{progress.required}</span
+          >
+        {/if}
+        <span class="col-start-3 h-6 w-6">
+          <!-- The count the step writes is the provider's, in the units the bar's
+             own row keeps: a shared allowance is stepped by one run, not by one
+             of whichever card asked. -->
+          {#if progress && complete}
+            <!-- Marked done takes the button out of use, never off the card. -->
+            <button
+              class="{ICON_BTN} font-display text-[0.6875rem] font-semibold leading-none
+                   disabled:cursor-default disabled:opacity-40"
+              disabled={done}
+              title={$tr("nextUp.addRunTitle")}
+              aria-label={$tr("nextUp.addRunTitle")}
+              onclick={(event) => clickAddRun(event, complete.count + 1)}
+              >{$tr("nextUp.addRun")}</button
+            >
+          {/if}
+        </span>
+      </div>
+    {/if}
   </div>
 </div>
 

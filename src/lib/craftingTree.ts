@@ -16,6 +16,9 @@ export interface CraftingTreeNode {
   isCraftable: boolean;
   /** True for blueprint-item child nodes (the "Hide blueprints" toggle filters these). */
   isBlueprintItem?: boolean;
+  /** A resource cooked from other resources - a batch of cut gems, a refined
+   *  alloy. It is a material of the build above it, never one of its parts. */
+  isConversion?: true;
   /** A filter removed children here, so the card must not offer to re-expand them. */
   childrenHidden?: boolean;
   recipe: RecipeData | null;
@@ -52,16 +55,70 @@ export const MAX_EXPAND_DEPTH = 3;
 /** Common resource path prefixes - never recurse into these sub-trees. */
 const LEAF_RESOURCE_PREFIXES = ["/Lotus/Types/Items/MiscItems/", "/Lotus/Types/Items/Research/"];
 
+// DE's ExportResources rows reach the item database under this category, and
+// hundreds of them carry a conversion recipe: the Sentient Core ladder, cut
+// gems and refined alloys, Ayatan stars, the Necramech resource-parts. Owning a
+// recipe must never promote one of those to a crafted component of whatever
+// asks for it - the category is the only thing that separates the two.
+const RESOURCE_CATEGORIES = new Set(["resource", "resources"]);
+
+export function isResourceEntry(entry: ItemDbEntry | undefined): boolean {
+  return RESOURCE_CATEGORIES.has(String(entry?.category ?? "").toLowerCase());
+}
+
+// Every warframe and weapon part DE ships also sits in ExportResources, so the
+// category on its own would leaf the whole component layer of a prime build.
+const PART_PATH = /\/Types\/Recipes\//i;
+
+function isBuildComponentEntry(uniqueName: string, entry: ItemDbEntry | undefined): boolean {
+  return entry?.isBuildComponent === true || PART_PATH.test(uniqueName);
+}
+
+// Hand-off for "open this in the foundry's crafting tree": the caller sets the
+// active item and flags the request, and the item modal takes it as it swaps in.
+let craftingTreeRequested = false;
+
+export function requestCraftingTree(): void {
+  craftingTreeRequested = true;
+}
+
+export function takeCraftingTreeRequest(): boolean {
+  const requested = craftingTreeRequested;
+  craftingTreeRequested = false;
+  return requested;
+}
+
+export interface CraftingTreeOptions {
+  /** Open a resource that is cooked from other resources - cut gems, refined
+   *  alloys - instead of stopping at it. Off leaves every other caller's tree
+   *  exactly as it was. */
+  expandConversions?: boolean;
+  /** Draw a part's own blueprint as a separate row, and read every row's count
+   *  off its own inventory spelling. Holding the blueprint is not holding the
+   *  built part: the alias that merges those two piles answers "in any form",
+   *  which is the conflation that made items read ready to build. */
+  splitPartBlueprints?: boolean;
+}
+
 interface BuildContext {
   itemDb: Record<string, ItemDbEntry>;
   ownership: Map<string, number>;
   maxDepth: number;
+  expandConversions: boolean;
+  splitPartBlueprints: boolean;
+}
+
+function ownedCount(ctx: BuildContext, uniqueName: string): number {
+  return ctx.splitPartBlueprints
+    ? (ctx.ownership.get(uniqueName) ?? 0)
+    : ownedComponentCount(uniqueName, ctx.ownership);
 }
 
 export function buildCraftingTree(
   uniqueName: string,
   itemDb: Record<string, ItemDbEntry>,
   ownership: Map<string, number>,
+  options: CraftingTreeOptions = {},
 ): CraftingTreeNode | null {
   const item = itemDb[uniqueName];
   if (!item?.recipe) return null;
@@ -69,7 +126,13 @@ export function buildCraftingTree(
   // The leaf rule stops recursion INTO a common resource; asking for its own
   // tree is explicit, so the root always shows its recipe.
   return buildNode(
-    { itemDb, ownership, maxDepth: MAX_DEPTH },
+    {
+      itemDb,
+      ownership,
+      maxDepth: MAX_DEPTH,
+      expandConversions: options.expandConversions === true,
+      splitPartBlueprints: options.splitPartBlueprints === true,
+    },
     uniqueName,
     1,
     item.recipe,
@@ -80,8 +143,15 @@ export function buildCraftingTree(
   );
 }
 
-function isLeafResource(uniqueName: string): boolean {
-  return LEAF_RESOURCE_PREFIXES.some((p) => uniqueName.startsWith(p));
+function isLeafResource(
+  uniqueName: string,
+  itemDb: Record<string, ItemDbEntry>,
+  expandConversions = false,
+): boolean {
+  if (LEAF_RESOURCE_PREFIXES.some((p) => uniqueName.startsWith(p))) return true;
+  const entry = itemDb[uniqueName];
+  if (isBuildComponentEntry(uniqueName, entry)) return false;
+  return !expandConversions && isResourceEntry(entry);
 }
 
 /** Two spellings of one inventory pile - the game never hands out both. */
@@ -132,7 +202,7 @@ function walkMaterialNames(
   for (const ing of recipe.ingredients) {
     const name = itemDb[ing.uniqueName]?.name;
     if (name) out.add(name);
-    if (!isLeafResource(ing.uniqueName)) {
+    if (!isLeafResource(ing.uniqueName, itemDb)) {
       walkMaterialNames(ing.uniqueName, itemDb, depth + 1, visited, out);
     }
   }
@@ -148,16 +218,19 @@ function buildNode(
   ancestors: Set<string> = new Set(),
   ignoreLeafRule = false,
 ): CraftingTreeNode {
-  const { itemDb, ownership } = ctx;
+  const { itemDb } = ctx;
   const item = itemDb[uniqueName];
   const name = item?.name || fallbackNameFromUniqueName(uniqueName);
   const imageUrl = item?.imageUrl || null;
-  const owned = ownedComponentCount(uniqueName, ownership);
+  const owned = ownedCount(ctx, uniqueName);
   const missing = Math.max(0, count - owned);
 
   // Treat common resources as leaf nodes even if they have recipes. Expanding
   // one is an explicit user request, so that node alone opts out of the rule.
-  const effectiveRecipe = !ignoreLeafRule && isLeafResource(uniqueName) ? null : recipe;
+  const effectiveRecipe =
+    !ignoreLeafRule && isLeafResource(uniqueName, itemDb, ctx.expandConversions) ? null : recipe;
+  const conversion =
+    effectiveRecipe !== null && !isBuildComponentEntry(uniqueName, item) && isResourceEntry(item);
 
   // A run of the recipe can yield several units (num), so blueprints,
   // ingredients, credits and time all scale with runs, not units.
@@ -169,15 +242,17 @@ function buildNode(
   if (effectiveRecipe && depth < ctx.maxDepth) {
     // Blueprints are not listed as ingredients. Skip alternate component spellings
     // (the same owned pile twice) and one already on the path above, which builds
-    // this very node and would hang it under itself.
+    // this very node and would hang it under itself. Split apart, the blueprint
+    // is its own line with its own count and cannot recurse: it has no children.
     if (
       effectiveRecipe.blueprintUniqueName &&
-      !isSameOwnedItem(uniqueName, effectiveRecipe.blueprintUniqueName) &&
-      !isAncestor(ancestors, effectiveRecipe.blueprintUniqueName)
+      (ctx.splitPartBlueprints ||
+        (!isSameOwnedItem(uniqueName, effectiveRecipe.blueprintUniqueName) &&
+          !isAncestor(ancestors, effectiveRecipe.blueprintUniqueName)))
     ) {
       const bpUn = effectiveRecipe.blueprintUniqueName;
       const bpItem = itemDb[bpUn];
-      const bpOwned = ownedComponentCount(bpUn, ownership);
+      const bpOwned = ownedCount(ctx, bpUn);
       // Reusable (infinite-use) blueprints cover any build count with one copy.
       const bpNeeded = effectiveRecipe.reusableBlueprint ? 1 : builds;
       children.push({
@@ -221,6 +296,7 @@ function buildNode(
     owned,
     missing,
     isCraftable: effectiveRecipe !== null,
+    ...(conversion ? { isConversion: true as const } : {}),
     recipe: effectiveRecipe,
     usedFor,
     children,
@@ -316,7 +392,7 @@ export function expandCraftingNode(
   const nextAncestors = new Set(expandedChildAncestors(node, itemDb, ancestors));
   // One level per click: every child re-earns its own chevron.
   return buildNode(
-    { itemDb, ownership, maxDepth: 1 },
+    { itemDb, ownership, maxDepth: 1, expandConversions: false, splitPartBlueprints: false },
     resolved.productUniqueName,
     missingUnits(node),
     resolved.recipe,
@@ -416,14 +492,19 @@ export function computeCraftingSummary(tree: CraftingTreeNode): CraftingTreeSumm
   const blueprintMap = new Map<string, Omit<CraftingTreeTally, "uniqueName">>();
   const resourceMap = new Map<string, Omit<CraftingTreeTally, "uniqueName">>();
 
-  function walk(node: CraftingTreeNode, depth: number): number {
+  function walk(node: CraftingTreeNode, depth: number, covered: boolean): number {
+    // A copy already in hand is not built again, and nothing under it is
+    // either, so neither shows up in the time still to spend.
+    const done = covered || node.owned >= node.count;
     let subtreeTime = 0;
     if (node.recipe) {
       // Same yield rule as the tree: costs accrue per run, and one recipe
       // cannot run twice in parallel, so repeat runs stack sequentially.
-      const runs = Math.max(1, Math.ceil(node.count / Math.max(1, node.recipe.num || 1)));
+      const yieldPerRun = Math.max(1, node.recipe.num || 1);
+      const runs = Math.max(1, Math.ceil(node.count / yieldPerRun));
       totalCredits += node.recipe.buildPrice * runs;
-      subtreeTime = node.recipe.buildTime * runs;
+      const runsLeft = done ? 0 : Math.ceil(Math.max(0, node.count - node.owned) / yieldPerRun);
+      subtreeTime = node.recipe.buildTime * runsLeft;
     }
 
     if (node.children.length === 0 && !node.isCraftable) {
@@ -457,7 +538,7 @@ export function computeCraftingSummary(tree: CraftingTreeNode): CraftingTreeSumm
       let maxChildTime = 0;
       let totalChildTime = 0;
       for (const child of node.children) {
-        const childTime = walk(child, depth + 1);
+        const childTime = walk(child, depth + 1, done);
         maxChildTime = Math.max(maxChildTime, childTime);
         totalChildTime += childTime;
       }
@@ -474,7 +555,7 @@ export function computeCraftingSummary(tree: CraftingTreeNode): CraftingTreeSumm
     return subtreeTime;
   }
 
-  walk(tree, 0);
+  walk(tree, 0, false);
   return {
     totalCredits,
     minBuildTime,

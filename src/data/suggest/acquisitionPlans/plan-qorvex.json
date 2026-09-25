@@ -1,0 +1,217 @@
+{
+  "name": "Qorvex",
+  "kind": "warframe",
+  "effort": 3,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "badges": [
+    { "text": "Cavia bounties", "tone": "info" },
+    { "text": "quest-gated", "tone": "warn" }
+  ],
+  "prices": [
+    { "label": "build", "amount": "70,000 cr", "money": false },
+    { "label": "built", "amount": "325 p", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "CODEX",
+      "sub": null,
+      "activity": "Whispers in the Walls",
+      "meta": "solo-only",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Heart of Deimos, then The New War",
+          "note": "quest prerequisites",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Whispers in the Walls",
+          "note": "awards Qorvex Blueprint",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Completing the quest unlocks Sanctum Anatomica and the Cavia syndicate."],
+      "bonuses": ["The main blueprint is free; only the three component blueprints need farming."],
+      "disclosures": []
+    },
+    {
+      "type": "bounty",
+      "place": "SANCTUM ANATOMICA, DEIMOS",
+      "sub": "Fibonacci",
+      "activity": "Cavia bounties",
+      "meta": "~13% per stage",
+      "mode": "cycle Tier 1, 2 and 3",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Neuroptics Blueprint",
+          "note": "13.04%, Tier 1 (Lvl 55-60)",
+          "alt": "or 20,000 Cavia standing at Bird 3",
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Chassis Blueprint",
+          "note": "13.56%, Tier 2 (Lvl 65-70)",
+          "alt": "or 20,000 Cavia standing at Bird 3",
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Systems Blueprint",
+          "note": "12.40%, Tier 3 (Lvl 75-80)",
+          "alt": "or 20,000 Cavia standing at Bird 3",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Part rewards roll at every bounty stage, not once per completed bounty.",
+        "Tier 4 and 5 never drop Qorvex parts. Run them for standing only, not for blueprints.",
+        "Cycle the three low tiers so each run can advance a missing component."
+      ],
+      "bonuses": [
+        "These Laboratory runs also drop the Entrati Obols, Necracoil, Stela and Lanthorns needed for the build.",
+        "Search for Voca while running bounties: an Echo Voca is required for the final build."
+      ],
+      "disclosures": [
+        {
+          "title": "standing is insurance, not the fast route",
+          "body": "Bird 3's component blueprints require Cavia Rank 2 (Researcher) and 20,000 standing each. Daily standing limits turn an all-pity set into several days, while the low-tier bounty drops are usually an evening or two."
+        }
+      ]
+    },
+    {
+      "type": "vendor",
+      "place": "SANCTUM ANATOMICA, DEIMOS",
+      "sub": null,
+      "activity": "Bird 3",
+      "meta": "Rank 2: Researcher",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Cavia standing", "amount": "60,000" }],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Neuroptics Blueprint",
+          "note": "20,000 standing",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Chassis Blueprint",
+          "note": "20,000 standing",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Systems Blueprint",
+          "note": "20,000 standing",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Only buy the components still missing after bounty runs; do not spend standing early on a part that can still drop.",
+        "Researcher itself needs 22,000 standing, 5 Shrill Voca, 60 Voidgel Orb, 12 Necracoil, 8 Stela and 25,000 credits."
+      ],
+      "bonuses": [
+        "Deep Archimedea, Netracells and incidental Voca can fund the safety net without a dedicated standing grind."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "HEPIT, VOID",
+      "sub": null,
+      "activity": "Capture",
+      "meta": "farm last",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "4",
+          "label": "Argon Crystal",
+          "note": "2 Chassis + 2 Systems",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Argon decays from inventory every day, so collect it immediately before starting the component builds."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build components, then Qorvex",
+      "meta": "12h each, then 72h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Neuroptics",
+          "note": "15,000 cr + 2,300 Obols + 45 Necracoil + 25 Stela + 3 Lanthorn",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Chassis",
+          "note": "15,000 cr + 1,900 Obols + 50 Necracoil + 20 Stela + 2 Argon",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Systems",
+          "note": "15,000 cr + 1,500 Obols + 60 Necracoil + 2 Argon + 4 Lanthorn",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Qorvex",
+          "note": "25,000 cr + 1 Echo Voca",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Needs a free Warframe slot before you can claim the finished Qorvex."],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

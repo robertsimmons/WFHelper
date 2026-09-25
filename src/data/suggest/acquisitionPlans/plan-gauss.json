@@ -1,0 +1,245 @@
+{
+  "name": "Gauss",
+  "kind": "warframe",
+  "effort": 8,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "badges": [
+    { "text": "Rotation C", "tone": "warn" },
+    { "text": "syndicate gate", "tone": "warn" }
+  ],
+  "prices": [
+    { "label": "blueprint", "amount": "30,000 cr", "money": false },
+    { "label": "built", "amount": "325 p", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "vendor",
+      "place": "MARKET",
+      "sub": null,
+      "activity": "buy blueprint",
+      "meta": "30,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Gauss Blueprint", "note": null, "alt": null, "done": false }
+      ],
+      "conditions": [
+        "Kappa only drops the three component blueprints; the main blueprint is a Market purchase."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "KAPPA, SEDNA",
+      "sub": null,
+      "activity": "Disruption",
+      "meta": "~12 C rewards per part expected",
+      "mode": "premade recommended",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Neuroptics Blueprint",
+          "note": "7.84%, Rotation C",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Chassis Blueprint",
+          "note": "7.84%, Rotation C",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Systems Blueprint",
+          "note": "7.84%, Rotation C",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Rounds 1-2 cannot pay C. Round 3 is C only with all four conduits defended; from round 4 onward, defend at least three.",
+        "Stay after the first C reward. Leaving at round 5 is not a reset benefit; it discards repeated C rewards.",
+        "Recruit a group that can kill Demolysts quickly; public groups commonly leave before the C table."
+      ],
+      "bonuses": [],
+      "disclosures": [
+        {
+          "title": "do not fail a conduit on purpose",
+          "body": "The often-repeated shortcut is wrong: 3 and 4 defended conduits have the same C table, and waiting for a Demolyst to destroy a conduit is slower than killing it."
+        }
+      ]
+    },
+    {
+      "type": "farm",
+      "place": "PLAINS OF EIDOLON, EARTH",
+      "sub": null,
+      "activity": "mine blue gem veins; refine at Old Man Suumbaat",
+      "meta": "Ostron rank Surah",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "plains-of-eidolon",
+      "rows": [
+        {
+          "qty": "3",
+          "label": "Radian Sentirum",
+          "note": "Gauss Chassis",
+          "alt": "tradeable",
+          "done": false
+        },
+        {
+          "qty": "3",
+          "label": "Heart Nyth",
+          "note": "Gauss Chassis",
+          "alt": "tradeable",
+          "done": false
+        },
+        {
+          "qty": "6",
+          "label": "Star Crimzian",
+          "note": "Gauss Chassis",
+          "alt": "tradeable",
+          "done": false
+        },
+        {
+          "qty": "55",
+          "label": "Grokdrul",
+          "note": "Gauss Chassis",
+          "alt": "tradeable",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Radian Sentirum requires Ostron Rank 4 (Surah) to refine; buying the refined gems bypasses the standing gate."
+      ],
+      "bonuses": ["Plague Star can replace much of this leg when it is active."],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "ORB VALLIS, VENUS",
+      "sub": "Deck 12 for mining",
+      "activity": "mine, gather sacs and loot Corpus containers",
+      "meta": "Solaris United rank Cove",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "orb-vallis",
+      "rows": [
+        {
+          "qty": "3",
+          "label": "Radiant Zodian",
+          "note": "Gauss Systems; tradeable",
+          "alt": "buy or trade",
+          "done": false
+        },
+        {
+          "qty": "3",
+          "label": "Marquise Thyst",
+          "note": "Gauss Systems; tradeable",
+          "alt": "buy or trade",
+          "done": false
+        },
+        {
+          "qty": "70",
+          "label": "Mytocardia Spore",
+          "note": "shoot sacs",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "85",
+          "label": "Thermal Sludge",
+          "note": "Corpus containers; untradeable",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Radiant Zodian and Marquise Thyst require Solaris United Rank 4 (Cove) to refine. Thermal Sludge cannot be traded, so every player must collect it."
+      ],
+      "bonuses": ["Loot companions and Resourceful Retriever help with the open-world materials."],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "THE VOID",
+      "sub": null,
+      "activity": "any Void mission",
+      "meta": "pick this up last",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "1",
+          "label": "Argon Crystal",
+          "note": "Gauss Neuroptics",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Argon decays after pickup, so farm it only when the other component materials are ready."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build components, then Gauss",
+      "meta": "12h each, then 72h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Neuroptics",
+          "note": "1 Argon, 1,600 Rubedo, 6,200 Salvage, 2,950 Alloy Plate",
+          "alt": null,
+          "done": false
+        },
+        { "qty": null, "label": "Chassis", "note": "Plains materials", "alt": null, "done": false },
+        {
+          "qty": null,
+          "label": "Systems",
+          "note": "Orb Vallis materials",
+          "alt": null,
+          "done": false
+        },
+        { "qty": null, "label": "Gauss", "note": "3 Orokin Cells", "alt": null, "done": false }
+      ],
+      "conditions": [
+        "The crafting gates are the difficult part of Gauss; trade for refined gems if you do not already have both Rank 4 syndicates."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

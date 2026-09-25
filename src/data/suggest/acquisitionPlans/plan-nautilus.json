@@ -1,0 +1,190 @@
+{
+  "name": "Nautilus",
+  "kind": "companion",
+  "effort": 7,
+  "tradeable": "parts only",
+  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "badges": [
+    { "text": "Railjack RNG", "tone": "warn" },
+    { "text": "buy built: 75 p", "tone": "info" }
+  ],
+  "prices": [
+    { "label": "build", "amount": "15,000 cr", "money": false },
+    { "label": "fully built", "amount": "75 p", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "EMPYREAN",
+      "sub": null,
+      "activity": "unlock or arrange a Neptune Proxima run",
+      "meta": "Railjack access",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "The Archwing",
+          "note": "enough to join another player's Empyrean mission",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Rising Tide",
+          "note": "needed only to use your own Railjack",
+          "alt": "join or recruit a host",
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "one Intrinsic at rank 3",
+          "note": "Neptune Proxima node access",
+          "alt": "only the host needs it in a pre-formed squad",
+          "done": false
+        },
+        {
+          "qty": "2",
+          "label": "free Companion slots",
+          "note": "one for Nautilus and one for its bundled Verglas",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Piloting Intrinsic rank 5 marks an abandoned derelict with a white waypoint; get it before committing to the farm if possible.",
+        "There is no Market blueprint or dojo-research route. The Market's 75 platinum listing is the completed sentinel."
+      ],
+      "bonuses": [
+        "A host taxi avoids both owning a Railjack and personally meeting the Neptune Proxima Intrinsic gate."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "NU-GUA MINES, NEPTUNE PROXIMA",
+      "sub": "Corpus Railjack Exterminate",
+      "activity": "board the abandoned derelict and hack its cache before extraction",
+      "meta": "6.06% each, cache B",
+      "mode": "fast AoE clear",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Nautilus Blueprint",
+          "note": "6.06% per derelict cache B roll",
+          "alt": "trade from another player",
+          "done": false
+        },
+        {
+          "qty": "1",
+          "label": "Nautilus Cerebrum",
+          "note": "6.06% per derelict cache B roll",
+          "alt": "trade from another player",
+          "done": false
+        },
+        {
+          "qty": "1",
+          "label": "Nautilus Carapace",
+          "note": "6.06% per derelict cache B roll",
+          "alt": "trade from another player",
+          "done": false
+        },
+        {
+          "qty": "1",
+          "label": "Nautilus Systems",
+          "note": "6.06% per derelict cache B roll",
+          "alt": "trade from another player",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The Ice Mine is a separate abandoned derelict in space, not the Disable Priority Targets secondary objective. It does not spawn every mission.",
+        "Fly to it in Archwing, board it and hack the marked terminal before completing the main objective. A mission with no derelict is a zero-roll run.",
+        "Arva Vector Defense is a slower fallback: its rotation B and C rates are 4.65% and 4.26% per part, respectively.",
+        "If the cache is collected after mission completion, its reward may appear only after transitioning to dry dock or the next mission; it is not lost."
+      ],
+      "bonuses": [
+        "Run an active Void Storm when possible: the Nautilus roll is unchanged, but you also earn relics, Corrupted Holokeys and other Railjack drops.",
+        "Docking between runs is harmless, but claims that it rerolls rewards are unconfirmed folklore."
+      ],
+      "disclosures": [
+        {
+          "title": "this is an RNG farm with a clean exit",
+          "body": "Each of the four tradeable drops shares a flat roughly 6% cache roll, with no pity system and duplicates possible. Nu-gua Mines is preferred because its short Exterminate clears give the better cache rate. Treat the derelict as the run's first objective; clearing only the mission objective misses the table entirely. Expected time is roughly 5–10 hours, so farming three unique pieces then buying the final missing piece is a sensible cap. In practice, compare that price with the 75 platinum completed Market purchase before buying a player set."
+        }
+      ]
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Nautilus",
+      "meta": "24h, 15,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": "1", "label": "Nautilus Cerebrum", "note": null, "alt": null, "done": false },
+        { "qty": "1", "label": "Nautilus Carapace", "note": null, "alt": null, "done": false },
+        { "qty": "1", "label": "Nautilus Systems", "note": null, "alt": null, "done": false },
+        {
+          "qty": "5",
+          "label": "Nullstones",
+          "note": "Neptune Proxima resource",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The normal build takes 24 hours. Claim only after confirming both required Companion slots are open."
+      ],
+      "bonuses": [
+        "Nautilus ships with Verglas, so no separate companion-weapon acquisition is needed."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "MOD CONFIG",
+      "sub": null,
+      "activity": "equip Cordon before taking it out",
+      "meta": "top-left slot",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Cordon",
+          "note": "put it in the first/top-left precept slot",
+          "alt": "unequip for conservation",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Companion precepts fire in reading order; burying Cordon in a lower slot makes it appear unreliable.",
+        "Cordon can pull tranquilized conservation animals, Nullifier bubbles and enemies past you. Unequip it for hunting and consider weekly Deep/Elite Archimedea modifiers.",
+        "Testing in the Simulacrum with AI paused makes Cordon look broken; enable AI."
+      ],
+      "bonuses": [
+        "Cordon's pull benefits from enemy movement-speed effects; Speed Nova extends its reach while slows shorten it."
+      ],
+      "disclosures": []
+    }
+  ]
+}

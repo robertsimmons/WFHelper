@@ -1,0 +1,129 @@
+{
+  "name": "Acceltra",
+  "kind": "primary",
+  "effort": 5,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 1, "unit": "blueprint" },
+  "badges": [
+    { "text": "enemy drop", "tone": "info" },
+    { "text": "2.5% each", "tone": "warn" }
+  ],
+  "prices": [{ "label": "built", "amount": "240 p", "money": false }],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "STAR CHART",
+      "sub": null,
+      "activity": "unlock Uranus",
+      "meta": "MR 8 to equip",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Ur, Uranus",
+          "note": "Dark Sector Disruption",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["There is no quest, syndicate or dojo gate beyond reaching Uranus."],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "UR, URANUS",
+      "sub": null,
+      "activity": "Dark Sector Disruption; kill every Demolisher",
+      "meta": "~10 full rounds average",
+      "mode": "short runs",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Acceltra Blueprint",
+          "note": "2.5% per Demolisher",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The blueprint is a floor drop from each Demolisher corpse, not an end-of-round reward. Use Vacuum or Fetch, and ask a squad to mark drops.",
+        "Each of four Demolishers per full round rolls independently. Protecting every conduit means four chances.",
+        "The blueprint is untradeable; a duplicate only sells for credits."
+      ],
+      "bonuses": [
+        "Akarius shares the same 2.5% Demolisher table, and deeper runs also make a solid Neo/Axi relic farm."
+      ],
+      "disclosures": [
+        {
+          "title": "reset before the mission gets ugly",
+          "body": "For a dedicated Acceltra farm, do one to a few rounds, extract, and re-queue. Your per-Demolisher odds never improve with depth, while enemy level does. Stay deep only when you also want the rotation-C relic rewards."
+        },
+        {
+          "title": "Demolisher survival",
+          "body": "At Ur, Demolishers are immune to Viral. Bring raw weapon damage with Heat or Slash; Cold slows them. Their nullifier pulse strips nearby buffs, so attack in the window after it fires."
+        }
+      ]
+    },
+    {
+      "type": "farm",
+      "place": "GANYMEDE, JUPITER",
+      "sub": null,
+      "activity": "Disruption or Amalgam enemies",
+      "meta": "200 needed",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "200",
+          "label": "Hexenon",
+          "note": "does not drop on Uranus",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "This is the only focused build material that the Ur farm does not naturally cover."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Acceltra",
+      "meta": "24h, MR 8",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": "25,000", "label": "Credits", "note": null, "alt": null, "done": false },
+        { "qty": "4", "label": "Neurodes", "note": null, "alt": null, "done": false },
+        { "qty": "200", "label": "Hexenon", "note": null, "alt": null, "done": false },
+        { "qty": "925", "label": "Plastids", "note": null, "alt": null, "done": false },
+        { "qty": "8,000", "label": "Nano Spores", "note": null, "alt": null, "done": false }
+      ],
+      "conditions": ["You need Mastery Rank 8 to equip the completed weapon."],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

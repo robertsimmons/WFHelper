@@ -1,0 +1,222 @@
+{
+  "name": "Diriga",
+  "kind": "companion",
+  "effort": 3,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 1, "unit": "blueprint" },
+  "badges": [
+    { "text": "Market blueprint", "tone": "info" },
+    { "text": "farm Argon last", "tone": "warn" }
+  ],
+  "prices": [
+    { "label": "blueprint", "amount": "100,000 cr", "money": false },
+    { "label": "build", "amount": "15,000 cr", "money": false },
+    { "label": "fully built", "amount": "75 p", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "ORBITER",
+      "sub": null,
+      "activity": "check Companion inventory before buying",
+      "meta": "2 slots",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "2",
+          "label": "free Companion slots",
+          "note": "one for Diriga and one for its bundled Vulklok",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Diriga has no listed Mastery Rank requirement and no quest, clan, boss, relic, or RNG gate.",
+        "Vulklok and Diriga's three precepts arrive automatically. Calculated Shot is no longer obtainable, so never sell it.",
+        "Calculated Shot and Assault Mode cannot be equipped together."
+      ],
+      "bonuses": ["The credit blueprint route avoids the 75 platinum built purchase entirely."],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "MARKET",
+      "sub": "Equipment > Sentinels",
+      "activity": "purchase Diriga Blueprint",
+      "meta": "100,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Diriga Blueprint",
+          "note": "permanent Market listing",
+          "alt": "buy the built sentinel for 75 platinum",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Buy the blueprint and have the ordinary materials ready before collecting Argon."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "VOID, ANY",
+      "sub": null,
+      "activity": "containers, Argon Pegmatites and Corrupted Vor",
+      "meta": "farm last",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "2",
+          "label": "Argon Crystal",
+          "note": "Hepit, Teshub, Ukko, Oxomoco or Mot",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Argon decays after the next GMT 00:00 reset, then halves at each following reset.",
+        "Cancelling a Foundry build does not return its Argon, so start the build on the day it is farmed."
+      ],
+      "bonuses": [
+        "Corrupted Vor has a 50% chance to drop either an Argon Crystal or an Orokin Cell."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "STAR CHART, VARIOUS",
+      "sub": null,
+      "activity": "bank the standard recipe materials",
+      "meta": "before the Void run",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": "600", "label": "Alloy Plate", "note": null, "alt": null, "done": false },
+        { "qty": "350", "label": "Plastids", "note": null, "alt": null, "done": false },
+        { "qty": "500", "label": "Polymer Bundle", "note": null, "alt": null, "done": false }
+      ],
+      "conditions": [],
+      "bonuses": ["These are the only materials to bank before the short Argon trip."],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Diriga",
+      "meta": "24h, 15,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": "600", "label": "Alloy Plate", "note": null, "alt": null, "done": false },
+        { "qty": "350", "label": "Plastids", "note": null, "alt": null, "done": false },
+        { "qty": "500", "label": "Polymer Bundle", "note": null, "alt": null, "done": false },
+        { "qty": "2", "label": "Argon Crystal", "note": null, "alt": null, "done": false }
+      ],
+      "conditions": ["The 30 platinum rush is optional; the normal build takes 24 hours."],
+      "bonuses": [
+        "Claiming Diriga also supplies Vulklok, Calculated Shot, Arc Coil and Electro Pulse."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "CETUS AND FORTUNA",
+      "sub": null,
+      "activity": "buy the Bond setup after building",
+      "meta": "standing-gated",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [
+        { "currency": "Ostron standing", "amount": "40,000" },
+        { "currency": "Solaris United standing", "amount": "40,000" }
+      ],
+      "map": "orb-vallis",
+      "rows": [
+        {
+          "qty": null,
+          "label": "Manifold Bond",
+          "note": "Master Teasonai; Ostron Trusted, 20,000 standing",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Mystic Bond",
+          "note": "Master Teasonai; Ostron Trusted, 20,000 standing",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Momentous Bond",
+          "note": "The Business; Solaris United Doer, 20,000 standing",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Tenacious Bond",
+          "note": "The Business; Solaris United Doer, 20,000 standing",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Synth Deconstruct",
+          "note": "Cephalon Simaris Sanctuary offering; verify its current standing price in-game",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Standing caps, not mission RNG, make the Bond set take several days.",
+        "Manifold Bond is the central upgrade: Arc Coil applies every damage type on the companion weapon, regardless of status chance or weighting.",
+        "Reinforced Bond cannot activate on Diriga because its base shields are too low."
+      ],
+      "bonuses": [
+        "For priming, use a companion weapon with many distinct damage types; do not prioritize raw damage.",
+        "Arc Coil can trigger Archon Stretch, while Synth Deconstruct plus Equilibrium is a strong separate energy engine.",
+        "Place Calculated Shot last or remove it: Arc Coil blocks it from firing and avoids drawing sentinel fire."
+      ],
+      "disclosures": [
+        {
+          "title": "the acquisition is easy; the build is not",
+          "body": "Diriga itself is a predictable Market blueprint plus a one-day Foundry timer. The reason to delay judgment until Manifold Bond is installed is that the community's primer build depends on Arc Coil spreading the weapon's full palette of damage types. The Bond vendors need Ostron Trusted and Solaris United Doer, so the standing path—not the sentinel—is the multi-day portion."
+        },
+        {
+          "title": "uptime and limitations",
+          "body": "Sentinels self-revive after incapacitation but cannot be manually revived; Momentous Bond and Primed Regen help close that downtime. Diriga cannot use Loyal or Resourceful Retriever, so it gives up beast-only loot doubling. Avoid Heat on the companion weapon if your own build relies on Heat damage-over-time inheritance, because a companion Heat proc can take priority."
+        }
+      ]
+    }
+  ]
+}

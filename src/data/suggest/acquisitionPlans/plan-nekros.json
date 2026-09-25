@@ -1,0 +1,181 @@
+{
+  "name": "Nekros",
+  "kind": "warframe",
+  "effort": 4,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "badges": [
+    { "text": "public recommended", "tone": "warn" },
+    { "text": "RNG boss drops", "tone": "warn" }
+  ],
+  "prices": [
+    { "label": "blueprint", "amount": "100,000 cr", "money": false },
+    { "label": "built", "amount": "375 p", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "vendor",
+      "place": "MARKET",
+      "sub": null,
+      "activity": "buy blueprint",
+      "meta": "100,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Nekros Blueprint", "note": null, "alt": null, "done": false }
+      ],
+      "conditions": [
+        "Lephantis drops only the three component blueprints; buy the main blueprint first."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "boss",
+      "place": "MAGNACIDIUM, DEIMOS",
+      "sub": null,
+      "activity": "Assassination, Lephantis",
+      "meta": "33.33% each; ~3 runs per part expected",
+      "mode": "public recommended",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Neuroptics Blueprint",
+          "note": "33.33%",
+          "alt": null,
+          "done": false
+        },
+        { "qty": null, "label": "Chassis Blueprint", "note": "33.33%", "alt": null, "done": false },
+        { "qty": null, "label": "Systems Blueprint", "note": "33.33%", "alt": null, "done": false }
+      ],
+      "conditions": [
+        "The old Orokin Derelict and crafted assassination keys are gone; Magnacidium is a normal Deimos node.",
+        "Extract after the kill: the component is an end-of-mission reward.",
+        "Run normal mode, not Nightmare. Death Detonation can softlock phase 1 on this node."
+      ],
+      "bonuses": ["Lephantis heads can also drop Orokin Cells and Neurodes for the final build."],
+      "disclosures": [
+        {
+          "title": "make Lephantis go quickly",
+          "body": "Only the brief pink weak spots are vulnerable. Bring a fast-firing, multishot weapon rather than one huge shot, and use public squads if solo kills are taking more than a few minutes. Slow effects and punch-through make the windows easier to use."
+        },
+        {
+          "title": "do not stall solo",
+          "body": "The mission can auto-fail after 15 minutes without an enemy kill; Lephantis heads do not count. If the fight is dragging, leave to re-gear or queue public instead of waiting out weak spots."
+        }
+      ]
+    },
+    {
+      "type": "farm",
+      "place": "ELARA, JUPITER",
+      "sub": null,
+      "activity": "Survival",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": "1", "label": "Neural Sensor", "note": "Neuroptics", "alt": null, "done": false }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "TESHUB, VOID",
+      "sub": null,
+      "activity": "Exterminate",
+      "meta": "higher drop chance than Neptune or Europa",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": "1", "label": "Control Module", "note": "Systems", "alt": null, "done": false },
+        { "qty": "500", "label": "Plastids", "note": "Systems", "alt": null, "done": false }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build all components, then Nekros",
+      "meta": "12h each, then 72h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Neuroptics", "note": "Neural Sensor", "alt": null, "done": false },
+        { "qty": null, "label": "Chassis", "note": null, "alt": null, "done": false },
+        {
+          "qty": null,
+          "label": "Systems",
+          "note": "Control Module, 500 Plastids",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Nekros",
+          "note": "3 Orokin Cells, 25,000 cr",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Start all three component crafts together. Have a free Warframe slot before claiming Nekros."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "THE CIRCUIT, DU VIRI",
+      "sub": null,
+      "activity": "weekly Warframe reward path",
+      "meta": "only when Nekros is offered",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Nekros set",
+          "note": "tiers 2, 5, 8, 10",
+          "alt": "deterministic alternative",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Requires The Duviri Paradox and Nekros to be in the current weekly rotation.",
+        "This avoids boss-drop RNG but a full tier 0-10 path is a substantial continuous run."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

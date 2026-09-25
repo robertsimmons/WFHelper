@@ -1,0 +1,273 @@
+{
+  "name": "Kuva Nukor",
+  "kind": "secondary",
+  "effort": 9,
+  "tradeable": "converted Lich only",
+  "progress": { "have": 0, "need": 1, "unit": "weapon" },
+  "badges": [
+    { "text": "Kuva Lich", "tone": "warn" },
+    { "text": "MR 5", "tone": "info" },
+    { "text": "Railjack required", "tone": "warn" }
+  ],
+  "prices": [
+    { "label": "60% Lich contract", "amount": "500+ p", "money": false },
+    { "label": "Elemental Vice", "amount": "20 p", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "STAR CHART",
+      "sub": null,
+      "activity": "unlock the Kuva Lich finale",
+      "meta": "one-time",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "The War Within",
+          "note": "quest complete",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Mastery Rank 5",
+          "note": "to create a Kuva Lich",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Railjack",
+          "note": "for the Saturn Proxima confrontation",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Rank 5 Railjack Intrinsics",
+          "note": "Saturn Proxima access",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "You can have only one active adversary. Clear or convert any existing Lich, Sister, or Coda before starting.",
+        "The final showdown is locked behind Saturn Proxima; check the Railjack requirements before investing in a Lich."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "relics",
+      "place": "KUVA SIPHON OR KUVA FLOOD, ANY",
+      "sub": null,
+      "activity": "earn and crack Requiem Eterna Relics",
+      "meta": "3 mods per Lich",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "3",
+          "label": "charged Requiem mods",
+          "note": "one sequence; 3 charges each",
+          "alt": "trade for a missing symbol",
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Oull",
+          "note": "wildcard Requiem; optional but very strong",
+          "alt": "25% Kuva Lich vanquish drop",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Kuva Floods guarantee a Requiem Eterna Relic; Kuva Siphons have a 50% chance. Crack Eterna at a Kuva Fortress fissure for one of the eight Requiem mods.",
+        "Each Requiem has three charges. Only a successful Lich kill consumes a charge, but plan to replace about one mod per Lich vanquished.",
+        "Palladino sells retired Requiem I-IV relics for 10 Riven Slivers each, capped at 10 weekly. Requiem mods themselves are tradeable."
+      ],
+      "bonuses": [
+        "Oull substitutes for any Requiem and has three charges. Two Oulls cannot be equipped in the same sequence."
+      ],
+      "disclosures": [
+        {
+          "title": "stock mods before starting",
+          "body": "A new Lich cannot be removed until its three-Requiem sequence is solved. Bring a usable mod pool first so the tax does not trap you while farming your first set."
+        }
+      ]
+    },
+    {
+      "type": "boss",
+      "place": "CASSINI, SATURN",
+      "sub": null,
+      "activity": "Capture; spawn and inspect Kuva Larvlings",
+      "meta": "complete rejects to force Nukor",
+      "mode": "regular level 20+ Grineer mission",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Kuva Nukor Larvling",
+          "note": "weapon preview must say Kuva Nukor",
+          "alt": "buy a converted Kuva Nukor Lich from another player",
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Magnetic progenitor",
+          "note": "Mercy with Mag, Mesa, Cyte-09, or another Magnetic frame",
+          "alt": "Elemental Vice can change it at rank 40",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "After the yellow screen flash, kill 10 enemies within 60 seconds to spawn the Larvling; add 10 required kills for each extra squadmate. Stand within 3 m of it to preview the weapon before Mercy.",
+        "If the preview is not Kuva Nukor, leave it alive and complete the mission. The shown weapon leaves the candidate pool until it cycles; aborting does not reject it.",
+        "The Warframe that performs the Mercy fixes the bonus element. Magnetic is the usual choice for the Nukor's status-primer role; its native element is Radiation."
+      ],
+      "bonuses": [
+        "Cassini Capture is the usual fast solo loop. Telesto Exterminate and Adaro Exterminate are alternatives."
+      ],
+      "disclosures": [
+        {
+          "title": "never abort a rejected Larvling",
+          "body": "Finishing without Mercy is the only way to narrow the weapon pool and force a Nukor. Accepting any Larvling clears the whole reject list, so do not take a consolation weapon mid-loop."
+        }
+      ]
+    },
+    {
+      "type": "boss",
+      "place": "LICH INFLUENCE NODES",
+      "sub": "Earth through Kuva Fortress",
+      "activity": "kill Thralls, reveal mods, and test the sequence",
+      "meta": "~1–2 h per Lich after setup",
+      "mode": "public for faster Murmurs",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "3",
+          "label": "revealed Requiems",
+          "note": "Murmurs reveal mods, not their order",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "correct Parazon sequence",
+          "note": "required to open Saturn Proxima",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Thralls on your Lich's influence nodes build Murmurs and rage. Squadmates' Thralls also give Murmurs, but do not raise your Lich's rage.",
+        "Once the first mod is revealed, stab whenever the Lich appears. A wrong attempt ranks it up but grants the squad 10 Murmurs and tests its position; skip only a first appearance with no revealed mod.",
+        "Use long Survival, Defense, Excavation, or Interception nodes for abundant Thralls, then fast missions when only rage is needed."
+      ],
+      "bonuses": [
+        "A Requiem Ultimatum forces a confrontation. Palladino sells one weekly for 10 Riven Slivers; use it solo so it cannot summon a squadmate's adversary."
+      ],
+      "disclosures": [
+        {
+          "title": "use Oull to cap the guessing",
+          "body": "With one known mod, try Oull → mod 1 → random; Oull → mod 2 → mod 1; mod 1 → Oull → mod 2; then mod 2 → Oull → mod 1. This guarantees the kill by Lich level 4 in the worst case."
+        }
+      ]
+    },
+    {
+      "type": "boss",
+      "place": "SATURN PROXIMA",
+      "sub": "Kuva Lich Confrontation",
+      "activity": "Railjack Skirmish; finish the Lich",
+      "meta": "choose Vanquish",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "1",
+          "label": "Kuva Nukor",
+          "note": "fully built; Foundry delivery",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Choose Vanquish, never Convert. Conversion gives a tradeable Lich contract instead of the weapon.",
+        "The weapon bypasses its normal Mastery Rank 13 requirement when claimed from a Lich, but still needs its own weapon slot.",
+        "A vanquish has a 25% chance each to award Oull and a Requiem Ultimatum."
+      ],
+      "bonuses": ["The Nukor arrives built; no crafting materials or Foundry timer are needed."],
+      "disclosures": []
+    },
+    {
+      "type": "craft",
+      "place": "ORBITER, MODDING",
+      "sub": null,
+      "activity": "optional Valence Fusion toward 60%",
+      "meta": "bank copies first",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "60% Magnetic bonus",
+          "note": "optional optimization goal",
+          "alt": "stop at the first usable roll",
+          "done": false
+        },
+        {
+          "qty": "5",
+          "label": "Forma",
+          "note": "needed for rank 40 and Elemental Vice",
+          "alt": "keep the original Magnetic copy",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Valence Fusion uses the higher bonus × 1.1, capped at 60%. Results at 58% or higher round to 60%; a displayed 53% roll guarantees 60% on one more fusion.",
+        "Keep copies and fuse every donor into the highest roll. Fusing low rolls together early wastes progress if a later copy beats them.",
+        "Start fusion from the Nukor you want to keep. Catalysts, Forma, Exilus adapters, Focus lenses, and Elemental Vice on the donor are destroyed.",
+        "Elemental Vice enables free element swapping for this weapon after rank 40. Buy it from Eleanor at Hex rank 5 for 50,000 standing or from the Market for 20 platinum."
+      ],
+      "bonuses": [
+        "Only one copy needs Magnetic because Valence Fusion lets you select the surviving element; Elemental Vice later makes swaps free."
+      ],
+      "disclosures": [
+        {
+          "title": "the 60% chase is optional",
+          "body": "A 60% Nukor is a multi-Lich project. Secure a usable Magnetic copy first, then keep high rolls and make fusions only when their donor cannot beat the copy you are keeping."
+        },
+        {
+          "title": "no Incarnon route",
+          "body": "Kuva Nukor has no Incarnon Genesis adapter. Do not wait for a Circuit rotation; no adversary weapon currently has one."
+        }
+      ]
+    }
+  ]
+}

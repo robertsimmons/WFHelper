@@ -1,0 +1,270 @@
+{
+  "name": "Tenet Arca Plasmor",
+  "kind": "primary",
+  "effort": 9,
+  "tradeable": "converted Sister only",
+  "progress": { "have": 0, "need": 1, "unit": "weapon" },
+  "badges": [
+    { "text": "Sister of Parvos", "tone": "warn" },
+    { "text": "MR 5", "tone": "info" },
+    { "text": "Railjack required", "tone": "warn" }
+  ],
+  "prices": [
+    { "label": "market bundle", "amount": "240 p", "money": false },
+    { "label": "Sister contract", "amount": "varies", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "STAR CHART",
+      "sub": null,
+      "activity": "unlock the Sister finale",
+      "meta": "one-time",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "The War Within",
+          "note": "quest complete",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Call of the Tempestarii",
+          "note": "quest complete",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "The Deadlock Protocol",
+          "note": "for Granum Crowns",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Mastery Rank 5",
+          "note": "to create a Sister",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Railjack + Intrinsics rank 3",
+          "note": "Neptune Proxima confrontation",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "You can have only one active adversary. Clear or convert any existing Lich, Sister, or Coda before starting.",
+        "The final showdown is locked behind Neptune Proxima; check the Railjack requirements before committing to a Sister."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "relics",
+      "place": "KUVA SIPHON OR KUVA FLOOD, ANY",
+      "sub": null,
+      "activity": "earn and crack Requiem Eterna Relics",
+      "meta": "3 mods per Sister",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "3",
+          "label": "charged Requiem mods",
+          "note": "one sequence; 3 charges each",
+          "alt": "trade duplicates or buy cheap mods from players",
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Oull",
+          "note": "wildcard Requiem; optional but very strong",
+          "alt": "25% Sister vanquish drop",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Requiem Eterna Relics contain all eight Requiem mods at equal odds and cannot be refined with Void Traces.",
+        "Palladino also sells retired Requiem I-IV relics for 10 Riven Slivers each, capped at 10 per week."
+      ],
+      "bonuses": [
+        "Oull substitutes for any Requiem and has three charges. It lets you reveal only two mods before testing the sequence."
+      ],
+      "disclosures": [
+        {
+          "title": "stock mods before spawning",
+          "body": "A new Sister is not removable until her three-Requiem sequence is solved. Have a usable Requiem pool first so the adversary does not become a roadblock."
+        }
+      ]
+    },
+    {
+      "type": "boss",
+      "place": "HYDRA, PLUTO",
+      "sub": "Corpus Ship",
+      "activity": "Capture, then inspect Sister Candidates",
+      "meta": "up to 11 completed runs to force it",
+      "mode": "solo, normal",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Zenith Granum Crown",
+          "note": "Treasurer, level 31+ Corpus Ship",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Tenet Arca Plasmor Candidate",
+          "note": "weapon preview must say Tenet Arca Plasmor",
+          "alt": "buy a converted Tenet Arca Plasmor Sister from another player",
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Heat progenitor",
+          "note": "Ember, Protea, Wisp, or another Heat frame",
+          "alt": "Cold or Electricity are strong second-status options",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Capture the target, then spend a Zenith Crown at the Golden Hand and earn at least Rank 1 in Nightmare Granum Void (25 kills solo). The Candidate appears while extracting.",
+        "The downed Candidate previews her exact weapon before Mercy. Mercy only Tenet Arca Plasmor; the Warframe performing it fixes the progenitor element.",
+        "If the preview is wrong, leave her downed and complete the mission. That weapon leaves the 11-weapon cycle until every weapon has appeared; aborting does not advance the knockout cycle.",
+        "Do not run Steel Path for this: it gives identical Sister results with much tougher Granum enemies. A Candidate can flee, so chase her before extracting."
+      ],
+      "bonuses": [
+        "Bring Xoris and stay near the fight: charged detonations on captive Solaris extend the Granum timer, and Errant Specters drop time triangles."
+      ],
+      "disclosures": [
+        {
+          "title": "make the weapon roll deterministic",
+          "body": "Pre-cycle unwanted Candidates before you need the gun. Refuse one, finish the mission, and repeat until Tenet Arca Plasmor is the only weapon left; then the next Candidate is guaranteed. A Golden Hand too near extraction can suppress the Candidate, so restart if the tile layout is bad."
+        }
+      ]
+    },
+    {
+      "type": "boss",
+      "place": "SISTER INFLUENCE NODES",
+      "sub": "origin system",
+      "activity": "Mercy Hounds, reveal mods, and test the sequence",
+      "meta": "~180 Murmurs; roughly 1–3 h",
+      "mode": "solo or public",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "3",
+          "label": "revealed Requiems",
+          "note": "Murmurs reveal mods, not their order",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "correct Parazon sequence",
+          "note": "opens Neptune Proxima",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Parazon-Mercy the Sister's Hounds on her controlled nodes to gain Murmur and build rage. Each Sister stab also awards progress.",
+        "Wrong sequence attempts make her rank up and raise her territory's enemy levels, but they reveal sequence information and award a large Murmur bonus.",
+        "Stab her when she appears once you have a reasonable guess; waiting for all three reveals wastes encounters. A Requiem Ultimatum from Palladino force-spawns her regardless of rage."
+      ],
+      "bonuses": [
+        "Oull in the third slot cuts the necessary reveal work roughly in half. Sisters have only three Hounds per mission and generally build rage quickly."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "boss",
+      "place": "NEPTUNE PROXIMA",
+      "sub": "Sister Confrontation",
+      "activity": "Railjack Skirmish; finish the Sister",
+      "meta": "choose Vanquish",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "1",
+          "label": "Tenet Arca Plasmor",
+          "note": "built; Foundry delivery",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Kill the Sister's Hounds and two Warframe Specters before she can be damaged.",
+        "Choose Vanquish, never Convert. Conversion gives a tradeable Sister contract and no weapon.",
+        "The weapon bypasses its normal Mastery Rank restriction when claimed, but it still requires its own weapon slot."
+      ],
+      "bonuses": [
+        "The weapon arrives built; no crafting materials or Foundry timer are needed. Vanquishing also has a 25% chance to award Oull."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "craft",
+      "place": "ORBITER, MODDING",
+      "sub": null,
+      "activity": "optional Valence Fusion toward 60%",
+      "meta": "bank copies first",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "60% bonus",
+          "note": "optional collection or optimization goal",
+          "alt": "stop at the first usable roll",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Valence Fusion sets the result to min(1.1 × the higher bonus, 60%). Any result at 58% or higher rounds to 60%.",
+        "Start fusion from the copy you want to keep. Catalysts, Forma, Exilus adapters, Focus lenses, and Elemental Vice on the donor are destroyed.",
+        "If the elements differ, choose the one to preserve. Elemental Vice can later change element after rank 40 (five Forma), but never the percentage."
+      ],
+      "bonuses": ["A displayed 52.8% or higher donor or recipient reaches 60% in one fusion."],
+      "disclosures": [
+        {
+          "title": "a 60% roll means repeat Sisters",
+          "body": "From the 25% floor, a 60% result can take up to nine fusions. Keep the first functional weapon and treat maxing the bonus as a separate, long-term goal."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,272 @@
+{
+  "name": "Volt Prime",
+  "kind": "warframe-prime",
+  "effort": 9,
+  "tradeable": true,
+  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "badges": [
+    { "text": "vaulted", "tone": "warn" },
+    { "text": "Baro exception", "tone": "info" }
+  ],
+  "prices": [
+    { "label": "set, player trade", "amount": "~45-70 p", "money": false },
+    { "label": "Regal Aya, when active", "amount": "3", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "vendor",
+      "place": "PLAYER TRADE",
+      "sub": null,
+      "activity": "buy the complete set or individual parts",
+      "meta": "usual practical route while vaulted",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "1",
+          "label": "Volt Prime set",
+          "note": "Blueprint, Chassis, Neuroptics, Systems",
+          "alt": "~45-70 p reported; verify live price",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Volt Prime is vaulted: his relics are absent from normal mission drop tables.",
+        "The parts and relics remain tradeable. Buying the set is normally faster than dedicated Aya farming while his Prime Resurgence rotation is inactive."
+      ],
+      "bonuses": [
+        "Selling current prime parts for Platinum can fund the set faster than waiting on an unannounced rotation.",
+        "Buying relics is a middle path, but leaves the fissure RNG to you."
+      ],
+      "disclosures": [
+        {
+          "title": "price is a snapshot",
+          "body": "The 45-70 Platinum range came from recent community reports, not a live market check. Confirm the price before trading."
+        }
+      ]
+    },
+    {
+      "type": "currency",
+      "place": "CAMBION DRIFT, DEIMOS",
+      "sub": "Necralisk",
+      "activity": "Tier 5 bounty, Mother",
+      "meta": "bank Aya for a future rotation",
+      "mode": "Lv 40-60 or Steel Path",
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "Aya", "amount": "20" },
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "20",
+          "label": "Aya",
+          "note": "rough radshare budget; carries over",
+          "alt": "Cetus Tier 5 bounties",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Aya cannot buy Volt relics until Volt returns to Varzia's active Prime Resurgence stock.",
+        "Deimos Tier 5 has a 43.48% Aya chance at the final stage; complete bonus objectives because the final stage rolls twice.",
+        "Resource and Drop Chance Boosters, Blessings, and Retriever mods do not improve Aya rewards."
+      ],
+      "bonuses": [
+        "Use the fast brute-force Tier 5 bounty when it is available.",
+        "Aya is best earned alongside standing or other bounty goals; Fortuna bounties and dedicated Void Aya runs are weaker routes."
+      ],
+      "disclosures": [
+        {
+          "title": "Aya is not a Volt voucher",
+          "body": "Prime Resurgence relics are sold only by Varzia during the item's rotation; they do not return to normal mission drop tables. Aya can be stockpiled, but cannot be spent on Volt today if he is off rotation."
+        }
+      ]
+    },
+    {
+      "type": "vendor",
+      "place": "MAROO'S BAZAAR, MARS",
+      "sub": null,
+      "activity": "Varzia, 1 Aya per relic",
+      "meta": "only during a Volt Prime rotation",
+      "mode": null,
+      "live": { "state": "blocked", "text": "Vaulted; check Prime Resurgence" },
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Aya", "amount": "20" }],
+      "map": "maroos-bazaar",
+      "rows": [
+        {
+          "qty": "4",
+          "label": "Lith O2",
+          "note": "Blueprint, Common",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "4",
+          "label": "Meso O3",
+          "note": "Chassis, Uncommon",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "4",
+          "label": "Axi L4",
+          "note": "Systems, Uncommon",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "12",
+          "label": "Neo V8",
+          "note": "Neuroptics, Rare",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Confirm Varzia's current relic IDs before buying. This was the Volt offering in the last Loki/Volt rotation.",
+        "Varzia's stock rotates every 28 days at 18:00 UTC, but Digital Extremes publishes no fixed cycle.",
+        "Buy enough relics before the rotation closes; purchased relics are tradeable and stay openable forever."
+      ],
+      "bonuses": [
+        "The Orbiter Relic Segment and Prime Resurgence Market tab access the same Varzia stock.",
+        "A Volt bought directly with 3 Regal Aya arrives built with a slot and Orokin Reactor, but is only available during his rotation."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "BARO KI'TEER",
+      "sub": "any relay, every other Friday",
+      "activity": "buy his two Volt relics if stocked",
+      "meta": "stock is unpredictable",
+      "mode": null,
+      "live": { "state": "blocked", "text": "Check current Baro inventory" },
+      "skip": null,
+      "earns": null,
+      "spends": [
+        { "currency": "Ducats", "amount": "2,000" },
+        { "currency": "Credits", "amount": "880,000" }
+      ],
+      "map": null,
+      "rows": [
+        {
+          "qty": "4",
+          "label": "Neo O1",
+          "note": "Blueprint Common; Systems Uncommon",
+          "alt": "125 Ducats + 55,000 cr each",
+          "done": false
+        },
+        {
+          "qty": "12",
+          "label": "Axi V8",
+          "note": "Chassis Uncommon; Neuroptics Rare",
+          "alt": "125 Ducats + 55,000 cr each",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Baro is a real alternative while Volt is vaulted, but he is not guaranteed to bring either relic on a visit.",
+        "The displayed 16-relic budget covers a conservative radshare plan; stop buying once you have the needed parts.",
+        "Baro visits for 48 hours every two weeks. Check his live inventory rather than planning around an assumed visit."
+      ],
+      "bonuses": [
+        "Neo O1 and Axi V8 are tradeable, so a seller can supply them even when Baro does not.",
+        "The Axi V8 route puts the difficult Neuroptics and Chassis in one relic era."
+      ],
+      "disclosures": [
+        {
+          "title": "Baro does not unvault Volt",
+          "body": "He is an intermittent exception to Volt's vault status. His relics do not make Volt available from mission drop tables or from off-rotation Varzia stock."
+        }
+      ]
+    },
+    {
+      "type": "fissure",
+      "place": "ANY VOID FISSURE",
+      "sub": null,
+      "activity": "crack the matching relic era",
+      "meta": "Neuroptics is the bottleneck",
+      "mode": "four-player Radiant radshare",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Volt Prime Blueprint",
+          "note": "Lith O2 or Neo O1, Common",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Volt Prime Chassis",
+          "note": "Meso O3 or Axi V8, Uncommon: 20% Radiant",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Volt Prime Systems",
+          "note": "Axi L4 or Neo O1, Uncommon: 20% Radiant",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Volt Prime Neuroptics",
+          "note": "Neo V8 or Axi V8, Rare: 10% Radiant",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Refine Uncommon and Rare target relics to Radiant. A four-player Radiant share gives a 34.39% chance of at least one Rare reward.",
+        "Run Common target relics Intact: refinement lowers a Common reward from 25.33% to 16.67%.",
+        "Collect 10 Reactant before extraction. Every squadmate may choose the same reward, so take another player's Volt part when it appears."
+      ],
+      "bonuses": [
+        "Use Radshare.xyz or the Vaulted Relic Community Discord for old-relic groups; recruiting chat can be slow for vaulted relics.",
+        "For a 1-Aya relic, radshare saves time; a stagger uses fewer traces but takes roughly four times as long."
+      ],
+      "disclosures": [
+        {
+          "title": "do not public a Radiant rare relic",
+          "body": "A public Neo V8 or Axi V8 run risks 100 Void Traces for only a 10% solo Rare roll. Confirm the exact relic and Radiant refinement with all four players before launching."
+        }
+      ]
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build components, then Volt Prime",
+      "meta": "12h each, then 72h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Volt Prime Neuroptics", "note": null, "alt": null, "done": false },
+        { "qty": null, "label": "Volt Prime Chassis", "note": null, "alt": null, "done": false },
+        { "qty": null, "label": "Volt Prime Systems", "note": null, "alt": null, "done": false },
+        { "qty": null, "label": "Volt Prime", "note": null, "alt": null, "done": false }
+      ],
+      "conditions": [
+        "Components can build in parallel. Keep a free Warframe slot available for the final claim."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

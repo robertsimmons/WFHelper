@@ -1,0 +1,158 @@
+{
+  "name": "Nataruk",
+  "kind": "primary",
+  "effort": 6,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 1, "unit": "weapon" },
+  "badges": [
+    { "text": "The New War reward", "tone": "warn" },
+    { "text": "built + Catalyst", "tone": "info" }
+  ],
+  "prices": [],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "QUESTS",
+      "sub": null,
+      "activity": "prepare for The New War",
+      "meta": "Railjack + Amp + Prelude to War",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Own a Railjack",
+          "note": "Rising Tide builds one",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Own an Amp",
+          "note": "the free Mote Amp qualifies",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Prelude to War",
+          "note": "Chimera Prologue, Erra, and The Maker",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The New War is at the end of the main quest spine, including The Sacrifice. These are its direct equipment and quest requirements.",
+        "Do not pre-farm a Necramech or Paracesis for this: those requirements were removed, and the quest provides a Necramech for its short section."
+      ],
+      "bonuses": [
+        "A Ticker crewmate set to Engineer and free Sigma-series Railjack parts from a clan dojo make the Railjack sequences very forgiving."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "gate",
+      "place": "THE CODEX",
+      "sub": null,
+      "activity": "complete The New War",
+      "meta": "guaranteed; no RNG or Foundry time",
+      "mode": "solo quest",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Nataruk",
+          "note": "quest reward; pre-installed Orokin Catalyst",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The reward arrives built with a free weapon slot, an Orokin Catalyst, and four innate polarities. There is no blueprint, drop table, crafting cost, or replay reward.",
+        "The weapon is untradeable. Do not sell it: replaying the quest does not award another copy."
+      ],
+      "bonuses": [
+        "Its Perfect Shot is a native charge mechanic, not an Incarnon form; Nataruk has no Incarnon Evolution or Duviri route to complete."
+      ],
+      "disclosures": [
+        {
+          "title": "quest prep, not gear grind",
+          "body": "The quest is long but has save points, and it cannot permanently trap a player. Bring your familiar frame and weapons; the practical prep is a working Railjack and an Amp, not an endgame Necramech build."
+        }
+      ]
+    },
+    {
+      "type": "farm",
+      "place": "ORB VALLIS OR PLAINS OF EIDOLON",
+      "sub": "Steel Path open world",
+      "activity": "scan unalerted enemies from Archwing",
+      "meta": "cap Simaris standing in ~4-10 min",
+      "mode": "only if you sold Nataruk",
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "Simaris Standing", "amount": "100,000" },
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "100,000",
+          "label": "Simaris Standing",
+          "note": "repurchase cost; roughly 3-5 capped days at high MR",
+          "alt": "Daily Synthesis Target turn-in after capping can exceed the daily cap",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "This entire route is only for a previously sold Nataruk; quest completion gives the normal copy immediately.",
+        "Turn on enemy highlighting in Accessibility, stay about 150m up, and scan red enemy silhouettes before they notice you. Alerted enemies award less standing.",
+        "On Orb Vallis, loop Temple of Profit to the nearby anti-air emplacement and back to refresh targets. On Plains, Hek's Stiletto is an easy scanning anchor."
+      ],
+      "bonuses": [
+        "The Cross-Matrix Widget can double scans and the Sol-Battery Widget removes scanner charges, but their standing costs compete directly with the 100,000 needed here.",
+        "Ivara, Loki, or Octavia on Steel Path stealth Exterminate is a slower alternative if Archwing scanning is not appealing."
+      ],
+      "disclosures": [
+        {
+          "title": "bank the overflow correctly",
+          "body": "First reach the daily Simaris standing cap through scans, then turn in the Daily Synthesis Target. Its standing reward ignores the cap, so turning it in first wastes the overflow."
+        }
+      ]
+    },
+    {
+      "type": "vendor",
+      "place": "ANY RELAY",
+      "sub": "Cephalon Simaris",
+      "activity": "repurchase Nataruk",
+      "meta": "100,000 standing; sold copies only",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Simaris Standing", "amount": "100,000" }],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Nataruk",
+          "note": "only re-acquisition path",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Confirm the offering in-game before spending: the research could not verify whether this copy also includes the quest reward's pre-installed Orokin Catalyst.",
+        "The four polarities are innate to Nataruk and are not dependent on the quest reward copy."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

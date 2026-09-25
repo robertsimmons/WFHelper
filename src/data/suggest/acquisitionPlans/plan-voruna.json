@@ -1,0 +1,217 @@
+{
+  "name": "Voruna",
+  "kind": "warframe",
+  "effort": 6,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "badges": [
+    { "text": "hard pity", "tone": "info" },
+    { "text": "Rotation C", "tone": "warn" }
+  ],
+  "prices": [{ "label": "built", "amount": "325 p", "money": false }],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "QUESTS",
+      "sub": null,
+      "activity": "The War Within, then Angels of the Zariman",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "The War Within",
+          "note": "unlocks Lua Conjunction Survival",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Angels of the Zariman",
+          "note": "unlocks Yonta and Voidgel Orbs",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The War Within alone gives access to the missions, but Angels is required for the pity shop and two component materials."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "CIRCULUS, LUA",
+      "sub": null,
+      "activity": "Conjunction Survival",
+      "meta": "~3-4h all-buy ceiling",
+      "mode": "public squad, 20-minute chunks",
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "Lua Thrax Plasm", "amount": "475" },
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Voruna Blueprint",
+          "note": "12.24%, Rotation C at 20m",
+          "alt": "or 125 Plasm at Yonta",
+          "done": false
+        },
+        {
+          "qty": "3",
+          "label": "component blueprints",
+          "note": "8.16% each, Rotation C at 20m",
+          "alt": "or 75 Plasm each at Yonta",
+          "done": false
+        },
+        {
+          "qty": "20",
+          "label": "Somatic Fibers",
+          "note": "Rotation A drops them",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Only rotation C can drop Voruna parts: extract on 20/40/60-minute marks, never at 19 minutes.",
+        "Circulus has roughly double Yuvarium's part chances and pays 5 guaranteed Plasm each rotation; use it unless it is beyond your squad.",
+        "Eclipse Thrax need an Operator Void Beam finishing blow. Regroup before five-minute marks so their Plasm pickups do not despawn after 60 seconds.",
+        "The 475 target covers buying all four blueprints (350) plus the 125 Plasm consumed by crafting; subtract only after checking which drops you already have."
+      ],
+      "bonuses": [
+        "Run when Circulus is an Omnia Fissure for relic rewards and its stacking endless-fissure bonus.",
+        "A full squad spawns five Thrax per rotation instead of two solo. Resource Boosters help Plasm dropped by Thrax, not the fixed rotation reward.",
+        "Security Bypasses near life-support towers can speed the mission clock; Orokin Eye or Golden Instinct can locate them."
+      ],
+      "disclosures": [
+        {
+          "title": "the farm is currency, not luck",
+          "body": "Do not chase repeated rotation-C drops. Bank Plasm while you try, then buy every blueprint still missing from Yonta together. This makes the farm finite even with no part drops."
+        }
+      ]
+    },
+    {
+      "type": "vendor",
+      "place": "CHRYSALITH, ZARIMAN",
+      "sub": null,
+      "activity": "Archimedean Yonta",
+      "meta": "pity shop",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Lua Thrax Plasm", "amount": "350" }],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Voruna Blueprint",
+          "note": "125 Plasm",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "3",
+          "label": "component blueprints",
+          "note": "75 Plasm each",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Buy only the blueprints that did not drop, while retaining 125 Plasm for Foundry costs."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "ZARIMAN",
+      "sub": "Halako Perimeter or level 60-65 bounty",
+      "activity": "Voidgel Orb collection",
+      "meta": "50 total",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "50",
+          "label": "Voidgel Orb",
+          "note": "20 Chassis + 30 Systems",
+          "alt": "bounty pays 5 at once",
+          "done": false
+        },
+        {
+          "qty": "5",
+          "label": "Nitain Extract",
+          "note": "Systems requirement",
+          "alt": "Nightwave: 15 Creds for 5",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Voidgel Orbs are Zariman-only; gather them before starting the Foundry so blueprints do not sit unbuildable."
+      ],
+      "bonuses": ["Unlike Plasm, Voidgel benefits from resource boosters and blessings."],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build components, then Voruna",
+      "meta": "12h each, then 72h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Neuroptics",
+          "note": "20 Somatic Fibers + 25 Plasm",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Chassis",
+          "note": "20 Voidgel Orbs + 25 Plasm",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Systems",
+          "note": "30 Voidgel Orbs + 5 Nitain + 25 Plasm",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Voruna",
+          "note": "25,000 cr + 50 Plasm",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Components also require Alloy Plate, Polymer Bundle, Ferrite, Rubedo and Salvage."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

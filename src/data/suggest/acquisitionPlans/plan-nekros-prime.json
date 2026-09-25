@@ -1,0 +1,231 @@
+{
+  "name": "Nekros Prime",
+  "kind": "warframe-prime",
+  "effort": 7,
+  "tradeable": true,
+  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "badges": [
+    { "text": "vaulted", "tone": "warn" },
+    { "text": "Prime Resurgence", "tone": "info" }
+  ],
+  "prices": [{ "label": "set, player trade", "amount": "<100 p", "money": false }],
+  "groups": [
+    {
+      "type": "currency",
+      "place": "CAMBION DRIFT, DEIMOS",
+      "sub": "Necralisk",
+      "activity": "Tier 5 bounty, Mother",
+      "meta": "about 1h during a rotation",
+      "mode": "Lv 40-60 or Steel Path",
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "Aya", "amount": "20" },
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "20",
+          "label": "Aya",
+          "note": "one Aya per Varzia relic; buy extras for Systems",
+          "alt": "Cetus or Fortuna high-tier bounties",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Nekros Prime is vaulted. As of the research check on 2026-09-11 he was not in the active Prime Resurgence rotation; verify Varzia's live offering before farming.",
+        "Tier-5 Deimos final-stage Aya chance is 43.5%. Complete bonus objectives: the bonus adds another reward roll.",
+        "Aya carries over between rotations, but farming a huge bank is unnecessary: relics cost only one Aya each."
+      ],
+      "bonuses": [
+        "Deimos avoids Cetus drone-escort and cache stages and can also yield valuable mods.",
+        "Use a fast open-world frame such as Volt, Titania, or Nova."
+      ],
+      "disclosures": [
+        {
+          "title": "the calendar is the gate",
+          "body": "Prime Resurgence changes every 28 days at 18:00 UTC. Watch Varzia's Next Offering panel; no normal mission currently drops the vaulted relics while Nekros is absent."
+        }
+      ]
+    },
+    {
+      "type": "vendor",
+      "place": "MAROO'S BAZAAR, MARS",
+      "sub": null,
+      "activity": "Varzia, 1 Aya per relic",
+      "meta": "only during a Nekros rotation",
+      "mode": null,
+      "live": { "state": "blocked", "text": "Vaulted; check Prime Resurgence" },
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Aya", "amount": "20" }],
+      "map": "maroos-bazaar",
+      "rows": [
+        {
+          "qty": "8",
+          "label": "Systems relic",
+          "note": "Rare; current relic ID depends on rotation pairing",
+          "alt": "old Lith N2 / Meso N5 / Neo N3, N7, or N11 relics",
+          "done": false
+        },
+        {
+          "qty": "4",
+          "label": "Blueprint relic",
+          "note": "Uncommon",
+          "alt": "old vaulted relics also work",
+          "done": false
+        },
+        {
+          "qty": "4",
+          "label": "Neuroptics relic",
+          "note": "Uncommon",
+          "alt": "old vaulted relics also work",
+          "done": false
+        },
+        {
+          "qty": "2",
+          "label": "Chassis relic",
+          "note": "Common",
+          "alt": "old vaulted relics also work",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Buy the exact relics shown by Varzia when Nekros returns. His relic IDs change with the pairing, so do not rely on an old rotation's names.",
+        "The most recent reported pairings included Lith H10 / Lith K11 / Neo G5 / Meso N16 with Harrow, and Lith T3 / Meso O4 / Axi S6 / Neo N11 with Oberon.",
+        "Buy all needed relics before the rotation closes; relics are tradeable and do not expire."
+      ],
+      "bonuses": [
+        "Varzia is also available through the Orbiter Relic Segment or Prime Resurgence Market tab."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "fissure",
+      "place": "ANY VOID FISSURE",
+      "sub": null,
+      "activity": "crack matching Nekros relics",
+      "meta": "Systems is the bottleneck",
+      "mode": "Radiant radshare for Systems; public for others",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Nekros Prime Blueprint",
+          "note": "Uncommon: 20% Radiant",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Nekros Prime Neuroptics",
+          "note": "Uncommon: 20% Radiant",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Nekros Prime Chassis",
+          "note": "Common: 25.33% Intact",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Nekros Prime Systems",
+          "note": "Rare: 10% Radiant",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Refine only the Systems relic to Radiant: four Radiant relics give a 34.39% chance that at least one squad reward is the Rare part.",
+        "Run the Chassis relic Intact. Refinement lowers its Common chance from 25.33% to 16.67%.",
+        "Collect 10 Reactant before extraction; a relic without 10 Reactant does not open."
+      ],
+      "bonuses": [
+        "For old vaulted radshares, use the Vaulted Relic Community Discord or filter Recruit Chat by the exact relic name.",
+        "Choose a squadmate's duplicate reward when available: you receive the item and they receive extra Void Traces.",
+        "Do not force-start another fissure before every squadmate has selected a relic."
+      ],
+      "disclosures": [
+        {
+          "title": "do not spend Traces on the wrong relic",
+          "body": "Radiant helps the rare Systems part. It makes Common drops less likely, so it is counterproductive for the Chassis relic. Check that every radshare member actually equipped a Radiant relic before launch."
+        }
+      ]
+    },
+    {
+      "type": "farm",
+      "place": "VOID",
+      "sub": null,
+      "activity": "Survival or Defense",
+      "meta": "last, before Chassis build",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "void",
+      "rows": [
+        {
+          "qty": "2",
+          "label": "Argon Crystal",
+          "note": "Chassis requirement",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Argon decays after 24 hours, so farm it only once the Chassis blueprint and its other resources are ready."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build components, then Nekros Prime",
+      "meta": "12h each, then 72h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Nekros Prime Neuroptics",
+          "note": "12,000 Polymer Bundle",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Nekros Prime Chassis",
+          "note": "2 Argon Crystals",
+          "alt": null,
+          "done": false
+        },
+        { "qty": null, "label": "Nekros Prime Systems", "note": null, "alt": null, "done": false },
+        {
+          "qty": null,
+          "label": "Nekros Prime",
+          "note": "1 Orokin Cell",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Start each component immediately. All three build in parallel; the finished frame takes another 72 hours and needs a free Warframe slot to claim."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

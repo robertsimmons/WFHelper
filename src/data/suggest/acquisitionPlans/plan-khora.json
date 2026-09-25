@@ -1,0 +1,210 @@
+{
+  "name": "Khora",
+  "kind": "warframe",
+  "effort": 3,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "badges": [
+    { "text": "Sanctuary Onslaught", "tone": "info" },
+    { "text": "Kavat code gate", "tone": "warn" }
+  ],
+  "prices": [
+    { "label": "blueprint", "amount": "35,000 cr", "money": false },
+    { "label": "built", "amount": "325 p", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "QUESTS",
+      "sub": null,
+      "activity": "complete The New Strange",
+      "meta": "unlocks Sanctuary Onslaught",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "The New Strange", "note": "required", "alt": null, "done": false }
+      ],
+      "conditions": [
+        "Complete it to unlock Simaris' Sanctuary and normal Sanctuary Onslaught. Khora parts do not drop from Elite Sanctuary Onslaught."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "MARKET",
+      "sub": null,
+      "activity": "buy blueprint",
+      "meta": "35,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Khora Blueprint", "note": null, "alt": null, "done": false }
+      ],
+      "conditions": [
+        "The main blueprint is a credits Market purchase; it is no longer an Onslaught drop."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "SANCTUARY ONLSAUGHT",
+      "sub": "Simaris' Sanctuary",
+      "activity": "normal Sanctuary Onslaught",
+      "meta": "~11-14 rotations per part expected",
+      "mode": "public or nuke-frame solo",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Neuroptics Blueprint",
+          "note": "7.14% A/B, 9.09% C",
+          "alt": "Circuit tier 2 on Khora week",
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Chassis Blueprint",
+          "note": "7.14% A/B, 9.09% C",
+          "alt": "Circuit tier 5 on Khora week",
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Systems Blueprint",
+          "note": "7.14% A/B, 9.09% C",
+          "alt": "Circuit tier 8 on Khora week",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Rewards follow A-A-B-C every two zones: zones 1-2 and 3-4 are A, 5-6 B, and 7-8 C.",
+        "Use normal SO only. Elite SO has different rewards and cannot drop Khora parts.",
+        "Bring high range and a reliable room-clearer so efficiency does not stall; public squads share affinity and can make the run easier."
+      ],
+      "bonuses": [
+        "After The Duviri Paradox, The Circuit guarantees Neuroptics at tier 2, Chassis at tier 5, Systems at tier 8, and the main blueprint at tier 10 during Khora's rotation week."
+      ],
+      "disclosures": [
+        {
+          "title": "normal, not Elite",
+          "body": "This is the common wrong turn. Select normal Sanctuary Onslaught: all three Khora components are in its A, B, and C reward tables."
+        }
+      ]
+    },
+    {
+      "type": "farm",
+      "place": "HORAND, DEIMOS",
+      "sub": "Capture",
+      "activity": "scan live feral Kavats",
+      "meta": "9 Kavat Genetic Codes total",
+      "mode": "2-3 minute runs",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "deimos",
+      "rows": [
+        {
+          "qty": "9",
+          "label": "Kavat Genetic Code",
+          "note": "2 Neuroptics, 5 Chassis, 2 Systems",
+          "alt": "5 p each from Market",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Feral Kavats have a 25% chance to yield a code when scanned. Scan them alive: corpses grant Simaris standing but no code.",
+        "Avoid ragdolls; sleep, invisibility, or hard crowd control makes scanning safer. Remove offensive companion precepts so your pet does not kill them first.",
+        "Formido (Exterminate) and Phlegyas (Sabotage) are viable alternates if you prefer them. Vasca Kavats on the Plains do not yield codes."
+      ],
+      "bonuses": [
+        "Steel Path, both resource boosters, Resourceful Retriever, and the Synthesis Scanner Cross-Matrix widget can substantially improve returns.",
+        "A full squad spawns more Kavats per pack; Dante's Noctua can scan a Kavat on kill."
+      ],
+      "disclosures": [
+        {
+          "title": "one-shot quest opportunity",
+          "body": "An uncompleted Sands of Inaros tomb section can spawn up to 50 feral Kavats. It cannot be replayed, so use it only if the quest is still available."
+        }
+      ]
+    },
+    {
+      "type": "farm",
+      "place": "PLAINS OF EIDOLON, EARTH",
+      "sub": "Cetus access required",
+      "activity": "kill Kuakas and mine Iradite",
+      "meta": "component materials",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "plains-of-eidolon",
+      "rows": [
+        {
+          "qty": "35",
+          "label": "Kuaka Spinal Claw",
+          "note": "Neuroptics",
+          "alt": null,
+          "done": false
+        },
+        { "qty": "65", "label": "Iradite", "note": "Chassis", "alt": null, "done": false }
+      ],
+      "conditions": [
+        "Cetus and the Plains are a soft prerequisite: Kuakas provide Spinal Claws and Iradite is mined in the Plains."
+      ],
+      "bonuses": ["Resource boosters and loot companions help with both materials."],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build components, then Khora",
+      "meta": "12h each, then 72h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Neuroptics",
+          "note": "2 Kavat Codes + 35 Kuaka Spinal Claw",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Chassis",
+          "note": "5 Kavat Codes + 65 Iradite",
+          "alt": null,
+          "done": false
+        },
+        { "qty": null, "label": "Systems", "note": "2 Kavat Codes", "alt": null, "done": false },
+        { "qty": null, "label": "Khora", "note": "1 Orokin Cell", "alt": null, "done": false }
+      ],
+      "conditions": [
+        "Build all three components first, then use the Market blueprint to build Khora."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

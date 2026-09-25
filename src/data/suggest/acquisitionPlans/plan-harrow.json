@@ -1,0 +1,213 @@
+{
+  "name": "Harrow",
+  "kind": "warframe",
+  "effort": 8,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "badges": [
+    { "text": "Defection grind", "tone": "warn" },
+    { "text": "Circuit option", "tone": "circuit" }
+  ],
+  "prices": [{ "label": "built", "amount": "225 p", "money": false }],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "QUESTS",
+      "sub": null,
+      "activity": "The War Within, then Chains of Harrow",
+      "meta": "solo-only quest",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "The War Within", "note": "required", "alt": null, "done": false },
+        {
+          "qty": null,
+          "label": "Harrow Blueprint",
+          "note": "Chains of Harrow reward",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "After The War Within, speak to Onkko in Cetus to begin Chains of Harrow.",
+        "Cephalon Simaris sells a repeatable main blueprint for 50,000 standing, but the quest gives the first one."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "PAGO, KUVA FORTRESS",
+      "sub": null,
+      "activity": "Spy",
+      "meta": "16.67% per clean run",
+      "mode": "solo, extract after one run",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Harrow Neuroptics Blueprint",
+          "note": "16.67%, Rotation A",
+          "alt": "Taveuni Survival, Rotation C: 12%",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Harrow Neuroptics is on Spy Rotation A, not C: a successful three-vault run earns a roll immediately.",
+        "Run Pago solo if possible; a quick clean vault run is faster and safer than relying on public squads."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "ANY VOID FISSURE",
+      "sub": null,
+      "activity": "kill Void Fissure Corrupted enemies",
+      "meta": "3% per eligible kill",
+      "mode": "choose a high-kill-rate fissure",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Harrow Chassis Blueprint",
+          "note": "3% drop from Corrupted enemies",
+          "alt": "Taveuni Survival, Rotation C: 12%",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The Chassis is a per-kill drop, not a mission reward. Only Void Fissure Corrupted enemies count.",
+        "Farm while opening relics so the Chassis hunt also produces Prime rewards and Void Traces."
+      ],
+      "bonuses": [
+        "Atlas with Ore Gaze is a community-recommended option for extra eligible-enemy drops."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "ANY DEFECTION NODE",
+      "sub": null,
+      "activity": "rescue Kavor squads",
+      "meta": "15% per Rotation C",
+      "mode": "stay through 8 squads",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Harrow Systems Blueprint",
+          "note": "15%, Rotation C; ~6% at B",
+          "alt": "Taveuni Survival, Rotation C: 12%",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Defection follows A-A-B-C: one rotation is two rescued squads, so the first C reward is after 8 squads.",
+        "All Defection tiers use the same Systems rates. Choose a comfortable node; difficulty does not improve the drop chance.",
+        "Cleared waves determine the reward. Do not abandon a run just because a defector dies."
+      ],
+      "bonuses": [
+        "Volt or Wisp speeds defectors and is the most useful quality-of-life pick. Bring batteries and watch the route ahead for Eximus units.",
+        "Oberon, Trinity, Nezha, or a crowd-control Nova help if the defectors are dying."
+      ],
+      "disclosures": [
+        {
+          "title": "the painful part is optional",
+          "body": "Taveuni, Kuva Fortress Survival gives both Neuroptics and Systems at 12% on Rotation C (20 minutes), along with Kuva. It is slower per Systems roll than Defection but avoids its buggy escort mode."
+        }
+      ]
+    },
+    {
+      "type": "farm",
+      "place": "THE CIRCUIT, DUVIRI",
+      "sub": null,
+      "activity": "choose Harrow during his weekly offering",
+      "meta": "Harrow is the week-9 offering",
+      "mode": "requires The Duviri Paradox",
+      "live": { "state": "waiting", "text": "Check the in-game Circuit rotation" },
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Harrow Neuroptics Blueprint",
+          "note": "Circuit reward tier 2",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Harrow Chassis Blueprint",
+          "note": "Circuit reward tier 5",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Harrow Systems Blueprint",
+          "note": "Circuit reward tier 8",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Harrow Blueprint",
+          "note": "Circuit reward tier 10",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "This is an alternative to the quest and all three farms: the offered frame's rewards are guaranteed rather than random.",
+        "The current week is not authored here because the rotation changes; confirm Harrow is offered before committing."
+      ],
+      "bonuses": [
+        "Circuit removes Defection RNG entirely, but claiming Harrow before Chains of Harrow skips the quest's natural reward path."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build components, then Harrow",
+      "meta": "12h each, then 72h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Harrow Neuroptics", "note": null, "alt": null, "done": false },
+        { "qty": null, "label": "Harrow Chassis", "note": null, "alt": null, "done": false },
+        { "qty": null, "label": "Harrow Systems", "note": null, "alt": null, "done": false },
+        { "qty": null, "label": "Harrow", "note": "2,000 Kuva", "alt": null, "done": false }
+      ],
+      "conditions": [
+        "Farm the 2,000 Kuva before the final build; Taveuni is a convenient source if using the Survival alternative."
+      ],
+      "bonuses": ["The three component builds run in parallel."],
+      "disclosures": []
+    }
+  ]
+}

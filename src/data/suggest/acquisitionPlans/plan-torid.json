@@ -1,0 +1,291 @@
+{
+  "name": "Torid",
+  "kind": "primary",
+  "effort": 9,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 1, "unit": "weapon + Incarnon Genesis" },
+  "badges": [
+    { "text": "Bio Lab", "tone": "warn" },
+    { "text": "Steel Path Circuit · Week 5", "tone": "warn" },
+    { "text": "MR 4", "tone": "info" }
+  ],
+  "prices": [
+    { "label": "blueprint", "amount": "15,000 cr", "money": false },
+    { "label": "Genesis install", "amount": "20 Pathos Clamps + Duviri mats", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "research",
+      "place": "CLAN DOJO, BIO LAB",
+      "sub": null,
+      "activity": "check that Torid research is complete",
+      "meta": "3-day research",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "5,000",
+          "label": "Mutagen Sample",
+          "note": "Ghost-clan research cost",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "10",
+          "label": "Circuits",
+          "note": "Ghost-clan research cost",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "200",
+          "label": "Nano Spores",
+          "note": "Ghost-clan research cost",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "750",
+          "label": "Polymer Bundle",
+          "note": "Ghost-clan research cost",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Research costs scale with dojo tier. If it is not already complete, the 3-day timer is the first gate.",
+        "Torid and its blueprint are untradeable; joining an established public clan is the practical shortcut."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "CLAN DOJO, BIO LAB",
+      "sub": null,
+      "activity": "buy the personal blueprint",
+      "meta": "15,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Credits", "amount": "15,000" }],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Torid Blueprint",
+          "note": "requires completed research",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Each player buys their own blueprint after clan research completes."],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build the base Torid",
+      "meta": "24h, MR 4",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": "30,000", "label": "Credits", "note": null, "alt": null, "done": false },
+        { "qty": "2", "label": "Mutagen Mass", "note": null, "alt": null, "done": false },
+        { "qty": "4,500", "label": "Salvage", "note": null, "alt": null, "done": false },
+        { "qty": "600", "label": "Circuits", "note": null, "alt": null, "done": false },
+        { "qty": "1", "label": "Forma", "note": null, "alt": null, "done": false }
+      ],
+      "conditions": [
+        "Mutagen Mass is not Mutagen Sample; use completed Masses from an invasion or a suitable bounty, or craft two from dojo blueprints."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "gate",
+      "place": "DUVIRI / ZARIMAN",
+      "sub": null,
+      "activity": "unlock the Steel Path Circuit and Cavalero",
+      "meta": "The Duviri Paradox + Angels of the Zariman + Steel Path",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "The Duviri Paradox",
+          "note": "unlocks Duviri and The Circuit",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Angels of the Zariman",
+          "note": "unlocks Cavalero",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "The Steel Path",
+          "note": "required for Genesis reward track",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The base weapon can be built before these quests; the Incarnon Genesis cannot."
+      ],
+      "bonuses": [
+        "Max Drifter Intrinsics before a long Steel Path Circuit run; they are free power in Duviri."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "THE STEEL PATH CIRCUIT, DUVIRI",
+      "sub": "Rotation E / Week 5: Torid, Dual Toxocyst, Dual Ichor, Miter, Atomos",
+      "activity": "choose Torid Incarnon Genesis, then complete Circuit stages",
+      "meta": "Tier 5 · 1,785 progress · about 12 stages",
+      "mode": "solo recommended",
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "Torid Incarnon Genesis", "amount": "1" },
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "1",
+          "label": "Torid Incarnon Genesis",
+          "note": "choose it from the weekly pair",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "1,785",
+          "label": "Circuit progress",
+          "note": "Tier 5; the first adapter is enough",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "5,460",
+          "label": "Circuit progress",
+          "note": "Tier 10 only if taking the second weekly Genesis too",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Torid is only offered during Rotation E (Week 5 in the nine-week cycle). Confirm the live offering at Cavalero; the calendar date changes each reset.",
+        "Tier is not stage: verify the small reward-tier indicator before extracting. The weekly rewards reset Monday 00:00 UTC.",
+        "A single continuous run becomes more efficient after stage 5. Solo avoids public-squad departures and host-migration risk."
+      ],
+      "bonuses": [
+        "Stop at Tier 5 when Torid is the only wanted Genesis; it is roughly an hour instead of the 2–3-hour Tier 10 push.",
+        "A completed normal-Circuit stage followed by extraction rerolls a poor Duviri loadout; aborting does not."
+      ],
+      "disclosures": [
+        {
+          "title": "weekly calendar gate",
+          "body": "Missing Torid's Week 5 offering can mean waiting roughly two months for Rotation E to return. The Circuit earns the adapter only; it supplies none of the Pathos Clamps needed to install it."
+        }
+      ]
+    },
+    {
+      "type": "farm",
+      "place": "THE DUVIRI EXPERIENCE",
+      "sub": "Orowyrm finale and Maw Feeding",
+      "activity": "collect installation materials outside the Circuit",
+      "meta": "20 Clamps, 60 Marrow, 20 Fangs",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "20",
+          "label": "Pathos Clamp",
+          "note": "15 per Steel Path Orowyrm kill",
+          "alt": "two normal Orowyrm kills at 10 each",
+          "done": false
+        },
+        {
+          "qty": "60",
+          "label": "Rune Marrow",
+          "note": "Circuit also supplies this",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "20",
+          "label": "Maw Fang",
+          "note": "Maw Feeding activity only",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The Circuit drops no Pathos Clamps or Maw Fangs. Do not finish the long Circuit run assuming the adapter is ready to install.",
+        "Maw Fangs come from The Duviri Experience, not The Circuit or The Lone Story. A found feeding platform can be reused."
+      ],
+      "bonuses": [
+        "Two Steel Path Orowyrm completions provide 30 Clamps, leaving 10 for another Duviri craft."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "craft",
+      "place": "CAVALERO, CHRYSALITH",
+      "sub": "Zariman",
+      "activity": "install Torid Incarnon Genesis, then complete Evolutions",
+      "meta": "20 Clamps + 60 Marrow + 20 Fangs",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [
+        { "currency": "Pathos Clamp", "amount": "20" },
+        { "currency": "Rune Marrow", "amount": "60" },
+        { "currency": "Maw Fang", "amount": "20" }
+      ],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Install Genesis on Torid",
+          "note": "adapter is consumed",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Complete Incarnon Evolutions",
+          "note": "follow the Arsenal evolution challenges",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Torid's poison cloud does not build Incarnon charge; direct hits do."],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

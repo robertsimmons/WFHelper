@@ -1,0 +1,244 @@
+{
+  "name": "Felarx",
+  "kind": "primary",
+  "effort": 7,
+  "tradeable": "blueprint only",
+  "progress": { "have": 0, "need": 1, "unit": "blueprint" },
+  "badges": [
+    { "text": "Holdfasts Rank 3", "tone": "warn" },
+    { "text": "MR 14", "tone": "info" }
+  ],
+  "prices": [{ "label": "blueprint", "amount": "8,000 Holdfasts Standing", "money": false }],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "QUESTS",
+      "sub": null,
+      "activity": "unlock the Zariman and The Holdfasts",
+      "meta": "The New War → Angels of the Zariman",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "The New War",
+          "note": "quest prerequisite",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Angels of the Zariman",
+          "note": "unlocks Chrysalith",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "There is no shortcut around these quests: Felarx's blueprint and all of its dedicated build materials come from Zariman progression."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "HALAKO PERIMETER, ZARIMAN",
+      "sub": "Chrysalith: turn Voidplumes in to Archimedean Yonta",
+      "activity": "Exterminate; sweep the map after the objective",
+      "meta": "daily standing cap is the hard gate",
+      "mode": "public squad",
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "Holdfasts Standing", "amount": "8,000" },
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "10",
+          "label": "Voidplume Crest",
+          "note": "Rank 3 sacrifice; one guaranteed per map",
+          "alt": "buy Yonta's stocked Crest when available",
+          "done": false
+        },
+        {
+          "qty": "10",
+          "label": "Voidplume Pinion",
+          "note": "10 needed to build; dormant Angel drops one",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "15",
+          "label": "Voidplume Quill",
+          "note": "build requirement",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "30",
+          "label": "Voidgel Orb",
+          "note": "Rank 2 and build requirements",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Handing Voidplumes in is capped at 16,000 + 500 per Mastery Rank each day. Rank-ups consume 5,000, 22,000, and 44,000 standing; the blueprint costs another 8,000.",
+        "Every Zariman mission has one dormant Void Angel, except Void Armageddon; its Ravenous Angel drops a Quill instead of a Pinion.",
+        "Squad Voidplume pickups are shared. Use loot radar and clear containers; finish the objective first, then follow the ghost children and redeem Zarium Accolades at Melica consoles."
+      ],
+      "bonuses": [
+        "Parallax's Orokin Eye or Helminth's Golden Instinct makes plume sweeps substantially easier.",
+        "Hoard extra plumes safely for future daily caps, but they cannot be converted past today's cap."
+      ],
+      "disclosures": [
+        {
+          "title": "calendar, not RNG, sets the floor",
+          "body": "Even with enough plumes ready, the rank purchases and blueprint require several daily cap resets. Expect at least four days at cap, and roughly a week when Crests or Lanthorns lag behind."
+        }
+      ]
+    },
+    {
+      "type": "farm",
+      "place": "NETRACELLS, DEIMOS",
+      "sub": null,
+      "activity": "run Netracells or kill Gruzzlings",
+      "meta": "10 needed",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "cambion-drift",
+      "rows": [
+        {
+          "qty": "10",
+          "label": "Entrati Lanthorn",
+          "note": "Holdfasts Rank 3 sacrifice",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Lanthorns are a Deimos resource, not a Zariman resource. Netracells are the reliable source; do not count on Zariman bounties for this requirement."
+      ],
+      "bonuses": ["Gruzzlings can drop three Entrati Lanthorns at a time."],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "CAVALERO, CHRYSALITH",
+      "sub": "The Holdfasts: Guardian (Rank 3)",
+      "activity": "buy the Felarx blueprint",
+      "meta": "8,000 Standing",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Holdfasts Standing", "amount": "8,000" }],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Felarx Blueprint",
+          "note": "tradeable",
+          "alt": "a clanmate can gift or trade the blueprint",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "You must reach Guardian to buy it yourself. Trading the blueprint skips that purchase, but not the Zariman-only build materials."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Felarx",
+      "meta": "24h, MR 14 to equip",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": "30,000", "label": "Credits", "note": null, "alt": null, "done": false },
+        { "qty": "10", "label": "Voidplume Pinion", "note": null, "alt": null, "done": false },
+        { "qty": "15", "label": "Voidplume Quill", "note": null, "alt": null, "done": false },
+        { "qty": "30", "label": "Voidgel Orb", "note": null, "alt": null, "done": false },
+        { "qty": "8,000", "label": "Alloy Plate", "note": null, "alt": null, "done": false }
+      ],
+      "conditions": [
+        "You may craft Felarx before Mastery Rank 14, but cannot equip it until then."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "craft",
+      "place": "CAVALERO / ARSENAL",
+      "sub": null,
+      "activity": "complete native Incarnon Evolutions",
+      "meta": "no Genesis adapter needed",
+      "mode": "solo or host recommended",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "100",
+          "label": "Felarx kills",
+          "note": "Evolution I; unlocks Incarnon form",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "8",
+          "label": "Eximus kills in Incarnon form",
+          "note": "Evolution II",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "20",
+          "label": "Void Angel primary-fire headshots without reloading",
+          "note": "Evolution III",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "12",
+          "label": "Void Flood Ruptures closed",
+          "note": "Evolution IV",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Solo mission with Incarnon weapons in every slot",
+          "note": "Evolution V",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Evolution progress persists across missions. Perks can be changed freely at Cavalero or in the Arsenal.",
+        "For Evolution III, multishot pellets count individually; stack magazine size and multishot. Incarnon form counts as primary fire.",
+        "Do these as solo or host when possible: clients have reported progress failing to register. Exalted weapons do not satisfy Evolution V."
+      ],
+      "bonuses": [
+        "Felarx, Laetum, and Innodem together make Evolution V easy for future native Incarnons."
+      ],
+      "disclosures": []
+    }
+  ]
+}

@@ -1,0 +1,228 @@
+{
+  "name": "Revenant",
+  "kind": "warframe",
+  "effort": 5,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "badges": [
+    { "text": "quest-gated", "tone": "warn" },
+    { "text": "Circuit alternate", "tone": "info" }
+  ],
+  "prices": [{ "label": "built", "amount": "325 p", "money": false }],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "CETUS, EARTH",
+      "sub": "The Quills",
+      "activity": "unlock Mask of the Revenant",
+      "meta": "two days minimum for standing",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [
+        { "currency": "Intact Sentient Cores", "amount": "30" },
+        { "currency": "Cetus Wisp", "amount": "1" }
+      ],
+      "map": "cetus",
+      "rows": [
+        {
+          "qty": null,
+          "label": "The War Within",
+          "note": "required for The Quills",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Observer, Quills Rank 2",
+          "note": "27,000 standing + 30 Intact Cores",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Mask of the Lost One",
+          "note": "Nakak: choose 'Mask?'",
+          "alt": "1 Cetus Wisp",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The daily Quills standing cap is 16,000 + 500 per Mastery Rank, so Rank 2 takes at least two days.",
+        "Hand cores to Onkko for standing. At night, engage the Teralyst and kill its Vomvalysts without lures; Ivara's Prowl can steal a second core before the kill.",
+        "If Nakak has no mask after you rank up, leave and re-enter Cetus. Start Mask of the Revenant from the Codex after buying it."
+      ],
+      "bonuses": [
+        "Archon Hunts and Narmer Isoplasts are strong passive sources of Quills standing if available."
+      ],
+      "disclosures": [
+        {
+          "title": "the quest is a build gate",
+          "body": "The quest does not award the components. It pauses twice until you farm and build base Revenant components, so start the two easy bounty tiers first."
+        }
+      ]
+    },
+    {
+      "type": "bounty",
+      "place": "PLAINS OF EIDOLON, EARTH",
+      "sub": "Konzu, Cetus",
+      "activity": "bounties for component blueprints",
+      "meta": "Neuroptics is the wall",
+      "mode": "finish every stage",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "plains-of-eidolon",
+      "rows": [
+        {
+          "qty": null,
+          "label": "Systems Blueprint",
+          "note": "Lvl 20-40: 23-26% final stage",
+          "alt": "~9% at stages 2-3",
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Chassis Blueprint",
+          "note": "Lvl 30-50: ~22% final stage",
+          "alt": "Plague Star: 14-16% when live",
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Neuroptics Blueprint",
+          "note": "Lvl 40-60: 10.20% final stage",
+          "alt": "6.76% at stage 4",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Each component is tied to exactly one bounty tier. Running a different tier cannot drop it.",
+        "Only the Lvl 40-60 bounty drops Neuroptics, and only at stages 4 and 5. Never extract early; the final-stage chance is higher.",
+        "Do Systems and Chassis first so the quest's component build gates do not interrupt the Neuroptics farm."
+      ],
+      "bonuses": [
+        "Bounties commonly provide Cetus Wisps; do not deliberately farm the four needed for the mask and Systems unless short."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "PLAINS OF EIDOLON, EARTH",
+      "sub": null,
+      "activity": "night quest finale",
+      "meta": "after all three components build",
+      "mode": "Operator with mask equipped",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "plains-of-eidolon",
+      "rows": [
+        {
+          "qty": null,
+          "label": "Revenant Blueprint",
+          "note": "quest reward",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "At night, touch the three Gara Toht Lake energy blotches as the Operator while wearing the mask, then defeat the Revenant Specter.",
+        "The mask is on the Operator suit, not the Drifter. If the Specter does not appear, re-enter the Plains and try the finale again.",
+        "The first main blueprint must come from this quest; Simaris only sells additional copies."
+      ],
+      "bonuses": [
+        "Octavia's Mallet, Mesa's Peacemaker, or forced finishers make the Specter encounter trivial."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "THE CIRCUIT, DUVIRI",
+      "sub": null,
+      "activity": "normal Circuit weekly reward path",
+      "meta": "guaranteed alternate route",
+      "mode": "Revenant week: week 10 of 11",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "duviri",
+      "rows": [
+        {
+          "qty": null,
+          "label": "Revenant Neuroptics",
+          "note": "tier 2",
+          "alt": null,
+          "done": false
+        },
+        { "qty": null, "label": "Revenant Chassis", "note": "tier 5", "alt": null, "done": false },
+        { "qty": null, "label": "Revenant Systems", "note": "tier 8", "alt": null, "done": false },
+        {
+          "qty": null,
+          "label": "Revenant Blueprint",
+          "note": "tier 10",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Complete The Duviri Paradox first. Select Revenant in the normal Circuit when his rotation is live, then reach tier 10 before the weekly reset.",
+        "This avoids the quest, Quills rank, bounties, and all component RNG, but you may wait up to 11 weeks. Check the in-game rotation."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build components, then Revenant",
+      "meta": "12h each, then 72h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Neuroptics",
+          "note": "15,000 cr + 15 Intact Cores",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Chassis",
+          "note": "15,000 cr + 10 Intact Cores",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Systems",
+          "note": "15,000 cr + 3 Cetus Wisps",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Revenant",
+          "note": "25,000 cr + Orokin Cell",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Components can build in parallel. Reserve a free Warframe slot for the final claim."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

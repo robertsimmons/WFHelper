@@ -1,0 +1,291 @@
+{
+  "name": "Xaku",
+  "kind": "warframe",
+  "effort": 8,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "badges": [
+    { "text": "open-world gates", "tone": "warn" },
+    { "text": "no blueprint pity", "tone": "warn" }
+  ],
+  "prices": [{ "label": "built", "amount": "325 p", "money": false }],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "CODEX",
+      "sub": null,
+      "activity": "Heart of Deimos",
+      "meta": "main blueprint reward",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Heart of Deimos",
+          "note": "awards Xaku Blueprint",
+          "alt": "50,000 Cephalon Simaris standing",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Finish this before farming parts; the Market does not sell the main blueprint for credits."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "gate",
+      "place": "OPEN-WORLD HUBS",
+      "sub": "prepare the crafting gates first",
+      "activity": "buy refine blueprints and Vox Solaris access",
+      "meta": "do this before bounty RNG",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Thaumic Distillate Blueprint",
+          "note": "Otak; Entrati Rank 2; 4,000 standing",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Venerdo Alloy Blueprint",
+          "note": "Smokefinger; Solaris United Outworlder; 2,000 standing",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Esher Devar Blueprint",
+          "note": "Old Man Suumbaat; Ostron Offworlder; 2,500 standing",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "5",
+          "label": "Gyromag Systems",
+          "note": "Little Duck; Vox Solaris Rank 1 Operative; 1,000 standing each",
+          "alt": "Profit-Taker is a much later alternative",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Gyromag Systems and Scintillant cannot be traded. The Little Duck purchase is far cheaper to unlock than Profit-Taker.",
+        "The three refined resources are reusable batch crafts: make 3 Thaumic Distillate, 3 Venerdo Alloy, and 4 Esher Devar batches."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "bounty",
+      "place": "CAMBION DRIFT, DEIMOS",
+      "sub": "Mother's regular Necralisk bounties",
+      "activity": "complete the matching bounty brackets",
+      "meta": "parts only roll from stage 2 onward",
+      "mode": "complete bonus objectives",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "cambion-drift",
+      "rows": [
+        {
+          "qty": null,
+          "label": "Xaku Neuroptics Blueprint",
+          "note": "Lvl 15-25; 8.82% stages 2-4, 12% final stage",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Xaku Systems Blueprint",
+          "note": "Lvl 30-40; 8.22% early stages, 11.32% final stage",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Xaku Chassis Blueprint",
+          "note": "Lvl 40-60; 8.57% early stages, 13.04% final stage",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Use ordinary Mother bounties, not Isolation Vault or Arcana bounty rewards. Each component belongs to exactly one level bracket.",
+        "Stage 1 never awards a Xaku part; do not abandon after it. Run the longest available bounty in each bracket for more reward rolls.",
+        "Complete every bonus objective: a perfect bounty adds a final-stage-table reward roll, where each target part has its best chance.",
+        "Steel Path's level-100 Chassis table has identical odds to normal level 40-60; do not choose it for better Xaku drops."
+      ],
+      "bonuses": [
+        "Mother is available in the field, so start the next bounty without returning to the Necralisk.",
+        "Deimos Infested are immune to Viral status effects; bring a different damage plan."
+      ],
+      "disclosures": [
+        {
+          "title": "blueprints have no fallback shop",
+          "body": "Unlike several newer frame farms, Xaku has no component-blueprint pity purchase. Expect roughly 49-57 qualifying stages for a near-guaranteed chance at each part, not a hard ceiling."
+        }
+      ]
+    },
+    {
+      "type": "farm",
+      "place": "ISOLATION VAULTS, CAMBION DRIFT",
+      "sub": null,
+      "activity": "sweep the vault for floating Scintillant",
+      "meta": "5 needed",
+      "mode": "bring loot radar and a fast frame",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "cambion-drift",
+      "rows": [
+        {
+          "qty": "5",
+          "label": "Scintillant",
+          "note": "Xaku Systems; floating vault pickup",
+          "alt": "Necramech drops during vault bounties",
+          "done": false
+        },
+        {
+          "qty": "3",
+          "label": "Spinal Core Section",
+          "note": "Xaku Chassis",
+          "alt": "fillet Chondricord or Vitreospina at Daughter",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Scintillant is a physical, moving pickup that must be flown through; Vacuum and Fetch do not collect it.",
+        "Watch the loot-radar minimap for a moving marker, including near ceilings and ledges. Do not wait for it as a regular bounty reward.",
+        "If a vault sweep is unproductive, take a tentacle to the surface and cancel without leaving the Drift to restart."
+      ],
+      "bonuses": [
+        "Resource boosters and Resourceful Retriever can multiply in-mission Scintillant pickups, but not bounty reward rolls."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "OPEN WORLDS",
+      "sub": "mine, fish, and collect while doing their bounties",
+      "activity": "gather Xaku's remaining build materials",
+      "meta": "combine these with standing and bounty runs",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "60",
+          "label": "Thaumic Distillate",
+          "note": "3 batch crafts; Deimos yellow mineral veins",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "50",
+          "label": "Venerdo Alloy",
+          "note": "3 batch crafts; Orb Vallis red mineral veins",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "40",
+          "label": "Esher Devar",
+          "note": "4 batch crafts; Plains blue mineral veins",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "20",
+          "label": "Sharrac Teeth",
+          "note": "Xaku Neuroptics; Plains fishing",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "10",
+          "label": "Breath of the Eidolon",
+          "note": "Xaku Systems; Plains bounty rewards",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "50",
+          "label": "Lucent Teroglobe",
+          "note": "Xaku Chassis; Vitrific Outcrops near Requiem Obelisks",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Pustulite and Ganglion can come from their Deimos plants or ordinary bounty rewards; mine Thaumica and collect Teroglobes during the part farm.",
+        "Save Scintillant for this build if you also want Quassus, Bonewidow, or Catabolyst; their recipes compete for it."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build components, then Xaku",
+      "meta": "12h each, then 72h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Neuroptics",
+          "note": "15,000 cr; 10 Neural Sensors, 60 Distillate, 20 Teeth, 40 Devar",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Chassis",
+          "note": "15,000 cr; 5 Gyromags, 3 Spinal Cores, 50 Alloy, 50 Teroglobe",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Systems",
+          "note": "15,000 cr; 10 Breath, 5 Scintillant, 45 Pustulite, 60 Ganglion",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Xaku",
+          "note": "25,000 cr + 3 Orokin Cells",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Start each component as soon as its blueprint and resources are ready; the three 12-hour timers can overlap before Xaku's 72-hour build."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

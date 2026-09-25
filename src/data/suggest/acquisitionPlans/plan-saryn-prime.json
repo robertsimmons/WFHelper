@@ -1,0 +1,196 @@
+{
+  "name": "Saryn Prime",
+  "kind": "warframe-prime",
+  "effort": 8,
+  "tradeable": true,
+  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "badges": [
+    { "text": "vaulted", "tone": "warn" },
+    { "text": "Prime Resurgence", "tone": "info" }
+  ],
+  "prices": [
+    { "label": "set, player trade", "amount": "~40-80 p", "money": false },
+    { "label": "built, Varzia", "amount": "3 Regal Aya", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "currency",
+      "place": "CAMBION DRIFT, DEIMOS",
+      "sub": "Necralisk",
+      "activity": "Tier 5 bounty, Mother",
+      "meta": "bank Aya before her rotation",
+      "mode": "Lv 40-60; solo",
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "Aya", "amount": "20" },
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "20",
+          "label": "Aya",
+          "note": "a starting budget; carries between rotations",
+          "alt": "Cetus tier-5 bounty",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Saryn Prime is vaulted. Her relics do not return to normal mission drop tables during Prime Resurgence; Varzia sells them only while Saryn is in the active rotation.",
+        "Deimos level 40-60 final-stage bounty has a 43.48% Aya chance; stages 2-3 have 28.57%. Finish bonus objectives for a second final reward roll.",
+        "Avoid Deimos level 25-30 bounties: their Aya chance is only 3.85-5%. Steel Path bounty Aya rates are the same."
+      ],
+      "bonuses": [
+        "Run Deimos solo: bounty objectives scale with squad size but Aya odds do not.",
+        "Use Cetus level 40-60 with a group if you prefer it; avoid Fortuna for dedicated Aya farming."
+      ],
+      "disclosures": [
+        {
+          "title": "the rotation is the real gate",
+          "body": "The researched rotation is Banshee/Mirage Prime through 2026-10-01, so Saryn relics are not currently for sale. Prime Resurgence changes every 28 days; check Varzia's live stock before spending Aya."
+        }
+      ]
+    },
+    {
+      "type": "vendor",
+      "place": "MAROO'S BAZAAR, MARS",
+      "sub": null,
+      "activity": "Varzia, 1 Aya per relic",
+      "meta": "only during a Saryn rotation",
+      "mode": null,
+      "live": { "state": "blocked", "text": "Vaulted; check Prime Resurgence" },
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Aya", "amount": "20" }],
+      "map": "maroos-bazaar",
+      "rows": [
+        {
+          "qty": "12",
+          "label": "Chassis relic",
+          "note": "Neo S13 in Saryn/Valkyr; Lith S17 in Nidus/Saryn",
+          "alt": "use matching relics already owned or buy them from players",
+          "done": false
+        },
+        {
+          "qty": "4",
+          "label": "Blueprint relic",
+          "note": "Lith V6 in Saryn/Valkyr; Axi N12 in Nidus/Saryn",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "2",
+          "label": "Neuroptics relic",
+          "note": "Lith C5 or Axi V9 common; Neo S19 uncommon",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "2",
+          "label": "Systems relic",
+          "note": "Axi S5 or Neo S13 common; Meso M5 common",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The exact relics depend on which Saryn pairing returns. Confirm the stock and part rewards in Varzia's shop before buying.",
+        "Varzia is also available from the Prime Resurgence Market tab or the Orbiter Relic Segment.",
+        "Aya is untradeable, but purchased relics are tradeable and never expire."
+      ],
+      "bonuses": [
+        "A friend can spend their Aya on tradeable relics for you.",
+        "If farming Aya is not worth the time, buying the tradeable set is often cheapest while Saryn is active."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "fissure",
+      "place": "ANY VOID FISSURE",
+      "sub": null,
+      "activity": "crack the matching relic era",
+      "meta": "the Chassis is the bottleneck",
+      "mode": "four-player radshare for rare parts",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Saryn Prime Chassis",
+          "note": "Rare: 10% Radiant; Neo S13 or Lith S17 in Resurgence rotations",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Saryn Prime Blueprint",
+          "note": "Lith V6 or Axi N12 Uncommon in Resurgence rotations",
+          "alt": "some old relics hold it as a Rare",
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Saryn Prime Neuroptics",
+          "note": "run Common relics Intact; Neo S19 is Uncommon",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Saryn Prime Systems",
+          "note": "Common in the listed Resurgence relics; run Intact",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Refine the Chassis relic to Radiant: a 2% Rare becomes 10% for 100 Void Traces. Four matching Radiants have a 34.39% chance to show at least one Rare reward.",
+        "Do not refine relics sought only for Common parts: Radiant lowers a Common reward from 25.33% to 16.67%.",
+        "Every player must collect 10 Reactant before extraction to open their relic."
+      ],
+      "bonuses": [
+        "Host or join an exact-relic radshare in Recruitment chat or the Vaulted Relic Community Discord; solo Radiant averages ten Chassis attempts.",
+        "Only one reward may be selected per fissure. If one relic holds two wanted parts, keep cracking it until both are secured.",
+        "Varzia sells 5 Void Traces for 1 Aya when traces, rather than relics, become the limiting resource."
+      ],
+      "disclosures": [
+        {
+          "title": "avoid wasting rare rolls",
+          "body": "A four-player radshare is best when everyone needs the Chassis or can use its value. If only one player needs it, coordinate fewer Radiants per run so duplicate Rare rewards are less likely to be wasted."
+        }
+      ]
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build components, then Saryn Prime",
+      "meta": "12h each, then 72h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Saryn Prime Neuroptics",
+          "note": null,
+          "alt": null,
+          "done": false
+        },
+        { "qty": null, "label": "Saryn Prime Chassis", "note": null, "alt": null, "done": false },
+        { "qty": null, "label": "Saryn Prime Systems", "note": null, "alt": null, "done": false },
+        { "qty": null, "label": "Saryn Prime", "note": null, "alt": null, "done": false }
+      ],
+      "conditions": [
+        "Components build in parallel. Keep a free Warframe slot for the final claim."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

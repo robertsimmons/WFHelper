@@ -1,0 +1,197 @@
+{
+  "name": "Gyre",
+  "kind": "warframe",
+  "effort": 5,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "badges": [
+    { "text": "Zariman bounties", "tone": "info" },
+    { "text": "no pity", "tone": "warn" }
+  ],
+  "prices": [{ "label": "build", "amount": "70,000 cr", "money": false }],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "CODEX",
+      "sub": null,
+      "activity": "Angels of the Zariman",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Angels of the Zariman",
+          "note": "required; unlocks Chrysalith bounties",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["The New War is required before Angels of the Zariman can be started."],
+      "bonuses": ["Finishing the quest opens the full Zariman mission set and the Holdfasts."],
+      "disclosures": []
+    },
+    {
+      "type": "bounty",
+      "place": "CHRYSALITH, ZARIMAN",
+      "sub": "Quinn's bounty board",
+      "activity": "run each part's specific bounty tier",
+      "meta": "about 7-8 completions expected per part",
+      "mode": "public recommended",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Gyre Neuroptics Blueprint",
+          "note": "13.04%, Tier 1 (Lvl 50-55)",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Gyre Chassis Blueprint",
+          "note": "13.56%, Tier 2 (Lvl 60-65)",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Gyre Systems Blueprint",
+          "note": "11.90%, Tier 3 (Lvl 70-75)",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Gyre Blueprint",
+          "note": "12.99%, Tier 4 or 5 (Lvl 90+)",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Every completed bounty makes one roll. Each component is on exactly one tier's reward table.",
+        "There is no vendor purchase or other pity system for Gyre parts; a higher-tier bounty cannot drop a lower-tier part.",
+        "Steel Path bounty variants give 150% Voidplumes, but do not assume they improve the published part odds."
+      ],
+      "bonuses": [
+        "Public squads make Voidplume collection easier because squad pickups are shared.",
+        "Do not avoid Tier 4/5 because the blueprint is labeled Uncommon: its actual chance is about the same as the component rolls."
+      ],
+      "disclosures": [
+        {
+          "title": "no bad-luck protection",
+          "body": "Gyre predates the later mission-currency buyout systems. Treat the bounty drops as an unbounded RNG farm: roughly 50 completions gives a near-guaranteed chance for an individual part, but never a true ceiling."
+        }
+      ]
+    },
+    {
+      "type": "farm",
+      "place": "TUVUL COMMONS, ZARIMAN",
+      "sub": null,
+      "activity": "Void Cascade; defeat Thrax",
+      "meta": "1,100 total needed",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "1,100",
+          "label": "Thrax Plasm",
+          "note": "300 Neuroptics + 500 Chassis + 300 Systems",
+          "alt": "or The Greenway Mobile Defense",
+          "done": false
+        }
+      ],
+      "conditions": ["Thrax Centurions and Legatus drop 3-8 Plasm at a time."],
+      "bonuses": [
+        "Resource boosters and Companion Retriever mods increase this farm; drop-chance boosters do not."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "ZARIMAN",
+      "sub": "bounties and mission exploration",
+      "activity": "collect Voidplumes and break containers",
+      "meta": null,
+      "mode": "bring Orokin Eye if available",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "40",
+          "label": "Voidplume Quill",
+          "note": "build requirement",
+          "alt": "Ravenous Angels in Void Armageddon guarantee one",
+          "done": false
+        },
+        {
+          "qty": "12",
+          "label": "Entrati Lanthorn",
+          "note": "container drops",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "60",
+          "label": "Voidgel Orb",
+          "note": "container drops",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Lanthorns come from containers, not enemy drops; use an AoE weapon or frame to clear them.",
+        "Quills are also Holdfast rank-up, Incarnon, weapon, and Parallax materials, so spending 40 here can delay that progression."
+      ],
+      "bonuses": [
+        "Parallax Orokin Eye marks Voidplumes, medallions, and treasures within 150m for the whole squad.",
+        "Archimedean Yonta sells one Voidplume every 8 hours for Zariman resources; use it to finish a specific missing plume."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build components, then Gyre",
+      "meta": "12h each, then 72h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Neuroptics", "note": null, "alt": null, "done": false },
+        { "qty": null, "label": "Chassis", "note": null, "alt": null, "done": false },
+        { "qty": null, "label": "Systems", "note": null, "alt": null, "done": false },
+        {
+          "qty": null,
+          "label": "Gyre",
+          "note": "25,000 cr + 1 Orokin Cell",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Needs a free Warframe slot before the Foundry will let you claim it."],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

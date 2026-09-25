@@ -1,0 +1,186 @@
+{
+  "name": "Baruuk Prime",
+  "kind": "warframe-prime",
+  "effort": 7,
+  "tradeable": true,
+  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "badges": [
+    { "text": "vaulted", "tone": "warn" },
+    { "text": "Prime Resurgence", "tone": "info" }
+  ],
+  "prices": [{ "label": "set, player trade", "amount": "~50 p", "money": false }],
+  "groups": [
+    {
+      "type": "currency",
+      "place": "CAMBION DRIFT, DEIMOS",
+      "sub": "Necralisk",
+      "activity": "Tier 5 bounty, Mother",
+      "meta": "bank Aya before rotation",
+      "mode": "Lv 40-60 or Steel Path",
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "Aya", "amount": "20" },
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "20",
+          "label": "Aya",
+          "note": "rough one-rotation budget; carries over",
+          "alt": "Cetus tier-5 bounties",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Baruuk Prime is currently vaulted: no Baruuk relic drops from missions until a future Prime Resurgence rotation.",
+        "Aya is untradeable, but it has no cap and remains after the rotation ends.",
+        "Tier-5 Deimos pays Aya at 43.48% on the final stage and 28.57% on stages 2-3; clear bonus objectives because the final stage rolls twice."
+      ],
+      "bonuses": [
+        "Use the fast 'brute force' tier-5 bounty when it appears.",
+        "Cetus tier-5 is the next-best open-world choice; avoid spending Steel Essence or syndicate standing on relic packs just for Aya."
+      ],
+      "disclosures": [
+        {
+          "title": "the calendar is the farm",
+          "body": "Varzia changes stock every 28 days at 18:00 UTC. Check the live Prime Resurgence rotation before buying relics; while Baruuk is absent, stockpile Aya or buy the tradeable set instead."
+        }
+      ]
+    },
+    {
+      "type": "vendor",
+      "place": "MAROO'S BAZAAR, MARS",
+      "sub": null,
+      "activity": "Varzia, 1 Aya per relic",
+      "meta": "only during a Baruuk rotation",
+      "mode": null,
+      "live": { "state": "blocked", "text": "Vaulted; check Prime Resurgence" },
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Aya", "amount": "20" }],
+      "map": "maroos-bazaar",
+      "rows": [
+        {
+          "qty": "12",
+          "label": "Axi B9",
+          "note": "Blueprint Rare; Neuroptics Uncommon",
+          "alt": "old vaulted B-series relics also work",
+          "done": false
+        },
+        {
+          "qty": "4",
+          "label": "Lith T13",
+          "note": "Chassis Uncommon",
+          "alt": "old vaulted chassis relics also work",
+          "done": false
+        },
+        {
+          "qty": "4",
+          "label": "Neo P8",
+          "note": "Systems Common",
+          "alt": "old vaulted systems relics also work",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "These named relics were sold in the most recent Baruuk/Revenant rotation; confirm the current relic IDs in Varzia's shop before buying.",
+        "Prime Resurgence relics are Varzia-only. Their normal drop-table entries are replaced by Aya, so mission farming cannot produce them.",
+        "Buy any relics you may need before the rotation closes. Relics are tradeable and never expire."
+      ],
+      "bonuses": [
+        "Varzia is also accessible from the Orbiter Relic Segment or the Prime Resurgence Market tab.",
+        "A friend with spare Aya can buy tradeable relics for you."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "fissure",
+      "place": "ANY VOID FISSURE",
+      "sub": null,
+      "activity": "crack the matching relic era",
+      "meta": "Axi B9 is the bottleneck",
+      "mode": "radshare for Axi B9",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Baruuk Prime Blueprint",
+          "note": "Axi B9, Rare: 10% Radiant",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Baruuk Prime Neuroptics",
+          "note": "Axi B9, Uncommon: 20% Radiant",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Baruuk Prime Chassis",
+          "note": "Lith T13, Uncommon: 20% Radiant",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Baruuk Prime Systems",
+          "note": "Neo P8, Common: 25.33% Intact",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Refine Axi B9 to Radiant and run a four-player radshare: four Radiant relics have a 34.39% chance to produce at least one Rare reward.",
+        "Run Neo P8 Intact. Refining lowers its Common Systems chance from 25.33% to 16.67%.",
+        "Collect 10 Reactant before extraction. In Excavation, run one excavator at a time; in Interception, hold only two points until everyone is ready."
+      ],
+      "bonuses": [
+        "Use the Vaulted Relic Community Discord or host a group by exact relic name; Recruit chat is often sparse for vaulted relics.",
+        "Choose another player's duplicate reward when it appears: you keep the item and they receive extra Void Traces.",
+        "Let enemies corrupt before killing them so the squad can get enough Reactant."
+      ],
+      "disclosures": [
+        {
+          "title": "one Axi relic cannot give two parts",
+          "body": "Axi B9 contains both the Blueprint and Neuroptics, but each player receives one reward per crack. Keep buying and running it until both parts are secured."
+        }
+      ]
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build components, then Baruuk Prime",
+      "meta": "12h each, then 72h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Baruuk Prime Neuroptics",
+          "note": null,
+          "alt": null,
+          "done": false
+        },
+        { "qty": null, "label": "Baruuk Prime Chassis", "note": null, "alt": null, "done": false },
+        { "qty": null, "label": "Baruuk Prime Systems", "note": null, "alt": null, "done": false },
+        { "qty": null, "label": "Baruuk Prime", "note": null, "alt": null, "done": false }
+      ],
+      "conditions": [
+        "Components can build in parallel; keep a free Warframe slot for the final claim."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

@@ -1,0 +1,183 @@
+{
+  "name": "Tenet Exec",
+  "kind": "melee",
+  "effort": 7,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 1, "unit": "weapon" },
+  "badges": [
+    { "text": "MR 16", "tone": "warn" },
+    { "text": "Railjack", "tone": "info" },
+    { "text": "rotation shop", "tone": "warn" }
+  ],
+  "prices": [],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "RAILJACK",
+      "sub": null,
+      "activity": "unlock Proxima Void Storms",
+      "meta": "MR 16 to buy",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Rising Tide",
+          "note": "Railjack access",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Mastery Rank 16",
+          "note": "required by Ergo Glast",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Tenet Exec never comes from a Sister of Parvos. Do not start a Sister, farm Murmurs, or buy Requiem mods for this weapon.",
+        "A shop-bought Tenet weapon enforces its MR requirement; the Sister-weapon MR bypass does not apply."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "VEIL PROXIMA",
+      "sub": null,
+      "activity": "complete Grineer Void Storms",
+      "meta": "~7 runs for 40 keys",
+      "mode": "short missions",
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "Corrupted Holokeys", "amount": "6" },
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "40",
+          "label": "Corrupted Holokeys",
+          "note": "one Exec",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Holokeys come from Empyrean Void Storms only, as an end-of-mission reward. Ordinary Void Fissures do not award them.",
+        "Every completed Void Storm gives one guaranteed key; Veil missions also have a 37.5% roll for 10 more. Resource boosters and drop-chance boosters do not affect them.",
+        "Extract only after the mission completes. Abandoning or failing pays no guaranteed key or table roll."
+      ],
+      "bonuses": [
+        "Veil Grineer missions avoid the potentially slow Corpus mobile-defense objective. Exterminate and Spy are usually the fastest mission types.",
+        "Bring a relic if useful: it is optional for Holokeys, but lets the same run crack relics and collect Sevagoth or Epitaph parts."
+      ],
+      "disclosures": [
+        {
+          "title": "use Earth only when your Railjack is not ready",
+          "body": "Earth and Venus Void Storms are easier, but average roughly 2.1 keys per completion, or about 19 runs for one Exec. They are a sensible fallback rather than a better long-term farm."
+        }
+      ]
+    },
+    {
+      "type": "vendor",
+      "place": "ERGO GLAST, ANY RELAY",
+      "sub": null,
+      "activity": "inspect the current Tenet Exec roll",
+      "meta": "refreshes every 4 days, 00:00 UTC",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "52.8%+ bonus",
+          "note": "one fusion reaches 60%",
+          "alt": "58%+ is already 60%",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Ergo sells exactly one Exec per 4-day rotation for 40 Holokeys. Its displayed element and 25-60% bonus reroll each rotation.",
+        "No Perrin Sequence standing is required; use Browse Merchandise in any Relay.",
+        "The weapon is untradeable and has no Market-platinum or converted-adversary route."
+      ],
+      "bonuses": [
+        "Bank 40-80 keys first, then buy on percentage rather than buying the first low roll you see.",
+        "Elemental Vice can change the bonus element at rank 40; percentage is the lasting decision."
+      ],
+      "disclosures": [
+        {
+          "title": "a low roll costs calendar time",
+          "body": "Only one Exec can be bought per rotation. A 25% first copy takes nine fusions and ten purchases to reach 60%: 400 keys and at least 40 days. Waiting for 52.8% or better turns that into two purchases and one 4-day wait."
+        }
+      ]
+    },
+    {
+      "type": "vendor",
+      "place": "ERGO GLAST, ANY RELAY",
+      "sub": null,
+      "activity": "buy Tenet Exec on a good roll",
+      "meta": "instant; one per rotation",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Corrupted Holokeys", "amount": "40" }],
+      "map": null,
+      "rows": [
+        {
+          "qty": "1",
+          "label": "Tenet Exec",
+          "note": "rank 0, direct to inventory",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The purchase is instant and does not use the Foundry, but it needs a free weapon slot.",
+        "Impact is a strong natural choice for the slam shockwaves, though it can be changed later with Elemental Vice."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "craft",
+      "place": "ORBITER, MODDING",
+      "sub": null,
+      "activity": "optional Valence Fusion toward 60%",
+      "meta": "keep the best copy",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "60% bonus",
+          "note": "optional optimization goal",
+          "alt": "keep the first good roll",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Fusion sets the result to min(1.1 × the higher bonus, 60%), rounded down to one decimal; any result at 58% or higher becomes 60%.",
+        "Hold copies until a strong roll appears. Fusing two low rolls before a 53% copy arrives wastes a purchase.",
+        "Start the fusion from the invested Exec and use the other as donor. Catalysts, Forma, Exilus adapters, lenses, and Elemental Vice on the donor are destroyed."
+      ],
+      "bonuses": [
+        "At rank 40 (five Forma), Elemental Vice unlocks Valence Override to swap the element freely; it never changes the percentage."
+      ],
+      "disclosures": []
+    }
+  ]
+}

@@ -1,0 +1,174 @@
+{
+  "name": "Nova",
+  "kind": "warframe",
+  "effort": 2,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "badges": [
+    { "text": "quick boss farm", "tone": "info" },
+    { "text": "Systems RNG", "tone": "warn" }
+  ],
+  "prices": [
+    { "label": "blueprint", "amount": "35,000 cr", "money": false },
+    { "label": "built", "amount": "375 p", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "vendor",
+      "place": "MARKET",
+      "sub": null,
+      "activity": "buy blueprint",
+      "meta": "35,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Nova Blueprint", "note": null, "alt": null, "done": false }
+      ],
+      "conditions": [
+        "Raptors drops only component blueprints; buy the main blueprint before farming."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "gate",
+      "place": "STAR CHART",
+      "sub": null,
+      "activity": "reach Naamah, Europa",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Europa access",
+          "note": "Jupiter Junction",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "A newer account must reach Europa first; the Jupiter Junction includes a Nova Specter fight."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "boss",
+      "place": "NAAMAH, EUROPA",
+      "sub": null,
+      "activity": "Assassination, Raptors",
+      "meta": "~1-2h; 2-4 min/run",
+      "mode": "normal, bring speed",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Neuroptics Blueprint",
+          "note": "38.72%",
+          "alt": null,
+          "done": false
+        },
+        { "qty": null, "label": "Chassis Blueprint", "note": "38.72%", "alt": null, "done": false },
+        {
+          "qty": null,
+          "label": "Systems Blueprint",
+          "note": "22.56%; likely last",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Shoot the Raptors' underbelly and wings; their backs are invulnerable.",
+        "Kill one Raptor, carry its 10-second-fuse Power Cell onto a Gravity Conveyor, look down, and press weapon-switch to drop it. Repeat for all three conveyors.",
+        "Extract after the third conveyor: components are mission-completion rewards, not body drops.",
+        "If Naamah is under an Infested Invasion, Phorid replaces Raptors and drops Nyx parts. Wait for the overlay to clear.",
+        "Avoid the Kuva Siphon node overlay; reports indicate it can prevent Nova rewards."
+      ],
+      "bonuses": [
+        "Raptors can supply Neural Sensors; Europa also has Control Modules and the usual build resources."
+      ],
+      "disclosures": [
+        {
+          "title": "the cell drop is the mechanic",
+          "body": "Standing on a conveyor does not place the cell automatically. Stand on its grid, aim down, and use weapon-switch. Missing the 10-second fuse only costs the next Raptor cycle."
+        },
+        {
+          "title": "Systems is the RNG wall",
+          "body": "There is no boss-farm pity system. Keep running Naamah rather than waiting for Circuit unless Nova is already offered that week."
+        }
+      ]
+    },
+    {
+      "type": "farm",
+      "place": "THE CIRCUIT, DU VIRI",
+      "sub": null,
+      "activity": "weekly Warframe reward path",
+      "meta": "only when Nova is offered",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Nova set",
+          "note": "tiers 2, 5, 8, 10",
+          "alt": "deterministic alternative",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Requires The Duviri Paradox and Nova in the current weekly selection.",
+        "Take these rewards if you are already playing Circuit; do not wait for her rotation instead of running the short Raptors farm."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build components, then Nova",
+      "meta": "12h each, then 72h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Neuroptics", "note": "Neural Sensor", "alt": null, "done": false },
+        { "qty": null, "label": "Chassis", "note": null, "alt": null, "done": false },
+        { "qty": null, "label": "Systems", "note": "Control Module", "alt": null, "done": false },
+        {
+          "qty": null,
+          "label": "Nova",
+          "note": "Orokin Cell + 25,000 cr",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Total crafting credits are 15,000 per component plus 25,000 for Nova.",
+        "Start each component as it drops so their 12-hour timers overlap; have a free Warframe slot before claiming Nova."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

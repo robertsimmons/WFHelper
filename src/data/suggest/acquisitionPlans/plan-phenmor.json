@@ -1,0 +1,217 @@
+{
+  "name": "Phenmor",
+  "kind": "primary",
+  "effort": 6,
+  "tradeable": "blueprint only",
+  "progress": { "have": 0, "need": 1, "unit": "blueprint" },
+  "badges": [
+    { "text": "Holdfasts Rank 2", "tone": "warn" },
+    { "text": "MR 14", "tone": "info" }
+  ],
+  "prices": [{ "label": "blueprint", "amount": "6,000 Holdfasts Standing", "money": false }],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "QUESTS",
+      "sub": null,
+      "activity": "unlock the Zariman and The Holdfasts",
+      "meta": "The New War → Angels of the Zariman",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "The New War",
+          "note": "quest prerequisite",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Angels of the Zariman",
+          "note": "unlocks Chrysalith",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Phenmor is a native Zariman Incarnon from Cavalero, not an Incarnon Genesis adapter from Duviri's Circuit."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "HALAKO PERIMETER, ZARIMAN",
+      "sub": "Chrysalith: turn Voidplumes in to Archimedean Yonta",
+      "activity": "Exterminate, wake the Angel, then sweep the map",
+      "meta": "~15 dormant Angels for the build",
+      "mode": "public squad",
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "Holdfasts Standing", "amount": "6,000" },
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "15",
+          "label": "Voidplume Pinion",
+          "note": "build requirement; one per dormant Angel",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "20",
+          "label": "Voidplume Quill",
+          "note": "build requirement",
+          "alt": "bounties or Zarium Accolades",
+          "done": false
+        },
+        {
+          "qty": "15",
+          "label": "Entrati Lanthorn",
+          "note": "build requirement",
+          "alt": "Tier 3 bounties or Netracells",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Rank 0 → 1 costs 5,000 standing plus 5 Voidplume Down; Rank 1 → 2 costs 22,000 standing plus 10 Voidplume Vane and 10 Voidgel Orb. The blueprint then costs 6,000 standing.",
+        "The daily cap is 16,000 + 500 per Mastery Rank. At MR 14 it is 23,000, so the standing portion takes at least two days from zero.",
+        "A dormant Void Angel drops a Pinion. Void Armageddon's Ravenous Angel drops a Quill instead, so do not use Armageddon for Pinions.",
+        "Squad Voidplume pickups are shared. Finish the objective, then use loot radar and container-breaking coverage to find plumes; Parallax Orokin Eye marks plumes and Accolades."
+      ],
+      "bonuses": [
+        "Each map has one Crest, two Vanes, and five Down-or-Vane pickups. Yonta's Voidplume stock refreshes every eight hours and can fill missing rank-up sacrifices.",
+        "Follow Lost Spirits after the Exterminate objective: they lead to a nearby Voidplume, Ayatan, or Somachord."
+      ],
+      "disclosures": [
+        {
+          "title": "Pinions set the practical pace",
+          "body": "The rank gate is short compared with the 15 Pinions. Plan on about 15 Zariman missions with a dormant Angel; this is a long evening or two of focused runs, assuming no host migration losses."
+        }
+      ]
+    },
+    {
+      "type": "vendor",
+      "place": "CAVALERO, CHRYSALITH",
+      "sub": "The Holdfasts: Watcher (Rank 2)",
+      "activity": "buy the Phenmor blueprint",
+      "meta": "6,000 Standing",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Holdfasts Standing", "amount": "6,000" }],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Phenmor Blueprint",
+          "note": "tradeable",
+          "alt": "trade from another player",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Trading the blueprint bypasses the Rank 2 purchase, but it does not avoid the 15 Pinions and other Zariman build materials."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Phenmor",
+      "meta": "24h, MR 14 to equip",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": "30,000", "label": "Credits", "note": null, "alt": null, "done": false },
+        { "qty": "15", "label": "Voidplume Pinion", "note": null, "alt": null, "done": false },
+        { "qty": "20", "label": "Voidplume Quill", "note": null, "alt": null, "done": false },
+        { "qty": "6,000", "label": "Alloy Plate", "note": null, "alt": null, "done": false },
+        { "qty": "15", "label": "Entrati Lanthorn", "note": null, "alt": null, "done": false }
+      ],
+      "conditions": [
+        "You may craft Phenmor before Mastery Rank 14, but cannot equip it until then."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "craft",
+      "place": "CAVALERO / ARSENAL",
+      "sub": null,
+      "activity": "complete native Incarnon Evolutions",
+      "meta": "apply a perk before the next tier tracks",
+      "mode": "solo recommended",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "100",
+          "label": "Phenmor kills",
+          "note": "Evolution I; unlocks Incarnon form",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "8",
+          "label": "Eximus kills in Incarnon form",
+          "note": "Evolution II",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "20",
+          "label": "Void Angel primary-fire headshots without reloading",
+          "note": "Evolution III",
+          "alt": "Magnetize + multishot",
+          "done": false
+        },
+        {
+          "qty": "12",
+          "label": "Void Flood Ruptures closed",
+          "note": "Evolution IV",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Solo mission with Incarnon weapons in every slot",
+          "note": "Evolution V",
+          "alt": "Genesis-equipped weapons count",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Evolution II only counts Incarnon-form kills: charge the gauge with weakpoint hits, use alt-fire to transmute, then kill Eximus units.",
+        "Evolution III uses base-form primary fire. Stack magazine size and multishot, reduce damage so the Angel survives, and use Mag's Magnetize or another crowd-control ability to keep shots on its head.",
+        "The Evolution III streak resets on reload and does not persist between missions. Client progress can fail to register, so run solo if a challenge stalls.",
+        "Evolution V requires an Incarnon primary, secondary, and melee in one solo mission; Exalted weapons do not qualify."
+      ],
+      "bonuses": [
+        "For the common Devouring Attrition build, avoid raising critical chance: its +2000% damage proc triggers on non-critical hits."
+      ],
+      "disclosures": [
+        {
+          "title": "Evolution III is the real wall",
+          "body": "The Angel headshot challenge is much harder than acquiring the rifle without a purpose-built setup. A high magazine, multishot, low-damage base-form build plus Magnetize makes all 20 headshots practical in one Angel fight."
+        }
+      ]
+    }
+  ]
+}

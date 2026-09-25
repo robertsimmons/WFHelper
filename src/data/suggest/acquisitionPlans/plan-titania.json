@@ -1,0 +1,275 @@
+{
+  "name": "Titania",
+  "kind": "warframe",
+  "effort": 4,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "badges": [
+    { "text": "guaranteed parts", "tone": "info" },
+    { "text": "time gate", "tone": "warn" }
+  ],
+  "prices": [{ "label": "built", "amount": "275 p", "money": false }],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "QUESTS",
+      "sub": null,
+      "activity": "The Second Dream, then The Silver Grove",
+      "meta": "MR 7",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "The Second Dream",
+          "note": "required for Lua and Lunar Pitcher",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "The Silver Grove",
+          "note": "start with Amaryn at any relay",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "You do not need New Loka standing. Accept the quest before using any Apothic, or it is consumed without advancing Titania's quest."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "EARTH",
+      "sub": "Mantle, Grineer Forest",
+      "activity": "collect plants",
+      "meta": "check Earth cycle first",
+      "mode": "capture recommended",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "earth",
+      "rows": [
+        {
+          "qty": "12",
+          "label": "Sunlight Threshcone",
+          "note": "day only; Nightfall Apothic",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "2",
+          "label": "Sunlight Jadeleaf",
+          "note": "day only; Sunrise Apothic",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "6",
+          "label": "Moonlight Dragonlily",
+          "note": "night only; Nightfall Apothic",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "2",
+          "label": "Moonlight Jadeleaf",
+          "note": "night only; Twilight Apothic",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Earth follows the Cetus cycle: 100 minutes day and 50 minutes night. Gather every plant for the current phase in one pass; the other phase is the only meaningful time gate.",
+        "Plants are Hold to Collect pickups, not scans. Equip Oxylus with Botanist for 50 m auto-collection if available."
+      ],
+      "bonuses": ["A Resource Booster or relay resource blessing doubles plant pickups."],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "STAR CHART",
+      "sub": "run capture missions and clear the map",
+      "activity": "collect remaining Apothic plants",
+      "meta": "not time-gated",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "2",
+          "label": "Dusklight Sarracenia",
+          "note": "Pallas, Ceres",
+          "alt": null,
+          "done": false
+        },
+        { "qty": "6", "label": "Ruk's Claw", "note": "Ara, Mars", "alt": null, "done": false },
+        {
+          "qty": "6",
+          "label": "Lunar Pitcher",
+          "note": "Copernicus, Lua",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "8",
+          "label": "Frostleaf",
+          "note": "Venera, Venus; may require restarts",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "12",
+          "label": "Vestan Moss",
+          "note": "Elion, Mercury",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Dusklight grows in Ceres Shipyards pools; Ruk's Claw is on Mars Settlement walls; Lunar Pitcher appears in Lua vases and rubble.",
+        "Frostleaf does not spawn every run. Restart Venera if the map yields none."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "E PRIME, EARTH",
+      "sub": "The Silver Grove shrine",
+      "activity": "anoint altar, defeat specter, extract",
+      "meta": "three guaranteed component blueprints",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [
+        { "currency": "Morphic", "amount": "6" },
+        { "currency": "Credits", "amount": "1,500" }
+      ],
+      "map": "earth",
+      "rows": [
+        {
+          "qty": null,
+          "label": "Nightfall Apothic",
+          "note": "Loki Knave; Titania Systems BP + Twilight BP",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Twilight Apothic",
+          "note": "Saryn Orphid; Titania Chassis BP + Sunrise BP",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Sunrise Apothic",
+          "note": "Oberon Feyarch; Titania Neuroptics BP",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Craft each Apothic in the Foundry (10 seconds) and equip it to a gear-wheel slot before launching. Crafting alone is not enough.",
+        "The third shrine run includes a two-minute defense after the Feyarch Specter dies. Amaryn mails the main blueprint after completion.",
+        "In a squad, only one player needs to spend an Apothic at the altar; do not all consume one."
+      ],
+      "bonuses": [
+        "Post-quest Apothic runs are also a source of Growing Power from the spawned Specters."
+      ],
+      "disclosures": [
+        {
+          "title": "no part RNG",
+          "body": "All three component blueprints and Titania's main blueprint are guaranteed quest rewards. The practical delay is gathering the Earth plants in the right day or night phase."
+        }
+      ]
+    },
+    {
+      "type": "farm",
+      "place": "NIGHTWAVE",
+      "sub": "Cred Offerings",
+      "activity": "buy Nitain Extract",
+      "meta": "only if needed",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "3",
+          "label": "Nitain Extract",
+          "note": "Titania Chassis; 15 Creds for 5",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Nitain is usually the secondary blocker. Check your Nightwave Creds before beginning the build."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build components, then Titania",
+      "meta": "12h each, then 72h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Neuroptics",
+          "note": "15,000 cr, Alloy Plate, Neurodes, Polymer Bundle, Circuits",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Chassis",
+          "note": "15,000 cr, 3 Nitain, Ferrite, Rubedo, Tellurium",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Systems",
+          "note": "15,000 cr, Control Module, Plastids, Cryotic, Tellurium",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Titania",
+          "note": "25,000 cr, 3 Orokin Cells",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Farm the 3 Orokin Cells after the components are ready only if you do not already have them."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

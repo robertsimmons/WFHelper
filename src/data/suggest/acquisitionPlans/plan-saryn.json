@@ -1,0 +1,214 @@
+{
+  "name": "Saryn",
+  "kind": "warframe",
+  "effort": 4,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "badges": [
+    { "text": "Judgement Points", "tone": "warn" },
+    { "text": "Systems rare", "tone": "warn" }
+  ],
+  "prices": [
+    { "label": "blueprint", "amount": "35,000 cr", "money": false },
+    { "label": "built", "amount": "225 p", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "vendor",
+      "place": "MARKET",
+      "sub": null,
+      "activity": "buy blueprint",
+      "meta": "35,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Saryn Blueprint", "note": null, "alt": null, "done": false }
+      ],
+      "conditions": [
+        "Kela only drops component blueprints; buy the main blueprint from the Market before farming."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "gate",
+      "place": "SEDNA",
+      "sub": "Eris Junction",
+      "activity": "unlock Merrow",
+      "meta": "heavy Junction gate",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "The Rising Tide",
+          "note": "Railjack quest",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Sover Strait",
+          "note": "Earth Proxima",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "5",
+          "label": "Vomvalysts",
+          "note": "Plains of Eidolon, night",
+          "alt": null,
+          "done": false
+        },
+        { "qty": null, "label": "Ambulas", "note": "Hades, Pluto", "alt": null, "done": false }
+      ],
+      "conditions": [
+        "The Sedna Junction is on Eris, not Pluto.",
+        "Ambulas needs Animo Nav Beacons from Pluto Corpus proxies."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "VODYANOI, SEDNA",
+      "sub": "Rathuum",
+      "activity": "bank Judgement Points",
+      "meta": "+25 points per run",
+      "mode": "hold 25 before every Kela run",
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "Judgement Points", "amount": "25" },
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Judgement Points",
+          "note": "Vodyanoi entry check: 15",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Arena entry requirements are ownership checks, not a spend. Only a successful Kela kill consumes points.",
+        "Kela consumes 25 and refunds 13: net cost is 12 points per kill. One Vodyanoi run funds two kills.",
+        "After Kela you have 13 points, below Vodyanoi's 15-point entry check; bank a buffer instead of farming hand-to-mouth.",
+        "Every squad member needs 25 points at Merrow mission start."
+      ],
+      "bonuses": [
+        "Rathuum disables companions and gear items; finisher builds remain effective against Executioners."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "boss",
+      "place": "MERROW, SEDNA",
+      "sub": null,
+      "activity": "Assassination, Kela De Thaym",
+      "meta": "~6-12 kills for a set",
+      "mode": "short blocks",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Judgement Points", "amount": "12" }],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Neuroptics Blueprint",
+          "note": "38.72%",
+          "alt": null,
+          "done": false
+        },
+        { "qty": null, "label": "Chassis Blueprint", "note": "38.72%", "alt": null, "done": false },
+        { "qty": null, "label": "Systems Blueprint", "note": "22.56%", "alt": null, "done": false }
+      ],
+      "conditions": [
+        "One component blueprint drops on every successful kill; Systems is the usual last piece.",
+        "Bring a beam, punch-through, or wide-AoE weapon for the spinning green targets; the target phases, not Kela's health, are the time sink.",
+        "In phases 2 and 3 all four floor pads light up regardless of squad size. Hit the four green targets in their randomized order to bring Kela back out.",
+        "Kela is immune to Viral status."
+      ],
+      "bonuses": [
+        "Operator Void Mode, frame invisibility, Limbo Cataclysm, or Zephyr Turbulence can neutralize the Orbital Strike phases.",
+        "Kela can also drop Orokin Cells, needed for the final build."
+      ],
+      "disclosures": [
+        {
+          "title": "do not run Sortie Kela for parts",
+          "body": "The Sortie version waives Judgement Points but never drops Saryn components. It can still award Kela's other drops, but it is not a Saryn farm."
+        }
+      ]
+    },
+    {
+      "type": "farm",
+      "place": "THE CIRCUIT, DUVIRI",
+      "sub": "Normal Circuit, Saryn week",
+      "activity": "alternate deterministic route",
+      "meta": "week 4 of 11",
+      "mode": "~23 continuous stages",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Neuroptics Blueprint",
+          "note": "tier 2",
+          "alt": null,
+          "done": false
+        },
+        { "qty": null, "label": "Chassis Blueprint", "note": "tier 5", "alt": null, "done": false },
+        { "qty": null, "label": "Systems Blueprint", "note": "tier 8", "alt": null, "done": false },
+        {
+          "qty": null,
+          "label": "Saryn Blueprint",
+          "note": "tier 10",
+          "alt": "3,640 cumulative progress",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Requires The Duviri Paradox. Circuit rewards reset Monday 00:00 UTC.",
+        "Only choose this if Saryn's week is live and you want the no-RNG route; missing it means waiting through the 11-week cycle."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build components, then Saryn",
+      "meta": "12h each, then 72h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Neuroptics", "note": null, "alt": null, "done": false },
+        { "qty": null, "label": "Chassis", "note": null, "alt": null, "done": false },
+        { "qty": null, "label": "Systems", "note": null, "alt": null, "done": false },
+        { "qty": null, "label": "Saryn", "note": "needs 1 Orokin Cell", "alt": null, "done": false }
+      ],
+      "conditions": [
+        "If Chroma is also on your list, farm a second Saryn Systems blueprint: Chroma Systems requires a built Saryn Systems."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

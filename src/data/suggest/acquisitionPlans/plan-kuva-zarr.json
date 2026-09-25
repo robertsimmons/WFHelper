@@ -1,0 +1,259 @@
+{
+  "name": "Kuva Zarr",
+  "kind": "primary",
+  "effort": 9,
+  "tradeable": "converted Lich only",
+  "progress": { "have": 0, "need": 1, "unit": "weapon" },
+  "badges": [
+    { "text": "Kuva Lich", "tone": "warn" },
+    { "text": "MR 5", "tone": "info" },
+    { "text": "Railjack required", "tone": "warn" }
+  ],
+  "prices": [{ "label": "60% Lich contract", "amount": "~250–400 p", "money": false }],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "STAR CHART",
+      "sub": null,
+      "activity": "unlock the Kuva Lich finale",
+      "meta": "one-time",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "The War Within",
+          "note": "quest complete",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Mastery Rank 5",
+          "note": "to create a Kuva Lich",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Railjack",
+          "note": "for the Saturn Proxima confrontation",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Rank 5 Railjack Intrinsics",
+          "note": "Saturn Proxima access",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "You can have only one active adversary. Clear or convert any existing Lich, Sister, or Coda before starting.",
+        "The final showdown is locked behind Saturn Proxima; check the Railjack requirements before investing in a Lich."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "relics",
+      "place": "KUVA SIPHON OR KUVA FLOOD, ANY",
+      "sub": null,
+      "activity": "earn and crack Requiem Eterna Relics",
+      "meta": "3 mods per Lich",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "3",
+          "label": "charged Requiem mods",
+          "note": "one sequence; 3 charges each",
+          "alt": "trade duplicates 1-for-1",
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Oull",
+          "note": "wildcard Requiem; optional but very strong",
+          "alt": "25% Kuva Lich vanquish drop",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Requiem Eterna Relics contain the eight Requiem mods at equal odds and cannot be refined with Void Traces. Kuva Siphons have a 50% relic chance; Kuva Floods guarantee one.",
+        "Each successful Lich vanquish consumes one charge from every equipped Requiem mod. With three charges per mod, plan to replace about one mod per Lich killed.",
+        "Palladino sells retired Requiem I-IV relics for 10 Riven Slivers each, capped at 10 per week; she also sells one Requiem Ultimatum per week for 10 Slivers."
+      ],
+      "bonuses": [
+        "Oull substitutes for any Requiem and has three charges. Two Oulls cannot be equipped in the same sequence."
+      ],
+      "disclosures": [
+        {
+          "title": "stock mods before starting",
+          "body": "A new Lich is not removable until its three-Requiem sequence is solved. Bring a usable pool first so you are not stuck under its tax while farming your initial set."
+        }
+      ]
+    },
+    {
+      "type": "boss",
+      "place": "CASSINI, SATURN",
+      "sub": null,
+      "activity": "Capture; spawn and inspect Kuva Larvlings",
+      "meta": "complete rejects to force Zarr",
+      "mode": "regular level 20+ Grineer mission",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Kuva Zarr Larvling",
+          "note": "weapon preview must say Kuva Zarr",
+          "alt": "buy a converted Kuva Zarr Lich from another player",
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "chosen progenitor",
+          "note": "element is fixed on Mercy",
+          "alt": "Cyte-09 gives Magnetic and supports Zarr ammo",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "After the screen flash, kill 10 enemies within 60 seconds to spawn the Larvling; add 10 required kills for each extra squadmate. Stand within 3 m of the downed Larvling to see its weapon before using Mercy.",
+        "If the preview is not Kuva Zarr, walk away and complete the mission. The shown weapon leaves the candidate pool until it cycles; aborting does not reject it.",
+        "The Warframe worn when you Mercy fixes the bonus element. Heat, Toxin, and Magnetic are all viable; choose deliberately, since Elemental Vice is a late-game alternative."
+      ],
+      "bonuses": [
+        "Cassini Capture is the usual fast loop. Telesto Exterminate and denser Adaro Exterminate are alternatives."
+      ],
+      "disclosures": [
+        {
+          "title": "never abort a rejected Larvling",
+          "body": "Finishing without Mercy is the only reliable way to narrow the pool and force a Zarr. Accepting any Larvling clears the whole reject list, so do not take a consolation weapon mid-loop."
+        }
+      ]
+    },
+    {
+      "type": "boss",
+      "place": "LICH INFLUENCE NODES",
+      "sub": "Earth through Kuva Fortress",
+      "activity": "kill Thralls, reveal mods, and test the sequence",
+      "meta": "~180 Murmurs; 1–2 h per Lich",
+      "mode": "public for faster Murmurs",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "3",
+          "label": "revealed Requiems",
+          "note": "Murmurs reveal mods, not their order",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "correct Parazon sequence",
+          "note": "required to open Saturn Proxima",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Thrall Mercies build Murmur progress for the whole squad. Reveals are roughly 36, 60, and 84 Murmurs, while the final order must be learned by Parazon attempts.",
+        "Once one mod is known, stab whenever the Lich appears. A failed attempt ranks it up but gives the whole squad 10 Murmurs; only skip a first appearance if no mod has been revealed.",
+        "Begin each planet on a long Survival, Excavation, Interception, or Defense to bank Murmurs, then use short nodes when only rage is needed."
+      ],
+      "bonuses": [
+        "A Requiem Ultimatum forces a confrontation; use it solo because it can pull a squadmate's adversary instead."
+      ],
+      "disclosures": [
+        {
+          "title": "use Oull to cap the guessing",
+          "body": "With one known mod, Oull → mod 1 → random; Oull → mod 2 → mod 1; mod 1 → Oull → mod 2; then mod 2 → Oull → mod 1 guarantees the kill by the fourth stab."
+        }
+      ]
+    },
+    {
+      "type": "boss",
+      "place": "SATURN PROXIMA",
+      "sub": "Kuva Lich Confrontation",
+      "activity": "Railjack Skirmish; finish the Lich",
+      "meta": "choose Vanquish",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "1",
+          "label": "Kuva Zarr",
+          "note": "fully built; Foundry delivery",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Choose Vanquish, never Convert. Conversion gives a tradeable Lich contract instead of the weapon.",
+        "The weapon bypasses its normal Mastery requirement when claimed from a Lich, but still needs its own weapon slot.",
+        "A vanquish has a 25% chance each to award Oull and a Requiem Ultimatum."
+      ],
+      "bonuses": ["The Zarr arrives built; no crafting materials or Foundry timer are needed."],
+      "disclosures": []
+    },
+    {
+      "type": "craft",
+      "place": "ORBITER, MODDING",
+      "sub": null,
+      "activity": "optional Valence Fusion toward 60%",
+      "meta": "bank copies first; budget 3–5 Liches",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "60% bonus",
+          "note": "optional collection or optimization goal",
+          "alt": "stop at the first usable roll",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Valence Fusion uses the higher bonus × 1.1. Results at 58% or above become 60%; a displayed 53% roll guarantees 60% on one more fusion.",
+        "Keep every copy and fuse donors into the highest roll, saving that high roll for last. Fusing low rolls together permanently wastes progress.",
+        "Start the fusion from the weapon you want to keep. Catalysts, Forma, Exilus adapters, Focus lenses, and Elemental Vice on the donor are destroyed.",
+        "Elemental Vice enables free element changes only after rank 40, which takes five Forma."
+      ],
+      "bonuses": [
+        "Only one copy needs the desired progenitor element because Valence Fusion lets you select the surviving element."
+      ],
+      "disclosures": [
+        {
+          "title": "the 60% chase is optional",
+          "body": "A 25–60% roll is now uniform, but a maxed Zarr still commonly takes three to five full Lich cycles. Keep the first usable weapon, then treat 60% as a long-term goal."
+        }
+      ]
+    }
+  ]
+}

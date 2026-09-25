@@ -1,0 +1,273 @@
+{
+  "name": "Zymos",
+  "kind": "secondary",
+  "effort": 4,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 3, "unit": "blueprints" },
+  "badges": [
+    { "text": "Rank 1 Entrati", "tone": "warn" },
+    { "text": "no RNG", "tone": "info" }
+  ],
+  "prices": [
+    { "label": "blueprints + refining", "amount": "13,000 Entrati standing", "money": false },
+    { "label": "built", "amount": "190 p", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "QUESTS",
+      "sub": null,
+      "activity": "complete Heart of Deimos; reach MR 11",
+      "meta": "Earth-to-Mars Junction",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Heart of Deimos",
+          "note": "unlocks Necralisk and Entrati",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Mastery Rank 11",
+          "note": "required to select, equip, and use Zymos",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Zymos is a Father standing purchase, not a Cavia item, enemy drop, or Incarnon weapon.",
+        "MR 11 is a hard wall: you cannot select Zymos as the free Rank 1 reward or equip the finished weapon below it."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "currency",
+      "place": "CAMBION DRIFT, DEIMOS",
+      "sub": "Necralisk / Entrati",
+      "activity": "Tier-5 Mother bounties; bank Tokens",
+      "meta": "two daily-cap sessions at most",
+      "mode": "daily standing cap",
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "Entrati Standing", "amount": "13,000" },
+      "spends": [],
+      "map": "cambion-drift",
+      "rows": [
+        {
+          "qty": "5,000",
+          "label": "Entrati standing",
+          "note": "rank Neutral to Stranger",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "4,000",
+          "label": "Entrati standing",
+          "note": "Zymos and component blueprints",
+          "alt": "2,000 if Zymos is the free rank-up reward",
+          "done": false
+        },
+        {
+          "qty": "4,000",
+          "label": "Entrati standing",
+          "note": "three reusable Otak refining blueprints",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Rank 0 can hold only 5,000 standing. Turn in exactly enough to rank up; bank Tokens rather than cashing them past the cap.",
+        "Use highest-tier Mother bounties for the standing engine. Convert Family Tokens to Grandmother Tokens before redeeming them for 1.5x standing.",
+        "The Stranger sacrifice is 6 Benign Infested Tumors and 6 Ferment Bladders, obtained by filleting Deimos fish at Daughter."
+      ],
+      "bonuses": [
+        "Stockpiled Tokens survive the daily cap, so keep running bounties after capping if you want tomorrow's standing ready.",
+        "Claiming Zymos as the Rank 1 reward saves 2,000 standing."
+      ],
+      "disclosures": [
+        {
+          "title": "the short calendar gate",
+          "body": "At Rank 0, the 5,000 standing cap forces the rank-up onto one day and the purchases onto the next. At ordinary MR, the remaining 6,000 to 8,000 standing fits comfortably in that second session."
+        }
+      ]
+    },
+    {
+      "type": "vendor",
+      "place": "NECRALISK, DEIMOS",
+      "sub": "Father and Otak",
+      "activity": "reach Stranger; buy blueprints",
+      "meta": "Rank 1 - Stranger",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Entrati Standing", "amount": "8,000" }],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Zymos Blueprint",
+          "note": "Father; 2,000 standing",
+          "alt": "free Stranger rank-up reward",
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Zymos Barrel Blueprint",
+          "note": "Father; 1,000 standing",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Zymos Receiver Blueprint",
+          "note": "Father; 1,000 standing",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Tempered Bapholite Blueprint",
+          "note": "Otak; 1,000 standing, Neutral",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Adramal Alloy Blueprint",
+          "note": "Otak; 1,000 standing, Neutral",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Purified Heciphron Blueprint",
+          "note": "Otak; 2,000 standing, Stranger",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Purified Heciphron's blueprint is Stranger-gated, so buy it only after completing the rank-up.",
+        "If you intend to rank Necraloid, buy a second Barrel Blueprint: Necraloid Rank 1 consumes one. Never sacrifice an in-progress or unclaimed blueprint."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "CAMBION DRIFT, DEIMOS",
+      "sub": "Isolation Vault Requiem Obelisks",
+      "activity": "activate obelisks; kill affected enemies with Operator or Necramech",
+      "meta": "materials plus fish parts",
+      "mode": "solo or coordinated squad",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "cambion-drift",
+      "rows": [
+        {
+          "qty": "20",
+          "label": "Tempered Bapholite",
+          "note": "refine 20 Bapholite + 20 Pyrol",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "20",
+          "label": "Adramal Alloy",
+          "note": "refine 20 Adramalium + 20 Travoride",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "10",
+          "label": "Purified Heciphron",
+          "note": "refine 10 Heciphron",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "8",
+          "label": "Dendrite Blastoma",
+          "note": "Barbisteo or Vitreospina fish",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "8",
+          "label": "Pustulent Cognitive Nodule",
+          "note": "Cryptosuctus; surface during Fass",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Obelisks are more efficient than dedicated mining and fishing for most Deimos materials. In a vault, run them before activating the Reactive Crystal for continuous enemy spawns.",
+        "An obelisk pays only when an affected enemy dies to your Operator, Necramech, or Umbra specter while you are in Operator mode; ordinary Warframe kills do not count.",
+        "Each fish yields exactly one special part regardless of size. Fish Barbisteo in caves for Dendrite Blastoma; wait for Fass to catch Cryptosuctus for Pustulent Cognitive Nodules."
+      ],
+      "bonuses": [
+        "The same fishing trip supplies the Benign Infested Tumors and Ferment Bladders for Stranger.",
+        "Grouping abilities increase obelisk throughput by keeping more enemies inside the effect radius."
+      ],
+      "disclosures": [
+        {
+          "title": "make obelisks actually pay",
+          "body": "Use low-damage Operator or Necramech attacks to avoid draining an obelisk too quickly; its health depletes with activations and it becomes inert at zero. A basic Mote Amp is sufficient."
+        }
+      ]
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build components, then Zymos",
+      "meta": "12h components, then 12h weapon; MR 11",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Zymos Barrel",
+          "note": "20,000 cr, 20 Tempered Bapholite, 5 Purified Heciphron, 8 Dendrite Blastoma, 4 Neurodes; 12h",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Zymos Receiver",
+          "note": "20,000 cr, 20 Adramal Alloy, 5 Purified Heciphron, 8 Pustulent Cognitive Nodule, 5 Morphics; 12h",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Zymos",
+          "note": "20,000 cr, Barrel + Receiver; 12h",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The two components build in parallel, then the weapon adds a second 12-hour stage: 24 hours minimum without rushing.",
+        "Refining each material batch takes one minute. Build the two component parts before starting the final weapon."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

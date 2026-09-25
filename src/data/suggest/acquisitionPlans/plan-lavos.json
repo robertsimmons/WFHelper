@@ -1,0 +1,243 @@
+{
+  "name": "Lavos",
+  "kind": "warframe",
+  "effort": 4,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "badges": [
+    { "text": "syndicate gate", "tone": "warn" },
+    { "text": "no RNG", "tone": "info" }
+  ],
+  "prices": [
+    { "label": "blueprints", "amount": "36,000 Entrati standing", "money": false },
+    { "label": "built", "amount": "325 p", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "QUESTS",
+      "sub": null,
+      "activity": "complete Heart of Deimos",
+      "meta": "unlocks Necralisk and Entrati",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Heart of Deimos",
+          "note": "required for Entrati access",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Lavos is a standing purchase: none of his blueprints are random drops, boss rewards, or relic rewards."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "CAMBION DRIFT, DEIMOS",
+      "sub": "Necralisk / Entrati",
+      "activity": "Tier-5 Mother bounties; bank Family Tokens",
+      "meta": "daily standing cap is the time gate",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "Entrati Standing", "amount": "36,000" },
+      "spends": [],
+      "map": "cambion-drift",
+      "rows": [
+        {
+          "qty": "36,000",
+          "label": "Entrati standing",
+          "note": "20,000 Father blueprints + 16,000 Otak refining blueprints",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Entrati members award Family Tokens. Exchange them with Grandmother for standing; the daily cap is 16,000 + (Mastery Rank x 500).",
+        "Tier-5 Mother bounties are the fast standing engine. Two or three runs commonly fill a day's cap.",
+        "Do not buy all four Lavos blueprints immediately on reaching Associate: reserve 16,000 standing for Otak's two reusable gem-refining blueprints."
+      ],
+      "bonuses": [
+        "Trading Family Tokens through Grandmother Tokens returns 1.5x their direct standing value.",
+        "Mining raw Xenorhast also produces Otak Tokens, helping fund this same standing bill."
+      ],
+      "disclosures": [
+        {
+          "title": "rank-up materials changed",
+          "body": "Entrati rank sacrifices were revised in Update 41.0. Rank 2 now includes a Keratinos Blueprint; Rank 3 requires Sly Vulpaphyla and Vizier Predasite tags. Older guides list obsolete sacrifices."
+        }
+      ]
+    },
+    {
+      "type": "vendor",
+      "place": "NECRALISK, DEIMOS",
+      "sub": "Father and Otak",
+      "activity": "reach Associate; buy frame and refining blueprints",
+      "meta": "Rank 2 main BP; Rank 3 components and gems",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Entrati Standing", "amount": "36,000" }],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Lavos Blueprint",
+          "note": "Father; 5,000 standing, Rank 2 Acquaintance",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "3",
+          "label": "Lavos component blueprints",
+          "note": "Father; 5,000 standing each, Rank 3 Associate",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "1",
+          "label": "Trapezium Xenorhast Blueprint",
+          "note": "Otak; 8,000 standing, reusable",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "1",
+          "label": "Cabochon Embolos Blueprint",
+          "note": "Otak; 8,000 standing, reusable",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Father's 20,000-standing set is not the complete purchase bill: the two required refined gems need Otak's 8,000-standing blueprints.",
+        "Rank-up sacrifices are separate from the standing costs."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "CAMBION DRIFT, DEIMOS",
+      "sub": null,
+      "activity": "mine rare teal gem veins; refine at Otak",
+      "meta": "Advanced Nosam Cutter or Sunpoint Plasma Drill",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "cambion-drift",
+      "rows": [
+        {
+          "qty": "6",
+          "label": "Trapezium Xenorhast",
+          "note": "Neuroptics; refine 6 raw Xenorhast",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "6",
+          "label": "Cabochon Embolos",
+          "note": "Systems; refine 6 raw Embolos",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Rare teal gem veins yield Xenorhast and Embolos. Aim for the small bonus bracket while cutting: it can award an extra rare gem.",
+        "Each Otak recipe converts 3 raw gems into 3 refined gems in one minute; make two batches of each.",
+        "Isolation Vault and Arcana bounty reward tables no longer award these rare gems. Mine them instead."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "CORPUS PROXIMA",
+      "sub": "Venus, Neptune, or Pluto",
+      "activity": "complete Railjack missions",
+      "meta": "mission completion rewards",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "Titanium", "amount": "2,000" },
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "2,000",
+          "label": "Titanium",
+          "note": "Lavos Neuroptics; Railjack-only resource",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Corpus Proxima completion rewards give 200 Titanium each; expect a handful of clears.",
+        "Titanium requires Railjack access, making it the one hard prerequisite outside Deimos."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build components, then Lavos",
+      "meta": "12h each, then 72h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Neuroptics",
+          "note": "6 Trapezium Xenorhast, 2,000 Titanium, 750 Oxium, 2,750 Rubedo",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Chassis",
+          "note": "2 Argon, 5 Nitain, 1,500 Cryotic, 5,500 Polymer Bundle",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Systems",
+          "note": "6 Cabochon Embolos, 5,500 Nano Spores, 550 Hexenon, 3,000 Circuits",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Lavos",
+          "note": "25,000 credits, 3 Orokin Cells",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Farm the two Argon Crystals last: each decays after pickup.",
+        "Buy five Nitain Extract from Nightwave Cred Offerings early if you do not already have it."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

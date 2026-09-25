@@ -1,0 +1,214 @@
+{
+  "name": "Mesa",
+  "kind": "warframe",
+  "effort": 5,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "badges": [
+    { "text": "key required", "tone": "warn" },
+    { "text": "Circuit bypass", "tone": "circuit" }
+  ],
+  "prices": [
+    { "label": "blueprint", "amount": "30,000 cr", "money": false },
+    { "label": "built", "amount": "325 p", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "vendor",
+      "place": "MARKET",
+      "sub": null,
+      "activity": "buy blueprint",
+      "meta": "30,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Mesa Blueprint", "note": null, "alt": null, "done": false }
+      ],
+      "conditions": [
+        "Mutalist Alad V only drops component blueprints; Mesa's main blueprint is a Market purchase."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "gate",
+      "place": "PATIENT ZERO",
+      "sub": "Eris Junction chain",
+      "activity": "complete the quest",
+      "meta": "unlocks reusable key blueprint",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Mutalist Alad V Assassinate Key Blueprint",
+          "note": "reusable",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The blueprint is reusable, but every crafted key is consumed when the mission starts."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "HYF, DEIMOS",
+      "sub": null,
+      "activity": "Defense",
+      "meta": "Rotation B: wave 15",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "deimos",
+      "rows": [
+        {
+          "qty": "1",
+          "label": "Mutalist Alad V Nav Coordinate",
+          "note": "22.56% at B",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Leave after wave 15 if coordinates are the only goal; wave 10 is Rotation A and cannot award one.",
+        "This is available on demand and substantially more reliable than waiting for an Infested Invasion battle-pay reward."
+      ],
+      "bonuses": [
+        "Terrorem, Deimos Survival pays a 12.5% Rotation B chance at minute 15 if you prefer Survival."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "craft an assassination key",
+      "meta": "1h, 20,000 cr each",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "1",
+          "label": "Mutalist Alad V Assassinate Key",
+          "note": "1 Nav Coordinate",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Queue several keys if you are farming alone. A key is lost on every mission attempt, including an abort or failure."
+      ],
+      "bonuses": [
+        "In a key-share, only the host supplies a key while every squad member receives the boss drop."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "boss",
+      "place": "ERIS",
+      "sub": null,
+      "activity": "Mutalist Alad V Assassination",
+      "meta": "~8 runs for all parts",
+      "mode": "squad or Specter recommended",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "eris",
+      "rows": [
+        {
+          "qty": null,
+          "label": "Neuroptics Blueprint",
+          "note": "38.72%",
+          "alt": null,
+          "done": false
+        },
+        { "qty": null, "label": "Chassis Blueprint", "note": "38.72%", "alt": null, "done": false },
+        { "qty": null, "label": "Systems Blueprint", "note": "22.56%", "alt": null, "done": false }
+      ],
+      "conditions": [
+        "He is invulnerable while the collar is on. Apply Heat, Slash, or Toxin status during that phase; the procs persist and hit together when the collar comes off.",
+        "Bring a Specter or squadmate so he has a mind-control target and the vulnerable window lasts longer.",
+        "His Toxin bypasses shields. Use health, overguard, or damage reduction rather than a shield-tank, and consider Antitoxin.",
+        "Keep Magnetic status on him to limit shield regeneration between vulnerable phases."
+      ],
+      "bonuses": [
+        "A high-fire-rate, high-status Heat weapon can end each damage window immediately. Bring two weapons so ammo does not stall the fight."
+      ],
+      "disclosures": [
+        {
+          "title": "the usual solo-fight mistake",
+          "body": "Direct damage only during a brief collar-off window makes this encounter feel impossibly slow. Stack status while he is immune, then let it resolve as the collar comes off."
+        }
+      ]
+    },
+    {
+      "type": "farm",
+      "place": "THE CIRCUIT, DUVIRI",
+      "sub": "Mesa's weekly rotation",
+      "activity": "complete Circuit reward tiers",
+      "meta": "full farm bypass",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "duviri",
+      "rows": [
+        {
+          "qty": null,
+          "label": "Mesa components + Blueprint",
+          "note": "tiers 2, 5, 8, 10",
+          "alt": "wait for her rotation",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Requires The Duviri Paradox. Check the in-game weekly Circuit reward path; Mesa is not available every week."
+      ],
+      "bonuses": ["This avoids both the Mutalist Alad V fight and key-coordinate farming."],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build components, then Mesa",
+      "meta": "12h each, then 72h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Neuroptics", "note": null, "alt": null, "done": false },
+        { "qty": null, "label": "Chassis", "note": null, "alt": null, "done": false },
+        { "qty": null, "label": "Systems", "note": null, "alt": null, "done": false },
+        { "qty": null, "label": "Mesa", "note": "3 Orokin Cells", "alt": null, "done": false }
+      ],
+      "conditions": [
+        "Start the three components in parallel. A free Warframe slot is required to claim Mesa."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

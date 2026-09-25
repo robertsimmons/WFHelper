@@ -1,0 +1,231 @@
+{
+  "name": "Yareli",
+  "kind": "warframe",
+  "effort": 5,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "badges": [
+    { "text": "K-Drive quest", "tone": "warn" },
+    { "text": "clan research", "tone": "warn" }
+  ],
+  "prices": [{ "label": "built", "amount": "325 p", "money": false }],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "FORTUNA, VENUS",
+      "sub": "Ventkids Clubhouse",
+      "activity": "complete Vox Solaris; reach Mastery Rank 3",
+      "meta": "unlocks The Waverider",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "orb-vallis",
+      "rows": [
+        {
+          "qty": null,
+          "label": "Vox Solaris",
+          "note": "required; grants the loaner Bondi K-Drive",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Mastery Rank 3",
+          "note": "required for the Waverider inbox message",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "You do not need to own or build a K-Drive. The loaner Bondi board is on the gear wheel, not in the Arsenal.",
+        "The Waverider is solo-only. Start it from the Codex after the inbox message arrives, then speak to Boon."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "gate",
+      "place": "ORB VALLIS, VENUS",
+      "sub": "The Waverider #1 comic",
+      "activity": "complete 15 K-Drive challenges",
+      "meta": "5 pages; 3 feats each",
+      "mode": "solo",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "orb-vallis",
+      "rows": [
+        {
+          "qty": "5",
+          "label": "comic pages",
+          "note": "unlock all three feats on each page",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Yareli Blueprint",
+          "note": "mailed by Grandmother after the quest",
+          "alt": "50,000 Cephalon Simaris standing if lost",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The current quest has 15 challenges, not the 25 shown in pre-Update-34 guides.",
+        "Races appear on the map only while standing on a K-Drive; race gates alone satisfy the race-point requirements, so prioritize long open races.",
+        "For the five-second airtime and difficult chain feats, archwing high up, dismount with melee, then summon the K-Drive mid-air. Bind it to a gear hotkey first.",
+        "The Pearl's circular rim and the coolant-tower roots are forgiving combo spots. On the pipe behind Fortuna, grind, charge-jump, rotate, and land back on the pipe.",
+        "Switch to secondary while riding for kill challenges. For slam kills, jump, tap crouch, then hold crouch until landing; unshielded Grineer or Infested are easier targets."
+      ],
+      "bonuses": [
+        "A custom moddable board makes pages 3-5 much easier: Air Time, Primo Flair, Inertia Dampeners, Mag Locks, Perfect Balance, and Pop Top are the useful mods.",
+        "Take trick feats in short sessions. Repeating one trick more than three times stops advancing a chain, and the combo meter can expire even without a wipeout."
+      ],
+      "disclosures": [
+        {
+          "title": "skill gate, not a drop farm",
+          "body": "There is no part-drop RNG and no replay route. The quest yields only Yareli's main blueprint; the three component blueprints come separately from a clan's Ventkids' Bash Lab."
+        }
+      ]
+    },
+    {
+      "type": "vendor",
+      "place": "CLAN DOJO",
+      "sub": "Ventkids' Bash Lab",
+      "activity": "buy researched component blueprints",
+      "meta": "separate lab; clan dependency",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Yareli Neuroptics Blueprint",
+          "note": "10,000 credits after clan research",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Yareli Chassis Blueprint",
+          "note": "10,000 credits after clan research",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Yareli Systems Blueprint",
+          "note": "10,000 credits after clan research",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The Bash Lab is its own dojo room, not the Tenno, Energy, Bio, or Chem Lab. Verify it through dojo fast travel before joining a clan for Yareli.",
+        "If your clan has not researched them, each component needs 1,500 clan affinity, 72 hours, and a Detonite Injector, Mutagen Mass, or Fieldron respectively before it can be bought.",
+        "Start or locate the lab research early: it is independent of finishing The Waverider."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "ORIGIN SYSTEM",
+      "sub": "resource preparation",
+      "activity": "gather component materials",
+      "meta": "farm Argon last",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "2",
+          "label": "Argon Crystal",
+          "note": "Neuroptics; decays over time",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "2",
+          "label": "Tellurium",
+          "note": "Chassis",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "2",
+          "label": "Nitain Extract",
+          "note": "Systems; Nightwave Cred Offerings / Invasions",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "10",
+          "label": "Heart Noctrul",
+          "note": "Neuroptics; mine on Deimos",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "20",
+          "label": "Venerdo Alloy",
+          "note": "Chassis; refine Orb Vallis Venerdo",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "5",
+          "label": "Scrubber Exa Brain",
+          "note": "Systems; fish in Orb Vallis",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The remaining component materials are 150 Plastids, 875 Salvage, 350 Circuits, 1,500 Nano Spores, 350 Cryotic, and 1,750 Alloy Plate.",
+        "Nitain is the availability gate: get it from Nightwave early if it is offered. Farm Argon only after the Neuroptics blueprint is in hand."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build components, then Yareli",
+      "meta": "12h each, then 72h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Neuroptics", "note": null, "alt": null, "done": false },
+        { "qty": null, "label": "Chassis", "note": null, "alt": null, "done": false },
+        { "qty": null, "label": "Systems", "note": null, "alt": null, "done": false },
+        {
+          "qty": null,
+          "label": "Yareli",
+          "note": "25,000 cr + 1 Orokin Cell",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Component blueprints take 12 hours each. The final build takes 72 hours after all three components are claimed."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

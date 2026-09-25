@@ -1,0 +1,248 @@
+{
+  "name": "Tenet Envoy",
+  "kind": "primary",
+  "effort": 9,
+  "tradeable": "converted Sister only",
+  "progress": { "have": 0, "need": 1, "unit": "weapon" },
+  "badges": [
+    { "text": "Sister of Parvos", "tone": "warn" },
+    { "text": "MR 5", "tone": "info" },
+    { "text": "Railjack required", "tone": "warn" }
+  ],
+  "prices": [
+    { "label": "Sister contract", "amount": "varies", "money": false },
+    { "label": "Elemental Vice", "amount": "20 p", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "STAR CHART",
+      "sub": null,
+      "activity": "unlock Sisters of Parvos",
+      "meta": "one-time",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "The War Within",
+          "note": "quest complete",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Call of the Tempestarii",
+          "note": "quest complete",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Mastery Rank 5",
+          "note": "to create a Sister",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Railjack",
+          "note": "for the Neptune Proxima confrontation",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "You can have only one active adversary. Clear or convert any existing Lich, Sister, or Coda before starting.",
+        "The Envoy is not sold by Ergo Glast. His Holokey stock cannot provide it."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "relics",
+      "place": "KUVA SIPHON OR KUVA FLOOD, ANY",
+      "sub": null,
+      "activity": "earn and crack Requiem Eterna Relics",
+      "meta": "3 mods per Sister",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "3",
+          "label": "charged Requiem mods",
+          "note": "one sequence; 3 charges each",
+          "alt": "trade duplicates or buy cheap mods from players",
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Oull",
+          "note": "optional wildcard Requiem",
+          "alt": "25% Sister vanquish drop",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Sisters use Requiem mods, not Hex mods. The eight regular mods are Fass, Jahu, Khra, Lohk, Netra, Ris, Vome, and Xata.",
+        "Each successful vanquish consumes one charge from every equipped Requiem mod. Bring a usable pool before spawning the Sister."
+      ],
+      "bonuses": [
+        "Oull substitutes for any Requiem and reduces the risk of a bad early sequence guess."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "boss",
+      "place": "HYDRA, PLUTO",
+      "sub": "Corpus Capture",
+      "activity": "clear Granum Void; inspect Sister Candidates",
+      "meta": "one Zenith Crown per attempt",
+      "mode": "solo, normal",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Zenith Granum Crown", "amount": "1" }],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Tenet Envoy Candidate",
+          "note": "Mercy only when weapon preview says Envoy",
+          "alt": "buy a converted Tenet Envoy Sister",
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Toxin progenitor",
+          "note": "combines with innate Cold for Viral",
+          "alt": "Magnetic is another common choice",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Kill a Treasurer on a Corpus ship node to obtain Zenith Granum Crowns. Fissures and Syndicate missions cannot spawn a Candidate.",
+        "At the Golden Hand, spend the crown and kill 25 enemies in the Granum Void while solo. Finish the mission; the Candidate appears after exiting the Void.",
+        "The downed Candidate previews its weapon. If it is not Envoy, do not Mercy it: complete and extract to remove that weapon from the pool. Aborting does not cycle the pool.",
+        "The Warframe that performs the Mercy fixes the progenitor element. The Envoy has innate Cold, so Toxin produces Viral without a mod slot."
+      ],
+      "bonuses": [
+        "Xoris makes fast, consistent Granum Void clears. Specters and On-Call crew can also enter the Void."
+      ],
+      "disclosures": [
+        {
+          "title": "the crown is the real reroll cost",
+          "body": "Each rejected Candidate still consumes a Zenith Granum Crown. Complete bad Hydra runs rather than aborting: every completed rejection narrows the eleven-weapon Sister pool until Envoy is forced."
+        }
+      ]
+    },
+    {
+      "type": "boss",
+      "place": "SISTER INFLUENCE NODES",
+      "sub": "Venus through Neptune",
+      "activity": "Mercy Hounds, reveal Requiems, and test the sequence",
+      "meta": "~180 Murmurs; 1-4 h",
+      "mode": "public for faster Murmurs",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "3",
+          "label": "revealed Requiems",
+          "note": "Murmurs reveal mods, not order",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "correct Parazon sequence",
+          "note": "opens Neptune Proxima",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Mercy Sister Hounds before downing the Sister; Hounds self-destruct when she falls and then award no Murmurs.",
+        "Murmur reveals average about 36, 60, and 84 progress. Failed Parazon attempts reveal sequence order but rank up and relocate the Sister.",
+        "Do not Mercy blindly before any mods are known unless deliberately using Oull; a higher-rank Sister is tougher and appears less often after her rage resets."
+      ],
+      "bonuses": ["Public squads accelerate Murmurs; an Oull slot allows a safe wildcard guess."],
+      "disclosures": []
+    },
+    {
+      "type": "boss",
+      "place": "NEPTUNE PROXIMA",
+      "sub": "Sister of Parvos Confrontation",
+      "activity": "Railjack Skirmish; finish the Sister",
+      "meta": "choose Vanquish",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "1",
+          "label": "Tenet Envoy",
+          "note": "built; 25-60% bonus",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Choose Vanquish, never Convert. Conversion grants a tradeable Sister contract, not the weapon.",
+        "The Envoy arrives built in the Foundry at its rolled bonus percentage; no crafting materials or timer are needed."
+      ],
+      "bonuses": ["A vanquish can award Oull, useful for the next Sister."],
+      "disclosures": [
+        {
+          "title": "do not let the choice time out",
+          "body": "The Convert or Vanquish screen has a short timer. Convert is not a way to claim the Envoy; it permanently trades the weapon for a Sister ally/contract."
+        }
+      ]
+    },
+    {
+      "type": "craft",
+      "place": "ORBITER, MODDING",
+      "sub": null,
+      "activity": "optional Valence Fusion toward 60%",
+      "meta": "bank copies first",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "60% bonus",
+          "note": "optional optimization goal",
+          "alt": "stop at the first usable roll",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Valence Fusion sets the result to min(1.1 × the higher bonus, 60%), rounded down to one decimal; any result of at least 58% becomes 60%.",
+        "Fuse into the invested Envoy. The donor is destroyed along with its Forma, Catalyst, adapters, and lens; choose which progenitor element survives.",
+        "Elemental Vice changes only the bonus element after rank 40 with five Forma. It never changes the percentage."
+      ],
+      "bonuses": [
+        "Since the current roll is randomized across the 25-60% band, a 52.8% Envoy reaches 60% in one fusion."
+      ],
+      "disclosures": []
+    }
+  ]
+}

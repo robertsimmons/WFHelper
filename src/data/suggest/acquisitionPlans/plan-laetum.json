@@ -1,0 +1,218 @@
+{
+  "name": "Laetum",
+  "kind": "secondary",
+  "effort": 5,
+  "tradeable": "blueprint only",
+  "progress": { "have": 0, "need": 1, "unit": "blueprint" },
+  "badges": [
+    { "text": "Holdfasts Neutral", "tone": "info" },
+    { "text": "MR 14", "tone": "warn" }
+  ],
+  "prices": [{ "label": "blueprint", "amount": "3,000 Holdfasts Standing", "money": false }],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "QUESTS",
+      "sub": null,
+      "activity": "unlock the Zariman and The Holdfasts",
+      "meta": "The New War → Angels of the Zariman",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "The New War",
+          "note": "quest prerequisite",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Angels of the Zariman",
+          "note": "unlocks Chrysalith",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Angels of the Zariman is the only progression gate. Cavalero sells Laetum at Holdfasts Neutral; no syndicate rank-up is required."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "HALAKO PERIMETER, ZARIMAN",
+      "sub": "Chrysalith: turn Voidplumes in to Archimedean Yonta",
+      "activity": "Exterminate, then sweep the map",
+      "meta": "one thorough mission funds the blueprint",
+      "mode": "solo or public squad",
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "Holdfasts Standing", "amount": "16,500" },
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "1",
+          "label": "Voidplume Pinion",
+          "note": "build requirement; dormant Angel drops one",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "5",
+          "label": "Voidplume Quill",
+          "note": "build requirement",
+          "alt": "bounties, Accolades, or Ravenous Angels",
+          "done": false
+        },
+        {
+          "qty": "20",
+          "label": "Voidgel Orb",
+          "note": "build requirement",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Each Zariman map has eight Voidplume pickups: one Crest, two Vanes, and five Down-or-Vane spawns. Turn plumes in to Yonta for standing.",
+        "The daily cap is 16,000 + 500 per Mastery Rank; at MR 14 it is 23,000, so 3,000 standing is not a calendar gate.",
+        "Wake and kill the dormant Void Angel statue to guarantee the Pinion. Void Armageddon's Ravenous Angel gives a Quill instead, not a Pinion.",
+        "Do the objective before the sweep when running a bounty: failing it forfeits collected plumes."
+      ],
+      "bonuses": [
+        "Loot radar plus container-breaking coverage finds plumes quickly. Parallax Orokin Eye marks plumes and Accolades directly on the HUD.",
+        "Lost Spirits lead to nearby plumes or Accolades; Volt Speed makes them run faster."
+      ],
+      "disclosures": [
+        {
+          "title": "the gun is a short Zariman visit",
+          "body": "Halako Perimeter is preferred because it has no timer and lets you finish the objective before a relaxed full-map sweep. The rank grind players warn about belongs to later Holdfasts rewards, not Laetum itself."
+        }
+      ]
+    },
+    {
+      "type": "vendor",
+      "place": "CAVALERO, CHRYSALITH",
+      "sub": "The Holdfasts: Neutral (Rank 0)",
+      "activity": "buy the Laetum blueprint",
+      "meta": "3,000 Standing",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Holdfasts Standing", "amount": "3,000" }],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Laetum Blueprint",
+          "note": "tradeable",
+          "alt": "trade from another player",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Neutral has a 5,000 standing capacity, enough to buy the blueprint immediately after one good plume sweep."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Laetum",
+      "meta": "24h, MR 14 to equip",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": "30,000", "label": "Credits", "note": null, "alt": null, "done": false },
+        { "qty": "1", "label": "Voidplume Pinion", "note": null, "alt": null, "done": false },
+        { "qty": "5", "label": "Voidplume Quill", "note": null, "alt": null, "done": false },
+        { "qty": "20", "label": "Voidgel Orb", "note": null, "alt": null, "done": false },
+        { "qty": "4,000", "label": "Ferrite", "note": null, "alt": null, "done": false }
+      ],
+      "conditions": [
+        "You may craft Laetum before Mastery Rank 14, but cannot equip it until then."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "craft",
+      "place": "CAVALERO / ARSENAL",
+      "sub": null,
+      "activity": "complete native Incarnon Evolutions",
+      "meta": "apply a perk before the next tier tracks",
+      "mode": "solo recommended",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "100",
+          "label": "Laetum kills",
+          "note": "Evolution I; unlocks Incarnon form",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "8",
+          "label": "Eximus kills in Incarnon form",
+          "note": "Evolution II",
+          "alt": "Elite Sanctuary Onslaught",
+          "done": false
+        },
+        {
+          "qty": "8",
+          "label": "Void Angel primary-fire headshots without reloading",
+          "note": "Evolution III",
+          "alt": "Magnetize makes this much easier",
+          "done": false
+        },
+        {
+          "qty": "12",
+          "label": "Void Flood Ruptures closed",
+          "note": "Evolution IV",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Solo mission with Incarnon weapons in every slot",
+          "note": "Evolution V",
+          "alt": "Genesis-equipped weapons count",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Return to Cavalero and apply each unlocked perk before the next evolution begins tracking.",
+        "Evolution III uses the untransformed pistol's primary fire. Reloading any weapon breaks the headshot streak; holster Laetum between Angels instead.",
+        "For the fallback Evo III route, use magazine capacity and multishot, reduce damage enough not to kill the Angel early, and let multishot pellets supply the eight headshots.",
+        "Exalted weapons do not qualify for Evolution V. Incarnon Genesis weapons do qualify."
+      ],
+      "bonuses": [
+        "Mag's Magnetize can make Evolution III complete from one shot into a woken Angel; a Mag squadmate can provide the bubble.",
+        "Laetum, Felarx, and Innodem are a convenient native-Incarnon set for Evolution V."
+      ],
+      "disclosures": [
+        {
+          "title": "Evolution III is the real wall",
+          "body": "The weapon itself is a one-evening acquisition. Evo I and II are quick, Evo IV needs Void Flood rotations, and Evo V is one solo mission once your loadout qualifies. The Angel headshots are the frustrating step without Magnetize or a deliberate multishot setup."
+        }
+      ]
+    }
+  ]
+}

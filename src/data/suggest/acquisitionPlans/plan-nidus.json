@@ -1,0 +1,210 @@
+{
+  "name": "Nidus",
+  "kind": "warframe",
+  "effort": 6,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "badges": [
+    { "text": "solo faster", "tone": "info" },
+    { "text": "Index credits", "tone": "warn" }
+  ],
+  "prices": [{ "label": "built", "amount": "225 p", "money": false }],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "QUESTS",
+      "sub": null,
+      "activity": "The War Within, then The Glast Gambit",
+      "meta": "credit wagers",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "The War Within",
+          "note": "unlocks The Glast Gambit at relays",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "The Glast Gambit",
+          "note": "main blueprint; five Index matches",
+          "alt": "50,000 Simaris standing for another copy",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Talk to Ergo Glast in any relay after The War Within to begin the quest.",
+        "The wagers escalate from 100,000 to 180,000 credits. Win the first four; a loss burns its wager.",
+        "Match 4 requires a 20-point Victory Margin: do not bring Specters and do not win by more than 20, or Nef Anyo withdraws and the wager is lost.",
+        "Match 5 is scripted to lose, but bank at least once so the quest advances; refusing to deposit fails it without advancing."
+      ],
+      "bonuses": [
+        "Do this once the wagers are disposable; normal Index remains available if you need to rebuild credits."
+      ],
+      "disclosures": [
+        {
+          "title": "the quest blueprint is not an RNG drop",
+          "body": "The Glast Gambit awards the Nidus main blueprint. Infested Salvage only supplies the three component blueprints."
+        }
+      ]
+    },
+    {
+      "type": "farm",
+      "place": "OESTRUS, ERIS",
+      "sub": null,
+      "activity": "Infested Salvage",
+      "meta": "all rotations can drop parts",
+      "mode": "solo; repeat after round 4",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Neuroptics Blueprint",
+          "note": "7.69% A/B, 14.29% C",
+          "alt": "Circuit, Nidus week",
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Chassis Blueprint",
+          "note": "7.69% A/B, 14.29% C",
+          "alt": "Circuit, Nidus week",
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Systems Blueprint",
+          "note": "7.69% A/B, 14.29% C",
+          "alt": "Circuit, Nidus week",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "This is an AABC mission, but Update 42.0 added all three parts to A and B. The old advice that only Rotation C can drop Nidus parts is obsolete.",
+        "Run solo: console decryption slows with additional squad members, solo skips the end-of-round wait, and you start each new round with every console active.",
+        "Stay through round 4 for the C reward, then extract and restart. Enemy scaling makes deeper rounds slower without better drop odds.",
+        "Feed Antiserum Charges to Vaporizers to protect all three consoles. If all three consoles are destroyed, the mission fails."
+      ],
+      "bonuses": [
+        "A loot frame or companion increases Antiserum Charge drops: Nekros, Khora, Hydroid, Ivara, Atlas, or Chesa Kubrow.",
+        "Kill close to the Vaporizers: Charges have a short despawn timer and cannot be Vacuumed from distant AoE kills.",
+        "The clan-researched Antiserum Injector restores armor from the Gear menu without spending a carried Charge; Operator mode also avoids corrosion."
+      ],
+      "disclosures": [
+        {
+          "title": "keep the Vaporizer loop moving",
+          "body": "Carry at most three Charges, circle the three Vaporizers, and top each one up every pass instead of waiting for its bubble to run down. Octavia is a low-attention solo pick: Mallet and Resonator clear nearby Infested while you collect and deliver Charges."
+        }
+      ]
+    },
+    {
+      "type": "gate",
+      "place": "DUVIRI",
+      "sub": null,
+      "activity": "The Circuit",
+      "meta": "only on Nidus's rotation week",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Nidus Circuit rewards",
+          "note": "guaranteed parts at Tiers 2, 5, 8, and 10",
+          "alt": "Infested Salvage now",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Finish The Duviri Paradox and check the current Circuit offering before committing to Eris.",
+        "Nidus appears on an 11-week Circuit cycle. If his week is near, the guaranteed route avoids all part RNG; if it is far away, farm Oestrus instead."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "ERIS / DEIMOS",
+      "sub": null,
+      "activity": "Infested missions and resource runs",
+      "meta": "component materials",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Nano Spores, Polymer Bundles, Plastids",
+          "note": "common Infested component materials",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Mutagen Samples",
+          "note": "common Infested component material",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Kuva",
+          "note": "needed for Nidus",
+          "alt": "Kuva Siphons / Floods",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Infested Salvage itself is a strong Nano Spore source, so farm the part blueprints before separately targeting its common materials."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build components, then Nidus",
+      "meta": "12h each, then 72h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Neuroptics", "note": null, "alt": null, "done": false },
+        { "qty": null, "label": "Chassis", "note": null, "alt": null, "done": false },
+        { "qty": null, "label": "Systems", "note": null, "alt": null, "done": false },
+        {
+          "qty": null,
+          "label": "Nidus",
+          "note": "Kuva plus built components",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Queue all three components first; they build in parallel before the 72-hour frame build."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

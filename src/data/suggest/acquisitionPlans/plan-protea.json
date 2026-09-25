@@ -1,0 +1,134 @@
+{
+  "name": "Protea",
+  "kind": "warframe",
+  "effort": 6,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "badges": [
+    { "text": "Granum Void", "tone": "info" },
+    { "text": "11.11% each", "tone": "warn" }
+  ],
+  "prices": [{ "label": "built", "amount": "325 p", "money": false }],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "CODEX",
+      "sub": null,
+      "activity": "The Deadlock Protocol",
+      "meta": "MR 4",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "The Deadlock Protocol",
+          "note": "requires Saturn Junction and Vox Solaris",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Protea Blueprint + Xoris",
+          "note": "quest rewards",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The quest gives the main blueprint; only the three component blueprints are farmed in the Granum Void."
+      ],
+      "bonuses": [
+        "Keep the Xoris: it is the only weapon that can free Solaris captives in the Void."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "CORPUS SHIP",
+      "sub": "Granum Void",
+      "activity": "Treasurer crown, then Golden Hand Tribute",
+      "meta": "one crown, one attempt",
+      "mode": "solo",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Neuroptics Blueprint",
+          "note": "11.11%, Rank 3 Granum Void",
+          "alt": "Granum Crown: level 0-15 Corpus Ship",
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Chassis Blueprint",
+          "note": "11.11%, Rank 3 Extended Granum Void",
+          "alt": "Exemplar Crown: level 16-30 Corpus Ship",
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Systems Blueprint",
+          "note": "11.11%, Rank 3 Nightmare Granum Void",
+          "alt": "Zenith Crown: level 30+ Corpus Ship",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "A Treasurer drops one crown after roughly 2-5 minutes; spending it opens a 60-second Void attempt. All Golden Hand Tributes close when that attempt ends.",
+        "Only Rank 3 drops Protea parts: reach 75 kills solo. Each additional squad member raises every rank threshold by 25.",
+        "Do not free Solaris captives on the Corpus Ship before entering; a live bug can disable abilities inside the Void and afterward.",
+        "The crown tier comes from the mission level where the Treasurer spawned, not from the Golden Hand you use."
+      ],
+      "bonuses": [
+        "Run solo and hold one position; movement spreads spawns out and makes the 75-kill target slower.",
+        "A charged Xoris throw frees each of three Void captives for +20 seconds; yellow particles add +5 seconds.",
+        "Preparation restores starting energy after the Void load-in. Mesa or Revenant can clear from high ground; an On-Call crew or Vapor Specter can substitute.",
+        "Farm the Systems tier last or fold Zenith crowns into Sisters of Parvos or Steel Path play to soften its long RNG tail."
+      ],
+      "disclosures": [
+        {
+          "title": "the one rule that saves crowns",
+          "body": "Rank 1 and 2 never drop Protea components. Every failed Rank 3 attempt consumes its crown and ends the mission's only Void chance, so bring the Xoris and a reliable clearing setup before spending one."
+        }
+      ]
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build components, then Protea",
+      "meta": "12h each, then 72h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Neuroptics", "note": null, "alt": null, "done": false },
+        { "qty": null, "label": "Chassis", "note": null, "alt": null, "done": false },
+        { "qty": null, "label": "Systems", "note": null, "alt": null, "done": false },
+        {
+          "qty": null,
+          "label": "Protea",
+          "note": "25,000 cr + 3 Orokin Cells",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Start the three components in parallel; a free Warframe slot is required to claim Protea."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

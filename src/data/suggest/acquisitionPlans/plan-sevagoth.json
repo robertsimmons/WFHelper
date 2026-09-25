@@ -1,0 +1,209 @@
+{
+  "name": "Sevagoth",
+  "kind": "warframe",
+  "effort": 9,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "badges": [
+    { "text": "Railjack RNG", "tone": "warn" },
+    { "text": "no pity", "tone": "warn" }
+  ],
+  "prices": [{ "label": "built", "amount": "325 p", "money": false }],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "CODEX",
+      "sub": null,
+      "activity": "Call of the Tempestarii",
+      "meta": "awards main blueprint",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "The Deadlock Protocol",
+          "note": "quest prerequisite",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "built Railjack and Reliquary Key",
+          "note": "quest prerequisite",
+          "alt": "join a host for later Void Storms",
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Call of the Tempestarii",
+          "note": "MR4; awards Sevagoth Blueprint",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Start from Cephalon Cy's inbox message or the Codex. The quest runs Arc Silver in Veil Proxima, Seven Sirens in Pluto Proxima, then Obol Crossing in Pluto Proxima."
+      ],
+      "bonuses": [
+        "Extra main blueprints cost 50,000 Cephalon Simaris standing if the first is sold or subsumed."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "NEPTUNE, PLUTO OR VEIL PROXIMA",
+      "sub": "active Void Storm",
+      "activity": "Railjack Exterminate",
+      "meta": "~10% per component, end of mission",
+      "mode": "Nu-gua Mines when active",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Neuroptics Blueprint",
+          "note": "10% completion roll",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Chassis Blueprint",
+          "note": "10% completion roll",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Systems Blueprint",
+          "note": "10% completion roll",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The node must have an active Void Storm; running its ordinary Railjack mission gives no Sevagoth roll.",
+        "The blueprint roll is separate from relic rewards. Do not equip, refine or collect Reactant for a better Sevagoth chance.",
+        "Neptune's table is 9.52% rather than 10%, but its lower-level Nu-gua Mines laps are usually fastest. Pluto's Seven Sirens and Veil's Calabash are the other Exterminate options.",
+        "The roll is once at mission completion, with no pity system. Endless missions are not a shortcut."
+      ],
+      "bonuses": [
+        "Veil is the better choice when you also want Corrupted Holokeys, Railjack Intrinsics, or Epitaph drops.",
+        "A built Railjack and capable crew can make an Exterminate lap roughly 5-6 minutes; weak ships can take twice that."
+      ],
+      "disclosures": [
+        {
+          "title": "treat this as a Railjack session",
+          "body": "All three parts are flat independent rolls with ugly variance and no token fallback. Run the shortest currently active eligible Exterminate, but set a second goal such as Holokeys or Intrinsics; farming only for one missing blueprint is the burnout trap. Average luck is about 10-15 storms, while long tails can be much worse."
+        }
+      ]
+    },
+    {
+      "type": "farm",
+      "place": "ELIGIBLE VOID STORMS",
+      "sub": "Points of Interest, asteroids and wreckage",
+      "activity": "collect build materials while farming parts",
+      "meta": "one combined trip",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "650",
+          "label": "Nullstones",
+          "note": "Railjack-only resource",
+          "alt": "asteroids, red barrels and mission wreckage",
+          "done": false
+        },
+        {
+          "qty": "250",
+          "label": "Asterite",
+          "note": "Railjack-only resource",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Titanium, Cryotic, Rubedo, Salvage, Oxium, Morphics and Neural Sensors",
+          "note": "component materials",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Hit derelicts and freightliners on the route; skipping them commonly leaves the Railjack-only materials short after the blueprints finally drop."
+      ],
+      "bonuses": [
+        "Necramechs can be used inside Railjack mission interiors, so this is useful affinity time too."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "HEPIT, VOID",
+      "sub": null,
+      "activity": "Capture",
+      "meta": "last errand",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "1",
+          "label": "Argon Crystal",
+          "note": "component material",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Argon decays after 24 hours, so collect it immediately before starting the component build."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build components, then Sevagoth",
+      "meta": "12h each, then 72h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Neuroptics", "note": null, "alt": null, "done": false },
+        { "qty": null, "label": "Chassis", "note": null, "alt": null, "done": false },
+        { "qty": null, "label": "Systems", "note": null, "alt": null, "done": false },
+        {
+          "qty": null,
+          "label": "Sevagoth",
+          "note": "25,000 cr + Orokin Cell",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Keep a free Warframe slot for the final claim. Sevagoth, his Shadow and the Exalted Claws are separately moddable, so expect substantial Forma investment after acquisition."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

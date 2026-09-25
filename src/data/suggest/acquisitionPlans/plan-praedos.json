@@ -1,0 +1,225 @@
+{
+  "name": "Praedos",
+  "kind": "melee",
+  "effort": 8,
+  "tradeable": "blueprint only",
+  "progress": { "have": 0, "need": 1, "unit": "blueprint" },
+  "badges": [
+    { "text": "Holdfasts Rank 4", "tone": "warn" },
+    { "text": "MR 14", "tone": "info" }
+  ],
+  "prices": [{ "label": "blueprint", "amount": "9,000 Holdfasts Standing", "money": false }],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "QUESTS",
+      "sub": null,
+      "activity": "unlock the Zariman and The Holdfasts",
+      "meta": "The New War → Angels of the Zariman",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "The New War",
+          "note": "quest prerequisite",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Angels of the Zariman",
+          "note": "unlocks Chrysalith",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "There is no drop-table route: The Holdfasts on the Zariman are the sole source of Praedos' blueprint and its dedicated materials."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "HALAKO PERIMETER, ZARIMAN",
+      "sub": "Chrysalith: turn Voidplumes in to Archimedean Yonta",
+      "activity": "Exterminate; finish the objective, then full-clear the map and kill its Angel",
+      "meta": "Rank 4 and 9,000 Standing",
+      "mode": "solo or public squad",
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "Holdfasts Standing", "amount": "9,000" },
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "15",
+          "label": "Voidplume Pinion",
+          "note": "build requirement; one per dormant Void Angel",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "45",
+          "label": "Voidplume Quill",
+          "note": "15 rank-up tribute + 30 for the build",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "10",
+          "label": "Voidplume Crest",
+          "note": "Rank 3 tribute; one guaranteed per map",
+          "alt": "buy Yonta's rotating Crest offer",
+          "done": false
+        },
+        {
+          "qty": "50",
+          "label": "Voidgel Orb",
+          "note": "Rank 2 and Rank 4 tributes",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Rank 4 (Seraph) requires 99,000 cumulative standing. The rank-up tributes additionally need 5 Down, 10 Vane, 10 Crest, and 15 Quill; bank crafting materials before donating plumes.",
+        "The daily cap is 16,000 + 500 per Mastery Rank. Down, Vane, and Crest may bypass that cap as medallions, but treat that as unconfirmed; Quills and Pinions are safer kept for requirements.",
+        "Each normal Zariman mission has a dormant Void Angel that drops one Pinion. Void Armageddon instead has a Ravenous Angel that drops a Quill, so do not use it for Pinions.",
+        "Container-break with loot radar, collect Lost Spirit trails after the objective, and redeem Zarium Accolades at Melica consoles. Squad pickups are shared."
+      ],
+      "bonuses": [
+        "Parallax's Orokin Eye marks nearby Voidplumes; Helminth Golden Instinct is the free alternative.",
+        "Void Cascade is a strong simultaneous source of Thrax Plasm for rank-up and crafting requirements."
+      ],
+      "disclosures": [
+        {
+          "title": "this is a standing wall plus 15 Angel kills",
+          "body": "The blueprint is not RNG-gated, but Rank 4 is a multi-day daily-cap grind and 15 Pinions require at least 15 dormant Angels. A thorough Exterminate is the flexible all-in-one route."
+        }
+      ]
+    },
+    {
+      "type": "vendor",
+      "place": "CAVALERO, CHRYSALITH",
+      "sub": "The Holdfasts: Seraph (Rank 4)",
+      "activity": "buy the Praedos blueprint",
+      "meta": "9,000 Standing",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Holdfasts Standing", "amount": "9,000" }],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Praedos Blueprint",
+          "note": "tradeable",
+          "alt": "trade from another player",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Trading skips the Rank 4 blueprint purchase, but it does not skip the Zariman-only materials required to build Praedos."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Praedos",
+      "meta": "24h, MR 14 to equip",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": "30,000", "label": "Credits", "note": null, "alt": null, "done": false },
+        { "qty": "15", "label": "Voidplume Pinion", "note": null, "alt": null, "done": false },
+        { "qty": "30", "label": "Voidplume Quill", "note": null, "alt": null, "done": false },
+        { "qty": "8,000", "label": "Ferrite", "note": null, "alt": null, "done": false },
+        { "qty": "100", "label": "Thrax Plasm", "note": null, "alt": "Void Cascade", "done": false }
+      ],
+      "conditions": [
+        "You may craft Praedos before Mastery Rank 14, but cannot equip it until then. The Foundry result is an unevolved tonfa; its Incarnon progression comes next."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "craft",
+      "place": "CAVALERO / ARSENAL",
+      "sub": null,
+      "activity": "complete native Incarnon Evolutions",
+      "meta": "no Genesis adapter or Circuit rotation needed",
+      "mode": "solo recommended for Evolution V",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "100",
+          "label": "Praedos kills",
+          "note": "Evolution I; unlocks Incarnon form",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "6",
+          "label": "Incarnon Form activations in one mission",
+          "note": "Evolution II; activate at 5x combo then Heavy Attack",
+          "alt": "endless mission with dense spawns",
+          "done": false
+        },
+        {
+          "qty": "3",
+          "label": "Heavy Attacks on Thrax Centurions or Legates",
+          "note": "Evolution III",
+          "alt": "Void Cascade",
+          "done": false
+        },
+        {
+          "qty": "12",
+          "label": "Void Flood Ruptures closed",
+          "note": "Evolution IV",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Solo mission with an Incarnon weapon in every slot",
+          "note": "Evolution V",
+          "alt": "Genesis-equipped weapons count",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Apply each unlocked evolution before the next tier begins tracking. Evolution progress otherwise persists across missions.",
+        "Evolution II requires six separate activations in one mission; short Exterminates are a poor fit.",
+        "For Evolution III, the Heavy Attack must hit Thrax Centurions or Legates in their killable state. Void Cascade naturally supplies both targets and Thrax Plasm.",
+        "Evolution V requires three Incarnon weapons and solo completion. Exalted weapons do not qualify; native Incarnons or Incarnon Genesis weapons do."
+      ],
+      "bonuses": [
+        "Choose Drifting Grace at Evolution II and Evolved Ascension at Evolution IV for Praedos' celebrated passive +20% sprint/slide speed and +30% Parkour Velocity.",
+        "Swift Transmute at Evolution IV lowers future Incarnon activation to 3x combo, but gives up the passive parkour option."
+      ],
+      "disclosures": [
+        {
+          "title": "the movement perks are the prize",
+          "body": "Praedos is often equipped without ever being swung: Drifting Grace and Evolved Ascension remain active just by carrying it. The native Incarnon upgrades are a second progression track after crafting, not an adapter farm."
+        }
+      ]
+    }
+  ]
+}

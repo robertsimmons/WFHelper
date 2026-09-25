@@ -1,0 +1,267 @@
+{
+  "name": "Octavia",
+  "kind": "warframe",
+  "effort": 4,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "badges": [
+    { "text": "quest reward", "tone": "info" },
+    { "text": "Circuit bypass", "tone": "circuit" },
+    { "text": "Rotation C", "tone": "warn" }
+  ],
+  "prices": [
+    { "label": "built", "amount": "225 p", "money": false },
+    { "label": "spare BP", "amount": "50,000 Simaris", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "QUESTS",
+      "sub": null,
+      "activity": "complete The Second Dream, then Octavia's Anthem",
+      "meta": "solo-only quest",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "The Second Dream",
+          "note": "required to start Octavia's Anthem",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Octavia's Anthem",
+          "note": "awards Octavia Blueprint",
+          "alt": "Simaris: 50,000 standing for a spare",
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Mandachord",
+          "note": "quest reward; needed for final build",
+          "alt": "Simaris: 25,000 standing for a spare",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The Second Dream is the actual quest gate; The War Within is not required for Octavia's Anthem.",
+        "The Mandachord has a 10-second Foundry build when needed for the final blueprint."
+      ],
+      "bonuses": ["The quest is replayable if you want to revisit its music-puzzle missions."],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "THE CIRCUIT, DUVIRI",
+      "sub": null,
+      "activity": "choose Octavia during her weekly offering",
+      "meta": "Octavia is week 9 of the 11-week rotation",
+      "mode": "requires The Duviri Paradox",
+      "live": { "state": "waiting", "text": "Check the in-game Circuit rotation" },
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Octavia Neuroptics Blueprint",
+          "note": "Circuit reward tier 2; 4 stages",
+          "alt": "Terrorem Rotation C",
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Octavia Chassis Blueprint",
+          "note": "Circuit reward tier 5",
+          "alt": "Lua music puzzle",
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Octavia Systems Blueprint",
+          "note": "Circuit reward tier 8",
+          "alt": "Plato resource caches",
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Octavia Blueprint",
+          "note": "Circuit reward tier 10",
+          "alt": "Octavia's Anthem",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Circuit rewards are guaranteed by completed-stage progress, not RNG drops; tiers reset weekly.",
+        "The tier-2 Neuroptics is the major shortcut. Take it during Octavia's week instead of committing to repeated 20-minute Survival runs.",
+        "Progress is banked per completed stage; failing or aborting a stage loses that stage's progress."
+      ],
+      "bonuses": [
+        "Completing four stages earns the daily +50 Circuit Progress bonus, making shorter sessions efficient.",
+        "If Octavia is live, claim the low tiers first; the full tier-10 route takes substantially longer than obtaining the quest blueprint."
+      ],
+      "disclosures": [
+        {
+          "title": "best use of the Circuit",
+          "body": "Neuroptics at tier 2 is the payoff. The traditional version is a 22.56% Rotation C reward with one roll every 20 minutes; Circuit turns that worst part into four completed stages."
+        }
+      ]
+    },
+    {
+      "type": "farm",
+      "place": "PLATO, LUA",
+      "sub": "Crossfire Exterminate",
+      "activity": "find and open resource caches",
+      "meta": "22.56% per cache reward",
+      "mode": "bring loot radar",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "lua",
+      "rows": [
+        {
+          "qty": null,
+          "label": "Octavia Systems Blueprint",
+          "note": "Rotation A resource cache",
+          "alt": "Circuit reward tier 8",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Open at least one cache to make the Systems reward roll. Finding all three completes the cache reward, not three independent Octavia rolls.",
+        "Caches appear on loot radar and emit an audible hum; use both while learning the tileset.",
+        "Plato includes Sentients. Use mixed damage, or Operator Void Beam, to reset their damage adaptation."
+      ],
+      "bonuses": [
+        "Crossfire Exterminate is quick, so farm Systems in the same Lua session as music-room Capture reloads."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "COPERNICUS, LUA",
+      "sub": "Capture",
+      "activity": "find the Lua Music Puzzle room and solve its note sequence",
+      "meta": "100% once the room appears",
+      "mode": "fast map reloads",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "lua",
+      "rows": [
+        {
+          "qty": null,
+          "label": "Octavia Chassis Blueprint",
+          "note": "top crate on the central structure",
+          "alt": "Circuit reward tier 5",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The Chassis is guaranteed; the RNG is the Conservatory room spawning. Capture is preferred for short, wide tiles and fast restarts.",
+        "Use the room with glowing blue pressure plates around a central pillar, not the Agility Test's giant organ.",
+        "After completing the fixed memory sequence, bullet-jump to the upper crate. The lower crate near the console can contain a built Forma."
+      ],
+      "bonuses": [
+        "Titania, Wukong, or Zephyr make room checks and the jump to the upper crate easier.",
+        "If you enter the wrong room, leave and reload rather than spending time on the Agility Test."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "TERROREM, DEIMOS",
+      "sub": "Survival",
+      "activity": "hold to Rotation C",
+      "meta": "22.56% every 20 minutes",
+      "mode": "extract only after a C reward",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "deimos",
+      "rows": [
+        {
+          "qty": null,
+          "label": "Octavia Neuroptics Blueprint",
+          "note": "Rotation C at 20:00, then every 20 min",
+          "alt": "Circuit reward tier 2",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Survival uses A-A-B-C rotations at 5-minute intervals. A and B rewards at 5, 10, and 15 minutes cannot drop the Neuroptics.",
+        "Do not follow a public squad extracting before 20:00: that run never reaches an eligible reward roll.",
+        "Terrorem is Infested with no armor; Heat/Slash and melee work well. Toxic Ancients make health-tank or invisibility frames safer than shield-only builds."
+      ],
+      "bonuses": [
+        "Run this only if Circuit is unavailable or you specifically prefer the immediate RNG route."
+      ],
+      "disclosures": [
+        {
+          "title": "the traditional wall",
+          "body": "Each C rotation is one 22.56% attempt, so four 20-minute runs is the average—but bad-luck streaks can be much longer. Circuit is the recommended escape hatch."
+        }
+      ]
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build components, then Octavia",
+      "meta": "12h each, then 72h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Neuroptics",
+          "note": "ordinary resources",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Chassis",
+          "note": "ordinary resources",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Systems",
+          "note": "2,000 Kuva + 5 Orokin Cells",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Octavia",
+          "note": "built Mandachord + 3-day final build",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Start all three component builds in parallel before starting Octavia's final build."
+      ],
+      "bonuses": [
+        "Farm Kuva and Orokin Cells before the components complete so Systems does not become the final delay."
+      ],
+      "disclosures": []
+    }
+  ]
+}

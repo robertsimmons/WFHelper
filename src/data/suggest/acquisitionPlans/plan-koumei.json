@@ -1,0 +1,188 @@
+{
+  "name": "Koumei",
+  "kind": "warframe",
+  "effort": 2,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "badges": [
+    { "text": "hard pity", "tone": "info" },
+    { "text": "Earth", "tone": "info" }
+  ],
+  "prices": [{ "label": "built", "amount": "325 p", "money": false }],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "QUESTS",
+      "sub": null,
+      "activity": "Saya's Vigil, then Once Awake",
+      "meta": "unlocks the node",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Saya's Vigil",
+          "note": "required",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Once Awake",
+          "note": "required",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Saya's Visions does not appear on Earth or at Koumei's Cetus shrine until both quests are complete."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "SAYA'S VISIONS, EARTH",
+      "sub": "Cetus shrine",
+      "activity": "Shrine Defense",
+      "meta": "~2.5-4 min each",
+      "mode": "normal; public recommended",
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "Fate Pearls", "amount": "432" },
+      "spends": [],
+      "map": "plains-of-eidolon",
+      "rows": [
+        {
+          "qty": null,
+          "label": "Koumei Blueprint",
+          "note": "4.09%",
+          "alt": "or 165 Fate Pearls at Koumei's Shrine",
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Neuroptics Blueprint",
+          "note": "4.09%",
+          "alt": "or 55 Fate Pearls at Koumei's Shrine",
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Chassis Blueprint",
+          "note": "4.09%",
+          "alt": "or 55 Fate Pearls at Koumei's Shrine",
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Systems Blueprint",
+          "note": "4.09%",
+          "alt": "or 55 Fate Pearls at Koumei's Shrine",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Normal rewards 14-18 Pearls per clear. Fate Pearls come only from this mission and Resource Boosters do not increase them.",
+        "Do not buy a blueprint as soon as you can afford it: wait until your Pearls cover every blueprint still missing, so a later drop cannot duplicate a purchase.",
+        "Save two offerings for the Oni's invulnerable half-health phase; carry one in Warframe and one in Operator/Drifter, then deposit both immediately."
+      ],
+      "bonuses": [
+        "Use area control at both offering points (such as Khora, Gara, Vauban or Zephyr). The timer pauses only while enemies stand in the circle.",
+        "Run normal rather than Steel Path: its small Pearl increase is usually outweighed by the much slower Oni."
+      ],
+      "disclosures": [
+        {
+          "title": "the zero-luck ceiling",
+          "body": "Four blueprints cost 330 Pearls, then crafting consumes another 102. At normal rewards that is roughly 25-30 runs total."
+        }
+      ]
+    },
+    {
+      "type": "vendor",
+      "place": "CETUS, EARTH",
+      "sub": "Koumei's Shrine",
+      "activity": "buy missing blueprints",
+      "meta": "hard pity",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Fate Pearls", "amount": "330" }],
+      "map": "plains-of-eidolon",
+      "rows": [
+        {
+          "qty": null,
+          "label": "Koumei Blueprint",
+          "note": "165 Fate Pearls",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "3",
+          "label": "component blueprints",
+          "note": "55 Fate Pearls each",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Spend only on the blueprints still missing once you have enough Pearls for all of them."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build components, then Koumei",
+      "meta": "12h each, then 72h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Fate Pearls", "amount": "102" }],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Neuroptics",
+          "note": "24 Fate Pearls",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Chassis",
+          "note": "24 Fate Pearls",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Systems",
+          "note": "24 Fate Pearls",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Koumei",
+          "note": "30 Fate Pearls + 25,000 cr",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Fate Pearls are crafting materials as well as shop currency; reserve 102 after buying any missing blueprints."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

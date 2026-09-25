@@ -1,0 +1,150 @@
+{
+  "name": "Rauta",
+  "kind": "primary",
+  "effort": 5,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "badges": [
+    { "text": "Duviri", "tone": "info" },
+    { "text": "mood-gated", "tone": "warn" }
+  ],
+  "prices": [{ "label": "build", "amount": "20,000 cr", "money": false }],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "SATURN",
+      "sub": null,
+      "activity": "Uranus Junction, then The Duviri Paradox",
+      "meta": "MR 8 to equip",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Uranus Junction",
+          "note": "gates Duviri",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "The Duviri Paradox",
+          "note": "unlocks Acrithis",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["The quest is solo-only, so another player cannot carry this unlock."],
+      "bonuses": [
+        "The same route earns Kullervo's Bane for Kullervo and Pathos Clamps for other Duviri crafting."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "boss",
+      "place": "DUVIRI",
+      "sub": "Kullervo's Hold",
+      "activity": "The Duviri Experience; Kullervo, then the Orowyrm",
+      "meta": "5-8 runs, ~13-17 min each",
+      "mode": "solo, normal",
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "Kullervo's Bane", "amount": "30" },
+      "spends": [],
+      "map": "kullervos-hold",
+      "rows": [
+        {
+          "qty": "30",
+          "label": "Kullervo's Bane",
+          "note": "4-6 per normal run",
+          "alt": "6-8 on Steel Path",
+          "done": false
+        },
+        {
+          "qty": "10",
+          "label": "Pathos Clamp",
+          "note": "one Orowyrm kill",
+          "alt": "15 on Steel Path",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Kullervo's Hold appears only during Anger, Sorrow, and Fear. Check the mood before launching; Joy and Envy cannot pay Bane.",
+        "Kullervo and the Orowyrm must both die in the same Spiral. Leaving after either one alone awards zero Bane.",
+        "Run The Duviri Experience rather than The Lone Story: the Experience is the consistent Hold route. If The Warden is absent, advance Spiral stages until the Hold is scheduled.",
+        "Resource Boosters, Bountiful Harvest, and drop-chance effects do not increase Kullervo's Bane."
+      ],
+      "bonuses": [
+        "The first Orowyrm supplies all 10 Pathos Clamps required for Rauta's build.",
+        "Use the Undercroft to level gear while farming; solo Alchemy is a commonly fast objective."
+      ],
+      "disclosures": [
+        {
+          "title": "why normal is the recommended farm",
+          "body": "Steel Path gives roughly 50% more Bane, but its extra Orowyrm mechanics and public-squad delays commonly erase that gain. Take normal solo runs, collect a modest number of Decrees, go to the Hold, finish the Orowyrm, and extract."
+        },
+        {
+          "title": "the mood clock is the real gate",
+          "body": "Each Duviri mood lasts two hours. Kullervo's Hold is open for three of five moods, so a missed window can mean waiting as long as four hours. Do not rely on old advice that says Envy: Envy does not spawn the Hold."
+        }
+      ]
+    },
+    {
+      "type": "vendor",
+      "place": "DORMIZONE",
+      "sub": null,
+      "activity": "Acrithis",
+      "meta": "30 Bane total",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Kullervo's Bane", "amount": "30" }],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Rauta Blueprint", "note": "12 Bane", "alt": null, "done": false },
+        { "qty": null, "label": "Rauta Barrel", "note": "6 Bane", "alt": null, "done": false },
+        { "qty": null, "label": "Rauta Receiver", "note": "6 Bane", "alt": null, "done": false },
+        { "qty": null, "label": "Rauta Stock", "note": "6 Bane", "alt": null, "done": false }
+      ],
+      "conditions": [
+        "Kullervo's Bane is untradeable; Acrithis is the only source for every Rauta blueprint and component."
+      ],
+      "bonuses": ["Acrithis also appears in Duviri after a Mood Spiral completes."],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Rauta",
+      "meta": "12h, MR 8",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": "20,000", "label": "Credits", "note": null, "alt": null, "done": false },
+        {
+          "qty": "10",
+          "label": "Pathos Clamp",
+          "note": "from the Bane runs",
+          "alt": null,
+          "done": false
+        },
+        { "qty": null, "label": "Rauta Barrel", "note": null, "alt": null, "done": false },
+        { "qty": null, "label": "Rauta Receiver", "note": null, "alt": null, "done": false },
+        { "qty": null, "label": "Rauta Stock", "note": null, "alt": null, "done": false }
+      ],
+      "conditions": ["Rauta has no Incarnon Genesis adapter or evolution steps."],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

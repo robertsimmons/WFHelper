@@ -1,0 +1,283 @@
+{
+  "name": "Styanax",
+  "kind": "warframe",
+  "effort": 5,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "badges": [
+    { "text": "4 weekly resets", "tone": "warn" },
+    { "text": "no RNG", "tone": "info" }
+  ],
+  "prices": [
+    { "label": "blueprints", "amount": "270 Stock", "money": false },
+    { "label": "built", "amount": "175 p", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "QUESTS",
+      "sub": null,
+      "activity": "complete The New War, then Veilbreaker",
+      "meta": "unlocks Kahl's Garrison",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "The New War",
+          "note": "Veilbreaker prerequisite",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Veilbreaker",
+          "note": "solo quest; unlocks Kahl's Garrison",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Break Narmer is solo-only: you play as Kahl-175, so squads and carries cannot shorten this farm.",
+        "Check the inventory first. Styanax was awarded during two limited promotions and may already be built on older accounts."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "DRIFTER'S CAMP, EARTH",
+      "sub": "Kahl's Garrison",
+      "activity": "Break Narmer weekly mission",
+      "meta": "one rank per weekly completion",
+      "mode": "complete it every week",
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "Stock", "amount": "105" },
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "4",
+          "label": "weekly mission completions",
+          "note": "Rank 1 Shelter to Rank 5 Home",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "270",
+          "label": "Stock",
+          "note": "blueprint purchase total",
+          "alt": "challenge rewards plus repeatable Stock crates",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "A completed mission advances the active rotation and grants exactly one Garrison rank. Skipping a week delays Rank 5 by a full week.",
+        "The missions rotate Sneaky Sabotage, Junk Run, and Prison Break, resetting Monday at 00:00 UTC.",
+        "Six challenges pay up to 105 Stock each week: Deathless pays 30 and the other five pay 15. Up to five collectible crates grant 2 Stock each per completed run.",
+        "Crate Stock requires extraction. Challenge Stock is paid immediately when completed and remains if a later run is aborted."
+      ],
+      "bonuses": [
+        "Bank the weekly completion first, then split challenges across runs: a careful collectible run and a separate under-15-minute/Deathless run are substantially less frustrating.",
+        "Kahl has innate Loot and Enemy Radar; collectibles and objectives appear on the minimap.",
+        "If a week is busy, finish the mission just for the rank and make up Stock later with crate replays."
+      ],
+      "disclosures": [
+        {
+          "title": "calendar gate, not an RNG farm",
+          "body": "Rank 5 cannot be reached before four weekly completions. Stock is normally comfortable at 105 challenge Stock per week; the unavoidable minimum is four weeks plus the final 72-hour Foundry build."
+        }
+      ]
+    },
+    {
+      "type": "vendor",
+      "place": "DRIFTER'S CAMP, EARTH",
+      "sub": "Kahl's Garrison / Chipper",
+      "activity": "buy each blueprint when its rank unlocks",
+      "meta": "270 Stock total",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Stock", "amount": "270" }],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Systems Blueprint",
+          "note": "60 Stock; Rank 2 Encampment",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Neuroptics Blueprint",
+          "note": "60 Stock; Rank 3 Fort",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Chassis Blueprint",
+          "note": "60 Stock; Rank 4 Settlement",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Styanax Blueprint",
+          "note": "90 Stock; Rank 5 Home",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Chipper appears at Rank 2. Purchase each component immediately on reaching its required rank rather than hoarding until Rank 5.",
+        "Styanax is not in the Circuit. The Market's 175-platinum listing is the completed Warframe, not a credit blueprint."
+      ],
+      "bonuses": [
+        "Starting each 12-hour component build in weeks 1-3 leaves only the 72-hour final build after the fourth weekly mission."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "VOID AND OPEN WORLDS",
+      "sub": null,
+      "activity": "gather build materials before each component purchase",
+      "meta": "farm Argon last",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "2",
+          "label": "Argon Crystal",
+          "note": "Neuroptics; decays after 24 hours",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "40",
+          "label": "Purged Dagonic",
+          "note": "Neuroptics; Zariman",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "5",
+          "label": "Norg Brain",
+          "note": "Neuroptics; Plains of Eidolon fishing",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "5",
+          "label": "Entrati Lanthorn",
+          "note": "Chassis; Sanctum Anatomica",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "60",
+          "label": "Hespazym Alloy",
+          "note": "Chassis; refine Hesperon",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "20",
+          "label": "Star Crimzian",
+          "note": "Chassis; refine Crimzian",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "5",
+          "label": "Radian Sentirum",
+          "note": "Systems; refine Sentirum",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "400",
+          "label": "Thrax Plasm",
+          "note": "Systems; Zariman",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "15",
+          "label": "Voidplume Quill",
+          "note": "Systems; Zariman",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Do not buy the Neuroptics blueprint until the two Argon Crystals are ready; unused Argon halves daily.",
+        "The alloy and gem requirements need their respective reusable refining blueprints from the open-world vendors."
+      ],
+      "bonuses": [
+        "Kahl weeks provide enough calendar time to gather these materials before each component's rank unlocks."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build components as unlocked, then Styanax",
+      "meta": "12h each, then 72h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Systems",
+          "note": "15,000 cr + 1,200 Rubedo + 5 Radian Sentirum + 400 Thrax Plasm + 15 Voidplume Quill",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Neuroptics",
+          "note": "15,000 cr + 2 Argon + 3,000 Ferrite + 40 Purged Dagonic + 5 Norg Brain",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Chassis",
+          "note": "15,000 cr + 5 Entrati Lanthorn + 60 Hespazym Alloy + 20 Star Crimzian + 1,200 Oxium",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Styanax",
+          "note": "25,000 cr + 1 Orokin Cell",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The full build costs 70,000 credits and needs a free Warframe slot before claiming Styanax."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

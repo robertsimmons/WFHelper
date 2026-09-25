@@ -1,0 +1,194 @@
+{
+  "name": "Dante",
+  "kind": "warframe",
+  "effort": 3,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "badges": [
+    { "text": "hard pity", "tone": "info" },
+    { "text": "Rotation C", "tone": "warn" }
+  ],
+  "prices": [{ "label": "built", "amount": "350 p", "money": false }],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "QUESTS",
+      "sub": null,
+      "activity": "The Deadlock Protocol, then Whispers in the Walls",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "The Deadlock Protocol",
+          "note": "probably required",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Whispers in the Walls",
+          "note": "required",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Whispers in the Walls unlocks Sanctum Anatomica and Armatus; complete Deadlock too if Armatus is not visible."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "ARMATUS, DEIMOS",
+      "sub": "Sanctum Anatomica",
+      "activity": "Disruption",
+      "meta": "2-3h typical",
+      "mode": "stay past round 4",
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "Vessel Capillaries", "amount": "540" },
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Dante Blueprint",
+          "note": "7.5%, Rotation C",
+          "alt": "or 270 Vessel Capillaries at Loid",
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Neuroptics Blueprint",
+          "note": "5%, Rotation C",
+          "alt": "or 90 Vessel Capillaries at Loid",
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Chassis Blueprint",
+          "note": "5%, Rotation C",
+          "alt": "or 90 Vessel Capillaries at Loid",
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Systems Blueprint",
+          "note": "5%, Rotation C",
+          "alt": "or 90 Vessel Capillaries at Loid",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Disruption is not AABC: from round 4 onward, defend at least 3 conduits for a C reward every round.",
+        "Do not buy a single missing part early: save Capillaries until you can buy every part still missing, so a later drop cannot duplicate a purchase.",
+        "Defend all four conduits to keep the C table and maximize Demolisher Capillaries."
+      ],
+      "bonuses": [
+        "Steel Path pays 5-7 Capillaries per Demolisher instead of 2-4 if your group clears it comfortably."
+      ],
+      "disclosures": [
+        {
+          "title": "the whole farm in one rule",
+          "body": "Stay in. Round 4 and every later round is a C reward when 3-4 conduits survive. Repeated four-round resets throw away the efficient part of the farm."
+        }
+      ]
+    },
+    {
+      "type": "vendor",
+      "place": "SANCTUM ANATOMICA, DEIMOS",
+      "sub": null,
+      "activity": "Loid",
+      "meta": "pity shop",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Vessel Capillaries", "amount": "540" }],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Dante Blueprint",
+          "note": "270 Capillaries",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "3",
+          "label": "component blueprints",
+          "note": "90 Capillaries each",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["This is the hard pity ceiling for a complete Dante set from scratch."],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "SANCTUM ANATOMICA, DEIMOS",
+      "sub": null,
+      "activity": "Exterminate and Gruzzling",
+      "meta": "8 total",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "8",
+          "label": "Entrati Lanthorn",
+          "note": "build requirement",
+          "alt": "or Netracells / Deep Archimedea",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "For a focused farm, kill the early Gruzzling in Exterminate; if it does not drop its 3x Lanthorn bundle, restart."
+      ],
+      "bonuses": ["Netracells guarantee one Lanthorn and resource boosters apply there."],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build components, then Dante",
+      "meta": "12h each, then 72h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Neuroptics", "note": null, "alt": null, "done": false },
+        { "qty": null, "label": "Chassis", "note": null, "alt": null, "done": false },
+        { "qty": null, "label": "Systems", "note": null, "alt": null, "done": false },
+        {
+          "qty": null,
+          "label": "Dante",
+          "note": "25,000 cr + Orokin Cell",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The three components also need Deimos materials: Bellow Voca, Entrati Obols, Necracoil and Plastids."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

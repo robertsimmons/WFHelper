@@ -1,0 +1,132 @@
+{
+  "name": "Evensong",
+  "kind": "primary",
+  "effort": 3,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 1, "unit": "blueprint" },
+  "badges": [
+    { "text": "300 Vestigial Motes", "tone": "warn" },
+    { "text": "Jade Shadows quest", "tone": "info" }
+  ],
+  "prices": [
+    { "label": "blueprint", "amount": "300 Vestigial Motes", "money": false },
+    { "label": "build", "amount": "15,000 cr", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "THE NEW WAR, THEN JADE SHADOWS",
+      "sub": null,
+      "activity": "quest chain",
+      "meta": "~30 min for Jade Shadows",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "The New War, then Jade Shadows",
+          "note": "opens Brutus, Uranus (Ascension)",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "BRUTUS, URANUS",
+      "sub": null,
+      "activity": "Ascension",
+      "meta": "~6-8 min per run; summon the Sister every run",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "300",
+          "label": "Vestigial Motes",
+          "note": "~18 per run with the Sister on normal, ~26 on Steel Path",
+          "alt": "or a 4.63% blueprint drop per run, as a bonus",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Pick up 3 Sister Beacons during the elevator ride so a Sister of Parvos spawns at the top; killing her is worth doing every run.",
+        "Boosted Ionic Charges (bright pickups within ~50m of the elevator) give 3x speed for 10s, stacking to 50s; keep the boost running instead of fighting enemies during the ride.",
+        "Boosters, loot abilities and Resourceful Retriever do not raise mote drops."
+      ],
+      "bonuses": [
+        "Run it on Steel Path if unlocked; it adds motes without making the mission longer, and the Sister there gives a guaranteed arcane plus Steel Essence.",
+        "Mobile frames (Zephyr, Titania, Wukong) speed up charge and beacon collection; stealth frames work too since the capsule is invulnerable during the ride.",
+        "Silence (Banshee, or Helminth Silence) stops the Jade Light Eximus beams from casting."
+      ],
+      "disclosures": [
+        {
+          "title": "the elevator phase is not a defense",
+          "body": "Killing enemies during the ride does nothing for the objective. Throw boosted charges immediately and save normal charges for when the power meter runs low; once the elevator is about 20m from the top it finishes on its own."
+        }
+      ]
+    },
+    {
+      "type": "vendor",
+      "place": "ORDIS, DRIFTER'S CAMP",
+      "sub": null,
+      "activity": "buy the blueprint",
+      "meta": "300 Vestigial Motes",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Vestigial Motes", "amount": "300" }],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Evensong Blueprint",
+          "note": "300 Vestigial Motes",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Motes are per-player and don't expire, and are shared across the whole Jade package (frame parts, Cantare and Harmony also cost 300 each)."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Evensong",
+      "meta": "12h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Evensong",
+          "note": "15,000 cr, 700 Salvage, 1,100 Plastids, 20 Gallium, 10 Control Module",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["MR 10 to equip and level it, though the blueprint can be bought and built earlier."],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

@@ -1,0 +1,238 @@
+{
+  "name": "Arbucep",
+  "kind": "archgun",
+  "effort": 4,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "badges": [
+    { "text": "Deepmines gate", "tone": "warn" },
+    { "text": "Rank 3 pity", "tone": "info" }
+  ],
+  "prices": [
+    { "label": "pity buy (Rank 3)", "amount": "670 Fergolyte", "money": false },
+    { "label": "build", "amount": "70,000 cr", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "FORTUNA, VENUS",
+      "sub": "The Airlock",
+      "activity": "talk to Nightcap",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "The New War",
+          "note": "required to unlock Nightcap and the Deepmines bounties",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Nightcap sits in The Airlock, a fungus-covered vent immediately left of the Fortuna spawn — easy to miss on a first visit."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "bounty",
+      "place": "DEEPMINES, VENUS",
+      "sub": null,
+      "activity": "clear all three bounties, then run whichever the Steel Path rotation offers",
+      "meta": "5-10% rot C, plus a rarer rot B chance",
+      "mode": "Steel Path solo recommended",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Arbucep Receiver Blueprint",
+          "note": "Critter Liberation (Lab); 10% rot C, 2.5% rot B (5% B on SP)",
+          "alt": { "text": "or Nightcap, Rank 3 Seeker", "spends": [{ "currency": "Fergolyte", "amount": "150" }] },
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Arbucep Barrel Blueprint",
+          "note": "Corporate Restructuring (Forward Base); 10% rot C, 2.5% rot B (5% B on SP)",
+          "alt": { "text": "or Nightcap, Rank 3 Seeker", "spends": [{ "currency": "Fergolyte", "amount": "150" }] },
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Arbucep Stock Blueprint",
+          "note": "Weed The Gardens (Nutrient Plant); 10% rot C, 2.5% rot B (5% B on SP)",
+          "alt": { "text": "or Nightcap, Rank 3 Seeker", "spends": [{ "currency": "Fergolyte", "amount": "150" }] },
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Arbucep Main Blueprint",
+          "note": "any of the three bounties; 5% rot C, 8% on SP",
+          "alt": { "text": "or Nightcap, Rank 3 Seeker", "spends": [{ "currency": "Fergolyte", "amount": "220" }] },
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Each bounty's second zone drops that component's exclusive mushrooms and blueprint; running one tileset for every part is the drop rate people mistake as broken.",
+        "All three unlock a single Steel Path variant (level 130-140) once cleared; on Steel Path you cannot choose which of the three you get, and it rotates every 2.5 hours."
+      ],
+      "bonuses": [
+        "Critter Liberation is near-unanimously the fastest of the three; reported solo Steel Path times run 3-6 minutes, record 2:54.",
+        "Run Steel Path solo: objectives scale to solo, spawns are maxed, and you gain +4 Fergolyte, an extra map mushroom, a guaranteed Steel Essence and Acolyte spawns."
+      ],
+      "disclosures": [
+        {
+          "title": "the hack/power-cell bonus",
+          "body": "The bonus objective is 'kill 35 enemies', but the blinking waypoint marks the console, so public squads hack first and void the bonus mushroom. Kill the 35 first, hack second, and say so in chat — you just need to be in the zone, not kill inside it."
+        }
+      ]
+    },
+    {
+      "type": "farm",
+      "place": "DEEPMINES + ORB VALLIS, VENUS",
+      "sub": null,
+      "activity": "gather zone-locked mushrooms while running bounties, mine Orb Vallis for the rest, or buy the gap at Nightcap",
+      "meta": "35 crafting mushrooms total, 10 Fergolyte each to buy",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "orb-vallis",
+      "rows": [
+        {
+          "qty": "5",
+          "label": "Spring Popper",
+          "note": "Barrel; Forward Base zone (Corporate Restructuring)",
+          "alt": "buy at Nightcap, 10 Fergolyte",
+          "done": false
+        },
+        {
+          "qty": "5",
+          "label": "Ferrofungus",
+          "note": "Barrel; Lab zone (Critter Liberation)",
+          "alt": "buy at Nightcap, 10 Fergolyte",
+          "done": false
+        },
+        {
+          "qty": "30",
+          "label": "Mytocardia Spore",
+          "note": "Barrel; shoot Orb Vallis sacs",
+          "alt": "or 20 at once, Weed The Gardens rotation B",
+          "done": false
+        },
+        {
+          "qty": "5",
+          "label": "Reeking Puffball",
+          "note": "Receiver; starting-cave common",
+          "alt": "buy at Nightcap, 10 Fergolyte",
+          "done": false
+        },
+        {
+          "qty": "5",
+          "label": "Gamma Berry",
+          "note": "Receiver; Lab zone",
+          "alt": "buy at Nightcap, 10 Fergolyte",
+          "done": false
+        },
+        {
+          "qty": "150",
+          "label": "Gorgaricus Spore",
+          "note": "Stock; purple sacs under Orb Vallis giant mushrooms, shoot and burst",
+          "alt": "or 20 at once, Weed The Gardens rotation B (30% chance), 15 from Fortuna bounties",
+          "done": false
+        },
+        {
+          "qty": "5",
+          "label": "Violet's Bane",
+          "note": "Stock; starting-cave common",
+          "alt": "buy at Nightcap, 10 Fergolyte",
+          "done": false
+        },
+        {
+          "qty": "5",
+          "label": "Borica",
+          "note": "Stock; Nutrient Plant zone",
+          "alt": "buy at Nightcap, 10 Fergolyte",
+          "done": false
+        },
+        {
+          "qty": "5",
+          "label": "Dull Button",
+          "note": "main blueprint; starting-cave common, cheapest analysis",
+          "alt": "buy at Nightcap, 10 Fergolyte",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Composting a fully analyzed mushroom returns only 1 Fergolyte against the 10 Fergolyte purchase price — fine for overflow, not a strategy.",
+        "Orokin Eye air support marks mushrooms through walls (Golden Instinct does not); use it to check the Nutrient Plant valve room and the Labs gate without sweeping them."
+      ],
+      "bonuses": [
+        "Mushrooms are zone-locked, not rare: the starting cave always holds the four commons (Muck Bonnet, Reeking Puffball, Dull Button, Violet's Bane), and each bounty's second zone holds its own exclusive four — only the 5 end-of-bounty bonus mushrooms roll from the full pool of 16."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build the three parts, then Arbucep",
+      "meta": "15,000 cr per part, 12h; 25,000 cr main, 1 day",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Barrel",
+          "note": "5 Spring Popper, 5 Ferrofungus, 30 Mytocardia Spore, 500 Alloy Plate",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Receiver",
+          "note": "5 Reeking Puffball, 5 Gamma Berry, 30 Thermal Sludge, 300 Circuits",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Stock",
+          "note": "5 Violet's Bane, 5 Borica, 150 Gorgaricus Spore, 500 Polymer Bundle",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Arbucep",
+          "note": "the three parts plus 5 Dull Button",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Duplicate blueprints cannot be composted or traded — build with whatever drops."],
+      "bonuses": [],
+      "disclosures": [
+        {
+          "title": "ground use needs its own chain",
+          "body": "Using Arbucep outside your Archwing needs an Orokin Catalyst, then a Gravimag (dojo research, a one-time Profit-Taker Phase 3 reward, or 20p), then the Archgun Deployer gear at max Solaris United rank. One crafted Arbucep reportedly arrived without a Gravimag; assume you need your own."
+        }
+      ]
+    }
+  ]
+}

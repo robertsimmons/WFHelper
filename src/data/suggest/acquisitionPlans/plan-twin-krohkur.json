@@ -1,0 +1,172 @@
+{
+  "name": "Twin Krohkur",
+  "kind": "melee",
+  "effort": 2,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 1, "unit": "blueprint" },
+  "badges": [
+    { "text": "Tellurium RNG", "tone": "warn" },
+    { "text": "Chem Lab research", "tone": "warn" }
+  ],
+  "prices": [
+    { "label": "blueprint", "amount": "15,000 cr", "money": false },
+    { "label": "build", "amount": "20,000 cr", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "CLAN DOJO, CHEM LAB",
+      "sub": null,
+      "activity": "research Detonite Injector, then Sydon, then Twin Krohkur",
+      "meta": "72h each, sequential; skip if your clan already has it",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Detonite Injector research",
+          "note": "5,000 cr, 5 Detonite Ampule, 200 Ferrite, 250 Polymer Bundle, 100 Plastids",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Sydon research",
+          "note": "5,000 cr, 5 Nitain Extract, 16,500 Ferrite, 12,000 Alloy Plate, 4,650 Rubedo",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Twin Krohkur research",
+          "note": "5,000 cr, 200 Detonite Ampule, 4 Gallium, 3,250 Ferrite, 300 Oxium",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Costs shown are Ghost Clan (x1) tier; bigger clan tiers multiply them (x3/x10/x30/x100).",
+        "Each prerequisite must finish researching before the next starts; established clans have usually already cleared this chain."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "OPHELIA, URANUS",
+      "sub": null,
+      "activity": "Survival",
+      "meta": "10 Tellurium and 16 Morphics needed for 2 Krohkurs",
+      "mode": "Steel Path with Nekros or Khora, resource and drop-chance boosters",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "10",
+          "label": "Tellurium",
+          "note": "2 Krohkurs at 5 each",
+          "alt": "Railjack, Veil Proxima Lu-yan Survival",
+          "done": false
+        },
+        {
+          "qty": "16",
+          "label": "Morphics",
+          "note": "2 Krohkurs at 8 each",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Treat this as a volume farm, not a quick stop: normal-mode runs commonly return zero Tellurium in 20-30 minutes.",
+        "The Sentinel Spare Parts trick and the old Perita Rebellion (Recall: Hunhullus) Tellurium source are both patched out; ignore guides recommending them."
+      ],
+      "bonuses": [
+        "Steel Path Ophelia with Khora reportedly returns 9 Tellurium in 20 minutes with a booster.",
+        "Railjack Veil Proxima (Lu-yan Survival) also drops Tellurium heavily and doesn't need your own good Railjack; join someone else's mission.",
+        "Daily login rewards hand out Tellurium on the side."
+      ],
+      "disclosures": [
+        {
+          "title": "stack boosters",
+          "body": "Resource booster (2x quantity), drop-chance booster (2x chance) and the relay Drop Chance Blessing (1.25x) all stack; commonly recommended for Ophelia runs. Go solo or with a pre-made squad if you want Nekros's Desecrate value — public players routinely ignore the Desecrate zone."
+        }
+      ]
+    },
+    {
+      "type": "farm",
+      "place": "ANY GRINEER PLANET",
+      "sub": null,
+      "activity": "kill Grineer enemies for Detonite Ampule drops",
+      "meta": "50 for 5 Injectors, plus up to 205 more if funding the dojo research solo",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "50",
+          "label": "Detonite Ampule",
+          "note": "5 Detonite Injectors at 10 each",
+          "alt": "Invasions listing Detonite Injector as a reward give 3 per completion",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Ampules drop singly and are common but spread out; expect a boring, low-intensity grind rather than a fast farm."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build 2 Krohkur and 5 Detonite Injector, then Twin Krohkur",
+      "meta": "1 day each Krohkur, 12h each Injector, then 1 day",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "2",
+          "label": "Krohkur",
+          "note": "25,000 cr blueprint from the Market (buy twice); each build 20,000 cr, 5 Tellurium, 8 Morphics, 125 Oxium, 4,375 Alloy Plate",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "5",
+          "label": "Detonite Injector",
+          "note": "15,000 cr blueprint from the Chem Lab; each build 15,000 cr, 10 Detonite Ampule, 1 Control Module, 500 Salvage, 250 Plastids",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Twin Krohkur",
+          "note": "20,000 cr, 5 Detonite Injector, 1 Forma, 2 Krohkur",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Rank the first Krohkur to 30 before crafting the second — both copies are consumed, but Mastery from a weapon sticks once earned.",
+        "Twin Krohkur is untradeable, so there is no shortcut via trading the finished weapon."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

@@ -66,6 +66,8 @@ export interface RendererItemEntry {
   masterable?: boolean;
   type: string;
   isBuildComponent: boolean;
+  /** DE's name for the built part where `name` is the blueprint that makes it. */
+  partName?: string;
   componentOf?: string;
   description: string;
   productCategory: string | null;

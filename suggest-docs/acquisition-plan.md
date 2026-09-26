@@ -245,3 +245,7 @@ list is covered first.
 - A time estimate on a step where the community states a real one.
 - "I just want to farm something useful" — the aggregate of every material every unbuilt item
   needs, which the part plans already compute.
+- The card's effort meter. It reads only the authored plan files, so any card without one draws
+  ten empty segments; revisit what it should read and whether an unrated card draws it at all.
+- Some Prime things are listed as vaulted in the prose section from research. That's a bad idea - that rotation
+  changes. Plus, aren't all Prime things just "crack relics"? If so, simplify that stuff.

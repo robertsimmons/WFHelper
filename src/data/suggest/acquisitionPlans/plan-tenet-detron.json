@@ -1,0 +1,195 @@
+{
+  "name": "Tenet Detron",
+  "kind": "secondary",
+  "effort": 8,
+  "tradeable": "converted Sister only",
+  "progress": { "have": 0, "need": 1, "unit": "weapon" },
+  "badges": [
+    { "text": "Sister of Parvos", "tone": "warn" },
+    { "text": "Railjack required", "tone": "warn" }
+  ],
+  "prices": [],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "STAR CHART",
+      "sub": null,
+      "activity": "unlock Sisters of Parvos",
+      "meta": "one-time",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Mastery Rank 5", "note": "to create a Sister", "alt": null, "done": false },
+        { "qty": null, "label": "The War Within", "note": "quest complete", "alt": null, "done": false },
+        {
+          "qty": null,
+          "label": "Call of the Tempestarii",
+          "note": "quest complete; needs a Railjack",
+          "alt": null,
+          "done": false
+        },
+        { "qty": null, "label": "The Deadlock Protocol", "note": "for Granum Crowns", "alt": null, "done": false },
+        {
+          "qty": null,
+          "label": "Railjack Intrinsics, one class",
+          "note": "reported as rank 3 for the Neptune Proxima showdown; unconfirmed against the current game",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Only one adversary at a time: clear or convert any active Kuva Lich, Sister or Technocyte Coda first.",
+        "Ergo Glast never sells the Detron; his Corrupted Holokey shop only carries Tenet melee and the Tenet Ferrox. Every ranged Tenet weapon comes from a Sister."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "boss",
+      "place": "PLUTO, HYDRA",
+      "sub": "Capture",
+      "activity": "clear the Nightmare Granum Void; inspect Candidates",
+      "meta": "one Zenith Crown per attempt",
+      "mode": "solo",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Zenith Granum Crown", "amount": "1" }],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Tenet Detron Candidate",
+          "note": "Mercy only when the weapon preview says Detron",
+          "alt": "buy a converted Tenet Detron Sister (Dojo Crimson Branch)",
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "progenitor element",
+          "note": "Magnetic (Mag, Mesa, Harrow, etc.) is the popular pick, since alt-fire into a Magnetize bubble is the weapon's build; Toxin (Saryn, Nekros, Khora, etc.) is the usual alternative",
+          "alt": "Elemental Vice can change it later at rank 40",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "A Zenith Granum Crown drops from a Treasurer on any Corpus Ship mission level 31+ (Neptune, Pluto), in any Sister-controlled mission, or in Steel Path. One Treasurer spawns 2-4 minutes into a non-endless mission.",
+        "Open the Granum Void with the Zenith crown at a Golden Hand Tribute on a Corpus Ship mission level 10+, and clear at least Rank 1 of the Nightmare tier. A lower crown tier will not spawn a Candidate.",
+        "Don't open a Tribute within about 200m of extraction; it can suppress the Candidate spawn entirely.",
+        "If the preview isn't Detron, let her despawn and finish the mission. Aborting leaves that weapon in the pool; only a completed rejection removes it. With about 10 Tenet weapons in the pool, the worst case is roughly 10 Candidates.",
+        "Squad spawns mix progenitors, and only the last player to damage the Candidate can Mercy her.",
+        "You can't Mercy a Candidate while any Lich, Sister or Coda is already active."
+      ],
+      "bonuses": [
+        "A 0-Forma Xoris heavy attack, or a wide-AoE frame like Uriel or Octavia, makes the Granum Void trivial; killing more Specters also gives more Void rewards. On-Call Railjack crew helps.",
+        "Waiting for the Treasurer refunds a Zenith crown each run, making the loop self-sustaining."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "boss",
+      "place": "SISTER INFLUENCE NODES",
+      "sub": "starts on Venus",
+      "activity": "kill Hounds, reveal Requiems, test the sequence",
+      "meta": "~2 missions per planet to spawn",
+      "mode": "long missions first, then fast ones",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": "3", "label": "revealed Requiems", "note": "Murmurs reveal mods, not order", "alt": null, "done": false },
+        {
+          "qty": null,
+          "label": "correct Parazon sequence",
+          "note": "opens the Neptune Proxima showdown",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Requiem mods come from Requiem Eterna relics, mainly out of Kuva Siphon/Flood missions.",
+        "A wrong Parazon guess levels her up and moves her; run long missions (Survival, Defense, Excavation) for Murmurs, then short ones once you only need her to spawn."
+      ],
+      "bonuses": [
+        "Stock 1-2 of each Requiem before you start, from Requiem Eterna relics out of Kuva Siphons."
+      ],
+      "disclosures": [
+        {
+          "title": "Oull-first Parazon",
+          "body": "Keep Oull in a slot to test placement once your first Sister has dropped one; you can often finish on the fourth attempt without knowing the third mod. Don't Parazon her with an untested guess before earning a fresh Murmur clue."
+        },
+        {
+          "title": "surviving the fight",
+          "body": "A tanky frame (Inaros, Valkyr, Nyx, Revenant, or an Overguard frame like Rhino or Dante) solves most one-shot deaths. Cold status slows her, and a Magnetic Sister's Soul Punch clones you as a Spectralyst — usually the mystery killer people report."
+        }
+      ]
+    },
+    {
+      "type": "boss",
+      "place": "NEPTUNE PROXIMA",
+      "sub": "Sister Confrontation",
+      "activity": "Railjack Skirmish; finish the Sister",
+      "meta": "choose Vanquish",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Tenet Detron",
+          "note": "built; Foundry delivery, her Hound fully built too",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Choose Vanquish, never Convert — Convert gives an ally, not the weapon.",
+        "Bring a Railjack with decent shields and HP, or join someone else's."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "craft",
+      "place": "ORBITER, MODDING",
+      "sub": null,
+      "activity": "optional Valence Fusion toward 60%",
+      "meta": "bank copies first",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "60% bonus",
+          "note": "optional collection or optimization goal",
+          "alt": "stop at the first usable roll",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Fusion takes the higher of the two bonuses, x1.1, capped at 60%.",
+        "Elemental Vice at rank 40 (5 Forma) lets you swap the element freely, so a bad progenitor roll is no longer permanent."
+      ],
+      "bonuses": [],
+      "disclosures": [
+        {
+          "title": "chasing 60% is the real long tail",
+          "body": "One completionist logged 37 Sisters for the full Tenet set chasing valence. For a single usable copy, expect a handful of Hydra runs to roll the Detron plus one normal Sister hunt — a few evenings, not weeks."
+        }
+      ]
+    }
+  ]
+}

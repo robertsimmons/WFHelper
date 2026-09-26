@@ -1,0 +1,307 @@
+{
+  "name": "Baruuk",
+  "kind": "warframe",
+  "effort": 6,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "badges": [
+    { "text": "Vox Solaris gate", "tone": "warn" },
+    { "text": "Circuit alt", "tone": "circuit" }
+  ],
+  "prices": [{ "label": "build", "amount": "70,000 cr", "money": false }],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "FORTUNA, VENUS",
+      "sub": null,
+      "activity": "The War Within, then Vox Solaris",
+      "meta": "unlocks Little Duck",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "The War Within", "note": null, "alt": null, "done": false },
+        {
+          "qty": null,
+          "label": "Vox Solaris quest",
+          "note": "speak to Onkko once first",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Little Duck only talks to the Operator or Drifter."],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "currency",
+      "place": "FORTUNA, VENUS",
+      "sub": "Little Duck",
+      "activity": "bounties and toroid turn-ins for Vox Solaris",
+      "meta": "Rank 3, Hand",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "Vox Solaris standing", "amount": "91,000" },
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "rank-ups to Hand",
+          "note": "Rank 3, 71,000 standing",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "blueprint purchases",
+          "note": "20,000 standing, all four",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Daily cap is 16,000 plus 500 per Mastery Rank, tracked separately per syndicate."
+      ],
+      "bonuses": [
+        "Narmer Isoplasts (2,000 standing each, Narmer bounties) and a guaranteed Lazulite Toroid (12,000 each) from the Exploiter Orb are faster standing than turning in small toroids."
+      ],
+      "disclosures": [
+        {
+          "title": "rank-up sacrifices",
+          "body": "0 to 1 (Operative) needs 1 Vega, 1 Calda and 1 Sola Toroid plus 50,000 credits. 1 to 2 (Agent) needs 1 Gyromag Systems (buyable at Rank 1) plus 1 Vega Toroid and 100,000 credits. 2 to 3 (Hand) needs 1 Atmo Systems (buyable at Rank 2) plus 1 Calda Toroid and 250,000 credits. Don't spend small toroids on standing; they're needed here and in the build."
+        }
+      ]
+    },
+    {
+      "type": "currency",
+      "place": "ORB VALLIS, VENUS",
+      "sub": null,
+      "activity": "conservation or mining for Solaris United",
+      "meta": "Rank 4, Cove",
+      "mode": "solo",
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "Solaris United standing", "amount": "141,000" },
+      "spends": [],
+      "map": "orb-vallis",
+      "rows": [
+        {
+          "qty": "141,000",
+          "label": "rank-ups to Cove",
+          "note": "Rank 4",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "This rank is the real crafting gate: Marquise Thyst (Chassis) doesn't refine below Cove."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "LITTLE DUCK, FORTUNA",
+      "sub": null,
+      "activity": "buy the blueprints",
+      "meta": "20,000 standing total",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Vox Solaris standing", "amount": "20,000" }],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Baruuk Blueprint",
+          "note": "5,000 standing, Rank 2 (Agent)",
+          "alt": "or Duviri Circuit tier 10, Baruuk's rotation week",
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Neuroptics Blueprint",
+          "note": "5,000 standing, Rank 3 (Hand)",
+          "alt": "or Duviri Circuit tier 2, Baruuk's rotation week",
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Chassis Blueprint",
+          "note": "5,000 standing, Rank 3 (Hand)",
+          "alt": "or Duviri Circuit tier 5, Baruuk's rotation week",
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Systems Blueprint",
+          "note": "5,000 standing, Rank 3 (Hand)",
+          "alt": "or Duviri Circuit tier 8, Baruuk's rotation week",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Baruuk shares Circuit normal-mode week 11 with Garuda and Hildryn; the Circuit route skips the Vox Solaris standing but not the crafting materials below."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "ORB VALLIS, VENUS",
+      "sub": "Temple of Profit or the Spaceport hangar",
+      "activity": "indoor Steel Path enemies for toroids",
+      "meta": "sacrifice items + build materials",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "orb-vallis",
+      "rows": [
+        {
+          "qty": "4",
+          "label": "Sola Toroid",
+          "note": "rank-up sacrifice + Neuroptics",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "5",
+          "label": "Vega Toroid",
+          "note": "rank-up sacrifice + Chassis",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "5",
+          "label": "Calda Toroid",
+          "note": "rank-up sacrifice + Systems",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Farm indoors with the alert level maxed and don't destroy the reinforcement beacons; spawns stall once they're gone.",
+        "Toroids also drop from loose pickups in the 17 Orb Vallis caves."
+      ],
+      "bonuses": [
+        "Bring a loot frame (Nekros, Khora or Hydroid) and a beast companion with Resourceful Retriever; run this under a resource booster to also stock up on the fish parts below."
+      ],
+      "disclosures": [
+        {
+          "title": "banking loot",
+          "body": "Pickups can vanish on a client desync; leave free roam periodically to bank what you've collected instead of running one marathon session."
+        }
+      ]
+    },
+    {
+      "type": "farm",
+      "place": "ORB VALLIS, VENUS",
+      "sub": "Smokefinger for refinement",
+      "activity": "mine ore, fish, then refine",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "orb-vallis",
+      "rows": [
+        {
+          "qty": "150",
+          "label": "Hespazym Alloy",
+          "note": "Neuroptics 50, Chassis 100; needs SU Rank 2",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "5",
+          "label": "Synathid Ecosynth Analyzer",
+          "note": "Neuroptics; cave hotspots, any weather",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "5",
+          "label": "Marquise Thyst",
+          "note": "Chassis; needs SU Rank 4 (Cove)",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "10",
+          "label": "Tromyzon Entroplasma",
+          "note": "Systems; pond hotspots, cold weather only",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "5",
+          "label": "Radiant Zodian",
+          "note": "Systems; needs SU Rank 3",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Check the Vallis weather cycle before fishing for Tromyzon.",
+        "The Exploiter Orb also drops Synathid and Tromyzon directly."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build components, then Baruuk",
+      "meta": "70,000 cr total",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Neuroptics",
+          "note": "15,000 cr, 3 Sola Toroid, 2,850 Alloy Plate",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Chassis",
+          "note": "15,000 cr, 3 Vega Toroid, 3,250 Salvage",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Systems",
+          "note": "15,000 cr, 3 Calda Toroid, 2,500 Ferrite",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Baruuk",
+          "note": "25,000 cr, 1 Orokin Cell, 3-day build",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

@@ -1,0 +1,226 @@
+{
+  "name": "Dual Viciss",
+  "kind": "melee",
+  "effort": 7,
+  "tradeable": "built parts only",
+  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "badges": [
+    { "text": "Hex Rank 5", "tone": "warn" },
+    { "text": "parts tradeable", "tone": "info" }
+  ],
+  "prices": [
+    { "label": "blueprints", "amount": "35,000 standing", "money": false },
+    { "label": "build", "amount": "100,000 cr", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "THE LOTUS EATERS, THEN THE HEX",
+      "sub": null,
+      "activity": "The Hex quest chain",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "The Lotus Eaters",
+          "note": "needs The Duviri Paradox",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "The Hex",
+          "note": "unlocks Höllvania and The Hex syndicate",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The Hex Finale (a Rank 4 requirement) locks the game for 15+ minutes and is not skippable."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "currency",
+      "place": "HÖLLVANIA",
+      "sub": null,
+      "activity": "sweep Hex Treasures on any mission",
+      "meta": "daily cap 16,000 + 500/MR",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "Hex standing", "amount": "240,000" },
+      "spends": [],
+      "map": "hollvania",
+      "rows": [
+        {
+          "qty": null,
+          "label": "Rank 2 (Fresh Slice)",
+          "note": "needs Friendly chemistry with all six Hex members",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Rank 4 (Hot & Fresh)",
+          "note": "needs Liked chemistry with all six members and The Hex Finale",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Rank 5 (Pizza Party)",
+          "note": "99,000 standing, 200,000 cr",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Every Höllvania mission spawns 8 Hex Treasures (one 2,500, one 1,500, six 750s); sweeping them, not bounty rewards, is what hits the daily cap.",
+        "Hex Treasures cannot exceed the daily standing cap; there is no banking them past it.",
+        "Rank 4 needs Liked chemistry (90 points, 4 dialogues) with all six KIM members, and chemistry itself is rank-gated: Friendly needs syndicate Rank 2, Liked needs Rank 3, so you cannot front-load it."
+      ],
+      "bonuses": [
+        "Loot radar (Thief's Wit / Animal Instinct / Loot Detector) plus a Helminth-infused Golden Instinct, or the Parallax landing craft's Orokin Eye, tags treasures at range.",
+        "Buy every KIM gift as soon as it's affordable; Höllars are just credits, so cost is never the obstacle to chemistry."
+      ],
+      "disclosures": [
+        {
+          "title": "the full rank ladder",
+          "body": "Rank 1 Leftovers: 5,000 standing, 10,000cr, 15 Efervon Sample, 15 Hollvanian Pitchweave Fragment. Rank 2 Fresh Slice: 22,000 standing, 25,000cr, 5 Experimental Arc-Relay, 12 Entrati Obols, 25 Pitchweave. Rank 3 2-For-1: 44,000 standing, 50,000cr, one of each six 750-value Hex Treasures. Rank 4 Hot & Fresh: 70,000 standing, 100,000cr, 25 Techrot Chitin, 25 Necracoil, 40 Efervon Sample. Rank 5 Pizza Party: 99,000 standing, 200,000cr, 5 Techrot Motherboard, one of each six 750-value Treasures again. Two sacrifices (Entrati Obols, Necracoil) come from Albrecht's Laboratories on Deimos, so Whispers in the Walls access is a soft prerequisite."
+        }
+      ]
+    },
+    {
+      "type": "farm",
+      "place": "HÖLLVANIA",
+      "sub": null,
+      "activity": "enemies, containers and the Techrot underground",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "hollvania",
+      "rows": [
+        {
+          "qty": "400",
+          "label": "Efervon Sample",
+          "note": "Stockpiles, or bounty rewards",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "60",
+          "label": "Techrot Chitin",
+          "note": "Rhu Manor / Mausoleum East Exterminate",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "20",
+          "label": "Techrot Motherboard",
+          "note": "underground Techrot areas only",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "60",
+          "label": "Experimental Arc-Relay",
+          "note": "Rhu Manor / Mausoleum East Exterminate",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "All four keep dropping while sweeping Hex Treasures for standing, so this is a top-up, not a separate trip."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "MINERVA, HÖLLVANIA",
+      "sub": null,
+      "activity": "buy blueprints at Rank 5",
+      "meta": "35,000 standing total",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Hex standing", "amount": "35,000" }],
+      "map": null,
+      "rows": [
+        {
+          "qty": "2",
+          "label": "Dual Viciss Blade Blueprint",
+          "note": "5,000 standing each",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "2",
+          "label": "Dual Viciss Hilt Blueprint",
+          "note": "5,000 standing each",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Dual Viciss Blueprint",
+          "note": "15,000 standing",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Component blueprints are consumed per craft: the weapon needs 2 Blades and 2 Hilts, so each component blueprint is bought twice (20,000 standing), not once."
+      ],
+      "bonuses": [
+        "Spend your free Rank 5 vendor item on the 15,000-standing main blueprint; it's the priciest thing Minerva sells.",
+        "A friend already at Rank 5 can trade you the built Blade/Hilt components directly — the blueprint and finished weapon are untradeable, but the built components are not. Saves 20,000 standing and the resources; you still need Rank 5 yourself for the main blueprint."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build components, then Dual Viciss",
+      "meta": "12h each, then 12h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Blade x2, Hilt x2",
+          "note": "400 Efervon Sample, 60 Techrot Chitin, 20 Techrot Motherboard, 60 Experimental Arc-Relay, 20 Gallium, 2,600 Alloy Plate, 2,600 Ferrite, 4,400 Salvage total",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Dual Viciss",
+          "note": "100,000 cr across all five blueprints; MR14 to equip",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

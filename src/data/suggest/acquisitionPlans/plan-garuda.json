@@ -1,0 +1,300 @@
+{
+  "name": "Garuda",
+  "kind": "warframe",
+  "effort": 5,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "badges": [
+    { "text": "Cove gate", "tone": "warn" },
+    { "text": "Circuit alt", "tone": "circuit" }
+  ],
+  "prices": [{ "label": "build", "amount": "70,000 cr", "money": false }],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "FORTUNA, VOX SOLARIS",
+      "sub": null,
+      "activity": "finish the Vox Solaris quest",
+      "meta": "one-time; blueprint sent by inbox",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Vox Solaris",
+          "note": "Garuda Blueprint arrives as a separate inbox message once the quest ends",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The main blueprint isn't the quest's on-screen reward — it's sent by Eudico's crew after the fact.",
+        "A lost blueprint costs 50,000 Cephalon Simaris standing to replace."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "currency",
+      "place": "ORB VALLIS, VENUS",
+      "sub": null,
+      "activity": "Conservation and bounties for Solaris United standing",
+      "meta": "push to Rank 4 (Cove)",
+      "mode": "solo",
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "Solaris United standing", "amount": "169,000" },
+      "spends": [],
+      "map": "orb-vallis",
+      "rows": [
+        { "qty": "141,000", "label": "rank-ups to Cove", "note": "Rank 4", "alt": null, "done": false },
+        {
+          "qty": "1,000",
+          "label": "Axidrol Alloy blueprint",
+          "note": "Neutral; craft twice for 40",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "1,000",
+          "label": "Travocyte Alloy blueprint",
+          "note": "Neutral; craft twice for 40",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "2,000",
+          "label": "Venerdo Alloy blueprint",
+          "note": "Rank 1 Outworlder; craft twice for 40",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "4,000",
+          "label": "Star Amarast blueprint",
+          "note": "Rank 2 Rapscallion; one craft covers 6",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "8,000",
+          "label": "Radiant Zodian blueprint",
+          "note": "Rank 3 Doer; one craft covers 3",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "12,000",
+          "label": "Marquise Thyst blueprint",
+          "note": "Rank 4 Cove; one craft covers 3",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Start this immediately — it's the actual bottleneck, not the bounty blueprints below.",
+        "Also buy the Sunpoint Plasma Drill (2,500 standing, no rank) or bring an Advanced Nosam Cutter; nothing mines the rare gems without one.",
+        "Marquise Thyst is Rank 4 only — players often farm all three part blueprints on day one, then discover Systems needs several more days of standing."
+      ],
+      "bonuses": [
+        "Conservation with a Kubrodon lure and pheromones, or cave mining, is faster standing than regular bounties; hand raw gems and Debt-Bonds to Smokefinger and Ticker too."
+      ],
+      "disclosures": [
+        {
+          "title": "the rank-up cost was cut",
+          "body": "Debt-Bond sacrifices for Solaris rank-ups were rebalanced down; Rank 4 (Cove) now asks 5 Advance, 4 Medical and 3 Shelter Debt-Bonds, with earlier ranks needing fewer."
+        }
+      ]
+    },
+    {
+      "type": "bounty",
+      "place": "ORB VALLIS, VENUS",
+      "sub": null,
+      "activity": "Eudico bounties, any rotation",
+      "meta": "final-stage odds per part",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "orb-vallis",
+      "rows": [
+        {
+          "qty": null,
+          "label": "Chassis Blueprint",
+          "note": "7.37%, Lvl 5-15 bounty",
+          "alt": "Circuit, Garuda's week",
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Systems Blueprint",
+          "note": "6.9%, Lvl 10-30 bounty",
+          "alt": "Circuit, Garuda's week",
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Neuroptics Blueprint",
+          "note": "11.11%, Lvl 20-40 bounty",
+          "alt": "Circuit, Garuda's week",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "All three rotations (A, B, C) can drop every part — no need to wait for a specific rotation.",
+        "The Lvl 20-40 bounty is the hardest tier needed; nothing harder unlocks a better chance."
+      ],
+      "bonuses": [],
+      "disclosures": [
+        {
+          "title": "stage math varies by source",
+          "body": "Community threads report higher final-stage odds (up to 27.6% for Chassis) with a lower chance on earlier stages; current wiki data lists flat per-mission odds instead. Either way the part can drop on any completed stage."
+        }
+      ]
+    },
+    {
+      "type": "farm",
+      "place": "ORB VALLIS, VENUS",
+      "sub": "Spaceport, Enrichment Labs, Temple of Profit",
+      "activity": "farm bases for Toroids; mine and gather the rest",
+      "meta": "Steel Path plus boosters recommended",
+      "mode": "solo, rotate bases",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "orb-vallis",
+      "rows": [
+        {
+          "qty": "2",
+          "label": "Vega Toroid",
+          "note": "Spaceport enemies, Mite Raknoids",
+          "alt": "tradeable",
+          "done": false
+        },
+        {
+          "qty": "2",
+          "label": "Calda Toroid",
+          "note": "Enrichment Labs enemies, Scyto Raknoids",
+          "alt": "tradeable",
+          "done": false
+        },
+        {
+          "qty": "2",
+          "label": "Sola Toroid",
+          "note": "Temple of Profit enemies, Kyta Raknoids",
+          "alt": "tradeable",
+          "done": false
+        },
+        {
+          "qty": "6",
+          "label": "Star Amarast",
+          "note": "raw gem, blue veins near Temple of Profit",
+          "alt": "tradeable",
+          "done": false
+        },
+        { "qty": "3", "label": "Radiant Zodian", "note": "raw gem", "alt": "tradeable", "done": false },
+        { "qty": "3", "label": "Marquise Thyst", "note": "raw gem", "alt": "tradeable", "done": false },
+        { "qty": "5,000", "label": "Nano Spores", "note": "Chassis", "alt": null, "done": false },
+        { "qty": "2,200", "label": "Alloy Plate", "note": "Chassis", "alt": null, "done": false },
+        { "qty": "2,400", "label": "Polymer Bundle", "note": "Systems", "alt": null, "done": false }
+      ],
+      "conditions": [
+        "Each base drops only its own colour: Vega at the Spaceport, Calda at the Enrichment Labs, Sola at the Temple of Profit — regular enemies run about 2% base chance, boosted by drop-chance modifiers.",
+        "Rotate outside, then underground, then to the next base instead of waiting on max alert level; a cleared base respawns while you're elsewhere."
+      ],
+      "bonuses": [
+        "Stack a Resource Drop Chance Booster, a relay Drop Chance Blessing, a Resource Booster and Resourceful Retriever — all apply to Toroid drops.",
+        "Once Rank 5 Solaris United and Profit-Taker are available, holding Phase 2 open keeps spawning Corpus dropships for Calda farming.",
+        "17 cave-interactable spots around the Vallis give common Toroids as a safe, low-yield top-up.",
+        "A loot frame (Nekros, Khora or Hydroid) with a high-Slash melee gibs bodies into more rolls."
+      ],
+      "disclosures": [
+        {
+          "title": "Toroids can vanish on long runs",
+          "body": "An unconfirmed bug thread reports hour-long hauls not being kept. Extract or finish cleanly rather than aborting, and check your inventory after long sessions."
+        }
+      ]
+    },
+    {
+      "type": "currency",
+      "place": "SIPHON OR FLOOD NODE, ANY",
+      "sub": null,
+      "activity": "Kuva Siphon or Flood missions",
+      "meta": "after The War Within",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "Kuva", "amount": "3,500" },
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "3,500",
+          "label": "Kuva",
+          "note": "for the Garuda main build",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The War Within must be finished first to unlock Kuva Siphons and Floods; without it, all three parts can be built with the main blueprint still stuck."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build components, then Garuda",
+      "meta": "12h each, then 72h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Neuroptics",
+          "note": "15,000 cr, 2 Vega Toroid, 6 Star Amarast, 40 Axidrol Alloy, 5,000 Nano Spores",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Chassis",
+          "note": "15,000 cr, 2 Calda Toroid, 3 Radiant Zodian, 40 Travocyte Alloy, 2,200 Alloy Plate",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Systems",
+          "note": "15,000 cr, 2 Sola Toroid, 3 Marquise Thyst, 40 Venerdo Alloy, 2,400 Polymer Bundle",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Garuda",
+          "note": "25,000 cr, 3,500 Kuva",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The wiki's rendered recipe table lists these quantities in the wrong columns; the numbers above come from the raw blueprint data."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

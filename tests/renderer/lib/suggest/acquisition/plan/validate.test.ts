@@ -10,7 +10,6 @@ import {
 describe("validatePlan", () => {
   it("accepts every plan that ships with the app", () => {
     const plans = authoredPlans();
-    expect(plans).toHaveLength(7);
     for (const plan of plans) expect([plan.name, validatePlan(plan)]).toEqual([plan.name, []]);
   });
 

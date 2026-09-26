@@ -1,0 +1,254 @@
+{
+  "name": "Plague Keewar",
+  "kind": "melee",
+  "effort": 2,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 3, "unit": "parts" },
+  "badges": [
+    { "text": "event-only", "tone": "warn" },
+    { "text": "Zaw", "tone": "info" }
+  ],
+  "prices": [
+    { "label": "blueprint", "amount": "2,000 standing", "money": false },
+    { "label": "grip + link", "amount": "2,000 standing", "money": false },
+    { "label": "gild", "amount": "5,000 standing", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "CETUS",
+      "sub": null,
+      "activity": "wait for Operation: Plague Star to go live",
+      "meta": "recurring event, no fixed schedule",
+      "mode": null,
+      "live": { "state": "waiting", "text": "the Blueprint is only sold while the event is running" },
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Operation: Plague Star",
+          "note": "Nights of Naberus sells the same Blueprint from Daughter in years the event doesn't run",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Untradeable — no plat shortcut and no way to buy it once the window closes.",
+        "Naberus and Plague Star alternate; if Plague Star already ran this year, don't count on Naberus too."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "currency",
+      "place": "CETUS",
+      "sub": null,
+      "activity": "Konzu's Plague Star bounties",
+      "meta": "no daily cap; standing persists between events",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "Operational Supply standing", "amount": "6,000" },
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Plague Star bounty",
+          "note": "Lvl 15-25, 1,025 standing, +25 drone bonus",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Advanced bounty",
+          "note": "Lvl 55-65, 3,200 standing, +75 drone bonus; needs an Eidolon Phylaxis and Infested Catalyst per player",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Steel Path bounty",
+          "note": "Lvl 100-110, 3,800 standing, +100 drone bonus; same Phylaxis/Catalyst requirement",
+          "alt": "the base Plague Star bounty needs neither item",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Rank-ups to Champion cost 6,000 standing total (1,000 + 2,000 + 3,000); the Blueprint itself is a further 2,000 unless the free Rank 3 item is spent on it."
+      ],
+      "bonuses": [
+        "Rank 3 Champion's free item pick can be the Plague Keewar Blueprint itself, covering its 2,000-standing cost.",
+        "Keeping the escort drone above 80% health during stage 3 is the entire bonus-standing mechanic."
+      ],
+      "disclosures": [
+        {
+          "title": "rank ladder",
+          "body": "Rank 1 Collaborator: 1,000 standing, 10 Grokdrul, 5,000cr. Rank 2 Defender: 2,000 standing, 10 Iradite, 10,000cr. Rank 3 Champion: 3,000 standing, 10 Nistlepod, 20,000cr. Each rank-up grants one free item of that rank."
+        }
+      ]
+    },
+    {
+      "type": "vendor",
+      "place": "NAKAK, CETUS",
+      "sub": null,
+      "activity": "buy the Strike blueprint",
+      "meta": "Rank 3 Champion",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [
+        { "currency": "Operational Supply standing", "amount": "2,000" },
+        { "currency": "credits", "amount": "3,500" }
+      ],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Plague Keewar Blueprint",
+          "note": "2,000 standing + 3,500cr, or free as the Rank 3 item pick",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Nakak is the only farmable source. Hok's plat-only Today's Special gilded Zaw can roll Plague parts at random, but that isn't something you can farm toward."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "HOK, CETUS",
+      "sub": null,
+      "activity": "buy a cheap Grip and Link",
+      "meta": "Neutral rank",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Ostron standing", "amount": "2,000" }],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Peye Grip Blueprint",
+          "note": "one-handed, makes a Scythe; 1,000 standing",
+          "alt": "any two-handed grip (Jayap, Seekalla, Kroostra, Shtung) for a Staff instead",
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Jai Link Blueprint",
+          "note": "1,000 standing",
+          "alt": "Ruhang, same rank and cost",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The cheapest Grip and Link are fine if you only want the Mastery; a built Zaw can never be taken apart."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "PLAINS OF EIDOLON, EARTH",
+      "sub": "Old Man Suumbaat",
+      "activity": "mine and refine the Strike's gem and alloy, gather Grip and Link materials",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "plains-of-eidolon",
+      "rows": [
+        { "qty": "10", "label": "Esher Devar", "note": "mined gem", "alt": null, "done": false },
+        { "qty": "60", "label": "Coprite Alloy", "note": "refined ore", "alt": null, "done": false },
+        { "qty": "20", "label": "Iradite", "note": "Peye Grip", "alt": null, "done": false },
+        { "qty": "50", "label": "Fish Oil", "note": "Peye Grip", "alt": null, "done": false },
+        { "qty": "850", "label": "Alloy Plate", "note": "Peye Grip; common resource, not Plains-specific", "alt": null, "done": false },
+        { "qty": "60", "label": "Pyrotic Alloy", "note": "Peye Grip", "alt": null, "done": false },
+        { "qty": "10", "label": "Nistlepod", "note": "Jai Link", "alt": null, "done": false },
+        { "qty": "20", "label": "Pyrotic Alloy", "note": "Jai Link", "alt": null, "done": false },
+        { "qty": "2", "label": "Condroc Wing", "note": "Jai Link", "alt": null, "done": false },
+        {
+          "qty": "5",
+          "label": "Khut-Khut Venom Sac",
+          "note": "Jai Link; fillet Khut-Khut or loot Thumpers",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "2",
+          "label": "Cetus Wisp",
+          "note": "gild",
+          "alt": "buy at Nakak for 750 standing + 1,500cr each",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "1,600 Nano Spores and 700 Plastids for the Strike are common resources most players already have banked."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY + HOK'S ANVIL",
+      "sub": null,
+      "activity": "build, assemble, level, then gild",
+      "meta": "1h strike; instant assembly",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Plague Keewar Strike",
+          "note": "5,000cr, 1,600 Nano Spores, 700 Plastids, 10 Esher Devar, 60 Coprite Alloy",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Peye Grip",
+          "note": "5,000cr, 20 Iradite, 50 Fish Oil, 850 Alloy Plate, 60 Pyrotic Alloy",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Jai Link",
+          "note": "5,000cr, 10 Nistlepod, 20 Pyrotic Alloy, 2 Condroc Wing, 5 Khut-Khut Venom Sac",
+          "alt": null,
+          "done": false
+        },
+        { "qty": null, "label": "assemble at Hok's Anvil", "note": "4,000cr, instant", "alt": null, "done": false },
+        {
+          "qty": null,
+          "label": "gild at rank 30",
+          "note": "2 Cetus Wisp + 5,000 Ostron standing; resets to rank 0, level again",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Gilding requires Ostron Trusted rank; an ungilded Zaw gives zero Mastery.",
+        "Mastery is tied to the Strike alone, so extra Grip/Link choices don't add more."
+      ],
+      "bonuses": [
+        "For builds the community consensus favors Plague Kripath over Keewar; the Keewar staff/scythe is fine but not top tier today."
+      ],
+      "disclosures": []
+    }
+  ]
+}

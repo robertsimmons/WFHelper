@@ -1,0 +1,154 @@
+{
+  "name": "Staticor",
+  "kind": "secondary",
+  "effort": 2,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 1, "unit": "blueprint" },
+  "badges": [
+    { "text": "10 Fieldron", "tone": "warn" },
+    { "text": "Energy Lab", "tone": "info" }
+  ],
+  "prices": [
+    { "label": "replicate blueprint", "amount": "50,000 cr", "money": false },
+    { "label": "10 Fieldron if crafted", "amount": "300,000 cr", "money": false },
+    { "label": "build", "amount": "25,000 cr", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "DOJO, ENERGY LAB",
+      "sub": null,
+      "activity": "clan research",
+      "meta": "skip if already researched",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Energy Lab: Amprex, then Staticor",
+          "note": "3 days at Ghost (x1) tier, once Amprex is researched",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Amprex must be researched first.",
+        "Ghost (x1) tier costs 7,500 credits, 30 Fieldron Samples, 800 Alloy Plate, 750 Nano Spores and 1 Tellurium for Staticor alone; bigger clans pay x3/x10/x30/x100.",
+        "In an established clan this is already done and costs you nothing."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "research",
+      "place": "DOJO, ENERGY LAB",
+      "sub": null,
+      "activity": "buy the blueprint",
+      "meta": "50,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Credits", "amount": "50,000" }],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Staticor Blueprint",
+          "note": "single-use",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "STAR CHART",
+      "sub": null,
+      "activity": "Corpus-side Invasions, or Orb Vallis bounty rotations",
+      "meta": "3 Fieldron per Invasion reward",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "orb-vallis",
+      "rows": [
+        {
+          "qty": "10",
+          "label": "Fieldron",
+          "note": "Staticor build",
+          "alt": "or craft from Fieldron Samples, 12h each",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Check the star chart every session for a Corpus-reward Invasion; the payout lands only once it ends."
+      ],
+      "bonuses": [],
+      "disclosures": [
+        {
+          "title": "crafting Fieldron from scratch",
+          "body": "Each Fieldron needs its own single-use blueprint (15,000 credits) plus 15,000 credits, 10 Fieldron Samples, 1 Control Module, 500 Salvage and 250 Plastids, 12h. For all 10: 100 Fieldron Samples, 10 Control Modules, 5,000 Salvage, 2,500 Plastids and about 300,000 credits. Rushing a Fieldron this way costs more plat than the finished weapon is worth."
+        }
+      ]
+    },
+    {
+      "type": "vendor",
+      "place": "NIGHTWAVE",
+      "sub": null,
+      "activity": "Cred offerings, evergreen",
+      "meta": "5 Nitain for 15 Nightwave Cred",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "3",
+          "label": "Nitain Extract",
+          "note": "Staticor build; only 3 of the 5 are needed",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Staticor",
+      "meta": "1 day",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Staticor",
+          "note": "25,000 cr, 10 Fieldron, 6,000 Alloy Plate, 9,000 Ferrite, 3 Nitain Extract",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "name": "Telos Boltace",
+  "kind": "melee",
+  "effort": 4,
+  "tradeable": "unranked only",
+  "progress": { "have": 0, "need": 1, "unit": "weapon" },
+  "badges": [
+    { "text": "Maxim rank required", "tone": "warn" },
+    { "text": "MR 11", "tone": "info" }
+  ],
+  "prices": [
+    { "label": "standing", "amount": "365,000", "money": false },
+    { "label": "credits", "amount": "940,000 cr", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "currency",
+      "place": "ELITE SANCTUARY ONSLAUGHT, ANY",
+      "sub": null,
+      "activity": "pledge Arbiters of Hexis, run to round 8+, cash in Syndicate Alerts and Medallions",
+      "meta": "~17 capped days at MR11, less at higher MR or with alerts",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "Arbiters of Hexis standing", "amount": "365,000" },
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "240,000",
+          "label": "rank up to Maxim",
+          "note": "ranks 0-4 need 5,000 / 22,000 / 44,000 / 70,000 / 99,000 standing each",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "125,000",
+          "label": "Telos Boltace in the Maxim Offerings",
+          "note": "the rank-up gift can't be spent on it; budget the full amount separately",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Pledging at the Orbiter Syndicate console needs MR 3; while pledged, 15% of all affinity earned becomes standing up to the daily cap.",
+        "The daily cap is 16,000 plus 500 per Mastery Rank, shared across all six Faction Syndicates, resetting 00:00 UTC.",
+        "Each rank-up spends your standing down to zero and also costs a sacrifice: 500 Alloy Plate, 2 Gallium, 1 Forma, 1 Orokin Reactor and 5 Aya across the five promotions, plus 940,000 credits total. Have each ready before you hit its ceiling.",
+        "Standing caps at 132,000 once at Maxim; don't overshoot it while saving for the weapon."
+      ],
+      "bonuses": [
+        "The three daily Arbiters Syndicate Alerts and their Medallions (500/1,000/5,000 standing each) ignore the daily cap entirely; cash in every one.",
+        "Elite Sanctuary Onslaught to round 8 and leave is the commonly reported fastest way to hit the cap, and it levels gear at the same time.",
+        "Circuit (Duviri) to stage 4+ was reported to usually max daily standing on its own."
+      ],
+      "disclosures": [
+        {
+          "title": "syndicate standing side effects",
+          "body": "Arbiters standing lowers Red Veil (-100%) and The Perrin Sequence (-50%) while raising Cephalon Suda (+50%). Expect Red Veil to crater if you were farming it; it can be caught back up indirectly through Steel Meridian."
+        }
+      ]
+    },
+    {
+      "type": "vendor",
+      "place": "ARBITERS ENCLAVE, ANY RELAY",
+      "sub": null,
+      "activity": "buy Telos Boltace from the Maxim Offerings",
+      "meta": "125,000 standing",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Arbiters of Hexis standing", "amount": "125,000" }],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Telos Boltace",
+          "note": "arrives as a finished weapon; no blueprint or Foundry step",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["MR 11 is required to purchase it."],
+      "bonuses": [
+        "Telos Boltor (125,000 standing) and Telos Akbolto (100,000 standing) are the same syndicate's other Mastery pickups once you're at Maxim."
+      ],
+      "disclosures": []
+    }
+  ]
+}

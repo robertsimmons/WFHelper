@@ -1,0 +1,189 @@
+{
+  "name": "Syam",
+  "kind": "melee",
+  "effort": 5,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 1, "unit": "blueprint" },
+  "badges": [
+    { "text": "no RNG, pure clamps", "tone": "info" },
+    { "text": "Maw Fang: Duviri Experience only", "tone": "warn" }
+  ],
+  "prices": [
+    { "label": "Teshin's Cave (plat alt)", "amount": "250 p", "money": false },
+    { "label": "build", "amount": "30,000 cr", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "THE DUVIRI PARADOX",
+      "sub": null,
+      "activity": "clear the quest",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "The Duviri Paradox",
+          "note": "MR 0 — no mastery gate on Syam itself",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "currency",
+      "place": "DUVIRI",
+      "sub": null,
+      "activity": "bank Pathos Clamps",
+      "meta": "50 needed for the blueprint",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "Pathos Clamps", "amount": "50" },
+      "spends": [],
+      "map": "duviri",
+      "rows": [
+        {
+          "qty": "15",
+          "label": "Isleweaver, Steel Path",
+          "note": "8-12 min; requires The Hex",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "24",
+          "label": "Duviri Experience, Steel Path, all 3 side portals",
+          "note": "18-20 min",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "15",
+          "label": "Orowyrm chest, Steel Path, no side portals",
+          "note": "slower — only worth it alongside the side portals",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The Circuit gives zero Pathos Clamps — it's relevant to Syam only as a Rune Marrow source.",
+        "Only the optional side Undercroft portals pay clamps; story-stage portals pay nothing.",
+        "Clamps ignore every Resource Booster, Drop Chance Booster, blessing and Retriever mod."
+      ],
+      "bonuses": [
+        "Isleweaver never puts you in Drifter form, so your real Warframe and amp carry the mission regardless of the cave's randomized loadout.",
+        "Bank decrees on the non-combat objectives (Maw feeding, Komi, Shawzin, musical chests) before touching combat — free decrees that rescue a bad loadout, and Maw feeding is also where the 4 Maw Fang come from."
+      ],
+      "disclosures": [
+        {
+          "title": "Isleweaver alone isn't enough",
+          "body": "Maw Fang exists only in The Duviri Experience — not The Lone Story, not The Circuit, not Isleweaver. Farming all 50 clamps in Isleweaver leaves you unable to build the sword; run at least one full Duviri Experience with a Maw feeding."
+        }
+      ]
+    },
+    {
+      "type": "vendor",
+      "place": "TESHIN'S CAVE, DUVIRI",
+      "sub": null,
+      "activity": "buy the blueprint",
+      "meta": "unlocks the Drifter-usable Syam immediately and mails the Warframe-compatible blueprint",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Pathos Clamps", "amount": "50" }],
+      "map": null,
+      "rows": [{ "qty": null, "label": "Syam Blueprint", "note": null, "alt": "or 250 platinum", "done": false }],
+      "conditions": [
+        "Acrithis does not sell Syam — her stock is Reactors, Catalysts, Adapters, Forma, Kuva and Rivens, not weapons."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "DUVIRI",
+      "sub": null,
+      "activity": "gather the build materials",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "duviri",
+      "rows": [
+        {
+          "qty": "30",
+          "label": "Rune Marrow",
+          "note": "Runic Compact deposits in the Undercroft or Circuit",
+          "alt": "guaranteed from Corrupted Vor and Corrupted Jackal",
+          "done": false
+        },
+        {
+          "qty": "30",
+          "label": "Dracroot",
+          "note": "cliffs on the central island: Lonesome Outlook, Fair Shores Hamlet, Watershed Hamlet, Hermit Landing, Moirai Crossing",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "30",
+          "label": "Eevani",
+          "note": "Archarbor, denser than the Amphitheater — wait for a Joy, Sorrow or Envy spiral",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "4",
+          "label": "Maw Fang",
+          "note": "Maw Feeding activity, Duviri Experience only",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [
+        "SPROUT in Teshin's Cave grows 6 random Duviri plants every 20 hours — harvest it every time you load in, since that's already a stop before every Duviri run."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Syam",
+      "meta": "1 day",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Syam",
+          "note": "30,000 cr, 4 Maw Fang, 30 Rune Marrow, 30 Dracroot, 30 Eevani",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Turn off \"Camera Tracks Melee Target\" in Gameplay settings first — the heavy-attack wave can't be aimed reliably with it on."
+      ],
+      "bonuses": [
+        "Pairs with Kullervo or a subsumed Wrathful Advance for the crit-conversion wave-shred build; Lavos with its augment is the other named pairing."
+      ],
+      "disclosures": []
+    }
+  ]
+}

@@ -1,0 +1,151 @@
+{
+  "name": "Sirius & Orion",
+  "kind": "warframe",
+  "effort": 4,
+  "tradeable": false,
+  "progress": { "have": 1, "need": 4, "unit": "parts" },
+  "badges": [
+    { "text": "guaranteed blueprint each run", "tone": "info" },
+    { "text": "New War + Jade Shadows required", "tone": "warn" }
+  ],
+  "prices": [{ "label": "build", "amount": "70,000 cr", "money": false }],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "QUESTS",
+      "sub": null,
+      "activity": "The New War, then Jade Shadows, then Jade Shadows: Constellations",
+      "meta": "Constellations: 30-40 min solo",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "The New War", "note": null, "alt": null, "done": false },
+        { "qty": null, "label": "Jade Shadows", "note": null, "alt": null, "done": false },
+        {
+          "qty": null,
+          "label": "Jade Shadows: Constellations",
+          "note": "solo, not replayable; type FATHER to confirm",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Constellations locks every other mission out for roughly 90 minutes.",
+        "Completing it awards the Sirius & Orion main blueprint and unlocks Uranus Proxima plus the Pontis Tower hub where Hunhow trades Talents."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "boss",
+      "place": "URANUS PROXIMA, RAILJACK",
+      "sub": null,
+      "activity": "Skirmish into Assassinate: The Kuva Wytch or Scoria's Angel",
+      "meta": "14.29% each part, guaranteed one blueprint per clear",
+      "mode": "solo from Pontis Tower for your own Railjack",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Neuroptics Blueprint",
+          "note": "14.29%",
+          "alt": {
+            "text": "or 90 Talent at Hunhow",
+            "spends": [{ "currency": "Emerald or Crimson Talent", "amount": "90" }]
+          },
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Chassis Blueprint",
+          "note": "14.29%",
+          "alt": {
+            "text": "or 90 Talent at Hunhow",
+            "spends": [{ "currency": "Emerald or Crimson Talent", "amount": "90" }]
+          },
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Systems Blueprint",
+          "note": "14.29%",
+          "alt": {
+            "text": "or 90 Talent at Hunhow",
+            "spends": [{ "currency": "Emerald or Crimson Talent", "amount": "90" }]
+          },
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Squads always get a loaner Railjack (Santovan's Oath or Marrowbone); your own ship only offers as an option from Pontis Tower, and only when matchmaking is set to Solo before you enter.",
+        "The Kuva Wytch pays Emerald Talent and drops Pride parts alongside the frame; Scoria's Angel pays Crimson Talent and drops Wrath parts. Pick one node, since a part purchase spends only the matching Talent type."
+      ],
+      "bonuses": [
+        "Each clear also guarantees one of four Uranus Proxima arcanes, plus 12-16 Talents (18-22 Steel Path).",
+        "Shooting the flight-section targets (the Orowyrm on Kuva Wytch, the Ramsled on Scoria's Angel) pays up to 4 more Talents (12 on Steel Path) plus Tellurium, Mk III Railjack parts, Endo and credits; it's personal loot, so don't AFK through it."
+      ],
+      "disclosures": [
+        {
+          "title": "run Steel Path once you can",
+          "body": "Steel Path pays roughly 50% more Talents per clear and the flight bonus goes from 4 to 12; both nodes run about 7 minutes solo on Steel Path."
+        }
+      ]
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build components, then Sirius & Orion",
+      "meta": "12h each, then 3 days",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Neuroptics",
+          "note": "15,000 cr, 250 Circuits, 5 Gallium, 5 Nullstones, 75 Asterite",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Chassis",
+          "note": "15,000 cr, 600 Rubedo, 400 Alloy Plate, 600 Carbides, 500 Ticor Plate",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Systems",
+          "note": "15,000 cr, 500 Polymer Bundle, 30 Morphics, 20 Control Module, 100 Isos",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Sirius & Orion",
+          "note": "25,000 cr, 3 Orokin Cells",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Nullstones, Asterite, Carbides, Ticor Plate and Isos are Railjack resources; Uranus Proxima itself drops all of them, so the farm above restocks you as you go."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

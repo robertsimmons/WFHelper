@@ -1,0 +1,205 @@
+{
+  "name": "Edun",
+  "kind": "melee",
+  "effort": 3,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 1, "unit": "blueprint" },
+  "badges": [
+    { "text": "Maw Feeding needed", "tone": "warn" },
+    { "text": "Pathos Clamp", "tone": "info" }
+  ],
+  "prices": [
+    { "label": "blueprint", "amount": "50 Pathos Clamp", "money": false },
+    { "label": "build", "amount": "30,000 cr", "money": false },
+    { "label": "plat shortcut", "amount": "250 p", "money": true }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "TESHIN'S CAVE",
+      "sub": null,
+      "activity": "complete The Duviri Paradox",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "The Duviri Paradox",
+          "note": "unlocks Teshin's Cave and the armory rack",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "You cannot re-enter Teshin's Cave once you step through the portal — buy the blueprint before you leave."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "currency",
+      "place": "DUVIRI",
+      "sub": "Isleweaver",
+      "activity": "clear Isleweaver, or the Duviri Experience / Lone Story Orowyrm",
+      "meta": "50 needed; ignores boosters",
+      "mode": "solo or squad",
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "Pathos Clamp", "amount": "50" },
+      "spends": [],
+      "map": "duviri",
+      "rows": [
+        {
+          "qty": "10",
+          "label": "Isleweaver completion",
+          "note": "15 on Steel Path; needs The Hex quest; drops almost none of Edun's own build materials",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "10",
+          "label": "Orowyrm kill (Duviri Experience / Lone Story)",
+          "note": "15 on Steel Path",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "1",
+          "label": "optional Undercroft side portal",
+          "note": "3 each on Steel Path; story-stage portals give nothing",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Pathos Clamps ignore Resource Boosters, Drop Chance Boosters, blessings and Bountiful Harvest.",
+        "Isleweaver drops almost none of Edun's own build materials (no Nacreous Pebble at all), so a Duviri Experience trip is still owed regardless of clamp route."
+      ],
+      "bonuses": [
+        "8-12 minutes for 15 clamps on Steel Path Isleweaver, and it's your own Warframe and Amp, so a bad Teshin's Cave loadout roll doesn't matter.",
+        "Clearing all three optional Undercroft portals on Steel Path gives 24 clamps in about 18-20 minutes."
+      ],
+      "disclosures": [
+        {
+          "title": "which run to pick",
+          "body": "Normal-mode Duviri Experience (10-15 minutes for 10 clamps) beats Steel Path (~30 minutes for 15) unless you also want the arcanes and Steel Essence from the SP Undercroft."
+        }
+      ]
+    },
+    {
+      "type": "vendor",
+      "place": "TESHIN'S CAVE",
+      "sub": null,
+      "activity": "buy the blueprint at the armory rack",
+      "meta": "50 Pathos Clamp",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Pathos Clamp", "amount": "50" }],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Edun Blueprint",
+          "note": null,
+          "alt": "250 platinum unlocks both versions outright",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Delivers the Warframe-compatible blueprint to the Foundry in the same purchase that unlocks the Drifter version.",
+        "If sold, Cephalon Simaris resells the Warframe blueprint for 100,000 standing."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "DUVIRI",
+      "sub": "The Duviri Experience",
+      "activity": "Maw Feeding, cave and plant gathering",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "duviri",
+      "rows": [
+        {
+          "qty": "30",
+          "label": "Tasoma Extract",
+          "note": "Duviri caves, 2-4 per node; farm solo so a host hasn't already stripped the deposits",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "30",
+          "label": "Rune Marrow",
+          "note": "Runic Compact deposits in the Undercroft or the Circuit; guaranteed from Corrupted Vor and Corrupted Jackal",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "50",
+          "label": "Nacreous Pebble",
+          "note": "Maw Feeding activity only",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "40",
+          "label": "Connla Sprout",
+          "note": "grows near water and caves, densest around the Lunaro Court",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Resources bank the moment a decree is earned — gather materials, complete one side objective, then abort the mission to skip the Orowyrm entirely and keep everything."
+      ],
+      "bonuses": [
+        "SPROUT in Teshin's Cave grows 6 random Duviri plants free every 20 hours.",
+        "Bountiful Harvest decree doubles plant pickups before you touch any plant node.",
+        "Riding Intrinsics rank 5 (Smooth Path) highlights nearby resources while mounted; fly under the landmass on the Kaithe to spot cave mouths."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Edun",
+      "meta": "1 day",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Edun",
+          "note": "30,000 credits",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": [
+        {
+          "title": "known issues",
+          "body": "The throw animation steps the frame forward before releasing, so it lands off your aim, worse with attack speed or Tennokai. Heavy-attack-exclusive effects (Killing Blow, Life Strike, True Steel) only apply if you're still in the heavy-attack animation when the spear connects — the explosion essentially never benefits, and Condition Overload gives only 20% per status on the initial hit and nothing on the explosion."
+        }
+      ]
+    }
+  ]
+}

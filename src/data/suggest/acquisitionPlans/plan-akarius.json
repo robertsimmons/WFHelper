@@ -1,0 +1,111 @@
+{
+  "name": "Akarius",
+  "kind": "secondary",
+  "effort": 5,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 1, "unit": "blueprint" },
+  "badges": [
+    { "text": "enemy drop", "tone": "info" },
+    { "text": "2.5% each", "tone": "warn" }
+  ],
+  "prices": [{ "label": "build", "amount": "20,000 cr", "money": false }],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "STAR CHART",
+      "sub": null,
+      "activity": "unlock Uranus",
+      "meta": "MR 8 to equip",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Ur, Uranus", "note": "Dark Sector Disruption", "alt": null, "done": false }
+      ],
+      "conditions": ["There is no quest, syndicate or dojo gate beyond reaching Uranus."],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "UR, URANUS",
+      "sub": null,
+      "activity": "Dark Sector Disruption; kill every Demolisher",
+      "meta": "~40 Demolishers expected, ~10 rounds",
+      "mode": "short runs, bring CC/slow",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Akarius Blueprint", "note": "2.5% per Demolisher", "alt": null, "done": false }
+      ],
+      "conditions": [
+        "The blueprint is a floor drop from each Demolisher corpse, not an end-of-round reward.",
+        "All four Infested Demolisher types (Charger, Juggernaut, Thrasher, Boiler) roll it; every kill counts.",
+        "The blueprint is untradeable; a duplicate only sells for credits."
+      ],
+      "bonuses": [
+        "Acceltra shares the same 2.5% Demolisher table, so farm both in the same Ur sessions."
+      ],
+      "disclosures": [
+        {
+          "title": "bring hard CC",
+          "body": "Demolishers are immune to Viral, and Chargers and Juggernauts are also immune to Toxin, so mod Slash or Heat instead. Nova's Molecular Prime, Cold procs, Magus Lockdown, Khora Ensnare and Harrow Condemn all handle them; their nullifier pulse strips most other abilities within 6.5m."
+        },
+        {
+          "title": "pilfering abilities don't work here",
+          "body": "Nekros Desecrate, Hydroid Pilfering Swarm, Khora Pilfering Strangledome, Atlas Ore Gaze, Ivara Prowl and Chesa Retrieve all fail on Demolisher kills, and a resource/drop-chance booster isn't reliable either."
+        }
+      ]
+    },
+    {
+      "type": "farm",
+      "place": "GANYMEDE, JUPITER",
+      "sub": null,
+      "activity": "Disruption or Amalgam enemies",
+      "meta": "150 needed",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": "150", "label": "Hexenon", "note": "does not drop on Uranus", "alt": null, "done": false }
+      ],
+      "conditions": [
+        "This is the only focused build material that the Ur farm does not naturally cover."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Akarius",
+      "meta": "24h, MR 8",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": "20,000", "label": "Credits", "note": null, "alt": null, "done": false },
+        { "qty": "3", "label": "Neurodes", "note": null, "alt": null, "done": false },
+        { "qty": "150", "label": "Hexenon", "note": null, "alt": null, "done": false },
+        { "qty": "1,600", "label": "Polymer Bundle", "note": null, "alt": null, "done": false },
+        { "qty": "7,500", "label": "Nano Spores", "note": null, "alt": null, "done": false }
+      ],
+      "conditions": ["You need Mastery Rank 8 to equip the completed weapon."],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

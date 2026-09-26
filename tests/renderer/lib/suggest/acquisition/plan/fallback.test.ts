@@ -86,7 +86,8 @@ describe("resolvePlanFor", () => {
   });
 
   it("marks a derived plan as not authored", () => {
-    const plan = resolvePlanFor(source(), { itemDb: itemDb(), inventory: inventory() });
+    const unplanned = source({ name: "Unplanned Testframe" });
+    const plan = resolvePlanFor(unplanned, { itemDb: itemDb(), inventory: inventory() });
     expect(plan.authored).toBe(false);
     expect(plan.effort).toBe(4);
     const gabii = plan.groups.find((group) => group.place === "GABII, CERES");

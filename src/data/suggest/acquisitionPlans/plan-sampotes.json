@@ -1,0 +1,148 @@
+{
+  "name": "Sampotes",
+  "kind": "melee",
+  "effort": 2,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 1, "unit": "blueprint" },
+  "badges": [
+    { "text": "currency purchase, no RNG", "tone": "info" },
+    { "text": "needs The Hex for Isleweaver", "tone": "warn" }
+  ],
+  "prices": [{ "label": "build", "amount": "30,000 cr", "money": false }],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "MAIN QUESTLINE",
+      "sub": null,
+      "activity": "The Duviri Paradox, then The Hex",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "The Duviri Paradox", "note": "unlocks Duviri", "alt": null, "done": false },
+        {
+          "qty": null,
+          "label": "The Hex",
+          "note": "unlocks Isleweaver, the fast Pathos Clamp duet",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Without The Hex you're stuck fighting the full Duviri Experience Orowyrm for clamps instead of the much shorter Isleweaver duet."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "ISLEWEAVER, DUVIRI",
+      "sub": null,
+      "activity": "kill The Fragmented, the duet's final boss",
+      "meta": "10 clamps normal, 15 Steel Path, 8-20 min a run",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "Pathos Clamps", "amount": "60" },
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "60",
+          "label": "Pathos Clamps",
+          "note": "4-6 Isleweaver runs",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Resource Boosters don't affect clamps.",
+        "The Fragmented is weak to Electricity — take the decree that adds elemental vulnerability if it's offered."
+      ],
+      "bonuses": [
+        "Steel Path Duviri with its 3 bonus Undercroft portals pays 9 clamps instead of 10 from Isleweaver alone, plus Duviri arcanes and Steel Essence, if you'd rather combine clamps with resource gathering."
+      ],
+      "disclosures": [
+        {
+          "title": "if you fight the Orowyrm instead",
+          "body": "You don't have to ride the Kaithe in phase 2 — leave the arena to the sides and shoot the wyrmlings with your regular gun; Titania, Zephyr or Oraxia skip the flight segment in seconds. Don't fly in front of the breath attack, and shoot the orbs it throws for a speed boost."
+        }
+      ]
+    },
+    {
+      "type": "farm",
+      "place": "DUVIRI EXPERIENCE",
+      "sub": null,
+      "activity": "mine, gather plants and loot Undercroft deposits",
+      "meta": "one run covers everything",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": "150", "label": "Aggristone", "note": "Aggristone Formations, Spiral objectives or the Circuit", "alt": null, "done": false },
+        { "qty": "40", "label": "Kovnik", "note": "plants across Duviri, sometimes inside Teshin's Cave", "alt": null, "done": false },
+        { "qty": "30", "label": "Rune Marrow", "note": "Runic Compact deposits in the Undercroft or Circuit; Corrupted Vor and Corrupted Jackal always drop it", "alt": null, "done": false },
+        { "qty": "20", "label": "Silphsela", "note": "Sun Silphs on Duviri hillsides", "alt": null, "done": false }
+      ],
+      "conditions": [
+        "Resource Boosters apply to Silphsela only, not Aggristone, Kovnik or Rune Marrow.",
+        "Grab a decree and gather resources in one Duviri Experience run rather than fighting the Orowyrm — Isleweaver is the better clamp farm."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "TESHIN'S CAVE, DUVIRI",
+      "sub": null,
+      "activity": "buy the chamber from the Drifter melee vendor",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Pathos Clamps", "amount": "60" }],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Sampotes", "note": "grants the Drifter version plus a Warframe blueprint", "alt": null, "done": false }
+      ],
+      "conditions": [
+        "If you sell the Warframe blueprint by mistake, Cephalon Simaris resells it for 100,000 standing — don't sell it."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Sampotes",
+      "meta": "1 day, 30,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Sampotes",
+          "note": "30,000 cr, 20 Silphsela, 30 Rune Marrow, 40 Kovnik, 150 Aggristone",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

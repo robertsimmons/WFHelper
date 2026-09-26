@@ -1,0 +1,204 @@
+{
+  "name": "Hespar",
+  "kind": "melee",
+  "effort": 6,
+  "tradeable": "components only",
+  "progress": { "have": 0, "need": 3, "unit": "parts" },
+  "badges": [
+    { "text": "Rotation C", "tone": "warn" },
+    { "text": "Zariman gate", "tone": "warn" }
+  ],
+  "prices": [{ "label": "build total", "amount": "75,000 cr", "money": false }],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "ORBITER, THEN THE CODEX",
+      "sub": null,
+      "activity": "Angels of the Zariman",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Angels of the Zariman",
+          "note": "unlocks the Zariman Ten Zero and its Chrysalith bounties, Void Cascade and Void Armageddon",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The Chrysalith bounty tier that pays the main blueprint likely needs a Holdfasts standing rank too; not confirmed on the wiki."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "bounty",
+      "place": "CHRYSALITH, ZARIMAN",
+      "sub": "Quinn",
+      "activity": "highest-tier bounty, Lvl 90-95",
+      "meta": "12.99% per stage, ~7 stages expected",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Hespar Main Blueprint",
+          "note": "12.99% per stage; untradeable",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["The main blueprint cannot be traded; there is no pity purchase for it."],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "TUVUL COMMONS, ZARIMAN",
+      "sub": null,
+      "activity": "Void Cascade",
+      "meta": "A 4.23% / B 4.60% / C 8.33%",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Hespar Handle Blueprint",
+          "note": "any rotation, tradeable",
+          "alt": "tradeable",
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [
+        "The same runs cover Zariman fissures, Narin farming, or Entropic Kuva standing, so this is the easy part of the farm."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "ORO WORKS, ZARIMAN",
+      "sub": null,
+      "activity": "Void Armageddon",
+      "meta": "A 4.23% / B 4.60% / C 8.33%, all rotations pay since Update 44.0",
+      "mode": "solo or premade recommended",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Hespar Blade Blueprint",
+          "note": "any rotation since Update 44.0; tradeable",
+          "alt": "tradeable",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Void Armageddon has no Void Fissures and no Thrax spawns; farm Thrax Plasm in Cascade, Flood or Exterminate instead.",
+        "Rotation order is still AABC, so a C roll is the best one; leaving after round 3 forfeits it.",
+        "Public squads commonly leave before round 3; recruit or go solo if you want Rotation C."
+      ],
+      "bonuses": [],
+      "disclosures": [
+        {
+          "title": "skip the downtime",
+          "body": "Interact with the targeted Exodamper to Provoke Assault and start the wave early, then kill the roughly 30 enemies fast to end waves before the 1:05 timer. 12-20 minutes to Rotation C is typical with a fast squad; pubs commonly run 15-20 minutes or worse."
+        },
+        {
+          "title": "guard the Angel and the Relic",
+          "body": "Every round ends with a Ravenous Void Angel killed twice: physical, then Void damage via the Operator's Void Beam (Madurai or Unairu with a hitscan amp is fast; avoid damage-conversion amp arcanes). Once the Angel dies, leftover enemies beeline to the Eternal Relic, so someone should stay near it."
+        }
+      ]
+    },
+    {
+      "type": "farm",
+      "place": "ZARIMAN TEN ZERO",
+      "sub": null,
+      "activity": "Cascade, Flood or Exterminate",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": "150", "label": "Thrax Plasm", "note": "Hespar build", "alt": null, "done": false },
+        { "qty": "20", "label": "Voidplume Quill", "note": "Hespar build", "alt": null, "done": false },
+        { "qty": "15", "label": "Voidgel Orb", "note": "Hespar Blade", "alt": null, "done": false },
+        { "qty": "5,500", "label": "Ferrite", "note": "Hespar Blade", "alt": null, "done": false },
+        { "qty": "4,200", "label": "Alloy Plate", "note": "Hespar Handle", "alt": null, "done": false },
+        {
+          "qty": "5",
+          "label": "Entrati Lanthorn",
+          "note": "Hespar Handle",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Void Armageddon has no Thrax spawns, so top up Plasm in Cascade, Flood or Exterminate instead."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Blade and Handle, then Hespar",
+      "meta": "12h each",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Blade",
+          "note": "30,000 cr, 60 Thrax Plasm, 10 Voidplume Quill, 5,500 Ferrite, 15 Voidgel Orb",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Handle",
+          "note": "30,000 cr, 40 Thrax Plasm, 10 Voidplume Quill, 4,200 Alloy Plate, 5 Entrati Lanthorn",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Hespar",
+          "note": "15,000 cr, 50 Thrax Plasm, the Blade and the Handle",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [
+        "Sell spare Handles and Blades if unneeded; farmers commonly end up with piles of them."
+      ],
+      "disclosures": []
+    }
+  ]
+}

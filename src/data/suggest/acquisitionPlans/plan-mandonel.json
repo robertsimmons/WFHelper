@@ -1,0 +1,183 @@
+{
+  "name": "Mandonel",
+  "kind": "archgun",
+  "effort": 6,
+  "tradeable": true,
+  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "badges": [
+    { "text": "Rotation B/C only", "tone": "warn" },
+    { "text": "Sanctum Anatomica bounties", "tone": "info" }
+  ],
+  "prices": [{ "label": "build", "amount": "45,000 cr", "money": false }],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "CODEX",
+      "sub": null,
+      "activity": "Whispers in the Walls",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Heart of Deimos, then The New War",
+          "note": "quest prerequisites",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Whispers in the Walls",
+          "note": "unlocks Sanctum Anatomica and Albrecht's Laboratories",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Completing the quest unlocks Sanctum Anatomica, the Cavia syndicate, and Albrecht's Laboratories."],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "bounty",
+      "place": "SANCTUM ANATOMICA, DEIMOS",
+      "sub": "Fibonacci",
+      "activity": "Cavia bounties, higher tiers",
+      "meta": "~22-24 bounties average; long bad-luck tail",
+      "mode": "skip the 65-70 tier",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Mandonel Blueprint",
+          "note": "55-60: 4.35%, 75-80: 4.13%, 95-100: 4.39%, 115-120: 4.20%, 65-70: 3.39%",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Parts never drop from the bounty reward itself, only from Albrecht's Laboratories endless mission rotations.",
+        "Bird 3 sells Qorvex parts for Cavia standing but does not sell anything Mandonel.",
+        "You get one bounty reward regardless of how long you stay past the objective, so rush and leave for the blueprint roll alone."
+      ],
+      "bonuses": [
+        "It shares the table with Qorvex Neuroptics, Shrill Voca, Aya, credits and Endo, so a spare Mandonel blueprint is common if you're also farming Qorvex.",
+        "The blueprint is tradable, so spares from repeated runs are easy to offload or acquire.",
+        "A Survival-type bounty run to 20 minutes also rolls the Albrecht's Laboratories Persto rotation rewards in the same run — the two grinds combine."
+      ],
+      "disclosures": [
+        {
+          "title": "skip the low tier",
+          "body": "The 65-70 tier's blueprint chance (3.39%) is noticeably lower than the other four tiers per the wiki's drop tables, not Reddit advice. The wiki also doesn't show whether any tier needs a Cavia rank, so check in game."
+        }
+      ]
+    },
+    {
+      "type": "farm",
+      "place": "ALBRECHT'S LABORATORIES, DEIMOS",
+      "sub": null,
+      "activity": "Persto Survival, Munio Mirror Defense, Cambire Alchemy — B/C rotations only",
+      "meta": "Persto Survival covers all three parts in one 20-minute run",
+      "mode": "Persto Survival recommended",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Mandonel Barrel",
+          "note": "Persto C 25%, Munio C 15%, Cambire B 17.5%",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Mandonel Receiver",
+          "note": "Persto C 25%, Munio B 17.5%, Cambire C 16%",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Mandonel Stock",
+          "note": "Persto B 17.5%, Munio C 15%, Cambire C 16%",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Munio Mirror Defense runs AABC; the fourth round is the first C, so leaving after three rounds wastes the C roll.",
+        "The community widely calls Munio miserable (it shares the Tome Mods grind); Persto Survival is the best part farm by these numbers since one 20-minute run covers Barrel and Receiver at C and Stock at B."
+      ],
+      "bonuses": [
+        "Search for Echo Voca medallions while running these missions with Loot Detector, Thief's Wit, Animal Instinct or Golden Instinct — they make a low sound and are needed for the build."
+      ],
+      "disclosures": [
+        {
+          "title": "the return to rotation C",
+          "body": "Launch-era community reaction to needing AABC rotation-C farming for these parts was strongly negative; a highly upvoted post called it a serious regression and said they'd skip Mandonel over it. One OP ran 100+ bounties with nothing, then got the blueprint and two Qorvex sets in about 20 runs — that spread is real."
+        }
+      ]
+    },
+    {
+      "type": "vendor",
+      "place": "NECRALISK, DEIMOS",
+      "sub": "Loid",
+      "activity": "buy Echo Voca on restock",
+      "meta": "2 needed for the build",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "2",
+          "label": "Echo Voca",
+          "note": "Loid restocks one every 8 hours for Laboratories resources",
+          "alt": "wall-medallion pickup in Albrecht's Laboratories, occasional Gruzzling drop, or 14.7% on the 115-120 bounty",
+          "done": false
+        }
+      ],
+      "conditions": ["Qorvex, Grimoire and the Helminth Coalescent Segment all compete for the same Echo Voca supply, so buy it from Loid whenever it's up."],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Mandonel",
+      "meta": "12h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Mandonel",
+          "note": "45,000 cr, Barrel, Receiver, Stock, 2 Echo Voca",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

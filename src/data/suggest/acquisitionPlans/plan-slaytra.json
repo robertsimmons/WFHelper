@@ -1,0 +1,149 @@
+{
+  "name": "Slaytra",
+  "kind": "melee",
+  "effort": 5,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 1, "unit": "weapon" },
+  "badges": [
+    { "text": "New War + Veilbreaker gate", "tone": "warn" },
+    { "text": "Deathless = 30 Stock", "tone": "info" }
+  ],
+  "prices": [
+    { "label": "blueprint", "amount": "30 Stock", "money": false },
+    { "label": "build", "amount": "20,000 cr", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "QUESTS",
+      "sub": null,
+      "activity": "complete The New War, then Veilbreaker",
+      "meta": "unlocks Kahl's Garrison in the Drifter's Camp, Earth",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "The New War", "note": "Veilbreaker prerequisite", "alt": null, "done": false },
+        {
+          "qty": null,
+          "label": "Veilbreaker",
+          "note": "unlocks Kahl's Garrison and Chipper",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "DRIFTER'S CAMP, EARTH",
+      "sub": "Kahl's Garrison",
+      "activity": "Break Narmer weekly mission (solo, as Kahl)",
+      "meta": "one completion reaches Rank 2 Encampment",
+      "mode": "solo only",
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "Stock", "amount": "105" },
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "1",
+          "label": "weekly mission completion",
+          "note": "Rank 1 Shelter to Rank 2 Encampment; also rescues Chipper",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "30",
+          "label": "Stock",
+          "note": "blueprint cost",
+          "alt": "the Deathless challenge alone pays 30",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Finishing the mission alone gives zero Stock; all weekly Stock comes from the bonus challenges and blue Stock crates.",
+        "Missions rotate Sneaky Sabotage, Junk Run, then Prison Break at Monday 00:00 UTC, advancing only after you complete the current one.",
+        "Known boss bugs (Sprag replaying her intro in Junk Run; an unfair Ven'kra Tel fight in Prison Break) can void a Deathless run."
+      ],
+      "bonuses": [
+        "Deathless is worth exactly 30 Stock by itself and covers the Slaytra in one clean run.",
+        "Challenge progress carries over between runs since Echoes of Veilbreaker, so a bad run doesn't reset collectibles.",
+        "Blue Stock crates give 2 Stock each, up to 5 per run (10 Stock), and respawn on replay, so three quick extracted runs also make 30 without touching the challenges."
+      ],
+      "disclosures": [
+        {
+          "title": "Stock is shared across all of Chipper's stock",
+          "body": "Styanax parts, Afentis, Aegrit, Archon mods, ephemeras and Skaut all draw from the same Stock pool; the wiki prices every permanent item once at 980 Stock total, so buy the Slaytra first if you want it before the rest."
+        }
+      ]
+    },
+    {
+      "type": "vendor",
+      "place": "CHIPPER, DRIFTER'S CAMP",
+      "sub": "Kahl's Garrison",
+      "activity": "buy the blueprint",
+      "meta": "Rank 2 Encampment",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Stock", "amount": "30" }],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Slaytra Blueprint", "note": "30 Stock", "alt": null, "done": false }
+      ],
+      "conditions": [
+        "Kahl can't use your mods or loadout, and the machete you use in Sneaky Sabotage is only labelled \"Machete\"; playing with it there doesn't give you the weapon."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "currency",
+      "place": "ANY KUVA SIPHON, FLOOD OR RELIC",
+      "sub": null,
+      "activity": "farm Kuva",
+      "meta": "2,600 needed for the build",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "Kuva", "amount": "2,600" },
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": "2,600", "label": "Kuva", "note": "Slaytra build", "alt": null, "done": false }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Slaytra",
+      "meta": "20,000 cr, 12h (rush 35p)",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Kuva", "amount": "2,600" }],
+      "map": null,
+      "rows": [
+        { "qty": "13,000", "label": "Alloy Plate", "note": null, "alt": null, "done": false },
+        { "qty": "6,300", "label": "Rubedo", "note": null, "alt": null, "done": false },
+        { "qty": "8", "label": "Tellurium", "note": null, "alt": null, "done": false }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

@@ -1,0 +1,196 @@
+{
+  "name": "Aeolak",
+  "kind": "primary",
+  "effort": 5,
+  "tradeable": "components only",
+  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "badges": [
+    { "text": "Tier 5 bounty gate", "tone": "warn" },
+    { "text": "every rotation drops", "tone": "info" }
+  ],
+  "prices": [
+    { "label": "main blueprint", "amount": "15,000 cr, 50 Thrax Plasm", "money": false },
+    { "label": "components, each", "amount": "15,000 cr", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "CHRYSALITH, ZARIMAN",
+      "sub": null,
+      "activity": "Angels of the Zariman quest",
+      "meta": "needs The New War",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Angels of the Zariman",
+          "note": "opens the Zariman nodes and Quinn's bounties",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "bounty",
+      "place": "CHRYSALITH, ZARIMAN",
+      "sub": null,
+      "activity": "Quinn's Tier 5 bounty",
+      "meta": "12.99% per bounty, ~7 expected",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Aeolak Blueprint",
+          "note": "Tier 5 only (enemy level 110-115); Hespar rolls a separate bounty table, so check the reward preview before accepting",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Lower tiers never drop the main blueprint, and it cannot be traded.",
+        "Failing the bounty's objective forfeits everything, plumes included.",
+        "Play the Tier 5 bounty on Void Flood or Void Cascade so that mission's normal rotation table also rolls."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "EVERVIEW ARC, ZARIMAN",
+      "sub": null,
+      "activity": "Void Flood",
+      "meta": "4.23% A / 4.60% B / 8.33% C; every rotation pays since the Narin update",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": "1", "label": "Aeolak Receiver Blueprint", "note": null, "alt": null, "done": false },
+        { "qty": "1", "label": "Aeolak Stock Blueprint", "note": null, "alt": null, "done": false },
+        {
+          "qty": "20",
+          "label": "Voidplume Quill",
+          "note": "bounty completions and Melica caches; combined Barrel/Receiver/Stock need",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Rotates AABC; since the Narin update A and B also drop parts, so don't wait for an all-C loop.",
+        "Fails at 100% corruption if the 2m30s countdown expires before extraction opens; seal ruptures early.",
+        "Extraction is manual — hold the elevator panel, and coordinate with the squad since a partial group in the lift can pull everyone out mid-rotation."
+      ],
+      "bonuses": [
+        "Titania's Razorwing grabs floating Vitoplast without parkour; Rotation C is about 10 minutes solo with her. Zephyr is the runner-up.",
+        "Skittergirl steals Vitoplast from players who stray from the squad; kill her to get it back."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "TUVUL COMMONS, ZARIMAN",
+      "sub": null,
+      "activity": "Void Cascade",
+      "meta": "4.23% A / 4.60% B / 8.33% C; every rotation pays since the Narin update",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": "1", "label": "Aeolak Barrel Blueprint", "note": null, "alt": null, "done": false }
+      ],
+      "conditions": ["Same AABC rotation as Void Flood."],
+      "bonuses": [
+        "The Narin update put Narin parts and Entropic Kuva on this same table, so public squads should be easier to find."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "IO, JUPITER",
+      "sub": null,
+      "activity": "Defense",
+      "meta": "~80 per 10 waves; kill Oxium Ospreys before they explode",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": "2,000", "label": "Oxium", "note": "Aeolak Barrel", "alt": null, "done": false }
+      ],
+      "conditions": [],
+      "bonuses": ["Nekros or Hydroid plus a Resource Booster multiplies the drop."],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build components, then Aeolak",
+      "meta": "12h each part, 1 day final",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Barrel",
+          "note": "15,000 cr, 40 Thrax Plasm, 5 Voidplume Quill, 5 Voidgel Orb, 2,000 Oxium",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Receiver",
+          "note": "15,000 cr, 30 Thrax Plasm, 5 Voidplume Quill, 1,800 Cryotic, 5 Entrati Lanthorn",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Stock",
+          "note": "15,000 cr, 30 Thrax Plasm, 10 Voidplume Quill, 3,000 Alloy Plate, 5 Orokin Cell",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Aeolak",
+          "note": "15,000 cr, 50 Thrax Plasm",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Components are tradeable if you'd rather buy the last stubborn one than keep farming."],
+      "bonuses": [],
+      "disclosures": [
+        {
+          "title": "one unconfirmed report",
+          "body": "A single 2026 post says Aeolak mastery didn't register after crafting. Not corroborated elsewhere; watch for it."
+        }
+      ]
+    }
+  ]
+}

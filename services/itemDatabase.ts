@@ -183,6 +183,9 @@ interface ItemEntry {
   description: string;
   /** `/Lotus/Language/...` key `name` was resolved from, for game-language lookup. */
   nameKey?: string | null;
+  /** DE's name for the BUILT part, where `name` is the blueprint that makes it.
+   *  One uniqueName covers both, so a surface listing them apart needs both. */
+  partName?: string;
   productCategory: string | null;
   ducats: number | null;
   _source: string;
@@ -505,6 +508,17 @@ function loadWfcdItems(): number {
                   String(existingComponent.name).startsWith("/Lotus/") ||
                   componentLooksLikePart)
               ) {
+                // The name being written is the blueprint's, because one pile
+                // covers both. DE named the built part on this very row, so
+                // keep that before it goes.
+                if (
+                  !existingComponent.partName &&
+                  existingComponent.name &&
+                  !String(existingComponent.name).startsWith("/Lotus/") &&
+                  existingComponent.name !== componentEntry.name
+                ) {
+                  existingComponent.partName = existingComponent.name;
+                }
                 existingComponent.name = componentEntry.name;
               }
 
@@ -1004,6 +1018,7 @@ export function getRendererLookup(): Record<string, RendererItemEntry> {
       masterable: typeof item.masterable === "boolean" ? item.masterable : undefined,
       type: item.type || "",
       isBuildComponent: item.isBuildComponent === true,
+      ...(item.partName ? { partName: item.partName } : {}),
       ...(item.componentOf ? { componentOf: item.componentOf } : {}),
       description: item.description || "",
       productCategory: item.productCategory || null,

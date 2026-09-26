@@ -1,0 +1,150 @@
+{
+  "name": "Sun & Moon",
+  "kind": "melee",
+  "effort": 2,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 1, "unit": "blueprint" },
+  "badges": [
+    { "text": "Duviri Paradox reward", "tone": "info" },
+    { "text": "Rune Marrow bottleneck", "tone": "warn" }
+  ],
+  "prices": [
+    { "label": "build", "amount": "30,000 cr", "money": false },
+    { "label": "replacement", "amount": "100,000 standing", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "URANUS JUNCTION, THEN DUVIRI",
+      "sub": null,
+      "activity": "clear the Uranus Junction, then finish The Duviri Paradox",
+      "meta": "guaranteed blueprint reward",
+      "mode": "solo (Duviri is solo-only)",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Uranus Junction",
+          "note": "unlocks The Duviri Paradox",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "The Duviri Paradox",
+          "note": "completion awards the Sun & Moon Blueprint, Mountain's Edge stance and a Kaithe",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The Uranus Junction end-of-mission screen also lists \"Sun & Moon\" as a reward; that's the Drifter-only Duviri copy, not the arsenal blueprint from finishing the quest."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "DUVIRI",
+      "sub": null,
+      "activity": "gather plants and Dax drops across the open world",
+      "meta": "Kovnik and Lamentus keep pace during normal play",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "duviri",
+      "rows": [
+        {
+          "qty": "100",
+          "label": "Kovnik",
+          "note": "plants across Duviri, sometimes in Teshin's Cave",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "40",
+          "label": "Lamentus",
+          "note": "drops from Dax enemies in the open world, not the Undercroft",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "45",
+          "label": "Silphsela",
+          "note": "seeds around Sun Silph plants, heaviest near Titan's Rest",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Don't destroy Sun Silph plants; they keep releasing fresh clusters of about six Silphsela seeds instead of a one-time pickup.",
+        "Spend starting Spiral rerolls to fish for the Bountiful Harvest decree; it doubles Kovnik and Silphsela plant pickups, not Lamentus."
+      ],
+      "bonuses": ["Resource Boosters apply to all three."],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "THE CIRCUIT",
+      "sub": "Undercroft or any Circuit map",
+      "activity": "loop map edges for Runic Compact deposits",
+      "meta": "compacts don't respawn per map, but each new map spawns a fresh set",
+      "mode": "normal Circuit is enough; Steel Path spawns the same amount",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "duviri",
+      "rows": [
+        {
+          "qty": "35",
+          "label": "Rune Marrow",
+          "note": "Corrupted Vor and Corrupted Jackal in the Undercroft always drop some",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "This is the slowest of the four materials; the story's Undercroft segments alone won't cover 35."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Sun & Moon",
+      "meta": "1 day, 30,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Sun & Moon",
+          "note": "30,000 cr, 100 Kovnik, 35 Rune Marrow, 40 Lamentus, 45 Silphsela",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": ["35 plat rushes the day-long build if you don't want to wait."],
+      "disclosures": [
+        {
+          "title": "replacing a sold copy",
+          "body": "Only one blueprint is awarded. If you sell or feed the weapon, Cephalon Simaris sells a replacement blueprint for 100,000 standing."
+        }
+      ]
+    }
+  ]
+}

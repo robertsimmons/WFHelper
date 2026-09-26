@@ -120,6 +120,7 @@ export const DEFAULT_OPTIONS: SuggestionOptions = {
   acquisitionSort: DEFAULT_ACQUISITION_SORT,
   acquisitionSortDir: "asc",
   acquisitionKinds: [...ACQUISITION_INCLUDES],
+  acquisitionSearch: "",
 };
 
 /** Synthetic activity ids these settings were stored under before they had a
@@ -350,6 +351,8 @@ export function parseOptions(raw: string | null): Partial<SuggestionOptions> {
       options.acquisitionKinds = readsAsAll(picked) ? [] : picked;
     }
   }
+  const search = parsed["acquisitionSearch"];
+  if (typeof search === "string") options.acquisitionSearch = search;
   return options;
 }
 

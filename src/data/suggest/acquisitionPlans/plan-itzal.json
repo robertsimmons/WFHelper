@@ -1,0 +1,247 @@
+{
+  "name": "Itzal",
+  "kind": "archwing",
+  "effort": 5,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "badges": [
+    { "text": "clan research", "tone": "warn" },
+    { "text": "Archwing quest gate", "tone": "warn" }
+  ],
+  "prices": [
+    { "label": "blueprints", "amount": "60,000 cr", "money": false },
+    { "label": "built", "amount": "325 p", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "MARS JUNCTION",
+      "sub": null,
+      "activity": "complete The Archwing quest",
+      "meta": "unlocks Empyrean, the Plexus and Tenno Lab research",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "The Archwing", "note": "required before any Itzal research", "alt": null, "done": false }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": [
+        {
+          "title": "dojo prerequisites",
+          "body": "A brand-new solo clan needs Clan Hall, a connector, a Reactor and the Oracle standing before the Tenno Lab research console exists at all; budget that dojo build separately from the Itzal research itself."
+        }
+      ]
+    },
+    {
+      "type": "research",
+      "place": "TENNO LAB, DOJO",
+      "sub": null,
+      "activity": "research Itzal, then Harness, Systems and Wings",
+      "meta": "Ghost tier shown; scale x3/x10/x30/x100 for Shadow/Storm/Mountain/Moon",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Itzal",
+          "note": "3,000 clan affinity, 10,000 cr, 1 Fieldron, 1 Mutagen Mass, 1 Detonite Injector, 2 Tellurium, 72h",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Harness",
+          "note": "1,500 affinity, 4,000 cr, 1 Detonite Injector, 250 Oxium, 5,500 Ferrite, 1 Tellurium, 36h",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Systems",
+          "note": "1,500 affinity, 5,500 cr, 1 Mutagen Mass, 3,750 Oxium, 72,500 Salvage, 1 Tellurium, 36h",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Wings",
+          "note": "1,500 affinity, 4,500 cr, 1 Fieldron, 3,750 Oxium, 6,400 Ferrite, 1 Tellurium, 36h",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Harness, Systems and Wings all list Itzal as a prerequisite, so the first 72h cannot be parallelized; research is never rushable with platinum.",
+        "Clan research blueprints are untradeable; the only shortcut is 325 plat for the finished Archwing in the Market."
+      ],
+      "bonuses": [
+        "Joining a clan that has already finished this research skips straight to buying the four blueprints for 15,000 cr each."
+      ],
+      "disclosures": [
+        {
+          "title": "join, don't research",
+          "body": "Every large clan already has Itzal researched, so the near-unanimous advice is to join one instead of paying Moon or Mountain tier costs yourself. Buy all four blueprints before leaving a clan; lab console access dies with membership."
+        }
+      ]
+    },
+    {
+      "type": "farm",
+      "place": "OPHELIA, URANUS",
+      "sub": null,
+      "activity": "Submersible Survival",
+      "meta": "Tellurium",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "5",
+          "label": "Tellurium",
+          "note": "research + 4 for the build",
+          "alt": "login rewards",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Submersible missions count as Archwing missions, the only reason Grineer there drop Tellurium at all.",
+        "Heat and Corrosive kills disintegrate corpses and block Desecrate; mod Heat off before running Nekros."
+      ],
+      "bonuses": [
+        "Corpus Railjack Survival (e.g. Luckless Expanse, Veil Proxima) drowns you in Tellurium as a side effect of Intrinsics or Bile farming."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "IO, JUPITER",
+      "sub": null,
+      "activity": "Defense",
+      "meta": "~80 Oxium per 10 waves",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "7,750",
+          "label": "Oxium",
+          "note": "research total",
+          "alt": "Cetus/Fortuna Lvl 10-30 bounties, 200 at 25% on stage 1",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Only Oxium Ospreys drop it, and only if you land the kill; they won't self-destruct at full shield/low health, so Toxin damage (bypasses shields) is the reliable trigger."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "CAMERIA, JUPITER",
+      "sub": null,
+      "activity": "Dark Sector Survival",
+      "meta": "72,500 Salvage for Systems research",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "72,500",
+          "label": "Salvage",
+          "note": "Systems research",
+          "alt": "Carme (Mobile Defense) or Olympus (Disruption)",
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "TENNO LAB, DOJO",
+      "sub": null,
+      "activity": "buy the four blueprints",
+      "meta": "15,000 cr each",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Itzal Blueprint", "note": "15,000 cr", "alt": null, "done": false },
+        { "qty": null, "label": "Harness Blueprint", "note": "15,000 cr", "alt": null, "done": false },
+        { "qty": null, "label": "Systems Blueprint", "note": "15,000 cr", "alt": null, "done": false },
+        { "qty": null, "label": "Wings Blueprint", "note": "15,000 cr", "alt": null, "done": false }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build components, then Itzal",
+      "meta": "6h each, then 36h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Harness",
+          "note": "15,000 cr, 180 Oxium, 700 Ferrite, 300 Rubedo, 2 Tellurium",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Systems",
+          "note": "15,000 cr, 1 Control Module, 320 Oxium, 800 Salvage, 2 Neurodes",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Wings",
+          "note": "15,000 cr, 150 Alloy Plate, 400 Oxium, 900 Ferrite, 2 Tellurium",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Itzal",
+          "note": "25,000 cr, 2 Control Modules, one of each component",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Mastery Rank 0 to build and equip."],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

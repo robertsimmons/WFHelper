@@ -1,0 +1,229 @@
+{
+  "name": "Sepfahn",
+  "kind": "melee",
+  "effort": 3,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 3, "unit": "parts" },
+  "badges": [
+    { "text": "Zaw", "tone": "info" },
+    { "text": "Trusted gate", "tone": "warn" }
+  ],
+  "prices": [
+    { "label": "blueprints", "amount": "9,500 standing", "money": false },
+    { "label": "parts + forge", "amount": "19,000 cr", "money": false },
+    { "label": "gild", "amount": "5,000 standing", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "currency",
+      "place": "CETUS, EARTH",
+      "sub": null,
+      "activity": "hunt and fish for Ostron standing",
+      "meta": "~71,000 cumulative standing to Trusted",
+      "mode": "Loki with Equinox's Rest & Rage subsumed",
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "Ostron standing", "amount": "71,000" },
+      "spends": [],
+      "map": "plains-of-eidolon",
+      "rows": [
+        {
+          "qty": "71,000",
+          "label": "rank-ups to Trusted",
+          "note": "Offworlder 5,000 + Visitor 22,000 + Trusted 44,000; 60,000 cr across the three",
+          "alt": null,
+          "done": false
+        },
+        { "qty": "25", "label": "Nistlepod", "note": "Offworlder sacrifice", "alt": null, "done": false },
+        { "qty": "25", "label": "Grokdrul", "note": "Offworlder sacrifice", "alt": null, "done": false },
+        { "qty": "5", "label": "Maprico", "note": "Trusted sacrifice", "alt": null, "done": false },
+        { "qty": "1", "label": "Cetus Wisp", "note": "Trusted sacrifice", "alt": null, "done": false }
+      ],
+      "conditions": [
+        "Standing spent on blueprints comes out of the same pool used to rank up: rank up before buying anything, or you re-farm the difference.",
+        "Turning in fish or captures past the daily cap destroys the excess instead of banking it — check the remaining cap with Konzu first."
+      ],
+      "bonuses": [
+        "Loki running Equinox's Rest & Rage subsumed caps the daily limit in minutes; sleep cannot be cast unless a target is in range, so captures cannot miss.",
+        "Narmer bounties on the Plains pay Ostron and Quills standing at the same time."
+      ],
+      "disclosures": [
+        {
+          "title": "fishing is the fallback, not the only route",
+          "body": "Ivara Prowl + Sleep Arrow or straight fishing with bait (Murkray, Norg, Cuthol) both work if Equinox isn't subsumed yet; slower, but immune to hunt spawn RNG."
+        }
+      ]
+    },
+    {
+      "type": "farm",
+      "place": "CETUS, PLAINS OF EIDOLON",
+      "sub": null,
+      "activity": "gather the Zaw's build materials on the same trip",
+      "meta": "one Plains sweep covers Strike + Peye grip",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "plains-of-eidolon",
+      "rows": [
+        {
+          "qty": "15",
+          "label": "Condroc Wing",
+          "note": "Sepfahn Strike; the Link needs a little more",
+          "alt": null,
+          "done": false
+        },
+        { "qty": "55", "label": "Fish Scales", "note": "Sepfahn Strike", "alt": null, "done": false },
+        { "qty": "10", "label": "Tear Azurite", "note": "Sepfahn Strike", "alt": null, "done": false },
+        { "qty": "60", "label": "Coprite Alloy", "note": "Sepfahn Strike", "alt": null, "done": false },
+        { "qty": "20", "label": "Iradite", "note": "Peye grip", "alt": null, "done": false },
+        { "qty": "50", "label": "Fish Oil", "note": "Peye grip", "alt": null, "done": false },
+        { "qty": "850", "label": "Alloy Plate", "note": "Peye grip", "alt": null, "done": false },
+        {
+          "qty": "60",
+          "label": "Pyrotic Alloy",
+          "note": "Peye grip; the Link needs a little more",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The Vargeet II Jai link needs roughly 5,000 credits plus small amounts of Nistlepod, Pyrotic Alloy, Condroc Wing and a fish or animal part; the wiki does not give exact link quantities, so gathering extra of each above covers it."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "HOK'S ANVIL, CETUS",
+      "sub": "Ostron: Trusted (Rank 3)",
+      "activity": "buy blueprints and forge the Zaw",
+      "meta": "9,500 standing total; Rank 3 Trusted required for the Link",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Ostron standing", "amount": "9,500" }],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Sepfahn Strike Blueprint",
+          "note": "1,000 standing, Rank 0",
+          "alt": null,
+          "done": false
+        },
+        { "qty": null, "label": "Peye Grip Blueprint", "note": "1,000 standing, Rank 0", "alt": null, "done": false },
+        {
+          "qty": null,
+          "label": "Vargeet II Jai Link Blueprint",
+          "note": "7,500 standing, Rank 3 Trusted",
+          "alt": {
+            "text": "or Vargeet Jai II at Rank 4 Surah",
+            "spends": [{ "currency": "Ostron standing", "amount": "10,000" }]
+          },
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Peye + Vargeet II Jai is the near-universal community pick: 34% crit / 12% status / 1.083 attack speed, prioritizing speed and crit over the marginal damage difference between grips and links.",
+        "Buy blueprints only after hitting Trusted — spending standing early can strand you short of a rank-up."
+      ],
+      "bonuses": [],
+      "disclosures": [
+        {
+          "title": "skip if you only want mastery",
+          "body": "Since gilding is no longer required for full stats, the standing wall matters only for the Link and the eventual gild; Rank 30 alone plays like a finished weapon."
+        }
+      ]
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY, THEN HOK'S ANVIL",
+      "sub": null,
+      "activity": "build the three parts, then forge",
+      "meta": "~5,000 cr each, 1h; forge is 4,000 cr instant",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Sepfahn Strike",
+          "note": "5,000 cr, 15 Condroc Wing, 55 Fish Scales, 10 Tear Azurite, 60 Coprite Alloy",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Peye Grip",
+          "note": "5,000 cr, 20 Iradite, 50 Fish Oil, 850 Alloy Plate, 60 Pyrotic Alloy",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Vargeet II Jai Link",
+          "note": "~5,000 cr, small amounts of Nistlepod, Pyrotic Alloy, Condroc Wing and a fish/animal part",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Forge at Hok",
+          "note": "4,000 cr, instant; parts are consumed and the Zaw can never be disassembled",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Once forged the Zaw cannot be taken apart — build the combination you actually want, since mastery is tied to the strike alone and repeating it earns nothing."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "HOK'S ANVIL, CETUS",
+      "sub": null,
+      "activity": "level to 30, then gild",
+      "meta": "gild resets Rank to 0; level twice",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [
+        { "currency": "Ostron standing", "amount": "5,000" },
+        { "currency": "Cetus Wisp", "amount": "2" }
+      ],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Gild the Sepfahn",
+          "note": "5,000 standing + 2 Cetus Wisp; resets to Rank 0",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Gilding is now optional for power (full stats already apply at Rank 30 unglided since Update 32.0) but is still required for mastery, the free polarity, the custom name, and Exodia/Riven compatibility.",
+        "Bring a primer like Kuva Nukor for Condition Overload; 12% status alone won't trigger it."
+      ],
+      "bonuses": [
+        "Exodia Contagion (Plague Star or Nights of Naberus, tradeable) is the community's actual reason to build a Sepfahn; Hok's own Exodia Force (10,000 standing, Rank 5 Kin) is the buyable fallback.",
+        "Use Blind Justice as the stance for Exodia Contagion: it triples the arcane's explosion multiplier versus Tranquil Cleave."
+      ],
+      "disclosures": [
+        {
+          "title": "the weapon underperforms the grind",
+          "body": "Zaws never got the Melee 3.0 damage pass; the consensus Peye/Vargeet II Jai build loses to Nikana Prime and Dual Keres Prime on identical mods. Most people build it for the 3,000 mastery, Exodia Contagion, or as a stopgap before a Nikana Prime — not for raw damage."
+        }
+      ]
+    }
+  ]
+}

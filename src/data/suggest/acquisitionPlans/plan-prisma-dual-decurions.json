@@ -1,0 +1,81 @@
+{
+  "name": "Prisma Dual Decurions",
+  "kind": "archgun",
+  "effort": 2,
+  "tradeable": "unranked only, no Forma or Catalyst",
+  "progress": { "have": 0, "need": 1, "unit": "weapon" },
+  "badges": [
+    { "text": "Baro rotation", "tone": "warn" },
+    { "text": "MR 1", "tone": "info" }
+  ],
+  "prices": [{ "label": "Baro", "amount": "175,000 cr + 525 Ducats", "money": false }],
+  "groups": [
+    {
+      "type": "currency",
+      "place": "VOID FISSURES, ANY",
+      "sub": "Relay Ducat Kiosk",
+      "activity": "crack Void Relics, trade Prime parts for Ducats",
+      "meta": "525 Ducats needed",
+      "mode": "squad of four for more reward picks",
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "Ducats", "amount": "525" },
+      "spends": [],
+      "map": "void",
+      "rows": [
+        {
+          "qty": "525",
+          "label": "Ducats",
+          "note": "trade Prime parts and blueprints at any Relay Ducat Kiosk except Maroo's Bazaar",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The kiosk is open even when Baro isn't there, so bank Ducats ahead of his visit; his window is only 48 hours.",
+        "Bronze parts are worth 15 ducats, silver 45, gold 100 (25/65 for parts downgraded from vaulted relics); 525 is about five gold parts."
+      ],
+      "bonuses": [
+        "Fissure Capture or Exterminate on quick tilesets, or Defense / Void Cascade fissures, crack a relic every 2.5-3 minutes without re-queueing.",
+        "Run in full four-person squads; solo relic cracking yields far fewer Ducats since you only pick from your own reward."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "RELAY CONCOURSE, ANY",
+      "sub": "Baro Ki'Teer",
+      "activity": "buy the Prisma Dual Decurions outright",
+      "meta": "stock rotates, roughly two or three visits a year",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [
+        { "currency": "Credits", "amount": "175,000" },
+        { "currency": "Ducats", "amount": "525" }
+      ],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Prisma Dual Decurions",
+          "note": "arrives built and ready to equip; no Foundry step",
+          "alt": "or a TennoCon relay visit with Baro's Relay Ticket",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Baro's stock changes every visit; the Prisma Dual Decurions isn't guaranteed even when he is. Check any Ducat Kiosk countdown to see which relay he's visiting.",
+        "Have the 175,000 credits ready too; it catches low-level players out more than the Ducats."
+      ],
+      "bonuses": [],
+      "disclosures": [
+        {
+          "title": "using it as a Heavy Weapon",
+          "body": "Wielding it on the ground needs the Archgun Deployer (inbox reward after Profit-Taker phase 3), plus an Orokin Catalyst and a Gravimag installed on the gun. Otherwise level it in Archwing missions or on a Necramech."
+        }
+      ]
+    }
+  ]
+}

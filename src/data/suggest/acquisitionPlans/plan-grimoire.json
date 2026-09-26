@@ -1,0 +1,70 @@
+{
+  "name": "Grimoire",
+  "kind": "secondary",
+  "effort": 3,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 1, "unit": "weapon" },
+  "badges": [
+    { "text": "quest reward", "tone": "info" },
+    { "text": "needs The New War", "tone": "warn" }
+  ],
+  "prices": [
+    { "label": "2nd copy blueprint", "amount": "50,000 standing", "money": false },
+    { "label": "2nd copy build", "amount": "25,000 cr", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "ALBRECHT'S LABORATORIES, DEIMOS",
+      "sub": "The Murmur stage",
+      "activity": "Whispers in the Walls",
+      "meta": "solo, roughly one evening once eligible",
+      "mode": "solo",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Heart of Deimos",
+          "note": "prerequisite quest",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "The New War",
+          "note": "prerequisite quest",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "pick the Grimoire up off the pedestal",
+          "note": "hands it to you fully built",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The quest is solo-only and MR 10 is needed to equip the Grimoire afterward.",
+        "The New War is the real gate; without it this is the full Arc 1-3 main story, not a farm."
+      ],
+      "bonuses": [
+        "The Grimoire lands in your Arsenal fully ranked, with a pre-installed Orokin Catalyst and its own free weapon slot."
+      ],
+      "disclosures": [
+        {
+          "title": "second copy",
+          "body": "If you sold your quest copy or want a second config, Bird 3 in the Sanctum Anatomica sells the blueprint for 50,000 standing at Cavia Rank 4 (Scholar). Build costs 25,000 Credits, 2,000 Entrati Obols, 50 Necracoil, 15 Echo Voca and 10 Entrati Lanthorn, 12h (rush 50p). Voca are Syndicate medallions and bypass the daily standing cap, so the Cavia climb is not day-gated the way most standing grinds are."
+        },
+        {
+          "title": "the weapon is not the grind",
+          "body": "The Grimoire itself costs nothing once quest-eligible. What people actually farm is Tome Mods (Canticles and Invocations), which drop only from Munio on Deimos at 5% each per Rotation C and are a separate, much harder target outside this plan."
+        }
+      ]
+    }
+  ]
+}

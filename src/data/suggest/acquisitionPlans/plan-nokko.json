@@ -1,0 +1,173 @@
+{
+  "name": "Nokko",
+  "kind": "warframe",
+  "effort": 6,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "badges": [
+    { "text": "Deepmines Bounties", "tone": "info" },
+    { "text": "Rank 4 Gardener gate", "tone": "warn" }
+  ],
+  "prices": [{ "label": "blueprint", "amount": "25,000 cr", "money": false }],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "THE NEW WAR",
+      "sub": null,
+      "activity": "complete the quest",
+      "meta": "unlocks Nightcap in the Airlock vent",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "The New War", "note": "required to talk to Nightcap", "alt": null, "done": false }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "bounty",
+      "place": "DEEPMINES, ORB VALLIS",
+      "sub": null,
+      "activity": "run the bounty tied to the part you're missing",
+      "meta": "no daily cap",
+      "mode": "solo recommended",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "orb-vallis",
+      "rows": [
+        { "qty": null, "label": "Weed The Garden (Nutrient Plant)", "note": "drops Neuroptics", "alt": null, "done": false },
+        {
+          "qty": null,
+          "label": "Critter Liberation (Lab)",
+          "note": "drops Chassis; fastest bounty, ~3-5 min",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Corporate Restructuring (Forward Base)",
+          "note": "drops Systems",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The three bounties unlock in sequence: clearing one opens the next.",
+        "Each completed bounty pays one Tier A (Fergolyte), one Tier B (2.5% part, 5% SP) and one Tier C (10% part, blueprint 5%, 8% SP) reward.",
+        "Fergolyte and mushrooms ignore every booster, drop-chance mod and Retriever/Vacuum-style pet."
+      ],
+      "bonuses": [
+        "Hitting every stage bonus objective nearly doubles mushroom income, from ~4 a run to ~9-10.",
+        "A Steel Path variant rotates every 2.5 hours for better rates, but it's only one bounty at a time; target the part you need on normal and take SP only when the rotation lines up."
+      ],
+      "disclosures": [
+        {
+          "title": "run the right bounty",
+          "body": "Running whatever's convenient instead of the bounty that drops your missing part is the single biggest time-waster, and it's why some mushrooms feel falsely rare. Volt (range/strength) and Zenith (shoots through walls to find hidden objectives) are the named frames for clearing these fast."
+        }
+      ]
+    },
+    {
+      "type": "vendor",
+      "place": "THE AIRLOCK, ORB VALLIS",
+      "sub": null,
+      "activity": "Nightcap vendor, Rank 4 Gardener",
+      "meta": "fallback purchase",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Fergolyte", "amount": "720" }],
+      "map": "orb-vallis",
+      "rows": [
+        { "qty": null, "label": "blueprint", "note": "240 Fergolyte", "alt": null, "done": false },
+        { "qty": null, "label": "each component", "note": "160 Fergolyte", "alt": null, "done": false }
+      ],
+      "conditions": [
+        "Rank 4 (Gardener) comes from fully analyzing 12 mushroom species in the Field Guide, not from standing; each species takes 3 analyses (18-30 samples total).",
+        "Sample purchases are rank-gated: you can't buy straight to Rank 4, and some species (e.g. Reeking Puffball) only unlock at Rank 5."
+      ],
+      "bonuses": [
+        "Composting a duplicate mushroom pays 1 Fergolyte once its species is fully analyzed; buying scarce samples at 10 Fergolyte each is the efficient way to reach Rank 4 without target-farming one species."
+      ],
+      "disclosures": [
+        {
+          "title": "the pity math",
+          "body": "You will almost certainly exhaust the drop-table route before Rank 4 opens, so treat Fergolyte as a slow safety net, not a fast track. The same currency also buys Archgun Arcane Adapters and several arcanes; spend on Nokko parts last."
+        }
+      ]
+    },
+    {
+      "type": "farm",
+      "place": "ORB VALLIS, VENUS",
+      "sub": null,
+      "activity": "fish, gather and mine the component materials",
+      "meta": "all local to Orb Vallis",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "orb-vallis",
+      "rows": [
+        {
+          "qty": "10",
+          "label": "Echowinder Anoscopic Sensor",
+          "note": "Neuroptics; fish Echowinder in Warm weather, dismantle at The Business",
+          "alt": null,
+          "done": false
+        },
+        { "qty": null, "label": "Tepa Nodule", "note": "Neuroptics", "alt": null, "done": false },
+        { "qty": null, "label": "Neurodes", "note": "Neuroptics", "alt": null, "done": false },
+        { "qty": null, "label": "Nano Spores", "note": "Neuroptics, Chassis", "alt": null, "done": false },
+        { "qty": "30", "label": "Thermal Sludge", "note": "Chassis", "alt": null, "done": false },
+        { "qty": null, "label": "Alloy Plate", "note": "Chassis", "alt": null, "done": false },
+        { "qty": null, "label": "Gallium", "note": "Chassis", "alt": null, "done": false },
+        { "qty": null, "label": "Mytocardia Spore", "note": "Systems", "alt": null, "done": false },
+        { "qty": null, "label": "Gorgaricus Spore", "note": "Systems", "alt": null, "done": false },
+        { "qty": null, "label": "Circuits", "note": "Systems", "alt": null, "done": false },
+        {
+          "qty": "2",
+          "label": "Argon Crystal",
+          "note": "Systems; decays after pickup, farm last",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Argon Crystal decays within 24 hours of pickup; farm it only once the Systems blueprint is in hand."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build components, then Nokko",
+      "meta": "12h each, then 3 days",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Neuroptics", "note": null, "alt": null, "done": false },
+        { "qty": null, "label": "Chassis", "note": null, "alt": null, "done": false },
+        { "qty": null, "label": "Systems", "note": null, "alt": null, "done": false },
+        { "qty": null, "label": "Nokko", "note": "25,000 cr, 3 Orokin Cells", "alt": null, "done": false }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

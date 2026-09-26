@@ -1,0 +1,183 @@
+{
+  "name": "Enkaus",
+  "kind": "primary",
+  "effort": 5,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "badges": [
+    { "text": "Follie's Hunt only", "tone": "warn" },
+    { "text": "Atramentum pity shop", "tone": "info" }
+  ],
+  "prices": [{ "label": "build", "amount": "60,000 cr", "money": false }],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "VENUS, VESPER RELAY",
+      "sub": null,
+      "activity": "finish Chains of Harrow",
+      "meta": "unlocks Follie's Hunt and Aspirant Zorba",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Chains of Harrow",
+          "note": "opens the Vesper Relay node and Zorba, the currency vendor",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "currency",
+      "place": "VESPER RELAY, VENUS",
+      "sub": "Follie's Hunt",
+      "activity": "carry Paint to Shadowgraph Canvases, pop Atramentum Balloons",
+      "meta": "up to 2,400 Atramentum for the full set",
+      "mode": "solo, Steel Path if you can survive it",
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "Atramentum", "amount": "2,400" },
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "2,400",
+          "label": "Atramentum",
+          "note": "end-of-mission reward (15 normal/25 Steel Path), 12 balloons a run (shared), enemy drops (not shared)",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Solo needs only 2 Paint per canvas; a full squad needs 6.",
+        "No Void Sling or Transference while carrying Paint.",
+        "Canvas C is always the lower floor, A the upper concourse, B an upper side room or the hangar; fill B before 50% progress or the guaranteed \"Drip, Drip, Drip\" modifier walls off routes."
+      ],
+      "bonuses": [
+        "Pop every Atramentum Balloon; each gives about 2-3 and Loot Radar shows them on the minimap.",
+        "Tanky frames (Hildryn with shield-gating, Wisp, Inaros, Gauss) make the mission close to trivial."
+      ],
+      "disclosures": [
+        {
+          "title": "the currency math",
+          "body": "Enkaus and Follie share the pity currency; her set also costs 2,400, so covering both takes 4,800 Atramentum. Good solo Steel Path runs land 70-80+ Atramentum in 3-5 minutes."
+        }
+      ]
+    },
+    {
+      "type": "farm",
+      "place": "VESPER RELAY, VENUS",
+      "sub": "Follie's Hunt",
+      "activity": "clear the mission for a Rotation A part roll",
+      "meta": "5% normal, 6% Steel Path, per item",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Enkaus Blueprint",
+          "note": "5%/6%, shares the table with Follie's four parts and junk",
+          "alt": {
+            "text": "or 1,200 Atramentum at Zorba",
+            "spends": [{ "currency": "Atramentum", "amount": "1,200" }]
+          },
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Enkaus Barrel",
+          "note": "5%/6%",
+          "alt": {
+            "text": "or 400 Atramentum at Zorba",
+            "spends": [{ "currency": "Atramentum", "amount": "400" }]
+          },
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Enkaus Receiver",
+          "note": "5%/6%",
+          "alt": {
+            "text": "or 400 Atramentum at Zorba",
+            "spends": [{ "currency": "Atramentum", "amount": "400" }]
+          },
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Enkaus Stock",
+          "note": "5%/6%",
+          "alt": {
+            "text": "or 400 Atramentum at Zorba",
+            "spends": [{ "currency": "Atramentum", "amount": "400" }]
+          },
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Zorba prices the main blueprint at three times a component; if a drop comes, you want it to be the main blueprint.",
+        "Air Support is disabled, no Focus orbs spawn, and enemies are immune to mercy finishers and Loki's decoy."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build components, then Enkaus",
+      "meta": "12h each component, then 1 day",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Barrel",
+          "note": "15,000 cr, 180 Polymer Bundle, 250 Plastids, 400 Ferrite, 20 Oxium",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Receiver",
+          "note": "15,000 cr, 300 Circuits, 150 Cryotic, 2 Morphics, 250 Plastids",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Stock",
+          "note": "15,000 cr, 400 Alloy Plate, 2 Gallium, 200 Polymer Bundle, 400 Salvage",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Enkaus",
+          "note": "15,000 cr, 1 Barrel, 1 Receiver, 1 Stock",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

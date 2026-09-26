@@ -1,0 +1,194 @@
+{
+  "name": "Tenet Diplos",
+  "kind": "secondary",
+  "effort": 8,
+  "tradeable": "converted Sister only",
+  "progress": { "have": 0, "need": 1, "unit": "weapon" },
+  "badges": [
+    { "text": "Sister of Parvos", "tone": "warn" },
+    { "text": "Railjack required", "tone": "warn" }
+  ],
+  "prices": [],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "STAR CHART",
+      "sub": null,
+      "activity": "unlock Sisters of Parvos",
+      "meta": "one-time",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Mastery Rank 5", "note": "to create a Sister", "alt": null, "done": false },
+        { "qty": null, "label": "The War Within", "note": "quest complete", "alt": null, "done": false },
+        {
+          "qty": null,
+          "label": "Call of the Tempestarii",
+          "note": "quest complete; needs a Railjack",
+          "alt": null,
+          "done": false
+        },
+        { "qty": null, "label": "The Deadlock Protocol", "note": "for Granum Crowns", "alt": null, "done": false },
+        {
+          "qty": null,
+          "label": "Railjack Intrinsics rank 3, any class",
+          "note": "Neptune Proxima showdown",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Only one adversary at a time: clear or convert any active Kuva Lich, Sister or Technocyte Coda first.",
+        "Ergo Glast never sells the Diplos; his Corrupted Holokey shop only carries Tenet melee and the Tenet Ferrox. Every ranged Tenet weapon comes from a Sister."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "boss",
+      "place": "PLUTO, HYDRA",
+      "sub": "Capture, level 30-34",
+      "activity": "clear the Nightmare Granum Void; inspect Candidates",
+      "meta": "one Zenith Crown per attempt",
+      "mode": "solo",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Zenith Granum Crown", "amount": "1" }],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Tenet Diplos Candidate",
+          "note": "Mercy only when the weapon preview says Diplos",
+          "alt": "buy a converted Tenet Diplos Sister",
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "progenitor element",
+          "note": "sets the bonus element (25-60%) and any Ephemera's element (20% chance)",
+          "alt": "Elemental Vice can change it later at rank 40",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "A Treasurer spawns 2-5 minutes into any non-endless Corpus Ship mission and drops a Crown tiered by level; level 31+ or Steel Path drops the Zenith, the only tier that spawns a Candidate. Hydra's 30-34 range makes the Treasurer's Crown refund near-certain.",
+        "Don't open the Tribute within about 200m of extraction; it can suppress the Candidate spawn entirely.",
+        "If the preview isn't Diplos, leave her and complete and extract from the mission. Aborting does not remove that weapon from the pool; only a completed rejection does.",
+        "The Sister-carried pool is 11 weapons (Arca Plasmor, Cycron, Detron, Diplos, Envoy, Flux Rifle, Glaxion, Plinx, Quanta, Spirex, Tetra), so correctly rejecting guarantees Diplos inside 11 completed missions.",
+        "Only the player who dealt the final hit can Mercy, and a Rank 4+ Sister spawns Spectralysts — exact copies of your Warframe and loadout."
+      ],
+      "bonuses": [
+        "A 0-Forma Xoris heavy attack, or a wide-AoE frame like Uriel or Octavia, clears the Granum Void fast; summoning your Railjack On Call specter as you're pulled in also helps.",
+        "Run solo: a bigger squad raises the kill requirement, not the spawn rate, and you still get only one Candidate."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "boss",
+      "place": "SISTER INFLUENCE NODES",
+      "sub": "Venus through Pluto",
+      "activity": "Mercy Hounds, reveal Requiems, test the sequence",
+      "meta": "~180 Murmurs; ~2 missions per Sister to spawn",
+      "mode": "long missions first, then fast ones",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": "3", "label": "revealed Requiems", "note": "Murmurs reveal mods, not order", "alt": null, "done": false },
+        {
+          "qty": null,
+          "label": "correct Parazon sequence",
+          "note": "opens the Neptune Proxima showdown",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Requiem mods come from the single Requiem Eterna relic (all 8 mods at equal chance), from Kuva Siphon (50%) or Kuva Flood (100%). Hounds also drop one 5% of the time.",
+        "Up to 3 Hounds spawn per mission on a cooldown of about 1m20s; kill the Sister's own summoned Hound before downing her, since it self-destructs.",
+        "Failing a Parazon attempt levels the Sister up, raising every node she controls."
+      ],
+      "bonuses": [
+        "Survival, Defense and Excavation on her nodes maximize Hounds per mission; switch to Capture or Exterminate once you only need rage to draw her out."
+      ],
+      "disclosures": [
+        {
+          "title": "Oull-first Parazon",
+          "body": "Put Oull in slot 1 and test your first known Requiem in slot 2. You'll usually solve the order in about 4 stabs or fewer, and each stab still brings a fresh Hound. Oull comes from Sisters, not relics, and reports differ on whether it drops from a failed stab or only at 25% once the sequence succeeds — expect to have none for your first Sister."
+        }
+      ]
+    },
+    {
+      "type": "boss",
+      "place": "NEPTUNE PROXIMA",
+      "sub": "Sister Confrontation",
+      "activity": "Railjack Skirmish; finish the Sister",
+      "meta": "choose Vanquish",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Tenet Diplos",
+          "note": "built; Foundry delivery, her Hound fully built too",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Choose Vanquish, never Convert — Convert gives an ally and a tradeable Sister token but no weapon.",
+        "Your active Sister taxes Credits on the nodes she controls, growing with the number of nodes; you get it all back when you beat her.",
+        "Needs Railjack Intrinsics rank 3; bring a Railjack with real hull and shield mods, or run it in a squad if yours is weak."
+      ],
+      "bonuses": [
+        "A squad also earns up to 4 Corrupted Holokeys instead of 1, though those buy Tenet melees, not the Diplos."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "craft",
+      "place": "ORBITER, MODDING",
+      "sub": null,
+      "activity": "optional Valence Fusion toward 60%",
+      "meta": "bank copies first",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "52.8%+ roll",
+          "note": "fuses straight to 60%",
+          "alt": "58%+ already rounds to 60%",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Fusion takes the higher of the two bonuses x 1.1, capped at 60%.",
+        "Fuse into the copy you've invested in — the donor's Catalyst, Forma, Exilus adapter and Elemental Vice are all destroyed."
+      ],
+      "bonuses": [],
+      "disclosures": [
+        {
+          "title": "the aiming complaint",
+          "body": "The long-running gripe, since 2021, is that aiming forces lock-on mode instead of free aim. It reportedly grows on you with Secondary Dexterity and an electric build, where lock-on works as a crowd tool. A June 2026 poll (463 votes) was lukewarm, with 'never used it' the largest group and 'good weapon' tied with 'meh'."
+        }
+      ]
+    }
+  ]
+}

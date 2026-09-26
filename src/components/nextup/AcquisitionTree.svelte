@@ -9,6 +9,7 @@
   import { formatBuildTime, formatNumber } from "../../lib/format.js";
   import { tr } from "../../lib/i18n.js";
   import { buildParsedItemFromDb } from "../../lib/parsedItemFromDb.js";
+  import { openOnWfm } from "../../lib/priceLoader.js";
   import { componentOwnership, itemDb } from "../../stores/data.js";
   import { activeItem } from "../../stores/modals.js";
   import { TILE_MICRO, TONE } from "./chips.js";
@@ -76,14 +77,21 @@
     plat && plat.partsTotal !== null && plat.partsTotal !== plat.set ? plat.partsTotal : null,
   );
 
-  /** What the market asks for one still-missing part. A part the cache has no
-   *  price for is absent here, and its row stays blank rather than reading free. */
+  /** What the market asks for one still-missing part, and the listing that price
+   *  came off. A part the cache has no price for is absent here, and its row
+   *  stays blank rather than reading free. */
   const platByPart = $derived.by(() => {
-    const out = new SvelteMap<string, number>();
+    const out = new SvelteMap<string, { plat: number; slug: string | null }>();
     for (const row of plat?.parts ?? []) {
-      if (row.plat !== null) out.set(partKey(row.name), row.plat);
+      if (row.plat !== null) out.set(partKey(row.name), { plat: row.plat, slug: row.slug });
     }
     return out;
+  });
+
+  /** The parts total is one link only where one part is all that is left. */
+  const partsSlug = $derived.by(() => {
+    const rows = (plat?.parts ?? []).filter((row) => row.plat !== null);
+    return rows.length === 1 ? (rows[0]?.slug ?? null) : null;
   });
 
   function isPart(node: CraftingTreeNode): boolean {
@@ -152,7 +160,10 @@
 
   /** The trade price of a part still to find. The root is the whole item, which
    *  the rail already prices, and a part in hand costs nothing more. */
-  function partPlat(node: CraftingTreeNode, depth: number): number | null {
+  function partPlat(
+    node: CraftingTreeNode,
+    depth: number,
+  ): { plat: number; slug: string | null } | null {
     if (depth === 0 || node.missing === 0 || !isPart(node)) return null;
     const key = partKey(node.name);
     // What the market sells is the blueprint that drops, not the built part, so
@@ -233,9 +244,12 @@
       {/each}
     </span>
     {#if cost !== null}
-      <span class="truncate text-right tabular-nums {TONE.quiet}" title={$tr("nextUp.tileCostTitle")}
-        >{$tr("nextUp.acqPlatEach", { plat: String(Math.round(cost)) })}</span
-      >
+      {@render wfmPrice(
+        $tr("nextUp.acqPlatEach", { plat: String(Math.round(cost.plat)) }),
+        cost.slug,
+        `w-full truncate text-right tabular-nums ${TONE.quiet}`,
+        $tr("nextUp.tileCostTitle"),
+      )}
     {:else}
       <span></span>
     {/if}
@@ -247,9 +261,59 @@
   {/if}
 {/snippet}
 
-{#snippet railRow(value: string, text: string, tone = "")}
-  <span class="{VALUE} text-right {tone}">{value}</span>
-  <span class="{TILE_MICRO} {TONE.plain}">{text}</span>
+{#snippet popOut()}
+  <svg
+    viewBox="0 0 16 16"
+    width="10"
+    height="10"
+    fill="currentColor"
+    aria-hidden="true"
+    class="shrink-0"
+  >
+    <path
+      d="M9 2h5v5l-1.8-1.8L9 8.4 7.6 7l3.2-3.2L9 2zM4 4h3v1.5H4v7h7V9.5h1.5V13a.5.5 0 0 1-.5.5H3.5A.5.5 0 0 1 3 13V4.5A.5.5 0 0 1 3.5 4H4z"
+    />
+  </svg>
+{/snippet}
+
+{#snippet wfmPrice(text: string, slug: string | null, classes: string, title: string)}
+  {#if slug}
+    <button
+      type="button"
+      class="{classes} cursor-pointer underline underline-offset-2 transition-colors duration-150
+             hover:text-accent"
+      title={$tr("common.openOnWarframeMarket")}
+      onclick={() => openOnWfm(slug)}>{text}</button
+    >
+  {:else}
+    <span class={classes} {title}>{text}</span>
+  {/if}
+{/snippet}
+
+{#snippet railRow(value: string, text: string, tone = "", slug: string | null = null)}
+  {#if slug}
+    <button
+      type="button"
+      class="group col-span-2 grid cursor-pointer grid-cols-subgrid items-baseline gap-x-2 text-left"
+      title={$tr("common.openOnWarframeMarket")}
+      onclick={() => openOnWfm(slug)}
+    >
+      <span
+        class="{VALUE} text-right underline underline-offset-2 transition-colors duration-150
+               group-hover:text-accent {tone}">{value}</span
+      >
+      <span
+        class="flex items-center gap-1 {TILE_MICRO} {TONE.plain} transition-colors duration-150
+               group-hover:text-accent"
+      >
+        <span class="underline underline-offset-2">{text}</span>
+        {@render popOut()}
+      </span>
+    </button>
+  {:else}
+    <span class="{VALUE} text-right {tone}">{value}</span>
+    <span class="{TILE_MICRO} {TONE.plain}">{text}</span>
+  {/if}
 {/snippet}
 
 {#if tree}
@@ -264,11 +328,15 @@
           {@render railRow(
             $tr("nextUp.acqPlatEach", { plat: String(Math.round(platSet)) }),
             $tr("nextUp.treeSet"),
+            "",
+            plat?.setSlug ?? null,
           )}
           {#if platParts !== null}
             {@render railRow(
               $tr("nextUp.acqPlatEach", { plat: String(Math.round(platParts)) }),
               $tr("nextUp.treePartsApart"),
+              "",
+              partsSlug,
             )}
           {/if}
         </div>

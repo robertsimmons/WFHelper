@@ -1,0 +1,157 @@
+{
+  "name": "Sancti Magistar",
+  "kind": "melee",
+  "effort": 4,
+  "tradeable": "unranked, no Forma/Catalyst",
+  "progress": { "have": 0, "need": 1, "unit": "weapon" },
+  "badges": [
+    { "text": "Rank 5 Flawless", "tone": "warn" },
+    { "text": "no RNG", "tone": "info" }
+  ],
+  "prices": [],
+  "groups": [
+    {
+      "type": "currency",
+      "place": "HYDRON, SEDNA",
+      "sub": "or Elite Sanctuary Onslaught",
+      "activity": "pledge to New Loka; farm affinity-dense Grineer missions",
+      "meta": "15% of affinity becomes standing",
+      "mode": "any squad",
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "New Loka standing", "amount": "365,000" },
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "pledge to New Loka",
+          "note": "buy the sigil at any Relay enclave",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "365,000",
+          "label": "New Loka standing",
+          "note": "240,000 for rank-ups, 125,000 for the weapon",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The daily cap (16,000 + 500 x Mastery Rank) is shared across all six syndicates; only the pledged syndicate earns the 15% conversion.",
+        "Perrin Sequence is the only other pledge that also feeds New Loka standing, at 7.5%; every other syndicate pledge feeds it 0%."
+      ],
+      "bonuses": [
+        "Three daily New Loka Syndicate Alerts and their Seed medallions (500/1,000/5,000 each) bypass the daily cap entirely.",
+        "Universal Syndicate Medallions from Disruption are worth 1,000 standing with any syndicate."
+      ],
+      "disclosures": [
+        {
+          "title": "build a medallion loadout",
+          "body": "Loot Radar on frame and companion, a vacuum-type companion (a Sentinel is best), and a wide-AoE frame that breaks containers turns any mission into a Seed hunt alongside the affinity farm. Max-range Limbo casting Cataclysm twice was the popular pick."
+        }
+      ]
+    },
+    {
+      "type": "farm",
+      "place": "CETUS, EARTH",
+      "sub": null,
+      "activity": "bounties",
+      "meta": "for the Rank 4 and Rank 5 sacrifices",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "5",
+          "label": "Aya",
+          "note": "2 at Rank 4, 3 at Rank 5",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "RELAY, NEW LOKA ENCLAVE",
+      "sub": null,
+      "activity": "rank up, then buy Sancti Magistar at Flawless",
+      "meta": "125,000 standing at Rank 5",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "New Loka standing", "amount": "365,000" }],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Rank 0 Initiation",
+          "note": "1,000 Ferrite, 10,000 credits",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Rank 1 Humane",
+          "note": "5,000 standing, 2 Fieldron Sample, 30,000 credits",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Rank 2 Bountiful",
+          "note": "22,000 standing, 1 Forma, 50,000 credits",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Rank 3 Benevolent",
+          "note": "44,000 standing, 1 Orokin Reactor, 100,000 credits",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Rank 4 Pure",
+          "note": "70,000 standing, 2 Aya, 250,000 credits",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Rank 5 Flawless",
+          "note": "99,000 standing, 3 Aya, 500,000 credits",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Sancti Magistar",
+          "note": "125,000 standing; arrives built, no Foundry step",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Rank-ups spend the standing you've banked; after hitting Flawless you're back to 0 and still need 125,000 more for the weapon.",
+        "Sancti Magistar is never the free rank-up reward; it is always a 125,000-standing purchase on top of reaching Flawless."
+      ],
+      "bonuses": [],
+      "disclosures": [
+        {
+          "title": "total cost from zero",
+          "body": "About 365,000 New Loka standing, 940,000 credits, 5 Aya, a Forma, an Orokin Reactor, 2 Fieldron Samples and 1,000 Ferrite."
+        }
+      ]
+    }
+  ]
+}

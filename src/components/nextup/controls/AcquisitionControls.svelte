@@ -123,6 +123,15 @@
 <!-- The group buttons outgrow the header row, so they take a line of their own
      under the title rather than shrinking below their content. -->
 <div class="flex min-w-0 flex-auto flex-wrap items-center justify-end gap-x-3 gap-y-1.5">
+  <input
+    type="search"
+    class="mr-auto h-6 w-44 rounded-[var(--radius-sm)] border border-border bg-bg-surface px-2
+           text-xs text-text-primary placeholder:text-text-muted focus:border-accent focus:outline-none"
+    data-acquisition-search
+    placeholder={$tr("nextUp.acqSearchPlaceholder")}
+    value={options.acquisitionSearch}
+    oninput={(event) => setSuggestionOption("acquisitionSearch", event.currentTarget.value)}
+  />
   <div class="flex flex-wrap items-center justify-end gap-x-1.5 gap-y-1">
     {#each ACQUISITION_INCLUDE_GROUPS as group (group.id)}
       {@const plain = group.include}

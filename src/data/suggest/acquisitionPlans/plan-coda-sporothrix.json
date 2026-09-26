@@ -1,0 +1,225 @@
+{
+  "name": "Coda Sporothrix",
+  "kind": "primary",
+  "effort": 4,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 1, "unit": "weapon" },
+  "badges": [
+    { "text": "MR 17", "tone": "warn" },
+    { "text": "Batch A rotation", "tone": "warn" }
+  ],
+  "prices": [{ "label": "Elemental Vice", "amount": "20 p", "money": false }],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "STAR CHART",
+      "sub": null,
+      "activity": "unlock the Coda system",
+      "meta": "one-time",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "The Hex",
+          "note": "quest complete; needs The Duviri Paradox and The Lotus Eaters; opens Höllvania",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Mastery Rank 17",
+          "note": "enforced at the Eleanor purchase, not at Coda spawn",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Only one adversary at a time: clear or convert any active Kuva Lich, Sister of Parvos, or Coda first."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "HÖLLVANIA CENTRAL MALL",
+      "sub": null,
+      "activity": "Antivirus Bounty",
+      "meta": "8 Antivirus mods exist",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "8",
+          "label": "Antivirus mods",
+          "note": "1-in-8 per bounty; tradeable, 3 charges each",
+          "alt": "transmute 4 depleted mods of one type into a fresh one",
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Potency mods",
+          "note": "passive Techrot drops; also tradeable",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The Antivirus Bounty sits at the top of the Central Mall board and pays the largest Hex standing of any bounty."
+      ],
+      "bonuses": [
+        "Antivirus and Potency mods drop as public loot off any squadmate's stab, so pubbing tops you up even when your own Coda hasn't spawned."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "boss",
+      "place": "HÖLLVANIA",
+      "sub": null,
+      "activity": "spawn and disinfect a Coda",
+      "meta": "~1 hour to a couple hours per Coda",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "spawn via Exterminate, Hell-Scrub or Legacyte Harvest",
+          "note": "kill a Techrot for a Mixtape, hack the terminal",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "correct Antivirus mercy",
+          "note": "equip and test 3 Antivirus mods at once; any one being correct counts",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "100% disinfection",
+          "note": "2 Potency mods once the Antivirus is known; missions alone cap at 95%",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Duets spawn at 25% per mission, +25% per miss, guaranteed on the 4th.",
+        "A Duet that stumbles 3 times unstabbed, or a downed squad, flees the encounter.",
+        "An active Kuva Lich or Sister of Parvos stops Coda Mixtapes from dropping."
+      ],
+      "bonuses": [
+        "Abort right after a correct-Antivirus stab; the disinfection banks immediately.",
+        "Hex bounties that can spawn Duets show a Coda icon and your current Duet chance on hover."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "boss",
+      "place": "EARTH PROXIMA",
+      "sub": "Technocyte Coda Concert",
+      "activity": "Railjack Skirmish; finish the Coda",
+      "meta": "choose Vanquish",
+      "mode": "solo for speed",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Live Heartcell",
+          "note": "10-15 per Vanquish; Convert pays none",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Phases 1 and 3 are hazard-dodging with Transference disabled; phases 2 and 4 are the real fight.",
+        "Bring Overguard or invulnerability — Magnetic stage hazards strip Overguard fast, which is why Revenant's Mesmer Skin gets the most praise over Dante, Rhino, Valkyr, Wukong or Nyx."
+      ],
+      "bonuses": [
+        "Squadmates who each defeat their own Coda in the same Concert add +1 Heartcell, up to +3, whether they vanquish or convert."
+      ],
+      "disclosures": [
+        {
+          "title": "solo is faster, group now pays a little",
+          "body": "A solo Concert was long the near-unanimous advice for speed. Since Hotfix 38.5.7 a squad earns +1 Heartcell for each Coda defeated past the first, up to +3 in a full squad, so grouping now has a small payoff if everyone brings their own Coda."
+        }
+      ]
+    },
+    {
+      "type": "vendor",
+      "place": "ELEANOR, HÖLLVANIA CENTRAL MALL",
+      "sub": null,
+      "activity": "Browse Merchandise",
+      "meta": "Batch A, one copy per 4-day rotation",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Live Heartcell", "amount": "10" }],
+      "map": null,
+      "rows": [
+        {
+          "qty": "1",
+          "label": "Coda Sporothrix",
+          "note": "random element, 25-60% bonus",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Sporothrix is Batch A, alongside Hema, Catabolyst, Pox, Dual Torxica, Mire and Motovore; Batch B carries no Sporothrix.",
+        "One purchase per weapon per rotation; rotations flip every 4 days at 0:00 UTC.",
+        "An empty weapon slot is required before Eleanor will sell to you."
+      ],
+      "bonuses": [
+        "Heartcells are untradeable and only come from your own Coda, so stockpile between rotations and buy the moment a good roll shows up."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "craft",
+      "place": "ORBITER, MODDING",
+      "sub": null,
+      "activity": "optional Valence Fusion toward 60%",
+      "meta": "bank copies first",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "52.8%+ roll",
+          "note": "fuses straight to 60%",
+          "alt": "58%+ already rounds to 60%",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Fusion takes the higher of the two bonuses × 1.1, capped at 60%.",
+        "Fuse into the copy holding your Forma and Catalyst; the donor's investments are destroyed.",
+        "Elemental Vice needs the weapon at rank 40 (5 Forma): 50,000 Hex standing at Rank 5, or 20 platinum, or a Temporal Archimedea/Nightwave drop."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

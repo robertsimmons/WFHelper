@@ -1,0 +1,339 @@
+{
+  "name": "Voidrig",
+  "kind": "necramech",
+  "effort": 5,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "badges": [
+    { "text": "Entrati rank gate", "tone": "warn" },
+    { "text": "blueprints mailed free", "tone": "info" }
+  ],
+  "prices": [{ "label": "components + build", "amount": "85,000 cr", "money": false }],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "HEART OF DEIMOS, THEN THE WAR WITHIN",
+      "sub": null,
+      "activity": "clear the story gates",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Heart of Deimos",
+          "note": "unlocks Cambion Drift, the Necralisk and the Entrati",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "The War Within",
+          "note": "Operator access; needed for vault doors, Requiem Obelisks and Necramech Transference",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [
+        "Completing Heart of Deimos mails the Voidrig main blueprint plus all four component blueprints free, retroactively even on an old completion."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "bounty",
+      "place": "CAMBION DRIFT, DEIMOS",
+      "sub": "Isolation Vault, Tier 3",
+      "activity": "kill enemy Necramechs, or buy the parts outright",
+      "meta": "50% per kill for one random part",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "cambion-drift",
+      "rows": [
+        {
+          "qty": null,
+          "label": "Damaged Necramech Casing",
+          "note": "50% per Necramech kill in a T3 vault",
+          "alt": { "text": "or Father, Necralisk", "spends": [{ "currency": "Entrati standing", "amount": "2,000" }] },
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Damaged Necramech Engine",
+          "note": "50% per Necramech kill in a T3 vault",
+          "alt": { "text": "or Father, Necralisk", "spends": [{ "currency": "Entrati standing", "amount": "2,000" }] },
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Damaged Necramech Pod",
+          "note": "50% per Necramech kill in a T3 vault",
+          "alt": { "text": "or Father, Necralisk", "spends": [{ "currency": "Entrati standing", "amount": "2,000" }] },
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Damaged Necramech Weapon Pod",
+          "note": "50% per Necramech kill in a T3 vault",
+          "alt": { "text": "or Father, Necralisk", "spends": [{ "currency": "Entrati standing", "amount": "2,000" }] },
+          "done": false
+        }
+      ],
+      "conditions": [
+        "T3 vaults spawn three enemy Necramechs per run (1.5 expected parts) versus one in T1; clear T1 and T2 once each first, they stay unlocked permanently.",
+        "Starting an Arcana bounty from Mother drops you straight into the vault interior, skipping residue collection and the bait defense.",
+        "Three failed Requiem Cipher attempts permanently brick that vault's bonus reward for the run."
+      ],
+      "bonuses": ["Invisibility (Ivara, Loki, Octavia) trivializes the mech fights by exposing the back weak point."],
+      "disclosures": [
+        {
+          "title": "Requiem Obelisks beat mining and fishing",
+          "body": "Shoot the Reactive Crystal with Operator Void damage to start a 90-second obelisk; kills from your Operator, a Necramech, or an Umbra specter while you're in Operator drop Cambion Drift mining and fishing resources directly, no drill or spear. Warframe kills give nothing. Use a weak amp to conserve the obelisk's health, group enemies into its radius, and only trigger the Khra, Ris, Vome or Fass symbols; Lohk, Netra, Jahu and Xata don't reliably pay out. Running one inside a vault (before the Reactive Crystal stage) gives an endless spawn window instead of the surface's four-group, 10-minute-cooldown limit."
+        }
+      ]
+    },
+    {
+      "type": "farm",
+      "place": "CAMBION DRIFT, DEIMOS",
+      "sub": null,
+      "activity": "mine the raw ores, and gather Lucent Teroglobe",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "cambion-drift",
+      "rows": [
+        { "qty": "60", "label": "Adramalium", "note": "orange vein", "alt": null, "done": false },
+        { "qty": "60", "label": "Bapholite", "note": "orange vein", "alt": null, "done": false },
+        { "qty": "60", "label": "Namalon", "note": "orange vein", "alt": null, "done": false },
+        { "qty": "30", "label": "Tiametrite", "note": "blue vein", "alt": null, "done": false },
+        { "qty": "30", "label": "Dagonic", "note": "blue vein", "alt": null, "done": false },
+        { "qty": "40", "label": "Heciphron", "note": "blue vein", "alt": null, "done": false },
+        {
+          "qty": "275",
+          "label": "Lucent Teroglobe",
+          "note": "Vitrific Outcrops around obelisks and pylons, vault storage containers, bounty rotation C",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Mining tool: Nosam Cutter (Suumbaat, Cetus) or Sunpoint Plasma Drill (Smokefinger, Fortuna) — neither is sold in the Necralisk."
+      ],
+      "bonuses": [
+        "Cave veins farther from the Necralisk report more resources per node than the ones close to the hub.",
+        "Rolizor and Spitia Infested cysts drop Adramalium; Auroron Entrati caskets and Requiem Pylons drop Biotic Filter — a max-range looter frame sweeping the surface picks both up in bulk."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "craft",
+      "place": "NECRALISK, DEIMOS",
+      "sub": "Otak",
+      "activity": "refine the raw ores into build-ready materials",
+      "meta": "1-minute builds, reusable blueprints",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Faceted Tiametrite",
+          "note": "1,000 standing BP, Rank 0; 10 Tiametrite → 10, x3 batches",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Purged Dagonic",
+          "note": "1,000 standing BP, Rank 0; 10 Dagonic → 10, x3 batches",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Purified Heciphron",
+          "note": "2,000 standing BP, Rank 1 Stranger; 10 Heciphron → 10, x4 batches",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Adramal Alloy",
+          "note": "1,000 standing BP, Rank 0; 20 Adramalium + 20 Travoride + 600 Plastids + 15 Lucent Teroglobe → 20, x3 batches",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Tempered Bapholite",
+          "note": "1,000 standing BP, Rank 0; 20 Bapholite + 20 Pyrol + 1,600 Nano Spores + 15 Lucent Teroglobe → 20, x3 batches",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Devolved Namalon",
+          "note": "2,000 standing BP, Rank 1; 20 Namalon + 20 Ferros + 160 Rubedo + 15 Lucent Teroglobe → 20, x3 batches",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Purified Heciphron and Devolved Namalon need Entrati Rank 1 (Stranger) before Otak sells their blueprints."
+      ],
+      "bonuses": [],
+      "disclosures": [
+        {
+          "title": "most guides describe a game that no longer exists",
+          "body": "Update 36.0 (2024-06-18) gutted the Voidrig recipe. Scintillant, Stellated Necrathene, Cranial Foremount, Thaumic Distillate, Trapezium Xenorhast and Cabochon Embolos are all gone; everything mined for it now is common or uncommon."
+        }
+      ]
+    },
+    {
+      "type": "farm",
+      "place": "ORB VALLIS, VENUS",
+      "sub": null,
+      "activity": "mine",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "orb-vallis",
+      "rows": [{ "qty": "60", "label": "Travoride", "note": null, "alt": null, "done": false }],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "PLAINS OF EIDOLON, EARTH",
+      "sub": null,
+      "activity": "mine",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "plains-of-eidolon",
+      "rows": [
+        { "qty": "60", "label": "Pyrol", "note": null, "alt": null, "done": false },
+        { "qty": "60", "label": "Ferros", "note": null, "alt": null, "done": false }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "CAMBION DRIFT, DEIMOS",
+      "sub": "Daughter",
+      "activity": "fish, then have Daughter fillet the catch",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "cambion-drift",
+      "rows": [
+        {
+          "qty": "4",
+          "label": "Parasitic Tethermaw",
+          "note": "from Lobotriscid, surface, Vome only; Spari or Ebisu spear",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "12",
+          "label": "Spinal Core Section",
+          "note": "from Vitreospina or Chondricord, cave, either cycle; up to 2 per fish",
+          "alt": null,
+          "done": false
+        },
+        { "qty": "3", "label": "Biotic Filter", "note": "from Duroid or Aquapulmo", "alt": null, "done": false }
+      ],
+      "conditions": [
+        "Lobotriscid only surfaces during Vome (50 of every 150 minutes); fish something else during Fass, or take Parasitic Tethermaw from an Isolation Vault reward instead."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build the four components, then Voidrig",
+      "meta": "15,000 cr and 12h each component; 25,000 cr and 72h for Voidrig",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Casing",
+          "note": "1 Damaged Casing, 60 Adramal Alloy, 30 Faceted Tiametrite, 140 Lucent Teroglobe",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Engine",
+          "note": "1 Damaged Engine, 50 Tempered Bapholite, 4 Parasitic Tethermaw, 10 Orokin Cells",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Capsule",
+          "note": "1 Damaged Pod, 3 Morphics, 12 Spinal Core Section, 50 Devolved Namalon",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Weapon Pod",
+          "note": "1 Damaged Weapon Pod, 3 Biotic Filter, 40 Purified Heciphron, 30 Purged Dagonic",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Voidrig",
+          "note": "4 components, 25,000 cr, 72h",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [
+        "Collect every material first, then queue all four components at once — one 12-hour wait instead of four run back to back.",
+        "Necraloid still sells all four blueprints as a backstop even though Heart of Deimos mails them free: components 2,000 standing each, main 5,000, at Rank 2 Modus."
+      ],
+      "disclosures": [
+        {
+          "title": "buying instead of farming",
+          "body": "Built Voidrig components sell for roughly 60-100 platinum each on Warframe Market, and several players find it faster to farm relics for that plat than to farm the mech directly. The trade-off: that route skips the Necramech mods and Entrati rank the quest chain still requires."
+        }
+      ]
+    }
+  ]
+}

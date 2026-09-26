@@ -1,0 +1,184 @@
+{
+  "name": "Ruvox",
+  "kind": "melee",
+  "effort": 3,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 5, "unit": "parts" },
+  "badges": [
+    { "text": "hard pity", "tone": "info" },
+    { "text": "Rotation B", "tone": "warn" }
+  ],
+  "prices": [{ "label": "build", "amount": "100,000 cr", "money": false }],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "QUESTS",
+      "sub": null,
+      "activity": "The Deadlock Protocol, then Whispers in the Walls",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "The Deadlock Protocol", "note": "required", "alt": null, "done": false },
+        { "qty": null, "label": "Whispers in the Walls", "note": "required", "alt": null, "done": false }
+      ],
+      "conditions": ["Whispers in the Walls unlocks Sanctum Anatomica and Armatus."],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "ARMATUS, DEIMOS",
+      "sub": "Sanctum Anatomica",
+      "activity": "Disruption",
+      "meta": null,
+      "mode": "farm alongside Dante and Onos in the same session",
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "Vessel Capillaries", "amount": "360" },
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Ruvox Blueprint",
+          "note": "5%, Rotation B",
+          "alt": "or 180 Vessel Capillaries at Loid",
+          "done": false
+        },
+        {
+          "qty": "2",
+          "label": "Ruvox Blade Blueprint",
+          "note": "5%, Rotation B",
+          "alt": "or 45 Vessel Capillaries each at Loid",
+          "done": false
+        },
+        {
+          "qty": "2",
+          "label": "Ruvox Glove Blueprint",
+          "note": "5%, Rotation B",
+          "alt": "or 45 Vessel Capillaries each at Loid",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Disruption is not AABC: a clean round 1, a round 2 with 3+ conduits defended, and a round 3 with 2-3 defended all pay from B; from round 4 on, only a round where at least one conduit is lost pays B — a clean round pays C (Dante) instead.",
+        "Vessel Capillaries are shared with Dante, Onos and Riven Transmuters, so bank them and buy only whichever parts are still missing at the end.",
+        "Onos shares this same 5% Rotation B slot, so its blueprint can drop while you farm Ruvox."
+      ],
+      "bonuses": [
+        "Steel Path Armatus pays 5-7 Capillaries per Demolisher instead of 2-4.",
+        "Killing a Gruzzling guarantees a Docket, so you don't have to wait on an Eximus drop to open a conduit."
+      ],
+      "disclosures": [
+        {
+          "title": "the B/C tradeoff",
+          "body": "From round 4 on, a clean round pays C (Dante) and never B. To keep drawing from B you have to let roughly 2 conduits fall each round, which costs you the Demolisher kills — and Capillaries — tied to those conduits. A short, clean run to round 3-4 often nets Ruvox parts and Capillaries better than deliberately bleeding conduits."
+        }
+      ]
+    },
+    {
+      "type": "vendor",
+      "place": "SANCTUM ANATOMICA, DEIMOS",
+      "sub": null,
+      "activity": "Loid",
+      "meta": "pity shop",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Vessel Capillaries", "amount": "360" }],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Ruvox Blueprint", "note": "180 Capillaries", "alt": null, "done": false },
+        { "qty": "2", "label": "Ruvox Blade Blueprint", "note": "45 Capillaries each", "alt": null, "done": false },
+        { "qty": "2", "label": "Ruvox Glove Blueprint", "note": "45 Capillaries each", "alt": null, "done": false }
+      ],
+      "conditions": ["This is the hard pity ceiling for a complete Ruvox set from scratch."],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "SANCTUM ANATOMICA, DEIMOS",
+      "sub": null,
+      "activity": "Exterminate and Gruzzling",
+      "meta": "8 total",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": "8", "label": "Entrati Lanthorn", "note": "build requirement", "alt": "or Netracells / Deep Archimedea", "done": false }
+      ],
+      "conditions": [
+        "For a focused farm, kill the early Gruzzling in Exterminate; if it does not drop its 3x Lanthorn bundle, restart."
+      ],
+      "bonuses": ["Netracells guarantee one Lanthorn and resource boosters apply there."],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "CAMBION DRIFT, DEIMOS",
+      "sub": null,
+      "activity": "bounty rewards, mining and mob drops",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "cambion-drift",
+      "rows": [
+        { "qty": "9,000", "label": "Entrati Obols", "note": "Blade material", "alt": null, "done": false },
+        { "qty": "20", "label": "Bellow Voca", "note": "Blade material", "alt": null, "done": false },
+        { "qty": "16", "label": "Gallium", "note": "Blade material", "alt": null, "done": false },
+        { "qty": "2,800", "label": "Ferrite", "note": "Glove material", "alt": null, "done": false },
+        { "qty": "1,000", "label": "Necracoil", "note": "Glove material", "alt": null, "done": false },
+        { "qty": "8", "label": "Echo Voca", "note": "Glove material", "alt": null, "done": false }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build components, then Ruvox",
+      "meta": "12h each, two foundry cycles",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Blade",
+          "note": "20,000 cr, 4,500 Obols, 10 Bellow Voca, 2 Lanthorn, 8 Gallium — build twice",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Glove",
+          "note": "20,000 cr, 1,400 Ferrite, 500 Necracoil, 2 Lanthorn, 4 Echo Voca — build twice",
+          "alt": null,
+          "done": false
+        },
+        { "qty": null, "label": "Ruvox", "note": "20,000 cr, 2 Blades + 2 Gloves", "alt": null, "done": false }
+      ],
+      "conditions": ["The main Ruvox blueprint can't be bought for credits; it only comes from Armatus or the Loid pity shop."],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

@@ -1,0 +1,285 @@
+{
+  "name": "Amesha",
+  "kind": "archwing",
+  "effort": 3,
+  "tradeable": "components only",
+  "progress": { "have": 0, "need": 3, "unit": "parts" },
+  "badges": [
+    { "text": "Tenno Lab gate", "tone": "warn" },
+    { "text": "no RNG", "tone": "info" }
+  ],
+  "prices": [
+    { "label": "lab blueprints", "amount": "60,000 cr", "money": false },
+    { "label": "built", "amount": "275 p", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "MARS JUNCTION, THEN CLAN DOJO",
+      "sub": null,
+      "activity": "unlock Archwing and clan lab access",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "The Archwing quest",
+          "note": "unlocked by the Mars Junction; the lab won't sell Amesha blueprints before this",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "clan with a built Tenno Lab",
+          "note": "needs an Oracle Room and reactor power first",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [
+        "If the clan already researched Amesha, skip straight to buying blueprints — 60,000 credits plus build materials, no research wait."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "research",
+      "place": "DOJO, TENNO LAB",
+      "sub": null,
+      "activity": "fund the four research projects",
+      "meta": "72h each; Ghost-clan (1x) costs shown, multiply 3x Shadow / 10x Storm / 30x Mountain / 100x Moon",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Amesha (main)",
+          "note": "3,000 clan affinity, 10,000 cr, 2 Nitain, 1 Mutagen Mass, 1 Detonite Injector, 1 Fieldron",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Harness",
+          "note": "1,500 clan affinity, 10,000 cr, 1 Detonite Injector, 6,200 Salvage, 1,250 Cryotic, 1 Tellurium",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Systems",
+          "note": "1,500 clan affinity, 10,000 cr, 1 Mutagen Mass, 5,650 Polymer Bundle, 2,200 Oxium, 1 Tellurium",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Wings",
+          "note": "1,500 clan affinity, 10,000 cr, 1 Fieldron, 7,250 Ferrite, 1,350 Plastids, 1 Tellurium",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Component research doesn't unlock until the main Amesha project finishes — two sequential 72h blocks for a from-scratch clan."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "NIGHTWAVE",
+      "sub": null,
+      "activity": "buy Nitain Extract with Nora Creds",
+      "meta": "15 Creds per 5 Nitain",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Nora Creds", "amount": "30" }],
+      "map": null,
+      "rows": [
+        {
+          "qty": "10",
+          "label": "Nitain Extract",
+          "note": "2 purchases; 2 per component research plus 4 for the final build",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Nitain is untradeable and unaffected by any Resource Booster, Drop Chance Booster, blessing or Retriever mod.",
+        "Nightwave Creds expire when the season ends and convert to only 5,000 credits each — spend them before that."
+      ],
+      "bonuses": [
+        "Check Twitch drops before grinding — one tracked case paid 75 Creds (12 Nitain) for 90 minutes of watching."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "OPHELIA, URANUS",
+      "sub": null,
+      "activity": "submersible Survival",
+      "meta": "only 3 Tellurium needed; the build itself needs none",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "3",
+          "label": "Tellurium",
+          "note": "camp the flooded room; many players cover this from login rewards instead",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Don't run a heat or corrosive weapon while playing Nekros — both destroy the corpse before Desecrate can roll it."
+      ],
+      "bonuses": [
+        "A resource drop-chance booster helps the whole squad; resource quantity boosters are self-only. Nekros + Khora + a drop-chance booster reported 2-3 per five minutes, up to 10-12 in a single run."
+      ],
+      "disclosures": [
+        {
+          "title": "stale and current routes",
+          "body": "Hunhullus in Perita Rebellion dropped Tellurium as an unintended bug through Jan 2026 and was patched out. Corpus Railjack survivals (Luckless Expanse, Veil Proxima) and Scoria's Angel on Steel Path are the current alternatives some players prefer to Ophelia."
+        }
+      ]
+    },
+    {
+      "type": "farm",
+      "place": "IO, JUPITER",
+      "sub": null,
+      "activity": "Defense",
+      "meta": "~80 per 10 waves",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "2,200",
+          "label": "Oxium",
+          "note": "Oxium Ospreys only; they drop nothing if they self-destruct instead of dying to a player",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "HIERACON, PLUTO",
+      "sub": null,
+      "activity": "Excavation",
+      "meta": "100 per completed excavator",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [{ "qty": "1,250", "label": "Cryotic", "note": null, "alt": null, "done": false }],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "INVASIONS, ANY MATCHING FACTION",
+      "sub": null,
+      "activity": "run the matching side; 3 rewarded per completion",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": "1", "label": "Detonite Injector", "note": "2 needed for research", "alt": null, "done": false },
+        { "qty": "1", "label": "Fieldron", "note": "2 needed for research", "alt": null, "done": false },
+        { "qty": "1", "label": "Mutagen Mass", "note": "2 needed for research", "alt": null, "done": false }
+      ],
+      "conditions": [
+        "Crafting one instead of running Invasions costs 15,000 credits, 10 ampules/samples, a Control Module and a 12-hour timer — Invasions are faster."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "buy the blueprints, then build the three components and Amesha",
+      "meta": "60,000 cr for the 4 lab blueprints; 6h each component; 12h final",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "buy the four blueprints",
+          "note": "15,000 cr each at the lab terminal",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Harness",
+          "note": "15,000 cr, 2 Nitain, 900 Circuits, 3,600 Polymer Bundle, 5,500 Alloy Plate",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Systems",
+          "note": "15,000 cr, 1 Control Module, 2 Nitain, 6,700 Salvage, 2,800 Circuits",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Wings",
+          "note": "15,000 cr, 5,600 Alloy Plate, 5 Neurodes, 4,200 Polymer Bundle, 2 Nitain",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Amesha",
+          "note": "25,000 cr, one of each component, 4 Nitain",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The main blueprint is not tradeable, only the three components are — a warframe.market 'Amesha Set' selling components only cannot be built without clan lab access."
+      ],
+      "bonuses": [
+        "Pairs naturally with the Mausolon — Voidrig hands that out for free, and it's the default archgun answer in almost every 'what archgun' thread."
+      ],
+      "disclosures": []
+    }
+  ]
+}

@@ -1,0 +1,184 @@
+{
+  "name": "Oraxia",
+  "kind": "warframe",
+  "effort": 3,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "badges": [
+    { "text": "The Hex gate", "tone": "warn" },
+    { "text": "Isleweaver", "tone": "info" }
+  ],
+  "prices": [
+    { "label": "build", "amount": "70,000 cr", "money": false },
+    { "label": "built", "amount": "370 p", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "THE HEX",
+      "sub": null,
+      "activity": "complete the quest",
+      "meta": "the only unlock path",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "The Hex", "note": null, "alt": null, "done": false }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "boss",
+      "place": "ISLEWEAVER, DUVIRI",
+      "sub": null,
+      "activity": "clear six objectives; Oraxia mini-boss at stage 5, then The Fragmented",
+      "meta": "7.69% each part, ~31% for some part per run",
+      "mode": "check your rolled loadout before choosing difficulty",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "duviri",
+      "rows": [
+        { "qty": null, "label": "Oraxia Blueprint", "note": "7.69%", "alt": null, "done": false },
+        { "qty": null, "label": "Oraxia Neuroptics", "note": "7.69%", "alt": null, "done": false },
+        { "qty": null, "label": "Oraxia Chassis", "note": "7.69%", "alt": null, "done": false },
+        { "qty": null, "label": "Oraxia Systems", "note": "7.69%", "alt": null, "done": false }
+      ],
+      "conditions": [
+        "You play Warframes the whole way: a randomly assigned frame and weapons that reroll with the Duviri spiral, not the Drifter.",
+        "Every run also pays 16-20 Scuttler Husks (20-24 SP) and 10 Pathos Clamps (15 SP), the pity currencies."
+      ],
+      "bonuses": [
+        "Steel Path pays 50% more husks and clamps plus Steel Essence, but only worth it if the spiral rolled gear you've actually built.",
+        "Wall-latching or Operator Void Mode gives total immunity during Oraxia's scuttler phases, where she vanishes for 30s between health bars while Scuttlers swarm."
+      ],
+      "disclosures": [
+        {
+          "title": "damage attenuation was fixed",
+          "body": "Update 40.0 (2025-10-15) reworked attenuation to scale with enemy max health and apply per-player; both bosses die quickly now. Any pre-October-2025 post calling Steel Path Isleweaver pointless is stale."
+        }
+      ]
+    },
+    {
+      "type": "vendor",
+      "place": "DORMIZONE, ZARIMAN",
+      "sub": null,
+      "activity": "buy whatever's still missing from Acrithis",
+      "meta": "husks are the pity currency",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Scuttler Husk", "amount": "120" }],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "blueprint", "note": "60 Scuttler Husk", "alt": null, "done": false },
+        { "qty": null, "label": "each component", "note": "20 Scuttler Husk", "alt": null, "done": false }
+      ],
+      "conditions": [
+        "The exchange only appears in the Dormizone; talking to Acrithis in Duviri doesn't show it.",
+        "Scuttler Husks ignore every booster."
+      ],
+      "bonuses": [
+        "A second, separately listed 120-husk set is available if you want one Oraxia to keep and one to feed Helminth."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "DUVIRI",
+      "sub": null,
+      "activity": "solo Duviri Experience for the open-world materials",
+      "meta": "Isleweaver's map barely touches these nodes",
+      "mode": "solo",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "duviri",
+      "rows": [
+        { "qty": "200", "label": "Kovnik", "note": "Neuroptics", "alt": null, "done": false },
+        { "qty": "400", "label": "Necracoil", "note": "Chassis", "alt": null, "done": false },
+        { "qty": "200", "label": "Aggristone", "note": "Chassis", "alt": null, "done": false },
+        { "qty": "75", "label": "Tasoma Extract", "note": "Systems; the real bottleneck", "alt": null, "done": false },
+        {
+          "qty": "150",
+          "label": "Temporal Dust",
+          "note": "Isleweaver only; accumulates while farming husks",
+          "alt": null,
+          "done": false
+        },
+        { "qty": "2,300", "label": "Entrati Obols", "note": "Neuroptics + Systems combined", "alt": null, "done": false },
+        { "qty": null, "label": "Neural Sensors", "note": "Neuroptics", "alt": null, "done": false },
+        { "qty": null, "label": "Morphics", "note": "Chassis", "alt": null, "done": false },
+        { "qty": null, "label": "Argon Crystal", "note": "Systems; decays after pickup", "alt": null, "done": false }
+      ],
+      "conditions": [
+        "Kovnik, Aggristone and Tasoma barely drop in Isleweaver; farm them in the regular Duviri Experience instead.",
+        "Your gathered resources are only saved up to your last earned decree; grab a chest or side objective before aborting, or you lose everything since the last one.",
+        "Argon Crystal decays; claim the Systems build promptly once started."
+      ],
+      "bonuses": [
+        "Reroll decrees at a cave entrance until Bountiful Harvest (double plant resources), stack a Resource Booster, and take Riding Intrinsic rank 5 (Smooth Path) to see resource icons on the minimap while mounted; reported 8-16 Tasoma per plant versus a base 2-4."
+      ],
+      "disclosures": [
+        {
+          "title": "farm Tasoma solo",
+          "body": "Nodes are shared per instance: joining a run in progress often means the host already stripped every cave, and other players can force an Undercroft transition that deletes the ones you were heading toward."
+        }
+      ]
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build components, then Oraxia",
+      "meta": "credits shown per component",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Neuroptics",
+          "note": "15,000 cr, 50 Temporal Dust, 1,500 Entrati Obols, 200 Kovnik, Neural Sensors",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Chassis",
+          "note": "15,000 cr, 50 Temporal Dust, 400 Necracoil, 200 Aggristone, Morphics",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Systems",
+          "note": "15,000 cr, 50 Temporal Dust, 800 Entrati Obols, 75 Tasoma Extract, Argon Crystal",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Oraxia",
+          "note": "25,000 cr, 3 Orokin Cells, one of each component, 3 days",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

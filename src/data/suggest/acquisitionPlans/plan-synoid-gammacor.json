@@ -1,0 +1,71 @@
+{
+  "name": "Synoid Gammacor",
+  "kind": "secondary",
+  "effort": 4,
+  "tradeable": "unranked, no Forma/Catalyst",
+  "progress": { "have": 0, "need": 1, "unit": "purchase" },
+  "badges": [
+    { "text": "Genius rank gate", "tone": "warn" },
+    { "text": "no RNG", "tone": "info" }
+  ],
+  "prices": [],
+  "groups": [
+    {
+      "type": "currency",
+      "place": "ELITE SANCTUARY ONSLAUGHT",
+      "sub": "or Duviri Circuit, stage 4+",
+      "activity": "pledge Cephalon Suda, earn standing from mission affinity and Syndicate Medallions",
+      "meta": "340,000 standing total to Genius plus the gun",
+      "mode": "leave around round 8 for one clean daily cap",
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "Cephalon Suda standing", "amount": "340,000" },
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": "500", "label": "Circuits", "note": "Rank 0 Initiation sacrifice", "alt": null, "done": false },
+        { "qty": "2", "label": "Control Module", "note": "Rank 1 Competent sacrifice", "alt": null, "done": false },
+        { "qty": "1", "label": "Forma", "note": "Rank 2 Intriguing sacrifice", "alt": null, "done": false },
+        { "qty": "1", "label": "Orokin Catalyst", "note": "Rank 3 Intelligent sacrifice", "alt": null, "done": false },
+        { "qty": "5", "label": "Aya", "note": "2 at Rank 4 Wise, 3 at Rank 5 Genius", "alt": null, "done": false }
+      ],
+      "conditions": [
+        "Daily standing cap is 16,000 plus 500 per Mastery Rank, shared across every faction syndicate.",
+        "Pledging New Loka drops Suda standing by 100% and Red Veil by 50% on every gain; climb out of the negative first if you're ranked with either.",
+        "Rank up as soon as you can afford it. Standing earned past a rank's maximum is wasted."
+      ],
+      "bonuses": [
+        "Pledging Arbiters of Hexis feeds Suda passively at +50% without hurting it.",
+        "Suda's three daily Syndicate Alerts each hold 8 medallions (roughly 10,000 standing) and, like the medallions themselves, ignore the daily cap entirely — worth more than the mission reward."
+      ],
+      "disclosures": [
+        {
+          "title": "why 340,000",
+          "body": "240,000 standing carries the five rank-ups to Genius. The 100,000-standing weapon purchase then has to be farmed fresh — the bar resets to 0 at each rank-up, it doesn't bank extra for the gun."
+        }
+      ]
+    },
+    {
+      "type": "vendor",
+      "place": "CEPHALON SUDA OFFERINGS, RELAY",
+      "sub": null,
+      "activity": "buy the pistol",
+      "meta": "100,000 standing",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Cephalon Suda standing", "amount": "100,000" }],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Synoid Gammacor", "note": null, "alt": null, "done": false }
+      ],
+      "conditions": [
+        "The free item you pick at Rank 5 can never be a Syndicate weapon; the Gammacor is always a separate 100,000-standing purchase.",
+        "Mastery Rank 7 is required both to buy it and to receive it in a trade."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

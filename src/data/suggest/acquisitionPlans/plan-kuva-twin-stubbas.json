@@ -1,0 +1,243 @@
+{
+  "name": "Kuva Twin Stubbas",
+  "kind": "secondary",
+  "effort": 9,
+  "tradeable": "converted Lich only",
+  "progress": { "have": 0, "need": 1, "unit": "weapon" },
+  "badges": [
+    { "text": "Kuva Lich", "tone": "warn" },
+    { "text": "Railjack required", "tone": "warn" }
+  ],
+  "prices": [],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "STAR CHART",
+      "sub": null,
+      "activity": "unlock the Kuva Lich finale",
+      "meta": "one-time",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "The War Within", "note": "quest complete", "alt": null, "done": false },
+        { "qty": null, "label": "Mastery Rank 5", "note": "to create a Kuva Lich", "alt": null, "done": false },
+        { "qty": null, "label": "Railjack", "note": "for the Saturn Proxima confrontation", "alt": null, "done": false },
+        {
+          "qty": null,
+          "label": "Rank 5 Railjack Intrinsics",
+          "note": "Saturn Proxima access",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "You can have only one active adversary. Clear or convert any existing Lich, Sister, or Coda before starting.",
+        "The final showdown is locked behind Saturn Proxima; check the Railjack requirements before investing in a Lich."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "relics",
+      "place": "KUVA SIPHON OR KUVA FLOOD, ANY",
+      "sub": null,
+      "activity": "earn and crack Requiem Eterna Relics",
+      "meta": "3 mods per Lich",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "3",
+          "label": "charged Requiem mods",
+          "note": "one sequence; 3 charges each",
+          "alt": "trade duplicates or buy cheap mods from players",
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Oull",
+          "note": "wildcard Requiem; optional but very strong",
+          "alt": "25% Kuva Lich vanquish drop",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Requiem Eterna Relics contain the eight Requiem mods at equal odds: Kuva Flood drops one guaranteed, Kuva Siphon 50% (rotation A). Thralls also drop one 5% of the time.",
+        "Each successful Lich vanquish consumes one charge from every equipped Requiem mod. Defiled mods have no charges left."
+      ],
+      "bonuses": [
+        "Oull substitutes for any Requiem and has three charges. Two Oulls cannot be equipped in the same sequence."
+      ],
+      "disclosures": [
+        {
+          "title": "do this before spawning the Lich",
+          "body": "A new Lich is not removable until its three-Requiem sequence is solved. Stock a usable mod pool first; this avoids being stuck with a taxing adversary while farming your first set."
+        }
+      ]
+    },
+    {
+      "type": "boss",
+      "place": "CASSINI, SATURN",
+      "sub": null,
+      "activity": "Capture; spawn and inspect Kuva Larvlings",
+      "meta": "check the weapon before you Mercy",
+      "mode": "solo, normal or Steel Path",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Kuva Twin Stubbas Larvling",
+          "note": "weapon preview must say Kuva Twin Stubbas",
+          "alt": "buy a converted Kuva Twin Stubbas Lich from another player",
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "progenitor of choice",
+          "note": "sets the bonus element and Ephemera: Rhino/Gauss Impact, Ember/Jade Heat, Frost Cold, Volt/Excalibur Electricity, Saryn/Nekros Toxin, Mag Magnetic, Loki/Mirage Radiation",
+          "alt": "Elemental Vice can change the element later",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "After the yellow flicker, kill 15 enemies within about 30 seconds to spawn the Larvling. The downed Larvling previews its weapon before you Mercy it.",
+        "If the preview is not Twin Stubbas, leave it un-mercied and complete the mission. That weapon leaves the rotation until every other Kuva weapon has appeared; aborting does not advance the rotation.",
+        "You can't Mercy a Larvling while any adversary (Lich, Sister or Coda) is already active."
+      ],
+      "bonuses": [
+        "Every player receives 100 Kuva when a Larvling goes down, whether it is Mercied or refused.",
+        "Solo keeps your own frame as the progenitor and stops other players' Liches from crowding out the spawn."
+      ],
+      "disclosures": [
+        {
+          "title": "the only reliable weapon reroll",
+          "body": "Do not abort unwanted Larvlings. Finishing the Cassini Capture without using Mercy is what removes that shown weapon from the candidate pool and eventually guarantees Twin Stubbas; an abort leaves it eligible."
+        },
+        {
+          "title": "Cassini can go dry",
+          "body": "One player reported roughly 70 Cassini runs without a Twin Stubbas preview. Confirm you are completing every mission and reading the Larvling's weapon icon; switching to another Grineer node is a reasonable fallback if a session produces nothing."
+        }
+      ]
+    },
+    {
+      "type": "boss",
+      "place": "LICH INFLUENCE NODES",
+      "sub": "Earth through Kuva Fortress",
+      "activity": "kill Thralls, reveal mods, and test the sequence",
+      "meta": "~5 runs per planet to spawn",
+      "mode": "public for faster Murmurs",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "3",
+          "label": "revealed Requiems",
+          "note": "Murmurs reveal mods, not their order",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "correct Parazon sequence",
+          "note": "required to open Saturn Proxima",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Thralls on your Lich's influence nodes build both Murmur progress and rage; joining another Lich's node grants Murmur but does not raise your own rage.",
+        "A failed Parazon attempt ranks up the Lich and moves it onward (Earth, Mars, Ceres, Sedna, Kuva Fortress; enemy levels climb to 90-110), but gives the squad a large Murmur bonus.",
+        "The Lich taxes rewards on its occupied planet until you finish it; you get it all back on Vanquish."
+      ],
+      "bonuses": [
+        "Public squads accelerate Murmurs because failed attempts by any player benefit everyone.",
+        "Run long missions (Survival, Defense, Excavation) first for Murmurs, then fast Capture or Exterminate once you only need spawn rolls. Let the Lich enthrall nearby Grineer before you down it for extra Thralls."
+      ],
+      "disclosures": [
+        {
+          "title": "use Oull to cap the guessing",
+          "body": "Once one mod is known, use Oull to test positions efficiently: even a failed stab tells you it belongs elsewhere, and the Oull stab still earns bonus murmur. You won't have Oull for your first Lich; it drops from Lich encounters."
+        }
+      ]
+    },
+    {
+      "type": "boss",
+      "place": "SATURN PROXIMA",
+      "sub": "Kuva Lich Confrontation",
+      "activity": "Railjack Skirmish; finish the Lich",
+      "meta": "choose Vanquish",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "1",
+          "label": "Kuva Twin Stubbas",
+          "note": "fully built; Foundry delivery",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Choose Vanquish, never Convert. Conversion gives a tradeable Lich contract instead of the weapon.",
+        "The weapon ignores its normal Mastery Rank restriction when claimed from a Lich, but still needs its own weapon slot.",
+        "A vanquish has a 25% chance to award Oull and a separate 25% chance to award a Requiem Ultimatum."
+      ],
+      "bonuses": ["The Twin Stubbas arrives built; no crafting materials or Foundry timer are needed."],
+      "disclosures": []
+    },
+    {
+      "type": "craft",
+      "place": "ORBITER, MODDING",
+      "sub": null,
+      "activity": "optional Valence Fusion toward 60%",
+      "meta": "bank copies first",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "60% bonus",
+          "note": "optional collection or optimization goal",
+          "alt": "stop at the first usable roll",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Valence Fusion sets the result to min(1.1 x the higher bonus, 60%), rounded down to one decimal. Any result of at least 58% becomes 60%.",
+        "Start the fusion from the Twin Stubbas you want to keep. Catalysts, Forma, Exilus adapters, Focus lenses, and Elemental Vice on the donor are destroyed."
+      ],
+      "bonuses": [
+        "Only one copy needs the desired progenitor element because Valence Fusion lets you select the surviving element."
+      ],
+      "disclosures": [
+        {
+          "title": "a 60% chase is several full Liches",
+          "body": "A typical 25-60% roll averages around 42%, so reaching 60% commonly means two to four additional complete Lich cycles. A Jan 2026 thread claims a rolling-odds change made low rolls less common, but the wiki does not confirm any change to the distribution."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,108 @@
+{
+  "name": "Pennant",
+  "kind": "melee",
+  "effort": 3,
+  "tradeable": true,
+  "progress": { "have": 0, "need": 1, "unit": "blueprint" },
+  "badges": [
+    { "text": "Railjack required", "tone": "warn" },
+    { "text": "tradeable blueprint", "tone": "info" }
+  ],
+  "prices": [{ "label": "build", "amount": "30,000 cr", "money": false }],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "RAILJACK",
+      "sub": null,
+      "activity": "own a Railjack or crew slot; rank Intrinsics for the target node",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "own Railjack or a crew slot", "note": null, "alt": null, "done": false },
+        {
+          "qty": null,
+          "label": "Intrinsics Rank 3 (Tactical)",
+          "note": "for Kasio's Rest, Saturn Proxima",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Intrinsics Rank 7 + Chimera Prologue",
+          "note": "for Flexa, Veil Proxima",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Korm's Belt (Earth Proxima) needs no Intrinsics gate, but its Galleon only spawns on some loads — check the objective list before committing."
+      ],
+      "bonuses": [
+        "Killing the captain rush-style still earns roughly 1 Intrinsic point per kill, so this farm doubles as progress toward the Intrinsics 7 gate."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "boss",
+      "place": "KASIO'S REST, SATURN PROXIMA",
+      "sub": "Asteroid Base, always spawns a commander",
+      "activity": "rush to the commander, kill, check the drop, abort if nothing",
+      "meta": "7.31% per weapon, ~13 kills expected",
+      "mode": "solo, rush and abort",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Pennant Blueprint", "note": "7.31%, Glacik or Lektro Commander", "alt": null, "done": false }
+      ],
+      "conditions": [
+        "Loot abilities (Desecrate, Pilfering Swarm, Prowl, Ore Gaze, Pilfering Strangledome, Retrieve) don't work on these targets — there's no double-dip.",
+        "Rush the target and check the drop; abort immediately if it doesn't drop, since fighter/crewship objectives don't matter for this farm."
+      ],
+      "bonuses": [
+        "Quellor's blueprint rolls on the same kill, so you're farming both weapons at once.",
+        "Killing the captain gives roughly 1 Intrinsic point even on an abort."
+      ],
+      "disclosures": [
+        {
+          "title": "other nodes",
+          "body": "Flexa (Veil Proxima) always has a Galleon too, needs Intrinsics 7 and the Chimera Prologue, enemies level 80-90. Korm's Belt (Earth Proxima) has easier level 24-30 enemies and no Intrinsics gate, but its Galleon only spawns on about 40% of loads — check the objective list at load-in and abort to reroll if there's no captain."
+        }
+      ]
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Pennant",
+      "meta": "1 day, 30,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Pennant",
+          "note": "30,000 cr, 2 Tellurium, 2,100 Rubedo, 1,550 Polymer Bundle, 5,300 Ferrite",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Tellurium is the only ingredient here you might not already have stockpiled; the rest are common resources."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

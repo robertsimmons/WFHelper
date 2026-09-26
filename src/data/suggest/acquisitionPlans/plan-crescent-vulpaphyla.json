@@ -1,0 +1,166 @@
+{
+  "name": "Crescent Vulpaphyla",
+  "kind": "companion",
+  "effort": 4,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 1, "unit": "companion" },
+  "badges": [
+    { "text": "Vome only", "tone": "warn" },
+    { "text": "must be Weakened", "tone": "warn" },
+    { "text": "Rank 1 Entrati", "tone": "info" }
+  ],
+  "prices": [
+    { "label": "revivify", "amount": "5,000 cr", "money": false },
+    { "label": "starter Mutagen + Antigen", "amount": "2,500 standing", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "NECRALISK, DEIMOS",
+      "sub": null,
+      "activity": "unlock Son's revivification menu",
+      "meta": "Heart of Deimos",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "necralisk",
+      "rows": [
+        { "qty": null, "label": "Heart of Deimos", "note": "opens the Necralisk and Son", "alt": null, "done": false },
+        {
+          "qty": null,
+          "label": "Entrati: Stranger",
+          "note": "Rank 1, for the cheapest Mutagen and Antigen",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "free Companion Slot",
+          "note": "claiming the revivified Crescent needs it",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "A Crescent cannot be built from a Market blueprint or bought as a finished companion; Son revivifies a captured Weakened animal.",
+        "Bred Crescents need a gilded Crescent's imprint first, so this hunt cannot be skipped by breeding."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "SON, NECRALISK",
+      "sub": null,
+      "activity": "buy the Tranq Rifle and one Mutagen/Antigen pair",
+      "meta": "3,000 standing",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Entrati standing", "amount": "3,000" }],
+      "map": "necralisk",
+      "rows": [
+        { "qty": null, "label": "Tranq Rifle", "note": "500 standing, Rank 0", "alt": null, "done": false },
+        {
+          "qty": null,
+          "label": "Adra Mutagen",
+          "note": "1,250 standing, Stranger; Heat/Puncture resistance",
+          "alt": "choose any Mutagen you prefer",
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Desus Antigen",
+          "note": "1,250 standing, Stranger; Vazarin polarity",
+          "alt": "pick Antigen for its polarity, not its look",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Crescent needs no Echo-Lure or Pheromone Gland to spawn; targeted Conservation gear doesn't narrow the subspecies.",
+        "The Mutagen/Antigen pair only sets resistances, the first polarity and cosmetics. Any pair gives you a Crescent."
+      ],
+      "bonuses": ["An Antigen's first polarity is effectively a free Forma slot; pick one that matches your build."],
+      "disclosures": []
+    },
+    {
+      "type": "bounty",
+      "place": "CAMBION DRIFT, DEIMOS",
+      "sub": "Vome cycle",
+      "activity": "tranq a Crescent, then let Infested damage it",
+      "meta": "rare capture, night only",
+      "mode": null,
+      "live": { "state": "waiting", "text": "wait for Vome; Crescent does not spawn in Fass" },
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "cambion-drift",
+      "rows": [
+        {
+          "qty": "1",
+          "label": "Weakened Crescent Vulpaphyla",
+          "note": "capture only after Infested damage it",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Crescent only spawns during Vome (night); Panzer is the Fass one, and Sly shows up in both, which is why most spawns are Sly.",
+        "A wild Crescent must take Infested damage before capture. A clean tranq-and-capture gives only tags, and nothing shows up in Son's Revivification menu.",
+        "Tranq the fox first: sleeping foxes can't flee, which removes the main failure mode.",
+        "Go invisible or draw aggro away, or Infested will attack you instead of the fox.",
+        "On Steel Path, lure-spawned animals come in at level 1 and a single hit can kill instead of weaken them."
+      ],
+      "bonuses": [
+        "Random open-world spawns count: roam the Drift during Vome while mining or running bounties and keep the Tranq Rifle ready.",
+        "Crescent tags trade to Son for the tokens gilding needs, even from a capture that didn't weaken it first."
+      ],
+      "disclosures": [
+        {
+          "title": "getting the Weakened hit without losing the fox",
+          "body": "Near-unanimous: tranq the fox, then pull a nearby Infested pack (Chargers, Runners, Ospreys and the flying face-huggers all work) to it and let them hit the sleeping animal until the name reads \"Weakened\", then capture. Going invisible (Loki, Ivara, Octavia, Shade) keeps the aggro off you so the Infested attack the fox instead; some players just follow a spotted Crescent around invisible until Infested find it on their own. Archwing helps you search fast and drag Infested back to a spotted fox. Nyx's Mind Control on a nearby enemy, released next to the sleeping animal, is a less common but confirmed-working alternative."
+        },
+        {
+          "title": "the long wait, not a hard fight",
+          "body": "Crescent is the rare Vulpaphyla subspecies: some players spend nearly four hours across several Vome cycles and a string of Sly spawns before one appears, while others get one within minutes. If Infested ignore the animal (a reported faction bug), putting Radiation on it does not help since irradiated Infested won't weaken it either; move to a different pack. Weakened Crescents can't be traded, so a warframe.market Crescent imprint purchase is the common shortcut once one gilded Crescent exists to breed from."
+        }
+      ]
+    },
+    {
+      "type": "vendor",
+      "place": "SON, NECRALISK",
+      "sub": null,
+      "activity": "revivify, then gild",
+      "meta": "5,000 cr now; 10 Son Tokens later",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "necralisk",
+      "rows": [
+        {
+          "qty": null,
+          "label": "Crescent Vulpaphyla, revivified",
+          "note": "Weakened Crescent + one Mutagen + one Antigen + 5,000 credits",
+          "alt": null,
+          "done": false
+        },
+        { "qty": "10", "label": "Son Tokens", "note": "gild at rank 30", "alt": null, "done": false }
+      ],
+      "conditions": [
+        "Rank the Crescent to 30 before gilding. Gilding costs 5,000 Entrati standing on top of the tokens, resets rank to 0, and is what grants Mastery.",
+        "Consigning or selling a rank-30 pet before gilding throws away its Mastery permanently.",
+        "Once one gilded Crescent hits rank 30, any later Crescent gives no more Mastery."
+      ],
+      "bonuses": [
+        "It can take an Orokin Reactor before gilding.",
+        "Son Tokens come from trading Conservation tags to Son, including the tags from failed Crescent captures."
+      ],
+      "disclosures": []
+    }
+  ]
+}

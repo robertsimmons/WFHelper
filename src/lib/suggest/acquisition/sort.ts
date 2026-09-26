@@ -2,7 +2,7 @@ import { planRating } from "./plan/index.js";
 import { effortValue } from "./ratings.js";
 import { tierOrder, tierScore } from "./recommend.js";
 import { itemTierScore } from "./tiers.js";
-import type { AcquisitionTarget } from "./types.js";
+import type { AcquisitionTarget, PlatCost } from "./types.js";
 import type { SortDirection } from "../../../types/filters.js";
 
 export const ACQUISITION_SORTS = ["recommended", "difficulty", "tier", "plat"] as const;
@@ -21,11 +21,19 @@ export interface SortRow {
   price: number;
 }
 
+/** What finishing the item off the market costs: the parts still missing, or the
+ *  whole set where that covers them for less. */
+export function completionPlat(plat: PlatCost | null | undefined): number | null {
+  if (!plat) return null;
+  const options = [plat.partsTotal, plat.set].filter((value): value is number => value !== null);
+  return options.length > 0 ? Math.min(...options) : null;
+}
+
 /** The cheapest plat any known route asks; null for a target nothing prices. */
 export function platFor(target: AcquisitionTarget): number | null {
   let best: number | null = null;
   for (const path of target.paths) {
-    const plat = path.cost.plat?.set ?? path.cost.plat?.partsTotal ?? null;
+    const plat = completionPlat(path.cost.plat);
     if (plat !== null && (best === null || plat < best)) best = plat;
   }
   return best;
@@ -36,7 +44,7 @@ export function platFor(target: AcquisitionTarget): number | null {
 function priceFor(target: AcquisitionTarget): number {
   const cost = target.paths[0]?.cost;
   if (!cost) return Number.POSITIVE_INFINITY;
-  const plat = cost.plat?.set ?? cost.plat?.partsTotal ?? null;
+  const plat = completionPlat(cost.plat);
   return plat ?? cost.credits ?? Number.POSITIVE_INFINITY;
 }
 

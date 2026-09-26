@@ -1,0 +1,145 @@
+{
+  "name": "Helstrum",
+  "kind": "robotic",
+  "effort": 6,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 1, "unit": "weapon" },
+  "badges": [
+    { "text": "Rank 5 Old Mate", "tone": "warn" },
+    { "text": "one-trip build", "tone": "info" }
+  ],
+  "prices": [{ "label": "build", "amount": "50,000 cr", "money": false }],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "FORTUNA, VENUS",
+      "sub": null,
+      "activity": "finish Vox Solaris, then rank Solaris United to Old Mate",
+      "meta": "Rank 5",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Vox Solaris", "note": "unlocks Legs, The Business and Eudico's bounties", "alt": null, "done": false },
+        { "qty": null, "label": "Solaris United Rank 5, Old Mate", "note": "99,000 standing held at Cove", "alt": null, "done": false }
+      ],
+      "conditions": [
+        "Every rank-up from Cove to Old Mate sacrifices 6 Training, 9 Shelter, 11 Medical, 10 Advances and 5 Familial Debt-Bonds plus 385,000 credits total.",
+        "Since the 2024 changes, bonds drop only from bounty stages 2-5, best odds on the final stage; the old 'run stage 1 and reset' trick no longer works."
+      ],
+      "bonuses": [],
+      "disclosures": [
+        {
+          "title": "check Ticker every visit",
+          "body": "Ticker sells debt-bonds for credits and resources and always shows at least one uncommon and one rare case since Update 35.5. Several players hit Old Mate almost entirely through Ticker."
+        }
+      ]
+    },
+    {
+      "type": "vendor",
+      "place": "LEGS, FORTUNA",
+      "sub": null,
+      "activity": "buy the blueprint",
+      "meta": "Old Mate",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Solaris United standing", "amount": "10,000" }],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Helstrum Blueprint", "note": "10,000 standing", "alt": null, "done": false }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "ORB VALLIS, VENUS",
+      "sub": null,
+      "activity": "mine blue veins, fish ponds and cave hotspots",
+      "meta": "one full trip covers the whole build",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "orb-vallis",
+      "rows": [
+        {
+          "qty": "10",
+          "label": "Star Crimzian",
+          "note": "Plains of Eidolon gem, refined at Old Man Suumbaat (Ostron Rank 3)",
+          "alt": "tradeable, unconfirmed if anyone actually sells it",
+          "done": false
+        },
+        {
+          "qty": "10",
+          "label": "Star Amarast",
+          "note": "refine raw Amarast with Smokefinger's blueprint, 4,000 standing",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "10",
+          "label": "Recaster Neural Relay",
+          "note": "dismantle Recaster servofish, Cold-weather pond hotspots with The Business",
+          "alt": "resource containers",
+          "done": false
+        },
+        {
+          "qty": "1",
+          "label": "Synathid Ecosynth Analyzer",
+          "note": "dismantle a Synathid, cave hotspots any weather",
+          "alt": "Exploiter Orb kill drops 7-8",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Star Crimzian is mined in the Plains of Eidolon, not the Vallis; the wiki lists it as tradeable but I could not confirm anyone selling it.",
+        "Recasters only spawn in Cold weather; Warm is a short ~4-minute phase of the ~26-minute cycle, so just wait it out.",
+        "The Sunpoint Plasma Drill from Smokefinger needs no syndicate rank and mines 'very rare' gems in both open worlds; buy it before the Nosam Cutters."
+      ],
+      "bonuses": [
+        "The Exploiter Orb fight (Diluted Thermia at Deck 12) is available below Rank 5 and drops the Synathid Ecosynth Analyzers directly, though it's squad-oriented."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Helstrum",
+      "meta": "24h, 50,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Helstrum",
+          "note": "50,000 cr, 10 Star Crimzian, 10 Star Amarast, 10 Recaster Neural Relay, 1 Synathid Ecosynth Analyzer",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Needs a free Companion inventory slot, not a weapon slot."
+      ],
+      "bonuses": [],
+      "disclosures": [
+        {
+          "title": "is it still worth it",
+          "body": "An April 2026 thread argues Tazicor has replaced Helstrum as the go-to AoE status primer: faster status application and instant hits against Helstrum's 10 m/s rockets and one volley every 4.4 seconds. Defenders point to innate Heat for viral/heat builds and energy-generator Dethcube setups."
+        }
+      ]
+    }
+  ]
+}

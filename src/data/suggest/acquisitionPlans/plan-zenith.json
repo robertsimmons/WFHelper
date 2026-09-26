@@ -1,0 +1,44 @@
+{
+  "name": "Zenith",
+  "kind": "primary",
+  "effort": 1,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 1, "unit": "weapon" },
+  "badges": [
+    { "text": "Daily Tribute milestone", "tone": "warn" },
+    { "text": "no Foundry build", "tone": "info" }
+  ],
+  "prices": [],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "DAILY TRIBUTE",
+      "sub": null,
+      "activity": "pick Zenith at a weapon milestone (day 100, 300, 500 or 700)",
+      "meta": "earliest possible day 100; worst case day 500",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Zenith", "note": "pick it first if you want to use it early", "alt": null, "done": false }
+      ],
+      "conditions": [
+        "Login days are cumulative, not consecutive; missing days only delays the milestone, nothing resets.",
+        "The choice is final with no confirmation prompt; support will not roll back a wrong pick."
+      ],
+      "bonuses": [
+        "Arrives fully built with its own weapon slot and an Orokin Catalyst pre-installed; no Foundry step.",
+        "Sigma & Octantis joins the day-100 pool at day 300, so the day-100 choice is only ever Azima, Zenistar or Zenith."
+      ],
+      "disclosures": [
+        {
+          "title": "replacement copy, not a shortcut",
+          "body": "Cephalon Simaris sells a Zenith Blueprint for 100,000 standing, but it only appears once you've already claimed one from a milestone. It replaces a sold copy and gives no extra Mastery."
+        }
+      ]
+    }
+  ]
+}

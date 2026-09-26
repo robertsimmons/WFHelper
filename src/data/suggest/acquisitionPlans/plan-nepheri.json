@@ -1,0 +1,145 @@
+{
+  "name": "Nepheri",
+  "kind": "melee",
+  "effort": 4,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 1, "unit": "blueprint" },
+  "badges": [
+    { "text": "Rotation B only", "tone": "warn" },
+    { "text": "MR 13", "tone": "info" }
+  ],
+  "prices": [{ "label": "build", "amount": "20,000 cr", "money": false }],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "THE NEW WAR",
+      "sub": null,
+      "activity": "finish the quest",
+      "meta": "unlocks Narmer Bounties",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "The New War",
+          "note": "unlocks Narmer Bounties from Konzu and Eudico",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": ["Narmer Bounties have no Mastery Rank requirement."],
+      "disclosures": []
+    },
+    {
+      "type": "bounty",
+      "place": "PLAINS OF EIDOLON, EARTH",
+      "sub": "or Orb Vallis, Fortuna, same rates",
+      "activity": "Narmer Bounties, stages 4 and 5",
+      "meta": "rotation B only",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "plains-of-eidolon",
+      "rows": [
+        {
+          "qty": null,
+          "label": "Nepheri Blueprint",
+          "note": "5.45% stage 4, 7.50% stage 5, rotation B only",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Only Rotation B carries the Nepheri roll; A and C give none. The bounty list's rotation timer cycles A/B/C every 150 minutes, so B is up 2.5 hours out of every 7.5.",
+        "Only stages 4 and 5 can drop it; bailing after stage 3 forfeits both rolls.",
+        "600 Endo floods about 47% of the table, so expect a lot of non-drops even on a B rotation."
+      ],
+      "bonuses": [
+        "Run whichever hub is faster for you; drop rates are identical at Cetus and Fortuna.",
+        "Farm Caliban at the same time. His parts and Korumm/Verdilac share the other two rotations, and his build needs far more Isoplast, so the extra runs aren't wasted.",
+        "Complete every stage's bonus objective, and bring a credit Blessing or Prosperous Retriever for the 'collect 1,000 credits' stage."
+      ],
+      "disclosures": [
+        {
+          "title": "no pity system",
+          "body": "Caliban-era content predates the token shops that started with Voruna, and DE hasn't retrofitted one here. About 8 full B-rotation bounties gets you there on average, with bad luck running to several times that."
+        }
+      ]
+    },
+    {
+      "type": "farm",
+      "place": "ORB VALLIS, VENUS",
+      "sub": null,
+      "activity": "fish, mine and refine the component materials",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "orb-vallis",
+      "rows": [
+        {
+          "qty": "10",
+          "label": "Narmer Isoplast",
+          "note": "byproduct of the bounty runs above, ~2.7 per bounty",
+          "alt": "spend spares for 2,000 Quills or Vox Solaris standing each",
+          "done": false
+        },
+        {
+          "qty": "6",
+          "label": "Tromyzon Entroplasma",
+          "note": "catch at pond hotspots, cold weather; dismantle at The Business",
+          "alt": "or the Exploiter Orb, 7-8 per kill",
+          "done": false
+        },
+        {
+          "qty": "80",
+          "label": "Fersteel Alloy",
+          "note": "refine from 80 Ferros, 1,600 Plastids, 800 Rubedo; 4 builds",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "2",
+          "label": "Nitain Extract",
+          "note": "Nightwave cred shop or Sabotage caches",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Fersteel Alloy needs Old Man Suumbaat's reusable refinement blueprint first (5,000 Ostron standing, Visitor rank).",
+        "Tromyzon only bites in cold-cycle weather at Orb Vallis ponds."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Nepheri",
+      "meta": "20,000 cr, 12h build",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Nepheri", "note": null, "alt": null, "done": false }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

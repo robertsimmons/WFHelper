@@ -1,0 +1,120 @@
+{
+  "name": "Volt",
+  "kind": "warframe",
+  "effort": 2,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "badges": [
+    { "text": "clan Tenno Lab only", "tone": "warn" },
+    { "text": "no RNG", "tone": "info" }
+  ],
+  "prices": [{ "label": "build", "amount": "70,000 cr", "money": false }],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "CLAN DOJO",
+      "sub": "Tenno Lab",
+      "activity": "join a clan whose lab has already researched Volt",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Tenno Lab research finished, any clan",
+          "note": "ask in Recruiting chat; many clans let you join, replicate, and leave",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Volt is one of three Awakening starters, with Excalibur and Mag. If you picked him at character creation you already have him and this whole plan is done.",
+        "He's the only starter not farmable on the star chart: Excalibur and Mag both drop from bosses. Volt is dojo-only."
+      ],
+      "bonuses": [
+        "Staying in the clan gives access to whatever else its dojo has researched: other frames, weapons and archwings, all for credits."
+      ],
+      "disclosures": [
+        {
+          "title": "researching it yourself",
+          "body": "A solo Ghost clan can research Volt directly: 1 Mutagen Mass for the main blueprint, 1 Mutagen Mass for Chassis, 1 Detonite Injector for Neuroptics and 1 Fieldron for Systems, with the main blueprint required first. Larger clans pay 3x/10x/30x/100x by tier. The wiki's lab table still lists a 72h research timer; whether Update 42.0's build-time cut also applies to research is unconfirmed."
+        }
+      ]
+    },
+    {
+      "type": "vendor",
+      "place": "CLAN DOJO",
+      "sub": "Tenno Lab",
+      "activity": "replicate the four blueprints",
+      "meta": "credits",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Volt Blueprint", "note": null, "alt": null, "done": false },
+        { "qty": null, "label": "Neuroptics Blueprint", "note": null, "alt": null, "done": false },
+        { "qty": null, "label": "Chassis Blueprint", "note": null, "alt": null, "done": false },
+        { "qty": null, "label": "Systems Blueprint", "note": null, "alt": null, "done": false }
+      ],
+      "conditions": [
+        "The wiki lists 35,000 cr as the blueprint price, but it's unclear whether that covers the main blueprint alone or all four."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build components, then Volt",
+      "meta": "12h each, then 24h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Neuroptics",
+          "note": "15,000 cr, 150 Alloy Plate, 1 Neural Sensors, 150 Polymer Bundle, 500 Rubedo",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Chassis",
+          "note": "15,000 cr, 1 Morphics, 1,000 Ferrite, 300 Rubedo",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Systems",
+          "note": "15,000 cr, 1 Control Module, 1 Morphics, 500 Salvage, 220 Plastids",
+          "alt": null,
+          "done": false
+        },
+        { "qty": null, "label": "Volt", "note": "25,000 cr, 1 Orokin Cell", "alt": null, "done": false }
+      ],
+      "conditions": [
+        "Update 42.0 (2026-03-25) cut the main build from 72h to 24h; guides written before March 2026 still say three days."
+      ],
+      "bonuses": [],
+      "disclosures": [
+        {
+          "title": "don't subsume your only copy",
+          "body": "Volt gives Shock to Helminth, and only a base frame can be subsumed, not a Prime. Build a second copy first if you want to keep playing him and also feed Helminth."
+        }
+      ]
+    }
+  ]
+}

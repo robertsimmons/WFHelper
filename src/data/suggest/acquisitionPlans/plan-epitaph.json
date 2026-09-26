@@ -1,0 +1,116 @@
+{
+  "name": "Epitaph",
+  "kind": "secondary",
+  "effort": 3,
+  "tradeable": true,
+  "progress": { "have": 0, "need": 3, "unit": "parts" },
+  "badges": [{ "text": "Void Storm drop", "tone": "info" }],
+  "prices": [],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "STAR CHART",
+      "sub": null,
+      "activity": "unlock Railjack access",
+      "meta": "one-time",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Archwing quest",
+          "note": "lets you join someone else's Railjack",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Rising Tide",
+          "note": "only needed to host your own Railjack",
+          "alt": "join a public Void Storm squad instead",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Earth and Venus Proxima are unlocked by default; Saturn Proxima needs one Railjack Intrinsic at rank 3, and is optional here since Venus alone covers the farm.",
+        "Epitaph is Sevagoth's signature sidearm from Call of the Tempestarii — there is no Entrati or Necralisk vendor involved, despite what older write-ups assume."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "VENUS PROXIMA",
+      "sub": "Bifrost Echo or Beacon Shield Ring",
+      "activity": "complete short Void Storms",
+      "meta": "~10% per part, end-of-mission roll",
+      "mode": "join public as a client",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "1",
+          "label": "Epitaph Blueprint",
+          "note": "10% at end of mission",
+          "alt": "tradeable; ~10-15p a set",
+          "done": false
+        },
+        { "qty": "1", "label": "Epitaph Barrel", "note": "10% at end of mission", "alt": "tradeable", "done": false },
+        {
+          "qty": "1",
+          "label": "Epitaph Receiver",
+          "note": "10% at end of mission",
+          "alt": "tradeable",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The roll is one chance at end of mission regardless of length — the shortest completed mission wins every time, so skip the endless nodes.",
+        "Aborting or failing the mission voids that mission's roll entirely.",
+        "Earth and Saturn Proxima are 100% Skirmish nodes (long, multi-objective); Venus is the only region with a short Exterminate or Volatile node."
+      ],
+      "bonuses": [
+        "Every run also pays Corrupted Holokeys, MK3 Railjack parts, relics and Endo — Epitaph is a side effect of a Holokey farm, not a trip of its own.",
+        "Joining as a client skips the whole Railjack-building problem and still collects MK3 parts for free."
+      ],
+      "disclosures": [
+        {
+          "title": "the Void Sinks are the real threat",
+          "body": "They deal radial Impact and one-shot squishy frames. Shield gating (Rolling Guard, Augur set) or a Voidrig Necramech handles them outright, and Frost's Snow Globe, Limbo's Cataclysm or Gara's Mass Vitrify absorb sinks that land outside the bubble."
+        }
+      ]
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Epitaph",
+      "meta": "12h, 20,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Epitaph",
+          "note": "20,000 credits, 7 Orokin Cell, 12h",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Mastery Rank 8 to equip."],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

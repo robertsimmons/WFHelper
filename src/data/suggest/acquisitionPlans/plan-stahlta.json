@@ -1,0 +1,176 @@
+{
+  "name": "Stahlta",
+  "kind": "primary",
+  "effort": 6,
+  "tradeable": "components only",
+  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "badges": [
+    { "text": "3 crown tiers", "tone": "warn" },
+    { "text": "Deadlock Protocol gate", "tone": "warn" }
+  ],
+  "prices": [{ "label": "build", "amount": "30,000 cr", "money": false }],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "THE DEADLOCK PROTOCOL",
+      "sub": null,
+      "activity": "complete the quest",
+      "meta": "grants the Xoris",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "The Deadlock Protocol",
+          "note": "unlocks Treasurers, Granum Crowns and the Granum Void",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Without this quest, Treasurers spawn but drop nothing."],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "boss",
+      "place": "FOSSA, VENUS",
+      "sub": null,
+      "activity": "Assassination, Jackal",
+      "meta": "15%, shared with Stropha Blueprint",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Stahlta Blueprint",
+          "note": "15%, ~6 kills expected; untradeable",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["The main blueprint is Jackal-only; it is not sold in the Market."],
+      "bonuses": [
+        "Fossa is also a Granum Crown node; linger 2-5 minutes after the Jackal to bank a Normal Crown for a Receiver run."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "FOSSA OR ISHTAR, VENUS",
+      "sub": null,
+      "activity": "kill the Treasurer, then Granum Void Rotation C",
+      "meta": "22.22%, 75 kills solo",
+      "mode": "solo recommended",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Stahlta Receiver",
+          "note": "22.22%, Granum Void Rotation C",
+          "alt": "tradeable",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Only Rotation C (75 kills solo, +25 per extra squad member) drops parts; 25 and 50 kills pay only credits, Endo and Void Traces.",
+        "The Treasurer spawns 2-5 minutes into a non-endless mission and runs if you're slow; the Crown is consumed on interaction, so a failed run costs a Treasurer kill."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "ADRASTEA, JUPITER",
+      "sub": null,
+      "activity": "kill the Treasurer, then Extended Granum Void Rotation C",
+      "meta": "29.63%",
+      "mode": "solo recommended",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Stahlta Stock",
+          "note": "29.63%, Extended Granum Void Rotation C",
+          "alt": "tradeable",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Enemy level 16-30 sets the Exemplar crown tier; Laomedeia or Triton, Neptune also work."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "HYDRA, PLUTO",
+      "sub": null,
+      "activity": "kill the Treasurer, then Nightmare Granum Void Rotation C",
+      "meta": "29.63%",
+      "mode": "solo recommended",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Stahlta Barrel",
+          "note": "29.63%, Nightmare Granum Void Rotation C",
+          "alt": "tradeable",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Enemy level 30+ sets the Zenith crown tier: Acheron or Cypress, Pluto, any Steel Path mission, or any Sister mission also qualify."
+      ],
+      "bonuses": [],
+      "disclosures": [
+        {
+          "title": "spawn manipulation",
+          "body": "Specters spawn only in fixed spots within a radius around you. Bullet-jump onto a tall rock at the map edge and stay there; they pile up at its base as fast as you kill them. One player reports a full Nightmare Rotation C clear in about 30 seconds this way, no triangle collecting needed."
+        },
+        {
+          "title": "frames that trivialize it",
+          "body": "Mesa's Peacemaker from high ground is the default pick, though specter particles can clog the spawn cap. Octavia with Mallet (plus the second-mallet augment) is called more reliable by some. Revenant's Danse Macabre, Volt's Discharge and Protea's turret also clear it. A 0-forma Xoris (heavy-attack throw, detonate mid-air) works on any frame and is the cheapest reliable method; don't sell it."
+        }
+      ]
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "assemble Stahlta",
+      "meta": "30,000 cr, 1 day",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Stahlta", "note": "one of each component", "alt": null, "done": false }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

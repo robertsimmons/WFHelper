@@ -1,0 +1,191 @@
+{
+  "name": "Cryotra",
+  "kind": "robotic",
+  "effort": 4,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 1, "unit": "blueprint" },
+  "badges": [
+    { "text": "Old Mate required", "tone": "warn" },
+    { "text": "vendor only", "tone": "info" }
+  ],
+  "prices": [
+    { "label": "blueprint", "amount": "10,000 standing", "money": false },
+    { "label": "build", "amount": "50,000 cr", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "currency",
+      "place": "ORB VALLIS, VENUS",
+      "sub": null,
+      "activity": "Conservation for Solaris United standing",
+      "meta": "~250,000 standing across 5 rank-ups plus the blueprint",
+      "mode": "solo",
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "Solaris United standing", "amount": "250,000" },
+      "spends": [],
+      "map": "orb-vallis",
+      "rows": [
+        {
+          "qty": "240,000",
+          "label": "rank-ups to Old Mate",
+          "note": "Rank 5; 5,000 / 22,000 / 44,000 / 70,000 / 99,000 per rank, plus Debt-Bonds and 385,000 credits",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "10,000",
+          "label": "Cryotra blueprint",
+          "note": "Legs, once Old Mate",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Daily cap is 16,000 standing plus 500 per Mastery Rank.",
+        "The free vendor item at each rank-up can cover the Cryotra blueprint at Old Mate, but a pricier Rank 5 item is the better use of it."
+      ],
+      "bonuses": [
+        "Conservation with the best echo-lure and pheromones is the fastest standing, near-unanimous across threads; once Old Mate, a Kubrodon lure hits the daily cap in under half an hour.",
+        "Ivara (Prowl) or Equinox/Titania with Sleep subsumed get reliable perfect captures; shooting from Archwing before the animal notices also works.",
+        "Mining and fishing turn-ins at Smokefinger and The Business work too if gems or fish are already stockpiled."
+      ],
+      "disclosures": [
+        {
+          "title": "before Old Mate",
+          "body": "The rarest lures, like Kubrodon, aren't purchasable until Old Mate; it shows up wild for roughly 2,000 standing in the meantime."
+        }
+      ]
+    },
+    {
+      "type": "bounty",
+      "place": "ORB VALLIS, VENUS",
+      "sub": null,
+      "activity": "farm Debt-Bonds for the rank-ups",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "orb-vallis",
+      "rows": [
+        {
+          "qty": null,
+          "label": "Training, Shelter, Medical, Advances and Familial Debt-Bonds",
+          "note": "6 / 9 / 11 / 10 / 5 needed across all 5 rank-ups",
+          "alt": "Ticker's rotating stock",
+          "done": false
+        }
+      ],
+      "conditions": ["Check Ticker twice a day; rare bond tiers are the real bottleneck on the rank-up math."],
+      "bonuses": [
+        "Profit-Taker drops every Debt-Bond tier once that fight is available.",
+        "The Exploiter Orb (Thermia Fractures) drops gems to trade in for standing and doubles as a Charamote Sagan Module source."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "LEGS, FORTUNA",
+      "sub": null,
+      "activity": "buy Cryotra blueprint",
+      "meta": "10,000 standing",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Solaris United standing", "amount": "10,000" }],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Cryotra Blueprint", "note": "Rank 5, Old Mate", "alt": null, "done": false }
+      ],
+      "conditions": ["Untradeable; Legs is the only source."],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "PLAINS OF EIDOLON, EARTH",
+      "sub": null,
+      "activity": "mine Devar, refine at Old Man Suumbaat",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "plains-of-eidolon",
+      "rows": [
+        {
+          "qty": "10",
+          "label": "Esher Devar",
+          "note": "refined from Devar, blue mining veins",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Needs Old Man Suumbaat's reusable refining blueprint (Ostron Rank 1, Offworlder)."],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "ORB VALLIS, VENUS",
+      "sub": null,
+      "activity": "mine Noctrul, fish Eye-Eye and Charamote",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "orb-vallis",
+      "rows": [
+        {
+          "qty": "10",
+          "label": "Heart Noctrul",
+          "note": "refined from Noctrul, blue mining veins; Smokefinger blueprint at Neutral",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "10",
+          "label": "Eye-Eye Rotoblade",
+          "note": "1 per Eye-Eye servofish, warm weather only; dismantle at The Business",
+          "alt": "also drops from Orb Vallis resource containers",
+          "done": false
+        },
+        {
+          "qty": "5",
+          "label": "Charamote Sagan Module",
+          "note": "1 per Charamote, cave hotspots, any weather; Business Rank 3 (Doer) bait",
+          "alt": "also drops from the Exploiter Orb",
+          "done": false
+        }
+      ],
+      "conditions": ["Eye-Eye only spawns in warm-cycle weather; check the Vallis cycle before fishing."],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Cryotra",
+      "meta": "1 day, 50,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Cryotra", "note": null, "alt": null, "done": false }
+      ],
+      "conditions": [],
+      "bonuses": ["Levels from shared Sentinel/MOA affinity; takes a Companion inventory slot."],
+      "disclosures": []
+    }
+  ]
+}

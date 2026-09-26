@@ -1,0 +1,234 @@
+{
+  "name": "Balla",
+  "kind": "melee",
+  "effort": 3,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 3, "unit": "parts" },
+  "badges": [
+    { "text": "Ostron Trusted", "tone": "warn" },
+    { "text": "gild twice", "tone": "info" }
+  ],
+  "prices": [
+    { "label": "blueprints", "amount": "3,000 standing", "money": false },
+    { "label": "gild", "amount": "5,000 standing", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "currency",
+      "place": "CETUS",
+      "sub": null,
+      "activity": "conservation, fishing or bounties for Ostron standing",
+      "meta": "~71,000 cumulative standing to Trusted",
+      "mode": "Loki with Equinox's Rest subsumed, or Ivara's Sleep Arrow",
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "Ostron standing", "amount": "71,000" },
+      "spends": [],
+      "map": "plains-of-eidolon",
+      "rows": [
+        {
+          "qty": null,
+          "label": "Offworlder rank-up",
+          "note": "5,000 standing, 10,000cr, 25 Nistlepod, 25 Iradite, 25 Grokdrul",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Visitor rank-up",
+          "note": "22,000 standing, 25,000cr, 10 Tear Azurite, 40 Pyrol, 60 Fish Scales",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Trusted rank-up",
+          "note": "44,000 standing, 50,000cr, 1 Cetus Wisp, 5 Maprico",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Everything above counts against the daily Ostron standing cap, so this spans several days regardless of farming method.",
+        "You also need roughly 3,000-4,000 standing for parts and refinery blueprints, plus the 5,000-standing gild fee, on top of the rank-ups."
+      ],
+      "bonuses": [
+        "Conservation (tranquilizing animals) at night is the fastest standing; a perfect rare capture pays over 1,000. The most-upvoted setup is Loki, invisible, with Equinox's Rest subsumed so the sleep can't miss.",
+        "Fishing with baited Murkray, Norg, Cuthol or Glappid fills a day's cap from one bait stack and is a steadier fallback than hunting.",
+        "Volt with high Ability Strength speeds the Plains bounty escort-drone stage.",
+        "Narmer bounties pay Ostron and Quills standing at the same time."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "HOK, CETUS",
+      "sub": null,
+      "activity": "buy the Strike, Grip and Link blueprints",
+      "meta": "Neutral rank",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Ostron standing", "amount": "3,000" }],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Balla Strike Blueprint", "note": "1,000 standing", "alt": null, "done": false },
+        {
+          "qty": null,
+          "label": "Peye Grip Blueprint",
+          "note": "one-handed, makes a dagger; 1,000 standing",
+          "alt": "Laka, Korb or Kwath for the same dagger class",
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Jai Link Blueprint",
+          "note": "1,000 standing",
+          "alt": "Ruhang, same rank and cost",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Every Strike, Grip, and the base Jai/Ruhang Link sit at Neutral rank for 1,000 standing each; nothing about Balla's own build needs Visitor or Trusted.",
+        "A one-handed Grip (Peye, Laka, Korb, Kwath) makes a dagger; a two-handed Grip (Jayap, Seekalla, Kroostra, Shtung) makes a staff. Pick before forging — a built Zaw can never be taken apart."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "PLAINS OF EIDOLON, EARTH",
+      "sub": "Old Man Suumbaat + Fisher Hai-Luk",
+      "activity": "mine, refine and fish the build materials",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "plains-of-eidolon",
+      "rows": [
+        {
+          "qty": "30",
+          "label": "Nistlepod",
+          "note": "20 for the Strike, 10 for the Link; smash Nistlebrush in the high mountains (Mount Nang, Ostwan Range)",
+          "alt": null,
+          "done": false
+        },
+        { "qty": "15", "label": "Fish Scales", "note": "Strike; carve fish at Fisher Hai-Luk", "alt": null, "done": false },
+        {
+          "qty": "10",
+          "label": "Azurite",
+          "note": "mined common gem; refines 1:1 into the Strike's 10 Tear Azurite",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "140",
+          "label": "Pyrol",
+          "note": "7 Pyrotic Alloy batches (Strike 60 + Grip 60 + Link 20)",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "1,400",
+          "label": "Cryotic",
+          "note": "same 7 batches; Excavation currency, not mined on the Plains",
+          "alt": null,
+          "done": false
+        },
+        { "qty": "350", "label": "Rubedo", "note": "same 7 batches", "alt": null, "done": false },
+        { "qty": "20", "label": "Iradite", "note": "Peye Grip", "alt": null, "done": false },
+        { "qty": "50", "label": "Fish Oil", "note": "Peye Grip; carve fish at Fisher Hai-Luk", "alt": null, "done": false },
+        {
+          "qty": "850",
+          "label": "Alloy Plate",
+          "note": "Peye Grip; common resource, not Plains-specific",
+          "alt": null,
+          "done": false
+        },
+        { "qty": "2", "label": "Condroc Wing", "note": "Jai Link", "alt": null, "done": false },
+        {
+          "qty": "5",
+          "label": "Khut-Khut Venom Sac",
+          "note": "Jai Link; fillet Khut-Khut or loot Thumpers",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "2",
+          "label": "Cetus Wisp",
+          "note": "gild",
+          "alt": "sweep lake shorelines with a Loot Detector",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Tear Azurite and Pyrotic Alloy refine blueprints are 500 Ostron standing each at Neutral rank.",
+        "Cryotic doesn't drop on the Plains; bank it from Excavation (Hieracon, Pluto) beforehand."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY + HOK'S ANVIL",
+      "sub": null,
+      "activity": "build, assemble, level, then gild",
+      "meta": "1h strike; instant assembly",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Balla Strike",
+          "note": "5,000cr, 20 Nistlepod, 15 Fish Scales, 10 Tear Azurite, 60 Pyrotic Alloy",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Peye Grip",
+          "note": "5,000cr, 20 Iradite, 50 Fish Oil, 850 Alloy Plate, 60 Pyrotic Alloy",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Jai Link",
+          "note": "5,000cr, 10 Nistlepod, 20 Pyrotic Alloy, 2 Condroc Wing, 5 Khut-Khut Venom Sac",
+          "alt": null,
+          "done": false
+        },
+        { "qty": null, "label": "forge at Hok's Anvil", "note": "4,000cr, instant", "alt": null, "done": false },
+        { "qty": null, "label": "level to 30", "note": "full stats since Update 32", "alt": null, "done": false },
+        {
+          "qty": null,
+          "label": "gild",
+          "note": "2 Cetus Wisp + 5,000 Ostron standing, Trusted rank; resets to rank 0",
+          "alt": null,
+          "done": false
+        },
+        { "qty": null, "label": "level to 30 again", "note": "this pass is what pays Mastery", "alt": null, "done": false }
+      ],
+      "conditions": [
+        "An ungilded Zaw gives zero Mastery — you have to gild it and then level it to 30 a second time.",
+        "Mastery is tied to the Strike alone; a second Balla combination earns nothing further.",
+        "Donating a rank-30 but ungilded Zaw to Hok for standing does not grant Mastery; Update 39.1 added a confirmation prompt for this.",
+        "The profanity filter blocks naming it \"Balla\" at the gild step."
+      ],
+      "bonuses": [],
+      "disclosures": [
+        {
+          "title": "still a usable weapon",
+          "body": "Balla remains a community pick as the Exodia Contagion head for Volt; the dagger's fast dash-cancel and a stance's 200% first swing carry the arcane well. Rabvee has better Riven disposition if you're chasing the damage cap instead."
+        }
+      ]
+    }
+  ]
+}

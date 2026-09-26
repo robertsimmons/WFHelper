@@ -1,0 +1,218 @@
+{
+  "name": "Kompressa",
+  "kind": "secondary",
+  "effort": 4,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 3, "unit": "blueprints" },
+  "badges": [
+    { "text": "Ventkids Rank 5", "tone": "warn" },
+    { "text": "K-Drive standing", "tone": "info" }
+  ],
+  "prices": [
+    { "label": "blueprints", "amount": "75,000 standing (25,000 free at Rank 5)", "money": false },
+    { "label": "build", "amount": "55,000 cr", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "FORTUNA, VENUS",
+      "sub": null,
+      "activity": "finish Vox Solaris",
+      "meta": "unlocks Fortuna and the Ventkids",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Vox Solaris",
+          "note": "opens Roky and K-Drive races/tricks",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "currency",
+      "place": "ORB VALLIS, VENUS",
+      "sub": "K-Drive",
+      "activity": "race and trick-chain for Ventkids standing",
+      "meta": "240,000 standing sacrificed across 5 rank-ups; daily cap 16,000 + 500/MR",
+      "mode": "solo",
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "Ventkids standing", "amount": "240,000" },
+      "spends": [],
+      "map": "orb-vallis",
+      "rows": [
+        {
+          "qty": "240,000",
+          "label": "rank-ups to Rank 5, Logical",
+          "note": "5,000 / 22,000 / 44,000 / 70,000 / 99,000 per rank; can't bank past each rank's cap",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Races beat trick chains once you can afford the entry fee: a 10-gate race pays 2,000 for a 50-standing cost (refunded against the cap) versus 750 for a maxed trick chain.",
+        "Five of the 22 Orb Vallis races rotate daily at 00:00 UTC; pick the long loops (Grinding the Void, Meat and Greet, Lord of the Board, Mumsie Dadsie).",
+        "A trick chain is lost if you touch down again before the points display clears."
+      ],
+      "bonuses": [
+        "Bootstrap standing with pipe tricks behind the Fortuna elevator building before you can afford race fees.",
+        "Buy K-Drive mods on the way up: Inertia Dampeners (Rank 3), then Extreme Velocity, Nitro Boost and Primo Flair (Rank 5).",
+        "Owning Yareli makes races easier: Merulina can't fall off, has an innate double jump, and gives a speed dash."
+      ],
+      "disclosures": [
+        {
+          "title": "the actual wall",
+          "body": "This is almost the entire farm. The component materials below are ordinary Orb Vallis gathering you can do in the same sessions."
+        }
+      ]
+    },
+    {
+      "type": "vendor",
+      "place": "ROKY, VENTKIDS",
+      "sub": null,
+      "activity": "buy the three blueprints",
+      "meta": "Rank 5, Logical",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Ventkids standing", "amount": "75,000" }],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Kompressa Blueprint",
+          "note": "25,000 standing",
+          "alt": "claim it as the free Rank 5 vendor item",
+          "done": false
+        },
+        { "qty": null, "label": "Barrel Blueprint", "note": "25,000 standing", "alt": null, "done": false },
+        {
+          "qty": null,
+          "label": "Receiver Blueprint",
+          "note": "25,000 standing",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Take one of the three as your free Rank 5 rank-up reward to save 25,000 standing."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "ORB VALLIS, VENUS",
+      "sub": null,
+      "activity": "mine, fish and gather component materials while riding for standing",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "orb-vallis",
+      "rows": [
+        {
+          "qty": "10",
+          "label": "Hespazym Alloy",
+          "note": "Barrel; refine mined Hespazym ore",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "10",
+          "label": "Goblite Tears",
+          "note": "Barrel; refine Goblite via a Smokefinger blueprint, Solaris United rank Outworlder",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "20",
+          "label": "Longwinder Lathe Coagulant",
+          "note": "Barrel; fishing",
+          "alt": null,
+          "done": false
+        },
+        { "qty": "35", "label": "Tepa Nodule", "note": "Barrel; cave or bounty pickup", "alt": null, "done": false },
+        {
+          "qty": "20",
+          "label": "Axidrol Alloy",
+          "note": "Receiver; refine mined Axidrol ore",
+          "alt": null,
+          "done": false
+        },
+        { "qty": "6", "label": "Star Amarast", "note": "Receiver; gem mining", "alt": null, "done": false },
+        {
+          "qty": "10",
+          "label": "Tink Dissipator Coil",
+          "note": "Receiver; fishing",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "40",
+          "label": "Mytocardia Spore",
+          "note": "Receiver; shoot sacs",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "You're already riding the Vallis for standing, so gather these in the same sessions instead of a separate trip."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build components, then Kompressa",
+      "meta": "12h each",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Barrel",
+          "note": "15,000 cr, 10 Hespazym Alloy, 10 Goblite Tears, 20 Longwinder Lathe Coagulant, 35 Tepa Nodule",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Receiver",
+          "note": "15,000 cr, 20 Axidrol Alloy, 6 Star Amarast, 10 Tink Dissipator Coil, 40 Mytocardia Spore",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Kompressa",
+          "note": "25,000 cr, 3 Orokin Cell, 1 Barrel, 1 Receiver",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

@@ -1,0 +1,286 @@
+{
+  "name": "Sepulcrum",
+  "kind": "secondary",
+  "effort": 5,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 3, "unit": "parts" },
+  "badges": [
+    { "text": "Rank 3 for Xenorhast", "tone": "warn" },
+    { "text": "Heciphron mining", "tone": "warn" }
+  ],
+  "prices": [
+    { "label": "blueprints", "amount": "18,000 Entrati Standing", "money": false },
+    { "label": "build", "amount": "60,000 cr", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "currency",
+      "place": "NECRALISK, DEIMOS",
+      "sub": null,
+      "activity": "rank up with the Entrati to Associate (Rank 3)",
+      "meta": "44,000 cumulative standing",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "Entrati Standing", "amount": "44,000" },
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "44,000",
+          "label": "rank-ups to Associate",
+          "note": "cumulative standing",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Rank 2 alone unlocks Sepulcrum's purchase, but the Receiver can't be built until Rank 3 opens Otak's Xenorhast blueprint, so plan for Rank 3 from the start.",
+        "Entrati members hand out Family Tokens, not standing directly; trade tokens to Grandmother for standing."
+      ],
+      "bonuses": [
+        "Tier 5 Mother bounties are the standing engine; two or three runs commonly fill a day's cap.",
+        "Mother Tokens don't expire; over-farm on free days and cash in on later resets."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "FATHER, NECRALISK",
+      "sub": null,
+      "activity": "buy blueprints",
+      "meta": "8,000 standing at Rank 2 Acquaintance",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Entrati Standing", "amount": "8,000" }],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Sepulcrum Blueprint",
+          "note": "4,000 standing",
+          "alt": "claim as the free Rank 2 rank-up reward",
+          "done": false
+        },
+        { "qty": null, "label": "Barrel Blueprint", "note": "2,000 standing", "alt": null, "done": false },
+        {
+          "qty": null,
+          "label": "Receiver Blueprint",
+          "note": "2,000 standing",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "OTAK, NECRALISK",
+      "sub": null,
+      "activity": "buy refining blueprints",
+      "meta": "10,000 standing total",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Entrati Standing", "amount": "10,000" }],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Purified Heciphron Blueprint",
+          "note": "2,000 standing, Rank 1 Neutral; makes 10 per build",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Trapezium Xenorhast Blueprint",
+          "note": "8,000 standing, Rank 3 Associate; makes 3 per build",
+          "alt": "tradeable; buy the refined gem directly to skip Rank 3",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The Sepulcrum wiki page still lists Isolation Vault bounties as a Xenorhast source, but Hotfix 29.5.9 removed rare Deimos gems from those tables; mine it instead."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "currency",
+      "place": "GRANDMOTHER, NECRALISK",
+      "sub": null,
+      "activity": "trade family tokens up to Grandmother Tokens",
+      "meta": "10 Grandmother Tokens buys the single Seriglass Shard",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "10",
+          "label": "Grandmother Token",
+          "note": "200 Mother Tokens, or 40 Father/Daughter/Otak Tokens",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Grandmother's 'Mend the Family' trades cycle every 8 hours and hand out family tokens for spare Deimos resources, gems and fish parts.",
+        "Budget one Seriglass Shard here; the Entrati Rank 5 sacrifice eats a separate one."
+      ],
+      "bonuses": ["Stockpile Grandmother Tokens instead of cashing every family token for standing."],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "CAMBION DRIFT, DEIMOS",
+      "sub": null,
+      "activity": "mine blue Heciphron and teal Xenorhast veins; refine at Otak",
+      "meta": "Advanced Nosam Cutter or Sunpoint Plasma Drill",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "cambion-drift",
+      "rows": [
+        {
+          "qty": "5",
+          "label": "Purified Heciphron",
+          "note": "Barrel and Receiver; refine Heciphron 1:1",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "2",
+          "label": "Trapezium Xenorhast",
+          "note": "Receiver; refine raw Xenorhast, one build makes 3",
+          "alt": "tradeable",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Get the Sunpoint Plasma Drill (Solaris United, 2,500 standing, no rank) before hunting Xenorhast; it has better special-gem odds and skips the Ostron Rank 4 Advanced Nosam Cutter gate.",
+        "Cambion Drift gem rarity increases farther from the Necralisk gate; the cave systems either side of the Catabolic Gutter are dense with veins."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "CAMBION DRIFT, DEIMOS",
+      "sub": null,
+      "activity": "fish and cut with Daughter",
+      "meta": "surface hotspots (Vome/Fass) and caves",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "cambion-drift",
+      "rows": [
+        {
+          "qty": "20",
+          "label": "Pustulent Cognitive Nodule",
+          "note": "Barrel; Aquapulmo (Vome, surface) or Cryptosuctus (Fass, surface)",
+          "alt": "Infested Cysts in the Drift",
+          "done": false
+        },
+        {
+          "qty": "20",
+          "label": "Dendrite Blastoma",
+          "note": "Receiver; Vitreospina or Barbisteo, caves, either cycle",
+          "alt": "Infested Cysts in the Drift",
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "ORB VALLIS + PLAINS OF EIDOLON",
+      "sub": null,
+      "activity": "mine and refine Travoride and Coprun",
+      "meta": "two builds each, 20 per build",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "orb-vallis",
+      "rows": [
+        {
+          "qty": "30",
+          "label": "Travocyte Alloy",
+          "note": "Barrel; Smokefinger blueprint, Solaris United Neutral",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "40",
+          "label": "Coprite Alloy",
+          "note": "Receiver; Old Man Suumbaat blueprint, Ostron Rank 1 Offworlder",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "These are the only Fortuna/Ostron detours in the build; buy both refining blueprints early, neither needs deep standing."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build components, then Sepulcrum",
+      "meta": "12h each",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Barrel",
+          "note": "20,000 cr, 30 Travocyte Alloy, 5 Purified Heciphron, 20 Pustulent Cognitive Nodule, 5 Morphics",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Receiver",
+          "note": "20,000 cr, 40 Coprite Alloy, 5 Purified Heciphron, 20 Dendrite Blastoma, 2 Trapezium Xenorhast",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Sepulcrum",
+          "note": "20,000 cr, 1 Seriglass Shard, Barrel, Receiver",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Explosions self-stagger at close range; plan a stagger-immunity solution before using it point-blank.",
+        "Ammo is tight."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

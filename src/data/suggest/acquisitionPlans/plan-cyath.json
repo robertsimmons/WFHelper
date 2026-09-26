@@ -1,0 +1,255 @@
+{
+  "name": "Cyath",
+  "kind": "melee",
+  "effort": 3,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 3, "unit": "parts" },
+  "badges": [
+    { "text": "Ostron Trusted", "tone": "warn" },
+    { "text": "bounty-only material", "tone": "warn" }
+  ],
+  "prices": [
+    { "label": "blueprint", "amount": "1,000 standing", "money": false },
+    { "label": "grip + link", "amount": "2,000 standing", "money": false },
+    { "label": "gild", "amount": "5,000 standing", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "currency",
+      "place": "CETUS",
+      "sub": null,
+      "activity": "hunt, fish or bounty for Ostron standing",
+      "meta": "~71,000 cumulative standing to Trusted",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "Ostron standing", "amount": "71,000" },
+      "spends": [],
+      "map": "plains-of-eidolon",
+      "rows": [
+        { "qty": null, "label": "Offworlder rank-up", "note": "5,000 standing, 10,000cr", "alt": null, "done": false },
+        {
+          "qty": null,
+          "label": "Visitor rank-up",
+          "note": "22,000 standing, 25,000cr; unlocks the Marquise Veridos and Fersteel Alloy refine blueprints",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Trusted rank-up",
+          "note": "44,000 standing, 50,000cr; unlocks gilding",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The Strike blueprint is buyable at Neutral, but its two refine blueprints are Visitor-locked — don't buy blueprints for materials you can't make yet."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "HOK, CETUS",
+      "sub": null,
+      "activity": "buy the Strike, Grip and Link blueprints",
+      "meta": "Neutral rank",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Ostron standing", "amount": "3,000" }],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Cyath Strike Blueprint", "note": "1,000 standing", "alt": null, "done": false },
+        {
+          "qty": null,
+          "label": "Peye Grip Blueprint",
+          "note": "makes a Machete; 1,000 standing",
+          "alt": "Laka, same Machete class",
+          "done": false
+        },
+        { "qty": null, "label": "Jai Link Blueprint", "note": "1,000 standing", "alt": null, "done": false }
+      ],
+      "conditions": [
+        "Peye makes the Machete form; most build threads favor it over the two-handed Polearm, whose slide-attack builds fell off after Melee 3.0.",
+        "Jayap and other two-handed Grips need Visitor rank, so Peye is also the cheaper pick if you're building this before Visitor."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "OLD MAN SUUMBAAT, CETUS",
+      "sub": null,
+      "activity": "buy the refine blueprints",
+      "meta": "Visitor rank",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Ostron standing", "amount": "10,000" }],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Marquise Veridos refine Blueprint", "note": "5,000 standing", "alt": null, "done": false },
+        { "qty": null, "label": "Fersteel Alloy refine Blueprint", "note": "5,000 standing", "alt": null, "done": false }
+      ],
+      "conditions": ["Both are reusable blueprints, so this cost is one-time even if you build more Zaws later."],
+      "bonuses": [
+        "Suumbaat pays 75 Ostron standing per Veridos gem turned in, which helps fund the Visitor and Trusted rank-ups."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "bounty",
+      "place": "CETUS",
+      "sub": null,
+      "activity": "Lvl 40-60 bounty, Stage 1 only",
+      "meta": "50% for 5 Breath of the Eidolon",
+      "mode": "quit and restart after Stage 1",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "1",
+          "label": "Breath of the Eidolon",
+          "note": "no enemy drops it; bounty reward only",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Boosters do nothing for this reward — resource and drop-chance boosters do not apply to bounty rewards.",
+        "Only 1 is needed for Cyath, so one successful Stage 1 roll covers the whole Strike with four spares."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "PLAINS OF EIDOLON, EARTH",
+      "sub": null,
+      "activity": "mine, fish and refine the rest of the build",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "plains-of-eidolon",
+      "rows": [
+        {
+          "qty": "6",
+          "label": "Veridos",
+          "note": "green gem, blue veins; refines into 6+ Marquise Veridos",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "55",
+          "label": "Fish Scales",
+          "note": "Strike; carve any Plains fish at Fisher Hai-Luk",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "20",
+          "label": "Ferros",
+          "note": "red/ore veins; refines into 20 Fersteel Alloy with Plastids and Rubedo",
+          "alt": null,
+          "done": false
+        },
+        { "qty": "20", "label": "Iradite", "note": "Peye Grip", "alt": null, "done": false },
+        { "qty": "50", "label": "Fish Oil", "note": "Peye Grip", "alt": null, "done": false },
+        {
+          "qty": "850",
+          "label": "Alloy Plate",
+          "note": "Peye Grip; common resource, not Plains-specific",
+          "alt": null,
+          "done": false
+        },
+        { "qty": "60", "label": "Pyrotic Alloy", "note": "Peye Grip", "alt": null, "done": false },
+        { "qty": "10", "label": "Nistlepod", "note": "Jai Link", "alt": null, "done": false },
+        { "qty": "20", "label": "Pyrotic Alloy", "note": "Jai Link", "alt": null, "done": false },
+        { "qty": "2", "label": "Condroc Wing", "note": "Jai Link", "alt": null, "done": false },
+        {
+          "qty": "5",
+          "label": "Khut-Khut Venom Sac",
+          "note": "Jai Link; fillet Khut-Khut or loot Thumpers",
+          "alt": null,
+          "done": false
+        },
+        { "qty": "2", "label": "Cetus Wisp", "note": "gild", "alt": null, "done": false }
+      ],
+      "conditions": [
+        "Fersteel Alloy's own recipe (1,000cr, 20 Ferros, 400 Plastids, 200 Rubedo per batch of 20) means one batch covers the Strike exactly."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY + HOK'S ANVIL",
+      "sub": null,
+      "activity": "build, assemble, level, then gild",
+      "meta": "1h strike; instant assembly",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Cyath Strike",
+          "note": "5,000cr, 1 Breath of the Eidolon, 55 Fish Scales, 6 Marquise Veridos, 20 Fersteel Alloy",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Peye Grip",
+          "note": "20 Iradite, 50 Fish Oil, 850 Alloy Plate, 60 Pyrotic Alloy",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Jai Link",
+          "note": "10 Nistlepod, 20 Pyrotic Alloy, 2 Condroc Wing, 5 Khut-Khut Venom Sac",
+          "alt": null,
+          "done": false
+        },
+        { "qty": null, "label": "forge at Hok's Anvil", "note": "4,000cr, instant", "alt": null, "done": false },
+        { "qty": null, "label": "level to 30", "note": "full stats since Update 32", "alt": null, "done": false },
+        {
+          "qty": null,
+          "label": "gild",
+          "note": "2 Cetus Wisp + 5,000 Ostron standing, Trusted rank; resets to rank 0",
+          "alt": null,
+          "done": false
+        },
+        { "qty": null, "label": "level to 30 again", "note": "this pass is what pays Mastery", "alt": null, "done": false }
+      ],
+      "conditions": [
+        "An ungilded Cyath gives no Mastery.",
+        "A Machete built from a Cyath Strike has a known Heavy Slam damage-falloff bug (wiki-listed).",
+        "Once forged the Zaw can never be disassembled."
+      ],
+      "bonuses": [
+        "If going for MR, build every Zaw strike together — the refined gems, alloys and standing cover all of them at once."
+      ],
+      "disclosures": [
+        {
+          "title": "Machete over Polearm",
+          "body": "Most build threads favor the one-handed Machete; slide-attack Polearm builds fell off after Melee 3.0, so a slide-crit Riven reroll was the advice instead."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,163 @@
+{
+  "name": "Sly Vulpaphyla",
+  "kind": "companion",
+  "effort": 4,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 1, "unit": "companion" },
+  "badges": [
+    { "text": "must be Weakened", "tone": "warn" },
+    { "text": "Rank 1 Entrati", "tone": "info" }
+  ],
+  "prices": [
+    { "label": "revivify", "amount": "5,000 cr", "money": false },
+    { "label": "starter Mutagen + Antigen", "amount": "2,500 standing", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "NECRALISK, DEIMOS",
+      "sub": null,
+      "activity": "unlock Son's revivification menu",
+      "meta": "Heart of Deimos",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "necralisk",
+      "rows": [
+        { "qty": null, "label": "Heart of Deimos", "note": "opens the Necralisk and Son", "alt": null, "done": false },
+        {
+          "qty": null,
+          "label": "Entrati: Stranger",
+          "note": "Rank 1, for the cheapest Mutagen and Antigen",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "free Companion Slot",
+          "note": "claiming the revivified Sly needs it",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "A Sly cannot be built from a Market blueprint or bought as a finished companion; Son revivifies a captured Weakened animal."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "SON, NECRALISK",
+      "sub": null,
+      "activity": "buy the Tranq Rifle and one Mutagen/Antigen pair",
+      "meta": "3,000 standing",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Entrati standing", "amount": "3,000" }],
+      "map": "necralisk",
+      "rows": [
+        { "qty": null, "label": "Tranq Rifle", "note": "500 standing, Rank 0", "alt": null, "done": false },
+        {
+          "qty": null,
+          "label": "Adra Mutagen",
+          "note": "1,250 standing, Stranger; Heat/Puncture resistance",
+          "alt": "choose any Mutagen you prefer",
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Desus Antigen",
+          "note": "1,250 standing, Stranger; Vazarin polarity",
+          "alt": "pick Antigen for its polarity, not its look",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Sly needs no Echo-Lure or Pheromone Gland; it spawns without a targeted hunt.",
+        "The Mutagen/Antigen pair only sets resistances, the first polarity and cosmetics. Any pair gives you a Sly."
+      ],
+      "bonuses": ["An Antigen's first polarity is effectively a free Forma slot; pick one that matches your build."],
+      "disclosures": []
+    },
+    {
+      "type": "bounty",
+      "place": "CAMBION DRIFT, DEIMOS",
+      "sub": null,
+      "activity": "tranq a Sly, then let Infested damage it",
+      "meta": "common subspecies",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "cambion-drift",
+      "rows": [
+        {
+          "qty": "1",
+          "label": "Weakened Sly Vulpaphyla",
+          "note": "capture only after Infested damage it",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "A wild Sly must take Infested damage before capture. A clean tranq-and-capture gives only Sly Vulpaphyla Tags, and nothing shows up in Son's Revivification menu.",
+        "Tranq the fox first: sleeping foxes can't flee, which removes the main failure mode.",
+        "Go invisible or draw aggro away, or Infested will attack you instead of the fox."
+      ],
+      "bonuses": [
+        "Sly is the common subspecies and turns up incidentally while mining or running bounties; the Echo-Lure and Pheromone Gland aren't needed to find one.",
+        "Failed captures still give Sly Vulpaphyla Tags, which trade to Son for the tokens gilding needs."
+      ],
+      "disclosures": [
+        {
+          "title": "getting the Weakened hit without losing the fox",
+          "body": "Near-unanimous: tranq the fox, then bring Infested to it; a sleeping Vulpaphyla still counts as Weakened when hit even though it takes no real damage. Going invisible (Loki, Ivara, Octavia, Shade) keeps the aggro off you so the Infested attack the fox instead. Two less common tricks: Mind Control an enemy near the trail, tranq the fox, then release the control so it attacks the nearest target; or kite a flying Infested chaser (a Mutalist Osprey, not a Juggernaut or boss, which kill outright) over the sleeping fox."
+        }
+      ]
+    },
+    {
+      "type": "vendor",
+      "place": "SON, NECRALISK",
+      "sub": null,
+      "activity": "revivify, then gild",
+      "meta": "5,000 cr now; 10 Son Tokens later",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "necralisk",
+      "rows": [
+        {
+          "qty": null,
+          "label": "Sly Vulpaphyla, revivified",
+          "note": "Weakened Sly + one Mutagen + one Antigen + 5,000 credits",
+          "alt": null,
+          "done": false
+        },
+        { "qty": "10", "label": "Son Tokens", "note": "gild at rank 30", "alt": null, "done": false }
+      ],
+      "conditions": [
+        "Rank the Sly to 30 before gilding. Gilding costs 5,000 Entrati standing on top of the tokens, resets rank to 0, and is what grants Mastery.",
+        "Consigning or selling a rank-30 pet before gilding throws away its Mastery permanently.",
+        "Once one gilded Sly hits rank 30, any later Sly gives no more Mastery."
+      ],
+      "bonuses": [
+        "It can take an Orokin Reactor before gilding.",
+        "Son Tokens come from trading Conservation tags to Son, including the tags from failed Sly captures."
+      ],
+      "disclosures": [
+        {
+          "title": "why Sly over Panzer or Crescent",
+          "body": "Most players treat Panzer as the default pick for viral priming and dismiss Sly and Crescent as niche. Since the Update 37.0 rework, Sly's Survival Instinct makes a bullet-jump decoy that draws fire for 1.5s on a 5s cooldown, and one detailed report says the decoy keeps drawing fire while Sly is downed (unconfirmed on the wiki). For a Mastery hunt it's still the cheapest, fastest +6,000 once gilded."
+        }
+      ]
+    }
+  ]
+}

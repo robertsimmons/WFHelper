@@ -28,6 +28,7 @@ export function sectionNarrowed(id: SuggestionSectionId, options: SuggestionOpti
     case "acquisition":
       return (
         options.acquisitionKinds.includes(ACQUISITION_NONE) ||
+        options.acquisitionSearch.trim().length > 0 ||
         narrowedList(options.acquisitionKinds, ACQUISITION_INCLUDES)
       );
   }

@@ -1,3 +1,4 @@
+import { toMarketSlug } from "../../marketNaming.js";
 import { curated, type CuratedLookup, type CuratedSource } from "./curated.js";
 import { nemesisSteps } from "./nemesis.js";
 import { relicCost } from "./relics.js";
@@ -88,10 +89,16 @@ function platCost(
   plat: PlatPriceLookup | null | undefined,
 ): PlatCost | null {
   if (!plat) return null;
-  const rows = parts.map((part) => ({ name: part.name, plat: platFor(part.name, plat) }));
+  const rows = parts.map((part) => ({
+    name: part.name,
+    plat: platFor(part.name, plat),
+    slug: toMarketSlug(part.name) || null,
+  }));
   const priced = rows.every((row) => row.plat !== null);
+  const setName = platFor(`${itemName} Set`, plat) !== null ? `${itemName} Set` : itemName;
   return {
-    set: platFor(`${itemName} Set`, plat) ?? platFor(itemName, plat),
+    set: platFor(setName, plat),
+    setSlug: toMarketSlug(setName) || null,
     parts: rows,
     partsTotal: priced
       ? rows.reduce((sum, row, index) => sum + (row.plat ?? 0) * (parts[index]?.missing || 1), 0)

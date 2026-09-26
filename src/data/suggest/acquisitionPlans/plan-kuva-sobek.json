@@ -1,0 +1,267 @@
+{
+  "name": "Kuva Sobek",
+  "kind": "primary",
+  "effort": 9,
+  "tradeable": "converted Lich only",
+  "progress": { "have": 0, "need": 1, "unit": "weapon" },
+  "badges": [
+    { "text": "Kuva Lich", "tone": "warn" },
+    { "text": "Railjack required", "tone": "warn" }
+  ],
+  "prices": [],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "STAR CHART",
+      "sub": null,
+      "activity": "unlock the Kuva Lich finale",
+      "meta": "one-time",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "The War Within",
+          "note": "quest complete",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Mastery Rank 5",
+          "note": "to create a Kuva Lich",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Railjack",
+          "note": "for the Saturn Proxima confrontation",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Rank 5 Railjack Intrinsics",
+          "note": "Saturn Proxima access",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "You can have only one active adversary. Clear or convert any existing Lich, Sister, or Coda before starting.",
+        "The final showdown is locked behind Saturn Proxima; check the Railjack requirements before investing in a Lich."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "relics",
+      "place": "KUVA SIPHON OR KUVA FLOOD, ANY",
+      "sub": null,
+      "activity": "earn and crack Requiem Eterna Relics",
+      "meta": "3 mods per Lich",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "3",
+          "label": "charged Requiem mods",
+          "note": "one sequence; 3 charges each",
+          "alt": "trade duplicates or buy cheap mods from players",
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Oull",
+          "note": "wildcard Requiem; optional but very strong",
+          "alt": "25% Kuva Lich vanquish drop",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Requiem Eterna Relics contain the eight Requiem mods at equal odds and cannot be refined with Void Traces.",
+        "Each successful Lich vanquish consumes one charge from every equipped Requiem mod. Defiled mods have no charges left.",
+        "Palladino also sells retired Requiem I-IV relics for 10 Riven Slivers each, capped at 10 per week."
+      ],
+      "bonuses": [
+        "Oull substitutes for any Requiem and has three charges. Two Oulls cannot be equipped in the same sequence."
+      ],
+      "disclosures": [
+        {
+          "title": "do this before spawning the Lich",
+          "body": "A new Lich is not removable until its three-Requiem sequence is solved. Stock a usable mod pool first; this avoids being stuck with a taxing adversary while farming your first set."
+        }
+      ]
+    },
+    {
+      "type": "boss",
+      "place": "CASSINI, SATURN",
+      "sub": null,
+      "activity": "Capture; spawn and inspect Kuva Larvlings",
+      "meta": "up to 21 completed runs to force it",
+      "mode": "normal or Steel Path",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Kuva Sobek Larvling",
+          "note": "weapon preview must say Kuva Sobek",
+          "alt": "buy a converted Kuva Sobek Lich from another player",
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Toxin or Magnetic progenitor",
+          "note": "Saryn, Nekros, Nidus (Toxin) or Mag, Cyte-09 (Magnetic) are the common picks",
+          "alt": "Elemental Vice can change the element later regardless of the frame used here",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "After the yellow flicker, kill 15 enemies within about 30 seconds to spawn the Larvling. The downed Larvling previews its weapon before you Mercy it.",
+        "If the preview is not Sobek, leave it un-mercied and complete the mission. That weapon leaves the rotation until all other Kuva weapons have appeared; aborting does not advance the rotation.",
+        "In a squad, only the last player to damage the Larvling can Mercy it, and a mixed Progenitor is not recoverable without Elemental Vice."
+      ],
+      "bonuses": [
+        "Every player receives 100 Kuva when a Larvling goes down, whether it is Mercied or refused.",
+        "Cyte-09 took the most votes in the community's 'best Sobek frame' thread, for shooting through walls."
+      ],
+      "disclosures": [
+        {
+          "title": "the only reliable weapon reroll",
+          "body": "Do not abort unwanted Larvlings. Finishing the Cassini Capture without using Mercy is what removes that shown weapon from the candidate pool and eventually guarantees the Sobek; an abort leaves it eligible."
+        }
+      ]
+    },
+    {
+      "type": "boss",
+      "place": "LICH INFLUENCE NODES",
+      "sub": "Earth through Kuva Fortress",
+      "activity": "kill Thralls, reveal mods, and test the sequence",
+      "meta": "~180 Murmurs; 45 min-2 h per Lich",
+      "mode": "public for faster Murmurs",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "3",
+          "label": "revealed Requiems",
+          "note": "Murmurs reveal mods, not their order",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "correct Parazon sequence",
+          "note": "required to open Saturn Proxima",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Thralls on your Lich's influence nodes build both Murmur progress and rage; joining another Lich's node grants Murmur but does not raise your own rage.",
+        "Murmur reveals arrive around 36, 60, and 84 progress, but the final three-mod order must be learned by Parazon attempts.",
+        "A failed Parazon attempt ranks up the Lich and moves it onward, but gives the squad a large Murmur bonus. Do not stab the very first spawn before a mod is revealed; afterward, stab to learn the order.",
+        "Clearing every node on a planet auto-levels the Lich; if you still need Murmurs, leave one node unfinished until you're ready."
+      ],
+      "bonuses": [
+        "Public squads accelerate Murmurs because failed attempts by any player benefit everyone.",
+        "Buy the weekly Requiem Ultimatum from Palladino to skip the wait for the rage meter."
+      ],
+      "disclosures": [
+        {
+          "title": "use Oull to cap the guessing",
+          "body": "Once one mod is known, use Oull to test positions efficiently. Oull -> mod 1 -> random, then Oull -> mod 2 -> mod 1, then mod 1 -> Oull -> mod 2, then mod 2 -> Oull -> mod 1 guarantees the kill by Lich level 4 in the worst case."
+        }
+      ]
+    },
+    {
+      "type": "boss",
+      "place": "SATURN PROXIMA",
+      "sub": "Kuva Lich Confrontation",
+      "activity": "Railjack Skirmish; finish the Lich",
+      "meta": "choose Vanquish",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "1",
+          "label": "Kuva Sobek",
+          "note": "fully built; Foundry delivery",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Choose Vanquish, never Convert. Conversion gives a tradeable Lich contract instead of the weapon.",
+        "The weapon ignores its normal Mastery Rank restriction when claimed from a Lich, but still needs its own weapon slot.",
+        "A vanquish has a 25% chance to award Oull and a separate 25% chance to award a Requiem Ultimatum."
+      ],
+      "bonuses": [
+        "The Sobek arrives built; no crafting materials or Foundry timer are needed."
+      ],
+      "disclosures": [
+        {
+          "title": "the augment everyone assumes",
+          "body": "Acid Shells, the Sobek's augment mod that makes enemies explode for 45% max health on kill, drops from Kela De Thaym (Sedna, Merrow) at about 11% per kill. It is tradeable and every build thread for the weapon assumes you have it."
+        }
+      ]
+    },
+    {
+      "type": "craft",
+      "place": "ORBITER, MODDING",
+      "sub": null,
+      "activity": "optional Valence Fusion toward 60%",
+      "meta": "bank copies first",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "60% bonus",
+          "note": "optional collection or optimization goal",
+          "alt": "stop at the first usable roll",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Valence Fusion sets the result to min(1.1 x the higher bonus, 60%), rounded down to one decimal. Any result of at least 58% becomes 60%.",
+        "Do not fuse mediocre copies early. Keep several and fuse every donor into the highest roll; a 53% displayed bonus guarantees 60% on the next fusion.",
+        "Start the fusion from the Sobek you want to keep. Catalysts, Forma, Exilus adapters, Focus lenses, and Elemental Vice on the donor are destroyed."
+      ],
+      "bonuses": [
+        "Only one copy needs the desired progenitor element because Valence Fusion lets you select the surviving element."
+      ],
+      "disclosures": [
+        {
+          "title": "a 60% chase is several full Liches",
+          "body": "A typical 25-60% roll averages around 42%, so reaching 60% commonly means two to four additional complete Lich cycles. Treat it as an optional long-term goal rather than part of getting a usable Sobek."
+        }
+      ]
+    }
+  ]
+}

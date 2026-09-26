@@ -1,0 +1,101 @@
+{
+  "name": "Opticor Vandal",
+  "kind": "primary",
+  "effort": 3,
+  "tradeable": "unranked only, no Forma or Catalyst",
+  "progress": { "have": 0, "need": 100, "unit": "points" },
+  "badges": [
+    { "text": "event-gated", "tone": "warn" },
+    { "text": "Baro alternative", "tone": "info" }
+  ],
+  "prices": [
+    { "label": "Baro Ki'Teer", "amount": "550,000 cr + 650 Ducats", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "ORB VALLIS, VENUS",
+      "sub": null,
+      "activity": "Vox Solaris quest",
+      "meta": "unlocks Thermia Fractures in the World State Window",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Vox Solaris", "note": "quest", "alt": null, "done": false }
+      ],
+      "conditions": ["Thermia Fractures only appears in the World State Window once Vox Solaris is complete."],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "ORB VALLIS, VENUS",
+      "sub": "near the Temple of Profit",
+      "activity": "seal Thermia Fractures",
+      "meta": "~15 full 4-canister fractures for 100 points",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "orb-vallis",
+      "rows": [
+        {
+          "qty": "100",
+          "label": "Thermia Fracture points",
+          "note": "1 per canister contributed, plus 3 when a Diluted Thermia canister fills",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Thermia Fractures only run while the event is active; check the World State Window.",
+        "Points carry over permanently between event windows, so partial progress is never lost.",
+        "Recruit through LFG or a clanmate rather than public matchmaking; public squads scatter before a fracture is sealed."
+      ],
+      "bonuses": [
+        "Stage up to 4 canisters at a Blink Pad near the fracture before committing them all at once.",
+        "Amesha with Benevolent Decoy stacked three times can solo-defend a canister from the air; stay at max altitude to avoid ground-to-air rockets.",
+        "Filling the leftover Diluted Thermia summons the Exploiter Orb for Hildryn parts, and 35%+ event control doubles Orb Vallis credit rewards."
+      ],
+      "disclosures": [
+        {
+          "title": "reward track",
+          "body": "5 points: emblem. 25: Amalgam Shotgun Barrage + Amalgam Serration. 50: Amalgam Barrel Diffusion + Amalgam Organ Shatter. 75: sigil. 100: Opticor Vandal with a free weapon slot and a pre-installed Orokin Catalyst. Each tier is a one-time reward with no replacement source once claimed."
+        }
+      ]
+    },
+    {
+      "type": "vendor",
+      "place": "BARO KI'TEER, RELAY",
+      "sub": null,
+      "activity": "buy outright when he stocks it",
+      "meta": "irregular rotation; no slot or Catalyst included",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [
+        { "currency": "Credits", "amount": "550,000" },
+        { "currency": "Ducats", "amount": "650" }
+      ],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Opticor Vandal",
+          "note": "alt path if Baro has it in stock",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Baro's rotation is irregular; check his stock before planning around it."],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

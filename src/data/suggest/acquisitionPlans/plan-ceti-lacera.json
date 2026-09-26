@@ -1,0 +1,132 @@
+{
+  "name": "Ceti Lacera",
+  "kind": "melee",
+  "effort": 3,
+  "tradeable": true,
+  "progress": { "have": 0, "need": 1, "unit": "blueprint" },
+  "badges": [
+    { "text": "Naberus only", "tone": "warn" },
+    { "text": "MR 12", "tone": "info" }
+  ],
+  "prices": [
+    { "label": "blueprint", "amount": "125 Mother Tokens", "money": false },
+    { "label": "build", "amount": "25,000 cr", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "currency",
+      "place": "CAMBION DRIFT, DEIMOS",
+      "sub": "Necralisk",
+      "activity": "Mother's bounties",
+      "meta": "roughly one high-tier bounty's worth",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "Mother Token", "amount": "125" },
+      "spends": [],
+      "map": "cambion-drift",
+      "rows": [
+        {
+          "qty": "125",
+          "label": "Mother Token",
+          "note": "from Cambion Drift bounties, plus occasional tokens found in the Drift",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Tokens are not event-limited: bank them year-round and spend when Daughter opens her shop."
+      ],
+      "bonuses": [
+        "Fish for the Brute Force bounty: start a bounty at your tier, fly toward the first stage then away to fail it in ~15 seconds, then a Mother NPC in the Drift offers a fresh set of three; different Mothers offer different sets, and Brute Force is the consistently fastest.",
+        "The endless (excavation-style) Mother bounty pays about 250-275 tokens over four rotations, enough for two Ceti Lacera in one session."
+      ],
+      "disclosures": [
+        {
+          "title": "other event vendors, if one reruns",
+          "body": "Ceti Lacera has also been sold by returning-rewards shops during Operation reruns: Ordis for 15 Volatile Motes (Belly of the Beast), Dominus Thrax for 9 Dominus Aureus (Eight Claw), Roathe for 20 Marks of Valiance (Blood of Perita), 3 Grotesque Splinters (Gargoyle's Cry), 2,000 Phasic Cells (Orphix Venom) or 20,000 Scarlet Credits (the original Scarlet Spear). Each is limit 1 and only helps if that Operation happens to be rerunning."
+        }
+      ]
+    },
+    {
+      "type": "vendor",
+      "place": "NECRALISK, DEIMOS",
+      "sub": "Daughter, Nights of Naberus",
+      "activity": "buy the blueprint",
+      "meta": "early October to early November",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Mother Token", "amount": "125" }],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Ceti Lacera Blueprint",
+          "note": "125 Mother Tokens",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Only on sale during Nights of Naberus, which has appeared every year since 2021, normally early October into early November.",
+        "MR 12 gate to buy from Daughter; the blueprint is tradeable, so buy it from another player instead if you're under it."
+      ],
+      "bonuses": ["Buy on day one of the event using tokens banked in advance."],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "ZEUGMA, PHOBOS",
+      "sub": null,
+      "activity": "Survival, Dark Sector",
+      "meta": "~250 per 5 min",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "5,950",
+          "label": "Rubedo",
+          "note": "stockpile before Naberus opens",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "5,950 Rubedo is a lot for a mid-game account and the part people underestimate; the blueprint itself is cheap."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Ceti Lacera",
+      "meta": "1 day",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Ceti Lacera",
+          "note": "25,000 cr, 8,150 Salvage, 400 Oxium, 5,950 Rubedo, 15 Morphics",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "name": "Tonkkatt",
+  "kind": "melee",
+  "effort": 2,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 5, "unit": "parts" },
+  "badges": [
+    { "text": "enemy drop", "tone": "info" },
+    { "text": "1.67% each", "tone": "warn" }
+  ],
+  "prices": [{ "label": "build", "amount": "15,000 cr", "money": false }],
+  "groups": [
+    {
+      "type": "farm",
+      "place": "OLYMPUS, MARS",
+      "sub": null,
+      "activity": "Disruption; let a Ghoul Eruption conduit run its course",
+      "meta": "~30 min for a full set",
+      "mode": "Nekros + Slash recommended",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": "1", "label": "Tonkkatt Blueprint", "note": "1.67% per kill", "alt": null, "done": false },
+        { "qty": "2", "label": "Tonkkatt Handle", "note": "1.67% per kill", "alt": null, "done": false },
+        { "qty": "2", "label": "Tonkkatt Blade", "note": "1.67% per kill", "alt": null, "done": false }
+      ],
+      "conditions": [
+        "Only Ghoul Expired and Ghoul Rictus drop Tonkkatt; Ghoul Auger and Ghoul Devourer drop Tak & Lug instead.",
+        "When a conduit rolls 'Ghoul Eruption,' let the enemies destroy it instead of defending it, unless it's the round's last conduit, then camp that round; ghouls keep pouring out.",
+        "The Ghoul Eruption roll is random and may not appear until round 4 or later."
+      ],
+      "bonuses": [
+        "Tak & Lug parts drop from the same ghouls, so farm both in one session.",
+        "Meso relics drop alongside as a side bonus."
+      ],
+      "disclosures": [
+        {
+          "title": "ghouls blend into regular Grineer",
+          "body": "Only Ghoul Expired and Ghoul Rictus count. People run several rounds thinking none spawned because ghouls look like ordinary Grineer mid-fight."
+        },
+        {
+          "title": "other ghoul spots",
+          "body": "Ghoul Purge bounties and general ghoul spawns on the Plains of Eidolon drop the same parts if Olympus isn't convenient, though the conduit trick makes Olympus the fastest."
+        }
+      ]
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Tonkkatt",
+      "meta": "12h, MR 9",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": "15,000", "label": "Credits", "note": null, "alt": null, "done": false },
+        {
+          "qty": null,
+          "label": "Tonkkatt",
+          "note": "1 Blueprint, 2 Handle, 2 Blade",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Requires Mastery Rank 9 to equip the completed weapon."],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

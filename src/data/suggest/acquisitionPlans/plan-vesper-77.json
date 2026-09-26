@@ -1,0 +1,269 @@
+{
+  "name": "Vesper 77",
+  "kind": "secondary",
+  "effort": 3,
+  "tradeable": "built parts only",
+  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "badges": [
+    { "text": "Hex Rank 3", "tone": "warn" },
+    { "text": "no RNG", "tone": "info" }
+  ],
+  "prices": [
+    { "label": "blueprints", "amount": "30,000 standing", "money": false },
+    { "label": "build", "amount": "80,000 cr", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "THE LOTUS EATERS, THEN THE HEX",
+      "sub": null,
+      "activity": "The Hex quest chain",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "The Lotus Eaters",
+          "note": "needs The Duviri Paradox",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "The Hex",
+          "note": "unlocks Höllvania Central Mall and The Hex syndicate",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "currency",
+      "place": "HÖLLVANIA",
+      "sub": null,
+      "activity": "sweep Hex Treasures on any mission; turn extras in to Leticia",
+      "meta": "daily cap 16,000 + 500/MR",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "Hex standing", "amount": "101,000" },
+      "spends": [],
+      "map": "hollvania",
+      "rows": [
+        {
+          "qty": null,
+          "label": "Rank 1 Leftovers",
+          "note": "5,000 standing, 10,000 cr, 15 Efervon Sample, 15 Hollvanian Pitchweave Fragment",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Rank 2 Fresh Slice",
+          "note": "22,000 standing, 25,000 cr, 5 Experimental Arc-Relay, 12 Entrati Obols, 25 Hollvanian Pitchweave Fragment",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Rank 3 - 2-For-1",
+          "note": "44,000 standing, 50,000 cr, one each of six Hex Treasures",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Every Höllvania mission spawns 8 Hex Treasures (one 2,500, one 1,500, six 750s); sweeping them, not bounty rewards, is what hits the daily cap.",
+        "Keep one of each 750-standing Treasure type (Comic, CD, Sixpack, Mood Crystal, Cereal, Film) uncashed; Rank 3 eats one of each."
+      ],
+      "bonuses": [
+        "Loot radar plus a vacuum companion tags Treasures at range.",
+        "Steel Path Höllvania bounties roughly double standing per run, about 9,000 per top-tier bounty."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "HÖLLVANIA",
+      "sub": null,
+      "activity": "enemies, containers and the Techrot underground",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "hollvania",
+      "rows": [
+        {
+          "qty": "175",
+          "label": "Efervon Sample",
+          "note": "rank-ups + Receiver + Handle; Stockpiles or bounty rewards",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "80",
+          "label": "Hollvanian Pitchweave Fragment",
+          "note": "rank-ups + Barrel",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "25",
+          "label": "Experimental Arc-Relay",
+          "note": "Rank 2 + Barrel; Rhu Manor / Mausoleum East Exterminate",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "72",
+          "label": "Techrot Chitin",
+          "note": "all three components; Rhu Manor / Mausoleum East Exterminate",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "18",
+          "label": "Techrot Motherboard",
+          "note": "Receiver + Handle; underground Techrot areas only",
+          "alt": null,
+          "done": false
+        },
+        { "qty": "300", "label": "Salvage", "note": "Receiver", "alt": null, "done": false },
+        { "qty": "20", "label": "Polymer Bundle", "note": "Handle", "alt": null, "done": false },
+        {
+          "qty": "12",
+          "label": "Entrati Obols",
+          "note": "Rank 2; from Albrecht's Laboratories, Deimos",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "All of these keep dropping while sweeping Hex Treasures for standing, so this is a top-up, not a separate trip.",
+        "Entrati Obols is Deimos-sourced; Whispers in the Walls access is a soft prerequisite even though it isn't required for The Hex itself."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "HÖLLVANIA",
+      "sub": null,
+      "activity": "Hell-Scrub or Legacyte Harvest",
+      "meta": "1 needed, farm last",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "hollvania",
+      "rows": [
+        {
+          "qty": "1",
+          "label": "Argon Crystal",
+          "note": "Barrel; decays after pickup",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Grab this last; Argon halves daily once it starts decaying."],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "AMIR, HÖLLVANIA CENTRAL MALL",
+      "sub": null,
+      "activity": "buy Vesper 77 blueprints",
+      "meta": "30,000 standing at Rank 3",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Hex standing", "amount": "30,000" }],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Main Blueprint",
+          "note": "15,000 standing",
+          "alt": "or Tier 4 Central Mall bounty drop, 3.70% per stage",
+          "done": false
+        },
+        {
+          "qty": "3",
+          "label": "Barrel, Receiver and Handle Blueprints",
+          "note": "5,000 standing each",
+          "alt": "or Hell-Scrub/Legacyte Harvest drops, best 5.41% Hell-Scrub rotation C",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Buying from Amir spends the same standing pool needed for Arthur's rank-ups; rank up first, buy after."
+      ],
+      "bonuses": [],
+      "disclosures": [
+        {
+          "title": "the drop route",
+          "body": "Main blueprint: 3.70% per Tier 4 Central Mall stage, about 27 stages average. Parts: best is Hell-Scrub rotation C at 5.41% each; Legacyte Harvest tops out at 1.69% and only wins if you kill more than one Legacyte every two minutes including the defense stage. Nearly everyone recommends buying instead."
+        }
+      ]
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build components, then Vesper 77",
+      "meta": "12h each",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Barrel",
+          "note": "20,000 cr, 40 Hollvanian Pitchweave Fragment, 16 Techrot Chitin, 20 Experimental Arc-Relay, 1 Argon Crystal",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Receiver",
+          "note": "20,000 cr, 80 Efervon Sample, 16 Techrot Chitin, 12 Techrot Motherboard, 300 Salvage",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Handle",
+          "note": "20,000 cr, 80 Efervon Sample, 40 Techrot Chitin, 6 Techrot Motherboard, 20 Polymer Bundle",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Vesper 77",
+          "note": "20,000 cr plus the three parts",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Only the built parts are tradeable, not the blueprints."],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

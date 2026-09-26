@@ -1,0 +1,119 @@
+{
+  "name": "Arca Titron",
+  "kind": "melee",
+  "effort": 2,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 1, "unit": "blueprint" },
+  "badges": [
+    { "text": "credits only", "tone": "info" },
+    { "text": "Argon decays", "tone": "warn" }
+  ],
+  "prices": [
+    { "label": "blueprint", "amount": "30,000 cr", "money": false },
+    { "label": "build", "amount": "20,000 cr", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "vendor",
+      "place": "MARKET",
+      "sub": null,
+      "activity": "buy blueprint",
+      "meta": "30,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Arca Titron Blueprint",
+          "note": "MR 10 required",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "MARS OR URANUS",
+      "sub": null,
+      "activity": "kill for the rare Gallium drop; Circuits and Polymer Bundle are common",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "6",
+          "label": "Gallium",
+          "note": "rare drop, 1-2 per pickup",
+          "alt": null,
+          "done": false
+        },
+        { "qty": "2,150", "label": "Circuits", "note": null, "alt": null, "done": false },
+        { "qty": "1,200", "label": "Polymer Bundle", "note": null, "alt": null, "done": false }
+      ],
+      "conditions": ["Stockpile these before the Argon run; they don't decay."],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "THE VOID",
+      "sub": null,
+      "activity": "any Void mission",
+      "meta": "farm last, the same day you build",
+      "mode": "Xaku or Limbo, low-level Capture/Exterminate",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "2",
+          "label": "Argon Crystal",
+          "note": "Argon Pegmatite nodes, containers, lockers, enemies",
+          "alt": "Corrupted Vor drops one at a 50% chance, on Mot/Ani",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Argon decays: the stack halves (rounded down) at every 00:00 UTC reset after pickup. Gather everything else first.",
+        "Argon is not refunded if a Foundry build is cancelled."
+      ],
+      "bonuses": [
+        "Xaku (The Vast Untime) or Limbo (Cataclysm) on a low-level Void Capture/Exterminate (Hepit, Teshub, Ukko) breaks every container through walls for 1-4 Argon in 2-5 minutes.",
+        "Smeeta Kavat Charm, Resourceful Retriever, a resource booster and Steel Path all stack for this pickup."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Arca Titron",
+      "meta": "12h, 20,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Arca Titron", "note": null, "alt": null, "done": false }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

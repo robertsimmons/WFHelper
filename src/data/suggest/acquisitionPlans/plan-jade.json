@@ -1,0 +1,182 @@
+{
+  "name": "Jade",
+  "kind": "warframe",
+  "effort": 3,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "badges": [
+    { "text": "pity currency, no cap", "tone": "info" },
+    { "text": "solo quest gate", "tone": "warn" }
+  ],
+  "prices": [{ "label": "built", "amount": "275 p", "money": false }],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "QUESTS",
+      "sub": null,
+      "activity": "The New War, then Jade Shadows",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "The New War",
+          "note": "required to start Jade Shadows",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Jade Shadows",
+          "note": "solo only, 30-40 min; you play as Stalker",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Completing Jade Shadows mails the Jade main blueprint and unlocks Ascension on Brutus, Uranus."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "BRUTUS, URANUS",
+      "sub": null,
+      "activity": "Ascension",
+      "meta": "6-8 minutes per run; 11-13 Vestigial Motes normal, 16-18 Steel Path",
+      "mode": "Steel Path recommended, solo or recruiting chat",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Neuroptics Blueprint",
+          "note": "4.63% per run",
+          "alt": {
+            "text": "or 150 Vestigial Motes at Ordis",
+            "spends": [{ "currency": "Vestigial Motes", "amount": "150" }]
+          },
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Chassis Blueprint",
+          "note": "4.63% per run",
+          "alt": {
+            "text": "or 150 Vestigial Motes at Ordis",
+            "spends": [{ "currency": "Vestigial Motes", "amount": "150" }]
+          },
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Systems Blueprint",
+          "note": "4.63% per run",
+          "alt": {
+            "text": "or 150 Vestigial Motes at Ordis",
+            "spends": [{ "currency": "Vestigial Motes", "amount": "150" }]
+          },
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Evensong, Cantare and Harmony share the same reward table, so any single run has about a 14% chance of some Jade part.",
+        "Always summon the Sister: collect 3 Sister Beacons during the elevator ride for a Sister of Parvos fight worth more motes and a guaranteed arcane on Steel Path.",
+        "Boosters, Nekros' Desecrate and similar loot abilities do not affect part drops or Vestigial Motes; only the Sister's Steel Essence gets boosted."
+      ],
+      "bonuses": [
+        "Steel Path packs more motes and Eximus density, doubling as a good Riven Sliver and affinity farm.",
+        "Switch to Operator/Drifter and void sling up the elevator shaft to spot the blue/white beacon glow; Titania flying upward also works."
+      ],
+      "disclosures": [
+        {
+          "title": "finding beacons",
+          "body": "Beacons sit on pipes, in side rooms and sometimes the bottom floor; more than 3 spawn, so skip the hard ones. Turning every audio channel down except sound effects makes the beacon chime easy to hear."
+        },
+        {
+          "title": "the capsule can't fail",
+          "body": "The capsule is invulnerable while the elevator climbs, so stealth or mobility frames can spend all their time on Boosted Ionic Charges (the bigger, double-outlined ones, which stack up to 50s). If it loses shields during the final escort it just pauses until they regenerate; only deaths fail the mission."
+        }
+      ]
+    },
+    {
+      "type": "vendor",
+      "place": "ORDIS, DRIFTER'S CAMP",
+      "sub": null,
+      "activity": "buy whatever parts are still missing",
+      "meta": "450 motes covers a full first set; the quest already pays the main blueprint",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Vestigial Motes", "amount": "450" }],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "any missing component blueprint",
+          "note": "150 Vestigial Motes each",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The quest grants the main blueprint outright, so only the three components ever cost motes on a first copy.",
+        "A second copy needs all 900 motes, since the quest's main-blueprint reward doesn't repeat."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build components, then Jade",
+      "meta": "12h each, then 3 days",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Neuroptics",
+          "note": "Neurodes, Neural Sensors, Nano Spores, Polymer Bundle",
+          "alt": null,
+          "done": false
+        },
+        { "qty": null, "label": "Chassis", "note": "Morphics, Alloy Plate, Circuits", "alt": null, "done": false },
+        {
+          "qty": null,
+          "label": "Systems",
+          "note": "Control Module, Plastids, Rubedo, Ferrite",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Jade",
+          "note": "25,000 cr, 1 Orokin Cell, 3 days",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Per-resource amounts came through garbled on the wiki page; confirm exact quantities in the Foundry before farming materials."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

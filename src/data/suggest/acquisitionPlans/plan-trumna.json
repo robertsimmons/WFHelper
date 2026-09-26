@@ -1,0 +1,287 @@
+{
+  "name": "Trumna",
+  "kind": "primary",
+  "effort": 6,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "badges": [
+    { "text": "dual syndicate gate", "tone": "warn" },
+    { "text": "Heciphron mining", "tone": "warn" }
+  ],
+  "prices": [
+    { "label": "blueprints", "amount": "12,500 Entrati Standing", "money": false },
+    { "label": "build", "amount": "80,000 cr", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "currency",
+      "place": "NECRALISK, DEIMOS",
+      "sub": null,
+      "activity": "rank up with the Entrati to Associate (Rank 3)",
+      "meta": "44,000 cumulative standing + sacrifice",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "44,000",
+          "label": "rank-ups to Associate",
+          "note": "cumulative standing",
+          "alt": null,
+          "done": false
+        },
+        { "qty": "3", "label": "Sly Vulpaphyla Tag", "note": "Rank 3 sacrifice", "alt": null, "done": false },
+        {
+          "qty": "3",
+          "label": "Vizier Predasite Tag",
+          "note": "Rank 3 sacrifice",
+          "alt": null,
+          "done": false
+        },
+        { "qty": "1", "label": "Mother Token", "note": "Rank 3 sacrifice", "alt": null, "done": false },
+        { "qty": "1", "label": "Son Token", "note": "Rank 3 sacrifice", "alt": null, "done": false }
+      ],
+      "conditions": [
+        "Old Peace (Update 41, Dec 2025) rebalanced this rank sacrifice: guides naming Medjay Predasite or common bird tags instead of Sly Vulpaphyla/Vizier Predasite tags are pre-rework and wrong.",
+        "Sly Vulpaphyla and Vizier Predasite tags come from Conservation on Deimos, not combat kills."
+      ],
+      "bonuses": [
+        "Mother Tokens from Tier 4/5 bounties are the lowest-effort standing at 100 each; resource tokens (Son/Daughter/Father/Otak/Grandmother) are worth more but need trading up."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "currency",
+      "place": "GRANDMOTHER, NECRALISK",
+      "sub": null,
+      "activity": "trade resource tokens up to Grandmother Tokens",
+      "meta": "10 Grandmother Tokens buys the single Seriglass Shard",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "10",
+          "label": "Grandmother Token",
+          "note": "trades for the single Seriglass Shard",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Grandmother's 'Mend the Family' trade offers cycle every 8 hours and are randomised — you can't grind them on demand.",
+        "Since Old Peace (Dec 2025), Daughter/Father/Otak tokens are worth 500 standing each, Son 1,000, Grandmother 3,000; a Grandmother Token is always worth 50% more than what's paid for it.",
+        "Seriglass Shard costs 10 Grandmother Tokens, down from 20 pre-Old-Peace — threads describing a 20-token cost are stale."
+      ],
+      "bonuses": [
+        "Trade spare Mother Tokens up to Grandmother Tokens on every Deimos trip rather than running a dedicated session; several players report never having 'farmed' the shard at all this way."
+      ],
+      "disclosures": [
+        {
+          "title": "this is the real currency grind",
+          "body": "Seriglass Shard is the single line item people call out as the actual Trumna bottleneck: it's invisible until the parts blueprints are bought, so start banking tokens the same day mining starts, not after the 12-hour parts finish."
+        }
+      ]
+    },
+    {
+      "type": "vendor",
+      "place": "FATHER, NECRALISK",
+      "sub": null,
+      "activity": "buy blueprints",
+      "meta": "12,500 standing (main is also a free Rank 3 pick)",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Entrati Standing", "amount": "12,500" }],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Trumna Blueprint",
+          "note": "5,000 standing",
+          "alt": "claim as the free Rank 3 vendor item",
+          "done": false
+        },
+        { "qty": null, "label": "Barrel Blueprint", "note": "2,500 standing", "alt": null, "done": false },
+        { "qty": null, "label": "Receiver Blueprint", "note": "2,500 standing", "alt": null, "done": false },
+        { "qty": null, "label": "Stock Blueprint", "note": "2,500 standing", "alt": null, "done": false }
+      ],
+      "conditions": [
+        "A spare Barrel blueprint is also a required sacrifice for Necraloid Rank 3 (Clearance: Odima); buy and build a second while at Father if you care about that syndicate too."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "CAMBION DRIFT, DEIMOS",
+      "sub": null,
+      "activity": "mine Heciphron and Embolos, refine at Otak",
+      "meta": "switch mining tools between passes",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "cambion-drift",
+      "rows": [
+        {
+          "qty": "20",
+          "label": "Heciphron",
+          "note": "refines 1:1 into Purified Heciphron via Otak's Rank 1 blueprint (2,000 standing)",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "30",
+          "label": "Bapholite",
+          "note": "refines into Tempered Bapholite, 20 per build (2 builds)",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "3",
+          "label": "Cabochon Embolos",
+          "note": "raw gem, 3-for-3 refine; the blueprint itself is Rank 3 Entrati locked",
+          "alt": null,
+          "done": false
+        },
+        { "qty": "20", "label": "Sporulate Sac", "note": "Daughter filleting, from Glutinox", "alt": null, "done": false },
+        {
+          "qty": "10",
+          "label": "Waxen Sebum Deposit",
+          "note": "Daughter filleting, from Amniophysi in cave hotspots",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "20",
+          "label": "Saturated Muscle Mass",
+          "note": "Daughter filleting, from Kymaeros, Ostimyr, or Flagellocanth",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "30",
+          "label": "Lucent Teroglobe",
+          "note": "drops from Vitrific Outcrops around Requiem Obelisks, and from bounties",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "1",
+          "label": "Argon Crystal",
+          "note": "decays 50% every 24h; grab last and build the Receiver immediately",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Do not use the Sunpoint Plasma Drill on the Heciphron pass — its guaranteed rare bonus drop crowds out the uncommon gem you actually want. Use the Advanced or Focused Nosam Cutter instead.",
+        "Flip tools between passes: a short Sunpoint pass for the 3 raw Embolos, then switch to a Nosam cutter for Heciphron.",
+        "Requiem Obelisks/pylons double as a Lucent Teroglobe source via their Vitrific Outcrops, so one obelisk loop covers both.",
+        "Solo is recommended for the conservation leg (Amniophysi, Kymaeros, etc.) to avoid enemies killing tranquilized targets or host migration eating resources."
+      ],
+      "bonuses": [
+        "A resource drop chance booster is reported to change node colour distribution, spawning more gem nodes rather than just better per-node odds; treat as likely but unconfirmed."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "CETUS, PLAINS OF EIDOLON",
+      "sub": null,
+      "activity": "mine and refine Marquise Veridos and Auroxium Alloy",
+      "meta": "Ostron Rank 3 (Trusted) needed for both refine blueprints",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "plains-of-eidolon",
+      "rows": [
+        {
+          "qty": "15",
+          "label": "Marquise Veridos",
+          "note": "blue vein, refined via Old Man Suumbaat, 7,500 cr blueprint, Trusted rank",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "45",
+          "label": "Auroxium Alloy",
+          "note": "red vein, refined via Old Man Suumbaat, 7,500 cr blueprint, Trusted rank",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Both refine blueprints require Ostron Rank 3 (Trusted); buy them early since they're cheap and you'll already be on the Plains."
+      ],
+      "bonuses": [
+        "Ivara with Prowl fishes, mines, tranqs and scans without breaking invisibility, and her dashwires reach spots you can't stand on."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build components, then Trumna",
+      "meta": "20,000 cr per part, 12h each",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Barrel",
+          "note": "20,000 cr, 45 Adramal Alloy, 15 Marquise Veridos, 20 Sporulate Sac, 5 Orokin Cell",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Receiver",
+          "note": "20,000 cr, 30 Tempered Bapholite, 15 Purified Heciphron, 10 Waxen Sebum Deposit, 1 Argon Crystal",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Stock",
+          "note": "20,000 cr, 45 Auroxium Alloy, 30 Lucent Teroglobe, 20 Saturated Muscle Mass, 2 Cabochon Embolos",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Trumna",
+          "note": "1 Seriglass Shard + the three parts above",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Trumna ships with zero polarities and a 5-second reload; budget 3+ Forma before judging it."
+      ],
+      "bonuses": [],
+      "disclosures": [
+        {
+          "title": "the grind is worth it",
+          "body": "Community sentiment is close to unanimous that the gun is worth the grind, unlike Caliban or the Hema. The recurring regret is buying a Trumna riven before realizing the weapon itself can't be bought with plat at all."
+        }
+      ]
+    }
+  ]
+}

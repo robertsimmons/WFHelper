@@ -1,0 +1,209 @@
+{
+  "name": "Quassus",
+  "kind": "melee",
+  "effort": 4,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 1, "unit": "blueprint" },
+  "badges": [
+    { "text": "Scintillant bottleneck", "tone": "warn" },
+    { "text": "Cambion Drift bounty", "tone": "warn" }
+  ],
+  "prices": [
+    { "label": "build", "amount": "20,000 cr", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "NECRALISK, DEIMOS",
+      "sub": null,
+      "activity": "finish Heart of Deimos",
+      "meta": "MR 5 for the Tier 5 bounty",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Heart of Deimos",
+          "note": "opens the Necralisk and Cambion Drift bounties",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Mother's Level 40-60 (Tier 5) bounty tier needs Mastery Rank 5; the Steel Path Necralisk bounty needs MR 10 plus Steel Path unlocked and drops the blueprint at the same rate."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "bounty",
+      "place": "CAMBION DRIFT, DEIMOS",
+      "sub": "Mother, Necralisk",
+      "activity": "Level 40-60 (Tier 5) bounty, any rotation",
+      "meta": "43.48% final stage, 22.22% stage 4",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "cambion-drift",
+      "rows": [
+        {
+          "qty": null,
+          "label": "Quassus Blueprint",
+          "note": "43.48% on the final stage, 22.22% on stage 4, all three reward rotations",
+          "alt": "Steel Path Necralisk bounty, same rates",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Bounty rewards are not boosted by Resource or Drop Chance boosters."
+      ],
+      "bonuses": [
+        "Xaku's own Tier 5 bounty is the same track and also needs 5 Scintillant, so farm both signature items at once."
+      ],
+      "disclosures": [
+        {
+          "title": "expect about two final stages",
+          "body": "The blueprint has been a running community meme for years - most players clear it in 1-3 Tier 5 runs and end up with spare copies while farming Xaku parts."
+        }
+      ]
+    },
+    {
+      "type": "farm",
+      "place": "CAMBION DRIFT, DEIMOS",
+      "sub": "Isolation Vault, Arcana bounty",
+      "activity": "loop the floating Scintillant pickup",
+      "meta": "~1 per loop, ~15 min a loop",
+      "mode": "solo",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "cambion-drift",
+      "rows": [
+        {
+          "qty": "5",
+          "label": "Scintillant",
+          "note": "buzzing floating pickup near the vault entrance; Loot Radar helps",
+          "alt": "Nekros Desecrate on vault Necramechs, or Tier 2 bounty stage 1 only",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Run a normal Isolation Vault bounty first to unlock the Arcana vault bounty from Mother.",
+        "Take the esophage out to fail the bounty, then re-take the Arcana bounty from Mother without returning to the Necralisk; some single-room vaults don't spawn a floating pickup.",
+        "Must be host for the reset loop to work, so run it solo."
+      ],
+      "bonuses": [],
+      "disclosures": [
+        {
+          "title": "don't finish the Tier 2 bounty for it",
+          "body": "Only stage 1 of a Tier 2 bounty pays Scintillant at a useful rate; later stages add little or nothing, so abandon and re-take stage 1 instead of finishing the run."
+        }
+      ]
+    },
+    {
+      "type": "craft",
+      "place": "OTAK, NECRALISK",
+      "sub": null,
+      "activity": "buy the reusable Devolved Namalon blueprint, then build 3x",
+      "meta": "2,000 Entrati standing; 20 per build",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Entrati standing", "amount": "2,000" }],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Devolved Namalon blueprint", "note": "reusable, one-time purchase", "alt": null, "done": false },
+        { "qty": "60", "label": "Namalon", "note": "mined ore; 20 per build", "alt": null, "done": false },
+        { "qty": "60", "label": "Ferros", "note": "20 per build", "alt": null, "done": false },
+        { "qty": "480", "label": "Rubedo", "note": "160 per build", "alt": null, "done": false },
+        { "qty": "45", "label": "Lucent Teroglobe", "note": "mined ore; 15 per build", "alt": null, "done": false },
+        { "qty": "60", "label": "Devolved Namalon", "note": "3 builds of 20, 1,000 cr each", "alt": null, "done": false }
+      ],
+      "conditions": [
+        "Needs Entrati Rank 1 (Stranger) to unlock Otak's blueprint offer.",
+        "Namalon and Lucent Teroglobe are mined in the Cambion Drift with a mining tool bought from Father."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "CAMBION DRIFT, DEIMOS",
+      "sub": null,
+      "activity": "fish Vitreospina or Chondricord in the caves, cut at Daughter",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "cambion-drift",
+      "rows": [
+        {
+          "qty": "15",
+          "label": "Spinal Core Section",
+          "note": "cut fish parts at Daughter",
+          "alt": "Isolation Vault bounties, or Sagiant Entrati Caskets",
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "GRANDMOTHER, NECRALISK",
+      "sub": null,
+      "activity": "buy Seriglass Shard",
+      "meta": "10 Grandmother Tokens",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Grandmother Token", "amount": "10" }],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Seriglass Shard", "note": "10 Grandmother Tokens", "alt": null, "done": false }
+      ],
+      "conditions": [
+        "Grandmother Tokens come from trading in other family tokens through her Mend the Family exchange."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Quassus",
+      "meta": "12h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Quassus",
+          "note": "20,000 cr, 60 Devolved Namalon, 15 Spinal Core Section, 5 Scintillant, 1 Seriglass Shard",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

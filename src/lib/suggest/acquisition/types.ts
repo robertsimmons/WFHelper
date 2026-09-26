@@ -135,7 +135,9 @@ export interface PathStep {
 export interface PlatCost {
   /** The whole set, where the market prices it. */
   set: number | null;
-  parts: { name: string; plat: number | null }[];
+  /** The market slug the set price came off, so a link opens what was priced. */
+  setSlug: string | null;
+  parts: { name: string; plat: number | null; slug: string | null }[];
   /** Sum of the part rows; null while any one of them is unpriced. */
   partsTotal: number | null;
 }

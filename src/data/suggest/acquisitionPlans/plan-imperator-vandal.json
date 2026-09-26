@@ -1,0 +1,145 @@
+{
+  "name": "Imperator Vandal",
+  "kind": "archgun",
+  "effort": 6,
+  "tradeable": "parts and blueprint only",
+  "progress": { "have": 0, "need": 3, "unit": "parts" },
+  "badges": [
+    { "text": "Fomorian event only", "tone": "warn" },
+    { "text": "Rotation A, 10% each", "tone": "info" }
+  ],
+  "prices": [{ "label": "build", "amount": "25,000 cr", "money": false }],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "MARKET",
+      "sub": null,
+      "activity": "buy the Fomorian Disruptor blueprint now",
+      "meta": "5,000 cr, reusable",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Fomorian Disruptor Blueprint",
+          "note": "Gear wheel item, needed to even queue the mission",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "You cannot queue Fomorian Sabotage without a Disruptor already built and equipped in your Gear wheel.",
+        "The event is a manual server-side trigger with no announced schedule; recent Fomorians have come roughly every 3-4 months."
+      ],
+      "bonuses": [],
+      "disclosures": [
+        {
+          "title": "when it fires",
+          "body": "DE sends an inbox message and a Fomorian Sabotage node appears next to one Relay once the community completes enough Grineer-sided Invasions. It can sit fully built for weeks before activation."
+        }
+      ]
+    },
+    {
+      "type": "craft",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Fomorian Disruptors",
+      "meta": "1-minute build, one consumed per player per run",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "4",
+          "label": "Omega Isotope",
+          "note": "per Disruptor; event-only drop, non-Archwing missions on the attacked planet",
+          "alt": null,
+          "done": false
+        },
+        { "qty": null, "label": "Cryotic", "note": "Disruptor recipe", "alt": null, "done": false },
+        { "qty": null, "label": "Credits", "note": "Disruptor recipe", "alt": null, "done": false }
+      ],
+      "conditions": [
+        "Omega Isotopes only drop while the event is live, only on the planet being attacked, and only in non-Archwing missions.",
+        "One Disruptor is consumed per player per run, including players who never press the button — budget 4 isotopes per attempt."
+      ],
+      "bonuses": [
+        "Excavation on the affected planet farms Cryotic and Isotopes at once.",
+        "Nekros Desecrate or a pilfer-augment frame stretches the isotope farm; heavies like Bombards drop multiples."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "BALOR FOMORIAN",
+      "sub": null,
+      "activity": "Fomorian Sabotage",
+      "meta": "Rotation A, one roll per run",
+      "mode": "public recommended",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Imperator Vandal Blueprint",
+          "note": "10%",
+          "alt": null,
+          "done": false
+        },
+        { "qty": null, "label": "Imperator Vandal Barrel", "note": "10%", "alt": null, "done": false },
+        {
+          "qty": null,
+          "label": "Imperator Vandal Receiver",
+          "note": "10%",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Break both upper-hull shield generators before entering; triggering the Disruptor before the squad is inside burns everyone's Disruptor and starts the 30-second vulnerability window early.",
+        "Get 1,400m from the core within 30 seconds of activation or you die; only one squadmate needs to escape for the mission to count."
+      ],
+      "bonuses": [
+        "Shoot all 16 nodes on the core first — each destroyed node adds +25% damage taken, capping at 5x, the single biggest lever on the one-time 1,000,000-damage Catalyst milestone.",
+        "The core takes no critical hits; mod for raw damage, multishot, fire rate and reload instead — Larkspur Prime, Mausolon, Kuva Grattler and Velocitus are the named picks.",
+        "Public squads post 4-10M damage and clear the Catalyst milestone on the first run; the damage counter is a squad total, not accumulated across attempts."
+      ],
+      "disclosures": [
+        {
+          "title": "parts are tradeable",
+          "body": "Trade for a missing piece from a clanmate during the event; giveaway threads for spare barrels and blueprints are common while it's live."
+        }
+      ]
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Imperator Vandal",
+      "meta": "12h, MR5",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Credits", "note": "25,000", "alt": null, "done": false },
+        { "qty": "10", "label": "Tellurium", "note": null, "alt": null, "done": false }
+      ],
+      "conditions": ["MR5 to equip."],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

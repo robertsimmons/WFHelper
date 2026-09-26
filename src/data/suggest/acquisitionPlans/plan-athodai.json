@@ -1,0 +1,87 @@
+{
+  "name": "Athodai",
+  "kind": "secondary",
+  "effort": 6,
+  "tradeable": true,
+  "progress": { "have": 0, "need": 3, "unit": "parts" },
+  "badges": [
+    { "text": "Railjack required", "tone": "warn" },
+    { "text": "no pity", "tone": "warn" }
+  ],
+  "prices": [{ "label": "build", "amount": "20,000 cr", "money": false }],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "RISING TIDE, THEN VENUS PROXIMA",
+      "sub": null,
+      "activity": "build a Railjack (or join a crew) and reach Piloting Intrinsic rank 5",
+      "meta": "Piloting 5 puts a waypoint on the derelict",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Rising Tide", "note": "quest that unlocks your own Railjack", "alt": "join an Empyrean crew instead; needs The Archwing quest", "done": false },
+        { "qty": null, "label": "Piloting Intrinsic rank 5", "note": "the derelict has no waypoint before this", "alt": null, "done": false }
+      ],
+      "conditions": [
+        "Without Piloting 5 the Orokin Shield Derelict has no marker; some threads wrongly say rank 10."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "BIFROST ECHO, VENUS PROXIMA",
+      "sub": null,
+      "activity": "Archwing into the Orokin Shield Derelict, hack the terminal, finish the mission",
+      "meta": "6.45% per part, Cache B",
+      "mode": "solo, lowest-level node",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Athodai Blueprint", "note": "6.45%, Cache B", "alt": null, "done": false },
+        { "qty": null, "label": "Athodai Barrel", "note": "6.45%, Cache B", "alt": null, "done": false },
+        { "qty": null, "label": "Athodai Receiver", "note": "6.45%, Cache B", "alt": null, "done": false }
+      ],
+      "conditions": [
+        "Hack the terminal before finishing the mission if you like; the reward only counts once the mission completes.",
+        "Point of Interest Cache A never drops Athodai; only the derelict's Cache B does.",
+        "Leaving before mission completion loses the roll, and there is no pity system for Railjack caches."
+      ],
+      "bonuses": [
+        "Void Storms don't change the derelict odds, so open relics or roll Void Storm rewards in the same run."
+      ],
+      "disclosures": [
+        {
+          "title": "why Bifrost Echo",
+          "body": "It's the lowest-level Venus Proxima node (enemy level 15-18), so both the derelict detour and the mission finish fastest. Every Venus Proxima node shares the same Cache B table."
+        }
+      ]
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Athodai",
+      "meta": "20,000 cr, 1 Orokin Cell, 24h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Athodai", "note": null, "alt": null, "done": false }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

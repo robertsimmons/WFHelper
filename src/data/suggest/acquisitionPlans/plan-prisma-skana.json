@@ -1,0 +1,92 @@
+{
+  "name": "Prisma Skana",
+  "kind": "melee",
+  "effort": 2,
+  "tradeable": true,
+  "progress": { "have": 0, "need": 1, "unit": "weapon" },
+  "badges": [
+    { "text": "Baro Ki'Teer only", "tone": "warn" },
+    { "text": "510 Ducats", "tone": "info" }
+  ],
+  "prices": [
+    { "label": "credits", "amount": "175,000 cr", "money": false },
+    { "label": "Ducats", "amount": "510", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "currency",
+      "place": "VOID FISSURES, ANY",
+      "sub": null,
+      "activity": "open Void Relics for Prime parts, sell the best drop for Ducats",
+      "meta": "stockpile ahead of Baro's visit",
+      "mode": "full squad of four",
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "Ducats", "amount": "510" },
+      "spends": [],
+      "map": "void",
+      "rows": [
+        {
+          "qty": null,
+          "label": "open relics, take the highest-value drop",
+          "note": "gold 100, silver 45, bronze 15 Ducats at the Kiosk",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "sell duplicate Prime parts first",
+          "note": "free Ducats from your existing stash",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Skip relics whose uncommon slot is Forma; Forma blueprints can't be sold for Ducats.",
+        "Ducat Kiosks are closed at Maroo's Bazaar; use a regular relay.",
+        "Stockpile Ducats ahead of Baro's visit rather than starting the farm once he arrives."
+      ],
+      "bonuses": [
+        "Radiant relics raise the chance at a gold part if you have Void Traces to spare.",
+        "During Prime Resurgence, Varzia exchanges Aya for Ducats at 5 per Aya; a poor rate, useful only for leftover Aya.",
+        "Capture, Exterminate, Excavation, Disruption and Void Cascade are the fissure types people ran fastest; a speed frame like Volt or Wisp keeps a squad's pace up, since it moves at its slowest member."
+      ],
+      "disclosures": [
+        {
+          "title": "build each Prime once first",
+          "body": "If you still need a Prime part for its own build, craft it before selling it for Ducats. Selling it first means farming the part again later."
+        }
+      ]
+    },
+    {
+      "type": "vendor",
+      "place": "RELAY, CONCOURSE",
+      "sub": null,
+      "activity": "check Baro's rotating stock, then buy if listed",
+      "meta": "arrives every 2 weeks, stays ~48h",
+      "mode": null,
+      "live": { "state": "waiting", "text": "check the Ducat Kiosk countdown for his next relay" },
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Prisma Skana",
+          "note": "175,000 credits + 510 Ducats, only when in his rotating stock",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Baro's stock changes every visit; Prisma Skana isn't guaranteed to be listed, and historical gaps between appearances have stretched to several months.",
+        "It arrives as the finished weapon: no blueprint, no crafting step."
+      ],
+      "bonuses": [
+        "The annual TennoCon relay sells his entire back-catalog for one week, Prisma Skana included, but entry needs a Baro's Relay Ticket from the real-money TennoCon Digital Pack."
+      ],
+      "disclosures": []
+    }
+  ]
+}

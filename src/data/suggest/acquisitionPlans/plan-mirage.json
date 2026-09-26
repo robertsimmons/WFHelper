@@ -1,0 +1,163 @@
+{
+  "name": "Mirage",
+  "kind": "warframe",
+  "effort": 2,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "badges": [
+    { "text": "guaranteed quest drops", "tone": "info" },
+    { "text": "Argon decays fast", "tone": "warn" }
+  ],
+  "prices": [
+    { "label": "blueprint", "amount": "35,000 cr", "money": false },
+    { "label": "built", "amount": "200 p", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "STAR CHART, THEN CODEX",
+      "sub": null,
+      "activity": "clear to Sedna, then the Hidden Messages quest",
+      "meta": "3 guaranteed component drops",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Olympus, Mars",
+          "note": "Exterminate, ~lvl 30; rewards Neuroptics Blueprint",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Calypso, Saturn",
+          "note": "15-min Survival, lvl 28-35; rewards Systems Blueprint",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Charybdis, Sedna",
+          "note": "Hive Sabotage, lvl 30-40; rewards Chassis Blueprint",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Clearing to the Sedna Junction on the Star Chart unlocks Hidden Messages from the Codex.",
+        "The quest is not replayable; a lost blueprint is only recoverable from Cephalon Simaris for 25,000 standing each."
+      ],
+      "bonuses": [
+        "Each riddle only needs reaching its node; the earlier component need not be crafted before advancing."
+      ],
+      "disclosures": [
+        {
+          "title": "Calypso life support",
+          "body": "The Survival stalls new players on life support. Don't pop capsules the moment they appear; wait until roughly 40-60%, move slowly so spawns follow, and break containers for kills."
+        }
+      ]
+    },
+    {
+      "type": "vendor",
+      "place": "MARKET",
+      "sub": null,
+      "activity": "buy blueprint",
+      "meta": "35,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Mirage Blueprint", "note": null, "alt": null, "done": false }
+      ],
+      "conditions": [
+        "The quest only awards the three component blueprints; the main blueprint is a separate Market purchase."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "THE VOID",
+      "sub": null,
+      "activity": "Capture or Exterminate with a loot-nuke frame",
+      "meta": "pick this up last",
+      "mode": "Hepit/Ukko Capture, or Teshub/Oxomoco Exterminate",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "1",
+          "label": "Argon Crystal",
+          "note": "~2 Pegmatite deposits per map, 1-2 crystals each",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Argon is stable for the first day, then halves at each 00:00 GMT reset once decay starts; farm it only once the components are ready.",
+        "Not sold on the Market and cannot be traded."
+      ],
+      "bonuses": [
+        "Max-range Limbo (Cataclysm) or Xaku (The Vast Untime) breaks every container without line of sight; a Mot or Ani Survival works without a loot frame."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build components, then Mirage",
+      "meta": "then 3 days",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Neuroptics",
+          "note": "1 Orokin Cell + Neurodes",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Chassis",
+          "note": "1 Orokin Cell + Gallium",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Systems",
+          "note": "1 Orokin Cell + Control Module",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Mirage",
+          "note": "25,000 cr + 1 Argon Crystal, 3 days",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["No Rubedo is needed anywhere in the build."],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

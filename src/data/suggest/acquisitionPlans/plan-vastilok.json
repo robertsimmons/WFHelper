@@ -1,0 +1,78 @@
+{
+  "name": "Vastilok",
+  "kind": "melee",
+  "effort": 2,
+  "tradeable": "unranked only, no Forma or Catalyst",
+  "progress": { "have": 0, "need": 1, "unit": "weapon" },
+  "badges": [
+    { "text": "Baro rotation", "tone": "warn" },
+    { "text": "MR 9", "tone": "info" }
+  ],
+  "prices": [{ "label": "Baro", "amount": "325,000 cr + 550 Ducats", "money": false }],
+  "groups": [
+    {
+      "type": "currency",
+      "place": "ANY RELIC MISSION",
+      "sub": "Relay Ducat Kiosk",
+      "activity": "crack Void Relics, trade Prime parts for Ducats",
+      "meta": "550 Ducats needed",
+      "mode": "public Capture, Exterminate or Rescue for fast cracks",
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "Ducats", "amount": "550" },
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "550",
+          "label": "Ducats",
+          "note": "trade Prime parts at any Relay Ducat Kiosk",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Bank Ducats before Baro's visit; his window is 48 hours, too short to farm from zero."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "RELAY CONCOURSE, ANY",
+      "sub": "Baro Ki'Teer",
+      "activity": "buy the Vastilok outright",
+      "meta": "stock rotates irregularly, 2-7 months between visits",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [
+        { "currency": "Credits", "amount": "325,000" },
+        { "currency": "Ducats", "amount": "550" }
+      ],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Vastilok",
+          "note": "built and ready to equip; no Foundry step",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Baro's stock changes every visit; the Vastilok isn't guaranteed to be up even when he is.",
+        "MR 9 is needed to equip it, and to receive it in a trade.",
+        "Any rank, Forma or Catalyst makes it untradeable — keep it stock if you plan to sell or gift it."
+      ],
+      "bonuses": [],
+      "disclosures": [
+        {
+          "title": "why it's worth the wait",
+          "body": "Its ranged shot fires 9 pellets; with Shattering Impact one shot strips up to 54 armor, against 6 from a single-projectile gunblade like Stropha. Cheaper armor-strip options exist (Unairu's Caustic Strike, Sarpa) if you don't want to wait for Baro."
+        }
+      ]
+    }
+  ]
+}

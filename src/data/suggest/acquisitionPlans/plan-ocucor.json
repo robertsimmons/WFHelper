@@ -1,0 +1,222 @@
+{
+  "name": "Ocucor",
+  "kind": "secondary",
+  "effort": 2,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 1, "unit": "blueprint" },
+  "badges": [
+    { "text": "dojo research", "tone": "info" },
+    { "text": "Fieldron x10", "tone": "warn" }
+  ],
+  "prices": [
+    { "label": "blueprint (lab)", "amount": "15,000 cr", "money": false },
+    { "label": "build", "amount": "25,000 cr", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "research",
+      "place": "DOJO, ENERGY LAB",
+      "sub": null,
+      "activity": "research Fieldron (if missing), then Kreska, then Ocucor",
+      "meta": "72h + 3 days + 3 days; Ghost-clan costs",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Fieldron research",
+          "note": "5,000 cr + 5 Fieldron Sample + 100 Rubedo + 500 Nano Spores + 200 Polymer Bundle, 72h; skip if the lab already has it",
+          "alt": "buy the reusable BP for 15,000 cr",
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Kreska research",
+          "note": "10,000 cr + 25 Fieldron Sample + 5 Thermal Sludge + 10 Axidrol Alloy + 1 Recaster Neural Relay, 3 days; only needs to be researched, not built",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Ocucor research",
+          "note": "10,000 cr + 25 Fieldron Sample + 5 Gorgaricus Spore + 10 Travocyte Alloy + 1 Eye-Eye Rotoblade, 3 days",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Ocucor Blueprint",
+          "note": "15,000 cr from the lab console",
+          "alt": "join a clan that already researched it",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Kreska is a hard prerequisite for Ocucor but only needs to be researched, never built.",
+        "One research project runs at a time per lab; queue Kreska before you go fishing so the clock isn't idle.",
+        "Costs shown are Ghost-clan; multiply x3/x10/x30/x100 for Shadow/Storm/Mountain/Moon."
+      ],
+      "bonuses": [
+        "A member of an established clan can walk in and buy the blueprint the same day, skipping six days of research and the Kreska prereq entirely."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "queue 10 Fieldron, one at a time",
+      "meta": "15,000 cr + 10 Fieldron Sample + 1 Control Module + 500 Salvage + 250 Plastids each, 12h; foundry holds only one",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "10",
+          "label": "Fieldron",
+          "note": "five real days end to end since only one builds at a time",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Start this the same day as the Kreska research so the week isn't wasted waiting on one when the other could've run in parallel."
+      ],
+      "bonuses": [],
+      "disclosures": [
+        {
+          "title": "the real bottleneck",
+          "body": "Ten Fieldron, one at a time, is the single biggest time sink in the whole Ocucor farm — bigger than any material gathering."
+        }
+      ]
+    },
+    {
+      "type": "farm",
+      "place": "ORB VALLIS, VENUS",
+      "sub": null,
+      "activity": "mine, fish and loot for the build materials",
+      "meta": "Outworlder rank needed for the Venerdo Alloy blueprint",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "orb-vallis",
+      "rows": [
+        {
+          "qty": "60",
+          "label": "Venerol",
+          "note": "refines into 55+ Venerdo Alloy across three builds",
+          "alt": null,
+          "done": false
+        },
+        { "qty": "900", "label": "Rubedo", "note": "Venerdo Alloy refine", "alt": null, "done": false },
+        { "qty": "6", "label": "Gallium", "note": "Venerdo Alloy refine", "alt": null, "done": false },
+        {
+          "qty": "40",
+          "label": "Thermal Sludge",
+          "note": "Corpus encampment containers; also a common Vallis bounty reward",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "20",
+          "label": "Charamote Sagan Module",
+          "note": "one per Charamote caught in a cave hotspot with Shockprod or Stunna spear; any grade works",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "5",
+          "label": "Gorgaricus Spore",
+          "note": "purple sacs under the giant Vallis mushrooms",
+          "alt": null,
+          "done": false
+        },
+        { "qty": "1", "label": "Eye-Eye Rotoblade", "note": "warm-weather pond fish", "alt": null, "done": false },
+        {
+          "qty": "10",
+          "label": "Travocyte Alloy",
+          "note": "one refine (yields 20) from Travoride, Neutral-rank blueprint",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Venerdo Alloy is refined, not mined directly: build the blueprint from Smokefinger at Outworlder rank, 1,000 cr + 20 Venerol + 300 Rubedo + 2 Gallium per batch of 20.",
+        "Don't chase perfect catches — fish quality changes only Scrap and standing, the Sagan Module is 1 per Charamote at any grade.",
+        "Stop feeding Helminth mid-farm: Thermal Sludge is Bile and Gorgaricus Spore is Biotics, an easy way to eat your own build costs."
+      ],
+      "bonuses": ["Bring Charamote Bait and hit a cave pool instead of fishing the surface."],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Ocucor",
+      "meta": "25,000 cr, 1 day, MR 8 to equip",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Ocucor",
+          "note": "25,000 cr + 10 Fieldron + 40 Thermal Sludge + 55 Venerdo Alloy + 20 Charamote Sagan Module",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Untradeable once built."],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "CRED OFFERINGS, NIGHTWAVE",
+      "sub": null,
+      "activity": "buy Sentient Surge",
+      "meta": "20 Creds, permanent since Update 43.5",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Sentient Surge",
+          "note": "Ocucor augment; refills 20% magazine per kill, +60% crit/status per active tendril",
+          "alt": "Naberus shop at Daughter, 50 Mother Tokens",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Any reload deletes every tendril, including a cancelled reload or holster; host migration also resets the crit/status stacks.",
+        "The bonus is additive with other crit/status mods, not multiplicative — build for base damage."
+      ],
+      "bonuses": [
+        "Reload-avoidance mods (Eject Magazine, Synth set, Cyte-09's Resupply) refill ammo without wiping tendrils.",
+        "Wants a buffer/CC frame: Saryn, Volt, Mirage, Rhino, Nova, or Yareli for the auto-aim on Merulina."
+      ],
+      "disclosures": [
+        {
+          "title": "the augment is the actual farm",
+          "body": "The weapon itself is a formality; before Sentient Surge moved to the permanent Cred store it was the real cost (200-300p in 2024). The gun is 'ok and serviceable' without it and a top-tier room clearer with it."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,195 @@
+{
+  "name": "Vinquibus",
+  "kind": "primary",
+  "effort": 6,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 5, "unit": "parts" },
+  "badges": [
+    { "text": "Perita Rebellion grind", "tone": "warn" },
+    { "text": "quest gate", "tone": "warn" }
+  ],
+  "prices": [{ "label": "build", "amount": "75,000 cr", "money": false }],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "MAIN QUESTLINE",
+      "sub": null,
+      "activity": "clear every quest through The Lotus Eaters, then The Old Peace",
+      "meta": "~75 minutes for The Old Peace alone",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "all main quests through The Lotus Eaters",
+          "note": null,
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "The Old Peace",
+          "note": "unlocks the Dark Refractory — on the nav console, press the secondary prompt (F), not X",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Mission Preview can skip the quest but locks you out of Roathe's shop, so it isn't a real shortcut."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "boss",
+      "place": "DESCENDIA, DARK REFRACTORY",
+      "sub": "Infernum 21, Roathe's Oblivion",
+      "activity": "repeat the floor-21 boss after one weekly full clear",
+      "meta": "12.5% per part; ~8 kills expected per specific part, ~18 for the full set",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Vinquibus Blueprint",
+          "note": "12.5%, shared pool with Uriel's parts",
+          "alt": { "text": "or Roathe's Surplus", "spends": [{ "currency": "Maphica", "amount": "35" }] },
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Barrel Blueprint",
+          "note": "12.5%, shared pool with Uriel's parts",
+          "alt": { "text": "or Roathe's Surplus", "spends": [{ "currency": "Maphica", "amount": "25" }] },
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Receiver Blueprint",
+          "note": "12.5%, shared pool with Uriel's parts",
+          "alt": { "text": "or Roathe's Surplus", "spends": [{ "currency": "Maphica", "amount": "25" }] },
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Stock Blueprint",
+          "note": "12.5%, shared pool with Uriel's parts",
+          "alt": { "text": "or Roathe's Surplus", "spends": [{ "currency": "Maphica", "amount": "25" }] },
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Blade Blueprint",
+          "note": "12.5%, shared pool with Uriel's parts",
+          "alt": { "text": "or Roathe's Surplus", "spends": [{ "currency": "Maphica", "amount": "25" }] },
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Clear the tower once per week to unlock the floor-21 hellevator; after that, repeat Roathe with no weekly limit.",
+        "The drop pool is shared with Uriel's frame parts — a run that 'gives nothing' for Vinquibus is usually an Uriel duplicate.",
+        "Descendia is a no-respawn mode: a squad wipe fails the floor.",
+        "Collect the 4 floating orbs around Roathe to cancel his invulnerable charge."
+      ],
+      "bonuses": [
+        "Maphica also drops from containers on every floor plus fixed floor rewards (Infernums 2, 4, 9, 11, 16, 18) — a complete Vinquibus set costs 135 Maphica with zero RNG if you'd rather buy it outright.",
+        "Watch for a loot-room week (a Plunder/treasure floor placed early) for a fast Maphica haul."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "PERITA REBELLION",
+      "sub": null,
+      "activity": "kill and loot with a nuke/loot frame through the order phase and boss",
+      "meta": "materials come from kills and containers, not from completing orders",
+      "mode": "loot frame + boosters",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": "2,500", "label": "Agnovidisc", "note": "across all 4 components", "alt": null, "done": false },
+        { "qty": "1,330", "label": "Laudavi", "note": "across all 4 components", "alt": null, "done": false },
+        { "qty": "430", "label": "Servoris", "note": "across all 4 components", "alt": null, "done": false }
+      ],
+      "conditions": [
+        "Completing Perita orders does not give these materials — orders pay Tauron Strike resources instead; ignore the order count and kill/break everything.",
+        "Perita bosses time out at 30 minutes; if your build can't kill it, the run is wasted.",
+        "Solo or duo beats a random four-player squad: order requirements scale with player count, so smaller squads see more drops per minute."
+      ],
+      "bonuses": [
+        "Nekros (Desecrate/Despoil), Khora (Pilfering Strangledome) or Hydroid turn this into a passive side effect of the Uriel / Tauron Strike grind most players are already running.",
+        "Resourceful Retriever plus a resource booster and a resource drop-chance booster matter more than Steel Path.",
+        "Steel Path pays roughly 45% more of these materials per run and is optional."
+      ],
+      "disclosures": [
+        {
+          "title": "if you also want Uriel",
+          "body": "Uriel needs the same three materials from the same mission (1,975 Agnovidisc, 880 Laudavi, 350 Servoris) — farm both frames' worth in the same trip."
+        }
+      ]
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build components, then Vinquibus",
+      "meta": "12h each part, 24h final, 75,000 cr total",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Barrel",
+          "note": "15,000 cr, 325 Agnovidisc, 350 Laudavi, 120 Servoris",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Receiver",
+          "note": "15,000 cr, 725 Agnovidisc, 250 Laudavi, 95 Servoris",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Stock",
+          "note": "15,000 cr, 625 Agnovidisc, 530 Laudavi, 85 Servoris",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Blade",
+          "note": "15,000 cr, 825 Agnovidisc, 200 Laudavi, 130 Servoris",
+          "alt": null,
+          "done": false
+        },
+        { "qty": null, "label": "Vinquibus", "note": "15,000 cr, 24h", "alt": null, "done": false }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": [
+        {
+          "title": "weapon quirks",
+          "body": "It doesn't count as melee for Sortie melee-only conditions, and it can't be equipped in Duviri or Deep/Temporal Archimedea."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,346 @@
+{
+  "name": "Dual Ichor",
+  "kind": "melee",
+  "effort": 2,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 1, "unit": "weapon + Incarnon Genesis" },
+  "badges": [
+    { "text": "Bio Lab", "tone": "warn" },
+    { "text": "Steel Path Circuit · Week 5", "tone": "warn" }
+  ],
+  "prices": [
+    { "label": "blueprint", "amount": "50,000 cr", "money": false },
+    { "label": "Genesis install", "amount": "20 Pathos Clamps + Duviri mats", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "research",
+      "place": "CLAN DOJO, BIO LAB",
+      "sub": null,
+      "activity": "complete Torid research, then Dual Ichor research",
+      "meta": "3-day research each",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Torid research",
+          "note": "hard prerequisite for the Dual Ichor node",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Mutagen Sample",
+          "note": "Ghost-clan Dual Ichor research cost, ~5,000 cr total",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Circuits",
+          "note": "Ghost-clan Dual Ichor research cost",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Nano Spores",
+          "note": "Ghost-clan Dual Ichor research cost",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Polymer Bundle",
+          "note": "Ghost-clan Dual Ichor research cost",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The Bio Lab won't offer Dual Ichor research until Torid research is complete.",
+        "Both blueprints are untradeable; joining an established public clan to use its finished Bio Lab is the practical shortcut."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "CLAN DOJO, BIO LAB",
+      "sub": null,
+      "activity": "buy the personal blueprint",
+      "meta": "50,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Credits", "amount": "50,000" }],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Dual Ichor Blueprint",
+          "note": "requires completed research",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Each player buys their own blueprint after clan research completes."],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "ANY ERIS SURVIVAL",
+      "sub": null,
+      "activity": "Survival (Infested)",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "40",
+          "label": "Mutagen Sample",
+          "note": "4 Mutagen Mass, 10 each",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [
+        "Mutagen Mass also drops from Infested Invasions and Fortuna tier-4 bounty stage rewards if you'd rather not farm samples."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "craft",
+      "place": "CLAN DOJO, BIO LAB",
+      "sub": null,
+      "activity": "craft 4 Mutagen Mass",
+      "meta": "12h each",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": "60,000", "label": "Credits", "note": null, "alt": null, "done": false },
+        {
+          "qty": "40",
+          "label": "Mutagen Sample",
+          "note": "10 each",
+          "alt": null,
+          "done": false
+        },
+        { "qty": "4", "label": "Neurode", "note": "1 each", "alt": null, "done": false },
+        { "qty": "2,000", "label": "Plastids", "note": "500 each", "alt": null, "done": false },
+        { "qty": "1,000", "label": "Circuits", "note": "250 each", "alt": null, "done": false }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build the base Dual Ichor",
+      "meta": "1 day, MR 6",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": "30,000", "label": "Credits", "note": null, "alt": null, "done": false },
+        { "qty": "4", "label": "Mutagen Mass", "note": null, "alt": null, "done": false },
+        { "qty": "1,200", "label": "Circuits", "note": null, "alt": null, "done": false },
+        { "qty": "15,000", "label": "Salvage", "note": null, "alt": null, "done": false },
+        { "qty": "1", "label": "Forma", "note": null, "alt": null, "done": false }
+      ],
+      "conditions": ["Untradeable — no buying the finished weapon from another player."],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "gate",
+      "place": "DUVIRI / ZARIMAN",
+      "sub": null,
+      "activity": "unlock the Steel Path Circuit and Cavalero",
+      "meta": "The Duviri Paradox + Angels of the Zariman + Steel Path",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "The Duviri Paradox",
+          "note": "unlocks Duviri and The Circuit",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Angels of the Zariman",
+          "note": "unlocks Cavalero",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "The Steel Path",
+          "note": "required for the Genesis reward track",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The base weapon can be built before these quests; the Incarnon Genesis cannot."
+      ],
+      "bonuses": [
+        "Ditch the starting Drifter weapon (Sun & Moon) — buying Syam, Edun or Argo & Vel from Teshin's Cave (50-60 clamps) turns the overworld portion into a speedrun."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "THE STEEL PATH CIRCUIT, DUVIRI",
+      "sub": "Rotation E / Week 5: Torid, Dual Toxocyst, Dual Ichor, Miter, Atomos",
+      "activity": "choose Dual Ichor Incarnon Genesis first, then complete Circuit stages",
+      "meta": "Tier 5 · 1,785 progress · about 12 stages",
+      "mode": "solo recommended",
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "Dual Ichor Incarnon Genesis", "amount": "1" },
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "1",
+          "label": "Dual Ichor Incarnon Genesis",
+          "note": "pick it first — Tier 5, not Tier 10",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "1,785",
+          "label": "Circuit progress",
+          "note": "Tier 5; the first adapter is enough",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "5,460",
+          "label": "Circuit progress",
+          "note": "Tier 10 only if taking Torid as the second weekly Genesis too",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Dual Ichor is only offered during Rotation E (Week 5 in the nine-week cycle); confirm the live offering at Cavalero.",
+        "Circuit Progress is banked per completed stage since Update 35.5, but bailing mid-stage still costs that stage.",
+        "Excavation and Void Flood are the run-killers — mission order repeats every 7 stages, so a bad stage-3 draw repeats at 10, 17, 24."
+      ],
+      "bonuses": [
+        "Torid shares the same Week 5 rotation — farm both Incarnon Genesis picks in one Circuit sitting.",
+        "A small, well-built arsenal beats a large one; Teshin's Cave weights its offers toward weapons you already own."
+      ],
+      "disclosures": [
+        {
+          "title": "weekly calendar gate",
+          "body": "Missing Dual Ichor's Week 5 offering means waiting the length of the nine-week rotation, roughly two months, for Rotation E to return. Since Update 39.0, buying it from Cavalero's 120-plat store during its live week includes the install resources too, skipping the Pathos Clamp grind — but it only works during that same window."
+        }
+      ]
+    },
+    {
+      "type": "currency",
+      "place": "THE DUVIRI EXPERIENCE",
+      "sub": "Orowyrm finale, Steel Path with the three bonus Undercroft side portals",
+      "activity": "farm Pathos Clamps for the install",
+      "meta": "24 Clamps in one Steel Path run with all three portals",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "Pathos Clamp", "amount": "24" },
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "20",
+          "label": "Pathos Clamp",
+          "note": "install cost",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Pathos Clamps come only from Orowyrm chests and are not affected by Resource Boosters.",
+        "The three bonus Undercroft side portals need 7 decrees to enter and only exist in the Duviri Experience, not the Lone Story."
+      ],
+      "bonuses": [
+        "Run the Duviri Experience, not the Lone Story — Steel Path with all three portals pays 24 clamps in one run, more than a full install.",
+        "Two normal-mode Duviri Experience runs (10 clamps each) can be faster wall-clock than one Steel Path run if you don't also want the arcanes.",
+        "The Fragmented Duet boss in Isleweaver drops 10 clamps (15 on Steel Path) if you'd rather skip the Orowyrm entirely."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "craft",
+      "place": "CAVALERO, CHRYSALITH",
+      "sub": "Zariman",
+      "activity": "install Dual Ichor Incarnon Genesis, then complete Evolutions",
+      "meta": "20 Clamps + 60 Marrow + 80 Kovnik",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [
+        { "currency": "Pathos Clamp", "amount": "20" },
+        { "currency": "Rune Marrow", "amount": "60" },
+        { "currency": "Kovnik", "amount": "80" }
+      ],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Install Genesis on Dual Ichor",
+          "note": "adapter is consumed",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Complete Incarnon Evolutions",
+          "note": "solo mission equipped, 6x Incarnon form activations, 29 heavy-attack kills",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Rune Marrow and Kovnik are passive Duviri pickups — you'll likely have both well before finishing the Circuit run that earns the adapter."
+      ],
+      "bonuses": [],
+      "disclosures": [
+        {
+          "title": "build after installing",
+          "body": "Melee Influence no longer procs off the toxin clouds (Update 35.1); run Melee Vortex with a Magnetic source instead — Magnetic Rush covers the proc and attack speed in one slot. Pair with a frame that strips armor built in, or Saryn."
+        }
+      ]
+    }
+  ]
+}

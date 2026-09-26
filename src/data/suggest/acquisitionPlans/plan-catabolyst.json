@@ -1,0 +1,228 @@
+{
+  "name": "Catabolyst",
+  "kind": "secondary",
+  "effort": 2,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 1, "unit": "blueprint" },
+  "badges": [
+    { "text": "Bio Lab", "tone": "warn" },
+    { "text": "MR 11", "tone": "info" }
+  ],
+  "prices": [
+    { "label": "blueprint", "amount": "50,000 cr", "money": false },
+    { "label": "built", "amount": "30,000 cr", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "research",
+      "place": "CLAN DOJO, BIO LAB",
+      "sub": null,
+      "activity": "check the research console before farming",
+      "meta": "3 days once Embolist is done",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Acrid", "note": "prerequisite research", "alt": null, "done": false },
+        { "qty": null, "label": "Embolist", "note": "prerequisite research", "alt": null, "done": false },
+        {
+          "qty": null,
+          "label": "Catabolyst",
+          "note": "3,000cr, 40 Mutagen Sample, 650 Plastids, 3,750 Salvage, 4,250 Nano Spores, 3 days",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "You don't need to own or build Acrid or Embolist yourself; the clan's Bio Lab just needs the research completed.",
+        "Costs listed are for a solo x1 clan; larger clan tiers multiply them up to x100. In an established clan it's usually done already."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "CLAN DOJO, BIO LAB",
+      "sub": null,
+      "activity": "purchase the personal blueprint",
+      "meta": "50,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Catabolyst Blueprint", "note": "50,000 credits", "alt": null, "done": false }
+      ],
+      "conditions": [
+        "Catabolyst is untradeable; the Coda Catabolyst from Eleanor's shop is a separate weapon and does not substitute here."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "CAMBION DRIFT, DEIMOS",
+      "sub": "Isolation Vaults",
+      "activity": "Arcana bounty vault reset",
+      "meta": "respawns in the same spot",
+      "mode": "solo or a friendly squad",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "cambion-drift",
+      "rows": [
+        {
+          "qty": "5",
+          "label": "Scintillant",
+          "note": "floats inside vaults; also drops from hostile Necramechs and Mother's bounties",
+          "alt": "Lvl 15-25 bounty Stage 1, 18.42% for a roll instead",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Complete a vault's normal Isolation Vault bounty first — no Arcana bounty exists for a vault until you have.",
+        "Starting the Arcana bounty resets the cave and respawns floating Scintillant in the same spots; leave to abandon after grabbing it and keep the pickup.",
+        "If a vault has no Scintillant floating, roll a different one from Mother instead of looping it.",
+        "Resource and Drop Chance boosters affect floating pickups and Necramech/Obelisk drops but do nothing for bounty reward rolls."
+      ],
+      "bonuses": [
+        "Loot Detector, Thief's Wit or Animal Instinct shows Scintillant on the minimap by its buzzing loop.",
+        "Necramechs in vaults can drop Scintillant and can be Desecrated by Nekros."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "currency",
+      "place": "CAMBION DRIFT, DEIMOS",
+      "sub": null,
+      "activity": "Mother's bounties for Entrati standing",
+      "meta": "Rank 2 Acquaintance",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "Entrati standing", "amount": "4,000" },
+      "spends": [],
+      "map": "cambion-drift",
+      "rows": [
+        {
+          "qty": null,
+          "label": "reach Rank 2 Acquaintance",
+          "note": "gate for the Stellated Necrathene refine blueprint",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The same Mother's bounties that rank you up also drop Scintillant, so this doubles as the vault farming above."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "OTAK, NECRALISK",
+      "sub": null,
+      "activity": "buy the Stellated Necrathene refine blueprint",
+      "meta": "Rank 2 Acquaintance",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Entrati standing", "amount": "4,000" }],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Stellated Necrathene refine Blueprint",
+          "note": "reusable; each craft takes 6 Necrathene + 1,000cr for 6",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Catabolyst needs 10 Stellated Necrathene, so two crafts (12 raw Necrathene) covers it with 2 to spare."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "CAMBION DRIFT, DEIMOS",
+      "sub": null,
+      "activity": "mine Necrathene, fish Flagellocanth",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "cambion-drift",
+      "rows": [
+        {
+          "qty": "12",
+          "label": "Necrathene",
+          "note": "teal/blue mining veins; also drops from Requiem Obelisks; refines into 10 Stellated Necrathene across 2 crafts",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "4",
+          "label": "Ocular Stem-Root",
+          "note": "1 per Flagellocanth filleted at Daughter; also drops from Isolation Vault bounties",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Flagellocanth is a rare surface hotspot fish; bait with Processed Fass Residue at Actuary's Pride (Fass) or Cerebrum Magna (Vome)."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build 7 Mutagen Mass, then Catabolyst",
+      "meta": "12h each Mass, then 1 day",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "7",
+          "label": "Mutagen Mass",
+          "note": "own Bio Lab blueprint, 15,000cr; each build 12h, queue all 7 at once",
+          "alt": "Orb Vallis 30-50 level bounties can award crafted Mutagen Mass directly",
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Catabolyst",
+          "note": "30,000cr, 5 Scintillant, 4 Ocular Stem-Root, 7 Mutagen Mass, 10 Stellated Necrathene; 1 day",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The weapon never auto-reloads by design — reloading from empty is what powers the grenade throw."
+      ],
+      "bonuses": [],
+      "disclosures": [
+        {
+          "title": "skip the single-use blueprint loop",
+          "body": "A Mutagen Mass is not a Mutagen Sample; each Mass is its own single-use dojo blueprint craft from Mutagen Samples plus common resources. Orb Vallis bounties can award crafted Mutagen Mass directly as a reward, bypassing the Sample conversion entirely."
+        }
+      ]
+    }
+  ]
+}

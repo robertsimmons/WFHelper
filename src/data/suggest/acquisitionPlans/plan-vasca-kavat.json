@@ -1,0 +1,215 @@
+{
+  "name": "Vasca Kavat",
+  "kind": "companion",
+  "effort": 6,
+  "tradeable": "imprints only",
+  "progress": { "have": 0, "need": 1, "unit": "companion" },
+  "badges": [
+    { "text": "needs a Kavat you already own", "tone": "warn" },
+    { "text": "MR 5", "tone": "info" }
+  ],
+  "prices": [
+    { "label": "Genetic Code Template blueprint", "amount": "50,000 cr", "money": false },
+    { "label": "Incubator Power Core blueprint", "amount": "50,000 cr", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "ORBITER",
+      "sub": null,
+      "activity": "Incubator access",
+      "meta": "one-time",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Howl of the Kubrow", "note": "unlocks the Incubator", "alt": null, "done": false },
+        {
+          "qty": null,
+          "label": "Mastery Rank 5",
+          "note": "to craft the Kavat Incubator Upgrade Segment",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "1",
+          "label": "free Companion Slot",
+          "note": "a kavat permanently occupies it",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Only a Kavat you already own can be infected; Vulpaphylas are immune, so a Vasca is never a first pet.",
+        "From scratch this is 30 Kavat Genetic Codes total: 10 for the Upgrade Segment, 10 to breed a carrier Adarza or Smeeta, 10 for the Vasca's own Combined Incubation.",
+        "The first Incubator Power Core comes from the Venus-to-Mercury Junction. Later attempts, including breeding the carrier, consume another crafted core."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build 2 Genetic Code Templates",
+      "meta": "6h each, reusable blueprint",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "2",
+          "label": "Genetic Code Template",
+          "note": "50,000 cr blueprint, reusable",
+          "alt": "15 p, built",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Build the templates before hunting; you apply one immediately after each infection to take the imprint."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "bounty",
+      "place": "PLAINS OF EIDOLON, EARTH",
+      "sub": null,
+      "activity": "take your Kavat out at night; let wild Vasca bite it",
+      "meta": "packs of 1-4, night only",
+      "mode": null,
+      "live": { "state": "waiting", "text": "wait for night on the Plains" },
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "plains-of-eidolon",
+      "rows": [
+        {
+          "qty": "2",
+          "label": "Vasca imprint",
+          "note": "one Genetic Code Template applied per infection, 1.5h each",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "If the bite downs your Kavat in one hit, it doesn't get infected.",
+        "Breeding needs two imprints: re-infect the same Kavat on a second night trip, or infect two Kavats in one trip.",
+        "A Kavat gives only 3 imprints in its lifetime; spend a throwaway Adarza's slots here rather than a Smeeta's."
+      ],
+      "bonuses": [
+        "The Vasca Kavat Echo-Lure (3,000 Ostron standing, Trusted rank) targets the hunt, but wild Vasca are easy to find at night without it.",
+        "The same cat can be infected twice in one trip if it still has two imprint slots free."
+      ],
+      "disclosures": [
+        {
+          "title": "taking the imprint",
+          "body": "Back on the Orbiter, apply a Genetic Code Template to the infected Kavat. The confirmation says making the imprint will cure the infection; accept it and you get a Vasca imprint. Check the imprint's breed icon before incubating: early-release bug reports had it come out as the base breed instead, though there are no recent reports of that."
+        }
+      ]
+    },
+    {
+      "type": "farm",
+      "place": "HOREND, DEIMOS",
+      "sub": null,
+      "activity": "Capture, scan live Feral Kavats",
+      "meta": "25% per scan",
+      "mode": "solo or full squad",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "cambion-drift",
+      "rows": [
+        {
+          "qty": "10",
+          "label": "Kavat Genetic Code",
+          "note": "for the Vasca's Combined Incubation",
+          "alt": { "text": "Market purchase", "spends": [{ "currency": "Platinum", "amount": "50" }] },
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Codes only come from scans that land while the Feral Kavat is alive; a corpse scan gives Simaris standing, never a code.",
+        "Pack size is squad size plus one, but codes are personal: in a squad every player must scan every cat themselves.",
+        "Sleep, slow, invisibility or Limbo Stasis preserves cats for scanning; avoid ragdoll effects and wide-area kills."
+      ],
+      "bonuses": [
+        "A full squad raises each pack to five cats.",
+        "The Cross-Matrix Widget (Cephalon Simaris standing) gives each scan a 45% chance to count twice."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Incubator Power Core",
+      "meta": "8h, 100,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "1",
+          "label": "Incubator Power Core",
+          "note": "one consumed per incubation",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The reusable blueprint costs 50,000 credits in the Market. Skip building one if a Junction freebie or a leftover core is still on hand."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "craft",
+      "place": "ORBITER",
+      "sub": "Incubator",
+      "activity": "Combined Incubation",
+      "meta": "48h, 2 imprints + 10 codes + 1 core",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": "2", "label": "Vasca imprint", "note": "consumed", "alt": null, "done": false },
+        { "qty": "10", "label": "Kavat Genetic Code", "note": "consumed", "alt": null, "done": false },
+        { "qty": "1", "label": "Incubator Power Core", "note": "consumed", "alt": null, "done": false },
+        {
+          "qty": null,
+          "label": "Vasca Kavat",
+          "note": "deterministic result from two matching imprints",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Incubation is 48 hours, or 24 hours with the Nutrio Incubator Upgrade Segment.",
+        "A home-bred Vasca takes on the coat color of the Kavat you infected."
+      ],
+      "bonuses": [
+        "The Market sells a Vasca Starter Kit bundling two imprints, 10 codes, a Power Core and a template, for players who'd rather skip the hunt."
+      ],
+      "disclosures": [
+        {
+          "title": "level it for Mastery",
+          "body": "A Vasca Kavat gives Mastery like any companion once leveled to rank 30; there is no separate gild-and-relevel cycle. Its claw weapon, added in Update 37.0, levels up but gives no Mastery."
+        }
+      ]
+    }
+  ]
+}

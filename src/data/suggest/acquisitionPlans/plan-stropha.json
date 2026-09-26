@@ -1,0 +1,178 @@
+{
+  "name": "Stropha",
+  "kind": "melee",
+  "effort": 6,
+  "tradeable": "components only",
+  "progress": { "have": 0, "need": 5, "unit": "parts" },
+  "badges": [
+    { "text": "3 crown tiers", "tone": "warn" },
+    { "text": "Deadlock Protocol gate", "tone": "warn" }
+  ],
+  "prices": [{ "label": "build", "amount": "30,000 cr", "money": false }],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "THE DEADLOCK PROTOCOL",
+      "sub": null,
+      "activity": "complete the quest",
+      "meta": "grants the Xoris",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "The Deadlock Protocol",
+          "note": "unlocks Treasurers, Granum Crowns and the Granum Void",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Without this quest, Treasurers spawn but drop nothing."],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "boss",
+      "place": "FOSSA, VENUS",
+      "sub": null,
+      "activity": "Assassination",
+      "meta": "15% per kill, ~6 expected",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Stropha Blueprint", "note": "15%, untradeable", "alt": null, "done": false }
+      ],
+      "conditions": ["The main blueprint is Jackal-only; it is not sold in the Market."],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "SKYRESH, PHOBOS",
+      "sub": null,
+      "activity": "Capture; kill the Treasurer, then Granum Void Rotation C",
+      "meta": "Rank 3 needs 75 kills solo",
+      "mode": "solo recommended",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Stropha Barrel",
+          "note": "22.22%, Granum Void Rotation C",
+          "alt": "tradeable",
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Stropha Blade",
+          "note": "22.22%, Granum Void Rotation C",
+          "alt": "tradeable",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Rank 1 (25 kills) and Rank 2 (50) pay only credits, Endo and decorations; Rank 3 (75 solo, +25 per extra squad member) is the only rank that pays parts.",
+        "One Granum Void per mission; every Golden Hand turns away once the run ends, even with crowns still in your pocket.",
+        "The crown is consumed on interaction and is not refunded on abort."
+      ],
+      "bonuses": [
+        "Run the Void first on a crown you already hold, then wait out the Treasurer timer in the same mission to replace it for the next loop."
+      ],
+      "disclosures": [
+        {
+          "title": "detonate the Xoris",
+          "body": "Thrown-and-returned does almost nothing; alt-fire (or heavy attack) mid-flight to detonate is 99% of the glaive's damage, and freeing the three Solaris captives with a charged detonation each adds 60 seconds to the timer. Mesa's Peacemaker, Revenant's Danse Macabre and Octavia's Mallet are commonly used to skip the Xoris requirement entirely."
+        },
+        {
+          "title": "Granum Void hazards",
+          "body": "You can't interact with the Golden Hand, Solaris captives or Temple Reliefs while enemies are nearby. Life support keeps draining in Survival. The Zanuka Hunter can teleport you out and forfeit the rewards if it's alive when you enter. On Invasions, the Golden Hand only works if you sided with the Corpus. Crowns are immune to loot abilities and boosters."
+        }
+      ]
+    },
+    {
+      "type": "farm",
+      "place": "ADRASTEA, JUPITER",
+      "sub": null,
+      "activity": "Sabotage; kill the Treasurer, then Extended Granum Void Rotation C",
+      "meta": "29.63%",
+      "mode": "solo recommended",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Stropha Receiver",
+          "note": "29.63%, Extended Granum Void Rotation C",
+          "alt": "tradeable",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Enemy level 16-30 is what sets the Exemplar crown tier; Triton, Neptune (Rescue) works as well."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "HYDRA, PLUTO",
+      "sub": null,
+      "activity": "Capture; kill the Treasurer, then Nightmare Granum Void Rotation C",
+      "meta": "29.63%",
+      "mode": "solo recommended",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Stropha Stock",
+          "note": "29.63%, Nightmare Granum Void Rotation C",
+          "alt": "tradeable",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Enemy level 31+ sets the Zenith crown tier: any Steel Path mission or Sisters of Parvos mission also qualifies."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "assemble Stropha",
+      "meta": "30,000 cr, 1 day",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Stropha", "note": "one of each component", "alt": null, "done": false }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

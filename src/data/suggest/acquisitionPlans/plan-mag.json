@@ -1,0 +1,194 @@
+{
+  "name": "Mag",
+  "kind": "warframe",
+  "effort": 2,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "badges": [
+    { "text": "easiest boss", "tone": "info" },
+    { "text": "Circuit alt", "tone": "circuit" }
+  ],
+  "prices": [{ "label": "blueprint", "amount": "25,000 cr", "money": false }],
+  "groups": [
+    {
+      "type": "vendor",
+      "place": "MARKET",
+      "sub": null,
+      "activity": "buy blueprint",
+      "meta": "25,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [{ "qty": null, "label": "Mag Blueprint", "note": null, "alt": null, "done": false }],
+      "conditions": ["The Sergeant never drops this; it's a Market purchase only."],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "boss",
+      "place": "ILIAD, PHOBOS",
+      "sub": null,
+      "activity": "Assassination, The Sergeant",
+      "meta": "~4 kills expected for Systems",
+      "mode": "solo or public",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Neuroptics", "note": "38.72%", "alt": null, "done": false },
+        { "qty": null, "label": "Chassis", "note": "38.72%", "alt": null, "done": false },
+        {
+          "qty": null,
+          "label": "Systems",
+          "note": "22.56%, the scarce one",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Base Mag and Mag Prime are separate Mastery items, and this is the only route to the Helminth subsume (Pull) — don't sell or skip her if you already own the Prime."
+      ],
+      "bonuses": [
+        "Magnetic (Cold + Electricity) or Toxin strips his shields fast; his Flash Bang cloak isn't invulnerability, keep hitting where he was.",
+        "A fast frame (Volt, Gauss, Titania) or Excalibur's Exalted Blade clears him in seconds, raising kills per hour."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "gate",
+      "place": "DUVIRI",
+      "sub": null,
+      "activity": "The Circuit",
+      "meta": "only on Mag's rotation week",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Mag Circuit rewards",
+          "note": "guaranteed parts at Tiers 2, 5, 8 and 10",
+          "alt": "The Sergeant now",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Finish The Duviri Paradox first, then check whether Mag is the current week's Warframe offering."
+      ],
+      "bonuses": [],
+      "disclosures": [
+        {
+          "title": "skip Systems RNG entirely",
+          "body": "One Circuit run on Mag's week gives the full set with no drop rate to worry about — the fallback if Systems refuses to drop."
+        }
+      ]
+    },
+    {
+      "type": "farm",
+      "place": "STAR CHART",
+      "sub": null,
+      "activity": "gather component materials",
+      "meta": "Neural Sensors and Control Module need Jupiter/Ceres access",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Alloy Plate, Polymer Bundle, Rubedo, Ferrite, Salvage, Plastids",
+          "note": "common star-chart drops",
+          "alt": null,
+          "done": false
+        },
+        { "qty": "1", "label": "Neural Sensors", "note": "Jupiter", "alt": null, "done": false },
+        { "qty": "2", "label": "Morphics", "note": null, "alt": null, "done": false },
+        {
+          "qty": "1",
+          "label": "Control Module",
+          "note": "Ceres or later",
+          "alt": null,
+          "done": false
+        },
+        { "qty": "1", "label": "Orokin Cell", "note": null, "alt": null, "done": false }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "start all three now",
+      "meta": "12h each, 45,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Neuroptics",
+          "note": "150 Alloy Plate, 1 Neural Sensors, 150 Polymer Bundle, 500 Rubedo",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Chassis",
+          "note": "1 Morphics, 1,000 Ferrite, 300 Rubedo",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Systems",
+          "note": "1 Control Module, 1 Morphics, 500 Salvage, 220 Plastids",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "then",
+      "meta": "24h, 25,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Mag",
+          "note": "1 Orokin Cell plus built components",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Needs a free Warframe slot before the Foundry will let you claim it."],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

@@ -131,10 +131,17 @@ function pathCostText(path: AcquisitionPath, t: SuggestionContext["t"]): string 
   const plat = path.cost.plat;
   if (plat) {
     const set = plat.set;
-    if (set !== null) return t("nextUp.acqPlatSet", { plat: String(Math.round(set)) });
-    if (plat.partsTotal !== null) {
-      return t("nextUp.acqPlatParts", { plat: String(Math.round(plat.partsTotal)) });
+    const parts = plat.partsTotal;
+    // What finishing actually costs leads; the set price stands behind it only
+    // where buying the missing parts comes in under it.
+    if (set !== null && parts !== null && parts < set) {
+      return t("nextUp.acqPlatPartsSet", {
+        parts: String(Math.round(parts)),
+        plat: String(Math.round(set)),
+      });
     }
+    if (set !== null) return t("nextUp.acqPlatSet", { plat: String(Math.round(set)) });
+    if (parts !== null) return t("nextUp.acqPlatParts", { plat: String(Math.round(parts)) });
   }
   if (path.cost.credits !== null) {
     return t("nextUp.acqCredits", { credits: formatNumber(path.cost.credits) });
@@ -145,8 +152,10 @@ function pathCostText(path: AcquisitionPath, t: SuggestionContext["t"]): string 
 function routeText(target: AcquisitionTarget, t: SuggestionContext["t"]): string {
   const path = target.paths[0];
   if (!path) return t("nextUp.whyAcqNoRoute");
-  const label = t(KIND_LABEL[path.kind]);
   const cost = pathCostText(path, t);
+  // A plat price is only ever a trade, so the word adds nothing beside it.
+  if (path.kind === "trade" && cost) return cost;
+  const label = t(KIND_LABEL[path.kind]);
   return cost ? `${label}, ${cost}` : label;
 }
 
@@ -221,6 +230,16 @@ function targetsFor(ctx: SuggestionContext): AcquisitionTarget[] {
   return targets;
 }
 
+/** Both names, so a search reads the same whichever one the card is drawing. */
+function matchesSearch(query: string, target: AcquisitionTarget): boolean {
+  const needle = query.trim().toLowerCase();
+  if (!needle) return true;
+  return (
+    target.name.toLowerCase().includes(needle) ||
+    (target.displayName ?? "").toLowerCase().includes(needle)
+  );
+}
+
 export const acquisitionProvider: SuggestionProvider = {
   id: "acquisition",
 
@@ -236,6 +255,7 @@ export const acquisitionProvider: SuggestionProvider = {
         // Incarnon adapter, which is not a reason to build anything.
         .filter((target) => advances(needsGain(target.needs)))
         .filter((target) => includesTarget(prefs.options.acquisitionKinds, target))
+        .filter((target) => matchesSearch(prefs.options.acquisitionSearch, target))
         .map((target) => sortRow(target, effortFor(target), prefs.options.acquisitionSort))
         .sort(compareAcquisition(prefs.options.acquisitionSortDir))
         .slice(0, SUGGESTION_LIMIT)

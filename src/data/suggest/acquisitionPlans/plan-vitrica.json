@@ -1,0 +1,164 @@
+{
+  "name": "Vitrica",
+  "kind": "melee",
+  "effort": 2,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 1, "unit": "blueprint" },
+  "badges": [
+    { "text": "Cred shop rotation", "tone": "warn" },
+    { "text": "MR 13 to build", "tone": "info" }
+  ],
+  "prices": [{ "label": "build", "amount": "20,000 cr", "money": false }],
+  "groups": [
+    {
+      "type": "vendor",
+      "place": "NIGHTWAVE CRED OFFERINGS",
+      "sub": "Nora",
+      "activity": "buy the Oubliette and the key",
+      "meta": "120 Cred total",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Nightwave Cred", "amount": "120" }],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Nihil's Oubliette",
+          "note": "60 Cred; a decoration",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Enter Nihil's Oubliette",
+          "note": "60 Cred; the key, rotates in and out",
+          "alt": "or ~30-37 plat on Warframe Market when it isn't in stock",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "A Nightwave series, full season or mini-series, must be running for the shop to open.",
+        "Buy the key the week you see it; it's unclear whether the Oubliette itself is always in stock, but the key definitely rotates.",
+        "You can hold only one key at a time."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "boss",
+      "place": "ORBITER",
+      "sub": "or Clan Dojo",
+      "activity": "place the Oubliette, then fight Nihil",
+      "meta": "guaranteed on first win",
+      "mode": "solo only",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Vitrica Blueprint",
+          "note": "guaranteed on your first win; a Riven on every fight after",
+          "alt": "or 100,000 standing at Cephalon Simaris, after your first win",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Solo only: being in a squad, even an idle one, stops the fight from starting, and you can't start it from someone else's Orbiter.",
+        "Weapons, abilities and mods are switched off. Dodge by jumping between glass platforms and throw the shards Nihil fires at the correct evidence crystal to drop his invulnerability, then throw shards at Nihil; he has three health bars.",
+        "Pick the crystal by colour, not contents: the correct one is clearer or whiter, the wrong ones reflect blue and red. Some crystals render blank (a known bug); fall back to the colour tell.",
+        "The vertical sword swing is an instant kill that bypasses bleedout and destroys platforms; shards left too long on a platform destroy it too.",
+        "Failing doesn't consume the key, so retry as often as you like."
+      ],
+      "bonuses": [
+        "Pause (Esc) is allowed mid-fight.",
+        "Sprint Speed mods, Rolling Guard and a slow-fall option (Zephyr's passive works) help with the platforming; every frame's stats are otherwise flattened for this fight."
+      ],
+      "disclosures": [
+        {
+          "title": "MR 13 is only the build gate",
+          "body": "The fight itself has no Mastery Rank requirement. Do it as soon as you have the key; the blueprint waits in your inventory until you're MR 13."
+        }
+      ]
+    },
+    {
+      "type": "farm",
+      "place": "CAMBION DRIFT, DEIMOS",
+      "sub": "Otak, Necralisk, for refinement",
+      "activity": "mine ore and gems, then refine",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "cambion-drift",
+      "rows": [
+        {
+          "qty": "60",
+          "label": "Bapholite",
+          "note": "-> Tempered Bapholite, 3 crafts",
+          "alt": null,
+          "done": false
+        },
+        { "qty": "60", "label": "Pyrol", "note": "Tempered Bapholite craft", "alt": null, "done": false },
+        {
+          "qty": "4,800",
+          "label": "Nano Spores",
+          "note": "Tempered Bapholite craft",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "45",
+          "label": "Lucent Teroglobe",
+          "note": "Tempered Bapholite craft",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "10",
+          "label": "Heciphron",
+          "note": "-> Purified Heciphron, 1 craft",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Tempered Bapholite's reusable refinement blueprint is 1,000 credits from Otak.",
+        "Purified Heciphron's reusable refinement blueprint is 2,000 credits from Otak and needs Entrati Rank 1."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Vitrica",
+      "meta": "20,000 cr, 12h build",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Vitrica",
+          "note": "15 Orokin Cell, 925 Oxium, 60 Tempered Bapholite, 10 Purified Heciphron",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Needs MR 13 to build."],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

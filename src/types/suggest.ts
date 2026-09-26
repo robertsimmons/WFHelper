@@ -96,6 +96,8 @@ export interface SuggestionOptions {
   acquisitionSort: AcquisitionSort;
   acquisitionSortDir: SortDirection;
   acquisitionKinds: AcquisitionInclude[];
+  /** Free text the section narrows its items by; empty is every item. */
+  acquisitionSearch: string;
 }
 
 export const SCORE_WEIGHT_KEYS = ["value", "urgency", "effort"] as const;

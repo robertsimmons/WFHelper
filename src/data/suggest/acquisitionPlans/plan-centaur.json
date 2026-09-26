@@ -1,0 +1,110 @@
+{
+  "name": "Centaur",
+  "kind": "archmelee",
+  "effort": 5,
+  "tradeable": "parts only, not the blueprint",
+  "progress": { "have": 0, "need": 3, "unit": "parts" },
+  "badges": [
+    { "text": "3 syndicates to Rank 3", "tone": "warn" },
+    { "text": "opposed factions", "tone": "warn" }
+  ],
+  "prices": [{ "label": "blueprint", "amount": "35,000 cr", "money": false }],
+  "groups": [
+    {
+      "type": "vendor",
+      "place": "MARKET",
+      "sub": null,
+      "activity": "buy blueprint",
+      "meta": "35,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Centaur Blueprint", "note": null, "alt": null, "done": false }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "currency",
+      "place": "THE PERRIN SEQUENCE",
+      "sub": null,
+      "activity": "pledge Perrin or New Loka; rank both to Rank 3",
+      "meta": "71,000 standing, 1 Forma, 1 Orokin Reactor, ~180,000 cr, per syndicate",
+      "mode": "pledge whichever first; buy Blade and Handle once both hit Rank 3",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": "1", "label": "Forma", "note": "Perrin Rank 2 Executive sacrifice", "alt": null, "done": false },
+        { "qty": "1", "label": "Orokin Reactor", "note": "Perrin Rank 3 sacrifice", "alt": null, "done": false },
+        { "qty": "1", "label": "Forma", "note": "New Loka Rank 2 Benevolent sacrifice", "alt": null, "done": false },
+        { "qty": "1", "label": "Orokin Reactor", "note": "New Loka Rank 3 sacrifice", "alt": null, "done": false },
+        { "qty": null, "label": "Centaur Blade", "note": "20,000 Perrin standing at Rank 3 Executive", "alt": "trade for a built copy", "done": false },
+        { "qty": null, "label": "Centaur Handle", "note": "20,000 New Loka standing at Rank 3 Benevolent", "alt": "trade for a built copy", "done": false }
+      ],
+      "conditions": [
+        "New Loka is allied with Perrin (+50%), so pledging either drags the other up at half rate; the standing pools stay separate.",
+        "Perrin is enemy to Steel Meridian (-100%) and opposed to Arbiters of Hexis (-50%)."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "currency",
+      "place": "ARBITERS OF HEXIS",
+      "sub": null,
+      "activity": "pledge Hexis or Cephalon Suda; rank to Rank 3, Lawful",
+      "meta": "71,000 standing, 1 Forma, 1 Orokin Reactor, ~180,000 cr",
+      "mode": "switch here only after buying Blade and Handle",
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "Arbiters of Hexis standing", "amount": "71,000" },
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": "1", "label": "Forma", "note": "Rank 2 sacrifice", "alt": null, "done": false },
+        { "qty": "1", "label": "Orokin Reactor", "note": "Rank 3 sacrifice", "alt": null, "done": false },
+        { "qty": null, "label": "Centaur Aegis", "note": "20,000 Hexis standing at Rank 3 Lawful", "alt": "trade for a built copy", "done": false }
+      ],
+      "conditions": [
+        "Earning Hexis standing costs Perrin standing at -50%; buy the Blade and Handle before pledging Hexis so Perrin doesn't dip below Rank 3.",
+        "The daily standing cap (16,000 plus 500 per Mastery Rank) is shared across all six faction syndicates, so holding two at once doesn't raise the ceiling."
+      ],
+      "bonuses": [
+        "Cephalon Suda is allied to Hexis, so pledging Suda instead levels Hexis by proxy if you'd rather keep Suda positive."
+      ],
+      "disclosures": [
+        {
+          "title": "trade instead",
+          "body": "All three parts are tradeable; only the blueprint isn't. The near-unanimous advice is to farm your own aligned syndicate's goods and trade for the parts you can't reach directly, rather than grinding all three syndicates from scratch."
+        }
+      ]
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Centaur",
+      "meta": "25,000 cr, 12h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Centaur", "note": null, "alt": null, "done": false }
+      ],
+      "conditions": [],
+      "bonuses": ["Tempered Blade pushes crit chance to 62.5%."],
+      "disclosures": []
+    }
+  ]
+}

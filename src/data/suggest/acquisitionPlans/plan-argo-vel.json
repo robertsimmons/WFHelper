@@ -1,0 +1,131 @@
+{
+  "name": "Argo & Vel",
+  "kind": "melee",
+  "effort": 3,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 1, "unit": "blueprint" },
+  "badges": [
+    { "text": "60 Pathos Clamps", "tone": "warn" },
+    { "text": "needs The Hex", "tone": "warn" }
+  ],
+  "prices": [{ "label": "build", "amount": "30,000 cr", "money": false }],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "DUVIRI",
+      "sub": null,
+      "activity": "The Duviri Paradox, then The Hex",
+      "meta": "opens Teshin's Cave and Isleweaver",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "duviri",
+      "rows": [
+        { "qty": null, "label": "The Duviri Paradox", "note": "required to reach Teshin's Cave", "alt": null, "done": false },
+        { "qty": null, "label": "The Hex", "note": "required for the fast Isleweaver clamp farm", "alt": null, "done": false }
+      ],
+      "conditions": [
+        "Without The Hex, clamp sources are limited to the Orowyrm fight and Undercroft side portals."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "currency",
+      "place": "DUVIRI",
+      "sub": "Isleweaver",
+      "activity": "kill the Fragmented, loot the end chest",
+      "meta": "10 clamps normal, 15 Steel Path",
+      "mode": "as your Warframe, ~10-15 min normal",
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "Pathos Clamp", "amount": "60" },
+      "spends": [],
+      "map": "duviri",
+      "rows": [
+        { "qty": "60", "label": "Pathos Clamp", "note": "Isleweaver end chest", "alt": "Orowyrm chest or Undercroft side portals, 1 each (3 Steel Path)", "done": false }
+      ],
+      "conditions": ["The Fragmented is weak to Electricity."],
+      "bonuses": [
+        "Steel Path Duviri's 3 bonus Undercroft portals can add roughly 24 clamps in an 18-20 minute run."
+      ],
+      "disclosures": [
+        {
+          "title": "Orowyrm alternative",
+          "body": "If Isleweaver isn't reachable yet, the Orowyrm chest at the end of the Duviri Experience or Lone Story pays the same 10 clamps (15 Steel Path). In phase 2, stay on foot or fly a mobile frame like Titania and shoot the wyrmlings instead of riding the Kaithe; don't fly in front of its mouth."
+        }
+      ]
+    },
+    {
+      "type": "vendor",
+      "place": "DUVIRI",
+      "sub": "Teshin's Cave",
+      "activity": "buy Argo & Vel",
+      "meta": "60 Pathos Clamps",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Pathos Clamp", "amount": "60" }],
+      "map": "duviri",
+      "rows": [
+        { "qty": null, "label": "Argo & Vel blueprint (Warframe version)", "note": "also unlocks the Drifter version", "alt": "100,000 standing at Cephalon Simaris for a replacement blueprint", "done": false }
+      ],
+      "conditions": [
+        "The clamp purchase unlocks the Drifter weapon outright but only gives the Warframe blueprint; it still needs building."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "DUVIRI",
+      "sub": null,
+      "activity": "gather plants and Undercroft deposits",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "duviri",
+      "rows": [
+        { "qty": "20", "label": "Silphsela", "note": "Sun Silph plants on hillsides; rare", "alt": null, "done": false },
+        { "qty": "30", "label": "Rune Marrow", "note": "Runic Compact deposits in the Undercroft or Circuit", "alt": "guaranteed from some Undercroft bosses, e.g. the Jackal", "done": false },
+        { "qty": "40", "label": "Kovnik", "note": "common plant, sometimes found in Teshin's Cave", "alt": null, "done": false },
+        { "qty": "150", "label": "Aggristone", "note": "common Aggri rock formations", "alt": null, "done": false }
+      ],
+      "conditions": [
+        "Loot picked up in normal Duviri is saved once you earn a decree, so you can gather materials and leave without finishing the Orowyrm fight."
+      ],
+      "bonuses": ["Isleweaver's floating islands also carry Duviri-style plants."],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Argo & Vel",
+      "meta": "30,000 cr, 1 day",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Argo & Vel", "note": "20 Silphsela, 30 Rune Marrow, 40 Kovnik, 150 Aggristone", "alt": null, "done": false }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": [
+        {
+          "title": "early hotfix",
+          "body": "Hotfix 33.6.1 fixed an early bug where the heavy-attack glaive hurt its own user at close range; current behavior is safe."
+        }
+      ]
+    }
+  ]
+}

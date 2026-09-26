@@ -1,0 +1,141 @@
+{
+  "name": "Shedu",
+  "kind": "primary",
+  "effort": 4,
+  "tradeable": "parts",
+  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "badges": [
+    { "text": "1% drop", "tone": "warn" },
+    { "text": "Archon Hunts", "tone": "info" }
+  ],
+  "prices": [
+    { "label": "extra blueprint", "amount": "100,000 standing", "money": false },
+    { "label": "build", "amount": "30,000 cr", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "QUESTS",
+      "sub": null,
+      "activity": "Chimera Prologue, then Erra",
+      "meta": "Erra awards the Shedu Blueprint",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Chimera Prologue",
+          "note": "required for Erra",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Erra",
+          "note": "Prelude to War part 2; awards the Blueprint",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Veilbreaker",
+          "note": "unlocks Archon Hunts, the current part source",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Extra Blueprints beyond the quest reward cost 100,000 standing at Cephalon Simaris."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "ARCHON HUNT, WEEKLY",
+      "sub": null,
+      "activity": "kill Symbilysts on Defense and Interception stages",
+      "meta": "~100 kills per part expected (1% each)",
+      "mode": "public recommended, full squad",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Barrel",
+          "note": "1% per Symbilyst kill",
+          "alt": "trade with another player",
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Chassis",
+          "note": "1% per Symbilyst kill",
+          "alt": "trade with another player",
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Handle",
+          "note": "1% per Symbilyst kill",
+          "alt": "trade with another player",
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Receiver",
+          "note": "1% per Symbilyst kill",
+          "alt": "trade with another player",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Symbilysts spawn in higher numbers on Archon Hunt Defense and Interception stages; full squads spawn more of them.",
+        "All four parts roll independently off the same 1% table, so duplicates happen."
+      ],
+      "bonuses": [
+        "Just run your weekly Archon Hunt and let the parts pile up; several players finish a full set without trying.",
+        "Loot frames work on Symbilysts: Nekros Desecrate, a Chesa Kubrow, and Ivara's Prowl if it can steal a part before the kill (needs 100% power strength).",
+        "Parts are cheap to buy or trade since Archon Hunts flooded the market; trade for whatever hasn't dropped."
+      ],
+      "disclosures": [
+        {
+          "title": "the old Murex farm still works",
+          "body": "Before Archon Hunts, Symbilysts only spawned on a Murex in Veil Proxima Railjack missions: a 30-minute window on one Grineer Veil node, kill 20 Sentients to finish the objective. It also drops an Anomaly Shard. It's rougher and time-gated, so treat it as a backup, not the main route. Re-queue the node from the nav console after finishing; aborting has cost players their drops."
+        }
+      ]
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Shedu",
+      "meta": "1 day",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Shedu",
+          "note": "30,000 cr, 4 parts",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

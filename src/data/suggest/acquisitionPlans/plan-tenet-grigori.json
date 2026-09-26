@@ -1,0 +1,139 @@
+{
+  "name": "Tenet Grigori",
+  "kind": "melee",
+  "effort": 8,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 1, "unit": "weapon" },
+  "badges": [
+    { "text": "Corrupted Holokeys", "tone": "warn" },
+    { "text": "MR 14", "tone": "warn" }
+  ],
+  "prices": [{ "label": "Elemental Vice", "amount": "20 p", "money": false }],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "STAR CHART",
+      "sub": null,
+      "activity": "build a Railjack",
+      "meta": "one-time",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Rising Tide", "note": "needs The War Within; builds your own Railjack", "alt": null, "done": false },
+        {
+          "qty": null,
+          "label": "Mastery Rank 14",
+          "note": "enforced at the Ergo Glast purchase, unlike a Sister-dropped Tenet weapon",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "You can join someone else's Railjack without owning one, but public squads are mostly un-upgraded ships, AFK turret-sitters and trolls — solo or a recruit-chat squad is the norm.",
+        "Sisters of Parvos do not carry the Tenet Grigori; every Tenet melee (Grigori, Livia, Exec, Agendus) plus Tenet Ferrox is Ergo Glast-only."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "currency",
+      "place": "SATURN PROXIMA",
+      "sub": null,
+      "activity": "Void Storm, Grineer Skirmish nodes",
+      "meta": "~2.8 keys/run",
+      "mode": "solo",
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "Corrupted Holokey", "amount": "40" },
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "40",
+          "label": "Corrupted Holokey",
+          "note": "guaranteed 1 per run plus a ~35.7% roll for 5 more; about 14-15 Saturn runs for 40",
+          "alt": "~7 runs in the Veil at 2 guaranteed + 37.5% for 10",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Boosters do nothing — Resource Booster, Resource Drop Chance Booster, Drop Chance Blessing and Retriever mods are all explicitly excluded from Holokey drops.",
+        "Corpus Railjack missions bolt a slow on-foot objective onto the space fight; stay on Grineer Proxima nodes, which you can run to the objective and back out of.",
+        "Drops are end-of-mission only. Running a Void Storm Survival long does not multiply your keys.",
+        "You do not need to bring or open a relic for the Holokey reward table, though it's free value to bring one anyway."
+      ],
+      "bonuses": [
+        "Finishing a Sister of Parvos Final Confrontation pays 1 Holokey per squad member per Sister, up to 4 — a side income if you're already hunting Sisters, too slow to farm on its own."
+      ],
+      "disclosures": [
+        {
+          "title": "solo Railjack crew setup",
+          "body": "Hire an engineer first (defender role, high Repair stat, a beam weapon like Phantasma) so hull breaches and fires handle themselves. Two gunners with a hitscan turret (Talyn best, Pulsar second) clear fighters. Switch the engineer to pilot while you're on foot and a large-projectile forward gun (Vort, Laith, Cryophon) helps the AI hit radiators. Forward Artillery one-shots crewships through an intact engine at effectively unlimited range; use Shatter Burst on shielded ones first. Lavos or Hildryn put Railjack abilities on cooldowns instead of energy costs."
+        }
+      ]
+    },
+    {
+      "type": "vendor",
+      "place": "ERGO GLAST, ANY RELAY",
+      "sub": null,
+      "activity": "Browse Merchandise",
+      "meta": "one copy per 4-day rotation",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Corrupted Holokey", "amount": "40" }],
+      "map": null,
+      "rows": [
+        { "qty": "1", "label": "Tenet Grigori", "note": "random element, 25-60% bonus", "alt": null, "done": false }
+      ],
+      "conditions": [
+        "One copy per rotation; the bonus element and percentage reroll every 4 days at 00:00 UTC — you cannot buy two in the same window to fuse immediately.",
+        "No Perrin Sequence standing required."
+      ],
+      "bonuses": [
+        "Buy the first copy above roughly 36% rather than waiting for a perfect roll; Elemental Vice frees the element later, so only the percentage matters."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "craft",
+      "place": "ORBITER, MODDING",
+      "sub": null,
+      "activity": "optional Valence Fusion toward 60%",
+      "meta": "bank rotations first",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "52.8%+ roll",
+          "note": "fuses straight to 60%",
+          "alt": "58%+ already rounds to 60%",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Fusion takes the higher of the two bonuses × 1.1, capped at 60%.",
+        "Fuse into the copy you've invested in — the donor's Catalyst, Forma, Exilus adapter and Elemental Vice are all destroyed.",
+        "Only one copy per rotation, so each fusion step costs another 40 keys and a wait, unlike a Sister-dropped Tenet weapon where you just farm more kills.",
+        "Elemental Vice needs rank 40 (5 Forma): 50,000 Hex standing at Rank 5, 20 platinum from the Market, or a Temporal Archimedea/Nightwave drop."
+      ],
+      "bonuses": [],
+      "disclosures": [
+        {
+          "title": "the currency math",
+          "body": "40 keys is roughly 14-15 Saturn runs, so a single Grigori is doable in a sitting. The number people quote in despair is the full set: 200 keys for one of each of Glast's five weapons, and up to 2,000 for all five at 60%."
+        }
+      ]
+    }
+  ]
+}

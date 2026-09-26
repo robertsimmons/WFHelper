@@ -1,0 +1,115 @@
+{
+  "name": "Wolf Sledge",
+  "kind": "melee",
+  "effort": 5,
+  "tradeable": "blueprint and parts only",
+  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "badges": [
+    { "text": "Nightwave Cred cost", "tone": "warn" },
+    { "text": "Motor is rare (~4%)", "tone": "warn" }
+  ],
+  "prices": [{ "label": "build", "amount": "30,000 cr", "money": false }],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "QUESTS",
+      "sub": null,
+      "activity": "The Teacher",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "The Teacher", "note": "opens Nightwave", "alt": null, "done": false }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "currency",
+      "place": "NIGHTWAVE",
+      "sub": null,
+      "activity": "rank up the current series' tiers",
+      "meta": "Cred is capped per series",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Nightwave rank-ups", "note": "each tier grants Cred", "alt": null, "done": false }
+      ],
+      "conditions": [
+        "The Cred Offerings store closes between series and during Intermissions, and unspent Cred converts to a 5,000-credit sellable item when a series ends — buy every beacon you need before then.",
+        "As of Update 43.5 the Wolf Beacon is a permanent 50-Cred Offerings item, not on a 7-day rotation."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "boss",
+      "place": "ANY MISSION WITH ASSASSINS",
+      "sub": null,
+      "activity": "equip a Wolf Beacon, then kill the Wolf of Saturn Six",
+      "meta": null,
+      "mode": "low-level mission, solo is fine",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Wolf Sledge Blueprint", "note": "50 Cred per beacon attempt", "alt": null, "done": false },
+        { "qty": null, "label": "Wolf Sledge Head", "note": "13.55% per kill", "alt": null, "done": false },
+        { "qty": null, "label": "Wolf Sledge Handle", "note": "13.55% per kill", "alt": null, "done": false },
+        { "qty": null, "label": "Wolf Sledge Motor", "note": "3.95% per kill, the real bottleneck", "alt": null, "done": false }
+      ],
+      "conditions": [
+        "Wolf Beacons only work in missions where assassins can spawn — not Syndicate, Assassination, Sorties, Archwing, free roam, quests, Sanctuary Onslaught, relays, dojos or Uranus underwater missions.",
+        "Only one beacon can be used per mission, across the whole squad.",
+        "No duplicate protection: expect well over a dozen kills to nail the Motor alone.",
+        "The Wolf is immune to status effects and Warframe abilities and dispels active buffs; his three Fugitives can't be damaged while he lives.",
+        "He is level-capped at 60 solo and 75 in public squads."
+      ],
+      "bonuses": [
+        "Body shots with high critical chance are the play; headshots do 75% less damage since his Sentient hybrid change.",
+        "Invisibility (Loki, Ivara Prowl, an Octavia Metronome specter) makes the fight close to trivial, and he can't reach airborne frames like Zephyr, Titania or Hildryn well.",
+        "His armor can be stripped despite ignoring Corrosive procs, via Shattering Impact or Sharpened Claws."
+      ],
+      "disclosures": [
+        {
+          "title": "why Steel Path doesn't help",
+          "body": "Steel Path doubles resource and mod drops, but weapon parts are neither, so it does not raise Wolf Sledge's drop chance."
+        },
+        {
+          "title": "he doesn't despawn",
+          "body": "The Wolf doesn't despawn on a squad wipe or if the beacon user leaves — you must kill him or fail the mission, so a slow kill at a hard difficulty can cost the whole attempt."
+        }
+      ]
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build",
+      "meta": "12h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Wolf Sledge", "note": "30,000 cr, 5 Nitain Extract", "alt": null, "done": false }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

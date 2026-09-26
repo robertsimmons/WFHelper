@@ -1,0 +1,189 @@
+{
+  "name": "Keratinos",
+  "kind": "melee",
+  "effort": 2,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 5, "unit": "parts" },
+  "badges": [
+    { "text": "no RNG", "tone": "info" },
+    { "text": "MR 9 gate", "tone": "warn" }
+  ],
+  "prices": [
+    { "label": "build", "amount": "100,000 cr", "money": false },
+    { "label": "standing", "amount": "3,000", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "NECRALISK, DEIMOS",
+      "sub": null,
+      "activity": "Heart of Deimos",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Heart of Deimos", "note": "opens Father and Entrati standing", "alt": null, "done": false }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "currency",
+      "place": "CAMBION DRIFT, DEIMOS",
+      "sub": null,
+      "activity": "Mother's bounties, tranq-capture and fishing/mining turn-ins for Entrati Family Tokens",
+      "meta": "Rank 0 - Neutral, no rank-up needed",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "Entrati standing", "amount": "3,000" },
+      "spends": [],
+      "map": "cambion-drift",
+      "rows": [
+        {
+          "qty": null,
+          "label": "turn Family Tokens in to Grandmother",
+          "note": "Mother tokens 100 each; Father/Daughter/Otak tokens 500; Son tokens 1,000",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [
+        "Tier 3-5 non-Steel Path bounties from Mother are the fastest token source; two or three tier-5 runs cover a full daily cap.",
+        "Trading mixed tokens to Grandmother for Grandmother tokens pays 1.5x the standing.",
+        "Son tokens come from tranq-capturing wildlife with the Tranq Rifle; capturing from Archwing keeps animals from spotting you."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "FATHER, NECRALISK",
+      "sub": null,
+      "activity": "buy the blueprints",
+      "meta": "Rank 0 - Neutral",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Entrati standing", "amount": "3,000" }],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Keratinos Blueprint", "note": "1,000 standing", "alt": null, "done": false },
+        { "qty": "2", "label": "Keratinos Blade Blueprint", "note": "500 standing each", "alt": null, "done": false },
+        { "qty": "2", "label": "Keratinos Gauntlet Blueprint", "note": "500 standing each", "alt": null, "done": false }
+      ],
+      "conditions": [
+        "MR 9 is required to buy the main Keratinos Blueprint; the component blueprints have no such gate, so you can buy and build Blades and Gauntlets earlier.",
+        "Buy a third Blade Blueprint if you are still below Entrati Rank 2 Acquaintance — that rank-up consumes one Keratinos Blade Blueprint, and a blueprint already queued in the Foundry can't be used for it."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "CAMBION DRIFT, DEIMOS",
+      "sub": "Otak for refining",
+      "activity": "mine Adramalium and Dagonic veins, then refine at Otak",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "cambion-drift",
+      "rows": [
+        {
+          "qty": "80",
+          "label": "Adramal Alloy",
+          "note": "4 Otak crafts: 20 Adramalium + 20 Travoride + 600 Plastids + 15 Lucent Teroglobe each; Blade material",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "12",
+          "label": "Purged Dagonic",
+          "note": "2 Otak crafts, 10 mined Dagonic each; Blade material",
+          "alt": null,
+          "done": false
+        },
+        { "qty": "8", "label": "Gallium", "note": "Blade material", "alt": null, "done": false }
+      ],
+      "conditions": [
+        "Travoride is mined on Orb Vallis, not Deimos; bring it over before starting Adramal Alloy crafts.",
+        "Lucent Teroglobe comes from Vitrific Outcrops on the Cambion Drift."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "CAMBION DRIFT, DEIMOS",
+      "sub": "Daughter for fishing",
+      "activity": "fish Deimos pools and caves; gather Pustulite and Ganglion",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "cambion-drift",
+      "rows": [
+        { "qty": "48", "label": "Pustulite", "note": "Gravid Blastemas or bounty rewards; Blade material", "alt": null, "done": false },
+        { "qty": "40", "label": "Ferment Bladder", "note": "cut at Daughter from most Deimos fish; Gauntlet material", "alt": null, "done": false },
+        {
+          "qty": "12",
+          "label": "Waxen Sebum Deposit",
+          "note": "cut only from Amniophysi, a cave fish in Vome and Fass; Gauntlet material",
+          "alt": null,
+          "done": false
+        },
+        { "qty": "32", "label": "Ganglion", "note": "Gauntlet material", "alt": null, "done": false },
+        { "qty": "8", "label": "Neurodes", "note": "Gauntlet material", "alt": null, "done": false }
+      ],
+      "conditions": [],
+      "bonuses": [
+        "The fish parts and mined gems you cut and mine here also earn Entrati Family Tokens toward the standing above, so this doubles as the currency farm."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build components, then Keratinos",
+      "meta": "12h each",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Blade",
+          "note": "20,000 cr, 40 Adramal Alloy, 24 Pustulite, 6 Purged Dagonic, 4 Gallium — build twice",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Gauntlet",
+          "note": "20,000 cr, 20 Ferment Bladder, 16 Ganglion, 6 Waxen Sebum Deposit, 4 Neurodes — build twice",
+          "alt": null,
+          "done": false
+        },
+        { "qty": null, "label": "Keratinos", "note": "20,000 cr, 2 Blades + 2 Gauntlets", "alt": null, "done": false }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

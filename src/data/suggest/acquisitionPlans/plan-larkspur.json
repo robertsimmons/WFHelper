@@ -1,0 +1,133 @@
+{
+  "name": "Larkspur",
+  "kind": "archgun",
+  "effort": 2,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 1, "unit": "weapon" },
+  "badges": [
+    { "text": "Profit-Taker gate", "tone": "warn" },
+    { "text": "no RNG, 100% drop", "tone": "info" }
+  ],
+  "prices": [],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "FORTUNA, VENUS",
+      "sub": "Solaris United",
+      "activity": "rank to 5 (Old Mate), then clear Profit-Taker phases 1-3",
+      "meta": "opens the Heists and the Archgun Deployer",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "orb-vallis",
+      "rows": [
+        { "qty": null, "label": "Solaris United Rank 5, Old Mate", "note": "daily-capped standing; each rank-up needs a Debt-Bond sacrifice", "alt": null, "done": false },
+        { "qty": null, "label": "Profit-Taker heist, phases 1-3", "note": "phase 3 mails the Archgun Deployer", "alt": null, "done": false }
+      ],
+      "conditions": [
+        "Without the Archgun Deployer (from finishing heist phase 3), Larkspur only works in Archwing, not on the ground.",
+        "Medical Debt-Bonds are the rank-up item that holds most players up; Ticker sometimes sells them in bulk."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "boss",
+      "place": "ORB VALLIS, VENUS",
+      "sub": "Profit-Taker Orb, phase 4",
+      "activity": "kill the Orb",
+      "meta": "100% drop, 1 per kill; phase 4 repeats freely after the first clear",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "orb-vallis",
+      "rows": [
+        { "qty": "3", "label": "Crisma Toroid", "note": "1 for research, 2 for the build", "alt": null, "done": false }
+      ],
+      "conditions": [
+        "Bring at least 3 weapons with different elements — the shield only takes damage from the element it's currently showing.",
+        "Kill the pylons/beacons and the adds; ignoring them causes the stagger that kills pug runs.",
+        "Don't redeem your first Crisma Toroids to Little Duck — you need 3 for Larkspur before spending any on Vox standing."
+      ],
+      "bonuses": [
+        "Void damage (operator amp) cycles the shield's element on a ~5s cooldown.",
+        "Buffing frames (Chroma, Mirage, Rhino, Octavia, Harrow, Volt) speed the fight; Chroma's Effigy doubles the 125k credit drop.",
+        "Stagger immunity (Primed Sure Footed, or Sure Footed + Power Drift) beats Handspring here.",
+        "An Arch-gun-carrier Corpus enemy drops an ammo crate that resets the whole squad's Deployer cooldown."
+      ],
+      "disclosures": [
+        {
+          "title": "no repeatable shortcut",
+          "body": "One player reported a Crisma Toroid from a Twitch drop, but Profit-Taker phase 4 is the only farmable source."
+        }
+      ]
+    },
+    {
+      "type": "farm",
+      "place": "ORB VALLIS, VENUS",
+      "sub": "Smokefinger + The Business",
+      "activity": "mine ore, refine alloys and gems, fish and dismantle Synathid",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "orb-vallis",
+      "rows": [
+        { "qty": "5", "label": "Thermal Sludge", "note": "research; Corpus camp containers and bounty rewards", "alt": null, "done": false },
+        { "qty": "6", "label": "Travocyte Alloy", "note": "research; refined from Travoride ore", "alt": null, "done": false },
+        { "qty": "6", "label": "Axidrol Alloy", "note": "research; refined from Axidite ore", "alt": null, "done": false },
+        { "qty": "80", "label": "Venerdo Alloy", "note": "build; refined from Venerol ore", "alt": null, "done": false },
+        { "qty": "5", "label": "Radiant Zodian", "note": "build; refined from Zodian gem, needs SU Rank 3 (Doer)", "alt": null, "done": false },
+        { "qty": "5", "label": "Synathid Ecosynth Analyzer", "note": "build; dismantle Synathid servofish at The Business, any weather; also drops from Exploiter Orb", "alt": null, "done": false }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "research",
+      "place": "CLAN DOJO, TENNO LAB",
+      "sub": null,
+      "activity": "research the blueprint",
+      "meta": "Ghost clan (x1); larger clans multiply the cost",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Larkspur Blueprint", "note": "1 Crisma Toroid, 5 Thermal Sludge, 6 Travocyte Alloy, 6 Axidrol Alloy", "alt": null, "done": false }
+      ],
+      "conditions": ["If your clan already has it researched, buy the blueprint from the lab for 15,000 credits instead."],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Larkspur",
+      "meta": "12h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "install an Orokin Catalyst, a Gravimag, and equip the Deployer", "note": "required for ground use; not needed in Archwing", "alt": null, "done": false },
+        { "qty": null, "label": "Larkspur", "note": "2 Crisma Toroid, 80 Venerdo Alloy, 5 Radiant Zodian, 5 Synathid Ecosynth Analyzer", "alt": null, "done": false }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

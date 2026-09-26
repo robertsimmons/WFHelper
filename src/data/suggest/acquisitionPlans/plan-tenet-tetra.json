@@ -1,0 +1,186 @@
+{
+  "name": "Tenet Tetra",
+  "kind": "primary",
+  "effort": 8,
+  "tradeable": "converted Sister only",
+  "progress": { "have": 0, "need": 1, "unit": "weapon" },
+  "badges": [
+    { "text": "Sister of Parvos", "tone": "warn" },
+    { "text": "Railjack required", "tone": "warn" }
+  ],
+  "prices": [{ "label": "Elemental Vice", "amount": "20 p", "money": false }],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "STAR CHART",
+      "sub": null,
+      "activity": "unlock Sisters of Parvos",
+      "meta": "one-time",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Mastery Rank 5", "note": "to create a Sister", "alt": null, "done": false },
+        { "qty": null, "label": "The War Within", "note": "quest complete", "alt": null, "done": false },
+        { "qty": null, "label": "Call of the Tempestarii", "note": "quest complete; needs a Railjack", "alt": null, "done": false },
+        { "qty": null, "label": "The Deadlock Protocol", "note": "for Granum Crowns", "alt": null, "done": false },
+        {
+          "qty": null,
+          "label": "Railjack Intrinsics rank 3, any class",
+          "note": "Neptune Proxima showdown",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Only one adversary at a time: clear or convert any active Kuva Lich, Sister, or Coda first.",
+        "Ergo Glast never sells the Tetra; his Corrupted Holokey shop only carries Grigori, Livia, Exec, Agendus and Ferrox. Every ranged Tenet weapon comes from a Sister."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "boss",
+      "place": "PLUTO, HYDRA",
+      "sub": "Capture",
+      "activity": "clear the Nightmare Granum Void; inspect Candidates",
+      "meta": "one Zenith Crown per attempt",
+      "mode": "solo",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Zenith Granum Crown", "amount": "1" }],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Tenet Tetra Candidate",
+          "note": "Mercy only when the weapon preview says Tetra",
+          "alt": "buy a converted Tenet Tetra Sister",
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "progenitor element",
+          "note": "sets the bonus element (25-60%) and Ephemera; pick on purpose since most people still choose it at spawn",
+          "alt": "Elemental Vice can change it later at rank 40",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "A Treasurer spawns 2-5 minutes into any non-endless Corpus Ship mission and drops a Crown tiered by level; level 31+ or Steel Path drops the Zenith, the only tier that spawns a Candidate.",
+        "Open the Void far from extraction and walk out slowly afterward — within roughly 200m of extraction, or sprinting out, suppresses the Candidate spawn entirely.",
+        "If the preview isn't Tetra, leave her and complete and extract from the mission. Aborting does not remove that weapon from the pool; only a completed rejection does.",
+        "The Sister-carried pool is 11 weapons (Arca Plasmor, Cycron, Detron, Diplos, Envoy, Flux Rifle, Glaxion, Plinx, Quanta, Spirex, Tetra), so correctly rejecting guarantees Tetra inside 11 completed missions.",
+        "Only the player who dealt the final hit can Mercy, and one adversary blocks another — an active Kuva Lich or Coda has to be cleared or finished first."
+      ],
+      "bonuses": [
+        "Xoris heavy attacks, Octavia's Mallet or a wide-nuke frame like Uriel trivialize the Void; summoning your Railjack On Call crew specter before it pulls you in helps too.",
+        "Only 25 kills are needed for rank 1 rewards; 75 is the cap."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "boss",
+      "place": "SISTER INFLUENCE NODES",
+      "sub": "Venus through Pluto",
+      "activity": "Mercy Hounds, reveal Requiems, test the sequence",
+      "meta": "~2 missions per Sister",
+      "mode": "long missions first, then fast ones",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "3",
+          "label": "revealed Requiems",
+          "note": "Murmurs reveal mods, not order",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "correct Parazon sequence",
+          "note": "opens the Neptune Proxima showdown",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Requiem mods all come from the single Requiem Eterna relic (all 8 mods at equal chance), from Kuva Siphon (50%) or Kuva Flood (100%); Hounds have a 5% relic chance.",
+        "Run long missions (Survival, Excavation, Defense) on her nodes first for Murmurs, then short ones (Capture, Exterminate) to get her to spawn.",
+        "Down her three times to make her leave if you have no clue to test yet; she keeps her progress.",
+        "Failing a Parazon attempt levels the Sister up, raising every node she controls."
+      ],
+      "bonuses": ["Stock 1-2 of every Requiem before starting, from spare Requiem Eterna relics."],
+      "disclosures": [
+        {
+          "title": "Oull-first Parazon",
+          "body": "Multiple independent guides agree: slot Oull as a wildcard so each encounter tests one Requiem position, guaranteeing a kill by the 4th attempt. Don't stab until you have a new clue to test, but keep stabbing with already-confirmed ones. You usually won't have Oull for your first Sister; it drops from Sister Parazon attempts."
+        }
+      ]
+    },
+    {
+      "type": "boss",
+      "place": "NEPTUNE PROXIMA",
+      "sub": "Sister Confrontation",
+      "activity": "Railjack Skirmish; finish the Sister",
+      "meta": "choose Vanquish",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Tenet Tetra",
+          "note": "built; Foundry delivery",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Choose Vanquish, never Convert — Convert gives an ally and a tradeable Sister token but no weapon.",
+        "Needs Railjack Intrinsics rank 3; slot shields and hull mods before the confrontation, or don't host."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "craft",
+      "place": "ORBITER, MODDING",
+      "sub": null,
+      "activity": "optional Valence Fusion toward 60%",
+      "meta": "bank copies first",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "52.8%+ roll",
+          "note": "fuses straight to 60%",
+          "alt": "58%+ already rounds to 60%",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Fusion takes the higher of the two bonuses × 1.1, capped at 60%.",
+        "Fuse into the copy you've invested in — the donor's Catalyst, Forma, Exilus adapter and Elemental Vice are all destroyed.",
+        "Elemental Vice needs rank 40 (5 Forma): 50,000 Hex standing at Rank 5, 20 platinum from the Market, or a Temporal Archimedea/Nightwave drop."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

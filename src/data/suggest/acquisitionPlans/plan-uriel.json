@@ -1,0 +1,167 @@
+{
+  "name": "Uriel",
+  "kind": "warframe",
+  "effort": 6,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 3, "unit": "parts" },
+  "badges": [
+    { "text": "long quest gate", "tone": "warn" },
+    { "text": "Perita Rebellion grind", "tone": "warn" }
+  ],
+  "prices": [{ "label": "build", "amount": "25,000 cr", "money": false }],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "MAIN QUESTLINE",
+      "sub": null,
+      "activity": "clear every quest through The Lotus Eaters, then The Old Peace",
+      "meta": "~75 minutes for The Old Peace alone",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "all main quests through The Lotus Eaters",
+          "note": null,
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "The Old Peace",
+          "note": "mails the Uriel main blueprint plus 75 each Lyroic Bridge / Ren Hypercore / Ascaris Prime; unlocks the Dark Refractory and La Cathédrale",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Mission Preview lets you into Descendia and Perita Rebellion without finishing the quest, but you cannot access the Devil's Triad vendors there — it isn't a real shortcut."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "boss",
+      "place": "DESCENDIA, DARK REFRACTORY",
+      "sub": "Infernum 21, Roathe's Oblivion",
+      "activity": "repeat the floor-21 boss after one weekly full clear",
+      "meta": "12.5% per component; ~8 kills expected per specific part",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Uriel Neuroptics",
+          "note": "12.5%, shared pool with Vinquibus parts",
+          "alt": { "text": "or Roathe's Surplus", "spends": [{ "currency": "Maphica", "amount": "25" }] },
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Uriel Chassis",
+          "note": "12.5%, shared pool with Vinquibus parts",
+          "alt": { "text": "or Roathe's Surplus", "spends": [{ "currency": "Maphica", "amount": "25" }] },
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Uriel Systems",
+          "note": "12.5%, shared pool with Vinquibus parts",
+          "alt": { "text": "or Roathe's Surplus", "spends": [{ "currency": "Maphica", "amount": "25" }] },
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Clear the tower once per week to unlock the floor-21 hellevator; after that, repeat Roathe with no weekly limit.",
+        "The drop pool is shared with the Vinquibus bayonet's parts — runs that 'give nothing' are usually Vinquibus duplicates, which cannot be broken down.",
+        "Descendia is a no-respawn mode: a squad wipe fails the floor."
+      ],
+      "bonuses": [
+        "Maphica also drops from containers on every floor plus fixed floor rewards (Infernums 2, 4, 9, 11, 16, 18) — a complete Uriel set costs 150 Maphica with zero RNG if you'd rather buy it outright.",
+        "Watch for a loot-room week (a Plunder/treasure floor placed early) — one reported ~40 Maphica per one-minute Xaku run that week."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "PERITA REBELLION",
+      "sub": null,
+      "activity": "kill and loot with a nuke/loot frame through the order phase and boss",
+      "meta": "materials come from kills and containers, not from completing orders",
+      "mode": "loot frame + boosters",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": "1,975", "label": "Agnovidisc", "note": "across all 3 components", "alt": null, "done": false },
+        { "qty": "880", "label": "Laudavi", "note": "across all 3 components", "alt": null, "done": false },
+        { "qty": "350", "label": "Servoris", "note": "across all 3 components", "alt": null, "done": false }
+      ],
+      "conditions": [
+        "Completing Perita orders does not give Uriel's materials — orders pay Tauron Strike resources instead. Materials come from kills and looted containers, so ignore the order count and kill/break everything.",
+        "Perita bosses time out at 30 minutes; if your build can't kill it, the run is wasted."
+      ],
+      "bonuses": [
+        "Xaku (max range, Pull + Greedy Pull), Atlas, Khora (4 augment), Saryn, Nekros or Gauss turn this into a passive side effect of the Tauron Strike / Tektolyst artifact grind most players are already running.",
+        "Resourceful Retriever plus a resource booster and a resource drop-chance booster reportedly matter more than Steel Path — one solo run with no booster still logged 1,957/1,975 Agnovidisc, 1,054/880 Laudavi and 338/350 Servoris.",
+        "Steel Path is optional: better rewards and a resource multiplier, but nothing about Uriel requires it."
+      ],
+      "disclosures": [
+        {
+          "title": "boss pick",
+          "body": "Vanguard (six Commandeered Prime Warframes) is fastest for single-target damage but roughest for everyone else, especially on Steel Path — Ash Prime's one-shot finisher and Volt Prime's re-applied shield are the specific complaints. Hunhullus and Dactolyst are better tuned for most builds."
+        }
+      ]
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build components, then Uriel",
+      "meta": "12h each component, 3 days main, 25,000 cr + 1 Orokin Cell",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Neuroptics",
+          "note": "625 Agnovidisc, 340 Laudavi, 135 Servoris",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Chassis",
+          "note": "925 Agnovidisc, 130 Laudavi, 145 Servoris",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Systems",
+          "note": "425 Agnovidisc, 410 Laudavi, 70 Servoris",
+          "alt": null,
+          "done": false
+        },
+        { "qty": null, "label": "Uriel", "note": "25,000 cr, 1 Orokin Cell, 3 days", "alt": null, "done": false }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

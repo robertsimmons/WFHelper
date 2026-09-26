@@ -1,0 +1,109 @@
+{
+  "name": "Harmony",
+  "kind": "melee",
+  "effort": 3,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 1, "unit": "blueprint" },
+  "badges": [
+    { "text": "guaranteed pity buy", "tone": "info" },
+    { "text": "New War gate", "tone": "warn" }
+  ],
+  "prices": [{ "label": "built", "amount": "225 p", "money": false }],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "THE NEW WAR, THEN JADE SHADOWS",
+      "sub": null,
+      "activity": "clear the prerequisite quests",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "The New War", "note": "prerequisite for Jade Shadows", "alt": null, "done": false },
+        {
+          "qty": null,
+          "label": "Jade Shadows",
+          "note": "unlocks Ascension on Brutus, Uranus",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "ASCENSION, BRUTUS, URANUS",
+      "sub": null,
+      "activity": "clear the mission; throw Boosted Ionic Charges up the elevator",
+      "meta": "~5% blueprint drop per completion; pity currency also drops every run",
+      "mode": "solo or premade — pubs often ignore the elevator objective",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Harmony Blueprint",
+          "note": "~5% per completion, direct drop",
+          "alt": {
+            "text": "or Ordis, Drifter's Camp",
+            "spends": [{ "currency": "Vestigial Motes", "amount": "300" }]
+          },
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The Extraction Capsule is invulnerable during the whole elevator ascent — it is not a defense objective, so time spent fighting there is time the elevator isn't moving.",
+        "Throw Boosted Ionic Charges (two marker outlines) the instant you get them; the speed boost extends the timer (up to ~50s) rather than stacking in magnitude, so hoarding one wastes it.",
+        "Do the optional Sister of Parvos objective (3 Sister Beacons in the shaft) every run — it adds 5-10 more motes (8-10 Steel Path) for the same mission."
+      ],
+      "bonuses": [
+        "Every completion pays 11-13 Vestigial Motes (16-18 Steel Path) even without the blueprint drop, banking toward the 300-mote pity buy.",
+        "Steel Path pays roughly 1.5x motes and guarantees the Sister's arcane drop; Acolytes don't spawn here so there's no added risk."
+      ],
+      "disclosures": [
+        {
+          "title": "loot frames don't work here",
+          "body": "Nekros Desecrate, Khora and Atlas Ore Gaze affected the Ascension Sister for about two days after launch; Hotfix 36.0.3 (2024-06-20) patched it out. Resource Boosters, Resource Drop Chance Boosters, Drop Chance Blessings and Retriever have no effect on Vestigial Motes — they still affect Steel Essence."
+        },
+        {
+          "title": "squad matters more than build",
+          "body": "Run times are 7-10 minutes pugging, 5-6 with a coordinated squad that actually throws charges, versus 3-4 with a dedicated lockdown build (e.g. Banshee with Silence and a subsumed Gloom). The loudest recurring complaint is teammates treating the elevator like a defense objective — solo or a premade beats a pub here."
+        }
+      ]
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Harmony",
+      "meta": "12h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Harmony",
+          "note": "5,000 Alloy Plate, 500 Plastids, 20 Gallium, 18 Morphics",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

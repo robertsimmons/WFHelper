@@ -1,0 +1,148 @@
+{
+  "name": "Dragon Nikana",
+  "kind": "melee",
+  "effort": 2,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 1, "unit": "weapon" },
+  "badges": [
+    { "text": "Tenno Lab gate", "tone": "warn" },
+    { "text": "consumes a Nikana", "tone": "info" }
+  ],
+  "prices": [{ "label": "blueprint", "amount": "30,000 cr", "money": false }],
+  "groups": [
+    {
+      "type": "research",
+      "place": "CLAN DOJO, TENNO LAB",
+      "sub": null,
+      "activity": "check that Nikana research is complete",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Akstiletto research", "note": "prerequisite", "alt": null, "done": false },
+        { "qty": null, "label": "Nikana research", "note": null, "alt": null, "done": false }
+      ],
+      "conditions": [
+        "Joining a clan whose Tenno Lab already has Nikana researched skips this chain entirely."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "CLAN DOJO, TENNO LAB",
+      "sub": null,
+      "activity": "buy the personal Nikana blueprint",
+      "meta": "5,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Nikana Blueprint", "note": "5,000 credits", "alt": null, "done": false }
+      ],
+      "conditions": ["Each player still buys their own copy after the clan research completes."],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "MARKET",
+      "sub": null,
+      "activity": "buy blueprint",
+      "meta": "30,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Dragon Nikana Blueprint", "note": null, "alt": null, "done": false }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "THE VOID",
+      "sub": null,
+      "activity": "any Void mission; break crates, lockers and Argon deposits",
+      "meta": "4 total, split across two builds",
+      "mode": "Xaku or Limbo, short Capture/Exterminate",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "4",
+          "label": "Argon Crystal",
+          "note": "3 for Nikana, 1 for Dragon Nikana",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Argon crystals older than today halve at each daily reset, so farm the same day each build starts.",
+        "Argon is not refunded if a Foundry build is cancelled."
+      ],
+      "bonuses": [
+        "Xaku's The Vast Untime or Limbo's Cataclysm breaks deposits and containers through walls; Void Capture at Hepit or Ukko is the common low-level pick."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Nikana, level it to 30, then build Dragon Nikana",
+      "meta": "12h each, MR 8",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Nikana",
+          "note": "5,000 cr, 3 Argon Crystal, 75 Oxium, 200 Alloy Plate, 1 Forma",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "level Nikana to Rank 30",
+          "note": "before feeding it in, or lose that Mastery",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Dragon Nikana",
+          "note": "5,000 cr, 1 Argon Crystal, 75 Oxium, 1 Nikana",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Requires Mastery Rank 8 to equip the completed weapon."],
+      "bonuses": [],
+      "disclosures": [
+        {
+          "title": "an unranked Nikana wastes its Mastery",
+          "body": "The Nikana is consumed by the Dragon Nikana craft. Rank it to 30 first, or that weapon's Mastery is lost until you build another."
+        }
+      ]
+    }
+  ]
+}

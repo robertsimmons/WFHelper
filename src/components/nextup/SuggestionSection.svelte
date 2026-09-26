@@ -20,8 +20,6 @@
     id: SuggestionSectionId;
     title: string;
     suggestions: Suggestion[];
-    collapsed: boolean;
-    onToggle: () => void;
     onComplete: (suggestion: Suggestion, count: number) => void;
     onDismiss: (suggestion: Suggestion) => void;
     /** Set only where a card's primary action is to start working on it, which
@@ -36,8 +34,6 @@
     id,
     title,
     suggestions,
-    collapsed,
-    onToggle,
     onComplete,
     onDismiss,
     onWorkOnThis = undefined,
@@ -46,14 +42,10 @@
 
   const Controls = $derived(controls);
 
-  const label = $derived($tr(collapsed ? "layout.expandSection" : "layout.collapseSection"));
-
   let page = $state(0);
   let host = $state<HTMLElement | undefined>();
   let headerHeight = $state(0);
   let share = $state(0);
-  // Measured off the section itself, which is mounted whether or not the grid
-  // is, so the page count stays honest while the section is collapsed.
   let width = $state(0);
 
   /** Kept for its controls rather than for its cards: the view leaves a section
@@ -130,51 +122,25 @@
   bind:this={host}
   bind:clientWidth={width}
 >
-  <!-- Two groups, never one: the toggle, pager and title sit in a group that
-       cannot wrap or shrink, so the variable-width controls can only ever wrap
-       away from the pager, never push it. -->
+  <!-- Two groups, never one: the pager and title sit in a group that cannot wrap
+       or shrink, so the variable-width controls can only ever wrap away from the
+       pager, never push it. -->
   <div class="mb-2 flex flex-wrap items-center gap-2" bind:clientHeight={headerHeight}>
     <div class="flex shrink-0 items-center gap-2">
-      <button
-        class="flex shrink-0 cursor-pointer items-center rounded border border-border bg-bg-surface
-               px-2 py-1 text-text-secondary transition-[border-color,color] duration-150
-               hover:border-border-strong hover:text-text-primary"
-        data-section-toggle={id}
-        aria-expanded={!collapsed}
-        title={label}
-        aria-label={label}
-        onclick={onToggle}
-      >
-        <svg
-          class="h-3 w-3 transition-transform duration-150 {collapsed ? '-rotate-90' : ''}"
-          viewBox="0 0 12 12"
-          aria-hidden="true"
-        >
-          <polygon points="2,3 10,3 6,9" fill="currentColor" />
-        </svg>
-      </button>
-      <SectionPager
-        {id}
-        page={current}
-        {pageCount}
-        disabled={collapsed}
-        onPage={(next) => (page = next)}
-      />
+      <SectionPager {id} page={current} {pageCount} onPage={(next) => (page = next)} />
       <h3 class="m-0 font-display text-sm font-bold uppercase tracking-[0.08em] text-text-primary">
         {title}
         <span class="font-normal text-text-muted">({suggestions.length})</span>
       </h3>
     </div>
-    {#if !collapsed}
-      <Controls />
-    {/if}
+    <Controls />
   </div>
 
-  {#if !collapsed && empty}
+  {#if empty}
     <p class="m-0 text-xs text-text-muted" data-section-empty-note={id}>
       {$tr("nextUp.sectionFiltered")}
     </p>
-  {:else if !collapsed}
+  {:else}
     <div
       class="grid content-start"
       style="gap: {CARD_GAP}px; grid-template-columns: {gridTemplateFor(id)};

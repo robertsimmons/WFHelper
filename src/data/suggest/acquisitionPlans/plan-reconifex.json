@@ -1,0 +1,99 @@
+{
+  "name": "Reconifex",
+  "kind": "primary",
+  "effort": 6,
+  "tradeable": "built components only, not blueprints",
+  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "badges": [
+    { "text": "Hex Rank 4 gate", "tone": "warn" },
+    { "text": "KIM chemistry needed", "tone": "warn" }
+  ],
+  "prices": [
+    { "label": "standing route", "amount": "30,000 standing", "money": false },
+    { "label": "build", "amount": "90,000 cr", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "HOLLVANIA",
+      "sub": "Central Mall",
+      "activity": "rank The Hex to Rank 4, Hot & Fresh",
+      "meta": "needs Liked chemistry with all six Hex members plus the Hex Finale",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Rank up to Rank 3", "note": "22,000 then 44,000 standing, Höllars and 1999 resources", "alt": null, "done": false },
+        { "qty": null, "label": "Liked chemistry with all six Hex members", "note": "daily KIM chats, DirectGiftz gifts, one chemistry bounty per member per day", "alt": null, "done": false },
+        { "qty": null, "label": "The Hex Finale", "note": "required before Rank 4 unlocks", "alt": null, "done": false },
+        { "qty": null, "label": "Rank 4, Hot & Fresh", "note": "70,000 standing, 100,000 Höllars, 25 Techrot Chitin, 25 Necracoil, 40 Efervon Sample", "alt": null, "done": false }
+      ],
+      "conditions": [
+        "Rank 4 is a story and chemistry gate, not just a standing gate: 70,000 banked standing does nothing until every member is Liked and the Finale is done.",
+        "Liked chemistry only unlocks at Rank 3, so build it there before ranking up."
+      ],
+      "bonuses": [
+        "DirectGiftz gifts are a no-reading shortcut to chemistry; community wishlist posts list what each member likes.",
+        "Bounties that feature the member you still need earn their chemistry while you farm standing anyway."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "currency",
+      "place": "HOLLVANIA",
+      "sub": "Central Mall",
+      "activity": "bounties, Hex Treasures turned in to Lettie, Temporal Archimedea",
+      "meta": "30,000 standing for all four blueprints",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "The Hex standing", "amount": "30,000" },
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Reconifex Blueprint", "note": "15,000 standing at Amir, Rank 4", "alt": "3.92% per Tier 5 Central Mall bounty, Lvl 105-110", "done": false },
+        { "qty": null, "label": "Reconifex Barrel", "note": "5,000 standing at Amir", "alt": "5.41% at Hell-Scrub rotation C", "done": false },
+        { "qty": null, "label": "Reconifex Receiver", "note": "5,000 standing at Amir", "alt": "5.41% at Hell-Scrub rotation C", "done": false },
+        { "qty": null, "label": "Reconifex Stock", "note": "5,000 standing at Amir", "alt": "5.41% at Hell-Scrub rotation C", "done": false }
+      ],
+      "conditions": [
+        "Top-tier Hex bounties, like the 7,500-standing Antivirus tier, max the daily cap in a handful of runs.",
+        "Hand in Hex Treasures found during missions to Lettie to top off the cap."
+      ],
+      "bonuses": [
+        "Clearing all three Temporal Archimedea missions pays 15,000 standing at once, at Rank 5."
+      ],
+      "disclosures": [
+        {
+          "title": "buy it, don't farm it",
+          "body": "The community's own farm-analysis post opens by saying the standing purchase is the most economical way to get Reconifex. The drop route is 20-minute Hell-Scrub runs at 5.41% per part, or bounty RNG for the main blueprint at 3.92% with a roughly 25-run average."
+        }
+      ]
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build components, then Reconifex",
+      "meta": "12h each, then 1 day",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Barrel", "note": "20,000 cr, 40 Techrot Chitin, 10 Neural Sensors, 2 Argon Crystal", "alt": null, "done": false },
+        { "qty": null, "label": "Receiver", "note": "20,000 cr, 60 Efervon Sample, 60 Hollvanian Pitchweave Fragment, 15 Experimental Arc-Relay, 500 Ferrite", "alt": null, "done": false },
+        { "qty": null, "label": "Stock", "note": "20,000 cr, 60 Hollvanian Pitchweave Fragment, 30 Techrot Chitin, 8 Orokin Cell", "alt": null, "done": false },
+        { "qty": null, "label": "Reconifex", "note": "30,000 cr", "alt": null, "done": false }
+      ],
+      "conditions": ["Argon Crystal decays in inventory; farm it last."],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

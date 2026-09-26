@@ -1,0 +1,51 @@
+{
+  "name": "Sigma & Octantis",
+  "kind": "melee",
+  "effort": 1,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 1, "unit": "weapon" },
+  "badges": [
+    { "text": "300 login days", "tone": "warn" },
+    { "text": "Daily Tribute", "tone": "info" }
+  ],
+  "prices": [],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "DAILY TRIBUTE, ORBITER",
+      "sub": null,
+      "activity": "log in until a weapon milestone, then pick it",
+      "meta": "milestones at Day 300, 500 and 700",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Sigma & Octantis (login pick)",
+          "note": "one of four weapon choices from Day 300 onward; reappears every 200 days if you pick something else",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Weapon milestones only start at Day 300; the Day 100 milestone offers Azima, Zenistar and Zenith only.",
+        "Daily Tribute counts total login days, not a consecutive streak, so missing a day only costs that day.",
+        "There is no confirmation prompt on the milestone pick, so a misclick locks in a different weapon for 200 days."
+      ],
+      "bonuses": [
+        "Arrives fully built with its own weapon slot and a pre-installed Orokin Catalyst.",
+        "You can preview upcoming milestones on the Daily Tribute screen before you reach them."
+      ],
+      "disclosures": [
+        {
+          "title": "the Simaris blueprint is a rebuy only",
+          "body": "Cephalon Simaris sells the blueprint for 100,000 Standing (30,000 credits, 4 Morphics, 450 Circuits, 500 Polymer Bundle, 2,750 Salvage, 1 day to build), but since Update 28.0 it only appears in his Offerings after you've already picked the weapon via Daily Tribute. It cannot skip the login wait, only get you a second copy after selling or losing the first."
+        }
+      ]
+    }
+  ]
+}

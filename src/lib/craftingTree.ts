@@ -220,7 +220,12 @@ function buildNode(
 ): CraftingTreeNode {
   const { itemDb } = ctx;
   const item = itemDb[uniqueName];
-  const name = item?.name || fallbackNameFromUniqueName(uniqueName);
+  // Split apart, this row is the built part and the row beneath it is the
+  // blueprint, so it takes DE's name for the thing the blueprint makes.
+  const name =
+    (ctx.splitPartBlueprints ? item?.partName : undefined) ||
+    item?.name ||
+    fallbackNameFromUniqueName(uniqueName);
   const imageUrl = item?.imageUrl || null;
   const owned = ownedCount(ctx, uniqueName);
   const missing = Math.max(0, count - owned);

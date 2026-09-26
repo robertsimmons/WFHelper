@@ -1,0 +1,121 @@
+{
+  "name": "Wyrm",
+  "kind": "sentinel",
+  "effort": 2,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 1, "unit": "blueprint" },
+  "badges": [
+    { "text": "2 companion slots", "tone": "warn" },
+    { "text": "Negate: 75,000 standing", "tone": "info" }
+  ],
+  "prices": [
+    { "label": "blueprint", "amount": "100,000 cr", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "vendor",
+      "place": "MARKET",
+      "sub": null,
+      "activity": "buy blueprint",
+      "meta": "100,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Wyrm Blueprint", "note": null, "alt": null, "done": false }
+      ],
+      "conditions": [
+        "Needs two free Companion slots to claim: one for Wyrm, one for the Laser Rifle it comes with."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Wyrm",
+      "meta": "24h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Wyrm",
+          "note": "15,000 cr, 500 Alloy Plate, 400 Circuits, 200 Nano Spores, 1 Control Module",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [
+        "Comes with Assault Mode and Crowd Dispersion already unlocked."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "currency",
+      "place": "SYNTHESIS TARGETS, ANY",
+      "sub": null,
+      "activity": "scan targets for Cephalon Simaris standing",
+      "meta": "daily cap",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "Cephalon Simaris standing", "amount": "75,000" },
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": "75,000", "label": "Cephalon Simaris standing", "note": null, "alt": null, "done": false }
+      ],
+      "conditions": [
+        "Simaris standing has a daily cap; unless you already have a stockpile, budget several days of scanning."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "CEPHALON SIMARIS, RELAYS",
+      "sub": null,
+      "activity": "buy Negate",
+      "meta": "75,000 standing",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Cephalon Simaris standing", "amount": "75,000" }],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Negate",
+          "note": "Wyrm-exclusive precept: blocks one status effect, then a cooldown",
+          "alt": "tradeable - a friend can hand it to you instead",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Negate does not replace Primed Sure Footed: it blocks one instance, then goes on cooldown, and a resistance blocking a status effect still consumes the charge.",
+        "Doesn't work while Wyrm is inactive, such as during Titania's Razorwing."
+      ],
+      "bonuses": [
+        "Pair with Manifold Bond (Ostron Rank 3 Trusted, 20,000 standing) - its cooldown reduction also applies to Negate since Update 37.0.",
+        "Put Negate in the bottom-right precept slot; the wiki notes it can block precepts later in priority from firing."
+      ],
+      "disclosures": [
+        {
+          "title": "not required, but why anyone builds this today",
+          "body": "Nobody farms Wyrm for its base kit anymore. Negate is the entire reason, and it works identically on base Wyrm and Wyrm Prime."
+        }
+      ]
+    }
+  ]
+}

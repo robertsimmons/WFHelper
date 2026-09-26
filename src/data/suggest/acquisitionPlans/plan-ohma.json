@@ -1,0 +1,136 @@
+{
+  "name": "Ohma",
+  "kind": "melee",
+  "effort": 1,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 1, "unit": "weapon" },
+  "badges": [
+    { "text": "Argon decays", "tone": "warn" },
+    { "text": "Nitain: Nightwave buy", "tone": "info" }
+  ],
+  "prices": [
+    { "label": "blueprint", "amount": "55,000 cr", "money": false },
+    { "label": "build", "amount": "20,000 cr", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "vendor",
+      "place": "MARKET",
+      "sub": null,
+      "activity": "buy blueprint",
+      "meta": "55,000 cr; MR 8",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Ohma Blueprint", "note": "55,000 credits", "alt": null, "done": false }
+      ],
+      "conditions": [
+        "This file covers the plain Ohma; Prisma Ohma is a separate Mastery item sold by Baro Ki'Teer."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "NIGHTWAVE, CRED OFFERINGS",
+      "sub": null,
+      "activity": "buy Nitain Extract",
+      "meta": "always in stock, no purchase limit",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Nightwave Creds", "amount": "15" }],
+      "map": null,
+      "rows": [
+        {
+          "qty": "4",
+          "label": "Nitain Extract",
+          "note": "15 Creds buys 5; one purchase covers the recipe",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Nitain can't be boosted by any booster or Resourceful Retriever, and it isn't tradeable.",
+        "Other Nitain sources (Sabotage/Exterminate rotation C, Ghoul Purge bounties, Gift of the Lotus alerts) are tiny-percentage drops and not worth chasing."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "PHOBOS, SATURN, URANUS, PLUTO OR ERIS",
+      "sub": null,
+      "activity": "any mission with a loot frame",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": "1,400", "label": "Plastids", "note": null, "alt": null, "done": false },
+        {
+          "qty": "15,000",
+          "label": "Ferrite",
+          "note": "on the high end for a melee weapon, but most players already have it",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "THE VOID",
+      "sub": null,
+      "activity": "Xaku or Limbo box-breaking (Hepit Capture, Teshub Exterminate), or Void Survival with a loot frame",
+      "meta": "farm this last",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": "2", "label": "Argon Crystal", "note": "Ohma build", "alt": null, "done": false }
+      ],
+      "conditions": [
+        "Argon Crystals stay safe until the first 00:00 UTC reset at least 24 hours after pickup, then the stack halves at every later reset; farm it last and start the build the same day."
+      ],
+      "bonuses": [
+        "Max-range Xaku (The Vast Untime) or Limbo (Cataclysm) on Hepit (Capture) or Teshub (Exterminate) breaks containers and Argon Pegmatite deposits through walls; both now show on the minimap.",
+        "Void Survival (Mot or Ani) with Nekros, Khora or Hydroid works too; Corrupted Vor in Mot drops an Argon Crystal about 50% of the time, not guaranteed as Reddit often claims.",
+        "Resource Booster, Drop Chance Booster, a relay Drop Chance Blessing, Resourceful Retriever and Smeeta Kavat's Charm all apply to Argon."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Ohma",
+      "meta": "20,000 cr, 12h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Ohma", "note": "20,000 credits, 12h build", "alt": null, "done": false }
+      ],
+      "conditions": [],
+      "bonuses": ["Level it to 30 for Mastery."],
+      "disclosures": []
+    }
+  ]
+}

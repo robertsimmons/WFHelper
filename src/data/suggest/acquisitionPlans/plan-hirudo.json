@@ -1,0 +1,103 @@
+{
+  "name": "Hirudo",
+  "kind": "melee",
+  "effort": 1,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 1, "unit": "blueprint" },
+  "badges": [
+    { "text": "no RNG farm", "tone": "info" },
+    { "text": "consumes a Kogake", "tone": "info" }
+  ],
+  "prices": [{ "label": "build", "amount": "90,000 cr", "money": false }],
+  "groups": [
+    {
+      "type": "vendor",
+      "place": "MARKET",
+      "sub": null,
+      "activity": "buy the Hirudo and Kogake blueprints",
+      "meta": "15,000 cr each",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Hirudo Blueprint", "note": "15,000 credits", "alt": null, "done": false },
+        { "qty": null, "label": "Kogake Blueprint", "note": "15,000 credits", "alt": null, "done": false }
+      ],
+      "conditions": ["The Hirudo recipe consumes a built Kogake, so buy both blueprints up front."],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "NIGHTWAVE OFFERINGS",
+      "sub": null,
+      "activity": "buy Nitain Extract",
+      "meta": "always available",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Nightwave Creds", "amount": "15" }],
+      "map": null,
+      "rows": [
+        {
+          "qty": "3",
+          "label": "Nitain Extract",
+          "note": "5 for 15 Nightwave Creds",
+          "alt": "Resource Cache Rotation C in Sabotage/Exterminate, Ghoul Purge bounties, Gift of the Lotus alerts",
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Kogake, level it to 30, then build Hirudo",
+      "meta": "12h each",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Kogake",
+          "note": "30,000 cr, 400 Rubedo, 3 Morphics, 1,200 Ferrite, 500 Alloy Plate",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "level Kogake to Rank 30",
+          "note": "before feeding it in, or lose that Mastery",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Hirudo",
+          "note": "30,000 cr, 1 Kogake, 3 Nitain Extract, 1,100 Plastids, 4,600 Nano Spores",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["The two 12-hour builds run back to back; start the Kogake first."],
+      "bonuses": [],
+      "disclosures": [
+        {
+          "title": "the recipe eats the Kogake",
+          "body": "Level it to Rank 30 before crafting Hirudo, or you lose that Mastery until you build another."
+        }
+      ]
+    }
+  ]
+}

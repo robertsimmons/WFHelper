@@ -1,0 +1,161 @@
+{
+  "name": "Verdilac",
+  "kind": "melee",
+  "effort": 4,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 1, "unit": "blueprint" },
+  "badges": [
+    { "text": "Rotation A only", "tone": "warn" },
+    { "text": "MR 13", "tone": "info" }
+  ],
+  "prices": [{ "label": "build", "amount": "20,000 cr", "money": false }],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "THE NEW WAR",
+      "sub": null,
+      "activity": "finish the quest",
+      "meta": "unlocks Narmer Bounties",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "The New War",
+          "note": "unlocks Narmer Bounties from Konzu and Eudico",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": ["Narmer Bounties have no Mastery Rank requirement."],
+      "disclosures": []
+    },
+    {
+      "type": "bounty",
+      "place": "PLAINS OF EIDOLON, EARTH",
+      "sub": "or Orb Vallis, Fortuna, same rates",
+      "activity": "Narmer Bounties, stages 4 and 5",
+      "meta": "rotation A only",
+      "mode": "premade recommended",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "plains-of-eidolon",
+      "rows": [
+        {
+          "qty": null,
+          "label": "Verdilac Blueprint",
+          "note": "5.45% stage 4, 7.5% stage 5, plus a bonus-stage roll, rotation A only",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Only Rotation A carries the Verdilac roll; B and C give none. The board cycles A/B/C every 150 minutes, so A is up 2.5 hours out of every 7.5.",
+        "Complete every stage's bonus objective for a third roll from the final-stage table.",
+        "Host migration after extraction can wipe a completed bounty's reward; leave the landscape cleanly once the drop is confirmed."
+      ],
+      "bonuses": [
+        "Run whichever hub is faster for you; Cetus and Fortuna share one drop table.",
+        "Farm Caliban, Korumm and Nepheri at the same time; their parts and the Archon set mods share these same bounties and all need Narmer Isoplast."
+      ],
+      "disclosures": [
+        {
+          "title": "no pity system",
+          "body": "About 5 full Rotation-A bounties clears it on average from the roughly 20% combined chance across stage 4, stage 5 and the bonus roll, with bad luck running well past that."
+        }
+      ]
+    },
+    {
+      "type": "farm",
+      "place": "PLAINS OF EIDOLON, EARTH",
+      "sub": null,
+      "activity": "fish Mortus Lungfish and stalk Vomvalysts at night",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "plains-of-eidolon",
+      "rows": [
+        {
+          "qty": "20",
+          "label": "Mortus Horn",
+          "note": "1 per fish, cut by Fisher Hai-Luk in Cetus",
+          "alt": "or Narmer/Tusk Thumpers, 17-33% per kill",
+          "done": false
+        },
+        {
+          "qty": "10",
+          "label": "Intact Sentient Core",
+          "note": "Vomvalysts, night",
+          "alt": "or Sentients on Lua and in the Veil Proxima",
+          "done": false
+        },
+        {
+          "qty": "12",
+          "label": "Narmer Isoplast",
+          "note": "byproduct of the bounty runs above, 1-3 per stage reward",
+          "alt": "spend spares for 2,000 Quills or Vox Solaris standing each",
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "ORB VALLIS, VENUS",
+      "sub": null,
+      "activity": "mine Amarast, refine at Smokefinger",
+      "meta": "Solaris United rank Rapscallion",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "orb-vallis",
+      "rows": [
+        {
+          "qty": "6",
+          "label": "Star Amarast",
+          "note": "refined from Amarast, blue mining veins",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The reusable refining blueprint costs 4,000 credits from Smokefinger and needs Solaris United Rank 3 (Rapscallion)."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Verdilac",
+      "meta": "20,000 cr, 12h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Verdilac", "note": null, "alt": null, "done": false }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

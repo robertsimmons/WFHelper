@@ -1,0 +1,223 @@
+{
+  "name": "Cinta",
+  "kind": "primary",
+  "effort": 6,
+  "tradeable": true,
+  "progress": { "have": 0, "need": 5, "unit": "parts" },
+  "badges": [
+    { "text": "Enigma RNG, no pity", "tone": "warn" },
+    { "text": "tradeable", "tone": "info" }
+  ],
+  "prices": [{ "label": "build", "amount": "85,000 cr", "money": false }],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "DUVIRI",
+      "sub": null,
+      "activity": "finish The Duviri Paradox; buy Enigma Sense",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Pathos Clamp", "amount": "10" }, { "currency": "Enigma Gyrum", "amount": "5" }],
+      "map": "duviri",
+      "rows": [
+        { "qty": null, "label": "The Duviri Paradox", "note": "solo-only quest", "alt": null, "done": false },
+        {
+          "qty": null,
+          "label": "Enigma Sense",
+          "note": "Drifter upgrade from Acrithis, Dormizone only",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Pick The Duviri Experience, not The Lone Story; Lone Story turns off Enigma puzzles entirely."
+      ],
+      "bonuses": [
+        "Enigma Sense puts a map icon and waypoint on nearby Enigmas; buy it before farming."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "DUVIRI",
+      "sub": "Archarbor",
+      "activity": "solve the Archarbor puzzle every time it's up; gather Eevani",
+      "meta": "6% per solve, 30% total for some piece",
+      "mode": "squad of 4 recommended",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "archarbor",
+      "rows": [
+        {
+          "qty": "5",
+          "label": "Cinta piece (any)",
+          "note": "main Blueprint, Grip, Lower Limb, Upper Limb or String",
+          "alt": null,
+          "done": false
+        },
+        { "qty": "40", "label": "Eevani", "note": "Upper Limb; best density here", "alt": null, "done": false }
+      ],
+      "conditions": [
+        "The Archarbor exists only during the Joy, Envy and Sorrow spirals, not Anger or Fear.",
+        "Open it by rotating the three Dominus Thrax busts at the island's edges to face the center, then hacking the fourth bust underground.",
+        "A squad of 2+ also unlocks 6% multiplayer Enigmas elsewhere in Duviri; solo caps you at 4% single-player puzzles plus the Archarbor.",
+        "Take a Decree before extracting; progress and drops save only up to your last Decree."
+      ],
+      "bonuses": ["Solving the Archarbor also pays 5 Enigma Gyrum each time."],
+      "disclosures": [
+        {
+          "title": "drop odds",
+          "body": "Archarbor and multiplayer Enigmas: 6% per piece, 30% total. Single-player Enigmas: the wiki's own drop table gives 4% per piece (20% total), despite prose elsewhere claiming 30% from any puzzle; the table wins."
+        },
+        {
+          "title": "why the last piece takes so long",
+          "body": "Every solve rolls one random piece off the same table with no pity. Duplicates are common; people routinely report 4-7 hour sessions stuck on the final piece. Trading covers the gap since every piece is tradeable."
+        },
+        {
+          "title": "finding puzzles",
+          "body": "Enigma Sense (once unlocked) waypoints nearby Enigmas. Without it, learn the fixed spawn spots from a community Duviri map, and listen for the Paragrimm owl's distinct sound."
+        }
+      ]
+    },
+    {
+      "type": "farm",
+      "place": "DUVIRI",
+      "sub": "Maw Feeding",
+      "activity": "fishing",
+      "meta": "one long session",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "maw-feeding",
+      "rows": [
+        { "qty": "100", "label": "Ariette Scale", "note": "Lower Limb", "alt": null, "done": false },
+        { "qty": "6", "label": "Maw Fang", "note": "Grip", "alt": null, "done": false }
+      ],
+      "conditions": ["Maw Feeding only works in The Duviri Experience, any mood."],
+      "bonuses": ["Take Bountiful Harvest first; it doubles Maw Feeding pickups."],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "DUVIRI",
+      "sub": "Lunaro Court",
+      "activity": "plant gathering",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "lunaro-court",
+      "rows": [
+        { "qty": "40", "label": "Kovnik", "note": "Grip; near water", "alt": null, "done": false },
+        { "qty": "40", "label": "Connla Sprout", "note": "String; densest here", "alt": null, "done": false }
+      ],
+      "conditions": ["Any mood; this is the one plant stop Joy and Envy do not block."],
+      "bonuses": ["Bountiful Harvest doubles plant pickups."],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "DUVIRI",
+      "sub": null,
+      "activity": "Dax, Blinkpads and Aggristone formations",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "duviri-landscape",
+      "rows": [
+        { "qty": "200", "label": "Lamentus", "note": "all four parts; open-world Dax only", "alt": null, "done": false },
+        { "qty": "160", "label": "Aggristone", "note": "Grip and Upper Limb", "alt": null, "done": false },
+        { "qty": "75", "label": "Saggen Pearl", "note": "String; Blinkpads, any mood", "alt": null, "done": false },
+        { "qty": "40", "label": "Yao Shrub", "note": "Upper Limb", "alt": null, "done": false },
+        { "qty": "60", "label": "Dracroot", "note": "Upper Limb", "alt": null, "done": false },
+        { "qty": "20", "label": "Silphsela", "note": "Lower Limb", "alt": null, "done": false }
+      ],
+      "conditions": [
+        "Lamentus does not drop from Dax inside the Undercroft.",
+        "Yao Shrub, Dracroot and Silphsela have no better community-cited spot beyond general Duviri plants and nodes."
+      ],
+      "bonuses": [
+        "Stall the prisoner-liberation objective short of the completion circle to keep Dax waves spawning."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "DUVIRI",
+      "sub": "Caves",
+      "activity": "Tasoma gathering",
+      "meta": "2-4 a node",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "duviri-caves",
+      "rows": [
+        { "qty": "20", "label": "Tasoma Extract", "note": "String; caves only", "alt": null, "done": false }
+      ],
+      "conditions": ["Any mood, but it grows nowhere except inside caves."],
+      "bonuses": ["Fly under the landscape on a Kaithe to spot cave mouths."],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build all four components, then Cinta",
+      "meta": "12h each, MR 6",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Grip",
+          "note": "15,000 cr, 40 Kovnik, 6 Maw Fang, 50 Lamentus, 80 Aggristone",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Lower Limb",
+          "note": "15,000 cr, 40 Eevani, 100 Ariette Scale, 50 Lamentus, 20 Silphsela",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Upper Limb",
+          "note": "15,000 cr, 40 Yao Shrub, 60 Dracroot, 50 Lamentus, 80 Aggristone",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "String",
+          "note": "15,000 cr, 40 Connla Sprout, 20 Tasoma Extract, 50 Lamentus, 75 Saggen Pearl",
+          "alt": null,
+          "done": false
+        },
+        { "qty": null, "label": "Cinta", "note": "25,000 cr, all four parts", "alt": null, "done": false }
+      ],
+      "conditions": ["Needs a free Primary slot before the Foundry will let you claim it."],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

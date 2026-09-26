@@ -1,0 +1,100 @@
+{
+  "name": "Hate",
+  "kind": "melee",
+  "effort": 7,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 1, "unit": "weapon" },
+  "badges": [
+    { "text": "Stalker RNG", "tone": "warn" },
+    { "text": "MR 8", "tone": "info" }
+  ],
+  "prices": [
+    { "label": "build", "amount": "15,000 cr", "money": false },
+    { "label": "plat bundle", "amount": "725 p", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "boss",
+      "place": "ASSASSINATION NODE, ANY",
+      "sub": null,
+      "activity": "earn a Death Mark, then kill (Shadow/Protector) Stalker",
+      "meta": "5.87% blueprint per kill",
+      "mode": "public recommended",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Hate Blueprint",
+          "note": "5.87% per Stalker kill (11.73% within a 50% table); untradeable",
+          "alt": {
+            "text": "or the \"What Stalker?\" bundle, prorated down if you already own Dread/Despair",
+            "spends": [{ "currency": "platinum", "amount": "725" }]
+          },
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Only the killing blow earns the mark — if a squadmate finishes the boss, they get it, not you.",
+        "Excluded bosses grant no mark: Captain Vor (Mercury), Corrupted Vor, Ropalolyst, Zealoid Prelate, The Fragmented, H-09 Efervon Tank.",
+        "Spawn chance is 1.5% + 0.5% per marked squad member (2% solo, 3.5% with a full marked squad), arriving 30-280s into the mission; the window closes around 5 minutes.",
+        "He cannot spawn in Assassination or Syndicate nodes, Sorties, Archon Hunts, Arenas, free roam, Archwing, Sanctuary Onslaught, relays/dojos, Albrecht's Laboratories, Höllvania or Dark Refractory missions.",
+        "Warframes below rank 10 block the spawn entirely.",
+        "If Stalker downs you, the mark is spent and he despawns immediately, even if you are revived before bleedout.",
+        "Hate requires MR 8 to equip."
+      ],
+      "bonuses": [
+        "Run the Hyena Pack (Psamathe, Neptune) for marks — each Hyena can grant its own.",
+        "The Sergeant (Iliad, Phobos) is the fastest single-boss mark — Volt, Gauss or Titania clear it in well under a minute.",
+        "Public squads raise spawn chance to 3.5% and are free."
+      ],
+      "disclosures": [
+        {
+          "title": "the maths behind the reputation",
+          "body": "The wiki's own expectation is ~17 kills, 114 ± 38 to be near-certain, stacked on a 2-3.5% spawn chance per mission. This makes Hate the most notorious \"years and still don't have it\" drop in the game — measured in playtime, not sessions."
+        },
+        {
+          "title": "beacons are a mixed bag",
+          "body": "Stalker Beacons (125,000 cr + 200 Ducats, Baro Ki'Teer, rotating stock) guarantee the spawn but not the drop. One well-known cautionary post burned 4,800 Ducats on 24 beacons for 21 Dreads, 1 Despair, no Hate — under the old table; post-Update-36 odds run roughly twice as good as that story implies."
+        },
+        {
+          "title": "the plat bundle gets a near-unanimous no",
+          "body": "444-725p buys ten-plus Warframe slots and reactors, and the drop lands eventually anyway — though a handful of buyers did report it dropping within days of purchase."
+        }
+      ]
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Hate",
+      "meta": "12h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Hate",
+          "note": "15,000 cr, 10 Morphics, 5,000 Ferrite, 6,000 Nano Spores, 4,500 Salvage",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": [
+        {
+          "title": "Incarnon is a separate item",
+          "body": "Hate Incarnon Genesis comes from week 7 of the Steel Path Circuit's 9-week rotation (with Dread and Despair) and does nothing without the base weapon. Cavalero sells the current week's adapter for 120 platinum including install resources (20 Pathos Clamp, 70 Dracroot, 20 Maw Fang)."
+        }
+      ]
+    }
+  ]
+}

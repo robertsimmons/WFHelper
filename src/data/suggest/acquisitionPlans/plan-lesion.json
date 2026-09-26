@@ -1,0 +1,154 @@
+{
+  "name": "Lesion",
+  "kind": "melee",
+  "effort": 2,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 1, "unit": "weapon" },
+  "badges": [
+    { "text": "no RNG, just time", "tone": "info" },
+    { "text": "MR 9 to equip", "tone": "info" }
+  ],
+  "prices": [
+    { "label": "chain total", "amount": "140,000 cr", "money": false },
+    { "label": "market bundle", "amount": "150 p", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "vendor",
+      "place": "MARKET",
+      "sub": null,
+      "activity": "buy the Bo, Kunai, Tipedo and Lesion blueprints",
+      "meta": "one visit covers the whole chain",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Bo Blueprint", "note": "15,000 cr", "alt": null, "done": false },
+        { "qty": null, "label": "Kunai Blueprint", "note": "15,000 cr", "alt": null, "done": false },
+        {
+          "qty": null,
+          "label": "Tipedo Blueprint",
+          "note": "20,000 cr",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Lesion Blueprint",
+          "note": "25,000 cr",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "MR3 is needed to equip Tipedo, MR9 for Lesion — only to use them, not to build them.",
+        "Budget three weapon slots for the chain: Bo, Kunai and Tipedo each need to sit claimed in your inventory before the next recipe will accept them."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Bo and Kunai together",
+      "meta": "12h each",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Bo",
+          "note": "15,000 cr, 1 Orokin Cell, 900 Salvage, 600 Ferrite, 150 Alloy Plate",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Kunai",
+          "note": "15,000 cr, 5 Morphics, 3,000 Ferrite, 4,000 Nano Spores, 4,000 Salvage",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Rank each to 30 before consuming it — mastery is only awarded for levels actually earned, and Bo, Kunai and Tipedo are each worth full mastery in their own right.",
+        "Claim both into inventory before starting Tipedo; an item still sitting unclaimed in the Foundry is not a valid ingredient."
+      ],
+      "bonuses": [
+        "Bo and Kunai build in parallel, so the wall clock is 12h here, not 24h."
+      ],
+      "disclosures": [
+        {
+          "title": "don't feed an Incarnon copy",
+          "body": "Bo and Kunai both have Incarnon Genesis adapters from the Circuit. Whether an installed Genesis survives being consumed is unconfirmed; strip it at Cavalero first or build a separate naked copy as the ingredient."
+        }
+      ]
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Tipedo",
+      "meta": "12h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Tipedo",
+          "note": "20,000 cr, 2 Neural Sensors, 1,600 Polymer Bundle, 1 Kunai, 1 Bo",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Tipedo Prime does not substitute — the Foundry UI may appear to accept it but will not actually consume it. Build the base Tipedo.",
+        "Bo is double-booked: it also feeds Cadus. Build two Bo if you want both."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Lesion",
+      "meta": "12h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Lesion",
+          "note": "15,000 cr, 1 Tipedo, 1,400 Plastids, 4 Neurodes, 2,300 Nano Spores",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Forma, Orokin Catalyst, Exilus Weapon Adapter and Focus Lens do not carry over from a consumed weapon — build a fresh, naked Tipedo as the ingredient rather than feeding in an invested one.",
+        "Rank Tipedo to 30 before feeding it in for its mastery."
+      ],
+      "bonuses": [
+        "About 140,000 credits and 36 hours end to end (Bo and Kunai in parallel, then Tipedo, then Lesion) versus 150 platinum to buy the finished Lesion outright — that price gap is why nobody rushes this chain."
+      ],
+      "disclosures": []
+    }
+  ]
+}

@@ -1,0 +1,116 @@
+{
+  "name": "Cantare",
+  "kind": "secondary",
+  "effort": 3,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 1, "unit": "blueprint" },
+  "badges": [
+    { "text": "guaranteed pity buy", "tone": "info" },
+    { "text": "New War gate", "tone": "warn" }
+  ],
+  "prices": [],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "THE NEW WAR, THEN JADE SHADOWS",
+      "sub": null,
+      "activity": "clear the prerequisite quests",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "The New War",
+          "note": "prerequisite for Jade Shadows",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Jade Shadows",
+          "note": "unlocks Ascension on Brutus, Uranus, and Ordis's shop in the Drifter's Camp",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "BRUTUS, URANUS",
+      "sub": null,
+      "activity": "clear Ascension; grab Sister Beacons and throw Boosted Ionic Charges up the elevator",
+      "meta": "4.63% blueprint drop per completion; pity currency also drops every run",
+      "mode": "solo or premade — pubs often ignore the elevator objective",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Cantare Blueprint",
+          "note": "4.63% per completion, direct drop",
+          "alt": {
+            "text": "or Ordis, Drifter's Camp",
+            "spends": [{ "currency": "Vestigial Motes", "amount": "300" }]
+          },
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The elevator capsule can't be damaged during the ride — it isn't a defense objective, so killing enemies there doesn't move you forward; throwing charges does.",
+        "Throw Boosted Ionic Charges (the larger, double-outlined pickups) the instant you find them; each gives 3x elevator speed for 10s and the boost extends up to 50s rather than stacking in magnitude.",
+        "Pick up all 3 Sister Beacons in the shaft every run to summon the Sister of Parvos for 5-7 more motes (8-10 Steel Path) plus a 33% arcane chance (guaranteed on Steel Path)."
+      ],
+      "bonuses": [
+        "Every completion pays 11-13 Vestigial Motes (16-18 Steel Path) even without the blueprint drop, banking toward the 300-mote pity buy.",
+        "Steel Path pays roughly 45% more motes and guarantees the Sister's arcane drop, plus Steel Essence on the side.",
+        "Cantare competes for motes with the rest of Jade's kit, so decide your purchase order before you start — any blueprint drop you get is 300 motes you don't have to spend."
+      ],
+      "disclosures": [
+        {
+          "title": "boosters do nothing here",
+          "body": "Per the wiki, Resource Boosters, Resource Drop Chance Boosters, the relay Drop Chance Blessing and Resourceful Retriever have no effect on Vestigial Motes; they only affect Steel Essence. A comment claiming otherwise is wrong."
+        },
+        {
+          "title": "organized squads clear in under 6 minutes",
+          "body": "Public squads commonly run 8+ minutes and leech during the elevator phase. Argon Crystal decays, so farm the amount needed for the build in the Void right before crafting, not ahead of time."
+        }
+      ]
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Cantare",
+      "meta": "12h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Cantare",
+          "note": "1,600 Ferrite, 1,400 Circuits, 600 Polymer Bundle, 4 Argon Crystal",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

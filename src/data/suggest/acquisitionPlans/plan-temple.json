@@ -1,0 +1,179 @@
+{
+  "name": "Temple",
+  "kind": "warframe",
+  "effort": 6,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "badges": [
+    { "text": "Hex Rank 4 gate", "tone": "warn" },
+    { "text": "KIM chemistry needed", "tone": "warn" }
+  ],
+  "prices": [
+    { "label": "pity route", "amount": "390 Heartstrings", "money": false },
+    { "label": "build", "amount": "70,000 cr", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "HOLLVANIA",
+      "sub": "Central Mall",
+      "activity": "rank The Hex to Rank 4, Hot & Fresh",
+      "meta": "needs Liked chemistry with all six Hex members plus the Hex Finale",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Rank up to Rank 4, Hot & Fresh",
+          "note": "70,000 standing at Rank 3, plus a sacrifice of 25 Techrot Chitin, 25 Necracoil and 40 Efervon Sample",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Liked chemistry with all six Hex members",
+          "note": "90 Chemistry and 4 dialogues each; every bounty gives 20 Chemistry, mall gifts give more",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "The Hex Finale",
+          "note": "triggers once chemistry and standing are ready; required before Rank 4 unlocks",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Rank 4 is a story and chemistry gate, not just a standing gate: banked standing does nothing until every member is Liked and the Finale is done."
+      ],
+      "bonuses": [
+        "Standing comes from Höllvania bounties, trading Hex Treasures to Leticia, and Temporal Archimedea (15,000 for all three missions)."
+      ],
+      "disclosures": [
+        {
+          "title": "the wiki couldn't confirm this",
+          "body": "How long the KIM chemistry dialogues take in real days is not documented; treat it as ongoing background progress rather than something to rush."
+        }
+      ]
+    },
+    {
+      "type": "currency",
+      "place": "HOLLVANIA",
+      "sub": "Solstice Square",
+      "activity": "Stage Defense — defend Flare/Temple; queue via the bounty stage, not the plain node",
+      "meta": "AABC rotations; 390 Heartstrings for the full blueprint set",
+      "mode": "Steel Path recommended",
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "Beating Heartstrings", "amount": "390" },
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Temple Blueprint",
+          "note": "195 Heartstrings at Flare Varleon, Central Mall",
+          "alt": "0.97% A / 1.98% B / 4.58% C direct drop",
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Neuroptics Blueprint",
+          "note": "65 Heartstrings at Flare Varleon",
+          "alt": "0.97% A / 1.98% B / 4.58% C direct drop",
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Chassis Blueprint",
+          "note": "65 Heartstrings at Flare Varleon",
+          "alt": "0.97% A / 1.98% B / 4.58% C direct drop",
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Systems Blueprint",
+          "note": "65 Heartstrings at Flare Varleon",
+          "alt": "0.97% A / 1.98% B / 4.58% C direct drop",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Each rotation is 3 waves, running AABC; after the first rotation the floor collapses into an underground encore arena with Techrot added.",
+        "Temporal Archimedea's Stage Defense stages do not award Heartstrings, confirmed on the wiki and by a player who checked.",
+        "Heartstrings are not affected by Resource Boosters (fixed in Hotfix 38.5.1)."
+      ],
+      "bonuses": [
+        "Every rotation also pays 4-9 Heartstrings (7-12 Steel Path) even without a blueprint drop, banking toward the 390-Heartstring full set.",
+        "The farm also earns Hex standing and Screamer arcane drops at the same time.",
+        "Queue through the Höllvania bounty version rather than the plain map node — public matchmaking fills the bounty stage while the node runs nearly empty."
+      ],
+      "disclosures": [
+        {
+          "title": "go Steel Path",
+          "body": "Near-unanimous advice: Steel Path pays more Heartstrings per rotation (7-12 vs 4-9), more enemies means faster waves, and Steel Essence comes along for free. Roughly 390 Heartstrings works out to about 40 Steel Path rotations or 60 normal ones before any lucky drops; one player reported a full set on currency alone in under 3 hours, about 130 waves."
+        },
+        {
+          "title": "frame picks",
+          "body": "Mesa (Regulators auto-target everything in the open arena, ~3 min/rotation) is the most-recommended farmer. Also named: Hildryn with a Balefire build, Nova, Protea (handles flying enemies), Gara, Mirage, Volt, and the semi-AFK picks Octavia and Nokko. Bring something that kills the Scaldra Screamer fast — a suicide bomber with nullifying pulses that spawns on the last wave of each rotation."
+        }
+      ]
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build components, then Temple",
+      "meta": "12h each, then 3 days",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Neuroptics",
+          "note": "15,000 cr, 22 Experimental Arc-Relay, 800 Plastids, 1 Neural Sensors, 2 Neurodes",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Chassis",
+          "note": "15,000 cr, 400 Hollvanian Pitchweave Fragment, 250 Alloy Plate, 1,500 Nano Spores, 1 Argon Crystal",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Systems",
+          "note": "15,000 cr, 6 Techrot Motherboard, 1,300 Nano Spores, 450 Polymer Bundle, 6 Control Module",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Temple",
+          "note": "25,000 cr, 3 Orokin Cells",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Argon Crystal decays in inventory; farm it last, right before building Chassis.",
+        "Needs a free Warframe slot before the Foundry will let you claim it."
+      ],
+      "bonuses": [
+        "A second Temple (via Flare's Helminth-copy prices, same 390 Heartstrings) is needed to feed Pyrotechnics to Helminth."
+      ],
+      "disclosures": []
+    }
+  ]
+}

@@ -1,0 +1,139 @@
+{
+  "name": "Tenet Livia",
+  "kind": "melee",
+  "effort": 8,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 1, "unit": "weapon" },
+  "badges": [
+    { "text": "Corrupted Holokeys", "tone": "warn" },
+    { "text": "MR 14", "tone": "warn" }
+  ],
+  "prices": [{ "label": "Elemental Vice", "amount": "20 p", "money": false }],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "STAR CHART",
+      "sub": null,
+      "activity": "build a Railjack",
+      "meta": "one-time",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Rising Tide", "note": "needs The War Within; builds your own Railjack", "alt": null, "done": false },
+        {
+          "qty": null,
+          "label": "Mastery Rank 14",
+          "note": "enforced at the Ergo Glast purchase, unlike a Sister-dropped Tenet weapon",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "You can join someone else's Railjack without owning one, but public squads are mostly un-upgraded ships, AFK turret-sitters and trolls — solo or a recruit-chat squad is the norm.",
+        "Sisters of Parvos do not carry the Tenet Livia; every Tenet melee (Livia, Grigori, Exec, Agendus) plus Tenet Ferrox is Ergo Glast-only."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "currency",
+      "place": "SATURN PROXIMA",
+      "sub": null,
+      "activity": "Void Storm, Grineer Skirmish nodes",
+      "meta": "~3 minutes per run",
+      "mode": "solo",
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "Corrupted Holokey", "amount": "40" },
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "40",
+          "label": "Corrupted Holokey",
+          "note": "guaranteed 1 per run plus a ~35.7% roll for 5 more; about 14 Saturn runs for 40",
+          "alt": "Neptune Larissa or the Veil once your Railjack is strong",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Boosters do nothing — Resource Booster, Drop Chance Booster, Blessings and Retriever mods are all excluded from Holokey drops.",
+        "Corpus Railjack missions pile a slow on-foot objective onto the space fight; Grineer Skirmish storms run in about 3 minutes once you know the radiator loop.",
+        "You do not need to bring or open a relic for the Holokey reward table, though it's free value to bring one anyway.",
+        "Grineer Veil ground enemies are close to Steel Path tankiness if you push that far — bring a Necramech or a tanky frame."
+      ],
+      "bonuses": [
+        "Finishing a Sister of Parvos Final Confrontation pays 1 Holokey per squad member per Sister, up to 4 — a side income if you're already hunting Sisters, too slow to farm on its own."
+      ],
+      "disclosures": [
+        {
+          "title": "solo Railjack crew setup",
+          "body": "Hire an engineer first (defender role, high Repair stat, a beam weapon like Phantasma) so hull breaches and fires handle themselves. Two gunners with a hitscan turret (Talyn best, Pulsar second) clear fighters. Switch the engineer to pilot while you're on foot and a large-projectile forward gun (Vort, Laith, Cryophon) helps the AI hit radiators. Forward Artillery one-shots crewships through an intact engine at effectively unlimited range; use Shatter Burst on shielded ones first. Park outside 8000m, out of ramsled and enemy weapon range, and let the turrets clear fighters. Lavos or Hildryn put Railjack abilities on cooldowns instead of energy costs. Early on, before your ship is upgraded, Archwing (Amesha plus a decent archgun) clears fighters and boards crewships just as well."
+        }
+      ]
+    },
+    {
+      "type": "vendor",
+      "place": "ERGO GLAST, ANY RELAY",
+      "sub": null,
+      "activity": "Browse Merchandise",
+      "meta": "one copy per 4-day rotation",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Corrupted Holokey", "amount": "40" }],
+      "map": null,
+      "rows": [
+        { "qty": "1", "label": "Tenet Livia", "note": "random element, 25-60% bonus", "alt": null, "done": false }
+      ],
+      "conditions": [
+        "One copy per rotation; the bonus element and percentage reroll every 4 days — you cannot buy two in the same window to fuse immediately.",
+        "No Perrin Sequence standing required."
+      ],
+      "bonuses": [
+        "Anything at or above roughly 52.7% fuses straight to 60% with one more copy; Elemental Vice frees the element later, so only the percentage matters."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "craft",
+      "place": "ORBITER, MODDING",
+      "sub": null,
+      "activity": "optional Valence Fusion toward 60%",
+      "meta": "bank rotations first",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "52.7%+ roll",
+          "note": "fuses straight to 60%",
+          "alt": "58%+ already rounds to 60%",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Fusion takes the higher of the two bonuses × 1.1, capped at 60%.",
+        "Fuse into the copy you've invested in — the donor's Catalyst, Forma, Exilus adapter and Elemental Vice are all destroyed.",
+        "Only one copy per rotation, so each fusion step costs another 40 keys and a wait, unlike a Sister-dropped Tenet weapon where you just farm more kills.",
+        "Elemental Vice needs rank 40 (5 Forma): 50,000 Hex standing at Rank 5, 20 platinum from the Market, or a Temporal Archimedea/Nightwave drop."
+      ],
+      "bonuses": [],
+      "disclosures": [
+        {
+          "title": "the currency math",
+          "body": "Since the Void Storm guaranteed-key buff, 40 keys is roughly a day's play. Since Ergo sells all five Tenet melees at 40 each, most people farm the full 200-key set in one go rather than one weapon at a time."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,193 @@
+{
+  "name": "Tenet Flux Rifle",
+  "kind": "primary",
+  "effort": 8,
+  "tradeable": "converted Sister only",
+  "progress": { "have": 0, "need": 1, "unit": "weapon" },
+  "badges": [
+    { "text": "Sister of Parvos", "tone": "warn" },
+    { "text": "Railjack required", "tone": "warn" }
+  ],
+  "prices": [{ "label": "Elemental Vice", "amount": "20 p", "money": false }],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "STAR CHART",
+      "sub": null,
+      "activity": "unlock Sisters of Parvos",
+      "meta": "one-time",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Mastery Rank 5", "note": "to create a Sister", "alt": null, "done": false },
+        { "qty": null, "label": "The War Within", "note": "quest complete", "alt": null, "done": false },
+        { "qty": null, "label": "Call of the Tempestarii", "note": "quest complete; needs a Railjack", "alt": null, "done": false },
+        { "qty": null, "label": "The Deadlock Protocol", "note": "for Granum Crowns", "alt": null, "done": false },
+        {
+          "qty": null,
+          "label": "Railjack Intrinsics rank 3, any class",
+          "note": "Neptune Proxima showdown",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Only one adversary at a time: clear or convert any active Kuva Lich, Sister, or Coda first.",
+        "Ergo Glast never sells the Flux Rifle; his Corrupted Holokey shop only carries Grigori, Livia, Exec, Agendus and Ferrox. Every ranged Tenet weapon comes from a Sister."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "boss",
+      "place": "PLUTO, HYDRA",
+      "sub": "Capture",
+      "activity": "clear the Nightmare Granum Void; inspect Candidates",
+      "meta": "one Zenith Crown per attempt",
+      "mode": "solo",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Zenith Granum Crown", "amount": "1" }],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Tenet Flux Rifle Candidate",
+          "note": "Mercy only when the weapon preview says Flux Rifle",
+          "alt": "buy a converted Tenet Flux Rifle Sister",
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "progenitor element",
+          "note": "Toxin progenitors (Saryn, Nidus, Khora, Oberon and others) combine with the innate Slash for a viral/slash build; most build threads run toxin",
+          "alt": "Elemental Vice can change it later at rank 40",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "A Treasurer spawns 2-5 minutes into any non-endless Corpus Ship mission and drops a Crown tiered by level; level 31+ or Steel Path drops the Zenith, the only tier that spawns a Candidate.",
+        "Open the Void far from extraction and walk out slowly afterward — within roughly 150-200m of extraction, or sprinting out, suppresses the Candidate spawn entirely.",
+        "If the preview isn't Flux Rifle, leave her and complete and extract from the mission. Aborting does not remove that weapon from the pool; only a completed rejection does.",
+        "The Sister-carried pool is 11 weapons (Arca Plasmor, Cycron, Detron, Diplos, Envoy, Flux Rifle, Glaxion, Plinx, Quanta, Spirex, Tetra), so correctly rejecting guarantees Flux Rifle inside 11 completed missions.",
+        "Only the player who dealt the final hit can Mercy, and a Rank 4+ Sister spawns Spectralysts — exact copies of your Warframe and loadout."
+      ],
+      "bonuses": [
+        "Xoris, even 0-forma, one-shots Errant Specters regardless of level and frees Solaris captives for +20s each on detonation."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "boss",
+      "place": "SISTER INFLUENCE NODES",
+      "sub": "Venus through Pluto",
+      "activity": "Mercy Hounds, reveal Requiems, test the sequence",
+      "meta": "~2 missions per Sister",
+      "mode": "long missions first, then fast ones",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "3",
+          "label": "revealed Requiems",
+          "note": "Murmurs reveal mods, not order",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "correct Parazon sequence",
+          "note": "opens the Neptune Proxima showdown",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Requiem mods all come from the single Requiem Eterna relic (all 8 mods at equal chance), from Kuva Siphon (50%) or Kuva Flood (100%); Hounds have a 5% relic chance.",
+        "Survival, Defense and Excavation on her nodes maximise Hounds per mission (max 3, one always at start); switch to Capture or Exterminate once you only need rage to draw her out.",
+        "Hounds take 25% less damage, don't take bonus Toxin damage, cap at 4 status stacks, and can null your ability casts onto cooldown; they only raise her rage meter when killed on her own nodes.",
+        "Failing a Parazon attempt levels the Sister up, raising every node she controls; three failed downs in one mission and she leaves."
+      ],
+      "bonuses": ["Run the Neptune Proxima confrontation in a full squad: one Corrupted Holokey per member, up to 4."],
+      "disclosures": [
+        {
+          "title": "Oull-first Parazon",
+          "body": "Slot Oull permanently in position 1 and test each revealed Requiem in position 2. Worst case is 4 attempts without ever learning the third Requiem, and every attempt still spawns Hounds and murmurs. Oull drops from Sister Parazon attempts at 25%."
+        }
+      ]
+    },
+    {
+      "type": "boss",
+      "place": "NEPTUNE PROXIMA",
+      "sub": "Sister Confrontation",
+      "activity": "Railjack Skirmish; finish the Sister",
+      "meta": "choose Vanquish",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Tenet Flux Rifle",
+          "note": "built; Foundry delivery",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Choose Vanquish, never Convert — Convert gives an ally and a tradeable Sister token but no weapon.",
+        "Kill her Hounds and both Warframe Specters; she is invulnerable until her backup is dead.",
+        "Needs Railjack Intrinsics rank 3; bring a Railjack with actual hull and shield mods."
+      ],
+      "bonuses": [
+        "Vanquish also refunds taxed credits, any ephemera, a 25% shot at a Requiem Ultimatum, and one Corrupted Holokey per squad member."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "craft",
+      "place": "ORBITER, MODDING",
+      "sub": null,
+      "activity": "optional Valence Fusion toward 60%",
+      "meta": "bank copies first",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "52.8%+ roll",
+          "note": "fuses straight to 60%",
+          "alt": "58%+ already rounds to 60%",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Fusion takes the higher of the two bonuses × 1.1, capped at 60%.",
+        "Fuse into the copy you've invested in — the donor's Catalyst, Forma, Exilus adapter and Elemental Vice are all destroyed.",
+        "Elemental Vice needs rank 40 (5 Forma): 50,000 Hex standing at Rank 5, 20 platinum from the Market, or a Temporal Archimedea/Nightwave drop."
+      ],
+      "bonuses": [],
+      "disclosures": [
+        {
+          "title": "the 60% chase is optional",
+          "body": "The same guide that documents this whole loop says explicitly not to grind for a maxed roll on every Tenet weapon. Take the first Flux Rifle you get, apply an Elemental Vice, and move on."
+        }
+      ]
+    }
+  ]
+}

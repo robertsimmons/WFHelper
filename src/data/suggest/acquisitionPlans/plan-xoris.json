@@ -1,0 +1,90 @@
+{
+  "name": "Xoris",
+  "kind": "melee",
+  "effort": 2,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 3, "unit": "parts" },
+  "badges": [
+    { "text": "quest reward", "tone": "info" },
+    { "text": "Simaris buyback", "tone": "warn" }
+  ],
+  "prices": [
+    { "label": "build", "amount": "5,000 cr", "money": false },
+    { "label": "Simaris buyback", "amount": "145,000 standing", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "SATURN JUNCTION, THEN THE CODEX",
+      "sub": null,
+      "activity": "unlock and complete The Deadlock Protocol",
+      "meta": "solo, replayable side quest",
+      "mode": "solo",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Saturn Junction",
+          "note": "reward: The Deadlock Protocol",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "The Deadlock Protocol",
+          "note": "hands you the Xoris blueprint, then the Handle, Core and Blade during its Europa Spy mission",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Needs Mastery Rank 4 to start."],
+      "bonuses": [
+        "The quest also awards the Protea blueprint and the Granum Void Captura scene."
+      ],
+      "disclosures": [
+        {
+          "title": "the vault mechanic",
+          "body": "In the Europa Spy mission (\"The Xoris\"), hack all three vaults to get the Handle, Core and Blade. The quest's boss fight against Protea in the Granum Void was nerfed in Update 29.10 (fewer specters, weaker Protea, consistent rewind timing) and is much less brutal than older threads describe."
+        },
+        {
+          "title": "if you sold it",
+          "body": "Cephalon Simaris (any Relay) sells the blueprint back for 100,000 standing and each of the three parts (Handle, Core, Blade) for 15,000, so 145,000 standing total plus the 5,000-credit build. The offering only appears after the quest is done, and it's in Simaris's own menu, not the credit Market. Stealth-scanning high-level (Steel Path) enemies with Ivara and the Synthesis Scanner, grouped with a Noise Arrow, is the fastest standing; one player filled a day's cap in about 15 minutes this way, though total time scales with your daily cap, which scales with Mastery Rank."
+        },
+        {
+          "title": "don't sell it",
+          "body": "The near-unanimous regret across threads is selling Xoris after the quest to free a slot, then needing it again for Sisters of Parvos Granum Void runs. It's the only way to free Solaris captives for extra time in the Void, though Mesa, Revenant, Octavia, Volt or an on-call Railjack crew can still reach the kill quota without it."
+        }
+      ]
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Xoris",
+      "meta": "30 seconds",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Xoris", "note": "5,000 credits", "alt": null, "done": false }
+      ],
+      "conditions": [],
+      "bonuses": [
+        "Any Xoris kill in the Granum Void charges a Specter Particle, including the detonation's AoE; a direct throw hit isn't required."
+      ],
+      "disclosures": [
+        {
+          "title": "self-stagger",
+          "body": "The detonation self-staggers at close range from its 8m radius, independent of any mods. Remove Volatile Rebound and Volatile Quick Return, or run an overguard or knockdown-immune frame. A bait or canister equipped can steal the detonate button by a known bug."
+        }
+      ]
+    }
+  ]
+}

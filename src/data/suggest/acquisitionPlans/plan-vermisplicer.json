@@ -1,0 +1,194 @@
+{
+  "name": "Vermisplicer",
+  "kind": "secondary",
+  "effort": 3,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 3, "unit": "parts" },
+  "badges": [
+    { "text": "Kitgun", "tone": "info" },
+    { "text": "Associate gate", "tone": "warn" }
+  ],
+  "prices": [
+    { "label": "parts + assembly", "amount": "19,000 cr", "money": false },
+    { "label": "gild", "amount": "5,000 cr", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "NECRALISK, DEIMOS",
+      "sub": null,
+      "activity": "Heart of Deimos quest",
+      "meta": "no Mastery Rank requirement",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Heart of Deimos",
+          "note": "unlocks Father and Entrati standing",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": ["A fresh account can build Vermisplicer the day it reaches the Necralisk."],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "FATHER, NECRALISK",
+      "sub": null,
+      "activity": "buy chamber, grip and loader blueprints",
+      "meta": "1,500 standing, all Rank 0",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Entrati standing", "amount": "1,500" }],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Vermisplicer Chamber Blueprint",
+          "note": "500 standing, Rank 0",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Ulnaris Blueprint",
+          "note": "secondary grip, 500 standing, Rank 0",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Thymoid Blueprint",
+          "note": "loader, 500 standing, Rank 0",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "No Solaris United trip needed: Father's own Rank 0 grip and loader are enough for a Mastery build."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "CAMBION DRIFT, DEIMOS",
+      "sub": null,
+      "activity": "fillet Cambion fish, kill Infested for Ganglion, mine ore",
+      "meta": "chamber materials",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "cambion-drift",
+      "rows": [
+        {
+          "qty": "15",
+          "label": "Ganglion",
+          "note": "common Infested drop on the Cambion Drift",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "20",
+          "label": "Tempered Bapholite",
+          "note": "refine from Bapholite ore; one craft yields 20",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "25",
+          "label": "Benign Infested Tumor",
+          "note": "fillet any Cambion Drift fish at Daughter",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "10",
+          "label": "Dendrite Blastoma",
+          "note": "fillet Vitreospina or Barbisteo, cave fish during Vome and Fass; also drops from Spitia cysts",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Tempered Bapholite's reusable blueprint costs 1,000 standing from Otak, Rank 0, and needs Otak's mining laser."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY + FATHER",
+      "sub": null,
+      "activity": "build, assemble, level, gild, level again",
+      "meta": "1h per part; assembly instant",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Vermisplicer",
+          "note": "5,000 credits, 1h",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Ulnaris",
+          "note": "5,000 credits, 1h",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Thymoid",
+          "note": "5,000 credits, 1h",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "assemble at Father",
+          "note": "4,000 credits, instant",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "gild at rank 30",
+          "note": "Entrati Rank 3 (Associate), 25 Father Tokens, 5,000 credits; resets it to rank 0",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "An ungilded Kitgun earns no Mastery, can't be forma'd and can't take arcanes. Level to 30, gild, then level to 30 again.",
+        "Only one Vermisplicer ever counts for Mastery; primary and secondary share the entry."
+      ],
+      "bonuses": [
+        "Father Tokens come from turning in Cambion Drift resources and can be stockpiled ahead of the gild, even past the daily standing cap."
+      ],
+      "disclosures": [
+        {
+          "title": "grip sets range, not just damage",
+          "body": "On this beam chamber the grip decides beam range more than damage. Palmaris (Father's Rank 0 primary grip, 28 m) is a commonly cited pick precisely because a beam chamber leans on mods for damage anyway."
+        }
+      ]
+    }
+  ]
+}

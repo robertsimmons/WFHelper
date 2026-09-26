@@ -1,0 +1,70 @@
+{
+  "name": "Rakta Dark Dagger",
+  "kind": "melee",
+  "effort": 4,
+  "tradeable": "unranked copies only, with no Forma or Catalyst installed",
+  "progress": { "have": 0, "need": 1, "unit": "purchase" },
+  "badges": [
+    { "text": "Exalted rank gate", "tone": "warn" },
+    { "text": "no RNG", "tone": "info" }
+  ],
+  "prices": [],
+  "groups": [
+    {
+      "type": "currency",
+      "place": "ELITE SANCTUARY ONSLAUGHT",
+      "sub": null,
+      "activity": "pledge Red Veil, earn standing from mission affinity and Syndicate Medallions",
+      "meta": "365,000 standing total to Exalted plus the dagger",
+      "mode": "leave around round 8 for one clean daily cap",
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "Red Veil standing", "amount": "365,000" },
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": "500", "label": "Alloy Plate", "note": "Rank 0 Initiation sacrifice", "alt": null, "done": false },
+        { "qty": "2", "label": "Gallium", "note": "Rank 1 Respected sacrifice", "alt": null, "done": false },
+        { "qty": "1", "label": "Forma", "note": "Rank 2 Honored sacrifice", "alt": null, "done": false },
+        { "qty": "1", "label": "Orokin Catalyst", "note": "Rank 3 Esteemed sacrifice", "alt": null, "done": false },
+        { "qty": "5", "label": "Aya", "note": "2 at Rank 4 Revered, 3 at Rank 5 Exalted", "alt": null, "done": false }
+      ],
+      "conditions": [
+        "Daily standing cap is 16,000 plus 500 per Mastery Rank, shared across every faction syndicate.",
+        "Hit the cap with mission affinity first, then turn in Syndicate Medallions and pick up Syndicate Alert rewards; neither counts toward the cap.",
+        "Rank up as soon as you can afford it. Standing earned past a rank's maximum is wasted, and medallions turned in near the cap are wasted the same way."
+      ],
+      "bonuses": [
+        "Pledging Steel Meridian feeds Red Veil passively at +50% without hurting Suda or Hexis, if you want to keep those positive too.",
+        "The Circuit past stage 4, or a Sedna/Adaro stealth Exterminate with Equinox, Ivara or Banshee, also caps you in one or two runs."
+      ],
+      "disclosures": [
+        {
+          "title": "why 365,000",
+          "body": "240,000 standing carries the five rank-ups to Exalted. Exalted's own cap is 132,000, which is enough to also bank the 125,000-standing weapon purchase without an extra rank-up cycle."
+        }
+      ]
+    },
+    {
+      "type": "vendor",
+      "place": "RED VEIL OFFERINGS, RELAY",
+      "sub": null,
+      "activity": "buy the dagger",
+      "meta": "125,000 standing",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Red Veil standing", "amount": "125,000" }],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Rakta Dark Dagger", "note": null, "alt": null, "done": false }
+      ],
+      "conditions": [
+        "The free item you pick at each rank-up can never be a Syndicate weapon; the dagger is always a separate 125,000-standing purchase."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

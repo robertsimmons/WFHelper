@@ -1,0 +1,167 @@
+{
+  "name": "Amprex",
+  "kind": "primary",
+  "effort": 2,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 1, "unit": "blueprint" },
+  "badges": [
+    { "text": "8 Fieldron", "tone": "warn" },
+    { "text": "Energy Lab", "tone": "info" }
+  ],
+  "prices": [
+    { "label": "replicate blueprint", "amount": "50,000 cr", "money": false },
+    { "label": "8 Fieldron if crafted", "amount": "240,000 cr", "money": false },
+    { "label": "build", "amount": "25,000 cr", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "DOJO, ENERGY LAB",
+      "sub": null,
+      "activity": "clan research",
+      "meta": "skip if already researched",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Energy Lab: Fieldron, then Prova, then Dera, then Amprex",
+          "note": "72h each, 12 days minimum for a new Ghost (x1) clan",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Ghost (x1) tier pays 7,500 credits, 15 Fieldron Samples, 350 Plastids, 750 Nano Spores and 350 Polymer Bundle for the whole tree; bigger clans pay x3, x10, x30 or x100 of that.",
+        "In an established clan this is already done and costs you nothing."
+      ],
+      "bonuses": [],
+      "disclosures": [
+        {
+          "title": "the OMEN giveaway shortcut",
+          "body": "From 7 July 2026, logging into HP's OMEN Gaming Hub during the TennoCon 2026 promo gives a free Amprex with its own slot and Orokin Reactor, PC only, while quantities last, with no confirmed end date. Reddit reacted negatively to installing the app over data-harvesting concerns, and some used a throwaway account."
+        }
+      ]
+    },
+    {
+      "type": "research",
+      "place": "DOJO, ENERGY LAB",
+      "sub": null,
+      "activity": "replicate the blueprint",
+      "meta": "50,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Credits", "amount": "50,000" }],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Amprex Blueprint",
+          "note": "50,000 cr",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["MR 10 gate to build it once you have the blueprint."],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "STAR CHART",
+      "sub": null,
+      "activity": "Corpus-side Invasions, or Orb Vallis (Vox Solaris) bounty rotations",
+      "meta": "3 per Invasion; up to 8 reported from one bounty",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "orb-vallis",
+      "rows": [
+        {
+          "qty": "8",
+          "label": "Fieldron",
+          "note": "3 per Corpus-reward Invasion, or Vox Solaris bounty rotation",
+          "alt": "or craft from Fieldron Samples, 12h each",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Check the star chart every session for a Corpus-reward Invasion; each gives 3 Fieldron for about 15 minutes of play."
+      ],
+      "bonuses": [
+        "Orb Vallis bounties rotate Fieldron, Mutagen Mass and Detonite Injector rewards; one player reported 8 Fieldron from a single bounty, and you earn Vox Solaris standing at the same time.",
+        "If you build them instead, buy a stack of Fieldron blueprints at once and restart builds from the companion app so the queue runs while you're offline."
+      ],
+      "disclosures": [
+        {
+          "title": "crafting from scratch",
+          "body": "Each Fieldron needs its own single-use blueprint (15,000 credits) plus 15,000 credits, 10 Fieldron Samples, 1 Control Module, 500 Salvage and 250 Plastids, 12h to build. For all 8: 80 Fieldron Samples, 8 Control Modules, 4,000 Salvage, 2,000 Plastids and about 240,000 credits. Fieldron Samples drop from Corpus enemies and containers on Venus, Jupiter, Europa, Neptune and Pluto. Rushing a Fieldron costs more platinum than a finished Amprex sells for on the Market; it's never worth it."
+        }
+      ]
+    },
+    {
+      "type": "farm",
+      "place": "HEPIT OR TESHUB, VOID",
+      "sub": null,
+      "activity": "Capture or Exterminate",
+      "meta": "1-4 a run",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "3",
+          "label": "Argon Crystal",
+          "note": "Amprex build",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Argon decays: half of it, rounded down, disappears at 00:00 GMT, so farm it last, once all 8 Fieldron are built or queued to finish."
+      ],
+      "bonuses": [
+        "Max-range Xaku or Limbo: finish the objective, then cast Xaku's 4 or Limbo's Cataclysm in every room to break containers and nodes from range through walls; most runs give 1-4 in a few minutes, and Argon shows on the minimap.",
+        "Alternative: Mot or Ani Survival with a loot frame (Nekros, Khora with Pilfering Strangledome, Hydroid with Pilfering Swarm), public, 5-10 minutes; Steel Path and a Smeeta Kavat's Charm stack with this.",
+        "Run Void fissures while farming Argon to open relics at the same time."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Amprex",
+      "meta": "1 day",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Amprex",
+          "note": "25,000 cr, 8 Fieldron, 600 Plastids, 9,000 Ferrite, 3 Argon Crystal",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

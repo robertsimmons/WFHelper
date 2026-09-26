@@ -1,0 +1,224 @@
+{
+  "name": "Follie",
+  "kind": "warframe",
+  "effort": 6,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "badges": [
+    { "text": "forced Operator", "tone": "warn" },
+    { "text": "Venus", "tone": "info" }
+  ],
+  "prices": [
+    { "label": "build", "amount": "75,000 cr", "money": false },
+    { "label": "buy all blueprints", "amount": "2,400 Atramentum", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "QUESTS",
+      "sub": null,
+      "activity": "Chains of Harrow",
+      "meta": "unlocks the node and the vendor",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Chains of Harrow",
+          "note": "opens Follie's Hunt and Aspirant Zorba",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Aspirant Zorba stands outside the Arbiters of Hexis room in any relay; your Arbiters standing doesn't matter to her."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "FOLLIE'S HUNT, VESPER RELAY, VENUS",
+      "sub": null,
+      "activity": "find 3 Shadowgraph Canvases, deliver paint from gold Paint Pools",
+      "meta": "5% each (6% Steel Path)",
+      "mode": "solo or coordinated duo recommended",
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "Atramentum", "amount": "2,400" },
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Follie Blueprint",
+          "note": "5% (6% SP), Rotation A",
+          "alt": {
+            "text": "or 1,200 Atramentum at Aspirant Zorba",
+            "spends": [{ "currency": "Atramentum", "amount": "1,200" }]
+          },
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Neuroptics Blueprint",
+          "note": "5% (6% SP), Rotation A",
+          "alt": {
+            "text": "or 400 Atramentum at Aspirant Zorba",
+            "spends": [{ "currency": "Atramentum", "amount": "400" }]
+          },
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Chassis Blueprint",
+          "note": "5% (6% SP), Rotation A",
+          "alt": {
+            "text": "or 400 Atramentum at Aspirant Zorba",
+            "spends": [{ "currency": "Atramentum", "amount": "400" }]
+          },
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Systems Blueprint",
+          "note": "5% (6% SP), Rotation A",
+          "alt": {
+            "text": "or 400 Atramentum at Aspirant Zorba",
+            "spends": [{ "currency": "Atramentum", "amount": "400" }]
+          },
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Rotation A is the only roll per clear; Rotation B is a guaranteed 15 Atramentum. The Enkaus signature weapon and its own three parts share this same table at the same rate, so most clears reward something else.",
+        "Nothing spawns until someone picks up paint, so scout all three canvases first; Paint Pools have a distinct jingle that rules out a canvas being in that room.",
+        "Do the side-room or hallway canvas (B) first and the concourse one (A) last; the guaranteed 50%-progress ink walls choke the upper hallways but leave the concourse open.",
+        "If you die while carrying paint, it's gone and you have to fetch more."
+      ],
+      "bonuses": [
+        "Build the Operator first (Unairu for knockdown immunity, Metem-Erun/Magus Cadence for sprint speed, a death-save arcane): several people say the mode stops being miserable once this is done.",
+        "As Operator, roll instead of walking and hold crouch mid-roll for Void Mode, which passes through Follie's drain aura and covers the paint transfer.",
+        "Hildryn ignores the energy drain and CC and her AoE pops balloons; pair with a Raksa Kubrow. Tanky or regen frames (Inaros, Dante, Rhino, Kullervo, Wisp, Oberon) and Gauss for speed also work well.",
+        "Pop every balloon after the first delivery; balloon drops (12 per run, 1-4 each) are shared squad-wide, unlike enemy Atramentum drops which aren't."
+      ],
+      "disclosures": [
+        {
+          "title": "the Atramentum math",
+          "body": "The full set costs 2,400 Atramentum bought outright. Good Steel Path runs net 70-90 Atramentum, so about 30 runs covers everything with zero drops; most people finish well before that since parts also just drop."
+        }
+      ]
+    },
+    {
+      "type": "vendor",
+      "place": "VESPER RELAY, VENUS",
+      "sub": "Aspirant Zorba",
+      "activity": "buy missing blueprints",
+      "meta": "400 per component, 1,200 for the main BP",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Atramentum", "amount": "2,400" }],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Follie Blueprint",
+          "note": "1,200 Atramentum",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "3",
+          "label": "component blueprints",
+          "note": "400 Atramentum each",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Spend only on the blueprints still missing once you have enough Atramentum for all of them."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "MOT, VOID",
+      "sub": null,
+      "activity": "Survival",
+      "meta": "~2 deposits a map",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "2",
+          "label": "Argon Crystal",
+          "note": "Follie Chassis",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Argon decays daily, so farm it last, once the other build materials are ready."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build components, then Follie",
+      "meta": "12h each, then 72h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Neuroptics",
+          "note": "2 Neurodes, 3 Gallium, 150 Cryotic, 2 Neural Sensors",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Chassis",
+          "note": "800 Alloy Plate, 2 Argon Crystal, 800 Ferrite, 600 Salvage",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Systems",
+          "note": "250 Circuits, 500 Polymer Bundle, 4 Morphics, 50 Oxium",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Follie",
+          "note": "30,000 cr, 3 Orokin Cells",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

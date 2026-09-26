@@ -1,0 +1,152 @@
+{
+  "name": "Sahasa Kubrow",
+  "kind": "companion",
+  "effort": 5,
+  "tradeable": "imprints only",
+  "progress": { "have": 0, "need": 1, "unit": "companion" },
+  "badges": [
+    { "text": "random breed, 1 of 5", "tone": "warn" },
+    { "text": "egg is a rare drop", "tone": "warn" }
+  ],
+  "prices": [
+    { "label": "Kubrow Egg", "amount": "10 p", "money": false },
+    { "label": "Incubator Power Core blueprint", "amount": "50,000 cr", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "ORBITER",
+      "sub": null,
+      "activity": "Howl of the Kubrow, then Incubator access",
+      "meta": "one-time",
+      "mode": "solo only",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Howl of the Kubrow",
+          "note": "unlocked from the Venus-to-Mercury Junction; gives the Incubator Segment",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "1",
+          "label": "free Companion Slot",
+          "note": "a kubrow permanently occupies it",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "On a first playthrough the quest's egg step has a 100% drop from the first den and a 60-second first incubation; that first hatch is still random and may not be Sahasa.",
+        "Consigning an unwanted pet to the Lotus for 25,000 credits is the only way to free a full slot."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "MANTLE, EARTH",
+      "sub": null,
+      "activity": "Capture; break Kubrow Dens on Grineer Forest tiles",
+      "meta": "odds per den unpublished",
+      "mode": "solo, fast frame",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "1",
+          "label": "Kubrow Egg",
+          "note": "wiki estimates 4-5 runs; reports of 30+ are common",
+          "alt": "Market purchase, 10 platinum",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Run to the dens, break them, capture and extract, or abort quickly if nothing dropped.",
+        "You can hold more than one egg at a time."
+      ],
+      "bonuses": [
+        "A range-stacked Xaku casting The Vast Untime clears every den in a room, including ones you can't see, while passively picking up Mantle's Neurodes.",
+        "Scanning dens with a Codex scanner makes completed ones glow and show through walls, which speeds up finding them (unconfirmed)."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Incubator Power Core",
+      "meta": "8h, 100,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "1",
+          "label": "Incubator Power Core",
+          "note": "one consumed per incubation attempt",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The first core is free from the Venus-to-Mercury Junction (Vox Solaris); after that, buy the reusable blueprint for 50,000 credits and build another for each attempt.",
+        "A wrong Random Incubation result consumes another core as well as another egg.",
+        "Argon Crystal decays at daily reset, so pick it up last and build the core right away."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "craft",
+      "place": "ORBITER",
+      "sub": "Incubator",
+      "activity": "Random Incubation",
+      "meta": "48h, 1 egg + 1 core",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": "1", "label": "Kubrow Egg", "note": "consumed per attempt", "alt": null, "done": false },
+        { "qty": "1", "label": "Incubator Power Core", "note": "consumed per attempt", "alt": null, "done": false },
+        {
+          "qty": null,
+          "label": "Sahasa Kubrow",
+          "note": "random result among Huras, Raksa, Sahasa, Sunika, Chesa",
+          "alt": "use two Sahasa Genetic Code Templates",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Random Incubation cannot be directed to Sahasa; a wrong breed has no pity protection and starts another egg-and-core attempt.",
+        "Two matching Sahasa imprints replace the breed roulette but do not replace the egg or Power Core.",
+        "Incubation is 48 hours, or 24 hours with the separate Nutrio Incubator Upgrade Segment; rushing costs platinum.",
+        "You can't cancel an incubation once started."
+      ],
+      "bonuses": [
+        "Sahasa imprints are tradeable. A mature kubrow can give 2, 1.5h each; the Genetic Code Template blueprint is 50,000 credits, reusable, or 15 platinum built.",
+        "Mature it instantly at the Incubator once hatched, then level straight to 30 for the Mastery; there is no gild-and-relevel cycle like a modular pet."
+      ],
+      "disclosures": [
+        {
+          "title": "the safer route once anyone you know has one",
+          "body": "Rolling random eggs over and over hoping for Sahasa is the way people get burned: posts of 4-7 duplicates of the wrong breed aren't rare, and the wiki documents no pity system. Two Sahasa imprints from a friend or trade chat make the outcome close to deterministic, at the same egg-and-core cost as one random attempt."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,253 @@
+{
+  "name": "Innodem",
+  "kind": "melee",
+  "effort": 4,
+  "tradeable": "blueprint only",
+  "progress": { "have": 0, "need": 1, "unit": "blueprint" },
+  "badges": [
+    { "text": "Holdfasts Rank 1", "tone": "warn" },
+    { "text": "MR 14", "tone": "info" }
+  ],
+  "prices": [{ "label": "blueprint", "amount": "5,500 Holdfasts Standing", "money": false }],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "QUESTS",
+      "sub": null,
+      "activity": "unlock the Zariman and The Holdfasts",
+      "meta": "The New War → Angels of the Zariman",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "The New War",
+          "note": "quest prerequisite",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Angels of the Zariman",
+          "note": "unlocks Chrysalith",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Angels of the Zariman unlocks the Chrysalith; reaching Holdfasts Rank 1 (Fallen) is the additional requirement Innodem needs."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "HALAKO PERIMETER, ZARIMAN",
+      "sub": "Chrysalith: turn Voidplumes in to Archimedean Yonta",
+      "activity": "Exterminate; wake and kill the dormant Void Angel, then sweep the map",
+      "meta": "Rank 1 (Fallen) and 5,500 Standing",
+      "mode": "solo or public squad",
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "Holdfasts Standing", "amount": "16,500" },
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "5",
+          "label": "Voidplume Pinion",
+          "note": "build requirement; one per dormant Void Angel",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "5",
+          "label": "Voidplume Down",
+          "note": "Rank 1 Fallen sacrifice",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "10",
+          "label": "Voidplume Quill",
+          "note": "build requirement",
+          "alt": "bounties, Zarium Accolades at Melica consoles, or Ravenous Angels",
+          "done": false
+        },
+        {
+          "qty": "20",
+          "label": "Thrax Plasm",
+          "note": "Thrax Centurions and Legatus; passively covered while farming Pinions",
+          "alt": "Void Cascade",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Rank 1 (Fallen) costs 5,000 standing plus 5 Voidplume Down, 2,000 Ferrite, 2,000 Alloy Plate and 10,000 credits.",
+        "The daily cap is 16,000 + 500 per Mastery Rank, so ~23,000 at MR14 — Rank 1's pool and the blueprint both fit in one day once plumes are in hand.",
+        "Ravenous Angels (end of Void Armageddon) are not dormant Angels: they have 2 health bars and drop Quills, not Pinions. Dormant Angels have 3 bars.",
+        "Blast damage (+75%, Machinery health) is the single most repeated combat tip; aim for the head, which is a real weak point.",
+        "After the first health bar, stop meleeing — the Angel's near-invisible red mist heals it off any damage it deals you. Self-healing specters (Nidus) are the worst offender."
+      ],
+      "bonuses": [
+        "Madurai Void Strike can burst the Ethereal form's shield fast enough to skip the invulnerability-orb phase entirely; two Madurai users can each pop it once to carry a squad through both void phases.",
+        "Void Sling through a gold orb for a dome shield that roughly doubles amp damage and blocks the laser sweep and charge beam; don't stack domes.",
+        "Lost Spirits run to the nearest Voidplume, Accolade, or Somachord fragment — Volt's Speed makes them run faster — though they won't lead to the dormant Angel or a Melica console.",
+        "Halako Perimeter (Exterminate) is the near-unanimous pick: no fail state, unlimited time, and the Angel reliably spawns in one of a few big-room tiles. A bounty stage naming 'Awaken a Dormant Void Angel' gives a waypoint instead of a search."
+      ],
+      "disclosures": [
+        {
+          "title": "Nekros/Hydroid looting is dead advice",
+          "body": "Desecrate and Pilfering Swarm duplicating Voidplume Pinions was patched out in Hotfix 31.5.4 (May 2022); threads repeating it since are wrong."
+        }
+      ]
+    },
+    {
+      "type": "farm",
+      "place": "NETRACELLS, DEIMOS",
+      "sub": null,
+      "activity": "run Netracells or kill Gruzzlings",
+      "meta": "15 needed",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "cambion-drift",
+      "rows": [
+        {
+          "qty": "15",
+          "label": "Entrati Lanthorn",
+          "note": "guaranteed per Netracell run, and keeps dropping past the 5-run weekly cap",
+          "alt": "Gruzzlings drop 3 at a time in Albrecht's Laboratories, or a rare Zariman bounty/container drop",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Lanthorns are a Deimos resource, not a Zariman resource — Netracells are the reliable source; the Zariman bounty drop is only ~7.9% for 3."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "CAVALERO, CHRYSALITH",
+      "sub": "The Holdfasts: Fallen (Rank 1)",
+      "activity": "buy the Innodem blueprint",
+      "meta": "5,500 Standing",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Holdfasts Standing", "amount": "5,500" }],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Innodem Blueprint",
+          "note": "tradeable",
+          "alt": "trade from another player",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Trading the blueprint skips the Rank 1 purchase, but not the Zariman-only build materials."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Innodem",
+      "meta": "MR 14 to equip",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": "5", "label": "Voidplume Pinion", "note": null, "alt": null, "done": false },
+        { "qty": "10", "label": "Voidplume Quill", "note": null, "alt": null, "done": false },
+        { "qty": "15", "label": "Entrati Lanthorn", "note": null, "alt": null, "done": false },
+        { "qty": "20", "label": "Thrax Plasm", "note": null, "alt": null, "done": false }
+      ],
+      "conditions": [
+        "You may craft Innodem before Mastery Rank 14, but cannot equip it until then."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "craft",
+      "place": "CAVALERO / ARSENAL",
+      "sub": null,
+      "activity": "complete native Incarnon Evolutions",
+      "meta": "no Genesis adapter or Circuit rotation needed",
+      "mode": "solo recommended for Evolutions III and IV",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "100",
+          "label": "Innodem kills",
+          "note": "Evolution I; unlocks Incarnon form",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "6",
+          "label": "Incarnon Form activations in one mission",
+          "note": "Evolution II",
+          "alt": "endless mission with dense spawns",
+          "done": false
+        },
+        {
+          "qty": "3",
+          "label": "Heavy Attacks on Thrax Centurions or Legatus",
+          "note": "Evolution III",
+          "alt": "Void Cascade",
+          "done": false
+        },
+        {
+          "qty": "12",
+          "label": "Void Flood Ruptures closed",
+          "note": "Evolution IV",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Solo mission with an Incarnon weapon in every slot",
+          "note": "Evolution V",
+          "alt": "Incarnon Genesis weapons count",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Evolution I's combo must come from Innodem itself — charging it with an exalted weapon's combo counter (e.g. Ash's Bladestorm) does not work.",
+        "Evolutions III and IV don't reliably register progress as a client; run them solo.",
+        "Evolution IV has reported bugs (Jan/Apr 2026) where the rupture counter sticks; file a support ticket rather than grinding more Void Flood if it freezes.",
+        "Evolution V voids if an Exalted weapon is used; Incarnon Genesis (Circuit adapter) weapons do count."
+      ],
+      "bonuses": [
+        "Pair with Laetum (1 Pinion, 5 Quill) and Felarx (10 Pinion, 15 Quill) for the cheapest 'Incarnon in every slot' combination for Evolution V."
+      ],
+      "disclosures": [
+        {
+          "title": "most people build it only for the challenge",
+          "body": "Innodem is the cheapest melee Incarnon in the game (5 Pinions/10 Quills against Praedos's 15/30), which is why it exists on most accounts primarily to satisfy Evolution V for other weapons. A 65-5 poll on whether it's top-3 melee went firmly against; most people keep Praedos equipped instead, for the parkour speed."
+        }
+      ]
+    }
+  ]
+}

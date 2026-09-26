@@ -41,11 +41,7 @@
   import { inventoryData, itemDb } from "../stores/data.js";
   import { ensureDropPools } from "../stores/dropPools.js";
   import { worldData } from "../stores/world.js";
-  import {
-    collapsedSections,
-    suggestionPreferences,
-    toggleSectionCollapsed,
-  } from "../stores/suggestionPrefs.js";
+  import { suggestionPreferences } from "../stores/suggestionPrefs.js";
   import {
     completeTask,
     dismissSuggestion,
@@ -285,8 +281,6 @@
             id={row.section.id}
             title={$tr(row.section.titleKey)}
             suggestions={row.suggestions}
-            collapsed={$collapsedSections.includes(row.section.id)}
-            onToggle={() => toggleSectionCollapsed(row.section.id)}
             onComplete={complete}
             onDismiss={(suggestion) => dismissSuggestion(suggestion.id, suggestion.fingerprint)}
             onWorkOnThis={row.section.id === "acquisition" ? workOnThis : undefined}

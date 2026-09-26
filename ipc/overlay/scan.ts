@@ -40,7 +40,7 @@ const REWARD_CLOSE_STALE_MAX_MS = 5_000;
 const OVERLAY_AUTO_HIDE_SUCCESS_MS = 8_500;
 // The vote window is anchored to the trigger, so a slow scan would otherwise
 // eat the reading time - never show the card for less than this.
-const REWARD_MIN_VISIBLE_MS = 5_000;
+const REWARD_MIN_VISIBLE_MS = 12_000;
 const OVERLAY_AUTO_HIDE_FAILURE_MS = 3_500;
 // Keep the overlay visible while Warframe is unfocused.
 const AUTO_HIDE_FOCUS_RECHECK_MS = 2_000;

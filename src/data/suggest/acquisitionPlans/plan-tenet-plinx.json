@@ -1,0 +1,203 @@
+{
+  "name": "Tenet Plinx",
+  "kind": "secondary",
+  "effort": 8,
+  "tradeable": "converted Sister only",
+  "progress": { "have": 0, "need": 1, "unit": "weapon" },
+  "badges": [
+    { "text": "Sister of Parvos", "tone": "warn" },
+    { "text": "Railjack required", "tone": "warn" }
+  ],
+  "prices": [{ "label": "Elemental Vice", "amount": "20 p", "money": false }],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "STAR CHART",
+      "sub": null,
+      "activity": "unlock Sisters of Parvos",
+      "meta": "one-time",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Mastery Rank 5", "note": "to create a Sister", "alt": null, "done": false },
+        { "qty": null, "label": "The War Within", "note": "quest complete", "alt": null, "done": false },
+        { "qty": null, "label": "The Deadlock Protocol", "note": "for Granum Crowns and the Xoris", "alt": null, "done": false },
+        { "qty": null, "label": "Call of the Tempestarii", "note": "quest complete; needs a built Railjack", "alt": null, "done": false },
+        {
+          "qty": null,
+          "label": "Railjack Intrinsics rank 3, any class",
+          "note": "Neptune Proxima showdown",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Only one adversary at a time: clear or convert any active Kuva Lich, Sister, or Coda first, and claim any unclaimed adversary weapon sitting in your Foundry — it silently blocks new Candidates too.",
+        "Ergo Glast never sells the Plinx — his Corrupted Holokey shop only carries Grigori, Livia, Exec, Agendus and Ferrox. Every ranged Tenet weapon comes from a Sister."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "boss",
+      "place": "PLUTO, HYDRA",
+      "sub": "Capture",
+      "activity": "clear the Nightmare Granum Void; inspect Candidates",
+      "meta": "one Zenith Crown per attempt",
+      "mode": "solo",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Zenith Granum Crown", "amount": "1" }],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Tenet Plinx Candidate",
+          "note": "Mercy only when the weapon preview says Plinx",
+          "alt": "buy a converted Tenet Plinx Sister",
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "progenitor element",
+          "note": "Heat is most-recommended, doubling down on Plinx's innate Heat; Magnetic and Radiation are defensible; Toxin is a trap, it auto-combines with the innate Heat into Gas",
+          "alt": "Elemental Vice can change it later at rank 40",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "You only need Rank 1 (25 kills solo) for a Candidate to spawn; the kill requirement rises +25 per squad member.",
+        "A Treasurer spawns 2-5 minutes into any non-endless Corpus Ship mission and drops a Crown tiered by level; level 31+ or Steel Path drops the Zenith, the only tier that spawns a Candidate. Zenith nodes: Neptune Psamathe, Neptune Larissa, Pluto Acheron, Pluto Cypress, Pluto Hydra.",
+        "Open the Void far from extraction and walk out slowly afterward — within roughly 150-200m of extraction, or sprinting out, suppresses the Candidate spawn entirely.",
+        "If the preview isn't Plinx, leave her and complete and extract from the mission. Aborting does not remove that weapon from the pool; only a completed rejection does.",
+        "The Sister-carried pool is 11 weapons (Arca Plasmor, Cycron, Detron, Diplos, Envoy, Flux Rifle, Glaxion, Plinx, Quanta, Spirex, Tetra), so correctly rejecting guarantees Plinx inside 11 completed missions.",
+        "Only the last player to damage the Candidate may Mercy her."
+      ],
+      "bonuses": [
+        "Xoris, even 0-forma, one-shots Errant Specters regardless of level and frees Solaris captives for +20s each on detonation."
+      ],
+      "disclosures": [
+        {
+          "title": "finish the mission on every reject",
+          "body": "The pool is a shuffle, not a slot machine: a rejected weapon stays out until all eleven have been refused, so a Plinx is guaranteed within eleven Candidates. Abort the mission instead of extracting and the rejection doesn't count, and you've burned a crown for nothing."
+        }
+      ]
+    },
+    {
+      "type": "boss",
+      "place": "SISTER INFLUENCE NODES",
+      "sub": "Venus through Pluto",
+      "activity": "Mercy Hounds, reveal Requiems, test the sequence",
+      "meta": "~180 Murmurs; ~2 missions per Sister",
+      "mode": "long missions first, then fast ones",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "3",
+          "label": "revealed Requiems",
+          "note": "Murmurs reveal mods, not order",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "correct Parazon sequence",
+          "note": "opens the Neptune Proxima showdown",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Requiem mods all come from the single Requiem Eterna relic (all 8 mods at equal chance), from Kuva Siphon (50%) or Kuva Flood (100%); the retired Requiem I-IV relics are sold by Palladino for 10 Riven Slivers each, 10 weekly per relic.",
+        "Kill her Hound before you drop her health bar — if it's alive when the bar empties, she orders it to self-destruct and that mission's Hound murmurs are lost.",
+        "Sisters have damage attenuation: low-damage, high-fire-rate weapons beat one big hit. Banshee's Sonar bypasses attenuation entirely, and Sevagoth's Gloom drastically slows her."
+      ],
+      "bonuses": ["Run the Neptune Proxima confrontation in a full squad: one Corrupted Holokey per member, up to 4."],
+      "disclosures": [
+        {
+          "title": "Oull-first Parazon",
+          "body": "Slot Oull in position 1: it guarantees the first health bar breaks every encounter, forcing an extra Hound spawn and an extra murmur. Leave it there as long as it makes sense."
+        }
+      ]
+    },
+    {
+      "type": "boss",
+      "place": "NEPTUNE PROXIMA",
+      "sub": "Sister Confrontation",
+      "activity": "Railjack Skirmish; finish the Sister",
+      "meta": "choose Vanquish",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Tenet Plinx",
+          "note": "built; Foundry delivery, her Hound fully built too",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Choose Vanquish, never Convert — Convert gives an ally and a tradeable Sister token but no weapon, and the recipient still has to re-fight her.",
+        "Kill her Hounds and both Warframe Specters; she is invulnerable until her backup is dead.",
+        "Needs Railjack Intrinsics rank 3."
+      ],
+      "bonuses": [
+        "Vanquish also refunds taxed credits, any ephemera, a 25% shot at a Requiem Ultimatum, and one Corrupted Holokey per squad member."
+      ],
+      "disclosures": [
+        {
+          "title": "use it safely",
+          "body": "Plinx's alt-fire self-staggers. Primed Sure Footed or an ability cast during the 0.8s embed delay skips the knockdown."
+        }
+      ]
+    },
+    {
+      "type": "craft",
+      "place": "ORBITER, MODDING",
+      "sub": null,
+      "activity": "optional Valence Fusion toward 60%",
+      "meta": "bank copies first",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "52.8%+ roll",
+          "note": "fuses straight to 60%",
+          "alt": "58%+ already rounds to 60%",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Fusion takes the higher of the two bonuses × 1.1, capped at 60%.",
+        "Fuse into the copy you've invested in — the donor's Catalyst, Forma, Exilus adapter and Elemental Vice are all destroyed.",
+        "Elemental Vice needs rank 40 (5 Forma): 50,000 Hex standing at Rank 5, 20 platinum from the Market, or a Temporal Archimedea/Nightwave drop."
+      ],
+      "bonuses": [],
+      "disclosures": [
+        {
+          "title": "the 60% chase is optional",
+          "body": "Consensus is the Sister grind itself 'isn't that bad, easier than lich, worse than coda.' The regretted route is building a whole plan around one progenitor element instead of using Elemental Vice; get a usable copy first, then only fuse when a donor beats what you're keeping."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "name": "Twin Grakatas",
+  "kind": "secondary",
+  "effort": 1,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 2, "unit": "Grakatas" },
+  "badges": [
+    { "text": "no RNG, Market only", "tone": "info" },
+    { "text": "needs 1 Forma", "tone": "info" }
+  ],
+  "prices": [
+    { "label": "build", "amount": "130,000 cr", "money": false },
+    { "label": "forma", "amount": "1", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "vendor",
+      "place": "MARKET",
+      "sub": null,
+      "activity": "buy blueprints",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": "2", "label": "Grakata Blueprint", "note": "15,000 cr each", "alt": null, "done": false },
+        { "qty": null, "label": "Twin Grakatas Blueprint", "note": "20,000 cr", "alt": null, "done": false }
+      ],
+      "conditions": ["The Twin Grakatas recipe consumes two separate Grakatas, so build and own two before starting its blueprint."],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build both Grakatas, then Twin Grakatas",
+      "meta": "1 day each, then 12h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Grakata",
+          "note": "25,000 cr, 2 Neurodes, 400 Alloy Plate, 900 Salvage, 100 Polymer Bundle — build twice",
+          "alt": null,
+          "done": false
+        },
+        { "qty": null, "label": "Twin Grakatas", "note": "30,000 cr, 2 Grakata, 1 Forma", "alt": null, "done": false }
+      ],
+      "conditions": [
+        "Level one Grakata to 30 before it goes into the recipe — Mastery is earned once per item type, so the second copy needs no levelling.",
+        "The recipe needs two Grakata weapon slots free while building; the Twin build consumes both and returns one weapon, freeing a slot.",
+        "If you already own a Prisma Grakata, the Foundry lists it as an eligible ingredient but won't let you select it — use the plain Grakata."
+      ],
+      "bonuses": ["Alloy Plate, Salvage and Polymer Bundle are common drops you'll already have; only Neurodes is worth watching for."],
+      "disclosures": []
+    }
+  ]
+}

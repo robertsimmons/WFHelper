@@ -1,21 +1,17 @@
-import cyte09 from "../../../../data/suggest/acquisitionPlans/plan-cyte-09.json";
-import helios from "../../../../data/suggest/acquisitionPlans/plan-helios.json";
-import hound from "../../../../data/suggest/acquisitionPlans/plan-hound.json";
-import kullervo from "../../../../data/suggest/acquisitionPlans/plan-kullervo.json";
-import mesaPrime from "../../../../data/suggest/acquisitionPlans/plan-mesa-prime.json";
-import moa from "../../../../data/suggest/acquisitionPlans/plan-moa.json";
-import rhino from "../../../../data/suggest/acquisitionPlans/plan-rhino.json";
 import type { AuthoredPlan, PlanBadge } from "./schema.js";
 
-const SHIPPED = [
-  cyte09,
-  helios,
-  hound,
-  kullervo,
-  mesaPrime,
-  moa,
-  rhino,
-] as unknown as AuthoredPlan[];
+const loaded = import.meta.glob("../../../../data/suggest/acquisitionPlans/plan-*.json", {
+  eager: true,
+});
+
+/** Plans are hand-authored data files. The glob keeps adding one to the shipped
+ * catalog to a single-file change, while its sorted order stays deterministic. */
+const SHIPPED: AuthoredPlan[] = Object.entries(loaded)
+  .sort(([left], [right]) => left.localeCompare(right))
+  .map(([, module]) => {
+    const value = (module as { default?: unknown }).default ?? module;
+    return value as AuthoredPlan;
+  });
 
 function planKey(name: string): string {
   return name.trim().toLowerCase();

@@ -1,0 +1,214 @@
+{
+  "name": "Pride",
+  "kind": "melee",
+  "effort": 3,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "badges": [
+    { "text": "needs a Wrath Blade too", "tone": "warn" },
+    { "text": "guaranteed arcane each run", "tone": "info" }
+  ],
+  "prices": [{ "label": "blueprint", "amount": "20,000 cr", "money": false }],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "QUESTS",
+      "sub": null,
+      "activity": "The New War, then Jade Shadows, then Jade Shadows: Constellations",
+      "meta": "Constellations: 30-40 min solo",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "The New War", "note": null, "alt": null, "done": false },
+        { "qty": null, "label": "Jade Shadows", "note": null, "alt": null, "done": false },
+        {
+          "qty": null,
+          "label": "Jade Shadows: Constellations",
+          "note": "solo, not replayable; unlocks Uranus Proxima and the Pontis Tower hub where Hunhow trades Talents",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Constellations locks every other mission out for roughly 90 minutes."],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "boss",
+      "place": "PONTIS TOWER, URANUS PROXIMA",
+      "sub": "The Kuva Wytch (side Ryoku, kill Vena)",
+      "activity": "Skirmish into Assassinate; shoot every Orowyrm-sequence target",
+      "meta": "14.29% each part, guaranteed one blueprint per clear",
+      "mode": "solo from Pontis Tower for your own Railjack",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Pride Blueprint",
+          "note": "14.29%",
+          "alt": { "text": "or 90 Emerald Talent at Hunhow", "spends": [{ "currency": "Emerald Talent", "amount": "90" }] },
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Pride Handle",
+          "note": "14.29%",
+          "alt": { "text": "or 45 Emerald Talent at Hunhow", "spends": [{ "currency": "Emerald Talent", "amount": "45" }] },
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Pride Blade",
+          "note": "14.29%",
+          "alt": { "text": "or 45 Emerald Talent at Hunhow", "spends": [{ "currency": "Emerald Talent", "amount": "45" }] },
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Squads always get a loaner Railjack (Vena's Marrowbone); your own ship only offers as an option from Pontis Tower, and only when matchmaking is set to Solo before you enter.",
+        "The Kuva Wytch pays Emerald Talent; Scoria's Angel (for the Wrath Blade) pays Crimson Talent separately — a part purchase spends only the matching Talent type.",
+        "A launch-week bug repeated the same drop run after run; if you see the same part three times in a row, fully close and reopen the client before assuming it's just variance."
+      ],
+      "bonuses": [
+        "Each clear also guarantees one of four arcanes (Arcane Sculptor, Melee Assimilation, Primary Compression, Secondary Cryogenic).",
+        "12-16 Emerald Talent per clear (18-22 Steel Path), plus up to 4 more (12 Steel Path) for shooting every Orowyrm-sequence target — it's personal loot, so don't AFK through it.",
+        "The flying-segment bonus also drops Tellurium and Mk III Railjack parts."
+      ],
+      "disclosures": [
+        {
+          "title": "run Steel Path once you can",
+          "body": "Steel Path pays roughly 50% more Talent per clear, and both nodes run about 7 minutes solo."
+        }
+      ]
+    },
+    {
+      "type": "boss",
+      "place": "PONTIS TOWER, URANUS PROXIMA",
+      "sub": "Scoria's Angel (side Vena, kill Ryoku)",
+      "activity": "Skirmish into Assassinate; shoot every Ramsled target",
+      "meta": "14.29%, the only source of the Wrath Blade Pride needs",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Wrath Blade",
+          "note": "14.29%",
+          "alt": { "text": "or 45 Crimson Talent at Hunhow", "spends": [{ "currency": "Crimson Talent", "amount": "45" }] },
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Forgetting this node is the most common mistake — Pride's recipe needs a Wrath Blade, and The Kuva Wytch never drops one.",
+        "The Ramsled targets sit right in front of you and are much easier to track than the Orowyrm's."
+      ],
+      "bonuses": [
+        "Pays Crimson Talent and rolls Wrath's own frame/weapon parts on the same table, so this run also progresses Wrath if you want it."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "HUNHOW, PONTIS TOWER",
+      "sub": null,
+      "activity": "buy whatever the drops didn't give",
+      "meta": "no weekly limit",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [
+        { "currency": "Emerald Talent", "amount": "180" },
+        { "currency": "Crimson Talent", "amount": "45" }
+      ],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Pride Blueprint", "note": "90 Emerald", "alt": null, "done": false },
+        { "qty": null, "label": "Pride Handle", "note": "45 Emerald", "alt": null, "done": false },
+        { "qty": null, "label": "Pride Blade", "note": "45 Emerald", "alt": null, "done": false },
+        { "qty": null, "label": "Wrath Blade", "note": "45 Crimson", "alt": null, "done": false }
+      ],
+      "conditions": [
+        "Duplicate blueprints can't be converted to Talent; buy the specific missing part instead of rolling for it again."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "PLAINS OF EIDOLON / ORB VALLIS",
+      "sub": null,
+      "activity": "buy or mine the cut gems for the blade recipes",
+      "meta": "tradeable, one craft covers it",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": "5", "label": "Marquise Thyst", "note": "Pride Blade; Solaris United Rank 4", "alt": "tradeable", "done": false },
+        { "qty": "3", "label": "Star Crimzian", "note": "Wrath Blade; Ostron Rank 3", "alt": "tradeable", "done": false }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build the blades, handle, then Pride",
+      "meta": "23h main, 12h per blade",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Wrath Blade",
+          "note": "25,000 cr, 400 Alloy Plate, 250 Oxium, 250 Ticor Plate, 3 Star Crimzian",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Pride Blade",
+          "note": "25,000 cr, 400 Alloy Plate, 250 Oxium, 250 Ticor Plate, 5 Marquise Thyst",
+          "alt": null,
+          "done": false
+        },
+        { "qty": null, "label": "Pride Handle", "note": null, "alt": null, "done": false },
+        {
+          "qty": null,
+          "label": "Pride",
+          "note": "20,000 cr + Blueprint + Pride Blade + Wrath Blade + Pride Handle, 23h",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "MR 14 required.",
+        "Blades and the handle can all cook in parallel before the 23h main build.",
+        "Pride Handle's exact material cost isn't confirmed on the wiki; it uses Salvage, Carbides, Gallos Rods and Titanium like Wrath's handle, but the amounts may differ."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

@@ -1,0 +1,140 @@
+{
+  "name": "Phantasma",
+  "kind": "primary",
+  "effort": 2,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 1, "unit": "blueprint" },
+  "badges": [
+    { "text": "Operator required", "tone": "warn" },
+    { "text": "Plains, night only", "tone": "info" }
+  ],
+  "prices": [
+    { "label": "blueprint", "amount": "25,000 cr", "money": false },
+    { "label": "build", "amount": "20,000 cr", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "QUESTS",
+      "sub": null,
+      "activity": "The Second Dream",
+      "meta": "unlocks the Operator and Void Mode",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "The Second Dream", "note": null, "alt": null, "done": false }
+      ],
+      "conditions": [
+        "Only an Operator Void Mode attack kills the Vomvalyst energy form; Warframe weapons alone flip the shell to energy form and drop nothing."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "MARKET",
+      "sub": null,
+      "activity": "buy blueprint",
+      "meta": "25,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Phantasma Blueprint", "note": null, "alt": null, "done": false }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "PLAINS OF EIDOLON, EARTH",
+      "sub": null,
+      "activity": "hunt Vomvalysts at night, finish with Operator Void Mode",
+      "meta": "10 cores, 100% per Vomvalyst",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "plains-of-eidolon",
+      "rows": [
+        {
+          "qty": "10",
+          "label": "Intact Sentient Core",
+          "note": "kill the physical shell, then finish the energy form with Operator Void damage",
+          "alt": "ride along on a Teralyst hunt for ~20 at once",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Kill Vomvalysts away from any Eidolon Lure; a Lure absorbs the energy form before it drops a core.",
+        "The energy form reforms at full health after 20 seconds, so don't break the shell until you're ready to switch to Operator."
+      ],
+      "bonuses": [
+        "Archon Hunts (interception or defense stages) and Lua Sentient missions also drop cores if the Plains aren't convenient."
+      ],
+      "disclosures": [
+        {
+          "title": "why public groups whiff this",
+          "body": "Shooting the physical shell with a Warframe weapon only flips it to its energy form; it drops nothing until an Operator Void attack kills that form."
+        }
+      ]
+    },
+    {
+      "type": "farm",
+      "place": "THE VOID",
+      "sub": null,
+      "activity": "any Void mission",
+      "meta": "pick this up last",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": "2", "label": "Argon Crystal", "note": null, "alt": null, "done": false }
+      ],
+      "conditions": [
+        "Argon halves at 00:00 UTC once picked up, so farm it right before the build, not days ahead."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Phantasma",
+      "meta": "12h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Phantasma",
+          "note": "20,000 cr, 2 Argon Crystal, 10 Intact Sentient Core, 650 Plastids, 12,500 Nano Spores",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "12,500 Nano Spores can be a bigger blocker than the cores for a returning player with a low stash."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

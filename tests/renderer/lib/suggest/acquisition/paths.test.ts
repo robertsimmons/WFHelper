@@ -104,9 +104,10 @@ describe("acquisition paths", () => {
     const prime = target("Mag Prime", { plat: (name) => prices[name] ?? null });
     const trade = prime.paths.find((path) => path.kind === "trade");
     expect(trade?.cost.plat?.set).toBe(120);
+    expect(trade?.cost.plat?.setSlug).toBe("mag_prime_set");
     expect(trade?.cost.plat?.parts).toEqual([
-      { name: "Mag Prime Blueprint", plat: 45 },
-      { name: "Mag Prime Neuroptics", plat: 30 },
+      { name: "Mag Prime Blueprint", plat: 45, slug: "mag_prime_blueprint" },
+      { name: "Mag Prime Neuroptics", plat: 30, slug: "mag_prime_neuroptics" },
     ]);
     expect(trade?.cost.plat?.partsTotal).toBe(75);
   });

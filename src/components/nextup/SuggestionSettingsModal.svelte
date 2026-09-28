@@ -253,6 +253,7 @@
   }
 
   function indexNames(names: Iterable<string>): NameIndex {
+    // eslint-disable-next-line svelte/prefer-svelte-reactivity
     const index: NameIndex = new Map();
     for (const name of names) {
       for (const word of wordsOf(name)) {

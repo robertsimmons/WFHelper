@@ -577,7 +577,8 @@
           <StateChip state={cardState} />
         {/if}
         {#if read}
-          <span class="shrink-0 text-xs leading-4 {read.ready ? 'text-success' : 'text-text-primary'}"
+          <span
+            class="shrink-0 text-xs leading-4 {read.ready ? 'text-success' : 'text-text-primary'}"
             >{readText}</span
           >
         {/if}

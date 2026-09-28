@@ -264,10 +264,7 @@ describe("what the foundry is already holding", () => {
 
 describe("what readiness means where there is no recipe to read", () => {
   it("never calls an item the database has no recipe for ready", () => {
-    const bramma = find(
-      resolveAcquisition({ itemDb: weaponDb(), inventory: null }),
-      "Kuva Bramma",
-    );
+    const bramma = find(resolveAcquisition({ itemDb: weaponDb(), inventory: null }), "Kuva Bramma");
     expect(bramma.parts.known).toBe(false);
     expect(partsRead(bramma)).toBeNull();
     expect(readyBand(bramma)).toBe(Number.MAX_SAFE_INTEGER);

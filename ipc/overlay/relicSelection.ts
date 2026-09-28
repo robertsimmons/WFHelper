@@ -513,10 +513,7 @@ function pickMrQuality(
   return QUALITY_ORDER.find(usable) ?? null;
 }
 
-function buildMrInputs(
-  inventory: Record<string, unknown> | null,
-  source: MasterySource,
-): MrInputs {
+function buildMrInputs(inventory: Record<string, unknown> | null, source: MasterySource): MrInputs {
   const itemDb = new Proxy<Record<string, RelicMrItem>>(
     {},
     {

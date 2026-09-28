@@ -745,8 +745,18 @@ describe("relic selection planner", () => {
               name: "Neo Test",
               tier: "Neo",
               qualities: {
-                intact: { rewards: [{ ...barrel, chance: 2 }, { ...forma, chance: 98 }] },
-                radiant: { rewards: [{ ...barrel, chance: 10 }, { ...forma, chance: 90 }] },
+                intact: {
+                  rewards: [
+                    { ...barrel, chance: 2 },
+                    { ...forma, chance: 98 },
+                  ],
+                },
+                radiant: {
+                  rewards: [
+                    { ...barrel, chance: 10 },
+                    { ...forma, chance: 90 },
+                  ],
+                },
               },
             },
           },

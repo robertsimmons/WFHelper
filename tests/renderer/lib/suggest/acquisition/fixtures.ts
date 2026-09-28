@@ -423,7 +423,13 @@ function melee(name: string, blueprint: string, ingredients: Ingredient[]): Item
     masterable: true,
     imageUrl: `https://example.test/${name.replace(/\s+/g, "")}.png`,
     wikiaUrl: `https://wiki.test/${name.replace(/\s+/g, "_")}`,
-    recipe: { buildPrice: 20_000, buildTime: 43_200, num: 1, blueprintUniqueName: blueprint, ingredients },
+    recipe: {
+      buildPrice: 20_000,
+      buildTime: 43_200,
+      num: 1,
+      blueprintUniqueName: blueprint,
+      ingredients,
+    },
   };
 }
 

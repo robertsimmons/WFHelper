@@ -358,7 +358,10 @@
             {@render railRow(`${parts.done}/${parts.total}`, $tr("nextUp.acqParts"))}
           {/if}
           {#if materials.total > 0}
-            {@render railRow(`${materials.done}/${materials.total}`, $tr("nextUp.detailsMaterials"))}
+            {@render railRow(
+              `${materials.done}/${materials.total}`,
+              $tr("nextUp.detailsMaterials"),
+            )}
           {/if}
         </div>
       {/if}

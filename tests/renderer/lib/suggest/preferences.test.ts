@@ -158,7 +158,9 @@ describe("parseOptions", () => {
   it("keeps a recommended arrow and drops one set against a payout sort", () => {
     const kept = JSON.stringify({ relicSort: "recommended", relicSortDir: "desc" });
     expect(parseOptions(kept)).toEqual({ relicSortDir: "desc" });
-    expect(parseOptions(JSON.stringify({ relicSortDir: "desc" }))).toEqual({ relicSortDir: "desc" });
+    expect(parseOptions(JSON.stringify({ relicSortDir: "desc" }))).toEqual({
+      relicSortDir: "desc",
+    });
     const payout = JSON.stringify({ relicSort: "platinum", relicSortDir: "desc" });
     expect(parseOptions(payout)).toEqual({});
   });

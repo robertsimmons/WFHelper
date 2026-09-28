@@ -116,7 +116,9 @@ describe("ItemTile", () => {
     // is what keeps the letters of a list in one column.
     const text = tile();
     expect(text).toContain('const SLOT = { sm: "w-7", md: "w-8" };');
-    expect(text).toMatch(/class="flex shrink-0 justify-center \{SLOT\[size\]\}[^"]*">\s*<TierBadge\b/);
+    expect(text).toMatch(
+      /class="flex shrink-0 justify-center \{SLOT\[size\]\}[^"]*">\s*<TierBadge\b/,
+    );
     expect(text).toMatch(/\{ART\[size\]\}[^"]*"\s*>[\s\S]*?<TierBadge\b/);
   });
 });

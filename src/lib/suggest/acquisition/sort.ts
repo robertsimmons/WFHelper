@@ -86,11 +86,7 @@ export function sortKeys(target: AcquisitionTarget, sort: AcquisitionSort): (num
   }
 }
 
-export function sortRow(
-  target: AcquisitionTarget,
-  effort: number,
-  sort: AcquisitionSort,
-): SortRow {
+export function sortRow(target: AcquisitionTarget, effort: number, sort: AcquisitionSort): SortRow {
   return { target, effort, keys: sortKeys(target, sort), price: priceFor(target) };
 }
 

@@ -114,7 +114,8 @@ for (const [name, entry] of Object.entries(resourceData)) {
 }
 
 const sortedDraft = {};
-for (const name of Object.keys(draft).sort((a, b) => a.localeCompare(b))) sortedDraft[name] = draft[name];
+for (const name of Object.keys(draft).sort((a, b) => a.localeCompare(b)))
+  sortedDraft[name] = draft[name];
 
 fs.mkdirSync(RESEARCH_DIR, { recursive: true });
 fs.writeFileSync(DRAFT_FILE, JSON.stringify(sortedDraft, null, 2));

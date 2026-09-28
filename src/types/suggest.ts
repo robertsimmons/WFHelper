@@ -4,11 +4,7 @@ import type { AcquisitionSort } from "../lib/suggest/acquisition/sort.js";
 import type { AcquisitionTarget, PlatPriceLookup } from "../lib/suggest/acquisition/types.js";
 import type { TrackerState } from "../lib/world/dailies.js";
 import type { DropRow } from "../../config/shared/dropTypes.js";
-import type {
-  RelicAdvice,
-  RelicRarity,
-  RelicRewardStatus,
-} from "../../config/shared/relicMr.js";
+import type { RelicAdvice, RelicRarity, RelicRewardStatus } from "../../config/shared/relicMr.js";
 import type { SortDirection } from "./filters.js";
 import type { ItemDbEntry, MasteryData, RawInventoryData } from "./inventory.js";
 import type { RelicDatabase, RelicQuality } from "./relics.js";

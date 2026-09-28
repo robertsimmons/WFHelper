@@ -6,6 +6,7 @@ import {
   ownedForLabel,
   parseQuantity,
   pendingBuildFor,
+  questDoneForLabel,
   readPlayerState,
   type PlayerState,
 } from "./state.js";
@@ -57,7 +58,10 @@ function resolveRow(
   answers: { done: Set<string>; cleared: Set<string>; altsTaken: Set<string> },
 ): RowResult {
   const required = parseQuantity(row.qty);
-  const owned = ownedForLabel(state, row.label, itemName);
+  // A quest keychain is not an owned item, so the ownership map answers 0 for a
+  // label the quest index can answer properly.
+  const quest = questDoneForLabel(state, row.label);
+  const owned = quest === null ? ownedForLabel(state, row.label, itemName) : null;
   const tracked = owned !== null;
   const remaining = Math.max(0, required - (owned ?? 0));
 
@@ -65,8 +69,9 @@ function resolveRow(
   // both directions and the authored flag is only where it starts.
   const ticked = answers.done.has(id);
   const cleared = answers.cleared.has(id);
-  const done = tracked ? remaining === 0 : ticked || (row.done && !cleared);
-  const source = tracked ? "inventory" : ticked || cleared ? "manual" : "authored";
+  const manual = quest === null && !tracked;
+  const done = quest ?? (tracked ? remaining === 0 : ticked || (row.done && !cleared));
+  const source = manual ? (ticked || cleared ? "manual" : "authored") : "inventory";
 
   const spends: ResolvedSpend[] = row.alt
     ? altSpends(row.alt).map((spend) => ({
@@ -96,7 +101,7 @@ function resolveRow(
       alt: row.alt ? { text: altText(row.alt), spends, taken: answers.altsTaken.has(id) } : null,
       done,
       source,
-      manual: !tracked,
+      manual,
     },
   };
 }

@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { building, duviri, inventory, itemDb } from "./fixtures.js";
+import { building, duviri, inventory, itemDb, quests } from "./fixtures.js";
 import {
   authoredPlan,
   resolvePlan,
@@ -10,6 +10,7 @@ import type {
   PlanContext,
   ResolvedGroup,
   ResolvedPlan,
+  ResolvedRow,
 } from "../../../../../../src/lib/suggest/acquisition/plan/index.js";
 
 const NOW = Date.parse("2026-01-01T00:00:00Z");
@@ -41,6 +42,14 @@ function byMap(plan: ResolvedPlan, map: string): ResolvedGroup {
   const group = plan.groups.find((entry) => entry.map === map);
   if (!group) throw new Error(`no group on ${map}`);
   return group;
+}
+
+function byLabel(plan: ResolvedPlan, label: string): ResolvedRow {
+  for (const group of plan.groups) {
+    const row = group.rows.find((entry) => entry.label === label);
+    if (row) return row;
+  }
+  throw new Error(`no row labelled ${label}`);
 }
 
 describe("quantities", () => {
@@ -84,6 +93,66 @@ describe("done", () => {
   it("takes a manual tick on a row inventory cannot see", () => {
     const fossa = byPlace(resolve("Rhino", { manualDone: ["1:0"] }), "FOSSA, VENUS");
     expect(fossa.rows[0]).toMatchObject({ done: true, source: "manual" });
+  });
+});
+
+describe("quest gates", () => {
+  it("settles a finished quest off the inventory", () => {
+    const plan = resolve("Hound", { inventory: quests({ "The War Within": true }) });
+    const row = byLabel(plan, "The War Within");
+    expect(row).toMatchObject({ done: true, source: "inventory", manual: false });
+    expect(row.qty).toBeNull();
+  });
+
+  it("keeps a started quest not done and out of the player's hands", () => {
+    const plan = resolve("Hound", {
+      inventory: quests({ "The War Within": true, "Call of the Tempestarii": false }),
+    });
+    expect(byLabel(plan, "Call of the Tempestarii")).toMatchObject({
+      done: false,
+      source: "inventory",
+      manual: false,
+    });
+  });
+
+  it("reads a quest the payload never mentions as unstarted", () => {
+    const plan = resolve("Hound", { inventory: quests({ "The War Within": true }) });
+    expect(byLabel(plan, "Call of the Tempestarii")).toMatchObject({ done: false, manual: false });
+  });
+
+  it("matches a label that spells out the word quest", () => {
+    const plan = resolve("Amesha", { inventory: quests({ "The Archwing": true }) });
+    expect(byLabel(plan, "The Archwing quest")).toMatchObject({ done: true, manual: false });
+  });
+
+  it("matches a quest DE names with a leading The", () => {
+    const plan = resolve("Nautilus", { inventory: quests({ "The Rising Tide": true }) });
+    expect(byLabel(plan, "Rising Tide")).toMatchObject({ done: true, manual: false });
+  });
+
+  it("needs every leg of a chained gate", () => {
+    const half = resolve("Qorvex", { inventory: quests({ "Heart of Deimos": true }) });
+    expect(byLabel(half, "Heart of Deimos, then The New War")).toMatchObject({
+      done: false,
+      manual: false,
+    });
+
+    const both = resolve("Qorvex", {
+      inventory: quests({ "Heart of Deimos": true, "The New War": true }),
+    });
+    expect(byLabel(both, "Heart of Deimos, then The New War").done).toBe(true);
+  });
+
+  it("leaves a gate that names no quest to the player", () => {
+    const plan = resolve("Hound", { inventory: quests({ "The War Within": true }) });
+    const rank = byLabel(plan, "Mastery Rank 5");
+    expect(rank).toMatchObject({ done: true, source: "authored", manual: true });
+
+    const cleared = resolve("Hound", {
+      inventory: quests({ "The War Within": true }),
+      manualCleared: [rank.id],
+    });
+    expect(byLabel(cleared, "Mastery Rank 5")).toMatchObject({ done: false, source: "manual" });
   });
 });
 

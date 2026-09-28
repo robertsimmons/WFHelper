@@ -53,7 +53,11 @@ function path(plat: number | null): AcquisitionPath {
     covers: [],
     complete: true,
     steps: [],
-    cost: { credits: null, plat: { set: plat, parts: [], partsTotal: null }, relics: null },
+    cost: {
+      credits: null,
+      plat: { set: plat, setSlug: null, parts: [], partsTotal: null },
+      relics: null,
+    },
     effort: 0.5,
   };
 }

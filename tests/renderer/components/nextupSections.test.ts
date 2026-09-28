@@ -104,9 +104,9 @@ describe("SuggestionSection", () => {
   });
 
   it("draws one line in place of the grid, with the header and controls above it", () => {
-    expect(section()).toContain("{#if !collapsed && empty}");
+    expect(section()).toContain("{#if empty}");
     expect(section()).toContain("data-section-empty-note={id}");
     // The controls are the only way back out of an emptied section.
-    expect(section()).toContain("{#if !collapsed}\n      <Controls />");
+    expect(section()).toContain("<Controls />");
   });
 });

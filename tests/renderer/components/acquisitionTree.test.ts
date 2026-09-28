@@ -27,7 +27,7 @@ const modal = (): string =>
 describe("acquisition tree", () => {
   it("counts what the player holds off the never-depleted ownership map", () => {
     const text = tree();
-    expect(text).toContain("buildCraftingTree(root, $itemDb, $componentOwnership)");
+    expect(text).toContain("buildCraftingTree(root, $itemDb, $componentOwnership, {");
     // The resolver's own part rows are drained by a shared allocation pool, so
     // a count read off them reads as zero held.
     for (const drained of ["target.parts.materials", "target.parts.components", "parts.main"]) {
@@ -39,8 +39,8 @@ describe("acquisition tree", () => {
     const text = tree();
     // The length of the tree is itself the headache read, so nothing the player
     // has finished with takes up a line until they ask for it.
-    expect(text).toContain("return opened.get(path) ?? node.missing > 0;");
-    expect(text).toContain("onclick={() => toggle(path, node)}");
+    expect(text).toContain("return opened.get(path) ?? (depth === 0 || node.missing > 0);");
+    expect(text).toContain("onclick={() => toggle(path, node, depth)}");
     expect(text).toContain("aria-expanded={open}");
   });
 

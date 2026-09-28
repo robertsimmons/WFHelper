@@ -12,6 +12,13 @@ const BLUEPRINT_SUFFIX = / blueprint$/i;
 const RELIC_SUFFIX = / relic$/i;
 const RELIC_QUALITY_SUFFIX = /\s*\((intact|exceptional|flawless|radiant)\)$/i;
 const STANDING_SUFFIX = / standing$/i;
+const QUEST_SUFFIX = / quest$/i;
+const LEADING_THE = /^the /i;
+const QUEST_CHAIN_PREFIX = /^all main quests through /i;
+const QUEST_CHAIN_SEPARATOR = ", then ";
+/** DE files a quest's completion under its keychain, which the item database
+ *  carries as an ordinary named entry beside real items. */
+const QUEST_KEYCHAIN = /^\/Lotus\/Types\/Keys\/.*KeyChain/;
 
 export function parseQuantity(text: string | null): number {
   if (!text || !GROUPED.test(text)) return 1;
@@ -136,6 +143,19 @@ function readStanding(inventory: RawInventoryData | null): Map<string, number> {
   return balances;
 }
 
+function readCompletedQuests(inventory: RawInventoryData | null): Set<string> {
+  const finished = new Set<string>();
+  const rows = inventory?.QuestKeys;
+  if (!Array.isArray(rows)) return finished;
+  for (const row of rows) {
+    if (!row || typeof row !== "object") continue;
+    const record = row as { ItemType?: unknown; Completed?: unknown };
+    if (record.Completed !== true || typeof record.ItemType !== "string") continue;
+    finished.add(record.ItemType);
+  }
+  return finished;
+}
+
 /** Everything resolution reads off the player, indexed once per plan. */
 export interface PlayerState {
   owned: Map<string, number>;
@@ -144,6 +164,7 @@ export interface PlayerState {
   pending: Map<string, PendingBuild>;
   standing: Map<string, number>;
   standingCap: number;
+  questsDone: Set<string>;
 }
 
 export function readPlayerState(
@@ -164,6 +185,7 @@ export function readPlayerState(
     pending: buildPendingIndex(inventory, db),
     standing: readStanding(inventory),
     standingCap: dailyStandingCap(inventory),
+    questsDone: readCompletedQuests(inventory),
   };
 }
 
@@ -188,6 +210,34 @@ export function ownedForLabel(state: PlayerState, label: string, itemName: strin
     return total;
   }
   return null;
+}
+
+function questNames(label: string): string[] {
+  const bare = label.replace(QUEST_SUFFIX, "").trim();
+  return [label, bare, bare.replace(LEADING_THE, "").trim(), `The ${bare}`];
+}
+
+function questPartDone(state: PlayerState, label: string): boolean | null {
+  for (const name of questNames(label)) {
+    const matches = state.names.get(name.trim().toLowerCase());
+    if (!matches) continue;
+    const keychains = matches.filter((uniqueName) => QUEST_KEYCHAIN.test(uniqueName));
+    if (keychains.length === 0) continue;
+    return keychains.every((uniqueName) => state.questsDone.has(uniqueName));
+  }
+  return null;
+}
+
+/** Whether every quest a gate row names is finished, or null when the label names
+ *  no quest at all. Null is the only answer that leaves the row to the player. */
+export function questDoneForLabel(state: PlayerState, label: string): boolean | null {
+  let answer: boolean | null = null;
+  for (const part of label.replace(QUEST_CHAIN_PREFIX, "").split(QUEST_CHAIN_SEPARATOR)) {
+    const done = questPartDone(state, part.trim());
+    if (done === null) continue;
+    answer = (answer ?? true) && done;
+  }
+  return answer;
 }
 
 export function pendingBuildFor(

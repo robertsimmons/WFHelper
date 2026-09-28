@@ -4,10 +4,17 @@ import type { AcquisitionSort } from "../lib/suggest/acquisition/sort.js";
 import type { AcquisitionTarget, PlatPriceLookup } from "../lib/suggest/acquisition/types.js";
 import type { TrackerState } from "../lib/world/dailies.js";
 import type { DropRow } from "../../config/shared/dropTypes.js";
+import type {
+  RelicAdvice,
+  RelicRarity,
+  RelicRewardStatus,
+} from "../../config/shared/relicMr.js";
 import type { SortDirection } from "./filters.js";
 import type { ItemDbEntry, MasteryData, RawInventoryData } from "./inventory.js";
 import type { RelicDatabase, RelicQuality } from "./relics.js";
 import type { WorldState } from "./world.js";
+
+export type { RelicAdvice, RelicRarity, RelicRewardStatus };
 
 /** Which section a suggestion lands in, and what the filter checkboxes narrow by. */
 export type SuggestionCategory =
@@ -70,14 +77,11 @@ export type RewardWorth = "great" | "good" | "ok" | "low";
 export type MissionOpinion = "good" | "bad";
 export type ActivityPref = "never" | "low" | "normal";
 
-export const RELIC_GOALS = ["platinum", "ducats"] as const;
+export const RELIC_GOALS = ["mr", "platinum", "ducats"] as const;
 export type RelicGoal = (typeof RELIC_GOALS)[number];
 
 export const RELIC_ERAS = ["Lith", "Meso", "Neo", "Axi", "Requiem"] as const;
 export type RelicEra = (typeof RELIC_ERAS)[number];
-
-export const RELIC_SORTS = ["recommended", "platinum", "ducats"] as const;
-export type RelicSort = (typeof RELIC_SORTS)[number];
 
 export const MASTERY_KINDS = ["frame", "weapon", "companion", "forma"] as const;
 export type MasteryKind = (typeof MASTERY_KINDS)[number];
@@ -89,8 +93,7 @@ export interface SuggestionOptions {
   relicGoal: RelicGoal;
   taskKinds: TaskKind[];
   relicEras: RelicEra[];
-  /** Platinum and ducats each pick a goal as well as an order. */
-  relicSort: RelicSort;
+  /** Which end of the goal's recommended order comes first. */
   relicSortDir: SortDirection;
   masteryKinds: MasteryKind[];
   acquisitionSort: AcquisitionSort;
@@ -173,6 +176,10 @@ export interface SuggestionReward {
    * family's own plural label, which resolves no art and names no member.
    */
   oneOf?: SuggestionReward[] | undefined;
+  /** Median plat, where the reward is a relic drop the market prices. */
+  platinum?: number | null | undefined;
+  ducats?: number | null | undefined;
+  rarity?: RelicRarity | null | undefined;
 }
 
 /** One thing a pool pays. A bare name is all a stall's stock line carries; a
@@ -188,6 +195,14 @@ export interface SuggestionPoolRow {
   chance?: number | undefined;
   /** Curated worth, where the ladder places the name. */
   worth?: RewardWorth | undefined;
+  /** Relic drops only, from here down. */
+  rarity?: RelicRarity | null | undefined;
+  /** Median plat; null where the market has not priced it. */
+  platinum?: number | null | undefined;
+  ducats?: number | null | undefined;
+  status?: RelicRewardStatus | null | undefined;
+  /** Copies held, as `relicMr` counts them; null where unplaceable. */
+  ownedCount?: number | null | undefined;
 }
 
 /** What a choice still owes the player: everything, a subsume, or nothing. */
@@ -281,6 +296,29 @@ export interface RelicFacts {
   platinum: number | null;
   /** Solo expected ducats of one crack. */
   ducats: number | null;
+  /** The refinement each goal would crack. */
+  advice: RelicAdvice;
+  /** What the current goal gets out of one crack, as the why line ends; null
+   *  where nothing prices it. */
+  payoff: string | null;
+  mr: RelicMrFacts;
+  /** Every live fissure of the relic's tier, best first. */
+  missions: RelicMission[];
+}
+
+export interface RelicMrFacts {
+  needed: number;
+  /** Display names of the items a needed part would complete. */
+  finishes: string[];
+  value: number;
+}
+
+export interface RelicMission {
+  missionType: string;
+  node: string;
+  isHard: boolean;
+  opinion: MissionOpinion | null;
+  expiry: string;
 }
 
 export interface Suggestion {

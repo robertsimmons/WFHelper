@@ -142,3 +142,32 @@ describe("suggestion details modal", () => {
     expect(keys.filter((key) => !(key in en))).toEqual([]);
   });
 });
+
+describe("suggestion details modal, relics", () => {
+  it("advises a refinement per goal, leaving MR out when nothing is needed", () => {
+    const text = source();
+    expect(text).toContain("nextUp.relicAdviceHeading");
+    const advice = ["nextUp.relicAdviceMr", "nextUp.relicAdvicePlat", "nextUp.relicAdviceDucats"];
+    for (const key of advice) {
+      expect(text).toContain(key);
+    }
+    expect(text).toContain("if (!quality) return [];");
+  });
+
+  it("lists every live fissure of the tier as an opinion chip", () => {
+    const text = source();
+    expect(text).toContain("{#each relic.missions as mission, index (index)}");
+    expect(text).toContain("{missionChipTone(mission.opinion)}");
+  });
+
+  it("tags every part with its status and colours it by rarity, never by chance", () => {
+    const text = source();
+    expect(text).toContain(
+      "status: row.status ? { kind: row.status, count: row.ownedCount ?? null } : null",
+    );
+    const pool = itemTileTags().find((tag) => tag.includes("name={row.tile.name}")) ?? "";
+    expect(pool).toContain("status={row.status}");
+    expect(pool).toContain("rarity={row.rarity}");
+    expect(text).toMatch(/\{#if relic\}[\s\S]*?\{:else if row\.chance !== null\}/);
+  });
+});

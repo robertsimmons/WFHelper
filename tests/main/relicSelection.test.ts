@@ -5,6 +5,7 @@ import { afterEach, describe, expect, it, vi } from "vitest";
 
 import { RELIC_RECOMMENDATIONS } from "../../config/shared/ipcChannels";
 import type { OverlaySettings } from "../../config/runtime/overlaySettings";
+import type { RelicMrItem } from "../../config/shared/relicMr";
 import { createRelicSelectionController } from "../../ipc/overlay/relicSelection";
 import { detectRelicEraFromBandText } from "../../services/rewardScannerMatch";
 
@@ -674,6 +675,145 @@ describe("relic selection planner", () => {
     await new Promise((resolve) => setTimeout(resolve, 900));
     expect(ocrSpy).toHaveBeenCalledTimes(2);
     expect(lastRecommendation().era).toBeNull();
+  });
+
+  it("lists MR relics apart, on the advised grade held, and refreshes on inventory change", async () => {
+    const cacheFilePath = makeTempSnapshot({
+      version: 1,
+      generatedAt: Date.now(),
+      prices: {
+        test_prime_barrel: { status: "ok", median: 20, timestamp: Date.now() },
+        forma_blueprint: { status: "ok", median: 1, timestamp: Date.now() },
+      },
+      meta: {},
+      orderSummaries: {},
+    });
+    const intact = "/Lotus/Types/Game/Projections/NeoTestIntact";
+    const radiant = "/Lotus/Types/Game/Projections/NeoTestRadiant";
+    const items: Record<string, RelicMrItem> = {
+      "/Test/Gun": {
+        name: "Test Prime",
+        masterable: true,
+        components: [
+          { uniqueName: "/Test/GunBarrel", itemCount: 1 },
+          { uniqueName: "/Test/GunReceiver", itemCount: 1 },
+        ],
+      },
+      "/Test/GunBarrel": {
+        name: "Test Prime Barrel",
+        isBuildComponent: true,
+        componentOf: "/Test/Gun",
+      },
+      "/Test/GunReceiver": {
+        name: "Test Prime Receiver",
+        isBuildComponent: true,
+        componentOf: "/Test/Gun",
+      },
+    };
+    const byName: Record<string, string> = { "Test Prime Barrel": "/Test/GunBarrel" };
+    const relics = [
+      { ItemType: intact, ItemCount: 1 },
+      { ItemType: radiant, ItemCount: 1 },
+      { ItemType: "/Test/GunReceiver", ItemCount: 1 },
+    ];
+    const forma = { name: "Forma Blueprint", urlName: "forma_blueprint", rarity: "Common" };
+    const barrel = { name: "Test Prime Barrel", urlName: "test_prime_barrel", rarity: "Rare" };
+
+    const sentEvents: Array<{ channel: string; payload: unknown }> = [];
+    const ctx = {
+      overlaySettings: { autoTriggerEnabled: true } as OverlaySettings,
+      currentInventoryData: { MiscItems: relics } as Record<string, unknown> | null,
+    };
+    const controller = createRelicSelectionController({
+      eraStartDelayMs: 0,
+      log: { info: vi.fn(), warn: vi.fn(), error: vi.fn() },
+      ctx,
+      windows: {
+        createOverlayWindow: vi.fn(),
+        clearOverlayAutoHideTimer: vi.fn(),
+        scheduleOverlayAutoHide: vi.fn(),
+        sendOverlayEvent: (channel, payload) => sentEvents.push({ channel, payload }),
+        positionOverlayWindow: vi.fn(),
+        getAnchorMeta: () => null,
+        setAnchorMeta: vi.fn(),
+      },
+      relicService: {
+        getRelicDatabase: () => ({
+          groups: {
+            "Neo Test": {
+              key: "Neo Test",
+              name: "Neo Test",
+              tier: "Neo",
+              qualities: {
+                intact: { rewards: [{ ...barrel, chance: 2 }, { ...forma, chance: 98 }] },
+                radiant: { rewards: [{ ...barrel, chance: 10 }, { ...forma, chance: 90 }] },
+              },
+            },
+          },
+          byUniqueName: {
+            [intact]: { groupKey: "Neo Test", quality: "intact" },
+            [radiant]: { groupKey: "Neo Test", quality: "radiant" },
+          },
+        }),
+      },
+      rewardScanner: { detectRelicSelectionEra: async () => ({ era: "Neo", confidence: 1 }) },
+      wfmStatsPrice: { getCachedPriceBySlug: vi.fn() },
+      fs,
+      cacheFilePath,
+      mastery: {
+        lookupItem: (uniqueName) => items[uniqueName] ?? null,
+        resolveReward: (name) => (name ? (byName[name] ?? null) : null),
+        masteryItems: (inventory) =>
+          inventory.XPInfo ? [{ uniqueName: "/Test/Gun", status: "mastered" as const }] : [],
+        isReusableBlueprint: () => false,
+        buildsProduct: (uniqueName) => (uniqueName === "/Test/GunBlueprint" ? "/Test/Gun" : null),
+      },
+    });
+
+    type Row = { label: string; quality: string; advice: string | null; mrNeeded?: number };
+    type MrRow = Row & { mrNeeded: number; mrFinishes: string[]; mrValue: number };
+    const lastPayload = () =>
+      sentEvents.filter((event) => event.channel === RELIC_RECOMMENDATIONS).at(-1)?.payload as {
+        rows: Row[];
+        mrRows: MrRow[];
+      };
+    const trigger = async () => {
+      await controller.onRelicSelectionTrigger("manual");
+      await new Promise((resolve) => setTimeout(resolve, 10));
+    };
+
+    await trigger();
+    expect(lastPayload().rows).toHaveLength(1);
+    expect(lastPayload().rows[0]).toMatchObject({ quality: "radiant", advice: "radiant" });
+    expect(lastPayload().rows[0]?.mrNeeded).toBeUndefined();
+    expect(lastPayload().mrRows).toEqual([
+      expect.objectContaining({
+        quality: "radiant",
+        advice: "radiant",
+        mrNeeded: 1,
+        mrFinishes: ["Test Prime"],
+        mrValue: 2,
+      }),
+    ]);
+
+    // Radiant is advised but not held, so the best grade held stands in.
+    ctx.currentInventoryData = { MiscItems: [relics[0], relics[2]] };
+    await trigger();
+    expect(lastPayload().mrRows).toEqual([
+      expect.objectContaining({ quality: "intact", advice: "radiant", mrNeeded: 1 }),
+    ]);
+
+    ctx.currentInventoryData = { MiscItems: relics, XPInfo: [{ ItemType: "/Test/Gun", XP: 1 }] };
+    await trigger();
+    expect(lastPayload().rows).toHaveLength(1);
+    expect(lastPayload().mrRows).toEqual([]);
+
+    ctx.currentInventoryData = {
+      MiscItems: relics,
+      PendingRecipes: [{ ItemType: "/Test/GunBlueprint" }],
+    };
+    await trigger();
+    expect(lastPayload().mrRows).toEqual([]);
   });
 
   it("a fissure list naming several eras never reaches the planner", () => {

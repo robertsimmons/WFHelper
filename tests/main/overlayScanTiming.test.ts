@@ -382,7 +382,7 @@ describe("overlay scan timing (eelog trigger)", () => {
     expect(autoHideDelays).toEqual([2_500]);
   });
 
-  it("hides shortly after the reward screen shuts down (solo close)", async () => {
+  it("holds the reading floor after a solo close", async () => {
     const { controller, autoHideDelays } = createHarness();
     controller.notifyRewardUiReady();
 
@@ -391,10 +391,10 @@ describe("overlay scan timing (eelog trigger)", () => {
     await done;
     expect(autoHideDelays).toEqual([13_850]);
 
-    // Solo: the in-game screen closes ~5.5s after the trigger.
+    // Solo: the in-game screen closes ~5.5s after the trigger, inside the 12s reading floor.
     await vi.advanceTimersByTimeAsync(5_000);
     controller.notifyRewardScreenClosed(0);
-    expect(autoHideDelays.at(-1)).toBe(1_500);
+    expect(autoHideDelays.at(-1)).toBe(6_350);
   });
 
   it("keeps the reading floor when the screen closes right away", async () => {
@@ -407,8 +407,8 @@ describe("overlay scan timing (eelog trigger)", () => {
 
     await vi.advanceTimersByTimeAsync(1_000);
     controller.notifyRewardScreenClosed(0);
-    // 5s reading floor from the trigger, 1.65s of it already elapsed.
-    expect(autoHideDelays.at(-1)).toBe(3_350);
+    // 12s reading floor from the trigger, 1.65s of it already elapsed.
+    expect(autoHideDelays.at(-1)).toBe(10_350);
   });
 
   it("uses the minimum visible time when the screen closed mid-scan", async () => {
@@ -420,7 +420,7 @@ describe("overlay scan timing (eelog trigger)", () => {
     await vi.advanceTimersByTimeAsync(500);
     await done;
 
-    expect(autoHideDelays).toEqual([5_000]);
+    expect(autoHideDelays).toEqual([12_000]);
   });
 
   it("acts on the first close only - picker shutdowns and echoes refire it", async () => {
@@ -433,12 +433,12 @@ describe("overlay scan timing (eelog trigger)", () => {
 
     await vi.advanceTimersByTimeAsync(5_000);
     controller.notifyRewardScreenClosed(0);
-    expect(autoHideDelays).toEqual([13_850, 1_500]);
+    expect(autoHideDelays).toEqual([13_850, 6_350]);
 
     await vi.advanceTimersByTimeAsync(4_500);
     controller.notifyRewardScreenClosed(0);
     controller.notifyRewardScreenClosed(2_000);
-    expect(autoHideDelays).toEqual([13_850, 1_500]);
+    expect(autoHideDelays).toEqual([13_850, 6_350]);
   });
 
   it("ignores stale close lines from the lazy file flush", async () => {

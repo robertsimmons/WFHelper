@@ -23,7 +23,6 @@ import {
   NIGHTWAVE_STAPLES,
   RELIC_ERAS,
   RELIC_GOALS,
-  RELIC_SORTS,
   TASK_KINDS,
   WORTH_GROUPS,
 } from "../../types/suggest.js";
@@ -34,7 +33,6 @@ import type {
   MasteryKind,
   MissionOpinion,
   RelicGoal,
-  RelicSort,
   RewardWorth,
   SuggestionOptions,
   SuggestionPreferences,
@@ -114,7 +112,6 @@ export const DEFAULT_OPTIONS: SuggestionOptions = {
   relicGoal: "platinum",
   taskKinds: [...TASK_KINDS],
   relicEras: [...RELIC_ERAS],
-  relicSort: "recommended",
   relicSortDir: "asc",
   masteryKinds: [...MASTERY_KINDS],
   acquisitionSort: DEFAULT_ACQUISITION_SORT,
@@ -140,6 +137,8 @@ const LEGACY_ACQUISITION_INCLUDES: readonly AcquisitionInclude[] = [
   "archmelee",
   "companion",
 ];
+/** The goals that existed as activity ids; MR never did. */
+const LEGACY_RELIC_GOALS: readonly RelicGoal[] = ["platinum", "ducats"];
 const legacyGoalKey = (goal: RelicGoal): string => `relics:goal:${goal}`;
 
 /** The whole settings vocabulary for mission types, curated and unrated alike. */
@@ -328,12 +327,12 @@ export function parseOptions(raw: string | null): Partial<SuggestionOptions> {
   if (tasks) options.taskKinds = tasks;
   const eras = parseList(parsed["relicEras"], RELIC_ERAS);
   if (eras) options.relicEras = eras;
-  const relicSort = parsed["relicSort"];
-  if (typeof relicSort === "string" && (RELIC_SORTS as readonly string[]).includes(relicSort)) {
-    options.relicSort = relicSort as RelicSort;
-  }
+  // The retired `relicSort` is ignored, and so is an arrow set against a payout
+  // sort: that one pointed the other way round.
+  const legacySort = parsed["relicSort"];
   const relicDir = parsed["relicSortDir"];
-  if (relicDir === "asc" || relicDir === "desc") options.relicSortDir = relicDir;
+  const payoutArrow = legacySort !== undefined && legacySort !== "recommended";
+  if (!payoutArrow && (relicDir === "asc" || relicDir === "desc")) options.relicSortDir = relicDir;
   const masteryKinds = parseList(parsed["masteryKinds"], MASTERY_KINDS);
   if (masteryKinds) options.masteryKinds = masteryKinds;
   else if (parsed[LEGACY_FORMA_OPTION] === false) options.masteryKinds = withoutForma();
@@ -379,14 +378,14 @@ export function migrateLegacyOptions(
   stored: Partial<SuggestionOptions>,
 ): { activities: Record<string, ActivityPref>; options: Partial<SuggestionOptions> } {
   const options: Partial<SuggestionOptions> = { ...stored };
-  const legacyGoals = RELIC_GOALS.map(legacyGoalKey);
+  const legacyGoals = LEGACY_RELIC_GOALS.map(legacyGoalKey);
 
   if (options.masteryKinds === undefined && activities[LEGACY_FORMA_KEY] === "never") {
     options.masteryKinds = withoutForma();
   }
   if (options.relicGoal === undefined && legacyGoals.some((key) => key in activities)) {
     options.relicGoal =
-      RELIC_GOALS.find((goal) => activities[legacyGoalKey(goal)] !== "never") ??
+      LEGACY_RELIC_GOALS.find((goal) => activities[legacyGoalKey(goal)] !== "never") ??
       DEFAULT_OPTIONS.relicGoal;
   }
 

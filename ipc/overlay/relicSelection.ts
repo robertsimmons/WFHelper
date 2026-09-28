@@ -7,6 +7,20 @@ import { rewardOcrOnnxAvailable } from "../../services/rewardOcrOnnx";
 import { normalizeOcrPhrase } from "../../config/shared/ocrPhrase";
 import { normalizeWfmSlugKey } from "../../config/shared/wfm";
 import { RELIC_MISSION_TIER_CACHE_TTL_MS } from "../../config/runtime/cacheConfig";
+import { aggregateComponentOwnership } from "../../config/shared/componentOwnership";
+import { pendingBuildCounts, withoutFoundryPending } from "../../config/shared/foundryPending";
+import type { MasteryStatus } from "../../config/shared/masteryTypes";
+import {
+  masteredKeys,
+  relicAdvice,
+  relicMr,
+  relicRarity,
+  type RelicAdvice,
+  type RelicMr,
+  type RelicMrItem,
+} from "../../config/shared/relicMr";
+import * as itemDatabase from "../../services/itemDatabase";
+import { computeMasteryProgress } from "../../services/masteryHelper";
 
 const RECOMMENDATION_SQUAD_SIZE = 4;
 /** How long computed recommendations stay cached before a full recompute. */
@@ -36,6 +50,9 @@ const QUALITY_ORDER: readonly (keyof OwnedCountRow)[] = Object.freeze([
   "exceptional",
   "intact",
 ]);
+const REFERENCE_ORDER: readonly (keyof OwnedCountRow)[] = Object.freeze(
+  [...QUALITY_ORDER].reverse(),
+);
 const QUALITY_LABEL: Readonly<Record<keyof OwnedCountRow, string>> = Object.freeze({
   intact: "Intact",
   exceptional: "Exceptional",
@@ -44,6 +61,8 @@ const QUALITY_LABEL: Readonly<Record<keyof OwnedCountRow, string>> = Object.free
 });
 
 type Reward = {
+  name?: string | null;
+  uniqueName?: string | null;
   urlName?: string | null;
   chance?: number;
   ducats?: number | null;
@@ -81,14 +100,71 @@ type EraDetection = {
   candidateId?: string | null;
 };
 
-type RecommendationRow = {
+type RelicQuality = keyof OwnedCountRow;
+
+type PricedRow = {
   label: string;
   relicName: string;
-  quality: string;
+  quality: RelicQuality;
   count: number;
   platEv: number | null;
   ducatEv: number | null;
   vaulted: boolean;
+};
+
+type RecommendationRow = PricedRow & {
+  /** Refinement worth cracking for this row's goal. */
+  advice: RelicQuality | null;
+};
+
+type MrRecommendationRow = RecommendationRow & {
+  mrNeeded: number;
+  /** Display names of the items a needed part would complete. */
+  mrFinishes: string[];
+  mrValue: number;
+};
+
+type Recommendations = {
+  rows: RecommendationRow[];
+  mrRows: MrRecommendationRow[];
+  totalOwnedCount: number;
+};
+
+type Pricing = {
+  squadSize: number;
+  platinum: (slug: string) => number | null;
+  ducats: (slug: string) => number | null;
+};
+
+type MasterySource = {
+  lookupItem: (uniqueName: string) => RelicMrItem | null;
+  resolveReward: (name: string | null, urlName: string | null) => string | null;
+  masteryItems: (inventory: Record<string, unknown>) => readonly {
+    uniqueName?: string | null;
+    name?: string | null;
+    status?: MasteryStatus | null;
+  }[];
+  isReusableBlueprint: (uniqueName: string) => boolean;
+  buildsProduct: (uniqueName: string) => string | null;
+};
+
+type MrInputs = {
+  itemDb: Readonly<Record<string, RelicMrItem>>;
+  ownership: Map<string, number>;
+  pending: Map<string, number>;
+  mastered: ReadonlySet<string>;
+};
+
+const ITEM_DATABASE_MASTERY: MasterySource = {
+  lookupItem: (uniqueName) => {
+    const entry = itemDatabase.lookupItem(uniqueName);
+    return entry ? { ...entry, ...itemDatabase.localizedNameFields(uniqueName, entry.name) } : null;
+  },
+  resolveReward: (name, urlName) =>
+    itemDatabase.lookupItemByNameOrSlug(name, urlName)?.uniqueName ?? null,
+  masteryItems: (inventory) => computeMasteryProgress(inventory).items,
+  isReusableBlueprint: itemDatabase.isReusableBlueprint,
+  buildsProduct: itemDatabase.buildsProductOf,
 };
 
 type OverlayRecommendationControllerOptions = {
@@ -144,6 +220,7 @@ type OverlayRecommendationControllerOptions = {
   };
   fs: typeof import("node:fs");
   cacheFilePath: string;
+  mastery?: MasterySource;
   /** Overrides the wait before the first era capture. Tests drive real timers. */
   eraStartDelayMs?: number;
 };
@@ -349,62 +426,60 @@ function getCacheFileMtimeMs(fs: typeof import("node:fs"), cacheFilePath: string
   }
 }
 
+function rewardPlatinum(reward: Reward, pricing: Pricing): number | null {
+  const slug = normalizeWfmSlugKey(reward?.urlName);
+  return slug ? pricing.platinum(slug) : null;
+}
+
+function rewardDucats(reward: Reward, pricing: Pricing): number | null {
+  // @wfcd/items rarely ships ducat values; fall back to snapshot meta ducats.
+  const rewardDucats = normalizeDucats(reward?.ducats);
+  if (rewardDucats != null && rewardDucats > 0) return rewardDucats;
+  const slug = normalizeWfmSlugKey(reward?.urlName);
+  return slug ? pricing.ducats(slug) : null;
+}
+
+function priceQuality(
+  group: RelicGroup,
+  quality: RelicQuality,
+  count: number,
+  pricing: Pricing,
+): PricedRow | null {
+  const rewards = group.qualities?.[quality]?.rewards || [];
+  if (count <= 0 || rewards.length === 0) return null;
+
+  const chances = rewards.map((reward) => ({
+    chance: clampNumber(toFiniteOr(reward?.chance, 0), 0, 100),
+  }));
+  const platValues = rewards.map((reward) => rewardPlatinum(reward, pricing));
+  const ducatValues = rewards.map((reward) => rewardDucats(reward, pricing));
+
+  const hasAnyPlat = platValues.some((value) => value != null);
+  const hasAnyDucat = ducatValues.some((value) => value != null);
+  // Show relics even when neither price nor ducat data is available in the snapshot.
+  // Null EVs display as "-p / -d" in the overlay instead of pretending the value is 0.
+
+  return {
+    label: `${count}x ${group.name} ${QUALITY_LABEL[quality]}`,
+    relicName: group.name,
+    quality,
+    count,
+    platEv: hasAnyPlat ? computeSquadExpected(chances, platValues, pricing.squadSize) : null,
+    ducatEv: hasAnyDucat ? computeSquadExpected(chances, ducatValues, pricing.squadSize) : null,
+    vaulted: Boolean(group.vaulted),
+  };
+}
+
 function pickBestOwnedQuality(
   group: RelicGroup,
   ownedRow: OwnedCountRow,
-  priceLookup: (slug: string) => number | null,
-  squadSize: number,
-  getDucats: (slug: string) => number | null,
-): RecommendationRow | null {
-  let best: RecommendationRow | null = null;
+  pricing: Pricing,
+): PricedRow | null {
+  let best: PricedRow | null = null;
 
   for (const quality of QUALITY_ORDER) {
-    const count = ownedRow[quality] || 0;
-    if (count <= 0) continue;
-
-    const rewards = group.qualities?.[quality]?.rewards || [];
-    if (rewards.length === 0) continue;
-
-    const normalizedRewards = rewards.map((reward) => ({
-      chance: clampNumber(toFiniteOr(reward?.chance, 0), 0, 100),
-      ducats: reward?.ducats,
-      urlName: reward?.urlName,
-      rarity: reward?.rarity,
-    }));
-
-    const platValues = normalizedRewards.map((reward) => {
-      const slug = normalizeWfmSlugKey(reward?.urlName);
-      return slug ? priceLookup(slug) : null;
-    });
-    const ducatValues = normalizedRewards.map((reward) => {
-      // @wfcd/items rarely ships ducat values; fall back to snapshot meta ducats.
-      const rewardDucats = normalizeDucats(reward?.ducats);
-      if (rewardDucats != null && rewardDucats > 0) return rewardDucats;
-      const slug = normalizeWfmSlugKey(reward?.urlName);
-      return slug ? getDucats(slug) : null;
-    });
-
-    const hasAnyPlat = platValues.some((value) => value != null);
-    const hasAnyDucat = ducatValues.some((value) => value != null);
-    // Show relics even when neither price nor ducat data is available in the snapshot.
-    // Null EVs display as "-p / -d" in the overlay instead of pretending the value is 0.
-
-    const platEv = hasAnyPlat
-      ? computeSquadExpected(normalizedRewards, platValues, squadSize)
-      : null;
-    const ducatEv = hasAnyDucat
-      ? computeSquadExpected(normalizedRewards, ducatValues, squadSize)
-      : null;
-
-    const row: RecommendationRow = {
-      label: `${count}x ${group.name} ${QUALITY_LABEL[quality]}`,
-      relicName: group.name,
-      quality,
-      count,
-      platEv,
-      ducatEv,
-      vaulted: Boolean(group.vaulted),
-    };
+    const row = priceQuality(group, quality, ownedRow[quality] || 0, pricing);
+    if (!row) continue;
 
     if (!best) {
       best = row;
@@ -426,6 +501,99 @@ function pickBestOwnedQuality(
   return best;
 }
 
+/** The advised grade when it is held, else the best grade held. */
+function pickMrQuality(
+  group: RelicGroup,
+  ownedRow: OwnedCountRow,
+  advised: RelicQuality,
+): RelicQuality | null {
+  const usable = (quality: RelicQuality) =>
+    (ownedRow[quality] || 0) > 0 && (group.qualities?.[quality]?.rewards?.length ?? 0) > 0;
+  if (usable(advised)) return advised;
+  return QUALITY_ORDER.find(usable) ?? null;
+}
+
+function buildMrInputs(
+  inventory: Record<string, unknown> | null,
+  source: MasterySource,
+): MrInputs {
+  const itemDb = new Proxy<Record<string, RelicMrItem>>(
+    {},
+    {
+      get: (_target, key) =>
+        typeof key === "string" ? (source.lookupItem(key) ?? undefined) : undefined,
+    },
+  );
+  if (!inventory) {
+    return { itemDb, ownership: new Map(), pending: new Map(), mastered: new Set() };
+  }
+  return {
+    itemDb,
+    ownership: aggregateComponentOwnership(
+      withoutFoundryPending(inventory, source.isReusableBlueprint),
+    ),
+    pending: pendingBuildCounts(inventory.PendingRecipes, source.buildsProduct),
+    mastered: masteredKeys(source.masteryItems(inventory)),
+  };
+}
+
+function readMr(rewards: readonly Reward[], inputs: MrInputs, source: MasterySource): RelicMr {
+  return relicMr({
+    rewards: rewards.map((reward) => ({
+      name: reward.name || reward.urlName || reward.uniqueName || "",
+      uniqueName:
+        source.resolveReward(reward.name ?? null, reward.urlName ?? null) ?? reward.uniqueName,
+    })),
+    ...inputs,
+  });
+}
+
+/** Every refinement names the same drops, so any one table lists them all. */
+function groupAdvice(
+  group: RelicGroup,
+  inputs: MrInputs,
+  source: MasterySource,
+  pricing: Pricing,
+): RelicAdvice | null {
+  const quality = REFERENCE_ORDER.find(
+    (candidate) => (group.qualities?.[candidate]?.rewards?.length ?? 0) > 0,
+  );
+  const rewards = quality ? (group.qualities?.[quality]?.rewards ?? []) : [];
+  if (!quality || rewards.length === 0) return null;
+  const mr = readMr(rewards, inputs, source);
+  return relicAdvice(
+    rewards.map((reward, index) => ({
+      rarity: relicRarity(quality, {
+        chance: toFiniteOr(reward?.chance, 0),
+        rarity: reward?.rarity,
+      }),
+      platinum: rewardPlatinum(reward, pricing),
+      ducats: rewardDucats(reward, pricing),
+      status: mr.rewards[index]?.status ?? null,
+    })),
+  );
+}
+
+function compareValueRows(a: PricedRow, b: PricedRow): number {
+  const aPlat = a.platEv ?? -1;
+  const bPlat = b.platEv ?? -1;
+  if (bPlat !== aPlat) return bPlat - aPlat;
+
+  const aDucat = a.ducatEv ?? -1;
+  const bDucat = b.ducatEv ?? -1;
+  if (bDucat !== aDucat) return bDucat - aDucat;
+
+  return a.label.localeCompare(b.label);
+}
+
+function compareMrRows(a: MrRecommendationRow, b: MrRecommendationRow): number {
+  if (b.mrValue !== a.mrValue) return b.mrValue - a.mrValue;
+  const aPlat = a.platEv ?? -1;
+  const bPlat = b.platEv ?? -1;
+  if (bPlat !== aPlat) return bPlat - aPlat;
+  return a.relicName.localeCompare(b.relicName);
+}
+
 function toStableOwnedFingerprint(owned: Record<string, OwnedCountRow>): string {
   const rows = Object.entries(owned)
     .sort((a, b) => a[0].localeCompare(b[0]))
@@ -440,6 +608,7 @@ export function createRelicSelectionController(options: OverlayRecommendationCon
   const { log, ctx, windows, relicService, rewardScanner, wfmStatsPrice, fs, cacheFilePath } =
     options;
   const eraStartDelayMs = options.eraStartDelayMs ?? ERA_DETECTION_START_DELAY_MS;
+  const masterySource = options.mastery ?? ITEM_DATABASE_MASTERY;
 
   let inFlight = false;
   let activeScanToken = 0;
@@ -458,11 +627,11 @@ export function createRelicSelectionController(options: OverlayRecommendationCon
   // era produced those rows, so a wrong era would never expire. They outlive
   // the menu-closed event on purpose: a real log self-read 2s after it.
   let overlayRowSignatures: string[] = [];
+  let mrInputsCache: { inventory: Record<string, unknown> | null; inputs: MrInputs } | null = null;
   let cache: {
     key: string;
-    rows: RecommendationRow[];
-    era: string | null;
-    totalOwnedCount: number;
+    inventory: Record<string, unknown> | null;
+    result: Recommendations;
     ts: number;
   } | null = null;
   let persistedPriceMedianCache: {
@@ -493,18 +662,26 @@ export function createRelicSelectionController(options: OverlayRecommendationCon
     return prices.get(normalized) ?? null;
   }
 
-  function buildRecommendations(era: string | null): {
-    rows: RecommendationRow[];
-    totalOwnedCount: number;
-  } {
+  function buildRecommendations(era: string | null): Recommendations {
     const db = relicService.getRelicDatabase();
     const groups = Object.values(db.groups || {}) as RelicGroup[];
     const owned = parseOwnedRelicCounts(ctx.currentInventoryData, db.byUniqueName || {});
 
+    const inventory = ctx.currentInventoryData;
     const cacheKey = `${era || "all"}|${toStableOwnedFingerprint(owned)}`;
-    if (cache && cache.key === cacheKey && Date.now() - cache.ts < RECOMMENDATION_CACHE_TTL_MS) {
-      return { rows: cache.rows, totalOwnedCount: cache.totalOwnedCount };
+    if (
+      cache &&
+      cache.key === cacheKey &&
+      cache.inventory === inventory &&
+      Date.now() - cache.ts < RECOMMENDATION_CACHE_TTL_MS
+    ) {
+      return cache.result;
     }
+
+    if (!mrInputsCache || mrInputsCache.inventory !== inventory) {
+      mrInputsCache = { inventory, inputs: buildMrInputs(inventory, masterySource) };
+    }
+    const mrInputs = mrInputsCache.inputs;
 
     const { prices: persistedPrices, ducats: persistedDucats } = getPersistedCacheMaps();
 
@@ -532,8 +709,15 @@ export function createRelicSelectionController(options: OverlayRecommendationCon
       return persistedDucats.get(normalized) ?? null;
     };
 
+    const pricing: Pricing = {
+      squadSize: desktopSquadSize,
+      platinum: getPrice,
+      ducats: getDucats,
+    };
+
     let totalOwnedCount = 0;
     const rows: RecommendationRow[] = [];
+    const mrRows: MrRecommendationRow[] = [];
     // omnia fissures accept every era - no filter
     const eraFilter = era === "omnia" ? null : era;
     for (const group of groups) {
@@ -550,34 +734,35 @@ export function createRelicSelectionController(options: OverlayRecommendationCon
         (ownedRow.radiant || 0);
       totalOwnedCount += groupTotal;
 
-      const best = pickBestOwnedQuality(group, ownedRow, getPrice, desktopSquadSize, getDucats);
-      if (best) rows.push(best);
+      const advice = groupAdvice(group, mrInputs, masterySource, pricing);
+      const best = pickBestOwnedQuality(group, ownedRow, pricing);
+      if (best) rows.push({ ...best, advice: advice?.platinum ?? null });
+
+      const mrQuality = advice?.mr ? pickMrQuality(group, ownedRow, advice.mr) : null;
+      const mrPriced = mrQuality
+        ? priceQuality(group, mrQuality, ownedRow[mrQuality] || 0, pricing)
+        : null;
+      if (!mrPriced || !mrQuality) continue;
+      const mr = readMr(group.qualities?.[mrQuality]?.rewards ?? [], mrInputs, masterySource);
+      if (mr.needed <= 0) continue;
+      mrRows.push({
+        ...mrPriced,
+        advice: advice?.mr ?? null,
+        mrNeeded: mr.needed,
+        mrFinishes: mr.finishes,
+        mrValue: mr.value,
+      });
     }
 
-    rows.sort((a, b) => {
-      const aPlat = a.platEv ?? -1;
-      const bPlat = b.platEv ?? -1;
-      if (bPlat !== aPlat) return bPlat - aPlat;
+    rows.sort(compareValueRows);
+    mrRows.sort(compareMrRows);
 
-      const aDucat = a.ducatEv ?? -1;
-      const bDucat = b.ducatEv ?? -1;
-      if (bDucat !== aDucat) return bDucat - aDucat;
-
-      return a.label.localeCompare(b.label);
-    });
-
-    cache = {
-      key: cacheKey,
-      rows,
-      era,
-      totalOwnedCount,
-      ts: Date.now(),
-    };
-
-    return { rows, totalOwnedCount };
+    const result: Recommendations = { rows, mrRows, totalOwnedCount };
+    cache = { key: cacheKey, inventory, result, ts: Date.now() };
+    return result;
   }
 
-  function rememberOverlayRows(rows: readonly RecommendationRow[]): void {
+  function rememberOverlayRows(rows: readonly PricedRow[]): void {
     overlayRowSignatures = rows
       .map((row) => overlayRowSignature(row.label))
       .filter((signature): signature is string => signature !== null);
@@ -600,14 +785,15 @@ export function createRelicSelectionController(options: OverlayRecommendationCon
   function sendFallbackRows(scanToken: number, source: string, era: string | null): void {
     const startedAt = Date.now();
     try {
-      const { rows, totalOwnedCount } = buildRecommendations(era);
+      const { rows, mrRows, totalOwnedCount } = buildRecommendations(era);
       if (scanToken !== activeScanToken) return;
 
-      rememberOverlayRows(rows);
+      rememberOverlayRows([...rows, ...mrRows]);
       windows.sendOverlayEvent(RELIC_RECOMMENDATIONS, {
         source,
         era,
         rows,
+        mrRows,
         totalOwnedCount,
         ocrUnavailable: eraOcrUnavailable(),
         detection: {
@@ -781,14 +967,15 @@ export function createRelicSelectionController(options: OverlayRecommendationCon
       const shouldApplyEra = Boolean(era && eraConfidence >= 0.9);
       const effectiveEra = shouldApplyEra ? era : desktopTierHint;
 
-      const { rows, totalOwnedCount } = buildRecommendations(effectiveEra);
+      const { rows, mrRows, totalOwnedCount } = buildRecommendations(effectiveEra);
       if (scanToken !== activeScanToken) return;
 
-      rememberOverlayRows(rows);
+      rememberOverlayRows([...rows, ...mrRows]);
       windows.sendOverlayEvent(RELIC_RECOMMENDATIONS, {
         source,
         era: effectiveEra,
         rows,
+        mrRows,
         totalOwnedCount,
         ocrUnavailable: eraOcrUnavailable(),
         detection: {
@@ -815,6 +1002,7 @@ export function createRelicSelectionController(options: OverlayRecommendationCon
         source,
         era: null,
         rows: [],
+        mrRows: [],
         ocrUnavailable: eraOcrUnavailable(),
       });
       windows.scheduleOverlayAutoHide(OVERLAY_AUTO_HIDE_FAILURE_MS);
@@ -891,6 +1079,7 @@ export function createRelicSelectionController(options: OverlayRecommendationCon
         source,
         era: null,
         rows: [],
+        mrRows: [],
         ocrUnavailable: eraOcrUnavailable(),
       });
       windows.scheduleOverlayAutoHide(OVERLAY_AUTO_HIDE_FAILURE_MS);

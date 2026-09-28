@@ -51,6 +51,8 @@ const ALLOWED_TWINS = new Set([
   "nextUp.planProgress",
   "nextUp.planReady",
   "nextUp.planStep",
+  "nextUp.relicAdviceMr",
+  "nextUp.relicStatusMastered",
   "nextUp.sectionAcquisition",
   "nextUp.settingsAdd",
   "nextUp.settingsBad",

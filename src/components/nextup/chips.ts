@@ -3,7 +3,14 @@ import { clockStore } from "../../lib/timers.js";
 import type { MessageKey } from "../../lib/i18n.js";
 import type { OwnedReward } from "../../lib/suggest/ownedRewards.js";
 import type { ValenceVerdict } from "../../lib/suggest/valence.js";
-import type { ChoiceState, ChoiceStatus, ChoiceWin } from "../../types/suggest.js";
+import type {
+  ChoiceState,
+  ChoiceStatus,
+  ChoiceWin,
+  MissionOpinion,
+  RelicRarity,
+  RelicRewardStatus,
+} from "../../types/suggest.js";
 
 /** What a chip can say. Ownership is a fact about the player's inventory, not
  *  one of the choices a Circuit week puts in front of them. */
@@ -96,6 +103,71 @@ export function tileDims(
 ): boolean {
   const piles = stacks ?? owned?.stacks ?? null;
   return have === true && piles === false;
+}
+
+/** What a tile says the player already has of it. A null count is a copy held
+ *  that nothing counted. */
+export interface TileStatus {
+  kind: RelicRewardStatus;
+  count?: number | null | undefined;
+}
+
+/**
+ * The tag a tile wears, and the only reason it may dim. A caller that knows the
+ * status says so; otherwise gear with nothing left owed reads as owned, counted
+ * off everything the tile was told is held.
+ */
+export function tileStatus(
+  status: TileStatus | null | undefined,
+  have: boolean | undefined,
+  stacks: boolean | null | undefined,
+  owned: OwnedReward | null | undefined,
+): TileStatus | null {
+  if (status) return status;
+  if (!tileDims(have, stacks, owned)) return null;
+  const count = owned ? owned.owned + (owned.built ?? 0) + (owned.pending ?? 0) : null;
+  return { kind: "owned", count };
+}
+
+export function statusDims(status: TileStatus | null | undefined): boolean {
+  return status?.kind === "owned" || status?.kind === "mastered";
+}
+
+export interface StatusChip {
+  label: MessageKey;
+  count: string | null;
+  tone: string;
+}
+
+export function statusChip(status: TileStatus): StatusChip {
+  if (status.kind === "needed") {
+    return { label: "nextUp.relicStatusNeeded", count: null, tone: CHIP_TONE.good };
+  }
+  if (status.kind === "mastered") {
+    return { label: "nextUp.relicStatusMastered", count: null, tone: CHIP_TONE.plain };
+  }
+  if (status.count === null || status.count === undefined) {
+    return { label: "common.owned", count: null, tone: CHIP_TONE.plain };
+  }
+  return { label: "nextUp.relicStatusOwned", count: String(status.count), tone: CHIP_TONE.plain };
+}
+
+/** The in-game bronze, silver and gold, in place of a rarity word or a chance. */
+const RARITY_TEXT: Record<RelicRarity, string> = {
+  common: "text-[color:var(--rarity-common)]",
+  uncommon: "text-[color:var(--rarity-uncommon)]",
+  rare: "text-[color:var(--rarity-rare)]",
+};
+
+export function rarityTextClass(rarity: RelicRarity | null | undefined): string {
+  return rarity ? RARITY_TEXT[rarity] : "text-text-primary";
+}
+
+/** A mission the player rates reads as its colour, never as a word. */
+export function missionChipTone(opinion: MissionOpinion | null | undefined): string {
+  if (opinion === "good") return CHIP_TONE.good;
+  if (opinion === "bad") return CHIP_TONE.bad;
+  return "text-text-primary";
 }
 
 // The riven --grade-* tokens run S green through F red, which reads as "S is a

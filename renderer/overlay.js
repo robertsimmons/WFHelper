@@ -434,8 +434,93 @@ function finiteMetric(value) {
   return Number.isFinite(numberValue) ? numberValue : null;
 }
 
+function appendMrCount(container, row) {
+  const count = finiteMetric(row?.mrNeeded) ?? 0;
+  if (count <= 0) return;
+  const finishes = Array.isArray(row.mrFinishes) ? row.mrFinishes.filter(Boolean) : [];
+  const mr = document.createElement("span");
+  mr.className = finishes.length > 0 ? "plan-mr finishes" : "plan-mr";
+  mr.textContent = t("overlay.planner.mrCount", { count });
+  mr.title = [
+    t("overlay.planner.mrTitle", { count }),
+    ...finishes.map((item) => t("overlay.planner.mrFinishes", { item })),
+  ].join("\n");
+  container.appendChild(mr);
+}
+
+const QUALITY_KEYS = {
+  intact: "relics.quality.intact",
+  exceptional: "relics.quality.exceptional",
+  flawless: "relics.quality.flawless",
+  radiant: "relics.quality.radiant",
+};
+
+function payloadRows(key) {
+  return Array.isArray(plannerPayload?.[key]) ? plannerPayload[key].filter(Boolean) : [];
+}
+
 function plannerRows() {
-  return Array.isArray(plannerPayload?.rows) ? plannerPayload.rows.filter(Boolean) : [];
+  return payloadRows("rows");
+}
+
+function planCard(row, { best, showMr }) {
+  const card = document.createElement("div");
+  card.className = best ? "plan-card best" : "plan-card";
+
+  const title = document.createElement("div");
+  title.className = "plan-title";
+  title.textContent = String(row.label || row.relicName || "-");
+
+  const vaultTag = document.createElement("span");
+  vaultTag.className = `plan-vault-tag ${row.vaulted ? "vaulted" : "unvaulted"}`;
+  vaultTag.textContent = row.vaulted ? t("common.vaulted") : t("common.unvaulted");
+  title.appendChild(vaultTag);
+
+  const profit = document.createElement("div");
+  profit.className = "plan-profit";
+
+  const label = document.createElement("span");
+  label.className = "plan-profit-label";
+  label.textContent = t("overlay.planner.expectedProfits");
+
+  profit.appendChild(label);
+  appendCurrencyValue(
+    profit,
+    "plan-currency-value plan-profit-plat",
+    PLATINUM_ICON,
+    formatProfit(finiteMetric(row.platEv)),
+    t("overlay.planner.expectedPlatinum"),
+  );
+  appendCurrencyValue(
+    profit,
+    "plan-currency-value plan-profit-ducat",
+    DUCAT_ICON,
+    formatProfit(finiteMetric(row.ducatEv)),
+    t("overlay.planner.expectedDucats"),
+  );
+  if (showMr) appendMrCount(profit, row);
+
+  card.appendChild(title);
+  card.appendChild(profit);
+
+  const adviceKey = QUALITY_KEYS[row.advice];
+  if (adviceKey) {
+    const advice = document.createElement("div");
+    advice.className = "plan-advice";
+    advice.textContent = t(adviceKey);
+    card.appendChild(advice);
+  }
+  return card;
+}
+
+function planColumn(headingKey) {
+  const column = document.createElement("div");
+  column.className = "plan-column";
+  const heading = document.createElement("div");
+  heading.className = "plan-heading";
+  heading.textContent = t(headingKey);
+  column.appendChild(heading);
+  return column;
 }
 
 function renderPlannerCards() {
@@ -443,55 +528,30 @@ function renderPlannerCards() {
   container.innerHTML = "";
 
   const rows = plannerRows();
+  if (rows.length === 0) return;
+  const mrRows = payloadRows("mrRows");
   const bestPlat = Math.max(...rows.map((row) => finiteMetric(row?.platEv) ?? -1), -1);
 
+  const valueColumn = planColumn("overlay.planner.valueHeading");
   for (const row of rows) {
-    if (!row) continue;
-    const card = document.createElement("div");
-    card.className = "plan-card";
-
     const platEv = finiteMetric(row.platEv);
-    const ducatEv = finiteMetric(row.ducatEv);
-    if (platEv != null && platEv === bestPlat && bestPlat >= 0) {
-      card.classList.add("best");
-    }
-
-    const title = document.createElement("div");
-    title.className = "plan-title";
-    title.textContent = String(row.label || row.relicName || "-");
-
-    const vaultTag = document.createElement("span");
-    vaultTag.className = `plan-vault-tag ${row.vaulted ? "vaulted" : "unvaulted"}`;
-    vaultTag.textContent = row.vaulted ? t("common.vaulted") : t("common.unvaulted");
-    title.appendChild(vaultTag);
-
-    const profit = document.createElement("div");
-    profit.className = "plan-profit";
-
-    const label = document.createElement("span");
-    label.className = "plan-profit-label";
-    label.textContent = t("overlay.planner.expectedProfits");
-
-    profit.appendChild(label);
-    appendCurrencyValue(
-      profit,
-      "plan-currency-value plan-profit-plat",
-      PLATINUM_ICON,
-      formatProfit(platEv),
-      t("overlay.planner.expectedPlatinum"),
-    );
-    appendCurrencyValue(
-      profit,
-      "plan-currency-value plan-profit-ducat",
-      DUCAT_ICON,
-      formatProfit(ducatEv),
-      t("overlay.planner.expectedDucats"),
-    );
-
-    card.appendChild(title);
-    card.appendChild(profit);
-    container.appendChild(card);
+    const best = platEv != null && platEv === bestPlat && bestPlat >= 0;
+    valueColumn.appendChild(planCard(row, { best, showMr: false }));
   }
+
+  const mrColumn = planColumn("overlay.planner.mrHeading");
+  mrRows.forEach((row, index) => {
+    mrColumn.appendChild(planCard(row, { best: index === 0, showMr: true }));
+  });
+  if (mrRows.length === 0) {
+    const empty = document.createElement("div");
+    empty.className = "plan-card plan-empty";
+    empty.textContent = t("overlay.planner.mrEmpty");
+    mrColumn.appendChild(empty);
+  }
+
+  container.appendChild(valueColumn);
+  container.appendChild(mrColumn);
 }
 
 function plannerBannerMessage(payload, era, rows) {

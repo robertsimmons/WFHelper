@@ -7,15 +7,19 @@
     COUNT_TITLE,
     TILE_MICRO,
     TONE,
+    rarityTextClass,
+    statusChip,
+    statusDims,
     tierBorderClass,
     tileCounts,
-    tileDims,
+    tileStatus,
     winChip,
+    type TileStatus,
   } from "./chips.js";
   import TierBadge from "./TierBadge.svelte";
   import ItemImage from "../ItemImage.svelte";
   import type { NemesisBonusRange } from "../../lib/suggest/acquisition/types.js";
-  import type { ChoiceStatus } from "../../types/suggest.js";
+  import type { ChoiceStatus, RelicRarity } from "../../types/suggest.js";
   import type { Snippet } from "svelte";
 
   interface Props {
@@ -41,8 +45,12 @@
     /** A resource, which the player always wants more of. Read off `owned` when
      *  that carries it; only a definite false ever dims. */
     stacks?: boolean | null | undefined;
-    /** Nothing here is still owed. Dims gear, which is earned once. */
+    /** Nothing here is still owed. Dims gear, which is earned once, and says so. */
     have?: boolean | undefined;
+    /** Needed, owned or mastered, where the caller knows which; wins over `have`. */
+    status?: TileStatus | null | undefined;
+    /** Colours the name, for a relic drop. */
+    rarity?: RelicRarity | null | undefined;
     size?: "sm" | "md";
     stretch?: boolean;
     /** Buttons and labels; they sit under the name, never beside it. */
@@ -64,6 +72,8 @@
     statuses = null,
     stacks = null,
     have = undefined,
+    status = null,
+    rarity = null,
     size = "sm",
     stretch = false,
     actions,
@@ -76,6 +86,7 @@
   const SLOT = { sm: "w-7", md: "w-8" };
   const BADGE = { sm: "xs", md: "sm" } as const;
   const NAME = { sm: "text-sm", md: "font-display text-base" };
+  const FADE = "opacity-45";
   const COUNT = "flex shrink-0 items-baseline gap-1 font-display font-semibold tabular-nums";
   const META =
     "flex min-w-0 flex-wrap items-center gap-x-2 gap-y-0.5 text-[0.6875rem] leading-tight";
@@ -96,7 +107,12 @@
   );
   // A tile that spells out each win has nothing left for the fade to say, and
   // fading it is what made a finished choice unreadable.
-  const dim = $derived((statuses ?? []).length === 0 && tileDims(have, stacks, owned));
+  const tag = $derived(
+    (statuses ?? []).length === 0 ? tileStatus(status, have, stacks, owned) : null,
+  );
+  const tagChip = $derived(tag ? statusChip(tag) : null);
+  // Only a tile whose tag says why it is faded ever fades.
+  const dim = $derived(statusDims(tag));
   const counts = $derived(tileCounts(owned));
   const costs = $derived(cost ?? []);
   const wins = $derived((statuses ?? []).map((status) => ({ status, chip: winChip(status) })));
@@ -105,13 +121,13 @@
 
 <div
   class="flex min-w-0 items-center gap-2 rounded-[var(--radius-md)] border px-2 py-1
-         {border} {stretch ? 'w-full' : ''} {dim ? 'opacity-45' : ''}"
+         {border} {stretch ? 'w-full' : ''}"
   title={name}
 >
   {#if showArt}
     <span
       class="relative flex shrink-0 items-center justify-center overflow-hidden
-             rounded-[var(--radius-sm)] bg-bg-deep {ART[size]}"
+             rounded-[var(--radius-sm)] bg-bg-deep {ART[size]} {dim ? FADE : ''}"
     >
       <!-- A tile is on screen the moment the panel opens, so there is nothing
            to defer; deferring left half a drop table blank. -->
@@ -123,14 +139,14 @@
       </span>
     </span>
   {:else}
-    <span class="flex shrink-0 justify-center {SLOT[size]}">
+    <span class="flex shrink-0 justify-center {SLOT[size]} {dim ? FADE : ''}">
       <TierBadge {tier} size={BADGE[size]} chip />
     </span>
   {/if}
 
-  <span class="flex min-w-0 flex-1 flex-col gap-0.5">
+  <span class="flex min-w-0 flex-1 flex-col gap-0.5 {dim ? FADE : ''}">
     <!-- The name owns its line: nothing shares the row to truncate it. -->
-    <span class="min-w-0 truncate text-text-primary {NAME[size]}">{name}</span>
+    <span class="min-w-0 truncate {rarityTextClass(rarity)} {NAME[size]}">{name}</span>
 
     {#if hasMeta}
       <span class={META}>
@@ -194,4 +210,16 @@
 
     {#if children}{@render children()}{/if}
   </span>
+
+  <!-- Its own column, so a tag never adds a line; left at full contrast so the
+       reason for the fade reads through it. -->
+  {#if tagChip}
+    <span
+      class="shrink-0 self-center whitespace-nowrap rounded-[var(--radius-sm)] border px-1 py-0.5
+             {TILE_MICRO} {tagChip.tone}"
+      >{tagChip.count === null
+        ? $tr(tagChip.label)
+        : $tr(tagChip.label, { count: tagChip.count })}</span
+    >
+  {/if}
 </div>

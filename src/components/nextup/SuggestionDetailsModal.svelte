@@ -23,7 +23,18 @@
   import { overframeRankingsRevision } from "../../stores/overframeRankings.js";
   import { suggestionPreferences } from "../../stores/suggestionPrefs.js";
   import { worldData } from "../../stores/world.js";
-  import { CHIP_TONE, TILE_MICRO, TONE, cardClock, valencePercent, valenceTone } from "./chips.js";
+  import { RELIC_GOALS } from "../../types/suggest.js";
+  import {
+    CHIP_TONE,
+    TILE_MICRO,
+    TONE,
+    cardClock,
+    missionChipTone,
+    timeLeftText,
+    valencePercent,
+    valenceTone,
+    type TileStatus,
+  } from "./chips.js";
   import { plainName, rewardArt } from "./rewardArt.js";
   import AcquisitionTree from "./AcquisitionTree.svelte";
   import ItemTile from "./ItemTile.svelte";
@@ -35,6 +46,9 @@
   import type { MessageKey } from "../../lib/i18n.js";
   import type { AcquisitionPath, NemesisBonusRange } from "../../lib/suggest/acquisition/types.js";
   import type {
+    RelicGoal,
+    RelicRarity,
+    RelicRewardStatus,
     RewardWorth,
     Suggestion,
     SuggestionCategory,
@@ -46,9 +60,10 @@
   interface Props {
     suggestion: Suggestion;
     onClose: () => void;
+    onWorkOnThis?: (() => void) | undefined;
   }
 
-  const { suggestion, onClose }: Props = $props();
+  const { suggestion, onClose, onWorkOnThis }: Props = $props();
 
   /** What a bare `3/5` counts, which is a different thing in every section. A
    *  category with no honest word for it draws no row. */
@@ -148,6 +163,11 @@
     chance: number | null;
     /** Where the player's ladder places the drop; null is unplaced. */
     worth: RewardWorth | null;
+    /** Relic drops only, from here down. */
+    rarity: RelicRarity | null;
+    status: TileStatus | null;
+    platinum: number | null;
+    ducats: number | null;
   }
 
   /** One value the header strip carries. Position and colour say what it is; the
@@ -235,7 +255,11 @@
   );
   // A stall's pool is what it is holding, not what drops off anything.
   const poolLabel = $derived<MessageKey>(
-    suggestion.category === "vendor" ? "nextUp.detailsStock" : "nextUp.detailsPool",
+    suggestion.category === "vendor"
+      ? "nextUp.detailsStock"
+      : relic
+        ? "nextUp.acqParts"
+        : "nextUp.detailsPool",
   );
   const missions = $derived(details?.missions ?? []);
   const options = $derived(details?.options ?? []);
@@ -423,7 +447,6 @@
    *  control has none, and its lists read the ladder and then the odds. */
   const sectionSort = $derived.by((): string | null => {
     const picked = $suggestionPreferences.options;
-    if (suggestion.category === "relics") return picked.relicSort;
     if (suggestion.category === "acquisition") return picked.acquisitionSort;
     return null;
   });
@@ -449,12 +472,57 @@
       cost: priceChips(row.name),
       chance: row.chance ?? null,
       worth: row.worth ?? rewardWorth($suggestionPreferences, row.name),
+      rarity: row.rarity ?? null,
+      status: row.status ? { kind: row.status, count: row.ownedCount ?? null } : null,
+      platinum: row.platinum ?? null,
+      ducats: row.ducats ?? null,
     };
+  }
+
+  const STATUS_RANK: Record<RelicRewardStatus, number> = { needed: 0, owned: 1, mastered: 2 };
+  const RARITY_RANK: Record<RelicRarity, number> = { rare: 0, uncommon: 1, common: 2 };
+
+  /** What is still needed first, then the rarest, then the priciest. */
+  function relicPartScore(row: PoolTile): number[] {
+    return [
+      row.status ? STATUS_RANK[row.status.kind] : UNRATED_RANK,
+      row.rarity ? RARITY_RANK[row.rarity] : UNRATED_RANK,
+      -(row.platinum ?? -1),
+    ];
+  }
+
+  function compareRelicParts(a: PoolTile, b: PoolTile): number {
+    return (
+      compareScores(relicPartScore(a), relicPartScore(b)) || a.tile.name.localeCompare(b.tile.name)
+    );
   }
 
   const poolTiles = $derived.by((): PoolTile[] => {
     void $overframeRankingsRevision;
-    return pool.map(poolTile).sort(comparePool);
+    return pool.map(poolTile).sort(relic ? compareRelicParts : comparePool);
+  });
+
+  const ADVICE_LABEL: Record<RelicGoal, MessageKey> = {
+    mr: "nextUp.relicAdviceMr",
+    platinum: "nextUp.relicAdvicePlat",
+    ducats: "nextUp.relicAdviceDucats",
+  };
+
+  /** The refinement each goal would crack; MR says nothing when nothing is needed. */
+  const adviceChips = $derived.by((): { goal: RelicGoal; text: string }[] => {
+    if (!relic) return [];
+    return RELIC_GOALS.flatMap((goal) => {
+      const quality = relic.advice[goal];
+      if (!quality) return [];
+      return [
+        {
+          goal,
+          text: $tr(ADVICE_LABEL[goal], {
+            quality: $tr(`relics.quality.${quality}` as MessageKey),
+          }),
+        },
+      ];
+    });
   });
   const offerTiles = $derived.by(() => {
     void $overframeRankingsRevision;
@@ -541,6 +609,13 @@
   function openOverframe(href: string): void {
     send("open-external", href);
   }
+
+  /** Pin first: the caller lifts the card off the DOM it is about to re-render,
+   *  so closing ahead of the pin would leave the flight with nothing to copy. */
+  function clickWorkOnThis(): void {
+    onWorkOnThis?.();
+    onClose();
+  }
 </script>
 
 {#snippet overframeLink(name: string | null | undefined)}
@@ -613,11 +688,27 @@
     element={row.tile.element}
     bonus={row.tile.bonus}
     have={row.tile.have}
+    status={row.status}
+    rarity={row.rarity}
     cost={row.cost}
     stretch
   >
     {#snippet actions()}
-      {#if row.chance !== null}
+      <!-- A relic drop's colour is its rarity, which is all its chance says. -->
+      {#if relic}
+        <span class="ml-auto flex shrink-0 gap-2 pl-2 tabular-nums {TONE.quiet}">
+          <span
+            >{row.platinum === null
+              ? "-"
+              : $tr("nextUp.acqPlatEach", { plat: String(Math.round(row.platinum)) })}</span
+          >
+          <span
+            >{row.ducats === null
+              ? "-"
+              : $tr("world.baro.ducatsShort", { count: String(Math.round(row.ducats)) })}</span
+          >
+        </span>
+      {:else if row.chance !== null}
         <span
           class="ml-auto shrink-0 pl-2 tabular-nums {TONE.quiet}"
           title={$tr("nextUp.detailsChance")}>{chanceText(row.chance)}%</span
@@ -629,6 +720,35 @@
 
 <!-- What the activity pays and asks for, whether or not the week offers a pick. -->
 {#snippet factRows()}
+  {#if relic}
+    <div class={ROW}>
+      <span class={LABEL}>{$tr("nextUp.relicAdviceHeading")}</span>
+      <span class="flex flex-wrap gap-1.5">
+        {#each adviceChips as chip (chip.goal)}
+          <span
+            class="{CHIP} {chip.goal === $suggestionPreferences.options.relicGoal
+              ? 'font-semibold text-text-primary'
+              : TONE.quiet}">{chip.text}</span
+          >
+        {/each}
+      </span>
+    </div>
+    <!-- Every live fissure of the tier, not just its mission types. -->
+    <div class={ROW}>
+      <span class={LABEL}>{$tr("nextUp.detailsRuns")}</span>
+      <span class="flex flex-wrap items-center gap-1.5">
+        {#each relic.missions as mission, index (index)}
+          <span
+            class="{CHIP} {missionChipTone(mission.opinion)}"
+            title={timeLeftText(mission.expiry, $cardClock) ?? ""}
+            >{mission.missionType} · {mission.node}</span
+          >
+        {/each}
+        <TimeLeft expiry={details?.expiry} nowMs={$cardClock} />
+      </span>
+    </div>
+  {/if}
+
   {#if memberTiles.length > 0}
     <div class={ROW}>
       <span class={LABEL}>{$tr("nextUp.detailsCouldBe")}</span>
@@ -651,19 +771,13 @@
     </div>
   {/if}
 
-  {#if missions.length > 0}
+  {#if missions.length > 0 && !relic}
     <div class={ROW}>
       <span class={LABEL}>{$tr("nextUp.detailsMissions")}</span>
       <!-- The chip's colour is the opinion; a word beside it says it twice. -->
       <span class="flex flex-wrap gap-1.5">
         {#each missions as mission (mission.name)}
-          <span
-            class="{CHIP} {mission.opinion === 'good'
-              ? CHIP_TONE.good
-              : mission.opinion === 'bad'
-                ? CHIP_TONE.bad
-                : 'text-text-primary'}">{mission.name}</span
-          >
+          <span class="{CHIP} {missionChipTone(mission.opinion)}">{mission.name}</span>
         {/each}
       </span>
     </div>
@@ -703,12 +817,22 @@
         <!-- Urgency reads as a pill, in the one place every view keeps it. -->
         <TimeLeft expiry={details?.expiry} nowMs={$cardClock} reserve />
       </span>
-      <button
-        class="btn-secondary btn-sm !px-2"
-        aria-label={$tr("common.close")}
-        title={$tr("common.close")}
-        onclick={onClose}>&times;</button
-      >
+      <span class="flex shrink-0 items-center gap-2">
+        {#if onWorkOnThis}
+          <button
+            class="flex h-6 shrink-0 cursor-pointer items-center rounded-[var(--radius-sm)]
+                   border border-accent bg-accent px-2 font-display text-[0.6875rem]
+                   font-semibold leading-none text-text-on-accent hover:brightness-110"
+            onclick={clickWorkOnThis}>{$tr("nextUp.acqWorkOnThis")}</button
+          >
+        {/if}
+        <button
+          class="btn-secondary btn-sm !px-2"
+          aria-label={$tr("common.close")}
+          title={$tr("common.close")}
+          onclick={onClose}>&times;</button
+        >
+      </span>
     </div>
 
     {#if facts.length > 0}
@@ -763,6 +887,7 @@
               name={rewardTile.name}
               showArt={false}
               owned={rewardTile.owned}
+              rarity={suggestion.reward?.rarity}
               cost={rewardCost}
               size="md"
               stretch

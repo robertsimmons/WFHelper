@@ -279,50 +279,50 @@ describe("relicsProvider era filter", () => {
 });
 
 describe("relicsProvider sort", () => {
-  // A payout sorts as a payout, the way the acquisition section beside this one
-  // sorts plat: ascending is the cheap end, and the arrow is the fat end. The
-  // arrow used to mean best-first in one section and cheapest-first in the other.
-  it("puts the leanest platinum run first and the fattest under the arrow", () => {
+  it("ranks by the goal, best first, and turns the whole ranking on the arrow", () => {
     priceShelf();
-    const sort = { relicSort: "platinum", relicGoal: "ducats" } as const;
-    expect(shelfIds(sort)).toEqual(["relics:Meso A1", "relics:Lith C4", "relics:Meso B2"]);
-    expect(shelfIds({ ...sort, relicSortDir: "desc" })).toEqual([
+    expect(shelfIds({ relicGoal: "ducats" })).toEqual([
+      "relics:Meso A1",
+      "relics:Lith C4",
+      "relics:Meso B2",
+    ]);
+    expect(shelfIds({ relicGoal: "platinum" })).toEqual([
       "relics:Meso B2",
       "relics:Lith C4",
       "relics:Meso A1",
     ]);
-  });
-
-  it("orders a ducat sort by ducats, on the same reading of the arrow", () => {
-    priceShelf();
-    const sort = { relicSort: "ducats", relicGoal: "platinum" } as const;
-    expect(shelfIds(sort)).toEqual(["relics:Meso B2", "relics:Lith C4", "relics:Meso A1"]);
-    expect(shelfIds({ ...sort, relicSortDir: "desc" })).toEqual([
+    expect(shelfIds({ relicGoal: "platinum", relicSortDir: "desc" })).toEqual([
       "relics:Meso A1",
       "relics:Lith C4",
       "relics:Meso B2",
     ]);
   });
 
-  it("keeps the engine's own ranking under recommended, which the goal drives", () => {
+  it("leads a recommendation with the mission the player would rather run", () => {
     priceShelf();
-    expect(shelfIds({ relicSort: "recommended", relicGoal: "ducats" })).toEqual([
+    const world = {
+      fissures: [
+        { tier: "Meso", missionType: "Capture", node: "Bode (Ceres)", expiry: SOON },
+        { tier: "Lith", missionType: "Interception", node: "Everest (Earth)", expiry: SOON },
+      ],
+    } as unknown as WorldState;
+    const ctx: SuggestionContext = {
+      ...context(world, {}, { relicGoal: "platinum" }),
+      relicDb: shelfDb(),
+      inventory: shelfInventory([MESO_A, MESO_B, LITH_C]),
+    };
+    expect(relicsProvider.collect(ctx).map((draft) => draft.id)).toEqual([
+      "relics:Meso B2",
       "relics:Meso A1",
       "relics:Lith C4",
-      "relics:Meso B2",
-    ]);
-    expect(shelfIds({ relicSort: "recommended", relicGoal: "platinum" })).toEqual([
-      "relics:Meso B2",
-      "relics:Lith C4",
-      "relics:Meso A1",
     ]);
   });
 
   it("still turns over on the arrow when nothing is priced and every relic ties", () => {
     priceCache.clearPriceCache();
-    const asc = shelfIds({ relicSort: "platinum" });
+    const asc = shelfIds({ relicGoal: "platinum" });
     expect(asc).toHaveLength(3);
-    expect(shelfIds({ relicSort: "platinum", relicSortDir: "desc" })).toEqual([...asc].reverse());
+    expect(shelfIds({ relicGoal: "platinum", relicSortDir: "desc" })).toEqual([...asc].reverse());
   });
 
   /** NextUpView reads `order` ahead of score, so the sort only reaches the cards
@@ -330,7 +330,7 @@ describe("relicsProvider sort", () => {
   it("hands the section the positions the sort put the relics in", () => {
     priceShelf();
     const ctx: SuggestionContext = {
-      ...context(OPEN_TIERS, {}, { relicSort: "ducats", relicSortDir: "desc" }),
+      ...context(OPEN_TIERS, {}, { relicGoal: "ducats" }),
       relicDb: shelfDb(),
       inventory: shelfInventory([MESO_A, MESO_B, LITH_C]),
     };
@@ -341,18 +341,26 @@ describe("relicsProvider sort", () => {
     ]);
   });
 
-  it("never leads with an unpriced relic, whichever way the arrow points", () => {
+  it("keeps an unpriced relic on the shelf with no payoff to claim", () => {
     priceShelf();
     const unpriced: Array<[string, string, string, RelicReward]> = [
       ["Meso D5", "Meso", MESO_D, NYX],
     ];
-    // The list is not a shortlist any more, so an unpriced relic still has a
-    // card; the arrow may never lift it off the bottom of the sort.
-    const asc = shelfIds({ relicSort: "platinum" }, unpriced);
-    const desc = shelfIds({ relicSort: "platinum", relicSortDir: "desc" }, unpriced);
-    expect(asc).toContain("relics:Meso D5");
-    expect(asc[asc.length - 1]).toBe("relics:Meso D5");
-    expect(desc[desc.length - 1]).toBe("relics:Meso D5");
+    expect(shelfIds({ relicGoal: "platinum" }, unpriced)).toContain("relics:Meso D5");
+  });
+
+  it("says nothing about a payoff nothing prices", () => {
+    priceCache.clearPriceCache();
+    for (const relicGoal of ["platinum", "ducats"] as const) {
+      const ctx: SuggestionContext = {
+        ...context(OPEN_TIERS, {}, { relicGoal }),
+        relicDb: shelfDb(),
+        inventory: shelfInventory([MESO_A]),
+      };
+      const draft = relicsProvider.collect(ctx)[0];
+      if (relicGoal === "platinum") expect(draft?.details?.relic?.payoff).toBeNull();
+      expect(draft?.why.split(" - ")).toHaveLength(draft?.details?.relic?.payoff ? 3 : 2);
+    }
   });
 
   it("pages the whole shelf rather than a shortlist, and stops at the guardrail", () => {
@@ -366,5 +374,160 @@ describe("relicsProvider sort", () => {
     // Three relics are on the shelf already, so twelve more is fifteen cards.
     expect(shelfIds({}, spare(12))).toHaveLength(15);
     expect(shelfIds({}, spare(45))).toHaveLength(40);
+  });
+});
+
+const MAG = "/Mag Prime";
+const WUKONG = "/Wukong Prime";
+
+function mrReward(name: string, chance: number, rarity: string, ducats: number): RelicReward {
+  const urlName = name.toLowerCase().replace(/ /g, "_");
+  return { name, uniqueName: `/${name}`, chance, rarity, urlName, ducats };
+}
+
+function mrDb(): RelicDatabase {
+  const group: RelicGroup = {
+    key: "Meso F3",
+    name: "Meso F3",
+    tier: "Meso",
+    code: "F3",
+    imageUrl: null,
+    qualities: {
+      intact: {
+        uniqueName: INTACT,
+        rewards: [
+          mrReward("Mag Prime Chassis", 25.33, "Common", 15),
+          mrReward("Wukong Prime Blueprint", 2, "Rare", 100),
+        ],
+      },
+      radiant: {
+        uniqueName: RADIANT,
+        rewards: [
+          mrReward("Mag Prime Chassis", 16.67, "Common", 15),
+          mrReward("Wukong Prime Blueprint", 10, "Rare", 100),
+        ],
+      },
+    },
+  };
+  return {
+    groups: { "Meso F3": group },
+    byUniqueName: {
+      [INTACT]: { groupKey: "Meso F3", quality: "intact" },
+      [RADIANT]: { groupKey: "Meso F3", quality: "radiant" },
+    },
+  };
+}
+
+const partOf = (name: string, parent: string) => ({
+  name,
+  isBuildComponent: true,
+  componentOf: parent,
+});
+
+// Mag still owes two parts; Wukong's blueprint is the only part it has.
+const MR_ITEMS: SuggestionContext["itemDb"] = {
+  [MAG]: {
+    name: "Mag Prime",
+    masterable: true,
+    components: [
+      { name: "Blueprint", uniqueName: "/Mag Prime Blueprint", itemCount: 1 },
+      { name: "Chassis", uniqueName: "/Mag Prime Chassis", itemCount: 1 },
+    ],
+  },
+  "/Mag Prime Blueprint": partOf("Mag Prime Blueprint", MAG),
+  "/Mag Prime Chassis": partOf("Mag Prime Chassis", MAG),
+  [WUKONG]: {
+    name: "Wukong Prime",
+    masterable: true,
+    components: [{ name: "Blueprint", uniqueName: "/Wukong Prime Blueprint", itemCount: 1 }],
+  },
+  "/Wukong Prime Blueprint": partOf("Wukong Prime Blueprint", WUKONG),
+};
+
+function mrContext(
+  options: Partial<SuggestionOptions> = {},
+  mastered: string[] = [],
+): SuggestionContext {
+  database = mrDb();
+  return {
+    ...context(fissures("Capture"), {}, { relicGoal: "mr", ...options }),
+    itemDb: MR_ITEMS,
+    mastery: {
+      items: mastered.map((uniqueName) => ({ uniqueName, name: uniqueName, status: "mastered" })),
+      stats: {},
+    } as unknown as SuggestionContext["mastery"],
+  };
+}
+
+describe("relicsProvider MR goal", () => {
+  it("chases the part that finishes a set, at the grade its rarity calls for", () => {
+    const draft = relicsProvider.collect(mrContext())[0];
+    expect(draft?.reward?.name).toBe("Wukong Prime Blueprint");
+    expect(draft?.reward).toMatchObject({ rarity: "rare", ducats: 100 });
+    expect(draft?.why).toContain("nextUp.whyRelicMrFinishes(2|Wukong Prime)");
+    expect(draft?.fingerprint).toBe(`mr|radiant|Bode (Ceres)|${SOON}|2`);
+    expect(draft?.details?.relic).toMatchObject({
+      quality: "radiant",
+      advice: { mr: "radiant", ducats: "radiant" },
+      payoff: "nextUp.whyRelicMrFinishes(2|Wukong Prime)",
+      mr: { needed: 2, finishes: ["Wukong Prime"], value: 3 },
+    });
+  });
+
+  it("lists every drop with its rarity and what the player still owes", () => {
+    const pool = relicsProvider.collect(mrContext())[0]?.details?.pool;
+    expect(pool).toMatchObject([
+      { name: "Mag Prime Chassis", rarity: "common", status: "needed", ducats: 15 },
+      { name: "Wukong Prime Blueprint", rarity: "rare", status: "needed", ducats: 100 },
+    ]);
+  });
+
+  it("offers nothing once every part is mastered", () => {
+    expect(relicsProvider.collect(mrContext({}, [MAG, WUKONG]))).toEqual([]);
+  });
+
+  it("drops a mastered item's part from the count", () => {
+    const draft = relicsProvider.collect(mrContext({}, [WUKONG]))[0];
+    expect(draft?.reward?.name).toBe("Mag Prime Chassis");
+    expect(draft?.why).toContain("nextUp.whyRelicMr(1)");
+    expect(draft?.details?.relic?.advice.mr).toBe("intact");
+    // Intact is advised and held, so the card runs it.
+    expect(draft?.details?.relic?.quality).toBe("intact");
+  });
+
+  it("advises Intact for platinum while holding Radiant, and hands the card its payoff", () => {
+    database = mrDb();
+    setCachedPrice("wukong_prime_blueprint", 5);
+    setCachedPrice("mag_prime_chassis", 30);
+    const draft = relicsProvider.collect({
+      ...context(fissures("Capture")),
+      itemDb: MR_ITEMS,
+    })[0];
+    expect(draft?.details?.relic).toMatchObject({
+      quality: "radiant",
+      advice: { platinum: "intact" },
+      payoff: expect.stringContaining("nextUp.whyRelicPlat(") as unknown,
+    });
+    expect(draft?.why).toContain("nextUp.whyRelicPlat(");
+  });
+
+  it("names every live fissure of the tier, best first", () => {
+    database = mrDb();
+    const world = {
+      fissures: [
+        { tier: "Meso", missionType: "Interception", node: "Ophelia (Uranus)", expiry: SOON },
+        { tier: "Meso", missionType: "Capture", node: "Bode (Ceres)", expiry: SOON, isHard: true },
+      ],
+    } as unknown as WorldState;
+    const draft = relicsProvider.collect({ ...mrContext(), world })[0];
+    expect(draft?.details?.relic?.missions.map((mission) => mission.missionType)).toEqual([
+      "Capture",
+      "Interception",
+    ]);
+    expect(draft?.details?.relic?.missions[0]).toMatchObject({ isHard: true, opinion: "good" });
+    expect(draft?.details?.missions).toEqual([
+      { name: "Capture", opinion: "good" },
+      { name: "Interception", opinion: "bad" },
+    ]);
   });
 });

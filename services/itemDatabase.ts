@@ -935,6 +935,11 @@ export function lookupItemByNameOrSlug(
   return best ? { uniqueName: best.uniqueName, item: best.item } : null;
 }
 
+export function buildsProductOf(uniqueName: string): string | null {
+  const product = resultTypeByBlueprint[uniqueName];
+  return product && itemsByUniqueName[product] ? product : null;
+}
+
 /** True when building this blueprint does not consume the owned copy. */
 export function isReusableBlueprint(uniqueName: string): boolean {
   return reusableBlueprints.has(uniqueName);

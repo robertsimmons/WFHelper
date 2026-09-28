@@ -92,8 +92,23 @@ describe("ItemTile", () => {
   it("keeps a tile readable once every win on it is banked", () => {
     // A finished choice used to fade out, which is exactly where the reader
     // asked to still be able to tell the two wins apart.
-    expect(tile()).toContain("(statuses ?? []).length === 0 && tileDims(have, stacks, owned)");
+    expect(tile()).toContain(
+      "(statuses ?? []).length === 0 ? tileStatus(status, have, stacks, owned) : null",
+    );
     expect(tile()).toContain("{#each wins as win (win.status.win)}");
+  });
+
+  it("dims only behind a tag that says why", () => {
+    const text = code(tile());
+    expect(text).toContain("const dim = $derived(statusDims(tag));");
+    expect(text).not.toContain("tileDims(");
+    expect(text).toContain("{#if tagChip}");
+    // The tag sits outside the faded columns, so the root itself never fades.
+    expect(text).not.toMatch(/\{stretch \? 'w-full' : ''\} \{dim/);
+  });
+
+  it("colours a relic drop's name by its rarity", () => {
+    expect(tile()).toContain("{rarityTextClass(rarity)}");
   });
 
   it("holds the tier column whether or not the item is rated", () => {
@@ -101,7 +116,7 @@ describe("ItemTile", () => {
     // is what keeps the letters of a list in one column.
     const text = tile();
     expect(text).toContain('const SLOT = { sm: "w-7", md: "w-8" };');
-    expect(text).toMatch(/class="flex shrink-0 justify-center \{SLOT\[size\]\}">\s*<TierBadge\b/);
-    expect(text).toMatch(/\{ART\[size\]\}"\s*>[\s\S]*?<TierBadge\b/);
+    expect(text).toMatch(/class="flex shrink-0 justify-center \{SLOT\[size\]\}[^"]*">\s*<TierBadge\b/);
+    expect(text).toMatch(/\{ART\[size\]\}[^"]*"\s*>[\s\S]*?<TierBadge\b/);
   });
 });

@@ -1,6 +1,5 @@
 <script lang="ts">
   import SortControl from "../../SortControl.svelte";
-  import { defaultSortDirection } from "../../../lib/filters.js";
   import { tr, type MessageKey } from "../../../lib/i18n.js";
   import {
     setSuggestionOption,
@@ -9,9 +8,9 @@
   } from "../../../stores/suggestionPrefs.js";
   import {
     RELIC_ERAS,
-    RELIC_SORTS,
+    RELIC_GOALS,
     type RelicEra,
-    type RelicSort,
+    type RelicGoal,
   } from "../../../types/suggest.js";
 
   const ERA_LABELS: Record<RelicEra, MessageKey> = {
@@ -22,25 +21,21 @@
     Requiem: "relics.tier.requiem",
   };
 
-  const SORT_LABELS: Record<RelicSort, MessageKey> = {
-    recommended: "common.recommended",
+  const GOAL_LABELS: Record<RelicGoal, MessageKey> = {
+    mr: "nextUp.relicGoalMr",
     platinum: "common.platinum",
     ducats: "common.ducats",
   };
 
   const options = $derived($suggestionPreferences.options);
 
-  const sortOptions = $derived(RELIC_SORTS.map((key) => [key, $tr(SORT_LABELS[key])] as const));
+  const goalOptions = $derived(RELIC_GOALS.map((key) => [key, $tr(GOAL_LABELS[key])] as const));
 
-  /** Sorting by a payout is also picking it: the goal decides which relics get
-   *  offered at all, so the two can never disagree. */
-  function pickSort(value: string): void {
-    if (!(RELIC_SORTS as readonly string[]).includes(value)) return;
-    setSuggestionOption("relicSort", value as RelicSort);
-    // A payout reads best-first, a recommendation reads top-first; the shared
-    // table owns which way each key leans so the arrow never contradicts itself.
-    setSuggestionOption("relicSortDir", defaultSortDirection(value));
-    if (value === "platinum" || value === "ducats") setSuggestionOption("relicGoal", value);
+  /** The goal is the order: each one ranks its own relics, best first. */
+  function pickGoal(value: string): void {
+    if (!(RELIC_GOALS as readonly string[]).includes(value)) return;
+    setSuggestionOption("relicGoal", value as RelicGoal);
+    setSuggestionOption("relicSortDir", "asc");
   }
 </script>
 
@@ -62,10 +57,10 @@
     {/each}
   </div>
   <SortControl
-    value={options.relicSort}
-    options={sortOptions}
+    value={options.relicGoal}
+    options={goalOptions}
     direction={options.relicSortDir}
-    onSelect={pickSort}
+    onSelect={pickGoal}
     onToggleDirection={() =>
       setSuggestionOption("relicSortDir", options.relicSortDir === "asc" ? "desc" : "asc")}
   />

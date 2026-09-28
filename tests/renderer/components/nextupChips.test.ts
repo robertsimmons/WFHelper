@@ -1,15 +1,21 @@
 import { describe, expect, it } from "vitest";
 
 import {
+  CHIP_TONE,
   choicesState,
   COUNT_LABEL,
   COUNT_TITLE,
+  missionChipTone,
+  rarityTextClass,
   STATE_CHIP,
+  statusChip,
+  statusDims,
   tierBorderClass,
   tierLetter,
   tierTextClass,
   tileCounts,
   tileDims,
+  tileStatus,
   timeLeftText,
   valencePercent,
   valenceTone,
@@ -113,6 +119,67 @@ describe("tileDims", () => {
 
   it("lets the caller override what the count claims", () => {
     expect(tileDims(true, true, { owned: 1, stacks: false })).toBe(false);
+  });
+});
+
+describe("tileStatus", () => {
+  it("reads owned gear as owned, counting everything held", () => {
+    expect(tileStatus(null, true, false, { owned: 1, built: 1, pending: 1 })).toEqual({
+      kind: "owned",
+      count: 3,
+    });
+    expect(tileStatus(null, true, false, null)).toEqual({ kind: "owned", count: null });
+  });
+
+  it("tags nothing a tile would not have dimmed", () => {
+    expect(tileStatus(null, true, true, { owned: 4 })).toBeNull();
+    expect(tileStatus(null, false, false, { owned: 0 })).toBeNull();
+    expect(tileStatus(undefined, true, null, null)).toBeNull();
+  });
+
+  it("takes the caller's status over the inferred one", () => {
+    expect(tileStatus({ kind: "mastered" }, true, false, { owned: 1 })).toEqual({
+      kind: "mastered",
+    });
+    expect(tileStatus({ kind: "needed", count: 0 }, false, true, null)).toEqual({
+      kind: "needed",
+      count: 0,
+    });
+  });
+
+  it("dims owned and mastered, never needed or untagged", () => {
+    expect(statusDims({ kind: "owned", count: 2 })).toBe(true);
+    expect(statusDims({ kind: "mastered" })).toBe(true);
+    expect(statusDims({ kind: "needed" })).toBe(false);
+    expect(statusDims(null)).toBe(false);
+  });
+
+  it("labels every status with a key English defines", () => {
+    const chips = [
+      statusChip({ kind: "needed" }),
+      statusChip({ kind: "mastered" }),
+      statusChip({ kind: "owned", count: 14 }),
+      statusChip({ kind: "owned", count: null }),
+    ];
+    for (const chip of chips) expect(en).toHaveProperty(chip.label);
+    expect(chips[0]?.tone).toBe(CHIP_TONE.good);
+    expect(chips[2]).toMatchObject({ label: "nextUp.relicStatusOwned", count: "14" });
+    expect(chips[3]).toMatchObject({ label: "common.owned", count: null });
+  });
+});
+
+describe("relic colours", () => {
+  it("draws each rarity in its own token and an unknown one plain", () => {
+    expect(rarityTextClass("common")).toContain("--rarity-common");
+    expect(rarityTextClass("uncommon")).toContain("--rarity-uncommon");
+    expect(rarityTextClass("rare")).toContain("--rarity-rare");
+    expect(rarityTextClass(null)).toBe("text-text-primary");
+  });
+
+  it("tones a mission chip by opinion off the shared chip palette", () => {
+    expect(missionChipTone("good")).toBe(CHIP_TONE.good);
+    expect(missionChipTone("bad")).toBe(CHIP_TONE.bad);
+    expect(missionChipTone(null)).toBe("text-text-primary");
   });
 });
 

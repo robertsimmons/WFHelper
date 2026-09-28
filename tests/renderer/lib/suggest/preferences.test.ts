@@ -150,6 +150,19 @@ describe("parseOptions", () => {
     expect(parseOptions(raw)).toEqual({ relicGoal: "ducats", relicEras: ["Neo"] });
   });
 
+  it("loads an MR goal and ignores the retired relic sort", () => {
+    const raw = JSON.stringify({ relicGoal: "mr", relicSort: "mr" });
+    expect(parseOptions(raw)).toEqual({ relicGoal: "mr" });
+  });
+
+  it("keeps a recommended arrow and drops one set against a payout sort", () => {
+    const kept = JSON.stringify({ relicSort: "recommended", relicSortDir: "desc" });
+    expect(parseOptions(kept)).toEqual({ relicSortDir: "desc" });
+    expect(parseOptions(JSON.stringify({ relicSortDir: "desc" }))).toEqual({ relicSortDir: "desc" });
+    const payout = JSON.stringify({ relicSort: "platinum", relicSortDir: "desc" });
+    expect(parseOptions(payout)).toEqual({});
+  });
+
   it("lifts the Forma boolean the kind list replaced onto the list", () => {
     expect(parseOptions(JSON.stringify({ masteryForma: false }))).toEqual({
       masteryKinds: ["frame", "weapon", "companion"],

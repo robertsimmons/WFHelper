@@ -12,12 +12,14 @@
   import { valenceRowsFor } from "../../lib/suggest/valence.js";
   import { itemDb } from "../../stores/data.js";
   import { overframeRankingsRevision } from "../../stores/overframeRankings.js";
-  import { nightwaveArt } from "../../stores/suggestionPrefs.js";
+  import { nightwaveArt, suggestionPreferences } from "../../stores/suggestionPrefs.js";
   import {
     CHIP_TONE,
     TONE,
     cardClock,
     choicesState,
+    missionChipTone,
+    rarityTextClass,
     valencePercent,
     valenceTone,
   } from "./chips.js";
@@ -27,6 +29,7 @@
   import TierBadge from "./TierBadge.svelte";
   import TimeLeft from "./TimeLeft.svelte";
   import ItemImage from "../ItemImage.svelte";
+  import type { MessageKey } from "../../lib/i18n.js";
   import type { ValenceVerdict } from "../../lib/suggest/valence.js";
   import type {
     ChoiceState,
@@ -64,6 +67,15 @@
   const DONE_DWELL_MS = 700;
 
   const ART_HEIGHT = CARD_HEIGHT / 2;
+
+  /** Four fixed lines under the title take more than half the card leaves. */
+  const RELIC_ART_HEIGHT = ART_HEIGHT - 24;
+
+  const RELIC_LINE = "m-0 h-4 min-w-0 truncate text-xs leading-4";
+
+  const MISSION_CHIP =
+    "shrink-0 rounded-[var(--radius-sm)] border border-border px-1 text-[0.625rem] " +
+    "leading-[0.875rem]";
 
   const ICON_BTN =
     "flex h-6 w-6 cursor-pointer items-center justify-center rounded border border-border " +
@@ -155,6 +167,17 @@
   );
   const artPieces = $derived(reward.pieces);
   const art = $derived(artPieces[0] ?? null);
+
+  const relic = $derived(suggestion.category === "relics" ? (details?.relic ?? null) : null);
+  const artHeight = $derived(relic ? RELIC_ART_HEIGHT : ART_HEIGHT);
+  const part = $derived(relic ? (suggestion.reward ?? null) : null);
+  // The same name the art resolved, so the line and the picture never disagree.
+  const partName = $derived(part ? (art?.name ?? part.name) : "");
+  const relicPayoff = $derived(relic?.payoff ?? "");
+  const relicAdvice = $derived.by((): string => {
+    const advised = relic?.advice[$suggestionPreferences.options.relicGoal];
+    return advised ? $tr(`relics.quality.${advised}` as MessageKey) : "";
+  });
   // The frame every rotating card is on, off the one shared interval. Each card
   // starts at its own point in its family, so a row of them never shows the
   // same colour at the same moment.
@@ -352,7 +375,7 @@
 >
   <div
     class="relative flex w-full shrink-0 overflow-hidden border-b border-border bg-bg-deep"
-    style="height: {ART_HEIGHT}px"
+    style="height: {artHeight}px"
   >
     {#if backdrop}
       <img
@@ -456,7 +479,7 @@
     {/if}
   </div>
 
-  <div class="flex min-h-0 flex-1 flex-col gap-1.5 p-2">
+  <div class="flex min-h-0 flex-1 flex-col p-2 {relic ? 'gap-0.5' : 'gap-1.5'}">
     <div class="grid h-6 grid-cols-[minmax(0,1fr)_1.5rem_1.5rem] items-center gap-x-3">
       <div class="flex min-w-0 items-center gap-2">
         <h3
@@ -466,7 +489,10 @@
         >
           {suggestion.title}
         </h3>
-        <TimeLeft expiry={details?.expiry} nowMs={$cardClock} reserve />
+        <!-- A relic card reads its window beside the missions it closes. -->
+        {#if !relic}
+          <TimeLeft expiry={details?.expiry} nowMs={$cardClock} reserve />
+        {/if}
       </div>
       <span class="h-6 w-6">
         {#if complete}
@@ -511,100 +537,134 @@
       </button>
     </div>
 
-    <!-- One fixed row for what the card is about: the state as a chip, then
-         either the offer's own fields or the line the provider wrote. -->
-    <div class="flex h-4 min-w-0 items-center gap-1.5">
-      {#if cardState}
-        <StateChip state={cardState} />
-      {/if}
-      {#if read}
-        <span class="shrink-0 text-xs leading-4 {read.ready ? 'text-success' : 'text-text-primary'}"
-          >{readText}</span
-        >
-      {/if}
-      {#if valence}
-        <span class="min-w-0 truncate text-xs leading-4 text-text-primary" title={valence.name}
-          >{valence.name}</span
-        >
-        <TierBadge tier={valence.tier} />
-        {#if valence.element}
-          <span
-            class="shrink-0 text-xs leading-4 text-text-secondary"
-            title={$tr("nextUp.tileElementTitle")}>{valence.element}</span
+    {#if relic}
+      <!-- Four fixed lines, each held whether or not it has anything to say, so
+           every relic card in a row reads line for line. -->
+      <div class="flex h-4 min-w-0 items-center gap-1.5 text-xs leading-4">
+        {#if part}
+          <span class="min-w-0 truncate {rarityTextClass(part.rarity)}" title={partName}
+            >{partName}</span
           >
-        {/if}
-        <span class="shrink-0 text-xs leading-4 tabular-nums {bonusTone}" title={valenceTitle}
-          >{$tr("nextUp.tileBonusExact", { bonus: valencePercent(valence.bonus) })}</span
-        >
-      {:else if hasLine}
-        <p
-          class="m-0 min-w-0 flex-1 truncate text-xs leading-4 text-text-secondary {read
-            ? 'text-right'
-            : ''}"
-          title={why}
-        >
-          {#if line.segments.length > 0}{#each line.segments as segment, index (index)}<span
-                class={segment.tone ? SEGMENT_TONE[segment.tone] : ""}
-                >{index > 0 ? ", " : ""}{segment.text}</span
-              >{/each}{:else}{line.text}{/if}
-        </p>
-      {/if}
-    </div>
-
-    {#if acquisitionFace}
-      <div class="mt-auto flex h-6 items-center gap-2">
-        <span class="flex flex-1 gap-[2px]" role="img" aria-label={effortLabel}>
-          {#each EFFORT_STEPS as step (step)}
-            <span
-              class="h-1 flex-1 rounded-[1px] {effort !== null && step <= effort
-                ? effortFill(effort)
-                : EFFORT_TRACK}"
-            ></span>
-          {/each}
-        </span>
-        {#if onWorkOnThis}
-          <button
-            class="flex h-6 shrink-0 cursor-pointer items-center rounded-[var(--radius-sm)]
-                   border border-accent bg-accent px-2 font-display text-[0.6875rem]
-                   font-semibold leading-none text-text-on-accent hover:brightness-110"
-            onclick={clickWorkOnThis}>{$tr("nextUp.acqWorkOnThis")}</button
-          >
-        {/if}
-      </div>
-    {:else}
-      <div class="mt-auto grid h-6 grid-cols-[minmax(0,1fr)_2.25rem_1.5rem] items-center gap-x-2">
-        {#if progress}
-          <div class="h-1.5 overflow-hidden rounded-full bg-bg-deep">
-            <div class="h-full rounded-full bg-accent" style="width: {progressPercent}%"></div>
-          </div>
-          <span class="text-right text-[0.625rem] leading-none text-text-muted"
-            >{progress.current}/{progress.required}</span
-          >
-        {/if}
-        <span class="col-start-3 h-6 w-6">
-          <!-- The count the step writes is the provider's, in the units the bar's
-             own row keeps: a shared allowance is stepped by one run, not by one
-             of whichever card asked. -->
-          {#if progress && complete}
-            <!-- Marked done takes the button out of use, never off the card. -->
-            <button
-              class="{ICON_BTN} font-display text-[0.6875rem] font-semibold leading-none
-                   disabled:cursor-default disabled:opacity-40"
-              disabled={done}
-              title={$tr("nextUp.addRunTitle")}
-              aria-label={$tr("nextUp.addRunTitle")}
-              onclick={(event) => clickAddRun(event, complete.count + 1)}
-              >{$tr("nextUp.addRun")}</button
+          {#if part.platinum !== null && part.platinum !== undefined}
+            <span class="shrink-0 tabular-nums {TONE.quiet}"
+              >{$tr("nextUp.acqPlatEach", { plat: String(Math.round(part.platinum)) })}</span
             >
           {/if}
-        </span>
+          {#if part.ducats !== null && part.ducats !== undefined}
+            <span class="shrink-0 tabular-nums {TONE.quiet}"
+              >{$tr("world.baro.ducatsShort", { count: String(Math.round(part.ducats)) })}</span
+            >
+          {/if}
+        {/if}
       </div>
+      <p class="{RELIC_LINE} {TONE.quiet}" title={relicPayoff}>{relicPayoff}</p>
+      <div class="flex h-4 min-w-0 items-center gap-1.5">
+        <span class="flex min-w-0 flex-1 gap-1 overflow-hidden">
+          {#each details?.missions ?? [] as mission (mission.name)}
+            <span class="{MISSION_CHIP} {missionChipTone(mission.opinion)}">{mission.name}</span>
+          {/each}
+        </span>
+        <TimeLeft expiry={details?.expiry} nowMs={$cardClock} reserve />
+      </div>
+      <p class="{RELIC_LINE} {TONE.plain}" title={$tr("nextUp.relicAdviceHeading")}>
+        {relicAdvice}
+      </p>
+    {:else}
+      <!-- One fixed row for what the card is about: the state as a chip, then
+           either the offer's own fields or the line the provider wrote. -->
+      <div class="flex h-4 min-w-0 items-center gap-1.5">
+        {#if cardState}
+          <StateChip state={cardState} />
+        {/if}
+        {#if read}
+          <span class="shrink-0 text-xs leading-4 {read.ready ? 'text-success' : 'text-text-primary'}"
+            >{readText}</span
+          >
+        {/if}
+        {#if valence}
+          <span class="min-w-0 truncate text-xs leading-4 text-text-primary" title={valence.name}
+            >{valence.name}</span
+          >
+          <TierBadge tier={valence.tier} />
+          {#if valence.element}
+            <span
+              class="shrink-0 text-xs leading-4 text-text-secondary"
+              title={$tr("nextUp.tileElementTitle")}>{valence.element}</span
+            >
+          {/if}
+          <span class="shrink-0 text-xs leading-4 tabular-nums {bonusTone}" title={valenceTitle}
+            >{$tr("nextUp.tileBonusExact", { bonus: valencePercent(valence.bonus) })}</span
+          >
+        {:else if hasLine}
+          <p
+            class="m-0 min-w-0 flex-1 truncate text-xs leading-4 text-text-secondary {read
+              ? 'text-right'
+              : ''}"
+            title={why}
+          >
+            {#if line.segments.length > 0}{#each line.segments as segment, index (index)}<span
+                  class={segment.tone ? SEGMENT_TONE[segment.tone] : ""}
+                  >{index > 0 ? ", " : ""}{segment.text}</span
+                >{/each}{:else}{line.text}{/if}
+          </p>
+        {/if}
+      </div>
+
+      {#if acquisitionFace}
+        <div class="mt-auto flex h-6 items-center gap-2">
+          <span class="flex flex-1 gap-[2px]" role="img" aria-label={effortLabel}>
+            {#each EFFORT_STEPS as step (step)}
+              <span
+                class="h-1 flex-1 rounded-[1px] {effort !== null && step <= effort
+                  ? effortFill(effort)
+                  : EFFORT_TRACK}"
+              ></span>
+            {/each}
+          </span>
+          {#if onWorkOnThis}
+            <button
+              class="flex h-6 shrink-0 cursor-pointer items-center rounded-[var(--radius-sm)]
+                     border border-accent bg-accent px-2 font-display text-[0.6875rem]
+                     font-semibold leading-none text-text-on-accent hover:brightness-110"
+              onclick={clickWorkOnThis}>{$tr("nextUp.acqWorkOnThis")}</button
+            >
+          {/if}
+        </div>
+      {:else}
+        <div class="mt-auto grid h-6 grid-cols-[minmax(0,1fr)_2.25rem_1.5rem] items-center gap-x-2">
+          {#if progress}
+            <div class="h-1.5 overflow-hidden rounded-full bg-bg-deep">
+              <div class="h-full rounded-full bg-accent" style="width: {progressPercent}%"></div>
+            </div>
+            <span class="text-right text-[0.625rem] leading-none text-text-muted"
+              >{progress.current}/{progress.required}</span
+            >
+          {/if}
+          <span class="col-start-3 h-6 w-6">
+            <!-- The count the step writes is the provider's, in the units the bar's
+               own row keeps: a shared allowance is stepped by one run, not by one
+               of whichever card asked. -->
+            {#if progress && complete}
+              <!-- Marked done takes the button out of use, never off the card. -->
+              <button
+                class="{ICON_BTN} font-display text-[0.6875rem] font-semibold leading-none
+                     disabled:cursor-default disabled:opacity-40"
+                disabled={done}
+                title={$tr("nextUp.addRunTitle")}
+                aria-label={$tr("nextUp.addRunTitle")}
+                onclick={(event) => clickAddRun(event, complete.count + 1)}
+                >{$tr("nextUp.addRun")}</button
+              >
+            {/if}
+          </span>
+        </div>
+      {/if}
     {/if}
   </div>
 </div>
 
 {#if detailsOpen}
-  <SuggestionDetailsModal {suggestion} onClose={() => (detailsOpen = false)} />
+  <SuggestionDetailsModal {suggestion} onClose={() => (detailsOpen = false)} {onWorkOnThis} />
 {/if}
 
 <style>

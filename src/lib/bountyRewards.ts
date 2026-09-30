@@ -27,6 +27,8 @@ interface BountyRewardItem {
 
 interface BountyStageRewards {
   label: string;
+  /** The drop table's own stage wording, which the drop-source model reads. */
+  stage: string;
   sortOrder: number;
   items: BountyRewardItem[];
 }
@@ -266,6 +268,7 @@ function buildStageRewards(
 ): BountyStageRewards[] {
   // Group rewards by drop table type (FIRST/MID/PREFINAL/FINAL)
   const tableMap = new Map<DropTable, Map<string, BountyRewardItem>>();
+  const tableStage = new Map<DropTable, string>();
 
   // If a rotation is specified and has rewards, use only that rotation; otherwise merge all
   const rotKeys =
@@ -279,6 +282,7 @@ function buildStageRewards(
     for (const r of rotRewards) {
       const dt = classifyRawStage(r.stage);
       if (!tableMap.has(dt)) tableMap.set(dt, new Map());
+      if (!tableStage.has(dt)) tableStage.set(dt, r.stage);
       const items = tableMap.get(dt)!;
 
       const existing = items.get(r.itemName);
@@ -309,7 +313,7 @@ function buildStageRewards(
       if (ra !== rb) return ra - rb;
       return b.chance - a.chance;
     });
-    result.push({ label, sortOrder: i, items });
+    result.push({ label, stage: tableStage.get(table) ?? "", sortOrder: i, items });
   }
 
   return result;

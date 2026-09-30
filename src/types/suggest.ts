@@ -2,6 +2,7 @@ import type { MessageKey, Translator } from "../lib/i18n.js";
 import type { AcquisitionInclude } from "../lib/suggest/acquisition/kinds.js";
 import type { AcquisitionSort } from "../lib/suggest/acquisition/sort.js";
 import type { AcquisitionTarget, PlatPriceLookup } from "../lib/suggest/acquisition/types.js";
+import type { UpgradeCard } from "../lib/suggest/upgrades.js";
 import type { TrackerState } from "../lib/world/dailies.js";
 import type { DropRow } from "../../config/shared/dropTypes.js";
 import type { RelicAdvice, RelicRarity, RelicRewardStatus } from "../../config/shared/relicMr.js";
@@ -20,6 +21,8 @@ export type SuggestionCategory =
   | "vendor"
   | "relics"
   | "acquisition"
+  | "mods"
+  | "arcanes"
   | "mastery";
 
 export const SUGGESTION_CATEGORIES: readonly SuggestionCategory[] = [
@@ -29,6 +32,8 @@ export const SUGGESTION_CATEGORIES: readonly SuggestionCategory[] = [
   "vendor",
   "relics",
   "acquisition",
+  "mods",
+  "arcanes",
   "mastery",
 ];
 
@@ -38,7 +43,13 @@ export const SUGGESTION_CATEGORIES: readonly SuggestionCategory[] = [
 export const TASK_KINDS = ["daily", "weekly", "vendor"] as const;
 export type TaskKind = (typeof TASK_KINDS)[number];
 
-export type SuggestionSectionId = "tasks" | "relics" | "acquisition" | "mastery";
+export type SuggestionSectionId =
+  | "tasks"
+  | "relics"
+  | "acquisition"
+  | "mods"
+  | "arcanes"
+  | "mastery";
 
 export interface SuggestionSection {
   id: SuggestionSectionId;
@@ -52,6 +63,8 @@ export const SUGGESTION_SECTIONS: readonly SuggestionSection[] = [
   { id: "tasks", titleKey: "nextUp.sectionTasks", categories: TASK_KINDS },
   { id: "relics", titleKey: "common.relics", categories: ["relics"] },
   { id: "acquisition", titleKey: "nextUp.sectionAcquisition", categories: ["acquisition"] },
+  { id: "mods", titleKey: "nextUp.sectionMods", categories: ["mods"] },
+  { id: "arcanes", titleKey: "inventory.tab.arcanes", categories: ["arcanes"] },
   { id: "mastery", titleKey: "common.mastery", categories: ["mastery"] },
 ];
 
@@ -97,6 +110,10 @@ export interface SuggestionOptions {
   acquisitionKinds: AcquisitionInclude[];
   /** Free text the section narrows its items by; empty is every item. */
   acquisitionSearch: string;
+  /** Narrows the mods section by name; while set it matches owned mods too. */
+  modSearch: string;
+  /** The arcanes section's twin of `modSearch`. */
+  arcaneSearch: string;
 }
 
 export const SCORE_WEIGHT_KEYS = ["value", "urgency", "effort"] as const;
@@ -279,6 +296,8 @@ export interface SuggestionDetails {
   acquisition?: AcquisitionTarget | undefined;
   /** What a relic suggestion holds and what one crack of it pays. */
   relic?: RelicFacts | undefined;
+  /** A mod or arcane card: both bands draw the one card. */
+  upgrade?: UpgradeCard | undefined;
 }
 
 /** The facts a relic card and its modal both draw, rather than a sentence. */

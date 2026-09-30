@@ -10,6 +10,7 @@
   import CraftingTree from "../../CraftingTree.svelte";
   import ItemImage from "../../ItemImage.svelte";
   import TierBadge from "../TierBadge.svelte";
+  import WikiButton from "../../WikiButton.svelte";
   import PlanGroup from "./PlanGroup.svelte";
   import { visibleGroups } from "./planResolution.js";
 
@@ -132,6 +133,7 @@
       <div class="flex items-baseline gap-2">
         <span class="text-[1.3125rem] font-semibold leading-[1.15]">{plan.name}</span>
         <TierBadge tier={plan.tier} size="md" chip />
+        <span class="shrink-0 self-center"><WikiButton fallbackName={plan.name} /></span>
       </div>
 
       <div class="mt-[5px] flex flex-wrap items-center gap-[7px] text-xs text-text-secondary">

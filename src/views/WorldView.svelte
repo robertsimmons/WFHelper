@@ -150,6 +150,7 @@
     resolveRewardIcon,
     resolveRewardUniqueName,
   } from "../lib/bountyRewards.js";
+  import { bountyDrop } from "../lib/dropSources.js";
   import { buildParsedItemFromDb } from "../lib/parsedItemFromDb.js";
   import { clockStore } from "../lib/timers.js";
 
@@ -190,7 +191,7 @@
 
   function openItemDetail(
     uniqueName: string,
-    extraDrops?: import("../types/inventory.js").DropInfo[],
+    extraDrops?: (import("../types/inventory.js").DropInfo | null)[],
   ) {
     if (!uniqueName) return;
     // Relic tiles (Varzia's aged relics included) get the reward breakdown
@@ -203,8 +204,16 @@
     const db = $itemDb[uniqueName];
     if (!db) return;
 
+    const drops = (extraDrops ?? []).filter(
+      (drop): drop is NonNullable<typeof drop> => drop !== null,
+    );
     activeItem.set(
-      buildParsedItemFromDb(uniqueName, db, $componentOwnership, extraDrops ? { extraDrops } : {}),
+      buildParsedItemFromDb(
+        uniqueName,
+        db,
+        $componentOwnership,
+        drops.length > 0 ? { extraDrops: drops } : {},
+      ),
     );
   }
 
@@ -974,11 +983,14 @@
                                                   on:click={() =>
                                                     rewardUniqueName &&
                                                     openItemDetail(rewardUniqueName, [
-                                                      {
-                                                        location: `${group.syndicate} ${$tr("world.bountyLabel")} (${job.enemyLevels[0]}\u2013${job.enemyLevels[1]}) \u2014 ${sr.label}`,
-                                                        rarity: item.rarity,
-                                                        chance: item.chance / 100,
-                                                      },
+                                                      bountyDrop(
+                                                        group.syndicateKey || group.syndicate,
+                                                        job.enemyLevels,
+                                                        bountyRotation,
+                                                        sr.stage,
+                                                        item.chance,
+                                                        item.rarity,
+                                                      ),
                                                     ])}
                                                 >
                                                   {#if rewardIcon}

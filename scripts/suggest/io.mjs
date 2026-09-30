@@ -32,7 +32,10 @@ export function readJson(file, fallback = null) {
 
 /** DE ships ingredient and component names only as localization tags. */
 export function loadLocalizationDict() {
-  const file = path.join(REPO_ROOT, "node_modules", "warframe-public-export-plus", "dict.en.json");
-  const dict = readJson(file, {});
+  const dict = readPublicExport("dict.en.json") ?? {};
   return (locTag) => dict[locTag] ?? null;
+}
+
+export function readPublicExport(file) {
+  return readJson(path.join(REPO_ROOT, "node_modules", "warframe-public-export-plus", file));
 }

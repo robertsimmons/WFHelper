@@ -101,6 +101,22 @@ export function findEnemyByName(name: string): EnemyInfo | null {
   return fromRequirement(key) ?? fromExtra(key);
 }
 
+let allByName: Map<string, string[]> | null = null;
+
+/** Every wiki row under the name, for a drop table that cannot say which
+ *  variant it means: a Scaldra and a Techrot H-09 Apex share a spelling. */
+export function findEnemiesByName(name: string): EnemyInfo[] {
+  if (!allByName) {
+    allByName = new Map();
+    for (const [key, entry] of Object.entries(CODEX_SCAN_REQUIREMENTS)) {
+      const spelled = normalizeEnemyName(entry.name);
+      allByName.set(spelled, [...(allByName.get(spelled) ?? []), key]);
+    }
+  }
+  const keys = allByName.get(normalizeEnemyName(name)) ?? [];
+  return keys.flatMap((key) => fromRequirement(key) ?? []);
+}
+
 /** Planets the enemy's faction holds on the star chart, as an inferred stand-in
  *  for entries the wiki states no spawn context for. Empty when it states any,
  *  so the exact wiki lists always win. */

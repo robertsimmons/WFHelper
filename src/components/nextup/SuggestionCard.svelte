@@ -480,7 +480,7 @@
   </div>
 
   <div class="flex min-h-0 flex-1 flex-col p-2 {relic ? 'gap-0.5' : 'gap-1.5'}">
-    <div class="grid h-6 grid-cols-[minmax(0,1fr)_1.5rem_1.5rem] items-center gap-x-3">
+    <div class="grid h-6 grid-cols-[minmax(0,1fr)_auto_1.5rem] items-center gap-x-3">
       <div class="flex min-w-0 items-center gap-2">
         <h3
           class="m-0 min-w-0 flex-1 truncate font-display text-sm font-medium leading-5
@@ -494,7 +494,10 @@
           <TimeLeft expiry={details?.expiry} nowMs={$cardClock} reserve />
         {/if}
       </div>
-      <span class="h-6 w-6">
+      <span class="flex h-6 items-center gap-2">
+        {#if target?.needs.includes("subsume")}
+          <StateChip state="subsume" />
+        {/if}
         {#if complete}
           <button
             class="flex h-6 w-6 cursor-pointer items-center justify-center rounded border

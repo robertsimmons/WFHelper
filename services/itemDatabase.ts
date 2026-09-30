@@ -11,13 +11,25 @@ import { normalizeDucats } from "../config/shared/numeric";
 import { normalizeWfmSlug } from "../config/shared/wfm";
 import { WIKI_MOD_ART, WIKI_MOD_ART_BY_NAME } from "../config/shared/wikiModArt";
 import { isLocalizingNames, localizeName } from "./gameLocale";
+import {
+  collectUpgradeVendorSources,
+  foldSyndicateRows,
+  ruleVendorSource,
+  withBaroPrice,
+  type BaroPrices,
+  type StoredVendorSource,
+} from "./upgradeVendorSources";
 import * as publicExportSource from "./publicExportSource";
 import { correctedDropRarity } from "./relicRarity";
+import { resolveRuntimeResourcePath } from "./runtimeResources";
 import { withScope } from "./logger";
 import type {
   PepExportItem,
   DropEntry,
   ComponentEntry,
+  ArcaneFacts,
+  ModFacts,
+  UpgradeVendorSource,
   RecipeData,
   RendererItemEntry,
 } from "./types/gameData";
@@ -193,6 +205,9 @@ interface ItemEntry {
   wikiaUrl?: string | null;
   components?: ComponentEntry[];
   drops?: DropEntry[];
+  mod?: ModFacts;
+  arcane?: ArcaneFacts;
+  vendors?: StoredVendorSource[];
   isBuildComponent?: boolean;
   componentOf?: string;
 }
@@ -205,6 +220,7 @@ let recipesByResultType: Record<string, RecipeData> = {};
 let resultTypeByBlueprint: Record<string, string> = {};
 /** Blueprints DE marks consumeOnUse=false: the copy survives its own build. */
 let reusableBlueprints = new Set<string>();
+let resolvePepName: (nameKey: string) => string | null = () => null;
 
 function loadDict(): Record<string, string> {
   const attempts: string[] = [];
@@ -273,6 +289,7 @@ function loadPublicExportPlus(): number {
         );
       return dict[nameKey] || null;
     }
+    resolvePepName = resolveName;
 
     function resolveIcon(iconPath: string | null | undefined): string | null {
       if (!iconPath) return null;
@@ -442,6 +459,8 @@ function loadWfcdItems(): number {
         exalted: item.exalted || false,
         components: item.components || [],
         drops: item.drops || [],
+        mod: wfcdModFacts(item),
+        arcane: wfcdArcaneFacts(item),
         description: item.description || "",
         productCategory: item.productCategory || null,
         type: item.type || "",
@@ -633,6 +652,8 @@ function loadWfcdItems(): number {
           existing.vaulted = true;
         }
         existing.drops = item.drops || [];
+        if (wfcdEntry.mod) existing.mod = wfcdEntry.mod;
+        if (wfcdEntry.arcane) existing.arcane = wfcdEntry.arcane;
         existing.wikiaUrl = item.wikiaUrl || null;
         existing.exalted = item.exalted || false;
         if (typeof item.masterable === "boolean") {
@@ -819,6 +840,98 @@ function applyMechPartTradability(): void {
   if (fixed > 0) log.info(`[ItemDB] Marked ${fixed} Necramech part items tradable`);
 }
 
+function shippedBaroPrices(): BaroPrices {
+  try {
+    const file = resolveRuntimeResourcePath("src", "data", "suggest", "baroPrices.json");
+    return JSON.parse(fs.readFileSync(file, "utf-8")) as BaroPrices;
+  } catch (err) {
+    log.warn("[ItemDB] No bundled Baro prices:", normalizeErrorMessage(err));
+    return {};
+  }
+}
+
+const isMod = (item: ItemEntry | undefined) =>
+  item?.category === "Mod" || item?.category === "Mods";
+const isArcane = (item: ItemEntry | undefined) =>
+  item?.category === "Arcane" || item?.category === "Arcanes";
+
+// Runs after @wfcd so the name rules only reach mods with no drop table.
+function attachUpgradeVendorSources(): void {
+  const baroPrices = shippedBaroPrices();
+  try {
+    const pep = require("warframe-public-export-plus");
+    const isUpgrade = (item: ItemEntry | undefined) => isMod(item) || isArcane(item);
+    const sources = collectUpgradeVendorSources(pep, resolvePepName, (uniqueName) =>
+      isUpgrade(itemsByUniqueName[uniqueName]),
+    );
+    let ruled = 0;
+    for (const [uniqueName, item] of Object.entries(itemsByUniqueName)) {
+      if (!isUpgrade(item)) continue;
+      const sold = foldSyndicateRows(
+        uniqueName,
+        item.drops ?? [],
+        sources.get(uniqueName) ?? [],
+        pep,
+        resolvePepName,
+      );
+      if (sold.length > 0) {
+        item.vendors = sold.map((source) => withBaroPrice(source, item.name, baroPrices));
+        continue;
+      }
+      if (item.drops?.length || !isMod(item)) continue;
+      const rule = ruleVendorSource(item.name, resolvePepName);
+      if (!rule) continue;
+      item.vendors = [withBaroPrice(rule, item.name, baroPrices)];
+      ruled++;
+    }
+    log.info(`[ItemDB] Vendor sources: ${sources.size} upgrades sold, ${ruled} by name rule`);
+  } catch (err) {
+    log.warn("[ItemDB] Could not attach upgrade vendor sources:", normalizeErrorMessage(err));
+  }
+}
+
+function rendererVendorPlace(
+  source: StoredVendorSource,
+  localizing: boolean,
+): Omit<UpgradeVendorSource, "name" | "id" | "cost"> {
+  const rank = source.rank;
+  const title =
+    rank?.title && localizing && rank.titleKey
+      ? localizeName(rank.titleKey, rank.title)
+      : (rank?.title ?? null);
+  return {
+    ...(rank ? { rank: { level: rank.level, title } } : {}),
+    ...(source.keeper ? { keeper: source.keeper } : {}),
+    ...(source.hub ? { hub: { ...source.hub } } : {}),
+    ...(source.covers ? { covers: [...source.covers] } : {}),
+  };
+}
+
+function rendererVendorSource(
+  source: StoredVendorSource,
+  localizing: boolean,
+): UpgradeVendorSource {
+  const who: UpgradeVendorSource = source.id
+    ? { id: source.id }
+    : {
+        name:
+          localizing && source.nameKey
+            ? localizeName(source.nameKey, source.name ?? "")
+            : (source.name ?? ""),
+      };
+  const out: UpgradeVendorSource = { ...who, ...rendererVendorPlace(source, localizing) };
+  const cost = source.cost;
+  if (!cost) return out;
+  if (cost.unit !== "item") {
+    const credits = cost.credits ? { credits: cost.credits } : {};
+    return { ...out, cost: { amount: cost.amount, unit: cost.unit, ...credits } };
+  }
+  const currency = cost.currency ? itemsByUniqueName[cost.currency] : undefined;
+  if (!currency?.name) return out;
+  const item = localizing ? localizeName(currency.nameKey, currency.name) : currency.name;
+  return { ...out, cost: { amount: cost.amount, unit: "item", item } };
+}
+
 export function buildDatabase(): void {
   log.time("[ItemDB] Total build time");
 
@@ -833,6 +946,7 @@ export function buildDatabase(): void {
   const pepCount = loadPublicExportPlus();
   buildRecipeIndex();
   const wfcdCount = loadWfcdItems();
+  attachUpgradeVendorSources();
   applyMechPartTradability();
   linkBlueprintsToResults();
   inheritBlueprintDisplayFromResults();
@@ -952,6 +1066,55 @@ function correctDropRarities(drops?: DropEntry[]): DropEntry[] | undefined {
   }));
 }
 
+interface WfcdModFields {
+  category?: string;
+  polarity?: string;
+  rarity?: string;
+  baseDrain?: number;
+  fusionLimit?: number;
+  compatName?: string;
+  levelStats?: { stats?: string[] }[];
+}
+
+function wfcdModFacts(item: WfcdModFields): ModFacts | undefined {
+  if (item.category !== "Mods") return undefined;
+  const levels = Array.isArray(item.levelStats) ? item.levelStats : [];
+  const lastStats = levels[levels.length - 1]?.stats;
+  return {
+    polarity: item.polarity || null,
+    rarity: item.rarity || null,
+    baseDrain: typeof item.baseDrain === "number" ? item.baseDrain : null,
+    fusionLimit: typeof item.fusionLimit === "number" ? item.fusionLimit : null,
+    compatName: item.compatName || null,
+    maxRankStats: Array.isArray(lastStats) ? cleanStatLines(lastStats) : [],
+  };
+}
+
+const ARCANE_MAX_RANK = 5;
+
+function wfcdArcaneFacts(item: WfcdModFields & { type?: string }): ArcaneFacts | undefined {
+  if (item.category !== "Arcanes") return undefined;
+  const levels = Array.isArray(item.levelStats) ? item.levelStats : [];
+  const lastStats = levels[levels.length - 1]?.stats;
+  const slot = (item.type ?? "").replace(/\s*Arcane$/i, "").trim();
+  return {
+    slot: slot || null,
+    rarity: item.rarity || null,
+    maxRank: levels.length > 1 ? levels.length - 1 : ARCANE_MAX_RANK,
+    // A revive line is folded into the stat above it and repeated on its own.
+    maxRankStats: Array.isArray(lastStats) ? [...new Set(cleanStatLines(lastStats))] : [],
+  };
+}
+
+/** WFCD keeps the game's inline tags (`<DT_FREEZE_COLOR>Cold`) and escaped `\n` breaks. */
+function cleanStatLines(stats: unknown[]): string[] {
+  return stats
+    .filter((s): s is string => typeof s === "string")
+    .flatMap((s) => s.replace(/<[A-Z0-9_]+>/g, "").split(/\\n|\n/))
+    .map((s) => s.replace(/\s{2,}/g, " ").trim())
+    .filter((s) => s.length > 0);
+}
+
 function toRendererDrop(d: DropEntry): DropEntry {
   return {
     location: d.location || "",
@@ -1042,7 +1205,16 @@ export function getRendererLookup(): Record<string, RendererItemEntry> {
         itemCount: c.itemCount || 1,
         drops: (c.drops || []).map(toRendererDrop),
       })),
-      drops: (item.drops || []).slice(0, 20).map(toRendererDrop),
+      // An upgrade's drop table is the whole of how to get it, so none of it is cut.
+      drops: (item.mod || item.arcane
+        ? item.drops || []
+        : (item.drops || []).slice(0, 20)
+      ).map(toRendererDrop),
+      ...(item.mod ? { mod: item.mod } : {}),
+      ...(item.arcane ? { arcane: item.arcane } : {}),
+      ...(item.vendors
+        ? { vendors: item.vendors.map((source) => rendererVendorSource(source, localizing)) }
+        : {}),
       wikiaUrl: item.wikiaUrl || null,
       ...(recipesByResultType[key] ? { recipe: recipesByResultType[key] } : {}),
       ...(reusableBlueprints.has(key) ? { reusableBlueprint: true } : {}),
@@ -1070,6 +1242,7 @@ function cloneItemEntry(item: ItemEntry): ItemEntry {
     ...item,
     ...(item.components ? { components: item.components.map(cloneComponentEntry) } : {}),
     ...(item.drops ? { drops: item.drops.map(cloneDropEntry) } : {}),
+    ...(item.vendors ? { vendors: item.vendors.map((source) => ({ ...source })) } : {}),
   };
 }
 

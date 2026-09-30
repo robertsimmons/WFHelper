@@ -82,7 +82,9 @@ describe("NextUpView", () => {
   });
 
   it("falls back to the page-wide empty state only where nothing is drawn at all", () => {
-    expect(view()).toContain("{#if shown.length === 0 && pinned.length === 0}");
+    expect(view()).toContain(
+      "{#if shown.length === 0 && pinned.length === 0 && pinnedUpgradeEntries.length === 0}",
+    );
   });
 });
 

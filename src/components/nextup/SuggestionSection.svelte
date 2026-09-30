@@ -13,6 +13,7 @@
   import { FLIGHT_MS } from "./cardFlight.js";
   import SectionPager from "./SectionPager.svelte";
   import SuggestionCard from "./SuggestionCard.svelte";
+  import UpgradeCard from "./UpgradeCard.svelte";
   import type { Component } from "svelte";
   import type { Suggestion, SuggestionSectionId } from "../../types/suggest.js";
 
@@ -150,12 +151,21 @@
         <!-- The wrapper exists so the cards around one that leaves slide into
              its place rather than snapping. -->
         <div animate:flip={{ duration: FLIGHT_MS }}>
-          <SuggestionCard
-            {suggestion}
-            onComplete={(count) => onComplete(suggestion, count)}
-            onDismiss={() => onDismiss(suggestion)}
-            onWorkOnThis={onWorkOnThis ? () => onWorkOnThis(suggestion) : undefined}
-          />
+          {#if suggestion.details?.upgrade}
+            <UpgradeCard
+              {suggestion}
+              card={suggestion.details.upgrade}
+              onDismiss={() => onDismiss(suggestion)}
+              onPin={onWorkOnThis ? () => onWorkOnThis(suggestion) : undefined}
+            />
+          {:else}
+            <SuggestionCard
+              {suggestion}
+              onComplete={(count) => onComplete(suggestion, count)}
+              onDismiss={() => onDismiss(suggestion)}
+              onWorkOnThis={onWorkOnThis ? () => onWorkOnThis(suggestion) : undefined}
+            />
+          {/if}
         </div>
       {/each}
     </div>

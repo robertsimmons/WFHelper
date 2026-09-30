@@ -96,12 +96,21 @@ Each is shippable alone, in order.
 
 | # | Slice | Notes | Status |
 |---|---|---|---|
-| 8 | Mods: pin a mod with a reason, suggest missing popular ones | New input surface | |
-| 9 | Build import to full step plan | Needs 5, 6, 8 | |
+| 9 | Build import to full step plan | | |
+| 10 | Arcanes: the mods band, for arcanes | Spec below | |
+
+### Arcanes band
+
+The mods band's twin: same card, modal, search, pin and source line, built from the same pieces (`ModCard`, `ModDetailsModal`, `ModSourceLine`, `DropSourceTile`, the mod pin store pattern). Anything the two share is one component or one module, not a copy.
+
+- **Popularity** comes from Overframe builds, since item pages carry no arcanes: each item's top build plus every build over 300 votes, one point per build that slots the arcane. Only the slotted arcanes are read, never build text or comments. The crawl extends the Overframe fetch and writes `arcanes.json` in popularity order, each entry with its wiki link.
+- **Owned** means max rank: 21 copies, counted from the inventory's arcane collection. Anything short of that stays in the band, and the card reads the count as `3 / 21`.
+- **Card:** slot (Warframe, Primary, Operator, and so on), market price linking to warframe.market, build count, and the best source line. Hover shows the max-rank stat lines, cleaned the same way as mods.
+- **Sources** go through the shared drop-source model and tile. Arcanes lean on vendors (Loid, the Necraloid, the Zariman and Entrati Lab shops) and on bounty and Eidolon tables, so vendor sources, with standing or currency cost, sit beside drops as they do for mods.
+- **Links** go to the wiki only.
+- **Pin** joins the pinned band with its own soft cap, and unpins itself once owned.
 
 ## Misc
-
-- mod popularity into a mod database for "go farm this mod". Overframe gives an ordered top-8 per item and no usage counts; the honest derived signal is how many items list a mod. `popularMods.json` holds the lists.
 - read the wiki for a brief farm snapshot per mod, the way `weapons.json` does for weapons, so the app answers it without the wiki.
 - Deep/Temporal Archimedea should say whether you own the frames and weapons that week wants. Nothing in world state names them; `api.warframestat.us/pc/deepArchimedea` does, which means a new feed.
 - Baro stock should flag what is new since his last visit. Needs visit history the app does not keep.
@@ -112,10 +121,13 @@ Each is shippable alone, in order.
 - Steel Path Incursions are excluded from suggestions; they rotate constantly and read better in game.
 - Amps are excluded from acquisition entirely by `NOT_A_WEAPON_PATH`, so the sweep never suggests one; they are modular gear bought with standing rather than a farm the resolver can route. Mastery levels them under Weapons. Revisit whether acquisition should route them.
 - when looking at details for acquisition, i want to make sure isntructions there are nice and complete. so we'll do a pass on hydrating our data, distilling it down to the core facts, and how to present it prettily and succinctly. This is one of the key areas for "don't make me think" of the app. I want to click a frame, and know "oh, go to this planet, that mission, has x% drop rate per part", etc. (along of course with cost to just buy it when applicable, or instructions if it's a bounty, how to do it if its one of those weird boss battles that has prereqs, and so-on).
-- had another thought on acquisition...maybe once a user picks one to work on, it "pins" it to Next Up? Maybe some tabs at the top or something? Then we can have a larger page to give the instructions, or maybe it even adds a band above Tasks in order of each thing they need to do, which they can mark "done" or whatever, as they go along (then go to the tab to restore any if they goofed). Hrm....
 - For example, Kullervo. You have to run durivir experience, but in one of 3 specific mood spirals, and while there, you need to be collecting specific materials as well. and the fight with him, the player needs to know how to beat it. so making sure the player can go in, get it done, and knows where to get the extra resources, all up front, is really important. things like a map of duviri showing what they need (lots of options for this). other frames/weapons will all have this type of crap too, but totally different. Sure, some are simple "run this bounty over and over", but even then, there's probably suggestions on the best bounty to run.
 - another idea...related to acquistion, what if there was an "I wanna just mindless farm resources" suggestions, for stuff that a bunch of frames or weapons use. so you could ge tin a grove grinding ores or fish or something, and know that later it was useful? Like we can caculate how much of every resource ever a person needs, could really give them "no specific goal but this ore is used the most in stuff you haven't built yet so go grind it, it'll be useful later"?
 - need to know when to surface good alerts or invasions, in tasks. including event stuff like tennocon or devstream events.
 - not sure when/where, but i have lots of incarnons that i've never used or built or unlocked. suggesting that would be good too, and most importantly, first getting the best weapon to put the incarnon on
 - For tasks - have a "snooze" that mabye asks 1h 6h 24h that bumps it to the bottom just for that time frame?
 - syndicate - can we detect which ones they're positive on, and suggest top mods to buy?- normal Circuit: per week, a short farm synopsis for each of that week's Warframes and the order the community suggests running them in. The weeks rotate on a fixed cycle, so each one is captured once and reused from then on. Source is Pupsker's weekly update videos at https://www.youtube.com/@Pupsker, read as transcripts, newest first and working backwards until every week in the rotation has been seen.
+- Vosfor: the first card of the arcanes band, always. Details list the arcanes worth dissolving, by warframe.market price, and two pack picks: the pack that most advances popular arcanes still short of 21 copies (expected copies per pack against each arcane's shortfall, weighted by popularity), and the pack with the best average warframe.market platinum.
+- Nightwave in Tasks while the player still needs Nitain, reading how much is left for mastering every normal item, every Prime, and subsuming every frame, each shown only where it applies.
+- Relic packs and Aya: the first card of the relics band, always, the relic counterpart to Vosfor. The standing and Steel Essence packs show how many still-needed parts they could pay out that the player holds no relic for. Aya reads the current Prime Resurgence stock and suggests which relics to buy, if any, each with its reason.
+- Show arcane that you can dissolve, by wfm price 

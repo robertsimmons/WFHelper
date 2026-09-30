@@ -29,7 +29,9 @@
   import { listArchwings, listFrames } from "../../lib/suggest/acquisition/parts.js";
   import { listWeapons } from "../../lib/suggest/acquisition/weapons.js";
   import { ACQUISITION_ACTIVITY } from "../../lib/suggest/providers/acquisition.js";
+  import { ARCANES_ACTIVITY } from "../../lib/suggest/providers/arcanes.js";
   import { MASTERY_ACTIVITY } from "../../lib/suggest/providers/mastery.js";
+  import { MODS_ACTIVITY } from "../../lib/suggest/providers/mods.js";
   import { RELICS_ACTIVITY } from "../../lib/suggest/providers/relics.js";
   import { BUILTIN_TASKS, trackerGroup, type TrackerGroup } from "../../lib/world/dailies.js";
   import { componentOwnership, itemDb } from "../../stores/data.js";
@@ -101,7 +103,13 @@
     );
   }
 
-  const GOAL_ACTIVITY_IDS = [RELICS_ACTIVITY, ACQUISITION_ACTIVITY, MASTERY_ACTIVITY];
+  const GOAL_ACTIVITY_IDS = [
+    RELICS_ACTIVITY,
+    ACQUISITION_ACTIVITY,
+    MODS_ACTIVITY,
+    ARCANES_ACTIVITY,
+    MASTERY_ACTIVITY,
+  ];
 
   // Nightwave acts no longer reach the feed, so the synthetic id the whole group
   // answered to governs nothing and is deliberately not offered here.
@@ -161,6 +169,8 @@
   const ACTIVITY_LABELS: Record<string, MessageKey> = {
     [RELICS_ACTIVITY]: "common.relics",
     [ACQUISITION_ACTIVITY]: "nextUp.sectionAcquisition",
+    [MODS_ACTIVITY]: "nextUp.sectionMods",
+    [ARCANES_ACTIVITY]: "inventory.tab.arcanes",
     [MASTERY_ACTIVITY]: "common.mastery",
   };
 

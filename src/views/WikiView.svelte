@@ -6,10 +6,8 @@
   import { addSavedSearch, removeSavedSearch, savedSearches } from "../stores/savedSearches.js";
   import { activeEnemy, activeItem, activeRelic, wikiSearchRequest } from "../stores/modals.js";
   import { relicDb } from "../stores/relics.js";
-  import { worldData } from "../stores/world.js";
-  import { canonicalSyndicateKey } from "../lib/bountyRewards.js";
   import { buildItemNameIndex } from "../lib/componentResolution.js";
-  import { dropRarityColour, formatDropChance } from "../lib/dropDisplay.js";
+  import { dropRowPlaces, type DropRowPlace } from "../lib/dropSources.js";
   import {
     relicGroupForDisplayName,
     relicGroupForUniqueName,
@@ -18,9 +16,9 @@
   // Aliased: a store named `tr` makes svelte-check flag every <tr> row as a lowercase component.
   import { tr as t, type MessageKey } from "../lib/i18n.js";
   import { stripQuantityPrefix } from "../../config/shared/quantityPrefix.js";
+  import DropSourceTile from "../components/DropSourceTile.svelte";
   import WikiButton from "../components/WikiButton.svelte";
   import type { DropKind, DropRow, DropSearchMode } from "../../config/shared/dropTypes.js";
-  import type { SyndicateBounty } from "../types/world.js";
 
   let query = "";
   let mode: DropSearchMode = "item";
@@ -66,55 +64,13 @@
     other: null,
   };
 
-  // The drop tables name the location, world state keys the same bounty by
-  // syndicate tag or display name, so both spellings map to the drops file.
-  const BOUNTY_PLACE_KEYS: Array<[RegExp, string]> = [
-    [/\bCetus Bounty\b/i, "cetus"],
-    [/\bOrb Vallis Bounty\b/i, "solaris"],
-    [/\bCambion Drift Bounty\b/i, "deimos"],
-    [/\bZariman Bounty\b/i, "zariman"],
-    [/\bEntrati Lab Bounty\b/i, "entratiLab"],
-    [/\bWF1999 Bounty\b/i, "hex"],
-  ];
-  // Keyed by syndicate tag only; canonicalSyndicateKey folds the display-name
-  // spellings in, so the alias vocabulary lives in one place.
-  const BOUNTY_SYNDICATE_KEYS: Record<string, string> = {
-    CetusSyndicate: "cetus",
-    SolarisSyndicate: "solaris",
-    EntratiSyndicate: "deimos",
-    ZarimanSyndicate: "zariman",
-    EntratiLabSyndicate: "entratiLab",
-    HexSyndicate: "hex",
-  };
+  $: places = dropRowPlaces(rows);
 
-  /** "<location>|<min>|<max>" -> the job the world state currently offers there. */
-  function buildLiveBountyIndex(bounties: SyndicateBounty[] | undefined): Map<string, string> {
-    // Rebuilt whole and reassigned, so the map itself never needs to publish.
-    // eslint-disable-next-line svelte/prefer-svelte-reactivity
-    const index = new Map<string, string>();
-    for (const group of bounties || []) {
-      const location =
-        BOUNTY_SYNDICATE_KEYS[canonicalSyndicateKey(group.syndicateKey)] ??
-        BOUNTY_SYNDICATE_KEYS[canonicalSyndicateKey(group.syndicate)];
-      if (!location) continue;
-      for (const job of group.jobs || []) {
-        const [min, max] = job.enemyLevels || [];
-        if (!job.type || min == null || max == null) continue;
-        index.set(`${location}|${min}|${max}`, job.type);
-      }
-    }
-    return index;
-  }
-
-  $: liveBounties = buildLiveBountyIndex($worldData?.bounties);
-
-  function liveBountyName(row: DropRow, index: Map<string, string>): string | null {
-    if (row.kind !== "bounty" || index.size === 0) return null;
-    const levels = /^Level\s+(\d+)\s*-\s*(\d+)\b/.exec(row.place);
-    if (!levels) return null;
-    const location = BOUNTY_PLACE_KEYS.find(([pattern]) => pattern.test(row.place))?.[1];
-    if (!location) return null;
-    return index.get(`${location}|${levels[1]}|${levels[2]}`) ?? null;
+  function openPlace(place: DropRowPlace): (() => void) | undefined {
+    if (place.kind === "enemy") return () => openEnemy(place.source.raw[0] ?? place.source.place);
+    const relic =
+      place.kind === "relic" ? relicGroupForDisplayName($relicDb, place.source.place) : null;
+    return relic ? () => activeRelic.set(relic) : undefined;
   }
 
   async function runSearch(): Promise<void> {
@@ -342,60 +298,35 @@
             <tr class="bg-bg-soft text-left text-xs uppercase tracking-[0.05em] text-text-muted">
               <th class="px-3 py-2 font-medium">{$t("common.item")}</th>
               <th class="px-3 py-2 font-medium">{$t("wiki.col.dropsFrom")}</th>
-              <th class="px-3 py-2 text-right font-medium">{$t("wiki.col.rarity")}</th>
             </tr>
           </thead>
           <tbody>
-            {#each rows as row (row.item + "|" + row.place + "|" + row.kind + "|" + row.rarity + "|" + row.chance)}
-              {@const kindKey = KIND_LABEL_KEYS[row.kind]}
-              {@const liveBounty = liveBountyName(row, liveBounties)}
-              {@const placeRelic =
-                row.kind === "relic" ? relicGroupForDisplayName($relicDb, row.place) : null}
-              <tr class="border-t border-border/60 hover:bg-bg-hover">
+            {#each places as place (place.item + "|" + place.kind + "|" + place.source.key)}
+              {@const kindKey = KIND_LABEL_KEYS[place.kind]}
+              <tr class="border-t border-border/60 align-top hover:bg-bg-hover">
                 <td class="px-3 py-1.5">
-                  {#if nameIndex.has(row.item) || nameIndex.has(stripQuantityPrefix(row.item))}
+                  {#if nameIndex.has(place.item) || nameIndex.has(stripQuantityPrefix(place.item))}
                     <button
                       type="button"
                       class="cursor-pointer border-0 bg-transparent p-0 text-left text-text-primary hover:text-accent hover:underline"
-                      on:click={() => openItem(row.item)}>{row.item}</button
+                      on:click={() => openItem(place.item)}>{place.item}</button
                     >
                   {:else}
-                    <span class="text-text-primary">{row.item}</span>
+                    <span class="text-text-primary">{place.item}</span>
                   {/if}
                 </td>
                 <td class="px-3 py-1.5 text-text-secondary">
-                  {#if kindKey}
-                    <span
-                      class="mr-1.5 inline-block rounded border border-border px-1 py-px align-middle font-display text-[0.6rem] font-bold uppercase tracking-[0.05em] text-text-muted"
-                      >{$t(kindKey)}</span
-                    >
-                  {/if}
-                  {#if row.kind === "enemy"}
-                    <button
-                      type="button"
-                      class="cursor-pointer border-0 bg-transparent p-0 text-left text-text-secondary hover:text-accent hover:underline"
-                      data-enemy-link={row.place}
-                      on:click={() => openEnemy(row.place)}>{row.place}</button
-                    >
-                  {:else if placeRelic}
-                    <button
-                      type="button"
-                      class="cursor-pointer border-0 bg-transparent p-0 text-left text-text-secondary hover:text-accent hover:underline"
-                      data-relic-link={row.place}
-                      on:click={() => activeRelic.set(placeRelic)}>{row.place}</button
-                    >
-                  {:else}
-                    <span>{row.place}</span>
-                  {/if}
-                  {#if liveBounty}
-                    <span class="text-accent"> &middot; {liveBounty}</span>
-                  {/if}
-                </td>
-                <td class="px-3 py-1.5 text-right whitespace-nowrap">
-                  <span class="font-semibold" style="color:{dropRarityColour(row.rarity)}"
-                    >{row.rarity}</span
-                  >
-                  <span class="ml-1.5 text-accent">{formatDropChance(row.chance)}</span>
+                  <div class="flex min-w-0 items-start gap-1.5">
+                    {#if kindKey}
+                      <span
+                        class="mt-1 inline-block shrink-0 rounded border border-border px-1 py-px font-display text-[0.6rem] font-bold uppercase tracking-[0.05em] text-text-muted"
+                        >{$t(kindKey)}</span
+                      >
+                    {/if}
+                    <div class="min-w-0 flex-1">
+                      <DropSourceTile source={place.source} onOpen={openPlace(place)} />
+                    </div>
+                  </div>
                 </td>
               </tr>
             {/each}

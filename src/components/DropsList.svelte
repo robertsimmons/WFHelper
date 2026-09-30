@@ -1,85 +1,47 @@
 <script lang="ts">
   import { itemLabel } from "../lib/itemLabel.js";
-  import { SvelteSet } from "svelte/reactivity";
 
   import { relicDb, relicOwnedCounts } from "../stores/relics.js";
   import { activeItem, activeComponent, activeRelic } from "../stores/modals.js";
   import { dropRarityColour } from "../lib/dropDisplay.js";
+  import { dropSourcesStore } from "../lib/dropSourceStore.js";
   import { fissureTierClass, RELIC_ICON_PATHS } from "../lib/relic.js";
   import { relicGroupForDisplayName } from "../lib/relic/relicInventory.js";
   import { buildWikiUrl } from "../lib/wikiUrl.js";
   import { tr } from "../lib/i18n.js";
+  import DropSourceTile from "./DropSourceTile.svelte";
+  import type { DropSource } from "../lib/dropSources.js";
   import type { DropInfo } from "../types/inventory.js";
   import type { RelicGroup } from "../types/relics.js";
 
-  export let drops: DropInfo[];
-  /** Empty means "use the default heading", which has to stay translatable. */
-  export let title: string = "";
-  export let initialLimit: number = 5;
-
-  $: headingText = title || $tr("drops.acquisition");
-
-  let showAll = false;
-  let openRelicKey: string | null = null;
-
-  function computeDedupedDrops(drops: DropInfo[]): DropInfo[] {
-    const out: DropInfo[] = [];
-    const seenRelicKeys = new SvelteSet<string>();
-
-    for (const d of drops) {
-      const rg = relicGroupForDisplayName($relicDb, d.location);
-      if (!rg) {
-        out.push(d);
-        continue;
-      }
-
-      if (seenRelicKeys.has(rg.key)) continue;
-      const isBaseRow = !/\((Exceptional|Flawless|Radiant)\)\s*$/i.test(d.location);
-      if (!isBaseRow) continue;
-
-      seenRelicKeys.add(rg.key);
-      out.push(d);
-    }
-
-    for (const d of drops) {
-      const rg = relicGroupForDisplayName($relicDb, d.location);
-      if (rg && !seenRelicKeys.has(rg.key)) {
-        seenRelicKeys.add(rg.key);
-        // Bare group name: the suffix is appended (translated) at render time,
-        // and relicGroupForDisplayName only strips the English "Relic".
-        out.push({ ...d, location: rg.name });
-      }
-    }
-
-    return out;
+  interface Props {
+    drops: DropInfo[];
+    /** Empty means "use the default heading", which has to stay translatable. */
+    title?: string;
+    initialLimit?: number;
   }
 
-  $: dedupedDrops = computeDedupedDrops(drops || []);
+  const { drops, title = "", initialLimit = 5 }: Props = $props();
 
-  let lastDropsKey = "";
-  $: {
-    const key = (drops || []).map((d) => d.location).join("|");
-    if (key !== lastDropsKey) {
-      // eslint-disable-next-line no-useless-assignment -- persists between reactive runs
-      lastDropsKey = key;
-      showAll = false;
-      openRelicKey = null;
-    }
+  const headingText = $derived(title || $tr("drops.acquisition"));
+  const places = $derived(dropSourcesStore(drops));
+
+  let showAll = $state(false);
+  let openRelicKey = $state<string | null>(null);
+
+  $effect(() => {
+    void drops;
+    showAll = false;
+    openRelicKey = null;
+  });
+
+  const shown = $derived(showAll ? $places : $places.slice(0, initialLimit));
+
+  function relicFor(source: DropSource): RelicGroup | null {
+    return source.kind === "relic" ? relicGroupForDisplayName($relicDb, source.place) : null;
   }
 
-  function toggleRelic(ev: MouseEvent, key: string): void {
-    ev.preventDefault();
-    ev.stopPropagation();
-    openRelicKey = openRelicKey === key ? null : key;
-  }
-
-  function handleKeydown(e: KeyboardEvent, key: string): void {
-    if (e.key === "Escape") {
-      openRelicKey = null;
-      return;
-    }
-    if (e.key !== "Enter" && e.key !== " ") return;
-    e.preventDefault();
+  function toggleRelic(key: string): void {
     openRelicKey = openRelicKey === key ? null : key;
   }
 
@@ -115,49 +77,34 @@
   function openRelicWiki(rg: RelicGroup, ev: MouseEvent): void {
     ev.preventDefault();
     ev.stopPropagation();
-    const url = buildWikiUrl(rg.name);
-    window.api?.openExternal?.(url);
+    window.api?.openExternal?.(buildWikiUrl(rg.name));
   }
 </script>
 
-{#if (dedupedDrops || []).length > 0}
+{#if $places.length > 0}
   <div class="detail-section">
     <h3>{headingText}</h3>
-    <div class="detail-acquisition">
-      {#each showAll ? dedupedDrops : dedupedDrops.slice(0, initialLimit) as d}
-        {@const rg = relicGroupForDisplayName($relicDb, d.location)}
+    <div class="detail-acquisition flex flex-col gap-1.5">
+      {#each shown as source (source.key)}
+        {@const rg = relicFor(source)}
         {#if rg}
-          <button
-            type="button"
-            class="flex w-full items-center justify-between gap-2 px-2 -mx-2 py-1.5 rounded-md cursor-pointer text-left text-sm text-text-secondary border-b border-dashed border-border-subtle last:border-b-0 hover:bg-surface-hover hover:text-text-primary transition-colors {openRelicKey ===
-            rg.key
-              ? 'bg-surface-hover text-text-primary'
-              : ''}"
-            on:click={(e) => toggleRelic(e, rg.key)}
-            on:keydown={(e) => handleKeydown(e, rg.key)}
-          >
-            <span class="text-text-primary">{rg.name} {$tr("drops.relicSuffix")}</span>
-            <span class="flex items-center gap-2 shrink-0">
-              {#if d.chance}<span class="text-accent text-xs">{d.chance.toFixed(1)}%</span>{/if}
-              {#if d.rarity}<span class="text-text-muted">({d.rarity})</span>{/if}
-              <span class="text-xs text-text-muted leading-none" aria-hidden="true">
-                {openRelicKey === rg.key ? "v" : ">"}
-              </span>
-            </span>
-          </button>
-
+          <DropSourceTile
+            {source}
+            active={openRelicKey === rg.key}
+            onOpen={() => toggleRelic(rg.key)}
+          />
           {#if openRelicKey === rg.key}
             {@const rewards = getPopoverRewards(rg)}
             {@const owned = isOwned(rg.key)}
             <div
-              class="my-2 rounded-lg border border-border-strong bg-bg-raised px-3 py-2.5 shadow-[0_8px_24px_rgba(0,0,0,0.35)]"
+              class="mb-1 rounded-lg border border-border-strong bg-bg-raised px-3 py-2.5 shadow-[0_8px_24px_rgba(0,0,0,0.35)]"
             >
               <div class="flex items-center gap-2 pb-2 mb-2 border-b border-border">
                 <img
                   src={rg.imageUrl || relicFallbackIcon(rg)}
                   alt={rg.name}
                   class="w-8 h-8 object-contain shrink-0"
-                  on:error={(e) => onRelicImgError(e, rg)}
+                  onerror={(e) => onRelicImgError(e, rg)}
                 />
                 <div class="flex-1 min-w-0 flex flex-col gap-0.5">
                   <span class="font-display text-sm font-semibold text-text-primary truncate"
@@ -175,7 +122,7 @@
                   type="button"
                   class="shrink-0 self-start bg-transparent border-0 text-text-muted text-base leading-none cursor-pointer px-0.5 opacity-70 hover:opacity-100 hover:text-text-primary"
                   aria-label={$tr("common.close")}
-                  on:click|stopPropagation={() => (openRelicKey = null)}>&times;</button
+                  onclick={() => (openRelicKey = null)}>&times;</button
                 >
               </div>
 
@@ -183,18 +130,17 @@
                 <button
                   type="button"
                   class="flex-1 px-2 py-1 text-xs font-display font-semibold tracking-wider rounded border border-accent/50 text-accent hover:bg-accent/10 hover:border-accent cursor-pointer transition-colors"
-                  on:click|stopPropagation={() => openDetailedRelic(rg)}
-                  >{$tr("common.detailed")}</button
+                  onclick={() => openDetailedRelic(rg)}>{$tr("common.detailed")}</button
                 >
                 <button
                   type="button"
                   class="flex-1 px-2 py-1 text-xs font-display font-semibold tracking-wider rounded border border-border-strong text-text-secondary hover:bg-surface-hover hover:text-text-primary cursor-pointer transition-colors"
-                  on:click={(e) => openRelicWiki(rg, e)}>{$tr("common.wiki")}</button
+                  onclick={(e) => openRelicWiki(rg, e)}>{$tr("common.wiki")}</button
                 >
               </div>
 
               <div class="flex max-h-[240px] flex-col overflow-y-auto">
-                {#each rewards as r}
+                {#each rewards as r, index (index)}
                   <div
                     class="flex items-center gap-2 py-1 border-b border-dashed border-border-subtle last:border-b-0"
                   >
@@ -220,26 +166,16 @@
             </div>
           {/if}
         {:else}
-          <div
-            class="flex items-center justify-start gap-2 border-b border-dashed border-border-subtle py-1.5 last:border-b-0"
-          >
-            <span class="text-text-primary">{d.location}</span>
-            {#if d.chance}<span class="shrink-0 text-xs text-accent">{d.chance.toFixed(1)}%</span
-              >{/if}
-            {#if d.rarity}<span class="text-text-muted">({d.rarity})</span>{/if}
-          </div>
+          <DropSourceTile {source} />
         {/if}
       {/each}
-      {#if !showAll && dedupedDrops.length > initialLimit}
+      {#if $places.length > initialLimit}
         <button
           class="block w-full cursor-pointer border-0 bg-transparent py-1.5 text-left font-display text-xs text-accent opacity-85 hover:opacity-100 hover:underline"
-          on:click={() => (showAll = true)}
-          >{$tr("drops.viewAllSources", { count: dedupedDrops.length })}</button
-        >
-      {:else if showAll && dedupedDrops.length > initialLimit}
-        <button
-          class="block w-full cursor-pointer border-0 bg-transparent py-1.5 text-left font-display text-xs text-accent opacity-85 hover:opacity-100 hover:underline"
-          on:click={() => (showAll = false)}>{$tr("common.showFewer")}</button
+          onclick={() => (showAll = !showAll)}
+          >{showAll
+            ? $tr("common.showFewer")
+            : $tr("drops.viewAllSources", { count: $places.length })}</button
         >
       {/if}
     </div>

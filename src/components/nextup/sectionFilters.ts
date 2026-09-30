@@ -31,5 +31,9 @@ export function sectionNarrowed(id: SuggestionSectionId, options: SuggestionOpti
         options.acquisitionSearch.trim().length > 0 ||
         narrowedList(options.acquisitionKinds, ACQUISITION_INCLUDES)
       );
+    case "mods":
+      return options.modSearch.trim().length > 0;
+    case "arcanes":
+      return options.arcaneSearch.trim().length > 0;
   }
 }

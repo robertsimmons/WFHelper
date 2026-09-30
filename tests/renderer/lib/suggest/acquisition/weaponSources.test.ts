@@ -80,6 +80,23 @@ describe("weapon sources", () => {
     expect(braton.paths.every((path) => path.kind === "circuit")).toBe(true);
   });
 
+  it("buys a weapon's main blueprint at the Market and farms its parts elsewhere", () => {
+    const braton = target("Braton", {
+      curatedWeapons: {
+        Braton: {
+          sources: [
+            { kind: "market", parts: "both", where: "Market (25,000 Credits)" },
+            { kind: "mission", parts: "components", where: "Somewhere - Rotation A" },
+          ],
+        },
+      },
+    });
+    const market = braton.paths.find((path) => path.kind === "market");
+    expect(market?.covers).toEqual(["Braton Blueprint"]);
+    expect(braton.paths[0].kind).toBe("mission");
+    expect(braton.effort).toBe(braton.paths[0].effort);
+  });
+
   it("prices the set and the missing parts when the market can", () => {
     const prices: Record<string, number> = { "Braton Prime Set": 90, "Braton Prime Barrel": 20 };
     const trade = target("Braton Prime", { plat: (name) => prices[name] ?? null }).paths.find(

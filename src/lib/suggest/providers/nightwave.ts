@@ -1,8 +1,11 @@
 import { ownedComponentCount } from "../../../../config/shared/componentNames.js";
 import { resolveRewardUniqueName } from "../../bountyRewards.js";
-import { buildOwnership, ownsItem, unbuiltResourceNeed } from "../acquisition/parts.js";
+import { buildOwnership, ownsItem } from "../acquisition/parts.js";
+import type { AcquisitionTarget } from "../acquisition/types.js";
 import { FULL_GAIN, NO_GAIN, PARTIAL_GAIN, leastGain, masteryGain } from "../gain.js";
+import { nitainNeed, type NitainNeed } from "../nitain.js";
 import { NIGHTWAVE_ACTIVITY } from "../preferences.js";
+import { acquisitionTargets } from "./acquisition.js";
 import { rewardValue } from "../rewards.js";
 import { clamp01 } from "../score.js";
 import { UNPLACED_WORTH, normalizeName } from "../worthLadder.js";
@@ -29,6 +32,19 @@ const WHY_STOCK: MessageKey = "nextUp.whyNightwaveStock";
 const WHY_CRED: MessageKey = "nextUp.whyNightwaveCred";
 const WHY_CRED_EACH: MessageKey = "nextUp.whyNightwaveCredEach";
 const WHY_PARTS: MessageKey = "nextUp.whyAcqParts";
+
+const NITAIN_BUCKETS: ReadonlyArray<readonly ["normal" | "prime" | "subsume", MessageKey]> = [
+  ["normal", "nextUp.nitainMastery"],
+  ["prime", "nextUp.nitainPrime"],
+  ["subsume", "nextUp.nitainSubsume"],
+];
+
+/** What each goal still asks for, as the card and the details both read it. */
+export function nitainNeedSegments(need: NitainNeed, t: SuggestionContext["t"]): WhySegment[] {
+  return NITAIN_BUCKETS.filter(([bucket]) => need[bucket] > 0).map(([bucket, key]) => ({
+    text: t(key, { count: String(need[bucket]) }),
+  }));
+}
 
 type StapleKey = (typeof NIGHTWAVE_STAPLES)[number];
 
@@ -146,6 +162,8 @@ export interface NightwaveOfferRow {
   cred: number;
   /** Copies one purchase grants. */
   bundle: number;
+  /** Nitain only, once the sweep has named what is unbuilt. */
+  need?: NitainNeed | undefined;
 }
 
 const rows = new Map<string, NightwaveOfferRow>();
@@ -219,14 +237,19 @@ function heldCount(
 }
 
 /** Nothing new has called for Nitain in years, so being out of it is only urgent
- *  while something the player has not built still asks for it. Null before the
- *  acquisition sweep has run, which is not the same as nothing needing it. */
-function nitainStillNeeded(itemDb: Record<string, ItemDbEntry>): boolean | null {
-  const need = unbuiltResourceNeed();
-  if (!need) return null;
+ *  while something the player has not built still asks for it. Null where the
+ *  item database cannot name Nitain, which is unknown rather than no need. */
+function nitainNeedFor(
+  targets: readonly AcquisitionTarget[],
+  itemDb: Record<string, ItemDbEntry>,
+  ownership: Map<string, number>,
+): NitainNeed | null {
   const item = entryFor("Nitain Extract", itemDb);
-  if (!item) return null;
-  return (need.get(item.uniqueName) ?? 0) > 0;
+  return item ? nitainNeed(targets, item.uniqueName, itemDb, ownership) : null;
+}
+
+function needTotal(need: NitainNeed): number {
+  return need.normal + need.prime + need.subsume;
 }
 
 const NITAIN: StapleKey = "nitain extract";
@@ -239,39 +262,39 @@ function seasonDetails(world: SuggestionContext["world"]): SuggestionDetails | u
   return expiry ? { expiry } : undefined;
 }
 
-/** What a top-up still advances. The shortfall against the level the player set
- *  carries it; a staple nothing unbuilt calls for advances less, whatever the
- *  pile looks like. Worth is the ladder's alone. */
-function stockGain(
-  offer: StapleOffer,
-  held: number,
-  level: number,
-  needed: boolean | null,
-): number {
-  const idle = offer.key === NITAIN && needed === false ? PARTIAL_GAIN : FULL_GAIN;
-  return leastGain(clamp01((level - held) / level), idle);
+/** What a top-up still advances. The shortfall against the target carries it; a
+ *  staple nothing unbuilt calls for advances less, whatever the pile looks like.
+ *  Worth is the ladder's alone. */
+function stockGain(held: number, target: number, idle: boolean): number {
+  return leastGain(clamp01((target - held) / target), idle ? PARTIAL_GAIN : FULL_GAIN);
 }
 
 function stockDraft(
   offer: StapleOffer,
   ctx: SuggestionContext,
   ownership: Map<string, number>,
-  nitainNeeded: boolean | null,
+  nitain: NitainNeed | null,
   low: boolean,
 ): SuggestionDraft | null {
   const { prefs, itemDb, t } = ctx;
   const details = seasonDetails(ctx.world);
-  const level = prefs.nightwaveStock[offer.key] ?? DEFAULT_NIGHTWAVE_STOCK;
-  if (level <= 0) return null;
+  const level = Math.max(0, prefs.nightwaveStock[offer.key] ?? DEFAULT_NIGHTWAVE_STOCK);
   const held = heldCount(offer, itemDb, ownership);
-  if (held === null || held >= level) return null;
+  const need = offer.key === NITAIN ? nitain : null;
+  // A level of 0 only stops the stockpile; what the builds still ask for shows regardless.
+  const target = Math.max(level, need ? needTotal(need) : 0);
+  if (target <= 0 || held === null || held >= target) return null;
 
   const item = entryFor(offer.name, itemDb);
   const short: WhySegment = {
-    text: t(WHY_STOCK, { held: String(held), level: String(level) }),
+    text: t(WHY_STOCK, { held: String(held), level: String(target) }),
     ...(held === 0 ? { tone: "bad" as const } : {}),
   };
-  const segments = [short, credSegment(offer, false, t)];
+  const segments = [
+    short,
+    ...(need ? nitainNeedSegments(need, t) : []),
+    credSegment(offer, false, t),
+  ];
   const id = `nightwave:${offer.id}`;
   setRow(id, {
     key: offer.key,
@@ -280,9 +303,10 @@ function stockDraft(
     ...(item ? { uniqueName: item.uniqueName } : {}),
     kind: "stock",
     held,
-    level,
+    level: target,
     cred: offer.cred,
     bundle: offer.bundle,
+    ...(need ? { need } : {}),
   });
   return {
     id,
@@ -297,13 +321,13 @@ function stockDraft(
       // nothing regardless.
       effort: 0,
       urgency: 0,
-      gain: stockGain(offer, held, level, nitainNeeded),
+      gain: stockGain(held, target, need !== null && needTotal(need) === 0),
     },
     // Every copy bought or spent changes the shortfall, so a dismissal lifts as
     // soon as the pile moves.
-    fingerprint: `${offer.key}|${held}/${level}`,
+    fingerprint: `${offer.key}|${held}/${target}`,
     deprioritized: low,
-    progress: { current: held, required: level },
+    progress: { current: held, required: target },
     wiki: WIKI,
     ...(details ? { details } : {}),
   };
@@ -446,10 +470,10 @@ function nightwaveDrafts(ctx: SuggestionContext): SuggestionDraft[] {
   if (activity === "never") return [];
   const low = activity === "low";
   const ownership = ownershipFor(ctx);
-  const nitainNeeded = nitainStillNeeded(ctx.itemDb);
+  const nitain = nitainNeedFor(acquisitionTargets(ctx), ctx.itemDb, ownership);
   const drafts: SuggestionDraft[] = [];
   for (const offer of STAPLES) {
-    const draft = stockDraft(offer, ctx, ownership, nitainNeeded, low);
+    const draft = stockDraft(offer, ctx, ownership, nitain, low);
     if (draft) drafts.push(draft);
   }
   for (const offer of PARTS_OFFERS) {
@@ -462,8 +486,8 @@ function nightwaveDrafts(ctx: SuggestionContext): SuggestionDraft[] {
 let draftCache: { keys: readonly unknown[]; drafts: SuggestionDraft[] } | null = null;
 
 /** Every staple and set the cards read comes off the season, the pile, the item
- *  database, the acquisition sweep's own totals and the levels the player set;
- *  nothing here follows the clock. */
+ *  database, the acquisition sweep and the levels the player set; nothing here
+ *  follows the clock. The sweep is shared with Acquisition, which caches it. */
 function nightwaveKeys(ctx: SuggestionContext): readonly unknown[] {
   return [
     ctx.world,
@@ -474,7 +498,7 @@ function nightwaveKeys(ctx: SuggestionContext): readonly unknown[] {
     ctx.prefs.activities,
     ctx.prefs.worth,
     ctx.prefs.nightwaveStock,
-    unbuiltResourceNeed(),
+    acquisitionTargets(ctx),
   ];
 }
 

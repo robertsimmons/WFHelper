@@ -14,10 +14,10 @@ const REFERENCE_ROOTS = ["src", "ipc"].map((dir) => path.resolve(__dirname, "../
 // warframe.market whispers are sent to other players, so they must stay English.
 const ENGLISH_ONLY = ["common.whisperBuy", "common.whisperSell"];
 
-// Trade shorthand, grade letters and relic tier names read the same everywhere,
-// so de.json leaves them out and the English fallback serves them.
+// Trade shorthand, grade letters, relic tier names and vendor names read the
+// same everywhere, so de.json leaves them out and the English fallback serves them.
 const LANGUAGE_NEUTRAL =
-  /^(appearance\.label\.grade|inventory\.wt[bs]|relics\.tier\.|nextUp\.settingsArt)/;
+  /^(appearance\.label\.grade|inventory\.wt[bs]|relics\.tier\.|nextUp\.settingsArt|nextUp\.sectionMods$|nextUp\.modCost(Cred|Plat|Item|Ducats)$|nextUp\.modVendor(Son|Teasonai|TheBusiness|Acrithis|Chipper|ArchimedeanYonta|DevilsTriad|TemporalArchimedea)$|nextUp\.arcaneCopies$)/;
 
 // Names the game's own Chinese client leaves in English, so the fallback is the
 // correct rendering rather than a gap.

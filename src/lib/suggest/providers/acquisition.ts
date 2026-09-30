@@ -4,6 +4,7 @@ import { formatNumber } from "../../format.js";
 import { overframeRankingsRevision } from "../../../stores/overframeRankings.js";
 import { resolveAcquisition } from "../acquisition/index.js";
 import { includesTarget } from "../acquisition/kinds.js";
+import { headlinePath } from "../acquisition/paths.js";
 import { compareAcquisition, sortRow } from "../acquisition/sort.js";
 import { advances, needsGain } from "../gain.js";
 import { clamp01 } from "../score.js";
@@ -106,17 +107,15 @@ export function partsRead(target: AcquisitionTarget): PartsRead | null {
 /** A resolver effort of 1 means "no path known", which is not the same as a
  *  build the player could start this second. */
 function effortFor(target: AcquisitionTarget): number {
-  if (target.paths.length > 0) return clamp01(target.effort);
+  if (headlinePath(target.paths)) return clamp01(target.effort);
   if (!target.parts.known || target.parts.missing.length > 0) return NO_ROUTE_EFFORT;
   return target.parts.buildable ? READY_EFFORT : MATERIALS_EFFORT;
 }
 
-function titleKey(target: AcquisitionTarget): MessageKey {
-  if (target.needs.includes("mastery")) {
-    return target.parts.known ? "nextUp.acquisitionBuild" : "nextUp.acquisitionGet";
-  }
-  if (target.needs.includes("subsume")) return "nextUp.acquisitionSubsume";
-  return "nextUp.acquisitionAdapter";
+function cardTitle(target: AcquisitionTarget, t: SuggestionContext["t"]): string {
+  const item = target.displayName ?? target.name;
+  if (target.needs.includes("mastery") || target.needs.includes("subsume")) return item;
+  return t("nextUp.acquisitionAdapter", { item });
 }
 
 /** The one number a route is remembered by: relics held, plat, or credits. */
@@ -150,7 +149,7 @@ function pathCostText(path: AcquisitionPath, t: SuggestionContext["t"]): string 
 }
 
 function routeText(target: AcquisitionTarget, t: SuggestionContext["t"]): string {
-  const path = target.paths[0];
+  const path = headlinePath(target.paths);
   if (!path) return t("nextUp.whyAcqNoRoute");
   const cost = pathCostText(path, t);
   // A plat price is only ever a trade, so the word adds nothing beside it.
@@ -183,7 +182,7 @@ function whySegments(target: AcquisitionTarget, t: SuggestionContext["t"]): WhyS
   // A build already in hand needs no route: there is nothing left to walk.
   if (!ready) {
     const route = routeText(target, t);
-    out.push(target.paths.length === 0 ? { text: route, tone: "bad" } : { text: route });
+    out.push(headlinePath(target.paths) ? { text: route } : { text: route, tone: "bad" });
   }
   return out;
 }
@@ -204,7 +203,7 @@ export function acquisitionRatings(prefs: SuggestionPreferences): Record<string,
 
 /** The sweep walks the whole item database, and the feed re-derives on a timer;
  *  only a change to what it reads can change what it returns. */
-function targetsFor(ctx: SuggestionContext): AcquisitionTarget[] {
+export function acquisitionTargets(ctx: SuggestionContext): AcquisitionTarget[] {
   const { prefs } = ctx;
   const keys = [
     ctx.itemDb,
@@ -249,7 +248,7 @@ export const acquisitionProvider: SuggestionProvider = {
     if (activity === "never") return [];
 
     return (
-      targetsFor(ctx)
+      acquisitionTargets(ctx)
         // A weapon already mastered and a frame already owned and subsumed are
         // finished; the resolver still lists gear whose only open reason is an
         // Incarnon adapter, which is not a reason to build anything.
@@ -267,7 +266,7 @@ export const acquisitionProvider: SuggestionProvider = {
             id: `acquisition:${target.uniqueName}`,
             order,
             category: "acquisition" as const,
-            title: t(titleKey(target), { item: target.displayName ?? target.name }),
+            title: cardTitle(target, t),
             why: segments.map((segment) => segment.text).join(" - "),
             whySegments: segments,
             reward: { name: target.name, uniqueName: target.uniqueName },

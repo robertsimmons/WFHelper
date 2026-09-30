@@ -181,8 +181,9 @@ describe("resolveAcquisition", () => {
 
   it("ranks the easiest frame first", () => {
     const targets = resolveAcquisition(context());
-    expect(targets[0].name).toBe("Mag");
-    expect(targets[0].paths[0].kind).toBe("market");
+    expect(targets[0].name).toBe("Volt");
+    expect(targets[0].paths[0].kind).toBe("lab");
+    expect(find(targets, "Mag").paths[0].kind).toBe("boss");
   });
 
   it("leaves the augment mods parked under a frame's path out of it", () => {

@@ -125,7 +125,7 @@ export const masteryProvider: SuggestionProvider = {
   id: "mastery",
 
   collect(ctx: SuggestionContext): SuggestionDraft[] {
-    const { prefs, t } = ctx;
+    const { prefs } = ctx;
     const activity = prefs.activities[MASTERY_ACTIVITY] ?? "normal";
     if (activity === "never") return [];
 
@@ -138,7 +138,7 @@ export const masteryProvider: SuggestionProvider = {
         return {
           id: `mastery:${itemKey(item)}`,
           category: "mastery" as const,
-          title: t("nextUp.masteryLevel", { item: itemLabel(item) }),
+          title: itemLabel(item),
           // The rank bar already reads as the rank and what is left of it.
           why: "",
           reward: { name: item.name, uniqueName: item.uniqueName },

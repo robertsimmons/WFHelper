@@ -13,6 +13,7 @@
   import { ownedRewardFor, ownsAny, type OwnedReward } from "../../lib/suggest/ownedRewards.js";
   import {
     nightwaveRowFor,
+    nitainNeedSegments,
     type NightwaveOfferRow,
   } from "../../lib/suggest/providers/nightwave.js";
   import { liveVendorOffers } from "../../lib/suggest/providers/vendors.js";
@@ -325,10 +326,12 @@
    *  discounted plat. Rendered through the tile, like every other price. */
   const rewardCost = $derived.by((): string[] => {
     if (credRow) {
+      const cred = String(credRow.cred);
+      if (credRow.kind === "parts") return [$tr("nextUp.whyNightwaveCredEach", { cred })];
       return [
-        $tr(credRow.kind === "parts" ? "nextUp.whyNightwaveCredEach" : "nextUp.whyNightwaveCred", {
-          cred: String(credRow.cred),
-        }),
+        credRow.bundle > 1
+          ? $tr("nextUp.whyNightwaveCredBundle", { bundle: String(credRow.bundle), cred })
+          : $tr("nextUp.whyNightwaveCred", { cred }),
       ];
     }
     if (taskKey !== "darvo") return [];
@@ -413,6 +416,11 @@
         title: $tr("nextUp.acqNeedSubsume"),
         tone: CHIP_TONE.warn,
       });
+    }
+    if (credRow?.need) {
+      for (const segment of nitainNeedSegments(credRow.need, $tr)) {
+        out.push({ value: segment.text, title: segment.text, tone: CHIP_TONE.plain });
+      }
     }
     return out;
   });
@@ -1094,6 +1102,14 @@
                       <li>{step.where}</li>
                     {/each}
                   </ol>
+                {/if}
+
+                {#if !path.complete && path.covers.length > 0}
+                  <span class="flex flex-wrap gap-1.5">
+                    {#each path.covers as part (part)}
+                      <span class="{CHIP} text-text-secondary">{part}</span>
+                    {/each}
+                  </span>
                 {/if}
 
                 {#if path.cost.relics?.known && path.cost.relics.rows.length > 0}

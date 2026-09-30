@@ -1,10 +1,7 @@
-import { beforeEach, describe, expect, it } from "vitest";
+import { describe, expect, it } from "vitest";
 
-import {
-  buildOwnership,
-  buildPartPlans,
-  resetUnbuiltResourceNeedForTest,
-} from "../../../../src/lib/suggest/acquisition/parts.js";
+import { inventory } from "./acquisition/fixtures.js";
+import { NEKROS, NIDUS, masteredNidus, nitainDb } from "./nitainFixture.js";
 import { defaultPreferences } from "../../../../src/lib/suggest/preferences.js";
 import {
   nightwaveProvider,
@@ -47,8 +44,6 @@ const CRAFT_MAIN_BUILT = `${CRAFT_RECIPES}/NoraShipComponent`;
 const CRAFT_AVIONICS = `${CRAFT_RECIPES}/NoraShipAvionicsBlueprint`;
 const CRAFT_ENGINES = `${CRAFT_RECIPES}/NoraShipEnginesBlueprint`;
 const CRAFT_FUSELAGE = `${CRAFT_RECIPES}/NoraShipFuselageBlueprint`;
-/** Something unbuilt whose recipe still asks for Nitain. */
-const HELIOS = "/Lotus/Types/Sentinels/SentinelPreceptsHelios";
 
 const ITEM_DB: Record<string, ItemDbEntry> = {
   [NITAIN]: { name: "Nitain Extract", imageUrl: "nitain.png" },
@@ -64,17 +59,6 @@ const ITEM_DB: Record<string, ItemDbEntry> = {
   [VAUBAN_HELMET]: { name: "Vauban Neuroptics", imageUrl: "neuroptics.png" },
   [VAUBAN_SYSTEMS]: { name: "Vauban Systems", imageUrl: "systems.png" },
   [CRAFT]: { name: "Nightwave", imageUrl: "nightwave.png" },
-  [HELIOS]: {
-    name: "Helios",
-    imageUrl: "helios.png",
-    masterable: true,
-    recipe: {
-      buildPrice: 15000,
-      buildTime: 86400,
-      num: 1,
-      ingredients: [{ uniqueName: NITAIN, count: 4 }],
-    },
-  },
 };
 
 function tracker(): TrackerState {
@@ -127,25 +111,6 @@ function ids(ctx: SuggestionContext): string[] {
 function draft(ctx: SuggestionContext, id: string): SuggestionDraft | undefined {
   return drafts(ctx).find((entry) => entry.id === id);
 }
-
-/** Seeds the sweep's build totals off one unbuilt item that needs Nitain. */
-function sweepNeedingNitain(): void {
-  const entry = ITEM_DB[HELIOS] as ItemDbEntry;
-  buildPartPlans(
-    [{ uniqueName: HELIOS, name: "Helios", entry }],
-    ITEM_DB,
-    buildOwnership(null, ITEM_DB),
-  );
-}
-
-/** A sweep that planned nothing at all: every build is finished. */
-function sweepNeedingNothing(): void {
-  buildPartPlans([], ITEM_DB, buildOwnership(null, ITEM_DB));
-}
-
-beforeEach(() => {
-  resetUnbuiltResourceNeedForTest();
-});
 
 describe("nightwaveProvider stock cards", () => {
   it("says nothing about stock while no inventory has been read", () => {
@@ -218,27 +183,85 @@ describe("nightwaveProvider stock cards", () => {
   });
 });
 
-describe("the Nitain exception", () => {
+/** Hydroid, its Prime and a sold Nidus still ask 5, 2 and 3 Nitain; Nekros is
+ *  in hand and asks nothing. */
+function unbuiltContext(held: Record<string, number>, suits: string[] = [NEKROS]) {
+  return context({
+    itemDb: { ...nitainDb(), ...ITEM_DB },
+    inventory: inventory({ suits, misc: held }),
+    mastery: masteredNidus(),
+  });
+}
+
+describe("the Nitain need", () => {
   it("keeps Nitain at a full gain while something unbuilt still needs it", () => {
-    sweepNeedingNitain();
-    const card = draft(context(), "nightwave:nitain");
+    const card = draft(unbuiltContext({ [NITAIN]: 2 }), "nightwave:nitain");
     expect(card?.signals.value).toBe(rewardValue(defaultPreferences(), "Nitain Extract"));
-    expect(card?.signals.gain).toBe(1);
+    expect(card?.signals.gain).toBe(0.8);
+  });
+
+  it("stays in the feed past the keep-on-hand level while the builds want more", () => {
+    const card = draft(unbuiltContext({ [NITAIN]: 5 }), "nightwave:nitain");
+    expect(card?.progress).toEqual({ current: 5, required: 10 });
+    expect(card?.whySegments?.map((segment) => segment.text)).toEqual([
+      "nextUp.whyNightwaveStock",
+      "nextUp.nitainMastery",
+      "nextUp.nitainPrime",
+      "nextUp.nitainSubsume",
+      "nextUp.whyNightwaveCred",
+    ]);
+  });
+
+  it("names only the goals that still ask for some", () => {
+    const card = draft(unbuiltContext({}, [NEKROS, NIDUS]), "nightwave:nitain");
+    const texts = card?.whySegments?.map((segment) => segment.text) ?? [];
+    expect(texts).toContain("nextUp.nitainMastery");
+    expect(texts).not.toContain("nextUp.nitainSubsume");
+  });
+
+  it("still asks for what the builds need at a keep-on-hand level of nothing", () => {
+    const stock = { ...defaultPreferences().nightwaveStock, "nitain extract": 0 };
+    const card = draft(
+      context({
+        itemDb: { ...nitainDb(), ...ITEM_DB },
+        inventory: inventory({ suits: [NEKROS], misc: { [NITAIN]: 2 } }),
+        mastery: masteredNidus(),
+        prefs: prefs({ nightwaveStock: stock }),
+      }),
+      "nightwave:nitain",
+    );
+    expect(card?.progress).toEqual({ current: 2, required: 10 });
+  });
+
+  it("drops Nitain at a level of nothing once the builds need none", () => {
+    const stock = { ...defaultPreferences().nightwaveStock, "nitain extract": 0 };
+    expect(ids(context({ prefs: prefs({ nightwaveStock: stock }) }))).not.toContain(
+      "nightwave:nitain",
+    );
+  });
+
+  it("goes once the pile covers every build and the level", () => {
+    expect(ids(unbuiltContext({ [NITAIN]: 10 }))).not.toContain("nightwave:nitain");
+  });
+
+  it("hands the details every goal's count", () => {
+    draft(unbuiltContext({ [NITAIN]: 4 }), "nightwave:nitain");
+    expect(nightwaveRowFor("nightwave:nitain")).toMatchObject({
+      held: 4,
+      level: 10,
+      need: { normal: 5, prime: 2, subsume: 3, held: 4, short: 6 },
+    });
   });
 
   it("halves Nitain's gain once everything that uses it is built", () => {
-    sweepNeedingNothing();
     const card = draft(context(), "nightwave:nitain");
     expect(card?.signals.gain).toBe(0.5);
-  });
-
-  it("treats an unswept plan as unknown rather than as nothing needing Nitain", () => {
-    const card = draft(context(), "nightwave:nitain");
-    expect(card?.signals.gain).toBe(1);
+    expect(card?.whySegments?.map((segment) => segment.text)).not.toContain(
+      "nextUp.nitainMastery",
+    );
   });
 
   it("leaves the other staples out of the build check", () => {
-    sweepNeedingNothing();
     const card = draft(context(), "nightwave:reactor");
     expect(card?.signals.gain).toBe(1);
   });
@@ -359,10 +382,8 @@ describe("what a second pass costs", () => {
 
   it("rebuilds when the sweep re-reads what is still unbuilt", () => {
     const ctx = context();
-    sweepNeedingNitain();
-    const needed = draft(ctx, "nightwave:nitain");
-    sweepNeedingNothing();
-    expect(draft(ctx, "nightwave:nitain")).not.toBe(needed);
+    const first = drafts(ctx);
+    expect(drafts({ ...ctx, plat: () => null })).not.toBe(first);
   });
 });
 

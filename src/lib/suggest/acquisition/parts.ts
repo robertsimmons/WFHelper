@@ -156,14 +156,49 @@ interface ModularGearFacts {
   name: string;
   headLabelKey: MessageKey;
   requiresGilding: boolean;
+  /** The other parts one build takes, one of each. */
+  slots: readonly RegExp[];
 }
 
 const MODULAR_GEAR: Record<ModularGear, ModularGearFacts> = {
-  moa: { name: "Moa", headLabelKey: "nextUp.modularHeadModels", requiresGilding: true },
-  hound: { name: "Hound", headLabelKey: "nextUp.modularHeadModels", requiresGilding: true },
-  amp: { name: "Amp", headLabelKey: "nextUp.modularHeadPrisms", requiresGilding: true },
-  kdrive: { name: "K-Drive", headLabelKey: "nextUp.modularHeadBoards", requiresGilding: false },
+  moa: {
+    name: "Moa",
+    headLabelKey: "nextUp.modularHeadModels",
+    requiresGilding: true,
+    slots: [/\/MoaPetParts\/\w*Engine/i, /\/MoaPetParts\/\w*Leg/i, /\/MoaPetParts\/\w*Payload/i],
+  },
+  hound: {
+    name: "Hound",
+    headLabelKey: "nextUp.modularHeadModels",
+    requiresGilding: true,
+    slots: [/\/ZanukaPetPartBody/i, /\/ZanukaPetPartLegs/i, /\/ZanukaPetPartTail/i],
+  },
+  amp: {
+    name: "Amp",
+    headLabelKey: "nextUp.modularHeadPrisms",
+    requiresGilding: true,
+    slots: [/\/OperatorAmplifiers?\/.*Chassis/i, /\/OperatorAmplifiers?\/.*Grip/i],
+  },
+  kdrive: {
+    name: "K-Drive",
+    headLabelKey: "nextUp.modularHeadBoards",
+    requiresGilding: false,
+    slots: [/\/Hoverboard\/.*Engine$/i, /\/Hoverboard\/.*Front$/i, /\/Hoverboard\/.*Jet$/i],
+  },
 };
+
+function modularSlots(
+  itemDb: Record<string, ItemDbEntry>,
+  slots: readonly RegExp[],
+): string[][] {
+  const out: string[][] = slots.map(() => []);
+  for (const [uniqueName, entry] of Object.entries(itemDb)) {
+    if (!entry?.name || entry.isBuildComponent === true || entry.buildsProduct) continue;
+    const index = slots.findIndex((pattern) => pattern.test(uniqueName));
+    if (index >= 0) out[index]?.push(uniqueName);
+  }
+  return out;
+}
 
 function modularGearOf(uniqueName: string): ModularGear | null {
   for (const [pattern, gear] of MODULAR_HEAD_PATHS) {
@@ -240,6 +275,7 @@ export function listModularGear(
         heads: rows,
         owned: rows.filter((row) => row.owned).length,
         requiresGilding: facts.requiresGilding,
+        slots: modularSlots(itemDb, facts.slots),
       },
     });
   }
@@ -301,21 +337,6 @@ function toPartPlan(planned: PlannedItem): PartPlan {
   };
 }
 
-/** What every unbuilt target the last sweep planned still calls for, summed
- *  recursively, by uniqueName. Null until a sweep has run, which is not the same
- *  as nothing needing anything. */
-let resourceNeed: Map<string, number> | null = null;
-
-export function unbuiltResourceNeed(): ReadonlyMap<string, number> | null {
-  return resourceNeed;
-}
-
-/** The sweep is the only writer; a caller reaches for this to run the case where
- *  no sweep has happened yet. */
-export function resetUnbuiltResourceNeedForTest(): void {
-  resourceNeed = null;
-}
-
 /** A part's own blueprint is not the part. componentUniqueNameAliases reads
  *  ".../SpinnerexBlade" and ".../SpinnerexBladeBlueprint" as one pile in two
  *  spellings, which holds only for a part farmed whole: a Prime part reaches the
@@ -355,7 +376,6 @@ export function buildPartPlans(
   const plan = buildMasteryPlan(pins, itemDb, withoutPartBlueprints(ownership, itemDb), {
     allocate: false,
   });
-  resourceNeed = new Map(plan.totals.map((row) => [row.uniqueName, row.needed]));
   const out = new Map<string, PartPlan>();
   for (const item of plan.items) out.set(item.uniqueName, toPartPlan(item));
   return out;

@@ -1,5 +1,6 @@
 // Crawls the overframe.gg arsenal pages named by its sitemap and builds
-// src/data/suggest/overframeItems.json and popularMods.json.
+// src/data/suggest/overframeItems.json, popularMods.json and mods.json, then
+// the build crawl behind arcanes.json.
 // Usage: node scripts/suggest/fetch-overframe-items.mjs [--limit N] [--retry-empty]
 // A cold run is ~2400 requests at one per second; the cache makes it resumable.
 
@@ -8,6 +9,8 @@ import path from "node:path";
 
 import { curlFetch } from "./curl-fetch.mjs";
 import { CACHE_DIR, DATA_DIR, loadLocalizationDict, readJson, writeJsonAtomic } from "./io.mjs";
+import { foldPopularMods } from "./mods.mjs";
+import { arcaneBearingItems, crawlArcaneBuilds, writeArcanes } from "./overframe-builds.mjs";
 import {
   ITEM_URL,
   SITEMAP_URL,
@@ -21,6 +24,7 @@ import {
 const CACHE_FILE = path.join(CACHE_DIR, "overframe-items-cache.json");
 const ITEMS_FILE = path.join(DATA_DIR, "overframeItems.json");
 const MODS_FILE = path.join(DATA_DIR, "popularMods.json");
+const MOD_LIST_FILE = path.join(DATA_DIR, "mods.json");
 const THROTTLE_MS = 1100;
 const FLUSH_EVERY = 25;
 const MIN_ITEMS = 500;
@@ -137,5 +141,20 @@ if (unvisited > MAX_UNVISITED) {
 
 await writeJsonAtomic(ITEMS_FILE, { items });
 await writeJsonAtomic(MODS_FILE, popularMods);
+const modList = foldPopularMods(popularMods);
+await writeJsonAtomic(MOD_LIST_FILE, modList);
 console.log(`wrote ${ITEMS_FILE} with ${Object.keys(items).length} items`);
 console.log(`wrote ${MODS_FILE} with ${withMods} mod lists`);
+console.log(`wrote ${MOD_LIST_FILE} with ${modList.length} mods`);
+
+const arcaneItems = arcaneBearingItems(items);
+const builds = await crawlArcaneBuilds({
+  items: arcaneItems,
+  resolveName,
+  isStopping: () => stopping,
+});
+if (stopping) {
+  console.error("interrupted - build cache saved, refusing to overwrite arcanes.json");
+  process.exit(130);
+}
+if (!(await writeArcanes(builds, arcaneItems))) process.exit(1);

@@ -118,6 +118,8 @@ export const DEFAULT_OPTIONS: SuggestionOptions = {
   acquisitionSortDir: "asc",
   acquisitionKinds: [...ACQUISITION_INCLUDES],
   acquisitionSearch: "",
+  modSearch: "",
+  arcaneSearch: "",
 };
 
 /** Synthetic activity ids these settings were stored under before they had a
@@ -352,6 +354,10 @@ export function parseOptions(raw: string | null): Partial<SuggestionOptions> {
   }
   const search = parsed["acquisitionSearch"];
   if (typeof search === "string") options.acquisitionSearch = search;
+  const modSearch = parsed["modSearch"];
+  if (typeof modSearch === "string") options.modSearch = modSearch;
+  const arcaneSearch = parsed["arcaneSearch"];
+  if (typeof arcaneSearch === "string") options.arcaneSearch = arcaneSearch;
   return options;
 }
 

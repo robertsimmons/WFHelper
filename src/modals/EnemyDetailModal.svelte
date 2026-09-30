@@ -1,8 +1,9 @@
 <script lang="ts">
   import DetailModalBase from "./DetailModalBase.svelte";
+  import DropSourceTile from "../components/DropSourceTile.svelte";
   import WikiButton from "../components/WikiButton.svelte";
   import { loadCodexScans } from "../lib/codexScansLazy.js";
-  import { dropRarityColour, formatDropChance } from "../lib/dropDisplay.js";
+  import { dropRowPlaces } from "../lib/dropSources.js";
   import { normalizeEnemyName } from "../lib/enemies/enemyName.js";
   import { loadEnemyInfo } from "../lib/enemies/enemyInfoLazy.js";
   // Aliased: a store named `tr` makes svelte-check flag every <tr> row as a lowercase component.
@@ -174,6 +175,7 @@
         ).filter(([, values]) => values.length > 0)
       : [],
   );
+  const places = $derived(dropRowPlaces(drops));
   // Base level is a header tag, so it alone does not fill the spawn section.
   const hasSpawnData = $derived(spawnGroups.length > 0);
   // The hint is only readable next to the faction name it was inferred from, so
@@ -272,20 +274,13 @@
                 >
                   <th class="px-2.5 py-1.5 font-medium">{$t("common.item")}</th>
                   <th class="px-2.5 py-1.5 font-medium">{$t("wiki.col.dropsFrom")}</th>
-                  <th class="px-2.5 py-1.5 text-right font-medium">{$t("wiki.col.rarity")}</th>
                 </tr>
               </thead>
               <tbody>
-                {#each drops as row (row.item + "|" + row.place + "|" + row.kind + "|" + row.rarity + "|" + row.chance)}
-                  <tr class="border-t border-border/60">
-                    <td class="px-2.5 py-1 text-text-primary">{row.item}</td>
-                    <td class="px-2.5 py-1 text-text-secondary">{row.place}</td>
-                    <td class="whitespace-nowrap px-2.5 py-1 text-right">
-                      <span class="font-semibold" style="color:{dropRarityColour(row.rarity)}"
-                        >{row.rarity}</span
-                      >
-                      <span class="ml-1.5 text-accent">{formatDropChance(row.chance)}</span>
-                    </td>
+                {#each places as place (place.item + "|" + place.kind + "|" + place.source.key)}
+                  <tr class="border-t border-border/60 align-top">
+                    <td class="px-2.5 py-1 text-text-primary">{place.item}</td>
+                    <td class="px-2.5 py-1"><DropSourceTile source={place.source} /></td>
                   </tr>
                 {/each}
               </tbody>

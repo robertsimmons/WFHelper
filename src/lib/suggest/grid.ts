@@ -7,7 +7,7 @@ export const CARD_GAP = 12;
  *  floor a track may shrink to. */
 export const CARD_MIN_WIDTH = 248;
 
-/** Relics, acquisition and mastery draw item art rather than a banner, so their
+/** Every section but Tasks draws item art rather than a banner, so their
  *  tracks take the `.item-grid` floor the Mastery and Inventory views use. */
 const NARROW_CARD_MIN_WIDTH = 200;
 
@@ -15,6 +15,8 @@ const SECTION_CARD_MIN_WIDTH: Record<SuggestionSectionId, number> = {
   tasks: CARD_MIN_WIDTH,
   relics: NARROW_CARD_MIN_WIDTH,
   acquisition: NARROW_CARD_MIN_WIDTH,
+  mods: NARROW_CARD_MIN_WIDTH,
+  arcanes: NARROW_CARD_MIN_WIDTH,
   mastery: NARROW_CARD_MIN_WIDTH,
 };
 

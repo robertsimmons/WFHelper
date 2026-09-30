@@ -86,6 +86,7 @@ function modular(heads: { total: number; owned: number }): ModularPlan {
     })),
     owned: heads.owned,
     requiresGilding: true,
+    slots: [],
   };
 }
 

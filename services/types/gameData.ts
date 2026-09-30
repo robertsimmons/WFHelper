@@ -36,6 +36,73 @@ export interface DropEntry {
   rarity: string;
 }
 
+/** What a mod's own card says, off @wfcd/items. */
+export interface ModFacts {
+  polarity: string | null;
+  rarity: string | null;
+  baseDrain: number | null;
+  fusionLimit: number | null;
+  /** The slot it fits: `Melee`, `Primary`, `Warframe`, or one item's name. */
+  compatName: string | null;
+  /** The last rank's stat lines. */
+  maxRankStats: string[];
+}
+
+/** What an arcane's own card says, off @wfcd/items. */
+export interface ArcaneFacts {
+  /** @wfcd's type with the `Arcane` dropped: `Warframe`, `Operator`, `Zaw`. */
+  slot: string | null;
+  rarity: string | null;
+  maxRank: number;
+  /** The last rank's stat lines. */
+  maxRankStats: string[];
+}
+
+/** Vendors DE's exports leave unnamed; the renderer holds their text. */
+export type UpgradeVendorId =
+  | "arbitrationHonors"
+  | "steelPathHonors"
+  | "son"
+  | "teasonai"
+  | "theBusiness"
+  | "acrithis"
+  | "chipper"
+  | "archimedeanYonta"
+  | "devilsTriad"
+  | "temporalArchimedea";
+
+export interface UpgradeVendorCost {
+  amount: number;
+  unit: "standing" | "cred" | "plat" | "item" | "ducats";
+  /** The currency's name where `unit` is `item`. */
+  item?: string;
+  /** Baro also charges credits alongside ducats. */
+  credits?: number;
+}
+
+export interface UpgradeVendorRank {
+  level: number | null;
+  title: string | null;
+}
+
+export interface UpgradeVendorHub {
+  region: string | null;
+  place: string;
+}
+
+/** Exactly one of `name` and `id` is set. */
+export interface UpgradeVendorSource {
+  name?: string;
+  id?: UpgradeVendorId;
+  cost?: UpgradeVendorCost;
+  rank?: UpgradeVendorRank;
+  /** Who in the hub sells it: Hok, Cavalero, Loid. */
+  keeper?: string;
+  hub?: UpgradeVendorHub;
+  /** @wfcd drop locations that are this purchase, not a drop. */
+  covers?: string[];
+}
+
 export interface ComponentEntry {
   uniqueName: string;
   name: string;
@@ -81,6 +148,9 @@ export interface RendererItemEntry {
     drops: DropEntry[];
   }[];
   drops: DropEntry[];
+  mod?: ModFacts;
+  arcane?: ArcaneFacts;
+  vendors?: UpgradeVendorSource[];
   wikiaUrl?: string | null;
   recipe?: RecipeData;
   /** For blueprint entries: uniqueName of the item this blueprint crafts. */

@@ -16,7 +16,7 @@ import {
   ownsItem,
   type GearEntry,
 } from "./parts.js";
-import { buildPaths } from "./paths.js";
+import { buildPaths, headlinePath } from "./paths.js";
 import { createRatings } from "./ratings.js";
 import { baseWeaponName, listWeapons } from "./weapons.js";
 import type { ItemDbEntry } from "../../../types/inventory.js";
@@ -262,7 +262,7 @@ export function resolveAcquisition(ctx: AcquisitionContext): AcquisitionTarget[]
       difficulty: ratings.effortLabel(item.name),
       tier: ratings.tier(item.name),
       wiki: item.entry.wikiaUrl ?? null,
-      effort: paths[0]?.effort ?? NO_PATH_EFFORT,
+      effort: headlinePath(paths)?.effort ?? NO_PATH_EFFORT,
     };
   });
 

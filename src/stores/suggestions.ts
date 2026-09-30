@@ -9,8 +9,10 @@ import {
 } from "../lib/suggest/dismissals.js";
 import { buildFeed, collectSuggestions, type SuggestionFeed } from "../lib/suggest/engine.js";
 import { acquisitionProvider } from "../lib/suggest/providers/acquisition.js";
+import { arcanesProvider } from "../lib/suggest/providers/arcanes.js";
 import { dailiesProvider } from "../lib/suggest/providers/dailies.js";
 import { masteryProvider } from "../lib/suggest/providers/mastery.js";
+import { modsProvider } from "../lib/suggest/providers/mods.js";
 import { nightwaveProvider } from "../lib/suggest/providers/nightwave.js";
 import { relicsProvider } from "../lib/suggest/providers/relics.js";
 import { vendorsProvider } from "../lib/suggest/providers/vendors.js";
@@ -36,6 +38,8 @@ const PROVIDERS: readonly SuggestionProvider[] = [
   vendorsProvider,
   relicsProvider,
   acquisitionProvider,
+  modsProvider,
+  arcanesProvider,
   masteryProvider,
   nightwaveProvider,
 ];

@@ -71,10 +71,33 @@ export function creditsFromWhere(where: string): number | null {
   return Number.isFinite(value) && value > 0 ? value : null;
 }
 
-function coveredBy(source: CuratedSource, missing: readonly PartState[]): PartState[] {
-  if (source.parts === "both") return [...missing];
-  const role = source.parts === "main" ? "main" : "component";
+/** The in-game Market sells a main blueprint and never a component one, whatever
+ *  a table row claims. */
+function coveredBy(
+  kind: PathKind,
+  source: CuratedSource,
+  missing: readonly PartState[],
+): PartState[] {
+  const half = kind === "market" ? "main" : source.parts;
+  if (half === "both") return [...missing];
+  const role = half === "main" ? "main" : "component";
   return missing.filter((part) => part.role === role);
+}
+
+/** A Market path short of the whole build is a blueprint price, not a route. */
+export function isBlueprintPrice(path: AcquisitionPath): boolean {
+  return path.kind === "market" && !path.complete;
+}
+
+/** The route a card leads with and an item's effort is read off. */
+export function headlinePath(paths: readonly AcquisitionPath[]): AcquisitionPath | null {
+  return paths.find((path) => !isBlueprintPrice(path)) ?? null;
+}
+
+/** The Circuit's frame rotation is an alternative, never the farm while one exists. */
+function headlineRank(path: AcquisitionPath): number {
+  if (isBlueprintPrice(path)) return 2;
+  return path.kind === "circuit" && path.covers.length > 0 ? 1 : 0;
 }
 
 function platFor(name: string, plat: PlatPriceLookup | null | undefined): number | null {
@@ -178,7 +201,7 @@ function curatedPaths(input: PathInputs, missing: readonly PartState[]): Acquisi
     if (!kind) continue;
     // The nemesis run is modelled step by step, so a table row naming it would double up.
     if (kind === "nemesis" && input.nemesis) continue;
-    const covers = coveredBy(source, missing);
+    const covers = coveredBy(kind, source, missing);
     if (covers.length === 0) continue;
     const credits = kind === "market" ? creditsFromWhere(source.where) : null;
     out.push(
@@ -292,6 +315,28 @@ export function buildPaths(input: PathInputs): AcquisitionPath[] {
     );
   }
 
-  paths.sort((a, b) => a.effort - b.effort || a.id.localeCompare(b.id));
+  excusePurchasableBlueprint(paths, missing, difficulty);
+  paths.sort(
+    (a, b) => headlineRank(a) - headlineRank(b) || a.effort - b.effort || a.id.localeCompare(b.id),
+  );
   return paths;
+}
+
+/** A farm short only of what the Market sells still finishes the item. */
+function excusePurchasableBlueprint(
+  paths: AcquisitionPath[],
+  missing: readonly PartState[],
+  difficulty: number | null,
+): void {
+  const bought = new Set(
+    paths.filter((path) => path.kind === "market").flatMap((path) => path.covers),
+  );
+  if (bought.size === 0) return;
+  for (const path of paths) {
+    if (path.complete || path.kind === "market") continue;
+    const covered = new Set(path.covers);
+    if (missing.every((part) => covered.has(part.name) || bought.has(part.name))) {
+      path.effort = effortFor(path.kind, true, difficulty, path.cost);
+    }
+  }
 }

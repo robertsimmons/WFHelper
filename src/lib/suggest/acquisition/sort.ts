@@ -1,3 +1,4 @@
+import { headlinePath } from "./paths.js";
 import { planRating } from "./plan/index.js";
 import { effortValue } from "./ratings.js";
 import { tierOrder, tierScore } from "./recommend.js";
@@ -42,7 +43,7 @@ export function platFor(target: AcquisitionTarget): number | null {
 /** Hundreds of items tie at the same route, so price breaks the tie: the cheaper
  *  one is the genuinely easier win, and a name never is. */
 function priceFor(target: AcquisitionTarget): number {
-  const cost = target.paths[0]?.cost;
+  const cost = headlinePath(target.paths)?.cost;
   if (!cost) return Number.POSITIVE_INFINITY;
   const plat = completionPlat(cost.plat);
   return plat ?? cost.credits ?? Number.POSITIVE_INFINITY;

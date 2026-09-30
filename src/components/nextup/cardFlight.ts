@@ -11,7 +11,12 @@ const EASING = "cubic-bezier(0.4, 0, 0.2, 1)";
 /** Over the page, under the modal layer. */
 const FLIGHT_Z = "900";
 
-const MARKERS = ["data-suggestion-card", "data-suggestion-reward", "data-acquisition-pin"];
+const MARKERS = [
+  "data-suggestion-card",
+  "data-suggestion-reward",
+  "data-acquisition-pin",
+  "data-upgrade-pin",
+];
 
 interface Box {
   left: number;
@@ -100,5 +105,15 @@ export function pinnedNode(uniqueName: string): Element | null {
 export function suggestionNode(uniqueName: string): Element | null {
   return document.querySelector(
     `[data-suggestion-card="acquisition"][data-suggestion-reward=${JSON.stringify(uniqueName)}]`,
+  );
+}
+
+export function upgradePinnedNode(kind: string, name: string): Element | null {
+  return document.querySelector(`[data-upgrade-pin=${JSON.stringify(`${kind}:${name}`)}]`);
+}
+
+export function upgradeSuggestionNode(kind: string, name: string): Element | null {
+  return document.querySelector(
+    `[data-suggestion-card=${JSON.stringify(kind)}][data-suggestion-reward=${JSON.stringify(name)}]`,
   );
 }

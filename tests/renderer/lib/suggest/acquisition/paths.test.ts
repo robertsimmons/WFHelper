@@ -2,7 +2,18 @@ import { describe, expect, it } from "vitest";
 
 import { resolveAcquisition } from "../../../../../src/lib/suggest/acquisition/index.js";
 import { creditsFromWhere } from "../../../../../src/lib/suggest/acquisition/paths.js";
-import { frame, inventory, itemDb, LITH_M1, MAG_BP, part, relicDb } from "./fixtures.js";
+import {
+  frame,
+  inventory,
+  itemDb,
+  LITH_M1,
+  MAG_BP,
+  MAG_CHASSIS,
+  MAG_NEURO,
+  MAG_SYSTEMS,
+  part,
+  relicDb,
+} from "./fixtures.js";
 import type {
   AcquisitionContext,
   AcquisitionTarget,
@@ -54,13 +65,52 @@ describe("acquisition paths", () => {
     expect(mag.paths.some((path) => path.kind === "boss")).toBe(true);
   });
 
-  it("sorts the easiest genuinely available path first", () => {
+  it("leads with the farm, then the Circuit, and prices the Market blueprint last", () => {
     const mag = target("Mag");
-    expect(mag.paths[0].kind).toBe("market");
-    expect(mag.paths.map((path) => path.effort)).toEqual(
-      [...mag.paths.map((path) => path.effort)].sort((a, b) => a - b),
-    );
+    expect(mag.paths.map((path) => path.kind)).toEqual(["boss", "circuit", "market"]);
     expect(mag.effort).toBe(mag.paths[0].effort);
+  });
+
+  it("never reads a buyable main blueprint as an easy item", () => {
+    const mag = target("Mag");
+    const market = mag.paths.find((path) => path.kind === "market");
+    expect(market?.complete).toBe(false);
+    expect(mag.effort).toBeGreaterThan(market?.effort ?? 1);
+  });
+
+  it("reads a farm short only of the Market blueprint as finishing the item", () => {
+    const bought = target("Mag", { inventory: inventory({ recipes: { [MAG_BP]: 1 } }) });
+    expect(target("Mag").effort).toBe(bought.effort);
+  });
+
+  it("covers only the main blueprint from the Market, whatever the table row claims", () => {
+    const loki = {
+      Mag: {
+        sources: [
+          { kind: "market", parts: "both", where: "Market (25,000 Credits)" },
+          { kind: "boss", parts: "components", where: "Hyena Pack, Psamathe, Neptune" },
+        ],
+      },
+    };
+    const mag = target("Mag", { curatedWeapons: loki });
+    expect(mag.paths.find((path) => path.kind === "market")?.covers).toEqual(["Mag Blueprint"]);
+    expect(mag.paths[0].kind).toBe("boss");
+  });
+
+  it("leaves a Market blueprint with nothing to farm the rest as no route", () => {
+    const loki = {
+      Mag: { sources: [{ kind: "market", parts: "main", where: "Market (25,000 Credits)" }] },
+    };
+    const mag = target("Mag", { curatedWeapons: loki });
+    expect(mag.paths.map((path) => path.kind)).toContain("market");
+    expect(mag.effort).toBe(1);
+  });
+
+  it("leads with the Market once the main blueprint is all that is missing", () => {
+    const components = { [MAG_NEURO]: 1, [MAG_CHASSIS]: 1, [MAG_SYSTEMS]: 1 };
+    const mag = target("Mag", { inventory: inventory({ recipes: components }) });
+    expect(mag.paths[0].kind).toBe("market");
+    expect(mag.paths[0].complete).toBe(true);
   });
 
   it("puts a whole-build lab research ahead of a partial boss farm", () => {

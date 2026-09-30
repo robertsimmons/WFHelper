@@ -41,6 +41,8 @@ export interface ModularPlan {
   owned: number;
   /** Rank 30 then a gilding bank the mastery; a K-Drive skips the gilding. */
   requiresGilding: boolean;
+  /** Every part that fills each of the build's other slots, one per slot. */
+  slots: string[][];
 }
 
 export type NemesisFamily = "kuva" | "tenet" | "coda";

@@ -1,7 +1,13 @@
 <script lang="ts">
   import { onMount, tick } from "svelte";
 
-  import { liftCard, pinnedNode, suggestionNode } from "../components/nextup/cardFlight.js";
+  import {
+    liftCard,
+    pinnedNode,
+    suggestionNode,
+    upgradePinnedNode,
+    upgradeSuggestionNode,
+  } from "../components/nextup/cardFlight.js";
   import PinnedAcquisitions from "../components/nextup/PinnedAcquisitions.svelte";
   import {
     acquisitionKey,
@@ -9,6 +15,12 @@
     withoutPinned,
     type PinnedEntry,
   } from "../components/nextup/pinnedAcquisitions.js";
+  import {
+    pinnedUpgrades,
+    upgradeKey,
+    withoutPinnedUpgrades,
+    type PinnedUpgrade,
+  } from "../components/nextup/pinnedUpgrades.js";
   import SuggestionSection from "../components/nextup/SuggestionSection.svelte";
   import SuggestionSettingsModal from "../components/nextup/SuggestionSettingsModal.svelte";
   import AcquisitionPlanPage from "../components/nextup/plan/AcquisitionPlanPage.svelte";
@@ -19,12 +31,16 @@
   import { rewardArt } from "../components/nextup/rewardArt.js";
   import { sectionNarrowed } from "../components/nextup/sectionFilters.js";
   import AcquisitionControls from "../components/nextup/controls/AcquisitionControls.svelte";
+  import ArcanesControls from "../components/nextup/controls/ArcanesControls.svelte";
   import MasteryControls from "../components/nextup/controls/MasteryControls.svelte";
+  import ModsControls from "../components/nextup/controls/ModsControls.svelte";
   import RelicsControls from "../components/nextup/controls/RelicsControls.svelte";
   import TasksControls from "../components/nextup/controls/TasksControls.svelte";
   import { onInventoryLoaded } from "../lib/actions.js";
   import { tr } from "../lib/i18n.js";
   import { invoke } from "../lib/ipc.js";
+  import { UPGRADE_CATALOGS, UPGRADE_KINDS } from "../lib/suggest/upgradeCatalogs.js";
+  import type { UpgradeKind } from "../lib/suggest/upgrades.js";
   import { partsRead } from "../lib/suggest/providers/acquisition.js";
   import { mountWorldPolling } from "../lib/world/useWorldView.js";
   import {
@@ -40,6 +56,8 @@
   } from "../stores/acquisitionPlanProgress.js";
   import { inventoryData, itemDb } from "../stores/data.js";
   import { ensureDropPools } from "../stores/dropPools.js";
+  import { toggleUpgradePin, unpinUpgrades, upgradePins } from "../stores/upgradePins.js";
+  import { priceCacheRevision } from "../stores/pricing.js";
   import { worldData } from "../stores/world.js";
   import { suggestionPreferences } from "../stores/suggestionPrefs.js";
   import {
@@ -64,6 +82,8 @@
     tasks: TasksControls,
     relics: RelicsControls,
     acquisition: AcquisitionControls,
+    mods: ModsControls,
+    arcanes: ArcanesControls,
     mastery: MasteryControls,
   };
 
@@ -109,7 +129,11 @@
     const categories =
       section.id === "tasks" ? section.categories.filter(shows) : section.categories;
     const rows = categories.flatMap((category) => feed.sections[category]).sort(byScore);
-    return section.id === "acquisition" ? withoutPinned(rows, $acquisitionPins) : rows;
+    if (section.id === "acquisition") return withoutPinned(rows, $acquisitionPins);
+    if (section.id === "mods" || section.id === "arcanes") {
+      return withoutPinnedUpgrades(rows, pinsOf(section.id));
+    }
+    return rows;
   }
 
   /** A section is dropped only where nothing the player did emptied it: its own
@@ -120,6 +144,39 @@
       suggestions: suggestionsFor(section),
     })).filter((row) => row.suggestions.length > 0 || sectionNarrowed(row.section.id, options)),
   );
+
+  // `$` subscribes only to a top-level store, so each kind's list gets a name.
+  const modPins = upgradePins.mods;
+  const arcanePins = upgradePins.arcanes;
+
+  function pinsOf(kind: UpgradeKind): string[] {
+    return kind === "mods" ? $modPins : $arcanePins;
+  }
+
+  const holdings = $derived(
+    Object.fromEntries(
+      UPGRADE_KINDS.map((kind) => [kind, UPGRADE_CATALOGS[kind].holdings($inventoryData, $itemDb)]),
+    ),
+  );
+  // The card reads the price cache directly, so a revision has to rebuild it.
+  const pinnedUpgradeEntries = $derived.by(() => {
+    void $priceCacheRevision;
+    return UPGRADE_KINDS.flatMap((kind) =>
+      pinnedUpgrades(UPGRADE_CATALOGS[kind], pinsOf(kind), $itemDb, holdings[kind] ?? null),
+    );
+  });
+
+  // Only a read inventory can say one is owned; an unread one owns nothing.
+  $effect(() => {
+    if (!$inventoryData) return;
+    for (const kind of UPGRADE_KINDS) {
+      const catalog = UPGRADE_CATALOGS[kind];
+      const owned = pinsOf(kind).filter((name) =>
+        catalog.owns(name, $itemDb, holdings[kind] ?? null),
+      );
+      if (owned.length > 0) unpinUpgrades(kind, owned);
+    }
+  });
 
   const acquisitionFeed = $derived(feed.sections.acquisition);
   const entries = $derived(pinnedAcquisitions($acquisitionPins, acquisitionFeed));
@@ -195,6 +252,19 @@
     void tick().then(() => flight.settle(pinnedNode(key)));
   }
 
+  function pinUpgrade(suggestion: Suggestion): void {
+    const key = upgradeKey(suggestion);
+    const kind = suggestion.details?.upgrade?.kind;
+    if (!key || !kind) return;
+    toggleUpgradePin(kind, key);
+    const flight = liftCard(upgradeSuggestionNode(kind, key));
+    void tick().then(() => flight.settle(upgradePinnedNode(kind, key)));
+  }
+
+  function unpinUpgrade(entry: PinnedUpgrade): void {
+    unpinUpgrades(entry.kind, [entry.name]);
+  }
+
   // The settings modal owns Escape while it is open, and it closes on its own.
   function onWindowKey(event: KeyboardEvent): void {
     if (event.key !== "Escape" || openPlan === null || settingsOpen) return;
@@ -266,12 +336,14 @@
     <div class="flex min-h-0 flex-1 flex-col gap-5 overflow-y-auto pr-4">
       <PinnedAcquisitions
         entries={pinned}
+        upgrades={pinnedUpgradeEntries}
         onOpen={(entry) => (openPlan = entry.uniqueName)}
         onUnpin={unpin}
+        onUnpinUpgrade={unpinUpgrade}
       />
       <!-- Only when the page has nothing at all on it: a section kept for its
            controls says why it is empty itself, and still offers the way back. -->
-      {#if shown.length === 0 && pinned.length === 0}
+      {#if shown.length === 0 && pinned.length === 0 && pinnedUpgradeEntries.length === 0}
         <div class="empty-state">
           <p>{$tr(feed.hiddenCount > 0 ? "nextUp.emptyDismissed" : "nextUp.empty")}</p>
         </div>
@@ -283,7 +355,11 @@
             suggestions={row.suggestions}
             onComplete={complete}
             onDismiss={(suggestion) => dismissSuggestion(suggestion.id, suggestion.fingerprint)}
-            onWorkOnThis={row.section.id === "acquisition" ? workOnThis : undefined}
+            onWorkOnThis={row.section.id === "acquisition"
+              ? workOnThis
+              : row.section.id === "mods" || row.section.id === "arcanes"
+                ? pinUpgrade
+                : undefined}
             controls={CONTROLS[row.section.id]}
           />
         {/each}

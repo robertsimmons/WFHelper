@@ -147,6 +147,19 @@ describe("acquisitionProvider", () => {
     expect(draft.signals.effort).toBe(1);
   });
 
+  it("routes a frame through its boss, never through the Market blueprint", () => {
+    const mag = draftFor(collect(), MAG);
+    const segments = mag.whySegments ?? [];
+    expect(segments[segments.length - 1]).toEqual({ text: "nextUp.acqKindBoss" });
+  });
+
+  it("routes a frame to the Market once only its main blueprint is missing", () => {
+    const owned = { [MAG_NEURO]: 1, [MAG_CHASSIS]: 1, [MAG_SYSTEMS]: 1 };
+    const mag = draftFor(collect({ inventory: inventory({ misc: owned }) }), MAG);
+    const segments = mag.whySegments ?? [];
+    expect(segments[segments.length - 1]?.text).toContain("common.market");
+  });
+
   it("reads a build the foundry would take today as ready and all but free", () => {
     const drafts = collect({
       inventory: inventory({
@@ -209,7 +222,7 @@ describe("acquisitionProvider", () => {
     const run = target?.paths.find((path) => path.kind === "nemesis");
     expect(run?.steps.length).toBeGreaterThan(3);
     expect(run?.steps.some((step) => /Requiem/.test(step.where))).toBe(true);
-    expect(bramma.title).toBe("nextUp.acquisitionGet");
+    expect(bramma.title).toBe("Kuva Bramma");
   });
 
   it("offers only the kinds of gear the section is set to include", () => {

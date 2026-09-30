@@ -1,5 +1,12 @@
 import { resourceEntry } from "./resources.js";
-import type { AuthoredPlan, PlanGroup, PlanGroupType, PlanRow } from "./schema.js";
+import type {
+  AuthoredPlan,
+  PlanBadge,
+  PlanGroup,
+  PlanGroupType,
+  PlanPrice,
+  PlanRow,
+} from "./schema.js";
 
 interface CountedItem {
   name: string;
@@ -18,6 +25,12 @@ interface SourcePath {
   kind: string;
   covers: readonly string[];
   steps: readonly SourceStep[];
+  cost?:
+    | {
+        credits: number | null;
+        plat: { set: number | null; partsTotal: number | null } | null;
+      }
+    | undefined;
 }
 
 /** What a fallback plan needs off an acquisition target, named here so this layer
@@ -53,6 +66,17 @@ const PATH_GROUPS: Record<string, PlanGroupType> = {
   circuit: "farm",
   nemesis: "boss",
 };
+
+/** A multi-step path has no single node to head its group with, and a Market
+ *  line's own text restates the price the head already carries. */
+const PATH_PLACES: Record<string, string> = {
+  nemesis: "NEMESIS HUNT",
+  market: "MARKET",
+};
+
+/** Buying off another player and the Circuit are shortcuts, not the farm: they
+ *  read as a price and a badge unless nothing else yields the part. */
+const SHORTCUT_KINDS = new Set(["trade", "circuit"]);
 
 function group(
   type: PlanGroupType,
@@ -90,21 +114,113 @@ function row(label: string, qty: number | null): PlanRow {
   };
 }
 
-function pathGroups(source: FallbackSource): PlanGroup[] {
-  const path = source.paths[0];
-  if (!path) return [];
-  const out: PlanGroup[] = [];
-  for (const step of path.steps) {
-    const labels = step.parts.length > 0 ? [...step.parts] : [source.name];
-    out.push(
-      group(
-        PATH_GROUPS[step.kind] ?? "farm",
-        step.where.toUpperCase(),
-        labels.map((label) => row(label, null)),
-      ),
-    );
+/** A Market blueprint is bought outright, so it claims the main blueprint first;
+ *  each other part goes to the easiest path that farms it, paths arriving easiest
+ *  first. A path covering nothing (an Incarnon adapter) is itself the thing wanted. */
+function passOf(kind: string): number {
+  if (kind === "market") return 0;
+  return SHORTCUT_KINDS.has(kind) ? 2 : 1;
+}
+
+function assignParts(paths: readonly SourcePath[]): Map<SourcePath, string[]> {
+  const taken = new Set<string>();
+  const chosen = new Map<SourcePath, string[]>();
+  for (const pass of [0, 1, 2]) {
+    for (const path of paths) {
+      if (passOf(path.kind) !== pass) continue;
+      const parts = path.covers.filter((part) => !taken.has(part));
+      if (path.covers.length > 0 && parts.length === 0) continue;
+      for (const part of parts) taken.add(part);
+      chosen.set(path, parts);
+    }
   }
-  return out;
+  return chosen;
+}
+
+function stepRows(path: SourcePath, parts: readonly string[], name: string): PlanRow[] {
+  const adapter = path.kind === "circuit" && path.covers.length === 0;
+  const labels = parts.length > 0 ? [...parts] : [adapter ? `${name} Incarnon Genesis` : name];
+  if (path.steps.length <= 1) return labels.map((label) => row(label, null));
+  return [...path.steps.map((step) => row(step.where, null)), ...labels.map((l) => row(l, null))];
+}
+
+function pathPlace(path: SourcePath, name: string): string {
+  const fixed = PATH_PLACES[path.kind];
+  if (fixed) return fixed;
+  if (path.steps.length === 1) return path.steps[0].where.toUpperCase();
+  return name.toUpperCase();
+}
+
+function pathWhere(path: SourcePath): string {
+  return path.steps.map((step) => step.where).join("; ");
+}
+
+/** One group per trip, gates first. Two paths to the same place share a group,
+ *  and a farm route that lost a part to an easier one sits behind a disclosure. */
+function pathGroups(source: FallbackSource): PlanGroup[] {
+  const chosen = assignParts(source.paths);
+  const byKey = new Map<string, PlanGroup>();
+  const ownerOf = new Map<string, PlanGroup>();
+  for (const [path, parts] of chosen) {
+    const type = PATH_GROUPS[path.kind] ?? "farm";
+    const place = pathPlace(path, source.name);
+    const key = `${type}|${place}`;
+    const rows = stepRows(path, parts, source.name);
+    const existing = byKey.get(key);
+    const target = existing ?? group(type, place, []);
+    for (const next of rows) {
+      if (!target.rows.some((have) => have.label === next.label)) target.rows.push(next);
+    }
+    if (!existing) byKey.set(key, target);
+    for (const part of parts) ownerOf.set(part, target);
+  }
+
+  for (const path of source.paths) {
+    if (chosen.has(path) || SHORTCUT_KINDS.has(path.kind)) continue;
+    const owner = path.covers.map((part) => ownerOf.get(part)).find((found) => found);
+    owner?.disclosures.push({ title: "also from", body: pathWhere(path) });
+  }
+
+  const groups = [...byKey.values()];
+  return [
+    ...groups.filter((entry) => entry.type === "gate"),
+    ...groups.filter((entry) => entry.type !== "gate"),
+  ];
+}
+
+function formatNumber(value: number): string {
+  return Math.round(value).toLocaleString("en-US");
+}
+
+function pathPrices(source: FallbackSource): PlanPrice[] {
+  const prices: PlanPrice[] = [];
+  for (const path of source.paths) {
+    const cost = path.cost;
+    if (!cost) continue;
+    if (path.kind === "market" && cost.credits !== null && cost.credits > 0) {
+      prices.push({ label: "blueprint", amount: `${formatNumber(cost.credits)} cr`, money: false });
+    }
+    if (path.kind === "trade" && cost.plat) {
+      if (cost.plat.set !== null) {
+        prices.push({ label: "built", amount: `${formatNumber(cost.plat.set)} p`, money: false });
+      } else if (cost.plat.partsTotal !== null) {
+        prices.push({
+          label: "parts",
+          amount: `${formatNumber(cost.plat.partsTotal)} p`,
+          money: false,
+        });
+      }
+    }
+  }
+  return prices;
+}
+
+function pathBadges(source: FallbackSource): PlanBadge[] {
+  const chosen = assignParts(source.paths);
+  const circuitAlt = source.paths.some(
+    (path) => path.kind === "circuit" && path.covers.length > 0 && !chosen.has(path),
+  );
+  return circuitAlt ? [{ text: "Circuit alt", tone: "circuit" }] : [];
 }
 
 /** Materials group under the mission the shared resource table names, so the
@@ -182,8 +298,8 @@ export function fallbackPlan(source: FallbackSource): AuthoredPlan {
     effort: effortOf(source),
     tradeable: null,
     progress: { have: Math.max(0, have), need: Math.max(need, 1), unit: "parts" },
-    badges: [{ text: "no community notes yet", tone: "info" }],
-    prices: [],
+    badges: [{ text: "no community notes yet", tone: "info" }, ...pathBadges(source)],
+    prices: pathPrices(source),
     groups,
   };
 }

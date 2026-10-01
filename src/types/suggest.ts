@@ -11,7 +11,7 @@ import type { ItemDbEntry, MasteryData, RawInventoryData } from "./inventory.js"
 import type { RelicDatabase, RelicQuality } from "./relics.js";
 import type { WorldState } from "./world.js";
 
-export type { RelicAdvice, RelicRarity, RelicRewardStatus };
+export type { RelicRarity, RelicRewardStatus };
 
 /** Which section a suggestion lands in, and what the filter checkboxes narrow by. */
 export type SuggestionCategory =
@@ -68,10 +68,6 @@ export const SUGGESTION_SECTIONS: readonly SuggestionSection[] = [
   { id: "mastery", titleKey: "common.mastery", categories: ["mastery"] },
 ];
 
-export const SUGGESTION_SECTION_IDS: readonly SuggestionSectionId[] = SUGGESTION_SECTIONS.map(
-  (section) => section.id,
-);
-
 /** Worth ladder groups, best first. `unplaced` is where every resolved reward
  *  the ladder has no opinion about lands, at zero worth. */
 export const LADDER_GROUPS = ["must", "want", "useful", "filler", "junk"] as const;
@@ -114,10 +110,11 @@ export interface SuggestionOptions {
   modSearch: string;
   /** The arcanes section's twin of `modSearch`. */
   arcaneSearch: string;
+  /** The Vosfor dissolve list keeps a max-rank set of each arcane back. */
+  vosforKeepMax: boolean;
 }
 
-export const SCORE_WEIGHT_KEYS = ["value", "urgency", "effort"] as const;
-export type ScoreWeightKey = (typeof SCORE_WEIGHT_KEYS)[number];
+type ScoreWeightKey = "value" | "urgency" | "effort";
 
 /** How far each raw signal moves a suggestion up or down the order. */
 export type ScoreWeights = Record<ScoreWeightKey, number>;
@@ -298,6 +295,8 @@ export interface SuggestionDetails {
   relic?: RelicFacts | undefined;
   /** A mod or arcane card: both bands draw the one card. */
   upgrade?: UpgradeCard | undefined;
+  /** The arcanes band's lead card; it reads its facts from the stores itself. */
+  vosfor?: boolean | undefined;
 }
 
 /** The facts a relic card and its modal both draw, rather than a sentence. */
@@ -321,7 +320,7 @@ export interface RelicFacts {
   missions: RelicMission[];
 }
 
-export interface RelicMrFacts {
+interface RelicMrFacts {
   needed: number;
   /** Display names of the items a needed part would complete. */
   finishes: string[];

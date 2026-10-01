@@ -60,7 +60,7 @@ export const WORTH_LADDER: readonly LadderGroup[] = LADDER_GROUPS;
 
 /** The four-tier scale the ladder replaced, read out of storage and projected
  *  onto `rewards` for the tiles that still draw worth as a tier. */
-export const REWARD_WORTHS: readonly RewardWorth[] = ["great", "good", "ok", "low"];
+const REWARD_WORTHS: readonly RewardWorth[] = ["great", "good", "ok", "low"];
 export const MISSION_OPINIONS: readonly MissionOpinion[] = ["good", "bad"];
 export const ACTIVITY_PREFS: readonly ActivityPref[] = ["never", "low", "normal"];
 
@@ -102,7 +102,7 @@ export interface SuggestionOverrides {
 
 /** The Cred shop rotation is never published, so only the always-available
  *  staples are ever suggested, and only below the level kept here. */
-export function shippedNightwaveStock(): Record<string, number> {
+function shippedNightwaveStock(): Record<string, number> {
   const stock: Record<string, number> = {};
   for (const name of NIGHTWAVE_STAPLES) stock[name] = DEFAULT_NIGHTWAVE_STOCK;
   return stock;
@@ -120,6 +120,7 @@ export const DEFAULT_OPTIONS: SuggestionOptions = {
   acquisitionSearch: "",
   modSearch: "",
   arcaneSearch: "",
+  vosforKeepMax: true,
 };
 
 /** Synthetic activity ids these settings were stored under before they had a
@@ -358,6 +359,8 @@ export function parseOptions(raw: string | null): Partial<SuggestionOptions> {
   if (typeof modSearch === "string") options.modSearch = modSearch;
   const arcaneSearch = parsed["arcaneSearch"];
   if (typeof arcaneSearch === "string") options.arcaneSearch = arcaneSearch;
+  const keepMax = parsed["vosforKeepMax"];
+  if (typeof keepMax === "boolean") options.vosforKeepMax = keepMax;
   return options;
 }
 

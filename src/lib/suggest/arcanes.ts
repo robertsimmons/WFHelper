@@ -14,9 +14,7 @@ import type { ItemDbEntry, RawInventoryData } from "../../types/inventory.js";
 
 const loaded = import.meta.glob("../../data/suggest/arcanes.json", { eager: true });
 
-export const POPULAR_ARCANES: readonly PopularUpgrade[] = parsePopularList(
-  shippedModule(loaded),
-);
+export const POPULAR_ARCANES: readonly PopularUpgrade[] = parsePopularList(shippedModule(loaded));
 
 /** Most arcanes rank to 5; Exodia, Pax, Residual and Virtuos stop at 3. */
 const DEFAULT_MAX_RANK = 5;
@@ -60,6 +58,14 @@ export function arcaneCopies(
 
 function maxCopies(entry: ItemDbEntry | undefined): number {
   return copiesAtRank(entry?.arcane?.maxRank ?? DEFAULT_MAX_RANK);
+}
+
+export function arcaneMaxCopies(name: string, itemDb: Record<string, ItemDbEntry>): number {
+  return maxCopies(arcaneIndex(itemDb).get(name.toLowerCase())?.entry);
+}
+
+export function arcaneImage(name: string, itemDb: Record<string, ItemDbEntry>): string | null {
+  return arcaneIndex(itemDb).get(name.toLowerCase())?.entry.imageUrl ?? null;
 }
 
 function copiesOf(name: string, entry: ItemDbEntry | undefined, holdings: Holdings) {

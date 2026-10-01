@@ -10,8 +10,17 @@ const log = withScope("publicExport");
 const INDEX_URL = "https://content.warframe.com/PublicExport/index_en.txt.lzma";
 const MANIFEST_BASE = "https://content.warframe.com/PublicExport/Manifest/";
 
-// Exports that carry masterable items. Keys match itemDatabase's expectations.
-const OVERLAY_KEYS = ["ExportWarframes", "ExportWeapons", "ExportSentinels"] as const;
+// Exports that carry masterable items, keyed as itemDatabase expects, the
+// recipes and parts they build from, and the relic tables relicService fills a
+// new Prime's relics from.
+const OVERLAY_KEYS = [
+  "ExportWarframes",
+  "ExportWeapons",
+  "ExportSentinels",
+  "ExportRecipes",
+  "ExportResources",
+  "ExportRelicArcane",
+] as const;
 type OverlayKey = (typeof OVERLAY_KEYS)[number];
 
 // DE's item exports omit icon paths; this manifest maps uniqueName -> texture.

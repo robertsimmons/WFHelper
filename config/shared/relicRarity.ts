@@ -35,6 +35,13 @@ export function relicRewardRarity(refinement: string, chance: number, fallback =
   return fallback;
 }
 
+/** The chance a refinement pays one reward of a rarity; DE's export names only the rarity. */
+export function relicRewardChance(refinement: RelicRefinement, rarity: string): number | null {
+  const wanted = rarity.toLowerCase();
+  const row = CHANCE_RARITY[refinement].find(([, label]) => label.toLowerCase() === wanted);
+  return row ? row[0] : null;
+}
+
 /** Refinement parsed from a drop location like "Meso L5 Relic (Radiant)"; bare = intact. */
 export function relicRefinementFromLocation(location: string): RelicRefinement {
   const match = /\((Intact|Exceptional|Flawless|Radiant)\)/i.exec(location);

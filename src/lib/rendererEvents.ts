@@ -10,8 +10,10 @@ import { statusText } from "../stores/app.js";
 import { pendingArbiRunId, subscribeArbiRunSaved } from "../stores/arbiRuns.js";
 import { subscribePtRunSaved } from "../stores/ptRuns.js";
 import { currentView } from "../stores/app.js";
-import { inventoryModifiedAt, itemDb, parsedItems } from "../stores/data.js";
+import { inventoryData, inventoryModifiedAt, itemDb, parsedItems } from "../stores/data.js";
 import { masteryData } from "../stores/mastery.js";
+import { relicDb, relicOwnedCounts } from "../stores/relics.js";
+import { parseOwnedRelics } from "./relic.js";
 import { applyClosedWfmListing } from "../stores/market.js";
 import { addNotificationEntry, loadNotificationHistory } from "../stores/notifications.js";
 import { detectedWarframeUiScale } from "../stores/overlaySettings.js";
@@ -111,6 +113,12 @@ export function initRendererEvents(): () => void {
     on("item-db-updated", async () => {
       const db = await invoke("getItemDatabase");
       itemDb.set(db || {});
+      if (get(relicDb)) {
+        const relics = await invoke("getRelicDatabase");
+        relicDb.set(relics);
+        const inventory = get(inventoryData);
+        if (relics && inventory) relicOwnedCounts.set(parseOwnedRelics(inventory, relics));
+      }
       invoke("getMasteryProgress")
         .then((md) => masteryData.set(md))
         .catch((err) => console.warn("[Mastery] getMasteryProgress failed:", err));

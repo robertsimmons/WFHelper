@@ -2,7 +2,9 @@ import { withScope } from "./logger";
 import { normalizeErrorMessage } from "../config/shared/errors";
 import { normalizeDucats } from "../config/shared/numeric";
 import { normalizeWfmSlug } from "../config/shared/wfm";
-import { relicRewardRarity } from "./relicRarity";
+import { fallbackNameFromUniqueName } from "../config/shared/displayName";
+import { getOverlay } from "./publicExportSource";
+import { relicRewardChance, relicRewardRarity } from "./relicRarity";
 import {
   localizedNameFields,
   lookupItem,
@@ -89,6 +91,83 @@ function buildMirroredWfcdImageUrl(imageName: string | null | undefined): string
   return trimmed ? toIconMirrorUrl(WFCD_CDN + trimmed) : null;
 }
 
+const DE_REFINEMENT: Record<string, RelicQualityKey> = {
+  Bronze: "intact",
+  Silver: "exceptional",
+  Gold: "flawless",
+  Platinum: "radiant",
+};
+
+interface DeRelicReward {
+  rewardName?: string;
+  rarity?: string;
+  itemCount?: number;
+}
+
+function deRelicReward(reward: DeRelicReward, quality: RelicQualityKey): RelicReward | null {
+  const uniqueName = reward.rewardName?.replace("/StoreItems/", "/");
+  const chance = relicRewardChance(quality, reward.rarity ?? "");
+  if (!uniqueName || chance == null) return null;
+  const item = lookupItem(uniqueName);
+  const baseName = item?.name || fallbackNameFromUniqueName(uniqueName);
+  const count = reward.itemCount && reward.itemCount > 1 ? reward.itemCount : 1;
+  const name = count > 1 ? `${count}X ${baseName}` : baseName;
+  return {
+    name,
+    ...localizedNameFields(uniqueName, name),
+    uniqueName,
+    imageUrl: item?.imageUrl ?? null,
+    rarity: relicRewardRarity(quality, chance),
+    chance,
+    urlName: null,
+    wfmId: null,
+    ducats: normalizeDucats(item?.ducats),
+  };
+}
+
+/** `@wfcd/items` ships behind the game, so a new Prime's relics come off DE's
+ *  own export; a relic the package already knows keeps the package's table. */
+function fillFromPublicExport(
+  groupsMap: Map<string, RelicGroup>,
+  byUniqueNameMap: Map<string, { groupKey: string; quality: RelicQualityKey }>,
+): void {
+  const relics = getOverlay()?.exports.ExportRelicArcane;
+  if (!relics) return;
+  let added = 0;
+  for (const [uniqueName, relic] of Object.entries(relics)) {
+    if (byUniqueNameMap.has(uniqueName) || !uniqueName.includes("/Projections/")) continue;
+    const suffix = /(Bronze|Silver|Gold|Platinum)$/.exec(uniqueName)?.[1];
+    const quality = suffix ? DE_REFINEMENT[suffix] : undefined;
+    const baseName = (relic.name || "").replace(/\s+Relic$/i, "").trim();
+    const parts = baseName.split(" ");
+    const tier = parts[0];
+    if (!quality || parts.length < 2 || !TIERS.has(tier)) continue;
+    const rewards = (Array.isArray(relic.relicRewards) ? relic.relicRewards : [])
+      .map((reward: DeRelicReward) => deRelicReward(reward, quality))
+      .filter((reward): reward is RelicReward => reward !== null);
+    if (rewards.length === 0) continue;
+
+    let group = groupsMap.get(baseName);
+    if (!group) {
+      group = {
+        key: baseName,
+        name: baseName,
+        tier,
+        code: parts.slice(1).join(" "),
+        vaulted: false,
+        imageUrl: null,
+        qualities: {},
+      };
+      groupsMap.set(baseName, group);
+    }
+    if (group.qualities[quality]) continue;
+    group.qualities[quality] = { uniqueName, rewards };
+    byUniqueNameMap.set(uniqueName, { groupKey: baseName, quality });
+    added += 1;
+  }
+  if (added > 0) log.info(`[RelicDB] ${added} relic refinements filled from DE's export`);
+}
+
 function buildRelicDatabase(): RelicDatabase {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any -- untyped @wfcd/items constructor
   let Items: any;
@@ -166,10 +245,17 @@ function buildRelicDatabase(): RelicDatabase {
     }
   }
 
+  fillFromPublicExport(groupsMap, byUniqueNameMap);
+
   const groups = Object.fromEntries(groupsMap);
   const byUniqueName = Object.fromEntries(byUniqueNameMap);
 
   return { groups, byUniqueName };
+}
+
+/** A refreshed DE export can name relics the cached build missed. */
+export function resetRelicDatabase(): void {
+  _db = null;
 }
 
 export function getRelicDatabase(): RelicDatabase {

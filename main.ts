@@ -533,6 +533,8 @@ function initDataSources(profileStage: ProfileStage): void {
     .then(({ changed }) => {
       if (changed) {
         itemDb.buildDatabase();
+        relicService.resetRelicDatabase();
+        rewardScanner.setRelicItems(relicService.getRelicRewardItems());
         popoutIpc.broadcastToRenderers(ITEM_DB_UPDATED);
         log.info("[ItemDB] Rebuilt with refreshed DE public export");
       }

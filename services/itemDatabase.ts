@@ -220,6 +220,8 @@ let recipesByResultType: Record<string, RecipeData> = {};
 let resultTypeByBlueprint: Record<string, string> = {};
 /** Blueprints DE marks consumeOnUse=false: the copy survives its own build. */
 let reusableBlueprints = new Set<string>();
+/** Items only DE's live export carries, newer than both bundled packages. */
+let deOnlyUniqueNames = new Set<string>();
 let resolvePepName: (nameKey: string) => string | null = () => null;
 
 function loadDict(): Record<string, string> {
@@ -331,6 +333,7 @@ function loadPublicExportPlus(): number {
 
       for (const [uniqueName, item] of Object.entries(exportData) as [string, PepExportItem][]) {
         if (!uniqueName || uniqueName === "default") continue;
+        if (baseData?.[uniqueName] === undefined) deOnlyUniqueNames.add(uniqueName);
 
         // Relics have no name field - build from era + category (e.g. "Axi A2 Relic")
         const relicName =
@@ -397,6 +400,61 @@ function loadPublicExportPlus(): number {
   }
 }
 
+const RECIPE_SOURCED_CATEGORIES = new Set(["Warframe", "Weapon", "Companion"]);
+
+interface RecipeSourcedItem {
+  uniqueName: string;
+  name: string;
+  category: string;
+  masterable: true;
+  components: ComponentEntry[];
+}
+
+/** The part's own name less its parent's ("Citrine Prime Chassis" -> "Chassis"),
+ *  the spelling @wfcd gives a component. */
+function recipeComponentName(parentName: string, uniqueName: string): string {
+  const name = itemsByUniqueName[uniqueName]?.name || fallbackNameFromUniqueName(uniqueName);
+  if (!/\/Types\/Recipes\//i.test(uniqueName)) return name;
+  const prefix = `${parentName} `;
+  return name.toLowerCase().startsWith(prefix.toLowerCase()) ? name.slice(prefix.length) : name;
+}
+
+/** Gear @wfcd does not ship yet, shaped as its items so its parts come off
+ *  DE's recipe the same way a package item's do. */
+function recipeSourcedItems(wfcdUniqueNames: ReadonlySet<string | undefined>): RecipeSourcedItem[] {
+  const out: RecipeSourcedItem[] = [];
+  for (const [uniqueName, item] of Object.entries(itemsByUniqueName)) {
+    if (!RECIPE_SOURCED_CATEGORIES.has(item.category) || !deOnlyUniqueNames.has(uniqueName))
+      continue;
+    if (wfcdUniqueNames.has(uniqueName)) continue;
+    const recipe = recipesByResultType[uniqueName];
+    if (!recipe?.blueprintUniqueName || recipe.ingredients.length === 0) continue;
+    const primePart = item.isPrime ? true : undefined;
+    const components: ComponentEntry[] = [
+      {
+        uniqueName: recipe.blueprintUniqueName,
+        name: "Blueprint",
+        itemCount: 1,
+        tradable: primePart,
+      },
+      ...recipe.ingredients.map((ingredient) => ({
+        uniqueName: ingredient.uniqueName,
+        name: recipeComponentName(item.name, ingredient.uniqueName),
+        itemCount: ingredient.count,
+        tradable: /\/Types\/Recipes\//i.test(ingredient.uniqueName) ? primePart : undefined,
+      })),
+    ];
+    out.push({
+      uniqueName,
+      name: item.name,
+      category: item.category,
+      masterable: true,
+      components,
+    });
+  }
+  return out;
+}
+
 function loadWfcdItems(): number {
   try {
     const Items = require("@wfcd/items");
@@ -419,7 +477,10 @@ function loadWfcdItems(): number {
       "Arcanes",
     ];
 
-    const items = new Items({ category: CATEGORIES });
+    const packageItems: { uniqueName?: string }[] = [...new Items({ category: CATEGORIES })];
+    const recipeSourced = recipeSourcedItems(new Set(packageItems.map((item) => item.uniqueName)));
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any -- untyped @wfcd/items rows
+    const items: any[] = [...packageItems, ...recipeSourced];
     let wfcdNewCount = 0;
     let wfcdSupplementCount = 0;
     let wfcdComponentNewCount = 0;
@@ -430,6 +491,13 @@ function loadWfcdItems(): number {
     for (const item of items) {
       if (item.uniqueName && item.name) {
         wfcdStandaloneNames.set(item.uniqueName, sanitizeDisplayName(item.name));
+      }
+    }
+    for (const item of recipeSourced) {
+      for (const comp of item.components) {
+        if (/\/Types\/Recipes\//i.test(comp.uniqueName) || wfcdStandaloneNames.has(comp.uniqueName))
+          continue;
+        wfcdStandaloneNames.set(comp.uniqueName, sanitizeDisplayName(comp.name));
       }
     }
 
@@ -679,6 +747,9 @@ function loadWfcdItems(): number {
     log.info(
       `[ItemDB] @wfcd/items: ${wfcdNewCount} new + ${wfcdSupplementCount} supplemented + ${wfcdComponentNewCount} component entries + ${wfcdComponentSupplementCount} component supplements`,
     );
+    if (recipeSourced.length > 0) {
+      log.info(`[ItemDB] ${recipeSourced.length} items given parts from DE's recipes`);
+    }
     return wfcdNewCount;
   } catch (err) {
     log.warn("[ItemDB] @wfcd/items not available:", normalizeErrorMessage(err));
@@ -748,7 +819,10 @@ interface PepRecipeItem {
 function buildRecipeIndex(): void {
   try {
     const pep = require("warframe-public-export-plus");
-    const exportData = pep.ExportRecipes;
+    const overlayRecipes = publicExportSource.getOverlay()?.exports.ExportRecipes;
+    const exportData = overlayRecipes
+      ? { ...overlayRecipes, ...(pep.ExportRecipes || {}) }
+      : pep.ExportRecipes;
     if (!exportData || typeof exportData !== "object") return;
 
     recipesByResultType = {};
@@ -942,6 +1016,7 @@ export function buildDatabase(): void {
   recipesByResultType = {};
   resultTypeByBlueprint = {};
   reusableBlueprints = new Set();
+  deOnlyUniqueNames = new Set();
 
   const pepCount = loadPublicExportPlus();
   buildRecipeIndex();
@@ -1206,10 +1281,9 @@ export function getRendererLookup(): Record<string, RendererItemEntry> {
         drops: (c.drops || []).map(toRendererDrop),
       })),
       // An upgrade's drop table is the whole of how to get it, so none of it is cut.
-      drops: (item.mod || item.arcane
-        ? item.drops || []
-        : (item.drops || []).slice(0, 20)
-      ).map(toRendererDrop),
+      drops: (item.mod || item.arcane ? item.drops || [] : (item.drops || []).slice(0, 20)).map(
+        toRendererDrop,
+      ),
       ...(item.mod ? { mod: item.mod } : {}),
       ...(item.arcane ? { arcane: item.arcane } : {}),
       ...(item.vendors

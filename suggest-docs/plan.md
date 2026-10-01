@@ -98,6 +98,7 @@ Each is shippable alone, in order.
 |---|---|---|---|
 | 9 | Build import to full step plan | | |
 | 10 | Arcanes: the mods band, for arcanes | Spec below | |
+| 11 | Scannables: track and collect scannable things | Spec below | |
 
 ### Arcanes band
 
@@ -109,6 +110,16 @@ The mods band's twin: same card, modal, search, pin and source line, built from 
 - **Sources** go through the shared drop-source model and tile. Arcanes lean on vendors (Loid, the Necraloid, the Zariman and Entrati Lab shops) and on bounty and Eidolon tables, so vendor sources, with standing or currency cost, sit beside drops as they do for mods.
 - **Links** go to the wiki only.
 - **Pin** joins the pinned band with its own soft cap, and unpins itself once owned.
+
+### Scannables
+
+Possibly its own top-level feature, one band or tab per group.
+
+- **Groups:** Somachords, Frame Fighter data, Cephalon fragments, the themed fragment sets (Eidolon, Fortuna, Glass, Ghoul, Albrecht, Duviri and the rest), lore cards, codex enemy and object scans, Simulacrum enemies, Simaris synthesis targets.
+- **Progress:** fragments are the inventory's `LoreFragmentScans` (`Progress` and `Region`) against `reqScans` in `ExportCodex.json`, which also lists the ones never found. Enemies are the profile's codex scans (`codexProfile`) against `codexScanRequirements.json`. A group with no game data falls back to marking off by hand, or OCR as the other OCR features do.
+- **Suggestions:** where to go for the most progress per run, with an ELI5 how-to, e.g. "take Helios with Investigator to X, pick up the Somachord by the air supply in the middle of the map".
+- **Browse:** each group lists what is had and missing, and any item can be picked as the target, which steers the suggestions to it.
+- **Later:** Captura scenes, decorations, every other collectible.
 
 ## Misc
 - read the wiki for a brief farm snapshot per mod, the way `weapons.json` does for weapons, so the app answers it without the wiki.
@@ -127,7 +138,5 @@ The mods band's twin: same card, modal, search, pin and source line, built from 
 - not sure when/where, but i have lots of incarnons that i've never used or built or unlocked. suggesting that would be good too, and most importantly, first getting the best weapon to put the incarnon on
 - For tasks - have a "snooze" that mabye asks 1h 6h 24h that bumps it to the bottom just for that time frame?
 - syndicate - can we detect which ones they're positive on, and suggest top mods to buy?- normal Circuit: per week, a short farm synopsis for each of that week's Warframes and the order the community suggests running them in. The weeks rotate on a fixed cycle, so each one is captured once and reused from then on. Source is Pupsker's weekly update videos at https://www.youtube.com/@Pupsker, read as transcripts, newest first and working backwards until every week in the rotation has been seen.
-- Vosfor: the first card of the arcanes band, always. Details list the arcanes worth dissolving, by warframe.market price, and two pack picks: the pack that most advances popular arcanes still short of 21 copies (expected copies per pack against each arcane's shortfall, weighted by popularity), and the pack with the best average warframe.market platinum.
 - Nightwave in Tasks while the player still needs Nitain, reading how much is left for mastering every normal item, every Prime, and subsuming every frame, each shown only where it applies.
-- Relic packs and Aya: the first card of the relics band, always, the relic counterpart to Vosfor. The standing and Steel Essence packs show how many still-needed parts they could pay out that the player holds no relic for. Aya reads the current Prime Resurgence stock and suggests which relics to buy, if any, each with its reason.
-- Show arcane that you can dissolve, by wfm price 
+- Relic packs and Aya: the first card of the relics band, always, the relic counterpart to Vosfor. The standing and Steel Essence packs show how many still-needed parts they could pay out that the player holds no relic for. Aya reads the current Prime Resurgence stock and suggests which relics to buy, if any, each with its reason. 

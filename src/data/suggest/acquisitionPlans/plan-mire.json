@@ -1,0 +1,94 @@
+{
+  "name": "Mire",
+  "kind": "melee",
+  "effort": 2,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 1, "unit": "blueprint" },
+  "badges": [
+    { "text": "no RNG farm", "tone": "info" },
+    { "text": "MR 5", "tone": "info" }
+  ],
+  "prices": [
+    { "label": "blueprint", "amount": "15,000 cr", "money": false },
+    { "label": "build", "amount": "20,000 cr", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "vendor",
+      "place": "MARKET",
+      "sub": null,
+      "activity": "buy the Mire blueprint",
+      "meta": "15,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Mire Blueprint",
+          "note": "15,000 credits",
+          "alt": "Eris Junction reward on Pluto; check the Foundry first",
+          "done": false
+        }
+      ],
+      "conditions": ["Coda Mire is a separate Mastery item and needs no Mire to build."],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "boss",
+      "place": "THEMISTO, JUPITER",
+      "sub": "Alad V",
+      "activity": "Assassination",
+      "meta": "drops Neural Sensors",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "2",
+          "label": "Neural Sensors",
+          "note": "rare Jupiter resource, 1-2 per pickup",
+          "alt": "Jupiter or Kuva Fortress survival, or the Ropalolyst fight (2-4 per run)",
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Mire",
+      "meta": "12h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Mire",
+          "note": "20,000 cr, 2 Neural Sensors, 1,000 Ferrite, 1,500 Nano Spores, 2,000 Alloy Plate",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [
+        "Worth keeping as an exalted-ability stat stick (Khora, Gara, Atlas): high riven disposition, and Red Veil's Toxic Blight augment adds +100% Toxin."
+      ],
+      "disclosures": []
+    }
+  ]
+}

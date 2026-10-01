@@ -1,0 +1,437 @@
+{
+  "name": "Lambeo Moa",
+  "kind": "companion",
+  "effort": 4,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "badges": [
+    { "text": "Doer gate", "tone": "warn" },
+    { "text": "gild, then 0-30 again", "tone": "info" }
+  ],
+  "prices": [
+    { "label": "rank-ups to Doer", "amount": "85,000 cr", "money": false },
+    { "label": "four part builds", "amount": "200,000 cr", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "FORTUNA, VENUS",
+      "sub": null,
+      "activity": "finish Vox Solaris",
+      "meta": "one-time",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "orb-vallis",
+      "rows": [
+        {
+          "qty": null,
+          "label": "Vox Solaris",
+          "note": "unlocks Legs and Solaris United standing",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "1",
+          "label": "free Robotic slot",
+          "note": "for the assembled MOA",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "A MOA has no weapon of its own; it needs a Robotic weapon you own, or one of Legs' blueprints (Cryotra, Tazicor, Vulcax, Helstrum)."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "currency",
+      "place": "ORB VALLIS, VENUS",
+      "sub": null,
+      "activity": "bounties, mining turn-ins, later Conservation",
+      "meta": "~78,500 standing",
+      "mode": "solo",
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "Solaris United standing", "amount": "78,500" },
+      "spends": [],
+      "map": "orb-vallis",
+      "rows": [
+        {
+          "qty": "71,000",
+          "label": "rank-ups to Doer",
+          "note": "Rank 3",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "2,500",
+          "label": "part blueprints",
+          "note": "Lambeo 1,000, three others 500 each",
+          "alt": "take Lambeo as the free Outworlder item",
+          "done": false
+        },
+        { "qty": "5,000", "label": "gild", "note": null, "alt": null, "done": false }
+      ],
+      "conditions": [
+        "The daily cap is 16,000 plus 500 per Mastery Rank.",
+        "Before Doer the lures are low-value; bounties plus gem turn-ins to Smokefinger are the practical standing path."
+      ],
+      "bonuses": [
+        "Half an hour of mining with the Sunpoint Plasma Drill and a Resourceful Retriever beast covers several days of cap, and mines the Noctrul and Venerol for the Model."
+      ],
+      "disclosures": [
+        {
+          "title": "Conservation later",
+          "body": "Equinox or Ivara sleep gives near-guaranteed perfect captures. Bolarola unlocks at Doer and the Kubrodon lure only at Old Mate, so Conservation gets fast only after this plan's gate is cleared."
+        }
+      ]
+    },
+    {
+      "type": "bounty",
+      "place": "ORB VALLIS, VENUS",
+      "sub": null,
+      "activity": "Eudico bounties, full runs",
+      "meta": "each bond has its own tier",
+      "mode": "solo",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "orb-vallis",
+      "rows": [
+        {
+          "qty": "16",
+          "label": "Training Debt-Bond",
+          "note": "tier 1; 6 for rank-ups, 10 for the gild",
+          "alt": "or Ticker's cases",
+          "done": false
+        },
+        {
+          "qty": "6",
+          "label": "Shelter Debt-Bond",
+          "note": "tier 2",
+          "alt": "or Ticker's cases",
+          "done": false
+        },
+        {
+          "qty": "4",
+          "label": "Medical Debt-Bond",
+          "note": "tier 3",
+          "alt": "or Ticker's cases",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Stage 1 has a 0% bond chance since Update 36; the old stage-1 reset trick gives nothing.",
+        "Middle stages drop bonds at 20% and the final stage at 33-46%, two per drop; bonus objectives roll on the final-stage table."
+      ],
+      "bonuses": [
+        "Ticker always stocks at least 3 common cases, 1 uncommon and 1 rare; several people said it saved hours, especially on Medical.",
+        "Solo vault objectives move 20% per case against 6% in a squad."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "FORTUNA, VENUS",
+      "sub": null,
+      "activity": "Solaris United rank-ups to Doer",
+      "meta": "85,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Solaris United standing", "amount": "71,000" }],
+      "map": "orb-vallis",
+      "rows": [
+        {
+          "qty": null,
+          "label": "Outworlder",
+          "note": "5,000 standing, 2 Training, 10,000 cr",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Rapscallion",
+          "note": "22,000 standing, 2 Training + 3 Shelter, 25,000 cr",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Doer",
+          "note": "44,000 standing, 2 Training + 3 Shelter + 4 Medical, 50,000 cr",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Lambeo sells at Outworlder, but gilding needs Doer, so the full climb is unavoidable for the Mastery."
+      ],
+      "bonuses": [
+        "Each rank-up grants one free vendor item of that rank; the Venerdo Alloy blueprint at Outworlder is worth more than the 1,000-standing Model."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "LEGS, FORTUNA",
+      "sub": null,
+      "activity": "buy the four part blueprints",
+      "meta": "2,500 standing",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Solaris United standing", "amount": "2,500" }],
+      "map": "orb-vallis",
+      "rows": [
+        {
+          "qty": null,
+          "label": "Lambeo Model",
+          "note": "1,000 standing, Outworlder; Stasis Field, Shockwave Actuators",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Drex Core",
+          "note": "500 standing, Neutral",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Trux Gyro",
+          "note": "500 standing, Neutral",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Tian Bracket",
+          "note": "500 standing, Neutral, +1 Vazarin",
+          "alt": "Drimper Bracket, no extra polarity",
+          "done": false
+        }
+      ],
+      "conditions": ["Only the Model earns Mastery; Core, Gyro and Bracket are stats and looks."],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "ORB VALLIS, VENUS",
+      "sub": "Deck 12 caves",
+      "activity": "mining, sacs, sludge and nodules; refine at Smokefinger",
+      "meta": "refines take 1 minute",
+      "mode": "solo, normal",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "orb-vallis",
+      "rows": [
+        {
+          "qty": "65",
+          "label": "Travocyte Alloy",
+          "note": "Core 25, Bracket 40",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "35",
+          "label": "Smooth Phasmin",
+          "note": "Core 15, Bracket 20",
+          "alt": null,
+          "done": false
+        },
+        { "qty": "25", "label": "Axidrol Alloy", "note": "Core", "alt": null, "done": false },
+        {
+          "qty": "30",
+          "label": "Venerdo Alloy",
+          "note": "Model; 20 Venerol, 300 Rubedo, 2 Gallium per 20",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "15",
+          "label": "Heart Noctrul",
+          "note": "Model 10, Gyro 5; 10 Noctrul per 10",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "20",
+          "label": "Gorgaricus Spore",
+          "note": "Model; purple sacs under the mushroom caps",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "20",
+          "label": "Thermal Sludge",
+          "note": "Gyro; Corpus encampment containers",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "15",
+          "label": "Tepa Nodule",
+          "note": "Bracket; cave nodule clusters",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Each refined alloy and gem needs its reusable Smokefinger blueprint; Heart Noctrul is 1,000 standing at Neutral and Venerdo Alloy 2,000 at Outworlder.",
+        "Gorgaricus sacs often fail to drop in a squad, so run this solo."
+      ],
+      "bonuses": [
+        "Spare raw gems handed to Smokefinger pay back into the standing this plan spends."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "ORB VALLIS, VENUS",
+      "sub": null,
+      "activity": "fishing, cut by The Business",
+      "meta": "warm cycle",
+      "mode": null,
+      "live": { "state": "waiting", "text": "both servofish are Warm only" },
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "orb-vallis",
+      "rows": [
+        {
+          "qty": "25",
+          "label": "Echowinder Anoscopic Sensor",
+          "note": "Gyro 10, Bracket 15",
+          "alt": null,
+          "done": false
+        },
+        { "qty": "10", "label": "Brickie Muon Battery", "note": "Core", "alt": null, "done": false }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "ZEUGMA, PHOBOS",
+      "sub": null,
+      "activity": "Survival, Dark Sector",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": "1,000", "label": "Plastids", "note": "Gyro", "alt": null, "done": false },
+        { "qty": "2", "label": "Morphics", "note": "Model", "alt": null, "done": false }
+      ],
+      "conditions": [],
+      "bonuses": ["Phobos carries both, and the Dark Sector bonus applies to each."],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "queue all four parts at once",
+      "meta": "24h in parallel, 200,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Lambeo Model",
+          "note": "20 Gorgaricus Spore, 10 Heart Noctrul, 30 Venerdo Alloy, 2 Morphics",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Drex Core",
+          "note": "15 Smooth Phasmin, 25 Travocyte Alloy, 25 Axidrol Alloy, 10 Brickie Muon Battery",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Trux Gyro",
+          "note": "20 Thermal Sludge, 5 Heart Noctrul, 10 Echowinder Anoscopic Sensor, 1,000 Plastids",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Tian Bracket",
+          "note": "15 Tepa Nodule, 40 Travocyte Alloy, 20 Smooth Phasmin, 15 Echowinder Anoscopic Sensor",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Every part is 50,000 credits and 24 hours."],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "LEGS, FORTUNA",
+      "sub": null,
+      "activity": "Configure a MOA Companion, then gild at rank 30",
+      "meta": "4,000 cr now; 10 bonds later",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Solaris United standing", "amount": "5,000" }],
+      "map": "orb-vallis",
+      "rows": [
+        {
+          "qty": null,
+          "label": "Lambeo MOA, assembled",
+          "note": "4,000 credits, instant",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Lambeo, gilded",
+          "note": "10 Training Debt-Bonds, 5,000 standing, Doer",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The first 0-30 earns nothing; gilding resets it to rank 0 and the second 0-30 is where the 6,000 Mastery lands.",
+        "MOAs can't be disassembled, so the parts are gone once built.",
+        "Once one Lambeo MOA is gilded and levelled, later Lambeo builds give nothing.",
+        "The Arsenal can say mastered while the Codex doesn't count it; only the post-gild 0-30 counts."
+      ],
+      "bonuses": [
+        "Stasis Field slows projectiles and cuts gun damage, and any Model's precepts can go on any MOA, two MOA precepts at a time."
+      ],
+      "disclosures": [
+        {
+          "title": "build all four Models together",
+          "body": "The most-upvoted MOA thread says to build all four heads if you're doing one: each adds 6,000 Mastery and the parts share resources. Donating a rank-30 or gilded MOA to Legs pays Solaris standing, but don't donate the one you haven't mastered. Stasis Field looks like a Nullifier bubble, so teammates back away from it."
+        }
+      ]
+    }
+  ]
+}

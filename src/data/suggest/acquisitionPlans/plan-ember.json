@@ -1,0 +1,220 @@
+{
+  "name": "Ember",
+  "kind": "warframe",
+  "effort": 3,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "badges": [
+    { "text": "Systems RNG", "tone": "warn" },
+    { "text": "Circuit alt", "tone": "circuit" }
+  ],
+  "prices": [{ "label": "blueprint", "amount": "25,000 cr", "money": false }],
+  "groups": [
+    {
+      "type": "vendor",
+      "place": "MARKET",
+      "sub": null,
+      "activity": "buy blueprint",
+      "meta": "25,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Ember Blueprint", "note": null, "alt": null, "done": false }
+      ],
+      "conditions": [
+        "Sargas Ruk only drops the three component blueprints; the main blueprint is a Market purchase."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "boss",
+      "place": "TETHYS, SATURN",
+      "sub": null,
+      "activity": "Assassination, General Sargas Ruk",
+      "meta": "~4 kills for Systems; 3-4 min a run",
+      "mode": "solo, bring burst damage",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Neuroptics Blueprint",
+          "note": "38.72%",
+          "alt": null,
+          "done": false
+        },
+        { "qty": null, "label": "Chassis Blueprint", "note": "38.72%", "alt": null, "done": false },
+        {
+          "qty": null,
+          "label": "Systems Blueprint",
+          "note": "22.56%; likely last",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "1",
+          "label": "Orokin Cell",
+          "note": "Ruk has an elevated drop",
+          "alt": null,
+          "done": false
+        },
+        { "qty": "220", "label": "Plastids", "note": "Systems", "alt": null, "done": false }
+      ],
+      "conditions": [
+        "Ruk only takes damage through glowing blue exhaust weak spots that open during his attacks, in order: left shoulder, chest, back. Each is a third of his health; status and CC do not land.",
+        "The part is a mission-completion reward. Finish the mission.",
+        "If Ruk stands still and never attacks, his weak spots never open. Abort and restart."
+      ],
+      "bonuses": [
+        "Glaive heavy attacks, the Furis Incarnon, or On Call Crew with a Kuva Zarr hit the weak spot the instant it opens. Rhino Stomp and Hildryn's Pillage work on him despite the invulnerability."
+      ],
+      "disclosures": [
+        {
+          "title": "stuck on the fight",
+          "body": "A newer player who took 52 minutes with a barely-modded weapon was told to max a few damage mods rather than run many unranked ones. If weak-spot damage stops registering, AoE weapons were the workaround for the old bug fixed in Update 32.3."
+        },
+        {
+          "title": "Circuit, if it is her week",
+          "body": "After The Duviri Paradox, pick Ember in the normal Circuit during week 1 of the rotation, alongside Excalibur and Trinity. Neuroptics at tier 2, Chassis 5, Systems 8, main blueprint 10, with no RNG. Systems droughts past 100 kills have happened, so this is the escape hatch."
+        }
+      ]
+    },
+    {
+      "type": "farm",
+      "place": "ELARA, JUPITER",
+      "sub": null,
+      "activity": "Survival",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": "1", "label": "Neural Sensors", "note": "Neuroptics", "alt": null, "done": false },
+        { "qty": "500", "label": "Salvage", "note": "Systems", "alt": null, "done": false },
+        { "qty": "150", "label": "Alloy Plate", "note": "Neuroptics", "alt": null, "done": false }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "EUROPA",
+      "sub": null,
+      "activity": "any mission",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": "1", "label": "Control Module", "note": "Systems", "alt": null, "done": false },
+        {
+          "qty": "2",
+          "label": "Morphics",
+          "note": "Chassis and Systems",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "800",
+          "label": "Rubedo",
+          "note": "Neuroptics and Chassis",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "APOLLODORUS, MERCURY",
+      "sub": null,
+      "activity": "Survival",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": "1,000", "label": "Ferrite", "note": "Chassis", "alt": null, "done": false },
+        {
+          "qty": "150",
+          "label": "Polymer Bundle",
+          "note": "Neuroptics",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build components, then Ember",
+      "meta": "12h each, then 72h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Neuroptics",
+          "note": "150 Alloy Plate, 1 Neural Sensors, 150 Polymer Bundle, 500 Rubedo",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Chassis",
+          "note": "1 Morphics, 1,000 Ferrite, 300 Rubedo",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Systems",
+          "note": "1 Control Module, 1 Morphics, 500 Salvage, 220 Plastids",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Ember",
+          "note": "1 Orokin Cell + 25,000 cr",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Each component costs 15,000 cr. Start each as it drops so the 12-hour timers overlap; have a free Warframe slot before claiming Ember.",
+        "Keep base Ember even with Ember Prime: subsuming Fire Blast needs the base frame. Spare Neuroptics go into Chroma's Neuroptics and spare Systems into the Blazing Step Ephemera, so do not sell them blindly."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

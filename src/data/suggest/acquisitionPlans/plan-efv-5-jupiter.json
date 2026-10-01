@@ -1,0 +1,280 @@
+{
+  "name": "EFV-5 Jupiter",
+  "kind": "primary",
+  "effort": 4,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "badges": [
+    { "text": "Hex Rank 5", "tone": "warn" },
+    { "text": "MR 14", "tone": "info" }
+  ],
+  "prices": [
+    { "label": "blueprints", "amount": "30,000 standing", "money": false },
+    { "label": "build", "amount": "80,000 cr", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "THE LOTUS EATERS, THEN THE HEX",
+      "sub": null,
+      "activity": "The Hex quest chain",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "The Hex",
+          "note": "opens Höllvania Central Mall and The Hex syndicate",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "The Hex Finale",
+          "note": "required for Rank 4",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "currency",
+      "place": "HÖLLVANIA",
+      "sub": "Central Mall",
+      "activity": "bounties and Hex Treasure trade-ins to Leticia",
+      "meta": "daily cap 16,000 + 500/MR",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "Hex standing", "amount": "270,000" },
+      "spends": [],
+      "map": "hollvania",
+      "rows": [
+        {
+          "qty": null,
+          "label": "Rank 1 Leftovers",
+          "note": "5,000 standing, 10,000 cr, 15 Efervon Sample, 15 Hollvanian Pitchweave Fragment",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Rank 2 Fresh Slice",
+          "note": "22,000 standing, 25,000 cr, 5 Experimental Arc-Relay, 12 Entrati Obols, 25 Hollvanian Pitchweave Fragment",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Rank 3 - 2-For-1",
+          "note": "44,000 standing, 50,000 cr, one each of the six small Hex Treasures",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Rank 4 - Hot & Fresh",
+          "note": "70,000 standing, 100,000 cr, 25 Techrot Chitin, 25 Necracoil, 40 Efervon Sample; Liked with all six KIM members",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Rank 5 - Pizza Party",
+          "note": "99,000 standing, 200,000 cr, 5 Techrot Motherboard, one each of the six small Hex Treasures",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "KIM chemistry is capped by syndicate rank (Liked needs Rank 3), but chemistry earned while capped is kept, so chat daily from the start.",
+        "Do the daily KIM conversation before ranking up or gifting; either can end that day's pending conversation."
+      ],
+      "bonuses": [
+        "Treasures pay Big Bytes Pizza 2,500, Argon Burger Meal 1,500, the other six 750 each. After Rank 5, Temporal Archimedea pays 15,000 for all three missions.",
+        "Parallax's air support charge pings Hex Treasures on the map."
+      ],
+      "disclosures": [
+        {
+          "title": "pace",
+          "body": "The daily cap is the only wall; players report near max rank in about a week. Take bounty-reward blueprints for other Hex gear instead of buying them so standing goes into rank-ups. A bounty objective that fails to spawn means abandoning and rerolling."
+        }
+      ]
+    },
+    {
+      "type": "farm",
+      "place": "HÖLLVANIA",
+      "sub": null,
+      "activity": "enemies, containers, Stockpiles and the Techrot underground",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "hollvania",
+      "rows": [
+        {
+          "qty": "185",
+          "label": "Efervon Sample",
+          "note": "rank-ups + Receiver; Scaldra and Stockpiles",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "190",
+          "label": "Hollvanian Pitchweave Fragment",
+          "note": "rank-ups + Stock; best from Lvl 115-120 and 75-80 bounties",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "43",
+          "label": "Experimental Arc-Relay",
+          "note": "Rank 2 + Barrel + Stock; Rhu Manor / Mausoleum East Exterminate",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "18",
+          "label": "Techrot Motherboard",
+          "note": "Rank 5 + Receiver; underground Techrot areas only",
+          "alt": null,
+          "done": false
+        },
+        { "qty": "25", "label": "Techrot Chitin", "note": "Rank 4", "alt": null, "done": false },
+        { "qty": "25", "label": "Necracoil", "note": "Rank 4", "alt": null, "done": false },
+        {
+          "qty": "12",
+          "label": "Entrati Obols",
+          "note": "Rank 2; from Albrecht's Laboratories, Deimos",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "These keep dropping while you farm standing, so this is a top-up, not a separate trip."
+      ],
+      "bonuses": [
+        "Stage Defense (Rank 4) with a resource booster is praised for Arc-Relay, Efervon and Motherboard hauls."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "MINERVA, HÖLLVANIA CENTRAL MALL",
+      "sub": null,
+      "activity": "buy EFV-5 Jupiter blueprints",
+      "meta": "30,000 standing at Rank 5",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Hex standing", "amount": "30,000" }],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "EFV-5 Jupiter Blueprint",
+          "note": "15,000 standing",
+          "alt": "Rank 5's free vendor item, if Minerva's stock is eligible",
+          "done": false
+        },
+        {
+          "qty": "3",
+          "label": "Barrel, Receiver and Stock Blueprints",
+          "note": "5,000 standing each",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Untradeable, so everything comes from your own standing."],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "HÖLLVANIA",
+      "sub": null,
+      "activity": "Hell-Scrub or Legacyte Harvest",
+      "meta": "1 needed, farm last",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "hollvania",
+      "rows": [
+        {
+          "qty": "1",
+          "label": "Argon Crystal",
+          "note": "Receiver; decays after pickup",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Argon halves at daily reset; grab it right before building the Receiver."],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build components, then EFV-5 Jupiter",
+      "meta": "12h each, 20,000 cr each",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Barrel",
+          "note": "20,000 cr, 23 Experimental Arc-Relay, 1,500 Alloy Plate, 1,300 Salvage, 230 Polymer Bundle",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Receiver",
+          "note": "20,000 cr, 130 Efervon Sample, 13 Techrot Motherboard, 1,500 Ferrite, 1 Argon Crystal",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Stock",
+          "note": "20,000 cr, 150 Hollvanian Pitchweave Fragment, 15 Experimental Arc-Relay, 1,300 Plastids, 1,000 Rubedo",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "EFV-5 Jupiter",
+          "note": "20,000 cr, the three parts",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": [
+        {
+          "title": "the augment",
+          "body": "Overpressured Rounds is a Nightwave tier reward, not a Hex item, and isn't needed for Mastery."
+        }
+      ]
+    }
+  ]
+}

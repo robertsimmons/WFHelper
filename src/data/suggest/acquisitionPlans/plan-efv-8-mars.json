@@ -1,0 +1,268 @@
+{
+  "name": "EFV-8 Mars",
+  "kind": "secondary",
+  "effort": 4,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "badges": [
+    { "text": "Hex Rank 5", "tone": "warn" },
+    { "text": "MR 14", "tone": "info" }
+  ],
+  "prices": [
+    { "label": "blueprints", "amount": "30,000 standing", "money": false },
+    { "label": "build", "amount": "80,000 cr", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "THE LOTUS EATERS, THEN THE HEX",
+      "sub": null,
+      "activity": "The Hex quest chain",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "The Lotus Eaters",
+          "note": "needs The Duviri Paradox",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "The Hex",
+          "note": "opens Höllvania Central Mall and The Hex syndicate",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "The Hex Finale",
+          "note": "opens after Rank 3; required for Rank 4",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "currency",
+      "place": "HÖLLVANIA",
+      "sub": "Central Mall",
+      "activity": "top-tier bounty daily, plus Hex Treasures to Leticia",
+      "meta": "~11-12 capped days at MR 14",
+      "mode": "Steel Path",
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "Hex standing", "amount": "270,000" },
+      "spends": [],
+      "map": "hollvania",
+      "rows": [
+        {
+          "qty": null,
+          "label": "Rank 1 Leftovers",
+          "note": "5,000 standing, 10,000 cr, 15 Efervon Sample, 15 Hollvanian Pitchweave Fragment",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Rank 2 Fresh Slice",
+          "note": "22,000 standing, 25,000 cr, 5 Experimental Arc-Relay, 12 Entrati Obols, 25 Hollvanian Pitchweave Fragment",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Rank 3 - 2-For-1",
+          "note": "44,000 standing, 50,000 cr, one each of the six small Hex Treasures",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Rank 4 - Hot & Fresh",
+          "note": "70,000 standing, 100,000 cr, 25 Techrot Chitin, 25 Necracoil, 40 Efervon Sample; Liked with all six Hex members",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Rank 5 - Pizza Party",
+          "note": "99,000 standing, 200,000 cr, 5 Techrot Motherboard, one each of the six small Hex Treasures",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Rank 4 needs Liked Chemistry with every member as well as standing. KIM chats, bounties and gifts give Chemistry, not standing.",
+        "Hold back one of each of the six small treasures; Rank 3 and Rank 5 each eat a full set.",
+        "The 385,000 cr in rank-up fees is on top of the 80,000 cr build."
+      ],
+      "bonuses": [
+        "The Tier 7 Antivirus bounty pays 7,500 standing, 11,250 on Steel Path; about three Steel Path runs cap the day.",
+        "Treasures pay Big Bytes Pizza 2,500, Argon Burger Meal 1,500, the others 750; the Air Support treasure tracker pings them all.",
+        "Once you have access, all three Temporal Archimedea missions pay a flat 15,000."
+      ],
+      "disclosures": [
+        {
+          "title": "skipping KIM",
+          "body": "Players have reached Rank 5 on gifts and each bounty's once-a-day Chemistry alone, but it is slower. Picking the kind option in chats is enough; one person cleared the requirement in about 20 minutes of KIM."
+        }
+      ]
+    },
+    {
+      "type": "farm",
+      "place": "HÖLLVANIA",
+      "sub": null,
+      "activity": "enemies, bounty rewards and the Techrot underground",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "hollvania",
+      "rows": [
+        {
+          "qty": "340",
+          "label": "Hollvanian Pitchweave Fragment",
+          "note": "rank-ups + Stock",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "155",
+          "label": "Techrot Chitin",
+          "note": "Rank 4 + Barrel + Receiver; Rhu Manor / Mausoleum East Exterminate",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "115",
+          "label": "Efervon Sample",
+          "note": "rank-ups + Receiver + Stock",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "15",
+          "label": "Experimental Arc-Relay",
+          "note": "Rank 2 + Stock",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "7",
+          "label": "Techrot Motherboard",
+          "note": "Rank 5 + Barrel; underground Techrot areas only",
+          "alt": null,
+          "done": false
+        },
+        { "qty": "25", "label": "Necracoil", "note": "Rank 4", "alt": null, "done": false },
+        {
+          "qty": "12",
+          "label": "Entrati Obols",
+          "note": "Rank 2; from Albrecht's Laboratories, Deimos",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "These keep dropping while you farm standing, so this is a top-up, not a separate trip."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "MINERVA, THE ROUND TABLE",
+      "sub": "Höllvania Central Mall",
+      "activity": "buy EFV-8 Mars blueprints",
+      "meta": "30,000 standing at Rank 5",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Hex standing", "amount": "30,000" }],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "EFV-8 Mars Blueprint",
+          "note": "15,000 standing",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "3",
+          "label": "Barrel, Receiver and Stock Blueprints",
+          "note": "5,000 standing each",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Untradeable, so everything comes from your own standing."],
+      "bonuses": ["Buy the EFV-5 Jupiter from Minerva on the same visit."],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build components, then EFV-8 Mars",
+      "meta": "12h each, 20,000 cr each",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Barrel",
+          "note": "20,000 cr, 30 Techrot Chitin, 2 Techrot Motherboard, 500 Alloy Plate, 600 Salvage",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Receiver",
+          "note": "20,000 cr, 30 Efervon Sample, 100 Techrot Chitin, 300 Ferrite, 2 Morphics",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Stock",
+          "note": "20,000 cr, 30 Efervon Sample, 300 Hollvanian Pitchweave Fragment, 10 Experimental Arc-Relay, 240 Polymer Bundle",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "EFV-8 Mars",
+          "note": "20,000 cr, the three parts",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": [
+        {
+          "title": "the augment",
+          "body": "Prototype Shock Coils was a reward tier of the Amir's Shockwave Nightwave Mix and isn't needed for Mastery. The Mars can't equip Semi-Pistol Cannonade because its alt-fire is a charge attack."
+        }
+      ]
+    }
+  ]
+}

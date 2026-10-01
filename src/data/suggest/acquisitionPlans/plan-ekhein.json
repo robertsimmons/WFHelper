@@ -1,0 +1,200 @@
+{
+  "name": "Ekhein",
+  "kind": "melee",
+  "effort": 4,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 1, "unit": "blueprint" },
+  "badges": [
+    { "text": "Cavia Rank 3", "tone": "warn" },
+    { "text": "MR 10", "tone": "info" }
+  ],
+  "prices": [
+    { "label": "standing", "amount": "86,000", "money": false },
+    { "label": "rank-ups", "amount": "85,000 cr", "money": false },
+    { "label": "build", "amount": "25,000 cr", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "QUESTS",
+      "sub": null,
+      "activity": "Heart of Deimos and The New War, then Whispers in the Walls",
+      "meta": "unlocks the Sanctum Anatomica and Cavia",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Whispers in the Walls",
+          "note": "needs Heart of Deimos and The New War",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "currency",
+      "place": "ALBRECHT'S LABORATORIES, DEIMOS",
+      "sub": null,
+      "activity": "Fibonacci's bounties; collect Voca and hand spares to Loid",
+      "meta": "about a week of capped standing",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "Cavia standing", "amount": "86,000" },
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Rank 1, Assistant",
+          "note": "5,000 standing; 3 Shrill Voca, 300 Entrati Obols, 1,100 Rubedo, 10,000 cr",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Rank 2, Researcher",
+          "note": "22,000 standing; 5 Shrill Voca, 60 Voidgel Orb, 12 Necracoil, 8 Stela, 25,000 cr",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Rank 3, Colleague",
+          "note": "44,000 standing; 2 Bellow Voca, 8 Shrill Voca, 15 Necracoil, 16 Stela, 50,000 cr",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "15,000",
+          "label": "Ekhein Blueprint",
+          "note": "Bird 3",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The rank-ups and the craft eat 26 Shrill and 2 Bellow Voca; hold those back before handing Voca to Loid.",
+        "The daily cap is 16,000 plus 500 per Mastery Rank, and each rank's bar stops filling at its maximum until you rank up with Fibonacci.",
+        "Only run the high-tier bounty when it's a fast type like Exterminate; low-tier and Steel Path bounties pay too little."
+      ],
+      "bonuses": [
+        "Every Laboratories mission spawns 8 Voca: Loid pays Shrill 500, Bellow 1,000, Echo 2,000. Bank them for days you don't want to run bounties.",
+        "Parallax's Orokin Eye air support or loot-radar mods find Voca without searching every room.",
+        "Netracells pay 5,000 standing each plus a guaranteed Lanthorn, if you already run them."
+      ],
+      "disclosures": [
+        {
+          "title": "Stela for the rank-ups",
+          "body": "24 Stela drop occasionally from Murmur Fragments and Constructs, are guaranteed from Murmur Sarcophage containers hidden in the tileset, and come from collecting 50 Vosphene Glyphs in Mirror Defense on Munio. Waiting for a Mirror Defense bounty pays standing and Stela together. Voidgel Orb for Researcher is a Zariman resource."
+        }
+      ]
+    },
+    {
+      "type": "vendor",
+      "place": "BIRD 3, SANCTUM ANATOMICA",
+      "sub": null,
+      "activity": "buy the blueprint",
+      "meta": "Rank 3, Colleague",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Cavia standing", "amount": "15,000" }],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Ekhein Blueprint",
+          "note": "15,000 standing",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "NEX, DEIMOS",
+      "sub": "Albrecht's Laboratories",
+      "activity": "Exterminate; kill the Gruzzling",
+      "meta": "abort and restart if it misses",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "3",
+          "label": "Entrati Lanthorn",
+          "note": "Gruzzlings sometimes drop a pickup worth 3",
+          "alt": "guaranteed from any Netracell; 5% rotation B in Laboratories",
+          "done": false
+        },
+        {
+          "qty": "2,400",
+          "label": "Entrati Obols",
+          "note": "enemies and containers",
+          "alt": "150-stacks from rotation A on Cambire, Munio, Persto, Nex",
+          "done": false
+        },
+        {
+          "qty": "75",
+          "label": "Necracoil",
+          "note": "enemies and containers, any Laboratories mission",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "10",
+          "label": "Shrill Voca",
+          "note": "Ekhein build",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Gruzzlings in Disruption drop Disruption keys, not Lanthorns."],
+      "bonuses": [
+        "Resource boosters raise the Lanthorn drop; Oberon's Smite one-shots Gruzzlings."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Ekhein",
+      "meta": "12h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Ekhein",
+          "note": "25,000 cr, 2,400 Entrati Obols, 75 Necracoil, 10 Shrill Voca, 3 Entrati Lanthorn",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

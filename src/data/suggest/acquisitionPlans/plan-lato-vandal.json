@@ -1,0 +1,123 @@
+{
+  "name": "Lato Vandal",
+  "kind": "secondary",
+  "effort": 5,
+  "tradeable": null,
+  "progress": { "have": 0, "need": 3, "unit": "parts" },
+  "badges": [
+    { "text": "Elite Onslaught RNG", "tone": "warn" },
+    { "text": "MR 7", "tone": "info" }
+  ],
+  "prices": [{ "label": "build", "amount": "25,000 cr", "money": false }],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "RELAY",
+      "sub": "Cephalon Simaris",
+      "activity": "finish The New Strange",
+      "meta": "opens Sanctuary Onslaught",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "The New Strange", "note": "quest", "alt": null, "done": false },
+        {
+          "qty": null,
+          "label": "Rank 30 Warframe",
+          "note": "equipped; MR 30+ may bring a frame polarized at least once instead",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Elite Sanctuary Onslaught needs an equipped Rank 30 Warframe; a levelling loadout can't carry efficiency once the levellers leave."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "ELITE SANCTUARY ONSLAUGHT",
+      "sub": null,
+      "activity": "loop zones 4-8, solo with a nuke frame",
+      "meta": "one reward every 2 zones, rotating A, A, B, C",
+      "mode": "solo recommended",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Lato Vandal Blueprint",
+          "note": "2.51% A, 3.16% B and C",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Lato Vandal Barrel",
+          "note": "2.51% A, 3.16% B and C",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Lato Vandal Receiver",
+          "note": "2.51% A, 3.16% B and C",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Normal Sanctuary Onslaught never drops Vandal parts; it has to be Elite.",
+        "Parts are on every rotation since Update 42, so there's no need to reach zone 8 or push past it.",
+        "Keep the efficiency meter above zero or you're extracted with what you've earned so far.",
+        "Spamming abilities disables them: a 4th ability locks for 15s if cast twice within 10s."
+      ],
+      "bonuses": [
+        "Braton Vandal parts share the same tables, and long ESO runs farm Focus at the same time.",
+        "Solo avoids the host migrations that crash runs after pub players leave."
+      ],
+      "disclosures": [
+        {
+          "title": "the odds",
+          "body": "The wiki estimates about 39 A-rolls or 31 B/C-rolls per part on average. One 8-zone cycle gives roughly an 11% chance at any one specific part; all three averages about 16 cycles, several hours of ESO. Older drop tables list the parts at 2.01% on a single rotation; that predates Update 42."
+        },
+        {
+          "title": "frame picks",
+          "body": "Mirage with Explosive Legerdemain is the most-recommended nuke: stack range and strength, kick off with her 4 or an explosive primary, recast 2 as orbs drop (all affinity goes to Mirage). Saryn (Spores), Volt (Discharge), Gara (4 then a range-built 1, cast about every 10s), Khora, Atlas, Voruna with Roar subsumed, Gyre and Sevagoth are also named. Public squads mostly leave after 2-3 zones; use recruiting chat if you want a squad."
+        },
+        {
+          "title": "Incarnon Genesis",
+          "body": "The Lato Incarnon Genesis also installs on the Lato Vandal, the community's favourite base for it. It comes from Steel Path Circuit on its rotating week or Cavalero for 120 Platinum, and costs 20 Pathos Clamps, 70 Yao Shrubs and 100 Nacreous Pebbles to install."
+        }
+      ]
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Lato Vandal",
+      "meta": "12h, MR 7",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Credits", "note": "25,000", "alt": null, "done": false },
+        { "qty": null, "label": "Lato Vandal Barrel", "note": null, "alt": null, "done": false },
+        { "qty": null, "label": "Lato Vandal Receiver", "note": null, "alt": null, "done": false }
+      ],
+      "conditions": ["The blueprint is not sold in the Market."],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

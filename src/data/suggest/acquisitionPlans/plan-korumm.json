@@ -1,0 +1,175 @@
+{
+  "name": "Korumm",
+  "kind": "melee",
+  "effort": 4,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 1, "unit": "blueprint" },
+  "badges": [
+    { "text": "Rotation C only", "tone": "warn" },
+    { "text": "16 Narmer Isoplast", "tone": "warn" }
+  ],
+  "prices": [{ "label": "build", "amount": "20,000 cr", "money": false }],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "THE NEW WAR",
+      "sub": null,
+      "activity": "finish the quest",
+      "meta": "unlocks Narmer Bounties",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "The New War",
+          "note": "unlocks Narmer Bounties from Konzu and Eudico",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": ["Narmer Bounties are level 50-70 with no Mastery Rank requirement."],
+      "disclosures": []
+    },
+    {
+      "type": "bounty",
+      "place": "ORB VALLIS, VENUS",
+      "sub": "or Plains of Eidolon, Cetus, same rates",
+      "activity": "Narmer Bounties, stages 4 and 5",
+      "meta": "rotation C only",
+      "mode": "premade recommended",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "orb-vallis",
+      "rows": [
+        {
+          "qty": null,
+          "label": "Korumm Blueprint",
+          "note": "5.45% stage 4, 7.5% stage 5, rotation C only",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "16",
+          "label": "Narmer Isoplast",
+          "note": "any rotation, about 2.7 per full bounty, 3.4 with every bonus",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Only Rotation C carries the Korumm roll. The board cycles A/B/C every 150 minutes, so C is up 2.5 hours out of every 7.5; farm Isoplast in A and B.",
+        "Complete every stage's bonus objective: the all-bonus reward is an extra stage 5 roll, the best Isoplast and blueprint roll.",
+        "Leaving the landscape or returning to town cancels the bounty; completed stage rewards are kept.",
+        "Don't trade spare Isoplast for standing yet; Caliban, Verdilac, Nepheri and Venato draw from the same pool."
+      ],
+      "bonuses": [
+        "Farm Caliban, Verdilac, Nepheri and Venato at the same time; they share these bounties and all need Narmer Isoplast.",
+        "Volt, Nova or Wisp speed up drone-escort stages, the slowest stage type."
+      ],
+      "disclosures": [
+        {
+          "title": "why Fortuna over Cetus",
+          "body": "The drop tables are identical. Vallis objectives stay closer to Fortuna, while Plains bounties send you across the map and into caves. On Cetus, if the Narmer Grineer captain is disarmed (Chesa Kubrow, disarm abilities) before every Vomvalyst dies, he becomes invincible and the bounty stalls."
+        },
+        {
+          "title": "the odds",
+          "body": "Around 5 full Rotation-C bounties clear the blueprint on average; bad luck can run past 15. Objectives are randomized when you pick the bounty, so you can't choose a short layout."
+        }
+      ]
+    },
+    {
+      "type": "farm",
+      "place": "ORB VALLIS, VENUS",
+      "sub": null,
+      "activity": "mine Zodian, refine at Smokefinger",
+      "meta": "Solaris United rank Doer",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "orb-vallis",
+      "rows": [
+        {
+          "qty": "6",
+          "label": "Radiant Zodian",
+          "note": "6 Zodian, 2 builds of 3, 10,000 cr each",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The reusable Radiant Zodian blueprint costs 8,000 standing from Smokefinger and needs Solaris United Rank 3 (Doer).",
+        "Zodian needs an Advanced Nosam Cutter or Sunpoint Plasma Drill; the starter cutter can't mine it."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "PLAINS OF EIDOLON, EARTH",
+      "sub": null,
+      "activity": "mine Coprun, refine at Old Man Suumbaat",
+      "meta": "Ostron rank Offworlder",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "plains-of-eidolon",
+      "rows": [
+        {
+          "qty": "60",
+          "label": "Coprite Alloy",
+          "note": "60 Coprun, 3 builds of 20",
+          "alt": "or Tusk and Narmer Thumpers",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The reusable Coprite Alloy blueprint costs 2,500 standing from Old Man Suumbaat and needs Ostron Rank 1 (Offworlder)."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Korumm",
+      "meta": "20,000 cr, 12h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Korumm",
+          "note": "16 Narmer Isoplast, 6 Radiant Zodian, 60 Coprite Alloy, 3,200 Rubedo",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Korumm alerts enemies in about 30 m on every attack except finishers; don't level it on a stealth setup."
+      ],
+      "bonuses": [],
+      "disclosures": [
+        {
+          "title": "hidden from Profile Progress",
+          "body": "Korumm is hidden from the Codex and the Profile Progress list. Check the Arsenal or the wiki's hidden-Mastery list to confirm it's mastered."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,206 @@
+{
+  "name": "Venato",
+  "kind": "melee",
+  "effort": 2,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 1, "unit": "blueprint" },
+  "badges": [
+    { "text": "16 Narmer Isoplast", "tone": "warn" },
+    { "text": "Tenno Lab", "tone": "info" }
+  ],
+  "prices": [
+    { "label": "blueprint", "amount": "15,000 cr", "money": false },
+    { "label": "build", "amount": "20,000 cr", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "THE NEW WAR + DOJO, TENNO LAB",
+      "sub": null,
+      "activity": "finish the quest; clan research",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "The New War",
+          "note": "unlocks Narmer Bounties; nothing here works without it",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Tenno Lab: Tonbo, then Venato",
+          "note": "3 days for the Venato research; skip if already researched",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Ghost (x1) tier pays 10,000 credits, 1 Tellurium, 275 Rubedo, 225 Plastids and 3,500 Salvage for the Venato research; bigger clans pay x3 up to x100."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "research",
+      "place": "DOJO, TENNO LAB",
+      "sub": null,
+      "activity": "replicate the blueprint",
+      "meta": "15,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Credits", "amount": "15,000" }],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Venato Blueprint",
+          "note": "15,000 cr",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["MR 9 gate to build it."],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "bounty",
+      "place": "ORB VALLIS, VENUS",
+      "sub": "or Plains of Eidolon, Cetus, same rates",
+      "activity": "Narmer Bounties, any rotation",
+      "meta": "about 6 full bounties",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "orb-vallis",
+      "rows": [
+        {
+          "qty": "16",
+          "label": "Narmer Isoplast",
+          "note": "1-3 per stage roll, about 2.5-3 per full bounty",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Boosters and Retriever mods don't affect Isoplast.",
+        "Don't trade Isoplast for standing until Venato and anything else that needs it is built."
+      ],
+      "bonuses": [
+        "Farm Caliban, Korumm, Verdilac and Nepheri at the same time; they share these bounties and the Isoplast.",
+        "Volt, Nova or Wisp speed up drone-escort stages."
+      ],
+      "disclosures": [
+        {
+          "title": "why Fortuna over Cetus",
+          "body": "Drops are identical. Vallis bounties stay closer to town and above ground; Plains bounties have cave objectives that break bonus conditions. On Cetus, a Narmer Grineer captain disarmed before every Vomvalyst dies becomes unkillable and bricks the bounty; Chesa Kubrow is the usual culprit."
+        }
+      ]
+    },
+    {
+      "type": "farm",
+      "place": "VEIL PROXIMA",
+      "sub": "Sentient Anomaly (Murex)",
+      "activity": "Railjack: board the Murex, kill the 20 Sentients",
+      "meta": "1 shard per clear",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "5",
+          "label": "Anomaly Shard",
+          "note": "flashing red Grineer node; moves every 30 minutes",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "5",
+          "label": "Exceptional Sentient Core",
+          "note": "Sentients aboard the Murex can drop them",
+          "alt": "two Teralysts, 4 each; or Onkko's conversion blueprint, 500 Quills standing",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "If the Railjack mission fails, you lose the shard even after clearing the Murex; aborting or failing a chain discards earlier rewards from it."
+      ],
+      "bonuses": ["Some players use a worldstate tracker site to find the Murex node."],
+      "disclosures": [
+        {
+          "title": "core conversion",
+          "body": "Onkko's reusable Exceptional Sentient Core Conversion blueprint turns 10 Intact Cores, 1 Radian Sentirum and 1 Heart Nyth into 10 Exceptional."
+        }
+      ]
+    },
+    {
+      "type": "farm",
+      "place": "PLAINS OF EIDOLON, EARTH",
+      "sub": "Twin Horns, Seaside Ruin, Hek's Stiletto, Er-Phryah's Vigil, Renthi Spring, The Seethe",
+      "activity": "break mineral deposits in the low-lying areas",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "plains-of-eidolon",
+      "rows": [
+        {
+          "qty": "60",
+          "label": "Iradite",
+          "note": "Venato build",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": ["Resource boosters apply."],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Venato",
+      "meta": "12h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Venato",
+          "note": "20,000 cr, 16 Narmer Isoplast, 5 Anomaly Shard, 5 Exceptional Sentient Core, 60 Iradite",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": [
+        {
+          "title": "not Venato Prime",
+          "body": "Venato Prime is a separate item with its own relic farm."
+        }
+      ]
+    }
+  ]
+}

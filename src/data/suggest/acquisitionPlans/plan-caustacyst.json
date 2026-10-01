@@ -1,0 +1,203 @@
+{
+  "name": "Caustacyst",
+  "kind": "melee",
+  "effort": 2,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 1, "unit": "blueprint" },
+  "badges": [
+    { "text": "Bio Lab", "tone": "warn" },
+    { "text": "10 Mutagen Mass", "tone": "info" }
+  ],
+  "prices": [
+    { "label": "blueprint", "amount": "50,000 cr", "money": false },
+    { "label": "10 Mutagen Mass", "amount": "300,000 cr", "money": false },
+    { "label": "build", "amount": "30,000 cr", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "research",
+      "place": "CLAN DOJO, BIO LAB",
+      "sub": null,
+      "activity": "check that Caustacyst research is complete",
+      "meta": "5 sequential researches, 72h each if none are done",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Mutagen Mass",
+          "note": "prerequisite research",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Torid",
+          "note": "prerequisite research",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Acrid",
+          "note": "prerequisite research",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Embolist",
+          "note": "prerequisite research",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Caustacyst",
+          "note": "Ghost tier: 5,000 cr, 30 Mutagen Sample, 600 Plastids, 4,000 Ferrite, 1,200 Polymer Bundle; 72h",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Research costs scale with clan tier: Ghost x1, Shadow x3, Storm x10, Mountain x30, Moon x100. In an established clan it's usually done already."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "CLAN DOJO, BIO LAB",
+      "sub": null,
+      "activity": "buy the Caustacyst and Mutagen Mass blueprints",
+      "meta": "50,000 cr + 15,000 cr per Mass",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Credits", "amount": "200,000" }],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Caustacyst Blueprint",
+          "note": "50,000 cr; requires completed research",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "10",
+          "label": "Mutagen Mass Blueprint",
+          "note": "15,000 cr each, single use",
+          "alt": "skip any you cover with Invasion or Orb Vallis bounty Mass",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Coda Caustacyst is a separate weapon with its own Mastery; building this one does not unlock it."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "TERROREM, DEIMOS",
+      "sub": null,
+      "activity": "Survival",
+      "meta": "one Steel Path run with a loot frame",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "100",
+          "label": "Mutagen Sample",
+          "note": "for 10 Mutagen Mass; uncommon on Deimos, rare on Eris",
+          "alt": "Infested Invasions and Orb Vallis Lvl 30-50 bounties pay finished Mutagen Mass, 1-2 per roll",
+          "done": false
+        },
+        {
+          "qty": "10",
+          "label": "Control Module",
+          "note": "1 per Mutagen Mass",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Terrorem's Infested get stuck in side rooms, especially around Khora; Hyf defense brings enemies to you."
+      ],
+      "bonuses": [
+        "Nekros Desecrate, Khora Pilfering Strangledome, Hydroid Pilfering Swarm or Atlas Ore Gaze multiply Sample drops.",
+        "Steel Path doubles resource drop chance; a relay Resource Drop Chance Blessing and Resourceful Retriever stack on top. One player got about 110 Samples in 15 minutes of Steel Path Terrorem."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "NIGHTWAVE OFFERINGS",
+      "sub": null,
+      "activity": "buy Nitain Extract",
+      "meta": "always available",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Nightwave Creds", "amount": "15" }],
+      "map": null,
+      "rows": [
+        {
+          "qty": "5",
+          "label": "Nitain Extract",
+          "note": "5 for 15 Nightwave Creds",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build 10 Mutagen Mass, then Caustacyst",
+      "meta": "12h each Mass, then 24h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "10",
+          "label": "Mutagen Mass",
+          "note": "each 15,000 cr, 10 Mutagen Sample, 1 Control Module, 500 Salvage, 250 Plastids; 12h, run several at once",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Caustacyst",
+          "note": "30,000 cr, 10 Mutagen Mass, 15,000 Ferrite, 4,000 Plastids, 5 Nitain Extract; 24h",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The recipe wants crafted Mutagen Mass, not raw Samples; Mass from rewards skips the Sample step entirely."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

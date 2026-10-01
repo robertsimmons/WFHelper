@@ -1,0 +1,156 @@
+{
+  "name": "Convectrix",
+  "kind": "primary",
+  "effort": 2,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 1, "unit": "blueprint" },
+  "badges": [
+    { "text": "900 Oxium, 5 Fieldron", "tone": "warn" },
+    { "text": "Energy Lab", "tone": "info" }
+  ],
+  "prices": [
+    { "label": "blueprint", "amount": "15,000 cr", "money": false },
+    { "label": "build", "amount": "30,000 cr", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "DOJO, ENERGY LAB",
+      "sub": null,
+      "activity": "clan research",
+      "meta": "skip if already researched",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Energy Lab: Lanka, then Convectrix",
+          "note": "3 days for Convectrix",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Ghost (x1) tier Convectrix research costs 10,000 credits, 20 Fieldron Sample, 1,300 Nano Spores, 450 Circuits and 12 Gallium; bigger clans pay x3/x10/x30/x100.",
+        "In an established clan this is already done and costs you nothing."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "research",
+      "place": "DOJO, ENERGY LAB",
+      "sub": null,
+      "activity": "buy the blueprint",
+      "meta": "15,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Credits", "amount": "15,000" }],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Convectrix Blueprint", "note": null, "alt": null, "done": false }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "STAR CHART",
+      "sub": null,
+      "activity": "Corpus-side Invasions",
+      "meta": "3 Fieldron per Invasion reward",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "5",
+          "label": "Fieldron",
+          "note": "two Invasions cover it",
+          "alt": "or craft from Fieldron Samples, 12h each",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Invasion rewards rotate; when none offers Fieldron, craft them early, since the weapon build waits on all five."
+      ],
+      "bonuses": [],
+      "disclosures": [
+        {
+          "title": "crafting Fieldron from scratch",
+          "body": "Each Fieldron needs an Energy Lab blueprint (15,000 credits) plus 15,000 credits, 10 Fieldron Sample, 1 Control Module, 500 Salvage and 250 Plastids, 12h; the Foundry builds them in parallel. Five add 50 Fieldron Samples and 5 Control Modules. Corpus Dark Sector Survival or Defense on Steel Path, with Khora or Nekros and drop-chance boosts, pays 100-200 Samples in under an hour."
+        }
+      ]
+    },
+    {
+      "type": "farm",
+      "place": "IO, JUPITER",
+      "sub": null,
+      "activity": "Defense, kill Oxium Ospreys",
+      "meta": "~80 Oxium per 10 waves",
+      "mode": "Nekros, Khora and a Resource Booster",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "900",
+          "label": "Oxium",
+          "note": "7-12 per Osprey",
+          "alt": "or Outer Terminus, Pluto, or Paimon, Europa",
+          "done": false
+        },
+        {
+          "qty": "10",
+          "label": "Control Module",
+          "note": "Convectrix build; 15 if you craft the Fieldron",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "An Osprey that finishes its suicide dash drops nothing; kill it at range or hold it with Khora's Strangledome.",
+        "Oxium is a 100% drop, so drop-chance boosters do nothing; a Resource Booster doubles it."
+      ],
+      "bonuses": ["Nekros' Desecrate rerolls Osprey corpses."],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Convectrix",
+      "meta": "30,000 cr, 24h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Convectrix",
+          "note": "5 Fieldron, 10 Control Module, 900 Oxium, 1 Forma",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

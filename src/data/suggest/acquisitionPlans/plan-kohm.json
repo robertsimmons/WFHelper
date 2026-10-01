@@ -1,0 +1,144 @@
+{
+  "name": "Kohm",
+  "kind": "primary",
+  "effort": 2,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 1, "unit": "blueprint" },
+  "badges": [
+    { "text": "Market", "tone": "info" },
+    { "text": "Argon decays", "tone": "warn" }
+  ],
+  "prices": [
+    { "label": "blueprint", "amount": "20,000 cr", "money": false },
+    { "label": "build", "amount": "20,000 cr", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "vendor",
+      "place": "MARKET",
+      "sub": null,
+      "activity": "buy blueprint",
+      "meta": "20,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Kohm Blueprint", "note": null, "alt": null, "done": false }
+      ],
+      "conditions": [
+        "Kuva Kohm is a separate Mastery item from a Kuva Lich; this is the base shotgun."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "IO, JUPITER",
+      "sub": null,
+      "activity": "Defense",
+      "meta": "~80 Oxium per 10 waves",
+      "mode": "Nekros or Khora",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "500",
+          "label": "Oxium",
+          "note": "7-12 per Oxium Osprey",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "An Osprey that self-destructs drops nothing; kill them on spawn.",
+        "A Resource Booster doubles Oxium; a Drop Chance booster does nothing, since the Osprey drop is already 100%."
+      ],
+      "bonuses": [
+        "Desecrate often re-rolls the Osprey drop, and Strangledome catches the drones before they reach you."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "EXCAVATION, ANY NODE",
+      "sub": null,
+      "activity": "Excavation",
+      "meta": "5 extractors",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "500",
+          "label": "Cryotic",
+          "note": "100 per extractor cycle at any level",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [
+        "A Resource Booster doubles the end-of-mission Cryotic; Hieracon, Pluto adds a Dark Sector bonus."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "HEPIT, VOID",
+      "sub": "or Teshub, Ukko, Oxomoco",
+      "activity": "Capture or Exterminate, sweep the containers",
+      "meta": "~2 deposits a map, 1-2 each",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [{ "qty": "2", "label": "Argon Crystal", "note": null, "alt": null, "done": false }],
+      "conditions": [
+        "At 00:00 GMT, crystals older than today halve, rounded down. Farm them after the Oxium and Cryotic and build right away."
+      ],
+      "bonuses": ["Xaku or Limbo with high range break whole rooms of crates at once."],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Kohm",
+      "meta": "12h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Kohm",
+          "note": "20,000 cr, 2,500 Salvage, 500 Oxium, 500 Cryotic, 2 Argon Crystal",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": [
+        {
+          "title": "ammo while levelling",
+          "body": "At full spool it burns 4 ammo per shot and pickups cap at 40, so slot an ammo mutation mod while you level it."
+        }
+      ]
+    }
+  ]
+}

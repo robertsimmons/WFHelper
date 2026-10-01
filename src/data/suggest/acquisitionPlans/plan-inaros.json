@@ -1,0 +1,275 @@
+{
+  "name": "Inaros",
+  "kind": "warframe",
+  "effort": 3,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "badges": [
+    { "text": "Baro visit + MR 5", "tone": "warn" },
+    { "text": "Circuit week 8", "tone": "circuit" }
+  ],
+  "prices": [{ "label": "quest", "amount": "100 Ducats + 25,000 cr", "money": false }],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "MASTERY RANK",
+      "sub": null,
+      "activity": "reach MR 5 before Baro arrives",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Mastery Rank 5",
+          "note": "gates buying the quest, not just running it",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Missing MR 5 at the counter means waiting two more weeks for Baro."],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "currency",
+      "place": "RELAY",
+      "sub": "Ducat kiosk",
+      "activity": "trade Prime parts for Ducats",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "Ducats", "amount": "100" },
+      "spends": [],
+      "map": null,
+      "rows": [{ "qty": "100", "label": "Ducats", "note": null, "alt": null, "done": false }],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "BARO KI'TEER",
+      "sub": null,
+      "activity": "buy the Sands of Inaros quest blueprint",
+      "meta": "every visit, every two weeks",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [
+        { "currency": "Ducats", "amount": "100" },
+        { "currency": "Credits", "amount": "25,000" }
+      ],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Sands of Inaros Blueprint",
+          "note": "evergreen stock",
+          "alt": "trade for it from another player",
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "craft",
+      "place": "FOUNDRY",
+      "sub": "KEYS tab",
+      "activity": "craft the quest key",
+      "meta": "6h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Sands of Inaros",
+          "note": "5,000 cr, 5,000 Nano Spores, 400 Oxium, 1 Nitain Extract",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "ARA, MARS",
+      "sub": "Desert Tomb",
+      "activity": "Sands of Inaros quest",
+      "meta": "an evening or two, no RNG",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Inaros Blueprint",
+          "note": "first tomb visit",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Neuroptics Blueprint",
+          "note": "60 kills of the vessel's target, then ~50 Feral Kavats",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Chassis Blueprint",
+          "note": "20 kills, then the Tomb Guardian",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Systems Blueprint",
+          "note": "5 kills, then the Tomb Protector",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Kills only count while Sands of Inaros is your active quest. If a vessel stalls, clear other active quests and reactivate this one from the Codex.",
+        "Each player gets a random target per vessel; check the glyph on the vessel by the Orbiter's Codex desk. Low Effects Intensity can hide it.",
+        "The quest can't be replayed, and a second key does not reset it. Farm Kavat codes on the second visit before killing them all."
+      ],
+      "bonuses": [
+        "The second tomb visit is the best one-time Kavat Genetic Code farm in the game.",
+        "Systems also awards the Sacred Vessel orbiter decoration."
+      ],
+      "disclosures": [
+        {
+          "title": "Kavat code setup",
+          "body": "Bring Ivara with Prowl or a sleep Equinox, a Synthesis Scanner with Vector-Thread, Cross-Matrix and Sol-Battery, and a Resource Booster plus Resource Drop Chance Booster. A fully charged Ballistica kill spawns a scannable specter, so each Kavat scans twice. Scan and kill one at a time, and don't arm your companion. Hauls range from 3 to 142 codes. Aborting discards that attempt's codes but lets you retry."
+        },
+        {
+          "title": "where to find vessel targets",
+          "body": "Bursa: fail a Robotic Onslaught conduit in a Corpus Disruption like Laomedeia, Neptune. Juggernaut: Magnacidium, Deimos spawns one 75-90% of the time; kill and abort, kills still count. Manic: Tyl Regor on Titania, Uranus. Hyekka Master: Helene, Hydron or Stöfler. Seeker: Spear, Mars. Brood Mother: any Infested node on Eris or Deimos. Hazard and Simulacrum kills never count."
+        },
+        {
+          "title": "tomb bosses",
+          "body": "The Tomb Guardian splits each time it dies; bring area damage like Penta or Tonkor, and Molecular Prime carries over to the splits. The Tomb Protector copies your frame and primary, so equip a weak primary and don't be in Operator form when it spawns. Breaking line of sight stops shadows spawning, and you can lure it into the flooded side rooms. The fight has a ~15-minute timer."
+        },
+        {
+          "title": "other sources",
+          "body": "After The Duviri Paradox, Inaros is week 8 of the Normal Circuit: Neuroptics tier 2, Chassis 5, Systems 8, main 10 (3,640 progress, ~23 stages). After the quest, Cephalon Simaris sells replacements at 25,000 standing a part and 50,000 for the main blueprint."
+        }
+      ]
+    },
+    {
+      "type": "farm",
+      "place": "THE VOID",
+      "sub": null,
+      "activity": "mine Argon Pegmatite",
+      "meta": "pick this up last",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "2",
+          "label": "Argon Crystal",
+          "note": "Inaros Systems",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Argon decays at daily reset; farm it right before building Systems."],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "NIGHTWAVE",
+      "sub": null,
+      "activity": "buy from the cred shop",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "3",
+          "label": "Nitain Extract",
+          "note": "1 key, 2 Neuroptics",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build components, then Inaros",
+      "meta": "12h each, then 3 days",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Neuroptics",
+          "note": "15,000 cr, 1,500 Alloy Plate, 2 Nitain Extract, 350 Polymer Bundle, 500 Plastids",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Chassis",
+          "note": "15,000 cr, 3 Neurodes, 1,000 Nano Spores, 300 Plastids, 100 Oxium",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Systems",
+          "note": "15,000 cr, 2 Argon Crystal, 300 Polymer Bundle, 1,600 Nano Spores, 500 Circuits",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Inaros",
+          "note": "25,000 cr, the three parts, 1 Orokin Cell",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Needs a free Warframe slot before the Foundry will let you claim it"],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

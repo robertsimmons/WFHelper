@@ -1,0 +1,273 @@
+{
+  "name": "Trinity",
+  "kind": "warframe",
+  "effort": 4,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "badges": [
+    { "text": "Nav Beacon key", "tone": "warn" },
+    { "text": "Circuit alt", "tone": "circuit" }
+  ],
+  "prices": [{ "label": "blueprint", "amount": "25,000 cr", "money": false }],
+  "groups": [
+    {
+      "type": "vendor",
+      "place": "MARKET",
+      "sub": null,
+      "activity": "buy blueprint",
+      "meta": "25,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Trinity Blueprint", "note": null, "alt": null, "done": false }
+      ],
+      "conditions": [
+        "Ambulas only drops the three component blueprints; the main blueprint is a Market purchase."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "REGNA, PLUTO",
+      "sub": null,
+      "activity": "Rescue; hack the field Ambulas a Condor dropship brings",
+      "meta": "~6 beacons per hacked proxy",
+      "mode": "solo",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "5",
+          "label": "Animo Nav Beacon",
+          "note": "5 per launch, 3 refunded on success",
+          "alt": "or any Corpus Outpost mission on Pluto",
+          "done": false
+        },
+        {
+          "qty": "2",
+          "label": "Morphics",
+          "note": "Chassis and Systems",
+          "alt": null,
+          "done": false
+        },
+        { "qty": "220", "label": "Plastids", "note": "Systems", "alt": null, "done": false },
+        {
+          "qty": "800",
+          "label": "Rubedo",
+          "note": "Neuroptics and Chassis",
+          "alt": null,
+          "done": false
+        },
+        { "qty": "150", "label": "Alloy Plate", "note": "Neuroptics", "alt": null, "done": false }
+      ],
+      "conditions": [
+        "Beacons drop on the ground near the hacked proxy and are not auto-collected; pick them up.",
+        "Get to the first open outdoor area and alert the Corpus so a dropship comes. If the map does not start outdoors or no Ambulas drops, abort and reroll."
+      ],
+      "bonuses": [
+        "Build a buffer of 10-15 beacons first so the Hades runs can chain; each run nets -2."
+      ],
+      "disclosures": [
+        {
+          "title": "why not Outer Terminus",
+          "body": "Outer Terminus (Defense), Minthe (Mobile Defense) and Narcissus (Exterminate) also spawn proxies, but players who ground Defense waves called it far slower, and Defense sometimes sends Bursas instead of Ambulas."
+        }
+      ]
+    },
+    {
+      "type": "boss",
+      "place": "HADES, PLUTO",
+      "sub": null,
+      "activity": "Assassination, Ambulas",
+      "meta": "~4 kills for Systems expected",
+      "mode": "solo or squad, bring crowd control",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Animo Nav Beacon", "amount": "2" }],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Neuroptics Blueprint",
+          "note": "38.72%",
+          "alt": null,
+          "done": false
+        },
+        { "qty": null, "label": "Chassis Blueprint", "note": "38.72%", "alt": null, "done": false },
+        {
+          "qty": null,
+          "label": "Systems Blueprint",
+          "note": "22.56%; likely last",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Deliver 3 hacked Ambulas solo, or 4 in any squad of 2-4. If a dropship hauls 3 unhacked ones, the ship flees and the mission fails.",
+        "Always have one hacked and protected before the next dropship, which arrives every 90 seconds.",
+        "Every squad member pays their own 5 beacons and gets their own 3 back.",
+        "Kill the repair drones; they undo armor-plate progress."
+      ],
+      "bonuses": [
+        "Wide-area crowd control (Frost, Gara, Nova, Vauban, Nyx, Octavia) makes the defend phase trivial; Nova also speeds up the waves.",
+        "Radiation and a punch-through weapon shred it through whichever weak spot faces you."
+      ],
+      "disclosures": [
+        {
+          "title": "the fight, step by step",
+          "body": "Strip Ambulas's leg and head plates, drain its health, hack it, then defend it until the dropship takes it to Frohd Bek's ship. The timers cannot be skipped, so travel time to the boss room is the only part you control. Limbo or Wukong let you zone out during the waits."
+        },
+        {
+          "title": "Circuit, if Systems will not drop",
+          "body": "After The Duviri Paradox, the normal Circuit gives Trinity with no RNG and no beacons during her rotation week: Neuroptics at tier 2, Chassis 5, Systems 8, main blueprint 10. Her augment mod is on the same path. Check the rotation before planning around it."
+        },
+        {
+          "title": "old threads are out of date",
+          "body": "Complaints about 20-beacon entry, 4-6 hacked Ambulas and 120-second rounds predate Hotfix 30.3.5 and Update 34.0. If a hacked Ambulas explodes instead of staying down, that was a bug fixed in Hotfix 38.6.2."
+        }
+      ]
+    },
+    {
+      "type": "farm",
+      "place": "ELARA, JUPITER",
+      "sub": null,
+      "activity": "Survival",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": "1", "label": "Neural Sensors", "note": "Neuroptics", "alt": null, "done": false },
+        { "qty": "500", "label": "Salvage", "note": "Systems", "alt": null, "done": false }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "EUROPA",
+      "sub": null,
+      "activity": "any mission",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": "1", "label": "Control Module", "note": "Systems", "alt": null, "done": false }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "APOLLODORUS, MERCURY",
+      "sub": null,
+      "activity": "Survival",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": "1,000", "label": "Ferrite", "note": "Chassis", "alt": null, "done": false },
+        {
+          "qty": "150",
+          "label": "Polymer Bundle",
+          "note": "Neuroptics",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "GABII, CERES",
+      "sub": null,
+      "activity": "Survival, Dark Sector",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": "1", "label": "Orokin Cell", "note": "Trinity", "alt": null, "done": false }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build components, then Trinity",
+      "meta": "12h each, then 72h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Neuroptics",
+          "note": "150 Alloy Plate, 1 Neural Sensors, 150 Polymer Bundle, 500 Rubedo",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Chassis",
+          "note": "1 Morphics, 1,000 Ferrite, 300 Rubedo",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Systems",
+          "note": "1 Control Module, 1 Morphics, 500 Salvage, 220 Plastids",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Trinity",
+          "note": "1 Orokin Cell + 25,000 cr",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Each component costs 15,000 cr. Start each as it drops so the 12-hour timers overlap; have a free Warframe slot before claiming Trinity.",
+        "Keep the base frame even if you own Trinity Prime: subsuming Well of Life needs base Trinity."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

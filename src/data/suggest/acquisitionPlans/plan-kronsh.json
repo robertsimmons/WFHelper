@@ -1,0 +1,215 @@
+{
+  "name": "Kronsh",
+  "kind": "melee",
+  "effort": 3,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 3, "unit": "parts" },
+  "badges": [
+    { "text": "Ostron Trusted to gild", "tone": "warn" },
+    { "text": "level twice", "tone": "info" }
+  ],
+  "prices": [
+    { "label": "strike, grip, link", "amount": "3,000 standing", "money": false },
+    { "label": "assemble", "amount": "4,000 cr", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "currency",
+      "place": "PLAINS OF EIDOLON, EARTH",
+      "sub": null,
+      "activity": "conservation loop from the Cetus gate pond to the cave pond",
+      "meta": "several capped days to Trusted",
+      "mode": "solo",
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "Ostron standing", "amount": "71,000" },
+      "spends": [],
+      "map": "plains-of-eidolon",
+      "rows": [
+        {
+          "qty": null,
+          "label": "Offworlder",
+          "note": "10,000 cr, 25 Nistlepod, 25 Iradite, 25 Grokdrul",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Visitor",
+          "note": "25,000 cr, 10 Tear Azurite, 40 Pyrol, 60 Fish Scales",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Trusted",
+          "note": "50,000 cr, 1 Cetus Wisp, 5 Maprico; unlocks gilding",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The blueprint needs only Neutral, but gilding needs Trusted; early ranks have low caps, so this takes several days however fast you farm.",
+        "Hai-Luk doesn't warn when a fish turn-in goes over the daily cap; set the quantity by hand."
+      ],
+      "bonuses": [
+        "Conservation caps the day in 10-15 minutes; leave and re-enter to respawn the animals. Ivara's Sleep Arrow replaces the tranq rifle.",
+        "Tusk Thumpers drop gems, ore and Coprite Alloy and can cap the day in about 10 minutes."
+      ],
+      "disclosures": [
+        {
+          "title": "fishing instead",
+          "body": "Murkray (any time) and Glappid (night, south-east ocean) are the repeated picks, but bait now costs standing. Oxylus shows fishing hot spots on the minimap."
+        }
+      ]
+    },
+    {
+      "type": "vendor",
+      "place": "HOK, CETUS",
+      "sub": null,
+      "activity": "buy the Strike, a Grip and a Link",
+      "meta": "Neutral rank",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Ostron standing", "amount": "3,000" }],
+      "map": "cetus",
+      "rows": [
+        {
+          "qty": null,
+          "label": "Kronsh Strike Blueprint",
+          "note": "1,000 standing",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "any base Grip",
+          "note": "1,000 standing; one-handed makes a machete, two-handed a polearm",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Jai or Ruhang Link",
+          "note": "1,000 standing",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Grip and Link add no Mastery; pick the ones whose materials you already hold, and check current costs in the Forge preview.",
+        "Grip and Link are consumed; a built Zaw can't be taken apart."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "PLAINS OF EIDOLON, EARTH",
+      "sub": null,
+      "activity": "mine, fish, break Grineer drums, collect Cetus Wisps",
+      "meta": "refine at Old Man Suumbaat, Offworlder",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Ostron standing", "amount": "5,000" }],
+      "map": "plains-of-eidolon",
+      "rows": [
+        {
+          "qty": "10",
+          "label": "Esher Devar",
+          "note": "10 Devar (blue veins), 1,000 cr per batch of 10",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "60",
+          "label": "Coprite Alloy",
+          "note": "3 builds of 20 Coprun, 400 Ferrite, 50 Rubedo",
+          "alt": "Tusk Thumpers",
+          "done": false
+        },
+        {
+          "qty": "20",
+          "label": "Grokdrul",
+          "note": "Grineer drums in camps",
+          "alt": "bounty rewards",
+          "done": false
+        },
+        {
+          "qty": "45",
+          "label": "Fish Scales",
+          "note": "carve fish at Fisher Hai-Luk",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "3",
+          "label": "Cetus Wisp",
+          "note": "1 for Trusted, 2 to gild; lake shores, mostly at night",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The Esher Devar and Coprite Alloy refine blueprints cost 2,500 standing each from Old Man Suumbaat and need Offworlder.",
+        "Mining Devar and Coprun needs a mining tool."
+      ],
+      "bonuses": ["Gather these on the same Plains trips as the conservation loop."],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY + HOK'S ANVIL",
+      "sub": null,
+      "activity": "build, assemble, level, gild, level again",
+      "meta": "1h build",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Kronsh Strike",
+          "note": "5,000 cr, 20 Grokdrul, 45 Fish Scales, 10 Esher Devar, 60 Coprite Alloy, 1h",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "assemble at Hok's Anvil",
+          "note": "4,000 cr",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "level to 30, then gild at Hok",
+          "note": "2 Cetus Wisp, 5,000 cr; resets to rank 0",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "level the gilded Zaw to 30",
+          "note": "Mastery counts only now",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "An ungilded Zaw gives zero Mastery.",
+        "Hok takes rank-30 Zaws for standing; donate only after the gilded run to 30 is done.",
+        "Mastery belongs to the Kronsh Strike; later Zaws on Kronsh give no more."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

@@ -1,0 +1,298 @@
+{
+  "name": "Vizier Predasite",
+  "kind": "companion",
+  "effort": 4,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 1, "unit": "companion" },
+  "badges": [
+    { "text": "Entrati Rank 3 to gild", "tone": "warn" },
+    { "text": "must be Weakened", "tone": "info" }
+  ],
+  "prices": [
+    { "label": "revivify", "amount": "5,000 cr", "money": false },
+    { "label": "Mutagen + Antigen blueprints", "amount": "2,500 standing", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "NECRALISK, DEIMOS",
+      "sub": null,
+      "activity": "unlock Son's revivification menu",
+      "meta": "Heart of Deimos",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "necralisk",
+      "rows": [
+        {
+          "qty": null,
+          "label": "Heart of Deimos",
+          "note": "opens the Necralisk and Son",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "1",
+          "label": "free Companion Slot",
+          "note": "claiming the revivified Vizier needs it",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "currency",
+      "place": "CAMBION DRIFT, DEIMOS",
+      "sub": null,
+      "activity": "Deimos bounties and conservation for Entrati rank",
+      "meta": "Rank 3 Associate to gild",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "cambion-drift",
+      "rows": [
+        {
+          "qty": null,
+          "label": "Entrati Rank 1, Stranger",
+          "note": "6 Benign Infested Tumors, 6 Ferment Bladders",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Entrati Rank 2, Acquaintance",
+          "note": "Keratinos Blade Blueprint, 1 Father Token, 1 Daughter Token",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Entrati Rank 3, Associate",
+          "note": "5 Common Avichaea Tags, 1 Medjay Predasite Tag, 1 Mother Token, 1 Son Token",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Medjay only spawns during Vome; any tranq capture of one gives the tag, no weakening needed.",
+        "Rank 1 Stranger is enough for the capture and revivify; Rank 3 only gates the gild."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "SON, NECRALISK",
+      "sub": null,
+      "activity": "buy the Tranq Rifle and one Mutagen/Antigen pair",
+      "meta": "3,000 standing",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Entrati standing", "amount": "3,000" }],
+      "map": "necralisk",
+      "rows": [
+        {
+          "qty": null,
+          "label": "Tranq Rifle",
+          "note": "500 standing, Neutral",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Leptosam Mutagen Blueprint",
+          "note": "1,250 standing, Stranger",
+          "alt": "pricier Mutagens at Ranks 2-4",
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Iranon Antigen Blueprint",
+          "note": "1,250 standing, Stranger",
+          "alt": "pricier Antigens at Ranks 2-4",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Mutagen and Antigen only change resistances, head and tail look and first polarity; any pair gives a Vizier."
+      ],
+      "bonuses": [
+        "The Predasite Echo-Lure (1,000 standing) plus Pheromone Glands (150 each) at Stranger summon one on demand, though Viziers are common enough that it's rarely needed."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "CAMBION DRIFT, DEIMOS",
+      "sub": null,
+      "activity": "fish, cut at Daughter, and gather residue",
+      "meta": "Mutagen + Antigen ingredients",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "cambion-drift",
+      "rows": [
+        {
+          "qty": "6",
+          "label": "Vome Residue",
+          "note": "blue zones during Fass",
+          "alt": null,
+          "done": false
+        },
+        { "qty": "6", "label": "Fass Residue", "note": "during Vome", "alt": null, "done": false },
+        { "qty": "15", "label": "Pustulite", "note": "Leptosam", "alt": null, "done": false },
+        {
+          "qty": "20",
+          "label": "Ferment Bladder",
+          "note": "fish part, Leptosam",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "12",
+          "label": "Sporulate Sac",
+          "note": "fish part or Drift cysts, Leptosam",
+          "alt": null,
+          "done": false
+        },
+        { "qty": "15", "label": "Ganglion", "note": "Iranon", "alt": null, "done": false },
+        {
+          "qty": "30",
+          "label": "Benign Infested Tumor",
+          "note": "fish part, Iranon",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "15",
+          "label": "Dendrite Blastoma",
+          "note": "fish part or Drift cysts, Iranon",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Each residue only spawns in the opposite cycle to its name."],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build the Mutagen and Antigen",
+      "meta": "1,000 cr each",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Leptosam Mutagen",
+          "note": "6 Vome Residue, 15 Pustulite, 20 Ferment Bladder, 12 Sporulate Sac",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Iranon Antigen",
+          "note": "6 Fass Residue, 15 Ganglion, 30 Benign Infested Tumor, 15 Dendrite Blastoma",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "bounty",
+      "place": "CAMBION DRIFT, DEIMOS",
+      "sub": "Fass or Vome",
+      "activity": "tranq a Vizier, then let Infested damage it",
+      "meta": "common, either cycle",
+      "mode": "stealth frame",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "cambion-drift",
+      "rows": [
+        {
+          "qty": "1",
+          "label": "Weakened Vizier Predasite",
+          "note": "capture only after Infested damage it",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "A plain tranq capture gives only Vizier Predasite Tags, and nothing shows up in Son's Revivification menu.",
+        "Your own damage never weakens it, and lured Predasites are low level, so a modded weapon kills them outright.",
+        "Weakened Predasites despawn after a while and lured ones can bolt; capture quickly.",
+        "Weakened subspecies are untradeable."
+      ],
+      "bonuses": [
+        "Grab the Medjay tag for the Rank 3 gate on a Vome trip while you're out here.",
+        "Spare Weakened Viziers ranked to 30 donate to Son for 10 Son Tokens each."
+      ],
+      "disclosures": [
+        {
+          "title": "getting the Weakened hit",
+          "body": "Near-unanimous: tranq it first, then kite Infested (Chargers work well) over and go invisible or into Void mode so the aggro switches to the sleeping animal. Infested still apply Weakened to a tranquilized, invulnerable animal. If kiting fails, throw a Pherliac Pod on it and Infested pile on; the pod parts drop from Juggernauts, 50 charges a craft for 7,500 credits. Bullet-jump slams and stray fire during bounties kill wild animals, and a dead target is gone."
+        }
+      ]
+    },
+    {
+      "type": "vendor",
+      "place": "SON, NECRALISK",
+      "sub": null,
+      "activity": "revivify, then gild at rank 30",
+      "meta": "5,000 cr now; 10 Son Tokens later",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Entrati standing", "amount": "5,000" }],
+      "map": "necralisk",
+      "rows": [
+        {
+          "qty": null,
+          "label": "Vizier Predasite, revivified",
+          "note": "Weakened Vizier + Mutagen + Antigen + 5,000 credits",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "10",
+          "label": "Son Tokens",
+          "note": "gild at rank 30, Entrati Associate",
+          "alt": "donate a maxed Predasite or Vulpaphyla for 10, gilded for 15",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Only a gilded Vizier earns Mastery; gilding resets it to rank 0, so level it to 30 twice.",
+        "Once one gilded Vizier hits rank 30, no other Vizier combination gives Mastery again.",
+        "At the daily standing cap Son refuses pet donations, because a donation still tries to pay standing."
+      ],
+      "bonuses": [
+        "Son Tokens also come from tag trades under Capture Deimos Wildlife and pickups on the Drift."
+      ],
+      "disclosures": []
+    }
+  ]
+}

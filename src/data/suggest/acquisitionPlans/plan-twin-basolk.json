@@ -1,0 +1,165 @@
+{
+  "name": "Twin Basolk",
+  "kind": "melee",
+  "effort": 2,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 3, "unit": "blueprints" },
+  "badges": [
+    { "text": "eats Atomos + Dual Zoren", "tone": "warn" },
+    { "text": "Market", "tone": "info" }
+  ],
+  "prices": [
+    { "label": "blueprints", "amount": "60,000 cr", "money": false },
+    { "label": "builds", "amount": "120,000 cr", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "vendor",
+      "place": "MARKET",
+      "sub": null,
+      "activity": "buy three blueprints",
+      "meta": "60,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Twin Basolk Blueprint",
+          "note": "15,000 cr",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Atomos Blueprint",
+          "note": "30,000 cr",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Dual Zoren Blueprint",
+          "note": "15,000 cr",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "THE VOID",
+      "sub": null,
+      "activity": "any Void mission, break containers",
+      "meta": "the day you start Atomos",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": "2", "label": "Argon Crystal", "note": "Atomos", "alt": null, "done": false },
+        { "qty": "2", "label": "Control Module", "note": "Twin Basolk", "alt": null, "done": false }
+      ],
+      "conditions": [
+        "Argon halves every day at 00:00 GMT once it starts decaying; build Atomos the day you farm it."
+      ],
+      "bonuses": ["Void fissure runs you are already doing usually cover both."],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "HELLAS, MARS",
+      "sub": null,
+      "activity": "Exterminate",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": "4", "label": "Morphics", "note": "Dual Zoren", "alt": null, "done": false }
+      ],
+      "conditions": [],
+      "bonuses": [
+        "Salvage, Polymer Bundle, Ferrite, Alloy Plate and Rubedo are common; top them up along the way."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Atomos and Dual Zoren, level both to 30",
+      "meta": "24h and 12h; start Zoren within 12h of Atomos",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Atomos",
+          "note": "60,000 cr, 1,500 Salvage, 1,300 Polymer Bundle, 800 Rubedo, 2 Argon Crystal",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Dual Zoren",
+          "note": "30,000 cr, 4 Morphics, 900 Salvage, 1,100 Ferrite, 800 Alloy Plate",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Each component is its own Mastery item and the recipe destroys it. Level both to 30 before feeding them in."
+      ],
+      "bonuses": [],
+      "disclosures": [
+        {
+          "title": "keeping your own Atomos",
+          "body": "The Foundry lets you pick which copy it consumes, but you still need a spare. A consumed Atomos loses any Incarnon Genesis, so keep the Genesis on a separate copy."
+        }
+      ]
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "then",
+      "meta": "12h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Twin Basolk",
+          "note": "30,000 cr, 1 Atomos, 1 Dual Zoren, 2 Control Module",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Twin Basolk needs MR 7 to equip, above either component, so you can build it before you can use it."
+      ],
+      "bonuses": ["It is the only weapon that can equip the Rift Strike mod."],
+      "disclosures": []
+    }
+  ]
+}

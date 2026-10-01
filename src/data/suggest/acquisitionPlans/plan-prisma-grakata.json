@@ -1,0 +1,81 @@
+{
+  "name": "Prisma Grakata",
+  "kind": "primary",
+  "effort": 2,
+  "tradeable": "unranked only, no Forma or Catalyst",
+  "progress": { "have": 0, "need": 1, "unit": "weapon" },
+  "badges": [
+    { "text": "Baro rotation", "tone": "warn" },
+    { "text": "MR 11", "tone": "info" }
+  ],
+  "prices": [{ "label": "Baro", "amount": "100,000 cr + 610 Ducats", "money": false }],
+  "groups": [
+    {
+      "type": "currency",
+      "place": "VOID FISSURES, ANY",
+      "sub": "Relay Ducat Kiosk",
+      "activity": "crack Void Relics, trade Prime parts for Ducats",
+      "meta": "610 Ducats needed",
+      "mode": "squad of four for more reward picks",
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "Ducats", "amount": "610" },
+      "spends": [],
+      "map": "void",
+      "rows": [
+        {
+          "qty": "610",
+          "label": "Ducats",
+          "note": "trade Prime parts and blueprints at any Relay Ducat Kiosk except Maroo's Bazaar",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The kiosk is open even when Baro isn't there, so bank Ducats ahead of his visit; his window is only 48 hours.",
+        "Bronze parts are worth 15 ducats, silver 45, gold 100 (25/65 for parts demoted from vaulted relics); 610 is about six gold parts and a bronze."
+      ],
+      "bonuses": [
+        "Capture and Exterminate on fast tilesets run under two minutes; Defense cracks a relic every wave and drops more relics.",
+        "Baro's once-per-visit Void Surplus (50,000 credits) has a 2% chance of 1,000 Ducats."
+      ],
+      "disclosures": [
+        {
+          "title": "where not to get ducats",
+          "body": "Aya to Ducats at Varzia during Prime Resurgence is 5 ducats per Aya, a poor rate useful only for leftover Aya."
+        }
+      ]
+    },
+    {
+      "type": "vendor",
+      "place": "RELAY CONCOURSE, ANY",
+      "sub": "Baro Ki'Teer",
+      "activity": "buy the Prisma Grakata outright",
+      "meta": "stock rotates irregularly",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [
+        { "currency": "Credits", "amount": "100,000" },
+        { "currency": "Ducats", "amount": "610" }
+      ],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Prisma Grakata",
+          "note": "arrives built and ready to equip; no Foundry step",
+          "alt": "or a TennoCon relay visit with Baro's Relay Ticket",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Baro's stock changes every visit; the Prisma Grakata appears a few times a year, sometimes with gaps of several months.",
+        "MR 11 is needed to equip it, and to receive it in a trade."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

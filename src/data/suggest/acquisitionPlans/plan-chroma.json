@@ -1,0 +1,324 @@
+{
+  "name": "Chroma",
+  "kind": "warframe",
+  "effort": 5,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 8, "unit": "parts" },
+  "badges": [
+    { "text": "needs 4 donor frame parts", "tone": "warn" },
+    { "text": "Circuit week 7", "tone": "circuit" }
+  ],
+  "prices": [{ "label": "build", "amount": "70,000 cr", "money": false }],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "QUEST + JUNCTIONS",
+      "sub": null,
+      "activity": "The New Strange, then three Junctions",
+      "meta": "one-time rewards",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Chroma Blueprint",
+          "note": "The New Strange; needs Stolen Dreams",
+          "alt": {
+            "text": "or 50,000 standing at Cephalon Simaris",
+            "spends": [{ "currency": "Simaris standing", "amount": "50,000" }]
+          },
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Neuroptics Blueprint",
+          "note": "Uranus Junction",
+          "alt": {
+            "text": "or 25,000 standing at Cephalon Simaris",
+            "spends": [{ "currency": "Simaris standing", "amount": "25,000" }]
+          },
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Chassis Blueprint",
+          "note": "Neptune Junction",
+          "alt": {
+            "text": "or 25,000 standing at Cephalon Simaris",
+            "spends": [{ "currency": "Simaris standing", "amount": "25,000" }]
+          },
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Systems Blueprint",
+          "note": "Pluto Junction",
+          "alt": {
+            "text": "or 25,000 standing at Cephalon Simaris",
+            "spends": [{ "currency": "Simaris standing", "amount": "25,000" }]
+          },
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Quest and Junction blueprints are one-time; replays and Steel Path Junctions don't repeat them.",
+        "Arid Lancer synthesis targets can fail to spawn; switching to solo fixes it, and a scan only counts once the mission finishes.",
+        "Bring a Cipher for the Nuovo spy step; it has a hidden timer."
+      ],
+      "bonuses": [],
+      "disclosures": [
+        {
+          "title": "quest walkthrough",
+          "body": "Buy Synthesis Scanners from Cephalon Simaris, synthesize 3 Arid Lancers on Mars (one per mission), craft three 10-second beacons, scan the rogue Chroma on Alator, then defend the Arcane Machine on Ose, Europa and scan Chroma 5 times. If enemies won't cross the portal on Ose, walk back and forth through it; relog if the mission doesn't register."
+        },
+        {
+          "title": "the Circuit route",
+          "body": "After The Duviri Paradox, Chroma is week 7 of the Normal Circuit: Neuroptics at tier 2, Chassis at 5, Systems at 8, main at 10. Saryn (week 4), Ember (week 1) and Frost (week 3) are also Circuit weeks, and Saryn's tier 8 Systems skips the worst donor RNG."
+        }
+      ]
+    },
+    {
+      "type": "vendor",
+      "place": "CLAN DOJO",
+      "sub": "Tenno Lab",
+      "activity": "buy the Volt Neuroptics blueprint",
+      "meta": "any clan with Volt researched",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Volt Neuroptics Blueprint",
+          "note": "donor for the final Chroma build",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Blueprints only sell from your own clan's dojo."],
+      "bonuses": [
+        "Joining an established clan to buy it and leaving is standard; the blueprint stays with you. A small clan can research Volt cheaply with an Oracle, a Reactor and a Tenno Lab."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "boss",
+      "place": "TETHYS, SATURN",
+      "sub": null,
+      "activity": "Assassination, General Sargas Ruk",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Ember Neuroptics Blueprint",
+          "note": "38.72%",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "boss",
+      "place": "EXTA, CERES",
+      "sub": null,
+      "activity": "Assassination, Captain Vor and Lech Kril",
+      "meta": "~2-3 kills",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Frost Chassis Blueprint",
+          "note": "38.72%",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Kril is immune until the coolant tubes on his back pop; Cold procs or Rhino Stomp let you hit them reliably."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "currency",
+      "place": "RATHUUM, SEDNA",
+      "sub": "Nakki, Yam, then Vodyanoi",
+      "activity": "bank Judgement Points",
+      "meta": "one Vodyanoi win funds two Kela runs",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "Judgement Points", "amount": "25" },
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Nakki",
+          "note": "enter with 0, wins 10",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Yam",
+          "note": "enter with 10, wins 15",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Vodyanoi",
+          "note": "enter with 15, wins 25",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Entry numbers are thresholds, not costs; only a completed Kela run spends points.",
+        "You must own 25 points to enter Merrow."
+      ],
+      "bonuses": ["Executioners drop Endo often, so arena runs aren't wasted time."],
+      "disclosures": []
+    },
+    {
+      "type": "boss",
+      "place": "MERROW, SEDNA",
+      "sub": null,
+      "activity": "Assassination, Kela De Thaym",
+      "meta": "~3-4 min a run with the right frame",
+      "mode": "solo",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Judgement Points", "amount": "12" }],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Saryn Systems Blueprint",
+          "note": "22.56%",
+          "alt": "Saryn's Circuit week pays it at tier 8",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Chroma eats this Saryn Systems. Farm a second one if you want Saryn too.",
+        "Public Kela runs go badly; randoms don't know the target phases."
+      ],
+      "bonuses": [],
+      "disclosures": [
+        {
+          "title": "fast Kela kills",
+          "body": "Oberon's Smite, Octavia's Mallet, Mesa or Valkyr Hysteria end each damage phase quickly. Ignis Wraith with punch-through pops the spinning green panels in one sweep. Operator Void Mode ignores the orbital strikes; Harrow Covenant and Limbo work too."
+        }
+      ]
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build the four donor parts first",
+      "meta": "12h each",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Ember Neuroptics", "note": null, "alt": null, "done": false },
+        {
+          "qty": null,
+          "label": "Frost Chassis",
+          "note": "15,000 cr, 1 Morphics, 1,000 Ferrite, 300 Rubedo",
+          "alt": null,
+          "done": false
+        },
+        { "qty": null, "label": "Saryn Systems", "note": null, "alt": null, "done": false },
+        {
+          "qty": null,
+          "label": "Volt Neuroptics",
+          "note": "15,000 cr, 150 Alloy Plate, 1 Neural Sensors, 150 Polymer Bundle, 500 Rubedo",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Build Ember and Frost parts first; Saryn Systems is usually the last donor you get."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "then Chroma's components, then Chroma",
+      "meta": "12h each, then 3 days",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Neuroptics",
+          "note": "15,000 cr, Ember Neuroptics, 200 Plastids, 2 Neural Sensors, 350 Polymer Bundle",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Chassis",
+          "note": "15,000 cr, Frost Chassis, 2 Neurodes, 900 Salvage, 50 Plastids",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Systems",
+          "note": "15,000 cr, Saryn Systems, 400 Oxium, 2 Argon Crystal, 1 Neurodes",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Chroma",
+          "note": "25,000 cr, the three parts, Volt Neuroptics",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Argon Crystals decay at daily reset; farm the two for Systems right before building.",
+        "Needs a free Warframe slot before the Foundry will let you claim it"
+      ],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

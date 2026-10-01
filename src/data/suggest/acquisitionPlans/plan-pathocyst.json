@@ -1,0 +1,107 @@
+{
+  "name": "Pathocyst",
+  "kind": "melee",
+  "effort": 4,
+  "tradeable": "blueprint and parts",
+  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "badges": [
+    { "text": "needs 2 Blades", "tone": "warn" },
+    { "text": "MR 9", "tone": "info" }
+  ],
+  "prices": [{ "label": "build", "amount": "30,000 cr", "money": false }],
+  "groups": [
+    {
+      "type": "boss",
+      "place": "EXEQUIAS, DEIMOS",
+      "sub": "Zealoid Prelate",
+      "activity": "Assassination",
+      "meta": "about 7 kills on average, 5-10 min each",
+      "mode": "normal, solo is often faster",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Pathocyst Blueprint",
+          "note": "33.33% per kill",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "2",
+          "label": "Pathocyst Blade",
+          "note": "33.33% per kill",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Pathocyst Subcortex",
+          "note": "33.33% per kill",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "5",
+          "label": "Neurodes",
+          "note": "Exequias region resource; drops across Deimos",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The recipe needs 2 Blades, so one of each part doesn't finish the farm.",
+        "Unlocked by clearing Terrorem; no key is needed.",
+        "Steel Path doesn't improve the drops and makes the boss much tankier.",
+        "Desecrate and Pilfering Swarm do nothing to the Prelate.",
+        "The part shows as \"?\" until the mission ends, so finish every run."
+      ],
+      "bonuses": [
+        "Revenant's Enthrall or Nyx's Mind Control on the Prelate in phase 1 skips straight to phase 2.",
+        "Sell spare Blueprints and Subcortexes to other players."
+      ],
+      "disclosures": [
+        {
+          "title": "the fight",
+          "body": "Phase 1: bring it to half health. Phase 2: it teleports and goes invulnerable. Follow the red waypoint to a Zealoid Bastion, kill it, and carry its lantern (Arlo's Flame) back; anything inside the light, the boss included, can be damaged. Kill Infested inside the light to stop it shrinking. When the boss breaks the lamp it heal-links to nearby Infested; kill those fast, since each kill also damages the boss. Repeat until it dies."
+        },
+        {
+          "title": "loadout",
+          "body": "Holding the lantern blocks your primary, so bring an ammo-free weapon: a thrown Glaive detonated over the boss, an Incarnon, a battery weapon or ammo pads. Heat primers (Epitaph, Citrine) keep DoT ticking, but status is cleared on each teleport. Volt for sprinting, Xaku's Accuse to pin it, Kullervo's Wrathful Advance, or Loki/Ivara with strong melee for safe solo runs. Kuva Bramma, Zarr or Ogris clear the heal-linked adds."
+        },
+        {
+          "title": "why squads are slower",
+          "body": "Teammates grab the lantern and wander off with it, stalling the damage window."
+        }
+      ]
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Pathocyst",
+      "meta": "1 day",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Pathocyst",
+          "note": "30,000 cr, 2 Pathocyst Blade, 1 Pathocyst Subcortex, 5 Neurodes",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Coda Pathocyst is a separate weapon with its own Mastery and its own farm."],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

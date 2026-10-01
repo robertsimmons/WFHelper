@@ -1,0 +1,201 @@
+{
+  "name": "Oberon",
+  "kind": "warframe",
+  "effort": 5,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "badges": [
+    { "text": "Railjack caches, 10%", "tone": "warn" },
+    { "text": "Circuit week 5", "tone": "circuit" }
+  ],
+  "prices": [{ "label": "blueprint", "amount": "30,000 cr", "money": false }],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "RAILJACK",
+      "sub": null,
+      "activity": "get into Proxima missions",
+      "meta": "Intrinsics rank 3 for Saturn Proxima",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Archwing",
+          "note": "lets you join other players' Railjacks",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Rising Tide",
+          "note": "only needed for your own ship",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Intrinsics rank 3",
+          "note": "opens Saturn Proxima",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "MARKET",
+      "sub": null,
+      "activity": "buy blueprint",
+      "meta": "30,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Oberon Blueprint",
+          "note": null,
+          "alt": "Circuit tier 10",
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "EARTH PROXIMA",
+      "sub": "Iota Temple, Ogal Cluster, Korm's Belt, Bendar Cluster",
+      "activity": "Point of Interest Resource Cache",
+      "meta": "~10 caches per part expected",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Neuroptics Blueprint",
+          "note": "10% per cache",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Systems Blueprint",
+          "note": "10% per cache",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "A Point of Interest has a yellow marker. The white markers Piloting rank 5 reveals are derelicts and never drop Oberon.",
+        "Sover Strait never spawns a Point of Interest.",
+        "Drop chance boosters don't affect cache rolls."
+      ],
+      "bonuses": ["Railjack salvage pays Endo, so the time isn't wasted."],
+      "disclosures": [
+        {
+          "title": "running it efficiently",
+          "body": "One player boards the outpost while the rest of the squad or the AI gunners kill fighters. Tactical Intrinsic rank 4 (Recall Warp) lets the Omni teleport you back to the Railjack after the cache. AI crew is unreliable at shooting outpost radiators, so a solo player can stall on some Points of Interest. Bad luck can run to ~65 caches per part."
+        },
+        {
+          "title": "Eximus drops",
+          "body": "Overframe lists every part at 0.39% (Systems 0.23%) from Eximus enemies. That is incidental, not a farm."
+        }
+      ]
+    },
+    {
+      "type": "farm",
+      "place": "KASIO'S REST, SATURN PROXIMA",
+      "sub": null,
+      "activity": "Skirmish, two Point of Interest objectives",
+      "meta": "two cache rolls a run",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Chassis Blueprint",
+          "note": "10% per cache",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Clear both yellow objectives before killing the last fighters and crewships, or the mission ends before you roll the cache."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build components, then Oberon",
+      "meta": "12h each, then 3 days",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Neuroptics",
+          "note": "15,000 cr, 150 Alloy Plate, 1 Control Module, 150 Polymer Bundle, 500 Circuits",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Chassis",
+          "note": "15,000 cr, 1 Gallium, 1,000 Polymer Bundle, 300 Rubedo",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Systems",
+          "note": "15,000 cr, 1 Orokin Cell, 1 Gallium, 500 Polymer Bundle, 220 Alloy Plate",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Oberon",
+          "note": "25,000 cr, the three parts, 1 Orokin Cell",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Needs a free Warframe slot before the Foundry will let you claim it"],
+      "bonuses": [],
+      "disclosures": [
+        {
+          "title": "the Circuit route",
+          "body": "After The Duviri Paradox, Oberon is week 5 of the 11-week Normal Circuit, shared with Nekros and Valkyr. Neuroptics at tier 2, Chassis at 5, Systems at 8 and the main blueprint at 10, so no Market purchase. One frame per week; the choice resets Monday 00:00 UTC, and picking someone else means waiting a full rotation."
+        }
+      ]
+    }
+  ]
+}

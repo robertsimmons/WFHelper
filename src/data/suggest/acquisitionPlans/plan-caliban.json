@@ -1,0 +1,291 @@
+{
+  "name": "Caliban",
+  "kind": "warframe",
+  "effort": 7,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "badges": [
+    { "text": "40 Narmer Isoplast", "tone": "warn" },
+    { "text": "The New War gate", "tone": "warn" }
+  ],
+  "prices": [
+    { "label": "blueprint", "amount": "50,000 cr", "money": false },
+    { "label": "build", "amount": "70,000 cr", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "THE NEW WAR",
+      "sub": null,
+      "activity": "finish the quest",
+      "meta": "unlocks Narmer Bounties",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "The New War",
+          "note": "long prerequisite chain; needs a Railjack",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": ["Narmer Bounties have no Mastery Rank gate."],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "MARKET",
+      "sub": null,
+      "activity": "buy blueprint",
+      "meta": "50,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Caliban Blueprint", "note": null, "alt": null, "done": false }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "bounty",
+      "place": "ORB VALLIS, VENUS",
+      "sub": "Eudico, or Konzu in Cetus at the same rates",
+      "activity": "Narmer Bounties, Lvl 50-70",
+      "meta": "~15 full bounties for the Isoplast",
+      "mode": "speed frame for the drone escort",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "orb-vallis",
+      "rows": [
+        {
+          "qty": null,
+          "label": "Systems Blueprint",
+          "note": "Rotation A; 8.11% stages 2-3, 5.45% stage 4, 7.5% stage 5",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Chassis Blueprint",
+          "note": "Rotation B; 8.11% stages 2-3, 5.45% stage 4, 7.5% stage 5",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Neuroptics Blueprint",
+          "note": "Rotation C; 8.11% stages 2-3, 5.45% stage 4, 7.5% stage 5",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "40",
+          "label": "Narmer Isoplast",
+          "note": "~2.7 per full bounty",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Only one Caliban part can drop per 150-minute cycle: A is Systems, B Chassis, C Neuroptics. Check the board's reward preview; on a wrong rotation, farm Isoplast or the side materials.",
+        "Stage 1 never drops a part. A full bounty is about a 26% chance at the active rotation's part.",
+        "Always complete the bonus objectives; each stage's roll is where the Isoplast comes from.",
+        "Resource boosters don't affect Isoplast, and there is no pity vendor."
+      ],
+      "bonuses": [
+        "Venato, Korumm, Nepheri and Verdilac also need Isoplast; spares trade to The Quills or Vox Solaris for 2,000 standing each.",
+        "Volt, Nova or Wisp make the drone-escort stage tolerable; one player reports 7-8 minute bounties on Volt."
+      ],
+      "disclosures": [
+        {
+          "title": "why Fortuna over Cetus",
+          "body": "The drop tables are identical, but Vallis objectives stay near the gate, while Plains bounties cross the map and caves break bonus objectives. On Cetus, disarming the Narmer captain before every Vomvalyst dies makes him unkillable and wastes the bounty, so leave Chesa and other disarm abilities at home."
+        },
+        {
+          "title": "Isoplast is the long pole",
+          "body": "By the time every part has dropped you typically have about half the Isoplast. Budget runs around Isoplast, not part drops. Spreading it over days at a daily pace is the most common advice."
+        }
+      ]
+    },
+    {
+      "type": "farm",
+      "place": "VEIL PROXIMA",
+      "sub": "the flashing red Grineer node",
+      "activity": "clear the Sentient Murex, then finish the mission",
+      "meta": "1 shard a run; ~5-10 min in a squad",
+      "mode": "squad, Resource Booster",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "9",
+          "label": "Anomaly Shard",
+          "note": "3 per component",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The anomaly moves every 30 minutes and never appears in Void Storms or Corpus Veil Proxima missions.",
+        "You must finish the whole Railjack mission; a failed mission pays no shard."
+      ],
+      "bonuses": ["A Resource Booster or Smeeta Charm doubles the shard, turning 9 runs into 5."],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "ORB VALLIS, VENUS",
+      "sub": "Deck 12",
+      "activity": "mine red veins; refine at Smokefinger",
+      "meta": "Solaris United rank 2",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Solaris United standing", "amount": "4,000" }],
+      "map": "orb-vallis",
+      "rows": [
+        { "qty": "100", "label": "Hesperon", "note": "20 per refine", "alt": null, "done": false },
+        {
+          "qty": "100",
+          "label": "Hespazym Alloy",
+          "note": "5 refines of 20; each 20 Hesperon, 300 Plastids, 2 Morphics, 1,000 cr",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The reusable refine blueprint costs 4,000 standing from Smokefinger and needs Solaris United rank 2."
+      ],
+      "bonuses": ["Mine between bounties while the board is on a rotation you don't need."],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "PLAINS OF EIDOLON, EARTH",
+      "sub": null,
+      "activity": "spear-fish and cut at Fisher Hai-Luk; Cetus bounties",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "plains-of-eidolon",
+      "rows": [
+        {
+          "qty": "20",
+          "label": "Tralok Eyes",
+          "note": "ocean, daytime; Tulok or Peram spear",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "20",
+          "label": "Mortus Horn",
+          "note": "ponds, any time; Lanzo or Peram spear",
+          "alt": "Thumpers also drop horns",
+          "done": false
+        },
+        {
+          "qty": "30",
+          "label": "Breath of the Eidolon",
+          "note": "Plains bounty reward",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "GANYMEDE, JUPITER",
+      "sub": null,
+      "activity": "Disruption",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": "30", "label": "Hexenon", "note": "Caliban Systems", "alt": null, "done": false },
+        {
+          "qty": "10",
+          "label": "Neural Sensors",
+          "note": "Caliban Neuroptics",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build components, then Caliban",
+      "meta": "12h each, then 3 days",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Neuroptics",
+          "note": "15,000 cr, 3 Anomaly Shard, 12 Narmer Isoplast, 10 Neural Sensors, 20 Tralok Eyes",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Chassis",
+          "note": "15,000 cr, 3 Anomaly Shard, 16 Narmer Isoplast, 20 Mortus Horn, 100 Hespazym Alloy",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Systems",
+          "note": "15,000 cr, 3 Anomaly Shard, 12 Narmer Isoplast, 30 Breath of the Eidolon, 30 Hexenon",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Caliban",
+          "note": "25,000 cr, the three parts, 12 Orokin Cells",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Needs a free Warframe slot before the Foundry will let you claim it"],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

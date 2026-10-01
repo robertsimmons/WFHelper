@@ -1,0 +1,117 @@
+{
+  "name": "Rakta Cernos",
+  "kind": "primary",
+  "effort": 4,
+  "tradeable": "unranked, no Forma/Catalyst",
+  "progress": { "have": 0, "need": 1, "unit": "purchase" },
+  "badges": [
+    { "text": "Exalted rank gate", "tone": "warn" },
+    { "text": "MR 12", "tone": "info" }
+  ],
+  "prices": [
+    { "label": "standing", "amount": "365,000", "money": false },
+    { "label": "credits", "amount": "940,000 cr", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "currency",
+      "place": "ELITE SANCTUARY ONSLAUGHT",
+      "sub": "or Duviri Circuit, stage 4+",
+      "activity": "pledge Red Veil, earn standing from mission affinity and Syndicate Medallions",
+      "meta": "365,000 standing total to Exalted plus the bow",
+      "mode": "leave around round 8 for one clean daily cap",
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "Red Veil standing", "amount": "365,000" },
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "500",
+          "label": "Alloy Plate",
+          "note": "Rank 0 Initiation sacrifice",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "2",
+          "label": "Gallium",
+          "note": "Rank 1 Respected sacrifice",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "1",
+          "label": "Forma",
+          "note": "Rank 2 Honored sacrifice",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "1",
+          "label": "Orokin Catalyst",
+          "note": "Rank 3 Esteemed sacrifice",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "5",
+          "label": "Aya",
+          "note": "2 at Rank 4 Revered, 3 at Rank 5 Exalted",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Daily standing cap is 16,000 plus 500 per Mastery Rank, shared across every faction syndicate.",
+        "Pledging Red Veil costs Arbiters of Hexis 100% and Cephalon Suda 50% of every gain; Hexis goes negative fast.",
+        "Below Neutral, standing alone won't climb you out: each negative rank has its own sacrifice.",
+        "Rank-ups also cost 940,000 credits in total. Standing past a rank's maximum is lost, so rank up before your next mission."
+      ],
+      "bonuses": [
+        "The three daily Red Veil Syndicate Alerts and their Marks (8 per alert, roughly 10,000 standing) ignore the daily cap. Cap on affinity first, then turn the Marks in; skip Defense and Interception alerts, which usually spawn 0 or 1.",
+        "Red Veil feeds Steel Meridian at +50% and doesn't touch New Loka or Perrin."
+      ],
+      "disclosures": [
+        {
+          "title": "why 365,000",
+          "body": "240,000 standing carries the five rank-ups to Exalted (5,000 / 22,000 / 44,000 / 70,000 / 99,000). Exalted's bar holds 132,000, enough to bank the 125,000-standing purchase."
+        },
+        {
+          "title": "keeping Hexis and Suda",
+          "body": "If you want Hexis and Suda too, pledge Steel Meridian instead and let Red Veil climb at 50%; it's slower but costs neither."
+        }
+      ]
+    },
+    {
+      "type": "vendor",
+      "place": "RED VEIL OFFERINGS, RELAY",
+      "sub": null,
+      "activity": "buy the bow",
+      "meta": "125,000 standing",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Red Veil standing", "amount": "125,000" }],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Rakta Cernos",
+          "note": "arrives built, no Foundry step",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The free item you pick at each rank-up can never be a Syndicate weapon; the bow is always a separate 125,000-standing purchase.",
+        "Mastery Rank 12 is required both to buy it and to receive it in a trade."
+      ],
+      "bonuses": [
+        "Rakta Ballistica and Rakta Dark Dagger sell for the same standing from the same rank; staying pledged is the cheapest route to all three."
+      ],
+      "disclosures": []
+    }
+  ]
+}

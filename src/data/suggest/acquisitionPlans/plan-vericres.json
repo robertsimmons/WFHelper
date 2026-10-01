@@ -1,0 +1,90 @@
+{
+  "name": "Vericres",
+  "kind": "melee",
+  "effort": 2,
+  "tradeable": true,
+  "progress": { "have": 0, "need": 1, "unit": "weapon" },
+  "badges": [
+    { "text": "Baro Ki'Teer only", "tone": "warn" },
+    { "text": "410 Ducats", "tone": "info" }
+  ],
+  "prices": [
+    { "label": "credits", "amount": "200,000 cr", "money": false },
+    { "label": "Ducats", "amount": "410", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "currency",
+      "place": "VOID FISSURES, ANY",
+      "sub": null,
+      "activity": "open Void Relics for Prime parts, sell the best drop for Ducats",
+      "meta": "bank Ducats and credits before Baro arrives",
+      "mode": "fast Capture or Exterminate fissures",
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "Ducats", "amount": "410" },
+      "spends": [],
+      "map": "void",
+      "rows": [
+        {
+          "qty": null,
+          "label": "open relics, take the highest-Ducat part",
+          "note": "gold 100, silver 45, bronze 15; former-vault parts 25 or 65",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "sell duplicate Prime parts at the Kiosk",
+          "note": "about five gold or nine silver parts",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Baro stays only 48 hours, so have the 410 Ducats and 200,000 credits banked before his visit."
+      ],
+      "bonuses": [
+        "Short Defense, Void Cascade or Void Flood fissures crack a relic every few minutes without the extract-and-matchmake loop.",
+        "Radiant relics raise the gold-part odds; spare syndicate standing buys Void Traces and relic packs.",
+        "Some players buy 45-Ducat junk parts from others for about 2 platinum each."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "RELAY, CONCOURSE",
+      "sub": null,
+      "activity": "check Baro's rotating stock, then buy if listed",
+      "meta": "arrives every 2 weeks, stays 48h",
+      "mode": null,
+      "live": { "state": "waiting", "text": "check the Ducat Kiosk countdown for his next relay" },
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Vericres",
+          "note": "200,000 credits + 410 Ducats, only when in his rotating stock",
+          "alt": "tradeable, so another player can sell you one",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "It appears roughly every four to six months and can't be predicted; buy it the first time it shows up.",
+        "It arrives built with no Orokin Catalyst and needs a free melee slot. MR 8 to equip."
+      ],
+      "bonuses": [
+        "The TennoCon relay sells Baro's full catalogue, but entry needs a paid TennoCon digital ticket."
+      ],
+      "disclosures": [
+        {
+          "title": "a Mastery pickup",
+          "body": "Recaps call it a decent but unremarkable warfan and point to Gunsen Prime, Quassus Prime or Arum Spinosa for actual use."
+        }
+      ]
+    }
+  ]
+}

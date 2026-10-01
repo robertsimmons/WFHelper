@@ -1,0 +1,88 @@
+{
+  "name": "Supra Vandal",
+  "kind": "primary",
+  "effort": 4,
+  "tradeable": "unranked only, no Forma or Catalyst",
+  "progress": { "have": 0, "need": 500, "unit": "Ducats" },
+  "badges": [
+    { "text": "Baro only", "tone": "warn" },
+    { "text": "MR 14", "tone": "info" }
+  ],
+  "prices": [{ "label": "Baro Ki'Teer", "amount": "275,000 cr + 500 Ducats", "money": false }],
+  "groups": [
+    {
+      "type": "currency",
+      "place": "VOID FISSURES",
+      "sub": null,
+      "activity": "crack relics, sell Prime parts at a Relay Ducat Kiosk",
+      "meta": "bank it before Baro lands",
+      "mode": "full squad recommended",
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "Ducats", "amount": "500" },
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "500",
+          "label": "Orokin Ducats",
+          "note": "common parts 15, uncommon 45, rare 100",
+          "alt": null,
+          "done": false
+        },
+        { "qty": "275,000", "label": "Credits", "note": null, "alt": null, "done": false }
+      ],
+      "conditions": [
+        "Forma blueprints can't be sold for Ducats; pick relics whose uncommon slot isn't Forma.",
+        "Only sell duplicates and parts from Primes you've already built or mastered."
+      ],
+      "bonuses": [
+        "Short Capture and Exterminate fissures in a full squad give four rewards to pick from, raising the odds of a 100-Ducat rare.",
+        "Refining relics to Radiant with banked Void Traces raises the rare odds."
+      ],
+      "disclosures": [
+        {
+          "title": "the Ducat rate",
+          "body": "One long-term player measured about 40-50 Ducats per relic run and about 1,200 Ducats an hour with fast Captures and Exterminates, so 500 is well under an hour. The Kiosks are open between visits, so stockpile rather than scrambling during Baro's 48 hours."
+        }
+      ]
+    },
+    {
+      "type": "vendor",
+      "place": "BARO KI'TEER, RELAY",
+      "sub": "Concourse",
+      "activity": "buy it on a visit that stocks it",
+      "meta": "every two weeks for 48 hours; stock rotates",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [
+        { "currency": "Credits", "amount": "275,000" },
+        { "currency": "Ducats", "amount": "500" }
+      ],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Supra Vandal",
+          "note": "arrives built, no blueprint or foundry step",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Baro only brings it on some visits, a few times a year; if he doesn't have it, wait for a later visit.",
+        "Keep a free primary weapon slot ready.",
+        "MR 14 to equip, so it gives no Mastery until then."
+      ],
+      "bonuses": [],
+      "disclosures": [
+        {
+          "title": "TennoCon Relay",
+          "body": "Baro's once-a-year TennoCon Relay stocks everything he has ever sold, including this, but entry needs Baro's Relay Ticket from the paid TennoCon Digital Pack."
+        }
+      ]
+    }
+  ]
+}

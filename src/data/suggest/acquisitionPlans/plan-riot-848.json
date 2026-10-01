@@ -1,0 +1,183 @@
+{
+  "name": "Riot-848",
+  "kind": "secondary",
+  "effort": 4,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "badges": [
+    { "text": "Hex Rank 4 gate", "tone": "warn" },
+    { "text": "300 Heartstrings pity", "tone": "info" }
+  ],
+  "prices": [
+    { "label": "pity route", "amount": "300 Heartstrings", "money": false },
+    { "label": "build", "amount": "70,000 cr", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "HOLLVANIA",
+      "sub": "Central Mall",
+      "activity": "finish The Hex and rank The Hex to Rank 4, Hot & Fresh",
+      "meta": "opens Stage Defense and Flare's shop in The Round Table",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "The Hex", "note": "quest", "alt": null, "done": false },
+        {
+          "qty": null,
+          "label": "Rank 4, Hot & Fresh",
+          "note": "The Hex syndicate",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Stage Defense at Solstice Square (level 65-70) opens from the NavNow map on any Pom-2 PC, and also comes up as a Höllvania bounty."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "currency",
+      "place": "HOLLVANIA",
+      "sub": "Solstice Square",
+      "activity": "Stage Defense, defend Flare; extract at wave 12",
+      "meta": "3 waves per rotation, A-A-B-C",
+      "mode": "Steel Path recommended",
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "Beating Heartstrings", "amount": "300" },
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Riot-848 Blueprint",
+          "note": "120 Heartstrings at Flare",
+          "alt": "0.97% A / 1.98% B / 4.58% C direct drop",
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Riot-848 Barrel Blueprint",
+          "note": "60 Heartstrings at Flare",
+          "alt": "0.97% A / 1.98% B / 4.58% C direct drop",
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Riot-848 Receiver Blueprint",
+          "note": "60 Heartstrings at Flare",
+          "alt": "0.97% A / 1.98% B / 4.58% C direct drop",
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Riot-848 Stock Blueprint",
+          "note": "60 Heartstrings at Flare",
+          "alt": "0.97% A / 1.98% B / 4.58% C direct drop",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "A failed mission loses every reward, including Heartstrings from finished rotations; Flare can be one-shot by a Blitz Eximus, so extract at wave 12 rather than pushing long runs.",
+        "Temporal Archimedea's Stage Defense stages don't award Heartstrings, and Boosters don't affect them.",
+        "Untradeable, so spare part blueprints go to waste."
+      ],
+      "bonuses": [
+        "Every rotation pays 4-9 Heartstrings (7-12 Steel Path), so the set is guaranteed after enough rotations.",
+        "Heartstrings also buy Temple, and the mission drops arcanes (every Scaldra Screamer), relics, Endo and riven slivers."
+      ],
+      "disclosures": [
+        {
+          "title": "run tips",
+          "body": "Steel Path pays about 1.5x the Heartstrings plus Steel Essence; one player put a full Temple set plus the Riot-848 at 5-6 hours with zero drops, and the Riot-848 alone is under a third of that. Nova and AoE nukes speed waves. Hex standing trinkets always spawn in the same places. Vazarin barely heals Flare; damage reduction works better. Turning off dynamic lighting fixes the frame-rate drops on this tileset."
+        }
+      ]
+    },
+    {
+      "type": "farm",
+      "place": "SANCTUM ANATOMICA, DEIMOS",
+      "sub": null,
+      "activity": "Netracells and Albrecht's Laboratories",
+      "meta": "the recipe needs these from outside Höllvania",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "2",
+          "label": "Entrati Lanthorn",
+          "note": "guaranteed from Netracells",
+          "alt": "or Zariman",
+          "done": false
+        },
+        {
+          "qty": "2",
+          "label": "Bellow Voca",
+          "note": "pickup in Albrecht's Laboratories",
+          "alt": "or Fibonacci's tier 3-4 bounties, or Loid sells one every 8 hours",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "If you've never touched Sanctum Anatomica content, get these before the Heartstrings run out."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build components, then Riot-848",
+      "meta": "12h each, then 24h, MR 14",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Barrel",
+          "note": "15,000 cr, 1,000 Alloy Plate, 300 Plastids, 130 Necracoil, 2 Entrati Lanthorn",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Receiver",
+          "note": "15,000 cr, 120 Efervon Sample, 500 Alloy Plate, 600 Entrati Obols, 700 Circuits",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Stock",
+          "note": "15,000 cr, 16 Experimental Arc-Relay, 300 Salvage, 130 Necracoil, 2 Bellow Voca",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Riot-848",
+          "note": "25,000 cr, 3 Orokin Cells",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

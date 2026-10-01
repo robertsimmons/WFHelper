@@ -1,0 +1,171 @@
+{
+  "name": "Huras Kubrow",
+  "kind": "companion",
+  "effort": 5,
+  "tradeable": "imprints only",
+  "progress": { "have": 0, "need": 1, "unit": "companion" },
+  "badges": [
+    { "text": "random breed, 1 of 5", "tone": "warn" },
+    { "text": "egg is a rare drop", "tone": "warn" }
+  ],
+  "prices": [
+    { "label": "Incubator Power Core blueprint", "amount": "50,000 cr", "money": false },
+    { "label": "Power Core build, per roll", "amount": "100,000 cr", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "ORBITER",
+      "sub": null,
+      "activity": "Howl of the Kubrow, then Incubator access",
+      "meta": "one-time",
+      "mode": "solo only",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Howl of the Kubrow",
+          "note": "after the Venus Junction, from the Codex; gives the Incubator Segment",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "1",
+          "label": "free Companion Slot",
+          "note": "a kubrow permanently occupies it",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "During the quest the first den drops an egg 100% of the time and incubation takes 60 seconds; that first hatch is still a random breed.",
+        "The collar comes once from the quest and covers every later Kubrow.",
+        "Consigning an unwanted Kubrow to the Lotus for 25,000 credits is the only way to free its slot; take its two imprints first."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "MANTLE, EARTH",
+      "sub": null,
+      "activity": "Capture; break Kubrow Dens on Grineer Forest tiles",
+      "meta": "egg usually within 4-5 solo runs",
+      "mode": "solo, fast frame",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "1",
+          "label": "Kubrow Egg",
+          "note": "one per incubation attempt",
+          "alt": "Market purchase, 10 platinum",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Den drops are streaky: one player needed about 20 dens for an egg, another broke about 200 for two.",
+        "Eggs stack and can't be traded; farm several in one sitting if you plan to reroll."
+      ],
+      "bonuses": [
+        "A max-range Xaku casting The Vast Untime twice a room breaks dens you can't see; follow the Kubrow Den affinity popups to the egg.",
+        "Dens also drop Bite, a rare Kubrow mod; keep any you find."
+      ],
+      "disclosures": [
+        {
+          "title": "other egg sources",
+          "body": "E Prime, Earth is said to have more dens per map. Cervantes, Earth Sabotage resource caches have a 2.58% Rotation B chance at an egg."
+        }
+      ]
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Incubator Power Core",
+      "meta": "8h, 100,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "1",
+          "label": "Incubator Power Core",
+          "note": "4,500 Nano Spores, 2 Control Modules, 1 Argon Crystal",
+          "alt": "first core is free from the Mercury Junction task Complete Vox Solaris",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The blueprint is a reusable 50,000-credit Market purchase; every incubation consumes a core, win or lose.",
+        "Argon Crystal decays daily, so build the core just before you incubate."
+      ],
+      "bonuses": [
+        "Build the Nutrio Incubator Upgrade Segment early if you expect several rolls; it halves incubation and its recipe takes one Power Core."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "craft",
+      "place": "ORBITER",
+      "sub": "Incubator",
+      "activity": "Random Incubation",
+      "meta": "48h, 1 egg + 1 core",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "1",
+          "label": "Kubrow Egg",
+          "note": "consumed per attempt",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "1",
+          "label": "Incubator Power Core",
+          "note": "consumed per attempt",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Huras Kubrow",
+          "note": "equal odds among Huras, Raksa, Sahasa, Sunika, Chesa",
+          "alt": "use two Huras Genetic Code Templates",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Random Incubation has no weighting and no pity; streaks of four or five of the same wrong breed get reported.",
+        "Two Huras imprints make Huras the likely result, but the wiki says it still isn't guaranteed, and the egg and core are still consumed.",
+        "Incubation is 48 hours, or 24 with the Nutrio Incubator Upgrade Segment.",
+        "Mature the pup manually in the Incubator (instant) before it can go on missions."
+      ],
+      "bonuses": [
+        "Breeders often hand out spare imprints free; Huras imprints are tradeable, two per Kubrow at 1.5 hours each.",
+        "Its Huras Claws level but give no Mastery; only the Kubrow counts."
+      ],
+      "disclosures": [
+        {
+          "title": "ask for imprints instead of rolling",
+          "body": "Several veterans in one thread offered imprints to a stranger unprompted, and one player bought Huras imprints because it was their last missing breed. Two matching imprints turn a 1-in-5 roll into the likely outcome at the same egg-and-core cost as one random attempt. Empty Genetic Code Templates build from a reusable 50,000-credit Market blueprint."
+        }
+      ]
+    }
+  ]
+}

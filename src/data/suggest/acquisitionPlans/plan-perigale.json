@@ -1,0 +1,160 @@
+{
+  "name": "Perigale",
+  "kind": "primary",
+  "effort": 5,
+  "tradeable": "parts only",
+  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "badges": [
+    { "text": "50 Plasm to build", "tone": "warn" },
+    { "text": "Yonta pity shop", "tone": "info" }
+  ],
+  "prices": [{ "label": "build", "amount": "20,000 cr", "money": false }],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "QUESTS",
+      "sub": null,
+      "activity": "The War Within, then Angels of the Zariman",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "The War Within",
+          "note": "unlocks Lua Conjunction Survival",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Angels of the Zariman",
+          "note": "unlocks Yonta in the Chrysalith",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "CIRCULUS, LUA",
+      "sub": null,
+      "activity": "Conjunction Survival",
+      "meta": "20-minute runs; about 22-26 Plasm each",
+      "mode": "full squad",
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "Lua Thrax Plasm", "amount": "300" },
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Perigale Blueprint",
+          "note": "11.28%, Rotation A",
+          "alt": {
+            "text": "or 100 Plasm at Yonta",
+            "spends": [{ "currency": "Lua Thrax Plasm", "amount": "100" }]
+          },
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Perigale Barrel",
+          "note": "10.16%, Rotation B",
+          "alt": {
+            "text": "or 50 Plasm at Yonta",
+            "spends": [{ "currency": "Lua Thrax Plasm", "amount": "50" }]
+          },
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Perigale Receiver",
+          "note": "10.16%, Rotation B",
+          "alt": {
+            "text": "or 50 Plasm at Yonta",
+            "spends": [{ "currency": "Lua Thrax Plasm", "amount": "50" }]
+          },
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Perigale Stock",
+          "note": "10.16%, Rotation B",
+          "alt": {
+            "text": "or 50 Plasm at Yonta",
+            "spends": [{ "currency": "Lua Thrax Plasm", "amount": "50" }]
+          },
+          "done": false
+        },
+        {
+          "qty": "50",
+          "label": "Lua Thrax Plasm",
+          "note": "build cost; 5 guaranteed per rotation plus 30% per Thrax",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Keep 50 Plasm for the build; people spend it on parts and then can't craft.",
+        "Stay the full 20 minutes: rotations run A, A, B, C.",
+        "Circulus Thrax go spectral when downed and must be finished with the Operator's Void Beam, or they don't drop.",
+        "Thrax Plasm despawns after 60 seconds; pick it up right after each wave."
+      ],
+      "bonuses": [
+        "Resource Boosters and Smeeta Kavat double the Plasm Thrax drop, not the guaranteed rotation Plasm; drop chance boosters do nothing.",
+        "Run it during an Omnia Fissure on Circulus to crack relics and get endless-fissure buffs.",
+        "Summon your Necramech for the Thrax waves; it lasts 2 minutes on a 10-minute cooldown.",
+        "Voruna and Sarofang drop from the same node and spend the same Plasm."
+      ],
+      "disclosures": [
+        {
+          "title": "Circulus over Yuvarium",
+          "body": "Yuvarium pays 3 Plasm a rotation and 7.52% blueprint, 6% per part. Circulus pays 5 and roughly doubles the odds; Steel Path Circulus pays 6. Loot abilities don't work on Thrax, so bring whatever kills fastest. Thrax alive on the map drain life support 50% faster, and one can get stuck in spectral form; ignore it."
+        },
+        {
+          "title": "streaky parts",
+          "body": "Players report stacking 5-13 copies of one part while never seeing another. Stop grinding once buying the missing piece from Yonta is cheaper. The three parts are tradeable and cheap from other players."
+        }
+      ]
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Perigale",
+      "meta": "12h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Lua Thrax Plasm", "amount": "50" }],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Perigale",
+          "note": "Barrel, Receiver, Stock, 50 Lua Thrax Plasm, 20,000 cr",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": [
+        {
+          "title": "not Perigale Prime",
+          "body": "Perigale Prime is a separate Mastery item from Void Relics."
+        }
+      ]
+    }
+  ]
+}

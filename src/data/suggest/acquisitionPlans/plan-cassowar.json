@@ -1,0 +1,138 @@
+{
+  "name": "Cassowar",
+  "kind": "melee",
+  "effort": 2,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 1, "unit": "blueprint" },
+  "badges": [
+    { "text": "Tenno Lab", "tone": "warn" },
+    { "text": "MR 5", "tone": "info" }
+  ],
+  "prices": [
+    { "label": "blueprint", "amount": "15,000 cr", "money": false },
+    { "label": "build", "amount": "20,000 cr", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "research",
+      "place": "CLAN DOJO, TENNO LAB",
+      "sub": null,
+      "activity": "check that Cassowar research is complete",
+      "meta": "Akstiletto, then Anku, then Cassowar",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Akstiletto research",
+          "note": "prerequisite",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Anku research",
+          "note": "prerequisite",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Cassowar research",
+          "note": "10,000 cr, 2 Gallium, 1,500 Polymer Bundle, 975 Rubedo, 3,150 Ferrite; 3 days",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Research costs are Ghost-tier; resources scale x3/x10/x30/x100 with clan size. The multiplier never touches the blueprint or Foundry cost.",
+        "Joining an established clan with the lab finished skips this whole step."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "CLAN DOJO, TENNO LAB",
+      "sub": null,
+      "activity": "replicate the personal blueprint",
+      "meta": "15,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Credits", "amount": "15,000" }],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Cassowar Blueprint",
+          "note": "requires completed research",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The blueprint is not in the Market; \"can't build\" with every material usually means it hasn't been replicated."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "IO, JUPITER",
+      "sub": null,
+      "activity": "Defense",
+      "meta": "~80 Oxium per 10 waves",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "150",
+          "label": "Oxium",
+          "note": "Oxium Ospreys",
+          "alt": "Cetus or Fortuna bounties listing Oxium pay 100-200 in stages 1-2",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "An Osprey that self-destructs drops nothing; melee usually triggers it. Kill them at range in one hit."
+      ],
+      "bonuses": ["Toxin, Molecular Prime or Strangledome make the Ospreys easy to secure."],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Cassowar",
+      "meta": "12h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Cassowar",
+          "note": "20,000 cr, 1 Forma, 1,000 Rubedo, 5,700 Salvage, 150 Oxium",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

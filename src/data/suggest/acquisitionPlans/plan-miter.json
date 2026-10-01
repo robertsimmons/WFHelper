@@ -1,0 +1,84 @@
+{
+  "name": "Miter",
+  "kind": "primary",
+  "effort": 4,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 5, "unit": "parts" },
+  "badges": [
+    { "text": "~14 boss kills", "tone": "warn" },
+    { "text": "Incarnon: Circuit week 5", "tone": "circuit" }
+  ],
+  "prices": [{ "label": "build", "amount": "15,000 cr", "money": false }],
+  "groups": [
+    {
+      "type": "boss",
+      "place": "EXTA, CERES",
+      "sub": null,
+      "activity": "Assassination, Captain Vor and Lieutenant Lech Kril",
+      "meta": "one roll per kill; 5 of 6 slots needed",
+      "mode": "solo",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Miter Blueprint", "note": "16.67%", "alt": null, "done": false },
+        { "qty": null, "label": "Miter Barrel", "note": "16.67%", "alt": null, "done": false },
+        { "qty": null, "label": "Miter Blade", "note": "16.67%", "alt": null, "done": false },
+        { "qty": null, "label": "Miter Handle", "note": "16.67%", "alt": null, "done": false },
+        { "qty": null, "label": "Miter Chassis", "note": "16.67%", "alt": null, "done": false }
+      ],
+      "conditions": [
+        "The sixth slot is the Twin Gremlins Blueprint, so duplicates are the norm; 10+ runs without one part is common and 30+ happens.",
+        "Kril is invulnerable in phase 1. Shoot the blue coolant pack on his back until a tube breaks, stay just outside melee range so he freezes himself with his slam, and hit him while frozen. After four tubes he is fully vulnerable. Kill Vor too.",
+        "Avoid Cold procs, which lengthen his invulnerable windows, and Heat, which thaws him early.",
+        "Proboscis Cernos tendril explosions can break his AI so the pipes never open again; abort and rerun."
+      ],
+      "bonuses": [
+        "Every run also rolls Frost's Chassis and Neuroptics (38.72% each) and Systems (22.56%), so farm Frost and Twin Gremlins in the same session.",
+        "Arca Plasmor, Valkyr slams or Excalibur's Exalted Blade pop the tubes from any angle.",
+        "Exta is a decent Orokin Cell farm on the side."
+      ],
+      "disclosures": [
+        {
+          "title": "why solo",
+          "body": "Kril retargets between players, close melee makes him swing wide instead of freezing himself, and stacked status can lock him up. Dumping huge burst the instant he's vulnerable can also bug him into permanent invulnerability; break a tube, hit him a few times, let the phase play out."
+        }
+      ]
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Miter",
+      "meta": "12h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Miter",
+          "note": "15,000 cr, Barrel, Blade, Handle, Chassis",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The Panthera recipe consumes the Miter; level it to 30 first so you only farm it once.",
+        "It's a charge rifle, not a sniper, and doesn't count for sniper-only sortie stages."
+      ],
+      "bonuses": [],
+      "disclosures": [
+        {
+          "title": "Incarnon Genesis",
+          "body": "Offered on the Steel Path Circuit in the week alongside Torid, Dual Toxocyst, Dual Ichor and Atomos, or bought once from Cavalero for platinum. Installing it takes 20 Pathos Clamps, 60 Rune Marrow and 60 Tasoma Extract. It is optional for the Mastery."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,165 @@
+{
+  "name": "Aegrit",
+  "kind": "secondary",
+  "effort": 5,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 1, "unit": "blueprint" },
+  "badges": [
+    { "text": "Garrison Rank 4: 3 weeks", "tone": "warn" },
+    { "text": "30 Stock", "tone": "info" }
+  ],
+  "prices": [
+    { "label": "blueprint", "amount": "30 Stock", "money": false },
+    { "label": "build", "amount": "20,000 cr", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "QUESTS",
+      "sub": null,
+      "activity": "complete The New War, then Veilbreaker",
+      "meta": "unlocks Kahl's Garrison in the Drifter's Camp, Earth",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "The New War",
+          "note": "Veilbreaker prerequisite",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Veilbreaker",
+          "note": "unlocks Kahl's Garrison and Chipper",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "DRIFTER'S CAMP, EARTH",
+      "sub": "Kahl's Garrison",
+      "activity": "Break Narmer weekly mission (solo, as Kahl)",
+      "meta": "one rank per weekly completion",
+      "mode": "solo only",
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "Stock", "amount": "105" },
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "3",
+          "label": "weekly mission completions",
+          "note": "Rank 1 Shelter to Rank 4 Settlement",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "30",
+          "label": "Stock",
+          "note": "blueprint cost",
+          "alt": "blue Stock crates, 2 each, 5 per run, respawn on replay",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The Garrison ranks once per completed weekly mission; replaying can't speed up reaching Rank 4.",
+        "Finishing the mission alone gives zero Stock; weekly Stock comes from the bonus challenges (up to 105) and blue Stock crates.",
+        "The weekly mission only rotates after you complete it, so skipping a week leaves the same one waiting.",
+        "Picked-up Stock is lost if you die or abort; beat the boss and extract to keep it."
+      ],
+      "bonuses": [
+        "The 15-minute challenge completes when the final boss dies; backtrack for missed collectibles before extracting.",
+        "Kahl's loot radar shows genestamps, caches and Stock crates.",
+        "In Sneaky Sabotage, sprint past Deacons; flashbangs work on them."
+      ],
+      "disclosures": [
+        {
+          "title": "Stock is shared across all of Chipper's stock",
+          "body": "Styanax parts, Afentis, Slaytra, Archon mods and the rest draw from the same Stock pool; the wiki prices the full non-rotating shop at 980 Stock. Spend early weeks on lower-rank items and keep 30 for the week you hit Rank 4."
+        },
+        {
+          "title": "point-of-no-return areas",
+          "body": "Some Break Narmer maps lock you out of collectibles you missed earlier. Which maps still have them isn't documented, so clear side rooms before the boss or extraction area."
+        }
+      ]
+    },
+    {
+      "type": "vendor",
+      "place": "CHIPPER, DRIFTER'S CAMP",
+      "sub": "Kahl's Garrison",
+      "activity": "buy the blueprint",
+      "meta": "Rank 4 Settlement",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Stock", "amount": "30" }],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Aegrit Blueprint",
+          "note": "30 Stock, not sold in the Market",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["MR 11 gate to build it."],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "currency",
+      "place": "ANY KUVA SIPHON, FLOOD OR RELIC",
+      "sub": null,
+      "activity": "farm Kuva",
+      "meta": "2,200 needed for the build",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "Kuva", "amount": "2,200" },
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": "2,200", "label": "Kuva", "note": "Aegrit build", "alt": null, "done": false }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Aegrit",
+      "meta": "20,000 cr, 12h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Kuva", "amount": "2,200" }],
+      "map": null,
+      "rows": [
+        { "qty": "8,500", "label": "Alloy Plate", "note": null, "alt": null, "done": false },
+        { "qty": "12,500", "label": "Ferrite", "note": null, "alt": null, "done": false },
+        { "qty": "2", "label": "Morphics", "note": null, "alt": null, "done": false },
+        { "qty": null, "label": "Aegrit", "note": null, "alt": null, "done": false }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

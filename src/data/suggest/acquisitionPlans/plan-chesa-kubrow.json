@@ -1,0 +1,169 @@
+{
+  "name": "Chesa Kubrow",
+  "kind": "companion",
+  "effort": 5,
+  "tradeable": "imprints only",
+  "progress": { "have": 0, "need": 1, "unit": "companion" },
+  "badges": [
+    { "text": "random breed, 1 of 5", "tone": "warn" },
+    { "text": "egg is a rare drop", "tone": "warn" }
+  ],
+  "prices": [
+    { "label": "Incubator Power Core blueprint", "amount": "50,000 cr", "money": false },
+    { "label": "Power Core build, per roll", "amount": "100,000 cr", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "ORBITER",
+      "sub": null,
+      "activity": "Howl of the Kubrow, then Incubator access",
+      "meta": "one-time",
+      "mode": "solo only",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Howl of the Kubrow",
+          "note": "after the Venus Junction, from the Codex; gives the Incubator Segment",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "1",
+          "label": "free Companion Slot",
+          "note": "a kubrow permanently occupies it",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "During the quest's egg step dens drop eggs 100% of the time; that first hatch is still a random breed.",
+        "Maturing your first Kubrow unlocks the collar permanently for every later one."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "MANTLE, EARTH",
+      "sub": null,
+      "activity": "Capture; break Kubrow Dens on Grineer Forest tiles",
+      "meta": "low odds per den",
+      "mode": "solo, fast frame",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "1",
+          "label": "Kubrow Egg",
+          "note": "one per incubation attempt",
+          "alt": "Market purchase, 10 platinum",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Break every den, extract, repeat; abort once the dens are gone with no egg.",
+        "30+ Earth runs without an egg get reported; it's bad luck, not a bugged node."
+      ],
+      "bonuses": [
+        "Fully scan a den with a Codex Scanner and dens show through walls afterward.",
+        "A max-range Xaku casting The Vast Untime in each room breaks dens you can't see; follow the Kubrow Den affinity popups.",
+        "Eggs stack and turn up passively on Earth forest-tile Exterminate fissures and Kuva Lich missions."
+      ],
+      "disclosures": [
+        {
+          "title": "other egg sources",
+          "body": "E Prime, Earth (Exterminate) is the other usual pick. Cervantes, Earth Sabotage resource caches have a 2.58% Rotation B chance at an egg. Shooting a den with a weak secondary first lets more Kubrows out before it breaks, which helps if you also want Kubrow mods."
+        }
+      ]
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Incubator Power Core",
+      "meta": "8h, 100,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "1",
+          "label": "Incubator Power Core",
+          "note": "4,500 Nano Spores, 2 Control Modules, 1 Argon Crystal",
+          "alt": "first core is free from the Venus-to-Mercury Junction",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The blueprint is a reusable 50,000-credit Market purchase; every incubation consumes a core, and the 100,000-credit build adds up over rerolls.",
+        "Argon Crystal decays, so build right after farming it."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "craft",
+      "place": "ORBITER",
+      "sub": "Incubator",
+      "activity": "Random Incubation",
+      "meta": "48h, 1 egg + 1 core",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "1",
+          "label": "Kubrow Egg",
+          "note": "consumed per attempt",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "1",
+          "label": "Incubator Power Core",
+          "note": "consumed per attempt",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Chesa Kubrow",
+          "note": "random result among Huras, Raksa, Sahasa, Sunika, Chesa",
+          "alt": "use two Chesa Genetic Code Templates",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Roughly 1 in 5 per roll with no pity; a wrong breed means another egg, core and 48-hour wait.",
+        "Two Chesa imprints make Chesa the likely result, not a guaranteed one, and still consume an egg and core.",
+        "Don't pick the Helminth cyst Drain option; it guarantees a Helminth Charger, never a Chesa.",
+        "Incubation is 48 hours, or 24 with the Nutrio Incubator Upgrade Segment. Mature it manually in the Incubator before missions."
+      ],
+      "bonuses": [
+        "Chesa imprints are tradeable: a friend's Chesa gives up to two, 1.5 hours each. Empty templates come from a reusable 50,000-credit Market blueprint, 10,000 credits and 6 hours a build.",
+        "Its Chesa Claws level but give no Mastery; fur, size and eye color don't change stats."
+      ],
+      "disclosures": [
+        {
+          "title": "switch to imprints after a miss or two",
+          "body": "One player rolled seven Huras in a row before switching to imprints; another took weeks to land a breed. The least painful order is Howl of the Kubrow first, a batch of eggs in one sitting, cores built in parallel, and a friend's Chesa imprints if the first couple of random rolls miss."
+        }
+      ]
+    }
+  ]
+}

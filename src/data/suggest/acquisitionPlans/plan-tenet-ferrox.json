@@ -1,0 +1,178 @@
+{
+  "name": "Tenet Ferrox",
+  "kind": "primary",
+  "effort": 8,
+  "tradeable": false,
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "weapon"
+  },
+  "badges": [
+    {
+      "text": "Corrupted Holokeys",
+      "tone": "warn"
+    },
+    {
+      "text": "MR 16",
+      "tone": "warn"
+    }
+  ],
+  "prices": [
+    {
+      "label": "Elemental Vice",
+      "amount": "20 p",
+      "money": false
+    }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "STAR CHART",
+      "sub": null,
+      "activity": "build a Railjack",
+      "meta": "one-time",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Rising Tide",
+          "note": "needs The War Within; builds your own Railjack",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Mastery Rank 16",
+          "note": "enforced at the Ergo Glast purchase, unlike a Sister-dropped Tenet weapon",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Sisters of Parvos never carry the Tenet Ferrox. It is the only ranged weapon in Ergo Glast's shop, alongside the four Tenet melees.",
+        "Public Railjack squads are chaotic: breaches go unfixed and people rush navigation. Solo or a coordinated duo is the norm."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "currency",
+      "place": "SATURN PROXIMA",
+      "sub": null,
+      "activity": "Void Storm, Grineer Skirmish nodes",
+      "meta": "~2.5-3 minutes per run",
+      "mode": "solo",
+      "live": null,
+      "skip": null,
+      "earns": {
+        "currency": "Corrupted Holokey",
+        "amount": "40"
+      },
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "40",
+          "label": "Corrupted Holokey",
+          "note": "guaranteed 1 per run plus a ~36-37.5% roll for 5 more; about 14 Saturn runs for 40",
+          "alt": "Veil Proxima Grineer storms: 2 guaranteed plus a roll for 10, about 7 runs",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Each Void Storm needs a relic of the matching tier. The key roll happens once at end of mission, so staying longer in an endless storm adds nothing.",
+        "Aborting or failing a Void Storm pays nothing, including the guaranteed key.",
+        "Boosters do nothing: Resource Booster, Drop Chance Booster and Blessings are all excluded from Holokey drops.",
+        "Holokeys and the weapon are untradeable; there is no platinum route."
+      ],
+      "bonuses": [
+        "Run the storms with relics you want cracked anyway; the Void Storm pays normal relic rewards and Railjack resources on top.",
+        "A Sister of Parvos Final Confrontation pays 1 Holokey per squad member per Sister, up to 4. A side income if you hunt Sisters, too slow on its own."
+      ],
+      "disclosures": [
+        {
+          "title": "other storms, by keys per run",
+          "body": "Veil (Axi) averages about 5.75 keys a run, Saturn (Meso) about 2.8, Neptune (Neo) about 2.4, Earth and Venus (Lith) about 2.1. Neptune Nu-Gua Mines solo takes 3-5 minutes. Avoid Corpus Veil storms, which can spawn a slow mandatory mobile defense. One 2026 comment claimed Veil storms were paying nothing; if that happens, drop back to Saturn or Neptune."
+        },
+        {
+          "title": "solo Railjack crew setup",
+          "body": "Two gunners with maxed Gunnery on hitscan side turrets (Talyn best, Pulsar second) and an engineer who doubles as defender. Put the engineer in the pilot seat while you are on foot and give the front gun big projectiles (Vort, Laith, Cryophon). Lavan reactor and plating, Zetki engines and a Vidar shield array make a solid solo build; park outside ~8,000 m ramsled range to clear fighters. Forward Artillery one-shots a crewship through an intact engine at any range. Lavos or Hildryn put Railjack abilities on cooldowns instead of energy. Hangar objectives always spawn an immobile crewship, and a spy storm needs only one vault."
+        }
+      ]
+    },
+    {
+      "type": "vendor",
+      "place": "ERGO GLAST, ANY RELAY",
+      "sub": null,
+      "activity": "Browse Merchandise",
+      "meta": "one copy per 4-day rotation",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [
+        {
+          "currency": "Corrupted Holokey",
+          "amount": "40"
+        }
+      ],
+      "map": null,
+      "rows": [
+        {
+          "qty": "1",
+          "label": "Tenet Ferrox",
+          "note": "random element, 25-60% bonus",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The stock is always the same five weapons; only the bonus element and percentage reroll every 4 days.",
+        "No Perrin Sequence standing required."
+      ],
+      "bonuses": ["For Mastery any roll works: buy one copy and level it to 40 through 5 Forma."],
+      "disclosures": []
+    },
+    {
+      "type": "craft",
+      "place": "ORBITER, MODDING",
+      "sub": null,
+      "activity": "optional Valence Fusion toward 60%",
+      "meta": "bank rotations first",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "52.7%+ roll",
+          "note": "fuses straight to 60%",
+          "alt": "58%+ already rounds to 60%",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Fusion takes the higher of the two bonuses × 1.1, capped at 60%.",
+        "Fuse into the copy you've invested in — the donor's Catalyst, Forma, Exilus adapter and Elemental Vice are all destroyed.",
+        "Only one copy per rotation, so each fusion step costs another 40 keys and a wait.",
+        "Elemental Vice needs rank 40 (5 Forma): 50,000 Hex standing at Rank 5, 20 platinum from the Market, or a Temporal Archimedea/Nightwave drop."
+      ],
+      "bonuses": [],
+      "disclosures": [
+        {
+          "title": "the 60% chase is optional",
+          "body": "Chasing 60% can take up to 10 copies (400 keys) and gives no Mastery. Skip it unless you want the Ferrox for real use."
+        }
+      ]
+    }
+  ]
+}

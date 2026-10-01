@@ -1,0 +1,187 @@
+{
+  "name": "Arca Plasmor",
+  "kind": "primary",
+  "effort": 2,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 1, "unit": "blueprint" },
+  "badges": [
+    { "text": "5 Fieldron", "tone": "warn" },
+    { "text": "Energy Lab", "tone": "info" }
+  ],
+  "prices": [
+    { "label": "blueprint", "amount": "15,000 cr", "money": false },
+    { "label": "build", "amount": "25,000 cr", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "DOJO, ENERGY LAB",
+      "sub": null,
+      "activity": "clan research",
+      "meta": "skip if already researched",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Energy Lab: Lanka, then Arca Plasmor",
+          "note": "3 days for the Arca Plasmor research",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Ghost (x1) tier pays 7,500 credits, 200 Fieldron Samples, 12,000 Salvage, 3,750 Circuits and 8 Gallium for the Arca Plasmor research; bigger clans pay x3, x10, x30 or x100.",
+        "In an established clan this is already done and costs you nothing."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "research",
+      "place": "DOJO, ENERGY LAB",
+      "sub": null,
+      "activity": "replicate the blueprint",
+      "meta": "15,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Credits", "amount": "15,000" }],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Arca Plasmor Blueprint",
+          "note": "15,000 cr",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["MR 10 gate to build it."],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "STAR CHART",
+      "sub": null,
+      "activity": "Corpus-side Invasions, or Orb Vallis Tier 4 bounty",
+      "meta": "3 per Invasion; 2 per Tier 4 stage reward",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "orb-vallis",
+      "rows": [
+        {
+          "qty": "5",
+          "label": "Fieldron",
+          "note": "3 per Corpus-reward Invasion, about 76%",
+          "alt": "or craft from Fieldron Samples, 12h each",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Invasion rewards pay out only when the invasion resolves, which can take a day or more.",
+        "Fieldron only drops from the Tier 4 (level 30-50) Orb Vallis bounty, rotation A, best on stage 1 at 33%."
+      ],
+      "bonuses": ["Rare and Reinforced Corpus storage containers can also drop built Fieldron."],
+      "disclosures": [
+        {
+          "title": "crafting from scratch",
+          "body": "Each Fieldron needs its own Energy Lab blueprint (15,000 credits) plus 15,000 credits, 10 Fieldron Samples, 1 Control Module, 500 Salvage and 250 Plastids, 12h to build. For all 5: 50 Fieldron Samples, 5 more Control Modules and 60 hours of Foundry time. Nekros, Khora or Hydroid in a Corpus Dark Sector survival pulls samples fast."
+        },
+        {
+          "title": "the Tier 4 bounty loop",
+          "body": "Open a Solaris base so every bounty is Tier 4, run a stage-1 cache hunt, take the stage reward and abandon during the next stage, then repeat. Reddit calls this tier 2; the wiki drop tables put Fieldron on Tier 4 only."
+        }
+      ]
+    },
+    {
+      "type": "farm",
+      "place": "TESHUB OR HEPIT, VOID",
+      "sub": null,
+      "activity": "Exterminate or Capture; break containers and open lockers",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "25",
+          "label": "Control Module",
+          "note": "Arca Plasmor build",
+          "alt": "Europa or Neptune",
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": ["One mission is usually enough; bring a loot frame if drops are slow."],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "EXCAVATION",
+      "sub": null,
+      "activity": "any Excavation mission",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "925",
+          "label": "Cryotic",
+          "note": "Arca Plasmor build",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Arca Plasmor",
+      "meta": "1 day",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Arca Plasmor",
+          "note": "25,000 cr, 5 Fieldron, 25 Control Module, 925 Cryotic, 1 Forma",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": [
+        {
+          "title": "not the Tenet Arca Plasmor",
+          "body": "The Tenet Arca Plasmor is a separate Mastery item from the Railjack Ergo Glast system. Owning one does not cover the other."
+        }
+      ]
+    }
+  ]
+}

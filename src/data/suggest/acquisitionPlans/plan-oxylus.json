@@ -1,0 +1,305 @@
+{
+  "name": "Oxylus",
+  "kind": "sentinel",
+  "effort": 5,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 1, "unit": "blueprint" },
+  "badges": [
+    { "text": "Rank 5 Old Mate", "tone": "warn" },
+    { "text": "Warm-only Longwinders", "tone": "warn" }
+  ],
+  "prices": [
+    { "label": "rank-ups to Old Mate", "amount": "385,000 cr", "money": false },
+    { "label": "build", "amount": "15,000 cr", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "FORTUNA, VENUS",
+      "sub": null,
+      "activity": "finish Vox Solaris",
+      "meta": "one-time",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "orb-vallis",
+      "rows": [
+        {
+          "qty": null,
+          "label": "Vox Solaris",
+          "note": "unlocks The Business, Smokefinger, Ticker and Solaris United standing",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "2",
+          "label": "free Companion slots",
+          "note": "one for Oxylus, one for its Multron",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Free both slots before claiming it from the Foundry."],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "currency",
+      "place": "ORB VALLIS, VENUS",
+      "sub": null,
+      "activity": "Conservation, mining turn-ins and bounties",
+      "meta": "capped daily",
+      "mode": "solo, normal",
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "Solaris United standing", "amount": "240,000" },
+      "spends": [],
+      "map": "orb-vallis",
+      "rows": [
+        {
+          "qty": "240,000",
+          "label": "rank-ups to Old Mate",
+          "note": "Rank 5, total across every rank",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The daily cap is 16,000 plus 500 per Mastery Rank, so this is a multi-day climb.",
+        "Before Old Mate the Kubrodon lure isn't for sale; tranq wild Kubrodons when they show up."
+      ],
+      "bonuses": [
+        "Mining counts twice: raw gems turn in to Smokefinger for standing, and this build needs the Goblite and Axidite anyway.",
+        "Old Mate also unlocks Profit-Taker and amps, so most players do this climb eventually."
+      ],
+      "disclosures": [
+        {
+          "title": "fastest standing",
+          "body": "Near-unanimous: Conservation with the Tranq Rifle and the best Echo-Lure you can buy, on a sleep or stealth frame (Ivara's Sleep Arrow, or Equinox or Titania with Equinox's sleep subsumed) for perfect captures. Once Old Mate opens the Kubrodon lure and pheromones, a few Kubrodon captures hit the cap in 10-30 minutes. Deck 12 and the big caves have dense mining nodes with few enemies; Resourceful Retriever on a beast can double pickups."
+        }
+      ]
+    },
+    {
+      "type": "bounty",
+      "place": "ORB VALLIS, VENUS",
+      "sub": null,
+      "activity": "Eudico bounties, plus Ticker",
+      "meta": "41 bonds",
+      "mode": "solo",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "orb-vallis",
+      "rows": [
+        {
+          "qty": "6",
+          "label": "Training Debt-Bond",
+          "note": null,
+          "alt": "or Ticker's cases",
+          "done": false
+        },
+        {
+          "qty": "9",
+          "label": "Shelter Debt-Bond",
+          "note": null,
+          "alt": "or Ticker's cases",
+          "done": false
+        },
+        {
+          "qty": "11",
+          "label": "Medical Debt-Bond",
+          "note": null,
+          "alt": "or Ticker's cases",
+          "done": false
+        },
+        {
+          "qty": "10",
+          "label": "Advances Debt-Bond",
+          "note": null,
+          "alt": "or Ticker's cases",
+          "done": false
+        },
+        {
+          "qty": "5",
+          "label": "Familial Debt-Bond",
+          "note": null,
+          "alt": "or Ticker's cases",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Bonds are the real rank-up bottleneck; check Ticker every visit.",
+        "Stage 1 of a Vallis bounty pays no bonds, so run bounties to the end."
+      ],
+      "bonuses": ["Narmer bounties were named more than once as quick standing plus bonds."],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "FORTUNA, VENUS",
+      "sub": null,
+      "activity": "buy the tools and blueprints",
+      "meta": "The Business and Smokefinger",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Solaris United standing", "amount": "23,500" }],
+      "map": "orb-vallis",
+      "rows": [
+        {
+          "qty": null,
+          "label": "Shockprod Fishing Spear",
+          "note": "500 standing, Neutral, The Business",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Axidrol Alloy Blueprint",
+          "note": "1,000 standing, Neutral, Smokefinger",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Goblite Tears Blueprint",
+          "note": "2,000 standing, Outworlder, Smokefinger",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Longwinder Bait",
+          "note": "200 standing each, Rapscallion, The Business",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Oxylus Blueprint",
+          "note": "20,000 standing, Old Mate, The Business",
+          "alt": "claim it as the free Rank 5 vendor item",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "A Cetus spear damages servofish, and a damaged fish dismantles into fewer parts."
+      ],
+      "bonuses": [
+        "Taking the blueprint as the Old Mate freebie saves 20,000 standing, about a day of cap."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "ORB VALLIS, VENUS",
+      "sub": "Deck 12 and the big caves",
+      "activity": "mine blue gem and red ore veins",
+      "meta": "refine at Smokefinger",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "orb-vallis",
+      "rows": [
+        {
+          "qty": "20",
+          "label": "Goblite",
+          "note": "2 refines of 10 Goblite Tears, 2,500 cr each",
+          "alt": "Vallis containers",
+          "done": false
+        },
+        {
+          "qty": "60",
+          "label": "Axidite",
+          "note": "3 refines of 20 Axidrol Alloy, 1,000 cr each",
+          "alt": "Vallis containers",
+          "done": false
+        },
+        {
+          "qty": "1,500",
+          "label": "Ferrite",
+          "note": "Axidrol refines",
+          "alt": null,
+          "done": false
+        },
+        { "qty": "300", "label": "Rubedo", "note": "Axidrol refines", "alt": null, "done": false }
+      ],
+      "conditions": ["Hold back 20 Goblite before turning gems in to Smokefinger for standing."],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "ORB VALLIS, VENUS",
+      "sub": "Coolant Reservoir, outside the Fortuna elevator",
+      "activity": "spear Longwinders in hotspots, dismantle at The Business",
+      "meta": "one or two Warm windows",
+      "mode": null,
+      "live": { "state": "waiting", "text": "Longwinders spawn only in Warm" },
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "orb-vallis",
+      "rows": [
+        {
+          "qty": "10",
+          "label": "Longwinder Lathe Coagulant",
+          "note": "1 per Longwinder, any quality",
+          "alt": "Exploiter Orb, about 0.5 a kill",
+          "done": false
+        },
+        {
+          "qty": "40",
+          "label": "Scrap",
+          "note": "2-4 per Longwinder by quality; common fish cover the rest",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Warm lasts about 4 minutes of every ~26-minute cycle; if you're catching Sapcaddy it's Cold and no Longwinders spawn.",
+        "Fish only in hotspots, the oily green shimmer on the water.",
+        "Bait lifts the spawn chance for about 3 minutes; a second bait of the same type in the same hotspot does nothing.",
+        "A Resource Booster doubles the Longwinders you catch but not the Scrap from dismantling."
+      ],
+      "bonuses": ["Luminous Dye makes the fish easier to see."],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Oxylus",
+      "meta": "24h, 15,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Oxylus",
+          "note": "15 Goblite Tears, 45 Axidrol Alloy, 40 Scrap, 10 Longwinder Lathe Coagulant",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Oxylus and its Multron are separate Mastery items; level both."],
+      "bonuses": [],
+      "disclosures": [
+        {
+          "title": "what you're getting",
+          "body": "Almost universally treated as Mastery fodder and called the weakest sentinel in combat; its fishing precept is the only part anyone rates."
+        }
+      ]
+    }
+  ]
+}

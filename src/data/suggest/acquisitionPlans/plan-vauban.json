@@ -1,0 +1,262 @@
+{
+  "name": "Vauban",
+  "kind": "warframe",
+  "effort": 2,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "badges": [
+    { "text": "Nightwave Creds", "tone": "info" },
+    { "text": "Circuit alt", "tone": "circuit" }
+  ],
+  "prices": [
+    { "label": "blueprint", "amount": "35,000 cr", "money": false },
+    { "label": "parts", "amount": "75 Nightwave Creds", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "vendor",
+      "place": "MARKET",
+      "sub": null,
+      "activity": "buy blueprint",
+      "meta": "35,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Vauban Blueprint", "note": null, "alt": null, "done": false }
+      ],
+      "conditions": [
+        "Nightwave sells only the three components; the main blueprint is a Market purchase."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "currency",
+      "place": "NIGHTWAVE",
+      "sub": null,
+      "activity": "daily and weekly Acts",
+      "meta": "Nightwave rank 1",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "Nightwave Creds", "amount": "75" },
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "75",
+          "label": "Nightwave Creds",
+          "note": "rank 1 grants 150 in recent seasons",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Between seasons the Cred store is closed, and Creds from an ended season expire. Spend them before the season ends."
+      ],
+      "bonuses": ["Some Acts are quest-locked, but plenty are open from the start of the game."],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "NIGHTWAVE CRED OFFERINGS",
+      "sub": "Recovered Artifacts tab",
+      "activity": "buy the three components",
+      "meta": "25 Creds each",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Nightwave Creds", "amount": "75" }],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Neuroptics Blueprint",
+          "note": "25 Creds",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Chassis Blueprint",
+          "note": "25 Creds",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Systems Blueprint",
+          "note": "25 Creds",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The store is the Cred Offerings prompt in the bottom corner of the Nightwave screen."
+      ],
+      "bonuses": [
+        "Vauban sits in the permanent tab, so buy the rotating Aura mods and Nitain first and pick him up with leftover Creds."
+      ],
+      "disclosures": [
+        {
+          "title": "Circuit, when Nightwave is between seasons",
+          "body": "After The Duviri Paradox, pick Vauban in the normal Circuit during week 4 of the rotation, which he shares with Saryn. Neuroptics at tier 2, Chassis 5, Systems 8, main blueprint 10."
+        }
+      ]
+    },
+    {
+      "type": "farm",
+      "place": "ELARA, JUPITER",
+      "sub": null,
+      "activity": "Survival",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": "1", "label": "Neural Sensors", "note": "Neuroptics", "alt": null, "done": false },
+        { "qty": "500", "label": "Salvage", "note": "Systems", "alt": null, "done": false },
+        { "qty": "150", "label": "Alloy Plate", "note": "Neuroptics", "alt": null, "done": false }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "EUROPA",
+      "sub": null,
+      "activity": "any mission",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": "1", "label": "Control Module", "note": "Systems", "alt": null, "done": false },
+        {
+          "qty": "2",
+          "label": "Morphics",
+          "note": "Chassis and Systems",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "800",
+          "label": "Rubedo",
+          "note": "Neuroptics and Chassis",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "SATURN",
+      "sub": null,
+      "activity": "any mission",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": "220", "label": "Plastids", "note": "Systems", "alt": null, "done": false },
+        { "qty": "1", "label": "Orokin Cell", "note": "Vauban", "alt": null, "done": false }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "APOLLODORUS, MERCURY",
+      "sub": null,
+      "activity": "Survival",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": "1,000", "label": "Ferrite", "note": "Chassis", "alt": null, "done": false },
+        {
+          "qty": "150",
+          "label": "Polymer Bundle",
+          "note": "Neuroptics",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build components, then Vauban",
+      "meta": "12h each, then 72h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Neuroptics",
+          "note": "150 Alloy Plate, 1 Neural Sensors, 150 Polymer Bundle, 500 Rubedo",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Chassis",
+          "note": "1 Morphics, 1,000 Ferrite, 300 Rubedo",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Systems",
+          "note": "1 Control Module, 1 Morphics, 500 Salvage, 220 Plastids",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Vauban",
+          "note": "1 Orokin Cell + 25,000 cr",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Each component costs 15,000 cr; start all three together. Have a free Warframe slot before claiming Vauban.",
+        "This is base Vauban, the one Helminth needs for Tesla Nervos. Vauban Prime's Oxium, Cryotic and Nitain bill does not apply."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

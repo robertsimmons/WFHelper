@@ -1,0 +1,189 @@
+{
+  "name": "Helminth Charger",
+  "kind": "companion",
+  "effort": 3,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 1, "unit": "companion" },
+  "badges": [
+    { "text": "7-day cyst clock", "tone": "warn" },
+    { "text": "guaranteed breed", "tone": "info" }
+  ],
+  "prices": [
+    { "label": "Incubator Power Core blueprint", "amount": "50,000 cr", "money": false },
+    { "label": "Power Core build", "amount": "100,000 cr", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "ORBITER",
+      "sub": null,
+      "activity": "Howl of the Kubrow, then Incubator access",
+      "meta": "one-time",
+      "mode": "solo only",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Howl of the Kubrow",
+          "note": "gives the Incubator Segment",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "1",
+          "label": "free Companion Slot",
+          "note": "the Charger permanently occupies it",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "ORBITER",
+      "sub": "Helminth Infirmary",
+      "activity": "infect a Warframe with the Helminth Cyst",
+      "meta": "24h to appear, 7 days to mature",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "1",
+          "label": "matured Helminth Cyst",
+          "note": "Nidus: sit in the Helminth chair once; no Helminth Segment needed",
+          "alt": "or stand near an infected Warframe in a mission, dojo or Orbiter",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Start this first: the cyst shows 24 hours after infection and matures 6 days after that, on real time, while the frame sits in your arsenal.",
+        "A second sit in the chair removes the cyst, and choosing Remove cyst on any frame makes it permanently immune.",
+        "Relays don't spread the infection.",
+        "The Coda infection's pink growth is a different thing; only a matured Helminth Cyst unlocks Drain."
+      ],
+      "bonuses": [
+        "Without Nidus, run public missions on a spare frame; infection spreads fast in public squads.",
+        "Draining doesn't cure the cyst, so the same frame can make more Chargers later."
+      ],
+      "disclosures": [
+        {
+          "title": "when the cyst never shows",
+          "body": "A cyst on Nidus can bug out: one player had the chair offering Remove cyst with no visible cyst after more than a week. The advice was to get a different frame infected by another player and use that one. The cyst is mature when a tendril sticks out of it."
+        }
+      ]
+    },
+    {
+      "type": "farm",
+      "place": "MANTLE, EARTH",
+      "sub": null,
+      "activity": "Capture; break Kubrow Dens on Grineer Forest tiles",
+      "meta": "egg usually within 4-5 runs",
+      "mode": "solo, fast frame",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "1",
+          "label": "Kubrow Egg",
+          "note": "2-4 dens a run",
+          "alt": "Market purchase, 10 platinum",
+          "done": false
+        }
+      ],
+      "conditions": ["Break every den, capture, extract; abort if nothing dropped."],
+      "bonuses": ["Farm the egg while the cyst matures."],
+      "disclosures": [
+        {
+          "title": "other egg source",
+          "body": "Cervantes, Earth Sabotage resource caches have a 2.58% Rotation B chance at a Kubrow Egg."
+        }
+      ]
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Incubator Power Core",
+      "meta": "8h, 100,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "1",
+          "label": "Incubator Power Core",
+          "note": "4,500 Nano Spores, 2 Control Modules, 1 Argon Crystal",
+          "alt": "first core is free from the Venus-to-Mercury Junction",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The blueprint is a reusable 50,000-credit Market purchase.",
+        "Argon Crystal decays at daily reset, so farm it right before you build."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "craft",
+      "place": "ORBITER",
+      "sub": "Incubator",
+      "activity": "Begin Incubation, then Drain",
+      "meta": "48h, 1 egg + 1 core",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": "1", "label": "Kubrow Egg", "note": "consumed", "alt": null, "done": false },
+        {
+          "qty": "1",
+          "label": "Incubator Power Core",
+          "note": "consumed",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Helminth Charger",
+          "note": "guaranteed with the cyst drained",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Equip the infected frame, then press Drain at the start of incubation; once an egg is already incubating the option is gone and it hatches a normal Kubrow.",
+        "Incubation is 48 hours, or 24 with the Nutrio Incubator Upgrade Segment.",
+        "If it won't equip after maturing (Missing Collar), relog or start any mission."
+      ],
+      "bonuses": [
+        "It is the only companion that can use the Strain mod set. Its Helminth Claws level but give no Mastery."
+      ],
+      "disclosures": [
+        {
+          "title": "size is random",
+          "body": "Chargers roll different sizes, and a big one with the Strain set can stand taller than your Warframe. Rerolling takes another cyst drain, egg and core. It can't equip Mecha Overdrive even though it's classed as a Kubrow."
+        }
+      ]
+    }
+  ]
+}

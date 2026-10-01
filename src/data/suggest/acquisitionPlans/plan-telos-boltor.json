@@ -1,0 +1,122 @@
+{
+  "name": "Telos Boltor",
+  "kind": "primary",
+  "effort": 4,
+  "tradeable": "unranked, no Forma/Catalyst",
+  "progress": { "have": 0, "need": 1, "unit": "purchase" },
+  "badges": [
+    { "text": "Maxim rank gate", "tone": "warn" },
+    { "text": "MR 12", "tone": "info" }
+  ],
+  "prices": [
+    { "label": "standing", "amount": "365,000", "money": false },
+    { "label": "credits", "amount": "940,000 cr", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "currency",
+      "place": "ELITE SANCTUARY ONSLAUGHT",
+      "sub": "or Duviri Circuit, stage 4+",
+      "activity": "pledge Arbiters of Hexis, earn standing from mission affinity and Syndicate Medallions",
+      "meta": "365,000 standing total to Maxim plus the rifle",
+      "mode": "leave around round 8 for one clean daily cap",
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "Arbiters of Hexis standing", "amount": "365,000" },
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "500",
+          "label": "Alloy Plate",
+          "note": "Rank 0 Initiation sacrifice",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "2",
+          "label": "Gallium",
+          "note": "Rank 1 Principled sacrifice",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "1",
+          "label": "Forma",
+          "note": "Rank 2 Authentic sacrifice",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "1",
+          "label": "Orokin Reactor",
+          "note": "Rank 3 Lawful sacrifice; Nightwave sells one for 75 Cred",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "5",
+          "label": "Aya",
+          "note": "2 at Rank 4 Crusader, 3 at Rank 5 Maxim",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Daily standing cap is 16,000 plus 500 per Mastery Rank, shared across every faction syndicate.",
+        "Pledging Hexis costs Red Veil 100% and The Perrin Sequence 50% of every gain. A Red Veil pledge drains Hexis 1:1.",
+        "Rank-ups also cost 940,000 credits in total. Standing caps at 132,000 at Maxim and lower before; earning past a rank's maximum is wasted."
+      ],
+      "bonuses": [
+        "The three daily Hexis Syndicate Alerts and their medallions (8 per alert, roughly 10,000 standing) ignore the daily cap. Run them solo; public squads rush extraction.",
+        "Hexis feeds Cephalon Suda at +50%, so ranking the pair together costs nothing extra.",
+        "An Affinity Booster doubles pledge standing."
+      ],
+      "disclosures": [
+        {
+          "title": "why 365,000",
+          "body": "240,000 standing carries the five rank-ups to Maxim (5,000 / 22,000 / 44,000 / 70,000 / 99,000). The 125,000-standing purchase is then farmed on top; Maxim's bar holds 132,000, enough to bank it."
+        },
+        {
+          "title": "finding medallions fast",
+          "body": "A max-range Xaku or Limbo breaking every crate, with loot radar on aura, mod and companion, leaves only medallions and collectibles on the minimap. The Orokin Eye (about 200m) and Golden Instinct ping them directly."
+        }
+      ]
+    },
+    {
+      "type": "vendor",
+      "place": "ARBITERS OF HEXIS OFFERINGS, RELAY",
+      "sub": null,
+      "activity": "buy the rifle",
+      "meta": "125,000 standing",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Arbiters of Hexis standing", "amount": "125,000" }],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Telos Boltor",
+          "note": "arrives built, no Foundry step; needs a free weapon slot",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The free item you pick at Maxim can never be a Syndicate weapon; the Boltor is always a separate 125,000-standing purchase.",
+        "Mastery Rank 12 is required both to buy it and to receive it in a trade."
+      ],
+      "bonuses": [
+        "Telos Boltace (125,000) and Telos Akbolto (100,000) sell from the same Maxim rank."
+      ],
+      "disclosures": [
+        {
+          "title": "Incarnon Genesis",
+          "body": "The Boltor Incarnon Genesis from Steel Path Circuit works on the Telos Boltor (20 Pathos Clamps, 60 Rune Marrow, 60 Silphsela to install). Telos gets smaller evolution bonuses than the other Boltors, but players still pick it over Boltor Prime for its 30% base crit and 90-round magazine."
+        }
+      ]
+    }
+  ]
+}

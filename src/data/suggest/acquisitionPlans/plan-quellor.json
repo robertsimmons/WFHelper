@@ -1,0 +1,118 @@
+{
+  "name": "Quellor",
+  "kind": "primary",
+  "effort": 3,
+  "tradeable": "blueprint only",
+  "progress": { "have": 0, "need": 1, "unit": "blueprint" },
+  "badges": [
+    { "text": "Railjack required", "tone": "warn" },
+    { "text": "7.31% per kill", "tone": "info" }
+  ],
+  "prices": [{ "label": "build", "amount": "30,000 cr", "money": false }],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "RAILJACK",
+      "sub": null,
+      "activity": "reach Kasio's Rest or Flexa in the Proxima",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "The Archwing",
+          "note": "enough to crew on someone else's Railjack",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Rising Tide",
+          "note": "needs The War Within; only to host from your own Railjack",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Railjack nodes unlock in order within each Proxima, so Kasio's Rest and Flexa have to be reached first."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "boss",
+      "place": "KASIO'S REST, SATURN PROXIMA",
+      "sub": "Asteroid Base, always spawns a commander",
+      "activity": "rush to the commander, kill, check the drop, abort if nothing",
+      "meta": "7.31%, about 13 kills on average",
+      "mode": "solo, rush and abort",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Quellor Blueprint",
+          "note": "7.31%, Lektro or Glacik Commander",
+          "alt": "Pyr or Blite Captain on Flexa's Galleon, same table",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The blueprint is a pickup on the boss kill, not an end-of-mission reward; finish the mission once it drops, since aborting throws it away.",
+        "Loot abilities (Desecrate, Pilfering Swarm, Prowl, Ore Gaze, Pilfering Strangledome, Retrieve) don't work on these bosses.",
+        "In a squad, whoever kills the Galleon captain should wait until everyone is inside before leaving; the interior can vanish for players still outside."
+      ],
+      "bonuses": [
+        "Pennant's blueprint rolls separately on the same kill, so you farm both at once.",
+        "The pickup is shared: one drop gives the blueprint to the whole squad.",
+        "Ivara's sleep arrows or an invisibility frame get you to the boss without clearing the base."
+      ],
+      "disclosures": [
+        {
+          "title": "park the Railjack",
+          "body": "Right after loading in, fly about 8 km away so fighters leave the ship alone, then Slingshot or Archwing over to the base above the fighters. Players report 2-4 minutes per attempt this way; bad luck can stretch past 90 kills."
+        },
+        {
+          "title": "other nodes",
+          "body": "Flexa (Veil Proxima) always has a Galleon. Korm's Belt (Earth Proxima) only rolls one some of the time; check the objective list at load-in and relaunch if the boss isn't there."
+        }
+      ]
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Quellor",
+      "meta": "1 day",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Quellor",
+          "note": "30,000 cr, 4 Tellurium, 6,250 Rubedo, 3,600 Circuits, 15,350 Alloy Plate",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Tellurium drops rarely from Empyrean enemies, Archwing, Grineer Sealab and Kuva Fortress Assault; a few Railjack runs usually cover the 4.",
+        "MR 12 to equip it."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

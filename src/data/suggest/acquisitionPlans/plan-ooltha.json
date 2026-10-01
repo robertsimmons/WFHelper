@@ -1,0 +1,217 @@
+{
+  "name": "Ooltha",
+  "kind": "melee",
+  "effort": 3,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 3, "unit": "parts" },
+  "badges": [
+    { "text": "Ostron Trusted to gild", "tone": "warn" },
+    { "text": "level twice", "tone": "info" }
+  ],
+  "prices": [
+    { "label": "strike, grip, link", "amount": "3,000 standing", "money": false },
+    { "label": "assemble", "amount": "4,000 cr", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "currency",
+      "place": "PLAINS OF EIDOLON, EARTH",
+      "sub": null,
+      "activity": "conservation at night, or fishing with bait",
+      "meta": "several capped days to Trusted from zero",
+      "mode": "solo",
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "Ostron standing", "amount": "71,000" },
+      "spends": [],
+      "map": "plains-of-eidolon",
+      "rows": [
+        {
+          "qty": null,
+          "label": "Offworlder",
+          "note": "5,000 standing; 10,000 cr, 25 Nistlepod, 25 Iradite, 25 Grokdrul",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Visitor",
+          "note": "22,000 standing; 25,000 cr, 10 Tear Azurite, 40 Pyrol, 60 Fish Scales",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Trusted",
+          "note": "44,000 standing; 50,000 cr, 1 Cetus Wisp, 5 Maprico; unlocks gilding",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The daily standing cap is the real time gate if you start from zero Ostron standing."
+      ],
+      "bonuses": [
+        "Conservation is the fastest standing; Ivara's Sleep Arrow or Loki with subsumed Equinox Sleep get perfect captures, and learning the Kavat spawn spots caps the day in minutes.",
+        "Murkray, Norg, Cuthol and Glappid pay well per fish, and cutting extras covers Fish Scales.",
+        "Hand spare raw Azurite and Devar to Old Man Suumbaat for standing."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "HOK, CETUS",
+      "sub": null,
+      "activity": "buy the Strike, a Grip and a Link",
+      "meta": "Neutral rank",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Ostron standing", "amount": "3,000" }],
+      "map": "cetus",
+      "rows": [
+        {
+          "qty": null,
+          "label": "Ooltha Strike Blueprint",
+          "note": "1,000 standing",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Peye or Laka Grip",
+          "note": "1,000 standing; makes a Sword",
+          "alt": "Seekalla for a Staff",
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Jai Link",
+          "note": "1,000 standing; 5,000 cr, 10 Nistlepod, 20 Pyrotic Alloy, 2 Condroc Wing, 5 Khut-Khut Venom Sac",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Mastery belongs to the Strike; the grip only decides Sword or Staff, so pick the cheapest.",
+        "A forged Zaw can't be taken apart; the parts are consumed."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "PLAINS OF EIDOLON, EARTH",
+      "sub": null,
+      "activity": "night loop: mine every vein, smash containers, fish, lap the lakes for Wisps",
+      "meta": "refine at Old Man Suumbaat, Neutral",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Ostron standing", "amount": "1,000" }],
+      "map": "plains-of-eidolon",
+      "rows": [
+        {
+          "qty": "60",
+          "label": "Pyrotic Alloy",
+          "note": "3 builds of 20 Pyrol, 200 Cryotic, 50 Rubedo; plus 20 more for the Jai link",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "10",
+          "label": "Tear Azurite",
+          "note": "10 Azurite (blue veins), one build",
+          "alt": "Tusk Thumpers drop Azurite",
+          "done": false
+        },
+        {
+          "qty": "20",
+          "label": "Iradite",
+          "note": "rock deposits in low-lying areas, loot containers",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "20",
+          "label": "Fish Scales",
+          "note": "cut any Plains fish at Fisher Hai-Luk",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "3",
+          "label": "Cetus Wisp",
+          "note": "1 for Trusted, 2 to gild; water's edge, up to 5 at night",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The Tear Azurite and Pyrotic Alloy refine blueprints cost 500 standing each from Old Man Suumbaat.",
+        "Pyrol is the sink: 60 for the Strike's alloy, 20 more alloy for the Jai link, and 40 raw for Visitor. Mine red veins every trip.",
+        "Cetus Wisps don't respawn until you leave and re-enter the Plains."
+      ],
+      "bonuses": ["A high-Strength Volt makes Konzu escort bounties much faster."],
+      "disclosures": [
+        {
+          "title": "Fish Scales count",
+          "body": "The research wiki read gives 25 Fish Scales for the Strike; the item data says 20. Bring 25 to be safe."
+        }
+      ]
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY + HOK'S ANVIL",
+      "sub": null,
+      "activity": "build, assemble, level, gild, level again",
+      "meta": "1h build",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Ooltha Strike",
+          "note": "5,000 cr, 20 Iradite, 20 Fish Scales, 10 Tear Azurite, 60 Pyrotic Alloy, 1h",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "assemble at Hok's Anvil",
+          "note": "4,000 cr, instant",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "level to 30, then gild at Hok",
+          "note": "2 Cetus Wisp, 5,000 cr; resets to rank 0",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "level the gilded Zaw to 30",
+          "note": "Mastery counts only now",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "A freshly forged Zaw earns no Mastery.",
+        "A second Ooltha Zaw with a different grip or link gives nothing more."
+      ],
+      "bonuses": [
+        "Donate spare rank-30 Zaws to Hok for Ostron standing once this one is mastered."
+      ],
+      "disclosures": []
+    }
+  ]
+}

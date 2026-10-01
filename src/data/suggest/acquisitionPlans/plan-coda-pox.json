@@ -1,0 +1,261 @@
+{
+  "name": "Coda Pox",
+  "kind": "secondary",
+  "effort": 5,
+  "tradeable": false,
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "weapon"
+  },
+  "badges": [
+    {
+      "text": "MR 17",
+      "tone": "warn"
+    },
+    {
+      "text": "Batch A rotation",
+      "tone": "warn"
+    }
+  ],
+  "prices": [
+    {
+      "label": "Elemental Vice",
+      "amount": "20 p",
+      "money": false
+    }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "STAR CHART",
+      "sub": null,
+      "activity": "unlock the Coda system",
+      "meta": "one-time",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "The Hex",
+          "note": "quest complete; opens Höllvania and Eleanor",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Railjack Intrinsics rank 5",
+          "note": "any one class; Earth Proxima showdown",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Mastery Rank 17",
+          "note": "enforced when Eleanor sells the weapon",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Only one adversary at a time: clear or convert any active Kuva Lich, Sister of Parvos, or other Coda first.",
+        "MR 17 is checked at the Eleanor purchase, not at Coda spawn. Heartcells farmed below MR 17 just sit there until you rank up.",
+        "No Hex standing rank is needed; the weapon sits at Eleanor Rank 0."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "HÖLLVANIA CENTRAL MALL",
+      "sub": null,
+      "activity": "Antivirus Bounty",
+      "meta": "8 Antivirus mods exist",
+      "mode": "Steel Path for standing too",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "8",
+          "label": "Antivirus mods",
+          "note": "1-in-8 per bounty; tradeable, 3 charges each",
+          "alt": "trade for the straggler; veterans hand them out",
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Potency mods",
+          "note": "passive Techrot drops; also tradeable",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Four duplicate or depleted mods of one type transmute into one fresh charged mod of that type. Do not grind the bounty for the last missing Antivirus.",
+        "Potency mods do nothing unless the correct Antivirus is equipped alongside them."
+      ],
+      "bonuses": [
+        "Antivirus and Potency mods drop as public loot off any squadmate's stab, so pubbing tops you up even when your own Coda hasn't spawned.",
+        "Slot Immuno Shield or Instant Secure (+15% each) once you know the Antivirus; a Coda then goes from first Duet to Showdown in a handful of missions.",
+        "Quick Correct only adds 10% disinfection, but each correct stab has a 10% chance to drop a Live Heartcell, and it rolls for squadmates on your Duet too."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "boss",
+      "place": "HÖLLVANIA",
+      "sub": null,
+      "activity": "spawn and disinfect a Coda",
+      "meta": "typically 2-4 stabs to 100%",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "spawn via Exterminate, Hell-Scrub or Legacyte Harvest",
+          "note": "Techrot drop a Mixtape; hack it, pass or fail",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "correct Antivirus mercy",
+          "note": "all 3 equipped mods tested at once; no penalty for a wrong guess",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "100% disinfection",
+          "note": "2 Potency mods once the Antivirus is known; missions alone cap at 95%",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Each completed mission or Hex bounty on a Coda node adds 5%, capped at 95%. The last push to 100% must be a correct-Antivirus stab.",
+        "Duets spawn at 25% per mission, +25% per miss, guaranteed on the 4th.",
+        "A Duet that stumbles 3 times unstabbed, or a downed squad, flees the encounter.",
+        "Kill DJ RoM first in Duets — his Toxin bypasses shields and shield gating."
+      ],
+      "bonuses": [
+        "Abort right after a correct-Antivirus stab; the disinfection banks immediately. Quick Correct Heartcells are lost on abort.",
+        "Duets spawn during bounties too, so running the Antivirus Bounty on a Coda node stacks Hex standing, Antivirus mods and disinfection at once."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "boss",
+      "place": "EARTH PROXIMA",
+      "sub": "Technocyte Coda Concert",
+      "activity": "Railjack Skirmish; finish the Coda",
+      "meta": "choose Vanquish",
+      "mode": "squad for bonus Heartcells, or an invulnerable frame solo",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Live Heartcell",
+          "note": "10-15 per Vanquish; Convert pays none",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Phases 1 and 3 are hazard-dodging with Transference disabled; phases 2 and 4 are the real fight, and the frontman regenerates until his backup band is dead.",
+        "Bring overguard or invulnerability: Revenant's Mesmer Skin or Nyx with her Absorb augment, Valkyr and Dante also work. Shield-reliant frames like Gauss get deleted by the Toxin.",
+        "Stage Fright: getting hit 3 times by stage hazards doubles damage taken.",
+        "The Showdown is buggy: a band member can spawn invisible so the frontman keeps reviving, or the band refuses to jump down. If a run breaks, restart it."
+      ],
+      "bonuses": [
+        "Each extra Coda defeated in the same Concert pays every player +1 Heartcell, up to +3 in a full squad, whether vanquished or converted."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "ELEANOR, HÖLLVANIA CENTRAL MALL",
+      "sub": null,
+      "activity": "Browse Merchandise",
+      "meta": "Batch A, one copy per 4-day rotation",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [
+        {
+          "currency": "Live Heartcell",
+          "amount": "10"
+        }
+      ],
+      "map": null,
+      "rows": [
+        {
+          "qty": "1",
+          "label": "Coda Pox",
+          "note": "random element, 25-60% bonus",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Pox is Batch A, alongside Hema, Sporothrix, Catabolyst, Dual Torxica, Mire and Motovore; Batch B carries no Pox.",
+        "One purchase per weapon per rotation; rotations flip every 4 days at 0:00 UTC, and update releases can force an early flip.",
+        "An empty weapon slot is required before Eleanor will sell to you."
+      ],
+      "bonuses": [
+        "Heartcells never expire, so bank them from one Coda and buy the next time the batch comes around."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "craft",
+      "place": "ORBITER, MODDING",
+      "sub": null,
+      "activity": "optional Valence Fusion toward 60%",
+      "meta": "bank copies first",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "52.8%+ roll",
+          "note": "fuses straight to 60%",
+          "alt": "58%+ already rounds to 60%",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Fusion takes the higher of the two bonuses × 1.1, capped at 60%.",
+        "Fuse into the copy holding your Forma and Catalyst; the donor's investments are destroyed.",
+        "Elemental Vice needs rank 40 (5 Forma): 50,000 Hex standing at Rank 5, 20 platinum from the Market, or a Temporal Archimedea/Nightwave drop."
+      ],
+      "bonuses": ["Mastery runs to rank 40 through 5 Forma, 4,000 in total."],
+      "disclosures": [
+        {
+          "title": "split on the gun",
+          "body": "Opinion on the Pox runs from \"insane\" to \"mid\"; it does not matter for Mastery."
+        }
+      ]
+    }
+  ]
+}

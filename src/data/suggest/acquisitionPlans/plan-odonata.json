@@ -1,0 +1,149 @@
+{
+  "name": "Odonata",
+  "kind": "archwing",
+  "effort": 2,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "badges": [
+    { "text": "The Archwing quest", "tone": "info" },
+    { "text": "don't sell before rank 30", "tone": "warn" }
+  ],
+  "prices": [{ "label": "build", "amount": "28,000 cr", "money": false }],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "MARS JUNCTION",
+      "sub": null,
+      "activity": "start The Archwing quest",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Mars Junction",
+          "note": "unlocks The Archwing",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "VENUS + EARTH",
+      "sub": "Tessera, then Aphrodite, Mantle, E Gate",
+      "activity": "The Archwing quest missions",
+      "meta": "~30 minutes, no RNG on getting a set",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Odonata Blueprint",
+          "note": "Lotus inbox message",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Harness Blueprint",
+          "note": "random per excavation",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Systems Blueprint",
+          "note": "random per excavation",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Wings Blueprint",
+          "note": "random per excavation",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Quest nodes only exist inside the quest; launch each step from the quest, not the Star Chart node.",
+        "You can extract after the first excavator completes."
+      ],
+      "bonuses": [
+        "The final mission on Montes, Venus hands you the Imperator and Veritux free, and completing the quest gives the Archwing Launcher."
+      ],
+      "disclosures": [
+        {
+          "title": "replacing a sold Odonata",
+          "body": "There is no Market blueprint and replaying the quest doesn't return it. Cephalon Simaris sells the main blueprint for 100,000 standing and each component for 50,000 (250,000 total); standing caps at 125,000 held, so buy in two chunks. Support tickets are reported honoured when an unranked sale blocked Mastery."
+        }
+      ]
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build parts, then Odonata",
+      "meta": "1 minute each",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Harness",
+          "note": "7,000 cr, 1 Morphics, 300 Rubedo, 1,000 Ferrite",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Systems",
+          "note": "7,000 cr, 1 Neurodes, 1 Morphics, 500 Salvage, 300 Circuits",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Wings",
+          "note": "7,000 cr, 150 Alloy Plate, 150 Polymer Bundle, 500 Rubedo, 1 Neurodes",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Odonata",
+          "note": "7,000 cr, 300 Circuits, the three parts",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "If the quest stays on \"build the Odonata\" after claiming it, open the Codex quest menu, select The Archwing and press Begin.",
+        "Don't sell or delete it before rank 30; that is the classic new-player regret."
+      ],
+      "bonuses": [],
+      "disclosures": [
+        {
+          "title": "levelling to 30",
+          "body": "Salacia, Neptune Archwing Mobile Defense is the go-to; two runs with an affinity booster max arch weapons too, so level the Imperator and Veritux in the same runs. The alternative is Plains of Eidolon free roam: fly ~100 m up and one-shot Eximus with a sniper for stealth affinity, with an enemy highlight color set under Accessibility."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,327 @@
+{
+  "name": "Ash",
+  "kind": "warframe",
+  "effort": 6,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "badges": [
+    { "text": "Circuit week 3", "tone": "circuit" },
+    { "text": "Railjack Rotation A", "tone": "warn" }
+  ],
+  "prices": [{ "label": "blueprint", "amount": "35,000 cr", "money": false }],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "RAILJACK",
+      "sub": null,
+      "activity": "rank any Railjack Intrinsic",
+      "meta": "rank 3 for Neptune Proxima, rank 5 for Pluto Proxima",
+      "mode": "solo or host",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Railjack Intrinsic rank 3",
+          "note": "opens Neptune Proxima",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Railjack Intrinsic rank 5",
+          "note": "opens Pluto Proxima",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Nodes inside each region unlock in order, so clear the earlier nodes to reach the Survival and Defense ones."
+      ],
+      "bonuses": [
+        "A basic Railjack with Mk III dojo parts and three hired Ticker crew from Fortuna is enough for the space phase."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "MARKET",
+      "sub": null,
+      "activity": "buy blueprint",
+      "meta": "35,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Ash Blueprint",
+          "note": null,
+          "alt": "Circuit tier 10",
+          "done": false
+        }
+      ],
+      "conditions": ["The Railjack nodes only drop the three components."],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "LUCKLESS EXPANSE, VENUS PROXIMA",
+      "sub": null,
+      "activity": "Railjack Survival",
+      "meta": "~7-8 A rolls expected",
+      "mode": "solo",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Systems Blueprint",
+          "note": "13.33%, Rotation A",
+          "alt": "Circuit tier 8",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "This is Venus Proxima, a Railjack region. Tessera and the regular Venus nodes do not drop Ash.",
+        "Both A rolls land in the first 10 minutes. Extract at 10, or stay to 25-30 for the next pair; B and C at 15 and 20 are wasted."
+      ],
+      "bonuses": [
+        "Venus Proxima is open by default. Void Storms on these nodes add relic rewards, and the runs level a Necramech or other gear."
+      ],
+      "disclosures": [
+        {
+          "title": "why Survival, not Defense",
+          "body": "Falling Glory (Defense) drops the same part, but the two-floor Corpus ship tileset strands enemies far from the objective and stalls waves by minutes. You cannot return to space mid-objective, so a stuck wave stalls the whole run. Khora with Pilfering Strangledome in a dead-end room covers life support solo; enemies are only about level 22-43."
+        },
+        {
+          "title": "Exterminate and Volatile",
+          "body": "The same regions' Exterminate and Volatile nodes drop the part on completion, but at only about 4.7-4.9%."
+        }
+      ]
+    },
+    {
+      "type": "farm",
+      "place": "ENKIDU ICE DRIFTS, NEPTUNE PROXIMA",
+      "sub": null,
+      "activity": "Railjack Survival",
+      "meta": "~8 A rolls expected",
+      "mode": "solo",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Neuroptics Blueprint",
+          "note": "12.5%, Rotation A",
+          "alt": "Circuit tier 2",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Needs Railjack Intrinsic rank 3. Arva Vector is the Defense node for the same part."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "FENTON'S FIELD, PLUTO PROXIMA",
+      "sub": null,
+      "activity": "Railjack Survival",
+      "meta": "~7-8 A rolls expected",
+      "mode": "solo",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Chassis Blueprint",
+          "note": "13.33%, Rotation A",
+          "alt": "Circuit tier 5",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Needs Railjack Intrinsic rank 5. Obol Crossing is the Defense node for the same part."
+      ],
+      "bonuses": [],
+      "disclosures": [
+        {
+          "title": "Circuit week 3 does all of this",
+          "body": "After The Duviri Paradox, pick Ash in the normal Circuit during week 3 of the 11-week rotation, alongside Frost and Nyx. Neuroptics at tier 2 (400 progress), Chassis 5 (1,190), Systems 8 (2,430), main blueprint 10 (3,640), about 23 stages over the week. Progress adds up across runs, stage 4 pays a 50-progress bonus once a day, and tiers reset Mondays 0:00 UTC. Host migration between stages is the usual way a run falls apart. If week 3 is close, wait for it."
+        },
+        {
+          "title": "old guides are wrong",
+          "body": "Before Hotfix 31.7.2 the parts were Rotation C only and came from Manics and Tyl Regor. Some databases still list Grineer Manics; they no longer drop Ash."
+        }
+      ]
+    },
+    {
+      "type": "farm",
+      "place": "ELARA, JUPITER",
+      "sub": null,
+      "activity": "Survival",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": "1", "label": "Neural Sensors", "note": "Neuroptics", "alt": null, "done": false },
+        { "qty": "500", "label": "Salvage", "note": "Systems", "alt": null, "done": false },
+        { "qty": "150", "label": "Alloy Plate", "note": "Neuroptics", "alt": null, "done": false }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "EUROPA",
+      "sub": null,
+      "activity": "any mission",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": "1", "label": "Control Module", "note": "Systems", "alt": null, "done": false },
+        {
+          "qty": "2",
+          "label": "Morphics",
+          "note": "Chassis and Systems",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "800",
+          "label": "Rubedo",
+          "note": "Neuroptics and Chassis",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "SATURN",
+      "sub": null,
+      "activity": "any mission",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": "500", "label": "Plastids", "note": "Systems", "alt": null, "done": false },
+        { "qty": "1", "label": "Orokin Cell", "note": "Ash", "alt": null, "done": false }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "APOLLODORUS, MERCURY",
+      "sub": null,
+      "activity": "Survival",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": "1,000", "label": "Ferrite", "note": "Chassis", "alt": null, "done": false },
+        {
+          "qty": "150",
+          "label": "Polymer Bundle",
+          "note": "Neuroptics",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build components, then Ash",
+      "meta": "12h each, then 72h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Neuroptics",
+          "note": "150 Alloy Plate, 1 Neural Sensors, 150 Polymer Bundle, 500 Rubedo",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Chassis",
+          "note": "1 Morphics, 1,000 Ferrite, 300 Rubedo",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Systems",
+          "note": "1 Control Module, 1 Morphics, 500 Salvage, 500 Plastids",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Ash",
+          "note": "1 Orokin Cell + 25,000 cr",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Each component costs 15,000 cr. Start each as it drops so the 12-hour timers overlap; have a free Warframe slot before claiming Ash.",
+        "The Smoking Body Ephemera consumes a second Ash Systems, and each Circuit week gives only one. Farm the spare in Luckless Expanse.",
+        "Keep base Ash even with Ash Prime: subsuming Shuriken needs the base frame."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

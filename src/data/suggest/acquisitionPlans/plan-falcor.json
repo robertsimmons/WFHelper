@@ -1,0 +1,130 @@
+{
+  "name": "Falcor",
+  "kind": "melee",
+  "effort": 2,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 1, "unit": "blueprint" },
+  "badges": [
+    { "text": "5 Fieldron", "tone": "warn" },
+    { "text": "Energy Lab", "tone": "info" }
+  ],
+  "prices": [
+    { "label": "blueprint", "amount": "15,000 cr", "money": false },
+    { "label": "build", "amount": "20,000 cr", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "DOJO, ENERGY LAB",
+      "sub": null,
+      "activity": "clan research",
+      "meta": "skip if already researched",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Energy Lab: Prova, then Falcor",
+          "note": "3 days for the Falcor research",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Ghost (x1) tier pays 5,000 credits, 550 Fieldron Samples, 325 Circuits, 1,750 Alloy Plate and 800 Polymer Bundle for the Falcor research; bigger clans pay x3, x10, x30 or x100.",
+        "In an established clan this is already done and costs you nothing."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "research",
+      "place": "DOJO, ENERGY LAB",
+      "sub": null,
+      "activity": "replicate the blueprint",
+      "meta": "15,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Credits", "amount": "15,000" }],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Falcor Blueprint",
+          "note": "15,000 cr",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["MR 8 gate to build it."],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "STAR CHART",
+      "sub": null,
+      "activity": "Corpus-side Invasions",
+      "meta": "3 per Invasion; two rewards cover it",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "5",
+          "label": "Fieldron",
+          "note": "3 per Corpus-reward Invasion",
+          "alt": "or craft from the Energy Lab Fieldron blueprint, 12h each",
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [
+        "Fieldron also drops from Rare and Reinforced Corpus storage containers and level 30-50 Orb Vallis bounties."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Falcor",
+      "meta": "24h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Falcor",
+          "note": "20,000 cr, 5 Fieldron, 8,500 Alloy Plate, 1,650 Circuits, 1 Forma",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Have a Forma built before you queue this, or you add another 24 hours.",
+        "8,500 Alloy Plate can pinch a newer account; it drops on Corpus and Grineer tilesets."
+      ],
+      "bonuses": [],
+      "disclosures": [
+        {
+          "title": "using it",
+          "body": "Build it around Volatile Rebound and throw it above the group; the homing arcs it down and it explodes on the floor. Charged throws and explosions force Electricity procs, so it triggers Melee Influence without modding Electricity. Heavy-attack detonations self-stagger at close range. Charged throws keep their innate punch-through even with Volatile mods, which the wiki calls potentially a bug."
+        }
+      ]
+    }
+  ]
+}

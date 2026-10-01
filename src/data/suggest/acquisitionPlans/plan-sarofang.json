@@ -1,0 +1,141 @@
+{
+  "name": "Sarofang",
+  "kind": "melee",
+  "effort": 4,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 3, "unit": "parts" },
+  "badges": [
+    { "text": "Plasm pity shop", "tone": "info" },
+    { "text": "The War Within gate", "tone": "warn" }
+  ],
+  "prices": [
+    { "label": "pity route", "amount": "200 Lua Thrax Plasm", "money": false },
+    { "label": "build", "amount": "20,000 cr + 50 Plasm", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "QUESTS",
+      "sub": null,
+      "activity": "The War Within, then Angels of the Zariman",
+      "meta": "opens Conjunction Survival on Lua and the Chrysalith shop",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "The War Within",
+          "note": "opens Yuvarium and Circulus",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Angels of the Zariman",
+          "note": "Chrysalith access for Yonta's Plasm shop",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "CIRCULUS, LUA",
+      "sub": null,
+      "activity": "Conjunction Survival, 15 minutes (A, A, B)",
+      "meta": "level 80-100; Plasm guaranteed every rotation",
+      "mode": "Steel Path once your gear can handle it",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Sarofang Blueprint",
+          "note": "Rotation A, 11.28%",
+          "alt": {
+            "text": "or 100 Plasm at Archimedean Yonta",
+            "spends": [{ "currency": "Lua Thrax Plasm", "amount": "100" }]
+          },
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Sarofang Blade",
+          "note": "Rotation B, 10.16%",
+          "alt": {
+            "text": "or 50 Plasm at Archimedean Yonta",
+            "spends": [{ "currency": "Lua Thrax Plasm", "amount": "50" }]
+          },
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Sarofang Handle",
+          "note": "Rotation B, 10.16%",
+          "alt": {
+            "text": "or 50 Plasm at Archimedean Yonta",
+            "spends": [{ "currency": "Lua Thrax Plasm", "amount": "50" }]
+          },
+          "done": false
+        },
+        {
+          "qty": "50",
+          "label": "Lua Thrax Plasm",
+          "note": "for the build; 5 per rotation, 6 on Steel Path, plus Thrax drops",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Sarofang pieces never drop on Rotation C; stay to 20 minutes only if you're also farming Voruna.",
+        "Only buy a piece once buying it still leaves 50 Plasm for the build.",
+        "Dropped Plasm despawns after 60 seconds, and spectral Thrax must be finished with the Operator's Void Beam.",
+        "Drop Chance Boosters and Blessings and loot abilities like Desecrate do nothing for Plasm; Resource Boosters, Smeeta Kavat and Retriever only boost the Thrax drops."
+      ],
+      "bonuses": [
+        "After each rotation Thrax spawn (2, plus 1 per extra squad member), each 30% for 1 more Plasm; regroup every 5 minutes so they spawn together.",
+        "Run it when Circulus has an Omnia Fissure: a full squad means more Thrax, Reactant adds a 1.25x resource boost, and you crack relics at the same time."
+      ],
+      "disclosures": [
+        {
+          "title": "why Circulus",
+          "body": "Normal Circulus pays as much Plasm per rotation as Steel Path Yuvarium and has higher drop rates. Yuvarium (level 25-30) gives 3 Plasm a rotation and 7.52% for the blueprint, 6% per part. Worst case with zero drops is 250 Plasm, roughly 35-40 Steel Path Circulus rotations; every piece that drops cuts 50-100 off that."
+        },
+        {
+          "title": "loadout",
+          "body": "Bring crowd clear (Torid, Boar and a well-modded Amprex were named). A Necramech Summon on the Gear wheel helps clear Thrax. Thrax drain life support 50% faster while alive, and can get stuck spectral until you leave the mission."
+        }
+      ]
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Sarofang",
+      "meta": "12h, MR 8",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Credits", "note": "20,000", "alt": null, "done": false },
+        { "qty": "50", "label": "Lua Thrax Plasm", "note": null, "alt": null, "done": false }
+      ],
+      "conditions": ["Lua Thrax Plasm is not Zariman Thrax Plasm; Zariman missions don't give it."],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

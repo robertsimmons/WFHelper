@@ -1,0 +1,159 @@
+{
+  "name": "Grattler",
+  "kind": "archgun",
+  "effort": 2,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 1, "unit": "blueprint" },
+  "badges": [
+    { "text": "5 Tellurium", "tone": "warn" },
+    { "text": "Chem Lab", "tone": "info" }
+  ],
+  "prices": [
+    { "label": "blueprint", "amount": "15,000 cr", "money": false },
+    { "label": "build", "amount": "65,000 cr", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "DOJO, CHEM LAB",
+      "sub": null,
+      "activity": "clan research",
+      "meta": "skip if already researched",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Chem Lab: Ogris, then Grattler",
+          "note": "3 days for Grattler",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Ghost (x1) tier Grattler research costs 7,500 credits, 10 Detonite Ampule, 540 Salvage, 390 Oxium and 210 Rubedo; bigger clans pay x3/x10/x30/x100.",
+        "In an established clan this is already done and costs you nothing."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "research",
+      "place": "DOJO, CHEM LAB",
+      "sub": null,
+      "activity": "replicate the blueprint",
+      "meta": "15,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Credits", "amount": "15,000" }],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Grattler Blueprint", "note": null, "alt": null, "done": false }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "OPHELIA, URANUS",
+      "sub": null,
+      "activity": "Survival",
+      "meta": "~26 Tellurium in 20 min with boosters",
+      "mode": "Steel Path, every booster, Khora or Nekros",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "5",
+          "label": "Tellurium",
+          "note": "about 2 in 40 minutes on the normal star chart",
+          "alt": "or Lu-yan, Veil Proxima",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Resource Booster, Resource Drop Chance Booster, a relay blessing and Steel Path all multiply; without them it barely drops."
+      ],
+      "bonuses": [
+        "Check Ophelia's water rooms; Tellurium that falls in is out of the companion vacuum's reach.",
+        "Daily login rewards and low-level Archwing missions (Salacia, Caelus) also pay a few."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "IO, JUPITER",
+      "sub": null,
+      "activity": "Defense, kill Oxium Ospreys",
+      "meta": null,
+      "mode": "Resource Booster",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "3,500",
+          "label": "Oxium",
+          "note": null,
+          "alt": "or Cetus and Fortuna low-tier bounties, 100-200 a stage",
+          "done": false
+        },
+        { "qty": "6,000", "label": "Salvage", "note": null, "alt": null, "done": false }
+      ],
+      "conditions": [
+        "An Osprey that self-destructs drops nothing; kill it at range, not in melee.",
+        "Drop-chance boosters do nothing for Oxium; a Resource Booster doubles it."
+      ],
+      "bonuses": ["Nekros' Desecrate or Khora's Strangledome add rolls."],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Grattler, then level it",
+      "meta": "65,000 cr, 1 day",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Grattler",
+          "note": "5 Tellurium, 6,000 Salvage, 3,500 Oxium, 1 Forma",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "level to 30",
+          "note": "Steel Path Salacia, or on a Necramech",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Grattler (Atmosphere) is the same weapon on the ground; there is no second copy to level."
+      ],
+      "bonuses": [
+        "With a Gravimag installed, the Archgun Deployer on a Spy mission puts every weapon share of affinity on it."
+      ],
+      "disclosures": []
+    }
+  ]
+}

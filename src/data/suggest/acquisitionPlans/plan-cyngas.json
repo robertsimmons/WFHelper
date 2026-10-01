@@ -1,0 +1,209 @@
+{
+  "name": "Cyngas",
+  "kind": "archgun",
+  "effort": 4,
+  "tradeable": "parts only",
+  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "badges": [
+    { "text": "three syndicates, Rank 3", "tone": "warn" },
+    { "text": "Perrin opposes Hexis", "tone": "warn" }
+  ],
+  "prices": [
+    { "label": "blueprint", "amount": "35,000 cr", "money": false },
+    { "label": "standing", "amount": "65,000", "money": false },
+    { "label": "build", "amount": "45,000 cr", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "currency",
+      "place": "ANY HIGH-AFFINITY MISSION",
+      "sub": null,
+      "activity": "pledge Arbiters of Hexis or Cephalon Suda; the ally climbs at +50%",
+      "meta": "both to Rank 3",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "Arbiters of Hexis standing", "amount": "91,000" },
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "71,000",
+          "label": "Arbiters of Hexis rank-ups to Lawful",
+          "note": "Rank 3; caps 5,000 / 22,000 / 44,000",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "71,000",
+          "label": "Cephalon Suda rank-ups to Intelligent",
+          "note": "Rank 3; fed at +50% by Hexis",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Do this leg first. Pledging Perrin first lets Hexis drag Perrin down while you work.",
+        "Each rank-up spends banked standing down to zero and asks for a sacrifice shown in the syndicate screen.",
+        "The daily cap is 16,000 plus 500 per Mastery Rank, resetting 00:00 UTC.",
+        "If you were pledged to Red Veil or New Loka, check Hexis and Suda standing first; going negative means climbing out before you can buy."
+      ],
+      "bonuses": [
+        "Syndicate alert rewards and Medallions ignore the daily cap; turn them in after capping, and each alert also feeds the ally at +50%.",
+        "Elite Sanctuary Onslaught or Duviri Circuit to the stage-4 bonus usually maxes the day."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "ANY RELAY",
+      "sub": "Arbiters of Hexis and Cephalon Suda",
+      "activity": "buy two parts",
+      "meta": "Rank 3",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [
+        { "currency": "Arbiters of Hexis standing", "amount": "20,000" },
+        { "currency": "Cephalon Suda standing", "amount": "20,000" }
+      ],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Cyngas Barrel",
+          "note": "Arbiters of Hexis, Lawful, 20,000 standing",
+          "alt": "tradeable",
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Cyngas Receiver",
+          "note": "Cephalon Suda, Intelligent, 20,000 standing",
+          "alt": "tradeable",
+          "done": false
+        }
+      ],
+      "conditions": ["Buy both parts as soon as you reach Rank 3, before you switch your pledge."],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "currency",
+      "place": "ANY HIGH-AFFINITY MISSION",
+      "sub": null,
+      "activity": "pledge The Perrin Sequence",
+      "meta": "Rank 3",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "The Perrin Sequence standing", "amount": "96,000" },
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "71,000",
+          "label": "rank-ups to Executive",
+          "note": "Rank 3",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Perrin drains Hexis at half rate and Steel Meridian at full rate; you already own the Barrel, so a Hexis demotion costs nothing here."
+      ],
+      "bonuses": [
+        "Save Universal Syndicate Medallions (1,000 standing each) for this leg; nothing feeds Perrin as an ally."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "ANY RELAY",
+      "sub": "The Perrin Sequence",
+      "activity": "buy the Stock",
+      "meta": "Rank 3",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "The Perrin Sequence standing", "amount": "25,000" }],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Cyngas Stock",
+          "note": "Executive, 25,000 standing",
+          "alt": "tradeable",
+          "done": false
+        }
+      ],
+      "conditions": ["The Stock costs 25,000, not 20,000 like the other two parts."],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "OPHELIA, URANUS",
+      "sub": null,
+      "activity": "Survival, Grineer Sealab",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "2",
+          "label": "Tellurium",
+          "note": "Cyngas build",
+          "alt": "Desdemona Sealab Sabotage caches, Archwing, Empyrean or Kuva Fortress",
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": ["Steel Path roughly quadruples Ophelia yield, per a wiki anecdote."],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "MARKET + FOUNDRY",
+      "sub": null,
+      "activity": "buy the blueprint, then build Cyngas",
+      "meta": "12h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Cyngas Blueprint",
+          "note": "Market, 35,000 cr",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Cyngas",
+          "note": "Barrel, Receiver, Stock, 2 Tellurium, 45,000 cr",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["The Market blueprint and the finished weapon are untradeable."],
+      "bonuses": [],
+      "disclosures": [
+        {
+          "title": "levelling it",
+          "body": "Mastery needs no Gravimag. Archwing missions are the sure way to level it; on the ground it needs a Gravimag (which needs an Orokin Catalyst first), and Atmosphere affinity is shared only while it is in the main hand. Cyngas (Atmosphere) is the same weapon, not a separate Mastery item."
+        }
+      ]
+    }
+  ]
+}

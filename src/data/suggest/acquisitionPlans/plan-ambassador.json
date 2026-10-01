@@ -1,0 +1,174 @@
+{
+  "name": "Ambassador",
+  "kind": "primary",
+  "effort": 5,
+  "tradeable": true,
+  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "badges": [
+    { "text": "Rotation C, 1 in 6", "tone": "warn" },
+    { "text": "Veil Proxima", "tone": "info" }
+  ],
+  "prices": [{ "label": "parts + build", "amount": "65,000 cr", "money": false }],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "VEIL PROXIMA",
+      "sub": null,
+      "activity": "unlock Lu-yan",
+      "meta": "only the host needs it in a premade squad",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Chimera Prologue", "note": null, "alt": null, "done": false },
+        {
+          "qty": null,
+          "label": "every node in the other Proximas",
+          "note": "including the Erato Orphix mission before Lu-yan",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Intrinsics rank 7 in any category",
+          "note": "solo or solo-queue only",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Players look up the 16.67% and then find Lu-yan still locked behind the Erato Orphix mission."
+      ],
+      "bonuses": ["Joining a squad whose host has Lu-yan skips the whole gate."],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "LU-YAN, VEIL PROXIMA",
+      "sub": null,
+      "activity": "Corpus Railjack Survival",
+      "meta": "C every 20 min; ~6 C rotations on average",
+      "mode": "solo or friends, 40-60 min runs",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Ambassador Blueprint",
+          "note": "16.67%, Rotation C",
+          "alt": "or Luckless Expanse, Venus Proxima, 12.5%",
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Barrel Blueprint",
+          "note": "5% per Aurax Atloc Raknoid",
+          "alt": "or Narmer Raknoids",
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Receiver Blueprint",
+          "note": "5% per Aurax Atloc Raknoid",
+          "alt": "or Narmer Raknoids",
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Stock Blueprint",
+          "note": "5% per Aurax Atloc Raknoid",
+          "alt": "or Narmer Raknoids",
+          "done": false
+        },
+        {
+          "qty": "5",
+          "label": "Isos",
+          "note": "Barrel; drops in the Proximas",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "5",
+          "label": "Gallos Rods",
+          "note": "Receiver; drops in the Proximas",
+          "alt": null,
+          "done": false
+        },
+        { "qty": "200", "label": "Cubic Diodes", "note": "Barrel", "alt": null, "done": false },
+        { "qty": "200", "label": "Carbides", "note": "Receiver", "alt": null, "done": false }
+      ],
+      "conditions": [
+        "The 16.67% is per C rotation, not per Raknoid kill.",
+        "Public Railjack squads leave together, often before minute 20; play solo or with friends and recruit crew through Command.",
+        "Once aboard you can't return to the Railjack until the ground objective is done and you reach extraction."
+      ],
+      "bonuses": [
+        "The parts come far faster than the blueprint; expect spare sets.",
+        "Necramechs are allowed inside Corpus Proxima ships and make the Survival trivial; many call it the best place to level one.",
+        "Stacks with Railjack Intrinsics, Endo or Steel Essence farming on the same node.",
+        "A Void Storm on the node adds a relic reward on top of the rotation table."
+      ],
+      "disclosures": [
+        {
+          "title": "the other nodes",
+          "body": "Luckless Expanse (Venus Proxima) is 12.5% per C and the fallback while Lu-yan is locked. Enkidu Ice Drifts (Neptune Proxima) and Fenton's Field (Pluto Proxima) are 8.33% each; skip them. Bad luck of 5+ hours is commonly reported on any node."
+        },
+        {
+          "title": "component blueprints hide",
+          "body": "Barrel, Receiver and Stock blueprints sit under blueprints/misc in the Foundry, not the weapon tab, so people miss that they already have them."
+        }
+      ]
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build the three parts, then Ambassador",
+      "meta": "15,000 cr and 12h each; 20,000 cr and 24h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Barrel",
+          "note": "200 Cubic Diodes, 5 Isos, 1 Morphics, 500 Oxium",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Receiver",
+          "note": "200 Carbides, 5 Gallos Rods, 1 Morphics, 600 Cryotic",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Stock",
+          "note": "5 Morphics, 200 Ferrite, 1,100 Alloy Plate, 10 Hexenon",
+          "alt": null,
+          "done": false
+        },
+        { "qty": null, "label": "Ambassador", "note": null, "alt": null, "done": false }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": [
+        {
+          "title": "buying instead",
+          "body": "Parts and blueprint are tradeable. The main blueprint sells for about as much as a full set, since the parts are worth next to nothing."
+        }
+      ]
+    }
+  ]
+}

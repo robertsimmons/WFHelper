@@ -1,0 +1,204 @@
+{
+  "name": "Hystrix",
+  "kind": "secondary",
+  "effort": 2,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 4, "unit": "purchases" },
+  "badges": [
+    { "text": "eats Bolto + Viper", "tone": "warn" },
+    { "text": "Market", "tone": "info" }
+  ],
+  "prices": [
+    { "label": "purchases", "amount": "70,000 cr", "money": false },
+    { "label": "builds", "amount": "60,000 cr", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "vendor",
+      "place": "MARKET",
+      "sub": null,
+      "activity": "buy the Lato and three blueprints",
+      "meta": "70,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Lato",
+          "note": "built weapon, 10,000 cr",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Bolto Blueprint",
+          "note": "15,000 cr",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Viper Blueprint",
+          "note": "20,000 cr",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Hystrix Blueprint",
+          "note": "25,000 cr",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Level the Lato to 30 before it goes into the Bolto; each weapon in the chain is its own Mastery item."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "MAGNACIDIUM, DEIMOS",
+      "sub": null,
+      "activity": "Assassination, Lephantis",
+      "meta": "one run covers both",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "2",
+          "label": "Neurodes",
+          "note": "Bolto",
+          "alt": "Mariana, Earth",
+          "done": false
+        },
+        {
+          "qty": "2",
+          "label": "Orokin Cell",
+          "note": "Bolto",
+          "alt": "Titan, Saturn or Gabii, Ceres",
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "TESHUB, VOID",
+      "sub": "or Hepit, Void",
+      "activity": "Exterminate, break every container and locker",
+      "meta": null,
+      "mode": "Nekros or another loot frame",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "15",
+          "label": "Control Module",
+          "note": "Hystrix",
+          "alt": "Europa and Neptune, 1-4 a stack",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Players who got almost none weren't opening containers or using loot abilities."
+      ],
+      "bonuses": ["One container-sweeping Void run usually leaves you well over 15."],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "HELLAS, MARS",
+      "sub": null,
+      "activity": "Exterminate",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": "1", "label": "Morphics", "note": "Viper", "alt": "War, Mars", "done": false }
+      ],
+      "conditions": [],
+      "bonuses": [
+        "Ferrite, Polymer Bundle, Nano Spores and Salvage are common; top them up along the way."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Bolto and Viper together, level both to 30",
+      "meta": "12h each",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Bolto",
+          "note": "20,000 cr, 1 Lato, 800 Polymer Bundle, 2 Orokin Cell, 2 Neurodes",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Viper",
+          "note": "20,000 cr, 300 Salvage, 600 Ferrite, 900 Nano Spores, 1 Morphics",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "then",
+      "meta": "12h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Hystrix",
+          "note": "20,000 cr, 1 Bolto, 1 Viper, 9,750 Ferrite, 15 Control Module",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The game won't consume your last secondaries. If Bolto and Viper are the only ones you own, or one is equipped, buy and equip another Lato first."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

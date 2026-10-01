@@ -1,0 +1,158 @@
+{
+  "name": "Hydroid",
+  "kind": "warframe",
+  "effort": 4,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "badges": [
+    { "text": "MR 5 node", "tone": "warn" },
+    { "text": "Circuit week 6", "tone": "circuit" }
+  ],
+  "prices": [{ "label": "blueprint", "amount": "50,000 cr", "money": false }],
+  "groups": [
+    {
+      "type": "vendor",
+      "place": "MARKET",
+      "sub": null,
+      "activity": "buy blueprint",
+      "meta": "50,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Hydroid Blueprint",
+          "note": null,
+          "alt": "Circuit tier 10",
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "boss",
+      "place": "ORO, EARTH",
+      "sub": null,
+      "activity": "Assassination, Councilor Vay Hek",
+      "meta": "a few minutes a run with the skip",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Neuroptics Blueprint",
+          "note": "38.72%",
+          "alt": null,
+          "done": false
+        },
+        { "qty": null, "label": "Chassis Blueprint", "note": "38.72%", "alt": null, "done": false },
+        {
+          "qty": null,
+          "label": "Systems Blueprint",
+          "note": "22.56%",
+          "alt": "Circuit tier 8",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Oro requires Mastery Rank 5.",
+        "Skip Phase 1: ignore his drone's three ambushes and run into the next tile, which must be his next spawn point, not a dead end. In a squad only one player needs to reach it.",
+        "Systems droughts of 25+ runs happen at 22.56%; that is bad luck, not a bug."
+      ],
+      "bonuses": ["The Terra Frame phase is fully vulnerable; just dump damage."],
+      "disclosures": [
+        {
+          "title": "the drone phases",
+          "body": "His head and backpack weak spots only open during the 10-second Propaganda Broadcast, and he goes invulnerable again after losing 35% health. Splash weapons (Tonkor, Sonicor, Ignis, Kuva Ogris with Nightwatch Napalm) hit the weak spots consistently. Molecular Prime, Rhino Stomp, Avalanche or Zenurik's Temporal Drag slow him enough to aim. The minimap briefly shows the correct exit right before he spawns."
+        },
+        {
+          "title": "other sources",
+          "body": "The Vay Hek Frequency Triangulator pays the same parts at the same rates on Rotation C. After The Duviri Paradox, Hydroid is week 6 of the Normal Circuit with Mirage and Limbo: Neuroptics tier 2, Chassis 5, Systems 8, main 10. Mixing sources works, e.g. Vay Hek for two parts and the Circuit for Systems."
+        }
+      ]
+    },
+    {
+      "type": "farm",
+      "place": "THE VOID",
+      "sub": "Ani Survival or Ukko Capture",
+      "activity": "mine Argon Pegmatite deposits",
+      "meta": "~2 deposits a map, 1-2 each",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "4",
+          "label": "Argon Crystal",
+          "note": "2 Neuroptics, 2 Chassis",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "At each 00:00 GMT reset, crystals older than that day are halved. Farm them right before building Neuroptics and Chassis."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build components, then Hydroid",
+      "meta": "12h each, then 3 days",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Neuroptics",
+          "note": "15,000 cr, 150 Alloy Plate, 1 Control Module, 150 Polymer Bundle, 2 Argon Crystal",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Chassis",
+          "note": "15,000 cr, 2 Argon Crystal, 1,000 Polymer Bundle, 300 Rubedo, 1,200 Nano Spores",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Systems",
+          "note": "15,000 cr, 1 Orokin Cell, 4 Gallium, 500 Polymer Bundle, 220 Alloy Plate",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Hydroid",
+          "note": "25,000 cr, the three parts, 1 Orokin Cell",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Needs a free Warframe slot before the Foundry will let you claim it"],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

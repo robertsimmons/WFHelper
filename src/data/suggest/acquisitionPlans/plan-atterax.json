@@ -1,0 +1,134 @@
+{
+  "name": "Atterax",
+  "kind": "melee",
+  "effort": 2,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 1, "unit": "blueprint" },
+  "badges": [{ "text": "2 Argon Crystal", "tone": "warn" }],
+  "prices": [
+    { "label": "blueprint", "amount": "20,000 cr", "money": false },
+    { "label": "build", "amount": "20,000 cr", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "vendor",
+      "place": "MARKET",
+      "sub": null,
+      "activity": "buy blueprint",
+      "meta": "20,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Atterax Blueprint", "note": null, "alt": null, "done": false }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "STAR CHART",
+      "sub": null,
+      "activity": "common resources",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "1,500",
+          "label": "Salvage",
+          "note": "Mars, Jupiter, Sedna",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "800",
+          "label": "Polymer Bundle",
+          "note": "Mercury, Venus, Uranus",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "HEPIT, VOID",
+      "sub": null,
+      "activity": "Capture, then sweep the map",
+      "meta": "1-4 Argon per few-minute run",
+      "mode": "Xaku or Limbo with max Ability Range",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "void",
+      "rows": [
+        {
+          "qty": "2",
+          "label": "Argon Crystal",
+          "note": "Argon Pegmatite deposits, containers, enemies",
+          "alt": "or Teshub Exterminate, or Mot Survival",
+          "done": false
+        },
+        {
+          "qty": "200",
+          "label": "Rubedo",
+          "note": "drops in the Void too",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Argon decays: at each 00:00 UTC, crystals held over a full day are halved. Farm it last and start the build the same day.",
+        "Argon is not refunded if you cancel the Foundry build."
+      ],
+      "bonuses": [
+        "Xaku's The Vast Untime or Limbo's Cataclysm breaks containers through walls.",
+        "Loot radar shows containers, and dropped Argon is auto-waypointed.",
+        "Crack a relic on a Void-tileset fissure so the run isn't wasted."
+      ],
+      "disclosures": [
+        {
+          "title": "if a run goes dry",
+          "body": "Long Survivals can stall: one player logged 1 crystal in 30 minutes on a node that gave 24 in 10 another day. Reset into a fresh Capture instead. Corrupted Vor on Mot drops an Argon Crystal or an Orokin Cell 50/50, not a guaranteed 2 Argon."
+        }
+      ]
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Atterax",
+      "meta": "20,000 cr, 12h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Atterax",
+          "note": "1,500 Salvage, 800 Polymer Bundle, 200 Rubedo, 2 Argon Crystal",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

@@ -1,0 +1,277 @@
+{
+  "name": "Purgator 1",
+  "kind": "primary",
+  "effort": 5,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 4, "unit": "blueprints" },
+  "badges": [
+    { "text": "Hex Rank 5", "tone": "warn" },
+    { "text": "MR 14", "tone": "info" }
+  ],
+  "prices": [
+    { "label": "blueprints", "amount": "30,000 standing", "money": false },
+    { "label": "builds", "amount": "80,000 cr", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "THE LOTUS EATERS, THEN THE HEX",
+      "sub": null,
+      "activity": "The Hex quest chain",
+      "meta": "unlocks Höllvania and The Hex",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "The New War, then The Lotus Eaters",
+          "note": null,
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "The Duviri Paradox",
+          "note": "also required",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "The Hex",
+          "note": "opens the Central Mall bounties and the syndicate",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "currency",
+      "place": "HÖLLVANIA CENTRAL MALL",
+      "sub": null,
+      "activity": "run all six Hex bounties daily; bank Hex Treasures",
+      "meta": "~10-11 capped days at MR 14",
+      "mode": "Steel Path bounties",
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "The Hex standing", "amount": "270,000" },
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "5,000",
+          "label": "Rank 1",
+          "note": "15 Efervon Sample, 15 Pitchweave Fragment, 10,000 cr",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "22,000",
+          "label": "Rank 2",
+          "note": "5 Experimental Arc-Relay, 12 Entrati Obols, 25 Pitchweave Fragment, 25,000 cr",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "44,000",
+          "label": "Rank 3",
+          "note": "one each of the six 750-standing treasures, 50,000 cr",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "70,000",
+          "label": "Rank 4",
+          "note": "25 Techrot Chitin, 25 Necracoil, 40 Efervon Sample, 100,000 cr; Liked with all six + The Hex Finale",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "99,000",
+          "label": "Rank 5 Pizza Party",
+          "note": "5 Techrot Motherboard, the six treasures again, 200,000 cr",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The daily cap is 16,000 plus 500 per Mastery Rank, 23,000 at MR 14.",
+        "Liked chemistry only unlocks at Rank 3. Push KIM chats, gifts and one daily bounty with each member early so Rank 4 isn't waiting on it.",
+        "Rank 3 and Rank 5 each eat one of every 750-point treasure; On-lyne CDs are the one people run short on."
+      ],
+      "bonuses": [
+        "One Steel Path bounty with each Hex member covers the daily chemistry for all six and about 31,500 standing, enough to cap.",
+        "Big Bytes Pizza pays 2,500 and Argon Burger Meal 1,500 at Leticia; cash them in on days you can't play, even from the mobile app.",
+        "Parallax air support pings treasures; Loot Radar, Orokin Eye or a big-range Xaku or Limbo sweep a tile fast.",
+        "Temporal Archimedea pays 15,000 for all three missions once you reach Rank 5."
+      ],
+      "disclosures": [
+        {
+          "title": "soft-locked bounties",
+          "body": "Some objectives, such as vehicle-destroy counts or tank kills without RPGs, can soft-lock a solo player. Abort and reroll instead of fighting them."
+        }
+      ]
+    },
+    {
+      "type": "vendor",
+      "place": "MINERVA, HÖLLVANIA CENTRAL MALL",
+      "sub": null,
+      "activity": "buy Purgator 1 blueprints",
+      "meta": "Rank 5 required",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "The Hex standing", "amount": "30,000" }],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Purgator 1 Blueprint",
+          "note": "15,000 standing, MR 14",
+          "alt": "take it as the free Rank 5 vendor item",
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Barrel Blueprint",
+          "note": "5,000 standing",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Receiver Blueprint",
+          "note": "5,000 standing",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Stock Blueprint",
+          "note": "5,000 standing",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Minerva appears at Rank 4 but won't sell until Rank 5.",
+        "Don't buy the parts before MR 14: the main blueprint is MR-locked and one player was stuck holding all three parts."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "HÖLLVANIA",
+      "sub": null,
+      "activity": "enemies, containers and the Techrot underground",
+      "meta": "shared with the squad",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "190",
+          "label": "Höllvanian Pitchweave Fragment",
+          "note": "40 rank-ups, 150 Barrel",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "105",
+          "label": "Efervon Sample",
+          "note": "55 rank-ups, 50 Stock",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "15",
+          "label": "Experimental Arc-Relay",
+          "note": "5 Rank 2, 10 Receiver",
+          "alt": null,
+          "done": false
+        },
+        { "qty": "25", "label": "Techrot Chitin", "note": "Rank 4", "alt": null, "done": false },
+        { "qty": "5", "label": "Techrot Motherboard", "note": "Rank 5", "alt": null, "done": false }
+      ],
+      "conditions": [],
+      "bonuses": [
+        "These keep dropping while you run the standing bounties, so you'll have plenty by Rank 5."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "CAMBION DRIFT, DEIMOS",
+      "sub": null,
+      "activity": "any Deimos mission",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "cambion-drift",
+      "rows": [{ "qty": "25", "label": "Necracoil", "note": "Rank 4", "alt": null, "done": false }],
+      "conditions": ["A player who skipped Deimos has a small side farm here."],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build components, then Purgator 1",
+      "meta": "12h each, 20,000 cr each",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Barrel",
+          "note": "150 Pitchweave Fragment, 300 Alloy Plate, 180 Polymer Bundle, 6 Gallium",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Receiver",
+          "note": "10 Experimental Arc-Relay, 750 Salvage, 450 Circuits, 260 Rubedo",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Stock",
+          "note": "50 Efervon Sample, 350 Ferrite, 200 Plastids, 4 Morphics",
+          "alt": null,
+          "done": false
+        },
+        { "qty": null, "label": "Purgator 1", "note": "20,000 cr, 12h", "alt": null, "done": false }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": [
+        {
+          "title": "levelling it",
+          "body": "Mod it like a precision rifle: Primary Acuity or Semi-Rifle Cannonade and crit, no multishot or elementals, and aim for weak points. Only direct projectile kills spawn a damaging gas cloud. Max ammo is 20 and pickups give 2; it only takes Sniper Ammo Mutation."
+        }
+      ]
+    }
+  ]
+}

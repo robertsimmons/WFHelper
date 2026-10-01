@@ -56,6 +56,6 @@ describe("validatePlan", () => {
       badge: { text: "Circuit in 3w", tone: "circuit" },
     });
     expect(planRating("hound")).toMatchObject({ effort: 8 });
-    expect(planRating("Excalibur")).toEqual({ effort: null, badge: null });
+    expect(planRating("Not A Real Item")).toEqual({ effort: null, badge: null });
   });
 });

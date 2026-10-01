@@ -1,0 +1,140 @@
+{
+  "name": "Spectra Vandal",
+  "kind": "secondary",
+  "effort": 7,
+  "tradeable": true,
+  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "badges": [
+    { "text": "Veil Proxima gate", "tone": "warn" },
+    { "text": "derelict cache, 6.5-8.7%", "tone": "warn" }
+  ],
+  "prices": [{ "label": "build", "amount": "25,000 cr", "money": false }],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "VEIL PROXIMA",
+      "sub": null,
+      "activity": "unlock Veil Proxima",
+      "meta": "only the mission host needs it",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Chimera Prologue", "note": "quest", "alt": null, "done": false },
+        {
+          "qty": null,
+          "label": "Every other Proxima cleared",
+          "note": null,
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "One Intrinsic at rank 7",
+          "note": "Piloting 5 also marks the derelict with a waypoint",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "A pre-made squad can bring someone under the gate along, but a solo player has to meet it."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "NSU GRID, VEIL PROXIMA",
+      "sub": "Abandoned Derelict",
+      "activity": "Skirmish; board the derelict and hack its terminal",
+      "meta": "one cache roll per mission, paid at mission end",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Spectra Vandal Blueprint",
+          "note": "8.70%",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Spectra Vandal Barrel",
+          "note": "6.52%",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Spectra Vandal Chassis",
+          "note": "6.52%",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Spectra Vandal Handle",
+          "note": "6.52%",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Only the Grineer Veil nodes drop it: Nsu Grid, Flexa, H-2 Cloud and R-9 Cloud. Corpus Veil nodes pay Carmine Penta instead.",
+        "No tower, or a tower with no terminal, pays nothing: abort and relaunch.",
+        "An active Sentient Anomaly on the node blocks the derelict; pick another Grineer Veil node while it sits on yours."
+      ],
+      "bonuses": [
+        "The same cache rolls the Ignis Wraith Blueprint at 8.70%.",
+        "You keep the cache reward if you abort after the bonus rewards appear.",
+        "Nsu Grid pays well in Endo and credits even without a Spectra drop."
+      ],
+      "disclosures": [
+        {
+          "title": "fishing for the derelict",
+          "body": "Nsu Grid and H-2 Cloud appear to spawn it every time unless the Anomaly is present. Ignore advice naming Ruse War Field or Gian Point; Ruse War Field is gone. Budget roughly 30 paid-out caches for a full set, with a long tail; one player spread 10-12 tries a day and traded duplicates for the missing piece."
+        },
+        {
+          "title": "cutting mission time",
+          "body": "Aim for 6-10 minutes, not 25. Seeker Volley clears fighters, missiles or Shatter Burst drop Skold crewship shields, and a Tycho Forward Artillery shot at a still-glowing engine kills the ship outright. Solo: pilot as Hildryn (shields pay for Railjack abilities), then hand the helm to a Pilot-5 crew gunner from the Tactical menu while you do away objectives, and swap it back after. Harrow's Thurible keeps battle avionics topped up."
+        }
+      ]
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Spectra Vandal",
+      "meta": "12h, MR 10",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Credits", "note": "25,000", "alt": null, "done": false },
+        { "qty": null, "label": "Spectra Vandal Barrel", "note": null, "alt": null, "done": false },
+        {
+          "qty": null,
+          "label": "Spectra Vandal Chassis",
+          "note": null,
+          "alt": null,
+          "done": false
+        },
+        { "qty": null, "label": "Spectra Vandal Handle", "note": null, "alt": null, "done": false }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

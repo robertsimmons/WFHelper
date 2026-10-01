@@ -1,0 +1,118 @@
+{
+  "name": "Vaykor Hek",
+  "kind": "primary",
+  "effort": 4,
+  "tradeable": "unranked, no Forma/Catalyst",
+  "progress": { "have": 0, "need": 1, "unit": "purchase" },
+  "badges": [
+    { "text": "General rank gate", "tone": "warn" },
+    { "text": "MR 12", "tone": "info" }
+  ],
+  "prices": [
+    { "label": "standing", "amount": "365,000", "money": false },
+    { "label": "credits", "amount": "940,000 cr", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "currency",
+      "place": "ELITE SANCTUARY ONSLAUGHT",
+      "sub": "or Duviri Circuit, stage 4+",
+      "activity": "pledge Steel Meridian, earn standing from mission affinity and Syndicate Medallions",
+      "meta": "365,000 standing total to General plus the shotgun",
+      "mode": "leave around round 8 for one clean daily cap",
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "Steel Meridian standing", "amount": "365,000" },
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "1,000",
+          "label": "Salvage",
+          "note": "Rank 0 Initiation sacrifice",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "2",
+          "label": "Morphics",
+          "note": "Rank 1 Brave sacrifice",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "1",
+          "label": "Forma",
+          "note": "Rank 2 Valiant sacrifice",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "1",
+          "label": "Orokin Catalyst",
+          "note": "Rank 3 Defender sacrifice",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "5",
+          "label": "Aya",
+          "note": "2 at Rank 4 Protector, 3 at Rank 5 General",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Daily standing cap is 16,000 plus 500 per Mastery Rank, shared across every faction syndicate.",
+        "Pledging Steel Meridian costs The Perrin Sequence 100% and New Loka 50% of every gain; dropping below a rank threshold de-ranks you.",
+        "Rank-ups also cost 940,000 credits in total. Rank up as soon as you can afford it; standing past a rank's maximum is wasted."
+      ],
+      "bonuses": [
+        "The three daily Steel Meridian Syndicate Alerts and their Insignias (8 per alert, roughly 10,000 standing) ignore the daily cap. Cap on affinity first, then turn the Insignias in.",
+        "An Affinity Booster roughly doubles pledge standing.",
+        "Steel Meridian feeds Red Veil at +50% and leaves Suda and Arbiters of Hexis untouched."
+      ],
+      "disclosures": [
+        {
+          "title": "why 365,000",
+          "body": "240,000 standing carries the five rank-ups to General (5,000 / 22,000 / 44,000 / 70,000 / 99,000). The 125,000-standing purchase is then farmed on top; General's bar holds 132,000, enough to bank it."
+        }
+      ]
+    },
+    {
+      "type": "vendor",
+      "place": "STEEL MERIDIAN OFFERINGS, RELAY",
+      "sub": null,
+      "activity": "buy the shotgun",
+      "meta": "125,000 standing",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Steel Meridian standing", "amount": "125,000" }],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Vaykor Hek",
+          "note": "arrives built, no Foundry step",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The free item you pick at General can never be a Syndicate weapon; the Hek is always a separate 125,000-standing purchase.",
+        "Mastery Rank 12 is required both to buy it and to receive it in a trade."
+      ],
+      "bonuses": [
+        "Vaykor Marelok and Vaykor Sydon sell from the same General rank if you want all the Steel Meridian Mastery."
+      ],
+      "disclosures": [
+        {
+          "title": "skip Scattered Justice",
+          "body": "The Hek augment Steel Meridian sells doesn't work on the Vaykor Hek: it already has Justice built in, and a weapon can't carry two syndicate effects."
+        }
+      ]
+    }
+  ]
+}

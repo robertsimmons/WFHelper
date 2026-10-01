@@ -1,0 +1,213 @@
+{
+  "name": "Basmu",
+  "kind": "primary",
+  "effort": 4,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 1, "unit": "blueprint" },
+  "badges": [
+    { "text": "Nights of Naberus only", "tone": "warn" },
+    { "text": "Railjack resources", "tone": "info" }
+  ],
+  "prices": [
+    { "label": "blueprint", "amount": "125 Mother Tokens", "money": false },
+    { "label": "build", "amount": "25,000 cr", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "HEART OF DEIMOS",
+      "sub": null,
+      "activity": "finish the quest",
+      "meta": "unlocks Mother's bounties",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Heart of Deimos",
+          "note": "Mother gives bounties in the Necralisk and out in the Cambion Drift",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Building needs Railjack access; without your own Railjack (Rising Tide), crew on someone else's, where pickups go to the whole squad."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "currency",
+      "place": "CAMBION DRIFT, DEIMOS",
+      "sub": null,
+      "activity": "Mother's Tier 5 bounty, rerolled to Brute Force, solo",
+      "meta": "one or two runs",
+      "mode": "solo",
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "Mother Token", "amount": "125" },
+      "spends": [],
+      "map": "cambion-drift",
+      "rows": [
+        {
+          "qty": "125",
+          "label": "Mother Token",
+          "note": "a T5 pays a bit over 100",
+          "alt": "Grandmother's Mend the Family trade, or tokens found in the Drift",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Do the bonus objective on every stage; clearing all of them adds an end roll."
+      ],
+      "bonuses": [
+        "Tokens never expire, so bank them any time of year and show up to Naberus ready.",
+        "Mother bounties also drop Aya.",
+        "Objectives scale with squad size but rewards don't, so solo is faster if you can handle it."
+      ],
+      "disclosures": [
+        {
+          "title": "the endless bounty",
+          "body": "Mother's bounty marked (Endless) runs 3 stages per cycle with rising level and payout; one player got 250-275 tokens over 4 cycles. It suits a newer player, but standard T5 Brute Force pays better per hour and a crash loses the streak. Skip Steel Path bounties unless geared; some Deimos Infested have harsh damage attenuation above level 60."
+        }
+      ]
+    },
+    {
+      "type": "vendor",
+      "place": "DAUGHTER, NECRALISK",
+      "sub": "Naberus Treats offerings",
+      "activity": "buy the blueprint",
+      "meta": "early October into early November",
+      "mode": null,
+      "live": { "state": "waiting", "text": "sold only during Nights of Naberus" },
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Mother Token", "amount": "125" }],
+      "map": "necralisk",
+      "rows": [
+        {
+          "qty": null,
+          "label": "Basmu Blueprint",
+          "note": "125 Mother Tokens",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Nobody else sells it; out of season the only source is trading with another player, and missing the window means waiting a year."
+      ],
+      "bonuses": [],
+      "disclosures": [
+        {
+          "title": "ended sources",
+          "body": "Scarlet Spear, Orphix Venom, Gargoyle's Cry, Belly of the Beast, Eight Claw and Blood of Perita all sold it once and have ended."
+        }
+      ]
+    },
+    {
+      "type": "farm",
+      "place": "VENUS PROXIMA",
+      "sub": null,
+      "activity": "Railjack; sweep asteroids, red barrels and wreckage after the objective",
+      "meta": "a few runs",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "450",
+          "label": "Isos",
+          "note": "5-10 per pickup",
+          "alt": "Neptune or Pluto Proxima",
+          "done": false
+        },
+        {
+          "qty": "1,500",
+          "label": "Titanium",
+          "note": "common in every Proxima",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "1",
+          "label": "Nullstones",
+          "note": "1-2 per pickup, rare",
+          "alt": "any Proxima, or a completion bonus",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Isos only drops in Corpus Proxima (Venus, Neptune, Pluto); Earth Proxima is Grineer and has none."
+      ],
+      "bonuses": [
+        "Shatterburst breaks asteroids and scrap in a wide area.",
+        "A resource booster helps; defense and survival Proxima nodes are good resource farms."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "SEIMENI, CERES",
+      "sub": null,
+      "activity": "Grineer Shipyard Eximus units",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "800",
+          "label": "Carbides",
+          "note": "Basmu build",
+          "alt": "Earth, Saturn or Veil Proxima",
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Basmu",
+      "meta": "1 day",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Basmu",
+          "note": "25,000 cr, 1,500 Titanium, 800 Carbides, 450 Isos, 1 Nullstone",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The wiki's rendered recipe box has shown inflated counts; the blueprint data above is the real recipe."
+      ],
+      "bonuses": [],
+      "disclosures": [
+        {
+          "title": "Dreadful Killshot",
+          "body": "The Basmu augment most players build around was a Nightwave item and isn't needed for Mastery."
+        }
+      ]
+    }
+  ]
+}

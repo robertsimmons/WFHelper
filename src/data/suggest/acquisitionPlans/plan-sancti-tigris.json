@@ -1,0 +1,117 @@
+{
+  "name": "Sancti Tigris",
+  "kind": "primary",
+  "effort": 4,
+  "tradeable": "unranked, no Forma/Catalyst",
+  "progress": { "have": 0, "need": 1, "unit": "purchase" },
+  "badges": [
+    { "text": "Flawless rank gate", "tone": "warn" },
+    { "text": "MR 12", "tone": "info" }
+  ],
+  "prices": [
+    { "label": "standing", "amount": "365,000", "money": false },
+    { "label": "credits", "amount": "940,000 cr", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "currency",
+      "place": "ELITE SANCTUARY ONSLAUGHT",
+      "sub": "or Duviri Circuit",
+      "activity": "pledge New Loka, earn standing from mission affinity and Syndicate Medallions",
+      "meta": "365,000 standing total to Flawless plus the shotgun",
+      "mode": "leave around round 8 for one clean daily cap",
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "New Loka standing", "amount": "365,000" },
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "1,000",
+          "label": "Ferrite",
+          "note": "Rank 0 Initiation sacrifice",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "2",
+          "label": "Fieldron Sample",
+          "note": "Rank 1 Humane sacrifice; Corpus drop on Venus, Jupiter, Europa, Neptune, Pluto",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "1",
+          "label": "Forma",
+          "note": "Rank 2 Bountiful sacrifice",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "1",
+          "label": "Orokin Reactor",
+          "note": "Rank 3 Benevolent sacrifice; Nightwave sells one for 75 Cred",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "5",
+          "label": "Aya",
+          "note": "2 at Rank 4 Pure, 3 at Rank 5 Flawless",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Daily standing cap is 16,000 plus 500 per Mastery Rank, shared across every faction syndicate.",
+        "Pledging New Loka costs Cephalon Suda 100% and Steel Meridian 50% of every gain; Suda and Hexis pledges wreck this farm in turn.",
+        "Rank-ups also cost 940,000 credits in total. Rank up as soon as you can afford it; standing past a rank's maximum is wasted."
+      ],
+      "bonuses": [
+        "The three daily New Loka Syndicate Alerts (from Rank 1) and their Seeds (8 per alert, roughly 10,000 standing) ignore the daily cap. Never extract without the 5,000 Flawless Seed; run them solo.",
+        "New Loka feeds The Perrin Sequence at +50%.",
+        "Red Veil doesn't touch New Loka or Perrin, so it's the clean next pledge once you're done here."
+      ],
+      "disclosures": [
+        {
+          "title": "why 365,000",
+          "body": "240,000 standing carries the five rank-ups to Flawless (5,000 / 22,000 / 44,000 / 70,000 / 99,000). The 125,000-standing purchase is then farmed on top; Flawless's bar holds 132,000, enough to bank it."
+        },
+        {
+          "title": "alerts that don't pay",
+          "body": "Interception and most Defense tiles have no Seeds; a Corpus Defense tile has only the 5,000 one, while the Hydron tile has all 8."
+        }
+      ]
+    },
+    {
+      "type": "vendor",
+      "place": "NEW LOKA OFFERINGS, RELAY",
+      "sub": null,
+      "activity": "buy the shotgun",
+      "meta": "125,000 standing",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "New Loka standing", "amount": "125,000" }],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Sancti Tigris",
+          "note": "arrives built, no Foundry step",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The free item you pick at Flawless can never be a Syndicate weapon; the Tigris is always a separate 125,000-standing purchase.",
+        "Mastery Rank 12 is required both to buy it and to receive it in a trade."
+      ],
+      "bonuses": [
+        "Buy everything else you want from New Loka before switching pledges; standing drains once you help Suda."
+      ],
+      "disclosures": []
+    }
+  ]
+}

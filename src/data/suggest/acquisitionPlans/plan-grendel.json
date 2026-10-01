@@ -1,0 +1,296 @@
+{
+  "name": "Grendel",
+  "kind": "warframe",
+  "effort": 6,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "badges": [
+    { "text": "no-mods missions", "tone": "warn" },
+    { "text": "75 Vitus Essence", "tone": "warn" }
+  ],
+  "prices": [{ "label": "blueprint", "amount": "35,000 cr", "money": false }],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "ERIS JUNCTION",
+      "sub": null,
+      "activity": "unlock Arbitrations",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Arbitrations",
+          "note": "Eris Junction on Pluto",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "MARKET",
+      "sub": null,
+      "activity": "buy blueprint",
+      "meta": "35,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Grendel Blueprint", "note": null, "alt": null, "done": false }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "currency",
+      "place": "ARBITRATIONS",
+      "sub": null,
+      "activity": "farm Vitus Essence",
+      "meta": "1 guaranteed per rotation",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "Vitus Essence", "amount": "75" },
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "75",
+          "label": "Vitus Essence",
+          "note": "25 per Locator",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [
+        "Rotations have a 7-10% chance of a 3-Vitus bundle, and Shield Drones drop 1 at 6%; Resource Boosters and retriever mods multiply the drone drops."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "ARBITRATION HONORS",
+      "sub": "Arbiters of Hexis room, any Relay",
+      "activity": "buy the three Locators",
+      "meta": "25 Vitus each",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Vitus Essence", "amount": "75" }],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Neuroptics Locator",
+          "note": "25 Vitus",
+          "alt": null,
+          "done": false
+        },
+        { "qty": null, "label": "Chassis Locator", "note": "25 Vitus", "alt": null, "done": false },
+        { "qty": null, "label": "Systems Locator", "note": "25 Vitus", "alt": null, "done": false }
+      ],
+      "conditions": [
+        "A Locator stays in your inventory until its mission completes, so a failed run costs time, not Vitus."
+      ],
+      "bonuses": [
+        "Only the host needs a Locator and every squad member gets the part; a squad splitting the three cuts the cost to 25 Vitus each."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "PLAINS OF EIDOLON, EARTH",
+      "sub": null,
+      "activity": "hunt birds, spear-fish, cut at Fisher Hai-Luk",
+      "meta": "Chassis and Systems materials",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "plains-of-eidolon",
+      "rows": [
+        { "qty": "25", "label": "Condroc Wing", "note": "1 per kill", "alt": null, "done": false },
+        {
+          "qty": "30",
+          "label": "Kuaka Spinal Claw",
+          "note": "1 per kill",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "20",
+          "label": "Tralok Eyes",
+          "note": "ocean, daytime, no bait; 1 per fish",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "15",
+          "label": "Murkray Liver",
+          "note": "ocean hotspot with Murkray Bait; Lanzo spear",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "125",
+          "label": "Fish Meat",
+          "note": "Grendel Systems",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "100",
+          "label": "Fish Oil",
+          "note": "Murkray pays 7-9 each",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Murkray Bait is bought from Fisher Hai-Luk with Ostron standing."],
+      "bonuses": [
+        "15 Murkray plus the Traloks cover most of the Fish Oil and Meat.",
+        "The valley to the right of Cetus nearly always has Condrocs; kill, leave, come back."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "EUROPA",
+      "sub": "Archaeo-freighter, Icefields of Riddah, Mines of Karishh",
+      "activity": "the three Locator missions, no mods",
+      "meta": "~1h for all three with the right frame",
+      "mode": "solo or premade; no public matchmaking",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Neuroptics Blueprint",
+          "note": "Archaeo-freighter, 20-min Survival",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Chassis Blueprint",
+          "note": "Icefields of Riddah, 6-wave Defense",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Systems Blueprint",
+          "note": "Mines of Karishh, Excavation to 800 Cryotic",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Augment mods still work. Mods, Arcanes, Archon Shards, Invigorations, Incarnon forms, bonus elements, Gear and Operator are disabled.",
+        "Check the Steel Path toggle before launching; it gives level-125 enemies with no mods.",
+        "Companions lose their mods too."
+      ],
+      "bonuses": ["Every completion guarantees its part; no RNG."],
+      "disclosures": [
+        {
+          "title": "frames and weapons",
+          "body": "Hildryn with Blazing Pillage is the near-unanimous pick: stand on the excavator and spam Pillage. Octavia is the solo go-to (Mallet reflects at any level). Lavos with Valence Formation plus the Cedo, Wisp, Garuda, Gyre with augments and Nova with Null Star augments also work; Wukong for Defense, Limbo for Excavation. Take battery weapons, innate Toxin to bypass Corpus shields, Cerata, Xoris, Arca Plasmor or Tenet weapons."
+        },
+        {
+          "title": "mission tips",
+          "body": "Survival: break every container and use life support capsules early; running dry near the end is the usual fail, and more players means more spawns. Excavation tracks Cryotic, not excavators, so run one at a time, bank its ~20 Cryotic and call the next. Eximus-heavy late stages (600+ Cryotic, last Defense waves) bring Nullifier stacks."
+        }
+      ]
+    },
+    {
+      "type": "farm",
+      "place": "THE VOID",
+      "sub": null,
+      "activity": "mine Argon Pegmatite",
+      "meta": "pick this up last",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "2",
+          "label": "Argon Crystal",
+          "note": "Grendel Neuroptics",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Argon decays at daily reset; farm it right before building Neuroptics."],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build components, then Grendel",
+      "meta": "12h each, then 3 days",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Neuroptics",
+          "note": "15,000 cr, 2 Argon Crystal, 5 Control Module, 3,500 Ferrite, 3,800 Alloy Plate",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Chassis",
+          "note": "15,000 cr, 25 Condroc Wing, 30 Kuaka Spinal Claw, 20 Tralok Eyes, 15 Murkray Liver",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Systems",
+          "note": "15,000 cr, 1,125 Circuits, 10 Morphics, 125 Fish Meat, 100 Fish Oil",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Grendel",
+          "note": "25,000 cr, the three parts, 3 Orokin Cells",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Needs a free Warframe slot before the Foundry will let you claim it"],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

@@ -1,0 +1,176 @@
+{
+  "name": "Mutalist Cernos",
+  "kind": "primary",
+  "effort": 2,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 1, "unit": "blueprint" },
+  "badges": [
+    { "text": "consumes a Cernos", "tone": "info" },
+    { "text": "MR 7", "tone": "info" }
+  ],
+  "prices": [
+    { "label": "blueprints", "amount": "40,000 cr", "money": false },
+    { "label": "builds", "amount": "30,000 cr", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "vendor",
+      "place": "MARKET",
+      "sub": null,
+      "activity": "buy the Cernos and Mutalist Cernos blueprints",
+      "meta": "20,000 cr each",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Cernos Blueprint",
+          "note": "20,000 credits",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Mutalist Cernos Blueprint",
+          "note": "20,000 credits",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["The recipe eats a built Cernos, so buy both blueprints up front."],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "PISCINAS, SATURN",
+      "sub": null,
+      "activity": "Dark Sector Survival",
+      "meta": "loot frame recommended",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "2,100",
+          "label": "Plastids",
+          "note": "700 for Cernos, 1,400 for Mutalist Cernos",
+          "alt": "Assur or Ophelia, Uranus",
+          "done": false
+        },
+        {
+          "qty": "2,300",
+          "label": "Nano Spores",
+          "note": null,
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Skip Eris for Plastids; it's slow."],
+      "bonuses": [
+        "Nekros Desecrate or Khora Pilfering Strangledome roughly doubles Plastid and Nano Spore drops. With Nekros, use Slash weapons, not Heat, Corrosive or Toxin that melt corpses."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "ASSUR, URANUS",
+      "sub": null,
+      "activity": "Dark Sector Survival",
+      "meta": "rare, 1-2 per drop",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "3",
+          "label": "Gallium",
+          "note": "for the Cernos",
+          "alt": "Mars",
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": ["Uranus drops Plastids too, so this trip can cover the Cernos build on its own."],
+      "disclosures": []
+    },
+    {
+      "type": "fissure",
+      "place": "ANY VOID FISSURE",
+      "sub": "Excavation",
+      "activity": "run Excavation fissures, any planet",
+      "meta": "100 Cryotic per excavator",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "1,200",
+          "label": "Cryotic",
+          "note": "12 excavators, 6 with a Resource Booster",
+          "alt": "plain Excavation on a low node such as Everest (Earth) or Kiliken (Venus)",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "A Resource Drop Chance Booster does nothing for Cryotic; only a Resource Booster doubles it."
+      ],
+      "bonuses": ["Fissure runs crack relics while you farm the Cryotic."],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Cernos, level it to 30, then build Mutalist Cernos",
+      "meta": "12h each",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Cernos",
+          "note": "15,000 cr, 3 Gallium, 700 Plastids, 600 Polymer Bundle, 1,750 Ferrite; MR 6",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "level Cernos to Rank 30",
+          "note": "before feeding it in, or lose that Mastery",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Mutalist Cernos",
+          "note": "15,000 cr, 1 Cernos, 1,400 Plastids, 1,200 Cryotic, 2,300 Nano Spores",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Mutalist Cernos is itself eaten by the Proboscis Cernos recipe; level it to 30 before building that."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

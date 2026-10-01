@@ -1,0 +1,246 @@
+{
+  "name": "Tenet Quanta",
+  "kind": "primary",
+  "effort": 8,
+  "tradeable": "converted Sister only",
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "weapon"
+  },
+  "badges": [
+    {
+      "text": "Sister of Parvos",
+      "tone": "warn"
+    },
+    {
+      "text": "Railjack required",
+      "tone": "warn"
+    }
+  ],
+  "prices": [
+    {
+      "label": "Elemental Vice",
+      "amount": "20 p",
+      "money": false
+    }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "STAR CHART",
+      "sub": null,
+      "activity": "unlock Sisters of Parvos",
+      "meta": "one-time",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Mastery Rank 5",
+          "note": "to create a Sister",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "The War Within",
+          "note": "quest complete",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Call of the Tempestarii",
+          "note": "quest complete",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "The Deadlock Protocol",
+          "note": "for Granum Crowns and the Xoris",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Railjack Intrinsic rank 3",
+          "note": "any one class; Neptune Proxima showdown",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Only one adversary at a time: clear or convert any active Kuva Lich, Sister, or Coda first.",
+        "Ergo Glast never sells the Quanta; his Corrupted Holokey shop only carries Grigori, Livia, Exec, Agendus and Ferrox."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "boss",
+      "place": "HYDRA, PLUTO",
+      "sub": "Capture",
+      "activity": "clear the Nightmare Granum Void; inspect Candidates",
+      "meta": "one Zenith Crown per attempt",
+      "mode": "solo",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [
+        {
+          "currency": "Zenith Granum Crown",
+          "amount": "1"
+        }
+      ],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Tenet Quanta Candidate",
+          "note": "Mercy only when the weapon preview says Quanta",
+          "alt": "buy a converted Tenet Quanta Sister",
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "progenitor of choice",
+          "note": "sets the bonus element and her Ephemera; irrelevant for Mastery",
+          "alt": "Elemental Vice can change the element later at rank 40",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "A Treasurer spawns 2-4 minutes into a non-endless Corpus Ship mission at level 31+ (or Steel Path) and drops a Zenith Crown, the only tier that spawns a Candidate. Kill him before the Sister if both are up.",
+        "Rank 1 of the Void is all the Candidate needs: 25 Errant Specter kills solo, +25 per extra squad member.",
+        "Open the Void far from extraction and walk out slowly afterward; within roughly 150-200 m of extraction the Candidate never spawns.",
+        "If the preview isn't Quanta, let her expire and complete the mission. Aborting does not remove that weapon from the pool; only a completed rejection does.",
+        "Only the last player to damage the Candidate can Mercy her, and only one spawns per Void even in a full squad."
+      ],
+      "bonuses": [
+        "On Hydra every Treasurer drops a Zenith Crown, so waiting for him each run refunds the Crown you spent and one Crown loops indefinitely.",
+        "A thrown and detonated Xoris clears the Void; Uriel, Mesa, Octavia, Revenant, Volt and Protea also work."
+      ],
+      "disclosures": [
+        {
+          "title": "rolling the Quanta is the painful part",
+          "body": "The Sister pool is 11 weapons at equal odds (Arca Plasmor, Cycron, Detron, Diplos, Envoy, Flux Rifle, Glaxion, Plinx, Quanta, Spirex, Tetra), so correct rejections guarantee it inside 11 completed missions. Posts still range from first try to about 45 Crowns, usually from players aborting instead of completing."
+        }
+      ]
+    },
+    {
+      "type": "boss",
+      "place": "SISTER INFLUENCE NODES",
+      "sub": "Venus through Pluto",
+      "activity": "Mercy Hounds, reveal Requiems, test the sequence",
+      "meta": "~180 Murmurs; ~2 missions per planet",
+      "mode": "long missions first, then fast ones",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "3",
+          "label": "revealed Requiems",
+          "note": "Murmurs reveal mods, not order",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "correct Parazon sequence",
+          "note": "opens the Neptune Proxima showdown",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Requiem mods all come from the Requiem Eterna relic (all 8 mods at equal chance), from Kuva Siphon (50%) or Kuva Flood (100%); the retired Requiem I-IV relics are sold by Palladino for 10 Riven Slivers each, 10 weekly per relic.",
+        "Survival, Defense and Excavation on her nodes maximise Hounds (max 3 per mission, about 80 seconds apart); switch to Capture or Exterminate once you only need rage to draw her out.",
+        "Wrong guesses level her up (max 5) and move her to a new planet. Her taxed credits all come back on the kill."
+      ],
+      "bonuses": [
+        "Every stab spawns another Hound, so you gain Murmurs even on a failed sequence."
+      ],
+      "disclosures": [
+        {
+          "title": "Oull-first Parazon",
+          "body": "Slot Oull permanently in position 1 and test each revealed Requiem in position 2. Worst case is 4 attempts without ever learning the third Requiem. Oulls pile up after a couple of Sisters."
+        }
+      ]
+    },
+    {
+      "type": "boss",
+      "place": "NEPTUNE PROXIMA",
+      "sub": "Sister Confrontation",
+      "activity": "Railjack Skirmish; finish the Sister",
+      "meta": "choose Vanquish",
+      "mode": "squad for extra Holokeys",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "1",
+          "label": "Tenet Quanta",
+          "note": "built; Foundry delivery, her Hound fully built too",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Choose Vanquish, never Convert — Convert gives an ally and a tradeable Sister token but no weapon.",
+        "Kill her Hound and both Warframe Specters; she is invulnerable until her backup is dead.",
+        "Bring a Railjack with real shields and hull, or do not host."
+      ],
+      "bonuses": [
+        "A full squad nets up to 4 Corrupted Holokeys for Ergo Glast versus 1 solo.",
+        "Mastery runs to rank 40 through 5 Forma."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "craft",
+      "place": "ORBITER, MODDING",
+      "sub": null,
+      "activity": "optional Valence Fusion toward 60%",
+      "meta": "bank copies first",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "52.8%+ roll",
+          "note": "fuses straight to 60%",
+          "alt": "58%+ already rounds to 60%",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Fusion takes the higher of the two bonuses × 1.1, capped at 60%; the roll is uniform 25-60% since Update 42.0.",
+        "Fuse into the copy you've invested in — the donor's Catalyst, Forma, Exilus adapter and Elemental Vice are all destroyed.",
+        "Elemental Vice needs rank 40 (5 Forma): 50,000 Hex standing at Rank 5, 20 platinum from the Market, or a Temporal Archimedea/Nightwave drop."
+      ],
+      "bonuses": [],
+      "disclosures": [
+        {
+          "title": "a sidegrade to the Vandal",
+          "body": "Quanta fans found it roughly a sidegrade to the Quanta Vandal, with lower status and a weaker Riven disposition, so it is mostly farmed for Mastery or collection. Secure a usable copy before chasing 60%."
+        }
+      ]
+    }
+  ]
+}

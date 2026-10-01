@@ -1,0 +1,125 @@
+{
+  "name": "Frost",
+  "kind": "warframe",
+  "effort": 3,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "badges": [
+    { "text": "Kril freeze mechanic", "tone": "warn" },
+    { "text": "Circuit week 3", "tone": "circuit" }
+  ],
+  "prices": [{ "label": "blueprint", "amount": "25,000 cr", "money": false }],
+  "groups": [
+    {
+      "type": "vendor",
+      "place": "MARKET",
+      "sub": null,
+      "activity": "buy blueprint",
+      "meta": "25,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Frost Blueprint", "note": null, "alt": null, "done": false }
+      ],
+      "conditions": [
+        "Exta only drops the three component blueprints; the main blueprint is a Market purchase."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "boss",
+      "place": "EXTA, CERES",
+      "sub": null,
+      "activity": "Assassination, Captain Vor and Lech Kril",
+      "meta": "~5-10 runs for the set",
+      "mode": "solo recommended",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Neuroptics Blueprint",
+          "note": "38.72%",
+          "alt": null,
+          "done": false
+        },
+        { "qty": null, "label": "Chassis Blueprint", "note": "38.72%", "alt": null, "done": false },
+        { "qty": null, "label": "Systems Blueprint", "note": "22.56%", "alt": null, "done": false }
+      ],
+      "conditions": [
+        "Every clear pays one Frost part, so Systems is the only real grind.",
+        "Kril is immune until his four coolant pipes pop. Shoot the lit pack on his back, then wait for his hammer slam to freeze him and hit him while frozen.",
+        "Leave Cold and Heat at home: Heat thaws him instantly and Cold procs lengthen his immune windows.",
+        "Lech Kril on War, Mars now drops Excalibur, not Frost."
+      ],
+      "bonuses": [
+        "Every run also pays a Miter part or the Twin Gremlins blueprint.",
+        "Farm a second Chassis if you plan to build Chroma; his Chassis needs one."
+      ],
+      "disclosures": [
+        {
+          "title": "when Kril won't freeze",
+          "body": "Stop shooting once a pipe pops. If he has not slammed within a few seconds, change distance: step back if you are on top of him, close in if you are far. If he still loops, walk out of his range and back in to reset his AI. AoE and punch-through weapons (Angstrum, Simulor, Quanta) pop pipes without precise aim, and Rhino Stomp or Valkyr Hysteria slams work up close. Radiation-proccing Vor turns Kril on him and drags Vor into hammer range. Public squads often don't know the mechanic, so solo is usually faster."
+        },
+        {
+          "title": "the Circuit route",
+          "body": "After The Duviri Paradox, Frost rotates into the Normal Circuit in week 3 alongside Ash and Nyx. Tier 10 of the Circuit rewards gives every blueprint, main included."
+        }
+      ]
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build components, then Frost",
+      "meta": "12h each, then 3 days",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Neuroptics",
+          "note": "15,000 cr, 150 Alloy Plate, 1 Neural Sensors, 150 Polymer Bundle, 500 Rubedo",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Chassis",
+          "note": "15,000 cr, 1 Morphics, 1,000 Ferrite, 300 Rubedo",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Systems",
+          "note": "15,000 cr, 1 Control Module, 1 Morphics, 500 Salvage, 500 Plastids",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Frost",
+          "note": "25,000 cr, the three parts, 1 Orokin Cell",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Needs a free Warframe slot before the Foundry will let you claim it"],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

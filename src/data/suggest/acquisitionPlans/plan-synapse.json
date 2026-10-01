@@ -1,0 +1,146 @@
+{
+  "name": "Synapse",
+  "kind": "primary",
+  "effort": 2,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 1, "unit": "blueprint" },
+  "badges": [
+    { "text": "Bio Lab", "tone": "warn" },
+    { "text": "2 Forma in the build", "tone": "info" }
+  ],
+  "prices": [
+    { "label": "blueprint", "amount": "50,000 cr", "money": false },
+    { "label": "build", "amount": "30,000 cr", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "research",
+      "place": "CLAN DOJO, BIO LAB",
+      "sub": null,
+      "activity": "check that Synapse research is complete",
+      "meta": "3 days once Embolist is done",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Embolist",
+          "note": "prerequisite research",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Synapse",
+          "note": "Ghost tier: 5,000 cr, 65 Mutagen Sample, 800 Circuits, 3,000 Nano Spores, 1,200 Polymer Bundle; 3 days",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "A fresh solo clan has to research Embolist before Synapse.",
+        "Research costs scale with clan tier: Ghost x1, Shadow x3, Storm x10, Mountain x30, Moon x100. In an established clan it's usually done already."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "CLAN DOJO, BIO LAB",
+      "sub": null,
+      "activity": "buy the personal blueprint",
+      "meta": "50,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Credits", "amount": "50,000" }],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Synapse Blueprint",
+          "note": "requires completed research",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Coda Synapse is a separate weapon with its own Mastery and does not substitute for this one."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "bounty",
+      "place": "INVASIONS",
+      "sub": "Infested-side rewards",
+      "activity": "queue every invasion that pays Mutagen Mass",
+      "meta": "1-2 Mutagen Mass per completed invasion",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "5",
+          "label": "Mutagen Mass",
+          "note": "finished Mass, no foundry timer",
+          "alt": "Orb Vallis Lvl 30-50 bounty pays 2 per roll when its rotation shows Mutagen Mass",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Invasions pay only 1-2 Mutagen Mass per completion, where Fieldron and Detonite come in 3s."
+      ],
+      "bonuses": [
+        "Keep a Mutagen Mass build running in a free foundry slot while you farm invasions."
+      ],
+      "disclosures": [
+        {
+          "title": "build the Mass yourself",
+          "body": "The Bio Lab Mutagen Mass blueprint is 15,000 cr and single use. Each build takes 15,000 cr, 10 Mutagen Sample, 1 Control Module, 500 Salvage and 250 Plastids and runs 12 hours. Farm Samples on Deimos (Terrorem survival, Hyf defense or the Cambion Drift); they are rare on Eris. Building Mass eats into any Samples your clan still needs for Bio Lab research such as Hema."
+        },
+        {
+          "title": "the Fortuna bounty trick",
+          "body": "The tier 4 bounty's factional reward rotates between Fieldron, Detonite Injector and Mutagen Mass. When Mass is up, take a bounty with a fast first stage, clear stage 1 for the reward, let the rest fail, and restart."
+        },
+        {
+          "title": "fast invasion clears",
+          "body": "Titania with Razorwing Blitz and a Thermal Sunder subsume clears exterminate, capture and assassinate invasions in about a minute. Skip sabotage invasions."
+        }
+      ]
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Synapse",
+      "meta": "24h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Synapse",
+          "note": "30,000 cr, 5 Mutagen Mass, 30,000 Salvage, 3,500 Circuits, 2 Forma",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["The 2 Forma are the real cost for a newer player."],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

@@ -1,0 +1,252 @@
+{
+  "name": "Phaedra",
+  "kind": "archgun",
+  "effort": 3,
+  "tradeable": null,
+  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "badges": [
+    { "text": "3 syndicates to Rank 2", "tone": "warn" },
+    { "text": "Hexis opposes Perrin", "tone": "warn" }
+  ],
+  "prices": [
+    { "label": "blueprint", "amount": "35,000 cr", "money": false },
+    { "label": "rank-ups", "amount": "270,000 cr + 3 Forma", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "vendor",
+      "place": "MARKET",
+      "sub": null,
+      "activity": "buy blueprint",
+      "meta": "35,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Phaedra Blueprint", "note": null, "alt": null, "done": false }
+      ],
+      "conditions": [
+        "The Orbiter's Syndicate console needs MR 3; relay representatives work earlier."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "currency",
+      "place": "RELAY",
+      "sub": "The Perrin Sequence",
+      "activity": "pledge first, rank to 2 (Senior Associate), buy the Receiver",
+      "meta": "~47,000 standing, 90,000 cr, 1 Forma",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "Perrin Sequence standing", "amount": "47,000" },
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Initiation",
+          "note": "10,000 cr, 100 Polymer Bundle",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Rank 1",
+          "note": "5,000 standing, 30,000 cr, 2 Detonite Ampule",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Rank 2, Senior Associate",
+          "note": "22,000 standing, 50,000 cr, 1 Forma",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Phaedra Receiver",
+          "note": "20,000 standing",
+          "alt": "5.64% from Archwing Exterminate on Syrtis, Montes or Caduceus, ~17 runs",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "A rank-up spends all your current standing; save a fresh 20,000 after Rank 2 for the part.",
+        "Your first Perrin pledge drops Steel Meridian 100% and Hexis 50%."
+      ],
+      "bonuses": ["New Loka is Perrin's ally and climbs at +50% while you pledge here."],
+      "disclosures": [
+        {
+          "title": "skip Perrin",
+          "body": "Farm the Receiver in Archwing Exterminate instead and pledge only New Loka and Hexis. They're neutral to each other, so neither drags the other down; the collateral lands on Suda and Red Veil. Parts come finished, so a dropped Receiver is the part itself, not a blueprint."
+        }
+      ]
+    },
+    {
+      "type": "currency",
+      "place": "RELAY",
+      "sub": "New Loka",
+      "activity": "switch pledge, rank to 2 (Bountiful), buy the Stock",
+      "meta": "~47,000 standing, 90,000 cr, 1 Forma",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "New Loka standing", "amount": "47,000" },
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Initiation",
+          "note": "10,000 cr, 1,000 Ferrite",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Rank 1",
+          "note": "5,000 standing, 30,000 cr, 2 Fieldron Sample",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Rank 2, Bountiful",
+          "note": "22,000 standing, 50,000 cr, 1 Forma",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Phaedra Stock",
+          "note": "20,000 standing",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [
+        "Usually most of the way there from the Perrin phase, and Perrin keeps rising for free.",
+        "If your pledge sits at its rank cap, the ally still earns 50% of what you would have, so keep playing while waiting on a sacrifice."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "currency",
+      "place": "RELAY",
+      "sub": "Arbiters of Hexis",
+      "activity": "pledge last, rank to 2 (Authentic), buy the Barrel",
+      "meta": "~47,000 standing, 90,000 cr, 1 Forma",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "Arbiters of Hexis standing", "amount": "47,000" },
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Initiation",
+          "note": "10,000 cr, 500 Alloy Plate",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Rank 1",
+          "note": "5,000 standing, 30,000 cr, 2 Gallium",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Rank 2, Authentic",
+          "note": "22,000 standing, 50,000 cr, 1 Forma",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Phaedra Barrel",
+          "note": "20,000 standing",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Hexis is opposed to Perrin (-50% both ways), so do it after the Receiver is bought; Perrin may derank, which no longer matters.",
+        "Pledging Hexis drops Red Veil 100%. Negative standing sends Eximus Death Squads, an annoyance rather than a threat."
+      ],
+      "bonuses": [],
+      "disclosures": [
+        {
+          "title": "filling the daily cap",
+          "body": "The cap is 16,000 plus 500 per Mastery Rank, and pledged standing is 15% of affinity, so Elite Sanctuary Onslaught (leave after round 8) or the Duviri Circuit fill it fastest. From Rank 1, three daily Syndicate Alerts and their Medallions pay outside the cap; turn Medallions in after capping, and use them to avoid overshooting a rank cap."
+        }
+      ]
+    },
+    {
+      "type": "farm",
+      "place": "OPHELIA, URANUS",
+      "sub": null,
+      "activity": "Grineer Sealab enemies",
+      "meta": "only 2 needed",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "2",
+          "label": "Tellurium",
+          "note": "final build",
+          "alt": "Archwing, Empyrean and Kuva Fortress enemies",
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": ["Archwing Exterminate runs for the Receiver often pick these up on the way."],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Phaedra",
+      "meta": "45,000 cr, 12h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Phaedra",
+          "note": "Barrel, Receiver, Stock, 2 Tellurium, 45,000 cr",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Using it in space needs The Archwing quest; on the ground it needs a Gravimag and the Archgun Deployer."
+      ],
+      "bonuses": [],
+      "disclosures": [
+        {
+          "title": "one Mastery item",
+          "body": "\"Phaedra (Atmosphere)\" on the wiki is the same weapon in ground mode, not a second Mastery item."
+        }
+      ]
+    }
+  ]
+}

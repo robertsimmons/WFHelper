@@ -1,0 +1,154 @@
+{
+  "name": "Lanka",
+  "kind": "primary",
+  "effort": 2,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 1, "unit": "blueprint" },
+  "badges": [
+    { "text": "5 Fieldron, 20 Gallium", "tone": "warn" },
+    { "text": "Energy Lab", "tone": "info" }
+  ],
+  "prices": [
+    { "label": "blueprint", "amount": "15,000 cr", "money": false },
+    { "label": "build", "amount": "30,000 cr", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "DOJO, ENERGY LAB",
+      "sub": null,
+      "activity": "clan research",
+      "meta": "skip if already researched",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Energy Lab: Dera, then Lanka",
+          "note": "3 days for Lanka",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Ghost (x1) tier Lanka research costs 10,000 credits, 10 Fieldron Sample, 500 Ferrite, 250 Plastids and 500 Polymer Bundle; bigger clans pay x3/x10/x30/x100.",
+        "In an established clan this is already done and costs you nothing."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "research",
+      "place": "DOJO, ENERGY LAB",
+      "sub": null,
+      "activity": "buy the blueprint",
+      "meta": "15,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Credits", "amount": "15,000" }],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Lanka Blueprint",
+          "note": "consumed on build",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "STAR CHART",
+      "sub": null,
+      "activity": "Corpus-side Invasions",
+      "meta": "3 Fieldron per Invasion reward",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "5",
+          "label": "Fieldron",
+          "note": "two Invasions cover it",
+          "alt": "or craft from Fieldron Samples, 12h each",
+          "done": false
+        }
+      ],
+      "conditions": ["The Invasion payout lands only when the Invasion itself completes."],
+      "bonuses": [
+        "Fortuna Lvl 30-50 bounties can pay 2 Fieldron as a stage reward, 33% on stage 1."
+      ],
+      "disclosures": [
+        {
+          "title": "crafting Fieldron from scratch",
+          "body": "Each Fieldron is its own single-use Energy Lab blueprint (15,000 credits) plus 15,000 credits, 10 Fieldron Sample, 1 Control Module, 500 Salvage and 250 Plastids, 12h. Five means 50 Samples, 5 Control Modules and 75,000 credits in blueprints alone. Samples take drop-chance boosters; built Fieldron doesn't."
+        }
+      ]
+    },
+    {
+      "type": "farm",
+      "place": "WAHIBA, MARS",
+      "sub": null,
+      "activity": "Dark Sector Survival",
+      "meta": null,
+      "mode": "Khora or Nekros",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "20",
+          "label": "Gallium",
+          "note": "rare, 1-2 per drop",
+          "alt": "or Ophelia, Uranus, or Tyl Regor",
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [
+        "Wahiba also drops Fieldron Samples, so one Survival covers both if you craft the Fieldron."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Lanka",
+      "meta": "30,000 cr, 24h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Lanka",
+          "note": "5 Fieldron, 20 Gallium, 600 Alloy Plate, 1 Forma",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

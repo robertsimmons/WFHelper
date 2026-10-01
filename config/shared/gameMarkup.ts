@@ -4,7 +4,7 @@
 // crossing into the app goes through here.
 
 /** Icon token -> the element key the rest of the app names elements by. */
-export const DAMAGE_TYPE_ELEMENTS: Readonly<Record<string, string>> = {
+const DAMAGE_TYPE_ELEMENTS: Readonly<Record<string, string>> = {
   DT_IMPACT: "impact",
   DT_PUNCTURE: "puncture",
   DT_SLASH: "slash",
@@ -25,7 +25,7 @@ export const DAMAGE_TYPE_ELEMENTS: Readonly<Record<string, string>> = {
 };
 
 /** English element names; a localized surface passes its own via `elementName`. */
-export const ELEMENT_DISPLAY_NAMES: Readonly<Record<string, string>> = {
+const ELEMENT_DISPLAY_NAMES: Readonly<Record<string, string>> = {
   impact: "Impact",
   puncture: "Puncture",
   slash: "Slash",
@@ -79,7 +79,7 @@ export function damageTypeElement(token: string): string | null {
   return DAMAGE_TYPE_ELEMENTS[base] || base.slice(3).toLowerCase() || null;
 }
 
-export interface GameMarkupOptions {
+interface GameMarkupOptions {
   /** Values for |PIPE| placeholders, matched on the placeholder name, any case. */
   values?: Readonly<Record<string, string | number | null | undefined>>;
   /** Stands in for a placeholder with no value; never the raw `|DURATION|`. */

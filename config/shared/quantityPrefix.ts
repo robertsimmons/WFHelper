@@ -33,7 +33,7 @@ export function stripQuantityPrefix(value: string): string {
   return match ? value.slice(match[0].length) : value;
 }
 
-export interface QuantityName {
+interface QuantityName {
   /** Null where the name counts nothing; never 1 standing in for unknown. */
   count: number | null;
   name: string;

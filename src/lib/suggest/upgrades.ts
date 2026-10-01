@@ -29,7 +29,7 @@ export interface PopularUpgrade {
 }
 
 /** Copies held toward max rank, where rank is paid for in copies. */
-export interface UpgradeCopies {
+interface UpgradeCopies {
   held: number;
   max: number;
 }
@@ -68,10 +68,14 @@ export interface UpgradeCatalog {
   popular: readonly PopularUpgrade[];
   holdings(inventory: RawInventoryData | null, itemDb: Record<string, ItemDbEntry>): Holdings;
   owns(name: string, itemDb: Record<string, ItemDbEntry>, holdings: Holdings): boolean;
-  build(entry: PopularUpgrade, itemDb: Record<string, ItemDbEntry>, holdings: Holdings): UpgradeCard;
+  build(
+    entry: PopularUpgrade,
+    itemDb: Record<string, ItemDbEntry>,
+    holdings: Holdings,
+  ): UpgradeCard;
 }
 
-export type UpgradeSource =
+type UpgradeSource =
   | { kind: "drop"; source: DropSource }
   | { kind: "vendor"; vendor: UpgradeVendorSource };
 
@@ -139,7 +143,7 @@ export function createNameIndex(
   };
 }
 
-export function upgradeVendors(entry: ItemDbEntry | undefined): UpgradeVendorSource[] {
+function upgradeVendors(entry: ItemDbEntry | undefined): UpgradeVendorSource[] {
   return (entry?.vendors ?? []).filter((source) => source.name || source.id);
 }
 
@@ -152,7 +156,7 @@ function placed(source: DropSource): boolean {
   return Boolean(source.region || source.spawn) || !["other", "enemy"].includes(source.kind);
 }
 
-export function upgradeSourceScore(source: UpgradeSource): number {
+function upgradeSourceScore(source: UpgradeSource): number {
   if (source.kind === "vendor") return source.vendor.cost ? PRICED_VENDOR : UNPRICED_VENDOR;
   const chance = source.source.best ?? 0;
   return placed(source.source) ? chance : chance / 2;
@@ -160,10 +164,7 @@ export function upgradeSourceScore(source: UpgradeSource): number {
 
 /** Every drop and every shop, surest first; a vendor wins a tie. A drop row
  *  that is really a syndicate purchase shows once, as the purchase. */
-export function upgradeSources(
-  card: UpgradeCard,
-  places: readonly DropSource[],
-): UpgradeSource[] {
+export function upgradeSources(card: UpgradeCard, places: readonly DropSource[]): UpgradeSource[] {
   const covered = new Set(card.vendors.flatMap((vendor) => vendor.covers ?? []));
   const drops = places.filter((source) => !source.raw.every((raw) => covered.has(raw.trim())));
   const all: UpgradeSource[] = [
@@ -223,7 +224,7 @@ const VENDOR_NAMES: Record<UpgradeVendorId, MessageKey> = {
   temporalArchimedea: "nextUp.modVendorTemporalArchimedea",
 };
 
-export function upgradeVendorName(source: UpgradeVendorSource, t: Translator): string {
+function upgradeVendorName(source: UpgradeVendorSource, t: Translator): string {
   if (source.name) return source.name;
   return source.id ? t(VENDOR_NAMES[source.id]) : "";
 }
@@ -272,9 +273,7 @@ export function upgradeVendorRank(source: UpgradeVendorSource, t: Translator): s
 /** The hub, as a drop tile heads with its place; the seller where none is known. */
 export function upgradeVendorHeader(source: UpgradeVendorSource, t: Translator): string {
   const hub = source.hub;
-  return hub
-    ? [hub.region, hub.place].filter(Boolean).join(" · ")
-    : upgradeVendorName(source, t);
+  return hub ? [hub.region, hub.place].filter(Boolean).join(" · ") : upgradeVendorName(source, t);
 }
 
 /** Seller, keeper and rank gate, whatever the header has not already said. */
@@ -284,7 +283,7 @@ export function upgradeVendorDetail(source: UpgradeVendorSource, t: Translator):
   return [name, keeper, upgradeVendorRank(source, t)].filter(Boolean);
 }
 
-export interface UpgradeSourceLine {
+interface UpgradeSourceLine {
   text: string;
   title: string;
   amount: string;

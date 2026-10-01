@@ -6,7 +6,7 @@ import type { ItemDbEntry } from "../../types/inventory.js";
 /** Null means unrated; the caller supplies the rating so the tables stay out of here. */
 type RewardRating = (name: string) => number | null;
 
-export interface DropPoolMember {
+interface DropPoolMember {
   /** Exact drop-table name, count prefix and all, for the itemDb join. */
   item: string;
   /** The same name with any count prefix stripped. */

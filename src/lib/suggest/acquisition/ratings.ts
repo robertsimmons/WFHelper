@@ -18,9 +18,6 @@ export interface Ratings {
 /** Neutral, so an unrated item sorts exactly where a normal one does. */
 export const UNKNOWN_EFFORT = 0.5;
 
-/** The effort vocabulary the settings offer, easiest first. */
-export const EFFORT_WORDS = ["trivial", "easy", "normal", "hard", "brutal"] as const;
-
 const WORD_EFFORT: Record<string, number> = {
   trivial: 0.1,
   easy: 0.25,

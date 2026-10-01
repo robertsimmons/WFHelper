@@ -26,13 +26,11 @@ import {
 import { readStorage, writeStorage } from "../lib/persistence.js";
 import { normalizeName } from "../lib/suggest/rewards.js";
 import { reorderPositions, setLadderPositions } from "../lib/suggest/worthLadder.js";
-import { SUGGESTION_SECTION_IDS } from "../types/suggest.js";
 import type {
   ActivityPref,
   LadderGroup,
   SuggestionOptions,
   SuggestionPreferences,
-  SuggestionSectionId,
   WorthGroup,
 } from "../types/suggest.js";
 
@@ -44,7 +42,6 @@ const ACQ_TIER_KEY = "next-up-acquisition-tiers";
 const OPTIONS_KEY = "next-up-options";
 const NIGHTWAVE_ART_KEY = "next-up-nightwave-art";
 const NIGHTWAVE_STOCK_KEY = "next-up-nightwave-stock";
-const COLLAPSED_KEY = "next-up-collapsed-sections";
 
 const MISSION_VALUES: readonly MissionOverride[] = [...MISSION_OPINIONS, UNRATED];
 
@@ -266,31 +263,6 @@ export const nightwaveArt: Readable<NightwaveArt> = { subscribe: art.subscribe }
 export function setNightwaveArt(next: NightwaveArt): void {
   art.set(next);
   writeStorage(NIGHTWAVE_ART_KEY, next);
-}
-
-function loadCollapsed(): SuggestionSectionId[] {
-  const raw = readStorage(COLLAPSED_KEY);
-  if (!raw) return [];
-  try {
-    const parsed: unknown = JSON.parse(raw);
-    if (!Array.isArray(parsed)) return [];
-    return SUGGESTION_SECTION_IDS.filter((id) => parsed.includes(id));
-  } catch {
-    return [];
-  }
-}
-
-const collapsed = writable<SuggestionSectionId[]>(loadCollapsed());
-
-export const collapsedSections: Readable<SuggestionSectionId[]> = {
-  subscribe: collapsed.subscribe,
-};
-
-export function toggleSectionCollapsed(id: SuggestionSectionId): void {
-  const current = get(collapsed);
-  const next = current.includes(id) ? current.filter((entry) => entry !== id) : [...current, id];
-  collapsed.set(next);
-  writeStorage(COLLAPSED_KEY, JSON.stringify(next));
 }
 
 /** The art goes first so the feed rebuilds behind one store write rather than two. */

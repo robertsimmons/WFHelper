@@ -1,7 +1,6 @@
 import { noteUnplaced } from "./unplaced.js";
 import {
   UNPLACED_WORTH,
-  UNRESOLVED_WORTH,
   ladderWorth,
   normalizeName,
   rewardCount,
@@ -9,7 +8,7 @@ import {
 } from "./worthLadder.js";
 import type { RewardWorth, SuggestionPreferences, WorthGroup } from "../../types/suggest.js";
 
-export { normalizeName, rewardCount, UNPLACED_WORTH, UNRESOLVED_WORTH };
+export { normalizeName };
 
 /** The four-tier scale the tile and settings components draw. Worth is the
  *  ladder's job; this only says which colour a name renders in. */
@@ -83,5 +82,3 @@ export function taskWorth(prefs: SuggestionPreferences, taskId: string): number 
   const names = taskRewardNames(taskId);
   return names.length === 0 ? null : bestWorth(prefs, names);
 }
-
-export { taskRewardNames };

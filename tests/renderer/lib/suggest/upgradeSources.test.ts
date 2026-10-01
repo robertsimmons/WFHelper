@@ -1,6 +1,10 @@
 import { describe, expect, it } from "vitest";
 
-import { dropSourceDetail, dropSourceHeader, dropSourcesFor } from "../../../../src/lib/dropSources.js";
+import {
+  dropSourceDetail,
+  dropSourceHeader,
+  dropSourcesFor,
+} from "../../../../src/lib/dropSources.js";
 import {
   codexEnemyLookup,
   liveEnemySpawn,
@@ -68,7 +72,10 @@ describe("the card's one source", () => {
   });
 
   it("takes a drop surer than one in ten over a priced purchase", () => {
-    const bounty: DropInfo = { location: "Earth/Cetus (Level 5 - 15 Cetus Bounty), Rotation B", chance: 20 };
+    const bounty: DropInfo = {
+      location: "Earth/Cetus (Level 5 - 15 Cetus Bounty), Rotation B",
+      chance: 20,
+    };
     const c = card([bounty], [CAVIA]);
     expect(upgradeSources(c, sources(c))[0].kind).toBe("drop");
   });
@@ -83,7 +90,9 @@ describe("the card's one source", () => {
 });
 
 describe("enemy drops", () => {
-  const night: WorldState = { cetusCycle: { isDay: false, expiry: "2099-01-01T00:00:00Z" } } as WorldState;
+  const night: WorldState = {
+    cetusCycle: { isDay: false, expiry: "2099-01-01T00:00:00Z" },
+  } as WorldState;
 
   it("places an Eidolon on the Plains at night, with the cycle pill when it is night", () => {
     const [source] = withEnemySpawns(
@@ -92,7 +101,10 @@ describe("enemy drops", () => {
     );
     expect(dropSourceHeader(source, t)).toBe("Earth · Plains of Eidolon");
     expect(dropSourceDetail(source, t)).toEqual(["Eidolon Teralyst", "Capture", "Night"]);
-    expect(liveEnemySpawn(source, night)).toEqual({ expiry: "2099-01-01T00:00:00Z", phase: "night" });
+    expect(liveEnemySpawn(source, night)).toEqual({
+      expiry: "2099-01-01T00:00:00Z",
+      phase: "night",
+    });
     expect(liveEnemySpawn(source, { cetusCycle: { isDay: true } } as WorldState)).toBeNull();
   });
 
@@ -109,7 +121,10 @@ describe("enemy drops", () => {
       factionSpawnPlanets: () => [],
       tileSetSpawnPlanets: () => [],
     });
-    const [source] = withEnemySpawns(dropSourcesFor([{ location: "Drekar Butcher", chance: 1 }]), lookup);
+    const [source] = withEnemySpawns(
+      dropSourcesFor([{ location: "Drekar Butcher", chance: 1 }]),
+      lookup,
+    );
     expect(dropSourceHeader(source, t)).toBe("Earth · Grineer Sealab");
     expect(dropSourceDetail(source, t)).toEqual(["Drekar Butcher", "Exterminate"]);
     expect(source.spawn?.more).toEqual(["Uranus"]);

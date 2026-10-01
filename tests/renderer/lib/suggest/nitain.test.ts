@@ -15,7 +15,11 @@ import {
   nitainDb,
   withHounds,
 } from "./nitainFixture.js";
-import type { ItemDbEntry, MasteryData, RawInventoryData } from "../../../../src/types/inventory.js";
+import type {
+  ItemDbEntry,
+  MasteryData,
+  RawInventoryData,
+} from "../../../../src/types/inventory.js";
 
 function need(
   held: RawInventoryData,

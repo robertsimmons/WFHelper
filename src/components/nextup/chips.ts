@@ -41,7 +41,7 @@ export const TILE_MICRO =
 
 /** What a count means. Green is the player's inventory; yellow is a copy the
  *  foundry has made or is making. */
-export const COUNT_TONE = {
+const COUNT_TONE = {
   inventory: TONE.good,
   foundry: TONE.warn,
   built: TONE.warn,
@@ -50,7 +50,7 @@ export const COUNT_TONE = {
 } as const;
 
 /** One count the tile draws, in the order it draws them. */
-export interface TileCount {
+interface TileCount {
   kind: keyof typeof COUNT_LABEL;
   value: number;
   tone: string;
@@ -133,7 +133,7 @@ export function statusDims(status: TileStatus | null | undefined): boolean {
   return status?.kind === "owned" || status?.kind === "mastered";
 }
 
-export interface StatusChip {
+interface StatusChip {
   label: MessageKey;
   count: string | null;
   tone: string;
@@ -231,7 +231,7 @@ export function winChip(status: ChoiceStatus): { label: MessageKey; tone: string
 }
 
 /** A pill reads in minutes, and every card in the feed shares the one interval. */
-export const CARD_CLOCK_MS = 30_000;
+const CARD_CLOCK_MS = 30_000;
 
 export const cardClock = clockStore(CARD_CLOCK_MS);
 

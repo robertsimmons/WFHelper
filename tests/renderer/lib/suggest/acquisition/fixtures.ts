@@ -387,7 +387,7 @@ export const SPINNEREX_HANDLE = "/Lotus/Types/Recipes/Weapons/WeaponParts/Spinne
 export const SPINNEREX_STRING = "/Lotus/Types/Recipes/Weapons/WeaponParts/SpinnerexString";
 
 const DORR = "/Lotus/Types/Recipes/Weapons/WeaponParts/TnDagathBladeWhip";
-export const DORRCLAVE = "/Lotus/Weapons/Tenno/Melee/Swords/TnDagathBladeWhip/TnDagathBladeWhip";
+const DORRCLAVE = "/Lotus/Weapons/Tenno/Melee/Swords/TnDagathBladeWhip/TnDagathBladeWhip";
 export const DORRCLAVE_BP = `${DORR}Blueprint`;
 export const DORRCLAVE_BLADE = `${DORR}Blade`;
 export const DORRCLAVE_HILT = `${DORR}Hilt`;

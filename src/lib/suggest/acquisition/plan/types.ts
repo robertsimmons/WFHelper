@@ -26,7 +26,7 @@ export interface ResolvedFact {
   resolved: boolean;
 }
 
-export interface ResolvedQuantity {
+interface ResolvedQuantity {
   required: number;
   owned: number;
   remaining: number;
@@ -43,7 +43,7 @@ export interface ResolvedSpend {
   value: number;
 }
 
-export interface ResolvedAlt {
+interface ResolvedAlt {
   text: string;
   /** Empty for an alt that costs nothing the ledger tracks. */
   spends: ResolvedSpend[];
@@ -53,7 +53,7 @@ export interface ResolvedAlt {
 
 /** Where a row's done flag came from. An untracked row falls back to the authored
  *  flag until the player ticks it. */
-export type ResolvedDoneSource = "inventory" | "manual" | "authored";
+type ResolvedDoneSource = "inventory" | "manual" | "authored";
 
 export interface ResolvedRow {
   id: string;
@@ -117,7 +117,7 @@ export interface ResolvedLedgerEntry {
   paired: boolean;
 }
 
-export interface ResolvedProgress {
+interface ResolvedProgress {
   have: number;
   need: number;
   unit: string;

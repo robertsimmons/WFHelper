@@ -192,7 +192,14 @@ describe("fallbackPlan routes", () => {
   });
 
   it("walks a nemesis hunt as one group of ordered steps ending in the weapon", () => {
-    const bare = { known: false, main: null, components: [], missing: [], materials: [], credits: 0 };
+    const bare = {
+      known: false,
+      main: null,
+      components: [],
+      missing: [],
+      materials: [],
+      credits: 0,
+    };
     const plan = fallbackPlan(
       source({
         name: "Kuva Bramma",

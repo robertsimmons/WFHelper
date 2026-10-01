@@ -26,8 +26,18 @@ const CAMBION = "Deimos/Cambion Drift (Level 15 - 25 Cambion Drift Bounty), Rota
 
 // Weeping Wounds as @wfcd ships it: three chances, one location, no stages.
 const WEEPING_WOUNDS: DropInfo[] = [
-  { location: "Duviri/Endless: Tier 1 (Normal)", type: "Weeping Wounds", chance: 0.67, rarity: "Legendary" },
-  { location: "Duviri/Endless: Tier 3 (Normal)", type: "Weeping Wounds", chance: 0.67, rarity: "Legendary" },
+  {
+    location: "Duviri/Endless: Tier 1 (Normal)",
+    type: "Weeping Wounds",
+    chance: 0.67,
+    rarity: "Legendary",
+  },
+  {
+    location: "Duviri/Endless: Tier 3 (Normal)",
+    type: "Weeping Wounds",
+    chance: 0.67,
+    rarity: "Legendary",
+  },
   { location: CAMBION, type: "Weeping Wounds", chance: 10.29, rarity: "Uncommon" },
   { location: CAMBION, type: "Weeping Wounds", chance: 14, rarity: "Uncommon" },
   { location: CAMBION, type: "Weeping Wounds", chance: 7.95, rarity: "Rare" },
@@ -123,7 +133,13 @@ describe("mission nodes", () => {
 
   it("carry their planet from a drop-table row", () => {
     const [place] = dropRowPlaces([
-      { item: "Vitus Essence", place: "Pavlov (Lua), Rotation A", rarity: "Rare", chance: 12.2, kind: "mission" },
+      {
+        item: "Vitus Essence",
+        place: "Pavlov (Lua), Rotation A",
+        rarity: "Rare",
+        chance: 12.2,
+        kind: "mission",
+      },
     ]);
     expect(dropSourceHeader(place.source, t)).toBe("Lua · Pavlov");
   });

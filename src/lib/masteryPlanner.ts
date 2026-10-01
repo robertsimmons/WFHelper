@@ -241,7 +241,7 @@ function planPin(
   };
 }
 
-export interface MasteryPlanOptions {
+interface MasteryPlanOptions {
   /** Hand one pool out pin by pin (the default), or measure every pin against
    *  the full inventory on its own. */
   allocate?: boolean;

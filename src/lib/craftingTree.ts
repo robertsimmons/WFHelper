@@ -88,7 +88,7 @@ export function takeCraftingTreeRequest(): boolean {
   return requested;
 }
 
-export interface CraftingTreeOptions {
+interface CraftingTreeOptions {
   /** Open a resource that is cooked from other resources - cut gems, refined
    *  alloys - instead of stopping at it. Off leaves every other caller's tree
    *  exactly as it was. */

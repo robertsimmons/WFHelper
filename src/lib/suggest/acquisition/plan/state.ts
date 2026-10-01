@@ -68,7 +68,7 @@ function buildRelicIndex(
   return held;
 }
 
-export interface PendingBuild {
+interface PendingBuild {
   name: string;
   /** Null when the payload carried no completion date for the build. */
   endsAt: number | null;

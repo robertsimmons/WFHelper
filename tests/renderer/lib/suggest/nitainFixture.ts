@@ -3,9 +3,9 @@ import type { ItemDbEntry, MasteryData } from "../../../../src/types/inventory.j
 export const NITAIN = "/Lotus/Types/Items/MiscItems/Alertium";
 const OROKIN_CELL = "/Lotus/Types/Items/MiscItems/OrokinCell";
 
-export const HYDROID = "/Lotus/Powersuits/Pirate/Pirate";
+const HYDROID = "/Lotus/Powersuits/Pirate/Pirate";
 export const HYDROID_NEURO = "/Lotus/Types/Recipes/WarframeRecipes/PirateHelmetComponent";
-export const HYDROID_PRIME = "/Lotus/Powersuits/Pirate/PiratePrime";
+const HYDROID_PRIME = "/Lotus/Powersuits/Pirate/PiratePrime";
 export const NIDUS = "/Lotus/Powersuits/Infestation/Infestation";
 export const NEKROS = "/Lotus/Powersuits/Necro/Necro";
 
@@ -39,7 +39,9 @@ export function nitainDb(): Record<string, ItemDbEntry> {
     [NITAIN]: { name: "Nitain Extract", category: "Resource" },
     [OROKIN_CELL]: { name: "Orokin Cell", category: "Resource" },
 
-    [HYDROID]: frame("Hydroid", `${bp}/HydroidBlueprint`, [{ uniqueName: HYDROID_NEURO, count: 1 }]),
+    [HYDROID]: frame("Hydroid", `${bp}/HydroidBlueprint`, [
+      { uniqueName: HYDROID_NEURO, count: 1 },
+    ]),
     [`${bp}/HydroidBlueprint`]: { name: "Hydroid Blueprint", buildsProduct: HYDROID },
     [HYDROID_NEURO]: {
       name: "Hydroid Neuroptics",

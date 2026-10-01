@@ -99,7 +99,7 @@ export const FOOT_POSITION = 1;
 
 /** One position per entry the player has dragged, keyed the way the ladder keys
  *  everything else. Only groups the player has reordered appear. */
-export type LadderPositions = Readonly<Record<string, number>>;
+type LadderPositions = Readonly<Record<string, number>>;
 
 const NO_POSITIONS: LadderPositions = {};
 
@@ -246,6 +246,3 @@ export function groupRank(group: WorthGroup): number {
 export function taskRewardNames(taskId: string): readonly string[] {
   return (data.tasks as Record<string, string[] | undefined>)[taskId] ?? [];
 }
-
-/** Standing an act of each tier pays, which is the only reward most acts have. */
-export const NIGHTWAVE_STANDING = data.nightwave.standing;

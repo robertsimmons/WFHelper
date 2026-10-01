@@ -5,7 +5,7 @@ import type { DropSource } from "./dropSources.js";
 import type { EnemyInfo } from "./enemies/enemyInfo.js";
 import type { WorldState } from "../types/world.js";
 
-export interface EnemySpawnPhase {
+interface EnemySpawnPhase {
   cycle: "cetus";
   phase: "night";
 }
@@ -86,7 +86,9 @@ export function codexEnemyLookup(module: EnemyInfoModule): EnemyLookup {
 /** `Eidolon Teralyst (Capture)` is the Teralyst, captured. */
 function splitMode(place: string): { name: string; mode: string | null } {
   const paren = /^(.+?)\s*\(([^()]+)\)$/.exec(place.trim());
-  return paren ? { name: paren[1].trim(), mode: paren[2].trim() } : { name: place.trim(), mode: null };
+  return paren
+    ? { name: paren[1].trim(), mode: paren[2].trim() }
+    : { name: place.trim(), mode: null };
 }
 
 export function isUnplacedDrop(source: DropSource): boolean {
@@ -113,7 +115,7 @@ export function withEnemySpawns(
   });
 }
 
-export interface LiveSpawn {
+interface LiveSpawn {
   expiry: string;
   phase: EnemySpawnPhase["phase"];
 }

@@ -15,10 +15,12 @@ import { DEFAULT_OPTIONS } from "../../../src/lib/suggest/preferences.js";
 import {
   MASTERY_KINDS,
   RELIC_ERAS,
-  SUGGESTION_SECTION_IDS,
+  SUGGESTION_SECTIONS,
   TASK_KINDS,
   type SuggestionOptions,
 } from "../../../src/types/suggest.js";
+
+const SUGGESTION_SECTION_IDS = SUGGESTION_SECTIONS.map((section) => section.id);
 
 // Vitest has no Svelte plugin, so both components are read as source. Resolved
 // from this file rather than the cwd, which in a worktree is the other checkout.

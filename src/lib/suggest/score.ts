@@ -9,7 +9,7 @@ import type {
 const HOUR_MS = 60 * 60_000;
 
 /** The window a caller that cannot name its own is measured against. */
-export const URGENCY_HORIZON_MS = 72 * HOUR_MS;
+const URGENCY_HORIZON_MS = 72 * HOUR_MS;
 
 export function clamp01(value: number): number {
   if (!Number.isFinite(value)) return 0;
@@ -35,10 +35,6 @@ export function urgencyFromExpiry(
 
 /** Stored, and no longer read by the ordering: bands decide the feed. */
 export const DEFAULT_WEIGHTS: ScoreWeights = { value: 1, urgency: 0.8, effort: 0.5 };
-
-/** A weight past this would let one signal swamp the other two. */
-export const WEIGHT_MAX = 2;
-export const WEIGHT_STEP = 0.05;
 
 /** Everything the ordering reads off a suggestion, draft or scored. */
 export interface Orderable {
@@ -93,7 +89,7 @@ const TODAY_MS = 24 * HOUR_MS;
 /** Useful is the floor for anything a closing deadline may promote. */
 const PROMOTABLE = groupRank("useful");
 
-export const ORDER_BANDS = 4;
+const ORDER_BANDS = 4;
 
 /** Worth leads; a deadline only ever decides a cutoff. A low-worth thing about
  *  to expire is still a low-worth thing. */

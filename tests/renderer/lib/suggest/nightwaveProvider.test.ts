@@ -256,9 +256,7 @@ describe("the Nitain need", () => {
   it("halves Nitain's gain once everything that uses it is built", () => {
     const card = draft(context(), "nightwave:nitain");
     expect(card?.signals.gain).toBe(0.5);
-    expect(card?.whySegments?.map((segment) => segment.text)).not.toContain(
-      "nextUp.nitainMastery",
-    );
+    expect(card?.whySegments?.map((segment) => segment.text)).not.toContain("nextUp.nitainMastery");
   });
 
   it("leaves the other staples out of the build check", () => {

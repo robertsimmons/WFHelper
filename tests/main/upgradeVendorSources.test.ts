@@ -68,7 +68,13 @@ describe("standing purchases", () => {
   });
 
   it("prices a row off a closed event's shop, with the credits it also takes", () => {
-    const [offer] = foldSyndicateRows(EXODIA, [{ location: "Operational Supply, Defender" }], [], pep, resolve);
+    const [offer] = foldSyndicateRows(
+      EXODIA,
+      [{ location: "Operational Supply, Defender" }],
+      [],
+      pep,
+      resolve,
+    );
     expect(offer).toMatchObject({
       name: "Operational Supply",
       cost: { amount: 5000, unit: "standing", credits: 1500 },

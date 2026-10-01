@@ -1,6 +1,9 @@
 import { describe, expect, it } from "vitest";
 
-import { pinnedUpgrades, withoutPinnedUpgrades } from "../../../../src/components/nextup/pinnedUpgrades.js";
+import {
+  pinnedUpgrades,
+  withoutPinnedUpgrades,
+} from "../../../../src/components/nextup/pinnedUpgrades.js";
 import {
   ARCANE_CATALOG,
   arcaneCopies,
@@ -163,7 +166,12 @@ describe("mods on the shared card", () => {
 describe("pinned upgrades", () => {
   it("drops a pin once it is owned, per kind", () => {
     const holdings = new Map([["arcane energize", 21]]);
-    const pins = pinnedUpgrades(ARCANE_CATALOG, ["Arcane Energize", "Exodia Might"], itemDb, holdings);
+    const pins = pinnedUpgrades(
+      ARCANE_CATALOG,
+      ["Arcane Energize", "Exodia Might"],
+      itemDb,
+      holdings,
+    );
     expect(pins.map((pin) => [pin.kind, pin.name])).toEqual([["arcanes", "Exodia Might"]]);
   });
 

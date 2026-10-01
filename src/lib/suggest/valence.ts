@@ -137,12 +137,6 @@ export function valenceOffersFor(
   return valenceOffers(doc, taskId, nowMs, ownedValenceByName(inventory, itemDb));
 }
 
-/** The offer worth buying, or null when nothing on the table advances the
- *  player. Picked by gain, never by the highest percentage. */
-export function bestValenceOffer(offers: readonly ValenceOffer[]): ValenceOffer | null {
-  return offers.find((offer) => offer.gain > NO_GAIN) ?? null;
-}
-
 // `SuggestionDetails` carries no field for structured rows, so the provider
 // parks what it computed here and the card reads it back by suggestion id.
 const cardRows = new Map<string, ValenceOffer[]>();

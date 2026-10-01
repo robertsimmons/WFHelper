@@ -80,7 +80,7 @@ export interface UpgradeVendorCost {
   credits?: number;
 }
 
-export interface UpgradeVendorRank {
+interface UpgradeVendorRank {
   level: number | null;
   title: string | null;
 }

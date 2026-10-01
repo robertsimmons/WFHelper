@@ -100,7 +100,7 @@ export function dayOfYearUtc(nowMs: number): number {
 
 /** DE numbers calendar days by day-of-year; a season numbered from its own start
  *  would match nothing, so an empty upcoming list falls back to the whole list. */
-export function upcomingCalendarDays(days: CalendarDay[], nowMs: number): CalendarDay[] {
+function upcomingCalendarDays(days: CalendarDay[], nowMs: number): CalendarDay[] {
   const today = dayOfYearUtc(nowMs);
   const upcoming = days.filter((entry) => entry.day >= today);
   return (upcoming.length > 0 ? upcoming : days).slice(0, CALENDAR_DAY_CAP);

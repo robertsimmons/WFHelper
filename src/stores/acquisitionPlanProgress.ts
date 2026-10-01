@@ -6,13 +6,13 @@ const KEY = "acquisition.planProgress";
 
 /** What the player answered on a plan that inventory cannot answer for them,
  *  by row id. */
-export interface PlanProgressEntry {
+interface PlanProgressEntry {
   manualDone: string[];
   manualCleared: string[];
   altsTaken: string[];
 }
 
-export type PlanProgressTable = Record<string, PlanProgressEntry>;
+type PlanProgressTable = Record<string, PlanProgressEntry>;
 
 const EMPTY: PlanProgressEntry = { manualDone: [], manualCleared: [], altsTaken: [] };
 

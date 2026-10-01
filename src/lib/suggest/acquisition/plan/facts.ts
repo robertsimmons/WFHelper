@@ -172,7 +172,7 @@ function invasionFact(group: PlanGroup, world: WorldState): ResolvedFact | null 
   return live ? { kind: "overlay", text: "Invasion running on this node", resolved: true } : null;
 }
 
-export interface GroupFacts {
+interface GroupFacts {
   facts: ResolvedFact[];
   unresolved: PlanFactKind[];
 }

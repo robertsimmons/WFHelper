@@ -25,7 +25,7 @@ export type AcquisitionInclude =
 
 export type AcquisitionGroupId = "warframes" | "weapons" | "companions" | "archwing" | "other";
 
-export interface AcquisitionIncludeMember {
+interface AcquisitionIncludeMember {
   include: AcquisitionInclude;
   labelKey: MessageKey;
 }

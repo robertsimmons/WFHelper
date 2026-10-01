@@ -85,7 +85,7 @@ function coveredBy(
 }
 
 /** A Market path short of the whole build is a blueprint price, not a route. */
-export function isBlueprintPrice(path: AcquisitionPath): boolean {
+function isBlueprintPrice(path: AcquisitionPath): boolean {
   return path.kind === "market" && !path.complete;
 }
 

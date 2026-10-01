@@ -6,7 +6,7 @@ export interface PlanSteps {
   groups: readonly { rows: readonly { done?: boolean | undefined }[] }[];
 }
 
-export interface StepCount {
+interface StepCount {
   done: number;
   total: number;
 }

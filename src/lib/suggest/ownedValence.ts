@@ -11,8 +11,8 @@ export const VALENCE_UPGRADE_TYPE =
 const ROLL_SCALE = 0x3fffffff;
 
 /** The adversary bonus window: a roll of 0 is 25% and a roll of 1 is 60%. */
-export const VALENCE_FLOOR = 25;
-export const VALENCE_SPAN = 35;
+const VALENCE_FLOOR = 25;
+const VALENCE_SPAN = 35;
 
 /** Weapon slices a nemesis weapon can land in. */
 const WEAPON_SLICES = ["LongGuns", "Pistols", "Melee"] as const;

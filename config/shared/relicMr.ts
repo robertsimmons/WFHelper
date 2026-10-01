@@ -21,13 +21,13 @@ export interface RelicMrItem {
   }[];
 }
 
-export interface RelicMrReward {
+interface RelicMrReward {
   name: string;
   /** Item-database key the caller resolved the reward to. */
   uniqueName?: string | null | undefined;
 }
 
-export interface RelicMrInput {
+interface RelicMrInput {
   /** One relic's rewards, any refinement's table: they differ only in chance. */
   rewards: readonly RelicMrReward[];
   itemDb: Readonly<Record<string, RelicMrItem>>;

@@ -187,10 +187,7 @@ const MODULAR_GEAR: Record<ModularGear, ModularGearFacts> = {
   },
 };
 
-function modularSlots(
-  itemDb: Record<string, ItemDbEntry>,
-  slots: readonly RegExp[],
-): string[][] {
+function modularSlots(itemDb: Record<string, ItemDbEntry>, slots: readonly RegExp[]): string[][] {
   const out: string[][] = slots.map(() => []);
   for (const [uniqueName, entry] of Object.entries(itemDb)) {
     if (!entry?.name || entry.isBuildComponent === true || entry.buildsProduct) continue;
@@ -207,7 +204,7 @@ function modularGearOf(uniqueName: string): ModularGear | null {
   return null;
 }
 
-export interface ModularGearEntry {
+interface ModularGearEntry {
   uniqueName: string;
   name: string;
   entry: ItemDbEntry;

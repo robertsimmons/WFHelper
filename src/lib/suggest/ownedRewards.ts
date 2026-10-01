@@ -45,7 +45,7 @@ export interface OwnedReward {
 /** Mastery gear is paid for once, which is what `masterable` marks; everything
  *  else piles up. An item no export names stacks, since resources are what the
  *  reward tables are thickest with. */
-export function rewardStacks(
+function rewardStacks(
   uniqueName: string | null | undefined,
   itemDb: Record<string, ItemDbEntry>,
 ): boolean {
@@ -87,7 +87,7 @@ function ownedCurrency(name: string, ownership: Map<string, number>): OwnedRewar
 }
 
 /** The settings table is keyed by item name, so the count needs the item first. */
-export function ownedRewardByName(
+function ownedRewardByName(
   name: string,
   itemDb: Record<string, ItemDbEntry>,
   ownership: Map<string, number>,

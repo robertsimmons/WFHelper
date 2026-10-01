@@ -25,7 +25,7 @@ export const PLAN_BADGE_TONES = ["circuit", "info", "warn"] as const;
 
 export type PlanBadgeTone = (typeof PLAN_BADGE_TONES)[number];
 
-export interface PlanProgress {
+interface PlanProgress {
   have: number;
   need: number;
   /** "parts", "Models", "relics": whatever the item is counted in. */
@@ -44,16 +44,16 @@ export interface PlanPrice {
   money: boolean;
 }
 
-export interface PlanLive {
+interface PlanLive {
   state: PlanLiveState;
   text: string;
 }
 
-export interface PlanSkip {
+interface PlanSkip {
   reason: string;
 }
 
-export interface PlanCurrency {
+interface PlanCurrency {
   currency: string;
   /** Written the way it renders: "42", "141,000". */
   amount: string;
@@ -66,9 +66,9 @@ export interface PlanDisclosure {
 
 /** The pity purchase or second source for one row. The object form carries what
  *  taking it costs, which the plain string form leaves unpriced. */
-export type PlanAlt = string | PlanAltOffer;
+type PlanAlt = string | PlanAltOffer;
 
-export interface PlanAltOffer {
+interface PlanAltOffer {
   text: string;
   spends: PlanCurrency[];
 }

@@ -9,9 +9,9 @@ import type { DropRow } from "../../config/shared/dropTypes.js";
 import type { DropInfo } from "../types/inventory.js";
 import type { WorldState } from "../types/world.js";
 
-export type DropSourceKind = "node" | "bounty" | "circuit" | "relic" | "enemy" | "other";
+type DropSourceKind = "node" | "bounty" | "circuit" | "relic" | "enemy" | "other";
 
-export type DropStageLabel =
+type DropStageLabel =
   | { type: "stage"; from: number; to: number }
   | { type: "final" }
   | { type: "firstClear" }
@@ -56,7 +56,7 @@ export interface DropSource {
 
 /** What a drop table hands over: @wfcd `drops` rows, or rows the stage-aware
  *  table has already split out. */
-export interface DropEntry {
+interface DropEntry {
   location: string;
   chance?: number | null | undefined;
   rarity?: string | null | undefined;
@@ -184,7 +184,8 @@ interface Parsed {
 }
 
 const ROTATION_TAIL = /,\s*Rotation\s+([A-Z])\s*$/i;
-const RELIC = /^(Lith|Meso|Neo|Axi|Requiem)\s+(\S+)\s+Relic(?:\s*\((Intact|Exceptional|Flawless|Radiant)\))?$/i;
+const RELIC =
+  /^(Lith|Meso|Neo|Axi|Requiem)\s+(\S+)\s+Relic(?:\s*\((Intact|Exceptional|Flawless|Radiant)\))?$/i;
 const CIRCUIT_TIER = /^(?:Duviri\/)?Endless:\s*Tier\s+(\d+)(?:\s*\(([^)]*)\))?$/i;
 const LEVELED = /Level\s+(\d+)\s*-\s*(\d+)\s*([^)]*)/i;
 const NODE = /^(.+?)\s*\(([^()]+)\)$/;
@@ -316,7 +317,7 @@ const MISSION_ROW = /^(.+?)\s*\(([^()]+)\)(,\s*Rotation\s+\S+)?$/;
 
 /** The flattened drop tables: bounty rows carry their stage in a trailing
  *  bracket, mission rows spell `Node (Planet)`. */
-export function entriesFromDropRows(rows: readonly DropRow[]): DropEntry[] {
+function entriesFromDropRows(rows: readonly DropRow[]): DropEntry[] {
   return rows.map((row) => {
     let location = row.place;
     let stage: string | null = null;
@@ -349,10 +350,7 @@ function joinKey(parsed: Parsed, chance: number | null): string {
 /** @wfcd folds a bounty's stages into one location string; the stage-aware
  *  table gives each chance its stage back. A chance no row answers stays
  *  unlabelled rather than guessed. */
-export function withStages(
-  drops: readonly DropInfo[],
-  rows: readonly DropRow[],
-): DropEntry[] {
+function withStages(drops: readonly DropInfo[], rows: readonly DropRow[]): DropEntry[] {
   const stages = new Map<string, string[]>();
   for (const entry of entriesFromDropRows(rows)) {
     if (!entry.stage) continue;
@@ -365,7 +363,9 @@ export function withStages(
     const chance = chanceOf(drop.chance);
     const own = typeof drop.stage === "string" ? drop.stage : null;
     const queue = own ? null : stages.get(joinKey(parseEntry({ location }), chance));
-    return [{ location, chance, rarity: rarityOf(drop.rarity), stage: own ?? queue?.shift() ?? null }];
+    return [
+      { location, chance, rarity: rarityOf(drop.rarity), stage: own ?? queue?.shift() ?? null },
+    ];
   });
 }
 
@@ -391,7 +391,7 @@ export function bountyDrop(
   };
 }
 
-const REFINEMENT_ORDER: readonly Refinement[] =["intact", "exceptional", "flawless", "radiant"];
+const REFINEMENT_ORDER: readonly Refinement[] = ["intact", "exceptional", "flawless", "radiant"];
 
 function stageOrder(label: DropStageLabel | null): number {
   if (!label) return 10_000;
@@ -550,7 +550,7 @@ export function dropSourcesFor(
   return buildDropSources(withStages(drops ?? [], rows));
 }
 
-export interface DropSourceLive {
+interface DropSourceLive {
   expiry: string;
   /** Set only when the place pays on several rotations, to say which is up. */
   rotation: string | null;
@@ -700,5 +700,3 @@ export function dropSourceLine(
     chance: stage?.chance ?? null,
   };
 }
-
-

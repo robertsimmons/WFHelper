@@ -1,6 +1,6 @@
 import table from "../../../../data/suggest/acquisitionPlans/resources.json";
 
-export interface ResourceSource {
+interface ResourceSource {
   place: string;
   sub: string | null;
   activity: string | null;
@@ -10,7 +10,7 @@ export interface ResourceSource {
   meta: string | null;
 }
 
-export interface ResourceEntry {
+interface ResourceEntry {
   harvestable: boolean;
   map: string | null;
   best: ResourceSource | null;

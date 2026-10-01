@@ -13,7 +13,7 @@ import type { ItemDbEntry, RawInventoryData } from "../../types/inventory.js";
 // A glob rather than an import: the data build owns the file and it may not exist.
 const loaded = import.meta.glob("../../data/suggest/mods.json", { eager: true });
 
-export const POPULAR_MODS: readonly PopularUpgrade[] = parsePopularList(shippedModule(loaded));
+const POPULAR_MODS: readonly PopularUpgrade[] = parsePopularList(shippedModule(loaded));
 
 function isModEntry(entry: ItemDbEntry): boolean {
   return entry.mod !== undefined || entry.category === "Mod" || entry.category === "Mods";

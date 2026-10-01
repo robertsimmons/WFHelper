@@ -24,7 +24,7 @@ export interface SortRow {
 
 /** What finishing the item off the market costs: the parts still missing, or the
  *  whole set where that covers them for less. */
-export function completionPlat(plat: PlatCost | null | undefined): number | null {
+function completionPlat(plat: PlatCost | null | undefined): number | null {
   if (!plat) return null;
   const options = [plat.partsTotal, plat.set].filter((value): value is number => value !== null);
   return options.length > 0 ? Math.min(...options) : null;

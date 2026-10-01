@@ -13,7 +13,9 @@ import {
   pageCountFor,
   pageSizeFor,
 } from "../../../../src/lib/suggest/grid.js";
-import { SUGGESTION_SECTION_IDS } from "../../../../src/types/suggest.js";
+import { SUGGESTION_SECTIONS } from "../../../../src/types/suggest.js";
+
+const SUGGESTION_SECTION_IDS = SUGGESTION_SECTIONS.map((section) => section.id);
 
 const NARROW_SECTIONS = ["relics", "acquisition", "mastery"] as const;
 

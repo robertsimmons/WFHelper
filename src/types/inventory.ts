@@ -42,7 +42,7 @@ export interface DropInfo {
 }
 
 /** What a mod's own card says, off @wfcd/items. */
-export interface ModFacts {
+interface ModFacts {
   polarity: string | null;
   rarity: string | null;
   baseDrain: number | null;
@@ -54,7 +54,7 @@ export interface ModFacts {
 }
 
 /** What an arcane's own card says, off @wfcd/items. */
-export interface ArcaneFacts {
+interface ArcaneFacts {
   /** @wfcd's type with the `Arcane` dropped: `Warframe`, `Operator`, `Zaw`. */
   slot: string | null;
   rarity: string | null;
@@ -76,7 +76,7 @@ export type UpgradeVendorId =
   | "devilsTriad"
   | "temporalArchimedea";
 
-export interface UpgradeVendorCost {
+interface UpgradeVendorCost {
   amount: number;
   unit: "standing" | "cred" | "plat" | "item" | "ducats";
   /** The currency's name where `unit` is `item`. */
@@ -84,12 +84,12 @@ export interface UpgradeVendorCost {
   credits?: number;
 }
 
-export interface UpgradeVendorRank {
+interface UpgradeVendorRank {
   level: number | null;
   title: string | null;
 }
 
-export interface UpgradeVendorHub {
+interface UpgradeVendorHub {
   region: string | null;
   place: string;
 }

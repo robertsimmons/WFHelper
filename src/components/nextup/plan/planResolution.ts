@@ -9,7 +9,7 @@ import {
 } from "../../../lib/suggest/acquisition/plan/index.js";
 
 /** What the player has answered by hand on one item's plan. */
-export interface PlanAnswers {
+interface PlanAnswers {
   manualDone: readonly string[];
   manualCleared: readonly string[];
   altsTaken: readonly string[];

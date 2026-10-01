@@ -1,6 +1,6 @@
 import type { UpgradeVendorCost, UpgradeVendorHub, UpgradeVendorId } from "./types/gameData";
 
-export interface StoredVendorCost {
+interface StoredVendorCost {
   amount: number;
   unit: UpgradeVendorCost["unit"];
   /** The currency's uniqueName where `unit` is `item`. */
@@ -10,7 +10,7 @@ export interface StoredVendorCost {
 
 export type BaroPrices = Record<string, { ducats?: number; credits?: number }>;
 
-export interface StoredVendorRank {
+interface StoredVendorRank {
   level: number | null;
   title?: string;
   titleKey?: string;

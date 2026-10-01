@@ -9,7 +9,6 @@ vi.mock("../../../../src/lib/log.js", () => ({
 }));
 
 import {
-  bestValenceOffer,
   ONE_FUSION_FROM_CAP,
   setValenceRows,
   VALENCE_CAP,
@@ -217,24 +216,6 @@ describe("valenceOffersFor", () => {
   it("leaves every offer unowned when no inventory was read", () => {
     const rolls = valenceOffersFor(REACHABLE, "codaWeapons", NOW, null, itemDb);
     expect(rolls.every((roll) => roll.owned === null)).toBe(true);
-  });
-});
-
-describe("bestValenceOffer", () => {
-  it("picks the most advancing offer, never the highest percentage", () => {
-    const rolls = valenceOffers(REACHABLE, "codaWeapons", NOW, owned(held("Coda Motovore", 57)));
-    expect(bestValenceOffer(rolls)?.name).toBe("Coda Hema");
-  });
-
-  it("is null when the whole table is already finished", () => {
-    const rolls = valenceOffers(
-      REACHABLE,
-      "codaWeapons",
-      NOW,
-      owned(held("Coda Motovore", 60), held("Coda Hema", 58)),
-    );
-    expect(rolls).toHaveLength(2);
-    expect(bestValenceOffer(rolls)).toBeNull();
   });
 });
 

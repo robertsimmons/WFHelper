@@ -3,7 +3,7 @@ import { clockStore } from "../../lib/timers.js";
 import type { ItemDbEntry } from "../../types/inventory.js";
 import type { SuggestionPoolRow, SuggestionReward } from "../../types/suggest.js";
 
-export interface ArtPiece {
+interface ArtPiece {
   name: string;
   imageUrl: string;
   /** Second chance for a mirrored icon that 404s, where the provider held one. */
@@ -81,7 +81,7 @@ function oneEach(members: readonly SuggestionReward[]): SuggestionReward[] {
 }
 
 /** Flip to false and every reward art goes back to one still picture. */
-export const ROTATE_REWARD_ART = true;
+const ROTATE_REWARD_ART = true;
 
 /** One frame per member. Slow enough to read past, long enough to see the set. */
 export const ART_CYCLE_MS = 3000;
@@ -104,7 +104,7 @@ const MAX_CYCLE = 12;
  * whole uncertainty. `cycle` is the case where the family spans several kinds,
  * where no two pictures are the set and the art steps through it instead.
  */
-export type RewardArtMode = "single" | "pair" | "cycle";
+type RewardArtMode = "single" | "pair" | "cycle";
 
 export interface RewardArt {
   mode: RewardArtMode;

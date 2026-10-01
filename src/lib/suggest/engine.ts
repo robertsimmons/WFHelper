@@ -31,7 +31,7 @@ function turnedDown(suggestion: Suggestion): number {
 
 /** Bands first, then worth, then gain, then time left. A section whose controls
  *  choose its order reads `order` instead. Effort orders nothing. */
-export function compareSuggestions(a: Suggestion, b: Suggestion, nowMs: number): number {
+function compareSuggestions(a: Suggestion, b: Suggestion, nowMs: number): number {
   return (
     turnedDown(a) - turnedDown(b) ||
     bandFor(a, nowMs) - bandFor(b, nowMs) ||

@@ -63,8 +63,10 @@ export function modDbChunkUrl(runtime, runtimeUrl) {
 
 function unescapeJsString(text) {
   return text.replace(/\\(u[0-9a-fA-F]{4}|x[0-9a-fA-F]{2}|[\s\S])/g, (_, code) => {
-    if (code[0] === "u" && code.length === 5) return String.fromCharCode(parseInt(code.slice(1), 16));
-    if (code[0] === "x" && code.length === 3) return String.fromCharCode(parseInt(code.slice(1), 16));
+    if (code[0] === "u" && code.length === 5)
+      return String.fromCharCode(parseInt(code.slice(1), 16));
+    if (code[0] === "x" && code.length === 3)
+      return String.fromCharCode(parseInt(code.slice(1), 16));
     return { n: "\n", r: "\r", t: "\t", b: "\b", f: "\f", v: "\v", 0: "\0" }[code] ?? code;
   });
 }

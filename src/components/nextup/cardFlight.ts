@@ -25,7 +25,7 @@ interface Box {
   height: number;
 }
 
-export interface CardFlight {
+interface CardFlight {
   /** Lands the copy on `target`, or fades it out where it stands when what it
    *  moved into is not on screen. */
   settle: (target: Element | null) => void;

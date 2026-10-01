@@ -51,7 +51,6 @@
     send("open-external", wikiUrl ? toOfficialWikiUrl(wikiUrl) : buildWikiUrl(fallbackName));
   }
 
-
   let openUpgrade = $state<PinnedUpgrade | null>(null);
 
   function unpinUpgrade(entry: PinnedUpgrade): void {
@@ -161,12 +160,7 @@
               class="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden
                      rounded-[var(--radius-sm)] bg-bg-deep"
             >
-              <ItemImage
-                src={entry.card.imageUrl}
-                alt={entry.name}
-                cls="max-h-10 max-w-10"
-                eager
-              />
+              <ItemImage src={entry.card.imageUrl} alt={entry.name} cls="max-h-10 max-w-10" eager />
             </span>
             <span class="flex min-w-0 flex-1 flex-col">
               <span class="flex min-w-0 items-center gap-1.5">
@@ -174,9 +168,8 @@
                   >{entry.card.displayName ?? entry.name}</span
                 >
                 {#if copies}
-                  <span
-                    class="shrink-0 tabular-nums {SUB}"
-                    title={$tr("nextUp.arcaneCopiesTitle")}>{copies}</span
+                  <span class="shrink-0 tabular-nums {SUB}" title={$tr("nextUp.arcaneCopiesTitle")}
+                    >{copies}</span
                   >
                 {/if}
               </span>

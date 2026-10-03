@@ -299,6 +299,8 @@ export interface SuggestionDetails {
   upgrade?: UpgradeCard | undefined;
   /** The arcanes band's lead card; it reads its facts from the stores itself. */
   vosfor?: boolean | undefined;
+  /** The relics band's lead card, the same way. */
+  relicPacks?: boolean | undefined;
 }
 
 /** The facts a relic card and its modal both draw, rather than a sentence. */

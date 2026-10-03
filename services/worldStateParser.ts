@@ -1404,7 +1404,12 @@ export function parseRaw(raw: WorldStateRaw | null): Record<string, unknown> | n
           const un = storeItemPath(i.ItemType);
           // Resolved like Baro's: a raw path tail matches no curated name, so
           // anything reading her stock by name places none of it.
-          return { uniqueName: un, item: resolveItemName(un) };
+          return {
+            uniqueName: un,
+            item: resolveItemName(un),
+            aya: i.RegularPrice ?? null,
+            regalAya: i.PrimePrice ?? null,
+          };
         }),
       }
     : null;

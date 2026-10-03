@@ -14,6 +14,7 @@ import { dailiesProvider } from "../lib/suggest/providers/dailies.js";
 import { masteryProvider } from "../lib/suggest/providers/mastery.js";
 import { modsProvider } from "../lib/suggest/providers/mods.js";
 import { nightwaveProvider } from "../lib/suggest/providers/nightwave.js";
+import { relicPacksProvider } from "../lib/suggest/providers/relicPacks.js";
 import { relicsProvider } from "../lib/suggest/providers/relics.js";
 import { vendorsProvider } from "../lib/suggest/providers/vendors.js";
 import { tr } from "../lib/i18n.js";
@@ -38,6 +39,7 @@ const PROVIDERS: readonly SuggestionProvider[] = [
   dailiesProvider,
   vendorsProvider,
   relicsProvider,
+  relicPacksProvider,
   acquisitionProvider,
   modsProvider,
   arcanesProvider,

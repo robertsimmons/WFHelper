@@ -7,7 +7,10 @@ import * as parser from "../../services/worldStateParser";
 interface ParsedWorldState {
   fissures: Array<{ tier: string; missionType: string; isStorm?: boolean }>;
   voidTrader?: { location?: string };
-  vaultTrader?: { location?: string };
+  vaultTrader?: {
+    location?: string;
+    inventory?: Array<{ uniqueName?: string; aya?: number | null; regalAya?: number | null }>;
+  };
   sortie?: { expiry?: string };
 }
 const parseRaw = (raw: Parameters<typeof parser.parseRaw>[0]) =>
@@ -113,6 +116,35 @@ describe("worldStateParser.parseRaw", () => {
     expect(parsed.voidTrader?.location).toBe("Larunda Relay (Earth)");
     expect(parsed.vaultTrader?.location).toBe("Strata Relay (Mars)");
     expect(parsed.sortie?.expiry).toBeTruthy();
+  });
+
+  it("carries Varzia's Aya and Regal Aya prices through", () => {
+    const now = Date.now();
+    const parsed = parseRaw({
+      PrimeVaultTraders: {
+        Activation: dateLong(now - 60_000),
+        Expiry: dateLong(now + 7200_000),
+        Node: "MarsHUB",
+        Manifest: [
+          {
+            ItemType: "/Lotus/StoreItems/Types/Game/Projections/T4VoidProjectionVaultBronze",
+            RegularPrice: 1,
+          },
+          { ItemType: "/Lotus/StoreItems/Types/Items/TestBundle", PrimePrice: 6 },
+          { ItemType: "/Lotus/StoreItems/Types/Items/TestItem" },
+        ],
+      },
+    });
+
+    expect(parsed.vaultTrader?.inventory).toEqual([
+      expect.objectContaining({
+        uniqueName: "/Lotus/Types/Game/Projections/T4VoidProjectionVaultBronze",
+        aya: 1,
+        regalAya: null,
+      }),
+      expect.objectContaining({ aya: null, regalAya: 6 }),
+      expect.objectContaining({ aya: null, regalAya: null }),
+    ]);
   });
 
   it("derives the real mission type for railjack void storms", () => {

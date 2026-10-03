@@ -214,3 +214,14 @@ export function parseLuaLocal(text, name) {
   reader.pos = found.index + found[0].length;
   return readValue(reader);
 }
+
+/** `Module:Void/data` declares `local RelicData = {}` and fills it by a later
+ *  top-level assignment, which is the table worth reading. */
+export function parseLuaGlobal(text, name) {
+  const marker = new RegExp(`^${name}\\s*=\\s*`, "m");
+  const found = marker.exec(text);
+  if (!found) throw new Error(`lua parse: no assignment to ${name}`);
+  const reader = new Reader(text);
+  reader.pos = found.index + found[0].length;
+  return readValue(reader);
+}

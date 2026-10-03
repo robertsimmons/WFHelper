@@ -113,15 +113,19 @@ const loaded = import.meta.glob("../../data/suggest/vosfor.json", { eager: true 
 export const VOSFOR_DATA: VosforData = parseVosforData(shippedModule(loaded));
 
 /** Null while no inventory is read; a read one without the row holds none. */
-export function vosforBalance(inventory: RawInventoryData | null): number | null {
+export function miscItemCount(inventory: RawInventoryData | null, path: string): number | null {
   if (!inventory) return null;
   const rows = (inventory as Record<string, unknown>)["MiscItems"];
   if (!Array.isArray(rows)) return 0;
   let total = 0;
   for (const row of rows as Array<{ ItemType?: string; ItemCount?: unknown }>) {
-    if (row?.ItemType === VOSFOR_PATH && typeof row.ItemCount === "number") total += row.ItemCount;
+    if (row?.ItemType === path && typeof row.ItemCount === "number") total += row.ItemCount;
   }
   return total;
+}
+
+export function vosforBalance(inventory: RawInventoryData | null): number | null {
+  return miscItemCount(inventory, VOSFOR_PATH);
 }
 
 export function packs(balance: number | null): number {

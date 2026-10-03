@@ -327,6 +327,9 @@
         ...(item.claims ? { claims: item.claims } : {}),
         ...(typeof item.reserved === "number" ? { reserved: item.reserved } : {}),
         ...(typeof item.sellable === "number" ? { sellable: item.sellable } : {}),
+        ...(typeof item.parentMastered === "boolean"
+          ? { parentMastered: item.parentMastered }
+          : {}),
       });
   }
 

@@ -201,6 +201,9 @@
               count: typeof item.missingParts === "number" ? item.missingParts : 0,
             })}
       {/if}
+      {#if !canShowRank && item.parentMastered === true}
+        <span class="text-success">{$tr("common.mastered")}</span>
+      {/if}
     </span>
 
     <MarketMetricStrip

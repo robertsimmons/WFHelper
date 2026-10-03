@@ -24,6 +24,9 @@ export interface VaultTraderInventoryItem {
   item?: string;
   ducats?: number;
   credits?: number;
+  /** Varzia's price; null where the manifest row names none. */
+  aya?: number | null;
+  regalAya?: number | null;
   [key: string]: unknown;
 }
 

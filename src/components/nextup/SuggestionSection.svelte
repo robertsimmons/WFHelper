@@ -11,6 +11,7 @@
     pageSizeFor,
   } from "../../lib/suggest/grid.js";
   import { FLIGHT_MS } from "./cardFlight.js";
+  import RelicPacksCard from "./RelicPacksCard.svelte";
   import SectionPager from "./SectionPager.svelte";
   import SuggestionCard from "./SuggestionCard.svelte";
   import UpgradeCard from "./UpgradeCard.svelte";
@@ -154,6 +155,8 @@
         <div animate:flip={{ duration: FLIGHT_MS }}>
           {#if suggestion.details?.vosfor}
             <VosforCard {suggestion} />
+          {:else if suggestion.details?.relicPacks}
+            <RelicPacksCard />
           {:else if suggestion.details?.upgrade}
             <UpgradeCard
               {suggestion}

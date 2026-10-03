@@ -185,7 +185,7 @@ interface VaultTraderRaw {
   Activation: WorldStateDate;
   Expiry: WorldStateDate;
   Node: string;
-  Manifest?: { ItemType: string }[];
+  Manifest?: { ItemType: string; PrimePrice?: number; RegularPrice?: number }[];
 }
 
 interface SortieVariantRaw {

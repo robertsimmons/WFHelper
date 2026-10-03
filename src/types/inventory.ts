@@ -269,6 +269,7 @@ export interface ParsedItem {
   sellable?: number;
   reserved?: number;
   claims?: RecipeClaim[];
+  parentMastered?: boolean;
   completeSets?: number | boolean | null;
   /** Incomplete-set progress: distinct part types still to farm, and owned/total. */
   missingParts?: number | null;

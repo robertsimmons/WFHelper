@@ -98,6 +98,8 @@ interface CraftingTreeOptions {
    *  built part: the alias that merges those two piles answers "in any form",
    *  which is the conflation that made items read ready to build. */
   splitPartBlueprints?: boolean;
+  /** Builds of the root item; every count below scales with it. */
+  count?: number;
 }
 
 interface BuildContext {
@@ -134,7 +136,7 @@ export function buildCraftingTree(
       splitPartBlueprints: options.splitPartBlueprints === true,
     },
     uniqueName,
-    1,
+    Math.max(1, options.count ?? 1),
     item.recipe,
     0,
     findUsedFor(uniqueName, itemDb),

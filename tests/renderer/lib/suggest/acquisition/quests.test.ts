@@ -59,7 +59,8 @@ describe("a finished quest as a route", () => {
   });
 
   it("falls to Simaris standing for a quest blueprint already spent", () => {
-    const owned = inventory({ misc: { [YARELI_NEURO]: 1 } });
+    // An owned Yareli owes only its subsume, so the plan is one build.
+    const owned = inventory({ suits: [YARELI], misc: { [YARELI_NEURO]: 1 } });
     const done = resolve("Yareli", withQuests(owned, [YARELI_QUEST]));
     expect(done.parts.missing.map((row) => row.name)).toEqual(["Yareli Blueprint"]);
     const headline = headlinePath(done.paths);

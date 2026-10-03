@@ -8,6 +8,7 @@ import {
   buildOwnership,
   buildPartPlans,
   fittedModularParts,
+  foundryBuilds,
   listArchwings,
   listBeasts,
   listFrames,
@@ -43,6 +44,8 @@ const EMPTY_PLAN: PartPlan = {
   missing: [],
   materials: [],
   credits: 0,
+  copies: 1,
+  foundry: false,
   buildable: false,
 };
 
@@ -56,6 +59,13 @@ function frameNeeds(owned: boolean, subsumable: boolean, subsumed: boolean): Nee
   if (!owned) needs.push("mastery");
   if (subsumable && !subsumed) needs.push("subsume");
   return needs;
+}
+
+/** Mastery keeps one copy and the Helminth eats another, so a frame owing both
+ *  is two builds. A build already in the foundry has claimed one of them. */
+function copiesToBuild(needs: readonly NeedReason[], inFoundry: number): number {
+  const wanted = (needs.includes("mastery") ? 1 : 0) + (needs.includes("subsume") ? 1 : 0);
+  return Math.max(0, wanted - inFoundry);
 }
 
 /** A Prime whose base the player already runs is an upgrade, not just mastery,
@@ -96,11 +106,13 @@ interface Wanted {
   extraSources: CuratedSource[];
   /** False when there is nothing to build: the gear is already in hand. */
   build: boolean;
+  copies: number | null;
 }
 
 export function resolveAcquisition(ctx: AcquisitionContext): AcquisitionTarget[] {
   const itemDb = ctx.itemDb || {};
   const ownership = buildOwnership(ctx.inventory, itemDb);
+  const building = foundryBuilds(ctx.inventory, itemDb);
   const subsumedFamilies = buildSubsumedFamilySet(ctx.inventory, itemDb);
   const weaponCurated = createCurated(ctx.curatedWeapons);
   const lookup = mergeCurated(weaponCurated, curated);
@@ -144,6 +156,7 @@ export function resolveAcquisition(ctx: AcquisitionContext): AcquisitionTarget[]
         incarnon: null,
         extraSources: [],
         build: true,
+        copies: subsumable ? copiesToBuild(needs, building.get(frame.uniqueName) ?? 0) : null,
       });
     }
   }
@@ -167,6 +180,7 @@ export function resolveAcquisition(ctx: AcquisitionContext): AcquisitionTarget[]
         incarnon: null,
         extraSources: [],
         build: true,
+        copies: null,
       });
     }
   }
@@ -189,6 +203,7 @@ export function resolveAcquisition(ctx: AcquisitionContext): AcquisitionTarget[]
         extraSources: [],
         // Each head part carries its own recipe; the type itself has none.
         build: false,
+        copies: null,
       });
     }
   }
@@ -229,6 +244,7 @@ export function resolveAcquisition(ctx: AcquisitionContext): AcquisitionTarget[]
         incarnon,
         extraSources: glast ? [{ kind: "vendor", parts: "both", where: glast }] : [],
         build: !owned,
+        copies: null,
       });
     }
   }
@@ -237,6 +253,7 @@ export function resolveAcquisition(ctx: AcquisitionContext): AcquisitionTarget[]
     wanted.filter((item) => item.build),
     itemDb,
     ownership,
+    building,
   );
 
   const targets = wanted.map((item): AcquisitionTarget => {

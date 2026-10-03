@@ -67,6 +67,14 @@ export interface ResolvedRow {
   source: ResolvedDoneSource;
   /** True when only the player can answer whether this is done. */
   manual: boolean;
+  /** What the ledger still owes for this row while it is open; absent is nothing. */
+  owes?: ResolvedOwed[] | undefined;
+}
+
+/** An amount still to pay, keyed by the ledger's name for the currency. */
+export interface ResolvedOwed {
+  currency: string;
+  value: number;
 }
 
 export interface ResolvedLive {
@@ -82,6 +90,10 @@ export interface ResolvedFlow {
   amount: string;
   authoredAmount: string;
   value: number;
+  /** The ledger's name for the currency, and the figure the flow falls back to
+   *  once nothing is outstanding. */
+  ledger?: string | undefined;
+  full?: number | undefined;
 }
 
 export interface ResolvedGroup {
@@ -107,6 +119,9 @@ export interface ResolvedGroup {
   done: boolean;
   /** Rows still to do; zero on a skipped group. */
   remaining: number;
+  /** What the ledger owes for the group as a whole while it is open, where its
+   *  spend does not split across its rows. */
+  owes?: ResolvedOwed[] | undefined;
 }
 
 export interface ResolvedLedgerEntry {

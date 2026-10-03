@@ -5,9 +5,16 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 import { get } from "svelte/store";
-import { beforeEach, describe, expect, it } from "vitest";
+import { beforeEach, describe, expect, it, vi } from "vitest";
 
-import { visibleGroups, visibleRows } from "../../../src/components/nextup/plan/planResolution.js";
+import {
+  tickPlanRow,
+  visibleGroups,
+  visibleRows,
+  withRowOverrides,
+  rowQuantityText,
+  type RowOverrides,
+} from "../../../src/components/nextup/plan/planResolution.js";
 import {
   authoredPlan,
   resolvePlan,
@@ -307,5 +314,145 @@ describe("plan progress store", () => {
     setPlanRowDone(RHINO, "1:0", false);
     expect(planProgressFor(get(planProgress), RHINO).manualDone).toEqual([]);
     expect(planProgressFor(get(planProgress), RHINO).manualCleared).toEqual(["1:0"]);
+  });
+});
+
+describe("temporary ticks on rows the inventory decides", () => {
+  const ITEM = "/Lotus/Powersuits/Rhino/Rhino";
+
+  function plan(rows: ResolvedRow[]): ResolvedPlan {
+    return { ...resolved("Rhino"), groups: [group("0", rows, null)], steps: { done: 0, total: 0 } };
+  }
+
+  function viewRow(view: ResolvedPlan, id: string): ResolvedRow | undefined {
+    return rowById(view, id);
+  }
+
+  it("manual row persists through the store and never becomes an override", () => {
+    const base = plan([row("hand", false, "authored")]);
+    const persist = vi.fn();
+    const next = tickPlanRow(base, {}, "hand", true, persist);
+    expect(persist).toHaveBeenCalledWith("hand", true);
+    expect(next).toEqual({});
+    expect(viewRow(withRowOverrides(base, { hand: true }), "hand")?.done).toBe(false);
+  });
+
+  it("tracked row ticks temporarily, and every count follows", () => {
+    const base = plan([row("inv", false, "inventory"), row("other", true, "inventory")]);
+    const overrides = tickPlanRow(base, {}, "inv", true, vi.fn());
+    const view = withRowOverrides(base, overrides);
+    expect(viewRow(view, "inv")?.done).toBe(true);
+    expect(view.groups[0].done).toBe(true);
+    expect(view.groups[0].remaining).toBe(0);
+    expect(view.steps).toEqual({ done: 2, total: 2 });
+  });
+
+  it("tracked row unticks temporarily", () => {
+    const base = plan([row("inv", true, "inventory")]);
+    const overrides = tickPlanRow(base, {}, "inv", false, vi.fn());
+    const view = withRowOverrides(base, overrides);
+    expect(viewRow(view, "inv")?.done).toBe(false);
+    expect(view.groups[0].done).toBe(false);
+    expect(view.steps).toEqual({ done: 0, total: 1 });
+  });
+
+  it("keeps an override on top when the inventory re-resolves", () => {
+    const overrides: RowOverrides = { inv: false };
+    const reresolved = plan([row("inv", true, "inventory")]);
+    expect(viewRow(withRowOverrides(reresolved, overrides), "inv")?.done).toBe(false);
+  });
+
+  it("overrides reset on reopen and on switching to another pin's plan", () => {
+    const base = plan([row("inv", true, "inventory")]);
+    expect(withRowOverrides(base, {})).toBe(base);
+    // The overrides live in the page, which the view unmounts on close and
+    // remounts per pin.
+    expect(source("AcquisitionPlanPage.svelte")).toContain(
+      "let overrides = $state<RowOverrides>({});",
+    );
+    const text = view();
+    expect(text).toContain("{#key openPlan}");
+    expect(text.indexOf("{#if openPlan && openTarget}")).toBeLessThan(
+      text.indexOf("{#key openPlan}"),
+    );
+  });
+
+  it("ticked tracked row stays visible, while one the inventory finished stays hidden", () => {
+    const base = plan([row("inv", false, "inventory"), row("gone", true, "inventory")]);
+    const view = withRowOverrides(base, tickPlanRow(base, {}, "inv", true, vi.fn()));
+    const shown = visibleRows(view.groups[0], false).map((entry) => entry.id);
+    expect(shown).toEqual(["inv"]);
+    expect(visibleGroups(view, false)).toHaveLength(1);
+  });
+
+  it("no writes to the store for tracked rows", () => {
+    const before = JSON.stringify(get(planProgress));
+    const persist = vi.fn((id: string, done: boolean) => setPlanRowDone(ITEM, id, done));
+    const base = plan([row("inv", false, "inventory"), row("inv2", true, "inventory")]);
+    let overrides = tickPlanRow(base, {}, "inv", true, persist);
+    overrides = tickPlanRow(base, overrides, "inv2", false, persist);
+    expect(overrides).toEqual({ inv: true, inv2: false });
+    expect(persist).not.toHaveBeenCalled();
+    expect(JSON.stringify(get(planProgress))).toBe(before);
+  });
+
+  it("makes every row's box clickable outside a skipped group", () => {
+    expect(source("PlanRow.svelte")).toContain("{#if !skipped}");
+  });
+});
+
+describe("row quantity text", () => {
+  function counted(
+    done: boolean,
+    tracked: boolean,
+    required: number,
+    owned: number,
+  ): ResolvedRow {
+    const remaining = Math.max(0, required - owned);
+    const text = (done ? required : remaining).toLocaleString("en-US");
+    return {
+      ...row("r", done, tracked ? "inventory" : "authored"),
+      qty: {
+        required,
+        owned,
+        remaining,
+        text,
+        requiredText: required.toLocaleString("en-US"),
+        tracked,
+      },
+    };
+  }
+
+  it("shows have / need on a tracked, unfinished multi-unit row", () => {
+    expect(rowQuantityText(counted(false, true, 2, 1))).toBe("1 / 2");
+    expect(rowQuantityText(counted(false, true, 500, 120))).toBe("120 / 500");
+  });
+
+  it("formats both sides the way the resolver formats a count", () => {
+    expect(rowQuantityText(counted(false, true, 15000, 1200))).toBe("1,200 / 15,000");
+  });
+
+  it("caps have at need", () => {
+    expect(rowQuantityText(counted(false, true, 2, 5))).toBe("2 / 2");
+  });
+
+  it("keeps today's text on a done row", () => {
+    expect(rowQuantityText(counted(true, true, 500, 500))).toBe("500");
+  });
+
+  it("keeps today's text on an untracked row", () => {
+    expect(rowQuantityText(counted(false, false, 500, 120))).toBe("380");
+  });
+
+  it("keeps today's text on a single-quantity row", () => {
+    expect(rowQuantityText(counted(false, true, 1, 0))).toBe("1");
+  });
+
+  it("draws nothing for a row with no quantity", () => {
+    expect(rowQuantityText(row("r", false, "inventory"))).toBe("");
+  });
+
+  it("draws the row's count through the helper", () => {
+    expect(source("PlanRow.svelte")).toContain("{rowQuantityText(row)}");
   });
 });

@@ -33,17 +33,17 @@ function need(
 describe("nitainNeed", () => {
   it("splits what is unbuilt into mastery, Prime and subsume", () => {
     expect(need(inventory({ suits: [NEKROS] }))).toEqual({
-      normal: 5,
+      normal: 10,
       prime: 2,
       subsume: 3,
       held: 0,
-      short: 10,
+      short: 15,
     });
   });
 
   it("walks a part recipe, and drops the Nitain of a part already held", () => {
-    expect(need(inventory({ suits: [NEKROS] })).normal).toBe(5);
-    expect(need(inventory({ suits: [NEKROS], misc: { [HYDROID_NEURO]: 1 } })).normal).toBe(0);
+    expect(need(inventory({ suits: [NEKROS] })).normal).toBe(10);
+    expect(need(inventory({ suits: [NEKROS], misc: { [HYDROID_NEURO]: 1 } })).normal).toBe(5);
   });
 
   it("asks no Nitain of a frame still in hand to feed the Helminth", () => {
@@ -53,7 +53,7 @@ describe("nitainNeed", () => {
   it("counts a frame owed its mastery under mastery, not subsume as well", () => {
     const unmastered = need(inventory({ suits: [NEKROS] }), null);
     expect(unmastered.subsume).toBe(0);
-    expect(unmastered.normal).toBe(8);
+    expect(unmastered.normal).toBe(16);
   });
 
   it("asks nothing of a sold frame already subsumed", () => {
@@ -62,7 +62,7 @@ describe("nitainNeed", () => {
 
   it("takes what is held off the total, never off one goal", () => {
     const held = need(inventory({ suits: [NEKROS], misc: { [NITAIN]: 4 } }));
-    expect(held).toMatchObject({ normal: 5, prime: 2, subsume: 3, held: 4, short: 6 });
+    expect(held).toMatchObject({ normal: 10, prime: 2, subsume: 3, held: 4, short: 11 });
     expect(need(inventory({ suits: [NEKROS], misc: { [NITAIN]: 40 } })).short).toBe(0);
   });
 

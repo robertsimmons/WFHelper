@@ -35,8 +35,9 @@ function addName(index: Map<string, string[]>, name: unknown, uniqueName: string
   if (typeof name !== "string" || name === "") return;
   const key = name.trim().toLowerCase();
   const rows = index.get(key);
-  if (rows) rows.push(uniqueName);
-  else index.set(key, [uniqueName]);
+  if (rows) {
+    if (!rows.includes(uniqueName)) rows.push(uniqueName);
+  } else index.set(key, [uniqueName]);
 }
 
 function buildNameIndex(itemDb: Record<string, ItemDbEntry>): Map<string, string[]> {
@@ -44,6 +45,9 @@ function buildNameIndex(itemDb: Record<string, ItemDbEntry>): Map<string, string
   for (const [uniqueName, entry] of Object.entries(itemDb ?? {})) {
     addName(index, entry?.name, uniqueName);
     addName(index, entry?.displayName, uniqueName);
+    // DE names a built frame part after its blueprint ("Ash Neuroptics
+    // Blueprint"); the part's own name, which a foundry row uses, is only here.
+    addName(index, entry?.partName, uniqueName);
   }
   return index;
 }
@@ -206,12 +210,22 @@ export function ownedForLabel(state: PlayerState, label: string, itemName: strin
   const relic = state.relics.get(label.replace(RELIC_SUFFIX, "").trim().toLowerCase());
   if (relic !== undefined) return relic;
 
+  const matches = itemsForLabel(state, label, itemName);
+  if (!matches) return null;
+  let total = 0;
+  for (const uniqueName of matches) total += state.owned.get(uniqueName) ?? 0;
+  return total;
+}
+
+/** The item database rows a label names, or null when it names none. */
+export function itemsForLabel(
+  state: PlayerState,
+  label: string,
+  itemName: string,
+): readonly string[] | null {
   for (const candidate of candidates(label, itemName)) {
     const matches = state.names.get(candidate.trim().toLowerCase());
-    if (!matches) continue;
-    let total = 0;
-    for (const uniqueName of matches) total += state.owned.get(uniqueName) ?? 0;
-    return total;
+    if (matches) return matches;
   }
   return null;
 }

@@ -58,7 +58,7 @@ const MATERIALS_EFFORT = 0.35;
 
 function isReady(target: AcquisitionTarget): boolean {
   const parts = target.parts;
-  return !target.modular && parts.known && parts.missing.length === 0 && parts.buildable;
+  return !target.modular && parts.known && parts.buildable;
 }
 
 /** The foundry would take it now, or there is still work to do. */

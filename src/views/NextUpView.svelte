@@ -323,16 +323,18 @@
   {#if openPlan && openTarget}
     <div class="flex min-h-0 flex-1 flex-col gap-3 overflow-y-auto pr-4">
       <div data-acquisition-plan={openPlan}>
-        <AcquisitionPlanPage
-          plan={openResolved}
-          name={openTarget.name}
-          tier={openTarget.tier}
-          uniqueName={openPlan}
-          art={openArt}
-          onRefresh={() => void refreshFromInventory()}
-          onToggleDone={tickRow}
-          onTakeAlt={takeAlt}
-        />
+        {#key openPlan}
+          <AcquisitionPlanPage
+            plan={openResolved}
+            name={openTarget.name}
+            tier={openTarget.tier}
+            uniqueName={openPlan}
+            art={openArt}
+            onRefresh={() => void refreshFromInventory()}
+            onToggleDone={tickRow}
+            onTakeAlt={takeAlt}
+          />
+        {/key}
       </div>
     </div>
   {:else}

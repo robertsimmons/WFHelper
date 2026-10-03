@@ -184,8 +184,8 @@ describe("nightwaveProvider stock cards", () => {
   });
 });
 
-/** Hydroid, its Prime and a sold Nidus still ask 5, 2 and 3 Nitain; Nekros is
- *  in hand and asks nothing. */
+/** Hydroid's two builds, its Prime and a sold Nidus still ask 10, 2 and 3
+ *  Nitain; Nekros is in hand and asks nothing. */
 function unbuiltContext(held: Record<string, number>, suits: string[] = [NEKROS]) {
   return context({
     itemDb: { ...nitainDb(), ...ITEM_DB },
@@ -198,12 +198,12 @@ describe("the Nitain need", () => {
   it("keeps Nitain at a full gain while something unbuilt still needs it", () => {
     const card = draft(unbuiltContext({ [NITAIN]: 2 }), "nightwave:nitain");
     expect(card?.signals.value).toBe(rewardValue(defaultPreferences(), "Nitain Extract"));
-    expect(card?.signals.gain).toBe(0.8);
+    expect(card?.signals.gain).toBeCloseTo(13 / 15);
   });
 
   it("stays in the feed past the keep-on-hand level while the builds want more", () => {
     const card = draft(unbuiltContext({ [NITAIN]: 5 }), "nightwave:nitain");
-    expect(card?.progress).toEqual({ current: 5, required: 10 });
+    expect(card?.progress).toEqual({ current: 5, required: 15 });
     expect(card?.whySegments?.map((segment) => segment.text)).toEqual([
       "nextUp.whyNightwaveStock",
       "nextUp.nitainMastery",
@@ -231,7 +231,7 @@ describe("the Nitain need", () => {
       }),
       "nightwave:nitain",
     );
-    expect(card?.progress).toEqual({ current: 2, required: 10 });
+    expect(card?.progress).toEqual({ current: 2, required: 15 });
   });
 
   it("drops Nitain at a level of nothing once the builds need none", () => {
@@ -242,15 +242,15 @@ describe("the Nitain need", () => {
   });
 
   it("goes once the pile covers every build and the level", () => {
-    expect(ids(unbuiltContext({ [NITAIN]: 10 }))).not.toContain("nightwave:nitain");
+    expect(ids(unbuiltContext({ [NITAIN]: 15 }))).not.toContain("nightwave:nitain");
   });
 
   it("hands the details every goal's count", () => {
     draft(unbuiltContext({ [NITAIN]: 4 }), "nightwave:nitain");
     expect(nightwaveRowFor("nightwave:nitain")).toMatchObject({
       held: 4,
-      level: 10,
-      need: { normal: 5, prime: 2, subsume: 3, held: 4, short: 6 },
+      level: 15,
+      need: { normal: 10, prime: 2, subsume: 3, held: 4, short: 11 },
     });
   });
 

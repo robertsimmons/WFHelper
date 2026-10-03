@@ -3,7 +3,11 @@ import {
   componentUniqueNameAliases,
   ownedComponentCount,
 } from "../../../../config/shared/componentNames.js";
-import { withoutFoundryPending } from "../../../../config/shared/foundryPending.js";
+import {
+  pendingRecipeCounts,
+  withoutFoundryPending,
+} from "../../../../config/shared/foundryPending.js";
+import { buildCraftingTree, type CraftingTreeNode } from "../../craftingTree.js";
 import { buildMasteryPlan, type PlannedItem, type PlannerPin } from "../../masteryPlanner.js";
 import type { ItemDbEntry, RawInventoryData } from "../../../types/inventory.js";
 import type { MessageKey } from "../../i18n.js";
@@ -27,6 +31,21 @@ export function buildOwnership(
     (uniqueName) => itemDb[uniqueName]?.reusableBlueprint === true,
   );
   return aggregateComponentOwnership(usable);
+}
+
+/** Product uniqueName -> builds the foundry holds for it, finished-but-unclaimed
+ *  ones included. buildOwnership has already dropped the blueprints these spent,
+ *  and the game took the ingredients when each build started. */
+export function foundryBuilds(
+  inventory: RawInventoryData | null,
+  itemDb: Record<string, ItemDbEntry>,
+): Map<string, number> {
+  const builds = new Map<string, number>();
+  for (const [blueprint, count] of pendingRecipeCounts(inventory?.PendingRecipes)) {
+    const product = itemDb[blueprint]?.buildsProduct;
+    if (product) builds.set(product, (builds.get(product) ?? 0) + count);
+  }
+  return builds;
 }
 
 export interface GearEntry {
@@ -305,12 +324,15 @@ const EMPTY_PLAN: PartPlan = {
   missing: [],
   materials: [],
   credits: 0,
+  copies: 1,
+  foundry: false,
   buildable: false,
 };
 
 function partState(
   component: PlannedItem["components"][number],
   role: PartState["role"],
+  building: number,
 ): PartState {
   return {
     uniqueName: component.uniqueName,
@@ -319,6 +341,7 @@ function partState(
     role,
     required: component.needed,
     owned: component.owned,
+    building,
     missing: component.missing,
   };
 }
@@ -334,14 +357,29 @@ function materialState(resource: PlannedItem["resources"][number]): MaterialStat
   };
 }
 
-function toPartPlan(planned: PlannedItem): PartPlan {
+function toPartPlan(
+  planned: PlannedItem,
+  copies: number,
+  building: ReadonlyMap<string, number>,
+  foundry: boolean,
+): PartPlan {
   if (!planned.hasRecipe) return EMPTY_PLAN;
   const mainRow = planned.components.find((component) => component.isBlueprint) ?? null;
-  const main = mainRow ? partState(mainRow, "main") : null;
+  const main = mainRow ? partState(mainRow, "main", 0) : null;
   const components = planned.components
     .filter((component) => !component.isBlueprint)
-    .map((component) => partState(component, "component"));
+    .map((component) =>
+      partState(
+        component,
+        "component",
+        Math.min(component.owned, building.get(component.uniqueName) ?? 0),
+      ),
+    );
   const missing = [...(main ? [main] : []), ...components].filter((part) => part.missing > 0);
+  // A part still in the foundry is held toward the plan but cannot go into a build yet.
+  const inHand = components.every(
+    (part) => part.owned - part.building >= Math.ceil(part.required / copies),
+  );
   return {
     known: true,
     main,
@@ -349,7 +387,9 @@ function toPartPlan(planned: PlannedItem): PartPlan {
     missing,
     materials: planned.resources.map(materialState),
     credits: planned.credits,
-    buildable: planned.craftableNow,
+    copies,
+    foundry,
+    buildable: planned.craftableNow && inHand,
   };
 }
 
@@ -374,25 +414,132 @@ function withoutPartBlueprints(
   return pool;
 }
 
-/** One pass over every unbuilt target in the game. Allocation is off: a card
- *  answers for its own item, so what it says the player holds must not depend on
- *  which other targets happened to be swept alongside it. */
-export function buildPartPlans(
-  targets: readonly { uniqueName: string; name: string; entry: ItemDbEntry }[],
+interface PartPlanTarget {
+  uniqueName: string;
+  name: string;
+  entry: ItemDbEntry;
+  /** Copies still to build, or null for gear only ever built once. Null and zero
+   *  both size the plan at one build and leave the foundry out of it. */
+  copies: number | null;
+}
+
+function planPins(
+  targets: readonly PartPlanTarget[],
   itemDb: Record<string, ItemDbEntry>,
-  ownership: Map<string, number>,
-): Map<string, PartPlan> {
+  held: Map<string, number>,
+  building: ReadonlyMap<string, number>,
+  foundry: boolean,
+  out: Map<string, PartPlan>,
+): void {
   const pins: PlannerPin[] = targets.map((target) => ({
     uniqueName: target.uniqueName,
     name: target.name,
     ...(target.entry.displayName ? { displayName: target.entry.displayName } : {}),
     imageUrl: target.entry.imageUrl ?? null,
     masteryXpRemaining: 0,
+    copies: Math.max(1, target.copies ?? 1),
   }));
-  const plan = buildMasteryPlan(pins, itemDb, withoutPartBlueprints(ownership, itemDb), {
-    allocate: false,
+  const plan = buildMasteryPlan(pins, itemDb, held, { allocate: false });
+  plan.items.forEach((item, index) => {
+    out.set(item.uniqueName, toPartPlan(item, pins[index]?.copies ?? 1, building, foundry));
   });
+}
+
+const RECIPE_PATH = /\/Types\/Recipes\//i;
+
+/** How many of each part, at every depth of the recipe, the plan's builds still
+ *  need. A sub-assembly already built, or building where the plan counts the
+ *  foundry, took its own parts with it, so a part inside it is needed only for
+ *  the sub-assemblies still to make. Read against the pool the card reads. */
+export function partDemand(
+  uniqueName: string,
+  inventory: RawInventoryData | null,
+  itemDb: Record<string, ItemDbEntry>,
+  parts: PartPlan,
+): Map<string, number> {
+  const pool = withoutPartBlueprints(buildOwnership(inventory, itemDb), itemDb);
+  if (parts.foundry) {
+    for (const [product, count] of foundryBuilds(inventory, itemDb)) {
+      pool.set(product, (pool.get(product) ?? 0) + count);
+    }
+  }
+  const demand = new Map<string, number>();
+  const tree = buildCraftingTree(uniqueName, itemDb, pool, { count: parts.copies });
+  if (!tree) return demand;
+
+  // A part nothing still needs records a need of none rather than going missing.
+  const walk = (node: CraftingTreeNode, needed: number, depth: number): void => {
+    let remaining = needed;
+    if (depth > 0) {
+      if (!node.isBlueprintItem && !RECIPE_PATH.test(node.uniqueName)) return;
+      demand.set(node.uniqueName, (demand.get(node.uniqueName) ?? 0) + needed);
+      const owned = Math.min(ownedComponentCount(node.uniqueName, pool), remaining);
+      for (const alias of componentUniqueNameAliases(node.uniqueName)) {
+        const have = pool.get(alias);
+        if (have !== undefined) pool.set(alias, Math.max(0, have - owned));
+      }
+      remaining -= owned;
+    }
+    const recipe = node.recipe;
+    if (!recipe) return;
+    const num = Math.max(1, recipe.num || 1);
+    const fullRuns = Math.max(1, Math.ceil(node.count / num));
+    const runs = remaining > 0 ? Math.ceil(remaining / num) : 0;
+    for (const child of node.children) {
+      if (child.isBlueprintItem)
+        walk(child, recipe.reusableBlueprint ? Math.min(1, runs) : runs, depth + 1);
+      else walk(child, Math.ceil((child.count * runs) / fullRuns), depth + 1);
+    }
+  };
+  walk(tree, parts.copies, 0);
+  return demand;
+}
+
+/** What `copies` builds cost from an empty account: the bill before any part is
+ *  built, against which a part plan's own bill shows what built parts used up. */
+export function startingBill(
+  uniqueName: string,
+  itemDb: Record<string, ItemDbEntry>,
+  copies: number,
+): { credits: number; materials: Map<string, number> } {
+  const pin: PlannerPin = {
+    uniqueName,
+    name: String(itemDb[uniqueName]?.name ?? uniqueName),
+    imageUrl: null,
+    masteryXpRemaining: 0,
+    copies,
+  };
+  const item = buildMasteryPlan([pin], itemDb, new Map(), { allocate: false }).items[0];
+  const materials = new Map<string, number>();
+  for (const resource of item?.resources ?? []) materials.set(resource.uniqueName, resource.needed);
+  return { credits: item?.credits ?? 0, materials };
+}
+
+/** Every unbuilt target in the game. Allocation is off: a card answers for its
+ *  own item, so what it says the player holds must not depend on which other
+ *  targets happened to be swept alongside it. */
+export function buildPartPlans(
+  targets: readonly PartPlanTarget[],
+  itemDb: Record<string, ItemDbEntry>,
+  ownership: Map<string, number>,
+  building: ReadonlyMap<string, number>,
+): Map<string, PartPlan> {
+  const pool = withoutPartBlueprints(ownership, itemDb);
+  const withBuilding = new Map(pool);
+  for (const [uniqueName, count] of building) {
+    withBuilding.set(uniqueName, (withBuilding.get(uniqueName) ?? 0) + count);
+  }
+  const counted = (target: PartPlanTarget): boolean => (target.copies ?? 0) > 0;
+
   const out = new Map<string, PartPlan>();
-  for (const item of plan.items) out.set(item.uniqueName, toPartPlan(item));
+  planPins(
+    targets.filter((target) => !counted(target)),
+    itemDb,
+    pool,
+    new Map(),
+    false,
+    out,
+  );
+  planPins(targets.filter(counted), itemDb, withBuilding, building, true, out);
   return out;
 }

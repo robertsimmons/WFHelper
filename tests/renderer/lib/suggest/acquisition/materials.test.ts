@@ -9,7 +9,7 @@ import type {
   MaterialState,
   PartState,
 } from "../../../../../src/lib/suggest/acquisition/types.js";
-import type { ItemDbEntry } from "../../../../../src/types/inventory.js";
+import type { ItemDbEntry, MasteryData } from "../../../../../src/types/inventory.js";
 
 // Every uniqueName, ingredient count and yield below is copied out of the game
 // export (ExportRecipes / ExportResources / ExportWeapons), so a spec that
@@ -293,6 +293,12 @@ function targets(
   return resolveAcquisition({ itemDb, inventory: null, ...overrides });
 }
 
+/** Every frame here mastered and sold, so each owes one build: its subsume. */
+function oneBuild(): Partial<AcquisitionContext> {
+  const items = ["Gauss", "Geode", "Volt", "Chroma"].map((name) => ({ name, status: "mastered" }));
+  return { mastery: { items, stats: {} } as unknown as MasteryData };
+}
+
 function find(rows: AcquisitionTarget[], name: string): AcquisitionTarget {
   const match = rows.find((target) => target.name === name);
   if (!match) throw new Error(`no target for ${name}`);
@@ -357,7 +363,7 @@ describe("a resource is a material, whatever recipe the export hangs off it", ()
   });
 
   it("keeps a refined gem a material where a crafted component asks for it", () => {
-    const gauss = find(targets(frameDb()), "Gauss");
+    const gauss = find(targets(frameDb(), oneBuild()), "Gauss");
     expect(material(gauss, "Radian Sentirum")).toMatchObject({ required: 3 });
     expect(material(gauss, "Heart Nyth")).toMatchObject({ required: 3 });
     // The gems convert from raw stones, and that ladder stays shut too.
@@ -366,7 +372,7 @@ describe("a resource is a material, whatever recipe the export hangs off it", ()
   });
 
   it("keeps a genuinely crafted component a component", () => {
-    const gauss = find(targets(frameDb()), "Gauss");
+    const gauss = find(targets(frameDb(), oneBuild()), "Gauss");
     expect(componentNames(gauss)).toEqual(["Gauss Chassis", "Gauss Helmet", "Gauss Systems"]);
     expect(materialNames(gauss)).not.toContain("Gauss Chassis");
   });
@@ -392,12 +398,15 @@ describe("a card reports what the player holds, not a share of the sweep", () =>
   });
 
   it("shows nothing held as nothing rather than as a covered row", () => {
-    const gauss = find(targets(frameDb()), "Gauss");
+    const gauss = find(targets(frameDb(), oneBuild()), "Gauss");
     expect(material(gauss, "Orokin Cell")).toMatchObject({ required: 3, owned: 0, missing: 3 });
   });
 
   it("gives every build in one sweep the same figure for a shared material", () => {
-    const rows = targets(frameDb(), { inventory: inventory({ misc: { [OROKIN_CELL]: 5 } }) });
+    const rows = targets(frameDb(), {
+      ...oneBuild(),
+      inventory: inventory({ misc: { [OROKIN_CELL]: 5 } }),
+    });
     for (const name of ["Gauss", "Geode", "Volt"]) {
       expect(material(find(rows, name), "Orokin Cell")).toMatchObject({ owned: 5, missing: 0 });
     }
@@ -406,13 +415,19 @@ describe("a card reports what the player holds, not a share of the sweep", () =>
   it("does not let an early build in the sweep drain a later one's materials", () => {
     // Gauss and Geode each want three Orokin Cells and the account holds four.
     // Both rows say four: neither card is a claim on the other's stock.
-    const rows = targets(frameDb(), { inventory: inventory({ misc: { [OROKIN_CELL]: 4 } }) });
+    const rows = targets(frameDb(), {
+      ...oneBuild(),
+      inventory: inventory({ misc: { [OROKIN_CELL]: 4 } }),
+    });
     expect(material(find(rows, "Gauss"), "Orokin Cell")).toMatchObject({ owned: 4, missing: 0 });
     expect(material(find(rows, "Geode"), "Orokin Cell")).toMatchObject({ owned: 4, missing: 0 });
   });
 
   it("reports a part the player partly holds against the rest of the set", () => {
-    const rows = targets(frameDb(), { inventory: inventory({ misc: { [GEODE_CHASSIS]: 1 } }) });
+    const rows = targets(frameDb(), {
+      ...oneBuild(),
+      inventory: inventory({ misc: { [GEODE_CHASSIS]: 1 } }),
+    });
     const geode = find(rows, "Geode");
     expect(part(geode, "Geode Chassis")).toMatchObject({ required: 1, owned: 1, missing: 0 });
     expect(part(geode, "Geode Systems")).toMatchObject({ required: 1, owned: 0, missing: 1 });
@@ -422,7 +437,10 @@ describe("a card reports what the player holds, not a share of the sweep", () =>
   it("gives both builds that need one component the same count for it", () => {
     // Chroma's recipe asks for Volt's Neuroptics, so the single copy in the
     // foundry is a real answer to two cards at once.
-    const rows = targets(frameDb(), { inventory: inventory({ misc: { [VOLT_HELMET]: 1 } }) });
+    const rows = targets(frameDb(), {
+      ...oneBuild(),
+      inventory: inventory({ misc: { [VOLT_HELMET]: 1 } }),
+    });
     expect(part(find(rows, "Volt"), "Volt Neuroptics")).toMatchObject({ owned: 1, missing: 0 });
     expect(part(find(rows, "Chroma"), "Volt Neuroptics")).toMatchObject({ owned: 1, missing: 0 });
   });

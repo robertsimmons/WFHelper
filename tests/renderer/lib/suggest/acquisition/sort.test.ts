@@ -58,6 +58,8 @@ function parts(shape: Shape): PartPlan {
     missing: Array.from({ length: shape.missing ?? 0 }, () => ({}) as PartState),
     materials: [],
     credits: 0,
+    copies: 1,
+    foundry: false,
     buildable: shape.buildable ?? false,
   };
 }

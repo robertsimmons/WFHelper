@@ -12,7 +12,12 @@
   import TierBadge from "../TierBadge.svelte";
   import WikiButton from "../../WikiButton.svelte";
   import PlanGroup from "./PlanGroup.svelte";
-  import { visibleGroups } from "./planResolution.js";
+  import {
+    tickPlanRow,
+    visibleGroups,
+    withRowOverrides,
+    type RowOverrides,
+  } from "./planResolution.js";
 
   interface Props {
     /** Null for an item nobody has written a plan for, which reads as unknown. */
@@ -27,7 +32,16 @@
     onTakeAlt: (rowId: string) => void;
   }
 
-  const { plan, name, tier, uniqueName, art, onRefresh, onToggleDone, onTakeAlt }: Props = $props();
+  const {
+    plan: resolved,
+    name,
+    tier,
+    uniqueName,
+    art,
+    onRefresh,
+    onToggleDone,
+    onTakeAlt,
+  }: Props = $props();
 
   const BUTTON =
     "cursor-pointer rounded-[var(--radius-sm)] border border-border bg-bg-raised px-2 py-1 " +
@@ -65,6 +79,14 @@
 
   let showTree = $state(false);
   let showDone = $state(false);
+  // Page-local so closing the plan, or keying it to another pin, drops them.
+  let overrides = $state<RowOverrides>({});
+
+  const plan = $derived(resolved ? withRowOverrides(resolved, overrides) : null);
+
+  function toggleDone(rowId: string, done: boolean): void {
+    if (resolved) overrides = tickPlanRow(resolved, overrides, rowId, done, onToggleDone);
+  }
 
   const entry = $derived($itemDb[uniqueName] ?? null);
   // A blueprint has no recipe of its own; the tree roots at what it builds.
@@ -201,7 +223,7 @@
   {/if}
 
   {#each groups as group (group.id)}
-    <PlanGroup {group} {showDone} {onToggleDone} {onTakeAlt} />
+    <PlanGroup {group} {showDone} onToggleDone={toggleDone} {onTakeAlt} />
   {/each}
 
   {#if plan && plan.ledger.length > 0}

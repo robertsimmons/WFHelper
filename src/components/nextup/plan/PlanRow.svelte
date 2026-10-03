@@ -1,6 +1,7 @@
 <script lang="ts">
   import { tr } from "../../../lib/i18n.js";
   import type { ResolvedRow } from "../../../lib/suggest/acquisition/plan/index.js";
+  import { rowQuantityText } from "./planResolution.js";
 
   interface Props {
     row: ResolvedRow;
@@ -20,7 +21,7 @@
 </script>
 
 <li class="flex items-baseline gap-[9px] py-[3px] text-[0.8125rem]">
-  {#if row.manual && !skipped}
+  {#if !skipped}
     <button
       class="{BOX} {fill} cursor-pointer hover:border-accent"
       aria-pressed={row.done}
@@ -31,7 +32,7 @@
     <span class="{BOX} {fill}"></span>
   {/if}
 
-  <span class="min-w-[44px] tabular-nums text-accent">{row.qty ? row.qty.text : ""}</span>
+  <span class="min-w-[44px] tabular-nums text-accent">{rowQuantityText(row)}</span>
 
   <span class="flex-1 {struck ? 'text-text-muted line-through' : ''}">
     {row.label}

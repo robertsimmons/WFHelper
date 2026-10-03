@@ -62,12 +62,21 @@ export function pathKindLabel(kind: PathKind): MessageKey {
   return KIND_LABEL[kind];
 }
 
+/** One per part per build the plan is sized for, so two builds of a three-part
+ *  frame count eight. */
 function totalParts(parts: PartPlan): number {
-  return (parts.main ? 1 : 0) + parts.components.length;
+  return ((parts.main ? 1 : 0) + parts.components.length) * parts.copies;
 }
 
+/** Builds' worth of each part held; a part needed twice per build counts only
+ *  once both are in. */
 function ownedParts(parts: PartPlan): number {
-  return totalParts(parts) - parts.missing.length;
+  let have = 0;
+  for (const part of [...(parts.main ? [parts.main] : []), ...parts.components]) {
+    const perBuild = Math.max(1, Math.ceil(part.required / parts.copies));
+    have += Math.min(parts.copies, Math.floor(part.owned / perBuild));
+  }
+  return have;
 }
 
 /** The progress read under the card's art. */
@@ -100,7 +109,7 @@ export function partsRead(target: AcquisitionTarget): PartsRead | null {
     have: ownedParts(parts),
     need,
     unitKey: null,
-    ready: parts.missing.length === 0 && parts.buildable,
+    ready: parts.buildable,
   };
 }
 
@@ -171,7 +180,7 @@ function stateText(target: AcquisitionTarget, t: SuggestionContext["t"]): string
   const total = totalParts(parts);
   if (parts.missing.length > 0) {
     return t(total === 1 ? "nextUp.whyAcqPartsOne" : "nextUp.whyAcqParts", {
-      missing: String(parts.missing.length),
+      missing: String(total - ownedParts(parts)),
       total: String(total),
     });
   }

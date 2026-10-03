@@ -261,7 +261,7 @@ function nemesisPath(input: PathInputs, plan: NemesisPlan, missing: readonly Par
 /** A nemesis weapon and anything else the item DB has no recipe for is handed
  *  over whole, so the item itself stands in for the parts a build would list. */
 function wholeItem(name: string): PartState {
-  return { uniqueName: "", name, role: "main", required: 1, owned: 0, missing: 1 };
+  return { uniqueName: "", name, role: "main", required: 1, owned: 0, building: 0, missing: 1 };
 }
 
 export function buildPaths(input: PathInputs): AcquisitionPath[] {

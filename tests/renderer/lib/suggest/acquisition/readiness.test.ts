@@ -22,6 +22,7 @@ import {
   DORRCLAVE_STRING,
   inventory,
   itemDb,
+  MAG,
   MAG_BP,
   MAG_CHASSIS,
   MAG_NEURO,
@@ -102,7 +103,9 @@ describe("a build is ready only when the foundry could start it now", () => {
   it("holds a build back for a raw material even with every part in hand", () => {
     const ctx: Partial<AcquisitionContext> = {
       itemDb: itemDb(),
+      // An owned Mag owes only its subsume, so the plan is one build.
       inventory: inventory({
+        suits: [MAG],
         recipes: { [MAG_BP]: 1 },
         misc: { [MAG_NEURO]: 1, [MAG_CHASSIS]: 1, [MAG_SYSTEMS]: 1 },
       }),

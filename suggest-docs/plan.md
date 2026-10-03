@@ -108,6 +108,11 @@ Relics join the shared store as things to farm, each with where it drops. A Prim
 
 Check every plan and store fact against the official wiki: part drop chances, recipes nobody flagged, `tradeable`, Market prices, and `Credits` totals, including the plans that state no build cost (Gauss, Saryn, Nidus, Khora, Chroma and the rest).
 
+The same pass also runs two code-side sweeps:
+
+- **Row tracking:** walk every warframe plan against the real item database and confirm every part, blueprint and foundry row resolves against the inventory rather than falling back to a manual tick.
+- **Nested recipes:** `partDemand` sizes rows under a sub-assembly (Equinox's Aspects) from the full recipe tree. Confirm every other frame built from sub-assemblies reads right on its plan.
+
 ### Scannables
 
 Possibly its own top-level feature, one band or tab per group.

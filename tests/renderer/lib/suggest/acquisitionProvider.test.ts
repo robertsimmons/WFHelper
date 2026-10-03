@@ -166,14 +166,16 @@ describe("acquisitionProvider", () => {
 
   it("routes a frame to the Market once only its main blueprint is missing", () => {
     const owned = { [MAG_NEURO]: 1, [MAG_CHASSIS]: 1, [MAG_SYSTEMS]: 1 };
-    const mag = draftFor(collect({ inventory: inventory({ misc: owned }) }), MAG);
+    const mag = draftFor(collect({ inventory: inventory({ suits: [MAG], misc: owned }) }), MAG);
     const segments = mag.whySegments ?? [];
     expect(segments[segments.length - 1]?.text).toContain("common.market");
   });
 
   it("reads a build the foundry would take today as ready and all but free", () => {
     const drafts = collect({
+      // An owned Mag owes only its subsume, so the plan is one build.
       inventory: inventory({
+        suits: [MAG],
         recipes: { [MAG_BP]: 1 },
         misc: { [MAG_NEURO]: 1, [MAG_CHASSIS]: 1, [MAG_SYSTEMS]: 1, [OROKIN_CELL]: 5 },
       }),
@@ -183,11 +185,11 @@ describe("acquisitionProvider", () => {
     expect(mag.whySegments).toEqual([{ text: "nextUp.whyAcqReady", tone: "good" }]);
   });
 
-  it("carries the parts a build still owes as progress and in the fingerprint", () => {
+  it("carries the parts both owed builds still lack as progress and in the fingerprint", () => {
     const drafts = collect({ inventory: inventory({ recipes: { [MAG_BP]: 1 } }) });
     const mag = draftFor(drafts, MAG);
-    expect(mag.progress).toEqual({ current: 1, required: 4 });
-    expect(mag.fingerprint).toBe(`${MAG}|mastery+subsume|1/4`);
+    expect(mag.progress).toEqual({ current: 1, required: 8 });
+    expect(mag.fingerprint).toBe(`${MAG}|mastery+subsume|1/8`);
   });
 
   it("says nothing about gear whose only open reason is an Incarnon adapter", () => {

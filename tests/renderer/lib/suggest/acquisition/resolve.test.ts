@@ -68,16 +68,18 @@ describe("resolveAcquisition", () => {
     expect(mag.parts.buildable).toBe(false);
   });
 
-  it("bills the foundry credits and the raw materials the build still needs", () => {
+  it("bills the foundry credits and the raw materials of every build still owed", () => {
     const mag = find(resolveAcquisition(context()), "Mag");
-    expect(mag.parts.credits).toBe(25_000);
+    expect(mag.parts.copies).toBe(2);
+    expect(mag.parts.credits).toBe(50_000);
     expect(mag.parts.materials.map((row) => row.name)).toEqual(["Orokin Cell"]);
-    expect(mag.parts.materials[0]).toMatchObject({ required: 1, owned: 0, missing: 1 });
+    expect(mag.parts.materials[0]).toMatchObject({ required: 2, owned: 0, missing: 2 });
   });
 
+  // An owned Mag owes only its subsume, so these plans are one build.
   it("keeps owned parts out of the missing list", () => {
     const ctx = context({
-      inventory: inventory({ recipes: { [MAG_BP]: 1 }, misc: { [MAG_NEURO]: 1 } }),
+      inventory: inventory({ suits: [MAG], recipes: { [MAG_BP]: 1 }, misc: { [MAG_NEURO]: 1 } }),
     });
     const mag = find(resolveAcquisition(ctx), "Mag");
     expect(mag.parts.main?.owned).toBe(1);
@@ -87,6 +89,7 @@ describe("resolveAcquisition", () => {
   it("reports a build that is ready for the foundry", () => {
     const ctx = context({
       inventory: inventory({
+        suits: [MAG],
         recipes: { [MAG_BP]: 1 },
         misc: { [MAG_NEURO]: 1, [MAG_CHASSIS]: 1, [MAG_SYSTEMS]: 1, [OROKIN_CELL]: 5 },
       }),

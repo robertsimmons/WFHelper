@@ -12,6 +12,8 @@ export interface PlannerPin {
   displayName?: string;
   imageUrl: string | null;
   masteryXpRemaining: number;
+  /** Builds to plan for; one when absent. */
+  copies?: number;
 }
 
 interface PlannerComponent {
@@ -174,7 +176,8 @@ function planPin(
     masteryXpRemaining: pin.masteryXpRemaining,
   };
 
-  const tree = buildCraftingTree(pin.uniqueName, itemDb, budget);
+  const copies = Math.max(1, pin.copies ?? 1);
+  const tree = buildCraftingTree(pin.uniqueName, itemDb, budget, { count: copies });
   if (!tree) {
     return {
       ...base,
@@ -203,7 +206,7 @@ function planPin(
   }));
 
   const state: CollectState = { resources: new Map(), credits: 0 };
-  collectNode(tree, 1, 0, state, budget, allocate);
+  collectNode(tree, copies, 0, state, budget, allocate);
 
   const resources: PlannerResource[] = [...state.resources.entries()].map(([uniqueName, tally]) => {
     const held = ownedComponentCount(uniqueName, pool);
@@ -237,7 +240,8 @@ function planPin(
     resources,
     credits: state.credits,
     completeness,
-    craftableNow: satisfied === topLevel.length,
+    // The foundry takes one build at a time, whatever the plan is sized for.
+    craftableNow: topLevel.every((child) => child.owned >= Math.ceil(child.count / copies)),
   };
 }
 

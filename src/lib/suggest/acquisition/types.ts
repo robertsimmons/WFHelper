@@ -99,7 +99,10 @@ export interface PartState {
   displayName?: string | undefined;
   role: PartRole;
   required: number;
+  /** Includes `building`. */
   owned: number;
+  /** Copies the foundry is still making, which no drop needs to replace. */
+  building: number;
   missing: number;
 }
 
@@ -120,8 +123,13 @@ export interface PartPlan {
   /** Every part still short, the main blueprint included. */
   missing: PartState[];
   materials: MaterialState[];
-  /** Foundry bill for the whole build, component recipes included. */
+  /** Foundry bill for every build the plan is sized for, component recipes included. */
   credits: number;
+  /** Builds the part and material counts are sized for, never below one. */
+  copies: number;
+  /** Parts in the foundry count as held toward the plan. */
+  foundry: boolean;
+  /** The foundry would take one build right now. */
   buildable: boolean;
 }
 

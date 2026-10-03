@@ -7,6 +7,7 @@ import {
   inventory,
   itemDb,
   LITH_M1,
+  MAG,
   MAG_BP,
   MAG_CHASSIS,
   MAG_NEURO,
@@ -60,7 +61,10 @@ describe("acquisition paths", () => {
   });
 
   it("drops a source that covers nothing still missing", () => {
-    const mag = target("Mag", { inventory: inventory({ recipes: { [MAG_BP]: 1 } }) });
+    // An owned Mag owes only its subsume, so the plan is one build.
+    const mag = target("Mag", {
+      inventory: inventory({ suits: [MAG], recipes: { [MAG_BP]: 1 } }),
+    });
     expect(mag.paths.some((path) => path.kind === "market")).toBe(false);
     expect(mag.paths.some((path) => path.kind === "boss")).toBe(true);
   });
@@ -107,8 +111,9 @@ describe("acquisition paths", () => {
   });
 
   it("leads with the Market once the main blueprint is all that is missing", () => {
+    // An owned Mag owes only its subsume, so the plan is one build.
     const components = { [MAG_NEURO]: 1, [MAG_CHASSIS]: 1, [MAG_SYSTEMS]: 1 };
-    const mag = target("Mag", { inventory: inventory({ recipes: components }) });
+    const mag = target("Mag", { inventory: inventory({ suits: [MAG], recipes: components }) });
     expect(mag.paths[0].kind).toBe("market");
     expect(mag.paths[0].complete).toBe(true);
   });

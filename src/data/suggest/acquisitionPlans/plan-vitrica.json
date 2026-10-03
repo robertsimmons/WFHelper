@@ -9,6 +9,13 @@
     { "text": "MR 13 to build", "tone": "info" }
   ],
   "prices": [{ "label": "build", "amount": "20,000 cr", "money": false }],
+  "materials": [
+    { "qty": "15", "label": "Orokin Cell", "note": null },
+    { "qty": "925", "label": "Oxium", "note": null },
+    { "qty": "1", "label": "Enter Nihil's Oubliette", "note": null },
+    { "qty": "60", "label": "Tempered Bapholite", "note": null },
+    { "qty": "10", "label": "Purified Heciphron", "note": null }
+  ],
   "groups": [
     {
       "type": "vendor",
@@ -20,7 +27,7 @@
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Nightwave Cred", "amount": "120" }],
+      "spends": [{ "currency": "Nightwave Creds", "amount": "120" }],
       "map": null,
       "rows": [
         {
@@ -29,18 +36,11 @@
           "note": "60 Cred; a decoration",
           "alt": null,
           "done": false
-        },
-        {
-          "qty": null,
-          "label": "Enter Nihil's Oubliette",
-          "note": "60 Cred; the key, rotates in and out",
-          "alt": "or ~30-37 plat on Warframe Market when it isn't in stock",
-          "done": false
         }
       ],
       "conditions": [
         "A Nightwave series, full season or mini-series, must be running for the shop to open.",
-        "Buy the key the week you see it; it's unclear whether the Oubliette itself is always in stock, but the key definitely rotates.",
+        "Buy both the week you see them; neither the Oubliette nor the key is permanent stock.",
         "You can hold only one key at a time."
       ],
       "bonuses": [],
@@ -84,62 +84,6 @@
           "body": "The fight itself has no Mastery Rank requirement. Do it as soon as you have the key; the blueprint waits in your inventory until you're MR 13."
         }
       ]
-    },
-    {
-      "type": "farm",
-      "place": "CAMBION DRIFT, DEIMOS",
-      "sub": "Otak, Necralisk, for refinement",
-      "activity": "mine ore and gems, then refine",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": "cambion-drift",
-      "rows": [
-        {
-          "qty": "60",
-          "label": "Bapholite",
-          "note": "-> Tempered Bapholite, 3 crafts",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "60",
-          "label": "Pyrol",
-          "note": "Tempered Bapholite craft",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "4,800",
-          "label": "Nano Spores",
-          "note": "Tempered Bapholite craft",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "45",
-          "label": "Lucent Teroglobe",
-          "note": "Tempered Bapholite craft",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "10",
-          "label": "Heciphron",
-          "note": "-> Purified Heciphron, 1 craft",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Tempered Bapholite's reusable refinement blueprint is 1,000 credits from Otak.",
-        "Purified Heciphron's reusable refinement blueprint is 2,000 credits from Otak and needs Entrati Rank 1."
-      ],
-      "bonuses": [],
-      "disclosures": []
     },
     {
       "type": "foundry",

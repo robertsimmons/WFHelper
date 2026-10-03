@@ -12,40 +12,19 @@
     { "label": "blueprint", "amount": "50,000 cr", "money": false },
     { "label": "build", "amount": "25,000 cr", "money": false }
   ],
+  "materials": [
+    { "qty": "10", "label": "Fieldron", "note": null },
+    { "qty": "8,200", "label": "Alloy Plate", "note": null },
+    { "qty": "2,400", "label": "Cryotic", "note": null },
+    { "qty": "3", "label": "Nitain Extract", "note": null },
+    { "qty": "50,000", "label": "Credits", "note": null }
+  ],
   "groups": [
     {
-      "type": "gate",
-      "place": "DOJO, ENERGY LAB",
+      "type": "vendor",
+      "place": "CLAN DOJO, ENERGY LAB",
       "sub": null,
-      "activity": "clan research",
-      "meta": "skip if already researched",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Energy Lab: Amprex, then Lenz",
-          "note": "3 days for the Lenz research",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Ghost (x1) tier pays 7,500 credits, 1,000 Fieldron Samples, 1,200 Alloy Plate, 7,500 Polymer Bundle and 50 Neurodes for the Lenz research; bigger clans pay scaled-up amounts.",
-        "In an established clan this is already done and costs you nothing."
-      ],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "research",
-      "place": "DOJO, ENERGY LAB",
-      "sub": null,
-      "activity": "replicate the blueprint",
+      "activity": "buy the blueprint",
       "meta": "50,000 cr",
       "mode": null,
       "live": null,
@@ -63,92 +42,6 @@
         }
       ],
       "conditions": ["MR 8 gate to build it."],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "STAR CHART",
-      "sub": null,
-      "activity": "Corpus-side Invasions",
-      "meta": "3 per Invasion; three rewards plus one crafted cover it",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "10",
-          "label": "Fieldron",
-          "note": "3 per Corpus-reward Invasion",
-          "alt": "or craft from Fieldron Samples, 12h each",
-          "done": false
-        }
-      ],
-      "conditions": [
-        "The recipe wants finished Fieldron, not Fieldron Samples.",
-        "Without invasions, crafting from zero means several days of 12-hour timers."
-      ],
-      "bonuses": [
-        "Keep a Fieldron crafting in the background while waiting on invasions; the companion app can queue foundry builds.",
-        "Rare and Reinforced Corpus containers and level 30-50 Orb Vallis bounties also drop Fieldron."
-      ],
-      "disclosures": [
-        {
-          "title": "crafting Fieldron",
-          "body": "Each Fieldron blueprint costs 15,000 credits and is used up on build. The build is 15,000 credits, 10 Fieldron Samples, 1 Control Module, 500 Salvage, 250 Plastids, 12 hours. Samples pile up in any Corpus mission."
-        }
-      ]
-    },
-    {
-      "type": "farm",
-      "place": "EXCAVATION",
-      "sub": null,
-      "activity": "any Excavation mission",
-      "meta": "about two dozen extractors",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "2,400",
-          "label": "Cryotic",
-          "note": "Lenz build",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": ["Farm it passively while running Excavation for relics."],
-      "disclosures": []
-    },
-    {
-      "type": "vendor",
-      "place": "NIGHTWAVE OFFERINGS",
-      "sub": null,
-      "activity": "buy Nitain",
-      "meta": "15 Creds for 5, always stocked",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [{ "currency": "Nightwave Cred", "amount": "15" }],
-      "map": null,
-      "rows": [
-        {
-          "qty": "3",
-          "label": "Nitain Extract",
-          "note": "Lenz build",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
       "bonuses": [],
       "disclosures": []
     },

@@ -13,78 +13,31 @@
     { "label": "parts", "amount": "120,000 cr", "money": false },
     { "label": "final build", "amount": "30,000 cr", "money": false }
   ],
+  "materials": [
+    { "qty": "1", "label": "Tellurium", "note": "Blade" },
+    { "qty": "5", "label": "Morphics", "note": "Chassis" },
+    { "qty": "120", "label": "Oxium", "note": "Chassis" },
+    { "qty": "5", "label": "Control Module", "note": "Engine" },
+    { "qty": "3", "label": "Gallium", "note": "Grip" },
+    { "qty": "3,950", "label": "Ferrite", "note": "3,150 Engine, 800 Coprite Alloy refines" },
+    { "qty": "2,875", "label": "Alloy Plate", "note": "Blade" },
+    { "qty": "1,825", "label": "Salvage", "note": "Chassis" },
+    { "qty": "1,700", "label": "Nano Spores", "note": "Grip" },
+    { "qty": "925", "label": "Polymer Bundle", "note": "Grip" },
+    { "qty": "775", "label": "Rubedo", "note": "675 Blade, 100 Coprite Alloy refines" },
+    { "qty": "450", "label": "Circuits", "note": "Engine" },
+    { "qty": "15", "label": "Sharrac Teeth", "note": "Blade" },
+    { "qty": "40", "label": "Coprite Alloy", "note": "Chassis" },
+    { "qty": "55", "label": "Grokdrul", "note": "Engine" },
+    { "qty": "20", "label": "Kuaka Spinal Claw", "note": "Grip" },
+    { "qty": "75,000", "label": "Credits", "note": null }
+  ],
   "groups": [
     {
-      "type": "gate",
-      "place": "DOJO, VENTKIDS' BASH LAB",
+      "type": "vendor",
+      "place": "CLAN DOJO, VENTKIDS' BASH LAB",
       "sub": null,
-      "activity": "clan research, five projects",
-      "meta": "skip if already researched; 72h each, 10,000 cr each",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Ghoulsaw",
-          "note": "1 Detonite Injector, 1 Neural Sensors, 175 Rubedo, 2,750 Alloy Plate",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Blade",
-          "note": "25 Detonite Ampule, 1 Gallium, 950 Polymer Bundle, 1,850 Nano Spores",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Chassis",
-          "note": "25 Detonite Ampule, 125 Oxium, 755 Plastids, 3,250 Salvage",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Engine",
-          "note": "25 Detonite Ampule, 1 Control Module, 750 Cryotic, 2,500 Ferrite",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Grip",
-          "note": "25 Detonite Ampule, 1 Morphics, 115 Circuits, 1,625 Alloy Plate",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "These are Ghost-clan costs; larger clans pay more. The Bash Lab needs an Oracle and a Tenno Lab built first, so most clans lack it. Join one with the research done and this costs you nothing.",
-        "Research sits at Awaiting Funds until the vault is stocked: in a clan that has not done it, you fund all five.",
-        "The Detonite Injector is a Chem Lab item: Grineer Invasion reward (3 per completion), rare Grineer storage containers, tier 4 Orb Vallis bounty stages, or crafted in a Chem Lab (10 Detonite Ampule, 1 Control Module, 500 Salvage, 250 Plastids, 15,000 cr, 12h)."
-      ],
-      "bonuses": [],
-      "disclosures": [
-        {
-          "title": "where the research materials come from",
-          "body": "Detonite Ampule is a Grineer resource: Dark Sector survivals on Ceres (Gabii) and Saturn (Piscinas), Earth Cervantes sabotage caches, and 3 per Grineer Invasion reward. Neural Sensors: Themisto (Alad V, 2-4 per kill), a Jupiter survival, or Kuva Fortress survival with a Resourceful Retriever beast. Oxium is slow, so run it with a Resource Booster on Phobos Gulliver or Jupiter Io defense."
-        },
-        {
-          "title": "why not build a dojo",
-          "body": "A player who built the Oracle and Bash Lab solo for this one weapon locked up their power and needed rescuing. Research-complete clans are asked about in recruitment and region chat."
-        }
-      ]
-    },
-    {
-      "type": "research",
-      "place": "DOJO, VENTKIDS' BASH LAB",
-      "sub": null,
-      "activity": "replicate the blueprints",
+      "activity": "buy the blueprints",
       "meta": "15,000 cr each, 75,000 cr",
       "mode": null,
       "live": null,
@@ -123,138 +76,8 @@
           "done": false
         }
       ],
-      "conditions": [
-        "Replication costs credits per piece and per player, even when the clan did the research."
-      ],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "PLAINS OF EIDOLON, EARTH",
-      "sub": null,
-      "activity": "fish Sharrac, mine Coprun, break Grineer drums, hunt Kuaka",
-      "meta": "one Plains trip",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": "plains-of-eidolon",
-      "rows": [
-        {
-          "qty": "15",
-          "label": "Sharrac Teeth",
-          "note": "Blade; 1 per Sharrac caught with Twilight Bait, Lanzo or Tulok spears",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "40",
-          "label": "Coprite Alloy",
-          "note": "Chassis; crafted 20 per batch from 20 Coprun (red ore veins), 1,000 cr and 1 minute each, two batches",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "55",
-          "label": "Grokdrul",
-          "note": "Engine; Grineer camp drums and bounties, more per drum from higher-level bounties",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "20",
-          "label": "Kuaka Spinal Claw",
-          "note": "Grip",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Twilight Bait is bought from Hai-Luk for 100 Offworlder standing, or crafted from 1,000 cr, 10 Nistlepod, 10 Fish Oil, 20 Fish Meat and 1 Maprico. This is the step people forget."
-      ],
-      "bonuses": ["Ivara with Prowl gets 2 Kuaka Spinal Claws per Kuaka."],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "VARIOUS PLANETS",
-      "sub": null,
-      "activity": "the rare singles, taken from whatever you run anyway",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "1",
-          "label": "Tellurium",
-          "note": "Blade; rare, Archwing, Grineer Sealab, Kuva Fortress Assault, Empyrean",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "5",
-          "label": "Morphics",
-          "note": "Chassis; Mercury, Mars, Phobos, Europa, Pluto",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "120",
-          "label": "Oxium",
-          "note": "Chassis; Phobos Gulliver or Jupiter Io defense",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "5",
-          "label": "Control Module",
-          "note": "Engine; Europa, Neptune, the Void (best)",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "3",
-          "label": "Gallium",
-          "note": "Grip; Mars, Uranus",
-          "alt": null,
-          "done": false
-        }
-      ],
       "conditions": [],
       "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "ANY RESOURCE-RICH MISSION",
-      "sub": null,
-      "activity": "bulk common resources with a loot frame",
-      "meta": "Steel Path adds +100% resource drops",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        { "qty": "3,150", "label": "Ferrite", "note": "Engine", "alt": null, "done": false },
-        { "qty": "2,875", "label": "Alloy Plate", "note": "Blade", "alt": null, "done": false },
-        { "qty": "1,825", "label": "Salvage", "note": "Chassis", "alt": null, "done": false },
-        { "qty": "1,700", "label": "Nano Spores", "note": "Grip", "alt": null, "done": false },
-        { "qty": "925", "label": "Polymer Bundle", "note": "Grip", "alt": null, "done": false },
-        { "qty": "675", "label": "Rubedo", "note": "Blade", "alt": null, "done": false },
-        { "qty": "450", "label": "Circuits", "note": "Engine", "alt": null, "done": false }
-      ],
-      "conditions": [],
-      "bonuses": [
-        "Xaku or Limbo clearing Cambion Drift cysts in a wide radius, with a Fetch companion, was reported at about 300 Plastids per 2-3 minutes; the same works on crate resources. Atlas (Ore Gaze), Nekros, Khora and Hydroid also loot well."
-      ],
       "disclosures": []
     },
     {

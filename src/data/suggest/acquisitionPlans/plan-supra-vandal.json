@@ -9,6 +9,7 @@
     { "text": "MR 14", "tone": "info" }
   ],
   "prices": [{ "label": "Baro Ki'Teer", "amount": "275,000 cr + 500 Ducats", "money": false }],
+  "materials": [{ "qty": "275,000", "label": "Credits", "note": null }],
   "groups": [
     {
       "type": "currency",
@@ -16,10 +17,10 @@
       "sub": null,
       "activity": "crack relics, sell Prime parts at a Relay Ducat Kiosk",
       "meta": "bank it before Baro lands",
-      "mode": "full squad recommended",
+      "mode": null,
       "live": null,
       "skip": null,
-      "earns": { "currency": "Ducats", "amount": "500" },
+      "earns": { "currency": "Orokin Ducats", "amount": "500" },
       "spends": [],
       "map": null,
       "rows": [
@@ -32,20 +33,10 @@
         },
         { "qty": "275,000", "label": "Credits", "note": null, "alt": null, "done": false }
       ],
-      "conditions": [
-        "Forma blueprints can't be sold for Ducats; pick relics whose uncommon slot isn't Forma.",
-        "Only sell duplicates and parts from Primes you've already built or mastered."
-      ],
-      "bonuses": [
-        "Short Capture and Exterminate fissures in a full squad give four rewards to pick from, raising the odds of a 100-Ducat rare.",
-        "Refining relics to Radiant with banked Void Traces raises the rare odds."
-      ],
-      "disclosures": [
-        {
-          "title": "the Ducat rate",
-          "body": "One long-term player measured about 40-50 Ducats per relic run and about 1,200 Ducats an hour with fast Captures and Exterminates, so 500 is well under an hour. The Kiosks are open between visits, so stockpile rather than scrambling during Baro's 48 hours."
-        }
-      ]
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": [],
+      "ref": "Orokin Ducats"
     },
     {
       "type": "vendor",
@@ -59,7 +50,7 @@
       "earns": null,
       "spends": [
         { "currency": "Credits", "amount": "275,000" },
-        { "currency": "Ducats", "amount": "500" }
+        { "currency": "Orokin Ducats", "amount": "500" }
       ],
       "map": null,
       "rows": [

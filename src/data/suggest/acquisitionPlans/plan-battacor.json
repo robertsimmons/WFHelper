@@ -12,37 +12,19 @@
     { "label": "blueprint", "amount": "15,000 cr", "money": false },
     { "label": "build", "amount": "25,000 cr", "money": false }
   ],
+  "materials": [
+    { "qty": "10", "label": "Fieldron", "note": null },
+    { "qty": "20", "label": "Tromyzon Entroplasma", "note": null },
+    { "qty": "25", "label": "Heart Noctrul", "note": null },
+    { "qty": "40", "label": "Tepa Nodule", "note": null },
+    { "qty": "15,000", "label": "Credits", "note": null }
+  ],
   "groups": [
     {
-      "type": "gate",
-      "place": "DOJO, ENERGY LAB",
+      "type": "vendor",
+      "place": "CLAN DOJO, ENERGY LAB",
       "sub": null,
-      "activity": "clan research",
-      "meta": "skip if already researched",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Energy Lab: Ocucor, then Battacor",
-          "note": "3 days for the Battacor research",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": ["In an established clan this is already done and costs you nothing."],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "research",
-      "place": "DOJO, ENERGY LAB",
-      "sub": null,
-      "activity": "replicate the blueprint",
+      "activity": "buy the blueprint",
       "meta": "15,000 cr",
       "mode": null,
       "live": null,
@@ -62,92 +44,6 @@
       "conditions": ["MR 10 gate to build it."],
       "bonuses": [],
       "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "STAR CHART",
-      "sub": null,
-      "activity": "Corpus-side Invasions",
-      "meta": "3 per Invasion; start crafting the rest now",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "10",
-          "label": "Fieldron",
-          "note": "3 per Corpus-reward Invasion",
-          "alt": "or craft from Fieldron Samples, 12h each",
-          "done": false
-        }
-      ],
-      "conditions": [
-        "The recipe wants built Fieldron, not Fieldron Samples. The foundry runs several at once, so queue every crafted one together while you do the Vallis part."
-      ],
-      "bonuses": [
-        "Rare Corpus storage containers and tier 4 Orb Vallis bounty stages also drop Fieldron."
-      ],
-      "disclosures": [
-        {
-          "title": "crafting Fieldron",
-          "body": "The Energy Lab Fieldron blueprint costs 15,000 credits. Each build makes 1 Fieldron for 15,000 credits, 10 Fieldron Samples, 1 Control Module, 500 Salvage, 250 Plastids and 12 hours. Samples drop from Corpus enemies."
-        }
-      ]
-    },
-    {
-      "type": "farm",
-      "place": "ORB VALLIS, VENUS",
-      "sub": "the sperm-shaped pond below the Transit Depot",
-      "activity": "fish Tromyzon at hotspots in Cold weather; mine and gather nearby",
-      "meta": "one session",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": "orb-vallis",
-      "rows": [
-        {
-          "qty": "20",
-          "label": "Tromyzon Entroplasma",
-          "note": "1 per Tromyzon at any quality; dismantle at The Business",
-          "alt": "Exploiter Orb",
-          "done": false
-        },
-        {
-          "qty": "25",
-          "label": "Heart Noctrul",
-          "note": "30 Noctrul (blue veins), 3 refines of 10 at 1,000 cr",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "40",
-          "label": "Tepa Nodule",
-          "note": "cave plant clusters, 3-4 per pickup",
-          "alt": "common bounty reward",
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Tromyzon only spawn at an active hotspot (oily green sheen) in Cold weather, never in Warm and never in lakes.",
-        "The Heart Noctrul refine blueprint costs 1,000 credits from Smokefinger at Solaris United Neutral."
-      ],
-      "bonuses": [
-        "One Tromyzon Bait (300 Solaris United standing, Doer) often yields 14-20+ fish; without bait, about 5 spawn in 8-10 minutes.",
-        "Resource Boosters double the Tromyzon you catch.",
-        "The Stunna spear's pulse stuns nearby fish; Plains spears work too and still give the Entroplasma.",
-        "The area above the pond, between the Enrichment Labs and Transit Depot, is packed with mining nodes."
-      ],
-      "disclosures": [
-        {
-          "title": "when the pond goes quiet",
-          "body": "Switch ponds rather than waiting. The small upper-right pond by the processing facility and the big north-west pond are reliable alternatives. At the sperm pond, stand on the crashed ship or the beach; up to two hotspots spawn and one bait can cover both."
-        }
-      ]
     },
     {
       "type": "foundry",

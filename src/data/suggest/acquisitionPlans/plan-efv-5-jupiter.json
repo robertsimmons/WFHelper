@@ -12,6 +12,22 @@
     { "label": "blueprints", "amount": "30,000 standing", "money": false },
     { "label": "build", "amount": "80,000 cr", "money": false }
   ],
+  "materials": [
+    { "qty": "1,500", "label": "Alloy Plate", "note": "Barrel" },
+    { "qty": "1,300", "label": "Salvage", "note": "Barrel" },
+    { "qty": "230", "label": "Polymer Bundle", "note": "Barrel" },
+    { "qty": "1,500", "label": "Ferrite", "note": "Receiver" },
+    { "qty": "1", "label": "Argon Crystal", "note": "Receiver" },
+    { "qty": "1,300", "label": "Plastids", "note": "Stock" },
+    { "qty": "1,000", "label": "Rubedo", "note": "Stock" },
+    { "qty": "185", "label": "Efervon Sample", "note": "rank-ups + Receiver" },
+    { "qty": "190", "label": "Hollvanian Pitchweave Fragment", "note": "rank-ups + Stock" },
+    { "qty": "43", "label": "Experimental Arc-Relay", "note": "Rank 2 + Barrel + Stock" },
+    { "qty": "18", "label": "Techrot Motherboard", "note": "Rank 5 + Receiver" },
+    { "qty": "25", "label": "Techrot Chitin", "note": "Rank 4" },
+    { "qty": "25", "label": "Necracoil", "note": "Rank 4" },
+    { "qty": "12", "label": "Entrati Obols", "note": "Rank 2" }
+  ],
   "groups": [
     {
       "type": "gate",
@@ -54,7 +70,7 @@
       "mode": null,
       "live": null,
       "skip": null,
-      "earns": { "currency": "Hex standing", "amount": "270,000" },
+      "earns": { "currency": "The Hex Standing", "amount": "270,000" },
       "spends": [],
       "map": "hollvania",
       "rows": [
@@ -102,71 +118,8 @@
         "Treasures pay Big Bytes Pizza 2,500, Argon Burger Meal 1,500, the other six 750 each. After Rank 5, Temporal Archimedea pays 15,000 for all three missions.",
         "Parallax's air support charge pings Hex Treasures on the map."
       ],
-      "disclosures": [
-        {
-          "title": "pace",
-          "body": "The daily cap is the only wall; players report near max rank in about a week. Take bounty-reward blueprints for other Hex gear instead of buying them so standing goes into rank-ups. A bounty objective that fails to spawn means abandoning and rerolling."
-        }
-      ]
-    },
-    {
-      "type": "farm",
-      "place": "HÖLLVANIA",
-      "sub": null,
-      "activity": "enemies, containers, Stockpiles and the Techrot underground",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": "hollvania",
-      "rows": [
-        {
-          "qty": "185",
-          "label": "Efervon Sample",
-          "note": "rank-ups + Receiver; Scaldra and Stockpiles",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "190",
-          "label": "Hollvanian Pitchweave Fragment",
-          "note": "rank-ups + Stock; best from Lvl 115-120 and 75-80 bounties",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "43",
-          "label": "Experimental Arc-Relay",
-          "note": "Rank 2 + Barrel + Stock; Rhu Manor / Mausoleum East Exterminate",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "18",
-          "label": "Techrot Motherboard",
-          "note": "Rank 5 + Receiver; underground Techrot areas only",
-          "alt": null,
-          "done": false
-        },
-        { "qty": "25", "label": "Techrot Chitin", "note": "Rank 4", "alt": null, "done": false },
-        { "qty": "25", "label": "Necracoil", "note": "Rank 4", "alt": null, "done": false },
-        {
-          "qty": "12",
-          "label": "Entrati Obols",
-          "note": "Rank 2; from Albrecht's Laboratories, Deimos",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "These keep dropping while you farm standing, so this is a top-up, not a separate trip."
-      ],
-      "bonuses": [
-        "Stage Defense (Rank 4) with a resource booster is praised for Arc-Relay, Efervon and Motherboard hauls."
-      ],
-      "disclosures": []
+      "disclosures": [],
+      "ref": "The Hex Standing"
     },
     {
       "type": "vendor",
@@ -178,7 +131,7 @@
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Hex standing", "amount": "30,000" }],
+      "spends": [{ "currency": "The Hex Standing", "amount": "30,000" }],
       "map": null,
       "rows": [
         {
@@ -197,31 +150,6 @@
         }
       ],
       "conditions": ["Untradeable, so everything comes from your own standing."],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "HÖLLVANIA",
-      "sub": null,
-      "activity": "Hell-Scrub or Legacyte Harvest",
-      "meta": "1 needed, farm last",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": "hollvania",
-      "rows": [
-        {
-          "qty": "1",
-          "label": "Argon Crystal",
-          "note": "Receiver; decays after pickup",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": ["Argon halves at daily reset; grab it right before building the Receiver."],
       "bonuses": [],
       "disclosures": []
     },
@@ -254,7 +182,7 @@
         },
         {
           "qty": null,
-          "label": "Stock",
+          "label": "EFV-5 Jupiter Stock",
           "note": "20,000 cr, 150 Hollvanian Pitchweave Fragment, 15 Experimental Arc-Relay, 1,300 Plastids, 1,000 Rubedo",
           "alt": null,
           "done": false

@@ -12,6 +12,10 @@
     { "label": "Loid set", "amount": "26,000 Necraloid standing", "money": false },
     { "label": "build", "amount": "20,000 cr", "money": false }
   ],
+  "materials": [
+    { "qty": "1", "label": "Trapezium Xenorhast", "note": null },
+    { "qty": "1", "label": "Cabochon Embolos", "note": null }
+  ],
   "groups": [
     {
       "type": "gate",
@@ -55,7 +59,7 @@
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Entrati standing", "amount": "19,000" }],
+      "spends": [{ "currency": "Entrati Standing", "amount": "19,000" }],
       "map": "necralisk",
       "rows": [
         {
@@ -91,7 +95,8 @@
         "Sacrifice the unbuilt barrel blueprints; never put one into the Foundry first."
       ],
       "bonuses": [],
-      "disclosures": []
+      "disclosures": [],
+      "ref": "Entrati Standing"
     },
     {
       "type": "bounty",
@@ -102,7 +107,7 @@
       "mode": "squad if it holds, else solo",
       "live": null,
       "skip": null,
-      "earns": { "currency": "Necraloid standing", "amount": "53,000" },
+      "earns": { "currency": "Necraloid Standing", "amount": "53,000" },
       "spends": [],
       "map": "cambion-drift",
       "rows": [
@@ -112,7 +117,7 @@
           "note": "12.5% stage 1, 7.81% stages 2-3",
           "alt": {
             "text": "Loid, Necraloid Rank 2",
-            "spends": [{ "currency": "Necraloid standing", "amount": "8,000" }]
+            "spends": [{ "currency": "Necraloid Standing", "amount": "8,000" }]
           },
           "done": false
         },
@@ -122,7 +127,7 @@
           "note": "4.69% stages 2-3, 7.5% final stage",
           "alt": {
             "text": "Loid, Necraloid Rank 2, 6,000 each",
-            "spends": [{ "currency": "Necraloid standing", "amount": "12,000" }]
+            "spends": [{ "currency": "Necraloid Standing", "amount": "12,000" }]
           },
           "done": false
         },
@@ -132,7 +137,7 @@
           "note": "4% final stage only",
           "alt": {
             "text": "Loid, Necraloid Rank 2",
-            "spends": [{ "currency": "Necraloid standing", "amount": "6,000" }]
+            "spends": [{ "currency": "Necraloid Standing", "amount": "6,000" }]
           },
           "done": false
         },
@@ -154,19 +159,13 @@
       "conditions": [
         "Only Tier 2 (Lvl 40-50) vaults drop Arum Spinosa; Tier 1 and Tier 3 don't.",
         "Clearing the normal Tier 2 vault unlocks its Arcana bounty, started from Mother in the Drift between Albrecht's Prospect and Catabolic Gutter, never from the Necralisk.",
-        "Matrix turn-ins count toward the daily standing cap (16,000 + 500 per MR), so expect several days of cap.",
         "A broken vault exit can void the run's rewards."
       ],
       "bonuses": [
         "Tier 2 Necramechs drop Ballistics Matrices (2,500 standing each); Orientation is 1,000 and Animus 5,000.",
-        "A Resource Booster doubles matrices; Nekros Desecrate and Resourceful Retriever help on the Necramech kills.",
         "Most runs end with spare Guards and no Rivet: bank the drops and spend 6,000 standing on the Rivet."
       ],
       "disclosures": [
-        {
-          "title": "Orientation Matrices for Rank 1",
-          "body": "Tier 3 bounties list Orientation Matrices but in practice hand out Animus. If you're short on the 10 Orientation, run Tier 1, where every Necramech kill drops one. Higher tiers spawn more Necramechs, so move up once Rank 1 is done."
-        },
         {
           "title": "normal vault odds",
           "body": "A plain Tier 2 Isolation Vault rolls the Blueprint at 6.25%, Guard at 3.75% and Rivet at 2%. The Arcana version roughly doubles that, and its final stage is the only decent Rivet source. Old advice about watching rotations for the Rivet no longer applies."
@@ -179,7 +178,8 @@
           "title": "buying from players",
           "body": "Parts are tradeable; before the Loid listing a Rivet went for roughly 40-55 platinum."
         }
-      ]
+      ],
+      "ref": "Necraloid Standing"
     },
     {
       "type": "farm",
@@ -199,20 +199,6 @@
           "label": "Sunpoint Plasma Drill",
           "note": "Smokefinger in Fortuna, 2,500 Solaris United standing at Rank 0",
           "alt": "Advanced Nosam Cutter, 1,000 Ostron standing at Rank 4",
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Xenorhast",
-          "note": "refines into Trapezium Xenorhast",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Embolos",
-          "note": "refines into Cabochon Embolos",
-          "alt": null,
           "done": false
         }
       ],
@@ -235,20 +221,6 @@
       "spends": [],
       "map": null,
       "rows": [
-        {
-          "qty": null,
-          "label": "Trapezium Xenorhast",
-          "note": "1,000 cr per build, yields 3",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Cabochon Embolos",
-          "note": "1,000 cr per build, yields 3",
-          "alt": null,
-          "done": false
-        },
         {
           "qty": null,
           "label": "Arum Spinosa",

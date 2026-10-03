@@ -1,5 +1,7 @@
 import { groupFacts, planEras, standingOwners } from "./facts.js";
 import { formatGap, resolveCycleLive } from "./live.js";
+import { materialGroups } from "./materials.js";
+import { resourceEntry, type ResourceLookup } from "./resources.js";
 import { altSpends, altText, type AuthoredPlan, type PlanGroup, type PlanRow } from "./schema.js";
 import {
   formatQuantity,
@@ -26,9 +28,45 @@ import type {
 const MAPS_READY = new Set<string>();
 
 const LEADING_AMOUNT = /^([\d,]+)\b/;
+const CREDITS = "Credits";
 
-function rowId(groupIndex: number, rowIndex: number): string {
-  return `${groupIndex}:${rowIndex}`;
+interface PlanEntry {
+  group: PlanGroup;
+  id: string;
+  rowId: (rowIndex: number) => string;
+}
+
+function withRefTips(group: PlanGroup, lookup: ResourceLookup): PlanGroup {
+  const tips = group.ref ? (lookup(group.ref)?.tips ?? []) : [];
+  if (tips.length === 0) return group;
+  return { ...group, bonuses: [...new Set([...group.bonuses, ...tips])] };
+}
+
+/** Stored ticks are keyed by row id, so an authored row keeps the position it
+ *  has in the file, and a material row, which moves whenever the store does, is
+ *  keyed by its label. */
+function planEntries(plan: AuthoredPlan, lookup: ResourceLookup): PlanEntry[] {
+  const authored: PlanEntry[] = plan.groups.map((group, groupIndex) => ({
+    group: withRefTips(group, lookup),
+    id: String(groupIndex),
+    rowId: (rowIndex) => `${groupIndex}:${rowIndex}`,
+  }));
+  const needs = (plan.materials ?? []).map((material) => ({
+    label: material.label,
+    qty: parseQuantity(material.qty),
+    note: material.note,
+  }));
+  if (needs.length === 0) return authored;
+  const materials: PlanEntry[] = materialGroups(needs, lookup).map((group, groupIndex) => ({
+    group,
+    id: `m${groupIndex}`,
+    rowId: (rowIndex) => `m:${group.rows[rowIndex].label.trim().toLowerCase()}`,
+  }));
+  const build = authored.findIndex(
+    (entry) => entry.group.type === "craft" || entry.group.type === "foundry",
+  );
+  const at = build === -1 ? authored.length : build;
+  return [...authored.slice(0, at), ...materials, ...authored.slice(at)];
 }
 
 /** Per-row shares of a group's spend, but only when the row notes add up to the
@@ -55,13 +93,19 @@ function resolveRow(
   id: string,
   itemName: string,
   state: PlayerState,
+  lookup: ResourceLookup,
   answers: { done: Set<string>; cleared: Set<string>; altsTaken: Set<string> },
 ): RowResult {
   const required = parseQuantity(row.qty);
   // A quest keychain is not an owned item, so the ownership map answers 0 for a
   // label the quest index can answer properly.
   const quest = questDoneForLabel(state, row.label);
-  const owned = quest === null ? ownedForLabel(state, row.label, itemName) : null;
+  const owned =
+    quest !== null
+      ? null
+      : lookup(row.label)?.name === CREDITS
+        ? state.credits
+        : ownedForLabel(state, row.label, itemName);
   const tracked = owned !== null;
   const remaining = Math.max(0, required - (owned ?? 0));
 
@@ -173,15 +217,25 @@ export function resolvePlan(
     altsTaken: new Set(context.altsTaken ?? []),
   };
   const itemName = plan.name;
+  const lookup = context.resources ?? resourceEntry;
+  const entries = planEntries(plan, lookup);
+  const planGroups = entries.map((entry) => entry.group);
 
   const rowsByGroup: ResolvedRow[][] = [];
   const doneByGroup: boolean[] = [];
 
-  plan.groups.forEach((group, groupIndex) => {
+  planGroups.forEach((group, groupIndex) => {
     const rows: ResolvedRow[] = [];
     let allDone = true;
     group.rows.forEach((row, rowIndex) => {
-      const result = resolveRow(row, rowId(groupIndex, rowIndex), itemName, state, answers);
+      const result = resolveRow(
+        row,
+        entries[groupIndex].rowId(rowIndex),
+        itemName,
+        state,
+        lookup,
+        answers,
+      );
       rows.push(result.row);
       if (!result.done) allDone = false;
     });
@@ -192,11 +246,13 @@ export function resolvePlan(
   const earned = new Map<string, number>();
   const spent = new Map<string, number>();
   const outstanding = new Map<string, number>();
+  // An alias such as Höllars books under its target, so the ledger has one line.
   const add = (table: Map<string, number>, currency: string, value: number): void => {
-    table.set(currency, (table.get(currency) ?? 0) + value);
+    const name = lookup(currency)?.name ?? currency;
+    table.set(name, (table.get(name) ?? 0) + value);
   };
 
-  plan.groups.forEach((group, groupIndex) => {
+  planGroups.forEach((group, groupIndex) => {
     if (group.earns) add(earned, group.earns.currency, parseQuantity(group.earns.amount));
     const rows = rowsByGroup[groupIndex];
     for (const spend of group.spends) {
@@ -221,11 +277,18 @@ export function resolvePlan(
     }
   });
 
-  const eras = planEras(plan.groups);
-  const unresolved = new Set<PlanFactKind>();
-  const standingByGroup = standingOwners(plan.groups);
+  // A spent currency the plan lists as a material is banked by that material's farm.
+  const banked = new Set(earned.keys());
+  for (const material of plan.materials ?? []) {
+    const name = lookup(material.label)?.name ?? material.label;
+    if (spent.has(name) && !banked.has(name)) add(earned, name, parseQuantity(material.qty));
+  }
 
-  const groups: ResolvedGroup[] = plan.groups.map((group, groupIndex) => {
+  const eras = planEras(planGroups);
+  const unresolved = new Set<PlanFactKind>();
+  const standingByGroup = standingOwners(planGroups);
+
+  const groups: ResolvedGroup[] = planGroups.map((group, groupIndex) => {
     const rows = rowsByGroup[groupIndex];
     const facts = groupFacts(group, {
       state,
@@ -241,10 +304,12 @@ export function resolvePlan(
 
     const live = resolveLive(group, itemName, state, context, now);
     const earns = group.earns && !namesCurrency(group, group.earns.currency) ? group.earns : null;
-    const earnedTotal = earns ? (outstanding.get(earns.currency) ?? 0) : 0;
+    const earnedTotal = earns
+      ? (outstanding.get(lookup(earns.currency)?.name ?? earns.currency) ?? 0)
+      : 0;
 
     return {
-      id: String(groupIndex),
+      id: entries[groupIndex].id,
       type: group.type,
       place: group.place,
       sub: group.sub,

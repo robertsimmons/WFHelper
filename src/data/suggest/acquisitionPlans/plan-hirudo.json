@@ -9,6 +9,15 @@
     { "text": "consumes a Kogake", "tone": "info" }
   ],
   "prices": [{ "label": "build", "amount": "90,000 cr", "money": false }],
+  "materials": [
+    { "qty": "400", "label": "Rubedo", "note": "Kogake" },
+    { "qty": "3", "label": "Morphics", "note": "Kogake" },
+    { "qty": "1,200", "label": "Ferrite", "note": "Kogake" },
+    { "qty": "500", "label": "Alloy Plate", "note": "Kogake" },
+    { "qty": "3", "label": "Nitain Extract", "note": "Hirudo" },
+    { "qty": "1,100", "label": "Plastids", "note": "Hirudo" },
+    { "qty": "4,600", "label": "Nano Spores", "note": "Hirudo" }
+  ],
   "groups": [
     {
       "type": "vendor",
@@ -39,31 +48,6 @@
         }
       ],
       "conditions": ["The Hirudo recipe consumes a built Kogake, so buy both blueprints up front."],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "vendor",
-      "place": "NIGHTWAVE OFFERINGS",
-      "sub": null,
-      "activity": "buy Nitain Extract",
-      "meta": "always available",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [{ "currency": "Nightwave Creds", "amount": "15" }],
-      "map": null,
-      "rows": [
-        {
-          "qty": "3",
-          "label": "Nitain Extract",
-          "note": "5 for 15 Nightwave Creds",
-          "alt": "Resource Cache Rotation C in Sabotage/Exterminate, Ghoul Purge bounties, Gift of the Lotus alerts",
-          "done": false
-        }
-      ],
-      "conditions": [],
       "bonuses": [],
       "disclosures": []
     },

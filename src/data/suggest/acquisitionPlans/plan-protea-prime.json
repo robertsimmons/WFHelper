@@ -9,6 +9,21 @@
     { "text": "Prime Resurgence", "tone": "info" }
   ],
   "prices": [{ "label": "set, player trade", "amount": "~40-80 p", "money": false }],
+  "materials": [
+    { "qty": "8", "label": "Neural Sensors", "note": "Neuroptics" },
+    { "qty": "10", "label": "Control Module", "note": "Neuroptics" },
+    { "qty": "250", "label": "Oxium", "note": "Neuroptics" },
+    { "qty": "3,750", "label": "Salvage", "note": "Neuroptics" },
+    { "qty": "2", "label": "Argon Crystal", "note": "Chassis" },
+    { "qty": "8", "label": "Morphics", "note": "Chassis" },
+    { "qty": "1,200", "label": "Rubedo", "note": "Chassis" },
+    { "qty": "4,250", "label": "Ferrite", "note": "Chassis" },
+    { "qty": "2", "label": "Nitain Extract", "note": "Systems" },
+    { "qty": "370", "label": "Cryotic", "note": "Systems" },
+    { "qty": "875", "label": "Circuits", "note": "Systems" },
+    { "qty": "4,800", "label": "Nano Spores", "note": "Systems" },
+    { "qty": "5", "label": "Orokin Cell", "note": null }
+  ],
   "groups": [
     {
       "type": "vendor",
@@ -84,19 +99,16 @@
       ],
       "conditions": [
         "Aya is untradeable and cannot be boosted, but it stays in inventory after a rotation ends.",
-        "High-level Cetus and Deimos bounties are the community's preferred dedicated farms; Deimos is friendlier solo because objectives scale with squad size.",
         "Relic packs can produce Aya but never vaulted Protea relics."
       ],
-      "bonuses": [
-        "Bank Aya passively through standing-funded relic packs, rather than trying to target-farm it only after Protea returns.",
-        "Void missions guarantee a relic or Aya, but fast Hepit captures are a weak Aya route compared with bounties."
-      ],
+      "bonuses": [],
       "disclosures": [
         {
           "title": "the rotation has no published queue",
           "body": "Varzia changes stock every 28 days at 18:00 UTC, but future offerings are not announced far enough ahead to schedule Protea. Check the live Prime Resurgence page before acting."
         }
-      ]
+      ],
+      "ref": "Aya"
     },
     {
       "type": "vendor",
@@ -209,58 +221,6 @@
       ]
     },
     {
-      "type": "farm",
-      "place": "THE VOID",
-      "sub": null,
-      "activity": "farm Argon after parts are ready",
-      "meta": "pick up last",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": "void",
-      "rows": [
-        { "qty": "2", "label": "Argon Crystal", "note": "Chassis", "alt": null, "done": false },
-        { "qty": "8", "label": "Neural Sensors", "note": "Neuroptics", "alt": null, "done": false },
-        {
-          "qty": "10",
-          "label": "Control Modules",
-          "note": "Neuroptics",
-          "alt": null,
-          "done": false
-        },
-        { "qty": "8", "label": "Morphics", "note": "Chassis", "alt": null, "done": false },
-        { "qty": "370", "label": "Cryotic", "note": "Systems", "alt": null, "done": false }
-      ],
-      "conditions": [
-        "Argon halves every 24 hours from acquisition, so collect it after the relevant blueprint and other materials are ready."
-      ],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "vendor",
-      "place": "NIGHTWAVE",
-      "sub": null,
-      "activity": "Evergreen Offerings",
-      "meta": "check Cred balance",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        { "qty": "2", "label": "Nitain Extract", "note": "Systems", "alt": null, "done": false }
-      ],
-      "conditions": [
-        "Nitain is a build gate rather than a mission resource. Check current acquisition options and your supply before committing to the rest of the build."
-      ],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
       "type": "foundry",
       "place": "FOUNDRY",
       "sub": null,
@@ -276,28 +236,28 @@
         {
           "qty": null,
           "label": "Protea Prime Neuroptics",
-          "note": "8 Neural Sensors, 10 Control Modules",
+          "note": "15,000 cr, 8 Neural Sensors, 10 Control Module, 250 Oxium, 3,750 Salvage",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Protea Prime Chassis",
-          "note": "2 Argon Crystals, 8 Morphics",
+          "note": "15,000 cr, 2 Argon Crystal, 8 Morphics, 1,200 Rubedo, 4,250 Ferrite",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Protea Prime Systems",
-          "note": "2 Nitain Extract, 370 Cryotic",
+          "note": "15,000 cr, 2 Nitain Extract, 370 Cryotic, 875 Circuits, 4,800 Nano Spores",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Protea Prime",
-          "note": "5 Orokin Cells",
+          "note": "25,000 cr, 5 Orokin Cell, 3 days",
           "alt": null,
           "done": false
         }

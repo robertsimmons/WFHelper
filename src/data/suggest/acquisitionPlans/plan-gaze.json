@@ -12,6 +12,15 @@
     { "label": "parts + assembly", "amount": "19,000 cr", "money": false },
     { "label": "gild", "amount": "5,000 cr", "money": false }
   ],
+  "materials": [
+    { "qty": "1,200", "label": "Cryotic", "note": "Gaze Chamber" },
+    { "qty": "600", "label": "Rubedo", "note": "Venerdo Alloy refines" },
+    { "qty": "4", "label": "Gallium", "note": "Venerdo Alloy refines" },
+    { "qty": "10", "label": "Shelter Debt-Bond", "note": null },
+    { "qty": "15", "label": "Tepa Nodule", "note": null },
+    { "qty": "40", "label": "Venerdo Alloy", "note": null },
+    { "qty": "40", "label": "Kriller Thermal Laser", "note": null }
+  ],
   "groups": [
     {
       "type": "gate",
@@ -59,13 +68,6 @@
           "note": "Training, Shelter and Medical bonds; exact counts per rank not itemized here",
           "alt": "Ticker sells cheap Training/Shelter bonds for credits and materials",
           "done": false
-        },
-        {
-          "qty": "10",
-          "label": "Shelter Debt-Bond",
-          "note": "spent again at the gild, separate from rank-up costs",
-          "alt": null,
-          "done": false
         }
       ],
       "conditions": [
@@ -86,7 +88,7 @@
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Solaris United standing", "amount": "1,000" }],
+      "spends": [{ "currency": "Solaris United Standing", "amount": "1,000" }],
       "map": null,
       "rows": [
         {
@@ -113,55 +115,6 @@
       ],
       "conditions": [
         "Grip and loader give no Mastery. Splat is the community's real-build loader, but it needs Cove (Rank 4) and can wait."
-      ],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "ORB VALLIS, VENUS",
-      "sub": "caves for Tepa, The Business for fish, any Excavation for Cryotic",
-      "activity": "gather, mine and fish",
-      "meta": "chamber materials",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": "orb-vallis",
-      "rows": [
-        {
-          "qty": "15",
-          "label": "Tepa Nodule",
-          "note": "glowing plant clusters in Vallis caves; also bounty rewards",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "40",
-          "label": "Venerdo Alloy",
-          "note": "refine from Venerol ore; needs two crafts of the reusable blueprint",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "40",
-          "label": "Kriller Thermal Laser",
-          "note": "1 per Kriller servofish, Vallis lakes, Warm weather only",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "1,200",
-          "label": "Cryotic",
-          "note": "any Excavation mission",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Venerdo Alloy's reusable blueprint costs 2,000 standing from Smokefinger, Rank 1 (Outworlder); each craft yields 20, so this chamber needs two crafts.",
-        "Kriller only spawns during the Vallis's short Warm cycle (a few minutes out of every ~26); each fish gives exactly one laser regardless of size, so plan for 40 catches across several Warm windows."
       ],
       "bonuses": [],
       "disclosures": []

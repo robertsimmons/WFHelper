@@ -9,6 +9,20 @@
     { "text": "tradeable", "tone": "info" }
   ],
   "prices": [{ "label": "build", "amount": "85,000 cr", "money": false }],
+  "materials": [
+    { "qty": "40", "label": "Eevani", "note": null },
+    { "qty": "100", "label": "Ariette Scale", "note": "Lower Limb" },
+    { "qty": "6", "label": "Maw Fang", "note": "Grip" },
+    { "qty": "40", "label": "Kovnik", "note": "Grip" },
+    { "qty": "40", "label": "Connla Sprout", "note": "String" },
+    { "qty": "200", "label": "Lamentus", "note": null },
+    { "qty": "160", "label": "Aggristone", "note": null },
+    { "qty": "75", "label": "Saggen Pearl", "note": "String" },
+    { "qty": "40", "label": "Yao Shrub", "note": null },
+    { "qty": "60", "label": "Dracroot", "note": null },
+    { "qty": "20", "label": "Silphsela", "note": "Lower Limb" },
+    { "qty": "20", "label": "Tasoma Extract", "note": "String" }
+  ],
   "groups": [
     {
       "type": "gate",
@@ -68,13 +82,6 @@
           "note": "main Blueprint, Grip, Lower Limb, Upper Limb or String",
           "alt": null,
           "done": false
-        },
-        {
-          "qty": "40",
-          "label": "Eevani",
-          "note": "Upper Limb; best density here",
-          "alt": null,
-          "done": false
         }
       ],
       "conditions": [
@@ -98,130 +105,6 @@
           "body": "Enigma Sense (once unlocked) waypoints nearby Enigmas. Without it, learn the fixed spawn spots from a community Duviri map, and listen for the Paragrimm owl's distinct sound."
         }
       ]
-    },
-    {
-      "type": "farm",
-      "place": "DUVIRI",
-      "sub": "Maw Feeding",
-      "activity": "fishing",
-      "meta": "one long session",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": "maw-feeding",
-      "rows": [
-        {
-          "qty": "100",
-          "label": "Ariette Scale",
-          "note": "Lower Limb",
-          "alt": null,
-          "done": false
-        },
-        { "qty": "6", "label": "Maw Fang", "note": "Grip", "alt": null, "done": false }
-      ],
-      "conditions": ["Maw Feeding only works in The Duviri Experience, any mood."],
-      "bonuses": ["Take Bountiful Harvest first; it doubles Maw Feeding pickups."],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "DUVIRI",
-      "sub": "Lunaro Court",
-      "activity": "plant gathering",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": "lunaro-court",
-      "rows": [
-        { "qty": "40", "label": "Kovnik", "note": "Grip; near water", "alt": null, "done": false },
-        {
-          "qty": "40",
-          "label": "Connla Sprout",
-          "note": "String; densest here",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": ["Any mood; this is the one plant stop Joy and Envy do not block."],
-      "bonuses": ["Bountiful Harvest doubles plant pickups."],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "DUVIRI",
-      "sub": null,
-      "activity": "Dax, Blinkpads and Aggristone formations",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": "duviri-landscape",
-      "rows": [
-        {
-          "qty": "200",
-          "label": "Lamentus",
-          "note": "all four parts; open-world Dax only",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "160",
-          "label": "Aggristone",
-          "note": "Grip and Upper Limb",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "75",
-          "label": "Saggen Pearl",
-          "note": "String; Blinkpads, any mood",
-          "alt": null,
-          "done": false
-        },
-        { "qty": "40", "label": "Yao Shrub", "note": "Upper Limb", "alt": null, "done": false },
-        { "qty": "60", "label": "Dracroot", "note": "Upper Limb", "alt": null, "done": false },
-        { "qty": "20", "label": "Silphsela", "note": "Lower Limb", "alt": null, "done": false }
-      ],
-      "conditions": [
-        "Lamentus does not drop from Dax inside the Undercroft.",
-        "Yao Shrub, Dracroot and Silphsela have no better community-cited spot beyond general Duviri plants and nodes."
-      ],
-      "bonuses": [
-        "Stall the prisoner-liberation objective short of the completion circle to keep Dax waves spawning."
-      ],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "DUVIRI",
-      "sub": "Caves",
-      "activity": "Tasoma gathering",
-      "meta": "2-4 a node",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": "duviri-caves",
-      "rows": [
-        {
-          "qty": "20",
-          "label": "Tasoma Extract",
-          "note": "String; caves only",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": ["Any mood, but it grows nowhere except inside caves."],
-      "bonuses": ["Fly under the landscape on a Kaithe to spot cave mouths."],
-      "disclosures": []
     },
     {
       "type": "foundry",

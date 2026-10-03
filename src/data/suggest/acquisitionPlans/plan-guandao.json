@@ -9,38 +9,17 @@
     { "label": "blueprint", "amount": "15,000 cr", "money": false },
     { "label": "build", "amount": "15,000 cr", "money": false }
   ],
+  "materials": [
+    { "qty": "3", "label": "Gallium", "note": null },
+    { "qty": "65", "label": "Oxium", "note": null },
+    { "qty": "750", "label": "Polymer Bundle", "note": null },
+    { "qty": "2,500", "label": "Ferrite", "note": null },
+    { "qty": "15,000", "label": "Credits", "note": null }
+  ],
   "groups": [
     {
-      "type": "gate",
-      "place": "DOJO, TENNO LAB",
-      "sub": null,
-      "activity": "clan research",
-      "meta": "skip if already researched",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Tenno Lab: Nami Skyla, then Guandao",
-          "note": "48h, then 72h",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Ghost (x1) tier Guandao research costs 5 Morphics, 1,250 Plastids, 2,500 Cryotic, 4,500 Ferrite and 10,000 credits; bigger clans pay x3/x10/x30/x100.",
-        "In an established clan this is already done and costs you nothing."
-      ],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "research",
-      "place": "DOJO, TENNO LAB",
+      "type": "vendor",
+      "place": "CLAN DOJO, TENNO LAB",
       "sub": null,
       "activity": "buy the blueprint",
       "meta": "15,000 cr",
@@ -53,29 +32,7 @@
       "rows": [
         { "qty": null, "label": "Guandao Blueprint", "note": null, "alt": null, "done": false }
       ],
-      "conditions": [
-        "You must be in a clan with the research finished when you buy; the blueprint stays yours if you leave."
-      ],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "CORPUS MISSIONS",
-      "sub": null,
-      "activity": "kill Oxium Ospreys",
-      "meta": "one or two missions",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        { "qty": "65", "label": "Oxium", "note": null, "alt": null, "done": false },
-        { "qty": "3", "label": "Gallium", "note": "Mars or Uranus", "alt": null, "done": false }
-      ],
-      "conditions": ["Ospreys that self-destruct drop nothing; kill them at range."],
+      "conditions": [],
       "bonuses": [],
       "disclosures": []
     },

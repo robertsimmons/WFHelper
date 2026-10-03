@@ -9,60 +9,17 @@
     { "label": "blueprint", "amount": "15,000 cr", "money": false },
     { "label": "build", "amount": "20,000 cr", "money": false }
   ],
+  "materials": [
+    { "qty": "2", "label": "Morphics", "note": null },
+    { "qty": "200", "label": "Rubedo", "note": null },
+    { "qty": "800", "label": "Salvage", "note": null },
+    { "qty": "1", "label": "Forma", "note": null },
+    { "qty": "15,000", "label": "Credits", "note": null }
+  ],
   "groups": [
     {
-      "type": "gate",
-      "place": "DOJO, TENNO LAB",
-      "sub": null,
-      "activity": "build Oracle Room, then Tenno Lab; research Akstiletto, then Sybaris",
-      "meta": "24h per room, 72h per research",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Oracle Room",
-          "note": "built before the Tenno Lab",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Tenno Lab",
-          "note": "Ghost tier: 1,000 cr, 650 Salvage, 350 Circuits, 350 Polymer Bundle, 1 Forma, 24h",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Akstiletto",
-          "note": "Ghost tier: 5,000 cr, 500 Salvage, 300 Polymer Bundle, 50 Alloy Plate, 1 Gallium, 72h",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Sybaris",
-          "note": "Ghost tier: 5,000 cr, 1 Morphics, 500 Salvage, 50 Rubedo, 300 Polymer Bundle, 72h",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "The two research timers run in sequence, 144 hours of waiting. Start Akstiletto the moment the Tenno Lab is built.",
-        "Research cannot be rushed with platinum, and bigger clan tiers multiply the contribution amounts.",
-        "A solo Ghost clan works. Joining a clan that has it done skips straight to the blueprint."
-      ],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
       "type": "vendor",
-      "place": "DOJO, TENNO LAB",
+      "place": "CLAN DOJO, TENNO LAB",
       "sub": null,
       "activity": "buy the blueprint",
       "meta": "15,000 cr",
@@ -74,87 +31,6 @@
       "map": null,
       "rows": [
         { "qty": null, "label": "Sybaris Blueprint", "note": null, "alt": null, "done": false }
-      ],
-      "conditions": [
-        "Finishing the research does not give you the weapon; you still buy the blueprint and build it."
-      ],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "EUROPA",
-      "sub": null,
-      "activity": "any node, one session",
-      "meta": "Morphics and Rubedo together",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "3",
-          "label": "Morphics",
-          "note": "1 research, 2 build",
-          "alt": "Mars has the highest rate, Kadesh dark sector Survival or Defense",
-          "done": false
-        },
-        {
-          "qty": "250",
-          "label": "Rubedo",
-          "note": "50 research, 200 build",
-          "alt": "also Phobos, Earth, Pluto, Sedna and the Void",
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": ["Titan Extractors on Mercury, Mars and Europa also produce Morphics passively."],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "STAR CHART",
-      "sub": null,
-      "activity": "common drops, plus one Gallium",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "1,800",
-          "label": "Salvage",
-          "note": "500 each for Akstiletto and Sybaris research, 800 build; the Tenno Lab adds 650",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "600",
-          "label": "Polymer Bundle",
-          "note": "300 each for Akstiletto and Sybaris research",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "50",
-          "label": "Alloy Plate",
-          "note": "Akstiletto research",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "1",
-          "label": "Gallium",
-          "note": "Akstiletto research",
-          "alt": null,
-          "done": false
-        },
-        { "qty": null, "label": "Forma", "note": "build input", "alt": null, "done": false }
       ],
       "conditions": [],
       "bonuses": [],
@@ -181,9 +57,7 @@
           "done": false
         }
       ],
-      "conditions": [
-        "The Akstiletto is only a research prerequisite and is not consumed. Build and rank it separately if you want its Mastery."
-      ],
+      "conditions": [],
       "bonuses": [],
       "disclosures": []
     }

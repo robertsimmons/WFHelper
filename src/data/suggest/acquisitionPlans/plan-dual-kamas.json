@@ -9,6 +9,13 @@
     { "label": "three blueprints", "amount": "120,000 cr", "money": false },
     { "label": "total credits", "amount": "180,000 cr", "money": false }
   ],
+  "materials": [
+    { "qty": "2,400", "label": "Polymer Bundle", "note": "1,200 per Kama" },
+    { "qty": "2,400", "label": "Ferrite", "note": "1,200 per Kama" },
+    { "qty": "1,800", "label": "Circuits", "note": "900 per Kama" },
+    { "qty": "10", "label": "Neural Sensors", "note": "5 per Kama" },
+    { "qty": "1", "label": "Orokin Cell", "note": "Dual Kamas" }
+  ],
   "groups": [
     {
       "type": "vendor",
@@ -37,88 +44,6 @@
       ],
       "bonuses": [],
       "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "JUPITER",
-      "sub": null,
-      "activity": "any mission",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        { "qty": "10", "label": "Neural Sensors", "note": "5 per Kama", "alt": null, "done": false }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "URANUS",
-      "sub": "or Mercury, Venus",
-      "activity": "any mission",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "2,400",
-          "label": "Polymer Bundle",
-          "note": "1,200 per Kama",
-          "alt": null,
-          "done": false
-        },
-        { "qty": "2,400", "label": "Ferrite", "note": "1,200 per Kama", "alt": null, "done": false }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "CERES",
-      "sub": null,
-      "activity": "any mission",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "1,800",
-          "label": "Circuits",
-          "note": "900 per Kama; best rate on Ceres",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "1",
-          "label": "Orokin Cell",
-          "note": "also drops on Saturn",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": [
-        {
-          "title": "one Orokin Cell",
-          "body": "The Tethys assassination on Saturn has General Sargas Ruk at an increased chance to drop one. Saturn's normal resource table drops them too."
-        }
-      ]
     },
     {
       "type": "foundry",

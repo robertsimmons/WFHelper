@@ -14,7 +14,7 @@
       "tone": "warn"
     },
     {
-      "text": "~135 Mutagen Samples",
+      "text": "5 Mutagen Mass",
       "tone": "info"
     }
   ],
@@ -23,76 +23,34 @@
       "label": "blueprint",
       "amount": "50,000 cr",
       "money": false
+    }
+  ],
+  "materials": [
+    {
+      "qty": "5",
+      "label": "Mutagen Mass",
+      "note": null
     },
     {
-      "label": "Mutagen Mass blueprint",
-      "amount": "15,000 cr",
-      "money": false
-    }
+      "qty": "8,750",
+      "label": "Salvage",
+      "note": null
+    },
+    {
+      "qty": "2,250",
+      "label": "Rubedo",
+      "note": null
+    },
+    { "qty": "1", "label": "Forma", "note": null },
+    { "qty": "50,000", "label": "Credits", "note": null }
   ],
   "groups": [
     {
-      "type": "gate",
-      "place": "DOJO, BIO LAB",
-      "sub": null,
-      "activity": "clan research chain",
-      "meta": "72h each, skip if already researched",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Mutagen Mass",
-          "note": "5 Mutagen Sample, 150 Circuits, 500 Nano Spores, 100 Plastids, 5,000 cr",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Torid",
-          "note": "10 Mutagen Sample, 200 Circuits, 750 Nano Spores, 400 Polymer Bundle, 5,000 cr",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Acrid",
-          "note": "10 Mutagen Sample, 150 Ferrite, 1,000 Nano Spores, 500 Polymer Bundle, 7,500 cr",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Embolist",
-          "note": "30 Mutagen Sample, 400 Circuits, 4,000 Nano Spores, 800 Polymer Bundle, 5,000 cr",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Pupacyst",
-          "note": "30 Mutagen Sample, 650 Plastids, 4,500 Nano Spores, 3,750 Ferrite, 5,000 cr",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Each step needs the previous one finished, so a solo clan waits about 15 days.",
-        "Joining a clan that already has the chain researched lets you copy the blueprint and leave."
-      ],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
       "type": "vendor",
-      "place": "DOJO, BIO LAB",
+      "place": "CLAN DOJO, BIO LAB",
       "sub": null,
-      "activity": "buy the blueprints",
-      "meta": "65,000 cr",
+      "activity": "buy the blueprint",
+      "meta": "50,000 cr",
       "mode": null,
       "live": null,
       "skip": null,
@@ -100,7 +58,7 @@
       "spends": [
         {
           "currency": "Credits",
-          "amount": "65,000"
+          "amount": "50,000"
         }
       ],
       "map": null,
@@ -111,13 +69,6 @@
           "note": "50,000 cr",
           "alt": null,
           "done": false
-        },
-        {
-          "qty": null,
-          "label": "Mutagen Mass Blueprint",
-          "note": "15,000 cr",
-          "alt": "Market, 10 platinum",
-          "done": false
         }
       ],
       "conditions": [],
@@ -125,115 +76,11 @@
       "disclosures": []
     },
     {
-      "type": "farm",
-      "place": "DEIMOS",
-      "sub": null,
-      "activity": "Survival or open-world bounties",
-      "meta": "Eris drops them rarer",
-      "mode": "full squad",
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "135",
-          "label": "Mutagen Sample",
-          "note": "85 for the research, 50 for five Mutagen Mass",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "10,750",
-          "label": "Nano Spores",
-          "note": "research steps",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Samples are uncommon on Deimos and rare on Eris, and cannot be bought with platinum.",
-        "Solo Derelict-style missions spawn too few enemies; bring four players."
-      ],
-      "bonuses": [
-        "A loot frame (Nekros, Khora, Hydroid, or Atlas with Ore Gaze) plus boosters is the near-unanimous advice."
-      ],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "STAR CHART",
-      "sub": null,
-      "activity": "common resources while the research timers run",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "11,250",
-          "label": "Salvage",
-          "note": "8,750 build, 2,500 Mutagen Mass",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "2,250",
-          "label": "Rubedo",
-          "note": "build",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "5",
-          "label": "Control Module",
-          "note": "Mutagen Mass",
-          "alt": "Void is best; also Neptune and Europa",
-          "done": false
-        },
-        {
-          "qty": "2,000",
-          "label": "Plastids",
-          "note": "research and Mutagen Mass",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "3,900",
-          "label": "Ferrite",
-          "note": "research",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "1,700",
-          "label": "Polymer Bundle",
-          "note": "research",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "750",
-          "label": "Circuits",
-          "note": "research",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": ["Phobos and Europa are best for Rubedo; Saturn and Uranus for Plastids."],
-      "disclosures": []
-    },
-    {
       "type": "foundry",
       "place": "FOUNDRY",
       "sub": null,
-      "activity": "build five Mutagen Mass, then Pupacyst",
-      "meta": "12h each, then 24h",
+      "activity": "build Pupacyst",
+      "meta": "24h",
       "mode": null,
       "live": null,
       "skip": null,
@@ -241,13 +88,6 @@
       "spends": [],
       "map": null,
       "rows": [
-        {
-          "qty": "5",
-          "label": "Mutagen Mass",
-          "note": "each 10 Mutagen Sample, 1 Control Module, 500 Salvage, 250 Plastids, 15,000 cr",
-          "alt": null,
-          "done": false
-        },
         {
           "qty": null,
           "label": "Pupacyst",
@@ -256,9 +96,7 @@
           "done": false
         }
       ],
-      "conditions": [
-        "Mutagen Samples (research) and Mutagen Mass (crafted) are different things; invasion Mutagen Mass rewards do not help the research."
-      ],
+      "conditions": [],
       "bonuses": [],
       "disclosures": []
     }

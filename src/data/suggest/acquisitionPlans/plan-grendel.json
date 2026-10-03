@@ -9,6 +9,18 @@
     { "text": "75 Vitus Essence", "tone": "warn" }
   ],
   "prices": [{ "label": "blueprint", "amount": "35,000 cr", "money": false }],
+  "materials": [
+    { "qty": "3,800", "label": "Alloy Plate", "note": "Neuroptics" },
+    { "qty": "3,500", "label": "Ferrite", "note": "Neuroptics" },
+    { "qty": "1,125", "label": "Circuits", "note": "Systems" },
+    { "qty": "10", "label": "Morphics", "note": "Systems" },
+    { "qty": "5", "label": "Control Module", "note": "Neuroptics" },
+    { "qty": "2", "label": "Argon Crystal", "note": "Neuroptics" },
+    { "qty": "3", "label": "Orokin Cell", "note": "Grendel" },
+    { "qty": "25", "label": "Condroc Wing", "note": null },
+    { "qty": "30", "label": "Kuaka Spinal Claw", "note": null },
+    { "qty": "100", "label": "Fish Oil", "note": null }
+  ],
   "groups": [
     {
       "type": "gate",
@@ -79,7 +91,8 @@
       "bonuses": [
         "Rotations have a 7-10% chance of a 3-Vitus bundle, and Shield Drones drop 1 at 6%; Resource Boosters and retriever mods multiply the drone drops."
       ],
-      "disclosures": []
+      "disclosures": [],
+      "ref": "Vitus Essence"
     },
     {
       "type": "vendor",
@@ -125,14 +138,6 @@
       "spends": [],
       "map": "plains-of-eidolon",
       "rows": [
-        { "qty": "25", "label": "Condroc Wing", "note": "1 per kill", "alt": null, "done": false },
-        {
-          "qty": "30",
-          "label": "Kuaka Spinal Claw",
-          "note": "1 per kill",
-          "alt": null,
-          "done": false
-        },
         {
           "qty": "20",
           "label": "Tralok Eyes",
@@ -151,13 +156,6 @@
           "qty": "125",
           "label": "Fish Meat",
           "note": "Grendel Systems",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "100",
-          "label": "Fish Oil",
-          "note": "Murkray pays 7-9 each",
           "alt": null,
           "done": false
         }
@@ -220,31 +218,6 @@
           "body": "Survival: break every container and use life support capsules early; running dry near the end is the usual fail, and more players means more spawns. Excavation tracks Cryotic, not excavators, so run one at a time, bank its ~20 Cryotic and call the next. Eximus-heavy late stages (600+ Cryotic, last Defense waves) bring Nullifier stacks."
         }
       ]
-    },
-    {
-      "type": "farm",
-      "place": "THE VOID",
-      "sub": null,
-      "activity": "mine Argon Pegmatite",
-      "meta": "pick this up last",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "2",
-          "label": "Argon Crystal",
-          "note": "Grendel Neuroptics",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": ["Argon decays at daily reset; farm it right before building Neuroptics."],
-      "bonuses": [],
-      "disclosures": []
     },
     {
       "type": "foundry",

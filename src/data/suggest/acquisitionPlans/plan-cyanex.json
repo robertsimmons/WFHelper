@@ -12,40 +12,19 @@
     { "label": "blueprint", "amount": "15,000 cr", "money": false },
     { "label": "build", "amount": "20,000 cr", "money": false }
   ],
+  "materials": [
+    { "qty": "5", "label": "Fieldron", "note": null },
+    { "qty": "8,750", "label": "Nano Spores", "note": null },
+    { "qty": "250", "label": "Hexenon", "note": null },
+    { "qty": "1", "label": "Forma", "note": null },
+    { "qty": "15,000", "label": "Credits", "note": null }
+  ],
   "groups": [
     {
-      "type": "gate",
-      "place": "DOJO, ENERGY LAB",
+      "type": "vendor",
+      "place": "CLAN DOJO, ENERGY LAB",
       "sub": null,
-      "activity": "clan research",
-      "meta": "skip if already researched",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Energy Lab: Spectra, then Cyanex",
-          "note": "3 days for the Cyanex research",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Ghost (x1) tier pays 7,500 credits, 30 Fieldron Samples, 300 Plastids, 2,250 Salvage and 10 Control Modules for the Cyanex research; bigger clans pay x3, x10, x30 or x100.",
-        "In an established clan this is already done and costs you nothing."
-      ],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "research",
-      "place": "DOJO, ENERGY LAB",
-      "sub": null,
-      "activity": "replicate the blueprint",
+      "activity": "buy the blueprint",
       "meta": "15,000 cr",
       "mode": null,
       "live": null,
@@ -65,75 +44,6 @@
       "conditions": ["MR 8 gate to build it."],
       "bonuses": [],
       "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "STAR CHART",
-      "sub": null,
-      "activity": "Corpus-side Invasions",
-      "meta": "3 per Invasion",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "5",
-          "label": "Fieldron",
-          "note": "3 per Corpus-reward Invasion",
-          "alt": "or craft from Fieldron Samples, 12h each",
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Crafting Fieldron means several 12-hour builds before the 12-hour Cyanex build can start, so start this first."
-      ],
-      "bonuses": [
-        "Fieldron also drops from rare and reinforced Corpus storage containers and some Orb Vallis bounty stages."
-      ],
-      "disclosures": [
-        {
-          "title": "crafting from scratch",
-          "body": "Each Fieldron is an Energy Lab craft: 15,000 credits, 10 Fieldron Samples, 1 Control Module, 500 Salvage, 250 Plastids, 12 hours. All 5 cost 50 Fieldron Samples and 75,000 credits. Samples drop from Corpus enemies."
-        }
-      ]
-    },
-    {
-      "type": "farm",
-      "place": "GANYMEDE, JUPITER",
-      "sub": null,
-      "activity": "Disruption",
-      "meta": "a run or two",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "250",
-          "label": "Hexenon",
-          "note": "Amalgams about 7% each; rotations pay 5/10/15",
-          "alt": "or Io, Jupiter defense, for lower-level accounts",
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Hexenon has no mining deposit and can't be bought; it's a Jupiter mission drop only."
-      ],
-      "bonuses": [
-        "A loot frame (Nekros Desecrate, Khora Strangledome, Hydroid Pilfering Swarm) and resource boosters both apply to Hexenon pickups.",
-        "Distilling Extractors on Jupiter give 60-80 Hexenon about a third of the time per 8-hour run."
-      ],
-      "disclosures": [
-        {
-          "title": "skip the Dark Sectors",
-          "body": "Reddit recommends Cameria and Sinai for the +20% resource bonus, but the wiki notes they dropped less Hexenon than normal Jupiter missions in testing. Disruption is the better pick."
-        }
-      ]
     },
     {
       "type": "foundry",

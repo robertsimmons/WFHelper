@@ -9,6 +9,15 @@
     { "text": "Rotation C", "tone": "warn" }
   ],
   "prices": [{ "label": "built", "amount": "350 p", "money": false }],
+  "materials": [
+    { "qty": "3", "label": "Orokin Cell", "note": "Dante" },
+    { "qty": "10", "label": "Control Module", "note": "Neuroptics" },
+    { "qty": "4", "label": "Neural Sensors", "note": "Neuroptics" },
+    { "qty": "8,000", "label": "Alloy Plate", "note": "Chassis" },
+    { "qty": "2,000", "label": "Plastids", "note": "Chassis" },
+    { "qty": "4,000", "label": "Circuits", "note": "Systems" },
+    { "qty": "8", "label": "Entrati Lanthorn", "note": "build requirement" }
+  ],
   "groups": [
     {
       "type": "gate",
@@ -134,33 +143,6 @@
       "disclosures": []
     },
     {
-      "type": "farm",
-      "place": "SANCTUM ANATOMICA, DEIMOS",
-      "sub": null,
-      "activity": "Exterminate and Gruzzling",
-      "meta": "8 total",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "8",
-          "label": "Entrati Lanthorn",
-          "note": "build requirement",
-          "alt": "or Netracells / Deep Archimedea",
-          "done": false
-        }
-      ],
-      "conditions": [
-        "For a focused farm, kill the early Gruzzling in Exterminate; if it does not drop its 3x Lanthorn bundle, restart."
-      ],
-      "bonuses": ["Netracells guarantee one Lanthorn and resource boosters apply there."],
-      "disclosures": []
-    },
-    {
       "type": "foundry",
       "place": "FOUNDRY",
       "sub": null,
@@ -179,13 +161,13 @@
         {
           "qty": null,
           "label": "Dante",
-          "note": "25,000 cr + Orokin Cell",
+          "note": "25,000 cr, 3 Orokin Cell",
           "alt": null,
           "done": false
         }
       ],
       "conditions": [
-        "The three components also need Deimos materials: Bellow Voca, Entrati Obols, Necracoil and Plastids."
+        "The three components also need Deimos materials: Bellow Voca, Entrati Obols and Necracoil."
       ],
       "bonuses": [],
       "disclosures": []

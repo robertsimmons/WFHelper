@@ -9,6 +9,7 @@
     { "text": "MR 12", "tone": "info" }
   ],
   "prices": [{ "label": "Baro", "amount": "175,000 cr + 450 Ducats", "money": false }],
+  "materials": [{ "qty": "175,000", "label": "Credits", "note": null }],
   "groups": [
     {
       "type": "currency",
@@ -16,10 +17,10 @@
       "sub": "Relay Ducat Kiosk",
       "activity": "crack Void Relics, trade Prime parts for Ducats",
       "meta": "450 Ducats needed",
-      "mode": "public Capture, Rescue or low-level Exterminate for fast cracks",
+      "mode": null,
       "live": null,
       "skip": null,
-      "earns": { "currency": "Ducats", "amount": "450" },
+      "earns": { "currency": "Orokin Ducats", "amount": "450" },
       "spends": [],
       "map": null,
       "rows": [
@@ -31,21 +32,10 @@
           "done": false
         }
       ],
-      "conditions": [
-        "The kiosk is open even when Baro isn't there, so bank Ducats ahead of his visit; his window is only 48 hours.",
-        "Bronze parts are worth 15 ducats, silver 45, gold 100 (25/65 for parts downgraded from vaulted relics); 450 is about 5 gold parts or 10 silver."
-      ],
-      "bonuses": [
-        "Solo or squad Capture, Rescue or low-level Exterminate on a speed or nuke frame (Titania, Volt, Mag, Sevagoth, Voruna, Gyre) cracks relics fastest; in public matches run Defense instead so you aren't stuck waiting at extraction.",
-        "Void Cascade with a competent group is the fastest fissure and also drops sellable arcanes; Conjunction Survival and Excavation fissures work too.",
-        "Squads mean four chances per relic at the gold or silver part, so sell duplicates you don't need rather than farming from zero."
-      ],
-      "disclosures": [
-        {
-          "title": "where not to get ducats",
-          "body": "Void Surplus is a trap for this: 50,000 credits for a 2% chance at 1,000 ducats. Aya to Ducats at Varzia is 5 ducats per Aya, an extremely poor rate. Both are last resorts only."
-        }
-      ]
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": [],
+      "ref": "Orokin Ducats"
     },
     {
       "type": "vendor",
@@ -59,7 +49,7 @@
       "earns": null,
       "spends": [
         { "currency": "Credits", "amount": "175,000" },
-        { "currency": "Ducats", "amount": "450" }
+        { "currency": "Orokin Ducats", "amount": "450" }
       ],
       "map": null,
       "rows": [

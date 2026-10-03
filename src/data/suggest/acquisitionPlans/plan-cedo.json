@@ -9,6 +9,7 @@
     { "text": "no RNG", "tone": "info" }
   ],
   "prices": [],
+  "materials": [{ "qty": "1", "label": "Forma", "note": null }],
   "groups": [
     {
       "type": "gate",
@@ -38,7 +39,7 @@
       "disclosures": []
     },
     {
-      "type": "farm",
+      "type": "currency",
       "place": "CAMBION DRIFT, DEIMOS",
       "sub": "Necralisk / Entrati",
       "activity": "bounties and Family Token turn-ins",
@@ -65,21 +66,15 @@
           "done": false
         }
       ],
-      "conditions": [
-        "Entrati members give Tokens, not standing directly. Trade Tokens to Grandmother for standing.",
-        "The daily cap is shared across faction syndicates: 16,000 + (Mastery Rank x 500). Stockpile Tokens, then turn them in up to cap each day.",
-        "Use high-tier Mother bounties as the standing engine. Keep Father, Daughter, Son and Otak Tokens for rank sacrifices and Grandmother Token trades."
-      ],
-      "bonuses": [
-        "Isolation Vault runs also build Cambion resources for Father and Otak Tokens.",
-        "An Affinity Booster doubles standing gained from token turn-ins."
-      ],
+      "conditions": [],
+      "bonuses": [],
       "disclosures": [
         {
           "title": "the actual time gate",
           "body": "The daily cap makes this roughly a two-week calendar grind from Neutral. The Rank 5 Seriglass Shard can add waits for Grandmother's eight-hour trade-board refresh."
         }
-      ]
+      ],
+      "ref": "Entrati Standing"
     },
     {
       "type": "vendor",
@@ -136,19 +131,17 @@
       "spends": [],
       "map": null,
       "rows": [
-        { "qty": "20,000", "label": "Credits", "note": null, "alt": null, "done": false },
-        { "qty": "1", "label": "Forma", "note": null, "alt": null, "done": false },
         {
-          "qty": "3",
-          "label": "Cedo components",
-          "note": "purchased finished",
+          "qty": null,
+          "label": "Cedo",
+          "note": "20,000 cr, Barrel, Stock, Receiver, 1 Forma",
           "alt": null,
           "done": false
         }
       ],
       "conditions": [
         "You need Mastery Rank 8 to equip Cedo.",
-        "Cedo has no Incarnon Genesis adapter. Cedo Prime is a separate relic acquisition."
+        "Cedo Prime is a separate relic acquisition."
       ],
       "bonuses": [],
       "disclosures": []

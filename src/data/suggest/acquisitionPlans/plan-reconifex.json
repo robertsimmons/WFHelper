@@ -12,6 +12,16 @@
     { "label": "standing route", "amount": "30,000 standing", "money": false },
     { "label": "build", "amount": "90,000 cr", "money": false }
   ],
+  "materials": [
+    { "qty": "10", "label": "Neural Sensors", "note": "Barrel" },
+    { "qty": "2", "label": "Argon Crystal", "note": "Barrel" },
+    { "qty": "500", "label": "Ferrite", "note": "Receiver" },
+    { "qty": "8", "label": "Orokin Cell", "note": "Stock" },
+    { "qty": "70", "label": "Techrot Chitin", "note": null },
+    { "qty": "60", "label": "Efervon Sample", "note": null },
+    { "qty": "120", "label": "Hollvanian Pitchweave Fragment", "note": null },
+    { "qty": "15", "label": "Experimental Arc-Relay", "note": null }
+  ],
   "groups": [
     {
       "type": "gate",
@@ -74,7 +84,7 @@
       "mode": null,
       "live": null,
       "skip": null,
-      "earns": { "currency": "The Hex standing", "amount": "30,000" },
+      "earns": { "currency": "The Hex Standing", "amount": "30,000" },
       "spends": [],
       "map": null,
       "rows": [
@@ -107,10 +117,7 @@
           "done": false
         }
       ],
-      "conditions": [
-        "Top-tier Hex bounties, like the 7,500-standing Antivirus tier, max the daily cap in a handful of runs.",
-        "Hand in Hex Treasures found during missions to Lettie to top off the cap."
-      ],
+      "conditions": ["Hand in Hex Treasures found during missions to Lettie to top off the cap."],
       "bonuses": [
         "Clearing all three Temporal Archimedea missions pays 15,000 standing at once, at Rank 5."
       ],
@@ -119,7 +126,8 @@
           "title": "buy it, don't farm it",
           "body": "The community's own farm-analysis post opens by saying the standing purchase is the most economical way to get Reconifex. The drop route is 20-minute Hell-Scrub runs at 5.41% per part, or bounty RNG for the main blueprint at 3.92% with a roughly 25-run average."
         }
-      ]
+      ],
+      "ref": "The Hex Standing"
     },
     {
       "type": "foundry",
@@ -150,14 +158,14 @@
         },
         {
           "qty": null,
-          "label": "Stock",
+          "label": "Reconifex Stock",
           "note": "20,000 cr, 60 Hollvanian Pitchweave Fragment, 30 Techrot Chitin, 8 Orokin Cell",
           "alt": null,
           "done": false
         },
         { "qty": null, "label": "Reconifex", "note": "30,000 cr", "alt": null, "done": false }
       ],
-      "conditions": ["Argon Crystal decays in inventory; farm it last."],
+      "conditions": [],
       "bonuses": [],
       "disclosures": []
     }

@@ -1,9 +1,10 @@
-import { resourceEntry } from "./resources.js";
+import { planGroup } from "./materials.js";
 import type {
   AuthoredPlan,
   PlanBadge,
   PlanGroup,
   PlanGroupType,
+  PlanMaterial,
   PlanPrice,
   PlanRow,
 } from "./schema.js";
@@ -78,32 +79,6 @@ const PATH_PLACES: Record<string, string> = {
  *  read as a price and a badge unless nothing else yields the part. */
 const SHORTCUT_KINDS = new Set(["trade", "circuit"]);
 
-function group(
-  type: PlanGroupType,
-  place: string,
-  rows: PlanRow[],
-  extra: Partial<PlanGroup> = {},
-): PlanGroup {
-  return {
-    type,
-    place,
-    sub: null,
-    activity: null,
-    meta: null,
-    mode: null,
-    live: null,
-    skip: null,
-    earns: null,
-    spends: [],
-    map: null,
-    rows,
-    conditions: [],
-    bonuses: [],
-    disclosures: [],
-    ...extra,
-  };
-}
-
 function row(label: string, qty: number | null): PlanRow {
   return {
     qty: qty === null ? null : qty.toLocaleString("en-US"),
@@ -167,7 +142,7 @@ function pathGroups(source: FallbackSource): PlanGroup[] {
     const key = `${type}|${place}`;
     const rows = stepRows(path, parts, source.name);
     const existing = byKey.get(key);
-    const target = existing ?? group(type, place, []);
+    const target = existing ?? planGroup(type, place, []);
     for (const next of rows) {
       if (!target.rows.some((have) => have.label === next.label)) target.rows.push(next);
     }
@@ -223,33 +198,14 @@ function pathBadges(source: FallbackSource): PlanBadge[] {
   return circuitAlt ? [{ text: "Circuit alt", tone: "circuit" }] : [];
 }
 
-/** Materials group under the mission the shared resource table names, so the
- *  same resource reads the same way in every plan that needs it. */
-function materialGroups(source: FallbackSource): PlanGroup[] {
-  const byPlace = new Map<string, { group: PlanGroup; order: number }>();
-  let order = 0;
-  for (const material of source.parts.materials) {
-    if (material.missing <= 0) continue;
-    const entry = resourceEntry(material.name);
-    const best = entry?.best ?? null;
-    const place = best ? best.place : "MATERIALS";
-    const key = `${place}|${best?.sub ?? ""}|${best?.activity ?? ""}`;
-    let bucket = byPlace.get(key);
-    if (!bucket) {
-      bucket = {
-        order: order++,
-        group: group("farm", place, [], {
-          sub: best?.sub ?? null,
-          activity: best?.activity ?? null,
-          meta: best?.meta ?? null,
-          map: entry?.harvestable ? (entry.map ?? null) : null,
-        }),
-      };
-      byPlace.set(key, bucket);
-    }
-    bucket.group.rows.push(row(material.name, material.required));
-  }
-  return [...byPlace.values()].sort((a, b) => a.order - b.order).map((bucket) => bucket.group);
+function sourceMaterials(source: FallbackSource): PlanMaterial[] {
+  return source.parts.materials
+    .filter((material) => material.missing > 0)
+    .map((material) => ({
+      qty: material.required.toLocaleString("en-US"),
+      label: material.name,
+      note: null,
+    }));
 }
 
 function foundryGroups(source: FallbackSource): PlanGroup[] {
@@ -257,7 +213,7 @@ function foundryGroups(source: FallbackSource): PlanGroup[] {
   const components = source.parts.components.filter((part) => part.missing > 0);
   if (components.length > 0) {
     out.push(
-      group(
+      planGroup(
         "foundry",
         "FOUNDRY",
         components.map((part) => row(part.name, null)),
@@ -266,7 +222,7 @@ function foundryGroups(source: FallbackSource): PlanGroup[] {
   }
   const credits = source.parts.credits;
   out.push(
-    group("foundry", "FOUNDRY", [row(source.name, null)], {
+    planGroup("foundry", "FOUNDRY", [row(source.name, null)], {
       meta: credits > 0 ? `${credits.toLocaleString("en-US")} cr` : null,
     }),
   );
@@ -283,10 +239,11 @@ function effortOf(source: FallbackSource): number {
 /** A plan from the drop table alone, for an item nobody has written notes for.
  *  Sparse on purpose: an unknown is never padded out to look researched. */
 export function fallbackPlan(source: FallbackSource): AuthoredPlan {
-  const groups = [...pathGroups(source), ...materialGroups(source)];
+  const groups = pathGroups(source);
+  const materials = sourceMaterials(source);
   if (source.parts.known) groups.push(...foundryGroups(source));
   if (groups.length === 0)
-    groups.push(group("farm", source.name.toUpperCase(), [row(source.name, null)]));
+    groups.push(planGroup("farm", source.name.toUpperCase(), [row(source.name, null)]));
 
   const parts = source.parts;
   const need = parts.components.length + (parts.main ? 1 : 0);
@@ -301,5 +258,6 @@ export function fallbackPlan(source: FallbackSource): AuthoredPlan {
     badges: [{ text: "no community notes yet", tone: "info" }, ...pathBadges(source)],
     prices: pathPrices(source),
     groups,
+    materials,
   };
 }

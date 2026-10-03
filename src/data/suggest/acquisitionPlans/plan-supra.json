@@ -12,103 +12,17 @@
     { "label": "blueprint", "amount": "15,000 cr", "money": false },
     { "label": "build", "amount": "25,000 cr", "money": false }
   ],
+  "materials": [
+    { "qty": "7", "label": "Fieldron", "note": null },
+    { "qty": "1,000", "label": "Alloy Plate", "note": null },
+    { "qty": "7,000", "label": "Salvage", "note": null },
+    { "qty": "1", "label": "Forma", "note": null },
+    { "qty": "15,000", "label": "Credits", "note": null }
+  ],
   "groups": [
     {
-      "type": "gate",
-      "place": "DOJO, ENERGY LAB",
-      "sub": null,
-      "activity": "clan research, start before gathering",
-      "meta": "72h per step, three steps",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Fieldron",
-          "note": "5 Fieldron Sample, 100 Rubedo, 500 Nano Spores, 200 Polymer Bundle, 5,000 cr, 2,000 affinity",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Prova",
-          "note": "5 Fieldron Sample, 100 Rubedo, 500 Nano Spores, 200 Polymer Bundle, 5,000 cr, 3,000 affinity",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Supra",
-          "note": "10 Fieldron Sample, 500 Ferrite, 250 Plastids, 500 Polymer Bundle, 10,000 cr, 3,000 affinity",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Research is clan-wide and persists. A clan with no Energy Lab must build the room first.",
-        "You need the clan permission to buy blueprints."
-      ],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "CORPUS PLANETS",
-      "sub": "Dark Sector Survival or Defense",
-      "activity": "Fieldron Samples for research",
-      "meta": "20 for the research chain",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "20",
-          "label": "Fieldron Sample",
-          "note": "5 + 5 + 10 across the three steps",
-          "alt": "also Venus, Mars, Jupiter, Europa, Neptune and Pluto",
-          "done": false
-        },
-        {
-          "qty": "200",
-          "label": "Rubedo",
-          "note": "Fieldron and Prova steps",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "1,000",
-          "label": "Nano Spores",
-          "note": "Fieldron and Prova steps",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "900",
-          "label": "Polymer Bundle",
-          "note": "200 + 200 + 500 across the three steps",
-          "alt": null,
-          "done": false
-        },
-        { "qty": "500", "label": "Ferrite", "note": "Supra step", "alt": null, "done": false },
-        { "qty": "250", "label": "Plastids", "note": "Supra step", "alt": null, "done": false }
-      ],
-      "conditions": [],
-      "bonuses": [
-        "Nekros with Desecrate plus a Resource Drop Chance Booster and a Resource Booster is the usual setup; Khora fits Survival and Hydroid with Pilfering Swarm also works.",
-        "Steel Path and Resourceful Retriever raise the sample count per run."
-      ],
-      "disclosures": []
-    },
-    {
       "type": "vendor",
-      "place": "DOJO, ENERGY LAB",
+      "place": "CLAN DOJO, ENERGY LAB",
       "sub": null,
       "activity": "buy the blueprint from the Blueprints menu",
       "meta": "15,000 cr",
@@ -120,64 +34,6 @@
       "map": null,
       "rows": [
         { "qty": null, "label": "Supra Blueprint", "note": null, "alt": null, "done": false }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "JUPITER OR SEDNA",
-      "sub": null,
-      "activity": "Survival with a resource booster",
-      "meta": "Alloy Plate and Salvage together",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "7,000",
-          "label": "Salvage",
-          "note": "the largest quantity",
-          "alt": "also Mars",
-          "done": false
-        },
-        {
-          "qty": "1,000",
-          "label": "Alloy Plate",
-          "note": null,
-          "alt": "also Venus, Phobos, Ceres and Pluto",
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "STAR CHART",
-      "sub": null,
-      "activity": "Corpus Invasion rewards, or Rare and Reinforced Corpus Storage Containers",
-      "meta": "crafted Fieldron",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "7",
-          "label": "Fieldron",
-          "note": "build input",
-          "alt": "or craft from Fieldron Samples",
-          "done": false
-        },
-        { "qty": null, "label": "Forma", "note": "build input", "alt": null, "done": false }
       ],
       "conditions": [],
       "bonuses": [],

@@ -9,6 +9,15 @@
     { "text": "MR 14", "tone": "info" }
   ],
   "prices": [{ "label": "blueprint", "amount": "9,000 Holdfasts Standing", "money": false }],
+  "materials": [
+    { "qty": "8,000", "label": "Ferrite", "note": null },
+    { "qty": "30", "label": "Voidplume Pinion", "note": "build requirement" },
+    { "qty": "75", "label": "Voidplume Quill", "note": "15 rank-up tribute + 30 for the build" },
+    { "qty": "10", "label": "Voidplume Crest", "note": "Rank 3 tribute" },
+    { "qty": "50", "label": "Voidgel Orb", "note": "Rank 2 and Rank 4 tributes" },
+    { "qty": "30,000", "label": "Credits", "note": null },
+    { "qty": "100", "label": "Thrax Plasm", "note": null }
+  ],
   "groups": [
     {
       "type": "gate",
@@ -45,7 +54,7 @@
       "disclosures": []
     },
     {
-      "type": "farm",
+      "type": "currency",
       "place": "HALAKO PERIMETER, ZARIMAN",
       "sub": "Chrysalith: turn Voidplumes in to Archimedean Yonta",
       "activity": "Exterminate; finish the objective, then full-clear the map and kill its Angel",
@@ -58,50 +67,24 @@
       "map": null,
       "rows": [
         {
-          "qty": "15",
-          "label": "Voidplume Pinion",
-          "note": "build requirement; one per dormant Void Angel",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "45",
-          "label": "Voidplume Quill",
-          "note": "15 rank-up tribute + 30 for the build",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "10",
-          "label": "Voidplume Crest",
-          "note": "Rank 3 tribute; one guaranteed per map",
-          "alt": "buy Yonta's rotating Crest offer",
-          "done": false
-        },
-        {
-          "qty": "50",
-          "label": "Voidgel Orb",
-          "note": "Rank 2 and Rank 4 tributes",
+          "qty": null,
+          "label": "Voidplumes turned in to Archimedean Yonta",
+          "note": "Pinion 5,000, Quill 2,500, Crest 2,000, Vane 1,000, Down 500 standing each",
           "alt": null,
           "done": false
         }
       ],
       "conditions": [
-        "Rank 4 (Seraph) requires 99,000 cumulative standing. The rank-up tributes additionally need 5 Down, 10 Vane, 10 Crest, and 15 Quill; bank crafting materials before donating plumes.",
-        "The daily cap is 16,000 + 500 per Mastery Rank. Down, Vane, and Crest may bypass that cap as medallions, but treat that as unconfirmed; Quills and Pinions are safer kept for requirements.",
-        "Each normal Zariman mission has a dormant Void Angel that drops one Pinion. Void Armageddon instead has a Ravenous Angel that drops a Quill, so do not use it for Pinions.",
-        "Container-break with loot radar, collect Lost Spirit trails after the objective, and redeem Zarium Accolades at Melica consoles. Squad pickups are shared."
+        "Rank 4 (Seraph) requires 99,000 cumulative standing. The rank-up tributes additionally need 5 Down, 10 Vane, 10 Crest, and 15 Quill; bank crafting materials before donating plumes."
       ],
-      "bonuses": [
-        "Parallax's Orokin Eye marks nearby Voidplumes; Helminth Golden Instinct is the free alternative.",
-        "Void Cascade is a strong simultaneous source of Thrax Plasm for rank-up and crafting requirements."
-      ],
+      "bonuses": [],
       "disclosures": [
         {
           "title": "this is a standing wall plus 15 Angel kills",
           "body": "The blueprint is not RNG-gated, but Rank 4 is a multi-day daily-cap grind and 15 Pinions require at least 15 dormant Angels. A thorough Exterminate is the flexible all-in-one route."
         }
-      ]
+      ],
+      "ref": "Holdfasts Standing"
     },
     {
       "type": "vendor",
@@ -143,11 +126,13 @@
       "spends": [],
       "map": null,
       "rows": [
-        { "qty": "30,000", "label": "Credits", "note": null, "alt": null, "done": false },
-        { "qty": "15", "label": "Voidplume Pinion", "note": null, "alt": null, "done": false },
-        { "qty": "30", "label": "Voidplume Quill", "note": null, "alt": null, "done": false },
-        { "qty": "8,000", "label": "Ferrite", "note": null, "alt": null, "done": false },
-        { "qty": "100", "label": "Thrax Plasm", "note": null, "alt": "Void Cascade", "done": false }
+        {
+          "qty": null,
+          "label": "Praedos",
+          "note": "30,000 Credits, 15 Voidplume Pinion, 30 Voidplume Quill, 100 Thrax Plasm",
+          "alt": null,
+          "done": false
+        }
       ],
       "conditions": [
         "You may craft Praedos before Mastery Rank 14, but cannot equip it until then. The Foundry result is an unevolved tonfa; its Incarnon progression comes next."
@@ -160,7 +145,7 @@
       "place": "CAVALERO / ARSENAL",
       "sub": null,
       "activity": "complete native Incarnon Evolutions",
-      "meta": "no Genesis adapter or Circuit rotation needed",
+      "meta": null,
       "mode": "solo recommended for Evolution V",
       "live": null,
       "skip": null,

@@ -6,9 +6,27 @@
   "progress": { "have": 0, "need": 4, "unit": "parts" },
   "badges": [
     { "text": "K-Drive quest", "tone": "warn" },
-    { "text": "clan research", "tone": "warn" }
+    { "text": "Bash Lab", "tone": "warn" }
   ],
   "prices": [{ "label": "built", "amount": "325 p", "money": false }],
+  "materials": [
+    { "qty": "1,750", "label": "Alloy Plate", "note": null },
+    { "qty": "1,500", "label": "Nano Spores", "note": null },
+    { "qty": "875", "label": "Salvage", "note": null },
+    { "qty": "350", "label": "Circuits", "note": null },
+    { "qty": "350", "label": "Cryotic", "note": null },
+    { "qty": "150", "label": "Plastids", "note": null },
+    { "qty": "2", "label": "Argon Crystal", "note": "Neuroptics" },
+    { "qty": "2", "label": "Tellurium", "note": "Chassis" },
+    { "qty": "2", "label": "Nitain Extract", "note": "Systems" },
+    { "qty": "3", "label": "Orokin Cell", "note": "Yareli" },
+    { "qty": "300", "label": "Rubedo", "note": "Venerdo Alloy refine" },
+    { "qty": "2", "label": "Gallium", "note": "Venerdo Alloy refine" },
+    { "qty": "10", "label": "Heart Noctrul", "note": "Neuroptics" },
+    { "qty": "20", "label": "Venerdo Alloy", "note": "Chassis" },
+    { "qty": "5", "label": "Scrubber Exa Brain", "note": "Systems" },
+    { "qty": "30,000", "label": "Credits", "note": null }
+  ],
   "groups": [
     {
       "type": "gate",
@@ -95,104 +113,39 @@
       "type": "vendor",
       "place": "CLAN DOJO",
       "sub": "Ventkids' Bash Lab",
-      "activity": "buy researched component blueprints",
-      "meta": "separate lab; clan dependency",
+      "activity": "buy the component blueprints",
+      "meta": "30,000 credits",
       "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [],
+      "spends": [{ "currency": "Credits", "amount": "30,000" }],
       "map": null,
       "rows": [
         {
           "qty": null,
           "label": "Yareli Neuroptics Blueprint",
-          "note": "10,000 credits after clan research",
+          "note": "10,000 credits",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Yareli Chassis Blueprint",
-          "note": "10,000 credits after clan research",
+          "note": "10,000 credits",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Yareli Systems Blueprint",
-          "note": "10,000 credits after clan research",
+          "note": "10,000 credits",
           "alt": null,
           "done": false
         }
       ],
       "conditions": [
-        "The Bash Lab is its own dojo room, not the Tenno, Energy, Bio, or Chem Lab. Verify it through dojo fast travel before joining a clan for Yareli.",
-        "If your clan has not researched them, each component needs 1,500 clan affinity, 72 hours, and a Detonite Injector, Mutagen Mass, or Fieldron respectively before it can be bought.",
-        "Start or locate the lab research early: it is independent of finishing The Waverider."
-      ],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "ORIGIN SYSTEM",
-      "sub": "resource preparation",
-      "activity": "gather component materials",
-      "meta": "farm Argon last",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "2",
-          "label": "Argon Crystal",
-          "note": "Neuroptics; decays over time",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "2",
-          "label": "Tellurium",
-          "note": "Chassis",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "2",
-          "label": "Nitain Extract",
-          "note": "Systems; Nightwave Cred Offerings / Invasions",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "10",
-          "label": "Heart Noctrul",
-          "note": "Neuroptics; mine on Deimos",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "20",
-          "label": "Venerdo Alloy",
-          "note": "Chassis; refine Orb Vallis Venerdo",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "5",
-          "label": "Scrubber Exa Brain",
-          "note": "Systems; fish in Orb Vallis",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "The remaining component materials are 150 Plastids, 875 Salvage, 350 Circuits, 1,500 Nano Spores, 350 Cryotic, and 1,750 Alloy Plate.",
-        "Nitain is the availability gate: get it from Nightwave early if it is offered. Farm Argon only after the Neuroptics blueprint is in hand."
+        "The Bash Lab is its own dojo room, not the Tenno, Energy, Bio, or Chem Lab. Verify it through dojo fast travel before joining a clan for Yareli."
       ],
       "bonuses": [],
       "disclosures": []
@@ -210,13 +163,31 @@
       "spends": [],
       "map": null,
       "rows": [
-        { "qty": null, "label": "Neuroptics", "note": null, "alt": null, "done": false },
-        { "qty": null, "label": "Chassis", "note": null, "alt": null, "done": false },
-        { "qty": null, "label": "Systems", "note": null, "alt": null, "done": false },
+        {
+          "qty": null,
+          "label": "Neuroptics",
+          "note": "15,000 cr, 2 Argon Crystal, 150 Plastids, 875 Salvage, 10 Heart Noctrul",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Chassis",
+          "note": "15,000 cr, 2 Tellurium, 20 Venerdo Alloy, 350 Circuits, 1,500 Nano Spores",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Systems",
+          "note": "15,000 cr, 2 Nitain Extract, 350 Cryotic, 5 Scrubber Exa Brain, 1,750 Alloy Plate",
+          "alt": null,
+          "done": false
+        },
         {
           "qty": null,
           "label": "Yareli",
-          "note": "25,000 cr + 1 Orokin Cell",
+          "note": "25,000 cr, 3 Orokin Cell, 3 days",
           "alt": null,
           "done": false
         }

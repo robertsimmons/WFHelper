@@ -12,6 +12,20 @@
     { "label": "blueprints", "amount": "30,000 standing", "money": false },
     { "label": "build", "amount": "80,000 cr", "money": false }
   ],
+  "materials": [
+    { "qty": "600", "label": "Salvage", "note": "Barrel" },
+    { "qty": "500", "label": "Alloy Plate", "note": "Barrel" },
+    { "qty": "300", "label": "Ferrite", "note": "Receiver" },
+    { "qty": "240", "label": "Polymer Bundle", "note": "Stock" },
+    { "qty": "2", "label": "Morphics", "note": "Receiver" },
+    { "qty": "340", "label": "Hollvanian Pitchweave Fragment", "note": "rank-ups + Stock" },
+    { "qty": "155", "label": "Techrot Chitin", "note": "Rank 4 + Barrel + Receiver" },
+    { "qty": "115", "label": "Efervon Sample", "note": "rank-ups + Receiver + Stock" },
+    { "qty": "15", "label": "Experimental Arc-Relay", "note": "Rank 2 + Stock" },
+    { "qty": "7", "label": "Techrot Motherboard", "note": "Rank 5 + Barrel" },
+    { "qty": "25", "label": "Necracoil", "note": "Rank 4" },
+    { "qty": "12", "label": "Entrati Obols", "note": "Rank 2" }
+  ],
   "groups": [
     {
       "type": "gate",
@@ -61,7 +75,7 @@
       "mode": "Steel Path",
       "live": null,
       "skip": null,
-      "earns": { "currency": "Hex standing", "amount": "270,000" },
+      "earns": { "currency": "The Hex Standing", "amount": "270,000" },
       "spends": [],
       "map": "hollvania",
       "rows": [
@@ -107,79 +121,11 @@
         "The 385,000 cr in rank-up fees is on top of the 80,000 cr build."
       ],
       "bonuses": [
-        "The Tier 7 Antivirus bounty pays 7,500 standing, 11,250 on Steel Path; about three Steel Path runs cap the day.",
         "Treasures pay Big Bytes Pizza 2,500, Argon Burger Meal 1,500, the others 750; the Air Support treasure tracker pings them all.",
         "Once you have access, all three Temporal Archimedea missions pay a flat 15,000."
       ],
-      "disclosures": [
-        {
-          "title": "skipping KIM",
-          "body": "Players have reached Rank 5 on gifts and each bounty's once-a-day Chemistry alone, but it is slower. Picking the kind option in chats is enough; one person cleared the requirement in about 20 minutes of KIM."
-        }
-      ]
-    },
-    {
-      "type": "farm",
-      "place": "HÖLLVANIA",
-      "sub": null,
-      "activity": "enemies, bounty rewards and the Techrot underground",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": "hollvania",
-      "rows": [
-        {
-          "qty": "340",
-          "label": "Hollvanian Pitchweave Fragment",
-          "note": "rank-ups + Stock",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "155",
-          "label": "Techrot Chitin",
-          "note": "Rank 4 + Barrel + Receiver; Rhu Manor / Mausoleum East Exterminate",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "115",
-          "label": "Efervon Sample",
-          "note": "rank-ups + Receiver + Stock",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "15",
-          "label": "Experimental Arc-Relay",
-          "note": "Rank 2 + Stock",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "7",
-          "label": "Techrot Motherboard",
-          "note": "Rank 5 + Barrel; underground Techrot areas only",
-          "alt": null,
-          "done": false
-        },
-        { "qty": "25", "label": "Necracoil", "note": "Rank 4", "alt": null, "done": false },
-        {
-          "qty": "12",
-          "label": "Entrati Obols",
-          "note": "Rank 2; from Albrecht's Laboratories, Deimos",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "These keep dropping while you farm standing, so this is a top-up, not a separate trip."
-      ],
-      "bonuses": [],
-      "disclosures": []
+      "disclosures": [],
+      "ref": "The Hex Standing"
     },
     {
       "type": "vendor",
@@ -191,7 +137,7 @@
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Hex standing", "amount": "30,000" }],
+      "spends": [{ "currency": "The Hex Standing", "amount": "30,000" }],
       "map": null,
       "rows": [
         {
@@ -242,7 +188,7 @@
         },
         {
           "qty": null,
-          "label": "Stock",
+          "label": "EFV-8 Mars Stock",
           "note": "20,000 cr, 30 Efervon Sample, 300 Hollvanian Pitchweave Fragment, 10 Experimental Arc-Relay, 240 Polymer Bundle",
           "alt": null,
           "done": false

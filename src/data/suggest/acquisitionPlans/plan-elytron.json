@@ -10,33 +10,80 @@
   },
   "badges": [
     {
-      "text": "Cryotic: 10,250",
+      "text": "Cryotic: 3,800",
       "tone": "warn"
     },
     {
-      "text": "Tenno Lab, 72h per piece",
+      "text": "Tenno Lab",
       "tone": "info"
     }
   ],
   "prices": [
-    {
-      "label": "research",
-      "amount": "40,000 cr",
-      "money": false
-    },
     {
       "label": "build",
       "amount": "70,000 cr",
       "money": false
     }
   ],
+  "materials": [
+    {
+      "qty": "1,000",
+      "label": "Ferrite",
+      "note": "Harness"
+    },
+    {
+      "qty": "6",
+      "label": "Morphics",
+      "note": "1 Harness, 5 Systems"
+    },
+    {
+      "qty": "1,400",
+      "label": "Rubedo",
+      "note": "300 Harness, 1,100 Wings"
+    },
+    {
+      "qty": "3",
+      "label": "Orokin Cell",
+      "note": "Harness"
+    },
+    {
+      "qty": "6",
+      "label": "Control Module",
+      "note": "1 Systems, 5 Elytron"
+    },
+    {
+      "qty": "6,000",
+      "label": "Salvage",
+      "note": "Systems"
+    },
+    {
+      "qty": "3,800",
+      "label": "Cryotic",
+      "note": "Systems"
+    },
+    {
+      "qty": "6,000",
+      "label": "Alloy Plate",
+      "note": "Wings"
+    },
+    {
+      "qty": "2",
+      "label": "Neural Sensors",
+      "note": "Wings"
+    },
+    {
+      "qty": "5,500",
+      "label": "Polymer Bundle",
+      "note": "Wings"
+    }
+  ],
   "groups": [
     {
-      "type": "gate",
-      "place": "DOJO, TENNO LAB",
+      "type": "vendor",
+      "place": "CLAN DOJO, TENNO LAB",
       "sub": null,
-      "activity": "Archwing quest, then clan research",
-      "meta": "72h per piece, pieces run in parallel",
+      "activity": "buy the blueprints",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -46,321 +93,34 @@
       "rows": [
         {
           "qty": null,
-          "label": "Archwing quest",
-          "note": "the blueprints can only be bought after it",
+          "label": "Elytron Blueprint",
+          "note": null,
           "alt": null,
           "done": false
         },
         {
           "qty": null,
-          "label": "Elytron",
-          "note": "2 Gallium, 1 Mutagen Mass, 1 Detonite Injector, 1 Fieldron, 10,000 cr, 72h",
+          "label": "Harness Blueprint",
+          "note": null,
           "alt": null,
           "done": false
         },
         {
           "qty": null,
-          "label": "Harness",
-          "note": "1 Detonite Injector, 5,650 Nano Spores, 4,500 Alloy Plate, 1 Tellurium, 10,000 cr, 72h",
+          "label": "Systems Blueprint",
+          "note": null,
           "alt": null,
           "done": false
         },
         {
           "qty": null,
-          "label": "Systems",
-          "note": "1 Mutagen Mass, 6,200 Alloy Plate, 1,150 Plastids, 1 Tellurium, 10,000 cr, 72h",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Wings",
-          "note": "1 Fieldron, 6,450 Cryotic, 12,500 Polymer Bundle, 1 Tellurium, 10,000 cr, 72h",
+          "label": "Wings Blueprint",
+          "note": null,
           "alt": null,
           "done": false
         }
       ],
-      "conditions": [
-        "Harness, Systems and Wings stay locked until the Elytron research finishes, so gather its five rare items first and queue the other three the moment it completes.",
-        "The Oracle room must exist before the Tenno Lab. Research cannot be rushed with platinum.",
-        "Costs are the Ghost clan base; Shadow x3, Storm x10, Mountain x30, Moon x100. Stay in a one-person clan."
-      ],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "ORB VALLIS, VENUS",
-      "sub": null,
-      "activity": "Fortuna bounties, levels 30-50",
-      "meta": "any stage, 2 per drop",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": "orb-vallis",
-      "rows": [
-        {
-          "qty": "2",
-          "label": "Detonite Injector",
-          "note": "Elytron and Harness research",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "2",
-          "label": "Fieldron",
-          "note": "Elytron and Wings research",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "2",
-          "label": "Mutagen Mass",
-          "note": "Elytron and Systems research",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": ["Invasion rewards also pay these three."],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "OPHELIA, URANUS",
-      "sub": null,
-      "activity": "Survival with a loot setup",
-      "meta": "about 10,000 Polymer in 15-20 minutes",
-      "mode": "Equinox or Speed Nova, Nekros and Pilfering Swarm Hydroid",
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "18,000",
-          "label": "Polymer Bundle",
-          "note": "12,500 Wings research, 5,500 Wings build",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "3",
-          "label": "Tellurium",
-          "note": "one per research piece",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [
-        "Assur (Survival) is the other standard Polymer spot.",
-        "A solo Hydroid at minimum Duration camping a doorway room gets the same in about 15 minutes."
-      ],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "HIERACON, PLUTO",
-      "sub": null,
-      "activity": "Excavation",
-      "meta": "100 Cryotic per completed cycle",
-      "mode": "premade, several drills at once",
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "10,250",
-          "label": "Cryotic",
-          "note": "6,450 Wings research, 3,800 Systems build",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Excavation sometimes stops spawning enemies and splitting up makes it worse; stay near the drills with an AoE frame.",
-        "Do not spend Cryotic elsewhere (Sibear, Helminth feeding) while this is in progress."
-      ],
-      "bonuses": [
-        "A Resource Booster doubles it. A destroyed excavator pays in proportion to how far it got.",
-        "Run it as a Void fissure for the relic, or trigger the fourth drill in the Duviri Circuit for 20-40 more."
-      ],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "GABII, CERES",
-      "sub": null,
-      "activity": "Dark Sector Survival",
-      "meta": "Draco (Survival) and Tessera (Venus Defense) also work",
-      "mode": "Nekros, Hydroid or Khora",
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "16,700",
-          "label": "Alloy Plate",
-          "note": "4,500 Harness, 6,200 Systems, 6,000 Wings build",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "ERIS",
-      "sub": null,
-      "activity": "Survival with Nekros",
-      "meta": "a few thousand per 10 minutes",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "5,650",
-          "label": "Nano Spores",
-          "note": "Harness research",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": ["Akkad (Defense, Eris), Piscinas (Saturn) and Hyf (Deimos) also drop Spores."],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "CAMERIA, JUPITER",
-      "sub": null,
-      "activity": "Dark Sector Survival",
-      "meta": "Wahiba (Mars) is the same",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "6,000",
-          "label": "Salvage",
-          "note": "Systems build",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [
-        "Carme (Jupiter) Mobile Defense pays up to about 3,000 a run if you loot every container."
-      ],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "TESHUB, VOID",
-      "sub": null,
-      "activity": "Exterminate",
-      "meta": "Hepit (Capture) also works",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "6",
-          "label": "Control Module",
-          "note": "1 Systems, 5 Elytron",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": ["Orokin Tower tileset; the Void has the best rate."],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "ANY MISSION",
-      "sub": null,
-      "activity": "pick up while the bulk farms run",
-      "meta": "drops during the Alloy Plate and Polymer farms",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "1,000",
-          "label": "Ferrite",
-          "note": "Harness build",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "1,400",
-          "label": "Rubedo",
-          "note": "300 Harness, 1,100 Wings",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "1,150",
-          "label": "Plastids",
-          "note": "Systems research",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "6",
-          "label": "Morphics",
-          "note": "1 Harness, 5 Systems; Mars has the best rate",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "3",
-          "label": "Orokin Cell",
-          "note": "Harness; Saturn, Ceres, Deimos",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "2",
-          "label": "Neural Sensors",
-          "note": "Wings; Jupiter, Kuva Fortress",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "2",
-          "label": "Gallium",
-          "note": "Elytron research; Cetus level 5-15 final-stage bounty, Exterminate caches on Carpo, Plato, Dakata",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Tellurium also drops from Grineer Sealab Sabotage and Lua (Plato) Exterminate caches if Ophelia is slow."
-      ],
+      "conditions": ["The blueprints can only be bought after the Archwing quest."],
       "bonuses": [],
       "disclosures": []
     },

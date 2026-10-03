@@ -9,6 +9,12 @@
     { "text": "Circuit option", "tone": "circuit" }
   ],
   "prices": [{ "label": "built", "amount": "325 p", "money": false }],
+  "materials": [
+    { "qty": "9", "label": "Nitain Extract", "note": null },
+    { "qty": "2,000", "label": "Cryotic", "note": null },
+    { "qty": "3", "label": "Argon Crystal", "note": null },
+    { "qty": "35,000", "label": "Credits", "note": null }
+  ],
   "groups": [
     {
       "type": "vendor",
@@ -187,38 +193,15 @@
       "map": null,
       "rows": [
         {
-          "qty": "9",
-          "label": "Nitain Extract",
-          "note": "total build requirement; buy with Nightwave Cred",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "2,000",
-          "label": "Cryotic",
-          "note": "total build requirement",
-          "alt": "Excavation missions",
-          "done": false
-        },
-        {
-          "qty": "3",
-          "label": "Argon Crystal",
-          "note": "total build requirement",
-          "alt": "farm last; it decays",
-          "done": false
-        },
-        {
           "qty": null,
           "label": "Ivara components",
-          "note": "build in parallel",
+          "note": "build in parallel; 9 Nitain Extract, 2,000 Cryotic, 3 Argon Crystal across the whole build",
           "alt": null,
           "done": false
         },
         { "qty": null, "label": "Ivara", "note": "final Foundry build", "alt": null, "done": false }
       ],
-      "conditions": [
-        "Gather Argon Crystals last because their inventory count decays after 24 hours."
-      ],
+      "conditions": [],
       "bonuses": [
         "Run the three component builds in parallel before starting Ivara's 72-hour final build."
       ],

@@ -12,6 +12,15 @@
     { "label": "strike, grip, link", "amount": "3,000 standing", "money": false },
     { "label": "assemble", "amount": "4,000 cr", "money": false }
   ],
+  "materials": [
+    { "qty": "1,200", "label": "Ferrite", "note": "Coprite Alloy refining" },
+    { "qty": "150", "label": "Rubedo", "note": "Coprite Alloy refining" },
+    { "qty": "10", "label": "Esher Devar", "note": null },
+    { "qty": "60", "label": "Coprite Alloy", "note": null },
+    { "qty": "20", "label": "Grokdrul", "note": null },
+    { "qty": "45", "label": "Fish Scales", "note": null },
+    { "qty": "3", "label": "Cetus Wisp", "note": "1 for Trusted, 2 to gild" }
+  ],
   "groups": [
     {
       "type": "currency",
@@ -22,7 +31,7 @@
       "mode": "solo",
       "live": null,
       "skip": null,
-      "earns": { "currency": "Ostron standing", "amount": "71,000" },
+      "earns": { "currency": "Ostron Standing", "amount": "71,000" },
       "spends": [],
       "map": "plains-of-eidolon",
       "rows": [
@@ -48,20 +57,12 @@
           "done": false
         }
       ],
-      "conditions": [
-        "The blueprint needs only Neutral, but gilding needs Trusted; early ranks have low caps, so this takes several days however fast you farm.",
-        "Hai-Luk doesn't warn when a fish turn-in goes over the daily cap; set the quantity by hand."
-      ],
+      "conditions": ["The blueprint needs only Neutral, but gilding needs Trusted."],
       "bonuses": [
-        "Conservation caps the day in 10-15 minutes; leave and re-enter to respawn the animals. Ivara's Sleep Arrow replaces the tranq rifle.",
         "Tusk Thumpers drop gems, ore and Coprite Alloy and can cap the day in about 10 minutes."
       ],
-      "disclosures": [
-        {
-          "title": "fishing instead",
-          "body": "Murkray (any time) and Glappid (night, south-east ocean) are the repeated picks, but bait now costs standing. Oxylus shows fishing hot spots on the minimap."
-        }
-      ]
+      "disclosures": [],
+      "ref": "Ostron Standing"
     },
     {
       "type": "vendor",
@@ -73,7 +74,7 @@
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Ostron standing", "amount": "3,000" }],
+      "spends": [{ "currency": "Ostron Standing", "amount": "3,000" }],
       "map": "cetus",
       "rows": [
         {
@@ -106,60 +107,37 @@
       "disclosures": []
     },
     {
-      "type": "farm",
-      "place": "PLAINS OF EIDOLON, EARTH",
+      "type": "vendor",
+      "place": "OLD MAN SUUMBAAT, CETUS",
       "sub": null,
-      "activity": "mine, fish, break Grineer drums, collect Cetus Wisps",
-      "meta": "refine at Old Man Suumbaat, Offworlder",
+      "activity": "buy the refining blueprints",
+      "meta": "Ostron Offworlder",
       "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Ostron standing", "amount": "5,000" }],
-      "map": "plains-of-eidolon",
+      "spends": [{ "currency": "Ostron Standing", "amount": "5,000" }],
+      "map": "cetus",
       "rows": [
         {
-          "qty": "10",
-          "label": "Esher Devar",
-          "note": "10 Devar (blue veins), 1,000 cr per batch of 10",
+          "qty": null,
+          "label": "Esher Devar Blueprint",
+          "note": "2,500 standing, Offworlder",
           "alt": null,
           "done": false
         },
         {
-          "qty": "60",
-          "label": "Coprite Alloy",
-          "note": "3 builds of 20 Coprun, 400 Ferrite, 50 Rubedo",
-          "alt": "Tusk Thumpers",
-          "done": false
-        },
-        {
-          "qty": "20",
-          "label": "Grokdrul",
-          "note": "Grineer drums in camps",
-          "alt": "bounty rewards",
-          "done": false
-        },
-        {
-          "qty": "45",
-          "label": "Fish Scales",
-          "note": "carve fish at Fisher Hai-Luk",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "3",
-          "label": "Cetus Wisp",
-          "note": "1 for Trusted, 2 to gild; lake shores, mostly at night",
+          "qty": null,
+          "label": "Coprite Alloy Blueprint",
+          "note": "2,500 standing, Offworlder",
           "alt": null,
           "done": false
         }
       ],
-      "conditions": [
-        "The Esher Devar and Coprite Alloy refine blueprints cost 2,500 standing each from Old Man Suumbaat and need Offworlder.",
-        "Mining Devar and Coprun needs a mining tool."
-      ],
-      "bonuses": ["Gather these on the same Plains trips as the conservation loop."],
-      "disclosures": []
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": [],
+      "ref": "Ostron Standing"
     },
     {
       "type": "foundry",

@@ -12,6 +12,16 @@
     { "label": "parts + assembly", "amount": "19,000 cr", "money": false },
     { "label": "gild", "amount": "5,000 cr", "money": false }
   ],
+  "materials": [
+    { "qty": "1,200", "label": "Rubedo", "note": "chamber 900, Venerdo Alloy refine 300" },
+    { "qty": "2", "label": "Gallium", "note": "Venerdo Alloy refine" },
+    { "qty": "6", "label": "Training Debt-Bond", "note": null },
+    { "qty": "16", "label": "Shelter Debt-Bond", "note": null },
+    { "qty": "4", "label": "Medical Debt-Bond", "note": "rank 3 only" },
+    { "qty": "15", "label": "Gorgaricus Spore", "note": null },
+    { "qty": "20", "label": "Venerdo Alloy", "note": null },
+    { "qty": "10", "label": "Eye-Eye Rotoblade", "note": null }
+  ],
   "groups": [
     {
       "type": "gate",
@@ -39,55 +49,6 @@
       "disclosures": []
     },
     {
-      "type": "bounty",
-      "place": "ORB VALLIS, VENUS",
-      "sub": null,
-      "activity": "bounties and Ticker trades toward Doer",
-      "meta": "Rank 3, Solaris United",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": "orb-vallis",
-      "rows": [
-        {
-          "qty": "6",
-          "label": "Training Debt-Bond",
-          "note": "2 per rank-up, ranks 1-3",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "6",
-          "label": "Shelter Debt-Bond",
-          "note": "3 for rank 2, 3 for rank 3",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "4",
-          "label": "Medical Debt-Bond",
-          "note": "rank 3 only",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "10",
-          "label": "Shelter Debt-Bond",
-          "note": "spent again at the gild, separate from the rank-up total above",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Rank-up bond costs (reduced in Update 35.1): Rank 1 needs 2 Training; Rank 2 needs 3 Shelter and 2 Training; Rank 3 (Doer) needs 4 Medical, 3 Shelter and 2 Training, plus credits at each rank.",
-        "The best bond drop rate is on the first stage of the right bounty tier; Ticker also sells cheap Training and Shelter bonds."
-      ],
-      "bonuses": ["Profit-Taker showers Debt-Bonds once you're past Old Mate."],
-      "disclosures": []
-    },
-    {
       "type": "vendor",
       "place": "RUDE ZUUD, FORTUNA",
       "sub": null,
@@ -97,7 +58,7 @@
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Solaris United standing", "amount": "1,000" }],
+      "spends": [{ "currency": "Solaris United Standing", "amount": "1,000" }],
       "map": null,
       "rows": [
         {
@@ -125,55 +86,6 @@
       "conditions": [
         "Grip and loader give no Mastery. Rank-0 Lovetap and Slap are enough for a Mastery build.",
         "Primary grips (Brash, Shrewd) start at Outworlder; a primary Rattleguts can't be built at Rank 0."
-      ],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "ORB VALLIS, VENUS",
-      "sub": "caves for mushrooms, ponds for fish",
-      "activity": "gather, mine and fish",
-      "meta": "chamber materials",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": "orb-vallis",
-      "rows": [
-        {
-          "qty": "15",
-          "label": "Gorgaricus Spore",
-          "note": "purple sacs under Vallis mushrooms; the orange ones don't count",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "20",
-          "label": "Venerdo Alloy",
-          "note": "refine from Venerol ore; one craft yields 20",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "10",
-          "label": "Eye-Eye Rotoblade",
-          "note": "1 per Eye-Eye servofish, Vallis ponds, Warm weather only",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "900",
-          "label": "Rubedo",
-          "note": null,
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Venerdo Alloy's reusable blueprint costs 2,000 standing from Smokefinger, Rank 1 (Outworlder).",
-        "Eye-Eye only bite during the Vallis's short Warm cycle (roughly 4 minutes Warm to 22 Cold)."
       ],
       "bonuses": [],
       "disclosures": []

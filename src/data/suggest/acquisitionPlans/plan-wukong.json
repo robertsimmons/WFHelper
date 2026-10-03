@@ -4,78 +4,32 @@
   "effort": 2,
   "tradeable": false,
   "progress": { "have": 0, "need": 4, "unit": "parts" },
-  "badges": [
-    { "text": "Tenno Lab", "tone": "warn" },
-    { "text": "Nitain wall", "tone": "warn" }
-  ],
+  "badges": [{ "text": "Tenno Lab", "tone": "warn" }],
   "prices": [
     { "label": "blueprint", "amount": "35,000 cr", "money": false },
     { "label": "built", "amount": "250 p", "money": false }
   ],
+  "materials": [
+    { "qty": "6", "label": "Nitain Extract", "note": null },
+    { "qty": "1,400", "label": "Circuits", "note": null },
+    { "qty": "1", "label": "Neural Sensors", "note": null },
+    { "qty": "2,600", "label": "Polymer Bundle", "note": null },
+    { "qty": "1", "label": "Morphics", "note": null },
+    { "qty": "900", "label": "Ferrite", "note": null },
+    { "qty": "50", "label": "Rubedo", "note": null },
+    { "qty": "2", "label": "Argon Crystal", "note": null },
+    { "qty": "2", "label": "Neurodes", "note": null },
+    { "qty": "8,000", "label": "Salvage", "note": null },
+    { "qty": "4,000", "label": "Plastids", "note": null },
+    { "qty": "1", "label": "Orokin Cell", "note": null }
+  ],
   "groups": [
-    {
-      "type": "research",
-      "place": "CLAN DOJO, TENNO LAB",
-      "sub": null,
-      "activity": "research all four Wukong blueprints, unless your clan already has them",
-      "meta": "3-day research each, runs in parallel; Ghost-tier (x1) costs shown",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Wukong (main)",
-          "note": "5 Nitain, 25,000 Ferrite, 9,900 Plastids, 1 Orokin Cell",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Neuroptics",
-          "note": "1 Nitain, 1 Neural Sensors, 1,000 Nano Spores, 500 Polymer Bundle",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Chassis",
-          "note": "3 Nitain, 1 Control Module, 1,000 Ferrite, 500 Rubedo",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Systems",
-          "note": "2 Nitain, 1 Morphics, 1,000 Salvage, 500 Plastids",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Resource costs multiply by clan tier: Shadow x3, Storm x10, Mountain x30, Moon x100; a Ghost-tier clan is the cheapest place to research.",
-        "Research is skipped entirely if any clanmate already unlocked it; the blueprints then just sit in the lab for credits.",
-        "Blueprints bought from another clan's finished research stay yours after you leave, so borrowing a clan to shop is an option."
-      ],
-      "bonuses": [
-        "Split the resource cost across clanmates before starting if nobody has researched him yet; even at Shadow tier that keeps each donation under 1,000 Plastids."
-      ],
-      "disclosures": [
-        {
-          "title": "Nitain is the real gate",
-          "body": "Research alone needs 11 Nitain and crafting needs 6 more, 17 total for a solo researcher. Nitain is untradeable, unaffected by boosters, and comes only from the Nightwave Cred store (5 for 15 Cred)."
-        }
-      ]
-    },
     {
       "type": "vendor",
       "place": "CLAN DOJO, TENNO LAB",
       "sub": null,
       "activity": "buy the four blueprints",
-      "meta": "35,000 cr main; part prices unverified, confirm in the lab",
+      "meta": "35,000 cr main, 15,000 cr per part",
       "mode": null,
       "live": null,
       "skip": null,
@@ -93,93 +47,12 @@
         {
           "qty": "3",
           "label": "component blueprints",
-          "note": "credits each; the wiki's research page was unclear on the exact price",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": ["Each player buys their own blueprints once the clan's research is complete."],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "vendor",
-      "place": "NIGHTWAVE, CRED STORE",
-      "sub": null,
-      "activity": "buy Nitain Extract 5-packs",
-      "meta": "17 total needed if researching and crafting solo",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [{ "currency": "Nightwave Cred", "amount": "60" }],
-      "map": null,
-      "rows": [
-        {
-          "qty": "20",
-          "label": "Nitain Extract",
-          "note": "4 packs of 5, 60 Cred total",
-          "alt": "Reactor Sabotage caches, ~2% chance of 1 Nitain",
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Nitain is untradeable and unaffected by boosters; Nightwave is the only vendor source."
-      ],
-      "bonuses": [
-        "Twitch drops of Nightwave Cred show up on DE livestreams; streamframe.fyi tracks them if you're a few Cred short."
-      ],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "OPHELIA, URANUS",
-      "sub": null,
-      "activity": "Survival with a resource booster",
-      "meta": "one person reported 10k+ in 30 minutes",
-      "mode": "Nekros, Khora and Hydroid squad",
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "14,400",
-          "label": "Plastids",
-          "note": "9,900 main research + 500 Systems research + 4,000 Systems build",
+          "note": "15,000 cr each",
           "alt": null,
           "done": false
         }
       ],
       "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "THE VOID",
-      "sub": null,
-      "activity": "any Void mission",
-      "meta": "farm last, right before the Systems build",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "2",
-          "label": "Argon Crystal",
-          "note": "Systems build",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Argon decays daily; farming it early wastes the stack before Systems is ready."
-      ],
       "bonuses": [],
       "disclosures": []
     },
@@ -225,7 +98,7 @@
           "done": false
         }
       ],
-      "conditions": ["Crafting alone spends 6 more Nitain beyond the 11 spent on research."],
+      "conditions": [],
       "bonuses": [],
       "disclosures": []
     }

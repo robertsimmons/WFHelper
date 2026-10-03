@@ -12,6 +12,23 @@
     { "label": "blueprints", "amount": "270 Stock", "money": false },
     { "label": "built", "amount": "175 p", "money": false }
   ],
+  "materials": [
+    { "qty": "2", "label": "Argon Crystal", "note": "Neuroptics" },
+    { "qty": "3,000", "label": "Ferrite", "note": "Neuroptics" },
+    { "qty": "1,200", "label": "Rubedo", "note": "Systems" },
+    { "qty": "1,200", "label": "Oxium", "note": "Chassis" },
+    { "qty": "1", "label": "Orokin Cell", "note": "Styanax" },
+    { "qty": "900", "label": "Plastids", "note": "Hespazym Alloy refines" },
+    { "qty": "6", "label": "Morphics", "note": "Hespazym Alloy refines" },
+    { "qty": "40", "label": "Purged Dagonic", "note": "Neuroptics" },
+    { "qty": "5", "label": "Norg Brain", "note": "Neuroptics" },
+    { "qty": "5", "label": "Entrati Lanthorn", "note": "Chassis" },
+    { "qty": "60", "label": "Hespazym Alloy", "note": "Chassis" },
+    { "qty": "20", "label": "Star Crimzian", "note": "Chassis" },
+    { "qty": "5", "label": "Radian Sentirum", "note": "Systems" },
+    { "qty": "400", "label": "Thrax Plasm", "note": "Systems" },
+    { "qty": "15", "label": "Voidplume Quill", "note": "Systems" }
+  ],
   "groups": [
     {
       "type": "gate",
@@ -49,7 +66,7 @@
       "disclosures": []
     },
     {
-      "type": "farm",
+      "type": "currency",
       "place": "DRIFTER'S CAMP, EARTH",
       "sub": "Kahl's Garrison",
       "activity": "Break Narmer weekly mission",
@@ -92,7 +109,8 @@
           "title": "calendar gate, not an RNG farm",
           "body": "Rank 5 cannot be reached before four weekly completions. Stock is normally comfortable at 105 challenge Stock per week; the unavoidable minimum is four weeks plus the final 72-hour Foundry build."
         }
-      ]
+      ],
+      "ref": "Stock"
     },
     {
       "type": "vendor",
@@ -142,92 +160,6 @@
       ],
       "bonuses": [
         "Starting each 12-hour component build in weeks 1-3 leaves only the 72-hour final build after the fourth weekly mission."
-      ],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "VOID AND OPEN WORLDS",
-      "sub": null,
-      "activity": "gather build materials before each component purchase",
-      "meta": "farm Argon last",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "2",
-          "label": "Argon Crystal",
-          "note": "Neuroptics; decays after 24 hours",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "40",
-          "label": "Purged Dagonic",
-          "note": "Neuroptics; Zariman",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "5",
-          "label": "Norg Brain",
-          "note": "Neuroptics; Plains of Eidolon fishing",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "5",
-          "label": "Entrati Lanthorn",
-          "note": "Chassis; Sanctum Anatomica",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "60",
-          "label": "Hespazym Alloy",
-          "note": "Chassis; refine Hesperon",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "20",
-          "label": "Star Crimzian",
-          "note": "Chassis; refine Crimzian",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "5",
-          "label": "Radian Sentirum",
-          "note": "Systems; refine Sentirum",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "400",
-          "label": "Thrax Plasm",
-          "note": "Systems; Zariman",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "15",
-          "label": "Voidplume Quill",
-          "note": "Systems; Zariman",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Do not buy the Neuroptics blueprint until the two Argon Crystals are ready; unused Argon halves daily.",
-        "The alloy and gem requirements need their respective reusable refining blueprints from the open-world vendors."
-      ],
-      "bonuses": [
-        "Kahl weeks provide enough calendar time to gather these materials before each component's rank unlocks."
       ],
       "disclosures": []
     },

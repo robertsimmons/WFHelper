@@ -12,60 +12,17 @@
     { "label": "Helios blueprint", "amount": "15,000 cr", "money": false },
     { "label": "build", "amount": "5,000 cr", "money": false }
   ],
+  "materials": [
+    { "qty": "10", "label": "Fieldron", "note": null },
+    { "qty": "300", "label": "Oxium", "note": null },
+    { "qty": "5,000", "label": "Ferrite", "note": null },
+    { "qty": "1", "label": "Forma", "note": null },
+    { "qty": "15,000", "label": "Credits", "note": null }
+  ],
   "groups": [
     {
-      "type": "gate",
-      "place": "DOJO, ENERGY LAB",
-      "sub": null,
-      "activity": "clan research for Helios",
-      "meta": "skip if already researched",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Energy Lab: Lanka, then Helios",
-          "note": "72h for Helios",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "7",
-          "label": "Fieldron Sample",
-          "note": "Helios research",
-          "alt": null,
-          "done": false
-        },
-        { "qty": "100", "label": "Oxium", "note": "Helios research", "alt": null, "done": false },
-        {
-          "qty": "750",
-          "label": "Ferrite",
-          "note": "Helios research",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "350",
-          "label": "Nano Spores",
-          "note": "Helios research",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Resource costs scale up with clan size; the figures here are the smallest clan tier.",
-        "In an established clan this is already done and costs you nothing."
-      ],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
       "type": "vendor",
-      "place": "DOJO, ENERGY LAB",
+      "place": "CLAN DOJO, ENERGY LAB",
       "sub": null,
       "activity": "buy the Helios blueprint",
       "meta": "15,000 cr",
@@ -87,62 +44,6 @@
       "conditions": [
         "Helios Prime does not give this weapon; it comes with Deconstructor Prime, a separate Mastery item.",
         "The Deconstructor has no blueprint of its own, so a sold copy means building another Helios."
-      ],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "STAR CHART",
-      "sub": null,
-      "activity": "Invasions that pay Fieldron",
-      "meta": "3 per Invasion; four cover the recipe",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "10",
-          "label": "Fieldron",
-          "note": "built Fieldron, not Fieldron Samples",
-          "alt": "or craft it, 12h and 10 Fieldron Samples each",
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Fieldron is a crafted resource. Crafting all 10 costs 10 lab blueprints at 15,000 credits each plus 10 Fieldron Samples, a Control Module, 500 Salvage and 250 Plastids per build.",
-        "The reward offered rotates; when no Invasion pays Fieldron, craft the rest."
-      ],
-      "bonuses": ["Orb Vallis bounties occasionally pay 2 finished Fieldron as a stage reward."],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "IO, JUPITER",
-      "sub": null,
-      "activity": "Defense",
-      "meta": "~80 per 10 waves",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        { "qty": "300", "label": "Oxium", "note": "the Helios build", "alt": null, "done": false },
-        {
-          "qty": "5,000",
-          "label": "Ferrite",
-          "note": "the Helios build",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Oxium Ospreys spawn in the first five waves of Corpus Defense and Interception and drop 7-12 Oxium each, but only if you kill them before they self-destruct."
       ],
       "bonuses": [],
       "disclosures": []

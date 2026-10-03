@@ -14,7 +14,7 @@
       "tone": "warn"
     },
     {
-      "text": "15 Detonite Ampule",
+      "text": "2 Detonite Injector",
       "tone": "info"
     }
   ],
@@ -30,52 +30,29 @@
       "money": false
     }
   ],
-  "groups": [
+  "materials": [
     {
-      "type": "gate",
-      "place": "DOJO, CHEM LAB",
-      "sub": null,
-      "activity": "clan research: Detonite Injector, then Buzlok",
-      "meta": "72h, then 60h; skip if already researched",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Chem Lab room",
-          "note": "Ghost tier: 1,000 cr, 650 Salvage, 350 Circuits, 350 Polymer Bundle, 1 Forma, 24h",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Detonite Injector",
-          "note": "5 Detonite Ampule, 200 Ferrite, 250 Polymer Bundle, 100 Plastids, 5,000 cr, 2,000 affinity",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Buzlok",
-          "note": "10 Detonite Ampule, 500 Salvage, 150 Circuits, 10 Control Module, 5,000 cr, 3,000 affinity",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Buzlok research cannot start until the Injector research finishes.",
-        "Costs scale with clan tier: x3 Shadow, x10 Storm, x30 Mountain, x100 Moon. Joining a clan that has it done leaves only the blueprint and the build."
-      ],
-      "bonuses": [],
-      "disclosures": []
+      "qty": "2",
+      "label": "Detonite Injector",
+      "note": null
     },
     {
+      "qty": "5,000",
+      "label": "Salvage",
+      "note": null
+    },
+    {
+      "qty": "600",
+      "label": "Circuits",
+      "note": null
+    },
+    { "qty": "1", "label": "Forma", "note": null },
+    { "qty": "15,000", "label": "Credits", "note": null }
+  ],
+  "groups": [
+    {
       "type": "vendor",
-      "place": "DOJO, CHEM LAB",
+      "place": "CLAN DOJO, CHEMICAL LAB",
       "sub": null,
       "activity": "buy the blueprint",
       "meta": "15,000 cr",
@@ -101,102 +78,6 @@
       ],
       "conditions": [],
       "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "PISCINAS, SATURN",
-      "sub": null,
-      "activity": "Survival (Dark Sector)",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "15",
-          "label": "Detonite Ampule",
-          "note": "5 Injector research, 10 Buzlok research",
-          "alt": "Gabii, Ceres, or Earth Sabotage caches, 12.18% each in rotation B",
-          "done": false
-        }
-      ],
-      "conditions": ["Ampules cannot be bought with platinum."],
-      "bonuses": [
-        "Earth Sabotage cache runs are soloable; bring a loot detector to find the three caches."
-      ],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "STAR CHART",
-      "sub": null,
-      "activity": "Grineer Invasions, then common drops",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "2",
-          "label": "Detonite Injector",
-          "note": "Buzlok build",
-          "alt": "or build: 10 Detonite Ampule, 1 Control Module, 500 Salvage, 250 Plastids, 15,000 cr, 12h each",
-          "done": false
-        },
-        {
-          "qty": "10",
-          "label": "Control Module",
-          "note": "Buzlok research",
-          "alt": "Void is best; also Neptune and Europa",
-          "done": false
-        },
-        {
-          "qty": "5,500",
-          "label": "Salvage",
-          "note": "500 research, 5,000 build",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "750",
-          "label": "Circuits",
-          "note": "150 research, 600 build",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "200",
-          "label": "Ferrite",
-          "note": "Injector research",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "250",
-          "label": "Polymer Bundle",
-          "note": "Injector research",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "100",
-          "label": "Plastids",
-          "note": "Injector research",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [
-        "A Grineer Invasion reward is 3 Injectors (rotation A, about 76%); rare and Reinforced Grineer containers and Orb Vallis tier 4 bounties also drop them."
-      ],
       "disclosures": []
     },
     {

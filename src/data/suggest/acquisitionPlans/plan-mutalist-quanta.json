@@ -30,105 +30,29 @@
       "money": false
     }
   ],
+  "materials": [
+    {
+      "qty": "5",
+      "label": "Mutagen Mass",
+      "note": null
+    },
+    {
+      "qty": "15,000",
+      "label": "Nano Spores",
+      "note": null
+    },
+    {
+      "qty": "1,200",
+      "label": "Circuits",
+      "note": null
+    },
+    { "qty": "1", "label": "Forma", "note": null },
+    { "qty": "50,000", "label": "Credits", "note": null }
+  ],
   "groups": [
     {
-      "type": "gate",
-      "place": "CLAN DOJO, BIO LAB",
-      "sub": null,
-      "activity": "have a dojo with a Bio Lab",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Bio Lab",
-          "note": "a built clan lab; a solo Ghost clan works",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "research",
-      "place": "CLAN DOJO, BIO LAB",
-      "sub": null,
-      "activity": "research Mutagen Mass, Torid, Acrid, Embolist, then Mutalist Quanta",
-      "meta": "five 72h timers in sequence, totals across all five",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "85",
-          "label": "Mutagen Sample",
-          "note": "5 + 10 + 10 + 30 + 30",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "10,250",
-          "label": "Nano Spores",
-          "note": null,
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "1,700",
-          "label": "Polymer Bundle",
-          "note": null,
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "1,150",
-          "label": "Circuits",
-          "note": null,
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "950",
-          "label": "Ferrite",
-          "note": null,
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "100",
-          "label": "Plastids",
-          "note": null,
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "27,500",
-          "label": "Credits",
-          "note": null,
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Each step is the prerequisite of the next, so the timers cannot run in parallel.",
-        "Only the Mutagen Mass is ever built; Torid, Acrid and Embolist are research prerequisites."
-      ],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
       "type": "vendor",
-      "place": "BIO LAB",
+      "place": "CLAN DOJO, BIO LAB",
       "sub": null,
       "activity": "buy the blueprint",
       "meta": null,
@@ -157,168 +81,6 @@
       "disclosures": []
     },
     {
-      "type": "farm",
-      "place": "DEIMOS",
-      "sub": "Terrorem, Hyf",
-      "activity": "Survival or Defense",
-      "meta": null,
-      "mode": "squad of four",
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "135",
-          "label": "Mutagen Sample",
-          "note": "85 for research, 50 to craft all five Mass",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": ["Solo farming spawns fewer enemies and yields noticeably less."],
-      "bonuses": [
-        "Atlas (Ore Gaze) or Nekros on Steel Path Terrorem is the usual setup.",
-        "Sabotage caches on Formido (Deimos) drop 3 per cache.",
-        "Clanmates can donate their Samples."
-      ],
-      "disclosures": [
-        {
-          "title": "where else Samples drop",
-          "body": "Eris (Xini Interception, Naeglar Sabotage) drops them, but they are rarer there than on Deimos."
-        }
-      ]
-    },
-    {
-      "type": "farm",
-      "place": "DEIMOS, SATURN, NEPTUNE OR ERIS",
-      "sub": null,
-      "activity": "Survival or Defense",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "25,250",
-          "label": "Nano Spores",
-          "note": "10,250 for research, 15,000 for the build",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": ["Roughly 3,000 per 5 minutes, doubled with Nekros; Cambion Drift also works."],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "TESSERA, VENUS",
-      "sub": null,
-      "activity": "Defense",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "2,350",
-          "label": "Circuits",
-          "note": "1,150 for research, 1,200 for the build",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": ["Titan Extractors on Venus or Ceres pull Circuits passively."],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "ANY STAR CHART",
-      "sub": null,
-      "activity": "common resources",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "1,700",
-          "label": "Polymer Bundle",
-          "note": "Assur and Ophelia on Uranus",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "950",
-          "label": "Ferrite",
-          "note": "Apollodorus on Mercury",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "1,350",
-          "label": "Plastids",
-          "note": "100 for research, 1,250 for Mass; Saturn",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "2,500",
-          "label": "Salvage",
-          "note": "Mass",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "5",
-          "label": "Control Module",
-          "note": "Corpus enemies and containers; Teshub and Hepit in the Void",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "craft",
-      "place": "FOUNDRY",
-      "sub": null,
-      "activity": "craft the Mutagen Mass",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "5",
-          "label": "Mutagen Mass",
-          "note": "10 Mutagen Sample, 1 Control Module, 500 Salvage, 250 Plastids, 15,000 cr, 12h each",
-          "alt": "or Infested Invasion rewards, or Tier 4 Orb Vallis bounty stages",
-          "done": false
-        }
-      ],
-      "conditions": ["Mutagen Mass cannot be sold, and it is not the Mutagen Sample."],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
       "type": "foundry",
       "place": "FOUNDRY",
       "sub": null,
@@ -334,7 +96,7 @@
         {
           "qty": null,
           "label": "Mutalist Quanta",
-          "note": "30,000 credits, 1 Forma, 24h",
+          "note": "30,000 credits, 5 Mutagen Mass, 15,000 Nano Spores, 1,200 Circuits, 1 Forma, 24h",
           "alt": null,
           "done": false
         }

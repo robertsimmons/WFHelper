@@ -12,112 +12,39 @@
     { "label": "blueprint", "amount": "50,000 cr", "money": false },
     { "label": "build", "amount": "30,000 cr", "money": false }
   ],
+  "materials": [
+    { "qty": "4", "label": "Mutagen Mass", "note": null },
+    { "qty": "15,000", "label": "Nano Spores", "note": null },
+    { "qty": "1,200", "label": "Plastids", "note": null },
+    { "qty": "1", "label": "Forma", "note": null },
+    { "qty": "50,000", "label": "Credits", "note": null }
+  ],
   "groups": [
     {
-      "type": "gate",
-      "place": "DOJO, BIO LAB",
+      "type": "vendor",
+      "place": "CLAN DOJO, BIO LAB",
       "sub": null,
-      "activity": "clan research",
-      "meta": "skip if already researched",
+      "activity": "buy the blueprint",
+      "meta": "50,000 cr",
       "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [],
+      "spends": [{ "currency": "Credits", "amount": "50,000" }],
       "map": null,
       "rows": [
-        {
-          "qty": null,
-          "label": "Bio Lab: Mutagen Mass, Torid, Scoliac, then Mios",
-          "note": "72h each",
-          "alt": null,
-          "done": false
-        }
+        { "qty": null, "label": "Mios Blueprint", "note": "50,000 cr", "alt": null, "done": false }
       ],
-      "conditions": [
-        "Ghost (x1) tier totals for the chain are 70 Mutagen Samples, 19,250 Nano Spores, 900 Plastids, 1,200 Polymer Bundle, 350 Circuits and 20,000 credits; bigger clans pay x3/x10/x30/x100.",
-        "In an established clan this is already done and costs you nothing."
-      ],
+      "conditions": [],
       "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "research",
-      "place": "DOJO, BIO LAB",
-      "sub": null,
-      "activity": "buy the blueprints",
-      "meta": "110,000 cr",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [{ "currency": "Credits", "amount": "110,000" }],
-      "map": null,
-      "rows": [
-        { "qty": null, "label": "Mios Blueprint", "note": "50,000 cr", "alt": null, "done": false },
-        {
-          "qty": "4",
-          "label": "Mutagen Mass Blueprint",
-          "note": "15,000 cr each, single-use",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": ["Mutagen Mass blueprints are consumed; you need four, not one."],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "TERROREM, DEIMOS",
-      "sub": null,
-      "activity": "Survival",
-      "meta": "~110 Samples in 15 min on Steel Path",
-      "mode": "Steel Path, Nekros or Khora",
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "40",
-          "label": "Mutagen Sample",
-          "note": "4 Mutagen Mass crafts",
-          "alt": "or Hyf, or the Orokin Derelict Defense nodes",
-          "done": false
-        },
-        {
-          "qty": "15,000",
-          "label": "Nano Spores",
-          "note": "Mios build",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "4",
-          "label": "Control Module",
-          "note": "Mutagen Mass",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Samples are uncommon on Deimos and rare on Eris; farm Deimos.",
-        "Mutagen Samples are not the Deimos fishing Mutagen items."
-      ],
-      "bonuses": [
-        "Resourceful Retriever, a relay Drop Chance Blessing and boosters all stack on Samples.",
-        "Infested-side Invasions and Orb Vallis Lvl 30-50 bounties sometimes pay finished Mutagen Mass, skipping crafts."
-      ],
       "disclosures": []
     },
     {
       "type": "foundry",
       "place": "FOUNDRY",
       "sub": null,
-      "activity": "build four Mutagen Mass, then Mios",
-      "meta": "12h each, then 24h",
+      "activity": "build Mios",
+      "meta": "24h",
       "mode": null,
       "live": null,
       "skip": null,
@@ -125,13 +52,6 @@
       "spends": [],
       "map": null,
       "rows": [
-        {
-          "qty": "4",
-          "label": "Mutagen Mass",
-          "note": "15,000 cr, 10 Mutagen Sample, 1 Control Module, 500 Salvage, 250 Plastids each",
-          "alt": null,
-          "done": false
-        },
         {
           "qty": null,
           "label": "Mios",

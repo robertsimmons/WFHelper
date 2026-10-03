@@ -30,6 +30,23 @@
       "money": false
     }
   ],
+  "materials": [
+    { "qty": "1", "label": "Damaged Necramech Casing", "note": null },
+    { "qty": "1", "label": "Damaged Necramech Engine", "note": null },
+    { "qty": "1", "label": "Damaged Necramech Pod", "note": null },
+    { "qty": "1", "label": "Damaged Necramech Weapon Pod", "note": null },
+    { "qty": "6", "label": "Spinal Core Section", "note": null },
+    { "qty": "20", "label": "Biotic Filter", "note": null },
+    { "qty": "4", "label": "Scintillant", "note": null },
+    { "qty": "45", "label": "Scrap", "note": "Weapon Pod" },
+    { "qty": "750", "label": "Titanium", "note": "Engine" },
+    { "qty": "100", "label": "Tempered Bapholite", "note": null },
+    { "qty": "20", "label": "Thaumic Distillate", "note": null },
+    { "qty": "15", "label": "Goblite Tears", "note": null },
+    { "qty": "120", "label": "Adramal Alloy", "note": null },
+    { "qty": "6", "label": "Star Crimzian", "note": null },
+    { "qty": "80", "label": "Devolved Namalon", "note": null }
+  ],
   "groups": [
     {
       "type": "gate",
@@ -80,7 +97,7 @@
       "live": null,
       "skip": null,
       "earns": {
-        "currency": "Necraloid standing",
+        "currency": "Necraloid Standing",
         "amount": "95,000"
       },
       "spends": [],
@@ -106,34 +123,6 @@
           "note": "Tier 3 vault; 5,000 standing each",
           "alt": null,
           "done": false
-        },
-        {
-          "qty": null,
-          "label": "Damaged Necramech Casing",
-          "note": "12.5% from vault Necramechs",
-          "alt": "or Father, 2,000 Entrati standing",
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Damaged Necramech Engine",
-          "note": "vault Necramechs",
-          "alt": "or Father, 2,000 Entrati standing",
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Damaged Necramech Pod",
-          "note": "vault Necramechs",
-          "alt": "or Father, 2,000 Entrati standing",
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Damaged Necramech Weapon Pod",
-          "note": "vault Necramechs",
-          "alt": "or Father, 2,000 Entrati standing",
-          "done": false
         }
       ],
       "conditions": [
@@ -142,8 +131,6 @@
         "Save standing: buying from Loid before Odima delays the rank-up."
       ],
       "bonuses": [
-        "Matrices are enemy drops, so a Resource Booster, Nekros Desecrate and Resourceful Retriever all add to them.",
-        "After the first clear, an Arcana Isolation Vault bounty from Mother skips re-opening the door and can drop all three matrix types.",
         "Tier 3 Animus Matrices are worth 5,000 standing each, the best source once Rank 2 is done."
       ],
       "disclosures": [
@@ -151,7 +138,8 @@
           "title": "buying instead of farming",
           "body": "Several players bought built Voidrig or Bonewidow components in trade chat for a few dozen platinum. Buy built parts, not Damaged ones."
         }
-      ]
+      ],
+      "ref": "Necraloid Standing"
     },
     {
       "type": "vendor",
@@ -165,7 +153,7 @@
       "earns": null,
       "spends": [
         {
-          "currency": "Entrati standing",
+          "currency": "Entrati Standing",
           "amount": "5,500"
         }
       ],
@@ -221,7 +209,7 @@
       "earns": null,
       "spends": [
         {
-          "currency": "Necraloid standing",
+          "currency": "Necraloid Standing",
           "amount": "95,000"
         }
       ],
@@ -282,7 +270,7 @@
       "earns": null,
       "spends": [
         {
-          "currency": "Entrati standing",
+          "currency": "Entrati Standing",
           "amount": "8,000"
         }
       ],
@@ -335,66 +323,10 @@
       "map": "cambion-drift",
       "rows": [
         {
-          "qty": "100",
-          "label": "Bapholite",
-          "note": "5 Tempered Bapholite batches; yellow veins",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "120",
-          "label": "Adramalium",
-          "note": "6 Adramal Alloy batches; yellow veins",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "80",
-          "label": "Namalon",
-          "note": "4 Devolved Namalon batches; yellow veins",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "20",
-          "label": "Thaumica",
-          "note": "1 Thaumic Distillate batch; yellow veins",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "240",
-          "label": "Lucent Teroglobe",
-          "note": "15 per batch; Vitrific Outcrops by Obelisks, bounty rewards, vault storage containers",
-          "alt": null,
-          "done": false
-        },
-        {
           "qty": "2",
           "label": "Cranial Foremount",
           "note": "fillet Myxostomata at Daughter",
           "alt": "or Requiem Obelisk drops",
-          "done": false
-        },
-        {
-          "qty": "6",
-          "label": "Spinal Core Section",
-          "note": "fillet Chondricord or Vitreospina at Daughter",
-          "alt": "or Isolation Vault bounties",
-          "done": false
-        },
-        {
-          "qty": "20",
-          "label": "Biotic Filter",
-          "note": "fillet Duroid or Aquapulmo at Daughter",
-          "alt": "or Requiem Pylon drops",
-          "done": false
-        },
-        {
-          "qty": "4",
-          "label": "Scintillant",
-          "note": "Isolation Vault only: floating pickups, Necramech drops, Tier 1-2 Mother bounties",
-          "alt": null,
           "done": false
         }
       ],
@@ -408,152 +340,56 @@
       "disclosures": []
     },
     {
-      "type": "farm",
-      "place": "ORB VALLIS, VENUS",
+      "type": "vendor",
+      "place": "SMOKEFINGER, FORTUNA",
       "sub": null,
-      "activity": "mine, and dismantle Servofish at The Business in Fortuna",
-      "meta": "Solaris United Outworlder for Goblite",
+      "activity": "buy the Goblite Tears refining blueprint",
+      "meta": "Solaris United Outworlder",
       "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [
-        {
-          "currency": "Solaris United standing",
-          "amount": "2,000"
-        }
-      ],
-      "map": "orb-vallis",
+      "spends": [{ "currency": "Solaris United Standing", "amount": "2,000" }],
+      "map": "fortuna",
       "rows": [
         {
-          "qty": "120",
-          "label": "Travoride",
-          "note": "Adramal Alloy; red veins",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "20",
-          "label": "Venerol",
-          "note": "Thaumic Distillate; red veins",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "20",
-          "label": "Goblite",
-          "note": "2 batches for 15 Goblite Tears; Smokefinger sells the blueprint for 2,000 standing, Rank 1",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "45",
-          "label": "Scrap",
-          "note": "Weapon Pod; dismantle Servofish",
+          "qty": null,
+          "label": "Goblite Tears Blueprint",
+          "note": "2,000 standing, Rank 1",
           "alt": null,
           "done": false
         }
       ],
       "conditions": [],
       "bonuses": [],
-      "disclosures": []
+      "disclosures": [],
+      "ref": "Solaris United Standing"
     },
     {
-      "type": "farm",
-      "place": "PLAINS OF EIDOLON, EARTH",
+      "type": "vendor",
+      "place": "OLD MAN SUUMBAAT, CETUS",
       "sub": null,
-      "activity": "mine",
-      "meta": "Ostron Trusted for Star Crimzian",
+      "activity": "buy the Star Crimzian refining blueprint",
+      "meta": "Ostron Trusted",
       "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [
-        {
-          "currency": "Ostron standing",
-          "amount": "7,500"
-        }
-      ],
-      "map": "plains-of-eidolon",
+      "spends": [{ "currency": "Ostron Standing", "amount": "7,500" }],
+      "map": "cetus",
       "rows": [
         {
-          "qty": "100",
-          "label": "Pyrol",
-          "note": "Tempered Bapholite; red veins",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "80",
-          "label": "Ferros",
-          "note": "Devolved Namalon",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "6",
-          "label": "Crimzian",
-          "note": "1 batch for 6 Star Crimzian; blue veins; Old Man Suumbaat sells the blueprint for 7,500 standing, Rank 3",
+          "qty": null,
+          "label": "Star Crimzian Blueprint",
+          "note": "7,500 standing, Rank 3",
           "alt": null,
           "done": false
         }
       ],
       "conditions": [],
       "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "ANY STAR CHART MISSION",
-      "sub": null,
-      "activity": "common resources for the refining batches",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "8,000",
-          "label": "Nano Spores",
-          "note": "1,600 per Tempered Bapholite batch",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "3,600",
-          "label": "Plastids",
-          "note": "600 per Adramal Alloy batch",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "640",
-          "label": "Rubedo",
-          "note": "160 per Devolved Namalon batch",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "4",
-          "label": "Gallium",
-          "note": "Thaumic Distillate",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "750",
-          "label": "Titanium",
-          "note": "Engine",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": ["Each refining batch also costs 1,000 cr."],
-      "bonuses": [],
-      "disclosures": []
+      "disclosures": [],
+      "ref": "Ostron Standing"
     },
     {
       "type": "foundry",

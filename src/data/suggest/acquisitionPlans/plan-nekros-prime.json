@@ -9,6 +9,21 @@
     { "text": "Prime Resurgence", "tone": "info" }
   ],
   "prices": [{ "label": "set, player trade", "amount": "<100 p", "money": false }],
+  "materials": [
+    { "qty": "15,000", "label": "Alloy Plate", "note": "Neuroptics" },
+    { "qty": "3", "label": "Neural Sensors", "note": "Neuroptics" },
+    { "qty": "12,000", "label": "Polymer Bundle", "note": "Neuroptics" },
+    { "qty": "5", "label": "Nitain Extract", "note": "Neuroptics" },
+    { "qty": "3", "label": "Morphics", "note": "Chassis" },
+    { "qty": "18,000", "label": "Ferrite", "note": "Chassis" },
+    { "qty": "6,000", "label": "Rubedo", "note": "Chassis" },
+    { "qty": "2", "label": "Argon Crystal", "note": "Chassis" },
+    { "qty": "3", "label": "Control Module", "note": "Systems" },
+    { "qty": "3", "label": "Tellurium", "note": "Systems" },
+    { "qty": "15,000", "label": "Salvage", "note": "Systems" },
+    { "qty": "500", "label": "Plastids", "note": "Systems" },
+    { "qty": "3", "label": "Orokin Cell", "note": null }
+  ],
   "groups": [
     {
       "type": "currency",
@@ -33,19 +48,14 @@
       ],
       "conditions": [
         "Nekros Prime is vaulted. As of the research check on 2026-09-11 he was not in the active Prime Resurgence rotation; verify Varzia's live offering before farming.",
-        "Tier-5 Deimos final-stage Aya chance is 43.5%. Complete bonus objectives: the bonus adds another reward roll.",
-        "Aya carries over between rotations, but farming a huge bank is unnecessary: relics cost only one Aya each."
+        "Tier-5 Deimos final-stage Aya chance is 43.5%. Complete bonus objectives: the bonus adds another reward roll."
       ],
       "bonuses": [
         "Deimos avoids Cetus drone-escort and cache stages and can also yield valuable mods.",
         "Use a fast open-world frame such as Volt, Titania, or Nova."
       ],
-      "disclosures": [
-        {
-          "title": "the calendar is the gate",
-          "body": "Prime Resurgence changes every 28 days at 18:00 UTC. Watch Varzia's Next Offering panel; no normal mission currently drops the vaulted relics while Nekros is absent."
-        }
-      ]
+      "disclosures": [],
+      "ref": "Aya"
     },
     {
       "type": "vendor",
@@ -159,33 +169,6 @@
       ]
     },
     {
-      "type": "farm",
-      "place": "VOID",
-      "sub": null,
-      "activity": "Survival or Defense",
-      "meta": "last, before Chassis build",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": "void",
-      "rows": [
-        {
-          "qty": "2",
-          "label": "Argon Crystal",
-          "note": "Chassis requirement",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Argon decays after 24 hours, so farm it only once the Chassis blueprint and its other resources are ready."
-      ],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
       "type": "foundry",
       "place": "FOUNDRY",
       "sub": null,
@@ -201,22 +184,28 @@
         {
           "qty": null,
           "label": "Nekros Prime Neuroptics",
-          "note": "12,000 Polymer Bundle",
+          "note": "15,000 cr, 15,000 Alloy Plate, 3 Neural Sensors, 12,000 Polymer Bundle, 5 Nitain Extract",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Nekros Prime Chassis",
-          "note": "2 Argon Crystals",
+          "note": "15,000 cr, 3 Morphics, 18,000 Ferrite, 6,000 Rubedo, 2 Argon Crystal",
           "alt": null,
           "done": false
         },
-        { "qty": null, "label": "Nekros Prime Systems", "note": null, "alt": null, "done": false },
+        {
+          "qty": null,
+          "label": "Nekros Prime Systems",
+          "note": "15,000 cr, 3 Control Module, 3 Tellurium, 15,000 Salvage, 500 Plastids",
+          "alt": null,
+          "done": false
+        },
         {
           "qty": null,
           "label": "Nekros Prime",
-          "note": "1 Orokin Cell",
+          "note": "25,000 cr, 3 Orokin Cell, 3 days",
           "alt": null,
           "done": false
         }

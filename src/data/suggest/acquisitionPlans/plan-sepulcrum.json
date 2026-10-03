@@ -12,6 +12,20 @@
     { "label": "blueprints", "amount": "18,000 Entrati Standing", "money": false },
     { "label": "build", "amount": "60,000 cr", "money": false }
   ],
+  "materials": [
+    { "qty": "5", "label": "Morphics", "note": "Barrel" },
+    { "qty": "1,000", "label": "Salvage", "note": "Travocyte Alloy refines" },
+    { "qty": "200", "label": "Plastids", "note": "Travocyte Alloy refines" },
+    { "qty": "800", "label": "Ferrite", "note": "Coprite Alloy refines" },
+    { "qty": "100", "label": "Rubedo", "note": "Coprite Alloy refines" },
+    { "qty": "10", "label": "Purified Heciphron", "note": "Barrel and Receiver" },
+    { "qty": "2", "label": "Trapezium Xenorhast", "note": "Receiver" },
+    { "qty": "20", "label": "Pustulent Cognitive Nodule", "note": "Barrel" },
+    { "qty": "20", "label": "Dendrite Blastoma", "note": "Receiver" },
+    { "qty": "30", "label": "Travocyte Alloy", "note": "Barrel" },
+    { "qty": "40", "label": "Coprite Alloy", "note": "Receiver" },
+    { "qty": "1", "label": "Seriglass Shard", "note": null }
+  ],
   "groups": [
     {
       "type": "currency",
@@ -35,14 +49,11 @@
         }
       ],
       "conditions": [
-        "Rank 2 alone unlocks Sepulcrum's purchase, but the Receiver can't be built until Rank 3 opens Otak's Xenorhast blueprint, so plan for Rank 3 from the start.",
-        "Entrati members hand out Family Tokens, not standing directly; trade tokens to Grandmother for standing."
+        "Rank 2 alone unlocks Sepulcrum's purchase, but the Receiver can't be built until Rank 3 opens Otak's Xenorhast blueprint, so plan for Rank 3 from the start."
       ],
-      "bonuses": [
-        "Tier 5 Mother bounties are the standing engine; two or three runs commonly fill a day's cap.",
-        "Mother Tokens don't expire; over-farm on free days and cash in on later resets."
-      ],
-      "disclosures": []
+      "bonuses": [],
+      "disclosures": [],
+      "ref": "Entrati Standing"
     },
     {
       "type": "vendor",
@@ -145,108 +156,8 @@
       "bonuses": [
         "Stockpile Grandmother Tokens instead of cashing every family token for standing."
       ],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "CAMBION DRIFT, DEIMOS",
-      "sub": null,
-      "activity": "mine blue Heciphron and teal Xenorhast veins; refine at Otak",
-      "meta": "Advanced Nosam Cutter or Sunpoint Plasma Drill",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": "cambion-drift",
-      "rows": [
-        {
-          "qty": "5",
-          "label": "Purified Heciphron",
-          "note": "Barrel and Receiver; refine Heciphron 1:1",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "2",
-          "label": "Trapezium Xenorhast",
-          "note": "Receiver; refine raw Xenorhast, one build makes 3",
-          "alt": "tradeable",
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Get the Sunpoint Plasma Drill (Solaris United, 2,500 standing, no rank) before hunting Xenorhast; it has better special-gem odds and skips the Ostron Rank 4 Advanced Nosam Cutter gate.",
-        "Cambion Drift gem rarity increases farther from the Necralisk gate; the cave systems either side of the Catabolic Gutter are dense with veins."
-      ],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "CAMBION DRIFT, DEIMOS",
-      "sub": null,
-      "activity": "fish and cut with Daughter",
-      "meta": "surface hotspots (Vome/Fass) and caves",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": "cambion-drift",
-      "rows": [
-        {
-          "qty": "20",
-          "label": "Pustulent Cognitive Nodule",
-          "note": "Barrel; Aquapulmo (Vome, surface) or Cryptosuctus (Fass, surface)",
-          "alt": "Infested Cysts in the Drift",
-          "done": false
-        },
-        {
-          "qty": "20",
-          "label": "Dendrite Blastoma",
-          "note": "Receiver; Vitreospina or Barbisteo, caves, either cycle",
-          "alt": "Infested Cysts in the Drift",
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "ORB VALLIS + PLAINS OF EIDOLON",
-      "sub": null,
-      "activity": "mine and refine Travoride and Coprun",
-      "meta": "two builds each, 20 per build",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": "orb-vallis",
-      "rows": [
-        {
-          "qty": "30",
-          "label": "Travocyte Alloy",
-          "note": "Barrel; Smokefinger blueprint, Solaris United Neutral",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "40",
-          "label": "Coprite Alloy",
-          "note": "Receiver; Old Man Suumbaat blueprint, Ostron Rank 1 Offworlder",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "These are the only Fortuna/Ostron detours in the build; buy both refining blueprints early, neither needs deep standing."
-      ],
-      "bonuses": [],
-      "disclosures": []
+      "disclosures": [],
+      "ref": "Grandmother Token"
     },
     {
       "type": "foundry",

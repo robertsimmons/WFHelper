@@ -9,46 +9,17 @@
     { "label": "blueprint", "amount": "15,000 cr", "money": false },
     { "label": "build", "amount": "20,000 cr", "money": false }
   ],
+  "materials": [
+    { "qty": "100", "label": "Oxium", "note": null },
+    { "qty": "2,000", "label": "Ferrite", "note": null },
+    { "qty": "800", "label": "Plastids", "note": null },
+    { "qty": "2", "label": "Control Module", "note": null },
+    { "qty": "15,000", "label": "Credits", "note": null }
+  ],
   "groups": [
     {
-      "type": "gate",
-      "place": "DOJO, TENNO LAB",
-      "sub": null,
-      "activity": "clan research",
-      "meta": "skip if already researched; 48h then 48h",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Tenno Lab: Nami Skyla",
-          "note": "1 Neurodes, 500 Ferrite, 50 Rubedo, 300 Polymer Bundle, 5,000 cr, 48h",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Tenno Lab: Tonbo",
-          "note": "1 Morphics, 500 Ferrite, 20 Oxium, 300 Plastids, 5,000 cr, 48h",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Costs are at the base x1 tier; bigger clans pay x3/x10/x30/x100. Each project also takes 3,000 clan affinity.",
-        "Lab research cannot be rushed with platinum, so start both as soon as the lab is built.",
-        "In an established clan this is already done and costs you nothing."
-      ],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "research",
-      "place": "DOJO, TENNO LAB",
+      "type": "vendor",
+      "place": "CLAN DOJO, TENNO LAB",
       "sub": null,
       "activity": "buy the blueprint",
       "meta": "15,000 cr",
@@ -60,55 +31,6 @@
       "map": null,
       "rows": [
         { "qty": null, "label": "Tonbo Blueprint", "note": null, "alt": null, "done": false }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "IO, JUPITER",
-      "sub": null,
-      "activity": "Corpus Defense",
-      "meta": "Oxium Ospreys spawn constantly",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "120",
-          "label": "Oxium",
-          "note": "20 research + 100 build",
-          "alt": "or Corpus Survival; one Phobos Stickney run reported 500-600 per 40 minutes with Octavia",
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Ospreys that self-destruct drop nothing. Bring Khora, Hydroid or Nekros so the drones die first."
-      ],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "ANY EARLY-TO-MID PLANET",
-      "sub": null,
-      "activity": "common resources, picked up in passing",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        { "qty": "2,000", "label": "Ferrite", "note": "build", "alt": null, "done": false },
-        { "qty": "800", "label": "Plastids", "note": "build", "alt": null, "done": false },
-        { "qty": "2", "label": "Control Module", "note": "build", "alt": null, "done": false },
-        { "qty": "1", "label": "Morphics", "note": "research", "alt": null, "done": false }
       ],
       "conditions": [],
       "bonuses": [],

@@ -12,6 +12,11 @@
     { "label": "Genetic Code Template blueprint", "amount": "50,000 cr", "money": false },
     { "label": "Incubator Power Core blueprint", "amount": "50,000 cr", "money": false }
   ],
+  "materials": [
+    { "qty": "2", "label": "Genetic Code Template", "note": null },
+    { "qty": "20", "label": "Kavat Genetic Code", "note": null },
+    { "qty": "2", "label": "Incubator Power Core", "note": null }
+  ],
   "groups": [
     {
       "type": "gate",
@@ -70,10 +75,10 @@
       "map": null,
       "rows": [
         {
-          "qty": "2",
-          "label": "Genetic Code Template",
-          "note": "50,000 cr blueprint, reusable",
-          "alt": "15 p, built",
+          "qty": null,
+          "label": "Vasca Kavat",
+          "note": "2 Genetic Code Template",
+          "alt": null,
           "done": false
         }
       ],
@@ -121,41 +126,6 @@
       ]
     },
     {
-      "type": "farm",
-      "place": "HOREND, DEIMOS",
-      "sub": null,
-      "activity": "Capture, scan live Feral Kavats",
-      "meta": "25% per scan",
-      "mode": "solo or full squad",
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": "cambion-drift",
-      "rows": [
-        {
-          "qty": "10",
-          "label": "Kavat Genetic Code",
-          "note": "for the Vasca's Combined Incubation",
-          "alt": {
-            "text": "Market purchase",
-            "spends": [{ "currency": "Platinum", "amount": "50" }]
-          },
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Codes only come from scans that land while the Feral Kavat is alive; a corpse scan gives Simaris standing, never a code.",
-        "Pack size is squad size plus one, but codes are personal: in a squad every player must scan every cat themselves.",
-        "Sleep, slow, invisibility or Limbo Stasis preserves cats for scanning; avoid ragdoll effects and wide-area kills."
-      ],
-      "bonuses": [
-        "A full squad raises each pack to five cats.",
-        "The Cross-Matrix Widget (Cephalon Simaris standing) gives each scan a 45% chance to count twice."
-      ],
-      "disclosures": []
-    },
-    {
       "type": "foundry",
       "place": "FOUNDRY",
       "sub": null,
@@ -169,9 +139,9 @@
       "map": null,
       "rows": [
         {
-          "qty": "1",
-          "label": "Incubator Power Core",
-          "note": "one consumed per incubation",
+          "qty": null,
+          "label": "Vasca Kavat",
+          "note": "1 Incubator Power Core",
           "alt": null,
           "done": false
         }
@@ -196,20 +166,6 @@
       "map": null,
       "rows": [
         { "qty": "2", "label": "Vasca imprint", "note": "consumed", "alt": null, "done": false },
-        {
-          "qty": "10",
-          "label": "Kavat Genetic Code",
-          "note": "consumed",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "1",
-          "label": "Incubator Power Core",
-          "note": "consumed",
-          "alt": null,
-          "done": false
-        },
         {
           "qty": null,
           "label": "Vasca Kavat",

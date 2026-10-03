@@ -12,6 +12,12 @@
     { "label": "build", "amount": "20,000 cr", "money": false },
     { "label": "Simaris parts", "amount": "150,000 standing", "money": false }
   ],
+  "materials": [
+    { "qty": "2,300", "label": "Polymer Bundle", "note": null },
+    { "qty": "1,400", "label": "Rubedo", "note": null },
+    { "qty": "7", "label": "Nitain Extract", "note": "5 War, 2 Broken War" },
+    { "qty": "1", "label": "Forma", "note": null }
+  ],
   "groups": [
     {
       "type": "boss",
@@ -42,28 +48,28 @@
         }
       ],
       "conditions": [
-        "Only the killing blow earns the mark — a squadmate finishing the boss gets it, not you.",
+        "Only the killing blow earns the mark: a squadmate finishing the boss gets it, not you.",
         "Excluded bosses grant no mark: Captain Vor (Mercury), Corrupted Vor, Ropalolyst, Zealoid Prelate, The Fragmented, H-09 Efervon Tank.",
         "Spawn chance is 1.5% + 0.5% per marked squad member (2% solo, 3.5% with a full marked squad), arriving 30-280s into the mission; the window closes around 5 minutes.",
         "He cannot spawn in Assassination or Syndicate nodes, Sorties, Archon Hunts, Arenas, free roam, Archwing, relays/dojos, Albrecht's Laboratories, Höllvania or Dark Refractory missions.",
         "Warframes below rank 10 block the spawn entirely.",
-        "Base pre-quest Stalker drops neither blueprint — only Shadow Stalker (after The Second Dream) or Protector Stalker (after Jade Shadows) do.",
+        "Base pre-quest Stalker drops neither blueprint: only Shadow Stalker (after The Second Dream) or Protector Stalker (after Jade Shadows) do.",
         "War requires MR 10 to build; a newer player can earn the blueprint long before they can craft it."
       ],
       "bonuses": [
-        "Run the Hyena Pack (Psamathe, Neptune) for marks — each Hyena can grant its own.",
-        "The Sergeant (Iliad, Phobos) is the fastest single-boss mark — Volt, Gauss or Titania clear it in well under a minute.",
+        "Run the Hyena Pack (Psamathe, Neptune) for marks: each Hyena can grant its own.",
+        "The Sergeant (Iliad, Phobos) is the fastest single-boss mark: Volt, Gauss or Titania clear it in well under a minute.",
         "Public squads raise spawn chance to 3.5% and are free.",
         "Both blueprints can drop from the same kill, so this one farm loop covers War and its Broken War ingredient together."
       ],
       "disclosures": [
         {
           "title": "the maths behind the reputation",
-          "body": "Expect around 17 kills for War's own blueprint, and more for the rarer Broken War one, stacked on a 2-3.5% spawn chance per mission — realistically measured in playtime, not sessions. Reported outcomes range from a first-kill drop to 1,000-3,000+ hours without one."
+          "body": "Expect around 17 kills for War's own blueprint, and more for the rarer Broken War one, stacked on a 2-3.5% spawn chance per mission: realistically measured in playtime, not sessions. Reported outcomes range from a first-kill drop to 1,000-3,000+ hours without one."
         },
         {
           "title": "a disputed post-patch buff",
-          "body": "Community threads report Update 36 (Jade Shadows) raising both blueprints to 5.87%. Current wiki-sourced data still lists Broken War at 2.77% from Shadow Stalker specifically — treat 5.87% as optimistic until confirmed."
+          "body": "Community threads report Update 36 (Jade Shadows) raising both blueprints to 5.87%. Current wiki-sourced data still lists Broken War at 2.77% from Shadow Stalker specifically: treat 5.87% as optimistic until confirmed."
         },
         {
           "title": "beacons force the spawn, not the drop",
@@ -71,7 +77,7 @@
         },
         {
           "title": "don't lose the loot",
-          "body": "Stalker often dies or flees out of sight — ask the squad for a waypoint to his body. Host migration or a bugged lobby can eat a rare drop, so note it down when it happens."
+          "body": "Stalker often dies or flees out of sight: ask the squad for a waypoint to his body. Host migration or a bugged lobby can eat a rare drop, so note it down when it happens."
         }
       ]
     },
@@ -85,14 +91,14 @@
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Cephalon Simaris standing", "amount": "150,000" }],
+      "spends": [{ "currency": "Cephalon Simaris Standing", "amount": "150,000" }],
       "map": null,
       "rows": [
         {
           "qty": "1",
           "label": "War Hilt",
           "note": "50,000 standing",
-          "alt": "0.5% drop from Conculysts, Ortholysts, Summulysts, Aerolysts — obsolete since 2021, buy instead",
+          "alt": "0.5% drop from Conculysts, Ortholysts, Summulysts, Aerolysts: obsolete since 2021, buy instead",
           "done": false
         },
         {
@@ -104,11 +110,11 @@
         }
       ],
       "conditions": [
-        "Only needed for the second Broken War — the quest-given copy already comes fully built.",
-        "Stealth kills, sleeping-target scans and the daily Synthesis task are the fastest Simaris standing."
+        "Only needed for the second Broken War; the quest-given copy already comes fully built."
       ],
       "bonuses": [],
-      "disclosures": []
+      "disclosures": [],
+      "ref": "Cephalon Simaris Standing"
     },
     {
       "type": "foundry",
@@ -132,36 +138,9 @@
         }
       ],
       "conditions": [
-        "Never feed in The Second Dream's free copy — its Catalyst doesn't transfer, and Broken War outperforms War for most builds. Always craft a dedicated second copy to sacrifice.",
+        "Never feed in The Second Dream's free copy: its Catalyst doesn't transfer, and Broken War outperforms War for most builds. Always craft a dedicated second copy to sacrifice.",
         "Don't sell a spare Broken War Blueprint; it's untradeable and this recipe's only other source."
       ],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "STAR CHART",
-      "sub": null,
-      "activity": "gather War's remaining build materials",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        { "qty": "2,300", "label": "Polymer Bundle", "note": "War", "alt": null, "done": false },
-        { "qty": "1,400", "label": "Rubedo", "note": "War", "alt": null, "done": false },
-        {
-          "qty": "5",
-          "label": "Nitain Extract",
-          "note": "War; Broken War above needs 2 more",
-          "alt": "Nightwave or Baro Ki'Teer",
-          "done": false
-        }
-      ],
-      "conditions": [],
       "bonuses": [],
       "disclosures": []
     },

@@ -10,7 +10,7 @@
   },
   "badges": [
     {
-      "text": "Tenno Lab, 3 research steps",
+      "text": "Tenno Lab",
       "tone": "info"
     }
   ],
@@ -26,52 +26,29 @@
       "money": false
     }
   ],
-  "groups": [
+  "materials": [
     {
-      "type": "gate",
-      "place": "DOJO, TENNO LAB",
-      "sub": null,
-      "activity": "clan research chain",
-      "meta": "72h per step",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Akstiletto",
-          "note": "500 Salvage, 300 Polymer Bundle, 50 Alloy Plate, 1 Gallium, 5,000 cr, 72h",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Sybaris",
-          "note": "1 Morphics, 500 Salvage, 50 Rubedo, 300 Polymer Bundle, 5,000 cr, 72h",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Tenora",
-          "note": "25 Morphics, 600 Oxium, 3,000 Plastids, 5,500 Polymer Bundle, 5,000 cr, 72h",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Each step costs 3,000 clan affinity and must finish before the next starts. Akstiletto and Sybaris only need researching, never building.",
-        "Starting research needs a clan rank with that permission; a solo Ghost clan avoids an offline leader."
-      ],
-      "bonuses": [],
-      "disclosures": []
+      "qty": "5",
+      "label": "Neurodes",
+      "note": null
     },
     {
-      "type": "research",
-      "place": "DOJO, TENNO LAB",
+      "qty": "15,000",
+      "label": "Salvage",
+      "note": null
+    },
+    {
+      "qty": "4,000",
+      "label": "Rubedo",
+      "note": null
+    },
+    { "qty": "1", "label": "Forma", "note": null },
+    { "qty": "15,000", "label": "Credits", "note": null }
+  ],
+  "groups": [
+    {
+      "type": "vendor",
+      "place": "CLAN DOJO, TENNO LAB",
       "sub": null,
       "activity": "buy the blueprint",
       "meta": "15,000 cr",
@@ -91,175 +68,6 @@
           "qty": null,
           "label": "Tenora Blueprint",
           "note": null,
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": ["Research only unlocks the blueprint; the weapon is a Foundry build."],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "ASSUR, URANUS",
-      "sub": null,
-      "activity": "Survival",
-      "meta": "Plastids and Polymer Bundle in one run",
-      "mode": "Nekros Despoil",
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "3,000",
-          "label": "Plastids",
-          "note": "Tenora research",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "6,100",
-          "label": "Polymer Bundle",
-          "note": "600 + 5,500 research",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [
-        "Ophelia (Uranus) Survival also works; one 25-minute run gave 1,063 Plastids and 2,441 Polymer Bundle."
-      ],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "WAHIBA, MARS",
-      "sub": null,
-      "activity": "Dark Sector Survival",
-      "meta": "Mars has the best Morphics rate",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "26",
-          "label": "Morphics",
-          "note": "1 Sybaris, 25 Tenora",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "16,000",
-          "label": "Salvage",
-          "note": "500 + 500 research, 15,000 build",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": ["Jupiter and Sedna also drop Salvage."],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "IO, JUPITER",
-      "sub": null,
-      "activity": "Defense",
-      "meta": "restart around wave 15",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "600",
-          "label": "Oxium",
-          "note": "Tenora research",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": ["Ospreys must die before they self-destruct."],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "ZEUGMA, PHOBOS",
-      "sub": null,
-      "activity": "Dark Sector Survival",
-      "meta": "Phobos has the best Rubedo rate",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "4,050",
-          "label": "Rubedo",
-          "note": "50 Sybaris, 4,000 build",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "ANY MISSION",
-      "sub": null,
-      "activity": "small items",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "5",
-          "label": "Neurodes",
-          "note": "build; Earth, Deimos, Eris, Lua",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "50",
-          "label": "Alloy Plate",
-          "note": "Akstiletto",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "1",
-          "label": "Gallium",
-          "note": "Akstiletto",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "1",
-          "label": "Forma",
-          "note": "build",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "50,000",
-          "label": "Credits",
-          "note": "15,000 research, 15,000 blueprint, 20,000 build",
           "alt": null,
           "done": false
         }
@@ -289,9 +97,7 @@
           "done": false
         }
       ],
-      "conditions": [
-        "The build alone takes 15,000 Salvage and 4,000 Rubedo, which catches people who only budgeted for research."
-      ],
+      "conditions": [],
       "bonuses": [],
       "disclosures": []
     }

@@ -9,6 +9,7 @@
     { "text": "no RNG", "tone": "info" }
   ],
   "prices": [],
+  "materials": [{ "qty": "5", "label": "Aya", "note": null }],
   "groups": [
     {
       "type": "currency",
@@ -19,7 +20,7 @@
       "mode": "any squad",
       "live": null,
       "skip": null,
-      "earns": { "currency": "New Loka standing", "amount": "365,000" },
+      "earns": { "currency": "New Loka Standing", "amount": "365,000" },
       "spends": [],
       "map": null,
       "rows": [
@@ -39,44 +40,11 @@
         }
       ],
       "conditions": [
-        "The daily cap (16,000 + 500 x Mastery Rank) is shared across all six syndicates; only the pledged syndicate earns the 15% conversion.",
         "Perrin Sequence is the only other pledge that also feeds New Loka standing, at 7.5%; every other syndicate pledge feeds it 0%."
       ],
-      "bonuses": [
-        "Three daily New Loka Syndicate Alerts and their Seed medallions (500/1,000/5,000 each) bypass the daily cap entirely.",
-        "Universal Syndicate Medallions from Disruption are worth 1,000 standing with any syndicate."
-      ],
-      "disclosures": [
-        {
-          "title": "build a medallion loadout",
-          "body": "Loot Radar on frame and companion, a vacuum-type companion (a Sentinel is best), and a wide-AoE frame that breaks containers turns any mission into a Seed hunt alongside the affinity farm. Max-range Limbo casting Cataclysm twice was the popular pick."
-        }
-      ]
-    },
-    {
-      "type": "farm",
-      "place": "CETUS, EARTH",
-      "sub": null,
-      "activity": "bounties",
-      "meta": "for the Rank 4 and Rank 5 sacrifices",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "5",
-          "label": "Aya",
-          "note": "2 at Rank 4, 3 at Rank 5",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
       "bonuses": [],
-      "disclosures": []
+      "disclosures": [],
+      "ref": "New Loka Standing"
     },
     {
       "type": "vendor",
@@ -88,7 +56,7 @@
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "New Loka standing", "amount": "365,000" }],
+      "spends": [{ "currency": "New Loka Standing", "amount": "365,000" }],
       "map": null,
       "rows": [
         {

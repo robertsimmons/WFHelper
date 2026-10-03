@@ -12,6 +12,12 @@
     { "label": "blueprint", "amount": "10,000 standing", "money": false },
     { "label": "build", "amount": "50,000 cr", "money": false }
   ],
+  "materials": [
+    { "qty": "10", "label": "Marquise Veridos", "note": null },
+    { "qty": "10", "label": "Goblite Tears", "note": null },
+    { "qty": "10", "label": "Kriller Thermal Laser", "note": null },
+    { "qty": "5", "label": "Tromyzon Entroplasma", "note": null }
+  ],
   "groups": [
     {
       "type": "currency",
@@ -22,7 +28,7 @@
       "mode": "solo",
       "live": null,
       "skip": null,
-      "earns": { "currency": "Solaris United standing", "amount": "250,000" },
+      "earns": { "currency": "Solaris United Standing", "amount": "250,000" },
       "spends": [],
       "map": "orb-vallis",
       "rows": [
@@ -41,15 +47,12 @@
           "done": false
         }
       ],
-      "conditions": [
-        "The daily cap is 16,000 standing plus 500 per Mastery Rank, shared across the faction syndicates, so Rank 5 is a multi-day gate however well you farm.",
-        "The Vulcax needs Mastery Rank 14 to equip."
-      ],
+      "conditions": ["The Vulcax needs Mastery Rank 14 to equip."],
       "bonuses": [
-        "Conservation is the consensus fastest cap: tranquilize a Kubrodon with a sleep or invisibility frame (Equinox, Ivara) and its Echo-Lure for roughly 4,000 or 8,000 standing a capture. Mining is a close second.",
         "Rank 5 is usually reached anyway for Necramech parts and the Cryotra, Tazicor and Helstrum on the same shelf."
       ],
-      "disclosures": []
+      "disclosures": [],
+      "ref": "Solaris United Standing"
     },
     {
       "type": "bounty",
@@ -86,7 +89,7 @@
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Solaris United standing", "amount": "10,000" }],
+      "spends": [{ "currency": "Solaris United Standing", "amount": "10,000" }],
       "map": null,
       "rows": [
         {
@@ -104,78 +107,6 @@
       "disclosures": []
     },
     {
-      "type": "farm",
-      "place": "PLAINS OF EIDOLON, EARTH",
-      "sub": null,
-      "activity": "mine blue veins, refine at Old Man Suumbaat",
-      "meta": "refining: 2,500 cr, 1 minute",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": "plains-of-eidolon",
-      "rows": [
-        {
-          "qty": "10",
-          "label": "Marquise Veridos",
-          "note": "refined from 10 Veridos",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Needs Old Man Suumbaat's refining blueprint: 5,000 Ostron standing at Ostron rank 2 (Visitor). The step people forget."
-      ],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "ORB VALLIS, VENUS",
-      "sub": null,
-      "activity": "mine Goblite, fish Kriller and Tromyzon, dismantle at The Business",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": "orb-vallis",
-      "rows": [
-        {
-          "qty": "10",
-          "label": "Goblite Tears",
-          "note": "refined from 10 Goblite, blue veins; Smokefinger blueprint, 2,000 standing at Solaris rank 1",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "10",
-          "label": "Kriller Thermal Laser",
-          "note": "1 per Kriller, lakes in warm weather; Kriller Bait is 100 standing at Outworlder",
-          "alt": "also drops from breaking Vallis containers",
-          "done": false
-        },
-        {
-          "qty": "5",
-          "label": "Tromyzon Entroplasma",
-          "note": "1 per Tromyzon, cold-weather ponds; Tromyzon Bait is 300 standing at Doer",
-          "alt": "or one Exploiter Orb kill, 7-8 per loot",
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Kriller spawns only in the warm window, about 4 minutes of a 26-minute cycle. Mine or fish Tromyzon while you wait.",
-        "Use Shockprod or Stunna spears so the fish are not damaged."
-      ],
-      "bonuses": [
-        "The Exploiter Orb drops the Entroplasma and plenty of gems in one fight.",
-        "A Resourceful Retriever companion and large Fortuna cave veins speed the mining."
-      ],
-      "disclosures": []
-    },
-    {
       "type": "foundry",
       "place": "FOUNDRY",
       "sub": null,
@@ -187,7 +118,15 @@
       "earns": null,
       "spends": [],
       "map": null,
-      "rows": [{ "qty": null, "label": "Vulcax", "note": null, "alt": null, "done": false }],
+      "rows": [
+        {
+          "qty": null,
+          "label": "Vulcax",
+          "note": "50,000 cr, 10 Marquise Veridos, 10 Goblite Tears, 10 Kriller Thermal Laser, 5 Tromyzon Entroplasma",
+          "alt": null,
+          "done": false
+        }
+      ],
       "conditions": ["Takes a companion inventory slot."],
       "bonuses": [
         "Levels from the companion's kills on a MOA or Sentinel; robotic weapons share mod slots with your equipped weapon."

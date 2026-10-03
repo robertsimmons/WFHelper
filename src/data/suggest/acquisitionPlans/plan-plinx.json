@@ -13,6 +13,13 @@
     { "label": "build", "amount": "20,000 cr", "money": false },
     { "label": "Gyromags", "amount": "10,000 standing", "money": false }
   ],
+  "materials": [
+    { "qty": "2", "label": "Argon Crystal", "note": null },
+    { "qty": "4,375", "label": "Alloy Plate", "note": null },
+    { "qty": "575", "label": "Cryotic", "note": null },
+    { "qty": "10", "label": "Gyromag Systems", "note": null },
+    { "qty": "20,000", "label": "Credits", "note": null }
+  ],
   "groups": [
     {
       "type": "gate",
@@ -58,7 +65,7 @@
       "mode": null,
       "live": null,
       "skip": null,
-      "earns": { "currency": "Vox Solaris standing", "amount": "15,000" },
+      "earns": { "currency": "Vox Solaris Standing", "amount": "15,000" },
       "spends": [],
       "map": "orb-vallis",
       "rows": [
@@ -95,34 +102,15 @@
         "The Exploiter Orb fight needs only Diluted Thermia from the Deck 12 cave, not Solaris United rank."
       ],
       "bonuses": [
-        "One or two Orb kills cover most of the 15,000; players report about 12,000 standing for 2 toroids in a 2-minute run.",
-        "For common toroids, Nekros (Desecrate) or Khora (Pilfering Strangledome) clears the three Corpus bases; a Resource Booster doubles counts."
+        "One or two Orb kills cover most of the 15,000; players report about 12,000 standing for 2 toroids in a 2-minute run."
       ],
       "disclosures": [
         {
           "title": "don't wait on a Gyromag drop",
           "body": "Someone ran Profit-Taker for hours without a Gyromag drop. The near-unanimous advice is to buy them from Little Duck."
         }
-      ]
-    },
-    {
-      "type": "vendor",
-      "place": "LITTLE DUCK, FORTUNA",
-      "sub": null,
-      "activity": "buy Gyromag Systems",
-      "meta": "1,000 standing each",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [{ "currency": "Vox Solaris standing", "amount": "10,000" }],
-      "map": null,
-      "rows": [
-        { "qty": "10", "label": "Gyromag Systems", "note": null, "alt": null, "done": false }
       ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
+      "ref": "Vox Solaris Standing"
     },
     {
       "type": "vendor",
@@ -144,73 +132,30 @@
       "disclosures": []
     },
     {
-      "type": "farm",
-      "place": "GABII, CERES",
+      "type": "vendor",
+      "place": "LITTLE DUCK, FORTUNA",
       "sub": null,
-      "activity": "Dark Sector Survival",
-      "meta": "the longer you stay, the better",
+      "activity": "buy Gyromag Systems",
+      "meta": "1,000 standing each",
       "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [],
-      "map": null,
+      "spends": [{ "currency": "Vox Solaris Standing", "amount": "10,000" }],
+      "map": "fortuna",
       "rows": [
         {
-          "qty": "4,375",
-          "label": "Alloy Plate",
-          "note": "drops of 50 to 150",
-          "alt": "or Venus, Jupiter, Sedna, Phobos, Pluto, Zariman",
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": ["Nekros, Hydroid or Khora with a Resource Booster and a relay blessing."],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "HIERACON, PLUTO",
-      "sub": null,
-      "activity": "Excavation",
-      "meta": "100 Cryotic per defended dig",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "575",
-          "label": "Cryotic",
-          "note": "about 6 digs",
-          "alt": "or Venus, Earth, Phobos, Europa, Neptune",
+          "qty": null,
+          "label": "Gyromag Systems purchase",
+          "note": "10 at 1,000 standing each",
+          "alt": null,
           "done": false
         }
       ],
       "conditions": [],
       "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "THE VOID",
-      "sub": null,
-      "activity": "Capture on Hepit or Ukko",
-      "meta": "pick this up last",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [{ "qty": "2", "label": "Argon Crystal", "note": null, "alt": null, "done": false }],
-      "conditions": [
-        "Argon halves daily at 00:00 GMT after the day you collect it. Craft the same day."
-      ],
-      "bonuses": ["Xaku (Vast Untime) or Limbo (Cataclysm) breaks every container in the tileset."],
-      "disclosures": []
+      "disclosures": [],
+      "ref": "Vox Solaris Standing"
     },
     {
       "type": "foundry",

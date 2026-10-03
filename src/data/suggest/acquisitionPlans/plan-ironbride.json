@@ -12,6 +12,23 @@
     { "label": "Necraloid standing", "amount": "95,000", "money": false },
     { "label": "Bonewidow build", "amount": "85,000 cr", "money": false }
   ],
+  "materials": [
+    { "qty": "1", "label": "Damaged Necramech Casing", "note": null },
+    { "qty": "1", "label": "Damaged Necramech Engine", "note": null },
+    { "qty": "1", "label": "Damaged Necramech Pod", "note": null },
+    { "qty": "1", "label": "Damaged Necramech Weapon Pod", "note": null },
+    { "qty": "6", "label": "Spinal Core Section", "note": null },
+    { "qty": "20", "label": "Biotic Filter", "note": "Capsule" },
+    { "qty": "4", "label": "Scintillant", "note": "Capsule" },
+    { "qty": "15", "label": "Goblite Tears", "note": null },
+    { "qty": "6", "label": "Star Crimzian", "note": null },
+    { "qty": "100", "label": "Tempered Bapholite", "note": null },
+    { "qty": "20", "label": "Thaumic Distillate", "note": null },
+    { "qty": "120", "label": "Adramal Alloy", "note": null },
+    { "qty": "750", "label": "Titanium", "note": null },
+    { "qty": "80", "label": "Devolved Namalon", "note": null },
+    { "qty": "45", "label": "Scrap", "note": null }
+  ],
   "groups": [
     {
       "type": "gate",
@@ -63,7 +80,7 @@
       "mode": "Nekros with a Resource Drop Booster",
       "live": null,
       "skip": null,
-      "earns": { "currency": "Necraloid standing", "amount": "95,000" },
+      "earns": { "currency": "Necraloid Standing", "amount": "95,000" },
       "spends": [],
       "map": "cambion-drift",
       "rows": [
@@ -87,34 +104,6 @@
           "note": "Rank 3 sacrifice; 5,000 standing each",
           "alt": null,
           "done": false
-        },
-        {
-          "qty": null,
-          "label": "Damaged Necramech Casing",
-          "note": "12.5% from vault Necramechs",
-          "alt": "or Father, 1,000-2,000 Entrati standing",
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Damaged Necramech Engine",
-          "note": "vault Necramechs",
-          "alt": "or Father, 1,000-2,000 Entrati standing",
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Damaged Necramech Pod",
-          "note": "vault Necramechs",
-          "alt": "or Father, 1,000-2,000 Entrati standing",
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Damaged Necramech Weapon Pod",
-          "note": "vault Necramechs",
-          "alt": "or Father, 1,000-2,000 Entrati standing",
-          "done": false
         }
       ],
       "conditions": [
@@ -124,12 +113,12 @@
         "Vault reward tables rotate A/B/C with the Fass/Vome cycle."
       ],
       "bonuses": [
-        "Matrix drops are enemy drops: a Resource Drop Booster, Resourceful Retriever and Desecrate all add to them.",
         "Leaving early through the Esophage keeps the rewards earned so far.",
         "Groups farming Sporothrix or Arum Spinosa chain vaults constantly; joining one piles up matrices and damaged parts.",
         "Damaged parts are tradeable."
       ],
-      "disclosures": []
+      "disclosures": [],
+      "ref": "Necraloid Standing"
     },
     {
       "type": "vendor",
@@ -141,7 +130,7 @@
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Necraloid standing", "amount": "95,000" }],
+      "spends": [{ "currency": "Necraloid Standing", "amount": "95,000" }],
       "map": null,
       "rows": [
         {
@@ -197,7 +186,7 @@
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Entrati standing", "amount": "8,000" }],
+      "spends": [{ "currency": "Entrati Standing", "amount": "8,000" }],
       "map": null,
       "rows": [
         {
@@ -249,63 +238,12 @@
       "map": "cambion-drift",
       "rows": [
         {
-          "qty": "80",
-          "label": "Namalon",
-          "note": "4 Devolved Namalon crafts; Actuary's Pride and the Infested Seraglio Cave",
-          "alt": "or Otak for Otak Tokens",
-          "done": false
-        },
-        {
-          "qty": "120",
-          "label": "Adramalium",
-          "note": "6 Adramal Alloy crafts",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "100",
-          "label": "Bapholite",
-          "note": "5 Tempered Bapholite crafts",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "20",
-          "label": "Thaumica",
-          "note": "1 Thaumic Distillate craft",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "20",
-          "label": "Venerol",
-          "note": "Thaumic Distillate",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "240",
-          "label": "Lucent Teroglobe",
-          "note": "15 per refining craft",
-          "alt": null,
-          "done": false
-        },
-        {
           "qty": "2",
           "label": "Cranial Foremount",
           "note": "fillet Myxostomata at Daughter",
           "alt": "or Requiem Obelisks",
           "done": false
-        },
-        {
-          "qty": "6",
-          "label": "Spinal Core Section",
-          "note": "fillet Chondricord or Vitreospina",
-          "alt": "or vault containers",
-          "done": false
-        },
-        { "qty": "20", "label": "Biotic Filter", "note": "Capsule", "alt": null, "done": false },
-        { "qty": "4", "label": "Scintillant", "note": "Capsule", "alt": null, "done": false }
+        }
       ],
       "conditions": [
         "Update 29.5 cut the Namalon mining rate in favour of Thaumica; Namalon is the resource this Necramech is known for.",
@@ -315,61 +253,6 @@
         "Requiem Obelisks drop a spread of Drift minerals, rares included, and bonus-vault storage containers can drop Namalon.",
         "Trading any Drift gems and ores to Otak earns Otak Tokens, which buy Namalon when the veins go cold."
       ],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "ORB VALLIS + PLAINS OF EIDOLON",
-      "sub": null,
-      "activity": "mine the offworld ores and refined gems",
-      "meta": "Solaris Outworlder, Ostron Trusted",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": "orb-vallis",
-      "rows": [
-        {
-          "qty": "120",
-          "label": "Travoride",
-          "note": "Orb Vallis; Adramal Alloy",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "15",
-          "label": "Goblite Tears",
-          "note": "Orb Vallis; Solaris United Rank 1",
-          "alt": "tradeable",
-          "done": false
-        },
-        {
-          "qty": "80",
-          "label": "Ferros",
-          "note": "Plains; Devolved Namalon",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "100",
-          "label": "Pyrol",
-          "note": "Plains; Tempered Bapholite",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "6",
-          "label": "Star Crimzian",
-          "note": "Plains; Ostron Rank 3",
-          "alt": "tradeable",
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Goblite Tears need Solaris United Outworlder and Star Crimzian needs Ostron Trusted to refine; buying them skips both gates."
-      ],
-      "bonuses": [],
       "disclosures": []
     },
     {

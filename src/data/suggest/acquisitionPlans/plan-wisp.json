@@ -9,6 +9,19 @@
     { "text": "boss farm", "tone": "info" }
   ],
   "prices": [{ "label": "built", "amount": "325 p", "money": false }],
+  "materials": [
+    { "qty": "2", "label": "Tellurium", "note": "Neuroptics" },
+    { "qty": "950", "label": "Plastids", "note": "Neuroptics" },
+    { "qty": "2,200", "label": "Polymer Bundle", "note": "Neuroptics" },
+    { "qty": "1", "label": "Argon Crystal", "note": "Chassis" },
+    { "qty": "700", "label": "Oxium", "note": "Chassis" },
+    { "qty": "2,750", "label": "Alloy Plate", "note": "Chassis" },
+    { "qty": "2", "label": "Nitain Extract", "note": "Systems" },
+    { "qty": "950", "label": "Rubedo", "note": "Systems" },
+    { "qty": "10,000", "label": "Salvage", "note": "Systems" },
+    { "qty": "3", "label": "Orokin Cell", "note": null },
+    { "qty": "1,200", "label": "Hexenon", "note": "Neuroptics + Chassis + Systems" }
+  ],
   "groups": [
     {
       "type": "gate",
@@ -87,91 +100,6 @@
       ]
     },
     {
-      "type": "farm",
-      "place": "GANYMEDE, JUPITER",
-      "sub": "or Jupiter Void Fissures",
-      "activity": "Disruption for Hexenon",
-      "meta": "1,200 total",
-      "mode": "loot frame recommended",
-      "live": null,
-      "skip": null,
-      "earns": { "currency": "Hexenon", "amount": "1200" },
-      "spends": [],
-      "map": null,
-      "rows": [
-        { "qty": "300", "label": "Hexenon", "note": "Neuroptics", "alt": null, "done": false },
-        { "qty": "500", "label": "Hexenon", "note": "Chassis", "alt": null, "done": false },
-        { "qty": "400", "label": "Hexenon", "note": "Systems", "alt": null, "done": false },
-        { "qty": "700", "label": "Oxium", "note": "Chassis", "alt": null, "done": false },
-        { "qty": "950", "label": "Plastids", "note": "Neuroptics", "alt": null, "done": false },
-        {
-          "qty": "2200",
-          "label": "Polymer Bundle",
-          "note": "Neuroptics",
-          "alt": null,
-          "done": false
-        },
-        { "qty": "950", "label": "Rubedo", "note": "Systems", "alt": null, "done": false },
-        { "qty": "10000", "label": "Salvage", "note": "Systems", "alt": null, "done": false }
-      ],
-      "conditions": [
-        "Ganymede rotations can reward 5, 10, or 15 Hexenon, and Amalgam enemies drop it during the mission.",
-        "Run Jupiter Void Fissures when available to combine Hexenon, relic rewards, and Forma. A Jupiter extractor can add passive Hexenon between sessions."
-      ],
-      "bonuses": [
-        "Nekros, Khora, Hydroid, Atlas, or Resourceful Retriever make the Hexenon leg substantially shorter."
-      ],
-      "disclosures": []
-    },
-    {
-      "type": "vendor",
-      "place": "NIGHTWAVE",
-      "sub": null,
-      "activity": "Cred Offerings",
-      "meta": "15 Cred for 5",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "2",
-          "label": "Nitain Extract",
-          "note": "Wisp Systems",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Nitain is always available from Nightwave Cred Offerings; buy it whenever you have Creds."
-      ],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "THE VOID",
-      "sub": null,
-      "activity": "any Void mission",
-      "meta": "farm last",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        { "qty": "1", "label": "Argon Crystal", "note": "Chassis", "alt": null, "done": false }
-      ],
-      "conditions": [
-        "Argon decays every 24 hours. Collect it only once the rest of the component materials are ready."
-      ],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
       "type": "foundry",
       "place": "FOUNDRY",
       "sub": null,
@@ -187,28 +115,28 @@
         {
           "qty": null,
           "label": "Neuroptics",
-          "note": "2 Tellurium + Jupiter resources",
+          "note": "15,000 cr, 300 Hexenon, 2 Tellurium, 950 Plastids, 2,200 Polymer Bundle",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Chassis",
-          "note": "1 Argon + 700 Oxium",
+          "note": "15,000 cr, 500 Hexenon, 1 Argon Crystal, 700 Oxium, 2,750 Alloy Plate",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Systems",
-          "note": "2 Nitain + 10,000 Salvage",
+          "note": "15,000 cr, 400 Hexenon, 2 Nitain Extract, 950 Rubedo, 10,000 Salvage",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Wisp",
-          "note": "25,000 cr + 1 Orokin Cell",
+          "note": "25,000 cr, 3 Orokin Cell, 3 days",
           "alt": null,
           "done": false
         }

@@ -12,33 +12,36 @@
     { "label": "blueprint", "amount": "15,000 cr", "money": false },
     { "label": "build", "amount": "30,000 cr", "money": false }
   ],
+  "materials": [
+    { "qty": "2", "label": "Control Module", "note": "Velocitus" },
+    { "qty": "15,000", "label": "Credits", "note": null }
+  ],
   "groups": [
     {
-      "type": "gate",
+      "type": "vendor",
       "place": "CLAN DOJO, TENNO LAB",
       "sub": null,
-      "activity": "research the blueprint, then buy it",
-      "meta": "3 days, Ghost clan (x1)",
+      "activity": "buy the blueprint",
+      "meta": "15,000 cr",
       "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [],
+      "spends": [{ "currency": "Credits", "amount": "15,000" }],
       "map": null,
       "rows": [
         {
           "qty": null,
           "label": "Velocitus Blueprint",
-          "note": "research: 5,000 cr, 1 Control Module, 500 Salvage, 50 Alloy Plate, 250 Polymer Bundle; then buy for 15,000 cr",
+          "note": "15,000 cr",
           "alt": null,
           "done": false
         }
       ],
       "conditions": [
-        "Larger clan tiers multiply the research cost (x3 Shadow / x10 Storm / x30 Mountain / x100 Moon).",
         "The Archwing quest is needed to use it in space; on the ground it needs a Gravimag and the Archgun Deployer."
       ],
-      "bonuses": ["Only the clan you're in when you buy the blueprint needs the research done."],
+      "bonuses": [],
       "disclosures": []
     },
     {
@@ -50,7 +53,7 @@
       "mode": null,
       "live": null,
       "skip": null,
-      "earns": { "currency": "Steel Meridian standing", "amount": "47,000" },
+      "earns": { "currency": "Steel Meridian Standing", "amount": "47,000" },
       "spends": [],
       "map": null,
       "rows": [
@@ -77,14 +80,12 @@
           "done": false
         }
       ],
-      "conditions": [
-        "Steel Meridian is allied with Red Veil (+50% shared standing) and opposed to New Loka."
-      ],
+      "conditions": [],
       "bonuses": [
-        "Pledging Steel Meridian first lets Red Veil climb alongside it for free before you touch Red Veil directly.",
-        "Daily Syndicate Alerts and their Medallions pay standing outside the daily cap."
+        "Pledging Steel Meridian first lets Red Veil climb alongside it for free before you touch Red Veil directly."
       ],
-      "disclosures": []
+      "disclosures": [],
+      "ref": "Steel Meridian Standing"
     },
     {
       "type": "currency",
@@ -95,7 +96,7 @@
       "mode": null,
       "live": null,
       "skip": null,
-      "earns": { "currency": "Red Veil standing", "amount": "47,000" },
+      "earns": { "currency": "Red Veil Standing", "amount": "47,000" },
       "spends": [],
       "map": null,
       "rows": [
@@ -126,7 +127,8 @@
         "Red Veil is opposed to Cephalon Suda (-50% both ways); buy this part before you rank Suda."
       ],
       "bonuses": [],
-      "disclosures": []
+      "disclosures": [],
+      "ref": "Red Veil Standing"
     },
     {
       "type": "currency",
@@ -137,7 +139,7 @@
       "mode": null,
       "live": null,
       "skip": null,
-      "earns": { "currency": "Cephalon Suda standing", "amount": "47,000" },
+      "earns": { "currency": "Cephalon Suda Standing", "amount": "47,000" },
       "spends": [],
       "map": null,
       "rows": [
@@ -169,7 +171,8 @@
         "If Suda or Red Veil drops to Rank -1, you're hunted by Eximus death squads, and climbing back to neutral costs another Forma and 50,000 credits."
       ],
       "bonuses": [],
-      "disclosures": []
+      "disclosures": [],
+      "ref": "Cephalon Suda Standing"
     },
     {
       "type": "foundry",
@@ -194,12 +197,7 @@
       ],
       "conditions": [],
       "bonuses": [],
-      "disclosures": [
-        {
-          "title": "no clan? borrow one",
-          "body": "Public dojos and \"free research\" recruiting posts exist specifically for weapons like this — you only need the researching clan at the moment you buy the blueprint, not when you build it."
-        }
-      ]
+      "disclosures": []
     }
   ]
 }

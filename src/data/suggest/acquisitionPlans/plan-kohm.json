@@ -12,6 +12,12 @@
     { "label": "blueprint", "amount": "20,000 cr", "money": false },
     { "label": "build", "amount": "20,000 cr", "money": false }
   ],
+  "materials": [
+    { "qty": "2,500", "label": "Salvage", "note": null },
+    { "qty": "500", "label": "Oxium", "note": null },
+    { "qty": "500", "label": "Cryotic", "note": null },
+    { "qty": "2", "label": "Argon Crystal", "note": null }
+  ],
   "groups": [
     {
       "type": "vendor",
@@ -32,82 +38,6 @@
         "Kuva Kohm is a separate Mastery item from a Kuva Lich; this is the base shotgun."
       ],
       "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "IO, JUPITER",
-      "sub": null,
-      "activity": "Defense",
-      "meta": "~80 Oxium per 10 waves",
-      "mode": "Nekros or Khora",
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "500",
-          "label": "Oxium",
-          "note": "7-12 per Oxium Osprey",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "An Osprey that self-destructs drops nothing; kill them on spawn.",
-        "A Resource Booster doubles Oxium; a Drop Chance booster does nothing, since the Osprey drop is already 100%."
-      ],
-      "bonuses": [
-        "Desecrate often re-rolls the Osprey drop, and Strangledome catches the drones before they reach you."
-      ],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "EXCAVATION, ANY NODE",
-      "sub": null,
-      "activity": "Excavation",
-      "meta": "5 extractors",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "500",
-          "label": "Cryotic",
-          "note": "100 per extractor cycle at any level",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [
-        "A Resource Booster doubles the end-of-mission Cryotic; Hieracon, Pluto adds a Dark Sector bonus."
-      ],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "HEPIT, VOID",
-      "sub": "or Teshub, Ukko, Oxomoco",
-      "activity": "Capture or Exterminate, sweep the containers",
-      "meta": "~2 deposits a map, 1-2 each",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [{ "qty": "2", "label": "Argon Crystal", "note": null, "alt": null, "done": false }],
-      "conditions": [
-        "At 00:00 GMT, crystals older than today halve, rounded down. Farm them after the Oxium and Cryotic and build right away."
-      ],
-      "bonuses": ["Xaku or Limbo with high range break whole rooms of crates at once."],
       "disclosures": []
     },
     {

@@ -9,6 +9,21 @@
     { "text": "Prime Resurgence", "tone": "info" }
   ],
   "prices": [{ "label": "set, player trade", "amount": "~60–75 p", "money": false }],
+  "materials": [
+    { "qty": "5,500", "label": "Alloy Plate", "note": "Neuroptics" },
+    { "qty": "6", "label": "Neural Sensors", "note": "Neuroptics" },
+    { "qty": "225", "label": "Oxium", "note": "Neuroptics" },
+    { "qty": "2", "label": "Argon Crystal", "note": "Neuroptics" },
+    { "qty": "2", "label": "Nitain Extract", "note": "Chassis" },
+    { "qty": "4,750", "label": "Nano Spores", "note": "Chassis" },
+    { "qty": "1,400", "label": "Rubedo", "note": "Chassis" },
+    { "qty": "8", "label": "Morphics", "note": "Chassis" },
+    { "qty": "10", "label": "Control Module", "note": "Systems" },
+    { "qty": "3", "label": "Tellurium", "note": "Systems" },
+    { "qty": "4,300", "label": "Ferrite", "note": "Systems" },
+    { "qty": "1,450", "label": "Circuits", "note": "Systems" },
+    { "qty": "5", "label": "Orokin Cell", "note": null }
+  ],
   "groups": [
     {
       "type": "currency",
@@ -36,16 +51,14 @@
         "Aya is untradeable, but it has no cap and remains after the rotation ends.",
         "Tier-5 Deimos has a 43.48% final-stage Aya reward. Completing bonus objectives lets the final stage roll twice."
       ],
-      "bonuses": [
-        "Bank Aya now, then spend it as soon as Titania returns to Varzia's stock.",
-        "Avoid Hepit and relic packs as dedicated Aya farms; they are much weaker or consume valuable standing."
-      ],
+      "bonuses": ["Bank Aya now, then spend it as soon as Titania returns to Varzia's stock."],
       "disclosures": [
         {
           "title": "the calendar is the farm",
           "body": "Varzia changes stock every 28 days at 18:00 UTC and Digital Extremes does not publish the schedule far ahead. Check the live Prime Resurgence rotation before committing; while Titania is absent, stockpile Aya or use player trading."
         }
-      ]
+      ],
+      "ref": "Aya"
     },
     {
       "type": "vendor",
@@ -162,18 +175,34 @@
         {
           "qty": null,
           "label": "Titania Prime Neuroptics",
-          "note": null,
+          "note": "15,000 cr, 5,500 Alloy Plate, 6 Neural Sensors, 225 Oxium, 2 Argon Crystal",
           "alt": null,
           "done": false
         },
-        { "qty": null, "label": "Titania Prime Chassis", "note": null, "alt": null, "done": false },
-        { "qty": null, "label": "Titania Prime Systems", "note": null, "alt": null, "done": false },
-        { "qty": null, "label": "Titania Prime", "note": null, "alt": null, "done": false }
+        {
+          "qty": null,
+          "label": "Titania Prime Chassis",
+          "note": "15,000 cr, 2 Nitain Extract, 4,750 Nano Spores, 1,400 Rubedo, 8 Morphics",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Titania Prime Systems",
+          "note": "15,000 cr, 10 Control Module, 3 Tellurium, 4,300 Ferrite, 1,450 Circuits",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Titania Prime",
+          "note": "25,000 cr, 5 Orokin Cell, 3 days",
+          "alt": null,
+          "done": false
+        }
       ],
       "conditions": [
-        "Components build in parallel; the final frame takes 72 hours. Keep a free Warframe slot for the claim.",
-        "The resource gates are Argon Crystal, Nitain Extract, Tellurium, Neural Sensors and Control Modules.",
-        "Argon decays after 24 hours, so farm it only once the component blueprints are in the Foundry queue."
+        "Components build in parallel; the final frame takes 72 hours. Keep a free Warframe slot for the claim."
       ],
       "bonuses": [],
       "disclosures": []

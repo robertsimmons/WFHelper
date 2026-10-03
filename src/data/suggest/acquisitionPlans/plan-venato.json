@@ -12,12 +12,17 @@
     { "label": "blueprint", "amount": "15,000 cr", "money": false },
     { "label": "build", "amount": "20,000 cr", "money": false }
   ],
+  "materials": [
+    { "qty": "16", "label": "Narmer Isoplast", "note": null },
+    { "qty": "60", "label": "Iradite", "note": "Venato build" },
+    { "qty": "15,000", "label": "Credits", "note": null }
+  ],
   "groups": [
     {
       "type": "gate",
-      "place": "THE NEW WAR + DOJO, TENNO LAB",
+      "place": "THE NEW WAR",
       "sub": null,
-      "activity": "finish the quest; clan research",
+      "activity": "finish the quest",
       "meta": null,
       "mode": null,
       "live": null,
@@ -32,26 +37,17 @@
           "note": "unlocks Narmer Bounties; nothing here works without it",
           "alt": null,
           "done": false
-        },
-        {
-          "qty": null,
-          "label": "Tenno Lab: Tonbo, then Venato",
-          "note": "3 days for the Venato research; skip if already researched",
-          "alt": null,
-          "done": false
         }
       ],
-      "conditions": [
-        "Ghost (x1) tier pays 10,000 credits, 1 Tellurium, 275 Rubedo, 225 Plastids and 3,500 Salvage for the Venato research; bigger clans pay x3 up to x100."
-      ],
+      "conditions": [],
       "bonuses": [],
       "disclosures": []
     },
     {
-      "type": "research",
-      "place": "DOJO, TENNO LAB",
+      "type": "vendor",
+      "place": "CLAN DOJO, TENNO LAB",
       "sub": null,
-      "activity": "replicate the blueprint",
+      "activity": "buy the blueprint",
       "meta": "15,000 cr",
       "mode": null,
       "live": null,
@@ -71,42 +67,6 @@
       "conditions": ["MR 9 gate to build it."],
       "bonuses": [],
       "disclosures": []
-    },
-    {
-      "type": "bounty",
-      "place": "ORB VALLIS, VENUS",
-      "sub": "or Plains of Eidolon, Cetus, same rates",
-      "activity": "Narmer Bounties, any rotation",
-      "meta": "about 6 full bounties",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": "orb-vallis",
-      "rows": [
-        {
-          "qty": "16",
-          "label": "Narmer Isoplast",
-          "note": "1-3 per stage roll, about 2.5-3 per full bounty",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Boosters and Retriever mods don't affect Isoplast.",
-        "Don't trade Isoplast for standing until Venato and anything else that needs it is built."
-      ],
-      "bonuses": [
-        "Farm Caliban, Korumm, Verdilac and Nepheri at the same time; they share these bounties and the Isoplast.",
-        "Volt, Nova or Wisp speed up drone-escort stages."
-      ],
-      "disclosures": [
-        {
-          "title": "why Fortuna over Cetus",
-          "body": "Drops are identical. Vallis bounties stay closer to town and above ground; Plains bounties have cave objectives that break bonus conditions. On Cetus, a Narmer Grineer captain disarmed before every Vomvalyst dies becomes unkillable and bricks the bounty; Chesa Kubrow is the usual culprit."
-        }
-      ]
     },
     {
       "type": "farm",
@@ -146,31 +106,6 @@
           "body": "Onkko's reusable Exceptional Sentient Core Conversion blueprint turns 10 Intact Cores, 1 Radian Sentirum and 1 Heart Nyth into 10 Exceptional."
         }
       ]
-    },
-    {
-      "type": "farm",
-      "place": "PLAINS OF EIDOLON, EARTH",
-      "sub": "Twin Horns, Seaside Ruin, Hek's Stiletto, Er-Phryah's Vigil, Renthi Spring, The Seethe",
-      "activity": "break mineral deposits in the low-lying areas",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": "plains-of-eidolon",
-      "rows": [
-        {
-          "qty": "60",
-          "label": "Iradite",
-          "note": "Venato build",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": ["Resource boosters apply."],
-      "disclosures": []
     },
     {
       "type": "foundry",

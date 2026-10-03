@@ -12,6 +12,13 @@
     { "label": "Incubator Power Core blueprint", "amount": "50,000 cr", "money": false },
     { "label": "Power Core build", "amount": "100,000 cr", "money": false }
   ],
+  "materials": [
+    { "qty": "4,500", "label": "Nano Spores", "note": "Incubator Power Core" },
+    { "qty": "2", "label": "Control Module", "note": "Incubator Power Core" },
+    { "qty": "1", "label": "Argon Crystal", "note": "Incubator Power Core" },
+    { "qty": "2", "label": "Kubrow Egg", "note": null },
+    { "qty": "2", "label": "Incubator Power Core", "note": null }
+  ],
   "groups": [
     {
       "type": "gate",
@@ -84,36 +91,6 @@
       ]
     },
     {
-      "type": "farm",
-      "place": "MANTLE, EARTH",
-      "sub": null,
-      "activity": "Capture; break Kubrow Dens on Grineer Forest tiles",
-      "meta": "egg usually within 4-5 runs",
-      "mode": "solo, fast frame",
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "1",
-          "label": "Kubrow Egg",
-          "note": "2-4 dens a run",
-          "alt": "Market purchase, 10 platinum",
-          "done": false
-        }
-      ],
-      "conditions": ["Break every den, capture, extract; abort if nothing dropped."],
-      "bonuses": ["Farm the egg while the cyst matures."],
-      "disclosures": [
-        {
-          "title": "other egg source",
-          "body": "Cervantes, Earth Sabotage resource caches have a 2.58% Rotation B chance at a Kubrow Egg."
-        }
-      ]
-    },
-    {
       "type": "foundry",
       "place": "FOUNDRY",
       "sub": null,
@@ -127,17 +104,14 @@
       "map": null,
       "rows": [
         {
-          "qty": "1",
-          "label": "Incubator Power Core",
-          "note": "4,500 Nano Spores, 2 Control Modules, 1 Argon Crystal",
-          "alt": "first core is free from the Venus-to-Mercury Junction",
+          "qty": null,
+          "label": "Helminth Charger",
+          "note": "1 Incubator Power Core",
+          "alt": null,
           "done": false
         }
       ],
-      "conditions": [
-        "The blueprint is a reusable 50,000-credit Market purchase.",
-        "Argon Crystal decays at daily reset, so farm it right before you build."
-      ],
+      "conditions": ["The blueprint is a reusable 50,000-credit Market purchase."],
       "bonuses": [],
       "disclosures": []
     },
@@ -154,14 +128,6 @@
       "spends": [],
       "map": null,
       "rows": [
-        { "qty": "1", "label": "Kubrow Egg", "note": "consumed", "alt": null, "done": false },
-        {
-          "qty": "1",
-          "label": "Incubator Power Core",
-          "note": "consumed",
-          "alt": null,
-          "done": false
-        },
         {
           "qty": null,
           "label": "Helminth Charger",

@@ -30,6 +30,28 @@
       "money": false
     }
   ],
+  "materials": [
+    {
+      "qty": "10",
+      "label": "Morphics",
+      "note": null
+    },
+    {
+      "qty": "5,000",
+      "label": "Ferrite",
+      "note": null
+    },
+    {
+      "qty": "6,000",
+      "label": "Nano Spores",
+      "note": null
+    },
+    {
+      "qty": "4,500",
+      "label": "Salvage",
+      "note": null
+    }
+  ],
   "groups": [
     {
       "type": "currency",
@@ -58,13 +80,14 @@
       "conditions": [
         "Cred Offerings are closed between series, and Creds expire when a series ends, so spend them on the blueprint first."
       ],
-      "bonuses": ["Past weekly Acts stay completable until the series ends."],
+      "bonuses": [],
       "disclosures": [
         {
           "title": "shortcut",
           "body": "A duplicate Nightwave-exclusive reward converts to 50 Creds, exactly one Glaive Blueprint."
         }
-      ]
+      ],
+      "ref": "Nightwave Creds"
     },
     {
       "type": "vendor",
@@ -88,106 +111,6 @@
           "qty": null,
           "label": "Glaive Blueprint",
           "note": "50 Nightwave Creds, always in stock",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "MARS",
-      "sub": "Kadesh, Wahiba",
-      "activity": "Defense or Survival",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "10",
-          "label": "Morphics",
-          "note": "Mars has the highest rate",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": ["Cetus bounties (level 5-15 final stage) also drop it."],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "MERCURY",
-      "sub": "Apollodorus",
-      "activity": "Survival",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "5,000",
-          "label": "Ferrite",
-          "note": "about 4k per ten minutes with Nekros",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "SATURN, NEPTUNE, ERIS OR DEIMOS",
-      "sub": null,
-      "activity": "Survival or Defense",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "6,000",
-          "label": "Nano Spores",
-          "note": "about 3,000 per five minutes, doubled with Nekros",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": ["Cambion Drift also drops Nano Spores."],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "JUPITER",
-      "sub": "Io, Callisto",
-      "activity": "Defense or Interception",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "4,500",
-          "label": "Salvage",
-          "note": "about 1,200 to 1,500 per run",
           "alt": null,
           "done": false
         }

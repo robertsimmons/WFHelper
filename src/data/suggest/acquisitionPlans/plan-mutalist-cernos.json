@@ -12,6 +12,14 @@
     { "label": "blueprints", "amount": "40,000 cr", "money": false },
     { "label": "builds", "amount": "30,000 cr", "money": false }
   ],
+  "materials": [
+    { "qty": "3", "label": "Gallium", "note": "for the Cernos" },
+    { "qty": "2,100", "label": "Plastids", "note": "700 for Cernos, 1,400 for Mutalist Cernos" },
+    { "qty": "600", "label": "Polymer Bundle", "note": "for the Cernos" },
+    { "qty": "1,750", "label": "Ferrite", "note": "for the Cernos" },
+    { "qty": "1,200", "label": "Cryotic", "note": null },
+    { "qty": "2,300", "label": "Nano Spores", "note": null }
+  ],
   "groups": [
     {
       "type": "vendor",
@@ -43,92 +51,6 @@
       ],
       "conditions": ["The recipe eats a built Cernos, so buy both blueprints up front."],
       "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "PISCINAS, SATURN",
-      "sub": null,
-      "activity": "Dark Sector Survival",
-      "meta": "loot frame recommended",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "2,100",
-          "label": "Plastids",
-          "note": "700 for Cernos, 1,400 for Mutalist Cernos",
-          "alt": "Assur or Ophelia, Uranus",
-          "done": false
-        },
-        {
-          "qty": "2,300",
-          "label": "Nano Spores",
-          "note": null,
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": ["Skip Eris for Plastids; it's slow."],
-      "bonuses": [
-        "Nekros Desecrate or Khora Pilfering Strangledome roughly doubles Plastid and Nano Spore drops. With Nekros, use Slash weapons, not Heat, Corrosive or Toxin that melt corpses."
-      ],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "ASSUR, URANUS",
-      "sub": null,
-      "activity": "Dark Sector Survival",
-      "meta": "rare, 1-2 per drop",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "3",
-          "label": "Gallium",
-          "note": "for the Cernos",
-          "alt": "Mars",
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": ["Uranus drops Plastids too, so this trip can cover the Cernos build on its own."],
-      "disclosures": []
-    },
-    {
-      "type": "fissure",
-      "place": "ANY VOID FISSURE",
-      "sub": "Excavation",
-      "activity": "run Excavation fissures, any planet",
-      "meta": "100 Cryotic per excavator",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "1,200",
-          "label": "Cryotic",
-          "note": "12 excavators, 6 with a Resource Booster",
-          "alt": "plain Excavation on a low node such as Everest (Earth) or Kiliken (Venus)",
-          "done": false
-        }
-      ],
-      "conditions": [
-        "A Resource Drop Chance Booster does nothing for Cryotic; only a Resource Booster doubles it."
-      ],
-      "bonuses": ["Fissure runs crack relics while you farm the Cryotic."],
       "disclosures": []
     },
     {

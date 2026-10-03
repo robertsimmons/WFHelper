@@ -12,6 +12,21 @@
     { "label": "build", "amount": "75,000 cr", "money": false },
     { "label": "buy all blueprints", "amount": "2,400 Atramentum", "money": false }
   ],
+  "materials": [
+    { "qty": "2", "label": "Neurodes", "note": "Neuroptics" },
+    { "qty": "3", "label": "Gallium", "note": "Neuroptics" },
+    { "qty": "150", "label": "Cryotic", "note": "Neuroptics" },
+    { "qty": "2", "label": "Neural Sensors", "note": "Neuroptics" },
+    { "qty": "800", "label": "Alloy Plate", "note": "Chassis" },
+    { "qty": "2", "label": "Argon Crystal", "note": "Chassis" },
+    { "qty": "800", "label": "Ferrite", "note": "Chassis" },
+    { "qty": "600", "label": "Salvage", "note": "Chassis" },
+    { "qty": "250", "label": "Circuits", "note": "Systems" },
+    { "qty": "500", "label": "Polymer Bundle", "note": "Systems" },
+    { "qty": "4", "label": "Morphics", "note": "Systems" },
+    { "qty": "50", "label": "Oxium", "note": "Systems" },
+    { "qty": "3", "label": "Orokin Cell", "note": "final build" }
+  ],
   "groups": [
     {
       "type": "gate",
@@ -143,33 +158,6 @@
       ],
       "conditions": [
         "Spend only on the blueprints still missing once you have enough Atramentum for all of them."
-      ],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "MOT, VOID",
-      "sub": null,
-      "activity": "Survival",
-      "meta": "~2 deposits a map",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "2",
-          "label": "Argon Crystal",
-          "note": "Follie Chassis",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Argon decays daily, so farm it last, once the other build materials are ready."
       ],
       "bonuses": [],
       "disclosures": []

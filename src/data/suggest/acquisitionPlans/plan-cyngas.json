@@ -13,6 +13,7 @@
     { "label": "standing", "amount": "65,000", "money": false },
     { "label": "build", "amount": "45,000 cr", "money": false }
   ],
+  "materials": [{ "qty": "2", "label": "Tellurium", "note": null }],
   "groups": [
     {
       "type": "currency",
@@ -23,7 +24,7 @@
       "mode": null,
       "live": null,
       "skip": null,
-      "earns": { "currency": "Arbiters of Hexis standing", "amount": "91,000" },
+      "earns": { "currency": "Arbiters of Hexis Standing", "amount": "91,000" },
       "spends": [],
       "map": null,
       "rows": [
@@ -45,14 +46,11 @@
       "conditions": [
         "Do this leg first. Pledging Perrin first lets Hexis drag Perrin down while you work.",
         "Each rank-up spends banked standing down to zero and asks for a sacrifice shown in the syndicate screen.",
-        "The daily cap is 16,000 plus 500 per Mastery Rank, resetting 00:00 UTC.",
         "If you were pledged to Red Veil or New Loka, check Hexis and Suda standing first; going negative means climbing out before you can buy."
       ],
-      "bonuses": [
-        "Syndicate alert rewards and Medallions ignore the daily cap; turn them in after capping, and each alert also feeds the ally at +50%.",
-        "Elite Sanctuary Onslaught or Duviri Circuit to the stage-4 bonus usually maxes the day."
-      ],
-      "disclosures": []
+      "bonuses": [],
+      "disclosures": [],
+      "ref": "Arbiters of Hexis Standing"
     },
     {
       "type": "vendor",
@@ -65,8 +63,8 @@
       "skip": null,
       "earns": null,
       "spends": [
-        { "currency": "Arbiters of Hexis standing", "amount": "20,000" },
-        { "currency": "Cephalon Suda standing", "amount": "20,000" }
+        { "currency": "Arbiters of Hexis Standing", "amount": "20,000" },
+        { "currency": "Cephalon Suda Standing", "amount": "20,000" }
       ],
       "map": null,
       "rows": [
@@ -98,7 +96,7 @@
       "mode": null,
       "live": null,
       "skip": null,
-      "earns": { "currency": "The Perrin Sequence standing", "amount": "96,000" },
+      "earns": { "currency": "The Perrin Sequence Standing", "amount": "96,000" },
       "spends": [],
       "map": null,
       "rows": [
@@ -113,10 +111,9 @@
       "conditions": [
         "Perrin drains Hexis at half rate and Steel Meridian at full rate; you already own the Barrel, so a Hexis demotion costs nothing here."
       ],
-      "bonuses": [
-        "Save Universal Syndicate Medallions (1,000 standing each) for this leg; nothing feeds Perrin as an ally."
-      ],
-      "disclosures": []
+      "bonuses": [],
+      "disclosures": [],
+      "ref": "The Perrin Sequence Standing"
     },
     {
       "type": "vendor",
@@ -128,7 +125,7 @@
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "The Perrin Sequence standing", "amount": "25,000" }],
+      "spends": [{ "currency": "The Perrin Sequence Standing", "amount": "25,000" }],
       "map": null,
       "rows": [
         {
@@ -141,31 +138,6 @@
       ],
       "conditions": ["The Stock costs 25,000, not 20,000 like the other two parts."],
       "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "OPHELIA, URANUS",
-      "sub": null,
-      "activity": "Survival, Grineer Sealab",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "2",
-          "label": "Tellurium",
-          "note": "Cyngas build",
-          "alt": "Desdemona Sealab Sabotage caches, Archwing, Empyrean or Kuva Fortress",
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": ["Steel Path roughly quadruples Ophelia yield, per a wiki anecdote."],
       "disclosures": []
     },
     {

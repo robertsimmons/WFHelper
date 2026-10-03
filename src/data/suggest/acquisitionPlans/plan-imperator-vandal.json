@@ -9,6 +9,12 @@
     { "text": "Rotation A, 10% each", "tone": "info" }
   ],
   "prices": [{ "label": "build", "amount": "25,000 cr", "money": false }],
+  "materials": [
+    { "qty": "10", "label": "Tellurium", "note": null },
+    { "qty": "300", "label": "Cryotic", "note": "per Fomorian Disruptor, one per run" },
+    { "qty": "3,500", "label": "Nano Spores", "note": "per Fomorian Disruptor, one per run" },
+    { "qty": "4", "label": "Omega Isotope", "note": null }
+  ],
   "groups": [
     {
       "type": "gate",
@@ -57,18 +63,16 @@
       "map": null,
       "rows": [
         {
-          "qty": "4",
-          "label": "Omega Isotope",
-          "note": "per Disruptor; event-only drop, non-Archwing missions on the attacked planet",
+          "qty": null,
+          "label": "Fomorian Disruptor",
+          "note": "1,250 cr, 3,500 Nano Spores, 300 Cryotic, 4 Omega Isotope",
           "alt": null,
           "done": false
-        },
-        { "qty": null, "label": "Cryotic", "note": "Disruptor recipe", "alt": null, "done": false },
-        { "qty": null, "label": "Credits", "note": "Disruptor recipe", "alt": null, "done": false }
+        }
       ],
       "conditions": [
         "Omega Isotopes only drop while the event is live, only on the planet being attacked, and only in non-Archwing missions.",
-        "One Disruptor is consumed per player per run, including players who never press the button — budget 4 isotopes per attempt."
+        "One Disruptor is consumed per player per run, including players who never press the button: budget 4 isotopes per attempt."
       ],
       "bonuses": [
         "Excavation on the affected planet farms Cryotic and Isotopes at once.",
@@ -116,8 +120,8 @@
         "Get 1,400m from the core within 30 seconds of activation or you die; only one squadmate needs to escape for the mission to count."
       ],
       "bonuses": [
-        "Shoot all 16 nodes on the core first — each destroyed node adds +25% damage taken, capping at 5x, the single biggest lever on the one-time 1,000,000-damage Catalyst milestone.",
-        "The core takes no critical hits; mod for raw damage, multishot, fire rate and reload instead — Larkspur Prime, Mausolon, Kuva Grattler and Velocitus are the named picks.",
+        "Shoot all 16 nodes on the core first: each destroyed node adds +25% damage taken, capping at 5x, the single biggest lever on the one-time 1,000,000-damage Catalyst milestone.",
+        "The core takes no critical hits; mod for raw damage, multishot, fire rate and reload instead: Larkspur Prime, Mausolon, Kuva Grattler and Velocitus are the named picks.",
         "Public squads post 4-10M damage and clear the Catalyst milestone on the first run; the damage counter is a squad total, not accumulated across attempts."
       ],
       "disclosures": [
@@ -140,8 +144,13 @@
       "spends": [],
       "map": null,
       "rows": [
-        { "qty": null, "label": "Credits", "note": "25,000", "alt": null, "done": false },
-        { "qty": "10", "label": "Tellurium", "note": null, "alt": null, "done": false }
+        {
+          "qty": null,
+          "label": "Imperator Vandal",
+          "note": "25,000 cr, 10 Tellurium, Blueprint, Barrel, Receiver",
+          "alt": null,
+          "done": false
+        }
       ],
       "conditions": ["MR5 to equip."],
       "bonuses": [],

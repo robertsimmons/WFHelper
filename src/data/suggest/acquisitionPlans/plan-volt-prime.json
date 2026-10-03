@@ -12,6 +12,18 @@
     { "label": "set, player trade", "amount": "~45-70 p", "money": false },
     { "label": "Regal Aya, when active", "amount": "3", "money": false }
   ],
+  "materials": [
+    { "qty": "1,150", "label": "Alloy Plate", "note": "150 Neuroptics, 1,000 Chassis" },
+    { "qty": "2", "label": "Neurodes", "note": "Neuroptics" },
+    { "qty": "1,000", "label": "Polymer Bundle", "note": "Neuroptics" },
+    { "qty": "1,250", "label": "Circuits", "note": "750 Neuroptics, 500 Systems" },
+    { "qty": "3", "label": "Neural Sensors", "note": "Chassis" },
+    { "qty": "400", "label": "Rubedo", "note": "Chassis" },
+    { "qty": "3", "label": "Control Module", "note": "Systems" },
+    { "qty": "1,000", "label": "Salvage", "note": "Systems" },
+    { "qty": "2", "label": "Orokin Cell", "note": "1 Systems, 1 Volt Prime" },
+    { "qty": "880,000", "label": "Credits", "note": null }
+  ],
   "groups": [
     {
       "type": "vendor",
@@ -72,19 +84,11 @@
       ],
       "conditions": [
         "Aya cannot buy Volt relics until Volt returns to Varzia's active Prime Resurgence stock.",
-        "Deimos Tier 5 has a 43.48% Aya chance at the final stage; complete bonus objectives because the final stage rolls twice.",
-        "Resource and Drop Chance Boosters, Blessings, and Retriever mods do not improve Aya rewards."
+        "Deimos Tier 5 has a 43.48% Aya chance at the final stage; complete bonus objectives because the final stage rolls twice."
       ],
-      "bonuses": [
-        "Use the fast brute-force Tier 5 bounty when it is available.",
-        "Aya is best earned alongside standing or other bounty goals; Fortuna bounties and dedicated Void Aya runs are weaker routes."
-      ],
-      "disclosures": [
-        {
-          "title": "Aya is not a Volt voucher",
-          "body": "Prime Resurgence relics are sold only by Varzia during the item's rotation; they do not return to normal mission drop tables. Aya can be stockpiled, but cannot be spent on Volt today if he is off rotation."
-        }
-      ]
+      "bonuses": [],
+      "disclosures": [],
+      "ref": "Aya"
     },
     {
       "type": "vendor",
@@ -150,7 +154,7 @@
       "skip": null,
       "earns": null,
       "spends": [
-        { "currency": "Ducats", "amount": "2,000" },
+        { "currency": "Orokin Ducats", "amount": "2,000" },
         { "currency": "Credits", "amount": "880,000" }
       ],
       "map": null,
@@ -257,10 +261,34 @@
       "spends": [],
       "map": null,
       "rows": [
-        { "qty": null, "label": "Volt Prime Neuroptics", "note": null, "alt": null, "done": false },
-        { "qty": null, "label": "Volt Prime Chassis", "note": null, "alt": null, "done": false },
-        { "qty": null, "label": "Volt Prime Systems", "note": null, "alt": null, "done": false },
-        { "qty": null, "label": "Volt Prime", "note": null, "alt": null, "done": false }
+        {
+          "qty": null,
+          "label": "Volt Prime Neuroptics",
+          "note": "15,000 cr, 150 Alloy Plate, 2 Neurodes, 1,000 Polymer Bundle, 750 Circuits",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Volt Prime Chassis",
+          "note": "15,000 cr, 3 Neural Sensors, 1,000 Alloy Plate, 400 Rubedo",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Volt Prime Systems",
+          "note": "15,000 cr, 3 Control Module, 1 Orokin Cell, 1,000 Salvage, 500 Circuits",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Volt Prime",
+          "note": "25,000 cr, 1 Orokin Cell, 3 days",
+          "alt": null,
+          "done": false
+        }
       ],
       "conditions": [
         "Components can build in parallel. Keep a free Warframe slot available for the final claim."

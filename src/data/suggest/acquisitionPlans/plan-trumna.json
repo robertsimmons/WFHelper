@@ -12,6 +12,23 @@
     { "label": "blueprints", "amount": "12,500 Entrati Standing", "money": false },
     { "label": "build", "amount": "80,000 cr", "money": false }
   ],
+  "materials": [
+    { "qty": "5", "label": "Orokin Cell", "note": "Barrel" },
+    { "qty": "1", "label": "Argon Crystal", "note": "Receiver" },
+    { "qty": "1,800", "label": "Oxium", "note": "Auroxium Alloy refines" },
+    { "qty": "15", "label": "Morphics", "note": "Auroxium Alloy refines" },
+    { "qty": "3", "label": "Cabochon Embolos", "note": null },
+    { "qty": "20", "label": "Sporulate Sac", "note": null },
+    { "qty": "10", "label": "Waxen Sebum Deposit", "note": null },
+    { "qty": "20", "label": "Saturated Muscle Mass", "note": null },
+    { "qty": "30", "label": "Lucent Teroglobe", "note": null },
+    { "qty": "15", "label": "Marquise Veridos", "note": null },
+    { "qty": "45", "label": "Auroxium Alloy", "note": null },
+    { "qty": "45", "label": "Adramal Alloy", "note": null },
+    { "qty": "30", "label": "Tempered Bapholite", "note": null },
+    { "qty": "15", "label": "Purified Heciphron", "note": null },
+    { "qty": "1", "label": "Seriglass Shard", "note": null }
+  ],
   "groups": [
     {
       "type": "currency",
@@ -60,10 +77,9 @@
         "Old Peace (Update 41, Dec 2025) rebalanced this rank sacrifice: guides naming Medjay Predasite or common bird tags instead of Sly Vulpaphyla/Vizier Predasite tags are pre-rework and wrong.",
         "Sly Vulpaphyla and Vizier Predasite tags come from Conservation on Deimos, not combat kills."
       ],
-      "bonuses": [
-        "Mother Tokens from Tier 4/5 bounties are the lowest-effort standing at 100 each; resource tokens (Son/Daughter/Father/Otak/Grandmother) are worth more but need trading up."
-      ],
-      "disclosures": []
+      "bonuses": [],
+      "disclosures": [],
+      "ref": "Entrati Standing"
     },
     {
       "type": "currency",
@@ -87,9 +103,9 @@
         }
       ],
       "conditions": [
-        "Grandmother's 'Mend the Family' trade offers cycle every 8 hours and are randomised — you can't grind them on demand.",
+        "Grandmother's 'Mend the Family' trade offers cycle every 8 hours and are randomised: you can't grind them on demand.",
         "Since Old Peace (Dec 2025), Daughter/Father/Otak tokens are worth 500 standing each, Son 1,000, Grandmother 3,000; a Grandmother Token is always worth 50% more than what's paid for it.",
-        "Seriglass Shard costs 10 Grandmother Tokens, down from 20 pre-Old-Peace — threads describing a 20-token cost are stale."
+        "Seriglass Shard costs 10 Grandmother Tokens, down from 20 pre-Old-Peace: threads describing a 20-token cost are stale."
       ],
       "bonuses": [
         "Trade spare Mother Tokens up to Grandmother Tokens on every Deimos trip rather than running a dedicated session; several players report never having 'farmed' the shard at all this way."
@@ -99,7 +115,8 @@
           "title": "this is the real currency grind",
           "body": "Seriglass Shard is the single line item people call out as the actual Trumna bottleneck: it's invisible until the parts blueprints are bought, so start banking tokens the same day mining starts, not after the 12-hour parts finish."
         }
-      ]
+      ],
+      "ref": "Grandmother Token"
     },
     {
       "type": "vendor",
@@ -150,123 +167,6 @@
       "disclosures": []
     },
     {
-      "type": "farm",
-      "place": "CAMBION DRIFT, DEIMOS",
-      "sub": null,
-      "activity": "mine Heciphron and Embolos, refine at Otak",
-      "meta": "switch mining tools between passes",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": "cambion-drift",
-      "rows": [
-        {
-          "qty": "20",
-          "label": "Heciphron",
-          "note": "refines 1:1 into Purified Heciphron via Otak's Rank 1 blueprint (2,000 standing)",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "30",
-          "label": "Bapholite",
-          "note": "refines into Tempered Bapholite, 20 per build (2 builds)",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "3",
-          "label": "Cabochon Embolos",
-          "note": "raw gem, 3-for-3 refine; the blueprint itself is Rank 3 Entrati locked",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "20",
-          "label": "Sporulate Sac",
-          "note": "Daughter filleting, from Glutinox",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "10",
-          "label": "Waxen Sebum Deposit",
-          "note": "Daughter filleting, from Amniophysi in cave hotspots",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "20",
-          "label": "Saturated Muscle Mass",
-          "note": "Daughter filleting, from Kymaeros, Ostimyr, or Flagellocanth",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "30",
-          "label": "Lucent Teroglobe",
-          "note": "drops from Vitrific Outcrops around Requiem Obelisks, and from bounties",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "1",
-          "label": "Argon Crystal",
-          "note": "decays 50% every 24h; grab last and build the Receiver immediately",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Do not use the Sunpoint Plasma Drill on the Heciphron pass — its guaranteed rare bonus drop crowds out the uncommon gem you actually want. Use the Advanced or Focused Nosam Cutter instead.",
-        "Flip tools between passes: a short Sunpoint pass for the 3 raw Embolos, then switch to a Nosam cutter for Heciphron.",
-        "Requiem Obelisks/pylons double as a Lucent Teroglobe source via their Vitrific Outcrops, so one obelisk loop covers both.",
-        "Solo is recommended for the conservation leg (Amniophysi, Kymaeros, etc.) to avoid enemies killing tranquilized targets or host migration eating resources."
-      ],
-      "bonuses": [
-        "A resource drop chance booster is reported to change node colour distribution, spawning more gem nodes rather than just better per-node odds; treat as likely but unconfirmed."
-      ],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "CETUS, PLAINS OF EIDOLON",
-      "sub": null,
-      "activity": "mine and refine Marquise Veridos and Auroxium Alloy",
-      "meta": "Ostron Rank 3 (Trusted) needed for both refine blueprints",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": "plains-of-eidolon",
-      "rows": [
-        {
-          "qty": "15",
-          "label": "Marquise Veridos",
-          "note": "blue vein, refined via Old Man Suumbaat, 7,500 cr blueprint, Trusted rank",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "45",
-          "label": "Auroxium Alloy",
-          "note": "red vein, refined via Old Man Suumbaat, 7,500 cr blueprint, Trusted rank",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Both refine blueprints require Ostron Rank 3 (Trusted); buy them early since they're cheap and you'll already be on the Plains."
-      ],
-      "bonuses": [
-        "Ivara with Prowl fishes, mines, tranqs and scans without breaking invisibility, and her dashwires reach spots you can't stand on."
-      ],
-      "disclosures": []
-    },
-    {
       "type": "foundry",
       "place": "FOUNDRY",
       "sub": null,
@@ -295,7 +195,7 @@
         },
         {
           "qty": null,
-          "label": "Stock",
+          "label": "Trumna Stock",
           "note": "20,000 cr, 45 Auroxium Alloy, 30 Lucent Teroglobe, 20 Saturated Muscle Mass, 2 Cabochon Embolos",
           "alt": null,
           "done": false

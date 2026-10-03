@@ -10,7 +10,7 @@
   },
   "badges": [
     {
-      "text": "Nightwave rotation",
+      "text": "Nightwave",
       "tone": "warn"
     },
     {
@@ -28,6 +28,28 @@
       "label": "build",
       "amount": "20,000 cr",
       "money": false
+    }
+  ],
+  "materials": [
+    {
+      "qty": "800",
+      "label": "Ferrite",
+      "note": null
+    },
+    {
+      "qty": "200",
+      "label": "Plastids",
+      "note": null
+    },
+    {
+      "qty": "75",
+      "label": "Polymer Bundle",
+      "note": null
+    },
+    {
+      "qty": "2",
+      "label": "Neurodes",
+      "note": null
     }
   ],
   "groups": [
@@ -66,7 +88,7 @@
       "live": null,
       "skip": null,
       "earns": {
-        "currency": "Nightwave Cred",
+        "currency": "Nightwave Creds",
         "amount": "50"
       },
       "spends": [],
@@ -82,7 +104,8 @@
       ],
       "conditions": ["Cred expires when the series or intermission ends; spend it first."],
       "bonuses": [],
-      "disclosures": []
+      "disclosures": [],
+      "ref": "Nightwave Creds"
     },
     {
       "type": "vendor",
@@ -96,7 +119,7 @@
       "earns": null,
       "spends": [
         {
-          "currency": "Nightwave Cred",
+          "currency": "Nightwave Creds",
           "amount": "50"
         }
       ],
@@ -110,55 +133,7 @@
           "done": false
         }
       ],
-      "conditions": [
-        "The shop shows a rotating subset weekly. If it is missing, check next week; nothing there is permanently missable."
-      ],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "ASSUR, URANUS",
-      "sub": null,
-      "activity": "Survival (Dark Sector)",
-      "meta": "Plastids and Polymer in one run",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "200",
-          "label": "Plastids",
-          "note": "Dark Sword",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "75",
-          "label": "Polymer Bundle",
-          "note": "Dark Sword",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "800",
-          "label": "Ferrite",
-          "note": "Dark Sword",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "2",
-          "label": "Neurodes",
-          "note": "Dark Sword",
-          "alt": "Orokin Derelict caches, or Infested on Earth, Lua, Eris, Deimos",
-          "done": false
-        }
-      ],
-      "conditions": [],
+      "conditions": ["The blueprint is always in the Cred Offerings; it never rotates out."],
       "bonuses": [],
       "disclosures": []
     },

@@ -12,6 +12,13 @@
     { "label": "blueprint", "amount": "50,000 cr", "money": false },
     { "label": "build", "amount": "15,000 cr", "money": false }
   ],
+  "materials": [
+    { "qty": "2", "label": "Argon Crystal", "note": null },
+    { "qty": "24,000", "label": "Nano Spores", "note": null },
+    { "qty": "480", "label": "Rubedo", "note": "Devolved Namalon refines" },
+    { "qty": "24", "label": "Parasitic Tethermaw", "note": null },
+    { "qty": "60", "label": "Devolved Namalon", "note": null }
+  ],
   "groups": [
     {
       "type": "gate",
@@ -96,108 +103,6 @@
       "disclosures": []
     },
     {
-      "type": "bounty",
-      "place": "CAMBION DRIFT, DEIMOS",
-      "sub": "Isolation Vaults",
-      "activity": "vault bounties with the bonus objective; mine and fish between them",
-      "meta": "fish only during Vome, 50 of every 150 minutes",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": "cambion-drift",
-      "rows": [
-        {
-          "qty": "60",
-          "label": "Namalon",
-          "note": "yellow/orange veins, 4-10 per vein; vault bonus-room containers",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "45",
-          "label": "Lucent Teroglobe",
-          "note": "vault bonus room is the best bulk source",
-          "alt": "Vitrific Outcrops by Requiem Obelisks, Necralisk bounty rewards (15 each)",
-          "done": false
-        },
-        {
-          "qty": "24",
-          "label": "Parasitic Tethermaw",
-          "note": "1 per Lobotriscid filleted at Daughter, any size; common surface fish, Vome only, no bait",
-          "alt": "Isolation Vault bounty rewards",
-          "done": false
-        },
-        {
-          "qty": "24,000",
-          "label": "Nano Spores",
-          "note": "comes naturally on Deimos",
-          "alt": "Piscinas (Saturn) or Akkad (Eris)",
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Mining needs a Nosam Cutter (Cetus) or Sunpoint Plasma Drill (Fortuna).",
-        "Namalon veins are not cycle-specific; they cluster around Actuary's Pride and the Infested Seraglio Cave. Only Lobotriscid is Vome-locked."
-      ],
-      "bonuses": [
-        "Resource Boosters and Retriever mods apply to Namalon, Teroglobe and Tethermaw pickups, not bounty payouts.",
-        "Filleting also gives Benign Infested Tumor and Ferment Bladder."
-      ],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "PLAINS OF EIDOLON, EARTH",
-      "sub": null,
-      "activity": "mine red veins",
-      "meta": "one trip",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": "plains-of-eidolon",
-      "rows": [
-        {
-          "qty": "60",
-          "label": "Ferros",
-          "note": "5-10 per vein",
-          "alt": "Thumpers, Doma most of all",
-          "done": false
-        }
-      ],
-      "conditions": ["Ferros is an Earth ore, not a Deimos one."],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "MOT, VOID",
-      "sub": null,
-      "activity": "Survival",
-      "meta": "on build day",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "2",
-          "label": "Argon Crystal",
-          "note": "decays daily outside the Void",
-          "alt": "Ani (Survival)",
-          "done": false
-        }
-      ],
-      "conditions": ["Farm Argon last and start the build the same day."],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
       "type": "foundry",
       "place": "FOUNDRY",
       "sub": null,
@@ -210,13 +115,6 @@
       "spends": [],
       "map": null,
       "rows": [
-        {
-          "qty": "60",
-          "label": "Devolved Namalon",
-          "note": "3 crafts of 20; each 1,000 cr, 20 Namalon, 20 Ferros, 160 Rubedo, 15 Lucent Teroglobe",
-          "alt": null,
-          "done": false
-        },
         {
           "qty": null,
           "label": "Pulmonars",

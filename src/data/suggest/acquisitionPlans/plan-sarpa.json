@@ -30,46 +30,52 @@
       "money": false
     }
   ],
-  "groups": [
+  "materials": [
     {
-      "type": "gate",
-      "place": "DOJO, TENNO LAB",
-      "sub": null,
-      "activity": "research the Akstiletto",
-      "meta": "72h",
-      "mode": null,
-      "live": null,
-      "skip": {
-        "reason": "a clanmate already researched it, or you already own an Akstiletto"
-      },
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Akstiletto",
-          "note": "500 Salvage, 300 Polymer Bundle, 50 Alloy Plate, 1 Gallium, 5,000 cr, 72h",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Research is once per clan and costs 3,000 clan affinity. Start it first; it runs on a timer.",
-        "The Sarpa build consumes the Akstiletto. Rank it to 30 first to bank its Mastery."
-      ],
-      "bonuses": ["Akstiletto also drops from Axi A7 and Meso V6 relics, which skips the lab."],
-      "disclosures": []
+      "qty": "3,300",
+      "label": "Cryotic",
+      "note": null
     },
     {
-      "type": "research",
-      "place": "DOJO, TENNO LAB",
+      "qty": "1,000",
+      "label": "Plastids",
+      "note": null
+    },
+    {
+      "qty": "2",
+      "label": "Control Module",
+      "note": null
+    },
+    {
+      "qty": "2",
+      "label": "Gallium",
+      "note": "Akstiletto"
+    },
+    {
+      "qty": "800",
+      "label": "Salvage",
+      "note": "Akstiletto"
+    },
+    {
+      "qty": "200",
+      "label": "Alloy Plate",
+      "note": "Akstiletto"
+    },
+    { "qty": "1", "label": "Forma", "note": null },
+    { "qty": "35,000", "label": "Credits", "note": null }
+  ],
+  "groups": [
+    {
+      "type": "vendor",
+      "place": "CLAN DOJO, TENNO LAB",
       "sub": null,
       "activity": "buy the Akstiletto blueprint",
       "meta": "15,000 cr",
       "mode": null,
       "live": null,
-      "skip": null,
+      "skip": {
+        "reason": "you already own an Akstiletto"
+      },
       "earns": null,
       "spends": [
         {
@@ -87,8 +93,10 @@
           "done": false
         }
       ],
-      "conditions": [],
-      "bonuses": [],
+      "conditions": [
+        "The Sarpa build consumes the Akstiletto. Rank it to 30 first to bank its Mastery."
+      ],
+      "bonuses": ["Akstiletto also drops from Axi A7 and Meso V6 relics, which skips the lab."],
       "disclosures": []
     },
     {
@@ -118,96 +126,6 @@
         }
       ],
       "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "HIERACON, PLUTO",
-      "sub": null,
-      "activity": "Dark Sector Excavation",
-      "meta": "100 Cryotic per completed excavator",
-      "mode": "premade, several excavators at once",
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "3,300",
-          "label": "Cryotic",
-          "note": "33 excavators, 17 with a Resource Booster",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Run the lowest-level Excavation available; higher difficulty pays the same and fails more.",
-        "Leaving early voids the current dig, and an excavator can fall to a random Lancer."
-      ],
-      "bonuses": [
-        "Groups clear about 3,000 Cryotic in a little over 30 minutes. A Resource Booster (not a Drop Chance Booster) doubles it.",
-        "Excavation as a Void fissure, Duviri Circuit rounds and Daily Tribute also hand out Cryotic."
-      ],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "OPHELIA, URANUS",
-      "sub": null,
-      "activity": "Survival",
-      "meta": "start early, this is what stalls builds",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "1,000",
-          "label": "Plastids",
-          "note": "build",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "3",
-          "label": "Gallium",
-          "note": "1 Akstiletto research, 2 Akstiletto build",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [
-        "Assur, Piscinas and Akkad also drop Plastids; Gallium also comes from Mars (Hellas, Gradivus, Ara)."
-      ],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "TESHUB, VOID",
-      "sub": null,
-      "activity": "Exterminate",
-      "meta": "Hepit (Capture) also works",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "2",
-          "label": "Control Module",
-          "note": "build",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": ["The Void has the best rate; Neptune and Europa also drop it."],
       "bonuses": [],
       "disclosures": []
     },

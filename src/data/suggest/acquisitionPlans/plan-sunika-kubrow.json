@@ -30,6 +30,25 @@
       "money": false
     }
   ],
+  "materials": [
+    {
+      "qty": "4,500",
+      "label": "Nano Spores",
+      "note": "per Incubator Power Core"
+    },
+    {
+      "qty": "2",
+      "label": "Control Module",
+      "note": "per Incubator Power Core"
+    },
+    {
+      "qty": "1",
+      "label": "Argon Crystal",
+      "note": "per Incubator Power Core"
+    },
+    { "qty": "2", "label": "Kubrow Egg", "note": null },
+    { "qty": "2", "label": "Incubator Power Core", "note": null }
+  ],
   "groups": [
     {
       "type": "gate",
@@ -66,43 +85,6 @@
       "disclosures": []
     },
     {
-      "type": "farm",
-      "place": "MANTLE, EARTH",
-      "sub": null,
-      "activity": "Capture; break Kubrow Dens on Grineer Forest tiles",
-      "meta": "2 to 4 dens a run, 4 to 5 runs per egg solo",
-      "mode": "solo, fast frame",
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "1",
-          "label": "Kubrow Egg",
-          "note": "one per incubation attempt",
-          "alt": "Market purchase, 10 platinum",
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Den drops are streaky, from one run to 50 or more.",
-        "Eggs stack with no pickup limit."
-      ],
-      "bonuses": [
-        "A max-range Xaku with The Vast Untime breaks every den in a room at once.",
-        "A scanner highlights hidden den burrows.",
-        "Eggs also drop on low-level Extractor, Excavation and Exterminate missions on Earth."
-      ],
-      "disclosures": [
-        {
-          "title": "other egg sources",
-          "body": "E Prime, Earth. Earth Sabotage resource caches at Cervantes drop one at 2.58%."
-        }
-      ]
-    },
-    {
       "type": "foundry",
       "place": "FOUNDRY",
       "sub": null,
@@ -116,16 +98,15 @@
       "map": null,
       "rows": [
         {
-          "qty": "1",
-          "label": "Incubator Power Core",
-          "note": "4,500 Nano Spores, 2 Control Modules, 1 Argon Crystal",
-          "alt": "the Venus to Mercury Junction's first task awards one",
+          "qty": null,
+          "label": "Sunika Kubrow",
+          "note": "1 Incubator Power Core",
+          "alt": null,
           "done": false
         }
       ],
       "conditions": [
-        "The blueprint is a reusable 50,000-credit Market purchase. Every incubation consumes a core, win or lose.",
-        "Argon Crystal decays daily, so build the core just before you incubate."
+        "The blueprint is a reusable 50,000-credit Market purchase. Every incubation consumes a core, win or lose."
       ],
       "bonuses": [
         "The Nutrio Incubator Upgrade Segment halves incubation to 24h: Tenno Lab research, MR 5 to craft, 100,000 cr, 1 Argon Crystal, 1 Power Core, 1,200 Oxium."
@@ -145,20 +126,6 @@
       "spends": [],
       "map": null,
       "rows": [
-        {
-          "qty": null,
-          "label": "Kubrow Egg",
-          "note": "consumed per attempt",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Incubator Power Core",
-          "note": "consumed per attempt",
-          "alt": null,
-          "done": false
-        },
         {
           "qty": null,
           "label": "Sunika Kubrow",

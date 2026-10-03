@@ -9,6 +9,14 @@
     { "text": "MR 14", "tone": "info" }
   ],
   "prices": [{ "label": "blueprint", "amount": "8,000 Holdfasts Standing", "money": false }],
+  "materials": [
+    { "qty": "8,000", "label": "Alloy Plate", "note": null },
+    { "qty": "10", "label": "Voidplume Crest", "note": "Rank 3 sacrifice" },
+    { "qty": "10", "label": "Voidplume Pinion", "note": "10 needed to build" },
+    { "qty": "15", "label": "Voidplume Quill", "note": "build requirement" },
+    { "qty": "30", "label": "Voidgel Orb", "note": "Rank 2 and build requirements" },
+    { "qty": "10", "label": "Entrati Lanthorn", "note": null }
+  ],
   "groups": [
     {
       "type": "gate",
@@ -45,7 +53,7 @@
       "disclosures": []
     },
     {
-      "type": "farm",
+      "type": "currency",
       "place": "HALAKO PERIMETER, ZARIMAN",
       "sub": "Chrysalith: turn Voidplumes in to Archimedean Yonta",
       "activity": "Exterminate; sweep the map after the objective",
@@ -58,76 +66,24 @@
       "map": null,
       "rows": [
         {
-          "qty": "10",
-          "label": "Voidplume Crest",
-          "note": "Rank 3 sacrifice; one guaranteed per map",
-          "alt": "buy Yonta's stocked Crest when available",
-          "done": false
-        },
-        {
-          "qty": "10",
-          "label": "Voidplume Pinion",
-          "note": "10 needed to build; dormant Angel drops one",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "15",
-          "label": "Voidplume Quill",
-          "note": "build requirement",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "30",
-          "label": "Voidgel Orb",
-          "note": "Rank 2 and build requirements",
+          "qty": null,
+          "label": "Voidplumes turned in to Archimedean Yonta",
+          "note": "Pinion 5,000, Quill 2,500, Crest 2,000, Vane 1,000, Down 500 standing each",
           "alt": null,
           "done": false
         }
       ],
       "conditions": [
-        "Handing Voidplumes in is capped at 16,000 + 500 per Mastery Rank each day. Rank-ups consume 5,000, 22,000, and 44,000 standing; the blueprint costs another 8,000.",
-        "Every Zariman mission has one dormant Void Angel, except Void Armageddon; its Ravenous Angel drops a Quill instead of a Pinion.",
-        "Squad Voidplume pickups are shared. Use loot radar and clear containers; finish the objective first, then follow the ghost children and redeem Zarium Accolades at Melica consoles."
+        "Rank-ups consume 5,000, 22,000 and 44,000 standing, and the blueprint costs another 8,000."
       ],
-      "bonuses": [
-        "Parallax's Orokin Eye or Helminth's Golden Instinct makes plume sweeps substantially easier.",
-        "Hoard extra plumes safely for future daily caps, but they cannot be converted past today's cap."
-      ],
+      "bonuses": [],
       "disclosures": [
         {
           "title": "calendar, not RNG, sets the floor",
           "body": "Even with enough plumes ready, the rank purchases and blueprint require several daily cap resets. Expect at least four days at cap, and roughly a week when Crests or Lanthorns lag behind."
         }
-      ]
-    },
-    {
-      "type": "farm",
-      "place": "NETRACELLS, DEIMOS",
-      "sub": null,
-      "activity": "run Netracells or kill Gruzzlings",
-      "meta": "10 needed",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": "cambion-drift",
-      "rows": [
-        {
-          "qty": "10",
-          "label": "Entrati Lanthorn",
-          "note": "Holdfasts Rank 3 sacrifice",
-          "alt": null,
-          "done": false
-        }
       ],
-      "conditions": [
-        "Lanthorns are a Deimos resource, not a Zariman resource. Netracells are the reliable source; do not count on Zariman bounties for this requirement."
-      ],
-      "bonuses": ["Gruzzlings can drop three Entrati Lanthorns at a time."],
-      "disclosures": []
+      "ref": "Holdfasts Standing"
     },
     {
       "type": "vendor",
@@ -169,11 +125,13 @@
       "spends": [],
       "map": null,
       "rows": [
-        { "qty": "30,000", "label": "Credits", "note": null, "alt": null, "done": false },
-        { "qty": "10", "label": "Voidplume Pinion", "note": null, "alt": null, "done": false },
-        { "qty": "15", "label": "Voidplume Quill", "note": null, "alt": null, "done": false },
-        { "qty": "30", "label": "Voidgel Orb", "note": null, "alt": null, "done": false },
-        { "qty": "8,000", "label": "Alloy Plate", "note": null, "alt": null, "done": false }
+        {
+          "qty": null,
+          "label": "Felarx",
+          "note": "30,000 cr, 10 Voidplume Pinion, 15 Voidplume Quill, 30 Voidgel Orb, 8,000 Alloy Plate",
+          "alt": null,
+          "done": false
+        }
       ],
       "conditions": [
         "You may craft Felarx before Mastery Rank 14, but cannot equip it until then."

@@ -12,6 +12,12 @@
     { "label": "blueprint", "amount": "25,000 cr", "money": false },
     { "label": "build", "amount": "20,000 cr", "money": false }
   ],
+  "materials": [
+    { "qty": "230", "label": "Oxium", "note": null },
+    { "qty": "13,250", "label": "Salvage", "note": null },
+    { "qty": "3", "label": "Tellurium", "note": null },
+    { "qty": "2", "label": "Argon Crystal", "note": null }
+  ],
   "groups": [
     {
       "type": "vendor",
@@ -44,65 +50,6 @@
       ]
     },
     {
-      "type": "farm",
-      "place": "OPHELIA, URANUS",
-      "sub": null,
-      "activity": "Survival",
-      "meta": "submersible sections count as Archwing",
-      "mode": "Steel Path with boosters for a fast run",
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "3",
-          "label": "Tellurium",
-          "note": "drops from Archwing-mode Grineer in the water rooms",
-          "alt": "or Corpus Railjack survival in Veil Proxima (Salacia, Neptune Archwing also named)",
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Tellurium no longer drops from the Perita Rebellion's Hunhullus mission; that source was hotfixed out.",
-        "Drops that land in the water aren't always picked up by your pet; jump in periodically."
-      ],
-      "bonuses": [
-        "Steel Path with a Drop Chance booster, Resource booster and Smeeta or Resourceful Retriever turns roughly 2 in 40 minutes with no boosters into 10-26 in 20 minutes.",
-        "Daily login rewards give Tellurium often enough that long-time players say they never farm it directly.",
-        "A loot frame (Nekros with Desecrate, or Khora/Hydroid) helps, but avoid Heat or Corrosive kills, which block Desecrate's extra roll."
-      ],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "THE VOID",
-      "sub": null,
-      "activity": "any Void mission",
-      "meta": "farm this last",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "2",
-          "label": "Argon Crystal",
-          "note": "Dual Keres build",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Argon Crystals decay daily once picked up; farm them last, right before starting the build."
-      ],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
       "type": "foundry",
       "place": "FOUNDRY",
       "sub": null,
@@ -116,18 +63,15 @@
       "map": null,
       "rows": [
         {
-          "qty": "230",
-          "label": "Oxium",
-          "note": "Oxium Ospreys, any Corpus mission; kill it before it self-destructs or it drops nothing",
+          "qty": null,
+          "label": "Dual Keres",
+          "note": "20,000 cr, 230 Oxium, 13,250 Salvage, 3 Tellurium, 2 Argon Crystal",
           "alt": null,
           "done": false
-        },
-        { "qty": "13,250", "label": "Salvage", "note": null, "alt": null, "done": false }
+        }
       ],
       "conditions": [],
-      "bonuses": [
-        "Do a single boosted Steel Path Ophelia run for the Tellurium, grab Argon last, then craft and level to 30."
-      ],
+      "bonuses": [],
       "disclosures": []
     }
   ]

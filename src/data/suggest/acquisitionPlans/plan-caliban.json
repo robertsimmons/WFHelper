@@ -12,6 +12,17 @@
     { "label": "blueprint", "amount": "50,000 cr", "money": false },
     { "label": "build", "amount": "70,000 cr", "money": false }
   ],
+  "materials": [
+    { "qty": "10", "label": "Neural Sensors", "note": "Neuroptics" },
+    { "qty": "1,500", "label": "Plastids", "note": "Hespazym Alloy refines" },
+    { "qty": "10", "label": "Morphics", "note": "Hespazym Alloy refines" },
+    { "qty": "12", "label": "Orokin Cell", "note": "Caliban" },
+    { "qty": "40", "label": "Narmer Isoplast", "note": null },
+    { "qty": "100", "label": "Hespazym Alloy", "note": null },
+    { "qty": "20", "label": "Mortus Horn", "note": null },
+    { "qty": "30", "label": "Breath Of The Eidolon", "note": null },
+    { "qty": "30", "label": "Hexenon", "note": "Caliban Systems" }
+  ],
   "groups": [
     {
       "type": "gate",
@@ -90,13 +101,6 @@
           "note": "Rotation C; 8.11% stages 2-3, 5.45% stage 4, 7.5% stage 5",
           "alt": null,
           "done": false
-        },
-        {
-          "qty": "40",
-          "label": "Narmer Isoplast",
-          "note": "~2.7 per full bounty",
-          "alt": null,
-          "done": false
         }
       ],
       "conditions": [
@@ -150,34 +154,6 @@
     },
     {
       "type": "farm",
-      "place": "ORB VALLIS, VENUS",
-      "sub": "Deck 12",
-      "activity": "mine red veins; refine at Smokefinger",
-      "meta": "Solaris United rank 2",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [{ "currency": "Solaris United standing", "amount": "4,000" }],
-      "map": "orb-vallis",
-      "rows": [
-        { "qty": "100", "label": "Hesperon", "note": "20 per refine", "alt": null, "done": false },
-        {
-          "qty": "100",
-          "label": "Hespazym Alloy",
-          "note": "5 refines of 20; each 20 Hesperon, 300 Plastids, 2 Morphics, 1,000 cr",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "The reusable refine blueprint costs 4,000 standing from Smokefinger and needs Solaris United rank 2."
-      ],
-      "bonuses": ["Mine between bounties while the board is on a rotation you don't need."],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
       "place": "PLAINS OF EIDOLON, EARTH",
       "sub": null,
       "activity": "spear-fish and cut at Fisher Hai-Luk; Cetus bounties",
@@ -195,20 +171,6 @@
           "note": "ocean, daytime; Tulok or Peram spear",
           "alt": null,
           "done": false
-        },
-        {
-          "qty": "20",
-          "label": "Mortus Horn",
-          "note": "ponds, any time; Lanzo or Peram spear",
-          "alt": "Thumpers also drop horns",
-          "done": false
-        },
-        {
-          "qty": "30",
-          "label": "Breath of the Eidolon",
-          "note": "Plains bounty reward",
-          "alt": null,
-          "done": false
         }
       ],
       "conditions": [],
@@ -216,30 +178,30 @@
       "disclosures": []
     },
     {
-      "type": "farm",
-      "place": "GANYMEDE, JUPITER",
+      "type": "vendor",
+      "place": "SMOKEFINGER, FORTUNA",
       "sub": null,
-      "activity": "Disruption",
-      "meta": null,
+      "activity": "buy the Hespazym Alloy refining blueprint",
+      "meta": "Solaris United rank 2",
       "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [],
-      "map": null,
+      "spends": [{ "currency": "Solaris United Standing", "amount": "4,000" }],
+      "map": "fortuna",
       "rows": [
-        { "qty": "30", "label": "Hexenon", "note": "Caliban Systems", "alt": null, "done": false },
         {
-          "qty": "10",
-          "label": "Neural Sensors",
-          "note": "Caliban Neuroptics",
+          "qty": null,
+          "label": "Hespazym Alloy Blueprint",
+          "note": "4,000 standing, reusable",
           "alt": null,
           "done": false
         }
       ],
       "conditions": [],
       "bonuses": [],
-      "disclosures": []
+      "disclosures": [],
+      "ref": "Solaris United Standing"
     },
     {
       "type": "foundry",

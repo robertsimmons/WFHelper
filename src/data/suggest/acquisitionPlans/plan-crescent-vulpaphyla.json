@@ -13,6 +13,12 @@
     { "label": "revivify", "amount": "5,000 cr", "money": false },
     { "label": "starter Mutagen + Antigen", "amount": "2,500 standing", "money": false }
   ],
+  "materials": [
+    { "qty": "1", "label": "Tranq Rifle", "note": null },
+    { "qty": "1", "label": "Adra Mutagen", "note": null },
+    { "qty": "1", "label": "Desus Antigen", "note": null },
+    { "qty": "10", "label": "Son Token", "note": "gild at rank 30" }
+  ],
   "groups": [
     {
       "type": "gate",
@@ -66,28 +72,14 @@
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Entrati standing", "amount": "3,000" }],
+      "spends": [{ "currency": "Entrati Standing", "amount": "3,000" }],
       "map": "necralisk",
       "rows": [
         {
           "qty": null,
-          "label": "Tranq Rifle",
-          "note": "500 standing, Rank 0",
+          "label": "Tranq Rifle, Mutagen and Antigen",
+          "note": "500 standing for the rifle at Rank 0, 1,250 each for the pair at Stranger",
           "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Adra Mutagen",
-          "note": "1,250 standing, Stranger; Heat/Puncture resistance",
-          "alt": "choose any Mutagen you prefer",
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Desus Antigen",
-          "note": "1,250 standing, Stranger; Vazarin polarity",
-          "alt": "pick Antigen for its polarity, not its look",
           "done": false
         }
       ],
@@ -98,7 +90,8 @@
       "bonuses": [
         "An Antigen's first polarity is effectively a free Forma slot; pick one that matches your build."
       ],
-      "disclosures": []
+      "disclosures": [],
+      "ref": "Entrati Standing"
     },
     {
       "type": "bounty",
@@ -160,13 +153,6 @@
           "qty": null,
           "label": "Crescent Vulpaphyla, revivified",
           "note": "Weakened Crescent + one Mutagen + one Antigen + 5,000 credits",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "10",
-          "label": "Son Tokens",
-          "note": "gild at rank 30",
           "alt": null,
           "done": false
         }

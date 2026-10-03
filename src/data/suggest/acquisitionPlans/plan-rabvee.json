@@ -12,6 +12,26 @@
     { "label": "blueprints", "amount": "3,000 standing", "money": false },
     { "label": "gild", "amount": "5,000 standing", "money": false }
   ],
+  "materials": [
+    { "qty": "950", "label": "Cryotic", "note": "750 Laka Grip, 200 Pyrotic Alloy refine" },
+    { "qty": "400", "label": "Plastids", "note": "Fersteel Alloy refine" },
+    {
+      "qty": "400",
+      "label": "Rubedo",
+      "note": "200 Fersteel Alloy refine, 150 Coprite Alloy refines, 50 Pyrotic Alloy refine"
+    },
+    { "qty": "1,200", "label": "Ferrite", "note": "Coprite Alloy refines" },
+    { "qty": "35", "label": "Grokdrul", "note": "Strike" },
+    { "qty": "50", "label": "Fish Scales", "note": "Strike" },
+    { "qty": "10", "label": "Esher Devar", "note": "Strike" },
+    { "qty": "20", "label": "Fersteel Alloy", "note": "Strike" },
+    { "qty": "30", "label": "Nistlepod", "note": "20 Laka Grip, 10 Ruhang Link" },
+    { "qty": "60", "label": "Coprite Alloy", "note": "Laka Grip" },
+    { "qty": "50", "label": "Fish Oil", "note": "Laka Grip" },
+    { "qty": "20", "label": "Pyrotic Alloy", "note": "Ruhang Link" },
+    { "qty": "2", "label": "Kuaka Spinal Claw", "note": "Ruhang Link" },
+    { "qty": "2", "label": "Cetus Wisp", "note": "gild" }
+  ],
   "groups": [
     {
       "type": "currency",
@@ -22,7 +42,7 @@
       "mode": "solo; Ivara Sleep Arrow or Equinox sleep",
       "live": null,
       "skip": null,
-      "earns": { "currency": "Ostron standing", "amount": "71,000" },
+      "earns": { "currency": "Ostron Standing", "amount": "71,000" },
       "spends": [],
       "map": "plains-of-eidolon",
       "rows": [
@@ -53,11 +73,10 @@
         "Budget the part blueprints, the Esher Devar (2,500) and Fersteel (5,000) refining blueprints and the 5,000-standing gild on top of the rank-ups."
       ],
       "bonuses": [
-        "Sleeping an animal counts as a perfect tranq capture; players report hitting the cap in 6-20 minutes this way.",
-        "Vampire Kavats at night around the small lakes northeast of the right-most central teleport pay about 2k per cycle; go solo so the spawns behave.",
-        "Condrocs spawn in threes and are the fallback target without Ivara."
+        "Vampire Kavats at night around the small lakes northeast of the right-most central teleport pay about 2k per cycle; go solo so the spawns behave."
       ],
-      "disclosures": []
+      "disclosures": [],
+      "ref": "Ostron Standing"
     },
     {
       "type": "vendor",
@@ -69,7 +88,7 @@
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Ostron standing", "amount": "3,000" }],
+      "spends": [{ "currency": "Ostron Standing", "amount": "3,000" }],
       "map": null,
       "rows": [
         {
@@ -114,78 +133,7 @@
       "spends": [],
       "map": "plains-of-eidolon",
       "rows": [
-        {
-          "qty": "35",
-          "label": "Grokdrul",
-          "note": "Strike; drums in Grineer camps, bounty rewards",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "50",
-          "label": "Fish Scales",
-          "note": "Strike; fillet any fish at Hai-Luk",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "10",
-          "label": "Esher Devar",
-          "note": "Strike; refine 10 Devar, blueprint needs Offworlder",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "20",
-          "label": "Fersteel Alloy",
-          "note": "Strike; refine Ferros, blueprint needs Visitor",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "30",
-          "label": "Nistlepod",
-          "note": "20 Laka Grip, 10 Ruhang Link",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "60",
-          "label": "Coprite Alloy",
-          "note": "Laka Grip; refined at Suumbaat",
-          "alt": null,
-          "done": false
-        },
-        { "qty": "50", "label": "Fish Oil", "note": "Laka Grip", "alt": null, "done": false },
-        {
-          "qty": "750",
-          "label": "Cryotic",
-          "note": "Laka Grip; Excavation, not the Plains",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "20",
-          "label": "Pyrotic Alloy",
-          "note": "Ruhang Link; refine Pyrol",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "2",
-          "label": "Kuaka Spinal Claw",
-          "note": "Ruhang Link",
-          "alt": null,
-          "done": false
-        },
-        { "qty": "5", "label": "Mawfish Bones", "note": "Ruhang Link", "alt": null, "done": false },
-        {
-          "qty": "2",
-          "label": "Cetus Wisp",
-          "note": "gild; lakes at night",
-          "alt": "The Quills sell them",
-          "done": false
-        }
+        { "qty": "5", "label": "Mawfish Bones", "note": "Ruhang Link", "alt": null, "done": false }
       ],
       "conditions": [
         "The Esher Devar and Fersteel refining blueprints are reusable and shared by other Zaw, Amp and Kitgun parts."

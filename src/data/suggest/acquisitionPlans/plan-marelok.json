@@ -30,67 +30,29 @@
       "money": false
     }
   ],
+  "materials": [
+    {
+      "qty": "2",
+      "label": "Detonite Injector",
+      "note": null
+    },
+    {
+      "qty": "5,000",
+      "label": "Polymer Bundle",
+      "note": null
+    },
+    {
+      "qty": "5,000",
+      "label": "Salvage",
+      "note": null
+    },
+    { "qty": "1", "label": "Forma", "note": null },
+    { "qty": "15,000", "label": "Credits", "note": null }
+  ],
   "groups": [
     {
-      "type": "gate",
-      "place": "CLAN DOJO, CHEM LAB",
-      "sub": null,
-      "activity": "have a dojo with a Chem Lab",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Chem Lab",
-          "note": "a built clan lab; a solo Ghost clan works",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "research",
-      "place": "CLAN DOJO, CHEM LAB",
-      "sub": null,
-      "activity": "research Detonite Injector, then Marelok",
-      "meta": "two 72h timers in sequence",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Detonite Injector",
-          "note": "5 Detonite Ampule, 200 Ferrite, 250 Polymer Bundle, 100 Plastids, 5,000 cr",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Marelok",
-          "note": "10 Detonite Ampule, 300 Polymer Bundle, 650 Salvage, 120 Alloy Plate, 5,000 cr",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": ["Marelok research cannot start until the Injector research finishes."],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
       "type": "vendor",
-      "place": "CHEM LAB",
+      "place": "CLAN DOJO, CHEM LAB",
       "sub": null,
       "activity": "buy the blueprint",
       "meta": null,
@@ -110,90 +72,6 @@
           "qty": null,
           "label": "Marelok Blueprint",
           "note": "15,000 credits",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "GABII, CERES",
-      "sub": null,
-      "activity": "Survival, Dark Sector",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "15",
-          "label": "Detonite Ampule",
-          "note": "5 + 10 for the two research steps",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": ["Detonite Ampule cannot be bought with platinum."],
-      "bonuses": [
-        "Piscinas on Saturn is the higher-level alternative; Earth Sabotage caches (Cervantes) drop it at about 12%."
-      ],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "GRINEER INVASIONS",
-      "sub": null,
-      "activity": "Grineer Invasions, storage containers",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "2",
-          "label": "Detonite Injector",
-          "note": "about 3 per Invasion",
-          "alt": "or Rare and Reinforced Grineer Storage Containers",
-          "done": false
-        }
-      ],
-      "conditions": ["The build consumes Injectors, so do not spend them elsewhere."],
-      "bonuses": ["Tier 4 Orb Vallis bounties occasionally pay one."],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "ANY STAR CHART",
-      "sub": null,
-      "activity": "common resources",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "5,550",
-          "label": "Polymer Bundle",
-          "note": "550 for research, 5,000 for the build",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "5,650",
-          "label": "Salvage",
-          "note": "650 for research, 5,000 for the build",
           "alt": null,
           "done": false
         }

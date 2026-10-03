@@ -13,6 +13,11 @@
     { "label": "Repeller Systems", "amount": "10,000 standing", "money": false },
     { "label": "build", "amount": "20,000 cr", "money": false }
   ],
+  "materials": [
+    { "qty": "2", "label": "Argon Crystal", "note": null },
+    { "qty": "175", "label": "Oxium", "note": null },
+    { "qty": "8,500", "label": "Salvage", "note": null }
+  ],
   "groups": [
     {
       "type": "gate",
@@ -55,7 +60,7 @@
       "mode": null,
       "live": null,
       "skip": null,
-      "earns": { "currency": "Vox Solaris standing", "amount": "84,500" },
+      "earns": { "currency": "Vox Solaris Standing", "amount": "84,500" },
       "spends": [],
       "map": "orb-vallis",
       "rows": [
@@ -83,13 +88,10 @@
       ],
       "conditions": [
         "Vega, Calda and Sola Toroids are 1,000 standing each; Narmer Isoplast 2,000, Crisma Toroid 6,000, Lazulite Toroid 12,000.",
-        "Vox Solaris standing counts against the daily syndicate cap.",
-        "Little Duck sells Gyromag Systems at Rank 1 (1,000 standing) and Atmo Systems at Rank 2 (2,500), so the climb never needs Profit-Taker.",
-        "Spawns stall at the Toroid areas; if kills dry up, reset the area or move to another."
+        "Vox Solaris has its own daily standing cap.",
+        "Little Duck sells Gyromag Systems at Rank 1 (1,000 standing) and Atmo Systems at Rank 2 (2,500), so the climb never needs Profit-Taker."
       ],
       "bonuses": [
-        "Destroy reinforcement beacons to reset enemy levels without leaving; a loot frame, resource drop booster and Steel Path all help. One player got about 12 Sola Toroids in 30 minutes at Temple of Profit on Steel Path.",
-        "Narmer bounties pay 2,000-standing Isoplasts and are a steadier option for some players.",
         "Pick up Hildryn's blueprint (Rank 2) and Amp parts on the way; it's the same standing."
       ],
       "disclosures": [
@@ -97,7 +99,8 @@
           "title": "Exploiter Orb, the fastest standing",
           "body": "Each kill drops a Lazulite Toroid worth 12,000, covering both Repellers in one. It needs 1 Diluted Thermia and starts at Deck 12, even outside the Fractures event, but starting it yourself needs Solaris United Rank 5 (Old Mate). Below that, join a squad whose host starts it. It also drops Hildryn parts."
         }
-      ]
+      ],
+      "ref": "Vox Solaris Standing"
     },
     {
       "type": "vendor",
@@ -109,7 +112,7 @@
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Vox Solaris standing", "amount": "10,000" }],
+      "spends": [{ "currency": "Vox Solaris Standing", "amount": "10,000" }],
       "map": "fortuna",
       "rows": [
         {
@@ -123,31 +126,6 @@
       "conditions": [
         "Repeller Systems don't need Old Mate or the heists; Rank 3 needs no Solaris United standing."
       ],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "THE VOID",
-      "sub": null,
-      "activity": "any Void mission",
-      "meta": "pick this up last",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "2",
-          "label": "Argon Crystal",
-          "note": "Exergis build",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": ["Argon decays each daily reset, so farm it right before you build."],
       "bonuses": [],
       "disclosures": []
     },

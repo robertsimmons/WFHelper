@@ -10,6 +10,7 @@
     { "text": "MR 13", "tone": "warn" }
   ],
   "prices": [{ "label": "built, Varzia", "amount": "Regal Aya", "money": false }],
+  "materials": [{ "qty": "1", "label": "Orokin Cell", "note": null }],
   "groups": [
     {
       "type": "currency",
@@ -33,20 +34,18 @@
         }
       ],
       "conditions": [
-        "Pyrana Prime is vaulted and is not currently in Prime Resurgence, so no relevant relic can be earned or bought for Aya until its rotation returns.",
-        "Aya is untradeable and unaffected by Resource/Drop Chance Boosters, blessings, or Retriever mods.",
-        "Take the level 40-60 bounty from Konzu, then restart from Plains Grineer tents; Search and Rescue and Find the Hidden Artifact are the quick objectives."
+        "Pyrana Prime is vaulted and is not currently in Prime Resurgence, so no relevant relic can be earned or bought for Aya until its rotation returns."
       ],
       "bonuses": [
-        "Volt speeds the escort drone and rescue target; Nova's Wormhole can move a drone. Titania is strong for pure traversal.",
-        "Deimos is slower for Aya but pays useful side rewards; Mother Tokens can buy relic packs that may contain Aya."
+        "Volt speeds the escort drone and rescue target; Nova's Wormhole can move a drone. Titania is strong for pure traversal."
       ],
       "disclosures": [
         {
           "title": "the calendar is the gate",
           "body": "Varzia changes stock every 28 days at 18:00 UTC. Check her Next Offering before acting: Prime Resurgence order is not predictable, and missing a Pyrana window can mean a long wait."
         }
-      ]
+      ],
+      "ref": "Aya"
     },
     {
       "type": "vendor",
@@ -158,19 +157,16 @@
       "spends": [],
       "map": null,
       "rows": [
-        { "qty": "15,000", "label": "Credits", "note": null, "alt": null, "done": false },
-        { "qty": "1", "label": "Orokin Cell", "note": null, "alt": null, "done": false },
         {
-          "qty": "3",
-          "label": "Pyrana Prime parts",
-          "note": "Blueprint, Barrel, Receiver",
+          "qty": null,
+          "label": "Pyrana Prime",
+          "note": "15,000 cr, 1 Orokin Cell, Blueprint, Barrel, Receiver",
           "alt": null,
           "done": false
         }
       ],
       "conditions": [
-        "Crafting needs Mastery Rank 13 and takes 12 hours. Keep a free secondary weapon slot for the claim.",
-        "Pyrana Prime has no Incarnon Genesis adapter; do not wait for a Circuit rotation."
+        "Crafting needs Mastery Rank 13 and takes 12 hours. Keep a free secondary weapon slot for the claim."
       ],
       "bonuses": [
         "Buying the finished weapon from Varzia with Regal Aya bypasses the MR requirement."

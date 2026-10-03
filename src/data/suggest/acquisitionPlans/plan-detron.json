@@ -11,6 +11,10 @@
   "prices": [
     { "label": "Zanuka Hunter Beacon", "amount": "125,000 cr + 200 ducats", "money": false }
   ],
+  "materials": [
+    { "qty": "10", "label": "Orokin Cell", "note": null },
+    { "qty": "125,000", "label": "Credits", "note": null }
+  ],
   "groups": [
     {
       "type": "gate",
@@ -54,7 +58,7 @@
       "earns": null,
       "spends": [
         { "currency": "Credits", "amount": "125,000" },
-        { "currency": "Ducats", "amount": "200" }
+        { "currency": "Orokin Ducats", "amount": "200" }
       ],
       "map": null,
       "rows": [
@@ -143,7 +147,7 @@
         {
           "qty": null,
           "label": "Detron",
-          "note": "Blueprint, Barrel, Receiver, 5 Neurodes, 700 Circuits, 600 Salvage, 500 Polymer Bundle",
+          "note": "15,000 cr, Barrel, Receiver, 10 Orokin Cell",
           "alt": null,
           "done": false
         }
@@ -153,12 +157,7 @@
         "Have the resources ready before the Blueprint drops so the build starts at once."
       ],
       "bonuses": [],
-      "disclosures": [
-        {
-          "title": "recipe sources disagree",
-          "body": "The research summary lists 10 Orokin Cell and 15,000 cr as the build cost; the Overframe entry lists the resources shown above and no credits. Check the Foundry preview before committing."
-        }
-      ]
+      "disclosures": []
     }
   ]
 }

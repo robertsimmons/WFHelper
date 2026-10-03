@@ -13,6 +13,25 @@
     { "label": "link", "amount": "7,500 standing", "money": false },
     { "label": "gild", "amount": "5,000 standing", "money": false }
   ],
+  "materials": [
+    { "qty": "1,600", "label": "Nano Spores", "note": "Strike" },
+    {
+      "qty": "1,800",
+      "label": "Plastids",
+      "note": "700 Strike, 1,100 Grip, 400 Fersteel Alloy refine"
+    },
+    { "qty": "10", "label": "Tear Azurite", "note": null },
+    { "qty": "60", "label": "Pyrotic Alloy", "note": null },
+    { "qty": "20", "label": "Grokdrul", "note": null },
+    { "qty": "15", "label": "Fish Scales", "note": null },
+    { "qty": "30", "label": "Coprite Alloy", "note": null },
+    { "qty": "5", "label": "Maprico", "note": null },
+    { "qty": "20", "label": "Fersteel Alloy", "note": null },
+    { "qty": "5", "label": "Kuaka Spinal Claw", "note": null },
+    { "qty": "5", "label": "Mortus Horn", "note": null },
+    { "qty": "2", "label": "Cetus Wisp", "note": null },
+    { "qty": "7,000", "label": "Credits", "note": null }
+  ],
   "groups": [
     {
       "type": "gate",
@@ -36,7 +55,7 @@
         }
       ],
       "conditions": [
-        "Untradeable — no plat shortcut, no buying it from another player, and no way to catch up after the event ends."
+        "Untradeable: no plat shortcut, no buying it from another player, and no way to catch up after the event ends."
       ],
       "bonuses": [],
       "disclosures": []
@@ -50,7 +69,7 @@
       "mode": null,
       "live": null,
       "skip": null,
-      "earns": { "currency": "Operational Supply standing", "amount": "8,000" },
+      "earns": { "currency": "Operational Supply Standing", "amount": "8,000" },
       "spends": [],
       "map": null,
       "rows": [
@@ -78,7 +97,7 @@
       ],
       "conditions": [
         "Advanced and Steel Path each consume one Eidolon Phylaxis and one Infested Catalyst per run per player; a squad missing either on one member won't start the bounty.",
-        "Do not shoot the Infested spawn pods in stage 4 — they feed the Hemocyte kill counter, and killing them slows the run."
+        "Do not shoot the Infested spawn pods in stage 4: they feed the Hemocyte kill counter, and killing them slows the run."
       ],
       "bonuses": [
         "Keeping the escort drone above 80% health during stage 3 is the entire bonus-standing mechanic; Volt, Wisp, or a pre-placed Nova Wormhole speed it up.",
@@ -89,7 +108,8 @@
           "title": "rank ladder",
           "body": "Rank 1 Collaborator: 1,000 standing, 10 Grokdrul, 5,000cr. Rank 2 Defender: 2,000 standing, 10 Iradite, 10,000cr. Rank 3 Champion: 3,000 standing, 10 Nistlepod, 20,000cr. Each rank-up grants one free item of that rank."
         }
-      ]
+      ],
+      "ref": "Operational Supply Standing"
     },
     {
       "type": "vendor",
@@ -102,8 +122,8 @@
       "skip": null,
       "earns": null,
       "spends": [
-        { "currency": "Operational Supply standing", "amount": "4,000" },
-        { "currency": "credits", "amount": "7,000" }
+        { "currency": "Operational Supply Standing", "amount": "4,000" },
+        { "currency": "Credits", "amount": "7,000" }
       ],
       "map": null,
       "rows": [
@@ -134,55 +154,6 @@
       ]
     },
     {
-      "type": "farm",
-      "place": "PLAINS OF EIDOLON, EARTH",
-      "sub": "Old Man Suumbaat",
-      "activity": "mine Azurite, buy refine blueprints, run Excavation for Cryotic",
-      "meta": "Neutral Ostron rank",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": "plains-of-eidolon",
-      "rows": [
-        {
-          "qty": "10",
-          "label": "Azurite",
-          "note": "refines into 10 Tear Azurite",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "60",
-          "label": "Pyrol",
-          "note": "3 Pyrotic Alloy batches at 20 each",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "600",
-          "label": "Cryotic",
-          "note": "Excavation currency (Hieracon/Everest, not the Plains); 3 Pyrotic Alloy batches at 200 each",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "150",
-          "label": "Rubedo",
-          "note": "3 Pyrotic Alloy batches at 50 each",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Cryotic does not come from the Plains at all; check your banked Cryotic before the event ends, or Excavation becomes the longest single leg of the whole build.",
-        "Tear Azurite and Pyrotic Alloy refine blueprints are 500 Ostron standing each at Neutral rank."
-      ],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
       "type": "vendor",
       "place": "HOK, CETUS",
       "sub": null,
@@ -192,7 +163,7 @@
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Ostron standing", "amount": "7,500" }],
+      "spends": [{ "currency": "Ostron Standing", "amount": "7,500" }],
       "map": null,
       "rows": [
         {
@@ -232,7 +203,7 @@
         {
           "qty": null,
           "label": "Plague Bokwin Grip",
-          "note": "5,000cr, 60 Pyrotic Alloy",
+          "note": "5,000cr, 20 Grokdrul, 15 Fish Scales, 30 Coprite Alloy, 1,100 Plastids",
           "alt": null,
           "done": false
         },

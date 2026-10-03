@@ -9,64 +9,24 @@
     { "text": "600 Oxium", "tone": "info" }
   ],
   "prices": [{ "label": "blueprints", "amount": "80,000 cr", "money": false }],
+  "materials": [
+    { "qty": "600", "label": "Oxium", "note": "200 per part" },
+    { "qty": "150", "label": "Circuits", "note": "Neuroptics" },
+    { "qty": "700", "label": "Polymer Bundle", "note": "Neuroptics and Systems" },
+    { "qty": "500", "label": "Salvage", "note": "Neuroptics" },
+    { "qty": "900", "label": "Nano Spores", "note": "Chassis" },
+    { "qty": "50", "label": "Rubedo", "note": "Chassis" },
+    { "qty": "1", "label": "Control Module", "note": "Systems" },
+    { "qty": "400", "label": "Plastids", "note": "Systems" },
+    { "qty": "1", "label": "Orokin Cell", "note": "Zephyr" },
+    { "qty": "80,000", "label": "Credits", "note": null }
+  ],
   "groups": [
-    {
-      "type": "research",
-      "place": "CLAN DOJO, TENNO LAB",
-      "sub": null,
-      "activity": "research Zephyr, then the three parts, unless your clan already has them",
-      "meta": "72h each; parts only unlock after the main research finishes",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Zephyr (main)",
-          "note": "5,000 cr, 1 Mutagen Mass, 1 Detonite Injector, 1 Fieldron, 200 Oxium",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Chassis",
-          "note": "10,000 cr, 1 Mutagen Mass, 1 Control Module, 1,000 Ferrite, 20 Oxium",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Neuroptics",
-          "note": "10,000 cr, 1 Detonite Injector, 1 Neural Sensors, 1,000 Nano Spores, 20 Oxium",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Systems",
-          "note": "10,000 cr, 1 Fieldron, 1 Morphics, 1,000 Salvage, 20 Oxium",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "The part researches only unlock once the main Zephyr research completes, so a new lab waits at least 6 days before replicating anything. Research cannot be rushed.",
-        "Costs shown are Ghost-clan; Shadow x3, Storm x10, Mountain x30 and Moon x100. A Moon clan pays 20,000 Oxium for the main research alone.",
-        "The Dojo needs an Oracle room before it can build a Tenno Lab."
-      ],
-      "bonuses": [
-        "Joining an established clan that already has the research is the near-unanimous shortcut: rush the Clan Key and replicate."
-      ],
-      "disclosures": []
-    },
     {
       "type": "vendor",
       "place": "CLAN DOJO, TENNO LAB",
       "sub": null,
-      "activity": "replicate the four blueprints",
+      "activity": "buy the four blueprints",
       "meta": "35,000 main + 15,000 each part",
       "mode": null,
       "live": null,
@@ -90,132 +50,7 @@
           "done": false
         }
       ],
-      "conditions": [
-        "The main blueprint is not sold in the Market.",
-        "Some clans set a minimum rank to replicate. If you are turned away, join a clan that lets new members replicate right away."
-      ],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "IO, JUPITER",
-      "sub": null,
-      "activity": "Defense; kill Oxium Ospreys",
-      "meta": "~80 Oxium per 10 waves",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "600",
-          "label": "Oxium",
-          "note": "200 per part",
-          "alt": "200 from a Lvl 10-30 Cetus or Fortuna bounty stage 1 when Oxium is in its pool",
-          "done": false
-        },
-        { "qty": "500", "label": "Salvage", "note": "Neuroptics", "alt": null, "done": false }
-      ],
-      "conditions": [
-        "Oxium drops only if you kill the Osprey before it dashes in and explodes. Bring something that kills drones at range.",
-        "A Resource Booster doubles Oxium pickups; Drop Chance Boosters and Blessings do nothing, since the drop is already guaranteed."
-      ],
-      "bonuses": [
-        "Nekros's Desecrate re-rolls Osprey drops and stacks across several Nekros. Hydroid with Pilfering Swarm reported 500-1,000 per 9-wave run; Khora with Pilfering Strangledome and a Smeeta also works.",
-        "On the Gas City tile with four towers, raise the towers from their consoles; each tower's capsules drop a good chunk of Oxium."
-      ],
-      "disclosures": [
-        {
-          "title": "the bounty trick",
-          "body": "The bounty stage-1 payout is not affected by boosters. Fail stage 3 on purpose to restart the bounty without going back to the hub."
-        }
-      ]
-    },
-    {
-      "type": "farm",
-      "place": "SATURN",
-      "sub": null,
-      "activity": "any mission",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        { "qty": "900", "label": "Nano Spores", "note": "Chassis", "alt": null, "done": false },
-        { "qty": "400", "label": "Plastids", "note": "Systems", "alt": null, "done": false },
-        { "qty": "1", "label": "Orokin Cell", "note": "Zephyr", "alt": null, "done": false }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "EUROPA",
-      "sub": null,
-      "activity": "any mission",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        { "qty": "1", "label": "Control Module", "note": "Systems", "alt": null, "done": false },
-        { "qty": "50", "label": "Rubedo", "note": "Chassis", "alt": null, "done": false }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "APOLLODORUS, MERCURY",
-      "sub": null,
-      "activity": "Survival",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "700",
-          "label": "Polymer Bundle",
-          "note": "Neuroptics and Systems",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "GABII, CERES",
-      "sub": null,
-      "activity": "Survival, Dark Sector",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        { "qty": "150", "label": "Circuits", "note": "Neuroptics", "alt": null, "done": false }
-      ],
-      "conditions": [],
+      "conditions": ["The main blueprint is not sold in the Market."],
       "bonuses": [],
       "disclosures": []
     },

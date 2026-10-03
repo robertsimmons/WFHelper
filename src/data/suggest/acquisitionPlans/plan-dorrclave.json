@@ -9,6 +9,7 @@
     { "text": "Dojo room needed", "tone": "warn" }
   ],
   "prices": [{ "label": "build", "amount": "20,000 cr", "money": false }],
+  "materials": [{ "qty": "80", "label": "Vainthorn", "note": null }],
   "groups": [
     {
       "type": "gate",
@@ -33,7 +34,7 @@
         {
           "qty": null,
           "label": "any faction syndicate, Rank 2",
-          "note": "Steel Meridian, Arbiters of Hexis, Cephalon Suda, Perrin Sequence, Red Veil or New Loka — whichever you already have",
+          "note": "Steel Meridian, Arbiters of Hexis, Cephalon Suda, Perrin Sequence, Red Veil or New Loka, whichever you already have",
           "alt": null,
           "done": false
         }
@@ -74,45 +75,6 @@
       "disclosures": []
     },
     {
-      "type": "farm",
-      "place": "ABYSSAL ZONE, CERES",
-      "sub": null,
-      "activity": "Exterminate; carry a Defixio to extraction",
-      "meta": "guaranteed 6-8 Vainthorn per run (8-12 Steel Path)",
-      "mode": "Steel Path if you can clear it",
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [{ "currency": "syndicate standing", "amount": "5,000" }],
-      "map": null,
-      "rows": [
-        {
-          "qty": "80",
-          "label": "Vainthorn",
-          "note": "10-14 runs normal, 7-10 on Steel Path",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Each run needs one Abyssal Beacon (5,000 standing) bought from your syndicate's Offerings before you launch.",
-        "Boosters do nothing — Vainthorn is an end-of-mission reward, unaffected by Resource Booster, Drop Chance boosts or Retriever mods.",
-        "Only the host's beacon is consumed in a premade squad, but every player gets the full reward — split the standing cost with clanmates.",
-        "Host leaving fails the mission for everyone; solo removes that risk."
-      ],
-      "bonuses": [
-        "Steel Path pays about 45% more Vainthorn per beacon (up to 12 vs 8), cutting the total standing cost by roughly a third.",
-        "The last quarter of each run turns into an Eximus Stronghold — good for Riven Slivers, affinity and forma leveling on the side.",
-        "Pick up the Defixio with your Warframe, switch to Operator, and walk it to extraction to dodge the Exposure Curse entirely."
-      ],
-      "disclosures": [
-        {
-          "title": "only one Defixio counts",
-          "body": "The payout is a flat roll per run regardless of how many Defixios you grab — bringing extras adds nothing, so rush the nearest one to extraction and fight there instead of collecting them all."
-        }
-      ]
-    },
-    {
       "type": "foundry",
       "place": "FOUNDRY",
       "sub": null,
@@ -132,8 +94,7 @@
         { "qty": null, "label": "Dorrclave", "note": "20,000 cr, 12h", "alt": null, "done": false }
       ],
       "conditions": [
-        "Each component also needs a share of Nano Spores, Plastids, Morphics, Ferrite, Rubedo, Oxium and Argon Crystal; exact per-component amounts aren't public, so expect to have plenty of these common resources banked already.",
-        "Argon Crystal decays after pickup — grab it last."
+        "Each component also needs a share of Nano Spores, Plastids, Morphics, Ferrite, Rubedo, Oxium and Argon Crystal; exact per-component amounts aren't public, so expect to have plenty of these common resources banked already."
       ],
       "bonuses": [],
       "disclosures": []

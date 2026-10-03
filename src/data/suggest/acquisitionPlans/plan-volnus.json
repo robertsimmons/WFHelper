@@ -30,6 +30,29 @@
       "money": false
     }
   ],
+  "materials": [
+    {
+      "qty": "11,000",
+      "label": "Alloy Plate",
+      "note": null
+    },
+    {
+      "qty": "875",
+      "label": "Cryotic",
+      "note": null
+    },
+    {
+      "qty": "225",
+      "label": "Oxium",
+      "note": null
+    },
+    {
+      "qty": "2",
+      "label": "Argon Crystal",
+      "note": null
+    },
+    { "qty": "20,000", "label": "Credits", "note": null }
+  ],
   "groups": [
     {
       "type": "vendor",
@@ -62,133 +85,6 @@
       "disclosures": []
     },
     {
-      "type": "farm",
-      "place": "HIERACON, PLUTO",
-      "sub": null,
-      "activity": "Excavation as a Void fissure",
-      "meta": "100 per defended excavator, about nine digs",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "875",
-          "label": "Cryotic",
-          "note": "Excavation only",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Drop Chance Boosters do nothing for it; a Resource Booster doubles it to 200 per excavator."
-      ],
-      "bonuses": ["Fissure Excavation cracks relics as you go."],
-      "disclosures": [
-        {
-          "title": "other nodes",
-          "body": "Excavation also runs on Venus, Earth, Phobos, Europa and Neptune. Resourceful Retriever gives roughly a one-in-five chance of 4x on an excavator."
-        }
-      ]
-    },
-    {
-      "type": "farm",
-      "place": "IO, JUPITER",
-      "sub": null,
-      "activity": "Defense",
-      "meta": "7-12 per Oxium Osprey",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "225",
-          "label": "Oxium",
-          "note": "Oxium Ospreys, first five waves",
-          "alt": "30 platinum buys 300",
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Ospreys drop nothing if they self-destruct, so kill them fast with an AoE or ranged weapon."
-      ],
-      "bonuses": [
-        "Corpus Interception spawns Ospreys too; storage containers and low-tier bounties give some."
-      ],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "GABII, CERES",
-      "sub": null,
-      "activity": "Survival, Dark Sector",
-      "meta": "stay 20 minutes or more",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "11,000",
-          "label": "Alloy Plate",
-          "note": null,
-          "alt": "30 platinum buys 1,500",
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [
-        "Run a loot frame (Nekros first, also Khora, Hydroid, Atlas, Ivara) with a Resource Booster and a Resource Drop Chance Booster; ask for a Resource Drop Chance Blessing in a relay."
-      ],
-      "disclosures": [
-        {
-          "title": "other Alloy Plate sources",
-          "body": "Zariman bounties pay it passively. Survival or defense inside a Void Fissure on Sedna, Ceres, Phobos or Jupiter drops stacking resource boosters every 15 and 20 minutes."
-        }
-      ]
-    },
-    {
-      "type": "farm",
-      "place": "UKKO, VOID",
-      "sub": "or Hepit",
-      "activity": "Capture, break every container",
-      "meta": "1-2 per deposit",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "2",
-          "label": "Argon Crystal",
-          "note": "Argon Pegmatite deposits and containers",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Argon halves every day at 00:00 GMT after the day it is collected, and a cancelled build does not refund it. Farm it last and craft the same day."
-      ],
-      "bonuses": [
-        "Public lobbies usually leave with at least one, since everyone is breaking containers."
-      ],
-      "disclosures": [
-        {
-          "title": "the fast way",
-          "body": "Xaku (The Vast Untime) or Limbo (Cataclysm) at max range breaks every container in the tileset, then the Argon markers are collectable on the map. Hepit works the same way. Without them, Mot survival with Nekros and Khora is slower. A Resource Booster helps Argon Pegmatite, a Resource Drop Chance Booster does not."
-        }
-      ]
-    },
-    {
       "type": "foundry",
       "place": "FOUNDRY",
       "sub": null,
@@ -209,7 +105,7 @@
           "done": false
         }
       ],
-      "conditions": ["Gather Argon last, only once the other three materials are in hand."],
+      "conditions": [],
       "bonuses": [],
       "disclosures": []
     }

@@ -9,6 +9,19 @@
     { "text": "Circuit week 8", "tone": "circuit" }
   ],
   "prices": [{ "label": "quest", "amount": "100 Ducats + 25,000 cr", "money": false }],
+  "materials": [
+    { "qty": "7,600", "label": "Nano Spores", "note": "quest key, Chassis and Systems" },
+    { "qty": "500", "label": "Oxium", "note": "quest key and Chassis" },
+    { "qty": "3", "label": "Nitain Extract", "note": "1 quest key, 2 Neuroptics" },
+    { "qty": "1,500", "label": "Alloy Plate", "note": "Neuroptics" },
+    { "qty": "650", "label": "Polymer Bundle", "note": "Neuroptics and Systems" },
+    { "qty": "800", "label": "Plastids", "note": "Neuroptics and Chassis" },
+    { "qty": "3", "label": "Neurodes", "note": "Chassis" },
+    { "qty": "2", "label": "Argon Crystal", "note": "Systems" },
+    { "qty": "500", "label": "Circuits", "note": "Systems" },
+    { "qty": "1", "label": "Orokin Cell", "note": null },
+    { "qty": "25,000", "label": "Credits", "note": null }
+  ],
   "groups": [
     {
       "type": "gate",
@@ -44,13 +57,14 @@
       "mode": null,
       "live": null,
       "skip": null,
-      "earns": { "currency": "Ducats", "amount": "100" },
+      "earns": { "currency": "Orokin Ducats", "amount": "100" },
       "spends": [],
       "map": null,
       "rows": [{ "qty": "100", "label": "Ducats", "note": null, "alt": null, "done": false }],
       "conditions": [],
       "bonuses": [],
-      "disclosures": []
+      "disclosures": [],
+      "ref": "Orokin Ducats"
     },
     {
       "type": "vendor",
@@ -63,7 +77,7 @@
       "skip": null,
       "earns": null,
       "spends": [
-        { "currency": "Ducats", "amount": "100" },
+        { "currency": "Orokin Ducats", "amount": "100" },
         { "currency": "Credits", "amount": "25,000" }
       ],
       "map": null,
@@ -174,56 +188,6 @@
           "body": "After The Duviri Paradox, Inaros is week 8 of the Normal Circuit: Neuroptics tier 2, Chassis 5, Systems 8, main 10 (3,640 progress, ~23 stages). After the quest, Cephalon Simaris sells replacements at 25,000 standing a part and 50,000 for the main blueprint."
         }
       ]
-    },
-    {
-      "type": "farm",
-      "place": "THE VOID",
-      "sub": null,
-      "activity": "mine Argon Pegmatite",
-      "meta": "pick this up last",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "2",
-          "label": "Argon Crystal",
-          "note": "Inaros Systems",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": ["Argon decays at daily reset; farm it right before building Systems."],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "vendor",
-      "place": "NIGHTWAVE",
-      "sub": null,
-      "activity": "buy from the cred shop",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "3",
-          "label": "Nitain Extract",
-          "note": "1 key, 2 Neuroptics",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
     },
     {
       "type": "foundry",

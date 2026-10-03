@@ -5,52 +5,32 @@
   "tradeable": false,
   "progress": { "have": 0, "need": 1, "unit": "blueprint" },
   "badges": [
-    { "text": "clan research", "tone": "info" },
+    { "text": "Bio Lab", "tone": "info" },
     { "text": "2 Forma", "tone": "warn" }
   ],
   "prices": [
     { "label": "blueprint", "amount": "50,000 cr", "money": false },
     { "label": "build", "amount": "30,000 cr", "money": false }
   ],
+  "materials": [
+    { "qty": "6", "label": "Mutagen Mass", "note": null },
+    { "qty": "30,000", "label": "Salvage", "note": null },
+    { "qty": "3,500", "label": "Circuits", "note": null },
+    { "qty": "2", "label": "Forma", "note": null },
+    { "qty": "50,000", "label": "Credits", "note": null }
+  ],
   "groups": [
-    {
-      "type": "gate",
-      "place": "CLAN DOJO, BIO LAB",
-      "sub": null,
-      "activity": "research Dual Ichor",
-      "meta": "72h at Ghost tier, 5,000 cr",
-      "mode": null,
-      "live": null,
-      "skip": { "reason": "Bio Lab already has Dual Ichor researched" },
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Dual Ichor research",
-          "note": "prerequisite for Djinn; 5,000 cr, 60 Mutagen Sample, 800 Circuits, 9,500 Nano Spores, 1,200 Polymer Bundle",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Costs multiply with clan tier: x3 Shadow, x10 Storm, x30 Mountain, x100 Moon; stay Ghost tier if researching alone."
-      ],
-      "bonuses": [],
-      "disclosures": []
-    },
     {
       "type": "vendor",
       "place": "CLAN DOJO, BIO LAB",
       "sub": null,
-      "activity": "buy blueprint",
+      "activity": "buy the blueprint",
       "meta": "50,000 cr",
       "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [],
+      "spends": [{ "currency": "Credits", "amount": "50,000" }],
       "map": null,
       "rows": [
         {
@@ -63,124 +43,6 @@
       ],
       "conditions": [],
       "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "research",
-      "place": "CLAN DOJO, BIO LAB",
-      "sub": null,
-      "activity": "research the Mutagen Mass blueprint",
-      "meta": "a separate unlock from Dual Ichor",
-      "mode": null,
-      "live": null,
-      "skip": { "reason": "Bio Lab already has Mutagen Mass researched" },
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Mutagen Mass research",
-          "note": "5,000 cr, 5 Mutagen Sample, 150 Circuits, 500 Nano Spores, 100 Plastids",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Both this and Dual Ichor have to be done; neither substitutes for the other."
-      ],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "TERROREM, DEIMOS",
-      "sub": null,
-      "activity": "Survival, Orokin Derelict tileset",
-      "meta": "Steel Path recommended",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "125",
-          "label": "Mutagen Sample",
-          "note": "uncommon drop; covers Dual Ichor research, Mutagen Mass research and six Mass crafts",
-          "alt": "or Hyf, Deimos (Defense)",
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Samples are only uncommon on Deimos and rare on Eris; farm Deimos, not Eris.",
-        "Infested often clump in Terrorem's side rooms; hold a tile with good pathing or run Defense instead."
-      ],
-      "bonuses": [
-        "A loot frame (Nekros Despoil, Khora Pilfering Strangledome, Atlas Ore Gaze) plus a Resourceful Retriever beast, a relay Resource Drop Chance Blessing, a Resource Booster and Steel Path all stack."
-      ],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "THE VOID",
-      "sub": null,
-      "activity": "any mission",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "6",
-          "label": "Control Module",
-          "note": "1 per Mutagen Mass craft",
-          "alt": "or Europa / Neptune",
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "craft",
-      "place": "FOUNDRY",
-      "sub": null,
-      "activity": "build six Mutagen Mass",
-      "meta": "15,000 cr each, 12h each",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "6",
-          "label": "Mutagen Mass Blueprint",
-          "note": "15,000 credits each, single-use",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "6",
-          "label": "Mutagen Mass",
-          "note": "10 Mutagen Sample, 1 Control Module, 500 Salvage, 250 Plastids each",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Each Mutagen Mass blueprint is single-use; six separate 15,000-credit purchases are needed for six Mass."
-      ],
-      "bonuses": [
-        "Solaris United bounties (level 30-50, Rotation C) sometimes reward a crafted Mutagen Mass outright, skipping the blueprint, credits and Control Module for that one."
-      ],
       "disclosures": []
     },
     {
@@ -199,15 +61,8 @@
         {
           "qty": null,
           "label": "Djinn",
-          "note": "30,000 credits, 30,000 Salvage, 3,500 Circuits",
+          "note": "30,000 credits, 6 Mutagen Mass, 30,000 Salvage, 3,500 Circuits, 2 Forma",
           "alt": null,
-          "done": false
-        },
-        {
-          "qty": "2",
-          "label": "Forma",
-          "note": "consumed by the build",
-          "alt": "or 20 p each in the Market",
           "done": false
         }
       ],

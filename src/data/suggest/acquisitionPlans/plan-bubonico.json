@@ -9,165 +9,37 @@
     { "text": "MR 13", "tone": "info" }
   ],
   "prices": [{ "label": "built", "amount": "30,000 cr", "money": false }],
+  "materials": [
+    { "qty": "10", "label": "Mutagen Mass", "note": null },
+    { "qty": "3", "label": "Argon Crystal", "note": null },
+    { "qty": "1,200", "label": "Plastids", "note": null },
+    { "qty": "22,000", "label": "Nano Spores", "note": null },
+    { "qty": "50,000", "label": "Credits", "note": null }
+  ],
   "groups": [
-    {
-      "type": "research",
-      "place": "CLAN DOJO, BIO LAB",
-      "sub": null,
-      "activity": "check the research console before farming",
-      "meta": "up to 15 days",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Mutagen Mass",
-          "note": "3-day prerequisite",
-          "alt": null,
-          "done": false
-        },
-        { "qty": null, "label": "Torid", "note": "3-day prerequisite", "alt": null, "done": false },
-        { "qty": null, "label": "Acrid", "note": "3-day prerequisite", "alt": null, "done": false },
-        {
-          "qty": null,
-          "label": "Embolist",
-          "note": "3-day prerequisite",
-          "alt": null,
-          "done": false
-        },
-        { "qty": null, "label": "Bubonico", "note": "3-day research", "alt": null, "done": false }
-      ],
-      "conditions": [
-        "The chain is strictly sequential. In a fresh Ghost-clan Bio Lab, it is a 15-day minimum before the Bubonico blueprint can be bought.",
-        "Research costs scale with dojo tier: Ghost x1, Shadow x3, Storm x10, Mountain x30 and Moon x100. Check your barracks tier before contributing.",
-        "Joining an established clan with the chain finished is usually far faster than building a solo dojo for one weapon."
-      ],
-      "bonuses": [],
-      "disclosures": [
-        {
-          "title": "research is the real gate",
-          "body": "The weapon itself has no RNG. If the console says completed, this becomes a short materials farm and a one-day Foundry build; if it does not, the research timers dominate the plan."
-        }
-      ]
-    },
     {
       "type": "vendor",
       "place": "CLAN DOJO, BIO LAB",
       "sub": null,
-      "activity": "purchase the personal blueprint",
+      "activity": "buy the blueprint",
       "meta": "50,000 cr",
       "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [],
+      "spends": [{ "currency": "Credits", "amount": "50,000" }],
       "map": null,
       "rows": [
         {
           "qty": null,
           "label": "Bubonico Blueprint",
-          "note": "50,000 credits",
+          "note": null,
           "alt": null,
           "done": false
         }
       ],
       "conditions": [
-        "Clan research unlocks the purchase; every player still buys their own blueprint.",
         "Bubonico and its blueprint are untradeable. Coda Bubonico is a separate weapon and does not substitute here."
-      ],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "bounty",
-      "place": "ORB VALLIS, VENUS",
-      "sub": null,
-      "activity": "level 30-50 bounty",
-      "meta": "2 Masses, 33.33% stage 1",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": "orb-vallis",
-      "rows": [
-        {
-          "qty": "10",
-          "label": "Mutagen Mass",
-          "note": "crafted build requirement",
-          "alt": "or craft from 100 Mutagen Samples",
-          "done": false
-        }
-      ],
-      "conditions": [
-        "The first stage has the best listed chance; extract and restart after it when farming only Mutagen Mass.",
-        "Resource and drop-chance boosters do not affect bounty rewards."
-      ],
-      "bonuses": ["Infested Invasions can also award crafted Mutagen Mass when one is active."],
-      "disclosures": [
-        {
-          "title": "skip the single-use blueprint loop",
-          "body": "A Mutagen Mass is not a Mutagen Sample. Crafting ten Masses means ten single-use dojo blueprints, 150,000 credits and 100 Samples. The Vallis bounty can bypass that entire conversion."
-        }
-      ]
-    },
-    {
-      "type": "farm",
-      "place": "TERROREM, DEIMOS",
-      "sub": null,
-      "activity": "Survival",
-      "meta": "100 Samples if crafting Masses",
-      "mode": "Steel Path if comfortable",
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": "cambion",
-      "rows": [
-        {
-          "qty": "100",
-          "label": "Mutagen Sample",
-          "note": "10 per crafted Mutagen Mass",
-          "alt": "skip with Vallis bounty Masses",
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Mutagen Samples are uncommon on Deimos but rare on Eris; farm Deimos rather than Eris.",
-        "Steel Path adds +100% resource drop chance. Stack a loot frame, Resourceful Retriever and a relay Resource Drop Chance Blessing if available."
-      ],
-      "bonuses": [
-        "Hyf, Deimos Defense is a workable alternative if Survival pathing is frustrating."
-      ],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "VOID, ANY",
-      "sub": null,
-      "activity": "missions with Argon deposits",
-      "meta": "farm last",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "3",
-          "label": "Argon Crystal",
-          "note": "decays after the next reset",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Argon is stable through the next GMT 00:00 reset, then the decaying stack halves at each following reset. Farm it only after the rest of the recipe is ready."
       ],
       "bonuses": [],
       "disclosures": []
@@ -185,11 +57,13 @@
       "spends": [],
       "map": null,
       "rows": [
-        { "qty": "30,000", "label": "Credits", "note": null, "alt": null, "done": false },
-        { "qty": "10", "label": "Mutagen Mass", "note": null, "alt": null, "done": false },
-        { "qty": "3", "label": "Argon Crystal", "note": null, "alt": null, "done": false },
-        { "qty": "1,200", "label": "Plastids", "note": null, "alt": null, "done": false },
-        { "qty": "22,000", "label": "Nano Spores", "note": null, "alt": null, "done": false }
+        {
+          "qty": null,
+          "label": "Bubonico",
+          "note": "30,000 cr, 10 Mutagen Mass, 3 Argon Crystal, 1,200 Plastids, 22,000 Nano Spores",
+          "alt": null,
+          "done": false
+        }
       ],
       "conditions": ["Mastery Rank 13 is required to equip the completed weapon."],
       "bonuses": [],

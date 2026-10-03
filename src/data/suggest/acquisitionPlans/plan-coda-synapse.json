@@ -9,6 +9,7 @@
     { "text": "Batch B rotation", "tone": "warn" }
   ],
   "prices": [],
+  "materials": [{ "qty": "10", "label": "Live Heartcell", "note": null }],
   "groups": [
     {
       "type": "gate",
@@ -47,7 +48,7 @@
       ],
       "conditions": [
         "Only one adversary at a time: clear or convert any active Kuva Lich, Sister of Parvos, or other Coda first.",
-        "MR 17 is checked at the Eleanor purchase, not at Coda spawn — owning a Coda doesn't bypass it."
+        "MR 17 is checked at the Eleanor purchase, not at Coda spawn: owning a Coda doesn't bypass it."
       ],
       "bonuses": [],
       "disclosures": []
@@ -126,41 +127,14 @@
       "conditions": [
         "Duets spawn at 25% per mission, +25% per miss, guaranteed on the 4th; the usual timing is 3-5 minutes in.",
         "A Duet that stumbles 3 times unstabbed, or a downed squad, flees the encounter.",
-        "A stab gives 5% plus 10% or 15% per equipped Potency mod (35% max); size your Potency mods to land on or past 100% rather than getting stuck just under it."
+        "A stab gives 5% plus 10% or 15% per equipped Potency mod (35% max); size your Potency mods to land on or past 100% rather than getting stuck just under it.",
+        "Phases 1 and 3 are hazard-dodging with Transference disabled; phases 2 and 4 are the real fight, and the frontman regenerates until his backup band is dead.",
+        "DJ RoM hits with heavy Toxin that bypasses shield gating; kill him first among the Duets.",
+        "Bring overguard or invulnerability (Revenant's Mesmer Skin, Nyx's Absorb, Valkyr, Dante); stage hazards don't consume Mesmer Skin charges."
       ],
       "bonuses": [
         "Leave the mission right after a correct-Antivirus stab; the 5% and any Potency bonus bank immediately, even on abort.",
-        "Duets spawn during bounties too, so running the Antivirus Bounty stacks Hex standing, Antivirus mods and disinfection progress at once."
-      ],
-      "disclosures": []
-    },
-    {
-      "type": "boss",
-      "place": "EARTH PROXIMA",
-      "sub": "Technocyte Coda Concert",
-      "activity": "Railjack Skirmish; finish the Coda",
-      "meta": "choose Vanquish",
-      "mode": "public squad for bonus Heartcells",
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Live Heartcell",
-          "note": "10-15 per Vanquish; Convert pays none",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Phases 1 and 3 are hazard-dodging with Transference disabled; phases 2 and 4 are the real fight, and the frontman regenerates until his backup band is dead.",
-        "DJ RoM hits with heavy Toxin that bypasses shield gating; kill him first among the Duets.",
-        "Bring overguard or invulnerability (Revenant's Mesmer Skin, Nyx's Absorb, Valkyr, Dante) — stage hazards don't consume Mesmer Skin charges."
-      ],
-      "bonuses": [
+        "Duets spawn during bounties too, so running the Antivirus Bounty stacks Hex standing, Antivirus mods and disinfection progress at once.",
         "Doing the Concert in a public squad pays +1 Heartcell for every extra Coda a squadmate vanquishes, up to +3 in a full squad."
       ],
       "disclosures": []

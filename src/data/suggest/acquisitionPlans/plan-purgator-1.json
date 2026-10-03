@@ -12,6 +12,22 @@
     { "label": "blueprints", "amount": "30,000 standing", "money": false },
     { "label": "builds", "amount": "80,000 cr", "money": false }
   ],
+  "materials": [
+    { "qty": "300", "label": "Alloy Plate", "note": "Barrel" },
+    { "qty": "180", "label": "Polymer Bundle", "note": "Barrel" },
+    { "qty": "6", "label": "Gallium", "note": "Barrel" },
+    { "qty": "750", "label": "Salvage", "note": "Receiver" },
+    { "qty": "450", "label": "Circuits", "note": "Receiver" },
+    { "qty": "260", "label": "Rubedo", "note": "Receiver" },
+    { "qty": "350", "label": "Ferrite", "note": "Stock" },
+    { "qty": "200", "label": "Plastids", "note": "Stock" },
+    { "qty": "4", "label": "Morphics", "note": "Stock" },
+    { "qty": "105", "label": "Efervon Sample", "note": "55 rank-ups, 50 Stock" },
+    { "qty": "15", "label": "Experimental Arc-Relay", "note": "5 Rank 2, 10 Receiver" },
+    { "qty": "25", "label": "Techrot Chitin", "note": "Rank 4" },
+    { "qty": "5", "label": "Techrot Motherboard", "note": "Rank 5" },
+    { "qty": "25", "label": "Necracoil", "note": "Rank 4" }
+  ],
   "groups": [
     {
       "type": "gate",
@@ -61,7 +77,7 @@
       "mode": "Steel Path bounties",
       "live": null,
       "skip": null,
-      "earns": { "currency": "The Hex standing", "amount": "270,000" },
+      "earns": { "currency": "The Hex Standing", "amount": "270,000" },
       "spends": [],
       "map": null,
       "rows": [
@@ -102,22 +118,15 @@
         }
       ],
       "conditions": [
-        "The daily cap is 16,000 plus 500 per Mastery Rank, 23,000 at MR 14.",
         "Liked chemistry only unlocks at Rank 3. Push KIM chats, gifts and one daily bounty with each member early so Rank 4 isn't waiting on it.",
         "Rank 3 and Rank 5 each eat one of every 750-point treasure; On-lyne CDs are the one people run short on."
       ],
       "bonuses": [
-        "One Steel Path bounty with each Hex member covers the daily chemistry for all six and about 31,500 standing, enough to cap.",
         "Big Bytes Pizza pays 2,500 and Argon Burger Meal 1,500 at Leticia; cash them in on days you can't play, even from the mobile app.",
-        "Parallax air support pings treasures; Loot Radar, Orokin Eye or a big-range Xaku or Limbo sweep a tile fast.",
         "Temporal Archimedea pays 15,000 for all three missions once you reach Rank 5."
       ],
-      "disclosures": [
-        {
-          "title": "soft-locked bounties",
-          "body": "Some objectives, such as vehicle-destroy counts or tank kills without RPGs, can soft-lock a solo player. Abort and reroll instead of fighting them."
-        }
-      ]
+      "disclosures": [],
+      "ref": "The Hex Standing"
     },
     {
       "type": "vendor",
@@ -129,7 +138,7 @@
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "The Hex standing", "amount": "30,000" }],
+      "spends": [{ "currency": "The Hex Standing", "amount": "30,000" }],
       "map": null,
       "rows": [
         {
@@ -187,45 +196,12 @@
           "note": "40 rank-ups, 150 Barrel",
           "alt": null,
           "done": false
-        },
-        {
-          "qty": "105",
-          "label": "Efervon Sample",
-          "note": "55 rank-ups, 50 Stock",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "15",
-          "label": "Experimental Arc-Relay",
-          "note": "5 Rank 2, 10 Receiver",
-          "alt": null,
-          "done": false
-        },
-        { "qty": "25", "label": "Techrot Chitin", "note": "Rank 4", "alt": null, "done": false },
-        { "qty": "5", "label": "Techrot Motherboard", "note": "Rank 5", "alt": null, "done": false }
+        }
       ],
       "conditions": [],
       "bonuses": [
         "These keep dropping while you run the standing bounties, so you'll have plenty by Rank 5."
       ],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "CAMBION DRIFT, DEIMOS",
-      "sub": null,
-      "activity": "any Deimos mission",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": "cambion-drift",
-      "rows": [{ "qty": "25", "label": "Necracoil", "note": "Rank 4", "alt": null, "done": false }],
-      "conditions": ["A player who skipped Deimos has a small side farm here."],
-      "bonuses": [],
       "disclosures": []
     },
     {
@@ -257,7 +233,7 @@
         },
         {
           "qty": null,
-          "label": "Stock",
+          "label": "Purgator 1 Stock",
           "note": "50 Efervon Sample, 350 Ferrite, 200 Plastids, 4 Morphics",
           "alt": null,
           "done": false

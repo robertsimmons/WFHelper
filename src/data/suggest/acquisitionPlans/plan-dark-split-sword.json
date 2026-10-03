@@ -12,42 +12,16 @@
     { "label": "blueprints", "amount": "40,000 cr", "money": false },
     { "label": "builds", "amount": "20,000 cr + Dual Skana", "money": false }
   ],
+  "materials": [
+    { "qty": "10", "label": "Mutagen Mass", "note": "Dark Split-Sword" },
+    { "qty": "1,200", "label": "Rubedo", "note": "Dark Split-Sword" },
+    { "qty": "2", "label": "Morphics", "note": "Dual Skana" },
+    { "qty": "300", "label": "Polymer Bundle", "note": "Dual Skana" },
+    { "qty": "850", "label": "Ferrite", "note": "Dual Skana" },
+    { "qty": "300", "label": "Alloy Plate", "note": "Dual Skana" },
+    { "qty": "1", "label": "Forma", "note": null }
+  ],
   "groups": [
-    {
-      "type": "research",
-      "place": "CLAN DOJO, TENNO LAB",
-      "sub": null,
-      "activity": "check that Dark Split-Sword research is complete",
-      "meta": "4-day chain minimum",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Nami Skyla research",
-          "note": "5,000 cr, 1 Neurodes, 500 Ferrite, 50 Rubedo, 300 Polymer Bundle; 2 days",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Dark Split-Sword research",
-          "note": "10,000 cr, 1 Tellurium, 800 Alloy Plate, 62 Rubedo, 20 Mutagen Sample; 2 days",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Research costs are Ghost-tier; resources scale x3/x10/x30/x100 with clan size.",
-        "In an established clan it is almost certainly done already."
-      ],
-      "bonuses": [],
-      "disclosures": []
-    },
     {
       "type": "vendor",
       "place": "CLAN DOJO + MARKET",
@@ -80,59 +54,6 @@
         "The Dual Skana is its own Mastery item and the recipe consumes it; level it to 30 first."
       ],
       "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "bounty",
-      "place": "ORB VALLIS, VENUS",
-      "sub": "Eudico",
-      "activity": "Lvl 30-50 bounty when its reward is Mutagen",
-      "meta": "2 Mutagen Mass per roll",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": "orb-vallis",
-      "rows": [
-        {
-          "qty": "10",
-          "label": "Mutagen Mass",
-          "note": "33% stage 1, 20% stages 2-3, 17% stage 4, rotation C",
-          "alt": "Infested Invasions pay 1-2",
-          "done": false
-        }
-      ],
-      "conditions": [
-        "The bounty only pays Mutagen Mass when its rotating reward is Mutagen rather than Detonite or Fieldron."
-      ],
-      "bonuses": ["Grab Infested Invasions that pay Mutagen Mass on sight; they go fast."],
-      "disclosures": [
-        {
-          "title": "crafting it instead",
-          "body": "The Bio Lab Mutagen Mass research takes 72 hours (5,000 cr, 5 Mutagen Sample, 150 Circuits, 500 Nano Spores, 100 Plastids). Each Mass then costs a 15,000 cr blueprint plus 15,000 cr, 10 Mutagen Sample, 1 Control Module, 500 Salvage and 250 Plastids, 12 hours. Ten Masses is 100 Samples; players near-unanimously farm them built."
-        }
-      ]
-    },
-    {
-      "type": "farm",
-      "place": "HELLAS, MARS",
-      "sub": null,
-      "activity": "Exterminate",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        { "qty": "2", "label": "Morphics", "note": "Dual Skana", "alt": null, "done": false }
-      ],
-      "conditions": [],
-      "bonuses": [
-        "Polymer Bundle, Ferrite, Alloy Plate and Rubedo are common; top them up along the way."
-      ],
       "disclosures": []
     },
     {

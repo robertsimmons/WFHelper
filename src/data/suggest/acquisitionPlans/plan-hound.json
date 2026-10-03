@@ -30,6 +30,63 @@
       "money": false
     }
   ],
+  "materials": [
+    {
+      "qty": "6,600",
+      "label": "Ferrite",
+      "note": "5,000 Frak Stabilizers, 1,600 Coprite Alloy refines"
+    },
+    {
+      "qty": "4,100",
+      "label": "Rubedo",
+      "note": "3,000 Adlet Cores, 900 Venerdo Alloy refines, 200 Coprite Alloy refines"
+    },
+    {
+      "qty": "1,200",
+      "label": "Circuits",
+      "note": "600 per Frak Stabilizer"
+    },
+    {
+      "qty": "16",
+      "label": "Gallium",
+      "note": "10 Models, 6 Venerdo Alloy refines"
+    },
+    {
+      "qty": "6",
+      "label": "Nitain Extract",
+      "note": "3 per Frak Stabilizer"
+    },
+    {
+      "qty": "2,000",
+      "label": "Salvage",
+      "note": "Travocyte Alloy refines"
+    },
+    {
+      "qty": "1,000",
+      "label": "Plastids",
+      "note": "400 Travocyte Alloy refines, 600 Hespazym Alloy refines"
+    },
+    {
+      "qty": "4",
+      "label": "Morphics",
+      "note": "Hespazym Alloy refines"
+    },
+    { "qty": "20", "label": "Spectral Debris", "note": null },
+    { "qty": "8", "label": "Zenith Granum Crown", "note": null },
+    { "qty": "70", "label": "Travocyte Alloy", "note": null },
+    { "qty": "50", "label": "Venerdo Alloy", "note": null },
+    { "qty": "40", "label": "Hespazym Alloy", "note": null },
+    { "qty": "2", "label": "Marquise Thyst", "note": null },
+    { "qty": "30", "label": "Brickie Muon Battery", "note": null },
+    { "qty": "10", "label": "Eye-Eye Rotoblade", "note": null },
+    { "qty": "10", "label": "Sapcaddy Venedo Case", "note": null },
+    { "qty": "10", "label": "Mirewinder Parallel Biode", "note": null },
+    { "qty": "10", "label": "Sola Toroid", "note": null },
+    { "qty": "80", "label": "Coprite Alloy", "note": null },
+    { "qty": "50", "label": "Iradite", "note": null },
+    { "qty": "2", "label": "Radian Sentirum", "note": null },
+    { "qty": "2", "label": "Trapezium Xenorhast", "note": null }
+  ],
   "groups": [
     {
       "type": "gate",
@@ -170,20 +227,6 @@
           "note": "Vazarin polarity, Focused Prospectus",
           "alt": "or buy the blueprint from another player",
           "done": false
-        },
-        {
-          "qty": "20",
-          "label": "Spectral Debris",
-          "note": "5% from Errant Specters inside the Void",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "8",
-          "label": "Zenith Granum Crown",
-          "note": "Treasurer, 2-5 min into the mission",
-          "alt": null,
-          "done": false
         }
       ],
       "conditions": [
@@ -222,7 +265,7 @@
       },
       "skip": null,
       "earns": {
-        "currency": "Solaris United standing",
+        "currency": "Solaris United Standing",
         "amount": "168,000"
       },
       "spends": [],
@@ -264,14 +307,10 @@
           "done": false
         }
       ],
-      "conditions": [
-        "Doer is needed only to gild; assembly at Legs costs no standing at all",
-        "Daily standing cap is 16,000 plus 500 per mastery rank, so this is about eight capped days at MR10"
-      ],
-      "bonuses": [
-        "Conservation runs about 8,000 standing every five minutes with Loki and a subsumed Rest & Rage"
-      ],
-      "disclosures": []
+      "conditions": ["Doer is needed only to gild; assembly at Legs costs no standing at all"],
+      "bonuses": [],
+      "disclosures": [],
+      "ref": "Solaris United Standing"
     },
     {
       "type": "vendor",
@@ -285,7 +324,7 @@
       "earns": null,
       "spends": [
         {
-          "currency": "Solaris United standing",
+          "currency": "Solaris United Standing",
           "amount": "141,000"
         }
       ],
@@ -328,313 +367,58 @@
       "disclosures": []
     },
     {
-      "type": "farm",
-      "place": "ORB VALLIS, VENUS",
+      "type": "vendor",
+      "place": "SMOKEFINGER, FORTUNA",
       "sub": null,
-      "activity": "Mining, refined by Smokefinger",
-      "meta": "~2 sweeps",
+      "activity": "buy the Marquise Thyst refining blueprint",
+      "meta": "Solaris United Cove",
       "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [
-        {
-          "currency": "Solaris United standing",
-          "amount": "12,000"
-        }
-      ],
-      "map": "orb-vallis",
+      "spends": [{ "currency": "Solaris United Standing", "amount": "12,000" }],
+      "map": "fortuna",
       "rows": [
         {
-          "qty": "70",
-          "label": "Travocyte Alloy",
-          "note": "Travoride ore, common",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "50",
-          "label": "Venerdo Alloy",
-          "note": "Venerol ore, uncommon",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "40",
-          "label": "Hespazym Alloy",
-          "note": "Hesperon ore, rare veins",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "2",
-          "label": "Marquise Thyst",
-          "note": "3 Thyst + 10,000 cr each",
+          "qty": null,
+          "label": "Marquise Thyst Blueprint",
+          "note": "12,000 standing, Cove",
           "alt": null,
           "done": false
         }
       ],
       "conditions": [
-        "The Marquise Thyst refining blueprint sits at Solaris United rank Cove and 12,000 standing, one rank above the Doer you need to gild",
-        "Rare Hesperon veins want a Sunpoint Plasma Drill rather than the starter Nosam Cutter"
+        "The Marquise Thyst refining blueprint sits at Solaris United rank Cove, one rank above the Doer you need to gild."
       ],
       "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "ORB VALLIS, VENUS",
-      "sub": null,
-      "activity": "Fishing, cut by The Business",
-      "meta": "~2 passes",
-      "mode": null,
-      "live": {
-        "state": "open",
-        "text": "Warm now, 12m left"
-      },
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": "orb-vallis",
-      "rows": [
-        {
-          "qty": "30",
-          "label": "Brickie Muon Battery",
-          "note": "Brickie, ponds and rivers, warm",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "10",
-          "label": "Eye-Eye Rotoblade",
-          "note": "Eye-Eye, ponds, warm, narrow-spectrum bait",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "10",
-          "label": "Sapcaddy Venedo Case",
-          "note": "Sapcaddy, lakes, cold",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "10",
-          "label": "Mirewinder Parallel Biode",
-          "note": "Mirewinder, caves, Mirewinder Bait",
-          "alt": null,
-          "done": true
-        }
-      ],
-      "conditions": [
-        "Sapcaddy is cold-cycle only and the rest are warm, so this is two passes either side of one weather flip"
-      ],
-      "bonuses": ["Spare servofish sell to The Business for the standing the gilding needs"],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "ORB VALLIS, VENUS",
-      "sub": "Temple of Profit",
-      "activity": "Kyta Raknoids",
-      "meta": "20% a kill",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": "orb-vallis",
-      "rows": [
-        {
-          "qty": "10",
-          "label": "Sola Toroid",
-          "note": "20% from Kyta Raknoids, ~2% otherwise",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": ["Cave pick-ups around the Temple hand them over without a fight"],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "PLAINS OF EIDOLON, EARTH",
-      "sub": null,
-      "activity": "Mining and Iradite deposits",
-      "meta": "~1 sweep",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": "plains",
-      "rows": [
-        {
-          "qty": "80",
-          "label": "Coprite Alloy",
-          "note": "Coprun ore, red veins",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "50",
-          "label": "Iradite",
-          "note": "5 guaranteed a deposit in Narmer bounties",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "2",
-          "label": "Radian Sentirum",
-          "note": "3 Sentirum + 10,000 cr each",
-          "alt": null,
-          "done": true
-        }
-      ],
-      "conditions": [],
-      "bonuses": ["Narmer bounty deposits pay 5 Iradite each against 1-2 at low-level bounties"],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "CAMBION DRIFT, DEIMOS",
-      "sub": null,
-      "activity": "Mining, refined by Otak",
-      "meta": "rare veins",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [
-        {
-          "currency": "Entrati standing",
-          "amount": "8,000"
-        }
-      ],
-      "map": "cambion",
-      "rows": [
-        {
-          "qty": "2",
-          "label": "Trapezium Xenorhast",
-          "note": "teal veins, Otak blueprint",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Xenorhast needs an Advanced Nosam Cutter or a Sunpoint Plasma Drill; the starter cutter will not take it",
-        "Otak's refining blueprint sits at Entrati rank Associate, 8,000 standing"
-      ],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "MOT, VOID",
-      "sub": null,
-      "activity": "Survival",
-      "meta": "~20 min",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "5,000",
-          "label": "Ferrite",
-          "note": null,
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "3,000",
-          "label": "Rubedo",
-          "note": null,
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": ["One Void Survival covers both, so no separate Mercury and Phobos trips"],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "DRACO, CERES",
-      "sub": null,
-      "activity": "Interception, Dark Sector",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "1,200",
-          "label": "Circuits",
-          "note": "600 per Frak stabilizer",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": ["The Dark Sector resource bonus applies"],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "ASSUR, URANUS",
-      "sub": null,
-      "activity": "Survival",
-      "meta": "rare drop",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "10",
-          "label": "Gallium",
-          "note": "5 per Model",
-          "alt": "or Lieutenant Lech Kril on War, Mars",
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
+      "disclosures": [],
+      "ref": "Solaris United Standing"
     },
     {
       "type": "vendor",
-      "place": "NIGHTWAVE",
+      "place": "OTAK, NECRALISK",
       "sub": null,
-      "activity": "Nora's evergreen offerings",
-      "meta": "15 Cred for 5",
+      "activity": "buy the Trapezium Xenorhast refining blueprint",
+      "meta": "Entrati Associate",
       "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [],
-      "map": null,
+      "spends": [{ "currency": "Entrati Standing", "amount": "8,000" }],
+      "map": "necralisk",
       "rows": [
         {
-          "qty": "6",
-          "label": "Nitain Extract",
-          "note": "3 per Frak stabilizer",
+          "qty": null,
+          "label": "Trapezium Xenorhast Blueprint",
+          "note": "8,000 standing, Associate",
           "alt": null,
           "done": false
         }
       ],
-      "conditions": ["Nitain has no mission drop; Nightwave Cred is the only source"],
+      "conditions": [],
       "bonuses": [],
-      "disclosures": []
+      "disclosures": [],
+      "ref": "Entrati Standing"
     },
     {
       "type": "foundry",
@@ -652,35 +436,35 @@
         {
           "qty": null,
           "label": "Bhaira Model",
-          "note": null,
+          "note": "50,000 cr, 5 Spectral Debris, 5 Gallium, 2 Marquise Thyst, 10 Eye-Eye Rotoblade",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Hec Model",
-          "note": null,
+          "note": "50,000 cr, 5 Spectral Debris, 5 Gallium, 2 Trapezium Xenorhast, 10 Sapcaddy Venedo Case",
           "alt": null,
           "done": false
         },
         {
           "qty": "2",
           "label": "Adlet Core",
-          "note": null,
+          "note": "50,000 cr each, 5 Spectral Debris, 40 Coprite Alloy, 25 Venerdo Alloy, 1,500 Rubedo",
           "alt": null,
           "done": false
         },
         {
           "qty": "2",
           "label": "Cela Bracket",
-          "note": null,
+          "note": "50,000 cr each, 5 Sola Toroid, 25 Iradite, 35 Travocyte Alloy, 15 Brickie Muon Battery",
           "alt": null,
           "done": false
         },
         {
           "qty": "2",
           "label": "Frak Stabilizer",
-          "note": null,
+          "note": "50,000 cr each, 2,500 Ferrite, 600 Circuits, 20 Hespazym Alloy, 3 Nitain Extract",
           "alt": null,
           "done": false
         }
@@ -731,7 +515,7 @@
       "earns": null,
       "spends": [
         {
-          "currency": "Solaris United standing",
+          "currency": "Solaris United Standing",
           "amount": "15,000"
         }
       ],

@@ -9,6 +9,12 @@
     { "text": "pity vendor", "tone": "info" }
   ],
   "prices": [],
+  "materials": [
+    { "qty": "3,000", "label": "Salvage", "note": null },
+    { "qty": "2", "label": "Argon Crystal", "note": null },
+    { "qty": "400", "label": "Necracoil", "note": null },
+    { "qty": "6", "label": "Entrati Lanthorn", "note": null }
+  ],
   "groups": [
     {
       "type": "gate",
@@ -64,13 +70,6 @@
             "spends": [{ "currency": "Vessel Capillaries", "amount": "360" }]
           },
           "done": false
-        },
-        {
-          "qty": "400",
-          "label": "Necracoil",
-          "note": "byproduct, drops from enemies and containers throughout the mission",
-          "alt": null,
-          "done": false
         }
       ],
       "conditions": [
@@ -89,50 +88,6 @@
           "body": "One approach restarts after the early B rounds since waiting for conduits to fall wastes time. The alternative holds past round 4, letting 2-3 conduits fall each round, which gives B indefinitely but is slower per round."
         }
       ]
-    },
-    {
-      "type": "farm",
-      "place": "PERSTO, DEIMOS",
-      "sub": "or Cambire, Munio",
-      "activity": "Survival, Alchemy or Mirror Defense, rotation B",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "6",
-          "label": "Entrati Lanthorn",
-          "note": "5% B-rotation reward",
-          "alt": "or Zariman rotation A, 9.3%: Halako Perimeter Exterminate, The Greenway Mobile Defense",
-          "done": false
-        }
-      ],
-      "conditions": [
-        "It also drops rarely from enemies and containers in both the Deimos and Zariman tilesets while running these."
-      ],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "THE VOID",
-      "sub": null,
-      "activity": "any mission",
-      "meta": "farm this last",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [{ "qty": "2", "label": "Argon Crystal", "note": null, "alt": null, "done": false }],
-      "conditions": ["Decays daily like any Argon Crystal."],
-      "bonuses": [],
-      "disclosures": []
     },
     {
       "type": "foundry",

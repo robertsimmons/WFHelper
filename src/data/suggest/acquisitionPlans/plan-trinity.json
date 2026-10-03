@@ -9,6 +9,19 @@
     { "text": "Circuit alt", "tone": "circuit" }
   ],
   "prices": [{ "label": "blueprint", "amount": "25,000 cr", "money": false }],
+  "materials": [
+    { "qty": "1,000", "label": "Ferrite", "note": "Chassis" },
+    { "qty": "800", "label": "Rubedo", "note": "Neuroptics and Chassis" },
+    { "qty": "500", "label": "Salvage", "note": "Systems" },
+    { "qty": "220", "label": "Plastids", "note": "Systems" },
+    { "qty": "150", "label": "Alloy Plate", "note": "Neuroptics" },
+    { "qty": "150", "label": "Polymer Bundle", "note": "Neuroptics" },
+    { "qty": "2", "label": "Morphics", "note": "Chassis and Systems" },
+    { "qty": "1", "label": "Neural Sensors", "note": "Neuroptics" },
+    { "qty": "1", "label": "Control Module", "note": "Systems" },
+    { "qty": "1", "label": "Orokin Cell", "note": "Trinity" },
+    { "qty": "5", "label": "Animo Nav Beacon", "note": null }
+  ],
   "groups": [
     {
       "type": "vendor",
@@ -30,57 +43,6 @@
       ],
       "bonuses": [],
       "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "REGNA, PLUTO",
-      "sub": null,
-      "activity": "Rescue; hack the field Ambulas a Condor dropship brings",
-      "meta": "~6 beacons per hacked proxy",
-      "mode": "solo",
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "5",
-          "label": "Animo Nav Beacon",
-          "note": "5 per launch, 3 refunded on success",
-          "alt": "or any Corpus Outpost mission on Pluto",
-          "done": false
-        },
-        {
-          "qty": "2",
-          "label": "Morphics",
-          "note": "Chassis and Systems",
-          "alt": null,
-          "done": false
-        },
-        { "qty": "220", "label": "Plastids", "note": "Systems", "alt": null, "done": false },
-        {
-          "qty": "800",
-          "label": "Rubedo",
-          "note": "Neuroptics and Chassis",
-          "alt": null,
-          "done": false
-        },
-        { "qty": "150", "label": "Alloy Plate", "note": "Neuroptics", "alt": null, "done": false }
-      ],
-      "conditions": [
-        "Beacons drop on the ground near the hacked proxy and are not auto-collected; pick them up.",
-        "Get to the first open outdoor area and alert the Corpus so a dropship comes. If the map does not start outdoors or no Ambulas drops, abort and reroll."
-      ],
-      "bonuses": [
-        "Build a buffer of 10-15 beacons first so the Hades runs can chain; each run nets -2."
-      ],
-      "disclosures": [
-        {
-          "title": "why not Outer Terminus",
-          "body": "Outer Terminus (Defense), Minthe (Mobile Defense) and Narcissus (Exterminate) also spawn proxies, but players who ground Defense waves called it far slower, and Defense sometimes sends Bursas instead of Ambulas."
-        }
-      ]
     },
     {
       "type": "boss",
@@ -135,90 +97,6 @@
           "body": "Complaints about 20-beacon entry, 4-6 hacked Ambulas and 120-second rounds predate Hotfix 30.3.5 and Update 34.0. If a hacked Ambulas explodes instead of staying down, that was a bug fixed in Hotfix 38.6.2."
         }
       ]
-    },
-    {
-      "type": "farm",
-      "place": "ELARA, JUPITER",
-      "sub": null,
-      "activity": "Survival",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        { "qty": "1", "label": "Neural Sensors", "note": "Neuroptics", "alt": null, "done": false },
-        { "qty": "500", "label": "Salvage", "note": "Systems", "alt": null, "done": false }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "EUROPA",
-      "sub": null,
-      "activity": "any mission",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        { "qty": "1", "label": "Control Module", "note": "Systems", "alt": null, "done": false }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "APOLLODORUS, MERCURY",
-      "sub": null,
-      "activity": "Survival",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        { "qty": "1,000", "label": "Ferrite", "note": "Chassis", "alt": null, "done": false },
-        {
-          "qty": "150",
-          "label": "Polymer Bundle",
-          "note": "Neuroptics",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "GABII, CERES",
-      "sub": null,
-      "activity": "Survival, Dark Sector",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        { "qty": "1", "label": "Orokin Cell", "note": "Trinity", "alt": null, "done": false }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
     },
     {
       "type": "foundry",

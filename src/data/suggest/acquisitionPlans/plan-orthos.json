@@ -10,6 +10,13 @@
     { "label": "build", "amount": "20,000 cr", "money": false },
     { "label": "built", "amount": "180 p", "money": false }
   ],
+  "materials": [
+    { "qty": "4", "label": "Morphics", "note": null },
+    { "qty": "500", "label": "Polymer Bundle", "note": null },
+    { "qty": "850", "label": "Ferrite", "note": null },
+    { "qty": "700", "label": "Alloy Plate", "note": null },
+    { "qty": "20,000", "label": "Credits", "note": null }
+  ],
   "groups": [
     {
       "type": "vendor",
@@ -28,58 +35,6 @@
       ],
       "conditions": [],
       "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "MARS",
-      "sub": null,
-      "activity": "any mission",
-      "meta": "farm Morphics before you build",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "4",
-          "label": "Morphics",
-          "note": "rare; higher chance on Mars",
-          "alt": "or Mercury, Phobos, Europa, Pluto, some Assassination targets, Tier 1 Reactor Sabotage caches",
-          "done": false
-        }
-      ],
-      "conditions": ["Morphics is the one resource that can stall the craft."],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "URANUS",
-      "sub": null,
-      "activity": "any mission",
-      "meta": "stacks of 40 to 75",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "500",
-          "label": "Polymer Bundle",
-          "note": "highest chance on Uranus",
-          "alt": "or Mercury, Venus",
-          "done": false
-        },
-        { "qty": "850", "label": "Ferrite", "note": "common", "alt": null, "done": false },
-        { "qty": "700", "label": "Alloy Plate", "note": "common", "alt": null, "done": false }
-      ],
-      "conditions": [],
-      "bonuses": ["Ferrite and Alloy Plate come in passing from ordinary play."],
       "disclosures": []
     },
     {

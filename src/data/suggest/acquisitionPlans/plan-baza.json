@@ -10,7 +10,7 @@
   },
   "badges": [
     {
-      "text": "Tenno Lab research",
+      "text": "Tenno Lab",
       "tone": "info"
     },
     {
@@ -30,255 +30,42 @@
       "money": false
     }
   ],
+  "materials": [
+    {
+      "qty": "3,500",
+      "label": "Ferrite",
+      "note": null
+    },
+    {
+      "qty": "4,300",
+      "label": "Alloy Plate",
+      "note": null
+    },
+    {
+      "qty": "575",
+      "label": "Cryotic",
+      "note": null
+    },
+    { "qty": "1", "label": "Forma", "note": null },
+    { "qty": "15,000", "label": "Credits", "note": null }
+  ],
   "groups": [
     {
-      "type": "gate",
-      "place": "DOJO",
-      "sub": null,
-      "activity": "build an Oracle, then a Tenno Lab",
-      "meta": "a solo Ghost clan is enough",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Oracle",
-          "note": "power the Tenno Lab with a Reactor, joined with Cross Shaped Hallways",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Tenno Lab",
-          "note": "research cannot be rushed with platinum",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Research cost multiplies with clan tier: Shadow x3, Storm x10, Mountain x30, Moon x100. A tiny clan is cheapest."
-      ],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "CARME, JUPITER",
-      "sub": null,
-      "activity": "Mobile Defense, loot everything",
-      "meta": "up to about 3,000 a run",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "2,250",
-          "label": "Salvage",
-          "note": "Akstiletto 500, Baza 1,750",
-          "alt": "Olympus, Mars (Disruption), about 2,000 a run",
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "GABII, CERES",
-      "sub": null,
-      "activity": "Dark Sector Survival",
-      "meta": "boosted resource drop rate",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "5,850",
-          "label": "Alloy Plate",
-          "note": "Akstiletto 50, Baza 1,500, build 4,300",
-          "alt": "Venus and Ceres defenses",
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Do not spend the build's Alloy Plate on research. Baza research takes 1,500 and the build takes 4,300."
-      ],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "MARS",
-      "sub": null,
-      "activity": "Capture",
-      "meta": "best Morphics rate",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "5",
-          "label": "Morphics",
-          "note": "Baza research",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "1",
-          "label": "Gallium",
-          "note": "Akstiletto research",
-          "alt": "Capture missions there also give it",
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "SATURN OR URANUS",
-      "sub": null,
-      "activity": "any mission, loot containers",
-      "meta": "highest Plastids chance",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "300",
-          "label": "Plastids",
-          "note": "Baza research",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "research",
-      "place": "TENNO LAB, DOJO",
-      "sub": null,
-      "activity": "research Akstiletto first, then Baza",
-      "meta": "72h each, 3,000 clan affinity each",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Akstiletto",
-          "note": "500 Salvage, 300 Polymer Bundle, 50 Alloy Plate, 1 Gallium, 5,000 cr; no other requirement",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Baza",
-          "note": "1,500 Alloy Plate, 5 Morphics, 1,750 Salvage, 300 Plastids, 10,000 cr; needs Akstiletto",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Akstiletto is only the parent node. You do not build or level it.",
-        "Research is paid from your inventory by clan contribution, not the Foundry."
-      ],
-      "bonuses": ["Start both timers as soon as the resources are in so they run while you farm."],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "APOLLODORUS, MERCURY",
-      "sub": null,
-      "activity": "Survival, loot every container and locker",
-      "meta": "several thousand per run",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "3,500",
-          "label": "Ferrite",
-          "note": "Baza build",
-          "alt": "M Prime (Crossfire Exterminate) or Terminus (Crossfire Sabotage)",
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "EXCAVATION",
-      "sub": null,
-      "activity": "lowest-level Excavation, such as Everest, Earth",
-      "meta": "about six completed excavators",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "575",
-          "label": "Cryotic",
-          "note": "100 per completed excavator",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Level does not change the payout. Do not abandon a drill with seconds left; payout scales with progress."
-      ],
-      "bonuses": [
-        "A plain resource booster doubles Cryotic, and Resourceful Retriever can double a pickup."
-      ],
-      "disclosures": [
-        {
-          "title": "faster Cryotic",
-          "body": "Void fissure Excavation adds a stacking resource bonus per rotation. Run several excavators at once in a group; alone, one at a time is fine for 575. Nekros speeds up filling excavators and Nova slows enemies near the drill."
-        }
-      ]
-    },
-    {
       "type": "vendor",
-      "place": "TENNO LAB, DOJO",
+      "place": "CLAN DOJO, TENNO LAB",
       "sub": null,
-      "activity": "buy the Baza blueprint once research is done",
+      "activity": "buy the blueprint",
       "meta": "15,000 cr",
       "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [],
+      "spends": [
+        {
+          "currency": "Credits",
+          "amount": "15,000"
+        }
+      ],
       "map": null,
       "rows": [
         {

@@ -12,6 +12,15 @@
     { "label": "Kavat Genetic Codes, 20 minimum", "amount": "100 p", "money": false },
     { "label": "Kavat Starter Kit", "amount": "95 p", "money": false }
   ],
+  "materials": [
+    { "qty": "60,000", "label": "Alloy Plate", "note": "Upgrade Segment" },
+    { "qty": "2", "label": "Argon Crystal", "note": "1 Upgrade Segment, 1 Incubator Power Core" },
+    { "qty": "4,500", "label": "Nano Spores", "note": "Incubator Power Core" },
+    { "qty": "2", "label": "Control Module", "note": "Incubator Power Core" },
+    { "qty": "30", "label": "Kavat Genetic Code", "note": null },
+    { "qty": "2", "label": "Incubator Power Core", "note": null },
+    { "qty": "15,000", "label": "Credits", "note": null }
+  ],
   "groups": [
     {
       "type": "gate",
@@ -69,16 +78,6 @@
       "map": "cambion-drift",
       "rows": [
         {
-          "qty": "20",
-          "label": "Kavat Genetic Code",
-          "note": "10 for the segment, 10 per incubation",
-          "alt": {
-            "text": "Market purchase",
-            "spends": [{ "currency": "Platinum", "amount": "100" }]
-          },
-          "done": false
-        },
-        {
           "qty": null,
           "label": "Cross-Matrix Widget",
           "note": "45% chance for each scan to count twice",
@@ -112,33 +111,32 @@
       ]
     },
     {
-      "type": "research",
-      "place": "TENNO LAB, CLAN DOJO",
+      "type": "vendor",
+      "place": "CLAN DOJO, TENNO LAB",
       "sub": null,
-      "activity": "Kavat Incubator Upgrade Segment blueprint",
-      "meta": "12h, 100,000 cr",
+      "activity": "buy the blueprint",
+      "meta": "15,000 cr",
       "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [],
+      "spends": [
+        {
+          "currency": "Credits",
+          "amount": "15,000"
+        }
+      ],
       "map": null,
       "rows": [
         {
-          "qty": "10",
-          "label": "Kavat Genetic Code",
-          "note": "consumed by the segment",
-          "alt": null,
+          "qty": null,
+          "label": "Kavat Incubator Upgrade Segment Blueprint",
+          "note": "15,000 cr, MR 5 to build",
+          "alt": "or a Hyekka Master drop (Spear, Mars)",
           "done": false
-        },
-        { "qty": "60,000", "label": "Alloy Plate", "note": null, "alt": null, "done": false },
-        { "qty": "1", "label": "Argon Crystal", "note": null, "alt": null, "done": false },
-        { "qty": "100,000", "label": "Credits", "note": null, "alt": null, "done": false }
+        }
       ],
-      "conditions": [
-        "The blueprint comes from Tenno Lab research; Hyekka Masters, including Spear on Mars, can also drop it.",
-        "Argon Crystal decays at daily reset, so pick it up last and build the segment right away."
-      ],
+      "conditions": [],
       "bonuses": ["A built segment is also sold in the Market for 175 platinum."],
       "disclosures": []
     },
@@ -146,8 +144,8 @@
       "type": "foundry",
       "place": "FOUNDRY",
       "sub": null,
-      "activity": "build Incubator Power Core",
-      "meta": "8h, 100,000 cr",
+      "activity": "build the Upgrade Segment and an Incubator Power Core",
+      "meta": "12h and 8h, 100,000 cr each",
       "mode": null,
       "live": null,
       "skip": null,
@@ -156,9 +154,9 @@
       "map": null,
       "rows": [
         {
-          "qty": "1",
-          "label": "Incubator Power Core",
-          "note": "one consumed per incubation",
+          "qty": null,
+          "label": "Kavat Incubator Upgrade Segment",
+          "note": "100,000 cr, 10 Kavat Genetic Code, 60,000 Alloy Plate, 1 Argon Crystal",
           "alt": null,
           "done": false
         }
@@ -183,20 +181,6 @@
       "spends": [],
       "map": null,
       "rows": [
-        {
-          "qty": "10",
-          "label": "Kavat Genetic Code",
-          "note": "consumed per attempt",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "1",
-          "label": "Incubator Power Core",
-          "note": "consumed per attempt",
-          "alt": null,
-          "done": false
-        },
         {
           "qty": null,
           "label": "Adarza Kavat",

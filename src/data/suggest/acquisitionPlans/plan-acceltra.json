@@ -9,6 +9,12 @@
     { "text": "2.5% each", "tone": "warn" }
   ],
   "prices": [{ "label": "built", "amount": "240 p", "money": false }],
+  "materials": [
+    { "qty": "4", "label": "Neurodes", "note": null },
+    { "qty": "925", "label": "Plastids", "note": null },
+    { "qty": "8,000", "label": "Nano Spores", "note": null },
+    { "qty": "200", "label": "Hexenon", "note": null }
+  ],
   "groups": [
     {
       "type": "gate",
@@ -76,33 +82,6 @@
       ]
     },
     {
-      "type": "farm",
-      "place": "GANYMEDE, JUPITER",
-      "sub": null,
-      "activity": "Disruption or Amalgam enemies",
-      "meta": "200 needed",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "200",
-          "label": "Hexenon",
-          "note": "does not drop on Uranus",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "This is the only focused build material that the Ur farm does not naturally cover."
-      ],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
       "type": "foundry",
       "place": "FOUNDRY",
       "sub": null,
@@ -115,11 +94,13 @@
       "spends": [],
       "map": null,
       "rows": [
-        { "qty": "25,000", "label": "Credits", "note": null, "alt": null, "done": false },
-        { "qty": "4", "label": "Neurodes", "note": null, "alt": null, "done": false },
-        { "qty": "200", "label": "Hexenon", "note": null, "alt": null, "done": false },
-        { "qty": "925", "label": "Plastids", "note": null, "alt": null, "done": false },
-        { "qty": "8,000", "label": "Nano Spores", "note": null, "alt": null, "done": false }
+        {
+          "qty": null,
+          "label": "Acceltra",
+          "note": "25,000 cr, 4 Neurodes, 200 Hexenon, 925 Plastids, 8,000 Nano Spores",
+          "alt": null,
+          "done": false
+        }
       ],
       "conditions": ["You need Mastery Rank 8 to equip the completed weapon."],
       "bonuses": [],

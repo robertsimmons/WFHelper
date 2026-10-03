@@ -12,6 +12,12 @@
     { "label": "blueprint", "amount": "100,000 cr", "money": false },
     { "label": "rush build", "amount": "30 p", "money": false }
   ],
+  "materials": [
+    { "qty": "500", "label": "Alloy Plate", "note": null },
+    { "qty": "400", "label": "Circuits", "note": null },
+    { "qty": "200", "label": "Nano Spores", "note": null },
+    { "qty": "1", "label": "Control Module", "note": null }
+  ],
   "groups": [
     {
       "type": "gate",
@@ -78,10 +84,13 @@
       "spends": [],
       "map": null,
       "rows": [
-        { "qty": "500", "label": "Alloy Plate", "note": null, "alt": null, "done": false },
-        { "qty": "400", "label": "Circuits", "note": null, "alt": null, "done": false },
-        { "qty": "200", "label": "Nano Spores", "note": null, "alt": null, "done": false },
-        { "qty": "1", "label": "Control Module", "note": null, "alt": null, "done": false }
+        {
+          "qty": null,
+          "label": "Dethcube",
+          "note": "15,000 cr, 500 Alloy Plate, 400 Circuits, 200 Nano Spores, 1 Control Module",
+          "alt": null,
+          "done": false
+        }
       ],
       "conditions": [
         "Vaporize and Assault Mode come installed already; Swift Deth no longer drops and can't be equipped alongside Assault Mode."

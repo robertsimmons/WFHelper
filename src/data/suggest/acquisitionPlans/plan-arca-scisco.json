@@ -12,47 +12,19 @@
     { "label": "blueprint", "amount": "15,000 cr", "money": false },
     { "label": "build", "amount": "25,000 cr", "money": false }
   ],
+  "materials": [
+    { "qty": "5", "label": "Fieldron", "note": null },
+    { "qty": "250", "label": "Oxium", "note": null },
+    { "qty": "12,500", "label": "Salvage", "note": null },
+    { "qty": "1", "label": "Forma", "note": null },
+    { "qty": "15,000", "label": "Credits", "note": null }
+  ],
   "groups": [
-    {
-      "type": "research",
-      "place": "CLAN DOJO, ENERGY LAB",
-      "sub": null,
-      "activity": "check that Arca Scisco research is complete",
-      "meta": "Spectra first, then 3 days",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Spectra research",
-          "note": "prerequisite",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Arca Scisco research",
-          "note": "7,500 cr, 200 Fieldron Sample, 3,000 Rubedo, 12,750 Alloy Plate, 15 Control Module; 3 days",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Research costs are Ghost-tier; resources scale x3/x10/x30/x100 with clan size.",
-        "Joining an established clan with a finished Dojo beats funding the research."
-      ],
-      "bonuses": [],
-      "disclosures": []
-    },
     {
       "type": "vendor",
       "place": "CLAN DOJO, ENERGY LAB",
       "sub": null,
-      "activity": "buy the personal blueprint",
+      "activity": "buy the blueprint",
       "meta": "15,000 cr, MR 10",
       "mode": null,
       "live": null,
@@ -64,79 +36,12 @@
         {
           "qty": null,
           "label": "Arca Scisco Blueprint",
-          "note": "requires completed research",
+          "note": null,
           "alt": null,
           "done": false
         }
       ],
       "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "INVASIONS",
-      "sub": null,
-      "activity": "any Invasion offering Fieldron",
-      "meta": "3 missions on one side pay 3",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "5",
-          "label": "Fieldron",
-          "note": "built Fieldron, not Fieldron Sample",
-          "alt": "Orb Vallis Lvl 30-50 bounty, 2 as a stage reward on some rotations",
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Invasion rewards rotate; when none offers Fieldron, run the Fortuna bounty instead."
-      ],
-      "bonuses": [],
-      "disclosures": [
-        {
-          "title": "crafting Fieldron",
-          "body": "Each needs a single-use 15,000 cr Energy Lab blueprint, then 15,000 cr, 10 Fieldron Sample, 1 Control Module, 500 Salvage and 250 Plastids, 12 hours. The purchase screen has a quantity box, so buy all five at once."
-        }
-      ]
-    },
-    {
-      "type": "farm",
-      "place": "IO, JUPITER",
-      "sub": null,
-      "activity": "Defense",
-      "meta": "one run",
-      "mode": "Hydroid Pilfering Swarm or Khora",
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "250",
-          "label": "Oxium",
-          "note": "7-12 per Oxium Osprey",
-          "alt": "Elara, Jupiter Survival",
-          "done": false
-        },
-        {
-          "qty": "12,500",
-          "label": "Salvage",
-          "note": "Jupiter drops it too",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "An Osprey that self-destructs, often from melee range, drops nothing; kill it in one shot from range.",
-        "A Resource Booster doubles Oxium; drop-chance boosters and blessings do nothing."
-      ],
       "bonuses": [],
       "disclosures": []
     },

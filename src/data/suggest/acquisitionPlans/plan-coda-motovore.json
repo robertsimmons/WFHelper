@@ -9,6 +9,7 @@
     { "text": "Batch A rotation", "tone": "warn" }
   ],
   "prices": [{ "label": "Elemental Vice", "amount": "20 p", "money": false }],
+  "materials": [{ "qty": "10", "label": "Live Heartcell", "note": null }],
   "groups": [
     {
       "type": "gate",
@@ -47,7 +48,7 @@
       ],
       "conditions": [
         "Only one adversary at a time: clear or convert any active Kuva Lich, Sister of Parvos, or Coda first.",
-        "MR 17 is checked at the Eleanor purchase, not at Coda spawn — the usual lich MR exemption does not apply here."
+        "MR 17 is checked at the Eleanor purchase, not at Coda spawn: the usual lich MR exemption does not apply here."
       ],
       "bonuses": [],
       "disclosures": []
@@ -126,47 +127,19 @@
       ],
       "conditions": [
         "Duets spawn at 25% per mission, +25% per miss, guaranteed on the 4th.",
-        "A Duet that stumbles 3 times unstabbed, or a downed squad, flees the encounter."
+        "A Duet that stumbles 3 times unstabbed, or a downed squad, flees the encounter.",
+        "Phases 1 and 3 are hazard-dodging with Transference disabled; phases 2 and 4 are the real fight, and the frontman regenerates until his backup band is dead.",
+        "Bring overguard or invulnerability (Revenant's Mesmer Skin, Nyx's Assimilate, Dante); the Coda's Toxin bypasses shield gating."
       ],
       "bonuses": [
-        "Abort right after a correct-Antivirus stab; the disinfection banks immediately."
+        "Abort right after a correct-Antivirus stab; the disinfection banks immediately.",
+        "Squadmates who each defeat their own Coda in the same Concert add +1 Heartcell, up to +3, whether they vanquish or convert."
       ],
       "disclosures": [
         {
           "title": "run it inside the Antivirus Bounty",
           "body": "Duets spawn during bounties too, so one run stacks Hex standing, Antivirus mods and disinfection progress at once."
-        }
-      ]
-    },
-    {
-      "type": "boss",
-      "place": "EARTH PROXIMA",
-      "sub": "Technocyte Coda Concert",
-      "activity": "Railjack Skirmish; finish the Coda",
-      "meta": "choose Vanquish",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Live Heartcell",
-          "note": "10-15 per Vanquish; Convert pays none",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Phases 1 and 3 are hazard-dodging with Transference disabled; phases 2 and 4 are the real fight, and the frontman regenerates until his backup band is dead.",
-        "Bring overguard or invulnerability (Revenant's Mesmer Skin, Nyx's Assimilate, Dante) — the Coda's Toxin bypasses shield gating."
-      ],
-      "bonuses": [
-        "Squadmates who each defeat their own Coda in the same Concert add +1 Heartcell, up to +3, whether they vanquish or convert."
-      ],
-      "disclosures": [
+        },
         {
           "title": "solo is faster",
           "body": "A solo Concert is 5-7 minutes; a full squad is 12-20+ because every player's Coda gets its own two-part fight, back to back."
@@ -200,7 +173,7 @@
         "An empty weapon slot is required before Eleanor will sell to you."
       ],
       "bonuses": [
-        "Any Motovore beats no Motovore — buy the first roll and Valence Fuse toward 60% later rather than waiting; a clean 60% roll like March 2025's does not come around often."
+        "Any Motovore beats no Motovore: buy the first roll and Valence Fuse toward 60% later rather than waiting; a clean 60% roll like March 2025's does not come around often."
       ],
       "disclosures": []
     },

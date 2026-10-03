@@ -13,17 +13,37 @@
     { "label": "grip + link", "amount": "2,000 standing", "money": false },
     { "label": "gild", "amount": "5,000 standing", "money": false }
   ],
+  "materials": [
+    { "qty": "850", "label": "Alloy Plate", "note": "Peye Grip" },
+    {
+      "qty": "200",
+      "label": "Rubedo",
+      "note": "200 Fersteel Alloy refine, 200 Pyrotic Alloy refines"
+    },
+    { "qty": "800", "label": "Cryotic", "note": "Pyrotic Alloy refines" },
+    { "qty": "1", "label": "Breath Of The Eidolon", "note": null },
+    { "qty": "55", "label": "Fish Scales", "note": "Strike" },
+    { "qty": "20", "label": "Iradite", "note": "Peye Grip" },
+    { "qty": "50", "label": "Fish Oil", "note": "Peye Grip" },
+    { "qty": "80", "label": "Pyrotic Alloy", "note": "Peye Grip + Jai Link" },
+    { "qty": "10", "label": "Nistlepod", "note": "Jai Link" },
+    { "qty": "2", "label": "Condroc Wing", "note": "Jai Link" },
+    { "qty": "5", "label": "Khut-Khut Venom Sac", "note": "Jai Link" },
+    { "qty": "2", "label": "Cetus Wisp", "note": "gild" },
+    { "qty": "6", "label": "Marquise Veridos", "note": null },
+    { "qty": "20", "label": "Fersteel Alloy", "note": null }
+  ],
   "groups": [
     {
       "type": "currency",
       "place": "CETUS",
       "sub": null,
-      "activity": "hunt, fish or bounty for Ostron standing",
+      "activity": "earn Ostron standing",
       "meta": "~71,000 cumulative standing to Trusted",
       "mode": null,
       "live": null,
       "skip": null,
-      "earns": { "currency": "Ostron standing", "amount": "71,000" },
+      "earns": { "currency": "Ostron Standing", "amount": "71,000" },
       "spends": [],
       "map": "plains-of-eidolon",
       "rows": [
@@ -50,10 +70,11 @@
         }
       ],
       "conditions": [
-        "The Strike blueprint is buyable at Neutral, but its two refine blueprints are Visitor-locked — don't buy blueprints for materials you can't make yet."
+        "The Strike blueprint is buyable at Neutral, but its two refine blueprints are Visitor-locked: don't buy blueprints for materials you can't make yet."
       ],
       "bonuses": [],
-      "disclosures": []
+      "disclosures": [],
+      "ref": "Ostron Standing"
     },
     {
       "type": "vendor",
@@ -65,7 +86,7 @@
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Ostron standing", "amount": "3,000" }],
+      "spends": [{ "currency": "Ostron Standing", "amount": "3,000" }],
       "map": null,
       "rows": [
         {
@@ -107,7 +128,7 @@
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Ostron standing", "amount": "10,000" }],
+      "spends": [{ "currency": "Ostron Standing", "amount": "10,000" }],
       "map": null,
       "rows": [
         {
@@ -131,96 +152,6 @@
       "bonuses": [
         "Suumbaat pays 75 Ostron standing per Veridos gem turned in, which helps fund the Visitor and Trusted rank-ups."
       ],
-      "disclosures": []
-    },
-    {
-      "type": "bounty",
-      "place": "CETUS",
-      "sub": null,
-      "activity": "Lvl 40-60 bounty, Stage 1 only",
-      "meta": "50% for 5 Breath of the Eidolon",
-      "mode": "quit and restart after Stage 1",
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "1",
-          "label": "Breath of the Eidolon",
-          "note": "no enemy drops it; bounty reward only",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Boosters do nothing for this reward — resource and drop-chance boosters do not apply to bounty rewards.",
-        "Only 1 is needed for Cyath, so one successful Stage 1 roll covers the whole Strike with four spares."
-      ],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "PLAINS OF EIDOLON, EARTH",
-      "sub": null,
-      "activity": "mine, fish and refine the rest of the build",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": "plains-of-eidolon",
-      "rows": [
-        {
-          "qty": "6",
-          "label": "Veridos",
-          "note": "green gem, blue veins; refines into 6+ Marquise Veridos",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "55",
-          "label": "Fish Scales",
-          "note": "Strike; carve any Plains fish at Fisher Hai-Luk",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "20",
-          "label": "Ferros",
-          "note": "red/ore veins; refines into 20 Fersteel Alloy with Plastids and Rubedo",
-          "alt": null,
-          "done": false
-        },
-        { "qty": "20", "label": "Iradite", "note": "Peye Grip", "alt": null, "done": false },
-        { "qty": "50", "label": "Fish Oil", "note": "Peye Grip", "alt": null, "done": false },
-        {
-          "qty": "850",
-          "label": "Alloy Plate",
-          "note": "Peye Grip; common resource, not Plains-specific",
-          "alt": null,
-          "done": false
-        },
-        { "qty": "60", "label": "Pyrotic Alloy", "note": "Peye Grip", "alt": null, "done": false },
-        { "qty": "10", "label": "Nistlepod", "note": "Jai Link", "alt": null, "done": false },
-        { "qty": "20", "label": "Pyrotic Alloy", "note": "Jai Link", "alt": null, "done": false },
-        { "qty": "2", "label": "Condroc Wing", "note": "Jai Link", "alt": null, "done": false },
-        {
-          "qty": "5",
-          "label": "Khut-Khut Venom Sac",
-          "note": "Jai Link; fillet Khut-Khut or loot Thumpers",
-          "alt": null,
-          "done": false
-        },
-        { "qty": "2", "label": "Cetus Wisp", "note": "gild", "alt": null, "done": false }
-      ],
-      "conditions": [
-        "Fersteel Alloy's own recipe (1,000cr, 20 Ferros, 400 Plastids, 200 Rubedo per batch of 20) means one batch covers the Strike exactly."
-      ],
-      "bonuses": [],
       "disclosures": []
     },
     {
@@ -292,7 +223,7 @@
         "Once forged the Zaw can never be disassembled."
       ],
       "bonuses": [
-        "If going for MR, build every Zaw strike together — the refined gems, alloys and standing cover all of them at once."
+        "If going for MR, build every Zaw strike together: the refined gems, alloys and standing cover all of them at once."
       ],
       "disclosures": [
         {

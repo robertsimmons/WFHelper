@@ -12,6 +12,10 @@
     { "label": "blueprint", "amount": "5,000 Vox Solaris standing", "money": false },
     { "label": "built", "amount": "325 p", "money": false }
   ],
+  "materials": [
+    { "qty": "6", "label": "Diluted Thermia", "note": null },
+    { "qty": "6", "label": "Lazulite Toroid", "note": null }
+  ],
   "groups": [
     {
       "type": "gate",
@@ -51,43 +55,6 @@
       "disclosures": []
     },
     {
-      "type": "farm",
-      "place": "ORB VALLIS, VENUS",
-      "sub": "Thermia Fractures",
-      "activity": "make Diluted Thermia from four coolant canisters",
-      "meta": "event-only entry key",
-      "mode": "squad recommended",
-      "live": { "state": "blocked", "text": "Requires the recurring Thermia Fractures event" },
-      "skip": null,
-      "earns": { "currency": "Diluted Thermia", "amount": "6" },
-      "spends": [],
-      "map": "orb-vallis",
-      "rows": [
-        {
-          "qty": "6",
-          "label": "Diluted Thermia",
-          "note": "one Exploiter entry each; ask to tag along if another player supplies it",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Kill a Coolant Raknoid near the Temple of Profit, carry its blue canister to a fracture, then fuse four canisters into one Diluted Thermia.",
-        "No event means no new Thermia. The boss remains available only if you already hold Thermia.",
-        "Only the player who inserts Thermia into Deck 12 spends it; recruit chat may find a host with spare keys."
-      ],
-      "bonuses": [
-        "Amesha's stacked Benevolent Decoy protects the fracture canister; keep the canister away from roads so Coil Drives cannot destroy it.",
-        "In a squad, four canisters in one fracture awards every member a Thermia key."
-      ],
-      "disclosures": [
-        {
-          "title": "do not rely on an off-event shortcut",
-          "body": "Claims that you can create repeatable Thermia outside the event are unverified and contradict the normal event-only source. Treat stored keys or another player's key as the only off-event route."
-        }
-      ]
-    },
-    {
       "type": "boss",
       "place": "ORB VALLIS, VENUS",
       "sub": "Deck 12, northeast of Harindi Crater",
@@ -120,20 +87,15 @@
           "note": "22.56%; bottleneck",
           "alt": "Circuit, when she is in rotation",
           "done": false
-        },
-        {
-          "qty": "6",
-          "label": "Lazulite Toroids",
-          "note": "one guaranteed per kill; 2 per component",
-          "alt": null,
-          "done": false
         }
       ],
       "conditions": [
         "Use a Diluted Thermia at the Thermic Condenser on Deck 12's upper-left balcony to begin.",
         "You need six Lazulite Toroids regardless of where the blueprints come from. They drop only from Exploiter, never from Circuit.",
         "An active Resource Booster plus a Retriever companion can double Lazulite, reducing the mandatory clears from six to three. Drop-chance boosters and relay blessings do not help.",
-        "Farm the Toroids before committing a Circuit week: many players finish the blueprints within the required 3-6 kills."
+        "Farm the Toroids before committing a Circuit week: many players finish the blueprints within the required 3-6 kills.",
+        "No event means no new Thermia. The boss remains available only if you already hold Thermia.",
+        "Only the player who inserts Thermia into Deck 12 spends it; recruit chat may find a host with spare keys."
       ],
       "bonuses": [
         "In phase 1, explode a Thermia canister between both rear vents to thaw both at once.",
@@ -190,7 +152,7 @@
         }
       ],
       "conditions": [
-        "Components build in parallel. Farm Argon late because it decays after pickup, and keep a free Warframe slot for the final claim."
+        "Components build in parallel; keep a free Warframe slot for the final claim."
       ],
       "bonuses": [],
       "disclosures": []

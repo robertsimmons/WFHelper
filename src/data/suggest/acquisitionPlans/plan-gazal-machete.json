@@ -10,38 +10,17 @@
     { "label": "build", "amount": "20,000 cr", "money": false },
     { "label": "built", "amount": "175 p", "money": false }
   ],
+  "materials": [
+    { "qty": "2", "label": "Argon Crystal", "note": null },
+    { "qty": "2,600", "label": "Salvage", "note": null },
+    { "qty": "1,900", "label": "Alloy Plate", "note": null },
+    { "qty": "1,400", "label": "Plastids", "note": null },
+    { "qty": "15,000", "label": "Credits", "note": null }
+  ],
   "groups": [
     {
-      "type": "gate",
-      "place": "DOJO, TENNO LAB",
-      "sub": null,
-      "activity": "clan research",
-      "meta": "72h; start first",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Gazal Machete",
-          "note": "2 Neurodes, 500 Salvage, 300 Alloy Plate, 50 Plastids, 5,000 cr",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Needs a clan with an Oracle and a Tenno Lab; clan creation unlocks after Vor's Prize. Costs shown are the Ghost tier; Shadow is x3, Storm x10, Mountain x30, Moon x100.",
-        "Research uses clan vault resources, so contribute first, and platinum cannot rush it. If your clan already researched it, skip this."
-      ],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "research",
-      "place": "DOJO, TENNO LAB",
+      "type": "vendor",
+      "place": "CLAN DOJO, TENNO LAB",
       "sub": null,
       "activity": "buy the blueprint",
       "meta": "15,000 cr",
@@ -63,86 +42,6 @@
       "conditions": [],
       "bonuses": [],
       "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "CAMERIA OR CARME, JUPITER",
-      "sub": null,
-      "activity": "Survival or Mobile Defense with a Resource Booster",
-      "meta": "farm during the research wait",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "3,100",
-          "label": "Salvage",
-          "note": "2,600 build, 500 research",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "2,200",
-          "label": "Alloy Plate",
-          "note": "1,900 build, 300 research",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "1,450",
-          "label": "Plastids",
-          "note": "1,400 build, 50 research",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "2",
-          "label": "Neurodes",
-          "note": "research; Earth, Deimos, Eris or Lua",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "HEPIT, VOID",
-      "sub": null,
-      "activity": "Capture or Exterminate, low level",
-      "meta": "2-10 per run with a loot nuke; pick this up last",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": "void",
-      "rows": [
-        {
-          "qty": "2",
-          "label": "Argon Crystal",
-          "note": "Gazal Machete build",
-          "alt": "or Ukko or Teshub",
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Argon halves at each daily reset (00:00 GMT) after pickup. Collect it and craft in the same session."
-      ],
-      "bonuses": [
-        "Max-range Xaku (The Vast Untime) or Limbo (Cataclysm) breaks every crate on the map through walls."
-      ],
-      "disclosures": [
-        {
-          "title": "no loot nuke",
-          "body": "Survival at Ani with Nekros, plus Khora or Hydroid, and a drop chance booster. High variance: one player got 2 in 25 minutes, another got enough in 5. Corrupted Vor drops an Orokin Cell or an Argon Crystal at equal odds."
-        }
-      ]
     },
     {
       "type": "foundry",

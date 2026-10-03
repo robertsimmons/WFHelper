@@ -1,11 +1,13 @@
 import { describe, expect, it } from "vitest";
 
-import { inventory, itemDb } from "./fixtures.js";
+import { inventory, itemDb, resources } from "./fixtures.js";
 import {
   fallbackPlan,
+  resolvePlan,
   resolvePlanFor,
   validatePlan,
 } from "../../../../../../src/lib/suggest/acquisition/plan/index.js";
+import { materialGroups } from "../../../../../../src/lib/suggest/acquisition/plan/materials.js";
 import type { FallbackSource } from "../../../../../../src/lib/suggest/acquisition/plan/index.js";
 
 function source(overrides: Partial<FallbackSource> = {}): FallbackSource {
@@ -44,13 +46,23 @@ describe("fallbackPlan", () => {
     expect(validatePlan(fallbackPlan(source()))).toEqual([]);
   });
 
-  it("groups materials under the mission the resource table names", () => {
+  it("lists missing materials for the store to place, like an authored plan", () => {
     const plan = fallbackPlan(source());
-    const gabii = plan.groups.find((group) => group.place === "GABII, CERES");
-    expect(gabii?.rows.map((row) => row.label)).toEqual(["Alloy Plate"]);
-    expect(plan.groups.some((group) => group.rows.some((row) => row.label === "Rubedo"))).toBe(
-      true,
+    expect(plan.materials).toEqual([
+      { qty: "150", label: "Alloy Plate", note: null },
+      { qty: "1,200", label: "Rubedo", note: null },
+    ]);
+    expect(plan.groups.flatMap((group) => group.rows).map((row) => row.label)).not.toContain(
+      "Rubedo",
     );
+    const resolved = resolvePlan(plan, {
+      itemDb: itemDb(),
+      inventory: inventory(),
+      resources: resources(),
+    });
+    const gabii = resolved.groups.find((group) => group.place === "GABII, CERES");
+    expect(gabii?.rows.map((row) => row.label)).toEqual(["Alloy Plate", "Rubedo"]);
+    expect(resolved.groups[resolved.groups.length - 1].type).toBe("foundry");
   });
 
   it("turns a path step into a group holding the parts it covers", () => {
@@ -244,10 +256,14 @@ describe("fallbackPlan routes", () => {
 
 describe("resolvePlanFor", () => {
   it("never reads as no route for Loki's boss-dropped parts", () => {
-    const plan = resolvePlanFor(loki([LOKI_MARKET, LOKI_BOSS]), {
-      itemDb: itemDb(),
-      inventory: inventory(),
-    });
+    // Loki has an authored plan, so the fallback is reached under a name without one.
+    const plan = resolvePlanFor(
+      { ...loki([LOKI_MARKET, LOKI_BOSS]), name: "Unplanned" },
+      {
+        itemDb: itemDb(),
+        inventory: inventory(),
+      },
+    );
     expect(plan.authored).toBe(false);
     const boss = plan.groups.find((group) => group.place === "HYENA PACK, PSAMATHE, NEPTUNE");
     expect(boss?.rows.map((row) => row.label)).toEqual(LOKI_PARTS);
@@ -282,5 +298,58 @@ describe("resolvePlanFor", () => {
     const progress = { have: 3, need: 4, unit: "parts", ready: false };
     const plan = resolvePlanFor(source(), { itemDb: itemDb(), inventory: inventory(), progress });
     expect(plan.progress).toEqual({ ...progress, resolved: true });
+  });
+});
+
+describe("materialGroups", () => {
+  const need = (label: string, qty: number, note: string | null = null) => ({ label, qty, note });
+
+  it("shares one farm group between materials with the same best spot", () => {
+    const groups = materialGroups([need("Alloy Plate", 150), need("Rubedo", 300)], resources());
+    expect(groups).toHaveLength(1);
+    expect(groups[0]).toMatchObject({ type: "farm", place: "GABII, CERES", activity: "Survival" });
+    expect(groups[0].rows.map((row) => [row.label, row.qty])).toEqual([
+      ["Alloy Plate", "150"],
+      ["Rubedo", "300"],
+    ]);
+  });
+
+  it("carries tips as bonuses, once each", () => {
+    const [gabii] = materialGroups([need("Alloy Plate", 1), need("Rubedo", 1)], resources());
+    expect(gabii.bonuses).toEqual(["Nekros Desecrate", "Resource booster"]);
+  });
+
+  it("lists alternates under Other spots rather than dropping them", () => {
+    const [alone] = materialGroups([need("Alloy Plate", 1)], resources());
+    expect(alone.disclosures).toEqual([
+      { title: "Other spots", body: "DRACO, CERES (Interception); TESSERA, VENUS" },
+    ]);
+    const [shared] = materialGroups([need("Rubedo", 1), need("Alloy Plate", 1)], resources());
+    expect(shared.disclosures).toEqual([
+      { title: "Other spots", body: "Alloy Plate: DRACO, CERES (Interception); TESSERA, VENUS" },
+    ]);
+  });
+
+  it("expands a craft into its recipe and builds it where the store says", () => {
+    const groups = materialGroups(
+      [need("Cetus Wisp Lens", 3), need("Rubedo", 100, "for the barrel")],
+      resources(),
+    );
+    expect(groups.map((group) => [group.type, group.place])).toEqual([
+      ["farm", "GABII, CERES"],
+      ["farm", "ASSUR, URANUS"],
+      ["craft", "CETUS"],
+    ]);
+    expect(groups[0].rows).toMatchObject([{ label: "Rubedo", qty: "106", note: "for the barrel" }]);
+    expect(groups[1].rows).toMatchObject([{ label: "Polymer Bundle", qty: "15" }]);
+    expect(groups[2].rows).toMatchObject([{ label: "Cetus Wisp Lens", qty: "3" }]);
+    expect(groups[2].bonuses).toEqual(["Build in batches"]);
+  });
+
+  it("keeps an uncurated entry's spot and drops an unknown into MATERIALS", () => {
+    const groups = materialGroups([need("Ferrite", 500), need("Mystery Goo", 2)], resources());
+    expect(groups[0]).toMatchObject({ type: "farm", place: "OLYMPUS, MARS", map: "ferrite-map" });
+    expect(groups[1]).toMatchObject({ type: "farm", place: "MATERIALS", bonuses: [] });
+    expect(groups[1].rows[0].label).toBe("Mystery Goo");
   });
 });

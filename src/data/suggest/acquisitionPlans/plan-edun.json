@@ -13,6 +13,12 @@
     { "label": "build", "amount": "30,000 cr", "money": false },
     { "label": "plat shortcut", "amount": "250 p", "money": true }
   ],
+  "materials": [
+    { "qty": "30", "label": "Tasoma Extract", "note": null },
+    { "qty": "30", "label": "Rune Marrow", "note": null },
+    { "qty": "50", "label": "Nacreous Pebble", "note": null },
+    { "qty": "40", "label": "Connla Sprout", "note": null }
+  ],
   "groups": [
     {
       "type": "gate",
@@ -36,7 +42,7 @@
         }
       ],
       "conditions": [
-        "You cannot re-enter Teshin's Cave once you step through the portal — buy the blueprint before you leave."
+        "You cannot re-enter Teshin's Cave once you step through the portal: buy the blueprint before you leave."
       ],
       "bonuses": [],
       "disclosures": []
@@ -89,7 +95,8 @@
           "title": "which run to pick",
           "body": "Normal-mode Duviri Experience (10-15 minutes for 10 clamps) beats Steel Path (~30 minutes for 15) unless you also want the arcanes and Steel Essence from the SP Undercroft."
         }
-      ]
+      ],
+      "ref": "Pathos Clamp"
     },
     {
       "type": "vendor",
@@ -120,58 +127,6 @@
       "disclosures": []
     },
     {
-      "type": "farm",
-      "place": "DUVIRI",
-      "sub": "The Duviri Experience",
-      "activity": "Maw Feeding, cave and plant gathering",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": "duviri",
-      "rows": [
-        {
-          "qty": "30",
-          "label": "Tasoma Extract",
-          "note": "Duviri caves, 2-4 per node; farm solo so a host hasn't already stripped the deposits",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "30",
-          "label": "Rune Marrow",
-          "note": "Runic Compact deposits in the Undercroft or the Circuit; guaranteed from Corrupted Vor and Corrupted Jackal",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "50",
-          "label": "Nacreous Pebble",
-          "note": "Maw Feeding activity only",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "40",
-          "label": "Connla Sprout",
-          "note": "grows near water and caves, densest around the Lunaro Court",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Resources bank the moment a decree is earned — gather materials, complete one side objective, then abort the mission to skip the Orowyrm entirely and keep everything."
-      ],
-      "bonuses": [
-        "SPROUT in Teshin's Cave grows 6 random Duviri plants free every 20 hours.",
-        "Bountiful Harvest decree doubles plant pickups before you touch any plant node.",
-        "Riding Intrinsics rank 5 (Smooth Path) highlights nearby resources while mounted; fly under the landmass on the Kaithe to spot cave mouths."
-      ],
-      "disclosures": []
-    },
-    {
       "type": "foundry",
       "place": "FOUNDRY",
       "sub": null,
@@ -197,7 +152,7 @@
       "disclosures": [
         {
           "title": "known issues",
-          "body": "The throw animation steps the frame forward before releasing, so it lands off your aim, worse with attack speed or Tennokai. Heavy-attack-exclusive effects (Killing Blow, Life Strike, True Steel) only apply if you're still in the heavy-attack animation when the spear connects — the explosion essentially never benefits, and Condition Overload gives only 20% per status on the initial hit and nothing on the explosion."
+          "body": "The throw animation steps the frame forward before releasing, so it lands off your aim, worse with attack speed or Tennokai. Heavy-attack-exclusive effects (Killing Blow, Life Strike, True Steel) only apply if you're still in the heavy-attack animation when the spear connects: the explosion essentially never benefits, and Condition Overload gives only 20% per status on the initial hit and nothing on the explosion."
         }
       ]
     }

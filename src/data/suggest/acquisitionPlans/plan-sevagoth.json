@@ -9,6 +9,21 @@
     { "text": "no pity", "tone": "warn" }
   ],
   "prices": [{ "label": "built", "amount": "325 p", "money": false }],
+  "materials": [
+    { "qty": "6", "label": "Neural Sensors", "note": "Neuroptics" },
+    { "qty": "750", "label": "Rubedo", "note": "Neuroptics" },
+    { "qty": "2,750", "label": "Salvage", "note": "Neuroptics" },
+    { "qty": "8", "label": "Morphics", "note": "Chassis" },
+    { "qty": "650", "label": "Cryotic", "note": "Chassis" },
+    { "qty": "3,300", "label": "Alloy Plate", "note": "Chassis" },
+    { "qty": "2", "label": "Argon Crystal", "note": "Systems" },
+    { "qty": "250", "label": "Oxium", "note": "Systems" },
+    { "qty": "2,950", "label": "Nano Spores", "note": "Systems" },
+    { "qty": "3", "label": "Orokin Cell", "note": null },
+    { "qty": "2", "label": "Nullstones", "note": "Chassis" },
+    { "qty": "15", "label": "Asterite", "note": "Systems" },
+    { "qty": "1,200", "label": "Titanium", "note": "Neuroptics" }
+  ],
   "groups": [
     {
       "type": "gate",
@@ -106,76 +121,6 @@
       ]
     },
     {
-      "type": "farm",
-      "place": "ELIGIBLE VOID STORMS",
-      "sub": "Points of Interest, asteroids and wreckage",
-      "activity": "collect build materials while farming parts",
-      "meta": "one combined trip",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "650",
-          "label": "Nullstones",
-          "note": "Railjack-only resource",
-          "alt": "asteroids, red barrels and mission wreckage",
-          "done": false
-        },
-        {
-          "qty": "250",
-          "label": "Asterite",
-          "note": "Railjack-only resource",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Titanium, Cryotic, Rubedo, Salvage, Oxium, Morphics and Neural Sensors",
-          "note": "component materials",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Hit derelicts and freightliners on the route; skipping them commonly leaves the Railjack-only materials short after the blueprints finally drop."
-      ],
-      "bonuses": [
-        "Necramechs can be used inside Railjack mission interiors, so this is useful affinity time too."
-      ],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "HEPIT, VOID",
-      "sub": null,
-      "activity": "Capture",
-      "meta": "last errand",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "1",
-          "label": "Argon Crystal",
-          "note": "component material",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Argon decays after 24 hours, so collect it immediately before starting the component build."
-      ],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
       "type": "foundry",
       "place": "FOUNDRY",
       "sub": null,
@@ -188,13 +133,31 @@
       "spends": [],
       "map": null,
       "rows": [
-        { "qty": null, "label": "Neuroptics", "note": null, "alt": null, "done": false },
-        { "qty": null, "label": "Chassis", "note": null, "alt": null, "done": false },
-        { "qty": null, "label": "Systems", "note": null, "alt": null, "done": false },
+        {
+          "qty": null,
+          "label": "Neuroptics",
+          "note": "15,000 cr, 6 Neural Sensors, 1,200 Titanium, 750 Rubedo, 2,750 Salvage",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Chassis",
+          "note": "15,000 cr, 8 Morphics, 650 Cryotic, 2 Nullstones, 3,300 Alloy Plate",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Systems",
+          "note": "15,000 cr, 2 Argon Crystal, 250 Oxium, 15 Asterite, 2,950 Nano Spores",
+          "alt": null,
+          "done": false
+        },
         {
           "qty": null,
           "label": "Sevagoth",
-          "note": "25,000 cr + Orokin Cell",
+          "note": "25,000 cr, 3 Orokin Cell, 3 days",
           "alt": null,
           "done": false
         }

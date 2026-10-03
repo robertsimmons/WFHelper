@@ -12,6 +12,13 @@
     { "label": "Incubator Power Core blueprint", "amount": "50,000 cr", "money": false },
     { "label": "Power Core build, per roll", "amount": "100,000 cr", "money": false }
   ],
+  "materials": [
+    { "qty": "4,500", "label": "Nano Spores", "note": "per Incubator Power Core" },
+    { "qty": "2", "label": "Control Module", "note": "per Incubator Power Core" },
+    { "qty": "1", "label": "Argon Crystal", "note": "per Incubator Power Core" },
+    { "qty": "2", "label": "Kubrow Egg", "note": null },
+    { "qty": "2", "label": "Incubator Power Core", "note": null }
+  ],
   "groups": [
     {
       "type": "gate",
@@ -50,42 +57,6 @@
       "disclosures": []
     },
     {
-      "type": "farm",
-      "place": "MANTLE, EARTH",
-      "sub": null,
-      "activity": "Capture; break Kubrow Dens on Grineer Forest tiles",
-      "meta": "egg usually within 4-5 solo runs",
-      "mode": "solo, fast frame",
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "1",
-          "label": "Kubrow Egg",
-          "note": "one per incubation attempt",
-          "alt": "Market purchase, 10 platinum",
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Den drops are streaky: one player needed about 20 dens for an egg, another broke about 200 for two.",
-        "Eggs stack and can't be traded; farm several in one sitting if you plan to reroll."
-      ],
-      "bonuses": [
-        "A max-range Xaku casting The Vast Untime twice a room breaks dens you can't see; follow the Kubrow Den affinity popups to the egg.",
-        "Dens also drop Bite, a rare Kubrow mod; keep any you find."
-      ],
-      "disclosures": [
-        {
-          "title": "other egg sources",
-          "body": "E Prime, Earth is said to have more dens per map. Cervantes, Earth Sabotage resource caches have a 2.58% Rotation B chance at an egg."
-        }
-      ]
-    },
-    {
       "type": "foundry",
       "place": "FOUNDRY",
       "sub": null,
@@ -99,16 +70,15 @@
       "map": null,
       "rows": [
         {
-          "qty": "1",
-          "label": "Incubator Power Core",
-          "note": "4,500 Nano Spores, 2 Control Modules, 1 Argon Crystal",
-          "alt": "first core is free from the Mercury Junction task Complete Vox Solaris",
+          "qty": null,
+          "label": "Huras Kubrow",
+          "note": "1 Incubator Power Core",
+          "alt": null,
           "done": false
         }
       ],
       "conditions": [
-        "The blueprint is a reusable 50,000-credit Market purchase; every incubation consumes a core, win or lose.",
-        "Argon Crystal decays daily, so build the core just before you incubate."
+        "The blueprint is a reusable 50,000-credit Market purchase; every incubation consumes a core, win or lose."
       ],
       "bonuses": [
         "Build the Nutrio Incubator Upgrade Segment early if you expect several rolls; it halves incubation and its recipe takes one Power Core."
@@ -128,20 +98,6 @@
       "spends": [],
       "map": null,
       "rows": [
-        {
-          "qty": "1",
-          "label": "Kubrow Egg",
-          "note": "consumed per attempt",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "1",
-          "label": "Incubator Power Core",
-          "note": "consumed per attempt",
-          "alt": null,
-          "done": false
-        },
         {
           "qty": null,
           "label": "Huras Kubrow",

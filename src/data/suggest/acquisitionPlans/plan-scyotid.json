@@ -12,6 +12,18 @@
     { "label": "pity buy", "amount": "96 Scuttler Husks", "money": false },
     { "label": "build", "amount": "75,000 cr", "money": false }
   ],
+  "materials": [
+    { "qty": "1", "label": "Orokin Cell", "note": null },
+    { "qty": "96", "label": "Scuttler Husk", "note": null },
+    { "qty": "750", "label": "Entrati Obols", "note": null },
+    { "qty": "100", "label": "Temporal Dust", "note": null },
+    { "qty": "300", "label": "Kovnik", "note": null },
+    { "qty": "300", "label": "Aggristone", "note": null },
+    { "qty": "200", "label": "Connla Sprout", "note": null },
+    { "qty": "150", "label": "Saggen Pearl", "note": null },
+    { "qty": "150", "label": "Rune Marrow", "note": null },
+    { "qty": "20", "label": "Silphsela", "note": null }
+  ],
   "groups": [
     {
       "type": "gate",
@@ -37,56 +49,6 @@
       "conditions": ["The Hex also needs The Duviri Paradox, which is solo-only."],
       "bonuses": [],
       "disclosures": []
-    },
-    {
-      "type": "boss",
-      "place": "ISLEWEAVER, DUVIRI",
-      "sub": null,
-      "activity": "clear six objectives, then defeat The Fragmented",
-      "meta": "16-20 Scuttler Husks per clear, guaranteed; 20-24 on Steel Path",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": "duviri",
-      "rows": [
-        {
-          "qty": "96",
-          "label": "Scuttler Husk",
-          "note": "guaranteed end-of-mission reward, not a drop roll; boosters do nothing",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "750",
-          "label": "Entrati Obols",
-          "note": "Murmur kills and Entrati containers inside Isleweaver; accumulates during the husk runs",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "100",
-          "label": "Temporal Dust",
-          "note": "same source, inside Isleweaver",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "No Companions and no Gear wheel inside Isleweaver — the Gear key summons your Kaithe instead.",
-        "Check the rolled Duviri loadout before launching Steel Path; both Oraxia and The Fragmented are heavily damage-attenuated, so a bad frame/weapon roll makes SP not worth the extra husks."
-      ],
-      "bonuses": [
-        "All five blueprints can also drop from Oraxia's end-of-run chest, rotation A, 7.69% each — a bonus that reduces how many husks you need to spend.",
-        "Wall-latch or go Operator void mode during Oraxia's add phase; her Death Scuttlers disable abilities and the arena floor is a damage field."
-      ],
-      "disclosures": [
-        {
-          "title": "reroll a bad loadout",
-          "body": "Starting one stage of The Circuit and backing out rerolls the Duviri loadout for a couple of hours — do this before a Steel Path Isleweaver run if the roll is bad."
-        }
-      ]
     },
     {
       "type": "vendor",
@@ -141,71 +103,9 @@
         "Acrithis only offers the husk exchange in the Dormizone; she does not sell it out in Duviri.",
         "The shop lists Barrel and Gauntlet 1/2 separately because the main blueprint consumes two of each."
       ],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "THE DUVIRI EXPERIENCE",
-      "sub": null,
-      "activity": "forage solo, ignoring the spiral objectives, for the build materials",
-      "meta": "run it outside Isleweaver — Isleweaver rarely routes past these fields, and Companions are disabled there",
-      "mode": "solo",
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": "duviri",
-      "rows": [
-        {
-          "qty": "300",
-          "label": "Kovnik",
-          "note": "plant across open Duviri, occasionally Teshin's Cave",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "300",
-          "label": "Aggristone",
-          "note": "breakable formations; also drops from spiral objectives and The Circuit",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "200",
-          "label": "Connla Sprout",
-          "note": "crevices near water and caves, densest near the Lunaro Court",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "150",
-          "label": "Saggen Pearl",
-          "note": "Saggen Wells in open Duviri",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "150",
-          "label": "Rune Marrow",
-          "note": "Runic Compact deposits in the Undercroft and The Circuit; guaranteed off Corrupted Vor and Corrupted Jackal",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "20",
-          "label": "Silphsela",
-          "note": "Sun Silph plants on hill slopes, thickest near Titan's Rest",
-          "alt": null,
-          "done": false
-        }
+      "bonuses": [
+        "All five blueprints can also drop from Oraxia's end-of-run chest, rotation A, 7.69% each; a bonus that reduces how many husks you need to spend."
       ],
-      "conditions": [
-        "Take the Bountiful Harvest decree before you start; it doubles plant pickups (Kovnik, Connla Sprout, Silphsela, Saggen Pearl) and stacks with Resource Boosters.",
-        "Duviri only banks your loot when progress saves — complete one decree or Intrinsic point after collecting, then abort; doing the decree first can bank fewer than you gathered.",
-        "Ride the Kaithe: it reveals nearby resources on the minimap, which matters most for Connla Sprout."
-      ],
-      "bonuses": [],
       "disclosures": []
     },
     {
@@ -244,13 +144,13 @@
         }
       ],
       "conditions": [
-        "All four components build in parallel; queue the main blueprint only after claiming them out of the foundry — minimum 24h before the final 12h."
+        "All four components build in parallel; queue the main blueprint only after claiming them out of the foundry: minimum 24h before the final 12h."
       ],
       "bonuses": [],
       "disclosures": [
         {
           "title": "the patch-note discrepancy",
-          "body": "DE's own Update 39 patch notes say Scuttler Husk rewards are 3-5 on Normal and 5-8 on Steel Path; the wiki and live drop tables both say 16-20 and 20-24. Go by the wiki/live figures — no hotfix that changed it turned up."
+          "body": "DE's own Update 39 patch notes say Scuttler Husk rewards are 3-5 on Normal and 5-8 on Steel Path; the wiki and live drop tables both say 16-20 and 20-24. Go by the wiki/live figures: no hotfix that changed it turned up."
         }
       ]
     }

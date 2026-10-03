@@ -13,6 +13,29 @@
     { "label": "parts + forge", "amount": "19,000 cr", "money": false },
     { "label": "gild", "amount": "5,000 standing", "money": false }
   ],
+  "materials": [
+    { "qty": "850", "label": "Alloy Plate", "note": "Peye Grip" },
+    { "qty": "600", "label": "Cryotic", "note": "Pyrotic Alloy refines" },
+    {
+      "qty": "500",
+      "label": "Rubedo",
+      "note": "150 Pyrotic Alloy refines, 150 Coprite Alloy refines, 200 Fersteel Alloy refine"
+    },
+    { "qty": "1,200", "label": "Ferrite", "note": "Coprite Alloy refines" },
+    { "qty": "400", "label": "Plastids", "note": "Fersteel Alloy refine" },
+    { "qty": "15", "label": "Condroc Wing", "note": "Sepfahn Strike" },
+    { "qty": "55", "label": "Fish Scales", "note": "Sepfahn Strike" },
+    { "qty": "10", "label": "Tear Azurite", "note": "Sepfahn Strike" },
+    { "qty": "60", "label": "Coprite Alloy", "note": "Sepfahn Strike" },
+    { "qty": "20", "label": "Iradite", "note": "Peye grip" },
+    { "qty": "50", "label": "Fish Oil", "note": "Peye grip" },
+    { "qty": "60", "label": "Pyrotic Alloy", "note": "Peye Grip" },
+    { "qty": "20", "label": "Fersteel Alloy", "note": "Vargeet II Jai Link" },
+    { "qty": "5", "label": "Maprico", "note": "Vargeet II Jai Link" },
+    { "qty": "5", "label": "Kuaka Spinal Claw", "note": "Vargeet II Jai Link" },
+    { "qty": "5", "label": "Mortus Horn", "note": "Vargeet II Jai Link" },
+    { "qty": "2", "label": "Cetus Wisp", "note": null }
+  ],
   "groups": [
     {
       "type": "currency",
@@ -23,7 +46,7 @@
       "mode": "Loki with Equinox's Rest & Rage subsumed",
       "live": null,
       "skip": null,
-      "earns": { "currency": "Ostron standing", "amount": "71,000" },
+      "earns": { "currency": "Ostron Standing", "amount": "71,000" },
       "spends": [],
       "map": "plains-of-eidolon",
       "rows": [
@@ -58,77 +81,13 @@
         }
       ],
       "conditions": [
-        "Standing spent on blueprints comes out of the same pool used to rank up: rank up before buying anything, or you re-farm the difference.",
-        "Turning in fish or captures past the daily cap destroys the excess instead of banking it — check the remaining cap with Konzu first."
+        "Standing spent on blueprints comes out of the same pool used to rank up: rank up before buying anything, or you re-farm the difference."
       ],
       "bonuses": [
-        "Loki running Equinox's Rest & Rage subsumed caps the daily limit in minutes; sleep cannot be cast unless a target is in range, so captures cannot miss.",
-        "Narmer bounties on the Plains pay Ostron and Quills standing at the same time."
+        "Loki running Equinox's Rest & Rage subsumed caps the daily limit in minutes; sleep cannot be cast unless a target is in range, so captures cannot miss."
       ],
-      "disclosures": [
-        {
-          "title": "fishing is the fallback, not the only route",
-          "body": "Ivara Prowl + Sleep Arrow or straight fishing with bait (Murkray, Norg, Cuthol) both work if Equinox isn't subsumed yet; slower, but immune to hunt spawn RNG."
-        }
-      ]
-    },
-    {
-      "type": "farm",
-      "place": "CETUS, PLAINS OF EIDOLON",
-      "sub": null,
-      "activity": "gather the Zaw's build materials on the same trip",
-      "meta": "one Plains sweep covers Strike + Peye grip",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": "plains-of-eidolon",
-      "rows": [
-        {
-          "qty": "15",
-          "label": "Condroc Wing",
-          "note": "Sepfahn Strike; the Link needs a little more",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "55",
-          "label": "Fish Scales",
-          "note": "Sepfahn Strike",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "10",
-          "label": "Tear Azurite",
-          "note": "Sepfahn Strike",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "60",
-          "label": "Coprite Alloy",
-          "note": "Sepfahn Strike",
-          "alt": null,
-          "done": false
-        },
-        { "qty": "20", "label": "Iradite", "note": "Peye grip", "alt": null, "done": false },
-        { "qty": "50", "label": "Fish Oil", "note": "Peye grip", "alt": null, "done": false },
-        { "qty": "850", "label": "Alloy Plate", "note": "Peye grip", "alt": null, "done": false },
-        {
-          "qty": "60",
-          "label": "Pyrotic Alloy",
-          "note": "Peye grip; the Link needs a little more",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "The Vargeet II Jai link needs roughly 5,000 credits plus small amounts of Nistlepod, Pyrotic Alloy, Condroc Wing and a fish or animal part; the wiki does not give exact link quantities, so gathering extra of each above covers it."
-      ],
-      "bonuses": [],
-      "disclosures": []
+      "disclosures": [],
+      "ref": "Ostron Standing"
     },
     {
       "type": "vendor",
@@ -140,7 +99,7 @@
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Ostron standing", "amount": "9,500" }],
+      "spends": [{ "currency": "Ostron Standing", "amount": "9,500" }],
       "map": null,
       "rows": [
         {
@@ -163,14 +122,14 @@
           "note": "7,500 standing, Rank 3 Trusted",
           "alt": {
             "text": "or Vargeet Jai II at Rank 4 Surah",
-            "spends": [{ "currency": "Ostron standing", "amount": "10,000" }]
+            "spends": [{ "currency": "Ostron Standing", "amount": "10,000" }]
           },
           "done": false
         }
       ],
       "conditions": [
         "Peye + Vargeet II Jai is the near-universal community pick: 34% crit / 12% status / 1.083 attack speed, prioritizing speed and crit over the marginal damage difference between grips and links.",
-        "Buy blueprints only after hitting Trusted — spending standing early can strand you short of a rank-up."
+        "Buy blueprints only after hitting Trusted: spending standing early can strand you short of a rank-up."
       ],
       "bonuses": [],
       "disclosures": [
@@ -210,7 +169,7 @@
         {
           "qty": null,
           "label": "Vargeet II Jai Link",
-          "note": "~5,000 cr, small amounts of Nistlepod, Pyrotic Alloy, Condroc Wing and a fish/animal part",
+          "note": "5,000 cr, 5 Maprico, 20 Fersteel Alloy, 5 Kuaka Spinal Claw, 5 Mortus Horn",
           "alt": null,
           "done": false
         },
@@ -223,7 +182,7 @@
         }
       ],
       "conditions": [
-        "Once forged the Zaw cannot be taken apart — build the combination you actually want, since mastery is tied to the strike alone and repeating it earns nothing."
+        "Once forged the Zaw cannot be taken apart: build the combination you actually want, since mastery is tied to the strike alone and repeating it earns nothing."
       ],
       "bonuses": [],
       "disclosures": []
@@ -239,7 +198,7 @@
       "skip": null,
       "earns": null,
       "spends": [
-        { "currency": "Ostron standing", "amount": "5,000" },
+        { "currency": "Ostron Standing", "amount": "5,000" },
         { "currency": "Cetus Wisp", "amount": "2" }
       ],
       "map": null,
@@ -263,7 +222,7 @@
       "disclosures": [
         {
           "title": "the weapon underperforms the grind",
-          "body": "Zaws never got the Melee 3.0 damage pass; the consensus Peye/Vargeet II Jai build loses to Nikana Prime and Dual Keres Prime on identical mods. Most people build it for the 3,000 mastery, Exodia Contagion, or as a stopgap before a Nikana Prime — not for raw damage."
+          "body": "Zaws never got the Melee 3.0 damage pass; the consensus Peye/Vargeet II Jai build loses to Nikana Prime and Dual Keres Prime on identical mods. Most people build it for the 3,000 mastery, Exodia Contagion, or as a stopgap before a Nikana Prime, not for raw damage."
         }
       ]
     }

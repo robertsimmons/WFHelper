@@ -9,6 +9,22 @@
     { "text": "Circuit alt", "tone": "circuit" }
   ],
   "prices": [{ "label": "build", "amount": "70,000 cr", "money": false }],
+  "materials": [
+    { "qty": "2,850", "label": "Alloy Plate", "note": "Neuroptics" },
+    { "qty": "3,250", "label": "Salvage", "note": "Chassis" },
+    { "qty": "2,500", "label": "Ferrite", "note": "Systems" },
+    { "qty": "1", "label": "Orokin Cell", "note": "Baruuk" },
+    { "qty": "2,400", "label": "Plastids", "note": "Hespazym Alloy refines" },
+    { "qty": "16", "label": "Morphics", "note": "Hespazym Alloy refines" },
+    { "qty": "4", "label": "Sola Toroid", "note": "rank-up sacrifice + Neuroptics" },
+    { "qty": "5", "label": "Vega Toroid", "note": "rank-up sacrifice + Chassis" },
+    { "qty": "5", "label": "Calda Toroid", "note": "rank-up sacrifice + Systems" },
+    { "qty": "150", "label": "Hespazym Alloy", "note": "Neuroptics 50, Chassis 100" },
+    { "qty": "5", "label": "Synathid Ecosynth Analyzer", "note": "Neuroptics" },
+    { "qty": "5", "label": "Marquise Thyst", "note": "Chassis" },
+    { "qty": "10", "label": "Tromyzon Entroplasma", "note": "Systems" },
+    { "qty": "5", "label": "Radiant Zodian", "note": "Systems" }
+  ],
   "groups": [
     {
       "type": "gate",
@@ -45,7 +61,7 @@
       "mode": null,
       "live": null,
       "skip": null,
-      "earns": { "currency": "Vox Solaris standing", "amount": "91,000" },
+      "earns": { "currency": "Vox Solaris Standing", "amount": "91,000" },
       "spends": [],
       "map": null,
       "rows": [
@@ -64,18 +80,15 @@
           "done": false
         }
       ],
-      "conditions": [
-        "Daily cap is 16,000 plus 500 per Mastery Rank, tracked separately per syndicate."
-      ],
-      "bonuses": [
-        "Narmer Isoplasts (2,000 standing each, Narmer bounties) and a guaranteed Lazulite Toroid (12,000 each) from the Exploiter Orb are faster standing than turning in small toroids."
-      ],
+      "conditions": [],
+      "bonuses": [],
       "disclosures": [
         {
           "title": "rank-up sacrifices",
           "body": "0 to 1 (Operative) needs 1 Vega, 1 Calda and 1 Sola Toroid plus 50,000 credits. 1 to 2 (Agent) needs 1 Gyromag Systems (buyable at Rank 1) plus 1 Vega Toroid and 100,000 credits. 2 to 3 (Hand) needs 1 Atmo Systems (buyable at Rank 2) plus 1 Calda Toroid and 250,000 credits. Don't spend small toroids on standing; they're needed here and in the build."
         }
-      ]
+      ],
+      "ref": "Vox Solaris Standing"
     },
     {
       "type": "currency",
@@ -86,7 +99,7 @@
       "mode": "solo",
       "live": null,
       "skip": null,
-      "earns": { "currency": "Solaris United standing", "amount": "141,000" },
+      "earns": { "currency": "Solaris United Standing", "amount": "141,000" },
       "spends": [],
       "map": "orb-vallis",
       "rows": [
@@ -102,7 +115,8 @@
         "This rank is the real crafting gate: Marquise Thyst (Chassis) doesn't refine below Cove."
       ],
       "bonuses": [],
-      "disclosures": []
+      "disclosures": [],
+      "ref": "Solaris United Standing"
     },
     {
       "type": "vendor",
@@ -114,7 +128,7 @@
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Vox Solaris standing", "amount": "20,000" }],
+      "spends": [{ "currency": "Vox Solaris Standing", "amount": "20,000" }],
       "map": null,
       "rows": [
         {
@@ -148,111 +162,6 @@
       ],
       "conditions": [
         "Baruuk shares Circuit normal-mode week 11 with Garuda and Hildryn; the Circuit route skips the Vox Solaris standing but not the crafting materials below."
-      ],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "ORB VALLIS, VENUS",
-      "sub": "Temple of Profit or the Spaceport hangar",
-      "activity": "indoor Steel Path enemies for toroids",
-      "meta": "sacrifice items + build materials",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": "orb-vallis",
-      "rows": [
-        {
-          "qty": "4",
-          "label": "Sola Toroid",
-          "note": "rank-up sacrifice + Neuroptics",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "5",
-          "label": "Vega Toroid",
-          "note": "rank-up sacrifice + Chassis",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "5",
-          "label": "Calda Toroid",
-          "note": "rank-up sacrifice + Systems",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Farm indoors with the alert level maxed and don't destroy the reinforcement beacons; spawns stall once they're gone.",
-        "Toroids also drop from loose pickups in the 17 Orb Vallis caves."
-      ],
-      "bonuses": [
-        "Bring a loot frame (Nekros, Khora or Hydroid) and a beast companion with Resourceful Retriever; run this under a resource booster to also stock up on the fish parts below."
-      ],
-      "disclosures": [
-        {
-          "title": "banking loot",
-          "body": "Pickups can vanish on a client desync; leave free roam periodically to bank what you've collected instead of running one marathon session."
-        }
-      ]
-    },
-    {
-      "type": "farm",
-      "place": "ORB VALLIS, VENUS",
-      "sub": "Smokefinger for refinement",
-      "activity": "mine ore, fish, then refine",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": "orb-vallis",
-      "rows": [
-        {
-          "qty": "150",
-          "label": "Hespazym Alloy",
-          "note": "Neuroptics 50, Chassis 100; needs SU Rank 2",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "5",
-          "label": "Synathid Ecosynth Analyzer",
-          "note": "Neuroptics; cave hotspots, any weather",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "5",
-          "label": "Marquise Thyst",
-          "note": "Chassis; needs SU Rank 4 (Cove)",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "10",
-          "label": "Tromyzon Entroplasma",
-          "note": "Systems; pond hotspots, cold weather only",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "5",
-          "label": "Radiant Zodian",
-          "note": "Systems; needs SU Rank 3",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Check the Vallis weather cycle before fishing for Tromyzon.",
-        "The Exploiter Orb also drops Synathid and Tromyzon directly."
       ],
       "bonuses": [],
       "disclosures": []

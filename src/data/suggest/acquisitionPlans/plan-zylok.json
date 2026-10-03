@@ -12,6 +12,7 @@
     { "label": "credits", "amount": "200,000 cr", "money": false },
     { "label": "Ducats", "amount": "500", "money": false }
   ],
+  "materials": [{ "qty": "200,000", "label": "Credits", "note": null }],
   "groups": [
     {
       "type": "currency",
@@ -22,14 +23,14 @@
       "mode": null,
       "live": null,
       "skip": null,
-      "earns": { "currency": "Ducats", "amount": "500" },
+      "earns": { "currency": "Orokin Ducats", "amount": "500" },
       "spends": [],
       "map": "void",
       "rows": [
         {
           "qty": null,
           "label": "fast fissures, take the Prime part",
-          "note": "Exterminate and Capture; one player reported over 1,000 Ducats in an hour",
+          "note": null,
           "alt": null,
           "done": false
         },
@@ -45,15 +46,9 @@
         "Ducats come only from trading Prime parts and blueprints at a Ducat Kiosk in a Relay.",
         "Baro's stock is random, so spending Ducats on his other items can leave you short when the Zylok appears. Keep 500 Ducats and 200,000 credits in reserve."
       ],
-      "bonuses": [
-        "Upgrade relics to Radiant with Void Traces first; an area-damage frame like Ember or Equinox keeps fissures quick."
-      ],
-      "disclosures": [
-        {
-          "title": "why not endless fissures",
-          "body": "Several players call endless Defense and Survival slower per relic than short Exterminate and Capture runs."
-        }
-      ]
+      "bonuses": [],
+      "disclosures": [],
+      "ref": "Orokin Ducats"
     },
     {
       "type": "vendor",
@@ -66,7 +61,7 @@
       "skip": null,
       "earns": null,
       "spends": [
-        { "currency": "Ducats", "amount": "500" },
+        { "currency": "Orokin Ducats", "amount": "500" },
         { "currency": "Credits", "amount": "200,000" }
       ],
       "map": null,
@@ -79,9 +74,7 @@
           "done": false
         }
       ],
-      "conditions": [
-        "There is no blueprint or build time. The Zylok Incarnon Genesis is a separate upgrade and does not give you the weapon."
-      ],
+      "conditions": ["There is no blueprint or build time."],
       "bonuses": [],
       "disclosures": [
         {

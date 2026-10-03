@@ -35,6 +35,33 @@
       "money": false
     }
   ],
+  "materials": [
+    {
+      "qty": "30,000",
+      "label": "Cryotic",
+      "note": null
+    },
+    {
+      "qty": "50,080",
+      "label": "Alloy Plate",
+      "note": "Sibear 50,000, Magistar 80"
+    },
+    {
+      "qty": "750",
+      "label": "Ferrite",
+      "note": "Magistar"
+    },
+    {
+      "qty": "300",
+      "label": "Rubedo",
+      "note": "Magistar"
+    },
+    {
+      "qty": "3",
+      "label": "Gallium",
+      "note": "Magistar"
+    }
+  ],
   "groups": [
     {
       "type": "vendor",
@@ -69,70 +96,6 @@
       "disclosures": []
     },
     {
-      "type": "farm",
-      "place": "GABII, CERES",
-      "sub": null,
-      "activity": "Dark Sector Survival with a Resource Booster",
-      "meta": "about 1,000 per 15 minutes",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "50,080",
-          "label": "Alloy Plate",
-          "note": "Sibear 50,000, Magistar 80",
-          "alt": "Corpus tilesets, Zariman Ten Zero bounties",
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "MERCURY, PHOBOS, MARS",
-      "sub": null,
-      "activity": "common resources for the Magistar",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "750",
-          "label": "Ferrite",
-          "note": "Magistar",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "300",
-          "label": "Rubedo",
-          "note": "Magistar",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "3",
-          "label": "Gallium",
-          "note": "Magistar",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
       "type": "foundry",
       "place": "FOUNDRY",
       "sub": null,
@@ -158,44 +121,6 @@
       "disclosures": []
     },
     {
-      "type": "farm",
-      "place": "EXCAVATION",
-      "sub": null,
-      "activity": "Excavation as a Void Fissure, crack relics at the same time",
-      "meta": "Hieracon, Pluto or Everest, Earth",
-      "mode": "premade recommended",
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "30,000",
-          "label": "Cryotic",
-          "note": "100 per fully dug excavator, 1 per 1% if it dies",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Node level does not change the amount.",
-        "Do not spend Cryotic on dojo research, the Helminth or other builds until the Sibear is built.",
-        "A public squad can fail the reactant if someone rushes excavators and kills enemies first."
-      ],
-      "bonuses": [
-        "A Resource Booster doubles the payout even though the mission screen does not show it, and Resourceful Retriever can double a pickup.",
-        "Each 200 Cryotic opens a relic, so Prime parts come with it.",
-        "Cryotic piles up passively from Circuit, Archon Hunts and Sorties Excavation sub-objectives."
-      ],
-      "disclosures": [
-        {
-          "title": "pace",
-          "body": "The wiki's estimate with no boosters is 300 digs at 100 seconds each, over 8 hours. One player reached 30,000 in about 4 hours with a booster, a fissure Excavation and Resourceful Retriever. Frost helps the excavators survive."
-        }
-      ]
-    },
-    {
       "type": "foundry",
       "place": "FOUNDRY",
       "sub": null,
@@ -218,12 +143,7 @@
       ],
       "conditions": [],
       "bonuses": [],
-      "disclosures": [
-        {
-          "title": "Incarnon Genesis",
-          "body": "A separate optional upgrade that rotates through the Duviri Circuit; it does not change this plan."
-        }
-      ]
+      "disclosures": []
     }
   ]
 }

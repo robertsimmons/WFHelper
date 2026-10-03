@@ -9,6 +9,15 @@
     { "text": "Rotation B", "tone": "warn" }
   ],
   "prices": [{ "label": "build", "amount": "100,000 cr", "money": false }],
+  "materials": [
+    { "qty": "16", "label": "Gallium", "note": "8 per Blade, built twice" },
+    { "qty": "2,800", "label": "Ferrite", "note": "1,400 per Glove, built twice" },
+    { "qty": "8", "label": "Entrati Lanthorn", "note": "build requirement" },
+    { "qty": "9,000", "label": "Entrati Obols", "note": "Blade material" },
+    { "qty": "20", "label": "Bellow Voca", "note": "Blade material" },
+    { "qty": "1,000", "label": "Necracoil", "note": null },
+    { "qty": "8", "label": "Echo Voca", "note": null }
+  ],
   "groups": [
     {
       "type": "gate",
@@ -78,7 +87,7 @@
         }
       ],
       "conditions": [
-        "Disruption is not AABC: a clean round 1, a round 2 with 3+ conduits defended, and a round 3 with 2-3 defended all pay from B; from round 4 on, only a round where at least one conduit is lost pays B — a clean round pays C (Dante) instead.",
+        "Disruption is not AABC: a clean round 1, a round 2 with 3+ conduits defended, and a round 3 with 2-3 defended all pay from B; from round 4 on, only a round where at least one conduit is lost pays B; a clean round pays C (Dante) instead.",
         "Vessel Capillaries are shared with Dante, Onos and Riven Transmuters, so bank them and buy only whichever parts are still missing at the end.",
         "Onos shares this same 5% Rotation B slot, so its blueprint can drop while you farm Ruvox."
       ],
@@ -89,7 +98,7 @@
       "disclosures": [
         {
           "title": "the B/C tradeoff",
-          "body": "From round 4 on, a clean round pays C (Dante) and never B. To keep drawing from B you have to let roughly 2 conduits fall each round, which costs you the Demolisher kills — and Capillaries — tied to those conduits. A short, clean run to round 3-4 often nets Ruvox parts and Capillaries better than deliberately bleeding conduits."
+          "body": "From round 4 on, a clean round pays C (Dante) and never B. To keep drawing from B you have to let roughly 2 conduits fall each round, which costs you the Demolisher kills, and Capillaries, tied to those conduits. A short, clean run to round 3-4 often nets Ruvox parts and Capillaries better than deliberately bleeding conduits."
         }
       ]
     },
@@ -133,81 +142,6 @@
       "disclosures": []
     },
     {
-      "type": "farm",
-      "place": "SANCTUM ANATOMICA, DEIMOS",
-      "sub": null,
-      "activity": "Exterminate and Gruzzling",
-      "meta": "8 total",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "8",
-          "label": "Entrati Lanthorn",
-          "note": "build requirement",
-          "alt": "or Netracells / Deep Archimedea",
-          "done": false
-        }
-      ],
-      "conditions": [
-        "For a focused farm, kill the early Gruzzling in Exterminate; if it does not drop its 3x Lanthorn bundle, restart."
-      ],
-      "bonuses": ["Netracells guarantee one Lanthorn and resource boosters apply there."],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "CAMBION DRIFT, DEIMOS",
-      "sub": null,
-      "activity": "bounty rewards, mining and mob drops",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": "cambion-drift",
-      "rows": [
-        {
-          "qty": "9,000",
-          "label": "Entrati Obols",
-          "note": "Blade material",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "20",
-          "label": "Bellow Voca",
-          "note": "Blade material",
-          "alt": null,
-          "done": false
-        },
-        { "qty": "16", "label": "Gallium", "note": "Blade material", "alt": null, "done": false },
-        {
-          "qty": "2,800",
-          "label": "Ferrite",
-          "note": "Glove material",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "1,000",
-          "label": "Necracoil",
-          "note": "Glove material",
-          "alt": null,
-          "done": false
-        },
-        { "qty": "8", "label": "Echo Voca", "note": "Glove material", "alt": null, "done": false }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
       "type": "foundry",
       "place": "FOUNDRY",
       "sub": null,
@@ -223,14 +157,14 @@
         {
           "qty": null,
           "label": "Blade",
-          "note": "20,000 cr, 4,500 Obols, 10 Bellow Voca, 2 Lanthorn, 8 Gallium — build twice",
+          "note": "20,000 cr, 4,500 Obols, 10 Bellow Voca, 2 Lanthorn, 8 Gallium: build twice",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Glove",
-          "note": "20,000 cr, 1,400 Ferrite, 500 Necracoil, 2 Lanthorn, 4 Echo Voca — build twice",
+          "note": "20,000 cr, 1,400 Ferrite, 500 Necracoil, 2 Lanthorn, 4 Echo Voca: build twice",
           "alt": null,
           "done": false
         },

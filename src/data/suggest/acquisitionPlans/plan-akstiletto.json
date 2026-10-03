@@ -30,52 +30,29 @@
       "money": false
     }
   ],
-  "groups": [
+  "materials": [
     {
-      "type": "gate",
-      "place": "DOJO, TENNO LAB",
-      "sub": null,
-      "activity": "build Oracle Room, then Tenno Lab; research Akstiletto",
-      "meta": "24h per room, 3 days research",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Oracle Room",
-          "note": "built before the Tenno Lab; needs dojo energy from a Reactor",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Tenno Lab",
-          "note": "24h",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Akstiletto",
-          "note": "Ghost tier: 5,000 cr, 550 Salvage, 300 Polymer Bundle, 50 Alloy Plate, 1 Gallium, 3,000 affinity",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Research cannot be rushed with platinum; costs scale x3, x10, x30, x100 by clan tier.",
-        "A solo Ghost clan works. Joining a clan that has it done skips straight to the blueprint."
-      ],
-      "bonuses": [],
-      "disclosures": []
+      "qty": "2",
+      "label": "Gallium",
+      "note": null
     },
     {
+      "qty": "800",
+      "label": "Salvage",
+      "note": null
+    },
+    {
+      "qty": "200",
+      "label": "Alloy Plate",
+      "note": null
+    },
+    { "qty": "1", "label": "Forma", "note": null },
+    { "qty": "15,000", "label": "Credits", "note": null }
+  ],
+  "groups": [
+    {
       "type": "vendor",
-      "place": "DOJO, TENNO LAB",
+      "place": "CLAN DOJO, TENNO LAB",
       "sub": null,
       "activity": "buy the blueprint",
       "meta": "15,000 cr",
@@ -96,70 +73,6 @@
           "label": "Akstiletto Blueprint",
           "note": null,
           "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "MARS",
-      "sub": null,
-      "activity": "any node",
-      "meta": "Salvage and Gallium together",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "3",
-          "label": "Gallium",
-          "note": "1 research, 2 build",
-          "alt": "also Uranus and some assassination targets",
-          "done": false
-        },
-        {
-          "qty": "1,350",
-          "label": "Salvage",
-          "note": "550 research, 800 build",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "STAR CHART",
-      "sub": null,
-      "activity": "common drops",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "300",
-          "label": "Polymer Bundle",
-          "note": "research",
-          "alt": "Uranus is best",
-          "done": false
-        },
-        {
-          "qty": "250",
-          "label": "Alloy Plate",
-          "note": "50 research, 200 build",
-          "alt": "Jupiter also drops Salvage",
           "done": false
         }
       ],

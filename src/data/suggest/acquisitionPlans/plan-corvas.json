@@ -12,6 +12,7 @@
     { "label": "blueprint", "amount": "35,000 cr", "money": false },
     { "label": "build", "amount": "45,000 cr", "money": false }
   ],
+  "materials": [{ "qty": "2", "label": "Argon Crystal", "note": null }],
   "groups": [
     {
       "type": "vendor",
@@ -38,7 +39,7 @@
       "sub": null,
       "activity": "pledge Cephalon Suda, then Steel Meridian; rank all three to Rank 2",
       "meta": "~47,000 standing each, counting rank-up spends",
-      "mode": "run each syndicate's daily alerts and grab the medallions",
+      "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
@@ -80,7 +81,8 @@
           "title": "death squads",
           "body": "Suda sinks New Loka and Red Veil, Hexis sinks Red Veil and Perrin, Meridian sinks Perrin and New Loka. Any of those going negative sends Eximus hit squads into random missions; they're a nuisance and drop specter blueprints."
         }
-      ]
+      ],
+      "ref": "Syndicate Standing"
     },
     {
       "type": "vendor",
@@ -93,9 +95,9 @@
       "skip": null,
       "earns": null,
       "spends": [
-        { "currency": "Arbiters of Hexis standing", "amount": "20,000" },
-        { "currency": "Cephalon Suda standing", "amount": "20,000" },
-        { "currency": "Steel Meridian standing", "amount": "20,000" }
+        { "currency": "Arbiters of Hexis Standing", "amount": "20,000" },
+        { "currency": "Cephalon Suda Standing", "amount": "20,000" },
+        { "currency": "Steel Meridian Standing", "amount": "20,000" }
       ],
       "map": null,
       "rows": [
@@ -122,27 +124,6 @@
         }
       ],
       "conditions": ["Stop at Rank 2; Rank 3 buys nothing Corvas needs."],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "HEPIT, VOID",
-      "sub": null,
-      "activity": "Capture, then sweep the map",
-      "meta": "pick this up last",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": "void",
-      "rows": [
-        { "qty": "2", "label": "Argon Crystal", "note": "Corvas build", "alt": null, "done": false }
-      ],
-      "conditions": [
-        "Argon decays at every 00:00 GMT reset; farm it only once all three parts are in hand."
-      ],
       "bonuses": [],
       "disclosures": []
     },

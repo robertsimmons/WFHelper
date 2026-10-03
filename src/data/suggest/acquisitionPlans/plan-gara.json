@@ -9,6 +9,27 @@
     { "text": "Circuit alt", "tone": "circuit" }
   ],
   "prices": [{ "label": "build", "amount": "70,000 cr", "money": false }],
+  "materials": [
+    { "qty": "2", "label": "Neurodes", "note": "Neuroptics" },
+    { "qty": "2", "label": "Morphics", "note": "Systems" },
+    { "qty": "1,550", "label": "Circuits", "note": null },
+    {
+      "qty": "1,350",
+      "label": "Rubedo",
+      "note": "800 Chassis, 250 Pyrotic Alloy refines, 300 Coprite Alloy refines"
+    },
+    { "qty": "3", "label": "Orokin Cell", "note": null },
+    { "qty": "1,000", "label": "Cryotic", "note": "Pyrotic Alloy refines" },
+    { "qty": "2,400", "label": "Ferrite", "note": "Coprite Alloy refines" },
+    { "qty": "1", "label": "Nosam Cutter", "note": null },
+    { "qty": "65", "label": "Grokdrul", "note": "Neuroptics" },
+    { "qty": "90", "label": "Pyrotic Alloy", "note": "Neuroptics" },
+    { "qty": "55", "label": "Iradite", "note": "Chassis" },
+    { "qty": "120", "label": "Coprite Alloy", "note": "Chassis" },
+    { "qty": "2", "label": "Cetus Wisp", "note": "Chassis" },
+    { "qty": "35", "label": "Charc Electroplax", "note": "Systems" },
+    { "qty": "25", "label": "Esher Devar", "note": "Systems" }
+  ],
   "groups": [
     {
       "type": "gate",
@@ -97,7 +118,7 @@
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Ostron standing", "amount": "5,500" }],
+      "spends": [{ "currency": "Ostron Standing", "amount": "5,500" }],
       "map": null,
       "rows": [
         {
@@ -120,13 +141,6 @@
           "note": "2,500 standing",
           "alt": null,
           "done": false
-        },
-        {
-          "qty": null,
-          "label": "Nosam Cutter",
-          "note": "required to mine ore",
-          "alt": null,
-          "done": false
         }
       ],
       "conditions": [
@@ -134,85 +148,6 @@
       ],
       "bonuses": [],
       "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "PLAINS OF EIDOLON, EARTH",
-      "sub": null,
-      "activity": "mine, fish and gather, then refine at Suumbaat",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": "plains-of-eidolon",
-      "rows": [
-        {
-          "qty": "65",
-          "label": "Grokdrul",
-          "note": "Neuroptics; Plains pickup",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "90",
-          "label": "Pyrotic Alloy",
-          "note": "Neuroptics; refine from Pyrol ore",
-          "alt": null,
-          "done": false
-        },
-        { "qty": "2", "label": "Neurodes", "note": "Neuroptics", "alt": null, "done": false },
-        {
-          "qty": "55",
-          "label": "Iradite",
-          "note": "Chassis; Plains pickup",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "120",
-          "label": "Coprite Alloy",
-          "note": "Chassis; refine from Coprun ore",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "2",
-          "label": "Cetus Wisp",
-          "note": "Chassis; lake and pond shorelines",
-          "alt": "or 2,000 standing each, Quills Rank 5",
-          "done": false
-        },
-        {
-          "qty": "35",
-          "label": "Charc Electroplax",
-          "note": "Systems; fillet Charc Eels at Fisher Hai-Luk",
-          "alt": "or Thumpers",
-          "done": false
-        },
-        {
-          "qty": "25",
-          "label": "Esher Devar",
-          "note": "Systems; cut from Devar gems",
-          "alt": null,
-          "done": false
-        },
-        { "qty": "2", "label": "Morphics", "note": "Systems", "alt": null, "done": false }
-      ],
-      "conditions": [
-        "Aborting a mission loses everything mined and fished that run; save by returning through the Cetus gate or completing the bounty."
-      ],
-      "bonuses": [
-        "Loot radar (Animal Instinct, Loot Detector aura or Thief's Wit) plus Archwing along the lake shores is the standard way to find Cetus Wisps; Itzal's third ability grabs them in passing.",
-        "Bounty rewards also pay out Cetus Wisps."
-      ],
-      "disclosures": [
-        {
-          "title": "finding wisps fast",
-          "body": "Fly the lake shores at any hour; they show up more at night but aren't exclusive to it. If a lake near the gate is empty, leave and reload the map rather than searching every corner. About one wisp a minute is a normal pace this way. You only need 2."
-        }
-      ]
     },
     {
       "type": "foundry",

@@ -3,14 +3,14 @@
   "kind": "secondary",
   "effort": 2,
   "tradeable": false,
-  "progress": { "have": 0, "need": 1, "unit": "weapon + Incarnon Genesis" },
-  "badges": [
-    { "text": "Steel Path Circuit · Week 5", "tone": "warn" },
-    { "text": "MR 5", "tone": "info" }
-  ],
-  "prices": [
-    { "label": "blueprint", "amount": "30,000 cr", "money": false },
-    { "label": "Genesis install", "amount": "20 Pathos Clamps + Duviri mats", "money": false }
+  "progress": { "have": 0, "need": 1, "unit": "weapon" },
+  "badges": [{ "text": "MR 5", "tone": "info" }],
+  "prices": [{ "label": "blueprint", "amount": "30,000 cr", "money": false }],
+  "materials": [
+    { "qty": "2", "label": "Argon Crystal", "note": null },
+    { "qty": "1,500", "label": "Salvage", "note": null },
+    { "qty": "1,300", "label": "Polymer Bundle", "note": null },
+    { "qty": "800", "label": "Rubedo", "note": null }
   ],
   "groups": [
     {
@@ -30,25 +30,6 @@
       ],
       "conditions": [
         "Build a second Atomos if you also want Twin Basolk - crafting it consumes one."
-      ],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "THE VOID",
-      "sub": null,
-      "activity": "any Void mission",
-      "meta": "1-2 per deposit, ~2 deposits a map",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [{ "qty": "2", "label": "Argon Crystal", "note": null, "alt": null, "done": false }],
-      "conditions": [
-        "Argon halves every day at 00:00 UTC once picked up; farm it right before the build, not days ahead."
       ],
       "bonuses": [],
       "disclosures": []
@@ -77,173 +58,6 @@
       "conditions": [],
       "bonuses": [],
       "disclosures": []
-    },
-    {
-      "type": "gate",
-      "place": "DUVIRI / ZARIMAN",
-      "sub": null,
-      "activity": "unlock the Steel Path Circuit and Cavalero",
-      "meta": "The Duviri Paradox + Angels of the Zariman + Steel Path",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "The Duviri Paradox",
-          "note": "unlocks Duviri and The Circuit",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Angels of the Zariman",
-          "note": "unlocks Cavalero",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "The Steel Path",
-          "note": "required for the Genesis reward track",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "The base weapon can be built before these quests; the Incarnon Genesis cannot."
-      ],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "THE STEEL PATH CIRCUIT, DUVIRI",
-      "sub": "Rotation E / Week 5: Torid, Dual Toxocyst, Dual Ichor, Miter, Atomos",
-      "activity": "choose Atomos Incarnon Genesis first, then complete Circuit stages",
-      "meta": "Tier 5 · 1,785 progress · about 12 stages",
-      "mode": "solo recommended",
-      "live": null,
-      "skip": null,
-      "earns": { "currency": "Atomos Incarnon Genesis", "amount": "1" },
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "1",
-          "label": "Atomos Incarnon Genesis",
-          "note": "choose it first from the weekly pair",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "1,785",
-          "label": "Circuit progress",
-          "note": "Tier 5; the first adapter is enough",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Atomos is only offered during Rotation E (Week 5 of the 9-week Steel Path Circuit cycle). Confirm the live offering at Cavalero.",
-        "Pick order sets the payout tier: choosing Atomos first pays it out at Tier 5 instead of the roughly 3x-longer Tier 10.",
-        "The Circuit itself supplies none of the install materials below."
-      ],
-      "bonuses": [],
-      "disclosures": [
-        {
-          "title": "missing the week",
-          "body": "Atomos is Week 5 of 9. Missing it means waiting roughly two months for the next cycle. The adapter can also be bought from Cavalero for platinum, but only during the week it's live, and it still comes with the install resources owed."
-        }
-      ]
-    },
-    {
-      "type": "farm",
-      "place": "THE DUVIRI EXPERIENCE",
-      "sub": "Orowyrm finale and Maw Feeding",
-      "activity": "collect installation materials outside the Circuit",
-      "meta": "20 Clamps, 70 Shrubs, 80 Lamentus",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "20",
-          "label": "Pathos Clamp",
-          "note": "10 per normal Orowyrm kill; two kills covers it",
-          "alt": "15 per kill on Steel Path, or the Isleweaver Duet boss, or Undercroft side portals",
-          "done": false
-        },
-        {
-          "qty": "70",
-          "label": "Yao Shrub",
-          "note": "snowy Duviri plants: Titan's Rest, Soprano Springs, Netherbarrow, Custos Arch, Throneguard Barracks; 3-5 per plant",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "80",
-          "label": "Lamentus",
-          "note": "drops from Dax enemies on the Duviri landscape, not the Undercroft",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "craft",
-      "place": "CAVALERO, CHRYSALITH",
-      "sub": "Zariman",
-      "activity": "install Atomos Incarnon Genesis, then complete Evolutions",
-      "meta": "20 Clamps + 70 Shrubs + 80 Lamentus",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [
-        { "currency": "Pathos Clamp", "amount": "20" },
-        { "currency": "Yao Shrub", "amount": "70" },
-        { "currency": "Lamentus", "amount": "80" }
-      ],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Install Genesis on Atomos",
-          "note": "adapter is consumed",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Complete Incarnon Evolutions",
-          "note": "Evo II: 100 kills in Incarnon Form; Evo III: 30 kills with 4+ status effects; each grants 5,000 affinity",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Charging needs 21 weakpoint hits; MOA backpacks, corpses and invulnerable targets don't count, and multishot doesn't speed it up.",
-        "Evo III (4+ statuses) is the common sticking point: prime with Citrine's Prismatic Gem, Voruna's Fangs of Raksh, Secondary Encumber, or unmodded Cedo alt-fire, and lower Ability Strength so the priming ability doesn't steal the kill."
-      ],
-      "bonuses": [
-        "Many players install the Genesis purely for the Evo II-IV base-stat boosts to the beam and ignore the transformed Blast-grenade form entirely."
-      ],
-      "disclosures": [
-        {
-          "title": "the Incarnon form knocks you down",
-          "body": "A widely-upvoted thread was about self-ragdoll from the Incarnon grenades. The fix is Primed Sure Footed, or just don't fire it point-blank."
-        }
-      ]
     }
   ]
 }

@@ -30,6 +30,12 @@
       "money": false
     }
   ],
+  "materials": [
+    { "qty": "10", "label": "Esher Devar", "note": null },
+    { "qty": "10", "label": "Smooth Phasmin", "note": null },
+    { "qty": "10", "label": "Recaster Neural Relay", "note": null },
+    { "qty": "5", "label": "Longwinder Lathe Coagulant", "note": null }
+  ],
   "groups": [
     {
       "type": "gate",
@@ -94,16 +100,15 @@
           "done": false
         }
       ],
-      "conditions": ["The cap resets at midnight UTC and counts fishing and mining standing too."],
-      "bonuses": [
-        "Conservation with a sleep or invisibility frame (Equinox, Ivara, Loki), a tranquilizer rifle and an echo lure is the fastest source; one thread put it under half an hour to the cap."
-      ],
+      "conditions": [],
+      "bonuses": [],
       "disclosures": [
         {
           "title": "Exploiter Orb",
           "body": "Drops gems for a day's worth of standing plus a Toroid worth about 12,000. Needs Thermia fractures sealed and an Archwing."
         }
-      ]
+      ],
+      "ref": "Solaris United Standing"
     },
     {
       "type": "vendor",
@@ -117,7 +122,7 @@
       "earns": null,
       "spends": [
         {
-          "currency": "Solaris United standing",
+          "currency": "Solaris United Standing",
           "amount": "10,000"
         }
       ],
@@ -136,80 +141,56 @@
       "disclosures": []
     },
     {
-      "type": "farm",
-      "place": "PLAINS OF EIDOLON, EARTH",
+      "type": "vendor",
+      "place": "OLD MAN SUUMBAAT, CETUS",
       "sub": null,
-      "activity": "mine blue veins and refine",
-      "meta": null,
+      "activity": "buy the Esher Devar refining blueprint",
+      "meta": "Ostron Offworlder",
       "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [
-        {
-          "currency": "Ostron standing",
-          "amount": "2,500"
-        }
-      ],
-      "map": "plains-of-eidolon",
+      "spends": [{ "currency": "Ostron Standing", "amount": "2,500" }],
+      "map": "cetus",
       "rows": [
         {
-          "qty": "10",
-          "label": "Esher Devar",
-          "note": "mine 10 Devar, refine at Old Man Suumbaat; refining blueprint 2,500 standing, Offworlder, reusable",
+          "qty": null,
+          "label": "Esher Devar Blueprint",
+          "note": "2,500 standing, Offworlder, reusable",
           "alt": null,
           "done": false
         }
       ],
       "conditions": [],
       "bonuses": [],
-      "disclosures": []
+      "disclosures": [],
+      "ref": "Ostron Standing"
     },
     {
-      "type": "farm",
-      "place": "ORB VALLIS, VENUS",
+      "type": "vendor",
+      "place": "SMOKEFINGER, FORTUNA",
       "sub": null,
-      "activity": "mine blue veins, fish ponds and lakes",
-      "meta": null,
+      "activity": "buy the Smooth Phasmin refining blueprint",
+      "meta": "Solaris United Neutral",
       "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [
-        {
-          "currency": "Solaris United standing",
-          "amount": "1,000"
-        }
-      ],
-      "map": "orb-vallis",
+      "spends": [{ "currency": "Solaris United Standing", "amount": "1,000" }],
+      "map": "fortuna",
       "rows": [
         {
-          "qty": "10",
-          "label": "Smooth Phasmin",
-          "note": "mine Phasmin, refine; Smokefinger sells the blueprint for 1,000 standing at Neutral",
-          "alt": "Phasmin also drops from containers",
-          "done": false
-        },
-        {
-          "qty": "10",
-          "label": "Recaster Neural Relay",
-          "note": "cold weather, Narrow-Spectrum Bait; dismantle at The Business",
-          "alt": "or Orb Vallis containers",
-          "done": false
-        },
-        {
-          "qty": "5",
-          "label": "Longwinder Lathe Coagulant",
-          "note": "warm weather, Longwinder Bait, rare; dismantle at The Business",
+          "qty": null,
+          "label": "Smooth Phasmin Blueprint",
+          "note": "1,000 standing, Neutral, reusable",
           "alt": null,
           "done": false
         }
       ],
-      "conditions": [
-        "Recasters need cold weather and Longwinders warm, so you wait through a weather cycle to get both."
-      ],
+      "conditions": [],
       "bonuses": [],
-      "disclosures": []
+      "disclosures": [],
+      "ref": "Solaris United Standing"
     },
     {
       "type": "foundry",

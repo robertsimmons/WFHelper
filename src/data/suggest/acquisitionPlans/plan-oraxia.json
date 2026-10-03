@@ -12,6 +12,18 @@
     { "label": "build", "amount": "70,000 cr", "money": false },
     { "label": "built", "amount": "370 p", "money": false }
   ],
+  "materials": [
+    { "qty": "4", "label": "Neural Sensors", "note": "Neuroptics" },
+    { "qty": "2", "label": "Morphics", "note": "Chassis" },
+    { "qty": "2", "label": "Argon Crystal", "note": "Systems" },
+    { "qty": "3", "label": "Orokin Cell", "note": null },
+    { "qty": "200", "label": "Kovnik", "note": "Neuroptics" },
+    { "qty": "400", "label": "Necracoil", "note": "Chassis" },
+    { "qty": "200", "label": "Aggristone", "note": "Chassis" },
+    { "qty": "75", "label": "Tasoma Extract", "note": "Systems" },
+    { "qty": "150", "label": "Temporal Dust", "note": null },
+    { "qty": "2,300", "label": "Entrati Obols", "note": "Neuroptics + Systems combined" }
+  ],
   "groups": [
     {
       "type": "gate",
@@ -101,74 +113,6 @@
       "disclosures": []
     },
     {
-      "type": "farm",
-      "place": "DUVIRI",
-      "sub": null,
-      "activity": "solo Duviri Experience for the open-world materials",
-      "meta": "Isleweaver's map barely touches these nodes",
-      "mode": "solo",
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": "duviri",
-      "rows": [
-        { "qty": "200", "label": "Kovnik", "note": "Neuroptics", "alt": null, "done": false },
-        { "qty": "400", "label": "Necracoil", "note": "Chassis", "alt": null, "done": false },
-        { "qty": "200", "label": "Aggristone", "note": "Chassis", "alt": null, "done": false },
-        {
-          "qty": "75",
-          "label": "Tasoma Extract",
-          "note": "Systems; the real bottleneck",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "150",
-          "label": "Temporal Dust",
-          "note": "Isleweaver only; accumulates while farming husks",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "2,300",
-          "label": "Entrati Obols",
-          "note": "Neuroptics + Systems combined",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Neural Sensors",
-          "note": "Neuroptics",
-          "alt": null,
-          "done": false
-        },
-        { "qty": null, "label": "Morphics", "note": "Chassis", "alt": null, "done": false },
-        {
-          "qty": null,
-          "label": "Argon Crystal",
-          "note": "Systems; decays after pickup",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Kovnik, Aggristone and Tasoma barely drop in Isleweaver; farm them in the regular Duviri Experience instead.",
-        "Your gathered resources are only saved up to your last earned decree; grab a chest or side objective before aborting, or you lose everything since the last one.",
-        "Argon Crystal decays; claim the Systems build promptly once started."
-      ],
-      "bonuses": [
-        "Reroll decrees at a cave entrance until Bountiful Harvest (double plant resources), stack a Resource Booster, and take Riding Intrinsic rank 5 (Smooth Path) to see resource icons on the minimap while mounted; reported 8-16 Tasoma per plant versus a base 2-4."
-      ],
-      "disclosures": [
-        {
-          "title": "farm Tasoma solo",
-          "body": "Nodes are shared per instance: joining a run in progress often means the host already stripped every cave, and other players can force an Undercroft transition that deletes the ones you were heading toward."
-        }
-      ]
-    },
-    {
       "type": "foundry",
       "place": "FOUNDRY",
       "sub": null,
@@ -184,28 +128,28 @@
         {
           "qty": null,
           "label": "Neuroptics",
-          "note": "15,000 cr, 50 Temporal Dust, 1,500 Entrati Obols, 200 Kovnik, Neural Sensors",
+          "note": "15,000 cr, 50 Temporal Dust, 1,500 Entrati Obols, 200 Kovnik, 4 Neural Sensors",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Chassis",
-          "note": "15,000 cr, 50 Temporal Dust, 400 Necracoil, 200 Aggristone, Morphics",
+          "note": "15,000 cr, 50 Temporal Dust, 400 Necracoil, 200 Aggristone, 2 Morphics",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Systems",
-          "note": "15,000 cr, 50 Temporal Dust, 800 Entrati Obols, 75 Tasoma Extract, Argon Crystal",
+          "note": "15,000 cr, 50 Temporal Dust, 800 Entrati Obols, 75 Tasoma Extract, 2 Argon Crystal",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Oraxia",
-          "note": "25,000 cr, 3 Orokin Cells, one of each component, 3 days",
+          "note": "25,000 cr, 3 Orokin Cell, 3 days",
           "alt": null,
           "done": false
         }

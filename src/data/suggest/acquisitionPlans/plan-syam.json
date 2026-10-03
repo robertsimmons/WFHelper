@@ -12,6 +12,12 @@
     { "label": "Teshin's Cave (plat alt)", "amount": "250 p", "money": false },
     { "label": "build", "amount": "30,000 cr", "money": false }
   ],
+  "materials": [
+    { "qty": "30", "label": "Rune Marrow", "note": null },
+    { "qty": "30", "label": "Dracroot", "note": null },
+    { "qty": "30", "label": "Eevani", "note": null },
+    { "qty": "4", "label": "Maw Fang", "note": null }
+  ],
   "groups": [
     {
       "type": "gate",
@@ -29,7 +35,7 @@
         {
           "qty": null,
           "label": "The Duviri Paradox",
-          "note": "MR 0 — no mastery gate on Syam itself",
+          "note": "MR 0: no mastery gate on Syam itself",
           "alt": null,
           "done": false
         }
@@ -47,7 +53,7 @@
       "mode": null,
       "live": null,
       "skip": null,
-      "earns": { "currency": "Pathos Clamps", "amount": "50" },
+      "earns": { "currency": "Pathos Clamp", "amount": "50" },
       "spends": [],
       "map": "duviri",
       "rows": [
@@ -68,26 +74,27 @@
         {
           "qty": "15",
           "label": "Orowyrm chest, Steel Path, no side portals",
-          "note": "slower — only worth it alongside the side portals",
+          "note": "slower: only worth it alongside the side portals",
           "alt": null,
           "done": false
         }
       ],
       "conditions": [
-        "The Circuit gives zero Pathos Clamps — it's relevant to Syam only as a Rune Marrow source.",
+        "The Circuit gives zero Pathos Clamps: it's relevant to Syam only as a Rune Marrow source.",
         "Only the optional side Undercroft portals pay clamps; story-stage portals pay nothing.",
         "Clamps ignore every Resource Booster, Drop Chance Booster, blessing and Retriever mod."
       ],
       "bonuses": [
         "Isleweaver never puts you in Drifter form, so your real Warframe and amp carry the mission regardless of the cave's randomized loadout.",
-        "Bank decrees on the non-combat objectives (Maw feeding, Komi, Shawzin, musical chests) before touching combat — free decrees that rescue a bad loadout, and Maw feeding is also where the 4 Maw Fang come from."
+        "Bank decrees on the non-combat objectives (Maw feeding, Komi, Shawzin, musical chests) before touching combat: free decrees that rescue a bad loadout, and Maw feeding is also where the 4 Maw Fang come from."
       ],
       "disclosures": [
         {
           "title": "Isleweaver alone isn't enough",
-          "body": "Maw Fang exists only in The Duviri Experience — not The Lone Story, not The Circuit, not Isleweaver. Farming all 50 clamps in Isleweaver leaves you unable to build the sword; run at least one full Duviri Experience with a Maw feeding."
+          "body": "Maw Fang exists only in The Duviri Experience, not The Lone Story, not The Circuit, not Isleweaver. Farming all 50 clamps in Isleweaver leaves you unable to build the sword; run at least one full Duviri Experience with a Maw feeding."
         }
-      ]
+      ],
+      "ref": "Pathos Clamp"
     },
     {
       "type": "vendor",
@@ -99,7 +106,7 @@
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Pathos Clamps", "amount": "50" }],
+      "spends": [{ "currency": "Pathos Clamp", "amount": "50" }],
       "map": null,
       "rows": [
         {
@@ -111,57 +118,9 @@
         }
       ],
       "conditions": [
-        "Acrithis does not sell Syam — her stock is Reactors, Catalysts, Adapters, Forma, Kuva and Rivens, not weapons."
+        "Acrithis does not sell Syam: her stock is Reactors, Catalysts, Adapters, Forma, Kuva and Rivens, not weapons."
       ],
       "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "DUVIRI",
-      "sub": null,
-      "activity": "gather the build materials",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": "duviri",
-      "rows": [
-        {
-          "qty": "30",
-          "label": "Rune Marrow",
-          "note": "Runic Compact deposits in the Undercroft or Circuit",
-          "alt": "guaranteed from Corrupted Vor and Corrupted Jackal",
-          "done": false
-        },
-        {
-          "qty": "30",
-          "label": "Dracroot",
-          "note": "cliffs on the central island: Lonesome Outlook, Fair Shores Hamlet, Watershed Hamlet, Hermit Landing, Moirai Crossing",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "30",
-          "label": "Eevani",
-          "note": "Archarbor, denser than the Amphitheater — wait for a Joy, Sorrow or Envy spiral",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "4",
-          "label": "Maw Fang",
-          "note": "Maw Feeding activity, Duviri Experience only",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [
-        "SPROUT in Teshin's Cave grows 6 random Duviri plants every 20 hours — harvest it every time you load in, since that's already a stop before every Duviri run."
-      ],
       "disclosures": []
     },
     {
@@ -186,7 +145,7 @@
         }
       ],
       "conditions": [
-        "Turn off \"Camera Tracks Melee Target\" in Gameplay settings first — the heavy-attack wave can't be aimed reliably with it on."
+        "Turn off \"Camera Tracks Melee Target\" in Gameplay settings first: the heavy-attack wave can't be aimed reliably with it on."
       ],
       "bonuses": [
         "Pairs with Kullervo or a subsumed Wrathful Advance for the crit-conversion wave-shred build; Lavos with its augment is the other named pairing."

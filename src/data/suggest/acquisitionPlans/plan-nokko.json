@@ -9,6 +9,20 @@
     { "text": "Rank 4 Gardener gate", "tone": "warn" }
   ],
   "prices": [{ "label": "blueprint", "amount": "25,000 cr", "money": false }],
+  "materials": [
+    { "qty": "1,200", "label": "Nano Spores", "note": "500 Neuroptics, 700 Chassis" },
+    { "qty": "500", "label": "Alloy Plate", "note": "Chassis" },
+    { "qty": "250", "label": "Circuits", "note": "Systems" },
+    { "qty": "3", "label": "Neurodes", "note": "Neuroptics" },
+    { "qty": "3", "label": "Gallium", "note": "Chassis" },
+    { "qty": "2", "label": "Argon Crystal", "note": "Systems" },
+    { "qty": "3", "label": "Orokin Cell", "note": "Nokko" },
+    { "qty": "10", "label": "Echowinder Anoscopic Sensor", "note": "Neuroptics" },
+    { "qty": "50", "label": "Tepa Nodule", "note": "Neuroptics" },
+    { "qty": "30", "label": "Thermal Sludge", "note": "Chassis" },
+    { "qty": "40", "label": "Mytocardia Spore", "note": "Systems" },
+    { "qty": "20", "label": "Gorgaricus Spore", "note": "Systems" }
+  ],
   "groups": [
     {
       "type": "gate",
@@ -121,55 +135,6 @@
           "body": "You will almost certainly exhaust the drop-table route before Rank 4 opens, so treat Fergolyte as a slow safety net, not a fast track. The same currency also buys Archgun Arcane Adapters and several arcanes; spend on Nokko parts last."
         }
       ]
-    },
-    {
-      "type": "farm",
-      "place": "ORB VALLIS, VENUS",
-      "sub": null,
-      "activity": "fish, gather and mine the component materials",
-      "meta": "all local to Orb Vallis",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": "orb-vallis",
-      "rows": [
-        {
-          "qty": "10",
-          "label": "Echowinder Anoscopic Sensor",
-          "note": "Neuroptics; fish Echowinder in Warm weather, dismantle at The Business",
-          "alt": null,
-          "done": false
-        },
-        { "qty": null, "label": "Tepa Nodule", "note": "Neuroptics", "alt": null, "done": false },
-        { "qty": null, "label": "Neurodes", "note": "Neuroptics", "alt": null, "done": false },
-        {
-          "qty": null,
-          "label": "Nano Spores",
-          "note": "Neuroptics, Chassis",
-          "alt": null,
-          "done": false
-        },
-        { "qty": "30", "label": "Thermal Sludge", "note": "Chassis", "alt": null, "done": false },
-        { "qty": null, "label": "Alloy Plate", "note": "Chassis", "alt": null, "done": false },
-        { "qty": null, "label": "Gallium", "note": "Chassis", "alt": null, "done": false },
-        { "qty": null, "label": "Mytocardia Spore", "note": "Systems", "alt": null, "done": false },
-        { "qty": null, "label": "Gorgaricus Spore", "note": "Systems", "alt": null, "done": false },
-        { "qty": null, "label": "Circuits", "note": "Systems", "alt": null, "done": false },
-        {
-          "qty": "2",
-          "label": "Argon Crystal",
-          "note": "Systems; decays after pickup, farm last",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Argon Crystal decays within 24 hours of pickup; farm it only once the Systems blueprint is in hand."
-      ],
-      "bonuses": [],
-      "disclosures": []
     },
     {
       "type": "foundry",

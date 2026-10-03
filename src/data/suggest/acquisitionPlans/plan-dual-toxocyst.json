@@ -3,73 +3,25 @@
   "kind": "secondary",
   "effort": 2,
   "tradeable": false,
-  "progress": { "have": 0, "need": 1, "unit": "weapon + Incarnon Genesis" },
-  "badges": [
-    { "text": "Steel Path Circuit · Week 5", "tone": "warn" },
-    { "text": "Bio Lab", "tone": "warn" }
-  ],
+  "progress": { "have": 0, "need": 1, "unit": "weapon" },
+  "badges": [{ "text": "Bio Lab", "tone": "warn" }],
   "prices": [
     { "label": "blueprint (Bio Lab)", "amount": "15,000 cr", "money": false },
-    { "label": "built", "amount": "175 p", "money": false },
-    { "label": "Genesis install", "amount": "20 Pathos Clamps + Duviri mats", "money": false }
+    { "label": "built", "amount": "175 p", "money": false }
+  ],
+  "materials": [
+    { "qty": "4", "label": "Mutagen Mass", "note": null },
+    { "qty": "6,500", "label": "Nano Spores", "note": null },
+    { "qty": "1,100", "label": "Plastids", "note": null },
+    { "qty": "1", "label": "Forma", "note": null },
+    { "qty": "15,000", "label": "Credits", "note": null }
   ],
   "groups": [
-    {
-      "type": "research",
-      "place": "CLAN DOJO, BIO LAB",
-      "sub": null,
-      "activity": "check that the Dual Toxocyst research chain is complete",
-      "meta": "4 sequential researches, 72h each if none are done",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Mutagen Mass",
-          "note": "prerequisite research",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Torid",
-          "note": "prerequisite research",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Acrid",
-          "note": "prerequisite research",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Dual Toxocyst",
-          "note": "Ghost tier: 5,000 cr, 20 Mutagen Sample, 200 Circuits, 750 Nano Spores, 400 Cryotic",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Each of the four researches takes 72h if none are already done, and the cost multiplies by clan tier — x3 Shadow, x10 Storm, x30 Mountain, x100 Moon.",
-        "An established clan has usually already finished this chain; check the Bio Lab before assuming you need to grind it."
-      ],
-      "bonuses": [
-        "Drop the clan to Ghost tier before researching if you are doing this solo — costs scale x3/x10/x30/x100 by tier regardless of member count."
-      ],
-      "disclosures": []
-    },
     {
       "type": "vendor",
       "place": "CLAN DOJO, BIO LAB",
       "sub": null,
-      "activity": "buy the personal blueprint",
+      "activity": "buy the blueprint",
       "meta": "15,000 cr",
       "mode": null,
       "live": null,
@@ -81,12 +33,12 @@
         {
           "qty": null,
           "label": "Dual Toxocyst Blueprint",
-          "note": "requires completed research",
+          "note": null,
           "alt": "or 175 p, Market",
           "done": false
         }
       ],
-      "conditions": ["Each player buys their own blueprint after clan research completes."],
+      "conditions": [],
       "bonuses": [],
       "disclosures": []
     },
@@ -103,191 +55,17 @@
       "spends": [],
       "map": null,
       "rows": [
-        { "qty": "30,000", "label": "Credits", "note": null, "alt": null, "done": false },
-        { "qty": "4", "label": "Mutagen Mass", "note": null, "alt": null, "done": false },
-        { "qty": "6,500", "label": "Nano Spores", "note": null, "alt": null, "done": false },
-        { "qty": "1,100", "label": "Plastids", "note": null, "alt": null, "done": false },
-        { "qty": "1", "label": "Forma", "note": null, "alt": null, "done": false }
+        {
+          "qty": null,
+          "label": "Dual Toxocyst",
+          "note": "30,000 credits, 4 Mutagen Mass, 6,500 Nano Spores, 1,100 Plastids, 1 Forma",
+          "alt": null,
+          "done": false
+        }
       ],
       "conditions": [],
       "bonuses": [],
       "disclosures": []
-    },
-    {
-      "type": "gate",
-      "place": "DUVIRI / ZARIMAN",
-      "sub": null,
-      "activity": "unlock the Steel Path Circuit and Cavalero",
-      "meta": "The Duviri Paradox + Angels of the Zariman + Steel Path",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "The Duviri Paradox",
-          "note": "unlocks Duviri and The Circuit",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Angels of the Zariman",
-          "note": "unlocks Cavalero",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "The Steel Path",
-          "note": "required for the Genesis reward track",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "The base weapon can be built before these quests; the Incarnon Genesis cannot."
-      ],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "THE STEEL PATH CIRCUIT, DUVIRI",
-      "sub": "Week 5: Torid, Dual Toxocyst, Dual Ichor, Miter, Atomos",
-      "activity": "choose Dual Toxocyst Incarnon Genesis, then complete Circuit stages",
-      "meta": "Tier 5 for the first pick, Tier 10 for the second",
-      "mode": "solo recommended",
-      "live": null,
-      "skip": null,
-      "earns": { "currency": "Dual Toxocyst Incarnon Genesis", "amount": "1" },
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "1",
-          "label": "Dual Toxocyst Incarnon Genesis",
-          "note": "choose it as your first pick, not second",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "12",
-          "label": "Circuit stages",
-          "note": "Tier 5; the first pick is enough",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "34",
-          "label": "Circuit stages",
-          "note": "Tier 10; only if taking the second weekly Genesis too (33 with the once-daily bonus progress)",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Dual Toxocyst is only offered during Week 5 of the nine-week rotation, alongside Torid, Dual Ichor, Miter and Atomos; confirm the live offering at Cavalero.",
-        "First choice lands at Tier 5 (12 stages), second at Tier 10 (34 stages) — roughly triple the time for the same item.",
-        "A failed or aborted stage gives nothing for that stage; only completed stages bank progress."
-      ],
-      "bonuses": [],
-      "disclosures": [
-        {
-          "title": "missing the week is the grind",
-          "body": "Nine weeks to the next Week 5, and buying with platinum does not escape it — Cavalero only sells the adapters that are in the current rotation, 120p each, once per adapter. Both the weapon and the Genesis are untradeable, so nobody can hand you a finished one."
-        }
-      ]
-    },
-    {
-      "type": "farm",
-      "place": "THE DUVIRI EXPERIENCE",
-      "sub": "Orowyrm finale and open-world foraging",
-      "activity": "collect installation materials outside the Circuit",
-      "meta": "20 Clamps, 70 Yao Shrubs, 80 Eevani",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "20",
-          "label": "Pathos Clamp",
-          "note": "15 per Steel Path Orowyrm kill",
-          "alt": "two normal Orowyrm kills at 10 each",
-          "done": false
-        },
-        {
-          "qty": "70",
-          "label": "Yao Shrub",
-          "note": "snowy Duviri areas — Titan's Rest, Soprano Springs, Netherbarrow",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "80",
-          "label": "Eevani",
-          "note": "common pickup around the Amphitheatre",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Pathos Clamps do not benefit from Resource Boosters or Bountiful Harvest; Yao Shrub and Eevani do."
-      ],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "craft",
-      "place": "CAVALERO, CHRYSALITH",
-      "sub": "Zariman",
-      "activity": "install Dual Toxocyst Incarnon Genesis, then complete Evolutions",
-      "meta": "20 Clamps + 70 Yao Shrubs + 80 Eevani",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [
-        { "currency": "Pathos Clamp", "amount": "20" },
-        { "currency": "Yao Shrub", "amount": "70" },
-        { "currency": "Eevani", "amount": "80" }
-      ],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Install Genesis on Dual Toxocyst",
-          "note": "adapter is consumed",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Complete Incarnon Evolutions",
-          "note": "skip Ready Retaliation (EVO3) and Neurotoxin (EVO4), both currently non-functional; take Marksman's Hand or Evolved Autoloader at EVO3, Commodore's Fortune at EVO4",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "The EVO4 challenge (17 consecutive headshots) is cheesed on a Teralyst's invulnerable head at night on the Plains of Eidolon; body shots and companion damage reset the counter, status damage does not."
-      ],
-      "bonuses": [
-        "Mod for Gas: gas cloud ticks refresh the Frenzy headshot buff, keeping +150% fire rate and infinite ammo running without landing a headshot every few seconds.",
-        "Pair with Secondary Encumber: Carnage Reign scales off status types on the target, and Encumber primes it directly."
-      ],
-      "disclosures": [
-        {
-          "title": "Carnage Reign needs Energy Max ≥ 200",
-          "body": "The evolution's +33% direct damage per status type does nothing below that threshold; check the frame before picking it over Fevered Frenzy, whose +5% multishot per ability cast stacks to 20x and persists for the whole mission."
-        }
-      ]
     }
   ]
 }

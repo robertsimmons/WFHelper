@@ -13,6 +13,16 @@
     { "label": "build", "amount": "30,000 cr", "money": false },
     { "label": "Kraken", "amount": "45,000 cr", "money": false }
   ],
+  "materials": [
+    { "qty": "4,800", "label": "Cryotic", "note": "Kulstar" },
+    { "qty": "3,600", "label": "Plastids", "note": "Kulstar" },
+    { "qty": "2", "label": "Tellurium", "note": "Kulstar" },
+    { "qty": "2", "label": "Neurodes", "note": "Kraken" },
+    { "qty": "200", "label": "Alloy Plate", "note": "Kraken" },
+    { "qty": "750", "label": "Salvage", "note": "Kraken" },
+    { "qty": "120", "label": "Polymer Bundle", "note": "Kraken" },
+    { "qty": "60,000", "label": "Credits", "note": null }
+  ],
   "groups": [
     {
       "type": "vendor",
@@ -49,118 +59,6 @@
       "disclosures": []
     },
     {
-      "type": "farm",
-      "place": "EARLY PLANETS",
-      "sub": null,
-      "activity": "common resources for the Kraken",
-      "meta": "Kraken: 25,000 cr, 24h",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        { "qty": "2", "label": "Neurodes", "note": "Earth", "alt": null, "done": false },
-        { "qty": "200", "label": "Alloy Plate", "note": null, "alt": null, "done": false },
-        {
-          "qty": "750",
-          "label": "Salvage",
-          "note": "Mars, Jupiter, Sedna",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "120",
-          "label": "Polymer Bundle",
-          "note": "Mercury, Venus, Uranus",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Rank the Kraken to 30 before the Kulstar build eats it; it gives its own Mastery and one copy covers both."
-      ],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "HIERACON, PLUTO",
-      "sub": null,
-      "activity": "Excavation, ideally as a Void Fissure",
-      "meta": "100 Cryotic per defended excavator",
-      "mode": "group recommended",
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "4,800",
-          "label": "Cryotic",
-          "note": "48 excavator cycles; the payout is flat, so any Excavation node pays the same",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Difficulty does not raise the amount. Pick the easiest node; Steel Path only makes the excavators harder to keep alive.",
-        "A Resource Booster and Resourceful or Loyal Retriever double Cryotic even though the game does not show it.",
-        "Excavation is poor solo: enemies have to be held off several excavators at once."
-      ],
-      "bonuses": [
-        "An Excavation Void Fissure adds +25% in an endless run and cracks relics along the way.",
-        "A destroyed excavator still pays in proportion to its run time."
-      ],
-      "disclosures": [
-        {
-          "title": "pace",
-          "body": "A group on Hieracon reports about 3,000 Cryotic in a little over 30 minutes with several excavators going; a random pub fissure reported about 2,700 in 30 minutes. Duviri Circuit pays about a tenth of that, so it is a background trickle only (trigger the fourth excavator for an extra 20 to 40)."
-        }
-      ]
-    },
-    {
-      "type": "farm",
-      "place": "OPHELIA, URANUS",
-      "sub": null,
-      "activity": "Survival",
-      "meta": "Steel Path doubles resource drops",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "3,600",
-          "label": "Plastids",
-          "note": "highest on Saturn and Uranus",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "2",
-          "label": "Tellurium",
-          "note": "rare drop from Grineer Sealab enemies",
-          "alt": "or Archwing, Railjack, Kuva Fortress Assault enemies and Reactor Sabotage caches",
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [
-        "Nekros (Desecrate) with Khora (Pilfering Strangledome) covers both; camp one room, with a booster and blessing."
-      ],
-      "disclosures": [
-        {
-          "title": "Tellurium rates",
-          "body": "Reports run from 9 drops in 20 minutes on Steel Path Ophelia (doubled by a booster) to 30+ in 20 minutes with Nekros, Hydroid and Khora. You need only 2. Archwing Mobile Defense on Neptune (Salacia) gives about 1 to 2 per run."
-        }
-      ]
-    },
-    {
       "type": "foundry",
       "place": "FOUNDRY",
       "sub": null,
@@ -188,7 +86,9 @@
           "done": false
         }
       ],
-      "conditions": [],
+      "conditions": [
+        "Rank the Kraken to 30 before the Kulstar build eats it; it gives its own Mastery and one copy covers both."
+      ],
       "bonuses": [],
       "disclosures": []
     }

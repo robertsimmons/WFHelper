@@ -12,6 +12,21 @@
     { "label": "pity buy (Rank 3)", "amount": "670 Fergolyte", "money": false },
     { "label": "build", "amount": "70,000 cr", "money": false }
   ],
+  "materials": [
+    { "qty": "500", "label": "Alloy Plate", "note": "Barrel" },
+    { "qty": "300", "label": "Circuits", "note": "Receiver" },
+    { "qty": "500", "label": "Polymer Bundle", "note": "Stock" },
+    { "qty": "5", "label": "Spring Popper", "note": "Barrel" },
+    { "qty": "5", "label": "Ferrofungus", "note": "Barrel" },
+    { "qty": "30", "label": "Mytocardia Spore", "note": "Barrel" },
+    { "qty": "5", "label": "Reeking Puffball", "note": "Receiver" },
+    { "qty": "5", "label": "Gamma Berry", "note": "Receiver" },
+    { "qty": "150", "label": "Gorgaricus Spore", "note": "Stock" },
+    { "qty": "5", "label": "Violet's Bane", "note": "Stock" },
+    { "qty": "5", "label": "Borica", "note": "Stock" },
+    { "qty": "5", "label": "Dull Button", "note": "main blueprint" },
+    { "qty": "30", "label": "Thermal Sludge", "note": null }
+  ],
   "groups": [
     {
       "type": "gate",
@@ -35,7 +50,7 @@
         }
       ],
       "conditions": [
-        "Nightcap sits in The Airlock, a fungus-covered vent immediately left of the Fortuna spawn — easy to miss on a first visit."
+        "Nightcap sits in The Airlock, a fungus-covered vent immediately left of the Fortuna spawn: easy to miss on a first visit."
       ],
       "bonuses": [],
       "disclosures": []
@@ -105,95 +120,9 @@
       "disclosures": [
         {
           "title": "the hack/power-cell bonus",
-          "body": "The bonus objective is 'kill 35 enemies', but the blinking waypoint marks the console, so public squads hack first and void the bonus mushroom. Kill the 35 first, hack second, and say so in chat — you just need to be in the zone, not kill inside it."
+          "body": "The bonus objective is 'kill 35 enemies', but the blinking waypoint marks the console, so public squads hack first and void the bonus mushroom. Kill the 35 first, hack second, and say so in chat: you just need to be in the zone, not kill inside it."
         }
       ]
-    },
-    {
-      "type": "farm",
-      "place": "DEEPMINES + ORB VALLIS, VENUS",
-      "sub": null,
-      "activity": "gather zone-locked mushrooms while running bounties, mine Orb Vallis for the rest, or buy the gap at Nightcap",
-      "meta": "35 crafting mushrooms total, 10 Fergolyte each to buy",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": "orb-vallis",
-      "rows": [
-        {
-          "qty": "5",
-          "label": "Spring Popper",
-          "note": "Barrel; Forward Base zone (Corporate Restructuring)",
-          "alt": "buy at Nightcap, 10 Fergolyte",
-          "done": false
-        },
-        {
-          "qty": "5",
-          "label": "Ferrofungus",
-          "note": "Barrel; Lab zone (Critter Liberation)",
-          "alt": "buy at Nightcap, 10 Fergolyte",
-          "done": false
-        },
-        {
-          "qty": "30",
-          "label": "Mytocardia Spore",
-          "note": "Barrel; shoot Orb Vallis sacs",
-          "alt": "or 20 at once, Weed The Gardens rotation B",
-          "done": false
-        },
-        {
-          "qty": "5",
-          "label": "Reeking Puffball",
-          "note": "Receiver; starting-cave common",
-          "alt": "buy at Nightcap, 10 Fergolyte",
-          "done": false
-        },
-        {
-          "qty": "5",
-          "label": "Gamma Berry",
-          "note": "Receiver; Lab zone",
-          "alt": "buy at Nightcap, 10 Fergolyte",
-          "done": false
-        },
-        {
-          "qty": "150",
-          "label": "Gorgaricus Spore",
-          "note": "Stock; purple sacs under Orb Vallis giant mushrooms, shoot and burst",
-          "alt": "or 20 at once, Weed The Gardens rotation B (30% chance), 15 from Fortuna bounties",
-          "done": false
-        },
-        {
-          "qty": "5",
-          "label": "Violet's Bane",
-          "note": "Stock; starting-cave common",
-          "alt": "buy at Nightcap, 10 Fergolyte",
-          "done": false
-        },
-        {
-          "qty": "5",
-          "label": "Borica",
-          "note": "Stock; Nutrient Plant zone",
-          "alt": "buy at Nightcap, 10 Fergolyte",
-          "done": false
-        },
-        {
-          "qty": "5",
-          "label": "Dull Button",
-          "note": "main blueprint; starting-cave common, cheapest analysis",
-          "alt": "buy at Nightcap, 10 Fergolyte",
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Composting a fully analyzed mushroom returns only 1 Fergolyte against the 10 Fergolyte purchase price — fine for overflow, not a strategy.",
-        "Orokin Eye air support marks mushrooms through walls (Golden Instinct does not); use it to check the Nutrient Plant valve room and the Labs gate without sweeping them."
-      ],
-      "bonuses": [
-        "Mushrooms are zone-locked, not rare: the starting cave always holds the four commons (Muck Bonnet, Reeking Puffball, Dull Button, Violet's Bane), and each bounty's second zone holds its own exclusive four — only the 5 end-of-bounty bonus mushrooms roll from the full pool of 16."
-      ],
-      "disclosures": []
     },
     {
       "type": "foundry",
@@ -224,7 +153,7 @@
         },
         {
           "qty": null,
-          "label": "Stock",
+          "label": "Arbucep Stock",
           "note": "5 Violet's Bane, 5 Borica, 150 Gorgaricus Spore, 500 Polymer Bundle",
           "alt": null,
           "done": false
@@ -238,7 +167,7 @@
         }
       ],
       "conditions": [
-        "Duplicate blueprints cannot be composted or traded — build with whatever drops."
+        "Duplicate blueprints cannot be composted or traded: build with whatever drops."
       ],
       "bonuses": [],
       "disclosures": [

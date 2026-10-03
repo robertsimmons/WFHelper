@@ -9,6 +9,13 @@
     { "text": "16 Narmer Isoplast", "tone": "warn" }
   ],
   "prices": [{ "label": "build", "amount": "20,000 cr", "money": false }],
+  "materials": [
+    { "qty": "3,350", "label": "Rubedo", "note": "3,200 build, 150 Coprite Alloy refines" },
+    { "qty": "1,200", "label": "Ferrite", "note": "Coprite Alloy refines" },
+    { "qty": "16", "label": "Narmer Isoplast", "note": null },
+    { "qty": "6", "label": "Radiant Zodian", "note": null },
+    { "qty": "60", "label": "Coprite Alloy", "note": null }
+  ],
   "groups": [
     {
       "type": "gate",
@@ -54,13 +61,6 @@
           "note": "5.45% stage 4, 7.5% stage 5, rotation C only",
           "alt": null,
           "done": false
-        },
-        {
-          "qty": "16",
-          "label": "Narmer Isoplast",
-          "note": "any rotation, about 2.7 per full bounty, 3.4 with every bonus",
-          "alt": null,
-          "done": false
         }
       ],
       "conditions": [
@@ -83,61 +83,6 @@
           "body": "Around 5 full Rotation-C bounties clear the blueprint on average; bad luck can run past 15. Objectives are randomized when you pick the bounty, so you can't choose a short layout."
         }
       ]
-    },
-    {
-      "type": "farm",
-      "place": "ORB VALLIS, VENUS",
-      "sub": null,
-      "activity": "mine Zodian, refine at Smokefinger",
-      "meta": "Solaris United rank Doer",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": "orb-vallis",
-      "rows": [
-        {
-          "qty": "6",
-          "label": "Radiant Zodian",
-          "note": "6 Zodian, 2 builds of 3, 10,000 cr each",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "The reusable Radiant Zodian blueprint costs 8,000 standing from Smokefinger and needs Solaris United Rank 3 (Doer).",
-        "Zodian needs an Advanced Nosam Cutter or Sunpoint Plasma Drill; the starter cutter can't mine it."
-      ],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "PLAINS OF EIDOLON, EARTH",
-      "sub": null,
-      "activity": "mine Coprun, refine at Old Man Suumbaat",
-      "meta": "Ostron rank Offworlder",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": "plains-of-eidolon",
-      "rows": [
-        {
-          "qty": "60",
-          "label": "Coprite Alloy",
-          "note": "60 Coprun, 3 builds of 20",
-          "alt": "or Tusk and Narmer Thumpers",
-          "done": false
-        }
-      ],
-      "conditions": [
-        "The reusable Coprite Alloy blueprint costs 2,500 standing from Old Man Suumbaat and needs Ostron Rank 1 (Offworlder)."
-      ],
-      "bonuses": [],
-      "disclosures": []
     },
     {
       "type": "foundry",

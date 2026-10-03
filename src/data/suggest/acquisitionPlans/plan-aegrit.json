@@ -12,6 +12,11 @@
     { "label": "blueprint", "amount": "30 Stock", "money": false },
     { "label": "build", "amount": "20,000 cr", "money": false }
   ],
+  "materials": [
+    { "qty": "8,500", "label": "Alloy Plate", "note": null },
+    { "qty": "12,500", "label": "Ferrite", "note": null },
+    { "qty": "2", "label": "Morphics", "note": null }
+  ],
   "groups": [
     {
       "type": "gate",
@@ -46,7 +51,7 @@
       "disclosures": []
     },
     {
-      "type": "farm",
+      "type": "currency",
       "place": "DRIFTER'S CAMP, EARTH",
       "sub": "Kahl's Garrison",
       "activity": "Break Narmer weekly mission (solo, as Kahl)",
@@ -93,7 +98,8 @@
           "title": "point-of-no-return areas",
           "body": "Some Break Narmer maps lock you out of collectibles you missed earlier. Which maps still have them isn't documented, so clear side rooms before the boss or extraction area."
         }
-      ]
+      ],
+      "ref": "Stock"
     },
     {
       "type": "vendor",
@@ -137,7 +143,8 @@
       ],
       "conditions": [],
       "bonuses": [],
-      "disclosures": []
+      "disclosures": [],
+      "ref": "Kuva"
     },
     {
       "type": "foundry",
@@ -152,10 +159,13 @@
       "spends": [{ "currency": "Kuva", "amount": "2,200" }],
       "map": null,
       "rows": [
-        { "qty": "8,500", "label": "Alloy Plate", "note": null, "alt": null, "done": false },
-        { "qty": "12,500", "label": "Ferrite", "note": null, "alt": null, "done": false },
-        { "qty": "2", "label": "Morphics", "note": null, "alt": null, "done": false },
-        { "qty": null, "label": "Aegrit", "note": null, "alt": null, "done": false }
+        {
+          "qty": null,
+          "label": "Aegrit",
+          "note": "20,000 cr, 2,200 Kuva, 8,500 Alloy Plate, 12,500 Ferrite, 2 Morphics",
+          "alt": null,
+          "done": false
+        }
       ],
       "conditions": [],
       "bonuses": [],

@@ -4,13 +4,16 @@
   "effort": 1,
   "tradeable": false,
   "progress": { "have": 0, "need": 1, "unit": "blueprint" },
-  "badges": [
-    { "text": "Venus Junction reward", "tone": "info" },
-    { "text": "Incarnon eligible", "tone": "info" }
-  ],
+  "badges": [{ "text": "Venus Junction reward", "tone": "info" }],
   "prices": [
     { "label": "blueprint", "amount": "15,000 cr", "money": false },
     { "label": "build", "amount": "20,000 cr", "money": false }
+  ],
+  "materials": [
+    { "qty": "750", "label": "Ferrite", "note": null },
+    { "qty": "300", "label": "Alloy Plate", "note": null },
+    { "qty": "400", "label": "Salvage", "note": null },
+    { "qty": "4", "label": "Neurodes", "note": null }
   ],
   "groups": [
     {
@@ -39,31 +42,6 @@
       "disclosures": []
     },
     {
-      "type": "farm",
-      "place": "EARTH",
-      "sub": null,
-      "activity": "any mission",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "4",
-          "label": "Neurodes",
-          "note": "also Lua, Eris, Deimos",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
       "type": "foundry",
       "place": "FOUNDRY",
       "sub": null,
@@ -88,12 +66,7 @@
       "bonuses": [
         "Keep it after mastering: two Furis, an Orokin Cell and 20,000 credits build the Afuris."
       ],
-      "disclosures": [
-        {
-          "title": "Incarnon is optional and separate",
-          "body": "The Furis Incarnon Genesis comes from the Steel Path Circuit, week 3 of its rotation, and installs at Cavalero for 20 Pathos Clamps, 70 Yao Shrubs and 80 Lamentus. It fits the Furis and MK1-Furis only, not Afuris. Build the regular Furis rather than the MK1 if you plan on it; the MK1 has lower base damage for the same evolutions."
-        }
-      ]
+      "disclosures": []
     }
   ]
 }

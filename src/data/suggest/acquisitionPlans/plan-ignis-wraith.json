@@ -12,83 +12,19 @@
     { "label": "replicate", "amount": "20,000 cr", "money": false },
     { "label": "build", "amount": "30,000 cr", "money": false }
   ],
+  "materials": [
+    { "qty": "5", "label": "Detonite Injector", "note": null },
+    { "qty": "10,000", "label": "Ferrite", "note": null },
+    { "qty": "5,000", "label": "Rubedo", "note": null },
+    { "qty": "3", "label": "Argon Crystal", "note": null },
+    { "qty": "20,000", "label": "Credits", "note": null }
+  ],
   "groups": [
-    {
-      "type": "gate",
-      "place": "CLAN DOJO, CHEM LAB",
-      "sub": null,
-      "activity": "research Ignis, then Ignis Wraith",
-      "meta": "Clan Rank 10+; Ghost-tier costs shown",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Ignis research",
-          "note": "prerequisite Chem Lab node",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "5,000",
-          "label": "Credits",
-          "note": "Ghost-tier Ignis Wraith research",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "3,000",
-          "label": "Detonite Ampule",
-          "note": "Ghost-tier research cost",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "20,000",
-          "label": "Alloy Plate",
-          "note": "Ghost-tier research cost",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "15,000",
-          "label": "Rubedo",
-          "note": "Ghost-tier research cost",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "10,000",
-          "label": "Plastids",
-          "note": "Ghost-tier research cost",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Clan Rank is accumulated Clan Affinity from completed research and first-time room builds, not clan Tier (member capacity) — raising Rank costs nothing extra and hands out Endo.",
-        "Research costs scale x1/x3/x10/x30/x100 by clan Tier, Ghost through Moon; a Moon-tier clan is funding the x100 column.",
-        "Reaching Rank 10 needs 563,000 total Clan Affinity plus ten sequential 72-hour Ascension Ceremonies — about a month of wall clock even with the affinity already banked."
-      ],
-      "bonuses": [
-        "Borrow a developed clan instead: join, replicate the blueprint for 20,000 credits at the terminal, then leave. The blueprint is yours to keep and you don't need to stay a member."
-      ],
-      "disclosures": [
-        {
-          "title": "the blueprint is untradeable",
-          "body": "Update 32.0 (2022-09-07) made it untradeable; every giveaway-thread and warframe.market 1p listing predating that patch is dead. Baro Ki'Teer's built copy for 250,000 credits + 550 Ducats is also untradeable and his stock rotates irregularly."
-        }
-      ]
-    },
     {
       "type": "vendor",
       "place": "CLAN DOJO, CHEM LAB",
       "sub": null,
-      "activity": "replicate the personal blueprint",
+      "activity": "buy the blueprint",
       "meta": "20,000 cr",
       "mode": null,
       "live": null,
@@ -100,39 +36,19 @@
         {
           "qty": null,
           "label": "Ignis Wraith Blueprint",
-          "note": "requires completed research",
+          "note": null,
           "alt": "Ticker sells it for Advances Debt-Bonds during Star Days, February only",
           "done": false
         }
       ],
       "conditions": [],
       "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "THE VOID",
-      "sub": null,
-      "activity": "Void Sabotage or any Void mission, last",
-      "meta": "decays after pickup",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
+      "disclosures": [
         {
-          "qty": "3",
-          "label": "Argon Crystal",
-          "note": "halves every 24h once decay starts",
-          "alt": null,
-          "done": false
+          "title": "the blueprint is untradeable",
+          "body": "Update 32.0 (2022-09-07) made it untradeable; every giveaway-thread and warframe.market 1p listing predating that patch is dead. Baro Ki'Teer's built copy for 250,000 credits + 550 Ducats is also untradeable and his stock rotates irregularly."
         }
-      ],
-      "conditions": ["Farm this last; it decays after pickup."],
-      "bonuses": [],
-      "disclosures": []
+      ]
     },
     {
       "type": "foundry",
@@ -147,15 +63,15 @@
       "spends": [],
       "map": null,
       "rows": [
-        { "qty": null, "label": "Credits", "note": "30,000", "alt": null, "done": false },
-        { "qty": "5", "label": "Detonite Injector", "note": null, "alt": null, "done": false },
-        { "qty": "10,000", "label": "Ferrite", "note": null, "alt": null, "done": false },
-        { "qty": "5,000", "label": "Rubedo", "note": null, "alt": null, "done": false },
-        { "qty": "3", "label": "Argon Crystal", "note": null, "alt": null, "done": false }
+        {
+          "qty": null,
+          "label": "Ignis Wraith",
+          "note": "30,000 cr, 5 Detonite Injector, 10,000 Ferrite, 5,000 Rubedo, 3 Argon Crystal",
+          "alt": null,
+          "done": false
+        }
       ],
-      "conditions": [
-        "A Grineer Invasion completion pays 3 Detonite Injectors outright (75.88% on table A) — two Invasions covers the 5 needed, versus crafting them at 12h plus 10 Detonite Ampule each."
-      ],
+      "conditions": [],
       "bonuses": [],
       "disclosures": []
     }

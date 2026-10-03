@@ -30,6 +30,13 @@
       "money": false
     }
   ],
+  "materials": [
+    {
+      "qty": "2",
+      "label": "Control Module",
+      "note": null
+    }
+  ],
   "groups": [
     {
       "type": "gate",
@@ -80,7 +87,7 @@
       "live": null,
       "skip": null,
       "earns": {
-        "currency": "syndicate standing",
+        "currency": "Syndicate Standing",
         "amount": "134,000"
       },
       "spends": [],
@@ -102,14 +109,14 @@
         }
       ],
       "conditions": [
-        "The daily cap is 16,000 plus 500 per Mastery Rank, tracked per pledged syndicate.",
+        "The daily cap is 16,000 plus 500 per Mastery Rank, shared across the six faction syndicates.",
         "Each rank-up spends standing and starts the next rank at 0."
       ],
       "bonuses": [
-        "Syndicate Alert medallions (3 daily per syndicate) bypass the cap, so do them after hitting it.",
-        "Endless modes such as Steel Path or Circuit past stage 4 max the cap fast with a sigil equipped."
+        "Syndicate Alert medallions (3 daily per syndicate) bypass the cap, so do them after hitting it."
       ],
-      "disclosures": []
+      "disclosures": [],
+      "ref": "Syndicate Standing"
     },
     {
       "type": "vendor",
@@ -123,7 +130,7 @@
       "earns": null,
       "spends": [
         {
-          "currency": "Arbiters of Hexis standing",
+          "currency": "Arbiters of Hexis Standing",
           "amount": "40,000"
         }
       ],
@@ -153,7 +160,7 @@
       "earns": null,
       "spends": [
         {
-          "currency": "Cephalon Suda standing",
+          "currency": "Cephalon Suda Standing",
           "amount": "40,000"
         }
       ],
@@ -175,31 +182,6 @@
           "body": "The parts are tradeable, so a friend with the opposing syndicates leveled can trade you the part you lack."
         }
       ]
-    },
-    {
-      "type": "farm",
-      "place": "CETUS PLAINS",
-      "sub": null,
-      "activity": "Konzu bounties, level 10-30 final stage",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": "plains-of-eidolon",
-      "rows": [
-        {
-          "qty": "2",
-          "label": "Control Module",
-          "note": "rare",
-          "alt": "or Teshub Exterminate and Hepit Capture in the Void, level 10-15",
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
     },
     {
       "type": "foundry",

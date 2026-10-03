@@ -13,6 +13,24 @@
     { "label": "link", "amount": "7,500 standing", "money": false },
     { "label": "gild", "amount": "5,000 standing", "money": false }
   ],
+  "materials": [
+    {
+      "qty": "650",
+      "label": "Rubedo",
+      "note": "650 Korb Grip, 300 Pyrotic Alloy refines, 200 Fersteel Alloy refine"
+    },
+    { "qty": "2", "label": "Cetus Wisp", "note": null },
+    { "qty": "25", "label": "Nistlepod", "note": null },
+    { "qty": "45", "label": "Fish Scales", "note": null },
+    { "qty": "7", "label": "Marquise Veridos", "note": null },
+    { "qty": "120", "label": "Pyrotic Alloy", "note": null },
+    { "qty": "25", "label": "Iradite", "note": null },
+    { "qty": "50", "label": "Fish Oil", "note": null },
+    { "qty": "5", "label": "Maprico", "note": null },
+    { "qty": "20", "label": "Fersteel Alloy", "note": null },
+    { "qty": "5", "label": "Kuaka Spinal Claw", "note": null },
+    { "qty": "5", "label": "Mortus Horn", "note": null }
+  ],
   "groups": [
     {
       "type": "currency",
@@ -23,7 +41,7 @@
       "mode": "solo",
       "live": null,
       "skip": null,
-      "earns": { "currency": "Ostron standing", "amount": "71,000" },
+      "earns": { "currency": "Ostron Standing", "amount": "71,000" },
       "spends": [],
       "map": "cetus",
       "rows": [
@@ -50,18 +68,16 @@
         }
       ],
       "conditions": [
-        "The Dokrahm blueprint is buyable at Neutral, but 7 Marquise Veridos are required to build it and the refine blueprint is Visitor-locked — don't buy component blueprints you can't build yet.",
-        "Daily standing cap is 16,000 + 500 per Mastery Rank, so this is inherently multi-day."
+        "The Dokrahm blueprint is buyable at Neutral, but 7 Marquise Veridos are required to build it and the refine blueprint is Visitor-locked: don't buy component blueprints you can't build yet."
       ],
-      "bonuses": [
-        "Conservation at night (Vasca Kavat with the tranq rifle, or Ivara invisible with Sleep Arrow) caps the daily limit in 10-20 minutes; faster than bounties or fishing/mining."
-      ],
+      "bonuses": [],
       "disclosures": [
         {
           "title": "why the standing bill is so high",
           "body": "Reaching Trusted alone costs 71,000 standing and 85,000 credits sacrificed across three rank-ups, before spending a single point on the blueprints themselves."
         }
-      ]
+      ],
+      "ref": "Ostron Standing"
     },
     {
       "type": "vendor",
@@ -73,7 +89,7 @@
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Ostron standing", "amount": "3,000" }],
+      "spends": [{ "currency": "Ostron Standing", "amount": "3,000" }],
       "map": null,
       "rows": [
         {
@@ -117,7 +133,7 @@
         "Every 2H Zaw has a hidden Damage Factor; Dokrahm's Scythe build reads the same base damage as the Heavy Blade build but the Heavy Blade silently loses 7% of total damage. Pick the Heavy Blade only for its 3.0m range over the Scythe's 1.7m."
       ],
       "bonuses": [
-        "Hok's forge screen previews any Strike/Grip/Link combination, including parts you don't own yet — always preview before committing, since a built Zaw can never be taken apart."
+        "Hok's forge screen previews any Strike/Grip/Link combination, including parts you don't own yet: always preview before committing, since a built Zaw can never be taken apart."
       ],
       "disclosures": []
     },
@@ -131,7 +147,7 @@
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Ostron standing", "amount": "7,500" }],
+      "spends": [{ "currency": "Ostron Standing", "amount": "7,500" }],
       "map": null,
       "rows": [
         {
@@ -144,62 +160,6 @@
       ],
       "conditions": [],
       "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "PLAINS OF EIDOLON, EARTH",
-      "sub": null,
-      "activity": "mine Veridos, collect Cetus Wisps, run Excavation for Cryotic",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": "plains-of-eidolon",
-      "rows": [
-        {
-          "qty": "10",
-          "label": "Veridos",
-          "note": "refines into 7+ Marquise Veridos",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "1",
-          "label": "Cetus Wisp",
-          "note": "needed for gilding; sweep lake shorelines with Loot Detector",
-          "alt": "buy for 2,000 standing at Onkko if Quills rank 5",
-          "done": false
-        },
-        {
-          "qty": "1,200",
-          "label": "Cryotic",
-          "note": "Excavation (Hieracon, Pluto); 6 Pyrotic Alloy batches at 200 each",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "120",
-          "label": "Pyrol",
-          "note": "6 Pyrotic Alloy batches at 20 each",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "300",
-          "label": "Rubedo",
-          "note": "6 Pyrotic Alloy batches at 50 each",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Cetus Wisps no longer despawn (fixed Update 34), but Vacuum/Greedy Pull don't collect them — you have to physically touch each one.",
-        "Only 3-4 Wisps spawn per Plains instance by day, 6-8 at night, and they don't respawn after the set is cleared."
-      ],
-      "bonuses": ["Titania in Razorwing or Itzal make sweeping the shorelines for Wisps fast."],
       "disclosures": []
     },
     {
@@ -225,14 +185,14 @@
         {
           "qty": null,
           "label": "Korb Grip",
-          "note": "60 Pyrotic Alloy",
+          "note": "5,000cr, 25 Iradite, 50 Fish Oil, 60 Pyrotic Alloy, 650 Rubedo",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Vargeet II Jai Link",
-          "note": "5 Maprico, 20 Fersteel Alloy, 5 Kuaka Spinal Claw, 5 Mortus Horn",
+          "note": "5,000cr, 5 Maprico, 20 Fersteel Alloy, 5 Kuaka Spinal Claw, 5 Mortus Horn",
           "alt": null,
           "done": false
         },
@@ -253,7 +213,7 @@
       ],
       "conditions": [
         "Mastery is per Strike, not per weapon; once a gilded Dokrahm hits 30, every future Dokrahm is worth zero mastery.",
-        "A built Zaw can never be disassembled — confirm grip and link before assembling."
+        "A built Zaw can never be disassembled: confirm grip and link before assembling."
       ],
       "bonuses": ["Level both passes somewhere fast like Elite Sanctuary Onslaught or Hydron."],
       "disclosures": []

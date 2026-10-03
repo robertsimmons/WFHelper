@@ -12,6 +12,21 @@
     { "label": "blueprints", "amount": "75,000 standing (25,000 free at Rank 5)", "money": false },
     { "label": "build", "amount": "55,000 cr", "money": false }
   ],
+  "materials": [
+    { "qty": "3", "label": "Orokin Cell", "note": null },
+    { "qty": "300", "label": "Plastids", "note": "Hespazym Alloy refine" },
+    { "qty": "2", "label": "Morphics", "note": "Hespazym Alloy refine" },
+    { "qty": "500", "label": "Ferrite", "note": "Axidrol Alloy refine" },
+    { "qty": "100", "label": "Rubedo", "note": "Axidrol Alloy refine" },
+    { "qty": "10", "label": "Hespazym Alloy", "note": "Barrel" },
+    { "qty": "10", "label": "Goblite Tears", "note": "Barrel" },
+    { "qty": "20", "label": "Longwinder Lathe Coagulant", "note": "Barrel" },
+    { "qty": "35", "label": "Tepa Nodule", "note": "Barrel" },
+    { "qty": "20", "label": "Axidrol Alloy", "note": "Receiver" },
+    { "qty": "6", "label": "Star Amarast", "note": "Receiver" },
+    { "qty": "10", "label": "Tink Dissipator Coil", "note": "Receiver" },
+    { "qty": "40", "label": "Mytocardia Spore", "note": "Receiver" }
+  ],
   "groups": [
     {
       "type": "gate",
@@ -47,7 +62,7 @@
       "mode": "solo",
       "live": null,
       "skip": null,
-      "earns": { "currency": "Ventkids standing", "amount": "240,000" },
+      "earns": { "currency": "Ventkids Standing", "amount": "240,000" },
       "spends": [],
       "map": "orb-vallis",
       "rows": [
@@ -74,7 +89,8 @@
           "title": "the actual wall",
           "body": "This is almost the entire farm. The component materials below are ordinary Orb Vallis gathering you can do in the same sessions."
         }
-      ]
+      ],
+      "ref": "Ventkids Standing"
     },
     {
       "type": "vendor",
@@ -86,7 +102,7 @@
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Ventkids standing", "amount": "75,000" }],
+      "spends": [{ "currency": "Ventkids Standing", "amount": "75,000" }],
       "map": null,
       "rows": [
         {
@@ -113,82 +129,6 @@
       ],
       "conditions": [
         "Take one of the three as your free Rank 5 rank-up reward to save 25,000 standing."
-      ],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "ORB VALLIS, VENUS",
-      "sub": null,
-      "activity": "mine, fish and gather component materials while riding for standing",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": "orb-vallis",
-      "rows": [
-        {
-          "qty": "10",
-          "label": "Hespazym Alloy",
-          "note": "Barrel; refine mined Hespazym ore",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "10",
-          "label": "Goblite Tears",
-          "note": "Barrel; refine Goblite via a Smokefinger blueprint, Solaris United rank Outworlder",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "20",
-          "label": "Longwinder Lathe Coagulant",
-          "note": "Barrel; fishing",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "35",
-          "label": "Tepa Nodule",
-          "note": "Barrel; cave or bounty pickup",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "20",
-          "label": "Axidrol Alloy",
-          "note": "Receiver; refine mined Axidrol ore",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "6",
-          "label": "Star Amarast",
-          "note": "Receiver; gem mining",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "10",
-          "label": "Tink Dissipator Coil",
-          "note": "Receiver; fishing",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "40",
-          "label": "Mytocardia Spore",
-          "note": "Receiver; shoot sacs",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "You're already riding the Vallis for standing, so gather these in the same sessions instead of a separate trip."
       ],
       "bonuses": [],
       "disclosures": []

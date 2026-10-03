@@ -12,31 +12,34 @@
     { "label": "blueprint", "amount": "15,000 cr", "money": false },
     { "label": "build", "amount": "45,000 cr", "money": false }
   ],
+  "materials": [
+    { "qty": "2", "label": "Argon Crystal", "note": null },
+    { "qty": "15,000", "label": "Credits", "note": null }
+  ],
   "groups": [
     {
-      "type": "gate",
+      "type": "vendor",
       "place": "CLAN DOJO, TENNO LAB",
       "sub": null,
-      "activity": "research the blueprint, then buy it",
-      "meta": "3 days, Ghost clan (x1)",
+      "activity": "buy the blueprint",
+      "meta": "15,000 cr",
       "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [],
+      "spends": [{ "currency": "Credits", "amount": "15,000" }],
       "map": null,
       "rows": [
         {
           "qty": null,
           "label": "Fluctus Blueprint",
-          "note": "research: 10,000 cr, 50 Oxium, 4 Gallium, 500 Salvage, 350 Nano Spores; then buy from the lab",
+          "note": null,
           "alt": null,
           "done": false
         }
       ],
       "conditions": [
-        "The lab's post-research blueprint price is given as 15,000 credits, but the wiki's infobox layout was ambiguous — confirm it in-game.",
-        "You need a clan with a Tenno Lab; solo players must join or build one first."
+        "The lab's blueprint price is given as 15,000 credits, but the wiki's infobox layout was ambiguous; confirm it in-game."
       ],
       "bonuses": [],
       "disclosures": []
@@ -50,7 +53,7 @@
       "mode": null,
       "live": null,
       "skip": null,
-      "earns": { "currency": "Steel Meridian standing", "amount": "91,000" },
+      "earns": { "currency": "Steel Meridian Standing", "amount": "91,000" },
       "spends": [],
       "map": null,
       "rows": [
@@ -90,11 +93,10 @@
           "done": false
         }
       ],
-      "conditions": [
-        "Steel Meridian is allied with Red Veil (+50% shared standing) and doesn't touch Suda."
-      ],
+      "conditions": [],
       "bonuses": ["Pledging Steel Meridian first lets Red Veil climb alongside it for free."],
-      "disclosures": []
+      "disclosures": [],
+      "ref": "Steel Meridian Standing"
     },
     {
       "type": "currency",
@@ -105,7 +107,7 @@
       "mode": null,
       "live": null,
       "skip": null,
-      "earns": { "currency": "Red Veil standing", "amount": "91,000" },
+      "earns": { "currency": "Red Veil Standing", "amount": "91,000" },
       "spends": [],
       "map": null,
       "rows": [
@@ -146,10 +148,11 @@
         }
       ],
       "conditions": [
-        "Buy the Limbs before you rank Suda — Suda and Red Veil are opposed (-50% both ways)."
+        "Buy the Limbs before you rank Suda; Suda and Red Veil are opposed (-50% both ways)."
       ],
       "bonuses": [],
-      "disclosures": []
+      "disclosures": [],
+      "ref": "Red Veil Standing"
     },
     {
       "type": "currency",
@@ -160,7 +163,7 @@
       "mode": null,
       "live": null,
       "skip": null,
-      "earns": { "currency": "Cephalon Suda standing", "amount": "91,000" },
+      "earns": { "currency": "Cephalon Suda Standing", "amount": "91,000" },
       "spends": [],
       "map": null,
       "rows": [
@@ -202,15 +205,16 @@
       ],
       "conditions": ["Do this syndicate last: ranking Suda burns Red Veil standing at -50%."],
       "bonuses": [
-        "Stock and Barrel are tradeable — if you've already burned a syndicate's standing, buy the part from another player instead of grinding back to neutral."
+        "Stock and Barrel are tradeable; if you've already burned a syndicate's standing, buy the part from another player instead of grinding back to neutral."
       ],
-      "disclosures": []
+      "disclosures": [],
+      "ref": "Cephalon Suda Standing"
     },
     {
       "type": "foundry",
       "place": "FOUNDRY",
       "sub": null,
-      "activity": "gather 2 Argon Crystal, then build Fluctus",
+      "activity": "build Fluctus",
       "meta": "45,000 cr, 12h",
       "mode": null,
       "live": null,
@@ -220,13 +224,6 @@
       "map": null,
       "rows": [
         {
-          "qty": "2",
-          "label": "Argon Crystal",
-          "note": "any Void mission; farm this last, it decays",
-          "alt": null,
-          "done": false
-        },
-        {
           "qty": null,
           "label": "Fluctus",
           "note": "Barrel, Stock, Limbs, 2 Argon Crystal, 45,000 cr",
@@ -234,9 +231,7 @@
           "done": false
         }
       ],
-      "conditions": [
-        "Farm the Argon Crystal only after all three parts are in hand — it decays within 24 hours of pickup."
-      ],
+      "conditions": [],
       "bonuses": [],
       "disclosures": []
     }

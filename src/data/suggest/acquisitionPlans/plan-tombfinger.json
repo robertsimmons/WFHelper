@@ -12,6 +12,15 @@
     { "label": "parts + assembly", "amount": "19,000 cr", "money": false },
     { "label": "gild", "amount": "5,000 cr", "money": false }
   ],
+  "materials": [
+    { "qty": "900", "label": "Circuits", "note": "chamber" },
+    { "qty": "500", "label": "Ferrite", "note": "Axidrol Alloy refine" },
+    { "qty": "100", "label": "Rubedo", "note": "Axidrol Alloy refine" },
+    { "qty": "10", "label": "Shelter Debt-Bond", "note": null },
+    { "qty": "15", "label": "Thermal Sludge", "note": null },
+    { "qty": "20", "label": "Axidrol Alloy", "note": null },
+    { "qty": "10", "label": "Tink Dissipator Coil", "note": null }
+  ],
   "groups": [
     {
       "type": "gate",
@@ -57,13 +66,6 @@
           "note": "Training, Shelter and Medical bonds; exact counts per rank not itemized here",
           "alt": "Ticker sells cheap Training/Shelter bonds for credits and materials",
           "done": false
-        },
-        {
-          "qty": "10",
-          "label": "Shelter Debt-Bond",
-          "note": "spent again at the gild, separate from rank-up costs",
-          "alt": null,
-          "done": false
         }
       ],
       "conditions": [
@@ -84,7 +86,7 @@
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Solaris United standing", "amount": "1,000" }],
+      "spends": [{ "currency": "Solaris United Standing", "amount": "1,000" }],
       "map": null,
       "rows": [
         {
@@ -113,57 +115,6 @@
         "Grip and loader give no Mastery. The classic secondary build swaps in Haymaker (Outworlder) and Splat (Cove), but that build isn't needed for the chamber's Mastery."
       ],
       "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "ORB VALLIS, VENUS",
-      "sub": "crates by the Fortuna exit, ponds for fish",
-      "activity": "loot containers, mine and fish",
-      "meta": "chamber materials",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": "orb-vallis",
-      "rows": [
-        {
-          "qty": "15",
-          "label": "Thermal Sludge",
-          "note": "round-topped Corpus containers around Vallis camps; also bounty rewards",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "20",
-          "label": "Axidrol Alloy",
-          "note": "refine from Axidite ore; one craft yields 20",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "10",
-          "label": "Tink Dissipator Coil",
-          "note": "1 per Tink servofish, Vallis ponds, Cold weather only",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "900",
-          "label": "Circuits",
-          "note": null,
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Axidrol Alloy's reusable blueprint costs 1,000 standing from Smokefinger, Rank 0.",
-        "Tink only bite during the Vallis's Cold cycle (about 22 minutes Cold to 4 Warm), the opposite window from Kriller and Eye-Eye."
-      ],
-      "bonuses": [
-        "Thermal Sludge crates respawn after you move 200-250 m away and come back, so two nearby crate clusters can be looped."
-      ],
       "disclosures": []
     },
     {

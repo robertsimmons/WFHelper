@@ -9,6 +9,12 @@
     { "text": "2.5% each", "tone": "warn" }
   ],
   "prices": [{ "label": "build", "amount": "20,000 cr", "money": false }],
+  "materials": [
+    { "qty": "3", "label": "Neurodes", "note": null },
+    { "qty": "1,600", "label": "Polymer Bundle", "note": null },
+    { "qty": "7,500", "label": "Nano Spores", "note": null },
+    { "qty": "150", "label": "Hexenon", "note": null }
+  ],
   "groups": [
     {
       "type": "gate",
@@ -76,33 +82,6 @@
       ]
     },
     {
-      "type": "farm",
-      "place": "GANYMEDE, JUPITER",
-      "sub": null,
-      "activity": "Disruption or Amalgam enemies",
-      "meta": "150 needed",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "150",
-          "label": "Hexenon",
-          "note": "does not drop on Uranus",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "This is the only focused build material that the Ur farm does not naturally cover."
-      ],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
       "type": "foundry",
       "place": "FOUNDRY",
       "sub": null,
@@ -115,11 +94,13 @@
       "spends": [],
       "map": null,
       "rows": [
-        { "qty": "20,000", "label": "Credits", "note": null, "alt": null, "done": false },
-        { "qty": "3", "label": "Neurodes", "note": null, "alt": null, "done": false },
-        { "qty": "150", "label": "Hexenon", "note": null, "alt": null, "done": false },
-        { "qty": "1,600", "label": "Polymer Bundle", "note": null, "alt": null, "done": false },
-        { "qty": "7,500", "label": "Nano Spores", "note": null, "alt": null, "done": false }
+        {
+          "qty": null,
+          "label": "Akarius",
+          "note": "20,000 cr, 3 Neurodes, 150 Hexenon, 1,600 Polymer Bundle, 7,500 Nano Spores",
+          "alt": null,
+          "done": false
+        }
       ],
       "conditions": ["You need Mastery Rank 8 to equip the completed weapon."],
       "bonuses": [],

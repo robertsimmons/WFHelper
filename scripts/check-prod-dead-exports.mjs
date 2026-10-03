@@ -29,6 +29,8 @@ const ALLOWLIST = new Set([
   // Schema guard for the authored plan JSON; the renderer trusts what it reads.
   "authoredPlans",
   "validatePlan",
+  // Builds a resource store from a fixture table so plan tests do not ride on shipped data.
+  "resourceLookup",
 ]);
 
 // Where exports are *defined* (main production tree).

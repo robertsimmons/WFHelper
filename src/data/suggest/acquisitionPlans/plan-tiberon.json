@@ -12,6 +12,14 @@
     { "label": "blueprint", "amount": "20,000 cr", "money": false },
     { "label": "build", "amount": "20,000 cr", "money": false }
   ],
+  "materials": [
+    { "qty": "1,450", "label": "Plastids", "note": "800 Latron, 650 Tiberon" },
+    { "qty": "600", "label": "Rubedo", "note": "Tiberon" },
+    { "qty": "1,000", "label": "Alloy Plate", "note": "Latron" },
+    { "qty": "900", "label": "Salvage", "note": "Latron" },
+    { "qty": "5", "label": "Morphics", "note": "Latron" },
+    { "qty": "1", "label": "Forma", "note": null }
+  ],
   "groups": [
     {
       "type": "vendor",
@@ -46,78 +54,6 @@
       "disclosures": []
     },
     {
-      "type": "farm",
-      "place": "ASSUR, URANUS",
-      "sub": "Piscinas, Saturn is the alternative",
-      "activity": "Survival (Dark Sector)",
-      "meta": "the bottleneck",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "1,450",
-          "label": "Plastids",
-          "note": "800 for the Latron, 650 for the Tiberon",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [
-        "A looter frame (Nekros, Khora with Pilfering Strangledome) plus a resource booster covers it in a couple of runs."
-      ],
-      "disclosures": [
-        {
-          "title": "other Plastids sources",
-          "body": "Plastids also drop on Pluto, Phobos and Eris. Extractor drones on Saturn, Eris, Pluto and Uranus collect them passively. Eris dark sector survival was called low-yield by one poster; Saturn and Uranus were preferred."
-        }
-      ]
-    },
-    {
-      "type": "farm",
-      "place": "STAR CHART",
-      "sub": "Phobos, Mars, Jupiter, Sedna",
-      "activity": "common resources on the way",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "600",
-          "label": "Rubedo",
-          "note": "Tiberon; best on Phobos and Europa",
-          "alt": null,
-          "done": false
-        },
-        { "qty": "1,000", "label": "Alloy Plate", "note": "Latron", "alt": null, "done": false },
-        {
-          "qty": "900",
-          "label": "Salvage",
-          "note": "Latron; Mars, Jupiter, Sedna",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "5",
-          "label": "Morphics",
-          "note": "Latron; best on Mars",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
       "type": "foundry",
       "place": "FOUNDRY",
       "sub": null,
@@ -135,13 +71,6 @@
           "label": "Latron",
           "note": "5 Morphics, 800 Plastids, 1,000 Alloy Plate, 900 Salvage, 20,000 cr",
           "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Forma",
-          "note": "Forma Blueprint: 35,000 cr, 1 Morphics, 1 Neural Sensors, 1 Neurodes, 1 Orokin Cell, 23h",
-          "alt": "drops from many sources",
           "done": false
         },
         {

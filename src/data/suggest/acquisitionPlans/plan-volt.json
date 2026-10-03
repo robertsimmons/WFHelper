@@ -9,47 +9,24 @@
     { "text": "no RNG", "tone": "info" }
   ],
   "prices": [{ "label": "build", "amount": "70,000 cr", "money": false }],
+  "materials": [
+    { "qty": "1,000", "label": "Ferrite", "note": "Chassis" },
+    { "qty": "800", "label": "Rubedo", "note": "500 Neuroptics, 300 Chassis" },
+    { "qty": "500", "label": "Salvage", "note": "Systems" },
+    { "qty": "220", "label": "Plastids", "note": "Systems" },
+    { "qty": "150", "label": "Alloy Plate", "note": "Neuroptics" },
+    { "qty": "150", "label": "Polymer Bundle", "note": "Neuroptics" },
+    { "qty": "2", "label": "Morphics", "note": "Chassis and Systems" },
+    { "qty": "1", "label": "Neural Sensors", "note": "Neuroptics" },
+    { "qty": "1", "label": "Control Module", "note": "Systems" },
+    { "qty": "1", "label": "Orokin Cell", "note": "Volt" }
+  ],
   "groups": [
     {
-      "type": "gate",
-      "place": "CLAN DOJO",
-      "sub": "Tenno Lab",
-      "activity": "join a clan whose lab has already researched Volt",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Tenno Lab research finished, any clan",
-          "note": "ask in Recruiting chat; many clans let you join, replicate, and leave",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Volt is one of three Awakening starters, with Excalibur and Mag. If you picked him at character creation you already have him and this whole plan is done.",
-        "He's the only starter not farmable on the star chart: Excalibur and Mag both drop from bosses. Volt is dojo-only."
-      ],
-      "bonuses": [
-        "Staying in the clan gives access to whatever else its dojo has researched: other frames, weapons and archwings, all for credits."
-      ],
-      "disclosures": [
-        {
-          "title": "researching it yourself",
-          "body": "A solo Ghost clan can research Volt directly: 1 Mutagen Mass for the main blueprint, 1 Mutagen Mass for Chassis, 1 Detonite Injector for Neuroptics and 1 Fieldron for Systems, with the main blueprint required first. Larger clans pay 3x/10x/30x/100x by tier. The wiki's lab table still lists a 72h research timer; whether Update 42.0's build-time cut also applies to research is unconfirmed."
-        }
-      ]
-    },
-    {
       "type": "vendor",
-      "place": "CLAN DOJO",
-      "sub": "Tenno Lab",
-      "activity": "replicate the four blueprints",
+      "place": "CLAN DOJO, TENNO LAB",
+      "sub": null,
+      "activity": "buy the blueprints",
       "meta": "credits",
       "mode": null,
       "live": null,
@@ -64,6 +41,8 @@
         { "qty": null, "label": "Systems Blueprint", "note": null, "alt": null, "done": false }
       ],
       "conditions": [
+        "Volt is one of three Awakening starters, with Excalibur and Mag. If you picked him at character creation you already have him and this whole plan is done.",
+        "He's the only starter not farmable on the star chart: Excalibur and Mag both drop from bosses. Volt is dojo-only.",
         "The wiki lists 35,000 cr as the blueprint price, but it's unclear whether that covers the main blueprint alone or all four."
       ],
       "bonuses": [],

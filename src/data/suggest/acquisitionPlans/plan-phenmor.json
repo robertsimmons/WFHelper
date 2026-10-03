@@ -9,6 +9,12 @@
     { "text": "MR 14", "tone": "info" }
   ],
   "prices": [{ "label": "blueprint", "amount": "6,000 Holdfasts Standing", "money": false }],
+  "materials": [
+    { "qty": "6,000", "label": "Alloy Plate", "note": null },
+    { "qty": "15", "label": "Voidplume Pinion", "note": "build requirement" },
+    { "qty": "20", "label": "Voidplume Quill", "note": "build requirement" },
+    { "qty": "15", "label": "Entrati Lanthorn", "note": "build requirement" }
+  ],
   "groups": [
     {
       "type": "gate",
@@ -38,14 +44,12 @@
           "done": false
         }
       ],
-      "conditions": [
-        "Phenmor is a native Zariman Incarnon from Cavalero, not an Incarnon Genesis adapter from Duviri's Circuit."
-      ],
+      "conditions": [],
       "bonuses": [],
       "disclosures": []
     },
     {
-      "type": "farm",
+      "type": "currency",
       "place": "HALAKO PERIMETER, ZARIMAN",
       "sub": "Chrysalith: turn Voidplumes in to Archimedean Yonta",
       "activity": "Exterminate, wake the Angel, then sweep the map",
@@ -58,43 +62,24 @@
       "map": null,
       "rows": [
         {
-          "qty": "15",
-          "label": "Voidplume Pinion",
-          "note": "build requirement; one per dormant Angel",
+          "qty": null,
+          "label": "Voidplumes turned in to Archimedean Yonta",
+          "note": "Pinion 5,000, Quill 2,500, Crest 2,000, Vane 1,000, Down 500 standing each",
           "alt": null,
-          "done": false
-        },
-        {
-          "qty": "20",
-          "label": "Voidplume Quill",
-          "note": "build requirement",
-          "alt": "bounties or Zarium Accolades",
-          "done": false
-        },
-        {
-          "qty": "15",
-          "label": "Entrati Lanthorn",
-          "note": "build requirement",
-          "alt": "Tier 3 bounties or Netracells",
           "done": false
         }
       ],
       "conditions": [
-        "Rank 0 → 1 costs 5,000 standing plus 5 Voidplume Down; Rank 1 → 2 costs 22,000 standing plus 10 Voidplume Vane and 10 Voidgel Orb. The blueprint then costs 6,000 standing.",
-        "The daily cap is 16,000 + 500 per Mastery Rank. At MR 14 it is 23,000, so the standing portion takes at least two days from zero.",
-        "A dormant Void Angel drops a Pinion. Void Armageddon's Ravenous Angel drops a Quill instead, so do not use Armageddon for Pinions.",
-        "Squad Voidplume pickups are shared. Finish the objective, then use loot radar and container-breaking coverage to find plumes; Parallax Orokin Eye marks plumes and Accolades."
+        "Rank 0 → 1 costs 5,000 standing plus 5 Voidplume Down; Rank 1 → 2 costs 22,000 standing plus 10 Voidplume Vane and 10 Voidgel Orb. The blueprint then costs 6,000 standing."
       ],
-      "bonuses": [
-        "Each map has one Crest, two Vanes, and five Down-or-Vane pickups. Yonta's Voidplume stock refreshes every eight hours and can fill missing rank-up sacrifices.",
-        "Follow Lost Spirits after the Exterminate objective: they lead to a nearby Voidplume, Ayatan, or Somachord."
-      ],
+      "bonuses": [],
       "disclosures": [
         {
           "title": "Pinions set the practical pace",
           "body": "The rank gate is short compared with the 15 Pinions. Plan on about 15 Zariman missions with a dormant Angel; this is a long evening or two of focused runs, assuming no host migration losses."
         }
-      ]
+      ],
+      "ref": "Holdfasts Standing"
     },
     {
       "type": "vendor",
@@ -136,11 +121,13 @@
       "spends": [],
       "map": null,
       "rows": [
-        { "qty": "30,000", "label": "Credits", "note": null, "alt": null, "done": false },
-        { "qty": "15", "label": "Voidplume Pinion", "note": null, "alt": null, "done": false },
-        { "qty": "20", "label": "Voidplume Quill", "note": null, "alt": null, "done": false },
-        { "qty": "6,000", "label": "Alloy Plate", "note": null, "alt": null, "done": false },
-        { "qty": "15", "label": "Entrati Lanthorn", "note": null, "alt": null, "done": false }
+        {
+          "qty": null,
+          "label": "Phenmor",
+          "note": "30,000 cr, 15 Voidplume Pinion, 20 Voidplume Quill, 6,000 Alloy Plate, 15 Entrati Lanthorn",
+          "alt": null,
+          "done": false
+        }
       ],
       "conditions": [
         "You may craft Phenmor before Mastery Rank 14, but cannot equip it until then."
@@ -193,7 +180,7 @@
           "qty": null,
           "label": "Solo mission with Incarnon weapons in every slot",
           "note": "Evolution V",
-          "alt": "Genesis-equipped weapons count",
+          "alt": null,
           "done": false
         }
       ],

@@ -9,6 +9,12 @@
     { "label": "blueprint", "amount": "100,000 cr", "money": false },
     { "label": "built Dethcube", "amount": "75 p", "money": false }
   ],
+  "materials": [
+    { "qty": "500", "label": "Alloy Plate", "note": null },
+    { "qty": "400", "label": "Circuits", "note": null },
+    { "qty": "200", "label": "Nano Spores", "note": null },
+    { "qty": "1", "label": "Control Module", "note": null }
+  ],
   "groups": [
     {
       "type": "gate",
@@ -53,74 +59,6 @@
           "label": "Dethcube Blueprint",
           "note": "the rifle has no blueprint of its own",
           "alt": "or the built Dethcube for 75 p",
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "GABII, CERES",
-      "sub": null,
-      "activity": "Survival",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        { "qty": "500", "label": "Alloy Plate", "note": null, "alt": null, "done": false },
-        {
-          "qty": "400",
-          "label": "Circuits",
-          "note": "Ceres drops the higher rate",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": ["A Titan Extractor on Ceres pulls both passively."],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "SATURN",
-      "sub": "or Deimos, Neptune, Eris",
-      "activity": "Survival or Defense",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [{ "qty": "200", "label": "Nano Spores", "note": null, "alt": null, "done": false }],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "THE VOID",
-      "sub": "or Neptune, Europa",
-      "activity": "any Void mission",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "1",
-          "label": "Control Module",
-          "note": "higher rate in the Void",
-          "alt": "or 10 p at the Market",
           "done": false
         }
       ],

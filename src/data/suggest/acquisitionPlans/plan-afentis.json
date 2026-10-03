@@ -12,6 +12,12 @@
     { "label": "blueprint", "amount": "60 Stock", "money": false },
     { "label": "build", "amount": "20,000 cr", "money": false }
   ],
+  "materials": [
+    { "qty": "8,000", "label": "Ferrite", "note": null },
+    { "qty": "3,500", "label": "Rubedo", "note": null },
+    { "qty": "1,200", "label": "Cryotic", "note": null },
+    { "qty": "2", "label": "Argon Crystal", "note": null }
+  ],
   "groups": [
     {
       "type": "gate",
@@ -48,7 +54,7 @@
       "disclosures": []
     },
     {
-      "type": "farm",
+      "type": "currency",
       "place": "DRIFTER'S CAMP, EARTH",
       "sub": "Kahl's Garrison",
       "activity": "Break Narmer weekly mission",
@@ -91,7 +97,8 @@
           "title": "Styanax from the same shop",
           "body": "Chipper sells Styanax's four blueprints at Ranks 2-5 for 270 Stock. At 105 a week, both the frame and the Afentis fit in the same four weeks."
         }
-      ]
+      ],
+      "ref": "Stock"
     },
     {
       "type": "vendor",
@@ -115,42 +122,6 @@
         }
       ],
       "conditions": ["Chipper's shop shows your Garrison rank; the Syndicate terminal does not."],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "EXCAVATION, ANY NODE",
-      "sub": null,
-      "activity": "Excavation",
-      "meta": "100 per extractor cycle",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [{ "qty": "1,200", "label": "Cryotic", "note": null, "alt": null, "done": false }],
-      "conditions": [],
-      "bonuses": ["Ferrite and Rubedo are common; top them up anywhere on the way."],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "THE VOID",
-      "sub": null,
-      "activity": "any Void mission",
-      "meta": "farm last",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [{ "qty": "2", "label": "Argon Crystal", "note": null, "alt": null, "done": false }],
-      "conditions": [
-        "Argon halves every day at 00:00 GMT once it starts decaying; farm it the day you queue the build."
-      ],
       "bonuses": [],
       "disclosures": []
     },

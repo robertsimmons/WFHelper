@@ -12,47 +12,19 @@
     { "label": "blueprint", "amount": "15,000 cr", "money": false },
     { "label": "build", "amount": "20,000 cr", "money": false }
   ],
+  "materials": [
+    { "qty": "2", "label": "Neurodes", "note": null },
+    { "qty": "300", "label": "Rubedo", "note": null },
+    { "qty": "1,200", "label": "Salvage", "note": null },
+    { "qty": "1", "label": "Forma", "note": null },
+    { "qty": "15,000", "label": "Credits", "note": null }
+  ],
   "groups": [
-    {
-      "type": "research",
-      "place": "CLAN DOJO, TENNO LAB",
-      "sub": null,
-      "activity": "check that Daikyu research is complete",
-      "meta": "6-day chain minimum",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Akstiletto research",
-          "note": "3-day prerequisite",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Daikyu research",
-          "note": "5,000 cr, 1 Neurodes, 500 Salvage, 50 Rubedo, 300 Polymer Bundle; 3 days",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Research costs are Ghost-tier; resources scale x3/x10/x30/x100 with clan size.",
-        "Joining an established clan with the lab finished skips this whole step."
-      ],
-      "bonuses": [],
-      "disclosures": []
-    },
     {
       "type": "vendor",
       "place": "CLAN DOJO, TENNO LAB",
       "sub": null,
-      "activity": "replicate the personal blueprint",
+      "activity": "buy the blueprint",
       "meta": "15,000 cr",
       "mode": null,
       "live": null,
@@ -64,38 +36,13 @@
         {
           "qty": null,
           "label": "Daikyu Blueprint",
-          "note": "requires completed research",
+          "note": null,
           "alt": null,
           "done": false
         }
       ],
       "conditions": [],
       "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "MAGNACIDIUM, DEIMOS",
-      "sub": null,
-      "activity": "Assassination, Lephantis",
-      "meta": "1-2 Neurodes a run",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "2",
-          "label": "Neurodes",
-          "note": "rare drop on Earth, Lua, Eris and Deimos",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": ["Rubedo and Salvage are common; Phobos and Europa have the best Rubedo rates."],
       "disclosures": []
     },
     {

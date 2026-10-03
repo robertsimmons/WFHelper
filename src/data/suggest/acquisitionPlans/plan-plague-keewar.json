@@ -13,6 +13,28 @@
     { "label": "grip + link", "amount": "2,000 standing", "money": false },
     { "label": "gild", "amount": "5,000 standing", "money": false }
   ],
+  "materials": [
+    { "qty": "1,600", "label": "Nano Spores", "note": "Strike" },
+    { "qty": "700", "label": "Plastids", "note": "Strike" },
+    { "qty": "850", "label": "Alloy Plate", "note": "Peye Grip" },
+    { "qty": "1,200", "label": "Ferrite", "note": "Coprite Alloy refines" },
+    {
+      "qty": "350",
+      "label": "Rubedo",
+      "note": "150 Coprite Alloy refines, 200 Pyrotic Alloy refines"
+    },
+    { "qty": "800", "label": "Cryotic", "note": "Pyrotic Alloy refines" },
+    { "qty": "10", "label": "Esher Devar", "note": null },
+    { "qty": "60", "label": "Coprite Alloy", "note": null },
+    { "qty": "20", "label": "Iradite", "note": "Peye Grip" },
+    { "qty": "50", "label": "Fish Oil", "note": "Peye Grip" },
+    { "qty": "80", "label": "Pyrotic Alloy", "note": "Peye Grip + Jai Link" },
+    { "qty": "10", "label": "Nistlepod", "note": "Jai Link" },
+    { "qty": "2", "label": "Condroc Wing", "note": "Jai Link" },
+    { "qty": "5", "label": "Khut-Khut Venom Sac", "note": "Jai Link" },
+    { "qty": "2", "label": "Cetus Wisp", "note": "gild" },
+    { "qty": "3,500", "label": "Credits", "note": null }
+  ],
   "groups": [
     {
       "type": "gate",
@@ -39,7 +61,7 @@
         }
       ],
       "conditions": [
-        "Untradeable — no plat shortcut and no way to buy it once the window closes.",
+        "Untradeable: no plat shortcut and no way to buy it once the window closes.",
         "Naberus and Plague Star alternate; if Plague Star already ran this year, don't count on Naberus too."
       ],
       "bonuses": [],
@@ -54,7 +76,7 @@
       "mode": null,
       "live": null,
       "skip": null,
-      "earns": { "currency": "Operational Supply standing", "amount": "6,000" },
+      "earns": { "currency": "Operational Supply Standing", "amount": "6,000" },
       "spends": [],
       "map": null,
       "rows": [
@@ -92,7 +114,8 @@
           "title": "rank ladder",
           "body": "Rank 1 Collaborator: 1,000 standing, 10 Grokdrul, 5,000cr. Rank 2 Defender: 2,000 standing, 10 Iradite, 10,000cr. Rank 3 Champion: 3,000 standing, 10 Nistlepod, 20,000cr. Each rank-up grants one free item of that rank."
         }
-      ]
+      ],
+      "ref": "Operational Supply Standing"
     },
     {
       "type": "vendor",
@@ -105,8 +128,8 @@
       "skip": null,
       "earns": null,
       "spends": [
-        { "currency": "Operational Supply standing", "amount": "2,000" },
-        { "currency": "credits", "amount": "3,500" }
+        { "currency": "Operational Supply Standing", "amount": "2,000" },
+        { "currency": "Credits", "amount": "3,500" }
       ],
       "map": null,
       "rows": [
@@ -134,7 +157,7 @@
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Ostron standing", "amount": "2,000" }],
+      "spends": [{ "currency": "Ostron Standing", "amount": "2,000" }],
       "map": null,
       "rows": [
         {
@@ -154,61 +177,6 @@
       ],
       "conditions": [
         "The cheapest Grip and Link are fine if you only want the Mastery; a built Zaw can never be taken apart."
-      ],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "PLAINS OF EIDOLON, EARTH",
-      "sub": "Old Man Suumbaat",
-      "activity": "mine and refine the Strike's gem and alloy, gather Grip and Link materials",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": "plains-of-eidolon",
-      "rows": [
-        { "qty": "10", "label": "Esher Devar", "note": "mined gem", "alt": null, "done": false },
-        {
-          "qty": "60",
-          "label": "Coprite Alloy",
-          "note": "refined ore",
-          "alt": null,
-          "done": false
-        },
-        { "qty": "20", "label": "Iradite", "note": "Peye Grip", "alt": null, "done": false },
-        { "qty": "50", "label": "Fish Oil", "note": "Peye Grip", "alt": null, "done": false },
-        {
-          "qty": "850",
-          "label": "Alloy Plate",
-          "note": "Peye Grip; common resource, not Plains-specific",
-          "alt": null,
-          "done": false
-        },
-        { "qty": "60", "label": "Pyrotic Alloy", "note": "Peye Grip", "alt": null, "done": false },
-        { "qty": "10", "label": "Nistlepod", "note": "Jai Link", "alt": null, "done": false },
-        { "qty": "20", "label": "Pyrotic Alloy", "note": "Jai Link", "alt": null, "done": false },
-        { "qty": "2", "label": "Condroc Wing", "note": "Jai Link", "alt": null, "done": false },
-        {
-          "qty": "5",
-          "label": "Khut-Khut Venom Sac",
-          "note": "Jai Link; fillet Khut-Khut or loot Thumpers",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "2",
-          "label": "Cetus Wisp",
-          "note": "gild",
-          "alt": "buy at Nakak for 750 standing + 1,500cr each",
-          "done": false
-        }
-      ],
-      "conditions": [
-        "1,600 Nano Spores and 700 Plastids for the Strike are common resources most players already have banked."
       ],
       "bonuses": [],
       "disclosures": []

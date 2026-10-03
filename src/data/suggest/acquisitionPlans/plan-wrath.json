@@ -12,6 +12,14 @@
     { "label": "components", "amount": "70,000 cr", "money": false },
     { "label": "blueprint", "amount": "20,000 cr", "money": false }
   ],
+  "materials": [
+    { "qty": "800", "label": "Alloy Plate", "note": "400 Wrath Blade, 400 Pride Blade" },
+    { "qty": "500", "label": "Oxium", "note": "250 Wrath Blade, 250 Pride Blade" },
+    { "qty": "1,250", "label": "Salvage", "note": "Wrath Handle" },
+    { "qty": "3", "label": "Star Crimzian", "note": "Wrath Blade" },
+    { "qty": "5", "label": "Marquise Thyst", "note": "Pride Blade" },
+    { "qty": "3,000", "label": "Titanium", "note": null }
+  ],
   "groups": [
     {
       "type": "gate",
@@ -60,20 +68,21 @@
         }
       ],
       "conditions": [
-        "Set matchmaking to Solo before entering Pontis Tower if you want your own Railjack — entering Public locks you to the loaner (Vena's Marrowbone) even if you switch modes after.",
+        "Set matchmaking to Solo before entering Pontis Tower if you want your own Railjack: entering Public locks you to the loaner (Vena's Marrowbone) even if you switch modes after.",
         "Your own Railjack intrinsics still apply even on the loaner ship."
       ],
       "bonuses": [
         "Shooting all the optional green ramsled targets roughly doubles Steel Path income for the same run and isn't explained in-game at all.",
         "The ramsled segment also drops free Tellurium and MkIII Railjack parts.",
-        "Sisters of Parvos don't always spawn on Ryoku's side; Vena's side spawns them more often — bring armor/overguard strip or a buff dispel for Warding Halo."
+        "Sisters of Parvos don't always spawn on Ryoku's side; Vena's side spawns them more often: bring armor/overguard strip or a buff dispel for Warding Halo."
       ],
       "disclosures": [
         {
           "title": "restart on a sticky reward table",
           "body": "A launch-week bug repeated the same blueprint reward run after run until the client was fully closed and reopened. If you see three identical rewards in a row, restart before assuming it's just variance."
         }
-      ]
+      ],
+      "ref": "Crimson Talent"
     },
     {
       "type": "currency",
@@ -97,10 +106,11 @@
         }
       ],
       "conditions": [
-        "The Orowyrm targeting is markedly harder to track than the ramsled — plan for more runs here than the Crimson side needs."
+        "The Orowyrm targeting is markedly harder to track than the ramsled: plan for more runs here than the Crimson side needs."
       ],
       "bonuses": [],
-      "disclosures": []
+      "disclosures": [],
+      "ref": "Emerald Talent"
     },
     {
       "type": "vendor",
@@ -130,44 +140,12 @@
         { "qty": null, "label": "Pride Blade", "note": "45 Emerald", "alt": null, "done": false }
       ],
       "conditions": [
-        "Wrath needs a Pride Blade from The Kuva Wytch, and Pride mirrors it needing a Wrath Blade — farming only one node leaves an unbuildable set.",
+        "Wrath needs a Pride Blade from The Kuva Wytch, and Pride mirrors it needing a Wrath Blade: farming only one node leaves an unbuildable set.",
         "Duplicate blueprints can't be converted to Talents; buy the specific missing part from Hunhow rather than rolling for it again."
       ],
       "bonuses": [
-        "Each Scoria's Angel completion also rolls a flat 7-item table at 14.29% each, three of them Wrath parts — drops often cover a chunk of the pity cost for free."
+        "Each Scoria's Angel completion also rolls a flat 7-item table at 14.29% each, three of them Wrath parts: drops often cover a chunk of the pity cost for free."
       ],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "PLAINS OF EIDOLON / ORB VALLIS",
-      "sub": null,
-      "activity": "buy or mine the cut gems for the blade recipes",
-      "meta": "tradeable, one or two crafts covers it",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "3",
-          "label": "Star Crimzian",
-          "note": "Wrath Blade; Ostron Rank 3, 6 per craft",
-          "alt": "tradeable",
-          "done": false
-        },
-        {
-          "qty": "5",
-          "label": "Marquise Thyst",
-          "note": "Pride Blade; Solaris United Rank 4, 3 per craft (two crafts)",
-          "alt": "tradeable",
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
       "disclosures": []
     },
     {

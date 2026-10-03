@@ -12,10 +12,6 @@
     {
       "text": "Tenno Lab",
       "tone": "info"
-    },
-    {
-      "text": "72h + 48h research",
-      "tone": "warn"
     }
   ],
   "prices": [
@@ -30,166 +26,52 @@
       "money": false
     }
   ],
-  "groups": [
+  "materials": [
     {
-      "type": "gate",
-      "place": "DOJO",
-      "sub": null,
-      "activity": "build an Oracle, then a Tenno Lab",
-      "meta": "24h each at Ghost tier",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Oracle",
-          "note": "1,000 cr, 650 Salvage, 350 Circuits, 350 Polymer Bundle, 1 Forma",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Tenno Lab",
-          "note": "1,000 cr, 650 Salvage, 350 Circuits, 350 Polymer Bundle, 1 Forma",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": ["The Oracle must exist before any lab."],
-      "bonuses": ["A solo Ghost clan is enough."],
-      "disclosures": []
+      "qty": "2",
+      "label": "Gallium",
+      "note": null
     },
     {
-      "type": "gate",
-      "place": "TENNO LAB, DOJO",
+      "qty": "800",
+      "label": "Salvage",
+      "note": null
+    },
+    {
+      "qty": "200",
+      "label": "Circuits",
+      "note": null
+    },
+    {
+      "qty": "4",
+      "label": "Morphics",
+      "note": null
+    },
+    { "qty": "15,000", "label": "Credits", "note": null }
+  ],
+  "groups": [
+    {
+      "type": "vendor",
+      "place": "CLAN DOJO, TENNO LAB",
       "sub": null,
-      "activity": "research Akstiletto, then Anku, then buy the blueprint",
-      "meta": "72h then 48h",
+      "activity": "buy the blueprint",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [],
+      "spends": [
+        {
+          "currency": "Credits",
+          "amount": "15,000"
+        }
+      ],
       "map": null,
       "rows": [
-        {
-          "qty": null,
-          "label": "Akstiletto research",
-          "note": "prerequisite; 500 Salvage, 300 Polymer Bundle, 50 Alloy Plate, 1 Gallium, 5,000 cr, 72h",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Anku research",
-          "note": "500 Salvage, 300 Polymer Bundle, 50 Circuits, 1 Gallium, 5,000 cr, 48h",
-          "alt": null,
-          "done": false
-        },
         {
           "qty": null,
           "label": "Anku Blueprint",
           "note": "15,000 cr at the lab console",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": ["You don't have to build the Akstiletto."],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "MARS",
-      "sub": null,
-      "activity": "any mission",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "1,800",
-          "label": "Salvage",
-          "note": "500 + 500 research, 800 build",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "4",
-          "label": "Gallium",
-          "note": "1 + 1 research, 2 build",
-          "alt": "Lieutenant Lech Kril drops up to 2",
-          "done": false
-        },
-        {
-          "qty": "4",
-          "label": "Morphics",
-          "note": "build",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": ["Any Mars mission drops them; Hellas is just one choice."],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "ASSUR, URANUS",
-      "sub": null,
-      "activity": "Dark Sector",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "600",
-          "label": "Polymer Bundle",
-          "note": "300 + 300 research",
-          "alt": "higher rate on Uranus than Mercury or Venus",
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": ["Assur also drops Gallium."],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "DRACO, CERES",
-      "sub": null,
-      "activity": null,
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "250",
-          "label": "Circuits",
-          "note": "50 research, 200 build",
-          "alt": "or Venus",
-          "done": false
-        },
-        {
-          "qty": "50",
-          "label": "Alloy Plate",
-          "note": "Akstiletto research",
           "alt": null,
           "done": false
         }
@@ -219,9 +101,7 @@
           "done": false
         }
       ],
-      "conditions": [
-        "Cassowar research needs Anku researched, so do this first if you plan to chain."
-      ],
+      "conditions": [],
       "bonuses": [],
       "disclosures": []
     }

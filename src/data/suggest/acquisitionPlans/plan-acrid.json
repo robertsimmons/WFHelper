@@ -30,76 +30,29 @@
       "money": false
     }
   ],
+  "materials": [
+    {
+      "qty": "5",
+      "label": "Mutagen Mass",
+      "note": null
+    },
+    {
+      "qty": "5,000",
+      "label": "Nano Spores",
+      "note": null
+    },
+    {
+      "qty": "6,000",
+      "label": "Salvage",
+      "note": null
+    },
+    { "qty": "1", "label": "Forma", "note": null },
+    { "qty": "15,000", "label": "Credits", "note": null }
+  ],
   "groups": [
     {
-      "type": "gate",
-      "place": "CLAN DOJO, BIO LAB",
-      "sub": null,
-      "activity": "have a dojo with a Bio Lab",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Bio Lab",
-          "note": "a built clan lab, or join a clan that has the Acrid researched",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Clan research consumes clan vault resources, so donate them before the timer can start."
-      ],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "research",
-      "place": "CLAN DOJO, BIO LAB",
-      "sub": null,
-      "activity": "research Mutagen Mass, then Torid, then Acrid",
-      "meta": "three 3-day timers in sequence",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Mutagen Mass",
-          "note": "5 Mutagen Sample, 150 Circuits, 500 Nano Spores, 100 Plastids, 5,000 cr",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Torid",
-          "note": "10 Mutagen Sample, 200 Circuits, 750 Nano Spores, 400 Polymer Bundle, 5,000 cr",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Acrid",
-          "note": "10 Mutagen Sample, 150 Ferrite, 1,000 Nano Spores, 500 Polymer Bundle, 7,500 cr",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": ["Torid is only a prerequisite; it is never built."],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
       "type": "vendor",
-      "place": "BIO LAB",
+      "place": "CLAN DOJO, BIO LAB",
       "sub": null,
       "activity": "buy the blueprint",
       "meta": null,
@@ -124,146 +77,6 @@
         }
       ],
       "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "DEIMOS",
-      "sub": "Cambion Drift Isolation Vaults also drop Samples",
-      "activity": "Survival or Defense",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "75",
-          "label": "Mutagen Sample",
-          "note": "25 for research, 50 to craft all five Mass",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "7,250",
-          "label": "Nano Spores",
-          "note": "2,250 for research, 5,000 for the build",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": ["Eris drops far fewer Samples than Deimos; do not farm it for them."],
-      "bonuses": [
-        "Nekros doubles Nano Spore pickups.",
-        "Keep these Samples apart from the thousands Hema research needs."
-      ],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "NEPTUNE, EUROPA OR VOID",
-      "sub": null,
-      "activity": "Control Module",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "5",
-          "label": "Control Module",
-          "note": "rare; higher drop chance in the Void",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "ANY STAR CHART",
-      "sub": null,
-      "activity": "common resources",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "8,500",
-          "label": "Salvage",
-          "note": "2,500 for Mass, 6,000 for the build",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "1,350",
-          "label": "Plastids",
-          "note": "100 for research, 1,250 for Mass",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "900",
-          "label": "Polymer Bundle",
-          "note": "research",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "350",
-          "label": "Circuits",
-          "note": "research",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "150",
-          "label": "Ferrite",
-          "note": "research",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "craft",
-      "place": "FOUNDRY",
-      "sub": null,
-      "activity": "craft the Mutagen Mass, one at a time",
-      "meta": "2.5 days of queue",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "5",
-          "label": "Mutagen Mass",
-          "note": "10 Mutagen Sample, 1 Control Module, 500 Salvage, 250 Plastids, 15,000 cr, 12h each",
-          "alt": "or Infested Invasion rewards, or Orb Vallis bounty rewards",
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Only one Mutagen Mass builds at a time, and each eats Plastids and Control Modules."
-      ],
       "bonuses": [],
       "disclosures": []
     },

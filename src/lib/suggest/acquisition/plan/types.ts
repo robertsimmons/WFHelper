@@ -1,5 +1,6 @@
 import type { ItemDbEntry, RawInventoryData } from "../../../../types/inventory.js";
 import type { WorldState } from "../../../../types/world.js";
+import type { ResourceLookup } from "./resources.js";
 import type {
   PlanBadge,
   PlanDisclosure,
@@ -169,4 +170,6 @@ export interface PlanContext {
   /** Standing earned today against the daily cap, by currency name. */
   dailyStanding?: Readonly<Record<string, number>> | undefined;
   now?: number | undefined;
+  /** The resource store plan materials resolve against; the shipped one by default. */
+  resources?: ResourceLookup | undefined;
 }

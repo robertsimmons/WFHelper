@@ -12,6 +12,18 @@
     { "label": "blueprint", "amount": "35,000 cr", "money": false },
     { "label": "built", "amount": "200 p", "money": false }
   ],
+  "materials": [
+    { "qty": "3", "label": "Orokin Cell", "note": "1 per component" },
+    { "qty": "1,050", "label": "Polymer Bundle", "note": "400 Neuroptics, 650 Systems" },
+    { "qty": "250", "label": "Alloy Plate", "note": "Neuroptics" },
+    { "qty": "1", "label": "Neurodes", "note": "Neuroptics" },
+    { "qty": "2,500", "label": "Ferrite", "note": "Chassis" },
+    { "qty": "450", "label": "Plastids", "note": "Chassis" },
+    { "qty": "1", "label": "Gallium", "note": "Chassis" },
+    { "qty": "250", "label": "Circuits", "note": "Systems" },
+    { "qty": "1", "label": "Control Module", "note": "Systems" },
+    { "qty": "1", "label": "Argon Crystal", "note": "Mirage" }
+  ],
   "groups": [
     {
       "type": "gate",
@@ -84,36 +96,6 @@
       "disclosures": []
     },
     {
-      "type": "farm",
-      "place": "THE VOID",
-      "sub": null,
-      "activity": "Capture or Exterminate with a loot-nuke frame",
-      "meta": "pick this up last",
-      "mode": "Hepit/Ukko Capture, or Teshub/Oxomoco Exterminate",
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "1",
-          "label": "Argon Crystal",
-          "note": "~2 Pegmatite deposits per map, 1-2 crystals each",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Argon is stable for the first day, then halves at each 00:00 GMT reset once decay starts; farm it only once the components are ready.",
-        "Not sold on the Market and cannot be traded."
-      ],
-      "bonuses": [
-        "Max-range Limbo (Cataclysm) or Xaku (The Vast Untime) breaks every container without line of sight; a Mot or Ani Survival works without a loot frame."
-      ],
-      "disclosures": []
-    },
-    {
       "type": "foundry",
       "place": "FOUNDRY",
       "sub": null,
@@ -129,28 +111,28 @@
         {
           "qty": null,
           "label": "Neuroptics",
-          "note": "1 Orokin Cell + Neurodes",
+          "note": "15,000 cr, 250 Alloy Plate, 1 Neurodes, 400 Polymer Bundle, 1 Orokin Cell",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Chassis",
-          "note": "1 Orokin Cell + Gallium",
+          "note": "15,000 cr, 1 Orokin Cell, 2,500 Ferrite, 450 Plastids, 1 Gallium",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Systems",
-          "note": "1 Orokin Cell + Control Module",
+          "note": "15,000 cr, 1 Control Module, 250 Circuits, 650 Polymer Bundle, 1 Orokin Cell",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Mirage",
-          "note": "25,000 cr + 1 Argon Crystal, 3 days",
+          "note": "25,000 cr, 1 Argon Crystal, 3 days",
           "alt": null,
           "done": false
         }

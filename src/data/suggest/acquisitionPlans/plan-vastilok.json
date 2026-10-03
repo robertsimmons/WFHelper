@@ -9,6 +9,7 @@
     { "text": "MR 9", "tone": "info" }
   ],
   "prices": [{ "label": "Baro", "amount": "325,000 cr + 550 Ducats", "money": false }],
+  "materials": [{ "qty": "325,000", "label": "Credits", "note": null }],
   "groups": [
     {
       "type": "currency",
@@ -16,10 +17,10 @@
       "sub": "Relay Ducat Kiosk",
       "activity": "crack Void Relics, trade Prime parts for Ducats",
       "meta": "550 Ducats needed",
-      "mode": "public Capture, Exterminate or Rescue for fast cracks",
+      "mode": null,
       "live": null,
       "skip": null,
-      "earns": { "currency": "Ducats", "amount": "550" },
+      "earns": { "currency": "Orokin Ducats", "amount": "550" },
       "spends": [],
       "map": null,
       "rows": [
@@ -31,11 +32,10 @@
           "done": false
         }
       ],
-      "conditions": [
-        "Bank Ducats before Baro's visit; his window is 48 hours, too short to farm from zero."
-      ],
+      "conditions": [],
       "bonuses": [],
-      "disclosures": []
+      "disclosures": [],
+      "ref": "Orokin Ducats"
     },
     {
       "type": "vendor",
@@ -49,7 +49,7 @@
       "earns": null,
       "spends": [
         { "currency": "Credits", "amount": "325,000" },
-        { "currency": "Ducats", "amount": "550" }
+        { "currency": "Orokin Ducats", "amount": "550" }
       ],
       "map": null,
       "rows": [
@@ -64,7 +64,7 @@
       "conditions": [
         "Baro's stock changes every visit; the Vastilok isn't guaranteed to be up even when he is.",
         "MR 9 is needed to equip it, and to receive it in a trade.",
-        "Any rank, Forma or Catalyst makes it untradeable — keep it stock if you plan to sell or gift it."
+        "Any rank, Forma or Catalyst makes it untradeable: keep it stock if you plan to sell or gift it."
       ],
       "bonuses": [],
       "disclosures": [

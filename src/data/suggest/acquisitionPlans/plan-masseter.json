@@ -12,46 +12,17 @@
     { "label": "blueprint", "amount": "15,000 cr", "money": false },
     { "label": "build", "amount": "20,000 cr", "money": false }
   ],
+  "materials": [
+    { "qty": "2", "label": "Argon Crystal", "note": null },
+    { "qty": "650", "label": "Cryotic", "note": null },
+    { "qty": "225", "label": "Oxium", "note": null },
+    { "qty": "8,600", "label": "Salvage", "note": null },
+    { "qty": "15,000", "label": "Credits", "note": null }
+  ],
   "groups": [
     {
-      "type": "gate",
-      "place": "DOJO, TENNO LAB",
-      "sub": null,
-      "activity": "clan research",
-      "meta": "skip if already researched; 48h then 72h",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Tenno Lab: Nami Skyla",
-          "note": "1 Neurodes, 500 Ferrite, 50 Rubedo, 300 Polymer Bundle, 5,000 cr, 48h",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Tenno Lab: Masseter",
-          "note": "2 Gallium, 1,200 Polymer Bundle, 1,450 Rubedo, 3,250 Alloy Plate, 10,000 cr, 72h",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Research needs the clan leader or a rank with research permission; a clan you founded yourself works, an absent leader blocks it.",
-        "Start both back to back and gather the build materials while the timers run.",
-        "In an established clan this is already done and costs you nothing."
-      ],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "research",
-      "place": "DOJO, TENNO LAB",
+      "type": "vendor",
+      "place": "CLAN DOJO, TENNO LAB",
       "sub": null,
       "activity": "buy the blueprint",
       "meta": "15,000 cr",
@@ -70,100 +41,7 @@
           "done": false
         }
       ],
-      "conditions": [
-        "Research alone does not give you the weapon; the blueprint is a separate purchase."
-      ],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "MARS, JUPITER, SEDNA",
-      "sub": null,
-      "activity": "Salvage in stacks of 75 to 150",
-      "meta": "the largest number on the path",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "8,600",
-          "label": "Salvage",
-          "note": null,
-          "alt": "3,000 for 30 p at the Market, so about 3 packs",
-          "done": false
-        },
-        {
-          "qty": "2",
-          "label": "Gallium",
-          "note": "research; Mars, Uranus",
-          "alt": "or certain assassination targets",
-          "done": false
-        }
-      ],
       "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "EXCAVATION AND CORPUS MISSIONS",
-      "sub": null,
-      "activity": "Excavation for Cryotic, Oxium Ospreys for Oxium",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "650",
-          "label": "Cryotic",
-          "note": "Excavation on Venus, Earth, Phobos, Europa, Neptune, Pluto",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "225",
-          "label": "Oxium",
-          "note": "kill Oxium Ospreys before they self-destruct",
-          "alt": "or Storage Containers, low-tier bounties",
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "THE VOID",
-      "sub": null,
-      "activity": "Argon Pegmatite nodes, Isolation Vault containers",
-      "meta": "pick this up last",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "2",
-          "label": "Argon Crystal",
-          "note": null,
-          "alt": "or some assassination targets",
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Argon is the only input that decays while held; collect it once Salvage, Cryotic and Oxium are in hand."
-      ],
       "bonuses": [],
       "disclosures": []
     },

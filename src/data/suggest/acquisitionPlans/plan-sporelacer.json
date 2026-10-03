@@ -12,6 +12,27 @@
     { "label": "parts + assembly", "amount": "19,000 cr", "money": false },
     { "label": "gild", "amount": "5,000 standing", "money": false }
   ],
+  "materials": [
+    {
+      "qty": "800",
+      "label": "Plastids",
+      "note": "600 Adramal Alloy refine, 200 Travocyte Alloy refines"
+    },
+    { "qty": "1,000", "label": "Salvage", "note": "Travocyte Alloy refines" },
+    { "qty": "1,200", "label": "Oxium", "note": "Auroxium Alloy refines" },
+    { "qty": "10", "label": "Morphics", "note": "Auroxium Alloy refines" },
+    { "qty": "15", "label": "Pustulite", "note": "Sporelacer" },
+    { "qty": "20", "label": "Adramal Alloy", "note": "Sporelacer" },
+    { "qty": "25", "label": "Benign Infested Tumor", "note": "Sporelacer" },
+    { "qty": "10", "label": "Sporulate Sac", "note": "Sporelacer" },
+    { "qty": "5", "label": "Goblite Tears", "note": null },
+    { "qty": "30", "label": "Travocyte Alloy", "note": null },
+    { "qty": "10", "label": "Recaster Neural Relay", "note": null },
+    { "qty": "40", "label": "Auroxium Alloy", "note": "Splat" },
+    { "qty": "10", "label": "Star Amarast", "note": "Splat" },
+    { "qty": "5", "label": "Synathid Ecosynth Analyzer", "note": "Splat" },
+    { "qty": "40", "label": "Scrap", "note": "20 each for Haymaker and Splat" }
+  ],
   "groups": [
     {
       "type": "gate",
@@ -56,7 +77,7 @@
       "mode": "solo",
       "live": null,
       "skip": null,
-      "earns": { "currency": "Solaris United standing", "amount": "146,000" },
+      "earns": { "currency": "Solaris United Standing", "amount": "146,000" },
       "spends": [],
       "map": "orb-vallis",
       "rows": [
@@ -82,10 +103,7 @@
           "done": false
         }
       ],
-      "conditions": [
-        "The daily cap is 16,000 plus 500 per Mastery Rank, separately tracked for each syndicate.",
-        "Conservation with Kubrodon lure and pheromones or cave mining is faster standing than regular bounties."
-      ],
+      "conditions": [],
       "bonuses": [
         "Claiming Splat as Cove's free rank-appropriate vendor item saves its 4,000 standing cost."
       ],
@@ -94,7 +112,8 @@
           "title": "the actual wall",
           "body": "The Sporelacer chamber itself is a Neutral, 500-standing purchase. The multi-day cost is reaching Cove for Splat, not Deimos farming."
         }
-      ]
+      ],
+      "ref": "Solaris United Standing"
     },
     {
       "type": "bounty",
@@ -119,7 +138,7 @@
       ],
       "conditions": [
         "Stage-one bounty rewards are the efficient repeatable bond roll. Extract after completion; aborting forfeits the reward.",
-        "Check Ticker from the start—rare bond tiers can be the real bottleneck."
+        "Check Ticker from the start; rare bond tiers can be the real bottleneck."
       ],
       "bonuses": ["Profit-Taker drops every debt-bond tier if that fight is already available."],
       "disclosures": []
@@ -134,7 +153,7 @@
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Entrati standing", "amount": "500" }],
+      "spends": [{ "currency": "Entrati Standing", "amount": "500" }],
       "map": null,
       "rows": [
         {
@@ -159,7 +178,7 @@
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Solaris United standing", "amount": "5,000" }],
+      "spends": [{ "currency": "Solaris United Standing", "amount": "5,000" }],
       "map": "orb-vallis",
       "rows": [
         {
@@ -183,61 +202,6 @@
       "bonuses": [
         "Haymaker + Splat is the community's standard secondary Sporelacer pairing for damage and critical stats."
       ],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "CAMBION DRIFT + ORB VALLIS",
-      "sub": null,
-      "activity": "mine, fish and gather the component materials",
-      "meta": "three component recipes",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": "orb-vallis",
-      "rows": [
-        { "qty": "15", "label": "Pustulite", "note": "Sporelacer", "alt": null, "done": false },
-        { "qty": "20", "label": "Adramal Alloy", "note": "Sporelacer", "alt": null, "done": false },
-        {
-          "qty": "25",
-          "label": "Benign Infested Tumor",
-          "note": "Sporelacer",
-          "alt": null,
-          "done": false
-        },
-        { "qty": "10", "label": "Sporulate Sac", "note": "Sporelacer", "alt": null, "done": false },
-        { "qty": "5", "label": "Goblite Tears", "note": "Haymaker", "alt": null, "done": false },
-        { "qty": "30", "label": "Travocyte Alloy", "note": "Haymaker", "alt": null, "done": false },
-        {
-          "qty": "10",
-          "label": "Recaster Neural Relay",
-          "note": "Haymaker",
-          "alt": null,
-          "done": false
-        },
-        { "qty": "40", "label": "Auroxium Alloy", "note": "Splat", "alt": null, "done": false },
-        { "qty": "10", "label": "Star Amarast", "note": "Splat", "alt": null, "done": false },
-        {
-          "qty": "5",
-          "label": "Synathid Ecosynth Analyzer",
-          "note": "Splat",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "40",
-          "label": "Scrap",
-          "note": "20 each for Haymaker and Splat",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Component resources span Deimos and Fortuna. Refine mined ores and gems at their hub vendors before starting the Foundry."
-      ],
-      "bonuses": [],
       "disclosures": []
     },
     {

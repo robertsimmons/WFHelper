@@ -12,68 +12,17 @@
     { "label": "blueprint", "amount": "15,000 cr", "money": false },
     { "label": "build", "amount": "30,000 cr", "money": false }
   ],
+  "materials": [
+    { "qty": "600", "label": "Cryotic", "note": null },
+    { "qty": "20", "label": "Gallium", "note": null },
+    { "qty": "5", "label": "Fieldron", "note": null },
+    { "qty": "1", "label": "Forma", "note": null },
+    { "qty": "15,000", "label": "Credits", "note": null }
+  ],
   "groups": [
     {
-      "type": "gate",
-      "place": "DOJO, ENERGY LAB",
-      "sub": null,
-      "activity": "clan research for Opticor",
-      "meta": "skip if already researched",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Energy Lab: Fieldron, Prova, Dera, Lanka, then Opticor",
-          "note": "72h per step",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "10",
-          "label": "Fieldron Sample",
-          "note": "Opticor research",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "500",
-          "label": "Ferrite",
-          "note": "Opticor research",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "250",
-          "label": "Plastids",
-          "note": "Opticor research",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "1",
-          "label": "Gallium",
-          "note": "Opticor research",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Research also costs 10,000 credits, and the figures scale with clan tier; a Ghost clan pays the base amounts.",
-        "In an established clan this is already done and costs you nothing."
-      ],
-      "bonuses": [
-        "Join a large clan, buy every blueprint you need from its labs, then leave. Bought blueprints stay yours."
-      ],
-      "disclosures": []
-    },
-    {
       "type": "vendor",
-      "place": "DOJO, ENERGY LAB",
+      "place": "CLAN DOJO, ENERGY LAB",
       "sub": null,
       "activity": "buy the blueprint",
       "meta": "15,000 cr",
@@ -87,88 +36,6 @@
         { "qty": null, "label": "Opticor Blueprint", "note": null, "alt": null, "done": false }
       ],
       "conditions": ["Mastery Rank 14 is required to use it."],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "STAR CHART",
-      "sub": null,
-      "activity": "Corpus-side Invasions",
-      "meta": "3 per Invasion; start crafting the rest now",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "5",
-          "label": "Fieldron",
-          "note": "3 per Corpus-reward Invasion",
-          "alt": "or craft from Fieldron Samples, 12h each",
-          "done": false
-        }
-      ],
-      "conditions": ["The recipe wants built Fieldron, not Fieldron Samples."],
-      "bonuses": [
-        "Rare Corpus storage containers and some Orb Vallis bounty rewards also pay Fieldron."
-      ],
-      "disclosures": [
-        {
-          "title": "crafting Fieldron",
-          "body": "Each Energy Lab Fieldron build is 15,000 credits, 10 Fieldron Sample, 1 Control Module, 500 Salvage and 250 Plastids, 12 hours. Samples are a common Corpus enemy drop."
-        }
-      ]
-    },
-    {
-      "type": "farm",
-      "place": "EVEREST, EARTH",
-      "sub": null,
-      "activity": "Excavation",
-      "meta": "100 per completed excavator",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "600",
-          "label": "Cryotic",
-          "note": "Excavation only",
-          "alt": "or Valefor, Venus or Hieracon, Pluto",
-          "done": false
-        }
-      ],
-      "conditions": ["Mission level does not change the payout, so pick a low-level node."],
-      "bonuses": ["A Resource Booster doubles the end-of-mission total."],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "ARA, MARS",
-      "sub": null,
-      "activity": "any mission",
-      "meta": "rare drop",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "20",
-          "label": "Gallium",
-          "note": "drops on Mars and Uranus",
-          "alt": "or Hellas or Gradivus, Mars, or Titania, Uranus",
-          "done": false
-        }
-      ],
-      "conditions": [],
       "bonuses": [],
       "disclosures": []
     },

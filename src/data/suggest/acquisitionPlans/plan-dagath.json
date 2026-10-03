@@ -9,6 +9,19 @@
     { "text": "beacon standing", "tone": "warn" }
   ],
   "prices": [{ "label": "build", "amount": "70,000 cr", "money": false }],
+  "materials": [
+    { "qty": "2,000", "label": "Alloy Plate", "note": "Neuroptics" },
+    { "qty": "1,500", "label": "Salvage", "note": "Chassis" },
+    { "qty": "1,000", "label": "Circuits", "note": "Systems" },
+    { "qty": "3", "label": "Neurodes", "note": "Neuroptics" },
+    { "qty": "3", "label": "Neural Sensors", "note": "Neuroptics" },
+    { "qty": "4", "label": "Morphics", "note": "Chassis" },
+    { "qty": "2", "label": "Argon Crystal", "note": "Chassis" },
+    { "qty": "5", "label": "Control Module", "note": "Systems" },
+    { "qty": "4", "label": "Gallium", "note": "Systems" },
+    { "qty": "1", "label": "Orokin Cell", "note": "Dagath" },
+    { "qty": "102", "label": "Vainthorn", "note": null }
+  ],
   "groups": [
     {
       "type": "vendor",
@@ -67,7 +80,7 @@
       "mode": null,
       "live": null,
       "skip": null,
-      "earns": { "currency": "syndicate standing", "amount": "65,000" },
+      "earns": { "currency": "Syndicate Standing", "amount": "65,000" },
       "spends": [],
       "map": null,
       "rows": [
@@ -81,7 +94,7 @@
       ],
       "conditions": [
         "Any of the six main Syndicates (Steel Meridian, Arbiters of Hexis, Cephalon Suda, Perrin Sequence, Red Veil, New Loka) sells the beacon at Rank 2 for 5,000 standing.",
-        "Only the mission host's beacon is consumed, and the daily standing cap is tracked per syndicate."
+        "Only the mission host's beacon is consumed, and the daily standing cap is shared across the six syndicates."
       ],
       "bonuses": ["Squad up in recruiting chat and rotate host so only one beacon burns per run."],
       "disclosures": [
@@ -89,48 +102,8 @@
           "title": "the standing math",
           "body": "13 Steel Path runs (65,000 standing) or 17 normal runs (85,000) covers Vainthorn for the frame alone; her signature Dorrclave needs about as much again."
         }
-      ]
-    },
-    {
-      "type": "farm",
-      "place": "ABYSSAL ZONE, CERES",
-      "sub": null,
-      "activity": "Exterminate",
-      "meta": "6-8 per clear, 8-12 Steel Path",
-      "mode": "Steel Path recommended; no public matchmaking",
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "102",
-          "label": "Vainthorn",
-          "note": "34 per component; needs an Abyssal Beacon to enter",
-          "alt": null,
-          "done": false
-        }
       ],
-      "conditions": [
-        "No public matchmaking on either difficulty — recruit a premade in recruiting chat.",
-        "Find one Orokin Defixio per squad member and carry it to extraction; carrying one limits you to secondary and melee and applies a random curse.",
-        "If the host leaves, the mission fails for everyone."
-      ],
-      "bonuses": [
-        "Steel Path raises the roll to 8, 11 or 12 Vainthorn plus a Steel Essence, cutting both beacons and runs needed.",
-        "The Eximus Stronghold phase near the end is also a good Riven Sliver farm."
-      ],
-      "disclosures": [
-        {
-          "title": "dodge the curse",
-          "body": "Pick up the Defixio as the Warframe, switch to Operator to walk it to extraction, then switch back — it deposits instantly with no curse. If a curse is nasty, drop it and grab a different Defixio instead."
-        },
-        {
-          "title": "Steel Path Acolytes can eat the objective",
-          "body": "An Acolyte spawning near an unclaimed Defixio can make it vanish, softlocking the mission (flagged by the wiki as a possible bug). Grab a Defixio before an Acolyte shows if you can."
-        }
-      ]
+      "ref": "Syndicate Standing"
     },
     {
       "type": "foundry",
@@ -174,7 +147,7 @@
           "done": false
         }
       ],
-      "conditions": ["Argon Crystal decays daily; farm it right before queuing the Chassis."],
+      "conditions": [],
       "bonuses": [],
       "disclosures": []
     }

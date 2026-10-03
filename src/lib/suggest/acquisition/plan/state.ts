@@ -4,6 +4,7 @@ import {
   pendingBuildCounts,
   withoutFoundryPending,
 } from "../../../../../config/shared/foundryPending.js";
+import { toFiniteNumber } from "../../../../../config/shared/numeric.js";
 import { dailyStandingCap } from "../../../syndicates/rankup.js";
 import type { ItemDbEntry, RawInventoryData } from "../../../../types/inventory.js";
 
@@ -18,7 +19,7 @@ const QUEST_CHAIN_PREFIX = /^all main quests through /i;
 const QUEST_CHAIN_SEPARATOR = ", then ";
 /** DE files a quest's completion under its keychain, which the item database
  *  carries as an ordinary named entry beside real items. */
-const QUEST_KEYCHAIN = /^\/Lotus\/Types\/Keys\/.*KeyChain/;
+export const QUEST_KEYCHAIN = /^\/Lotus\/Types\/Keys\/.*KeyChain/;
 
 export function parseQuantity(text: string | null): number {
   if (!text || !GROUPED.test(text)) return 1;
@@ -143,7 +144,7 @@ function readStanding(inventory: RawInventoryData | null): Map<string, number> {
   return balances;
 }
 
-function readCompletedQuests(inventory: RawInventoryData | null): Set<string> {
+export function readCompletedQuests(inventory: RawInventoryData | null): Set<string> {
   const finished = new Set<string>();
   const rows = inventory?.QuestKeys;
   if (!Array.isArray(rows)) return finished;
@@ -165,6 +166,8 @@ export interface PlayerState {
   standing: Map<string, number>;
   standingCap: number;
   questsDone: Set<string>;
+  /** Null when the payload carries no balance, which is unknown rather than broke. */
+  credits: number | null;
 }
 
 export function readPlayerState(
@@ -186,6 +189,7 @@ export function readPlayerState(
     standing: readStanding(inventory),
     standingCap: dailyStandingCap(inventory),
     questsDone: readCompletedQuests(inventory),
+    credits: toFiniteNumber(inventory?.RegularCredits),
   };
 }
 
@@ -254,6 +258,8 @@ export function pendingBuildFor(
 
 const SYNDICATE_TAGS: Record<string, string> = {
   ostrons: "CetusSyndicate",
+  ostron: "CetusSyndicate",
+  holdfasts: "ZarimanSyndicate",
   "solaris united": "SolarisSyndicate",
   entrati: "EntratiSyndicate",
   "the holdfasts": "ZarimanSyndicate",

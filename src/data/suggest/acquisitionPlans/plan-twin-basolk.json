@@ -12,6 +12,16 @@
     { "label": "blueprints", "amount": "60,000 cr", "money": false },
     { "label": "builds", "amount": "120,000 cr", "money": false }
   ],
+  "materials": [
+    { "qty": "2", "label": "Argon Crystal", "note": "Atomos" },
+    { "qty": "2", "label": "Control Module", "note": "Twin Basolk" },
+    { "qty": "4", "label": "Morphics", "note": "Dual Zoren" },
+    { "qty": "2,400", "label": "Salvage", "note": "1,500 Atomos, 900 Dual Zoren" },
+    { "qty": "1,300", "label": "Polymer Bundle", "note": "Atomos" },
+    { "qty": "800", "label": "Rubedo", "note": "Atomos" },
+    { "qty": "1,100", "label": "Ferrite", "note": "Dual Zoren" },
+    { "qty": "800", "label": "Alloy Plate", "note": "Dual Zoren" }
+  ],
   "groups": [
     {
       "type": "vendor",
@@ -53,49 +63,6 @@
       "disclosures": []
     },
     {
-      "type": "farm",
-      "place": "THE VOID",
-      "sub": null,
-      "activity": "any Void mission, break containers",
-      "meta": "the day you start Atomos",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        { "qty": "2", "label": "Argon Crystal", "note": "Atomos", "alt": null, "done": false },
-        { "qty": "2", "label": "Control Module", "note": "Twin Basolk", "alt": null, "done": false }
-      ],
-      "conditions": [
-        "Argon halves every day at 00:00 GMT once it starts decaying; build Atomos the day you farm it."
-      ],
-      "bonuses": ["Void fissure runs you are already doing usually cover both."],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "HELLAS, MARS",
-      "sub": null,
-      "activity": "Exterminate",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        { "qty": "4", "label": "Morphics", "note": "Dual Zoren", "alt": null, "done": false }
-      ],
-      "conditions": [],
-      "bonuses": [
-        "Salvage, Polymer Bundle, Ferrite, Alloy Plate and Rubedo are common; top them up along the way."
-      ],
-      "disclosures": []
-    },
-    {
       "type": "foundry",
       "place": "FOUNDRY",
       "sub": null,
@@ -130,7 +97,7 @@
       "disclosures": [
         {
           "title": "keeping your own Atomos",
-          "body": "The Foundry lets you pick which copy it consumes, but you still need a spare. A consumed Atomos loses any Incarnon Genesis, so keep the Genesis on a separate copy."
+          "body": "The Foundry lets you pick which copy it consumes, but you still need a spare."
         }
       ]
     },

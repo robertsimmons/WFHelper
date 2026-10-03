@@ -12,6 +12,13 @@
     { "label": "blueprint", "amount": "30,000 cr", "money": false },
     { "label": "build", "amount": "60,000 cr", "money": false }
   ],
+  "materials": [
+    { "qty": "1,500", "label": "Salvage", "note": null },
+    { "qty": "200", "label": "Oxium", "note": null },
+    { "qty": "800", "label": "Cryotic", "note": null },
+    { "qty": "2", "label": "Argon Crystal", "note": null },
+    { "qty": "30,000", "label": "Credits", "note": null }
+  ],
   "groups": [
     {
       "type": "vendor",
@@ -30,98 +37,6 @@
       ],
       "conditions": ["Needs Mastery Rank 5 to buy and equip."],
       "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "MARS, JUPITER, SEDNA",
-      "sub": null,
-      "activity": "Salvage and Oxium Ospreys",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "1,500",
-          "label": "Salvage",
-          "note": "Carme (Mobile Defense, Jupiter) gives up to about 3,000 looting every container; Olympus (Disruption, Mars) at least 2,000",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "200",
-          "label": "Oxium",
-          "note": "7-12 per Osprey; Corpus Defense and Interception spawn them in the first 5 waves, Io about 80 in 10 waves",
-          "alt": "or open-world bounties that list Oxium",
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Ospreys that self-destruct drop nothing; keep them in view and shoot them yourself."
-      ],
-      "bonuses": ["Use a Resource Booster."],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "HIERACON, PLUTO",
-      "sub": null,
-      "activity": "Excavation, ideally as a Void Fissure",
-      "meta": "100 Cryotic per defended dig, about 8 digs",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "800",
-          "label": "Cryotic",
-          "note": "pays the same on any node, so Earth or Venus is as good as Pluto",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": ["Excavation Void Fissures are not always up; don't wait on one for 800."],
-      "bonuses": [
-        "A Resource Booster, Resourceful or Loyal Retriever, or a Smeeta Kavat's Charm double it.",
-        "Duviri Circuit pays a small amount too; you may already hold enough."
-      ],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "THE VOID",
-      "sub": null,
-      "activity": "Survival on Ani or Mot, or Capture on Hepit or Ukko",
-      "meta": "pick this up last",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "2",
-          "label": "Argon Crystal",
-          "note": "Argon Pegmatite deposits and containers",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Argon decays 24 hours after pickup. Have the Salvage, Oxium and Cryotic ready first, and don't start the 24-hour build without it."
-      ],
-      "bonuses": [
-        "A max-range Xaku (Vast Untime) or Limbo (Cataclysm) on Hepit or Ukko breaks every container, and each broken Pegmatite shows a waypoint to the crystals; public Hepit lobbies often have one.",
-        "Nekros plus Khora (Pilfering Strangledome) is the wiki's Survival setup."
-      ],
       "disclosures": []
     },
     {

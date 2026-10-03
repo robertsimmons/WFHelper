@@ -9,6 +9,13 @@
     { "text": "Cambion Drift bounty", "tone": "warn" }
   ],
   "prices": [{ "label": "build", "amount": "20,000 cr", "money": false }],
+  "materials": [
+    { "qty": "480", "label": "Rubedo", "note": "Devolved Namalon refines" },
+    { "qty": "5", "label": "Scintillant", "note": null },
+    { "qty": "60", "label": "Devolved Namalon", "note": null },
+    { "qty": "15", "label": "Spinal Core Section", "note": null },
+    { "qty": "1", "label": "Seriglass Shard", "note": null }
+  ],
   "groups": [
     {
       "type": "gate",
@@ -70,40 +77,6 @@
       ]
     },
     {
-      "type": "farm",
-      "place": "CAMBION DRIFT, DEIMOS",
-      "sub": "Isolation Vault, Arcana bounty",
-      "activity": "loop the floating Scintillant pickup",
-      "meta": "~1 per loop, ~15 min a loop",
-      "mode": "solo",
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": "cambion-drift",
-      "rows": [
-        {
-          "qty": "5",
-          "label": "Scintillant",
-          "note": "buzzing floating pickup near the vault entrance; Loot Radar helps",
-          "alt": "Nekros Desecrate on vault Necramechs, or Tier 2 bounty stage 1 only",
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Run a normal Isolation Vault bounty first to unlock the Arcana vault bounty from Mother.",
-        "Take the esophage out to fail the bounty, then re-take the Arcana bounty from Mother without returning to the Necralisk; some single-room vaults don't spawn a floating pickup.",
-        "Must be host for the reset loop to work, so run it solo."
-      ],
-      "bonuses": [],
-      "disclosures": [
-        {
-          "title": "don't finish the Tier 2 bounty for it",
-          "body": "Only stage 1 of a Tier 2 bounty pays Scintillant at a useful rate; later stages add little or nothing, so abandon and re-take stage 1 instead of finishing the run."
-        }
-      ]
-    },
-    {
       "type": "craft",
       "place": "OTAK, NECRALISK",
       "sub": null,
@@ -113,7 +86,7 @@
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Entrati standing", "amount": "2,000" }],
+      "spends": [{ "currency": "Entrati Standing", "amount": "2,000" }],
       "map": null,
       "rows": [
         {
@@ -122,86 +95,11 @@
           "note": "reusable, one-time purchase",
           "alt": null,
           "done": false
-        },
-        {
-          "qty": "60",
-          "label": "Namalon",
-          "note": "mined ore; 20 per build",
-          "alt": null,
-          "done": false
-        },
-        { "qty": "60", "label": "Ferros", "note": "20 per build", "alt": null, "done": false },
-        { "qty": "480", "label": "Rubedo", "note": "160 per build", "alt": null, "done": false },
-        {
-          "qty": "45",
-          "label": "Lucent Teroglobe",
-          "note": "mined ore; 15 per build",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "60",
-          "label": "Devolved Namalon",
-          "note": "3 builds of 20, 1,000 cr each",
-          "alt": null,
-          "done": false
         }
       ],
       "conditions": [
         "Needs Entrati Rank 1 (Stranger) to unlock Otak's blueprint offer.",
         "Namalon and Lucent Teroglobe are mined in the Cambion Drift with a mining tool bought from Father."
-      ],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "CAMBION DRIFT, DEIMOS",
-      "sub": null,
-      "activity": "fish Vitreospina or Chondricord in the caves, cut at Daughter",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": "cambion-drift",
-      "rows": [
-        {
-          "qty": "15",
-          "label": "Spinal Core Section",
-          "note": "cut fish parts at Daughter",
-          "alt": "Isolation Vault bounties, or Sagiant Entrati Caskets",
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "vendor",
-      "place": "GRANDMOTHER, NECRALISK",
-      "sub": null,
-      "activity": "buy Seriglass Shard",
-      "meta": "10 Grandmother Tokens",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [{ "currency": "Grandmother Token", "amount": "10" }],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Seriglass Shard",
-          "note": "10 Grandmother Tokens",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Grandmother Tokens come from trading in other family tokens through her Mend the Family exchange."
       ],
       "bonuses": [],
       "disclosures": []

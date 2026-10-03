@@ -10,7 +10,7 @@
   },
   "badges": [
     {
-      "text": "Tenno Lab, 4,870 Oxium",
+      "text": "Tenno Lab",
       "tone": "info"
     }
   ],
@@ -26,164 +26,33 @@
       "money": false
     }
   ],
+  "materials": [
+    {
+      "qty": "2",
+      "label": "Nitain Extract",
+      "note": null
+    },
+    {
+      "qty": "2,500",
+      "label": "Circuits",
+      "note": null
+    },
+    {
+      "qty": "350",
+      "label": "Oxium",
+      "note": null
+    },
+    {
+      "qty": "2,500",
+      "label": "Polymer Bundle",
+      "note": null
+    },
+    { "qty": "15,000", "label": "Credits", "note": null }
+  ],
   "groups": [
     {
-      "type": "gate",
-      "place": "DOJO, TENNO LAB",
-      "sub": null,
-      "activity": "clan research chain",
-      "meta": "48h, 48h, then 72h",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Nami Skyla",
-          "note": "1 Neurodes, 500 Ferrite, 50 Rubedo, 300 Polymer Bundle, 5,000 cr, 48h",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Tonbo",
-          "note": "1 Morphics, 500 Ferrite, 20 Oxium, 300 Plastids, 5,000 cr, 48h",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Scourge",
-          "note": "3 Morphics, 4,500 Oxium, 7,250 Ferrite, 9,750 Salvage, 10,000 cr, 72h",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Nami Skyla and Tonbo only need researching, never building. Start Nami Skyla as soon as the Tenno Lab is up, even before the Oxium is in.",
-        "Costs are the Ghost clan base; a Shadow, Storm or bigger clan multiplies them 3x to 100x. Do this in your own small clan if the research is not already done."
-      ],
-      "bonuses": ["A clan that already has Scourge researched skips this group."],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "ANY MISSION",
-      "sub": null,
-      "activity": "stock the research and build costs during the timers",
-      "meta": "common resources",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "8,250",
-          "label": "Ferrite",
-          "note": "1,000 for the first two steps, 7,250 for Scourge",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "9,750",
-          "label": "Salvage",
-          "note": "Scourge step",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "2,800",
-          "label": "Polymer Bundle",
-          "note": "300 Nami Skyla, 2,500 build",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "2,500",
-          "label": "Circuits",
-          "note": "build",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "300",
-          "label": "Plastids",
-          "note": "Tonbo",
-          "alt": "Cambion Drift cysts",
-          "done": false
-        },
-        {
-          "qty": "50",
-          "label": "Rubedo",
-          "note": "Nami Skyla",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "1",
-          "label": "Neurodes",
-          "note": "Nami Skyla",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "4",
-          "label": "Morphics",
-          "note": "1 Tonbo, 3 Scourge; Mars has the best rate",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "50,000",
-          "label": "Credits",
-          "note": "20,000 research, 15,000 blueprint, 15,000 build",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "IO, JUPITER",
-      "sub": null,
-      "activity": "Defense, restart around wave 15",
-      "meta": "the one real grind",
-      "mode": "Hydroid, Khora or Nekros",
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "4,870",
-          "label": "Oxium",
-          "note": "20 Tonbo, 4,500 Scourge, 350 build",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Oxium drops at 100% from an Osprey killed before it self-destructs. Drop-chance boosters do nothing; a Resource Booster doubles it.",
-        "Spawns taper off after about wave 15, so run roughly 9 to 15 waves and restart."
-      ],
-      "bonuses": [
-        "Hydroid's Tentacles at max range and strength doubles Oxium per Osprey killed while held.",
-        "Any Corpus endless mission performs about the same, and Resourceful Retriever on a companion adds chances."
-      ],
-      "disclosures": []
-    },
-    {
-      "type": "research",
-      "place": "DOJO, TENNO LAB",
+      "type": "vendor",
+      "place": "CLAN DOJO, TENNO LAB",
       "sub": null,
       "activity": "buy the blueprint",
       "meta": "15,000 cr",
@@ -208,33 +77,6 @@
         }
       ],
       "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "vendor",
-      "place": "NIGHTWAVE, ORBITER",
-      "sub": null,
-      "activity": "buy Nitain Extract",
-      "meta": "15 Nightwave Credits for 5",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "2",
-          "label": "Nitain Extract",
-          "note": "build",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "The offering is always available and a single purchase covers the 2 you need."
-      ],
       "bonuses": [],
       "disclosures": []
     },

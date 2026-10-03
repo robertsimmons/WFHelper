@@ -34,6 +34,13 @@
       "money": false
     }
   ],
+  "materials": [
+    { "qty": "1", "label": "Tranq Rifle", "note": null },
+    { "qty": "1", "label": "Vulpaphyla Pheromone Gland", "note": null },
+    { "qty": "1", "label": "Adra Mutagen", "note": null },
+    { "qty": "1", "label": "Desus Antigen", "note": null },
+    { "qty": "10", "label": "Son Token", "note": null }
+  ],
   "groups": [
     {
       "type": "gate",
@@ -73,9 +80,7 @@
       "conditions": [
         "A Panzer cannot be built from a Market blueprint or bought as a completed companion; Son revivifies a captured Weakened animal."
       ],
-      "bonuses": [
-        "Entrati bounties simultaneously supply the standing for the hunt and its cosmetic/build choices."
-      ],
+      "bonuses": [],
       "disclosures": []
     },
     {
@@ -90,7 +95,7 @@
       "earns": null,
       "spends": [
         {
-          "currency": "Entrati standing",
+          "currency": "Entrati Standing",
           "amount": "2,650"
         }
       ],
@@ -98,37 +103,9 @@
       "rows": [
         {
           "qty": null,
-          "label": "Tranq Rifle",
-          "note": "500 standing, Rank 0",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
           "label": "Vulpaphyla Echo-Lure",
           "note": "1,000 standing, Stranger",
           "alt": null,
-          "done": false
-        },
-        {
-          "qty": "1",
-          "label": "Vulpaphyla Pheromone Gland",
-          "note": "150 standing; raises the rare-subspecies odds",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Adra Mutagen",
-          "note": "1,250 standing, Stranger; Heat/Puncture resistance",
-          "alt": "choose any Mutagen you prefer",
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Desus Antigen",
-          "note": "1,250 standing, Stranger; Vazarin polarity",
-          "alt": "pick Antigen for its polarity, not its look",
           "done": false
         }
       ],
@@ -154,7 +131,7 @@
       },
       "skip": null,
       "earns": {
-        "currency": "Entrati standing",
+        "currency": "Entrati Standing",
         "amount": "2,650"
       },
       "spends": [],
@@ -183,7 +160,8 @@
           "title": "the one condition that decides the hunt",
           "body": "A Panzer must be damaged by Infested before capture to become Weakened. That condition is invisible in the normal lure flow, which is why a normal perfect capture can repeatedly return only tags. If the spawn is Sly or Crescent, move on; if it is Panzer, tranq it, arrange one or more Infested hits, then capture it. The passive public-bounty route is usually less frustrating than trying to force this solo."
         }
-      ]
+      ],
+      "ref": "Entrati Standing"
     },
     {
       "type": "vendor",
@@ -202,13 +180,6 @@
           "qty": null,
           "label": "Panzer Vulpaphyla, revivified",
           "note": "Weakened Panzer + one Mutagen + one Antigen + 5,000 credits",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "10",
-          "label": "Son Tokens",
-          "note": "gild at rank 30, after reaching Entrati Acquaintance",
           "alt": null,
           "done": false
         }

@@ -12,67 +12,32 @@
     { "label": "blueprints", "amount": "75,000 cr", "money": false },
     { "label": "builds", "amount": "90,000 cr", "money": false }
   ],
+  "materials": [
+    { "qty": "4", "label": "Mutagen Mass", "note": null },
+    { "qty": "1,500", "label": "Circuits", "note": null },
+    { "qty": "6,000", "label": "Nano Spores", "note": null },
+    { "qty": "1", "label": "Forma", "note": null },
+    { "qty": "15,000", "label": "Credits", "note": null }
+  ],
   "groups": [
-    {
-      "type": "research",
-      "place": "CLAN DOJO, BIO LAB",
-      "sub": null,
-      "activity": "check that Phage research is complete",
-      "meta": "3 days once Mutagen Mass is done",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Mutagen Mass",
-          "note": "Ghost tier: 5,000 cr, 5 Mutagen Sample, 150 Circuits, 500 Nano Spores, 100 Plastids; 3 days",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Phage",
-          "note": "Ghost tier: 7,500 cr, 10 Mutagen Sample, 450 Polymer Bundle, 550 Salvage, 200 Plastids; 3 days",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Research costs scale with clan tier: Ghost x1, Shadow x3, Storm x10, Mountain x30, Moon x100.",
-        "Any clan or alliance lab with the research done works; in an established clan it's usually done already."
-      ],
-      "bonuses": [],
-      "disclosures": []
-    },
     {
       "type": "vendor",
       "place": "CLAN DOJO, BIO LAB",
       "sub": null,
-      "activity": "buy the Phage and Mutagen Mass blueprints",
-      "meta": "15,000 cr each",
+      "activity": "buy the blueprint",
+      "meta": "15,000 cr",
       "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Credits", "amount": "75,000" }],
+      "spends": [{ "currency": "Credits", "amount": "15,000" }],
       "map": null,
       "rows": [
         {
           "qty": null,
           "label": "Phage Blueprint",
-          "note": "15,000 cr; requires completed research",
+          "note": null,
           "alt": null,
-          "done": false
-        },
-        {
-          "qty": "4",
-          "label": "Mutagen Mass Blueprint",
-          "note": "15,000 cr each, single use",
-          "alt": "skip any you cover with Invasion or Orb Vallis bounty Mass",
           "done": false
         }
       ],
@@ -81,55 +46,11 @@
       "disclosures": []
     },
     {
-      "type": "farm",
-      "place": "TERROREM, DEIMOS",
-      "sub": null,
-      "activity": "Survival",
-      "meta": "one short run",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "40",
-          "label": "Mutagen Sample",
-          "note": "for 4 Mutagen Mass; uncommon on Deimos, rare on Eris",
-          "alt": "Orb Vallis Lvl 30-50 bounty rotation C pays 2 finished Mutagen Mass; Infested Invasions pay it too",
-          "done": false
-        },
-        {
-          "qty": "4",
-          "label": "Control Module",
-          "note": "rare drop on Corpus planets such as Neptune and Europa",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "6,000",
-          "label": "Nano Spores",
-          "note": null,
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Invasion and bounty Mass works for the build but not for research, which needs raw Samples. Son's \"Mutagens\" are a different item.",
-        "Terrorem's Infested get stuck in side rooms; Hyf defense brings enemies to you."
-      ],
-      "bonuses": [
-        "Nekros, Khora, Hydroid or Atlas with Ore Gaze multiply Sample drops, though at 40 it's optional."
-      ],
-      "disclosures": []
-    },
-    {
       "type": "foundry",
       "place": "FOUNDRY",
       "sub": null,
-      "activity": "build 4 Mutagen Mass, then Phage",
-      "meta": "12h each Mass, then 24h",
+      "activity": "build Phage",
+      "meta": "24h",
       "mode": null,
       "live": null,
       "skip": null,
@@ -137,13 +58,6 @@
       "spends": [],
       "map": null,
       "rows": [
-        {
-          "qty": "4",
-          "label": "Mutagen Mass",
-          "note": "each 15,000 cr, 10 Mutagen Sample, 1 Control Module, 500 Salvage, 250 Plastids; 12h, run side by side",
-          "alt": null,
-          "done": false
-        },
         {
           "qty": null,
           "label": "Phage",

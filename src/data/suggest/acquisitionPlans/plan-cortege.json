@@ -12,6 +12,31 @@
     { "label": "components", "amount": "3,000 cr", "money": false },
     { "label": "build", "amount": "20,000 cr", "money": false }
   ],
+  "materials": [
+    {
+      "qty": "2,800",
+      "label": "Plastids",
+      "note": "400 Fersteel Alloy refine, 2,400 Adramal Alloy refines"
+    },
+    {
+      "qty": "840",
+      "label": "Rubedo",
+      "note": "200 Fersteel Alloy refine, 640 Devolved Namalon refines"
+    },
+    { "qty": "6,400", "label": "Nano Spores", "note": "Tempered Bapholite refines" },
+    { "qty": "1", "label": "Damaged Necramech Weapon Barrel", "note": null },
+    { "qty": "1", "label": "Damaged Necramech Weapon Receiver", "note": null },
+    { "qty": "1", "label": "Damaged Necramech Weapon Stock", "note": null },
+    { "qty": "80", "label": "Adramal Alloy", "note": "Cortege Barrel" },
+    { "qty": "80", "label": "Tempered Bapholite", "note": "Cortege Stock" },
+    { "qty": "80", "label": "Devolved Namalon", "note": "Cortege Receiver" },
+    { "qty": "10", "label": "Trapezium Xenorhast", "note": "Cortege Receiver" },
+    { "qty": "10", "label": "Cabochon Embolos", "note": "Cortege Stock" },
+    { "qty": "20", "label": "Spinal Core Section", "note": "Cortege Barrel" },
+    { "qty": "20", "label": "Fersteel Alloy", "note": "Cortege Barrel" },
+    { "qty": "15", "label": "Tink Dissipator Coil", "note": "Cortege Receiver" },
+    { "qty": "250", "label": "Hexenon", "note": "Cortege Stock" }
+  ],
   "groups": [
     {
       "type": "gate",
@@ -81,10 +106,11 @@
         }
       ],
       "conditions": [
-        "Necraloid Rank 3 needs the Trumna Barrel Blueprint, so Entrati Rank 3 is a hidden prerequisite — rank both in parallel, not Entrati first then Necraloid."
+        "Necraloid Rank 3 needs the Trumna Barrel Blueprint, so Entrati Rank 3 is a hidden prerequisite: rank both in parallel, not Entrati first then Necraloid."
       ],
       "bonuses": [],
-      "disclosures": []
+      "disclosures": [],
+      "ref": "Entrati Standing"
     },
     {
       "type": "bounty",
@@ -95,7 +121,7 @@
       "mode": null,
       "live": null,
       "skip": null,
-      "earns": { "currency": "Necraloid standing", "amount": "71,000" },
+      "earns": { "currency": "Necraloid Standing", "amount": "71,000" },
       "spends": [],
       "map": "cambion-drift",
       "rows": [
@@ -125,17 +151,14 @@
         "Trade Orokin Matrices to Loid for standing: Orientation 1,000, Ballistics 2,500, Animus 5,000 each.",
         "Higher vault tiers spawn more Necramechs per run (T3 has three), so matrix income speeds up as you rank."
       ],
-      "bonuses": [
-        "Nekros Desecrate, a Resource Booster and Resourceful Retriever all boost matrix drops.",
-        "Don't extract after the first vault — take another bounty from Mother in the Drift and go straight back underground.",
-        "Join Sporothrix/Arum Spinosa farm groups, which run vaults constantly."
-      ],
+      "bonuses": ["Join Sporothrix/Arum Spinosa farm groups, which run vaults constantly."],
       "disclosures": [
         {
           "title": "go public",
           "body": "Matchmade vault lobbies are described as trivial; solo stage 1 (residue gathering, bait defense) is where people struggle."
         }
-      ]
+      ],
+      "ref": "Necraloid Standing"
     },
     {
       "type": "vendor",
@@ -156,7 +179,7 @@
           "note": "free Necraloid Rank 3 pick (competes with Morgha and Necramech mods)",
           "alt": {
             "text": "or 8,000 standing",
-            "spends": [{ "currency": "Necraloid standing", "amount": "8,000" }]
+            "spends": [{ "currency": "Necraloid Standing", "amount": "8,000" }]
           },
           "done": false
         },
@@ -180,171 +203,16 @@
           "note": "4,000 standing, Rank 2",
           "alt": null,
           "done": false
-        },
-        {
-          "qty": null,
-          "label": "Damaged Necramech Weapon Barrel",
-          "note": "2,500 standing, Rank 1",
-          "alt": "or 3% per Necramech kill, Isolation Vault rotation A only",
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Damaged Necramech Weapon Receiver",
-          "note": "2,500 standing, Rank 1",
-          "alt": "or 3% per Necramech kill, Isolation Vault rotation A only",
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Damaged Necramech Weapon Stock",
-          "note": "2,500 standing, Rank 1",
-          "alt": "or 3% per Necramech kill, Isolation Vault rotation A only",
-          "done": false
         }
       ],
       "conditions": [
-        "The Rank 3 free reward is a single pick — take Morgha's blueprint free and buy Cortege's for 8,000 standing, or vice versa."
+        "The Rank 3 free reward is a single pick: take Morgha's blueprint free and buy Cortege's for 8,000 standing, or vice versa."
       ],
       "bonuses": [
         "Buying the Damaged parts from Loid skips the 3% rotation-A-only vault RNG entirely."
       ],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "CAMBION DRIFT, DEIMOS",
-      "sub": "Otak + Daughter",
-      "activity": "mine ore, refine alloys and gems, fish for Spinal Core Section",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": "cambion-drift",
-      "rows": [
-        {
-          "qty": "80",
-          "label": "Adramal Alloy",
-          "note": "Cortege Barrel; Otak refine, Entrati Rank 0",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "80",
-          "label": "Tempered Bapholite",
-          "note": "Cortege Stock; Otak refine, Entrati Rank 0",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "80",
-          "label": "Devolved Namalon",
-          "note": "Cortege Receiver; Otak refine, Entrati Rank 1",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "10",
-          "label": "Trapezium Xenorhast",
-          "note": "Cortege Receiver; Otak blueprint 8,000 standing, Entrati Rank 3",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "10",
-          "label": "Cabochon Embolos",
-          "note": "Cortege Stock; Otak blueprint 8,000 standing, Entrati Rank 3",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "20",
-          "label": "Spinal Core Section",
-          "note": "Cortege Barrel; fillet Chondricord or Vitreospina at Daughter",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "CETUS, EARTH",
-      "sub": "Old Man Suumbaat",
-      "activity": "buy the reusable blueprint, mine and refine",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": "cetus",
-      "rows": [
-        {
-          "qty": "20",
-          "label": "Fersteel Alloy",
-          "note": "Cortege Barrel; needs Ostron Rank 2 (Visitor), 5,000 standing for the blueprint",
-          "alt": "trade for built components to skip this",
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "ORB VALLIS, VENUS",
-      "sub": "The Business",
-      "activity": "fish cold-weather spots, dismantle Tinks",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": "orb-vallis",
-      "rows": [
-        {
-          "qty": "15",
-          "label": "Tink Dissipator Coil",
-          "note": "Cortege Receiver",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "OPHELIA, PLUTO",
-      "sub": null,
-      "activity": "any mission",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "250",
-          "label": "Hexenon",
-          "note": "Cortege Stock; common Pluto resource",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
+      "disclosures": [],
+      "ref": "Entrati Standing"
     },
     {
       "type": "foundry",
@@ -375,7 +243,7 @@
         },
         {
           "qty": null,
-          "label": "Stock",
+          "label": "Cortege Stock",
           "note": "1 Damaged Stock, 80 Tempered Bapholite, 10 Cabochon Embolos, 250 Hexenon",
           "alt": null,
           "done": false
@@ -390,7 +258,7 @@
       ],
       "conditions": [],
       "bonuses": [
-        "A bug where the alt-fire wouldn't charge on kills was fixed in Hotfix 44.0.1 — if it recurs, that's a bug, not your build."
+        "A bug where the alt-fire wouldn't charge on kills was fixed in Hotfix 44.0.1: if it recurs, that's a bug, not your build."
       ],
       "disclosures": [
         {

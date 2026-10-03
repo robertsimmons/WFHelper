@@ -9,6 +9,25 @@
     { "text": "time gate", "tone": "warn" }
   ],
   "prices": [{ "label": "built", "amount": "275 p", "money": false }],
+  "materials": [
+    { "qty": "3,000", "label": "Ferrite", "note": "Chassis" },
+    { "qty": "2,500", "label": "Polymer Bundle", "note": "Neuroptics" },
+    { "qty": "2,200", "label": "Cryotic", "note": "Systems" },
+    { "qty": "1,500", "label": "Alloy Plate", "note": "Neuroptics" },
+    { "qty": "900", "label": "Rubedo", "note": "Chassis" },
+    { "qty": "800", "label": "Plastids", "note": "Systems" },
+    { "qty": "700", "label": "Circuits", "note": "Neuroptics" },
+    { "qty": "6", "label": "Morphics", "note": "the three Apothics" },
+    { "qty": "3", "label": "Nitain Extract", "note": "Chassis" },
+    { "qty": "3", "label": "Orokin Cell", "note": "Titania" },
+    { "qty": "2", "label": "Neurodes", "note": "Neuroptics" },
+    { "qty": "2", "label": "Tellurium", "note": "1 Chassis, 1 Systems" },
+    { "qty": "1", "label": "Control Module", "note": "Systems" },
+    { "qty": "1", "label": "Nightfall Apothic", "note": null },
+    { "qty": "1", "label": "Twilight Apothic", "note": null },
+    { "qty": "1", "label": "Sunrise Apothic", "note": null },
+    { "qty": "1,500", "label": "Credits", "note": null }
+  ],
   "groups": [
     {
       "type": "gate",
@@ -45,106 +64,7 @@
       "disclosures": []
     },
     {
-      "type": "farm",
-      "place": "EARTH",
-      "sub": "Mantle, Grineer Forest",
-      "activity": "collect plants",
-      "meta": "check Earth cycle first",
-      "mode": "capture recommended",
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": "earth",
-      "rows": [
-        {
-          "qty": "12",
-          "label": "Sunlight Threshcone",
-          "note": "day only; Nightfall Apothic",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "2",
-          "label": "Sunlight Jadeleaf",
-          "note": "day only; Sunrise Apothic",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "6",
-          "label": "Moonlight Dragonlily",
-          "note": "night only; Nightfall Apothic",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "2",
-          "label": "Moonlight Jadeleaf",
-          "note": "night only; Twilight Apothic",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Earth follows the Cetus cycle: 100 minutes day and 50 minutes night. Gather every plant for the current phase in one pass; the other phase is the only meaningful time gate.",
-        "Plants are Hold to Collect pickups, not scans. Equip Oxylus with Botanist for 50 m auto-collection if available."
-      ],
-      "bonuses": ["A Resource Booster or relay resource blessing doubles plant pickups."],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "STAR CHART",
-      "sub": "run capture missions and clear the map",
-      "activity": "collect remaining Apothic plants",
-      "meta": "not time-gated",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "2",
-          "label": "Dusklight Sarracenia",
-          "note": "Pallas, Ceres",
-          "alt": null,
-          "done": false
-        },
-        { "qty": "6", "label": "Ruk's Claw", "note": "Ara, Mars", "alt": null, "done": false },
-        {
-          "qty": "6",
-          "label": "Lunar Pitcher",
-          "note": "Copernicus, Lua",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "8",
-          "label": "Frostleaf",
-          "note": "Venera, Venus; may require restarts",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "12",
-          "label": "Vestan Moss",
-          "note": "Elion, Mercury",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Dusklight grows in Ceres Shipyards pools; Ruk's Claw is on Mars Settlement walls; Lunar Pitcher appears in Lua vases and rubble.",
-        "Frostleaf does not spawn every run. Restart Venera if the map yields none."
-      ],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
+      "type": "boss",
       "place": "E PRIME, EARTH",
       "sub": "The Silver Grove shrine",
       "activity": "anoint altar, defeat specter, extract",
@@ -153,30 +73,27 @@
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [
-        { "currency": "Morphic", "amount": "6" },
-        { "currency": "Credits", "amount": "1,500" }
-      ],
+      "spends": [{ "currency": "Credits", "amount": "1,500" }],
       "map": "earth",
       "rows": [
         {
           "qty": null,
-          "label": "Nightfall Apothic",
-          "note": "Loki Knave; Titania Systems BP + Twilight BP",
+          "label": "Titania Systems Blueprint",
+          "note": "Loki Knave specter, anointed with Nightfall Apothic; also drops the Twilight Apothic blueprint",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
-          "label": "Twilight Apothic",
-          "note": "Saryn Orphid; Titania Chassis BP + Sunrise BP",
+          "label": "Titania Chassis Blueprint",
+          "note": "Saryn Orphid specter, anointed with Twilight Apothic; also drops the Sunrise Apothic blueprint",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
-          "label": "Sunrise Apothic",
-          "note": "Oberon Feyarch; Titania Neuroptics BP",
+          "label": "Titania Neuroptics Blueprint",
+          "note": "Oberon Feyarch specter, anointed with Sunrise Apothic",
           "alt": null,
           "done": false
         }
@@ -195,33 +112,6 @@
           "body": "All three component blueprints and Titania's main blueprint are guaranteed quest rewards. The practical delay is gathering the Earth plants in the right day or night phase."
         }
       ]
-    },
-    {
-      "type": "farm",
-      "place": "NIGHTWAVE",
-      "sub": "Cred Offerings",
-      "activity": "buy Nitain Extract",
-      "meta": "only if needed",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "3",
-          "label": "Nitain Extract",
-          "note": "Titania Chassis; 15 Creds for 5",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Nitain is usually the secondary blocker. Check your Nightwave Creds before beginning the build."
-      ],
-      "bonuses": [],
-      "disclosures": []
     },
     {
       "type": "foundry",
@@ -265,9 +155,7 @@
           "done": false
         }
       ],
-      "conditions": [
-        "Farm the 3 Orokin Cells after the components are ready only if you do not already have them."
-      ],
+      "conditions": [],
       "bonuses": [],
       "disclosures": []
     }

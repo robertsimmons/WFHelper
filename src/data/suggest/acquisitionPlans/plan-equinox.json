@@ -13,6 +13,21 @@
     { "label": "all builds", "amount": "~225,000 cr", "money": false },
     { "label": "built", "amount": "325 p", "money": false }
   ],
+  "materials": [
+    { "qty": "1,300", "label": "Rubedo", "note": "Day set" },
+    { "qty": "1,300", "label": "Plastids", "note": "Night set" },
+    { "qty": "1,150", "label": "Ferrite", "note": "Day Neuroptics and Day Chassis" },
+    { "qty": "1,150", "label": "Polymer Bundle", "note": "Night Neuroptics and Night Chassis" },
+    { "qty": "500", "label": "Salvage", "note": "Day Systems" },
+    { "qty": "500", "label": "Nano Spores", "note": "Night Systems" },
+    { "qty": "300", "label": "Alloy Plate", "note": "both Neuroptics" },
+    { "qty": "151", "label": "Gallium", "note": "Day Chassis and Day Systems" },
+    { "qty": "2", "label": "Neural Sensors", "note": "both Neuroptics" },
+    { "qty": "2", "label": "Control Module", "note": "both Systems" },
+    { "qty": "2", "label": "Morphics", "note": "Night Chassis and Night Systems" },
+    { "qty": "2", "label": "Orokin Cell", "note": "one per Aspect" },
+    { "qty": "1", "label": "Forma", "note": null }
+  ],
   "groups": [
     {
       "type": "vendor",
@@ -103,21 +118,6 @@
           "note": "25.81%",
           "alt": null,
           "done": false
-        },
-        {
-          "qty": "151",
-          "label": "Gallium",
-          "note": "Day Chassis and Day Systems",
-          "alt": null,
-          "done": false
-        },
-        { "qty": "1,300", "label": "Plastids", "note": "Night set", "alt": null, "done": false },
-        {
-          "qty": "1,150",
-          "label": "Polymer Bundle",
-          "note": "Night Neuroptics and Night Chassis",
-          "alt": null,
-          "done": false
         }
       ],
       "conditions": [
@@ -125,7 +125,6 @@
         "Kill the Manic waves in phases 2 and 3 or Regor does not come back. In phase 3 stay on the top floor; the flooded middle floor is electrified."
       ],
       "bonuses": [
-        "Titania's region resources are Gallium, Plastids and Polymer Bundle, so the boss runs cover most of the Uranus materials.",
         "Status procs stick through his invulnerable phases and land once he is vulnerable again."
       ],
       "disclosures": [
@@ -134,123 +133,6 @@
           "body": "Some databases still list 11.28% per Aspect and one drop per kill. Update 42.0 made every kill drop one piece from each set, and pre-42.0 threads of 20-108 runs no longer apply. Equinox is not in the Duviri Circuit; Tyl Regor is the only source."
         }
       ]
-    },
-    {
-      "type": "farm",
-      "place": "ELARA, JUPITER",
-      "sub": null,
-      "activity": "Survival",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "2",
-          "label": "Neural Sensors",
-          "note": "both Neuroptics",
-          "alt": null,
-          "done": false
-        },
-        { "qty": "500", "label": "Salvage", "note": "Day Systems", "alt": null, "done": false },
-        {
-          "qty": "300",
-          "label": "Alloy Plate",
-          "note": "both Neuroptics",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "EUROPA",
-      "sub": null,
-      "activity": "any mission",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "2",
-          "label": "Control Module",
-          "note": "both Systems",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "2",
-          "label": "Morphics",
-          "note": "Night Chassis and Night Systems",
-          "alt": null,
-          "done": false
-        },
-        { "qty": "1,300", "label": "Rubedo", "note": "Day set", "alt": null, "done": false }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "SATURN",
-      "sub": null,
-      "activity": "any mission",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "500",
-          "label": "Nano Spores",
-          "note": "Night Systems",
-          "alt": null,
-          "done": false
-        },
-        { "qty": "2", "label": "Orokin Cell", "note": "one per Aspect", "alt": null, "done": false }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "APOLLODORUS, MERCURY",
-      "sub": null,
-      "activity": "Survival",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "1,150",
-          "label": "Ferrite",
-          "note": "Day Neuroptics and Day Chassis",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
     },
     {
       "type": "foundry",
@@ -318,13 +200,6 @@
           "qty": null,
           "label": "Night Aspect",
           "note": "72h, 25,000 cr, 1 Orokin Cell + Night components",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "1",
-          "label": "Forma",
-          "note": "blueprint from Axi relics (25.33%) or Reinforced Orokin Storage Containers",
           "alt": null,
           "done": false
         },

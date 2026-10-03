@@ -9,6 +9,19 @@
     { "text": "Circuit week 7", "tone": "circuit" }
   ],
   "prices": [{ "label": "build", "amount": "70,000 cr", "money": false }],
+  "materials": [
+    { "qty": "1", "label": "Morphics", "note": "Frost Chassis" },
+    { "qty": "1,000", "label": "Ferrite", "note": "Frost Chassis" },
+    { "qty": "800", "label": "Rubedo", "note": "300 Frost Chassis, 500 Volt Neuroptics" },
+    { "qty": "150", "label": "Alloy Plate", "note": "Volt Neuroptics" },
+    { "qty": "3", "label": "Neural Sensors", "note": "1 Volt Neuroptics, 2 Neuroptics" },
+    { "qty": "500", "label": "Polymer Bundle", "note": "150 Volt Neuroptics, 350 Neuroptics" },
+    { "qty": "250", "label": "Plastids", "note": "200 Neuroptics, 50 Chassis" },
+    { "qty": "3", "label": "Neurodes", "note": "2 Chassis, 1 Systems" },
+    { "qty": "900", "label": "Salvage", "note": "Chassis" },
+    { "qty": "400", "label": "Oxium", "note": "Systems" },
+    { "qty": "2", "label": "Argon Crystal", "note": "Systems" }
+  ],
   "groups": [
     {
       "type": "gate",
@@ -29,7 +42,7 @@
           "note": "The New Strange; needs Stolen Dreams",
           "alt": {
             "text": "or 50,000 standing at Cephalon Simaris",
-            "spends": [{ "currency": "Simaris standing", "amount": "50,000" }]
+            "spends": [{ "currency": "Cephalon Simaris Standing", "amount": "50,000" }]
           },
           "done": false
         },
@@ -39,7 +52,7 @@
           "note": "Uranus Junction",
           "alt": {
             "text": "or 25,000 standing at Cephalon Simaris",
-            "spends": [{ "currency": "Simaris standing", "amount": "25,000" }]
+            "spends": [{ "currency": "Cephalon Simaris Standing", "amount": "25,000" }]
           },
           "done": false
         },
@@ -49,7 +62,7 @@
           "note": "Neptune Junction",
           "alt": {
             "text": "or 25,000 standing at Cephalon Simaris",
-            "spends": [{ "currency": "Simaris standing", "amount": "25,000" }]
+            "spends": [{ "currency": "Cephalon Simaris Standing", "amount": "25,000" }]
           },
           "done": false
         },
@@ -59,7 +72,7 @@
           "note": "Pluto Junction",
           "alt": {
             "text": "or 25,000 standing at Cephalon Simaris",
-            "spends": [{ "currency": "Simaris standing", "amount": "25,000" }]
+            "spends": [{ "currency": "Cephalon Simaris Standing", "amount": "25,000" }]
           },
           "done": false
         }
@@ -86,7 +99,7 @@
       "place": "CLAN DOJO",
       "sub": "Tenno Lab",
       "activity": "buy the Volt Neuroptics blueprint",
-      "meta": "any clan with Volt researched",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -104,7 +117,7 @@
       ],
       "conditions": ["Blueprints only sell from your own clan's dojo."],
       "bonuses": [
-        "Joining an established clan to buy it and leaving is standard; the blueprint stays with you. A small clan can research Volt cheaply with an Oracle, a Reactor and a Tenno Lab."
+        "Joining an established clan to buy it and leaving is standard; the blueprint stays with you."
       ],
       "disclosures": []
     },
@@ -200,7 +213,8 @@
         "You must own 25 points to enter Merrow."
       ],
       "bonuses": ["Executioners drop Endo often, so arena runs aren't wasted time."],
-      "disclosures": []
+      "disclosures": [],
+      "ref": "Judgement Points"
     },
     {
       "type": "boss",
@@ -313,10 +327,7 @@
           "done": false
         }
       ],
-      "conditions": [
-        "Argon Crystals decay at daily reset; farm the two for Systems right before building.",
-        "Needs a free Warframe slot before the Foundry will let you claim it"
-      ],
+      "conditions": ["Needs a free Warframe slot before the Foundry will let you claim it"],
       "bonuses": [],
       "disclosures": []
     }

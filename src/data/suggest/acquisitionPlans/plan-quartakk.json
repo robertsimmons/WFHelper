@@ -9,6 +9,14 @@
     { "text": "Mastery Rank 10", "tone": "warn" }
   ],
   "prices": [{ "label": "build", "amount": "20,000 cr", "money": false }],
+  "materials": [
+    { "qty": "12,450", "label": "Salvage", "note": null },
+    { "qty": "5", "label": "Neural Sensors", "note": null },
+    { "qty": "400", "label": "Plastids", "note": "Fersteel Alloy" },
+    { "qty": "200", "label": "Rubedo", "note": "Fersteel Alloy" },
+    { "qty": "75", "label": "Grokdrul", "note": null },
+    { "qty": "15", "label": "Fersteel Alloy", "note": null }
+  ],
   "groups": [
     {
       "type": "bounty",
@@ -45,80 +53,6 @@
       ]
     },
     {
-      "type": "farm",
-      "place": "PLAINS OF EIDOLON, EARTH",
-      "sub": null,
-      "activity": "Grineer camp drums and bounty rewards",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": "plains-of-eidolon",
-      "rows": [
-        {
-          "qty": "75",
-          "label": "Grokdrul",
-          "note": "up to 5 per drum on the highest level missions",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "20",
-          "label": "Ferros",
-          "note": "for Fersteel Alloy",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "400",
-          "label": "Plastids",
-          "note": "for Fersteel Alloy",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "200",
-          "label": "Rubedo",
-          "note": "for Fersteel Alloy",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "The Fersteel Alloy blueprint costs 5,000 Ostron standing from Old Man Suumbaat at Visitor rank."
-      ],
-      "bonuses": ["Ghoul Purge's Grokdrul Injection stage also pays Grokdrul."],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "MARS",
-      "sub": "or Jupiter, Sedna",
-      "activity": "any mission",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        { "qty": "12,450", "label": "Salvage", "note": null, "alt": null, "done": false },
-        {
-          "qty": "5",
-          "label": "Neural Sensors",
-          "note": "rare; Jupiter, Orokin Derelict caches",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
       "type": "foundry",
       "place": "FOUNDRY",
       "sub": null,
@@ -132,13 +66,12 @@
       "map": null,
       "rows": [
         {
-          "qty": "15",
-          "label": "Fersteel Alloy",
-          "note": "one 1,000 cr craft gives 20",
+          "qty": null,
+          "label": "Quartakk",
+          "note": "75 Grokdrul, 15 Fersteel Alloy, 12,450 Salvage, 5 Neural Sensors",
           "alt": null,
           "done": false
-        },
-        { "qty": null, "label": "Quartakk", "note": null, "alt": null, "done": false }
+        }
       ],
       "conditions": ["Mastery Rank 10 to equip."],
       "bonuses": [],

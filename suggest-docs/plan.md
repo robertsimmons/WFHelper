@@ -19,6 +19,7 @@ A suggestion engine in `src/lib/suggest/`. Every slice below plugs into it; addi
 - **Feed** — a scrolling column of collapsible sections, one per category, each ranked within itself. The filter checkboxes show and hide whole sections.
 - **Dismissal** — per suggestion, stored against the world fingerprint that produced it, so it returns on its own when that state changes.
 - **Curated data** — `src/data/suggest/*.json`: reward values, mission-type opinions, and later farm difficulty, popularity/power tier, incarnon ranking. Keyed by normalized display name. Shipped as defaults the user can override. A missing entry means unknown, never bad.
+- **Shared store**: `acquisitionPlans/resources.json` holds the one route and tips for every material, currency and standing. A plan lists what it needs in `materials` or points at it with `ref`; only its blueprint source, part drops, boss and recipe live on the item. The validator rejects a farm route for a store thing written on an item.
 - **Reasons** — a card says what it pays and what it costs, from world state where it names a reward, curated tiers for how good that is, and inventory for whether it is still needed.
 
 ## Vocabulary
@@ -97,19 +98,7 @@ Each is shippable alone, in order.
 | # | Slice | Notes | Status |
 |---|---|---|---|
 | 9 | Build import to full step plan | | |
-| 10 | Arcanes: the mods band, for arcanes | Spec below | |
 | 11 | Scannables: track and collect scannable things | Spec below | |
-
-### Arcanes band
-
-The mods band's twin: same card, modal, search, pin and source line, built from the same pieces (`ModCard`, `ModDetailsModal`, `ModSourceLine`, `DropSourceTile`, the mod pin store pattern). Anything the two share is one component or one module, not a copy.
-
-- **Popularity** comes from Overframe builds, since item pages carry no arcanes: each item's top build plus every build over 300 votes, one point per build that slots the arcane. Only the slotted arcanes are read, never build text or comments. The crawl extends the Overframe fetch and writes `arcanes.json` in popularity order, each entry with its wiki link.
-- **Owned** means max rank: 21 copies, counted from the inventory's arcane collection. Anything short of that stays in the band, and the card reads the count as `3 / 21`.
-- **Card:** slot (Warframe, Primary, Operator, and so on), market price linking to warframe.market, build count, and the best source line. Hover shows the max-rank stat lines, cleaned the same way as mods.
-- **Sources** go through the shared drop-source model and tile. Arcanes lean on vendors (Loid, the Necraloid, the Zariman and Entrati Lab shops) and on bounty and Eidolon tables, so vendor sources, with standing or currency cost, sit beside drops as they do for mods.
-- **Links** go to the wiki only.
-- **Pin** joins the pinned band with its own soft cap, and unpins itself once owned.
 
 ### Scannables
 
@@ -126,8 +115,6 @@ Possibly its own top-level feature, one band or tab per group.
 - Deep/Temporal Archimedea should say whether you own the frames and weapons that week wants. Nothing in world state names them; `api.warframestat.us/pc/deepArchimedea` does, which means a new feed.
 - Baro stock should flag what is new since his last visit. Needs visit history the app does not keep.
 - estimate the time a farm costs, not just its difficulty band.
-- narrower cards for relics, acquisition and mastery, which carry item art rather than a banner.
-- the acquisition section header wraps on a narrow window; the include checkboxes are the piece to move.
 - Bird 3 and Yonta offer little once their permanent stock is excluded. Revisit whether "worth the trip" should include standing rotations.
 - Steel Path Incursions are excluded from suggestions; they rotate constantly and read better in game.
 - Amps are excluded from acquisition entirely by `NOT_A_WEAPON_PATH`, so the sweep never suggests one; they are modular gear bought with standing rather than a farm the resolver can route. Mastery levels them under Weapons. Revisit whether acquisition should route them.
@@ -137,6 +124,6 @@ Possibly its own top-level feature, one band or tab per group.
 - need to know when to surface good alerts or invasions, in tasks. including event stuff like tennocon or devstream events.
 - not sure when/where, but i have lots of incarnons that i've never used or built or unlocked. suggesting that would be good too, and most importantly, first getting the best weapon to put the incarnon on
 - For tasks - have a "snooze" that mabye asks 1h 6h 24h that bumps it to the bottom just for that time frame?
-- syndicate - can we detect which ones they're positive on, and suggest top mods to buy?- normal Circuit: per week, a short farm synopsis for each of that week's Warframes and the order the community suggests running them in. The weeks rotate on a fixed cycle, so each one is captured once and reused from then on. Source is Pupsker's weekly update videos at https://www.youtube.com/@Pupsker, read as transcripts, newest first and working backwards until every week in the rotation has been seen.
-- Nightwave in Tasks while the player still needs Nitain, reading how much is left for mastering every normal item, every Prime, and subsuming every frame, each shown only where it applies.
+- syndicate - can we detect which ones they're positive on, and suggest top mods to buy?
+- normal Circuit: per week, a short farm synopsis for each of that week's Warframes and the order the community suggests running them in. The weeks rotate on a fixed cycle, so each one is captured once and reused from then on. Source is Pupsker's weekly update videos at https://www.youtube.com/@Pupsker, read as transcripts, newest first and working backwards until every week in the rotation has been seen.
 - Relic packs and Aya: the first card of the relics band, always, the relic counterpart to Vosfor. The standing and Steel Essence packs show how many still-needed parts they could pay out that the player holds no relic for. Aya reads the current Prime Resurgence stock and suggests which relics to buy, if any, each with its reason. 

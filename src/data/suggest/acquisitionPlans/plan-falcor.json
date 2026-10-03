@@ -12,40 +12,19 @@
     { "label": "blueprint", "amount": "15,000 cr", "money": false },
     { "label": "build", "amount": "20,000 cr", "money": false }
   ],
+  "materials": [
+    { "qty": "5", "label": "Fieldron", "note": null },
+    { "qty": "8,500", "label": "Alloy Plate", "note": null },
+    { "qty": "1,650", "label": "Circuits", "note": null },
+    { "qty": "1", "label": "Forma", "note": null },
+    { "qty": "15,000", "label": "Credits", "note": null }
+  ],
   "groups": [
     {
-      "type": "gate",
-      "place": "DOJO, ENERGY LAB",
+      "type": "vendor",
+      "place": "CLAN DOJO, ENERGY LAB",
       "sub": null,
-      "activity": "clan research",
-      "meta": "skip if already researched",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Energy Lab: Prova, then Falcor",
-          "note": "3 days for the Falcor research",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Ghost (x1) tier pays 5,000 credits, 550 Fieldron Samples, 325 Circuits, 1,750 Alloy Plate and 800 Polymer Bundle for the Falcor research; bigger clans pay x3, x10, x30 or x100.",
-        "In an established clan this is already done and costs you nothing."
-      ],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "research",
-      "place": "DOJO, ENERGY LAB",
-      "sub": null,
-      "activity": "replicate the blueprint",
+      "activity": "buy the blueprint",
       "meta": "15,000 cr",
       "mode": null,
       "live": null,
@@ -57,40 +36,13 @@
         {
           "qty": null,
           "label": "Falcor Blueprint",
-          "note": "15,000 cr",
+          "note": null,
           "alt": null,
           "done": false
         }
       ],
       "conditions": ["MR 8 gate to build it."],
       "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "STAR CHART",
-      "sub": null,
-      "activity": "Corpus-side Invasions",
-      "meta": "3 per Invasion; two rewards cover it",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "5",
-          "label": "Fieldron",
-          "note": "3 per Corpus-reward Invasion",
-          "alt": "or craft from the Energy Lab Fieldron blueprint, 12h each",
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [
-        "Fieldron also drops from Rare and Reinforced Corpus storage containers and level 30-50 Orb Vallis bounties."
-      ],
       "disclosures": []
     },
     {
@@ -114,10 +66,7 @@
           "done": false
         }
       ],
-      "conditions": [
-        "Have a Forma built before you queue this, or you add another 24 hours.",
-        "8,500 Alloy Plate can pinch a newer account; it drops on Corpus and Grineer tilesets."
-      ],
+      "conditions": ["Have a Forma built before you queue this, or you add another 24 hours."],
       "bonuses": [],
       "disclosures": [
         {

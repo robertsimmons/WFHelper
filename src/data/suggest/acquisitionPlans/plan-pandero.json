@@ -12,6 +12,12 @@
     { "label": "blueprint", "amount": "20,000 cr", "money": false },
     { "label": "build", "amount": "20,000 cr", "money": false }
   ],
+  "materials": [
+    { "qty": "5,500", "label": "Cryotic", "note": null },
+    { "qty": "4,500", "label": "Circuits", "note": null },
+    { "qty": "25,000", "label": "Salvage", "note": null },
+    { "qty": "2", "label": "Argon Crystal", "note": null }
+  ],
   "groups": [
     {
       "type": "vendor",
@@ -30,85 +36,6 @@
       ],
       "conditions": ["Pandero Prime is a separate Mastery item; this is the base revolver."],
       "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "EXCAVATION, ANY NODE",
-      "sub": "pick one with a Void Fissure",
-      "activity": "Excavation",
-      "meta": "100 per extractor cycle; ~28 unboosted, ~14 boosted",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [{ "qty": "5,500", "label": "Cryotic", "note": null, "alt": null, "done": false }],
-      "conditions": [
-        "An extractor destroyed mid-cycle pays only its progress, so pick a node where you can keep them alive.",
-        "Steel Path doesn't raise the payout and kills extractors faster."
-      ],
-      "bonuses": [
-        "A Resource Booster doubles Cryotic at mission end even though the HUD doesn't show it; the Drop Chance Booster does nothing.",
-        "Resourceful Retriever on a Kavat or Kubrow adds an 18% chance to double each pickup.",
-        "A fissure Excavation adds Cryotic per cycle and cracks relics at the same time. Everest is the easy node; Hieracon adds Dark Sector resources."
-      ],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "SEIMENI, CERES",
-      "sub": "or Gabii, Ceres",
-      "activity": "Defense",
-      "meta": "35-50 Circuits a pickup",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        { "qty": "4,500", "label": "Circuits", "note": null, "alt": null, "done": false },
-        {
-          "qty": "25,000",
-          "label": "Salvage",
-          "note": "common, drops almost everywhere",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "HEPIT, VOID",
-      "sub": "or Ukko, Teshub",
-      "activity": "Capture or Exterminate, break every container",
-      "meta": "farm last",
-      "mode": "Xaku or Limbo with max range",
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "2",
-          "label": "Argon Crystal",
-          "note": "2-4 a run is common",
-          "alt": "Mot Survival; Corrupted Vor has a 50% Argon drop",
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Argon picked up today is safe until the next 00:00 GMT reset, then the pool halves every reset. Farm it the day you start the build."
-      ],
-      "bonuses": [
-        "Steel Path doubles drop chance for Argon, and a Smeeta Charm can drop it as the Void's rare resource."
-      ],
       "disclosures": []
     },
     {

@@ -12,6 +12,26 @@
     { "label": "blueprints", "amount": "3,000 standing", "money": false },
     { "label": "gild", "amount": "5,000 standing", "money": false }
   ],
+  "materials": [
+    { "qty": "950", "label": "Cryotic", "note": "750 Laka Grip, 200 Pyrotic Alloy refine" },
+    { "qty": "800", "label": "Plastids", "note": "Fersteel Alloy refines" },
+    {
+      "qty": "600",
+      "label": "Rubedo",
+      "note": "400 Fersteel Alloy refines, 50 Pyrotic Alloy refine, 150 Coprite Alloy refines"
+    },
+    { "qty": "1,200", "label": "Ferrite", "note": "Coprite Alloy refines" },
+    { "qty": "2", "label": "Maprico", "note": "Strike" },
+    { "qty": "45", "label": "Fish Scales", "note": "Strike" },
+    { "qty": "8", "label": "Marquise Veridos", "note": "Strike" },
+    { "qty": "40", "label": "Fersteel Alloy", "note": "Strike" },
+    { "qty": "30", "label": "Nistlepod", "note": "20 Laka Grip, 10 Ruhang Link" },
+    { "qty": "60", "label": "Coprite Alloy", "note": "Laka Grip" },
+    { "qty": "50", "label": "Fish Oil", "note": "Laka Grip" },
+    { "qty": "20", "label": "Pyrotic Alloy", "note": "Ruhang Link" },
+    { "qty": "2", "label": "Kuaka Spinal Claw", "note": "Ruhang Link" },
+    { "qty": "2", "label": "Cetus Wisp", "note": "gild" }
+  ],
   "groups": [
     {
       "type": "currency",
@@ -22,7 +42,7 @@
       "mode": "Loki with Equinox's Sleep subsumed, or Ivara's Sleep Arrow",
       "live": null,
       "skip": null,
-      "earns": { "currency": "Ostron standing", "amount": "71,000" },
+      "earns": { "currency": "Ostron Standing", "amount": "71,000" },
       "spends": [],
       "map": "plains-of-eidolon",
       "rows": [
@@ -49,15 +69,11 @@
         }
       ],
       "conditions": [
-        "Animals, fish and gems all count against the daily Ostron cap, so the climb spans several days.",
         "Budget the part blueprints, both 5,000-standing refining blueprints and the 5,000-standing gild on top of the rank-ups."
       ],
-      "bonuses": [
-        "Tranq or sleep wildlife at the two ponds just outside the Cetus gate, then leave and re-enter to respawn them; players cap in 10-15 minutes.",
-        "Murkray fishing works any time of day, Glappid and Cuthol at night; Oxylus shows hotspots and the fish give Fish Scales too.",
-        "Thumpers drop Veridos, and spare gems trade to Suumbaat for 75 standing each."
-      ],
-      "disclosures": []
+      "bonuses": ["Thumpers drop Veridos, and spare gems trade to Suumbaat for 75 standing each."],
+      "disclosures": [],
+      "ref": "Ostron Standing"
     },
     {
       "type": "vendor",
@@ -69,7 +85,7 @@
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Ostron standing", "amount": "3,000" }],
+      "spends": [{ "currency": "Ostron Standing", "amount": "3,000" }],
       "map": null,
       "rows": [
         {
@@ -114,78 +130,7 @@
       "spends": [],
       "map": "plains-of-eidolon",
       "rows": [
-        {
-          "qty": "2",
-          "label": "Maprico",
-          "note": "Strike; fruit bushes",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "45",
-          "label": "Fish Scales",
-          "note": "Strike; fillet fish at Hai-Luk",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "8",
-          "label": "Marquise Veridos",
-          "note": "Strike; one refine of 10 Veridos + 2,500cr",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "40",
-          "label": "Fersteel Alloy",
-          "note": "Strike; two refines of 20 Ferros, 400 Plastids, 200 Rubedo, 1,000cr",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "30",
-          "label": "Nistlepod",
-          "note": "20 Laka Grip, 10 Ruhang Link",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "60",
-          "label": "Coprite Alloy",
-          "note": "Laka Grip; refined at Suumbaat",
-          "alt": null,
-          "done": false
-        },
-        { "qty": "50", "label": "Fish Oil", "note": "Laka Grip", "alt": null, "done": false },
-        {
-          "qty": "750",
-          "label": "Cryotic",
-          "note": "Laka Grip; Excavation, not the Plains",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "20",
-          "label": "Pyrotic Alloy",
-          "note": "Ruhang Link; refine Pyrol",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "2",
-          "label": "Kuaka Spinal Claw",
-          "note": "Ruhang Link",
-          "alt": null,
-          "done": false
-        },
-        { "qty": "5", "label": "Mawfish Bones", "note": "Ruhang Link", "alt": null, "done": false },
-        {
-          "qty": "2",
-          "label": "Cetus Wisp",
-          "note": "gild; Plains lakes, mostly at night",
-          "alt": null,
-          "done": false
-        }
+        { "qty": "5", "label": "Mawfish Bones", "note": "Ruhang Link", "alt": null, "done": false }
       ],
       "conditions": [
         "The Marquise Veridos and Fersteel refining blueprints are 5,000 standing each from Suumbaat and need Visitor rank."

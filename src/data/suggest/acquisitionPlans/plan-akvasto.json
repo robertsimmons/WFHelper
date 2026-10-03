@@ -10,6 +10,14 @@
     { "label": "blueprint", "amount": "220 p", "money": false },
     { "label": "build", "amount": "20,000 cr", "money": false }
   ],
+  "materials": [
+    { "qty": "2,400", "label": "Alloy Plate", "note": "1,200 per Vasto" },
+    { "qty": "1,400", "label": "Ferrite", "note": "700 per Vasto" },
+    { "qty": "2,000", "label": "Polymer Bundle", "note": "1,000 per Vasto" },
+    { "qty": "8", "label": "Neurodes", "note": "4 per Vasto" },
+    { "qty": "2", "label": "Orokin Cell", "note": "Akvasto" },
+    { "qty": "110,000", "label": "Credits", "note": null }
+  ],
   "groups": [
     {
       "type": "vendor",
@@ -42,72 +50,6 @@
       "conditions": [],
       "bonuses": [],
       "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "STAR CHART",
-      "sub": null,
-      "activity": "common resources for two Vastos",
-      "meta": "start both Vasto builds as soon as you have them",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "2,400",
-          "label": "Alloy Plate",
-          "note": "1,200 per Vasto",
-          "alt": null,
-          "done": false
-        },
-        { "qty": "1,400", "label": "Ferrite", "note": "700 per Vasto", "alt": null, "done": false },
-        {
-          "qty": "2,000",
-          "label": "Polymer Bundle",
-          "note": "1,000 per Vasto",
-          "alt": null,
-          "done": false
-        },
-        { "qty": "8", "label": "Neurodes", "note": "4 per Vasto", "alt": null, "done": false }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "GABII, CERES",
-      "sub": null,
-      "activity": "Dark Sector, run while the Vastos build",
-      "meta": "1 or 2 cells per drop; you need 2",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "2",
-          "label": "Orokin Cell",
-          "note": "the only rare input",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [
-        "Resource boosters and a loot frame (Khora with a Pilfering Strangledome, Nekros or Hydroid) cut the run short; a second player breaking crates with Xaku or Limbo raises the count."
-      ],
-      "disclosures": [
-        {
-          "title": "other Orokin Cell sources",
-          "body": "Orokin Cells also drop on Saturn and Deimos from resource caches and bosses: Helene and the Sargas Ruk assassination on Saturn, Lephantis, and Distilling Extractors on Saturn and Deimos. Extractor drops are slow."
-        }
-      ]
     },
     {
       "type": "foundry",

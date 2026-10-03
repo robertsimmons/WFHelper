@@ -12,6 +12,15 @@
     { "label": "strike, grip, link", "amount": "3,000 standing", "money": false },
     { "label": "assemble", "amount": "4,000 cr", "money": false }
   ],
+  "materials": [
+    { "qty": "800", "label": "Cryotic", "note": "Pyrotic Alloy refines" },
+    { "qty": "200", "label": "Rubedo", "note": "Pyrotic Alloy refines" },
+    { "qty": "60", "label": "Pyrotic Alloy", "note": null },
+    { "qty": "10", "label": "Tear Azurite", "note": null },
+    { "qty": "20", "label": "Iradite", "note": null },
+    { "qty": "20", "label": "Fish Scales", "note": null },
+    { "qty": "3", "label": "Cetus Wisp", "note": "1 for Trusted, 2 to gild" }
+  ],
   "groups": [
     {
       "type": "currency",
@@ -22,7 +31,7 @@
       "mode": "solo",
       "live": null,
       "skip": null,
-      "earns": { "currency": "Ostron standing", "amount": "71,000" },
+      "earns": { "currency": "Ostron Standing", "amount": "71,000" },
       "spends": [],
       "map": "plains-of-eidolon",
       "rows": [
@@ -48,15 +57,10 @@
           "done": false
         }
       ],
-      "conditions": [
-        "The daily standing cap is the real time gate if you start from zero Ostron standing."
-      ],
-      "bonuses": [
-        "Conservation is the fastest standing; Ivara's Sleep Arrow or Loki with subsumed Equinox Sleep get perfect captures, and learning the Kavat spawn spots caps the day in minutes.",
-        "Murkray, Norg, Cuthol and Glappid pay well per fish, and cutting extras covers Fish Scales.",
-        "Hand spare raw Azurite and Devar to Old Man Suumbaat for standing."
-      ],
-      "disclosures": []
+      "conditions": [],
+      "bonuses": ["Hand spare raw Azurite and Devar to Old Man Suumbaat for standing."],
+      "disclosures": [],
+      "ref": "Ostron Standing"
     },
     {
       "type": "vendor",
@@ -68,7 +72,7 @@
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Ostron standing", "amount": "3,000" }],
+      "spends": [{ "currency": "Ostron Standing", "amount": "3,000" }],
       "map": "cetus",
       "rows": [
         {
@@ -101,66 +105,37 @@
       "disclosures": []
     },
     {
-      "type": "farm",
-      "place": "PLAINS OF EIDOLON, EARTH",
+      "type": "vendor",
+      "place": "OLD MAN SUUMBAAT, CETUS",
       "sub": null,
-      "activity": "night loop: mine every vein, smash containers, fish, lap the lakes for Wisps",
-      "meta": "refine at Old Man Suumbaat, Neutral",
+      "activity": "buy the refining blueprints",
+      "meta": "Ostron Neutral",
       "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Ostron standing", "amount": "1,000" }],
-      "map": "plains-of-eidolon",
+      "spends": [{ "currency": "Ostron Standing", "amount": "1,000" }],
+      "map": "cetus",
       "rows": [
         {
-          "qty": "60",
-          "label": "Pyrotic Alloy",
-          "note": "3 builds of 20 Pyrol, 200 Cryotic, 50 Rubedo; plus 20 more for the Jai link",
+          "qty": null,
+          "label": "Tear Azurite Blueprint",
+          "note": "500 standing, Neutral",
           "alt": null,
           "done": false
         },
         {
-          "qty": "10",
-          "label": "Tear Azurite",
-          "note": "10 Azurite (blue veins), one build",
-          "alt": "Tusk Thumpers drop Azurite",
-          "done": false
-        },
-        {
-          "qty": "20",
-          "label": "Iradite",
-          "note": "rock deposits in low-lying areas, loot containers",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "20",
-          "label": "Fish Scales",
-          "note": "cut any Plains fish at Fisher Hai-Luk",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "3",
-          "label": "Cetus Wisp",
-          "note": "1 for Trusted, 2 to gild; water's edge, up to 5 at night",
+          "qty": null,
+          "label": "Pyrotic Alloy Blueprint",
+          "note": "500 standing, Neutral",
           "alt": null,
           "done": false
         }
       ],
-      "conditions": [
-        "The Tear Azurite and Pyrotic Alloy refine blueprints cost 500 standing each from Old Man Suumbaat.",
-        "Pyrol is the sink: 60 for the Strike's alloy, 20 more alloy for the Jai link, and 40 raw for Visitor. Mine red veins every trip.",
-        "Cetus Wisps don't respawn until you leave and re-enter the Plains."
-      ],
-      "bonuses": ["A high-Strength Volt makes Konzu escort bounties much faster."],
-      "disclosures": [
-        {
-          "title": "Fish Scales count",
-          "body": "The research wiki read gives 25 Fish Scales for the Strike; the item data says 20. Bring 25 to be safe."
-        }
-      ]
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": [],
+      "ref": "Ostron Standing"
     },
     {
       "type": "foundry",

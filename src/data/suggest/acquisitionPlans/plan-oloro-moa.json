@@ -30,6 +30,45 @@
       "money": false
     }
   ],
+  "materials": [
+    {
+      "qty": "1,400",
+      "label": "Plastids",
+      "note": "Gyro 1,000, Travocyte Alloy refines 400"
+    },
+    {
+      "qty": "2",
+      "label": "Morphics",
+      "note": "Model"
+    },
+    {
+      "qty": "2,000",
+      "label": "Salvage",
+      "note": "Travocyte Alloy refines"
+    },
+    {
+      "qty": "1,500",
+      "label": "Ferrite",
+      "note": "Axidrol Alloy refines"
+    },
+    {
+      "qty": "300",
+      "label": "Rubedo",
+      "note": "Axidrol Alloy refines"
+    },
+    { "qty": "16", "label": "Training Debt-Bond", "note": "6 for rank-ups, 10 for the gild" },
+    { "qty": "6", "label": "Shelter Debt-Bond", "note": null },
+    { "qty": "4", "label": "Medical Debt-Bond", "note": null },
+    { "qty": "80", "label": "Travocyte Alloy", "note": "Model 30, Core 25, Bracket 25" },
+    { "qty": "50", "label": "Axidrol Alloy", "note": "Core 25, Bracket 25" },
+    { "qty": "15", "label": "Smooth Phasmin", "note": "Core" },
+    { "qty": "5", "label": "Heart Noctrul", "note": "Gyro" },
+    { "qty": "10", "label": "Goblite Tears", "note": "Model" },
+    { "qty": "15", "label": "Mytocardia Spore", "note": "Bracket" },
+    { "qty": "55", "label": "Thermal Sludge", "note": "Model 20, Gyro 20, Bracket 15" },
+    { "qty": "10", "label": "Echowinder Anoscopic Sensor", "note": "Gyro" },
+    { "qty": "10", "label": "Brickie Muon Battery", "note": "Core" }
+  ],
   "groups": [
     {
       "type": "gate",
@@ -75,7 +114,7 @@
       "live": null,
       "skip": null,
       "earns": {
-        "currency": "Solaris United standing",
+        "currency": "Solaris United Standing",
         "amount": "79,500"
       },
       "spends": [],
@@ -110,59 +149,10 @@
           "done": false
         }
       ],
-      "conditions": [
-        "Before Doer the lures are low-value; bounties plus gem turn-ins to Smokefinger are the practical path."
-      ],
-      "bonuses": [
-        "Half an hour of mining with the Sunpoint Plasma Drill and a Resourceful Retriever beast covers several days of cap, and mines the ores and gems for the parts."
-      ],
-      "disclosures": [
-        {
-          "title": "Conservation",
-          "body": "A Kubrodon with a Kubrodon Echo-Lure and pheromones pays roughly 4,000 to 8,000 standing per capture, and the cap fills in under an hour. Equinox or Ivara sleep or invisibility makes captures reliable. Donating a rank-30 or gilded MOA to Legs pays 1,800 or 2,400 standing, but only after the Mastery is banked."
-        }
-      ]
-    },
-    {
-      "type": "bounty",
-      "place": "ORB VALLIS, VENUS",
-      "sub": null,
-      "activity": "Eudico bounties, full runs",
-      "meta": "stage 5 pays best",
-      "mode": "solo",
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": "orb-vallis",
-      "rows": [
-        {
-          "qty": "16",
-          "label": "Training Debt-Bond",
-          "note": "6 for rank-ups, 10 for the gild",
-          "alt": "or Ticker's cases",
-          "done": false
-        },
-        {
-          "qty": "6",
-          "label": "Shelter Debt-Bond",
-          "note": null,
-          "alt": "or Ticker's cases",
-          "done": false
-        },
-        {
-          "qty": "4",
-          "label": "Medical Debt-Bond",
-          "note": null,
-          "alt": "or Ticker's cases",
-          "done": false
-        }
-      ],
       "conditions": [],
-      "bonuses": [
-        "Ticker always has the lower Training and Shelter bonds on offer, and the Profit-Taker also pays bonds."
-      ],
-      "disclosures": []
+      "bonuses": [],
+      "disclosures": [],
+      "ref": "Solaris United Standing"
     },
     {
       "type": "vendor",
@@ -176,7 +166,7 @@
       "earns": null,
       "spends": [
         {
-          "currency": "Solaris United standing",
+          "currency": "Solaris United Standing",
           "amount": "71,000"
         }
       ],
@@ -222,7 +212,7 @@
       "earns": null,
       "spends": [
         {
-          "currency": "Solaris United standing",
+          "currency": "Solaris United Standing",
           "amount": "3,500"
         }
       ],
@@ -258,155 +248,6 @@
         }
       ],
       "conditions": ["Only the Model earns Mastery; Core, Gyro and Bracket are stats and looks."],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "ORB VALLIS, VENUS",
-      "sub": "Deck 12 caves",
-      "activity": "mining and Corpus containers; refine at Smokefinger",
-      "meta": null,
-      "mode": "solo",
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": "orb-vallis",
-      "rows": [
-        {
-          "qty": "80",
-          "label": "Travocyte Alloy",
-          "note": "Model 30, Core 25, Bracket 25; 20 Travoride, 500 Salvage, 100 Plastids per refine",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "50",
-          "label": "Axidrol Alloy",
-          "note": "Core 25, Bracket 25; 20 Axidite, 500 Ferrite, 100 Rubedo per refine",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "15",
-          "label": "Smooth Phasmin",
-          "note": "Core; 10 Phasmin per refine",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "5",
-          "label": "Heart Noctrul",
-          "note": "Gyro; 10 Noctrul per refine",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "10",
-          "label": "Goblite Tears",
-          "note": "Model; mined gem",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "15",
-          "label": "Mytocardia Spore",
-          "note": "Bracket; shoot Mytocardia Sacs",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "55",
-          "label": "Thermal Sludge",
-          "note": "Model 20, Gyro 20, Bracket 15; Corpus camp containers",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": ["Each refined alloy and gem needs its reusable Smokefinger blueprint."],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "ORB VALLIS, VENUS",
-      "sub": null,
-      "activity": "fishing, cut by The Business",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": "orb-vallis",
-      "rows": [
-        {
-          "qty": "10",
-          "label": "Echowinder Anoscopic Sensor",
-          "note": "Gyro",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "10",
-          "label": "Brickie Muon Battery",
-          "note": "Core",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "SATURN OR URANUS",
-      "sub": null,
-      "activity": "any mission, loot containers",
-      "meta": "highest Plastids chance",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "1,000",
-          "label": "Plastids",
-          "note": "Gyro 1,000, plus 100 per Travocyte refine",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "MARS",
-      "sub": null,
-      "activity": "Capture",
-      "meta": "best Morphics rate",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "2",
-          "label": "Morphics",
-          "note": "Model",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
       "bonuses": [],
       "disclosures": []
     },
@@ -468,7 +309,7 @@
       "earns": null,
       "spends": [
         {
-          "currency": "Solaris United standing",
+          "currency": "Solaris United Standing",
           "amount": "5,000"
         }
       ],

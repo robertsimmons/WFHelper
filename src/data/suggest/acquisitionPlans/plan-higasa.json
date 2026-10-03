@@ -12,6 +12,21 @@
     { "label": "parts + build", "amount": "85,000 cr", "money": false },
     { "label": "worst case", "amount": "317 Fate Pearls", "money": false }
   ],
+  "materials": [
+    {
+      "qty": "600",
+      "label": "Ferrite",
+      "note": "100 Barrel, 100 Receiver, 400 Coprite Alloy refine"
+    },
+    { "qty": "100", "label": "Alloy Plate", "note": "Stock" },
+    { "qty": "100", "label": "Cryotic", "note": "Stock" },
+    { "qty": "50", "label": "Rubedo", "note": "Coprite Alloy refine" },
+    { "qty": "47", "label": "Fate Pearl", "note": null },
+    { "qty": "40", "label": "Grokdrul", "note": "Receiver" },
+    { "qty": "20", "label": "Coprite Alloy", "note": "Receiver" },
+    { "qty": "25", "label": "Iradite", "note": "Stock" },
+    { "qty": "10", "label": "Esher Devar", "note": null }
+  ],
   "groups": [
     {
       "type": "gate",
@@ -64,7 +79,7 @@
           "note": "4.09%",
           "alt": {
             "text": "or 135 Fate Pearls at Koumei's Shrine",
-            "spends": [{ "currency": "Fate Pearls", "amount": "135" }]
+            "spends": [{ "currency": "Fate Pearl", "amount": "135" }]
           },
           "done": false
         },
@@ -74,7 +89,7 @@
           "note": "4.09%",
           "alt": {
             "text": "or 45 Fate Pearls at Koumei's Shrine",
-            "spends": [{ "currency": "Fate Pearls", "amount": "45" }]
+            "spends": [{ "currency": "Fate Pearl", "amount": "45" }]
           },
           "done": false
         },
@@ -84,7 +99,7 @@
           "note": "4.09%",
           "alt": {
             "text": "or 45 Fate Pearls at Koumei's Shrine",
-            "spends": [{ "currency": "Fate Pearls", "amount": "45" }]
+            "spends": [{ "currency": "Fate Pearl", "amount": "45" }]
           },
           "done": false
         },
@@ -94,15 +109,8 @@
           "note": "4.09%",
           "alt": {
             "text": "or 45 Fate Pearls at Koumei's Shrine",
-            "spends": [{ "currency": "Fate Pearls", "amount": "45" }]
+            "spends": [{ "currency": "Fate Pearl", "amount": "45" }]
           },
-          "done": false
-        },
-        {
-          "qty": "47",
-          "label": "Fate Pearl",
-          "note": "the crafts cost pearls too",
-          "alt": null,
           "done": false
         }
       ],
@@ -132,7 +140,7 @@
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Ostron standing", "amount": "5,000" }],
+      "spends": [{ "currency": "Ostron Standing", "amount": "5,000" }],
       "map": "plains-of-eidolon",
       "rows": [
         {
@@ -140,28 +148,6 @@
           "label": "Goopolla Spleen",
           "note": "Barrel; Goopolla fish, any time of day",
           "alt": "or Thumpers",
-          "done": false
-        },
-        {
-          "qty": "10",
-          "label": "Devar",
-          "note": "Barrel; one craft makes 10 Esher Devar",
-          "alt": null,
-          "done": false
-        },
-        { "qty": "40", "label": "Grokdrul", "note": "Receiver", "alt": null, "done": false },
-        {
-          "qty": "20",
-          "label": "Coprite Alloy",
-          "note": "Receiver; refined from Coprun, 20 per craft",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "25",
-          "label": "Iradite",
-          "note": "Stock; glows at night",
-          "alt": null,
           "done": false
         }
       ],
@@ -202,7 +188,7 @@
         },
         {
           "qty": null,
-          "label": "Stock",
+          "label": "Higasa Stock",
           "note": "20,000 cr, 14 Fate Pearls, 100 Alloy Plate, 100 Cryotic, 25 Iradite",
           "alt": null,
           "done": false

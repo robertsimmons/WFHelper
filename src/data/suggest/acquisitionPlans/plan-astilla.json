@@ -12,6 +12,13 @@
     { "label": "blueprint", "amount": "20,000 cr", "money": false },
     { "label": "build", "amount": "20,000 cr", "money": false }
   ],
+  "materials": [
+    { "qty": "7,500", "label": "Ferrite", "note": null },
+    { "qty": "875", "label": "Plastids", "note": null },
+    { "qty": "175", "label": "Oxium", "note": null },
+    { "qty": "4", "label": "Tellurium", "note": null },
+    { "qty": "20,000", "label": "Credits", "note": null }
+  ],
   "groups": [
     {
       "type": "vendor",
@@ -29,70 +36,6 @@
         { "qty": null, "label": "Astilla Blueprint", "note": null, "alt": null, "done": false }
       ],
       "conditions": ["Mastery Rank 10 is required to build it."],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "OPHELIA, URANUS",
-      "sub": null,
-      "activity": "Survival on Steel Path",
-      "meta": "a few sessions covers both",
-      "mode": "loot frame, squad",
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "4",
-          "label": "Tellurium",
-          "note": "Sealab tileset; rare drop",
-          "alt": "Daily Tribute, when it offers it",
-          "done": false
-        },
-        {
-          "qty": "875",
-          "label": "Plastids",
-          "note": "drops on the same tileset",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Steel Path Ophelia drops Tellurium at roughly 4x the normal-mode rate; zero drops on normal mode is common.",
-        "The Tellurium carriers spawn in and around the flooded rooms, so stay near the water."
-      ],
-      "bonuses": [
-        "Nekros with Khora and Pilfering Strangledome is the standard loot squad; avoid Heat and Corrosive kills with Nekros, which cut Desecrate procs."
-      ],
-      "disclosures": [
-        {
-          "title": "other Tellurium sources",
-          "body": "Archwing missions such as Salacia (Neptune) and Caelus (Uranus), Railjack and Empyrean, Kuva Fortress Assault and Grineer Reactor Sabotage caches also drop it. Recall: Hunhullus no longer does, since Hotfix 41.0.7."
-        }
-      ]
-    },
-    {
-      "type": "farm",
-      "place": "IO, JUPITER",
-      "sub": null,
-      "activity": "Defense",
-      "meta": "~80 per 10 waves",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        { "qty": "175", "label": "Oxium", "note": null, "alt": null, "done": false },
-        { "qty": "7,500", "label": "Ferrite", "note": null, "alt": null, "done": false }
-      ],
-      "conditions": [
-        "Oxium Ospreys have to be killed before they self-destruct, or they drop nothing."
-      ],
       "bonuses": [],
       "disclosures": []
     },

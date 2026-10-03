@@ -12,6 +12,15 @@
     { "label": "blueprint", "amount": "20,000 cr", "money": false },
     { "label": "build", "amount": "5,000 cr", "money": false }
   ],
+  "materials": [
+    { "qty": "3,000", "label": "Oxium", "note": "Auroxium Alloy" },
+    { "qty": "35", "label": "Morphics", "note": "25 Auroxium Alloy, 10 Hespazym Alloy" },
+    { "qty": "1,500", "label": "Plastids", "note": "Hespazym Alloy" },
+    { "qty": "2", "label": "Argon Crystal", "note": "Tatsu build" },
+    { "qty": "1,200", "label": "Kuva", "note": "Tatsu build" },
+    { "qty": "100", "label": "Auroxium Alloy", "note": null },
+    { "qty": "100", "label": "Hespazym Alloy", "note": null }
+  ],
   "groups": [
     {
       "type": "vendor",
@@ -42,7 +51,7 @@
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Ostron standing", "amount": "7,000" }],
+      "spends": [{ "currency": "Ostron Standing", "amount": "7,000" }],
       "map": null,
       "rows": [
         {
@@ -67,7 +76,7 @@
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Solaris United standing", "amount": "4,000" }],
+      "spends": [{ "currency": "Solaris United Standing", "amount": "4,000" }],
       "map": null,
       "rows": [
         {
@@ -79,162 +88,6 @@
         }
       ],
       "conditions": ["Requires Solaris United Rank 2 (Rapscallion) to unlock."],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "PLAINS OF EIDOLON, EARTH",
-      "sub": null,
-      "activity": "mine red-vein ore",
-      "meta": "Er-Phryah's Vigil has the densest veins",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": "plains-of-eidolon",
-      "rows": [
-        { "qty": "100", "label": "Auron", "note": "Auroxium Alloy", "alt": null, "done": false }
-      ],
-      "conditions": [
-        "A Resource Drop Chance Booster shifts veins toward gems, not ore; use a plain Resource Booster instead.",
-        "Veins near the Cetus gate rarely roll the rare ore; mine far from the hub."
-      ],
-      "bonuses": ["Bring a Resource Booster and a loot companion with Resourceful Retriever."],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "ORB VALLIS, VENUS",
-      "sub": "Deck 12, or the far northwest near the broken Orokin tower and lake",
-      "activity": "mine red-vein ore",
-      "meta": "re-enter Deck 12's cave to reset nodes",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": "orb-vallis",
-      "rows": [
-        { "qty": "100", "label": "Hesperon", "note": "Hespazym Alloy", "alt": null, "done": false }
-      ],
-      "conditions": ["Farm far from the Fortuna gate; veins there roll mostly Travoride."],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "IO, JUPITER",
-      "sub": null,
-      "activity": "Defense",
-      "meta": "~80 per 10 waves; kill Oxium Ospreys before they explode",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "3,000",
-          "label": "Oxium",
-          "note": "Auroxium Alloy",
-          "alt": "or a Steel Path Corpus Survival with Khora and Resourceful Retriever",
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": ["Nekros or Hydroid plus a Resource Booster multiplies the drop."],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "HELLAS, MARS",
-      "sub": null,
-      "activity": "Exterminate",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "35",
-          "label": "Morphics",
-          "note": "25 for Auroxium Alloy, 10 for Hespazym Alloy",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "HELENE, SATURN",
-      "sub": null,
-      "activity": "Defense",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "1,500",
-          "label": "Plastids",
-          "note": "Hespazym Alloy",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "KUVA FORTRESS",
-      "sub": null,
-      "activity": "Kuva Siphon or Flood",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        { "qty": "1,200", "label": "Kuva", "note": "Tatsu build", "alt": null, "done": false }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "HEPIT, VOID",
-      "sub": null,
-      "activity": "Capture, last",
-      "meta": "decays after pickup",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        { "qty": "2", "label": "Argon Crystal", "note": "Tatsu build", "alt": null, "done": false }
-      ],
-      "conditions": [
-        "Farm this last, once both alloys are built or queued; it decays after pickup."
-      ],
       "bonuses": [],
       "disclosures": []
     },
@@ -251,20 +104,6 @@
       "spends": [],
       "map": null,
       "rows": [
-        {
-          "qty": null,
-          "label": "Auroxium Alloy",
-          "note": "5 crafts of 20; 5,000 cr, 100 Auron, 3,000 Oxium, 25 Morphics total",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Hespazym Alloy",
-          "note": "5 crafts of 20; 5,000 cr, 100 Hesperon, 1,500 Plastids, 10 Morphics total",
-          "alt": null,
-          "done": false
-        },
         {
           "qty": null,
           "label": "Tatsu",

@@ -30,6 +30,20 @@
       "money": false
     }
   ],
+  "materials": [
+    { "qty": "200", "label": "Ueymag", "note": null },
+    { "qty": "10", "label": "Pathos Clamp", "note": null },
+    { "qty": "125", "label": "Nacreous Pebble", "note": null },
+    { "qty": "360", "label": "Ariette Scale", "note": null },
+    { "qty": "100", "label": "Connla Sprout", "note": null },
+    { "qty": "100", "label": "Kovnik", "note": null },
+    { "qty": "100", "label": "Eevani", "note": null },
+    { "qty": "50", "label": "Lamentus", "note": null },
+    { "qty": "100", "label": "Saggen Pearl", "note": null },
+    { "qty": "100", "label": "Aggristone", "note": null },
+    { "qty": "50", "label": "Tasoma Extract", "note": null },
+    { "qty": "75", "label": "Rune Marrow", "note": null }
+  ],
   "groups": [
     {
       "type": "gate",
@@ -88,20 +102,6 @@
           "note": "4-6 a run",
           "alt": null,
           "done": false
-        },
-        {
-          "qty": "200",
-          "label": "Ueymag",
-          "note": "densest inside the Hold",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "10",
-          "label": "Pathos Clamp",
-          "note": "10 a kill, 15 on Steel Path",
-          "alt": "or 1 per Undercroft side portal",
-          "done": true
         }
       ],
       "conditions": [
@@ -131,195 +131,6 @@
           "body": "It has no traversal animation, so climbing looks broken: jump off and re-grapple repeatedly to move up the segments. The telegraphed energy ring on a ~30 second cycle knocks you off, so hop off and re-grapple through it. Wyrmlings do not need a Kaithe; step outside the ring of fire or wall-latch and shoot them."
         }
       ]
-    },
-    {
-      "type": "farm",
-      "place": "DUVIRI",
-      "sub": "Maw Feeding",
-      "activity": "fishing",
-      "meta": "one long session",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": "maw-feeding",
-      "rows": [
-        {
-          "qty": "125",
-          "label": "Nacreous Pebble",
-          "note": null,
-          "alt": null,
-          "done": true
-        },
-        {
-          "qty": "360",
-          "label": "Ariette Scale",
-          "note": "the largest single requirement",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": ["Any mood; one fishing spot can be reused indefinitely"],
-      "bonuses": ["Take Bountiful Harvest first; it doubles Maw Feeding pickups"],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "DUVIRI",
-      "sub": "Lunaro Court",
-      "activity": "plant gathering",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": "lunaro-court",
-      "rows": [
-        {
-          "qty": "100",
-          "label": "Connla Sprout",
-          "note": "densest here",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "100",
-          "label": "Kovnik",
-          "note": "near water",
-          "alt": "or Neighbor's Outlook, any mood",
-          "done": true
-        }
-      ],
-      "conditions": ["Any mood; this is the one plant stop Joy and Envy do not block"],
-      "bonuses": ["Bountiful Harvest doubles plant pickups"],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "DUVIRI",
-      "sub": "Archarbor",
-      "activity": "plant gathering",
-      "meta": null,
-      "mode": null,
-      "live": {
-        "state": "blocked",
-        "text": "Sorrow in 2h 47m, Amphitheater open now"
-      },
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": "archarbor",
-      "rows": [
-        {
-          "qty": "100",
-          "label": "Eevani",
-          "note": "best density in Duviri",
-          "alt": "or The Amphitheater in Joy, Envy, Anger or Fear",
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Archarbor only grows during Joy, Envy or Sorrow, two of which are the moods that shut Kullervo's Hold"
-      ],
-      "bonuses": ["Fills the dead Joy and Envy windows the Bane farm cannot use"],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "DUVIRI",
-      "sub": null,
-      "activity": "Dax, Blinkpads and Aggristone formations",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": "duviri-landscape",
-      "rows": [
-        {
-          "qty": "50",
-          "label": "Lamentus",
-          "note": "open-world Dax only",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "100",
-          "label": "Saggen Pearl",
-          "note": "Blinkpads, any mood",
-          "alt": null,
-          "done": true
-        },
-        {
-          "qty": "100",
-          "label": "Aggristone",
-          "note": "destroy the formations",
-          "alt": "or Spiral objective and Circuit rewards",
-          "done": false
-        }
-      ],
-      "conditions": ["Lamentus does not drop from Dax inside the Undercroft"],
-      "bonuses": [
-        "Stall the prisoner-liberation objective short of the completion circle to keep Dax waves spawning"
-      ],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "DUVIRI",
-      "sub": "Caves",
-      "activity": "Tasoma gathering",
-      "meta": "2-4 a node",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": "duviri-caves",
-      "rows": [
-        {
-          "qty": "50",
-          "label": "Tasoma Extract",
-          "note": "caves only",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": ["Any mood, but it grows nowhere except inside caves"],
-      "bonuses": [
-        "Fly under the landscape on a Kaithe to spot cave mouths; Riding Intrinsics Rank 5 helps"
-      ],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "THE UNDERCROFT",
-      "sub": null,
-      "activity": "Runic Compact containers",
-      "meta": "7-11 a tile",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": "undercroft",
-      "rows": [
-        {
-          "qty": "75",
-          "label": "Rune Marrow",
-          "note": null,
-          "alt": "or The Circuit",
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Only spawns in the Undercroft or The Circuit, never during open-world Duviri gathering"
-      ],
-      "bonuses": ["Guaranteed from Corrupted Vor and Corrupted Jackal down there"],
-      "disclosures": []
     },
     {
       "type": "vendor",

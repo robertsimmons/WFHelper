@@ -9,6 +9,26 @@
     { "text": "no blueprint pity", "tone": "warn" }
   ],
   "prices": [{ "label": "built", "amount": "325 p", "money": false }],
+  "materials": [
+    { "qty": "10", "label": "Neural Sensors", "note": "Neuroptics" },
+    { "qty": "3", "label": "Orokin Cell", "note": null },
+    {
+      "qty": "18",
+      "label": "Gallium",
+      "note": "12 Thaumic Distillate refines, 6 Venerdo Alloy refines"
+    },
+    { "qty": "900", "label": "Rubedo", "note": "Venerdo Alloy refines" },
+    { "qty": "5", "label": "Scintillant", "note": "Xaku Systems" },
+    { "qty": "3", "label": "Spinal Core Section", "note": "Xaku Chassis" },
+    { "qty": "60", "label": "Thaumic Distillate", "note": null },
+    { "qty": "50", "label": "Venerdo Alloy", "note": null },
+    { "qty": "40", "label": "Esher Devar", "note": null },
+    { "qty": "20", "label": "Sharrac Teeth", "note": "Xaku Neuroptics" },
+    { "qty": "10", "label": "Breath Of The Eidolon", "note": "Xaku Systems" },
+    { "qty": "5", "label": "Lucent Teroglobe", "note": "Xaku Chassis" },
+    { "qty": "45", "label": "Pustulite", "note": null },
+    { "qty": "60", "label": "Ganglion", "note": null }
+  ],
   "groups": [
     {
       "type": "gate",
@@ -137,107 +157,6 @@
           "body": "Unlike several newer frame farms, Xaku has no component-blueprint pity purchase. Expect roughly 49-57 qualifying stages for a near-guaranteed chance at each part, not a hard ceiling."
         }
       ]
-    },
-    {
-      "type": "farm",
-      "place": "ISOLATION VAULTS, CAMBION DRIFT",
-      "sub": null,
-      "activity": "sweep the vault for floating Scintillant",
-      "meta": "5 needed",
-      "mode": "bring loot radar and a fast frame",
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": "cambion-drift",
-      "rows": [
-        {
-          "qty": "5",
-          "label": "Scintillant",
-          "note": "Xaku Systems; floating vault pickup",
-          "alt": "Necramech drops during vault bounties",
-          "done": false
-        },
-        {
-          "qty": "3",
-          "label": "Spinal Core Section",
-          "note": "Xaku Chassis",
-          "alt": "fillet Chondricord or Vitreospina at Daughter",
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Scintillant is a physical, moving pickup that must be flown through; Vacuum and Fetch do not collect it.",
-        "Watch the loot-radar minimap for a moving marker, including near ceilings and ledges. Do not wait for it as a regular bounty reward.",
-        "If a vault sweep is unproductive, take a tentacle to the surface and cancel without leaving the Drift to restart."
-      ],
-      "bonuses": [
-        "Resource boosters and Resourceful Retriever can multiply in-mission Scintillant pickups, but not bounty reward rolls."
-      ],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "OPEN WORLDS",
-      "sub": "mine, fish, and collect while doing their bounties",
-      "activity": "gather Xaku's remaining build materials",
-      "meta": "combine these with standing and bounty runs",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "60",
-          "label": "Thaumic Distillate",
-          "note": "3 batch crafts; Deimos yellow mineral veins",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "50",
-          "label": "Venerdo Alloy",
-          "note": "3 batch crafts; Orb Vallis red mineral veins",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "40",
-          "label": "Esher Devar",
-          "note": "4 batch crafts; Plains blue mineral veins",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "20",
-          "label": "Sharrac Teeth",
-          "note": "Xaku Neuroptics; Plains fishing",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "10",
-          "label": "Breath of the Eidolon",
-          "note": "Xaku Systems; Plains bounty rewards",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "50",
-          "label": "Lucent Teroglobe",
-          "note": "Xaku Chassis; Vitrific Outcrops near Requiem Obelisks",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Pustulite and Ganglion can come from their Deimos plants or ordinary bounty rewards; mine Thaumica and collect Teroglobes during the part farm.",
-        "Save Scintillant for this build if you also want Quassus, Bonewidow, or Catabolyst; their recipes compete for it."
-      ],
-      "bonuses": [],
-      "disclosures": []
     },
     {
       "type": "foundry",

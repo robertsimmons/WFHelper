@@ -12,6 +12,12 @@
     { "label": "blueprint", "amount": "20,000 cr", "money": false },
     { "label": "build", "amount": "20,000 cr", "money": false }
   ],
+  "materials": [
+    { "qty": "15,000", "label": "Ferrite", "note": null },
+    { "qty": "8,000", "label": "Polymer Bundle", "note": null },
+    { "qty": "3", "label": "Neural Sensors", "note": null },
+    { "qty": "2", "label": "Argon Crystal", "note": null }
+  ],
   "groups": [
     {
       "type": "vendor",
@@ -31,118 +37,6 @@
       "conditions": [],
       "bonuses": [],
       "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "APOLLODORUS, MERCURY",
-      "sub": null,
-      "activity": "Survival",
-      "meta": "about 4k Ferrite per 10 minutes",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "15,000",
-          "label": "Ferrite",
-          "note": "Stradavar build",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": ["Nekros with Master Thief is the standard answer."],
-      "disclosures": [
-        {
-          "title": "other Ferrite sources",
-          "body": "M Prime and Terminus on Mercury give about 18k per hour. Any Void Survival or Defense also drops it."
-        }
-      ]
-    },
-    {
-      "type": "farm",
-      "place": "ASSUR, URANUS",
-      "sub": "Ophelia, Uranus and Apollodorus, Mercury are alternatives",
-      "activity": "Survival (Dark Sector)",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "8,000",
-          "label": "Polymer Bundle",
-          "note": "Stradavar build; bundles drop in stacks of 40 to 75",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "ELARA, JUPITER",
-      "sub": "Sinai or Themisto, Jupiter",
-      "activity": "any mission",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "3",
-          "label": "Neural Sensors",
-          "note": "Stradavar build",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": ["Distilling Extractors on Jupiter collect them passively."],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "THE VOID",
-      "sub": null,
-      "activity": "Survival or Sabotage",
-      "meta": "pick this up last",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": "void",
-      "rows": [
-        {
-          "qty": "2",
-          "label": "Argon Crystal",
-          "note": "Stradavar build",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Argon decays about a day after pickup, so farm it only when every other ingredient is ready."
-      ],
-      "bonuses": [],
-      "disclosures": [
-        {
-          "title": "fast Argon",
-          "body": "A low-level Void Capture opening every container and locker was reported at about 15 minutes for 2 or more crystals. A Void Survival with Nekros pulls 6 to 10 per 10 minutes."
-        }
-      ]
     },
     {
       "type": "foundry",

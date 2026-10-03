@@ -12,6 +12,18 @@
     { "label": "parts", "amount": "60,000 cr", "money": false },
     { "label": "blueprint", "amount": "20,000 cr", "money": false }
   ],
+  "materials": [
+    { "qty": "250", "label": "Temporal Dust", "note": "Blade + String" },
+    { "qty": "2,100", "label": "Entrati Obols", "note": "Blade + String" },
+    { "qty": "150", "label": "Aggristone", "note": "Blade" },
+    { "qty": "75", "label": "Saggen Pearl", "note": "Blade" },
+    { "qty": "250", "label": "Kovnik", "note": "String" },
+    { "qty": "75", "label": "Tasoma Extract", "note": "String" },
+    { "qty": "350", "label": "Necracoil", "note": "Handle" },
+    { "qty": "100", "label": "Connla Sprout", "note": "Handle" },
+    { "qty": "10", "label": "Silphsela", "note": "Handle" },
+    { "qty": "75", "label": "Rune Marrow", "note": "Handle" }
+  ],
   "groups": [
     {
       "type": "gate",
@@ -66,12 +78,12 @@
       ],
       "conditions": [
         "Random Warframe and weapon loadout each run, no companion.",
-        "Wall-cling or go Operator Void Mode during Oraxia's spider phase — Death Scuttlers disable abilities and Operator, and the hanging ones proc Magnetic on contact.",
+        "Wall-cling or go Operator Void Mode during Oraxia's spider phase: Death Scuttlers disable abilities and Operator, and the hanging ones proc Magnetic on contact.",
         "The forced Undercroft Survival is a flat 5 minutes and the slowest part of a run."
       ],
       "bonuses": [
-        "Run normal, solo, unless your loadout is strong — damage attenuation on both bosses makes Steel Path run 20-25 minutes against about 15 for normal, so normal wins on husks per minute.",
-        "Enter Circuit, play one bad-loadout round to reroll, then come back for a better Duviri loadout — or abort after the run ends to keep rewards and keep the rotation."
+        "Run normal, solo, unless your loadout is strong: damage attenuation on both bosses makes Steel Path run 20-25 minutes against about 15 for normal, so normal wins on husks per minute.",
+        "Enter Circuit, play one bad-loadout round to reroll, then come back for a better Duviri loadout, or abort after the run ends to keep rewards and keep the rotation."
       ],
       "disclosures": []
     },
@@ -100,7 +112,8 @@
       "bonuses": [
         "About 5-6 runs guarantees the full set from husks alone; drops usually cut that down."
       ],
-      "disclosures": []
+      "disclosures": [],
+      "ref": "Scuttler Husk"
     },
     {
       "type": "vendor",
@@ -133,55 +146,10 @@
         { "qty": null, "label": "Spinnerex Handle", "note": "16 Husks", "alt": null, "done": false }
       ],
       "conditions": [
-        "The husk exchange only works with Acrithis or Dominus Thrax in the Dormizone — Acrithis inside Duviri does not offer it."
+        "The husk exchange only works with Acrithis or Dominus Thrax in the Dormizone: Acrithis inside Duviri does not offer it."
       ],
       "bonuses": [
         "Spend husks only on what hasn't dropped; the Spinnerex, Oraxia and Scyotid parts all drop naturally, but Thalys and the Captura scenes are shop-only."
-      ],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "ISLEWEAVER, DUVIRI",
-      "sub": null,
-      "activity": "gather component materials while running the above",
-      "meta": "builds up passively during the farm",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": "duviri",
-      "rows": [
-        {
-          "qty": "250",
-          "label": "Temporal Dust",
-          "note": "Blade + String",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "2,100",
-          "label": "Entrati Obols",
-          "note": "Blade + String",
-          "alt": null,
-          "done": false
-        },
-        { "qty": "150", "label": "Aggristone", "note": "Blade", "alt": null, "done": false },
-        { "qty": "75", "label": "Saggen Pearl", "note": "Blade", "alt": null, "done": false },
-        { "qty": "250", "label": "Kovnik", "note": "String", "alt": null, "done": false },
-        { "qty": "75", "label": "Tasoma Extract", "note": "String", "alt": null, "done": false },
-        { "qty": "350", "label": "Necracoil", "note": "Handle", "alt": null, "done": false },
-        { "qty": "100", "label": "Connla Sprout", "note": "Handle", "alt": null, "done": false },
-        { "qty": "10", "label": "Silphsela", "note": "Handle", "alt": null, "done": false },
-        { "qty": "75", "label": "Rune Marrow", "note": "Handle", "alt": null, "done": false }
-      ],
-      "conditions": [
-        "Entrati Obols, Necracoil and Temporal Dust drop from Murmur enemies and Entrati containers inside Isleweaver itself, so they build up while you farm the parts.",
-        "The Duviri plant and mineral mats are normal Duviri pickups — anyone who's farmed the Circuit for Incarnons usually already has plenty."
-      ],
-      "bonuses": [
-        "Roll a 2x resource decree in Circuit with a booster active if Rune Marrow is short."
       ],
       "disclosures": []
     },

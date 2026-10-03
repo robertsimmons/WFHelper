@@ -6,6 +6,14 @@
   "progress": { "have": 0, "need": 1, "unit": "weapon" },
   "badges": [{ "text": "210,000 cr chain", "tone": "warn" }],
   "prices": [{ "label": "whole chain", "amount": "210,000 cr", "money": false }],
+  "materials": [
+    { "qty": "1,900", "label": "Polymer Bundle", "note": "800 per Bolto, 300 for Dual Skana" },
+    { "qty": "850", "label": "Ferrite", "note": "Dual Skana" },
+    { "qty": "300", "label": "Alloy Plate", "note": "Dual Skana" },
+    { "qty": "7", "label": "Orokin Cell", "note": "4 for the Boltos, 1 Akbolto, 2 Akjagara" },
+    { "qty": "4", "label": "Neurodes", "note": "2 per Bolto" },
+    { "qty": "2", "label": "Morphics", "note": "Dual Skana" }
+  ],
   "groups": [
     {
       "type": "vendor",
@@ -59,90 +67,6 @@
       "conditions": [
         "Keep five weapon slots free; people hit the limit partway through the Lato and Bolto steps."
       ],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "ASSUR, URANUS",
-      "sub": null,
-      "activity": "Survival, Dark Sector",
-      "meta": "best Polymer Bundle rate",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "1,900",
-          "label": "Polymer Bundle",
-          "note": "800 per Bolto, 300 for Dual Skana",
-          "alt": null,
-          "done": false
-        },
-        { "qty": "850", "label": "Ferrite", "note": "Dual Skana", "alt": null, "done": false },
-        { "qty": "300", "label": "Alloy Plate", "note": "Dual Skana", "alt": null, "done": false }
-      ],
-      "conditions": [],
-      "bonuses": ["Ferrite and Alloy Plate drop everywhere, so no separate trip."],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "DEIMOS",
-      "sub": "or Saturn, Ceres",
-      "activity": "resource drops",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "7",
-          "label": "Orokin Cell",
-          "note": "4 for the Boltos, 1 Akbolto, 2 Akjagara",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "4",
-          "label": "Neurodes",
-          "note": "2 per Bolto; also Earth, Lua, Eris",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": ["Orokin Derelict resource caches also drop Orokin Cells."],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "MARS",
-      "sub": null,
-      "activity": "any mission",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "2",
-          "label": "Morphics",
-          "note": "Dual Skana; highest rate on Mars",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
       "bonuses": [],
       "disclosures": []
     },

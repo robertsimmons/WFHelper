@@ -30,242 +30,31 @@
       "money": false
     }
   ],
+  "materials": [
+    {
+      "qty": "5",
+      "label": "Detonite Injector",
+      "note": null
+    },
+    {
+      "qty": "7,500",
+      "label": "Salvage",
+      "note": null
+    },
+    {
+      "qty": "3,300",
+      "label": "Cryotic",
+      "note": null
+    },
+    { "qty": "1", "label": "Forma", "note": null },
+    { "qty": "15,000", "label": "Credits", "note": null }
+  ],
   "groups": [
-    {
-      "type": "research",
-      "place": "CLAN DOJO, CHEM LAB",
-      "sub": null,
-      "activity": "queue the whole chain, skipping any link the clan has",
-      "meta": "four serial 72h projects",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Detonite Injector",
-          "note": "5 Detonite Ampule, 200 Ferrite, 250 Polymer Bundle, 100 Plastids, 5,000 cr",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Ignis",
-          "note": "10 Detonite Ampule, 400 Ferrite, 150 Plastids, 500 Polymer Bundle, 5,000 cr",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Ogris",
-          "note": "10 Detonite Ampule, 500 Ferrite, 150 Plastids, 300 Polymer Bundle, 7,500 cr",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Ack & Brunt",
-          "note": "10 Detonite Ampule, 620 Salvage, 400 Polymer Bundle, 240 Rubedo, 7,500 cr",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Ignis and Ogris only need researching, not building.",
-        "Research is contributed as clan resources, so a solo player needs their own clan with the Chem Lab built."
-      ],
-      "bonuses": ["Ack & Brunt has an Incarnon Genesis, but it adds no Mastery."],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "HIERACON, PLUTO",
-      "sub": null,
-      "activity": "Excavation as a Void fissure",
-      "meta": "about 3,000 in a little over 30 minutes with a group",
-      "mode": "squad",
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "3,300",
-          "label": "Cryotic",
-          "note": "100 per completed dig, any level",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Drop Chance Boosters do nothing for it; a Resource Booster, Smeeta, Resourceful Retriever or Loyal Retriever doubles it.",
-        "Do not farm it solo: one or two players keep the excavators alive."
-      ],
-      "bonuses": [
-        "The fissure bonus starts at +25% after rotation 3 and grows every fifth rotation, and relics crack as you go."
-      ],
-      "disclosures": [
-        {
-          "title": "losing an excavator",
-          "body": "You keep Cryotic proportional to progress when it dies. In The Circuit, always trigger the fourth excavator: it still pays about 20 to 40 when the round ends."
-        }
-      ]
-    },
-    {
-      "type": "farm",
-      "place": "PISCINAS, SATURN",
-      "sub": null,
-      "activity": "Survival, Dark Sector",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "35",
-          "label": "Detonite Ampule",
-          "note": "5 + 10 + 10 + 10 across the chain",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "400",
-          "label": "Plastids",
-          "note": "100 + 150 + 150",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "APOLLODORUS, MERCURY",
-      "sub": null,
-      "activity": "Survival",
-      "meta": "about 4,000 Ferrite per 10 minutes",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "1,100",
-          "label": "Ferrite",
-          "note": "200 + 400 + 500",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "1,450",
-          "label": "Polymer Bundle",
-          "note": "250 + 500 + 300 + 400",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "ZEUGMA, PHOBOS",
-      "sub": null,
-      "activity": "Survival, Dark Sector",
-      "meta": "about 250 per 5 minutes",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "240",
-          "label": "Rubedo",
-          "note": "Ack & Brunt research",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": ["Valefor (Europa) is the Defense alternative."],
-      "disclosures": []
-    },
-    {
-      "type": "bounty",
-      "place": "INVASIONS",
-      "sub": "Grineer-side rewards",
-      "activity": "finish the Grineer side",
-      "meta": "3 per reward",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "5",
-          "label": "Detonite Injector",
-          "note": "build; saves five foundry crafts",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": [
-        {
-          "title": "craft the Injectors instead",
-          "body": "Five crafts at 15,000 cr, 10 Detonite Ampule, 1 Control Module, 500 Salvage, 250 Plastids and 12h each add 50 Ampule and 2,500 Salvage, so budget about 10,000 Salvage in total. Injectors also drop from rare and reinforced Grineer storage containers and Tier 4 Orb Vallis bounty stages."
-        }
-      ]
-    },
-    {
-      "type": "farm",
-      "place": "CARME, JUPITER",
-      "sub": null,
-      "activity": "Mobile Defense",
-      "meta": "up to about 3,000 a run",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "8,120",
-          "label": "Salvage",
-          "note": "620 for research, 7,500 for the build",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [
-        "Elara (Survival, Jupiter) with Nekros and a pet carrying Animal Instinct, Resourceful Retriever and Scavenge is the long-run option."
-      ],
-      "disclosures": []
-    },
     {
       "type": "vendor",
       "place": "CLAN DOJO, CHEM LAB",
       "sub": null,
-      "activity": "buy blueprint once Ack & Brunt research is done",
+      "activity": "buy the blueprint",
       "meta": "15,000 cr",
       "mode": null,
       "live": null,

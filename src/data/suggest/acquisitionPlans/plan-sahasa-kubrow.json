@@ -12,6 +12,13 @@
     { "label": "Kubrow Egg", "amount": "10 p", "money": false },
     { "label": "Incubator Power Core blueprint", "amount": "50,000 cr", "money": false }
   ],
+  "materials": [
+    { "qty": "4,500", "label": "Nano Spores", "note": "Incubator Power Core" },
+    { "qty": "2", "label": "Control Module", "note": "Incubator Power Core" },
+    { "qty": "1", "label": "Argon Crystal", "note": "Incubator Power Core" },
+    { "qty": "2", "label": "Kubrow Egg", "note": null },
+    { "qty": "2", "label": "Incubator Power Core", "note": null }
+  ],
   "groups": [
     {
       "type": "gate",
@@ -49,37 +56,6 @@
       "disclosures": []
     },
     {
-      "type": "farm",
-      "place": "MANTLE, EARTH",
-      "sub": null,
-      "activity": "Capture; break Kubrow Dens on Grineer Forest tiles",
-      "meta": "odds per den unpublished",
-      "mode": "solo, fast frame",
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "1",
-          "label": "Kubrow Egg",
-          "note": "wiki estimates 4-5 runs; reports of 30+ are common",
-          "alt": "Market purchase, 10 platinum",
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Run to the dens, break them, capture and extract, or abort quickly if nothing dropped.",
-        "You can hold more than one egg at a time."
-      ],
-      "bonuses": [
-        "A range-stacked Xaku casting The Vast Untime clears every den in a room, including ones you can't see, while passively picking up Mantle's Neurodes.",
-        "Scanning dens with a Codex scanner makes completed ones glow and show through walls, which speeds up finding them (unconfirmed)."
-      ],
-      "disclosures": []
-    },
-    {
       "type": "foundry",
       "place": "FOUNDRY",
       "sub": null,
@@ -93,17 +69,16 @@
       "map": null,
       "rows": [
         {
-          "qty": "1",
-          "label": "Incubator Power Core",
-          "note": "one consumed per incubation attempt",
+          "qty": null,
+          "label": "Sahasa Kubrow",
+          "note": "1 Incubator Power Core",
           "alt": null,
           "done": false
         }
       ],
       "conditions": [
         "The first core is free from the Venus-to-Mercury Junction (Vox Solaris); after that, buy the reusable blueprint for 50,000 credits and build another for each attempt.",
-        "A wrong Random Incubation result consumes another core as well as another egg.",
-        "Argon Crystal decays at daily reset, so pick it up last and build the core right away."
+        "A wrong Random Incubation result consumes another core as well as another egg."
       ],
       "bonuses": [],
       "disclosures": []
@@ -121,20 +96,6 @@
       "spends": [],
       "map": null,
       "rows": [
-        {
-          "qty": "1",
-          "label": "Kubrow Egg",
-          "note": "consumed per attempt",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "1",
-          "label": "Incubator Power Core",
-          "note": "consumed per attempt",
-          "alt": null,
-          "done": false
-        },
         {
           "qty": null,
           "label": "Sahasa Kubrow",

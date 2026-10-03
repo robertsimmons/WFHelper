@@ -9,6 +9,20 @@
     { "text": "Circuit week 6", "tone": "circuit" }
   ],
   "prices": [{ "label": "blueprint", "amount": "50,000 cr", "money": false }],
+  "materials": [
+    {
+      "qty": "1,650",
+      "label": "Polymer Bundle",
+      "note": "150 Neuroptics, 1,000 Chassis, 500 Systems"
+    },
+    { "qty": "1,200", "label": "Nano Spores", "note": "Chassis" },
+    { "qty": "370", "label": "Alloy Plate", "note": "150 Neuroptics, 220 Systems" },
+    { "qty": "300", "label": "Rubedo", "note": "Chassis" },
+    { "qty": "4", "label": "Argon Crystal", "note": "2 Neuroptics, 2 Chassis" },
+    { "qty": "4", "label": "Gallium", "note": "Systems" },
+    { "qty": "2", "label": "Orokin Cell", "note": "1 Systems, 1 Hydroid" },
+    { "qty": "1", "label": "Control Module", "note": "Neuroptics" }
+  ],
   "groups": [
     {
       "type": "vendor",
@@ -80,33 +94,6 @@
           "body": "The Vay Hek Frequency Triangulator pays the same parts at the same rates on Rotation C. After The Duviri Paradox, Hydroid is week 6 of the Normal Circuit with Mirage and Limbo: Neuroptics tier 2, Chassis 5, Systems 8, main 10. Mixing sources works, e.g. Vay Hek for two parts and the Circuit for Systems."
         }
       ]
-    },
-    {
-      "type": "farm",
-      "place": "THE VOID",
-      "sub": "Ani Survival or Ukko Capture",
-      "activity": "mine Argon Pegmatite deposits",
-      "meta": "~2 deposits a map, 1-2 each",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "4",
-          "label": "Argon Crystal",
-          "note": "2 Neuroptics, 2 Chassis",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "At each 00:00 GMT reset, crystals older than that day are halved. Farm them right before building Neuroptics and Chassis."
-      ],
-      "bonuses": [],
-      "disclosures": []
     },
     {
       "type": "foundry",

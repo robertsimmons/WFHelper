@@ -12,6 +12,10 @@
     { "label": "pity route", "amount": "200 Lua Thrax Plasm", "money": false },
     { "label": "build", "amount": "20,000 cr + 50 Plasm", "money": false }
   ],
+  "materials": [
+    { "qty": "100", "label": "Lua Thrax Plasm", "note": "for the build" },
+    { "qty": "20,000", "label": "Credits", "note": null }
+  ],
   "groups": [
     {
       "type": "gate",
@@ -87,13 +91,6 @@
             "spends": [{ "currency": "Lua Thrax Plasm", "amount": "50" }]
           },
           "done": false
-        },
-        {
-          "qty": "50",
-          "label": "Lua Thrax Plasm",
-          "note": "for the build; 5 per rotation, 6 on Steel Path, plus Thrax drops",
-          "alt": null,
-          "done": false
         }
       ],
       "conditions": [
@@ -130,8 +127,13 @@
       "spends": [],
       "map": null,
       "rows": [
-        { "qty": null, "label": "Credits", "note": "20,000", "alt": null, "done": false },
-        { "qty": "50", "label": "Lua Thrax Plasm", "note": null, "alt": null, "done": false }
+        {
+          "qty": null,
+          "label": "Sarofang",
+          "note": "20,000 Credits, 50 Lua Thrax Plasm",
+          "alt": null,
+          "done": false
+        }
       ],
       "conditions": ["Lua Thrax Plasm is not Zariman Thrax Plasm; Zariman missions don't give it."],
       "bonuses": [],

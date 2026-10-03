@@ -9,6 +9,20 @@
     { "text": "Prime Resurgence", "tone": "info" }
   ],
   "prices": [{ "label": "Regal Aya pack", "amount": "$19.99", "money": true }],
+  "materials": [
+    { "qty": "2", "label": "Argon Crystal", "note": "Neuroptics" },
+    { "qty": "10", "label": "Neurodes", "note": "Neuroptics" },
+    { "qty": "1,500", "label": "Rubedo", "note": "Neuroptics" },
+    { "qty": "6,750", "label": "Ferrite", "note": "Neuroptics" },
+    { "qty": "7", "label": "Gallium", "note": "Chassis" },
+    { "qty": "250", "label": "Oxium", "note": "Chassis" },
+    { "qty": "2,150", "label": "Polymer Bundle", "note": "Chassis" },
+    { "qty": "8,750", "label": "Nano Spores", "note": "Chassis" },
+    { "qty": "2", "label": "Tellurium", "note": "Systems" },
+    { "qty": "1,350", "label": "Circuits", "note": "Systems" },
+    { "qty": "4,375", "label": "Salvage", "note": "Systems" },
+    { "qty": "2", "label": "Nitain Extract", "note": "Systems" }
+  ],
   "groups": [
     {
       "type": "currency",
@@ -33,19 +47,11 @@
       ],
       "conditions": [
         "Gara Prime is currently vaulted. Her last Prime Resurgence window closed 2026-08-06; check Varzia's Next Offering before acting.",
-        "Level 40-60 Deimos bounties have a 43.48% Aya chance on the final stage. Complete bonus objectives for the additional reward roll.",
         "Aya cannot be boosted, has no cap, and remains after a Prime Resurgence rotation ends."
       ],
-      "bonuses": [
-        "Bring a speed frame such as Volt, Titania, or Nova to improve bounty throughput.",
-        "Cetus level 40-60 bounties are the next best open-world alternative at 38.78%; Void Aya farming is far weaker."
-      ],
-      "disclosures": [
-        {
-          "title": "the calendar is the bottleneck",
-          "body": "Varzia changes Prime Resurgence stock every 28 days. Farm Aya before Gara returns, then buy enough relics during the window; her relics disappear from Varzia when it closes."
-        }
-      ]
+      "bonuses": [],
+      "disclosures": [],
+      "ref": "Aya"
     },
     {
       "type": "vendor",
@@ -158,106 +164,6 @@
           "body": "A Radshare only has its expected odds when all four players bring the same relic at Radiant. Confirm both the relic and refinement level before launch."
         }
       ]
-    },
-    {
-      "type": "farm",
-      "place": "VOID",
-      "sub": null,
-      "activity": "Survival or Defense",
-      "meta": "farm Argon last",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": "void",
-      "rows": [
-        { "qty": "2", "label": "Argon Crystal", "note": "Neuroptics", "alt": null, "done": false },
-        {
-          "qty": "10",
-          "label": "Neurodes",
-          "note": "Neuroptics",
-          "alt": "Deimos missions",
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Argon Crystals decay 24 hours after acquisition, so collect them immediately before starting the Neuroptics build."
-      ],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "RESOURCE FARM",
-      "sub": null,
-      "activity": "collect remaining component materials",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "7",
-          "label": "Gallium",
-          "note": "Chassis",
-          "alt": "Mars or Uranus",
-          "done": false
-        },
-        { "qty": "250", "label": "Oxium", "note": "Chassis", "alt": null, "done": false },
-        {
-          "qty": "2",
-          "label": "Tellurium",
-          "note": "Systems",
-          "alt": "Uranus or Railjack",
-          "done": false
-        },
-        { "qty": "1,500", "label": "Rubedo", "note": "Neuroptics", "alt": null, "done": false },
-        {
-          "qty": "2,150",
-          "label": "Polymer Bundle",
-          "note": "Chassis",
-          "alt": null,
-          "done": false
-        },
-        { "qty": "8,750", "label": "Nano Spores", "note": "Chassis", "alt": null, "done": false },
-        { "qty": "1,350", "label": "Circuits", "note": "Systems", "alt": null, "done": false },
-        { "qty": "4,375", "label": "Salvage", "note": "Systems", "alt": null, "done": false },
-        { "qty": "6,750", "label": "Ferrite", "note": "Neuroptics", "alt": null, "done": false }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "vendor",
-      "place": "NIGHTWAVE",
-      "sub": null,
-      "activity": "Evergreen Offerings",
-      "meta": "15 Cred for 5",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "2",
-          "label": "Nitain Extract",
-          "note": "Systems",
-          "alt": "5 for 15 Nightwave Cred",
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Nitain is normally Cred-gated; check your Nightwave Cred balance before the other materials are ready."
-      ],
-      "bonuses": [],
-      "disclosures": []
     },
     {
       "type": "foundry",

@@ -9,6 +9,7 @@
     { "text": "Batch B rotation", "tone": "warn" }
   ],
   "prices": [{ "label": "Elemental Vice", "amount": "20 p", "money": false }],
+  "materials": [{ "qty": "10", "label": "Live Heartcell", "note": null }],
   "groups": [
     {
       "type": "gate",
@@ -126,10 +127,13 @@
       ],
       "conditions": [
         "Duets spawn at 25% per mission, +25% per miss, guaranteed on the 4th.",
-        "A Duet that stumbles 3 times unstabbed, or a downed squad, flees the encounter."
+        "A Duet that stumbles 3 times unstabbed, or a downed squad, flees the encounter.",
+        "Phases 1 and 3 are hazard-dodging with Transference disabled; phases 2 and 4 are the real fight, and the frontman regenerates until his backup band is dead.",
+        "Bring overguard or invulnerability (Revenant's Mesmer Skin, Nyx's Assimilate, Dante); the Coda's Toxin bypasses shield gating."
       ],
       "bonuses": [
-        "Abort right after a correct-Antivirus stab; the disinfection banks immediately."
+        "Abort right after a correct-Antivirus stab; the disinfection banks immediately.",
+        "Squadmates who each defeat their own Coda in the same Concert add +1 Heartcell, up to +3, whether they vanquish or convert."
       ],
       "disclosures": [
         {
@@ -137,36 +141,6 @@
           "body": "Non-host players routinely report the stage hazards desyncing or turning invisible from the second band onward, which makes hosting or soloing the safer bet."
         }
       ]
-    },
-    {
-      "type": "boss",
-      "place": "EARTH PROXIMA",
-      "sub": "Technocyte Coda Concert",
-      "activity": "Railjack Skirmish; finish the Coda",
-      "meta": "choose Vanquish",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Live Heartcell",
-          "note": "10-15 per Vanquish; Convert pays none",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Phases 1 and 3 are hazard-dodging with Transference disabled; phases 2 and 4 are the real fight, and the frontman regenerates until his backup band is dead.",
-        "Bring overguard or invulnerability (Revenant's Mesmer Skin, Nyx's Assimilate, Dante) — the Coda's Toxin bypasses shield gating."
-      ],
-      "bonuses": [
-        "Squadmates who each defeat their own Coda in the same Concert add +1 Heartcell, up to +3, whether they vanquish or convert."
-      ],
-      "disclosures": []
     },
     {
       "type": "vendor",
@@ -227,7 +201,7 @@
       ],
       "conditions": [
         "Fusion takes the higher of the two bonuses × 1.1, capped at 60%.",
-        "Fuse into the copy holding your Forma and Catalyst; the donor's investments — including Elemental Vice — are destroyed.",
+        "Fuse into the copy holding your Forma and Catalyst; the donor's investments, including Elemental Vice, are destroyed.",
         "Elemental Vice needs the weapon at rank 40 (5 Forma): 50,000 Hex standing at Rank 5, or 20 platinum, or a Temporal Archimedea/Nightwave drop."
       ],
       "bonuses": [],

@@ -12,6 +12,14 @@
     { "label": "build", "amount": "30,000 cr", "money": false },
     { "label": "Ducats needed", "amount": "1,000", "money": false }
   ],
+  "materials": [
+    { "qty": "750", "label": "Salvage", "note": "Galatine" },
+    { "qty": "500", "label": "Rubedo", "note": "Galatine" },
+    { "qty": "200", "label": "Alloy Plate", "note": "Galatine" },
+    { "qty": "4", "label": "Gallium", "note": "Galatine" },
+    { "qty": "15", "label": "Orokin Cell", "note": "Paracesis" },
+    { "qty": "5", "label": "Eidolon Shard", "note": null }
+  ],
   "groups": [
     {
       "type": "gate",
@@ -76,59 +84,12 @@
           "done": false
         }
       ],
-      "conditions": [
-        "Baro's Ducat kiosk is always available in relays; it is not gated by his two-week visit schedule.",
-        "Capture fissures crack relics fastest, with Void Cascade named as the actual fastest with a competent squad. Avoid Excavation fissures — teammates dropping power cells before anyone has reactant is the near-universal complaint."
-      ],
+      "conditions": [],
       "bonuses": [
         "The Ducanator on warframe.market ranks Prime parts by Ducat-per-platinum. Many 45-Ducat parts sell for 1-2 plat, so buying junk parts outright can be faster than farming them."
       ],
-      "disclosures": [
-        {
-          "title": "don't buy Ducats with Aya",
-          "body": "Prime Resurgence converts Aya to Ducats at 5:1, called an ungodly rate by the community. Crack relics instead."
-        }
-      ]
-    },
-    {
-      "type": "farm",
-      "place": "PLAINS OF EIDOLON, EARTH",
-      "sub": null,
-      "activity": "kill or capture Eidolon Teralysts at night",
-      "meta": "50-minute night window",
-      "mode": "solo or premade",
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": "plains-of-eidolon",
-      "rows": [
-        {
-          "qty": "5",
-          "label": "Eidolon Shard",
-          "note": "Teralyst 1, Gantulyst 3, Hydrolyst 5 — kill or capture, drop is identical",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Requires The War Within and an Amp from The Quills. The first two Amp ranks need only Vomvalysts zapped and Sentient Cores handed in, no Eidolon kill required.",
-        "You only need one charged Eidolon Lure — three Vomvalysts charge it, and a charged lure stops the Teralyst teleporting away between Synovia kills."
-      ],
-      "bonuses": [
-        "Skip Gantulyst and Hydrolyst entirely if you only want shards: about seven solo Teralyst resets in one night cycle covers the requirement.",
-        "A Sirocco amp with Madurai focus is a serviceable solo option now; Volt is no longer required, just bring a frame that can heal the lures."
-      ],
-      "disclosures": [
-        {
-          "title": "the real wall is the amp",
-          "body": "A Mote Amp with no focus investment is a genuine wall — expect to drain the Teralyst's shields repeatedly while Vomvalysts refresh them until sunrise. Kill Vomvalysts into your lures, not just for their own sake."
-        },
-        {
-          "title": "solo beats public",
-          "body": "Eidolon hunting in public matchmaking is the buggiest mode in the game by community consensus — host migration routinely breaks Teralyst spawns and lure state."
-        }
-      ]
+      "disclosures": [],
+      "ref": "Orokin Ducats"
     },
     {
       "type": "foundry",
@@ -159,7 +120,7 @@
         }
       ],
       "conditions": [
-        "Galatine must be a finished weapon sitting in your inventory — Forma, Orokin Catalyst, Exilus adapter and Focus lens do not carry over. Install nothing on it, and rank it to 30 first if you want its mastery."
+        "Galatine must be a finished weapon sitting in your inventory: Forma, Orokin Catalyst, Exilus adapter and Focus lens do not carry over. Install nothing on it, and rank it to 30 first if you want its mastery."
       ],
       "bonuses": [
         "Rank 40 (5 Forma) adds Sentient bonus damage up to +60% plus Void damage and resistance-strip properties, worth 4,000 extra mastery on top of the normal 6,000."

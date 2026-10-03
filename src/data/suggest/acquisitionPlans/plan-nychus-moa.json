@@ -12,6 +12,28 @@
     { "label": "rank-ups to Doer", "amount": "85,000 cr", "money": false },
     { "label": "four part builds", "amount": "200,000 cr", "money": false }
   ],
+  "materials": [
+    { "qty": "1,400", "label": "Plastids", "note": "1,000 Trux Gyro, 400 Travocyte Alloy refines" },
+    { "qty": "2", "label": "Morphics", "note": "Nychus Model" },
+    { "qty": "500", "label": "Rubedo", "note": "300 Venerdo Alloy, 200 Axidrol Alloy refines" },
+    { "qty": "2", "label": "Gallium", "note": "Venerdo Alloy" },
+    { "qty": "2,000", "label": "Salvage", "note": "Travocyte Alloy refines" },
+    { "qty": "1,000", "label": "Ferrite", "note": "Axidrol Alloy refines" },
+    { "qty": "16", "label": "Training Debt-Bond", "note": null },
+    { "qty": "6", "label": "Shelter Debt-Bond", "note": null },
+    { "qty": "4", "label": "Medical Debt-Bond", "note": null },
+    { "qty": "65", "label": "Travocyte Alloy", "note": "Core 25, Bracket 40" },
+    { "qty": "35", "label": "Smooth Phasmin", "note": "Core 15, Bracket 20" },
+    { "qty": "25", "label": "Axidrol Alloy", "note": "Core" },
+    { "qty": "20", "label": "Venerdo Alloy", "note": "Model" },
+    { "qty": "10", "label": "Goblite Tears", "note": "Model" },
+    { "qty": "5", "label": "Heart Noctrul", "note": "Gyro" },
+    { "qty": "20", "label": "Gorgaricus Spore", "note": "Model" },
+    { "qty": "20", "label": "Thermal Sludge", "note": "Gyro" },
+    { "qty": "15", "label": "Tepa Nodule", "note": "Bracket" },
+    { "qty": "25", "label": "Echowinder Anoscopic Sensor", "note": "Gyro 10, Bracket 15" },
+    { "qty": "10", "label": "Brickie Muon Battery", "note": "Core" }
+  ],
   "groups": [
     {
       "type": "gate",
@@ -56,7 +78,7 @@
       "mode": "solo",
       "live": null,
       "skip": null,
-      "earns": { "currency": "Solaris United standing", "amount": "80,500" },
+      "earns": { "currency": "Solaris United Standing", "amount": "80,500" },
       "spends": [],
       "map": "orb-vallis",
       "rows": [
@@ -76,64 +98,10 @@
         },
         { "qty": "5,000", "label": "gild", "note": null, "alt": null, "done": false }
       ],
-      "conditions": [
-        "The daily cap is 16,000 plus 500 per Mastery Rank.",
-        "Before Doer the lures are low-value; bounties plus gem turn-ins to Smokefinger are the practical standing path."
-      ],
-      "bonuses": [
-        "Half an hour of mining with the Sunpoint Plasma Drill and a Resourceful Retriever beast covers several days of cap, and mines the Goblite and Venerol for the Model."
-      ],
-      "disclosures": [
-        {
-          "title": "Conservation later",
-          "body": "Equinox or Ivara sleep gives near-guaranteed perfect captures. Bolarola unlocks at Doer and the Kubrodon lure only at Old Mate, so Conservation gets fast only after this plan's gate is cleared."
-        }
-      ]
-    },
-    {
-      "type": "bounty",
-      "place": "ORB VALLIS, VENUS",
-      "sub": null,
-      "activity": "Eudico bounties, full runs",
-      "meta": "each bond has its own tier",
-      "mode": "solo",
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": "orb-vallis",
-      "rows": [
-        {
-          "qty": "16",
-          "label": "Training Debt-Bond",
-          "note": "tier 1; 6 for rank-ups, 10 for the gild",
-          "alt": "or Ticker's cases",
-          "done": false
-        },
-        {
-          "qty": "6",
-          "label": "Shelter Debt-Bond",
-          "note": "tier 2",
-          "alt": "or Ticker's cases",
-          "done": false
-        },
-        {
-          "qty": "4",
-          "label": "Medical Debt-Bond",
-          "note": "tier 3",
-          "alt": "or Ticker's cases",
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Stage 1 has a 0% bond chance since Update 36; the old stage-1 reset trick gives nothing.",
-        "Middle stages drop bonds at 20% and the final stage at 33-46%, two per drop; bonus objectives roll on the final-stage table."
-      ],
-      "bonuses": [
-        "Ticker always stocks at least 3 common cases, 1 uncommon and 1 rare; several people said it saved hours, especially on Medical.",
-        "Solo vault objectives move 20% per case against 6% in a squad."
-      ],
-      "disclosures": []
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": [],
+      "ref": "Solaris United Standing"
     },
     {
       "type": "vendor",
@@ -145,7 +113,7 @@
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Solaris United standing", "amount": "71,000" }],
+      "spends": [{ "currency": "Solaris United Standing", "amount": "71,000" }],
       "map": "orb-vallis",
       "rows": [
         {
@@ -186,7 +154,7 @@
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Solaris United standing", "amount": "4,500" }],
+      "spends": [{ "currency": "Solaris United Standing", "amount": "4,500" }],
       "map": "orb-vallis",
       "rows": [
         {
@@ -220,126 +188,6 @@
       ],
       "conditions": ["Only the Model earns Mastery; Core, Gyro and Bracket are stats and looks."],
       "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "ORB VALLIS, VENUS",
-      "sub": "Deck 12 caves",
-      "activity": "mining, sacs, sludge and nodules; refine at Smokefinger",
-      "meta": "refines take 1 minute",
-      "mode": "solo, normal",
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": "orb-vallis",
-      "rows": [
-        {
-          "qty": "65",
-          "label": "Travocyte Alloy",
-          "note": "Core 25, Bracket 40",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "35",
-          "label": "Smooth Phasmin",
-          "note": "Core 15, Bracket 20",
-          "alt": null,
-          "done": false
-        },
-        { "qty": "25", "label": "Axidrol Alloy", "note": "Core", "alt": null, "done": false },
-        {
-          "qty": "20",
-          "label": "Venerdo Alloy",
-          "note": "Model; 20 Venerol, 300 Rubedo, 2 Gallium per 20",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "10",
-          "label": "Goblite Tears",
-          "note": "Model; refined from Goblite",
-          "alt": null,
-          "done": false
-        },
-        { "qty": "5", "label": "Heart Noctrul", "note": "Gyro", "alt": null, "done": false },
-        {
-          "qty": "20",
-          "label": "Gorgaricus Spore",
-          "note": "Model; purple sacs under the mushroom caps",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "20",
-          "label": "Thermal Sludge",
-          "note": "Gyro; Corpus encampment containers",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "15",
-          "label": "Tepa Nodule",
-          "note": "Bracket; cave nodule clusters",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Each refined alloy and gem needs its reusable Smokefinger blueprint; Goblite Tears and Venerdo Alloy are 2,000 standing each at Outworlder.",
-        "Gorgaricus sacs often fail to drop in a squad, so run this solo."
-      ],
-      "bonuses": [
-        "Spare raw gems handed to Smokefinger pay back into the standing this plan spends."
-      ],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "ORB VALLIS, VENUS",
-      "sub": null,
-      "activity": "fishing, cut by The Business",
-      "meta": "warm cycle",
-      "mode": null,
-      "live": { "state": "waiting", "text": "both servofish are Warm only" },
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": "orb-vallis",
-      "rows": [
-        {
-          "qty": "25",
-          "label": "Echowinder Anoscopic Sensor",
-          "note": "Gyro 10, Bracket 15",
-          "alt": null,
-          "done": false
-        },
-        { "qty": "10", "label": "Brickie Muon Battery", "note": "Core", "alt": null, "done": false }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "ZEUGMA, PHOBOS",
-      "sub": null,
-      "activity": "Survival, Dark Sector",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        { "qty": "1,000", "label": "Plastids", "note": "Gyro", "alt": null, "done": false },
-        { "qty": "2", "label": "Morphics", "note": "Model", "alt": null, "done": false }
-      ],
-      "conditions": [],
-      "bonuses": ["Phobos carries both, and the Dark Sector bonus applies to each."],
       "disclosures": []
     },
     {
@@ -398,7 +246,7 @@
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Solaris United standing", "amount": "5,000" }],
+      "spends": [{ "currency": "Solaris United Standing", "amount": "5,000" }],
       "map": "orb-vallis",
       "rows": [
         {

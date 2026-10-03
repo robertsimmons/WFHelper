@@ -9,6 +9,20 @@
     { "text": "Circuit alt", "tone": "circuit" }
   ],
   "prices": [{ "label": "build", "amount": "70,000 cr", "money": false }],
+  "materials": [
+    { "qty": "5,000", "label": "Nano Spores", "note": "Neuroptics" },
+    { "qty": "2,200", "label": "Alloy Plate", "note": "Chassis" },
+    { "qty": "2,400", "label": "Polymer Bundle", "note": "Systems" },
+    { "qty": "2", "label": "Vega Toroid", "note": null },
+    { "qty": "2", "label": "Calda Toroid", "note": null },
+    { "qty": "2", "label": "Sola Toroid", "note": null },
+    { "qty": "6", "label": "Star Amarast", "note": null },
+    { "qty": "3", "label": "Radiant Zodian", "note": null },
+    { "qty": "3", "label": "Marquise Thyst", "note": null },
+    { "qty": "40", "label": "Axidrol Alloy", "note": null },
+    { "qty": "40", "label": "Travocyte Alloy", "note": null },
+    { "qty": "40", "label": "Venerdo Alloy", "note": null }
+  ],
   "groups": [
     {
       "type": "gate",
@@ -32,7 +46,7 @@
         }
       ],
       "conditions": [
-        "The main blueprint isn't the quest's on-screen reward — it's sent by Eudico's crew after the fact.",
+        "The main blueprint isn't the quest's on-screen reward; it's sent by Eudico's crew after the fact.",
         "A lost blueprint costs 50,000 Cephalon Simaris standing to replace."
       ],
       "bonuses": [],
@@ -47,7 +61,7 @@
       "mode": "solo",
       "live": null,
       "skip": null,
-      "earns": { "currency": "Solaris United standing", "amount": "169,000" },
+      "earns": { "currency": "Solaris United Standing", "amount": "169,000" },
       "spends": [],
       "map": "orb-vallis",
       "rows": [
@@ -102,19 +116,18 @@
         }
       ],
       "conditions": [
-        "Start this immediately — it's the actual bottleneck, not the bounty blueprints below.",
+        "Start this immediately; it's the actual bottleneck, not the bounty blueprints below.",
         "Also buy the Sunpoint Plasma Drill (2,500 standing, no rank) or bring an Advanced Nosam Cutter; nothing mines the rare gems without one.",
-        "Marquise Thyst is Rank 4 only — players often farm all three part blueprints on day one, then discover Systems needs several more days of standing."
+        "Marquise Thyst is Rank 4 only; players often farm all three part blueprints on day one, then discover Systems needs several more days of standing."
       ],
-      "bonuses": [
-        "Conservation with a Kubrodon lure and pheromones, or cave mining, is faster standing than regular bounties; hand raw gems and Debt-Bonds to Smokefinger and Ticker too."
-      ],
+      "bonuses": [],
       "disclosures": [
         {
           "title": "the rank-up cost was cut",
           "body": "Debt-Bond sacrifices for Solaris rank-ups were rebalanced down; Rank 4 (Cove) now asks 5 Advance, 4 Medical and 3 Shelter Debt-Bonds, with earlier ranks needing fewer."
         }
-      ]
+      ],
+      "ref": "Solaris United Standing"
     },
     {
       "type": "bounty",
@@ -152,7 +165,7 @@
         }
       ],
       "conditions": [
-        "All three rotations (A, B, C) can drop every part — no need to wait for a specific rotation.",
+        "All three rotations (A, B, C) can drop every part; no need to wait for a specific rotation.",
         "The Lvl 20-40 bounty is the hardest tier needed; nothing harder unlocks a better chance."
       ],
       "bonuses": [],
@@ -160,82 +173,6 @@
         {
           "title": "stage math varies by source",
           "body": "Community threads report higher final-stage odds (up to 27.6% for Chassis) with a lower chance on earlier stages; current wiki data lists flat per-mission odds instead. Either way the part can drop on any completed stage."
-        }
-      ]
-    },
-    {
-      "type": "farm",
-      "place": "ORB VALLIS, VENUS",
-      "sub": "Spaceport, Enrichment Labs, Temple of Profit",
-      "activity": "farm bases for Toroids; mine and gather the rest",
-      "meta": "Steel Path plus boosters recommended",
-      "mode": "solo, rotate bases",
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": "orb-vallis",
-      "rows": [
-        {
-          "qty": "2",
-          "label": "Vega Toroid",
-          "note": "Spaceport enemies, Mite Raknoids",
-          "alt": "tradeable",
-          "done": false
-        },
-        {
-          "qty": "2",
-          "label": "Calda Toroid",
-          "note": "Enrichment Labs enemies, Scyto Raknoids",
-          "alt": "tradeable",
-          "done": false
-        },
-        {
-          "qty": "2",
-          "label": "Sola Toroid",
-          "note": "Temple of Profit enemies, Kyta Raknoids",
-          "alt": "tradeable",
-          "done": false
-        },
-        {
-          "qty": "6",
-          "label": "Star Amarast",
-          "note": "raw gem, blue veins near Temple of Profit",
-          "alt": "tradeable",
-          "done": false
-        },
-        {
-          "qty": "3",
-          "label": "Radiant Zodian",
-          "note": "raw gem",
-          "alt": "tradeable",
-          "done": false
-        },
-        {
-          "qty": "3",
-          "label": "Marquise Thyst",
-          "note": "raw gem",
-          "alt": "tradeable",
-          "done": false
-        },
-        { "qty": "5,000", "label": "Nano Spores", "note": "Chassis", "alt": null, "done": false },
-        { "qty": "2,200", "label": "Alloy Plate", "note": "Chassis", "alt": null, "done": false },
-        { "qty": "2,400", "label": "Polymer Bundle", "note": "Systems", "alt": null, "done": false }
-      ],
-      "conditions": [
-        "Each base drops only its own colour: Vega at the Spaceport, Calda at the Enrichment Labs, Sola at the Temple of Profit — regular enemies run about 2% base chance, boosted by drop-chance modifiers.",
-        "Rotate outside, then underground, then to the next base instead of waiting on max alert level; a cleared base respawns while you're elsewhere."
-      ],
-      "bonuses": [
-        "Stack a Resource Drop Chance Booster, a relay Drop Chance Blessing, a Resource Booster and Resourceful Retriever — all apply to Toroid drops.",
-        "Once Rank 5 Solaris United and Profit-Taker are available, holding Phase 2 open keeps spawning Corpus dropships for Calda farming.",
-        "17 cave-interactable spots around the Vallis give common Toroids as a safe, low-yield top-up.",
-        "A loot frame (Nekros, Khora or Hydroid) with a high-Slash melee gibs bodies into more rolls."
-      ],
-      "disclosures": [
-        {
-          "title": "Toroids can vanish on long runs",
-          "body": "An unconfirmed bug thread reports hour-long hauls not being kept. Extract or finish cleanly rather than aborting, and check your inventory after long sessions."
         }
       ]
     },
@@ -264,7 +201,8 @@
         "The War Within must be finished first to unlock Kuva Siphons and Floods; without it, all three parts can be built with the main blueprint still stuck."
       ],
       "bonuses": [],
-      "disclosures": []
+      "disclosures": [],
+      "ref": "Kuva"
     },
     {
       "type": "foundry",

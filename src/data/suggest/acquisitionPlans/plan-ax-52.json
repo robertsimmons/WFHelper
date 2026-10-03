@@ -12,6 +12,15 @@
     { "label": "rank-ups + blueprint", "amount": "171,000 standing", "money": false },
     { "label": "build", "amount": "25,000 cr", "money": false }
   ],
+  "materials": [
+    { "qty": "115", "label": "Efervon Sample", "note": "rank-ups + build" },
+    { "qty": "100", "label": "Hollvanian Pitchweave Fragment", "note": "rank-ups + build" },
+    { "qty": "5", "label": "Experimental Arc-Relay", "note": "Rank 2" },
+    { "qty": "50", "label": "Techrot Chitin", "note": "Rank 4 + build" },
+    { "qty": "25", "label": "Necracoil", "note": "Rank 4" },
+    { "qty": "5", "label": "Techrot Motherboard", "note": "build" },
+    { "qty": "185,000", "label": "Credits", "note": null }
+  ],
   "groups": [
     {
       "type": "gate",
@@ -57,7 +66,7 @@
       "mode": "solo or group",
       "live": null,
       "skip": null,
-      "earns": { "currency": "The Hex standing", "amount": "171,000" },
+      "earns": { "currency": "The Hex Standing", "amount": "171,000" },
       "spends": [{ "currency": "Höllars", "amount": "185,000" }],
       "map": null,
       "rows": [
@@ -95,7 +104,6 @@
         "Chemistry ranks are gated by syndicate rank too: Friendly unlocks at Rank 2, Liked at Rank 3, so Liked cannot be pre-farmed early."
       ],
       "bonuses": [
-        "All six Hex bounties in Steel Path push standing and chemistry at once; several players nearly filled the daily cap this way alone.",
         "Hex Treasures don't count against the cap until turned in to Leticia, so bank them on days you don't play, and keep one of each 750-standing type for the Rank 3 sacrifice."
       ],
       "disclosures": [
@@ -103,7 +111,8 @@
           "title": "where the pain actually is",
           "body": "There is no RNG here. The wall is the daily standing cap (about 21,000 at MR10) against 171,000 total needed for the rank-ups plus the blueprint, so roughly 8+ capped days at minimum. Höllvania is widely called the least grindy syndicate; most players report maxing it in a week or two."
         }
-      ]
+      ],
+      "ref": "The Hex Standing"
     },
     {
       "type": "vendor",
@@ -115,7 +124,7 @@
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "The Hex standing", "amount": "30,000" }],
+      "spends": [{ "currency": "The Hex Standing", "amount": "30,000" }],
       "map": null,
       "rows": [
         {
@@ -128,64 +137,6 @@
       ],
       "conditions": [],
       "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "HOLLVANIA",
-      "sub": null,
-      "activity": "enemy drops, loot containers and Stockpiles",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "115",
-          "label": "Efervon Sample",
-          "note": "rank-ups + build",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "100",
-          "label": "Hollvanian Pitchweave Fragment",
-          "note": "rank-ups + build",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "5",
-          "label": "Experimental Arc-Relay",
-          "note": "Rank 2; Rhu Manor or Mausoleum East Exterminate",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "50",
-          "label": "Techrot Chitin",
-          "note": "Rank 4 + build",
-          "alt": null,
-          "done": false
-        },
-        { "qty": "25", "label": "Necracoil", "note": "Rank 4", "alt": null, "done": false },
-        {
-          "qty": "5",
-          "label": "Techrot Motherboard",
-          "note": "build; underground Techrot areas only",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Techrot Motherboard only comes from the underground Techrot sections, at a lower rate than the other resources."
-      ],
-      "bonuses": [
-        "All of these keep dropping while running the daily Hex bounties above; this is a top-up, not a separate trip."
-      ],
       "disclosures": []
     },
     {

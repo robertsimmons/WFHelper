@@ -30,6 +30,25 @@
       "money": false
     }
   ],
+  "materials": [
+    {
+      "qty": "4,500",
+      "label": "Nano Spores",
+      "note": "per Incubator Power Core"
+    },
+    {
+      "qty": "2",
+      "label": "Control Module",
+      "note": "per Incubator Power Core"
+    },
+    {
+      "qty": "1",
+      "label": "Argon Crystal",
+      "note": "per Incubator Power Core"
+    },
+    { "qty": "2", "label": "Kubrow Egg", "note": null },
+    { "qty": "2", "label": "Incubator Power Core", "note": null }
+  ],
   "groups": [
     {
       "type": "gate",
@@ -64,34 +83,6 @@
       "disclosures": []
     },
     {
-      "type": "farm",
-      "place": "MANTLE, EARTH",
-      "sub": null,
-      "activity": "Capture; break every Kubrow Den on Grineer Forest tiles",
-      "meta": "usually 2-4 dens a map, about 4-5 runs per egg",
-      "mode": "solo, fast frame",
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "1",
-          "label": "Kubrow Egg",
-          "note": "one per incubation attempt",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": ["Break every den, then abort if no egg dropped."],
-      "bonuses": [
-        "Eggs stack with no cap, so farm several in one sitting.",
-        "A max-range Xaku casting The Vast Untime breaks dens you can't see."
-      ],
-      "disclosures": []
-    },
-    {
       "type": "foundry",
       "place": "FOUNDRY",
       "sub": null,
@@ -105,16 +96,15 @@
       "map": null,
       "rows": [
         {
-          "qty": "1",
-          "label": "Incubator Power Core",
-          "note": "4,500 Nano Spores, 2 Control Modules, 1 Argon Crystal",
-          "alt": "first core is free from the Mercury Junction",
+          "qty": null,
+          "label": "Raksa Kubrow",
+          "note": "1 Incubator Power Core",
+          "alt": null,
           "done": false
         }
       ],
       "conditions": [
-        "The blueprint is a reusable 50,000 cr Market purchase; every incubation consumes a core.",
-        "Argon Crystal decays, so build right after farming it."
+        "The blueprint is a reusable 50,000 cr Market purchase; every incubation consumes a core."
       ],
       "bonuses": ["Build several cores ahead; Nano Spores are the real cost of rerolling."],
       "disclosures": []
@@ -132,20 +122,6 @@
       "spends": [],
       "map": null,
       "rows": [
-        {
-          "qty": "1",
-          "label": "Kubrow Egg",
-          "note": "consumed per attempt",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "1",
-          "label": "Incubator Power Core",
-          "note": "consumed per attempt",
-          "alt": null,
-          "done": false
-        },
         {
           "qty": null,
           "label": "Raksa Kubrow",

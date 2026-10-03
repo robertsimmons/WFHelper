@@ -4,67 +4,25 @@
   "effort": 2,
   "tradeable": false,
   "progress": { "have": 0, "need": 4, "unit": "parts" },
-  "badges": [
-    { "text": "Tenno Lab", "tone": "warn" },
-    { "text": "solo-clan friendly", "tone": "info" }
-  ],
+  "badges": [{ "text": "Tenno Lab", "tone": "warn" }],
   "prices": [
     { "label": "blueprint", "amount": "35,000 cr", "money": false },
     { "label": "built", "amount": "225 p", "money": false }
   ],
+  "materials": [
+    { "qty": "2", "label": "Argon Crystal", "note": "1 for Neuroptics, 1 for Chassis" },
+    { "qty": "1", "label": "Neural Sensors", "note": null },
+    { "qty": "2,100", "label": "Polymer Bundle", "note": null },
+    { "qty": "4,500", "label": "Salvage", "note": null },
+    { "qty": "3", "label": "Morphics", "note": null },
+    { "qty": "8,200", "label": "Ferrite", "note": null },
+    { "qty": "600", "label": "Rubedo", "note": null },
+    { "qty": "1", "label": "Control Module", "note": null },
+    { "qty": "4,200", "label": "Plastids", "note": null },
+    { "qty": "1", "label": "Orokin Cell", "note": null },
+    { "qty": "80,000", "label": "Credits", "note": null }
+  ],
   "groups": [
-    {
-      "type": "research",
-      "place": "CLAN DOJO, TENNO LAB",
-      "sub": null,
-      "activity": "research Nezha, then the three parts, unless your clan already has them",
-      "meta": "72h each; parts only unlock after the main research finishes",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Nezha (main)",
-          "note": "5,000 cr, 1 Mutagen Mass, 1 Detonite Injector, 1 Fieldron, 1 Orokin Cell",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Chassis",
-          "note": "10,000 cr, 1 Mutagen Mass, 1 Neural Sensors, 1,000 Alloy Plate, 500 Circuits",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Neuroptics",
-          "note": "10,000 cr, 1 Detonite Injector, 1 Neurodes, 1,000 Nano Spores, 500 Salvage",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Systems",
-          "note": "10,000 cr, 1 Fieldron, 1 Gallium, 1,000 Salvage, 500 Cryotic",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "The three part researches only unlock once the main Nezha research completes, so the minimum is 6 days before parts even start.",
-        "Costs shown are Ghost-clan (x1); Shadow x3, Storm x10, Mountain x30 and Moon x100 multiply every resource.",
-        "Never build a Barracks in a solo clan; it raises the tier and multiplies every research cost. Clan rank is separate and free."
-      ],
-      "bonuses": [
-        "Joining an established clan that already researched him and simply buying the blueprints is the near-unanimous shortcut."
-      ],
-      "disclosures": []
-    },
     {
       "type": "vendor",
       "place": "CLAN DOJO, TENNO LAB",
@@ -95,74 +53,6 @@
       ],
       "conditions": [
         "Blueprints can only be bought from your own clan's Dojo; visiting another clan's Dojo does not let you buy from their labs."
-      ],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "INVASIONS",
-      "sub": null,
-      "activity": "run Invasion missions for their reward tracks",
-      "meta": "2 of each needed for research",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "2",
-          "label": "Mutagen Mass",
-          "note": "Invasion rewards pay 1-2 directly",
-          "alt": "or 10 Mutagen Samples + a researched Bio Lab blueprint",
-          "done": false
-        },
-        {
-          "qty": "2",
-          "label": "Detonite Injector",
-          "note": "Invasion rewards pay 3 at once",
-          "alt": "or Detonite Ampules + a researched Chem Lab blueprint",
-          "done": false
-        },
-        {
-          "qty": "2",
-          "label": "Fieldron",
-          "note": "Invasion rewards pay 3 at once",
-          "alt": "or Fieldron Samples + a researched Energy Lab blueprint",
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Invasions skip needing the Bio, Chem or Energy Lab sub-blueprints and their sample farms entirely."
-      ],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "THE VOID",
-      "sub": null,
-      "activity": "Capture",
-      "meta": "farm last, right before building Neuroptics and Chassis",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "2",
-          "label": "Argon Crystal",
-          "note": "1 for Neuroptics, 1 for Chassis",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Argon loses part of its stack at daily reset; farm it right before crafting."
       ],
       "bonuses": [],
       "disclosures": []

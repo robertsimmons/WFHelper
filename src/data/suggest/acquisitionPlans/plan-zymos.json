@@ -12,6 +12,17 @@
     { "label": "blueprints + refining", "amount": "13,000 Entrati standing", "money": false },
     { "label": "built", "amount": "190 p", "money": false }
   ],
+  "materials": [
+    { "qty": "4", "label": "Neurodes", "note": "Barrel" },
+    { "qty": "5", "label": "Morphics", "note": "Receiver" },
+    { "qty": "1,600", "label": "Nano Spores", "note": "Tempered Bapholite refine" },
+    { "qty": "600", "label": "Plastids", "note": "Adramal Alloy refine" },
+    { "qty": "20", "label": "Tempered Bapholite", "note": null },
+    { "qty": "20", "label": "Adramal Alloy", "note": null },
+    { "qty": "10", "label": "Purified Heciphron", "note": null },
+    { "qty": "8", "label": "Dendrite Blastoma", "note": null },
+    { "qty": "8", "label": "Pustulent Cognitive Nodule", "note": null }
+  ],
   "groups": [
     {
       "type": "gate",
@@ -84,20 +95,16 @@
         }
       ],
       "conditions": [
-        "Rank 0 can hold only 5,000 standing. Turn in exactly enough to rank up; bank Tokens rather than cashing them past the cap.",
-        "Use highest-tier Mother bounties for the standing engine. Convert Family Tokens to Grandmother Tokens before redeeming them for 1.5x standing.",
         "The Stranger sacrifice is 6 Benign Infested Tumors and 6 Ferment Bladders, obtained by filleting Deimos fish at Daughter."
       ],
-      "bonuses": [
-        "Stockpiled Tokens survive the daily cap, so keep running bounties after capping if you want tomorrow's standing ready.",
-        "Claiming Zymos as the Rank 1 reward saves 2,000 standing."
-      ],
+      "bonuses": ["Claiming Zymos as the Rank 1 reward saves 2,000 standing."],
       "disclosures": [
         {
           "title": "the short calendar gate",
           "body": "At Rank 0, the 5,000 standing cap forces the rank-up onto one day and the purchases onto the next. At ordinary MR, the remaining 6,000 to 8,000 standing fits comfortably in that second session."
         }
-      ]
+      ],
+      "ref": "Entrati Standing"
     },
     {
       "type": "vendor",
@@ -161,71 +168,6 @@
       ],
       "bonuses": [],
       "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "CAMBION DRIFT, DEIMOS",
-      "sub": "Isolation Vault Requiem Obelisks",
-      "activity": "activate obelisks; kill affected enemies with Operator or Necramech",
-      "meta": "materials plus fish parts",
-      "mode": "solo or coordinated squad",
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": "cambion-drift",
-      "rows": [
-        {
-          "qty": "20",
-          "label": "Tempered Bapholite",
-          "note": "refine 20 Bapholite + 20 Pyrol",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "20",
-          "label": "Adramal Alloy",
-          "note": "refine 20 Adramalium + 20 Travoride",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "10",
-          "label": "Purified Heciphron",
-          "note": "refine 10 Heciphron",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "8",
-          "label": "Dendrite Blastoma",
-          "note": "Barbisteo or Vitreospina fish",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "8",
-          "label": "Pustulent Cognitive Nodule",
-          "note": "Cryptosuctus; surface during Fass",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Obelisks are more efficient than dedicated mining and fishing for most Deimos materials. In a vault, run them before activating the Reactive Crystal for continuous enemy spawns.",
-        "An obelisk pays only when an affected enemy dies to your Operator, Necramech, or Umbra specter while you are in Operator mode; ordinary Warframe kills do not count.",
-        "Each fish yields exactly one special part regardless of size. Fish Barbisteo in caves for Dendrite Blastoma; wait for Fass to catch Cryptosuctus for Pustulent Cognitive Nodules."
-      ],
-      "bonuses": [
-        "The same fishing trip supplies the Benign Infested Tumors and Ferment Bladders for Stranger.",
-        "Grouping abilities increase obelisk throughput by keeping more enemies inside the effect radius."
-      ],
-      "disclosures": [
-        {
-          "title": "make obelisks actually pay",
-          "body": "Use low-damage Operator or Necramech attacks to avoid draining an obelisk too quickly; its health depletes with activations and it becomes inert at zero. A basic Mote Amp is sufficient."
-        }
-      ]
     },
     {
       "type": "foundry",

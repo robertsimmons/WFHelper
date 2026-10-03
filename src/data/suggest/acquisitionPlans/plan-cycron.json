@@ -4,250 +4,36 @@
   "effort": 2,
   "tradeable": false,
   "progress": { "have": 0, "need": 1, "unit": "blueprint" },
-  "badges": [
-    { "text": "Energy Lab", "tone": "info" },
-    { "text": "5 research steps", "tone": "warn" }
-  ],
+  "badges": [{ "text": "Energy Lab", "tone": "info" }],
   "prices": [
     { "label": "blueprint", "amount": "15,000 cr", "money": false },
     { "label": "build", "amount": "25,000 cr", "money": false }
   ],
+  "materials": [
+    { "qty": "4", "label": "Fieldron", "note": null },
+    { "qty": "9,000", "label": "Ferrite", "note": null },
+    { "qty": "1,500", "label": "Circuits", "note": null },
+    { "qty": "1", "label": "Forma", "note": null },
+    { "qty": "15,000", "label": "Credits", "note": null }
+  ],
   "groups": [
     {
-      "type": "gate",
-      "place": "DOJO, ENERGY LAB",
+      "type": "vendor",
+      "place": "CLAN DOJO, ENERGY LAB",
       "sub": null,
-      "activity": "clan research, strictly in order",
-      "meta": "72h each, 15 days of timers; start first",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Fieldron",
-          "note": "5 Fieldron Sample, 100 Rubedo, 500 Nano Spores, 200 Polymer Bundle, 5,000 cr",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Prova",
-          "note": "5 Fieldron Sample, 100 Rubedo, 500 Nano Spores, 200 Polymer Bundle, 5,000 cr; research only",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Dera",
-          "note": "5 Fieldron Sample, 200 Circuits, 500 Nano Spores, 250 Polymer Bundle, 7,500 cr; research only",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Spectra",
-          "note": "7 Fieldron Sample, 350 Circuits, 750 Nano Spores, 350 Polymer Bundle, 7,500 cr; research only",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Cycron",
-          "note": "90 Fieldron Sample, 500 Circuits, 15 Gallium, 15,000 Nano Spores, 7,500 cr",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Needs an Oracle and an Energy Lab in the dojo. Costs shown are the Ghost tier; Shadow is x3, Storm x10, Mountain x30, Moon x100, so keep a solo clan small.",
-        "Research cannot be rushed with platinum. If your clan already finished it, skip this."
-      ],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "research",
-      "place": "DOJO, ENERGY LAB",
-      "sub": null,
-      "activity": "buy both blueprints",
-      "meta": "30,000 cr",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [{ "currency": "Credits", "amount": "30,000" }],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Fieldron Blueprint",
-          "note": "15,000 cr; only if you craft Fieldron",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Cycron Blueprint",
-          "note": "15,000 cr",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "WAHIBA, MARS",
-      "sub": "or Kelashin, Neptune; Kadesh, Mars",
-      "activity": "Corpus Dark Sector Survival, Steel Path",
-      "meta": "112 samples for research",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "112",
-          "label": "Fieldron Sample",
-          "note": "research; 152 if you craft all 4 Fieldron",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": ["Fieldron Samples are the bottleneck and cannot be bought."],
-      "bonuses": [
-        "Nekros for Defense and Khora for Survival; Hydroid after that. Stack a Resource Booster, Drop Chance Booster, relay blessing and Resourceful Retriever."
-      ],
-      "disclosures": [
-        {
-          "title": "reported yields",
-          "body": "Nekros with Khora produced about 200 samples in a 20 minute Wahiba Survival. A solo Khora on Steel Path Dark Sectors got roughly 100-150 in about 40 minutes."
-        }
-      ]
-    },
-    {
-      "type": "farm",
-      "place": "AKKAD, ERIS",
-      "sub": "or Piscinas, Saturn; Terrorem or Hyf, Deimos",
-      "activity": "Defense",
-      "meta": "drops come in 150-200s",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "17,250",
-          "label": "Nano Spores",
-          "note": "research; 15,000 needed banked for the last step",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "DESDEMONA, URANUS",
-      "sub": "or Gradivus, Ara, Hellas on Mars",
-      "activity": "Sabotage",
+      "activity": "buy the blueprint",
       "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [],
+      "spends": [{ "currency": "Credits", "amount": "15,000" }],
       "map": null,
       "rows": [
         {
-          "qty": "15",
-          "label": "Gallium",
-          "note": "Cycron research",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "200",
-          "label": "Rubedo",
-          "note": "research; Phobos or Europa",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "1,000",
-          "label": "Polymer Bundle",
-          "note": "research; Uranus",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "CORPUS INVASIONS",
-      "sub": null,
-      "activity": "pick the Fieldron reward side",
-      "meta": "3 per Invasion",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "4",
-          "label": "Fieldron",
-          "note": "Cycron build",
-          "alt": "or craft: 10 Fieldron Sample, 1 Control Module, 500 Salvage, 250 Plastids, 5,000 cr, 12h each",
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [
-        "Rare and Reinforced Corpus storage containers and Fortuna bounty rewards from Eudico also give Fieldron."
-      ],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "MERCURY OR CERES",
-      "sub": null,
-      "activity": "any Survival or Defense",
-      "meta": "common resources",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "9,000",
-          "label": "Ferrite",
-          "note": "Cycron build",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "2,550",
-          "label": "Circuits",
-          "note": "1,500 build, 1,050 research",
+          "qty": null,
+          "label": "Cycron Blueprint",
+          "note": "15,000 cr",
           "alt": null,
           "done": false
         }

@@ -13,6 +13,12 @@
     { "label": "build", "amount": "15,000 cr", "money": false },
     { "label": "fully built", "amount": "75 p", "money": false }
   ],
+  "materials": [
+    { "qty": "600", "label": "Alloy Plate", "note": null },
+    { "qty": "350", "label": "Plastids", "note": null },
+    { "qty": "500", "label": "Polymer Bundle", "note": null },
+    { "qty": "2", "label": "Argon Crystal", "note": null }
+  ],
   "groups": [
     {
       "type": "gate",
@@ -64,61 +70,8 @@
           "done": false
         }
       ],
-      "conditions": [
-        "Buy the blueprint and have the ordinary materials ready before collecting Argon."
-      ],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "VOID, ANY",
-      "sub": null,
-      "activity": "containers, Argon Pegmatites and Corrupted Vor",
-      "meta": "farm last",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "2",
-          "label": "Argon Crystal",
-          "note": "Hepit, Teshub, Ukko, Oxomoco or Mot",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Argon decays after the next GMT 00:00 reset, then halves at each following reset.",
-        "Cancelling a Foundry build does not return its Argon, so start the build on the day it is farmed."
-      ],
-      "bonuses": [
-        "Corrupted Vor has a 50% chance to drop either an Argon Crystal or an Orokin Cell."
-      ],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "STAR CHART, VARIOUS",
-      "sub": null,
-      "activity": "bank the standard recipe materials",
-      "meta": "before the Void run",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        { "qty": "600", "label": "Alloy Plate", "note": null, "alt": null, "done": false },
-        { "qty": "350", "label": "Plastids", "note": null, "alt": null, "done": false },
-        { "qty": "500", "label": "Polymer Bundle", "note": null, "alt": null, "done": false }
-      ],
       "conditions": [],
-      "bonuses": ["These are the only materials to bank before the short Argon trip."],
+      "bonuses": [],
       "disclosures": []
     },
     {
@@ -134,10 +87,13 @@
       "spends": [],
       "map": null,
       "rows": [
-        { "qty": "600", "label": "Alloy Plate", "note": null, "alt": null, "done": false },
-        { "qty": "350", "label": "Plastids", "note": null, "alt": null, "done": false },
-        { "qty": "500", "label": "Polymer Bundle", "note": null, "alt": null, "done": false },
-        { "qty": "2", "label": "Argon Crystal", "note": null, "alt": null, "done": false }
+        {
+          "qty": null,
+          "label": "Diriga",
+          "note": "15,000 cr, 600 Alloy Plate, 350 Plastids, 500 Polymer Bundle, 2 Argon Crystal",
+          "alt": null,
+          "done": false
+        }
       ],
       "conditions": ["The 30 platinum rush is optional; the normal build takes 24 hours."],
       "bonuses": [
@@ -156,8 +112,8 @@
       "skip": null,
       "earns": null,
       "spends": [
-        { "currency": "Ostron standing", "amount": "40,000" },
-        { "currency": "Solaris United standing", "amount": "40,000" }
+        { "currency": "Ostron Standing", "amount": "40,000" },
+        { "currency": "Solaris United Standing", "amount": "40,000" }
       ],
       "map": "orb-vallis",
       "rows": [
@@ -198,7 +154,6 @@
         }
       ],
       "conditions": [
-        "Standing caps, not mission RNG, make the Bond set take several days.",
         "Manifold Bond is the central upgrade: Arc Coil applies every damage type on the companion weapon, regardless of status chance or weighting.",
         "Reinforced Bond cannot activate on Diriga because its base shields are too low."
       ],
@@ -210,7 +165,7 @@
       "disclosures": [
         {
           "title": "the acquisition is easy; the build is not",
-          "body": "Diriga itself is a predictable Market blueprint plus a one-day Foundry timer. The reason to delay judgment until Manifold Bond is installed is that the community's primer build depends on Arc Coil spreading the weapon's full palette of damage types. The Bond vendors need Ostron Trusted and Solaris United Doer, so the standing path—not the sentinel—is the multi-day portion."
+          "body": "Diriga itself is a predictable Market blueprint plus a one-day Foundry timer. The reason to delay judgment until Manifold Bond is installed is that the community's primer build depends on Arc Coil spreading the weapon's full palette of damage types. The Bond vendors need Ostron Trusted and Solaris United Doer, so the standing path, not the sentinel, is the multi-day portion."
         },
         {
           "title": "uptime and limitations",

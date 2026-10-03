@@ -4,13 +4,16 @@
   "effort": 1,
   "tradeable": false,
   "progress": { "have": 0, "need": 1, "unit": "weapon" },
-  "badges": [
-    { "text": "Nightwave gate", "tone": "warn" },
-    { "text": "Incarnon eligible", "tone": "info" }
-  ],
+  "badges": [{ "text": "Nightwave gate", "tone": "warn" }],
   "prices": [
     { "label": "blueprint", "amount": "50 Nightwave Creds", "money": false },
     { "label": "build", "amount": "15,000 cr", "money": false }
+  ],
+  "materials": [
+    { "qty": "4", "label": "Gallium", "note": null },
+    { "qty": "500", "label": "Ferrite", "note": null },
+    { "qty": "500", "label": "Alloy Plate", "note": null },
+    { "qty": "600", "label": "Polymer Bundle", "note": null }
   ],
   "groups": [
     {
@@ -40,7 +43,8 @@
       "bonuses": [
         "Nightwave rank 1 (10,000 standing of Acts) alone pays 150 Creds, more than enough for the 50-Cred blueprint."
       ],
-      "disclosures": []
+      "disclosures": [],
+      "ref": "Nightwave Creds"
     },
     {
       "type": "vendor",
@@ -65,12 +69,7 @@
       ],
       "conditions": ["It used to drop from J3-Golem on Jupiter; that source was removed."],
       "bonuses": [],
-      "disclosures": [
-        {
-          "title": "buy it the moment you see it",
-          "body": "Before the permanent-shop change the blueprint rotated in and out of Nora's weekly offerings and players missed it for years. Weapon blueprints sold only in this shop should come ahead of cosmetics in your Cred budget, and leftover Creds are worthless once a series ends."
-        }
-      ]
+      "disclosures": []
     },
     {
       "type": "foundry",
@@ -85,19 +84,17 @@
       "spends": [],
       "map": null,
       "rows": [
-        { "qty": "4", "label": "Gallium", "note": "Mars, Uranus", "alt": null, "done": false },
-        { "qty": "500", "label": "Ferrite", "note": null, "alt": null, "done": false },
-        { "qty": "500", "label": "Alloy Plate", "note": null, "alt": null, "done": false },
-        { "qty": "600", "label": "Polymer Bundle", "note": null, "alt": null, "done": false }
+        {
+          "qty": null,
+          "label": "Ceramic Dagger",
+          "note": "15,000 cr, 4 Gallium, 500 Ferrite, 500 Alloy Plate, 600 Polymer Bundle, 12h",
+          "alt": null,
+          "done": false
+        }
       ],
       "conditions": [],
       "bonuses": ["Level it to 30 in ordinary missions or a Steel Path run; it's a fast dagger."],
-      "disclosures": [
-        {
-          "title": "Incarnon is optional and separate",
-          "body": "The Ceramic Dagger Incarnon Genesis comes only from Steel Path Circuit rotation (needs Duviri Paradox, Angels of the Zariman and Steel Path unlocked) and installs for 20 Pathos Clamps, 70 Dracroot and 80 Connla Sprouts. It gives no extra Mastery, so skip it if Mastery is all you want."
-        }
-      ]
+      "disclosures": []
     }
   ]
 }

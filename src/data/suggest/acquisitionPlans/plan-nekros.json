@@ -12,6 +12,12 @@
     { "label": "blueprint", "amount": "100,000 cr", "money": false },
     { "label": "built", "amount": "375 p", "money": false }
   ],
+  "materials": [
+    { "qty": "1", "label": "Neural Sensors", "note": "Neuroptics" },
+    { "qty": "1", "label": "Control Module", "note": "Systems" },
+    { "qty": "500", "label": "Plastids", "note": "Systems" },
+    { "qty": "3", "label": "Orokin Cell", "note": null }
+  ],
   "groups": [
     {
       "type": "vendor",
@@ -62,7 +68,7 @@
         "Extract after the kill: the component is an end-of-mission reward.",
         "Run normal mode, not Nightmare. Death Detonation can softlock phase 1 on this node."
       ],
-      "bonuses": ["Lephantis heads can also drop Orokin Cells and Neurodes for the final build."],
+      "bonuses": [],
       "disclosures": [
         {
           "title": "make Lephantis go quickly",
@@ -73,45 +79,6 @@
           "body": "The mission can auto-fail after 15 minutes without an enemy kill; Lephantis heads do not count. If the fight is dragging, leave to re-gear or queue public instead of waiting out weak spots."
         }
       ]
-    },
-    {
-      "type": "farm",
-      "place": "ELARA, JUPITER",
-      "sub": null,
-      "activity": "Survival",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        { "qty": "1", "label": "Neural Sensor", "note": "Neuroptics", "alt": null, "done": false }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "TESHUB, VOID",
-      "sub": null,
-      "activity": "Exterminate",
-      "meta": "higher drop chance than Neptune or Europa",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        { "qty": "1", "label": "Control Module", "note": "Systems", "alt": null, "done": false },
-        { "qty": "500", "label": "Plastids", "note": "Systems", "alt": null, "done": false }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
     },
     {
       "type": "foundry",

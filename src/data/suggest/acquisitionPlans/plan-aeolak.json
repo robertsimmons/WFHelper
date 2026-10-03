@@ -12,6 +12,16 @@
     { "label": "main blueprint", "amount": "15,000 cr, 50 Thrax Plasm", "money": false },
     { "label": "components, each", "amount": "15,000 cr", "money": false }
   ],
+  "materials": [
+    { "qty": "2,000", "label": "Oxium", "note": "Barrel" },
+    { "qty": "1,800", "label": "Cryotic", "note": "Receiver" },
+    { "qty": "3,000", "label": "Alloy Plate", "note": "Stock" },
+    { "qty": "5", "label": "Orokin Cell", "note": "Stock" },
+    { "qty": "20", "label": "Voidplume Quill", "note": null },
+    { "qty": "150", "label": "Thrax Plasm", "note": null },
+    { "qty": "5", "label": "Voidgel Orb", "note": null },
+    { "qty": "5", "label": "Entrati Lanthorn", "note": null }
+  ],
   "groups": [
     {
       "type": "gate",
@@ -87,19 +97,12 @@
           "alt": null,
           "done": false
         },
-        { "qty": "1", "label": "Aeolak Stock Blueprint", "note": null, "alt": null, "done": false },
-        {
-          "qty": "20",
-          "label": "Voidplume Quill",
-          "note": "bounty completions and Melica caches; combined Barrel/Receiver/Stock need",
-          "alt": null,
-          "done": false
-        }
+        { "qty": "1", "label": "Aeolak Stock Blueprint", "note": null, "alt": null, "done": false }
       ],
       "conditions": [
         "Rotates AABC; since the Narin update A and B also drop parts, so don't wait for an all-C loop.",
         "Fails at 100% corruption if the 2m30s countdown expires before extraction opens; seal ruptures early.",
-        "Extraction is manual — hold the elevator panel, and coordinate with the squad since a partial group in the lift can pull everyone out mid-rotation."
+        "Extraction is manual: hold the elevator panel, and coordinate with the squad since a partial group in the lift can pull everyone out mid-rotation."
       ],
       "bonuses": [
         "Titania's Razorwing grabs floating Vitoplast without parkour; Rotation C is about 10 minutes solo with her. Zephyr is the runner-up.",
@@ -126,25 +129,6 @@
       "bonuses": [
         "The Narin update put Narin parts and Entropic Kuva on this same table, so public squads should be easier to find."
       ],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "IO, JUPITER",
-      "sub": null,
-      "activity": "Defense",
-      "meta": "~80 per 10 waves; kill Oxium Ospreys before they explode",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        { "qty": "2,000", "label": "Oxium", "note": "Aeolak Barrel", "alt": null, "done": false }
-      ],
-      "conditions": [],
-      "bonuses": ["Nekros or Hydroid plus a Resource Booster multiplies the drop."],
       "disclosures": []
     },
     {
@@ -176,7 +160,7 @@
         },
         {
           "qty": null,
-          "label": "Stock",
+          "label": "Aeolak Stock",
           "note": "15,000 cr, 30 Thrax Plasm, 10 Voidplume Quill, 3,000 Alloy Plate, 5 Orokin Cell",
           "alt": null,
           "done": false

@@ -9,6 +9,21 @@
     { "text": "Rotation C", "tone": "warn" }
   ],
   "prices": [{ "label": "built", "amount": "350 p", "money": false }],
+  "materials": [
+    { "qty": "1,000", "label": "Rubedo", "note": "Neuroptics" },
+    { "qty": "1,500", "label": "Salvage", "note": "Neuroptics" },
+    { "qty": "2", "label": "Argon Crystal", "note": "Neuroptics" },
+    { "qty": "1,200", "label": "Cryotic", "note": "Chassis" },
+    { "qty": "3,000", "label": "Alloy Plate", "note": "Chassis" },
+    { "qty": "2,000", "label": "Nano Spores", "note": "Chassis" },
+    { "qty": "1,500", "label": "Circuits", "note": "Systems" },
+    { "qty": "1,500", "label": "Polymer Bundle", "note": "Systems" },
+    { "qty": "3", "label": "Gallium", "note": "Systems" },
+    { "qty": "2", "label": "Morphics", "note": "Systems" },
+    { "qty": "3", "label": "Orokin Cell", "note": "Citrine" },
+    { "qty": "15", "label": "Faceted Tiametrite", "note": "Neuroptics" },
+    { "qty": "6", "label": "Stellated Necrathene", "note": "Chassis" }
+  ],
   "groups": [
     {
       "type": "gate",
@@ -64,8 +79,8 @@
           "alt": {
             "text": "or 500 Rania + 500 Belric at Otak",
             "spends": [
-              { "currency": "Rania Crystal Fragments", "amount": "500" },
-              { "currency": "Belric Crystal Fragments", "amount": "500" }
+              { "currency": "Rania Crystal Fragment", "amount": "500" },
+              { "currency": "Belric Crystal Fragment", "amount": "500" }
             ]
           },
           "done": false
@@ -77,8 +92,8 @@
           "alt": {
             "text": "or 350 Rania + 350 Belric at Otak",
             "spends": [
-              { "currency": "Rania Crystal Fragments", "amount": "350" },
-              { "currency": "Belric Crystal Fragments", "amount": "350" }
+              { "currency": "Rania Crystal Fragment", "amount": "350" },
+              { "currency": "Belric Crystal Fragment", "amount": "350" }
             ]
           },
           "done": false
@@ -90,8 +105,8 @@
           "alt": {
             "text": "or 350 Rania + 350 Belric at Otak",
             "spends": [
-              { "currency": "Rania Crystal Fragments", "amount": "350" },
-              { "currency": "Belric Crystal Fragments", "amount": "350" }
+              { "currency": "Rania Crystal Fragment", "amount": "350" },
+              { "currency": "Belric Crystal Fragment", "amount": "350" }
             ]
           },
           "done": false
@@ -103,8 +118,8 @@
           "alt": {
             "text": "or 350 Rania + 300 Belric at Otak",
             "spends": [
-              { "currency": "Rania Crystal Fragments", "amount": "350" },
-              { "currency": "Belric Crystal Fragments", "amount": "300" }
+              { "currency": "Rania Crystal Fragment", "amount": "350" },
+              { "currency": "Belric Crystal Fragment", "amount": "300" }
             ]
           },
           "done": false
@@ -142,8 +157,8 @@
       "skip": null,
       "earns": null,
       "spends": [
-        { "currency": "Rania Crystal Fragments", "amount": "1,550" },
-        { "currency": "Belric Crystal Fragments", "amount": "1,500" }
+        { "currency": "Rania Crystal Fragment", "amount": "1,550" },
+        { "currency": "Belric Crystal Fragment", "amount": "1,500" }
       ],
       "map": null,
       "rows": [
@@ -159,65 +174,6 @@
         "Hold fragments until only 1-2 parts are missing so a late drop cannot duplicate a purchase.",
         "Otak's prices run roughly an order of magnitude above comparable pity shops (Jade, Dante, Voruna, Koumei)."
       ],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "CAMBION DRIFT, DEIMOS",
-      "sub": null,
-      "activity": "mine and gather the component materials",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": "cambion-drift",
-      "rows": [
-        {
-          "qty": "15",
-          "label": "Faceted Tiametrite",
-          "note": "Neuroptics",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "6",
-          "label": "Stellated Necrathene",
-          "note": "Chassis; crafting it requires Entrati rank 2",
-          "alt": null,
-          "done": false
-        },
-        { "qty": "3", "label": "Gallium", "note": "Systems", "alt": null, "done": false },
-        { "qty": "2", "label": "Morphics", "note": "Systems", "alt": null, "done": false }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "THE VOID",
-      "sub": null,
-      "activity": "any Void mission",
-      "meta": "farm last, right before building Neuroptics",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "2",
-          "label": "Argon Crystal",
-          "note": "Neuroptics build",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": ["Argon decays daily; farming it early wastes the stack."],
       "bonuses": [],
       "disclosures": []
     },

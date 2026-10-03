@@ -12,6 +12,7 @@
     { "label": "gild", "amount": "5,000 cr", "money": false },
     { "label": "Dorma Model, if built", "amount": "50,000 cr", "money": false }
   ],
+  "materials": [{ "qty": "8", "label": "Zenith Granum Crown", "note": null }],
   "groups": [
     {
       "type": "gate",
@@ -109,13 +110,6 @@
           "note": "on her own prebuilt Hound, or as her random component blueprint",
           "alt": "trade for the blueprint from another player if RNG stalls",
           "done": false
-        },
-        {
-          "qty": "8",
-          "label": "Zenith Granum Crown",
-          "note": "Treasurer, 2-5 min into the mission",
-          "alt": null,
-          "done": false
         }
       ],
       "conditions": [
@@ -149,7 +143,7 @@
       "mode": "solo, normal",
       "live": null,
       "skip": null,
-      "earns": { "currency": "Solaris United standing", "amount": "71,000" },
+      "earns": { "currency": "Solaris United Standing", "amount": "71,000" },
       "spends": [],
       "map": "orb-vallis",
       "rows": [
@@ -183,13 +177,11 @@
         }
       ],
       "conditions": [
-        "Doer is the rank gilding needs; ranking further to Cove buys nothing this plan needs.",
-        "Daily standing cap is 16,000 plus 500 per mastery rank, so this is about four capped days at MR10."
+        "Doer is the rank gilding needs; ranking further to Cove buys nothing this plan needs."
       ],
-      "bonuses": [
-        "Conservation runs about 8,000 standing every five minutes with Loki and a subsumed Rest & Rage."
-      ],
-      "disclosures": []
+      "bonuses": [],
+      "disclosures": [],
+      "ref": "Solaris United Standing"
     },
     {
       "type": "vendor",
@@ -201,7 +193,7 @@
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Solaris United standing", "amount": "71,000" }],
+      "spends": [{ "currency": "Solaris United Standing", "amount": "71,000" }],
       "map": "orb-vallis",
       "rows": [
         {

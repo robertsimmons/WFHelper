@@ -12,54 +12,20 @@
     { "label": "blueprint", "amount": "15,000 cr", "money": false },
     { "label": "build", "amount": "20,000 cr", "money": false }
   ],
+  "materials": [
+    { "qty": "12,000", "label": "Alloy Plate", "note": null },
+    { "qty": "1,200", "label": "Plastids", "note": null },
+    { "qty": "2", "label": "Gallium", "note": null },
+    { "qty": "2", "label": "Argon Crystal", "note": null },
+    { "qty": "15,000", "label": "Credits", "note": null }
+  ],
   "groups": [
     {
-      "type": "gate",
-      "place": "DOJO, TENNO LAB",
-      "sub": null,
-      "activity": "clan research, strictly in order",
-      "meta": "48h, then 72h; start first",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Nami Skyla",
-          "note": "48h; 1 Neurodes, 50 Rubedo, 500 Ferrite, 300 Polymer Bundle, 5,000 cr; prerequisite, not consumed",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Endura",
-          "note": "72h; 5 Morphics, 40 Oxium, 7,500 Ferrite, 2,500 Polymer Bundle, 10,000 cr",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Needs a clan with an Oracle room and a Tenno Lab; each room costs a Forma. Research cannot be rushed with platinum.",
-        "Costs shown are the Ghost tier; larger clans pay x3, x10, x30 or x100. Materials come out of the clan vault, so donate first.",
-        "If your clan already researched Endura, skip this."
-      ],
-      "bonuses": [],
-      "disclosures": [
-        {
-          "title": "solo clan",
-          "body": "A one-person Ghost clan is the cheapest way to pay for dojo weapons. Rebuilding a Tenno Lab keeps all finished research, but the Oracle cannot be deleted before every lab is."
-        }
-      ]
-    },
-    {
-      "type": "research",
-      "place": "DOJO, TENNO LAB",
+      "type": "vendor",
+      "place": "CLAN DOJO, TENNO LAB",
       "sub": null,
       "activity": "buy the blueprint",
-      "meta": "15,000 cr",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -67,171 +33,15 @@
       "spends": [{ "currency": "Credits", "amount": "15,000" }],
       "map": null,
       "rows": [
-        { "qty": null, "label": "Endura Blueprint", "note": null, "alt": null, "done": false }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "VENUS OR JUPITER",
-      "sub": null,
-      "activity": "Survival or Defense",
-      "meta": "the 12,000 is the grind of this build",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
         {
-          "qty": "12,000",
-          "label": "Alloy Plate",
-          "note": "Endura build",
+          "qty": null,
+          "label": "Endura Blueprint",
+          "note": "15,000 cr",
           "alt": null,
           "done": false
         }
       ],
       "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "SATURN OR URANUS",
-      "sub": null,
-      "activity": "Survival or Defense",
-      "meta": "best Plastids and Polymer Bundle rates",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "1,200",
-          "label": "Plastids",
-          "note": "Endura build",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "2,800",
-          "label": "Polymer Bundle",
-          "note": "research",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "2",
-          "label": "Gallium",
-          "note": "Endura build; Uranus or Mars",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "MARS",
-      "sub": null,
-      "activity": "any mission",
-      "meta": "best Morphics rate",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "5",
-          "label": "Morphics",
-          "note": "research",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "8,000",
-          "label": "Ferrite",
-          "note": "research; also Mercury, Earth, Neptune, Lua, Void",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "50",
-          "label": "Rubedo",
-          "note": "research; Phobos or Europa",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "1",
-          "label": "Neurodes",
-          "note": "research; Earth, Deimos, Eris or Lua",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "CORPUS OXIUM OSPREYS",
-      "sub": null,
-      "activity": "Sealab Sabotage or low bounties",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "40",
-          "label": "Oxium",
-          "note": "research",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "THE VOID",
-      "sub": null,
-      "activity": "Argon Pegmatite nodes, Isolation Vault containers",
-      "meta": "pick this up last",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": "void",
-      "rows": [
-        {
-          "qty": "2",
-          "label": "Argon Crystal",
-          "note": "Endura build",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Argon halves at each daily reset (00:00 UTC) after pickup, so gather it right before the craft."
-      ],
       "bonuses": [],
       "disclosures": []
     },

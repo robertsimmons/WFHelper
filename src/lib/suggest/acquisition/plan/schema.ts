@@ -99,6 +99,17 @@ export interface PlanGroup {
   conditions: string[];
   bonuses: string[];
   disclosures: PlanDisclosure[];
+  /** A resource store entry whose tips this group carries, such as the standing
+   *  currency a Simaris group earns. */
+  ref?: string | null;
+}
+
+/** A material the plan needs, placed by the resource store rather than by hand. */
+export interface PlanMaterial {
+  /** Written like a row quantity: "1,200". */
+  qty: string;
+  label: string;
+  note: string | null;
 }
 
 export interface AuthoredPlan {
@@ -111,6 +122,7 @@ export interface AuthoredPlan {
   badges: PlanBadge[];
   prices: PlanPrice[];
   groups: PlanGroup[];
+  materials?: PlanMaterial[];
 }
 
 export function altText(alt: PlanAlt): string {

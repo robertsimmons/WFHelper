@@ -12,6 +12,12 @@
     { "label": "Diriga blueprint", "amount": "100,000 cr", "money": false },
     { "label": "build", "amount": "15,000 cr", "money": false }
   ],
+  "materials": [
+    { "qty": "600", "label": "Alloy Plate", "note": null },
+    { "qty": "2", "label": "Argon Crystal", "note": null },
+    { "qty": "350", "label": "Plastids", "note": null },
+    { "qty": "500", "label": "Polymer Bundle", "note": null }
+  ],
   "groups": [
     {
       "type": "gate",
@@ -65,63 +71,6 @@
       "conditions": [],
       "bonuses": [],
       "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "STAR CHART, VARIOUS",
-      "sub": null,
-      "activity": "bank the standard recipe materials",
-      "meta": "before the Void run",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        { "qty": "600", "label": "Alloy Plate", "note": null, "alt": null, "done": false },
-        { "qty": "350", "label": "Plastids", "note": null, "alt": null, "done": false },
-        { "qty": "500", "label": "Polymer Bundle", "note": null, "alt": null, "done": false }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "HEPIT, VOID",
-      "sub": null,
-      "activity": "Capture, then break every container and Argon Pegmatite",
-      "meta": "farm last",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "2",
-          "label": "Argon Crystal",
-          "note": "~2 deposits a map, 1-2 crystals each",
-          "alt": "or Teshub, Void Exterminate",
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Argon collected before today's GMT 00:00 reset is halved at each reset, rounded down; farm the two, then build the same day.",
-        "Cancelling a Foundry build does not return its Argon."
-      ],
-      "bonuses": [
-        "A max-range Xaku (The Vast Untime) or Limbo (Cataclysm) breaks containers and deposits through walls; 1-4 crystals per short run is typical.",
-        "Dropped Argon is auto-waypointed on the minimap."
-      ],
-      "disclosures": [
-        {
-          "title": "other Argon options",
-          "body": "Mot or Ani (Void Survival) with a loot frame (Nekros, Khora with Pilfering Strangledome, Hydroid with Pilfering Swarm) gets 2-4 in a short round, and Mot spawns Corrupted Vor, a 50% chance at Argon over an Orokin Cell. Public queues on Hepit and Mot are full of players farming Argon, and Void Fissures on Void nodes drop crystals while you crack relics. A Resource Booster, a Relay resource blessing, Smeeta's Charm and Resourceful Retriever all stack on pickups."
-        }
-      ]
     },
     {
       "type": "foundry",

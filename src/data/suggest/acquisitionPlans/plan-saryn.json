@@ -12,6 +12,10 @@
     { "label": "blueprint", "amount": "35,000 cr", "money": false },
     { "label": "built", "amount": "225 p", "money": false }
   ],
+  "materials": [
+    { "qty": "1", "label": "Orokin Cell", "note": null },
+    { "qty": "12", "label": "Judgement Points", "note": null }
+  ],
   "groups": [
     {
       "type": "vendor",
@@ -78,38 +82,6 @@
       "disclosures": []
     },
     {
-      "type": "farm",
-      "place": "VODYANOI, SEDNA",
-      "sub": "Rathuum",
-      "activity": "bank Judgement Points",
-      "meta": "+25 points per run",
-      "mode": "hold 25 before every Kela run",
-      "live": null,
-      "skip": null,
-      "earns": { "currency": "Judgement Points", "amount": "25" },
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Judgement Points",
-          "note": "Vodyanoi entry check: 15",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Arena entry requirements are ownership checks, not a spend. Only a successful Kela kill consumes points.",
-        "Kela consumes 25 and refunds 13: net cost is 12 points per kill. One Vodyanoi run funds two kills.",
-        "After Kela you have 13 points, below Vodyanoi's 15-point entry check; bank a buffer instead of farming hand-to-mouth.",
-        "Every squad member needs 25 points at Merrow mission start."
-      ],
-      "bonuses": [
-        "Rathuum disables companions and gear items; finisher builds remain effective against Executioners."
-      ],
-      "disclosures": []
-    },
-    {
       "type": "boss",
       "place": "MERROW, SEDNA",
       "sub": null,
@@ -136,11 +108,13 @@
         "One component blueprint drops on every successful kill; Systems is the usual last piece.",
         "Bring a beam, punch-through, or wide-AoE weapon for the spinning green targets; the target phases, not Kela's health, are the time sink.",
         "In phases 2 and 3 all four floor pads light up regardless of squad size. Hit the four green targets in their randomized order to bring Kela back out.",
-        "Kela is immune to Viral status."
+        "Kela is immune to Viral status.",
+        "Kela consumes 25 and refunds 13: net cost is 12 points per kill. One Vodyanoi run funds two kills.",
+        "After Kela you have 13 points, below Vodyanoi's 15-point entry check; bank a buffer instead of farming hand-to-mouth.",
+        "Every squad member needs 25 points at Merrow mission start."
       ],
       "bonuses": [
-        "Operator Void Mode, frame invisibility, Limbo Cataclysm, or Zephyr Turbulence can neutralize the Orbital Strike phases.",
-        "Kela can also drop Orokin Cells, needed for the final build."
+        "Operator Void Mode, frame invisibility, Limbo Cataclysm, or Zephyr Turbulence can neutralize the Orbital Strike phases."
       ],
       "disclosures": [
         {

@@ -9,46 +9,25 @@
     { "text": "consumes a Nikana", "tone": "info" }
   ],
   "prices": [{ "label": "blueprint", "amount": "30,000 cr", "money": false }],
+  "materials": [
+    { "qty": "4", "label": "Argon Crystal", "note": "3 for Nikana, 1 for Dragon Nikana" },
+    { "qty": "150", "label": "Oxium", "note": "75 for each build" },
+    { "qty": "200", "label": "Alloy Plate", "note": "Nikana" },
+    { "qty": "1", "label": "Forma", "note": null },
+    { "qty": "5,000", "label": "Credits", "note": null }
+  ],
   "groups": [
-    {
-      "type": "research",
-      "place": "CLAN DOJO, TENNO LAB",
-      "sub": null,
-      "activity": "check that Nikana research is complete",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Akstiletto research",
-          "note": "prerequisite",
-          "alt": null,
-          "done": false
-        },
-        { "qty": null, "label": "Nikana research", "note": null, "alt": null, "done": false }
-      ],
-      "conditions": [
-        "Joining a clan whose Tenno Lab already has Nikana researched skips this chain entirely."
-      ],
-      "bonuses": [],
-      "disclosures": []
-    },
     {
       "type": "vendor",
       "place": "CLAN DOJO, TENNO LAB",
       "sub": null,
-      "activity": "buy the personal Nikana blueprint",
+      "activity": "buy the Nikana blueprint",
       "meta": "5,000 cr",
       "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [],
+      "spends": [{ "currency": "Credits", "amount": "5,000" }],
       "map": null,
       "rows": [
         {
@@ -59,7 +38,7 @@
           "done": false
         }
       ],
-      "conditions": ["Each player still buys their own copy after the clan research completes."],
+      "conditions": [],
       "bonuses": [],
       "disclosures": []
     },
@@ -86,36 +65,6 @@
       ],
       "conditions": [],
       "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "THE VOID",
-      "sub": null,
-      "activity": "any Void mission; break crates, lockers and Argon deposits",
-      "meta": "4 total, split across two builds",
-      "mode": "Xaku or Limbo, short Capture/Exterminate",
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "4",
-          "label": "Argon Crystal",
-          "note": "3 for Nikana, 1 for Dragon Nikana",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Argon crystals older than today halve at each daily reset, so farm the same day each build starts.",
-        "Argon is not refunded if a Foundry build is cancelled."
-      ],
-      "bonuses": [
-        "Xaku's The Vast Untime or Limbo's Cataclysm breaks deposits and containers through walls; Void Capture at Hepit or Ukko is the common low-level pick."
-      ],
       "disclosures": []
     },
     {

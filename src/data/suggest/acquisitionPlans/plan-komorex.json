@@ -12,38 +12,17 @@
     { "label": "blueprint", "amount": "15,000 cr", "money": false },
     { "label": "build", "amount": "20,000 cr", "money": false }
   ],
+  "materials": [
+    { "qty": "5", "label": "Fieldron", "note": null },
+    { "qty": "6,200", "label": "Ferrite", "note": null },
+    { "qty": "300", "label": "Hexenon", "note": null },
+    { "qty": "1", "label": "Forma", "note": null },
+    { "qty": "15,000", "label": "Credits", "note": null }
+  ],
   "groups": [
     {
-      "type": "gate",
-      "place": "DOJO, ENERGY LAB",
-      "sub": null,
-      "activity": "clan research",
-      "meta": "skip if already researched",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Energy Lab: Dera, Spectra, Cyanex, then Komorex",
-          "note": "3 days each",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Ghost (x1) tier Komorex research costs 10,000 credits, 60 Fieldron Sample, 850 Polymer Bundle, 1,300 Alloy Plate and 10 Gallium; Cyanex before it costs 7,500 credits, 30 Fieldron Sample, 300 Plastids, 2,250 Salvage and 10 Control Module.",
-        "In an established clan this is already done and costs you nothing."
-      ],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "research",
-      "place": "DOJO, ENERGY LAB",
+      "type": "vendor",
+      "place": "CLAN DOJO, ENERGY LAB",
       "sub": null,
       "activity": "buy the blueprint",
       "meta": "15,000 cr",
@@ -64,63 +43,6 @@
       ],
       "conditions": ["MR 8 to equip."],
       "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "STAR CHART",
-      "sub": null,
-      "activity": "Corpus-side Invasions",
-      "meta": "3 Fieldron per Invasion reward",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "5",
-          "label": "Fieldron",
-          "note": "two Invasions cover it",
-          "alt": "or craft from Fieldron Samples, 12h each",
-          "done": false
-        }
-      ],
-      "conditions": ["The Invasion payout lands only when the Invasion itself completes."],
-      "bonuses": [
-        "Rare and Reinforced Corpus storage containers and Orb Vallis tier-4 bounties also pay Fieldron."
-      ],
-      "disclosures": [
-        {
-          "title": "crafting Fieldron from scratch",
-          "body": "Each Fieldron is its own Energy Lab blueprint (15,000 credits) plus 15,000 credits, 10 Fieldron Sample, 1 Control Module, 500 Salvage and 250 Plastids, 12h. Fieldron Samples drop in Corpus territory; the Dark Sector Survivals Wahiba (Mars) and Kelashin (Neptune) are the named spots."
-        }
-      ]
-    },
-    {
-      "type": "farm",
-      "place": "GANYMEDE, JUPITER",
-      "sub": null,
-      "activity": "Disruption",
-      "meta": "5/10/15 Hexenon at A/B/C",
-      "mode": "Nekros or Khora",
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "300",
-          "label": "Hexenon",
-          "note": "Amalgams drop it at about 7%",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": ["Distilling Extractors on Jupiter add passive Hexenon."],
       "disclosures": []
     },
     {

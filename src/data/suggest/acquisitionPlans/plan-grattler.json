@@ -12,40 +12,19 @@
     { "label": "blueprint", "amount": "15,000 cr", "money": false },
     { "label": "build", "amount": "65,000 cr", "money": false }
   ],
+  "materials": [
+    { "qty": "5", "label": "Tellurium", "note": null },
+    { "qty": "6,000", "label": "Salvage", "note": null },
+    { "qty": "3,500", "label": "Oxium", "note": null },
+    { "qty": "1", "label": "Forma", "note": null },
+    { "qty": "15,000", "label": "Credits", "note": null }
+  ],
   "groups": [
     {
-      "type": "gate",
-      "place": "DOJO, CHEM LAB",
+      "type": "vendor",
+      "place": "CLAN DOJO, CHEM LAB",
       "sub": null,
-      "activity": "clan research",
-      "meta": "skip if already researched",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Chem Lab: Ogris, then Grattler",
-          "note": "3 days for Grattler",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Ghost (x1) tier Grattler research costs 7,500 credits, 10 Detonite Ampule, 540 Salvage, 390 Oxium and 210 Rubedo; bigger clans pay x3/x10/x30/x100.",
-        "In an established clan this is already done and costs you nothing."
-      ],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "research",
-      "place": "DOJO, CHEM LAB",
-      "sub": null,
-      "activity": "replicate the blueprint",
+      "activity": "buy the blueprint",
       "meta": "15,000 cr",
       "mode": null,
       "live": null,
@@ -58,65 +37,6 @@
       ],
       "conditions": [],
       "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "OPHELIA, URANUS",
-      "sub": null,
-      "activity": "Survival",
-      "meta": "~26 Tellurium in 20 min with boosters",
-      "mode": "Steel Path, every booster, Khora or Nekros",
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "5",
-          "label": "Tellurium",
-          "note": "about 2 in 40 minutes on the normal star chart",
-          "alt": "or Lu-yan, Veil Proxima",
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Resource Booster, Resource Drop Chance Booster, a relay blessing and Steel Path all multiply; without them it barely drops."
-      ],
-      "bonuses": [
-        "Check Ophelia's water rooms; Tellurium that falls in is out of the companion vacuum's reach.",
-        "Daily login rewards and low-level Archwing missions (Salacia, Caelus) also pay a few."
-      ],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "IO, JUPITER",
-      "sub": null,
-      "activity": "Defense, kill Oxium Ospreys",
-      "meta": null,
-      "mode": "Resource Booster",
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "3,500",
-          "label": "Oxium",
-          "note": null,
-          "alt": "or Cetus and Fortuna low-tier bounties, 100-200 a stage",
-          "done": false
-        },
-        { "qty": "6,000", "label": "Salvage", "note": null, "alt": null, "done": false }
-      ],
-      "conditions": [
-        "An Osprey that self-destructs drops nothing; kill it at range, not in melee.",
-        "Drop-chance boosters do nothing for Oxium; a Resource Booster doubles it."
-      ],
-      "bonuses": ["Nekros' Desecrate or Khora's Strangledome add rolls."],
       "disclosures": []
     },
     {

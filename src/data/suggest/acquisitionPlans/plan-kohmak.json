@@ -12,68 +12,27 @@
     { "label": "blueprint", "amount": "15,000 cr", "money": false },
     { "label": "build", "amount": "30,000 cr", "money": false }
   ],
+  "materials": [
+    { "qty": "5,000", "label": "Ferrite", "note": null },
+    { "qty": "5,000", "label": "Plastids", "note": null },
+    { "qty": "2", "label": "Detonite Injector", "note": null },
+    { "qty": "1", "label": "Forma", "note": null },
+    { "qty": "15,000", "label": "Credits", "note": null }
+  ],
   "groups": [
     {
-      "type": "gate",
-      "place": "DOJO, CHEM LAB",
+      "type": "vendor",
+      "place": "CLAN DOJO, CHEMICAL LAB",
       "sub": null,
-      "activity": "clan research, strictly in order",
-      "meta": "72h each; start first",
+      "activity": "buy the blueprint",
+      "meta": "15,000 cr",
       "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [],
+      "spends": [{ "currency": "Credits", "amount": "15,000" }],
       "map": null,
       "rows": [
-        {
-          "qty": null,
-          "label": "Detonite Injector",
-          "note": "5 Detonite Ampule, 200 Ferrite, 250 Polymer Bundle, 100 Plastids, 5,000 cr",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Marelok",
-          "note": "10 Detonite Ampule, 300 Polymer Bundle, 650 Salvage, 120 Alloy Plate, 5,000 cr",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Kohmak",
-          "note": "10 Detonite Ampule, 400 Ferrite, 500 Plastids, 2 Gallium, 5,000 cr",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Needs a built Chem Lab; members donate the materials. If your clan already finished it, skip this."
-      ],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "research",
-      "place": "DOJO, CHEM LAB",
-      "sub": null,
-      "activity": "buy both blueprints",
-      "meta": "30,000 cr",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [{ "currency": "Credits", "amount": "30,000" }],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Detonite Injector Blueprint",
-          "note": "15,000 cr",
-          "alt": null,
-          "done": false
-        },
         {
           "qty": null,
           "label": "Kohmak Blueprint",
@@ -87,100 +46,11 @@
       "disclosures": []
     },
     {
-      "type": "farm",
-      "place": "ASSUR, URANUS",
-      "sub": null,
-      "activity": "Dark Sector Survival",
-      "meta": "25% resource bonus; Ampule, Gallium and Plastids in one planet",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "5,500",
-          "label": "Plastids",
-          "note": "build; research needs 600 more",
-          "alt": "or Akkad, Eris, 30% resource bonus",
-          "done": false
-        },
-        {
-          "qty": "40",
-          "label": "Detonite Ampule",
-          "note": "20 for 2 Injectors, 25 research; untradeable",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "2",
-          "label": "Gallium",
-          "note": "research",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "550",
-          "label": "Polymer Bundle",
-          "note": "research",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Plastids are the bottleneck. Ask for a resource blessing at a relay and send Extractor Drones to Saturn, Eris, Pluto and Uranus daily."
-      ],
-      "bonuses": [
-        "Detonite Ampule drops on any Grineer planet, so you will have more than enough."
-      ],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "MERCURY OR NEPTUNE",
-      "sub": null,
-      "activity": "any mission",
-      "meta": "Ferrite and Control Modules",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "5,000",
-          "label": "Ferrite",
-          "note": "build; research needs 600 more",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "2",
-          "label": "Control Module",
-          "note": "Injectors; Neptune, Europa or Void",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "1,000",
-          "label": "Salvage",
-          "note": "Injectors; research needs 650 more",
-          "alt": "Mars, Jupiter or Sedna",
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": ["Alloy Plate for the Marelok step (120) arrives with any of the above."],
-      "disclosures": []
-    },
-    {
       "type": "foundry",
       "place": "FOUNDRY",
       "sub": null,
-      "activity": "2 Detonite Injectors, then Kohmak",
-      "meta": "12h each, then 24h",
+      "activity": "build Kohmak",
+      "meta": "24h",
       "mode": null,
       "live": null,
       "skip": null,
@@ -188,13 +58,6 @@
       "spends": [],
       "map": null,
       "rows": [
-        {
-          "qty": "2",
-          "label": "Detonite Injector",
-          "note": "each 10 Detonite Ampule, 1 Control Module, 500 Salvage, 250 Plastids, 15,000 cr",
-          "alt": "or Grineer invasion rewards, 3 each",
-          "done": false
-        },
         {
           "qty": null,
           "label": "Kohmak",
@@ -203,16 +66,9 @@
           "done": false
         }
       ],
-      "conditions": [
-        "Rank the Kohmak you keep to 30 before using any copy in Twin Kohmak. Rushing an Injector costs 25 p versus 10 p to buy it on the Market."
-      ],
+      "conditions": ["Rank the Kohmak you keep to 30 before using any copy in Twin Kohmak."],
       "bonuses": [],
-      "disclosures": [
-        {
-          "title": "skipping Injector crafts",
-          "body": "Injectors also drop from rare and Reinforced Grineer storage containers and sometimes from Orb Vallis tier 4 bounty stages."
-        }
-      ]
+      "disclosures": []
     }
   ]
 }

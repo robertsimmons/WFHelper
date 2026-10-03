@@ -12,6 +12,12 @@
     { "label": "blueprint", "amount": "10,000 standing", "money": false },
     { "label": "build", "amount": "50,000 cr", "money": false }
   ],
+  "materials": [
+    { "qty": "10", "label": "Esher Devar", "note": null },
+    { "qty": "10", "label": "Heart Noctrul", "note": null },
+    { "qty": "10", "label": "Eye-Eye Rotoblade", "note": null },
+    { "qty": "5", "label": "Charamote Sagan Module", "note": null }
+  ],
   "groups": [
     {
       "type": "currency",
@@ -22,7 +28,7 @@
       "mode": "solo",
       "live": null,
       "skip": null,
-      "earns": { "currency": "Solaris United standing", "amount": "250,000" },
+      "earns": { "currency": "Solaris United Standing", "amount": "250,000" },
       "spends": [],
       "map": "orb-vallis",
       "rows": [
@@ -42,20 +48,18 @@
         }
       ],
       "conditions": [
-        "Daily cap is 16,000 standing plus 500 per Mastery Rank.",
         "The free vendor item at each rank-up can cover the Cryotra blueprint at Old Mate, but a pricier Rank 5 item is the better use of it."
       ],
       "bonuses": [
-        "Conservation with the best echo-lure and pheromones is the fastest standing, near-unanimous across threads; once Old Mate, a Kubrodon lure hits the daily cap in under half an hour.",
-        "Ivara (Prowl) or Equinox/Titania with Sleep subsumed get reliable perfect captures; shooting from Archwing before the animal notices also works.",
-        "Mining and fishing turn-ins at Smokefinger and The Business work too if gems or fish are already stockpiled."
+        "Ivara (Prowl) or Equinox/Titania with Sleep subsumed get reliable perfect captures; shooting from Archwing before the animal notices also works."
       ],
       "disclosures": [
         {
           "title": "before Old Mate",
           "body": "The rarest lures, like Kubrodon, aren't purchasable until Old Mate; it shows up wild for roughly 2,000 standing in the meantime."
         }
-      ]
+      ],
+      "ref": "Solaris United Standing"
     },
     {
       "type": "bounty",
@@ -97,7 +101,7 @@
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Solaris United standing", "amount": "10,000" }],
+      "spends": [{ "currency": "Solaris United Standing", "amount": "10,000" }],
       "map": null,
       "rows": [
         {
@@ -109,74 +113,6 @@
         }
       ],
       "conditions": ["Untradeable; Legs is the only source."],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "PLAINS OF EIDOLON, EARTH",
-      "sub": null,
-      "activity": "mine Devar, refine at Old Man Suumbaat",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": "plains-of-eidolon",
-      "rows": [
-        {
-          "qty": "10",
-          "label": "Esher Devar",
-          "note": "refined from Devar, blue mining veins",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Needs Old Man Suumbaat's reusable refining blueprint (Ostron Rank 1, Offworlder)."
-      ],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "ORB VALLIS, VENUS",
-      "sub": null,
-      "activity": "mine Noctrul, fish Eye-Eye and Charamote",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": "orb-vallis",
-      "rows": [
-        {
-          "qty": "10",
-          "label": "Heart Noctrul",
-          "note": "refined from Noctrul, blue mining veins; Smokefinger blueprint at Neutral",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "10",
-          "label": "Eye-Eye Rotoblade",
-          "note": "1 per Eye-Eye servofish, warm weather only; dismantle at The Business",
-          "alt": "also drops from Orb Vallis resource containers",
-          "done": false
-        },
-        {
-          "qty": "5",
-          "label": "Charamote Sagan Module",
-          "note": "1 per Charamote, cave hotspots, any weather; Business Rank 3 (Doer) bait",
-          "alt": "also drops from the Exploiter Orb",
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Eye-Eye only spawns in warm-cycle weather; check the Vallis cycle before fishing."
-      ],
       "bonuses": [],
       "disclosures": []
     },

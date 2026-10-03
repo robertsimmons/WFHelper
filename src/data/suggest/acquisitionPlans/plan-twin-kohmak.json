@@ -12,73 +12,20 @@
     { "label": "Kohmak blueprints", "amount": "30,000 cr", "money": false },
     { "label": "builds", "amount": "80,000 cr", "money": false }
   ],
+  "materials": [
+    { "qty": "4", "label": "Detonite Injector", "note": "2 per Kohmak" },
+    { "qty": "10,000", "label": "Ferrite", "note": null },
+    { "qty": "10,000", "label": "Plastids", "note": null },
+    { "qty": "2", "label": "Forma", "note": null },
+    { "qty": "30,000", "label": "Credits", "note": null }
+  ],
   "groups": [
     {
-      "type": "gate",
-      "place": "DOJO, CHEM LAB",
+      "type": "vendor",
+      "place": "CLAN DOJO, CHEM LAB",
       "sub": null,
-      "activity": "clan research",
-      "meta": "skip if already researched",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Chem Lab: Marelok, then Kohmak",
-          "note": "3 days for the Kohmak research",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Ghost (x1) tier pays 5,000 credits, 10 Detonite Ampule, 400 Ferrite, 500 Plastids and 2 Gallium for the Kohmak research.",
-        "In an established clan this is already done and costs you nothing."
-      ],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "STAR CHART",
-      "sub": null,
-      "activity": "Grineer-side Invasions",
-      "meta": "3 per Invasion",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "4",
-          "label": "Detonite Injector",
-          "note": "2 per Kohmak",
-          "alt": "or craft at the Chem Lab, 12h each",
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Detonite Injectors are shared with Ignis, Ogris, Nukor, Marelok and other Chem Lab weapons; don't spend them elsewhere mid-farm."
-      ],
-      "bonuses": [],
-      "disclosures": [
-        {
-          "title": "crafting Injectors",
-          "body": "The Chem Lab blueprint is 15,000 credits. Each Injector costs 15,000 credits, 10 Detonite Ampule, 1 Control Module, 500 Salvage, 250 Plastids and 12 hours. Detonite Ampule drops from Grineer on Venus, Earth, Lua, Ceres, Saturn, Sedna and the Kuva Fortress."
-        }
-      ]
-    },
-    {
-      "type": "foundry",
-      "place": "DOJO CHEM LAB + FOUNDRY",
-      "sub": null,
-      "activity": "buy and build two Kohmaks",
-      "meta": "1 day each; start before farming Kela",
+      "activity": "buy the blueprints",
+      "meta": "30,000 cr",
       "mode": null,
       "live": null,
       "skip": null,
@@ -92,7 +39,25 @@
           "note": "15,000 cr each",
           "alt": null,
           "done": false
-        },
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build two Kohmaks",
+      "meta": "1 day each; start before farming Kela",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
         {
           "qty": "2",
           "label": "Kohmak",
@@ -134,7 +99,8 @@
         "Rathuum is first to 25 kills against Executioners, no companions or gear, with a random handicap each match."
       ],
       "bonuses": ["Past 15 points, one Vodyanoi win funds about two Kela kills."],
-      "disclosures": []
+      "disclosures": [],
+      "ref": "Judgement Points"
     },
     {
       "type": "boss",

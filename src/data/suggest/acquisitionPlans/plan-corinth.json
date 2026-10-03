@@ -9,6 +9,12 @@
     { "label": "blueprint", "amount": "25,000 cr", "money": false },
     { "label": "build", "amount": "20,000 cr", "money": false }
   ],
+  "materials": [
+    { "qty": "2", "label": "Nitain Extract", "note": null },
+    { "qty": "725", "label": "Cryotic", "note": null },
+    { "qty": "6", "label": "Gallium", "note": null },
+    { "qty": "13,000", "label": "Alloy Plate", "note": null }
+  ],
   "groups": [
     {
       "type": "vendor",
@@ -27,62 +33,6 @@
       ],
       "conditions": ["MR 8 to equip."],
       "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "vendor",
-      "place": "NIGHTWAVE",
-      "sub": null,
-      "activity": "Cred offerings, evergreen",
-      "meta": "5 Nitain for 15 Nightwave Cred",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [{ "currency": "Nightwave Creds", "amount": "15" }],
-      "map": null,
-      "rows": [
-        {
-          "qty": "2",
-          "label": "Nitain Extract",
-          "note": "one purchase leaves 3 spare",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Nitain can't be traded and barely drops in missions; when you're out of Creds the build waits for the next Nightwave Acts."
-      ],
-      "bonuses": ["DE sometimes gives Nora's Creds as Twitch drops during its streams."],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "HIERACON, PLUTO",
-      "sub": null,
-      "activity": "Dark Sector Excavation",
-      "meta": "100 Cryotic per excavator",
-      "mode": "Resource Booster",
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "725",
-          "label": "Cryotic",
-          "note": "any Excavation pays the same",
-          "alt": "or a Void Fissure Excavation",
-          "done": false
-        },
-        { "qty": "6", "label": "Gallium", "note": "Mars or Uranus", "alt": null, "done": false },
-        { "qty": "13,000", "label": "Alloy Plate", "note": null, "alt": null, "done": false }
-      ],
-      "conditions": [
-        "Only the Resource Booster doubles Cryotic; the Resource Drop Chance Booster does nothing for it."
-      ],
-      "bonuses": ["Duviri Circuit players usually already have far more Cryotic than they need."],
       "disclosures": []
     },
     {

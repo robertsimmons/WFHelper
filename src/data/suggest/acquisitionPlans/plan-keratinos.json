@@ -12,6 +12,17 @@
     { "label": "build", "amount": "100,000 cr", "money": false },
     { "label": "standing", "amount": "3,000", "money": false }
   ],
+  "materials": [
+    { "qty": "8", "label": "Gallium", "note": "Blade material" },
+    { "qty": "8", "label": "Neurodes", "note": "Gauntlet material" },
+    { "qty": "2,400", "label": "Plastids", "note": "4 Adramal Alloy crafts at Otak" },
+    { "qty": "80", "label": "Adramal Alloy", "note": null },
+    { "qty": "12", "label": "Purged Dagonic", "note": null },
+    { "qty": "48", "label": "Pustulite", "note": null },
+    { "qty": "40", "label": "Ferment Bladder", "note": null },
+    { "qty": "12", "label": "Waxen Sebum Deposit", "note": null },
+    { "qty": "32", "label": "Ganglion", "note": "Gauntlet material" }
+  ],
   "groups": [
     {
       "type": "gate",
@@ -47,7 +58,7 @@
       "mode": null,
       "live": null,
       "skip": null,
-      "earns": { "currency": "Entrati standing", "amount": "3,000" },
+      "earns": { "currency": "Entrati Standing", "amount": "3,000" },
       "spends": [],
       "map": "cambion-drift",
       "rows": [
@@ -60,12 +71,9 @@
         }
       ],
       "conditions": [],
-      "bonuses": [
-        "Tier 3-5 non-Steel Path bounties from Mother are the fastest token source; two or three tier-5 runs cover a full daily cap.",
-        "Trading mixed tokens to Grandmother for Grandmother tokens pays 1.5x the standing.",
-        "Son tokens come from tranq-capturing wildlife with the Tranq Rifle; capturing from Archwing keeps animals from spotting you."
-      ],
-      "disclosures": []
+      "bonuses": [],
+      "disclosures": [],
+      "ref": "Entrati Standing"
     },
     {
       "type": "vendor",
@@ -77,7 +85,7 @@
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Entrati standing", "amount": "3,000" }],
+      "spends": [{ "currency": "Entrati Standing", "amount": "3,000" }],
       "map": null,
       "rows": [
         {
@@ -104,94 +112,9 @@
       ],
       "conditions": [
         "MR 9 is required to buy the main Keratinos Blueprint; the component blueprints have no such gate, so you can buy and build Blades and Gauntlets earlier.",
-        "Buy a third Blade Blueprint if you are still below Entrati Rank 2 Acquaintance — that rank-up consumes one Keratinos Blade Blueprint, and a blueprint already queued in the Foundry can't be used for it."
+        "Buy a third Blade Blueprint if you are still below Entrati Rank 2 Acquaintance: that rank-up consumes one Keratinos Blade Blueprint, and a blueprint already queued in the Foundry can't be used for it."
       ],
       "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "CAMBION DRIFT, DEIMOS",
-      "sub": "Otak for refining",
-      "activity": "mine Adramalium and Dagonic veins, then refine at Otak",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": "cambion-drift",
-      "rows": [
-        {
-          "qty": "80",
-          "label": "Adramal Alloy",
-          "note": "4 Otak crafts: 20 Adramalium + 20 Travoride + 600 Plastids + 15 Lucent Teroglobe each; Blade material",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "12",
-          "label": "Purged Dagonic",
-          "note": "2 Otak crafts, 10 mined Dagonic each; Blade material",
-          "alt": null,
-          "done": false
-        },
-        { "qty": "8", "label": "Gallium", "note": "Blade material", "alt": null, "done": false }
-      ],
-      "conditions": [
-        "Travoride is mined on Orb Vallis, not Deimos; bring it over before starting Adramal Alloy crafts.",
-        "Lucent Teroglobe comes from Vitrific Outcrops on the Cambion Drift."
-      ],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "CAMBION DRIFT, DEIMOS",
-      "sub": "Daughter for fishing",
-      "activity": "fish Deimos pools and caves; gather Pustulite and Ganglion",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": "cambion-drift",
-      "rows": [
-        {
-          "qty": "48",
-          "label": "Pustulite",
-          "note": "Gravid Blastemas or bounty rewards; Blade material",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "40",
-          "label": "Ferment Bladder",
-          "note": "cut at Daughter from most Deimos fish; Gauntlet material",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "12",
-          "label": "Waxen Sebum Deposit",
-          "note": "cut only from Amniophysi, a cave fish in Vome and Fass; Gauntlet material",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "32",
-          "label": "Ganglion",
-          "note": "Gauntlet material",
-          "alt": null,
-          "done": false
-        },
-        { "qty": "8", "label": "Neurodes", "note": "Gauntlet material", "alt": null, "done": false }
-      ],
-      "conditions": [],
-      "bonuses": [
-        "The fish parts and mined gems you cut and mine here also earn Entrati Family Tokens toward the standing above, so this doubles as the currency farm."
-      ],
       "disclosures": []
     },
     {
@@ -210,14 +133,14 @@
         {
           "qty": null,
           "label": "Blade",
-          "note": "20,000 cr, 40 Adramal Alloy, 24 Pustulite, 6 Purged Dagonic, 4 Gallium — build twice",
+          "note": "20,000 cr, 40 Adramal Alloy, 24 Pustulite, 6 Purged Dagonic, 4 Gallium; build twice",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Gauntlet",
-          "note": "20,000 cr, 20 Ferment Bladder, 16 Ganglion, 6 Waxen Sebum Deposit, 4 Neurodes — build twice",
+          "note": "20,000 cr, 20 Ferment Bladder, 16 Ganglion, 6 Waxen Sebum Deposit, 4 Neurodes; build twice",
           "alt": null,
           "done": false
         },

@@ -12,10 +12,6 @@
     {
       "text": "Energy Lab",
       "tone": "warn"
-    },
-    {
-      "text": "15 days of research timers",
-      "tone": "info"
     }
   ],
   "prices": [
@@ -30,175 +26,31 @@
       "money": false
     }
   ],
+  "materials": [
+    {
+      "qty": "5",
+      "label": "Fieldron",
+      "note": null
+    },
+    {
+      "qty": "30,000",
+      "label": "Alloy Plate",
+      "note": null
+    },
+    {
+      "qty": "35,000",
+      "label": "Salvage",
+      "note": null
+    },
+    { "qty": "1", "label": "Forma", "note": null },
+    { "qty": "15,000", "label": "Credits", "note": null }
+  ],
   "groups": [
-    {
-      "type": "research",
-      "place": "CLAN DOJO, ENERGY LAB",
-      "sub": null,
-      "activity": "start the research chain first",
-      "meta": "five serial 72h projects",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Fieldron",
-          "note": "72h",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Prova",
-          "note": "72h",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Dera",
-          "note": "72h",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Amprex",
-          "note": "72h",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Ferrox",
-          "note": "Ghost tier: 10,000 cr, 800 Fieldron Samples, 550 Circuits, 3,500 Ferrite, 500 Oxium; 72h",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Research is serial: starting the chain late means weeks of waiting however fast you farm. Skip any link the clan already has.",
-        "Research costs scale with clan tier: Ghost x1, Shadow x3, Storm x10, Mountain x30, Moon x100. A solo Ghost clan is cheapest."
-      ],
-      "bonuses": ["Amprex is on the chain, so it gives its own Mastery on the way."],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "KELASHIN, NEPTUNE",
-      "sub": null,
-      "activity": "Survival, Dark Sector",
-      "meta": "about 200 in 20 minutes with a Nekros and a Khora",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "800",
-          "label": "Fieldron Sample",
-          "note": "cannot be bought; drops of 1",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": ["Wahiba (Survival) and Kadesh (Defense) on Mars drop them too."],
-      "disclosures": [
-        {
-          "title": "squad and yield",
-          "body": "Run Steel Path with a Resource Drop Chance Booster and a Resource Booster. Reports are about 100-150 samples in 40 minutes solo with Khora, about 200 in 20 minutes with Nekros plus Khora, so 800 is a few hours of play."
-        }
-      ]
-    },
-    {
-      "type": "bounty",
-      "place": "INVASIONS",
-      "sub": "Corpus-side rewards",
-      "activity": "finish the Corpus side",
-      "meta": "3 per reward",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "5",
-          "label": "Fieldron",
-          "note": "built, no foundry timer",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "IO, JUPITER",
-      "sub": null,
-      "activity": "Defense",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "500",
-          "label": "Oxium",
-          "note": "Oxium Ospreys",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": ["Ospreys drop nothing if they self-destruct before you kill them."],
-      "bonuses": [
-        "Gulliver (Phobos), Outer Terminus (Pluto) and Paimon (Europa) work the same way."
-      ],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "APOLLODORUS, MERCURY",
-      "sub": null,
-      "activity": "Survival",
-      "meta": "about 4,000 per 10 minutes",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "3,500",
-          "label": "Ferrite",
-          "note": null,
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
     {
       "type": "vendor",
       "place": "CLAN DOJO, ENERGY LAB",
       "sub": null,
-      "activity": "buy blueprint once Ferrox research is done",
+      "activity": "buy the blueprint",
       "meta": "15,000 cr",
       "mode": null,
       "live": null,
@@ -222,65 +74,6 @@
       ],
       "conditions": [],
       "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "GABII, CERES",
-      "sub": null,
-      "activity": "Survival, Dark Sector",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "30,000",
-          "label": "Alloy Plate",
-          "note": "build",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "550",
-          "label": "Circuits",
-          "note": "Ferrox research",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [
-        "Nekros plus a Resource Booster; run it while the 3-day research and 1-day build tick."
-      ],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "CARME, JUPITER",
-      "sub": null,
-      "activity": "Mobile Defense",
-      "meta": "up to about 3,000 a run",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "35,000",
-          "label": "Salvage",
-          "note": "build",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": ["Elara (Survival) is the long-run option with Nekros and a Resource Booster."],
       "disclosures": []
     },
     {

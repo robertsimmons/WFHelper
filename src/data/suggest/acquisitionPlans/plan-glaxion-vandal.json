@@ -9,6 +9,7 @@
     { "text": "MR 12", "tone": "info" }
   ],
   "prices": [{ "label": "Baro Ki'Teer", "amount": "250,000 cr + 475 Ducats", "money": false }],
+  "materials": [{ "qty": "250,000", "label": "Credits", "note": null }],
   "groups": [
     {
       "type": "currency",
@@ -19,7 +20,7 @@
       "mode": null,
       "live": null,
       "skip": null,
-      "earns": { "currency": "Ducats", "amount": "475" },
+      "earns": { "currency": "Orokin Ducats", "amount": "475" },
       "spends": [],
       "map": null,
       "rows": [
@@ -32,20 +33,10 @@
         },
         { "qty": "250,000", "label": "Credits", "note": null, "alt": null, "done": false }
       ],
-      "conditions": [
-        "Ducat Kiosks are in any Relay Concourse, not Maroo's Bazaar.",
-        "Don't dump Prime parts you still need; sell duplicates and parts from sets you own."
-      ],
-      "bonuses": [
-        "Titania or Volt solo-running Capture and Exterminate fissures is the fastest, often under a minute each.",
-        "4-player Void Cascade cracks a relic every few minutes without reloading; wait for corrupted enemies before feeding the Exolizer or rounds pay nothing."
-      ],
-      "disclosures": [
-        {
-          "title": "other Ducat sources",
-          "body": "Mirage makes Defense fissures fast. With no relics, buy relic packs from Syndicates with standing. Varzia sells Ducats for Aya during Prime Resurgence at 5 per Aya, a terrible rate. Baro's Void Surplus (50,000 cr) has only a 2% chance at 1,000 Ducats."
-        }
-      ]
+      "conditions": ["Ducat Kiosks are in any Relay Concourse, not Maroo's Bazaar."],
+      "bonuses": [],
+      "disclosures": [],
+      "ref": "Orokin Ducats"
     },
     {
       "type": "vendor",
@@ -59,7 +50,7 @@
       "earns": null,
       "spends": [
         { "currency": "Credits", "amount": "250,000" },
-        { "currency": "Ducats", "amount": "475" }
+        { "currency": "Orokin Ducats", "amount": "475" }
       ],
       "map": null,
       "rows": [

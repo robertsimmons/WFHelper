@@ -12,6 +12,18 @@
     { "label": "revivify", "amount": "5,000 cr", "money": false },
     { "label": "Mutagen + Antigen blueprints", "amount": "2,500 standing", "money": false }
   ],
+  "materials": [
+    { "qty": "1", "label": "Tranq Rifle", "note": null },
+    { "qty": "6", "label": "Vome Residue", "note": null },
+    { "qty": "6", "label": "Fass Residue", "note": null },
+    { "qty": "15", "label": "Pustulite", "note": null },
+    { "qty": "20", "label": "Ferment Bladder", "note": null },
+    { "qty": "12", "label": "Sporulate Sac", "note": null },
+    { "qty": "15", "label": "Ganglion", "note": null },
+    { "qty": "30", "label": "Benign Infested Tumor", "note": null },
+    { "qty": "15", "label": "Dendrite Blastoma", "note": null },
+    { "qty": "10", "label": "Son Token", "note": "gild at rank 30, Entrati Associate" }
+  ],
   "groups": [
     {
       "type": "gate",
@@ -85,7 +97,8 @@
         "Rank 1 Stranger is enough for the capture and revivify; Rank 3 only gates the gild."
       ],
       "bonuses": [],
-      "disclosures": []
+      "disclosures": [],
+      "ref": "Entrati Standing"
     },
     {
       "type": "vendor",
@@ -97,16 +110,9 @@
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Entrati standing", "amount": "3,000" }],
+      "spends": [{ "currency": "Entrati Standing", "amount": "3,000" }],
       "map": "necralisk",
       "rows": [
-        {
-          "qty": null,
-          "label": "Tranq Rifle",
-          "note": "500 standing, Neutral",
-          "alt": null,
-          "done": false
-        },
         {
           "qty": null,
           "label": "Leptosam Mutagen Blueprint",
@@ -128,62 +134,6 @@
       "bonuses": [
         "The Predasite Echo-Lure (1,000 standing) plus Pheromone Glands (150 each) at Stranger summon one on demand, though Viziers are common enough that it's rarely needed."
       ],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "CAMBION DRIFT, DEIMOS",
-      "sub": null,
-      "activity": "fish, cut at Daughter, and gather residue",
-      "meta": "Mutagen + Antigen ingredients",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": "cambion-drift",
-      "rows": [
-        {
-          "qty": "6",
-          "label": "Vome Residue",
-          "note": "blue zones during Fass",
-          "alt": null,
-          "done": false
-        },
-        { "qty": "6", "label": "Fass Residue", "note": "during Vome", "alt": null, "done": false },
-        { "qty": "15", "label": "Pustulite", "note": "Leptosam", "alt": null, "done": false },
-        {
-          "qty": "20",
-          "label": "Ferment Bladder",
-          "note": "fish part, Leptosam",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "12",
-          "label": "Sporulate Sac",
-          "note": "fish part or Drift cysts, Leptosam",
-          "alt": null,
-          "done": false
-        },
-        { "qty": "15", "label": "Ganglion", "note": "Iranon", "alt": null, "done": false },
-        {
-          "qty": "30",
-          "label": "Benign Infested Tumor",
-          "note": "fish part, Iranon",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "15",
-          "label": "Dendrite Blastoma",
-          "note": "fish part or Drift cysts, Iranon",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": ["Each residue only spawns in the opposite cycle to its name."],
-      "bonuses": [],
       "disclosures": []
     },
     {
@@ -254,7 +204,8 @@
           "title": "getting the Weakened hit",
           "body": "Near-unanimous: tranq it first, then kite Infested (Chargers work well) over and go invisible or into Void mode so the aggro switches to the sleeping animal. Infested still apply Weakened to a tranquilized, invulnerable animal. If kiting fails, throw a Pherliac Pod on it and Infested pile on; the pod parts drop from Juggernauts, 50 charges a craft for 7,500 credits. Bullet-jump slams and stray fire during bounties kill wild animals, and a dead target is gone."
         }
-      ]
+      ],
+      "ref": "Entrati Standing"
     },
     {
       "type": "vendor",
@@ -266,7 +217,7 @@
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Entrati standing", "amount": "5,000" }],
+      "spends": [{ "currency": "Entrati Standing", "amount": "5,000" }],
       "map": "necralisk",
       "rows": [
         {
@@ -274,13 +225,6 @@
           "label": "Vizier Predasite, revivified",
           "note": "Weakened Vizier + Mutagen + Antigen + 5,000 credits",
           "alt": null,
-          "done": false
-        },
-        {
-          "qty": "10",
-          "label": "Son Tokens",
-          "note": "gild at rank 30, Entrati Associate",
-          "alt": "donate a maxed Predasite or Vulpaphyla for 10, gilded for 15",
           "done": false
         }
       ],

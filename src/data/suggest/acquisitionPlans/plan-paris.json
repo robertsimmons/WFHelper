@@ -1,0 +1,117 @@
+{
+  "name": "Paris",
+  "kind": "primary",
+  "effort": 2,
+  "tradeable": false,
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "blueprint"
+  },
+  "badges": [
+    {
+      "text": "Market",
+      "tone": "info"
+    },
+    {
+      "text": "2,000 Nano Spores",
+      "tone": "info"
+    }
+  ],
+  "prices": [
+    {
+      "label": "blueprint",
+      "amount": "20,000 cr",
+      "money": false
+    },
+    {
+      "label": "build",
+      "amount": "15,000 cr",
+      "money": false
+    }
+  ],
+  "materials": [
+    {
+      "qty": "35,000",
+      "label": "Credits",
+      "note": null
+    },
+    {
+      "qty": "3",
+      "label": "Morphics",
+      "note": null
+    },
+    {
+      "qty": "600",
+      "label": "Plastids",
+      "note": null
+    },
+    {
+      "qty": "700",
+      "label": "Polymer Bundle",
+      "note": null
+    },
+    {
+      "qty": "2,000",
+      "label": "Nano Spores",
+      "note": null
+    }
+  ],
+  "groups": [
+    {
+      "type": "vendor",
+      "place": "MARKET",
+      "sub": null,
+      "activity": "buy blueprint",
+      "meta": "20,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [
+        {
+          "currency": "Credits",
+          "amount": "20,000"
+        }
+      ],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Paris Blueprint",
+          "note": "20,000 credits",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Paris",
+      "meta": "15,000 cr, 12h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Paris",
+          "note": "15,000 credits, 3 Morphics, 600 Plastids, 700 Polymer Bundle, 2,000 Nano Spores, 12h",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Paris, MK1-Paris and Paris Prime are separate Mastery items."],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

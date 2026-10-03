@@ -1,0 +1,93 @@
+{
+  "name": "Plasma Sword",
+  "kind": "melee",
+  "effort": 2,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 1, "unit": "blueprint" },
+  "badges": [{ "text": "Nightwave season only", "tone": "warn" }],
+  "prices": [
+    { "label": "blueprint", "amount": "50 Creds", "money": false },
+    { "label": "build", "amount": "20,000 cr", "money": false }
+  ],
+  "materials": [
+    { "qty": "1", "label": "Orokin Cell", "note": null },
+    { "qty": "500", "label": "Ferrite", "note": null },
+    { "qty": "450", "label": "Salvage", "note": null },
+    { "qty": "50", "label": "Polymer Bundle", "note": null },
+    { "qty": "20,000", "label": "Credits", "note": null }
+  ],
+  "groups": [
+    {
+      "type": "currency",
+      "place": "NIGHTWAVE",
+      "sub": null,
+      "activity": "rank up the current season for Creds",
+      "meta": "the first rank-up or two covers it",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "Nightwave Creds", "amount": "50" },
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "50",
+          "label": "Nightwave Creds",
+          "note": "10,000 standing per rank",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Creds belong to one season and expire when it ends. The offerings store is closed between seasons."
+      ],
+      "bonuses": [],
+      "disclosures": [],
+      "ref": "Nightwave Creds"
+    },
+    {
+      "type": "vendor",
+      "place": "NIGHTWAVE OFFERINGS",
+      "sub": null,
+      "activity": "buy the blueprint",
+      "meta": "always in stock while a season runs",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Nightwave Creds", "amount": "50" }],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Plasma Sword Blueprint", "note": null, "alt": null, "done": false }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build the Plasma Sword",
+      "meta": "12h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Plasma Sword",
+          "note": "20,000 cr, 1 Orokin Cell, 500 Ferrite, 450 Salvage, 50 Polymer Bundle",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

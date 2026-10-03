@@ -1,0 +1,213 @@
+{
+  "name": "Panthera",
+  "kind": "primary",
+  "effort": 4,
+  "tradeable": false,
+  "progress": {
+    "have": 0,
+    "need": 5,
+    "unit": "Miter parts"
+  },
+  "badges": [
+    {
+      "text": "Lech Kril",
+      "tone": "warn"
+    },
+    {
+      "text": "MR 7",
+      "tone": "info"
+    }
+  ],
+  "prices": [
+    {
+      "label": "blueprint",
+      "amount": "20,000 cr",
+      "money": false
+    },
+    {
+      "label": "Hikou blueprint",
+      "amount": "15,000 cr",
+      "money": false
+    },
+    {
+      "label": "build",
+      "amount": "20,000 cr",
+      "money": false
+    }
+  ],
+  "materials": [
+    {
+      "qty": "1",
+      "label": "Orokin Cell",
+      "note": "Panthera"
+    },
+    {
+      "qty": "600",
+      "label": "Polymer Bundle",
+      "note": "Panthera"
+    },
+    {
+      "qty": "5",
+      "label": "Morphics",
+      "note": "Hikou"
+    },
+    {
+      "qty": "500",
+      "label": "Plastids",
+      "note": "Hikou"
+    },
+    {
+      "qty": "600",
+      "label": "Rubedo",
+      "note": "Hikou"
+    },
+    {
+      "qty": "4,000",
+      "label": "Salvage",
+      "note": "Hikou"
+    },
+    {
+      "qty": "85,000",
+      "label": "Credits",
+      "note": null
+    }
+  ],
+  "groups": [
+    {
+      "type": "boss",
+      "place": "EXTA, CERES",
+      "sub": null,
+      "activity": "Assassination, Captain Vor and Lieutenant Lech Kril",
+      "meta": "16.67% per part, one roll per kill",
+      "mode": "solo",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Miter Blueprint",
+          "note": "16.67%",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Miter Barrel",
+          "note": "16.67%",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Miter Blade",
+          "note": "16.67%",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Miter Handle",
+          "note": "16.67%",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Miter Chassis",
+          "note": "16.67%",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Kril is invulnerable until a coolant tube breaks. Shoot the blue pack on his back, keep out of melee range so his slam freezes him, then hit him. Four tubes, then he takes full damage.",
+        "Cold procs lengthen his invulnerable windows; Heat thaws him early.",
+        "Staggering him or Proboscis Cernos can break the tube cycle for good; abort and rerun."
+      ],
+      "bonuses": ["The table also pays the Twin Gremlins Blueprint and Frost parts."],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "MARKET",
+      "sub": null,
+      "activity": "buy blueprints",
+      "meta": "35,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [
+        {
+          "currency": "Credits",
+          "amount": "35,000"
+        }
+      ],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Panthera Blueprint",
+          "note": "20,000 cr",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Hikou Blueprint",
+          "note": "15,000 cr",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Needs Mastery Rank 7."],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "Hikou and Miter, rank both to 30, then Panthera",
+      "meta": "12h each",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Hikou",
+          "note": "15,000 cr, 5 Morphics, 500 Plastids, 600 Rubedo, 4,000 Salvage",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Miter",
+          "note": "15,000 cr, Miter Blueprint, Barrel, Blade, Handle, Chassis",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Panthera",
+          "note": "20,000 cr, 1 Hikou, 1 Miter, 1 Orokin Cell, 600 Polymer Bundle",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Panthera consumes the Hikou and the Miter. Rank each to 30 first or lose that Mastery.",
+        "Hikou Prime does not satisfy the recipe; it needs the base Hikou."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

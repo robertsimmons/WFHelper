@@ -1,0 +1,112 @@
+{
+  "name": "Hikou",
+  "kind": "secondary",
+  "effort": 2,
+  "tradeable": null,
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "blueprint"
+  },
+  "badges": [
+    {
+      "text": "Market",
+      "tone": "info"
+    },
+    {
+      "text": "4,000 Salvage",
+      "tone": "info"
+    }
+  ],
+  "prices": [
+    {
+      "label": "blueprint",
+      "amount": "15,000 cr",
+      "money": false
+    },
+    {
+      "label": "build",
+      "amount": "15,000 cr",
+      "money": false
+    }
+  ],
+  "materials": [
+    {
+      "qty": "5",
+      "label": "Morphics",
+      "note": null
+    },
+    {
+      "qty": "500",
+      "label": "Plastids",
+      "note": null
+    },
+    {
+      "qty": "600",
+      "label": "Rubedo",
+      "note": null
+    },
+    {
+      "qty": "4,000",
+      "label": "Salvage",
+      "note": null
+    },
+    {
+      "qty": "30,000",
+      "label": "Credits",
+      "note": null
+    }
+  ],
+  "groups": [
+    {
+      "type": "vendor",
+      "place": "MARKET",
+      "sub": null,
+      "activity": "buy blueprint",
+      "meta": "15,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Hikou Blueprint",
+          "note": null,
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Hikou Prime is a separate Mastery item."],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Hikou",
+      "meta": "12h, 15,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Hikou",
+          "note": "5 Morphics, 500 Plastids, 600 Rubedo, 4,000 Salvage",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Panthera consumes a Hikou; rank it to 30 first so its Mastery is not lost."],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

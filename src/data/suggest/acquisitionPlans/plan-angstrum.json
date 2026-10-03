@@ -1,0 +1,115 @@
+{
+  "name": "Angstrum",
+  "kind": "secondary",
+  "effort": 3,
+  "tradeable": null,
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "blueprint"
+  },
+  "badges": [
+    {
+      "text": "2 Argon Crystal",
+      "tone": "warn"
+    },
+    {
+      "text": "MR 4",
+      "tone": "info"
+    }
+  ],
+  "prices": [
+    {
+      "label": "blueprint",
+      "amount": "25,000 cr",
+      "money": false
+    },
+    {
+      "label": "build",
+      "amount": "25,000 cr",
+      "money": false
+    }
+  ],
+  "materials": [
+    {
+      "qty": "600",
+      "label": "Alloy Plate",
+      "note": null
+    },
+    {
+      "qty": "400",
+      "label": "Circuits",
+      "note": null
+    },
+    {
+      "qty": "900",
+      "label": "Salvage",
+      "note": null
+    },
+    {
+      "qty": "2",
+      "label": "Argon Crystal",
+      "note": null
+    },
+    {
+      "qty": "50,000",
+      "label": "Credits",
+      "note": null
+    }
+  ],
+  "groups": [
+    {
+      "type": "vendor",
+      "place": "MARKET",
+      "sub": null,
+      "activity": "buy blueprint",
+      "meta": "25,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Angstrum Blueprint",
+          "note": null,
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Prisma Angstrum is a separate Mastery item."],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Angstrum",
+      "meta": "24h, 25,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Angstrum",
+          "note": "600 Alloy Plate, 400 Circuits, 900 Salvage, 2 Argon Crystal",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Argon Crystal halves every day at 00:00 GMT once it is a day old. Farm it last and start the build the same day.",
+        "Cancelling the build does not refund the Argon."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

@@ -1,0 +1,114 @@
+{
+  "name": "Halikar",
+  "kind": "melee",
+  "effort": 3,
+  "tradeable": null,
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "blueprint"
+  },
+  "badges": [
+    {
+      "text": "2 Argon Crystal",
+      "tone": "warn"
+    },
+    {
+      "text": "MR 7",
+      "tone": "info"
+    }
+  ],
+  "prices": [
+    {
+      "label": "blueprint",
+      "amount": "20,000 cr",
+      "money": false
+    },
+    {
+      "label": "build",
+      "amount": "15,000 cr",
+      "money": false
+    }
+  ],
+  "materials": [
+    {
+      "qty": "2",
+      "label": "Argon Crystal",
+      "note": null
+    },
+    {
+      "qty": "4,800",
+      "label": "Ferrite",
+      "note": null
+    },
+    {
+      "qty": "5,000",
+      "label": "Nano Spores",
+      "note": null
+    },
+    {
+      "qty": "500",
+      "label": "Oxium",
+      "note": null
+    },
+    {
+      "qty": "35,000",
+      "label": "Credits",
+      "note": null
+    }
+  ],
+  "groups": [
+    {
+      "type": "vendor",
+      "place": "MARKET",
+      "sub": null,
+      "activity": "buy blueprint",
+      "meta": "20,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Halikar Blueprint",
+          "note": null,
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Halikar Wraith is a separate Mastery item."],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Halikar",
+      "meta": "12h, 15,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Halikar",
+          "note": "2 Argon Crystal, 4,800 Ferrite, 5,000 Nano Spores, 500 Oxium",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Argon Crystal halves every day at 00:00 GMT once it is a day old. Farm it last and build the same day."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

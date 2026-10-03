@@ -1,0 +1,110 @@
+{
+  "name": "Boar",
+  "kind": "primary",
+  "effort": 4,
+  "tradeable": false,
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "blueprint"
+  },
+  "badges": [
+    {
+      "text": "0.50% blueprint drop",
+      "tone": "warn"
+    },
+    {
+      "text": "Sealab only",
+      "tone": "info"
+    }
+  ],
+  "prices": [
+    {
+      "label": "build",
+      "amount": "15,000 cr",
+      "money": false
+    }
+  ],
+  "materials": [
+    {
+      "qty": "15,000",
+      "label": "Credits",
+      "note": null
+    },
+    {
+      "qty": "6",
+      "label": "Morphics",
+      "note": null
+    },
+    {
+      "qty": "900",
+      "label": "Alloy Plate",
+      "note": null
+    },
+    {
+      "qty": "750",
+      "label": "Salvage",
+      "note": null
+    },
+    {
+      "qty": "900",
+      "label": "Plastids",
+      "note": null
+    }
+  ],
+  "groups": [
+    {
+      "type": "farm",
+      "place": "URANUS",
+      "sub": null,
+      "activity": "kill Drekar Troopers in Grineer Sealab tiles",
+      "meta": "0.50% per kill",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Boar Blueprint",
+          "note": "Drekar Trooper, 0.50%",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Drekar Troopers only spawn in Sealab tiles; other Grineer missions on Uranus or Earth waste time.",
+        "The Boar is off the Market."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Boar",
+      "meta": "15,000 cr, 12h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Boar",
+          "note": "15,000 credits, 6 Morphics, 900 Alloy Plate, 750 Salvage, 900 Plastids, 12h",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Boar and Boar Prime are separate Mastery items."],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

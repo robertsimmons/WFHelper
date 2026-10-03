@@ -1,0 +1,116 @@
+{
+  "name": "Twin Gremlins",
+  "kind": "secondary",
+  "effort": 4,
+  "tradeable": null,
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "blueprint"
+  },
+  "badges": [
+    {
+      "text": "Exta boss, 1 in 6",
+      "tone": "warn"
+    },
+    {
+      "text": "MR 5",
+      "tone": "info"
+    }
+  ],
+  "prices": [
+    {
+      "label": "build",
+      "amount": "25,000 cr",
+      "money": false
+    }
+  ],
+  "materials": [
+    {
+      "qty": "5",
+      "label": "Neurodes",
+      "note": null
+    },
+    {
+      "qty": "900",
+      "label": "Circuits",
+      "note": null
+    },
+    {
+      "qty": "1,500",
+      "label": "Salvage",
+      "note": null
+    },
+    {
+      "qty": "1,200",
+      "label": "Rubedo",
+      "note": null
+    },
+    {
+      "qty": "25,000",
+      "label": "Credits",
+      "note": null
+    }
+  ],
+  "groups": [
+    {
+      "type": "boss",
+      "place": "EXTA, CERES",
+      "sub": null,
+      "activity": "Assassination, Captain Vor and Lieutenant Lech Kril",
+      "meta": "one roll per kill",
+      "mode": "solo",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Twin Gremlins Blueprint",
+          "note": "16.67%",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Each kill rolls one of six: Miter Blueprint, Barrel, Blade, Handle, Chassis or the Twin Gremlins Blueprint, so Miter parts are the usual dud.",
+        "Kril is invulnerable in phase 1. Shoot the coolant pack on his back until a pipe breaks, and hit him while he is frozen. Four pipes make him fully vulnerable. Kill Vor too.",
+        "Avoid Cold procs, which lengthen his invulnerable windows. Radiation procs turn him on allies."
+      ],
+      "bonuses": ["Every run also rolls Frost parts and Miter parts."],
+      "disclosures": [
+        {
+          "title": "popping the pipes",
+          "body": "Explosive or high-burst weapons break pipes without precise aim: Arca Plasmor, Ignis aimed at the floor under him, Valkyr slams. Squadmates who pull his aggro or melee him disrupt his phases, so solo is usually faster."
+        }
+      ]
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Twin Gremlins",
+      "meta": "24h, 25,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Twin Gremlins",
+          "note": "5 Neurodes, 900 Circuits, 1,500 Salvage, 1,200 Rubedo",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

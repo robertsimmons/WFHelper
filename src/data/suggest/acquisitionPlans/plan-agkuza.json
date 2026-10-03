@@ -1,0 +1,278 @@
+{
+  "name": "Agkuza",
+  "kind": "archmelee",
+  "effort": 5,
+  "tradeable": "parts only, not the blueprint",
+  "progress": {
+    "have": 0,
+    "need": 3,
+    "unit": "parts"
+  },
+  "badges": [
+    {
+      "text": "3 syndicates to Rank 3",
+      "tone": "warn"
+    },
+    {
+      "text": "opposed factions",
+      "tone": "warn"
+    }
+  ],
+  "prices": [
+    {
+      "label": "blueprint",
+      "amount": "35,000 cr",
+      "money": false
+    },
+    {
+      "label": "3 parts",
+      "amount": "60,000 standing",
+      "money": false
+    },
+    {
+      "label": "build",
+      "amount": "25,000 cr",
+      "money": false
+    }
+  ],
+  "materials": [
+    {
+      "qty": "630,000",
+      "label": "Credits",
+      "note": null
+    }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "ORBITER",
+      "sub": null,
+      "activity": "The Archwing quest",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "The Archwing",
+          "note": "unlocks the blueprint and Archwing nodes",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "currency",
+      "place": "RELAY, RED VEIL AND STEEL MERIDIAN",
+      "sub": null,
+      "activity": "pledge Red Veil, then Steel Meridian",
+      "meta": "71,000 standing each, ~190,000 cr each",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": {
+        "currency": "Syndicate Standing",
+        "amount": "142,000"
+      },
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Red Veil initiation",
+          "note": "500 Alloy Plate, 10,000 cr",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Red Veil rank 1 (Respected)",
+          "note": "5,000 standing; 30,000 cr, 2 Gallium",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Red Veil rank 2 (Honored)",
+          "note": "22,000 standing; 50,000 cr, 1 Forma",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Red Veil rank 3 (Esteemed)",
+          "note": "44,000 standing; 100,000 cr, 1 Orokin Catalyst",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Steel Meridian initiation",
+          "note": "1,000 Salvage, 10,000 cr",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Steel Meridian rank 1 (Brave)",
+          "note": "5,000 standing; 30,000 cr, 2 Morphics",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Steel Meridian rank 2 (Valiant)",
+          "note": "22,000 standing; 50,000 cr, 1 Forma",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Steel Meridian rank 3 (Defender)",
+          "note": "44,000 standing; 100,000 cr, 1 Orokin Catalyst",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": ["The two are allies: standing with one gives the other +50%."],
+      "disclosures": [],
+      "ref": "Syndicate Standing"
+    },
+    {
+      "type": "currency",
+      "place": "RELAY, NEW LOKA",
+      "sub": null,
+      "activity": "pledge New Loka last",
+      "meta": "71,000 standing, ~190,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": {
+        "currency": "Syndicate Standing",
+        "amount": "71,000"
+      },
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "New Loka initiation",
+          "note": "1,000 Ferrite, 10,000 cr",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "New Loka rank 1 (Humane)",
+          "note": "5,000 standing; 30,000 cr, 2 Fieldron Sample",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "New Loka rank 2 (Bountiful)",
+          "note": "22,000 standing; 50,000 cr, 1 Forma",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "New Loka rank 3 (Benevolent)",
+          "note": "44,000 standing; 100,000 cr, 1 Orokin Reactor",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Pledging New Loka costs Steel Meridian 50% of what you earn, so finish Steel Meridian first."
+      ],
+      "bonuses": [],
+      "disclosures": [],
+      "ref": "Syndicate Standing"
+    },
+    {
+      "type": "vendor",
+      "place": "RELAY, SYNDICATE ENCLAVES",
+      "sub": null,
+      "activity": "buy Blade, Handle and Guard",
+      "meta": "20,000 standing each",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [
+        {
+          "currency": "Syndicate Standing",
+          "amount": "60,000"
+        }
+      ],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Agkuza Blade",
+          "note": "New Loka, rank 3",
+          "alt": "free as the rank 3 rank-up gift",
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Agkuza Handle",
+          "note": "Red Veil, rank 3",
+          "alt": "free as the rank 3 rank-up gift",
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Agkuza Guard",
+          "note": "Steel Meridian, rank 3",
+          "alt": "free as the rank 3 rank-up gift",
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Agkuza Blueprint",
+          "note": "Market, 35,000 cr",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Agkuza",
+      "meta": "12h, 25,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Agkuza",
+          "note": "Blueprint, Blade, Handle, Guard",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

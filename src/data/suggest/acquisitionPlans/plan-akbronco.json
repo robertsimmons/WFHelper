@@ -1,0 +1,89 @@
+{
+  "name": "Akbronco",
+  "kind": "secondary",
+  "effort": 2,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 2, "unit": "Broncos" },
+  "badges": [
+    { "text": "Market only", "tone": "info" },
+    { "text": "MR 2", "tone": "info" }
+  ],
+  "prices": [{ "label": "total", "amount": "110,000 cr", "money": false }],
+  "materials": [
+    { "qty": "4", "label": "Neurodes", "note": "two Broncos" },
+    { "qty": "2,400", "label": "Alloy Plate", "note": "two Broncos" },
+    { "qty": "1,400", "label": "Ferrite", "note": "two Broncos" },
+    { "qty": "1,600", "label": "Polymer Bundle", "note": "two Broncos" },
+    { "qty": "1", "label": "Orokin Cell", "note": "Akbronco" },
+    { "qty": "110,000", "label": "Credits", "note": null }
+  ],
+  "groups": [
+    {
+      "type": "vendor",
+      "place": "MARKET",
+      "sub": null,
+      "activity": "buy blueprints",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "2",
+          "label": "Bronco Blueprint",
+          "note": "15,000 cr each",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Akbronco Blueprint",
+          "note": "20,000 cr",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build two Broncos, then Akbronco",
+      "meta": "12h each, then 12h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "2",
+          "label": "Bronco",
+          "note": "20,000 cr, 2 Neurodes, 1,200 Alloy Plate, 700 Ferrite, 800 Polymer Bundle each; both can build at once",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Akbronco",
+          "note": "20,000 cr, 2 Broncos, 1 Orokin Cell",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Rank one Bronco to 30 before crafting: Mastery is earned once per item type, and the build consumes both.",
+        "Akbronco Prime is a separate item that needs Bronco Primes."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

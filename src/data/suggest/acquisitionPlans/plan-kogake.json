@@ -1,0 +1,77 @@
+{
+  "name": "Kogake",
+  "kind": "melee",
+  "effort": 2,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 1, "unit": "weapon" },
+  "badges": [
+    { "text": "Market only", "tone": "info" },
+    { "text": "MR 2", "tone": "info" }
+  ],
+  "prices": [
+    { "label": "blueprint", "amount": "15,000 cr", "money": false },
+    { "label": "build", "amount": "30,000 cr", "money": false }
+  ],
+  "materials": [
+    { "qty": "3", "label": "Morphics", "note": null },
+    { "qty": "1,200", "label": "Ferrite", "note": null },
+    { "qty": "500", "label": "Alloy Plate", "note": null },
+    { "qty": "400", "label": "Rubedo", "note": null },
+    { "qty": "45,000", "label": "Credits", "note": null }
+  ],
+  "groups": [
+    {
+      "type": "vendor",
+      "place": "MARKET",
+      "sub": null,
+      "activity": "buy the blueprint",
+      "meta": "15,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Kogake Blueprint",
+          "note": "15,000 cr",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build the Kogake",
+      "meta": "12h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Kogake",
+          "note": "30,000 cr, 1,200 Ferrite, 500 Alloy Plate, 400 Rubedo, 3 Morphics",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Hirudo consumes a Kogake; rank it to 30 first or the Mastery needs a second build.",
+        "Kogake Prime is a separate Mastery item."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

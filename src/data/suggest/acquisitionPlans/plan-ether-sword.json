@@ -1,0 +1,112 @@
+{
+  "name": "Ether Sword",
+  "kind": "melee",
+  "effort": 1,
+  "tradeable": null,
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "blueprint"
+  },
+  "badges": [
+    {
+      "text": "Market",
+      "tone": "info"
+    },
+    {
+      "text": "MR 7",
+      "tone": "info"
+    }
+  ],
+  "prices": [
+    {
+      "label": "blueprint",
+      "amount": "20,000 cr",
+      "money": false
+    },
+    {
+      "label": "build",
+      "amount": "20,000 cr",
+      "money": false
+    }
+  ],
+  "materials": [
+    {
+      "qty": "4",
+      "label": "Morphics",
+      "note": null
+    },
+    {
+      "qty": "700",
+      "label": "Rubedo",
+      "note": null
+    },
+    {
+      "qty": "900",
+      "label": "Ferrite",
+      "note": null
+    },
+    {
+      "qty": "700",
+      "label": "Alloy Plate",
+      "note": null
+    },
+    {
+      "qty": "40,000",
+      "label": "Credits",
+      "note": null
+    }
+  ],
+  "groups": [
+    {
+      "type": "vendor",
+      "place": "MARKET",
+      "sub": null,
+      "activity": "buy blueprint",
+      "meta": "20,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Ether Sword Blueprint",
+          "note": null,
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Dual Ether, Ether Daggers and Ether Reaper are separate Mastery items."],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Ether Sword",
+      "meta": "12h, 20,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Ether Sword",
+          "note": "4 Morphics, 700 Rubedo, 900 Ferrite, 700 Alloy Plate",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

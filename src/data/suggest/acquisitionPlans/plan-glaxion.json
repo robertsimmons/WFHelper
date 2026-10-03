@@ -1,0 +1,117 @@
+{
+  "name": "Glaxion",
+  "kind": "primary",
+  "effort": 2,
+  "tradeable": null,
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "blueprint"
+  },
+  "badges": [
+    {
+      "text": "Energy Lab",
+      "tone": "warn"
+    },
+    {
+      "text": "2,500 Cryotic",
+      "tone": "info"
+    }
+  ],
+  "prices": [
+    {
+      "label": "lab blueprint",
+      "amount": "15,000 cr",
+      "money": false
+    },
+    {
+      "label": "build",
+      "amount": "20,000 cr",
+      "money": false
+    }
+  ],
+  "materials": [
+    {
+      "qty": "1",
+      "label": "Fieldron",
+      "note": null
+    },
+    {
+      "qty": "550",
+      "label": "Circuits",
+      "note": null
+    },
+    {
+      "qty": "2,500",
+      "label": "Cryotic",
+      "note": null
+    },
+    {
+      "qty": "1",
+      "label": "Forma",
+      "note": null
+    },
+    {
+      "qty": "35,000",
+      "label": "Credits",
+      "note": null
+    }
+  ],
+  "groups": [
+    {
+      "type": "vendor",
+      "place": "CLAN DOJO, ENERGY LAB",
+      "sub": null,
+      "activity": "buy the blueprint",
+      "meta": "15,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [
+        {
+          "currency": "Credits",
+          "amount": "15,000"
+        }
+      ],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Glaxion Blueprint",
+          "note": "15,000 cr",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Glaxion",
+      "meta": "24h, 20,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Glaxion",
+          "note": "1 Fieldron, 550 Circuits, 2,500 Cryotic, 1 Forma",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Glaxion Vandal, Tenet Glaxion and Verglas are separate Mastery items."],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

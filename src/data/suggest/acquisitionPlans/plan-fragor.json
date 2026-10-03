@@ -1,0 +1,73 @@
+{
+  "name": "Fragor",
+  "kind": "melee",
+  "effort": 1,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 1, "unit": "blueprint" },
+  "badges": [
+    { "text": "Free from Earth to Mars Junction", "tone": "info" },
+    { "text": "MR 2", "tone": "info" }
+  ],
+  "prices": [
+    { "label": "blueprint", "amount": "15,000 cr", "money": false },
+    { "label": "build", "amount": "30,000 cr", "money": false }
+  ],
+  "materials": [
+    { "qty": "3", "label": "Gallium", "note": null },
+    { "qty": "750", "label": "Salvage", "note": null },
+    { "qty": "300", "label": "Rubedo", "note": null },
+    { "qty": "80", "label": "Alloy Plate", "note": null },
+    { "qty": "45,000", "label": "Credits", "note": null }
+  ],
+  "groups": [
+    {
+      "type": "vendor",
+      "place": "MARKET",
+      "sub": null,
+      "activity": "buy the blueprint",
+      "meta": "15,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Credits", "amount": "15,000" }],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Fragor Blueprint", "note": null, "alt": null, "done": false }
+      ],
+      "conditions": ["Fragor Prime is a separate Mastery item and does not cover this one."],
+      "bonuses": [],
+      "disclosures": [
+        {
+          "title": "Earth to Mars Junction",
+          "body": "Since Update 38 the junction awards a built Fragor with a free weapon slot and an Orokin Catalyst, which skips the Market purchase and the build."
+        }
+      ]
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build the Fragor",
+      "meta": "12h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Fragor",
+          "note": "30,000 cr, 3 Gallium, 750 Salvage, 300 Rubedo, 80 Alloy Plate",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

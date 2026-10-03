@@ -1,0 +1,68 @@
+{
+  "name": "Seer",
+  "kind": "secondary",
+  "effort": 3,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 3, "unit": "parts" },
+  "badges": [{ "text": "Captain Vor drops", "tone": "info" }],
+  "prices": [{ "label": "build", "amount": "15,000 cr", "money": false }],
+  "materials": [
+    { "qty": "2", "label": "Orokin Cell", "note": null },
+    { "qty": "15,000", "label": "Credits", "note": null }
+  ],
+  "groups": [
+    {
+      "type": "boss",
+      "place": "TOLSTOJ, MERCURY",
+      "sub": "Captain Vor assassination",
+      "activity": "kill Captain Vor",
+      "meta": "one part per kill",
+      "mode": "solo",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Seer Blueprint", "note": "38.72%", "alt": null, "done": false },
+        { "qty": null, "label": "Seer Barrel", "note": "38.72%", "alt": null, "done": false },
+        { "qty": null, "label": "Seer Receiver", "note": "22.56%", "alt": null, "done": false }
+      ],
+      "conditions": [
+        "Run the normal Tolstoj node, not the Janus variant, which is a much harder glyph puzzle fight."
+      ],
+      "bonuses": ["Vor can also drop Orokin Cells."],
+      "disclosures": [
+        {
+          "title": "stuck boss bug",
+          "body": "Reported in 2025: Vor can lock in his first room after the second health bar. Abort and restart."
+        }
+      ]
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build the Seer",
+      "meta": "12h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Seer",
+          "note": "15,000 cr, 1 Seer Barrel, 1 Seer Receiver, 2 Orokin Cell",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

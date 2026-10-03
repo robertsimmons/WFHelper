@@ -1,0 +1,217 @@
+{
+  "name": "Rathbone",
+  "kind": "archmelee",
+  "effort": 4,
+  "tradeable": "Head and Handle, not the blueprint",
+  "progress": {
+    "have": 0,
+    "need": 3,
+    "unit": "parts"
+  },
+  "badges": [
+    {
+      "text": "2 syndicates to rank 2",
+      "tone": "warn"
+    },
+    {
+      "text": "MR 6",
+      "tone": "info"
+    }
+  ],
+  "prices": [
+    {
+      "label": "blueprint",
+      "amount": "35,000 cr",
+      "money": false
+    },
+    {
+      "label": "Head + Handle",
+      "amount": "40,000 standing",
+      "money": false
+    },
+    {
+      "label": "build",
+      "amount": "25,000 cr",
+      "money": false
+    }
+  ],
+  "materials": [
+    {
+      "qty": "300",
+      "label": "Circuits",
+      "note": null
+    },
+    {
+      "qty": "1",
+      "label": "Control Module",
+      "note": null
+    },
+    {
+      "qty": "240,000",
+      "label": "Credits",
+      "note": null
+    }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "ORBITER",
+      "sub": null,
+      "activity": "The Archwing quest",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "The Archwing",
+          "note": "Archmelee only works in Archwing missions",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "currency",
+      "place": "RELAY, RED VEIL AND NEW LOKA",
+      "sub": null,
+      "activity": "pledge one, rank it to 2, then switch",
+      "meta": "47,000 standing each",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": {
+        "currency": "Syndicate Standing",
+        "amount": "94,000"
+      },
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Red Veil initiation",
+          "note": "500 Alloy Plate, 10,000 cr",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Red Veil rank 1 (Respected)",
+          "note": "5,000 standing; 30,000 cr, 2 Gallium",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Red Veil rank 2 (Honored)",
+          "note": "22,000 standing; 50,000 cr, 1 Forma",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "New Loka initiation",
+          "note": "1,000 Ferrite, 10,000 cr",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "New Loka rank 1 (Humane)",
+          "note": "5,000 standing; 30,000 cr, 2 Fieldron Sample",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "New Loka rank 2 (Bountiful)",
+          "note": "22,000 standing; 50,000 cr, 1 Forma",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Red Veil earns Steel Meridian +50% and costs Cephalon Suda and Arbiters of Hexis. New Loka earns Perrin +50% and costs Steel Meridian."
+      ],
+      "bonuses": [],
+      "disclosures": [],
+      "ref": "Syndicate Standing"
+    },
+    {
+      "type": "vendor",
+      "place": "RELAY, SYNDICATE ENCLAVES",
+      "sub": null,
+      "activity": "buy Head and Handle",
+      "meta": "20,000 standing each",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [
+        {
+          "currency": "Syndicate Standing",
+          "amount": "40,000"
+        }
+      ],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Rathbone Head",
+          "note": "New Loka, rank 2",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Rathbone Handle",
+          "note": "Red Veil, rank 2",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Rathbone Blueprint",
+          "note": "Market, 35,000 cr",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Rathbone",
+      "meta": "12h, 25,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Rathbone",
+          "note": "Blueprint, Head, Handle, 300 Circuits, 1 Control Module",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

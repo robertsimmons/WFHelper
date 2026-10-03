@@ -1,0 +1,65 @@
+{
+  "name": "Tetra",
+  "kind": "primary",
+  "effort": 2,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 1, "unit": "weapon" },
+  "badges": [{ "text": "Market only", "tone": "info" }],
+  "prices": [
+    { "label": "blueprint", "amount": "30,000 cr", "money": false },
+    { "label": "build", "amount": "30,000 cr", "money": false }
+  ],
+  "materials": [
+    { "qty": "2", "label": "Control Module", "note": null },
+    { "qty": "400", "label": "Alloy Plate", "note": null },
+    { "qty": "900", "label": "Ferrite", "note": null },
+    { "qty": "100", "label": "Polymer Bundle", "note": null },
+    { "qty": "60,000", "label": "Credits", "note": null }
+  ],
+  "groups": [
+    {
+      "type": "vendor",
+      "place": "MARKET",
+      "sub": null,
+      "activity": "buy the blueprint",
+      "meta": "30,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Tetra Blueprint", "note": "30,000 cr", "alt": null, "done": false }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build the Tetra",
+      "meta": "24h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Tetra",
+          "note": "30,000 cr, 2 Control Module, 400 Alloy Plate, 900 Ferrite, 100 Polymer Bundle",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Prisma Tetra and Tenet Tetra are separate Mastery items."],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

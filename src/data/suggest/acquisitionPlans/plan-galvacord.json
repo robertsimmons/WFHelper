@@ -1,0 +1,151 @@
+{
+  "name": "Galvacord",
+  "kind": "melee",
+  "effort": 6,
+  "tradeable": false,
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "blueprint"
+  },
+  "badges": [
+    {
+      "text": "Atmo Systems",
+      "tone": "warn"
+    },
+    {
+      "text": "MR 6",
+      "tone": "info"
+    }
+  ],
+  "prices": [
+    {
+      "label": "blueprint",
+      "amount": "20,000 cr",
+      "money": false
+    },
+    {
+      "label": "build",
+      "amount": "20,000 cr",
+      "money": false
+    }
+  ],
+  "materials": [
+    {
+      "qty": "5",
+      "label": "Atmo Systems",
+      "note": "Profit-Taker heist drop"
+    },
+    {
+      "qty": "2",
+      "label": "Argon Crystal",
+      "note": null
+    },
+    {
+      "qty": "3,600",
+      "label": "Ferrite",
+      "note": null
+    },
+    {
+      "qty": "1,000",
+      "label": "Circuits",
+      "note": null
+    },
+    {
+      "qty": "40,000",
+      "label": "Credits",
+      "note": null
+    }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "FORTUNA, VENUS",
+      "sub": null,
+      "activity": "reach Solaris United Rank 5",
+      "meta": "Profit-Taker heists open at Old Mate",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Solaris United Rank 5 (Old Mate)",
+          "note": "unlocks the Profit-Taker heists from Eudico",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Atmo Systems drop at 10% per heist phase, 5 per drop, so one drop covers the build."
+      ],
+      "bonuses": [],
+      "disclosures": [
+        {
+          "title": "buying Atmo Systems instead",
+          "body": "From Rank 3 (Hand) Little Duck sells Atmo Systems for 2,500 Vox Solaris Standing each. Reaching Hand costs 1 Atmo Systems, so the first one still has to drop from a heist."
+        }
+      ]
+    },
+    {
+      "type": "vendor",
+      "place": "MARKET",
+      "sub": null,
+      "activity": "buy blueprint",
+      "meta": "20,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [
+        {
+          "currency": "Credits",
+          "amount": "20,000"
+        }
+      ],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Galvacord Blueprint",
+          "note": null,
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Needs Mastery Rank 6."],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Galvacord",
+      "meta": "12h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Galvacord",
+          "note": "20,000 cr, 5 Atmo Systems, 2 Argon Crystal, 3,600 Ferrite, 1,000 Circuits",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Collect the Argon Crystal on the day you build. Stored crystals halve every day at 00:00 GMT."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "name": "MK1-Furis",
+  "kind": "secondary",
+  "effort": 1,
+  "tradeable": false,
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "weapon"
+  },
+  "badges": [
+    {
+      "text": "Market",
+      "tone": "info"
+    }
+  ],
+  "prices": [
+    {
+      "label": "built",
+      "amount": "15,000 cr",
+      "money": false
+    }
+  ],
+  "materials": [
+    {
+      "qty": "15,000",
+      "label": "Credits",
+      "note": null
+    }
+  ],
+  "groups": [
+    {
+      "type": "vendor",
+      "place": "MARKET",
+      "sub": null,
+      "activity": "buy the built MK1-Furis",
+      "meta": "15,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [
+        {
+          "currency": "Credits",
+          "amount": "15,000"
+        }
+      ],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "MK1-Furis",
+          "note": "arrives built, no blueprint or build time",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Selling it before rank 30 forfeits the Mastery; the buyback is 2,500 cr and a rebuy is 15,000 cr.",
+        "It is a separate Mastery item from the Furis, Afuris and Dex Furis."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

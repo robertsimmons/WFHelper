@@ -1,0 +1,112 @@
+{
+  "name": "Viper Wraith",
+  "kind": "secondary",
+  "effort": 2,
+  "tradeable": "unranked, no Forma or Catalyst, buyer MR 4+",
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "weapon"
+  },
+  "badges": [
+    {
+      "text": "Baro Ki'Teer only",
+      "tone": "warn"
+    },
+    {
+      "text": "400 Ducats",
+      "tone": "info"
+    }
+  ],
+  "prices": [
+    {
+      "label": "credits",
+      "amount": "75,000 cr",
+      "money": false
+    },
+    {
+      "label": "Ducats",
+      "amount": "400",
+      "money": false
+    }
+  ],
+  "materials": [
+    {
+      "qty": "75,000",
+      "label": "Credits",
+      "note": null
+    }
+  ],
+  "groups": [
+    {
+      "type": "currency",
+      "place": "VOID FISSURES, ANY",
+      "sub": null,
+      "activity": "open Void Relics for Prime parts, sell them for Ducats",
+      "meta": "bank Ducats before Baro arrives",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": {
+        "currency": "Orokin Ducats",
+        "amount": "400"
+      },
+      "spends": [],
+      "map": "void",
+      "rows": [
+        {
+          "qty": null,
+          "label": "sell Prime parts at a Ducat Kiosk",
+          "note": "gold 100, silver 45, bronze 15 Ducats",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Ducat Kiosks are closed at Maroo's Bazaar; use a regular relay."],
+      "bonuses": [],
+      "disclosures": [],
+      "ref": "Orokin Ducats"
+    },
+    {
+      "type": "vendor",
+      "place": "RELAY, CONCOURSE",
+      "sub": null,
+      "activity": "check Baro's rotating stock, then buy if listed",
+      "meta": "arrives every 2 weeks, stays ~48h",
+      "mode": null,
+      "live": {
+        "state": "waiting",
+        "text": "check the Ducat Kiosk countdown for his next relay"
+      },
+      "skip": null,
+      "earns": null,
+      "spends": [
+        {
+          "currency": "Credits",
+          "amount": "75,000"
+        },
+        {
+          "currency": "Orokin Ducats",
+          "amount": "400"
+        }
+      ],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Viper Wraith",
+          "note": "75,000 credits + 400 Ducats, only when in his rotating stock",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Baro's stock changes every visit and the Viper Wraith is not guaranteed; gaps run from weeks to several months.",
+        "It arrives as the finished weapon: no blueprint, no crafting step.",
+        "Needs Mastery Rank 4."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

@@ -1,0 +1,119 @@
+{
+  "name": "Latron",
+  "kind": "primary",
+  "effort": 2,
+  "tradeable": false,
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "blueprint"
+  },
+  "badges": [
+    {
+      "text": "Market",
+      "tone": "info"
+    },
+    {
+      "text": "5 Morphics",
+      "tone": "info"
+    }
+  ],
+  "prices": [
+    {
+      "label": "blueprint",
+      "amount": "20,000 cr",
+      "money": false
+    },
+    {
+      "label": "build",
+      "amount": "20,000 cr",
+      "money": false
+    }
+  ],
+  "materials": [
+    {
+      "qty": "40,000",
+      "label": "Credits",
+      "note": null
+    },
+    {
+      "qty": "5",
+      "label": "Morphics",
+      "note": null
+    },
+    {
+      "qty": "800",
+      "label": "Plastids",
+      "note": null
+    },
+    {
+      "qty": "1,000",
+      "label": "Alloy Plate",
+      "note": null
+    },
+    {
+      "qty": "900",
+      "label": "Salvage",
+      "note": null
+    }
+  ],
+  "groups": [
+    {
+      "type": "vendor",
+      "place": "MARKET",
+      "sub": null,
+      "activity": "buy blueprint",
+      "meta": "20,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [
+        {
+          "currency": "Credits",
+          "amount": "20,000"
+        }
+      ],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Latron Blueprint",
+          "note": "20,000 credits",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Latron",
+      "meta": "20,000 cr, 12h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Latron",
+          "note": "20,000 credits, 5 Morphics, 800 Plastids, 1,000 Alloy Plate, 900 Salvage, 12h",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The Tiberon recipe consumes a Latron. Rank it to 30 first or build another for its Mastery."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

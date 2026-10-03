@@ -1,0 +1,117 @@
+{
+  "name": "Vulkar",
+  "kind": "primary",
+  "effort": 2,
+  "tradeable": false,
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "blueprint"
+  },
+  "badges": [
+    {
+      "text": "Market",
+      "tone": "info"
+    },
+    {
+      "text": "MR 3",
+      "tone": "info"
+    }
+  ],
+  "prices": [
+    {
+      "label": "blueprint",
+      "amount": "20,000 cr",
+      "money": false
+    },
+    {
+      "label": "build",
+      "amount": "20,000 cr",
+      "money": false
+    }
+  ],
+  "materials": [
+    {
+      "qty": "40,000",
+      "label": "Credits",
+      "note": null
+    },
+    {
+      "qty": "5",
+      "label": "Morphics",
+      "note": null
+    },
+    {
+      "qty": "800",
+      "label": "Circuits",
+      "note": null
+    },
+    {
+      "qty": "1,200",
+      "label": "Salvage",
+      "note": null
+    },
+    {
+      "qty": "800",
+      "label": "Plastids",
+      "note": null
+    }
+  ],
+  "groups": [
+    {
+      "type": "vendor",
+      "place": "MARKET",
+      "sub": null,
+      "activity": "buy blueprint",
+      "meta": "20,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [
+        {
+          "currency": "Credits",
+          "amount": "20,000"
+        }
+      ],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Vulkar Blueprint",
+          "note": "20,000 credits",
+          "alt": "or free from the Mars to Ceres Junction",
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Vulkar",
+      "meta": "20,000 cr, 12h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Vulkar",
+          "note": "20,000 credits, 5 Morphics, 800 Circuits, 1,200 Salvage, 800 Plastids, 12h",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Vulkar and Vulkar Wraith are separate Mastery items."],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

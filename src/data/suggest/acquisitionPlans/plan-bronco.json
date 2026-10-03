@@ -1,0 +1,118 @@
+{
+  "name": "Bronco",
+  "kind": "secondary",
+  "effort": 1,
+  "tradeable": false,
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "blueprint"
+  },
+  "badges": [
+    {
+      "text": "Market",
+      "tone": "info"
+    }
+  ],
+  "prices": [
+    {
+      "label": "blueprint",
+      "amount": "15,000 cr",
+      "money": false
+    },
+    {
+      "label": "build",
+      "amount": "20,000 cr",
+      "money": false
+    }
+  ],
+  "materials": [
+    {
+      "qty": "2",
+      "label": "Neurodes",
+      "note": null
+    },
+    {
+      "qty": "1,200",
+      "label": "Alloy Plate",
+      "note": null
+    },
+    {
+      "qty": "700",
+      "label": "Ferrite",
+      "note": null
+    },
+    {
+      "qty": "800",
+      "label": "Polymer Bundle",
+      "note": null
+    },
+    {
+      "qty": "35,000",
+      "label": "Credits",
+      "note": null
+    }
+  ],
+  "groups": [
+    {
+      "type": "vendor",
+      "place": "MARKET",
+      "sub": null,
+      "activity": "buy the Bronco Blueprint",
+      "meta": "15,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [
+        {
+          "currency": "Credits",
+          "amount": "15,000"
+        }
+      ],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Bronco Blueprint",
+          "note": null,
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Bronco Prime and Akbronco are separate Mastery items."],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Bronco",
+      "meta": "20,000 cr, 12h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [
+        {
+          "currency": "Credits",
+          "amount": "20,000"
+        }
+      ],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Bronco",
+          "note": "20,000 cr, 2 Neurodes, 1,200 Alloy Plate, 700 Ferrite, 800 Polymer Bundle",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Akbronco consumes two Broncos; rank the first to 30 before building it."],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

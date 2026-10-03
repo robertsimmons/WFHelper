@@ -1,0 +1,124 @@
+{
+  "name": "Snipetron",
+  "kind": "primary",
+  "effort": 4,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 1, "unit": "blueprint" },
+  "badges": [
+    { "text": "Event only", "tone": "warn" },
+    { "text": "Plague Star or Star Days", "tone": "info" }
+  ],
+  "prices": [
+    { "label": "Plague Star", "amount": "3,000 standing + 5,000 cr", "money": false },
+    { "label": "Star Days", "amount": "8 Advances Debt-Bonds", "money": false },
+    { "label": "build", "amount": "20,000 cr", "money": false }
+  ],
+  "materials": [
+    { "qty": "10", "label": "Grokdrul", "note": "Plague Star rank 1" },
+    { "qty": "5", "label": "Morphics", "note": null },
+    { "qty": "900", "label": "Plastids", "note": null },
+    { "qty": "1,200", "label": "Salvage", "note": null },
+    { "qty": "900", "label": "Alloy Plate", "note": null },
+    { "qty": "30,000", "label": "Credits", "note": "5,000 rank 1, 5,000 blueprint, 20,000 build" }
+  ],
+  "groups": [
+    {
+      "type": "currency",
+      "place": "CETUS, PLAINS OF EIDOLON",
+      "sub": "Operation: Plague Star",
+      "activity": "run the Plague Star bounty for Operational Supply standing",
+      "meta": "about 4,000 standing in total",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "Operational Supply Standing", "amount": "4,000" },
+      "spends": [],
+      "map": "plains-of-eidolon",
+      "rows": [
+        {
+          "qty": "1,000",
+          "label": "Rank 1 Collaborator",
+          "note": "also 10 Grokdrul and 5,000 credits",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "3,000",
+          "label": "Snipetron Blueprint price",
+          "note": null,
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Operational Supply only exists while Plague Star runs, so stockpile the build resources before it starts."
+      ],
+      "bonuses": [],
+      "disclosures": [
+        {
+          "title": "bounty tiers",
+          "body": "The basic bounty pays 1,025 standing, Advanced 3,200 and Steel Path 3,800, plus 25, 75 or 100 for keeping the drone above 80% health. Advanced and Steel Path each cost an Eidolon Phylaxis and an Infested Catalyst."
+        }
+      ],
+      "ref": "Operational Supply Standing"
+    },
+    {
+      "type": "vendor",
+      "place": "NAKAK, CETUS",
+      "sub": null,
+      "activity": "buy the blueprint during Plague Star",
+      "meta": "3,000 standing and 5,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [
+        { "currency": "Operational Supply Standing", "amount": "3,000" },
+        { "currency": "Credits", "amount": "5,000" }
+      ],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Snipetron Blueprint",
+          "note": null,
+          "alt": {
+            "text": "Ticker in Fortuna sells it during Star Days",
+            "spends": [{ "currency": "Advances Debt-Bond", "amount": "8" }]
+          },
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Rank 1 Collaborator is required first. The Snipetron Vandal is a separate Mastery item."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build the Snipetron",
+      "meta": "12h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Snipetron",
+          "note": "20,000 cr, 5 Morphics, 900 Plastids, 1,200 Salvage, 900 Alloy Plate",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

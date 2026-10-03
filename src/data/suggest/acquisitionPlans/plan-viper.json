@@ -1,0 +1,71 @@
+{
+  "name": "Viper",
+  "kind": "secondary",
+  "effort": 2,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 1, "unit": "weapon" },
+  "badges": [
+    { "text": "Market only", "tone": "info" },
+    { "text": "MR 4", "tone": "info" }
+  ],
+  "prices": [
+    { "label": "blueprint", "amount": "20,000 cr", "money": false },
+    { "label": "build", "amount": "20,000 cr", "money": false }
+  ],
+  "materials": [
+    { "qty": "1", "label": "Morphics", "note": null },
+    { "qty": "300", "label": "Salvage", "note": null },
+    { "qty": "600", "label": "Ferrite", "note": null },
+    { "qty": "900", "label": "Nano Spores", "note": null },
+    { "qty": "40,000", "label": "Credits", "note": null }
+  ],
+  "groups": [
+    {
+      "type": "vendor",
+      "place": "MARKET",
+      "sub": null,
+      "activity": "buy the blueprint",
+      "meta": "20,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Viper Blueprint", "note": "20,000 cr", "alt": null, "done": false }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build the Viper",
+      "meta": "12h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Viper",
+          "note": "20,000 cr, 1 Morphics, 300 Salvage, 600 Ferrite, 900 Nano Spores",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Twin Vipers consumes two Vipers; rank one to 30 first or the Mastery needs a second build.",
+        "Viper Wraith is a separate Mastery item."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

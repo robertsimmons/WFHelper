@@ -1,0 +1,40 @@
+{
+  "name": "Aklato",
+  "kind": "secondary",
+  "effort": 1,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 1, "unit": "weapon" },
+  "badges": [
+    { "text": "Market only", "tone": "info" },
+    { "text": "MR 3", "tone": "info" }
+  ],
+  "prices": [{ "label": "Market", "amount": "25,000 cr", "money": false }],
+  "materials": [{ "qty": "25,000", "label": "Credits", "note": null }],
+  "groups": [
+    {
+      "type": "vendor",
+      "place": "MARKET",
+      "sub": null,
+      "activity": "buy the Aklato built",
+      "meta": "25,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Aklato",
+          "note": "arrives built; no blueprint or Foundry step",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Owning Lato or Lato Prime does not cover it; Aklato has its own Mastery."],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

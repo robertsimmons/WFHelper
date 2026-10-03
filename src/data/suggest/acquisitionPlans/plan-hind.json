@@ -1,0 +1,68 @@
+{
+  "name": "Hind",
+  "kind": "primary",
+  "effort": 2,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 1, "unit": "weapon" },
+  "badges": [
+    { "text": "Market only", "tone": "info" },
+    { "text": "6 Neurodes", "tone": "info" }
+  ],
+  "prices": [
+    { "label": "blueprint", "amount": "40,000 cr", "money": false },
+    { "label": "build", "amount": "25,000 cr", "money": false }
+  ],
+  "materials": [
+    { "qty": "6", "label": "Neurodes", "note": null },
+    { "qty": "700", "label": "Circuits", "note": null },
+    { "qty": "1,000", "label": "Salvage", "note": null },
+    { "qty": "1,200", "label": "Rubedo", "note": null },
+    { "qty": "65,000", "label": "Credits", "note": null }
+  ],
+  "groups": [
+    {
+      "type": "vendor",
+      "place": "MARKET",
+      "sub": null,
+      "activity": "buy the blueprint",
+      "meta": "40,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Hind Blueprint", "note": "40,000 cr", "alt": null, "done": false }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build the Hind",
+      "meta": "24h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Hind",
+          "note": "25,000 cr, 6 Neurodes, 700 Circuits, 1,000 Salvage, 1,200 Rubedo",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Kuva Hind is a separate Lich weapon with its own Mastery."],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

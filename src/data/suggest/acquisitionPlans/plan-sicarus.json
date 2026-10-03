@@ -1,0 +1,70 @@
+{
+  "name": "Sicarus",
+  "kind": "secondary",
+  "effort": 1,
+  "tradeable": false,
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "weapon"
+  },
+  "badges": [
+    {
+      "text": "Market",
+      "tone": "info"
+    },
+    {
+      "text": "MR 3",
+      "tone": "warn"
+    }
+  ],
+  "prices": [
+    {
+      "label": "built",
+      "amount": "20,000 cr",
+      "money": false
+    }
+  ],
+  "materials": [
+    {
+      "qty": "20,000",
+      "label": "Credits",
+      "note": null
+    }
+  ],
+  "groups": [
+    {
+      "type": "vendor",
+      "place": "MARKET",
+      "sub": null,
+      "activity": "buy the built Sicarus",
+      "meta": "20,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [
+        {
+          "currency": "Credits",
+          "amount": "20,000"
+        }
+      ],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Sicarus",
+          "note": "arrives built, no blueprint or build time",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Mastery Rank 3 is required.",
+        "Sicarus Prime is a separate Mastery item and does not cover this one."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

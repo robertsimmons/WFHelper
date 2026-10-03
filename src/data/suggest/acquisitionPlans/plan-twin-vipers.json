@@ -1,0 +1,94 @@
+{
+  "name": "Twin Vipers",
+  "kind": "secondary",
+  "effort": 2,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 2, "unit": "Vipers" },
+  "badges": [
+    { "text": "Market only", "tone": "info" },
+    { "text": "MR 5", "tone": "info" }
+  ],
+  "prices": [{ "label": "total", "amount": "115,000 cr", "money": false }],
+  "materials": [
+    { "qty": "2", "label": "Morphics", "note": "one per Viper" },
+    { "qty": "600", "label": "Salvage", "note": "two Vipers" },
+    { "qty": "1,200", "label": "Ferrite", "note": "two Vipers" },
+    { "qty": "1,800", "label": "Nano Spores", "note": "two Vipers" },
+    { "qty": "1", "label": "Orokin Cell", "note": "Twin Vipers" },
+    { "qty": "115,000", "label": "Credits", "note": null }
+  ],
+  "groups": [
+    {
+      "type": "vendor",
+      "place": "MARKET",
+      "sub": null,
+      "activity": "buy blueprints",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "2",
+          "label": "Viper Blueprint",
+          "note": "20,000 cr each",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Twin Vipers Blueprint",
+          "note": "15,000 cr",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build two Vipers, then Twin Vipers",
+      "meta": "12h each, then 12h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "2",
+          "label": "Viper",
+          "note": "20,000 cr, 1 Morphics, 300 Salvage, 600 Ferrite, 900 Nano Spores each; both can build at once",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Twin Vipers",
+          "note": "20,000 cr, 2 Vipers, 1 Orokin Cell",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Rank one Viper to 30 before crafting: Mastery is earned once per item type, and the build consumes both.",
+        "The craft is blocked if the Vipers are your only Secondaries. Keep a spare Secondary such as a Lato in the loadout first."
+      ],
+      "bonuses": [],
+      "disclosures": [
+        {
+          "title": "Viper Wraith",
+          "body": "Viper Wraith is a separate Mastery item with its own farm."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "name": "Kraken",
+  "kind": "secondary",
+  "effort": 2,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 1, "unit": "weapon" },
+  "badges": [{ "text": "Market or Junction", "tone": "info" }],
+  "prices": [
+    { "label": "blueprint", "amount": "20,000 cr", "money": false },
+    { "label": "build", "amount": "25,000 cr", "money": false }
+  ],
+  "materials": [
+    { "qty": "2", "label": "Neurodes", "note": null },
+    { "qty": "200", "label": "Alloy Plate", "note": null },
+    { "qty": "750", "label": "Salvage", "note": null },
+    { "qty": "120", "label": "Polymer Bundle", "note": null },
+    { "qty": "45,000", "label": "Credits", "note": null }
+  ],
+  "groups": [
+    {
+      "type": "vendor",
+      "place": "MARKET",
+      "sub": null,
+      "activity": "buy the blueprint",
+      "meta": "20,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Kraken Blueprint",
+          "note": "20,000 cr",
+          "alt": "or the Mars to Phobos Junction completion reward",
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build the Kraken",
+      "meta": "24h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Kraken",
+          "note": "25,000 cr, 2 Neurodes, 200 Alloy Plate, 750 Salvage, 120 Polymer Bundle",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Kulstar consumes the Kraken; rank it to 30 first or the Mastery needs a second build.",
+        "Kuva Kraken is a separate Mastery item."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

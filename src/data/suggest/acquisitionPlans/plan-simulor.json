@@ -1,0 +1,148 @@
+{
+  "name": "Simulor",
+  "kind": "primary",
+  "effort": 4,
+  "tradeable": null,
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "blueprint"
+  },
+  "badges": [
+    {
+      "text": "75,000 Simaris Standing",
+      "tone": "warn"
+    },
+    {
+      "text": "Argon Crystal",
+      "tone": "info"
+    }
+  ],
+  "prices": [
+    {
+      "label": "blueprint",
+      "amount": "75,000 standing",
+      "money": false
+    },
+    {
+      "label": "build",
+      "amount": "20,000 cr",
+      "money": false
+    }
+  ],
+  "materials": [
+    {
+      "qty": "1,200",
+      "label": "Ferrite",
+      "note": null
+    },
+    {
+      "qty": "850",
+      "label": "Polymer Bundle",
+      "note": null
+    },
+    {
+      "qty": "1",
+      "label": "Orokin Cell",
+      "note": null
+    },
+    {
+      "qty": "1",
+      "label": "Argon Crystal",
+      "note": null
+    },
+    {
+      "qty": "20,000",
+      "label": "Credits",
+      "note": null
+    }
+  ],
+  "groups": [
+    {
+      "type": "currency",
+      "place": "CEPHALON SIMARIS",
+      "sub": null,
+      "activity": "scan targets with the Synthesis Scanner",
+      "meta": "75,000 Standing, ~4 capped days",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": {
+        "currency": "Cephalon Simaris Standing",
+        "amount": "75,000"
+      },
+      "spends": [],
+      "map": "orb-vallis",
+      "rows": [
+        {
+          "qty": "75,000",
+          "label": "Simaris Standing",
+          "note": "daily cap 16,000 + 500 per Mastery Rank",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": [],
+      "ref": "Cephalon Simaris Standing"
+    },
+    {
+      "type": "vendor",
+      "place": "CEPHALON SIMARIS",
+      "sub": null,
+      "activity": "buy blueprint",
+      "meta": "75,000 Standing",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [
+        {
+          "currency": "Cephalon Simaris Standing",
+          "amount": "75,000"
+        }
+      ],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Simulor Blueprint",
+          "note": null,
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Simaris has no ranks, so Standing is the only gate. Mastery Rank 5 is needed to use it."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Simulor",
+      "meta": "12h, 20,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Simulor",
+          "note": "20,000 cr, 1,200 Ferrite, 850 Polymer Bundle, 1 Orokin Cell, 1 Argon Crystal",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Argon Crystal decays out of the Void: farm it last, right before the build."],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

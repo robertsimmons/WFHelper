@@ -1,0 +1,120 @@
+{
+  "name": "Vasto",
+  "kind": "secondary",
+  "effort": 2,
+  "tradeable": false,
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "blueprint"
+  },
+  "badges": [
+    {
+      "text": "Market",
+      "tone": "info"
+    },
+    {
+      "text": "MR 4",
+      "tone": "info"
+    }
+  ],
+  "prices": [
+    {
+      "label": "blueprint",
+      "amount": "30,000 cr",
+      "money": false
+    },
+    {
+      "label": "build",
+      "amount": "30,000 cr",
+      "money": false
+    }
+  ],
+  "materials": [
+    {
+      "qty": "4",
+      "label": "Neurodes",
+      "note": null
+    },
+    {
+      "qty": "1,200",
+      "label": "Alloy Plate",
+      "note": null
+    },
+    {
+      "qty": "700",
+      "label": "Ferrite",
+      "note": null
+    },
+    {
+      "qty": "1,000",
+      "label": "Polymer Bundle",
+      "note": null
+    },
+    {
+      "qty": "60,000",
+      "label": "Credits",
+      "note": null
+    }
+  ],
+  "groups": [
+    {
+      "type": "vendor",
+      "place": "MARKET",
+      "sub": null,
+      "activity": "buy blueprint",
+      "meta": "30,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [
+        {
+          "currency": "Credits",
+          "amount": "30,000"
+        }
+      ],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Vasto Blueprint",
+          "note": null,
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Needs Mastery Rank 4."],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Vasto",
+      "meta": "12h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Vasto",
+          "note": "30,000 cr, 4 Neurodes, 1,200 Alloy Plate, 700 Ferrite, 1,000 Polymer Bundle",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Akvasto consumes two Vastos. Rank one to 30 first or you rebuild it for the Mastery.",
+        "Vasto Prime is a separate Mastery item."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

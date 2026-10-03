@@ -1,0 +1,76 @@
+{
+  "name": "Gorgon",
+  "kind": "primary",
+  "effort": 3,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 1, "unit": "blueprint" },
+  "badges": [{ "text": "1% blueprint drop", "tone": "warn" }],
+  "prices": [{ "label": "build", "amount": "25,000 cr", "money": false }],
+  "materials": [
+    { "qty": "5", "label": "Morphics", "note": null },
+    { "qty": "5,000", "label": "Ferrite", "note": null },
+    { "qty": "6,000", "label": "Salvage", "note": null },
+    { "qty": "1,000", "label": "Circuits", "note": null },
+    { "qty": "25,000", "label": "Credits", "note": null }
+  ],
+  "groups": [
+    {
+      "type": "farm",
+      "place": "HYDRON, SEDNA",
+      "sub": "Defense",
+      "activity": "kill Heavy Gunners until the blueprint drops",
+      "meta": "1% per kill",
+      "mode": "solo or squad, endless defense",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Gorgon Blueprint",
+          "note": "1% per Heavy Gunner kill",
+          "alt": "Helene, Saturn is the same map at lower enemy levels",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The Market has not sold it since Update 10.3, so there is no credit shortcut.",
+        "Heavy Gunners appear more the longer an endless mission runs; short missions waste kills."
+      ],
+      "bonuses": [],
+      "disclosures": [
+        {
+          "title": "other sources",
+          "body": "Arid Heavy Gunners, Grineer Wardens and Gokstad Officers also drop the blueprint."
+        }
+      ]
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build the Gorgon",
+      "meta": "12h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Gorgon",
+          "note": "25,000 cr, 5 Morphics, 5,000 Ferrite, 6,000 Salvage, 1,000 Circuits",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Gorgon Wraith and Prisma Gorgon are separate Mastery items."],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

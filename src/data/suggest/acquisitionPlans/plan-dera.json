@@ -1,0 +1,126 @@
+{
+  "name": "Dera",
+  "kind": "primary",
+  "effort": 2,
+  "tradeable": false,
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "blueprint"
+  },
+  "badges": [
+    {
+      "text": "Energy Lab",
+      "tone": "info"
+    },
+    {
+      "text": "MR 4",
+      "tone": "warn"
+    }
+  ],
+  "prices": [
+    {
+      "label": "blueprint",
+      "amount": "15,000 cr",
+      "money": false
+    },
+    {
+      "label": "build",
+      "amount": "25,000 cr",
+      "money": false
+    }
+  ],
+  "materials": [
+    {
+      "qty": "2",
+      "label": "Fieldron",
+      "note": null
+    },
+    {
+      "qty": "600",
+      "label": "Circuits",
+      "note": null
+    },
+    {
+      "qty": "4,500",
+      "label": "Ferrite",
+      "note": null
+    },
+    {
+      "qty": "1",
+      "label": "Forma",
+      "note": null
+    },
+    {
+      "qty": "40,000",
+      "label": "Credits",
+      "note": null
+    }
+  ],
+  "groups": [
+    {
+      "type": "vendor",
+      "place": "CLAN DOJO, ENERGY LAB",
+      "sub": null,
+      "activity": "buy the Dera Blueprint",
+      "meta": "15,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [
+        {
+          "currency": "Credits",
+          "amount": "15,000"
+        }
+      ],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Dera Blueprint",
+          "note": null,
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The blueprint only appears after the Energy Lab research chain, which runs three 72h steps back to back.",
+        "Mastery Rank 4 is required to use it.",
+        "Dera Vandal is a separate Mastery item."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Dera",
+      "meta": "25,000 cr, 24h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [
+        {
+          "currency": "Credits",
+          "amount": "25,000"
+        }
+      ],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Dera",
+          "note": "25,000 cr, 2 Fieldron, 600 Circuits, 4,500 Ferrite, 1 Forma",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

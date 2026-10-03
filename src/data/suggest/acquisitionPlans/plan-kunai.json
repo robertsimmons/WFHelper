@@ -1,0 +1,113 @@
+{
+  "name": "Kunai",
+  "kind": "secondary",
+  "effort": 2,
+  "tradeable": false,
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "blueprint"
+  },
+  "badges": [
+    {
+      "text": "Market",
+      "tone": "info"
+    }
+  ],
+  "prices": [
+    {
+      "label": "blueprint",
+      "amount": "15,000 cr",
+      "money": false
+    },
+    {
+      "label": "build",
+      "amount": "15,000 cr",
+      "money": false
+    }
+  ],
+  "materials": [
+    {
+      "qty": "5",
+      "label": "Morphics",
+      "note": null
+    },
+    {
+      "qty": "3,000",
+      "label": "Ferrite",
+      "note": null
+    },
+    {
+      "qty": "4,000",
+      "label": "Nano Spores",
+      "note": null
+    },
+    {
+      "qty": "4,000",
+      "label": "Salvage",
+      "note": null
+    },
+    {
+      "qty": "30,000",
+      "label": "Credits",
+      "note": null
+    }
+  ],
+  "groups": [
+    {
+      "type": "vendor",
+      "place": "MARKET",
+      "sub": null,
+      "activity": "buy blueprint",
+      "meta": "15,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [
+        {
+          "currency": "Credits",
+          "amount": "15,000"
+        }
+      ],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Kunai Blueprint",
+          "note": null,
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["The Mk1-Kunai is a separate item with its own Mastery."],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Kunai",
+      "meta": "12h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Kunai",
+          "note": "15,000 cr, 5 Morphics, 3,000 Ferrite, 4,000 Nano Spores, 4,000 Salvage",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Tipedo consumes a Kunai. Rank it to 30 first."],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

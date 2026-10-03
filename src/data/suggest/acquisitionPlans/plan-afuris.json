@@ -1,0 +1,136 @@
+{
+  "name": "Afuris",
+  "kind": "secondary",
+  "effort": 2,
+  "tradeable": null,
+  "progress": {
+    "have": 0,
+    "need": 3,
+    "unit": "builds"
+  },
+  "badges": [
+    {
+      "text": "Market",
+      "tone": "info"
+    },
+    {
+      "text": "2 Furis",
+      "tone": "info"
+    }
+  ],
+  "prices": [
+    {
+      "label": "Afuris blueprint",
+      "amount": "15,000 cr",
+      "money": false
+    },
+    {
+      "label": "Furis blueprint",
+      "amount": "15,000 cr",
+      "money": false
+    },
+    {
+      "label": "builds",
+      "amount": "60,000 cr",
+      "money": false
+    }
+  ],
+  "materials": [
+    {
+      "qty": "1,500",
+      "label": "Ferrite",
+      "note": "Furis"
+    },
+    {
+      "qty": "600",
+      "label": "Alloy Plate",
+      "note": "Furis"
+    },
+    {
+      "qty": "800",
+      "label": "Salvage",
+      "note": "Furis"
+    },
+    {
+      "qty": "8",
+      "label": "Neurodes",
+      "note": "Furis"
+    },
+    {
+      "qty": "1",
+      "label": "Orokin Cell",
+      "note": "Afuris"
+    },
+    {
+      "qty": "105,000",
+      "label": "Credits",
+      "note": null
+    }
+  ],
+  "groups": [
+    {
+      "type": "vendor",
+      "place": "MARKET",
+      "sub": null,
+      "activity": "buy both blueprints",
+      "meta": "15,000 cr each",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Afuris Blueprint",
+          "note": null,
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "2",
+          "label": "Furis Blueprint",
+          "note": "one per Furis",
+          "alt": "one free from the Earth to Venus Junction",
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build two Furis, then Afuris",
+      "meta": "12h each",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "2",
+          "label": "Furis",
+          "note": "20,000 cr, 750 Ferrite, 300 Alloy Plate, 400 Salvage, 4 Neurodes; build two",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Afuris",
+          "note": "20,000 cr, 2 Furis, 1 Orokin Cell",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Both Furis are consumed. Rank one to 30 first so its Mastery is not lost."],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

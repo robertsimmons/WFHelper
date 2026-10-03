@@ -1,0 +1,117 @@
+{
+  "name": "Penta",
+  "kind": "primary",
+  "effort": 2,
+  "tradeable": false,
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "blueprint"
+  },
+  "badges": [
+    {
+      "text": "MR 6",
+      "tone": "warn"
+    },
+    {
+      "text": "24h build",
+      "tone": "info"
+    }
+  ],
+  "prices": [
+    {
+      "label": "blueprint",
+      "amount": "30,000 cr",
+      "money": false
+    },
+    {
+      "label": "build",
+      "amount": "25,000 cr",
+      "money": false
+    }
+  ],
+  "materials": [
+    {
+      "qty": "55,000",
+      "label": "Credits",
+      "note": null
+    },
+    {
+      "qty": "3",
+      "label": "Control Module",
+      "note": null
+    },
+    {
+      "qty": "1,000",
+      "label": "Circuits",
+      "note": null
+    },
+    {
+      "qty": "1,200",
+      "label": "Ferrite",
+      "note": null
+    },
+    {
+      "qty": "400",
+      "label": "Alloy Plate",
+      "note": null
+    }
+  ],
+  "groups": [
+    {
+      "type": "vendor",
+      "place": "MARKET",
+      "sub": null,
+      "activity": "buy blueprint",
+      "meta": "30,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [
+        {
+          "currency": "Credits",
+          "amount": "30,000"
+        }
+      ],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Penta Blueprint",
+          "note": "30,000 credits",
+          "alt": "or free from the Jupiter to Saturn Junction",
+          "done": false
+        }
+      ],
+      "conditions": ["Mastery Rank 6 is needed to equip it."],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Penta",
+      "meta": "25,000 cr, 24h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Penta",
+          "note": "25,000 credits, 3 Control Module, 1,000 Circuits, 1,200 Ferrite, 400 Alloy Plate, 24h",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Penta, Secura Penta and Carmine Penta are separate Mastery items."],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

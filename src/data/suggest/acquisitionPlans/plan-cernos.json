@@ -1,0 +1,114 @@
+{
+  "name": "Cernos",
+  "kind": "primary",
+  "effort": 2,
+  "tradeable": null,
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "blueprint"
+  },
+  "badges": [
+    {
+      "text": "Market",
+      "tone": "info"
+    },
+    {
+      "text": "MR 6",
+      "tone": "info"
+    }
+  ],
+  "prices": [
+    {
+      "label": "blueprint",
+      "amount": "20,000 cr",
+      "money": false
+    },
+    {
+      "label": "build",
+      "amount": "15,000 cr",
+      "money": false
+    }
+  ],
+  "materials": [
+    {
+      "qty": "3",
+      "label": "Gallium",
+      "note": null
+    },
+    {
+      "qty": "700",
+      "label": "Plastids",
+      "note": null
+    },
+    {
+      "qty": "600",
+      "label": "Polymer Bundle",
+      "note": null
+    },
+    {
+      "qty": "1,750",
+      "label": "Ferrite",
+      "note": null
+    },
+    {
+      "qty": "35,000",
+      "label": "Credits",
+      "note": null
+    }
+  ],
+  "groups": [
+    {
+      "type": "vendor",
+      "place": "MARKET",
+      "sub": null,
+      "activity": "buy blueprint",
+      "meta": "20,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Cernos Blueprint",
+          "note": null,
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Cernos",
+      "meta": "12h, 15,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Cernos",
+          "note": "3 Gallium, 700 Plastids, 600 Polymer Bundle, 1,750 Ferrite",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Mutalist Cernos consumes a Cernos; rank this one to 30 first so its Mastery is not lost."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

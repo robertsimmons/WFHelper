@@ -1,0 +1,81 @@
+{
+  "name": "Ankyros",
+  "kind": "melee",
+  "effort": 2,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 1, "unit": "weapon" },
+  "badges": [
+    { "text": "Market only", "tone": "info" },
+    { "text": "MR 2", "tone": "info" }
+  ],
+  "prices": [
+    { "label": "blueprint", "amount": "15,000 cr", "money": false },
+    { "label": "build", "amount": "30,000 cr", "money": false }
+  ],
+  "materials": [
+    { "qty": "900", "label": "Nano Spores", "note": null },
+    { "qty": "900", "label": "Salvage", "note": null },
+    { "qty": "600", "label": "Ferrite", "note": null },
+    { "qty": "450", "label": "Alloy Plate", "note": null },
+    { "qty": "45,000", "label": "Credits", "note": null }
+  ],
+  "groups": [
+    {
+      "type": "vendor",
+      "place": "MARKET",
+      "sub": null,
+      "activity": "buy the blueprint",
+      "meta": "15,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Ankyros Blueprint",
+          "note": "15,000 cr",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build the Ankyros",
+      "meta": "12h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Ankyros",
+          "note": "30,000 cr, 900 Nano Spores, 900 Salvage, 600 Ferrite, 450 Alloy Plate",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Tekko and Ripkas each consume an Ankyros; rank it to 30 first or the Mastery needs a second build."
+      ],
+      "bonuses": [],
+      "disclosures": [
+        {
+          "title": "Ankyros Prime",
+          "body": "Ankyros Prime is a separate Mastery item."
+        }
+      ]
+    }
+  ]
+}

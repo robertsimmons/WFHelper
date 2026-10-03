@@ -1,0 +1,148 @@
+{
+  "name": "Machete",
+  "kind": "melee",
+  "effort": 4,
+  "tradeable": false,
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "blueprint"
+  },
+  "badges": [
+    {
+      "text": "100,000 Simaris Standing",
+      "tone": "warn"
+    },
+    {
+      "text": "Off the Market",
+      "tone": "info"
+    }
+  ],
+  "prices": [
+    {
+      "label": "blueprint",
+      "amount": "100,000 standing",
+      "money": false
+    },
+    {
+      "label": "build",
+      "amount": "15,000 cr",
+      "money": false
+    }
+  ],
+  "materials": [
+    {
+      "qty": "15,000",
+      "label": "Credits",
+      "note": null
+    },
+    {
+      "qty": "4",
+      "label": "Gallium",
+      "note": null
+    },
+    {
+      "qty": "750",
+      "label": "Salvage",
+      "note": null
+    },
+    {
+      "qty": "800",
+      "label": "Plastids",
+      "note": null
+    },
+    {
+      "qty": "900",
+      "label": "Alloy Plate",
+      "note": null
+    }
+  ],
+  "groups": [
+    {
+      "type": "currency",
+      "place": "CEPHALON SIMARIS",
+      "sub": null,
+      "activity": "scan targets with the Synthesis Scanner",
+      "meta": "100,000 Standing",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": {
+        "currency": "Cephalon Simaris Standing",
+        "amount": "100,000"
+      },
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "100,000",
+          "label": "Simaris Standing",
+          "note": "daily cap 16,000 + 500 per Mastery Rank",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": [],
+      "ref": "Cephalon Simaris Standing"
+    },
+    {
+      "type": "vendor",
+      "place": "CEPHALON SIMARIS",
+      "sub": null,
+      "activity": "buy blueprint",
+      "meta": "100,000 Standing",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [
+        {
+          "currency": "Cephalon Simaris Standing",
+          "amount": "100,000"
+        }
+      ],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Machete Blueprint",
+          "note": null,
+          "alt": "Daily Tribute can roll it instead",
+          "done": false
+        }
+      ],
+      "conditions": ["Simaris has no ranks, so there is no rank gate."],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Machete",
+      "meta": "15,000 cr, 12h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Machete",
+          "note": "15,000 credits, 4 Gallium, 750 Salvage, 800 Plastids, 900 Alloy Plate, 12h",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Selling it before rank 30 forfeits its Mastery and re-buying costs another 100,000 Standing."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

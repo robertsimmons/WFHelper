@@ -1,0 +1,74 @@
+{
+  "name": "Ballistica",
+  "kind": "secondary",
+  "effort": 2,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 1, "unit": "weapon" },
+  "badges": [
+    { "text": "Market only", "tone": "info" },
+    { "text": "MR 2", "tone": "info" }
+  ],
+  "prices": [
+    { "label": "blueprint", "amount": "40,000 cr", "money": false },
+    { "label": "build", "amount": "25,000 cr", "money": false }
+  ],
+  "materials": [
+    { "qty": "3", "label": "Neurodes", "note": null },
+    { "qty": "4", "label": "Gallium", "note": null },
+    { "qty": "3,000", "label": "Nano Spores", "note": null },
+    { "qty": "1,200", "label": "Rubedo", "note": null },
+    { "qty": "65,000", "label": "Credits", "note": null }
+  ],
+  "groups": [
+    {
+      "type": "vendor",
+      "place": "MARKET",
+      "sub": null,
+      "activity": "buy the blueprint",
+      "meta": "40,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Ballistica Blueprint",
+          "note": "40,000 cr",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build the Ballistica",
+      "meta": "24h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Ballistica",
+          "note": "25,000 cr, 3 Neurodes, 4 Gallium, 3,000 Nano Spores, 1,200 Rubedo",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Ballistica Prime and Rakta Ballistica are separate Mastery items."],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

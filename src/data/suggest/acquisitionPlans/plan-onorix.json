@@ -1,0 +1,213 @@
+{
+  "name": "Onorix",
+  "kind": "archmelee",
+  "effort": 4,
+  "tradeable": "Blade and Handle, not the blueprint",
+  "progress": {
+    "have": 0,
+    "need": 3,
+    "unit": "parts"
+  },
+  "badges": [
+    {
+      "text": "2 syndicates to rank 2",
+      "tone": "warn"
+    },
+    {
+      "text": "3 Neurodes",
+      "tone": "info"
+    }
+  ],
+  "prices": [
+    {
+      "label": "blueprint",
+      "amount": "35,000 cr",
+      "money": false
+    },
+    {
+      "label": "2 Blades + Handle",
+      "amount": "60,000 standing",
+      "money": false
+    },
+    {
+      "label": "build",
+      "amount": "25,000 cr",
+      "money": false
+    }
+  ],
+  "materials": [
+    {
+      "qty": "3",
+      "label": "Neurodes",
+      "note": null
+    },
+    {
+      "qty": "240,000",
+      "label": "Credits",
+      "note": null
+    }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "ORBITER",
+      "sub": null,
+      "activity": "The Archwing quest",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "The Archwing",
+          "note": "Archmelee only works in Archwing missions",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "currency",
+      "place": "RELAY, NEW LOKA AND THE PERRIN SEQUENCE",
+      "sub": null,
+      "activity": "pledge New Loka first, then Perrin",
+      "meta": "67,000 + 47,000 standing",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": {
+        "currency": "Syndicate Standing",
+        "amount": "114,000"
+      },
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "New Loka initiation",
+          "note": "1,000 Ferrite, 10,000 cr",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "New Loka rank 1 (Humane)",
+          "note": "5,000 standing; 30,000 cr, 2 Fieldron Sample",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "New Loka rank 2 (Bountiful)",
+          "note": "22,000 standing; 50,000 cr, 1 Forma",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Perrin initiation",
+          "note": "100 Polymer Bundle, 10,000 cr",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Perrin rank 1 (Associate)",
+          "note": "5,000 standing; 30,000 cr, 2 Detonite Ampule",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Perrin rank 2 (Senior Associate)",
+          "note": "22,000 standing; 50,000 cr, 1 Forma",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Pledging New Loka costs Steel Meridian 50% and Cephalon Suda 100% of what you earn.",
+        "The two are allies: standing with one gives the other +50%."
+      ],
+      "bonuses": [],
+      "disclosures": [],
+      "ref": "Syndicate Standing"
+    },
+    {
+      "type": "vendor",
+      "place": "RELAY, SYNDICATE ENCLAVES",
+      "sub": null,
+      "activity": "buy Blades and Handle",
+      "meta": "20,000 standing each",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [
+        {
+          "currency": "Syndicate Standing",
+          "amount": "60,000"
+        }
+      ],
+      "map": null,
+      "rows": [
+        {
+          "qty": "2",
+          "label": "Onorix Blade",
+          "note": "New Loka, rank 2",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Onorix Handle",
+          "note": "Perrin Sequence, rank 2",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Onorix Blueprint",
+          "note": "Market, 35,000 cr",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Onorix",
+      "meta": "12h, 25,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Onorix",
+          "note": "Blueprint, 2 Blades, Handle, 3 Neurodes",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

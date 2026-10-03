@@ -1,0 +1,155 @@
+{
+  "name": "Steflos",
+  "kind": "primary",
+  "effort": 5,
+  "tradeable": "parts only, not the blueprint",
+  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "badges": [
+    { "text": "Tyana Pass, Rotation B", "tone": "warn" },
+    { "text": "MR 8", "tone": "info" }
+  ],
+  "prices": [
+    { "label": "build", "amount": "20,000 cr", "money": false },
+    { "label": "full shop set", "amount": "1,250 Belric", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "DEIMOS, MARS",
+      "sub": null,
+      "activity": "finish Heart of Deimos and reach MR 3",
+      "meta": "Otak's message opens Tyana Pass",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Heart of Deimos",
+          "note": "Otak then sends the inbox message and Tyana Pass appears on Mars",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "TYANA PASS, MARS",
+      "sub": null,
+      "activity": "Mirror Defense, stay through Rotation B",
+      "meta": "~17.5 min to the third reward",
+      "mode": "public squad on Steel Path",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Steflos Blueprint",
+          "note": "10%, Rotation A",
+          "alt": {
+            "text": "or 500 Belric + 300 Rania at Otak",
+            "spends": [
+              { "currency": "Belric fragments", "amount": "500" },
+              { "currency": "Rania fragments", "amount": "300" }
+            ]
+          },
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Barrel",
+          "note": "8%, Rotation B",
+          "alt": {
+            "text": "or 250 Belric + 150 Rania at Otak",
+            "spends": [
+              { "currency": "Belric fragments", "amount": "250" },
+              { "currency": "Rania fragments", "amount": "150" }
+            ]
+          },
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Receiver",
+          "note": "8%, Rotation B",
+          "alt": {
+            "text": "or 250 Belric + 150 Rania at Otak",
+            "spends": [
+              { "currency": "Belric fragments", "amount": "250" },
+              { "currency": "Rania fragments", "amount": "150" }
+            ]
+          },
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Stock",
+          "note": "8%, Rotation B",
+          "alt": {
+            "text": "or 250 Belric + 150 Rania at Otak",
+            "spends": [
+              { "currency": "Belric fragments", "amount": "250" },
+              { "currency": "Rania fragments", "amount": "150" }
+            ]
+          },
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Parts roll only on the B reward, so a run that leaves after two rotations cannot drop them. Rewards run AABC.",
+        "Fragments ignore Resource Boosters and Smeeta Charm.",
+        "Only Citrine's Remnants heal the crystals; Vacuum, Fetch and Mag's Pull do not collect them.",
+        "A full shop set is 1,250 Belric + 750 Rania, about eight or nine Steel Path runs with no part drops."
+      ],
+      "bonuses": [
+        "Every rotation pays 10 of each fragment (15 on Steel Path), and each 50 Remnants picked up pays 5 more (7 on Steel Path).",
+        "Mirror Defense also appears in Arbitrations, paying Vitus Essence alongside the fragments.",
+        "The same mission and currency also farm Citrine and Corufell."
+      ],
+      "disclosures": [
+        {
+          "title": "squad and frame",
+          "body": "Solo is slow because one player cannot defend and collect Remnants at once. Titania is the near-unanimous pick for Remnants, with Jade and Chroma named too. Remnants spawn thickest in the Void tunnel between halves, and hitting 50 there gives the crystal its overshield."
+        },
+        {
+          "title": "spend fragments last",
+          "body": "Run for drops first and buy only the one or two pieces that refuse to drop, so you do not end up with duplicates. Extract after Rotation B for Steflos alone; stay for C only for Citrine's parts, and past four rotations leave on a multiple of four."
+        }
+      ]
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Steflos",
+      "meta": "12h, 20,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Steflos",
+          "note": "Blueprint, Barrel, Receiver, Stock, 4 Neurodes",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Steflos Prime is a separate Mastery item with its own relic farm."],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

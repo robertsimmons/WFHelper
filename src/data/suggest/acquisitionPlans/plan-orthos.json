@@ -1,0 +1,111 @@
+{
+  "name": "Orthos",
+  "kind": "melee",
+  "effort": 2,
+  "tradeable": null,
+  "progress": { "have": 0, "need": 1, "unit": "blueprint" },
+  "badges": [{ "text": "4 Morphics", "tone": "info" }],
+  "prices": [
+    { "label": "blueprint", "amount": "20,000 cr", "money": false },
+    { "label": "build", "amount": "20,000 cr", "money": false },
+    { "label": "built", "amount": "180 p", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "vendor",
+      "place": "MARKET",
+      "sub": null,
+      "activity": "buy the blueprint",
+      "meta": "20,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Credits", "amount": "20,000" }],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Orthos Blueprint", "note": null, "alt": null, "done": false }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "MARS",
+      "sub": null,
+      "activity": "any mission",
+      "meta": "farm Morphics before you build",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "4",
+          "label": "Morphics",
+          "note": "rare; higher chance on Mars",
+          "alt": "or Mercury, Phobos, Europa, Pluto, some Assassination targets, Tier 1 Reactor Sabotage caches",
+          "done": false
+        }
+      ],
+      "conditions": ["Morphics is the one resource that can stall the craft."],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "URANUS",
+      "sub": null,
+      "activity": "any mission",
+      "meta": "stacks of 40 to 75",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "500",
+          "label": "Polymer Bundle",
+          "note": "highest chance on Uranus",
+          "alt": "or Mercury, Venus",
+          "done": false
+        },
+        { "qty": "850", "label": "Ferrite", "note": "common", "alt": null, "done": false },
+        { "qty": "700", "label": "Alloy Plate", "note": "common", "alt": null, "done": false }
+      ],
+      "conditions": [],
+      "bonuses": ["Ferrite and Alloy Plate come in passing from ordinary play."],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Orthos",
+      "meta": "12h, 20,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Orthos",
+          "note": "4 Morphics, 500 Polymer Bundle, 850 Ferrite, 700 Alloy Plate",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": ["Its own Mastery, separate from Orthos Prime."],
+      "disclosures": []
+    }
+  ]
+}

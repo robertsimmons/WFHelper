@@ -1,0 +1,241 @@
+{
+  "name": "Plinx",
+  "kind": "secondary",
+  "effort": 5,
+  "tradeable": null,
+  "progress": { "have": 0, "need": 1, "unit": "blueprint" },
+  "badges": [
+    { "text": "Vox Solaris rank 1", "tone": "warn" },
+    { "text": "10 Gyromag Systems", "tone": "info" }
+  ],
+  "prices": [
+    { "label": "blueprint", "amount": "20,000 cr", "money": false },
+    { "label": "build", "amount": "20,000 cr", "money": false },
+    { "label": "Gyromags", "amount": "10,000 standing", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "FORTUNA, VENUS",
+      "sub": null,
+      "activity": "reach Vox Solaris rank 1 (Operative)",
+      "meta": "5,000 standing, 50,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Vox Solaris and The War Within quests",
+          "note": "talk to Onkko once",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Vox Solaris rank 1",
+          "note": "5,000 standing, 50,000 cr, 1 Vega Toroid, 1 Calda Toroid, 1 Sola Toroid",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The rank-up consumes one toroid of each common type, so don't trade them all in for standing.",
+        "Gyromags no longer need Profit-Taker drops, Solaris United rank 5 or Vox rank 3 since Update 35.1."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "currency",
+      "place": "ORB VALLIS, VENUS",
+      "sub": null,
+      "activity": "trade toroids to Little Duck",
+      "meta": "about 15,000 standing plus 3 toroids",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "Vox Solaris standing", "amount": "15,000" },
+      "spends": [],
+      "map": "orb-vallis",
+      "rows": [
+        {
+          "qty": null,
+          "label": "Vega, Calda and Sola Toroids",
+          "note": "1,000 standing each; Vega around the Spaceport, Calda in the Enrichment Labs, Sola in the Temple of Profit, from Raknoids",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Crisma Toroid",
+          "note": "6,000 standing; Profit-Taker Orb",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Lazulite Toroid",
+          "note": "12,000 standing; Exploiter Orb",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Narmer Isoplast",
+          "note": "2,000 standing; Narmer bounties, inconsistent",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The Exploiter Orb fight needs only Diluted Thermia from the Deck 12 cave, not Solaris United rank."
+      ],
+      "bonuses": [
+        "One or two Orb kills cover most of the 15,000; players report about 12,000 standing for 2 toroids in a 2-minute run.",
+        "For common toroids, Nekros (Desecrate) or Khora (Pilfering Strangledome) clears the three Corpus bases; a Resource Booster doubles counts."
+      ],
+      "disclosures": [
+        {
+          "title": "don't wait on a Gyromag drop",
+          "body": "Someone ran Profit-Taker for hours without a Gyromag drop. The near-unanimous advice is to buy them from Little Duck."
+        }
+      ]
+    },
+    {
+      "type": "vendor",
+      "place": "LITTLE DUCK, FORTUNA",
+      "sub": null,
+      "activity": "buy Gyromag Systems",
+      "meta": "1,000 standing each",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Vox Solaris standing", "amount": "10,000" }],
+      "map": null,
+      "rows": [
+        { "qty": "10", "label": "Gyromag Systems", "note": null, "alt": null, "done": false }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "MARKET",
+      "sub": null,
+      "activity": "buy the blueprint",
+      "meta": "20,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Credits", "amount": "20,000" }],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Plinx Blueprint", "note": null, "alt": null, "done": false }
+      ],
+      "conditions": ["The 200 platinum figure on the page is the built weapon, not the blueprint."],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "GABII, CERES",
+      "sub": null,
+      "activity": "Dark Sector Survival",
+      "meta": "the longer you stay, the better",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "4,375",
+          "label": "Alloy Plate",
+          "note": "drops of 50 to 150",
+          "alt": "or Venus, Jupiter, Sedna, Phobos, Pluto, Zariman",
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": ["Nekros, Hydroid or Khora with a Resource Booster and a relay blessing."],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "HIERACON, PLUTO",
+      "sub": null,
+      "activity": "Excavation",
+      "meta": "100 Cryotic per defended dig",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "575",
+          "label": "Cryotic",
+          "note": "about 6 digs",
+          "alt": "or Venus, Earth, Phobos, Europa, Neptune",
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "THE VOID",
+      "sub": null,
+      "activity": "Capture on Hepit or Ukko",
+      "meta": "pick this up last",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [{ "qty": "2", "label": "Argon Crystal", "note": null, "alt": null, "done": false }],
+      "conditions": [
+        "Argon halves daily at 00:00 GMT after the day you collect it. Craft the same day."
+      ],
+      "bonuses": ["Xaku (Vast Untime) or Limbo (Cataclysm) breaks every container in the tileset."],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Plinx",
+      "meta": "12h, 20,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Plinx",
+          "note": "2 Argon Crystal, 4,375 Alloy Plate, 575 Cryotic, 10 Gyromag Systems",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Equipping needs Mastery Rank 6."],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

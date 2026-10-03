@@ -1,0 +1,162 @@
+{
+  "name": "Korrudo",
+  "kind": "melee",
+  "effort": 6,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 1, "unit": "blueprint" },
+  "badges": [
+    { "text": "Thumper RNG, 5% / 10%", "tone": "warn" },
+    { "text": "daytime only", "tone": "info" }
+  ],
+  "prices": [{ "label": "build", "amount": "30,000 cr", "money": false }],
+  "groups": [
+    {
+      "type": "boss",
+      "place": "PLAINS OF EIDOLON, EARTH",
+      "sub": "daytime only",
+      "activity": "hunt Tusk Thumper Bulls and Domas",
+      "meta": "no pity; 90-120s before another can spawn",
+      "mode": "squad searches faster",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "plains-of-eidolon",
+      "rows": [
+        {
+          "qty": null,
+          "label": "Korrudo Blueprint",
+          "note": "5% Tusk Thumper Bull, 10% Tusk Thumper Doma; Narmer versions drop it at the same rates",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Thumpers spawn only in daytime, so the hunt is gated by the 150-minute Plains cycle.",
+        "Accept a Tier 5 (level 40-60) bounty only to set enemy levels, then ignore the objective. If the blueprint drops while the bounty runs, walk into the bounty area to activate it and leave to fail it before returning to Cetus, or the held reward is lost.",
+        "Kill it by shooting off the four knee plates, then the four glowing leg weak spots. Body hits do nothing."
+      ],
+      "bonuses": [
+        "Nightwave kill-a-Thumper days are easier in a squad.",
+        "Narmer bounties, available after The New War, spawn Thumpers fast and often."
+      ],
+      "disclosures": [
+        {
+          "title": "finding them",
+          "body": "Fly low around the Plains and listen for the rumble; a Thumper erupts when you get close. Mount Nang camp and the seaside ruins are the most consistent spots, and Domas dominate the north half and further from the bounty entrance. Return to Cetus and re-enter to reset spawns. Spawn rates swing wildly: three in five minutes, or none in fifteen."
+        },
+        {
+          "title": "killing them fast",
+          "body": "Slow or freeze it: Nova (Molecular Prime), Sevagoth (Gloom), Jade (Ophanim Eyes), Khora (Ensnare), Rhino Stomp, or Zenurik's Void Blast. Strip armor with Jade, Mag (Polarize), Caliban, Grendel, Nekros (Terrify) or a Shattering Impact weapon like Sarpa or Stropha. A Voidrig with Arquebex is the repeated melt-it answer; Jade plus Arquebex killed one in under half a minute on Steel Path. Boss-attenuation weapons like Felarx, Laetum Incarnon, Phenmor and Mausolon also work; rapid-fire hitscan beats AoE on the leg spots."
+        },
+        {
+          "title": "pace",
+          "body": "Reports run from the first Thumper to 30+ and a year off and on. Update 42 doubled the rates from 2.5% and 5%, so older complaints overstate the grind. Farm a little each day rather than in marathons."
+        }
+      ]
+    },
+    {
+      "type": "vendor",
+      "place": "OLD MAN SUUMBAAT, CETUS",
+      "sub": null,
+      "activity": "buy the refining blueprints",
+      "meta": "10,000 Ostron standing, Trusted (rank 3)",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Ostron standing", "amount": "10,000" }],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Auroxium Alloy blueprint",
+          "note": "7,500 standing; Trusted needs 44,000 total Ostron standing",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Esher Devar blueprint",
+          "note": "2,500 standing at Offworlder",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Do this while you hunt; the standing is the slow part."],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "PLAINS OF EIDOLON, EARTH",
+      "sub": null,
+      "activity": "mine red and blue veins, refine",
+      "meta": "Mount Nang cave is rich in Auron",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "plains-of-eidolon",
+      "rows": [
+        {
+          "qty": "25",
+          "label": "Auroxium Alloy",
+          "note": "two builds of 20 cover it: 40 Auron, 1,200 Oxium, 10 Morphics, 1 minute each",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "15",
+          "label": "Esher Devar",
+          "note": "two builds of 10 cover it: 20 Devar, 1,000 cr each, 1 minute each",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "5",
+          "label": "Breath of the Eidolon",
+          "note": "Tier 5 bounty reward, 5 per drop; 50% on stage 1, about 22% on later stages",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "20",
+          "label": "Mawfish Bones",
+          "note": "catch Mawfish in the lakes, 1 bone each; cut at Fisher Hai-Luk in Cetus",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": ["Stockpile Mawfish Bones from fishing while you wait on Thumpers."],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "refine, then build Korrudo",
+      "meta": "12h, 30,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Korrudo",
+          "note": "25 Auroxium Alloy, 15 Esher Devar, 5 Breath of the Eidolon, 20 Mawfish Bones",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Equipping needs Mastery Rank 9."],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

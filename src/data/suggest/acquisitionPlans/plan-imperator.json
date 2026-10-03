@@ -1,0 +1,185 @@
+{
+  "name": "Imperator",
+  "kind": "archgun",
+  "effort": 2,
+  "tradeable": "blueprint only",
+  "progress": { "have": 0, "need": 1, "unit": "weapon" },
+  "badges": [
+    { "text": "The Archwing quest", "tone": "info" },
+    { "text": "free with the Odonata", "tone": "info" }
+  ],
+  "prices": [{ "label": "Odonata build", "amount": "28,000 cr", "money": false }],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "MARS JUNCTION",
+      "sub": null,
+      "activity": "start The Archwing quest",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Mars Junction",
+          "note": "unlocks The Archwing",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "VENUS + EARTH",
+      "sub": "Tessera, then Aphrodite, Mantle, E Gate",
+      "activity": "The Archwing quest missions",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Odonata Blueprint",
+          "note": "Lotus inbox message",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Harness Blueprint",
+          "note": "random per Excavation",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Systems Blueprint",
+          "note": "random per Excavation",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Wings Blueprint",
+          "note": "random per Excavation",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Launch each step from the orbiter or quest alert, not by walking through a gate."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "STAR CHART",
+      "sub": "Earth, Mars, Phobos, Europa",
+      "activity": "common resources",
+      "meta": "Neurodes is the usual stall",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "2",
+          "label": "Neurodes",
+          "note": "Earth, Deimos, Eris, Lua",
+          "alt": null,
+          "done": false
+        },
+        { "qty": "2", "label": "Morphics", "note": "best on Mars", "alt": null, "done": false },
+        {
+          "qty": "800",
+          "label": "Rubedo",
+          "note": "best on Phobos and Europa",
+          "alt": null,
+          "done": false
+        },
+        { "qty": "1,000", "label": "Ferrite", "note": "Harness", "alt": null, "done": false },
+        { "qty": "500", "label": "Salvage", "note": "Systems", "alt": null, "done": false },
+        {
+          "qty": "600",
+          "label": "Circuits",
+          "note": "Systems and Odonata",
+          "alt": null,
+          "done": false
+        },
+        { "qty": "150", "label": "Alloy Plate", "note": "Wings", "alt": null, "done": false },
+        { "qty": "150", "label": "Polymer Bundle", "note": "Wings", "alt": null, "done": false }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build parts, then Odonata, then claim it",
+      "meta": "1 minute each",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Harness",
+          "note": "7,000 cr, 1 Morphics, 300 Rubedo, 1,000 Ferrite",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Systems",
+          "note": "7,000 cr, 1 Neurodes, 1 Morphics, 500 Salvage, 300 Circuits",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Wings",
+          "note": "7,000 cr, 150 Alloy Plate, 150 Polymer Bundle, 500 Rubedo, 1 Neurodes",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Odonata",
+          "note": "7,000 cr, 300 Circuits, the three parts; claiming it also grants Imperator and Veritux",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Never sell or delete the Odonata; it is a quest item with no Market blueprint.",
+        "If the quest stays on the build step after claiming, open the Quests menu, select The Archwing and press Begin."
+      ],
+      "bonuses": [],
+      "disclosures": [
+        {
+          "title": "replacing a lost Imperator",
+          "body": "Cephalon Simaris sells the Imperator Blueprint for 100,000 Standing, after The Archwing is complete. Standing caps at 125,000. The build is 25,000 cr, 2 Morphics, 1,500 Ferrite, 150 Polymer Bundle, 300 Circuits, 24h."
+        }
+      ]
+    }
+  ]
+}

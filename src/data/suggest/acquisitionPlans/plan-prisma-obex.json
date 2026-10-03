@@ -1,0 +1,90 @@
+{
+  "name": "Prisma Obex",
+  "kind": "melee",
+  "effort": 2,
+  "tradeable": "unranked, no Forma/Catalyst",
+  "progress": { "have": 0, "need": 1, "unit": "weapon" },
+  "badges": [
+    { "text": "Baro Ki'Teer only", "tone": "warn" },
+    { "text": "500 Ducats", "tone": "info" }
+  ],
+  "prices": [
+    { "label": "credits", "amount": "175,000 cr", "money": false },
+    { "label": "Ducats", "amount": "500", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "currency",
+      "place": "VOID FISSURES, ANY",
+      "sub": null,
+      "activity": "open Void Relics for Prime parts, sell the best drop for Ducats",
+      "meta": "stockpile ahead of Baro's visit",
+      "mode": "full squad of four",
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "Ducats", "amount": "500" },
+      "spends": [],
+      "map": "void",
+      "rows": [
+        {
+          "qty": null,
+          "label": "sell duplicate Prime parts first",
+          "note": "gold 100, silver 45, bronze 15 Ducats at the Kiosk",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "open relics, take the highest-value drop",
+          "note": "500 Ducats is five golds or about eleven silvers",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Ducat Kiosks work in any relay except Maroo's Bazaar, and work whether or not Baro is present.",
+        "Have the 500 banked before he arrives; his stock turns over every visit."
+      ],
+      "bonuses": ["Gold drops from duplicate or vaulted Prime parts are the cheapest source."],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "RELAY, CONCOURSE",
+      "sub": null,
+      "activity": "check Baro's rotating stock, then buy if listed",
+      "meta": "arrives every 2 weeks, stays up to 48h",
+      "mode": null,
+      "live": {
+        "state": "waiting",
+        "text": "the Star Chart marks his relay 24h before he arrives"
+      },
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Ducats", "amount": "500" }],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Prisma Obex",
+          "note": "500 Ducats + 175,000 credits, only when in his rotating stock",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "It has no fixed schedule and can be absent for months.",
+        "Mastery Rank 10 is required to use it, and a bought copy trades only unranked with no Forma or Catalyst."
+      ],
+      "bonuses": [
+        "Baro's 50,000-credit Void Surplus has a 2% chance of 1,000 Ducats, which is not worth planning around."
+      ],
+      "disclosures": [
+        {
+          "title": "Obex and Prisma Obex are separate Mastery",
+          "body": "Mastery is earned once per variant, so Prisma Obex is its own 3,000 points at rank 30. One Obex Incarnon Genesis works on both, and Prisma is the better host."
+        }
+      ]
+    }
+  ]
+}

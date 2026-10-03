@@ -1,0 +1,195 @@
+{
+  "name": "Fusilai",
+  "kind": "secondary",
+  "effort": 3,
+  "tradeable": false,
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "weapon"
+  },
+  "badges": [
+    {
+      "text": "10,000 Salvage",
+      "tone": "warn"
+    },
+    {
+      "text": "MR 7",
+      "tone": "info"
+    }
+  ],
+  "prices": [
+    {
+      "label": "blueprint",
+      "amount": "20,000 cr",
+      "money": false
+    },
+    {
+      "label": "build",
+      "amount": "20,000 cr",
+      "money": false
+    }
+  ],
+  "groups": [
+    {
+      "type": "vendor",
+      "place": "NIGHTWAVE",
+      "sub": null,
+      "activity": "buy Nitain Extract",
+      "meta": "15 Cred per 5, unlimited",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [
+        {
+          "currency": "Nightwave Cred",
+          "amount": "15"
+        }
+      ],
+      "map": null,
+      "rows": [
+        {
+          "qty": "2",
+          "label": "Nitain Extract",
+          "note": "Fusilai; one pack of 5 covers it",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Nightwave Cred expires when the series ends."],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "MARKET",
+      "sub": null,
+      "activity": "buy blueprint",
+      "meta": "20,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [
+        {
+          "currency": "Credits",
+          "amount": "20,000"
+        }
+      ],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Fusilai Blueprint",
+          "note": "no Gara needed",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "CAMERIA, JUPITER",
+      "sub": null,
+      "activity": "long Grineer runs",
+      "meta": "Wahiba, Mars is the other",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "10,000",
+          "label": "Salvage",
+          "note": "the quantity to plan around",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": ["Any resource booster or loot frame (Khora, Hydroid) saves real time."],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "ZEUGMA, PHOBOS",
+      "sub": null,
+      "activity": "Defense or Survival",
+      "meta": "Europa defenses reach 300+ by minute 15",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "2,950",
+          "label": "Rubedo",
+          "note": "Fusilai",
+          "alt": "Void or Sedna Kappa",
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "ASSUR OR OPHELIA, URANUS",
+      "sub": null,
+      "activity": "Survival",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "1,350",
+          "label": "Polymer Bundle",
+          "note": "Fusilai",
+          "alt": "Apollodorus, Mercury",
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Fusilai",
+      "meta": "12h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Fusilai",
+          "note": "20,000 cr, 2,950 Rubedo, 10,000 Salvage, 1,350 Polymer Bundle, 2 Nitain Extract",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Mastery Rank 7 to equip."],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

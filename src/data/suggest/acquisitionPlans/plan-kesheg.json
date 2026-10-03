@@ -1,0 +1,282 @@
+{
+  "name": "Kesheg",
+  "kind": "melee",
+  "effort": 2,
+  "tradeable": null,
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "weapon"
+  },
+  "badges": [
+    {
+      "text": "Chem Lab",
+      "tone": "warn"
+    },
+    {
+      "text": "1,800 Kuva",
+      "tone": "info"
+    }
+  ],
+  "prices": [
+    {
+      "label": "blueprint",
+      "amount": "15,000 cr",
+      "money": false
+    },
+    {
+      "label": "build",
+      "amount": "20,000 cr",
+      "money": false
+    }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "DOJO, CHEM LAB",
+      "sub": null,
+      "activity": "clan research: Detonite Injector, Sydon, then Kesheg",
+      "meta": "72h each, 9 days in series; skip if already researched",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Detonite Injector",
+          "note": "5 Detonite Ampule, 200 Ferrite, 250 Polymer Bundle, 100 Plastids, 5,000 cr",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Sydon",
+          "note": "5 Nitain Extract, 16,500 Ferrite, 12,000 Alloy Plate, 4,650 Rubedo, 5,000 cr",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Kesheg",
+          "note": "10 Detonite Ampule, 400 Kuva, 13,000 Ferrite, 9,000 Alloy Plate, 5,000 cr",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Each step is locked behind the previous one; start Injector research first.",
+        "Research costs 400 Kuva and the build another 1,400; budget both."
+      ],
+      "bonuses": ["Sydon is a Mastery weapon in its own right."],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "DOJO, CHEM LAB",
+      "sub": null,
+      "activity": "buy the blueprint",
+      "meta": "15,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [
+        {
+          "currency": "Credits",
+          "amount": "15,000"
+        }
+      ],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Kesheg Blueprint",
+          "note": null,
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "currency",
+      "place": "KUVA FLOOD OR KUVA SIPHON",
+      "sub": null,
+      "activity": "Kuva missions",
+      "meta": "Flood gives 1,100-1,400, Siphon 550-700",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": {
+        "currency": "Kuva",
+        "amount": "1,800"
+      },
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "1,800",
+          "label": "Kuva",
+          "note": "400 research, 1,400 build",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": ["Limbo, Gara, Ivara, Loki, Octavia and Wukong make the Flood cloud grabs safe."],
+      "disclosures": [
+        {
+          "title": "other Kuva sources",
+          "body": "Fortuna and Necralisk bounties (500 and 750 each), Kuva Survival on Taveuni, Tamu Disruption, and Arbitrations or Nightwave purchases (10,000 per bundle, which covers the whole Kesheg bill)."
+        }
+      ]
+    },
+    {
+      "type": "vendor",
+      "place": "NIGHTWAVE",
+      "sub": null,
+      "activity": "buy Nitain Extract",
+      "meta": "15 Cred per 5, unlimited",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [
+        {
+          "currency": "Nightwave Cred",
+          "amount": "15"
+        }
+      ],
+      "map": null,
+      "rows": [
+        {
+          "qty": "5",
+          "label": "Nitain Extract",
+          "note": "Sydon research",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "GRINEER TERRITORY",
+      "sub": null,
+      "activity": "Grineer Survival or Invasions",
+      "meta": "Mercury, Earth, Ceres, Saturn, Uranus, Sedna",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "15",
+          "label": "Detonite Ampule",
+          "note": "5 Injector research, 10 Kesheg research",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "5",
+          "label": "Detonite Injector",
+          "note": "Kesheg build",
+          "alt": "or build: 10 Detonite Ampule, 1 Control Module, 500 Salvage, 250 Plastids, 15,000 cr, 12h each",
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [
+        "A Grineer Invasion reward is 3 Injectors; rare and Reinforced Grineer storage containers drop them too. Ask clanmates for spares."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "STAR CHART",
+      "sub": null,
+      "activity": "bulk resources",
+      "meta": "clan vault contributions help",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "35,700",
+          "label": "Ferrite",
+          "note": "research and build",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "29,000",
+          "label": "Alloy Plate",
+          "note": "research and build",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "4,650",
+          "label": "Rubedo",
+          "note": "Sydon research",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "250",
+          "label": "Polymer Bundle",
+          "note": "Injector research",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "100",
+          "label": "Plastids",
+          "note": "Injector research",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Kesheg",
+      "meta": "24h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Kesheg",
+          "note": "20,000 cr, 5 Detonite Injector, 1,400 Kuva, 6,000 Ferrite, 8,000 Alloy Plate",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

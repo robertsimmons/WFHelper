@@ -1,0 +1,179 @@
+{
+  "name": "Silva & Aegis",
+  "kind": "melee",
+  "effort": 2,
+  "tradeable": null,
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "weapon"
+  },
+  "badges": [
+    {
+      "text": "Tenno Lab",
+      "tone": "info"
+    },
+    {
+      "text": "72h research",
+      "tone": "warn"
+    }
+  ],
+  "prices": [
+    {
+      "label": "blueprint",
+      "amount": "15,000 cr",
+      "money": false
+    },
+    {
+      "label": "build",
+      "amount": "20,000 cr",
+      "money": false
+    }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "DOJO",
+      "sub": null,
+      "activity": "join a clan with the lab researched, or build an Oracle and Tenno Lab",
+      "meta": "24h per room at Ghost tier",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Oracle",
+          "note": "1,000 cr, 650 Salvage, 350 Circuits, 350 Polymer Bundle, 1 Forma",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Tenno Lab",
+          "note": "1,000 cr, 650 Salvage, 350 Circuits, 350 Polymer Bundle, 1 Forma",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Costs multiply by clan tier: 3x Shadow, 10x Storm, 30x Mountain, 100x Moon. A small clan with the lab done is cheapest."
+      ],
+      "bonuses": ["Research progress survives a rebuilt lab."],
+      "disclosures": []
+    },
+    {
+      "type": "gate",
+      "place": "TENNO LAB, DOJO",
+      "sub": null,
+      "activity": "research Silva & Aegis, then buy the blueprint",
+      "meta": "72h, no platinum rush",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Silva & Aegis research",
+          "note": "2 Gallium, 500 Ferrite, 500 Alloy Plate, 300 Polymer Bundle, 5,000 cr at Ghost tier",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Silva & Aegis Blueprint",
+          "note": "15,000 cr at the lab console",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["The research has no prerequisite weapon."],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "ANY STAR CHART MISSION",
+      "sub": null,
+      "activity": "common resources",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "1,700",
+          "label": "Ferrite",
+          "note": "500 research, 1,200 build",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "1,100",
+          "label": "Alloy Plate",
+          "note": "500 research, 600 build",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "300",
+          "label": "Polymer Bundle",
+          "note": "research",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "5",
+          "label": "Gallium",
+          "note": "2 research, 3 build",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "1",
+          "label": "Forma",
+          "note": "build ingredient; the weapon comes out unranked",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Silva & Aegis",
+      "meta": "12h, 20,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Silva & Aegis",
+          "note": "3 Gallium, 600 Alloy Plate, 1,200 Ferrite, 1 Forma",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

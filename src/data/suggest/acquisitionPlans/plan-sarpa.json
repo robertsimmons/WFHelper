@@ -1,0 +1,247 @@
+{
+  "name": "Sarpa",
+  "kind": "melee",
+  "effort": 5,
+  "tradeable": null,
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "blueprint"
+  },
+  "badges": [
+    {
+      "text": "Cryotic: 3,300",
+      "tone": "warn"
+    },
+    {
+      "text": "consumes an Akstiletto",
+      "tone": "info"
+    }
+  ],
+  "prices": [
+    {
+      "label": "blueprint",
+      "amount": "20,000 cr",
+      "money": false
+    },
+    {
+      "label": "build",
+      "amount": "20,000 cr",
+      "money": false
+    }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "DOJO, TENNO LAB",
+      "sub": null,
+      "activity": "research the Akstiletto",
+      "meta": "72h",
+      "mode": null,
+      "live": null,
+      "skip": {
+        "reason": "a clanmate already researched it, or you already own an Akstiletto"
+      },
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Akstiletto",
+          "note": "500 Salvage, 300 Polymer Bundle, 50 Alloy Plate, 1 Gallium, 5,000 cr, 72h",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Research is once per clan and costs 3,000 clan affinity. Start it first; it runs on a timer.",
+        "The Sarpa build consumes the Akstiletto. Rank it to 30 first to bank its Mastery."
+      ],
+      "bonuses": ["Akstiletto also drops from Axi A7 and Meso V6 relics, which skips the lab."],
+      "disclosures": []
+    },
+    {
+      "type": "research",
+      "place": "DOJO, TENNO LAB",
+      "sub": null,
+      "activity": "buy the Akstiletto blueprint",
+      "meta": "15,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [
+        {
+          "currency": "Credits",
+          "amount": "15,000"
+        }
+      ],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Akstiletto Blueprint",
+          "note": null,
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "MARKET",
+      "sub": null,
+      "activity": "buy blueprint",
+      "meta": "20,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [
+        {
+          "currency": "Credits",
+          "amount": "20,000"
+        }
+      ],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Sarpa Blueprint",
+          "note": null,
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "HIERACON, PLUTO",
+      "sub": null,
+      "activity": "Dark Sector Excavation",
+      "meta": "100 Cryotic per completed excavator",
+      "mode": "premade, several excavators at once",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "3,300",
+          "label": "Cryotic",
+          "note": "33 excavators, 17 with a Resource Booster",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Run the lowest-level Excavation available; higher difficulty pays the same and fails more.",
+        "Leaving early voids the current dig, and an excavator can fall to a random Lancer."
+      ],
+      "bonuses": [
+        "Groups clear about 3,000 Cryotic in a little over 30 minutes. A Resource Booster (not a Drop Chance Booster) doubles it.",
+        "Excavation as a Void fissure, Duviri Circuit rounds and Daily Tribute also hand out Cryotic."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "OPHELIA, URANUS",
+      "sub": null,
+      "activity": "Survival",
+      "meta": "start early, this is what stalls builds",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "1,000",
+          "label": "Plastids",
+          "note": "build",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "3",
+          "label": "Gallium",
+          "note": "1 Akstiletto research, 2 Akstiletto build",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [
+        "Assur, Piscinas and Akkad also drop Plastids; Gallium also comes from Mars (Hellas, Gradivus, Ara)."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "TESHUB, VOID",
+      "sub": null,
+      "activity": "Exterminate",
+      "meta": "Hepit (Capture) also works",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "2",
+          "label": "Control Module",
+          "note": "build",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["The Void has the best rate; Neptune and Europa also drop it."],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Akstiletto, then Sarpa",
+      "meta": "20,000 cr each, 12h for Sarpa",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Akstiletto",
+          "note": "2 Gallium, 800 Salvage, 200 Alloy Plate, 1 Forma",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Sarpa",
+          "note": "1 Akstiletto, 3,300 Cryotic, 1,000 Plastids, 2 Control Module",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["The Forma in the Akstiletto build is consumed."],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

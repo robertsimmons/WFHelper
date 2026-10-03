@@ -1,0 +1,84 @@
+{
+  "name": "Prova Vandal",
+  "kind": "melee",
+  "effort": 3,
+  "tradeable": "unranked, no Forma/Catalyst",
+  "progress": { "have": 0, "need": 410, "unit": "Ducats" },
+  "badges": [
+    { "text": "Baro only", "tone": "warn" },
+    { "text": "MR 8", "tone": "info" }
+  ],
+  "prices": [{ "label": "Baro Ki'Teer", "amount": "250,000 cr + 410 Ducats", "money": false }],
+  "groups": [
+    {
+      "type": "currency",
+      "place": "VOID FISSURES",
+      "sub": null,
+      "activity": "crack relics, sell Prime parts at a Relay Ducat Kiosk",
+      "meta": "keep 410 banked before Baro lands",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "Ducats", "amount": "410" },
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "410",
+          "label": "Orokin Ducats",
+          "note": "common part 15, uncommon 45, rare 100",
+          "alt": null,
+          "done": false
+        },
+        { "qty": "250,000", "label": "Credits", "note": null, "alt": null, "done": false }
+      ],
+      "conditions": [
+        "250,000 credits is a big single spend; do not empty your account on other Baro items first."
+      ],
+      "bonuses": [
+        "Void Cascade, or fast low-level Capture, Rescue and Exterminate fissures with a speed or nuke frame (Titania, Volt, Mag, Gyre).",
+        "In public squads prefer Defense over modes where one slow player stalls extraction."
+      ],
+      "disclosures": [
+        {
+          "title": "other Ducat sources",
+          "body": "Aya buys Ducats from Varzia during Prime Resurgence. Baro's Void Surplus (50,000 cr) has a 2% chance at 1,000 Ducats. Vaulted-then-reissued parts are worth 25 and 65 Ducats."
+        },
+        {
+          "title": "closed routes",
+          "body": "Operation Breeding Grounds awarded it and The Gradivus Dilemma never did. Neither is a source now. Trade works only for unranked copies with no Forma or Catalyst, and the buyer must be MR 3 or higher."
+        }
+      ]
+    },
+    {
+      "type": "vendor",
+      "place": "BARO KI'TEER, RELAY",
+      "sub": "Concourse",
+      "activity": "buy it on a visit that stocks it",
+      "meta": "every two weeks for about 48 hours",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [
+        { "currency": "Credits", "amount": "250,000" },
+        { "currency": "Ducats", "amount": "410" }
+      ],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Prova Vandal",
+          "note": null,
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "His stock changes each visit and this weapon is not on every one. A long absence is not a removal; it has returned repeatedly."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

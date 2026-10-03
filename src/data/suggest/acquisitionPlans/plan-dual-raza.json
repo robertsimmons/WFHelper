@@ -1,0 +1,320 @@
+{
+  "name": "Dual Raza",
+  "kind": "melee",
+  "effort": 2,
+  "tradeable": null,
+  "progress": {
+    "have": 0,
+    "need": 3,
+    "unit": "builds"
+  },
+  "badges": [
+    {
+      "text": "Tenno Lab",
+      "tone": "warn"
+    },
+    {
+      "text": "MR 6",
+      "tone": "info"
+    }
+  ],
+  "prices": [
+    {
+      "label": "blueprint",
+      "amount": "15,000 cr",
+      "money": false
+    },
+    {
+      "label": "research",
+      "amount": "5,000 cr",
+      "money": false
+    }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "CLAN DOJO, TENNO LAB",
+      "sub": null,
+      "activity": "have a dojo with an Oracle and a Tenno Lab",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Oracle and Tenno Lab",
+          "note": "a built clan lab, or join a clan that has one",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "research",
+      "place": "CLAN DOJO, TENNO LAB",
+      "sub": null,
+      "activity": "research Dual Raza",
+      "meta": "3 days, 5,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "1",
+          "label": "Gallium",
+          "note": "Ghost-clan research cost",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "400",
+          "label": "Salvage",
+          "note": "Ghost-clan research cost",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "30",
+          "label": "Alloy Plate",
+          "note": "Ghost-clan research cost",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "250",
+          "label": "Polymer Bundle",
+          "note": "Ghost-clan research cost",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "3,000",
+          "label": "clan affinity",
+          "note": "Ghost-clan research cost",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Larger clan tiers multiply the research costs."],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "TENNO LAB + MARKET",
+      "sub": null,
+      "activity": "buy the blueprints",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [
+        {
+          "currency": "Credits",
+          "amount": "15,000"
+        }
+      ],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Dual Raza Blueprint",
+          "note": "15,000 credits, Tenno Lab",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Kama Blueprint",
+          "note": "Market, reusable",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Dual Kamas Blueprint",
+          "note": "Market",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "JUPITER",
+      "sub": "Themisto, Elara, Sinai",
+      "activity": "Alad V assassination or Survival",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "10",
+          "label": "Neural Sensors",
+          "note": "5 per Kama",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": ["Sinai is a Dark Sector Defense with boosted resource drops."],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "ANY EXCAVATION, VENUS OR EARTH",
+      "sub": "also Phobos, Europa, Neptune, Pluto",
+      "activity": "Excavation",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "200",
+          "label": "Cryotic",
+          "note": "one excavator cycle gives 100 base",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "SATURN, CERES OR DEIMOS",
+      "sub": null,
+      "activity": "any boss or Sentient kill also drops it",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "2",
+          "label": "Orokin Cell",
+          "note": "1 for Dual Kamas, 1 for Dual Raza",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "ANY STAR CHART",
+      "sub": null,
+      "activity": "common resources",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "2,400",
+          "label": "Ferrite",
+          "note": "1,200 per Kama",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "1,800",
+          "label": "Circuits",
+          "note": "900 per Kama",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "2,400",
+          "label": "Polymer Bundle",
+          "note": "1,200 per Kama",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "200",
+          "label": "Alloy Plate",
+          "note": "Dual Raza",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build in order, ranking each to 30",
+      "meta": "four 12h builds",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Kama",
+          "note": "20,000 credits, 12h, build two back to back",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Dual Kamas",
+          "note": "20,000 credits, 12h, from the two Kamas and 1 Orokin Cell",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Dual Raza",
+          "note": "20,000 credits, 12h, from Dual Kamas, 200 Cryotic, 200 Alloy Plate, 1 Orokin Cell",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Rank one Kama and the Dual Kamas to 30 before they are consumed, or their Mastery is lost.",
+        "Dual Kamas needs both Kamas built at once, so keep two inventory slots free."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

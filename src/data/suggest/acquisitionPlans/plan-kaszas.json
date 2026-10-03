@@ -1,0 +1,223 @@
+{
+  "name": "Kaszas",
+  "kind": "archmelee",
+  "effort": 4,
+  "tradeable": "Blade and Handle, not the blueprint",
+  "progress": { "have": 0, "need": 3, "unit": "parts" },
+  "badges": [
+    { "text": "2 syndicates to rank 2", "tone": "warn" },
+    { "text": "3 Tellurium", "tone": "info" }
+  ],
+  "prices": [
+    { "label": "blueprint", "amount": "35,000 cr", "money": false },
+    { "label": "Blade", "amount": "20,000 standing", "money": false },
+    { "label": "Handle", "amount": "20,000 standing", "money": false },
+    { "label": "build", "amount": "25,000 cr", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "RELAY, RED VEIL AND STEEL MERIDIAN",
+      "sub": null,
+      "activity": "join both and rank each to 2",
+      "meta": "about 240,000 cr across every step",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Red Veil initiation",
+          "note": "500 Alloy Plate, 10,000 cr",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Red Veil rank 1",
+          "note": "5,000 standing; 30,000 cr, 2 Gallium",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Red Veil rank 2 (Honored)",
+          "note": "22,000 standing; 50,000 cr, 1 Forma",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Steel Meridian initiation",
+          "note": "1,000 Salvage, 10,000 cr",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Steel Meridian rank 1",
+          "note": "5,000 standing; 30,000 cr, 2 Morphics",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Steel Meridian rank 2 (Valiant)",
+          "note": "22,000 standing; 50,000 cr, 1 Forma",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Standing is only the threshold; rank-ups cost credits and fodder, and you keep the rank after spending standing on parts.",
+        "Pledging to Red Veil lowers Cephalon Suda by 50% and Arbiters of Hexis by 100%; pledging to Steel Meridian lowers New Loka by 50% and Perrin Sequence by 100%."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "currency",
+      "place": "RELAY, ORBITER TERMINAL",
+      "sub": null,
+      "activity": "pledge Red Veil to 22,000, then switch to Steel Meridian",
+      "meta": "22,000 standing in each",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "Red Veil and Steel Meridian standing", "amount": "44,000" },
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "22,000",
+          "label": "Red Veil standing",
+          "note": "pledge first; Steel Meridian reaches about 11,000 on its own from the 50% ally share",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "11,000",
+          "label": "Steel Meridian standing",
+          "note": "the remainder after switching the pledge",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "3",
+          "label": "daily Alerts per syndicate",
+          "note": "8 medallions each worth 500, 1,000 or 5,000; turn in at that syndicate's Relay enclave",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The daily cap is 16,000 plus 500 per Mastery Rank for the pledged syndicate. Medallions and Alert rewards bypass it."
+      ],
+      "bonuses": [
+        "The two are allies: standing with one gives the other +50%, and the ally keeps receiving it until its own cap."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "RELAY, SYNDICATE ENCLAVES",
+      "sub": null,
+      "activity": "buy Blade and Handle",
+      "meta": "20,000 standing each",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Syndicate standing", "amount": "40,000" }],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Kaszas Blade",
+          "note": "Red Veil, rank 2",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Kaszas Handle",
+          "note": "Steel Meridian, rank 2",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Kaszas Blueprint",
+          "note": "Market, 35,000 cr",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "OPHELIA, URANUS",
+      "sub": null,
+      "activity": "Survival, camp one room",
+      "meta": "Steel Path doubles resource drops",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "3",
+          "label": "Tellurium",
+          "note": "rare; Grineer Sealab enemies",
+          "alt": "or Archwing, Empyrean, Kuva Fortress Assault, Daily Tribute, or the Market for platinum",
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [
+        "Nekros (Desecrate) with Khora or Hydroid, a resource booster and a loot Smeeta; reports run from 9 drops in 20 minutes to 30+."
+      ],
+      "disclosures": [
+        {
+          "title": "other Tellurium spots",
+          "body": "Archwing Mobile Defense on Neptune (Salacia) gives 1 to 2 per run for several posters, 1 an hour for another. Void storm survival on Veil Proxima Lu-yan is the wiki's alternative. Hunhullus once dropped it but was fixed in Hotfix 41.0.7."
+        }
+      ]
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Kaszas",
+      "meta": "12h, 25,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Kaszas",
+          "note": "Blueprint, Blade, Handle, 3 Tellurium",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [
+        "Level it to 30 in Archwing missions for Mastery; the attack teleports between targets, which people find clunky."
+      ],
+      "disclosures": []
+    }
+  ]
+}

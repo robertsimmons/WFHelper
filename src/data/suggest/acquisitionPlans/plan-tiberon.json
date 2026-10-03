@@ -1,0 +1,163 @@
+{
+  "name": "Tiberon",
+  "kind": "primary",
+  "effort": 3,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 1, "unit": "weapon" },
+  "badges": [
+    { "text": "1,450 Plastids", "tone": "warn" },
+    { "text": "MR 10", "tone": "info" }
+  ],
+  "prices": [
+    { "label": "blueprint", "amount": "20,000 cr", "money": false },
+    { "label": "build", "amount": "20,000 cr", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "vendor",
+      "place": "MARKET",
+      "sub": null,
+      "activity": "buy both blueprints",
+      "meta": "40,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Latron Blueprint",
+          "note": "20,000 cr",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Tiberon Blueprint",
+          "note": "20,000 cr",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "ASSUR, URANUS",
+      "sub": "Piscinas, Saturn is the alternative",
+      "activity": "Survival (Dark Sector)",
+      "meta": "the bottleneck",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "1,450",
+          "label": "Plastids",
+          "note": "800 for the Latron, 650 for the Tiberon",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [
+        "A looter frame (Nekros, Khora with Pilfering Strangledome) plus a resource booster covers it in a couple of runs."
+      ],
+      "disclosures": [
+        {
+          "title": "other Plastids sources",
+          "body": "Plastids also drop on Pluto, Phobos and Eris. Extractor drones on Saturn, Eris, Pluto and Uranus collect them passively. Eris dark sector survival was called low-yield by one poster; Saturn and Uranus were preferred."
+        }
+      ]
+    },
+    {
+      "type": "farm",
+      "place": "STAR CHART",
+      "sub": "Phobos, Mars, Jupiter, Sedna",
+      "activity": "common resources on the way",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "600",
+          "label": "Rubedo",
+          "note": "Tiberon; best on Phobos and Europa",
+          "alt": null,
+          "done": false
+        },
+        { "qty": "1,000", "label": "Alloy Plate", "note": "Latron", "alt": null, "done": false },
+        {
+          "qty": "900",
+          "label": "Salvage",
+          "note": "Latron; Mars, Jupiter, Sedna",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "5",
+          "label": "Morphics",
+          "note": "Latron; best on Mars",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Latron, rank it, then Tiberon",
+      "meta": "12h each",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Latron",
+          "note": "5 Morphics, 800 Plastids, 1,000 Alloy Plate, 900 Salvage, 20,000 cr",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Forma",
+          "note": "Forma Blueprint: 35,000 cr, 1 Morphics, 1 Neural Sensors, 1 Neurodes, 1 Orokin Cell, 23h",
+          "alt": "drops from many sources",
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Tiberon",
+          "note": "ranked Latron, 650 Plastids, 600 Rubedo, 1 Forma, 20,000 cr",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The Latron is consumed: rank it to 30 first or its Mastery is lost.",
+        "Only the base Latron is accepted, not Prime or Wraith."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

@@ -1,0 +1,221 @@
+{
+  "name": "Twin Rogga",
+  "kind": "secondary",
+  "effort": 3,
+  "tradeable": null,
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "weapon"
+  },
+  "badges": [
+    {
+      "text": "Argon decays",
+      "tone": "warn"
+    },
+    {
+      "text": "1,600 Kuva",
+      "tone": "info"
+    }
+  ],
+  "prices": [
+    {
+      "label": "blueprint",
+      "amount": "30,000 cr",
+      "money": false
+    },
+    {
+      "label": "build",
+      "amount": "30,000 cr",
+      "money": false
+    }
+  ],
+  "groups": [
+    {
+      "type": "vendor",
+      "place": "MARKET",
+      "sub": null,
+      "activity": "buy blueprint",
+      "meta": "30,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [
+        {
+          "currency": "Credits",
+          "amount": "30,000"
+        }
+      ],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Twin Rogga Blueprint",
+          "note": null,
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "KUVA SIPHON OR FLOOD NODE, ANY",
+      "sub": null,
+      "activity": "Kuva Siphon or Flood",
+      "meta": "Flood 1,100-1,400, siphon 550-700",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "1,600",
+          "label": "Kuva",
+          "note": "two Floods or three siphons",
+          "alt": {
+            "text": "or 10,000 Kuva from Teshin",
+            "spends": [
+              {
+                "currency": "Steel Essence",
+                "amount": "15"
+              }
+            ]
+          },
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Siphons need The War Within complete and Mastery Rank 5.",
+        "If the Siphon absorbs 8 Kuva clouds it teleports away and pays at most 350. Siphon nodes follow the Fortress's real-time position, so find it before it moves."
+      ],
+      "bonuses": [
+        "A Flood drops a guaranteed Requiem relic; a Resource Booster doubles the payout."
+      ],
+      "disclosures": [
+        {
+          "title": "other Kuva purchases",
+          "body": "10,000 Kuva also costs 50 Nightwave credits or 25 Vitus Essence, and Teshin caps Steel Essence purchases at 25 a week."
+        },
+        {
+          "title": "siphon tips",
+          "body": "Kill the Guardians first in a group; solo, ignore them and chase the clouds. Kuva Survival on Taveuni pays 200 per converted harvester and is the slower fallback."
+        }
+      ]
+    },
+    {
+      "type": "farm",
+      "place": "APOLLODORUS, MERCURY",
+      "sub": null,
+      "activity": "Survival",
+      "meta": "4,000 or more in 10 minutes with a Nekros",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "15,000",
+          "label": "Ferrite",
+          "note": null,
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "GABII, CERES",
+      "sub": null,
+      "activity": "Survival, Dark Sector",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "2,600",
+          "label": "Alloy Plate",
+          "note": null,
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": ["About 1,000 per 15 minutes with a Resource Booster."],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "UKKO, VOID",
+      "sub": null,
+      "activity": "Capture, break every container",
+      "meta": "1-2 per deposit",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "2",
+          "label": "Argon Crystal",
+          "note": "Argon Pegmatite deposits and containers",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Argon halves every day at 00:00 GMT after the day it is collected, and a cancelled build does not refund it. Farm it last and craft the same day."
+      ],
+      "bonuses": [
+        "Public lobbies usually leave with at least one, since everyone is breaking containers."
+      ],
+      "disclosures": [
+        {
+          "title": "the fast way",
+          "body": "Xaku (The Vast Untime) or Limbo (Cataclysm) at max range breaks every container in the tileset, then the Argon markers are collectable on the map. Hepit works the same way. Without them, Mot survival with Nekros and Khora is slower. A Resource Booster helps Argon Pegmatite, a Resource Drop Chance Booster does not."
+        }
+      ]
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Twin Rogga",
+      "meta": "24h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Twin Rogga",
+          "note": "30,000 cr, 2 Argon Crystal, 1,600 Kuva, 2,600 Alloy Plate, 15,000 Ferrite",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Start it before logging off; the build is a full day."],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

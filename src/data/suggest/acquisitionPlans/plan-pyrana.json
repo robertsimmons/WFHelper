@@ -1,0 +1,213 @@
+{
+  "name": "Pyrana",
+  "kind": "secondary",
+  "effort": 2,
+  "tradeable": null,
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "blueprint"
+  },
+  "badges": [
+    {
+      "text": "Tenno Lab, 2 research steps",
+      "tone": "info"
+    }
+  ],
+  "prices": [
+    {
+      "label": "blueprint",
+      "amount": "15,000 cr",
+      "money": false
+    },
+    {
+      "label": "build",
+      "amount": "20,000 cr",
+      "money": false
+    }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "DOJO, TENNO LAB",
+      "sub": null,
+      "activity": "clan research chain",
+      "meta": "72h per step",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Mastery Rank 12",
+          "note": "needed to equip it",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Akstiletto",
+          "note": "500 Salvage, 300 Polymer Bundle, 50 Alloy Plate, 1 Gallium, 5,000 cr, 72h",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Pyrana",
+          "note": "1 Control Module, 500 Salvage, 50 Alloy Plate, 300 Polymer Bundle, 5,000 cr, 72h",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Akstiletto must finish first; it only needs researching, never building. Research cannot be rushed with platinum.",
+        "The clan needs an Oracle and a Tenno Lab; a solo Ghost clan is enough."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "research",
+      "place": "DOJO, TENNO LAB",
+      "sub": null,
+      "activity": "buy the blueprint",
+      "meta": "15,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [
+        {
+          "currency": "Credits",
+          "amount": "15,000"
+        }
+      ],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Pyrana Blueprint",
+          "note": null,
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "TESHUB, VOID",
+      "sub": null,
+      "activity": "Exterminate",
+      "meta": "3 Control Module in total",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "3",
+          "label": "Control Module",
+          "note": "1 research, 2 build",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["The Void has the best rate; Neptune and Europa also drop it."],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "ANY MISSION",
+      "sub": null,
+      "activity": "common resources",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "1,800",
+          "label": "Salvage",
+          "note": "500 + 500 research, 800 build",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "600",
+          "label": "Polymer Bundle",
+          "note": "300 + 300 research",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "300",
+          "label": "Alloy Plate",
+          "note": "50 + 50 research, 200 build",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "1",
+          "label": "Gallium",
+          "note": "Akstiletto",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "1",
+          "label": "Forma",
+          "note": "build",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "45,000",
+          "label": "Credits",
+          "note": "10,000 research, 15,000 blueprint, 20,000 build",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Pyrana",
+      "meta": "20,000 cr, 12h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Pyrana",
+          "note": "2 Control Module, 800 Salvage, 200 Alloy Plate, 1 Forma",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["The build needs a built Forma, not the blueprint."],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

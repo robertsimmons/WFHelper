@@ -1,0 +1,201 @@
+{
+  "name": "Destreza",
+  "kind": "melee",
+  "effort": 2,
+  "tradeable": null,
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "weapon"
+  },
+  "badges": [
+    {
+      "text": "MR 7",
+      "tone": "info"
+    }
+  ],
+  "prices": [
+    {
+      "label": "blueprint",
+      "amount": "25,000 cr",
+      "money": false
+    },
+    {
+      "label": "build",
+      "amount": "20,000 cr",
+      "money": false
+    }
+  ],
+  "groups": [
+    {
+      "type": "vendor",
+      "place": "MARKET",
+      "sub": null,
+      "activity": "buy the blueprint",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [
+        {
+          "currency": "Credits",
+          "amount": "25,000"
+        }
+      ],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Destreza Blueprint",
+          "note": "25,000 credits",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "GABII, CERES",
+      "sub": null,
+      "activity": "Survival, Dark Sector",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "10,000",
+          "label": "Alloy Plate",
+          "note": "around 1,000 per 15 minutes with a booster",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [
+        "A loot frame (Nekros, Khora, Hydroid, Atlas) plus a resource booster is the standard setup.",
+        "Titan Extractors on Venus, Ceres and Zariman fill it passively."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "SATURN OR URANUS",
+      "sub": null,
+      "activity": "Survival or Defense",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "1,700",
+          "label": "Plastids",
+          "note": "usually 15 to 25 per drop",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Plastids is the slow input; nothing lists it as a first drop."],
+      "bonuses": ["Pluto, Phobos and Eris also drop it."],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "NORA NIGHT",
+      "sub": "Cred Offerings",
+      "activity": "buy Nitain Extract",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [
+        {
+          "currency": "Nightwave Creds",
+          "amount": "15"
+        }
+      ],
+      "map": null,
+      "rows": [
+        {
+          "qty": "5",
+          "label": "Nitain Extract",
+          "note": "evergreen Nightwave offering, no purchase limit",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Cred Offerings are closed between Nightwave series."],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "HEPIT, VOID",
+      "sub": null,
+      "activity": "Capture",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "2",
+          "label": "Argon Crystal",
+          "note": "break every container and pick up the marked crystals",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Argon Crystal decays once picked up, so farm it last, right before crafting."
+      ],
+      "bonuses": [
+        "Xaku's The Vast Untime or Limbo's Cataclysm clears the containers fastest.",
+        "Void Survival on Ani or Mot with Nekros and Khora also works."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build the Destreza",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Destreza",
+          "note": "20,000 credits, 12h",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [
+        "Destreza Incarnon Genesis is a separate upgrade and no step in acquiring this weapon."
+      ],
+      "disclosures": []
+    }
+  ]
+}

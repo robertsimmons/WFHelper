@@ -1,0 +1,120 @@
+{
+  "name": "Vulkar Wraith",
+  "kind": "primary",
+  "effort": 4,
+  "tradeable": "unranked only",
+  "progress": {
+    "have": 0,
+    "need": 450,
+    "unit": "Ducats"
+  },
+  "badges": [
+    {
+      "text": "Baro only",
+      "tone": "warn"
+    },
+    {
+      "text": "MR 7",
+      "tone": "info"
+    }
+  ],
+  "prices": [
+    {
+      "label": "Baro Ki'Teer",
+      "amount": "300,000 cr + 450 Ducats",
+      "money": false
+    }
+  ],
+  "groups": [
+    {
+      "type": "currency",
+      "place": "VOID FISSURES",
+      "sub": null,
+      "activity": "crack relics, sell Prime parts at a Relay Ducat Kiosk",
+      "meta": "stockpile between visits",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": {
+        "currency": "Ducats",
+        "amount": "450"
+      },
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "450",
+          "label": "Orokin Ducats",
+          "note": "common 15, uncommon 45, rare 100",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "300,000",
+          "label": "Credits",
+          "note": null,
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Ducats cannot be traded and come only from selling items you own; do not sell every Prime part for platinum first."
+      ],
+      "bonuses": [
+        "Credits: the Techrot Safe in Hollvania with Chroma's Effigy, a credit booster and a Credit Blessing can reach several hundred thousand in one safe."
+      ],
+      "disclosures": [
+        {
+          "title": "credits",
+          "body": "The Index on Neptune is the other common route: High Risk pays 250,000 per round won for a 50,000 entry. Sorties and Archon Hunts give about 100,000 between them."
+        },
+        {
+          "title": "relic speed",
+          "body": "Radiant relics in fast fissures. Void Cascade is the usual answer; otherwise Capture or Rescue at low-level nodes with a fast frame."
+        }
+      ]
+    },
+    {
+      "type": "vendor",
+      "place": "BARO KI'TEER, RELAY",
+      "sub": "Concourse",
+      "activity": "buy it on a visit that stocks it",
+      "meta": "every two weeks for up to 48 hours",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [
+        {
+          "currency": "Credits",
+          "amount": "300,000"
+        },
+        {
+          "currency": "Ducats",
+          "amount": "450"
+        }
+      ],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Vulkar Wraith",
+          "note": "arrives built",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "It is not permanent stock and the rotation order is not fixed. Missing a visit means waiting for it to come back.",
+        "The Vulkar is a separate item with its own Mastery."
+      ],
+      "bonuses": [],
+      "disclosures": [
+        {
+          "title": "TennoCon",
+          "body": "Baro's TennoCon relay sells his entire catalog to anyone with a ticket, a guaranteed window if you are in."
+        }
+      ]
+    }
+  ]
+}

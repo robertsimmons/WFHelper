@@ -1,0 +1,117 @@
+{
+  "name": "Prisma Machete",
+  "kind": "melee",
+  "effort": 2,
+  "tradeable": null,
+  "progress": {
+    "have": 0,
+    "need": 400,
+    "unit": "Ducats"
+  },
+  "badges": [
+    {
+      "text": "Baro only",
+      "tone": "warn"
+    },
+    {
+      "text": "MR 7",
+      "tone": "info"
+    }
+  ],
+  "prices": [
+    {
+      "label": "Baro Ki'Teer",
+      "amount": "200,000 cr + 400 Ducats",
+      "money": false
+    }
+  ],
+  "groups": [
+    {
+      "type": "currency",
+      "place": "VOID FISSURES",
+      "sub": null,
+      "activity": "crack relics, sell Prime parts at a Relay Ducat Kiosk",
+      "meta": "stockpile between visits",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": {
+        "currency": "Ducats",
+        "amount": "400"
+      },
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "400",
+          "label": "Orokin Ducats",
+          "note": "common 15, uncommon 45, rare 100",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "200,000",
+          "label": "Credits",
+          "note": null,
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Ducats cannot be traded and come only from selling items you own; do not sell every Prime part for platinum first."
+      ],
+      "bonuses": [
+        "Credits: Chroma with a credit companion mod in Hollvania safes, the Index and Profit Taker are the repeated suggestions."
+      ],
+      "disclosures": [
+        {
+          "title": "relic speed",
+          "body": "Capture and Exterminate at low-level fissure nodes with an area-clear frame, relics refined to Radiant. Expect roughly 26 to 30 Ducats a run."
+        }
+      ]
+    },
+    {
+      "type": "vendor",
+      "place": "BARO KI'TEER, RELAY",
+      "sub": "Concourse",
+      "activity": "buy it on a visit that stocks it",
+      "meta": "every two weeks for up to 48 hours",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [
+        {
+          "currency": "Credits",
+          "amount": "200,000"
+        },
+        {
+          "currency": "Ducats",
+          "amount": "400"
+        }
+      ],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Prisma Machete",
+          "note": "arrives built",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Baro's stock rotates, so it is not on every visit. Bank the Ducats first.",
+        "The Machete and Machete Wraith are separate items; ranking them gives no Prisma Machete Mastery.",
+        "Its stance slot polarity is Zenurik."
+      ],
+      "bonuses": [],
+      "disclosures": [
+        {
+          "title": "TennoCon",
+          "body": "Baro's TennoCon relay sells his entire catalog to anyone with a ticket, a guaranteed window if you are in."
+        }
+      ]
+    }
+  ]
+}

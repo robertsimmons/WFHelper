@@ -1,0 +1,190 @@
+{
+  "name": "Deconstructor",
+  "kind": "robotic",
+  "effort": 2,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 1, "unit": "Helios build" },
+  "badges": [
+    { "text": "comes with Helios", "tone": "info" },
+    { "text": "Energy Lab", "tone": "info" }
+  ],
+  "prices": [
+    { "label": "Helios blueprint", "amount": "15,000 cr", "money": false },
+    { "label": "build", "amount": "5,000 cr", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "DOJO, ENERGY LAB",
+      "sub": null,
+      "activity": "clan research for Helios",
+      "meta": "skip if already researched",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Energy Lab: Lanka, then Helios",
+          "note": "72h for Helios",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "7",
+          "label": "Fieldron Sample",
+          "note": "Helios research",
+          "alt": null,
+          "done": false
+        },
+        { "qty": "100", "label": "Oxium", "note": "Helios research", "alt": null, "done": false },
+        {
+          "qty": "750",
+          "label": "Ferrite",
+          "note": "Helios research",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "350",
+          "label": "Nano Spores",
+          "note": "Helios research",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Resource costs scale up with clan size; the figures here are the smallest clan tier.",
+        "In an established clan this is already done and costs you nothing."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "DOJO, ENERGY LAB",
+      "sub": null,
+      "activity": "buy the Helios blueprint",
+      "meta": "15,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Credits", "amount": "15,000" }],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Helios Blueprint",
+          "note": "the Deconstructor arrives with the built Helios",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Helios Prime does not give this weapon; it comes with Deconstructor Prime, a separate Mastery item.",
+        "The Deconstructor has no blueprint of its own, so a sold copy means building another Helios."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "STAR CHART",
+      "sub": null,
+      "activity": "Invasions that pay Fieldron",
+      "meta": "3 per Invasion; four cover the recipe",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "10",
+          "label": "Fieldron",
+          "note": "built Fieldron, not Fieldron Samples",
+          "alt": "or craft it, 12h and 10 Fieldron Samples each",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Fieldron is a crafted resource. Crafting all 10 costs 10 lab blueprints at 15,000 credits each plus 10 Fieldron Samples, a Control Module, 500 Salvage and 250 Plastids per build.",
+        "The reward offered rotates; when no Invasion pays Fieldron, craft the rest."
+      ],
+      "bonuses": ["Orb Vallis bounties occasionally pay 2 finished Fieldron as a stage reward."],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "IO, JUPITER",
+      "sub": null,
+      "activity": "Defense",
+      "meta": "~80 per 10 waves",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": "300", "label": "Oxium", "note": "the Helios build", "alt": null, "done": false },
+        {
+          "qty": "5,000",
+          "label": "Ferrite",
+          "note": "the Helios build",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Oxium Ospreys spawn in the first five waves of Corpus Defense and Interception and drop 7-12 Oxium each, but only if you kill them before they self-destruct."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Helios, then level the Deconstructor",
+      "meta": "24h, 5,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Helios",
+          "note": "10 Fieldron, 300 Oxium, 5,000 Ferrite, 1 Forma",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "2",
+          "label": "free Companion Slot",
+          "note": "one for Helios, one for the Deconstructor",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Equip the Deconstructor on Helios and level it to 30; Helios levels as its own Mastery item at the same time."
+      ],
+      "bonuses": [],
+      "disclosures": [
+        {
+          "title": "leveling the weapon",
+          "body": "It is a projectile with travel time that misses moving or knocked-down targets, and it takes melee and thrown-melee mods but not heavy-attack, combo, finisher, block or set mods. It still gains affinity from your kills while equipped."
+        }
+      ]
+    }
+  ]
+}

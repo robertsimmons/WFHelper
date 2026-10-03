@@ -1,0 +1,164 @@
+{
+  "name": "Secura Lecta",
+  "kind": "melee",
+  "effort": 4,
+  "tradeable": "unranked copies without Forma or Catalyst",
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "weapon"
+  },
+  "badges": [
+    {
+      "text": "125,000 standing",
+      "tone": "warn"
+    },
+    {
+      "text": "Partner rank",
+      "tone": "warn"
+    }
+  ],
+  "prices": [
+    {
+      "label": "purchase",
+      "amount": "125,000 standing",
+      "money": false
+    }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "ORBITER, SYNDICATES",
+      "sub": null,
+      "activity": "pledge to The Perrin Sequence",
+      "meta": "15% of all affinity converts to standing",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "The Perrin Sequence pledge",
+          "note": "every mission counts, no special missions",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "New Loka is allied (+50% Perrin standing) and Arbiters of Hexis is opposed (-50%). Pledge Perrin or New Loka first.",
+        "Steel Meridian is Perrin's enemy (-100%): its standing drains every mission while you are pledged to Perrin or New Loka, uncapped by the daily cap. One player lost about 200,000 in a single mission at rank 5.",
+        "Standing can go negative down to the rank -2 floor (-44,000), which brings Eximus MOA hunters."
+      ],
+      "bonuses": ["You can swap pledges freely with no penalty."],
+      "disclosures": []
+    },
+    {
+      "type": "currency",
+      "place": "ANY MISSION, ORBITER",
+      "sub": null,
+      "activity": "earn standing and rank up in the syndicate screen",
+      "meta": "the daily cap is the bottleneck",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": {
+        "currency": "Perrin Sequence standing",
+        "amount": "125,000"
+      },
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Initiation",
+          "note": "100 Polymer Bundle, 10,000 cr",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "5,000",
+          "label": "Associate",
+          "note": "2 Detonite Ampule, 30,000 cr",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "22,000",
+          "label": "Senior Associate",
+          "note": "1 Forma, 50,000 cr",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "44,000",
+          "label": "Executive",
+          "note": "1 Orokin Reactor, 100,000 cr",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "70,000",
+          "label": "Senior Executive",
+          "note": "2 Aya, 250,000 cr",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "99,000",
+          "label": "Partner",
+          "note": "3 Aya, 500,000 cr",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The daily cap is 16,000 plus 500 per Mastery Rank across all syndicates together, resetting at 0:00 UTC.",
+        "The weapon costs 125,000, above the 99,000 Partner minimum, so you keep farming past the rank-up."
+      ],
+      "bonuses": [
+        "Syndicate Alerts (from Rank 1) and Medallions sit outside the cap: 500, 1,000 or 5,000 standing per medallion, 8 per alert."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "THE PERRIN SEQUENCE, ORBITER",
+      "sub": null,
+      "activity": "buy the weapon at Partner",
+      "meta": "125,000 standing",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [
+        {
+          "currency": "Perrin Sequence standing",
+          "amount": "125,000"
+        }
+      ],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Secura Lecta",
+          "note": null,
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "It cannot be picked as the free Partner reward; it is a separate standing purchase."
+      ],
+      "bonuses": ["Spending standing can drop your rank, which no longer matters once you own it."],
+      "disclosures": [
+        {
+          "title": "the credit trait",
+          "body": "Hotfix 42.0.10 nerfed the stalled-gas multi-payout trick. It is now a modest credit bonus, about 2x at MR 8 rising to about 4x at MR 18 and capped."
+        }
+      ]
+    }
+  ]
+}

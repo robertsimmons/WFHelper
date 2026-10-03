@@ -1,0 +1,265 @@
+{
+  "name": "Medjay Predasite",
+  "kind": "companion",
+  "effort": 4,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 1, "unit": "companion" },
+  "badges": [
+    { "text": "Vome only, must be Weakened", "tone": "warn" },
+    { "text": "Entrati Rank 3 to gild", "tone": "warn" }
+  ],
+  "prices": [
+    { "label": "revivify", "amount": "5,000 cr", "money": false },
+    { "label": "Mutagen + Antigen blueprints", "amount": "2,500 standing", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "NECRALISK, DEIMOS",
+      "sub": null,
+      "activity": "unlock Son's revivification menu",
+      "meta": "Heart of Deimos",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "necralisk",
+      "rows": [
+        {
+          "qty": null,
+          "label": "Heart of Deimos",
+          "note": "opens the Necralisk and Son",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "1",
+          "label": "free Companion Slot",
+          "note": "claiming the revivified Medjay needs it",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Entrati Rank 3, Associate",
+          "note": "gilding needs it; Rank 1 Stranger covers the capture and revivify",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Hitting the daily Entrati standing cap blocks donating pets to Son."],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "SON, NECRALISK",
+      "sub": null,
+      "activity": "buy the Tranq Rifle, the Echo-Lure and one Mutagen/Antigen pair",
+      "meta": "Rank 1 Stranger",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "necralisk",
+      "rows": [
+        {
+          "qty": null,
+          "label": "Tranq Rifle",
+          "note": "bought from Son for Entrati standing",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Predasite Echo-Lure",
+          "note": "1,000 standing, reusable",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Predasite Pheromone Gland",
+          "note": "150 standing, one use; raises the rare subspecies chance",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Leptosam Mutagen Blueprint",
+          "note": "1,250 standing",
+          "alt": "pricier Mutagens at Ranks 2-4",
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Iranon Antigen Blueprint",
+          "note": "1,250 standing",
+          "alt": "pricier Antigens at Ranks 2-4",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Mutagen and Antigen only change resistances, polarity and looks; the cheapest pair gives the same Mastery."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "CAMBION DRIFT, DEIMOS",
+      "sub": null,
+      "activity": "fish, fillet at Daughter, and gather residue",
+      "meta": "Mutagen + Antigen ingredients",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "cambion-drift",
+      "rows": [
+        { "qty": "6", "label": "Vome Residue", "note": "during Fass", "alt": null, "done": false },
+        { "qty": "6", "label": "Fass Residue", "note": "during Vome", "alt": null, "done": false },
+        { "qty": "15", "label": "Pustulite", "note": "Leptosam", "alt": null, "done": false },
+        {
+          "qty": "20",
+          "label": "Ferment Bladder",
+          "note": "fish part, Leptosam",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "12",
+          "label": "Sporulate Sac",
+          "note": "fish part, Leptosam",
+          "alt": null,
+          "done": false
+        },
+        { "qty": "15", "label": "Ganglion", "note": "Iranon", "alt": null, "done": false },
+        {
+          "qty": "30",
+          "label": "Benign Infested Tumor",
+          "note": "fish part, Iranon",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "15",
+          "label": "Dendrite Blastoma",
+          "note": "fish part, Iranon",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Each residue only spawns in the opposite cycle to its name."],
+      "bonuses": ["Stock the fish parts while fishing for something else."],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build the Mutagen and Antigen",
+      "meta": "2 min and 1,000 cr each",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Leptosam Mutagen",
+          "note": "6 Vome Residue, 15 Pustulite, 20 Ferment Bladder, 12 Sporulate Sac",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Iranon Antigen",
+          "note": "6 Fass Residue, 15 Ganglion, 30 Benign Infested Tumor, 15 Dendrite Blastoma",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "bounty",
+      "place": "CAMBION DRIFT, DEIMOS",
+      "sub": "Vome cycle",
+      "activity": "call an Echo-Lure, tranq a Medjay, then let Infested damage it",
+      "meta": "rare; one Vome window with the lure",
+      "mode": "stealth frame on foot",
+      "live": { "state": "waiting", "text": "wait for Vome; Medjay does not spawn in Fass" },
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "cambion-drift",
+      "rows": [
+        {
+          "qty": "1",
+          "label": "Weakened Medjay Predasite",
+          "note": "capture only after Infested damage it",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "A healthy capture gives only Medjay Predasite Tags, which are Conservation currency and cannot build the companion.",
+        "Your own damage never weakens it; only roaming Infested do. Predasites need two tranq darts.",
+        "Predasites resist Warframe abilities by 75%, and the resistance stacks with repeated use until they are immune."
+      ],
+      "bonuses": ["Tags from extra captures trade to Son for the Son Tokens gilding needs."],
+      "disclosures": [
+        {
+          "title": "getting the Weakened hit",
+          "body": "Tranq it first, then bring Infested to the sleeping animal and go invisible so aggro switches to it. A Pherliac Pod dropped on it pulls Infested in, and Loki's Switch Teleport can move it into a group. Hunt on foot, not in Archwing, where Infested tend to ignore the target."
+        }
+      ]
+    },
+    {
+      "type": "vendor",
+      "place": "SON, NECRALISK",
+      "sub": null,
+      "activity": "revivify, level to 30, gild, level to 30 again",
+      "meta": "5,000 cr now; 10 Son Tokens and 5,000 standing to gild",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Entrati standing", "amount": "5,000" }],
+      "map": "necralisk",
+      "rows": [
+        {
+          "qty": null,
+          "label": "Medjay Predasite, revivified",
+          "note": "Weakened Medjay + Mutagen + Antigen + 5,000 credits",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "10",
+          "label": "Son Tokens",
+          "note": "gild at rank 30",
+          "alt": "donate a maxed Predasite or Vulpaphyla for 10, gilded for 15",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Only a gilded Medjay earns Mastery; gilding resets it to rank 0, so level it to 30 twice.",
+        "Once one gilded Medjay hits rank 30, another build gives no more Mastery.",
+        "Its Medjay Claws level but give no Mastery."
+      ],
+      "bonuses": [
+        "Son Tokens also come from tag trades, pickups on the Drift and Grandmother's Mend the Family trade."
+      ],
+      "disclosures": []
+    }
+  ]
+}

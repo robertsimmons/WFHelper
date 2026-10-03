@@ -1,0 +1,179 @@
+{
+  "name": "Nami Skyla",
+  "kind": "melee",
+  "effort": 2,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 1, "unit": "blueprint" },
+  "badges": [
+    { "text": "Tenno Lab", "tone": "info" },
+    { "text": "48h research", "tone": "warn" }
+  ],
+  "prices": [
+    { "label": "blueprint", "amount": "15,000 cr", "money": false },
+    { "label": "build", "amount": "20,000 cr", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "DOJO, TENNO LAB",
+      "sub": null,
+      "activity": "clan research",
+      "meta": "48h, clan-wide; start first",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Nami Skyla",
+          "note": "1 Neurodes, 500 Ferrite, 50 Rubedo, 300 Polymer Bundle, 5,000 cr",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Needs an Oracle and a Tenno Lab. Costs shown are the Ghost tier; Shadow is x3, Storm x10, Mountain x30, Moon x100, so only start it in a small clan.",
+        "A finished clan already has it: join one and skip this group. Starting research needs a rank with research permission.",
+        "Research cannot be rushed with platinum."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "research",
+      "place": "DOJO, TENNO LAB",
+      "sub": null,
+      "activity": "buy the blueprint",
+      "meta": "15,000 cr, each member buys their own",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Credits", "amount": "15,000" }],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Nami Skyla Blueprint", "note": null, "alt": null, "done": false }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "ASSUR, URANUS",
+      "sub": "or Ophelia, Uranus; Mercury, Venus",
+      "activity": "Dark Sector Survival",
+      "meta": "Uranus drops the most Polymer Bundle",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "1,100",
+          "label": "Polymer Bundle",
+          "note": "800 build, 300 research",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "10",
+          "label": "Gallium",
+          "note": "build; Uranus Sabotage caches also drop it",
+          "alt": "or Hellas, Mars",
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "ZEUGMA, PHOBOS",
+      "sub": "or Valefor, Europa",
+      "activity": "Dark Sector Survival",
+      "meta": "Rubedo; about 250 per 5 minutes",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "250",
+          "label": "Rubedo",
+          "note": "200 build, 50 research",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "EARTH",
+      "sub": "or Deimos, Eris, Lua",
+      "activity": "any mission",
+      "meta": "Neurodes and Ferrite are common",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "3",
+          "label": "Neurodes",
+          "note": "2 build, 1 research",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "500",
+          "label": "Ferrite",
+          "note": "research; common on most early planets",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Nami Skyla",
+      "meta": "12h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Nami Skyla",
+          "note": "2 Neurodes, 800 Polymer Bundle, 200 Rubedo, 10 Gallium, 20,000 cr",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Mastery Rank 2 to equip it; not the Prime."],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

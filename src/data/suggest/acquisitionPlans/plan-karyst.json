@@ -1,0 +1,162 @@
+{
+  "name": "Karyst",
+  "kind": "melee",
+  "effort": 3,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 1, "unit": "weapon" },
+  "badges": [{ "text": "Argon decays", "tone": "warn" }],
+  "prices": [
+    { "label": "blueprint", "amount": "20,000 cr", "money": false },
+    { "label": "build", "amount": "20,000 cr", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "vendor",
+      "place": "MARKET",
+      "sub": null,
+      "activity": "buy blueprint",
+      "meta": "20,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Karyst Blueprint",
+          "note": "no standing needed",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Mastery Rank 6 to equip."],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "MARS",
+      "sub": "or Jupiter, Sedna",
+      "activity": "any mission",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "1,500",
+          "label": "Salvage",
+          "note": "75 to 150 per pickup",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "URANUS",
+      "sub": "or Mercury, Venus",
+      "activity": "any mission",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "800",
+          "label": "Polymer Bundle",
+          "note": "best rate on Uranus",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "IO, JUPITER",
+      "sub": null,
+      "activity": "Corpus Defense or Interception",
+      "meta": "about 80 Oxium in 10 waves",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "100",
+          "label": "Oxium",
+          "note": "from Oxium Ospreys, 7 to 12 each",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Ospreys drop nothing if they self-destruct, so kill them on sight within the first 5 waves."
+      ],
+      "bonuses": ["A resource booster doubles Oxium."],
+      "disclosures": [
+        {
+          "title": "other Oxium sources",
+          "body": "Corpus Gas City and Grineer Sealab Sabotage also give some."
+        }
+      ]
+    },
+    {
+      "type": "farm",
+      "place": "HEPIT, VOID",
+      "sub": "or Ukko",
+      "activity": "Capture",
+      "meta": "pick this up last",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [{ "qty": "1", "label": "Argon Crystal", "note": null, "alt": null, "done": false }],
+      "conditions": [
+        "Argon halves in count every day at 00:00 GMT once a day old, so farm it the day you craft."
+      ],
+      "bonuses": [],
+      "disclosures": [
+        {
+          "title": "fast Argon",
+          "body": "Xaku or Limbo at max range and efficiency, spamming the 4 to break every container, is the fastest. Without them a 5-minute Void Survival usually gives one or two. A Smeeta or other beast with Resourceful Retriever and Loot Radar helps; Isolation Vault bounties on Deimos also drop it."
+        }
+      ]
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Karyst",
+      "meta": "12h, 20,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [{ "qty": null, "label": "Karyst", "note": null, "alt": null, "done": false }],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

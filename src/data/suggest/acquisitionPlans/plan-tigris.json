@@ -1,0 +1,136 @@
+{
+  "name": "Tigris",
+  "kind": "primary",
+  "effort": 2,
+  "tradeable": null,
+  "progress": { "have": 0, "need": 1, "unit": "blueprint" },
+  "badges": [{ "text": "Market blueprint", "tone": "info" }],
+  "prices": [
+    { "label": "blueprint", "amount": "40,000 cr", "money": false },
+    { "label": "build", "amount": "25,000 cr", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "vendor",
+      "place": "MARKET",
+      "sub": null,
+      "activity": "buy the blueprint",
+      "meta": "40,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Credits", "amount": "40,000" }],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Tigris Blueprint",
+          "note": "Weapons, Primary",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Needs Mastery Rank 9 to equip."],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "GABII, CERES",
+      "sub": null,
+      "activity": "Dark Sector Survival",
+      "meta": "Dark Sector bonus to resource drops",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "3",
+          "label": "Orokin Cell",
+          "note": "drops come in ones and twos",
+          "alt": "or a boss kill: Exta on Ceres, General Sargas Ruk on Saturn, the Deimos boss",
+          "done": false
+        },
+        {
+          "qty": "900",
+          "label": "Circuits",
+          "note": "highest chance on Ceres",
+          "alt": "or Venus, Kuva Fortress",
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [
+        "Nekros (Desecrate), Khora (Pilfering Strangledome) or Hydroid, or a crate breaker like Xaku or Limbo; a beast with Resourceful or Loyal Retriever sometimes doubles drops.",
+        "Steel Path adds +100% resource drops; reports include 21 cells in about 25 minutes, and 120 in 35 minutes with boosters."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "PHOBOS, MARS, JUPITER",
+      "sub": null,
+      "activity": "fill these on the way",
+      "meta": "longer Survival or Defense pays more per trip",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "1,200",
+          "label": "Rubedo",
+          "note": "15 to 25 per drop; highest on Phobos and Europa",
+          "alt": "or Earth, Pluto, Sedna, the Void",
+          "done": false
+        },
+        {
+          "qty": "1,200",
+          "label": "Salvage",
+          "note": "75 to 150 per drop; Mars, Jupiter",
+          "alt": "or Sedna",
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Tigris",
+      "meta": "24h, 25,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Tigris",
+          "note": "3 Orokin Cell, 900 Circuits, 1,200 Salvage, 1,200 Rubedo",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": ["Its own Mastery, separate from Tigris Prime and Sancti Tigris."],
+      "disclosures": [
+        {
+          "title": "feels broken at first",
+          "body": "Tapping fires both barrels; holding fires only the first. It reloads after every shot with a 2-round magazine, so Ammo Stock and Burdened Magazine are the standard fix."
+        }
+      ]
+    }
+  ]
+}

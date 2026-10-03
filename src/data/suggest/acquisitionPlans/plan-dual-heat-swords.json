@@ -1,0 +1,150 @@
+{
+  "name": "Dual Heat Swords",
+  "kind": "melee",
+  "effort": 2,
+  "tradeable": null,
+  "progress": { "have": 0, "need": 1, "unit": "blueprint" },
+  "badges": [{ "text": "MR 3", "tone": "warn" }],
+  "prices": [
+    { "label": "blueprint", "amount": "15,000 cr", "money": false },
+    { "label": "build", "amount": "20,000 cr", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "vendor",
+      "place": "MARKET",
+      "sub": null,
+      "activity": "buy the blueprint, under Weapons, Melee",
+      "meta": "15,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Credits", "amount": "15,000" }],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Dual Heat Swords Blueprint",
+          "note": null,
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["The weapon is locked to Mastery Rank 3."],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "MARS",
+      "sub": null,
+      "activity": "any node",
+      "meta": "Morphics and Salvage together",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "2",
+          "label": "Morphics",
+          "note": null,
+          "alt": "also Mercury, Phobos, Europa and Pluto",
+          "done": false
+        },
+        {
+          "qty": "900",
+          "label": "Salvage",
+          "note": null,
+          "alt": "also Jupiter and Sedna",
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "MERCURY OR THE VOID",
+      "sub": null,
+      "activity": "Apollodorus Survival, M Prime, Terminus, or Teshub",
+      "meta": "best Ferrite yields",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "1,000",
+          "label": "Ferrite",
+          "note": null,
+          "alt": "also Earth, Neptune, Lua and Zariman Ten Zero",
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [
+        "Nekros with Desecrate and a looting setup, opening every container, raises the yield."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "ASSUR OR OPHELIA, URANUS",
+      "sub": null,
+      "activity": "Survival",
+      "meta": "best Polymer Bundle rate",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "700",
+          "label": "Polymer Bundle",
+          "note": null,
+          "alt": "also Mercury and Venus",
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Dual Heat Swords",
+      "meta": "12h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Dual Heat Swords",
+          "note": "20,000 cr, 2 Morphics, 900 Salvage, 1,000 Ferrite, 700 Polymer Bundle",
+          "alt": "rush for 35 platinum",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Heat Sword and Heat Dagger are not ingredients. They are separate weapons with their own Mastery."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

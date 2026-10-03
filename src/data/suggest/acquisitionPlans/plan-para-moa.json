@@ -1,0 +1,507 @@
+{
+  "name": "Para Moa",
+  "kind": "companion",
+  "effort": 4,
+  "tradeable": false,
+  "progress": {
+    "have": 0,
+    "need": 4,
+    "unit": "parts"
+  },
+  "badges": [
+    {
+      "text": "Doer gate",
+      "tone": "warn"
+    },
+    {
+      "text": "gild, then 0-30 again",
+      "tone": "info"
+    }
+  ],
+  "prices": [
+    {
+      "label": "rank-ups to Doer",
+      "amount": "85,000 cr",
+      "money": false
+    },
+    {
+      "label": "four part builds",
+      "amount": "200,000 cr",
+      "money": false
+    }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "FORTUNA, VENUS",
+      "sub": null,
+      "activity": "finish Vox Solaris",
+      "meta": "one-time",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "orb-vallis",
+      "rows": [
+        {
+          "qty": null,
+          "label": "Vox Solaris",
+          "note": "unlocks Legs and Solaris United standing",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "1",
+          "label": "free Robotic slot",
+          "note": "for the assembled MOA",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "A MOA has no weapon of its own; it needs a Robotic weapon you own, or one of Legs' blueprints (Cryotra, Tazicor, Vulcax, Helstrum)."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "currency",
+      "place": "ORB VALLIS, VENUS",
+      "sub": null,
+      "activity": "Conservation, or mining turn-ins to Smokefinger",
+      "meta": "daily cap 16,000 plus 500 per Mastery Rank",
+      "mode": "solo",
+      "live": null,
+      "skip": null,
+      "earns": {
+        "currency": "Solaris United standing",
+        "amount": "82,000"
+      },
+      "spends": [],
+      "map": "orb-vallis",
+      "rows": [
+        {
+          "qty": "71,000",
+          "label": "rank-ups to Doer",
+          "note": "Rank 3",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "2,000",
+          "label": "part blueprints",
+          "note": "Para Model and three others, 500 each",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "5,000",
+          "label": "gild",
+          "note": null,
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "4,000",
+          "label": "refining blueprints",
+          "note": "1,000 each at Neutral, reusable",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Before Doer the lures are low-value; bounties plus gem turn-ins to Smokefinger are the practical path."
+      ],
+      "bonuses": [
+        "Half an hour of mining with the Sunpoint Plasma Drill and a Resourceful Retriever beast covers several days of cap, and mines the ores and gems for the parts."
+      ],
+      "disclosures": [
+        {
+          "title": "Conservation",
+          "body": "A Kubrodon with a Kubrodon Echo-Lure and pheromones pays roughly 4,000 to 8,000 standing per capture, and the cap fills in under an hour. Equinox or Ivara sleep or invisibility makes captures reliable. Donating a rank-30 or gilded MOA to Legs pays 1,800 or 2,400 standing, but only after the Mastery is banked."
+        }
+      ]
+    },
+    {
+      "type": "bounty",
+      "place": "ORB VALLIS, VENUS",
+      "sub": null,
+      "activity": "Eudico bounties, full runs",
+      "meta": "stage 5 pays best",
+      "mode": "solo",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "orb-vallis",
+      "rows": [
+        {
+          "qty": "16",
+          "label": "Training Debt-Bond",
+          "note": "6 for rank-ups, 10 for the gild",
+          "alt": "or Ticker's cases",
+          "done": false
+        },
+        {
+          "qty": "6",
+          "label": "Shelter Debt-Bond",
+          "note": null,
+          "alt": "or Ticker's cases",
+          "done": false
+        },
+        {
+          "qty": "4",
+          "label": "Medical Debt-Bond",
+          "note": null,
+          "alt": "or Ticker's cases",
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [
+        "Ticker always has the lower Training and Shelter bonds on offer, and the Profit-Taker also pays bonds."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "FORTUNA, VENUS",
+      "sub": null,
+      "activity": "Solaris United rank-ups to Doer",
+      "meta": "85,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [
+        {
+          "currency": "Solaris United standing",
+          "amount": "71,000"
+        }
+      ],
+      "map": "orb-vallis",
+      "rows": [
+        {
+          "qty": null,
+          "label": "Outworlder",
+          "note": "5,000 standing, 2 Training, 10,000 cr",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Rapscallion",
+          "note": "22,000 standing, 2 Training + 3 Shelter, 25,000 cr",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Doer",
+          "note": "44,000 standing, 2 Training + 3 Shelter + 4 Medical, 50,000 cr",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Parts only need Neutral, but gilding needs Doer, so the full climb is unavoidable for the Mastery."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "LEGS, FORTUNA",
+      "sub": null,
+      "activity": "buy the four part blueprints",
+      "meta": "2,000 standing",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [
+        {
+          "currency": "Solaris United standing",
+          "amount": "2,000"
+        }
+      ],
+      "map": "orb-vallis",
+      "rows": [
+        {
+          "qty": null,
+          "label": "Para Model",
+          "note": "500 standing, Neutral",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Drex Core",
+          "note": "500 standing, Neutral",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Trux Gyro",
+          "note": "500 standing, Neutral",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Drimper Bracket",
+          "note": "500 standing, Neutral, no extra polarity",
+          "alt": "Tian Bracket, +1 Vazarin",
+          "done": false
+        }
+      ],
+      "conditions": ["Only the Model earns Mastery; Core, Gyro and Bracket are stats and looks."],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "ORB VALLIS, VENUS",
+      "sub": "Deck 12 caves",
+      "activity": "mining, sacs and Corpus containers; refine at Smokefinger",
+      "meta": null,
+      "mode": "solo",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "orb-vallis",
+      "rows": [
+        {
+          "qty": "80",
+          "label": "Axidrol Alloy",
+          "note": "Model 30, Core 25, Bracket 25; 20 Axidite, 500 Ferrite, 100 Rubedo per refine",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "50",
+          "label": "Travocyte Alloy",
+          "note": "Core 25, Bracket 25; 20 Travoride, 500 Salvage, 100 Plastids per refine",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "25",
+          "label": "Smooth Phasmin",
+          "note": "Model 10, Core 15; 10 Phasmin per refine",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "5",
+          "label": "Heart Noctrul",
+          "note": "Gyro; 10 Noctrul per refine",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "35",
+          "label": "Mytocardia Spore",
+          "note": "Model 20, Bracket 15; shoot Mytocardia Sacs",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "35",
+          "label": "Thermal Sludge",
+          "note": "Gyro 20, Bracket 15; Corpus camp containers",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Each refined alloy and gem needs its reusable Smokefinger blueprint."],
+      "bonuses": [
+        "Best Spore spots are the mushroom forest west of the Coolant Reservoir and the lake south of Transit Depot."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "ORB VALLIS, VENUS",
+      "sub": null,
+      "activity": "fishing, cut by The Business",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "orb-vallis",
+      "rows": [
+        {
+          "qty": "10",
+          "label": "Echowinder Anoscopic Sensor",
+          "note": "Gyro",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "10",
+          "label": "Brickie Muon Battery",
+          "note": "Core",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "SATURN OR URANUS",
+      "sub": null,
+      "activity": "any mission, loot containers",
+      "meta": "highest Plastids chance",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "1,000",
+          "label": "Plastids",
+          "note": "Gyro 1,000, plus 100 per Travocyte refine",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "MARS",
+      "sub": null,
+      "activity": "Capture",
+      "meta": "best Morphics rate",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "2",
+          "label": "Morphics",
+          "note": "Model",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "queue all four parts at once",
+      "meta": "24h in parallel, 200,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Para Model",
+          "note": "20 Mytocardia Spore, 10 Smooth Phasmin, 30 Axidrol Alloy, 2 Morphics",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Drex Core",
+          "note": "15 Smooth Phasmin, 25 Travocyte Alloy, 25 Axidrol Alloy, 10 Brickie Muon Battery",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Trux Gyro",
+          "note": "20 Thermal Sludge, 5 Heart Noctrul, 10 Echowinder Anoscopic Sensor, 1,000 Plastids",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Drimper Bracket",
+          "note": "15 Mytocardia Spore, 15 Thermal Sludge, 25 Travocyte Alloy, 25 Axidrol Alloy",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Every part is 50,000 credits and 24 hours."],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "LEGS, FORTUNA",
+      "sub": null,
+      "activity": "Configure a MOA Companion, then gild at rank 30",
+      "meta": "4,000 cr now; 10 bonds and 5,000 standing later",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [
+        {
+          "currency": "Solaris United standing",
+          "amount": "5,000"
+        }
+      ],
+      "map": "orb-vallis",
+      "rows": [
+        {
+          "qty": null,
+          "label": "Para Moa, assembled",
+          "note": "4,000 credits, instant",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Para Moa, gilded",
+          "note": "10 Training Debt-Bonds, 5,000 standing, Doer",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The first 0-30 earns nothing; gilding resets it to rank 0 and the second 0-30 is where the 6,000 Mastery lands.",
+        "A built MOA cannot be disassembled, renamed or polarized until gilded.",
+        "Once one MOA with this Model is gilded and levelled, later builds give nothing."
+      ],
+      "bonuses": [
+        "Building also unlocks the Whiplash Mine and Anti-Grav Grenade precept mods, and any Model's precepts work on any MOA."
+      ],
+      "disclosures": [
+        {
+          "title": "leveling",
+          "body": "Hydron on Sedna Defense with a booster reaches rank 15 in two rounds. Grineer enemies give the best affinity. Fit vitality, armour and shield mods and an Orokin Reactor first."
+        },
+        {
+          "title": "build all four Models together",
+          "body": "Each Model is worth 6,000 Mastery once. Legs also sells pre-gilded MOAs for platinum; that is not this farm."
+        }
+      ]
+    }
+  ]
+}

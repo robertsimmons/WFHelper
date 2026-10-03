@@ -1,0 +1,277 @@
+{
+  "name": "Venka",
+  "kind": "melee",
+  "effort": 2,
+  "tradeable": null,
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "weapon"
+  },
+  "badges": [
+    {
+      "text": "Tenno Lab",
+      "tone": "warn"
+    },
+    {
+      "text": "MR 4",
+      "tone": "info"
+    }
+  ],
+  "prices": [
+    {
+      "label": "blueprint",
+      "amount": "15,000 cr",
+      "money": false
+    },
+    {
+      "label": "build",
+      "amount": "20,000 cr",
+      "money": false
+    }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "CLAN DOJO, TENNO LAB",
+      "sub": null,
+      "activity": "have a dojo with an Oracle and a Tenno Lab",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Oracle and Tenno Lab",
+          "note": "a built clan lab, or join a clan that has the research done",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Each room costs 1,000 credits, 650 Salvage, 350 Circuits and 350 Polymer Bundle, plus a reactor for power."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "research",
+      "place": "CLAN DOJO, TENNO LAB",
+      "sub": null,
+      "activity": "research Akstiletto, then Sybaris, then Venka",
+      "meta": "3 days and 5,000 cr each, in sequence",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Akstiletto",
+          "note": "550 Salvage, 300 Polymer Bundle, 50 Alloy Plate, 1 Gallium",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Sybaris",
+          "note": "1 Morphics, 500 Salvage, 50 Rubedo, 300 Polymer Bundle",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Venka",
+          "note": "2 Gallium, 400 Salvage, 75 Plastids, 600 Polymer Bundle",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Only the research is needed; neither Akstiletto nor Sybaris is ever built.",
+        "Research cannot be rushed with platinum."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "TENNO LAB",
+      "sub": null,
+      "activity": "buy the blueprint",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [
+        {
+          "currency": "Credits",
+          "amount": "15,000"
+        }
+      ],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Venka Blueprint",
+          "note": "15,000 credits",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "You must be in the clan and the research must show complete, or the purchase fails."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "MARS + URANUS",
+      "sub": null,
+      "activity": "resource nodes",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "7",
+          "label": "Gallium",
+          "note": "3 for research, 4 for the build",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "1",
+          "label": "Morphics",
+          "note": "Mars has the best rate",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Gallium is the only scarce input."],
+      "bonuses": ["Assur (Uranus) and Wahiba (Mars) are Dark Sectors with boosted drops."],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "MARS, JUPITER OR SEDNA",
+      "sub": null,
+      "activity": "Salvage nodes",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "2,450",
+          "label": "Salvage",
+          "note": "1,450 for research, 1,000 for the build",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "SATURN OR URANUS",
+      "sub": null,
+      "activity": "Survival or Defense",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "575",
+          "label": "Plastids",
+          "note": "75 for research, 500 for the build",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "1,200",
+          "label": "Polymer Bundle",
+          "note": "all three research steps; best on Uranus",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "PHOBOS OR EUROPA",
+      "sub": null,
+      "activity": "Rubedo nodes",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "50",
+          "label": "Rubedo",
+          "note": "Sybaris research",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [
+        "Alloy Plate (50) for Akstiletto drops on Venus, Jupiter, Sedna, Ceres, Phobos and Pluto."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Venka",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Venka",
+          "note": "20,000 credits, 1 Forma, 12h",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Budget one Forma on top of the 4 Gallium, 1,000 Salvage and 500 Plastids."],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

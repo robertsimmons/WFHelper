@@ -1,0 +1,145 @@
+{
+  "name": "Sheev",
+  "kind": "melee",
+  "effort": 4,
+  "tradeable": true,
+  "progress": { "have": 0, "need": 4, "unit": "pieces" },
+  "badges": [
+    { "text": "Invasion RNG", "tone": "warn" },
+    { "text": "Naberus shop, October", "tone": "info" }
+  ],
+  "prices": [
+    { "label": "blueprint", "amount": "125 Mother Tokens", "money": false },
+    { "label": "each part", "amount": "25 Mother Tokens", "money": false },
+    { "label": "build", "amount": "20,000 cr", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "DEIMOS",
+      "sub": null,
+      "activity": "The War Within quest",
+      "meta": "opens Deimos and the Cambion Drift",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "The War Within", "note": null, "alt": null, "done": false }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "CAMBION DRIFT, DEIMOS",
+      "sub": null,
+      "activity": "Steel Path bounties from Mother",
+      "meta": "about 150-180 tokens per run, 5-10 minutes",
+      "mode": "public at low Mastery",
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "Mother Token", "amount": "200" },
+      "spends": [],
+      "map": "cambion-drift",
+      "rows": [
+        {
+          "qty": "200",
+          "label": "Mother Token",
+          "note": "125 blueprint, 25 each for Blade, Heatsink and Hilt",
+          "alt": "Grandmother's Mend the Family trade, or tokens found in the Drift",
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [
+        "Repeating the shorter Steel Path bounty set beats endless bounties for most players."
+      ],
+      "disclosures": [
+        {
+          "title": "endless bounties",
+          "body": "Token rewards climb each round, so staying two hours or more can pay, but the board resets every 2.5 hours with a 1-hour grace window and others found it slower."
+        }
+      ]
+    },
+    {
+      "type": "vendor",
+      "place": "DAUGHTER, NECRALISK",
+      "sub": null,
+      "activity": "buy the blueprint and all three parts",
+      "meta": "200 Mother Tokens, Nights of Naberus only",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Mother Token", "amount": "200" }],
+      "map": "necralisk",
+      "rows": [
+        {
+          "qty": null,
+          "label": "Sheev Blueprint",
+          "note": "125 Mother Tokens",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Sheev Blade",
+          "note": "25 Mother Tokens",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Sheev Heatsink",
+          "note": "25 Mother Tokens",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Sheev Hilt",
+          "note": "25 Mother Tokens",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Only open during the October Nights of Naberus event, which reruns yearly."],
+      "bonuses": [],
+      "disclosures": [
+        {
+          "title": "the Invasion route",
+          "body": "Outside October, the blueprint and each part are Grineer-side Invasion rewards at 1.11% apiece, about 4.4% per payout for any piece. Side with the Grineer, never the Corpus; a Sheev part often shares an invasion with a Corpus-side reward. Completing the invasion's third mission is what pays out, and more missions add nothing. Push a stuck node by running one side repeatedly."
+        }
+      ]
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Sheev",
+      "meta": "12h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Sheev",
+          "note": "blueprint and three parts, 20,000 cr",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

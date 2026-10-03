@@ -1,0 +1,153 @@
+{
+  "name": "Quartakk",
+  "kind": "primary",
+  "effort": 5,
+  "tradeable": null,
+  "progress": { "have": 0, "need": 1, "unit": "blueprint" },
+  "badges": [
+    { "text": "Ghoul Purge event only", "tone": "warn" },
+    { "text": "Mastery Rank 10", "tone": "warn" }
+  ],
+  "prices": [{ "label": "build", "amount": "20,000 cr", "money": false }],
+  "groups": [
+    {
+      "type": "bounty",
+      "place": "PLAINS OF EIDOLON, EARTH",
+      "sub": "Ghoul Purge bounties",
+      "activity": "Level 40-50 Ghoul bounties from Konzu; hunt Assassinate stages",
+      "meta": "Auger Alpha drops it 50%",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "plains-of-eidolon",
+      "rows": [
+        {
+          "qty": null,
+          "label": "Quartakk Blueprint",
+          "note": "50% from the Ghoul Auger Alpha; about 4.85% on stages 2 and 3 and 4.72% on the final stage, Rotation A",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Only runs while Ghoul Purge is active; it ends when the Ghoul population is exterminated, and console and PC can end at different times.",
+        "Only the Auger Alpha carries the blueprint, and Auger or Rictus is random. Kill the 20 Ghouls in the marked area within 5 minutes or the stage fails.",
+        "The Level 15-25 bounty has no Quartakk blueprint."
+      ],
+      "bonuses": ["Stubba drops from the same Alpha at 50%."],
+      "disclosures": [
+        {
+          "title": "getting Assassinate stages",
+          "body": "Alphas only appear in Assassinate stages, which can show up at any stage of either tier. Leave and re-queue until the bounty contains one. Wisp motes or a flying companion get runs to about a minute each."
+        }
+      ]
+    },
+    {
+      "type": "farm",
+      "place": "PLAINS OF EIDOLON, EARTH",
+      "sub": null,
+      "activity": "Grineer camp drums and bounty rewards",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "plains-of-eidolon",
+      "rows": [
+        {
+          "qty": "75",
+          "label": "Grokdrul",
+          "note": "up to 5 per drum on the highest level missions",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "20",
+          "label": "Ferros",
+          "note": "for Fersteel Alloy",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "400",
+          "label": "Plastids",
+          "note": "for Fersteel Alloy",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "200",
+          "label": "Rubedo",
+          "note": "for Fersteel Alloy",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The Fersteel Alloy blueprint costs 5,000 Ostron standing from Old Man Suumbaat at Visitor rank."
+      ],
+      "bonuses": ["Ghoul Purge's Grokdrul Injection stage also pays Grokdrul."],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "MARS",
+      "sub": "or Jupiter, Sedna",
+      "activity": "any mission",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": "12,450", "label": "Salvage", "note": null, "alt": null, "done": false },
+        {
+          "qty": "5",
+          "label": "Neural Sensors",
+          "note": "rare; Jupiter, Orokin Derelict caches",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "craft Fersteel Alloy, then Quartakk",
+      "meta": "1 minute, then 24h, 20,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "15",
+          "label": "Fersteel Alloy",
+          "note": "one 1,000 cr craft gives 20",
+          "alt": null,
+          "done": false
+        },
+        { "qty": null, "label": "Quartakk", "note": null, "alt": null, "done": false }
+      ],
+      "conditions": ["Mastery Rank 10 to equip."],
+      "bonuses": [],
+      "disclosures": [
+        {
+          "title": "buying it built",
+          "body": "The built Quartakk is also sold in the Market, individually or in the Maggor Assault Pack."
+        }
+      ]
+    }
+  ]
+}

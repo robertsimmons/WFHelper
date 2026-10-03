@@ -1,0 +1,180 @@
+{
+  "name": "Zhuge",
+  "kind": "primary",
+  "effort": 4,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 1, "unit": "weapon" },
+  "badges": [
+    { "text": "2,800 Cryotic", "tone": "warn" },
+    { "text": "Argon decays daily", "tone": "warn" }
+  ],
+  "prices": [
+    { "label": "blueprint", "amount": "20,000 cr", "money": false },
+    { "label": "build", "amount": "20,000 cr", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "vendor",
+      "place": "MARKET",
+      "sub": null,
+      "activity": "buy the blueprint",
+      "meta": "20,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Zhuge Blueprint", "note": null, "alt": null, "done": false }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "currency",
+      "place": "NIGHTWAVE CRED OFFERINGS",
+      "sub": null,
+      "activity": "buy a Nitain Extract pack",
+      "meta": "always in stock",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Nightwave Creds", "amount": "15" }],
+      "map": null,
+      "rows": [
+        {
+          "qty": "2",
+          "label": "Nitain Extract",
+          "note": "the pack is 5; one purchase covers it",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "HIERACON, PLUTO",
+      "sub": null,
+      "activity": "Excavation as a Void Fissure",
+      "meta": "28 cycles, 14 with a Resource booster",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "2,800",
+          "label": "Cryotic",
+          "note": "100 per completed excavator cycle at any level",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Only the plain Resource booster doubles Cryotic; Resource Drop Chance does nothing.",
+        "Duviri Circuit pays a trivial amount."
+      ],
+      "bonuses": [
+        "A decent group running several excavators reported about 3,000 Cryotic in 30 minutes, the whole bill in one sitting.",
+        "A fissure adds a stacking resource bonus plus relics and Forma.",
+        "Resourceful Retriever (18%) or Loyal Retriever (13%) on a companion can double a payout."
+      ],
+      "disclosures": [
+        {
+          "title": "other Excavation nodes",
+          "body": "Everest (Earth), Kiliken (Venus), Augustus (Mars), Valefor (Europa) and Despina (Neptune). Harder nodes pay no more per cycle, so pick the one with the best groups. A destroyed excavator still pays in proportion to what it dug."
+        },
+        {
+          "title": "keep the excavator alive",
+          "body": "Bring Nekros or another loot frame so cell drops come faster, and avoid soloing it."
+        }
+      ]
+    },
+    {
+      "type": "farm",
+      "place": "ASSUR, URANUS",
+      "sub": null,
+      "activity": "Survival (Dark Sector)",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "900",
+          "label": "Polymer Bundle",
+          "note": "Zhuge build",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [
+        "Polymer also drops on Mercury and Venus; most Uranus resource drops are bundles."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "THE VOID",
+      "sub": "Hepit or Ukko Capture",
+      "activity": "Capture, Exterminate or Survival",
+      "meta": "pick this up last, same day as the build",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "void",
+      "rows": [
+        { "qty": "2", "label": "Argon Crystal", "note": "Zhuge build", "alt": null, "done": false }
+      ],
+      "conditions": [
+        "Argon is halved at 00:00 UTC, rounded down. Collect it the same day you start the build, with every other ingredient already in inventory."
+      ],
+      "bonuses": ["Void Fissure survivals while farming relics drop a few passively."],
+      "disclosures": [
+        {
+          "title": "fast Argon",
+          "body": "A public Hepit game usually has someone range-nuking the map (max-range Xaku, Limbo or Titania); pick up what they break. Without a range frame, a Sentinel with Spare Parts dying in a Void mission was reported to give a couple of crystals per short Capture."
+        }
+      ]
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Zhuge",
+      "meta": "12h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Zhuge",
+          "note": "2,800 Cryotic, 900 Polymer Bundle, 2 Nitain Extract, 2 Argon Crystal, 20,000 cr",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Mastery Rank 10 to build and equip."],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

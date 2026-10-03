@@ -1,0 +1,196 @@
+{
+  "name": "Despair",
+  "kind": "secondary",
+  "effort": 7,
+  "tradeable": null,
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "blueprint"
+  },
+  "badges": [
+    {
+      "text": "Stalker RNG",
+      "tone": "warn"
+    },
+    {
+      "text": "Death Mark first",
+      "tone": "info"
+    }
+  ],
+  "prices": [
+    {
+      "label": "build",
+      "amount": "15,000 cr",
+      "money": false
+    }
+  ],
+  "groups": [
+    {
+      "type": "boss",
+      "place": "ASSASSINATION NODE, ANY",
+      "sub": null,
+      "activity": "earn a Death Mark, then meet Stalker",
+      "meta": "5.87% per kill",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Despair Blueprint",
+          "note": "11.73% of a blueprint table that rolls half the time, from Stalker and Shadow Stalker; untradeable",
+          "alt": {
+            "text": "or a Stalker Beacon from Baro Ki'Teer forces the spawn, when he stocks it",
+            "spends": [
+              {
+                "currency": "Credits",
+                "amount": "125,000"
+              },
+              {
+                "currency": "Ducats",
+                "amount": "200"
+              }
+            ]
+          },
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Only the killing blow on an Assassination boss grants the mark, and aborting after the kill still counts. Corrupted Vor, Ropalolyst, Zealoid Prelate, The Fragmented and H-09 Efervon Tank give none.",
+        "Spawn chance is 1.5% + 0.5% per marked squad member, 2% solo and 3.5% with four marked. He only appears in roughly the first 5 minutes of a mission.",
+        "He cannot spawn in Assassinations, Syndicate missions, Sorties, Archon Hunts, Archwing, Landscapes, Albrecht's Laboratories, Höllvania, Dark Refractory or hubs.",
+        "Your Warframe must be rank 10 or higher.",
+        "A beacon is consumed on use, one per mission, so run it in a short mission."
+      ],
+      "bonuses": [
+        "Hyena Pack (Psamathe, Neptune) and The Sergeant (Iliad, Phobos) are the fastest marks. Volt with Shocking Speed, Gauss or Titania burn through the Sergeant.",
+        "Stay marked through your normal missions: the best passive farm is meeting him on Sedna or Hydron runs you were doing anyway."
+      ],
+      "disclosures": [
+        {
+          "title": "why marks stack but odds do not",
+          "body": "A mark per different boss lets you chain encounters across missions, but the spawn roll is once per mission, so several marks in one mission do not lift the odds above 3.5%."
+        },
+        {
+          "title": "squads of newer players",
+          "body": "Low-rank squads are constantly being marked, so playing with newer players reports the most encounters."
+        },
+        {
+          "title": "keep it past rank 30",
+          "body": "The Despair Incarnon Genesis (Steel Path Circuit week 7, or 120 platinum from Cavalero) needs the base weapon."
+        }
+      ]
+    },
+    {
+      "type": "farm",
+      "place": "APOLLODORUS, MERCURY",
+      "sub": null,
+      "activity": "Survival",
+      "meta": "about 4,000 Ferrite per 10 minutes",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "5,000",
+          "label": "Ferrite",
+          "note": null,
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "10",
+          "label": "Morphics",
+          "note": null,
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "GABII, CERES",
+      "sub": null,
+      "activity": "Survival, Dark Sector",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "800",
+          "label": "Alloy Plate",
+          "note": null,
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "CARME, JUPITER",
+      "sub": null,
+      "activity": "Mobile Defense",
+      "meta": "up to about 3,000 a run",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "4,500",
+          "label": "Salvage",
+          "note": null,
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Despair",
+      "meta": "12h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Despair",
+          "note": "15,000 cr, 10 Morphics, 5,000 Ferrite, 800 Alloy Plate, 4,500 Salvage",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Do not sell your only Despair blueprint before building it."],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

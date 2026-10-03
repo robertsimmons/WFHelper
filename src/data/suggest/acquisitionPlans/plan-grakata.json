@@ -1,0 +1,172 @@
+{
+  "name": "Grakata",
+  "kind": "primary",
+  "effort": 2,
+  "tradeable": null,
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "weapon"
+  },
+  "badges": [
+    {
+      "text": "MR 5",
+      "tone": "info"
+    }
+  ],
+  "prices": [
+    {
+      "label": "blueprint",
+      "amount": "15,000 cr",
+      "money": false
+    },
+    {
+      "label": "build",
+      "amount": "25,000 cr",
+      "money": false
+    }
+  ],
+  "groups": [
+    {
+      "type": "vendor",
+      "place": "MARKET",
+      "sub": null,
+      "activity": "buy the blueprint",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [
+        {
+          "currency": "Credits",
+          "amount": "15,000"
+        }
+      ],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Grakata Blueprint",
+          "note": "15,000 credits",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "EARTH",
+      "sub": null,
+      "activity": "break Neuroptic Masses",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "2",
+          "label": "Neurodes",
+          "note": "the only scarce input; enemies rarely drop it",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [
+        "Lephantis on Magnacidium (Deimos) gives 1-2 per run; Plato on Lua is fastest but needs a squad."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "JUPITER OR SEDNA",
+      "sub": null,
+      "activity": "Survival or Defense",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "900",
+          "label": "Salvage",
+          "note": null,
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "400",
+          "label": "Alloy Plate",
+          "note": null,
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "URANUS",
+      "sub": null,
+      "activity": "Survival or Defense",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "100",
+          "label": "Polymer Bundle",
+          "note": "best on Uranus",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build the Grakata",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Grakata",
+          "note": "25,000 credits, 24h",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Twin Grakatas consumes two Grakatas; rank one to 30 before crafting it, since Mastery is per item type."
+      ],
+      "bonuses": ["Rushing the 24h build costs 30 platinum."],
+      "disclosures": []
+    }
+  ]
+}

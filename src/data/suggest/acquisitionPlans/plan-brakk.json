@@ -1,0 +1,193 @@
+{
+  "name": "Brakk",
+  "kind": "secondary",
+  "effort": 8,
+  "tradeable": false,
+  "progress": {
+    "have": 0,
+    "need": 3,
+    "unit": "parts"
+  },
+  "badges": [
+    {
+      "text": "Grustrag Three RNG",
+      "tone": "warn"
+    },
+    {
+      "text": "Baro beacons",
+      "tone": "info"
+    }
+  ],
+  "prices": [
+    {
+      "label": "Grustrag Three Beacon",
+      "amount": "125,000 cr + 200 ducats",
+      "money": false
+    },
+    {
+      "label": "build",
+      "amount": "15,000 cr",
+      "money": false
+    }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "STAR CHART, INVASIONS",
+      "sub": null,
+      "activity": "complete 5 Grineer-vs-Corpus Invasions, siding with the Corpus",
+      "meta": "earns the death mark; repeat after each attack",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "5",
+          "label": "Invasion missions",
+          "note": "fighting the Grineer",
+          "alt": "skip if using Baro's beacons",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Vay Hek's inbox message confirms it, and the profile shows 'Marked for Death by'. The mark is consumed when they attack or kill you."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "BARO KI'TEER, RELAY",
+      "sub": null,
+      "activity": "buy Grustrag Three Beacons whenever stocked",
+      "meta": "125,000 cr + 200 ducats each",
+      "mode": null,
+      "live": {
+        "state": "waiting",
+        "text": "Baro does not stock beacons every visit"
+      },
+      "skip": null,
+      "earns": null,
+      "spends": [
+        {
+          "currency": "Credits",
+          "amount": "125,000"
+        },
+        {
+          "currency": "Ducats",
+          "amount": "200"
+        }
+      ],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Grustrag Three Beacon",
+          "note": "the one real accelerator; buy as many as you can",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "A beacon cannot be used in Invasion missions and gives no mark. Use it in a normal Grineer mission; one beacon type per mission."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "boss",
+      "place": "CERES, STAR CHART",
+      "sub": "Draco or Lex, normal mode, not Steel Path",
+      "activity": "any Grineer mission, then kill the Three",
+      "meta": "Leekter, Shik Tal, Vem Tabook",
+      "mode": "squad with the mark",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Brakk Blueprint",
+          "note": "12.5% per Vem Tabook kill, the bottleneck",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Brakk Barrel",
+          "note": "25%, Shik Tal",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Brakk Receiver",
+          "note": "25%, Leekter",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "10",
+          "label": "Orokin Cell",
+          "note": "build",
+          "alt": "Ceres drops them",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "They can spawn only in the first 5 minutes of a mission. Time it with the P key, and stand at extract after the objective.",
+        "Stalker, his death mark and negative-standing syndicate death squads override the spawn slot. Set syndicate standing to neutral first.",
+        "No spawns in Assassination, Syndicate, Arena, Sortie, Archimedea, Landscape, Archwing or Empyrean missions. Clem's weekly mission spawns one member that drops nothing.",
+        "Being captured fails the mission and attaches a Grustrag Bolt until you craft the free Bolt Release from the inbox.",
+        "Parts are untradeable, so every part is farmed yourself."
+      ],
+      "bonuses": [
+        "Nekros with Desecrate is the standard drop multiplier. Squad mates with the mark raise the spawn chance, and everyone can loot."
+      ],
+      "disclosures": [
+        {
+          "title": "spawn odds are unconfirmed",
+          "body": "Players estimate about 1.5% plus 0.5% per marked player per mission, about 2% solo. The wiki says the Three roll every 10 seconds for the first 5 minutes, which would put a solo visit near 45%, but flags that as unconfirmed."
+        },
+        {
+          "title": "expect a long grind",
+          "body": "Reports run from 15 kills in about 30 hours for one set to 130+ missions without the blueprint. Each member drops one of mod, blueprint or resource per kill, not all three."
+        },
+        {
+          "title": "unreachable spawns and bugs",
+          "body": "They can spawn in unreachable areas after elevator or door triggers, which kills them and wastes the drops. Appearing in Survival can stop the 5-minute rewards; Interception and Defense can bug out."
+        }
+      ]
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Brakk",
+      "meta": "12h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Brakk",
+          "note": "15,000 cr, 10 Orokin Cell, Blueprint, Barrel, Receiver",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Mastery Rank 6 to equip; not the Kuva Brakk."],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

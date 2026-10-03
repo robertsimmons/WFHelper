@@ -1,0 +1,240 @@
+{
+  "name": "Tazicor",
+  "kind": "robotic",
+  "effort": 6,
+  "tradeable": null,
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "weapon"
+  },
+  "badges": [
+    {
+      "text": "Rank 5 Old Mate",
+      "tone": "warn"
+    },
+    {
+      "text": "10,000 standing blueprint",
+      "tone": "info"
+    }
+  ],
+  "prices": [
+    {
+      "label": "blueprint",
+      "amount": "10,000 standing",
+      "money": false
+    },
+    {
+      "label": "build",
+      "amount": "50,000 cr",
+      "money": false
+    }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "FORTUNA, VENUS",
+      "sub": null,
+      "activity": "finish Vox Solaris, then rank Solaris United to Old Mate",
+      "meta": "Rank 5",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Vox Solaris",
+          "note": null,
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Solaris United Rank 5, Old Mate",
+          "note": null,
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The climb from Neutral sacrifices 6 Training, 9 Shelter, 11 Medical, 10 Advances and 5 Familial Debt-Bonds plus 385,000 credits in total.",
+        "Debt-Bonds come from Fortuna bounties, Ticker and Profit-Taker drops."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "currency",
+      "place": "ORB VALLIS, VENUS",
+      "sub": null,
+      "activity": "conservation or mining for Solaris United standing",
+      "meta": "daily cap 16,000 plus 500 per Mastery Rank",
+      "mode": "solo",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "orb-vallis",
+      "rows": [
+        {
+          "qty": null,
+          "label": "Stover and Kubrodon captures",
+          "note": "several thousand standing each; one or two can hit a low-MR cap",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Mined gems to Smokefinger",
+          "note": "50 standing each; Deck 13 suggested",
+          "alt": "Resourceful Retriever companion roughly doubles it",
+          "done": false
+        }
+      ],
+      "conditions": ["The cap resets at midnight UTC and counts fishing and mining standing too."],
+      "bonuses": [
+        "Conservation with a sleep or invisibility frame (Equinox, Ivara, Loki), a tranquilizer rifle and an echo lure is the fastest source; one thread put it under half an hour to the cap."
+      ],
+      "disclosures": [
+        {
+          "title": "Exploiter Orb",
+          "body": "Drops gems for a day's worth of standing plus a Toroid worth about 12,000. Needs Thermia fractures sealed and an Archwing."
+        }
+      ]
+    },
+    {
+      "type": "vendor",
+      "place": "LEGS, FORTUNA",
+      "sub": null,
+      "activity": "buy blueprint",
+      "meta": "Old Mate",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [
+        {
+          "currency": "Solaris United standing",
+          "amount": "10,000"
+        }
+      ],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Tazicor Blueprint",
+          "note": "10,000 standing",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "PLAINS OF EIDOLON, EARTH",
+      "sub": null,
+      "activity": "mine blue veins and refine",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [
+        {
+          "currency": "Ostron standing",
+          "amount": "2,500"
+        }
+      ],
+      "map": "plains-of-eidolon",
+      "rows": [
+        {
+          "qty": "10",
+          "label": "Esher Devar",
+          "note": "mine 10 Devar, refine at Old Man Suumbaat; refining blueprint 2,500 standing, Offworlder, reusable",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "ORB VALLIS, VENUS",
+      "sub": null,
+      "activity": "mine blue veins, fish ponds and lakes",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [
+        {
+          "currency": "Solaris United standing",
+          "amount": "1,000"
+        }
+      ],
+      "map": "orb-vallis",
+      "rows": [
+        {
+          "qty": "10",
+          "label": "Smooth Phasmin",
+          "note": "mine Phasmin, refine; Smokefinger sells the blueprint for 1,000 standing at Neutral",
+          "alt": "Phasmin also drops from containers",
+          "done": false
+        },
+        {
+          "qty": "10",
+          "label": "Recaster Neural Relay",
+          "note": "cold weather, Narrow-Spectrum Bait; dismantle at The Business",
+          "alt": "or Orb Vallis containers",
+          "done": false
+        },
+        {
+          "qty": "5",
+          "label": "Longwinder Lathe Coagulant",
+          "note": "warm weather, Longwinder Bait, rare; dismantle at The Business",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Recasters need cold weather and Longwinders warm, so you wait through a weather cycle to get both."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Tazicor",
+      "meta": "24h, 50,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Tazicor",
+          "note": "10 Esher Devar, 10 Smooth Phasmin, 10 Recaster Neural Relay, 5 Longwinder Lathe Coagulant",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Takes a Companion inventory slot."],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

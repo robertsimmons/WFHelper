@@ -1,0 +1,202 @@
+{
+  "name": "Alternox",
+  "kind": "primary",
+  "effort": 5,
+  "tradeable": null,
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "blueprint"
+  },
+  "badges": [
+    {
+      "text": "7.94% blueprint, no pity",
+      "tone": "warn"
+    },
+    {
+      "text": "Zariman Tier 3 bounty",
+      "tone": "info"
+    }
+  ],
+  "prices": [
+    {
+      "label": "build",
+      "amount": "20,000 cr",
+      "money": false
+    }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "CHRYSALITH, ZARIMAN",
+      "sub": null,
+      "activity": "Angels of the Zariman, then talk to Quinn",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Angels of the Zariman",
+          "note": "unlocks the Chrysalith bounties",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "bounty",
+      "place": "CHRYSALITH, ZARIMAN",
+      "sub": "Quinn, Tier 3",
+      "activity": "Tier 3 bounty, enemy level 70-75",
+      "meta": "about 12.6 runs expected; 83 +/- 27 for near-certainty",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Alternox Blueprint",
+          "note": "7.94%, one roll on completion",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The reward table rolls once on completion, not per stage; failing the mandatory objective forfeits everything.",
+        "There is no pity; one player reported 120+ runs without the blueprint.",
+        "Bounties refresh every 2.5 hours."
+      ],
+      "bonuses": [
+        "The same table drops Endo, Greater Zenurik and Madurai Lenses, Aya, Entrati Lanthorn and Voidplume Quills."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "TUVUL COMMONS, ZARIMAN",
+      "sub": null,
+      "activity": "Void Cascade",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "600",
+          "label": "Thrax Plasm",
+          "note": "Thrax Centurions and Legatus",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "16",
+          "label": "Entrati Lanthorn",
+          "note": "rare from any Zariman enemy; Netracell runs guarantee them",
+          "alt": "Gruzzling pickups give 3 each",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Thrax Plasm is not Lua Thrax Plasm; Lua Conjunction Survival drops the wrong item."
+      ],
+      "bonuses": ["Tier 3 bounties also drop Lanthorns."],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "GABII, CERES",
+      "sub": null,
+      "activity": "Survival",
+      "meta": "about 1,000 per 15 minutes with a Resource Booster",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "4,000",
+          "label": "Alloy Plate",
+          "note": null,
+          "alt": "or on Zariman",
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "THE VOID",
+      "sub": null,
+      "activity": "Argon Pegmatite deposits",
+      "meta": "pick this up last",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "2",
+          "label": "Argon Crystal",
+          "note": null,
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Argon decays after about a day outside the Void; collect it just before crafting."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Alternox",
+      "meta": "1 day, 20,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Alternox",
+          "note": "4,000 Alloy Plate, 600 Thrax Plasm, 16 Entrati Lanthorn, 2 Argon Crystal",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": [
+        {
+          "title": "is it worth it",
+          "body": "Threads call Alternox one of the weakest rifles for its Mastery Rank; it is mainly farmed for Mastery. The other Tier 3 bounty blueprint is the Gyre Systems blueprint at 11.9%."
+        }
+      ]
+    }
+  ]
+}

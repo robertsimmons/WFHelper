@@ -1,0 +1,220 @@
+{
+  "name": "Tekko",
+  "kind": "melee",
+  "effort": 3,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 2, "unit": "blueprints" },
+  "badges": [
+    { "text": "3,300 Polymer Bundle", "tone": "warn" },
+    { "text": "Market blueprints", "tone": "info" }
+  ],
+  "prices": [
+    { "label": "Ankyros blueprint", "amount": "15,000 cr", "money": false },
+    { "label": "Tekko blueprint", "amount": "25,000 cr", "money": false },
+    { "label": "builds", "amount": "50,000 cr", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "vendor",
+      "place": "MARKET",
+      "sub": null,
+      "activity": "buy both blueprints",
+      "meta": "40,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Credits", "amount": "40,000" }],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Ankyros Blueprint",
+          "note": "15,000 cr",
+          "alt": null,
+          "done": false
+        },
+        { "qty": null, "label": "Tekko Blueprint", "note": "25,000 cr", "alt": null, "done": false }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "ASSUR, URANUS",
+      "sub": "or Ophelia, Uranus",
+      "activity": "Dark Sector Survival",
+      "meta": "Polymer Bundle is the bottleneck",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "3,300",
+          "label": "Polymer Bundle",
+          "note": "Tekko build",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [
+        "Nekros with Desecrate or Hydroid with Pilfering Plunder boosts drops. Ophelia also drops Tellurium."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "ZEUGMA, PHOBOS",
+      "sub": "or Valefor, Europa",
+      "activity": "Dark Sector Survival",
+      "meta": "about 250 Rubedo per 5 minutes",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "700",
+          "label": "Rubedo",
+          "note": "Tekko build",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "HELLAS, MARS",
+      "sub": "or Uranus",
+      "activity": "Exterminate, break the resource caches",
+      "meta": "rare, only 5 needed",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "5",
+          "label": "Gallium",
+          "note": "Tekko build",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "AKKAD, ERIS",
+      "sub": "or Saturn, Neptune, Deimos",
+      "activity": "Dark Sector Defense",
+      "meta": "about 3,000 Nano Spores per 5 minutes",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "900",
+          "label": "Nano Spores",
+          "note": "Ankyros build",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "ANY EARLY-TO-MID PLANET",
+      "sub": "Venus and Mercury for Ferrite and Alloy Plate",
+      "activity": "any endless mission",
+      "meta": "common drops; fill in while farming Polymer",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "900",
+          "label": "Salvage",
+          "note": "Ankyros build",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "600",
+          "label": "Ferrite",
+          "note": "Ankyros build",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "450",
+          "label": "Alloy Plate",
+          "note": "Ankyros build",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Ankyros, rank it to 30, then build Tekko",
+      "meta": "12h each",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Ankyros",
+          "note": "900 Nano Spores, 900 Salvage, 600 Ferrite, 450 Alloy Plate, 30,000 cr",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Tekko",
+          "note": "1 Ankyros, 5 Gallium, 700 Rubedo, 3,300 Polymer Bundle, 20,000 cr",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Tekko consumes the Ankyros. Rank it to 30 first, since Mastery counts once per item.",
+        "Ankyros needs Mastery Rank 2; Tekko needs Mastery Rank 6 to equip."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

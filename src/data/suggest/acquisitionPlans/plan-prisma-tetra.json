@@ -1,0 +1,101 @@
+{
+  "name": "Prisma Tetra",
+  "kind": "primary",
+  "effort": 2,
+  "tradeable": "unranked only, no Forma or Catalyst",
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "weapon"
+  },
+  "badges": [
+    {
+      "text": "Baro rotation",
+      "tone": "warn"
+    },
+    {
+      "text": "MR 4",
+      "tone": "info"
+    }
+  ],
+  "prices": [
+    {
+      "label": "Baro",
+      "amount": "50,000 cr + 400 Ducats",
+      "money": false
+    }
+  ],
+  "groups": [
+    {
+      "type": "currency",
+      "place": "VOID FISSURES, ANY",
+      "sub": "Relay Ducat Kiosk",
+      "activity": "crack Void Relics, trade Prime parts for Ducats",
+      "meta": "400 Ducats needed",
+      "mode": "squad of four for more reward picks",
+      "live": null,
+      "skip": null,
+      "earns": {
+        "currency": "Ducats",
+        "amount": "400"
+      },
+      "spends": [],
+      "map": "void",
+      "rows": [
+        {
+          "qty": "400",
+          "label": "Ducats",
+          "note": "trade Prime parts and blueprints at any Relay Ducat Kiosk except Maroo's Bazaar",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The kiosk is open even when Baro isn't there, so bank Ducats ahead of his visit; his window is only 48 hours.",
+        "Common parts are worth 15 ducats, uncommon 45, rare 100."
+      ],
+      "bonuses": [
+        "Capture, Exterminate, Rescue and Sabotage fissures clear fast, and Defense cracks a relic every wave.",
+        "Baro's once-per-visit Void Surplus (50,000 credits) has a 2% chance of 1,000 Ducats."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "RELAY CONCOURSE, ANY",
+      "sub": "Baro Ki'Teer",
+      "activity": "buy the Prisma Tetra outright",
+      "meta": "stock rotates irregularly",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [
+        {
+          "currency": "Credits",
+          "amount": "50,000"
+        },
+        {
+          "currency": "Ducats",
+          "amount": "400"
+        }
+      ],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Prisma Tetra",
+          "note": "arrives built; rank it to 30 for Mastery",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Baro arrives every two weeks and his stock changes each visit, so the Tetra is only sometimes there.",
+        "A trade buyer needs MR 4 or higher."
+      ],
+      "bonuses": ["Do not Forma or Catalyst a copy you intend to trade."],
+      "disclosures": []
+    }
+  ]
+}

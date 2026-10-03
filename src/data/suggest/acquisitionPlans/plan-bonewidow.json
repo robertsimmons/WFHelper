@@ -1,0 +1,621 @@
+{
+  "name": "Bonewidow",
+  "kind": "necramech",
+  "effort": 5,
+  "tradeable": false,
+  "progress": {
+    "have": 0,
+    "need": 4,
+    "unit": "parts"
+  },
+  "badges": [
+    {
+      "text": "Necraloid Rank 3 gate",
+      "tone": "warn"
+    },
+    {
+      "text": "long material list",
+      "tone": "warn"
+    }
+  ],
+  "prices": [
+    {
+      "label": "Necraloid standing",
+      "amount": "95,000",
+      "money": false
+    },
+    {
+      "label": "build",
+      "amount": "85,000 cr",
+      "money": false
+    }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "HEART OF DEIMOS, THEN THE WAR WITHIN",
+      "sub": null,
+      "activity": "clear the story gates",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Heart of Deimos",
+          "note": "opens Cambion Drift, the Necralisk and the Entrati",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "The War Within",
+          "note": "Transference, needed to pilot a Necramech",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "one free Archwing weapon slot",
+          "note": "the built-in Mausolon needs it",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["You can own only one Bonewidow."],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "bounty",
+      "place": "CAMBION DRIFT, DEIMOS",
+      "sub": "Mother, Isolation Vaults",
+      "activity": "kill the vault Necramechs for Orokin Matrices and damaged parts",
+      "meta": "1, 2 or 3 Necramechs by vault tier",
+      "mode": "Nekros with a Resource Drop Booster",
+      "live": null,
+      "skip": null,
+      "earns": {
+        "currency": "Necraloid standing",
+        "amount": "95,000"
+      },
+      "spends": [],
+      "map": "cambion-drift",
+      "rows": [
+        {
+          "qty": "10",
+          "label": "Orokin Orientation Matrix",
+          "note": "Tier 1 vault; 1,000 standing each at Loid",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "15",
+          "label": "Orokin Ballistics Matrix",
+          "note": "Tier 2 vault; 2,500 standing each",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "15",
+          "label": "Orokin Animus Matrix",
+          "note": "Tier 3 vault; 5,000 standing each",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Damaged Necramech Casing",
+          "note": "12.5% from vault Necramechs",
+          "alt": "or Father, 2,000 Entrati standing",
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Damaged Necramech Engine",
+          "note": "vault Necramechs",
+          "alt": "or Father, 2,000 Entrati standing",
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Damaged Necramech Pod",
+          "note": "vault Necramechs",
+          "alt": "or Father, 2,000 Entrati standing",
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Damaged Necramech Weapon Pod",
+          "note": "vault Necramechs",
+          "alt": "or Father, 2,000 Entrati standing",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Orokin Matrices traded to Loid are the only Necraloid standing source; each Necramech drops one 100% of the time.",
+        "Each rank-up wants a different matrix tier, so every vault tier is cleared once.",
+        "Save standing: buying from Loid before Odima delays the rank-up."
+      ],
+      "bonuses": [
+        "Matrices are enemy drops, so a Resource Booster, Nekros Desecrate and Resourceful Retriever all add to them.",
+        "After the first clear, an Arcana Isolation Vault bounty from Mother skips re-opening the door and can drop all three matrix types.",
+        "Tier 3 Animus Matrices are worth 5,000 standing each, the best source once Rank 2 is done."
+      ],
+      "disclosures": [
+        {
+          "title": "buying instead of farming",
+          "body": "Several players bought built Voidrig or Bonewidow components in trade chat for a few dozen platinum. Buy built parts, not Damaged ones."
+        }
+      ]
+    },
+    {
+      "type": "vendor",
+      "place": "FATHER, NECRALISK",
+      "sub": null,
+      "activity": "buy the barrel blueprints Loid's rank-ups consume",
+      "meta": "Entrati Rank 3 for Trumna",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [
+        {
+          "currency": "Entrati standing",
+          "amount": "5,500"
+        }
+      ],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Zymos Barrel Blueprint",
+          "note": "1,000 standing, Rank 1",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Sepulcrum Barrel Blueprint",
+          "note": "2,000 standing, Rank 2",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Trumna Barrel Blueprint",
+          "note": "2,500 standing, Rank 3 Associate",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "60",
+          "label": "Father Token",
+          "note": "20 per rank-up",
+          "alt": "drop in Cambion Drift, or trade Drift resources to Father",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Buy the blueprints only; you needn't build the weapons.",
+        "Entrati Rank 3 costs 44,000 standing, 3 Sly Vulpaphyla Tags, 3 Vizier Predasite Tags, 1 Mother Token and 1 Son Token; standing comes from family tokens traded to Grandmother."
+      ],
+      "bonuses": [
+        "Mother's Tier 5 bounties give many Mother Tokens; tokens have no daily cap, only the conversion does."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "LOID, NECRALISK",
+      "sub": null,
+      "activity": "rank Necraloid to Clearance: Odima, then buy the blueprints",
+      "meta": "Rank 3",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [
+        {
+          "currency": "Necraloid standing",
+          "amount": "95,000"
+        }
+      ],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Clearance: Agnesis",
+          "note": "5,000 standing, 10 Orientation Matrix, 150 Void Traces, Zymos Barrel Blueprint, 20 Father Tokens",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Clearance: Modus",
+          "note": "22,000 standing, 15 Ballistics Matrix, 250 Void Traces, Sepulcrum Barrel Blueprint, 20 Father Tokens",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Clearance: Odima",
+          "note": "44,000 standing, 15 Animus Matrix, 350 Void Traces, Trumna Barrel Blueprint, 20 Father Tokens",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "4",
+          "label": "Bonewidow component blueprints",
+          "note": "Casing, Engine, Capsule, Weapon Pod; 3,500 standing each at Rank 2",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Bonewidow Blueprint",
+          "note": "10,000 standing at Rank 3",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Void Traces come from opening relics and Void fissure missions.",
+        "Blueprints can't be traded; built components and raw resources can."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "OTAK, NECRALISK",
+      "sub": null,
+      "activity": "buy the refining blueprints",
+      "meta": "Entrati Rank 2",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [
+        {
+          "currency": "Entrati standing",
+          "amount": "8,000"
+        }
+      ],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Tempered Bapholite Blueprint",
+          "note": "1,000 standing, Rank 0",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Adramal Alloy Blueprint",
+          "note": "1,000 standing, Rank 0",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Devolved Namalon Blueprint",
+          "note": "2,000 standing, Rank 1",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Thaumic Distillate Blueprint",
+          "note": "4,000 standing, Rank 2",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "CAMBION DRIFT, DEIMOS",
+      "sub": null,
+      "activity": "mine, fish and run Requiem Obelisks",
+      "meta": "refine at Otak, 20 per batch",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "cambion-drift",
+      "rows": [
+        {
+          "qty": "100",
+          "label": "Bapholite",
+          "note": "5 Tempered Bapholite batches; yellow veins",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "120",
+          "label": "Adramalium",
+          "note": "6 Adramal Alloy batches; yellow veins",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "80",
+          "label": "Namalon",
+          "note": "4 Devolved Namalon batches; yellow veins",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "20",
+          "label": "Thaumica",
+          "note": "1 Thaumic Distillate batch; yellow veins",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "240",
+          "label": "Lucent Teroglobe",
+          "note": "15 per batch; Vitrific Outcrops by Obelisks, bounty rewards, vault storage containers",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "2",
+          "label": "Cranial Foremount",
+          "note": "fillet Myxostomata at Daughter",
+          "alt": "or Requiem Obelisk drops",
+          "done": false
+        },
+        {
+          "qty": "6",
+          "label": "Spinal Core Section",
+          "note": "fillet Chondricord or Vitreospina at Daughter",
+          "alt": "or Isolation Vault bounties",
+          "done": false
+        },
+        {
+          "qty": "20",
+          "label": "Biotic Filter",
+          "note": "fillet Duroid or Aquapulmo at Daughter",
+          "alt": "or Requiem Pylon drops",
+          "done": false
+        },
+        {
+          "qty": "4",
+          "label": "Scintillant",
+          "note": "Isolation Vault only: floating pickups, Necramech drops, Tier 1-2 Mother bounties",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Myxostomata need Processed Vome Residue bait, Entrati Rank 4, and only appear in cave hotspots during Vome; Obelisk drops skip that gate.",
+        "Mining needs the Sunpoint Plasma Drill (Fortuna, 2,500 Solaris standing, Rank 0); lower drills silently fail to spawn some gems."
+      ],
+      "bonuses": [
+        "Mine the caves after a vault; the bonus room has storage containers full of Teroglobe and ore."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "ORB VALLIS, VENUS",
+      "sub": null,
+      "activity": "mine, and dismantle Servofish at The Business in Fortuna",
+      "meta": "Solaris United Outworlder for Goblite",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [
+        {
+          "currency": "Solaris United standing",
+          "amount": "2,000"
+        }
+      ],
+      "map": "orb-vallis",
+      "rows": [
+        {
+          "qty": "120",
+          "label": "Travoride",
+          "note": "Adramal Alloy; red veins",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "20",
+          "label": "Venerol",
+          "note": "Thaumic Distillate; red veins",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "20",
+          "label": "Goblite",
+          "note": "2 batches for 15 Goblite Tears; Smokefinger sells the blueprint for 2,000 standing, Rank 1",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "45",
+          "label": "Scrap",
+          "note": "Weapon Pod; dismantle Servofish",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "PLAINS OF EIDOLON, EARTH",
+      "sub": null,
+      "activity": "mine",
+      "meta": "Ostron Trusted for Star Crimzian",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [
+        {
+          "currency": "Ostron standing",
+          "amount": "7,500"
+        }
+      ],
+      "map": "plains-of-eidolon",
+      "rows": [
+        {
+          "qty": "100",
+          "label": "Pyrol",
+          "note": "Tempered Bapholite; red veins",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "80",
+          "label": "Ferros",
+          "note": "Devolved Namalon",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "6",
+          "label": "Crimzian",
+          "note": "1 batch for 6 Star Crimzian; blue veins; Old Man Suumbaat sells the blueprint for 7,500 standing, Rank 3",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "ANY STAR CHART MISSION",
+      "sub": null,
+      "activity": "common resources for the refining batches",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "8,000",
+          "label": "Nano Spores",
+          "note": "1,600 per Tempered Bapholite batch",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "3,600",
+          "label": "Plastids",
+          "note": "600 per Adramal Alloy batch",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "640",
+          "label": "Rubedo",
+          "note": "160 per Devolved Namalon batch",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "4",
+          "label": "Gallium",
+          "note": "Thaumic Distillate",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "750",
+          "label": "Titanium",
+          "note": "Engine",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Each refining batch also costs 1,000 cr."],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build the four components, then Bonewidow",
+      "meta": "15,000 cr and 12h each; 25,000 cr and 72h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Casing",
+          "note": "Damaged Casing, 100 Tempered Bapholite, 20 Thaumic Distillate, 15 Goblite Tears",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Engine",
+          "note": "Damaged Engine, 120 Adramal Alloy, 2 Cranial Foremount, 750 Titanium",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Capsule",
+          "note": "Damaged Pod, 4 Scintillant, 20 Biotic Filter, 6 Star Crimzian",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Weapon Pod",
+          "note": "Damaged Weapon Pod, 6 Spinal Core Section, 80 Devolved Namalon, 45 Scrap",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Bonewidow",
+          "note": "4 components",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Free an Archwing weapon slot before the final craft."],
+      "bonuses": ["Queue all four components at once for one 12-hour wait."],
+      "disclosures": [
+        {
+          "title": "check the recipe in game",
+          "body": "This bill is the wiki's Bonewidow list. If the Foundry shows a shorter one, trust the Foundry and skip the matching farm rows."
+        },
+        {
+          "title": "levelling",
+          "body": "Orb Vallis base-capture defenses spawn many Eximus and took one Necramech from 0 to 38 in about four runs. Archgun kills may split affinity with the Archwing."
+        }
+      ]
+    }
+  ]
+}

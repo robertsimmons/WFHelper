@@ -1,0 +1,174 @@
+{
+  "name": "Ignis",
+  "kind": "primary",
+  "effort": 2,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 1, "unit": "blueprint" },
+  "badges": [
+    { "text": "Chem Lab", "tone": "info" },
+    { "text": "6d of research", "tone": "warn" }
+  ],
+  "prices": [
+    { "label": "blueprint", "amount": "15,000 cr", "money": false },
+    { "label": "build", "amount": "30,000 cr", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "DOJO, CHEM LAB",
+      "sub": null,
+      "activity": "clan research: Detonite Injector, then Ignis",
+      "meta": "skip if already researched",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Detonite Injector research",
+          "note": "72h, 5,000 cr, 2,000 affinity; start first, it unlocks Ignis",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Ignis research",
+          "note": "72h, 5,000 cr, 3,000 affinity; queueable only after the Injector",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The clan needs a built Chem Lab, and the two timers stack to about six days.",
+        "In an established clan this is usually done already and costs you nothing."
+      ],
+      "bonuses": ["Farm Ampules and Injector Invasions during the two 72-hour timers."],
+      "disclosures": [
+        {
+          "title": "what each research consumes",
+          "body": "Detonite Injector: 5 Detonite Ampule, 200 Ferrite, 250 Polymer Bundle, 100 Plastids. Ignis: 10 Detonite Ampule, 400 Ferrite, 150 Plastids, 500 Polymer Bundle. Figures are for the smallest clan tier and scale up with clan size."
+        }
+      ]
+    },
+    {
+      "type": "vendor",
+      "place": "DOJO, CHEM LAB",
+      "sub": null,
+      "activity": "buy the Ignis blueprint",
+      "meta": "15,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Credits", "amount": "15,000" }],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Ignis Blueprint", "note": null, "alt": null, "done": false }
+      ],
+      "conditions": ["Mastery Rank 5 is required to use it."],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "STAR CHART",
+      "sub": null,
+      "activity": "Grineer Invasions that pay Detonite Injectors",
+      "meta": "3 per Invasion; one covers the recipe",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "2",
+          "label": "Detonite Injector",
+          "note": "pays as the finished resource, not a blueprint",
+          "alt": "or craft: 15,000 cr blueprint, 10 Ampule, 1 Control Module, 500 Salvage, 250 Plastids, 12h each",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The Injector blueprint is single-use, so crafting means re-buying it for each of the two.",
+        "The reward offered rotates; open the Invasions tab and pick the Grineer side."
+      ],
+      "bonuses": [
+        "Orb Vallis tier 4 bounties can pay Detonite Injectors, and rare Grineer storage containers occasionally drop one."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "STAR CHART",
+      "sub": null,
+      "activity": "any Grineer mission, as you play",
+      "meta": "common Grineer drop",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "15",
+          "label": "Detonite Ampule",
+          "note": "research; 20 more if you craft the two Injectors",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "5,000",
+          "label": "Nano Spores",
+          "note": "the Ignis build",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "5,000",
+          "label": "Ferrite",
+          "note": "the Ignis build",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Do not let Plastids run dry; the Injector research and crafts both draw on them."
+      ],
+      "bonuses": [
+        "Ampules drop on Mercury, Earth, Ceres, Saturn, Uranus, Sedna, Lua and the Kuva Fortress; Earth sabotage caches pay about 12%."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Ignis",
+      "meta": "24h, 30,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Ignis",
+          "note": "2 Detonite Injector, 5,000 Nano Spores, 5,000 Ferrite, 1 Forma",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Ignis Wraith needs this weapon first, but its Mastery is separate."],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

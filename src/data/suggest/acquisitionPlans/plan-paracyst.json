@@ -1,0 +1,270 @@
+{
+  "name": "Paracyst",
+  "kind": "primary",
+  "effort": 2,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 1, "unit": "blueprint" },
+  "badges": [
+    { "text": "Bio Lab", "tone": "info" },
+    { "text": "~165 Mutagen Samples", "tone": "warn" }
+  ],
+  "prices": [
+    { "label": "blueprint", "amount": "50,000 cr", "money": false },
+    { "label": "build", "amount": "30,000 cr", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "DOJO, BIO LAB",
+      "sub": null,
+      "activity": "clan research, strictly in order",
+      "meta": "72h each, six steps; start first",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Mutagen Mass",
+          "note": "5 Mutagen Sample, 2,000 Clan Affinity",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Torid",
+          "note": "10 Mutagen Sample, 3,000 Clan Affinity; research only",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Acrid",
+          "note": "10 Mutagen Sample, 3,000 Clan Affinity; research only",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Embolist",
+          "note": "30 Mutagen Sample, 3,000 Clan Affinity; research only",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Mutalist Quanta",
+          "note": "30 Mutagen Sample, 3,000 Clan Affinity; research only",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Paracyst",
+          "note": "30 Mutagen Sample, 3,000 Clan Affinity, 400 Circuits, 4,000 Nano Spores, 800 Polymer Bundle, 5,000 cr",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Research is clan-wide: any member finishing a step unlocks it for everyone. Skip every step your clan already has.",
+        "Each step also eats a few thousand common resources and 5,000 to 7,500 cr. A solo clan donates all of it.",
+        "Research cannot be rushed with platinum."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "research",
+      "place": "DOJO, BIO LAB",
+      "sub": null,
+      "activity": "buy the blueprint",
+      "meta": "50,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Credits", "amount": "50,000" }],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Paracyst Blueprint", "note": null, "alt": null, "done": false }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "TERROREM, DEIMOS",
+      "sub": "or Hyf, Deimos Defense; Cambion Drift",
+      "activity": "Survival with a loot frame, Steel Path if unlocked",
+      "meta": "uncommon on Deimos, rare on Eris",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "165",
+          "label": "Mutagen Sample",
+          "note": "115 research, 50 for 5 Mutagen Mass",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "15,000",
+          "label": "Nano Spores",
+          "note": "build; research steps cost more",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [
+        "Nekros, Khora or Atlas with Ore Gaze, plus a Resource Drop Chance Booster and a relay blessing. One report gave about 110 samples from a single 15-minute Steel Path run."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "TESSERA, VENUS",
+      "sub": "or Gabii, Ceres",
+      "activity": "Survival",
+      "meta": "Seimeni and Gabii on Ceres",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "1,600",
+          "label": "Circuits",
+          "note": "1,200 build, 400 final research step",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "CARME, JUPITER",
+      "sub": "or Olympus, Mars",
+      "activity": "Mobile Defense, loot every container",
+      "meta": "Mars, Jupiter and Sedna",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "2,500",
+          "label": "Salvage",
+          "note": "5 Mutagen Mass",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "HELENE, SATURN",
+      "sub": "or Ophelia, Uranus",
+      "activity": "Defense with a loot frame",
+      "meta": "best on Saturn and Uranus",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "1,250",
+          "label": "Plastids",
+          "note": "5 Mutagen Mass",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "TESHUB, VOID",
+      "sub": "or Hepit, Void Capture; Cetus bounty final stages",
+      "activity": "Exterminate",
+      "meta": "Orokin Tower missions",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "5",
+          "label": "Control Module",
+          "note": "1 per Mutagen Mass",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "5 Mutagen Mass together, then Paracyst",
+      "meta": "12h each, then 1 day",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "5",
+          "label": "Mutagen Mass",
+          "note": "each 10 Mutagen Sample, 1 Control Module, 500 Salvage, 250 Plastids, 15,000 cr",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Paracyst",
+          "note": "5 Mutagen Mass, 15,000 Nano Spores, 1,200 Circuits, 1 Forma, 30,000 cr",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Mass builds run in parallel, so queue all five the moment the samples are in hand.",
+        "The build consumes a Forma; keep one uninstalled.",
+        "Mastery Rank 7 to equip it."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

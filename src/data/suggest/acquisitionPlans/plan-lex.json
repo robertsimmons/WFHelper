@@ -1,0 +1,41 @@
+{
+  "name": "Lex",
+  "kind": "secondary",
+  "effort": 1,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 1, "unit": "weapon" },
+  "badges": [
+    { "text": "credits only", "tone": "info" },
+    { "text": "MR 3", "tone": "info" }
+  ],
+  "prices": [{ "label": "built", "amount": "50,000 cr", "money": false }],
+  "groups": [
+    {
+      "type": "vendor",
+      "place": "MARKET",
+      "sub": null,
+      "activity": "buy the built Lex",
+      "meta": "50,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Lex", "note": "built, no blueprint", "alt": null, "done": false }
+      ],
+      "conditions": [
+        "Mastery Rank 3 to buy and equip.",
+        "If you plan to make the Aklex, rank one Lex to 30 first: the recipe consumes two."
+      ],
+      "bonuses": [],
+      "disclosures": [
+        {
+          "title": "credits",
+          "body": "The Index on Neptune pays 250,000 per High Risk win on a 50,000 wager. Seimeni on Ceres (5 waves of Defense) pays roughly 20,000 per run before Neptune."
+        }
+      ]
+    }
+  ]
+}

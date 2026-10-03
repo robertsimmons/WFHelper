@@ -1,0 +1,301 @@
+{
+  "name": "Gunsen",
+  "kind": "melee",
+  "effort": 2,
+  "tradeable": null,
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "blueprint"
+  },
+  "badges": [
+    {
+      "text": "Tenno Lab, 4 research steps",
+      "tone": "info"
+    }
+  ],
+  "prices": [
+    {
+      "label": "blueprint",
+      "amount": "15,000 cr",
+      "money": false
+    },
+    {
+      "label": "build",
+      "amount": "20,000 cr",
+      "money": false
+    }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "DOJO, TENNO LAB",
+      "sub": null,
+      "activity": "clan research chain",
+      "meta": "4 steps, 72h each",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Akstiletto",
+          "note": "500 Salvage, 300 Polymer Bundle, 50 Alloy Plate, 1 Gallium, 5,000 cr",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Sybaris",
+          "note": "1 Morphics, 500 Salvage, 50 Rubedo, 300 Polymer Bundle, 5,000 cr",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Venka",
+          "note": "2 Gallium, 400 Salvage, 75 Plastids, 600 Polymer Bundle, 5,000 cr",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Gunsen",
+          "note": "10 Morphics, 15,500 Salvage, 11,500 Ferrite, 1,450 Polymer Bundle, 5,000 cr",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Each step costs 3,000 clan affinity and must finish before the next can start, so queue Akstiletto the moment the Tenno Lab is up.",
+        "Research timers only run in a clan dojo with the Tenno Lab built.",
+        "Costs are the Ghost clan base; bigger clan tiers multiply them."
+      ],
+      "bonuses": ["Akstiletto, Sybaris and Venka only need researching, never building."],
+      "disclosures": []
+    },
+    {
+      "type": "research",
+      "place": "DOJO, TENNO LAB",
+      "sub": null,
+      "activity": "buy the blueprint",
+      "meta": "15,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [
+        {
+          "currency": "Credits",
+          "amount": "15,000"
+        }
+      ],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Gunsen Blueprint",
+          "note": null,
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Research only unlocks the blueprint; the weapon is a Foundry build."],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "ANY MISSION",
+      "sub": null,
+      "activity": "stock the research costs during the timers",
+      "meta": "the Gunsen step alone eats 15,500 Salvage and 11,500 Ferrite",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "16,900",
+          "label": "Salvage",
+          "note": "across the chain",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "11,500",
+          "label": "Ferrite",
+          "note": "Gunsen step",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "2,650",
+          "label": "Polymer Bundle",
+          "note": "across the chain",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "11",
+          "label": "Morphics",
+          "note": "1 Sybaris, 10 Gunsen; Mars has the best rate",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "3",
+          "label": "Gallium",
+          "note": "1 Akstiletto, 2 Venka",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "50",
+          "label": "Alloy Plate",
+          "note": "Akstiletto",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "50",
+          "label": "Rubedo",
+          "note": "Sybaris",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "20,000",
+          "label": "Credits",
+          "note": "5,000 per research step",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Keep Salvage and Ferrite stocked before starting the Gunsen step; it takes them all at once."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "OPHELIA, URANUS",
+      "sub": null,
+      "activity": "Survival on the Grineer Sealab tileset",
+      "meta": "one run covers Tellurium and Plastids",
+      "mode": "Steel Path if you can",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "3",
+          "label": "Tellurium",
+          "note": "build",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "1,225",
+          "label": "Plastids",
+          "note": "75 Venka research, 1,150 build",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [
+        "Steel Path adds +100% resource drop chance on Ophelia.",
+        "Veil Proxima Survival (Lu-yan) is the other well-regarded Tellurium source.",
+        "Nekros plus Khora is the standard loot setup, with a Resource Drop Chance Booster stacked on top."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "ERIS",
+      "sub": null,
+      "activity": "Survival with Nekros",
+      "meta": "a few thousand Spores per 10 minutes",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "19,750",
+          "label": "Nano Spores",
+          "note": "build",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [
+        "Saturn, Neptune and Deimos also drop Spores, roughly 3,000 per 5 minutes or waves, doubled with Nekros.",
+        "Much of this arrives passively while gathering Salvage and Ferrite."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "CORPUS MISSIONS",
+      "sub": null,
+      "activity": "kill Oxium Ospreys",
+      "meta": "e.g. Gulliver, Io, Tycho, Apollo",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "200",
+          "label": "Oxium",
+          "note": "build",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Ospreys that self-destruct drop nothing; kill them at range."],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Gunsen",
+      "meta": "20,000 cr, 12h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Gunsen",
+          "note": "200 Oxium, 3 Tellurium, 1,150 Plastids, 19,750 Nano Spores",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": ["Platinum can stand in for any resource, 10 plat per Tellurium."],
+      "disclosures": []
+    }
+  ]
+}

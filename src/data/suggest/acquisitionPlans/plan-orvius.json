@@ -1,0 +1,172 @@
+{
+  "name": "Orvius",
+  "kind": "melee",
+  "effort": 5,
+  "tradeable": "parts only",
+  "progress": {
+    "have": 0,
+    "need": 3,
+    "unit": "parts"
+  },
+  "badges": [
+    {
+      "text": "5% part drops",
+      "tone": "warn"
+    },
+    {
+      "text": "MR 6",
+      "tone": "info"
+    }
+  ],
+  "prices": [
+    {
+      "label": "build",
+      "amount": "15,000 cr",
+      "money": false
+    },
+    {
+      "label": "blueprint rebuy",
+      "amount": "100,000 standing",
+      "money": false
+    }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "THE WAR WITHIN",
+      "sub": null,
+      "activity": "finish the quest, reach MR 5 for Kuva Siphons",
+      "meta": "one-time",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "The War Within",
+          "note": "rewards the Orvius blueprint once",
+          "alt": "rebuy from Cephalon Simaris for 100,000 standing",
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Mastery Rank 5",
+          "note": "needed for Kuva Siphon missions",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["The blueprint is not tradeable, so do not sell the one you get."],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "KUVA SIPHON",
+      "sub": null,
+      "activity": "kill every Kuva Guardian and Kuva Jester",
+      "meta": "Kuva Flood is the same at levels 80-100",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "2",
+          "label": "Orvius Blade",
+          "note": "Kuva Guardian, 5% per kill",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "1",
+          "label": "Orvius Disc",
+          "note": "Kuva Jester, 5% per kill",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "4,000",
+          "label": "Kuva",
+          "note": "Siphon pays 550-700 per player, Flood 1,100-1,400",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Kuva Survival spawns only the occasional Guardian or Jester. Run Siphons or Floods.",
+        "Guardians hold a Kesheg that makes them immune. Knock it away with the Operator's Void Sling, then kill them.",
+        "Kuva pays out whether or not you kill them, but skipping them skips the parts."
+      ],
+      "bonuses": [
+        "Floods pay double Kuva and guarantee a Requiem Relic.",
+        "Astral Twilight, a common Siphon drop, is a good glaive stance."
+      ],
+      "disclosures": [
+        {
+          "title": "buying Kuva instead",
+          "body": "Direct Kuva farming is a poor use of time. Weekly vendor routes: Riven Slivers from Palladino in Iron Wake, Voidplume Pinions from Archimedean Yonta in the Chrysalith, Vitus Essence at the Arbitrations vendor."
+        },
+        {
+          "title": "other Guardian sources",
+          "body": "Void Flood in Zariman with the Kuva Guardians contamination effect spawns pairs repeatedly. Nekros reportedly yielded about 3 parts per siphon in older threads."
+        }
+      ]
+    },
+    {
+      "type": "farm",
+      "place": "TETHYS, SATURN",
+      "sub": null,
+      "activity": "General Sargas Ruk assassination, break boxes with Xaku or Limbo",
+      "meta": "or Ceres and Deimos",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "10",
+          "label": "Orokin Cell",
+          "note": "dropped by all bosses and Sentient enemies",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Orvius",
+      "meta": "12h, 15,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Orvius",
+          "note": "2 Orvius Blade, 1 Orvius Disc, 10 Orokin Cell, 4,000 Kuva",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Parts and Kuva are separate rolls: two blades but one disc."],
+      "bonuses": ["The build can be rushed for 50 platinum."],
+      "disclosures": []
+    }
+  ]
+}

@@ -1,0 +1,212 @@
+{
+  "name": "Dual Cestra",
+  "kind": "secondary",
+  "effort": 2,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 1, "unit": "weapon" },
+  "badges": [
+    { "text": "Energy Lab", "tone": "warn" },
+    { "text": "two 72h research timers", "tone": "warn" }
+  ],
+  "prices": [
+    { "label": "lab blueprint", "amount": "15,000 cr", "money": false },
+    { "label": "Cestra blueprint", "amount": "20,000 cr", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "research",
+      "place": "CLAN DOJO, ENERGY LAB",
+      "sub": null,
+      "activity": "research Fieldron, then Dual Cestra",
+      "meta": "72h each; start these first",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Fieldron research",
+          "note": "5 Fieldron Samples, 100 Rubedo, 500 Nano Spores, 200 Polymer Bundle, 5,000 cr, 2,000 clan affinity",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Dual Cestra research",
+          "note": "10 Fieldron Samples, 400 Salvage, 200 Polymer Bundle, 150 Circuits, 8,000 cr, 3,000 clan affinity",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Fieldron Blueprint",
+          "note": "15,000 cr from the dojo",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Dual Cestra Blueprint",
+          "note": "15,000 cr from the dojo",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The Energy Lab room must exist in the dojo before anything can be researched; a solo clan works.",
+        "Dual Cestra research requires the Fieldron research first."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "KELASHIN, NEPTUNE",
+      "sub": null,
+      "activity": "Dark Sector Survival or Defense",
+      "meta": "35 samples across the whole chain",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "35",
+          "label": "Fieldron Sample",
+          "note": "5 + 10 for research, 20 for two Fieldron builds",
+          "alt": "or built Fieldron from Corpus Invasions",
+          "done": false
+        }
+      ],
+      "conditions": ["Samples cannot be bought with platinum."],
+      "bonuses": [],
+      "disclosures": [
+        {
+          "title": "skip the samples with built Fieldron",
+          "body": "Invasions between Corpus and Grineer or Infested pay 3 built Fieldron when the Invasion ends. Rare and Reinforced Corpus Storage Containers drop it at 100%, and Orb Vallis tier 4 bounties sometimes pay 2 at a stage. Built Fieldron replaces the 20 samples for the two builds; the 15 research samples still need collecting."
+        }
+      ]
+    },
+    {
+      "type": "vendor",
+      "place": "MARKET",
+      "sub": null,
+      "activity": "buy Cestra blueprint",
+      "meta": "20,000 cr each",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "2",
+          "label": "Cestra Blueprint",
+          "note": "one per Cestra",
+          "alt": "one free from the Jupiter to Europa Junction",
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "VARIOUS PLANETS",
+      "sub": null,
+      "activity": "common resources for both Cestras and both Fieldron",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "6,000",
+          "label": "Nano Spores",
+          "note": "3,000 per Cestra",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "2,400",
+          "label": "Rubedo",
+          "note": "1,200 per Cestra",
+          "alt": null,
+          "done": false
+        },
+        { "qty": "8", "label": "Gallium", "note": "4 per Cestra", "alt": null, "done": false },
+        { "qty": "4", "label": "Neurodes", "note": "2 per Cestra", "alt": null, "done": false },
+        {
+          "qty": "1,000",
+          "label": "Salvage",
+          "note": "500 per Fieldron",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "500",
+          "label": "Plastids",
+          "note": "250 per Fieldron",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "2",
+          "label": "Control Module",
+          "note": "1 per Fieldron",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build two Cestras, two Fieldron, then Dual Cestra",
+      "meta": "24h per Cestra, 12h per Fieldron, 24h final",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "2",
+          "label": "Cestra",
+          "note": "25,000 cr each; rank one to 30 first",
+          "alt": null,
+          "done": false
+        },
+        { "qty": "2", "label": "Fieldron", "note": "15,000 cr each", "alt": null, "done": false },
+        {
+          "qty": null,
+          "label": "Dual Cestra",
+          "note": "2 Cestra, 2 Fieldron, 1 Forma, 25,000 cr",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Crafting fails if the two Cestras are your last two secondaries; keep another secondary such as a Lato.",
+        "Both Cestras are consumed. Rank one to 30 first so the Mastery is not lost."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

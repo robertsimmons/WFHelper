@@ -1,0 +1,245 @@
+{
+  "name": "Embolist",
+  "kind": "secondary",
+  "effort": 2,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 1, "unit": "blueprint" },
+  "badges": [
+    { "text": "Bio Lab", "tone": "info" },
+    { "text": "~105 Mutagen Samples", "tone": "warn" }
+  ],
+  "prices": [
+    { "label": "blueprint", "amount": "50,000 cr", "money": false },
+    { "label": "build", "amount": "30,000 cr", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "DOJO, BIO LAB",
+      "sub": null,
+      "activity": "clan research, strictly in order",
+      "meta": "72h each, ~12 days of timers; start first",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Mutagen Mass",
+          "note": "5 Mutagen Sample, 150 Circuits, 500 Nano Spores, 100 Plastids, 5,000 cr",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Torid",
+          "note": "10 Mutagen Sample, 200 Circuits, 750 Nano Spores, 400 Polymer Bundle, 5,000 cr; research only",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Acrid",
+          "note": "10 Mutagen Sample, 150 Ferrite, 1,000 Nano Spores, 500 Polymer Bundle, 7,500 cr; research only",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Embolist",
+          "note": "30 Mutagen Sample, 400 Circuits, 4,000 Nano Spores, 800 Polymer Bundle, 5,000 cr",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Needs an Oracle and a Bio Lab. Costs shown are the Ghost tier; Shadow is x3, Storm x10, Mountain x30, Moon x100, so do not expand a solo clan first.",
+        "Research cannot be rushed with platinum. If your clan already finished it, skip this."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "research",
+      "place": "DOJO, BIO LAB",
+      "sub": null,
+      "activity": "buy the blueprint",
+      "meta": "50,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Credits", "amount": "50,000" }],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Embolist Blueprint", "note": null, "alt": null, "done": false }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "TERROREM, DEIMOS",
+      "sub": "or Hyf, Deimos Defense; Cambion Drift",
+      "activity": "Survival with a loot frame",
+      "meta": "uncommon on Deimos, rare on Eris",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "105",
+          "label": "Mutagen Sample",
+          "note": "55 research, 50 for 5 Mutagen Mass; cannot be bought",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Terrorem's Infested pathing can snag Khora on doors. The dead-end spawn tile or the big open tiles avoid it."
+      ],
+      "bonuses": [
+        "Pilfering Khora, Pilfering Hydroid or Despoil Nekros, plus a Resource Booster, Drop Chance Booster, relay blessing and Steel Path."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "AKKAD, ERIS",
+      "sub": "or Piscinas, Saturn; Terrorem or Hyf, Deimos",
+      "activity": "Defense",
+      "meta": "drops come in 150-200s",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "6,250",
+          "label": "Nano Spores",
+          "note": "research",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "1,700",
+          "label": "Polymer Bundle",
+          "note": "research; Uranus drops most",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "WAHIBA, MARS",
+      "sub": "or Cameria, Jupiter",
+      "activity": "Dark Sector Survival",
+      "meta": "Salvage is the bulk",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "17,500",
+          "label": "Salvage",
+          "note": "15,000 build, 2,500 for 5 Mutagen Mass",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "1,950",
+          "label": "Circuits",
+          "note": "1,200 build, 750 research",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "1,350",
+          "label": "Plastids",
+          "note": "1,250 for 5 Mutagen Mass, 100 research",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "THE VOID",
+      "sub": null,
+      "activity": "any mission",
+      "meta": "best Control Module rates",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "void",
+      "rows": [
+        {
+          "qty": "5",
+          "label": "Control Module",
+          "note": "1 per Mutagen Mass",
+          "alt": "or Neptune, Europa",
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "5 Mutagen Mass early, then Embolist",
+      "meta": "12h each, then 1 day",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "5",
+          "label": "Mutagen Mass",
+          "note": "each 10 Mutagen Sample, 1 Control Module, 500 Salvage, 250 Plastids, 15,000 cr",
+          "alt": "or Infested Invasion rewards and Orb Vallis tier 4 bounty stages",
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Embolist",
+          "note": "5 Mutagen Mass, 15,000 Salvage, 1,200 Circuits, 1 Forma, 30,000 cr",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Each Mutagen Mass holds a Foundry slot for 12h, so start all five early.",
+        "Mastery Rank 9 is needed to equip it."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

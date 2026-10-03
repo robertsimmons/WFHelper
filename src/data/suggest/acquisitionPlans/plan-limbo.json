@@ -1,0 +1,297 @@
+{
+  "name": "Limbo",
+  "kind": "warframe",
+  "effort": 3,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "badges": [
+    { "text": "Limbo Theorem quest", "tone": "warn" },
+    { "text": "Circuit alt", "tone": "circuit" }
+  ],
+  "prices": [
+    { "label": "blueprint", "amount": "35,000 cr", "money": false },
+    { "label": "built", "amount": "200 p", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "MARS JUNCTION, JUPITER JUNCTION",
+      "sub": null,
+      "activity": "finish The Archwing and clear the Jupiter to Europa Junction",
+      "meta": "one-time",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "The Archwing, then build the Odonata",
+          "note": "unlocked by the Mars Junction",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Jupiter to Europa Junction",
+          "note": "puts The Limbo Theorem in your Codex",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The quest refuses to start until The Archwing quest is complete; building an Archwing without finishing it does not count.",
+        "The quest cannot be replayed. A sold part blueprint costs 25,000 Cephalon Simaris standing to replace."
+      ],
+      "bonuses": [
+        "The Circuit skips this whole gate: Limbo is a week 6 pick, with Neuroptics at tier 2, Chassis at tier 5, Systems at tier 8 and the main blueprint at tier 10."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "MARKET",
+      "sub": null,
+      "activity": "buy the main blueprint",
+      "meta": "35,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Credits", "amount": "35,000" }],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Limbo Blueprint", "note": null, "alt": null, "done": false }
+      ],
+      "conditions": [
+        "The quest never gives the main blueprint. The Market tile shows 200 platinum for the built frame; click the tile and use the separate Blueprint button, which costs credits."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "SYRTIS, MARS",
+      "sub": null,
+      "activity": "Archwing Interception, kill enemies and pick up Proof Fragments",
+      "meta": "one run can cover all three",
+      "mode": "solo",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "3",
+          "label": "Proof Fragment",
+          "note": "1 per Theorem key; the keys cost 6,500 cr each",
+          "alt": "tradeable",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Winning the Interception gives nothing; the kills are the point, and not every kill drops a fragment.",
+        "Some enemies fly outside the mission area. Chasing them forces an abort, so let them despawn.",
+        "The game never says you have enough fragments. Check the Foundry."
+      ],
+      "bonuses": [
+        "Clanmates and recruit chat often hold spare fragments, which skips the Interception entirely."
+      ],
+      "disclosures": [
+        {
+          "title": "loadout",
+          "body": "The Interception is trivial with levelled Archwing gear and painful with an unmodded rank 3 Odonata. The Elytron and the Itzal were named as comfortable picks."
+        }
+      ]
+    },
+    {
+      "type": "farm",
+      "place": "CAMBRIA EARTH, MARTIALIS MARS, OSE EUROPA",
+      "sub": null,
+      "activity": "quest Excavations, one per part",
+      "meta": "300 Cryotic each, 3 full extractors",
+      "mode": "solo, quest only",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Neuroptics Blueprint",
+          "note": "Cambria, Earth; guaranteed",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Systems Blueprint",
+          "note": "Martialis, Mars; guaranteed",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Chassis Blueprint",
+          "note": "Ose, Europa; guaranteed",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The blueprints drop only while you are on the quest. Joining someone else's run of the same node gives nothing.",
+        "Order is Theorem key, then Excavation, three times. Power Carrier spawn waits are the common complaint."
+      ],
+      "bonuses": ["A frame that protects the extractors and clears fast helps; Frost was named."],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "STAR CHART",
+      "sub": null,
+      "activity": "common materials as you play",
+      "meta": "Neural Sensors from Jupiter",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "150",
+          "label": "Alloy Plate",
+          "note": "Neuroptics",
+          "alt": null,
+          "done": false
+        },
+        { "qty": "2", "label": "Neurodes", "note": "Neuroptics", "alt": null, "done": false },
+        {
+          "qty": "150",
+          "label": "Polymer Bundle",
+          "note": "Neuroptics",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "800",
+          "label": "Rubedo",
+          "note": "500 Neuroptics, 300 Chassis",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "1",
+          "label": "Neural Sensors",
+          "note": "Chassis; Jupiter",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "1,000",
+          "label": "Ferrite",
+          "note": "Chassis",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "1",
+          "label": "Control Module",
+          "note": "Systems",
+          "alt": null,
+          "done": false
+        },
+        { "qty": "3", "label": "Morphics", "note": "Systems", "alt": null, "done": false },
+        { "qty": "500", "label": "Salvage", "note": "Systems", "alt": null, "done": false },
+        { "qty": "220", "label": "Plastids", "note": "Systems", "alt": null, "done": false },
+        {
+          "qty": "3",
+          "label": "Orokin Cell",
+          "note": "the Limbo build",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "THE VOID",
+      "sub": null,
+      "activity": "any Void mission",
+      "meta": "pick this up last",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "void",
+      "rows": [
+        {
+          "qty": "1",
+          "label": "Argon Crystal",
+          "note": "Limbo Chassis",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Argon decays daily, so farm it right before the Chassis build, not in advance."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build components, then Limbo",
+      "meta": "1 min per part, 15,000 cr each",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Neuroptics",
+          "note": "150 Alloy Plate, 2 Neurodes, 150 Polymer Bundle, 500 Rubedo",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Chassis",
+          "note": "1 Neural Sensors, 1,000 Ferrite, 300 Rubedo, 1 Argon Crystal",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Systems",
+          "note": "1 Control Module, 3 Morphics, 500 Salvage, 220 Plastids",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Limbo",
+          "note": "25,000 cr, 3 Orokin Cells",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

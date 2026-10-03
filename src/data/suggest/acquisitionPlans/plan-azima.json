@@ -1,0 +1,54 @@
+{
+  "name": "Azima",
+  "kind": "secondary",
+  "effort": 1,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 1, "unit": "weapon" },
+  "badges": [
+    { "text": "Daily Tribute milestone", "tone": "warn" },
+    { "text": "no Foundry build", "tone": "info" }
+  ],
+  "prices": [],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "DAILY TRIBUTE",
+      "sub": null,
+      "activity": "pick Azima at a weapon milestone (day 100, 300, 500 or 700)",
+      "meta": "earliest possible day 100; worst case day 700",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Azima",
+          "note": "the day 100 pool is Azima, Zenistar or Zenith",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Login days are cumulative, not consecutive; missing days only delays the milestone, nothing resets.",
+        "A picked weapon leaves the pool and the choice cannot be changed. Sigma & Octantis joins the pool from day 300."
+      ],
+      "bonuses": [
+        "Arrives with its own weapon slot and an Orokin Catalyst pre-installed; no Foundry step.",
+        "Taking one weapon at each of days 100, 300, 500 and 700 gets all four, so the order does not matter for Mastery."
+      ],
+      "disclosures": [
+        {
+          "title": "replacement copy, not a shortcut",
+          "body": "Cephalon Simaris sells an Azima Blueprint for 100,000 standing, but only after you have claimed one from the Tribute. It gives no extra Mastery. The build is 30,000 credits, 4 Morphics, 450 Circuits, 500 Polymer Bundle and 2,750 Salvage, 24 hours."
+        },
+        {
+          "title": "which to pick first",
+          "body": "Players who want one to use pick Zenith first for its infinite punch-through. The Azima is a solid early secondary with a huge magazine and ammo pool, but later secondaries outclass it."
+        }
+      ]
+    }
+  ]
+}

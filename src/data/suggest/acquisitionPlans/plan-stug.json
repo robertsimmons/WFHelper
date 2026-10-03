@@ -1,0 +1,164 @@
+{
+  "name": "Stug",
+  "kind": "secondary",
+  "effort": 2,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 1, "unit": "blueprint" },
+  "badges": [{ "text": "Market blueprint", "tone": "info" }],
+  "prices": [
+    { "label": "blueprint", "amount": "20,000 cr", "money": false },
+    { "label": "build", "amount": "20,000 cr", "money": false },
+    { "label": "built", "amount": "120 p", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "vendor",
+      "place": "MARKET",
+      "sub": "Weapons, Secondary",
+      "activity": "buy blueprint",
+      "meta": "20,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Credits", "amount": "20,000" }],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Stug Blueprint", "note": null, "alt": null, "done": false }
+      ],
+      "conditions": ["Mastery Rank 2 is needed."],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "ELARA, JUPITER",
+      "sub": null,
+      "activity": "Survival with Nekros",
+      "meta": "~600-1,000 Salvage a minute without a booster",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "3,000",
+          "label": "Salvage",
+          "note": null,
+          "alt": "or Carme, Jupiter Mobile Defense, or Olympus, Mars Disruption",
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "GABII, CERES",
+      "sub": null,
+      "activity": "Survival",
+      "meta": "~1,000 Alloy Plate per 15 min with a booster",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "1,200",
+          "label": "Alloy Plate",
+          "note": null,
+          "alt": "or Defense on Venus, Ceres or Sedna",
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": ["Resource Extractors produce Alloy Plate passively."],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "DESDEMONA, URANUS",
+      "sub": null,
+      "activity": "Sabotage",
+      "meta": "15.49% per cache, 2-3 per drop",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "4",
+          "label": "Gallium",
+          "note": null,
+          "alt": "or Gradivus, Mars Sabotage",
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "EARTH",
+      "sub": null,
+      "activity": "Neuroptic Masses, or Sabotage caches",
+      "meta": "easiest early source",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "3",
+          "label": "Neurodes",
+          "note": null,
+          "alt": "or Cervantes (Earth), Naeglar (Eris) or Formido (Deimos) Sabotage, ~15% each",
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Stug",
+      "meta": "1 day, 20,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Stug",
+          "note": "3 Neurodes, 4 Gallium, 3,000 Salvage, 1,200 Alloy Plate",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": [
+        {
+          "title": "Incarnon Genesis",
+          "body": "The Incarnon Genesis is a separate later unlock and adds no Mastery. The Incarnon Adapter disables the alt-fire."
+        }
+      ]
+    }
+  ]
+}

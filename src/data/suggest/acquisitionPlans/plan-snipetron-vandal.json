@@ -1,0 +1,113 @@
+{
+  "name": "Snipetron Vandal",
+  "kind": "primary",
+  "effort": 5,
+  "tradeable": "parts only",
+  "progress": {
+    "have": 0,
+    "need": 4,
+    "unit": "parts"
+  },
+  "badges": [
+    {
+      "text": "Corpus Invasions only",
+      "tone": "warn"
+    },
+    {
+      "text": "MR 5",
+      "tone": "info"
+    }
+  ],
+  "prices": [
+    {
+      "label": "build",
+      "amount": "25,000 cr",
+      "money": false
+    }
+  ],
+  "groups": [
+    {
+      "type": "farm",
+      "place": "INVASIONS",
+      "sub": null,
+      "activity": "side with the Corpus, finish 3 missions on the node",
+      "meta": "check the Invasions tab or deathsnacks.com",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Snipetron Vandal Blueprint",
+          "note": "2.76% of the Corpus reward pool",
+          "alt": "trade, MR 5 or higher",
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Snipetron Vandal Barrel",
+          "note": "2.76% of the Corpus reward pool",
+          "alt": "trade",
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Snipetron Vandal Receiver",
+          "note": "2.76% of the Corpus reward pool",
+          "alt": "trade",
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Snipetron Vandal Stock",
+          "note": "2.76% of the Corpus reward pool",
+          "alt": "trade",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Grineer side never pays any of them. The reward comes to your inbox when the Invasion ends whichever side wins, if the 3 missions were finished first.",
+        "Choosing a side locks it in. Switching resets your progress and denies both rewards.",
+        "Weapon-part Invasions last roughly 9 hours and are easy to miss."
+      ],
+      "bonuses": [
+        "Each repeat on the same node pays about 1,000 extra credits, up to 10,000.",
+        "Mission type changes every 15 minutes, so take the fast one when it comes up."
+      ],
+      "disclosures": [
+        {
+          "title": "the odds",
+          "body": "About one specific part per 36 Invasions that roll. Dera Vandal and Sheev parts share the pool. If a reward does not show after finishing, relog before assuming it was lost. Pips on the faction-choice screen show how many of the 3 missions you have done."
+        }
+      ]
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Snipetron Vandal",
+      "meta": "12h, 25,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Snipetron Vandal",
+          "note": "Blueprint, Barrel, Receiver and Stock",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": ["The build can be rushed for 35 platinum."],
+      "disclosures": []
+    }
+  ]
+}

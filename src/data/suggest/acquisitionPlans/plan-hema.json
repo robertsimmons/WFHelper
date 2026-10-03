@@ -1,0 +1,300 @@
+{
+  "name": "Hema",
+  "kind": "primary",
+  "effort": 2,
+  "tradeable": false,
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "weapon"
+  },
+  "badges": [
+    {
+      "text": "5,000 Mutagen Samples",
+      "tone": "warn"
+    },
+    {
+      "text": "Bio Lab research",
+      "tone": "info"
+    }
+  ],
+  "prices": [
+    {
+      "label": "blueprint",
+      "amount": "15,000 cr",
+      "money": false
+    },
+    {
+      "label": "build",
+      "amount": "30,000 cr",
+      "money": false
+    }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "DOJO",
+      "sub": null,
+      "activity": "build an Oracle and a Bio Lab",
+      "meta": "a solo Ghost clan is enough",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Oracle",
+          "note": null,
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Bio Lab",
+          "note": "research cannot be rushed with platinum",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Research cost multiplies with clan tier: Shadow x3, Storm x10, Mountain x30, Moon x100. The tier follows the member cap, so a clan that ever expanded can owe a multiple."
+      ],
+      "bonuses": [
+        "A clan that already has it researched lets you join, buy the blueprint and leave."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "TERROREM, DEIMOS",
+      "sub": null,
+      "activity": "Survival, Steel Path if unlocked, with a loot frame",
+      "meta": "squad version is the standard answer",
+      "mode": "squad recommended",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "5,015",
+          "label": "Mutagen Sample",
+          "note": "Mutagen Mass 5, Torid 10, Hema 5,000; not for sale",
+          "alt": "Eris dark sector is a worse version",
+          "done": false
+        },
+        {
+          "qty": "45,500",
+          "label": "Nano Spores",
+          "note": "Mutagen Mass 500, Hema 45,000",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "50",
+          "label": "Neurodes",
+          "note": "Hema",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Hema research takes Mutagen Samples, not Mutagen Mass. Invasion mutagens are Mass and do not count.",
+        "The base 5,000 applies only to a Ghost clan; a small friend-group clan was quoted 15,000."
+      ],
+      "bonuses": [
+        "Samples picked up by any clan member count once donated.",
+        "Extractors on the Companion app trickle in a few samples a day."
+      ],
+      "disclosures": [
+        {
+          "title": "loot setups",
+          "body": "Stack a resource booster, a drop chance booster, the Relay blessing and a Smeeta or Chesa Kubrow with Resourceful Retriever. Nekros (Despoil), Khora (Pilfering Strangledome) and Hydroid (Pilfering Swarm) are the named frames. One commenter on Steel Path Terrorem with Atlas (Ore Gaze) farmed the last 3,000 in under two hours. Defense on the Orokin Derelict was recommended over Survival by one commenter because enemies walk to you."
+        }
+      ]
+    },
+    {
+      "type": "research",
+      "place": "BIO LAB, DOJO",
+      "sub": null,
+      "activity": "Mutagen Mass, then Torid, then Hema",
+      "meta": "72h each, strictly in order",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Mutagen Mass",
+          "note": "5 Mutagen Samples, 150 Circuits, 500 Nano Spores, 100 Plastids, 5,000 cr",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Torid",
+          "note": "10 Mutagen Samples plus resources",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Hema",
+          "note": "5,000 Mutagen Samples, 10,000 Plastids, 45,000 Nano Spores, 50 Neurodes, 5,000 cr, 10,000 clan affinity",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": ["Start the Mass and Torid timers while the samples farm runs."],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "SATURN OR URANUS",
+      "sub": null,
+      "activity": "any mission, loot containers",
+      "meta": "highest Plastids chance",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "10,100",
+          "label": "Plastids",
+          "note": "Mutagen Mass 100, Hema 10,000",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "CARME, JUPITER",
+      "sub": null,
+      "activity": "Mobile Defense, loot everything",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "50,000",
+          "label": "Salvage",
+          "note": "Foundry",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "STAR CHART",
+      "sub": null,
+      "activity": "common resource",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "5,150",
+          "label": "Circuits",
+          "note": "Mutagen Mass 150, Foundry 5,000",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "BIO LAB, DOJO",
+      "sub": null,
+      "activity": "buy the Hema blueprint once research is done",
+      "meta": "15,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Hema Blueprint",
+          "note": null,
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Hema",
+      "meta": "12h, 30,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "5",
+          "label": "Mutagen Mass",
+          "note": "build or take from Infested Invasions and Tier 4 Orb Vallis bounties",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Hema",
+          "note": "5 Mutagen Mass, 50,000 Salvage, 5,000 Circuits, 1 Forma",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Building the Mass yourself costs 15,000 cr, 10 Mutagen Samples, 1 Control Module, 500 Salvage and 250 Plastids each, 12h.",
+        "Reloading drains up to 5% of your max health."
+      ],
+      "bonuses": [],
+      "disclosures": [
+        {
+          "title": "Coda Hema",
+          "body": "A separate item at MR 17 with its own Mastery."
+        }
+      ]
+    }
+  ]
+}

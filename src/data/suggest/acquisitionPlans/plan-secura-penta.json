@@ -1,0 +1,216 @@
+{
+  "name": "Secura Penta",
+  "kind": "primary",
+  "effort": 4,
+  "tradeable": "unranked only",
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "weapon"
+  },
+  "badges": [
+    {
+      "text": "Perrin Partner",
+      "tone": "warn"
+    },
+    {
+      "text": "MR 12",
+      "tone": "info"
+    }
+  ],
+  "prices": [
+    {
+      "label": "standing",
+      "amount": "125,000",
+      "money": false
+    },
+    {
+      "label": "rank-ups",
+      "amount": "940,000 cr",
+      "money": false
+    }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "ORBITER",
+      "sub": null,
+      "activity": "pledge to The Perrin Sequence at the Syndicate console",
+      "meta": "MR 12 to buy",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Mastery Rank 12",
+          "note": "required to purchase",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Perrin Sequence pledge",
+          "note": "15% of all affinity becomes standing",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Pledging loses standing with Steel Meridian and Arbiters of Hexis. Changing pledge later costs another recovery."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "currency",
+      "place": "ANY MISSION",
+      "sub": null,
+      "activity": "play normally pledged, then the three daily Perrin alerts",
+      "meta": "daily cap 16,000 plus 500 per Mastery Rank",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": {
+        "currency": "Perrin Sequence standing",
+        "amount": "365,000"
+      },
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "240,000",
+          "label": "rank-ups",
+          "note": "five rank-ups, each resetting standing to 0",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "125,000",
+          "label": "Secura Penta",
+          "note": "bought at Partner",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Standing left over at a rank-up is lost; do not dump a big medallion stack right before one."
+      ],
+      "bonuses": [
+        "Alert medallions (8 per alert; 500, 1,000 or 5,000 each) and the alert reward bypass the daily cap, and can be stockpiled.",
+        "New Loka is allied (+50% to each); Red Veil is neutral to both."
+      ],
+      "disclosures": [
+        {
+          "title": "faster standing",
+          "body": "Universal Syndicate Medallions are 1,000 standing from a Tier C Disruption reward but count against the daily cap. Affinity boosters raise standing since it derives from affinity. Medallions are team-wide pickups; Loot Detector or Animal Instinct finds invisible ones."
+        }
+      ]
+    },
+    {
+      "type": "vendor",
+      "place": "PERRIN SEQUENCE, ORBITER",
+      "sub": null,
+      "activity": "rank up from Neutral to Partner",
+      "meta": "940,000 cr, 5 Aya",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [
+        {
+          "currency": "Perrin Sequence standing",
+          "amount": "240,000"
+        }
+      ],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Initiation",
+          "note": "no standing, 10,000 cr, 100 Polymer Bundle",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Rank 1",
+          "note": "5,000 standing, 30,000 cr, 2 Detonite Ampule",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Rank 2",
+          "note": "22,000 standing, 50,000 cr, 1 Forma",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Rank 3",
+          "note": "44,000 standing, 100,000 cr, 1 Orokin Reactor",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Rank 4",
+          "note": "70,000 standing, 250,000 cr, 2 Aya",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Partner",
+          "note": "99,000 standing, 500,000 cr, 3 Aya",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Each rank-up spends standing, credits and a sacrifice."],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "PERRIN SEQUENCE, ORBITER",
+      "sub": null,
+      "activity": "buy the Secura Penta at Partner",
+      "meta": "125,000 standing",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [
+        {
+          "currency": "Perrin Sequence standing",
+          "amount": "125,000"
+        }
+      ],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Secura Penta",
+          "note": "arrives built",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Syndicate weapons cannot be the free pick from ranking up. You need 125,000, not a full rank 5 bar (132,000)."
+      ],
+      "bonuses": [],
+      "disclosures": [
+        {
+          "title": "using it",
+          "body": "Napalm Grenades from Nightwave is what makes the Penta family usable and cannot pair with Tether Grenades, which Perrin sells at rank 4. Secura Penta beats Carmine Penta on stats."
+        }
+      ]
+    }
+  ]
+}

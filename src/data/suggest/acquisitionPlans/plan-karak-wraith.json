@@ -1,0 +1,92 @@
+{
+  "name": "Karak Wraith",
+  "kind": "primary",
+  "effort": 7,
+  "tradeable": "parts and blueprint",
+  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "badges": [
+    { "text": "Invasion RNG, 1.11% each", "tone": "warn" },
+    { "text": "MR 7", "tone": "info" }
+  ],
+  "prices": [{ "label": "build", "amount": "25,000 cr", "money": false }],
+  "groups": [
+    {
+      "type": "farm",
+      "place": "INVASIONS",
+      "sub": "Grineer vs Corpus",
+      "activity": "side with the Grineer when a Karak Wraith part is the reward",
+      "meta": "3 missions for the same side pays the reward",
+      "mode": "solo works",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Karak Wraith Blueprint",
+          "note": "1.11% per Grineer-side invasion; MR 7 to acquire by trade",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Karak Wraith Barrel",
+          "note": "1.11%",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Karak Wraith Receiver",
+          "note": "1.11%",
+          "alt": null,
+          "done": false
+        },
+        { "qty": null, "label": "Karak Wraith Stock", "note": "1.11%", "alt": null, "done": false }
+      ],
+      "conditions": [
+        "Check which side lists the Karak part before you start: siding with the Corpus pays a Dera Vandal part instead (2.76% each).",
+        "Finish the third mission before the invasion ends, or you get no battle pay. Switching sides mid-invasion resets your progress.",
+        "Parts rotate quickly and some invasions end within hours, so look at the Invasions tab once a day."
+      ],
+      "bonuses": [
+        "The reward goes to your inbox even if the other faction wins the node; missions past 3 add nothing.",
+        "Strun Wraith, Latron Wraith, Twin Vipers Wraith and Sheev parts come from the same Grineer side.",
+        "Battle pay also drops Fieldron, Detonite Injectors, Mutagen Mass, Orokin Catalysts, Reactors, Forma and Exilus Adapter blueprints."
+      ],
+      "disclosures": [
+        {
+          "title": "the wait",
+          "body": "Players estimate about two weeks for a full invasion weapon with a daily check, but one waited roughly four months for the last piece of another. Weapon invasions arrive in clusters after dry spells. Don't pay platinum for the parts; they are not rare."
+        },
+        {
+          "title": "invasion hazards",
+          "body": "After a Grineer invasion the Zanuka Hunter ambushes you in later missions, and The Grustrag Three if you sided Corpus. An Exterminate whose last enemies spawn slowly can stall the exit; wait out a bad mission type, as they rotate every 15 minutes."
+        }
+      ]
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Karak Wraith",
+      "meta": "12h, 25,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Karak Wraith Barrel", "note": null, "alt": null, "done": false },
+        { "qty": null, "label": "Karak Wraith Receiver", "note": null, "alt": null, "done": false },
+        { "qty": null, "label": "Karak Wraith Stock", "note": null, "alt": null, "done": false }
+      ],
+      "conditions": ["Equipping needs Mastery Rank 7."],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

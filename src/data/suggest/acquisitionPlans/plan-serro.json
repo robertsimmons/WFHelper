@@ -1,0 +1,230 @@
+{
+  "name": "Serro",
+  "kind": "melee",
+  "effort": 2,
+  "tradeable": null,
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "weapon"
+  },
+  "badges": [
+    {
+      "text": "Energy Lab",
+      "tone": "warn"
+    },
+    {
+      "text": "10 Fieldron Samples",
+      "tone": "info"
+    }
+  ],
+  "prices": [
+    {
+      "label": "blueprint",
+      "amount": "15,000 cr",
+      "money": false
+    },
+    {
+      "label": "build",
+      "amount": "20,000 cr",
+      "money": false
+    }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "DOJO, ENERGY LAB",
+      "sub": null,
+      "activity": "clan research: Fieldron, then Serro",
+      "meta": "72h each; skip if already researched",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Energy Lab room",
+          "note": "a solo clan works; the clan pays for the room",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Fieldron",
+          "note": "5 Fieldron Sample, 100 Rubedo, 500 Nano Spores, 200 Polymer Bundle, 5,000 cr",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Serro",
+          "note": "5 Fieldron Sample, 100 Circuits, 500 Salvage, 1 Neural Sensors, 5,000 cr",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Serro research cannot start until Fieldron research finishes, so queue Fieldron first."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "DOJO, ENERGY LAB",
+      "sub": null,
+      "activity": "buy the blueprint",
+      "meta": "15,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [
+        {
+          "currency": "Credits",
+          "amount": "15,000"
+        }
+      ],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Serro Blueprint",
+          "note": null,
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "CORPUS MISSIONS",
+      "sub": null,
+      "activity": "Survival or Defense, Corpus planets",
+      "meta": "Venus, Phobos, Jupiter, Europa, Neptune, Pluto",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "10",
+          "label": "Fieldron Sample",
+          "note": "5 per research",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "1",
+          "label": "Fieldron",
+          "note": "Serro build",
+          "alt": "3 per Corpus Invasion reward",
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [
+        "Samples drop passively through normal Corpus play and Invasions; Khora or Nekros on Dark Sector missions gave 100-200 in about 20-40 minutes."
+      ],
+      "disclosures": [
+        {
+          "title": "crafting Fieldron",
+          "body": "Blueprint 15,000 cr from the Energy Lab, then 10 Fieldron Sample, 1 Control Module, 500 Salvage, 250 Plastids and 15,000 cr, 12h. Invasion rewards are faster."
+        }
+      ]
+    },
+    {
+      "type": "farm",
+      "place": "STAR CHART",
+      "sub": null,
+      "activity": "common drops",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "4",
+          "label": "Neural Sensors",
+          "note": "1 research, 3 build",
+          "alt": "Jupiter, Kuva Fortress, or assassination bosses",
+          "done": false
+        },
+        {
+          "qty": "500",
+          "label": "Circuits",
+          "note": "100 research, 400 build",
+          "alt": "Ceres is best",
+          "done": false
+        },
+        {
+          "qty": "1,500",
+          "label": "Salvage",
+          "note": "500 research, 1,000 build",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "100",
+          "label": "Rubedo",
+          "note": "Fieldron research",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "500",
+          "label": "Nano Spores",
+          "note": "Fieldron research",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "200",
+          "label": "Polymer Bundle",
+          "note": "Fieldron research",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Serro",
+      "meta": "24h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Serro",
+          "note": "20,000 cr, 1 Fieldron, 400 Circuits, 1,000 Salvage, 3 Neural Sensors",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Mastery Rank 6 to equip."],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

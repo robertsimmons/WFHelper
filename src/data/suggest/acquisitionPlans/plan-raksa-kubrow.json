@@ -1,0 +1,178 @@
+{
+  "name": "Raksa Kubrow",
+  "kind": "companion",
+  "effort": 5,
+  "tradeable": "imprints only",
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "companion"
+  },
+  "badges": [
+    {
+      "text": "random breed, 1 of 5",
+      "tone": "warn"
+    },
+    {
+      "text": "48h per roll",
+      "tone": "warn"
+    }
+  ],
+  "prices": [
+    {
+      "label": "Incubator Power Core blueprint",
+      "amount": "50,000 cr",
+      "money": false
+    },
+    {
+      "label": "Power Core build, per roll",
+      "amount": "100,000 cr",
+      "money": false
+    }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "ORBITER",
+      "sub": null,
+      "activity": "Howl of the Kubrow, then Incubator access",
+      "meta": "one-time",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Howl of the Kubrow",
+          "note": "unlocks after the Venus to Mercury Junction; gives the Incubator and your first Kubrow",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "1",
+          "label": "free Companion Slot",
+          "note": "a Kubrow permanently occupies it",
+          "alt": "consign a wrong breed to the Lotus for 25,000 cr",
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": ["The Mercury Junction task gives one free Power Core."],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "MANTLE, EARTH",
+      "sub": null,
+      "activity": "Capture; break every Kubrow Den on Grineer Forest tiles",
+      "meta": "usually 2-4 dens a map, about 4-5 runs per egg",
+      "mode": "solo, fast frame",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "1",
+          "label": "Kubrow Egg",
+          "note": "one per incubation attempt",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Break every den, then abort if no egg dropped."],
+      "bonuses": [
+        "Eggs stack with no cap, so farm several in one sitting.",
+        "A max-range Xaku casting The Vast Untime breaks dens you can't see."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Incubator Power Core",
+      "meta": "8h, 100,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "1",
+          "label": "Incubator Power Core",
+          "note": "4,500 Nano Spores, 2 Control Modules, 1 Argon Crystal",
+          "alt": "first core is free from the Mercury Junction",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The blueprint is a reusable 50,000 cr Market purchase; every incubation consumes a core.",
+        "Argon Crystal decays, so build right after farming it."
+      ],
+      "bonuses": ["Build several cores ahead; Nano Spores are the real cost of rerolling."],
+      "disclosures": []
+    },
+    {
+      "type": "craft",
+      "place": "ORBITER",
+      "sub": "Incubator",
+      "activity": "Random Incubation",
+      "meta": "48h, 1 egg + 1 core",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "1",
+          "label": "Kubrow Egg",
+          "note": "consumed per attempt",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "1",
+          "label": "Incubator Power Core",
+          "note": "consumed per attempt",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Raksa Kubrow",
+          "note": "random among Huras, Raksa, Sahasa, Sunika, Chesa",
+          "alt": "two Raksa imprints guarantee the breed",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Each breed is a flat 20% per roll with no pity; the incubation can't be cancelled, and the egg and core are spent whatever comes out.",
+        "A new pup stays a puppy until you mature it in the Incubator.",
+        "Its Beast Claw gives no Mastery; the companion itself gives 6,000 at rank 30."
+      ],
+      "bonuses": [
+        "The Nutrio Incubator Upgrade Segment halves the wait to 24 hours.",
+        "Protect restores 30% of your shields and its own; Hildryn and Harrow players call it close to mandatory."
+      ],
+      "disclosures": [
+        {
+          "title": "imprints",
+          "body": "A Genetic Code Template is a reusable 50,000 cr Market blueprint; each build is 10,000 cr, 700 Nano Spores, 300 Circuits and 1 Control Module. Imprinting a matured Kubrow takes 1.5 hours and the pet is unusable meanwhile. Two imprints of one breed guarantee it, which helps only once you own a Raksa."
+        },
+        {
+          "title": "how many rolls",
+          "body": "A rough community expectation is about five eggs and five cores for a random Raksa; players report streaks like four Chesa in a row."
+        }
+      ]
+    }
+  ]
+}

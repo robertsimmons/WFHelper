@@ -1,0 +1,150 @@
+{
+  "name": "Spira",
+  "kind": "secondary",
+  "effort": 3,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 1, "unit": "blueprint" },
+  "badges": [
+    { "text": "4,000 Salvage", "tone": "warn" },
+    { "text": "Market blueprint", "tone": "info" }
+  ],
+  "prices": [
+    { "label": "blueprint", "amount": "20,000 cr", "money": false },
+    { "label": "build", "amount": "15,000 cr", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "vendor",
+      "place": "MARKET",
+      "sub": null,
+      "activity": "buy blueprint",
+      "meta": "20,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Credits", "amount": "20,000" }],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Spira Blueprint", "note": null, "alt": null, "done": false }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "HELENE, SATURN",
+      "sub": "or Ophelia and Assur, Uranus; Piscinas, Saturn",
+      "activity": "Defense or Survival with a loot frame",
+      "meta": "best Plastid rates on Saturn and Uranus",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "800",
+          "label": "Plastids",
+          "note": "most players run low on these",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Resource boosters only apply to in-mission pickups, not bounty or end-of-mission rewards."
+      ],
+      "bonuses": [
+        "Nekros or Hydroid with a Retriever companion and a Resource Booster. Extractors on Saturn, Eris and Uranus drop Plastids passively."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "CARME, JUPITER",
+      "sub": "or Olympus, Mars; Elara, Io, Callisto",
+      "activity": "Mobile Defense, loot every container",
+      "meta": "up to about 3,000 per run",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "4,000",
+          "label": "Salvage",
+          "note": "drops on Mars, Jupiter and Sedna",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "2,500",
+          "label": "Ferrite",
+          "note": "common on almost every planet",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "HELLAS, MARS",
+      "sub": "or Gradivus and Ara, Mars; Uranus Sabotage",
+      "activity": "Exterminate, break the resource caches",
+      "meta": "only 5 needed",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "5",
+          "label": "Gallium",
+          "note": null,
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Spira",
+      "meta": "12h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Spira",
+          "note": "2,500 Ferrite, 800 Plastids, 4,000 Salvage, 5 Gallium, 15,000 cr",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Mastery Rank 8 to equip it.",
+        "Owning Spira Prime does not remove the need to build this one."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

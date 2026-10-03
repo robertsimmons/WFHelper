@@ -1,0 +1,211 @@
+{
+  "name": "Gorgon Wraith",
+  "kind": "primary",
+  "effort": 6,
+  "tradeable": "duplicate parts",
+  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "badges": [
+    { "text": "Razorback Armada event only", "tone": "warn" },
+    { "text": "~11 runs", "tone": "info" }
+  ],
+  "prices": [{ "label": "build", "amount": "25,000 cr", "money": false }],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "RELAY, RAZORBACK NODE",
+      "sub": null,
+      "activity": "wait for the Razorback Armada",
+      "meta": "recurring timed event",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Razorback Cipher Blueprint",
+          "note": "arrives with the Lotus inbox message; reusable",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The Razorback node exists only during the event window. Stockpile Polymer Bundle and Gallium before it starts."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "SALACIA, NEPTUNE",
+      "sub": null,
+      "activity": "Archwing, Corpus enemies",
+      "meta": "~12+ ALU a run, about 3 Ciphers",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "4",
+          "label": "Cryptographic ALU",
+          "note": "per Cipher; event only",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Cryptographic ALU only exists during the event. Steel Path's resource drop bonus raises the chance."
+      ],
+      "bonuses": [
+        "Corpus Archwing enemies over Jupiter drop it too, and rarely Corpus ground enemies on Empyrean ship segments (Venus, Neptune and Veil Proxima).",
+        "Itzal's Cosmic Crush pulls in pickups; ALU blends into dark space backgrounds.",
+        "A beast companion with Resourceful Retriever raises the chance to double ALU."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "URANUS OR MARS",
+      "sub": "Desdemona, Hellas",
+      "activity": "Sabotage or Exterminate",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "3",
+          "label": "Gallium",
+          "note": "per Cipher",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "1,500",
+          "label": "Polymer Bundle",
+          "note": "per Cipher",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "craft Razorback Ciphers",
+      "meta": "1 min, 1,250 cr each",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Razorback Cipher",
+          "note": "1,500 Polymer Bundle, 3 Gallium, 4 Cryptographic ALU; consumed on use",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "boss",
+      "place": "RAZORBACK ASSASSINATION",
+      "sub": null,
+      "activity": "run solo or paired",
+      "meta": "18.97% each part, ~11 runs for all four",
+      "mode": "solo or pair",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Gorgon Wraith Blueprint",
+          "note": "18.97%",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Gorgon Wraith Barrel",
+          "note": "18.97%",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Gorgon Wraith Receiver",
+          "note": "18.97%",
+          "alt": "or trade for a missing duplicate",
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Gorgon Wraith Stock",
+          "note": "18.97%",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Every squad member is charged a Cipher when anyone uses theirs on the final door, so a four-person squad burns four per run.",
+        "Receiving the Blueprint by trade is gated at Mastery Rank 7; dropped parts are not."
+      ],
+      "bonuses": [
+        "The first three completions per event also pay 200,000 credits and a built Orokin Catalyst.",
+        "Hyenas on the way in drop Orokin Cells at a high early rate."
+      ],
+      "disclosures": [
+        {
+          "title": "the fight",
+          "body": "The Razorback is invulnerable until you hack a balcony terminal to spawn a Bursa. Knock the Bursa down and hack it so it attacks the boss. Each cycle exposes 25% of its health, so four cycles kill it."
+        }
+      ]
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Gorgon Wraith",
+      "meta": "12h, 25,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Gorgon Wraith",
+          "note": "Blueprint, Barrel, Receiver, Stock",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Mastery Rank 7 is needed to craft it."],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

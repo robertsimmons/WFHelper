@@ -1,0 +1,240 @@
+{
+  "name": "Dual Decurion",
+  "kind": "archgun",
+  "effort": 4,
+  "tradeable": null,
+  "progress": {
+    "have": 0,
+    "need": 6,
+    "unit": "parts"
+  },
+  "badges": [
+    {
+      "text": "Two syndicates",
+      "tone": "warn"
+    },
+    {
+      "text": "MR 1",
+      "tone": "info"
+    }
+  ],
+  "prices": [
+    {
+      "label": "blueprint",
+      "amount": "35,000 cr",
+      "money": false
+    },
+    {
+      "label": "build",
+      "amount": "45,000 cr",
+      "money": false
+    }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "ARBITERS OF HEXIS + CEPHALON SUDA",
+      "sub": null,
+      "activity": "pledge both syndicates and reach Rank 2",
+      "meta": "per syndicate; Hexis and Suda ranks are identical",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Join each",
+          "note": "10,000 credits and 500 Alloy Plate",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Rank 1",
+          "note": "5,000 standing, 30,000 credits, 2 Gallium",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Rank 2",
+          "note": "22,000 standing, 50,000 credits, 1 Forma",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Rank 2 caps standing at 44,000, so the 40,000 for two parts fits."],
+      "bonuses": ["Hexis and Suda are allies, so standing earned for one gives the other +50%."],
+      "disclosures": []
+    },
+    {
+      "type": "currency",
+      "place": "ANY",
+      "sub": null,
+      "activity": "earn standing for both syndicates",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": {
+        "currency": "syndicate standing",
+        "amount": "134,000"
+      },
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "67,000",
+          "label": "Arbiters of Hexis standing",
+          "note": "5,000 + 22,000 + 40,000",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "67,000",
+          "label": "Cephalon Suda standing",
+          "note": "5,000 + 22,000 + 40,000",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The daily cap is 16,000 plus 500 per Mastery Rank, tracked per pledged syndicate.",
+        "Each rank-up spends standing and starts the next rank at 0."
+      ],
+      "bonuses": [
+        "Syndicate Alert medallions (3 daily per syndicate) bypass the cap, so do them after hitting it.",
+        "Endless modes such as Steel Path or Circuit past stage 4 max the cap fast with a sigil equipped."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "ARBITERS OF HEXIS",
+      "sub": null,
+      "activity": "buy the barrels",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [
+        {
+          "currency": "Arbiters of Hexis standing",
+          "amount": "40,000"
+        }
+      ],
+      "map": null,
+      "rows": [
+        {
+          "qty": "2",
+          "label": "Decurion Barrel",
+          "note": "20,000 standing each, Rank 2",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "CEPHALON SUDA",
+      "sub": null,
+      "activity": "buy the receivers",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [
+        {
+          "currency": "Cephalon Suda standing",
+          "amount": "40,000"
+        }
+      ],
+      "map": null,
+      "rows": [
+        {
+          "qty": "2",
+          "label": "Decurion Receiver",
+          "note": "20,000 standing each, Rank 2",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": [
+        {
+          "title": "skip a syndicate",
+          "body": "The parts are tradeable, so a friend with the opposing syndicates leveled can trade you the part you lack."
+        }
+      ]
+    },
+    {
+      "type": "farm",
+      "place": "CETUS PLAINS",
+      "sub": null,
+      "activity": "Konzu bounties, level 10-30 final stage",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "plains-of-eidolon",
+      "rows": [
+        {
+          "qty": "2",
+          "label": "Control Module",
+          "note": "rare",
+          "alt": "or Teshub Exterminate and Hepit Capture in the Void, level 10-15",
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "MARKET + FOUNDRY",
+      "sub": null,
+      "activity": "buy the blueprint, then build",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Dual Decurion Blueprint",
+          "note": "35,000 credits, Market",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Dual Decurion",
+          "note": "45,000 credits, 12h",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The Atmosphere entry is the ground form and earns no separate Mastery.",
+        "Rank it to 30 in Archwing missions for Mastery; no extras are needed there."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

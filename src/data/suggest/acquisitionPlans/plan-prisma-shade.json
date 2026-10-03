@@ -1,0 +1,102 @@
+{
+  "name": "Prisma Shade",
+  "kind": "sentinel",
+  "effort": 2,
+  "tradeable": null,
+  "progress": { "have": 0, "need": 1, "unit": "sentinel" },
+  "badges": [
+    { "text": "Baro Ki'Teer only", "tone": "warn" },
+    { "text": "500 Ducats", "tone": "info" }
+  ],
+  "prices": [
+    { "label": "credits", "amount": "300,000 cr", "money": false },
+    { "label": "Ducats", "amount": "500", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "currency",
+      "place": "VOID FISSURES, ANY",
+      "sub": null,
+      "activity": "open Void Relics for Prime parts, sell the best drop for Ducats",
+      "meta": "stockpile ahead of Baro's visit",
+      "mode": "full squad of four",
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "Ducats", "amount": "500" },
+      "spends": [],
+      "map": "void",
+      "rows": [
+        {
+          "qty": null,
+          "label": "sell duplicate Prime parts first",
+          "note": "gold 100, silver 45, bronze 15 Ducats at the Kiosk",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "open relics, take the highest-value drop",
+          "note": "500 Ducats is five golds or about eleven silvers",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Ducat Kiosks work in any relay except Maroo's Bazaar, and work whether or not Baro is present.",
+        "Check warframe.market before scrapping a part; some are worth far more traded."
+      ],
+      "bonuses": [
+        "Capture or Exterminate with a speed frame such as Volt or Titania, or Void Cascade, burns relics fastest.",
+        "A squad gives more chances at uncommon and rare rewards."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "RELAY, CONCOURSE",
+      "sub": null,
+      "activity": "check Baro's rotating stock, then buy if listed",
+      "meta": "arrives every 2 weeks, stays ~48h",
+      "mode": null,
+      "live": { "state": "waiting", "text": "check the Ducat Kiosk countdown for his next relay" },
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Ducats", "amount": "500" }],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Prisma Shade",
+          "note": "500 Ducats + 300,000 credits, only when in his rotating stock",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "2",
+          "label": "free Companion Slot",
+          "note": "one for Prisma Shade, one for its Prisma Burst Laser",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Without two free Companion slots the purchase fails; clear or buy a slot, relogging does nothing.",
+        "Baro stocks it only some visits, and gaps run from two weeks to most of a year."
+      ],
+      "bonuses": [
+        "The purchase includes the Prisma Burst Laser, a separate Mastery item, already built.",
+        "During TennoCon, Baro's special relay stocks everything he has sold, so a ticket holder can buy it regardless of rotation."
+      ],
+      "disclosures": [
+        {
+          "title": "pairing and mod order",
+          "body": "Shade's invisibility comes from its Ghost precept mod and breaks only on shooting or melee, not on Warframe abilities, so caster frames such as Nokko, Vauban, Xaku, Gara and Jade pair well. Put Ghost in the last slot so Shade does everything else before cloaking."
+        },
+        {
+          "title": "level both for full Mastery",
+          "body": "Prisma Shade and the Prisma Burst Laser are separate Mastery items, 6,000 and 3,000 points. The Burst Laser levels while equipped on the Sentinel."
+        }
+      ]
+    }
+  ]
+}

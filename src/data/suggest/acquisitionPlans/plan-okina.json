@@ -1,0 +1,198 @@
+{
+  "name": "Okina",
+  "kind": "melee",
+  "effort": 2,
+  "tradeable": null,
+  "progress": { "have": 0, "need": 1, "unit": "blueprint" },
+  "badges": [
+    { "text": "Tenno Lab", "tone": "info" },
+    { "text": "3,250 Cryotic", "tone": "warn" }
+  ],
+  "prices": [
+    { "label": "blueprint", "amount": "15,000 cr", "money": false },
+    { "label": "build", "amount": "20,000 cr", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "DOJO, TENNO LAB",
+      "sub": null,
+      "activity": "clan research",
+      "meta": "skip if already researched; 3 days",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Tenno Lab: Nami Skyla, then Okina",
+          "note": "10,000 cr, 5 Gallium, 5,500 Alloy Plate, 165 Plastids, 3,250 Cryotic",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The lab must be built and stocked; a solo clan funds every resource itself. Research timers run in real time, so start it as soon as the Cryotic is in.",
+        "In an established clan this is already done and costs you nothing."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "HIERACON, PLUTO",
+      "sub": null,
+      "activity": "Excavation, ideally as an endless Void Fissure",
+      "meta": "100 Cryotic per defended excavator",
+      "mode": "friend or clanmate",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "3,250",
+          "label": "Cryotic",
+          "note": "research only; the build uses none",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Use the double-pickup Resource Booster, not the drop-chance one, which does nothing for Cryotic. Loyal or Resourceful Retriever also doubles it.",
+        "Excavators die easily at high enemy levels; a loot or crowd-control frame like Nekros or Khora keeps enemies off."
+      ],
+      "bonuses": [
+        "A fissure cracks a relic every 200 Cryotic.",
+        "Groups report about 3,000 Cryotic in a little over 30 minutes; randoms are hit or miss."
+      ],
+      "disclosures": [
+        {
+          "title": "Duviri Circuit trickle",
+          "body": "Triggering the fourth excavator in Circuit pays an extra 20 to 40. Several players built up large totals this way, but dedicated farming is far faster."
+        }
+      ]
+    },
+    {
+      "type": "research",
+      "place": "DOJO, TENNO LAB",
+      "sub": null,
+      "activity": "buy the blueprint",
+      "meta": "15,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Credits", "amount": "15,000" }],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Okina Blueprint", "note": null, "alt": null, "done": false }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "IO, JUPITER",
+      "sub": null,
+      "activity": "Survival or Defense, ideally an endless Void Fissure",
+      "meta": "Oxium Ospreys",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "1,800",
+          "label": "Oxium",
+          "note": "only from Ospreys killed before they self-destruct",
+          "alt": "also Venus, Mars, Neptune, Pluto, Eris, Europa, Lua",
+          "done": false
+        },
+        {
+          "qty": "2",
+          "label": "Tellurium",
+          "note": "rare; Archwing on Uranus, Grineer Sealab, Kuva Fortress, Empyrean",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Self-detonated Ospreys drop nothing; shoot them before they reach you."],
+      "bonuses": ["Excavation on Corpus tilesets drops Oxium as a side reward."],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "URANUS",
+      "sub": null,
+      "activity": "Survival with a loot frame and a Resource Booster",
+      "meta": "check stock first",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "9,700",
+          "label": "Alloy Plate",
+          "note": "5,500 research + 4,200 build; Venus, Phobos, Ceres, Jupiter, Pluto, Sedna",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "3,400",
+          "label": "Polymer Bundle",
+          "note": "highest chance on Uranus",
+          "alt": "or Mercury, Venus",
+          "done": false
+        },
+        { "qty": "165", "label": "Plastids", "note": "research", "alt": null, "done": false },
+        { "qty": "5", "label": "Gallium", "note": "research", "alt": null, "done": false }
+      ],
+      "conditions": [
+        "Some players ran short of Plastids and Ferrite; check what you hold before starting research."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Okina",
+      "meta": "12h, 20,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Okina",
+          "note": "2 Tellurium, 4,200 Alloy Plate, 3,400 Polymer Bundle, 1,800 Oxium",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": ["Its own Mastery, separate from Okina Prime."],
+      "disclosures": [
+        {
+          "title": "Incarnon Genesis",
+          "body": "A separate upgrade from the Steel Path Circuit, installed through Cavalero in the Chrysalith for 20 Pathos Clamps, 20 Maw Fang and 80 Lamentus. It needs The Duviri Paradox, Angels of the Zariman and Steel Path unlocked, and does not raise the effort of getting the weapon."
+        }
+      ]
+    }
+  ]
+}

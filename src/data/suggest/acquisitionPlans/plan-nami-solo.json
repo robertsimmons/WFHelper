@@ -1,0 +1,186 @@
+{
+  "name": "Nami Solo",
+  "kind": "melee",
+  "effort": 2,
+  "tradeable": null,
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "weapon"
+  },
+  "badges": [
+    {
+      "text": "Argon decays",
+      "tone": "warn"
+    },
+    {
+      "text": "Market blueprint",
+      "tone": "info"
+    }
+  ],
+  "prices": [
+    {
+      "label": "blueprint",
+      "amount": "20,000 cr",
+      "money": false
+    },
+    {
+      "label": "build",
+      "amount": "20,000 cr",
+      "money": false
+    }
+  ],
+  "groups": [
+    {
+      "type": "vendor",
+      "place": "MARKET",
+      "sub": null,
+      "activity": "buy blueprint",
+      "meta": "20,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [
+        {
+          "currency": "Credits",
+          "amount": "20,000"
+        }
+      ],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Nami Solo Blueprint",
+          "note": null,
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "APOLLODORUS, MERCURY",
+      "sub": null,
+      "activity": "Survival",
+      "meta": "about 4,000 Ferrite per 10 minutes",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "1,500",
+          "label": "Ferrite",
+          "note": null,
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "800",
+          "label": "Polymer Bundle",
+          "note": null,
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "ZEUGMA, PHOBOS",
+      "sub": null,
+      "activity": "Survival, Dark Sector",
+      "meta": "about 250 per 5 minutes",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "200",
+          "label": "Rubedo",
+          "note": null,
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": ["Valefor (Europa) is the Defense alternative."],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "UKKO, VOID",
+      "sub": null,
+      "activity": "Capture, break every container",
+      "meta": "1-2 per deposit",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "2",
+          "label": "Argon Crystal",
+          "note": "Argon Pegmatite deposits and containers",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Argon halves every day at 00:00 GMT after the day it is collected, and a cancelled build does not refund it. Farm it last and craft the same day."
+      ],
+      "bonuses": [
+        "Public lobbies usually leave with at least one, since everyone is breaking containers."
+      ],
+      "disclosures": [
+        {
+          "title": "the fast way",
+          "body": "Xaku (The Vast Untime) or Limbo (Cataclysm) at max range breaks every container in the tileset, then the Argon markers are collectable on the map. Hepit works the same way. Without them, Mot survival with Nekros and Khora is slower. A Resource Booster helps Argon Pegmatite, a Resource Drop Chance Booster does not."
+        }
+      ]
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Nami Solo",
+      "meta": "12h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Nami Solo",
+          "note": "20,000 cr, 1,500 Ferrite, 800 Polymer Bundle, 200 Rubedo, 2 Argon Crystal",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Craft the day you collect the Argon."],
+      "bonuses": [],
+      "disclosures": [
+        {
+          "title": "Incarnon Genesis",
+          "body": "Optional and worth no extra Mastery. It comes from the Steel Path Circuit (week 6) or Cavalero for 120 platinum, and installing it costs 20 Pathos Clamps, 70 Dracroot and 150 Aggristone."
+        }
+      ]
+    }
+  ]
+}

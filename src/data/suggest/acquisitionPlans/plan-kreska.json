@@ -1,0 +1,331 @@
+{
+  "name": "Kreska",
+  "kind": "melee",
+  "effort": 2,
+  "tradeable": false,
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "weapon"
+  },
+  "badges": [
+    {
+      "text": "Energy Lab",
+      "tone": "warn"
+    },
+    {
+      "text": "MR 6",
+      "tone": "info"
+    }
+  ],
+  "prices": [
+    {
+      "label": "blueprint",
+      "amount": "15,000 cr",
+      "money": false
+    },
+    {
+      "label": "build",
+      "amount": "25,000 cr",
+      "money": false
+    }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "CLAN DOJO, ENERGY LAB",
+      "sub": null,
+      "activity": "have a dojo with an Energy Lab",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Energy Lab",
+          "note": "a built clan lab, or join a clan that has the Kreska researched",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "research",
+      "place": "CLAN DOJO, ENERGY LAB",
+      "sub": null,
+      "activity": "research the Kreska",
+      "meta": "3 days, 10,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "25",
+          "label": "Fieldron Sample",
+          "note": null,
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "5",
+          "label": "Thermal Sludge",
+          "note": null,
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "10",
+          "label": "Axidrol Alloy",
+          "note": null,
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "1",
+          "label": "Recaster Neural Relay",
+          "note": null,
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Clan size multiplies the resource and credit costs; there is no prerequisite research."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "ENERGY LAB",
+      "sub": null,
+      "activity": "buy the blueprint",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [
+        {
+          "currency": "Credits",
+          "amount": "15,000"
+        }
+      ],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Kreska Blueprint",
+          "note": "15,000 credits",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "NEPTUNE OR MARS",
+      "sub": "Kelashin, Wahiba, Kadesh",
+      "activity": "Survival or Defense, Dark Sector",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "25",
+          "label": "Fieldron Sample",
+          "note": "Corpus missions on Venus, Mars, Jupiter, Europa, Neptune and Pluto also drop it",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Fieldron Sample cannot be bought with platinum."],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "bounty",
+      "place": "FORTUNA, ORB VALLIS",
+      "sub": null,
+      "activity": "Fortuna bounties, levels 30-50",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "orb-vallis",
+      "rows": [
+        {
+          "qty": "10",
+          "label": "Fieldron",
+          "note": "often 2 at a time",
+          "alt": "or 3 per Corpus Invasion, paid when it ends",
+          "done": false
+        },
+        {
+          "qty": "5",
+          "label": "Thermal Sludge",
+          "note": null,
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "40",
+          "label": "Mytocardia Spore",
+          "note": "1-3 from each Mytocardia Sac, about 20 sacs",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Do not craft Fieldron from Samples; that costs 100 Samples for the 10."],
+      "bonuses": ["The same bounties pay Amarast and Solaris standing."],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "SMOKEFINGER, FORTUNA",
+      "sub": null,
+      "activity": "buy the refining blueprints",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [
+        {
+          "currency": "Solaris United standing",
+          "amount": "5,000"
+        }
+      ],
+      "map": "fortuna",
+      "rows": [
+        {
+          "qty": null,
+          "label": "Axidrol Alloy Blueprint",
+          "note": "1,000 standing, Neutral",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Star Amarast Blueprint",
+          "note": "4,000 standing, Rapscallion",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Both blueprints are reusable."],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "ORB VALLIS",
+      "sub": null,
+      "activity": "mine and refine",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "orb-vallis",
+      "rows": [
+        {
+          "qty": "30",
+          "label": "Amarast",
+          "note": "5 builds of 6 Amarast and 5,000 credits give the 25 Star Amarast",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "20",
+          "label": "Axidite",
+          "note": "one build gives 20 Axidrol Alloy with 500 Ferrite, 100 Rubedo and 1,000 credits",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "FORTUNA LAKE",
+      "sub": null,
+      "activity": "fishing",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "fortuna",
+      "rows": [
+        {
+          "qty": "20",
+          "label": "Longwinder Lathe Coagulant",
+          "note": "1 per Longwinder, dismantled at The Business",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "1",
+          "label": "Recaster Neural Relay",
+          "note": "Cold weather, pond hotspots",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Longwinders only spawn in Warm weather, a short part of the cycle; bank fish each Warm window.",
+        "Lathe Coagulant does not drop from containers."
+      ],
+      "bonuses": ["Luminous dye or an Oxylus makes the fish visible."],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build the Kreska",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Kreska",
+          "note": "25,000 credits, 1 day",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Older guides that say 20 Fieldron predate Hotfix 24.0.5."],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

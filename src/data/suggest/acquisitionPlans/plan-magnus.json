@@ -1,0 +1,130 @@
+{
+  "name": "Magnus",
+  "kind": "secondary",
+  "effort": 2,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 1, "unit": "blueprint" },
+  "badges": [
+    { "text": "Market blueprint", "tone": "info" },
+    { "text": "MR 10 to equip", "tone": "warn" }
+  ],
+  "prices": [
+    { "label": "blueprint", "amount": "20,000 cr", "money": false },
+    { "label": "build", "amount": "25,000 cr", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "vendor",
+      "place": "MARKET",
+      "sub": null,
+      "activity": "buy blueprint",
+      "meta": "20,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Credits", "amount": "20,000" }],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Magnus Blueprint", "note": null, "alt": null, "done": false }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "GABII, CERES",
+      "sub": "or Helene, Saturn",
+      "activity": "Survival, Steel Path if unlocked",
+      "meta": "Ceres also drops Alloy Plate",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "2",
+          "label": "Orokin Cell",
+          "note": "the only scarce input",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "400",
+          "label": "Alloy Plate",
+          "note": null,
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [
+        "Khora and Nekros, a Resource Drop Chance Booster and Steel Path raise the haul. A Saturn or Ceres Void Fissure also drops cells."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "CARME, JUPITER",
+      "sub": "or Mars, Sedna",
+      "activity": "Mobile Defense, loot every container",
+      "meta": "Jupiter also drops Alloy Plate",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "900",
+          "label": "Salvage",
+          "note": null,
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "100",
+          "label": "Ferrite",
+          "note": "common on Mercury, Earth, Neptune and the Void; pick up on the way",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Magnus",
+      "meta": "24h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Magnus",
+          "note": "2 Orokin Cell, 400 Alloy Plate, 900 Salvage, 100 Ferrite, 25,000 cr",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Mastery Rank 10 to equip it.",
+        "Akmagnus consumes two Magnus; rank one to 30 first, then build a second for the craft."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

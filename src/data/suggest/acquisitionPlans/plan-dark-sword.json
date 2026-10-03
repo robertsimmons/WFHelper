@@ -1,0 +1,191 @@
+{
+  "name": "Dark Sword",
+  "kind": "melee",
+  "effort": 3,
+  "tradeable": null,
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "weapon"
+  },
+  "badges": [
+    {
+      "text": "Nightwave rotation",
+      "tone": "warn"
+    },
+    {
+      "text": "MR 8",
+      "tone": "info"
+    }
+  ],
+  "prices": [
+    {
+      "label": "blueprint",
+      "amount": "50 Nightwave Cred",
+      "money": false
+    },
+    {
+      "label": "build",
+      "amount": "20,000 cr",
+      "money": false
+    }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "NIGHTWAVE",
+      "sub": null,
+      "activity": "finish The Teacher quest",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "The Teacher",
+          "note": "unlocks Nightwave",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "currency",
+      "place": "NIGHTWAVE",
+      "sub": null,
+      "activity": "complete Acts",
+      "meta": "Rank 1 pays 100-150 Cred",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": {
+        "currency": "Nightwave Cred",
+        "amount": "50"
+      },
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "50",
+          "label": "Nightwave Cred",
+          "note": "Acts: Daily 1,000, Weekly 4,500, Elite Weekly 7,000 standing; 10,000 per rank",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Cred expires when the series or intermission ends; spend it first."],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "NIGHTWAVE CRED OFFERINGS",
+      "sub": null,
+      "activity": "buy blueprint",
+      "meta": "50 Cred",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [
+        {
+          "currency": "Nightwave Cred",
+          "amount": "50"
+        }
+      ],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Dark Sword Blueprint",
+          "note": null,
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The shop shows a rotating subset weekly. If it is missing, check next week; nothing there is permanently missable."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "ASSUR, URANUS",
+      "sub": null,
+      "activity": "Survival (Dark Sector)",
+      "meta": "Plastids and Polymer in one run",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "200",
+          "label": "Plastids",
+          "note": "Dark Sword",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "75",
+          "label": "Polymer Bundle",
+          "note": "Dark Sword",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "800",
+          "label": "Ferrite",
+          "note": "Dark Sword",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "2",
+          "label": "Neurodes",
+          "note": "Dark Sword",
+          "alt": "Orokin Derelict caches, or Infested on Earth, Lua, Eris, Deimos",
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Dark Sword",
+      "meta": "12h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Dark Sword",
+          "note": "20,000 cr, 800 Ferrite, 200 Plastids, 75 Polymer Bundle, 2 Neurodes",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

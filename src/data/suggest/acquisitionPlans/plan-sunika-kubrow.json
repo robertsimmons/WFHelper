@@ -1,0 +1,186 @@
+{
+  "name": "Sunika Kubrow",
+  "kind": "companion",
+  "effort": 5,
+  "tradeable": "imprints only",
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "companion"
+  },
+  "badges": [
+    {
+      "text": "random breed, 1 of 5",
+      "tone": "warn"
+    },
+    {
+      "text": "egg is a rare drop",
+      "tone": "warn"
+    }
+  ],
+  "prices": [
+    {
+      "label": "Incubator Power Core blueprint",
+      "amount": "50,000 cr",
+      "money": false
+    },
+    {
+      "label": "Power Core build, per roll",
+      "amount": "100,000 cr",
+      "money": false
+    }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "ORBITER",
+      "sub": null,
+      "activity": "Howl of the Kubrow, then Incubator access",
+      "meta": "one-time",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Howl of the Kubrow",
+          "note": "after the Venus to Mercury Junction; steal the Incubator Segment on Unda, find an egg on E Prime, finish Defense on Gaia",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "1",
+          "label": "free Companion Slot",
+          "note": "a Kubrow permanently occupies it",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The first den in the quest drops an egg 100% of the time and the first hatch takes 1 minute, but it is still a random breed."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "MANTLE, EARTH",
+      "sub": null,
+      "activity": "Capture; break Kubrow Dens on Grineer Forest tiles",
+      "meta": "2 to 4 dens a run, 4 to 5 runs per egg solo",
+      "mode": "solo, fast frame",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "1",
+          "label": "Kubrow Egg",
+          "note": "one per incubation attempt",
+          "alt": "Market purchase, 10 platinum",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Den drops are streaky, from one run to 50 or more.",
+        "Eggs stack with no pickup limit."
+      ],
+      "bonuses": [
+        "A max-range Xaku with The Vast Untime breaks every den in a room at once.",
+        "A scanner highlights hidden den burrows.",
+        "Eggs also drop on low-level Extractor, Excavation and Exterminate missions on Earth."
+      ],
+      "disclosures": [
+        {
+          "title": "other egg sources",
+          "body": "E Prime, Earth. Earth Sabotage resource caches at Cervantes drop one at 2.58%."
+        }
+      ]
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Incubator Power Core",
+      "meta": "8h, 100,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "1",
+          "label": "Incubator Power Core",
+          "note": "4,500 Nano Spores, 2 Control Modules, 1 Argon Crystal",
+          "alt": "the Venus to Mercury Junction's first task awards one",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The blueprint is a reusable 50,000-credit Market purchase. Every incubation consumes a core, win or lose.",
+        "Argon Crystal decays daily, so build the core just before you incubate."
+      ],
+      "bonuses": [
+        "The Nutrio Incubator Upgrade Segment halves incubation to 24h: Tenno Lab research, MR 5 to craft, 100,000 cr, 1 Argon Crystal, 1 Power Core, 1,200 Oxium."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "craft",
+      "place": "ORBITER",
+      "sub": "Incubator",
+      "activity": "Random Incubation",
+      "meta": "48h, 1 egg + 1 core",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Kubrow Egg",
+          "note": "consumed per attempt",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Incubator Power Core",
+          "note": "consumed per attempt",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Sunika Kubrow",
+          "note": "the wiki publishes no breed odds",
+          "alt": "use two Sunika Genetic Code Templates",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Anything but a Sunika means another egg and core. You can have a Kubrow equipped while one incubates.",
+        "Imprints do not replace the egg or core. Use two Sunika imprints, not one plus another breed, which is roughly a coin flip.",
+        "Mature the pup in the Incubator and rank it to 30 for the Mastery. Its Beast Claws give no Mastery."
+      ],
+      "bonuses": [
+        "Imprints are tradeable. Each Kubrow can be imprinted twice at 1.5 hours per imprint, during which it is unusable, and you cannot cancel one."
+      ],
+      "disclosures": [
+        {
+          "title": "imprint templates",
+          "body": "Genetic Code Templates build from a reusable 50,000-credit blueprint, then 10,000 cr, 700 Nano Spores, 300 Circuits and 1 Control Module, 6h. Kubrow and Kavat imprints are not interchangeable. Size is never stored in imprints."
+        }
+      ]
+    }
+  ]
+}

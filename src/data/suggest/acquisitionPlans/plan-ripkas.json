@@ -1,0 +1,296 @@
+{
+  "name": "Ripkas",
+  "kind": "melee",
+  "effort": 3,
+  "tradeable": null,
+  "progress": {
+    "have": 0,
+    "need": 3,
+    "unit": "weapons"
+  },
+  "badges": [
+    {
+      "text": "Builds two weapons first",
+      "tone": "warn"
+    },
+    {
+      "text": "MR 5",
+      "tone": "info"
+    }
+  ],
+  "prices": [
+    {
+      "label": "blueprint",
+      "amount": "20,000 cr",
+      "money": false
+    },
+    {
+      "label": "build",
+      "amount": "40,000 cr",
+      "money": false
+    }
+  ],
+  "groups": [
+    {
+      "type": "vendor",
+      "place": "MARKET",
+      "sub": null,
+      "activity": "buy all three blueprints",
+      "meta": "60,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [
+        {
+          "currency": "Credits",
+          "amount": "60,000"
+        }
+      ],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Ankyros Blueprint",
+          "note": "15,000 cr",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Dual Cleavers Blueprint",
+          "note": "25,000 cr; Mastery Rank 5 to build",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Ripkas Blueprint",
+          "note": "20,000 cr",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Dual Cleavers need Mastery Rank 5, so the Ripkas does too."],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "ASSUR, URANUS",
+      "sub": null,
+      "activity": "Survival, Dark Sector",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "800",
+          "label": "Polymer Bundle",
+          "note": "Dual Cleavers",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "5",
+          "label": "Gallium",
+          "note": "Dual Cleavers",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "APOLLODORUS, MERCURY",
+      "sub": null,
+      "activity": "Survival",
+      "meta": "about 4,000 Ferrite per 10 minutes",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "600",
+          "label": "Ferrite",
+          "note": "Ankyros",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "GABII, CERES",
+      "sub": null,
+      "activity": "Survival, Dark Sector",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "1,650",
+          "label": "Alloy Plate",
+          "note": "450 Ankyros, 1,200 Dual Cleavers",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "PISCINAS, SATURN",
+      "sub": null,
+      "activity": "Survival, Dark Sector",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "900",
+          "label": "Nano Spores",
+          "note": "Ankyros",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "CARME, JUPITER",
+      "sub": null,
+      "activity": "Mobile Defense",
+      "meta": "up to about 3,000 a run",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "1,900",
+          "label": "Salvage",
+          "note": "900 Ankyros, 1,000 Dual Cleavers",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [
+        "Elara (Survival, Jupiter) with Nekros and a pet carrying Animal Instinct, Resourceful Retriever and Scavenge is the long-run option."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "OPHELIA, URANUS",
+      "sub": null,
+      "activity": "Archwing Submersible Survival, Steel Path",
+      "meta": "Steel Path: ~4x drop rate",
+      "mode": "squad",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "2",
+          "label": "Tellurium",
+          "note": "enemy drops",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [
+        "Nekros with Khora or Hydroid and a Resource Drop Chance Booster: 30-plus in 20 minutes reported. The Daily Tribute also hands them out."
+      ],
+      "disclosures": [
+        {
+          "title": "buy instead",
+          "body": "Tellurium sells for 10 platinum each. Hunhullus no longer drops it; that was a bug fixed in Update 41.0.7."
+        }
+      ]
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Ankyros and Dual Cleavers, rank both, then Ripkas",
+      "meta": "12h each",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Ankyros",
+          "note": "30,000 cr, 900 Nano Spores, 900 Salvage, 600 Ferrite, 450 Alloy Plate",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Dual Cleavers",
+          "note": "20,000 cr, 5 Gallium, 1,000 Salvage, 800 Polymer Bundle, 1,200 Alloy Plate",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "rank both to 30",
+          "note": "banks their Mastery before the Ripkas consumes them",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Ripkas",
+          "note": "40,000 cr, 1 Ankyros, 1 Dual Cleavers, 2 Tellurium, 1 Forma",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": [
+        {
+          "title": "the Amalgam Ripkas True Steel mod",
+          "body": "It drops from the Ropalolyst assassination on Jupiter (20% of a table of five Amalgam mods, with Wisp parts) and needs the Chimera Prologue done. It is why Nekros players keep a Ripkas, and it is not needed for Mastery."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,278 @@
+{
+  "name": "Zakti",
+  "kind": "secondary",
+  "effort": 2,
+  "tradeable": null,
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "weapon"
+  },
+  "badges": [
+    {
+      "text": "2,000 Oxium",
+      "tone": "warn"
+    },
+    {
+      "text": "Tenno Lab",
+      "tone": "info"
+    }
+  ],
+  "prices": [
+    {
+      "label": "blueprint",
+      "amount": "15,000 cr",
+      "money": false
+    },
+    {
+      "label": "build",
+      "amount": "15,000 cr",
+      "money": false
+    }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "TENNO LAB, DOJO",
+      "sub": null,
+      "activity": "research Akstiletto, then Zakti, then buy the blueprint",
+      "meta": "72h then 72h; start Akstiletto first",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Akstiletto research",
+          "note": "prerequisite; 500 Salvage, 300 Polymer Bundle, 50 Alloy Plate, 1 Gallium, 5,000 cr",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Zakti research",
+          "note": "3 Gallium, 2,250 Rubedo, 2,000 Oxium, 5,500 Salvage, 10,000 cr",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Zakti Blueprint",
+          "note": "15,000 cr at the Research console",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The two 72-hour timers run back to back.",
+        "Needs a clan with a Tenno Lab; a one-person clan works.",
+        "You never build the Akstiletto."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "IO, JUPITER",
+      "sub": null,
+      "activity": "Defense",
+      "meta": "100-300 Oxium per 10-wave run without a loot frame",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "2,000",
+          "label": "Oxium",
+          "note": null,
+          "alt": "or Paimon, Europa Defense; Elara, Jupiter Survival; Gulliver, Phobos Defense",
+          "done": false
+        },
+        {
+          "qty": "6,000",
+          "label": "Salvage",
+          "note": "500 + 5,500 research; 1,200 to 1,500 a run",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "An Osprey that self-destructs on a player or ally drops nothing; play solo or focus them down."
+      ],
+      "bonuses": [
+        "Hydroid with Pilfering Swarm and a Resourceful Retriever companion, or Khora with a drop boost and Smeeta Kavat, is the common setup."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "HEPIT, VOID",
+      "sub": null,
+      "activity": "Capture",
+      "meta": null,
+      "mode": "companion with Vacuum or Fetch",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "8",
+          "label": "Control Module",
+          "note": "grey Control Module containers",
+          "alt": "or Teshub, Void Exterminate",
+          "done": false
+        }
+      ],
+      "conditions": ["Keep moving to new tiles; stationary missions leave containers unfound."],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "GABII, CERES",
+      "sub": null,
+      "activity": "Survival",
+      "meta": "about 1,000 per 15 minutes with a Resource Booster",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "6,550",
+          "label": "Alloy Plate",
+          "note": "50 research, 6,500 build",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "AKKAD, ERIS",
+      "sub": null,
+      "activity": "Defense, Dark Sector",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "5,000",
+          "label": "Nano Spores",
+          "note": null,
+          "alt": "or Saturn, Neptune or Deimos survivals and defenses, or Cambion Drift",
+          "done": false
+        },
+        {
+          "qty": "350",
+          "label": "Plastids",
+          "note": null,
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "ZEUGMA, PHOBOS",
+      "sub": null,
+      "activity": "Survival, Dark Sector",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "2,250",
+          "label": "Rubedo",
+          "note": null,
+          "alt": "or Stickney, Phobos",
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "OPHELIA, URANUS",
+      "sub": null,
+      "activity": "Survival",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "4",
+          "label": "Gallium",
+          "note": "1 + 3 research",
+          "alt": "or Tyl Regor on Titania",
+          "done": false
+        },
+        {
+          "qty": "300",
+          "label": "Polymer Bundle",
+          "note": "Akstiletto research",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Zakti",
+      "meta": "12h, 15,000 cr, no Forma",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Zakti",
+          "note": "8 Control Module, 350 Plastids, 6,500 Alloy Plate, 5,000 Nano Spores",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Zakti needs Mastery Rank 10 to use, not to research or build."],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

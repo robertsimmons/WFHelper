@@ -1,0 +1,180 @@
+{
+  "name": "Dual Cleavers",
+  "kind": "melee",
+  "effort": 2,
+  "tradeable": null,
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "weapon"
+  },
+  "badges": [
+    {
+      "text": "MR 5",
+      "tone": "info"
+    }
+  ],
+  "prices": [
+    {
+      "label": "blueprint",
+      "amount": "25,000 cr",
+      "money": false
+    },
+    {
+      "label": "build",
+      "amount": "20,000 cr",
+      "money": false
+    }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "MASTERY RANK",
+      "sub": null,
+      "activity": "reach Mastery Rank 5",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Mastery Rank 5",
+          "note": "the blueprint is locked behind it",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "MARKET",
+      "sub": null,
+      "activity": "buy the blueprint",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [
+        {
+          "currency": "Credits",
+          "amount": "25,000"
+        }
+      ],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Dual Cleavers Blueprint",
+          "note": "25,000 credits",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "URANUS",
+      "sub": "Assur, Dark Sector",
+      "activity": "Survival",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "800",
+          "label": "Polymer Bundle",
+          "note": "best drop chance on Uranus",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "5",
+          "label": "Gallium",
+          "note": "usually 2 to 4 per drop",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": ["Dark Sector Survival carries a built-in resource drop bonus."],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "JUPITER OR SEDNA",
+      "sub": null,
+      "activity": "Survival or Defense",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "1,000",
+          "label": "Salvage",
+          "note": null,
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "1,200",
+          "label": "Alloy Plate",
+          "note": null,
+          "alt": "or Gabii, Ceres, a Dark Sector Survival",
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [
+        "A loot frame (Nekros, Khora, Hydroid, Atlas) and a resource booster roughly double the yield.",
+        "Titan Extractors on Venus and Ceres pull Alloy Plate passively."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Dual Cleavers",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Dual Cleavers",
+          "note": "20,000 credits, 12h",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The Ripkas recipe consumes the Dual Cleavers, so rank them to 30 before crafting it."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

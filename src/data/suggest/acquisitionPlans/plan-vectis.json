@@ -1,0 +1,173 @@
+{
+  "name": "Vectis",
+  "kind": "primary",
+  "effort": 2,
+  "tradeable": null,
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "weapon"
+  },
+  "badges": [
+    {
+      "text": "24h build",
+      "tone": "info"
+    }
+  ],
+  "prices": [
+    {
+      "label": "blueprint",
+      "amount": "40,000 cr",
+      "money": false
+    },
+    {
+      "label": "build",
+      "amount": "25,000 cr",
+      "money": false
+    }
+  ],
+  "groups": [
+    {
+      "type": "vendor",
+      "place": "MARKET",
+      "sub": null,
+      "activity": "buy blueprint",
+      "meta": "40,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [
+        {
+          "currency": "Credits",
+          "amount": "40,000"
+        }
+      ],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Vectis Blueprint",
+          "note": null,
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Needs Mastery Rank 2 to use."],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "HELENE, SATURN",
+      "sub": null,
+      "activity": "Defense",
+      "meta": "one sitting with a Nekros covers both",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "4",
+          "label": "Orokin Cell",
+          "note": null,
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "3,000",
+          "label": "Nano Spores",
+          "note": "150-200 per drop",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": ["Gabii (Ceres) Survival is the other common cell run."],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "ZEUGMA, PHOBOS",
+      "sub": null,
+      "activity": "Survival, Dark Sector",
+      "meta": "about 250 per 5 minutes",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "2,500",
+          "label": "Rubedo",
+          "note": null,
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": ["Valefor (Europa) is the Defense alternative."],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "PLATO, LUA",
+      "sub": null,
+      "activity": "Exterminate, Sentients",
+      "meta": "a Sentient spawns early",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "4",
+          "label": "Neurodes",
+          "note": null,
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Vectis",
+      "meta": "24h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Vectis",
+          "note": "25,000 cr, 4 Neurodes, 4 Orokin Cells, 3,000 Nano Spores, 2,500 Rubedo",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Vectis Prime is a separate item with its own Mastery."],
+      "bonuses": [],
+      "disclosures": [
+        {
+          "title": "Incarnon Genesis",
+          "body": "Optional and worth no Mastery. It comes from the Steel Path Circuit in week 9 and installs through Cavalero in the Chrysalith; it needs The Duviri Paradox, Angels of the Zariman and Steel Path unlocked."
+        }
+      ]
+    }
+  ]
+}

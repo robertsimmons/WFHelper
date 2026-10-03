@@ -1,0 +1,258 @@
+{
+  "name": "Heliocor",
+  "kind": "melee",
+  "effort": 4,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 1, "unit": "blueprint" },
+  "badges": [{ "text": "75,000 Simaris Standing", "tone": "warn" }],
+  "prices": [
+    { "label": "blueprint", "amount": "75,000 standing", "money": false },
+    { "label": "Gammacor blueprint", "amount": "35,000 cr", "money": false },
+    { "label": "build", "amount": "20,000 cr", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "currency",
+      "place": "CEPHALON SIMARIS",
+      "sub": null,
+      "activity": "scan with Steel Path flying or a stealth frame",
+      "meta": "75,000 Standing, ~4 capped days",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "Simaris Standing", "amount": "75,000" },
+      "spends": [],
+      "map": "orb-vallis",
+      "rows": [
+        {
+          "qty": "75,000",
+          "label": "Simaris Standing",
+          "note": "daily cap 16,000 + 500 per Mastery Rank",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Daily Synthesis task",
+          "note": "2,500 Standing per target, on top of the cap",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Hand in the Synthesis task after you cap, and never while sitting at the 125,000 hard cap, where it is wasted.",
+        "The Heliocor gives no Simaris Standing, so it cannot farm its own price."
+      ],
+      "bonuses": [],
+      "disclosures": [
+        {
+          "title": "capping the day in minutes",
+          "body": "Steel Path Orb Vallis (Temple of Profit, the Ballas statue, outposts) or Plains of Eidolon camps, in archwing 100-150 m up so enemies cannot see you. Flying counts as stealth, which triples the Standing, and Steel Path pays about 300 per scan. Turn on Enemy Highlight in accessibility options. Fly out of range and wait a few seconds to respawn the enemies. Reports run 2-10 minutes a day."
+        },
+        {
+          "title": "stealth frame alternative",
+          "body": "Ivara, Loki or Ash in a Steel Path Capture or Exterminate takes 10-15 minutes. Ash can scan and kill without swapping gear."
+        }
+      ]
+    },
+    {
+      "type": "vendor",
+      "place": "CEPHALON SIMARIS",
+      "sub": null,
+      "activity": "buy blueprint",
+      "meta": "75,000 Standing",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Simaris Standing", "amount": "75,000" }],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Heliocor Blueprint", "note": null, "alt": null, "done": false }
+      ],
+      "conditions": [
+        "Simaris has no ranks, so there is no rank gate. Mastery Rank 9 is needed to use it."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "THE VOID",
+      "sub": null,
+      "activity": "any Void mission",
+      "meta": "grab just before the Gammacor build",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "void",
+      "rows": [
+        {
+          "qty": "2",
+          "label": "Argon Crystal",
+          "note": "Gammacor",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Argon decays after pickup, so build the Gammacor soon after collecting."],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "ASSUR, URANUS",
+      "sub": null,
+      "activity": "Survival",
+      "meta": "Uranus drops Polymer Bundle most",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "700",
+          "label": "Polymer Bundle",
+          "note": "Heliocor",
+          "alt": "or Venus, Mercury, Ceres",
+          "done": false
+        },
+        {
+          "qty": "650",
+          "label": "Plastids",
+          "note": "Gammacor; Uranus and Saturn drop the most",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "ZEUGMA, PHOBOS",
+      "sub": null,
+      "activity": "Survival",
+      "meta": "Phobos and Europa drop Rubedo most",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "1,200",
+          "label": "Rubedo",
+          "note": "Heliocor",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "MARS",
+      "sub": null,
+      "activity": "any mission",
+      "meta": "Mars drops Morphics most",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "1",
+          "label": "Morphics",
+          "note": "Heliocor",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "GABII, CERES",
+      "sub": null,
+      "activity": "Survival, Dark Sector",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "2,500",
+          "label": "Alloy Plate",
+          "note": "Gammacor",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "400",
+          "label": "Circuits",
+          "note": "Gammacor",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "Gammacor, rank it to 30, then Heliocor",
+      "meta": "12h each",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Gammacor",
+          "note": "Market blueprint 35,000 cr; 20,000 cr, 2,500 Alloy Plate, 650 Plastids, 400 Circuits, 2 Argon Crystal",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Heliocor",
+          "note": "20,000 cr, 1 Gammacor, 700 Polymer Bundle, 1,200 Rubedo, 1 Morphics",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The Heliocor build consumes the Gammacor. Rank it to 30 first or you lose its Mastery."
+      ],
+      "bonuses": [],
+      "disclosures": [
+        {
+          "title": "using it",
+          "body": "It only scans on a killing blow by the hammer, so damage-over-time kills skip the scan. Scans use Synthesis Scanner charges unless you carry the Sol-Battery Widget."
+        }
+      ]
+    }
+  ]
+}

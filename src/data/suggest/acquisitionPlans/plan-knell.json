@@ -1,0 +1,204 @@
+{
+  "name": "Knell",
+  "kind": "secondary",
+  "effort": 3,
+  "tradeable": null,
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "blueprint"
+  },
+  "badges": [
+    {
+      "text": "Argon decays daily",
+      "tone": "warn"
+    },
+    {
+      "text": "no RNG",
+      "tone": "info"
+    }
+  ],
+  "prices": [
+    {
+      "label": "blueprint",
+      "amount": "20,000 cr",
+      "money": false
+    },
+    {
+      "label": "build",
+      "amount": "15,000 cr",
+      "money": false
+    }
+  ],
+  "groups": [
+    {
+      "type": "vendor",
+      "place": "MARKET",
+      "sub": null,
+      "activity": "buy blueprint",
+      "meta": "20,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [
+        {
+          "currency": "Credits",
+          "amount": "20,000"
+        }
+      ],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Knell Blueprint",
+          "note": null,
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "CAMERIA, JUPITER",
+      "sub": null,
+      "activity": "Dark Sector Survival",
+      "meta": "Resource Booster first",
+      "mode": "Nekros or a Scavenge companion",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "20,000",
+          "label": "Salvage",
+          "note": null,
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [
+        "Wahiba (Mars) is the same Dark Sector Survival; Carme (Jupiter) Mobile Defense gives up to about 3,000 a run if you loot every container.",
+        "A Resource Booster doubles Rubedo, Cryotic and Salvage: pop one before the whole farm."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "ZEUGMA, PHOBOS",
+      "sub": null,
+      "activity": "Dark Sector Survival",
+      "meta": "about 250 Rubedo per 5 minutes",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "5,200",
+          "label": "Rubedo",
+          "note": null,
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [
+        "Stickney Survival also works; Void Survival and Defense pay over 1,000 per 20 minutes or waves."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "EVEREST, EARTH",
+      "sub": null,
+      "activity": "Excavation",
+      "meta": "100 Cryotic per completed cycle",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "3,800",
+          "label": "Cryotic",
+          "note": "Excavation is the only source",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Higher-level nodes pay the same per cycle, so the low-level ones are faster."
+      ],
+      "bonuses": [
+        "Kiliken (Venus) and Augustus (Mars) are equally easy.",
+        "Resource Booster, Resourceful Retriever and Loyal Retriever each double the pickup."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "HEPIT, VOID",
+      "sub": null,
+      "activity": "Capture, break every container",
+      "meta": "pick this up last",
+      "mode": "Xaku or Limbo at max range",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "2",
+          "label": "Argon Crystal",
+          "note": "Argon deposits in the tileset",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Argon decays: at each 00:00 UTC reset, crystals from earlier days are halved, rounded down. Collect it the day you start the build; the foundry consumes it, after which decay no longer matters."
+      ],
+      "bonuses": ["Mot Survival five-minute runs also reliably drop one or two."],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Knell",
+      "meta": "15,000 cr, 12h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Knell",
+          "note": "2 Argon Crystal, 5,200 Rubedo, 3,800 Cryotic, 20,000 Salvage",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Cryotic and the bulk materials are also needed by Prime builds and clan research; don't count stock you have earmarked."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

@@ -1,0 +1,166 @@
+{
+  "name": "Heat Sword",
+  "kind": "melee",
+  "effort": 2,
+  "tradeable": false,
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "weapon"
+  },
+  "badges": [
+    {
+      "text": "MR 3",
+      "tone": "warn"
+    }
+  ],
+  "prices": [
+    {
+      "label": "Nightwave",
+      "amount": "50 Creds",
+      "money": false
+    },
+    {
+      "label": "build",
+      "amount": "20,000 cr",
+      "money": false
+    }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "MERCURY",
+      "sub": null,
+      "activity": "the Once Awake quest",
+      "meta": "needs the Mercury junction",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Once Awake",
+          "note": "Spy on M Prime, Exterminate on Terminus, 8-wave Defense on Lares; the blueprint arrives after the Lares defense",
+          "alt": {
+            "text": "or buy it from Nightwave Cred Offerings",
+            "spends": [
+              {
+                "currency": "Nightwave Creds",
+                "amount": "50"
+              }
+            ]
+          },
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Mastery Rank 3",
+          "note": "the Foundry blocks the build below it",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The blueprint arrives before you can build it, so rank other gear to MR 3 first."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "EARTH",
+      "sub": "Mariana",
+      "activity": "Exterminate",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "1",
+          "label": "Neurodes",
+          "note": "levels 1-3",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Before Update 30.9 this was a Neural Sensor, so older guides are out of date."
+      ],
+      "bonuses": [
+        "Tikal (Earth, Dark Sector Excavation), Isos (Eris), Tycho (Lua Survival) and the Magnacidium assassination on Deimos also drop it."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "ANY STAR CHART",
+      "sub": null,
+      "activity": "common resources",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "500",
+          "label": "Ferrite",
+          "note": null,
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "300",
+          "label": "Circuits",
+          "note": null,
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "300",
+          "label": "Polymer Bundle",
+          "note": null,
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build the Heat Sword",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Heat Sword",
+          "note": "20,000 credits, 12h",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": ["Rushing the 12h build costs 25 platinum."],
+      "disclosures": []
+    }
+  ]
+}

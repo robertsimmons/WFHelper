@@ -1,0 +1,164 @@
+{
+  "name": "Detron",
+  "kind": "secondary",
+  "effort": 8,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 3, "unit": "parts" },
+  "badges": [
+    { "text": "Zanuka Hunter RNG", "tone": "warn" },
+    { "text": "Baro beacons", "tone": "info" }
+  ],
+  "prices": [
+    { "label": "Zanuka Hunter Beacon", "amount": "125,000 cr + 200 ducats", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "STAR CHART, INVASIONS",
+      "sub": null,
+      "activity": "complete 5 Grineer-vs-Corpus Invasions, siding with the Grineer",
+      "meta": "earns the Death Mark; repeat after each attack",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "5",
+          "label": "Invasion missions",
+          "note": "fighting the Corpus",
+          "alt": "skip if using Baro's beacons",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Alad V's inbox message confirms it, and the profile shows the Zanuka Death Mark. The mark is consumed only when the Hunter spawns and one of you kills it or is captured by it."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "BARO KI'TEER, RELAY",
+      "sub": null,
+      "activity": "buy Zanuka Hunter Beacons whenever stocked",
+      "meta": "125,000 cr + 200 ducats each",
+      "mode": null,
+      "live": {
+        "state": "waiting",
+        "text": "Baro does not stock beacons every visit"
+      },
+      "skip": null,
+      "earns": null,
+      "spends": [
+        { "currency": "Credits", "amount": "125,000" },
+        { "currency": "Ducats", "amount": "200" }
+      ],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Zanuka Hunter Beacon",
+          "note": "the one reliable accelerator; buy as many as you can afford",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "A beacon does nothing in Invasion missions and cannot be traded. Use it on the gear wheel in any other mission where assassins can spawn; one beacon covers the squad."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "boss",
+      "place": "ANY CORPUS NODE, STAR CHART",
+      "sub": "Survival or Capture; Void Fissures and Steel Path also work",
+      "activity": "wait out the first 5 minutes, then kill the Zanuka Hunter",
+      "meta": "restart if it has not appeared by 5:00",
+      "mode": "squad with the mark",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Detron Blueprint",
+          "note": "17.65% per kill, the bottleneck",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Detron Barrel",
+          "note": "32.35% per kill",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Detron Receiver",
+          "note": "32.35% per kill",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "With the Death Mark the Hunter has roughly a 1.5% chance to spawn in the first 5 minutes of a Corpus-enemy mission, plus 0.5% per extra marked squadmate. A failed spawn does not use up the mark.",
+        "Each kill drops only one item: a part, the Blueprint or the Scimitar Avionics Blueprint (17.65%, useless here), so duplicates happen.",
+        "No assassins in Assassination, Syndicate, Arena, Sortie, Archimedea, Landscape, Archwing, Empyrean or Sanctuary Onslaught missions, and beacons cannot override that.",
+        "Being captured sends you to a Recovery mission to retrieve your gear."
+      ],
+      "bonuses": [
+        "Marked squadmates raise the spawn chance, so Corpus Invasion squads in recruit chat are the usual way to run it."
+      ],
+      "disclosures": [
+        {
+          "title": "making the fight safe",
+          "body": "Trinity's Energy Vampire stun-locks the Hunter and Ivara's Sleep Arrows work, but Prowl does not. A knockdown such as Nekros Soul Punch or a big melee slam lets you chain knockdowns. It is immune to hard crowd control like Mag Pull or Radial Blind. Loot abilities work on it, so Khora is viable."
+        },
+        {
+          "title": "how long it takes",
+          "body": "Reports run from about 3 kills in 3 hours for a whole Detron to 2 weeks or more; one player needed 4 beacons for the Detron against 11 for the Brakk. Solo Death Mark spawns are described as a long slog."
+        }
+      ]
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Detron",
+      "meta": "12h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Detron",
+          "note": "Blueprint, Barrel, Receiver, 5 Neurodes, 700 Circuits, 600 Salvage, 500 Polymer Bundle",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Mastery Rank 6 to equip it.",
+        "Have the resources ready before the Blueprint drops so the build starts at once."
+      ],
+      "bonuses": [],
+      "disclosures": [
+        {
+          "title": "recipe sources disagree",
+          "body": "The research summary lists 10 Orokin Cell and 15,000 cr as the build cost; the Overframe entry lists the resources shown above and no credits. Check the Foundry preview before committing."
+        }
+      ]
+    }
+  ]
+}

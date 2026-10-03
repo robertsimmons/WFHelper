@@ -1,0 +1,119 @@
+{
+  "name": "Telos Akbolto",
+  "kind": "secondary",
+  "effort": 4,
+  "tradeable": null,
+  "progress": { "have": 0, "need": 1, "unit": "purchase" },
+  "badges": [
+    { "text": "Maxim rank gate", "tone": "warn" },
+    { "text": "MR 11", "tone": "info" }
+  ],
+  "prices": [
+    { "label": "standing", "amount": "340,000", "money": false },
+    { "label": "credits", "amount": "940,000 cr", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "currency",
+      "place": "ARBITERS OF HEXIS",
+      "sub": "pledge from the Orbiter",
+      "activity": "earn standing from mission affinity and daily Syndicate Alerts",
+      "meta": "340,000 standing total to Maxim plus the pistols",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "Arbiters of Hexis standing", "amount": "340,000" },
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "500",
+          "label": "Alloy Plate",
+          "note": "Rank 0 Initiation sacrifice",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "2",
+          "label": "Gallium",
+          "note": "Rank 1 Principled sacrifice",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "1",
+          "label": "Forma",
+          "note": "Rank 2 Authentic sacrifice",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "1",
+          "label": "Orokin Reactor",
+          "note": "Rank 3 Lawful sacrifice",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "5",
+          "label": "Aya",
+          "note": "2 at Rank 4 Crusader, 3 at Rank 5 Maxim",
+          "alt": "Void missions, Zariman and Cambion Drift bounties",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Daily standing cap is 16,000 plus 500 per Mastery Rank, shared across the faction syndicates.",
+        "Pledging converts 15% of affinity into Hexis standing. Rank-ups spend the standing and also cost 940,000 credits in total.",
+        "Do not spend Hexis standing on sigils, augments or relic packs before Maxim.",
+        "Hexis allies Cephalon Suda (half your gain goes to Suda) and opposes Perrin Sequence (-50%) and Red Veil (-100%). Do not mix pledges mid-climb."
+      ],
+      "bonuses": [
+        "Three daily Syndicate Alerts, each hiding 8 medallions, average about 10,125 standing for a full sweep and ignore the daily cap. Turn them in at the Hexis enclave in a Relay and do them after you hit the cap.",
+        "Loot Detector, Thief's Wit or Animal Instinct shows medallions on the minimap; Fetch will not pull them.",
+        "Ranking up regenerates the day's alerts."
+      ],
+      "disclosures": [
+        {
+          "title": "why 340,000",
+          "body": "The five rank-ups cost 5,000, 22,000, 44,000, 70,000 and 99,000 standing, 240,000 in all. Maxim holds up to 132,000, so the 100,000 purchase can be banked in one go."
+        },
+        {
+          "title": "medallion waste",
+          "body": "Medallion standing above the current rank's cap is wasted. Near a rank-up, turn in only what you need. A Universal Syndicate Medallion is worth 1,000 for any syndicate but does count toward the daily cap."
+        },
+        {
+          "title": "opposed syndicates",
+          "body": "Opposed syndicates push your standing negative as you climb, and at negative ranks they send Eximus Corrupted Lancer hit squads. Medallions show only while your standing with that syndicate is not negative."
+        }
+      ]
+    },
+    {
+      "type": "vendor",
+      "place": "ARBITERS OF HEXIS ENCLAVE, RELAY",
+      "sub": null,
+      "activity": "buy the pistols",
+      "meta": "100,000 standing",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Arbiters of Hexis standing", "amount": "100,000" }],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Telos Akbolto",
+          "note": null,
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Mastery Rank 11 is required. The free gift at each rank-up can never be a syndicate weapon."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

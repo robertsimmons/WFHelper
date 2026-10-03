@@ -1,0 +1,227 @@
+{
+  "name": "Cadus",
+  "kind": "melee",
+  "effort": 2,
+  "tradeable": null,
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "weapon"
+  },
+  "badges": [
+    {
+      "text": "Market blueprint",
+      "tone": "info"
+    },
+    {
+      "text": "consumes a Bo",
+      "tone": "warn"
+    }
+  ],
+  "prices": [
+    {
+      "label": "blueprint",
+      "amount": "50,000 cr",
+      "money": false
+    },
+    {
+      "label": "Bo blueprint",
+      "amount": "15,000 cr",
+      "money": false
+    }
+  ],
+  "groups": [
+    {
+      "type": "vendor",
+      "place": "MARKET",
+      "sub": null,
+      "activity": "buy blueprints",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Cadus Blueprint",
+          "note": "50,000 cr; a separate Market listing, not in the Arsenal",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Bo Blueprint",
+          "note": "15,000 cr",
+          "alt": "skip it if you own a Bo, an Awakening starting weapon",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Rank the Bo to 30 before the Cadus craft consumes it; the Mk1-Bo does not work."
+      ],
+      "bonuses": [],
+      "disclosures": [
+        {
+          "title": "other Bo sources",
+          "body": "Overframe also lists the Bo on relics, among them Axi L4, Axi R1 and Lith G2 at 25.33%."
+        }
+      ]
+    },
+    {
+      "type": "boss",
+      "place": "THEMISTO, JUPITER",
+      "sub": null,
+      "activity": "Alad V assassination",
+      "meta": "2-3 minute runs",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "2",
+          "label": "Neural Sensors",
+          "note": null,
+          "alt": "or Jupiter or Kuva Fortress Survival",
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": ["Alad V also feeds Valkyr parts."],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "URANUS",
+      "sub": null,
+      "activity": "any mission",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "3,000",
+          "label": "Polymer Bundle",
+          "note": null,
+          "alt": "or Mercury or Venus",
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": ["Resource extractors cover the Polymer and Circuits with no mission time."],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "CERES",
+      "sub": null,
+      "activity": "any mission",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "1,600",
+          "label": "Circuits",
+          "note": null,
+          "alt": "or Venus or Kuva Fortress",
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "ANY STAR CHART MISSION",
+      "sub": null,
+      "activity": "only if you build a Bo",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "900",
+          "label": "Salvage",
+          "note": "Bo",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "600",
+          "label": "Ferrite",
+          "note": "Bo",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "150",
+          "label": "Alloy Plate",
+          "note": "Bo",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "1",
+          "label": "Orokin Cell",
+          "note": "Bo",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Bo if needed, then Cadus",
+      "meta": "12h each",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Bo",
+          "note": "15,000 cr, 1 Orokin Cell, 900 Salvage, 600 Ferrite, 150 Alloy Plate",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Cadus",
+          "note": "20,000 cr, 1 Bo, 2 Neural Sensors, 3,000 Polymer Bundle, 1,600 Circuits",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

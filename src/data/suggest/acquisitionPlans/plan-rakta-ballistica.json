@@ -1,0 +1,120 @@
+{
+  "name": "Rakta Ballistica",
+  "kind": "secondary",
+  "effort": 4,
+  "tradeable": null,
+  "progress": { "have": 0, "need": 1, "unit": "purchase" },
+  "badges": [
+    { "text": "Exalted rank gate", "tone": "warn" },
+    { "text": "MR 6", "tone": "info" }
+  ],
+  "prices": [
+    { "label": "standing", "amount": "340,000", "money": false },
+    { "label": "credits", "amount": "940,000 cr", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "currency",
+      "place": "ELITE SANCTUARY ONSLAUGHT",
+      "sub": "or Duviri Circuit",
+      "activity": "pledge Red Veil, earn standing from mission affinity and Syndicate Medallions",
+      "meta": "340,000 standing total to Exalted plus the crossbow",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "Red Veil standing", "amount": "340,000" },
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "500",
+          "label": "Alloy Plate",
+          "note": "Rank 0 Initiation sacrifice",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "2",
+          "label": "Gallium",
+          "note": "Rank 1 Respected sacrifice",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "1",
+          "label": "Forma",
+          "note": "Rank 2 Honored sacrifice",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "1",
+          "label": "Orokin Catalyst",
+          "note": "Rank 3 Esteemed sacrifice",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "5",
+          "label": "Aya",
+          "note": "2 at Rank 4 Revered, 3 at Rank 5 Exalted",
+          "alt": "Void missions and bounties; Steel Path Cetus final-stage bounties list about 39%",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Daily standing cap is 16,000 plus 500 per Mastery Rank, shared across every faction syndicate.",
+        "Pledging converts 15% of affinity into Red Veil standing. Syndicate console unlocks at MR 3.",
+        "Rank-ups also cost 940,000 credits in total. Each rank-up spends all your standing, then the purchase costs another 100,000.",
+        "Red Veil lowers Cephalon Suda by half and Arbiters of Hexis by all of what you gain."
+      ],
+      "bonuses": [
+        "Syndicate Alerts and medallions (500, 1,000 or 5,000 each, up to 8 per alert) ignore the daily cap. Redeem them at the Red Veil enclave in a relay.",
+        "Primed Animal Instinct shows medallions on the map. Khora and Limbo are the frames people use.",
+        "Red Veil feeds Steel Meridian at +50% and does not touch New Loka or Perrin Sequence."
+      ],
+      "disclosures": [
+        {
+          "title": "why 340,000",
+          "body": "The five rank-ups cost 5,000, 22,000, 44,000, 70,000 and 99,000 standing, 240,000 in all, and the crossbow is a separate 100,000 purchase on top."
+        },
+        {
+          "title": "keeping Hexis and Suda",
+          "body": "Pledge Steel Meridian instead and let Red Veil climb at half rate. Slower, but it costs neither syndicate."
+        },
+        {
+          "title": "fastest daily cap",
+          "body": "Pledged Red Veil standing is 15% of affinity, so a high-affinity activity with an affinity booster caps fastest. Sanctuary Onslaught, Elite Sanctuary Onslaught and the Duviri Circuit are the spots named. Bring gear you need Mastery on, since the same affinity pays for both."
+        }
+      ]
+    },
+    {
+      "type": "vendor",
+      "place": "RED VEIL OFFERINGS, RELAY",
+      "sub": null,
+      "activity": "buy the crossbow",
+      "meta": "100,000 standing",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Red Veil standing", "amount": "100,000" }],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Rakta Ballistica",
+          "note": null,
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Mastery Rank 6 is required to buy it.",
+        "Ballistica and Ballistica Prime are not ingredients; nothing is consumed."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

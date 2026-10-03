@@ -1,0 +1,108 @@
+{
+  "name": "Synoid Simulor",
+  "kind": "primary",
+  "effort": 4,
+  "tradeable": "unranked, no Forma/Catalyst",
+  "progress": { "have": 0, "need": 1, "unit": "purchase" },
+  "badges": [
+    { "text": "Genius rank gate", "tone": "warn" },
+    { "text": "MR 12", "tone": "info" }
+  ],
+  "prices": [{ "label": "weapon", "amount": "125,000 standing", "money": false }],
+  "groups": [
+    {
+      "type": "currency",
+      "place": "ELITE SANCTUARY ONSLAUGHT",
+      "sub": "or any affinity-heavy mission",
+      "activity": "pledge Cephalon Suda, earn standing from mission affinity and Syndicate Medallions",
+      "meta": "~365,000 standing total to Genius plus the rifle",
+      "mode": "cap out every day",
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "Cephalon Suda standing", "amount": "365,000" },
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "500",
+          "label": "Circuits",
+          "note": "Rank 0 Initiation sacrifice, plus 10,000 cr",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "2",
+          "label": "Control Module",
+          "note": "Rank 1 Competent sacrifice, plus 5,000 standing and 30,000 cr",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "1",
+          "label": "Forma",
+          "note": "Rank 2 Intriguing sacrifice, plus 22,000 standing and 50,000 cr",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "1",
+          "label": "Orokin Catalyst",
+          "note": "Rank 3 Intelligent sacrifice, plus 44,000 standing and 100,000 cr",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "2",
+          "label": "Aya",
+          "note": "Rank 4 Wise sacrifice, plus 70,000 standing and 250,000 cr",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "3",
+          "label": "Aya",
+          "note": "Rank 5 Genius sacrifice, plus 99,000 standing and 500,000 cr",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Pledging converts 15% of the affinity you earn into Suda standing; sigils no longer do anything.",
+        "The daily cap is 16,000 plus 500 per Mastery Rank, shared across every faction syndicate, and resets at 00:00 UTC.",
+        "Pledging opposes Red Veil (-50%) and New Loka (-100%) and can drop ranks there. Rank up as soon as the bar fills so it stops bleeding."
+      ],
+      "bonuses": [
+        "Suda's three daily Syndicate Alerts hold 8 medallions each and, like Universal Syndicate Medallions (1,000 standing from Disruption), ignore the daily cap. Do the alerts first, play until capped, then redeem.",
+        "Arbiters of Hexis and Steel Meridian are allied (+50% to them), and many players pair Steel Meridian with Suda by rotating the pledge."
+      ],
+      "disclosures": [
+        {
+          "title": "sacrifice sourcing",
+          "body": "Circuits drop on Venus, Ceres and the Kuva Fortress, best on Ceres. Control Modules drop on Neptune, Europa and the Void, best in the Void. Aya comes from Void missions, bounties and Relic Packs. Rank-ups cost about 940,000 credits in total."
+        }
+      ]
+    },
+    {
+      "type": "vendor",
+      "place": "CEPHALON SUDA OFFERINGS, RELAY",
+      "sub": null,
+      "activity": "buy the rifle",
+      "meta": "125,000 standing",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Cephalon Suda standing", "amount": "125,000" }],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Synoid Simulor", "note": null, "alt": null, "done": false }
+      ],
+      "conditions": [
+        "The free item at Rank 5 can never be a syndicate weapon, so the 125,000 purchase is unavoidable.",
+        "Mastery Rank 12 is required to buy it and to receive it in a trade."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

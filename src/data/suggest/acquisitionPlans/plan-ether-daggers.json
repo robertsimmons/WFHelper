@@ -1,0 +1,203 @@
+{
+  "name": "Ether Daggers",
+  "kind": "melee",
+  "effort": 3,
+  "tradeable": null,
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "weapon"
+  },
+  "badges": [
+    {
+      "text": "Stolen Dreams",
+      "tone": "info"
+    },
+    {
+      "text": "MR 6",
+      "tone": "info"
+    }
+  ],
+  "prices": [
+    {
+      "label": "Simaris",
+      "amount": "100,000 standing",
+      "money": false
+    },
+    {
+      "label": "build",
+      "amount": "20,000 cr",
+      "money": false
+    }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "PHOBOS JUNCTION, THEN THE CODEX",
+      "sub": null,
+      "activity": "the Stolen Dreams quest",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Stolen Dreams",
+          "note": "extracting the final mission rewards the Ether Daggers blueprint",
+          "alt": {
+            "text": "or 100,000 standing at Cephalon Simaris if the blueprint is gone",
+            "spends": [
+              {
+                "currency": "Simaris standing",
+                "amount": "100,000"
+              }
+            ]
+          },
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The quest does not hand out a second blueprint on replay.",
+        "The Market's Dual Ether is a different weapon that has led many players to sell their Daggers by mistake."
+      ],
+      "bonuses": [],
+      "disclosures": [
+        {
+          "title": "buying it back from Simaris",
+          "body": "Simaris unlocks the offer only after Stolen Dreams is complete and has no ranks, so standing is the only gate. The daily cap is 16,000 plus 500 per Mastery Rank; the Daily Synthesis Task payout does not count against it. Stealth scans pay triple standing."
+        }
+      ]
+    },
+    {
+      "type": "farm",
+      "place": "MARS",
+      "sub": null,
+      "activity": "Defense or Survival",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "5",
+          "label": "Morphics",
+          "note": "Mars has the highest rate",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "URANUS",
+      "sub": null,
+      "activity": "Survival or Defense",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "600",
+          "label": "Polymer Bundle",
+          "note": "best on Uranus",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "MERCURY, EARTH OR NEPTUNE",
+      "sub": null,
+      "activity": "Survival",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "600",
+          "label": "Ferrite",
+          "note": null,
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "SATURN, NEPTUNE, ERIS OR DEIMOS",
+      "sub": null,
+      "activity": "Survival or Defense",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "1,200",
+          "label": "Nano Spores",
+          "note": null,
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build the Ether Daggers",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Ether Daggers",
+          "note": "20,000 credits, 12h",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Rank them to 30 before selling; a sold copy cannot be re-ranked without rebuying the blueprint."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

@@ -1,0 +1,326 @@
+{
+  "name": "Banshee",
+  "kind": "warframe",
+  "effort": 2,
+  "tradeable": null,
+  "progress": {
+    "have": 0,
+    "need": 4,
+    "unit": "parts"
+  },
+  "badges": [
+    {
+      "text": "clan Tenno Lab only",
+      "tone": "warn"
+    },
+    {
+      "text": "no RNG",
+      "tone": "info"
+    }
+  ],
+  "prices": [
+    {
+      "label": "blueprints",
+      "amount": "80,000 cr",
+      "money": false
+    },
+    {
+      "label": "build",
+      "amount": "25,000 cr",
+      "money": false
+    }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "CLAN DOJO",
+      "sub": null,
+      "activity": "join a clan whose lab has already researched Banshee",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Tenno Lab research finished, any clan",
+          "note": "many clans let you join, replicate, and leave",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The main Banshee research is the prerequisite for the three parts; nothing can be bought until it is finished."
+      ],
+      "bonuses": [],
+      "disclosures": [
+        {
+          "title": "researching it in your own clan",
+          "body": "Build the Oracle and a Tenno Lab, then research the main blueprint first (5,000 cr, 1 Mutagen Mass, 1 Detonite Injector, 1 Fieldron, 1 Orokin Cell, 3 days). The three parts then run in parallel, 3 days each. Neuroptics: 10,000 cr, 1 Detonite Injector, 1 Neural Sensors, 1,000 Nano Spores, 500 Polymer Bundle. Chassis: 10,000 cr, 1 Mutagen Mass, 1 Control Module, 1,000 Ferrite, 500 Rubedo. Systems: 10,000 cr, 1 Fieldron, 1 Morphics, 1,000 Salvage, 500 Plastids. Costs are the Ghost clan base, multiplied 3x/10x/30x/100x by bigger tiers, and research cannot be rushed. Fieldron, Detonite Injector and Mutagen Mass are untradeable and come from Invasions, containers and tier 4 Orb Vallis bounties."
+        }
+      ]
+    },
+    {
+      "type": "vendor",
+      "place": "CLAN DOJO",
+      "sub": null,
+      "activity": "replicate the four blueprints",
+      "meta": "credits",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [
+        {
+          "currency": "Credits",
+          "amount": "80,000"
+        }
+      ],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Banshee Blueprint",
+          "note": "35,000 cr",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Neuroptics Blueprint",
+          "note": "15,000 cr",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Chassis Blueprint",
+          "note": "15,000 cr",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Systems Blueprint",
+          "note": "15,000 cr",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Buying a part's blueprint is separate from building it. The blueprints stay yours if you leave the clan."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "MARS",
+      "sub": null,
+      "activity": "Morphics and Salvage",
+      "meta": "Mars has the best Morphics rate",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "2",
+          "label": "Morphics",
+          "note": "1 Chassis, 1 Systems",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "1,000",
+          "label": "Salvage",
+          "note": "500 Neuroptics, 500 Systems",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "JUPITER",
+      "sub": null,
+      "activity": "Neural Sensors",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "1",
+          "label": "Neural Sensors",
+          "note": "Neuroptics; also Kuva Fortress",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "THE VOID",
+      "sub": null,
+      "activity": "any Void mission",
+      "meta": "best Control Module rate",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "1",
+          "label": "Control Module",
+          "note": "Systems; also Neptune, Europa",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "SATURN",
+      "sub": null,
+      "activity": "Survival",
+      "meta": "Orokin Cell and Plastids in one run",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "1",
+          "label": "Orokin Cell",
+          "note": "final build; also Ceres, Deimos",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "400",
+          "label": "Plastids",
+          "note": "Systems",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "ANY MISSION",
+      "sub": null,
+      "activity": "common resources",
+      "meta": "drop everywhere",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "150",
+          "label": "Circuits",
+          "note": "Neuroptics",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "200",
+          "label": "Polymer Bundle",
+          "note": "Neuroptics",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "900",
+          "label": "Ferrite",
+          "note": "Chassis",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "50",
+          "label": "Rubedo",
+          "note": "Chassis",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build components, then Banshee",
+      "meta": "12h each, then 3 days",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Neuroptics",
+          "note": "15,000 cr, 150 Circuits, 1 Neural Sensors, 200 Polymer Bundle, 500 Salvage",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Chassis",
+          "note": "15,000 cr, 1 Morphics, 900 Ferrite, 50 Rubedo",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Systems",
+          "note": "15,000 cr, 1 Control Module, 1 Morphics, 500 Salvage, 400 Plastids",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Banshee",
+          "note": "25,000 cr, 1 Orokin Cell",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": ["Rushing Banshee costs 50 platinum."],
+      "disclosures": []
+    }
+  ]
+}

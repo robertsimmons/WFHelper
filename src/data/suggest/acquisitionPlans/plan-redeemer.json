@@ -1,0 +1,220 @@
+{
+  "name": "Redeemer",
+  "kind": "melee",
+  "effort": 3,
+  "tradeable": null,
+  "progress": {
+    "have": 0,
+    "need": 3,
+    "unit": "builds"
+  },
+  "badges": [
+    {
+      "text": "Argon decays",
+      "tone": "warn"
+    },
+    {
+      "text": "MR 4",
+      "tone": "info"
+    }
+  ],
+  "prices": [
+    {
+      "label": "blueprint",
+      "amount": "20,000 cr",
+      "money": false
+    },
+    {
+      "label": "build",
+      "amount": "20,000 cr",
+      "money": false
+    }
+  ],
+  "groups": [
+    {
+      "type": "vendor",
+      "place": "MARKET",
+      "sub": null,
+      "activity": "buy three blueprints",
+      "meta": "70,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Redeemer Blueprint",
+          "note": "20,000 credits",
+          "alt": "175 platinum",
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Vasto Blueprint",
+          "note": "30,000 credits",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Dual Skana Blueprint",
+          "note": "20,000 credits",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "STAR CHART",
+      "sub": null,
+      "activity": "common resources for Vasto and Dual Skana",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "1,500",
+          "label": "Alloy Plate",
+          "note": "Vasto 1,200, Dual Skana 300",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "1,550",
+          "label": "Ferrite",
+          "note": "Vasto 700, Dual Skana 850",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "1,300",
+          "label": "Polymer Bundle",
+          "note": "Vasto 1,000, Dual Skana 300",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "4",
+          "label": "Neurodes",
+          "note": "Vasto",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "2",
+          "label": "Morphics",
+          "note": "Dual Skana",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Vasto and Dual Skana, rank both to 30",
+      "meta": "12h each",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Vasto",
+          "note": "Mastery on its own",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Dual Skana",
+          "note": "Mastery on its own",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The Redeemer recipe consumes both. Rank them to 30 first or build them again later for the Mastery."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "THE VOID",
+      "sub": null,
+      "activity": "Sabotage, or Capture on Hepit with a max-range Xaku or Limbo",
+      "meta": "farm this last, then build the same day",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "2",
+          "label": "Argon Crystal",
+          "note": "Redeemer",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Decay halves the whole stack at every daily reset (00:00 UTC) after the one following pickup. Do not farm a day ahead."
+      ],
+      "bonuses": ["Nekros, Khora, a Smeeta Kavat with Charm and Loot Radar all help."],
+      "disclosures": [
+        {
+          "title": "where it drops",
+          "body": "Argon Pegmatite deposits, usually 2 per Void map except Defense, give 1 to 2 crystals each. Also resource caches on Sabotage at Marduk and Stribog and Kuva Fortress Exterminate at Dakata, Corrupted Vor, and Isolation Vault containers. Sabotage was reported far faster than Survival."
+        }
+      ]
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Redeemer",
+      "meta": "12h, 20,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Redeemer",
+          "note": "Vasto, Dual Skana, 2 Argon Crystal",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "It is the gunblade, not the Redeemer Prime. The Prime is a separate relic item."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

@@ -1,0 +1,279 @@
+{
+  "name": "Nikana",
+  "kind": "melee",
+  "effort": 2,
+  "tradeable": null,
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "blueprint"
+  },
+  "badges": [
+    {
+      "text": "Tenno Lab",
+      "tone": "info"
+    },
+    {
+      "text": "Argon on two separate days",
+      "tone": "warn"
+    }
+  ],
+  "prices": [
+    {
+      "label": "blueprint",
+      "amount": "15,000 cr",
+      "money": false
+    },
+    {
+      "label": "build",
+      "amount": "5,000 cr",
+      "money": false
+    }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "DOJO, TENNO LAB",
+      "sub": null,
+      "activity": "clan research chain",
+      "meta": "72h, then 48h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Oracle, then Tenno Lab",
+          "note": "1,000 cr, 650 Salvage, 350 Circuits, 350 Polymer Bundle, 1 Forma, 24h",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Akstiletto",
+          "note": "500 Salvage, 300 Polymer Bundle, 50 Alloy Plate, 1 Gallium, 5,000 cr, 72h",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Nikana",
+          "note": "1 Argon Crystal, 100 Oxium, 150 Alloy Plate, 300 Polymer Bundle, 5,000 cr, 48h",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Akstiletto must finish before Nikana appears as a project, and research cannot be rushed with platinum.",
+        "Costs are the Ghost clan base; Shadow x3, Storm x10, Mountain x30, Moon x100.",
+        "A clan whose Tenno Lab already has Nikana researched skips this group."
+      ],
+      "bonuses": ["Research is kept if the lab is ever destroyed."],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "ANY MISSION",
+      "sub": null,
+      "activity": "stock the research and build costs during the timers",
+      "meta": "common resources",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "500",
+          "label": "Salvage",
+          "note": "Akstiletto",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "600",
+          "label": "Polymer Bundle",
+          "note": "300 Akstiletto, 300 Nikana",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "400",
+          "label": "Alloy Plate",
+          "note": "50 Akstiletto, 150 Nikana, 200 build",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "1",
+          "label": "Gallium",
+          "note": "Akstiletto",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "1",
+          "label": "Forma",
+          "note": "build",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "30,000",
+          "label": "Credits",
+          "note": "10,000 research, 15,000 blueprint, 5,000 build",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "IO, JUPITER",
+      "sub": null,
+      "activity": "Defense, restart around wave 15",
+      "meta": "175 Oxium",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "175",
+          "label": "Oxium",
+          "note": "100 research, 75 build",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Kill Ospreys before they self-destruct; Resource Boosters stack, drop-chance boosters do nothing."
+      ],
+      "bonuses": [
+        "Hydroid's Tentacles doubling Osprey kills was one suggestion; a Corpus Survival with a Resource Booster is the lazy route."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "HEPIT, VOID",
+      "sub": null,
+      "activity": "Capture, break every container",
+      "meta": "1 Argon, the day Akstiletto finishes",
+      "mode": "Xaku or Limbo at max range, or a public Void squad",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "1",
+          "label": "Argon Crystal",
+          "note": "Nikana research",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Argon decays: at each GMT midnight, crystals from earlier days are halved, rounded down. Farm it the day you use it."
+      ],
+      "bonuses": [
+        "Pegmatite deposits always drop Argon; Resource Booster and a Retriever companion help, drop-chance boosters do not."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "research",
+      "place": "DOJO, TENNO LAB",
+      "sub": null,
+      "activity": "buy the blueprint",
+      "meta": "15,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [
+        {
+          "currency": "Credits",
+          "amount": "15,000"
+        }
+      ],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Nikana Blueprint",
+          "note": null,
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "HEPIT, VOID",
+      "sub": null,
+      "activity": "Capture, break every container",
+      "meta": "3 more Argon, the day the research finishes",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "3",
+          "label": "Argon Crystal",
+          "note": "build",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Argon decays: at each GMT midnight, crystals from earlier days are halved, rounded down. Farm it the day you use it.",
+        "Crystals farmed for the build at research time would be halved twice before you could use them, so this is a second trip."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Nikana",
+      "meta": "5,000 cr, 12h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Nikana",
+          "note": "3 Argon Crystal, 75 Oxium, 200 Alloy Plate, 1 Forma",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": ["Dragon Nikana consumes a Nikana; level this one to 30 first or craft a second."],
+      "disclosures": []
+    }
+  ]
+}

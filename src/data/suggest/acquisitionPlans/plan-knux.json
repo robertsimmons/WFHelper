@@ -1,0 +1,269 @@
+{
+  "name": "Knux",
+  "kind": "archmelee",
+  "effort": 6,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 1, "unit": "weapon" },
+  "badges": [
+    { "text": "Chem Lab", "tone": "warn" },
+    { "text": "20,000 Cryotic", "tone": "warn" }
+  ],
+  "prices": [
+    { "label": "blueprint", "amount": "15,000 cr", "money": false },
+    { "label": "build", "amount": "30,000 cr", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "DOJO, CHEM LAB",
+      "sub": null,
+      "activity": "clan research: Detonite Injector, Ignis, Ogris, then Knux",
+      "meta": "72h each, 12 days in series; start first",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Detonite Injector",
+          "note": "5 Detonite Ampule, 200 Ferrite, 250 Polymer Bundle, 100 Plastids, 5,000 cr",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Ignis",
+          "note": "10 Detonite Ampule, 400 Ferrite, 500 Polymer Bundle, 150 Plastids, 5,000 cr",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Ogris",
+          "note": "10 Detonite Ampule, 500 Ferrite, 300 Polymer Bundle, 150 Plastids, 7,500 cr",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Knux",
+          "note": "10 Tellurium, 20,000 Cryotic, 10,000 Polymer Bundle, 5,000 Plastids, 75,000 cr",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Research only; the Injector, Ignis and Ogris are never built for this.",
+        "Costs are Ghost clan tier. Shadow pays 3x, Storm 10x, Mountain 30x, Moon 100x, split across members."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "HIERACON, PLUTO",
+      "sub": null,
+      "activity": "Excavation as a Void Fissure",
+      "meta": "20,000 Cryotic, the bottleneck",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "20,000",
+          "label": "Cryotic",
+          "note": "Knux research; 100 per full excavator cycle",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Cryotic only drops from Excavation. The Resource booster doubles it; Resource Drop Chance does not, and Steel Path pays no more.",
+        "A destroyed excavator still pays what it completed."
+      ],
+      "bonuses": [
+        "A fissure Excavation adds a stacking resource bonus and cracks a relic every 200 Cryotic.",
+        "A competent group running several excavators reported about 3,000 Cryotic in a little over 30 minutes.",
+        "Resourceful Retriever (18%) or Loyal Retriever (13%) on a companion can double a payout."
+      ],
+      "disclosures": [
+        {
+          "title": "other Cryotic sources",
+          "body": "Excavation nodes are Everest (Earth), Kiliken (Venus), Augustus (Mars), Valefor (Europa), Despina (Neptune) and Hieracon (Pluto). Duviri Circuit pays Cryotic at roughly a tenth of a good Hieracon run."
+        },
+        {
+          "title": "keep the excavator fed",
+          "body": "Bring Nekros: Desecrate doubles the Power Cell drops that run excavators. If enemies stop spawning, clear the stragglers; they do not spawn while a squad is scattered."
+        }
+      ]
+    },
+    {
+      "type": "farm",
+      "place": "ASSUR, URANUS",
+      "sub": null,
+      "activity": "Survival (Dark Sector)",
+      "meta": "Polymer and Plastids on one trip",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "11,050",
+          "label": "Polymer Bundle",
+          "note": "research: 1,050 + 10,000",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "5,400",
+          "label": "Plastids",
+          "note": "research: 400 + 5,000",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [
+        "Nekros (Desecrate) and Khora (Pilfering Strangledome), with Nova to speed enemies."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "STAR CHART",
+      "sub": null,
+      "activity": "common drops and Grineer content",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "25",
+          "label": "Detonite Ampule",
+          "note": "research; Grineer territory on Mercury, Earth, Ceres, Saturn, Uranus, Sedna",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "1,700",
+          "label": "Ferrite",
+          "note": "1,100 research, 600 Furax",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "10",
+          "label": "Tellurium",
+          "note": "Knux research; rare drop in Archwing, Empyrean, Grineer Sealab (Uranus), Kuva Fortress assault, Veil Proxima survival",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "5",
+          "label": "Detonite Injector",
+          "note": "Knux build; Grineer Invasion reward (3), Rare and Reinforced Grineer containers, Orb Vallis tier 4 bounties",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "10",
+          "label": "Gallium",
+          "note": "Knux build; Mars and Uranus, 2-4 per drop",
+          "alt": null,
+          "done": false
+        },
+        { "qty": "1,000", "label": "Nano Spores", "note": "Furax", "alt": null, "done": false },
+        { "qty": "900", "label": "Salvage", "note": "Furax", "alt": null, "done": false },
+        { "qty": "500", "label": "Alloy Plate", "note": "Furax", "alt": null, "done": false }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "MARKET AND DOJO",
+      "sub": null,
+      "activity": "buy blueprints",
+      "meta": "30,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Furax Blueprint",
+          "note": "Market, 15,000 cr",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Knux Blueprint",
+          "note": "Chem Lab, after Knux research, 15,000 cr",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Furax, rank it, then Knux",
+      "meta": "12h, then 24h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Furax",
+          "note": "1,000 Nano Spores, 900 Salvage, 600 Ferrite, 500 Alloy Plate, 30,000 cr; MR 5",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Knux",
+          "note": "ranked Furax, 5 Detonite Injector, 10 Gallium, 1 Forma, 30,000 cr",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The Furax is consumed: rank it to 30 first or its Mastery is lost.",
+        "Mastery Rank 7 to equip. Knux only works while flying an Archwing."
+      ],
+      "bonuses": [],
+      "disclosures": [
+        {
+          "title": "leveling",
+          "body": "Salacia, Neptune ranks the weapon in about three runs. The Archwing itself levels slower; Interception nodes or Steel Path open-world bounties are the common answers."
+        }
+      ]
+    }
+  ]
+}

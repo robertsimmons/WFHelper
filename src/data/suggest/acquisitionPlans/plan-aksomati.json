@@ -1,0 +1,237 @@
+{
+  "name": "Aksomati",
+  "kind": "secondary",
+  "effort": 3,
+  "tradeable": null,
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "weapon"
+  },
+  "badges": [
+    {
+      "text": "Tenno Lab Akstiletto",
+      "tone": "warn"
+    },
+    {
+      "text": "200 Cryotic",
+      "tone": "info"
+    }
+  ],
+  "prices": [
+    {
+      "label": "blueprint",
+      "amount": "20,000 cr",
+      "money": false
+    },
+    {
+      "label": "build",
+      "amount": "20,000 cr",
+      "money": false
+    }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "TENNO LAB, DOJO",
+      "sub": null,
+      "activity": "research and build the Akstiletto",
+      "meta": "72h research, start first",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Akstiletto research",
+          "note": "500 Salvage, 300 Polymer Bundle, 50 Alloy Plate, 1 Gallium, 5,000 cr, 72h",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Akstiletto Blueprint",
+          "note": "from the Tenno Lab once researched",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The Aksomati recipe consumes the Akstiletto; rank the Akstiletto to 30 first, it is a separate Mastery item."
+      ],
+      "bonuses": [],
+      "disclosures": [
+        {
+          "title": "other Akstiletto sources",
+          "body": "Overframe also lists the Akstiletto on relics, among them Axi A7 and Meso V6 at 25.33%. The wiki recipe path is the Tenno Lab."
+        }
+      ]
+    },
+    {
+      "type": "vendor",
+      "place": "MARKET",
+      "sub": null,
+      "activity": "buy blueprint",
+      "meta": "20,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Aksomati Blueprint",
+          "note": null,
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "HIERACON, PLUTO",
+      "sub": null,
+      "activity": "Excavation",
+      "meta": "a fully defended dig pays 100 Cryotic",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "200",
+          "label": "Cryotic",
+          "note": "two digs",
+          "alt": "or Excavation on Venus, Earth, Phobos, Europa or Neptune",
+          "done": false
+        }
+      ],
+      "conditions": ["Don't feed Cryotic to Helminth; the build needs all 200."],
+      "bonuses": [
+        "A decent group running several Excavators pulled about 3,000 Cryotic in a little over 30 minutes.",
+        "A Cryotic booster or Smeeta Kavat Charm applies."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "boss",
+      "place": "MAGNACIDIUM, DEIMOS",
+      "sub": null,
+      "activity": "Lephantis assassination",
+      "meta": "up to 4 Orokin Cells a run",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "1",
+          "label": "Orokin Cell",
+          "note": null,
+          "alt": "or a rare drop on Saturn, Ceres or Deimos",
+          "done": false
+        }
+      ],
+      "conditions": ["Orokin Cells are the scarce ingredient; keep one back from other builds."],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "ANY STAR CHART MISSION",
+      "sub": null,
+      "activity": "common resources for the Akstiletto",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "1,300",
+          "label": "Salvage",
+          "note": "500 research, 800 build",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "250",
+          "label": "Alloy Plate",
+          "note": "50 research, 200 build",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "300",
+          "label": "Polymer Bundle",
+          "note": "research",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "3",
+          "label": "Gallium",
+          "note": "1 research, 2 build",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "1",
+          "label": "Forma",
+          "note": "Akstiletto build",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Akstiletto, then Aksomati",
+      "meta": "12h each, 20,000 cr each",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Akstiletto",
+          "note": "2 Gallium, 800 Salvage, 200 Alloy Plate, 1 Forma",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Aksomati",
+          "note": "1 Akstiletto, 200 Cryotic, 1 Orokin Cell",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Aksomati needs Mastery Rank 9 to use."],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

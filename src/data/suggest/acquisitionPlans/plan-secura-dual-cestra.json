@@ -1,0 +1,190 @@
+{
+  "name": "Secura Dual Cestra",
+  "kind": "secondary",
+  "effort": 4,
+  "tradeable": "unranked copies only, with no Forma or Catalyst installed",
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "purchase"
+  },
+  "badges": [
+    {
+      "text": "Partner rank gate",
+      "tone": "warn"
+    },
+    {
+      "text": "no RNG",
+      "tone": "info"
+    }
+  ],
+  "prices": [],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "ORBITER, SYNDICATE CONSOLE",
+      "sub": null,
+      "activity": "join and pledge",
+      "meta": "one-time",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Mastery Rank 10",
+          "note": "needed to buy it; standing can be earned before",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Pledge The Perrin Sequence",
+          "note": "equip its Sigil on the frame you play most",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Pledging Perrin drains Arbiters of Hexis (-50%) and Steel Meridian (-100%). Spend any standing there first."
+      ],
+      "bonuses": [
+        "Perrin standing gives New Loka +50%; Red Veil is neutral, so level it alongside."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "currency",
+      "place": "ANY MISSION",
+      "sub": null,
+      "activity": "earn standing from mission affinity and Syndicate Medallions",
+      "meta": "340,000 standing total",
+      "mode": "solo, hit the cap then run the alerts",
+      "live": null,
+      "skip": null,
+      "earns": {
+        "currency": "Perrin Sequence standing",
+        "amount": "340,000"
+      },
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "100",
+          "label": "Polymer Bundle",
+          "note": "Initiation sacrifice",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "2",
+          "label": "Detonite Ampule",
+          "note": "Rank 1 Associate sacrifice",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "1",
+          "label": "Forma",
+          "note": "Rank 2 Senior Associate sacrifice",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "1",
+          "label": "Orokin Reactor",
+          "note": "Rank 3 Executive sacrifice",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "940,000",
+          "label": "Credits",
+          "note": "10,000 Initiation, then 30,000 / 50,000 / 100,000 / 250,000 / 500,000 per rank",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Daily standing cap is 16,000 plus 500 per Mastery Rank, shared across every faction syndicate and reset at 0:00 UTC. 21,000 a day at MR 10.",
+        "Hit the cap with mission affinity first, then do the three Syndicate Alerts and turn in every medallion at the Perrin enclave in a Relay. Alert rewards and medallions bypass the cap.",
+        "Rank up as soon as you can afford it. Standing earned past a rank's maximum is wasted."
+      ],
+      "bonuses": [
+        "Pledging converts 15% of all Affinity you earn into standing, so keep the Sigil on for everything.",
+        "Sanctuary Onslaught, Elite Sanctuary Onslaught and Duviri Circuit past stage 4 are the quickest ways to reach the cap."
+      ],
+      "disclosures": [
+        {
+          "title": "why 340,000",
+          "body": "240,000 standing carries the five rank-ups to Partner, since each rank-up spends the standing it needs. The 100,000-standing weapon purchase comes on top of that."
+        }
+      ]
+    },
+    {
+      "type": "currency",
+      "place": "VOID FISSURES, ANY",
+      "sub": null,
+      "activity": "collect Aya before Senior Executive",
+      "meta": "5 Aya",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": {
+        "currency": "Aya",
+        "amount": "5"
+      },
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "5",
+          "label": "Aya",
+          "note": "2 at Rank 4 Senior Executive, 3 at Rank 5 Partner",
+          "alt": "Zariman and Cambion Drift bounties",
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [
+        "Aya also drops from Void-related bounties and, rarely, Relic Packs; pick it up while standing accrues."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "PERRIN SEQUENCE OFFERINGS, RELAY",
+      "sub": null,
+      "activity": "buy the pistol",
+      "meta": "100,000 standing",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [
+        {
+          "currency": "Perrin Sequence standing",
+          "amount": "100,000"
+        }
+      ],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Secura Dual Cestra",
+          "note": null,
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The free item you pick at the Partner rank-up can never be a Syndicate weapon; the Cestra is always a separate 100,000-standing purchase."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

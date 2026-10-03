@@ -1,0 +1,160 @@
+{
+  "name": "Dual Kamas",
+  "kind": "melee",
+  "effort": 2,
+  "tradeable": false,
+  "progress": { "have": 0, "need": 1, "unit": "weapon" },
+  "badges": [{ "text": "three 12h builds", "tone": "info" }],
+  "prices": [
+    { "label": "three blueprints", "amount": "120,000 cr", "money": false },
+    { "label": "total credits", "amount": "180,000 cr", "money": false }
+  ],
+  "groups": [
+    {
+      "type": "vendor",
+      "place": "MARKET",
+      "sub": null,
+      "activity": "buy blueprints",
+      "meta": "40,000 cr each",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "2",
+          "label": "Kama Blueprint",
+          "note": "a blueprint is consumed per build, so buy it twice",
+          "alt": null,
+          "done": false
+        },
+        { "qty": null, "label": "Dual Kamas Blueprint", "note": null, "alt": null, "done": false }
+      ],
+      "conditions": [
+        "The platinum button on the Kama listing buys the weapon itself; the credit blueprint is the option beneath it."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "JUPITER",
+      "sub": null,
+      "activity": "any mission",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": "10", "label": "Neural Sensors", "note": "5 per Kama", "alt": null, "done": false }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "URANUS",
+      "sub": "or Mercury, Venus",
+      "activity": "any mission",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "2,400",
+          "label": "Polymer Bundle",
+          "note": "1,200 per Kama",
+          "alt": null,
+          "done": false
+        },
+        { "qty": "2,400", "label": "Ferrite", "note": "1,200 per Kama", "alt": null, "done": false }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "CERES",
+      "sub": null,
+      "activity": "any mission",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "1,800",
+          "label": "Circuits",
+          "note": "900 per Kama; best rate on Ceres",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "1",
+          "label": "Orokin Cell",
+          "note": "also drops on Saturn",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": [
+        {
+          "title": "one Orokin Cell",
+          "body": "The Tethys assassination on Saturn has General Sargas Ruk at an increased chance to drop one. Saturn's normal resource table drops them too."
+        }
+      ]
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Kama, rank it, build a second Kama, then Dual Kamas",
+      "meta": "12h each, 20,000 cr each",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Kama",
+          "note": "rank to 30 before it is consumed",
+          "alt": null,
+          "done": false
+        },
+        { "qty": null, "label": "Kama", "note": "the second copy", "alt": null, "done": false },
+        {
+          "qty": null,
+          "label": "Dual Kamas",
+          "note": "2 Kama, 1 Orokin Cell",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Only one Kama needs ranking for Mastery; both are consumed.",
+        "Dual Kamas is an ingredient for Dual Raza, so rank it to 30 before consuming it."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

@@ -1,0 +1,283 @@
+{
+  "name": "Nukor",
+  "kind": "secondary",
+  "effort": 2,
+  "tradeable": null,
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "weapon"
+  },
+  "badges": [
+    {
+      "text": "Chem Lab",
+      "tone": "warn"
+    },
+    {
+      "text": "forma in the build",
+      "tone": "info"
+    }
+  ],
+  "prices": [
+    {
+      "label": "blueprint",
+      "amount": "15,000 cr",
+      "money": false
+    },
+    {
+      "label": "build",
+      "amount": "30,000 cr",
+      "money": false
+    }
+  ],
+  "groups": [
+    {
+      "type": "research",
+      "place": "CLAN DOJO, CHEM LAB",
+      "sub": null,
+      "activity": "start Detonite Injector research the moment the lab exists",
+      "meta": "72h then 84h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Detonite Injector",
+          "note": "5 Detonite Ampule, 200 Ferrite, 250 Polymer Bundle, 100 Plastids, 5,000 cr; 72h",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Nukor",
+          "note": "10 Detonite Ampule, 550 Salvage, 2 Morphics, 115 Rubedo, 5,000 cr; 84h",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Nukor research cannot start until Injector research finishes, so the minimum wait is 72h + 84h + 24h.",
+        "A solo clan works fine."
+      ],
+      "bonuses": ["Farm the materials while the Injector timer runs."],
+      "disclosures": [
+        {
+          "title": "Kuva Nukor is a different farm",
+          "body": "The Kuva Nukor is a Kuva Lich weapon with its own Mastery. Reddit threads titled Nukor are almost all about it."
+        }
+      ]
+    },
+    {
+      "type": "farm",
+      "place": "PISCINAS, SATURN",
+      "sub": null,
+      "activity": "Survival, Dark Sector",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "15",
+          "label": "Detonite Ampule",
+          "note": "5 for Injector research, 10 for Nukor research",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "100",
+          "label": "Plastids",
+          "note": "Injector research",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "APOLLODORUS, MERCURY",
+      "sub": null,
+      "activity": "Survival",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "200",
+          "label": "Ferrite",
+          "note": "Injector research",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "250",
+          "label": "Polymer Bundle",
+          "note": "Injector research",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "4",
+          "label": "Morphics",
+          "note": "2 for Nukor research, 2 for the build",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "bounty",
+      "place": "INVASIONS",
+      "sub": "Grineer-side rewards",
+      "activity": "finish the Grineer side",
+      "meta": "3 per reward",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "2",
+          "label": "Detonite Injector",
+          "note": "build; saves crafting two",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": [
+        {
+          "title": "craft the Injectors instead",
+          "body": "Each Injector is a foundry build from a 15,000 cr Chem Lab blueprint: 15,000 cr, 10 Detonite Ampule, 1 Control Module, 500 Salvage, 250 Plastids, 12h. Crafting both brings the Ampule total to about 35 and adds 2 Control Modules (Void is best). Injectors also drop from rare and reinforced Grineer storage containers and Tier 4 Orb Vallis bounty stages."
+        }
+      ]
+    },
+    {
+      "type": "farm",
+      "place": "CARME, JUPITER",
+      "sub": null,
+      "activity": "Mobile Defense",
+      "meta": "up to about 3,000 a run",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "6,050",
+          "label": "Salvage",
+          "note": "550 for research, 5,500 for the build",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [
+        "Elara (Survival, Jupiter) with Nekros and a pet carrying Animal Instinct, Resourceful Retriever and Scavenge is the long-run option."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "ZEUGMA, PHOBOS",
+      "sub": null,
+      "activity": "Survival, Dark Sector",
+      "meta": "about 250 per 5 minutes",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "115",
+          "label": "Rubedo",
+          "note": "Nukor research",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": ["Valefor (Europa) is the Defense alternative."],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "CLAN DOJO, CHEM LAB",
+      "sub": null,
+      "activity": "buy blueprint once Nukor research is done",
+      "meta": "15,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [
+        {
+          "currency": "Credits",
+          "amount": "15,000"
+        }
+      ],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Nukor Blueprint",
+          "note": null,
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Nukor",
+      "meta": "24h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Nukor",
+          "note": "30,000 cr, 2 Detonite Injector, 2 Morphics, 5,500 Salvage, 1 Forma",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Unusually for a low-Mastery weapon, the build consumes a Forma."],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

@@ -1,0 +1,157 @@
+{
+  "name": "Tysis",
+  "kind": "secondary",
+  "effort": 2,
+  "tradeable": null,
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "weapon"
+  },
+  "badges": [
+    {
+      "text": "Market blueprint",
+      "tone": "info"
+    },
+    {
+      "text": "MR 9",
+      "tone": "info"
+    }
+  ],
+  "prices": [
+    {
+      "label": "blueprint",
+      "amount": "30,000 cr",
+      "money": false
+    },
+    {
+      "label": "build",
+      "amount": "30,000 cr",
+      "money": false
+    }
+  ],
+  "groups": [
+    {
+      "type": "vendor",
+      "place": "MARKET",
+      "sub": null,
+      "activity": "buy the blueprint",
+      "meta": "30,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Tysis Blueprint",
+          "note": null,
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "ASSUR, URANUS",
+      "sub": "Dark Sector Survival",
+      "activity": "Survival with a loot frame",
+      "meta": "Ophelia also works",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "100",
+          "label": "Polymer Bundle",
+          "note": "Uranus drops only uncommons, so it dilutes least",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "400",
+          "label": "Plastids",
+          "note": "highest chance on Saturn and Uranus",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [
+        "Resource Booster, Resource Drop Chance Booster and the Relay blessing all multiply. Steel Path adds +100% drop chance.",
+        "Nekros (Desecrate), Khora (Pilfering Strangledome) or Hydroid (Pilfering Swarm) are the loot frames; Desecrate and Chesa Kubrow Retrieve do not stack."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "ERIS",
+      "sub": null,
+      "activity": "Survival or Defense",
+      "meta": "about 3,000 per 5 minutes, doubled with Nekros",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "900",
+          "label": "Nano Spores",
+          "note": "also Deimos, Saturn and Neptune",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "2",
+          "label": "Neurodes",
+          "note": "also Earth, Deimos and Lua",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [
+        "Cambion Drift Infested Cysts drop 50 to 65 Plastids each, plus Nano Spores from Deimos."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Tysis",
+      "meta": "24h, 30,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Tysis",
+          "note": "2 Neurodes, 400 Plastids, 900 Nano Spores, 100 Polymer Bundle",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "MR 9 to equip and rank it for Mastery.",
+        "The Coda Tysis is a separate item with its own Mastery."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

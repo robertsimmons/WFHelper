@@ -15,7 +15,10 @@
   import { visibleGroups } from "./planResolution.js";
 
   interface Props {
-    plan: ResolvedPlan;
+    /** Null for an item nobody has written a plan for, which reads as unknown. */
+    plan: ResolvedPlan | null;
+    name: string;
+    tier: string | null;
     /** The pinned item, which keys what the player ticked and roots the tree. */
     uniqueName: string;
     art: string | null;
@@ -24,7 +27,7 @@
     onTakeAlt: (rowId: string) => void;
   }
 
-  const { plan, uniqueName, art, onRefresh, onToggleDone, onTakeAlt }: Props = $props();
+  const { plan, name, tier, uniqueName, art, onRefresh, onToggleDone, onTakeAlt }: Props = $props();
 
   const BUTTON =
     "cursor-pointer rounded-[var(--radius-sm)] border border-border bg-bg-raised px-2 py-1 " +
@@ -74,42 +77,46 @@
     showTree && treeRoot ? buildCraftingTree(treeRoot, $itemDb, $componentOwnership) : null,
   );
 
-  const progressText = $derived(
-    plan.progress.ready
-      ? $tr("nextUp.planReady")
-      : $tr("nextUp.planProgress", {
-          have: plan.progress.have,
-          need: plan.progress.need,
-          unit: plan.progress.unit,
-        }),
-  );
-  const effortLabel = $derived($tr("nextUp.planEffort", { effort: plan.effort }));
+  const progressText = $derived.by((): string => {
+    if (!plan) return "";
+    if (plan.progress.ready) return $tr("nextUp.planReady");
+    return $tr("nextUp.planProgress", {
+      have: plan.progress.have,
+      need: plan.progress.need,
+      unit: plan.progress.unit,
+    });
+  });
+  const effortLabel = $derived(plan ? $tr("nextUp.planEffort", { effort: plan.effort }) : "");
   const tradeable = $derived.by((): string | null => {
-    if (plan.tradeable === false) return $tr("nextUp.planNotTradeable");
-    return typeof plan.tradeable === "string" ? plan.tradeable : null;
+    if (plan?.tradeable === false) return $tr("nextUp.planNotTradeable");
+    return typeof plan?.tradeable === "string" ? plan.tradeable : null;
   });
   /** The line under the name: what it costs, whether it trades, and the one or
    *  two shortcuts the badges name. Only the real-money cost is set apart. */
   const headNotes = $derived([
-    ...plan.prices.map((price) => ({
+    ...(plan?.prices ?? []).map((price) => ({
       text: `${price.amount} ${price.label}`,
       tone: "",
       money: price.money,
     })),
     ...(tradeable ? [{ text: tradeable, tone: "", money: false }] : []),
-    ...plan.badges.map((badge) => ({
+    ...(plan?.badges ?? []).map((badge) => ({
       text: badge.text,
       tone: BADGE_TONE[badge.tone],
       money: false,
     })),
   ]);
-  const groups = $derived(visibleGroups(plan, showDone));
-  const unchecked = $derived(plan.unresolved.map((kind) => $tr(FACT_LABEL[kind])).join(", "));
+  const groups = $derived(plan ? visibleGroups(plan, showDone) : []);
+  const unchecked = $derived(
+    (plan?.unresolved ?? []).map((kind) => $tr(FACT_LABEL[kind])).join(", "),
+  );
 </script>
 
 <div class="flex flex-col gap-0 pb-10">
   <div class="mb-[18px] mt-3 flex flex-wrap gap-[7px]">
-    <button class={BUTTON} onclick={onRefresh}>{$tr("nextUp.planRefresh")}</button>
+    {#if plan}
+      <button class={BUTTON} onclick={onRefresh}>{$tr("nextUp.planRefresh")}</button>
+    {/if}
     <button
       class={BUTTON}
       disabled={treeRoot === null}
@@ -117,9 +124,11 @@
       onclick={() => (showTree = !showTree)}
       >{$tr(showTree ? "nextUp.planHideTree" : "nextUp.planShowTree")}</button
     >
-    <button class={BUTTON} aria-pressed={showDone} onclick={() => (showDone = !showDone)}
-      >{$tr(showDone ? "nextUp.planHideDone" : "nextUp.planShowDone")}</button
-    >
+    {#if plan}
+      <button class={BUTTON} aria-pressed={showDone} onclick={() => (showDone = !showDone)}
+        >{$tr(showDone ? "nextUp.planHideDone" : "nextUp.planShowDone")}</button
+      >
+    {/if}
   </div>
 
   <div class="mb-1.5 flex items-start gap-3.5">
@@ -127,53 +136,55 @@
       class="flex h-[88px] w-[190px] shrink-0 items-center justify-center overflow-hidden
              rounded-[7px] bg-bg-deep"
     >
-      <ItemImage src={art} alt={plan.name} cls="max-h-[88px] max-w-[190px]" eager />
+      <ItemImage src={art} alt={name} cls="max-h-[88px] max-w-[190px]" eager />
     </span>
     <div class="min-w-0">
       <div class="flex items-baseline gap-2">
-        <span class="text-[1.3125rem] font-semibold leading-[1.15]">{plan.name}</span>
-        <TierBadge tier={plan.tier} size="md" chip />
-        <span class="shrink-0 self-center"><WikiButton fallbackName={plan.name} /></span>
+        <span class="text-[1.3125rem] font-semibold leading-[1.15]">{name}</span>
+        <TierBadge {tier} size="md" chip />
+        <span class="shrink-0 self-center"><WikiButton fallbackName={name} /></span>
       </div>
 
-      <div class="mt-[5px] flex flex-wrap items-center gap-[7px] text-xs text-text-secondary">
-        {#each headNotes as note, index (index)}
-          {#if index > 0}
-            <span class="opacity-40" aria-hidden="true">·</span>
-          {/if}
-          {#if note.money}
-            <span
-              class="rounded-[var(--radius-sm)] border border-warning/60 px-1.5 py-px text-warning"
-              >{note.text}</span
-            >
-          {:else}
-            <span class={note.tone}>{note.text}</span>
-          {/if}
-        {/each}
-      </div>
-
-      <div class="mt-[7px] flex items-center gap-2.5">
-        <span class="flex w-[104px] gap-[2px]" role="img" aria-label={effortLabel}>
-          {#each EFFORT_STEPS as step (step)}
-            <span
-              class="h-1 flex-1 rounded-[1px] {step <= plan.effort
-                ? effortFill(plan.effort)
-                : EFFORT_TRACK}"
-            ></span>
+      {#if plan}
+        <div class="mt-[5px] flex flex-wrap items-center gap-[7px] text-xs text-text-secondary">
+          {#each headNotes as note, index (index)}
+            {#if index > 0}
+              <span class="opacity-40" aria-hidden="true">·</span>
+            {/if}
+            {#if note.money}
+              <span
+                class="rounded-[var(--radius-sm)] border border-warning/60 px-1.5 py-px text-warning"
+                >{note.text}</span
+              >
+            {:else}
+              <span class={note.tone}>{note.text}</span>
+            {/if}
           {/each}
-        </span>
-        <span class="text-xs {plan.progress.ready ? 'text-success' : 'text-text-secondary'}"
-          >{progressText}</span
-        >
-        {#if plan.steps.total > 0}
-          <span class="text-xs text-text-muted"
-            >{$tr("nextUp.planStep", {
-              step: Math.min(plan.steps.done + 1, plan.steps.total),
-              total: plan.steps.total,
-            })}</span
+        </div>
+
+        <div class="mt-[7px] flex items-center gap-2.5">
+          <span class="flex w-[104px] gap-[2px]" role="img" aria-label={effortLabel}>
+            {#each EFFORT_STEPS as step (step)}
+              <span
+                class="h-1 flex-1 rounded-[1px] {step <= plan.effort
+                  ? effortFill(plan.effort)
+                  : EFFORT_TRACK}"
+              ></span>
+            {/each}
+          </span>
+          <span class="text-xs {plan.progress.ready ? 'text-success' : 'text-text-secondary'}"
+            >{progressText}</span
           >
-        {/if}
-      </div>
+          {#if plan.steps.total > 0}
+            <span class="text-xs text-text-muted"
+              >{$tr("nextUp.planStep", {
+                step: Math.min(plan.steps.done + 1, plan.steps.total),
+                total: plan.steps.total,
+              })}</span
+            >
+          {/if}
+        </div>
+      {/if}
     </div>
   </div>
 
@@ -183,11 +194,17 @@
     </div>
   {/if}
 
+  {#if !plan}
+    <div class="empty-state" data-plan-none>
+      <p>{$tr("nextUp.planNone")}</p>
+    </div>
+  {/if}
+
   {#each groups as group (group.id)}
     <PlanGroup {group} {showDone} {onToggleDone} {onTakeAlt} />
   {/each}
 
-  {#if plan.ledger.length > 0}
+  {#if plan && plan.ledger.length > 0}
     <div class="mt-4 border-t border-border-subtle pt-3">
       <h3 class="m-0 mb-1.5 text-xs font-semibold uppercase tracking-[0.1em] text-text-secondary">
         {$tr("nextUp.planCurrency")}
@@ -215,13 +232,9 @@
     </div>
   {/if}
 
-  {#if plan.unresolved.length > 0}
+  {#if unchecked}
     <p class="mt-3 text-xs text-text-muted">
       {$tr("nextUp.planUnchecked", { facts: unchecked })}
     </p>
-  {/if}
-
-  {#if !plan.authored}
-    <p class="mt-1.5 text-xs text-text-muted">{$tr("nextUp.planDerived")}</p>
   {/if}
 </div>

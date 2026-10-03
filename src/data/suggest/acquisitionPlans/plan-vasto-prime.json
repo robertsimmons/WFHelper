@@ -1,0 +1,83 @@
+{
+  "name": "Vasto Prime",
+  "kind": "secondary",
+  "effort": 8,
+  "source": "relics",
+  "tradeable": true,
+  "progress": { "have": 0, "need": 3, "unit": "parts" },
+  "badges": [{ "text": "vaulted", "tone": "warn" }],
+  "prices": [],
+  "materials": [
+    { "qty": "10", "label": "Orokin Cell", "note": null },
+    { "qty": "15,000", "label": "Credits", "note": null }
+  ],
+  "groups": [
+    {
+      "type": "fissure",
+      "place": "ANY VOID FISSURE",
+      "sub": null,
+      "activity": "crack the matching vaulted relics",
+      "meta": "Blueprint is the bottleneck",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Vasto Prime Blueprint",
+          "note": "Lith L4 or Meso A6 or Meso D5 or Meso L2 or Meso V8 or Neo S3 or Axi A5 or Axi P5 or Axi S15, Uncommon: 20% Radiant",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Vasto Prime Barrel",
+          "note": "Lith A5 or Lith K11 or Lith M8 or Lith T11 or Neo D1 or Neo N2 or Axi A5 or Axi M4 or Axi P5 or Axi S7 or Axi V3, Common: 25.33% Intact",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Vasto Prime Receiver",
+          "note": "Lith A1 or Lith G11 or Lith V9 or Meso N16 or Meso V2 or Neo B8 or Neo N12 or Neo R5 or Neo T8 or Axi A5, Common: 25.33% Intact",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Vasto Prime is vaulted: its relics no longer drop from missions.",
+        "Vaulted relics and the parts themselves still trade between players."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Vasto Prime",
+      "meta": "12h, MR 10",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Vasto Prime",
+          "note": "15,000 cr, Barrel, Receiver, 10 Orokin Cell",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

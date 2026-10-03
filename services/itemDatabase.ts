@@ -210,6 +210,7 @@ interface ItemEntry {
   vendors?: StoredVendorSource[];
   isBuildComponent?: boolean;
   componentOf?: string;
+  otherForm?: string;
 }
 
 let itemsByUniqueName: Record<string, ItemEntry> = {};
@@ -387,6 +388,7 @@ function loadPublicExportPlus(): number {
           productCategory: item.productCategory || null,
           ducats: pepDucats,
           _source: "pep",
+          ...(item.bayonetOtherWeaponType ? { otherForm: item.bayonetOtherWeaponType } : {}),
         };
         pepCount++;
       }
@@ -1292,6 +1294,7 @@ export function getRendererLookup(): Record<string, RendererItemEntry> {
       wikiaUrl: item.wikiaUrl || null,
       ...(recipesByResultType[key] ? { recipe: recipesByResultType[key] } : {}),
       ...(reusableBlueprints.has(key) ? { reusableBlueprint: true } : {}),
+      ...(item.otherForm ? { otherForm: item.otherForm } : {}),
       ...(resultTypeByBlueprint[key] && itemsByUniqueName[resultTypeByBlueprint[key]]
         ? { buildsProduct: resultTypeByBlueprint[key] }
         : {}),

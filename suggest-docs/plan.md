@@ -99,15 +99,10 @@ Each is shippable alone, in order.
 |---|---|---|---|
 | 9 | Build import to full step plan | | |
 | 11 | Scannables: track and collect scannable things | Spec below | |
-| 12 | Acquisition source filter | Spec below | |
 
-### Source filter
+### Relic routes for Primes
 
-A Source chip beside the kind chips picks the grind the player feels like doing: Dojo, Bounties, Railjack, Boss, Duviri, Relics, Repeat runs, Standing, Shop, Unique. Each item has one source, the grind that is most of getting it, read from its plan's `source` (set by `wfhelper-research/classify-sources.py`).
-
-### Plans for every item
-
-Every acquirable item gets a plan file, even a trivial one ("relics", "Market"), and the generic fallback (`plan/fallback.ts`) goes away, so no item reads differently because it has no plan. Primes are the bulk of these.
+Relics join the shared store as things to farm, each with where it drops. A Prime's plan page builds its farming route in code, not authored text: the relics its missing parts need, grouped by where they drop, with how many of each to farm solo to expect the part at its rarity. Vaulted and unvaulted relics come from data that updates itself from DE's sources, so a vault rotation changes the route with no edit. Prime effort (vaulted 8, unvaulted 5) gets revisited once routes exist.
 
 ### Wiki verification pass
 

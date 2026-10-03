@@ -41,16 +41,16 @@ describe("sectionNarrowed", () => {
     }
   });
 
-  it("reads an empty selection as every kind rather than as a narrowing", () => {
+  it("sees an emptied list as narrowed to nothing", () => {
+    expect(sectionNarrowed("tasks", options({ taskKinds: [] }))).toBe(true);
+    expect(sectionNarrowed("relics", options({ relicEras: [] }))).toBe(true);
+    expect(sectionNarrowed("mastery", options({ masteryKinds: [] }))).toBe(true);
+  });
+
+  it("reads acquisition's empty list as every kind and source", () => {
     expect(
-      sectionNarrowed(
-        "acquisition",
-        options({ acquisitionKinds: [], masteryKinds: [], relicEras: [], taskKinds: [] }),
-      ),
+      sectionNarrowed("acquisition", options({ acquisitionKinds: [], acquisitionSources: [] })),
     ).toBe(false);
-    expect(sectionNarrowed("tasks", options({ taskKinds: [] }))).toBe(false);
-    expect(sectionNarrowed("relics", options({ relicEras: [] }))).toBe(false);
-    expect(sectionNarrowed("mastery", options({ masteryKinds: [] }))).toBe(false);
   });
 
   it("sees a section narrowed to part of its list", () => {
@@ -66,6 +66,14 @@ describe("sectionNarrowed", () => {
     expect(sectionNarrowed("acquisition", options({ acquisitionKinds: [ACQUISITION_NONE] }))).toBe(
       true,
     );
+    expect(
+      sectionNarrowed("acquisition", options({ acquisitionSources: [ACQUISITION_NONE] })),
+    ).toBe(true);
+  });
+
+  it("sees the acquisition section narrowed to some sources", () => {
+    expect(sectionNarrowed("acquisition", options({ acquisitionSources: ["boss"] }))).toBe(true);
+    expect(sectionNarrowed("acquisition", options({ acquisitionSources: [] }))).toBe(false);
   });
 
   it("answers for one section from its own controls only", () => {

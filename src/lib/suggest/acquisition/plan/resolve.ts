@@ -358,6 +358,7 @@ export function resolvePlan(
   return {
     name: plan.name,
     kind: plan.kind,
+    source: plan.source,
     tier,
     effort: plan.effort,
     tradeable: plan.tradeable,
@@ -375,7 +376,6 @@ export function resolvePlan(
     groups,
     ledger,
     steps: { done, total },
-    authored: true,
     unresolved: [...unresolved],
   };
 }

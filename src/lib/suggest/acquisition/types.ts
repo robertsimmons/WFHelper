@@ -19,9 +19,8 @@ export type WeaponClass = "primary" | "secondary" | "melee" | "archgun" | "archm
  *  separate wins, and each one is its own reason to farm. */
 export type NeedReason = "mastery" | "subsume" | "incarnon" | "prime";
 
-/** Gear built from a head part plus looks. Kitguns and zaws are assembled the
- *  same way but reach the sweep as ordinary weapons. */
-export type ModularGear = "moa" | "hound" | "amp" | "kdrive";
+/** Gear built from a head part plus parts that are only stats and looks. */
+export type ModularGear = "moa" | "hound" | "amp" | "kdrive" | "kitgun" | "zaw";
 
 export interface ModularHead {
   uniqueName: string;

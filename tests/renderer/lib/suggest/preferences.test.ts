@@ -4,6 +4,7 @@ import {
   ACQUISITION_INCLUDES,
   ACQUISITION_NONE,
 } from "../../../../src/lib/suggest/acquisition/kinds.js";
+import { ACQUISITION_SOURCES } from "../../../../src/lib/suggest/acquisition/sources.js";
 import {
   ACTIVITY_PREFS,
   DEFAULT_OPTIONS,
@@ -217,6 +218,26 @@ describe("parseOptions", () => {
     expect(
       parseOptions(JSON.stringify({ acquisitionKinds: [ACQUISITION_NONE, "warframe"] })),
     ).toEqual({ acquisitionKinds: [ACQUISITION_NONE] });
+  });
+});
+
+describe("parseOptions acquisitionSources", () => {
+  it("reads a list naming every source as the empty one", () => {
+    expect(parseOptions(JSON.stringify({ acquisitionSources: [...ACQUISITION_SOURCES] }))).toEqual({
+      acquisitionSources: [],
+    });
+  });
+
+  it("keeps a narrowed list in the row's order and drops what it does not ship", () => {
+    expect(
+      parseOptions(JSON.stringify({ acquisitionSources: ["boss", "shop", "farming"] })),
+    ).toEqual({ acquisitionSources: ["shop", "boss"] });
+  });
+
+  it("reads back a cleared source row as cleared", () => {
+    expect(
+      parseOptions(JSON.stringify({ acquisitionSources: [ACQUISITION_NONE, "boss"] })),
+    ).toEqual({ acquisitionSources: [ACQUISITION_NONE] });
   });
 });
 

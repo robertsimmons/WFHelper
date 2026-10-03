@@ -1,7 +1,7 @@
 import {
   resolvePlanFor,
-  type FallbackSource,
   type PlanContext,
+  type PlanTarget,
   type PlanProgressOverride,
   type ResolvedGroup,
   type ResolvedPlan,
@@ -17,26 +17,27 @@ interface PlanAnswers {
 
 export interface PinnedPlanInput {
   uniqueName: string;
-  target: FallbackSource;
+  target: PlanTarget;
   progress?: PlanProgressOverride | undefined;
   answers?: PlanAnswers | undefined;
 }
 
 /** One resolved plan per pinned item, keyed by uniqueName so the strip and the
- *  page read the same resolution. */
+ *  page read the same resolution. An item with no plan has no key. */
 export function resolvePinnedPlans(
   inputs: readonly PinnedPlanInput[],
   context: Omit<PlanContext, "progress" | "manualDone" | "manualCleared" | "altsTaken">,
 ): Record<string, ResolvedPlan> {
   const plans: Record<string, ResolvedPlan> = {};
   for (const input of inputs) {
-    plans[input.uniqueName] = resolvePlanFor(input.target, {
+    const plan = resolvePlanFor(input.target, {
       ...context,
       progress: input.progress,
       manualDone: input.answers?.manualDone,
       manualCleared: input.answers?.manualCleared,
       altsTaken: input.answers?.altsTaken,
     });
+    if (plan) plans[input.uniqueName] = plan;
   }
   return plans;
 }

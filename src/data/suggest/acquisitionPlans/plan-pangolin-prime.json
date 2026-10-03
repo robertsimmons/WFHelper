@@ -1,0 +1,83 @@
+{
+  "name": "Pangolin Prime",
+  "kind": "melee",
+  "effort": 8,
+  "source": "relics",
+  "tradeable": true,
+  "progress": { "have": 0, "need": 3, "unit": "parts" },
+  "badges": [{ "text": "vaulted", "tone": "warn" }],
+  "prices": [],
+  "materials": [
+    { "qty": "15", "label": "Orokin Cell", "note": null },
+    { "qty": "15,000", "label": "Credits", "note": null }
+  ],
+  "groups": [
+    {
+      "type": "fissure",
+      "place": "ANY VOID FISSURE",
+      "sub": null,
+      "activity": "crack the matching vaulted relics",
+      "meta": "Blueprint is the bottleneck",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Pangolin Prime Blueprint",
+          "note": "Lith P5 or Meso P3 or Neo P1 or Neo P3 or Neo P5 or Axi P4, Rare: 10% Radiant",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Pangolin Prime Blade",
+          "note": "Lith N7 or Lith S11 or Neo S14 or Axi A11 or Axi A13 or Axi C8 or Axi G4 or Axi T7, Uncommon: 20% Radiant",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Pangolin Prime Handle",
+          "note": "Meso N10 or Meso R3 or Meso S11 or Neo N13 or Neo N17 or Axi C6 or Axi I1 or Axi V11, Common: 25.33% Intact",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Pangolin Prime is vaulted: its relics no longer drop from missions.",
+        "Vaulted relics and the parts themselves still trade between players."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Pangolin Prime",
+      "meta": "12h, MR 14",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Pangolin Prime",
+          "note": "15,000 cr, Blade, Handle, 15 Orokin Cell",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

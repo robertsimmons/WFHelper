@@ -334,6 +334,19 @@ const LOHRIN_BRACE = "/Lotus/Weapons/Sentients/OperatorAmplifiers/Set1/Grip/Sent
 export const RUNWAY =
   "/Lotus/Types/Vehicles/Hoverboard/HoverboardParts/PartComponents/HoverboardCorpusC/HoverboardCorpusCDeck";
 
+export const CATCHMOON =
+  "/Lotus/Weapons/SolarisUnited/Secondary/SUModularSecondarySet1/Barrel/SUModularSecondaryBarrelAPart";
+const LOVETAP =
+  "/Lotus/Weapons/SolarisUnited/Secondary/SUModularSecondarySet1/Handle/SUModularSecondaryHandleBPart";
+const SPORELACER =
+  "/Lotus/Weapons/Infested/Pistols/InfKitGun/Barrels/InfBarrelEgg/InfModularBarrelEggPart";
+
+export const BALLA = "/Lotus/Weapons/Ostron/Melee/ModularMelee01/Tip/TipOne";
+const BALLA_CONCLAVE = "/Lotus/Weapons/Ostron/Melee/ModularMelee01/Tip/PvPVariantTipOne";
+const PLAGUE_KEEWAR = "/Lotus/Weapons/Ostron/Melee/ModularMeleeInfested/Tips/InfestedTipTwo";
+const PEYE = "/Lotus/Weapons/Ostron/Melee/ModularMelee01/Handle/HandleOne";
+const JAI = "/Lotus/Weapons/Ostron/Melee/ModularMelee01/Balance/BalanceSpeedI";
+
 function head(name: string, masterable: boolean): ItemDbEntry {
   return {
     name,
@@ -371,6 +384,17 @@ export function companionDb(): Record<string, ItemDbEntry> {
     [LOHRIN_BRACE]: head("Lohrin Brace", false),
 
     [RUNWAY]: head("Runway", true),
+
+    [CATCHMOON]: head("Catchmoon", false),
+    [SPORELACER]: head("Sporelacer", false),
+    [LOVETAP]: head("Lovetap", false),
+
+    // The Conclave copy comes first, so dedup by name can't hide a wrong pick.
+    [BALLA_CONCLAVE]: head("Balla", false),
+    [BALLA]: head("Balla", false),
+    [PLAGUE_KEEWAR]: head("Plague Keewar", false),
+    [PEYE]: head("Peye", false),
+    [JAI]: head("Jai", false),
 
     [OROKIN_CELL]: { name: "Orokin Cell", category: "Resource" },
   };

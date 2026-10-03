@@ -17,6 +17,22 @@ export const PLAN_GROUP_TYPES = [
 
 export type PlanGroupType = (typeof PLAN_GROUP_TYPES)[number];
 
+/** The one repetitive grind the item mostly comes down to. */
+export const PLAN_SOURCES = [
+  "dojo",
+  "bounties",
+  "railjack",
+  "boss",
+  "duviri",
+  "relics",
+  "repeat",
+  "standing",
+  "shop",
+  "unique",
+] as const;
+
+export type PlanSource = (typeof PLAN_SOURCES)[number];
+
 export const PLAN_LIVE_STATES = ["open", "blocked", "waiting"] as const;
 
 export type PlanLiveState = (typeof PLAN_LIVE_STATES)[number];
@@ -115,6 +131,7 @@ export interface PlanMaterial {
 export interface AuthoredPlan {
   name: string;
   kind: string;
+  source: PlanSource;
   /** 1-10. */
   effort: number;
   tradeable: boolean | string | null;

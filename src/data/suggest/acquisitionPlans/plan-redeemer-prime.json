@@ -1,0 +1,83 @@
+{
+  "name": "Redeemer Prime",
+  "kind": "melee",
+  "effort": 8,
+  "source": "relics",
+  "tradeable": true,
+  "progress": { "have": 0, "need": 3, "unit": "parts" },
+  "badges": [{ "text": "vaulted", "tone": "warn" }],
+  "prices": [],
+  "materials": [
+    { "qty": "15", "label": "Orokin Cell", "note": null },
+    { "qty": "15,000", "label": "Credits", "note": null }
+  ],
+  "groups": [
+    {
+      "type": "fissure",
+      "place": "ANY VOID FISSURE",
+      "sub": null,
+      "activity": "crack the matching vaulted relics",
+      "meta": "Handle is the bottleneck",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Redeemer Prime Blueprint",
+          "note": "Lith B6 or Lith D2 or Meso B4 or Meso B7 or Neo C1 or Neo Z4 or Axi G2 or Axi M4, Uncommon: 20% Radiant",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Redeemer Prime Handle",
+          "note": "Lith R1 or Neo R3 or Neo R4 or Neo R5 or Axi R2 or Axi R3, Rare: 10% Radiant",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Redeemer Prime Blade",
+          "note": "Lith D5 or Lith L2 or Lith M5 or Lith N9 or Meso Z2 or Neo G2 or Neo N10 or Neo P1 or Neo S12 or Neo T3, Common: 25.33% Intact",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Redeemer Prime is vaulted: its relics no longer drop from missions.",
+        "Vaulted relics and the parts themselves still trade between players."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Redeemer Prime",
+      "meta": "12h, MR 10",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Redeemer Prime",
+          "note": "15,000 cr, Handle, Blade, 15 Orokin Cell",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

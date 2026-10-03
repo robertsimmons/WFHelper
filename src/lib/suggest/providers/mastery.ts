@@ -84,7 +84,6 @@ function kindOf(item: Levelable): MasteryKind | null {
 
 function keeps(prefs: SuggestionPreferences, item: Levelable): boolean {
   const kinds = prefs.options.masteryKinds;
-  if (kinds.length === 0) return true;
   const kind = kindOf(item);
   // `Other` is the category resolver's fallback, so no box can honestly name
   // what lands there; hiding it would lose the grind where nobody would look.

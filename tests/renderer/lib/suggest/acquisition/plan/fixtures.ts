@@ -195,6 +195,7 @@ function plan(name: string, groups: AuthoredPlan["groups"]): AuthoredPlan {
   return {
     name,
     kind: "warframe",
+    source: "boss",
     effort: 3,
     tradeable: null,
     progress: { have: 2, need: 4, unit: "parts" },

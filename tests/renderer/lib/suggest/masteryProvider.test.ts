@@ -152,9 +152,9 @@ describe("masteryProvider", () => {
     expect(ids({}, { masteryKinds: ["frame", "weapon"] })).toEqual(["mastery:/Bramma"]);
   });
 
-  it("reads an empty kind list as every kind", () => {
+  it("shows no kind when every box is unticked", () => {
     loadMastery([item({ name: "Kuva Bramma", uniqueName: "/Bramma", rank: 30, maxRank: 40 })]);
-    expect(ids({}, { masteryKinds: [] })).toEqual(["mastery:/Bramma"]);
+    expect(ids({}, { masteryKinds: [] })).toEqual([]);
   });
 
   it("narrows to frames", () => {

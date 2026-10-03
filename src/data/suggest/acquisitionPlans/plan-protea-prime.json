@@ -1,15 +1,12 @@
 {
   "name": "Protea Prime",
   "kind": "warframe-prime",
-  "effort": 8,
+  "effort": 5,
   "source": "relics",
   "tradeable": true,
   "progress": { "have": 0, "need": 4, "unit": "parts" },
-  "badges": [
-    { "text": "vaulted", "tone": "warn" },
-    { "text": "Prime Resurgence", "tone": "info" }
-  ],
-  "prices": [{ "label": "set, player trade", "amount": "~40-80 p", "money": false }],
+  "badges": [],
+  "prices": [],
   "materials": [
     { "qty": "8", "label": "Neural Sensors", "note": "Neuroptics" },
     { "qty": "10", "label": "Control Module", "note": "Neuroptics" },
@@ -28,149 +25,12 @@
   ],
   "groups": [
     {
-      "type": "vendor",
-      "place": "PLAYER TRADE",
-      "sub": null,
-      "activity": "buy a complete set or vaulted relics",
-      "meta": "available while vaulted",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "1",
-          "label": "Protea Prime set",
-          "note": "all four blueprints; usually the fastest vaulted route",
-          "alt": "buy matching relics instead",
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Vanguard M1",
-          "note": "Chassis, Uncommon",
-          "alt": "Axi P7/P8, Meso P17, or Neo P7 (Rare)",
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Vanguard E1",
-          "note": "Neuroptics, Common",
-          "alt": "normal Neuroptics relics (Uncommon)",
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Protea Prime and every relic that contains her parts are vaulted. Missions and relic packs cannot supply her relics today.",
-        "All vaulted relics and component blueprints are tradeable. Check current player prices before choosing relics over a finished set.",
-        "Vanguard M1 and E1 are valuable alternatives because their Chassis and Neuroptics rarities are better than the normal relic options."
-      ],
-      "bonuses": [
-        "A complete set avoids both relic-market availability and fissure RNG.",
-        "Trade chat and Warframe.Market are useful for comparing current set versus relic prices."
-      ],
-      "disclosures": [
-        {
-          "title": "vaulted means waiting or trading",
-          "body": "There is no mission farm for Protea Prime until a future Prime Resurgence rotation includes her. Her vault status and Varzia's inventory can change, so verify them before spending platinum."
-        }
-      ]
-    },
-    {
-      "type": "currency",
-      "place": "OPEN-WORLD BOUNTIES",
-      "sub": "Cetus, Fortuna, or Deimos",
-      "activity": "bank Aya before a Protea rotation",
-      "meta": "Aya is for future Varzia stock",
-      "mode": "Tier 5 recommended",
-      "live": null,
-      "skip": null,
-      "earns": { "currency": "Aya", "amount": "20" },
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "20",
-          "label": "Aya",
-          "note": "rough radshare budget; carries between rotations",
-          "alt": "syndicate or open-world relic packs",
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Aya is untradeable and cannot be boosted, but it stays in inventory after a rotation ends.",
-        "Relic packs can produce Aya but never vaulted Protea relics."
-      ],
-      "bonuses": [],
-      "disclosures": [
-        {
-          "title": "the rotation has no published queue",
-          "body": "Varzia changes stock every 28 days at 18:00 UTC, but future offerings are not announced far enough ahead to schedule Protea. Check the live Prime Resurgence page before acting."
-        }
-      ],
-      "ref": "Aya"
-    },
-    {
-      "type": "vendor",
-      "place": "MAROO'S BAZAAR, MARS",
-      "sub": null,
-      "activity": "Varzia, 1 Aya per relic",
-      "meta": "only when Protea returns",
-      "mode": null,
-      "live": { "state": "blocked", "text": "Vaulted; await Prime Resurgence" },
-      "skip": null,
-      "earns": null,
-      "spends": [{ "currency": "Aya", "amount": "20" }],
-      "map": "maroos-bazaar",
-      "rows": [
-        {
-          "qty": "4",
-          "label": "Blueprint relic",
-          "note": "Common; Meso W4 at launch",
-          "alt": "confirm current Varzia relic",
-          "done": false
-        },
-        {
-          "qty": "12",
-          "label": "Chassis relic",
-          "note": "Rare; Axi P7 at launch",
-          "alt": "confirm current Varzia relic",
-          "done": false
-        },
-        {
-          "qty": "4",
-          "label": "Neuroptics relic",
-          "note": "Uncommon; Neo P6 at launch",
-          "alt": "confirm current Varzia relic",
-          "done": false
-        },
-        {
-          "qty": "12",
-          "label": "Systems relic",
-          "note": "Rare; Lith P9 at launch",
-          "alt": "confirm current Varzia relic",
-          "done": false
-        }
-      ],
-      "conditions": [
-        "The launch relic IDs are historical references only; Varzia sells a hand-picked subset when a frame returns. Confirm the actual IDs and part rarities in her shop.",
-        "Buy enough relics before the rotation closes. Aya-bought relics are tradeable and remain openable forever.",
-        "Regal Aya can buy the completed frame when available, but it is a real-money currency, not a farmable substitute for Aya."
-      ],
-      "bonuses": [
-        "Use the Orbiter Relic Segment or Prime Resurgence Market tab to access Varzia without travelling to Mars."
-      ],
-      "disclosures": []
-    },
-    {
       "type": "fissure",
       "place": "ANY VOID FISSURE",
       "sub": null,
-      "activity": "crack matching relics",
-      "meta": "radshare the rare parts",
-      "mode": "premade recommended",
+      "activity": "crack the matching relic era",
+      "meta": "Chassis is the bottleneck",
+      "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
@@ -180,45 +40,38 @@
         {
           "qty": null,
           "label": "Protea Prime Blueprint",
-          "note": "Common; run Intact",
+          "note": "Neo O4, Common: 25.33% Intact",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Protea Prime Neuroptics",
+          "note": "Axi A23, Uncommon: 20% Radiant",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Protea Prime Chassis",
-          "note": "Rare; run Radiant radshare",
-          "alt": "Vanguard M1 is Uncommon",
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Protea Prime Neuroptics",
-          "note": "Uncommon; Radiant normally, Vanguard E1 Intact",
+          "note": "Neo P11, Rare: 10% Radiant",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Protea Prime Systems",
-          "note": "Rare; run Radiant radshare",
+          "note": "Meso I3, Uncommon: 20% Radiant",
           "alt": null,
           "done": false
         }
       ],
-      "conditions": [
-        "Refine rare-part relics to Radiant. Four matching Radiant relics give a 34.4% chance of at least one Rare reward per run.",
-        "Use Intact relics for Common drops: their chance falls from 25.33% Intact to 16.67% Radiant.",
-        "A radshare requires all four players to bring the same relic at the same refinement level. Collect 10 Reactant before extracting."
-      ],
-      "bonuses": [
-        "Recruit by exact relic name, or use a vaulted-relic community, to find matching relic owners.",
-        "Choose a squadmate's reward when it contains the needed part; every squad member may claim the same reward."
-      ],
+      "conditions": [],
+      "bonuses": [],
       "disclosures": [
         {
-          "title": "do not solo-crack expensive relics",
-          "body": "Vaulted relics are scarce and the Chassis and Systems are Rare in their normal relics. A proper radshare spends four relics per squad run but dramatically improves each owner's expected result."
+          "title": "also in vaulted relics",
+          "body": "Blueprint: Lith W4, Meso K7, Meso V10, Meso V14, Meso W4, Neo C6, Axi N13, Axi V13, Vanguard C1; Neuroptics: Lith D7, Lith O4, Meso T8, Neo D9, Neo P6, Axi S16, Axi T12, Vanguard E1; Chassis: Meso P17, Neo P7, Axi P7, Axi P8, Vanguard M1; Systems: Lith P9, Meso P15, Meso P16, Neo P9, Axi P9, Vanguard P1."
         }
       ]
     },
@@ -259,14 +112,12 @@
         {
           "qty": null,
           "label": "Protea Prime",
-          "note": "25,000 cr, 5 Orokin Cell, 3 days",
+          "note": "25,000 cr, Neuroptics, Chassis, Systems, 5 Orokin Cell, 3 days",
           "alt": null,
           "done": false
         }
       ],
-      "conditions": [
-        "Components build in parallel. Keep a free Warframe slot available for the final claim."
-      ],
+      "conditions": [],
       "bonuses": [],
       "disclosures": []
     }

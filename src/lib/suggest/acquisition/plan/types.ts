@@ -7,6 +7,7 @@ import type {
   PlanGroupType,
   PlanLiveState,
   PlanPrice,
+  PlanSource,
 } from "./schema.js";
 
 /** A derived fact the plan page names. Each one either resolves against live app
@@ -130,6 +131,7 @@ interface ResolvedProgress {
 export interface ResolvedPlan {
   name: string;
   kind: string;
+  source: PlanSource;
   /** Resolved live from the same source the card reads, never from the plan file. */
   tier: string | null;
   effort: number;
@@ -140,8 +142,6 @@ export interface ResolvedPlan {
   groups: ResolvedGroup[];
   ledger: ResolvedLedgerEntry[];
   steps: { done: number; total: number };
-  /** False for a plan derived from the drop table alone, with no community notes. */
-  authored: boolean;
   /** Fact kinds this plan wanted and the app could not compute. */
   unresolved: PlanFactKind[];
 }

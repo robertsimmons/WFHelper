@@ -6,6 +6,7 @@ import {
   authoredPlan,
   authoredPlans,
   planRating,
+  planSource,
   validatePlan,
 } from "../../../../../../src/lib/suggest/acquisition/plan/index.js";
 import type { AuthoredPlan } from "../../../../../../src/lib/suggest/acquisition/plan/index.js";
@@ -26,6 +27,19 @@ describe("validatePlan", () => {
     expect(validatePlan(plan, resources())).toEqual(["groups[1].type is not a plan group type"]);
   });
 
+  it("requires a source from the shipped list", () => {
+    const missing: Partial<AuthoredPlan> = rhinoPlan();
+    delete missing.source;
+    expect(validatePlan(missing, resources())).toEqual(["source is not a plan source"]);
+    const unknown = { ...rhinoPlan(), source: "farming" };
+    expect(validatePlan(unknown, resources())).toEqual(["source is not a plan source"]);
+  });
+
+  it("reads an item with no plan as unique", () => {
+    expect(planSource("Rhino")).toBe(authoredPlan("Rhino")?.source);
+    expect(planSource("Not A Real Item")).toBe("unique");
+  });
+
   it("rejects a quantity that is not a number string", () => {
     const plan = rhinoPlan();
     plan.groups[2].rows[0].qty = "a few";
@@ -39,8 +53,8 @@ describe("validatePlan", () => {
       text: "or 20,000 standing at Amir",
       spends: [{ currency: "The Hex Standing", amount: "20,000" }],
     });
-    expect(authoredPlan("Artax")?.groups[1].rows[0].alt).toBe(
-      "free from the Venus Junction task Upgrade Dreamer's Bond Mod",
+    expect(authoredPlan("Afuris")?.groups[0].rows[1].alt).toBe(
+      "one free from the Earth to Venus Junction",
     );
   });
 
@@ -58,11 +72,12 @@ describe("validatePlan", () => {
 
   it("rates only the items it has a plan for", () => {
     expect(planRating("Rhino")).toEqual({
+      planned: true,
       effort: 3,
       badge: { text: "Circuit in 3w", tone: "circuit" },
     });
-    expect(planRating("hound")).toMatchObject({ effort: 8 });
-    expect(planRating("Not A Real Item")).toEqual({ effort: null, badge: null });
+    expect(planRating("hound")).toMatchObject({ planned: true, effort: 8 });
+    expect(planRating("Not A Real Item")).toEqual({ planned: false, effort: null, badge: null });
   });
 });
 

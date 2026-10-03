@@ -1,0 +1,90 @@
+{
+  "name": "Tigris Prime",
+  "kind": "primary",
+  "effort": 8,
+  "source": "relics",
+  "tradeable": true,
+  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "badges": [{ "text": "vaulted", "tone": "warn" }],
+  "prices": [],
+  "materials": [
+    { "qty": "10", "label": "Orokin Cell", "note": null },
+    { "qty": "15,000", "label": "Credits", "note": null }
+  ],
+  "groups": [
+    {
+      "type": "fissure",
+      "place": "ANY VOID FISSURE",
+      "sub": null,
+      "activity": "crack the matching vaulted relics",
+      "meta": "Blueprint is the bottleneck",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Tigris Prime Blueprint",
+          "note": "Lith T1 or Lith T3 or Neo T1 or Axi T1 or Axi T11, Rare: 10% Radiant",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Tigris Prime Barrel",
+          "note": "Lith K1 or Lith V3 or Lith V4 or Meso N16 or Neo B4 or Neo H1 or Axi S6, Uncommon: 20% Radiant",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Tigris Prime Receiver",
+          "note": "Lith S9 or Meso K1 or Meso N5 or Meso S6 or Meso S13 or Meso T2 or Neo S6 or Neo V3 or Axi V5, Uncommon: 20% Radiant",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Tigris Prime Stock",
+          "note": "Lith B2 or Lith K11 or Meso S1 or Neo B2 or Neo N11 or Neo V4, Common: 25.33% Intact",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Tigris Prime is vaulted: its relics no longer drop from missions.",
+        "Vaulted relics and the parts themselves still trade between players."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Tigris Prime",
+      "meta": "12h, MR 13",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Tigris Prime",
+          "note": "15,000 cr, Barrel, Receiver, Stock, 10 Orokin Cell",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

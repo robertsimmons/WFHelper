@@ -8,6 +8,7 @@ import { resolveAcquisition } from "../acquisition/index.js";
 import { includesTarget } from "../acquisition/kinds.js";
 import { headlinePath } from "../acquisition/paths.js";
 import { compareAcquisition, remainingEffort, sortRow } from "../acquisition/sort.js";
+import { includesSource } from "../acquisition/sources.js";
 import { advances, needsGain } from "../gain.js";
 import { clamp01 } from "../score.js";
 import type { MessageKey } from "../../i18n.js";
@@ -293,12 +294,13 @@ export const acquisitionProvider: SuggestionProvider = {
     const open = acquisitionTargets(ctx).filter((target) => advances(needsGain(target.needs)));
     const rows = open
       .filter((target) => includesTarget(prefs.options.acquisitionKinds, target))
+      .filter((target) => includesSource(prefs.options.acquisitionSources, target))
       .filter((target) => matchesSearch(prefs.options.acquisitionSearch, target))
       .map((target) => sortRow(target, effortFor(target), sort))
       .sort(compareAcquisition(prefs.options.acquisitionSortDir))
       .slice(0, SUGGESTION_LIMIT);
     // The pinned strip draws from this list, so a pin the section's own kinds,
-    // search or limit leave out still rides along behind it.
+    // sources, search or limit leave out still rides along behind it.
     const listed = new Set(rows.map((row) => row.target.uniqueName));
     const pins = new Set(ctx.acquisitionPins);
     for (const target of open) {

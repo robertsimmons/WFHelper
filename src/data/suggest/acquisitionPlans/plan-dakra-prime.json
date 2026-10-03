@@ -1,0 +1,83 @@
+{
+  "name": "Dakra Prime",
+  "kind": "melee",
+  "effort": 8,
+  "source": "relics",
+  "tradeable": true,
+  "progress": { "have": 0, "need": 3, "unit": "parts" },
+  "badges": [{ "text": "vaulted", "tone": "warn" }],
+  "prices": [],
+  "materials": [
+    { "qty": "15", "label": "Orokin Cell", "note": null },
+    { "qty": "15,000", "label": "Credits", "note": null }
+  ],
+  "groups": [
+    {
+      "type": "fissure",
+      "place": "ANY VOID FISSURE",
+      "sub": null,
+      "activity": "crack the matching vaulted relics",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Dakra Prime Blueprint",
+          "note": "Lith M1 or Meso B3 or Neo B8 or Axi R1, Uncommon: 20% Radiant",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Dakra Prime Blade",
+          "note": "Neo B3 or Axi S4, Uncommon: 20% Radiant; Neo D1 or Axi D4, Rare: 10% Radiant",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Dakra Prime Handle",
+          "note": "Lith M2 or Lith M8 or Meso B1 or Meso M1 or Neo N9, Common: 25.33% Intact",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Dakra Prime is vaulted: its relics no longer drop from missions.",
+        "Vaulted relics and the parts themselves still trade between players."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Dakra Prime",
+      "meta": "12h, MR 10",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Dakra Prime",
+          "note": "15,000 cr, Blade, Handle, 15 Orokin Cell",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

@@ -13,7 +13,16 @@
     ACQUISITION_SORTS,
     type AcquisitionSort,
   } from "../../../lib/suggest/acquisition/sort.js";
-  import { setSuggestionOption, suggestionPreferences } from "../../../stores/suggestionPrefs.js";
+  import {
+    ACQUISITION_SOURCES,
+    ACQUISITION_SOURCE_OPTIONS,
+  } from "../../../lib/suggest/acquisition/sources.js";
+  import type { PlanSource } from "../../../lib/suggest/acquisition/plan/schema.js";
+  import {
+    setSuggestionOption,
+    setSuggestionOptions,
+    suggestionPreferences,
+  } from "../../../stores/suggestionPrefs.js";
 
   const SORT_LABELS: Record<AcquisitionSort, MessageKey> = {
     recommended: "common.recommended",
@@ -41,11 +50,21 @@
         : ACQUISITION_INCLUDES,
   );
 
+  const sources = $derived<readonly PlanSource[]>(
+    options.acquisitionSources.includes(ACQUISITION_NONE)
+      ? []
+      : options.acquisitionSources.length > 0
+        ? (options.acquisitionSources as PlanSource[])
+        : ACQUISITION_SOURCES,
+  );
+
   const sortOptions = $derived(
     ACQUISITION_SORTS.map((key) => [key, $tr(SORT_LABELS[key])] as const),
   );
 
-  let open = $state<AcquisitionGroupId | null>(null);
+  const SOURCES_PANEL = "sources";
+
+  let open = $state<AcquisitionGroupId | typeof SOURCES_PANEL | null>(null);
   let anchor: HTMLElement | null = null;
   let panel = $state<HTMLElement | null>(null);
   let top = $state(0);
@@ -57,23 +76,38 @@
     return group.members.filter((member) => selected.includes(member.include)).length;
   }
 
-  /** Both ends of the range are the same selection, and empty is what it stores,
-   *  so unticking the last box can never empty the section. */
+  function stored<T>(next: readonly T[], every: readonly T[]): (T | typeof ACQUISITION_NONE)[] {
+    if (next.length === 0) return [ACQUISITION_NONE];
+    return next.length === every.length ? [] : [...next];
+  }
+
   function toggleInclude(include: AcquisitionInclude): void {
     const next = ACQUISITION_INCLUDES.filter((kind) =>
       kind === include ? !selected.includes(kind) : selected.includes(kind),
     );
-    const all = next.length === 0 || next.length === ACQUISITION_INCLUDES.length;
-    setSuggestionOption("acquisitionKinds", all ? [] : next);
+    setSuggestionOption("acquisitionKinds", stored(next, ACQUISITION_INCLUDES));
   }
 
-  /** One click either way across all five groups: the row is either showing
-   *  everything or showing nothing. */
+  function toggleSource(source: PlanSource): void {
+    const next = ACQUISITION_SOURCES.filter((entry) =>
+      entry === source ? !sources.includes(entry) : sources.includes(entry),
+    );
+    setSuggestionOption("acquisitionSources", stored(next, ACQUISITION_SOURCES));
+  }
+
+  const cleared = $derived(selected.length === 0 || sources.length === 0);
+
+  /** One click either way across every group and the sources: the row is
+   *  either showing everything or showing nothing. */
   function toggleAll(): void {
-    setSuggestionOption("acquisitionKinds", selected.length === 0 ? [] : [ACQUISITION_NONE]);
+    setSuggestionOptions(
+      cleared
+        ? { acquisitionKinds: [], acquisitionSources: [] }
+        : { acquisitionKinds: [ACQUISITION_NONE], acquisitionSources: [ACQUISITION_NONE] },
+    );
   }
 
-  function toggleOpen(id: AcquisitionGroupId, button: HTMLElement): void {
+  function toggleOpen(id: AcquisitionGroupId | typeof SOURCES_PANEL, button: HTMLElement): void {
     anchor = button;
     open = open === id ? null : id;
   }
@@ -107,7 +141,11 @@
     const target = event.target instanceof Element ? event.target : null;
     if (!target) return;
     // The button closes its own panel, so a click on it must not close and reopen.
-    if (panel?.contains(target) || target.closest("[data-acquisition-group]")) return;
+    if (
+      panel?.contains(target) ||
+      target.closest("[data-acquisition-group], [data-acquisition-sources]")
+    )
+      return;
     open = null;
   }
 
@@ -170,14 +208,35 @@
         </button>
       {/if}
     {/each}
+    <button
+      type="button"
+      class="{BUTTON} {sources.length > 0 ? BUTTON_ON : BUTTON_OFF}"
+      data-acquisition-sources
+      aria-haspopup="true"
+      aria-expanded={open === SOURCES_PANEL}
+      onclick={(event) => toggleOpen(SOURCES_PANEL, event.currentTarget)}
+    >
+      {$tr("common.source")}
+      <span class="tabular-nums">{sources.length}/{ACQUISITION_SOURCES.length}</span>
+      <svg viewBox="0 0 16 16" class="h-2.5 w-2.5" aria-hidden="true" focusable="false">
+        <path
+          d="M4 6l4 4 4-4"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+    </button>
   </div>
   <button
     type="button"
     class="{BUTTON} {BUTTON_OFF}"
-    data-acquisition-select-all={selected.length === 0}
+    data-acquisition-select-all={cleared}
     onclick={toggleAll}
   >
-    {$tr(selected.length === 0 ? "common.all" : "common.none")}
+    {$tr(cleared ? "common.all" : "common.none")}
   </button>
   <SortControl
     value={options.acquisitionSort}
@@ -214,6 +273,31 @@
           onchange={() => toggleInclude(member.include)}
         />
         {$tr(member.labelKey)}
+      </label>
+    {/each}
+  </div>
+{:else if open === SOURCES_PANEL}
+  <div
+    bind:this={panel}
+    class="fixed z-[260] flex flex-col gap-0.5 rounded-[var(--radius-md)] border border-border
+           bg-bg-raised p-1.5"
+    role="dialog"
+    aria-label={$tr("common.source")}
+    data-acquisition-sources-panel
+    style="top: {top}px; left: {left}px;"
+  >
+    {#each ACQUISITION_SOURCE_OPTIONS as option (option.source)}
+      <label
+        class="flex cursor-pointer select-none items-center gap-1.5 whitespace-nowrap rounded-[var(--radius-sm)]
+               px-1 py-0.5 text-xs text-text-secondary hover:bg-bg-hover"
+      >
+        <input
+          type="checkbox"
+          data-acquisition-source={option.source}
+          checked={sources.includes(option.source)}
+          onchange={() => toggleSource(option.source)}
+        />
+        {$tr(option.labelKey)}
       </label>
     {/each}
   </div>

@@ -1,0 +1,90 @@
+{
+  "name": "Soma Prime",
+  "kind": "primary",
+  "effort": 8,
+  "source": "relics",
+  "tradeable": true,
+  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "badges": [{ "text": "vaulted", "tone": "warn" }],
+  "prices": [],
+  "materials": [
+    { "qty": "10", "label": "Orokin Cell", "note": null },
+    { "qty": "15,000", "label": "Credits", "note": null }
+  ],
+  "groups": [
+    {
+      "type": "fissure",
+      "place": "ANY VOID FISSURE",
+      "sub": null,
+      "activity": "crack the matching vaulted relics",
+      "meta": "Stock is the bottleneck",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Soma Prime Blueprint",
+          "note": "Meso B3 or Neo N12 or Neo S1, Common: 25.33% Intact; Lith M1, Uncommon: 20% Radiant",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Soma Prime Barrel",
+          "note": "Lith M2 or Meso D5 or Neo S3, Common: 25.33% Intact",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Soma Prime Receiver",
+          "note": "Lith K4 or Lith S3 or Neo N1 or Neo N9, Uncommon: 20% Radiant",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Soma Prime Stock",
+          "note": "Lith S2 or Meso S1 or Axi S4 or Axi S7, Rare: 10% Radiant",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Soma Prime is vaulted: its relics no longer drop from missions.",
+        "Vaulted relics and the parts themselves still trade between players."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Soma Prime",
+      "meta": "12h, MR 7",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Soma Prime",
+          "note": "15,000 cr, Barrel, Receiver, Stock, 10 Orokin Cell",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

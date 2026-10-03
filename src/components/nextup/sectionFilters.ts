@@ -1,4 +1,5 @@
 import { ACQUISITION_INCLUDES, ACQUISITION_NONE } from "../../lib/suggest/acquisition/kinds.js";
+import { ACQUISITION_SOURCES } from "../../lib/suggest/acquisition/sources.js";
 import {
   MASTERY_KINDS,
   RELIC_ERAS,
@@ -7,10 +8,8 @@ import {
   type SuggestionSectionId,
 } from "../../types/suggest.js";
 
-/** Every list option reads an empty selection as "all", so a narrowing is a
- *  selection that is neither empty nor the whole list. */
 function narrowedList(picked: readonly string[], all: readonly string[]): boolean {
-  return picked.length > 0 && picked.length < all.length;
+  return picked.length < all.length;
 }
 
 /** Whether the section's own controls are hiding anything, which is what tells
@@ -28,8 +27,12 @@ export function sectionNarrowed(id: SuggestionSectionId, options: SuggestionOpti
     case "acquisition":
       return (
         options.acquisitionKinds.includes(ACQUISITION_NONE) ||
+        options.acquisitionSources.includes(ACQUISITION_NONE) ||
         options.acquisitionSearch.trim().length > 0 ||
-        narrowedList(options.acquisitionKinds, ACQUISITION_INCLUDES)
+        (options.acquisitionKinds.length > 0 &&
+          narrowedList(options.acquisitionKinds, ACQUISITION_INCLUDES)) ||
+        (options.acquisitionSources.length > 0 &&
+          narrowedList(options.acquisitionSources, ACQUISITION_SOURCES))
       );
     case "mods":
       return options.modSearch.trim().length > 0;

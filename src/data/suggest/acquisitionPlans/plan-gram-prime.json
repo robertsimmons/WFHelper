@@ -1,0 +1,83 @@
+{
+  "name": "Gram Prime",
+  "kind": "melee",
+  "effort": 8,
+  "source": "relics",
+  "tradeable": true,
+  "progress": { "have": 0, "need": 3, "unit": "parts" },
+  "badges": [{ "text": "vaulted", "tone": "warn" }],
+  "prices": [],
+  "materials": [
+    { "qty": "15", "label": "Orokin Cell", "note": null },
+    { "qty": "15,000", "label": "Credits", "note": null }
+  ],
+  "groups": [
+    {
+      "type": "fissure",
+      "place": "ANY VOID FISSURE",
+      "sub": null,
+      "activity": "crack the matching vaulted relics",
+      "meta": "Handle is the bottleneck",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Gram Prime Blueprint",
+          "note": "Lith P2 or Meso N7 or Neo Z8 or Axi A8 or Axi O4 or Axi T5, Uncommon: 20% Radiant",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Gram Prime Blade",
+          "note": "Lith N4 or Lith S8 or Lith W1 or Meso M3 or Meso R4 or Meso S8 or Axi A9, Common: 25.33% Intact",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Gram Prime Handle",
+          "note": "Neo G1 or Neo G2 or Axi G2 or Axi G3 or Axi G4 or Axi G5, Rare: 10% Radiant",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Gram Prime is vaulted: its relics no longer drop from missions.",
+        "Vaulted relics and the parts themselves still trade between players."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Gram Prime",
+      "meta": "12h, MR 14",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Gram Prime",
+          "note": "15,000 cr, Blade, Handle, 15 Orokin Cell",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

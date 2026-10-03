@@ -119,7 +119,7 @@ describe("acquisition plan page", () => {
     expect(visibleGroups(plan, false).map((entry) => entry.id)).toEqual(["1", "2"]);
     expect(visibleGroups(plan, true)).toHaveLength(3);
 
-    const helios = resolved("Helios");
+    const helios = resolved("Sarpa");
     const shown = visibleGroups(helios, false);
     const authoredSkips = helios.groups.filter((entry) => entry.skip !== null);
     expect(authoredSkips.length).toBeGreaterThan(0);
@@ -231,13 +231,27 @@ describe("acquisition plan page", () => {
     // whoever banks it, and failing that the first group that spends it.
     expect(carriers.map((entry) => entry.activity)).toEqual([
       "Conservation, plus Bounty 1 for the bonds",
-      "Mining, refined by Otak",
+      "buy the Trapezium Xenorhast refining blueprint",
     ]);
   });
 
   it("leaves the banked line off a group whose own rows name that currency", () => {
     const banks = resolved("Hound").groups.filter((entry) => entry.earns !== null);
     expect(banks).toEqual([]);
+  });
+
+  it("opens an item with no plan on a plain unknown state", () => {
+    const text = source("AcquisitionPlanPage.svelte");
+    expect(text).toContain("plan: ResolvedPlan | null;");
+    const unknown = text.indexOf("{#if !plan}");
+    expect(unknown).toBeGreaterThan(-1);
+    expect(text.slice(unknown, text.indexOf("{/if}", unknown))).toContain(
+      '<div class="empty-state" data-plan-none>',
+    );
+    expect(text).toContain('$tr("nextUp.planNone")');
+    // The page opens on the pin, not on whether a plan resolved for it.
+    expect(view()).toContain("{#if openPlan && openTarget}");
+    expect(view()).not.toContain("{#if openPlan && openResolved}");
   });
 
   it("collapses a skipped group with nothing left to show", () => {
@@ -259,7 +273,7 @@ describe("leaving a plan", () => {
   });
 
   it("names the plan beside the crumb that leaves it", () => {
-    expect(view()).toContain("{openResolved.name}");
+    expect(view()).toContain("{openTarget.name}");
   });
 
   it("leaves a plan on Escape, unless the settings modal is the one holding it", () => {

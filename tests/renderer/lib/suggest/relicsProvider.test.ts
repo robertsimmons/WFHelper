@@ -253,8 +253,8 @@ describe("relicsProvider era filter", () => {
     expect(shelfIds({ relicEras: ["Meso"] }).sort()).toEqual(["relics:Meso A1", "relics:Meso B2"]);
   });
 
-  it("reads no era at all as every era", () => {
-    expect(shelfIds({ relicEras: [] })).toHaveLength(3);
+  it("shows no era when every box is unticked", () => {
+    expect(shelfIds({ relicEras: [] })).toHaveLength(0);
   });
 
   it("leaves a tier the boxes cannot name alone", () => {

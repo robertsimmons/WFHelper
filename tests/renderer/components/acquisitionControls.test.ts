@@ -61,24 +61,36 @@ describe("AcquisitionControls", () => {
     expect(row()).toContain(": ACQUISITION_INCLUDES");
   });
 
-  it("stores the empty list at both ends, so no toggle can empty the section", () => {
+  it("stores unticking the last box as none, and each filter only touches itself", () => {
+    expect(row()).toContain("if (next.length === 0) return [ACQUISITION_NONE];");
     expect(row()).toContain(
-      "const all = next.length === 0 || next.length === ACQUISITION_INCLUDES.length;",
+      'setSuggestionOption("acquisitionKinds", stored(next, ACQUISITION_INCLUDES));',
     );
-    expect(row()).toContain('setSuggestionOption("acquisitionKinds", all ? [] : next);');
+    expect(row()).toContain(
+      'setSuggestionOption("acquisitionSources", stored(next, ACQUISITION_SOURCES));',
+    );
   });
 
   it("offers one global clear for the whole row rather than one per dropdown", () => {
     expect(row()).toContain("function toggleAll()");
     expect(row()).toContain(
-      'setSuggestionOption("acquisitionKinds", selected.length === 0 ? [] : [ACQUISITION_NONE]);',
+      "const cleared = $derived(selected.length === 0 || sources.length === 0);",
+    );
+    expect(row()).toContain(
+      "{ acquisitionKinds: [ACQUISITION_NONE], acquisitionSources: [ACQUISITION_NONE] }",
     );
     const panel = row().slice(row().indexOf("data-acquisition-group-panel"));
     expect(panel).not.toContain("toggleAll");
   });
 
+  it("draws the source chip off the shipped list and counts against it", () => {
+    expect(row()).toContain("{#each ACQUISITION_SOURCE_OPTIONS as option (option.source)}");
+    expect(row()).toContain("{sources.length}/{ACQUISITION_SOURCES.length}");
+    expect(row()).toContain("options.acquisitionSources.length > 0");
+  });
+
   it("labels the clear by what the click will do, so neither label can lie", () => {
-    expect(row()).toContain('{$tr(selected.length === 0 ? "common.all" : "common.none")}');
+    expect(row()).toContain('{$tr(cleared ? "common.all" : "common.none")}');
   });
 
   it("draws the counts off a cleared selection as zeroes rather than as every box", () => {
@@ -102,7 +114,9 @@ describe("AcquisitionControls", () => {
 
   it("closes an open dropdown on Escape and on a click outside it", () => {
     expect(row()).toContain('if (event.key !== "Escape" || open === null) return;');
-    expect(row()).toContain('target.closest("[data-acquisition-group]")');
+    expect(row()).toContain(
+      'target.closest("[data-acquisition-group], [data-acquisition-sources]")',
+    );
     expect(row()).toContain("panel?.contains(target)");
   });
 });

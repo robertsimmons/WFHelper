@@ -112,6 +112,9 @@ const MODULAR_INCLUDE: Record<ModularGear, AcquisitionInclude> = {
   hound: "robotic",
   amp: "amp",
   kdrive: "kdrive",
+  // A chamber builds a primary or a secondary; one box has to own it.
+  kitgun: "secondary",
+  zaw: "melee",
 };
 
 export function includeOf(target: AcquisitionTarget): AcquisitionInclude | null {

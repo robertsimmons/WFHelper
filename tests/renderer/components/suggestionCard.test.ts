@@ -33,6 +33,15 @@ describe("SuggestionCard acquisition face", () => {
     expect(card()).toContain("EFFORT_TRACK");
   });
 
+  it("says an item has no plan in place of the meter, and keeps the card", () => {
+    const text = card();
+    const unknown = text.indexOf("{#if unplanned}");
+    expect(unknown).toBeGreaterThan(-1);
+    expect(text.indexOf('$tr("nextUp.planNone")', unknown)).toBeGreaterThan(unknown);
+    expect(text.indexOf("{:else}", unknown)).toBeLessThan(text.indexOf("EFFORT_STEPS as step"));
+    expect(text).toContain("rating !== null && !rating.planned");
+  });
+
   it("puts no number and no word on the meter", () => {
     const meter = card().slice(card().indexOf('<span class="flex flex-1 gap-[2px]"'));
     expect(meter.slice(0, meter.indexOf("</span>"))).not.toMatch(/>\s*\{?\w/);

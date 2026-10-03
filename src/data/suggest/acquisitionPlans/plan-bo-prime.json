@@ -1,0 +1,83 @@
+{
+  "name": "Bo Prime",
+  "kind": "melee",
+  "effort": 8,
+  "source": "relics",
+  "tradeable": true,
+  "progress": { "have": 0, "need": 3, "unit": "parts" },
+  "badges": [{ "text": "vaulted", "tone": "warn" }],
+  "prices": [],
+  "materials": [
+    { "qty": "10", "label": "Orokin Cell", "note": null },
+    { "qty": "15,000", "label": "Credits", "note": null }
+  ],
+  "groups": [
+    {
+      "type": "fissure",
+      "place": "ANY VOID FISSURE",
+      "sub": null,
+      "activity": "crack the matching vaulted relics",
+      "meta": "Handle is the bottleneck",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Bo Prime Blueprint",
+          "note": "Lith G2 or Lith O2, Common: 25.33% Intact",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "2",
+          "label": "Bo Prime Ornament",
+          "note": "Meso E1 or Axi L4, Common: 25.33% Intact",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Bo Prime Handle",
+          "note": "Neo F1 or Neo V8, Uncommon: 20% Radiant",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Bo Prime is vaulted: its relics no longer drop from missions.",
+        "Vaulted relics and the parts themselves still trade between players."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Bo Prime",
+      "meta": "12h, MR 5",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Bo Prime",
+          "note": "15,000 cr, 2 Ornament, Handle, 10 Orokin Cell",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

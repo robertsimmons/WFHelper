@@ -157,6 +157,8 @@ export interface ItemDbEntry {
   buildsProduct?: string;
   /** For blueprint entries: building it does not consume the owned copy. */
   reusableBlueprint?: boolean;
+  /** The other form of a weapon that is two at once, such as a gun-blade's melee. */
+  otherForm?: string;
   [key: string]: unknown;
 }
 

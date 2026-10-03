@@ -20,7 +20,7 @@ import {
 import { buildPaths, headlinePath } from "./paths.js";
 import { createQuestDone } from "./quests.js";
 import { createRatings } from "./ratings.js";
-import { baseWeaponName, listWeapons } from "./weapons.js";
+import { baseWeaponName, isBundledWeapon, listWeapons } from "./weapons.js";
 import type { ItemDbEntry } from "../../../types/inventory.js";
 import type {
   AcquisitionContext,
@@ -201,6 +201,7 @@ export function resolveAcquisition(ctx: AcquisitionContext): AcquisitionTarget[]
     }
     for (const weapon of weapons) {
       if (only && !only.has(weapon.name.toLowerCase())) continue;
+      if (isBundledWeapon(weapon, itemDb)) continue;
       const owned = ownedByName.get(weapon.name.toLowerCase()) === true;
       if (!owned && isUnobtainableItem(weapon)) continue;
       const incarnon = incarnonFor(weapon.name);

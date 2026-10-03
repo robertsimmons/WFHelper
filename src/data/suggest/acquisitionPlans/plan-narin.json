@@ -1,0 +1,253 @@
+{
+  "name": "Narin",
+  "kind": "warframe",
+  "effort": 5,
+  "source": "repeat",
+  "tradeable": null,
+  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "badges": [
+    { "text": "790 Entropic Kuva buys it all", "tone": "info" },
+    { "text": "Zariman gate", "tone": "warn" }
+  ],
+  "prices": [
+    { "label": "all blueprints", "amount": "790 Entropic Kuva", "money": false },
+    { "label": "build total", "amount": "70,000 cr", "money": false }
+  ],
+  "materials": [
+    { "qty": "2,900", "label": "Plastids", "note": "Narin Neuroptics" },
+    { "qty": "4", "label": "Neural Sensors", "note": "Narin Neuroptics" },
+    { "qty": "6", "label": "Entrati Lanthorn", "note": "Narin Neuroptics" },
+    { "qty": "400", "label": "Thrax Plasm", "note": "Narin Neuroptics" },
+    { "qty": "3,300", "label": "Alloy Plate", "note": "Narin Chassis" },
+    { "qty": "1,200", "label": "Polymer Bundle", "note": "Narin Chassis" },
+    { "qty": "800", "label": "Cryotic", "note": "Narin Chassis" },
+    { "qty": "10", "label": "Morphics", "note": "Narin Chassis" },
+    { "qty": "55", "label": "Voidgel Orb", "note": "Narin Systems" },
+    { "qty": "2", "label": "Argon Crystal", "note": "Narin Systems" },
+    { "qty": "2,100", "label": "Circuits", "note": "Narin Systems" },
+    { "qty": "10", "label": "Control Module", "note": "Narin Systems" },
+    { "qty": "1", "label": "Orokin Cell", "note": "Narin build" },
+    { "qty": "70,000", "label": "Credits", "note": null }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "ORBITER, THEN THE CODEX",
+      "sub": null,
+      "activity": "Angels of the Zariman, then Whispers in the Walls",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Angels of the Zariman",
+          "note": "opens every Zariman node, so the mission drops below",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Whispers in the Walls",
+          "note": "with Angels of the Zariman, unlocks Cephalon Melica's shop",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "currency",
+      "place": "ZARIMAN",
+      "sub": null,
+      "activity": "Entropic Eximus in endless missions: Void Flood, Void Cascade, Void Armageddon",
+      "meta": "3-7 Entropic Kuva per Eximus",
+      "mode": "relic fissure, solo or premade",
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "Entropic Kuva", "amount": "790" },
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "790",
+          "label": "Entropic Kuva",
+          "note": "buys all four blueprints at Cephalon Melica; not boosted by Resource Boosters",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Entropic Eximus resist non-melee damage by 90% until their shield bubble breaks, and companions do not target them.",
+        "Steel Path gives no extra Kuva per kill; normal mode is as good."
+      ],
+      "bonuses": [
+        "The same runs pay out the part blueprints below, so farm Kuva and drops together."
+      ],
+      "disclosures": [
+        {
+          "title": "get more Kuva per hour",
+          "body": "Long endless missions beat short runs: Eximus spawn more the longer you stay, and a Void Angel brings a cluster of 3 to 4. Mobile Defense always has an angel near one objective. Run Omnia fissures so relics crack alongside. Extract solo by holding the elevator panel; otherwise everyone leaves together."
+        }
+      ],
+      "ref": "Entropic Kuva"
+    },
+    {
+      "type": "farm",
+      "place": "ZARIMAN",
+      "sub": null,
+      "activity": "Exterminate or Mobile Defense",
+      "meta": "8.89% per mission",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Narin Blueprint",
+          "note": "one reward per mission",
+          "alt": "400 Entropic Kuva at Cephalon Melica",
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "EVERVIEW ARC, ZARIMAN",
+      "sub": null,
+      "activity": "Void Flood",
+      "meta": "A 4.23% / B 4.60% / C 8.33%, every rotation pays",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Narin Chassis Blueprint",
+          "note": null,
+          "alt": "130 Entropic Kuva at Cephalon Melica",
+          "done": false
+        }
+      ],
+      "conditions": ["Rotations run AABC."],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "TUVUL COMMONS, ZARIMAN",
+      "sub": null,
+      "activity": "Void Cascade",
+      "meta": "A 4.23% / B 4.60% / C 8.33%, every rotation pays",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Narin Neuroptics Blueprint",
+          "note": null,
+          "alt": "130 Entropic Kuva at Cephalon Melica",
+          "done": false
+        }
+      ],
+      "conditions": ["Rotations run AABC."],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "ORO WORKS, ZARIMAN",
+      "sub": null,
+      "activity": "Void Armageddon",
+      "meta": "A 4.23% / B 4.60% / C 8.33%, every rotation pays",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Narin Systems Blueprint",
+          "note": null,
+          "alt": "130 Entropic Kuva at Cephalon Melica",
+          "done": false
+        }
+      ],
+      "conditions": ["Rotations run AABC."],
+      "bonuses": [],
+      "disclosures": [
+        {
+          "title": "buy instead of waiting on drops",
+          "body": "Cephalon Melica (Yuvan Peak on Earth, or the Chrysalith) sells every blueprint above for Entropic Kuva, so the drop chances above only save Kuva. Players who bought the whole frame report about 90 minutes of Void Cascade fissures."
+        }
+      ]
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Neuroptics, Chassis and Systems, then Narin",
+      "meta": "12h each part, 72h frame",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Narin Neuroptics",
+          "note": "15,000 cr, 2,900 Plastids, 4 Neural Sensors, 6 Entrati Lanthorn, 400 Thrax Plasm",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Narin Chassis",
+          "note": "15,000 cr, 3,300 Alloy Plate, 1,200 Polymer Bundle, 800 Cryotic, 10 Morphics",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Narin Systems",
+          "note": "15,000 cr, 55 Voidgel Orb, 2 Argon Crystal, 2,100 Circuits, 10 Control Module",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Narin",
+          "note": "25,000 cr, 1 Orokin Cell, the three parts above",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

@@ -1,0 +1,83 @@
+{
+  "name": "Zylok Prime",
+  "kind": "secondary",
+  "effort": 8,
+  "source": "relics",
+  "tradeable": true,
+  "progress": { "have": 0, "need": 3, "unit": "parts" },
+  "badges": [{ "text": "vaulted", "tone": "warn" }],
+  "prices": [],
+  "materials": [
+    { "qty": "5", "label": "Orokin Cell", "note": null },
+    { "qty": "15,000", "label": "Credits", "note": null }
+  ],
+  "groups": [
+    {
+      "type": "fissure",
+      "place": "ANY VOID FISSURE",
+      "sub": null,
+      "activity": "crack the matching vaulted relics",
+      "meta": "Blueprint is the bottleneck",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Zylok Prime Blueprint",
+          "note": "Lith Z4 or Meso Z6 or Neo Z10 or Neo Z11 or Axi Z2, Rare: 10% Radiant",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Zylok Prime Barrel",
+          "note": "Lith A11 or Lith G12 or Lith Q1 or Lith R5 or Meso P15 or Neo O2 or Axi H8 or Axi L6 or Axi V12, Common: 25.33% Intact",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Zylok Prime Receiver",
+          "note": "Lith L5 or Lith R4 or Lith Y1 or Meso G6 or Axi G14 or Axi G15 or Axi O6, Uncommon: 20% Radiant",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Zylok Prime is vaulted: its relics no longer drop from missions.",
+        "Vaulted relics and the parts themselves still trade between players."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Zylok Prime",
+      "meta": "12h, MR 13",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Zylok Prime",
+          "note": "15,000 cr, Barrel, Receiver, 5 Orokin Cell",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

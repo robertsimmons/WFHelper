@@ -110,7 +110,7 @@
 
   function shows(category: SuggestionCategory): boolean {
     const picked = options.taskKinds;
-    return picked.length === 0 || picked.includes(category as TaskKind);
+    return picked.includes(category as TaskKind);
   }
 
   /** A section whose controls choose the order keeps the one its provider chose;
@@ -219,6 +219,7 @@
   const pinned = $derived(pinnedAcquisitions($acquisitionPins, acquisitionFeed, plans));
   const openEntry = $derived(pinned.find((entry) => entry.uniqueName === openPlan) ?? null);
   const openResolved = $derived(openPlan === null ? null : (plans[openPlan] ?? null));
+  const openTarget = $derived(openEntry?.suggestion.details?.acquisition ?? null);
   const openArt = $derived(
     openEntry
       ? (rewardArt($itemDb, openEntry.suggestion.reward).pieces[0]?.imageUrl ?? null)
@@ -282,7 +283,7 @@
 <section class="view active">
   <div class="view-header">
     <div class="flex min-w-0 items-center gap-3">
-      {#if openPlan && openResolved}
+      {#if openPlan && openTarget}
         <h2 class="flex min-w-0 items-baseline gap-2">
           <button
             class="shrink-0 cursor-pointer whitespace-nowrap text-text-secondary
@@ -292,7 +293,7 @@
             onclick={() => (openPlan = null)}>‹ {$tr("common.nextUp")}</button
           >
           <span class="shrink-0 text-text-muted" aria-hidden="true">/</span>
-          <span class="min-w-0 truncate">{openResolved.name}</span>
+          <span class="min-w-0 truncate">{openTarget.name}</span>
         </h2>
       {:else}
         <h2>{$tr("common.nextUp")}</h2>
@@ -319,11 +320,13 @@
 
   <!-- The plan and the feed are separate scroll containers, so coming back
        remounts the feed and lands the reader at the top of it. -->
-  {#if openPlan && openResolved}
+  {#if openPlan && openTarget}
     <div class="flex min-h-0 flex-1 flex-col gap-3 overflow-y-auto pr-4">
       <div data-acquisition-plan={openPlan}>
         <AcquisitionPlanPage
           plan={openResolved}
+          name={openTarget.name}
+          tier={openTarget.tier}
           uniqueName={openPlan}
           art={openArt}
           onRefresh={() => void refreshFromInventory()}

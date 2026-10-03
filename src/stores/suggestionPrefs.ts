@@ -230,13 +230,18 @@ export function setSuggestionOption<K extends keyof SuggestionOptions>(
   commit({ ...current, options: { ...current.options, [key]: value } });
 }
 
+/** Several options in one commit, so the feed rebuilds once. */
+export function setSuggestionOptions(values: Partial<SuggestionOptions>): void {
+  const current = get(overrides);
+  commit({ ...current, options: { ...current.options, ...values } });
+}
+
 /** Every list option the section headers tick boxes for. */
 type ListOption = {
   [K in keyof SuggestionOptions]: SuggestionOptions[K] extends string[] ? K : never;
 }[keyof SuggestionOptions];
 
-/** Unticking the last box reads as "all", so a header can never empty its own
- *  section, and order comes from the shipped list rather than the click order. */
+/** Order comes from the shipped list rather than the click order. */
 export function toggleSuggestionList<K extends ListOption>(
   key: K,
   all: readonly SuggestionOptions[K][number][],
@@ -246,7 +251,7 @@ export function toggleSuggestionList<K extends ListOption>(
   const next = all.filter((entry) =>
     entry === value ? !current.includes(entry) : current.includes(entry),
   );
-  setSuggestionOption(key, (next.length > 0 ? next : [...all]) as SuggestionOptions[K]);
+  setSuggestionOption(key, next as SuggestionOptions[K]);
 }
 
 function loadNightwaveArt(): NightwaveArt {

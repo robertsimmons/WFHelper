@@ -1,0 +1,88 @@
+{
+  "name": "Gotva Prime",
+  "kind": "primary",
+  "effort": 4,
+  "source": "shop",
+  "tradeable": "only unranked, with no Forma or Orokin Catalyst",
+  "progress": { "have": 0, "need": 675, "unit": "Ducats" },
+  "badges": [
+    { "text": "Baro only", "tone": "warn" },
+    { "text": "MR 14", "tone": "info" }
+  ],
+  "prices": [{ "label": "Baro Ki'Teer", "amount": "625,000 cr + 675 Ducats", "money": false }],
+  "materials": [{ "qty": "625,000", "label": "Credits", "note": null }],
+  "groups": [
+    {
+      "type": "currency",
+      "place": "VOID FISSURES",
+      "sub": null,
+      "activity": "crack relics, sell Prime parts at a Relay Ducat Kiosk",
+      "meta": "stockpile between visits",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "Orokin Ducats", "amount": "675" },
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "675",
+          "label": "Orokin Ducats",
+          "note": "common 15, uncommon 45, rare 100",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Ducats cannot be traded and come only from selling items you own; bank them before the visit that stocks it."
+      ],
+      "bonuses": [],
+      "disclosures": [],
+      "ref": "Orokin Ducats"
+    },
+    {
+      "type": "vendor",
+      "place": "BARO KI'TEER, RELAY",
+      "sub": "Concourse",
+      "activity": "buy it on a visit that stocks it",
+      "meta": "stocked on a few visits a year",
+      "mode": null,
+      "live": { "state": "blocked", "text": "Check current Baro inventory" },
+      "skip": null,
+      "earns": null,
+      "spends": [
+        { "currency": "Credits", "amount": "625,000" },
+        { "currency": "Orokin Ducats", "amount": "675" }
+      ],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Gotva Prime",
+          "note": "625,000 cr + 675 Ducats",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Baro's stock changes with each appearance, and Gotva Prime may not be on the next one.",
+        "MR 14 required."
+      ],
+      "bonuses": [],
+      "disclosures": [
+        {
+          "title": "past Baro visits",
+          "body": "The wiki lists Gotva Prime in Baro's stock on 2023-11-03, 2024-04-05, 2024-10-04, 2025-02-07, 2025-06-13, 2025-10-03, 2026-03-06 and 2026-06-26."
+        },
+        {
+          "title": "player trade",
+          "body": "It trades only unranked, with no Forma or Orokin Catalyst installed, and the receiving player needs MR 14."
+        },
+        {
+          "title": "ended source",
+          "body": "It first came as a TennoCon 2023 Twitch drop with a weapon slot and a pre-installed Orokin Catalyst."
+        }
+      ]
+    }
+  ]
+}

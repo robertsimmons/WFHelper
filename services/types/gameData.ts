@@ -13,6 +13,7 @@ export interface PepExportItem {
   productCategory?: string;
   era?: string;
   category?: string;
+  bayonetOtherWeaponType?: string;
 }
 
 interface RecipeIngredient {
@@ -157,6 +158,8 @@ export interface RendererItemEntry {
   buildsProduct?: string;
   /** For blueprint entries: building it does not consume the owned copy. */
   reusableBlueprint?: boolean;
+  /** The other form of a weapon that is two at once, such as a gun-blade's melee. */
+  otherForm?: string;
 }
 
 export interface WorldStateDate {

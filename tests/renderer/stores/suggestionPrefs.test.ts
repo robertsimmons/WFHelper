@@ -8,6 +8,7 @@ import { DEFAULT_NIGHTWAVE_STOCK, NIGHTWAVE_STAPLES } from "../../../src/types/s
 const REWARD_KEY = "next-up-reward-tiers";
 const ORDER_KEY = "next-up-reward-order";
 const STOCK_KEY = "next-up-nightwave-stock";
+const OPTIONS_KEY = "next-up-options";
 
 /** A fresh copy of the store over a seeded localStorage. */
 async function loadWithStorage(seed: Record<string, string> = {}) {
@@ -116,6 +117,22 @@ describe("the suggestion preference store", () => {
 
     expect(ladder.ladderPositionsForTest()).toEqual({});
     expect(stored(mem, ORDER_KEY)).toEqual({});
+  });
+});
+
+describe("the acquisition source filter", () => {
+  afterEach(() => {
+    vi.unstubAllGlobals();
+    vi.resetModules();
+  });
+
+  it("persists a narrowed source list and reads it back on the next load", async () => {
+    const first = await loadWithStorage();
+    first.store.setSuggestionOption("acquisitionSources", ["boss"]);
+    expect(stored(first.mem, OPTIONS_KEY)["acquisitionSources"]).toEqual(["boss"]);
+
+    const second = await loadWithStorage(Object.fromEntries(first.mem));
+    expect(get(second.store.suggestionPreferences).options.acquisitionSources).toEqual(["boss"]);
   });
 });
 

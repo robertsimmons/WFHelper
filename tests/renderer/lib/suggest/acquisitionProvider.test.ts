@@ -6,6 +6,7 @@ import {
 } from "../../../../src/components/nextup/pinnedAcquisitions.js";
 import { resolveAcquisition } from "../../../../src/lib/suggest/acquisition/index.js";
 import { ACQUISITION_NONE } from "../../../../src/lib/suggest/acquisition/kinds.js";
+import { planSource } from "../../../../src/lib/suggest/acquisition/plan/index.js";
 import { effortValue } from "../../../../src/lib/suggest/acquisition/ratings.js";
 import { readyBand } from "../../../../src/lib/suggest/acquisition/sort.js";
 import { DEFAULT_OPTIONS, defaultPreferences } from "../../../../src/lib/suggest/preferences.js";
@@ -277,6 +278,31 @@ describe("acquisitionProvider", () => {
 
   it("offers nothing at all on the row's own cleared selection", () => {
     const cleared: Partial<SuggestionOptions> = { acquisitionKinds: [ACQUISITION_NONE] };
+    expect(collect({ itemDb: weaponDb(), options: cleared })).toEqual([]);
+  });
+
+  it("offers only the sources the section is set to include", () => {
+    const db = { ...itemDb(), ...weaponDb() };
+    const all = collect({ itemDb: db });
+    const sourceOf = (draft: SuggestionDraft) => planSource(draft.reward?.name ?? "");
+    const present = [...new Set(all.map(sourceOf))];
+    expect(present.length).toBeGreaterThan(1);
+    const picked = present[0]!;
+    const narrowed = collect({ itemDb: db, options: { acquisitionSources: [picked] } });
+    expect(narrowed.length).toBeGreaterThan(0);
+    expect(narrowed.length).toBeLessThan(all.length);
+    for (const draft of narrowed) expect(sourceOf(draft)).toBe(picked);
+  });
+
+  it("offers every source when the section includes none of them", () => {
+    const db = { ...itemDb(), ...weaponDb() };
+    expect(collect({ itemDb: db, options: { acquisitionSources: [] } })).toEqual(
+      collect({ itemDb: db }),
+    );
+  });
+
+  it("offers nothing at all on the source row's cleared selection", () => {
+    const cleared: Partial<SuggestionOptions> = { acquisitionSources: [ACQUISITION_NONE] };
     expect(collect({ itemDb: weaponDb(), options: cleared })).toEqual([]);
   });
 

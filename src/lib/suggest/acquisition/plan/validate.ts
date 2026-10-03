@@ -1,7 +1,8 @@
 import { resourceEntry, type ResourceLookup } from "./resources.js";
-import { PLAN_BADGE_TONES, PLAN_GROUP_TYPES, PLAN_LIVE_STATES } from "./schema.js";
+import { PLAN_BADGE_TONES, PLAN_GROUP_TYPES, PLAN_LIVE_STATES, PLAN_SOURCES } from "./schema.js";
 
 const GROUP_TYPES = new Set<string>(PLAN_GROUP_TYPES);
+const SOURCES = new Set<string>(PLAN_SOURCES);
 const LIVE_STATES = new Set<string>(PLAN_LIVE_STATES);
 const BADGE_TONES = new Set<string>(PLAN_BADGE_TONES);
 const QUANTITY = /^\d{1,3}(?:,\d{3})*$|^\d+$/;
@@ -234,6 +235,9 @@ export function validatePlan(value: unknown, lookup: ResourceLookup = resourceEn
 
   checkString(problems, "name", value.name);
   checkString(problems, "kind", value.kind);
+  if (typeof value.source !== "string" || !SOURCES.has(value.source)) {
+    problems.push("source is not a plan source");
+  }
   if (typeof value.effort !== "number" || !Number.isInteger(value.effort)) {
     problems.push("effort must be a whole number");
   } else if (value.effort < 1 || value.effort > 10) {

@@ -1,0 +1,548 @@
+{
+  "name": "Zaw",
+  "kind": "melee",
+  "effort": 3,
+  "source": "standing",
+  "tradeable": false,
+  "progress": { "have": 0, "need": 11, "unit": "Strikes" },
+  "badges": [
+    { "text": "Ostron Trusted to gild", "tone": "warn" },
+    { "text": "Plague strikes event-only", "tone": "warn" }
+  ],
+  "prices": [
+    { "label": "each Hok blueprint", "amount": "1,000 standing", "money": false },
+    { "label": "forge each Zaw", "amount": "4,000 cr", "money": false },
+    { "label": "gild each Zaw", "amount": "5,000 standing", "money": false }
+  ],
+  "materials": [
+    { "qty": "9,350", "label": "Alloy Plate", "note": "850 per Peye Grip" },
+    { "qty": "550", "label": "Fish Oil", "note": "50 per Peye Grip" },
+    {
+      "qty": "1,120",
+      "label": "Pyrotic Alloy",
+      "note": "60 per Peye Grip, 20 per Jai Link; 60 each for Balla, Ooltha, Dokrahm and Plague Kripath"
+    },
+    {
+      "qty": "440",
+      "label": "Fish Scales",
+      "note": "Balla 15, Ooltha 20, Mewan 55, Cyath 55, Dehtat 45, Kronsh 45, Sepfahn 55, Rabvee 50, Dokrahm 45; 60 for Visitor"
+    },
+    {
+      "qty": "275",
+      "label": "Iradite",
+      "note": "20 per Peye Grip, 20 for Ooltha; 25 for Offworlder, 10 for Operational Supply Defender"
+    },
+    {
+      "qty": "190",
+      "label": "Nistlepod",
+      "note": "10 per Jai Link, Balla 20, Dokrahm 25; 25 for Offworlder, 10 for Operational Supply Champion"
+    },
+    {
+      "qty": "90",
+      "label": "Grokdrul",
+      "note": "Kronsh 20, Rabvee 35; 25 for Offworlder, 10 for Operational Supply Collaborator"
+    },
+    { "qty": "37", "label": "Condroc Wing", "note": "2 per Jai Link, 15 for Sepfahn" },
+    { "qty": "55", "label": "Khut-Khut Venom Sac", "note": "5 per Jai Link" },
+    {
+      "qty": "50",
+      "label": "Tear Azurite",
+      "note": "10 each for Balla, Ooltha, Sepfahn and Plague Kripath; 10 for Visitor"
+    },
+    {
+      "qty": "180",
+      "label": "Coprite Alloy",
+      "note": "60 each for Kronsh, Sepfahn and Plague Keewar"
+    },
+    { "qty": "30", "label": "Esher Devar", "note": "10 each for Kronsh, Rabvee and Plague Keewar" },
+    { "qty": "100", "label": "Fersteel Alloy", "note": "Mewan 20, Cyath 20, Dehtat 40, Rabvee 20" },
+    { "qty": "27", "label": "Marquise Veridos", "note": "Mewan 6, Cyath 6, Dehtat 8, Dokrahm 7" },
+    { "qty": "7", "label": "Maprico", "note": "2 for Dehtat; 5 for Trusted" },
+    { "qty": "1", "label": "Breath Of The Eidolon", "note": "Cyath" },
+    { "qty": "24", "label": "Cetus Wisp", "note": "2 per gild, 1 for Mewan, 1 for Trusted" },
+    { "qty": "40", "label": "Pyrol", "note": "Visitor" },
+    {
+      "qty": "3,200",
+      "label": "Nano Spores",
+      "note": "1,600 each for Plague Keewar and Plague Kripath"
+    },
+    {
+      "qty": "1,400",
+      "label": "Plastids",
+      "note": "700 each for Plague Keewar and Plague Kripath"
+    },
+    {
+      "qty": "336,000",
+      "label": "Credits",
+      "note": "55,000 strikes, 110,000 Peye and Jai, 44,000 forging, 85,000 Ostron rank-ups, 35,000 Operational Supply rank-ups, 7,000 Plague blueprints"
+    }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "CETUS, EARTH",
+      "sub": "Konzu + Nakak",
+      "activity": "Operation: Plague Star, for Plague Keewar and Plague Kripath",
+      "meta": "last ran 10-24 September 2025",
+      "mode": null,
+      "live": {
+        "state": "waiting",
+        "text": "Nakak only sells the Plague strikes while the event runs"
+      },
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "cetus",
+      "rows": [
+        {
+          "qty": null,
+          "label": "Operation: Plague Star",
+          "note": "recurring, usually yearly; no run in 2022 or 2024",
+          "alt": "Nights of Naberus sold both Plague strikes from Daughter in October 2020, 2022 and 2024",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The two Plague strikes are untradeable: no plat shortcut, no buying one from another player, and no catching up once the window closes.",
+        "No quest blocks the event; talk to Konzu in Cetus to pick a bounty tier.",
+        "The nine Ostron strikes never leave Hok's shop, so they can be banked any time."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "currency",
+      "place": "PLAINS OF EIDOLON, EARTH",
+      "sub": null,
+      "activity": "conservation, fishing, mining or bounties for Ostron standing",
+      "meta": "71,000 to Trusted, 11,000 for blueprints, 55,000 for eleven gilds",
+      "mode": "solo; Loki with Equinox's Rest & Rage subsumed, or Ivara's Sleep Arrow",
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "Ostron Standing", "amount": "137,000" },
+      "spends": [],
+      "map": "plains-of-eidolon",
+      "rows": [
+        {
+          "qty": null,
+          "label": "Offworlder rank-up",
+          "note": "5,000 standing, 10,000 cr, 25 Nistlepod, 25 Iradite, 25 Grokdrul",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Visitor rank-up",
+          "note": "22,000 standing, 25,000 cr, 10 Tear Azurite, 40 Pyrol, 60 Fish Scales",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Trusted rank-up",
+          "note": "44,000 standing, 50,000 cr, 1 Cetus Wisp, 5 Maprico; unlocks gilding and the Vargeet II and Ekwana II links",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Every strike is sold at Neutral, but no strike banks Mastery until it is gilded, and gilding needs Trusted.",
+        "Rank-ups, blueprints and gilds all draw on the same daily-capped Ostron standing, so the climb spans several days whatever the method; rank up before buying anything or you re-farm the difference.",
+        "The Marquise Veridos and Fersteel Alloy refine blueprints that Mewan, Cyath, Dehtat, Dokrahm and Rabvee need are Visitor-locked: don't buy those strike blueprints before you can make their materials."
+      ],
+      "bonuses": [
+        "Night Conservation pays best: Vasca Kavats pay 500, 1,000 or 1,500 by rarity and one player caps the day in 10-15 minutes; the small lakes northeast of the right-most central teleport pay about 2,000 a cycle solo. Ivara or a tranq Archwing work too.",
+        "Loki with Rest & Rage cannot cast sleep without a target in range, so captures never miss; a loop from the Cetus gate pond to the cave pond works for conservation.",
+        "Tusk Thumpers drop gems, ore and Coprite Alloy and can cap the day in about 10 minutes; a Resource Booster doubles the gem haul.",
+        "Old Man Suumbaat pays 75 standing per Veridos and takes spare raw Azurite and Devar too.",
+        "Hok takes any max-rank Zaw, gilded or not, for Ostron standing; donate each one only after its gilded run to 30 is done."
+      ],
+      "disclosures": [],
+      "ref": "Ostron Standing"
+    },
+    {
+      "type": "vendor",
+      "place": "HOK, CETUS",
+      "sub": null,
+      "activity": "buy the nine Ostron strikes plus a Peye Grip and Jai Link",
+      "meta": "Neutral, 1,000 standing each",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Ostron Standing", "amount": "11,000" }],
+      "map": "cetus",
+      "rows": [
+        {
+          "qty": null,
+          "label": "Balla Strike Blueprint",
+          "note": "one-handed Dagger, two-handed Staff",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Ooltha Strike Blueprint",
+          "note": "one-handed Sword, two-handed Staff",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Kronsh Strike Blueprint",
+          "note": "one-handed Machete, two-handed Polearm",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Dehtat Strike Blueprint",
+          "note": "one-handed Rapier, two-handed Polearm",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Mewan Strike Blueprint",
+          "note": "one-handed Sword, two-handed Polearm",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Cyath Strike Blueprint",
+          "note": "one-handed Machete, two-handed Polearm",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Sepfahn Strike Blueprint",
+          "note": "one-handed Nikana, two-handed Staff",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Rabvee Strike Blueprint",
+          "note": "one-handed Machete, two-handed Hammer",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Dokrahm Strike Blueprint",
+          "note": "one-handed Scythe, two-handed Heavy Blade",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Peye Grip Blueprint",
+          "note": "one-handed; trades damage for speed",
+          "alt": "Laka, Korb or Kwath one-handed; Jayap, Seekalla, Kroostra or Shtung two-handed; all Neutral, 1,000",
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Jai Link Blueprint",
+          "note": "every material is a shared Plains material",
+          "alt": "Ruhang, same rank and cost, but needs 5 Mawfish Bones and 2 Kuaka Spinal Claw",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Only the Strike banks Mastery; the Grip and Link never do, so pair every strike with the cheapest pair. A second Zaw on a strike you already mastered is worth nothing.",
+        "The Grip's handedness picks the weapon class for good: a forged Zaw consumes its parts and can never be taken apart.",
+        "The wiki doesn't say whether Grip and Link blueprints survive a build; if they are consumed, each further Zaw needs another 1,000 standing for each.",
+        "Hok also sells better links: Ruhang II and Jai II at Offworlder (2,000), Vargeet and Ekwana Ruhang and Jai at Visitor (5,000), their II versions at Trusted (7,500), and Vargeet and Ekwana Ruhang II and Jai II at Surah (10,000)."
+      ],
+      "bonuses": [
+        "Hok's forge screen previews any Strike, Grip and Link combination, including parts you don't own yet; preview before committing.",
+        "If you're going for Mastery, build every strike together: the refined gems, alloys and standing cover all of them at once."
+      ],
+      "disclosures": [
+        {
+          "title": "grip and link picks for a weapon you'll use",
+          "body": "Peye and Seekalla are the fastest grips in their class. Korb is the damage pick for the Dokrahm Scythe. Shtung's extra base damage suits an Exodia Contagion build. Peye with Vargeet II Jai (7,500 standing at Trusted; +14% crit, +0.083 speed, -8% status, -4 damage) is the near-universal pick, giving a Sepfahn 34% crit, 12% status and 1.083 attack speed; Ekwana II Jai suits a status or Melee Influence build. Mewan is already slow, so avoid a very slow grip or levelling it twice drags. Most build threads favor the one-handed Machete for Cyath, since slide-attack Polearm builds fell off after Melee 3.0. Vargeet II Jai builds for 5,000 cr, 5 Maprico, 20 Fersteel Alloy, 5 Kuaka Spinal Claw and 5 Mortus Horn."
+        }
+      ]
+    },
+    {
+      "type": "currency",
+      "place": "CETUS, EARTH",
+      "sub": "Konzu",
+      "activity": "Plague Star bounties for Operational Supply standing",
+      "meta": "no daily cap; standing carries over to the next run",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "Operational Supply Standing", "amount": "10,000" },
+      "spends": [],
+      "map": "cetus",
+      "rows": [
+        {
+          "qty": null,
+          "label": "Collaborator rank-up",
+          "note": "1,000 standing, 10 Grokdrul, 5,000 cr",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Defender rank-up",
+          "note": "2,000 standing, 10 Iradite, 10,000 cr",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Champion rank-up",
+          "note": "3,000 standing, 10 Nistlepod, 20,000 cr; the Plague strikes' rank",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Bounty tiers: Plague Star at level 15-25 pays 1,025 and needs nothing; Advanced at 55-65 pays 3,200 and Steel Path at 100-110 pays 3,800, and each of those consumes an Eidolon Phylaxis and an Infested Catalyst per player, so one missing member blocks the start.",
+        "Don't shoot the Infested spawn pods in stage 4: they feed the Hemocyte kill counter, and killing them slows the run."
+      ],
+      "bonuses": [
+        "Keeping the escort drone above 80% health in stage 3 adds 25, 75 or 100 by tier; Volt, Wisp or a pre-placed Nova Wormhole speed it up.",
+        "Each rank-up grants one free item of that rank; the Champion pick can be a Plague strike blueprint, saving its 2,000 standing.",
+        "Three Advanced runs (3,275 net each) nearly cover the 10,000; Nakak also sells Cetus Wisps for 750 standing and 1,500 cr each.",
+        "The Eidolon Phylaxis blueprint sells from Operational Supply; the Infested Catalyst blueprint comes from the clan Bio Lab."
+      ],
+      "disclosures": [],
+      "ref": "Operational Supply Standing"
+    },
+    {
+      "type": "vendor",
+      "place": "NAKAK, CETUS",
+      "sub": null,
+      "activity": "buy the Plague Keewar and Plague Kripath strikes",
+      "meta": "Champion, 2,000 standing + 3,500 cr each",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Operational Supply Standing", "amount": "4,000" }],
+      "map": "cetus",
+      "rows": [
+        {
+          "qty": null,
+          "label": "Plague Keewar Blueprint",
+          "note": "one-handed Scythe, two-handed Staff; +4% status",
+          "alt": {
+            "text": "Daughter, Nights of Naberus",
+            "spends": [{ "currency": "Mother Token", "amount": "25" }]
+          },
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Plague Kripath Blueprint",
+          "note": "one-handed Rapier, two-handed Polearm; 22% crit, 18% status, innate Viral",
+          "alt": {
+            "text": "Daughter, Nights of Naberus",
+            "spends": [{ "currency": "Mother Token", "amount": "25" }]
+          },
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Nakak's Plague Akwin (one-handed) and Plague Bokwin (two-handed) grips cost the same 2,000 standing + 3,500 cr and add no Mastery; Bokwin builds for 5,000 cr, 20 Grokdrul, 15 Fish Scales, 30 Coprite Alloy and 1,100 Plastids."
+      ],
+      "bonuses": [
+        "Exodia Contagion and Exodia Epidemic sell here at Defender for 5,000 standing + 1,500 cr; Exodia Contagion is the community's main reason to build a Zaw."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build eleven strikes, eleven Peye Grips and eleven Jai Links",
+      "meta": "5,000 cr and 1h each",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Balla Strike",
+          "note": "20 Nistlepod, 15 Fish Scales, 10 Tear Azurite, 60 Pyrotic Alloy",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Ooltha Strike",
+          "note": "20 Iradite, 20 Fish Scales, 10 Tear Azurite, 60 Pyrotic Alloy",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Kronsh Strike",
+          "note": "20 Grokdrul, 45 Fish Scales, 10 Esher Devar, 60 Coprite Alloy",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Dehtat Strike",
+          "note": "2 Maprico, 45 Fish Scales, 40 Fersteel Alloy, 8 Marquise Veridos",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Mewan Strike",
+          "note": "1 Cetus Wisp, 55 Fish Scales, 6 Marquise Veridos, 20 Fersteel Alloy",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Cyath Strike",
+          "note": "1 Breath of the Eidolon (bounty-only), 55 Fish Scales, 6 Marquise Veridos, 20 Fersteel Alloy",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Sepfahn Strike",
+          "note": "15 Condroc Wing, 55 Fish Scales, 10 Tear Azurite, 60 Coprite Alloy",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Rabvee Strike",
+          "note": "35 Grokdrul, 50 Fish Scales, 10 Esher Devar, 20 Fersteel Alloy",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Dokrahm Strike",
+          "note": "25 Nistlepod, 45 Fish Scales, 7 Marquise Veridos, 60 Pyrotic Alloy",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Plague Keewar Strike",
+          "note": "1,600 Nano Spores, 700 Plastids, 10 Esher Devar, 60 Coprite Alloy",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Plague Kripath Strike",
+          "note": "1,600 Nano Spores, 700 Plastids, 10 Tear Azurite, 60 Pyrotic Alloy",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "11",
+          "label": "Peye Grip",
+          "note": "20 Iradite, 50 Fish Oil, 850 Alloy Plate, 60 Pyrotic Alloy each",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "11",
+          "label": "Jai Link",
+          "note": "10 Nistlepod, 20 Pyrotic Alloy, 2 Condroc Wing, 5 Khut-Khut Venom Sac each",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Every part is the same 5,000 cr and one hour, so queue them side by side."],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "HOK'S ANVIL, CETUS",
+      "sub": null,
+      "activity": "forge each Strike, Grip and Link into a Zaw",
+      "meta": "4,000 cr each, instant",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "cetus",
+      "rows": [
+        { "qty": "11", "label": "forged Zaw", "note": "one per strike", "alt": null, "done": false }
+      ],
+      "conditions": ["Once built, a Zaw can never be disassembled to return its parts."],
+      "bonuses": ["Level both passes somewhere fast, like Elite Sanctuary Onslaught or Hydron."],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "HOK'S ANVIL, CETUS",
+      "sub": null,
+      "activity": "level to 30, gild, level to 30 again",
+      "meta": "Trusted, 2 Cetus Wisp + 5,000 standing each",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Ostron Standing", "amount": "55,000" }],
+      "map": "cetus",
+      "rows": [
+        {
+          "qty": null,
+          "label": "Balla, gilded",
+          "note": "the profanity filter blocks naming it \"Balla\"",
+          "alt": null,
+          "done": false
+        },
+        { "qty": null, "label": "Ooltha, gilded", "note": null, "alt": null, "done": false },
+        { "qty": null, "label": "Kronsh, gilded", "note": null, "alt": null, "done": false },
+        { "qty": null, "label": "Dehtat, gilded", "note": null, "alt": null, "done": false },
+        { "qty": null, "label": "Mewan, gilded", "note": null, "alt": null, "done": false },
+        { "qty": null, "label": "Cyath, gilded", "note": null, "alt": null, "done": false },
+        { "qty": null, "label": "Sepfahn, gilded", "note": null, "alt": null, "done": false },
+        { "qty": null, "label": "Rabvee, gilded", "note": null, "alt": null, "done": false },
+        { "qty": null, "label": "Dokrahm, gilded", "note": null, "alt": null, "done": false },
+        { "qty": null, "label": "Plague Keewar, gilded", "note": null, "alt": null, "done": false },
+        { "qty": null, "label": "Plague Kripath, gilded", "note": null, "alt": null, "done": false }
+      ],
+      "conditions": [
+        "A Zaw only gives Mastery once gilded: gilding resets it to rank 0, and the second climb to 30 is the one that pays.",
+        "Donating a rank-30 Zaw that was never gilded to Hok grants no Mastery; Update 39.1 added a confirmation prompt for this.",
+        "Full stats apply at rank 30 without gilding since Update 32; gilding still buys the Mastery, a Polarity, a custom name and Exodia Arcane and Riven compatibility."
+      ],
+      "bonuses": [
+        "A freshly gilded Zaw hides its new Polarity while you're in Cetus; it shows back on the Orbiter."
+      ],
+      "disclosures": [
+        {
+          "title": "refine blueprints the strikes lean on",
+          "body": "Suumbaat's refine blueprints are reusable and shared with Amp and Kitgun parts: Tear Azurite and Pyrotic Alloy at Neutral for 500 standing each, Esher Devar and Coprite Alloy at Offworlder for 2,500 each, Marquise Veridos and Fersteel Alloy at Visitor for 5,000 each. Fersteel Alloy crafts for 1,000 cr and Marquise Veridos for 2,500 cr."
+        },
+        {
+          "title": "builds worth keeping",
+          "body": "Zaws never got the Melee 3.0 damage pass, and the Peye and Vargeet II Jai Sepfahn loses to Nikana Prime and Dual Keres Prime on the same mods; Primes and Incarnons out-stat a Zaw now, and most people build one for its 3,000 Mastery or as a stopgap. What people still build them for is Exodia Contagion: Balla's fast Dagger dash-cancel and a stance's 200% first swing carry it on Volt, a Kripath Polearm on Mirage multiplies its projectiles through the clones, and Blind Justice triples its explosion multiplier against Tranquil Cleave. Hok's own Exodia Force (10,000 standing at Kin) is the buyable fallback. Bring a primer like Kuva Nukor for Condition Overload on a 12% status Sepfahn. Rabvee has the better Riven disposition for chasing the damage cap, and Kripath is favored over Keewar, which is fine but not top tier."
+        },
+        {
+          "title": "community claims the wiki doesn't confirm",
+          "body": "Every two-handed Zaw is said to carry a hidden damage factor: Dokrahm's Heavy Blade reads the same base damage as its Scythe but loses 7% of total damage, so pick it only for its 3.0m range over the Scythe's 1.7m, and a Kripath Polearm (3.0m) is said to get a 1.08x multiplier over the Rapier (2.5m). A Cyath Machete has a Heavy Slam damage-falloff bug. The one-handed Rabvee Machete stays in hand when you switch to a gun and is locked to the Nikana holster; it is cosmetic. Older reports of a gilded, maxed Mewan showing unmastered were a profile UI bug and the Mastery still landed. Hok's plat-only Today's Special gilded Zaw can roll Plague parts at random, which is nothing to farm toward. A Plague Star run lasts about two weeks."
+        },
+        {
+          "title": "where the old per-strike plans disagreed with the wiki",
+          "body": "Gilding costs 5,000 Ostron standing, not 5,000 credits. The three Ostron rank-ups cost 85,000 credits, not 60,000. Every Hok grip, Jayap included, is sold at Neutral, not Visitor. The old plans said Naberus covers the years Plague Star skips and that reruns came 1-2 years apart; the wiki only records Naberus selling the Plague strikes in October 2020, 2022 and 2024, Plague Star skipping 2022 and 2024, and the latest Plague Star on 10-24 September 2025. Plague Keewar was rated effort 2; the Hok Zaw family rule makes it 3."
+        }
+      ]
+    }
+  ]
+}

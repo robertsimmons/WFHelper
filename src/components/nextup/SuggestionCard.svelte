@@ -147,8 +147,10 @@
   const details = $derived(suggestion.details);
   const target = $derived(details?.acquisition ?? null);
   const read = $derived(suppliedRead ?? (target ? partsRead(target) : null));
-  const effort = $derived(suppliedEffort ?? (target ? planRating(target.name).effort : null));
-  const badge = $derived(suppliedBadge ?? (target ? planRating(target.name).badge : null));
+  const rating = $derived(target ? planRating(target.name) : null);
+  const effort = $derived(suppliedEffort ?? rating?.effort ?? null);
+  const badge = $derived(suppliedBadge ?? rating?.badge ?? null);
+  const unplanned = $derived(suppliedEffort == null && rating !== null && !rating.planned);
   // The meter holds its place whether or not anything has rated the item, so an
   // unrated one reads as unknown rather than as easy.
   const acquisitionFace = $derived(target !== null || suppliedRead != null);
@@ -632,15 +634,21 @@
 
       {#if acquisitionFace}
         <div class="mt-auto flex h-6 items-center gap-2">
-          <span class="flex flex-1 gap-[2px]" role="img" aria-label={effortLabel}>
-            {#each EFFORT_STEPS as step (step)}
-              <span
-                class="h-1 flex-1 rounded-[1px] {effort !== null && step <= effort
-                  ? effortFill(effort)
-                  : EFFORT_TRACK}"
-              ></span>
-            {/each}
-          </span>
+          {#if unplanned}
+            <p class="m-0 min-w-0 flex-1 truncate text-xs leading-4 text-text-muted" data-plan-none>
+              {$tr("nextUp.planNone")}
+            </p>
+          {:else}
+            <span class="flex flex-1 gap-[2px]" role="img" aria-label={effortLabel}>
+              {#each EFFORT_STEPS as step (step)}
+                <span
+                  class="h-1 flex-1 rounded-[1px] {effort !== null && step <= effort
+                    ? effortFill(effort)
+                    : EFFORT_TRACK}"
+                ></span>
+              {/each}
+            </span>
+          {/if}
           {#if onWorkOnThis}
             <button
               class="flex h-6 shrink-0 cursor-pointer items-center rounded-[var(--radius-sm)]

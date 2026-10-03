@@ -144,13 +144,18 @@ export function ownsItem(uniqueName: string, ownership: Map<string, number>): bo
 
 /** Mastery for modular gear comes from the head part alone; everything else
  *  fitted is stats and looks. An amp prism reaches the item database with no
- *  masterable flag, so the path is the one rule that classes all four. */
+ *  masterable flag, so the path is the one rule that classes them all. */
 const MODULAR_HEAD_PATHS: Array<[RegExp, ModularGear]> = [
   [/\/MoaPets\/MoaPetParts\/MoaPetHead/i, "moa"],
   [/\/ZanukaPets\/ZanukaPetParts\/ZanukaPetPartHead/i, "hound"],
   [/\/OperatorAmplifiers?\/.*Barrel/i, "amp"],
   [/\/Hoverboard\/.*Deck$/i, "kdrive"],
+  [/\/(?:SUModular\w*|InfKitGun)\/Barrels?\//i, "kitgun"],
+  [/\/ModularMelee\w*\/Tips?\//i, "zaw"],
 ];
+
+/** Conclave copies share the real part's name and are never built. */
+const CONCLAVE_COPY = /\/PvPVariant/i;
 
 interface ModularGearFacts {
   name: string;
@@ -185,19 +190,33 @@ const MODULAR_GEAR: Record<ModularGear, ModularGearFacts> = {
     requiresGilding: false,
     slots: [/\/Hoverboard\/.*Engine$/i, /\/Hoverboard\/.*Front$/i, /\/Hoverboard\/.*Jet$/i],
   },
+  kitgun: {
+    name: "Kitgun",
+    headLabelKey: "nextUp.modularHeadChambers",
+    requiresGilding: true,
+    slots: [/\/(?:SUModular\w*|InfKitGun)\/Handles?\//i, /\/(?:SUModular\w*|InfKitGun)\/Clips?\//i],
+  },
+  zaw: {
+    name: "Zaw",
+    headLabelKey: "nextUp.modularHeadStrikes",
+    requiresGilding: true,
+    slots: [/\/ModularMelee\w*\/Handles?\//i, /\/ModularMelee\w*\/Balance\//i],
+  },
 };
 
 function modularSlots(itemDb: Record<string, ItemDbEntry>, slots: readonly RegExp[]): string[][] {
   const out: string[][] = slots.map(() => []);
   for (const [uniqueName, entry] of Object.entries(itemDb)) {
     if (!entry?.name || entry.isBuildComponent === true || entry.buildsProduct) continue;
+    if (CONCLAVE_COPY.test(uniqueName)) continue;
     const index = slots.findIndex((pattern) => pattern.test(uniqueName));
     if (index >= 0) out[index]?.push(uniqueName);
   }
   return out;
 }
 
-function modularGearOf(uniqueName: string): ModularGear | null {
+export function modularGearOf(uniqueName: string): ModularGear | null {
+  if (CONCLAVE_COPY.test(uniqueName)) return null;
   for (const [pattern, gear] of MODULAR_HEAD_PATHS) {
     if (pattern.test(uniqueName)) return gear;
   }
@@ -211,7 +230,7 @@ interface ModularGearEntry {
   plan: ModularPlan;
 }
 
-/** DE stores a built MOA, Hound, amp or K-Drive under a generic ItemType with
+/** DE stores a built MOA, Hound, amp, K-Drive, Kitgun or Zaw under a generic ItemType with
  *  the fitted parts listed beside it, so a head part never reaches the
  *  ownership map on its own. */
 export function fittedModularParts(inventory: RawInventoryData | null): Set<string> {

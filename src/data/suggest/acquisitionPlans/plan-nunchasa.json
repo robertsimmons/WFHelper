@@ -1,0 +1,207 @@
+{
+  "name": "Nunchasa",
+  "kind": "primary",
+  "effort": 4,
+  "source": "repeat",
+  "tradeable": null,
+  "progress": { "have": 0, "need": 5, "unit": "blueprints" },
+  "badges": [
+    { "text": "shop only, 400 Entropic Kuva", "tone": "info" },
+    { "text": "Zariman gate", "tone": "warn" }
+  ],
+  "prices": [
+    { "label": "all blueprints", "amount": "400 Entropic Kuva", "money": false },
+    { "label": "build total", "amount": "80,000 cr", "money": false }
+  ],
+  "materials": [
+    { "qty": "3,400", "label": "Alloy Plate", "note": "both limbs" },
+    { "qty": "60", "label": "Voidgel Orb", "note": "both limbs" },
+    { "qty": "4", "label": "Voidplume Pinion", "note": "both limbs" },
+    { "qty": "1,600", "label": "Plastids", "note": "both limbs" },
+    { "qty": "750", "label": "Polymer Bundle", "note": "Nunchasa String" },
+    { "qty": "4", "label": "Gallium", "note": "Nunchasa String" },
+    { "qty": "100", "label": "Oxium", "note": "Nunchasa String" },
+    { "qty": "2", "label": "Neurodes", "note": "Nunchasa String" },
+    { "qty": "400", "label": "Cryotic", "note": "Nunchasa Grip" },
+    { "qty": "2,500", "label": "Salvage", "note": "Nunchasa Grip" },
+    { "qty": "2", "label": "Entrati Lanthorn", "note": "Nunchasa Grip" },
+    { "qty": "5", "label": "Morphics", "note": "Nunchasa Grip" },
+    { "qty": "80,000", "label": "Credits", "note": null }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "ORBITER, THEN THE CODEX",
+      "sub": null,
+      "activity": "Angels of the Zariman, then Whispers in the Walls",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Angels of the Zariman",
+          "note": "opens the Zariman missions that drop Entropic Kuva",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Whispers in the Walls",
+          "note": "with Angels of the Zariman, unlocks Cephalon Melica's shop",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "currency",
+      "place": "ZARIMAN",
+      "sub": null,
+      "activity": "Entropic Eximus in endless missions: Void Flood, Void Cascade, Void Armageddon",
+      "meta": "3-7 Entropic Kuva per Eximus",
+      "mode": "relic fissure, solo or premade",
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "Entropic Kuva", "amount": "400" },
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "400",
+          "label": "Entropic Kuva",
+          "note": "buys the whole weapon; not boosted by Resource Boosters",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Entropic Eximus resist non-melee damage by 90% until their shield bubble breaks, and companions do not target them.",
+        "Steel Path gives no extra Kuva per kill; normal mode is as good."
+      ],
+      "bonuses": [],
+      "disclosures": [
+        {
+          "title": "get more Kuva per hour",
+          "body": "Long endless missions beat short runs: Eximus spawn more the longer you stay, and a Void Angel brings a cluster of 3 to 4. Mobile Defense always has an angel near one objective. Run Omnia fissures so relics crack alongside. Extract solo by holding the elevator panel; otherwise everyone leaves together."
+        }
+      ],
+      "ref": "Entropic Kuva"
+    },
+    {
+      "type": "vendor",
+      "place": "YUVAN PEAK, EARTH",
+      "sub": "Cephalon Melica, also at the Chrysalith",
+      "activity": "buy every blueprint",
+      "meta": "400 Entropic Kuva",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Entropic Kuva", "amount": "400" }],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Nunchasa Blueprint",
+          "note": "200 Entropic Kuva",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Nunchasa Upper Limb Blueprint",
+          "note": "50 Entropic Kuva",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Nunchasa Lower Limb Blueprint",
+          "note": "50 Entropic Kuva",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Nunchasa String Blueprint",
+          "note": "50 Entropic Kuva",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Nunchasa Grip Blueprint",
+          "note": "50 Entropic Kuva",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Neither Nunchasa nor its parts drop from any mission or enemy; the shop is the only source."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build the four parts, then Nunchasa",
+      "meta": "12h each part, 24h bow",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Nunchasa Upper Limb",
+          "note": "15,000 cr, 1,700 Alloy Plate, 30 Voidgel Orb, 2 Voidplume Pinion, 800 Plastids",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Nunchasa Lower Limb",
+          "note": "15,000 cr, 1,700 Alloy Plate, 30 Voidgel Orb, 2 Voidplume Pinion, 800 Plastids",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Nunchasa String",
+          "note": "15,000 cr, 750 Polymer Bundle, 4 Gallium, 100 Oxium, 2 Neurodes",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Nunchasa Grip",
+          "note": "15,000 cr, 400 Cryotic, 2,500 Salvage, 2 Entrati Lanthorn, 5 Morphics",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Nunchasa",
+          "note": "20,000 cr, the four parts above",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

@@ -58,6 +58,8 @@ describe("includeOf", () => {
     expect(includeOf(modular("hound"))).toBe("robotic");
     expect(includeOf(modular("amp"))).toBe("amp");
     expect(includeOf(modular("kdrive"))).toBe("kdrive");
+    expect(includeOf(modular("kitgun"))).toBe("secondary");
+    expect(includeOf(modular("zaw"))).toBe("melee");
     expect(includeOf(MECH)).toBe("necramech");
   });
 

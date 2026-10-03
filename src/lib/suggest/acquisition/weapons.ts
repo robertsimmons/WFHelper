@@ -47,8 +47,8 @@ const FIXED_GUN = /\/FixedGun/i;
 const NOT_A_WEAPON_PATH = /\/(?:OperatorAmps?|OperatorAmplifiers?|Hoverboards?|CrewShip)/i;
 
 /** A Hound model and a MOA model are exported as pistols, as every modular part
- *  is; the sweep returns them as modular gear instead. The sentinel path stays
- *  out of this: a sentinel's own gun really is a weapon. */
+ *  is; the sweep returns them as modular gear instead. A companion's gun under
+ *  the same path really is a weapon. */
 const PET_BUILD_PATH = /\/(?:ZanukaPets|CreaturePets|MoaPets)\//i;
 
 interface WeaponEntry {
@@ -56,6 +56,11 @@ interface WeaponEntry {
   entry: ItemDbEntry;
   name: string;
   weaponClass: WeaponClass;
+}
+
+/** A MOA's gun sits under the pet's path beside its parts, but it is a weapon. */
+function isCompanionGun(entry: ItemDbEntry): boolean {
+  return entry.productCategory === "SentinelWeapons";
 }
 
 function excluded(uniqueName: string, entry: ItemDbEntry): boolean {
@@ -67,8 +72,8 @@ function excluded(uniqueName: string, entry: ItemDbEntry): boolean {
   if (EXALTED_PATH.test(uniqueName)) return true;
   if (EXCLUDED_PATH.test(uniqueName)) return true;
   if (NOT_A_WEAPON_PATH.test(uniqueName)) return true;
-  if (PET_BUILD_PATH.test(uniqueName)) return true;
-  if (MODULAR_PART_PATH.test(uniqueName)) return true;
+  if (!isCompanionGun(entry) && PET_BUILD_PATH.test(uniqueName)) return true;
+  if (!isCompanionGun(entry) && MODULAR_PART_PATH.test(uniqueName)) return true;
   if (FIXED_GUN.test(uniqueName)) return true;
   const name = String(entry.name ?? "").toLowerCase();
   return name.endsWith(" blueprint") || name.endsWith(" component");
@@ -102,6 +107,19 @@ export function listWeapons(itemDb: Record<string, ItemDbEntry>): WeaponEntry[] 
   }
   out.sort((a, b) => a.name.localeCompare(b.name));
   return out;
+}
+
+/** Nobody farms a weapon that has no blueprint of its own and arrives inside
+ *  something else: a companion's gun built with the companion, or the second
+ *  form of a gun-blade, which ranks and masters with the form that is built. */
+export function isBundledWeapon(
+  weapon: { entry: ItemDbEntry; weaponClass: WeaponClass },
+  itemDb: Record<string, ItemDbEntry>,
+): boolean {
+  if (weapon.entry.recipe) return false;
+  if (weapon.weaponClass === "companion") return true;
+  const otherForm = weapon.entry.otherForm ? itemDb[weapon.entry.otherForm] : undefined;
+  return otherForm?.recipe !== undefined;
 }
 
 const PRIME_SUFFIX = /\s+prime$/i;

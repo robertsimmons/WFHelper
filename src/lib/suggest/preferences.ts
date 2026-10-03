@@ -6,6 +6,7 @@ import {
   type AcquisitionInclude,
 } from "./acquisition/kinds.js";
 import { ACQUISITION_SORTS, DEFAULT_ACQUISITION_SORT } from "./acquisition/sort.js";
+import { ACQUISITION_SOURCES } from "./acquisition/sources.js";
 import { normalizeType } from "./missionTypes.js";
 import { legacyWorth } from "./rewards.js";
 import { DEFAULT_WEIGHTS } from "./score.js";
@@ -117,6 +118,7 @@ export const DEFAULT_OPTIONS: SuggestionOptions = {
   acquisitionSort: DEFAULT_ACQUISITION_SORT,
   acquisitionSortDir: "asc",
   acquisitionKinds: [...ACQUISITION_INCLUDES],
+  acquisitionSources: [...ACQUISITION_SOURCES],
   acquisitionSearch: "",
   modSearch: "",
   arcaneSearch: "",
@@ -351,6 +353,14 @@ export function parseOptions(raw: string | null): Partial<SuggestionOptions> {
     else {
       const picked = ACQUISITION_INCLUDES.filter((kind) => kinds.includes(kind));
       options.acquisitionKinds = readsAsAll(picked) ? [] : picked;
+    }
+  }
+  const sources = parsed["acquisitionSources"];
+  if (Array.isArray(sources)) {
+    if (sources.includes(ACQUISITION_NONE)) options.acquisitionSources = [ACQUISITION_NONE];
+    else {
+      const picked = ACQUISITION_SOURCES.filter((source) => sources.includes(source));
+      options.acquisitionSources = picked.length === ACQUISITION_SOURCES.length ? [] : picked;
     }
   }
   const search = parsed["acquisitionSearch"];

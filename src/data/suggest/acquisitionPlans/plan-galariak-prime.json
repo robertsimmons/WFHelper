@@ -1,0 +1,143 @@
+{
+  "name": "Galariak Prime",
+  "kind": "melee",
+  "effort": 6,
+  "source": "repeat",
+  "tradeable": false,
+  "progress": { "have": 0, "need": 3, "unit": "parts" },
+  "badges": [
+    { "text": "Perita Rebellion grind", "tone": "warn" },
+    { "text": "MR 14", "tone": "info" }
+  ],
+  "prices": [
+    { "label": "full set from Roathe", "amount": "85 Maphica", "money": false },
+    { "label": "builds", "amount": "45,000 cr", "money": false }
+  ],
+  "materials": [
+    { "qty": "1,100", "label": "Agnovidisc", "note": "650 Blade, 450 Handle" },
+    { "qty": "360", "label": "Laudavi", "note": "131 Blade, 229 Handle" },
+    { "qty": "170", "label": "Servoris", "note": "70 Blade, 100 Handle" },
+    { "qty": "10", "label": "Orokin Cell", "note": "Galariak Prime" },
+    { "qty": "45,000", "label": "Credits", "note": null }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "MAIN QUESTLINE",
+      "sub": null,
+      "activity": "complete The Old Peace",
+      "meta": "unlocks the Dark Refractory and La Cathédrale",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "The Old Peace",
+          "note": "opens The Perita Rebellion and Roathe's shop",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "DARK REFRACTORY, DEIMOS",
+      "sub": "The Perita Rebellion, any recall",
+      "activity": "complete Orders; every 3 Orders rolls Rotation A",
+      "meta": "5.71% per part, ~17 rotations each",
+      "mode": "Recall: Dactolyst, Hunhullus or Prime Vanguard",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Galariak Prime Blueprint",
+          "note": "5.71% Rotation A",
+          "alt": {
+            "text": "or Roathe, La Cathédrale",
+            "spends": [{ "currency": "Maphica", "amount": "35" }]
+          },
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Galariak Prime Blade",
+          "note": "5.71% Rotation A",
+          "alt": {
+            "text": "or Roathe, La Cathédrale",
+            "spends": [{ "currency": "Maphica", "amount": "25" }]
+          },
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Galariak Prime Handle",
+          "note": "5.71% Rotation A",
+          "alt": {
+            "text": "or Roathe, La Cathédrale",
+            "spends": [{ "currency": "Maphica", "amount": "25" }]
+          },
+          "done": false
+        }
+      ],
+      "conditions": [
+        "The run gives 12 minutes to complete as many Orders as you can before the boss.",
+        "The parts cannot be sold for Orokin Ducats, so duplicates are dead weight."
+      ],
+      "bonuses": [
+        "The same Rotation A table holds all three Sagek Prime blueprints at 5.71% each; farm both weapons together.",
+        "The Perita Rebellion also drops Agnovidisc, Laudavi and Servoris for the builds."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build the Blade and Handle, then Galariak Prime",
+      "meta": "12h each",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Galariak Prime Blade",
+          "note": "15,000 cr, 650 Agnovidisc, 131 Laudavi, 70 Servoris",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Galariak Prime Handle",
+          "note": "15,000 cr, 450 Agnovidisc, 229 Laudavi, 100 Servoris",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Galariak Prime",
+          "note": "15,000 cr, 10 Orokin Cell, Blade, Handle",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["MR 14 required."],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

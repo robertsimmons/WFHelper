@@ -1,0 +1,193 @@
+{
+  "name": "Aksondol",
+  "kind": "secondary",
+  "effort": 4,
+  "source": "repeat",
+  "tradeable": null,
+  "progress": { "have": 0, "need": 6, "unit": "blueprints" },
+  "badges": [
+    { "text": "shop only, 380 Entropic Kuva", "tone": "info" },
+    { "text": "Zariman gate", "tone": "warn" }
+  ],
+  "prices": [
+    { "label": "all blueprints", "amount": "380 Entropic Kuva", "money": false },
+    { "label": "build total", "amount": "65,000 cr", "money": false }
+  ],
+  "materials": [
+    { "qty": "1,300", "label": "Polymer Bundle", "note": "both Barrels" },
+    { "qty": "2,400", "label": "Alloy Plate", "note": "both Barrels" },
+    { "qty": "200", "label": "Cryotic", "note": "both Barrels" },
+    { "qty": "2", "label": "Entrati Lanthorn", "note": "both Barrels" },
+    { "qty": "800", "label": "Rubedo", "note": "both Receivers" },
+    { "qty": "80", "label": "Voidgel Orb", "note": "both Receivers" },
+    { "qty": "2", "label": "Neurodes", "note": "both Receivers" },
+    { "qty": "1,800", "label": "Salvage", "note": "both Receivers" },
+    { "qty": "50", "label": "Thrax Plasm", "note": "Aksondol Link" },
+    { "qty": "8,200", "label": "Nano Spores", "note": "Aksondol Link" },
+    { "qty": "600", "label": "Circuits", "note": "Aksondol Link" },
+    { "qty": "2,600", "label": "Ferrite", "note": "Aksondol Link" },
+    { "qty": "65,000", "label": "Credits", "note": null }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "ORBITER, THEN THE CODEX",
+      "sub": null,
+      "activity": "Angels of the Zariman, then Whispers in the Walls",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Angels of the Zariman",
+          "note": "opens the Zariman missions that drop Entropic Kuva",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Whispers in the Walls",
+          "note": "with Angels of the Zariman, unlocks Cephalon Melica's shop",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "currency",
+      "place": "ZARIMAN",
+      "sub": null,
+      "activity": "Entropic Eximus in endless missions: Void Flood, Void Cascade, Void Armageddon",
+      "meta": "3-7 Entropic Kuva per Eximus",
+      "mode": "relic fissure, solo or premade",
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "Entropic Kuva", "amount": "380" },
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "380",
+          "label": "Entropic Kuva",
+          "note": "buys the whole weapon; not boosted by Resource Boosters",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Entropic Eximus resist non-melee damage by 90% until their shield bubble breaks, and companions do not target them.",
+        "Steel Path gives no extra Kuva per kill; normal mode is as good."
+      ],
+      "bonuses": [],
+      "disclosures": [
+        {
+          "title": "get more Kuva per hour",
+          "body": "Long endless missions beat short runs: Eximus spawn more the longer you stay, and a Void Angel brings a cluster of 3 to 4. Mobile Defense always has an angel near one objective. Run Omnia fissures so relics crack alongside. Extract solo by holding the elevator panel; otherwise everyone leaves together."
+        }
+      ],
+      "ref": "Entropic Kuva"
+    },
+    {
+      "type": "vendor",
+      "place": "YUVAN PEAK, EARTH",
+      "sub": "Cephalon Melica, also at the Chrysalith",
+      "activity": "buy every blueprint",
+      "meta": "380 Entropic Kuva",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Entropic Kuva", "amount": "380" }],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Aksondol Blueprint",
+          "note": "200 Entropic Kuva",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "2",
+          "label": "Aksondol Barrel Blueprint",
+          "note": "30 Entropic Kuva each",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "2",
+          "label": "Aksondol Receiver Blueprint",
+          "note": "30 Entropic Kuva each",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Aksondol Link Blueprint",
+          "note": "60 Entropic Kuva",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Neither Aksondol nor its parts drop from any mission or enemy; the shop is the only source."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build two Barrels, two Receivers and the Link, then Aksondol",
+      "meta": "6h each part, 12h weapon",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "2",
+          "label": "Aksondol Barrel",
+          "note": "10,000 cr, 650 Polymer Bundle, 1 Entrati Lanthorn, 1,200 Alloy Plate, 100 Cryotic, each",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "2",
+          "label": "Aksondol Receiver",
+          "note": "10,000 cr, 400 Rubedo, 40 Voidgel Orb, 1 Neurodes, 900 Salvage, each",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Aksondol Link",
+          "note": "10,000 cr, 50 Thrax Plasm, 8,200 Nano Spores, 600 Circuits, 2,600 Ferrite",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Aksondol",
+          "note": "15,000 cr, the five parts above",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

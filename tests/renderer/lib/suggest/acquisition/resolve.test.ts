@@ -2,7 +2,9 @@ import { describe, expect, it } from "vitest";
 
 import { resolveAcquisition } from "../../../../../src/lib/suggest/acquisition/index.js";
 import {
+  BALLA,
   CARRIER,
+  CATCHMOON,
   companionDb,
   DORMA_HOUND,
   inventory,
@@ -333,5 +335,33 @@ describe("resolveAcquisition beyond frames and weapons", () => {
     expect(board.modular?.heads.map((head) => head.uniqueName)).toEqual([RUNWAY]);
     expect(board.modular?.headLabelKey).toBe("nextUp.modularHeadBoards");
     expect(find(companions(), "Amp").modular?.heads[0].uniqueName).toBe(RAPLAK_PRISM);
+  });
+
+  it("counts Kitgun chambers from every vendor, and never a grip", () => {
+    const kitgun = find(companions(), "Kitgun");
+    expect(kitgun.kind).toBe("modular");
+    expect(kitgun.modular?.heads.map((head) => head.name)).toEqual(["Catchmoon", "Sporelacer"]);
+    expect(kitgun.modular?.headLabelKey).toBe("nextUp.modularHeadChambers");
+    expect(kitgun.modular?.requiresGilding).toBe(true);
+    expect(companions().map((target) => target.name)).not.toContain("Lovetap");
+  });
+
+  it("counts Zaw strikes, never a grip or link, and never a Conclave copy", () => {
+    const zaw = find(companions(), "Zaw");
+    expect(zaw.modular?.heads.map((head) => head.uniqueName)).toEqual([
+      BALLA,
+      expect.stringContaining("InfestedTipTwo"),
+    ]);
+    expect(zaw.modular?.slots.map((slot) => slot.length)).toEqual([1, 1]);
+    expect(zaw.modular?.headLabelKey).toBe("nextUp.modularHeadStrikes");
+    const names = companions().map((target) => target.name);
+    expect(names).not.toContain("Balla");
+    expect(names).not.toContain("Peye");
+  });
+
+  it("banks a chamber or strike fitted to a built weapon", () => {
+    const ctx = { inventory: inventory({ modularParts: [CATCHMOON, BALLA] }) };
+    expect(find(companions(ctx), "Kitgun").modular?.owned).toBe(1);
+    expect(find(companions(ctx), "Zaw").modular?.owned).toBe(1);
   });
 });

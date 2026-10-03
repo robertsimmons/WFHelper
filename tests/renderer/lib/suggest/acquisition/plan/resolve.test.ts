@@ -289,9 +289,9 @@ describe("currency ledger", () => {
   });
 
   it("leaves a plain string alt alone", () => {
-    const plan = resolve("Artax", { altsTaken: ["1:0"] });
-    expect(plan.groups[1].rows[0].alt).toEqual({
-      text: "free from the Venus Junction task Upgrade Dreamer's Bond Mod",
+    const plan = resolve("Afuris", { altsTaken: ["0:1"] });
+    expect(plan.groups[0].rows[1].alt).toEqual({
+      text: "one free from the Earth to Venus Junction",
       spends: [],
       taken: true,
     });
@@ -364,6 +364,7 @@ describe("plan materials", () => {
     return {
       name: "Test Frame",
       kind: "warframe",
+      source: "repeat",
       effort: 4,
       tradeable: false,
       progress: { have: 0, need: 4, unit: "parts" },
@@ -397,6 +398,10 @@ describe("plan materials", () => {
       },
       group("foundry", "FOUNDRY", ["Odd Foundry Part"]),
     ]);
+
+  it("carries the plan's source through", () => {
+    expect(resolveWith(authored()).source).toBe("repeat");
+  });
 
   it("lands the material groups just ahead of the first build group", () => {
     const resolved = resolveWith(authored());
@@ -442,6 +447,7 @@ describe("credits", () => {
     return {
       name: "Test Gun",
       kind: "primary",
+      source: "shop",
       effort: 3,
       tradeable: false,
       progress: { have: 0, need: 1, unit: "blueprint" },

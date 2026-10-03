@@ -1,0 +1,523 @@
+{
+  "name": "Amp",
+  "kind": "amp",
+  "effort": 7,
+  "source": "standing",
+  "tradeable": false,
+  "progress": { "have": 0, "need": 8, "unit": "Prisms" },
+  "badges": [
+    { "text": "Quills and Vox Solaris to Instrument", "tone": "warn" },
+    { "text": "The War Within gate", "tone": "warn" }
+  ],
+  "prices": [
+    { "label": "rank-ups, both syndicates", "amount": "1,330,000 cr", "money": false },
+    {
+      "label": "seven Prisms with Pencha and Clapkra, foundry",
+      "amount": "105,000 cr",
+      "money": false
+    },
+    { "label": "Amp Assembly", "amount": "4,000 cr each", "money": false },
+    { "label": "gild", "amount": "5,000 standing each", "money": false }
+  ],
+  "materials": [
+    { "qty": "150", "label": "Iradite", "note": "40 Raplak, 60 Shwaak, 50 Rahn" },
+    { "qty": "30", "label": "Tear Azurite", "note": "10 Raplak, 20 Rahn" },
+    { "qty": "40", "label": "Esher Devar", "note": "10 Raplak, 15 Shwaak, 15 Rahn" },
+    { "qty": "2", "label": "Norg Brain", "note": "Shwaak" },
+    {
+      "qty": "30",
+      "label": "Murkray Liver",
+      "note": "2 each Raplak, Pencha Scaffold, Clapkra Brace"
+    },
+    { "qty": "2", "label": "Cuthol Tendrils", "note": "Granmu" },
+    { "qty": "2", "label": "Seram Beetle Shell", "note": "Rahn" },
+    { "qty": "1", "label": "Repeller Systems", "note": "Instrument rank-up" },
+    { "qty": "20", "label": "Marquise Veridos", "note": "10 Shwaak, 10 Granmu" },
+    { "qty": "3", "label": "Breath Of The Eidolon", "note": "Granmu" },
+    { "qty": "6", "label": "Star Crimzian", "note": "Granmu" },
+    {
+      "qty": "11",
+      "label": "Vega Toroid",
+      "note": "3 each Cantic, Lega, Klamora; 1 Operative, 1 Agent rank-up"
+    },
+    { "qty": "2", "label": "Calda Toroid", "note": "Operative and Hand rank-ups" },
+    { "qty": "2", "label": "Sola Toroid", "note": "Operative and Instrument rank-ups" },
+    { "qty": "9", "label": "Radiant Zodian", "note": "3 each Cantic, Lega, Klamora" },
+    {
+      "qty": "10",
+      "label": "Gyromag Systems",
+      "note": "3 each Cantic, Lega, Klamora; 1 Agent rank-up"
+    },
+    { "qty": "1", "label": "Atmo Systems", "note": "Hand rank-up" },
+    { "qty": "6", "label": "Longwinder Lathe Coagulant", "note": "Cantic" },
+    { "qty": "6", "label": "Charamote Sagan Module", "note": "Lega" },
+    { "qty": "6", "label": "Tromyzon Entroplasma", "note": "Klamora" },
+    { "qty": "280", "label": "Grokdrul", "note": "40 per Pencha Scaffold" },
+    { "qty": "42", "label": "Cetus Wisp", "note": "3 per Pencha Scaffold, 3 per Clapkra Brace" },
+    { "qty": "420", "label": "Pyrotic Alloy", "note": "60 per Pencha Scaffold" },
+    { "qty": "140", "label": "Fish Oil", "note": "20 per Clapkra Brace" },
+    { "qty": "42", "label": "Morphics", "note": "6 per Clapkra Brace" },
+    { "qty": "30", "label": "Intact Sentient Core", "note": "Mote and Observer rank-ups" },
+    { "qty": "30", "label": "Eidolon Shard", "note": "Adherent and Instrument rank-ups" },
+    { "qty": "1,463,000", "label": "Credits", "note": null }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "CETUS, EARTH",
+      "sub": null,
+      "activity": "quests that open both amp vendors",
+      "meta": "one-time",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "cetus",
+      "rows": [
+        {
+          "qty": null,
+          "label": "Saya's Vigil",
+          "note": "needed with The War Within for the Mote Amp",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "The War Within",
+          "note": "opens The Quills behind Konzu's board; only the Operator can enter",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Vox Solaris quest",
+          "note": "opens Little Duck in Fortuna, who also needs one talk with Onkko first",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Onkko and Little Duck only deal with the Operator or the Drifter"],
+      "bonuses": ["The Quills hand over the Mote Amp, the first Prism, on your first visit"],
+      "disclosures": []
+    },
+    {
+      "type": "currency",
+      "place": "CETUS, EARTH",
+      "sub": null,
+      "activity": "Sentient Cores turned in to Onkko",
+      "meta": "162,000 Standing",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "The Quills Standing", "amount": "162,000" },
+      "spends": [],
+      "map": "cetus",
+      "rows": [
+        {
+          "qty": "162,000",
+          "label": "The Quills standing",
+          "note": "141,000 of it burns on rank-ups, 21,000 buys the four Prisms, Scaffolds and Braces",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": [],
+      "ref": "The Quills Standing"
+    },
+    {
+      "type": "vendor",
+      "place": "QUILL ONKKO, CETUS",
+      "sub": null,
+      "activity": "The Quills rank-ups to Instrument",
+      "meta": "430,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "The Quills Standing", "amount": "141,000" }],
+      "map": "cetus",
+      "rows": [
+        {
+          "qty": null,
+          "label": "Mote",
+          "note": "5,000 standing, 10 Intact Sentient Cores, 30,000 cr",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Observer",
+          "note": "22,000 standing, 20 Intact Sentient Cores, 50,000 cr",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Adherent",
+          "note": "44,000 standing, 10 Eidolon Shards, 100,000 cr",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Instrument",
+          "note": "70,000 standing, 20 Eidolon Shards, 250,000 cr",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Rank-ups burn the full ceiling of each rank, so Instrument costs 141,000 Quills standing earned",
+        "Adherent is also the Quills gild rank, so it is unavoidable for Mastery"
+      ],
+      "bonuses": [],
+      "disclosures": [
+        {
+          "title": "earning Quills standing",
+          "body": "Quills standing comes only from turning in Sentient Cores to Onkko: Intact 250, Exceptional 750, Flawless 1,500, and Narmer Isoplast 2,000. Rank 30 or gilded Amps can also be donated to Onkko for standing."
+        }
+      ]
+    },
+    {
+      "type": "currency",
+      "place": "ORB VALLIS, VENUS",
+      "sub": null,
+      "activity": "Toroids turned in to Little Duck",
+      "meta": "150,000 Standing",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "Vox Solaris Standing", "amount": "150,000" },
+      "spends": [],
+      "map": "orb-vallis",
+      "rows": [
+        {
+          "qty": "150,000",
+          "label": "Vox Solaris standing",
+          "note": "141,000 of it burns on rank-ups, 9,000 buys the three Prisms",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": [],
+      "ref": "Vox Solaris Standing"
+    },
+    {
+      "type": "vendor",
+      "place": "LITTLE DUCK, FORTUNA",
+      "sub": null,
+      "activity": "Vox Solaris rank-ups to Instrument",
+      "meta": "900,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Vox Solaris Standing", "amount": "141,000" }],
+      "map": "orb-vallis",
+      "rows": [
+        {
+          "qty": null,
+          "label": "Operative",
+          "note": "5,000 standing, 1 each Calda, Vega and Sola Toroid, 50,000 cr",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Agent",
+          "note": "22,000 standing, 1 Gyromag Systems, 1 Vega Toroid, 100,000 cr",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Hand",
+          "note": "44,000 standing, 1 Atmo Systems, 1 Calda Toroid, 250,000 cr",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Instrument",
+          "note": "70,000 standing, 1 Repeller Systems, 1 Sola Toroid, 500,000 cr",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Klamora sits behind Instrument, so the whole ladder is needed for the last Prism"
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "QUILL ONKKO, CETUS",
+      "sub": null,
+      "activity": "buy four Prisms and a cheap Scaffold and Brace per Prism",
+      "meta": "21,000 Quills standing",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "The Quills Standing", "amount": "21,000" }],
+      "map": "cetus",
+      "rows": [
+        {
+          "qty": null,
+          "label": "Mote Amp",
+          "note": "free on first visit; blueprint 500 standing at Neutral if lost",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Raplak Prism",
+          "note": "1,000 standing, Mote",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Shwaak Prism",
+          "note": "1,500 standing, Observer",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Granmu Prism",
+          "note": "2,000 standing, Adherent",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Rahn Prism",
+          "note": "2,500 standing, Instrument",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "7",
+          "label": "Pencha Scaffold",
+          "note": "1,000 standing each, Mote",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "7",
+          "label": "Clapkra Brace",
+          "note": "1,000 standing each, Mote",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Only the Prism earns Mastery; Scaffold and Brace are stats and looks",
+        "A second Amp on a Prism you already gilded is worth zero"
+      ],
+      "bonuses": [],
+      "disclosures": [
+        {
+          "title": "the rest of the Quills catalogue",
+          "body": "Observer: Shraksun Scaffold and Juttni Brace, 1,500 standing. Adherent: Klebrik Scaffold and Lohrin Brace, 2,000. Instrument: Phahd Scaffold and Anspatha Brace, 2,500. None of them changes Mastery."
+        }
+      ]
+    },
+    {
+      "type": "vendor",
+      "place": "LITTLE DUCK, FORTUNA",
+      "sub": null,
+      "activity": "buy three Prisms",
+      "meta": "3,000 standing each",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Vox Solaris Standing", "amount": "9,000" }],
+      "map": "orb-vallis",
+      "rows": [
+        {
+          "qty": null,
+          "label": "Cantic Prism",
+          "note": "3,000 standing, Agent",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Lega Prism",
+          "note": "3,000 standing, Hand",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Klamora Prism",
+          "note": "3,000 standing, Instrument",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": ["The Cantic Prism blueprint is a possible reward for ranking up to Agent"],
+      "disclosures": [
+        {
+          "title": "the rest of the Vox Solaris catalogue",
+          "body": "Agent: Exard Scaffold and Suo Brace. Hand: Dissic Scaffold and Plaga Brace. Instrument: Propa Scaffold and Certus Brace. Each is 3,000 standing, three times the Quills' Pencha and Clapkra, and none changes Mastery."
+        }
+      ]
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "queue all twenty-one parts at once",
+      "meta": "1h each, 5,000 cr each",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Raplak Prism",
+          "note": "40 Iradite, 2 Murkray Liver, 10 Tear Azurite, 10 Esher Devar",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Shwaak Prism",
+          "note": "60 Iradite, 2 Norg Brain, 15 Esher Devar, 10 Marquise Veridos",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Granmu Prism",
+          "note": "3 Breath of the Eidolon, 2 Cuthol Tendrils, 10 Marquise Veridos, 6 Star Crimzian",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Rahn Prism",
+          "note": "50 Iradite, 2 Seram Beetle Shell, 20 Tear Azurite, 15 Esher Devar",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Cantic Prism",
+          "note": "3 Vega Toroid, 3 Radiant Zodian, 3 Gyromag Systems, 6 Longwinder Lathe Coagulant",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Lega Prism",
+          "note": "3 Vega Toroid, 3 Radiant Zodian, 3 Gyromag Systems, 6 Charamote Sagan Module",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Klamora Prism",
+          "note": "3 Vega Toroid, 3 Radiant Zodian, 3 Gyromag Systems, 6 Tromyzon Entroplasma",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "7",
+          "label": "Pencha Scaffold",
+          "note": "40 Grokdrul, 3 Cetus Wisp, 60 Pyrotic Alloy, 2 Murkray Liver each",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "7",
+          "label": "Clapkra Brace",
+          "note": "3 Cetus Wisp, 20 Fish Oil, 2 Murkray Liver, 6 Morphics each",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Every part is 1 hour and 5,000 cr"],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "QUILL ONKKO, CETUS",
+      "sub": null,
+      "activity": "Amp Assembly",
+      "meta": "4,000 cr each",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "cetus",
+      "rows": [
+        {
+          "qty": "7",
+          "label": "assembled Amp",
+          "note": "one per bought Prism; the Mote Amp comes assembled",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Assembly consumes the three parts",
+        "Little Duck offers the same Amp Assembly"
+      ],
+      "bonuses": ["The Amp Assembly screen previews combinations of parts you do not own yet"],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "QUILL ONKKO, CETUS",
+      "sub": null,
+      "activity": "gild at rank 30",
+      "meta": "5,000 standing each",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "cetus",
+      "rows": [
+        { "qty": null, "label": "Mote, gilded", "note": null, "alt": null, "done": false },
+        { "qty": null, "label": "Raplak, gilded", "note": null, "alt": null, "done": false },
+        { "qty": null, "label": "Shwaak, gilded", "note": null, "alt": null, "done": false },
+        { "qty": null, "label": "Granmu, gilded", "note": null, "alt": null, "done": false },
+        { "qty": null, "label": "Rahn, gilded", "note": null, "alt": null, "done": false },
+        { "qty": null, "label": "Cantic, gilded", "note": null, "alt": null, "done": false },
+        { "qty": null, "label": "Lega, gilded", "note": null, "alt": null, "done": false },
+        { "qty": null, "label": "Klamora, gilded", "note": null, "alt": null, "done": false }
+      ],
+      "conditions": [
+        "Gilding needs Adherent with the Quills or Hand with Vox Solaris, and only a rank 30 Amp can be gilded",
+        "Gilding resets the Amp to rank 0 and only then does leveling earn Mastery, so every Prism is two trips to rank 30"
+      ],
+      "bonuses": [
+        "A rank 30 or gilded Amp donates to Onkko for Quills standing or to Little Duck for Vox Solaris standing"
+      ],
+      "disclosures": [
+        {
+          "title": "Sirocco",
+          "body": "The wiki counts Sirocco as a ninth Mastery Amp alongside the seven Prisms and the Mote Amp. It comes already gilded on completing The New War, so it needs nothing here and is not one of these Prisms."
+        }
+      ]
+    }
+  ]
+}

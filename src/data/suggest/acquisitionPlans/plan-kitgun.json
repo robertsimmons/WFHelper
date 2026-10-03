@@ -1,0 +1,453 @@
+{
+  "name": "Kitgun",
+  "kind": "secondary",
+  "effort": 3,
+  "source": "standing",
+  "tradeable": false,
+  "progress": { "have": 0, "need": 6, "unit": "Chambers" },
+  "badges": [
+    { "text": "Doer gate", "tone": "warn" },
+    { "text": "Two vendors", "tone": "info" }
+  ],
+  "prices": [
+    { "label": "six builds + assembly", "amount": "114,000 cr", "money": false },
+    { "label": "Solaris rank-ups to Doer", "amount": "85,000 cr", "money": false }
+  ],
+  "materials": [
+    { "qty": "260", "label": "Travocyte Alloy", "note": "Catchmoon 20, Lovetap 120, Slap 120" },
+    { "qty": "60", "label": "Venerdo Alloy", "note": "Gaze 40, Rattleguts 20" },
+    { "qty": "20", "label": "Axidrol Alloy", "note": "Tombfinger" },
+    { "qty": "20", "label": "Adramal Alloy", "note": "Sporelacer" },
+    { "qty": "60", "label": "Tempered Bapholite", "note": "Vermisplicer 20, Ulnaris 40" },
+    { "qty": "1,700", "label": "Alloy Plate", "note": "Catchmoon" },
+    { "qty": "1,200", "label": "Cryotic", "note": "Gaze" },
+    { "qty": "900", "label": "Rubedo", "note": "Rattleguts" },
+    { "qty": "900", "label": "Circuits", "note": "Tombfinger" },
+    { "qty": "15", "label": "Mytocardia Spore", "note": "Catchmoon" },
+    { "qty": "15", "label": "Tepa Nodule", "note": "Gaze" },
+    { "qty": "95", "label": "Gorgaricus Spore", "note": "Rattleguts 15, Slap 80" },
+    { "qty": "15", "label": "Thermal Sludge", "note": "Tombfinger" },
+    { "qty": "55", "label": "Pustulite", "note": "Sporelacer 15, Thymoid 40" },
+    { "qty": "15", "label": "Ganglion", "note": "Vermisplicer" },
+    { "qty": "20", "label": "Heart Noctrul", "note": "Lovetap" },
+    { "qty": "50", "label": "Faceted Tiametrite", "note": "Ulnaris 10, Thymoid 40" },
+    { "qty": "6", "label": "Scintillant", "note": "Thymoid" },
+    { "qty": "10", "label": "Scrubber Exa Brain", "note": "Catchmoon" },
+    { "qty": "40", "label": "Kriller Thermal Laser", "note": "Gaze" },
+    { "qty": "10", "label": "Eye-Eye Rotoblade", "note": "Rattleguts" },
+    { "qty": "10", "label": "Tink Dissipator Coil", "note": "Tombfinger" },
+    { "qty": "60", "label": "Sapcaddy Venedo Case", "note": "Lovetap 40, Slap 20" },
+    { "qty": "160", "label": "Scrap", "note": "Lovetap 80, Slap 80" },
+    {
+      "qty": "96",
+      "label": "Benign Infested Tumor",
+      "note": "Sporelacer 25, Vermisplicer 25, Ulnaris 40, Stranger rank-up 6"
+    },
+    { "qty": "10", "label": "Sporulate Sac", "note": "Sporelacer" },
+    { "qty": "10", "label": "Dendrite Blastoma", "note": "Vermisplicer" },
+    { "qty": "20", "label": "Spinal Core Section", "note": "Ulnaris" },
+    { "qty": "36", "label": "Ferment Bladder", "note": "Thymoid 30, Stranger rank-up 6" },
+    { "qty": "6", "label": "Training Debt-Bond", "note": "Solaris rank-ups" },
+    { "qty": "46", "label": "Shelter Debt-Bond", "note": "6 Solaris rank-ups, 40 Zuud gilds" },
+    { "qty": "4", "label": "Medical Debt-Bond", "note": "Doer rank-up" },
+    { "qty": "3", "label": "Sly Vulpaphyla Tag", "note": "Associate rank-up" },
+    { "qty": "3", "label": "Vizier Predasite Tag", "note": "Associate rank-up" },
+    { "qty": "51", "label": "Father Token", "note": "Acquaintance rank-up, 25 per Father gild" },
+    { "qty": "1", "label": "Daughter Token", "note": "Acquaintance rank-up" },
+    { "qty": "1", "label": "Mother Token", "note": "Associate rank-up" },
+    { "qty": "1", "label": "Son Token", "note": "Associate rank-up" },
+    {
+      "qty": "199,000",
+      "label": "Credits",
+      "note": "18 parts, 6 assemblies, Solaris rank-ups to Doer"
+    }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "FORTUNA + NECRALISK",
+      "sub": null,
+      "activity": "open both Kitgun vendors",
+      "meta": "no Mastery Rank requirement",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Vox Solaris",
+          "note": "from Eudico; unlocks Solaris United and Rude Zuud",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Heart of Deimos",
+          "note": "unlocks Father and Entrati standing",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Rude Zuud sells Catchmoon, Gaze, Rattleguts and Tombfinger; Father sells Sporelacer and Vermisplicer. Neither sells the other's chambers."
+      ],
+      "bonuses": [
+        "Every chamber, plus Lovetap, Slap, Ulnaris and Thymoid, sells at Neutral, so a fresh account can build its first Kitgun the day it reaches either hub."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "currency",
+      "place": "ORB VALLIS, VENUS",
+      "sub": null,
+      "activity": "Solaris United standing to Doer",
+      "meta": "71,000 on rank-ups, 26,000 at Rude Zuud",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "Solaris United Standing", "amount": "97,000" },
+      "spends": [],
+      "map": "orb-vallis",
+      "rows": [
+        {
+          "qty": "5,000",
+          "label": "Outworlder",
+          "note": "2 Training Debt-Bonds, 10,000 credits",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "22,000",
+          "label": "Rapscallion",
+          "note": "2 Training + 3 Shelter Debt-Bonds, 25,000 credits",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "44,000",
+          "label": "Doer",
+          "note": "2 Training + 3 Shelter + 4 Medical Debt-Bonds, 50,000 credits; unlocks gilding",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Doer is the gild rank. Every chamber sells at Neutral, but none of them banks Mastery until it is gilded."
+      ],
+      "bonuses": [],
+      "disclosures": [
+        {
+          "title": "older bond and standing notes",
+          "body": "Carried from the per-chamber plans, not confirmed on the wiki: Update 35.1 (Feb 2024) cut rank-up bond costs hard, so stage-1-reset bond guides no longer apply; Update 36.0 moved bounty bond drops to the final stage and halved Ticker's credit costs. Ticker sells cheap Training and Shelter bonds for credits and materials, and his rotating cases are worth checking early since a rare bond tier can be the bottleneck. Profit-Taker always drops 3 Medical, 2 Advances and 1 Familial bond per run once available. The Exploiter Orb (Deck 12, needs Diluted Thermia) drops trade-in gems worth a day's standing in one squad run, and Conservation (Kubrodon, Bolarola, Stover) is the fastest standing route to Doer."
+        }
+      ],
+      "ref": "Solaris United Standing"
+    },
+    {
+      "type": "currency",
+      "place": "CAMBION DRIFT, DEIMOS",
+      "sub": null,
+      "activity": "Entrati standing to Associate",
+      "meta": "71,000 on rank-ups, 13,000 at Father",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "Entrati Standing", "amount": "84,000" },
+      "spends": [],
+      "map": "cambion-drift",
+      "rows": [
+        {
+          "qty": "5,000",
+          "label": "Stranger",
+          "note": "6 Benign Infested Tumor, 6 Ferment Bladder",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "22,000",
+          "label": "Acquaintance",
+          "note": "1 Keratinos Blade Blueprint, 1 Father Token, 1 Daughter Token",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "44,000",
+          "label": "Associate",
+          "note": "3 Sly Vulpaphyla Tag, 3 Vizier Predasite Tag, 1 Mother Token, 1 Son Token",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Only needed to gild Sporelacer and Vermisplicer at Father; the wiki's Gilding page puts Kitgun gilding at Rank 3 of the vendor's syndicate."
+      ],
+      "bonuses": [],
+      "disclosures": [
+        {
+          "title": "which rank Father wants",
+          "body": "The wiki's Kitgun page says every gild needs Solaris United Doer, while its Gilding page says Rank 3 of the appropriate syndicate, which for Father is Entrati Associate. The older Vermisplicer plan asked for Associate; the older Sporelacer plan said to plan for Doer in case the blanket gate applies. You reach Doer for the Fortuna chambers anyway."
+        }
+      ],
+      "ref": "Entrati Standing"
+    },
+    {
+      "type": "vendor",
+      "place": "RUDE ZUUD, FORTUNA",
+      "sub": null,
+      "activity": "buy four chamber sets",
+      "meta": "500 standing per blueprint, all Neutral",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Solaris United Standing", "amount": "6,000" }],
+      "map": "fortuna",
+      "rows": [
+        {
+          "qty": null,
+          "label": "Catchmoon Chamber Blueprint",
+          "note": null,
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Gaze Chamber Blueprint",
+          "note": null,
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Rattleguts Chamber Blueprint",
+          "note": null,
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Tombfinger Chamber Blueprint",
+          "note": null,
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "4",
+          "label": "Lovetap Blueprint",
+          "note": "secondary grip",
+          "alt": null,
+          "done": false
+        },
+        { "qty": "4", "label": "Slap Blueprint", "note": "loader", "alt": null, "done": false }
+      ],
+      "conditions": [
+        "Only the chamber earns Mastery. Grip and loader never do, so the cheapest Neutral pair is enough for every chamber."
+      ],
+      "bonuses": [],
+      "disclosures": [
+        {
+          "title": "parts for a build you'll actually use",
+          "body": "Ramble is 750 standing at Neutral; Haymaker and Gibber are 1,000 at Outworlder; Bashrack and Slapneedle are 2,000 at Rapscallion; Splat is 4,000 at Cove. Haymaker and Splat are the community's usual secondary pairing (Tombfinger, Catchmoon, Sporelacer). Haymaker takes 5 Goblite Tears, 30 Travocyte Alloy, 20 Scrap and 10 Recaster Neural Relay; Splat takes 40 Auroxium Alloy, 10 Star Amarast, 20 Scrap and 5 Synathid Ecosynth Analyzer; each is 5,000 credits and 1h. The older Sporelacer plan put Cove at 141,000 standing of rank-ups and said Splat can be claimed as Cove's free rank-up vendor item; neither is confirmed on the wiki. The older Rattleguts plan said primary grips (Brash, Shrewd) start at Outworlder."
+        }
+      ]
+    },
+    {
+      "type": "vendor",
+      "place": "FATHER, NECRALISK",
+      "sub": null,
+      "activity": "buy two chamber sets",
+      "meta": "500 standing per blueprint, all Neutral",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Entrati Standing", "amount": "3,000" }],
+      "map": "necralisk",
+      "rows": [
+        {
+          "qty": null,
+          "label": "Sporelacer Chamber Blueprint",
+          "note": null,
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Vermisplicer Chamber Blueprint",
+          "note": null,
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "2",
+          "label": "Ulnaris Blueprint",
+          "note": "secondary grip",
+          "alt": null,
+          "done": false
+        },
+        { "qty": "2", "label": "Thymoid Blueprint", "note": "loader", "alt": null, "done": false }
+      ],
+      "conditions": [
+        "Father's own Neutral grip and loader finish both Infested chambers, so no Fortuna parts are needed for them."
+      ],
+      "bonuses": [],
+      "disclosures": [
+        {
+          "title": "Sporelacer and Fortuna",
+          "body": "The older Sporelacer plan gated it behind Fortuna and a Cove-rank Haymaker and Splat build. The wiki sells Sporelacer at Father for 500 standing at Neutral, and parts mix freely across both vendors, so that pairing is a build choice. Father also sells Palmaris (primary grip) at Neutral and Macro Thymoid at Stranger for 1,000. The older Vermisplicer plan noted the grip sets a beam chamber's range more than its damage, with Palmaris (28 m) a common pick; the range figure is not confirmed on the wiki."
+        }
+      ]
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build eighteen parts",
+      "meta": "5,000 cr and 1h each, 90,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Catchmoon",
+          "note": "15 Mytocardia Spore, 20 Travocyte Alloy, 10 Scrubber Exa Brain, 1,700 Alloy Plate",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Gaze",
+          "note": "15 Tepa Nodule, 40 Venerdo Alloy, 40 Kriller Thermal Laser, 1,200 Cryotic",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Rattleguts",
+          "note": "15 Gorgaricus Spore, 20 Venerdo Alloy, 10 Eye-Eye Rotoblade, 900 Rubedo",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Tombfinger",
+          "note": "15 Thermal Sludge, 20 Axidrol Alloy, 10 Tink Dissipator Coil, 900 Circuits",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Sporelacer",
+          "note": "15 Pustulite, 20 Adramal Alloy, 25 Benign Infested Tumor, 10 Sporulate Sac",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Vermisplicer",
+          "note": "15 Ganglion, 20 Tempered Bapholite, 25 Benign Infested Tumor, 10 Dendrite Blastoma",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "4",
+          "label": "Lovetap",
+          "note": "each 5 Heart Noctrul, 30 Travocyte Alloy, 20 Scrap, 10 Sapcaddy Venedo Case",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "4",
+          "label": "Slap",
+          "note": "each 20 Gorgaricus Spore, 30 Travocyte Alloy, 20 Scrap, 5 Sapcaddy Venedo Case",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "2",
+          "label": "Ulnaris",
+          "note": "each 5 Faceted Tiametrite, 20 Tempered Bapholite, 20 Benign Infested Tumor, 10 Spinal Core Section",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "2",
+          "label": "Thymoid",
+          "note": "each 3 Scintillant, 20 Faceted Tiametrite, 20 Pustulite, 15 Ferment Bladder",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Gaze's Kriller Thermal Laser comes from a warm-cycle fish, so plan its catch around the Vallis weather."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "RUDE ZUUD + FATHER",
+      "sub": null,
+      "activity": "assemble, level, gild, level again",
+      "meta": "4,000 cr per assembly, 5,000 standing per gild",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [
+        { "currency": "Solaris United Standing", "amount": "20,000" },
+        { "currency": "Entrati Standing", "amount": "10,000" }
+      ],
+      "map": null,
+      "rows": [
+        {
+          "qty": "6",
+          "label": "Build Kitgun",
+          "note": "chamber, grip and loader at either vendor; 4,000 credits, instant",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "4",
+          "label": "gild at Rude Zuud",
+          "note": "Catchmoon, Gaze, Rattleguts, Tombfinger at rank 30; Doer, 10 Shelter Debt-Bonds and 5,000 standing each",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "2",
+          "label": "gild at Father",
+          "note": "Sporelacer, Vermisplicer at rank 30; 25 Father Tokens and 5,000 standing each",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "An ungilded Kitgun earns no Mastery however far it is levelled, and cannot be polarized, renamed, given a Focus Lens or take Kitgun Arcanes; it can take an Orokin Catalyst.",
+        "Gilding adds a polarity and a custom name, unlocks Kitgun Arcanes and resets the gun to rank 0, so each chamber is two trips to rank 30.",
+        "A built Kitgun cannot be disassembled. Primary and secondary versions of a chamber share one Mastery entry, so a second gun on the same chamber is worth nothing."
+      ],
+      "bonuses": [
+        "Father Tokens come from turning Cambion Drift resources in to Father and can be stockpiled ahead of the gild, even past the daily standing cap.",
+        "Don't Forma before gilding: the gild supplies a free polarity."
+      ],
+      "disclosures": [
+        {
+          "title": "gild cost in the older plans",
+          "body": "The per-chamber plans priced each gild at 5,000 credits. The wiki's Kitgun page prices it at 5,000 standing with the vendor's syndicate, plus 10 Shelter Debt-Bonds at Rude Zuud or 25 Father Tokens at Father. The older Sporelacer plan also offered gilding an Infested Kitgun at Rude Zuud with Shelter bonds instead of Father Tokens; the wiki does not confirm cross-vendor gilding."
+        },
+        {
+          "title": "chamber quirks",
+          "body": "Update 32.0 cut Gaze's ammo pool to 200, and most players call Pax Charge close to mandatory on a Gaze they mean to use. Sporelacer's explosions self-stagger at close range, so bring stagger immunity before using it point-blank. A Mastery-only chamber can take the cheap parts for good; a real build needs its own chamber."
+        }
+      ]
+    }
+  ]
+}

@@ -1,5 +1,6 @@
 import type { MessageKey, Translator } from "../lib/i18n.js";
 import type { AcquisitionInclude } from "../lib/suggest/acquisition/kinds.js";
+import type { AcquisitionSourcePick } from "../lib/suggest/acquisition/sources.js";
 import type { AcquisitionSort } from "../lib/suggest/acquisition/sort.js";
 import type { AcquisitionTarget, PlatPriceLookup } from "../lib/suggest/acquisition/types.js";
 import type { UpgradeCard } from "../lib/suggest/upgrades.js";
@@ -104,6 +105,7 @@ export interface SuggestionOptions {
   acquisitionSort: AcquisitionSort;
   acquisitionSortDir: SortDirection;
   acquisitionKinds: AcquisitionInclude[];
+  acquisitionSources: AcquisitionSourcePick[];
   /** Free text the section narrows its items by; empty is every item. */
   acquisitionSearch: string;
   /** Narrows the mods section by name; while set it matches owned mods too. */

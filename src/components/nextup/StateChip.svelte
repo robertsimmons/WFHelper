@@ -1,14 +1,13 @@
 <script lang="ts">
   import { tr } from "../../lib/i18n.js";
-  import { STATE_CHIP, type ChipState } from "./chips.js";
+  import { STATE_CHIP, winChip, type ChipState } from "./chips.js";
+  import type { ChoiceStatus } from "../../types/suggest.js";
 
-  interface Props {
-    state: ChipState;
-  }
+  type Props = { state: ChipState; status?: never } | { status: ChoiceStatus; state?: never };
 
-  const { state }: Props = $props();
+  const { state, status }: Props = $props();
 
-  const chip = $derived(STATE_CHIP[state]);
+  const chip = $derived(status ? winChip(status) : STATE_CHIP[state as ChipState]);
 </script>
 
 {#if chip}

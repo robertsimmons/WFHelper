@@ -64,6 +64,19 @@ describe("weapon sources", () => {
     expect(target("Akbolto").difficulty).toBeNull();
   });
 
+  it("reads a wiki-qualified table name as the weapon the game names once", () => {
+    const nikana = target("Nikana", {
+      curatedWeapons: {
+        "Nikana (Melee)": {
+          difficulty: "hard",
+          sources: [{ kind: "lab", parts: "both", where: "Tenno Lab research, Clan Dojo" }],
+        },
+      },
+    });
+    expect(nikana.difficulty).toBe("hard");
+    expect(nikana.paths.some((path) => path.kind === "lab")).toBe(true);
+  });
+
   it("does not sink a weapon nothing has rated", () => {
     const unrated = target("Akbolto").effort;
     const normal = target("Akbolto", {

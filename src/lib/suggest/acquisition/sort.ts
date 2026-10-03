@@ -1,5 +1,4 @@
 import { headlinePath } from "./paths.js";
-import { planRating } from "./plan/index.js";
 import { effortValue } from "./ratings.js";
 import { tierOrder, tierScore } from "./recommend.js";
 import { itemTierScore } from "./tiers.js";
@@ -50,26 +49,45 @@ function priceFor(target: AcquisitionTarget): number {
 }
 
 const READY_BAND = 0;
-const MATERIALS_BAND = 1;
-/** No recipe to walk, so no blueprint count puts it anywhere: behind them all. */
-const NO_RECIPE_BAND = Number.MAX_SAFE_INTEGER;
+const WORK_BAND = 1;
 
-/** Closest to ready first: the foundry would take it now, then every blueprint
- *  in hand and only raw materials short, then one band per blueprint still to
- *  find, so two short sorts behind one short. */
+/** Every part is in hand and the foundry will take it: nothing left to farm. */
+const READY_EFFORT = 0.05;
+/** Every part is in hand but the raw materials are not. */
+const MATERIALS_EFFORT = 0.35;
+
+function isReady(target: AcquisitionTarget): boolean {
+  const parts = target.parts;
+  return !target.modular && parts.known && parts.missing.length === 0 && parts.buildable;
+}
+
+/** The foundry would take it now, or there is still work to do. */
 export function readyBand(target: AcquisitionTarget): number {
+  return isReady(target) ? READY_BAND : WORK_BAND;
+}
+
+/** What the rest of the build costs on its cheapest route. Null where nothing
+ *  the app knows finishes it, which is not a cost of nothing. */
+export function remainingEffort(target: AcquisitionTarget): number | null {
+  if (headlinePath(target.paths)) return target.effort;
+  const parts = target.parts;
+  if (target.modular || !parts.known || parts.missing.length > 0) return null;
+  return parts.buildable ? READY_EFFORT : MATERIALS_EFFORT;
+}
+
+/** A route's effort reads the same for one drop as for four, so the count
+ *  settles a tie between two farms of the same route. */
+export function partsLeft(target: AcquisitionTarget): number | null {
   const modular = target.modular;
   // Each head part is its own build, so a gear type is as far from ready as the
   // heads it has still to bank.
-  if (modular) return MATERIALS_BAND + (modular.heads.length - modular.owned);
-  const parts = target.parts;
-  if (!parts.known) return NO_RECIPE_BAND;
-  if (parts.missing.length > 0) return MATERIALS_BAND + parts.missing.length;
-  return parts.buildable ? READY_BAND : MATERIALS_BAND;
+  if (modular) return modular.heads.length - modular.owned;
+  return target.parts.known ? target.parts.missing.length : null;
 }
 
 /** What a mode orders by, first key first. Lower sorts earlier; null is unknown
- *  and sorts last within its own key. */
+ *  and sorts last within its own key. Recommended leads with what the foundry
+ *  would take now, then the cheapest work left, then tier. */
 export function sortKeys(target: AcquisitionTarget, sort: AcquisitionSort): (number | null)[] {
   switch (sort) {
     case "difficulty":
@@ -81,8 +99,9 @@ export function sortKeys(target: AcquisitionTarget, sort: AcquisitionSort): (num
     default:
       return [
         readyBand(target),
+        remainingEffort(target),
+        partsLeft(target),
         tierScore(target.tier, itemTierScore(target.name)),
-        planRating(target.name).effort,
       ];
   }
 }

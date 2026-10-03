@@ -39,6 +39,7 @@ function context(
     tracker: tracker(),
     prefs: { ...defaultPreferences(), activities, options: { ...DEFAULT_OPTIONS, ...options } },
     dropPools: {},
+    acquisitionPins: [],
     nowMs: NOW,
     t,
   };
@@ -113,6 +114,19 @@ describe("masteryProvider", () => {
   it("leaves gear the player does not own to the acquisition providers", () => {
     loadMastery([item({ name: "Wanted", uniqueName: "/Wanted", currentlyOwned: false })]);
     expect(ids()).toEqual([]);
+  });
+
+  it("still levels an owned Founders exclusive", () => {
+    const excaliburPrime = "/Lotus/Powersuits/Excalibur/ExcaliburPrime";
+    loadMastery([
+      item({
+        name: "Excalibur Prime",
+        uniqueName: excaliburPrime,
+        category: "Warframes",
+        rank: 10,
+      }),
+    ]);
+    expect(ids()).toEqual([`mastery:${excaliburPrime}`]);
   });
 
   it("puts the shortest grind first", () => {

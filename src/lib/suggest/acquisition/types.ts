@@ -221,7 +221,7 @@ export interface AcquisitionContext {
   /** Farm-difficulty and power tables shipped later; read defensively. */
   ratings?: unknown;
   /** Weapon sources, same shape as the shipped frame table plus an optional
-   *  `nemesis` block. Shipped later; read defensively. */
+   *  `nemesis` block. Read defensively; absent reads as unknown. */
   curatedWeapons?: unknown;
   /** Restricts the sweep to these item names; every target otherwise. */
   only?: readonly string[] | undefined;

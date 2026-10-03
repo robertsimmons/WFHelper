@@ -1,12 +1,18 @@
 import { describe, expect, it } from "vitest";
 
+import {
+  pinnedAcquisitions,
+  withoutPinned,
+} from "../../../../src/components/nextup/pinnedAcquisitions.js";
 import { resolveAcquisition } from "../../../../src/lib/suggest/acquisition/index.js";
 import { ACQUISITION_NONE } from "../../../../src/lib/suggest/acquisition/kinds.js";
+import { effortValue } from "../../../../src/lib/suggest/acquisition/ratings.js";
 import { readyBand } from "../../../../src/lib/suggest/acquisition/sort.js";
 import { DEFAULT_OPTIONS, defaultPreferences } from "../../../../src/lib/suggest/preferences.js";
 import {
   ACQUISITION_ACTIVITY,
   acquisitionProvider,
+  acquisitionStatuses,
 } from "../../../../src/lib/suggest/providers/acquisition.js";
 import {
   BRATON,
@@ -19,6 +25,7 @@ import {
   MAG_CHASSIS,
   MAG_NEURO,
   MAG_SYSTEMS,
+  NIKANA,
   OROKIN_CELL,
   relicDb,
   weaponDb,
@@ -30,6 +37,7 @@ import type { ItemDbEntry, RawInventoryData } from "../../../../src/types/invent
 import type { RelicDatabase } from "../../../../src/types/relics.js";
 import type {
   ActivityPref,
+  ChoiceStatus,
   SuggestionOptions,
   SuggestionContext,
   SuggestionDraft,
@@ -49,6 +57,7 @@ interface Shape {
   relicDb?: RelicDatabase | null;
   activities?: Record<string, ActivityPref>;
   options?: Partial<SuggestionOptions>;
+  pins?: string[];
 }
 
 function context(shape: Shape = {}): SuggestionContext {
@@ -67,6 +76,7 @@ function context(shape: Shape = {}): SuggestionContext {
       options: { ...DEFAULT_OPTIONS, ...shape.options },
     },
     dropPools: {},
+    acquisitionPins: shape.pins ?? [],
     nowMs: NOW,
     t,
   };
@@ -225,6 +235,27 @@ describe("acquisitionProvider", () => {
     expect(bramma.title).toBe("Kuva Bramma");
   });
 
+  it("routes and rates a weapon from the shipped weapon table", () => {
+    const nikana = draftFor(collect({ itemDb: weaponDb() }), NIKANA).details?.acquisition;
+    expect(nikana?.difficulty).toBe("easy");
+    expect(nikana?.paths.find((path) => path.kind === "lab")?.steps[0].where).toContain(
+      "Tenno Lab",
+    );
+  });
+
+  it("ranks weapons alongside frames on the difficulty sort", () => {
+    const drafts = collect({
+      itemDb: { ...itemDb(), ...weaponDb() },
+      options: { acquisitionSort: "difficulty" },
+    });
+    const efforts = drafts.map((draft) => effortValue(draft.details?.acquisition?.difficulty));
+    const rated = efforts.filter((value): value is number => value !== null);
+    expect(efforts.slice(0, rated.length)).toEqual([...rated].sort((a, b) => a - b));
+    const nikana = drafts.findIndex((draft) => draft.id === `acquisition:${NIKANA}`);
+    expect(nikana).toBeGreaterThanOrEqual(0);
+    expect(nikana).toBeLessThan(rated.length);
+  });
+
   it("offers only the kinds of gear the section is set to include", () => {
     const db = weaponDb();
     const frames = collect({ itemDb: db, options: { acquisitionKinds: ["warframe"] } });
@@ -260,5 +291,85 @@ describe("acquisitionProvider", () => {
     expect(draft.details?.acquisition?.tier).toBeNull();
     expect(draft.tier).toBeUndefined();
     expect("tier" in draft).toBe(false);
+  });
+});
+
+describe("acquisitionStatuses", () => {
+  function statusesOf(draft: SuggestionDraft): ChoiceStatus[] {
+    const target = draft.details?.acquisition;
+    if (!target) throw new Error(`no target on ${draft.id}`);
+    return acquisitionStatuses(target);
+  }
+
+  it("draws both halves of a frame the Helminth takes, whatever the answer", () => {
+    expect(statusesOf(draftFor(collect(), MAG))).toEqual([
+      { win: "mastery", done: false },
+      { win: "subsume", done: false },
+    ]);
+    const owned = draftFor(collect({ inventory: inventory({ suits: [MAG] }) }), MAG);
+    expect(statusesOf(owned)).toEqual([
+      { win: "mastery", done: true },
+      { win: "subsume", done: false },
+    ]);
+  });
+
+  it("draws nothing for a frame the Helminth refuses", () => {
+    expect(statusesOf(draftFor(collect(), MAGP))).toEqual([]);
+  });
+
+  it("draws nothing for a weapon", () => {
+    const bramma = draftFor(collect({ itemDb: weaponDb() }), KUVA_BRAMMA);
+    expect(statusesOf(bramma)).toEqual([]);
+  });
+});
+
+describe("acquisitionProvider pins", () => {
+  function pinnedEntries(shape: Shape): string[] {
+    const drafts = collect(shape).map((draft) => ({ ...draft, score: 0 }));
+    return pinnedAcquisitions(shape.pins ?? [], drafts).map((entry) => entry.uniqueName);
+  }
+
+  it("carries a pin the guardrail cuts off", () => {
+    const db = manyFrames(45);
+    const listed = new Set(collect({ itemDb: db }).map((draft) => draft.reward?.uniqueName));
+    const cut = Object.keys(db).find(
+      (key) =>
+        key.startsWith("/Lotus/Powersuits/Test/") && !key.endsWith("Blueprint") && !listed.has(key),
+    );
+    if (!cut) throw new Error("the guardrail cut nothing");
+    const drafts = collect({ itemDb: db, pins: [cut] });
+    expect(drafts).toHaveLength(41);
+    expect(pinnedEntries({ itemDb: db, pins: [cut] })).toEqual([cut]);
+  });
+
+  it("lists a pin the guardrail already lets through only once", () => {
+    const first = collect({ itemDb: manyFrames(3) })[0]?.reward?.uniqueName ?? "";
+    expect(collect({ itemDb: manyFrames(3), pins: [first] })).toHaveLength(3);
+  });
+
+  it("carries a pin the search leaves out", () => {
+    const shape: Shape = { pins: [MAG], options: { acquisitionSearch: "zzz-no-match" } };
+    expect(pinnedEntries(shape)).toEqual([MAG]);
+  });
+
+  it("carries a pin the section's kinds leave out", () => {
+    const shape: Shape = { pins: [MAG], options: { acquisitionKinds: ["melee"] } };
+    expect(pinnedEntries(shape)).toEqual([MAG]);
+  });
+
+  it("keeps the pinned item out of the section's own list", () => {
+    const drafts = collect({ pins: [MAG] }).map((draft) => ({ ...draft, score: 0 }));
+    expect(withoutPinned(drafts, [MAG]).some((draft) => draft.id === `acquisition:${MAG}`)).toBe(
+      false,
+    );
+  });
+
+  it("drops a pin with nothing left to gain", () => {
+    const shape: Shape = {
+      itemDb: weaponDb(),
+      inventory: inventory({ longGuns: [BRATON] }),
+      pins: [BRATON],
+    };
+    expect(pinnedEntries(shape)).toEqual([]);
   });
 });

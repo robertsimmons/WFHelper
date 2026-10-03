@@ -20,6 +20,7 @@ import { tr } from "../lib/i18n.js";
 import { readStorage, writeStorage } from "../lib/persistence.js";
 import { clockStore } from "../lib/timers.js";
 import { setTrackerCount } from "../lib/world/dailies.js";
+import { acquisitionPins } from "./acquisitionPins.js";
 import { setTrackerState, trackerState } from "./dailies.js";
 import { inventoryData, inventoryModifiedAt, itemDb } from "./data.js";
 import { dropPools } from "./dropPools.js";
@@ -100,6 +101,7 @@ export const suggestionFeed: Readable<SuggestionFeed> = derived(
     dismissalStore,
     suggestionPreferences,
     dropPools,
+    acquisitionPins,
     tr,
     clockStore(CLOCK_MS),
   ],
@@ -120,6 +122,7 @@ export const suggestionFeed: Readable<SuggestionFeed> = derived(
       $dismissals,
       $prefs,
       $dropPools,
+      $acquisitionPins,
       $tr,
       $now,
     ] = inputs;
@@ -134,6 +137,7 @@ export const suggestionFeed: Readable<SuggestionFeed> = derived(
       tracker: $tracker,
       prefs: $prefs,
       dropPools: $dropPools,
+      acquisitionPins: $acquisitionPins,
       nowMs: $now,
       t: $tr,
     });

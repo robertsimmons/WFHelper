@@ -5,6 +5,7 @@ import { relicCost } from "./relics.js";
 import { UNKNOWN_EFFORT, type Ratings } from "./ratings.js";
 import type { RawInventoryData } from "../../../types/inventory.js";
 import type { RelicDatabase } from "../../../types/relics.js";
+import type { QuestDone } from "./quests.js";
 import type {
   AcquisitionPath,
   IncarnonInfo,
@@ -185,6 +186,8 @@ interface PathInputs {
   extraSources?: readonly CuratedSource[];
   nemesis?: NemesisPlan | null;
   incarnon?: IncarnonInfo | null;
+  /** Absent when the payload carries no quest progress. */
+  questDone?: QuestDone | null;
 }
 
 function sourcesFor(input: PathInputs): CuratedSource[] {
@@ -201,6 +204,9 @@ function curatedPaths(input: PathInputs, missing: readonly PartState[]): Acquisi
     if (!kind) continue;
     // The nemesis run is modelled step by step, so a table row naming it would double up.
     if (kind === "nemesis" && input.nemesis) continue;
+    // A finished quest never pays its reward out again, so a part still missing
+    // after it has to come from somewhere else.
+    if (kind === "quest" && input.questDone?.(source.where)) continue;
     const covers = coveredBy(kind, source, missing);
     if (covers.length === 0) continue;
     const credits = kind === "market" ? creditsFromWhere(source.where) : null;

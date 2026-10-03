@@ -383,6 +383,8 @@ export interface SuggestionContext {
   prefs: SuggestionPreferences;
   /** Drop rows per tracker task id; a missing key means the pool is not loaded. */
   dropPools: Record<string, DropRow[]>;
+  /** Acquisition uniqueNames pinned to the top of the feed, in pin order. */
+  acquisitionPins: readonly string[];
   nowMs: number;
   t: Translator;
 }

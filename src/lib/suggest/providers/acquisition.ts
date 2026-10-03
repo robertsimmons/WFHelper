@@ -1,11 +1,13 @@
 import { get } from "svelte/store";
 
+import curatedWeapons from "../../../data/suggest/weapons.json";
 import { formatNumber } from "../../format.js";
+import { isSubsumableFrame } from "../../helminth.js";
 import { overframeRankingsRevision } from "../../../stores/overframeRankings.js";
 import { resolveAcquisition } from "../acquisition/index.js";
 import { includesTarget } from "../acquisition/kinds.js";
 import { headlinePath } from "../acquisition/paths.js";
-import { compareAcquisition, sortRow } from "../acquisition/sort.js";
+import { compareAcquisition, remainingEffort, sortRow } from "../acquisition/sort.js";
 import { advances, needsGain } from "../gain.js";
 import { clamp01 } from "../score.js";
 import type { MessageKey } from "../../i18n.js";
@@ -16,6 +18,7 @@ import type {
   PathKind,
 } from "../acquisition/types.js";
 import type {
+  ChoiceStatus,
   SuggestionContext,
   SuggestionDraft,
   SuggestionPreferences,
@@ -36,10 +39,6 @@ export const ACQUISITION_ACTIVITY = "acquisition";
  *  a lift needs a perf run behind it. */
 const SUGGESTION_LIMIT = 40;
 
-/** Every part is in hand and the foundry will take it: nothing left to farm. */
-const READY_EFFORT = 0.05;
-/** Every part is in hand but the raw materials are not. */
-const MATERIALS_EFFORT = 0.35;
 /** Nothing the app knows will finish this one. */
 const NO_ROUTE_EFFORT = 1;
 
@@ -104,12 +103,19 @@ export function partsRead(target: AcquisitionTarget): PartsRead | null {
   };
 }
 
+/** Only a frame the Helminth takes has two needs to tell apart. */
+export function acquisitionStatuses(target: AcquisitionTarget): ChoiceStatus[] {
+  if (target.kind !== "warframe" || !isSubsumableFrame(target.name)) return [];
+  return [
+    { win: "mastery", done: !target.needs.includes("mastery") },
+    { win: "subsume", done: !target.needs.includes("subsume") },
+  ];
+}
+
 /** A resolver effort of 1 means "no path known", which is not the same as a
  *  build the player could start this second. */
 function effortFor(target: AcquisitionTarget): number {
-  if (headlinePath(target.paths)) return clamp01(target.effort);
-  if (!target.parts.known || target.parts.missing.length > 0) return NO_ROUTE_EFFORT;
-  return target.parts.buildable ? READY_EFFORT : MATERIALS_EFFORT;
+  return clamp01(remainingEffort(target) ?? NO_ROUTE_EFFORT);
 }
 
 function cardTitle(target: AcquisitionTarget, t: SuggestionContext["t"]): string {
@@ -224,6 +230,7 @@ export function acquisitionTargets(ctx: SuggestionContext): AcquisitionTarget[] 
     relicDb: ctx.relicDb,
     plat: ctx.plat,
     ratings: acquisitionRatings(prefs),
+    curatedWeapons,
   });
   cached = { keys, targets };
   return targets;
@@ -239,6 +246,38 @@ function matchesSearch(query: string, target: AcquisitionTarget): boolean {
   );
 }
 
+function draftFor(
+  target: AcquisitionTarget,
+  effort: number,
+  order: number,
+  deprioritized: boolean,
+  t: SuggestionContext["t"],
+): SuggestionDraft {
+  const total = totalParts(target.parts);
+  const owned = ownedParts(target.parts);
+  const segments = whySegments(target, t);
+  return {
+    id: `acquisition:${target.uniqueName}`,
+    order,
+    category: "acquisition" as const,
+    title: cardTitle(target, t),
+    why: segments.map((segment) => segment.text).join(" - "),
+    whySegments: segments,
+    reward: { name: target.name, uniqueName: target.uniqueName },
+    ...(target.tier ? { tier: target.tier } : {}),
+    // Easiest first is the whole point, so value has to run with effort
+    // rather than against the scorer's own effort penalty.
+    signals: { value: 1 - effort, effort, urgency: 0, gain: needsGain(target.needs) },
+    // Every part handed in changes the grind, so a dismissal lifts once
+    // the player has actually got one of them.
+    fingerprint: `${target.uniqueName}|${target.needs.join("+")}|${owned}/${total}`,
+    deprioritized,
+    ...(total > 0 ? { progress: { current: owned, required: total } } : {}),
+    wiki: target.name,
+    details: { acquisition: target },
+  };
+}
+
 export const acquisitionProvider: SuggestionProvider = {
   id: "acquisition",
 
@@ -247,42 +286,28 @@ export const acquisitionProvider: SuggestionProvider = {
     const activity = prefs.activities[ACQUISITION_ACTIVITY] ?? "normal";
     if (activity === "never") return [];
 
-    return (
-      acquisitionTargets(ctx)
-        // A weapon already mastered and a frame already owned and subsumed are
-        // finished; the resolver still lists gear whose only open reason is an
-        // Incarnon adapter, which is not a reason to build anything.
-        .filter((target) => advances(needsGain(target.needs)))
-        .filter((target) => includesTarget(prefs.options.acquisitionKinds, target))
-        .filter((target) => matchesSearch(prefs.options.acquisitionSearch, target))
-        .map((target) => sortRow(target, effortFor(target), prefs.options.acquisitionSort))
-        .sort(compareAcquisition(prefs.options.acquisitionSortDir))
-        .slice(0, SUGGESTION_LIMIT)
-        .map(({ target, effort }, order) => {
-          const total = totalParts(target.parts);
-          const owned = ownedParts(target.parts);
-          const segments = whySegments(target, t);
-          return {
-            id: `acquisition:${target.uniqueName}`,
-            order,
-            category: "acquisition" as const,
-            title: cardTitle(target, t),
-            why: segments.map((segment) => segment.text).join(" - "),
-            whySegments: segments,
-            reward: { name: target.name, uniqueName: target.uniqueName },
-            ...(target.tier ? { tier: target.tier } : {}),
-            // Easiest first is the whole point, so value has to run with effort
-            // rather than against the scorer's own effort penalty.
-            signals: { value: 1 - effort, effort, urgency: 0, gain: needsGain(target.needs) },
-            // Every part handed in changes the grind, so a dismissal lifts once
-            // the player has actually got one of them.
-            fingerprint: `${target.uniqueName}|${target.needs.join("+")}|${owned}/${total}`,
-            deprioritized: activity === "low",
-            ...(total > 0 ? { progress: { current: owned, required: total } } : {}),
-            wiki: target.name,
-            details: { acquisition: target },
-          };
-        })
+    const sort = prefs.options.acquisitionSort;
+    // A weapon already mastered and a frame already owned and subsumed are
+    // finished; the resolver still lists gear whose only open reason is an
+    // Incarnon adapter, which is not a reason to build anything.
+    const open = acquisitionTargets(ctx).filter((target) => advances(needsGain(target.needs)));
+    const rows = open
+      .filter((target) => includesTarget(prefs.options.acquisitionKinds, target))
+      .filter((target) => matchesSearch(prefs.options.acquisitionSearch, target))
+      .map((target) => sortRow(target, effortFor(target), sort))
+      .sort(compareAcquisition(prefs.options.acquisitionSortDir))
+      .slice(0, SUGGESTION_LIMIT);
+    // The pinned strip draws from this list, so a pin the section's own kinds,
+    // search or limit leave out still rides along behind it.
+    const listed = new Set(rows.map((row) => row.target.uniqueName));
+    const pins = new Set(ctx.acquisitionPins);
+    for (const target of open) {
+      if (pins.has(target.uniqueName) && !listed.has(target.uniqueName)) {
+        rows.push(sortRow(target, effortFor(target), sort));
+      }
+    }
+    return rows.map(({ target, effort }, order) =>
+      draftFor(target, effort, order, activity === "low", t),
     );
   },
 };

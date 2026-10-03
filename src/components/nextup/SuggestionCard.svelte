@@ -8,7 +8,11 @@
   import { itemTiers } from "../../lib/suggest/acquisition/tiers.js";
   import { bannerAside, bannerFor } from "../../lib/suggest/bannerArt.js";
   import { CARD_HEIGHT } from "../../lib/suggest/grid.js";
-  import { partsRead, type PartsRead } from "../../lib/suggest/providers/acquisition.js";
+  import {
+    acquisitionStatuses,
+    partsRead,
+    type PartsRead,
+  } from "../../lib/suggest/providers/acquisition.js";
   import { valenceRowsFor } from "../../lib/suggest/valence.js";
   import { itemDb } from "../../stores/data.js";
   import { overframeRankingsRevision } from "../../stores/overframeRankings.js";
@@ -70,6 +74,9 @@
 
   /** Four fixed lines under the title take more than half the card leaves. */
   const RELIC_ART_HEIGHT = ART_HEIGHT - 24;
+
+  /** The chip line under an acquisition title has to come out of the art. */
+  const ACQUISITION_ART_HEIGHT = ART_HEIGHT - 20;
 
   const RELIC_LINE = "m-0 h-4 min-w-0 truncate text-xs leading-4";
 
@@ -169,7 +176,9 @@
   const art = $derived(artPieces[0] ?? null);
 
   const relic = $derived(suggestion.category === "relics" ? (details?.relic ?? null) : null);
-  const artHeight = $derived(relic ? RELIC_ART_HEIGHT : ART_HEIGHT);
+  const artHeight = $derived(
+    relic ? RELIC_ART_HEIGHT : target ? ACQUISITION_ART_HEIGHT : ART_HEIGHT,
+  );
   const part = $derived(relic ? (suggestion.reward ?? null) : null);
   // The same name the art resolved, so the line and the picture never disagree.
   const partName = $derived(part ? (art?.name ?? part.name) : "");
@@ -495,9 +504,6 @@
         {/if}
       </div>
       <span class="flex h-6 items-center gap-2">
-        {#if target?.needs.includes("subsume")}
-          <StateChip state="subsume" />
-        {/if}
         {#if complete}
           <button
             class="flex h-6 w-6 cursor-pointer items-center justify-center rounded border
@@ -539,6 +545,16 @@
         </svg>
       </button>
     </div>
+
+    <!-- Held empty on gear with no chips, so every acquisition card reads line
+         for line. -->
+    {#if target}
+      <div class="flex h-4 min-w-0 items-center gap-1.5">
+        {#each acquisitionStatuses(target) as status (status.win)}
+          <StateChip {status} />
+        {/each}
+      </div>
+    {/if}
 
     {#if relic}
       <!-- Four fixed lines, each held whether or not it has anything to say, so

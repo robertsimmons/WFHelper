@@ -97,11 +97,18 @@ function readEntry(value: unknown): CuratedEntry {
   };
 }
 
+/** The wiki splits one item into "Vinquibus (Primary)" or "Dark Split-Sword
+ *  (Dual Swords)" where the game names it once. */
+const QUALIFIER = /\s*\([^)]*\)$/;
+
 function buildTable(table: unknown): Map<string, CuratedEntry> {
   const out = new Map<string, CuratedEntry>();
   if (!table || typeof table !== "object") return out;
-  for (const [name, value] of Object.entries(table as Record<string, unknown>)) {
-    out.set(nameKey(name), readEntry(value));
+  const rows = Object.entries(table as Record<string, unknown>);
+  for (const [name, value] of rows) out.set(nameKey(name), readEntry(value));
+  for (const [name, value] of rows) {
+    const bare = nameKey(name.replace(QUALIFIER, ""));
+    if (!out.has(bare)) out.set(bare, readEntry(value));
   }
   return out;
 }
@@ -114,8 +121,8 @@ export function curated(name: string): CuratedEntry {
   return CURATED.get(nameKey(name)) ?? EMPTY;
 }
 
-/** Weapon sources arrive through the context rather than a shipped file, so an
- *  absent, malformed or partial table reads as unknown for every weapon. */
+/** Weapon sources arrive through the context, so an absent, malformed or
+ *  partial table reads as unknown for every weapon. */
 export function createCurated(source?: unknown): CuratedLookup {
   const table = buildTable(source);
   return (name) => table.get(nameKey(name)) ?? EMPTY;

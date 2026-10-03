@@ -3,6 +3,7 @@ import { describe, expect, it } from "vitest";
 import { resolveAcquisition } from "../../../../../src/lib/suggest/acquisition/index.js";
 import {
   compareAcquisition,
+  partsLeft,
   readyBand,
   sortRow,
 } from "../../../../../src/lib/suggest/acquisition/sort.js";
@@ -50,8 +51,10 @@ function techrot(overrides: Partial<AcquisitionContext> = {}): AcquisitionTarget
 }
 
 /** What the card draws and what the Recommended order reads, in one line. */
-function readiness(target: AcquisitionTarget): { ready: boolean; band: number } {
-  return { ready: partsRead(target)?.ready ?? false, band: readyBand(target) };
+function readiness(target: AcquisitionTarget): { ready: boolean; left: number | null } {
+  const ready = partsRead(target)?.ready ?? false;
+  expect(readyBand(target) === 0).toBe(ready);
+  return { ready, left: partsLeft(target) };
 }
 
 function missingNames(target: AcquisitionTarget): string[] {
@@ -80,7 +83,7 @@ describe("a build is ready only when the foundry could start it now", () => {
       "Spinnerex String",
       "Spinnerex Handle",
     ]);
-    expect(readiness(spinnerex)).toEqual({ ready: false, band: 5 });
+    expect(readiness(spinnerex)).toEqual({ ready: false, left: 4 });
   });
 
   it("calls a build ready when every part is built and in hand", () => {
@@ -93,7 +96,7 @@ describe("a build is ready only when the foundry could start it now", () => {
     const spinnerex = find(techrot(ctx), "Spinnerex");
     expect(missingNames(spinnerex)).toEqual([]);
     expect(spinnerex.parts.buildable).toBe(true);
-    expect(readiness(spinnerex)).toEqual({ ready: true, band: 0 });
+    expect(readiness(spinnerex)).toEqual({ ready: true, left: 0 });
   });
 
   it("holds a build back for a raw material even with every part in hand", () => {
@@ -110,7 +113,7 @@ describe("a build is ready only when the foundry could start it now", () => {
     expect(mag.parts.materials).toEqual([
       expect.objectContaining({ name: "Orokin Cell", required: 1, owned: 0, missing: 1 }),
     ]);
-    expect(readiness(mag)).toEqual({ ready: false, band: 1 });
+    expect(readiness(mag)).toEqual({ ready: false, left: 0 });
   });
 });
 
@@ -130,7 +133,7 @@ describe("a component blueprint is not the component", () => {
       "Spinnerex Handle",
     ]);
     expect(spinnerex.parts.components.every((row) => row.owned === 0)).toBe(true);
-    expect(readiness(spinnerex)).toEqual({ ready: false, band: 4 });
+    expect(readiness(spinnerex)).toEqual({ ready: false, left: 3 });
   });
 
   it("never calls Dorrclave ready off the part blueprints alone", () => {
@@ -152,7 +155,7 @@ describe("a component blueprint is not the component", () => {
       "Dorrclave String",
       "Dorrclave Hook",
     ]);
-    expect(readiness(dorrclave)).toEqual({ ready: false, band: 5 });
+    expect(readiness(dorrclave)).toEqual({ ready: false, left: 4 });
   });
 
   it("names only the parts still unbuilt when some are built and some are not", () => {
@@ -165,7 +168,7 @@ describe("a component blueprint is not the component", () => {
     const spinnerex = find(techrot(ctx), "Spinnerex");
     expect(missingNames(spinnerex)).toEqual(["Spinnerex String", "Spinnerex Handle"]);
     expect(spinnerex.parts.components[0]).toMatchObject({ name: "Spinnerex Blade", owned: 1 });
-    expect(readiness(spinnerex)).toEqual({ ready: false, band: 3 });
+    expect(readiness(spinnerex)).toEqual({ ready: false, left: 2 });
   });
 
   it("still reads a Prime part the inventory spells as a blueprint as the part", () => {
@@ -181,7 +184,7 @@ describe("a component blueprint is not the component", () => {
     };
     const akbolto = find(techrot(ctx), "Akbolto Prime");
     expect(missingNames(akbolto)).toEqual([]);
-    expect(readiness(akbolto)).toEqual({ ready: true, band: 0 });
+    expect(readiness(akbolto)).toEqual({ ready: true, left: 0 });
   });
 
   it("counts every copy a recipe asks for, not just the first", () => {
@@ -194,7 +197,7 @@ describe("a component blueprint is not the component", () => {
     const akbolto = find(techrot(ctx), "Akbolto Prime");
     expect(missingNames(akbolto)).toEqual(["Akbolto Prime Barrel"]);
     expect(akbolto.parts.components[0]).toMatchObject({ required: 2, owned: 1, missing: 1 });
-    expect(readiness(akbolto)).toEqual({ ready: false, band: 2 });
+    expect(readiness(akbolto)).toEqual({ ready: false, left: 1 });
   });
 });
 
@@ -213,7 +216,7 @@ describe("what the foundry is already holding", () => {
       owned: 0,
       missing: 1,
     });
-    expect(readiness(spinnerex)).toEqual({ ready: false, band: 4 });
+    expect(readiness(spinnerex)).toEqual({ ready: false, left: 3 });
   });
 
   it("banks a claimed part while the next one is still cooking", () => {
@@ -227,7 +230,7 @@ describe("what the foundry is already holding", () => {
     const spinnerex = find(techrot(ctx), "Spinnerex");
     expect(spinnerex.parts.components[0]).toMatchObject({ name: "Spinnerex Blade", owned: 1 });
     expect(missingNames(spinnerex)).toEqual(["Spinnerex String", "Spinnerex Handle"]);
-    expect(readiness(spinnerex)).toEqual({ ready: false, band: 3 });
+    expect(readiness(spinnerex)).toEqual({ ready: false, left: 2 });
   });
 
   it("spends a one-shot main blueprint the foundry is cooking", () => {
@@ -240,7 +243,7 @@ describe("what the foundry is already holding", () => {
     };
     const spinnerex = find(techrot(ctx), "Spinnerex");
     expect(missingNames(spinnerex)).toEqual(["Spinnerex Blueprint"]);
-    expect(readiness(spinnerex)).toEqual({ ready: false, band: 2 });
+    expect(readiness(spinnerex)).toEqual({ ready: false, left: 1 });
   });
 
   it("keeps a reusable main blueprint the foundry is cooking", () => {
@@ -258,7 +261,7 @@ describe("what the foundry is already holding", () => {
     };
     const spinnerex = find(techrot(ctx), "Spinnerex");
     expect(spinnerex.parts.main).toMatchObject({ required: 1, owned: 1, missing: 0 });
-    expect(readiness(spinnerex)).toEqual({ ready: true, band: 0 });
+    expect(readiness(spinnerex)).toEqual({ ready: true, left: 0 });
   });
 });
 
@@ -267,7 +270,8 @@ describe("what readiness means where there is no recipe to read", () => {
     const bramma = find(resolveAcquisition({ itemDb: weaponDb(), inventory: null }), "Kuva Bramma");
     expect(bramma.parts.known).toBe(false);
     expect(partsRead(bramma)).toBeNull();
-    expect(readyBand(bramma)).toBe(Number.MAX_SAFE_INTEGER);
+    expect(readyBand(bramma)).toBe(1);
+    expect(partsLeft(bramma)).toBeNull();
   });
 
   it("never calls modular gear ready, and still banks a head part fitted to a build", () => {
@@ -278,7 +282,8 @@ describe("what readiness means where there is no recipe to read", () => {
     const moa = find(targets, "Moa");
     expect(moa.modular?.owned).toBe(1);
     expect(partsRead(moa)).toMatchObject({ have: 1, need: 2, ready: false });
-    expect(readyBand(moa)).toBe(2);
+    expect(readyBand(moa)).toBe(1);
+    expect(partsLeft(moa)).toBe(1);
   });
 
   it("never offers gear the account already holds", () => {

@@ -572,7 +572,9 @@ function relicDrafts(ctx: SuggestionContext): SuggestionDraft[] {
       id: `relics:${group.key}`,
       order,
       category: "relics" as const,
-      title: t("nextUp.relicCrack", { relic: group.name }),
+      title: t(fissure.isHard ? "nextUp.relicTitleSp" : "nextUp.relicTitleNormal", {
+        relic: group.name,
+      }),
       why: [
         t("nextUp.whyRelicRefinement", {
           count: String(held.count),

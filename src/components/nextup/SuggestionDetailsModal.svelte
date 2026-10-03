@@ -9,7 +9,7 @@
   import { itemTiers } from "../../lib/suggest/acquisition/tiers.js";
   import { resolveDropArt } from "../../lib/suggest/dropPools.js";
   import { overframeUrl } from "../../lib/suggest/overframe.js";
-  import { pathKindLabel } from "../../lib/suggest/providers/acquisition.js";
+  import { acquisitionStatuses, pathKindLabel } from "../../lib/suggest/providers/acquisition.js";
   import { ownedRewardFor, ownsAny, type OwnedReward } from "../../lib/suggest/ownedRewards.js";
   import {
     nightwaveRowFor,
@@ -34,6 +34,7 @@
     timeLeftText,
     valencePercent,
     valenceTone,
+    winChip,
     type TileStatus,
   } from "./chips.js";
   import { plainName, rewardArt } from "./rewardArt.js";
@@ -408,14 +409,9 @@
         });
       }
     }
-    // Every card in Acquisition is owed the item; only a subsume-only card is
-    // owed something else, so that is the one need worth a chip.
-    if (acq?.needs.includes("subsume")) {
-      out.push({
-        value: $tr("nextUp.acqNeedSubsume"),
-        title: $tr("nextUp.acqNeedSubsume"),
-        tone: CHIP_TONE.warn,
-      });
+    for (const status of acq ? acquisitionStatuses(acq) : []) {
+      const chip = winChip(status);
+      out.push({ value: $tr(chip.label), title: $tr(chip.label), tone: chip.tone });
     }
     if (credRow?.need) {
       for (const segment of nitainNeedSegments(credRow.need, $tr)) {

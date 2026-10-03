@@ -35,6 +35,7 @@ function context(world: WorldState | null): SuggestionContext {
     tracker: tracker(),
     prefs: defaultPreferences(),
     dropPools: {},
+    acquisitionPins: [],
     nowMs: NOW,
     t,
   };

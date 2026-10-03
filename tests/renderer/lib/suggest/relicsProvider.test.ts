@@ -97,6 +97,7 @@ function context(
     tracker: tracker(),
     prefs: { ...defaultPreferences(), activities, options: { ...DEFAULT_OPTIONS, ...options } },
     dropPools: {},
+    acquisitionPins: [],
     nowMs: NOW,
     t,
   };

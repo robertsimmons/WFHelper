@@ -6,6 +6,7 @@
   import { tr } from "../../lib/i18n.js";
   import { send } from "../../lib/ipc.js";
   import { openOnWfm } from "../../lib/priceLoader.js";
+  import { acquisitionStatuses } from "../../lib/suggest/providers/acquisition.js";
   import { upgradeCopiesText } from "../../lib/suggest/upgrades.js";
   import { buildWikiUrl, toOfficialWikiUrl } from "../../lib/wikiUrl.js";
   import {
@@ -34,8 +35,9 @@
 
   const { entries, upgrades = [], onOpen, onUnpin, onUnpinUpgrade }: Props = $props();
 
+  // Fixed so an upgrade pin stands as tall as an acquisition pin's three lines.
   const CARD =
-    "flex w-64 cursor-pointer items-center gap-2 rounded-[var(--radius-md)] border " +
+    "flex h-[4.25rem] w-64 cursor-pointer items-center gap-2 rounded-[var(--radius-md)] border " +
     "border-border bg-bg-surface py-1.5 pl-2 pr-6 text-left " +
     "transition-[border-color] duration-150 hover:border-accent";
   const UNPIN =
@@ -120,13 +122,16 @@
             >
               <ItemImage src={art(entry)} alt={name(entry)} cls="max-h-10 max-w-10" eager />
             </span>
-            <span class="flex min-w-0 flex-1 flex-col">
-              <span class="flex min-w-0 items-center gap-1.5">
-                <span class="min-w-0 truncate text-sm font-semibold text-text-primary"
-                  >{name(entry)}</span
-                >
-                {#if entry.suggestion.details?.acquisition?.needs.includes("subsume")}
-                  <StateChip state="subsume" />
+            <span class="flex min-w-0 flex-1 flex-col gap-0.5">
+              <span class="min-w-0 truncate text-sm font-semibold leading-5 text-text-primary"
+                >{name(entry)}</span
+              >
+              <!-- Held empty on gear with no chips, so every pin reads line for line. -->
+              <span class="flex h-4 min-w-0 items-center gap-1.5">
+                {#if entry.suggestion.details?.acquisition}
+                  {#each acquisitionStatuses(entry.suggestion.details.acquisition) as status (status.win)}
+                    <StateChip {status} />
+                  {/each}
                 {/if}
               </span>
               {#if entry.steps && entry.steps.total > 0}

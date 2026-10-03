@@ -40,8 +40,8 @@ export function acquisitionKey(suggestion: Suggestion): string | null {
   return suggestion.reward?.uniqueName ?? null;
 }
 
-/** Pinned items in pin order. A pin the current sweep does not carry - filtered
- *  out by kind, or already finished - draws nothing rather than an empty card. */
+/** Pinned items in pin order. The provider carries every pin the sweep still
+ *  has open, so one it does not carry is finished and draws nothing. */
 export function pinnedAcquisitions(
   pins: readonly string[],
   suggestions: readonly Suggestion[],

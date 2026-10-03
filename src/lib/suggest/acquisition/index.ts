@@ -1,3 +1,4 @@
+import { isUnobtainableItem } from "../../../../config/shared/unobtainableItems.js";
 import { buildSubsumedFamilySet, isFrameSubsumed, isSubsumableFrame } from "../../helminth.js";
 import { createMasteryLookup } from "../masteryRoster.js";
 import { createCurated, curated, mergeCurated, type CuratedSource } from "./curated.js";
@@ -17,6 +18,7 @@ import {
   type GearEntry,
 } from "./parts.js";
 import { buildPaths, headlinePath } from "./paths.js";
+import { createQuestDone } from "./quests.js";
 import { createRatings } from "./ratings.js";
 import { baseWeaponName, listWeapons } from "./weapons.js";
 import type { ItemDbEntry } from "../../../types/inventory.js";
@@ -106,8 +108,11 @@ export function resolveAcquisition(ctx: AcquisitionContext): AcquisitionTarget[]
   const incarnonFor = createIncarnonLookup(ctx.inventory, itemDb);
   const isMastered = createMasteryLookup(ctx.mastery);
   const fitted = fittedModularParts(ctx.inventory);
+  const questDone = createQuestDone(ctx.inventory, itemDb);
   const isFinished = (uniqueName: string, name: string): boolean =>
     ownsItem(uniqueName, ownership) || fitted.has(uniqueName) || isMastered(uniqueName, name);
+  const unreachable = (uniqueName: string, name: string): boolean =>
+    !ownsItem(uniqueName, ownership) && isUnobtainableItem({ uniqueName, name });
   const only = ctx.only ? new Set(ctx.only.map((name) => name.toLowerCase())) : null;
   const kinds = ctx.kinds ? new Set(ctx.kinds) : null;
 
@@ -116,6 +121,7 @@ export function resolveAcquisition(ctx: AcquisitionContext): AcquisitionTarget[]
   if (!kinds || kinds.has("warframe")) {
     for (const frame of listFrames(itemDb)) {
       if (only && !only.has(frame.name.toLowerCase())) continue;
+      if (unreachable(frame.uniqueName, frame.name)) continue;
       const subsumable = isSubsumableFrame(frame.name);
       const subsumed = subsumable && isFrameSubsumed(frame.name, subsumedFamilies);
       // A mastered frame that was sold still owes its subsume, so the mastery
@@ -146,7 +152,9 @@ export function resolveAcquisition(ctx: AcquisitionContext): AcquisitionTarget[]
     if (kinds && !kinds.has(kind)) continue;
     for (const gear of list(itemDb)) {
       if (only && !only.has(gear.name.toLowerCase())) continue;
-      if (isFinished(gear.uniqueName, gear.name)) continue;
+      if (isFinished(gear.uniqueName, gear.name) || unreachable(gear.uniqueName, gear.name)) {
+        continue;
+      }
       wanted.push({
         uniqueName: gear.uniqueName,
         name: gear.name,
@@ -167,6 +175,7 @@ export function resolveAcquisition(ctx: AcquisitionContext): AcquisitionTarget[]
     for (const gear of listModularGear(itemDb, isFinished)) {
       if (only && !only.has(gear.name.toLowerCase())) continue;
       if (gear.plan.owned === gear.plan.heads.length) continue;
+      if (unreachable(gear.uniqueName, gear.name)) continue;
       wanted.push({
         uniqueName: gear.uniqueName,
         name: gear.name,
@@ -193,6 +202,7 @@ export function resolveAcquisition(ctx: AcquisitionContext): AcquisitionTarget[]
     for (const weapon of weapons) {
       if (only && !only.has(weapon.name.toLowerCase())) continue;
       const owned = ownedByName.get(weapon.name.toLowerCase()) === true;
+      if (!owned && isUnobtainableItem(weapon)) continue;
       const incarnon = incarnonFor(weapon.name);
       const base = baseWeaponName(weapon.name);
       const primeUpgrade = !owned && base !== null && ownedByName.get(base.toLowerCase()) === true;
@@ -244,6 +254,7 @@ export function resolveAcquisition(ctx: AcquisitionContext): AcquisitionTarget[]
       extraSources: item.extraSources,
       nemesis: item.nemesis,
       incarnon: item.incarnon,
+      questDone,
     });
     return {
       uniqueName: item.uniqueName,

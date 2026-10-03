@@ -83,6 +83,7 @@
   import ArchonShardSummary from "../components/archon/ArchonShardSummary.svelte";
   import { parseArchonShards, summarizeArchonShards } from "../lib/inventory/archonShards.js";
   import { fallbackNameFromUniqueName } from "../../config/shared/displayName.js";
+  import { isUnobtainableItem } from "../../config/shared/unobtainableItems.js";
   import { send } from "../lib/ipc.js";
   import type {
     ComponentInfo,
@@ -110,7 +111,6 @@
     ["mastery_xp", $tr("mastery.sort.masteryXp")],
     ["platinum", $tr("common.platinum")],
   ] as Array<["name" | "owned" | "parts_owned" | "mastery_xp" | "platinum", string]>;
-  const FOUNDER_ITEM_NAMES = new Set(["Excalibur Prime", "Lato Prime", "Skana Prime"]);
 
   const INCOMPLETE_SETS_TAB = "__incomplete_sets";
   const VIEW_TAB_KEY = "wf_mastery_view_tab";
@@ -181,10 +181,6 @@
     return [...ordered, ...extras];
   }
 
-  function isFounderItem(name: string): boolean {
-    return FOUNDER_ITEM_NAMES.has(name);
-  }
-
   function masteryStatsForItems(
     items: NonNullable<typeof $masteryData>["items"],
     data: NonNullable<typeof $masteryData>,
@@ -220,7 +216,7 @@
 
   function masteryViewData(data: typeof $masteryData, hideFounder: boolean): typeof $masteryData {
     if (!data || !hideFounder) return data;
-    const items = data.items.filter((item) => !isFounderItem(item.name));
+    const items = data.items.filter((item) => !isUnobtainableItem(item));
     return {
       ...data,
       items,

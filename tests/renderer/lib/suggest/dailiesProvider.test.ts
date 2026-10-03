@@ -38,6 +38,7 @@ function context(overrides: Partial<SuggestionContext> = {}): SuggestionContext 
     tracker: tracker(),
     prefs: prefs(),
     dropPools: {},
+    acquisitionPins: [],
     nowMs: NOW,
     t,
     ...overrides,

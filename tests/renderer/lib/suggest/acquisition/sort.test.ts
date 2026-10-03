@@ -1,15 +1,17 @@
-import { describe, expect, it, vi } from "vitest";
+import { describe, expect, it } from "vitest";
 
+import { resolveAcquisition } from "../../../../../src/lib/suggest/acquisition/index.js";
 import {
   ACQUISITION_SORTS,
   compareAcquisition,
+  partsLeft,
   platFor,
-  readyBand,
   sortKeys,
   sortRow,
   type AcquisitionSort,
   type SortRow,
 } from "../../../../../src/lib/suggest/acquisition/sort.js";
+import { itemDb } from "./fixtures.js";
 import type {
   AcquisitionPath,
   AcquisitionTarget,
@@ -17,19 +19,6 @@ import type {
   PartPlan,
   PartState,
 } from "../../../../../src/lib/suggest/acquisition/types.js";
-
-const plan = vi.hoisted(() => ({ effort: {} as Record<string, number> }));
-
-vi.mock("../../../../../src/lib/suggest/acquisition/plan/index.js", async (importOriginal) => {
-  const actual =
-    await importOriginal<
-      typeof import("../../../../../src/lib/suggest/acquisition/plan/index.js")
-    >();
-  return {
-    ...actual,
-    planRating: (name: string) => ({ effort: plan.effort[name] ?? null, badge: null }),
-  };
-});
 
 interface Shape {
   name: string;
@@ -43,7 +32,6 @@ interface Shape {
   missing?: number;
   buildable?: boolean;
   heads?: { total: number; owned: number };
-  planEffort?: number;
 }
 
 function path(plat: number | null): AcquisitionPath {
@@ -91,7 +79,6 @@ function modular(heads: { total: number; owned: number }): ModularPlan {
 }
 
 function targetFor(shape: Shape): AcquisitionTarget {
-  if (shape.planEffort !== undefined) plan.effort[shape.name] = shape.planEffort;
   const target = {
     uniqueName: `/${shape.name}`,
     name: shape.name,
@@ -191,7 +178,8 @@ describe("recommended", () => {
       row({ name: "OneLeft", heads: { total: 4, owned: 3 } }),
     ];
     expect(order(rows, "recommended")).toEqual(["OneLeft", "ThreeLeft"]);
-    expect(readyBand(rows[1]!.target)).toBeLessThan(readyBand(rows[0]!.target));
+    expect(partsLeft(rows[1]!.target)).toBe(1);
+    expect(partsLeft(rows[0]!.target)).toBe(3);
   });
 
   it("puts an item with no recipe behind every one that has one", () => {
@@ -202,33 +190,44 @@ describe("recommended", () => {
     expect(order(rows, "recommended")).toEqual(["FiveShort", "NoRecipe"]);
   });
 
-  it("takes the better tier inside a readiness band, whatever the farm costs", () => {
+  it("puts cheap work several parts out ahead of one part behind a hard farm", () => {
     const rows = [
-      row({ name: "EasyD", tier: "D", recipe: true, missing: 1, planEffort: 1 }),
-      row({ name: "GrimS", tier: "S", recipe: true, missing: 1, planEffort: 10 }),
+      row({ name: "OneHard", tier: "S", recipe: true, missing: 1, plat: 10, effort: 0.7 }),
+      row({ name: "ThreeCheap", tier: "D", recipe: true, missing: 3, plat: 90, effort: 0.1 }),
+      row({ name: "Ready", tier: "D", recipe: true, buildable: true }),
     ];
-    expect(order(rows, "recommended")).toEqual(["GrimS", "EasyD"]);
+    expect(order(rows, "recommended")).toEqual(["Ready", "ThreeCheap", "OneHard"]);
   });
 
-  it("breaks a tier tie on the authored effort, easiest first", () => {
+  it("ranks the work left above the tier", () => {
     const rows = [
-      row({ name: "Grind", tier: "B", recipe: true, missing: 1, planEffort: 8 }),
-      row({ name: "Quick", tier: "B", recipe: true, missing: 1, planEffort: 2 }),
+      row({ name: "GrimS", tier: "S", recipe: true, missing: 1, plat: 10, effort: 0.8 }),
+      row({ name: "EasyD", tier: "D", recipe: true, missing: 1, plat: 10, effort: 0.2 }),
     ];
-    expect(order(rows, "recommended")).toEqual(["Quick", "Grind"]);
+    expect(order(rows, "recommended")).toEqual(["EasyD", "GrimS"]);
   });
 
-  it("sorts an unrated effort behind a rated one at the same tier", () => {
+  it("breaks a route tie on parts left, then on tier", () => {
     const rows = [
-      row({ name: "Unrated", tier: "B", recipe: true, missing: 1 }),
-      row({ name: "Grim", tier: "B", recipe: true, missing: 1, planEffort: 10 }),
+      row({ name: "TwoS", tier: "S", recipe: true, missing: 2, plat: 10, effort: 0.4 }),
+      row({ name: "OneD", tier: "D", recipe: true, missing: 1, plat: 10, effort: 0.4 }),
+      row({ name: "OneA", tier: "A", recipe: true, missing: 1, plat: 10, effort: 0.4 }),
     ];
-    expect(order(rows, "recommended")).toEqual(["Grim", "Unrated"]);
+    expect(order(rows, "recommended")).toEqual(["OneA", "OneD", "TwoS"]);
+  });
+
+  it("sorts an item no route finishes behind one a route does", () => {
+    const rows = [
+      row({ name: "NoRoute", tier: "S", recipe: true, missing: 1 }),
+      row({ name: "Grim", tier: "D", recipe: true, missing: 4, plat: 10, effort: 1 }),
+    ];
+    expect(order(rows, "recommended")).toEqual(["Grim", "NoRoute"]);
+    expect(order(rows, "recommended", "desc")).toEqual(["Grim", "NoRoute"]);
   });
 
   it("still leads with a ready build nothing has rated", () => {
     const rows = [
-      row({ name: "RatedShort", tier: "S", recipe: true, missing: 1, planEffort: 1 }),
+      row({ name: "RatedShort", tier: "S", recipe: true, missing: 1, plat: 10, effort: 0 }),
       row({ name: "UnratedReady", recipe: true, buildable: true }),
     ];
     expect(order(rows, "recommended")).toEqual(["UnratedReady", "RatedShort"]);
@@ -241,18 +240,19 @@ describe("sortKeys", () => {
     expect(sortKeys(unknown, "difficulty")).toEqual([null]);
     expect(sortKeys(unknown, "tier")).toEqual([null]);
     expect(sortKeys(unknown, "plat")).toEqual([null]);
-    expect(sortKeys(unknown, "recommended").slice(1)).toEqual([null, null]);
+    expect(sortKeys(unknown, "recommended").slice(1)).toEqual([null, null, null]);
   });
 
-  it("orders the recommended keys closest to ready, then tier, then effort", () => {
+  it("orders the recommended keys ready, then work left, then parts left, then tier", () => {
     const target = row({
       name: "Keys",
       tier: "B",
       recipe: true,
       missing: 2,
-      planEffort: 4,
+      plat: 40,
+      effort: 0.3,
     }).target;
-    expect(sortKeys(target, "recommended")).toEqual([3, 3, 4]);
+    expect(sortKeys(target, "recommended")).toEqual([1, 0.3, 2, 3]);
   });
 });
 
@@ -280,5 +280,32 @@ describe("platFor", () => {
   it("reports unknown when nothing prices it", () => {
     expect(platFor(row({ name: "Free" }).target)).toBeNull();
     expect(platFor(row({ name: "Unpriced", plat: null }).target)).toBeNull();
+  });
+});
+
+describe("plat and difficulty over resolved targets", () => {
+  const PRICES: Record<string, number> = { "Mag Set": 120, "Mag Prime Set": 60, "Volt Set": 30 };
+
+  function resolvedOrder(sort: AcquisitionSort, direction: "asc" | "desc"): string[] {
+    const targets = resolveAcquisition({
+      itemDb: itemDb(),
+      inventory: null,
+      plat: (name) => PRICES[name] ?? null,
+      ratings: { "Mag Prime": { difficulty: "brutal" } },
+    });
+    return targets
+      .map((target) => sortRow(target, target.effort, sort))
+      .sort(compareAcquisition(direction))
+      .map((entry) => entry.target.name);
+  }
+
+  it("puts the cheapest set first on plat ascending", () => {
+    expect(resolvedOrder("plat", "asc")).toEqual(["Volt", "Mag Prime", "Mag"]);
+    expect(resolvedOrder("plat", "desc")).toEqual(["Mag", "Mag Prime", "Volt"]);
+  });
+
+  it("puts the easiest farm first on difficulty ascending", () => {
+    expect(resolvedOrder("difficulty", "asc")).toEqual(["Volt", "Mag", "Mag Prime"]);
+    expect(resolvedOrder("difficulty", "desc")).toEqual(["Mag Prime", "Mag", "Volt"]);
   });
 });

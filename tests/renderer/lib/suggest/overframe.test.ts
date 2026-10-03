@@ -13,7 +13,6 @@ const FILE = {
       slug: "volt-prime",
       name: "Volt Prime",
       uniqueName: "/Lotus/Powersuits/Volt/VoltPrime",
-      categories: ["Warframes"],
     },
     "812": { slug: "braton-prime", name: "Braton Prime", uniqueName: null },
   },

@@ -112,16 +112,15 @@ if (stopping) {
 }
 
 const items = {};
+const written = {};
 const popularMods = {};
 for (const { entry, cached } of parsed) {
   const item = cached.item;
-  items[entry.id] = {
+  items[entry.id] = { slug: entry.slug, name: item.name, categories: item.categories };
+  written[entry.id] = {
     slug: entry.slug,
     name: item.name,
     uniqueName: item.uniqueName,
-    tag: item.tag,
-    categories: item.categories,
-    ingredients: item.ingredients,
   };
   if (item.topMods.length > 0) popularMods[normalizeName(item.name)] = item.topMods;
 }
@@ -139,7 +138,7 @@ if (unvisited > MAX_UNVISITED) {
   process.exit(1);
 }
 
-await writeJsonAtomic(ITEMS_FILE, { items });
+await writeJsonAtomic(ITEMS_FILE, { items: written });
 await writeJsonAtomic(MODS_FILE, popularMods);
 const modList = foldPopularMods(popularMods);
 await writeJsonAtomic(MOD_LIST_FILE, modList);

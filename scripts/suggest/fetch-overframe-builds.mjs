@@ -5,17 +5,26 @@
 
 import path from "node:path";
 
-import { DATA_DIR, loadLocalizationDict, readJson } from "./io.mjs";
+import { CACHE_DIR, loadLocalizationDict, readJson } from "./io.mjs";
 import { arcaneBearingItems, crawlArcaneBuilds, writeArcanes } from "./overframe-builds.mjs";
 
-const ITEMS_FILE = path.join(DATA_DIR, "overframeItems.json");
+const ITEMS_CACHE_FILE = path.join(CACHE_DIR, "overframe-items-cache.json");
 
 const limitArg = process.argv.indexOf("--limit");
 const limit = limitArg === -1 ? Infinity : Number(process.argv[limitArg + 1]);
 
-const catalog = readJson(ITEMS_FILE);
-if (!catalog?.items) {
-  console.error(`${ITEMS_FILE} is missing - run fetch-overframe-items.mjs first`);
+const catalog = { items: {} };
+for (const [id, cached] of Object.entries(readJson(ITEMS_CACHE_FILE, {}) ?? {})) {
+  if (cached?.item) {
+    catalog.items[id] = {
+      slug: cached.slug,
+      name: cached.item.name,
+      categories: cached.item.categories,
+    };
+  }
+}
+if (Object.keys(catalog.items).length === 0) {
+  console.error(`${ITEMS_CACHE_FILE} is missing - run fetch-overframe-items.mjs first`);
   process.exit(1);
 }
 

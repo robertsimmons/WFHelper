@@ -99,6 +99,19 @@ Each is shippable alone, in order.
 |---|---|---|---|
 | 9 | Build import to full step plan | | |
 | 11 | Scannables: track and collect scannable things | Spec below | |
+| 12 | Acquisition source filter | Spec below | |
+
+### Source filter
+
+A Source chip beside the kind chips picks the grind the player feels like doing: Dojo, Bounties, Railjack, Boss, Duviri, Relics, Repeat runs, Standing, Shop, Unique. Each item has one source, the grind that is most of getting it, read from its plan's `source` (set by `wfhelper-research/classify-sources.py`).
+
+### Plans for every item
+
+Every acquirable item gets a plan file, even a trivial one ("relics", "Market"), and the generic fallback (`plan/fallback.ts`) goes away, so no item reads differently because it has no plan. Primes are the bulk of these.
+
+### Wiki verification pass
+
+Check every plan and store fact against the official wiki: part drop chances, recipes nobody flagged, `tradeable`, Market prices, and `Credits` totals, including the plans that state no build cost (Gauss, Saryn, Nidus, Khora, Chroma and the rest).
 
 ### Scannables
 

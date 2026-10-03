@@ -41,7 +41,10 @@ const mastery = {
   ],
 } as unknown as MasteryData;
 
-const resolve = buildPartMasteryResolver(itemDb, mastery);
+// Soma Prime is built and levelling; Braton Prime was mastered and sold.
+const resolve = buildPartMasteryResolver(itemDb, mastery, {
+  LongGuns: [{ ItemType: "/W/SomaPrime", XP: 1000 }],
+});
 
 describe("buildPartMasteryResolver", () => {
   it("marks a part of a mastered item yes and of an unmastered item no", () => {

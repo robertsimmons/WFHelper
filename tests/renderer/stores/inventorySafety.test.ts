@@ -150,7 +150,6 @@ describe("writes", () => {
     const context = buildSafetyContext({
       itemDb: {},
       settings: get(inventorySafety),
-      masteredUniqueNames: new Set(),
       pinnedRequirements: new Map(),
     });
     expect(safeToList({ internalName: MOD, uniqueName: MOD, amount: 6 }, context).safe).toBe(0);

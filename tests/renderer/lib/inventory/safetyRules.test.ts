@@ -15,7 +15,8 @@ import {
   type SafetyItem,
   type SafetyRuleId,
 } from "../../../../src/lib/inventory/safetyRules.js";
-import type { ItemDbEntry, ParsedItem } from "../../../../src/types/inventory.js";
+import { buildSellPlan } from "../../../../src/lib/sellPlan.js";
+import type { ItemDbEntry, MasteryData, ParsedItem } from "../../../../src/types/inventory.js";
 
 const FRAME = "/Lotus/Powersuits/Volt/VoltPrime";
 const CHASSIS_COMPONENT = "/Lotus/Types/Recipes/WarframeRecipes/VoltPrimeChassisComponent";
@@ -41,10 +42,18 @@ const DB: Record<string, ItemDbEntry> = {
   [MOD]: { name: "Serration", category: "Mods", tradable: true },
 };
 
+/** Every masterable entry of `db` at one mastery status, nothing in hand. */
+function planFor(db: Record<string, ItemDbEntry>, status: "mastered" | "missing" = "missing") {
+  const items = Object.entries(db)
+    .filter(([, entry]) => entry.masterable === true)
+    .map(([uniqueName, entry]) => ({ name: entry.name, uniqueName, status }));
+  return buildSellPlan(db, { items } as unknown as MasteryData);
+}
+
 function context(overrides: Partial<Parameters<typeof buildSafetyContext>[0]> = {}) {
   return buildSafetyContext({
     itemDb: DB,
-    masteredUniqueNames: new Set<string>(),
+    sellPlan: planFor(DB),
     pinnedRequirements: new Map<string, number>(),
     ...overrides,
   });
@@ -226,7 +235,7 @@ describe("locks", () => {
   it("leaves other rows alone", () => {
     const verdict = safeToList(
       row({ internalName: CHASSIS_COMPONENT, uniqueName: CHASSIS_COMPONENT, amount: 2 }),
-      context({ settings: settings({ locks: [MOD] }), masteredUniqueNames: new Set([FRAME]) }),
+      context({ settings: settings({ locks: [MOD] }), sellPlan: planFor(DB, "mastered") }),
     );
     expect(verdict.safe).toBe(2);
     expect(verdict.reservations).toEqual([]);
@@ -255,7 +264,7 @@ describe("pinned requirements", () => {
   });
 
   it("is degraded, not silently empty, when no pin data is supplied", () => {
-    const ctx = buildSafetyContext({ itemDb: DB, masteredUniqueNames: new Set() });
+    const ctx = buildSafetyContext({ itemDb: DB, sellPlan: planFor(DB) });
     expect(ctx.degradedRules).toContain("pinnedGoal");
     expect(ctx.degradedRules).not.toContain("unmasteredRecipe");
   });
@@ -263,7 +272,7 @@ describe("pinned requirements", () => {
 
 describe("unmastered recipe components", () => {
   it("reserves the parts an unmastered build needs", () => {
-    const ctx = context({ masteredUniqueNames: new Set() });
+    const ctx = context({ sellPlan: planFor(DB) });
     const chassis = safeToList(
       row({ internalName: CHASSIS_COMPONENT, uniqueName: CHASSIS_COMPONENT, amount: 3 }),
       ctx,
@@ -277,7 +286,7 @@ describe("unmastered recipe components", () => {
   });
 
   it("releases the parts once the parent is mastered", () => {
-    const ctx = context({ masteredUniqueNames: new Set([FRAME]) });
+    const ctx = context({ sellPlan: planFor(DB, "mastered") });
     const verdict = safeToList(
       row({ internalName: CHASSIS_COMPONENT, uniqueName: CHASSIS_COMPONENT, amount: 3 }),
       ctx,
@@ -327,7 +336,7 @@ describe("complete-set keep flag", () => {
 
 describe("component identity aliases", () => {
   it("matches a Blueprint-form row against a Component-form set entry", () => {
-    const ctx = context({ masteredUniqueNames: new Set() });
+    const ctx = context({ sellPlan: planFor(DB) });
     const verdict = safeToList(
       row({ internalName: CHASSIS_BLUEPRINT, uniqueName: CHASSIS_BLUEPRINT, amount: 2 }),
       ctx,
@@ -345,7 +354,7 @@ describe("component identity aliases", () => {
     };
     const ctx = buildSafetyContext({
       itemDb: db,
-      masteredUniqueNames: new Set(),
+      sellPlan: planFor(db),
       pinnedRequirements: new Map(),
     });
     expect(
@@ -373,7 +382,7 @@ describe("recipe yield", () => {
     expect(reserveUnitsToCopies(4, yieldingDb[FORMA_BP])).toBe(2);
     const ctx = buildSafetyContext({
       itemDb: yieldingDb,
-      masteredUniqueNames: new Set(),
+      sellPlan: planFor(yieldingDb),
       pinnedRequirements: new Map([[FORMA_BP, 6]]),
     });
     expect(
@@ -387,7 +396,7 @@ describe("recipe yield", () => {
     };
     const ctx = buildSafetyContext({
       itemDb: db,
-      masteredUniqueNames: new Set(),
+      sellPlan: planFor(db),
       pinnedRequirements: new Map([[FORMA_BP, 9]]),
     });
     expect(
@@ -418,7 +427,7 @@ describe("foundry-pending totals", () => {
     const amount = ownedComponentCount(CHASSIS_COMPONENT, owned);
     expect(amount).toBe(1);
 
-    const ctx = context({ masteredUniqueNames: new Set() });
+    const ctx = context({ sellPlan: planFor(DB) });
     expect(
       safeToList(
         row({ internalName: CHASSIS_BLUEPRINT, uniqueName: CHASSIS_BLUEPRINT, amount }),
@@ -429,7 +438,7 @@ describe("foundry-pending totals", () => {
 
   it("would have called one copy listable on the raw count", () => {
     const owned = aggregateComponentOwnership(raw);
-    const ctx = context({ masteredUniqueNames: new Set() });
+    const ctx = context({ sellPlan: planFor(DB) });
     expect(
       safeToList(
         row({
@@ -494,7 +503,7 @@ describe("normalizeSafetySettings", () => {
     };
     const ctx = buildSafetyContext({
       itemDb: db,
-      masteredUniqueNames: new Set(),
+      sellPlan: planFor(db),
       pinnedRequirements: new Map(),
     });
     expect(
@@ -543,7 +552,7 @@ describe("verdict shape", () => {
   });
 
   it("treats a row with no amount as a single copy", () => {
-    const ctx = context({ masteredUniqueNames: new Set([FRAME]) });
+    const ctx = context({ sellPlan: planFor(DB, "mastered") });
     expect(safeToList(row({ internalName: MOD, uniqueName: MOD }), ctx)).toMatchObject({
       total: 1,
       reserved: 0,
@@ -555,11 +564,11 @@ describe("verdict shape", () => {
   });
 
   it("clamps a nonsense amount instead of producing a negative verdict", () => {
-    const ctx = context({ masteredUniqueNames: new Set([FRAME]) });
+    const ctx = context({ sellPlan: planFor(DB, "mastered") });
     for (const amount of [-5, Number.NaN, Number.POSITIVE_INFINITY, 2.7]) {
       const verdict = safeToList(
         row({ internalName: MOD, uniqueName: MOD, amount }),
-        context({ settings: settings({ spareDefault: 3 }), masteredUniqueNames: new Set([FRAME]) }),
+        context({ settings: settings({ spareDefault: 3 }), sellPlan: planFor(DB, "mastered") }),
       );
       expect(verdict.total).toBeGreaterThanOrEqual(0);
       expect(verdict.reserved).toBeLessThanOrEqual(verdict.total);
@@ -571,7 +580,7 @@ describe("verdict shape", () => {
   it("only emits reason keys the dictionary handoff lists", () => {
     const ctx = context({
       settings: settings({ locks: [MOD] }),
-      masteredUniqueNames: new Set(),
+      sellPlan: planFor(DB),
       pinnedRequirements: new Map([[CHASSIS_COMPONENT, 2]]),
     });
     const rows: SafetyItem[] = [

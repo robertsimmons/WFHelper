@@ -4,7 +4,7 @@
   import WorkbenchQueueRow from "./WorkbenchQueueRow.svelte";
   import WorkbenchReview from "./WorkbenchReview.svelte";
   import ModalShell from "../ModalShell.svelte";
-  import { itemDb, parsedItems, wfmItems } from "../../stores/data.js";
+  import { inventoryData, itemDb, parsedItems, wfmItems } from "../../stores/data.js";
   import {
     inventorySafety,
     resetInventorySafety,
@@ -16,6 +16,7 @@
   import { inventorySelection } from "../../stores/inventorySelection.js";
   import { masteryData } from "../../stores/mastery.js";
   import { masteryPins } from "../../stores/masteryPins.js";
+  import { keepWeaponVariants } from "../../stores/preferences.js";
   import { relicDb } from "../../stores/relics.js";
   import { safeToList, SAFETY_REASON_KEYS } from "../../lib/inventory/safetyRules.js";
   import { setRootOf } from "../../lib/inventory/fullSets.js";
@@ -128,6 +129,8 @@
       settings: $inventorySafety,
       mastery: $masteryData,
       pins: $masteryPins,
+      inventory: $inventoryData,
+      keepVariants: $keepWeaponVariants,
     }),
   );
 

@@ -642,6 +642,8 @@
         settings: $inventorySafety,
         mastery: $masteryData,
         pins: $masteryPins,
+        inventory: $inventoryData,
+        keepVariants: $keepWeaponVariants,
       })
     : null;
   $: eligibleSelectionSet = selectionSafetyContext

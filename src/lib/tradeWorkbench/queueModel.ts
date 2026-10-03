@@ -8,6 +8,7 @@ import {
   type SafetyVerdict,
 } from "../inventory/safetyRules.js";
 import { getLookupByGameRef, getLookupByName } from "../inventoryMarket.js";
+import { buildSellPlan } from "../sellPlan.js";
 import {
   suggestPrice,
   type DampingRule,
@@ -93,6 +94,9 @@ interface SelectionSafetyInput {
   mastery: MasteryData | null;
   /** Mastery goal uniqueNames the user pinned in the planner. */
   pins: readonly string[];
+  /** Raw inventory payload, foundry builds included; the sell plan reads it. */
+  inventory: unknown;
+  keepVariants: boolean;
 }
 
 /** The one safety context both the inventory grid's eligibility pass and the
@@ -100,12 +104,9 @@ interface SelectionSafetyInput {
  *  pinnedGoal and unmasteredRecipe rules out of `degradedRules`, where they
  *  would silently never fire. */
 export function buildSelectionSafetyContext(input: SelectionSafetyInput): SafetyContext {
-  const masteredUniqueNames = new Set<string>();
-  for (const item of input.mastery?.items ?? []) {
-    if (item.status !== "mastered") continue;
-    const uniqueName = item.uniqueName || item.internalName;
-    if (uniqueName) masteredUniqueNames.add(uniqueName);
-  }
+  const sellPlan = buildSellPlan(input.itemDb, input.mastery, input.inventory, {
+    keepVariants: input.keepVariants,
+  });
 
   const pinnedRequirements = new Map<string, number>();
   for (const pin of input.pins) {
@@ -121,7 +122,7 @@ export function buildSelectionSafetyContext(input: SelectionSafetyInput): Safety
   return buildSafetyContext({
     itemDb: input.itemDb,
     settings: input.settings,
-    masteredUniqueNames,
+    sellPlan,
     pinnedRequirements,
   });
 }

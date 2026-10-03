@@ -590,6 +590,8 @@ describe("relic subtype identity", () => {
         settings: { spareDefault: 0, spares: {}, locks: [], setKeep: [] },
         mastery: null,
         pins: [],
+        inventory: {},
+        keepVariants: false,
       }),
       lookupFor({ name: "Axi A1 Relic", slug: "axi_a1_relic" }),
     );
@@ -667,13 +669,19 @@ describe("selection safety context inputs", () => {
     [CHASSIS]: { name: "Chassis", isBuildComponent: true, componentOf: FRAME },
   };
   const SETTINGS = { spareDefault: 0, spares: {}, locks: [], setKeep: [] };
+  const UNMASTERED = {
+    items: [makeItem("Volt Prime", { internalName: FRAME, status: "missing" })],
+    stats: {} as never,
+  };
 
   it("supplies mastery and pins, so no rule is left degraded", () => {
     const context = buildSelectionSafetyContext({
       itemDb: DB,
       settings: SETTINGS,
-      mastery: { items: [], stats: {} as never },
+      mastery: UNMASTERED,
       pins: [],
+      inventory: {},
+      keepVariants: false,
     });
     expect(context.degradedRules).toEqual([]);
   });
@@ -684,6 +692,8 @@ describe("selection safety context inputs", () => {
       settings: SETTINGS,
       mastery: { items: [], stats: {} as never },
       pins: [FRAME],
+      inventory: {},
+      keepVariants: false,
     });
     const verdict = safeToList({ internalName: CHASSIS, uniqueName: CHASSIS, amount: 3 }, context);
     expect(verdict).toMatchObject({ total: 3, reserved: 2, safe: 1 });
@@ -693,8 +703,10 @@ describe("selection safety context inputs", () => {
     const unmastered = buildSelectionSafetyContext({
       itemDb: DB,
       settings: SETTINGS,
-      mastery: { items: [], stats: {} as never },
+      mastery: UNMASTERED,
       pins: [],
+      inventory: {},
+      keepVariants: false,
     });
     expect(safeToList({ internalName: CHASSIS, amount: 3 }, unmastered).reserved).toBe(2);
 
@@ -706,6 +718,8 @@ describe("selection safety context inputs", () => {
         stats: {} as never,
       },
       pins: [],
+      inventory: {},
+      keepVariants: false,
     });
     expect(safeToList({ internalName: CHASSIS, amount: 3 }, mastered).reserved).toBe(0);
   });

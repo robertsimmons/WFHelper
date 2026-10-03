@@ -1,6 +1,7 @@
 import { componentUniqueNameAliases } from "../../../config/shared/componentNames.js";
 import { getFullSetOverride } from "./fullSetOverrides.js";
 import { setRootOf } from "./fullSets.js";
+import type { SellPlan } from "../sellPlan.js";
 import type { InventoryGroup, ItemDbEntry } from "../../types/inventory.js";
 
 /** Every rule states a floor of copies that must stay in the account and the
@@ -145,8 +146,8 @@ interface SetPart {
 interface SafetyContextInput {
   itemDb: Record<string, ItemDbEntry>;
   settings?: InventorySafetySettings;
-  /** Mastered uniqueNames. Absent leaves the unmastered-recipe rule degraded. */
-  masteredUniqueNames?: ReadonlySet<string>;
+  /** The Inventory grid's sell plan. Absent leaves the unmastered-recipe rule degraded. */
+  sellPlan?: SellPlan | null;
   /** uniqueName -> units pinned goals need kept. The pin store owns the walk
    *  from a goal to this flat map; the engine only reads it. */
   pinnedRequirements?: ReadonlyMap<string, number>;
@@ -159,7 +160,7 @@ export interface SafetyContext {
   readonly locks: ReadonlySet<string>;
   readonly setKeepRoots: ReadonlySet<string>;
   readonly pinnedDemand: ReadonlyMap<string, number>;
-  readonly unmasteredDemand: ReadonlyMap<string, number>;
+  readonly sellPlan: SellPlan | null;
   readonly setKeepDemand: ReadonlyMap<string, number>;
   /** Rules with no data to work with. They never fire, and the caller should say so. */
   readonly degradedRules: readonly SafetyRuleId[];
@@ -243,16 +244,8 @@ export function buildSafetyContext(input: SafetyContextInput): SafetyContext {
     degradedRules.push("pinnedGoal");
   }
 
-  const unmasteredDemand = new Map<string, number>();
-  const mastered = input.masteredUniqueNames;
-  if (mastered) {
-    for (const [uniqueName, entry] of Object.entries(itemDb)) {
-      if (entry?.masterable !== true || mastered.has(uniqueName)) continue;
-      addPartDemand(unmasteredDemand, partsOf(uniqueName, entry), 1);
-    }
-  } else {
-    degradedRules.push("unmasteredRecipe");
-  }
+  const sellPlan = input.sellPlan ?? null;
+  if (!sellPlan) degradedRules.push("unmasteredRecipe");
 
   const setKeepRoots = new Set(settings.setKeep);
   const setKeepDemand = new Map<string, number>();
@@ -267,7 +260,7 @@ export function buildSafetyContext(input: SafetyContextInput): SafetyContext {
     locks: new Set(settings.locks),
     setKeepRoots,
     pinnedDemand,
-    unmasteredDemand,
+    sellPlan,
     setKeepDemand,
     degradedRules,
   };
@@ -329,7 +322,7 @@ export function safeToList(item: SafetyItem, context: SafetyContext): SafetyVerd
     );
   }
 
-  const recipeCopies = reserveUnitsToCopies(demandFor(context.unmasteredDemand, aliases), entry);
+  const recipeCopies = context.sellPlan?.verdict(key, total)?.reserved ?? 0;
   if (recipeCopies > 0) {
     floors.push(
       floor("unmasteredRecipe", recipeCopies, "inventory.safety.reason.unmasteredRecipe", {

@@ -2,7 +2,8 @@
   "name": "Rakta Ballistica",
   "kind": "secondary",
   "effort": 4,
-  "tradeable": null,
+  "source": "standing",
+  "tradeable": false,
   "progress": { "have": 0, "need": 1, "unit": "purchase" },
   "badges": [
     { "text": "Exalted rank gate", "tone": "warn" },
@@ -12,6 +13,7 @@
     { "label": "standing", "amount": "340,000", "money": false },
     { "label": "credits", "amount": "940,000 cr", "money": false }
   ],
+  "materials": [{ "qty": "940,000", "label": "Credits", "note": null }],
   "groups": [
     {
       "type": "currency",
@@ -93,13 +95,7 @@
       "spends": [{ "currency": "Red Veil Standing", "amount": "100,000" }],
       "map": null,
       "rows": [
-        {
-          "qty": null,
-          "label": "Rakta Ballistica",
-          "note": null,
-          "alt": null,
-          "done": false
-        }
+        { "qty": null, "label": "Rakta Ballistica", "note": null, "alt": null, "done": false }
       ],
       "conditions": [
         "Mastery Rank 6 is required to buy it.",

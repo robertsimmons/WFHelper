@@ -2,6 +2,7 @@
   "name": "Wolf Sledge",
   "kind": "melee",
   "effort": 5,
+  "source": "boss",
   "tradeable": "blueprint and parts only",
   "progress": { "have": 0, "need": 4, "unit": "parts" },
   "badges": [
@@ -9,7 +10,10 @@
     { "text": "Motor is rare (~4%)", "tone": "warn" }
   ],
   "prices": [{ "label": "build", "amount": "30,000 cr", "money": false }],
-  "materials": [{ "qty": "5", "label": "Nitain Extract", "note": null }],
+  "materials": [
+    { "qty": "5", "label": "Nitain Extract", "note": null },
+    { "qty": "30,000", "label": "Credits", "note": null }
+  ],
   "groups": [
     {
       "type": "gate",

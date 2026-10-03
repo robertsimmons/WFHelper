@@ -2,41 +2,20 @@
   "name": "Brakk",
   "kind": "secondary",
   "effort": 8,
+  "source": "boss",
   "tradeable": false,
-  "progress": {
-    "have": 0,
-    "need": 3,
-    "unit": "parts"
-  },
+  "progress": { "have": 0, "need": 3, "unit": "parts" },
   "badges": [
-    {
-      "text": "Grustrag Three RNG",
-      "tone": "warn"
-    },
-    {
-      "text": "Baro beacons",
-      "tone": "info"
-    }
+    { "text": "Grustrag Three RNG", "tone": "warn" },
+    { "text": "Baro beacons", "tone": "info" }
   ],
   "prices": [
-    {
-      "label": "Grustrag Three Beacon",
-      "amount": "125,000 cr + 200 ducats",
-      "money": false
-    },
-    {
-      "label": "build",
-      "amount": "15,000 cr",
-      "money": false
-    }
+    { "label": "Grustrag Three Beacon", "amount": "125,000 cr + 200 ducats", "money": false },
+    { "label": "build", "amount": "15,000 cr", "money": false }
   ],
   "materials": [
-    {
-      "qty": "10",
-      "label": "Orokin Cell",
-      "note": null
-    },
-    { "qty": "125,000", "label": "Credits", "note": null }
+    { "qty": "10", "label": "Orokin Cell", "note": null },
+    { "qty": "140,000", "label": "Credits", "note": null }
   ],
   "groups": [
     {
@@ -73,21 +52,12 @@
       "activity": "buy Grustrag Three Beacons whenever stocked",
       "meta": "125,000 cr + 200 ducats each",
       "mode": null,
-      "live": {
-        "state": "waiting",
-        "text": "Baro does not stock beacons every visit"
-      },
+      "live": { "state": "waiting", "text": "Baro does not stock beacons every visit" },
       "skip": null,
       "earns": null,
       "spends": [
-        {
-          "currency": "Credits",
-          "amount": "125,000"
-        },
-        {
-          "currency": "Orokin Ducats",
-          "amount": "200"
-        }
+        { "currency": "Credits", "amount": "125,000" },
+        { "currency": "Orokin Ducats", "amount": "200" }
       ],
       "map": null,
       "rows": [

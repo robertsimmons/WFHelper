@@ -2,55 +2,23 @@
   "name": "Dark Sword",
   "kind": "melee",
   "effort": 3,
-  "tradeable": null,
-  "progress": {
-    "have": 0,
-    "need": 1,
-    "unit": "weapon"
-  },
+  "source": "shop",
+  "tradeable": false,
+  "progress": { "have": 0, "need": 1, "unit": "weapon" },
   "badges": [
-    {
-      "text": "Nightwave",
-      "tone": "warn"
-    },
-    {
-      "text": "MR 8",
-      "tone": "info"
-    }
+    { "text": "Nightwave", "tone": "warn" },
+    { "text": "MR 8", "tone": "info" }
   ],
   "prices": [
-    {
-      "label": "blueprint",
-      "amount": "50 Nightwave Cred",
-      "money": false
-    },
-    {
-      "label": "build",
-      "amount": "20,000 cr",
-      "money": false
-    }
+    { "label": "blueprint", "amount": "50 Nightwave Cred", "money": false },
+    { "label": "build", "amount": "20,000 cr", "money": false }
   ],
   "materials": [
-    {
-      "qty": "800",
-      "label": "Ferrite",
-      "note": null
-    },
-    {
-      "qty": "200",
-      "label": "Plastids",
-      "note": null
-    },
-    {
-      "qty": "75",
-      "label": "Polymer Bundle",
-      "note": null
-    },
-    {
-      "qty": "2",
-      "label": "Neurodes",
-      "note": null
-    }
+    { "qty": "800", "label": "Ferrite", "note": null },
+    { "qty": "200", "label": "Plastids", "note": null },
+    { "qty": "75", "label": "Polymer Bundle", "note": null },
+    { "qty": "2", "label": "Neurodes", "note": null },
+    { "qty": "20,000", "label": "Credits", "note": null }
   ],
   "groups": [
     {
@@ -87,10 +55,7 @@
       "mode": null,
       "live": null,
       "skip": null,
-      "earns": {
-        "currency": "Nightwave Creds",
-        "amount": "50"
-      },
+      "earns": { "currency": "Nightwave Creds", "amount": "50" },
       "spends": [],
       "map": null,
       "rows": [
@@ -117,21 +82,10 @@
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [
-        {
-          "currency": "Nightwave Creds",
-          "amount": "50"
-        }
-      ],
+      "spends": [{ "currency": "Nightwave Creds", "amount": "50" }],
       "map": null,
       "rows": [
-        {
-          "qty": null,
-          "label": "Dark Sword Blueprint",
-          "note": null,
-          "alt": null,
-          "done": false
-        }
+        { "qty": null, "label": "Dark Sword Blueprint", "note": null, "alt": null, "done": false }
       ],
       "conditions": ["The blueprint is always in the Cred Offerings; it never rotates out."],
       "bonuses": [],

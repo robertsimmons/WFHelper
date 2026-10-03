@@ -2,67 +2,26 @@
   "name": "Sarpa",
   "kind": "melee",
   "effort": 5,
-  "tradeable": null,
-  "progress": {
-    "have": 0,
-    "need": 1,
-    "unit": "blueprint"
-  },
+  "source": "dojo",
+  "tradeable": false,
+  "progress": { "have": 0, "need": 1, "unit": "blueprint" },
   "badges": [
-    {
-      "text": "Cryotic: 3,300",
-      "tone": "warn"
-    },
-    {
-      "text": "consumes an Akstiletto",
-      "tone": "info"
-    }
+    { "text": "Cryotic: 3,300", "tone": "warn" },
+    { "text": "consumes an Akstiletto", "tone": "info" }
   ],
   "prices": [
-    {
-      "label": "blueprint",
-      "amount": "20,000 cr",
-      "money": false
-    },
-    {
-      "label": "build",
-      "amount": "20,000 cr",
-      "money": false
-    }
+    { "label": "blueprint", "amount": "20,000 cr", "money": false },
+    { "label": "build", "amount": "20,000 cr", "money": false }
   ],
   "materials": [
-    {
-      "qty": "3,300",
-      "label": "Cryotic",
-      "note": null
-    },
-    {
-      "qty": "1,000",
-      "label": "Plastids",
-      "note": null
-    },
-    {
-      "qty": "2",
-      "label": "Control Module",
-      "note": null
-    },
-    {
-      "qty": "2",
-      "label": "Gallium",
-      "note": "Akstiletto"
-    },
-    {
-      "qty": "800",
-      "label": "Salvage",
-      "note": "Akstiletto"
-    },
-    {
-      "qty": "200",
-      "label": "Alloy Plate",
-      "note": "Akstiletto"
-    },
+    { "qty": "3,300", "label": "Cryotic", "note": null },
+    { "qty": "1,000", "label": "Plastids", "note": null },
+    { "qty": "2", "label": "Control Module", "note": null },
+    { "qty": "2", "label": "Gallium", "note": "Akstiletto" },
+    { "qty": "800", "label": "Salvage", "note": "Akstiletto" },
+    { "qty": "200", "label": "Alloy Plate", "note": "Akstiletto" },
     { "qty": "1", "label": "Forma", "note": null },
-    { "qty": "35,000", "label": "Credits", "note": null }
+    { "qty": "75,000", "label": "Credits", "note": null }
   ],
   "groups": [
     {
@@ -73,25 +32,12 @@
       "meta": "15,000 cr",
       "mode": null,
       "live": null,
-      "skip": {
-        "reason": "you already own an Akstiletto"
-      },
+      "skip": { "reason": "you already own an Akstiletto" },
       "earns": null,
-      "spends": [
-        {
-          "currency": "Credits",
-          "amount": "15,000"
-        }
-      ],
+      "spends": [{ "currency": "Credits", "amount": "15,000" }],
       "map": null,
       "rows": [
-        {
-          "qty": null,
-          "label": "Akstiletto Blueprint",
-          "note": null,
-          "alt": null,
-          "done": false
-        }
+        { "qty": null, "label": "Akstiletto Blueprint", "note": null, "alt": null, "done": false }
       ],
       "conditions": [
         "The Sarpa build consumes the Akstiletto. Rank it to 30 first to bank its Mastery."
@@ -109,21 +55,10 @@
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [
-        {
-          "currency": "Credits",
-          "amount": "20,000"
-        }
-      ],
+      "spends": [{ "currency": "Credits", "amount": "20,000" }],
       "map": null,
       "rows": [
-        {
-          "qty": null,
-          "label": "Sarpa Blueprint",
-          "note": null,
-          "alt": null,
-          "done": false
-        }
+        { "qty": null, "label": "Sarpa Blueprint", "note": null, "alt": null, "done": false }
       ],
       "conditions": [],
       "bonuses": [],

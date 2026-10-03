@@ -2,41 +2,18 @@
   "name": "Viper Wraith",
   "kind": "secondary",
   "effort": 2,
+  "source": "shop",
   "tradeable": "unranked, no Forma or Catalyst, buyer MR 4+",
-  "progress": {
-    "have": 0,
-    "need": 1,
-    "unit": "weapon"
-  },
+  "progress": { "have": 0, "need": 1, "unit": "weapon" },
   "badges": [
-    {
-      "text": "Baro Ki'Teer only",
-      "tone": "warn"
-    },
-    {
-      "text": "400 Ducats",
-      "tone": "info"
-    }
+    { "text": "Baro Ki'Teer only", "tone": "warn" },
+    { "text": "400 Ducats", "tone": "info" }
   ],
   "prices": [
-    {
-      "label": "credits",
-      "amount": "75,000 cr",
-      "money": false
-    },
-    {
-      "label": "Ducats",
-      "amount": "400",
-      "money": false
-    }
+    { "label": "credits", "amount": "75,000 cr", "money": false },
+    { "label": "Ducats", "amount": "400", "money": false }
   ],
-  "materials": [
-    {
-      "qty": "75,000",
-      "label": "Credits",
-      "note": null
-    }
-  ],
+  "materials": [{ "qty": "75,000", "label": "Credits", "note": null }],
   "groups": [
     {
       "type": "currency",
@@ -47,10 +24,7 @@
       "mode": null,
       "live": null,
       "skip": null,
-      "earns": {
-        "currency": "Orokin Ducats",
-        "amount": "400"
-      },
+      "earns": { "currency": "Orokin Ducats", "amount": "400" },
       "spends": [],
       "map": "void",
       "rows": [
@@ -74,21 +48,12 @@
       "activity": "check Baro's rotating stock, then buy if listed",
       "meta": "arrives every 2 weeks, stays ~48h",
       "mode": null,
-      "live": {
-        "state": "waiting",
-        "text": "check the Ducat Kiosk countdown for his next relay"
-      },
+      "live": { "state": "waiting", "text": "check the Ducat Kiosk countdown for his next relay" },
       "skip": null,
       "earns": null,
       "spends": [
-        {
-          "currency": "Credits",
-          "amount": "75,000"
-        },
-        {
-          "currency": "Orokin Ducats",
-          "amount": "400"
-        }
+        { "currency": "Credits", "amount": "75,000" },
+        { "currency": "Orokin Ducats", "amount": "400" }
       ],
       "map": null,
       "rows": [

@@ -2,7 +2,8 @@
   "name": "Telos Akbolto",
   "kind": "secondary",
   "effort": 4,
-  "tradeable": null,
+  "source": "standing",
+  "tradeable": false,
   "progress": { "have": 0, "need": 1, "unit": "purchase" },
   "badges": [
     { "text": "Maxim rank gate", "tone": "warn" },
@@ -12,6 +13,7 @@
     { "label": "standing", "amount": "340,000", "money": false },
     { "label": "credits", "amount": "940,000 cr", "money": false }
   ],
+  "materials": [{ "qty": "940,000", "label": "Credits", "note": null }],
   "groups": [
     {
       "type": "currency",
@@ -86,15 +88,7 @@
       "earns": null,
       "spends": [{ "currency": "Arbiters of Hexis Standing", "amount": "100,000" }],
       "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Telos Akbolto",
-          "note": null,
-          "alt": null,
-          "done": false
-        }
-      ],
+      "rows": [{ "qty": null, "label": "Telos Akbolto", "note": null, "alt": null, "done": false }],
       "conditions": [
         "Mastery Rank 11 is required. The free gift at each rank-up can never be a syndicate weapon."
       ],

@@ -2,55 +2,23 @@
   "name": "Soma",
   "kind": "primary",
   "effort": 3,
-  "tradeable": null,
-  "progress": {
-    "have": 0,
-    "need": 1,
-    "unit": "weapon"
-  },
+  "source": "shop",
+  "tradeable": false,
+  "progress": { "have": 0, "need": 1, "unit": "weapon" },
   "badges": [
-    {
-      "text": "8,000 Salvage",
-      "tone": "info"
-    },
-    {
-      "text": "Market blueprint",
-      "tone": "info"
-    }
+    { "text": "8,000 Salvage", "tone": "info" },
+    { "text": "Market blueprint", "tone": "info" }
   ],
   "prices": [
-    {
-      "label": "blueprint",
-      "amount": "50,000 cr",
-      "money": false
-    },
-    {
-      "label": "build",
-      "amount": "15,000 cr",
-      "money": false
-    }
+    { "label": "blueprint", "amount": "50,000 cr", "money": false },
+    { "label": "build", "amount": "15,000 cr", "money": false }
   ],
   "materials": [
-    {
-      "qty": "8,000",
-      "label": "Salvage",
-      "note": null
-    },
-    {
-      "qty": "1,200",
-      "label": "Rubedo",
-      "note": null
-    },
-    {
-      "qty": "850",
-      "label": "Plastids",
-      "note": null
-    },
-    {
-      "qty": "7",
-      "label": "Morphics",
-      "note": null
-    }
+    { "qty": "8,000", "label": "Salvage", "note": null },
+    { "qty": "1,200", "label": "Rubedo", "note": null },
+    { "qty": "850", "label": "Plastids", "note": null },
+    { "qty": "7", "label": "Morphics", "note": null },
+    { "qty": "65,000", "label": "Credits", "note": null }
   ],
   "groups": [
     {
@@ -66,13 +34,7 @@
       "spends": [],
       "map": null,
       "rows": [
-        {
-          "qty": null,
-          "label": "Soma Blueprint",
-          "note": null,
-          "alt": null,
-          "done": false
-        }
+        { "qty": null, "label": "Soma Blueprint", "note": null, "alt": null, "done": false }
       ],
       "conditions": ["The Market's platinum price for the base Soma is called poor value."],
       "bonuses": [],

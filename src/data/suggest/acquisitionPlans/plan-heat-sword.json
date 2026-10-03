@@ -2,29 +2,13 @@
   "name": "Heat Sword",
   "kind": "melee",
   "effort": 2,
+  "source": "shop",
   "tradeable": false,
-  "progress": {
-    "have": 0,
-    "need": 1,
-    "unit": "weapon"
-  },
-  "badges": [
-    {
-      "text": "MR 3",
-      "tone": "warn"
-    }
-  ],
+  "progress": { "have": 0, "need": 1, "unit": "weapon" },
+  "badges": [{ "text": "MR 3", "tone": "warn" }],
   "prices": [
-    {
-      "label": "Nightwave",
-      "amount": "50 Creds",
-      "money": false
-    },
-    {
-      "label": "build",
-      "amount": "20,000 cr",
-      "money": false
-    }
+    { "label": "Nightwave", "amount": "50 Creds", "money": false },
+    { "label": "build", "amount": "20,000 cr", "money": false }
   ],
   "materials": [
     {
@@ -32,21 +16,10 @@
       "label": "Neurodes",
       "note": "a Neural Sensor before Update 30.9, so older guides are out of date"
     },
-    {
-      "qty": "500",
-      "label": "Ferrite",
-      "note": null
-    },
-    {
-      "qty": "300",
-      "label": "Circuits",
-      "note": null
-    },
-    {
-      "qty": "300",
-      "label": "Polymer Bundle",
-      "note": null
-    }
+    { "qty": "500", "label": "Ferrite", "note": null },
+    { "qty": "300", "label": "Circuits", "note": null },
+    { "qty": "300", "label": "Polymer Bundle", "note": null },
+    { "qty": "20,000", "label": "Credits", "note": null }
   ],
   "groups": [
     {
@@ -68,12 +41,7 @@
           "note": "Spy on M Prime, Exterminate on Terminus, 8-wave Defense on Lares; the blueprint arrives after the Lares defense",
           "alt": {
             "text": "or buy it from Nightwave Cred Offerings",
-            "spends": [
-              {
-                "currency": "Nightwave Creds",
-                "amount": "50"
-              }
-            ]
+            "spends": [{ "currency": "Nightwave Creds", "amount": "50" }]
           },
           "done": false
         },

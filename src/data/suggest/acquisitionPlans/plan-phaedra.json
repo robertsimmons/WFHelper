@@ -2,7 +2,8 @@
   "name": "Phaedra",
   "kind": "archgun",
   "effort": 3,
-  "tradeable": null,
+  "source": "standing",
+  "tradeable": false,
   "progress": { "have": 0, "need": 4, "unit": "parts" },
   "badges": [
     { "text": "3 syndicates to Rank 2", "tone": "warn" },
@@ -12,7 +13,10 @@
     { "label": "blueprint", "amount": "35,000 cr", "money": false },
     { "label": "rank-ups", "amount": "270,000 cr + 3 Forma", "money": false }
   ],
-  "materials": [{ "qty": "2", "label": "Tellurium", "note": null }],
+  "materials": [
+    { "qty": "2", "label": "Tellurium", "note": null },
+    { "qty": "350,000", "label": "Credits", "note": null }
+  ],
   "groups": [
     {
       "type": "vendor",

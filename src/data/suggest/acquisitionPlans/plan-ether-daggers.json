@@ -2,55 +2,23 @@
   "name": "Ether Daggers",
   "kind": "melee",
   "effort": 3,
-  "tradeable": null,
-  "progress": {
-    "have": 0,
-    "need": 1,
-    "unit": "weapon"
-  },
+  "source": "shop",
+  "tradeable": false,
+  "progress": { "have": 0, "need": 1, "unit": "weapon" },
   "badges": [
-    {
-      "text": "Stolen Dreams",
-      "tone": "info"
-    },
-    {
-      "text": "MR 6",
-      "tone": "info"
-    }
+    { "text": "Stolen Dreams", "tone": "info" },
+    { "text": "MR 6", "tone": "info" }
   ],
   "prices": [
-    {
-      "label": "Simaris",
-      "amount": "100,000 standing",
-      "money": false
-    },
-    {
-      "label": "build",
-      "amount": "20,000 cr",
-      "money": false
-    }
+    { "label": "Simaris", "amount": "100,000 standing", "money": false },
+    { "label": "build", "amount": "20,000 cr", "money": false }
   ],
   "materials": [
-    {
-      "qty": "5",
-      "label": "Morphics",
-      "note": null
-    },
-    {
-      "qty": "600",
-      "label": "Polymer Bundle",
-      "note": null
-    },
-    {
-      "qty": "600",
-      "label": "Ferrite",
-      "note": null
-    },
-    {
-      "qty": "1,200",
-      "label": "Nano Spores",
-      "note": null
-    }
+    { "qty": "5", "label": "Morphics", "note": null },
+    { "qty": "600", "label": "Polymer Bundle", "note": null },
+    { "qty": "600", "label": "Ferrite", "note": null },
+    { "qty": "1,200", "label": "Nano Spores", "note": null },
+    { "qty": "20,000", "label": "Credits", "note": null }
   ],
   "groups": [
     {
@@ -72,12 +40,7 @@
           "note": "extracting the final mission rewards the Ether Daggers blueprint",
           "alt": {
             "text": "or 100,000 standing at Cephalon Simaris if the blueprint is gone",
-            "spends": [
-              {
-                "currency": "Cephalon Simaris Standing",
-                "amount": "100,000"
-              }
-            ]
+            "spends": [{ "currency": "Cephalon Simaris Standing", "amount": "100,000" }]
           },
           "done": false
         }

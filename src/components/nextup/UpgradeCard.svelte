@@ -12,6 +12,7 @@
   import UpgradeSourceLine from "./UpgradeSourceLine.svelte";
   import ItemImage from "../ItemImage.svelte";
   import WikiButton from "../WikiButton.svelte";
+  import { suggestionPreferences } from "../../stores/suggestionPrefs.js";
   import type { Suggestion } from "../../types/suggest.js";
 
   interface Props {
@@ -34,6 +35,9 @@
 
   const LINE = "flex h-4 min-w-0 items-center gap-2 text-xs leading-4";
 
+  const picked = $derived(
+    $suggestionPreferences.options[card.kind === "mods" ? "modVendors" : "arcaneVendors"],
+  );
   const stats = $derived(card.stats.join("\n"));
   const price = $derived(
     card.platinum === null
@@ -149,7 +153,7 @@
       <span class="{TONE.quiet} tabular-nums">{upgradeCountText(card, $tr)}</span>
     </div>
     <div class={LINE}>
-      <UpgradeSourceLine {card} tone={TONE.quiet} />
+      <UpgradeSourceLine {card} {picked} tone={TONE.quiet} />
     </div>
 
     <div class="mt-auto flex h-6 items-center justify-between gap-2">

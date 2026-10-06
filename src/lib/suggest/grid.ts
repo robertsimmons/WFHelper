@@ -18,6 +18,7 @@ const SECTION_CARD_MIN_WIDTH: Record<SuggestionSectionId, number> = {
   mods: NARROW_CARD_MIN_WIDTH,
   arcanes: NARROW_CARD_MIN_WIDTH,
   mastery: NARROW_CARD_MIN_WIDTH,
+  simulacrum: CARD_MIN_WIDTH,
 };
 
 export function cardMinWidthFor(id: SuggestionSectionId): number {

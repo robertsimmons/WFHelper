@@ -32,6 +32,7 @@ export const arcanesProvider: SuggestionProvider = {
   collect(ctx: SuggestionContext): SuggestionDraft[] {
     if ((ctx.prefs.activities[ARCANES_ACTIVITY] ?? "normal") === "never") return [];
     const from = upgrades.collect(ctx);
+    if (ctx.prefs.options.arcaneVendors.length > 0) return from;
     if (cached?.from !== from) cached = { from, drafts: [VOSFOR_DRAFT, ...from] };
     return cached.drafts;
   },

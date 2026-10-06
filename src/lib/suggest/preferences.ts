@@ -8,6 +8,8 @@ import {
 import { ACQUISITION_SORTS, DEFAULT_ACQUISITION_SORT } from "./acquisition/sort.js";
 import { ACQUISITION_SOURCES } from "./acquisition/sources.js";
 import { normalizeType } from "./missionTypes.js";
+import { SCAN_CATEGORIES, type ScanCategory } from "./scannables.js";
+import { UPGRADE_VENDOR_OPTIONS } from "./upgradeVendorFilters.js";
 import { legacyWorth } from "./rewards.js";
 import { DEFAULT_WEIGHTS } from "./score.js";
 import {
@@ -122,7 +124,10 @@ export const DEFAULT_OPTIONS: SuggestionOptions = {
   acquisitionSearch: "",
   modSearch: "",
   arcaneSearch: "",
+  modVendors: [],
+  arcaneVendors: [],
   vosforKeepMax: true,
+  scanCategory: "simulacrum",
 };
 
 /** Synthetic activity ids these settings were stored under before they had a
@@ -369,8 +374,19 @@ export function parseOptions(raw: string | null): Partial<SuggestionOptions> {
   if (typeof modSearch === "string") options.modSearch = modSearch;
   const arcaneSearch = parsed["arcaneSearch"];
   if (typeof arcaneSearch === "string") options.arcaneSearch = arcaneSearch;
+  const modVendors = parseList(parsed["modVendors"], UPGRADE_VENDOR_OPTIONS);
+  if (modVendors) options.modVendors = modVendors;
+  const arcaneVendors = parseList(parsed["arcaneVendors"], UPGRADE_VENDOR_OPTIONS);
+  if (arcaneVendors) options.arcaneVendors = arcaneVendors;
   const keepMax = parsed["vosforKeepMax"];
   if (typeof keepMax === "boolean") options.vosforKeepMax = keepMax;
+  const scanCategory = parsed["scanCategory"];
+  if (
+    typeof scanCategory === "string" &&
+    (SCAN_CATEGORIES as readonly string[]).includes(scanCategory)
+  ) {
+    options.scanCategory = scanCategory as ScanCategory;
+  }
   return options;
 }
 

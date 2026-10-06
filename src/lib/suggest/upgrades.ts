@@ -66,6 +66,8 @@ export type Holdings = ReadonlyMap<string, number> | null;
 export interface UpgradeCatalog {
   kind: UpgradeKind;
   popular: readonly PopularUpgrade[];
+  /** The popular list, then every other upgrade of the kind at a count of 0. */
+  entries(itemDb: Record<string, ItemDbEntry>): readonly PopularUpgrade[];
   holdings(inventory: RawInventoryData | null, itemDb: Record<string, ItemDbEntry>): Holdings;
   owns(name: string, itemDb: Record<string, ItemDbEntry>, holdings: Holdings): boolean;
   build(
@@ -140,6 +142,37 @@ export function createNameIndex(
     source = itemDb;
     index = next;
     return index;
+  };
+}
+
+/** Focus nodes and set bonuses ride on mod rows but are never held; a riven
+ *  row is the unrolled placeholder, not a mod anyone can farm. */
+const NOT_COLLECTIBLE_TYPES = new Set(["Focus Way", "Mod Set Mod"]);
+const RIVEN_PLACEHOLDER = "/Upgrades/Mods/Randomized/";
+
+function collectible({ uniqueName, entry }: IndexEntry): boolean {
+  return !NOT_COLLECTIBLE_TYPES.has(entry.type ?? "") && !uniqueName.includes(RIVEN_PLACEHOLDER);
+}
+
+/** The popular list in its order, then every other upgrade the index holds by name. */
+export function createEntries(
+  popular: readonly PopularUpgrade[],
+  index: (itemDb: Record<string, ItemDbEntry>) => Map<string, IndexEntry>,
+): (itemDb: Record<string, ItemDbEntry>) => readonly PopularUpgrade[] {
+  let source: Record<string, ItemDbEntry> | null = null;
+  let entries: readonly PopularUpgrade[] = popular;
+  return (itemDb) => {
+    if (itemDb === source) return entries;
+    const listed = new Set(popular.map((entry) => entry.name.toLowerCase()));
+    const rest: PopularUpgrade[] = [];
+    for (const [key, hit] of index(itemDb)) {
+      if (listed.has(key) || !hit.entry.name || !collectible(hit)) continue;
+      rest.push({ name: hit.entry.name, count: 0, wikiUrl: "" });
+    }
+    rest.sort((a, b) => a.name.localeCompare(b.name));
+    source = itemDb;
+    entries = [...popular, ...rest];
+    return entries;
   };
 }
 
@@ -222,14 +255,15 @@ const VENDOR_NAMES: Record<UpgradeVendorId, MessageKey> = {
   archimedeanYonta: "nextUp.modVendorArchimedeanYonta",
   devilsTriad: "nextUp.modVendorDevilsTriad",
   temporalArchimedea: "nextUp.modVendorTemporalArchimedea",
+  roathe: "nextUp.modVendorRoathe",
 };
 
-function upgradeVendorName(source: UpgradeVendorSource, t: Translator): string {
+export function upgradeVendorName(source: UpgradeVendorSource, t: Translator): string {
   if (source.name) return source.name;
   return source.id ? t(VENDOR_NAMES[source.id]) : "";
 }
 
-function compactAmount(amount: number): string {
+export function compactAmount(amount: number): string {
   return amount >= 1000 ? `${Number((amount / 1000).toFixed(1))}k` : String(amount);
 }
 

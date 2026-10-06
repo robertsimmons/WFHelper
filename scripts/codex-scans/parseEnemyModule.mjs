@@ -16,21 +16,21 @@ function text(block, field) {
 
 // Each enemy's General block carries InternalName, Name and Scans in one brace
 // group; field order varies, so pluck fields independently per block. BaseLevel
-// sits in the sibling Stats block, still inside the slice this split produces.
+// sits in the sibling Stats block. A blank InternalName yields `internal: null`.
 export function parseEntries(lua, faction) {
   const entries = [];
   const blocks = lua.split(/General\s*=\s*\{/).slice(1);
   for (const block of blocks) {
-    const internal = /InternalName\s*=\s*"([^"]+)"/.exec(block)?.[1];
+    const internal = /^[ \t]*InternalName\s*=\s*"([^"]+)"/m.exec(block)?.[1] ?? null;
     const name = /\bName\s*=\s*"([^"]+)"/.exec(block)?.[1];
     const scans = /\bScans\s*=\s*(\d+)/.exec(block)?.[1];
     const image = /\bImage\s*=\s*"([^"]+)"/.exec(block)?.[1] ?? null;
-    if (!internal || !name || !scans) continue;
+    if (!name || (internal && !scans)) continue;
     const baseLevel = /\bBaseLevel\s*=\s*(\d+)/.exec(block)?.[1];
     entries.push({
       internal,
       name,
-      scans: Number(scans),
+      scans: scans ? Number(scans) : null,
       faction,
       image,
       planets: stringList(block, "Planets"),

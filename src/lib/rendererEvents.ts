@@ -13,6 +13,7 @@ import { currentView } from "../stores/app.js";
 import { inventoryData, inventoryModifiedAt, itemDb, parsedItems } from "../stores/data.js";
 import { masteryData } from "../stores/mastery.js";
 import { relicDb, relicOwnedCounts } from "../stores/relics.js";
+import { refreshSimulacrum } from "../stores/simulacrum.js";
 import { parseOwnedRelics } from "./relic.js";
 import { applyClosedWfmListing } from "../stores/market.js";
 import { addNotificationEntry, loadNotificationHistory } from "../stores/notifications.js";
@@ -58,6 +59,8 @@ export function initRendererEvents(): () => void {
     on("inventory-updated", async (data) => {
       if (data && !(data as { error?: unknown }).error) {
         await onInventoryLoaded(data);
+        // Codex scans ride the post-mission reload; the service rate-limits the fetch.
+        void refreshSimulacrum();
         // Main only pushes a status on watcher errors and source switches, so the
         // mtime behind this payload has to be pulled.
         await refreshInventoryModifiedAt();

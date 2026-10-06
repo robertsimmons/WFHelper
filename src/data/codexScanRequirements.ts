@@ -17,7 +17,18 @@ export const CODEX_SCAN_AVATARS = data.avatars as Record<string, { key: string; 
 // Profile-only scans from DE PublicExport, with mirrored DE or wiki art.
 export const CODEX_EXTRA_INFO = data.extraInfo as Record<
   string,
-  { name?: string; icon?: string; faction: string; scans?: number; eximusScans?: number }
+  {
+    name?: string;
+    icon?: string;
+    faction: string;
+    scans?: number;
+    eximusScans?: number;
+    /** ExportCodex section, or "plants"; absent on animals and enemies. */
+    section?: string;
+    /** Wiki fragment pages only. */
+    planet?: string;
+    wiki?: string;
+  }
 >;
 
 // Star-chart planets per faction, from DE's ExportRegions. Optional so an older
@@ -29,3 +40,25 @@ export const CODEX_FACTION_PLANETS: CodexFactionPlanets =
 // the same reason as above: an older generated table just states no hint.
 export const CODEX_TILE_SET_PLANETS: CodexTileSetPlanets =
   (data as { tileSetPlanets?: CodexTileSetPlanets }).tileSetPlanets ?? {};
+
+/** A combat node on the star chart. `tileSets` holds every name an enemy entry
+ *  may use for the node's wiki tileset, so it is empty when the wiki has no row. */
+export interface CodexStarChartNode {
+  /** ExportRegions key. */
+  key: string;
+  name: string;
+  planet: string;
+  missionType: string;
+  factions: string[];
+  tileSets: string[];
+  minEnemyLevel: number;
+  maxEnemyLevel: number;
+  /** A Proxima node, whose enemies only Railjack missions spawn. */
+  railjack?: true;
+  /** Off the star chart until something opens it (a nemesis showdown). */
+  hidden?: true;
+}
+
+// Relays, hubs, junctions, Conclave and Steel Path are left out at build.
+export const CODEX_STAR_CHART_NODES: CodexStarChartNode[] =
+  (data as { nodes?: CodexStarChartNode[] }).nodes ?? [];

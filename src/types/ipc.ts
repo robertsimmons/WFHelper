@@ -47,6 +47,7 @@ import type { RelicDatabase } from "./relics.js";
 import type { WorldState } from "./world.js";
 import type { HelperStatus } from "../../config/shared/apiHelperTypes.js";
 import type { CodexScansResult } from "../../config/shared/codexTypes.js";
+import type { CodexProgressRow } from "../../config/shared/codexScanProgress.js";
 import type { InventorySource } from "../../config/shared/inventorySource.js";
 import type { DisplayPreference, LinuxDisplayInfo } from "../../config/shared/linuxDisplay.js";
 import type {
@@ -706,6 +707,11 @@ export interface IpcInvokeMap {
   notifySelectionComplete: {
     args: [payload: { name: string; owned: number }];
     /** False when the payload failed validation, so a caller can log the drop. */
+    return: boolean;
+  };
+  reportCodexScanProgress: {
+    args: [payload: { fetchedAt: number; rows: CodexProgressRow[] }];
+    /** False for an invalid payload, no account, or data no newer than the snapshot. */
     return: boolean;
   };
 }

@@ -1,5 +1,6 @@
 import {
   commonCardFields,
+  createEntries,
   createNameIndex,
   parsePopularList,
   shippedModule,
@@ -83,6 +84,7 @@ export function buildModCard(
 export const MOD_CATALOG: UpgradeCatalog = {
   kind: "mods",
   popular: POPULAR_MODS,
+  entries: createEntries(POPULAR_MODS, modIndex),
   holdings: ownedModNames,
   owns: (name, _itemDb, holdings) => ownsMod(name, holdings),
   build: buildModCard,

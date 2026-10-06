@@ -40,6 +40,10 @@ function _loadAccountId(): string | null {
   return _accountId;
 }
 
+export function codexAccountId(): string | null {
+  return _loadAccountId();
+}
+
 /** Remember the account id seen in an inventory authz string. It never changes,
  * so persisting it keeps codex scans working while the game is closed. */
 export function noteAuthz(authz: string): void {
@@ -116,6 +120,11 @@ function _loadDiskCache(): void {
   } catch {
     // no cache yet
   }
+}
+
+export function cachedCodexScans(): { fetchedAt: number; scans: CodexScanEntry[] } | null {
+  _loadDiskCache();
+  return _cache;
 }
 
 export async function getCodexScans(refresh = false): Promise<CodexScansResult> {

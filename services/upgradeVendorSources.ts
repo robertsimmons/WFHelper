@@ -3,7 +3,7 @@ import type { UpgradeVendorCost, UpgradeVendorHub, UpgradeVendorId } from "./typ
 interface StoredVendorCost {
   amount: number;
   unit: UpgradeVendorCost["unit"];
-  /** The currency's uniqueName where `unit` is `item`. */
+  /** The currency's uniqueName where `unit` is `item` or `cred`. */
   currency?: string;
   credits?: number;
 }
@@ -69,7 +69,7 @@ const NAMED_MANIFESTS: Record<string, UpgradeVendorId> = {
   "Kahl/ChipperVendorManifest": "chipper",
   "Zariman/ArchimedeanVoidEclipseManifest": "archimedeanYonta",
   "Tau/Prequel/TriadEventVendorManifest": "devilsTriad",
-  "Tau/Prequel/TriadPityVendorManifest": "devilsTriad",
+  "Tau/Prequel/TriadPityVendorManifest": "roathe",
   "Tau/Prequel/TriadExchangeVendorManifest": "devilsTriad",
   "TheHex/Nova1999ConquestShopManifest": "temporalArchimedea",
 };
@@ -187,7 +187,7 @@ function offerCost(offer: PepVendorOffer): StoredVendorCost | undefined {
   if (prices.length === 1 && price?.ItemType && (price.ItemCount ?? 0) > 0) {
     const amount = price.ItemCount as number;
     return NIGHTWAVE_CREDS.test(price.ItemType)
-      ? { amount, unit: "cred" }
+      ? { amount, unit: "cred", currency: price.ItemType }
       : { amount, unit: "item", currency: price.ItemType };
   }
   if (prices.length === 0 && typeof offer.platinum === "number" && offer.platinum > 0) {
@@ -270,7 +270,7 @@ export function collectUpgradeVendorSources(
   const nameKey = tag ? syndicates[tag]?.name : undefined;
   const name = nameKey ? resolveName(nameKey) : null;
   if (tag && nameKey && name) {
-    const source: StoredVendorSource = { name, nameKey };
+    const source: StoredVendorSource = { name, nameKey, syndicate: tag };
     const shop = vendors[`${MANIFESTS}Events/${tag.replace(/Syndicate$/, "VendorManifest")}`];
     for (const offer of shop?.items ?? []) add(offer.storeItem, withCost(source, offerCost(offer)));
     for (const reward of nightwave?.rewards ?? []) add(reward.uniqueName, source);

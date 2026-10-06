@@ -56,7 +56,7 @@
         }),
   );
   const held = (count: number | null): string =>
-    count === null ? "" : $tr("nextUp.relicPackHeld", { count: count.toLocaleString() });
+    count === null ? "" : $tr("nextUp.vosforHeld", { amount: count.toLocaleString() });
   const steelCost = $derived($tr("nextUp.relicPackSteelCost", { count: String(STEEL_PACK_COST) }));
   const standingCost = compactCount(SYNDICATE_PACK_COST);
   const costTitle = $derived($tr("nextUp.relicPackCostTitle", { count: String(PACK_RELICS) }));
@@ -141,7 +141,7 @@
     onkeydown={onAyaKey}
   >
     <span class="{LINE} hover:bg-transparent">
-      <span class={LABEL}>{$tr("nextUp.relicPackAyaLabel")}</span>
+      <span class={LABEL}>{$tr("stats.aya")}</span>
       <span class="min-w-0 truncate text-text-primary">{held(summary.aya)}</span>
       <span class="ml-auto shrink-0 {TONE.quiet}" title={$tr("nextUp.relicPackVarziaTitle")}
         >{varziaLeft ?? $tr("nextUp.relicPackVarziaAway")}</span
@@ -206,7 +206,7 @@
   />
 {:else if open === "aya"}
   <RelicPayoutModal
-    title={$tr("nextUp.relicPackAyaLabel")}
+    title={$tr("stats.aya")}
     facts={[
       ...(summary.aya === null ? [] : [{ text: held(summary.aya), title: "Aya" }]),
       ...(varziaLeft

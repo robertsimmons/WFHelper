@@ -70,7 +70,8 @@ export type UpgradeVendorId =
   | "chipper"
   | "archimedeanYonta"
   | "devilsTriad"
-  | "temporalArchimedea";
+  | "temporalArchimedea"
+  | "roathe";
 
 export interface UpgradeVendorCost {
   amount: number;
@@ -79,6 +80,8 @@ export interface UpgradeVendorCost {
   item?: string;
   /** Baro also charges credits alongside ducats. */
   credits?: number;
+  /** The currency's uniqueName where `unit` is `item` or `cred`. */
+  currency?: string;
 }
 
 interface UpgradeVendorRank {
@@ -102,6 +105,9 @@ export interface UpgradeVendorSource {
   hub?: UpgradeVendorHub;
   /** @wfcd drop locations that are this purchase, not a drop. */
   covers?: string[];
+  /** The ExportSyndicates tag whose standing or rank the offer runs on. */
+  syndicate?: string;
+  nameKey?: string;
 }
 
 export interface ComponentEntry {

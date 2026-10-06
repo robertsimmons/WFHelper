@@ -85,14 +85,21 @@
     const next = ACQUISITION_INCLUDES.filter((kind) =>
       kind === include ? !selected.includes(kind) : selected.includes(kind),
     );
-    setSuggestionOption("acquisitionKinds", stored(next, ACQUISITION_INCLUDES));
+    // After "None" the other row is empty too, and a pick there would still show nothing.
+    setSuggestionOptions({
+      acquisitionKinds: stored(next, ACQUISITION_INCLUDES),
+      ...(next.length > 0 && sources.length === 0 ? { acquisitionSources: [] } : {}),
+    });
   }
 
   function toggleSource(source: PlanSource): void {
     const next = ACQUISITION_SOURCES.filter((entry) =>
       entry === source ? !sources.includes(entry) : sources.includes(entry),
     );
-    setSuggestionOption("acquisitionSources", stored(next, ACQUISITION_SOURCES));
+    setSuggestionOptions({
+      acquisitionSources: stored(next, ACQUISITION_SOURCES),
+      ...(next.length > 0 && selected.length === 0 ? { acquisitionKinds: [] } : {}),
+    });
   }
 
   const cleared = $derived(selected.length === 0 || sources.length === 0);

@@ -2,6 +2,7 @@
   import { tr } from "../../../lib/i18n.js";
   import { UPGRADE_TEXT, type UpgradeKind } from "../../../lib/suggest/upgrades.js";
   import { setSuggestionOption, suggestionPreferences } from "../../../stores/suggestionPrefs.js";
+  import UpgradeVendorFilters from "./UpgradeVendorFilters.svelte";
 
   interface Props {
     kind: UpgradeKind;
@@ -25,4 +26,5 @@
     {value}
     oninput={(event) => setSuggestionOption(option, event.currentTarget.value)}
   />
+  <UpgradeVendorFilters {kind} />
 </div>

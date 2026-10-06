@@ -74,7 +74,8 @@ export type UpgradeVendorId =
   | "chipper"
   | "archimedeanYonta"
   | "devilsTriad"
-  | "temporalArchimedea";
+  | "temporalArchimedea"
+  | "roathe";
 
 interface UpgradeVendorCost {
   amount: number;
@@ -82,6 +83,8 @@ interface UpgradeVendorCost {
   /** The currency's name where `unit` is `item`. */
   item?: string;
   credits?: number;
+  /** The currency's uniqueName where `unit` is `item` or `cred`. */
+  currency?: string;
 }
 
 interface UpgradeVendorRank {
@@ -105,6 +108,9 @@ export interface UpgradeVendorSource {
   hub?: UpgradeVendorHub;
   /** @wfcd drop locations that are this purchase, not a drop. */
   covers?: string[];
+  /** The ExportSyndicates tag whose standing or rank the offer runs on. */
+  syndicate?: string;
+  nameKey?: string;
 }
 
 export interface ComponentInfo {
@@ -218,7 +224,16 @@ export interface RawInventoryData {
   RawUpgrades?: RawInventoryEntry[];
   Upgrades?: RawInventoryEntry[];
   Arcanes?: RawInventoryEntry[];
+  /** Codex lore, Somachord and Frame Fighter progress. */
+  LoreFragmentScans?: RawLoreFragmentScan[];
   [key: string]: unknown;
+}
+
+export interface RawLoreFragmentScan {
+  ItemType?: unknown;
+  Progress?: unknown;
+  /** Language key of where the scans were made, empty when unknown. */
+  Region?: unknown;
 }
 
 export type InventoryGroup =

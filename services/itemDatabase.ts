@@ -980,6 +980,8 @@ function rendererVendorPlace(
     ...(source.keeper ? { keeper: source.keeper } : {}),
     ...(source.hub ? { hub: { ...source.hub } } : {}),
     ...(source.covers ? { covers: [...source.covers] } : {}),
+    ...(source.syndicate ? { syndicate: source.syndicate } : {}),
+    ...(source.nameKey ? { nameKey: source.nameKey } : {}),
   };
 }
 
@@ -998,14 +1000,15 @@ function rendererVendorSource(
   const out: UpgradeVendorSource = { ...who, ...rendererVendorPlace(source, localizing) };
   const cost = source.cost;
   if (!cost) return out;
+  const paidIn = cost.currency ? { currency: cost.currency } : {};
   if (cost.unit !== "item") {
     const credits = cost.credits ? { credits: cost.credits } : {};
-    return { ...out, cost: { amount: cost.amount, unit: cost.unit, ...credits } };
+    return { ...out, cost: { amount: cost.amount, unit: cost.unit, ...credits, ...paidIn } };
   }
   const currency = cost.currency ? itemsByUniqueName[cost.currency] : undefined;
   if (!currency?.name) return out;
   const item = localizing ? localizeName(currency.nameKey, currency.name) : currency.name;
-  return { ...out, cost: { amount: cost.amount, unit: "item", item } };
+  return { ...out, cost: { amount: cost.amount, unit: "item", item, ...paidIn } };
 }
 
 export function buildDatabase(): void {

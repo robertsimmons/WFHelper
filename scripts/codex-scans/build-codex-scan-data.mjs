@@ -8,6 +8,7 @@ import path from "node:path";
 import { fetchWikiRaw } from "../wiki-raw.mjs";
 import { buildFactionPlanets } from "./factionRegions.mjs";
 import { parseEntries } from "./parseEnemyModule.mjs";
+import { buildStarChartNodes } from "./starChartNodes.mjs";
 import { buildTileSetPlanets, selectTileSetPlanets } from "./tileSetPlanets.mjs";
 
 const FACTIONS = [
@@ -28,12 +29,15 @@ const FACTIONS = [
 const OUT_FILE = path.join(process.cwd(), "src", "data", "codexScanRequirements.json");
 
 const all = new Map();
+// Rows with no InternalName, keyed later by the DE avatars sharing their name.
+const blankRows = [];
 for (const faction of FACTIONS) {
   const entries = parseEntries(await fetchWikiRaw(`Module:Enemies/data/${faction}`), faction);
   if (entries.length === 0)
     throw new Error(`${faction}: no entries parsed - refusing to overwrite`);
   for (const entry of entries) {
-    if (!all.has(entry.internal)) all.set(entry.internal, entry);
+    if (!entry.internal) blankRows.push(entry);
+    else if (!all.has(entry.internal)) all.set(entry.internal, entry);
   }
   console.log(`${faction}: ${entries.length} entries`);
 }
@@ -51,7 +55,7 @@ const WIKI_IMAGE_OVERRIDES = {
   "Kavor Defector": "KavorDefector.png",
   "Senta Turret": "FortressAutoTurret.png",
 };
-for (const entry of all.values()) {
+for (const entry of [...all.values(), ...blankRows]) {
   if (entry.image && (entry.image === "?" || !entry.image.includes("."))) entry.image = null;
   const override = WIKI_IMAGE_OVERRIDES[entry.name];
   if (override) entry.image = override;
@@ -164,6 +168,7 @@ const SOLARIS_VENDORS = {
 const normFragmentName = (name) =>
   name.toLowerCase().replace(/[‘’]/g, "'").replace(/[–—]/g, "-").replace(/\s+/g, " ").trim();
 const fragmentImageByName = new Map();
+const fragmentWhereByName = new Map();
 for (const page of FRAGMENT_PAGES) {
   const text = await fetchWikiRaw(encodeURI(page));
   let parsedImages = 0;
@@ -179,6 +184,14 @@ for (const page of FRAGMENT_PAGES) {
     parsedImages += 1;
     const key = normFragmentName(name);
     if (!fragmentImageByName.has(key)) fragmentImageByName.set(key, image);
+    const planet = block
+      .match(/(?:^|\|)\s*planet\s*=\s*([^\n]+)/)?.[1]
+      ?.replace(/\[\[(?:[^\]|]*\|)?([^\]]*)\]\]/g, "$1")
+      .trim();
+    if (!fragmentWhereByName.has(key)) {
+      const wiki = `https://wiki.warframe.com/w/${encodeURI(page.replace(/ /g, "_"))}`;
+      fragmentWhereByName.set(key, { wiki, ...(planet ? { planet } : {}) });
+    }
   }
   if (parsedImages === 0)
     throw new Error(`${page}: no fragment artwork parsed - refusing to overwrite`);
@@ -195,6 +208,17 @@ function wikiFragmentImage(name) {
   return dash >= 0 ? (fragmentImageByName.get(key.slice(dash + 3)) ?? null) : null;
 }
 
+function wikiFragmentWhere(name) {
+  if (!name) return {};
+  const key = normFragmentName(name);
+  const dash = key.indexOf(" - ");
+  return (
+    fragmentWhereByName.get(key) ??
+    (dash >= 0 ? fragmentWhereByName.get(key.slice(dash + 3)) : undefined) ??
+    {}
+  );
+}
+
 const extras = new Map();
 const codexIconSources = new Set();
 const fragmentImagesUsed = new Set();
@@ -208,7 +232,16 @@ function resolveName(rawName) {
     : rawName || null;
 }
 
-function addExtra(key, rawName, icon, faction, reqScans, wikiImage = null, eximusScans = null) {
+function addExtra(
+  key,
+  rawName,
+  icon,
+  faction,
+  reqScans,
+  wikiImage = null,
+  eximusScans = null,
+  meta = {},
+) {
   if (all.has(key) || extras.has(key)) return;
   const name = resolveName(rawName);
   const resolved = icon ? deIconMirror(icon) : null;
@@ -221,6 +254,7 @@ function addExtra(key, rawName, icon, faction, reqScans, wikiImage = null, eximu
     faction,
     scans: Number.isFinite(reqScans) && reqScans > 0 ? reqScans : null,
     eximusScans: Number.isFinite(eximusScans) && eximusScans > 0 ? eximusScans : null,
+    ...meta,
   });
 }
 
@@ -241,13 +275,23 @@ for (const item of Object.values(readPep("ExportResources.json"))) {
   if (!name) continue;
   resourceIconByName.set(name, resourceIconByName.has(name) ? null : item.icon);
 }
+// A Frame Fighter entry ships no art of its own, only the frame it figures.
+const warframes = readPep("ExportWarframes.json");
 for (const [section, sectionEntries] of Object.entries(readPep("ExportCodex.json"))) {
   const faction = CODEX_SECTION_FACTION[section] || "objects";
   for (const [key, item] of Object.entries(sectionEntries || {})) {
-    const icon = item.icon ?? resourceIconByName.get(resolveName(item.name)) ?? null;
+    const icon =
+      item.icon ??
+      resourceIconByName.get(resolveName(item.name)) ??
+      warframes[item.suit]?.icon ??
+      null;
     const wikiImage =
       section === "loreFragments" && !icon ? wikiFragmentImage(resolveName(item.name)) : null;
-    addExtra(key, item.name, icon, faction, item.reqScans, wikiImage);
+    const where = section === "loreFragments" ? wikiFragmentWhere(resolveName(item.name)) : {};
+    addExtra(key, item.name, icon, faction, item.reqScans, wikiImage, null, {
+      section,
+      ...where,
+    });
   }
 }
 
@@ -274,7 +318,18 @@ for (const [scanName, itemName] of Object.entries(PLANT_ITEM_BY_SCAN_NAME)) {
     console.warn(`[codex] plant item missing from ExportResources: ${itemName}`);
     continue;
   }
-  addExtra(`/Lotus/Types/Items/Plants/${scanName}`, item.name, item.icon, "objects", null);
+  addExtra(
+    `/Lotus/Types/Items/Plants/${scanName}`,
+    item.name,
+    item.icon,
+    "objects",
+    null,
+    null,
+    null,
+    {
+      section: "plants",
+    },
+  );
 }
 
 // Enemy avatars no wiki entry reaches. One whose display name belongs to exactly
@@ -285,6 +340,37 @@ for (const entry of all.values()) {
   const key = entry.name.toLowerCase();
   wikiByName.set(key, wikiByName.has(key) ? null : entry.internal);
 }
+
+// A wiki row with no InternalName takes its key from the avatars DE names the
+// same way, its base avatar first, and its scans from DE when the wiki has none.
+const blankByName = new Map();
+for (const entry of blankRows) {
+  const key = entry.name.toLowerCase();
+  if (!wikiByName.has(key) && !blankByName.has(key)) blankByName.set(key, { entry, paths: [] });
+}
+for (const avatarPath of Object.keys(enemies.avatars).sort()) {
+  if (avatarOwners.has(avatarPath.toLowerCase())) continue;
+  const name = resolveName(enemies.avatars[avatarPath].name);
+  blankByName.get(name?.toLowerCase())?.paths.push(avatarPath);
+}
+let bridgedBlank = 0;
+for (const { entry, paths } of blankByName.values()) {
+  const bases = paths.filter((p) => !LEADER_PATH_RE.test(p));
+  const leaders = paths.filter((p) => LEADER_PATH_RE.test(p));
+  const scans = entry.scans || bases.map(statedScans).find(Boolean);
+  const key = bases[0] ?? (leaders[0] && baseAvatarPath(leaders[0]));
+  if (!key || !scans || all.has(key)) continue;
+  entry.internal = key;
+  entry.scans = scans;
+  const eximusScans = leaders.map(statedScans).find(Boolean);
+  if (eximusScans) entry.eximusScans = eximusScans;
+  all.set(entry.internal, entry);
+  wikiByName.set(entry.name.toLowerCase(), entry.internal);
+  for (const p of paths) claimAvatar(p, entry.internal, LEADER_PATH_RE.test(p));
+  bridgedBlank += 1;
+}
+console.log(`blank-internal wiki rows: ${bridgedBlank} of ${blankRows.length} keyed by avatar`);
+
 let bridgedByName = 0;
 const orphans = [];
 for (const [avatarPath, avatar] of Object.entries(enemies.avatars)) {
@@ -365,14 +451,37 @@ if (Object.keys(factionPlanets).length < 5)
 
 // 47 entries name a tileset but no planet; the wiki star chart says which planets
 // each tileset's nodes sit on, so the panel can still answer "where".
+const missionsLua = await fetchWikiRaw("Module:Missions/data");
 const { planets: tileSetPlanets, unmapped: unmappedTileSets } = selectTileSetPlanets(
-  buildTileSetPlanets(await fetchWikiRaw("Module:Missions/data")),
+  buildTileSetPlanets(missionsLua),
   sorted.flatMap((e) => e.tileSets ?? []),
 );
 if (Object.keys(tileSetPlanets).length < 20)
   throw new Error("too few tileset planet lists - refusing to overwrite");
 if (unmappedTileSets.length > 0)
   console.warn(`[codex] tilesets no star-chart node covers: ${unmappedTileSets.join(", ")}`);
+
+// The Simulacrum band picks the node to run, which needs more than planets.
+const { nodes, skipped: skippedNodes } = buildStarChartNodes(
+  readPep("ExportRegions.json"),
+  dictEn,
+  missionsLua,
+);
+if (nodes.length < 200) throw new Error(`only ${nodes.length} nodes - refusing to overwrite`);
+if (nodes.filter((node) => node.tileSets.length > 0).length < nodes.length / 2)
+  throw new Error("most nodes joined no wiki tileset - refusing to overwrite");
+const nodePlanets = new Set(nodes.map((node) => node.planet));
+const nodeTileSets = new Set(nodes.flatMap((node) => node.tileSets));
+const unplacedPlanets = [...new Set(sorted.flatMap((e) => e.planets ?? []))]
+  .filter((planet) => !nodePlanets.has(planet))
+  .sort();
+const unplacedTileSets = [...new Set(sorted.flatMap((e) => e.tileSets ?? []))]
+  .filter((tileSet) => !nodeTileSets.has(tileSet))
+  .sort();
+if (unplacedPlanets.length > 0)
+  console.warn(`[codex] planets no combat node sits on: ${unplacedPlanets.join(", ")}`);
+if (unplacedTileSets.length > 0)
+  console.warn(`[codex] tilesets no combat node uses: ${unplacedTileSets.join(", ")}`);
 
 const avatars = {};
 for (const [avatarPath, owner] of [...avatarOwners.entries()]
@@ -389,14 +498,20 @@ for (const [key, extra] of [...extras.entries()].sort(([a], [b]) => a.localeComp
     faction: extra.faction,
     ...(extra.scans ? { scans: extra.scans } : {}),
     ...(extra.eximusScans ? { eximusScans: extra.eximusScans } : {}),
+    ...(extra.section ? { section: extra.section } : {}),
+    ...(extra.planet ? { planet: extra.planet } : {}),
+    ...(extra.wiki ? { wiki: extra.wiki } : {}),
   };
 }
 
 fs.mkdirSync(path.dirname(OUT_FILE), { recursive: true });
 fs.writeFileSync(
   OUT_FILE,
-  JSON.stringify({ requirements, avatars, extraInfo, factionPlanets, tileSetPlanets }, null, 2) +
-    "\n",
+  JSON.stringify(
+    { requirements, avatars, extraInfo, factionPlanets, tileSetPlanets, nodes },
+    null,
+    2,
+  ) + "\n",
 );
 
 // Sidecars for the icon mirror: wiki image filenames the table references, and
@@ -419,6 +534,11 @@ console.log(
     `${withField("missions")} missions, ${withField("description")} descriptions`,
 );
 console.log(`tileset planets: ${Object.keys(tileSetPlanets).length} tilesets mapped`);
+console.log(
+  `star-chart nodes: ${nodes.length} kept (${nodes.filter((node) => node.railjack).length} railjack); ` +
+    `skipped ${skippedNodes.nonCombat} non-combat, ${skippedNodes.steelPath} steel path, ` +
+    `${skippedNodes.noFaction} with no codex faction`,
+);
 for (const [key, planets] of Object.entries(factionPlanets)) {
   console.log(`faction planets ${key}: ${planets.join(", ")}`);
 }

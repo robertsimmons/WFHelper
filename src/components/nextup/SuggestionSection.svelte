@@ -12,7 +12,9 @@
   } from "../../lib/suggest/grid.js";
   import { FLIGHT_MS } from "./cardFlight.js";
   import RelicPacksCard from "./RelicPacksCard.svelte";
+  import ScannableCard from "./ScannableCard.svelte";
   import SectionPager from "./SectionPager.svelte";
+  import SimulacrumCard from "./SimulacrumCard.svelte";
   import SuggestionCard from "./SuggestionCard.svelte";
   import UpgradeCard from "./UpgradeCard.svelte";
   import VosforCard from "./VosforCard.svelte";
@@ -157,6 +159,10 @@
             <VosforCard {suggestion} />
           {:else if suggestion.details?.relicPacks}
             <RelicPacksCard />
+          {:else if suggestion.details?.simulacrum}
+            <SimulacrumCard card={suggestion.details.simulacrum} />
+          {:else if suggestion.details?.scannable}
+            <ScannableCard entry={suggestion.details.scannable} />
           {:else if suggestion.details?.upgrade}
             <UpgradeCard
               {suggestion}

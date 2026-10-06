@@ -35,6 +35,7 @@
   import MasteryControls from "../components/nextup/controls/MasteryControls.svelte";
   import ModsControls from "../components/nextup/controls/ModsControls.svelte";
   import RelicsControls from "../components/nextup/controls/RelicsControls.svelte";
+  import SimulacrumControls from "../components/nextup/controls/SimulacrumControls.svelte";
   import TasksControls from "../components/nextup/controls/TasksControls.svelte";
   import { onInventoryLoaded } from "../lib/actions.js";
   import { tr } from "../lib/i18n.js";
@@ -59,6 +60,7 @@
   import { toggleUpgradePin, unpinUpgrades, upgradePins } from "../stores/upgradePins.js";
   import { priceCacheRevision } from "../stores/pricing.js";
   import { worldData } from "../stores/world.js";
+  import { refreshSimulacrum, scannables, simulacrum } from "../stores/simulacrum.js";
   import { suggestionPreferences } from "../stores/suggestionPrefs.js";
   import {
     completeTask,
@@ -85,6 +87,7 @@
     mods: ModsControls,
     arcanes: ArcanesControls,
     mastery: MasteryControls,
+    simulacrum: SimulacrumControls,
   };
 
   let settingsOpen = $state(false);
@@ -98,6 +101,7 @@
   // fetches while this tab is the one on screen.
   onMount(() => {
     ensureDropPools();
+    void refreshSimulacrum();
     return mountWorldPolling();
   });
 
@@ -126,6 +130,11 @@
   }
 
   function suggestionsFor(section: Section): Suggestion[] {
+    // Codex scans arrive over IPC, so the engine's feed never holds these.
+    if (section.id === "simulacrum") {
+      const category = options.scanCategory;
+      return category === "simulacrum" ? $simulacrum.suggestions : $scannables[category];
+    }
     const categories =
       section.id === "tasks" ? section.categories.filter(shows) : section.categories;
     const rows = categories.flatMap((category) => feed.sections[category]).sort(byScore);

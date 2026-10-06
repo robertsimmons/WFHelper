@@ -2,6 +2,7 @@ import { parseAmount } from "../inventory/entryNormalization.js";
 import { extractFingerprintRank } from "../inventory/rankExtraction.js";
 import {
   commonCardFields,
+  createEntries,
   createNameIndex,
   parsePopularList,
   shippedModule,
@@ -106,6 +107,7 @@ export function buildArcaneCard(
 export const ARCANE_CATALOG: UpgradeCatalog = {
   kind: "arcanes",
   popular: POPULAR_ARCANES,
+  entries: createEntries(POPULAR_ARCANES, arcaneIndex),
   holdings: arcaneCopies,
   owns: ownsArcane,
   build: buildArcaneCard,

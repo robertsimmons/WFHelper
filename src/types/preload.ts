@@ -307,6 +307,9 @@ export interface PreloadAPI {
   notifySelectionComplete: (
     payload: IpcInvokeMap["notifySelectionComplete"]["args"][0],
   ) => Promise<IpcInvokeMap["notifySelectionComplete"]["return"]>;
+  reportCodexScanProgress: (
+    payload: IpcInvokeMap["reportCodexScanProgress"]["args"][0],
+  ) => Promise<IpcInvokeMap["reportCodexScanProgress"]["return"]>;
 }
 
 export interface TradePreloadAPI {

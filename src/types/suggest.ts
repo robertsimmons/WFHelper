@@ -3,6 +3,8 @@ import type { AcquisitionInclude } from "../lib/suggest/acquisition/kinds.js";
 import type { AcquisitionSourcePick } from "../lib/suggest/acquisition/sources.js";
 import type { AcquisitionSort } from "../lib/suggest/acquisition/sort.js";
 import type { AcquisitionTarget, PlatPriceLookup } from "../lib/suggest/acquisition/types.js";
+import type { ScanCategory, ScannableEntry } from "../lib/suggest/scannables.js";
+import type { SimulacrumCard } from "../lib/suggest/simulacrum.js";
 import type { UpgradeCard } from "../lib/suggest/upgrades.js";
 import type { TrackerState } from "../lib/world/dailies.js";
 import type { DropRow } from "../../config/shared/dropTypes.js";
@@ -24,7 +26,8 @@ export type SuggestionCategory =
   | "acquisition"
   | "mods"
   | "arcanes"
-  | "mastery";
+  | "mastery"
+  | "simulacrum";
 
 export const SUGGESTION_CATEGORIES: readonly SuggestionCategory[] = [
   "daily",
@@ -36,6 +39,7 @@ export const SUGGESTION_CATEGORIES: readonly SuggestionCategory[] = [
   "mods",
   "arcanes",
   "mastery",
+  "simulacrum",
 ];
 
 /** The categories the Tasks section pools, in the order its boxes read. The
@@ -50,7 +54,8 @@ export type SuggestionSectionId =
   | "acquisition"
   | "mods"
   | "arcanes"
-  | "mastery";
+  | "mastery"
+  | "simulacrum";
 
 export interface SuggestionSection {
   id: SuggestionSectionId;
@@ -67,6 +72,7 @@ export const SUGGESTION_SECTIONS: readonly SuggestionSection[] = [
   { id: "mods", titleKey: "nextUp.sectionMods", categories: ["mods"] },
   { id: "arcanes", titleKey: "inventory.tab.arcanes", categories: ["arcanes"] },
   { id: "mastery", titleKey: "common.mastery", categories: ["mastery"] },
+  { id: "simulacrum", titleKey: "nextUp.sectionSimulacrum", categories: ["simulacrum"] },
 ];
 
 /** Worth ladder groups, best first. `unplaced` is where every resolved reward
@@ -112,8 +118,14 @@ export interface SuggestionOptions {
   modSearch: string;
   /** The arcanes section's twin of `modSearch`. */
   arcaneSearch: string;
+  /** Vendor filter ids the mods section narrows to; empty is no narrowing. */
+  modVendors: string[];
+  /** The arcanes section's twin of `modVendors`. */
+  arcaneVendors: string[];
   /** The Vosfor dissolve list keeps a max-rank set of each arcane back. */
   vosforKeepMax: boolean;
+  /** Which codex entries the scanning section lists. */
+  scanCategory: ScanCategory;
 }
 
 type ScoreWeightKey = "value" | "urgency" | "effort";
@@ -301,6 +313,10 @@ export interface SuggestionDetails {
   vosfor?: boolean | undefined;
   /** The relics band's lead card, the same way. */
   relicPacks?: boolean | undefined;
+  /** One place to run for codex scans; the section is fed outside the engine. */
+  simulacrum?: SimulacrumCard | undefined;
+  /** One codex entry the scanning section's other categories still miss. */
+  scannable?: ScannableEntry | undefined;
 }
 
 /** The facts a relic card and its modal both draw, rather than a sentence. */

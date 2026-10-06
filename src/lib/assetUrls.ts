@@ -119,6 +119,19 @@ export const PLANET_ICON_URLS = {
   duviri: new URL("../../assets/world-icons/zariman.webp", import.meta.url).href,
 } as const;
 
+/** By ExportRegions planet name; only the planets the world icons already draw. */
+export const STAR_CHART_PLANET_ART: Readonly<Record<string, string>> = {
+  Earth: PLANET_ICON_URLS.earth,
+  Venus: PLANET_ICON_URLS.vallis,
+  Deimos: PLANET_ICON_URLS.cambion,
+  "Zariman Ten Zero": new URL("../../assets/world-icons/zariman.webp", import.meta.url).href,
+};
+
+export const TILE_SET_ART: Readonly<Record<string, string>> = {
+  "Plains of Eidolon": new URL("../../assets/world-icons/cetus.webp", import.meta.url).href,
+  Cetus: new URL("../../assets/world-icons/cetus.webp", import.meta.url).href,
+};
+
 export const RELIC_ICON_URLS = {
   lith: new URL("../../assets/world-icons/relic-lith.png", import.meta.url).href,
   meso: new URL("../../assets/world-icons/relic-meso.png", import.meta.url).href,

@@ -219,3 +219,5 @@ export const POPOUT_CLOSE_ALL = "popout:close-all";
 export const POPOUT_STATE_CHANGED = "popout-state-changed";
 
 export const INVENTORY_SELECTION_COMPLETE = "inventory-selection-complete";
+
+export const CODEX_SCAN_PROGRESS = "codex-scan-progress";

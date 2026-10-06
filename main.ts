@@ -98,6 +98,7 @@ import * as notificationLogIpc from "./ipc/notificationLogIpc";
 import * as notificationChannelsIpc from "./ipc/notificationChannelsIpc";
 import * as marketAlertsIpc from "./ipc/marketAlertsIpc";
 import * as inventorySelectionIpc from "./ipc/inventorySelectionIpc";
+import * as codexScanProgressIpc from "./ipc/codexScanProgressIpc";
 import * as tradeWorkflow from "./ipc/tradeWorkflow";
 import * as tradeWorkbenchIpc from "./ipc/tradeWorkbenchIpc";
 import * as tradeLedgerIpc from "./ipc/tradeLedgerIpc";
@@ -473,6 +474,7 @@ function registerIpcHandlers(profileStage: ProfileStage): void {
   tradeLedgerIpc.register();
   popoutIpc.register();
   inventorySelectionIpc.register();
+  codexScanProgressIpc.register();
 
   const attachInventoryAfterHelperRun = (ok: boolean) => {
     if (!ok || ctx.currentInventoryPath) return;

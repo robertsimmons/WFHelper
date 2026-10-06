@@ -8,7 +8,7 @@ const SKIP_TYPES = new Set(["Conclave", "Hub", "Relay", "Solar Rail Junction"]);
 
 // Enemy-module names the mission table spells differently. Murex is absent on
 // purpose: no star-chart node uses it, so it stays unmapped rather than guessed.
-const TILE_SET_ALIASES = {
+export const TILE_SET_ALIASES = {
   "Kuva Fortress": "Grineer Asteroid Fortress",
   "The Undercroft": "Duviri",
 };

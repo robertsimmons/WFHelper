@@ -35,8 +35,10 @@ export function sectionNarrowed(id: SuggestionSectionId, options: SuggestionOpti
           narrowedList(options.acquisitionSources, ACQUISITION_SOURCES))
       );
     case "mods":
-      return options.modSearch.trim().length > 0;
+      return options.modSearch.trim().length > 0 || options.modVendors.length > 0;
     case "arcanes":
-      return options.arcaneSearch.trim().length > 0;
+      return options.arcaneSearch.trim().length > 0 || options.arcaneVendors.length > 0;
+    case "simulacrum":
+      return options.scanCategory !== "simulacrum";
   }
 }

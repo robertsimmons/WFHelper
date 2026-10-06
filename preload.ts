@@ -147,6 +147,7 @@ import {
   POPOUT_CLOSE_ALL,
   POPOUT_STATE_CHANGED,
   INVENTORY_SELECTION_COMPLETE,
+  CODEX_SCAN_PROGRESS,
   MARKET_ALERTS_CHANGED,
   MARKET_ALERTS_CLEAR_HITS,
   MARKET_ALERTS_DELETE,
@@ -381,6 +382,7 @@ try {
     setArbiScheduleLead: inv<"setArbiScheduleLead">(ARBI_SCHED_SET_LEAD),
 
     notifySelectionComplete: inv<"notifySelectionComplete">(INVENTORY_SELECTION_COMPLETE),
+    reportCodexScanProgress: inv<"reportCodexScanProgress">(CODEX_SCAN_PROGRESS),
   } satisfies PreloadAPI);
 
   contextBridge.exposeInMainWorld("tradeApi", {

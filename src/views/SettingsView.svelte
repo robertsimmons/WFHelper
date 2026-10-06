@@ -256,6 +256,7 @@
     tradeToast: "settings.channelSourceTrade",
     marketAlerts: "settings.channelSourceMarketAlerts",
     inventorySelections: "settings.channelSourceInventorySelections",
+    codexScans: "settings.channelSourceCodexScans",
   };
 
   // Shared list, so a source that gains a producer shows up here on its own.

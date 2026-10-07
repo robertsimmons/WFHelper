@@ -10,6 +10,7 @@ import {
 } from "../../../src/stores/inventorySelection.js";
 import { parsedItems } from "../../../src/stores/data.js";
 import { initStartup } from "../../../src/lib/startupLoader.js";
+import { tryLoadSnapshot } from "../../../src/lib/wfm/snapshotLoader.js";
 import type { ParsedItem } from "../../../src/types/inventory.js";
 
 const ipc = vi.hoisted(() => ({
@@ -213,5 +214,50 @@ describe("saved selection completion alerts", () => {
     items.set([makeItem(KEY, 4)]);
     await flush();
     expect(notifyCount()).toBe(1);
+  });
+});
+
+describe("periodic snapshot refresh", () => {
+  const REFRESH_MS = 2 * 60 * 60 * 1000;
+  const snapshotLoads = vi.mocked(tryLoadSnapshot);
+
+  beforeEach(() => {
+    vi.useFakeTimers();
+    snapshotLoads.mockReset();
+    snapshotLoads.mockResolvedValue(undefined);
+  });
+
+  afterEach(() => {
+    vi.useRealTimers();
+  });
+
+  it("reloads the snapshot every interval until disposed", async () => {
+    const { dispose } = initStartup({ ownsSharedCaches: false });
+    await vi.advanceTimersByTimeAsync(0);
+    expect(snapshotLoads).toHaveBeenCalledTimes(1);
+
+    await vi.advanceTimersByTimeAsync(REFRESH_MS);
+    expect(snapshotLoads).toHaveBeenCalledTimes(2);
+    await vi.advanceTimersByTimeAsync(REFRESH_MS);
+    expect(snapshotLoads).toHaveBeenCalledTimes(3);
+
+    dispose();
+    await vi.advanceTimersByTimeAsync(REFRESH_MS * 2);
+    expect(snapshotLoads).toHaveBeenCalledTimes(3);
+  });
+
+  it("skips a tick while the previous refresh is still running", async () => {
+    const { dispose } = initStartup({ ownsSharedCaches: false });
+    await vi.advanceTimersByTimeAsync(0);
+
+    const pending = deferred();
+    snapshotLoads.mockReturnValueOnce(pending.promise);
+    await vi.advanceTimersByTimeAsync(REFRESH_MS * 2);
+    expect(snapshotLoads).toHaveBeenCalledTimes(2);
+
+    pending.settle();
+    await vi.advanceTimersByTimeAsync(REFRESH_MS);
+    expect(snapshotLoads).toHaveBeenCalledTimes(3);
+    dispose();
   });
 });

@@ -16,12 +16,14 @@ const STARTUP_RELIC_WARMUP_DELAY_MS = 2500;
 const PRICE_CACHE_FLUSH_INTERVAL_MS = 30_000;
 const WFM_ITEMS_RETRY_BASE_MS = 30_000;
 const WFM_ITEMS_RETRY_MAX_MS = 300_000;
+// Matches SNAPSHOT_FRESH_MS; without it the price cache's TTL empties memory after ~2 days.
+const SNAPSHOT_REFRESH_INTERVAL_MS = 2 * 60 * 60 * 1000;
 
 /** Becomes true after startup attempts to restore the persisted price cache. */
 export const startupPriceCacheReady = writable(false);
 
 interface StartupHandle {
-  /** Call to cancel the startup warmup timer and price-cache flush interval. */
+  /** Call to cancel the startup warmup timer and the flush and snapshot refresh intervals. */
   dispose: () => void;
 }
 
@@ -37,6 +39,8 @@ export function initStartup(options: StartupOptions = {}): StartupHandle {
   let warmupTimer: ReturnType<typeof setTimeout> | null = null;
   let flushInterval: ReturnType<typeof setInterval> | null = null;
   let wfmItemsRetryTimer: ReturnType<typeof setTimeout> | null = null;
+  let snapshotRefreshInterval: ReturnType<typeof setInterval> | null = null;
+  let snapshotRefreshing = false;
   const startupStartedAt = Date.now();
 
   const profileStage = (label: string, startedAt: number): void => {
@@ -180,6 +184,15 @@ export function initStartup(options: StartupOptions = {}): StartupHandle {
       }, PRICE_CACHE_FLUSH_INTERVAL_MS);
     }
 
+    // Every window, pop-outs included: each renderer holds its own price cache.
+    snapshotRefreshInterval = setInterval(() => {
+      if (snapshotRefreshing) return;
+      snapshotRefreshing = true;
+      void tryLoadSnapshot().finally(() => {
+        snapshotRefreshing = false;
+      });
+    }, SNAPSHOT_REFRESH_INTERVAL_MS);
+
     profileStage("total-renderer-startup-sequence", startupStartedAt);
   })();
 
@@ -210,6 +223,10 @@ export function initStartup(options: StartupOptions = {}): StartupHandle {
       if (wfmItemsRetryTimer) {
         clearTimeout(wfmItemsRetryTimer);
         wfmItemsRetryTimer = null;
+      }
+      if (snapshotRefreshInterval) {
+        clearInterval(snapshotRefreshInterval);
+        snapshotRefreshInterval = null;
       }
       if (typeof window !== "undefined") {
         window.removeEventListener("beforeunload", handleBeforeUnload);

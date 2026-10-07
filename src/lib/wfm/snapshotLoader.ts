@@ -19,6 +19,9 @@ const SNAPSHOT_FETCH_TIMEOUT_MS = 20_000;
 // The ETag applies only to repeated loads in one renderer session; a fresh disk
 // cache skips the network entirely.
 let _cachedEtag: string | null = null;
+// A 304 carries no body, and the in-memory caches may have evicted aged entries
+// since the last import, so the periodic refresh re-imports this instead.
+let _lastSnapshot: SnapshotBlob | null = null;
 
 // Object type alias (not interface) so it carries an implicit index signature
 // and is assignable to the Record<string, unknown> IPC payload type without a cast.
@@ -35,7 +38,7 @@ function isValidSnapshot(d: unknown): d is SnapshotBlob {
 }
 
 // Load a fresh disk snapshot or fetch one, then populate all in-memory caches.
-// Failures are logged and do not reject startup.
+// Failures are logged and never reject.
 export async function tryLoadSnapshot(): Promise<void> {
   if (!isBackendLiteConfigured()) return;
 
@@ -81,40 +84,46 @@ export async function tryLoadSnapshot(): Promise<void> {
         return;
       }
 
-      // 304 Not Modified: snapshot hasn't changed since the last fetch this session.
       if (response.status === 304) {
-        log.info("[Snapshot] 304 Not Modified - snapshot unchanged, skipping re-import");
-        return;
-      }
+        if (!_lastSnapshot) {
+          _cachedEtag = null;
+          log.info("[Snapshot] 304 Not Modified with no held snapshot - skipping re-import");
+          return;
+        }
+        snapshot = _lastSnapshot;
+        log.info("[Snapshot] 304 Not Modified - re-importing held snapshot");
+      } else {
+        let parsed: unknown;
+        try {
+          parsed = await response.json();
+        } catch {
+          if (staleMeta) importSetCatalogFromSnapshotMeta(staleMeta);
+          log.warn("[Snapshot] Failed to parse response JSON - skipping");
+          return;
+        }
 
-      let parsed: unknown;
-      try {
-        parsed = await response.json();
-      } catch {
-        if (staleMeta) importSetCatalogFromSnapshotMeta(staleMeta);
-        log.warn("[Snapshot] Failed to parse response JSON - skipping");
-        return;
-      }
+        if (!isValidSnapshot(parsed)) {
+          if (staleMeta) importSetCatalogFromSnapshotMeta(staleMeta);
+          log.warn("[Snapshot] Invalid snapshot shape - skipping");
+          return;
+        }
 
-      if (!isValidSnapshot(parsed)) {
-        if (staleMeta) importSetCatalogFromSnapshotMeta(staleMeta);
-        log.warn("[Snapshot] Invalid snapshot shape - skipping");
-        return;
-      }
+        snapshot = parsed;
 
-      snapshot = parsed;
+        // Store ETag for future conditional requests.
+        const etag = response.headers.get("etag");
+        if (etag) _cachedEtag = etag;
 
-      // Store ETag for future conditional requests.
-      const etag = response.headers.get("etag");
-      if (etag) _cachedEtag = etag;
-
-      // Persist to disk for next startup
-      try {
-        await invoke("saveSnapshotCache", snapshot);
-      } catch {
-        // non-fatal
+        // Persist to disk for next startup
+        try {
+          await invoke("saveSnapshotCache", snapshot);
+        } catch {
+          // non-fatal
+        }
       }
     }
+
+    _lastSnapshot = snapshot;
 
     const pCount = importCache(snapshot.prices);
     const mCount = importMetaFromSnapshot(snapshot.meta);
@@ -140,3 +149,10 @@ export async function tryLoadSnapshot(): Promise<void> {
     );
   }
 }
+
+export const __test__ = {
+  reset(): void {
+    _cachedEtag = null;
+    _lastSnapshot = null;
+  },
+};

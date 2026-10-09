@@ -14,18 +14,15 @@
     { "label": "Power Core build", "amount": "100,000 cr", "money": false }
   ],
   "materials": [
-    { "qty": "4,500", "label": "Nano Spores", "note": "Incubator Power Core" },
-    { "qty": "2", "label": "Control Module", "note": "Incubator Power Core" },
-    { "qty": "1", "label": "Argon Crystal", "note": "Incubator Power Core" },
-    { "qty": "2", "label": "Kubrow Egg", "note": null },
-    { "qty": "2", "label": "Incubator Power Core", "note": null }
+    { "qty": "1", "label": "Kubrow Egg", "note": null },
+    { "qty": "1", "label": "Incubator Power Core", "note": null }
   ],
   "groups": [
     {
       "type": "gate",
       "place": "ORBITER",
       "sub": null,
-      "activity": "Howl of the Kubrow, then Incubator access",
+      "activity": "Incubator access",
       "meta": "one-time",
       "mode": "solo only",
       "live": null,
@@ -37,19 +34,12 @@
         {
           "qty": null,
           "label": "Howl of the Kubrow",
-          "note": "gives the Incubator Segment",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "1",
-          "label": "free Companion Slot",
-          "note": "the Charger permanently occupies it",
+          "note": "unlocks the Incubator; no upgrade segment needed",
           "alt": null,
           "done": false
         }
       ],
-      "conditions": [],
+      "conditions": ["A Charger permanently occupies one Companion slot."],
       "bonuses": [],
       "disclosures": []
     },
@@ -58,7 +48,7 @@
       "place": "ORBITER",
       "sub": "Helminth Infirmary",
       "activity": "infect a Warframe with the Helminth Cyst",
-      "meta": "24h to appear, 7 days to mature",
+      "meta": "24h to appear, 6 more days to mature",
       "mode": null,
       "live": null,
       "skip": null,
@@ -69,51 +59,18 @@
         {
           "qty": "1",
           "label": "matured Helminth Cyst",
-          "note": "Nidus: sit in the Helminth chair once; no Helminth Segment needed",
-          "alt": "or stand near an infected Warframe in a mission, dojo or Orbiter",
+          "note": "Nidus or Nidus Prime: sit in the Helminth chair once",
+          "alt": "or get infected by another player's Warframe in a mission, dojo or Orbiter",
           "done": false
         }
       ],
       "conditions": [
-        "Start this first: the cyst shows 24 hours after infection and matures 6 days after that, on real time, while the frame sits in your arsenal.",
-        "A second sit in the chair removes the cyst, and choosing Remove cyst on any frame makes it permanently immune.",
-        "Relays don't spread the infection.",
-        "The Coda infection's pink growth is a different thing; only a matured Helminth Cyst unlocks Drain."
+        "Start this first: a pink cyst shows on the neck 24 hours after infection and is full size 6 days after that, shown by a tendril.",
+        "A second sit in the chair cures the cyst, and a cured Warframe can't be infected again. Cured cysts can't make a Charger."
       ],
       "bonuses": [
-        "Without Nidus, run public missions on a spare frame; infection spreads fast in public squads.",
-        "Draining doesn't cure the cyst, so the same frame can make more Chargers later."
+        "More than one Warframe can carry a cyst, and draining one doesn't cure it, so the same frame makes more Chargers later."
       ],
-      "disclosures": [
-        {
-          "title": "when the cyst never shows",
-          "body": "A cyst on Nidus can bug out: one player had the chair offering Remove cyst with no visible cyst after more than a week. The advice was to get a different frame infected by another player and use that one. The cyst is mature when a tendril sticks out of it."
-        }
-      ]
-    },
-    {
-      "type": "foundry",
-      "place": "FOUNDRY",
-      "sub": null,
-      "activity": "build Incubator Power Core",
-      "meta": "8h, 100,000 cr",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Helminth Charger",
-          "note": "1 Incubator Power Core",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": ["The blueprint is a reusable 50,000-credit Market purchase."],
-      "bonuses": [],
       "disclosures": []
     },
     {
@@ -138,19 +95,14 @@
         }
       ],
       "conditions": [
-        "Equip the infected frame, then press Drain at the start of incubation; once an egg is already incubating the option is gone and it hatches a normal Kubrow.",
+        "Equip the infected Warframe, choose Begin Incubation, then press Drain.",
         "Incubation is 48 hours, or 24 with the Nutrio Incubator Upgrade Segment.",
-        "If it won't equip after maturing (Missing Collar), relog or start any mission."
+        "A built Power Core is a reusable 50,000-credit Market blueprint, 100,000 credits and 8 hours a build."
       ],
       "bonuses": [
-        "It is the only companion that can use the Strain mod set. Its Helminth Claws level but give no Mastery."
+        "It is the only companion that uses the Strain mod set. Its Helminth Claws level but give no Mastery."
       ],
-      "disclosures": [
-        {
-          "title": "size is random",
-          "body": "Chargers roll different sizes, and a big one with the Strain set can stand taller than your Warframe. Rerolling takes another cyst drain, egg and core. It can't equip Mecha Overdrive even though it's classed as a Kubrow."
-        }
-      ]
+      "disclosures": []
     }
   ]
 }

@@ -4,18 +4,58 @@
   "effort": 8,
   "source": "standing",
   "tradeable": "blueprints only",
-  "progress": { "have": 0, "need": 1, "unit": "companion" },
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "companion"
+  },
   "badges": [
-    { "text": "vanquish, never convert", "tone": "warn" },
-    { "text": "~1 in 3 per Sister", "tone": "info" }
+    {
+      "text": "vanquish, never convert",
+      "tone": "warn"
+    },
+    {
+      "text": "1 of 3 Models",
+      "tone": "info"
+    }
   ],
   "prices": [
-    { "label": "gild", "amount": "5,000 cr", "money": false },
-    { "label": "Bhaira Model, if built", "amount": "50,000 cr", "money": false }
+    {
+      "label": "gild",
+      "amount": "5,000 standing",
+      "money": false
+    },
+    {
+      "label": "Bhaira Model, if built",
+      "amount": "50,000 cr",
+      "money": false
+    }
+  ],
+  "routes": [
+    {
+      "name": "Vanquish a Sister whose Hound has the Bhaira Model",
+      "cost": "a free prebuilt Hound; one Zenith Granum Crown per Sister",
+      "effort": 8,
+      "role": "chosen"
+    },
+    {
+      "name": "Build it from the Bhaira Model blueprint",
+      "cost": "50,000 cr and 24h for the Model, plus Core, Bracket and Stabilizer blueprints from other Sisters, 4,000 cr at Legs",
+      "effort": 9,
+      "role": null
+    }
   ],
   "materials": [
-    { "qty": "8", "label": "Zenith Granum Crown", "note": null },
-    { "qty": "10,000", "label": "Credits", "note": null }
+    {
+      "qty": "3",
+      "label": "Zenith Granum Crown",
+      "note": "one per Sister run"
+    },
+    {
+      "qty": "85,000",
+      "label": "Credits",
+      "note": "Solaris United rank-ups"
+    }
   ],
   "groups": [
     {
@@ -31,7 +71,13 @@
       "spends": [],
       "map": null,
       "rows": [
-        { "qty": null, "label": "The War Within", "note": null, "alt": null, "done": false },
+        {
+          "qty": null,
+          "label": "The War Within",
+          "note": null,
+          "alt": null,
+          "done": false
+        },
         {
           "qty": null,
           "label": "Call of the Tempestarii",
@@ -42,29 +88,26 @@
         {
           "qty": null,
           "label": "The Deadlock Protocol",
-          "note": "needed for Granum Crowns",
+          "note": "Granum Crowns only appear after it",
           "alt": null,
           "done": false
         },
-        { "qty": null, "label": "Mastery Rank 5", "note": null, "alt": null, "done": false },
+        {
+          "qty": null,
+          "label": "Mastery Rank 5",
+          "note": null,
+          "alt": null,
+          "done": false
+        },
         {
           "qty": null,
           "label": "Railjack, Intrinsics rank 3",
           "note": "for the Neptune Proxima confrontation",
           "alt": null,
           "done": false
-        },
-        {
-          "qty": "2",
-          "label": "free Companion Slot",
-          "note": "one for the Hound, one for its Model weapon",
-          "alt": null,
-          "done": false
         }
       ],
-      "conditions": [
-        "Legs does not sell Hound parts; her standing list is MOA parts only, and she just assembles and gilds."
-      ],
+      "conditions": ["Legs does not sell Hound parts; he only assembles and gilds."],
       "bonuses": [],
       "disclosures": []
     },
@@ -84,13 +127,13 @@
         {
           "qty": "3",
           "label": "Requiem mods, one full sequence",
-          "note": "also 5% from any Hound kill",
-          "alt": "or 10 Riven Slivers each at Palladino",
+          "note": "any Hound kill also drops a Requiem relic 5% of the time",
+          "alt": null,
           "done": false
         }
       ],
       "conditions": [
-        "Each Sister needs her own three-Requiem sequence, guessed in the right order before she can be vanquished."
+        "Each Sister needs her own three-Requiem sequence, equipped in the right order before she can be vanquished."
       ],
       "bonuses": [],
       "disclosures": []
@@ -100,9 +143,9 @@
       "place": "HYDRA, PLUTO",
       "sub": null,
       "activity": "Capture, then the Granum Void",
-      "meta": "a handful of Sisters",
+      "meta": "a Sister per attempt",
       "mode": "solo, normal, not Steel Path",
-      "live": { "state": "waiting", "text": "Sister at 40% influence, 3 nodes" },
+      "live": null,
       "skip": null,
       "earns": null,
       "spends": [],
@@ -118,43 +161,74 @@
       ],
       "conditions": [
         "Vanquish, never convert: a converted Sister hands over no Hound and no component blueprint.",
-        "Roughly 1 in 3 Sisters carry a Bhaira-headed Hound if the three Models are weighted equally (unconfirmed); a handful of Sisters is typical.",
-        "The Hound a vanquished Sister mails you arrives fully built but ungilded.",
+        "Her Hound's Model is rolled when she is created, one of three.",
         "A Parazon Mercy on the downed Candidate is what creates the Sister in the first place.",
-        "The Treasurer despawns if you take too long, and its Zenith crown is consumed on every Granum Void entry."
+        "The Treasurer escapes if you take too long, and a crown is spent on every Granum Void entry."
       ],
       "bonuses": [
         "Each vanquish also hands over her Tenet weapon, whatever Model her Hound carries.",
-        "If her Hound isn't Bhaira, the random component blueprint she drops is still tradeable toward a Bhaira Model build."
+        "If her Hound isn't Bhaira, the random component blueprint she drops is tradeable and can still go toward a Bhaira Model build.",
+        "Every squad member who vanquishes with her gets a random Hound component blueprint."
       ],
       "disclosures": [
         {
           "title": "the fast Sister loop",
-          "body": "Solo, normal, not Steel Path, Capture on Hydra, Pluto. A squad raises the kill requirement inside the Granum Void, so run it alone. Waypoint a gold hand first, kill the capture target, then come back and insert the Zenith crown; if no hand has shown up halfway through the tile, restart, and a hand within roughly 200m of extraction can mean the Candidate never spawns. Inside the Void the spawn cap is about 20 enemies and nothing new arrives until that batch is dead, so stay on top of them with a chaining or nuking weapon. Equip the Xoris: heavy-attack the Granum ghosts to charge it, then detonate on the captured Solaris target for a large time extension, and kill Parvos units for the time triangles they drop. Kill the Treasurer every cycle for the next crown, and hit Replay on the white end screen to re-run instantly."
+          "body": "Solo, normal, not Steel Path, Capture on Hydra, Pluto. A squad raises the kill requirement inside the Granum Void by 25 per player, so run it alone. Waypoint a Golden Hand Tribute first, kill the capture target, then come back and offer the Zenith crown; if no Tribute has shown up halfway through the tile, restart, and a Tribute within roughly 200m of extraction can mean the Candidate never spawns. Inside the Void, Xoris heavy attacks charge it; detonating it on a captive Solaris adds 20 seconds, and Specter Particles add 5. Kill the Treasurer every cycle for the next crown, and hit Replay on the end screen to re-run."
         },
         {
           "title": "you don't need to build one",
-          "body": "Near-unanimous: the prebuilt Hound a vanquished Sister mails you works exactly the same as one you hand-build, including for Mastery once gilded. Watch which Model each new Sister's Hound carries before committing to the fight, and you may never touch the blueprint route. If you do build from a dropped blueprint, the Bhaira Model itself costs 50,000 credits, 5 Spectral Debris, 5 Gallium, 2 Marquise Thyst and 10 Eye-Eye Rotoblades over 24h, and still needs a Core, Bracket and Stabilizer, each its own Sister blueprint drop with its own Fortuna or Deimos resource list."
+          "body": "The prebuilt Hound a vanquished Sister leaves in your Foundry works exactly like one you build, including for Mastery once gilded. Check which Model each new Sister's Hound carries before committing to the fight. If you build from a dropped blueprint, the Bhaira Model costs 50,000 credits, 5 Spectral Debris, 5 Gallium, 2 Marquise Thyst and 10 Eye-Eye Rotoblades over 24h, and you still need a Core, Bracket and Stabilizer, each its own Sister blueprint drop."
         }
       ]
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "claim the Hound",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Bhaira Hound",
+          "note": "arrives fully built, ungilded",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Claiming needs two free Companion slots: one for the Hound and one for its Lacerten.",
+        "Check the Model before selling an unclaimed Hound for 20,000 credits."
+      ],
+      "bonuses": [],
+      "disclosures": []
     },
     {
       "type": "currency",
       "place": "ORB VALLIS, VENUS",
       "sub": null,
       "activity": "Conservation, plus Bounty 1 for the bonds",
-      "meta": "71,000 standing",
+      "meta": "76,000 standing",
       "mode": "solo, normal",
       "live": null,
       "skip": null,
-      "earns": { "currency": "Solaris United Standing", "amount": "71,000" },
+      "earns": {
+        "currency": "Solaris United Standing",
+        "amount": "76,000"
+      },
       "spends": [],
       "map": "orb-vallis",
       "rows": [
         {
-          "qty": "71,000",
+          "qty": "76,000",
           "label": "Solaris United standing",
-          "note": "Doer, to gild the claimed Hound",
+          "note": "71,000 for the rank-ups to Doer, 5,000 for the gild",
           "alt": "or sell raw gems to Smokefinger",
           "done": false
         },
@@ -197,29 +271,46 @@
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Solaris United Standing", "amount": "71,000" }],
+      "spends": [
+        {
+          "currency": "Solaris United Standing",
+          "amount": "71,000"
+        }
+      ],
       "map": "orb-vallis",
       "rows": [
         {
           "qty": null,
           "label": "Outworlder",
-          "note": "5,000 standing, 2 Training",
+          "note": "5,000 standing, 10,000 cr, 2 Training",
           "alt": null,
-          "done": false
+          "done": false,
+          "rank": {
+            "syndicate": "Solaris United",
+            "level": 1
+          }
         },
         {
           "qty": null,
           "label": "Rapscallion",
-          "note": "22,000 standing, 2 Training + 3 Shelter",
+          "note": "22,000 standing, 25,000 cr, 2 Training + 3 Shelter",
           "alt": null,
-          "done": false
+          "done": false,
+          "rank": {
+            "syndicate": "Solaris United",
+            "level": 2
+          }
         },
         {
           "qty": null,
           "label": "Doer",
-          "note": "44,000 standing, 2 Training + 3 Shelter + 4 Medical",
+          "note": "44,000 standing, 50,000 cr, 2 Training + 3 Shelter + 4 Medical",
           "alt": null,
-          "done": false
+          "done": false,
+          "rank": {
+            "syndicate": "Solaris United",
+            "level": 3
+          }
         }
       ],
       "conditions": [],
@@ -230,33 +321,32 @@
       "type": "vendor",
       "place": "LEGS, FORTUNA",
       "sub": null,
-      "activity": "claim, then gild at rank 30",
-      "meta": "5,000 cr now; 5,000 cr + 10 bonds later",
+      "activity": "gild at rank 30",
+      "meta": "5,000 standing + 10 bonds",
       "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [],
+      "spends": [
+        {
+          "currency": "Solaris United Standing",
+          "amount": "5,000"
+        }
+      ],
       "map": "orb-vallis",
       "rows": [
         {
           "qty": null,
-          "label": "Bhaira Hound, claimed",
-          "note": "fully built, ungilded, from the Foundry",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Bhaira, gilded",
-          "note": "and its Lacerten; 10 Training Debt-Bonds, 5,000 credits",
+          "label": "Bhaira Hound, gilded",
+          "note": "and its Lacerten; 10 Training Debt-Bonds, 5,000 standing",
           "alt": null,
           "done": false
         }
       ],
       "conditions": [
-        "Gilding needs Solaris United rank Doer, and resets rank to 0; the Mastery comes from the second 0-30 pass.",
-        "An ungilded Hound earns zero Mastery for its Model, whatever its stats."
+        "Level the Hound to rank 30 first. Gilding resets it to rank 0, and the Model's Mastery counts from the second climb.",
+        "An ungilded Hound earns no Mastery for its Model.",
+        "Mastery is per Model: once a gilded Hound with this Model hits 30, later ones with it give none."
       ],
       "bonuses": ["The Lacerten is its own Mastery entry on top of the Model."],
       "disclosures": []

@@ -15,11 +15,13 @@
   ],
   "materials": [
     { "qty": "60,000", "label": "Alloy Plate", "note": "Upgrade Segment" },
-    { "qty": "2", "label": "Argon Crystal", "note": "1 Upgrade Segment, 1 Incubator Power Core" },
-    { "qty": "4,500", "label": "Nano Spores", "note": "Incubator Power Core" },
-    { "qty": "2", "label": "Control Module", "note": "Incubator Power Core" },
-    { "qty": "30", "label": "Kavat Genetic Code", "note": null },
-    { "qty": "2", "label": "Incubator Power Core", "note": null },
+    { "qty": "1", "label": "Argon Crystal", "note": "Upgrade Segment" },
+    {
+      "qty": "20",
+      "label": "Kavat Genetic Code",
+      "note": "10 for the Upgrade Segment, 10 per incubation"
+    },
+    { "qty": "1", "label": "Incubator Power Core", "note": "per incubation" },
     { "qty": "115,000", "label": "Credits", "note": null }
   ],
   "groups": [
@@ -46,70 +48,14 @@
         {
           "qty": null,
           "label": "Mastery Rank 5",
-          "note": "to craft the Kavat Incubator Upgrade Segment",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "1",
-          "label": "free Companion Slot",
-          "note": "a kavat permanently occupies it",
+          "note": "to build the Kavat Incubator Upgrade Segment",
           "alt": null,
           "done": false
         }
       ],
-      "conditions": [
-        "The 10 codes used by the Upgrade Segment are consumed; they do not count toward the 10 needed to incubate a kavat.",
-        "The first Incubator Power Core comes from the Venus-to-Mercury Junction. Later attempts consume another crafted core."
-      ],
+      "conditions": ["A kavat permanently occupies one Companion slot."],
       "bonuses": [],
       "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "HOREND, DEIMOS",
-      "sub": null,
-      "activity": "Capture, scan live Feral Kavats",
-      "meta": "25% per scan",
-      "mode": "solo or full squad",
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": "cambion-drift",
-      "rows": [
-        {
-          "qty": null,
-          "label": "Cross-Matrix Widget",
-          "note": "45% chance for each scan to count twice",
-          "alt": "Cephalon Simaris standing",
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Vector-Thread Widget",
-          "note": "faster scanner use",
-          "alt": "Cephalon Simaris standing",
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Codes only come from scans that land while the Feral Kavat is alive; a corpse scan gives Simaris standing, never a code.",
-        "Sands of Inaros, if unfinished, spawns up to ~50 Feral Kavats on its second tomb trip. Stack drop boosters first: the quest can't be replayed.",
-        "Stack Steel Path (+100% drop chance) with a Resource Drop Chance Booster before farming; without any stack the grind is much worse.",
-        "Pack size is squad size plus one, but codes are personal: in a squad every player must scan every cat themselves.",
-        "Avoid ragdoll effects (Bastille, Strangledome, Spellbind) and wide-area kills. Sleep, slow, invisibility or Limbo Stasis preserves cats for scanning."
-      ],
-      "bonuses": [
-        "Dante's Noctua scans on a killing blow even after the Codex entry is complete, though it ignores Simaris widgets and needs the killing hit itself.",
-        "A full squad raises each pack to five cats."
-      ],
-      "disclosures": [
-        {
-          "title": "Synoid Heliocor is unreliable here",
-          "body": "Several players report the hammer stops giving codes once the Feral Kavat Codex entry is complete, likely because a one-hit kill doesn't register the scan. Don't build the farm around it; a sleep or stealth frame with a Synthesis Scanner is the safer pick."
-        }
-      ]
     },
     {
       "type": "vendor",
@@ -140,8 +86,8 @@
       "type": "foundry",
       "place": "FOUNDRY",
       "sub": null,
-      "activity": "build the Upgrade Segment and an Incubator Power Core",
-      "meta": "12h and 8h, 100,000 cr each",
+      "activity": "build the Upgrade Segment",
+      "meta": "12h, 100,000 cr",
       "mode": null,
       "live": null,
       "skip": null,
@@ -158,8 +104,7 @@
         }
       ],
       "conditions": [
-        "The reusable blueprint costs 50,000 credits in the Market. Do not spend resources building a core if the Junction freebie is still available.",
-        "A wrong Random Incubation result consumes another core as well as another 10 codes."
+        "The 10 codes the segment uses are spent building it; they do not count toward the 10 an incubation needs."
       ],
       "bonuses": [],
       "disclosures": []
@@ -169,7 +114,7 @@
       "place": "ORBITER",
       "sub": "Incubator",
       "activity": "Random Incubation",
-      "meta": "48h, 10 codes",
+      "meta": "48h, 10 codes + 1 core",
       "mode": null,
       "live": null,
       "skip": null,
@@ -180,25 +125,21 @@
         {
           "qty": null,
           "label": "Adarza Kavat",
-          "note": "roughly a coin flip against Smeeta, unconfirmed odds",
+          "note": "random result, Adarza or Smeeta",
           "alt": "use two Adarza Genetic Code Templates",
           "done": false
         }
       ],
       "conditions": [
-        "Random Incubation cannot be directed to Adarza. A Smeeta result has no pity protection and starts another 10-code attempt.",
-        "Two matching Adarza imprints replace the breed roulette but do not replace the 10 codes or Power Core.",
-        "Incubation is 48 hours, or 24 hours with the separate Nutrio Incubator Upgrade Segment; rushing costs 15 platinum."
+        "Random Incubation cannot be steered to Adarza; a Smeeta means another 10 codes and another Power Core.",
+        "Two Adarza imprints make Adarza far likelier, not certain, and still cost the 10 codes and a core.",
+        "Incubation is 48 hours, or 24 with the Nutrio Incubator Upgrade Segment; rushing costs 15 platinum.",
+        "A built Power Core is a reusable 50,000-credit Market blueprint, 100,000 credits and 8 hours a build."
       ],
       "bonuses": [
-        "Adarza imprints are tradeable. A mature kavat can make three, and each template has a reusable 50,000-credit blueprint with a 6-hour build time."
+        "Adarza imprints trade: a mature kavat can make three, 1.5 hours each. Empty templates come from a reusable 50,000-credit Market blueprint, 10,000 credits and 6 hours a build."
       ],
-      "disclosures": [
-        {
-          "title": "the coin flip favors you here",
-          "body": "Adarza is the breed most people are trying to avoid when they're farming for Smeeta, so the frustration threads (\"19 Adarzas before a Smeeta\") run the other direction. A random incubation is a reasonable gamble for this goal. Two matching imprints from a friend remove the gamble entirely and still only cost the standard 10 codes and one Power Core."
-        }
-      ]
+      "disclosures": []
     }
   ]
 }

@@ -1,10 +1,10 @@
 {
   "name": "Helios",
   "kind": "sentinel",
-  "effort": 5,
+  "effort": 2,
   "source": "dojo",
   "tradeable": false,
-  "progress": { "have": 0, "need": 1, "unit": "parts" },
+  "progress": { "have": 0, "need": 1, "unit": "blueprint" },
   "badges": [{ "text": "Energy Lab", "tone": "info" }],
   "prices": [
     { "label": "dojo blueprint", "amount": "15,000 cr", "money": false },
@@ -34,13 +34,13 @@
         {
           "qty": null,
           "label": "Helios Blueprint",
-          "note": "cheapest sentinel blueprint in the dojo",
-          "alt": null,
+          "note": "15,000 credits",
+          "alt": "or the built sentinel for 75 platinum",
           "done": false
         }
       ],
       "conditions": [
-        "Cephalon Simaris does not sell this. He sells Detect Vulnerability, the Helios precept mod, for 75,000 standing"
+        "Cephalon Simaris does not sell Helios. He sells Detect Vulnerability, its precept mod, for 75,000 standing."
       ],
       "bonuses": [],
       "disclosures": []
@@ -49,7 +49,7 @@
       "type": "foundry",
       "place": "FOUNDRY",
       "sub": null,
-      "activity": "then",
+      "activity": "build Helios",
       "meta": "24h, 5,000 cr",
       "mode": null,
       "live": null,
@@ -61,25 +61,16 @@
         {
           "qty": null,
           "label": "Helios",
-          "note": "10 Fieldron, 300 Oxium, 5,000 Ferrite, 1 Forma",
-          "alt": "or 75 p built from the Market",
+          "note": "5,000 cr, 10 Fieldron, 300 Oxium, 5,000 Ferrite, 1 Forma",
+          "alt": null,
           "done": false
         }
       ],
       "conditions": [
-        "Two companion slots go at claim time, one for Helios and one for the bundled Deconstructor. A single free slot is not enough",
-        "A Forma you build costs 35,000 credits, 1 Morphics, 1 Neural Sensors, 1 Neurodes, 1 Orokin Cell and 23h, so budget it before starting"
+        "Claiming needs two free Companion slots: one for Helios and one for its Deconstructor."
       ],
-      "bonuses": [
-        "Ships with the Deconstructor, a sentinel weapon usable only by Helios and Helios Prime",
-        "75 p for a built Helios skips the entire chain and is cheaper than rushing any part of it"
-      ],
-      "disclosures": [
-        {
-          "title": "Helios Prime is a different item",
-          "body": "Helios Prime is relic-farmed. Building Helios does not progress it."
-        }
-      ]
+      "bonuses": ["The Deconstructor is usable only by Helios and Helios Prime."],
+      "disclosures": []
     }
   ]
 }

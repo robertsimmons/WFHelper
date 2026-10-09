@@ -1,13 +1,17 @@
 {
   "name": "Cryotra",
   "kind": "robotic",
-  "effort": 4,
+  "effort": 5,
   "source": "standing",
   "tradeable": false,
-  "progress": { "have": 0, "need": 1, "unit": "blueprint" },
+  "progress": { "have": 0, "need": 1, "unit": "weapon" },
   "badges": [
-    { "text": "Old Mate required", "tone": "warn" },
-    { "text": "vendor only", "tone": "info" }
+    {
+      "text": "Rank 5 Old Mate",
+      "tone": "warn",
+      "rank": { "syndicate": "Solaris United", "level": 5 }
+    },
+    { "text": "10,000 standing blueprint", "tone": "info" }
   ],
   "prices": [
     { "label": "blueprint", "amount": "10,000 standing", "money": false },
@@ -18,15 +22,52 @@
     { "qty": "10", "label": "Heart Noctrul", "note": null },
     { "qty": "10", "label": "Eye-Eye Rotoblade", "note": null },
     { "qty": "5", "label": "Charamote Sagan Module", "note": null },
-    { "qty": "435,000", "label": "Credits", "note": null }
+    {
+      "qty": "435,000",
+      "label": "Credits",
+      "note": "385,000 for the rank-ups, 50,000 for the build"
+    }
   ],
   "groups": [
+    {
+      "type": "gate",
+      "place": "FORTUNA, VENUS",
+      "sub": null,
+      "activity": "finish Vox Solaris, then rank Solaris United to Old Mate",
+      "meta": "Rank 5",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Vox Solaris",
+          "note": "unlocks Legs' shop",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Solaris United Rank 5, Old Mate",
+          "note": "the climb from Neutral sacrifices 6 Training, 9 Shelter, 11 Medical, 10 Advances and 5 Familial Debt-Bonds",
+          "alt": "Debt-Bonds come from Fortuna bounties, Ticker and Profit-Taker drops",
+          "done": false,
+          "rank": { "syndicate": "Solaris United", "level": 5 }
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
     {
       "type": "currency",
       "place": "ORB VALLIS, VENUS",
       "sub": null,
-      "activity": "Conservation for Solaris United standing",
-      "meta": "~250,000 standing across 5 rank-ups plus the blueprint",
+      "activity": "Conservation or mining for Solaris United standing",
+      "meta": "250,000 standing",
       "mode": "solo",
       "live": null,
       "skip": null,
@@ -37,7 +78,7 @@
         {
           "qty": "240,000",
           "label": "rank-ups to Old Mate",
-          "note": "Rank 5; 5,000 / 22,000 / 44,000 / 70,000 / 99,000 per rank, plus Debt-Bonds and 385,000 credits",
+          "note": "5,000 / 22,000 / 44,000 / 70,000 / 99,000 per rank",
           "alt": null,
           "done": false
         },
@@ -50,48 +91,11 @@
         }
       ],
       "conditions": [
-        "The free vendor item at each rank-up can cover the Cryotra blueprint at Old Mate, but a pricier Rank 5 item is the better use of it."
+        "The free Rank 5 item from the standing vendors can cover this blueprint, but a pricier Rank 5 item is the better use of it."
       ],
-      "bonuses": [
-        "Ivara (Prowl) or Equinox/Titania with Sleep subsumed get reliable perfect captures; shooting from Archwing before the animal notices also works."
-      ],
-      "disclosures": [
-        {
-          "title": "before Old Mate",
-          "body": "The rarest lures, like Kubrodon, aren't purchasable until Old Mate; it shows up wild for roughly 2,000 standing in the meantime."
-        }
-      ],
+      "bonuses": [],
+      "disclosures": [],
       "ref": "Solaris United Standing"
-    },
-    {
-      "type": "bounty",
-      "place": "ORB VALLIS, VENUS",
-      "sub": null,
-      "activity": "farm Debt-Bonds for the rank-ups",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": "orb-vallis",
-      "rows": [
-        {
-          "qty": null,
-          "label": "Training, Shelter, Medical, Advances and Familial Debt-Bonds",
-          "note": "6 / 9 / 11 / 10 / 5 needed across all 5 rank-ups",
-          "alt": "Ticker's rotating stock",
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Check Ticker twice a day; rare bond tiers are the real bottleneck on the rank-up math."
-      ],
-      "bonuses": [
-        "Profit-Taker drops every Debt-Bond tier once that fight is available.",
-        "The Exploiter Orb (Thermia Fractures) drops gems to trade in for standing and doubles as a Charamote Sagan Module source."
-      ],
-      "disclosures": []
     },
     {
       "type": "vendor",
@@ -114,7 +118,7 @@
           "done": false
         }
       ],
-      "conditions": ["Untradeable; Legs is the only source."],
+      "conditions": [],
       "bonuses": [],
       "disclosures": []
     },
@@ -123,16 +127,24 @@
       "place": "FOUNDRY",
       "sub": null,
       "activity": "build Cryotra",
-      "meta": "1 day, 50,000 cr",
+      "meta": "24h, 50,000 cr",
       "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
       "spends": [],
       "map": null,
-      "rows": [{ "qty": null, "label": "Cryotra", "note": null, "alt": null, "done": false }],
-      "conditions": [],
-      "bonuses": ["Levels from shared Sentinel/MOA affinity; takes a Companion inventory slot."],
+      "rows": [
+        {
+          "qty": null,
+          "label": "Cryotra",
+          "note": "10 Esher Devar, 10 Heart Noctrul, 10 Eye-Eye Rotoblade, 5 Charamote Sagan Module",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Takes a Companion inventory slot."],
+      "bonuses": [],
       "disclosures": []
     }
   ]

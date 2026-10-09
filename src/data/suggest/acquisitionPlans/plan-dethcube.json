@@ -1,17 +1,17 @@
 {
   "name": "Dethcube",
   "kind": "sentinel",
-  "effort": 1,
+  "effort": 2,
   "source": "shop",
   "tradeable": false,
-  "progress": { "have": 0, "need": 1, "unit": "companion" },
+  "progress": { "have": 0, "need": 1, "unit": "blueprint" },
   "badges": [
     { "text": "2 companion slots", "tone": "warn" },
     { "text": "Energy Generator optional", "tone": "info" }
   ],
   "prices": [
     { "label": "blueprint", "amount": "100,000 cr", "money": false },
-    { "label": "rush build", "amount": "30 p", "money": false }
+    { "label": "built", "amount": "75 p", "money": false }
   ],
   "materials": [
     { "qty": "500", "label": "Alloy Plate", "note": null },
@@ -21,33 +21,6 @@
     { "qty": "115,000", "label": "Credits", "note": null }
   ],
   "groups": [
-    {
-      "type": "gate",
-      "place": "ORBITER",
-      "sub": null,
-      "activity": "Companion Slots",
-      "meta": "one-time",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "2",
-          "label": "free Companion Slots",
-          "note": "one for Dethcube, one for its Deth Machine Rifle",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "The build won't claim without two free slots; this is the step people forget."
-      ],
-      "bonuses": [],
-      "disclosures": []
-    },
     {
       "type": "vendor",
       "place": "MARKET",
@@ -65,7 +38,7 @@
           "qty": null,
           "label": "Dethcube Blueprint",
           "note": "100,000 credits",
-          "alt": null,
+          "alt": "or the built sentinel for 75 platinum",
           "done": false
         }
       ],
@@ -95,13 +68,14 @@
         }
       ],
       "conditions": [
-        "Vaporize and Assault Mode come installed already; Swift Deth no longer drops and can't be equipped alongside Assault Mode."
+        "Claiming needs two free Companion slots: one for Dethcube and one for its Deth Machine Rifle.",
+        "Vaporize comes installed; Swift Deth no longer drops, and Assault Mode replaces it."
       ],
       "bonuses": ["Rushing the build costs 30 platinum."],
       "disclosures": [
         {
-          "title": "Energy Generator, if you want the battery build",
-          "body": "Dethcube's other precept doesn't come with the Sentinel. Cephalon Simaris sells it for 75,000 standing, capped daily like any syndicate, so budget a few days of dailies unless you already have banked standing. It drops one Energy Orb per 10 kills Dethcube assists (15 at rank 0), so pair it with an AoE or chaining weapon such as Helstrum with Gas and Firestorm, or Tazicor; only weapon-assist kills count, not clone kills from Duplex Bond, and the HUD assist counter reads 0 if no attack precept is equipped."
+          "title": "Energy Generator, for the battery build",
+          "body": "Cephalon Simaris sells it for 75,000 standing, and it also trades. At max rank Dethcube drops an Energy Orb after assisting 10 kills (15 at rank 0), so pair it with a chaining or area weapon."
         }
       ]
     }

@@ -14,18 +14,15 @@
     { "label": "Power Core build, per roll", "amount": "100,000 cr", "money": false }
   ],
   "materials": [
-    { "qty": "4,500", "label": "Nano Spores", "note": "per Power Core" },
-    { "qty": "2", "label": "Control Module", "note": "per Power Core" },
-    { "qty": "1", "label": "Argon Crystal", "note": "per Power Core" },
-    { "qty": "2", "label": "Kubrow Egg", "note": null },
-    { "qty": "2", "label": "Incubator Power Core", "note": null }
+    { "qty": "1", "label": "Kubrow Egg", "note": "per incubation" },
+    { "qty": "1", "label": "Incubator Power Core", "note": "per incubation" }
   ],
   "groups": [
     {
       "type": "gate",
       "place": "ORBITER",
       "sub": null,
-      "activity": "Howl of the Kubrow, then Incubator access",
+      "activity": "Incubator access",
       "meta": "one-time",
       "mode": "solo only",
       "live": null,
@@ -37,49 +34,12 @@
         {
           "qty": null,
           "label": "Howl of the Kubrow",
-          "note": "after the Venus Junction, from the Codex; gives the Incubator Segment",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "1",
-          "label": "free Companion Slot",
-          "note": "a kubrow permanently occupies it",
+          "note": "unlocks the Incubator",
           "alt": null,
           "done": false
         }
       ],
-      "conditions": [
-        "During the quest's egg step dens drop eggs 100% of the time; that first hatch is still a random breed.",
-        "Maturing your first Kubrow unlocks the collar permanently for every later one."
-      ],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "foundry",
-      "place": "FOUNDRY",
-      "sub": null,
-      "activity": "build Incubator Power Core",
-      "meta": "8h, 100,000 cr",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Chesa Kubrow",
-          "note": "1 Incubator Power Core",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "The blueprint is a reusable 50,000-credit Market purchase; every incubation consumes a core, and the 100,000-credit build adds up over rerolls."
-      ],
+      "conditions": ["A kubrow permanently occupies one Companion slot."],
       "bonuses": [],
       "disclosures": []
     },
@@ -105,21 +65,17 @@
         }
       ],
       "conditions": [
-        "Roughly 1 in 5 per roll with no pity; a wrong breed means another egg, core and 48-hour wait.",
-        "Two Chesa imprints make Chesa the likely result, not a guaranteed one, and still consume an egg and core.",
-        "Don't pick the Helminth cyst Drain option; it guarantees a Helminth Charger, never a Chesa.",
-        "Incubation is 48 hours, or 24 with the Nutrio Incubator Upgrade Segment. Mature it manually in the Incubator before missions."
+        "A wrong breed means another egg, another Power Core and another 48 hours.",
+        "Two Chesa imprints make Chesa far likelier, not certain, and still cost an egg and a core.",
+        "Don't pick the Helminth cyst Drain option; it makes a Helminth Charger.",
+        "Incubation is 48 hours, or 24 with the Nutrio Incubator Upgrade Segment. Mature the pup in the Incubator before missions.",
+        "A built Power Core is a reusable 50,000-credit Market blueprint, 100,000 credits and 8 hours a build."
       ],
       "bonuses": [
-        "Chesa imprints are tradeable: a friend's Chesa gives up to two, 1.5 hours each. Empty templates come from a reusable 50,000-credit Market blueprint, 10,000 credits and 6 hours a build.",
-        "Its Chesa Claws level but give no Mastery; fur, size and eye color don't change stats."
+        "Chesa imprints trade: a mature Chesa makes up to two, 1.5 hours each. Empty templates come from a reusable 50,000-credit Market blueprint, 10,000 credits and 6 hours a build.",
+        "Its Chesa Claws level but give no Mastery."
       ],
-      "disclosures": [
-        {
-          "title": "switch to imprints after a miss or two",
-          "body": "One player rolled seven Huras in a row before switching to imprints; another took weeks to land a breed. The least painful order is Howl of the Kubrow first, a batch of eggs in one sitting, cores built in parallel, and a friend's Chesa imprints if the first couple of random rolls miss."
-        }
-      ]
+      "disclosures": []
     }
   ]
 }

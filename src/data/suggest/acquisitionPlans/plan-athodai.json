@@ -3,16 +3,40 @@
   "kind": "secondary",
   "effort": 6,
   "source": "railjack",
-  "tradeable": true,
-  "progress": { "have": 0, "need": 3, "unit": "parts" },
+  "tradeable": "blueprint and parts only",
+  "progress": {
+    "have": 0,
+    "need": 3,
+    "unit": "parts"
+  },
   "badges": [
-    { "text": "Railjack required", "tone": "warn" },
-    { "text": "no pity", "tone": "warn" }
+    {
+      "text": "Railjack required",
+      "tone": "warn"
+    },
+    {
+      "text": "no pity",
+      "tone": "warn"
+    }
   ],
-  "prices": [{ "label": "build", "amount": "20,000 cr", "money": false }],
+  "prices": [
+    {
+      "label": "build",
+      "amount": "20,000 cr",
+      "money": false
+    }
+  ],
   "materials": [
-    { "qty": "1", "label": "Orokin Cell", "note": null },
-    { "qty": "20,000", "label": "Credits", "note": null }
+    {
+      "qty": "5",
+      "label": "Orokin Cell",
+      "note": null
+    },
+    {
+      "qty": "20,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
     {
@@ -43,9 +67,7 @@
           "done": false
         }
       ],
-      "conditions": [
-        "Without Piloting 5 the Orokin Shield Derelict has no marker; some threads wrongly say rank 10."
-      ],
+      "conditions": ["Without Piloting 5 the Orokin Shield Derelict has no marker."],
       "bonuses": [],
       "disclosures": []
     },
@@ -85,13 +107,10 @@
         }
       ],
       "conditions": [
-        "Hack the terminal before finishing the mission if you like; the reward only counts once the mission completes.",
         "Point of Interest Cache A never drops Athodai; only the derelict's Cache B does.",
-        "Leaving before mission completion loses the roll, and there is no pity system for Railjack caches."
+        "The reward only counts once the mission completes, and Railjack caches have no pity system."
       ],
-      "bonuses": [
-        "Void Storms don't change the derelict odds, so open relics or roll Void Storm rewards in the same run."
-      ],
+      "bonuses": [],
       "disclosures": [
         {
           "title": "why Bifrost Echo",
@@ -104,14 +123,22 @@
       "place": "FOUNDRY",
       "sub": null,
       "activity": "build Athodai",
-      "meta": "20,000 cr, 1 Orokin Cell, 24h",
+      "meta": "24h",
       "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
       "spends": [],
       "map": null,
-      "rows": [{ "qty": null, "label": "Athodai", "note": null, "alt": null, "done": false }],
+      "rows": [
+        {
+          "qty": null,
+          "label": "Athodai",
+          "note": "20,000 cr, Barrel, Receiver, 5 Orokin Cell",
+          "alt": null,
+          "done": false
+        }
+      ],
       "conditions": [],
       "bonuses": [],
       "disclosures": []

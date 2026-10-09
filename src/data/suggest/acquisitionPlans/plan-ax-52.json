@@ -4,28 +4,83 @@
   "effort": 4,
   "source": "standing",
   "tradeable": false,
-  "progress": { "have": 0, "need": 1, "unit": "blueprint" },
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "blueprint"
+  },
   "badges": [
-    { "text": "Hex Rank 4", "tone": "warn" },
-    { "text": "no RNG", "tone": "info" }
+    {
+      "text": "Hex Rank 4",
+      "tone": "warn",
+      "rank": {
+        "syndicate": "The Hex",
+        "level": 4
+      }
+    },
+    {
+      "text": "no RNG",
+      "tone": "info"
+    }
   ],
   "prices": [
-    { "label": "rank-ups + blueprint", "amount": "171,000 standing", "money": false },
-    { "label": "build", "amount": "25,000 cr", "money": false }
+    {
+      "label": "rank-ups + blueprint",
+      "amount": "171,000 standing",
+      "money": false
+    },
+    {
+      "label": "build",
+      "amount": "25,000 cr",
+      "money": false
+    }
   ],
   "materials": [
-    { "qty": "115", "label": "Efervon Sample", "note": "rank-ups + build" },
-    { "qty": "100", "label": "Hollvanian Pitchweave Fragment", "note": "rank-ups + build" },
-    { "qty": "5", "label": "Experimental Arc-Relay", "note": "Rank 2" },
-    { "qty": "50", "label": "Techrot Chitin", "note": "Rank 4 + build" },
-    { "qty": "25", "label": "Necracoil", "note": "Rank 4" },
-    { "qty": "5", "label": "Techrot Motherboard", "note": "build" },
-    { "qty": "210,000", "label": "Credits", "note": null }
+    {
+      "qty": "115",
+      "label": "Efervon Sample",
+      "note": "rank-ups + build"
+    },
+    {
+      "qty": "100",
+      "label": "Hollvanian Pitchweave Fragment",
+      "note": "rank-ups + build"
+    },
+    {
+      "qty": "12",
+      "label": "Entrati Obols",
+      "note": "Rank 2"
+    },
+    {
+      "qty": "5",
+      "label": "Experimental Arc-Relay",
+      "note": "Rank 2"
+    },
+    {
+      "qty": "50",
+      "label": "Techrot Chitin",
+      "note": "Rank 4 + build"
+    },
+    {
+      "qty": "25",
+      "label": "Necracoil",
+      "note": "Rank 4"
+    },
+    {
+      "qty": "5",
+      "label": "Techrot Motherboard",
+      "note": "build"
+    },
+    {
+      "qty": "210,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
     {
       "type": "gate",
-      "place": "NECRALISK, THEN THE CODEX",
+      "place": "THE CODEX",
       "sub": null,
       "activity": "the 1999 quest chain",
       "meta": "unlocks Höllvania and The Hex",
@@ -38,22 +93,14 @@
       "rows": [
         {
           "qty": null,
-          "label": "Whispers in the Walls, then The Lotus Eaters",
-          "note": "needs Heart of Deimos and The New War",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
           "label": "The Hex",
-          "note": "unlocks Höllvania and The Hex syndicate",
+          "note": "needs The Duviri Paradox and The Lotus Eaters, which needs Whispers in the Walls",
           "alt": null,
           "done": false
         }
       ],
       "conditions": [
-        "The Hex also needs The Duviri Paradox, which is solo-only.",
-        "Starting The Hex locks you out of every other mission for about 90 minutes."
+        "Starting The Hex locks you out of every other activity for about 90 minutes."
       ],
       "bonuses": [],
       "disclosures": []
@@ -67,37 +114,61 @@
       "mode": "solo or group",
       "live": null,
       "skip": null,
-      "earns": { "currency": "The Hex Standing", "amount": "171,000" },
-      "spends": [{ "currency": "Höllars", "amount": "185,000" }],
-      "map": null,
+      "earns": {
+        "currency": "The Hex Standing",
+        "amount": "171,000"
+      },
+      "spends": [
+        {
+          "currency": "Höllars",
+          "amount": "185,000"
+        }
+      ],
+      "map": "hollvania",
       "rows": [
         {
           "qty": "5,000",
           "label": "Rank 1 Leftovers",
           "note": "10,000 Höllars, 15 Efervon Sample, 15 Hollvanian Pitchweave Fragment",
           "alt": null,
-          "done": false
+          "done": false,
+          "rank": {
+            "syndicate": "The Hex",
+            "level": 1
+          }
         },
         {
           "qty": "22,000",
           "label": "Rank 2 Fresh Slice",
           "note": "25,000 Höllars, 5 Experimental Arc-Relay, 12 Entrati Obols, 25 Hollvanian Pitchweave Fragment",
           "alt": null,
-          "done": false
+          "done": false,
+          "rank": {
+            "syndicate": "The Hex",
+            "level": 2
+          }
         },
         {
           "qty": "44,000",
           "label": "Rank 3 2-For-1",
           "note": "50,000 Höllars, one each of six 750-standing Hex Treasures",
           "alt": null,
-          "done": false
+          "done": false,
+          "rank": {
+            "syndicate": "The Hex",
+            "level": 3
+          }
         },
         {
           "qty": "70,000",
           "label": "Rank 4 Hot & Fresh",
           "note": "100,000 Höllars, 25 Techrot Chitin, 25 Necracoil, 40 Efervon Sample",
           "alt": null,
-          "done": false
+          "done": false,
+          "rank": {
+            "syndicate": "The Hex",
+            "level": 4
+          }
         }
       ],
       "conditions": [
@@ -107,12 +178,7 @@
       "bonuses": [
         "Hex Treasures don't count against the cap until turned in to Leticia, so bank them on days you don't play, and keep one of each 750-standing type for the Rank 3 sacrifice."
       ],
-      "disclosures": [
-        {
-          "title": "where the pain actually is",
-          "body": "There is no RNG here. The wall is the daily standing cap (about 21,000 at MR10) against 171,000 total needed for the rank-ups plus the blueprint, so roughly 8+ capped days at minimum. Höllvania is widely called the least grindy syndicate; most players report maxing it in a week or two."
-        }
-      ],
+      "disclosures": [],
       "ref": "The Hex Standing"
     },
     {
@@ -125,7 +191,12 @@
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "The Hex Standing", "amount": "30,000" }],
+      "spends": [
+        {
+          "currency": "The Hex Standing",
+          "amount": "30,000"
+        }
+      ],
       "map": null,
       "rows": [
         {
@@ -133,7 +204,11 @@
           "label": "AX-52 Blueprint",
           "note": "30,000 standing",
           "alt": null,
-          "done": false
+          "done": false,
+          "rank": {
+            "syndicate": "The Hex",
+            "level": 4
+          }
         }
       ],
       "conditions": [],
@@ -162,16 +237,8 @@
         }
       ],
       "conditions": [],
-      "bonuses": [
-        "Primary Crux gives hip-fire 100% ammo efficiency, stacking with the AX-52's own +60% hip-fire bonus; aimed headshots with Primary Acuity is the alternative build.",
-        "Biotic Rounds, its exclusive augment, cycles through Nightwave Cred Offerings; wait for it instead of paying platinum."
-      ],
-      "disclosures": [
-        {
-          "title": "missing arcane slot",
-          "body": "If you haven't unlocked Steel Path and hold no Primary Arcane Adapter, the arcane slot is hidden by design, not a bug."
-        }
-      ]
+      "bonuses": [],
+      "disclosures": []
     }
   ]
 }

@@ -4,15 +4,50 @@
   "effort": 2,
   "source": "shop",
   "tradeable": false,
-  "progress": { "have": 0, "need": 1, "unit": "weapon" },
-  "badges": [{ "text": "MR 5", "tone": "info" }],
-  "prices": [{ "label": "blueprint", "amount": "30,000 cr", "money": false }],
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "weapon"
+  },
+  "badges": [
+    {
+      "text": "MR 5",
+      "tone": "info"
+    }
+  ],
+  "prices": [
+    {
+      "label": "blueprint",
+      "amount": "30,000 cr",
+      "money": false
+    }
+  ],
   "materials": [
-    { "qty": "2", "label": "Argon Crystal", "note": null },
-    { "qty": "1,500", "label": "Salvage", "note": null },
-    { "qty": "1,300", "label": "Polymer Bundle", "note": null },
-    { "qty": "800", "label": "Rubedo", "note": null },
-    { "qty": "90,000", "label": "Credits", "note": null }
+    {
+      "qty": "2",
+      "label": "Argon Crystal",
+      "note": null
+    },
+    {
+      "qty": "1,500",
+      "label": "Salvage",
+      "note": null
+    },
+    {
+      "qty": "1,300",
+      "label": "Polymer Bundle",
+      "note": null
+    },
+    {
+      "qty": "800",
+      "label": "Rubedo",
+      "note": null
+    },
+    {
+      "qty": "90,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
     {
@@ -28,11 +63,15 @@
       "spends": [],
       "map": null,
       "rows": [
-        { "qty": null, "label": "Atomos Blueprint", "note": null, "alt": null, "done": false }
+        {
+          "qty": null,
+          "label": "Atomos Blueprint",
+          "note": null,
+          "alt": null,
+          "done": false
+        }
       ],
-      "conditions": [
-        "Build a second Atomos if you also want Twin Basolk - crafting it consumes one."
-      ],
+      "conditions": ["Twin Basolk consumes an Atomos, so build a second one if you want it."],
       "bonuses": [],
       "disclosures": []
     },

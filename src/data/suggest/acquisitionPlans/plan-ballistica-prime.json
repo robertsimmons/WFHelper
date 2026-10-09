@@ -1,13 +1,28 @@
 {
   "name": "Ballistica Prime",
   "kind": "secondary",
-  "effort": 5,
+  "effort": 8,
   "source": "relics",
   "tradeable": true,
-  "progress": { "have": 0, "need": 5, "unit": "parts" },
-  "badges": [],
+  "progress": {
+    "have": 0,
+    "need": 5,
+    "unit": "parts"
+  },
+  "badges": [
+    {
+      "text": "vaulted",
+      "tone": "warn"
+    }
+  ],
   "prices": [],
-  "materials": [{ "qty": "15,000", "label": "Credits", "note": null }],
+  "materials": [
+    {
+      "qty": "15,000",
+      "label": "Credits",
+      "note": null
+    }
+  ],
   "groups": [
     {
       "type": "fissure",
@@ -25,47 +40,45 @@
         {
           "qty": null,
           "label": "Ballistica Prime Blueprint",
-          "note": "Axi B10, Rare: 10% Radiant",
+          "note": "Axi B10 or Lith B2 or Lith B3 or Lith B5 or Lith B6 or Meso B7, Rare: 10% Radiant",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Ballistica Prime Lower Limb",
-          "note": "Lith S20, Common: 25.33% Intact",
+          "note": "Axi K5 or Axi V6 or Lith O1 or Meso A1 or Meso M3 or Neo B5 or Neo H3, Common: 25.33% Intact; Meso E8, Uncommon: 20% Radiant",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Ballistica Prime Upper Limb",
-          "note": "Neo H5, Uncommon: 20% Radiant",
+          "note": "Axi M3 or Axi N14 or Lith T1 or Lith V5 or Meso S8 or Neo N10, Uncommon: 20% Radiant",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Ballistica Prime Receiver",
-          "note": "Neo N25, Uncommon: 20% Radiant",
+          "note": "Lith S20, Common: 25.33% Intact; Lith P2 or Lith R1 or Meso P1 or Neo H2 or Neo L1 or Neo S7, Uncommon: 20% Radiant",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Ballistica Prime String",
-          "note": "Neo H5, Uncommon: 20% Radiant",
+          "note": "Neo N25, Common: 25.33% Intact; Axi A4 or Meso G1 or Meso R1 or Neo A6, Uncommon: 20% Radiant",
           "alt": null,
           "done": false
         }
       ],
-      "conditions": [],
+      "conditions": [
+        "Ballistica Prime is vaulted: its relics no longer drop from missions.",
+        "Vaulted relics and the parts themselves still trade between players."
+      ],
       "bonuses": [],
-      "disclosures": [
-        {
-          "title": "also in vaulted relics",
-          "body": "Blueprint: Lith B2, Lith B3, Lith B5, Lith B6, Meso B7; Lower Limb: Lith O1, Meso A1, Meso M3, Neo B5, Neo H3, Axi K5, Axi V6; Upper Limb: Lith T1, Lith V5, Meso S8, Neo N10, Axi M3; Receiver: Lith P2, Lith R1, Meso P1, Neo H2, Neo L1, Neo S7; String: Meso G1, Meso R1, Neo A6, Axi A4."
-        }
-      ]
+      "disclosures": []
     },
     {
       "type": "foundry",

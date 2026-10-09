@@ -4,21 +4,59 @@
   "effort": 2,
   "source": "shop",
   "tradeable": false,
-  "progress": { "have": 0, "need": 1, "unit": "weapon" },
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "weapon"
+  },
   "badges": [
-    { "text": "Tellurium farm", "tone": "warn" },
-    { "text": "Argon decays", "tone": "warn" }
+    {
+      "text": "Tellurium farm",
+      "tone": "warn"
+    },
+    {
+      "text": "Argon decays",
+      "tone": "warn"
+    }
   ],
   "prices": [
-    { "label": "blueprint", "amount": "25,000 cr", "money": false },
-    { "label": "build", "amount": "20,000 cr", "money": false }
+    {
+      "label": "blueprint",
+      "amount": "25,000 cr",
+      "money": false
+    },
+    {
+      "label": "build",
+      "amount": "20,000 cr",
+      "money": false
+    }
   ],
   "materials": [
-    { "qty": "230", "label": "Oxium", "note": null },
-    { "qty": "13,250", "label": "Salvage", "note": null },
-    { "qty": "3", "label": "Tellurium", "note": null },
-    { "qty": "2", "label": "Argon Crystal", "note": null },
-    { "qty": "45,000", "label": "Credits", "note": null }
+    {
+      "qty": "230",
+      "label": "Oxium",
+      "note": null
+    },
+    {
+      "qty": "13,250",
+      "label": "Salvage",
+      "note": null
+    },
+    {
+      "qty": "3",
+      "label": "Tellurium",
+      "note": null
+    },
+    {
+      "qty": "2",
+      "label": "Argon Crystal",
+      "note": null
+    },
+    {
+      "qty": "45,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
     {
@@ -42,14 +80,9 @@
           "done": false
         }
       ],
-      "conditions": [],
+      "conditions": ["Mastery Rank 7 to equip."],
       "bonuses": [],
-      "disclosures": [
-        {
-          "title": "not the Prime",
-          "body": "Dual Keres Prime is a separate item with its own Mastery and its own relic farm; this plan is only for the base weapon."
-        }
-      ]
+      "disclosures": []
     },
     {
       "type": "foundry",

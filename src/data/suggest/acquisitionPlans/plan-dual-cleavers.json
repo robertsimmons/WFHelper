@@ -4,45 +4,57 @@
   "effort": 2,
   "source": "shop",
   "tradeable": false,
-  "progress": { "have": 0, "need": 1, "unit": "weapon" },
-  "badges": [{ "text": "MR 5", "tone": "info" }],
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "weapon"
+  },
+  "badges": [
+    {
+      "text": "MR 5",
+      "tone": "info"
+    }
+  ],
   "prices": [
-    { "label": "blueprint", "amount": "25,000 cr", "money": false },
-    { "label": "build", "amount": "20,000 cr", "money": false }
+    {
+      "label": "blueprint",
+      "amount": "25,000 cr",
+      "money": false
+    },
+    {
+      "label": "build",
+      "amount": "20,000 cr",
+      "money": false
+    }
   ],
   "materials": [
-    { "qty": "800", "label": "Polymer Bundle", "note": null },
-    { "qty": "5", "label": "Gallium", "note": null },
-    { "qty": "1,000", "label": "Salvage", "note": null },
-    { "qty": "1,200", "label": "Alloy Plate", "note": null },
-    { "qty": "45,000", "label": "Credits", "note": null }
+    {
+      "qty": "800",
+      "label": "Polymer Bundle",
+      "note": null
+    },
+    {
+      "qty": "5",
+      "label": "Gallium",
+      "note": null
+    },
+    {
+      "qty": "1,000",
+      "label": "Salvage",
+      "note": null
+    },
+    {
+      "qty": "1,200",
+      "label": "Alloy Plate",
+      "note": null
+    },
+    {
+      "qty": "45,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
-    {
-      "type": "gate",
-      "place": "MASTERY RANK",
-      "sub": null,
-      "activity": "reach Mastery Rank 5",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Mastery Rank 5",
-          "note": "the blueprint is locked behind it",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
     {
       "type": "vendor",
       "place": "MARKET",
@@ -53,7 +65,12 @@
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Credits", "amount": "25,000" }],
+      "spends": [
+        {
+          "currency": "Credits",
+          "amount": "25,000"
+        }
+      ],
       "map": null,
       "rows": [
         {
@@ -64,7 +81,7 @@
           "done": false
         }
       ],
-      "conditions": [],
+      "conditions": ["Mastery Rank 5 to equip."],
       "bonuses": [],
       "disclosures": []
     },

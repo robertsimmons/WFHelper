@@ -4,18 +4,90 @@
   "effort": 8,
   "source": "relics",
   "tradeable": true,
-  "progress": { "have": 0, "need": 3, "unit": "parts" },
-  "badges": [{ "text": "vaulted", "tone": "warn" }],
+  "progress": {
+    "have": 0,
+    "need": 3,
+    "unit": "parts"
+  },
+  "badges": [
+    {
+      "text": "vaulted",
+      "tone": "warn"
+    }
+  ],
   "prices": [],
-  "materials": [{ "qty": "15,000", "label": "Credits", "note": null }],
+  "materials": [
+    {
+      "qty": "15,000",
+      "label": "Credits",
+      "note": null
+    }
+  ],
   "groups": [
+    {
+      "type": "currency",
+      "place": "CAMBION DRIFT, DEIMOS",
+      "sub": "Necralisk",
+      "activity": "Level 40-60 bounty, final stage",
+      "meta": "43.48% per final stage",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Aya",
+          "note": "1 per relic; bank it before the window opens",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": [],
+      "ref": "Aya"
+    },
+    {
+      "sub": "Varzia",
+      "activity": "buy the Dual Keres Prime relics she stocks, 1 Aya each",
+      "meta": "only while Dual Keres Prime is in Prime Resurgence",
+      "mode": null,
+      "live": {
+        "state": "blocked",
+        "text": "vaulted; only during her Prime Resurgence"
+      },
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Dual Keres Prime relics",
+          "note": "buy extra Blueprint relics: every one carries it as the Rare",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Her stock rotates away; relics and Aya you hold never expire.",
+        "Vaulted relics and the parts themselves still trade between players."
+      ],
+      "bonuses": ["Varzia is also in the Market's Prime Resurgence tab."],
+      "disclosures": [],
+      "type": "vendor",
+      "place": "MAROO'S BAZAAR, MARS"
+    },
     {
       "type": "fissure",
       "place": "ANY VOID FISSURE",
       "sub": null,
-      "activity": "crack the matching vaulted relics",
-      "meta": "Blueprint is the bottleneck",
-      "mode": null,
+      "activity": "crack the Dual Keres Prime relics",
+      "meta": "Blueprint is the Rare",
+      "mode": "Radiant radshare for the Rares",
       "live": null,
       "skip": null,
       "earns": null,
@@ -45,10 +117,12 @@
         }
       ],
       "conditions": [
-        "Dual Keres Prime is vaulted: its relics no longer drop from missions.",
-        "Vaulted relics and the parts themselves still trade between players."
+        "Refine Rare relics to Radiant (100 Void Traces each); leave Common relics Intact, since Radiant lowers their Common odds to 16.67%.",
+        "Mission rewards never drop Resurgence relics; Varzia is the only source."
       ],
-      "bonuses": [],
+      "bonuses": [
+        "Pick a teammate's identical reward at the reward screen; they get 5 bonus Void Traces."
+      ],
       "disclosures": []
     },
     {
@@ -75,6 +149,14 @@
       "conditions": [],
       "bonuses": [],
       "disclosures": []
+    }
+  ],
+  "routes": [
+    {
+      "name": "Varzia relics, as Dual Keres Prime",
+      "cost": "1 Aya a relic during her Prime Resurgence, Blueprint is the Rare, 12h build",
+      "effort": 8,
+      "role": "chosen"
     }
   ]
 }

@@ -4,20 +4,69 @@
   "effort": 2,
   "source": "dojo",
   "tradeable": false,
-  "progress": { "have": 0, "need": 1, "unit": "weapon" },
-  "badges": [{ "text": "Energy Lab", "tone": "warn" }],
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "weapon"
+  },
+  "badges": [
+    {
+      "text": "Energy Lab",
+      "tone": "warn"
+    },
+    {
+      "text": "MR 7",
+      "tone": "info"
+    }
+  ],
   "prices": [
-    { "label": "lab blueprint", "amount": "15,000 cr", "money": false },
-    { "label": "Cestra blueprint", "amount": "20,000 cr", "money": false }
+    {
+      "label": "lab blueprint",
+      "amount": "15,000 cr",
+      "money": false
+    },
+    {
+      "label": "Cestra blueprint",
+      "amount": "20,000 cr",
+      "money": false
+    }
   ],
   "materials": [
-    { "qty": "2", "label": "Fieldron", "note": null },
-    { "qty": "6,000", "label": "Nano Spores", "note": "3,000 per Cestra" },
-    { "qty": "2,400", "label": "Rubedo", "note": "1,200 per Cestra" },
-    { "qty": "8", "label": "Gallium", "note": "4 per Cestra" },
-    { "qty": "4", "label": "Neurodes", "note": "2 per Cestra" },
-    { "qty": "1", "label": "Forma", "note": null },
-    { "qty": "130,000", "label": "Credits", "note": null }
+    {
+      "qty": "2",
+      "label": "Fieldron",
+      "note": null
+    },
+    {
+      "qty": "6,000",
+      "label": "Nano Spores",
+      "note": "3,000 per Cestra"
+    },
+    {
+      "qty": "2,400",
+      "label": "Rubedo",
+      "note": "1,200 per Cestra"
+    },
+    {
+      "qty": "8",
+      "label": "Gallium",
+      "note": "4 per Cestra"
+    },
+    {
+      "qty": "4",
+      "label": "Neurodes",
+      "note": "2 per Cestra"
+    },
+    {
+      "qty": "1",
+      "label": "Forma",
+      "note": null
+    },
+    {
+      "qty": "130,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
     {
@@ -30,7 +79,12 @@
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Credits", "amount": "15,000" }],
+      "spends": [
+        {
+          "currency": "Credits",
+          "amount": "15,000"
+        }
+      ],
       "map": null,
       "rows": [
         {
@@ -61,8 +115,8 @@
         {
           "qty": "2",
           "label": "Cestra Blueprint",
-          "note": "one per Cestra",
-          "alt": "one free from the Jupiter to Europa Junction",
+          "note": "20,000 credits each, one per Cestra",
+          "alt": null,
           "done": false
         }
       ],
@@ -98,10 +152,7 @@
           "done": false
         }
       ],
-      "conditions": [
-        "Crafting fails if the two Cestras are your last two secondaries; keep another secondary such as a Lato.",
-        "Both Cestras are consumed. Rank one to 30 first so the Mastery is not lost."
-      ],
+      "conditions": ["Both Cestras are consumed. Rank one to 30 first so the Mastery is not lost."],
       "bonuses": [],
       "disclosures": []
     }

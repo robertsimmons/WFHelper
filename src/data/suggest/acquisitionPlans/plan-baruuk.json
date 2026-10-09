@@ -7,19 +7,33 @@
   "progress": { "have": 0, "need": 4, "unit": "parts" },
   "badges": [
     { "text": "Vox Solaris gate", "tone": "warn" },
-    { "text": "Circuit alt", "tone": "circuit" }
+    { "text": "Circuit week 11", "tone": "circuit" }
   ],
   "prices": [{ "label": "build", "amount": "70,000 cr", "money": false }],
+  "routes": [
+    {
+      "name": "Vox Solaris, Little Duck",
+      "cost": "91,000 Vox Solaris standing and 141,000 Solaris United standing for the Cove-rank materials",
+      "effort": 6,
+      "role": "chosen"
+    },
+    {
+      "name": "Duviri Circuit week 11",
+      "cost": "tiers 2, 5, 8 and 10 give every blueprint; the parts still need the Cove-rank materials",
+      "effort": 5,
+      "role": null
+    }
+  ],
   "materials": [
     { "qty": "2,850", "label": "Alloy Plate", "note": "Neuroptics" },
     { "qty": "3,250", "label": "Salvage", "note": "Chassis" },
     { "qty": "2,500", "label": "Ferrite", "note": "Systems" },
     { "qty": "1", "label": "Orokin Cell", "note": "Baruuk" },
-    { "qty": "2,400", "label": "Plastids", "note": "Hespazym Alloy refines" },
-    { "qty": "16", "label": "Morphics", "note": "Hespazym Alloy refines" },
     { "qty": "4", "label": "Sola Toroid", "note": "rank-up sacrifice + Neuroptics" },
     { "qty": "5", "label": "Vega Toroid", "note": "rank-up sacrifice + Chassis" },
     { "qty": "5", "label": "Calda Toroid", "note": "rank-up sacrifice + Systems" },
+    { "qty": "1", "label": "Gyromag Systems", "note": "rank-up to Agent" },
+    { "qty": "1", "label": "Atmo Systems", "note": "rank-up to Hand" },
     { "qty": "150", "label": "Hespazym Alloy", "note": "Neuroptics 50, Chassis 100" },
     { "qty": "5", "label": "Synathid Ecosynth Analyzer", "note": "Neuroptics" },
     { "qty": "5", "label": "Marquise Thyst", "note": "Chassis" },
@@ -137,33 +151,33 @@
           "qty": null,
           "label": "Baruuk Blueprint",
           "note": "5,000 standing, Rank 2 (Agent)",
-          "alt": "or Duviri Circuit tier 10, Baruuk's rotation week",
+          "alt": "or Duviri Circuit tier 10, week 11",
           "done": false
         },
         {
           "qty": null,
           "label": "Neuroptics Blueprint",
           "note": "5,000 standing, Rank 3 (Hand)",
-          "alt": "or Duviri Circuit tier 2, Baruuk's rotation week",
+          "alt": "or Duviri Circuit tier 2, week 11",
           "done": false
         },
         {
           "qty": null,
           "label": "Chassis Blueprint",
           "note": "5,000 standing, Rank 3 (Hand)",
-          "alt": "or Duviri Circuit tier 5, Baruuk's rotation week",
+          "alt": "or Duviri Circuit tier 5, week 11",
           "done": false
         },
         {
           "qty": null,
           "label": "Systems Blueprint",
           "note": "5,000 standing, Rank 3 (Hand)",
-          "alt": "or Duviri Circuit tier 8, Baruuk's rotation week",
+          "alt": "or Duviri Circuit tier 8, week 11",
           "done": false
         }
       ],
       "conditions": [
-        "Baruuk shares Circuit normal-mode week 11 with Garuda and Hildryn; the Circuit route skips the Vox Solaris standing but not the crafting materials below."
+        "Circuit week 11 skips the Vox Solaris standing but not the crafting materials below."
       ],
       "bonuses": [],
       "disclosures": []
@@ -184,21 +198,21 @@
         {
           "qty": null,
           "label": "Neuroptics",
-          "note": "15,000 cr, 3 Sola Toroid, 2,850 Alloy Plate",
+          "note": "15,000 cr, 3 Sola Toroid, 2,850 Alloy Plate, 50 Hespazym Alloy, 5 Synathid Ecosynth Analyzer",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Chassis",
-          "note": "15,000 cr, 3 Vega Toroid, 3,250 Salvage",
+          "note": "15,000 cr, 3 Vega Toroid, 3,250 Salvage, 100 Hespazym Alloy, 5 Marquise Thyst",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Systems",
-          "note": "15,000 cr, 3 Calda Toroid, 2,500 Ferrite",
+          "note": "15,000 cr, 3 Calda Toroid, 2,500 Ferrite, 10 Tromyzon Entroplasma, 5 Radiant Zodian",
           "alt": null,
           "done": false
         },

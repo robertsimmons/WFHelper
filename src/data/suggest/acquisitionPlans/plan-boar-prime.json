@@ -4,14 +4,60 @@
   "effort": 8,
   "source": "relics",
   "tradeable": true,
-  "progress": { "have": 0, "need": 4, "unit": "parts" },
-  "badges": [{ "text": "vaulted", "tone": "warn" }],
+  "progress": {
+    "have": 0,
+    "need": 4,
+    "unit": "parts"
+  },
+  "badges": [
+    {
+      "text": "vaulted",
+      "tone": "warn"
+    },
+    {
+      "text": "Prime Resurgence",
+      "tone": "info"
+    }
+  ],
   "prices": [],
   "materials": [
-    { "qty": "10", "label": "Orokin Cell", "note": null },
-    { "qty": "15,000", "label": "Credits", "note": null }
+    {
+      "qty": "10",
+      "label": "Orokin Cell",
+      "note": null
+    },
+    {
+      "qty": "15,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
+    {
+      "type": "gate",
+      "place": "MASTERY RANK",
+      "sub": null,
+      "activity": "reach MR 11 to build it",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Mastery Rank 11",
+          "note": "the Foundry won't craft it below this",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
     {
       "type": "fissure",
       "place": "ANY VOID FISSURE",
@@ -56,6 +102,7 @@
       ],
       "conditions": [
         "Boar Prime is vaulted: its relics no longer drop from missions.",
+        "Varzia sells vaulted relics for Aya only while Boar Prime is in the Prime Resurgence rotation.",
         "Vaulted relics and the parts themselves still trade between players."
       ],
       "bonuses": [],
@@ -66,7 +113,7 @@
       "place": "FOUNDRY",
       "sub": null,
       "activity": "build Boar Prime",
-      "meta": "12h, MR 11",
+      "meta": "12h",
       "mode": null,
       "live": null,
       "skip": null,

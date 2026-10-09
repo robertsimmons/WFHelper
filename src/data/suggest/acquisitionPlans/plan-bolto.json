@@ -4,22 +4,81 @@
   "effort": 2,
   "source": "shop",
   "tradeable": false,
-  "progress": { "have": 0, "need": 1, "unit": "weapon" },
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "weapon"
+  },
   "badges": [
-    { "text": "Market only", "tone": "info" },
-    { "text": "MR 7", "tone": "info" }
+    {
+      "text": "Market only",
+      "tone": "info"
+    },
+    {
+      "text": "MR 7",
+      "tone": "info"
+    }
   ],
   "prices": [
-    { "label": "blueprint", "amount": "15,000 cr", "money": false },
-    { "label": "build", "amount": "20,000 cr", "money": false }
+    {
+      "label": "blueprint",
+      "amount": "15,000 cr",
+      "money": false
+    },
+    {
+      "label": "build",
+      "amount": "20,000 cr",
+      "money": false
+    }
   ],
   "materials": [
-    { "qty": "800", "label": "Polymer Bundle", "note": null },
-    { "qty": "2", "label": "Orokin Cell", "note": null },
-    { "qty": "2", "label": "Neurodes", "note": null },
-    { "qty": "35,000", "label": "Credits", "note": null }
+    {
+      "qty": "800",
+      "label": "Polymer Bundle",
+      "note": null
+    },
+    {
+      "qty": "2",
+      "label": "Orokin Cell",
+      "note": null
+    },
+    {
+      "qty": "2",
+      "label": "Neurodes",
+      "note": null
+    },
+    {
+      "qty": "35,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
+    {
+      "type": "gate",
+      "place": "MASTERY RANK",
+      "sub": null,
+      "activity": "reach MR 7 to build it",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Mastery Rank 7",
+          "note": "the Foundry won't craft it below this",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
     {
       "type": "vendor",
       "place": "MARKET",
@@ -30,7 +89,12 @@
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [],
+      "spends": [
+        {
+          "currency": "Credits",
+          "amount": "15,000"
+        }
+      ],
       "map": null,
       "rows": [
         {
@@ -78,12 +142,7 @@
         "Akbolto consumes two Boltos and Hystrix one; rank a Bolto to 30 before it is consumed."
       ],
       "bonuses": [],
-      "disclosures": [
-        {
-          "title": "Lato count",
-          "body": "The wiki's Lato page says two Latos; the recipe data says one."
-        }
-      ]
+      "disclosures": []
     }
   ]
 }

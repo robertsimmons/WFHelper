@@ -5,18 +5,64 @@
   "source": "shop",
   "tradeable": false,
   "progress": { "have": 0, "need": 1, "unit": "weapon" },
-  "badges": [{ "text": "free from Junction", "tone": "info" }],
+  "badges": [{ "text": "Market", "tone": "info" }],
   "prices": [
     { "label": "blueprint", "amount": "15,000 cr", "money": false },
     { "label": "build", "amount": "25,000 cr", "money": false }
   ],
+  "routes": [
+    {
+      "name": "Market blueprint",
+      "cost": "15,000 cr blueprint, then a 25,000 cr build",
+      "effort": 2,
+      "role": "chosen"
+    },
+    {
+      "name": "Venus to Mercury Junction",
+      "cost": "free: a built Boltor with a weapon slot and Orokin Catalyst installed",
+      "effort": 2,
+      "role": null
+    }
+  ],
+  "materials": [
+    { "qty": "2", "label": "Neurodes", "note": null },
+    { "qty": "100", "label": "Alloy Plate", "note": null },
+    { "qty": "900", "label": "Salvage", "note": null },
+    { "qty": "600", "label": "Polymer Bundle", "note": null },
+    { "qty": "40,000", "label": "Credits", "note": null }
+  ],
   "groups": [
     {
-      "type": "gate",
-      "place": "VENUS TO MERCURY JUNCTION",
+      "type": "vendor",
+      "place": "MARKET",
       "sub": null,
-      "activity": "clear the Junction",
-      "meta": "Boltor arrives built",
+      "activity": "buy the blueprint",
+      "meta": "15,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Credits", "amount": "15,000" }],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Boltor Blueprint",
+          "note": "15,000 cr",
+          "alt": "free built Boltor from the Venus to Mercury Junction",
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build Boltor",
+      "meta": "24h",
       "mode": null,
       "live": null,
       "skip": null,
@@ -27,7 +73,7 @@
         {
           "qty": null,
           "label": "Boltor",
-          "note": "built, with a weapon slot and Orokin Catalyst installed",
+          "note": "25,000 cr, 2 Neurodes, 100 Alloy Plate, 900 Salvage, 600 Polymer Bundle",
           "alt": null,
           "done": false
         }
@@ -36,16 +82,7 @@
         "Rank it to 30 for the Mastery; the Boltace recipe consumes a Boltor, so rank first."
       ],
       "bonuses": [],
-      "disclosures": [
-        {
-          "title": "Junction tasks",
-          "body": "Vox Solaris, buying a Rhino blueprint from the Market for credits, starting a Rhino component in the Foundry, and defeating Jackal at Fossa. The Junction ends with the Volt Specter fight."
-        },
-        {
-          "title": "Market craft instead",
-          "body": "Blueprint 15,000 cr from the Market. Build 24h: 25,000 cr, 2 Neurodes, 100 Alloy Plate, 900 Salvage, 600 Polymer Bundle. Strictly worse than the Junction reward, which comes catalyzed with a free slot."
-        }
-      ]
+      "disclosures": []
     }
   ]
 }

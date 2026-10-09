@@ -3,22 +3,60 @@
   "kind": "primary",
   "effort": 4,
   "source": "standing",
-  "tradeable": false,
-  "progress": { "have": 0, "need": 1, "unit": "blueprint" },
+  "tradeable": "blueprint only",
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "blueprint"
+  },
   "badges": [
-    { "text": "Nights of Naberus only", "tone": "warn" },
-    { "text": "Railjack resources", "tone": "info" }
+    {
+      "text": "Nights of Naberus only",
+      "tone": "warn"
+    },
+    {
+      "text": "Railjack resources",
+      "tone": "info"
+    }
   ],
   "prices": [
-    { "label": "blueprint", "amount": "125 Mother Tokens", "money": false },
-    { "label": "build", "amount": "25,000 cr", "money": false }
+    {
+      "label": "blueprint",
+      "amount": "125 Mother Tokens",
+      "money": false
+    },
+    {
+      "label": "build",
+      "amount": "25,000 cr",
+      "money": false
+    }
   ],
   "materials": [
-    { "qty": "1,500", "label": "Titanium", "note": null },
-    { "qty": "1", "label": "Nullstones", "note": null },
-    { "qty": "800", "label": "Carbides", "note": null },
-    { "qty": "450", "label": "Isos", "note": null },
-    { "qty": "25,000", "label": "Credits", "note": null }
+    {
+      "qty": "1,500",
+      "label": "Titanium",
+      "note": null
+    },
+    {
+      "qty": "1",
+      "label": "Nullstones",
+      "note": null
+    },
+    {
+      "qty": "800",
+      "label": "Carbides",
+      "note": null
+    },
+    {
+      "qty": "450",
+      "label": "Isos",
+      "note": null
+    },
+    {
+      "qty": "25,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
     {
@@ -40,11 +78,16 @@
           "note": "Mother gives bounties in the Necralisk and out in the Cambion Drift",
           "alt": null,
           "done": false
+        },
+        {
+          "qty": null,
+          "label": "Mastery Rank 11",
+          "note": "to build it",
+          "alt": null,
+          "done": false
         }
       ],
-      "conditions": [
-        "Building needs Railjack access; without your own Railjack (Rising Tide), crew on someone else's, where pickups go to the whole squad."
-      ],
+      "conditions": ["Titanium, Isos and Nullstones come from Railjack missions."],
       "bonuses": [],
       "disclosures": []
     },
@@ -52,37 +95,29 @@
       "type": "currency",
       "place": "CAMBION DRIFT, DEIMOS",
       "sub": null,
-      "activity": "Mother's Tier 5 bounty, rerolled to Brute Force, solo",
-      "meta": "one or two runs",
+      "activity": "Mother's Tier 5 bounties",
+      "meta": null,
       "mode": "solo",
       "live": null,
       "skip": null,
-      "earns": { "currency": "Mother Token", "amount": "125" },
+      "earns": {
+        "currency": "Mother Token",
+        "amount": "125"
+      },
       "spends": [],
       "map": "cambion-drift",
       "rows": [
         {
           "qty": "125",
           "label": "Mother Token",
-          "note": "a T5 pays a bit over 100",
+          "note": null,
           "alt": "Grandmother's Mend the Family trade, or tokens found in the Drift",
           "done": false
         }
       ],
-      "conditions": [
-        "Do the bonus objective on every stage; clearing all of them adds an end roll."
-      ],
-      "bonuses": [
-        "Tokens never expire, so bank them any time of year and show up to Naberus ready.",
-        "Mother bounties also drop Aya.",
-        "Objectives scale with squad size but rewards don't, so solo is faster if you can handle it."
-      ],
-      "disclosures": [
-        {
-          "title": "the endless bounty",
-          "body": "Mother's bounty marked (Endless) runs 3 stages per cycle with rising level and payout; one player got 250-275 tokens over 4 cycles. It suits a newer player, but standard T5 Brute Force pays better per hour and a crash loses the streak. Skip Steel Path bounties unless geared; some Deimos Infested have harsh damage attenuation above level 60."
-        }
-      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": [],
       "ref": "Mother Token"
     },
     {
@@ -90,32 +125,33 @@
       "place": "DAUGHTER, NECRALISK",
       "sub": "Naberus Treats offerings",
       "activity": "buy the blueprint",
-      "meta": "early October into early November",
+      "meta": "Nights of Naberus, every October",
       "mode": null,
-      "live": { "state": "waiting", "text": "sold only during Nights of Naberus" },
+      "live": {
+        "state": "waiting",
+        "text": "sold only during Nights of Naberus"
+      },
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Mother Token", "amount": "125" }],
+      "spends": [
+        {
+          "currency": "Mother Token",
+          "amount": "125"
+        }
+      ],
       "map": "necralisk",
       "rows": [
         {
           "qty": null,
           "label": "Basmu Blueprint",
           "note": "125 Mother Tokens",
-          "alt": null,
+          "alt": "trade for it from another player",
           "done": false
         }
       ],
-      "conditions": [
-        "Nobody else sells it; out of season the only source is trading with another player, and missing the window means waiting a year."
-      ],
+      "conditions": ["Out of season the only source is trading with another player."],
       "bonuses": [],
-      "disclosures": [
-        {
-          "title": "ended sources",
-          "body": "Scarlet Spear, Orphix Venom, Gargoyle's Cry, Belly of the Beast, Eight Claw and Blood of Perita all sold it once and have ended."
-        }
-      ]
+      "disclosures": []
     },
     {
       "type": "foundry",
@@ -133,21 +169,14 @@
         {
           "qty": null,
           "label": "Basmu",
-          "note": "25,000 cr, 1,500 Titanium, 1 Nullstone",
+          "note": "25,000 cr, 1,500 Titanium, 800 Carbides, 450 Isos, 1 Nullstone",
           "alt": null,
           "done": false
         }
       ],
-      "conditions": [
-        "The wiki's rendered recipe box has shown inflated counts; the blueprint data above is the real recipe."
-      ],
+      "conditions": [],
       "bonuses": [],
-      "disclosures": [
-        {
-          "title": "Dreadful Killshot",
-          "body": "The Basmu augment most players build around was a Nightwave item and isn't needed for Mastery."
-        }
-      ]
+      "disclosures": []
     }
   ]
 }

@@ -9,7 +9,23 @@
     { "text": "vaulted", "tone": "warn" },
     { "text": "Prime Resurgence", "tone": "info" }
   ],
-  "prices": [{ "label": "set, player trade", "amount": "~50 p", "money": false }],
+  "prices": [],
+  "materials": [
+    { "qty": "8", "label": "Neurodes", "note": "Neuroptics" },
+    { "qty": "2", "label": "Nitain Extract", "note": "Neuroptics" },
+    { "qty": "1,050", "label": "Polymer Bundle", "note": "Neuroptics" },
+    { "qty": "3,750", "label": "Alloy Plate", "note": "Neuroptics" },
+    { "qty": "2", "label": "Tellurium", "note": "Chassis" },
+    { "qty": "4", "label": "Control Module", "note": "Chassis" },
+    { "qty": "1,200", "label": "Circuits", "note": "Chassis" },
+    { "qty": "4,250", "label": "Ferrite", "note": "Chassis" },
+    { "qty": "2", "label": "Argon Crystal", "note": "Systems" },
+    { "qty": "5", "label": "Gallium", "note": "Systems" },
+    { "qty": "1,675", "label": "Rubedo", "note": "Systems" },
+    { "qty": "5,250", "label": "Salvage", "note": "Systems" },
+    { "qty": "5", "label": "Orokin Cell", "note": "Baruuk Prime" },
+    { "qty": "70,000", "label": "Credits", "note": null }
+  ],
   "groups": [
     {
       "type": "currency",
@@ -34,8 +50,7 @@
       ],
       "conditions": [
         "Baruuk Prime is currently vaulted: no Baruuk relic drops from missions until a future Prime Resurgence rotation.",
-        "Aya is untradeable, but it has no cap and remains after the rotation ends.",
-        "Tier-5 Deimos pays Aya at 43.48% on the final stage and 28.57% on stages 2-3; clear bonus objectives because the final stage rolls twice."
+        "Aya is untradeable, but it has no cap and remains after the rotation ends."
       ],
       "bonuses": [],
       "disclosures": [],
@@ -77,13 +92,11 @@
         }
       ],
       "conditions": [
-        "These named relics were sold in the most recent Baruuk/Revenant rotation; confirm the current relic IDs in Varzia's shop before buying.",
-        "Prime Resurgence relics are Varzia-only. Their normal drop-table entries are replaced by Aya, so mission farming cannot produce them.",
-        "Buy any relics you may need before the rotation closes. Relics are tradeable and never expire."
+        "Prime Resurgence relics are Varzia-only: mission farming cannot produce them.",
+        "Relics are tradeable and never expire, so buy every one you need before the rotation closes."
       ],
       "bonuses": [
-        "Varzia is also accessible from the Orbiter Relic Segment or the Prime Resurgence Market tab.",
-        "A friend with spare Aya can buy tradeable relics for you."
+        "Varzia is also in the Orbiter Relic Segment and the Prime Resurgence Market tab."
       ],
       "disclosures": []
     },
@@ -132,13 +145,9 @@
       "conditions": [
         "Refine Axi B9 to Radiant and run a four-player radshare: four Radiant relics have a 34.39% chance to produce at least one Rare reward.",
         "Run Neo P8 Intact. Refining lowers its Common Systems chance from 25.33% to 16.67%.",
-        "Collect 10 Reactant before extraction. In Excavation, run one excavator at a time; in Interception, hold only two points until everyone is ready."
+        "Collect 10 Reactant before extraction."
       ],
-      "bonuses": [
-        "Use the Vaulted Relic Community Discord or host a group by exact relic name; Recruit chat is often sparse for vaulted relics.",
-        "Choose another player's duplicate reward when it appears: you keep the item and they receive extra Void Traces.",
-        "Let enemies corrupt before killing them so the squad can get enough Reactant."
-      ],
+      "bonuses": [],
       "disclosures": [
         {
           "title": "one Axi relic cannot give two parts",
@@ -162,17 +171,33 @@
         {
           "qty": null,
           "label": "Baruuk Prime Neuroptics",
-          "note": null,
+          "note": "15,000 cr, 8 Neurodes, 2 Nitain Extract, 1,050 Polymer Bundle, 3,750 Alloy Plate",
           "alt": null,
           "done": false
         },
-        { "qty": null, "label": "Baruuk Prime Chassis", "note": null, "alt": null, "done": false },
-        { "qty": null, "label": "Baruuk Prime Systems", "note": null, "alt": null, "done": false },
-        { "qty": null, "label": "Baruuk Prime", "note": null, "alt": null, "done": false }
+        {
+          "qty": null,
+          "label": "Baruuk Prime Chassis",
+          "note": "15,000 cr, 2 Tellurium, 4 Control Module, 1,200 Circuits, 4,250 Ferrite",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Baruuk Prime Systems",
+          "note": "15,000 cr, 2 Argon Crystal, 5 Gallium, 1,675 Rubedo, 5,250 Salvage",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Baruuk Prime",
+          "note": "25,000 cr, the three parts, 5 Orokin Cell",
+          "alt": null,
+          "done": false
+        }
       ],
-      "conditions": [
-        "Components can build in parallel; keep a free Warframe slot for the final claim."
-      ],
+      "conditions": ["Needs a free Warframe slot before the Foundry will let you claim it."],
       "bonuses": [],
       "disclosures": []
     }

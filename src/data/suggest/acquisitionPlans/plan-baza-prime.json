@@ -1,17 +1,63 @@
 {
   "name": "Baza Prime",
   "kind": "primary",
-  "effort": 5,
+  "effort": 8,
   "source": "relics",
   "tradeable": true,
-  "progress": { "have": 0, "need": 4, "unit": "parts" },
-  "badges": [],
+  "progress": {
+    "have": 0,
+    "need": 4,
+    "unit": "parts"
+  },
+  "badges": [
+    {
+      "text": "vaulted",
+      "tone": "warn"
+    },
+    {
+      "text": "Prime Resurgence",
+      "tone": "info"
+    }
+  ],
   "prices": [],
   "materials": [
-    { "qty": "10", "label": "Orokin Cell", "note": null },
-    { "qty": "15,000", "label": "Credits", "note": null }
+    {
+      "qty": "10",
+      "label": "Orokin Cell",
+      "note": null
+    },
+    {
+      "qty": "15,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
+    {
+      "type": "gate",
+      "place": "MASTERY RANK",
+      "sub": null,
+      "activity": "reach MR 10 to build it",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Mastery Rank 10",
+          "note": "the Foundry won't craft it below this",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
     {
       "type": "fissure",
       "place": "ANY VOID FISSURE",
@@ -54,11 +100,15 @@
           "done": false
         }
       ],
-      "conditions": [],
+      "conditions": [
+        "Baza Prime is vaulted: its relics no longer drop from missions.",
+        "Varzia sells vaulted relics for Aya only while Baza Prime is in the Prime Resurgence rotation.",
+        "Vaulted relics and the parts themselves still trade between players."
+      ],
       "bonuses": [],
       "disclosures": [
         {
-          "title": "also in vaulted relics",
+          "title": "other relics with these parts",
           "body": "Blueprint: Lith B7, Lith B8, Meso B4, Meso B5, Axi B4, Axi S13; Barrel: Lith A4, Lith S10, Lith W2, Neo I3, Neo N15, Axi I2, Axi Z1; Receiver: Lith K7, Meso C6, Meso E4, Meso P2, Neo R3, Axi A15, Axi N7, Axi W2; Stock: Lith B9, Meso B6, Neo B7, Axi B3."
         }
       ]
@@ -68,7 +118,7 @@
       "place": "FOUNDRY",
       "sub": null,
       "activity": "build Baza Prime",
-      "meta": "12h, MR 10",
+      "meta": "12h",
       "mode": null,
       "live": null,
       "skip": null,

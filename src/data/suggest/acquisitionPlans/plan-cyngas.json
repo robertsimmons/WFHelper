@@ -1,119 +1,294 @@
 {
   "name": "Cyngas",
   "kind": "archgun",
-  "effort": 4,
+  "effort": 5,
   "source": "standing",
   "tradeable": "parts only",
-  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "progress": {
+    "have": 0,
+    "need": 4,
+    "unit": "parts"
+  },
   "badges": [
-    { "text": "three syndicates, Rank 3", "tone": "warn" },
-    { "text": "Perrin opposes Hexis", "tone": "warn" }
+    {
+      "text": "three syndicates, Rank 3",
+      "tone": "warn"
+    },
+    {
+      "text": "Perrin opposes Hexis",
+      "tone": "warn"
+    }
   ],
   "prices": [
-    { "label": "blueprint", "amount": "35,000 cr", "money": false },
-    { "label": "standing", "amount": "65,000", "money": false },
-    { "label": "build", "amount": "45,000 cr", "money": false }
+    {
+      "label": "blueprint",
+      "amount": "35,000 cr",
+      "money": false
+    },
+    {
+      "label": "rank-ups",
+      "amount": "570,000 cr + 3 Forma",
+      "money": false
+    },
+    {
+      "label": "build",
+      "amount": "45,000 cr",
+      "money": false
+    }
   ],
   "materials": [
-    { "qty": "2", "label": "Tellurium", "note": null },
-    { "qty": "80,000", "label": "Credits", "note": null }
+    {
+      "qty": "2",
+      "label": "Tellurium",
+      "note": null
+    },
+    {
+      "qty": "650,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
     {
-      "type": "currency",
-      "place": "ANY HIGH-AFFINITY MISSION",
+      "type": "gate",
+      "place": "ORBITER",
       "sub": null,
-      "activity": "pledge Arbiters of Hexis or Cephalon Suda; the ally climbs at +50%",
-      "meta": "both to Rank 3",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": { "currency": "Arbiters of Hexis Standing", "amount": "91,000" },
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "71,000",
-          "label": "Arbiters of Hexis rank-ups to Lawful",
-          "note": "Rank 3; caps 5,000 / 22,000 / 44,000",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "71,000",
-          "label": "Cephalon Suda rank-ups to Intelligent",
-          "note": "Rank 3; fed at +50% by Hexis",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Do this leg first. Pledging Perrin first lets Hexis drag Perrin down while you work.",
-        "Each rank-up spends banked standing down to zero and asks for a sacrifice shown in the syndicate screen.",
-        "If you were pledged to Red Veil or New Loka, check Hexis and Suda standing first; going negative means climbing out before you can buy."
-      ],
-      "bonuses": [],
-      "disclosures": [],
-      "ref": "Arbiters of Hexis Standing"
-    },
-    {
-      "type": "vendor",
-      "place": "ANY RELAY",
-      "sub": "Arbiters of Hexis and Cephalon Suda",
-      "activity": "buy two parts",
-      "meta": "Rank 3",
+      "activity": "The Archwing quest",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [
-        { "currency": "Arbiters of Hexis Standing", "amount": "20,000" },
-        { "currency": "Cephalon Suda Standing", "amount": "20,000" }
-      ],
+      "spends": [],
       "map": null,
       "rows": [
         {
           "qty": null,
-          "label": "Cyngas Barrel",
-          "note": "Arbiters of Hexis, Lawful, 20,000 standing",
-          "alt": "tradeable",
+          "label": "The Archwing",
+          "note": "unlocks Archwing",
+          "alt": null,
           "done": false
         },
         {
           "qty": null,
-          "label": "Cyngas Receiver",
-          "note": "Cephalon Suda, Intelligent, 20,000 standing",
-          "alt": "tradeable",
+          "label": "Mastery Rank 4",
+          "note": "needed to equip it",
+          "alt": null,
           "done": false
         }
       ],
-      "conditions": ["Buy both parts as soon as you reach Rank 3, before you switch your pledge."],
+      "conditions": [],
       "bonuses": [],
       "disclosures": []
     },
     {
       "type": "currency",
-      "place": "ANY HIGH-AFFINITY MISSION",
-      "sub": null,
-      "activity": "pledge The Perrin Sequence",
-      "meta": "Rank 3",
+      "place": "RELAY",
+      "sub": "Arbiters of Hexis",
+      "activity": "pledge first, rank to 3, buy the Barrel",
+      "meta": "91,000 standing, 190,000 cr",
       "mode": null,
       "live": null,
       "skip": null,
-      "earns": { "currency": "The Perrin Sequence Standing", "amount": "96,000" },
+      "earns": {
+        "currency": "Arbiters of Hexis Standing",
+        "amount": "91,000"
+      },
       "spends": [],
       "map": null,
       "rows": [
         {
-          "qty": "71,000",
-          "label": "rank-ups to Executive",
-          "note": "Rank 3",
+          "qty": null,
+          "label": "Initiation",
+          "note": "10,000 cr, 500 Alloy Plate",
           "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Rank 1",
+          "note": "5,000 standing, 30,000 cr, 2 Gallium",
+          "alt": null,
+          "done": false,
+          "rank": {
+            "syndicate": "Arbiters of Hexis",
+            "level": 1
+          }
+        },
+        {
+          "qty": null,
+          "label": "Rank 2, Authentic",
+          "note": "22,000 standing, 50,000 cr, 1 Forma",
+          "alt": null,
+          "done": false,
+          "rank": {
+            "syndicate": "Arbiters of Hexis",
+            "level": 2
+          }
+        },
+        {
+          "qty": null,
+          "label": "Rank 3, Lawful",
+          "note": "44,000 standing, 100,000 cr, 1 Orokin Reactor",
+          "alt": null,
+          "done": false,
+          "rank": {
+            "syndicate": "Arbiters of Hexis",
+            "level": 3
+          }
+        },
+        {
+          "qty": null,
+          "label": "Cyngas Barrel",
+          "note": "20,000 standing",
+          "alt": "or trade for it",
           "done": false
         }
       ],
       "conditions": [
-        "Perrin drains Hexis at half rate and Steel Meridian at full rate; you already own the Barrel, so a Hexis demotion costs nothing here."
+        "Hexis opposes Perrin: do this and Suda before pledging Perrin, and buy the Barrel before you leave.",
+        "Rank-ups spend all your current standing; save a fresh 20,000 after Rank 3 for the part."
+      ],
+      "bonuses": ["Suda is allied: Hexis standing also gives Suda half as much."],
+      "disclosures": [],
+      "ref": "Arbiters of Hexis Standing"
+    },
+    {
+      "type": "currency",
+      "place": "RELAY",
+      "sub": "Cephalon Suda",
+      "activity": "rank to 3, buy the Receiver",
+      "meta": "91,000 standing, 190,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": {
+        "currency": "Cephalon Suda Standing",
+        "amount": "91,000"
+      },
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Initiation",
+          "note": "10,000 cr, 500 Circuits",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Rank 1",
+          "note": "5,000 standing, 30,000 cr, 2 Control Module",
+          "alt": null,
+          "done": false,
+          "rank": {
+            "syndicate": "Cephalon Suda",
+            "level": 1
+          }
+        },
+        {
+          "qty": null,
+          "label": "Rank 2, Intriguing",
+          "note": "22,000 standing, 50,000 cr, 1 Forma",
+          "alt": null,
+          "done": false,
+          "rank": {
+            "syndicate": "Cephalon Suda",
+            "level": 2
+          }
+        },
+        {
+          "qty": null,
+          "label": "Rank 3, Intelligent",
+          "note": "44,000 standing, 100,000 cr, 1 Orokin Catalyst",
+          "alt": null,
+          "done": false,
+          "rank": {
+            "syndicate": "Cephalon Suda",
+            "level": 3
+          }
+        },
+        {
+          "qty": null,
+          "label": "Cyngas Receiver",
+          "note": "20,000 standing",
+          "alt": "or trade for it",
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": [],
+      "ref": "Cephalon Suda Standing"
+    },
+    {
+      "type": "currency",
+      "place": "RELAY",
+      "sub": "The Perrin Sequence",
+      "activity": "switch pledge, rank to 3, buy the Stock",
+      "meta": "96,000 standing, 190,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": {
+        "currency": "The Perrin Sequence Standing",
+        "amount": "96,000"
+      },
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Initiation",
+          "note": "10,000 cr, 100 Polymer Bundle",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Rank 1",
+          "note": "5,000 standing, 30,000 cr, 2 Detonite Ampule",
+          "alt": null,
+          "done": false,
+          "rank": {
+            "syndicate": "The Perrin Sequence",
+            "level": 1
+          }
+        },
+        {
+          "qty": null,
+          "label": "Rank 2, Senior Associate",
+          "note": "22,000 standing, 50,000 cr, 1 Forma",
+          "alt": null,
+          "done": false,
+          "rank": {
+            "syndicate": "The Perrin Sequence",
+            "level": 2
+          }
+        },
+        {
+          "qty": null,
+          "label": "Rank 3, Executive",
+          "note": "44,000 standing, 100,000 cr, 1 Orokin Reactor",
+          "alt": null,
+          "done": false,
+          "rank": {
+            "syndicate": "The Perrin Sequence",
+            "level": 3
+          }
+        },
+        {
+          "qty": null,
+          "label": "Cyngas Stock",
+          "note": "25,000 standing",
+          "alt": "or trade for it",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Perrin lowers Hexis at half rate and Steel Meridian at full rate; with the Barrel already bought, a Hexis demotion costs nothing.",
+        "The Stock costs 25,000 standing, not 20,000 like the other two parts."
       ],
       "bonuses": [],
       "disclosures": [],
@@ -121,35 +296,40 @@
     },
     {
       "type": "vendor",
-      "place": "ANY RELAY",
-      "sub": "The Perrin Sequence",
-      "activity": "buy the Stock",
-      "meta": "Rank 3",
+      "place": "MARKET",
+      "sub": null,
+      "activity": "buy the blueprint",
+      "meta": "35,000 cr",
       "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "The Perrin Sequence Standing", "amount": "25,000" }],
+      "spends": [
+        {
+          "currency": "Credits",
+          "amount": "35,000"
+        }
+      ],
       "map": null,
       "rows": [
         {
           "qty": null,
-          "label": "Cyngas Stock",
-          "note": "Executive, 25,000 standing",
-          "alt": "tradeable",
+          "label": "Cyngas Blueprint",
+          "note": "35,000 cr; it can't be traded",
+          "alt": null,
           "done": false
         }
       ],
-      "conditions": ["The Stock costs 25,000, not 20,000 like the other two parts."],
+      "conditions": [],
       "bonuses": [],
       "disclosures": []
     },
     {
       "type": "foundry",
-      "place": "MARKET + FOUNDRY",
+      "place": "FOUNDRY",
       "sub": null,
-      "activity": "buy the blueprint, then build Cyngas",
-      "meta": "12h",
+      "activity": "build Cyngas",
+      "meta": "45,000 cr, 12h",
       "mode": null,
       "live": null,
       "skip": null,
@@ -157,13 +337,6 @@
       "spends": [],
       "map": null,
       "rows": [
-        {
-          "qty": null,
-          "label": "Cyngas Blueprint",
-          "note": "Market, 35,000 cr",
-          "alt": null,
-          "done": false
-        },
         {
           "qty": null,
           "label": "Cyngas",
@@ -172,12 +345,12 @@
           "done": false
         }
       ],
-      "conditions": ["The Market blueprint and the finished weapon are untradeable."],
+      "conditions": [],
       "bonuses": [],
       "disclosures": [
         {
           "title": "levelling it",
-          "body": "Mastery needs no Gravimag. Archwing missions are the sure way to level it; on the ground it needs a Gravimag (which needs an Orokin Catalyst first), and Atmosphere affinity is shared only while it is in the main hand. Cyngas (Atmosphere) is the same weapon, not a separate Mastery item."
+          "body": "Cyngas (Atmosphere) is the same weapon on the ground, not a second Mastery item. On the ground it needs a Gravimag, which needs an Orokin Catalyst installed, and Atmosphere affinity is shared only while it is in the main hand."
         }
       ]
     }

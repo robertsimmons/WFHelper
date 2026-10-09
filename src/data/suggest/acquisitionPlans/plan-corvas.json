@@ -1,29 +1,60 @@
 {
   "name": "Corvas",
   "kind": "archgun",
-  "effort": 4,
+  "effort": 3,
   "source": "standing",
   "tradeable": "parts only, not the blueprint",
-  "progress": { "have": 0, "need": 3, "unit": "parts" },
+  "progress": {
+    "have": 0,
+    "need": 4,
+    "unit": "parts"
+  },
   "badges": [
-    { "text": "3 syndicates to Rank 2", "tone": "warn" },
-    { "text": "allied factions", "tone": "info" }
+    {
+      "text": "3 syndicates to Rank 2",
+      "tone": "warn"
+    },
+    {
+      "text": "Suda and Hexis are allies",
+      "tone": "info"
+    }
   ],
   "prices": [
-    { "label": "blueprint", "amount": "35,000 cr", "money": false },
-    { "label": "build", "amount": "45,000 cr", "money": false }
+    {
+      "label": "blueprint",
+      "amount": "35,000 cr",
+      "money": false
+    },
+    {
+      "label": "rank-ups",
+      "amount": "270,000 cr + 3 Forma",
+      "money": false
+    },
+    {
+      "label": "build",
+      "amount": "45,000 cr",
+      "money": false
+    }
   ],
   "materials": [
-    { "qty": "2", "label": "Argon Crystal", "note": null },
-    { "qty": "350,000", "label": "Credits", "note": null }
+    {
+      "qty": "2",
+      "label": "Argon Crystal",
+      "note": null
+    },
+    {
+      "qty": "350,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
     {
-      "type": "vendor",
-      "place": "MARKET",
+      "type": "gate",
+      "place": "ORBITER",
       "sub": null,
-      "activity": "buy blueprint",
-      "meta": "35,000 cr",
+      "activity": "The Archwing quest",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -31,7 +62,50 @@
       "spends": [],
       "map": null,
       "rows": [
-        { "qty": null, "label": "Corvas Blueprint", "note": null, "alt": null, "done": false }
+        {
+          "qty": null,
+          "label": "The Archwing",
+          "note": "unlocks Archwing",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Mastery Rank 1",
+          "note": "needed to equip it",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "MARKET",
+      "sub": null,
+      "activity": "buy the blueprint",
+      "meta": "35,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [
+        {
+          "currency": "Credits",
+          "amount": "35,000"
+        }
+      ],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Corvas Blueprint",
+          "note": "35,000 cr; it can't be traded",
+          "alt": null,
+          "done": false
+        }
       ],
       "conditions": [],
       "bonuses": [],
@@ -39,103 +113,187 @@
     },
     {
       "type": "currency",
-      "place": "ORBITER, SYNDICATES",
-      "sub": null,
-      "activity": "pledge Cephalon Suda, then Steel Meridian; rank all three to Rank 2",
-      "meta": "~47,000 standing each, counting rank-up spends",
+      "place": "RELAY",
+      "sub": "Cephalon Suda",
+      "activity": "pledge first, rank to 2, buy the Receiver",
+      "meta": "~47,000 standing, 90,000 cr, 1 Forma",
       "mode": null,
       "live": null,
       "skip": null,
-      "earns": null,
+      "earns": {
+        "currency": "Cephalon Suda Standing",
+        "amount": "47,000"
+      },
       "spends": [],
       "map": null,
       "rows": [
         {
           "qty": null,
-          "label": "Cephalon Suda to Intriguing",
-          "note": "500 Circuits + 10k cr, 2 Control Module + 30k cr, Forma + 50k cr",
+          "label": "Initiation",
+          "note": "10,000 cr, 500 Circuits",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
-          "label": "Arbiters of Hexis to Authentic",
-          "note": "500 Alloy Plate + 10k cr, 2 Gallium + 30k cr, Forma + 50k cr",
+          "label": "Rank 1",
+          "note": "5,000 standing, 30,000 cr, 2 Control Module",
           "alt": null,
-          "done": false
+          "done": false,
+          "rank": {
+            "syndicate": "Cephalon Suda",
+            "level": 1
+          }
         },
         {
           "qty": null,
-          "label": "Steel Meridian to Valiant",
-          "note": "1,000 Salvage + 10k cr, 2 Morphics + 30k cr, Forma + 50k cr",
+          "label": "Rank 2, Intriguing",
+          "note": "22,000 standing, 50,000 cr, 1 Forma",
           "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Relay syndicates open at MR 3. The daily cap, 16,000 plus 500 per Mastery Rank, is shared across all faction syndicates.",
-        "Rank 1 spends 5,000 standing and Rank 2 spends 22,000 on top of the sacrifices."
-      ],
-      "bonuses": [
-        "Suda and Hexis are allies, so pledging Suda fills Hexis at half rate; Meridian's losses land only on New Loka and Perrin.",
-        "Syndicate alert standing and medallions ignore the daily cap; a syndicate offers alerts from Rank 1."
-      ],
-      "disclosures": [
-        {
-          "title": "death squads",
-          "body": "Suda sinks New Loka and Red Veil, Hexis sinks Red Veil and Perrin, Meridian sinks Perrin and New Loka. Any of those going negative sends Eximus hit squads into random missions; they're a nuisance and drop specter blueprints."
-        }
-      ],
-      "ref": "Syndicate Standing"
-    },
-    {
-      "type": "vendor",
-      "place": "RELAY, SYNDICATE ROOMS",
-      "sub": null,
-      "activity": "buy one part from each syndicate",
-      "meta": "Rank 2",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [
-        { "currency": "Arbiters of Hexis Standing", "amount": "20,000" },
-        { "currency": "Cephalon Suda Standing", "amount": "20,000" },
-        { "currency": "Steel Meridian Standing", "amount": "20,000" }
-      ],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Corvas Barrel",
-          "note": "Arbiters of Hexis, 20,000 standing",
-          "alt": "trade for it",
-          "done": false
+          "done": false,
+          "rank": {
+            "syndicate": "Cephalon Suda",
+            "level": 2
+          }
         },
         {
           "qty": null,
           "label": "Corvas Receiver",
-          "note": "Cephalon Suda, 20,000 standing",
-          "alt": "trade for it",
+          "note": "20,000 standing",
+          "alt": "or trade for it",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "A rank-up spends all your current standing; save a fresh 20,000 after Rank 2 for the part.",
+        "Each syndicate has its own daily standing cap, 16,000 plus 500 per Mastery Rank; Syndicate Alert standing and medallions ignore it.",
+        "Suda lowers New Loka and Red Veil, Hexis lowers Red Veil and Perrin, and Steel Meridian lowers Perrin and New Loka. A negative standing sends Eximus Death Squads, which drop specter blueprints."
+      ],
+      "bonuses": [],
+      "disclosures": [],
+      "ref": "Cephalon Suda Standing"
+    },
+    {
+      "type": "currency",
+      "place": "RELAY",
+      "sub": "Arbiters of Hexis",
+      "activity": "rank to 2, buy the Barrel",
+      "meta": "~47,000 standing, 90,000 cr, 1 Forma",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": {
+        "currency": "Arbiters of Hexis Standing",
+        "amount": "47,000"
+      },
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Initiation",
+          "note": "10,000 cr, 500 Alloy Plate",
+          "alt": null,
           "done": false
         },
         {
           "qty": null,
-          "label": "Corvas Stock",
-          "note": "Steel Meridian, 20,000 standing",
-          "alt": "trade for it",
+          "label": "Rank 1",
+          "note": "5,000 standing, 30,000 cr, 2 Gallium",
+          "alt": null,
+          "done": false,
+          "rank": {
+            "syndicate": "Arbiters of Hexis",
+            "level": 1
+          }
+        },
+        {
+          "qty": null,
+          "label": "Rank 2, Authentic",
+          "note": "22,000 standing, 50,000 cr, 1 Forma",
+          "alt": null,
+          "done": false,
+          "rank": {
+            "syndicate": "Arbiters of Hexis",
+            "level": 2
+          }
+        },
+        {
+          "qty": null,
+          "label": "Corvas Barrel",
+          "note": "20,000 standing",
+          "alt": "or trade for it",
           "done": false
         }
       ],
-      "conditions": ["Stop at Rank 2; Rank 3 buys nothing Corvas needs."],
+      "conditions": [],
+      "bonuses": ["Suda and Hexis are allies, so Suda standing also gives Hexis half as much."],
+      "disclosures": [],
+      "ref": "Arbiters of Hexis Standing"
+    },
+    {
+      "type": "currency",
+      "place": "RELAY",
+      "sub": "Steel Meridian",
+      "activity": "switch pledge, rank to 2, buy the Stock",
+      "meta": "~47,000 standing, 90,000 cr, 1 Forma",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": {
+        "currency": "Steel Meridian Standing",
+        "amount": "47,000"
+      },
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Initiation",
+          "note": "10,000 cr, 1,000 Salvage",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Rank 1",
+          "note": "5,000 standing, 30,000 cr, 2 Morphics",
+          "alt": null,
+          "done": false,
+          "rank": {
+            "syndicate": "Steel Meridian",
+            "level": 1
+          }
+        },
+        {
+          "qty": null,
+          "label": "Rank 2, Valiant",
+          "note": "22,000 standing, 50,000 cr, 1 Forma",
+          "alt": null,
+          "done": false,
+          "rank": {
+            "syndicate": "Steel Meridian",
+            "level": 2
+          }
+        },
+        {
+          "qty": null,
+          "label": "Corvas Stock",
+          "note": "20,000 standing",
+          "alt": "or trade for it",
+          "done": false
+        }
+      ],
+      "conditions": [],
       "bonuses": [],
-      "disclosures": []
+      "disclosures": [],
+      "ref": "Steel Meridian Standing"
     },
     {
       "type": "foundry",
       "place": "FOUNDRY",
       "sub": null,
-      "activity": "build Corvas, then level it",
+      "activity": "build Corvas",
       "meta": "45,000 cr, 12h",
       "mode": null,
       "live": null,
@@ -147,21 +305,14 @@
         {
           "qty": null,
           "label": "Corvas",
-          "note": "3 parts, 2 Argon Crystal",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "level to 30",
-          "note": "on a Necramech, or Archwing on Salacia, Neptune",
+          "note": "Barrel, Receiver, Stock, 2 Argon Crystal, 45,000 cr",
           "alt": null,
           "done": false
         }
       ],
       "conditions": ["Corvas (Atmosphere) is the same weapon on the ground; one Mastery entry."],
       "bonuses": [
-        "An Orokin Catalyst plus a Gravimag lets the Archgun Deployer bring it into any ground mission, where it levels about like a normal gun."
+        "A Gravimag, which needs an Orokin Catalyst installed, lets the Archgun Deployer bring it into ground missions."
       ],
       "disclosures": []
     }

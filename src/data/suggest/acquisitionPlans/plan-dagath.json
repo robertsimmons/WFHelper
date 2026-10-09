@@ -4,25 +4,94 @@
   "effort": 3,
   "source": "dojo",
   "tradeable": false,
-  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "progress": {
+    "have": 0,
+    "need": 4,
+    "unit": "parts"
+  },
   "badges": [
-    { "text": "no part RNG", "tone": "info" },
-    { "text": "beacon standing", "tone": "warn" }
+    {
+      "text": "no part RNG",
+      "tone": "info"
+    },
+    {
+      "text": "beacon standing",
+      "tone": "warn"
+    }
   ],
-  "prices": [{ "label": "build", "amount": "70,000 cr", "money": false }],
+  "prices": [
+    {
+      "label": "blueprints",
+      "amount": "60,000 cr",
+      "money": false
+    },
+    {
+      "label": "build",
+      "amount": "70,000 cr",
+      "money": false
+    }
+  ],
   "materials": [
-    { "qty": "2,000", "label": "Alloy Plate", "note": "Neuroptics" },
-    { "qty": "1,500", "label": "Salvage", "note": "Chassis" },
-    { "qty": "1,000", "label": "Circuits", "note": "Systems" },
-    { "qty": "3", "label": "Neurodes", "note": "Neuroptics" },
-    { "qty": "3", "label": "Neural Sensors", "note": "Neuroptics" },
-    { "qty": "4", "label": "Morphics", "note": "Chassis" },
-    { "qty": "2", "label": "Argon Crystal", "note": "Chassis" },
-    { "qty": "5", "label": "Control Module", "note": "Systems" },
-    { "qty": "4", "label": "Gallium", "note": "Systems" },
-    { "qty": "1", "label": "Orokin Cell", "note": "Dagath" },
-    { "qty": "102", "label": "Vainthorn", "note": null },
-    { "qty": "85,000", "label": "Credits", "note": null }
+    {
+      "qty": "2,000",
+      "label": "Alloy Plate",
+      "note": "Neuroptics"
+    },
+    {
+      "qty": "1,500",
+      "label": "Salvage",
+      "note": "Chassis"
+    },
+    {
+      "qty": "1,000",
+      "label": "Circuits",
+      "note": "Systems"
+    },
+    {
+      "qty": "3",
+      "label": "Neurodes",
+      "note": "Neuroptics"
+    },
+    {
+      "qty": "3",
+      "label": "Neural Sensors",
+      "note": "Neuroptics"
+    },
+    {
+      "qty": "4",
+      "label": "Morphics",
+      "note": "Chassis"
+    },
+    {
+      "qty": "2",
+      "label": "Argon Crystal",
+      "note": "Chassis"
+    },
+    {
+      "qty": "5",
+      "label": "Control Module",
+      "note": "Systems"
+    },
+    {
+      "qty": "4",
+      "label": "Gallium",
+      "note": "Systems"
+    },
+    {
+      "qty": "3",
+      "label": "Orokin Cell",
+      "note": "Dagath"
+    },
+    {
+      "qty": "102",
+      "label": "Vainthorn",
+      "note": null
+    },
+    {
+      "qty": "130,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
     {
@@ -30,7 +99,7 @@
       "place": "CLAN DOJO, DAGATH'S HOLLOW",
       "sub": null,
       "activity": "buy every blueprint outright",
-      "meta": "no Research needed, credits only",
+      "meta": "15,000 cr each, credits only",
       "mode": null,
       "live": null,
       "skip": null,
@@ -48,21 +117,21 @@
         {
           "qty": null,
           "label": "Dagath Neuroptics Blueprint",
-          "note": null,
+          "note": "15,000 cr",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Dagath Chassis Blueprint",
-          "note": null,
+          "note": "15,000 cr",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Dagath Systems Blueprint",
-          "note": null,
+          "note": "15,000 cr",
           "alt": null,
           "done": false
         }
@@ -82,7 +151,10 @@
       "mode": null,
       "live": null,
       "skip": null,
-      "earns": { "currency": "Syndicate Standing", "amount": "65,000" },
+      "earns": {
+        "currency": "Syndicate Standing",
+        "amount": "65,000"
+      },
       "spends": [],
       "map": null,
       "rows": [
@@ -95,16 +167,11 @@
         }
       ],
       "conditions": [
-        "Any of the six main Syndicates (Steel Meridian, Arbiters of Hexis, Cephalon Suda, Perrin Sequence, Red Veil, New Loka) sells the beacon at Rank 2 for 5,000 standing.",
-        "Only the mission host's beacon is consumed, and the daily standing cap is shared across the six syndicates."
+        "Any of the six main Syndicates (Steel Meridian, Arbiters of Hexis, Cephalon Suda, The Perrin Sequence, Red Veil, New Loka) sells the beacon at Rank 2 for 5,000 standing.",
+        "Only the beacon of whoever starts the mission vote is consumed, and only on completion."
       ],
       "bonuses": ["Squad up in recruiting chat and rotate host so only one beacon burns per run."],
-      "disclosures": [
-        {
-          "title": "the standing math",
-          "body": "13 Steel Path runs (65,000 standing) or 17 normal runs (85,000) covers Vainthorn for the frame alone; her signature Dorrclave needs about as much again."
-        }
-      ],
+      "disclosures": [],
       "ref": "Syndicate Standing"
     },
     {
@@ -144,7 +211,7 @@
         {
           "qty": null,
           "label": "Dagath",
-          "note": "25,000 cr, 1 Orokin Cell",
+          "note": "25,000 cr, 3 Orokin Cell",
           "alt": null,
           "done": false
         }

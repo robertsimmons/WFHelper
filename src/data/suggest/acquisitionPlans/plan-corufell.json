@@ -4,26 +4,52 @@
   "effort": 8,
   "source": "repeat",
   "tradeable": "parts only",
-  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "progress": {
+    "have": 0,
+    "need": 4,
+    "unit": "parts"
+  },
   "badges": [
-    { "text": "fixed-timer mode", "tone": "warn" },
-    { "text": "8% drop", "tone": "warn" }
+    {
+      "text": "fixed-timer mode",
+      "tone": "warn"
+    },
+    {
+      "text": "8% drop",
+      "tone": "warn"
+    }
   ],
   "prices": [
-    { "label": "full pity", "amount": "1,250 Rania + 750 Belric", "money": false },
-    { "label": "built (Market)", "amount": "175 p", "money": false }
+    {
+      "label": "full pity",
+      "amount": "1,250 Rania + 750 Belric",
+      "money": false
+    },
+    {
+      "label": "built (Market)",
+      "amount": "175 p",
+      "money": false
+    }
   ],
   "materials": [
-    { "qty": "3", "label": "Orokin Cell", "note": null },
-    { "qty": "15,000", "label": "Credits", "note": null }
+    {
+      "qty": "3",
+      "label": "Orokin Cell",
+      "note": null
+    },
+    {
+      "qty": "15,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
     {
       "type": "gate",
-      "place": "TYANA PASS, MARS",
+      "place": "QUESTS",
       "sub": null,
-      "activity": "unlock Tyana Pass",
-      "meta": "Heart of Deimos quest + Mastery Rank 3",
+      "activity": "finish Heart of Deimos",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -34,13 +60,26 @@
         {
           "qty": null,
           "label": "Heart of Deimos",
-          "note": "quest prerequisite",
+          "note": "needed to enter Tyana Pass",
           "alt": null,
           "done": false
         },
-        { "qty": null, "label": "Mastery Rank 3", "note": null, "alt": null, "done": false }
+        {
+          "qty": null,
+          "label": "Mastery Rank 3",
+          "note": "needed to enter Tyana Pass",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Mastery Rank 8",
+          "note": "needed to equip it",
+          "alt": null,
+          "done": false
+        }
       ],
-      "conditions": ["Otak's inbox message unlocks Tyana Pass only once both are complete."],
+      "conditions": [],
       "bonuses": [],
       "disclosures": []
     },
@@ -48,9 +87,9 @@
       "type": "farm",
       "place": "TYANA PASS, MARS",
       "sub": null,
-      "activity": "Mirror Defense: defend Rania (Mars), cross the void tunnel, defend Belric (Venus)",
-      "meta": "one round ~5.5-6 min; rewards follow AABC",
-      "mode": "public or Steel Path squad",
+      "activity": "Mirror Defense: defend Rania's crystal on Mars, cross the Void tunnel, defend Belric's on Venus",
+      "meta": "one rotation is about 6 min; rewards follow AABC",
+      "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
@@ -64,8 +103,14 @@
           "alt": {
             "text": "or buy from Otak",
             "spends": [
-              { "currency": "Rania Crystal Fragment", "amount": "500" },
-              { "currency": "Belric Crystal Fragment", "amount": "300" }
+              {
+                "currency": "Rania Crystal Fragment",
+                "amount": "500"
+              },
+              {
+                "currency": "Belric Crystal Fragment",
+                "amount": "300"
+              }
             ]
           },
           "done": false
@@ -77,8 +122,14 @@
           "alt": {
             "text": "or buy from Otak",
             "spends": [
-              { "currency": "Rania Crystal Fragment", "amount": "250" },
-              { "currency": "Belric Crystal Fragment", "amount": "150" }
+              {
+                "currency": "Rania Crystal Fragment",
+                "amount": "250"
+              },
+              {
+                "currency": "Belric Crystal Fragment",
+                "amount": "150"
+              }
             ]
           },
           "done": false
@@ -90,8 +141,14 @@
           "alt": {
             "text": "or buy from Otak",
             "spends": [
-              { "currency": "Rania Crystal Fragment", "amount": "250" },
-              { "currency": "Belric Crystal Fragment", "amount": "150" }
+              {
+                "currency": "Rania Crystal Fragment",
+                "amount": "250"
+              },
+              {
+                "currency": "Belric Crystal Fragment",
+                "amount": "150"
+              }
             ]
           },
           "done": false
@@ -103,73 +160,46 @@
           "alt": {
             "text": "or buy from Otak",
             "spends": [
-              { "currency": "Rania Crystal Fragment", "amount": "250" },
-              { "currency": "Belric Crystal Fragment", "amount": "150" }
+              {
+                "currency": "Rania Crystal Fragment",
+                "amount": "250"
+              },
+              {
+                "currency": "Belric Crystal Fragment",
+                "amount": "150"
+              }
             ]
           },
           "done": false
         }
       ],
       "conditions": [
-        "A failed mission loses everything: lose the crystal on round 4 and you get nothing, not even earlier rounds. Decide as a group before round 3 ends whether to keep going.",
-        "Round 3 is B, not C; staying past round 4 into rounds 5-7 gives more A and B rolls in the same run.",
-        "Warframe heals do nothing to the crystals; only remnant payouts heal them. Damage-reduction abilities work, usually capped around 50%.",
-        "Fragments are shared with Citrine, Steflos, and the Tyana Pass arcanes: costs stack fast if you're farming those too."
+        "Corufell's blueprint is Rotation A and its parts are Rotation B; C holds none of it.",
+        "Warframe abilities and weapons can't heal the crystals; only 50 collected Remnants do. Damage reduction works, usually capped near 50%.",
+        "Fragments are shared with Citrine, Steflos and the Tyana Pass arcanes, so costs stack fast if you farm those too."
       ],
       "bonuses": [
-        "Bring or group with a Titania: Razorwing flight makes grabbing Citrine's Remnants trivial, and remnants are the fragment income.",
-        "Run Steel Path: 15 fragments per round instead of 10, 7 per 50-remnant payout instead of 5, and Steel Path lobbies actually fill.",
-        "Sweep the 30-second void tunnel every transition: remnants spawn heavily there and 50 collected applies overshield and Prismatic Ward to the next crystal.",
-        "Animal Instinct or Loot Radar marks remnants on the minimap; they also give an audible spawn cue.",
-        "Keep at least one player killing: over-CCing the map lowers remnant spawns."
+        "Steel Path pays 15 fragments of each type per rotation instead of 10, and 7 per 50 Remnants instead of 5.",
+        "Sweep the Void tunnel each transition: Remnants spawn most there, and 50 collected heals the next crystal, adds overshield and a Prismatic Ward.",
+        "Loot Radar shows Remnants on the minimap."
       ],
       "disclosures": [
         {
-          "title": "the fragment math",
-          "body": "A solo Titania reported 100-110 fragments per ~30-minute run; an optimized group reported ~150 of each per 22-minute cycle, putting a full Corufell from fragments alone at roughly 8-9 group cycles versus 20+ solo."
+          "title": "pickup limits",
+          "body": "Remnants ignore Vacuum, Fetch and Mag's Pull, and can't be picked up inside Limbo's Rift or on Wukong's Cloud Walker. Resource Boosters and Smeeta Charm don't affect Crystal Fragments."
         },
         {
-          "title": "known jank",
-          "body": "Remnants ignore Vacuum/Fetch and Mag's Pull, and can't be picked up from inside Limbo's rift or on Wukong's Cloud Walker. Pickups can appear offset from their hitbox on the Corpus side (unconfirmed fixed as of Dec 2025). Resource Boosters and Smeeta Charm don't affect Crystal Fragments."
+          "title": "farm it alongside Citrine",
+          "body": "Corufell shares its fragments with Citrine's own acquisition and the Tyana Pass arcanes, so run the mode for all of it at once rather than as a separate grind afterward."
         }
       ]
-    },
-    {
-      "type": "vendor",
-      "place": "OTAK, NECRALISK",
-      "sub": null,
-      "activity": "buy the full pity bundle instead of farming",
-      "meta": "750 Belric + 1,250 Rania Crystal Fragments",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [
-        { "currency": "Belric Crystal Fragment", "amount": "750" },
-        { "currency": "Rania Crystal Fragment", "amount": "1,250" }
-      ],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Corufell (blueprint + all three parts)",
-          "note": "skips the drop table entirely",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "The blueprint (500 Rania) is the single most expensive individual pity buy, so it's the best piece to hope drops naturally instead."
-      ],
-      "bonuses": [],
-      "disclosures": []
     },
     {
       "type": "foundry",
       "place": "FOUNDRY",
       "sub": null,
       "activity": "build Corufell",
-      "meta": "15,000 cr, 3 Orokin Cells, 12h",
+      "meta": "12h",
       "mode": null,
       "live": null,
       "skip": null,
@@ -180,7 +210,7 @@
         {
           "qty": null,
           "label": "Corufell",
-          "note": "15,000 cr + 3 Orokin Cells; parts arrive finished, no crafting of their own",
+          "note": "15,000 cr, 3 Orokin Cell; the parts arrive finished",
           "alt": null,
           "done": false
         }
@@ -188,15 +218,8 @@
       "conditions": [
         "The Market sells only the finished weapon outright for 175 platinum; it does not sell the blueprint."
       ],
-      "bonuses": [
-        "Loved at every level: Tennokai and Ivara's Navigator are commonly cited pairings, and it scales near level-cap alongside Kullervo, whose passive speeds up heavy attacks."
-      ],
-      "disclosures": [
-        {
-          "title": "farm it alongside Citrine, not after her",
-          "body": "Corufell shares its farm with Citrine's own acquisition and the Tyana Pass arcanes. The least painful order is running the mode for all of it at once rather than treating Corufell as a separate grind afterward."
-        }
-      ]
+      "bonuses": [],
+      "disclosures": []
     }
   ]
 }

@@ -4,27 +4,91 @@
   "effort": 3,
   "source": "repeat",
   "tradeable": false,
-  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "progress": {
+    "have": 0,
+    "need": 4,
+    "unit": "parts"
+  },
   "badges": [
-    { "text": "hard pity", "tone": "info" },
-    { "text": "Rotation C", "tone": "warn" }
+    {
+      "text": "hard pity",
+      "tone": "info"
+    },
+    {
+      "text": "Rotation C",
+      "tone": "warn"
+    }
   ],
-  "prices": [{ "label": "built", "amount": "350 p", "money": false }],
+  "prices": [
+    {
+      "label": "built",
+      "amount": "350 p",
+      "money": false
+    }
+  ],
   "materials": [
-    { "qty": "3", "label": "Orokin Cell", "note": "Dante" },
-    { "qty": "10", "label": "Control Module", "note": "Neuroptics" },
-    { "qty": "4", "label": "Neural Sensors", "note": "Neuroptics" },
-    { "qty": "8,000", "label": "Alloy Plate", "note": "Chassis" },
-    { "qty": "2,000", "label": "Plastids", "note": "Chassis" },
-    { "qty": "4,000", "label": "Circuits", "note": "Systems" },
-    { "qty": "8", "label": "Entrati Lanthorn", "note": "build requirement" }
+    {
+      "qty": "3",
+      "label": "Orokin Cell",
+      "note": "Dante"
+    },
+    {
+      "qty": "8",
+      "label": "Entrati Lanthorn",
+      "note": "all three parts"
+    },
+    {
+      "qty": "10",
+      "label": "Control Module",
+      "note": "Neuroptics"
+    },
+    {
+      "qty": "4",
+      "label": "Neural Sensors",
+      "note": "Neuroptics"
+    },
+    {
+      "qty": "4",
+      "label": "Bellow Voca",
+      "note": "Neuroptics"
+    },
+    {
+      "qty": "8,000",
+      "label": "Alloy Plate",
+      "note": "Chassis"
+    },
+    {
+      "qty": "2,000",
+      "label": "Plastids",
+      "note": "Chassis"
+    },
+    {
+      "qty": "21,000",
+      "label": "Entrati Obols",
+      "note": "Chassis and Systems"
+    },
+    {
+      "qty": "4,000",
+      "label": "Circuits",
+      "note": "Systems"
+    },
+    {
+      "qty": "450",
+      "label": "Necracoil",
+      "note": "Systems"
+    },
+    {
+      "qty": "70,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
     {
       "type": "gate",
       "place": "QUESTS",
       "sub": null,
-      "activity": "The Deadlock Protocol, then Whispers in the Walls",
+      "activity": "finish The Deadlock Protocol and Whispers in the Walls",
       "meta": null,
       "mode": null,
       "live": null,
@@ -36,21 +100,19 @@
         {
           "qty": null,
           "label": "The Deadlock Protocol",
-          "note": "probably required",
+          "note": "needed to reach Armatus",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Whispers in the Walls",
-          "note": "required",
+          "note": "needed to reach Armatus",
           "alt": null,
           "done": false
         }
       ],
-      "conditions": [
-        "Whispers in the Walls unlocks Sanctum Anatomica and Armatus; complete Deadlock too if Armatus is not visible."
-      ],
+      "conditions": [],
       "bonuses": [],
       "disclosures": []
     },
@@ -59,11 +121,14 @@
       "place": "ARMATUS, DEIMOS",
       "sub": "Sanctum Anatomica",
       "activity": "Disruption",
-      "meta": "2-3h typical",
-      "mode": "stay past round 4",
+      "meta": "Rotation C",
+      "mode": null,
       "live": null,
       "skip": null,
-      "earns": { "currency": "Vessel Capillaries", "amount": "540" },
+      "earns": {
+        "currency": "Vessel Capillaries",
+        "amount": "540"
+      },
       "spends": [],
       "map": null,
       "rows": [
@@ -97,51 +162,16 @@
         }
       ],
       "conditions": [
-        "Disruption is not AABC: from round 4 onward, defend at least 3 conduits for a C reward every round.",
-        "Do not buy a single missing part early: save Capillaries until you can buy every part still missing, so a later drop cannot duplicate a purchase.",
-        "Defend all four conduits to keep the C table and maximize Demolisher Capillaries."
+        "Disruption isn't AABC: C pays for 4 conduits defended in round 3, or 3-4 defended from round 4 on.",
+        "Don't buy a single missing part early: save Capillaries until you can buy every part still missing, so a later drop can't duplicate a purchase."
       ],
-      "bonuses": [
-        "Steel Path pays 5-7 Capillaries per Demolisher instead of 2-4 if your group clears it comfortably."
-      ],
+      "bonuses": ["Steel Path pays 5-7 Capillaries per Demolisher instead of 2-4."],
       "disclosures": [
         {
-          "title": "the whole farm in one rule",
-          "body": "Stay in. Round 4 and every later round is a C reward when 3-4 conduits survive. Repeated four-round resets throw away the efficient part of the farm."
+          "title": "stay in",
+          "body": "From round 4 every round pays C when 3-4 conduits survive; resetting at four rounds throws away the efficient part of the farm."
         }
       ]
-    },
-    {
-      "type": "vendor",
-      "place": "SANCTUM ANATOMICA, DEIMOS",
-      "sub": null,
-      "activity": "Loid",
-      "meta": "pity shop",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [{ "currency": "Vessel Capillaries", "amount": "540" }],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Dante Blueprint",
-          "note": "270 Capillaries",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "3",
-          "label": "component blueprints",
-          "note": "90 Capillaries each",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": ["This is the hard pity ceiling for a complete Dante set from scratch."],
-      "bonuses": [],
-      "disclosures": []
     },
     {
       "type": "foundry",
@@ -156,20 +186,36 @@
       "spends": [],
       "map": null,
       "rows": [
-        { "qty": null, "label": "Neuroptics", "note": null, "alt": null, "done": false },
-        { "qty": null, "label": "Chassis", "note": null, "alt": null, "done": false },
-        { "qty": null, "label": "Systems", "note": null, "alt": null, "done": false },
+        {
+          "qty": null,
+          "label": "Neuroptics",
+          "note": "15,000 cr, 3 Entrati Lanthorn, 10 Control Module, 4 Bellow Voca, 4 Neural Sensors",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Chassis",
+          "note": "15,000 cr, 2 Entrati Lanthorn, 8,000 Alloy Plate, 12,000 Entrati Obols, 2,000 Plastids",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Systems",
+          "note": "15,000 cr, 3 Entrati Lanthorn, 4,000 Circuits, 9,000 Entrati Obols, 450 Necracoil",
+          "alt": null,
+          "done": false
+        },
         {
           "qty": null,
           "label": "Dante",
-          "note": "25,000 cr, 3 Orokin Cell",
+          "note": "25,000 cr, the three parts, 3 Orokin Cell",
           "alt": null,
           "done": false
         }
       ],
-      "conditions": [
-        "The three components also need Deimos materials: Bellow Voca, Entrati Obols and Necracoil."
-      ],
+      "conditions": [],
       "bonuses": [],
       "disclosures": []
     }

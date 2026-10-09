@@ -7,67 +7,141 @@
   "progress": { "have": 0, "need": 4, "unit": "parts" },
   "badges": [
     { "text": "quest-gated", "tone": "warn" },
-    { "text": "Circuit alternate", "tone": "info" }
+    { "text": "Circuit week 10", "tone": "circuit" }
   ],
   "prices": [{ "label": "built", "amount": "325 p", "money": false }],
+  "routes": [
+    {
+      "name": "Mask of the Revenant, then Cetus bounties",
+      "cost": "needs Quills Rank 2; the quest gives the main blueprint, the parts drop in Cetus bounties",
+      "effort": 5,
+      "role": "chosen"
+    },
+    {
+      "name": "After the quest: Cephalon Simaris",
+      "cost": "Simaris sells the main blueprint for 50,000 standing; the parts still drop in bounties",
+      "effort": 5,
+      "role": "afterQuest"
+    },
+    {
+      "name": "The Circuit, week 10",
+      "cost": "all four blueprints at tiers 2, 5, 8 and 10 of the Normal Circuit; needs The Duviri Paradox",
+      "effort": 4,
+      "role": null
+    }
+  ],
   "materials": [
+    { "qty": "9,000", "label": "Polymer Bundle", "note": "6,000 Neuroptics, 3,000 Systems" },
+    { "qty": "8,000", "label": "Salvage", "note": "Systems" },
+    { "qty": "3,700", "label": "Rubedo", "note": "2,200 Neuroptics, 1,500 Chassis" },
+    { "qty": "55", "label": "Intact Sentient Core", "note": "25 builds, 30 Quills rank-ups" },
+    { "qty": "50", "label": "Iradite", "note": "Chassis" },
+    { "qty": "4", "label": "Cetus Wisp", "note": "3 Systems, 1 mask" },
+    { "qty": "3", "label": "Neural Sensors", "note": "Neuroptics" },
+    { "qty": "3", "label": "Morphics", "note": "Chassis" },
+    { "qty": "3", "label": "Control Module", "note": "Systems" },
     { "qty": "1", "label": "Orokin Cell", "note": "Revenant" },
-    { "qty": "3", "label": "Cetus Wisp", "note": null },
-    { "qty": "70,000", "label": "Credits", "note": null }
+    { "qty": "150,000", "label": "Credits", "note": "70,000 builds, 80,000 Quills rank-ups" }
   ],
   "groups": [
     {
       "type": "gate",
       "place": "CETUS, EARTH",
       "sub": "The Quills",
-      "activity": "unlock Mask of the Revenant",
-      "meta": "two days minimum for standing",
+      "activity": "The War Within, then Quills Rank 2",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [
-        { "currency": "Intact Sentient Core", "amount": "30" },
-        { "currency": "Cetus Wisp", "amount": "1" }
-      ],
+      "spends": [],
       "map": "cetus",
       "rows": [
         {
           "qty": null,
           "label": "The War Within",
-          "note": "required for The Quills",
+          "note": "opens The Quills",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Observer, Quills Rank 2",
-          "note": "27,000 standing + 30 Intact Cores",
+          "note": "unlocks Mask of the Revenant",
           "alt": null,
-          "done": false
+          "done": false,
+          "rank": { "syndicate": "The Quills", "level": 2 }
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": [],
+      "quest": "Mask of the Revenant"
+    },
+    {
+      "type": "currency",
+      "place": "CETUS, EARTH",
+      "sub": "Onkko",
+      "activity": "trade Sentient Cores for standing",
+      "meta": "27,000 standing, 30 Cores, 80,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "The Quills Standing", "amount": "27,000" },
+      "spends": [{ "currency": "Intact Sentient Core", "amount": "30" }],
+      "map": "cetus",
+      "rows": [
+        {
+          "qty": null,
+          "label": "Rank 1, Mote",
+          "note": "5,000 standing; 10 Intact Sentient Core, 30,000 cr",
+          "alt": null,
+          "done": false,
+          "rank": { "syndicate": "The Quills", "level": 1 }
         },
         {
           "qty": null,
-          "label": "Mask of the Lost One",
-          "note": "Nakak: choose 'Mask?'",
-          "alt": "1 Cetus Wisp",
-          "done": false
+          "label": "Rank 2, Observer",
+          "note": "22,000 standing; 20 Intact Sentient Core, 50,000 cr",
+          "alt": null,
+          "done": false,
+          "rank": { "syndicate": "The Quills", "level": 2 }
         }
       ],
       "conditions": [
-        "The daily Quills standing cap is 16,000 + 500 per Mastery Rank, so Rank 2 takes at least two days.",
-        "Hand cores to Onkko for standing. At night, engage the Teralyst and kill its Vomvalysts without lures; Ivara's Prowl can steal a second core before the kill.",
-        "If Nakak has no mask after you rank up, leave and re-enter Cetus. Start Mask of the Revenant from the Codex after buying it."
+        "Cores drop from Sentient enemies such as Eidolon Vomvalysts. Onkko pays 250 standing for an Intact core, 750 for an Exceptional, 1,500 for a Flawless and 2,000 for a Narmer Isoplast.",
+        "The daily Quills standing cap is 16,000 + 500 per Mastery Rank."
       ],
-      "bonuses": [
-        "Archon Hunts and Narmer Isoplasts are strong passive sources of Quills standing if available."
-      ],
-      "disclosures": [
+      "bonuses": [],
+      "disclosures": [],
+      "ref": "The Quills Standing",
+      "quest": "Mask of the Revenant"
+    },
+    {
+      "type": "vendor",
+      "place": "CETUS, EARTH",
+      "sub": "Nakak",
+      "activity": "buy the Mask of the Lost One",
+      "meta": "1 Cetus Wisp",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Cetus Wisp", "amount": "1" }],
+      "map": "cetus",
+      "rows": [
         {
-          "title": "the quest is a build gate",
-          "body": "The quest does not award the components. It pauses twice until you farm and build base Revenant components, so start the two easy bounty tiers first."
+          "qty": null,
+          "label": "Mask of the Lost One",
+          "note": "talk to Nakak and choose 'Mask?'",
+          "alt": null,
+          "done": false
         }
-      ]
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": [],
+      "quest": "Mask of the Revenant"
     },
     {
       "type": "bounty",
@@ -85,15 +159,15 @@
         {
           "qty": null,
           "label": "Systems Blueprint",
-          "note": "Lvl 20-40: 23-26% final stage",
-          "alt": "~9% at stages 2-3",
+          "note": "Lvl 20-40: 23.19-26.47% final stage",
+          "alt": "9.04-10.47% at stages 2-3",
           "done": false
         },
         {
           "qty": null,
           "label": "Chassis Blueprint",
-          "note": "Lvl 30-50: ~22% final stage",
-          "alt": "Plague Star: 14-16% when live",
+          "note": "Lvl 30-50: 21.62-22.22% final stage",
+          "alt": "Plague Star bounties: 14.04-16.11%",
           "done": false
         },
         {
@@ -105,22 +179,25 @@
         }
       ],
       "conditions": [
-        "Each component is tied to exactly one bounty tier. Running a different tier cannot drop it.",
+        "Each component is tied to one bounty tier. Running a different tier cannot drop it.",
         "Only the Lvl 40-60 bounty drops Neuroptics, and only at stages 4 and 5. Never extract early; the final-stage chance is higher.",
-        "Do Systems and Chassis first so the quest's component build gates do not interrupt the Neuroptics farm."
+        "The quest pauses twice until you have built a Revenant component, so do Systems and Chassis first."
       ],
-      "bonuses": [
-        "Bounties commonly provide Cetus Wisps; do not deliberately farm the four needed for the mask and Systems unless short."
-      ],
-      "disclosures": []
+      "bonuses": [],
+      "disclosures": [
+        {
+          "title": "the Circuit instead",
+          "body": "After The Duviri Paradox, pick Revenant in the Normal Circuit during week 10 of its 11-week rotation. Tier 2 gives the Neuroptics, tier 5 the Chassis, tier 8 the Systems and tier 10 the main blueprint, so it skips the quest, the Quills and every bounty."
+        }
+      ]
     },
     {
       "type": "farm",
       "place": "PLAINS OF EIDOLON, EARTH",
       "sub": null,
       "activity": "night quest finale",
-      "meta": "after all three components build",
-      "mode": "Operator with mask equipped",
+      "meta": "after two components are built",
+      "mode": "Operator with the mask equipped",
       "live": null,
       "skip": null,
       "earns": null,
@@ -136,51 +213,14 @@
         }
       ],
       "conditions": [
-        "At night, touch the three Gara Toht Lake energy blotches as the Operator while wearing the mask, then defeat the Revenant Specter.",
-        "The mask is on the Operator suit, not the Drifter. If the Specter does not appear, re-enter the Plains and try the finale again.",
-        "The first main blueprint must come from this quest; Simaris only sells additional copies."
+        "At night, as the Operator wearing the mask, touch the energy blotch at three spots around Gara Toht Lake. The third one brings out the Revenant Specter; defeat it for the blueprint.",
+        "The mask goes on the Operator suit, not the Drifter."
       ],
       "bonuses": [
-        "Octavia's Mallet, Mesa's Peacemaker, or forced finishers make the Specter encounter trivial."
+        "Octavia's Mallet, Mesa's Peacemaker, or a forced finisher makes the Specter trivial."
       ],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "THE CIRCUIT, DUVIRI",
-      "sub": null,
-      "activity": "normal Circuit weekly reward path",
-      "meta": "guaranteed alternate route",
-      "mode": "Revenant week: week 10 of 11",
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": "duviri",
-      "rows": [
-        {
-          "qty": null,
-          "label": "Revenant Neuroptics",
-          "note": "tier 2",
-          "alt": null,
-          "done": false
-        },
-        { "qty": null, "label": "Revenant Chassis", "note": "tier 5", "alt": null, "done": false },
-        { "qty": null, "label": "Revenant Systems", "note": "tier 8", "alt": null, "done": false },
-        {
-          "qty": null,
-          "label": "Revenant Blueprint",
-          "note": "tier 10",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Complete The Duviri Paradox first. Select Revenant in the normal Circuit when his rotation is live, then reach tier 10 before the weekly reset.",
-        "This avoids the quest, Quills rank, bounties, and all component RNG, but you may wait up to 11 weeks. Check the in-game rotation."
-      ],
-      "bonuses": [],
-      "disclosures": []
+      "disclosures": [],
+      "quest": "Mask of the Revenant"
     },
     {
       "type": "foundry",
@@ -198,28 +238,28 @@
         {
           "qty": null,
           "label": "Neuroptics",
-          "note": "15,000 cr + 15 Intact Cores",
+          "note": "15,000 cr, 3 Neural Sensors, 15 Intact Cores, 6,000 Polymer Bundle, 2,200 Rubedo",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Chassis",
-          "note": "15,000 cr + 10 Intact Cores",
+          "note": "15,000 cr, 3 Morphics, 10 Intact Cores, 1,500 Rubedo, 50 Iradite",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Systems",
-          "note": "15,000 cr + 3 Cetus Wisps",
+          "note": "15,000 cr, 3 Control Module, 3 Cetus Wisp, 8,000 Salvage, 3,000 Polymer Bundle",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Revenant",
-          "note": "25,000 cr + Orokin Cell",
+          "note": "25,000 cr, 1 Orokin Cell",
           "alt": null,
           "done": false
         }
@@ -230,5 +270,65 @@
       "bonuses": [],
       "disclosures": []
     }
-  ]
+  ],
+  "afterQuest": {
+    "effort": 5,
+    "badges": [
+      { "text": "Simaris 50,000 for the main", "tone": "info" },
+      { "text": "Circuit week 10", "tone": "circuit" }
+    ],
+    "groups": [
+      {
+        "type": "currency",
+        "place": "CEPHALON SIMARIS",
+        "sub": null,
+        "activity": "scan targets with the Synthesis Scanner",
+        "meta": "50,000 Standing, ~3 capped days",
+        "mode": null,
+        "live": null,
+        "skip": null,
+        "earns": { "currency": "Cephalon Simaris Standing", "amount": "50,000" },
+        "spends": [],
+        "map": null,
+        "rows": [
+          {
+            "qty": "50,000",
+            "label": "Simaris Standing",
+            "note": "daily cap 16,000 + 500 per Mastery Rank",
+            "alt": null,
+            "done": false
+          }
+        ],
+        "conditions": [],
+        "bonuses": [],
+        "disclosures": [],
+        "ref": "Cephalon Simaris Standing"
+      },
+      {
+        "type": "vendor",
+        "place": "CEPHALON SIMARIS",
+        "sub": null,
+        "activity": "buy the main blueprint",
+        "meta": "50,000 Standing, repeatable",
+        "mode": null,
+        "live": null,
+        "skip": null,
+        "earns": null,
+        "spends": [{ "currency": "Cephalon Simaris Standing", "amount": "50,000" }],
+        "map": null,
+        "rows": [
+          {
+            "qty": null,
+            "label": "Revenant Blueprint",
+            "note": "50,000 Standing",
+            "alt": "Circuit week 10, tier 10",
+            "done": false
+          }
+        ],
+        "conditions": ["Simaris only stocks it once Mask of the Revenant is done."],
+        "bonuses": [],
+        "disclosures": []
+      }
+    ]
+  }
 }

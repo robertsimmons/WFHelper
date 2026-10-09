@@ -10,20 +10,34 @@
     { "text": "no pity", "tone": "warn" }
   ],
   "prices": [{ "label": "built", "amount": "325 p", "money": false }],
+  "routes": [
+    {
+      "name": "Call of the Tempestarii, then Void Storms",
+      "cost": "needs a Railjack and MR 4; the quest gives the main blueprint, the parts drop at 10% a Void Storm clear",
+      "effort": 9,
+      "role": "chosen"
+    },
+    {
+      "name": "After the quest: Cephalon Simaris",
+      "cost": "Simaris sells the main blueprint for 50,000 standing; the parts still drop in Void Storms",
+      "effort": 9,
+      "role": "afterQuest"
+    }
+  ],
   "materials": [
-    { "qty": "6", "label": "Neural Sensors", "note": "Neuroptics" },
-    { "qty": "750", "label": "Rubedo", "note": "Neuroptics" },
-    { "qty": "2,750", "label": "Salvage", "note": "Neuroptics" },
-    { "qty": "8", "label": "Morphics", "note": "Chassis" },
-    { "qty": "650", "label": "Cryotic", "note": "Chassis" },
     { "qty": "3,300", "label": "Alloy Plate", "note": "Chassis" },
-    { "qty": "2", "label": "Argon Crystal", "note": "Systems" },
-    { "qty": "250", "label": "Oxium", "note": "Systems" },
     { "qty": "2,950", "label": "Nano Spores", "note": "Systems" },
-    { "qty": "3", "label": "Orokin Cell", "note": null },
-    { "qty": "2", "label": "Nullstones", "note": "Chassis" },
-    { "qty": "15", "label": "Asterite", "note": "Systems" },
+    { "qty": "2,750", "label": "Salvage", "note": "Neuroptics" },
     { "qty": "1,200", "label": "Titanium", "note": "Neuroptics" },
+    { "qty": "750", "label": "Rubedo", "note": "Neuroptics" },
+    { "qty": "650", "label": "Cryotic", "note": "Chassis" },
+    { "qty": "250", "label": "Oxium", "note": "Systems" },
+    { "qty": "15", "label": "Asterite", "note": "Systems" },
+    { "qty": "8", "label": "Morphics", "note": "Chassis" },
+    { "qty": "6", "label": "Neural Sensors", "note": "Neuroptics" },
+    { "qty": "3", "label": "Orokin Cell", "note": "Sevagoth" },
+    { "qty": "2", "label": "Argon Crystal", "note": "Systems" },
+    { "qty": "2", "label": "Nullstones", "note": "Chassis" },
     { "qty": "70,000", "label": "Credits", "note": null }
   ],
   "groups": [
@@ -31,8 +45,8 @@
       "type": "gate",
       "place": "CODEX",
       "sub": null,
-      "activity": "Call of the Tempestarii",
-      "meta": "awards main blueprint",
+      "activity": "The Deadlock Protocol, a Railjack and MR 4",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -51,32 +65,57 @@
           "qty": null,
           "label": "built Railjack and Reliquary Key",
           "note": "quest prerequisite",
-          "alt": "join a host for later Void Storms",
+          "alt": null,
           "done": false
         },
         {
           "qty": null,
-          "label": "Call of the Tempestarii",
-          "note": "MR4; awards Sevagoth Blueprint",
+          "label": "Mastery Rank 4",
+          "note": "quest prerequisite",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": [],
+      "quest": "Call of the Tempestarii"
+    },
+    {
+      "type": "farm",
+      "place": "CODEX",
+      "sub": null,
+      "activity": "Call of the Tempestarii quest",
+      "meta": "solo-only, three missions",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Sevagoth Blueprint",
+          "note": "quest reward",
           "alt": null,
           "done": false
         }
       ],
       "conditions": [
-        "Start from Cephalon Cy's inbox message or the Codex. The quest runs Arc Silver in Veil Proxima, Seven Sirens in Pluto Proxima, then Obol Crossing in Pluto Proxima."
+        "Start it from Cephalon Cy's inbox message or the Codex. The missions are Arc Silver in Veil Proxima, Seven Sirens in Pluto Proxima, then Obol Crossing in Pluto Proxima."
       ],
-      "bonuses": [
-        "Extra main blueprints cost 50,000 Cephalon Simaris standing if the first is sold or subsumed."
-      ],
-      "disclosures": []
+      "bonuses": ["Finishing it also gives access to the Sisters of Parvos."],
+      "disclosures": [],
+      "quest": "Call of the Tempestarii"
     },
     {
       "type": "farm",
       "place": "NEPTUNE, PLUTO OR VEIL PROXIMA",
       "sub": "active Void Storm",
-      "activity": "Railjack Exterminate",
-      "meta": "~10% per component, end of mission",
-      "mode": "Nu-gua Mines when active",
+      "activity": "Railjack Void Storm",
+      "meta": "10% per part, end of mission",
+      "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
@@ -86,39 +125,38 @@
         {
           "qty": null,
           "label": "Neuroptics Blueprint",
-          "note": "10% completion roll",
+          "note": "10%; 9.52% at Neptune",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Chassis Blueprint",
-          "note": "10% completion roll",
+          "note": "10%; 9.52% at Neptune",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Systems Blueprint",
-          "note": "10% completion roll",
+          "note": "10%; 9.52% at Neptune",
           "alt": null,
           "done": false
         }
       ],
       "conditions": [
-        "The node must have an active Void Storm; running its ordinary Railjack mission gives no Sevagoth roll.",
-        "The blueprint roll is separate from relic rewards. Do not equip, refine or collect Reactant for a better Sevagoth chance.",
-        "Neptune's table is 9.52% rather than 10%, but its lower-level Nu-gua Mines laps are usually fastest. Pluto's Seven Sirens and Veil's Calabash are the other Exterminate options.",
-        "The roll is once at mission completion, with no pity system. Endless missions are not a shortcut."
+        "Only a Void Storm mission rolls these: Neptune Proxima (Meso), Pluto Proxima (Neo) or Veil Proxima (Axi). An ordinary Railjack mission gives no Sevagoth roll.",
+        "The roll is a bonus end-of-mission reward, separate from relics. You do not need to bring or open one.",
+        "Each clear rolls the table once, so it pays at most one blueprint, and there is no pity.",
+        "Neptune needs Railjack Intrinsics 3, Pluto Intrinsics 5, and Veil Intrinsics 7 plus Chimera Prologue."
       ],
       "bonuses": [
-        "Veil is the better choice when you also want Corrupted Holokeys, Railjack Intrinsics, or Epitaph drops.",
-        "A built Railjack and capable crew can make an Exterminate lap roughly 5-6 minutes; weak ships can take twice that."
+        "The other rolls pay Corrupted Holokeys (4 at Neptune, 6 at Pluto, 10 at Veil) and Endo."
       ],
       "disclosures": [
         {
-          "title": "treat this as a Railjack session",
-          "body": "All three parts are flat independent rolls with ugly variance and no token fallback. Run the shortest currently active eligible Exterminate, but set a second goal such as Holokeys or Intrinsics; farming only for one missing blueprint is the burnout trap. Average luck is about 10-15 storms, while long tails can be much worse."
+          "title": "the Exterminate nodes",
+          "body": "Nu-gua Mines in Neptune Proxima, Seven Sirens in Pluto Proxima and Calabash in Veil Proxima are the Exterminate nodes. About 10 clears are expected for any one specific part, and the last missing part is the long wait."
         }
       ]
     },
@@ -159,16 +197,74 @@
         {
           "qty": null,
           "label": "Sevagoth",
-          "note": "25,000 cr, 3 Orokin Cell, 3 days",
+          "note": "25,000 cr, 3 Orokin Cell",
           "alt": null,
           "done": false
         }
       ],
-      "conditions": [
-        "Keep a free Warframe slot for the final claim. Sevagoth, his Shadow and the Exalted Claws are separately moddable, so expect substantial Forma investment after acquisition."
-      ],
+      "conditions": ["Keep a free Warframe slot for the final claim."],
       "bonuses": [],
       "disclosures": []
     }
-  ]
+  ],
+  "afterQuest": {
+    "effort": 9,
+    "badges": [
+      { "text": "Simaris 50,000 for the main", "tone": "info" },
+      { "text": "Railjack RNG", "tone": "warn" }
+    ],
+    "groups": [
+      {
+        "type": "currency",
+        "place": "CEPHALON SIMARIS",
+        "sub": null,
+        "activity": "scan targets with the Synthesis Scanner",
+        "meta": "50,000 Standing, ~3 capped days",
+        "mode": null,
+        "live": null,
+        "skip": null,
+        "earns": { "currency": "Cephalon Simaris Standing", "amount": "50,000" },
+        "spends": [],
+        "map": null,
+        "rows": [
+          {
+            "qty": "50,000",
+            "label": "Simaris Standing",
+            "note": "daily cap 16,000 + 500 per Mastery Rank",
+            "alt": null,
+            "done": false
+          }
+        ],
+        "conditions": [],
+        "bonuses": [],
+        "disclosures": [],
+        "ref": "Cephalon Simaris Standing"
+      },
+      {
+        "type": "vendor",
+        "place": "CEPHALON SIMARIS",
+        "sub": null,
+        "activity": "buy the main blueprint",
+        "meta": "50,000 Standing, repeatable",
+        "mode": null,
+        "live": null,
+        "skip": null,
+        "earns": null,
+        "spends": [{ "currency": "Cephalon Simaris Standing", "amount": "50,000" }],
+        "map": null,
+        "rows": [
+          {
+            "qty": null,
+            "label": "Sevagoth Blueprint",
+            "note": "50,000 Standing",
+            "alt": null,
+            "done": false
+          }
+        ],
+        "conditions": ["Simaris only stocks it once Call of the Tempestarii is done."],
+        "bonuses": [],
+        "disclosures": []
+      }
+    ]
+  }
 }

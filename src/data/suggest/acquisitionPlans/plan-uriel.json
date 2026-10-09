@@ -6,15 +6,32 @@
   "tradeable": false,
   "progress": { "have": 0, "need": 3, "unit": "parts" },
   "badges": [
-    { "text": "long quest gate", "tone": "warn" },
+    { "text": "The Old Peace quest", "tone": "warn" },
     { "text": "Perita Rebellion grind", "tone": "warn" }
   ],
-  "prices": [{ "label": "build", "amount": "25,000 cr", "money": false }],
+  "prices": [
+    { "label": "build", "amount": "25,000 cr", "money": false },
+    { "label": "built", "amount": "370 p", "money": false }
+  ],
+  "routes": [
+    {
+      "name": "The Old Peace, then Roathe's Oblivion",
+      "cost": "the quest gives the main blueprint; Roathe drops each part at 12.5% a kill, or 25 Maphica each",
+      "effort": 6,
+      "role": "chosen"
+    },
+    {
+      "name": "After the quest: Roathe's shop",
+      "cost": "Roathe sells the main blueprint for 75 Maphica; the parts drop or cost 25 Maphica each",
+      "effort": 6,
+      "role": "afterQuest"
+    }
+  ],
   "materials": [
-    { "qty": "1", "label": "Orokin Cell", "note": null },
-    { "qty": "1,975", "label": "Agnovidisc", "note": null },
-    { "qty": "880", "label": "Laudavi", "note": null },
-    { "qty": "350", "label": "Servoris", "note": null },
+    { "qty": "1,975", "label": "Agnovidisc", "note": "625 Neuroptics, 925 Chassis, 425 Systems" },
+    { "qty": "880", "label": "Laudavi", "note": "340 Neuroptics, 130 Chassis, 410 Systems" },
+    { "qty": "350", "label": "Servoris", "note": "135 Neuroptics, 145 Chassis, 70 Systems" },
+    { "qty": "1", "label": "Orokin Cell", "note": "Uriel" },
     { "qty": "70,000", "label": "Credits", "note": null }
   ],
   "groups": [
@@ -22,8 +39,8 @@
       "type": "gate",
       "place": "MAIN QUESTLINE",
       "sub": null,
-      "activity": "clear every quest through The Lotus Eaters, then The Old Peace",
-      "meta": "~75 minutes for The Old Peace alone",
+      "activity": "The Lotus Eaters",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -33,35 +50,55 @@
       "rows": [
         {
           "qty": null,
-          "label": "all main quests through The Lotus Eaters",
-          "note": null,
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "The Old Peace",
-          "note": "mails the Uriel main blueprint plus 75 each Lyroic Bridge / Ren Hypercore / Ascaris Prime; unlocks the Dark Refractory and La Cathédrale",
+          "label": "The Lotus Eaters",
+          "note": "needed for The Old Peace",
           "alt": null,
           "done": false
         }
       ],
-      "conditions": [
-        "Mission Preview lets you into Descendia and Perita Rebellion without finishing the quest, but you cannot access the Devil's Triad vendors there: it isn't a real shortcut."
-      ],
+      "conditions": [],
       "bonuses": [],
-      "disclosures": []
+      "disclosures": [],
+      "quest": "The Old Peace"
+    },
+    {
+      "type": "farm",
+      "place": "CODEX",
+      "sub": null,
+      "activity": "The Old Peace quest",
+      "meta": "main quest",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Uriel Blueprint",
+          "note": "quest reward",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [
+        "Also pays 75 each of Lyroic Bridge, Ren Hypercore and Ascaris Prime, and opens the Dark Refractory, the Descendia and La Cathédrale."
+      ],
+      "disclosures": [],
+      "quest": "The Old Peace"
     },
     {
       "type": "boss",
       "place": "DESCENDIA, DARK REFRACTORY",
       "sub": "Infernum 21, Roathe's Oblivion",
-      "activity": "repeat the floor-21 boss after one weekly full clear",
+      "activity": "fight Roathe at the Infernum 21 checkpoint",
       "meta": "12.5% per component; ~8 kills expected per specific part",
       "mode": null,
       "live": null,
       "skip": null,
-      "earns": null,
+      "earns": { "currency": "Maphica", "amount": "75" },
       "spends": [],
       "map": null,
       "rows": [
@@ -70,7 +107,7 @@
           "label": "Uriel Neuroptics",
           "note": "12.5%, shared pool with Vinquibus parts",
           "alt": {
-            "text": "or Roathe's Surplus",
+            "text": "or 25 Maphica at Roathe",
             "spends": [{ "currency": "Maphica", "amount": "25" }]
           },
           "done": false
@@ -80,7 +117,7 @@
           "label": "Uriel Chassis",
           "note": "12.5%, shared pool with Vinquibus parts",
           "alt": {
-            "text": "or Roathe's Surplus",
+            "text": "or 25 Maphica at Roathe",
             "spends": [{ "currency": "Maphica", "amount": "25" }]
           },
           "done": false
@@ -90,29 +127,30 @@
           "label": "Uriel Systems",
           "note": "12.5%, shared pool with Vinquibus parts",
           "alt": {
-            "text": "or Roathe's Surplus",
+            "text": "or 25 Maphica at Roathe",
             "spends": [{ "currency": "Maphica", "amount": "25" }]
           },
           "done": false
         }
       ],
       "conditions": [
-        "Clear the tower once per week to unlock the floor-21 hellevator; after that, repeat Roathe with no weekly limit.",
-        "The drop pool is shared with the Vinquibus bayonet's parts: runs that 'give nothing' are usually Vinquibus duplicates, which cannot be broken down.",
-        "Descendia is a no-respawn mode: a squad wipe fails the floor."
+        "Progress resets every Monday 00:00 UTC. Descend once to reach the Infernum 21 checkpoint, then fight Roathe there as often as you like.",
+        "Each kill drops one Uriel component or one Vinquibus blueprint or component, so some kills give nothing for Uriel.",
+        "There is no self-revive; only another Tenno can revive you."
       ],
       "bonuses": [
-        "Maphica also drops from containers on every floor plus fixed floor rewards (Infernums 2, 4, 9, 11, 16, 18): a complete Uriel set costs 150 Maphica with zero RNG if you'd rather buy it outright.",
-        "Watch for a loot-room week (a Plunder/treasure floor placed early): one reported ~40 Maphica per one-minute Xaku run that week."
+        "Maphica drops from storage containers on every floor and as 5 at a time on Infernums 2, 4, 9, 11, 16 and 18. Marie Leroux in La Cathédrale also sells 10 a day for Agnovidisc, Laudavi or Servoris.",
+        "Mission Preview, which needs The Teacher, opens the Descendia before The Old Peace, but not Roathe's shop."
       ],
-      "disclosures": []
+      "disclosures": [],
+      "ref": "Maphica"
     },
     {
       "type": "foundry",
       "place": "FOUNDRY",
       "sub": null,
       "activity": "build components, then Uriel",
-      "meta": "12h each component, 3 days main, 25,000 cr + 1 Orokin Cell",
+      "meta": "12h each, then 72h",
       "mode": null,
       "live": null,
       "skip": null,
@@ -144,7 +182,7 @@
         {
           "qty": null,
           "label": "Uriel",
-          "note": "25,000 cr, 1 Orokin Cell, 3 days",
+          "note": "25,000 cr, 1 Orokin Cell",
           "alt": null,
           "done": false
         }
@@ -153,5 +191,67 @@
       "bonuses": [],
       "disclosures": []
     }
-  ]
+  ],
+  "afterQuest": {
+    "effort": 6,
+    "badges": [
+      { "text": "75 Maphica for the main", "tone": "info" },
+      { "text": "Perita Rebellion grind", "tone": "warn" }
+    ],
+    "groups": [
+      {
+        "type": "currency",
+        "place": "DESCENDIA, DARK REFRACTORY",
+        "sub": null,
+        "activity": "descend the tower and break containers",
+        "meta": "75 Maphica",
+        "mode": null,
+        "live": null,
+        "skip": null,
+        "earns": { "currency": "Maphica", "amount": "75" },
+        "spends": [],
+        "map": null,
+        "rows": [
+          {
+            "qty": "75",
+            "label": "Maphica",
+            "note": "5 at Infernums 2, 4, 9, 11, 16 and 18, plus storage containers",
+            "alt": null,
+            "done": false
+          }
+        ],
+        "conditions": [],
+        "bonuses": [
+          "Marie Leroux in La Cathédrale sells 10 a day for Agnovidisc, Laudavi or Servoris."
+        ],
+        "disclosures": [],
+        "ref": "Maphica"
+      },
+      {
+        "type": "vendor",
+        "place": "ROATHE, LA CATHÉDRALE",
+        "sub": "Sanctum Anatomica",
+        "activity": "buy the main blueprint",
+        "meta": "75 Maphica",
+        "mode": null,
+        "live": null,
+        "skip": null,
+        "earns": null,
+        "spends": [{ "currency": "Maphica", "amount": "75" }],
+        "map": null,
+        "rows": [
+          {
+            "qty": null,
+            "label": "Uriel Blueprint",
+            "note": "75 Maphica",
+            "alt": null,
+            "done": false
+          }
+        ],
+        "conditions": [],
+        "bonuses": [],
+        "disclosures": []
+      }
+    ]
+  }
 }

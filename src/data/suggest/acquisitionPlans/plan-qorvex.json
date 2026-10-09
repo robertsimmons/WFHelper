@@ -13,18 +13,71 @@
     { "label": "build", "amount": "70,000 cr", "money": false },
     { "label": "built", "amount": "325 p", "money": false }
   ],
+  "routes": [
+    {
+      "name": "Whispers in the Walls, then Sanctum Anatomica bounties",
+      "cost": "the quest gives the main blueprint; parts drop at about 13% a bounty stage, or 20,000 Cavia Standing each",
+      "effort": 3,
+      "role": "chosen"
+    },
+    {
+      "name": "After the quest: Cavia Rank 4",
+      "cost": "Bird 3 sells the main blueprint for 50,000 standing once you hold Rank 4",
+      "effort": 6,
+      "role": "afterQuest"
+    }
+  ],
   "materials": [
-    { "qty": "4", "label": "Argon Crystal", "note": "2 Chassis, 2 Systems" },
+    {
+      "qty": "5,700",
+      "label": "Entrati Obols",
+      "note": "2,300 Neuroptics, 1,900 Chassis, 1,500 Systems"
+    },
     { "qty": "155", "label": "Necracoil", "note": null },
-    { "qty": "1", "label": "Echo Voca", "note": null },
+    { "qty": "7", "label": "Entrati Lanthorn", "note": "3 Neuroptics, 4 Systems" },
+    { "qty": "4", "label": "Argon Crystal", "note": "2 Chassis, 2 Systems" },
+    { "qty": "1", "label": "Echo Voca", "note": "Qorvex" },
     { "qty": "70,000", "label": "Credits", "note": null }
   ],
   "groups": [
     {
       "type": "gate",
+      "place": "QUESTS",
+      "sub": null,
+      "activity": "Heart of Deimos and The New War",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Heart of Deimos",
+          "note": "needed for Whispers in the Walls",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "The New War",
+          "note": "needed for Whispers in the Walls",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": [],
+      "quest": "Whispers in the Walls"
+    },
+    {
+      "type": "farm",
       "place": "CODEX",
       "sub": null,
-      "activity": "Whispers in the Walls",
+      "activity": "Whispers in the Walls quest",
       "meta": "solo-only",
       "mode": null,
       "live": null,
@@ -35,22 +88,16 @@
       "rows": [
         {
           "qty": null,
-          "label": "Heart of Deimos, then The New War",
-          "note": "quest prerequisites",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Whispers in the Walls",
-          "note": "awards Qorvex Blueprint",
+          "label": "Qorvex Blueprint",
+          "note": "quest reward",
           "alt": null,
           "done": false
         }
       ],
-      "conditions": ["Completing the quest unlocks Sanctum Anatomica and the Cavia syndicate."],
-      "bonuses": ["The main blueprint is free; only the three component blueprints need farming."],
-      "disclosures": []
+      "conditions": [],
+      "bonuses": ["Finishing it unlocks Sanctum Anatomica and the Cavia syndicate."],
+      "disclosures": [],
+      "quest": "Whispers in the Walls"
     },
     {
       "type": "bounty",
@@ -58,7 +105,7 @@
       "sub": "Fibonacci",
       "activity": "Cavia bounties",
       "meta": "~13% per stage",
-      "mode": "cycle Tier 1, 2 and 3",
+      "mode": "cycle the Lvl 55-60, 65-70 and 75-80 bounties",
       "live": null,
       "skip": null,
       "earns": null,
@@ -68,84 +115,47 @@
         {
           "qty": null,
           "label": "Neuroptics Blueprint",
-          "note": "13.04%, Tier 1 (Lvl 55-60)",
-          "alt": "or 20,000 Cavia standing at Bird 3",
+          "note": "13.04%, Lvl 55-60",
+          "alt": {
+            "text": "or 20,000 Cavia Standing at Bird 3",
+            "spends": [{ "currency": "Cavia Standing", "amount": "20,000" }]
+          },
           "done": false
         },
         {
           "qty": null,
           "label": "Chassis Blueprint",
-          "note": "13.56%, Tier 2 (Lvl 65-70)",
-          "alt": "or 20,000 Cavia standing at Bird 3",
+          "note": "13.56%, Lvl 65-70",
+          "alt": {
+            "text": "or 20,000 Cavia Standing at Bird 3",
+            "spends": [{ "currency": "Cavia Standing", "amount": "20,000" }]
+          },
           "done": false
         },
         {
           "qty": null,
           "label": "Systems Blueprint",
-          "note": "12.40%, Tier 3 (Lvl 75-80)",
-          "alt": "or 20,000 Cavia standing at Bird 3",
+          "note": "12.40%, Lvl 75-80",
+          "alt": {
+            "text": "or 20,000 Cavia Standing at Bird 3",
+            "spends": [{ "currency": "Cavia Standing", "amount": "20,000" }]
+          },
           "done": false
         }
       ],
       "conditions": [
         "Part rewards roll at every bounty stage, not once per completed bounty.",
-        "Tier 4 and 5 never drop Qorvex parts. Run them for standing only, not for blueprints.",
-        "Cycle the three low tiers so each run can advance a missing component."
+        "Only the Lvl 55-60, 65-70 and 75-80 bounties drop Qorvex parts, each one a single component."
       ],
       "bonuses": [
-        "These Laboratory runs also drop the Entrati Obols, Necracoil, Stela and Lanthorns needed for the build.",
-        "Search for Voca while running bounties: an Echo Voca is required for the final build."
+        "Every Albrecht's Laboratories mission hides one guaranteed Echo Voca among its medallions; the final build needs one."
       ],
       "disclosures": [
         {
-          "title": "standing is insurance, not the fast route",
-          "body": "Bird 3's component blueprints require Cavia Rank 2 (Researcher) and 20,000 standing each. Daily standing limits turn an all-pity set into several days, while the low-tier bounty drops are usually an evening or two."
+          "title": "buying parts with standing",
+          "body": "Bird 3 sells each component for 20,000 Cavia Standing at Rank 2 (Researcher). Reaching Rank 2 takes 27,000 standing and 35,000 credits across Ranks 1 and 2, plus 3 Shrill Voca, 300 Entrati Obols and 1,100 Rubedo for Rank 1, then 5 Shrill Voca, 60 Voidgel Orb, 12 Necracoil and 8 Stela for Rank 2."
         }
       ]
-    },
-    {
-      "type": "vendor",
-      "place": "SANCTUM ANATOMICA, DEIMOS",
-      "sub": null,
-      "activity": "Bird 3",
-      "meta": "Rank 2: Researcher",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [{ "currency": "Cavia Standing", "amount": "60,000" }],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Neuroptics Blueprint",
-          "note": "20,000 standing",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Chassis Blueprint",
-          "note": "20,000 standing",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Systems Blueprint",
-          "note": "20,000 standing",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Only buy the components still missing after bounty runs; do not spend standing early on a part that can still drop.",
-        "Researcher itself needs 22,000 standing, 5 Shrill Voca, 60 Voidgel Orb, 12 Necracoil, 8 Stela and 25,000 credits."
-      ],
-      "bonuses": [
-        "Deep Archimedea, Netracells and incidental Voca can fund the safety net without a dedicated standing grind."
-      ],
-      "disclosures": []
     },
     {
       "type": "foundry",
@@ -193,5 +203,98 @@
       "bonuses": [],
       "disclosures": []
     }
-  ]
+  ],
+  "afterQuest": {
+    "effort": 6,
+    "badges": [
+      {
+        "text": "Cavia Rank 4",
+        "tone": "warn",
+        "rank": { "syndicate": "Cavia", "level": 4 }
+      },
+      { "text": "50,000 standing for the main", "tone": "info" }
+    ],
+    "groups": [
+      {
+        "type": "currency",
+        "place": "ALBRECHT'S LABORATORIES, DEIMOS",
+        "sub": null,
+        "activity": "Fibonacci's bounties; collect Voca and hand spares to Loid",
+        "meta": "Echo 2,000, Bellow 1,000, Shrill 500 standing a Voca",
+        "mode": null,
+        "live": null,
+        "skip": null,
+        "earns": { "currency": "Cavia Standing", "amount": "191,000" },
+        "spends": [],
+        "map": null,
+        "rows": [
+          {
+            "qty": null,
+            "label": "Rank 1, Assistant",
+            "note": "5,000 standing; 3 Shrill Voca, 300 Entrati Obols, 1,100 Rubedo, 10,000 cr",
+            "alt": null,
+            "done": false,
+            "rank": { "syndicate": "Cavia", "level": 1 }
+          },
+          {
+            "qty": null,
+            "label": "Rank 2, Researcher",
+            "note": "22,000 standing; 5 Shrill Voca, 60 Voidgel Orb, 12 Necracoil, 8 Stela, 25,000 cr",
+            "alt": null,
+            "done": false,
+            "rank": { "syndicate": "Cavia", "level": 2 }
+          },
+          {
+            "qty": null,
+            "label": "Rank 3, Colleague",
+            "note": "44,000 standing; 2 Bellow Voca, 8 Shrill Voca, 15 Necracoil, 16 Stela, 50,000 cr",
+            "alt": null,
+            "done": false,
+            "rank": { "syndicate": "Cavia", "level": 3 }
+          },
+          {
+            "qty": null,
+            "label": "Rank 4, Scholar",
+            "note": "70,000 standing; 1 Echo Voca, 10 Bellow Voca, 1,500 Entrati Obols, 5 Entrati Lanthorn, 100,000 cr",
+            "alt": null,
+            "done": false,
+            "rank": { "syndicate": "Cavia", "level": 4 }
+          }
+        ],
+        "conditions": [
+          "The rank-ups eat 16 Shrill, 12 Bellow and 1 Echo Voca; hold those back before handing Voca to Loid."
+        ],
+        "bonuses": [
+          "Netracells pay 5,000 standing each and the three Deep Archimedea missions pay 15,000 together."
+        ],
+        "disclosures": [],
+        "ref": "Cavia Standing"
+      },
+      {
+        "type": "vendor",
+        "place": "BIRD 3, SANCTUM ANATOMICA",
+        "sub": null,
+        "activity": "buy the main blueprint",
+        "meta": "Rank 4, Scholar",
+        "mode": null,
+        "live": null,
+        "skip": null,
+        "earns": null,
+        "spends": [{ "currency": "Cavia Standing", "amount": "50,000" }],
+        "map": null,
+        "rows": [
+          {
+            "qty": null,
+            "label": "Qorvex Blueprint",
+            "note": "50,000 standing",
+            "alt": null,
+            "done": false
+          }
+        ],
+        "conditions": [],
+        "bonuses": [],
+        "disclosures": []
+      }
+    ]
+  }
 }

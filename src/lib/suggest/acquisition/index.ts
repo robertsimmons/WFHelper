@@ -16,6 +16,7 @@ import {
   listNecramechs,
   listSentinels,
   ownsItem,
+  PLEXUS,
   type GearEntry,
 } from "./parts.js";
 import { buildPaths, headlinePath } from "./paths.js";
@@ -188,6 +189,25 @@ export function resolveAcquisition(ctx: AcquisitionContext): AcquisitionTarget[]
     }
   }
 
+  // Only the roster knows the Plexus, so without one it is not swept at all.
+  const plexusListed = ctx.mastery?.items?.some((item) => item.uniqueName === PLEXUS.uniqueName);
+  if (plexusListed && (!kinds || kinds.has("plexus")) && (!only || only.has("plexus"))) {
+    if (!isMastered(PLEXUS.uniqueName, PLEXUS.name)) {
+      wanted.push({
+        ...PLEXUS,
+        kind: "plexus",
+        weaponClass: null,
+        modular: null,
+        needs: ["mastery"],
+        nemesis: null,
+        incarnon: null,
+        extraSources: [],
+        build: false,
+        copies: null,
+      });
+    }
+  }
+
   if (!kinds || kinds.has("modular")) {
     for (const gear of listModularGear(itemDb, isFinished)) {
       if (only && !only.has(gear.name.toLowerCase())) continue;
@@ -281,6 +301,7 @@ export function resolveAcquisition(ctx: AcquisitionContext): AcquisitionTarget[]
       incarnon: item.incarnon,
       questDone: planDone === null ? questDone : () => planDone,
       afterQuest: plan ? afterQuestRoute(plan, player.quests) : null,
+      plan,
     });
     return {
       uniqueName: item.uniqueName,

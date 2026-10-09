@@ -5,7 +5,7 @@ import { relicCost } from "./relics.js";
 import { UNKNOWN_EFFORT, type Ratings } from "./ratings.js";
 import type { RawInventoryData } from "../../../types/inventory.js";
 import type { RelicDatabase } from "../../../types/relics.js";
-import type { PlanAfterQuest, PlanGroupType } from "./plan/schema.js";
+import type { PlanAfterQuest, PlanGroup, PlanGroupType, PlanSource } from "./plan/schema.js";
 import type { QuestDone } from "./quests.js";
 import type {
   AcquisitionPath,
@@ -98,6 +98,7 @@ export function headlinePath(paths: readonly AcquisitionPath[]): AcquisitionPath
 
 /** The plan rates the route left once its quest has paid out, so that one leads. */
 const AFTER_QUEST_ID = "afterQuest";
+const PLAN_ID = "plan";
 
 /** The Circuit's frame rotation is an alternative, never the farm while one exists. */
 function headlineRank(path: AcquisitionPath): number {
@@ -195,7 +196,11 @@ interface PathInputs {
   questDone?: QuestDone | null;
   /** The plan's route once its quest has paid out, rated by the plan. */
   afterQuest?: PlanAfterQuest | null;
+  /** The authored plan, the route for an item no table or derivation sources. */
+  plan?: PlanRoute | null;
 }
+
+type PlanRoute = Pick<PlanAfterQuest, "effort" | "groups"> & { source?: PlanSource };
 
 const ROUTE_KINDS: Partial<Record<PlanGroupType, PathKind>> = {
   vendor: "vendor",
@@ -209,16 +214,55 @@ const ROUTE_KINDS: Partial<Record<PlanGroupType, PathKind>> = {
 /** Plan effort is 1-10; a path's is 0-1. */
 const PLAN_EFFORT_SCALE = 10;
 
-function afterQuestPath(
-  route: PlanAfterQuest,
+const PLACE_KINDS: ReadonlyArray<readonly [RegExp, PathKind]> = [
+  [/^MARKET\b/, "market"],
+  [/^CLAN DOJO\b/, "lab"],
+];
+
+function groupKind(group: PlanGroup): PathKind | undefined {
+  const kind = ROUTE_KINDS[group.type];
+  if (kind !== "vendor") return kind;
+  return PLACE_KINDS.find(([pattern]) => pattern.test(group.place))?.[1] ?? kind;
+}
+
+/** A plan whose only way in is a gate reads as the one grind its source names. */
+const SOURCE_KINDS: Partial<Record<PlanSource, PathKind>> = {
+  dojo: "lab",
+  bounties: "bounty",
+  railjack: "mission",
+  boss: "boss",
+  relics: "relics",
+  repeat: "mission",
+  standing: "vendor",
+  shop: "vendor",
+};
+
+function planLead(
+  route: PlanRoute,
+  questDone?: QuestDone | null,
+): readonly [PlanGroup, PathKind] | null {
+  const open = route.groups.filter((group) => !(group.quest && questDone?.(group.quest)));
+  for (const group of open) {
+    const kind = groupKind(group);
+    if (kind) return [group, kind];
+  }
+  const gate = open.find((group) => group.type === "gate");
+  const kind = route.source ? SOURCE_KINDS[route.source] : undefined;
+  return gate && kind ? [gate, kind] : null;
+}
+
+function planPath(
+  id: string,
+  route: PlanRoute,
   missing: readonly PartState[],
+  questDone?: QuestDone | null,
 ): AcquisitionPath | null {
-  const lead = route.groups.find((group) => ROUTE_KINDS[group.type]);
-  const kind = lead ? ROUTE_KINDS[lead.type] : undefined;
-  if (!lead || !kind) return null;
+  const found = planLead(route, questDone);
+  if (!found) return null;
+  const [lead, kind] = found;
   const where = lead.activity ? `${lead.place} - ${lead.activity}` : lead.place;
   return {
-    id: AFTER_QUEST_ID,
+    id,
     kind,
     covers: missing.map((part) => part.name),
     complete: true,
@@ -313,13 +357,21 @@ export function buildPaths(input: PathInputs): AcquisitionPath[] {
   }
   const difficulty = input.ratings.effort(input.name);
   const paths = curatedPaths(input, missing);
-  const after = input.afterQuest ? afterQuestPath(input.afterQuest, missing) : null;
+  const after = input.afterQuest ? planPath(AFTER_QUEST_ID, input.afterQuest, missing) : null;
   if (after) paths.push(after);
+  const authored =
+    !after && input.plan && sourcesFor(input).length === 0 && !input.nemesis
+      ? planPath(PLAN_ID, input.plan, missing, input.questDone)
+      : null;
+  // A Prime's relic path already counts the relics in hand.
+  if (authored && !(input.isPrime && authored.kind === "relics")) paths.push(authored);
 
   if (input.nemesis) paths.push(nemesisPath(input, input.nemesis, missing));
   if (input.incarnon && !input.incarnon.owned) paths.push(adapterPath(input, input.incarnon));
 
-  if (input.isPrime) {
+  // A Prime handed over whole, such as Venari Prime with Khora Prime, has no
+  // parts for a relic to drop.
+  if (input.isPrime && input.parts.known) {
     const relics = relicCost(missing, input.inventory, input.relicDb);
     paths.push(
       makePath(

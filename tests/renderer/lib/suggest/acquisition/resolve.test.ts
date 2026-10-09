@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 
 import { resolveAcquisition } from "../../../../../src/lib/suggest/acquisition/index.js";
+import { remainingEffort, sortKeys } from "../../../../../src/lib/suggest/acquisition/sort.js";
 import {
   BALLA,
   CARRIER,
@@ -360,6 +361,71 @@ describe("resolveAcquisition beyond frames and weapons", () => {
     const names = companions().map((target) => target.name);
     expect(names).not.toContain("Balla");
     expect(names).not.toContain("Peye");
+  });
+
+  it("routes a companion no table sources through its plan", () => {
+    const carrier = find(companions(), "Carrier");
+    expect(carrier.paths[0]).toMatchObject({
+      id: "plan",
+      kind: "market",
+      effort: 0.2,
+      steps: [{ kind: "market", where: "MARKET - buy blueprint" }],
+    });
+    expect(carrier.effort).toBe(0.2);
+    expect(find(companions(), "Moa").paths[0]).toMatchObject({ id: "plan", kind: "vendor" });
+  });
+
+  it("sorts a plan with no route by the plan's effort, never as unknown", () => {
+    const sahasa = find(companions(), "Sahasa Kubrow");
+    expect(sahasa.paths.some((path) => path.id === "plan")).toBe(false);
+    expect(remainingEffort(sahasa)).toBe(0.5);
+    expect(sortKeys(sahasa, "difficulty")).toEqual([0.5]);
+  });
+
+  it("reads a gate-only plan's route off the plan's source", () => {
+    expect(find(companions(), "Voidrig").paths[0]).toMatchObject({
+      id: "plan",
+      kind: "vendor",
+      effort: 0.5,
+      steps: [{ where: "HEART OF DEIMOS, THEN THE WAR WITHIN - clear the story gates" }],
+    });
+  });
+
+  it("sweeps Venari, which the item database exports unmasterable", () => {
+    const db = companionDb();
+    db["/Lotus/Powersuits/Khora/Kavat/KhoraKavatPowerSuit"] = {
+      name: "Venari",
+      masterable: false,
+      productCategory: "SpecialItems",
+    };
+    db["/Lotus/Powersuits/Khora/Kavat/KhoraPrimeKavatPowerSuit"] = {
+      name: "Venari Prime",
+      masterable: false,
+      productCategory: "SpecialItems",
+      isPrime: true,
+    };
+    const targets = companions({ itemDb: db });
+    expect(find(targets, "Venari").kind).toBe("beast");
+    expect(find(targets, "Venari").paths[0]?.id).toBe("plan");
+    expect(find(targets, "Venari Prime").paths).toEqual([]);
+  });
+
+  it("sweeps the Plexus only while the mastery roster lists it unmastered", () => {
+    const plexus = { name: "Plexus", uniqueName: "/Lotus/Types/Game/CrewShip/RailjackHarness" };
+    const names = (status: string | null): string[] =>
+      companions(
+        status ? { mastery: { items: [{ ...plexus, status }] } as MasteryData } : {},
+      ).map((target) => target.name);
+    expect(names(null)).not.toContain("Plexus");
+    expect(names("mastered")).not.toContain("Plexus");
+    expect(names("unranked")).toContain("Plexus");
+  });
+
+  it("keeps a curated frame's routes and a Prime's relic path off the plan", () => {
+    const targets = resolveAcquisition(context());
+    expect(find(targets, "Mag").paths.some((path) => path.id === "plan")).toBe(false);
+    expect(find(targets, "Mag").paths[0].kind).toBe("boss");
+    expect(find(targets, "Mag Prime").paths.map((path) => path.id)).toEqual(["relics"]);
   });
 
   it("banks a chamber or strike fitted to a built weapon", () => {

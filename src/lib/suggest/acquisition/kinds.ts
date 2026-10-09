@@ -8,7 +8,8 @@ export const ACQUISITION_NONE = "none";
 
 export type AcquisitionInclude =
   | typeof ACQUISITION_NONE
-  | "warframe"
+  | "warframe_prime"
+  | "warframe_normal"
   | "primary"
   | "secondary"
   | "melee"
@@ -46,8 +47,11 @@ export const ACQUISITION_INCLUDE_GROUPS: readonly AcquisitionIncludeGroup[] = [
   {
     id: "warframes",
     labelKey: "nextUp.kindWarframe",
-    include: "warframe",
-    members: [],
+    include: null,
+    members: [
+      { include: "warframe_prime", labelKey: "common.prime" },
+      { include: "warframe_normal", labelKey: "common.normal" },
+    ],
   },
   {
     id: "weapons",
@@ -120,7 +124,7 @@ const MODULAR_INCLUDE: Record<ModularGear, AcquisitionInclude> = {
 export function includeOf(target: AcquisitionTarget): AcquisitionInclude | null {
   switch (target.kind) {
     case "warframe":
-      return "warframe";
+      return target.isPrime ? "warframe_prime" : "warframe_normal";
     case "archwing":
       return "archwing";
     case "sentinel":
@@ -129,6 +133,8 @@ export function includeOf(target: AcquisitionTarget): AcquisitionInclude | null 
       return "beast";
     case "necramech":
       return "necramech";
+    case "plexus":
+      return null;
     case "modular":
       return target.modular ? MODULAR_INCLUDE[target.modular.gear] : null;
     case "weapon":

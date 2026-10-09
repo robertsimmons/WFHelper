@@ -7,8 +7,7 @@ import {
 import { resolveAcquisition } from "../../../../src/lib/suggest/acquisition/index.js";
 import { ACQUISITION_NONE } from "../../../../src/lib/suggest/acquisition/kinds.js";
 import { planSource } from "../../../../src/lib/suggest/acquisition/plan/index.js";
-import { effortValue } from "../../../../src/lib/suggest/acquisition/ratings.js";
-import { readyBand } from "../../../../src/lib/suggest/acquisition/sort.js";
+import { readyBand, sortKeys } from "../../../../src/lib/suggest/acquisition/sort.js";
 import { DEFAULT_OPTIONS, defaultPreferences } from "../../../../src/lib/suggest/preferences.js";
 import {
   ACQUISITION_ACTIVITY,
@@ -251,7 +250,10 @@ describe("acquisitionProvider", () => {
       itemDb: { ...itemDb(), ...weaponDb() },
       options: { acquisitionSort: "difficulty" },
     });
-    const efforts = drafts.map((draft) => effortValue(draft.details?.acquisition?.difficulty));
+    const efforts = drafts.map((draft) => {
+      const target = draft.details?.acquisition;
+      return target ? sortKeys(target, "difficulty")[0] : null;
+    });
     const rated = efforts.filter((value): value is number => value !== null);
     expect(efforts.slice(0, rated.length)).toEqual([...rated].sort((a, b) => a - b));
     const nikana = drafts.findIndex((draft) => draft.id === `acquisition:${NIKANA}`);
@@ -261,7 +263,10 @@ describe("acquisitionProvider", () => {
 
   it("offers only the kinds of gear the section is set to include", () => {
     const db = weaponDb();
-    const frames = collect({ itemDb: db, options: { acquisitionKinds: ["warframe"] } });
+    const frames = collect({
+      itemDb: db,
+      options: { acquisitionKinds: ["warframe_prime", "warframe_normal"] },
+    });
     expect(frames).toEqual([]);
     const melee = collect({ itemDb: db, options: { acquisitionKinds: ["melee"] } });
     expect(melee.length).toBeGreaterThan(0);

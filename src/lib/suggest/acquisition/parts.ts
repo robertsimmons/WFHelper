@@ -95,11 +95,14 @@ function isSentinelEntry(uniqueName: string, entry: ItemDbEntry | undefined): bo
 }
 
 const BEAST_PATH = /\/(?:KubrowPet|CatbrowPet|CreaturePets)\//i;
+const VENARI_PATH = /\/Powersuits\/Khora\/Kavat\/Khora(?:Prime)?KavatPowerSuit$/i;
 
 /** Kubrows, Kavats, Predasites and Vulpaphylas, one row per subspecies. Their
  *  parts share the path and reach the export typed as pistols. */
 function isBeastEntry(uniqueName: string, entry: ItemDbEntry | undefined): boolean {
   if (!entry?.name) return false;
+  // Khora's Kavat is exported unmasterable under her suit, yet it ranks for mastery.
+  if (VENARI_PATH.test(uniqueName)) return true;
   if (entry.exalted === true || entry.isBuildComponent === true) return false;
   if (entry.masterable !== true) return false;
   const product = String(entry.productCategory ?? "");
@@ -156,6 +159,13 @@ export function listBeasts(itemDb: Record<string, ItemDbEntry>): GearEntry[] {
 export function listNecramechs(itemDb: Record<string, ItemDbEntry>): GearEntry[] {
   return listSuits(itemDb, isNecramechEntry);
 }
+
+/** The mastery roster's Plexus, which no item database row exports. */
+export const PLEXUS: GearEntry = {
+  uniqueName: "/Lotus/Types/Game/CrewShip/RailjackHarness",
+  name: "Plexus",
+  entry: { name: "Plexus" },
+};
 
 export function ownsItem(uniqueName: string, ownership: Map<string, number>): boolean {
   return ownedComponentCount(uniqueName, ownership) > 0;
@@ -234,7 +244,7 @@ function modularSlots(itemDb: Record<string, ItemDbEntry>, slots: readonly RegEx
   return out;
 }
 
-export function modularGearOf(uniqueName: string): ModularGear | null {
+function modularGearOf(uniqueName: string): ModularGear | null {
   if (CONCLAVE_COPY.test(uniqueName)) return null;
   for (const [pattern, gear] of MODULAR_HEAD_PATHS) {
     if (pattern.test(uniqueName)) return gear;
@@ -393,14 +403,10 @@ function toPartPlan(
   };
 }
 
-/** A part's own blueprint is not the part. componentUniqueNameAliases reads
- *  ".../SpinnerexBlade" and ".../SpinnerexBladeBlueprint" as one pile in two
- *  spellings, which holds only for a part farmed whole: a Prime part reaches the
- *  inventory under the "...Blueprint" spelling and is consumed as it is. Where a
- *  recipe builds the part, the two are separate items, and letting the blueprint
- *  answer for the part tells the card the foundry would take a build it has no
- *  components for. Only the plan drops them - a bought blueprint is still a
- *  thing the player holds, which is what the vendor and Nightwave passes ask. */
+/** A part's blueprint is not the part. The alias that reads "X" and "XBlueprint" as one
+ *  pile holds only for a part farmed whole (Prime parts arrive as "...Blueprint"). Where
+ *  a recipe builds the part they are separate items, else the card claims a build with no
+ *  components. Only the plan drops them; vendor and Nightwave passes still count them. */
 function withoutPartBlueprints(
   ownership: Map<string, number>,
   itemDb: Record<string, ItemDbEntry>,

@@ -87,10 +87,12 @@ describe("weapon sources", () => {
     expect(harder).toBeGreaterThan(unrated);
   });
 
-  it("leaves a weapon with no source and no relics pathless rather than hidden", () => {
+  it("routes a weapon no table sources through its plan rather than hiding it", () => {
     const braton = target("Braton", { curatedWeapons: undefined });
     expect(braton.needs).toContain("mastery");
-    expect(braton.paths.every((path) => path.kind === "circuit")).toBe(true);
+    expect(braton.paths.filter((path) => path.kind !== "circuit").map((path) => path.id)).toEqual([
+      "plan",
+    ]);
   });
 
   it("buys a weapon's main blueprint at the Market and farms its parts elsewhere", () => {

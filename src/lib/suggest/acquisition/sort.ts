@@ -71,8 +71,14 @@ export function readyBand(target: AcquisitionTarget): number {
 export function remainingEffort(target: AcquisitionTarget): number | null {
   if (headlinePath(target.paths)) return target.effort;
   const parts = target.parts;
-  if (target.modular || !parts.known || parts.missing.length > 0) return null;
+  if (target.modular || !parts.known || parts.missing.length > 0) return planEffort(target);
   return parts.buildable ? READY_EFFORT : MATERIALS_EFFORT;
+}
+
+/** Plan effort is 1-10; a sort key's is 0-1. */
+function planEffort(target: AcquisitionTarget): number | null {
+  const effort = target.rating?.effort;
+  return typeof effort === "number" ? effort / 10 : null;
 }
 
 /** A route's effort reads the same for one drop as for four, so the count
@@ -91,7 +97,7 @@ export function partsLeft(target: AcquisitionTarget): number | null {
 export function sortKeys(target: AcquisitionTarget, sort: AcquisitionSort): (number | null)[] {
   switch (sort) {
     case "difficulty":
-      return [effortValue(target.difficulty)];
+      return [effortValue(target.difficulty) ?? planEffort(target)];
     case "tier":
       return [tierOrder(target.tier)];
     case "plat":

@@ -11,6 +11,7 @@ export type AcquisitionKind =
   | "sentinel"
   | "beast"
   | "necramech"
+  | "plexus"
   | "modular";
 
 /** Companion is the sentinel's gun, not the pet that carries it. */

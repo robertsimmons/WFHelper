@@ -6,7 +6,11 @@
   "tradeable": "blueprint and parts",
   "progress": { "have": 0, "need": 4, "unit": "parts" },
   "badges": [
-    { "text": "Necraloid Rank 2 to buy", "tone": "warn" },
+    {
+      "text": "Necraloid Rank 2 to buy",
+      "tone": "warn",
+      "rank": { "syndicate": "Necraloid", "level": 2 }
+    },
     { "text": "MR 11", "tone": "info" }
   ],
   "prices": [
@@ -16,6 +20,7 @@
   "materials": [
     { "qty": "1", "label": "Trapezium Xenorhast", "note": null },
     { "qty": "1", "label": "Cabochon Embolos", "note": null },
+    { "qty": "40", "label": "Father Token", "note": "20 per Loid rank-up" },
     { "qty": "400", "label": "Void Traces", "note": "150 and 250 per Loid rank-up" },
     { "qty": "20,000", "label": "Credits", "note": null }
   ],
@@ -46,6 +51,13 @@
           "note": "unlocks Loid's Necraloid backroom",
           "alt": null,
           "done": false
+        },
+        {
+          "qty": null,
+          "label": "Mastery Rank 11",
+          "note": "to equip the Arum Spinosa",
+          "alt": null,
+          "done": false
         }
       ],
       "conditions": [],
@@ -53,9 +65,9 @@
       "disclosures": []
     },
     {
-      "type": "currency",
-      "place": "NECRALISK, DEIMOS",
-      "sub": "Father and Otak",
+      "type": "vendor",
+      "place": "FATHER AND OTAK, NECRALISK",
+      "sub": null,
       "activity": "rank Entrati to 3 and buy the blueprints it gates",
       "meta": "Entrati Rank 3, Associate",
       "mode": null,
@@ -84,22 +96,24 @@
           "label": "Trapezium Xenorhast Blueprint",
           "note": "Otak, 8,000 standing, Entrati Rank 3; reusable, 3 gems per build",
           "alt": null,
-          "done": false
+          "done": false,
+          "rank": { "syndicate": "Entrati", "level": 3 }
         },
         {
           "qty": null,
           "label": "Cabochon Embolos Blueprint",
           "note": "Otak, 8,000 standing, Entrati Rank 3; reusable, 3 gems per build",
           "alt": null,
-          "done": false
+          "done": false,
+          "rank": { "syndicate": "Entrati", "level": 3 }
         }
       ],
       "conditions": [
-        "Sacrifice the unbuilt barrel blueprints; never put one into the Foundry first."
+        "Sacrifice the unbuilt barrel blueprints; never put one into the Foundry first.",
+        "Entrati Rank 3 costs 44,000 standing, 3 Sly Vulpaphyla Tags, 3 Vizier Predasite Tags, 1 Mother Token and 1 Son Token."
       ],
       "bonuses": [],
-      "disclosures": [],
-      "ref": "Entrati Standing"
+      "disclosures": []
     },
     {
       "type": "bounty",
@@ -149,20 +163,21 @@
           "label": "Necraloid Rank 1",
           "note": "5,000 standing, 10 Orientation Matrix, 20 Father Tokens, Zymos Barrel Blueprint",
           "alt": null,
-          "done": false
+          "done": false,
+          "rank": { "syndicate": "Necraloid", "level": 1 }
         },
         {
           "qty": null,
           "label": "Necraloid Rank 2, Modus",
           "note": "22,000 standing, 15 Ballistics Matrix, 20 Father Tokens, Sepulcrum Barrel Blueprint",
           "alt": null,
-          "done": false
+          "done": false,
+          "rank": { "syndicate": "Necraloid", "level": 2 }
         }
       ],
       "conditions": [
         "Only Tier 2 (Lvl 40-50) vaults drop Arum Spinosa; Tier 1 and Tier 3 don't.",
-        "Clearing the normal Tier 2 vault unlocks its Arcana bounty, started from Mother in the Drift between Albrecht's Prospect and Catabolic Gutter, never from the Necralisk.",
-        "A broken vault exit can void the run's rewards."
+        "Clearing the normal Tier 2 vault unlocks its Arcana bounty, started from Mother in the Drift between Albrecht's Prospect and Catabolic Gutter, never from the Necralisk."
       ],
       "bonuses": [
         "Tier 2 Necramechs drop Ballistics Matrices (2,500 standing each); Orientation is 1,000 and Animus 5,000.",
@@ -171,15 +186,11 @@
       "disclosures": [
         {
           "title": "normal vault odds",
-          "body": "A plain Tier 2 Isolation Vault rolls the Blueprint at 6.25%, Guard at 3.75% and Rivet at 2%. The Arcana version roughly doubles that, and its final stage is the only decent Rivet source. Old advice about watching rotations for the Rivet no longer applies."
+          "body": "A plain Tier 2 Isolation Vault rolls the Blueprint at 6.25%, Guard at 3.75% and Rivet at 2%. The Arcana version roughly doubles that, and its final stage is the only decent Rivet source."
         },
         {
           "title": "pubs and squads",
           "body": "Sporothrix and Arum farm squads run Arcana vaults regularly. Pubs tend to extract after the vault stage, which sends you back to the Necralisk; if they keep bailing, run it solo."
-        },
-        {
-          "title": "buying from players",
-          "body": "Parts are tradeable; before the Loid listing a Rivet went for roughly 40-55 platinum."
         }
       ],
       "ref": "Necraloid Standing"
@@ -206,9 +217,7 @@
         }
       ],
       "conditions": [],
-      "bonuses": [
-        "The Sunpoint drill is the cheaper unlock and has better bonus-bracket and special-gem odds."
-      ],
+      "bonuses": ["The Sunpoint drill is the cheaper unlock and has better special-gem odds."],
       "disclosures": []
     },
     {
@@ -227,7 +236,7 @@
         {
           "qty": null,
           "label": "Arum Spinosa",
-          "note": "20,000 cr, 2 Guard, 1 Rivet, 1 Trapezium Xenorhast, 1 Cabochon Embolos; 12h",
+          "note": "20,000 cr, 2 Guard, 1 Rivet, 1 Trapezium Xenorhast, 1 Cabochon Embolos",
           "alt": null,
           "done": false
         }

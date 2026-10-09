@@ -6,22 +6,18 @@
   "tradeable": "components only",
   "progress": { "have": 0, "need": 4, "unit": "parts" },
   "badges": [
-    { "text": "Necraloid Rank 3 gate", "tone": "warn" },
+    {
+      "text": "Necraloid Rank 3 gate",
+      "tone": "warn",
+      "rank": { "syndicate": "Necraloid", "level": 3 }
+    },
     { "text": "MR 15", "tone": "info" }
   ],
-  "prices": [{ "label": "build", "amount": "20,000 cr", "money": false }],
+  "prices": [
+    { "label": "components", "amount": "3,000 cr", "money": false },
+    { "label": "build", "amount": "20,000 cr", "money": false }
+  ],
   "materials": [
-    {
-      "qty": "2,800",
-      "label": "Plastids",
-      "note": "400 Fersteel Alloy refine, 2,400 Adramal Alloy refines"
-    },
-    {
-      "qty": "840",
-      "label": "Rubedo",
-      "note": "200 Fersteel Alloy refine, 640 Devolved Namalon refines"
-    },
-    { "qty": "6,400", "label": "Nano Spores", "note": "Tempered Bapholite refines" },
     { "qty": "1", "label": "Damaged Necramech Weapon Barrel", "note": null },
     { "qty": "1", "label": "Damaged Necramech Weapon Receiver", "note": null },
     { "qty": "1", "label": "Damaged Necramech Weapon Stock", "note": null },
@@ -34,7 +30,9 @@
     { "qty": "20", "label": "Fersteel Alloy", "note": "Morgha Barrel" },
     { "qty": "15", "label": "Tink Dissipator Coil", "note": "Morgha Receiver" },
     { "qty": "250", "label": "Hexenon", "note": "Morgha Stock" },
-    { "qty": "750", "label": "Void Traces", "note": "150, 250 and 350 per Loid rank-up" }
+    { "qty": "60", "label": "Father Token", "note": "20 per Loid rank-up" },
+    { "qty": "750", "label": "Void Traces", "note": "150, 250 and 350 per Loid rank-up" },
+    { "qty": "23,000", "label": "Credits", "note": null }
   ],
   "groups": [
     {
@@ -63,6 +61,13 @@
           "note": "Operator access; Loid's room is Operator-only until Whispers in the Walls is also done",
           "alt": null,
           "done": false
+        },
+        {
+          "qty": null,
+          "label": "Mastery Rank 15",
+          "note": "to equip the Morgha",
+          "alt": null,
+          "done": false
         }
       ],
       "conditions": [],
@@ -70,46 +75,47 @@
       "disclosures": []
     },
     {
-      "type": "currency",
-      "place": "NECRALISK, DEIMOS",
-      "sub": "Father",
-      "activity": "buy the barrel blueprints as Entrati rank rises",
-      "meta": "gates Necraloid's own rank-ups",
+      "type": "vendor",
+      "place": "FATHER, NECRALISK",
+      "sub": null,
+      "activity": "buy the barrel blueprints Loid's rank-ups consume",
+      "meta": "Entrati Rank 3 for Trumna",
       "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [],
+      "spends": [{ "currency": "Entrati Standing", "amount": "5,500" }],
       "map": null,
       "rows": [
         {
           "qty": null,
           "label": "Zymos Barrel Blueprint",
-          "note": "Entrati Rank 1; needed for Necraloid Rank 1",
+          "note": "1,000 standing, Rank 1",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Sepulcrum Barrel Blueprint",
-          "note": "Entrati Rank 2; needed for Necraloid Rank 2",
+          "note": "2,000 standing, Rank 2",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Trumna Barrel Blueprint",
-          "note": "Entrati Rank 3; needed for Necraloid Rank 3",
+          "note": "2,500 standing, Rank 3 Associate",
           "alt": null,
           "done": false
         }
       ],
       "conditions": [
-        "Necraloid Rank 3 needs the Trumna Barrel Blueprint, so Entrati Rank 3 is a hidden prerequisite: rank both in parallel, not Entrati first then Necraloid."
+        "Necraloid Rank 3 needs the Trumna Barrel Blueprint, so Entrati Rank 3 is a hidden prerequisite: rank both in parallel.",
+        "Sacrifice the unbuilt blueprint; never put one into the Foundry first.",
+        "Entrati Rank 3 costs 44,000 standing, 3 Sly Vulpaphyla Tags, 3 Vizier Predasite Tags, 1 Mother Token and 1 Son Token."
       ],
       "bonuses": [],
-      "disclosures": [],
-      "ref": "Entrati Standing"
+      "disclosures": []
     },
     {
       "type": "bounty",
@@ -129,46 +135,44 @@
           "label": "Necraloid Rank 1",
           "note": "5,000 standing, 10 Orientation Matrix, Zymos Barrel Blueprint, 20 Father Tokens",
           "alt": null,
-          "done": false
+          "done": false,
+          "rank": { "syndicate": "Necraloid", "level": 1 }
         },
         {
           "qty": null,
           "label": "Necraloid Rank 2",
           "note": "22,000 standing, 15 Ballistics Matrix, Sepulcrum Barrel Blueprint, 20 Father Tokens",
           "alt": null,
-          "done": false
+          "done": false,
+          "rank": { "syndicate": "Necraloid", "level": 2 }
         },
         {
           "qty": null,
           "label": "Necraloid Rank 3, Odima",
           "note": "44,000 standing, 15 Animus Matrix, Trumna Barrel Blueprint, 20 Father Tokens",
           "alt": null,
-          "done": false
+          "done": false,
+          "rank": { "syndicate": "Necraloid", "level": 3 }
         }
       ],
       "conditions": [
         "Trade Orokin Matrices to Loid for standing: Orientation 1,000, Ballistics 2,500, Animus 5,000 each."
       ],
       "bonuses": [],
-      "disclosures": [
-        {
-          "title": "unverified",
-          "body": "Whether Loid's matrix trade-ins count against the daily standing cap wasn't confirmed."
-        }
-      ],
+      "disclosures": [],
       "ref": "Necraloid Standing"
     },
     {
       "type": "vendor",
-      "place": "NECRALISK, DEIMOS",
-      "sub": "Loid",
-      "activity": "take the Rank 3 reward or buy blueprints, buy the damaged parts",
-      "meta": null,
+      "place": "LOID, NECRALISK",
+      "sub": null,
+      "activity": "take the Rank 3 reward or buy the blueprints, then buy the component blueprints",
+      "meta": "Rank 3; components at Rank 2",
       "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [],
+      "spends": [{ "currency": "Necraloid Standing", "amount": "12,000" }],
       "map": null,
       "rows": [
         {
@@ -205,20 +209,19 @@
       ],
       "conditions": [
         "The Rank 3 free reward is a single pick: take Cortege's blueprint free and buy Morgha's for 8,000 standing, or vice versa.",
-        "Vault rotations cycle every 2.5 hours (A-B-C), so if you're farming the damaged parts instead of buying them, a missing one can be up to 5 hours away."
+        "Vault rotations cycle every 2.5 hours (A-B-C); each Damaged weapon part drops in one, so a missing one can be up to 5 hours away."
       ],
       "bonuses": [
-        "Buying the Damaged parts from Loid skips the 3% rotation-locked vault RNG entirely."
+        "Loid sells each Damaged Necramech weapon part for 2,500 standing at Rank 1, which skips the 3% to 6% vault drop."
       ],
-      "disclosures": [],
-      "ref": "Entrati Standing"
+      "disclosures": []
     },
     {
       "type": "foundry",
       "place": "FOUNDRY",
       "sub": null,
       "activity": "build the three components, then Morgha",
-      "meta": "1 min each component; 20,000 cr, 12h main",
+      "meta": "1,000 cr and 1 min each component; 20,000 cr and 12h main",
       "mode": null,
       "live": null,
       "skip": null,
@@ -250,7 +253,7 @@
         {
           "qty": null,
           "label": "Morgha",
-          "note": "20,000 cr, the three components",
+          "note": "the three components",
           "alt": null,
           "done": false
         }
@@ -259,7 +262,7 @@
         "Three failed Requiem Cipher attempts permanently lock that vault's bonus reward for the run."
       ],
       "bonuses": [
-        "A bug where the alt-fire wouldn't charge on kills was fixed in Hotfix 44.0.1: if it recurs, that's a bug, not your build."
+        "Built components are tradeable; trading for them skips the Fersteel Alloy and Ostron Rank 2 requirement."
       ],
       "disclosures": []
     }

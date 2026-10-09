@@ -18,17 +18,18 @@
     { "qty": "1", "label": "Damaged Necramech Engine", "note": null },
     { "qty": "1", "label": "Damaged Necramech Pod", "note": null },
     { "qty": "1", "label": "Damaged Necramech Weapon Pod", "note": null },
-    { "qty": "6", "label": "Spinal Core Section", "note": null },
+    { "qty": "6", "label": "Spinal Core Section", "note": "Weapon Pod" },
     { "qty": "20", "label": "Biotic Filter", "note": "Capsule" },
     { "qty": "4", "label": "Scintillant", "note": "Capsule" },
-    { "qty": "15", "label": "Goblite Tears", "note": null },
-    { "qty": "6", "label": "Star Crimzian", "note": null },
-    { "qty": "100", "label": "Tempered Bapholite", "note": null },
-    { "qty": "20", "label": "Thaumic Distillate", "note": null },
-    { "qty": "120", "label": "Adramal Alloy", "note": null },
-    { "qty": "750", "label": "Titanium", "note": null },
-    { "qty": "80", "label": "Devolved Namalon", "note": null },
-    { "qty": "45", "label": "Scrap", "note": null },
+    { "qty": "15", "label": "Goblite Tears", "note": "Casing" },
+    { "qty": "6", "label": "Star Crimzian", "note": "Capsule" },
+    { "qty": "100", "label": "Tempered Bapholite", "note": "Casing" },
+    { "qty": "20", "label": "Thaumic Distillate", "note": "Casing" },
+    { "qty": "120", "label": "Adramal Alloy", "note": "Engine" },
+    { "qty": "750", "label": "Titanium", "note": "Engine" },
+    { "qty": "80", "label": "Devolved Namalon", "note": "Weapon Pod" },
+    { "qty": "45", "label": "Scrap", "note": "Weapon Pod" },
+    { "qty": "60", "label": "Father Token", "note": "20 per Loid rank-up" },
     { "qty": "750", "label": "Void Traces", "note": "150, 250 and 350 per Loid rank-up" },
     { "qty": "85,000", "label": "Credits", "note": null }
   ],
@@ -111,8 +112,8 @@
       ],
       "conditions": [
         "Orokin Matrices traded to Loid are the only Necraloid standing source.",
-        "Each rank-up wants a different matrix tier, so every vault tier has to be cleared once; run the highest tier you have unlocked.",
-        "Three failed Requiem Cipher attempts lock that vault for the run and forfeit its bonus reward.",
+        "Each tier unlocks only after the one below it is cleared once.",
+        "Three failed Requiem Cipher attempts lock that vault for good and forfeit its bonus reward.",
         "Vault reward tables rotate A/B/C with the Fass/Vome cycle."
       ],
       "bonuses": [
@@ -122,6 +123,49 @@
       ],
       "disclosures": [],
       "ref": "Necraloid Standing"
+    },
+    {
+      "type": "vendor",
+      "place": "FATHER, NECRALISK",
+      "sub": null,
+      "activity": "buy the barrel blueprints Loid's rank-ups consume",
+      "meta": "Entrati Rank 3 for Trumna",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Entrati Standing", "amount": "5,500" }],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Zymos Barrel Blueprint",
+          "note": "1,000 standing, Rank 1",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Sepulcrum Barrel Blueprint",
+          "note": "2,000 standing, Rank 2",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Trumna Barrel Blueprint",
+          "note": "2,500 standing, Rank 3 Associate",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Buy the blueprints only; you needn't build the weapons.",
+        "Sacrifice the unbuilt blueprint; never put one into the Foundry first.",
+        "Entrati Rank 3 costs 44,000 standing, 3 Sly Vulpaphyla Tags, 3 Vizier Predasite Tags, 1 Mother Token and 1 Son Token."
+      ],
+      "bonuses": [],
+      "disclosures": []
     },
     {
       "type": "vendor",
@@ -139,23 +183,26 @@
         {
           "qty": null,
           "label": "Clearance: Agnesis",
-          "note": "5,000 standing, 10 Orientation Matrix, Zymos Barrel Blueprint, 20 Father Tokens",
+          "note": "5,000 standing, 10 Orientation Matrix, Zymos Barrel Blueprint, 20 Father Tokens, 150 Void Traces",
           "alt": null,
-          "done": false
+          "done": false,
+          "rank": { "syndicate": "Necraloid", "level": 1 }
         },
         {
           "qty": null,
           "label": "Clearance: Modus",
-          "note": "22,000 standing, 15 Ballistics Matrix, Sepulcrum Barrel Blueprint, 20 Father Tokens",
+          "note": "22,000 standing, 15 Ballistics Matrix, Sepulcrum Barrel Blueprint, 20 Father Tokens, 250 Void Traces",
           "alt": null,
-          "done": false
+          "done": false,
+          "rank": { "syndicate": "Necraloid", "level": 2 }
         },
         {
           "qty": null,
           "label": "Clearance: Odima",
-          "note": "44,000 standing, 15 Animus Matrix, Trumna Barrel Blueprint, 20 Father Tokens",
+          "note": "44,000 standing, 15 Animus Matrix, Trumna Barrel Blueprint, 20 Father Tokens, 350 Void Traces",
           "alt": null,
-          "done": false
+          "done": false,
+          "rank": { "syndicate": "Necraloid", "level": 3 }
         },
         {
           "qty": "4",
@@ -173,8 +220,8 @@
         }
       ],
       "conditions": [
-        "The matrix sacrifices stall people, not the standing. Bank each tier's matrices before the rank-up.",
-        "The barrel blueprints sacrificed come from Loid's own wares; buy them and set them aside before you hit the daily cap."
+        "Bank each tier's matrices before the rank-up; spending standing on wares first delays it.",
+        "Blueprints can't be traded; built components and raw resources can."
       ],
       "bonuses": [],
       "disclosures": []
@@ -194,15 +241,22 @@
       "rows": [
         {
           "qty": null,
-          "label": "Devolved Namalon Blueprint",
-          "note": "2,000 standing, Rank 1",
+          "label": "Tempered Bapholite Blueprint",
+          "note": "1,000 standing, Rank 0",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Adramal Alloy Blueprint",
-          "note": "1,000 standing",
+          "note": "1,000 standing, Rank 0",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Devolved Namalon Blueprint",
+          "note": "2,000 standing, Rank 1",
           "alt": null,
           "done": false
         },
@@ -212,18 +266,9 @@
           "note": "4,000 standing, Rank 2",
           "alt": null,
           "done": false
-        },
-        {
-          "qty": null,
-          "label": "Tempered Bapholite Blueprint",
-          "note": "1,000 standing, Neutral",
-          "alt": null,
-          "done": false
         }
       ],
-      "conditions": [
-        "Cranial Foremount comes from filleting Myxostomata, whose Processed Vome Residue bait is sold at Entrati Rank 4; Requiem Obelisks are the way around that gate."
-      ],
+      "conditions": [],
       "bonuses": [],
       "disclosures": []
     },
@@ -231,9 +276,9 @@
       "type": "farm",
       "place": "CAMBION DRIFT, DEIMOS",
       "sub": null,
-      "activity": "mine, fish, and run Requiem Obelisks",
-      "meta": "refine at Otak, 20 per craft, 1,000 cr each",
-      "mode": "Ivara with the silent drill for Namalon",
+      "activity": "mine, fish and run Requiem Obelisks",
+      "meta": "refine at Otak, 20 per batch",
+      "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
@@ -244,19 +289,69 @@
           "qty": "2",
           "label": "Cranial Foremount",
           "note": "fillet Myxostomata at Daughter",
-          "alt": "or Requiem Obelisks",
+          "alt": "or Requiem Obelisk drops",
           "done": false
         }
       ],
       "conditions": [
-        "Update 29.5 cut the Namalon mining rate in favour of Thaumica; Namalon is the resource this Necramech is known for.",
-        "Namalon veins sit on vegetation and don't move with the Vome/Fass cycle."
+        "Myxostomata need Processed Vome Residue bait, Entrati Rank 4; Obelisk drops skip that gate."
       ],
       "bonuses": [
-        "Requiem Obelisks drop a spread of Drift minerals, rares included, and bonus-vault storage containers can drop Namalon.",
         "Trading any Drift gems and ores to Otak earns Otak Tokens, which buy Namalon when the veins go cold."
       ],
       "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "SMOKEFINGER, FORTUNA",
+      "sub": null,
+      "activity": "buy the Goblite Tears refining blueprint",
+      "meta": "Solaris United Outworlder",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Solaris United Standing", "amount": "2,000" }],
+      "map": "fortuna",
+      "rows": [
+        {
+          "qty": null,
+          "label": "Goblite Tears Blueprint",
+          "note": "2,000 standing, Rank 1",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": [],
+      "ref": "Solaris United Standing"
+    },
+    {
+      "type": "vendor",
+      "place": "OLD MAN SUUMBAAT, CETUS",
+      "sub": null,
+      "activity": "buy the Star Crimzian refining blueprint",
+      "meta": "Ostron Trusted",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Ostron Standing", "amount": "7,500" }],
+      "map": "cetus",
+      "rows": [
+        {
+          "qty": null,
+          "label": "Star Crimzian Blueprint",
+          "note": "7,500 standing, Rank 3",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": [],
+      "ref": "Ostron Standing"
     },
     {
       "type": "foundry",
@@ -302,24 +397,17 @@
         {
           "qty": null,
           "label": "Bonewidow",
-          "note": "claim it and Ironbride is her 4th ability",
+          "note": "4 components; claim it and Ironbride is her 4th ability",
           "alt": null,
           "done": false
         }
       ],
       "conditions": [
         "Ironbride gives no Mastery; Bonewidow's own levels are what count.",
-        "Component and main blueprints can't be traded; built components can."
+        "Free an Archwing weapon slot before the final craft."
       ],
-      "bonuses": [
-        "Doing Voidrig first builds the Necraloid ranks and matrix stock once; Bonewidow then adds mostly mining."
-      ],
-      "disclosures": [
-        {
-          "title": "check the recipe in game",
-          "body": "Updates 34.0 and 36.0 cut Voidrig's recipe, removing Scintillant, Cranial Foremount and Thaumic Distillate from it. This bill is the wiki's Bonewidow list; if the Foundry shows a shorter one, trust the Foundry and skip the matching farm rows."
-        }
-      ]
+      "bonuses": ["Queue all four components at once for one 12-hour wait."],
+      "disclosures": []
     }
   ]
 }

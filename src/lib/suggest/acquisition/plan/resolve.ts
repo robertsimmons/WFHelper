@@ -20,7 +20,7 @@ import {
   readPlayerState,
   type PlayerState,
 } from "./state.js";
-import { afterQuestRoute } from "./data.js";
+import { afterQuestRoute, planQuestDone } from "./data.js";
 import { rankMet } from "./ranks.js";
 import type { ItemDbEntry, RawInventoryData } from "../../../../types/inventory.js";
 import { foundryBuilds, partDemand, startingBill } from "../parts.js";
@@ -34,6 +34,7 @@ import type {
   ResolvedLive,
   ResolvedOwed,
   ResolvedPlan,
+  ResolvedRoute,
   ResolvedRow,
   ResolvedSpend,
 } from "./types.js";
@@ -340,6 +341,18 @@ function namesCurrency(group: PlanGroup, currency: string): boolean {
   return group.rows.some((row) => row.label.toLowerCase().includes(needle));
 }
 
+/** A finished quest has spent the chosen route's one-time reward. */
+function resolveRoutes(plan: AuthoredPlan, questDone: boolean): ResolvedRoute[] {
+  const walking = questDone ? "afterQuest" : "chosen";
+  return (plan.routes ?? []).map((route) => ({
+    name: route.name,
+    cost: route.cost,
+    effort: route.effort,
+    current: route.role === walking,
+    ruledOut: questDone && route.role === "chosen",
+  }));
+}
+
 /** `tier` is handed in rather than read off the plan: the letter belongs to the
  *  ranking table and the player's override, never to the authored file. */
 export function resolvePlan(
@@ -590,6 +603,7 @@ export function resolvePlan(
         },
     badges: plan.badges,
     afterQuest: afterQuest ? { effort: afterQuest.effort, badges: afterQuest.badges } : null,
+    routes: resolveRoutes(plan, planQuestDone(plan, state) === true),
     prices: plan.prices,
     groups,
     ledger,

@@ -1,34 +1,39 @@
 {
   "name": "Wrath",
   "kind": "melee",
-  "effort": 3,
-  "source": "unique",
+  "effort": 4,
+  "source": "railjack",
   "tradeable": false,
   "progress": { "have": 0, "need": 4, "unit": "parts" },
   "badges": [
-    { "text": "needs both Railjack nodes", "tone": "warn" },
+    { "text": "needs a Pride Blade too", "tone": "warn" },
     { "text": "MR 14", "tone": "info" }
   ],
-  "prices": [
-    { "label": "components", "amount": "70,000 cr", "money": false },
-    { "label": "blueprint", "amount": "20,000 cr", "money": false }
+  "prices": [],
+  "routes": [
+    {
+      "name": "Both Uranus Proxima nodes, then Hunhow",
+      "cost": "drops first; 180 Crimson and 45 Emerald Talent buy whatever is missing",
+      "effort": 4,
+      "role": "chosen"
+    }
   ],
   "materials": [
     { "qty": "800", "label": "Alloy Plate", "note": "400 Wrath Blade, 400 Pride Blade" },
     { "qty": "500", "label": "Oxium", "note": "250 Wrath Blade, 250 Pride Blade" },
     { "qty": "1,250", "label": "Salvage", "note": "Wrath Handle" },
+    { "qty": "3,000", "label": "Titanium", "note": "Wrath Handle" },
     { "qty": "3", "label": "Star Crimzian", "note": "Wrath Blade" },
     { "qty": "5", "label": "Marquise Thyst", "note": "Pride Blade" },
-    { "qty": "3,000", "label": "Titanium", "note": null },
     { "qty": "90,000", "label": "Credits", "note": null }
   ],
   "groups": [
     {
       "type": "gate",
-      "place": "URANUS PROXIMA",
+      "place": "QUESTS",
       "sub": null,
-      "activity": "complete Jade Shadows: Constellations",
-      "meta": "solo, 30-40 min; needs Jade Shadows done",
+      "activity": "finish Jade Shadows: Constellations",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -39,7 +44,14 @@
         {
           "qty": null,
           "label": "Jade Shadows: Constellations",
-          "note": "unlocks Pontis Tower and both new Uranus Proxima nodes",
+          "note": "after Jade Shadows; solo, 30-40 min, can't be replayed",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Mastery Rank 14",
+          "note": "to build Wrath",
           "alt": null,
           "done": false
         }
@@ -49,12 +61,12 @@
       "disclosures": []
     },
     {
-      "type": "currency",
+      "type": "boss",
       "place": "PONTIS TOWER, URANUS PROXIMA",
-      "sub": "Scoria's Angel (side Vena, kill Ryoku)",
-      "activity": "Skirmish + Assassinate, shoot every green ramsled target",
-      "meta": "12-16 Crimson normal, ~18-22 Steel Path, +4 (+12 SP) for a clean ramsled",
-      "mode": null,
+      "sub": "Scoria's Angel",
+      "activity": "side with Vena, kill Ryoku",
+      "meta": "one blueprint a clear, 14.29% each",
+      "mode": "set Solo before entering Pontis Tower to fly your own Railjack",
       "live": null,
       "skip": null,
       "earns": { "currency": "Crimson Talent", "amount": "180" },
@@ -62,36 +74,53 @@
       "map": null,
       "rows": [
         {
-          "qty": "180",
-          "label": "Crimson Talent",
-          "note": "full pity-shop cost for the Wrath side",
-          "alt": null,
+          "qty": null,
+          "label": "Wrath Blueprint",
+          "note": "14.29%",
+          "alt": {
+            "text": "or 90 Crimson Talent at Hunhow",
+            "spends": [{ "currency": "Crimson Talent", "amount": "90" }]
+          },
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Wrath Blade Blueprint",
+          "note": "14.29%",
+          "alt": {
+            "text": "or 45 Crimson Talent at Hunhow",
+            "spends": [{ "currency": "Crimson Talent", "amount": "45" }]
+          },
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Wrath Handle Blueprint",
+          "note": "14.29%",
+          "alt": {
+            "text": "or 45 Crimson Talent at Hunhow",
+            "spends": [{ "currency": "Crimson Talent", "amount": "45" }]
+          },
           "done": false
         }
       ],
       "conditions": [
-        "Set matchmaking to Solo before entering Pontis Tower if you want your own Railjack: entering Public locks you to the loaner (Vena's Marrowbone) even if you switch modes after.",
-        "Your own Railjack intrinsics still apply even on the loaner ship."
+        "Squads always fly a loaner Railjack; your own ship is offered only when matchmaking is Solo before you enter Pontis Tower."
       ],
       "bonuses": [
-        "Shooting all the optional green ramsled targets roughly doubles Steel Path income for the same run and isn't explained in-game at all.",
-        "The ramsled segment also drops free Tellurium and MkIII Railjack parts.",
-        "Sisters of Parvos don't always spawn on Ryoku's side; Vena's side spawns them more often: bring armor/overguard strip or a buff dispel for Warding Halo."
+        "Each clear pays 12-16 Crimson Talent, plus up to 4 more (12 on Steel Path) for shooting every green target in the Ramsled flight.",
+        "The other four blueprints in the pool are Sirius & Orion parts.",
+        "Each clear also rolls one of four arcanes: Primary Compression, Arcane Sculptor, Secondary Cryogenic or Melee Assimilation."
       ],
-      "disclosures": [
-        {
-          "title": "restart on a sticky reward table",
-          "body": "A launch-week bug repeated the same blueprint reward run after run until the client was fully closed and reopened. If you see three identical rewards in a row, restart before assuming it's just variance."
-        }
-      ],
+      "disclosures": [],
       "ref": "Crimson Talent"
     },
     {
-      "type": "currency",
+      "type": "boss",
       "place": "PONTIS TOWER, URANUS PROXIMA",
-      "sub": "The Kuva Wytch (side Ryoku, kill Vena)",
-      "activity": "Skirmish + Assassinate, shoot the Orowyrm sequence targets",
-      "meta": "pays Emerald Talent identically to Crimson",
+      "sub": "The Kuva Wytch",
+      "activity": "side with Ryoku, kill Vena",
+      "meta": "14.29% a clear",
       "mode": null,
       "live": null,
       "skip": null,
@@ -100,62 +129,29 @@
       "map": null,
       "rows": [
         {
-          "qty": "45",
-          "label": "Emerald Talent",
-          "note": "covers the one Pride Blade",
-          "alt": null,
+          "qty": null,
+          "label": "Pride Blade Blueprint",
+          "note": "14.29%",
+          "alt": {
+            "text": "or 45 Emerald Talent at Hunhow",
+            "spends": [{ "currency": "Emerald Talent", "amount": "45" }]
+          },
           "done": false
         }
       ],
-      "conditions": [
-        "The Orowyrm targeting is markedly harder to track than the ramsled: plan for more runs here than the Crimson side needs."
+      "conditions": ["Wrath's recipe needs this Pride Blade, and Scoria's Angel never drops it."],
+      "bonuses": [
+        "Each clear pays 12-16 Emerald Talent, plus up to 4 more (12 on Steel Path) for shooting every green target in the Orowyrm flight."
       ],
-      "bonuses": [],
       "disclosures": [],
       "ref": "Emerald Talent"
-    },
-    {
-      "type": "vendor",
-      "place": "HUNHOW, PONTIS TOWER",
-      "sub": null,
-      "activity": "buy whatever the drops didn't give",
-      "meta": "no weekly limit",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [
-        { "currency": "Crimson Talent", "amount": "180" },
-        { "currency": "Emerald Talent", "amount": "45" }
-      ],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Wrath Blueprint",
-          "note": "90 Crimson",
-          "alt": null,
-          "done": false
-        },
-        { "qty": null, "label": "Wrath Handle", "note": "45 Crimson", "alt": null, "done": false },
-        { "qty": null, "label": "Wrath Blade", "note": "45 Crimson", "alt": null, "done": false },
-        { "qty": null, "label": "Pride Blade", "note": "45 Emerald", "alt": null, "done": false }
-      ],
-      "conditions": [
-        "Wrath needs a Pride Blade from The Kuva Wytch, and Pride mirrors it needing a Wrath Blade: farming only one node leaves an unbuildable set.",
-        "Duplicate blueprints can't be converted to Talents; buy the specific missing part from Hunhow rather than rolling for it again."
-      ],
-      "bonuses": [
-        "Each Scoria's Angel completion also rolls a flat 7-item table at 14.29% each, three of them Wrath parts: drops often cover a chunk of the pity cost for free."
-      ],
-      "disclosures": []
     },
     {
       "type": "foundry",
       "place": "FOUNDRY",
       "sub": null,
-      "activity": "build the blades, handle, then Wrath",
-      "meta": "23h main, 12h per blade, 23h handle",
+      "activity": "build the blades and handle, then Wrath",
+      "meta": "parts cook in parallel, then 23h",
       "mode": null,
       "live": null,
       "skip": null,
@@ -166,36 +162,33 @@
         {
           "qty": null,
           "label": "Wrath Blade",
-          "note": "25,000 cr, 400 Alloy Plate, 250 Oxium, 250 Ticor Plate, 3 Star Crimzian",
+          "note": "25,000 cr, 400 Alloy Plate, 250 Oxium, 250 Ticor Plate, 3 Star Crimzian, 12h",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Pride Blade",
-          "note": "25,000 cr, 400 Alloy Plate, 250 Oxium, 250 Ticor Plate, 5 Marquise Thyst",
+          "note": "25,000 cr, 400 Alloy Plate, 250 Oxium, 250 Ticor Plate, 5 Marquise Thyst, 12h",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Wrath Handle",
-          "note": "20,000 cr, 1,250 Salvage, 300 Carbides, 50 Gallos Rods, 3,000 Titanium",
+          "note": "20,000 cr, 1,250 Salvage, 300 Carbides, 50 Gallos Rods, 3,000 Titanium, 23h",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Wrath",
-          "note": "20,000 cr + Blueprint + Wrath Blade + Wrath Handle + Pride Blade",
+          "note": "20,000 cr, both blades and the handle, 23h",
           "alt": null,
           "done": false
         }
       ],
-      "conditions": [
-        "MR 14 required.",
-        "Blades and the handle can all cook in parallel before the 23h main build."
-      ],
+      "conditions": [],
       "bonuses": [],
       "disclosures": []
     }

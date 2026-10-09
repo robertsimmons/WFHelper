@@ -1,8 +1,15 @@
 import { rankSyndicate, topRank } from "./ranks.js";
 import { resourceEntry, type ResourceLookup } from "./resources.js";
-import { PLAN_BADGE_TONES, PLAN_GROUP_TYPES, PLAN_LIVE_STATES, PLAN_SOURCES } from "./schema.js";
+import {
+  PLAN_BADGE_TONES,
+  PLAN_GROUP_TYPES,
+  PLAN_LIVE_STATES,
+  PLAN_ROUTE_ROLES,
+  PLAN_SOURCES,
+} from "./schema.js";
 
 const GROUP_TYPES = new Set<string>(PLAN_GROUP_TYPES);
+const ROUTE_ROLES = new Set<string>(PLAN_ROUTE_ROLES);
 const SOURCES = new Set<string>(PLAN_SOURCES);
 const LIVE_STATES = new Set<string>(PLAN_LIVE_STATES);
 const BADGE_TONES = new Set<string>(PLAN_BADGE_TONES);
@@ -151,6 +158,46 @@ function checkAfterQuest(
   });
   if (!after.groups.some((group) => isRecord(group) && ROUTE_GROUP_TYPES.has(String(group.type)))) {
     problems.push("afterQuest.groups needs a farm, bounty, boss, vendor, relics or fissure group");
+  }
+}
+
+/** Each route's effort is the rating the plan or its after-quest route carries,
+ *  so the overview and the card never disagree. */
+function checkRoutes(problems: Problems, value: Record<string, unknown>): void {
+  const routes = value.routes;
+  if (routes === undefined) return;
+  if (!Array.isArray(routes) || routes.length === 0) {
+    problems.push("routes must be a non-empty array");
+    return;
+  }
+  const byRole = new Map<string, Record<string, unknown>[]>();
+  routes.forEach((route, index) => {
+    const at = `routes[${index}]`;
+    if (!isRecord(route)) {
+      problems.push(`${at} must be an object`);
+      return;
+    }
+    checkString(problems, `${at}.name`, route.name);
+    checkString(problems, `${at}.cost`, route.cost);
+    checkEffort(problems, `${at}.effort`, route.effort);
+    if (route.role === null) return;
+    if (typeof route.role !== "string" || !ROUTE_ROLES.has(route.role)) {
+      problems.push(`${at}.role must be chosen, afterQuest or null`);
+      return;
+    }
+    byRole.set(route.role, [...(byRole.get(route.role) ?? []), route]);
+  });
+  const chosen = byRole.get("chosen") ?? [];
+  if (chosen.length !== 1) problems.push("routes needs exactly one chosen route");
+  else if (chosen[0].effort !== value.effort)
+    problems.push("the chosen route's effort must match effort");
+  const after = byRole.get("afterQuest") ?? [];
+  const planAfter = isRecord(value.afterQuest) ? value.afterQuest : null;
+  if (after.length > 1) problems.push("routes has more than one afterQuest route");
+  if (after.length > 0 && !planAfter) problems.push("an afterQuest route needs afterQuest");
+  if (planAfter && after.length === 0) problems.push("routes needs the afterQuest route");
+  if (planAfter && after.length === 1 && after[0].effort !== planAfter.effort) {
+    problems.push("the afterQuest route's effort must match afterQuest.effort");
   }
 }
 
@@ -373,5 +420,6 @@ export function validatePlan(value: unknown, lookup: ResourceLookup = resourceEn
   }
 
   checkAfterQuest(problems, value, typeof value.name === "string" ? value.name : "", lookup);
+  checkRoutes(problems, value);
   return problems;
 }

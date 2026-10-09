@@ -108,7 +108,9 @@
       unit: plan.progress.unit,
     });
   });
-  const effortLabel = $derived(plan ? $tr("nextUp.planEffort", { effort: plan.effort }) : "");
+  // Once the quest has paid out, the route left is what the header rates.
+  const rating = $derived(plan ? (plan.afterQuest ?? plan) : null);
+  const effortLabel = $derived(rating ? $tr("nextUp.planEffort", { effort: rating.effort }) : "");
   const tradeable = $derived.by((): string | null => {
     if (plan?.tradeable === false) return $tr("nextUp.planNotTradeable");
     return typeof plan?.tradeable === "string" ? plan.tradeable : null;
@@ -122,13 +124,18 @@
       money: price.money,
     })),
     ...(tradeable ? [{ text: tradeable, tone: "", money: false }] : []),
-    ...(plan?.badges ?? []).map((badge) => ({
+    ...(rating?.badges ?? []).map((badge) => ({
       text: badge.text,
       tone: BADGE_TONE[badge.tone],
       money: false,
     })),
   ]);
   const groups = $derived(plan ? visibleGroups(plan, showDone) : []);
+  // A lone route still open is the header's own rating said twice.
+  const routes = $derived.by(() => {
+    const all = plan?.routes ?? [];
+    return all.length > 1 || all.some((route) => route.ruledOut) ? all : [];
+  });
   const unchecked = $derived(
     (plan?.unresolved ?? []).map((kind) => $tr(FACT_LABEL[kind])).join(", "),
   );
@@ -188,8 +195,8 @@
           <span class="flex w-[104px] gap-[2px]" role="img" aria-label={effortLabel}>
             {#each EFFORT_STEPS as step (step)}
               <span
-                class="h-1 flex-1 rounded-[1px] {step <= plan.effort
-                  ? effortFill(plan.effort)
+                class="h-1 flex-1 rounded-[1px] {step <= (rating?.effort ?? 0)
+                  ? effortFill(rating?.effort ?? 0)
                   : EFFORT_TRACK}"
               ></span>
             {/each}
@@ -214,6 +221,46 @@
     <div class="mb-3 h-[420px] overflow-hidden rounded-[var(--radius-md)] border border-border">
       <CraftingTree {tree} />
     </div>
+  {/if}
+
+  {#if routes.length > 0}
+    <ul
+      class="m-0 mb-1 mt-2 grid list-none grid-cols-[repeat(auto-fill,minmax(200px,1fr))] gap-[7px] p-0"
+      data-plan-routes
+    >
+      {#each routes as route, index (index)}
+        <li
+          class="flex flex-col gap-[3px] rounded-[var(--radius-sm)] border px-2 py-1.5
+                 {route.current ? 'border-success' : 'border-border-subtle'}
+                 {route.ruledOut ? 'opacity-[0.42]' : ''}"
+          data-route-current={route.current}
+          data-route-ruled-out={route.ruledOut}
+        >
+          <span class="text-xs font-semibold leading-tight text-text-primary">{route.name}</span>
+          <div class="flex items-center gap-2">
+            <span
+              class="flex w-[52px] gap-[2px]"
+              role="img"
+              aria-label={$tr("nextUp.planEffort", { effort: route.effort })}
+            >
+              {#each EFFORT_STEPS as step (step)}
+                <span
+                  class="h-[3px] flex-1 rounded-[1px] {step <= route.effort
+                    ? effortFill(route.effort)
+                    : EFFORT_TRACK}"
+                ></span>
+              {/each}
+            </span>
+            {#if route.ruledOut}
+              <span class="text-[0.6875rem] italic leading-none text-text-secondary"
+                >{$tr("nextUp.planRouteQuestDone")}</span
+              >
+            {/if}
+          </div>
+          <span class="text-[0.6875rem] leading-snug text-text-secondary">{route.cost}</span>
+        </li>
+      {/each}
+    </ul>
   {/if}
 
   {#if !plan}

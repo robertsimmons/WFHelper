@@ -6,19 +6,14 @@ import type { PartPlan } from "../types.js";
 export { authoredPlan, authoredPlans, planRating, planSource } from "./data.js";
 export { earnsFlow, outstandingOf, resolvePlan } from "./resolve.js";
 export { validatePlan } from "./validate.js";
-export type {
-  AuthoredPlan,
-  PlanBadge,
-  PlanBadgeTone,
-  PlanLiveState,
-  PlanSource,
-} from "./schema.js";
+export type { AuthoredPlan, PlanBadge, PlanBadgeTone, PlanLiveState } from "./schema.js";
 export type {
   PlanContext,
   PlanFactKind,
   PlanProgressOverride,
   ResolvedGroup,
   ResolvedPlan,
+  ResolvedRoute,
   ResolvedRow,
 } from "./types.js";
 

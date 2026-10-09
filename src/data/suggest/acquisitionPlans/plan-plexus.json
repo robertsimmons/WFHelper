@@ -1,0 +1,149 @@
+{
+  "name": "Plexus",
+  "kind": "plexus",
+  "effort": 2,
+  "source": "repeat",
+  "tradeable": false,
+  "progress": { "have": 0, "need": 1, "unit": "Plexus" },
+  "badges": [{ "text": "The Archwing quest", "tone": "info" }],
+  "prices": [],
+  "routes": [
+    {
+      "name": "The Archwing quest",
+      "cost": "free reward; the quest has you build the Odonata on the way",
+      "effort": 2,
+      "role": "chosen"
+    }
+  ],
+  "materials": [
+    { "qty": "1,000", "label": "Ferrite", "note": "Odonata Harness" },
+    { "qty": "800", "label": "Rubedo", "note": "300 Odonata Harness, 500 Odonata Wings" },
+    { "qty": "600", "label": "Circuits", "note": "300 Odonata Systems, 300 Odonata" },
+    { "qty": "500", "label": "Salvage", "note": "Odonata Systems" },
+    { "qty": "150", "label": "Alloy Plate", "note": "Odonata Wings" },
+    { "qty": "150", "label": "Polymer Bundle", "note": "Odonata Wings" },
+    { "qty": "2", "label": "Morphics", "note": "Odonata Harness and Systems" },
+    { "qty": "2", "label": "Neurodes", "note": "Odonata Systems and Wings" },
+    { "qty": "28,000", "label": "Credits", "note": null }
+  ],
+  "groups": [
+    {
+      "type": "farm",
+      "place": "VENUS + EARTH",
+      "sub": "Tessera, then Aphrodite, Mantle, E Gate",
+      "activity": "start The Archwing from the Codex and run its missions",
+      "meta": "a random Odonata part blueprint per Excavation",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Odonata Blueprint",
+          "note": "Lotus inbox message when the quest starts",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Odonata Harness Blueprint",
+          "note": "random per Excavation",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Odonata Systems Blueprint",
+          "note": "random per Excavation",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Odonata Wings Blueprint",
+          "note": "random per Excavation",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["You can extract once the first excavator completes."],
+      "bonuses": [],
+      "disclosures": [],
+      "quest": "The Archwing"
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build the parts, then the Odonata",
+      "meta": "1 minute each",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Odonata Harness",
+          "note": "7,000 cr, 1 Morphics, 300 Rubedo, 1,000 Ferrite",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Odonata Systems",
+          "note": "7,000 cr, 1 Neurodes, 1 Morphics, 500 Salvage, 300 Circuits",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Odonata Wings",
+          "note": "7,000 cr, 150 Alloy Plate, 150 Polymer Bundle, 500 Rubedo, 1 Neurodes",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Odonata",
+          "note": "7,000 cr, 300 Circuits, the three parts",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["The quest waits until you claim the Odonata."],
+      "bonuses": [],
+      "disclosures": [],
+      "quest": "The Archwing"
+    },
+    {
+      "type": "farm",
+      "place": "MONTES, VENUS",
+      "sub": null,
+      "activity": "finish the quest: Exterminate, then fly out past the Balor Fomorian",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Plexus", "note": "quest reward", "alt": null, "done": false }
+      ],
+      "conditions": [],
+      "bonuses": [
+        "The quest also hands over the Imperator, the Veritux and the Archwing Launcher.",
+        "Mod it at the console at the front of the Orbiter, between Navigation and the Syndicate segment, or at a Relay or Dojo Dry Dock."
+      ],
+      "disclosures": [],
+      "quest": "The Archwing"
+    }
+  ],
+  "afterQuest": null
+}

@@ -138,6 +138,22 @@ export interface PlanAfterQuest {
   groups: PlanGroup[];
 }
 
+/** `chosen` is the route the groups walk; `afterQuest` is the one `afterQuest` walks. */
+export const PLAN_ROUTE_ROLES = ["chosen", "afterQuest"] as const;
+
+export type PlanRouteRole = (typeof PLAN_ROUTE_ROLES)[number];
+
+/** One in-game way to get the item, as the overview names it. */
+export interface PlanRoute {
+  name: string;
+  /** One line: what taking it costs. */
+  cost: string;
+  /** 1-10, on the same scale as the plan's. */
+  effort: number;
+  /** Null for an alternative the groups don't walk. */
+  role: PlanRouteRole | null;
+}
+
 /** A material the plan needs, placed by the resource store rather than by hand. */
 interface PlanMaterial {
   /** Written like a row quantity: "1,200". */
@@ -159,6 +175,7 @@ export interface AuthoredPlan {
   groups: PlanGroup[];
   materials?: PlanMaterial[];
   afterQuest?: PlanAfterQuest | null;
+  routes?: PlanRoute[];
 }
 
 export function altText(alt: PlanAlt): string {

@@ -407,7 +407,7 @@ describe("resolveAcquisition beyond frames and weapons", () => {
     const targets = companions({ itemDb: db });
     expect(find(targets, "Venari").kind).toBe("beast");
     expect(find(targets, "Venari").paths[0]?.id).toBe("plan");
-    expect(find(targets, "Venari Prime").paths).toEqual([]);
+    expect(find(targets, "Venari Prime").paths[0]?.id).toBe("plan");
   });
 
   it("sweeps the Plexus only while the mastery roster lists it unmastered", () => {

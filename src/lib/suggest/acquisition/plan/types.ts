@@ -134,6 +134,16 @@ export interface ResolvedLedgerEntry {
   paired: boolean;
 }
 
+export interface ResolvedRoute {
+  name: string;
+  cost: string;
+  effort: number;
+  /** The route the groups below walk for this player. */
+  current: boolean;
+  /** Its one-time quest reward is already paid out. */
+  ruledOut: boolean;
+}
+
 interface ResolvedProgress {
   have: number;
   need: number;
@@ -156,6 +166,7 @@ export interface ResolvedPlan {
   /** The rating of the route left once the plan's quest has paid out; null
    *  while the quest is still to do or its state is unknown. */
   afterQuest: { effort: number; badges: PlanBadge[] } | null;
+  routes: ResolvedRoute[];
   prices: PlanPrice[];
   groups: ResolvedGroup[];
   ledger: ResolvedLedgerEntry[];

@@ -4,12 +4,26 @@
   "effort": 4,
   "source": "railjack",
   "tradeable": false,
-  "progress": { "have": 1, "need": 4, "unit": "parts" },
+  "progress": { "have": 0, "need": 4, "unit": "parts" },
   "badges": [
-    { "text": "guaranteed blueprint each run", "tone": "info" },
-    { "text": "New War + Jade Shadows required", "tone": "warn" }
+    { "text": "Constellations quest", "tone": "warn" },
+    { "text": "a blueprint every clear", "tone": "info" }
   ],
-  "prices": [{ "label": "build", "amount": "70,000 cr", "money": false }],
+  "prices": [],
+  "routes": [
+    {
+      "name": "Constellations, then Scoria's Angel",
+      "cost": "the quest gives the main blueprint; parts drop, or 90 Talent each at Hunhow",
+      "effort": 4,
+      "role": "chosen"
+    },
+    {
+      "name": "After the quest: Scoria's Angel",
+      "cost": "the main blueprint drops too, or 275 Talent; 545 Talent buys the whole set",
+      "effort": 5,
+      "role": "afterQuest"
+    }
+  ],
   "materials": [
     { "qty": "600", "label": "Rubedo", "note": "Chassis" },
     { "qty": "500", "label": "Polymer Bundle", "note": "Systems" },
@@ -18,9 +32,9 @@
     { "qty": "30", "label": "Morphics", "note": "Systems" },
     { "qty": "20", "label": "Control Module", "note": "Systems" },
     { "qty": "5", "label": "Gallium", "note": "Neuroptics" },
+    { "qty": "5", "label": "Nullstones", "note": "Neuroptics" },
+    { "qty": "75", "label": "Asterite", "note": "Neuroptics" },
     { "qty": "3", "label": "Orokin Cell", "note": "Sirius & Orion" },
-    { "qty": "5", "label": "Nullstones", "note": null },
-    { "qty": "75", "label": "Asterite", "note": null },
     { "qty": "70,000", "label": "Credits", "note": null }
   ],
   "groups": [
@@ -28,8 +42,8 @@
       "type": "gate",
       "place": "QUESTS",
       "sub": null,
-      "activity": "The New War, then Jade Shadows, then Jade Shadows: Constellations",
-      "meta": "Constellations: 30-40 min solo",
+      "activity": "finish Jade Shadows: Constellations",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -37,33 +51,54 @@
       "spends": [],
       "map": null,
       "rows": [
-        { "qty": null, "label": "The New War", "note": null, "alt": null, "done": false },
-        { "qty": null, "label": "Jade Shadows", "note": null, "alt": null, "done": false },
         {
           "qty": null,
           "label": "Jade Shadows: Constellations",
-          "note": "solo, not replayable; type FATHER to confirm",
+          "note": "after Jade Shadows; solo, 30-40 min, can't be replayed",
           "alt": null,
           "done": false
         }
       ],
-      "conditions": [
-        "Constellations locks every other mission out for roughly 90 minutes.",
-        "Completing it awards the Sirius & Orion main blueprint and unlocks Uranus Proxima plus the Pontis Tower hub where Hunhow trades Talents."
-      ],
+      "conditions": [],
       "bonuses": [],
       "disclosures": []
     },
     {
-      "type": "boss",
-      "place": "URANUS PROXIMA, RAILJACK",
+      "type": "farm",
+      "place": "INBOX",
       "sub": null,
-      "activity": "Skirmish into Assassinate: The Kuva Wytch or Scoria's Angel",
-      "meta": "14.29% each part, guaranteed one blueprint per clear",
-      "mode": "solo from Pontis Tower for your own Railjack",
+      "activity": "claim Hunhow's message once the quest ends",
+      "meta": null,
+      "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Sirius & Orion Blueprint",
+          "note": "quest reward",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": [],
+      "quest": "Jade Shadows: Constellations"
+    },
+    {
+      "type": "boss",
+      "place": "PONTIS TOWER, URANUS PROXIMA",
+      "sub": "Scoria's Angel",
+      "activity": "side with Vena, kill Ryoku",
+      "meta": "one blueprint a clear, 14.29% each",
+      "mode": "set Solo before entering Pontis Tower to fly your own Railjack",
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "Crimson Talent", "amount": "270" },
       "spends": [],
       "map": null,
       "rows": [
@@ -72,8 +107,8 @@
           "label": "Neuroptics Blueprint",
           "note": "14.29%",
           "alt": {
-            "text": "or 90 Talent at Hunhow",
-            "spends": [{ "currency": "Emerald Talent", "amount": "90" }]
+            "text": "or 90 Crimson Talent at Hunhow",
+            "spends": [{ "currency": "Crimson Talent", "amount": "90" }]
           },
           "done": false
         },
@@ -82,8 +117,8 @@
           "label": "Chassis Blueprint",
           "note": "14.29%",
           "alt": {
-            "text": "or 90 Talent at Hunhow",
-            "spends": [{ "currency": "Emerald Talent", "amount": "90" }]
+            "text": "or 90 Crimson Talent at Hunhow",
+            "spends": [{ "currency": "Crimson Talent", "amount": "90" }]
           },
           "done": false
         },
@@ -92,26 +127,23 @@
           "label": "Systems Blueprint",
           "note": "14.29%",
           "alt": {
-            "text": "or 90 Talent at Hunhow",
-            "spends": [{ "currency": "Emerald Talent", "amount": "90" }]
+            "text": "or 90 Crimson Talent at Hunhow",
+            "spends": [{ "currency": "Crimson Talent", "amount": "90" }]
           },
           "done": false
         }
       ],
       "conditions": [
-        "Squads always get a loaner Railjack (Santovan's Oath or Marrowbone); your own ship only offers as an option from Pontis Tower, and only when matchmaking is set to Solo before you enter.",
-        "The Kuva Wytch pays Emerald Talent and drops Pride parts alongside the frame; Scoria's Angel pays Crimson Talent and drops Wrath parts. Pick one node, since a part purchase spends only the matching Talent type."
+        "Squads always fly a loaner Railjack; your own ship is offered only when matchmaking is Solo before you enter Pontis Tower.",
+        "The Kuva Wytch (side with Ryoku, kill Vena) drops the same blueprints and pays Emerald Talent, which Hunhow also takes for them."
       ],
       "bonuses": [
-        "Each clear also guarantees one of four Uranus Proxima arcanes, plus 12-16 Talents (18-22 Steel Path).",
-        "Shooting the flight-section targets (the Orowyrm on Kuva Wytch, the Ramsled on Scoria's Angel) pays up to 4 more Talents (12 on Steel Path) plus Tellurium, Mk III Railjack parts, Endo and credits; it's personal loot, so don't AFK through it."
+        "Each clear pays 12-16 Crimson Talent, plus up to 4 more (12 on Steel Path) for shooting every green target in the Ramsled flight.",
+        "Wrath's three parts share the pool, so the same clears progress Wrath.",
+        "Each clear also rolls one of four arcanes: Primary Compression, Arcane Sculptor, Secondary Cryogenic or Melee Assimilation."
       ],
-      "disclosures": [
-        {
-          "title": "run Steel Path once you can",
-          "body": "Steel Path pays roughly 50% more Talents per clear and the flight bonus goes from 4 to 12; both nodes run about 7 minutes solo on Steel Path."
-        }
-      ]
+      "disclosures": [],
+      "ref": "Crimson Talent"
     },
     {
       "type": "foundry",
@@ -150,16 +182,54 @@
         {
           "qty": null,
           "label": "Sirius & Orion",
-          "note": "25,000 cr, 3 Orokin Cells",
+          "note": "25,000 cr, the three parts, 3 Orokin Cell",
           "alt": null,
           "done": false
         }
       ],
-      "conditions": [
-        "Nullstones, Asterite, Carbides, Ticor Plate and Isos are Railjack resources; Uranus Proxima itself drops all of them, so the farm above restocks you as you go."
-      ],
+      "conditions": [],
       "bonuses": [],
       "disclosures": []
     }
-  ]
+  ],
+  "afterQuest": {
+    "effort": 5,
+    "badges": [
+      { "text": "275 Talent for the main", "tone": "warn" },
+      { "text": "a blueprint every clear", "tone": "info" }
+    ],
+    "groups": [
+      {
+        "type": "boss",
+        "place": "PONTIS TOWER, URANUS PROXIMA",
+        "sub": "Scoria's Angel",
+        "activity": "side with Vena, kill Ryoku",
+        "meta": "14.29% a clear",
+        "mode": null,
+        "live": null,
+        "skip": null,
+        "earns": { "currency": "Crimson Talent", "amount": "275" },
+        "spends": [],
+        "map": null,
+        "rows": [
+          {
+            "qty": null,
+            "label": "Sirius & Orion Blueprint",
+            "note": "14.29%",
+            "alt": {
+              "text": "or 275 Crimson Talent at Hunhow",
+              "spends": [{ "currency": "Crimson Talent", "amount": "275" }]
+            },
+            "done": false
+          }
+        ],
+        "conditions": [
+          "The Kuva Wytch drops it too and pays Emerald Talent, which Hunhow also takes for it."
+        ],
+        "bonuses": [],
+        "disclosures": [],
+        "ref": "Crimson Talent"
+      }
+    ]
+  }
 }

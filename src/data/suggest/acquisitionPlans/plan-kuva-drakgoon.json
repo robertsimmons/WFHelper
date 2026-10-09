@@ -4,10 +4,20 @@
   "effort": 9,
   "source": "unique",
   "tradeable": "converted Lich only",
-  "progress": { "have": 0, "need": 1, "unit": "weapon" },
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "weapon"
+  },
   "badges": [
-    { "text": "Kuva Lich", "tone": "warn" },
-    { "text": "Railjack required", "tone": "warn" }
+    {
+      "text": "Kuva Lich",
+      "tone": "warn"
+    },
+    {
+      "text": "Railjack required",
+      "tone": "warn"
+    }
   ],
   "prices": [],
   "groups": [
@@ -15,7 +25,7 @@
       "type": "gate",
       "place": "STAR CHART",
       "sub": null,
-      "activity": "unlock the Kuva Lich finale",
+      "activity": "unlock the Kuva Lich",
       "meta": "one-time",
       "mode": null,
       "live": null,
@@ -34,28 +44,27 @@
         {
           "qty": null,
           "label": "Mastery Rank 5",
-          "note": "to create a Kuva Lich",
+          "note": "needed to create a Kuva Lich",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
-          "label": "Railjack",
-          "note": "Rising Tide; for the Saturn Proxima confrontation",
+          "label": "Rising Tide",
+          "note": "quest complete; gives you a Railjack",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
-          "label": "Rank 5 Railjack Intrinsics",
-          "note": "any one class; Saturn Proxima access",
+          "label": "Railjack Intrinsics rank 5",
+          "note": "any one Intrinsic; opens Saturn Proxima for the final fight",
           "alt": null,
           "done": false
         }
       ],
       "conditions": [
-        "You can have only one active adversary. Clear or convert any existing Lich, Sister, or Coda before starting.",
-        "The final showdown is locked behind Saturn Proxima; check the Railjack requirements before investing in a Lich."
+        "You can have only one adversary at a time. Clear or convert any Lich, Sister, or Coda before starting."
       ],
       "bonuses": [],
       "disclosures": []
@@ -76,31 +85,29 @@
         {
           "qty": "3",
           "label": "charged Requiem mods",
-          "note": "one sequence; 3 charges each",
-          "alt": "trade duplicates or buy cheap mods from players",
+          "note": "one sequence; each has 3 charges",
+          "alt": "buy mods from other players",
           "done": false
         },
         {
           "qty": null,
           "label": "Oull",
-          "note": "wildcard Requiem; optional but very strong",
-          "alt": "25% Kuva Lich vanquish drop",
+          "note": "wildcard Requiem; optional, only one can be equipped",
+          "alt": "the first time you land the full correct sequence, 25% to drop",
           "done": false
         }
       ],
       "conditions": [
-        "Requiem Eterna Relics contain the eight Requiem mods at equal odds and cannot be refined. Kuva Flood drops one every time, Kuva Siphon 50%, and Thralls 5%.",
-        "Crack them in Requiem Void Fissures on the Kuva Fortress.",
-        "Each successful Lich vanquish consumes one charge from every equipped Requiem mod. Defiled mods have no charges left.",
-        "Palladino also sells retired Requiem I-IV relics for 10 Riven Slivers each, capped at 10 per week."
+        "A Kuva Flood always drops an Eterna Relic, a Kuva Siphon 50% of the time, and each Thrall 5%.",
+        "Open them in a Requiem Fissure on the Kuva Fortress. They cannot be refined with Void Traces and hold only the eight Requiem mods, never Oull.",
+        "Each solved sequence uses one charge from every equipped mod. A mod with no charges is Defiled and unusable.",
+        "Palladino sells the retired Requiem I-IV relics for 10 Riven Slivers each, 10 per week of each."
       ],
-      "bonuses": [
-        "Oull substitutes for any Requiem and has three charges. Two Oulls cannot be equipped in the same sequence."
-      ],
+      "bonuses": [],
       "disclosures": [
         {
-          "title": "do this before spawning the Lich",
-          "body": "A new Lich is not removable until its three-Requiem sequence is solved. Stock one or two of each Requiem first so a reveal never stalls you while you crack relics mid-hunt."
+          "title": "stock mods before the Lich spawns",
+          "body": "A Lich stays until you solve its sequence, so have a pool of Requiem mods ready before you Mercy a Larvling."
         }
       ]
     },
@@ -109,8 +116,8 @@
       "place": "CASSINI, SATURN",
       "sub": null,
       "activity": "Capture; spawn and inspect Kuva Larvlings",
-      "meta": "one full pool cycle at worst",
-      "mode": "solo, normal or Steel Path",
+      "meta": "at most 21 Larvlings to land a chosen weapon",
+      "mode": "solo",
       "live": null,
       "skip": null,
       "earns": null,
@@ -126,30 +133,29 @@
         },
         {
           "qty": null,
-          "label": "Heat progenitor",
-          "note": "Ember, Nezha or Kullervo; the usual pick for this gun with Fomorian Accelerant",
-          "alt": "Elemental Vice can change the element later at rank 40",
+          "label": "progenitor of choice",
+          "note": "its element becomes the weapon's bonus damage and sets the Lich's abilities",
+          "alt": "Elemental Vice swaps the element later at rank 40",
           "done": false
         }
       ],
       "conditions": [
-        "After the yellow flicker, kill 15 enemies within about 30 seconds to spawn the Larvling. The downed Larvling previews its weapon before you Mercy it.",
-        "If the preview is not Drakgoon, leave it un-mercied and complete the mission. That weapon leaves the rotation until all other Kuva weapons have appeared; aborting does not advance the rotation.",
-        "You cannot Mercy a Larvling while any adversary -- Lich, Sister, or Coda -- is already active.",
-        "Bring a wide nuke frame (Saryn, Mag, Frost, Volt, Octavia, Rhino) so you hit the kill count without depending on line of sight, and spawn solo: only the last player to damage the Larvling can Mercy it, and a squadmate's frame can end up as the progenitor.",
-        "On a Capture, the flicker only starts once the target is captured. Invisibility can stop the Larvling spawning."
+        "Run any regular level 20+ Grineer mission. When the screen flashes, kill at least 10 enemies within a minute to spawn the Larvling; each extra squadmate raises the count. On a Capture the flash comes after the target is captured.",
+        "Stand within 3 meters of the downed Larvling to see its weapon. If it is not the Drakgoon, skip it and finish the mission.",
+        "Only the last player to damage it can Mercy it (hold X), so run solo. You cannot Mercy while any Lich, Sister, or Coda is active.",
+        "Fissures, Invasions, quests, and Dark Sectors never spawn Larvlings; Steel Path missions do."
       ],
       "bonuses": [
-        "Every player receives 100 Kuva when a Larvling goes down, whether it is Mercied or refused."
+        "Everyone in the squad gets 100 Kuva when a Larvling goes down, even if nobody Mercies it."
       ],
       "disclosures": [
         {
           "title": "the only reliable weapon reroll",
-          "body": "Do not abort unwanted Larvlings. Finishing the mission without using Mercy is what removes that shown weapon from the candidate pool and eventually guarantees the Drakgoon; an abort leaves it eligible."
+          "body": "Finishing the mission without Mercy puts that weapon on a reject list, so it will not show again until every weapon has appeared. Aborting does not count. Taking any weapon clears the list. Skip every Larvling that is not the Drakgoon."
         },
         {
-          "title": "Cassini never flashes",
-          "body": "Two recent threads about Cassini never flickering came down to an active Coda or Sister silently blocking Larvlings. Finish the old adversary first; Telesto Exterminate also works as a backup node."
+          "title": "other nodes",
+          "body": "Cassini is a quick Capture. Exterminate nodes such as Telesto also work and have many enemies to kill for the count."
         }
       ]
     },
@@ -157,9 +163,9 @@
       "type": "boss",
       "place": "LICH INFLUENCE NODES",
       "sub": "Earth through Kuva Fortress",
-      "activity": "kill Thralls, reveal mods, and test the sequence",
-      "meta": "~180 Murmurs; 1-3 h per Lich",
-      "mode": "public for faster Murmurs",
+      "activity": "Mercy Thralls, reveal mods, and test the sequence",
+      "meta": "reveal all 3 Requiems, then find their order",
+      "mode": "squad shares Murmurs",
       "live": null,
       "skip": null,
       "earns": null,
@@ -169,37 +175,43 @@
         {
           "qty": "3",
           "label": "revealed Requiems",
-          "note": "Murmurs reveal mods, not their order",
+          "note": "Murmurs reveal the mods, not their order",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "correct Parazon sequence",
-          "note": "required to open Saturn Proxima",
+          "note": "sends the Lich to Saturn Proxima",
           "alt": null,
           "done": false
         }
       ],
       "conditions": [
-        "Thralls on your Lich's influence nodes build both Murmur progress and rage; joining another Lich's node grants Murmur but does not raise your own rage.",
-        "Murmur reveals arrive around 36, 60, and 84 progress, but the final three-mod order must be learned by Parazon attempts.",
-        "A failed Parazon attempt ranks up the Lich and moves it onward (Earth, Mars, Ceres, Sedna, Kuva Fortress), but gives the squad 10 Murmurs. Do not stab before a mod is revealed; afterward, stab to learn the order.",
-        "Clearing every influenced node on a planet ranks the Lich up anyway, even with no failed stab.",
-        "While the Lich lives, it taxes about 0.7% of rewards per occupied node; you get it all back on Vanquish."
+        "Mercy Thralls (blue outline, red waypoint) on your Lich's red influence nodes. Each one adds a Murmur and fills your Lich's rage meter; Thralls on another Lich's node give Murmurs but no rage.",
+        "Do not stab your Lich until one Requiem is revealed. After that, equip the known mods on your Parazon and stab every time the Lich is down.",
+        "A wrong stab stops at the first wrong mod, ranks the Lich up (Earth, Mars, Ceres, Sedna, Kuva Fortress), and gives the squad 10 Murmurs.",
+        "Clearing every influenced node on a planet also ranks the Lich up.",
+        "Your Lich steals about 0.7% of your rewards per influenced node. You get it all back when it is defeated.",
+        "Down the Lich three times without stabbing and it leaves without ranking up."
       ],
       "bonuses": [
-        "Public squads accelerate Murmurs because failed attempts by any player benefit everyone.",
-        "When your Lich appears, let it enthrall nearby Grineer (up to 10, one batch every 20 seconds) before dealing with it. Down it three times without stabbing and it leaves without ranking up."
+        "Each stab drops Kuva for the squad: 150, 200, 250, or 300 at Lich rank 1 to 4.",
+        "The first time you land the full correct sequence, 25% to drop Oull.",
+        "A Requiem Ultimatum forces your Lich out on one of its nodes. Palladino sells one a week for 10 Riven Slivers; use it solo, since a squad can spawn a teammate's Lich instead."
       ],
       "disclosures": [
         {
-          "title": "use Oull to cap the guessing",
-          "body": "Once one mod is known, use Oull to test positions efficiently. Oull -> mod 1 -> random, then Oull -> mod 2 -> mod 1, then mod 1 -> Oull -> mod 2, then mod 2 -> Oull -> mod 1 guarantees the kill by Lich level 4 in the worst case."
+          "title": "the safe four-stab routine",
+          "body": "Put the first revealed Requiem in slot 1 with any two others behind it. If the stab fails, move it to slot 2, then slot 3. Put each later reveal in the first slot not ruled out. The fourth stab is guaranteed."
         },
         {
-          "title": "make the spawn loop fit the goal",
-          "body": "Thralls spawn on a timer, up to 10 per mission, so do not speedrun. Start on long missions (Survival, Excavation, Interception, Mobile Defense) for Murmurs; later, when you only need rage, run Capture, Sabotage, or Exterminate. A Requiem Ultimatum from Palladino (10 Riven Slivers, one per week) forces your Lich to spawn on one of its nodes; use it solo, since in a squad it can summon a teammate's Lich instead."
+          "title": "the same routine with Oull",
+          "body": "Put Oull in slot 1 and the first known Requiem in slot 2; swap them if it fails. If the known one failed slot 1, move it to slot 3. Put the second reveal in the first unknown slot, and move it to slot 2 if it fails. The last stab fixes the order. Replace Oull with the third reveal once you have it."
+        },
+        {
+          "title": "good Thrall missions",
+          "body": "Thralls spawn on a timer, up to 10 per mission. Survival, Defense, Excavation, and Interception give plenty. On Interception, Mercy every Thrall before 100% or the end of the mission clears them."
         }
       ]
     },
@@ -207,9 +219,9 @@
       "type": "boss",
       "place": "SATURN PROXIMA",
       "sub": "Kuva Lich Confrontation",
-      "activity": "Railjack Skirmish; finish the Lich",
+      "activity": "Railjack Skirmish; defeat the Lich and Vanquish it",
       "meta": "choose Vanquish",
-      "mode": "solo",
+      "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
@@ -219,33 +231,28 @@
         {
           "qty": "1",
           "label": "Kuva Drakgoon",
-          "note": "fully built; Foundry delivery",
+          "note": "ready to claim in the Foundry",
           "alt": null,
           "done": false
         }
       ],
       "conditions": [
-        "Choose Vanquish, never Convert. Conversion gives a tradeable Lich contract instead of the weapon. You have 20 seconds; no choice defaults to Vanquish.",
-        "The weapon ignores its normal Mastery Rank restriction when claimed from a Lich, but still needs its own weapon slot.",
-        "A vanquish has a 25% chance to award Oull and a separate 25% chance to award a Requiem Ultimatum."
+        "Clear the fighters and Gokstad Crewships, board the Grineer Galleon, and beat the Lich's single health bar.",
+        "Choose Vanquish, never Convert. Convert gives you an ally and a tradeable Lich but no weapon. No choice within 20 seconds Vanquishes.",
+        "The weapon ignores its normal Mastery Rank requirement."
       ],
       "bonuses": [
-        "The Drakgoon arrives built; no crafting materials or Foundry timer are needed.",
-        "Mastery runs to rank 40 through 5 Forma, 4,000 in total."
+        "Everything your Lich taxed comes back, and a vanquish has a 25% chance to drop a Requiem Ultimatum.",
+        "If your Lich carries an Ephemera you get it, and the first vanquish earns the Old Blood Emblem."
       ],
-      "disclosures": [
-        {
-          "title": "the Railjack does not need to be great",
-          "body": "There is no squad bonus for a Kuva confrontation and solo is faster. Mk III parts from the dojo dry dock plus a hull or shield mod are enough; a fragile ship can park behind cover while you Archwing the crewships. Liches have Damage Attenuation, so fast-firing, low-damage-per-shot weapons beat big single hits."
-        }
-      ]
+      "disclosures": []
     },
     {
       "type": "craft",
       "place": "ORBITER, MODDING",
       "sub": null,
       "activity": "optional Valence Fusion toward 60%",
-      "meta": "bank copies first",
+      "meta": "keep spare copies",
       "mode": null,
       "live": null,
       "skip": null,
@@ -256,28 +263,24 @@
         {
           "qty": null,
           "label": "60% bonus",
-          "note": "optional collection or optimization goal",
+          "note": "optional; the bonus rolls between 25% and 60%",
           "alt": "stop at the first usable roll",
           "done": false
         }
       ],
       "conditions": [
-        "Valence Fusion sets the result to min(1.1 x the higher bonus, 60%), rounded down to one decimal. Any result of at least 58% becomes 60%.",
-        "Do not fuse mediocre copies early. Keep several and fuse every donor into the highest roll; a 53% displayed bonus guarantees 60% on the next fusion.",
-        "Start the fusion from the Drakgoon you want to keep. Catalysts, Forma, Exilus adapters, Focus lenses, and Elemental Vice on the donor are destroyed.",
-        "Elemental Vice can change the bonus element only after rank 40 (five Forma); it does not change the percentage."
+        "Fusion gives 1.1 times the higher bonus, rounded down and capped at 60%. A result of 58% or more becomes 60%, so a donor at 52.8% or better finishes it.",
+        "Start from the Drakgoon you want to keep. Its Catalysts, Forma, Exilus adapter, Focus lens, and Elemental Vice stay; the donor's are lost. Claim the donor from the Foundry first, since unclaimed copies cannot be fused.",
+        "Elemental Vice swaps the bonus element only on a rank 40 weapon (5 Forma). It does not change the percentage."
       ],
       "bonuses": [
-        "Only one copy needs the desired progenitor element because Valence Fusion lets you select the surviving element."
+        "Fusion lets you pick which of the two elements survives.",
+        "Unclaimed copies in the Foundry sell for 10,000 credits."
       ],
       "disclosures": [
         {
-          "title": "a 60% chase is several full Liches",
-          "body": "The bonus rolls uniformly from 25% to 60%, so reaching 60% commonly means two to four additional complete Lich cycles. Treat it as an optional long-term goal rather than part of getting a usable Drakgoon."
-        },
-        {
-          "title": "usable, not exceptional",
-          "body": "People call it fun and best as a Heat trash clearer; plenty treat it as Mastery fodder. It is a common roll, and the reject list guarantees it within one cycle of the pool."
+          "title": "a 60% chase is several Liches",
+          "body": "The bonus rolls evenly from 25% to 60%, so 60% takes several full Lich cycles. A Kuva weapon gives Mastery only once, so extra copies are only for fusing."
         }
       ]
     }

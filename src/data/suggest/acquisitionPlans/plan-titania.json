@@ -10,6 +10,26 @@
     { "text": "time gate", "tone": "warn" }
   ],
   "prices": [{ "label": "built", "amount": "275 p", "money": false }],
+  "routes": [
+    {
+      "name": "The Silver Grove",
+      "cost": "three Apothic runs give every blueprint free; the cost is gathering plants",
+      "effort": 4,
+      "role": "chosen"
+    },
+    {
+      "name": "After the quest: Cephalon Simaris",
+      "cost": "125,000 Standing buys all four blueprints back",
+      "effort": 6,
+      "role": "afterQuest"
+    },
+    {
+      "name": "The Circuit, week 8",
+      "cost": "pick Titania for all four blueprints, about 23 stages; needs The Duviri Paradox",
+      "effort": 4,
+      "role": null
+    }
+  ],
   "materials": [
     { "qty": "3,000", "label": "Ferrite", "note": "Chassis" },
     { "qty": "2,500", "label": "Polymer Bundle", "note": "Neuroptics" },
@@ -18,7 +38,6 @@
     { "qty": "900", "label": "Rubedo", "note": "Chassis" },
     { "qty": "800", "label": "Plastids", "note": "Systems" },
     { "qty": "700", "label": "Circuits", "note": "Neuroptics" },
-    { "qty": "6", "label": "Morphics", "note": "the three Apothics" },
     { "qty": "3", "label": "Nitain Extract", "note": "Chassis" },
     { "qty": "3", "label": "Orokin Cell", "note": "Titania" },
     { "qty": "2", "label": "Neurodes", "note": "Neuroptics" },
@@ -34,8 +53,8 @@
       "type": "gate",
       "place": "QUESTS",
       "sub": null,
-      "activity": "The Second Dream, then The Silver Grove",
-      "meta": "MR 7",
+      "activity": "Mastery Rank 7 and The Second Dream",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -45,30 +64,29 @@
       "rows": [
         {
           "qty": null,
-          "label": "The Second Dream",
-          "note": "required for Lua and Lunar Pitcher",
+          "label": "Mastery Rank 7",
+          "note": "gates The Silver Grove",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
-          "label": "The Silver Grove",
-          "note": "start with Amaryn at any relay",
+          "label": "The Second Dream",
+          "note": "unlocks Lua, where Lunar Pitcher grows",
           "alt": null,
           "done": false
         }
       ],
-      "conditions": [
-        "You do not need New Loka standing. Accept the quest before using any Apothic, or it is consumed without advancing Titania's quest."
-      ],
+      "conditions": [],
       "bonuses": [],
-      "disclosures": []
+      "disclosures": [],
+      "quest": "The Silver Grove"
     },
     {
       "type": "boss",
       "place": "E PRIME, EARTH",
       "sub": "The Silver Grove shrine",
-      "activity": "anoint altar, defeat specter, extract",
+      "activity": "talk to Amaryn at any relay, then anoint the altar, defeat the specter, extract",
       "meta": "three guaranteed component blueprints",
       "mode": null,
       "live": null,
@@ -97,12 +115,20 @@
           "note": "Oberon Feyarch specter, anointed with Sunrise Apothic",
           "alt": null,
           "done": false
+        },
+        {
+          "qty": null,
+          "label": "Titania Blueprint",
+          "note": "Amaryn mails it after the last run; don't buy it",
+          "alt": null,
+          "done": false
         }
       ],
       "conditions": [
         "Craft each Apothic in the Foundry (10 seconds) and equip it to a gear-wheel slot before launching. Crafting alone is not enough.",
         "The third shrine run includes a two-minute defense after the Feyarch Specter dies. Amaryn mails the main blueprint after completion.",
-        "In a squad, only one player needs to spend an Apothic at the altar; do not all consume one."
+        "In a squad, only one player needs to spend an Apothic at the altar; do not all consume one.",
+        "The blueprints are one-time; replaying the quest does not repeat them."
       ],
       "bonuses": [
         "Post-quest Apothic runs are also a source of Growing Power from the spawned Specters."
@@ -112,7 +138,8 @@
           "title": "no part RNG",
           "body": "All three component blueprints and Titania's main blueprint are guaranteed quest rewards. The practical delay is gathering the Earth plants in the right day or night phase."
         }
-      ]
+      ],
+      "quest": "The Silver Grove"
     },
     {
       "type": "foundry",
@@ -130,28 +157,28 @@
         {
           "qty": null,
           "label": "Neuroptics",
-          "note": "15,000 cr, Alloy Plate, Neurodes, Polymer Bundle, Circuits",
+          "note": "15,000 cr, 1,500 Alloy Plate, 2 Neurodes, 2,500 Polymer Bundle, 700 Circuits",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Chassis",
-          "note": "15,000 cr, 3 Nitain, Ferrite, Rubedo, Tellurium",
+          "note": "15,000 cr, 3 Nitain Extract, 3,000 Ferrite, 900 Rubedo, 1 Tellurium",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Systems",
-          "note": "15,000 cr, Control Module, Plastids, Cryotic, Tellurium",
+          "note": "15,000 cr, 1 Control Module, 800 Plastids, 2,200 Cryotic, 1 Tellurium",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Titania",
-          "note": "25,000 cr, 3 Orokin Cells",
+          "note": "25,000 cr, the three parts, 3 Orokin Cell",
           "alt": null,
           "done": false
         }
@@ -160,5 +187,86 @@
       "bonuses": [],
       "disclosures": []
     }
-  ]
+  ],
+  "afterQuest": {
+    "effort": 6,
+    "badges": [
+      { "text": "Simaris 125,000 standing", "tone": "warn" },
+      { "text": "Circuit week 8", "tone": "circuit" }
+    ],
+    "groups": [
+      {
+        "type": "currency",
+        "place": "CEPHALON SIMARIS",
+        "sub": null,
+        "activity": "scan targets with the Synthesis Scanner",
+        "meta": "125,000 Standing",
+        "mode": null,
+        "live": null,
+        "skip": null,
+        "earns": { "currency": "Cephalon Simaris Standing", "amount": "125,000" },
+        "spends": [],
+        "map": null,
+        "rows": [
+          {
+            "qty": "125,000",
+            "label": "Simaris Standing",
+            "note": "daily cap 16,000 + 500 per Mastery Rank",
+            "alt": null,
+            "done": false
+          }
+        ],
+        "conditions": [],
+        "bonuses": [],
+        "disclosures": [],
+        "ref": "Cephalon Simaris Standing"
+      },
+      {
+        "type": "vendor",
+        "place": "CEPHALON SIMARIS",
+        "sub": null,
+        "activity": "buy replacement blueprints",
+        "meta": "25,000 Standing a part, 50,000 the main",
+        "mode": null,
+        "live": null,
+        "skip": null,
+        "earns": null,
+        "spends": [{ "currency": "Cephalon Simaris Standing", "amount": "125,000" }],
+        "map": null,
+        "rows": [
+          {
+            "qty": null,
+            "label": "Titania Blueprint",
+            "note": "50,000 Standing",
+            "alt": "Circuit week 8, tier 10",
+            "done": false
+          },
+          {
+            "qty": null,
+            "label": "Neuroptics Blueprint",
+            "note": "25,000 Standing",
+            "alt": "Circuit week 8, tier 2",
+            "done": false
+          },
+          {
+            "qty": null,
+            "label": "Chassis Blueprint",
+            "note": "25,000 Standing",
+            "alt": "Circuit week 8, tier 5",
+            "done": false
+          },
+          {
+            "qty": null,
+            "label": "Systems Blueprint",
+            "note": "25,000 Standing",
+            "alt": "Circuit week 8, tier 8",
+            "done": false
+          }
+        ],
+        "conditions": ["Simaris only stocks these once The Silver Grove is done."],
+        "bonuses": [],
+        "disclosures": []
+      }
+    ]
+  }
 }

@@ -2,16 +2,27 @@
   "name": "Ether Daggers",
   "kind": "melee",
   "effort": 3,
-  "source": "shop",
+  "source": "repeat",
   "tradeable": false,
   "progress": { "have": 0, "need": 1, "unit": "weapon" },
   "badges": [
     { "text": "Stolen Dreams", "tone": "info" },
     { "text": "MR 6", "tone": "info" }
   ],
-  "prices": [
-    { "label": "Simaris", "amount": "100,000 standing", "money": false },
-    { "label": "build", "amount": "20,000 cr", "money": false }
+  "prices": [{ "label": "build", "amount": "20,000 cr", "money": false }],
+  "routes": [
+    {
+      "name": "Stolen Dreams",
+      "cost": "the final mission's extraction pays the blueprint; 20,000 cr build",
+      "effort": 3,
+      "role": "chosen"
+    },
+    {
+      "name": "After the quest: Cephalon Simaris",
+      "cost": "100,000 Standing buys the blueprint back",
+      "effort": 5,
+      "role": "afterQuest"
+    }
   ],
   "materials": [
     { "qty": "5", "label": "Morphics", "note": null },
@@ -23,9 +34,9 @@
   "groups": [
     {
       "type": "gate",
-      "place": "PHOBOS JUNCTION, THEN THE CODEX",
+      "place": "MASTERY RANK",
       "sub": null,
-      "activity": "the Stolen Dreams quest",
+      "activity": "reach MR 6 to craft them",
       "meta": null,
       "mode": null,
       "live": null,
@@ -36,33 +47,51 @@
       "rows": [
         {
           "qty": null,
-          "label": "Stolen Dreams",
-          "note": "extracting the final mission rewards the Ether Daggers blueprint",
-          "alt": {
-            "text": "or 100,000 standing at Cephalon Simaris if the blueprint is gone",
-            "spends": [{ "currency": "Cephalon Simaris Standing", "amount": "100,000" }]
-          },
+          "label": "Mastery Rank 6",
+          "note": "the Foundry won't craft them below that",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "STOLEN DREAMS",
+      "sub": "Tharsis, Unda, Pantheon, Roche, Alator",
+      "activity": "Lotus's Arcane Codices quest",
+      "meta": "no RNG",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Ether Daggers Blueprint",
+          "note": "extract from Alator, the last mission",
+          "alt": null,
           "done": false
         }
       ],
       "conditions": [
-        "The quest does not hand out a second blueprint on replay.",
+        "The blueprint is one-time; replaying the quest does not repeat it.",
         "The Market's Dual Ether is a different weapon that has led many players to sell their Daggers by mistake."
       ],
-      "bonuses": [],
-      "disclosures": [
-        {
-          "title": "buying it back from Simaris",
-          "body": "Simaris unlocks the offer only after Stolen Dreams is complete and has no ranks, so standing is the only gate. The daily cap is 16,000 plus 500 per Mastery Rank."
-        }
-      ]
+      "bonuses": ["The last mission also pays an Orokin Catalyst Blueprint."],
+      "disclosures": [],
+      "quest": "Stolen Dreams"
     },
     {
       "type": "foundry",
       "place": "FOUNDRY",
       "sub": null,
       "activity": "build the Ether Daggers",
-      "meta": null,
+      "meta": "12h",
       "mode": null,
       "live": null,
       "skip": null,
@@ -73,16 +102,79 @@
         {
           "qty": null,
           "label": "Ether Daggers",
-          "note": "20,000 credits, 12h",
+          "note": "20,000 cr, 5 Morphics, 600 Polymer Bundle, 600 Ferrite, 1,200 Nano Spores",
           "alt": null,
           "done": false
         }
       ],
       "conditions": [
-        "Rank them to 30 before selling; a sold copy cannot be re-ranked without rebuying the blueprint."
+        "Rank them to 30 before selling; a sold copy needs the blueprint bought again."
       ],
       "bonuses": [],
       "disclosures": []
     }
-  ]
+  ],
+  "afterQuest": {
+    "effort": 5,
+    "badges": [{ "text": "Simaris 100,000 standing", "tone": "warn" }],
+    "groups": [
+      {
+        "type": "currency",
+        "place": "CEPHALON SIMARIS",
+        "sub": null,
+        "activity": "scan targets with the Synthesis Scanner",
+        "meta": "100,000 Standing",
+        "mode": null,
+        "live": null,
+        "skip": null,
+        "earns": { "currency": "Cephalon Simaris Standing", "amount": "100,000" },
+        "spends": [],
+        "map": null,
+        "rows": [
+          {
+            "qty": "100,000",
+            "label": "Simaris Standing",
+            "note": "daily cap 16,000 + 500 per Mastery Rank",
+            "alt": null,
+            "done": false
+          }
+        ],
+        "conditions": [],
+        "bonuses": [],
+        "disclosures": [],
+        "ref": "Cephalon Simaris Standing"
+      },
+      {
+        "type": "vendor",
+        "place": "CEPHALON SIMARIS",
+        "sub": null,
+        "activity": "buy the blueprint back",
+        "meta": "100,000 Standing",
+        "mode": null,
+        "live": null,
+        "skip": null,
+        "earns": null,
+        "spends": [{ "currency": "Cephalon Simaris Standing", "amount": "100,000" }],
+        "map": null,
+        "rows": [
+          {
+            "qty": null,
+            "label": "Ether Daggers Blueprint",
+            "note": "100,000 Standing",
+            "alt": {
+              "text": "or Operation: Plague Star, 3,000 Operational Supply Standing and 5,000 cr at Nakak in Cetus",
+              "spends": [
+                { "currency": "Operational Supply Standing", "amount": "3,000" },
+                { "currency": "Credits", "amount": "5,000" }
+              ]
+            },
+            "done": false
+          }
+        ],
+        "conditions": ["Simaris only stocks these once Stolen Dreams is done."],
+        "bonuses": [],
+        "disclosures": []
+      }
+    ]
+  }
 }

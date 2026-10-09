@@ -10,6 +10,20 @@
     { "text": "don't sell before rank 30", "tone": "warn" }
   ],
   "prices": [{ "label": "build", "amount": "28,000 cr", "money": false }],
+  "routes": [
+    {
+      "name": "The Archwing quest",
+      "cost": "the Lotus sends the main blueprint, three Excavations give the parts; 28,000 cr of builds",
+      "effort": 2,
+      "role": "chosen"
+    },
+    {
+      "name": "After the quest: Cephalon Simaris",
+      "cost": "250,000 Standing: 100,000 for the main blueprint, 50,000 for each part",
+      "effort": 7,
+      "role": "afterQuest"
+    }
+  ],
   "materials": [
     { "qty": "1,000", "label": "Ferrite", "note": "Harness" },
     { "qty": "800", "label": "Rubedo", "note": "300 Harness, 500 Wings" },
@@ -22,31 +36,6 @@
     { "qty": "28,000", "label": "Credits", "note": null }
   ],
   "groups": [
-    {
-      "type": "gate",
-      "place": "MARS JUNCTION",
-      "sub": null,
-      "activity": "start The Archwing quest",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Mars Junction",
-          "note": "unlocks The Archwing",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
     {
       "type": "farm",
       "place": "VENUS + EARTH",
@@ -70,38 +59,34 @@
         {
           "qty": null,
           "label": "Harness Blueprint",
-          "note": "random per excavation",
+          "note": "random per Excavation",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Systems Blueprint",
-          "note": "random per excavation",
+          "note": "random per Excavation",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Wings Blueprint",
-          "note": "random per excavation",
+          "note": "random per Excavation",
           "alt": null,
           "done": false
         }
       ],
       "conditions": [
-        "Quest nodes only exist inside the quest; launch each step from the quest, not the Star Chart node.",
-        "You can extract after the first excavator completes."
+        "Quest nodes only exist inside the quest; launch each step from the quest or its alert, not the Star Chart node.",
+        "You can extract after the first Excavation completes."
       ],
       "bonuses": [
-        "The final mission on Montes, Venus hands you the Imperator and Veritux free, and completing the quest gives the Archwing Launcher."
+        "The last mission, Montes, Venus, hands you the Imperator and Veritux free, and the quest gives the Archwing Launcher."
       ],
-      "disclosures": [
-        {
-          "title": "replacing a sold Odonata",
-          "body": "There is no Market blueprint and replaying the quest doesn't return it. Cephalon Simaris sells the main blueprint for 100,000 standing and each component for 50,000 (250,000 total); standing caps at 125,000 held, so buy in two chunks. Support tickets are reported honoured when an unranked sale blocked Mastery."
-        }
-      ]
+      "disclosures": [],
+      "quest": "The Archwing"
     },
     {
       "type": "foundry",
@@ -157,5 +142,85 @@
         }
       ]
     }
-  ]
+  ],
+  "afterQuest": {
+    "effort": 7,
+    "badges": [{ "text": "Simaris 250,000 standing", "tone": "warn" }],
+    "groups": [
+      {
+        "type": "currency",
+        "place": "CEPHALON SIMARIS",
+        "sub": null,
+        "activity": "scan targets with the Synthesis Scanner",
+        "meta": "250,000 Standing, two rounds",
+        "mode": null,
+        "live": null,
+        "skip": null,
+        "earns": { "currency": "Cephalon Simaris Standing", "amount": "250,000" },
+        "spends": [],
+        "map": null,
+        "rows": [
+          {
+            "qty": "250,000",
+            "label": "Simaris Standing",
+            "note": "daily cap 16,000 + 500 per Mastery Rank",
+            "alt": null,
+            "done": false
+          }
+        ],
+        "conditions": [
+          "Standing holds at most 125,000, so spend it on blueprints before earning the rest."
+        ],
+        "bonuses": [],
+        "disclosures": [],
+        "ref": "Cephalon Simaris Standing"
+      },
+      {
+        "type": "vendor",
+        "place": "CEPHALON SIMARIS",
+        "sub": null,
+        "activity": "buy replacement blueprints",
+        "meta": "100,000 Standing the main, 50,000 a part",
+        "mode": null,
+        "live": null,
+        "skip": null,
+        "earns": null,
+        "spends": [{ "currency": "Cephalon Simaris Standing", "amount": "250,000" }],
+        "map": null,
+        "rows": [
+          {
+            "qty": null,
+            "label": "Odonata Blueprint",
+            "note": "100,000 Standing",
+            "alt": null,
+            "done": false
+          },
+          {
+            "qty": null,
+            "label": "Harness Blueprint",
+            "note": "50,000 Standing",
+            "alt": null,
+            "done": false
+          },
+          {
+            "qty": null,
+            "label": "Systems Blueprint",
+            "note": "50,000 Standing",
+            "alt": null,
+            "done": false
+          },
+          {
+            "qty": null,
+            "label": "Wings Blueprint",
+            "note": "50,000 Standing",
+            "alt": null,
+            "done": false
+          }
+        ],
+        "conditions": ["Simaris only stocks these once The Archwing is done."],
+        "bonuses": [],
+        "disclosures": []
+      }
+    ]
+  }
 }

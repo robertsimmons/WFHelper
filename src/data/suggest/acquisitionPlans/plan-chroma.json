@@ -2,33 +2,173 @@
   "name": "Chroma",
   "kind": "warframe",
   "effort": 5,
-  "source": "boss",
+  "source": "repeat",
   "tradeable": false,
   "progress": { "have": 0, "need": 8, "unit": "parts" },
   "badges": [
     { "text": "needs 4 donor frame parts", "tone": "warn" },
     { "text": "Circuit week 7", "tone": "circuit" }
   ],
-  "prices": [{ "label": "build", "amount": "70,000 cr", "money": false }],
+  "prices": [{ "label": "built", "amount": "375 p", "money": false }],
+  "routes": [
+    {
+      "name": "The New Strange and the Junctions, then the donor parts",
+      "cost": "the quest and three Junctions give the four blueprints; four donor frame parts still need farming",
+      "effort": 5,
+      "role": "chosen"
+    },
+    {
+      "name": "After the quest: Cephalon Simaris",
+      "cost": "125,000 Standing buys the four blueprints back; the donor parts are the same",
+      "effort": 6,
+      "role": "afterQuest"
+    },
+    {
+      "name": "The Circuit, week 7",
+      "cost": "pick Chroma for all four blueprints, about 23 stages; needs The Duviri Paradox",
+      "effort": 4,
+      "role": null
+    }
+  ],
   "materials": [
-    { "qty": "1", "label": "Morphics", "note": "Frost Chassis" },
-    { "qty": "1,000", "label": "Ferrite", "note": "Frost Chassis" },
-    { "qty": "800", "label": "Rubedo", "note": "300 Frost Chassis, 500 Volt Neuroptics" },
-    { "qty": "150", "label": "Alloy Plate", "note": "Volt Neuroptics" },
-    { "qty": "3", "label": "Neural Sensors", "note": "1 Volt Neuroptics, 2 Neuroptics" },
-    { "qty": "500", "label": "Polymer Bundle", "note": "150 Volt Neuroptics, 350 Neuroptics" },
-    { "qty": "250", "label": "Plastids", "note": "200 Neuroptics, 50 Chassis" },
-    { "qty": "3", "label": "Neurodes", "note": "2 Chassis, 1 Systems" },
-    { "qty": "900", "label": "Salvage", "note": "Chassis" },
+    { "qty": "160,000", "label": "Credits", "note": null },
+    {
+      "qty": "5,450",
+      "label": "Salvage",
+      "note": "4,000 quest beacons, 550 Saryn Systems, 900 Chassis"
+    },
+    { "qty": "1,500", "label": "Ferrite", "note": "500 quest beacons, 1,000 Frost Chassis" },
+    {
+      "qty": "1,400",
+      "label": "Rubedo",
+      "note": "100 quest beacons, 500 Ember Neuroptics, 300 Frost Chassis, 500 Volt Neuroptics"
+    },
+    {
+      "qty": "750",
+      "label": "Polymer Bundle",
+      "note": "100 quest beacons, 150 Ember Neuroptics, 150 Volt Neuroptics, 350 Neuroptics"
+    },
+    { "qty": "600", "label": "Plastids", "note": "350 Saryn Systems, 200 Neuroptics, 50 Chassis" },
     { "qty": "400", "label": "Oxium", "note": "Systems" },
-    { "qty": "2", "label": "Argon Crystal", "note": "Systems" }
+    { "qty": "300", "label": "Alloy Plate", "note": "150 Ember Neuroptics, 150 Volt Neuroptics" },
+    { "qty": "100", "label": "Circuits", "note": "Chroma Mark beacon" },
+    {
+      "qty": "4",
+      "label": "Neural Sensors",
+      "note": "1 Ember Neuroptics, 1 Volt Neuroptics, 2 Neuroptics"
+    },
+    { "qty": "3", "label": "Neurodes", "note": "2 Chassis, 1 Systems" },
+    { "qty": "2", "label": "Morphics", "note": "1 Frost Chassis, 1 Saryn Systems" },
+    { "qty": "2", "label": "Argon Crystal", "note": "Systems" },
+    { "qty": "1", "label": "Control Module", "note": "Saryn Systems" }
   ],
   "groups": [
     {
       "type": "gate",
-      "place": "QUEST + JUNCTIONS",
+      "place": "QUEST",
       "sub": null,
-      "activity": "The New Strange, then three Junctions",
+      "activity": "finish Stolen Dreams first",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Stolen Dreams",
+          "note": "The New Strange won't start without it",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": [],
+      "quest": "The New Strange"
+    },
+    {
+      "type": "craft",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "craft the three quest beacons as the quest hands them out",
+      "meta": "10 seconds each",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Scorched Beacon",
+          "note": "5,000 cr, 250 Ferrite, 100 Polymer Bundle, 1,000 Salvage, 10 Nav Coordinates",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Chroma Signal",
+          "note": "5,000 cr, 250 Ferrite, 100 Rubedo, 1,000 Salvage, 10 Nav Coordinates",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Chroma Mark",
+          "note": "5,000 cr, 2,000 Salvage, 100 Circuits, the Scorched Beacon, the Chroma Signal",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": [],
+      "quest": "The New Strange"
+    },
+    {
+      "type": "farm",
+      "place": "THE NEW STRANGE",
+      "sub": "Nuovo, Mars, Morax, Alator, Ose",
+      "activity": "Simaris's quest, five stops",
+      "meta": "no RNG",
+      "mode": "solo",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Chroma Blueprint",
+          "note": "reward for the last mission, Ose, Europa",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Arid Lancer targets can fail to spawn; switching matchmaking to solo fixes it. The third scan only counts once the mission finishes.",
+        "Bring a Cipher for the Nuovo spy step; its timer is hidden and a fail means a replay.",
+        "The blueprint is one-time; replaying the quest does not repeat it."
+      ],
+      "bonuses": ["Finishing it also opens Sanctuary Onslaught."],
+      "disclosures": [
+        {
+          "title": "quest walkthrough",
+          "body": "Nuovo, Ceres: rescue Simaris's Sentinels, then hack the vault. Mars: synthesize 3 Arid Lancers with the Synthesis Scanner, one per mission, and craft the Scorched Beacon. Morax, Europa: Mobile Defense, then craft the Chroma Signal. Alator, Mars: scan the rogue Chroma by the Arcane Machine, then craft the Chroma Mark. Ose, Europa: defend the Arcane Machine for three waves, then scan Chroma 5 times. If enemies won't cross the portal, walk back and forth through it; relog if a mission doesn't register."
+        }
+      ],
+      "quest": "The New Strange"
+    },
+    {
+      "type": "farm",
+      "place": "JUNCTIONS",
+      "sub": "Uranus, Neptune, Pluto",
+      "activity": "clear each Junction once",
       "meta": "one-time rewards",
       "mode": null,
       "live": null,
@@ -39,61 +179,32 @@
       "rows": [
         {
           "qty": null,
-          "label": "Chroma Blueprint",
-          "note": "The New Strange; needs Stolen Dreams",
-          "alt": {
-            "text": "or 50,000 standing at Cephalon Simaris",
-            "spends": [{ "currency": "Cephalon Simaris Standing", "amount": "50,000" }]
-          },
-          "done": false
-        },
-        {
-          "qty": null,
           "label": "Neuroptics Blueprint",
           "note": "Uranus Junction",
-          "alt": {
-            "text": "or 25,000 standing at Cephalon Simaris",
-            "spends": [{ "currency": "Cephalon Simaris Standing", "amount": "25,000" }]
-          },
+          "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Chassis Blueprint",
           "note": "Neptune Junction",
-          "alt": {
-            "text": "or 25,000 standing at Cephalon Simaris",
-            "spends": [{ "currency": "Cephalon Simaris Standing", "amount": "25,000" }]
-          },
+          "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Systems Blueprint",
           "note": "Pluto Junction",
-          "alt": {
-            "text": "or 25,000 standing at Cephalon Simaris",
-            "spends": [{ "currency": "Cephalon Simaris Standing", "amount": "25,000" }]
-          },
+          "alt": null,
           "done": false
         }
       ],
       "conditions": [
-        "Quest and Junction blueprints are one-time; replays and Steel Path Junctions don't repeat them.",
-        "Arid Lancer synthesis targets can fail to spawn; switching to solo fixes it, and a scan only counts once the mission finishes.",
-        "Bring a Cipher for the Nuovo spy step; it has a hidden timer."
+        "Junction blueprints are one-time; replays and Steel Path Junctions don't repeat them."
       ],
       "bonuses": [],
-      "disclosures": [
-        {
-          "title": "quest walkthrough",
-          "body": "Buy Synthesis Scanners from Cephalon Simaris, synthesize 3 Arid Lancers on Mars (one per mission), craft three 10-second beacons, scan the rogue Chroma on Alator, then defend the Arcane Machine on Ose, Europa and scan Chroma 5 times. If enemies won't cross the portal on Ose, walk back and forth through it; relog if the mission doesn't register."
-        },
-        {
-          "title": "the Circuit route",
-          "body": "After The Duviri Paradox, Chroma is week 7 of the Normal Circuit: Neuroptics at tier 2, Chassis at 5, Systems at 8, main at 10. Saryn (week 4), Ember (week 1) and Frost (week 3) are also Circuit weeks, and Saryn's tier 8 Systems skips the worst donor RNG."
-        }
-      ]
+      "disclosures": [],
+      "quest": "The New Strange"
     },
     {
       "type": "vendor",
@@ -105,13 +216,13 @@
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [],
+      "spends": [{ "currency": "Credits", "amount": "15,000" }],
       "map": null,
       "rows": [
         {
           "qty": null,
           "label": "Volt Neuroptics Blueprint",
-          "note": "donor for the final Chroma build",
+          "note": "15,000 cr, donor for the final Chroma build",
           "alt": null,
           "done": false
         }
@@ -139,7 +250,7 @@
           "qty": null,
           "label": "Ember Neuroptics Blueprint",
           "note": "38.72%",
-          "alt": null,
+          "alt": "Ember's Circuit week 1 pays it at tier 2",
           "done": false
         }
       ],
@@ -164,7 +275,7 @@
           "qty": null,
           "label": "Frost Chassis Blueprint",
           "note": "38.72%",
-          "alt": null,
+          "alt": "Frost's Circuit week 3 pays it at tier 5",
           "done": false
         }
       ],
@@ -234,7 +345,7 @@
           "qty": null,
           "label": "Saryn Systems Blueprint",
           "note": "22.56%",
-          "alt": "Saryn's Circuit week pays it at tier 8",
+          "alt": "Saryn's Circuit week 4 pays it at tier 8",
           "done": false
         }
       ],
@@ -244,6 +355,10 @@
       ],
       "bonuses": [],
       "disclosures": [
+        {
+          "title": "Circuit shortcut for the donors",
+          "body": "After The Duviri Paradox, Ember (week 1), Frost (week 3) and Saryn (week 4) each hand their parts out at Circuit tiers 2, 5 and 8, which skips the boss RNG."
+        },
         {
           "title": "fast Kela kills",
           "body": "Oberon's Smite, Octavia's Mallet, Mesa or Valkyr Hysteria end each damage phase quickly. Ignis Wraith with punch-through pops the spinning green panels in one sweep. Operator Void Mode ignores the orbital strikes; Harrow Covenant and Limbo work too."
@@ -263,7 +378,13 @@
       "spends": [],
       "map": null,
       "rows": [
-        { "qty": null, "label": "Ember Neuroptics", "note": null, "alt": null, "done": false },
+        {
+          "qty": null,
+          "label": "Ember Neuroptics",
+          "note": "15,000 cr, 150 Alloy Plate, 1 Neural Sensors, 150 Polymer Bundle, 500 Rubedo",
+          "alt": null,
+          "done": false
+        },
         {
           "qty": null,
           "label": "Frost Chassis",
@@ -271,7 +392,13 @@
           "alt": null,
           "done": false
         },
-        { "qty": null, "label": "Saryn Systems", "note": null, "alt": null, "done": false },
+        {
+          "qty": null,
+          "label": "Saryn Systems",
+          "note": "15,000 cr, 1 Control Module, 1 Morphics, 550 Salvage, 350 Plastids",
+          "alt": null,
+          "done": false
+        },
         {
           "qty": null,
           "label": "Volt Neuroptics",
@@ -332,5 +459,86 @@
       "bonuses": [],
       "disclosures": []
     }
-  ]
+  ],
+  "afterQuest": {
+    "effort": 6,
+    "badges": [
+      { "text": "Simaris 125,000 standing", "tone": "warn" },
+      { "text": "Circuit week 7", "tone": "circuit" }
+    ],
+    "groups": [
+      {
+        "type": "currency",
+        "place": "CEPHALON SIMARIS",
+        "sub": null,
+        "activity": "scan targets with the Synthesis Scanner",
+        "meta": "125,000 Standing",
+        "mode": null,
+        "live": null,
+        "skip": null,
+        "earns": { "currency": "Cephalon Simaris Standing", "amount": "125,000" },
+        "spends": [],
+        "map": null,
+        "rows": [
+          {
+            "qty": "125,000",
+            "label": "Simaris Standing",
+            "note": "daily cap 16,000 + 500 per Mastery Rank",
+            "alt": null,
+            "done": false
+          }
+        ],
+        "conditions": [],
+        "bonuses": [],
+        "disclosures": [],
+        "ref": "Cephalon Simaris Standing"
+      },
+      {
+        "type": "vendor",
+        "place": "CEPHALON SIMARIS",
+        "sub": null,
+        "activity": "buy replacement blueprints",
+        "meta": "25,000 Standing a part, 50,000 the main",
+        "mode": null,
+        "live": null,
+        "skip": null,
+        "earns": null,
+        "spends": [{ "currency": "Cephalon Simaris Standing", "amount": "125,000" }],
+        "map": null,
+        "rows": [
+          {
+            "qty": null,
+            "label": "Chroma Blueprint",
+            "note": "50,000 Standing",
+            "alt": "Circuit week 7, tier 10",
+            "done": false
+          },
+          {
+            "qty": null,
+            "label": "Neuroptics Blueprint",
+            "note": "25,000 Standing",
+            "alt": "Circuit week 7, tier 2",
+            "done": false
+          },
+          {
+            "qty": null,
+            "label": "Chassis Blueprint",
+            "note": "25,000 Standing",
+            "alt": "Circuit week 7, tier 5",
+            "done": false
+          },
+          {
+            "qty": null,
+            "label": "Systems Blueprint",
+            "note": "25,000 Standing",
+            "alt": "Circuit week 7, tier 8",
+            "done": false
+          }
+        ],
+        "conditions": ["Simaris only stocks these once The New Strange is done."],
+        "bonuses": [],
+        "disclosures": []
+      }
+    ]
+  }
 }

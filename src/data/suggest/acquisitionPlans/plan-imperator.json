@@ -10,6 +10,20 @@
     { "text": "free with the Odonata", "tone": "info" }
   ],
   "prices": [{ "label": "Odonata build", "amount": "28,000 cr", "money": false }],
+  "routes": [
+    {
+      "name": "The Archwing quest",
+      "cost": "claiming the finished Odonata hands you the built weapon; 28,000 cr of builds",
+      "effort": 2,
+      "role": "chosen"
+    },
+    {
+      "name": "After the quest: Cephalon Simaris",
+      "cost": "100,000 Standing buys the Imperator blueprint, then a 24h build",
+      "effort": 5,
+      "role": "afterQuest"
+    }
+  ],
   "materials": [
     { "qty": "2", "label": "Neurodes", "note": "Systems and Wings" },
     { "qty": "2", "label": "Morphics", "note": "Harness and Systems" },
@@ -23,36 +37,11 @@
   ],
   "groups": [
     {
-      "type": "gate",
-      "place": "MARS JUNCTION",
-      "sub": null,
-      "activity": "start The Archwing quest",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Mars Junction",
-          "note": "unlocks The Archwing",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
       "type": "farm",
       "place": "VENUS + EARTH",
       "sub": "Tessera, then Aphrodite, Mantle, E Gate",
       "activity": "The Archwing quest missions",
-      "meta": null,
+      "meta": "~30 minutes, no RNG on getting a set",
       "mode": null,
       "live": null,
       "skip": null,
@@ -93,7 +82,8 @@
         "Launch each step from the orbiter or quest alert, not by walking through a gate."
       ],
       "bonuses": [],
-      "disclosures": []
+      "disclosures": [],
+      "quest": "The Archwing"
     },
     {
       "type": "foundry",
@@ -142,12 +132,90 @@
         "If the quest stays on the build step after claiming, open the Quests menu, select The Archwing and press Begin."
       ],
       "bonuses": [],
-      "disclosures": [
-        {
-          "title": "replacing a lost Imperator",
-          "body": "Cephalon Simaris sells the Imperator Blueprint for 100,000 Standing, after The Archwing is complete. Standing caps at 125,000. The build is 25,000 cr, 2 Morphics, 1,500 Ferrite, 150 Polymer Bundle, 300 Circuits, 24h."
-        }
-      ]
+      "disclosures": [],
+      "quest": "The Archwing"
     }
-  ]
+  ],
+  "afterQuest": {
+    "effort": 5,
+    "badges": [{ "text": "Simaris 100,000 standing", "tone": "warn" }],
+    "groups": [
+      {
+        "type": "currency",
+        "place": "CEPHALON SIMARIS",
+        "sub": null,
+        "activity": "scan targets with the Synthesis Scanner",
+        "meta": "100,000 Standing",
+        "mode": null,
+        "live": null,
+        "skip": null,
+        "earns": { "currency": "Cephalon Simaris Standing", "amount": "100,000" },
+        "spends": [],
+        "map": null,
+        "rows": [
+          {
+            "qty": "100,000",
+            "label": "Simaris Standing",
+            "note": "daily cap 16,000 + 500 per Mastery Rank",
+            "alt": null,
+            "done": false
+          }
+        ],
+        "conditions": [],
+        "bonuses": [],
+        "disclosures": [],
+        "ref": "Cephalon Simaris Standing"
+      },
+      {
+        "type": "vendor",
+        "place": "CEPHALON SIMARIS",
+        "sub": null,
+        "activity": "buy the Imperator blueprint",
+        "meta": "100,000 Standing",
+        "mode": null,
+        "live": null,
+        "skip": null,
+        "earns": null,
+        "spends": [{ "currency": "Cephalon Simaris Standing", "amount": "100,000" }],
+        "map": null,
+        "rows": [
+          {
+            "qty": null,
+            "label": "Imperator Blueprint",
+            "note": "100,000 Standing",
+            "alt": "trade for it from another player",
+            "done": false
+          }
+        ],
+        "conditions": ["Simaris only stocks these once The Archwing is done."],
+        "bonuses": [],
+        "disclosures": []
+      },
+      {
+        "type": "foundry",
+        "place": "FOUNDRY",
+        "sub": null,
+        "activity": "build the Imperator",
+        "meta": "24h",
+        "mode": null,
+        "live": null,
+        "skip": null,
+        "earns": null,
+        "spends": [],
+        "map": null,
+        "rows": [
+          {
+            "qty": null,
+            "label": "Imperator",
+            "note": "25,000 cr, 2 Morphics, 1,500 Ferrite, 150 Polymer Bundle, 300 Circuits",
+            "alt": null,
+            "done": false
+          }
+        ],
+        "conditions": [],
+        "bonuses": [],
+        "disclosures": []
+      }
+    ]
+  }
 }

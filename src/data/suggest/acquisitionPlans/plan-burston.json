@@ -2,13 +2,27 @@
   "name": "Burston",
   "kind": "primary",
   "effort": 1,
-  "source": "shop",
+  "source": "repeat",
   "tradeable": false,
   "progress": { "have": 0, "need": 1, "unit": "blueprint" },
   "badges": [{ "text": "Vor's Prize reward", "tone": "info" }],
   "prices": [
     { "label": "blueprint", "amount": "15,000 cr", "money": false },
     { "label": "build", "amount": "25,000 cr", "money": false }
+  ],
+  "routes": [
+    {
+      "name": "Vor's Prize",
+      "cost": "the quest hands over the blueprint and some build materials",
+      "effort": 1,
+      "role": "chosen"
+    },
+    {
+      "name": "After the quest: the Market",
+      "cost": "15,000 cr for the blueprint",
+      "effort": 1,
+      "role": "afterQuest"
+    }
   ],
   "materials": [
     { "qty": "1", "label": "Morphics", "note": null },
@@ -19,11 +33,11 @@
   ],
   "groups": [
     {
-      "type": "gate",
-      "place": "QUEST",
+      "type": "farm",
+      "place": "THE CODEX",
       "sub": null,
-      "activity": "Vor's Prize",
-      "meta": null,
+      "activity": "Vor's Prize quest",
+      "meta": "no RNG",
       "mode": null,
       "live": null,
       "skip": null,
@@ -35,16 +49,14 @@
           "qty": null,
           "label": "Burston Blueprint",
           "note": "quest reward, with credits and some build materials",
-          "alt": {
-            "text": "or 15,000 cr at the Market",
-            "spends": [{ "currency": "Credits", "amount": "15,000" }]
-          },
+          "alt": null,
           "done": false
         }
       ],
-      "conditions": ["Vor's Prize unlocks after Awakening."],
+      "conditions": [],
       "bonuses": [],
-      "disclosures": []
+      "disclosures": [],
+      "quest": "Vor's Prize"
     },
     {
       "type": "foundry",
@@ -71,5 +83,36 @@
       "bonuses": [],
       "disclosures": []
     }
-  ]
+  ],
+  "afterQuest": {
+    "effort": 1,
+    "badges": [{ "text": "15,000 cr at the Market", "tone": "info" }],
+    "groups": [
+      {
+        "type": "vendor",
+        "place": "MARKET",
+        "sub": null,
+        "activity": "buy the blueprint",
+        "meta": null,
+        "mode": null,
+        "live": null,
+        "skip": null,
+        "earns": null,
+        "spends": [{ "currency": "Credits", "amount": "15,000" }],
+        "map": null,
+        "rows": [
+          {
+            "qty": null,
+            "label": "Burston Blueprint",
+            "note": "15,000 cr",
+            "alt": null,
+            "done": false
+          }
+        ],
+        "conditions": [],
+        "bonuses": [],
+        "disclosures": []
+      }
+    ]
+  }
 }

@@ -1,20 +1,47 @@
 {
   "name": "Veritux",
   "kind": "archmelee",
-  "effort": 1,
-  "source": "shop",
+  "effort": 2,
+  "source": "repeat",
   "tradeable": false,
-  "progress": { "have": 0, "need": 1, "unit": "quest" },
-  "badges": [{ "text": "Archwing quest reward", "tone": "info" }],
-  "prices": [],
-  "materials": [],
+  "progress": { "have": 0, "need": 1, "unit": "weapon" },
+  "badges": [
+    { "text": "The Archwing quest", "tone": "info" },
+    { "text": "free with the Odonata", "tone": "info" }
+  ],
+  "prices": [{ "label": "Odonata build", "amount": "28,000 cr", "money": false }],
+  "routes": [
+    {
+      "name": "The Archwing quest",
+      "cost": "claiming the finished Odonata hands you the built weapon; 28,000 cr of builds",
+      "effort": 2,
+      "role": "chosen"
+    },
+    {
+      "name": "After the quest: Cephalon Simaris",
+      "cost": "100,000 Standing buys the Veritux blueprint, then a 24h build",
+      "effort": 5,
+      "role": "afterQuest"
+    }
+  ],
+  "materials": [
+    { "qty": "2", "label": "Neurodes", "note": "Systems and Wings" },
+    { "qty": "2", "label": "Morphics", "note": "Harness and Systems" },
+    { "qty": "800", "label": "Rubedo", "note": "300 Harness, 500 Wings" },
+    { "qty": "1,000", "label": "Ferrite", "note": "Harness" },
+    { "qty": "500", "label": "Salvage", "note": "Systems" },
+    { "qty": "600", "label": "Circuits", "note": "Systems and Odonata" },
+    { "qty": "150", "label": "Alloy Plate", "note": "Wings" },
+    { "qty": "150", "label": "Polymer Bundle", "note": "Wings" },
+    { "qty": "28,000", "label": "Credits", "note": null }
+  ],
   "groups": [
     {
-      "type": "gate",
-      "place": "QUEST",
-      "sub": null,
-      "activity": "The Archwing",
-      "meta": null,
+      "type": "farm",
+      "place": "VENUS + EARTH",
+      "sub": "Tessera, then Aphrodite, Mantle, E Gate",
+      "activity": "The Archwing quest missions",
+      "meta": "~30 minutes, no RNG on getting a set",
       "mode": null,
       "live": null,
       "skip": null,
@@ -24,23 +51,171 @@
       "rows": [
         {
           "qty": null,
-          "label": "The Archwing",
-          "note": "claiming the finished Odonata from the Foundry grants a built Veritux",
+          "label": "Odonata Blueprint",
+          "note": "Lotus inbox message",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Harness Blueprint",
+          "note": "random per Excavation",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Systems Blueprint",
+          "note": "random per Excavation",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Wings Blueprint",
+          "note": "random per Excavation",
           "alt": null,
           "done": false
         }
       ],
       "conditions": [
-        "The quest unlocks after the Mars Junction.",
-        "Prisma Veritux is a separate Mastery item."
+        "Launch each step from the orbiter or quest alert, not by walking through a gate."
       ],
       "bonuses": [],
-      "disclosures": [
+      "disclosures": [],
+      "quest": "The Archwing"
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build parts, then Odonata, then claim it",
+      "meta": "1 minute each",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
         {
-          "title": "if you lose it",
-          "body": "Cephalon Simaris sells the blueprint for 100,000 standing. The build is 25,000 cr, 500 Rubedo, 1,000 Salvage, 2 Neurodes and 500 Circuits, 24h."
+          "qty": null,
+          "label": "Harness",
+          "note": "7,000 cr, 1 Morphics, 300 Rubedo, 1,000 Ferrite",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Systems",
+          "note": "7,000 cr, 1 Neurodes, 1 Morphics, 500 Salvage, 300 Circuits",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Wings",
+          "note": "7,000 cr, 150 Alloy Plate, 150 Polymer Bundle, 500 Rubedo, 1 Neurodes",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Odonata",
+          "note": "7,000 cr, 300 Circuits, the three parts; claiming it also grants Imperator and Veritux",
+          "alt": null,
+          "done": false
         }
-      ]
+      ],
+      "conditions": [
+        "Never sell or delete the Odonata; it is a quest item with no Market blueprint.",
+        "If the quest stays on the build step after claiming, open the Quests menu, select The Archwing and press Begin."
+      ],
+      "bonuses": [],
+      "disclosures": [],
+      "quest": "The Archwing"
     }
-  ]
+  ],
+  "afterQuest": {
+    "effort": 5,
+    "badges": [{ "text": "Simaris 100,000 standing", "tone": "warn" }],
+    "groups": [
+      {
+        "type": "currency",
+        "place": "CEPHALON SIMARIS",
+        "sub": null,
+        "activity": "scan targets with the Synthesis Scanner",
+        "meta": "100,000 Standing",
+        "mode": null,
+        "live": null,
+        "skip": null,
+        "earns": { "currency": "Cephalon Simaris Standing", "amount": "100,000" },
+        "spends": [],
+        "map": null,
+        "rows": [
+          {
+            "qty": "100,000",
+            "label": "Simaris Standing",
+            "note": "daily cap 16,000 + 500 per Mastery Rank",
+            "alt": null,
+            "done": false
+          }
+        ],
+        "conditions": [],
+        "bonuses": [],
+        "disclosures": [],
+        "ref": "Cephalon Simaris Standing"
+      },
+      {
+        "type": "vendor",
+        "place": "CEPHALON SIMARIS",
+        "sub": null,
+        "activity": "buy the Veritux blueprint",
+        "meta": "100,000 Standing",
+        "mode": null,
+        "live": null,
+        "skip": null,
+        "earns": null,
+        "spends": [{ "currency": "Cephalon Simaris Standing", "amount": "100,000" }],
+        "map": null,
+        "rows": [
+          {
+            "qty": null,
+            "label": "Veritux Blueprint",
+            "note": "100,000 Standing",
+            "alt": null,
+            "done": false
+          }
+        ],
+        "conditions": ["Simaris only stocks these once The Archwing is done."],
+        "bonuses": [],
+        "disclosures": []
+      },
+      {
+        "type": "foundry",
+        "place": "FOUNDRY",
+        "sub": null,
+        "activity": "build the Veritux",
+        "meta": "24h",
+        "mode": null,
+        "live": null,
+        "skip": null,
+        "earns": null,
+        "spends": [],
+        "map": null,
+        "rows": [
+          {
+            "qty": null,
+            "label": "Veritux",
+            "note": "25,000 cr, 500 Rubedo, 1,000 Salvage, 2 Neurodes, 500 Circuits",
+            "alt": null,
+            "done": false
+          }
+        ],
+        "conditions": [],
+        "bonuses": [],
+        "disclosures": []
+      }
+    ]
+  }
 }

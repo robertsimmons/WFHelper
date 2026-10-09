@@ -2,7 +2,7 @@
   "name": "Heat Sword",
   "kind": "melee",
   "effort": 2,
-  "source": "shop",
+  "source": "repeat",
   "tradeable": false,
   "progress": { "have": 0, "need": 1, "unit": "weapon" },
   "badges": [{ "text": "MR 3", "tone": "warn" }],
@@ -10,12 +10,22 @@
     { "label": "Nightwave", "amount": "50 Creds", "money": false },
     { "label": "build", "amount": "20,000 cr", "money": false }
   ],
-  "materials": [
+  "routes": [
     {
-      "qty": "1",
-      "label": "Neurodes",
-      "note": "a Neural Sensor before Update 30.9, so older guides are out of date"
+      "name": "Once Awake",
+      "cost": "the Lotus mails the blueprint after the Lares defense",
+      "effort": 2,
+      "role": "chosen"
     },
+    {
+      "name": "After the quest: Nightwave",
+      "cost": "50 Nightwave Creds at the Cred Offerings, when it is in stock",
+      "effort": 2,
+      "role": "afterQuest"
+    }
+  ],
+  "materials": [
+    { "qty": "1", "label": "Neurodes", "note": null },
     { "qty": "500", "label": "Ferrite", "note": null },
     { "qty": "300", "label": "Circuits", "note": null },
     { "qty": "300", "label": "Polymer Bundle", "note": null },
@@ -24,10 +34,10 @@
   "groups": [
     {
       "type": "gate",
-      "place": "MERCURY",
+      "place": "MASTERY RANK",
       "sub": null,
-      "activity": "the Once Awake quest",
-      "meta": "needs the Mercury junction",
+      "activity": "reach MR 3 to craft it",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -37,18 +47,8 @@
       "rows": [
         {
           "qty": null,
-          "label": "Once Awake",
-          "note": "Spy on M Prime, Exterminate on Terminus, 8-wave Defense on Lares; the blueprint arrives after the Lares defense",
-          "alt": {
-            "text": "or buy it from Nightwave Cred Offerings",
-            "spends": [{ "currency": "Nightwave Creds", "amount": "50" }]
-          },
-          "done": false
-        },
-        {
-          "qty": null,
           "label": "Mastery Rank 3",
-          "note": "the Foundry blocks the build below it",
+          "note": "the Foundry won't craft it below that",
           "alt": null,
           "done": false
         }
@@ -58,6 +58,32 @@
       ],
       "bonuses": [],
       "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "MERCURY",
+      "sub": "M Prime, Terminus, Lares",
+      "activity": "Once Awake quest",
+      "meta": "Spy, Exterminate, then an 8-wave Defense",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Heat Sword Blueprint",
+          "note": "mailed after the Lares defense",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": ["The Terminus mission also awards the Molten Impact mod."],
+      "disclosures": [],
+      "quest": "Once Awake"
     },
     {
       "type": "foundry",
@@ -84,5 +110,59 @@
       "bonuses": ["Rushing the 12h build costs 25 platinum."],
       "disclosures": []
     }
-  ]
+  ],
+  "afterQuest": {
+    "effort": 2,
+    "badges": [
+      { "text": "50 Nightwave Creds", "tone": "info" },
+      { "text": "stock rotates weekly", "tone": "warn" }
+    ],
+    "groups": [
+      {
+        "type": "currency",
+        "place": "NIGHTWAVE",
+        "sub": "Nora Night",
+        "activity": "rank up through Nightwave Acts",
+        "meta": "50 Creds",
+        "mode": null,
+        "live": null,
+        "skip": null,
+        "earns": { "currency": "Nightwave Creds", "amount": "50" },
+        "spends": [],
+        "map": null,
+        "rows": [
+          { "qty": "50", "label": "Nightwave Creds", "note": null, "alt": null, "done": false }
+        ],
+        "conditions": [],
+        "bonuses": [],
+        "disclosures": [],
+        "ref": "Nightwave Creds"
+      },
+      {
+        "type": "vendor",
+        "place": "NIGHTWAVE",
+        "sub": "Nora Night, Cred Offerings",
+        "activity": "buy the blueprint",
+        "meta": "50 Creds",
+        "mode": null,
+        "live": null,
+        "skip": null,
+        "earns": null,
+        "spends": [{ "currency": "Nightwave Creds", "amount": "50" }],
+        "map": null,
+        "rows": [
+          {
+            "qty": null,
+            "label": "Heat Sword Blueprint",
+            "note": "50 Creds",
+            "alt": null,
+            "done": false
+          }
+        ],
+        "conditions": ["Weapon blueprints rotate on a 7-day stock, so it isn't always on sale."],
+        "bonuses": [],
+        "disclosures": []
+      }
+    ]
+  }
 }

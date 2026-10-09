@@ -2,7 +2,7 @@
   "name": "Paracesis",
   "kind": "melee",
   "effort": 6,
-  "source": "unique",
+  "source": "repeat",
   "tradeable": false,
   "progress": { "have": 0, "need": 1, "unit": "weapon" },
   "badges": [
@@ -25,11 +25,11 @@
   "groups": [
     {
       "type": "gate",
-      "place": "ORBITER",
+      "place": "QUEST",
       "sub": null,
-      "activity": "Chimera Prologue",
-      "meta": "after The Sacrifice",
-      "mode": "solo",
+      "activity": "finish The Sacrifice first",
+      "meta": null,
+      "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
@@ -39,28 +39,66 @@
         {
           "qty": null,
           "label": "The Sacrifice",
-          "note": "prerequisite quest",
+          "note": "Chimera Prologue unlocks after it",
           "alt": null,
           "done": false
-        },
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": [],
+      "quest": "Chimera Prologue"
+    },
+    {
+      "type": "gate",
+      "place": "MASTERY RANK",
+      "sub": null,
+      "activity": "reach MR 10 to build and equip it",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
         {
           "qty": null,
-          "label": "Chimera Prologue",
-          "note": "triggered by investigating your quarters on the Orbiter",
+          "label": "Mastery Rank 10",
+          "note": "the Foundry won't craft it below that",
           "alt": null,
           "done": false
         }
       ],
-      "conditions": ["MR10 is required to build and equip Paracesis."],
-      "bonuses": [
-        "The blueprint drops into your Foundry for free, no RNG, and unlocks the Ropalolyst fight."
-      ],
-      "disclosures": [
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "ORBITER",
+      "sub": "Personal Quarters",
+      "activity": "Chimera Prologue, started by investigating your quarters",
+      "meta": "no RNG",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
         {
-          "title": "Shedu is a separate weapon",
-          "body": "Stale threads claim Paracesis is required for story progression or for the Shedu. Both are outdated: the Erra trigger moved off Paracesis in Update 27.2 (2020), and The New War hands you a temporary unranked, unmoddable one at the relevant moment."
+          "qty": null,
+          "label": "Paracesis Blueprint",
+          "note": "quest reward",
+          "alt": null,
+          "done": false
         }
-      ]
+      ],
+      "conditions": ["Crafting it is not required for any story quest."],
+      "bonuses": ["The quest also unlocks the Ropalolyst fight."],
+      "disclosures": [],
+      "quest": "Chimera Prologue"
     },
     {
       "type": "currency",
@@ -129,5 +167,6 @@
       ],
       "disclosures": []
     }
-  ]
+  ],
+  "afterQuest": null
 }

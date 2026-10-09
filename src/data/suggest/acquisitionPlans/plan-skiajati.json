@@ -2,7 +2,7 @@
   "name": "Skiajati",
   "kind": "melee",
   "effort": 2,
-  "source": "shop",
+  "source": "unique",
   "tradeable": false,
   "progress": { "have": 0, "need": 1, "unit": "weapon" },
   "badges": [
@@ -11,10 +11,9 @@
   ],
   "prices": [{ "label": "Umbra build (midway)", "amount": "10,000 cr", "money": false }],
   "materials": [
-    { "qty": "3,250", "label": "Alloy Plate", "note": "Excalibur Umbra build" },
-    { "qty": "100", "label": "Plastids", "note": "Excalibur Umbra build" },
-    { "qty": "75", "label": "Oxium", "note": "Excalibur Umbra build" },
-    { "qty": "4", "label": "Orokin Cell", "note": "Excalibur Umbra build" },
+    { "qty": "1,600", "label": "Alloy Plate", "note": "Excalibur Umbra build" },
+    { "qty": "1,200", "label": "Nano Spores", "note": "Excalibur Umbra build" },
+    { "qty": "1", "label": "Orokin Cell", "note": "Excalibur Umbra build" },
     { "qty": "10,000", "label": "Credits", "note": null }
   ],
   "groups": [
@@ -22,8 +21,8 @@
       "type": "gate",
       "place": "ORBITER, THEN THE CODEX",
       "sub": null,
-      "activity": "the main quest chain up to The Sacrifice",
-      "meta": "one-time, guaranteed",
+      "activity": "finish Apostasy Prologue",
+      "meta": "solo only",
       "mode": "solo",
       "live": null,
       "skip": null,
@@ -31,30 +30,46 @@
       "spends": [],
       "map": null,
       "rows": [
-        { "qty": null, "label": "The Second Dream", "note": null, "alt": null, "done": false },
-        { "qty": null, "label": "The War Within", "note": null, "alt": null, "done": false },
-        { "qty": null, "label": "Chains of Harrow", "note": null, "alt": null, "done": false },
         {
           "qty": null,
           "label": "Apostasy Prologue",
-          "note": "start by inspecting your Personal Quarters after Chains of Harrow",
+          "note": "needs Chains of Harrow, which needs The War Within; start it by touching the Lotus's helmet in your Personal Quarters",
           "alt": null,
           "done": false
-        },
+        }
+      ],
+      "conditions": ["The Sacrifice unlocks in the Codex once Apostasy Prologue is done."],
+      "bonuses": [],
+      "disclosures": [],
+      "quest": "The Sacrifice"
+    },
+    {
+      "type": "boss",
+      "place": "THE SACRIFICE, CODEX",
+      "sub": "Lith, Pavlov, Nuovo, Triton, Tycho",
+      "activity": "the six quest missions, in order",
+      "meta": "one sitting, no RNG",
+      "mode": "solo",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
         {
           "qty": null,
-          "label": "The Sacrifice",
-          "note": "unlocks in the Codex once Apostasy Prologue is done; solo-only, six missions",
+          "label": "Skiajati",
+          "note": "arrives in Tycho (Confront Umbra) at rank 30, with its own weapon slot, an Orokin Catalyst and Sacrificial Steel and Sacrificial Pressure fused to rank 5",
           "alt": null,
           "done": false
         }
       ],
       "conditions": [
-        "The Sacrifice's six missions run in a fixed order: Lith (Earth), Pavlov (Lua), Nuovo (Ceres), Triton (Neptune), Tycho (Lua), Lith (Earth).",
-        "The MR 11 requirement on Skiajati does not block receiving or using it early."
+        "The six missions run Lith (Earth), Pavlov (Lua), Nuovo (Ceres), Triton (Neptune), Tycho (Lua), Lith (Earth).",
+        "A second Skiajati is never given on replay, and Simaris does not sell it."
       ],
       "bonuses": [
-        "Skiajati arrives during the penultimate mission at rank 30, in its own free weapon slot, with an Orokin Catalyst installed and Sacrificial Steel and Sacrificial Pressure fused to rank 5. Mastery for all 30 ranks is granted immediately."
+        "All 30 ranks of Mastery arrive with it, and the MR 11 requirement doesn't block using it early."
       ],
       "disclosures": [
         {
@@ -62,14 +77,11 @@
           "body": "In the Ceres, Neptune and Tycho missions Umbra is immune to damage. Shoot his shields down with the Operator's Void Beam, stun him with Void Sling, then use Transference. The Ceres fight has no shields, just Void Sling. Update 44.0 added a boss health bar to one of these stages so you can see the shield deplete."
         },
         {
-          "title": "it can't be recovered",
-          "body": "Replaying the quest does not award a second copy, and no vendor sells it. Cross-save merges have left some players with duplicate Skiajati and Umbra copies that can't be sold or removed."
-        },
-        {
           "title": "best known use",
           "body": "Standing finishers with Skiajati grant 6 seconds of invisibility, refreshed by another finisher (attacking or casting breaks it); it's a reliable carry for the melee-only stealth Mastery Rank tests. Ash's Fatal Teleport finishers pair well, but Blade Storm does not trigger the invisibility. A Daikyu with Amalgam Daikyu Target Acquired gives it lifesteal."
         }
-      ]
+      ],
+      "quest": "The Sacrifice"
     },
     {
       "type": "foundry",
@@ -87,16 +99,16 @@
         {
           "qty": null,
           "label": "Excalibur Umbra",
-          "note": "10,000 cr, 60 Kuva (awarded by the quest itself on the Pavlov mission), 4 Orokin Cell, 75 Oxium, 100 Plastids, 3,250 Alloy Plate",
+          "note": "10,000 cr, 1 Orokin Cell, 1,200 Nano Spores, 1,600 Alloy Plate, 60 Kuva (the Pavlov mission pays it)",
           "alt": null,
           "done": false
         }
       ],
-      "conditions": [
-        "This build happens midway through The Sacrifice; the quest can't continue without it."
-      ],
+      "conditions": ["The quest can't continue until he is built and equipped in the Arsenal."],
       "bonuses": [],
-      "disclosures": []
+      "disclosures": [],
+      "quest": "The Sacrifice"
     }
-  ]
+  ],
+  "afterQuest": null
 }

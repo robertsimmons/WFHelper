@@ -1,7 +1,7 @@
 {
   "name": "Nataruk",
   "kind": "primary",
-  "effort": 6,
+  "effort": 3,
   "source": "repeat",
   "tradeable": false,
   "progress": { "have": 0, "need": 1, "unit": "weapon" },
@@ -10,13 +10,27 @@
     { "text": "built + Catalyst", "tone": "info" }
   ],
   "prices": [],
+  "routes": [
+    {
+      "name": "The New War",
+      "cost": "the quest hands you a built Nataruk; no grind",
+      "effort": 3,
+      "role": "chosen"
+    },
+    {
+      "name": "After the quest: Cephalon Simaris",
+      "cost": "100,000 Standing buys another copy",
+      "effort": 5,
+      "role": "afterQuest"
+    }
+  ],
   "groups": [
     {
       "type": "gate",
-      "place": "QUESTS",
+      "place": "QUEST",
       "sub": null,
-      "activity": "prepare for The New War",
-      "meta": "Railjack + Amp + Prelude to War",
+      "activity": "finish Prelude to War",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -24,127 +38,111 @@
       "spends": [],
       "map": null,
       "rows": [
-        {
-          "qty": null,
-          "label": "Own a Railjack",
-          "note": "Rising Tide builds one",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Own an Amp",
-          "note": "the free Mote Amp qualifies",
-          "alt": null,
-          "done": false
-        },
         {
           "qty": null,
           "label": "Prelude to War",
-          "note": "Chimera Prologue, Erra, and The Maker",
+          "note": "Chimera Prologue, Erra and The Maker; The New War also needs a Railjack (Rising Tide builds one) and an Amp (the free Mote Amp counts)",
           "alt": null,
           "done": false
         }
       ],
       "conditions": [
-        "The New War is at the end of the main quest spine, including The Sacrifice. These are its direct equipment and quest requirements.",
-        "Do not pre-farm a Necramech or Paracesis for this: those requirements were removed, and the quest provides a Necramech for its short section."
-      ],
-      "bonuses": [
-        "A Ticker crewmate set to Engineer and free Sigma-series Railjack parts from a clan dojo make the Railjack sequences very forgiving."
-      ],
-      "disclosures": []
-    },
-    {
-      "type": "gate",
-      "place": "THE CODEX",
-      "sub": null,
-      "activity": "complete The New War",
-      "meta": "guaranteed; no RNG or Foundry time",
-      "mode": "solo quest",
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Nataruk",
-          "note": "quest reward; pre-installed Orokin Catalyst",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "The reward arrives built with a free weapon slot, an Orokin Catalyst, and four innate polarities. There is no blueprint, drop table, crafting cost, or replay reward.",
-        "The weapon is untradeable. Do not sell it: replaying the quest does not award another copy."
-      ],
-      "bonuses": [
-        "Its Perfect Shot is a native charge mechanic, not an Incarnon form; Nataruk has no Incarnon Evolution or Duviri route to complete."
-      ],
-      "disclosures": [
-        {
-          "title": "quest prep, not gear grind",
-          "body": "The quest is long but has save points, and it cannot permanently trap a player. Bring your familiar frame and weapons; the practical prep is a working Railjack and an Amp, not an endgame Necramech build."
-        }
-      ]
-    },
-    {
-      "type": "farm",
-      "place": "ORB VALLIS OR PLAINS OF EIDOLON",
-      "sub": "Steel Path open world",
-      "activity": "scan unalerted enemies from Archwing",
-      "meta": "cap Simaris standing in ~4-10 min",
-      "mode": "only if you sold Nataruk",
-      "live": null,
-      "skip": null,
-      "earns": { "currency": "Cephalon Simaris Standing", "amount": "100,000" },
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "100,000",
-          "label": "Simaris Standing",
-          "note": "repurchase cost; roughly 3-5 capped days at high MR",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "This entire route is only for a previously sold Nataruk; quest completion gives the normal copy immediately."
+        "No Necramech or Paracesis is needed; the quest lends a Necramech for its short section."
       ],
       "bonuses": [],
       "disclosures": [],
-      "ref": "Cephalon Simaris Standing"
+      "quest": "The New War"
     },
     {
-      "type": "vendor",
-      "place": "ANY RELAY",
-      "sub": "Cephalon Simaris",
-      "activity": "repurchase Nataruk",
-      "meta": "100,000 standing; sold copies only",
-      "mode": null,
+      "type": "farm",
+      "place": "THE CODEX",
+      "sub": "The New War",
+      "activity": "complete The New War",
+      "meta": "solo only, no RNG or Foundry time",
+      "mode": "solo",
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Cephalon Simaris Standing", "amount": "100,000" }],
+      "spends": [],
       "map": null,
       "rows": [
         {
           "qty": null,
           "label": "Nataruk",
-          "note": "only re-acquisition path",
+          "note": "quest reward, built, with a free weapon slot and a pre-installed Orokin Catalyst",
           "alt": null,
           "done": false
         }
       ],
-      "conditions": [
-        "Confirm the offering in-game before spending: the research could not verify whether this copy also includes the quest reward's pre-installed Orokin Catalyst.",
-        "The four polarities are innate to Nataruk and are not dependent on the quest reward copy."
+      "conditions": ["Replaying the quest does not award another copy."],
+      "bonuses": [
+        "A Ticker crewmate set to Engineer and free Sigma-series Railjack parts from a clan dojo make the Railjack sequences forgiving.",
+        "Its Perfect Shot is a native charge mechanic, not an Incarnon form; Nataruk has no Incarnon route."
       ],
-      "bonuses": [],
-      "disclosures": []
+      "disclosures": [
+        {
+          "title": "quest prep",
+          "body": "If you don't own a Necramech, the quest lends you a temporary Bonewidow with a Mausolon for its short Necramech section, so don't pre-farm one."
+        }
+      ],
+      "quest": "The New War"
     }
-  ]
+  ],
+  "afterQuest": {
+    "effort": 5,
+    "badges": [{ "text": "Simaris 100,000 standing", "tone": "warn" }],
+    "groups": [
+      {
+        "type": "currency",
+        "place": "CEPHALON SIMARIS",
+        "sub": null,
+        "activity": "scan targets with the Synthesis Scanner",
+        "meta": "100,000 Standing",
+        "mode": null,
+        "live": null,
+        "skip": null,
+        "earns": { "currency": "Cephalon Simaris Standing", "amount": "100,000" },
+        "spends": [],
+        "map": null,
+        "rows": [
+          {
+            "qty": "100,000",
+            "label": "Simaris Standing",
+            "note": "daily cap 16,000 + 500 per Mastery Rank",
+            "alt": null,
+            "done": false
+          }
+        ],
+        "conditions": [],
+        "bonuses": [],
+        "disclosures": [],
+        "ref": "Cephalon Simaris Standing"
+      },
+      {
+        "type": "vendor",
+        "place": "CEPHALON SIMARIS",
+        "sub": null,
+        "activity": "buy another Nataruk",
+        "meta": "100,000 Standing",
+        "mode": null,
+        "live": null,
+        "skip": null,
+        "earns": null,
+        "spends": [{ "currency": "Cephalon Simaris Standing", "amount": "100,000" }],
+        "map": null,
+        "rows": [
+          {
+            "qty": null,
+            "label": "Nataruk",
+            "note": "100,000 Standing",
+            "alt": null,
+            "done": false
+          }
+        ],
+        "conditions": ["Simaris only stocks these once The New War is done."],
+        "bonuses": [],
+        "disclosures": []
+      }
+    ]
+  }
 }

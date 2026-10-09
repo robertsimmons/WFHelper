@@ -10,16 +10,30 @@
     { "text": "Circuit week 3", "tone": "circuit" }
   ],
   "prices": [{ "label": "blueprint", "amount": "25,000 cr", "money": false }],
+  "routes": [
+    {
+      "name": "Exta assassination",
+      "cost": "Systems is 22.56% a clear; 25,000 cr at the Market for the main",
+      "effort": 3,
+      "role": "chosen"
+    },
+    {
+      "name": "Circuit week 3",
+      "cost": "Tier 10 rewards give every blueprint, main included, after The Duviri Paradox",
+      "effort": 4,
+      "role": null
+    }
+  ],
   "materials": [
-    { "qty": "150", "label": "Alloy Plate", "note": null },
-    { "qty": "1", "label": "Neural Sensors", "note": null },
-    { "qty": "150", "label": "Polymer Bundle", "note": null },
-    { "qty": "800", "label": "Rubedo", "note": null },
-    { "qty": "2", "label": "Morphics", "note": null },
-    { "qty": "1,000", "label": "Ferrite", "note": null },
-    { "qty": "1", "label": "Control Module", "note": null },
-    { "qty": "500", "label": "Salvage", "note": null },
-    { "qty": "500", "label": "Plastids", "note": null },
+    { "qty": "150", "label": "Alloy Plate", "note": "Neuroptics" },
+    { "qty": "1", "label": "Neural Sensors", "note": "Neuroptics" },
+    { "qty": "150", "label": "Polymer Bundle", "note": "Neuroptics" },
+    { "qty": "800", "label": "Rubedo", "note": "500 Neuroptics, 300 Chassis" },
+    { "qty": "2", "label": "Morphics", "note": "1 Chassis, 1 Systems" },
+    { "qty": "1,000", "label": "Ferrite", "note": "Chassis" },
+    { "qty": "1", "label": "Control Module", "note": "Systems" },
+    { "qty": "500", "label": "Salvage", "note": "Systems" },
+    { "qty": "500", "label": "Plastids", "note": "Systems" },
     { "qty": "1", "label": "Orokin Cell", "note": null },
     { "qty": "95,000", "label": "Credits", "note": null }
   ],
@@ -34,13 +48,13 @@
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [],
+      "spends": [{ "currency": "Credits", "amount": "25,000" }],
       "map": null,
       "rows": [
         { "qty": null, "label": "Frost Blueprint", "note": null, "alt": null, "done": false }
       ],
       "conditions": [
-        "Exta only drops the three component blueprints; the main blueprint is a Market purchase."
+        "Exta only drops the three component blueprints; the main one is a Market purchase."
       ],
       "bonuses": [],
       "disclosures": []
@@ -49,9 +63,9 @@
       "type": "boss",
       "place": "EXTA, CERES",
       "sub": null,
-      "activity": "Assassination, Captain Vor and Lech Kril",
-      "meta": "~5-10 runs for the set",
-      "mode": "solo recommended",
+      "activity": "Assassination, Captain Vor and Lieutenant Lech Kril",
+      "meta": "one Frost part a clear",
+      "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
@@ -60,19 +74,29 @@
       "rows": [
         {
           "qty": null,
-          "label": "Neuroptics Blueprint",
+          "label": "Frost Neuroptics Blueprint",
           "note": "38.72%",
           "alt": null,
           "done": false
         },
-        { "qty": null, "label": "Chassis Blueprint", "note": "38.72%", "alt": null, "done": false },
-        { "qty": null, "label": "Systems Blueprint", "note": "22.56%", "alt": null, "done": false }
+        {
+          "qty": null,
+          "label": "Frost Chassis Blueprint",
+          "note": "38.72%",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Frost Systems Blueprint",
+          "note": "22.56%",
+          "alt": null,
+          "done": false
+        }
       ],
       "conditions": [
-        "Every clear pays one Frost part, so Systems is the only real grind.",
-        "Kril is immune until his four coolant pipes pop. Shoot the lit pack on his back, then wait for his hammer slam to freeze him and hit him while frozen.",
-        "Leave Cold and Heat at home: Heat thaws him instantly and Cold procs lengthen his immune windows.",
-        "Lech Kril on War, Mars now drops Excalibur, not Frost."
+        "Kril is invulnerable until you shoot the coolant pack on his back and pop a pipe; he then freezes himself and takes damage until he thaws.",
+        "Any Heat damage thaws him, so leave Heat weapons at home."
       ],
       "bonuses": [
         "Every run also pays a Miter part or the Twin Gremlins blueprint.",
@@ -80,12 +104,8 @@
       ],
       "disclosures": [
         {
-          "title": "when Kril won't freeze",
-          "body": "Stop shooting once a pipe pops. If he has not slammed within a few seconds, change distance: step back if you are on top of him, close in if you are far. If he still loops, walk out of his range and back in to reset his AI. AoE and punch-through weapons (Angstrum, Simulor, Quanta) pop pipes without precise aim, and Rhino Stomp or Valkyr Hysteria slams work up close. Radiation-proccing Vor turns Kril on him and drags Vor into hammer range. Public squads often don't know the mechanic, so solo is usually faster."
-        },
-        {
-          "title": "the Circuit route",
-          "body": "After The Duviri Paradox, Frost rotates into the Normal Circuit in week 3 alongside Ash and Nyx. Tier 10 of the Circuit rewards gives every blueprint, main included."
+          "title": "Kril's four pipes",
+          "body": "Shoot the coolant pack while it glows neon blue; it turns red once a pipe is loose. After the first pipe he hammers the ground and freezes himself, then thaws after a little damage or a few seconds, and you repeat for each pipe. When the fourth pipe goes he bursts into flames and fights with Heat."
         }
       ]
     },
@@ -104,21 +124,21 @@
       "rows": [
         {
           "qty": null,
-          "label": "Neuroptics",
+          "label": "Frost Neuroptics",
           "note": "15,000 cr, 150 Alloy Plate, 1 Neural Sensors, 150 Polymer Bundle, 500 Rubedo",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
-          "label": "Chassis",
+          "label": "Frost Chassis",
           "note": "15,000 cr, 1 Morphics, 1,000 Ferrite, 300 Rubedo",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
-          "label": "Systems",
+          "label": "Frost Systems",
           "note": "15,000 cr, 1 Control Module, 1 Morphics, 500 Salvage, 500 Plastids",
           "alt": null,
           "done": false
@@ -131,7 +151,7 @@
           "done": false
         }
       ],
-      "conditions": ["Needs a free Warframe slot before the Foundry will let you claim it"],
+      "conditions": ["Needs a free Warframe slot before the Foundry will let you claim it."],
       "bonuses": [],
       "disclosures": []
     }

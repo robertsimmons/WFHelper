@@ -7,11 +7,11 @@
   "progress": { "have": 0, "need": 4, "unit": "parts" },
   "badges": [
     { "text": "Rotation C", "tone": "warn" },
-    { "text": "syndicate gate", "tone": "warn" }
+    { "text": "two syndicate ranks", "tone": "warn" }
   ],
   "prices": [
     { "label": "blueprint", "amount": "30,000 cr", "money": false },
-    { "label": "built", "amount": "325 p", "money": false }
+    { "label": "builds", "amount": "70,000 cr", "money": false }
   ],
   "materials": [
     { "qty": "1", "label": "Argon Crystal", "note": "Neuroptics" },
@@ -25,10 +25,50 @@
     { "qty": "55", "label": "Grokdrul", "note": "Gauss Chassis" },
     { "qty": "3", "label": "Radiant Zodian", "note": "Gauss Systems" },
     { "qty": "3", "label": "Marquise Thyst", "note": "Gauss Systems" },
-    { "qty": "70", "label": "Mytocardia Spore", "note": null },
-    { "qty": "85", "label": "Thermal Sludge", "note": null }
+    { "qty": "70", "label": "Mytocardia Spore", "note": "Gauss Systems" },
+    { "qty": "85", "label": "Thermal Sludge", "note": "Gauss Systems" },
+    { "qty": "100,000", "label": "Credits", "note": null }
   ],
   "groups": [
+    {
+      "type": "gate",
+      "place": "SYNDICATES",
+      "sub": null,
+      "activity": "reach Ostron Rank 4 and Solaris United Rank 4",
+      "meta": "for the rare gem blueprints",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Ostron Rank 4 (Surah)",
+          "note": null,
+          "alt": null,
+          "done": false,
+          "rank": { "syndicate": "Ostron", "level": 4 }
+        },
+        {
+          "qty": null,
+          "label": "Solaris United Rank 4 (Cove)",
+          "note": null,
+          "alt": null,
+          "done": false,
+          "rank": { "syndicate": "Solaris United", "level": 4 }
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": [
+        {
+          "title": "skip the ranks by trading",
+          "body": "The crafted gems can be bought from other players through Trading, which bypasses both rank requirements."
+        }
+      ]
+    },
     {
       "type": "vendor",
       "place": "MARKET",
@@ -39,7 +79,7 @@
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [],
+      "spends": [{ "currency": "Credits", "amount": "30,000" }],
       "map": null,
       "rows": [
         { "qty": null, "label": "Gauss Blueprint", "note": null, "alt": null, "done": false }
@@ -55,55 +95,7 @@
       "place": "KAPPA, SEDNA",
       "sub": null,
       "activity": "Disruption",
-      "meta": "~12 C rewards per part expected",
-      "mode": "premade recommended",
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Neuroptics Blueprint",
-          "note": "7.84%, Rotation C",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Chassis Blueprint",
-          "note": "7.84%, Rotation C",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Systems Blueprint",
-          "note": "7.84%, Rotation C",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Rounds 1-2 cannot pay C. Round 3 is C only with all four conduits defended; from round 4 onward, defend at least three.",
-        "Stay after the first C reward. Leaving at round 5 is not a reset benefit; it discards repeated C rewards.",
-        "Recruit a group that can kill Demolysts quickly; public groups commonly leave before the C table."
-      ],
-      "bonuses": [],
-      "disclosures": [
-        {
-          "title": "do not fail a conduit on purpose",
-          "body": "The often-repeated shortcut is wrong: 3 and 4 defended conduits have the same C table, and waiting for a Demolyst to destroy a conduit is slower than killing it."
-        }
-      ]
-    },
-    {
-      "type": "foundry",
-      "place": "FOUNDRY",
-      "sub": null,
-      "activity": "build components, then Gauss",
-      "meta": "12h each, then 72h",
+      "meta": "7.84% per Rotation C reward",
       "mode": null,
       "live": null,
       "skip": null,
@@ -113,24 +105,81 @@
       "rows": [
         {
           "qty": null,
-          "label": "Neuroptics",
-          "note": "1 Argon, 1,600 Rubedo, 6,200 Salvage, 2,950 Alloy Plate",
+          "label": "Gauss Neuroptics Blueprint",
+          "note": "7.84%, Rotation C",
           "alt": null,
           "done": false
         },
-        { "qty": null, "label": "Chassis", "note": "Plains materials", "alt": null, "done": false },
         {
           "qty": null,
-          "label": "Systems",
-          "note": "Orb Vallis materials",
+          "label": "Gauss Chassis Blueprint",
+          "note": "7.84%, Rotation C",
           "alt": null,
           "done": false
         },
-        { "qty": null, "label": "Gauss", "note": "3 Orokin Cells", "alt": null, "done": false }
+        {
+          "qty": null,
+          "label": "Gauss Systems Blueprint",
+          "note": "7.84%, Rotation C",
+          "alt": null,
+          "done": false
+        }
       ],
       "conditions": [
-        "The crafting gates are the difficult part of Gauss; trade for refined gems if you do not already have both Rank 4 syndicates."
+        "Rounds 1-2 cannot pay C. Round 3 is C only with all four conduits defended; from round 4 onward, defend at least three.",
+        "Every round from 4 on pays C while you defend at least three conduits, so stay in and keep rolling."
       ],
+      "bonuses": [],
+      "disclosures": [
+        {
+          "title": "do not fail a conduit on purpose",
+          "body": "3 and 4 defended conduits share the same C table from round 4 onward, and waiting for a Demolyst to destroy a conduit is slower than killing it."
+        }
+      ]
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build components, then Gauss",
+      "meta": "12h each, then 3 days",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Gauss Neuroptics",
+          "note": "15,000 cr, 1 Argon Crystal, 1,600 Rubedo, 6,200 Salvage, 2,950 Alloy Plate",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Gauss Chassis",
+          "note": "15,000 cr, 3 Radian Sentirum, 3 Heart Nyth, 6 Star Crimzian, 55 Grokdrul",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Gauss Systems",
+          "note": "15,000 cr, 3 Radiant Zodian, 3 Marquise Thyst, 70 Mytocardia Spore, 85 Thermal Sludge",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Gauss",
+          "note": "25,000 cr, the three parts, 3 Orokin Cell",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
       "bonuses": [],
       "disclosures": []
     }

@@ -5,7 +5,7 @@
   "source": "shop",
   "tradeable": false,
   "progress": { "have": 0, "need": 1, "unit": "blueprint" },
-  "badges": [{ "text": "Venus Junction reward", "tone": "info" }],
+  "badges": [{ "text": "Market blueprint", "tone": "info" }],
   "prices": [
     { "label": "blueprint", "amount": "15,000 cr", "money": false },
     { "label": "build", "amount": "20,000 cr", "money": false }
@@ -28,19 +28,13 @@
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [],
+      "spends": [{ "currency": "Credits", "amount": "15,000" }],
       "map": null,
       "rows": [
-        {
-          "qty": null,
-          "label": "Furis Blueprint",
-          "note": null,
-          "alt": "or free from the Earth to Venus Junction",
-          "done": false
-        }
+        { "qty": null, "label": "Furis Blueprint", "note": null, "alt": null, "done": false }
       ],
       "conditions": [],
-      "bonuses": ["Most players already have it in the Foundry from the Venus Junction."],
+      "bonuses": [],
       "disclosures": []
     },
     {
@@ -48,7 +42,7 @@
       "place": "FOUNDRY",
       "sub": null,
       "activity": "build Furis",
-      "meta": "20,000 cr, 12h",
+      "meta": "12h",
       "mode": null,
       "live": null,
       "skip": null,
@@ -59,7 +53,7 @@
         {
           "qty": null,
           "label": "Furis",
-          "note": "750 Ferrite, 300 Alloy Plate, 400 Salvage, 4 Neurodes",
+          "note": "20,000 cr, 750 Ferrite, 300 Alloy Plate, 400 Salvage, 4 Neurodes",
           "alt": null,
           "done": false
         }

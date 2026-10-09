@@ -7,6 +7,14 @@
   "progress": { "have": 0, "need": 4, "unit": "parts" },
   "badges": [{ "text": "vaulted", "tone": "warn" }],
   "prices": [],
+  "routes": [
+    {
+      "name": "Varzia relics, as Frost Prime",
+      "cost": "1 Aya a relic during her Prime Resurgence, Rare Blueprint, 3-day build",
+      "effort": 8,
+      "role": "chosen"
+    }
+  ],
   "materials": [
     { "qty": "150", "label": "Alloy Plate", "note": "Neuroptics" },
     { "qty": "1", "label": "Neural Sensors", "note": "Neuroptics" },
@@ -22,12 +30,66 @@
   ],
   "groups": [
     {
+      "type": "currency",
+      "place": "CAMBION DRIFT, DEIMOS",
+      "sub": "Necralisk",
+      "activity": "Level 40-60 bounty, final stage",
+      "meta": "43.48% per final stage",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Aya",
+          "note": "1 per relic; bank it before the window opens",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": [],
+      "ref": "Aya"
+    },
+    {
+      "type": "vendor",
+      "place": "MAROO'S BAZAAR, MARS",
+      "sub": "Varzia",
+      "activity": "buy the Frost Prime relics she stocks, 1 Aya each",
+      "meta": "only while Frost Prime is in Prime Resurgence",
+      "mode": null,
+      "live": { "state": "blocked", "text": "vaulted; only during her Prime Resurgence" },
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Frost Prime relics",
+          "note": "buy extra Blueprint relics: every one carries it as the Rare",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Her stock rotates away; relics and Aya you hold never expire.",
+        "Vaulted relics and the parts themselves still trade between players."
+      ],
+      "bonuses": ["Varzia is also in the Market's Prime Resurgence tab."],
+      "disclosures": []
+    },
+    {
       "type": "fissure",
       "place": "ANY VOID FISSURE",
       "sub": null,
-      "activity": "crack the matching vaulted relics",
+      "activity": "crack the Frost Prime relics",
       "meta": "Blueprint is the bottleneck",
-      "mode": null,
+      "mode": "Radiant radshare for the Rares",
       "live": null,
       "skip": null,
       "earns": null,
@@ -64,10 +126,12 @@
         }
       ],
       "conditions": [
-        "Frost Prime is vaulted: its relics no longer drop from missions.",
-        "Vaulted relics and the parts themselves still trade between players."
+        "Refine the Blueprint and Systems relics to Radiant (100 Void Traces each); leave Neuroptics and Chassis relics Intact, since Radiant lowers their Common odds to 16.67%.",
+        "Mission rewards never drop Resurgence relics; Varzia is the only source."
       ],
-      "bonuses": [],
+      "bonuses": [
+        "Pick a teammate's identical reward at the reward screen; they get 5 bonus Void Traces."
+      ],
       "disclosures": []
     },
     {
@@ -75,7 +139,7 @@
       "place": "FOUNDRY",
       "sub": null,
       "activity": "build components, then Frost Prime",
-      "meta": "12h each, then 72h",
+      "meta": "12h each, then 3 days",
       "mode": null,
       "live": null,
       "skip": null,
@@ -107,7 +171,7 @@
         {
           "qty": null,
           "label": "Frost Prime",
-          "note": "25,000 cr, Neuroptics, Chassis, Systems, 1 Orokin Cell, 3 days",
+          "note": "25,000 cr, the three parts, 1 Orokin Cell",
           "alt": null,
           "done": false
         }

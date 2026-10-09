@@ -6,7 +6,10 @@
   "tradeable": false,
   "progress": { "have": 0, "need": 1, "unit": "weapon" },
   "badges": [{ "text": "2,500 Alloy Plate", "tone": "info" }],
-  "prices": [{ "label": "blueprint", "amount": "35,000 cr", "money": false }],
+  "prices": [
+    { "label": "blueprint", "amount": "35,000 cr", "money": false },
+    { "label": "build", "amount": "20,000 cr", "money": false }
+  ],
   "materials": [
     { "qty": "2,500", "label": "Alloy Plate", "note": null },
     { "qty": "400", "label": "Circuits", "note": null },
@@ -25,16 +28,10 @@
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [],
+      "spends": [{ "currency": "Credits", "amount": "35,000" }],
       "map": null,
       "rows": [
-        {
-          "qty": null,
-          "label": "Gammacor Blueprint",
-          "note": null,
-          "alt": "or the Uranus to Neptune Junction reward",
-          "done": false
-        }
+        { "qty": null, "label": "Gammacor Blueprint", "note": null, "alt": null, "done": false }
       ],
       "conditions": [],
       "bonuses": [],
@@ -45,14 +42,22 @@
       "place": "FOUNDRY",
       "sub": null,
       "activity": "build Gammacor",
-      "meta": "12h, 20,000 cr",
+      "meta": "12h",
       "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
       "spends": [],
       "map": null,
-      "rows": [{ "qty": null, "label": "Gammacor", "note": null, "alt": null, "done": false }],
+      "rows": [
+        {
+          "qty": null,
+          "label": "Gammacor",
+          "note": "20,000 cr, 2,500 Alloy Plate, 650 Plastids, 400 Circuits, 2 Argon Crystal",
+          "alt": null,
+          "done": false
+        }
+      ],
       "conditions": [],
       "bonuses": [],
       "disclosures": [

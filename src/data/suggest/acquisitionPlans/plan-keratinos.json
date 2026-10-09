@@ -7,22 +7,21 @@
   "progress": { "have": 0, "need": 5, "unit": "parts" },
   "badges": [
     { "text": "no RNG", "tone": "info" },
-    { "text": "MR 9 gate", "tone": "warn" }
+    { "text": "MR 9", "tone": "warn" }
   ],
   "prices": [
     { "label": "build", "amount": "100,000 cr", "money": false },
     { "label": "standing", "amount": "3,000", "money": false }
   ],
   "materials": [
-    { "qty": "8", "label": "Gallium", "note": "Blade material" },
-    { "qty": "8", "label": "Neurodes", "note": "Gauntlet material" },
-    { "qty": "2,400", "label": "Plastids", "note": "4 Adramal Alloy crafts at Otak" },
-    { "qty": "80", "label": "Adramal Alloy", "note": null },
-    { "qty": "12", "label": "Purged Dagonic", "note": null },
-    { "qty": "48", "label": "Pustulite", "note": null },
-    { "qty": "40", "label": "Ferment Bladder", "note": null },
-    { "qty": "12", "label": "Waxen Sebum Deposit", "note": null },
-    { "qty": "32", "label": "Ganglion", "note": "Gauntlet material" },
+    { "qty": "8", "label": "Gallium", "note": "Blade" },
+    { "qty": "8", "label": "Neurodes", "note": "Gauntlet" },
+    { "qty": "80", "label": "Adramal Alloy", "note": "Blade" },
+    { "qty": "12", "label": "Purged Dagonic", "note": "Blade" },
+    { "qty": "48", "label": "Pustulite", "note": "Blade" },
+    { "qty": "40", "label": "Ferment Bladder", "note": "Gauntlet" },
+    { "qty": "12", "label": "Waxen Sebum Deposit", "note": "Gauntlet" },
+    { "qty": "32", "label": "Ganglion", "note": "Gauntlet" },
     { "qty": "100,000", "label": "Credits", "note": null }
   ],
   "groups": [
@@ -30,7 +29,7 @@
       "type": "gate",
       "place": "NECRALISK, DEIMOS",
       "sub": null,
-      "activity": "Heart of Deimos",
+      "activity": "Heart of Deimos, then MR 9",
       "meta": null,
       "mode": null,
       "live": null,
@@ -45,6 +44,13 @@
           "note": "opens Father and Entrati standing",
           "alt": null,
           "done": false
+        },
+        {
+          "qty": null,
+          "label": "Mastery Rank 9",
+          "note": "to equip",
+          "alt": null,
+          "done": false
         }
       ],
       "conditions": [],
@@ -55,7 +61,7 @@
       "type": "currency",
       "place": "CAMBION DRIFT, DEIMOS",
       "sub": null,
-      "activity": "Mother's bounties, tranq-capture and fishing/mining turn-ins for Entrati Family Tokens",
+      "activity": "turn Entrati Family Tokens in to Grandmother",
       "meta": "Rank 0 - Neutral, no rank-up needed",
       "mode": null,
       "live": null,
@@ -65,9 +71,9 @@
       "map": "cambion-drift",
       "rows": [
         {
-          "qty": null,
-          "label": "turn Family Tokens in to Grandmother",
-          "note": "Mother tokens 100 each; Father/Daughter/Otak tokens 500; Son tokens 1,000",
+          "qty": "3,000",
+          "label": "Entrati Standing",
+          "note": "Mother's bounties pay the most tokens",
           "alt": null,
           "done": false
         }
@@ -113,8 +119,7 @@
         }
       ],
       "conditions": [
-        "MR 9 is required to buy the main Keratinos Blueprint; the component blueprints have no such gate, so you can buy and build Blades and Gauntlets earlier.",
-        "Buy a third Blade Blueprint if you are still below Entrati Rank 2 Acquaintance: that rank-up consumes one Keratinos Blade Blueprint, and a blueprint already queued in the Foundry can't be used for it."
+        "Buy a third Blade Blueprint if you are still below Entrati Rank 2 Acquaintance: that rank-up consumes one, and a blueprint already queued in the Foundry can't be used for it."
       ],
       "bonuses": [],
       "disclosures": []

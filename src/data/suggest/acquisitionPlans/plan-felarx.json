@@ -15,21 +15,23 @@
   ],
   "prices": [{ "label": "blueprint", "amount": "8,000 Holdfasts Standing", "money": false }],
   "materials": [
-    { "qty": "8,000", "label": "Alloy Plate", "note": null },
-    { "qty": "10", "label": "Voidplume Crest", "note": "Rank 3 sacrifice" },
-    { "qty": "10", "label": "Voidplume Pinion", "note": "10 needed to build" },
-    { "qty": "15", "label": "Voidplume Quill", "note": "build requirement" },
-    { "qty": "30", "label": "Voidgel Orb", "note": "Rank 2 and build requirements" },
-    { "qty": "10", "label": "Entrati Lanthorn", "note": null },
-    { "qty": "30,000", "label": "Credits", "note": null }
+    { "qty": "15,000", "label": "Alloy Plate", "note": "2,000 Rank 1, 5,000 Rank 2, 8,000 build" },
+    { "qty": "7,000", "label": "Ferrite", "note": "2,000 Rank 1, 5,000 Rank 3" },
+    { "qty": "5", "label": "Voidplume Down", "note": "Rank 1" },
+    { "qty": "10", "label": "Voidplume Crest", "note": "Rank 3" },
+    { "qty": "10", "label": "Voidplume Pinion", "note": "build" },
+    { "qty": "15", "label": "Voidplume Quill", "note": "build" },
+    { "qty": "40", "label": "Voidgel Orb", "note": "10 Rank 2, 30 build" },
+    { "qty": "10", "label": "Entrati Lanthorn", "note": "Rank 3" },
+    { "qty": "115,000", "label": "Credits", "note": null }
   ],
   "groups": [
     {
       "type": "gate",
-      "place": "QUESTS",
+      "place": "ANGELS OF THE ZARIMAN",
       "sub": null,
-      "activity": "unlock the Zariman and The Holdfasts",
-      "meta": "The New War → Angels of the Zariman",
+      "activity": "finish the quest, reach Mastery Rank 14",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -39,22 +41,20 @@
       "rows": [
         {
           "qty": null,
-          "label": "The New War",
-          "note": "quest prerequisite",
+          "label": "Angels of the Zariman",
+          "note": "needs The New War first; unlocks the Zariman and The Holdfasts",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
-          "label": "Angels of the Zariman",
-          "note": "unlocks Chrysalith",
+          "label": "Mastery Rank 14",
+          "note": "to equip it; you can build it earlier",
           "alt": null,
           "done": false
         }
       ],
-      "conditions": [
-        "There is no shortcut around these quests: Felarx's blueprint and all of its dedicated build materials come from Zariman progression."
-      ],
+      "conditions": [],
       "bonuses": [],
       "disclosures": []
     },
@@ -63,14 +63,38 @@
       "place": "HALAKO PERIMETER, ZARIMAN",
       "sub": "Chrysalith: turn Voidplumes in to Archimedean Yonta",
       "activity": "Exterminate; sweep the map after the objective",
-      "meta": "daily standing cap is the hard gate",
-      "mode": "public squad",
+      "meta": "79,000 standing to Guardian and the blueprint",
+      "mode": null,
       "live": null,
       "skip": null,
-      "earns": { "currency": "Holdfasts Standing", "amount": "8,000" },
+      "earns": { "currency": "Holdfasts Standing", "amount": "79,000" },
       "spends": [],
       "map": null,
       "rows": [
+        {
+          "qty": null,
+          "label": "Rank 1, Fallen",
+          "note": "5,000 standing, 10,000 cr; 5 Voidplume Down, 2,000 Ferrite, 2,000 Alloy Plate",
+          "alt": null,
+          "done": false,
+          "rank": { "syndicate": "The Holdfasts", "level": 1 }
+        },
+        {
+          "qty": null,
+          "label": "Rank 2, Watcher",
+          "note": "22,000 standing, 25,000 cr; 10 Voidplume Vane, 10 Voidgel Orb, 5,000 Alloy Plate",
+          "alt": null,
+          "done": false,
+          "rank": { "syndicate": "The Holdfasts", "level": 2 }
+        },
+        {
+          "qty": null,
+          "label": "Rank 3, Guardian",
+          "note": "44,000 standing, 50,000 cr; 10 Voidplume Crest, 10 Entrati Lanthorn, 5,000 Ferrite",
+          "alt": null,
+          "done": false,
+          "rank": { "syndicate": "The Holdfasts", "level": 3 }
+        },
         {
           "qty": null,
           "label": "Voidplumes turned in to Archimedean Yonta",
@@ -79,16 +103,9 @@
           "done": false
         }
       ],
-      "conditions": [
-        "Rank-ups consume 5,000, 22,000 and 44,000 standing, and the blueprint costs another 8,000."
-      ],
+      "conditions": ["Standing has a daily cap of 16,000 plus 500 per Mastery Rank."],
       "bonuses": [],
-      "disclosures": [
-        {
-          "title": "calendar, not RNG, sets the floor",
-          "body": "Even with enough plumes ready, the rank purchases and blueprint require several daily cap resets. Expect at least four days at cap, and roughly a week when Crests or Lanthorns lag behind."
-        }
-      ],
+      "disclosures": [],
       "ref": "Holdfasts Standing"
     },
     {
@@ -112,9 +129,7 @@
           "done": false
         }
       ],
-      "conditions": [
-        "You must reach Guardian to buy it yourself. Trading the blueprint skips that purchase, but not the Zariman-only build materials."
-      ],
+      "conditions": ["You must reach Guardian to buy it yourself."],
       "bonuses": [],
       "disclosures": []
     },
@@ -123,7 +138,7 @@
       "place": "FOUNDRY",
       "sub": null,
       "activity": "build Felarx",
-      "meta": "24h, MR 14 to equip",
+      "meta": "24h",
       "mode": null,
       "live": null,
       "skip": null,
@@ -139,9 +154,7 @@
           "done": false
         }
       ],
-      "conditions": [
-        "You may craft Felarx before Mastery Rank 14, but cannot equip it until then."
-      ],
+      "conditions": [],
       "bonuses": [],
       "disclosures": []
     },
@@ -151,7 +164,7 @@
       "sub": null,
       "activity": "complete native Incarnon Evolutions",
       "meta": "no Genesis adapter needed",
-      "mode": "solo or host recommended",
+      "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
@@ -195,13 +208,10 @@
         }
       ],
       "conditions": [
-        "Evolution progress persists across missions. Perks can be changed freely at Cavalero or in the Arsenal.",
-        "For Evolution III, multishot pellets count individually; stack magazine size and multishot. Incarnon form counts as primary fire.",
-        "Do these as solo or host when possible: clients have reported progress failing to register. Exalted weapons do not satisfy Evolution V."
+        "Evolution III is easier with more magazine size (Ammo Stock, Burdened Magazine) and multishot (Hell's Chamber, Vigilante Armaments).",
+        "An Exalted Weapon negates the Evolution V challenge."
       ],
-      "bonuses": [
-        "Felarx, Laetum, and Innodem together make Evolution V easy for future native Incarnons."
-      ],
+      "bonuses": [],
       "disclosures": []
     }
   ]

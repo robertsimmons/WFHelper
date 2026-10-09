@@ -7,7 +7,7 @@
   "progress": { "have": 0, "need": 4, "unit": "parts" },
   "badges": [
     { "text": "forced Operator", "tone": "warn" },
-    { "text": "Venus", "tone": "info" }
+    { "text": "Chains of Harrow", "tone": "info" }
   ],
   "prices": [
     { "label": "build", "amount": "75,000 cr", "money": false },
@@ -35,7 +35,7 @@
       "place": "QUESTS",
       "sub": null,
       "activity": "Chains of Harrow",
-      "meta": "unlocks the node and the vendor",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -46,14 +46,12 @@
         {
           "qty": null,
           "label": "Chains of Harrow",
-          "note": "opens Follie's Hunt and Aspirant Zorba",
+          "note": "unlocks Follie's Hunt",
           "alt": null,
           "done": false
         }
       ],
-      "conditions": [
-        "Aspirant Zorba stands outside the Arbiters of Hexis room in any relay; your Arbiters standing doesn't matter to her."
-      ],
+      "conditions": ["Aspirant Zorba stands in any relay, outside the Arbiters of Hexis room."],
       "bonuses": [],
       "disclosures": []
     },
@@ -63,7 +61,7 @@
       "sub": null,
       "activity": "find 3 Shadowgraph Canvases, deliver paint from gold Paint Pools",
       "meta": "5% each (6% Steel Path)",
-      "mode": "solo or coordinated duo recommended",
+      "mode": null,
       "live": null,
       "skip": null,
       "earns": { "currency": "Atramentum", "amount": "2,400" },
@@ -112,21 +110,20 @@
         }
       ],
       "conditions": [
-        "Rotation A is the only roll per clear; Rotation B is a guaranteed 15 Atramentum. The Enkaus signature weapon and its own three parts share this same table at the same rate, so most clears reward something else.",
-        "Nothing spawns until someone picks up paint, so scout all three canvases first; Paint Pools have a distinct jingle that rules out a canvas being in that room.",
-        "Do the side-room or hallway canvas (B) first and the concourse one (A) last; the guaranteed 50%-progress ink walls choke the upper hallways but leave the concourse open.",
-        "If you die while carrying paint, it's gone and you have to fetch more."
+        "Rotation A is the only roll per clear; Rotation B is a guaranteed 15 Atramentum (25 on Steel Path). The Enkaus and its three parts share this table at the same rate, so most clears reward something else.",
+        "Paint Pools force you out of your Warframe into your Operator or Drifter, and you can't Void Sling or Transference while carrying paint.",
+        "Nothing spawns until someone picks up paint, so scout all three canvases first.",
+        "Clear canvas B first: the Drip, Drip, Drip modifier's permanent ink obstructions make it harder to reach later. Canvas A, in the second level's concourse, can wait."
       ],
       "bonuses": [
-        "Build the Operator first (Unairu for knockdown immunity, Metem-Erun/Magus Cadence for sprint speed, a death-save arcane): several people say the mode stops being miserable once this is done.",
-        "As Operator, roll instead of walking and hold crouch mid-roll for Void Mode, which passes through Follie's drain aura and covers the paint transfer.",
-        "Hildryn ignores the energy drain and CC and her AoE pops balloons; pair with a Raksa Kubrow. Tanky or regen frames (Inaros, Dante, Rhino, Kullervo, Wisp, Oberon) and Gauss for speed also work well.",
-        "Pop every balloon after the first delivery; balloon drops (12 per run, 1-4 each) are shared squad-wide, unlike enemy Atramentum drops which aren't."
+        "Sprint and Void Mode work together as Operator: you stay invulnerable and move faster, and Follie's clones drain less energy.",
+        "Lavos and Hildryn have no energy cost; high-health or healing frames like Dante, Rhino, Inaros, Wisp and Kullervo also hold up.",
+        "Atramentum Balloons only appear once paint has been delivered and Follie starts her hunt."
       ],
       "disclosures": [
         {
           "title": "the Atramentum math",
-          "body": "The full set costs 2,400 Atramentum bought outright. Good Steel Path runs net 70-90 Atramentum, so about 30 runs covers everything with zero drops; most people finish well before that since parts also just drop."
+          "body": "The full set costs 2,400 Atramentum bought outright. Rotation B pays 15 a clear (25 on Steel Path), plus balloons and enemy kills."
         }
       ]
     },

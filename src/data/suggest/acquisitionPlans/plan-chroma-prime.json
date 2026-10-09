@@ -4,33 +4,155 @@
   "effort": 8,
   "source": "relics",
   "tradeable": true,
-  "progress": { "have": 0, "need": 4, "unit": "parts" },
-  "badges": [{ "text": "vaulted", "tone": "warn" }],
+  "progress": {
+    "have": 0,
+    "need": 4,
+    "unit": "parts"
+  },
+  "badges": [
+    {
+      "text": "vaulted",
+      "tone": "warn"
+    }
+  ],
   "prices": [],
   "materials": [
-    { "qty": "4", "label": "Neurodes", "note": "Neuroptics" },
-    { "qty": "1,750", "label": "Circuits", "note": "Neuroptics" },
-    { "qty": "450", "label": "Plastids", "note": "Neuroptics" },
-    { "qty": "4,750", "label": "Nano Spores", "note": "Neuroptics" },
-    { "qty": "2", "label": "Nitain Extract", "note": "Chassis" },
-    { "qty": "10", "label": "Control Module", "note": "Chassis" },
-    { "qty": "1,600", "label": "Rubedo", "note": "Chassis" },
-    { "qty": "7,800", "label": "Salvage", "note": "Chassis" },
-    { "qty": "2", "label": "Argon Crystal", "note": "Systems" },
-    { "qty": "5", "label": "Neural Sensors", "note": "Systems" },
-    { "qty": "1,775", "label": "Polymer Bundle", "note": "Systems" },
-    { "qty": "4,000", "label": "Ferrite", "note": "Systems" },
-    { "qty": "5", "label": "Orokin Cell", "note": null },
-    { "qty": "70,000", "label": "Credits", "note": null }
+    {
+      "qty": "4",
+      "label": "Neurodes",
+      "note": "Neuroptics"
+    },
+    {
+      "qty": "1,750",
+      "label": "Circuits",
+      "note": "Neuroptics"
+    },
+    {
+      "qty": "450",
+      "label": "Plastids",
+      "note": "Neuroptics"
+    },
+    {
+      "qty": "4,750",
+      "label": "Nano Spores",
+      "note": "Neuroptics"
+    },
+    {
+      "qty": "2",
+      "label": "Nitain Extract",
+      "note": "Chassis"
+    },
+    {
+      "qty": "10",
+      "label": "Control Module",
+      "note": "Chassis"
+    },
+    {
+      "qty": "1,600",
+      "label": "Rubedo",
+      "note": "Chassis"
+    },
+    {
+      "qty": "7,800",
+      "label": "Salvage",
+      "note": "Chassis"
+    },
+    {
+      "qty": "2",
+      "label": "Argon Crystal",
+      "note": "Systems"
+    },
+    {
+      "qty": "5",
+      "label": "Neural Sensors",
+      "note": "Systems"
+    },
+    {
+      "qty": "1,775",
+      "label": "Polymer Bundle",
+      "note": "Systems"
+    },
+    {
+      "qty": "4,000",
+      "label": "Ferrite",
+      "note": "Systems"
+    },
+    {
+      "qty": "5",
+      "label": "Orokin Cell",
+      "note": null
+    },
+    {
+      "qty": "70,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
+    {
+      "type": "currency",
+      "place": "CAMBION DRIFT, DEIMOS",
+      "sub": "Necralisk",
+      "activity": "Level 40-60 bounty, final stage",
+      "meta": "43.48% per final stage",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Aya",
+          "note": "1 per relic; bank it before the window opens",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": [],
+      "ref": "Aya"
+    },
+    {
+      "type": "vendor",
+      "place": "MAROO'S BAZAAR, MARS",
+      "sub": "Varzia",
+      "activity": "buy the Chroma Prime relics she stocks, 1 Aya each",
+      "meta": "only while Chroma Prime is in Prime Resurgence",
+      "mode": null,
+      "live": {
+        "state": "blocked",
+        "text": "vaulted; only during her Prime Resurgence"
+      },
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Chroma Prime relics",
+          "note": "buy extra Neuroptics relics: every one carries it as the Rare",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Her stock rotates away; relics and Aya you hold never expire.",
+        "Vaulted relics and the parts themselves still trade between players."
+      ],
+      "bonuses": ["Varzia is also in the Market's Prime Resurgence tab."],
+      "disclosures": []
+    },
     {
       "type": "fissure",
       "place": "ANY VOID FISSURE",
       "sub": null,
-      "activity": "crack the matching vaulted relics",
+      "activity": "crack the Chroma Prime relics",
       "meta": "Neuroptics is the bottleneck",
-      "mode": null,
+      "mode": "Radiant radshare for the Rares",
       "live": null,
       "skip": null,
       "earns": null,
@@ -67,10 +189,12 @@
         }
       ],
       "conditions": [
-        "Chroma Prime is vaulted: its relics no longer drop from missions.",
-        "Vaulted relics and the parts themselves still trade between players."
+        "Refine Rare relics to Radiant (100 Void Traces each); leave Common relics Intact, since Radiant lowers their Common odds.",
+        "Mission rewards never drop Resurgence relics; Varzia is the only source."
       ],
-      "bonuses": [],
+      "bonuses": [
+        "Pick a teammate's identical reward at the reward screen; they get 5 bonus Void Traces."
+      ],
       "disclosures": []
     },
     {
@@ -118,6 +242,14 @@
       "conditions": [],
       "bonuses": [],
       "disclosures": []
+    }
+  ],
+  "routes": [
+    {
+      "name": "Varzia relics, as Chroma Prime",
+      "cost": "1 Aya a relic during her Prime Resurgence, Rare Neuroptics, 3-day build",
+      "effort": 8,
+      "role": "chosen"
     }
   ]
 }

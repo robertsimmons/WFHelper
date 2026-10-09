@@ -4,34 +4,105 @@
   "effort": 7,
   "source": "repeat",
   "tradeable": false,
-  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "progress": {
+    "have": 0,
+    "need": 4,
+    "unit": "parts"
+  },
   "badges": [
-    { "text": "worst frame farm", "tone": "warn" },
-    { "text": "Rotation C", "tone": "warn" }
+    {
+      "text": "Mirror Defense Rotation C",
+      "tone": "warn"
+    },
+    {
+      "text": "Entrati Rank 2",
+      "tone": "info",
+      "rank": {
+        "syndicate": "Entrati",
+        "level": 2
+      }
+    }
   ],
-  "prices": [{ "label": "built", "amount": "350 p", "money": false }],
+  "prices": [],
   "materials": [
-    { "qty": "1,000", "label": "Rubedo", "note": "Neuroptics" },
-    { "qty": "1,500", "label": "Salvage", "note": "Neuroptics" },
-    { "qty": "2", "label": "Argon Crystal", "note": "Neuroptics" },
-    { "qty": "1,200", "label": "Cryotic", "note": "Chassis" },
-    { "qty": "3,000", "label": "Alloy Plate", "note": "Chassis" },
-    { "qty": "2,000", "label": "Nano Spores", "note": "Chassis" },
-    { "qty": "1,500", "label": "Circuits", "note": "Systems" },
-    { "qty": "1,500", "label": "Polymer Bundle", "note": "Systems" },
-    { "qty": "3", "label": "Gallium", "note": "Systems" },
-    { "qty": "2", "label": "Morphics", "note": "Systems" },
-    { "qty": "3", "label": "Orokin Cell", "note": "Citrine" },
-    { "qty": "15", "label": "Faceted Tiametrite", "note": "Neuroptics" },
-    { "qty": "6", "label": "Stellated Necrathene", "note": "Chassis" }
+    {
+      "qty": "1,000",
+      "label": "Rubedo",
+      "note": "Neuroptics"
+    },
+    {
+      "qty": "1,500",
+      "label": "Salvage",
+      "note": "Neuroptics"
+    },
+    {
+      "qty": "2",
+      "label": "Argon Crystal",
+      "note": "Neuroptics"
+    },
+    {
+      "qty": "1,200",
+      "label": "Cryotic",
+      "note": "Chassis"
+    },
+    {
+      "qty": "3,000",
+      "label": "Alloy Plate",
+      "note": "Chassis"
+    },
+    {
+      "qty": "2,000",
+      "label": "Nano Spores",
+      "note": "Chassis"
+    },
+    {
+      "qty": "1,500",
+      "label": "Circuits",
+      "note": "Systems"
+    },
+    {
+      "qty": "1,500",
+      "label": "Polymer Bundle",
+      "note": "Systems"
+    },
+    {
+      "qty": "3",
+      "label": "Gallium",
+      "note": "Systems"
+    },
+    {
+      "qty": "2",
+      "label": "Morphics",
+      "note": "Systems"
+    },
+    {
+      "qty": "3",
+      "label": "Orokin Cell",
+      "note": "Citrine"
+    },
+    {
+      "qty": "15",
+      "label": "Faceted Tiametrite",
+      "note": "Neuroptics"
+    },
+    {
+      "qty": "6",
+      "label": "Stellated Necrathene",
+      "note": "Chassis"
+    },
+    {
+      "qty": "75,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
     {
       "type": "gate",
-      "place": "MARS, THEN DEIMOS",
+      "place": "QUESTS",
       "sub": null,
-      "activity": "Heart of Deimos, reach MR3, then Entrati rank 2 (Acquaintance)",
-      "meta": "unlocks Tyana Pass and the Chassis recipe",
+      "activity": "Heart of Deimos, then Entrati rank 2 (Acquaintance)",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -42,7 +113,7 @@
         {
           "qty": null,
           "label": "Heart of Deimos",
-          "note": "unlocks Tyana Pass, Mars, at MR3",
+          "note": "unlocks Tyana Pass",
           "alt": null,
           "done": false
         },
@@ -51,12 +122,14 @@
           "label": "Entrati rank 2, Acquaintance",
           "note": "needed to craft Stellated Necrathene for the Chassis",
           "alt": null,
-          "done": false
+          "done": false,
+          "rank": {
+            "syndicate": "Entrati",
+            "level": 2
+          }
         }
       ],
-      "conditions": [
-        "Tyana Pass does not appear until Heart of Deimos is complete and you are MR3."
-      ],
+      "conditions": [],
       "bonuses": [],
       "disclosures": []
     },
@@ -65,7 +138,7 @@
       "place": "TYANA PASS, MARS",
       "sub": null,
       "activity": "Mirror Defense",
-      "meta": "Rotation C is the 4th reward, ~25 minutes in",
+      "meta": "Rotation C is the 4th reward",
       "mode": "public squad recommended",
       "live": null,
       "skip": null,
@@ -80,8 +153,14 @@
           "alt": {
             "text": "or 500 Rania + 500 Belric at Otak",
             "spends": [
-              { "currency": "Rania Crystal Fragment", "amount": "500" },
-              { "currency": "Belric Crystal Fragment", "amount": "500" }
+              {
+                "currency": "Rania Crystal Fragment",
+                "amount": "500"
+              },
+              {
+                "currency": "Belric Crystal Fragment",
+                "amount": "500"
+              }
             ]
           },
           "done": false
@@ -93,8 +172,14 @@
           "alt": {
             "text": "or 350 Rania + 350 Belric at Otak",
             "spends": [
-              { "currency": "Rania Crystal Fragment", "amount": "350" },
-              { "currency": "Belric Crystal Fragment", "amount": "350" }
+              {
+                "currency": "Rania Crystal Fragment",
+                "amount": "350"
+              },
+              {
+                "currency": "Belric Crystal Fragment",
+                "amount": "350"
+              }
             ]
           },
           "done": false
@@ -106,8 +191,14 @@
           "alt": {
             "text": "or 350 Rania + 350 Belric at Otak",
             "spends": [
-              { "currency": "Rania Crystal Fragment", "amount": "350" },
-              { "currency": "Belric Crystal Fragment", "amount": "350" }
+              {
+                "currency": "Rania Crystal Fragment",
+                "amount": "350"
+              },
+              {
+                "currency": "Belric Crystal Fragment",
+                "amount": "350"
+              }
             ]
           },
           "done": false
@@ -119,63 +210,25 @@
           "alt": {
             "text": "or 350 Rania + 300 Belric at Otak",
             "spends": [
-              { "currency": "Rania Crystal Fragment", "amount": "350" },
-              { "currency": "Belric Crystal Fragment", "amount": "300" }
+              {
+                "currency": "Rania Crystal Fragment",
+                "amount": "350"
+              },
+              {
+                "currency": "Belric Crystal Fragment",
+                "amount": "300"
+              }
             ]
           },
           "done": false
         }
       ],
       "conditions": [
-        "Waves run on a fixed timer; killing faster does not end them sooner. Rewards follow AABC, so C is the 4th completion, about 25 minutes.",
-        "Stay through reward 4 before deciding whether to continue; most public players quit at reward 3, mistaking it for C.",
-        "If you keep going, only leave on a multiple of 4 to hold enemy levels down and keep teammates around."
+        "Rewards follow A, A, B, C, so Rotation C is the 4th completion; stay through it."
       ],
       "bonuses": [
-        "Each completed rotation gives 10 of each fragment type (15 on Steel Path); every 50 Citrine's Remnants collected gives 5 more (7 on Steel Path).",
-        "A flight or mobility frame collecting Remnants (Titania, Jade, Wukong, Uriel, Chroma) adds roughly 150 of each fragment per 4-round run in pubs; grab the bulk that spawns in the 30-second Void tunnel too.",
-        "Steel Path gives 15 per rotation and 7 per Remnant set instead of 10/5, and a full frame runs about 3-4 hours there versus 4-5 on normal."
+        "Each completed rotation gives 10 of each fragment (15 on Steel Path); each Citrine's Remnants set collected gives 5 (7 on Steel Path), alternating between the two types."
       ],
-      "disclosures": [
-        {
-          "title": "solo tricks",
-          "body": "A New Loka Ancient Guardian Specter set to hold position, or a Loki Decoy (Damage Decoy augment), pulls aggro off the crystal. A Frost bubble, Vauban with Enduring Bastille, or max-range Hydroid with Pilfering Swarm also work. Warframe heals do not restore crystal health; only Remnant pickups do, capped around 50% damage reduction from other sources."
-        },
-        {
-          "title": "the actual bottleneck",
-          "body": "9.3% is the highest single-part rate in the game and duplicate main blueprints are common, with no way to convert a dupe into fragments. Boosters and Smeeta Charm do not affect fragment or part drops."
-        }
-      ]
-    },
-    {
-      "type": "vendor",
-      "place": "OTAK, NECRALISK",
-      "sub": null,
-      "activity": "buy whatever parts are still missing",
-      "meta": "1,550 Rania + 1,500 Belric for a full set from scratch",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [
-        { "currency": "Rania Crystal Fragment", "amount": "1,550" },
-        { "currency": "Belric Crystal Fragment", "amount": "1,500" }
-      ],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "any missing blueprint",
-          "note": "main 500/500; Neuroptics and Chassis 350/350; Systems 350/300",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Hold fragments until only 1-2 parts are missing so a late drop cannot duplicate a purchase.",
-        "Otak's prices run roughly an order of magnitude above comparable pity shops (Jade, Dante, Voruna, Koumei)."
-      ],
-      "bonuses": [],
       "disclosures": []
     },
     {
@@ -194,28 +247,28 @@
         {
           "qty": null,
           "label": "Neuroptics",
-          "note": "Rubedo, Salvage, 15 Faceted Tiametrite, 2 Argon Crystals",
+          "note": "15,000 cr, 1,000 Rubedo, 1,500 Salvage, 15 Faceted Tiametrite, 2 Argon Crystal",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Chassis",
-          "note": "Cryotic, Alloy Plate, 6 Stellated Necrathene, Nano Spores",
+          "note": "15,000 cr, 1,200 Cryotic, 3,000 Alloy Plate, 6 Stellated Necrathene, 2,000 Nano Spores",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Systems",
-          "note": "Circuits, Polymer Bundle, 3 Gallium, 2 Morphics",
+          "note": "15,000 cr, 1,500 Circuits, 1,500 Polymer Bundle, 3 Gallium, 2 Morphics",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Citrine",
-          "note": "30,000 cr, 3 Orokin Cells, 3 days",
+          "note": "30,000 cr, the three parts, 3 Orokin Cell",
           "alt": null,
           "done": false
         }

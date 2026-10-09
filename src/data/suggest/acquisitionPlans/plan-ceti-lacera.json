@@ -4,21 +4,59 @@
   "effort": 3,
   "source": "standing",
   "tradeable": true,
-  "progress": { "have": 0, "need": 1, "unit": "blueprint" },
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "blueprint"
+  },
   "badges": [
-    { "text": "Naberus only", "tone": "warn" },
-    { "text": "MR 12", "tone": "info" }
+    {
+      "text": "Naberus only",
+      "tone": "warn"
+    },
+    {
+      "text": "MR 12",
+      "tone": "info"
+    }
   ],
   "prices": [
-    { "label": "blueprint", "amount": "125 Mother Tokens", "money": false },
-    { "label": "build", "amount": "25,000 cr", "money": false }
+    {
+      "label": "blueprint",
+      "amount": "125 Mother Tokens",
+      "money": false
+    },
+    {
+      "label": "build",
+      "amount": "25,000 cr",
+      "money": false
+    }
   ],
   "materials": [
-    { "qty": "8,150", "label": "Salvage", "note": null },
-    { "qty": "400", "label": "Oxium", "note": null },
-    { "qty": "5,950", "label": "Rubedo", "note": "stockpile before Naberus opens" },
-    { "qty": "15", "label": "Morphics", "note": null },
-    { "qty": "25,000", "label": "Credits", "note": null }
+    {
+      "qty": "8,150",
+      "label": "Salvage",
+      "note": null
+    },
+    {
+      "qty": "400",
+      "label": "Oxium",
+      "note": null
+    },
+    {
+      "qty": "5,950",
+      "label": "Rubedo",
+      "note": "stockpile before Naberus opens"
+    },
+    {
+      "qty": "15",
+      "label": "Morphics",
+      "note": null
+    },
+    {
+      "qty": "25,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
     {
@@ -26,18 +64,21 @@
       "place": "CAMBION DRIFT, DEIMOS",
       "sub": "Necralisk",
       "activity": "Mother's bounties",
-      "meta": "roughly one high-tier bounty's worth",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
-      "earns": { "currency": "Mother Token", "amount": "125" },
+      "earns": {
+        "currency": "Mother Token",
+        "amount": "125"
+      },
       "spends": [],
       "map": "cambion-drift",
       "rows": [
         {
           "qty": "125",
           "label": "Mother Token",
-          "note": "from Cambion Drift bounties, plus occasional tokens found in the Drift",
+          "note": "from Mother's Cambion Drift bounties",
           "alt": null,
           "done": false
         }
@@ -45,14 +86,11 @@
       "conditions": [
         "Tokens are not event-limited: bank them year-round and spend when Daughter opens her shop."
       ],
-      "bonuses": [
-        "Fish for the Brute Force bounty: start a bounty at your tier, fly toward the first stage then away to fail it in ~15 seconds, then a Mother NPC in the Drift offers a fresh set of three; different Mothers offer different sets, and Brute Force is the consistently fastest.",
-        "The endless (excavation-style) Mother bounty pays about 250-275 tokens over four rotations, enough for two Ceti Lacera in one session."
-      ],
+      "bonuses": [],
       "disclosures": [
         {
-          "title": "other event vendors, if one reruns",
-          "body": "Ceti Lacera has also been sold by returning-rewards shops during Operation reruns: Ordis for 15 Volatile Motes (Belly of the Beast), Dominus Thrax for 9 Dominus Aureus (Eight Claw), Roathe for 20 Marks of Valiance (Blood of Perita), 3 Grotesque Splinters (Gargoyle's Cry), 2,000 Phasic Cells (Orphix Venom) or 20,000 Scarlet Credits (the original Scarlet Spear). Each is limit 1 and only helps if that Operation happens to be rerunning."
+          "title": "other event vendors",
+          "body": "Returning Operation shops have also sold it: Little Duck for 20,000 Scarlet Credits (Scarlet Spear), Father for 2,000 Phasic Cells (Orphix Venom), Vigil Jahu Gargoyle for 3 Grotesque Splinters (Gargoyle's Cry), Ordis for 15 Volatile Motes (Belly of the Beast), Dominus Thrax for 9 Dominus Aureus (Eight Claw) and Roathe for 20 Marks of Valiance (Blood of Perita). Most cap it at one purchase."
         }
       ],
       "ref": "Mother Token"
@@ -62,12 +100,17 @@
       "place": "NECRALISK, DEIMOS",
       "sub": "Daughter, Nights of Naberus",
       "activity": "buy the blueprint",
-      "meta": "early October to early November",
+      "meta": "Nights of Naberus only",
       "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Mother Token", "amount": "125" }],
+      "spends": [
+        {
+          "currency": "Mother Token",
+          "amount": "125"
+        }
+      ],
       "map": null,
       "rows": [
         {
@@ -79,10 +122,9 @@
         }
       ],
       "conditions": [
-        "Only on sale during Nights of Naberus, which has appeared every year since 2021, normally early October into early November.",
-        "MR 12 gate to buy from Daughter; the blueprint is tradeable, so buy it from another player instead if you're under it."
+        "The blueprint is tradeable, so a player who missed the event can trade for it."
       ],
-      "bonuses": ["Buy on day one of the event using tokens banked in advance."],
+      "bonuses": [],
       "disclosures": []
     },
     {
@@ -106,7 +148,7 @@
           "done": false
         }
       ],
-      "conditions": [],
+      "conditions": ["Needs Mastery Rank 12 to equip."],
       "bonuses": [],
       "disclosures": []
     }

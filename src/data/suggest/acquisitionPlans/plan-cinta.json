@@ -4,26 +4,94 @@
   "effort": 6,
   "source": "duviri",
   "tradeable": true,
-  "progress": { "have": 0, "need": 5, "unit": "parts" },
+  "progress": {
+    "have": 0,
+    "need": 5,
+    "unit": "parts"
+  },
   "badges": [
-    { "text": "Enigma RNG, no pity", "tone": "warn" },
-    { "text": "tradeable", "tone": "info" }
+    {
+      "text": "Enigma RNG, no pity",
+      "tone": "warn"
+    },
+    {
+      "text": "tradeable",
+      "tone": "info"
+    }
   ],
-  "prices": [{ "label": "build", "amount": "85,000 cr", "money": false }],
+  "prices": [
+    {
+      "label": "build",
+      "amount": "85,000 cr",
+      "money": false
+    }
+  ],
   "materials": [
-    { "qty": "40", "label": "Eevani", "note": null },
-    { "qty": "100", "label": "Ariette Scale", "note": "Lower Limb" },
-    { "qty": "6", "label": "Maw Fang", "note": "Grip" },
-    { "qty": "40", "label": "Kovnik", "note": "Grip" },
-    { "qty": "40", "label": "Connla Sprout", "note": "String" },
-    { "qty": "200", "label": "Lamentus", "note": null },
-    { "qty": "160", "label": "Aggristone", "note": null },
-    { "qty": "75", "label": "Saggen Pearl", "note": "String" },
-    { "qty": "40", "label": "Yao Shrub", "note": null },
-    { "qty": "60", "label": "Dracroot", "note": null },
-    { "qty": "20", "label": "Silphsela", "note": "Lower Limb" },
-    { "qty": "20", "label": "Tasoma Extract", "note": "String" },
-    { "qty": "85,000", "label": "Credits", "note": null }
+    {
+      "qty": "40",
+      "label": "Eevani",
+      "note": null
+    },
+    {
+      "qty": "100",
+      "label": "Ariette Scale",
+      "note": "Lower Limb"
+    },
+    {
+      "qty": "6",
+      "label": "Maw Fang",
+      "note": "Grip"
+    },
+    {
+      "qty": "40",
+      "label": "Kovnik",
+      "note": "Grip"
+    },
+    {
+      "qty": "40",
+      "label": "Connla Sprout",
+      "note": "String"
+    },
+    {
+      "qty": "200",
+      "label": "Lamentus",
+      "note": null
+    },
+    {
+      "qty": "160",
+      "label": "Aggristone",
+      "note": null
+    },
+    {
+      "qty": "75",
+      "label": "Saggen Pearl",
+      "note": "String"
+    },
+    {
+      "qty": "40",
+      "label": "Yao Shrub",
+      "note": null
+    },
+    {
+      "qty": "60",
+      "label": "Dracroot",
+      "note": null
+    },
+    {
+      "qty": "20",
+      "label": "Silphsela",
+      "note": "Lower Limb"
+    },
+    {
+      "qty": "20",
+      "label": "Tasoma Extract",
+      "note": "String"
+    },
+    {
+      "qty": "85,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
     {
@@ -37,8 +105,14 @@
       "skip": null,
       "earns": null,
       "spends": [
-        { "currency": "Pathos Clamp", "amount": "10" },
-        { "currency": "Enigma Gyrum", "amount": "5" }
+        {
+          "currency": "Pathos Clamp",
+          "amount": "10"
+        },
+        {
+          "currency": "Enigma Gyrum",
+          "amount": "5"
+        }
       ],
       "map": "duviri",
       "rows": [
@@ -57,9 +131,7 @@
           "done": false
         }
       ],
-      "conditions": [
-        "Pick The Duviri Experience, not The Lone Story; Lone Story turns off Enigma puzzles entirely."
-      ],
+      "conditions": ["The Archarbor only appears in The Duviri Experience."],
       "bonuses": [
         "Enigma Sense puts a map icon and waypoint on nearby Enigmas; buy it before farming."
       ],
@@ -70,13 +142,13 @@
       "place": "DUVIRI",
       "sub": "Archarbor",
       "activity": "solve the Archarbor puzzle every time it's up; gather Eevani",
-      "meta": "6% per solve, 30% total for some piece",
+      "meta": "6% per piece per solve",
       "mode": "squad of 4 recommended",
       "live": null,
       "skip": null,
       "earns": null,
       "spends": [],
-      "map": "archarbor",
+      "map": "duviri",
       "rows": [
         {
           "qty": "5",
@@ -88,23 +160,18 @@
       ],
       "conditions": [
         "The Archarbor exists only during the Joy, Envy and Sorrow spirals, not Anger or Fear.",
-        "Open it by rotating the three Dominus Thrax busts at the island's edges to face the center, then hacking the fourth bust underground.",
-        "A squad of 2+ also unlocks 6% multiplayer Enigmas elsewhere in Duviri; solo caps you at 4% single-player puzzles plus the Archarbor.",
-        "Take a Decree before extracting; progress and drops save only up to your last Decree."
+        "Open it by rotating the three Dominus Thrax busts at the island's edges to face the center, hacking security at the southwest point, then pressing the button inside the cave.",
+        "A squad of 2+ also unlocks 6% multiplayer Enigmas elsewhere in Duviri; solo caps you at 4% single-player puzzles plus the Archarbor."
       ],
       "bonuses": ["Solving the Archarbor also pays 5 Enigma Gyrum each time."],
       "disclosures": [
         {
           "title": "drop odds",
-          "body": "Archarbor and multiplayer Enigmas: 6% per piece, 30% total. Single-player Enigmas: the wiki's own drop table gives 4% per piece (20% total), despite prose elsewhere claiming 30% from any puzzle; the table wins."
-        },
-        {
-          "title": "why the last piece takes so long",
-          "body": "Every solve rolls one random piece off the same table with no pity. Duplicates are common; people routinely report 4-7 hour sessions stuck on the final piece. Trading covers the gap since every piece is tradeable."
+          "body": "Each solve has a chance of one Cinta piece: Archarbor and multiplayer Enigmas 30%, single-player Enigmas 20%. The pieces are evenly weighted, so 6% per piece, or 4% on a single-player Enigma."
         },
         {
           "title": "finding puzzles",
-          "body": "Enigma Sense (once unlocked) waypoints nearby Enigmas. Without it, learn the fixed spawn spots from a community Duviri map, and listen for the Paragrimm owl's distinct sound."
+          "body": "Enigma Sense waypoints Enigmas within 150m; without it, listen for the Paragrimm owl's distinct sound."
         }
       ]
     },

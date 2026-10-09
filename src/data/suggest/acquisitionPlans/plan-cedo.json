@@ -4,15 +4,37 @@
   "effort": 8,
   "source": "standing",
   "tradeable": true,
-  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "progress": {
+    "have": 0,
+    "need": 4,
+    "unit": "parts"
+  },
   "badges": [
-    { "text": "syndicate gate", "tone": "warn" },
-    { "text": "no RNG", "tone": "info" }
+    {
+      "text": "Entrati Rank 5",
+      "tone": "warn",
+      "rank": {
+        "syndicate": "Entrati",
+        "level": 5
+      }
+    },
+    {
+      "text": "no RNG",
+      "tone": "info"
+    }
   ],
   "prices": [],
   "materials": [
-    { "qty": "1", "label": "Forma", "note": null },
-    { "qty": "20,000", "label": "Credits", "note": null }
+    {
+      "qty": "1",
+      "label": "Forma",
+      "note": null
+    },
+    {
+      "qty": "20,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
     {
@@ -20,7 +42,7 @@
       "place": "QUESTS",
       "sub": null,
       "activity": "Heart of Deimos",
-      "meta": "Earth-to-Mars Junction",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -51,7 +73,10 @@
       "mode": "daily standing cap",
       "live": null,
       "skip": null,
-      "earns": { "currency": "Entrati Standing", "amount": "260,000" },
+      "earns": {
+        "currency": "Entrati Standing",
+        "amount": "260,000"
+      },
       "spends": [],
       "map": "cambion-drift",
       "rows": [
@@ -90,7 +115,12 @@
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Entrati Standing", "amount": "20,000" }],
+      "spends": [
+        {
+          "currency": "Entrati Standing",
+          "amount": "20,000"
+        }
+      ],
       "map": null,
       "rows": [
         {
@@ -98,14 +128,22 @@
           "label": "Cedo Blueprint",
           "note": "5,000 standing; Rank 4 - Friend",
           "alt": "tradeable",
-          "done": false
+          "done": false,
+          "rank": {
+            "syndicate": "Entrati",
+            "level": 4
+          }
         },
         {
           "qty": "3",
           "label": "Cedo components",
           "note": "5,000 standing each; Rank 5 - Family",
           "alt": "finished parts; tradeable",
-          "done": false
+          "done": false,
+          "rank": {
+            "syndicate": "Entrati",
+            "level": 5
+          }
         }
       ],
       "conditions": [
@@ -143,10 +181,7 @@
           "done": false
         }
       ],
-      "conditions": [
-        "You need Mastery Rank 8 to equip Cedo.",
-        "Cedo Prime is a separate relic acquisition."
-      ],
+      "conditions": ["You need Mastery Rank 8 to equip Cedo."],
       "bonuses": [],
       "disclosures": []
     }

@@ -4,18 +4,55 @@
   "effort": 1,
   "source": "shop",
   "tradeable": false,
-  "progress": { "have": 0, "need": 1, "unit": "weapon" },
-  "badges": [{ "text": "Nightwave gate", "tone": "warn" }],
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "weapon"
+  },
+  "badges": [
+    {
+      "text": "Nightwave gate",
+      "tone": "warn"
+    }
+  ],
   "prices": [
-    { "label": "blueprint", "amount": "50 Nightwave Creds", "money": false },
-    { "label": "build", "amount": "15,000 cr", "money": false }
+    {
+      "label": "blueprint",
+      "amount": "50 Nightwave Creds",
+      "money": false
+    },
+    {
+      "label": "build",
+      "amount": "15,000 cr",
+      "money": false
+    }
   ],
   "materials": [
-    { "qty": "4", "label": "Gallium", "note": null },
-    { "qty": "500", "label": "Ferrite", "note": null },
-    { "qty": "500", "label": "Alloy Plate", "note": null },
-    { "qty": "600", "label": "Polymer Bundle", "note": null },
-    { "qty": "15,000", "label": "Credits", "note": null }
+    {
+      "qty": "4",
+      "label": "Gallium",
+      "note": null
+    },
+    {
+      "qty": "500",
+      "label": "Ferrite",
+      "note": null
+    },
+    {
+      "qty": "500",
+      "label": "Alloy Plate",
+      "note": null
+    },
+    {
+      "qty": "600",
+      "label": "Polymer Bundle",
+      "note": null
+    },
+    {
+      "qty": "15,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
     {
@@ -23,11 +60,14 @@
       "place": "NIGHTWAVE",
       "sub": null,
       "activity": "rank up doing Acts",
-      "meta": "rank 1 alone pays 150 Creds",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
-      "earns": { "currency": "Nightwave Creds", "amount": "150" },
+      "earns": {
+        "currency": "Nightwave Creds",
+        "amount": "50"
+      },
       "spends": [],
       "map": null,
       "rows": [
@@ -40,11 +80,9 @@
         }
       ],
       "conditions": [
-        "The Cred Offerings shop is unavailable between Nightwave seasons and during intermissions; buy only while a series is live."
+        "Creds only spend during the series that issued them; the shop closes between seasons."
       ],
-      "bonuses": [
-        "Nightwave rank 1 (10,000 standing of Acts) alone pays 150 Creds, more than enough for the 50-Cred blueprint."
-      ],
+      "bonuses": [],
       "disclosures": [],
       "ref": "Nightwave Creds"
     },
@@ -53,23 +91,28 @@
       "place": "NIGHTWAVE, CRED OFFERINGS",
       "sub": null,
       "activity": "buy the blueprint",
-      "meta": "permanent in the shop since Update 43.5",
+      "meta": "always in stock",
       "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Nightwave Creds", "amount": "50" }],
+      "spends": [
+        {
+          "currency": "Nightwave Creds",
+          "amount": "50"
+        }
+      ],
       "map": null,
       "rows": [
         {
           "qty": null,
           "label": "Ceramic Dagger Blueprint",
-          "note": "not sold in the Market and cannot be traded",
+          "note": null,
           "alt": null,
           "done": false
         }
       ],
-      "conditions": ["It used to drop from J3-Golem on Jupiter; that source was removed."],
+      "conditions": [],
       "bonuses": [],
       "disclosures": []
     },
@@ -95,7 +138,7 @@
         }
       ],
       "conditions": [],
-      "bonuses": ["Level it to 30 in ordinary missions or a Steel Path run; it's a fast dagger."],
+      "bonuses": [],
       "disclosures": []
     }
   ]

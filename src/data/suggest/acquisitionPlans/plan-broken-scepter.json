@@ -2,65 +2,175 @@
   "name": "Broken Scepter",
   "kind": "melee",
   "effort": 2,
-  "source": "shop",
+  "source": "repeat",
   "tradeable": false,
   "progress": { "have": 0, "need": 1, "unit": "weapon" },
   "badges": [
     { "text": "1st copy free", "tone": "info" },
-    { "text": "quest ending bug", "tone": "warn" }
+    { "text": "MR 7 to equip", "tone": "info" }
   ],
-  "prices": [],
+  "prices": [
+    { "label": "Simaris blueprint", "amount": "100,000 standing", "money": false },
+    { "label": "build", "amount": "25,000 cr", "money": false }
+  ],
   "groups": [
     {
-      "type": "gate",
-      "place": "STAR CHART",
       "sub": null,
-      "activity": "The War Within",
-      "meta": "one-time, guaranteed",
-      "mode": "solo",
+      "activity": "finish the prerequisite quest",
+      "meta": null,
+      "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
       "spends": [],
       "map": null,
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": [],
+      "type": "gate",
+      "place": "THE SECOND DREAM",
       "rows": [
         {
           "qty": null,
-          "label": "The Second Dream, then the Pluto junction",
-          "note": "unlocks The War Within in the Codex; no Mastery Rank gate since Update 35.0",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "The War Within",
-          "note": "Teshin's inbox message delivers the built Broken Scepter with a free slot and a pre-installed Orokin Catalyst",
+          "label": "The Second Dream",
+          "note": "unlocks The War Within",
           "alt": null,
           "done": false
         }
       ],
+      "quest": "The War Within"
+    },
+    {
+      "sub": null,
+      "activity": "finish the quest",
+      "meta": "one-time, guaranteed",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
       "conditions": [
-        "The quest can drop you back at the mountain pass on completion. Kill the client completely, restart at the quest's opening and redo it; different dialogue options on the retry also helped.",
-        "A replay does not give a second Scepter, and Operator abilities, Tauron Strikes and Tekolyst mods are disabled on replay.",
+        "A replay doesn't give a second Scepter.",
         "Rank it to 30 for Mastery. Equipping needs Mastery Rank 7."
       ],
-      "bonuses": [
-        "The same inbox message carries an Orvius blueprint, a Riven mod and a Personal Quarters blueprint."
-      ],
-      "disclosures": [
+      "bonuses": ["The quest also pays an Orvius blueprint."],
+      "disclosures": [],
+      "type": "farm",
+      "place": "THE WAR WITHIN",
+      "rows": [
         {
-          "title": "a second copy",
-          "body": "Cephalon Simaris sells the Broken Scepter Blueprint for 100,000 Standing once the quest is done. The build is 25,000 credits, 5,000 Kuva, 2 Morphics, 300 Rubedo and 2,500 Salvage, 1 day. Mastery counts once, so this is only for a spare."
-        },
-        {
-          "title": "Simaris standing",
-          "body": "Orb Vallis' Temple of Profit has the densest respawning cluster. The cap is 16,000 plus 500 per Mastery Rank, and turning in at the 125,000 standing cap wastes the reward. The Sol Battery widget removes scanner-charge limits; Synthesis Scanners otherwise cost 5,000 credits for 25 charges."
-        },
-        {
-          "title": "Kuva for the spare",
-          "body": "Kuva Flood missions (level 80-100) pay roughly 1,100-1,400 each, or run the Kuva Survival on Taveuni. Teshin (Steel Essence), Acrithis and Nightcap also sell it weekly."
+          "qty": null,
+          "label": "Broken Scepter",
+          "note": "arrives built, with a free weapon slot and a pre-installed Orokin Catalyst",
+          "alt": null,
+          "done": false
         }
-      ]
+      ],
+      "quest": "The War Within"
     }
-  ]
+  ],
+  "routes": [
+    {
+      "name": "The War Within",
+      "cost": "a built Broken Scepter with its own slot and Catalyst comes with the quest",
+      "effort": 2,
+      "role": "chosen"
+    },
+    {
+      "name": "After the quest: Cephalon Simaris",
+      "cost": "100,000 Standing buys the blueprint, then a 25,000 cr build",
+      "effort": 5,
+      "role": "afterQuest"
+    }
+  ],
+  "materials": [
+    { "qty": "5,000", "label": "Kuva", "note": null },
+    { "qty": "2", "label": "Morphics", "note": null },
+    { "qty": "300", "label": "Rubedo", "note": null },
+    { "qty": "2,500", "label": "Salvage", "note": null },
+    { "qty": "25,000", "label": "Credits", "note": null }
+  ],
+  "afterQuest": {
+    "effort": 5,
+    "badges": [{ "text": "Simaris 100,000 standing", "tone": "warn" }],
+    "groups": [
+      {
+        "sub": null,
+        "activity": "scan targets with the Synthesis Scanner",
+        "meta": "100,000 Standing",
+        "mode": null,
+        "live": null,
+        "skip": null,
+        "earns": { "currency": "Cephalon Simaris Standing", "amount": "100,000" },
+        "spends": [],
+        "map": null,
+        "conditions": [],
+        "bonuses": [],
+        "disclosures": [],
+        "type": "currency",
+        "place": "CEPHALON SIMARIS",
+        "rows": [
+          {
+            "qty": "100,000",
+            "label": "Simaris Standing",
+            "note": null,
+            "alt": null,
+            "done": false
+          }
+        ],
+        "ref": "Cephalon Simaris Standing"
+      },
+      {
+        "sub": null,
+        "activity": "buy the blueprint back",
+        "meta": "100,000 Standing",
+        "mode": null,
+        "live": null,
+        "skip": null,
+        "earns": null,
+        "spends": [{ "currency": "Cephalon Simaris Standing", "amount": "100,000" }],
+        "map": null,
+        "conditions": ["Simaris only stocks it once The War Within is done."],
+        "bonuses": [],
+        "disclosures": [],
+        "type": "vendor",
+        "place": "CEPHALON SIMARIS",
+        "rows": [
+          {
+            "qty": null,
+            "label": "Broken Scepter Blueprint",
+            "note": "100,000 Standing",
+            "alt": null,
+            "done": false
+          }
+        ]
+      },
+      {
+        "sub": null,
+        "activity": "build Broken Scepter",
+        "meta": "24h",
+        "mode": null,
+        "live": null,
+        "skip": null,
+        "earns": null,
+        "spends": [],
+        "map": null,
+        "conditions": [],
+        "bonuses": [],
+        "disclosures": [],
+        "type": "foundry",
+        "place": "FOUNDRY",
+        "rows": [
+          {
+            "qty": null,
+            "label": "Broken Scepter",
+            "note": "25,000 cr, 5,000 Kuva, 2 Morphics, 300 Rubedo, 2,500 Salvage",
+            "alt": null,
+            "done": false
+          }
+        ]
+      }
+    ]
+  }
 }

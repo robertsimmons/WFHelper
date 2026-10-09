@@ -20,7 +20,7 @@
   "groups": [
     {
       "type": "gate",
-      "place": "STAR CHART, INVASIONS",
+      "place": "INVASIONS",
       "sub": null,
       "activity": "complete 5 Grineer-vs-Corpus Invasions, siding with the Corpus",
       "meta": "earns the death mark; repeat after each attack",
@@ -34,13 +34,13 @@
         {
           "qty": "5",
           "label": "Invasion missions",
-          "note": "fighting the Grineer",
+          "note": "fighting the Grineer, siding with the Corpus",
           "alt": "skip if using Baro's beacons",
           "done": false
         }
       ],
       "conditions": [
-        "Vay Hek's inbox message confirms it, and the profile shows 'Marked for Death by'. The mark is consumed when they attack or kill you."
+        "Vay Hek's inbox message confirms the mark. The mark is consumed when the Three attack, so repeat after each attack."
       ],
       "bonuses": [],
       "disclosures": []
@@ -70,16 +70,16 @@
         }
       ],
       "conditions": [
-        "A beacon cannot be used in Invasion missions and gives no mark. Use it in a normal Grineer mission; one beacon type per mission."
+        "A beacon doesn't work in Invasion missions. Use it in a normal Grineer mission; only one beacon type works per mission."
       ],
       "bonuses": [],
       "disclosures": []
     },
     {
       "type": "boss",
-      "place": "CERES, STAR CHART",
-      "sub": "Draco or Lex, normal mode, not Steel Path",
-      "activity": "any Grineer mission, then kill the Three",
+      "place": "ANY GRINEER MISSION",
+      "sub": null,
+      "activity": "play the first 5 minutes of the mission, then kill the Three",
       "meta": "Leekter, Shik Tal, Vem Tabook",
       "mode": "squad with the mark",
       "live": null,
@@ -91,7 +91,7 @@
         {
           "qty": null,
           "label": "Brakk Blueprint",
-          "note": "12.5% per Vem Tabook kill, the bottleneck",
+          "note": "12.5%, Vem Tabook",
           "alt": null,
           "done": false
         },
@@ -111,29 +111,13 @@
         }
       ],
       "conditions": [
-        "They can spawn only in the first 5 minutes of a mission. Time it with the P key, and stand at extract after the objective.",
-        "Stalker, his death mark and negative-standing syndicate death squads override the spawn slot. Set syndicate standing to neutral first.",
-        "No spawns in Assassination, Syndicate, Arena, Sortie, Archimedea, Landscape, Archwing or Empyrean missions. Clem's weekly mission spawns one member that drops nothing.",
-        "Being captured fails the mission and attaches a Grustrag Bolt until you craft the free Bolt Release from the inbox.",
+        "They can only spawn in the first 5 minutes of a mission, and each marked squad member raises the chance.",
+        "No spawns in Assassination, Syndicate, Arena, Sortie, Archimedea, Elite Sanctuary Onslaught, Landscape, Archwing or Empyrean missions.",
+        "Being captured fails the mission and attaches a Grustrag Bolt, which halves your damage to Grineer until you craft the free Bolt Release from the inbox.",
         "Parts are untradeable, so every part is farmed yourself."
       ],
-      "bonuses": [
-        "Nekros with Desecrate is the standard drop multiplier. Squad mates with the mark raise the spawn chance, and everyone can loot."
-      ],
-      "disclosures": [
-        {
-          "title": "spawn odds are unconfirmed",
-          "body": "Players estimate about 1.5% plus 0.5% per marked player per mission, about 2% solo. The wiki says the Three roll every 10 seconds for the first 5 minutes, which would put a solo visit near 45%, but flags that as unconfirmed."
-        },
-        {
-          "title": "expect a long grind",
-          "body": "Reports run from 15 kills in about 30 hours for one set to 130+ missions without the blueprint. Each member drops one of mod, blueprint or resource per kill, not all three."
-        },
-        {
-          "title": "unreachable spawns and bugs",
-          "body": "They can spawn in unreachable areas after elevator or door triggers, which kills them and wastes the drops. Appearing in Survival can stop the 5-minute rewards; Interception and Defense can bug out."
-        }
-      ]
+      "bonuses": ["Everyone in the squad can loot, marked or not."],
+      "disclosures": []
     },
     {
       "type": "foundry",

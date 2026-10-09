@@ -14,10 +14,10 @@
   "groups": [
     {
       "type": "gate",
-      "place": "RAILJACK, PROXIMA",
+      "place": "RISING TIDE",
       "sub": null,
-      "activity": "unlock a Corpus Proxima",
-      "meta": "Pluto is the easier one",
+      "activity": "finish the quest",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -27,31 +27,22 @@
       "rows": [
         {
           "qty": null,
-          "label": "Pluto Proxima",
-          "note": "Rising Tide quest (needs The War Within) and every Neptune Proxima node completed",
-          "alt": "or Veil Proxima",
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Piloting Intrinsic rank 5",
-          "note": "puts a waypoint on the derelict",
+          "label": "Rising Tide",
+          "note": "needs The War Within; unlocks Railjack and Pluto Proxima",
           "alt": null,
           "done": false
         }
       ],
-      "conditions": [
-        "Veil Proxima needs the Chimera Prologue, every other Proxima's nodes done and Intrinsics rank 7 in any category."
-      ],
+      "conditions": [],
       "bonuses": [],
       "disclosures": []
     },
     {
       "type": "farm",
       "place": "PLUTO PROXIMA",
-      "sub": "or Corpus nodes of Veil Proxima",
+      "sub": "or the Corpus nodes of Veil Proxima",
       "activity": "Empyrean: board the Derelict Freightlinker and hack the terminal",
-      "meta": "~34 caches expected for all four",
+      "meta": "6.06% per part from the cache",
       "mode": null,
       "live": null,
       "skip": null,
@@ -62,43 +53,44 @@
         {
           "qty": null,
           "label": "Carmine Penta Blueprint",
-          "note": "6.06%",
+          "note": "6.06%, cache rotation B",
           "alt": "trade for it",
           "done": false
         },
         {
           "qty": null,
           "label": "Carmine Penta Barrel",
-          "note": "6.06%",
+          "note": "6.06%, cache rotation B",
           "alt": "trade for it",
           "done": false
         },
         {
           "qty": null,
           "label": "Carmine Penta Receiver",
-          "note": "6.06%",
+          "note": "6.06%, cache rotation B",
           "alt": "trade for it",
           "done": false
         },
         {
           "qty": null,
           "label": "Carmine Penta Stock",
-          "note": "6.06%",
+          "note": "6.06%, cache rotation B",
           "alt": "trade for it",
           "done": false
         }
       ],
       "conditions": [
-        "Parts come from the Abandoned Derelict cache (rotation B), not the main mission reward table. The cache pays at mission completion, so do not abandon the run after hacking.",
-        "Grineer Veil nodes have no Carmine Penta parts. Nothing pities or guarantees a part, and players report weeks without one."
+        "Parts come from the Abandoned Derelict cache, not the main mission reward. It pays at mission completion, so don't abandon the run after hacking.",
+        "Grineer Veil nodes have no Carmine Penta parts."
       ],
       "bonuses": [
-        "The same cache rolls Axi relics for the Nyx, Valkyr, Hikou, Scindo, Cernos and Venka Prime sets, plus Endo and mods."
+        "Piloting Intrinsic rank 5 puts a waypoint on the derelict.",
+        "The same cache rolls Void Relics for the Nyx, Valkyr, Hikou, Scindo, Cernos and Venka Prime sets."
       ],
       "disclosures": [
         {
-          "title": "nodes and rotation",
-          "body": "Pluto Proxima nodes: Khufu Envoy, Seven Sirens, Obol Crossing, Fenton's Field, Profit Margin, Peregrine Axis. Corpus Veil Proxima nodes: Calabash, Numina, Arc Silver, Erato, Lu-Yan, Sabmir Cloud. All use the same cache table, and Corpus derelicts always spawn. The cache is independent of the mission objective, so pick the shortest mission type."
+          "title": "Pluto Proxima nodes",
+          "body": "Khufu Envoy, Seven Sirens, Obol Crossing, Fenton's Field, Profit Margin and Peregrine Axis all spawn the Derelict Freightlinker."
         }
       ]
     },

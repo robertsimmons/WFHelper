@@ -7,21 +7,22 @@
   "progress": { "have": 0, "need": 1, "unit": "blueprint" },
   "badges": [
     { "text": "guaranteed pity buy", "tone": "info" },
-    { "text": "New War gate", "tone": "warn" }
+    { "text": "Jade Shadows gate", "tone": "warn" }
   ],
-  "prices": [],
+  "prices": [{ "label": "pity blueprint", "amount": "300 Vestigial Motes", "money": false }],
   "materials": [
     { "qty": "1,600", "label": "Ferrite", "note": null },
     { "qty": "1,400", "label": "Circuits", "note": null },
     { "qty": "600", "label": "Polymer Bundle", "note": null },
-    { "qty": "4", "label": "Argon Crystal", "note": null }
+    { "qty": "4", "label": "Argon Crystal", "note": null },
+    { "qty": "15,000", "label": "Credits", "note": null }
   ],
   "groups": [
     {
       "type": "gate",
-      "place": "THE NEW WAR, THEN JADE SHADOWS",
+      "place": "JADE SHADOWS",
       "sub": null,
-      "activity": "clear the prerequisite quests",
+      "activity": "finish the quest",
       "meta": null,
       "mode": null,
       "live": null,
@@ -32,15 +33,8 @@
       "rows": [
         {
           "qty": null,
-          "label": "The New War",
-          "note": "prerequisite for Jade Shadows",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
           "label": "Jade Shadows",
-          "note": "unlocks Ascension on Brutus, Uranus, and Ordis's shop in the Drifter's Camp",
+          "note": "needs The New War first; unlocks Ascension and Ordis's shop",
           "alt": null,
           "done": false
         }
@@ -53,9 +47,9 @@
       "type": "farm",
       "place": "BRUTUS, URANUS",
       "sub": null,
-      "activity": "clear Ascension; grab Sister Beacons and throw Boosted Ionic Charges up the elevator",
-      "meta": "4.63% blueprint drop per completion; pity currency also drops every run",
-      "mode": "solo or premade: pubs often ignore the elevator objective",
+      "activity": "clear Ascension; throw Boosted Ionic Charges up the elevator",
+      "meta": "4.63% blueprint drop per completion; pity currency drops every run",
+      "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
@@ -74,23 +68,17 @@
         }
       ],
       "conditions": [
-        "The elevator capsule can't be damaged during the ride: it isn't a defense objective, so killing enemies there doesn't move you forward; throwing charges does.",
-        "Throw Boosted Ionic Charges (the larger, double-outlined pickups) the instant you find them; each gives 3x elevator speed for 10s and the boost extends up to 50s rather than stacking in magnitude.",
-        "Pick up all 3 Sister Beacons in the shaft every run to summon the Sister of Parvos for 5-7 more motes (8-10 Steel Path) plus a 33% arcane chance (guaranteed on Steel Path)."
+        "The extraction capsule is invulnerable during the ride, so killing enemies there doesn't move it; throwing Ionic Charges does.",
+        "Boosted Ionic Charges (larger, two marker outlines) speed the elevator 3x for 10 seconds, stacking up to 50 seconds of duration.",
+        "Collect the 3 Sister Beacons in the shaft to summon a Sister of Parvos for 5-7 more motes (8-10 on Steel Path) and a 33% arcane chance (guaranteed on Steel Path)."
       ],
       "bonuses": [
-        "Every completion pays 11-13 Vestigial Motes (16-18 Steel Path) even without the blueprint drop, banking toward the 300-mote pity buy.",
-        "Steel Path pays roughly 45% more motes and guarantees the Sister's arcane drop, plus Steel Essence on the side.",
-        "Cantare competes for motes with the rest of Jade's kit, so decide your purchase order before you start: any blueprint drop you get is 300 motes you don't have to spend."
+        "Every completion pays 11-13 Vestigial Motes (16-18 on Steel Path), banking toward the 300-mote pity buy."
       ],
       "disclosures": [
         {
           "title": "boosters do nothing here",
-          "body": "Per the wiki, Resource Boosters, Resource Drop Chance Boosters, the relay Drop Chance Blessing and Resourceful Retriever have no effect on Vestigial Motes; they only affect Steel Essence. A comment claiming otherwise is wrong."
-        },
-        {
-          "title": "organized squads clear in under 6 minutes",
-          "body": "Public squads commonly run 8+ minutes and leech during the elevator phase."
+          "body": "Resource Boosters, loot abilities such as Desecrate and Resourceful Retriever have no effect on Vestigial Motes; they only affect Steel Essence."
         }
       ]
     },
@@ -99,7 +87,7 @@
       "place": "FOUNDRY",
       "sub": null,
       "activity": "build Cantare",
-      "meta": "12h",
+      "meta": "12h, MR 10",
       "mode": null,
       "live": null,
       "skip": null,

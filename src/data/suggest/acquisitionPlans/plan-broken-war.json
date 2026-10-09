@@ -1,13 +1,13 @@
 {
   "name": "Broken War",
   "kind": "melee",
-  "effort": 8,
-  "source": "standing",
-  "tradeable": false,
+  "effort": 2,
+  "source": "repeat",
+  "tradeable": "parts only, not the blueprint",
   "progress": { "have": 0, "need": 1, "unit": "weapon" },
   "badges": [
     { "text": "1st copy free", "tone": "info" },
-    { "text": "Stalker RNG", "tone": "warn" }
+    { "text": "2nd copy: Stalker RNG", "tone": "warn" }
   ],
   "prices": [
     { "label": "build", "amount": "20,000 cr", "money": false },
@@ -20,141 +20,227 @@
   ],
   "groups": [
     {
-      "type": "gate",
-      "place": "STAR CHART",
       "sub": null,
-      "activity": "The Second Dream",
-      "meta": "one-time, guaranteed",
-      "mode": "solo",
+      "activity": "finish the prerequisite quest",
+      "meta": null,
+      "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
       "spends": [],
       "map": null,
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": [],
+      "type": "gate",
+      "place": "NATAH",
       "rows": [
         {
           "qty": null,
-          "label": "The Second Dream",
-          "note": "quest reward: built Broken War with its own slot and a pre-installed Catalyst",
+          "label": "Natah",
+          "note": "unlocks The Second Dream",
           "alt": null,
           "done": false
         }
       ],
-      "conditions": [
-        "This is a one-time, guaranteed copy. A second copy (below) is only needed if you consume this one or want both."
-      ],
-      "bonuses": ["Comes with a free weapon slot and a pre-installed Orokin Catalyst."],
-      "disclosures": [
-        {
-          "title": "never feed this copy into War",
-          "body": "Near-unanimous advice: this copy's free Catalyst doesn't carry over, Broken War outperforms War for most people, and replacing it can take years. Farm a second Broken War as War's ingredient instead."
-        }
-      ]
+      "quest": "The Second Dream"
     },
     {
-      "type": "vendor",
-      "place": "SANCTUARY, CEPHALON SIMARIS",
       "sub": null,
-      "activity": "buy the War Hilt and Blades with standing",
-      "meta": "150,000 standing total",
+      "activity": "finish the quest",
+      "meta": "one-time, guaranteed",
       "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Cephalon Simaris Standing", "amount": "150,000" }],
+      "spends": [],
       "map": null,
-      "rows": [
-        {
-          "qty": "1",
-          "label": "War Hilt",
-          "note": "50,000 standing",
-          "alt": "0.5% drop from Conculysts, Ortholysts, Summulysts, Aerolysts",
-          "done": false
-        },
-        {
-          "qty": "2",
-          "label": "War Blade",
-          "note": "50,000 standing each",
-          "alt": "0.5% drop, same enemies",
-          "done": false
-        }
-      ],
       "conditions": [
-        "Farming the 0.5% Sentient drops has been obsolete since mid-2021: buy from Simaris instead."
+        "Don't feed this copy into War: its pre-installed Catalyst doesn't carry over."
       ],
       "bonuses": [],
       "disclosures": [],
-      "ref": "Cephalon Simaris Standing"
-    },
-    {
-      "type": "boss",
-      "place": "ASSASSINATION NODE, ANY",
-      "sub": null,
-      "activity": "earn a Death Mark, then stay marked for Shadow or Protector Stalker",
-      "meta": "5.87% blueprint per kill",
-      "mode": "public recommended",
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Broken War Blueprint",
-          "note": "5.87% per Stalker kill (11.73% within a 50% table); untradeable",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Stalker only spawns on missions that last past roughly 4-5 minutes: 1-minute Captures never open his spawn window.",
-        "Spawn chance is 1.5% + 0.5% per marked squad member (2% solo, 3.5% with four marked); he arrives 30s to 4-5min in.",
-        "He does not spawn in Assassination, Syndicate, Sortie, Archon Hunt, Archwing, free-roam (Plains, Vallis, Cambion), Relays, quests, Albrecht's Laboratories, Höllvania or Dark Refractory missions.",
-        "Base Stalker (pre-Second Dream) does not drop the blueprint: only Shadow Stalker (after Second Dream) and Protector Stalker (after Jade Shadows) do.",
-        "Excluded bosses grant no mark: Corrupted Vor, Ropalolyst, Zealoid Prelate, The Fragmented, H-09 Efervon Tank. Being taxied to a boss on an unlocked planet also gives no mark."
-      ],
-      "bonuses": [
-        "Hyena Pack (Psamathe, Neptune) is the favorite mark farm: each Hyena can grant its own mark.",
-        "The Sergeant (Iliad, Phobos) is the fastest single-boss mark: Volt, Gauss or Titania clear it in well under a minute.",
-        "Bringing Jade in the squad skips the fight for free: Stalker says \"Never\", drops his loot and leaves.",
-        "About half of Stalker's kills give no blueprint at all, and Dread takes most of the rest: dozens of Dreads with no second Broken War is the norm, so treat this as a long background grind, not a session goal."
-      ],
-      "disclosures": [
-        {
-          "title": "beacons are a spawn fix, not a drop fix",
-          "body": "Stalker Beacons from Baro Ki'Teer (200 Ducats + 125,000 credits, stock rotates) force a spawn but still roll the same 5.87%. Expect about 17 beacons (~3,400 Ducats) for one blueprint on average. Beacon-pooling with squadmates, staggering one per mission, spreads the cost."
-        },
-        {
-          "title": "stay marked, don't grind",
-          "body": "Keep a Death Mark active permanently and play whatever you were going to play; deliberate Stalker farming is widely described as a fast track to burnout. Realistic timelines in the community run from a first encounter to \"3-4 years\"."
-        }
-      ]
-    },
-    {
-      "type": "foundry",
-      "place": "FOUNDRY",
-      "sub": null,
-      "activity": "build the second Broken War",
-      "meta": "12h",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
+      "type": "farm",
+      "place": "THE SECOND DREAM",
       "rows": [
         {
           "qty": null,
           "label": "Broken War",
-          "note": "20,000 cr, 1 Forma, 2 Nitain Extract, 1 War Hilt, 2 War Blades",
+          "note": "arrives built, with a free weapon slot and a pre-installed Orokin Catalyst",
           "alt": null,
           "done": false
         }
       ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
+      "quest": "The Second Dream"
     }
-  ]
+  ],
+  "routes": [
+    {
+      "name": "The Second Dream",
+      "cost": "a built Broken War with its own slot and Catalyst comes with the quest",
+      "effort": 2,
+      "role": "chosen"
+    },
+    {
+      "name": "After the quest: Stalker",
+      "cost": "5.87% blueprint per Shadow or Protector Stalker kill, then Hilt and Blades at 50,000 Standing each",
+      "effort": 7,
+      "role": "afterQuest"
+    }
+  ],
+  "afterQuest": {
+    "effort": 7,
+    "badges": [
+      { "text": "Stalker RNG", "tone": "warn" },
+      { "text": "MR 10", "tone": "info" }
+    ],
+    "groups": [
+      {
+        "sub": null,
+        "activity": "reach MR 10 to build another copy",
+        "meta": null,
+        "mode": null,
+        "live": null,
+        "skip": null,
+        "earns": null,
+        "spends": [],
+        "map": null,
+        "conditions": [],
+        "bonuses": [],
+        "disclosures": [],
+        "type": "gate",
+        "place": "MASTERY RANK",
+        "rows": [
+          {
+            "qty": null,
+            "label": "Mastery Rank 10",
+            "note": "the Foundry won't build it below that",
+            "alt": null,
+            "done": false
+          }
+        ]
+      },
+      {
+        "sub": null,
+        "activity": "scan targets with the Synthesis Scanner",
+        "meta": "150,000 Standing",
+        "mode": null,
+        "live": null,
+        "skip": null,
+        "earns": { "currency": "Cephalon Simaris Standing", "amount": "150,000" },
+        "spends": [],
+        "map": null,
+        "conditions": [],
+        "bonuses": [],
+        "disclosures": [],
+        "type": "currency",
+        "place": "CEPHALON SIMARIS",
+        "rows": [
+          {
+            "qty": "150,000",
+            "label": "Simaris Standing",
+            "note": null,
+            "alt": null,
+            "done": false
+          }
+        ],
+        "ref": "Cephalon Simaris Standing"
+      },
+      {
+        "type": "vendor",
+        "place": "CEPHALON SIMARIS",
+        "sub": null,
+        "activity": "buy the War Hilt and Blades",
+        "meta": "50,000 Standing each",
+        "mode": null,
+        "live": null,
+        "skip": null,
+        "earns": null,
+        "spends": [{ "currency": "Cephalon Simaris Standing", "amount": "150,000" }],
+        "map": null,
+        "rows": [
+          {
+            "qty": "1",
+            "label": "War Hilt",
+            "note": "50,000 Standing",
+            "alt": "0.5% drop from Conculysts, Ortholysts, Summulysts and Aerolysts",
+            "done": false
+          },
+          {
+            "qty": "2",
+            "label": "War Blade",
+            "note": "50,000 Standing each",
+            "alt": "0.5% drop from the same enemies",
+            "done": false
+          }
+        ],
+        "conditions": [],
+        "bonuses": [],
+        "disclosures": [],
+        "ref": "Cephalon Simaris Standing"
+      },
+      {
+        "type": "boss",
+        "place": "ASSASSINATION NODE, ANY",
+        "sub": null,
+        "activity": "earn a Death Mark, then kill Shadow or Protector Stalker",
+        "meta": "5.87% blueprint per kill",
+        "mode": null,
+        "live": null,
+        "skip": null,
+        "earns": null,
+        "spends": [],
+        "map": null,
+        "rows": [
+          {
+            "qty": null,
+            "label": "Broken War Blueprint",
+            "note": "5.87% per Shadow or Protector Stalker kill; untradeable",
+            "alt": null,
+            "done": false
+          }
+        ],
+        "conditions": [
+          "Stalker spawns with 1.5% plus 0.5% per marked squad member, only in the first 5 minutes of a mission.",
+          "He can't spawn in Assassination, Syndicate, Arena, Elite Sanctuary Onslaught, Landscape, Archwing, Empyrean, Sortie or Archimedea missions.",
+          "Base Stalker, before The Second Dream, doesn't drop the blueprint. Shadow Stalker (after The Second Dream) and Protector Stalker (after Jade Shadows) do.",
+          "Killing most bosses earns the mark. Captain Vor on Mercury, Corrupted Vor, Zealoid Prelate, The Fragmented and the Ropalolyst don't."
+        ],
+        "bonuses": [
+          "Jade in the squad skips the fight: Stalker says \"Never\", drops his loot and leaves."
+        ],
+        "disclosures": [
+          {
+            "title": "Stalker Beacons",
+            "body": "Baro Ki'Teer sells Stalker Beacons for 125,000 credits and 200 Ducats when in stock. A beacon forces a spawn but rolls the same drop table."
+          }
+        ]
+      },
+      {
+        "type": "foundry",
+        "place": "FOUNDRY",
+        "sub": null,
+        "activity": "build the second Broken War",
+        "meta": "12h",
+        "mode": null,
+        "live": null,
+        "skip": null,
+        "earns": null,
+        "spends": [],
+        "map": null,
+        "rows": [
+          {
+            "qty": null,
+            "label": "Broken War",
+            "note": "20,000 cr, 1 Forma, 2 Nitain Extract, 1 War Hilt, 2 War Blades",
+            "alt": null,
+            "done": false
+          }
+        ],
+        "conditions": [],
+        "bonuses": [],
+        "disclosures": []
+      }
+    ]
+  }
 }

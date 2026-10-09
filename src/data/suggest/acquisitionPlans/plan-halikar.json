@@ -22,6 +22,31 @@
   ],
   "groups": [
     {
+      "type": "gate",
+      "place": "MASTERY RANK",
+      "sub": null,
+      "activity": "reach MR 7",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Mastery Rank 7",
+          "note": "needed to equip it",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
       "type": "vendor",
       "place": "MARKET",
       "sub": null,
@@ -31,12 +56,12 @@
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [],
+      "spends": [{ "currency": "Credits", "amount": "20,000" }],
       "map": null,
       "rows": [
         { "qty": null, "label": "Halikar Blueprint", "note": null, "alt": null, "done": false }
       ],
-      "conditions": ["Halikar Wraith is a separate Mastery item."],
+      "conditions": [],
       "bonuses": [],
       "disclosures": []
     },
@@ -45,7 +70,7 @@
       "place": "FOUNDRY",
       "sub": null,
       "activity": "build Halikar",
-      "meta": "12h, 15,000 cr",
+      "meta": "12h",
       "mode": null,
       "live": null,
       "skip": null,
@@ -56,14 +81,12 @@
         {
           "qty": null,
           "label": "Halikar",
-          "note": "2 Argon Crystal, 4,800 Ferrite, 5,000 Nano Spores, 500 Oxium",
+          "note": "15,000 cr, 2 Argon Crystal, 4,800 Ferrite, 5,000 Nano Spores, 500 Oxium",
           "alt": null,
           "done": false
         }
       ],
-      "conditions": [
-        "Argon Crystal halves every day at 00:00 GMT once it is a day old. Farm it last and build the same day."
-      ],
+      "conditions": [],
       "bonuses": [],
       "disclosures": []
     }

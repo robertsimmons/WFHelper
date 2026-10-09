@@ -5,7 +5,10 @@
   "source": "dojo",
   "tradeable": false,
   "progress": { "have": 0, "need": 1, "unit": "blueprint" },
-  "badges": [{ "text": "Tenno Lab", "tone": "info" }],
+  "badges": [
+    { "text": "Tenno Lab", "tone": "info" },
+    { "text": "MR 8", "tone": "info" }
+  ],
   "prices": [
     { "label": "blueprint", "amount": "15,000 cr", "money": false },
     { "label": "build", "amount": "20,000 cr", "money": false }
@@ -18,6 +21,31 @@
     { "qty": "35,000", "label": "Credits", "note": null }
   ],
   "groups": [
+    {
+      "type": "gate",
+      "place": "MASTERY RANK",
+      "sub": null,
+      "activity": "reach MR 8",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Mastery Rank 8",
+          "note": "needed to equip it",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
     {
       "type": "vendor",
       "place": "CLAN DOJO, TENNO LAB",
@@ -42,7 +70,7 @@
       "place": "FOUNDRY",
       "sub": null,
       "activity": "build Gunsen",
-      "meta": "20,000 cr, 12h",
+      "meta": "12h",
       "mode": null,
       "live": null,
       "skip": null,
@@ -53,13 +81,13 @@
         {
           "qty": null,
           "label": "Gunsen",
-          "note": "200 Oxium, 3 Tellurium, 1,150 Plastids, 19,750 Nano Spores",
+          "note": "20,000 cr, 200 Oxium, 3 Tellurium, 1,150 Plastids, 19,750 Nano Spores",
           "alt": null,
           "done": false
         }
       ],
       "conditions": [],
-      "bonuses": ["Platinum can stand in for any resource, 10 plat per Tellurium."],
+      "bonuses": [],
       "disclosures": []
     }
   ]

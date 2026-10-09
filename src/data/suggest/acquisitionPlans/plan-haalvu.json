@@ -2,7 +2,7 @@
   "name": "Haalvu",
   "kind": "primary",
   "effort": 10,
-  "source": "shop",
+  "source": "repeat",
   "tradeable": false,
   "progress": { "have": 0, "need": 1, "unit": "weapon" },
   "badges": [{ "text": "no in-game source", "tone": "warn" }],
@@ -10,10 +10,35 @@
   "groups": [
     {
       "type": "gate",
+      "place": "MASTERY RANK",
+      "sub": null,
+      "activity": "reach MR 14",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Mastery Rank 14",
+          "note": "needed to equip it",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
       "place": "TENNOCON 2026 TWITCH DROP",
       "sub": null,
-      "activity": "watch 30 minutes with a linked account",
-      "meta": "July 11, 2026 only",
+      "activity": "watched 30 consecutive minutes with a linked account",
+      "meta": null,
       "mode": null,
       "live": { "state": "blocked", "text": "the drop window is closed" },
       "skip": null,
@@ -24,13 +49,13 @@
         {
           "qty": null,
           "label": "Haalvu",
-          "note": "arrived built, with a slot and an Orokin Catalyst",
+          "note": "arrived built, with a weapon slot and an Orokin Catalyst",
           "alt": null,
           "done": false
         }
       ],
       "conditions": [
-        "It was a one-day TennoCon 2026 Twitch drop. The wiki lists no blueprint, Market entry or Baro offer, so there is no way to farm it until DE adds one."
+        "It was a one-day Twitch drop. There is no blueprint, Market entry or Baro offer for it."
       ],
       "bonuses": [],
       "disclosures": []

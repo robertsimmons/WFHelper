@@ -4,23 +4,72 @@
   "effort": 4,
   "source": "bounties",
   "tradeable": false,
-  "progress": { "have": 0, "need": 1, "unit": "companion" },
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "companion"
+  },
   "badges": [
-    { "text": "Fass only", "tone": "warn" },
-    { "text": "must be Weakened", "tone": "warn" },
-    { "text": "Rank 1 Entrati", "tone": "info" }
+    {
+      "text": "Fass only",
+      "tone": "warn"
+    },
+    {
+      "text": "must be Weakened",
+      "tone": "warn"
+    },
+    {
+      "text": "Entrati Stranger",
+      "tone": "info",
+      "rank": {
+        "syndicate": "Entrati",
+        "level": 1
+      }
+    }
   ],
   "prices": [
-    { "label": "revivify", "amount": "5,000 cr", "money": false },
-    { "label": "starter Mutagen + Antigen", "amount": "2,500 standing", "money": false }
+    {
+      "label": "revivify",
+      "amount": "5,000 cr",
+      "money": false
+    },
+    {
+      "label": "gild",
+      "amount": "10 Son Tokens + 5,000 standing",
+      "money": false
+    }
   ],
   "materials": [
-    { "qty": "1", "label": "Tranq Rifle", "note": null },
-    { "qty": "1", "label": "Vulpaphyla Pheromone Gland", "note": null },
-    { "qty": "1", "label": "Adra Mutagen", "note": null },
-    { "qty": "1", "label": "Desus Antigen", "note": null },
-    { "qty": "10", "label": "Son Token", "note": null },
-    { "qty": "10,000", "label": "Credits", "note": null }
+    {
+      "qty": "1",
+      "label": "Tranq Rifle",
+      "note": null
+    },
+    {
+      "qty": "1",
+      "label": "Vulpaphyla Pheromone Gland",
+      "note": null
+    },
+    {
+      "qty": "1",
+      "label": "Adra Mutagen",
+      "note": null
+    },
+    {
+      "qty": "1",
+      "label": "Desus Antigen",
+      "note": null
+    },
+    {
+      "qty": "10",
+      "label": "Son Token",
+      "note": "gild at rank 30"
+    },
+    {
+      "qty": "5,000",
+      "label": "Credits",
+      "note": "revivify"
+    }
   ],
   "groups": [
     {
@@ -28,13 +77,13 @@
       "place": "NECRALISK, DEIMOS",
       "sub": null,
       "activity": "unlock Son's conservation offerings",
-      "meta": "Heart of Deimos",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
       "spends": [],
-      "map": "cambion",
+      "map": "cambion-drift",
       "rows": [
         {
           "qty": null,
@@ -45,21 +94,25 @@
         },
         {
           "qty": null,
-          "label": "Entrati: Stranger",
-          "note": "Rank 1 for the Echo-Lure, pheromones and Adra/Desus",
+          "label": "Entrati Rank 1, Stranger",
+          "note": "Echo-Lure, Mutagen and Antigen blueprints",
           "alt": null,
-          "done": false
+          "done": false,
+          "rank": {
+            "syndicate": "Entrati",
+            "level": 1
+          }
         },
         {
-          "qty": null,
-          "label": "free Companion slot",
+          "qty": "1",
+          "label": "Companion slot",
           "note": "claiming the revivified Panzer needs it",
           "alt": null,
           "done": false
         }
       ],
       "conditions": [
-        "A Panzer cannot be built from a Market blueprint or bought as a completed companion; Son revivifies a captured Weakened animal."
+        "A Panzer cannot be built from a Market blueprint or bought complete; Son revivifies a captured Weakened animal."
       ],
       "bonuses": [],
       "disclosures": []
@@ -68,44 +121,49 @@
       "type": "vendor",
       "place": "SON, NECRALISK",
       "sub": null,
-      "activity": "buy the conservation kit and one starter appearance/polarity pair",
-      "meta": "2,650 standing",
+      "activity": "buy the Vulpaphyla Echo-Lure",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Entrati Standing", "amount": "2,650" }],
-      "map": "cambion",
+      "spends": [
+        {
+          "currency": "Entrati Standing",
+          "amount": "1,000"
+        }
+      ],
+      "map": "cambion-drift",
       "rows": [
         {
           "qty": null,
           "label": "Vulpaphyla Echo-Lure",
           "note": "1,000 standing, Stranger",
           "alt": null,
-          "done": false
+          "done": false,
+          "rank": {
+            "syndicate": "Entrati",
+            "level": 1
+          }
         }
       ],
-      "conditions": [
-        "The listed standing total includes the hunt kit plus a starter Adra/Desus pair; buying both components is optional until revivification.",
-        "Higher-rank Mutagens and Antigens are appearance/resistance/polarity choices, not a requirement for a working Panzer."
-      ],
-      "bonuses": [
-        "An Antigen's first polarity is effectively a free Forma slot; select one that matches the build you expect to run."
-      ],
-      "disclosures": []
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": [],
+      "ref": "Entrati Standing"
     },
     {
       "type": "bounty",
       "place": "CAMBION DRIFT, DEIMOS",
       "sub": "Fass cycle",
-      "activity": "public Entrati bounties, then conservation at a Vulpaphyla call point",
+      "activity": "conservation at a Vulpaphyla call point during Fass",
       "meta": "rare capture",
-      "mode": "public, Fass",
-      "live": { "state": "waiting", "text": "wait for Fass; Panzers do not spawn in Vome" },
+      "mode": "Fass",
+      "live": null,
       "skip": null,
-      "earns": { "currency": "Entrati Standing", "amount": "2,650" },
+      "earns": null,
       "spends": [],
-      "map": "cambion",
+      "map": "cambion-drift",
       "rows": [
         {
           "qty": "1",
@@ -116,51 +174,56 @@
         }
       ],
       "conditions": [
-        "Panzers spawn only during Fass. A healthy capture awards tags, not a companion input.",
-        "Use the Tranq Rifle map marker to find a Vulpaphyla call point, spend a pheromone, complete the echo-lure response, and confirm the spawned subspecies before committing.",
-        "Make local Infested hit the Panzer before calling the capture drone. Tranqing it first keeps it from fleeing while the damage condition is met.",
-        "Do not clear or hold the Infested aggro yourself: if nothing damages the animal, it will flee or despawn as a healthy capture target."
+        "Panzers appear only during Fass.",
+        "A Panzer takes 3 tranq shots to subdue.",
+        "A healthy capture awards Panzer Vulpaphyla Tags, not a companion input; it must be Weakened by Infested, before or after tranquilizing it."
       ],
-      "bonuses": [
-        "Public Fass bounties are the low-friction route: squad activity often produces Weakened Panzers passively while you earn the standing this plan needs.",
-        "An invisible frame makes the condition easier: pull a small Infested pack to the call point, lure the animal, recloak, then let the pack land a hit."
-      ],
-      "disclosures": [
-        {
-          "title": "the one condition that decides the hunt",
-          "body": "A Panzer must be damaged by Infested before capture to become Weakened. That condition is invisible in the normal lure flow, which is why a normal perfect capture can repeatedly return only tags. If the spawn is Sly or Crescent, move on; if it is Panzer, tranq it, arrange one or more Infested hits, then capture it. The passive public-bounty route is usually less frustrating than trying to force this solo."
-        }
-      ],
-      "ref": "Entrati Standing"
+      "bonuses": [],
+      "disclosures": []
     },
     {
       "type": "vendor",
       "place": "SON, NECRALISK",
       "sub": null,
-      "activity": "revivify and later gild",
-      "meta": "5,000 cr now; 10 Son Tokens later",
+      "activity": "revivify, then gild at rank 30",
+      "meta": "5,000 cr now; gild for Mastery",
       "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [],
-      "map": "cambion",
+      "spends": [
+        {
+          "currency": "Entrati Standing",
+          "amount": "5,000"
+        }
+      ],
+      "map": "cambion-drift",
       "rows": [
         {
           "qty": null,
           "label": "Panzer Vulpaphyla, revivified",
-          "note": "Weakened Panzer + one Mutagen + one Antigen + 5,000 credits",
+          "note": "Weakened Panzer + Adra Mutagen + Desus Antigen + 5,000 credits",
           "alt": null,
           "done": false
+        },
+        {
+          "qty": null,
+          "label": "Panzer Vulpaphyla, gilded",
+          "note": "rank 30 first; 10 Son Tokens and 5,000 standing",
+          "alt": null,
+          "done": false,
+          "rank": {
+            "syndicate": "Entrati",
+            "level": 2
+          }
         }
       ],
       "conditions": [
-        "Rank the Panzer to 30 before gilding. Gilding costs another 5,000 credits, resets rank to 0, and needs Entrati Rank 2 Acquaintance.",
-        "An ungilded rank-30 Panzer already has full combat stats; gild for mastery, customization, polarizing and reliable imprints rather than immediate power."
+        "A revivified Panzer cannot be renamed, customized, polarized or earn Mastery until gilded.",
+        "Gilding needs Entrati Rank 2, Acquaintance, and resets the Panzer to rank 0."
       ],
       "bonuses": [
-        "Panzer Devolution lets it continue firing Viral quills in larval form for 30 seconds after going down, then reform automatically.",
-        "Son's rotating tag exchanges are the normal token source; clear them while doing conservation rather than treating gilding as part of the initial working-companion grind."
+        "Panzer Devolution lets it keep firing Viral quills in larval form after going down."
       ],
       "disclosures": []
     }

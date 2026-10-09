@@ -4,37 +4,123 @@
   "effort": 4,
   "source": "standing",
   "tradeable": false,
-  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "progress": {
+    "have": 0,
+    "need": 4,
+    "unit": "parts"
+  },
   "badges": [
-    { "text": "Doer gate", "tone": "warn" },
-    { "text": "gild, then 0-30 again", "tone": "info" }
+    {
+      "text": "Doer gate",
+      "tone": "warn",
+      "rank": {
+        "syndicate": "Solaris United",
+        "level": 3
+      }
+    },
+    {
+      "text": "gild, then 0-30 again",
+      "tone": "info"
+    }
   ],
   "prices": [
-    { "label": "rank-ups to Doer", "amount": "85,000 cr", "money": false },
-    { "label": "four part builds", "amount": "200,000 cr", "money": false }
+    {
+      "label": "rank-ups to Doer",
+      "amount": "85,000 cr",
+      "money": false
+    },
+    {
+      "label": "four part builds",
+      "amount": "200,000 cr",
+      "money": false
+    }
   ],
   "materials": [
-    { "qty": "1,400", "label": "Plastids", "note": "1,000 Trux Gyro, 400 Travocyte Alloy refines" },
-    { "qty": "2", "label": "Morphics", "note": "Nychus Model" },
-    { "qty": "500", "label": "Rubedo", "note": "300 Venerdo Alloy, 200 Axidrol Alloy refines" },
-    { "qty": "2", "label": "Gallium", "note": "Venerdo Alloy" },
-    { "qty": "2,000", "label": "Salvage", "note": "Travocyte Alloy refines" },
-    { "qty": "1,000", "label": "Ferrite", "note": "Axidrol Alloy refines" },
-    { "qty": "16", "label": "Training Debt-Bond", "note": null },
-    { "qty": "6", "label": "Shelter Debt-Bond", "note": null },
-    { "qty": "4", "label": "Medical Debt-Bond", "note": null },
-    { "qty": "65", "label": "Travocyte Alloy", "note": "Core 25, Bracket 40" },
-    { "qty": "35", "label": "Smooth Phasmin", "note": "Core 15, Bracket 20" },
-    { "qty": "25", "label": "Axidrol Alloy", "note": "Core" },
-    { "qty": "20", "label": "Venerdo Alloy", "note": "Model" },
-    { "qty": "10", "label": "Goblite Tears", "note": "Model" },
-    { "qty": "5", "label": "Heart Noctrul", "note": "Gyro" },
-    { "qty": "20", "label": "Gorgaricus Spore", "note": "Model" },
-    { "qty": "20", "label": "Thermal Sludge", "note": "Gyro" },
-    { "qty": "15", "label": "Tepa Nodule", "note": "Bracket" },
-    { "qty": "25", "label": "Echowinder Anoscopic Sensor", "note": "Gyro 10, Bracket 15" },
-    { "qty": "10", "label": "Brickie Muon Battery", "note": "Core" },
-    { "qty": "289,000", "label": "Credits", "note": null }
+    {
+      "qty": "1,000",
+      "label": "Plastids",
+      "note": "Trux Gyro"
+    },
+    {
+      "qty": "2",
+      "label": "Morphics",
+      "note": "Nychus Model"
+    },
+    {
+      "qty": "16",
+      "label": "Training Debt-Bond",
+      "note": null
+    },
+    {
+      "qty": "6",
+      "label": "Shelter Debt-Bond",
+      "note": null
+    },
+    {
+      "qty": "4",
+      "label": "Medical Debt-Bond",
+      "note": null
+    },
+    {
+      "qty": "65",
+      "label": "Travocyte Alloy",
+      "note": "Core 25, Bracket 40"
+    },
+    {
+      "qty": "35",
+      "label": "Smooth Phasmin",
+      "note": "Core 15, Bracket 20"
+    },
+    {
+      "qty": "25",
+      "label": "Axidrol Alloy",
+      "note": "Core"
+    },
+    {
+      "qty": "20",
+      "label": "Venerdo Alloy",
+      "note": "Model"
+    },
+    {
+      "qty": "10",
+      "label": "Goblite Tears",
+      "note": "Model"
+    },
+    {
+      "qty": "5",
+      "label": "Heart Noctrul",
+      "note": "Gyro"
+    },
+    {
+      "qty": "20",
+      "label": "Gorgaricus Spore",
+      "note": "Model"
+    },
+    {
+      "qty": "20",
+      "label": "Thermal Sludge",
+      "note": "Gyro"
+    },
+    {
+      "qty": "15",
+      "label": "Tepa Nodule",
+      "note": "Bracket"
+    },
+    {
+      "qty": "25",
+      "label": "Echowinder Anoscopic Sensor",
+      "note": "Gyro 10, Bracket 15"
+    },
+    {
+      "qty": "10",
+      "label": "Brickie Muon Battery",
+      "note": "Core"
+    },
+    {
+      "qty": "289,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
     {
@@ -76,11 +162,14 @@
       "place": "ORB VALLIS, VENUS",
       "sub": null,
       "activity": "bounties, mining turn-ins, later Conservation",
-      "meta": "~80,500 standing",
+      "meta": null,
       "mode": "solo",
       "live": null,
       "skip": null,
-      "earns": { "currency": "Solaris United Standing", "amount": "80,500" },
+      "earns": {
+        "currency": "Solaris United Standing",
+        "amount": "88,500"
+      },
       "spends": [],
       "map": "orb-vallis",
       "rows": [
@@ -98,7 +187,20 @@
           "alt": "take Nychus as the free Doer item",
           "done": false
         },
-        { "qty": "5,000", "label": "gild", "note": null, "alt": null, "done": false }
+        {
+          "qty": "8,000",
+          "label": "refining blueprints",
+          "note": "reusable, 1,000 at Neutral, 2,000 for Venerdo and Goblite at Outworlder",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "5,000",
+          "label": "gild",
+          "note": null,
+          "alt": null,
+          "done": false
+        }
       ],
       "conditions": [],
       "bonuses": [],
@@ -115,7 +217,12 @@
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Solaris United Standing", "amount": "71,000" }],
+      "spends": [
+        {
+          "currency": "Solaris United Standing",
+          "amount": "71,000"
+        }
+      ],
       "map": "orb-vallis",
       "rows": [
         {
@@ -141,9 +248,7 @@
         }
       ],
       "conditions": ["Doer is both the Nychus blueprint rank and the gild rank."],
-      "bonuses": [
-        "Each rank-up grants one free vendor item of that rank: take a 2,000-standing refinement blueprint at Outworlder."
-      ],
+      "bonuses": ["Each rank-up grants one free vendor item of that rank."],
       "disclosures": []
     },
     {
@@ -156,7 +261,12 @@
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Solaris United Standing", "amount": "4,500" }],
+      "spends": [
+        {
+          "currency": "Solaris United Standing",
+          "amount": "4,500"
+        }
+      ],
       "map": "orb-vallis",
       "rows": [
         {
@@ -248,7 +358,12 @@
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Solaris United Standing", "amount": "5,000" }],
+      "spends": [
+        {
+          "currency": "Solaris United Standing",
+          "amount": "5,000"
+        }
+      ],
       "map": "orb-vallis",
       "rows": [
         {
@@ -271,15 +386,8 @@
         "MOAs can't be disassembled, so the parts are gone once built.",
         "Once one Nychus MOA is gilded and levelled, later Nychus builds give nothing."
       ],
-      "bonuses": [
-        "Blast Shield gives the MOA +3,000 overshields and makes it close to unkillable with Manifold Bond, which is why Nychus is the MOA people keep."
-      ],
-      "disclosures": [
-        {
-          "title": "leave Hard Engage off while levelling",
-          "body": "A long-time MOA user reported Hard Engage overrides the MOA's AI: it stops using its gun and other precepts while kicking, its weapon damage turns to Impact, and Manifold Bond doesn't trigger. Emotion Modules make it stop to emote after kills, which costs uptime on the double 0-30."
-        }
-      ]
+      "bonuses": ["Nychus is built for close-quarters combat with Blast Shield and Hard Engage."],
+      "disclosures": []
     }
   ]
 }

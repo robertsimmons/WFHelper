@@ -4,21 +4,33 @@
   "effort": 5,
   "source": "unique",
   "tradeable": "imprints only",
-  "progress": { "have": 0, "need": 1, "unit": "companion" },
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "companion"
+  },
   "badges": [
-    { "text": "random breed, 1 of 5", "tone": "warn" },
-    { "text": "egg is a rare drop", "tone": "warn" }
+    {
+      "text": "random breed",
+      "tone": "warn"
+    },
+    {
+      "text": "egg is a rare drop",
+      "tone": "warn"
+    }
   ],
-  "prices": [
-    { "label": "Incubator Power Core blueprint", "amount": "50,000 cr", "money": false },
-    { "label": "Power Core build, per roll", "amount": "100,000 cr", "money": false }
-  ],
+  "prices": [],
   "materials": [
-    { "qty": "4,500", "label": "Nano Spores", "note": "per Incubator Power Core" },
-    { "qty": "2", "label": "Control Module", "note": "per Incubator Power Core" },
-    { "qty": "1", "label": "Argon Crystal", "note": "per Incubator Power Core" },
-    { "qty": "2", "label": "Kubrow Egg", "note": null },
-    { "qty": "2", "label": "Incubator Power Core", "note": null }
+    {
+      "qty": "1",
+      "label": "Kubrow Egg",
+      "note": null
+    },
+    {
+      "qty": "1",
+      "label": "Incubator Power Core",
+      "note": null
+    }
   ],
   "groups": [
     {
@@ -37,53 +49,22 @@
         {
           "qty": null,
           "label": "Howl of the Kubrow",
-          "note": "after the Venus Junction, from the Codex; gives the Incubator Segment",
+          "note": "gives the Incubator Segment",
           "alt": null,
           "done": false
         },
         {
           "qty": "1",
-          "label": "free Companion Slot",
-          "note": "a kubrow permanently occupies it",
+          "label": "Companion slot",
+          "note": "a Kubrow permanently occupies it",
           "alt": null,
           "done": false
         }
       ],
       "conditions": [
-        "During the quest the first den drops an egg 100% of the time and incubation takes 60 seconds; that first hatch is still a random breed.",
-        "The collar comes once from the quest and covers every later Kubrow.",
-        "Consigning an unwanted Kubrow to the Lotus for 25,000 credits is the only way to free its slot; take its two imprints first."
+        "Consigning an unwanted Kubrow to the Lotus for 25,000 credits is the only way to free its slot."
       ],
       "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "foundry",
-      "place": "FOUNDRY",
-      "sub": null,
-      "activity": "build Incubator Power Core",
-      "meta": "8h, 100,000 cr",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Huras Kubrow",
-          "note": "1 Incubator Power Core",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "The blueprint is a reusable 50,000-credit Market purchase; every incubation consumes a core, win or lose."
-      ],
-      "bonuses": [
-        "Build the Nutrio Incubator Upgrade Segment early if you expect several rolls; it halves incubation and its recipe takes one Power Core."
-      ],
       "disclosures": []
     },
     {
@@ -102,27 +83,20 @@
         {
           "qty": null,
           "label": "Huras Kubrow",
-          "note": "equal odds among Huras, Raksa, Sahasa, Sunika, Chesa",
+          "note": "random incubation can hatch Huras, Raksa, Sahasa, Sunika or Chesa",
           "alt": "use two Huras Genetic Code Templates",
           "done": false
         }
       ],
       "conditions": [
-        "Random Incubation has no weighting and no pity; streaks of four or five of the same wrong breed get reported.",
-        "Two Huras imprints make Huras the likely result, but the wiki says it still isn't guaranteed, and the egg and core are still consumed.",
-        "Incubation is 48 hours, or 24 with the Nutrio Incubator Upgrade Segment.",
-        "Mature the pup manually in the Incubator (instant) before it can go on missions."
+        "Random incubation offers no guarantee of breed. Two Huras imprints make Huras much more likely, still not certain, and the egg and core are consumed either way.",
+        "Incubation takes 48 hours, or 24 with the Nutrio Incubator Upgrade Segment."
       ],
       "bonuses": [
-        "Breeders often hand out spare imprints free; Huras imprints are tradeable, two per Kubrow at 1.5 hours each.",
+        "Huras imprints trade; a Kubrow holds at most two, at 1.5 hours each.",
         "Its Huras Claws level but give no Mastery; only the Kubrow counts."
       ],
-      "disclosures": [
-        {
-          "title": "ask for imprints instead of rolling",
-          "body": "Several veterans in one thread offered imprints to a stranger unprompted, and one player bought Huras imprints because it was their last missing breed. Two matching imprints turn a 1-in-5 roll into the likely outcome at the same egg-and-core cost as one random attempt. Empty Genetic Code Templates build from a reusable 50,000-credit Market blueprint."
-        }
-      ]
+      "disclosures": []
     }
   ]
 }

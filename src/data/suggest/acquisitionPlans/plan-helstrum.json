@@ -1,21 +1,66 @@
 {
   "name": "Helstrum",
   "kind": "robotic",
-  "effort": 6,
+  "effort": 5,
   "source": "standing",
   "tradeable": false,
-  "progress": { "have": 0, "need": 1, "unit": "weapon" },
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "weapon"
+  },
   "badges": [
-    { "text": "Rank 5 Old Mate", "tone": "warn" },
-    { "text": "one-trip build", "tone": "info" }
+    {
+      "text": "Old Mate required",
+      "tone": "warn",
+      "rank": {
+        "syndicate": "Solaris United",
+        "level": 5
+      }
+    },
+    {
+      "text": "10,000 standing blueprint",
+      "tone": "info"
+    }
   ],
-  "prices": [{ "label": "build", "amount": "50,000 cr", "money": false }],
+  "prices": [
+    {
+      "label": "blueprint",
+      "amount": "10,000 standing",
+      "money": false
+    },
+    {
+      "label": "build",
+      "amount": "50,000 cr",
+      "money": false
+    }
+  ],
   "materials": [
-    { "qty": "10", "label": "Star Crimzian", "note": null },
-    { "qty": "10", "label": "Star Amarast", "note": null },
-    { "qty": "10", "label": "Recaster Neural Relay", "note": null },
-    { "qty": "1", "label": "Synathid Ecosynth Analyzer", "note": null },
-    { "qty": "435,000", "label": "Credits", "note": null }
+    {
+      "qty": "10",
+      "label": "Star Crimzian",
+      "note": null
+    },
+    {
+      "qty": "10",
+      "label": "Star Amarast",
+      "note": null
+    },
+    {
+      "qty": "10",
+      "label": "Recaster Neural Relay",
+      "note": null
+    },
+    {
+      "qty": "1",
+      "label": "Synathid Ecosynth Analyzer",
+      "note": null
+    },
+    {
+      "qty": "435,000",
+      "label": "Credits",
+      "note": "385,000 Old Mate rank-ups, 50,000 build"
+    }
   ],
   "groups": [
     {
@@ -34,41 +79,82 @@
         {
           "qty": null,
           "label": "Vox Solaris",
-          "note": "unlocks Legs, The Business and Eudico's bounties",
+          "note": "unlocks Fortuna",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Solaris United Rank 5, Old Mate",
-          "note": "99,000 standing held at Cove",
+          "note": "sacrifices 6 Training, 9 Shelter, 11 Medical, 10 Advances and 5 Familial Debt-Bonds plus 385,000 cr across the five rank-ups",
+          "alt": null,
+          "done": false,
+          "rank": {
+            "syndicate": "Solaris United",
+            "level": 5
+          }
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "currency",
+      "place": "ORB VALLIS, VENUS",
+      "sub": null,
+      "activity": "Solaris United standing for the rank-ups and the blueprint",
+      "meta": "250,000 standing: 240,000 to Old Mate, 10,000 for the blueprint",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": {
+        "currency": "Solaris United Standing",
+        "amount": "250,000"
+      },
+      "spends": [],
+      "map": "orb-vallis",
+      "rows": [
+        {
+          "qty": "240,000",
+          "label": "rank-ups to Old Mate",
+          "note": "5,000 / 22,000 / 44,000 / 70,000 / 99,000 per rank",
+          "alt": null,
+          "done": false,
+          "rank": {
+            "syndicate": "Solaris United",
+            "level": 5
+          }
+        },
+        {
+          "qty": "10,000",
+          "label": "Helstrum blueprint",
+          "note": "Legs, once Old Mate",
           "alt": null,
           "done": false
         }
       ],
-      "conditions": [
-        "Every rank-up from Cove to Old Mate sacrifices 6 Training, 9 Shelter, 11 Medical, 10 Advances and 5 Familial Debt-Bonds plus 385,000 credits total.",
-        "Since the 2024 changes, bonds drop only from bounty stages 2-5, best odds on the final stage; the old 'run stage 1 and reset' trick no longer works."
-      ],
+      "conditions": [],
       "bonuses": [],
-      "disclosures": [
-        {
-          "title": "check Ticker every visit",
-          "body": "Ticker sells debt-bonds for credits and resources and always shows at least one uncommon and one rare case since Update 35.5. Several players hit Old Mate almost entirely through Ticker."
-        }
-      ]
+      "disclosures": [],
+      "ref": "Solaris United Standing"
     },
     {
       "type": "vendor",
       "place": "LEGS, FORTUNA",
       "sub": null,
-      "activity": "buy the blueprint",
-      "meta": "Old Mate",
+      "activity": "buy blueprint",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Solaris United Standing", "amount": "10,000" }],
+      "spends": [
+        {
+          "currency": "Solaris United Standing",
+          "amount": "10,000"
+        }
+      ],
       "map": null,
       "rows": [
         {
@@ -76,7 +162,11 @@
           "label": "Helstrum Blueprint",
           "note": "10,000 standing",
           "alt": null,
-          "done": false
+          "done": false,
+          "rank": {
+            "syndicate": "Solaris United",
+            "level": 5
+          }
         }
       ],
       "conditions": [],
@@ -106,12 +196,7 @@
       ],
       "conditions": ["Needs a free Companion inventory slot, not a weapon slot."],
       "bonuses": [],
-      "disclosures": [
-        {
-          "title": "is it still worth it",
-          "body": "An April 2026 thread argues Tazicor has replaced Helstrum as the go-to AoE status primer: faster status application and instant hits against Helstrum's 10 m/s rockets and one volley every 4.4 seconds. Defenders point to innate Heat for viral/heat builds and energy-generator Dethcube setups."
-        }
-      ]
+      "disclosures": []
     }
   ]
 }

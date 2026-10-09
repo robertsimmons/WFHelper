@@ -4,27 +4,93 @@
   "effort": 4,
   "source": "standing",
   "tradeable": false,
-  "progress": { "have": 0, "need": 1, "unit": "companion" },
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "companion"
+  },
   "badges": [
-    { "text": "Fass only, must be Weakened", "tone": "warn" },
-    { "text": "Entrati Rank 3 to gild", "tone": "warn" }
+    {
+      "text": "Fass only, must be Weakened",
+      "tone": "warn"
+    },
+    {
+      "text": "Entrati Rank 3 to gild",
+      "tone": "warn",
+      "rank": {
+        "syndicate": "Entrati",
+        "level": 3
+      }
+    }
   ],
   "prices": [
-    { "label": "revivify", "amount": "5,000 cr", "money": false },
-    { "label": "Mutagen + Antigen blueprints", "amount": "2,500 standing", "money": false }
+    {
+      "label": "revivify",
+      "amount": "5,000 cr",
+      "money": false
+    },
+    {
+      "label": "Mutagen + Antigen blueprints",
+      "amount": "2,500 standing",
+      "money": false
+    }
   ],
   "materials": [
-    { "qty": "1", "label": "Tranq Rifle", "note": null },
-    { "qty": "6", "label": "Vome Residue", "note": null },
-    { "qty": "6", "label": "Fass Residue", "note": null },
-    { "qty": "15", "label": "Pustulite", "note": null },
-    { "qty": "20", "label": "Ferment Bladder", "note": null },
-    { "qty": "12", "label": "Sporulate Sac", "note": null },
-    { "qty": "15", "label": "Ganglion", "note": null },
-    { "qty": "30", "label": "Benign Infested Tumor", "note": null },
-    { "qty": "15", "label": "Dendrite Blastoma", "note": null },
-    { "qty": "10", "label": "Son Token", "note": "gild at rank 30, Entrati Associate" },
-    { "qty": "7,000", "label": "Credits", "note": null }
+    {
+      "qty": "1",
+      "label": "Tranq Rifle",
+      "note": null
+    },
+    {
+      "qty": "6",
+      "label": "Vome Residue",
+      "note": null
+    },
+    {
+      "qty": "6",
+      "label": "Fass Residue",
+      "note": null
+    },
+    {
+      "qty": "15",
+      "label": "Pustulite",
+      "note": null
+    },
+    {
+      "qty": "20",
+      "label": "Ferment Bladder",
+      "note": null
+    },
+    {
+      "qty": "12",
+      "label": "Sporulate Sac",
+      "note": null
+    },
+    {
+      "qty": "15",
+      "label": "Ganglion",
+      "note": null
+    },
+    {
+      "qty": "30",
+      "label": "Benign Infested Tumor",
+      "note": null
+    },
+    {
+      "qty": "15",
+      "label": "Dendrite Blastoma",
+      "note": null
+    },
+    {
+      "qty": "10",
+      "label": "Son Token",
+      "note": "gild at rank 30"
+    },
+    {
+      "qty": "7,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
     {
@@ -32,7 +98,7 @@
       "place": "NECRALISK, DEIMOS",
       "sub": null,
       "activity": "unlock Son's revivification menu",
-      "meta": "Heart of Deimos",
+      "meta": "one-time",
       "mode": null,
       "live": null,
       "skip": null,
@@ -49,8 +115,8 @@
         },
         {
           "qty": "1",
-          "label": "free Companion Slot",
-          "note": "claiming the revivified Pharaoh needs it",
+          "label": "Companion slot",
+          "note": "claiming the revivified Pharaoh Predasite needs it",
           "alt": null,
           "done": false
         }
@@ -63,40 +129,54 @@
       "type": "currency",
       "place": "CAMBION DRIFT, DEIMOS",
       "sub": null,
-      "activity": "Deimos bounties and conservation for Entrati rank",
-      "meta": "Rank 3 Associate to gild",
+      "activity": "Entrati standing for the rank-ups, kit and gild",
+      "meta": "79,650 standing: 71,000 rank-ups, 3,650 kit, 5,000 gild",
       "mode": null,
       "live": null,
       "skip": null,
-      "earns": null,
+      "earns": {
+        "currency": "Entrati Standing",
+        "amount": "79,650"
+      },
       "spends": [],
       "map": "cambion-drift",
       "rows": [
         {
           "qty": null,
           "label": "Entrati Rank 1, Stranger",
-          "note": "6 Benign Infested Tumors, 6 Ferment Bladders",
+          "note": "5,000 standing, 6 Benign Infested Tumor, 6 Ferment Bladder",
           "alt": null,
-          "done": false
+          "done": false,
+          "rank": {
+            "syndicate": "Entrati",
+            "level": 1
+          }
         },
         {
           "qty": null,
           "label": "Entrati Rank 2, Acquaintance",
-          "note": "Keratinos Blade Blueprint, 1 Father Token, 1 Daughter Token",
+          "note": "22,000 standing, Keratinos Blade Blueprint, 1 Father Token, 1 Daughter Token",
           "alt": null,
-          "done": false
+          "done": false,
+          "rank": {
+            "syndicate": "Entrati",
+            "level": 2
+          }
         },
         {
           "qty": null,
           "label": "Entrati Rank 3, Associate",
-          "note": "5 Common Avichaea Tags, 1 Medjay Predasite Tag, 1 Mother Token, 1 Son Token",
+          "note": "44,000 standing, 3 Sly Vulpaphyla Tag, 3 Vizier Predasite Tag, 1 Mother Token, 1 Son Token",
           "alt": null,
-          "done": false
+          "done": false,
+          "rank": {
+            "syndicate": "Entrati",
+            "level": 3
+          }
         }
       ],
       "conditions": [
-        "Medjay only spawns during Vome; any tranq capture of one gives the tag, no weakening needed.",
-        "Rank 1 Stranger is enough for the capture and revivify; Rank 3 only gates the gild."
+        "Rank 1 Stranger covers the capture and revivify; Rank 3 only gates the gild."
       ],
       "bonuses": [],
       "disclosures": [],
@@ -106,44 +186,78 @@
       "type": "vendor",
       "place": "SON, NECRALISK",
       "sub": null,
-      "activity": "buy the Tranq Rifle and one Mutagen/Antigen pair",
-      "meta": "3,000 standing",
+      "activity": "buy the Echo-Lure, a Pheromone Gland and one Mutagen/Antigen pair",
+      "meta": "3,650 standing",
       "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Entrati Standing", "amount": "3,000" }],
+      "spends": [
+        {
+          "currency": "Entrati Standing",
+          "amount": "3,650"
+        }
+      ],
       "map": "necralisk",
       "rows": [
         {
           "qty": null,
+          "label": "Predasite Echo-Lure",
+          "note": "1,000 standing, reusable",
+          "alt": null,
+          "done": false,
+          "rank": {
+            "syndicate": "Entrati",
+            "level": 1
+          }
+        },
+        {
+          "qty": null,
+          "label": "Predasite Pheromone Gland",
+          "note": "150 standing, one use",
+          "alt": null,
+          "done": false,
+          "rank": {
+            "syndicate": "Entrati",
+            "level": 1
+          }
+        },
+        {
+          "qty": null,
           "label": "Leptosam Mutagen Blueprint",
-          "note": "1,250 standing, Stranger",
+          "note": "1,250 standing",
           "alt": "pricier Mutagens at Ranks 2-4",
-          "done": false
+          "done": false,
+          "rank": {
+            "syndicate": "Entrati",
+            "level": 1
+          }
         },
         {
           "qty": null,
           "label": "Iranon Antigen Blueprint",
-          "note": "1,250 standing, Stranger",
+          "note": "1,250 standing",
           "alt": "pricier Antigens at Ranks 2-4",
-          "done": false
+          "done": false,
+          "rank": {
+            "syndicate": "Entrati",
+            "level": 1
+          }
         }
       ],
       "conditions": [
-        "Mutagen and Antigen only change resistances, head and tail look and first polarity; any pair gives a Pharaoh."
+        "Mutagen and Antigen change resistances, polarity and looks; any pair gives the same Mastery."
       ],
-      "bonuses": [
-        "The Predasite Echo-Lure (1,000 standing) and Pheromone Glands (150 each) at Stranger push spawns toward the rare Pharaoh."
-      ],
-      "disclosures": []
+      "bonuses": [],
+      "disclosures": [],
+      "ref": "Entrati Standing"
     },
     {
       "type": "foundry",
       "place": "FOUNDRY",
       "sub": null,
       "activity": "build the Mutagen and Antigen",
-      "meta": "1,000 cr each",
+      "meta": "2 min each",
       "mode": null,
       "live": null,
       "skip": null,
@@ -154,14 +268,14 @@
         {
           "qty": null,
           "label": "Leptosam Mutagen",
-          "note": "6 Vome Residue, 15 Pustulite, 20 Ferment Bladder, 12 Sporulate Sac",
+          "note": "1,000 cr, 6 Vome Residue, 15 Pustulite, 20 Ferment Bladder, 12 Sporulate Sac",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Iranon Antigen",
-          "note": "6 Fass Residue, 15 Ganglion, 30 Benign Infested Tumor, 15 Dendrite Blastoma",
+          "note": "1,000 cr, 6 Fass Residue, 15 Ganglion, 30 Benign Infested Tumor, 15 Dendrite Blastoma",
           "alt": null,
           "done": false
         }
@@ -174,10 +288,10 @@
       "type": "bounty",
       "place": "CAMBION DRIFT, DEIMOS",
       "sub": "Fass cycle",
-      "activity": "tranq a Pharaoh, then let Infested damage it",
-      "meta": "rare, one Fass session",
-      "mode": "stealth frame",
-      "live": { "state": "waiting", "text": "wait for Fass; Pharaoh does not spawn in Vome" },
+      "activity": "conservation at a Predasite call point during Fass",
+      "meta": "rare",
+      "mode": "Fass",
+      "live": null,
       "skip": null,
       "earns": null,
       "spends": [],
@@ -192,51 +306,56 @@
         }
       ],
       "conditions": [
-        "A healthy capture gives only Pharaoh Predasite Tags, and nothing shows up in Son's Revivification menu.",
-        "Your own damage never weakens it; only Deimos Infested do.",
-        "Predasites resist Warframe abilities and fight back, so they take two tranq darts."
+        "The Pharaoh Predasite appears only during Fass.",
+        "A healthy capture gives only Pharaoh Predasite Tags, not a companion input; it must be Weakened by Infested, before or after tranquilizing it.",
+        "Predasites take two tranq shots and resist Warframe abilities, with sleep duration cut to a quarter."
       ],
-      "bonuses": [
-        "Fass is when Infested are aggressive and plentiful, which is what the weakening needs.",
-        "Tags from extra captures trade to Son for the Son Tokens gilding needs."
-      ],
-      "disclosures": [
-        {
-          "title": "getting the Weakened hit",
-          "body": "Tranq it first, then bring Infested to it. Throwing a Pherliac Pod on the sleeping animal makes Infested converge and attack it; the pod's blueprint and parts drop from Juggernauts and it costs 7,500 credits to build. Invisibility (Ivara's Prowl and Sleep Arrow work well) keeps aggro off you. Two players said Infested can't actually kill it: once its health hits zero you can walk up and collect it. One player reported 21 Pharaohs in 45 minutes of Fass with Pheromone Glands and the Echo-Lure. Avoid boosting in Archwing, which disrupts spawns."
-        }
-      ],
-      "ref": "Entrati Standing"
+      "bonuses": ["Tags from extra captures trade to Son for the Son Tokens gilding needs."],
+      "disclosures": []
     },
     {
       "type": "vendor",
       "place": "SON, NECRALISK",
       "sub": null,
       "activity": "revivify, then gild at rank 30",
-      "meta": "5,000 cr now; 10 Son Tokens later",
+      "meta": "5,000 cr now; 10 Son Tokens and 5,000 standing to gild",
       "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Entrati Standing", "amount": "5,000" }],
+      "spends": [
+        {
+          "currency": "Entrati Standing",
+          "amount": "5,000"
+        }
+      ],
       "map": "necralisk",
       "rows": [
         {
           "qty": null,
           "label": "Pharaoh Predasite, revivified",
-          "note": "Weakened Pharaoh + Mutagen + Antigen + 5,000 credits",
+          "note": "Weakened Pharaoh Predasite + Mutagen + Antigen + 5,000 credits",
           "alt": null,
           "done": false
+        },
+        {
+          "qty": null,
+          "label": "Pharaoh Predasite, gilded",
+          "note": "rank 30 first; 10 Son Tokens and 5,000 standing",
+          "alt": null,
+          "done": false,
+          "rank": {
+            "syndicate": "Entrati",
+            "level": 3
+          }
         }
       ],
       "conditions": [
-        "Only a gilded Pharaoh earns Mastery; gilding resets it to rank 0, so level it to 30 twice.",
-        "Once one gilded Pharaoh hits rank 30, a later Pharaoh with a different Mutagen or Antigen gives no more Mastery.",
-        "Its Beast Claws level but give no Mastery."
+        "Only a gilded Predasite earns Mastery; gilding resets it to rank 0, so level it to 30 twice.",
+        "Mastery is tied to the subspecies: a second gilded Pharaoh Predasite gives nothing more.",
+        "Its Pharaoh Claws level but give no Mastery."
       ],
-      "bonuses": [
-        "Son Tokens also come from tag trades, pickups on the Drift and Grandmother's Mend the Family trade."
-      ],
+      "bonuses": [],
       "disclosures": []
     }
   ]

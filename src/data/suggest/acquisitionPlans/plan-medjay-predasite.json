@@ -4,27 +4,93 @@
   "effort": 4,
   "source": "standing",
   "tradeable": false,
-  "progress": { "have": 0, "need": 1, "unit": "companion" },
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "companion"
+  },
   "badges": [
-    { "text": "Vome only, must be Weakened", "tone": "warn" },
-    { "text": "Entrati Rank 3 to gild", "tone": "warn" }
+    {
+      "text": "Vome only, must be Weakened",
+      "tone": "warn"
+    },
+    {
+      "text": "Entrati Rank 3 to gild",
+      "tone": "warn",
+      "rank": {
+        "syndicate": "Entrati",
+        "level": 3
+      }
+    }
   ],
   "prices": [
-    { "label": "revivify", "amount": "5,000 cr", "money": false },
-    { "label": "Mutagen + Antigen blueprints", "amount": "2,500 standing", "money": false }
+    {
+      "label": "revivify",
+      "amount": "5,000 cr",
+      "money": false
+    },
+    {
+      "label": "Mutagen + Antigen blueprints",
+      "amount": "2,500 standing",
+      "money": false
+    }
   ],
   "materials": [
-    { "qty": "1", "label": "Tranq Rifle", "note": null },
-    { "qty": "6", "label": "Vome Residue", "note": null },
-    { "qty": "6", "label": "Fass Residue", "note": null },
-    { "qty": "15", "label": "Pustulite", "note": null },
-    { "qty": "20", "label": "Ferment Bladder", "note": null },
-    { "qty": "12", "label": "Sporulate Sac", "note": null },
-    { "qty": "15", "label": "Ganglion", "note": null },
-    { "qty": "30", "label": "Benign Infested Tumor", "note": null },
-    { "qty": "15", "label": "Dendrite Blastoma", "note": null },
-    { "qty": "10", "label": "Son Token", "note": "gild at rank 30" },
-    { "qty": "7,000", "label": "Credits", "note": null }
+    {
+      "qty": "1",
+      "label": "Tranq Rifle",
+      "note": null
+    },
+    {
+      "qty": "6",
+      "label": "Vome Residue",
+      "note": null
+    },
+    {
+      "qty": "6",
+      "label": "Fass Residue",
+      "note": null
+    },
+    {
+      "qty": "15",
+      "label": "Pustulite",
+      "note": null
+    },
+    {
+      "qty": "20",
+      "label": "Ferment Bladder",
+      "note": null
+    },
+    {
+      "qty": "12",
+      "label": "Sporulate Sac",
+      "note": null
+    },
+    {
+      "qty": "15",
+      "label": "Ganglion",
+      "note": null
+    },
+    {
+      "qty": "30",
+      "label": "Benign Infested Tumor",
+      "note": null
+    },
+    {
+      "qty": "15",
+      "label": "Dendrite Blastoma",
+      "note": null
+    },
+    {
+      "qty": "10",
+      "label": "Son Token",
+      "note": "gild at rank 30"
+    },
+    {
+      "qty": "7,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
     {
@@ -32,7 +98,7 @@
       "place": "NECRALISK, DEIMOS",
       "sub": null,
       "activity": "unlock Son's revivification menu",
-      "meta": "Heart of Deimos",
+      "meta": "one-time",
       "mode": null,
       "live": null,
       "skip": null,
@@ -49,34 +115,89 @@
         },
         {
           "qty": "1",
-          "label": "free Companion Slot",
-          "note": "claiming the revivified Medjay needs it",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Entrati Rank 3, Associate",
-          "note": "gilding needs it; Rank 1 Stranger covers the capture and revivify",
+          "label": "Companion slot",
+          "note": "claiming the revivified Medjay Predasite needs it",
           "alt": null,
           "done": false
         }
       ],
-      "conditions": ["Hitting the daily Entrati standing cap blocks donating pets to Son."],
+      "conditions": [],
       "bonuses": [],
       "disclosures": []
+    },
+    {
+      "type": "currency",
+      "place": "CAMBION DRIFT, DEIMOS",
+      "sub": null,
+      "activity": "Entrati standing for the rank-ups, kit and gild",
+      "meta": "79,650 standing: 71,000 rank-ups, 3,650 kit, 5,000 gild",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": {
+        "currency": "Entrati Standing",
+        "amount": "79,650"
+      },
+      "spends": [],
+      "map": "cambion-drift",
+      "rows": [
+        {
+          "qty": null,
+          "label": "Entrati Rank 1, Stranger",
+          "note": "5,000 standing, 6 Benign Infested Tumor, 6 Ferment Bladder",
+          "alt": null,
+          "done": false,
+          "rank": {
+            "syndicate": "Entrati",
+            "level": 1
+          }
+        },
+        {
+          "qty": null,
+          "label": "Entrati Rank 2, Acquaintance",
+          "note": "22,000 standing, Keratinos Blade Blueprint, 1 Father Token, 1 Daughter Token",
+          "alt": null,
+          "done": false,
+          "rank": {
+            "syndicate": "Entrati",
+            "level": 2
+          }
+        },
+        {
+          "qty": null,
+          "label": "Entrati Rank 3, Associate",
+          "note": "44,000 standing, 3 Sly Vulpaphyla Tag, 3 Vizier Predasite Tag, 1 Mother Token, 1 Son Token",
+          "alt": null,
+          "done": false,
+          "rank": {
+            "syndicate": "Entrati",
+            "level": 3
+          }
+        }
+      ],
+      "conditions": [
+        "Rank 1 Stranger covers the capture and revivify; Rank 3 only gates the gild."
+      ],
+      "bonuses": [],
+      "disclosures": [],
+      "ref": "Entrati Standing"
     },
     {
       "type": "vendor",
       "place": "SON, NECRALISK",
       "sub": null,
-      "activity": "buy the Tranq Rifle, the Echo-Lure and one Mutagen/Antigen pair",
-      "meta": "Rank 1 Stranger",
+      "activity": "buy the Echo-Lure, a Pheromone Gland and one Mutagen/Antigen pair",
+      "meta": "3,650 standing",
       "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [],
+      "spends": [
+        {
+          "currency": "Entrati Standing",
+          "amount": "3,650"
+        }
+      ],
       "map": "necralisk",
       "rows": [
         {
@@ -84,42 +205,59 @@
           "label": "Predasite Echo-Lure",
           "note": "1,000 standing, reusable",
           "alt": null,
-          "done": false
+          "done": false,
+          "rank": {
+            "syndicate": "Entrati",
+            "level": 1
+          }
         },
         {
           "qty": null,
           "label": "Predasite Pheromone Gland",
-          "note": "150 standing, one use; raises the rare subspecies chance",
+          "note": "150 standing, one use",
           "alt": null,
-          "done": false
+          "done": false,
+          "rank": {
+            "syndicate": "Entrati",
+            "level": 1
+          }
         },
         {
           "qty": null,
           "label": "Leptosam Mutagen Blueprint",
           "note": "1,250 standing",
           "alt": "pricier Mutagens at Ranks 2-4",
-          "done": false
+          "done": false,
+          "rank": {
+            "syndicate": "Entrati",
+            "level": 1
+          }
         },
         {
           "qty": null,
           "label": "Iranon Antigen Blueprint",
           "note": "1,250 standing",
           "alt": "pricier Antigens at Ranks 2-4",
-          "done": false
+          "done": false,
+          "rank": {
+            "syndicate": "Entrati",
+            "level": 1
+          }
         }
       ],
       "conditions": [
-        "Mutagen and Antigen only change resistances, polarity and looks; the cheapest pair gives the same Mastery."
+        "Mutagen and Antigen change resistances, polarity and looks; any pair gives the same Mastery."
       ],
       "bonuses": [],
-      "disclosures": []
+      "disclosures": [],
+      "ref": "Entrati Standing"
     },
     {
       "type": "foundry",
       "place": "FOUNDRY",
       "sub": null,
       "activity": "build the Mutagen and Antigen",
-      "meta": "2 min and 1,000 cr each",
+      "meta": "2 min each",
       "mode": null,
       "live": null,
       "skip": null,
@@ -130,14 +268,14 @@
         {
           "qty": null,
           "label": "Leptosam Mutagen",
-          "note": "6 Vome Residue, 15 Pustulite, 20 Ferment Bladder, 12 Sporulate Sac",
+          "note": "1,000 cr, 6 Vome Residue, 15 Pustulite, 20 Ferment Bladder, 12 Sporulate Sac",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Iranon Antigen",
-          "note": "6 Fass Residue, 15 Ganglion, 30 Benign Infested Tumor, 15 Dendrite Blastoma",
+          "note": "1,000 cr, 6 Fass Residue, 15 Ganglion, 30 Benign Infested Tumor, 15 Dendrite Blastoma",
           "alt": null,
           "done": false
         }
@@ -150,10 +288,10 @@
       "type": "bounty",
       "place": "CAMBION DRIFT, DEIMOS",
       "sub": "Vome cycle",
-      "activity": "call an Echo-Lure, tranq a Medjay, then let Infested damage it",
-      "meta": "rare; one Vome window with the lure",
-      "mode": "stealth frame on foot",
-      "live": { "state": "waiting", "text": "wait for Vome; Medjay does not spawn in Fass" },
+      "activity": "conservation at a Predasite call point during Vome",
+      "meta": "rare",
+      "mode": "Vome",
+      "live": null,
       "skip": null,
       "earns": null,
       "spends": [],
@@ -168,47 +306,56 @@
         }
       ],
       "conditions": [
-        "A healthy capture gives only Medjay Predasite Tags, which are Conservation currency and cannot build the companion.",
-        "Your own damage never weakens it; only roaming Infested do. Predasites need two tranq darts.",
-        "Predasites resist Warframe abilities by 75%, and the resistance stacks with repeated use until they are immune."
+        "The Medjay Predasite appears only during Vome.",
+        "A healthy capture gives only Medjay Predasite Tags, not a companion input; it must be Weakened by Infested, before or after tranquilizing it.",
+        "Predasites take two tranq shots and resist Warframe abilities, with sleep duration cut to a quarter."
       ],
       "bonuses": ["Tags from extra captures trade to Son for the Son Tokens gilding needs."],
-      "disclosures": [
-        {
-          "title": "getting the Weakened hit",
-          "body": "Tranq it first, then bring Infested to the sleeping animal and go invisible so aggro switches to it. A Pherliac Pod dropped on it pulls Infested in, and Loki's Switch Teleport can move it into a group. Hunt on foot, not in Archwing, where Infested tend to ignore the target."
-        }
-      ]
+      "disclosures": []
     },
     {
       "type": "vendor",
       "place": "SON, NECRALISK",
       "sub": null,
-      "activity": "revivify, level to 30, gild, level to 30 again",
+      "activity": "revivify, then gild at rank 30",
       "meta": "5,000 cr now; 10 Son Tokens and 5,000 standing to gild",
       "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Entrati Standing", "amount": "5,000" }],
+      "spends": [
+        {
+          "currency": "Entrati Standing",
+          "amount": "5,000"
+        }
+      ],
       "map": "necralisk",
       "rows": [
         {
           "qty": null,
           "label": "Medjay Predasite, revivified",
-          "note": "Weakened Medjay + Mutagen + Antigen + 5,000 credits",
+          "note": "Weakened Medjay Predasite + Mutagen + Antigen + 5,000 credits",
           "alt": null,
           "done": false
+        },
+        {
+          "qty": null,
+          "label": "Medjay Predasite, gilded",
+          "note": "rank 30 first; 10 Son Tokens and 5,000 standing",
+          "alt": null,
+          "done": false,
+          "rank": {
+            "syndicate": "Entrati",
+            "level": 3
+          }
         }
       ],
       "conditions": [
-        "Only a gilded Medjay earns Mastery; gilding resets it to rank 0, so level it to 30 twice.",
-        "Once one gilded Medjay hits rank 30, another build gives no more Mastery.",
+        "Only a gilded Predasite earns Mastery; gilding resets it to rank 0, so level it to 30 twice.",
+        "Mastery is tied to the subspecies: a second gilded Medjay Predasite gives nothing more.",
         "Its Medjay Claws level but give no Mastery."
       ],
-      "bonuses": [
-        "Son Tokens also come from tag trades, pickups on the Drift and Grandmother's Mend the Family trade."
-      ],
+      "bonuses": [],
       "disclosures": []
     }
   ]

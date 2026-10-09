@@ -4,50 +4,131 @@
   "effort": 6,
   "source": "standing",
   "tradeable": false,
-  "progress": { "have": 1, "need": 4, "unit": "Models" },
-  "badges": [{ "text": "Doer gate", "tone": "warn" }],
+  "progress": {
+    "have": 1,
+    "need": 4,
+    "unit": "Models"
+  },
+  "badges": [
+    {
+      "text": "Doer gate",
+      "tone": "warn",
+      "rank": {
+        "syndicate": "Solaris United",
+        "level": 3
+      }
+    }
+  ],
   "prices": [
-    { "label": "four sets, foundry", "amount": "816,000 cr", "money": false },
-    { "label": "rush a part", "amount": "25 p", "money": false }
+    {
+      "label": "four sets, foundry",
+      "amount": "816,000 cr",
+      "money": false
+    },
+    {
+      "label": "rush a part",
+      "amount": "25 p",
+      "money": false
+    }
   ],
   "materials": [
     {
-      "qty": "5,500",
+      "qty": "4,000",
       "label": "Plastids",
-      "note": "4,000 Trux Gyros, 1,500 Travocyte Alloy refines"
+      "note": "Trux Gyro"
     },
-    { "qty": "8", "label": "Morphics", "note": "2 per Model" },
-    { "qty": "7,500", "label": "Salvage", "note": "Travocyte Alloy refines" },
-    { "qty": "3,500", "label": "Ferrite", "note": "Axidrol Alloy refines" },
     {
-      "qty": "1,600",
-      "label": "Rubedo",
-      "note": "700 Axidrol Alloy refines, 900 Venerdo Alloy refines"
+      "qty": "8",
+      "label": "Morphics",
+      "note": "2 per Model"
     },
-    { "qty": "6", "label": "Gallium", "note": "Venerdo Alloy refines" },
-    { "qty": "46", "label": "Training Debt-Bond", "note": null },
-    { "qty": "6", "label": "Shelter Debt-Bond", "note": null },
-    { "qty": "4", "label": "Medical Debt-Bond", "note": null },
-    { "qty": "290", "label": "Travocyte Alloy", "note": null },
-    { "qty": "150", "label": "Smooth Phasmin", "note": null },
-    { "qty": "130", "label": "Axidrol Alloy", "note": null },
-    { "qty": "100", "label": "Thermal Sludge", "note": null },
-    { "qty": "60", "label": "Tepa Nodule", "note": null },
-    { "qty": "50", "label": "Venerdo Alloy", "note": null },
-    { "qty": "40", "label": "Gorgaricus Spore", "note": null },
-    { "qty": "30", "label": "Heart Noctrul", "note": null },
-    { "qty": "20", "label": "Mytocardia Spore", "note": null },
-    { "qty": "20", "label": "Goblite Tears", "note": null },
-    { "qty": "100", "label": "Echowinder Anoscopic Sensor", "note": null },
-    { "qty": "40", "label": "Brickie Muon Battery", "note": null },
-    { "qty": "901,000", "label": "Credits", "note": null }
+    {
+      "qty": "46",
+      "label": "Training Debt-Bond",
+      "note": null
+    },
+    {
+      "qty": "6",
+      "label": "Shelter Debt-Bond",
+      "note": null
+    },
+    {
+      "qty": "4",
+      "label": "Medical Debt-Bond",
+      "note": null
+    },
+    {
+      "qty": "290",
+      "label": "Travocyte Alloy",
+      "note": null
+    },
+    {
+      "qty": "150",
+      "label": "Smooth Phasmin",
+      "note": null
+    },
+    {
+      "qty": "130",
+      "label": "Axidrol Alloy",
+      "note": null
+    },
+    {
+      "qty": "100",
+      "label": "Thermal Sludge",
+      "note": null
+    },
+    {
+      "qty": "60",
+      "label": "Tepa Nodule",
+      "note": null
+    },
+    {
+      "qty": "50",
+      "label": "Venerdo Alloy",
+      "note": null
+    },
+    {
+      "qty": "40",
+      "label": "Gorgaricus Spore",
+      "note": null
+    },
+    {
+      "qty": "30",
+      "label": "Heart Noctrul",
+      "note": null
+    },
+    {
+      "qty": "20",
+      "label": "Mytocardia Spore",
+      "note": null
+    },
+    {
+      "qty": "20",
+      "label": "Goblite Tears",
+      "note": null
+    },
+    {
+      "qty": "100",
+      "label": "Echowinder Anoscopic Sensor",
+      "note": null
+    },
+    {
+      "qty": "40",
+      "label": "Brickie Muon Battery",
+      "note": null
+    },
+    {
+      "qty": "901,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
     {
       "type": "gate",
       "place": "FORTUNA, VENUS",
       "sub": null,
-      "activity": "Vox Solaris, from Eudico",
+      "activity": "finish Vox Solaris",
       "meta": "one-time",
       "mode": null,
       "live": null,
@@ -56,20 +137,16 @@
       "spends": [],
       "map": "orb-vallis",
       "rows": [
-        { "qty": null, "label": "Venus Junction", "note": null, "alt": null, "done": true },
-        { "qty": null, "label": "The Teacher", "note": null, "alt": null, "done": true },
         {
           "qty": null,
-          "label": "Vox Solaris quest",
-          "note": "opens Legs' full shop",
+          "label": "Vox Solaris",
+          "note": "unlocks Legs and Solaris United standing",
           "alt": null,
-          "done": true
+          "done": false
         }
       ],
-      "conditions": ["No mastery rank is required anywhere on this plan"],
-      "bonuses": [
-        "Also opens The Business for fishing, Smokefinger for mining and Ticker for debt-bonds"
-      ],
+      "conditions": [],
+      "bonuses": [],
       "disclosures": []
     },
     {
@@ -77,28 +154,36 @@
       "place": "ORB VALLIS, VENUS",
       "sub": null,
       "activity": "Conservation, rare Kubrodons",
-      "meta": "~8,000 per 5 min",
+      "meta": null,
       "mode": "solo, normal",
-      "live": { "state": "open", "text": "Warm now, 12m left" },
+      "live": null,
       "skip": null,
-      "earns": { "currency": "Solaris United Standing", "amount": "103,500" },
+      "earns": {
+        "currency": "Solaris United Standing",
+        "amount": "111,500"
+      },
       "spends": [],
       "map": "orb-vallis",
       "rows": [
         {
           "qty": "103,500",
-          "label": "Solaris United standing",
-          "note": "71,000 of it burns on rank-ups",
-          "alt": "or sell raw gems to Smokefinger",
+          "label": "rank-ups, blueprints and gilds",
+          "note": "71,000 rank-ups, 12,500 parts, 20,000 gilds",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "8,000",
+          "label": "refining blueprints",
+          "note": "reusable, 1,000 at Neutral, 2,000 for Venerdo and Goblite at Outworlder",
+          "alt": null,
           "done": false
         }
       ],
       "conditions": [
         "Rank-ups consume standing on top of the ceiling, so Doer costs 71,000 earned, not 44,000"
       ],
-      "bonuses": [
-        "Loki with Rest & Rage subsumed makes the capture loop about 8,000 standing every five minutes"
-      ],
+      "bonuses": [],
       "disclosures": [],
       "ref": "Solaris United Standing"
     },
@@ -112,7 +197,12 @@
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Solaris United Standing", "amount": "71,000" }],
+      "spends": [
+        {
+          "currency": "Solaris United Standing",
+          "amount": "71,000"
+        }
+      ],
       "map": "orb-vallis",
       "rows": [
         {
@@ -120,7 +210,7 @@
           "label": "Outworlder",
           "note": "5,000 standing, 2 Training",
           "alt": null,
-          "done": true
+          "done": false
         },
         {
           "qty": null,
@@ -134,7 +224,11 @@
           "label": "Doer",
           "note": "44,000 standing, 2 Training + 3 Shelter + 4 Medical",
           "alt": null,
-          "done": false
+          "done": false,
+          "rank": {
+            "syndicate": "Solaris United",
+            "level": 3
+          }
         }
       ],
       "conditions": [
@@ -154,7 +248,12 @@
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Solaris United Standing", "amount": "12,500" }],
+      "spends": [
+        {
+          "currency": "Solaris United Standing",
+          "amount": "12,500"
+        }
+      ],
       "map": "orb-vallis",
       "rows": [
         {
@@ -162,7 +261,7 @@
           "label": "Para Model",
           "note": "Whiplash Mine, Anti-Grav Grenade",
           "alt": null,
-          "done": true
+          "done": false
         },
         {
           "qty": null,
@@ -219,7 +318,7 @@
       "disclosures": [
         {
           "title": "which Core, Gyro and Bracket to pair",
-          "body": "Core and Gyro only matter for clearing 343 base shields so Reinforced Bond stays live. Drex's +15% shields against the 350 base clears it even with Trux's -5%, and Nychus' Blast Shield pushes past it anyway. Tian is the bracket pick at the same 500 standing because its extra Vazarin saves a Forma; every bracket already carries four Penjaga. Run the same cheap three on all four builds, since nothing above the 500-standing tier changes the mastery."
+          "body": "Only the Model earns Mastery; Core, Gyro and Bracket change stats and looks. Drex, Trux and Tian are the Neutral-rank parts; Tian adds a Vazarin polarity."
         }
       ]
     },
@@ -243,9 +342,27 @@
           "alt": null,
           "done": false
         },
-        { "qty": "4", "label": "Drex Core", "note": null, "alt": null, "done": false },
-        { "qty": "4", "label": "Trux Gyro", "note": null, "alt": null, "done": false },
-        { "qty": "4", "label": "Tian Bracket", "note": null, "alt": null, "done": false }
+        {
+          "qty": "4",
+          "label": "Drex Core",
+          "note": null,
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "4",
+          "label": "Trux Gyro",
+          "note": null,
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "4",
+          "label": "Tian Bracket",
+          "note": null,
+          "alt": null,
+          "done": false
+        }
       ],
       "conditions": [
         "Every part is the same 24 h and 50,000 credits, so one queue is a single day and four queues is four days"
@@ -291,13 +408,42 @@
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Solaris United Standing", "amount": "20,000" }],
+      "spends": [
+        {
+          "currency": "Solaris United Standing",
+          "amount": "20,000"
+        }
+      ],
       "map": "orb-vallis",
       "rows": [
-        { "qty": null, "label": "Para, gilded", "note": null, "alt": null, "done": true },
-        { "qty": null, "label": "Lambeo, gilded", "note": null, "alt": null, "done": false },
-        { "qty": null, "label": "Oloro, gilded", "note": null, "alt": null, "done": false },
-        { "qty": null, "label": "Nychus, gilded", "note": null, "alt": null, "done": false }
+        {
+          "qty": null,
+          "label": "Para, gilded",
+          "note": null,
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Lambeo, gilded",
+          "note": null,
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Oloro, gilded",
+          "note": null,
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Nychus, gilded",
+          "note": null,
+          "alt": null,
+          "done": false
+        }
       ],
       "conditions": [
         "Gilding is what banks the mastery, and it resets the MOA to rank 0, so every Model is two trips to rank 30",

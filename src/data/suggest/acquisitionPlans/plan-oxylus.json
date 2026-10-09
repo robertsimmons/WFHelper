@@ -4,50 +4,99 @@
   "effort": 5,
   "source": "standing",
   "tradeable": false,
-  "progress": { "have": 0, "need": 1, "unit": "blueprint" },
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "blueprint"
+  },
   "badges": [
-    { "text": "Rank 5 Old Mate", "tone": "warn" },
-    { "text": "Warm-only Longwinders", "tone": "warn" }
+    {
+      "text": "Old Mate required",
+      "tone": "warn",
+      "rank": {
+        "syndicate": "Solaris United",
+        "level": 5
+      }
+    },
+    {
+      "text": "Longwinders need warm weather",
+      "tone": "warn"
+    }
   ],
   "prices": [
-    { "label": "rank-ups to Old Mate", "amount": "385,000 cr", "money": false },
-    { "label": "build", "amount": "15,000 cr", "money": false }
+    {
+      "label": "blueprint",
+      "amount": "20,000 standing",
+      "money": false
+    },
+    {
+      "label": "build",
+      "amount": "15,000 cr",
+      "money": false
+    }
   ],
   "materials": [
-    { "qty": "6", "label": "Training Debt-Bond", "note": null },
-    { "qty": "9", "label": "Shelter Debt-Bond", "note": null },
-    { "qty": "11", "label": "Medical Debt-Bond", "note": null },
-    { "qty": "10", "label": "Advances Debt-Bond", "note": null },
-    { "qty": "10", "label": "Longwinder Lathe Coagulant", "note": null },
-    { "qty": "40", "label": "Scrap", "note": null },
-    { "qty": "15", "label": "Goblite Tears", "note": null },
-    { "qty": "45", "label": "Axidrol Alloy", "note": null },
-    { "qty": "400,000", "label": "Credits", "note": null }
+    {
+      "qty": "15",
+      "label": "Goblite Tears",
+      "note": null
+    },
+    {
+      "qty": "45",
+      "label": "Axidrol Alloy",
+      "note": null
+    },
+    {
+      "qty": "40",
+      "label": "Scrap",
+      "note": null
+    },
+    {
+      "qty": "10",
+      "label": "Longwinder Lathe Coagulant",
+      "note": null
+    },
+    {
+      "qty": "400,000",
+      "label": "Credits",
+      "note": "385,000 Old Mate rank-ups, 15,000 build"
+    }
   ],
   "groups": [
     {
       "type": "gate",
       "place": "FORTUNA, VENUS",
       "sub": null,
-      "activity": "finish Vox Solaris",
-      "meta": "one-time",
+      "activity": "finish Vox Solaris, then rank Solaris United to Old Mate",
+      "meta": "Rank 5",
       "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
       "spends": [],
-      "map": "orb-vallis",
+      "map": null,
       "rows": [
         {
           "qty": null,
           "label": "Vox Solaris",
-          "note": "unlocks The Business, Smokefinger, Ticker and Solaris United standing",
+          "note": "unlocks Fortuna",
           "alt": null,
           "done": false
         },
         {
+          "qty": null,
+          "label": "Solaris United Rank 5, Old Mate",
+          "note": "sacrifices 6 Training, 9 Shelter, 11 Medical, 10 Advances and 5 Familial Debt-Bonds plus 385,000 cr across the five rank-ups",
+          "alt": null,
+          "done": false,
+          "rank": {
+            "syndicate": "Solaris United",
+            "level": 5
+          }
+        },
+        {
           "qty": "2",
-          "label": "free Companion slots",
+          "label": "2 free Companion slots",
           "note": "one for Oxylus, one for its Multron",
           "alt": null,
           "done": false
@@ -61,19 +110,40 @@
       "type": "currency",
       "place": "ORB VALLIS, VENUS",
       "sub": null,
-      "activity": "Conservation, mining turn-ins and bounties",
-      "meta": "capped daily",
-      "mode": "solo, normal",
+      "activity": "Solaris United standing for the rank-ups, tools and blueprints",
+      "meta": "263,500 standing",
+      "mode": null,
       "live": null,
       "skip": null,
-      "earns": { "currency": "Solaris United Standing", "amount": "240,000" },
+      "earns": {
+        "currency": "Solaris United Standing",
+        "amount": "263,500"
+      },
       "spends": [],
       "map": "orb-vallis",
       "rows": [
         {
           "qty": "240,000",
           "label": "rank-ups to Old Mate",
-          "note": "Rank 5, total across every rank",
+          "note": "5,000 / 22,000 / 44,000 / 70,000 / 99,000 per rank",
+          "alt": null,
+          "done": false,
+          "rank": {
+            "syndicate": "Solaris United",
+            "level": 5
+          }
+        },
+        {
+          "qty": "20,000",
+          "label": "Oxylus blueprint",
+          "note": "Legs sells it at Old Mate",
+          "alt": "or claim it as the free Rank 5 vendor item",
+          "done": false
+        },
+        {
+          "qty": "3,500",
+          "label": "refining blueprints and fishing spear",
+          "note": "Axidrol, Goblite, Shockprod",
           "alt": null,
           "done": false
         }
@@ -82,34 +152,6 @@
       "bonuses": [],
       "disclosures": [],
       "ref": "Solaris United Standing"
-    },
-    {
-      "type": "bounty",
-      "place": "ORB VALLIS, VENUS",
-      "sub": null,
-      "activity": "Eudico bounties, plus Ticker",
-      "meta": "41 bonds",
-      "mode": "solo",
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": "orb-vallis",
-      "rows": [
-        {
-          "qty": "5",
-          "label": "Familial Debt-Bond",
-          "note": null,
-          "alt": "or Ticker's cases",
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Bonds are the real rank-up bottleneck; check Ticker every visit.",
-        "Stage 1 of a Vallis bounty pays no bonds, so run bounties to the end."
-      ],
-      "bonuses": ["Narmer bounties were named more than once as quick standing plus bonds."],
-      "disclosures": []
     },
     {
       "type": "vendor",
@@ -121,7 +163,12 @@
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Solaris United Standing", "amount": "23,500" }],
+      "spends": [
+        {
+          "currency": "Solaris United Standing",
+          "amount": "23,500"
+        }
+      ],
       "map": "orb-vallis",
       "rows": [
         {
@@ -157,15 +204,17 @@
           "label": "Oxylus Blueprint",
           "note": "20,000 standing, Old Mate, The Business",
           "alt": "claim it as the free Rank 5 vendor item",
-          "done": false
+          "done": false,
+          "rank": {
+            "syndicate": "Solaris United",
+            "level": 5
+          }
         }
       ],
       "conditions": [
-        "A Cetus spear damages servofish, and a damaged fish dismantles into fewer parts."
+        "Longwinders only bite in warm weather, at the lake behind the Fortuna entrance."
       ],
-      "bonuses": [
-        "Taking the blueprint as the Old Mate freebie saves 20,000 standing, about a day of cap."
-      ],
+      "bonuses": [],
       "disclosures": []
     },
     {
@@ -189,14 +238,9 @@
           "done": false
         }
       ],
-      "conditions": ["Oxylus and its Multron are separate Mastery items; level both."],
+      "conditions": [],
       "bonuses": [],
-      "disclosures": [
-        {
-          "title": "what you're getting",
-          "body": "Almost universally treated as Mastery fodder and called the weakest sentinel in combat; its fishing precept is the only part anyone rates."
-        }
-      ]
+      "disclosures": []
     }
   ]
 }

@@ -4,21 +4,59 @@
   "effort": 2,
   "source": "shop",
   "tradeable": false,
-  "progress": { "have": 0, "need": 1, "unit": "blueprint" },
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "blueprint"
+  },
   "badges": [
-    { "text": "credits only", "tone": "info" },
-    { "text": "Argon decays", "tone": "warn" }
+    {
+      "text": "credits only",
+      "tone": "info"
+    },
+    {
+      "text": "Argon decays",
+      "tone": "warn"
+    }
   ],
   "prices": [
-    { "label": "blueprint", "amount": "30,000 cr", "money": false },
-    { "label": "build", "amount": "20,000 cr", "money": false }
+    {
+      "label": "blueprint",
+      "amount": "30,000 cr",
+      "money": false
+    },
+    {
+      "label": "build",
+      "amount": "20,000 cr",
+      "money": false
+    }
   ],
   "materials": [
-    { "qty": "6", "label": "Gallium", "note": null },
-    { "qty": "2,150", "label": "Circuits", "note": null },
-    { "qty": "1,200", "label": "Polymer Bundle", "note": null },
-    { "qty": "2", "label": "Argon Crystal", "note": null },
-    { "qty": "50,000", "label": "Credits", "note": null }
+    {
+      "qty": "6",
+      "label": "Gallium",
+      "note": null
+    },
+    {
+      "qty": "2,150",
+      "label": "Circuits",
+      "note": null
+    },
+    {
+      "qty": "1,200",
+      "label": "Polymer Bundle",
+      "note": null
+    },
+    {
+      "qty": "2",
+      "label": "Argon Crystal",
+      "note": null
+    },
+    {
+      "qty": "50,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
     {
@@ -58,8 +96,19 @@
       "earns": null,
       "spends": [],
       "map": null,
-      "rows": [{ "qty": null, "label": "Arca Titron", "note": null, "alt": null, "done": false }],
-      "conditions": [],
+      "rows": [
+        {
+          "qty": null,
+          "label": "Arca Titron",
+          "note": "20,000 cr, 6 Gallium, 2,150 Circuits, 1,200 Polymer Bundle, 2 Argon Crystal",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Argon Crystal halves every day at 00:00 GMT once it is a day old. Farm it last and start the build the same day.",
+        "Cancelling the build does not refund the Argon."
+      ],
       "bonuses": [],
       "disclosures": []
     }

@@ -4,18 +4,54 @@
   "effort": 3,
   "source": "duviri",
   "tradeable": false,
-  "progress": { "have": 0, "need": 1, "unit": "blueprint" },
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "blueprint"
+  },
   "badges": [
-    { "text": "60 Pathos Clamps", "tone": "warn" },
-    { "text": "needs The Hex", "tone": "warn" }
+    {
+      "text": "60 Pathos Clamps",
+      "tone": "warn"
+    },
+    {
+      "text": "needs The Hex",
+      "tone": "warn"
+    }
   ],
-  "prices": [{ "label": "build", "amount": "30,000 cr", "money": false }],
+  "prices": [
+    {
+      "label": "build",
+      "amount": "30,000 cr",
+      "money": false
+    }
+  ],
   "materials": [
-    { "qty": "20", "label": "Silphsela", "note": null },
-    { "qty": "30", "label": "Rune Marrow", "note": null },
-    { "qty": "40", "label": "Kovnik", "note": null },
-    { "qty": "150", "label": "Aggristone", "note": null },
-    { "qty": "30,000", "label": "Credits", "note": null }
+    {
+      "qty": "20",
+      "label": "Silphsela",
+      "note": null
+    },
+    {
+      "qty": "30",
+      "label": "Rune Marrow",
+      "note": null
+    },
+    {
+      "qty": "40",
+      "label": "Kovnik",
+      "note": null
+    },
+    {
+      "qty": "150",
+      "label": "Aggristone",
+      "note": null
+    },
+    {
+      "qty": "30,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
     {
@@ -58,10 +94,13 @@
       "sub": "Isleweaver",
       "activity": "kill the Fragmented, loot the end chest",
       "meta": "10 clamps normal, 15 Steel Path",
-      "mode": "as your Warframe, ~10-15 min normal",
+      "mode": null,
       "live": null,
       "skip": null,
-      "earns": { "currency": "Pathos Clamp", "amount": "60" },
+      "earns": {
+        "currency": "Pathos Clamp",
+        "amount": "60"
+      },
       "spends": [],
       "map": "duviri",
       "rows": [
@@ -69,18 +108,18 @@
           "qty": "60",
           "label": "Pathos Clamp",
           "note": "Isleweaver end chest",
-          "alt": "Orowyrm chest or Undercroft side portals, 1 each (3 Steel Path)",
+          "alt": "Orowyrm chest, 10 (15 Steel Path); Undercroft side portal, 1 (3 Steel Path)",
           "done": false
         }
       ],
-      "conditions": ["The Fragmented is weak to Electricity."],
+      "conditions": [],
       "bonuses": [
-        "Steel Path Duviri's 3 bonus Undercroft portals can add roughly 24 clamps in an 18-20 minute run."
+        "Each of the three Steel Path Undercroft side portals pays 3 clamps; the Orowyrm chest pays 15."
       ],
       "disclosures": [
         {
           "title": "Orowyrm alternative",
-          "body": "If Isleweaver isn't reachable yet, the Orowyrm chest at the end of the Duviri Experience or Lone Story pays the same 10 clamps (15 Steel Path). In phase 2, stay on foot or fly a mobile frame like Titania and shoot the wyrmlings instead of riding the Kaithe; don't fly in front of its mouth."
+          "body": "Without The Hex, the Orowyrm chest at the end of the Duviri Experience or Lone Story pays the same 10 clamps (15 Steel Path); Undercroft side portals pay 1 each (3 Steel Path)."
         }
       ],
       "ref": "Pathos Clamp"
@@ -95,7 +134,12 @@
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Pathos Clamp", "amount": "60" }],
+      "spends": [
+        {
+          "currency": "Pathos Clamp",
+          "amount": "60"
+        }
+      ],
       "map": "duviri",
       "rows": [
         {
@@ -135,12 +179,7 @@
       ],
       "conditions": [],
       "bonuses": [],
-      "disclosures": [
-        {
-          "title": "early hotfix",
-          "body": "Hotfix 33.6.1 fixed an early bug where the heavy-attack glaive hurt its own user at close range; current behavior is safe."
-        }
-      ]
+      "disclosures": []
     }
   ]
 }

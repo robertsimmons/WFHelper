@@ -4,31 +4,81 @@
   "effort": 3,
   "source": "dojo",
   "tradeable": "components only",
-  "progress": { "have": 0, "need": 3, "unit": "parts" },
+  "progress": {
+    "have": 0,
+    "need": 3,
+    "unit": "parts"
+  },
   "badges": [
-    { "text": "Tenno Lab gate", "tone": "warn" },
-    { "text": "no RNG", "tone": "info" }
+    {
+      "text": "Tenno Lab gate",
+      "tone": "warn"
+    },
+    {
+      "text": "no RNG",
+      "tone": "info"
+    }
   ],
   "prices": [
-    { "label": "lab blueprints", "amount": "60,000 cr", "money": false },
-    { "label": "built", "amount": "275 p", "money": false }
+    {
+      "label": "lab blueprints",
+      "amount": "60,000 cr",
+      "money": false
+    },
+    {
+      "label": "built",
+      "amount": "275 p",
+      "money": false
+    }
   ],
   "materials": [
-    { "qty": "10", "label": "Nitain Extract", "note": null },
-    { "qty": "11,100", "label": "Alloy Plate", "note": null },
-    { "qty": "7,800", "label": "Polymer Bundle", "note": null },
-    { "qty": "3,700", "label": "Circuits", "note": null },
-    { "qty": "6,700", "label": "Salvage", "note": null },
-    { "qty": "1", "label": "Control Module", "note": null },
-    { "qty": "5", "label": "Neurodes", "note": null },
-    { "qty": "130,000", "label": "Credits", "note": null }
+    {
+      "qty": "10",
+      "label": "Nitain Extract",
+      "note": null
+    },
+    {
+      "qty": "11,100",
+      "label": "Alloy Plate",
+      "note": null
+    },
+    {
+      "qty": "7,800",
+      "label": "Polymer Bundle",
+      "note": null
+    },
+    {
+      "qty": "3,700",
+      "label": "Circuits",
+      "note": null
+    },
+    {
+      "qty": "6,700",
+      "label": "Salvage",
+      "note": null
+    },
+    {
+      "qty": "1",
+      "label": "Control Module",
+      "note": null
+    },
+    {
+      "qty": "5",
+      "label": "Neurodes",
+      "note": null
+    },
+    {
+      "qty": "130,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
     {
       "type": "gate",
-      "place": "MARS JUNCTION",
+      "place": "THE ARCHWING",
       "sub": null,
-      "activity": "unlock Archwing",
+      "activity": "finish the quest that unlocks Archwing",
       "meta": null,
       "mode": null,
       "live": null,
@@ -39,8 +89,8 @@
       "rows": [
         {
           "qty": null,
-          "label": "The Archwing quest",
-          "note": "unlocked by the Mars Junction; the lab won't sell Amesha blueprints before this",
+          "label": "The Archwing",
+          "note": "the lab sells no Amesha blueprints before this",
           "alt": null,
           "done": false
         }
@@ -59,7 +109,12 @@
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Credits", "amount": "60,000" }],
+      "spends": [
+        {
+          "currency": "Credits",
+          "amount": "60,000"
+        }
+      ],
       "map": null,
       "rows": [
         {
@@ -116,12 +171,8 @@
           "done": false
         }
       ],
-      "conditions": [
-        "The main blueprint is not tradeable, only the three components are: a warframe.market 'Amesha Set' selling components only cannot be built without clan lab access."
-      ],
-      "bonuses": [
-        "Pairs naturally with the Mausolon: Voidrig hands that out for free, and it's the default archgun answer in almost every 'what archgun' thread."
-      ],
+      "conditions": ["Only the three components trade; the main blueprint comes from the lab."],
+      "bonuses": [],
       "disclosures": []
     }
   ]

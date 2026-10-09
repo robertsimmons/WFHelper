@@ -4,24 +4,74 @@
   "effort": 2,
   "source": "repeat",
   "tradeable": false,
-  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "progress": {
+    "have": 0,
+    "need": 4,
+    "unit": "parts"
+  },
   "badges": [
-    { "text": "hard pity", "tone": "info" },
-    { "text": "Earth", "tone": "info" }
+    {
+      "text": "hard pity",
+      "tone": "info"
+    },
+    {
+      "text": "Earth",
+      "tone": "info"
+    }
   ],
   "prices": [
-    { "label": "build", "amount": "90,000 cr", "money": false },
-    { "label": "buy all blueprints", "amount": "317 Fate Pearls", "money": false }
+    {
+      "label": "build",
+      "amount": "90,000 cr",
+      "money": false
+    },
+    {
+      "label": "buy all blueprints",
+      "amount": "317 Fate Pearls",
+      "money": false
+    }
   ],
   "materials": [
-    { "qty": "2", "label": "Rubedo", "note": "1 per Blade" },
-    { "qty": "150", "label": "Alloy Plate", "note": "Handle" },
-    { "qty": "100", "label": "Polymer Bundle", "note": "Handle" },
-    { "qty": "2", "label": "Cetus Wisp", "note": "Amanata Blade" },
-    { "qty": "6", "label": "Sharrac Teeth", "note": "Amanata Blade" },
-    { "qty": "10", "label": "Tear Azurite", "note": "Amanata Handle" },
-    { "qty": "33", "label": "Fate Pearl", "note": null },
-    { "qty": "90,000", "label": "Credits", "note": null }
+    {
+      "qty": "2",
+      "label": "Rubedo",
+      "note": "1 per Blade"
+    },
+    {
+      "qty": "150",
+      "label": "Alloy Plate",
+      "note": "Handle"
+    },
+    {
+      "qty": "100",
+      "label": "Polymer Bundle",
+      "note": "Handle"
+    },
+    {
+      "qty": "2",
+      "label": "Cetus Wisp",
+      "note": "Amanata Blade"
+    },
+    {
+      "qty": "6",
+      "label": "Sharrac Teeth",
+      "note": "Amanata Blade"
+    },
+    {
+      "qty": "10",
+      "label": "Tear Azurite",
+      "note": "Amanata Handle"
+    },
+    {
+      "qty": "47",
+      "label": "Fate Pearl",
+      "note": null
+    },
+    {
+      "qty": "90,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
     {
@@ -37,8 +87,20 @@
       "spends": [],
       "map": null,
       "rows": [
-        { "qty": null, "label": "Saya's Vigil", "note": "required", "alt": null, "done": false },
-        { "qty": null, "label": "Once Awake", "note": "required", "alt": null, "done": false }
+        {
+          "qty": null,
+          "label": "Saya's Vigil",
+          "note": "required",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Once Awake",
+          "note": "required",
+          "alt": null,
+          "done": false
+        }
       ],
       "conditions": [
         "Saya's Visions does not appear on Earth, or Koumei's Shrine at the Cetus entrance, until both quests are complete."
@@ -55,7 +117,10 @@
       "mode": "normal; public recommended",
       "live": null,
       "skip": null,
-      "earns": { "currency": "Fate Pearl", "amount": "317" },
+      "earns": {
+        "currency": "Fate Pearl",
+        "amount": "317"
+      },
       "spends": [],
       "map": "plains-of-eidolon",
       "rows": [
@@ -82,64 +147,19 @@
         }
       ],
       "conditions": [
-        "Deliver 5 offerings, kill 30 Infested per squad member (up to 120), drop the Oni to half HP, deliver 2 more offerings, then finish the Oni. The mission can't be shortened, only run faster.",
-        "The table is shared with 11 other Koumei, Higasa and Amanata parts, so most clears reward something else.",
-        "Run normal mode, not Steel Path: the Oni's damage attenuation there roughly doubles clear time for only a few extra Pearls."
+        "Deliver 5 offerings, kill 30 Infested per squad member (up to 120), drop the Oni to half HP, deliver 2 more offerings, then finish the Oni.",
+        "The table is shared with the Koumei and Higasa parts, so most clears reward something else.",
+        "Don't buy early: run until drops fill most of the set, then spend Pearls on what is missing."
       ],
       "bonuses": [
-        "Stockpile offerings during the Exterminate phase and deliver both the moment the half-HP window opens; a second basket is carriable after The War Within.",
-        "Crowd control at both offering huts (Vauban, Khora, Mirage) keeps the delivery timer running; Nova, Volt or Wisp speed helps the runners.",
-        "Public matchmaking is busy since Koumei is early-game, so other players often do the deliveries for you."
+        "Hold offerings during the Exterminate phase and deliver them when the Oni goes invulnerable; after The War Within the Operator can carry a second one."
       ],
       "disclosures": [
         {
           "title": "the zero-luck ceiling",
-          "body": "The blueprint, two Blades and the Handle cost 270 Pearls bought outright, then crafting consumes another 47. At normal rewards that is roughly 20 runs total."
+          "body": "The blueprint, two Blades and the Handle cost 270 Pearls bought outright, then crafting consumes another 47. At 14-18 Pearls a clear that is 18 to 23 runs."
         }
       ]
-    },
-    {
-      "type": "vendor",
-      "place": "CETUS, EARTH",
-      "sub": "Koumei's Shrine",
-      "activity": "buy missing blueprints",
-      "meta": "hard pity",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [{ "currency": "Fate Pearl", "amount": "270" }],
-      "map": "plains-of-eidolon",
-      "rows": [
-        {
-          "qty": null,
-          "label": "Amanata Blueprint",
-          "note": "135 Fate Pearls",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "2",
-          "label": "Blade Blueprint",
-          "note": "45 Fate Pearls each",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Handle Blueprint",
-          "note": "45 Fate Pearls",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Spend only on the blueprints still missing once you have enough Pearls for all of them, so a later drop doesn't waste a purchase."
-      ],
-      "bonuses": [
-        "Amanata Pressure, the weapon's augment, costs 150 Fate Pearls here but only appears once Steel Path is unlocked."
-      ],
-      "disclosures": []
     },
     {
       "type": "foundry",
@@ -151,7 +171,12 @@
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Fate Pearl", "amount": "47" }],
+      "spends": [
+        {
+          "currency": "Fate Pearl",
+          "amount": "47"
+        }
+      ],
       "map": null,
       "rows": [
         {

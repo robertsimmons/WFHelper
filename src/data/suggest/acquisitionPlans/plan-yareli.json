@@ -10,23 +10,35 @@
     { "text": "Bash Lab", "tone": "warn" }
   ],
   "prices": [{ "label": "built", "amount": "325 p", "money": false }],
+  "routes": [
+    {
+      "name": "The Waverider, then the Bash Lab",
+      "cost": "the quest gives the main blueprint; the three parts are clan research at 15,000 credits each",
+      "effort": 5,
+      "role": "chosen"
+    },
+    {
+      "name": "After the quest: Cephalon Simaris",
+      "cost": "50,000 Simaris Standing buys another main blueprint; the parts still come from the Bash Lab",
+      "effort": 4,
+      "role": "afterQuest"
+    }
+  ],
   "materials": [
-    { "qty": "1,750", "label": "Alloy Plate", "note": null },
-    { "qty": "1,500", "label": "Nano Spores", "note": null },
-    { "qty": "875", "label": "Salvage", "note": null },
-    { "qty": "350", "label": "Circuits", "note": null },
-    { "qty": "350", "label": "Cryotic", "note": null },
-    { "qty": "150", "label": "Plastids", "note": null },
+    { "qty": "1,750", "label": "Alloy Plate", "note": "Systems" },
+    { "qty": "1,500", "label": "Nano Spores", "note": "Chassis" },
+    { "qty": "875", "label": "Salvage", "note": "Neuroptics" },
+    { "qty": "350", "label": "Circuits", "note": "Chassis" },
+    { "qty": "350", "label": "Cryotic", "note": "Systems" },
+    { "qty": "150", "label": "Plastids", "note": "Neuroptics" },
     { "qty": "2", "label": "Argon Crystal", "note": "Neuroptics" },
     { "qty": "2", "label": "Tellurium", "note": "Chassis" },
     { "qty": "2", "label": "Nitain Extract", "note": "Systems" },
     { "qty": "3", "label": "Orokin Cell", "note": "Yareli" },
-    { "qty": "300", "label": "Rubedo", "note": "Venerdo Alloy refine" },
-    { "qty": "2", "label": "Gallium", "note": "Venerdo Alloy refine" },
     { "qty": "10", "label": "Heart Noctrul", "note": "Neuroptics" },
     { "qty": "20", "label": "Venerdo Alloy", "note": "Chassis" },
     { "qty": "5", "label": "Scrubber Exa Brain", "note": "Systems" },
-    { "qty": "100,000", "label": "Credits", "note": null }
+    { "qty": "115,000", "label": "Credits", "note": null }
   ],
   "groups": [
     {
@@ -62,10 +74,11 @@
         "The Waverider is solo-only. Start it from the Codex after the inbox message arrives, then speak to Boon."
       ],
       "bonuses": [],
-      "disclosures": []
+      "disclosures": [],
+      "quest": "The Waverider"
     },
     {
-      "type": "gate",
+      "type": "farm",
       "place": "ORB VALLIS, VENUS",
       "sub": "The Waverider #1 comic",
       "activity": "complete 15 K-Drive challenges",
@@ -87,13 +100,12 @@
         {
           "qty": null,
           "label": "Yareli Blueprint",
-          "note": "mailed by Grandmother after the quest",
-          "alt": "50,000 Cephalon Simaris standing if lost",
+          "note": "quest reward",
+          "alt": null,
           "done": false
         }
       ],
       "conditions": [
-        "The current quest has 15 challenges, not the 25 shown in pre-Update-34 guides.",
         "Races appear on the map only while standing on a K-Drive; race gates alone satisfy the race-point requirements, so prioritize long open races.",
         "For the five-second airtime and difficult chain feats, archwing high up, dismount with melee, then summon the K-Drive mid-air. Bind it to a gear hotkey first.",
         "The Pearl's circular rim and the coolant-tower roots are forgiving combo spots. On the pipe behind Fortuna, grind, charge-jump, rotate, and land back on the pipe.",
@@ -106,48 +118,47 @@
       "disclosures": [
         {
           "title": "skill gate, not a drop farm",
-          "body": "There is no part-drop RNG and no replay route. The quest yields only Yareli's main blueprint; the three component blueprints come separately from a clan's Ventkids' Bash Lab."
+          "body": "There is no part-drop RNG. The quest yields only Yareli's main blueprint; the three component blueprints come separately from a clan's Ventkids' Bash Lab."
         }
-      ]
+      ],
+      "quest": "The Waverider"
     },
     {
       "type": "vendor",
       "place": "CLAN DOJO",
       "sub": "Ventkids' Bash Lab",
       "activity": "buy the component blueprints",
-      "meta": "30,000 credits",
+      "meta": "45,000 credits",
       "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Credits", "amount": "30,000" }],
+      "spends": [{ "currency": "Credits", "amount": "45,000" }],
       "map": null,
       "rows": [
         {
           "qty": null,
           "label": "Yareli Neuroptics Blueprint",
-          "note": "10,000 credits",
+          "note": "15,000 credits",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Yareli Chassis Blueprint",
-          "note": "10,000 credits",
+          "note": "15,000 credits",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Yareli Systems Blueprint",
-          "note": "10,000 credits",
+          "note": "15,000 credits",
           "alt": null,
           "done": false
         }
       ],
-      "conditions": [
-        "The Bash Lab is its own dojo room, not the Tenno, Energy, Bio, or Chem Lab. Verify it through dojo fast travel before joining a clan for Yareli."
-      ],
+      "conditions": ["The Bash Lab is its own dojo room, not the Tenno, Energy, Bio, or Chem Lab."],
       "bonuses": [],
       "disclosures": []
     },
@@ -199,5 +210,62 @@
       "bonuses": [],
       "disclosures": []
     }
-  ]
+  ],
+  "afterQuest": {
+    "effort": 4,
+    "badges": [{ "text": "Simaris 50,000 standing", "tone": "warn" }],
+    "groups": [
+      {
+        "type": "currency",
+        "place": "CEPHALON SIMARIS",
+        "sub": null,
+        "activity": "scan targets with the Synthesis Scanner",
+        "meta": "50,000 Standing, ~3 capped days",
+        "mode": null,
+        "live": null,
+        "skip": null,
+        "earns": { "currency": "Cephalon Simaris Standing", "amount": "50,000" },
+        "spends": [],
+        "map": null,
+        "rows": [
+          {
+            "qty": "50,000",
+            "label": "Simaris Standing",
+            "note": "daily cap 16,000 + 500 per Mastery Rank",
+            "alt": null,
+            "done": false
+          }
+        ],
+        "conditions": [],
+        "bonuses": [],
+        "disclosures": [],
+        "ref": "Cephalon Simaris Standing"
+      },
+      {
+        "type": "vendor",
+        "place": "CEPHALON SIMARIS",
+        "sub": null,
+        "activity": "buy a replacement main blueprint",
+        "meta": "50,000 Standing",
+        "mode": null,
+        "live": null,
+        "skip": null,
+        "earns": null,
+        "spends": [{ "currency": "Cephalon Simaris Standing", "amount": "50,000" }],
+        "map": null,
+        "rows": [
+          {
+            "qty": null,
+            "label": "Yareli Blueprint",
+            "note": "50,000 Standing",
+            "alt": null,
+            "done": false
+          }
+        ],
+        "conditions": ["Simaris only stocks it once The Waverider is done."],
+        "bonuses": [],
+        "disclosures": []
+      }
+    ]
+  }
 }

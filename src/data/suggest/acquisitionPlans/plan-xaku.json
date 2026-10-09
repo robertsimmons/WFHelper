@@ -6,29 +6,42 @@
   "tradeable": false,
   "progress": { "have": 0, "need": 4, "unit": "parts" },
   "badges": [
-    { "text": "open-world gates", "tone": "warn" },
-    { "text": "no blueprint pity", "tone": "warn" }
+    { "text": "no blueprint pity", "tone": "warn" },
+    {
+      "text": "Vox Solaris Operative",
+      "tone": "warn",
+      "rank": { "syndicate": "Vox Solaris", "level": 1 }
+    }
   ],
   "prices": [{ "label": "built", "amount": "325 p", "money": false }],
+  "routes": [
+    {
+      "name": "Heart of Deimos, then Necralisk bounties",
+      "cost": "the quest gives the main blueprint; the three parts drop from bounties with no pity purchase",
+      "effort": 8,
+      "role": "chosen"
+    },
+    {
+      "name": "After the quest: Cephalon Simaris",
+      "cost": "50,000 Simaris Standing buys another main blueprint; the parts still drop from bounties",
+      "effort": 8,
+      "role": "afterQuest"
+    }
+  ],
   "materials": [
     { "qty": "10", "label": "Neural Sensors", "note": "Neuroptics" },
-    { "qty": "3", "label": "Orokin Cell", "note": null },
-    {
-      "qty": "18",
-      "label": "Gallium",
-      "note": "12 Thaumic Distillate refines, 6 Venerdo Alloy refines"
-    },
-    { "qty": "900", "label": "Rubedo", "note": "Venerdo Alloy refines" },
-    { "qty": "5", "label": "Scintillant", "note": "Xaku Systems" },
-    { "qty": "3", "label": "Spinal Core Section", "note": "Xaku Chassis" },
-    { "qty": "60", "label": "Thaumic Distillate", "note": null },
-    { "qty": "50", "label": "Venerdo Alloy", "note": null },
-    { "qty": "40", "label": "Esher Devar", "note": null },
-    { "qty": "20", "label": "Sharrac Teeth", "note": "Xaku Neuroptics" },
-    { "qty": "10", "label": "Breath Of The Eidolon", "note": "Xaku Systems" },
-    { "qty": "5", "label": "Lucent Teroglobe", "note": "Xaku Chassis" },
-    { "qty": "45", "label": "Pustulite", "note": null },
-    { "qty": "60", "label": "Ganglion", "note": null },
+    { "qty": "3", "label": "Orokin Cell", "note": "Xaku" },
+    { "qty": "5", "label": "Gyromag Systems", "note": "Chassis" },
+    { "qty": "5", "label": "Scintillant", "note": "Systems" },
+    { "qty": "3", "label": "Spinal Core Section", "note": "Chassis" },
+    { "qty": "60", "label": "Thaumic Distillate", "note": "Neuroptics" },
+    { "qty": "50", "label": "Venerdo Alloy", "note": "Chassis" },
+    { "qty": "40", "label": "Esher Devar", "note": "Neuroptics" },
+    { "qty": "20", "label": "Sharrac Teeth", "note": "Neuroptics" },
+    { "qty": "10", "label": "Breath Of The Eidolon", "note": "Systems" },
+    { "qty": "50", "label": "Lucent Teroglobe", "note": "Chassis" },
+    { "qty": "45", "label": "Pustulite", "note": "Systems" },
+    { "qty": "60", "label": "Ganglion", "note": "Systems" },
     { "qty": "70,000", "label": "Credits", "note": null }
   ],
   "groups": [
@@ -36,8 +49,8 @@
       "type": "gate",
       "place": "CODEX",
       "sub": null,
-      "activity": "Heart of Deimos",
-      "meta": "main blueprint reward",
+      "activity": "finish Once Awake",
+      "meta": "unlocks Heart of Deimos",
       "mode": null,
       "live": null,
       "skip": null,
@@ -47,24 +60,49 @@
       "rows": [
         {
           "qty": null,
-          "label": "Heart of Deimos",
-          "note": "awards Xaku Blueprint",
-          "alt": "50,000 Cephalon Simaris standing",
+          "label": "Once Awake",
+          "note": "the quest before Heart of Deimos",
+          "alt": null,
           "done": false
         }
       ],
-      "conditions": [
-        "Finish this before farming parts; the Market does not sell the main blueprint for credits."
-      ],
+      "conditions": [],
       "bonuses": [],
-      "disclosures": []
+      "disclosures": [],
+      "quest": "Heart of Deimos"
+    },
+    {
+      "type": "farm",
+      "place": "CODEX",
+      "sub": null,
+      "activity": "Heart of Deimos quest",
+      "meta": "awards the main blueprint",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Xaku Blueprint",
+          "note": "quest reward",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": [],
+      "quest": "Heart of Deimos"
     },
     {
       "type": "gate",
-      "place": "OPEN-WORLD HUBS",
-      "sub": "prepare the crafting gates first",
-      "activity": "buy refine blueprints and Vox Solaris access",
-      "meta": "do this before bounty RNG",
+      "place": "VOX SOLARIS",
+      "sub": null,
+      "activity": "reach Operative",
+      "meta": "needed to buy Gyromag Systems",
       "mode": null,
       "live": null,
       "skip": null,
@@ -74,37 +112,14 @@
       "rows": [
         {
           "qty": null,
-          "label": "Thaumic Distillate Blueprint",
-          "note": "Otak; Entrati Rank 2; 4,000 standing",
+          "label": "Vox Solaris Rank 1, Operative",
+          "note": "Solaris United Rank 5, Old Mate, also works",
           "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Venerdo Alloy Blueprint",
-          "note": "Smokefinger; Solaris United Outworlder; 2,000 standing",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Esher Devar Blueprint",
-          "note": "Old Man Suumbaat; Ostron Offworlder; 2,500 standing",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "5",
-          "label": "Gyromag Systems",
-          "note": "Little Duck; Vox Solaris Rank 1 Operative; 1,000 standing each",
-          "alt": "Profit-Taker is a much later alternative",
-          "done": false
+          "done": false,
+          "rank": { "syndicate": "Vox Solaris", "level": 1 }
         }
       ],
-      "conditions": [
-        "Gyromag Systems and Scintillant cannot be traded. The Little Duck purchase is far cheaper to unlock than Profit-Taker.",
-        "The three refined resources are reusable batch crafts: make 3 Thaumic Distillate, 3 Venerdo Alloy, and 4 Esher Devar batches."
-      ],
+      "conditions": [],
       "bonuses": [],
       "disclosures": []
     },
@@ -114,7 +129,7 @@
       "sub": "Mother's regular Necralisk bounties",
       "activity": "complete the matching bounty brackets",
       "meta": "parts only roll from stage 2 onward",
-      "mode": "complete bonus objectives",
+      "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
@@ -124,21 +139,21 @@
         {
           "qty": null,
           "label": "Xaku Neuroptics Blueprint",
-          "note": "Lvl 15-25; 8.82% stages 2-4, 12% final stage",
+          "note": "Lvl 15-25; 8.82% from stage 2, 12% final stage",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Xaku Systems Blueprint",
-          "note": "Lvl 30-40; 8.22% early stages, 11.32% final stage",
+          "note": "Lvl 30-40; 8.22% stages 2-3, 6% stage 4, 11.32% final stage",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Xaku Chassis Blueprint",
-          "note": "Lvl 40-60; 8.57% early stages, 13.04% final stage",
+          "note": "Lvl 40-60; 8.57% stages 2-3, 6.67% stage 4, 13.04% final stage",
           "alt": null,
           "done": false
         }
@@ -146,17 +161,13 @@
       "conditions": [
         "Use ordinary Mother bounties, not Isolation Vault or Arcana bounty rewards. Each component belongs to exactly one level bracket.",
         "Stage 1 never awards a Xaku part; do not abandon after it. Run the longest available bounty in each bracket for more reward rolls.",
-        "Complete every bonus objective: a perfect bounty adds a final-stage-table reward roll, where each target part has its best chance.",
         "Steel Path's level-100 Chassis table has identical odds to normal level 40-60; do not choose it for better Xaku drops."
       ],
-      "bonuses": [
-        "Mother is available in the field, so start the next bounty without returning to the Necralisk.",
-        "Deimos Infested are immune to Viral status effects; bring a different damage plan."
-      ],
+      "bonuses": [],
       "disclosures": [
         {
           "title": "blueprints have no fallback shop",
-          "body": "Unlike several newer frame farms, Xaku has no component-blueprint pity purchase. Expect roughly 49-57 qualifying stages for a near-guaranteed chance at each part, not a hard ceiling."
+          "body": "Xaku has no component-blueprint pity purchase. Each part's final-stage chance works out to about 7-8 stages on average."
         }
       ]
     },
@@ -208,5 +219,62 @@
       "bonuses": [],
       "disclosures": []
     }
-  ]
+  ],
+  "afterQuest": {
+    "effort": 8,
+    "badges": [{ "text": "Simaris 50,000 standing", "tone": "warn" }],
+    "groups": [
+      {
+        "type": "currency",
+        "place": "CEPHALON SIMARIS",
+        "sub": null,
+        "activity": "scan targets with the Synthesis Scanner",
+        "meta": "50,000 Standing, ~3 capped days",
+        "mode": null,
+        "live": null,
+        "skip": null,
+        "earns": { "currency": "Cephalon Simaris Standing", "amount": "50,000" },
+        "spends": [],
+        "map": null,
+        "rows": [
+          {
+            "qty": "50,000",
+            "label": "Simaris Standing",
+            "note": "daily cap 16,000 + 500 per Mastery Rank",
+            "alt": null,
+            "done": false
+          }
+        ],
+        "conditions": [],
+        "bonuses": [],
+        "disclosures": [],
+        "ref": "Cephalon Simaris Standing"
+      },
+      {
+        "type": "vendor",
+        "place": "CEPHALON SIMARIS",
+        "sub": null,
+        "activity": "buy a replacement main blueprint",
+        "meta": "50,000 Standing",
+        "mode": null,
+        "live": null,
+        "skip": null,
+        "earns": null,
+        "spends": [{ "currency": "Cephalon Simaris Standing", "amount": "50,000" }],
+        "map": null,
+        "rows": [
+          {
+            "qty": null,
+            "label": "Xaku Blueprint",
+            "note": "50,000 Standing",
+            "alt": null,
+            "done": false
+          }
+        ],
+        "conditions": ["Simaris only stocks it once Heart of Deimos is done."],
+        "bonuses": [],
+        "disclosures": []
+      }
+    ]
+  }
 }

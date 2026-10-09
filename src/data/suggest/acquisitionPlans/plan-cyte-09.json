@@ -4,32 +4,49 @@
   "effort": 5,
   "source": "bounties",
   "tradeable": false,
-  "progress": { "have": 1, "need": 4, "unit": "parts" },
-  "badges": [{ "text": "1999 Bounties", "tone": "info" }],
+  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "badges": [
+    { "text": "The Hex quest", "tone": "warn" },
+    { "text": "Höllvania bounties", "tone": "info" }
+  ],
   "prices": [
     { "label": "build", "amount": "70,000 cr", "money": false },
     { "label": "built", "amount": "370 p", "money": false }
   ],
+  "routes": [
+    {
+      "name": "The Hex, then Höllvania bounties",
+      "cost": "the quest gives the main blueprint; parts drop from bounties, or 20,000 Hex Standing each at Amir",
+      "effort": 5,
+      "role": "chosen"
+    },
+    {
+      "name": "After the quest: Amir",
+      "cost": "50,000 Hex Standing buys another main blueprint, Rank 4 required; parts as above",
+      "effort": 6,
+      "role": "afterQuest"
+    }
+  ],
   "materials": [
-    { "qty": "1,000", "label": "Alloy Plate", "note": null },
-    { "qty": "500", "label": "Circuits", "note": null },
-    { "qty": "1", "label": "Orokin Cell", "note": null },
-    { "qty": "2", "label": "Neural Sensors", "note": null },
-    { "qty": "1", "label": "Argon Crystal", "note": null },
-    { "qty": "80", "label": "Efervon Sample", "note": null },
-    { "qty": "200", "label": "Hollvanian Pitchweave Fragment", "note": null },
-    { "qty": "14", "label": "Techrot Motherboard", "note": null },
-    { "qty": "40", "label": "Techrot Chitin", "note": null },
-    { "qty": "10", "label": "Experimental Arc-Relay", "note": null },
+    { "qty": "1,000", "label": "Alloy Plate", "note": "Chassis" },
+    { "qty": "500", "label": "Circuits", "note": "Systems" },
+    { "qty": "1", "label": "Orokin Cell", "note": "Cyte-09" },
+    { "qty": "2", "label": "Neural Sensors", "note": "Neuroptics" },
+    { "qty": "1", "label": "Argon Crystal", "note": "Neuroptics" },
+    { "qty": "80", "label": "Efervon Sample", "note": "Neuroptics and Systems" },
+    { "qty": "200", "label": "Hollvanian Pitchweave Fragment", "note": "Chassis" },
+    { "qty": "14", "label": "Techrot Motherboard", "note": "Chassis and Systems" },
+    { "qty": "40", "label": "Techrot Chitin", "note": "Neuroptics" },
+    { "qty": "10", "label": "Experimental Arc-Relay", "note": "Chassis and Systems" },
     { "qty": "70,000", "label": "Credits", "note": null }
   ],
   "groups": [
     {
-      "type": "gate",
-      "place": "NECRALISK, THEN THE CODEX",
+      "type": "farm",
+      "place": "THE HEX",
       "sub": null,
-      "activity": "the 1999 quest chain",
-      "meta": "~1.5h for The Hex alone",
+      "activity": "finish The Hex",
+      "meta": "needs The Duviri Paradox and The Lotus Eaters, which needs Whispers in the Walls",
       "mode": null,
       "live": null,
       "skip": null,
@@ -39,34 +56,16 @@
       "rows": [
         {
           "qty": null,
-          "label": "Whispers in the Walls, then The Lotus Eaters",
-          "note": "needs Heart of Deimos and The New War",
-          "alt": null,
-          "done": true
-        },
-        {
-          "qty": null,
-          "label": "The Hex",
-          "note": "type KALYMOS to confirm",
-          "alt": null,
-          "done": true
-        },
-        {
-          "qty": null,
-          "label": "The Hex, Rank 2 Fresh Slice",
-          "note": "unlocks Amir's part offerings",
+          "label": "Cyte-09 Blueprint",
+          "note": "quest reward",
           "alt": null,
           "done": false
         }
       ],
-      "conditions": [
-        "The Hex also needs The Duviri Paradox, which is solo-only",
-        "Starting The Hex locks you out of every other mission for roughly 90 minutes"
-      ],
-      "bonuses": [
-        "The quest awards the Cyte-09 main blueprint outright, so only the three components need farming"
-      ],
-      "disclosures": []
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": [],
+      "quest": "The Hex"
     },
     {
       "type": "bounty",
@@ -109,30 +108,22 @@
             "text": "or 20,000 standing at Amir",
             "spends": [{ "currency": "The Hex Standing", "amount": "20,000" }]
           },
-          "done": true
+          "done": false
         }
       ],
       "conditions": [
-        "Each part sits on its own level tier, and mission types rotate, so the bounty holding the part you need may not be on the board this rotation",
-        "The parts never drop from the H-09 Apex encounter; bounties and Amir are the only sources",
-        "Boosters do not apply to bounty or end-of-mission rewards"
+        "Each part sits on its own level tier, and mission types rotate, so the bounty holding the part you need may not be on the board this rotation.",
+        "Amir sells the parts only from The Hex Rank 2, Fresh Slice."
       ],
-      "bonuses": [
-        "Hex Treasures traded to Leticia pay 750-2,500 standing each, and Temporal Archimedea pays 15,000 for all three missions"
-      ],
-      "disclosures": [
-        {
-          "title": "the standing math",
-          "body": "The daily Hex cap is 16,000 plus 500 per Mastery Rank, so 21,000 a day at MR10. All three parts cost 60,000, about three days of dailies. Past the cap the bounty rolls are all you are earning, and they are low."
-        }
-      ]
+      "bonuses": [],
+      "disclosures": []
     },
     {
       "type": "foundry",
       "place": "FOUNDRY",
       "sub": null,
-      "activity": "start all three now",
-      "meta": "12h each, 45,000 cr",
+      "activity": "build components, then Cyte-09",
+      "meta": "12h each, then 72h",
       "mode": null,
       "live": null,
       "skip": null,
@@ -140,30 +131,96 @@
       "spends": [],
       "map": null,
       "rows": [
-        { "qty": null, "label": "Neuroptics", "note": null, "alt": null, "done": false },
-        { "qty": null, "label": "Chassis", "note": null, "alt": null, "done": false },
-        { "qty": null, "label": "Systems", "note": null, "alt": null, "done": false }
+        {
+          "qty": null,
+          "label": "Neuroptics",
+          "note": "15,000 cr, 60 Efervon Sample, 40 Techrot Chitin, 2 Neural Sensors, 1 Argon Crystal",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Chassis",
+          "note": "15,000 cr, 200 Höllvanian Pitchweave Fragment, 6 Experimental Arc-Relay, 8 Techrot Motherboard, 1,000 Alloy Plate",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Systems",
+          "note": "15,000 cr, 20 Efervon Sample, 500 Circuits, 4 Experimental Arc-Relay, 6 Techrot Motherboard",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Cyte-09",
+          "note": "25,000 cr, the three parts, 1 Orokin Cell",
+          "alt": null,
+          "done": false
+        }
       ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "foundry",
-      "place": "FOUNDRY",
-      "sub": null,
-      "activity": "then",
-      "meta": "72h, 25,000 cr",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [{ "qty": null, "label": "Cyte-09", "note": null, "alt": null, "done": false }],
       "conditions": ["Needs a free Warframe slot before the Foundry will let you claim it"],
       "bonuses": [],
       "disclosures": []
     }
-  ]
+  ],
+  "afterQuest": {
+    "effort": 6,
+    "badges": [
+      {
+        "text": "Hex Rank 4, 50,000 standing",
+        "tone": "warn",
+        "rank": { "syndicate": "The Hex", "level": 4 }
+      }
+    ],
+    "groups": [
+      {
+        "type": "currency",
+        "place": "HOLLVANIA CENTRAL MALL",
+        "sub": "The Hex",
+        "activity": "earn Hex Standing",
+        "meta": "50,000 Standing",
+        "mode": null,
+        "live": null,
+        "skip": null,
+        "earns": { "currency": "The Hex Standing", "amount": "50,000" },
+        "spends": [],
+        "map": null,
+        "rows": [
+          { "qty": "50,000", "label": "Hex Standing", "note": null, "alt": null, "done": false }
+        ],
+        "conditions": [],
+        "bonuses": [],
+        "disclosures": [],
+        "ref": "The Hex Standing"
+      },
+      {
+        "type": "vendor",
+        "place": "HOLLVANIA CENTRAL MALL",
+        "sub": "Amir",
+        "activity": "buy a replacement main blueprint",
+        "meta": "50,000 Standing",
+        "mode": null,
+        "live": null,
+        "skip": null,
+        "earns": null,
+        "spends": [{ "currency": "The Hex Standing", "amount": "50,000" }],
+        "map": null,
+        "rows": [
+          {
+            "qty": null,
+            "label": "Cyte-09 Blueprint",
+            "note": "Rank 4, Hot & Fresh",
+            "alt": null,
+            "done": false,
+            "rank": { "syndicate": "The Hex", "level": 4 }
+          }
+        ],
+        "conditions": ["Rank 4 needs the Hex Finale, which needs all six Hex members at Liked."],
+        "bonuses": [],
+        "disclosures": []
+      }
+    ]
+  }
 }

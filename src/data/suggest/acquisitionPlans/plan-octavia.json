@@ -6,13 +6,32 @@
   "tradeable": false,
   "progress": { "have": 0, "need": 4, "unit": "parts" },
   "badges": [
-    { "text": "quest reward", "tone": "info" },
-    { "text": "Circuit bypass", "tone": "circuit" },
-    { "text": "Rotation C", "tone": "warn" }
+    { "text": "Terrorem Rotation C", "tone": "warn" },
+    { "text": "Circuit week 9", "tone": "circuit" }
   ],
   "prices": [
     { "label": "built", "amount": "225 p", "money": false },
     { "label": "spare BP", "amount": "50,000 Simaris", "money": false }
+  ],
+  "routes": [
+    {
+      "name": "Octavia's Anthem, then the part farms",
+      "cost": "the quest gives the main blueprint and the Mandachord; parts come from Lua and Terrorem",
+      "effort": 4,
+      "role": "chosen"
+    },
+    {
+      "name": "After the quest: Simaris",
+      "cost": "50,000 Standing buys the main blueprint and 25,000 the Mandachord; parts as before",
+      "effort": 5,
+      "role": "afterQuest"
+    },
+    {
+      "name": "Circuit week 9",
+      "cost": "tiers 2, 5, 8 and 10 give every blueprint in one week, after The Duviri Paradox; the Mandachord still comes from the quest or Simaris",
+      "effort": 5,
+      "role": null
+    }
   ],
   "materials": [
     { "qty": "1,000", "label": "Oxium", "note": "Neuroptics" },
@@ -21,10 +40,11 @@
     { "qty": "5", "label": "Neural Sensors", "note": "Neuroptics" },
     { "qty": "25,000", "label": "Salvage", "note": "Chassis" },
     { "qty": "3", "label": "Neurodes", "note": "Chassis" },
+    { "qty": "2,000", "label": "Kuva", "note": "Systems" },
     { "qty": "3,000", "label": "Circuits", "note": "Systems" },
     { "qty": "20", "label": "Morphics", "note": "Systems" },
     { "qty": "5", "label": "Orokin Cell", "note": "Systems" },
-    { "qty": "1", "label": "Mandachord", "note": null },
+    { "qty": "1", "label": "Mandachord", "note": "final build" },
     { "qty": "70,000", "label": "Credits", "note": null }
   ],
   "groups": [
@@ -32,8 +52,8 @@
       "type": "gate",
       "place": "QUESTS",
       "sub": null,
-      "activity": "complete The Second Dream, then Octavia's Anthem",
-      "meta": "solo-only quest",
+      "activity": "finish The Second Dream",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -47,37 +67,21 @@
           "note": "required to start Octavia's Anthem",
           "alt": null,
           "done": false
-        },
-        {
-          "qty": null,
-          "label": "Octavia's Anthem",
-          "note": "awards Octavia Blueprint",
-          "alt": "Simaris: 50,000 standing for a spare",
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Mandachord",
-          "note": "quest reward; needed for final build",
-          "alt": "Simaris: 25,000 standing for a spare",
-          "done": false
         }
       ],
-      "conditions": [
-        "The Second Dream is the actual quest gate; The War Within is not required for Octavia's Anthem.",
-        "The Mandachord has a 10-second Foundry build when needed for the final blueprint."
-      ],
-      "bonuses": ["The quest is replayable if you want to revisit its music-puzzle missions."],
-      "disclosures": []
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": [],
+      "quest": "Octavia's Anthem"
     },
     {
       "type": "farm",
-      "place": "THE CIRCUIT, DUVIRI",
-      "sub": null,
-      "activity": "choose Octavia during her weekly offering",
-      "meta": "Octavia is week 9 of the 11-week rotation",
-      "mode": "requires The Duviri Paradox",
-      "live": { "state": "waiting", "text": "Check the in-game Circuit rotation" },
+      "place": "RELAY",
+      "sub": "Cephalon Suda",
+      "activity": "Octavia's Anthem quest",
+      "meta": "solo only",
+      "mode": null,
+      "live": null,
       "skip": null,
       "earns": null,
       "spends": [],
@@ -85,79 +89,16 @@
       "rows": [
         {
           "qty": null,
-          "label": "Octavia Neuroptics Blueprint",
-          "note": "Circuit reward tier 2; 4 stages",
-          "alt": "Terrorem Rotation C",
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Octavia Chassis Blueprint",
-          "note": "Circuit reward tier 5",
-          "alt": "Lua music puzzle",
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Octavia Systems Blueprint",
-          "note": "Circuit reward tier 8",
-          "alt": "Plato resource caches",
-          "done": false
-        },
-        {
-          "qty": null,
           "label": "Octavia Blueprint",
-          "note": "Circuit reward tier 10",
-          "alt": "Octavia's Anthem",
+          "note": "quest reward, and the Mandachord comes with it",
+          "alt": "or Circuit week 9, tier 10",
           "done": false
         }
       ],
-      "conditions": [
-        "Circuit rewards are guaranteed by completed-stage progress, not RNG drops; tiers reset weekly.",
-        "The tier-2 Neuroptics is the major shortcut. Take it during Octavia's week instead of committing to repeated 20-minute Survival runs.",
-        "Progress is banked per completed stage; failing or aborting a stage loses that stage's progress."
-      ],
-      "bonuses": [
-        "Completing four stages earns the daily +50 Circuit Progress bonus, making shorter sessions efficient.",
-        "If Octavia is live, claim the low tiers first; the full tier-10 route takes substantially longer than obtaining the quest blueprint."
-      ],
-      "disclosures": [
-        {
-          "title": "best use of the Circuit",
-          "body": "Neuroptics at tier 2 is the payoff. The traditional version is a 22.56% Rotation C reward with one roll every 20 minutes; Circuit turns that worst part into four completed stages."
-        }
-      ]
-    },
-    {
-      "type": "farm",
-      "place": "PLATO, LUA",
-      "sub": "Crossfire Exterminate",
-      "activity": "find and open resource caches",
-      "meta": "22.56% per cache reward",
-      "mode": "bring loot radar",
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": "lua",
-      "rows": [
-        {
-          "qty": null,
-          "label": "Octavia Systems Blueprint",
-          "note": "Rotation A resource cache",
-          "alt": "Circuit reward tier 8",
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Open at least one cache to make the Systems reward roll. Finding all three completes the cache reward, not three independent Octavia rolls.",
-        "Caches appear on loot radar and emit an audible hum; use both while learning the tileset.",
-        "Plato includes Sentients. Use mixed damage, or Operator Void Beam, to reset their damage adaptation."
-      ],
-      "bonuses": [
-        "Crossfire Exterminate is quick, so farm Systems in the same Lua session as music-room Capture reloads."
-      ],
-      "disclosures": []
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": [],
+      "quest": "Octavia's Anthem"
     },
     {
       "type": "farm",
@@ -170,13 +111,13 @@
       "skip": null,
       "earns": null,
       "spends": [],
-      "map": "lua",
+      "map": null,
       "rows": [
         {
           "qty": null,
           "label": "Octavia Chassis Blueprint",
           "note": "top crate on the central structure",
-          "alt": "Circuit reward tier 5",
+          "alt": "or Circuit week 9, tier 5",
           "done": false
         }
       ],
@@ -193,6 +134,37 @@
     },
     {
       "type": "farm",
+      "place": "PLATO, LUA",
+      "sub": "Crossfire Exterminate",
+      "activity": "find and open resource caches",
+      "meta": "22.56% per cache reward",
+      "mode": "bring loot radar",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Octavia Systems Blueprint",
+          "note": "Rotation A resource cache",
+          "alt": "or Circuit week 9, tier 8",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Open at least one cache to make the Systems reward roll. Finding all three completes the cache reward, not three independent Octavia rolls.",
+        "Caches appear on loot radar and emit an audible hum; use both while learning the tileset.",
+        "Plato includes Sentients. Use mixed damage, or Operator Void Beam, to reset their damage adaptation."
+      ],
+      "bonuses": [
+        "Crossfire Exterminate is quick, so farm Systems in the same Lua session as music-room Capture reloads."
+      ],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
       "place": "TERROREM, DEIMOS",
       "sub": "Survival",
       "activity": "hold to Rotation C",
@@ -202,13 +174,13 @@
       "skip": null,
       "earns": null,
       "spends": [],
-      "map": "deimos",
+      "map": null,
       "rows": [
         {
           "qty": null,
           "label": "Octavia Neuroptics Blueprint",
           "note": "Rotation C at 20:00, then every 20 min",
-          "alt": "Circuit reward tier 2",
+          "alt": "or Circuit week 9, tier 2",
           "done": false
         }
       ],
@@ -217,13 +189,11 @@
         "Do not follow a public squad extracting before 20:00: that run never reaches an eligible reward roll.",
         "Terrorem is Infested with no armor; Heat/Slash and melee work well. Toxic Ancients make health-tank or invisibility frames safer than shield-only builds."
       ],
-      "bonuses": [
-        "Run this only if Circuit is unavailable or you specifically prefer the immediate RNG route."
-      ],
+      "bonuses": [],
       "disclosures": [
         {
-          "title": "the traditional wall",
-          "body": "Each C rotation is one 22.56% attempt, so four 20-minute runs is the average, but bad-luck streaks can be much longer. Circuit is the recommended escape hatch."
+          "title": "skip the grind: Circuit week 9",
+          "body": "With The Duviri Paradox done, pick Octavia in week 9 of the 11-week normal Circuit rotation. Tier 2 gives Neuroptics, tier 5 Chassis, tier 8 Systems and tier 10 the main blueprint, all guaranteed in one week. The Mandachord for the final build still comes from the quest or Simaris."
         }
       ]
     },
@@ -232,7 +202,7 @@
       "place": "FOUNDRY",
       "sub": null,
       "activity": "build components, then Octavia",
-      "meta": "12h each, then 72h",
+      "meta": "12h each, then 3 days",
       "mode": null,
       "live": null,
       "skip": null,
@@ -264,7 +234,7 @@
         {
           "qty": null,
           "label": "Octavia",
-          "note": "25,000 cr, 1 Mandachord, 3 days",
+          "note": "25,000 cr, the three parts, 1 Mandachord, 3 days",
           "alt": null,
           "done": false
         }
@@ -272,10 +242,75 @@
       "conditions": [
         "Start all three component builds in parallel before starting Octavia's final build."
       ],
-      "bonuses": [
-        "Farm Kuva and Orokin Cells before the components complete so Systems does not become the final delay."
-      ],
+      "bonuses": [],
       "disclosures": []
     }
-  ]
+  ],
+  "afterQuest": {
+    "effort": 5,
+    "badges": [
+      { "text": "Simaris 75,000 Standing", "tone": "warn" },
+      { "text": "Circuit week 9", "tone": "circuit" }
+    ],
+    "groups": [
+      {
+        "type": "currency",
+        "place": "CEPHALON SIMARIS",
+        "sub": null,
+        "activity": "scan targets with the Synthesis Scanner",
+        "meta": "75,000 Standing",
+        "mode": null,
+        "live": null,
+        "skip": null,
+        "earns": { "currency": "Cephalon Simaris Standing", "amount": "75,000" },
+        "spends": [],
+        "map": null,
+        "rows": [
+          {
+            "qty": "75,000",
+            "label": "Simaris Standing",
+            "note": "daily cap 16,000 + 500 per Mastery Rank",
+            "alt": null,
+            "done": false
+          }
+        ],
+        "conditions": [],
+        "bonuses": [],
+        "disclosures": [],
+        "ref": "Cephalon Simaris Standing"
+      },
+      {
+        "type": "vendor",
+        "place": "CEPHALON SIMARIS",
+        "sub": null,
+        "activity": "buy a replacement main blueprint and Mandachord",
+        "meta": "50,000 and 25,000 Standing",
+        "mode": null,
+        "live": null,
+        "skip": null,
+        "earns": null,
+        "spends": [{ "currency": "Cephalon Simaris Standing", "amount": "75,000" }],
+        "map": null,
+        "rows": [
+          {
+            "qty": null,
+            "label": "Octavia Blueprint",
+            "note": "50,000 Standing",
+            "alt": "or Circuit week 9, tier 10",
+            "done": false
+          },
+          {
+            "qty": null,
+            "label": "Mandachord Blueprint",
+            "note": "25,000 Standing",
+            "alt": null,
+            "done": false
+          }
+        ],
+        "conditions": ["Simaris only stocks them once Octavia's Anthem is done."],
+        "bonuses": [],
+        "disclosures": []
+      }
+    ]
+  }
 }

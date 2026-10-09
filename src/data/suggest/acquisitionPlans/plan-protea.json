@@ -9,15 +9,46 @@
     { "text": "Granum Void", "tone": "info" },
     { "text": "11.11% each", "tone": "warn" }
   ],
-  "prices": [{ "label": "built", "amount": "325 p", "money": false }],
-  "materials": [{ "qty": "3", "label": "Orokin Cell", "note": null }],
+  "prices": [
+    { "label": "built", "amount": "325 p", "money": false },
+    { "label": "spare BP", "amount": "50,000 Simaris", "money": false }
+  ],
+  "routes": [
+    {
+      "name": "The Deadlock Protocol, then the Granum Void",
+      "cost": "the quest gives the main blueprint and the Xoris; each part drops at 11.11% at Rank 3",
+      "effort": 6,
+      "role": "chosen"
+    },
+    {
+      "name": "After the quest: Simaris",
+      "cost": "50,000 Standing buys the main blueprint; parts as before",
+      "effort": 7,
+      "role": "afterQuest"
+    }
+  ],
+  "materials": [
+    { "qty": "11,500", "label": "Salvage", "note": "Neuroptics" },
+    { "qty": "5,150", "label": "Polymer Bundle", "note": "Neuroptics" },
+    { "qty": "5", "label": "Neural Sensors", "note": "Neuroptics" },
+    { "qty": "20,000", "label": "Alloy Plate", "note": "Chassis" },
+    { "qty": "2,750", "label": "Carbides", "note": "Chassis" },
+    { "qty": "550", "label": "Oxium", "note": "Chassis" },
+    { "qty": "12", "label": "Morphics", "note": "Chassis" },
+    { "qty": "13,400", "label": "Ferrite", "note": "Systems" },
+    { "qty": "1,000", "label": "Cryotic", "note": "Systems" },
+    { "qty": "1,750", "label": "Titanium", "note": "Systems" },
+    { "qty": "10", "label": "Control Module", "note": "Systems" },
+    { "qty": "3", "label": "Orokin Cell", "note": "final build" },
+    { "qty": "70,000", "label": "Credits", "note": null }
+  ],
   "groups": [
     {
       "type": "gate",
-      "place": "CODEX",
+      "place": "MASTERY RANK",
       "sub": null,
-      "activity": "The Deadlock Protocol",
-      "meta": "MR 4",
+      "activity": "reach MR 4",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -27,33 +58,58 @@
       "rows": [
         {
           "qty": null,
-          "label": "The Deadlock Protocol",
-          "note": "requires Saturn Junction and Vox Solaris",
+          "label": "Mastery Rank 4",
+          "note": "required to start The Deadlock Protocol",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": [],
+      "quest": "The Deadlock Protocol"
+    },
+    {
+      "type": "farm",
+      "place": "CODEX",
+      "sub": null,
+      "activity": "The Deadlock Protocol quest",
+      "meta": "solo only",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Protea Blueprint",
+          "note": "quest reward",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
-          "label": "Protea Blueprint + Xoris",
-          "note": "quest rewards",
+          "label": "Xoris",
+          "note": "quest reward",
           "alt": null,
           "done": false
         }
       ],
-      "conditions": [
-        "The quest gives the main blueprint; only the three component blueprints are farmed in the Granum Void."
-      ],
+      "conditions": [],
       "bonuses": [
-        "Keep the Xoris: it is the only weapon that can free Solaris captives in the Void."
+        "Keep the Xoris: its charged throw kills Errant Specters outright and frees Solaris captives in the Void for +20 seconds each."
       ],
-      "disclosures": []
+      "disclosures": [],
+      "quest": "The Deadlock Protocol"
     },
     {
       "type": "farm",
       "place": "CORPUS SHIP",
       "sub": "Granum Void",
       "activity": "Treasurer crown, then Golden Hand Tribute",
-      "meta": "one crown, one attempt",
+      "meta": "one crown, one 60-second attempt",
       "mode": "solo",
       "live": null,
       "skip": null,
@@ -64,36 +120,33 @@
         {
           "qty": null,
           "label": "Neuroptics Blueprint",
-          "note": "11.11%, Rank 3 Granum Void",
-          "alt": "Granum Crown: level 0-15 Corpus Ship",
+          "note": "11.11% at Rank 3, Granum Crown from a level 0-15 Corpus Ship",
+          "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Chassis Blueprint",
-          "note": "11.11%, Rank 3 Extended Granum Void",
-          "alt": "Exemplar Crown: level 16-30 Corpus Ship",
+          "note": "11.11% at Rank 3, Exemplar Granum Crown from a level 16-30 Corpus Ship",
+          "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Systems Blueprint",
-          "note": "11.11%, Rank 3 Nightmare Granum Void",
-          "alt": "Zenith Crown: level 30+ Corpus Ship",
+          "note": "11.11% at Rank 3, Zenith Granum Crown from a level 30+ Corpus Ship",
+          "alt": null,
           "done": false
         }
       ],
       "conditions": [
-        "A Treasurer drops one crown after roughly 2-5 minutes; spending it opens a 60-second Void attempt. All Golden Hand Tributes close when that attempt ends.",
-        "Only Rank 3 drops Protea parts: reach 75 kills solo. Each additional squad member raises every rank threshold by 25.",
-        "Do not free Solaris captives on the Corpus Ship before entering; a live bug can disable abilities inside the Void and afterward.",
-        "The crown tier comes from the mission level where the Treasurer spawned, not from the Golden Hand you use."
+        "A Treasurer appears 2-5 minutes into a non-endless mission and drops one crown. Spending it at a Golden Hand Tribute opens a 60-second Void attempt, and every Tribute closes when that attempt ends.",
+        "Only Rank 3 drops Protea parts: 75 kills solo, and each extra squad member raises every rank threshold by 25.",
+        "The crown tier comes from the mission level where the Treasurer spawned, not from the Tribute you use."
       ],
       "bonuses": [
-        "Run solo and hold one position; movement spreads spawns out and makes the 75-kill target slower.",
-        "A charged Xoris throw frees each of three Void captives for +20 seconds; yellow particles add +5 seconds.",
-        "Preparation restores starting energy after the Void load-in. Mesa or Revenant can clear from high ground; an On-Call crew or Vapor Specter can substitute.",
-        "Farm the Systems tier last or fold Zenith crowns into Sisters of Parvos or Steel Path play to soften its long RNG tail."
+        "A charged Xoris throw frees each of the 3 Void captives for +20 seconds, and yellow particles add +5 seconds.",
+        "Mesa's Peacemaker and Revenant's Danse Macabre clear Specters quickly."
       ],
       "disclosures": [
         {
@@ -107,7 +160,7 @@
       "place": "FOUNDRY",
       "sub": null,
       "activity": "build components, then Protea",
-      "meta": "12h each, then 72h",
+      "meta": "12h each, then 3 days",
       "mode": null,
       "live": null,
       "skip": null,
@@ -115,13 +168,31 @@
       "spends": [],
       "map": null,
       "rows": [
-        { "qty": null, "label": "Neuroptics", "note": null, "alt": null, "done": false },
-        { "qty": null, "label": "Chassis", "note": null, "alt": null, "done": false },
-        { "qty": null, "label": "Systems", "note": null, "alt": null, "done": false },
+        {
+          "qty": null,
+          "label": "Neuroptics",
+          "note": "15,000 cr, 11,500 Salvage, 5,150 Polymer Bundle, 1,250 Cubic Diodes, 5 Neural Sensors",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Chassis",
+          "note": "15,000 cr, 20,000 Alloy Plate, 2,750 Carbides, 550 Oxium, 12 Morphics",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Systems",
+          "note": "15,000 cr, 13,400 Ferrite, 1,000 Cryotic, 1,750 Titanium, 10 Control Module",
+          "alt": null,
+          "done": false
+        },
         {
           "qty": null,
           "label": "Protea",
-          "note": "25,000 cr + 3 Orokin Cells",
+          "note": "25,000 cr, the three parts, 3 Orokin Cell, 3 days",
           "alt": null,
           "done": false
         }
@@ -132,5 +203,65 @@
       "bonuses": [],
       "disclosures": []
     }
-  ]
+  ],
+  "afterQuest": {
+    "effort": 7,
+    "badges": [
+      { "text": "Simaris 50,000 Standing", "tone": "warn" },
+      { "text": "Granum Void", "tone": "info" }
+    ],
+    "groups": [
+      {
+        "type": "currency",
+        "place": "CEPHALON SIMARIS",
+        "sub": null,
+        "activity": "scan targets with the Synthesis Scanner",
+        "meta": "50,000 Standing",
+        "mode": null,
+        "live": null,
+        "skip": null,
+        "earns": { "currency": "Cephalon Simaris Standing", "amount": "50,000" },
+        "spends": [],
+        "map": null,
+        "rows": [
+          {
+            "qty": "50,000",
+            "label": "Simaris Standing",
+            "note": "daily cap 16,000 + 500 per Mastery Rank",
+            "alt": null,
+            "done": false
+          }
+        ],
+        "conditions": [],
+        "bonuses": [],
+        "disclosures": [],
+        "ref": "Cephalon Simaris Standing"
+      },
+      {
+        "type": "vendor",
+        "place": "CEPHALON SIMARIS",
+        "sub": null,
+        "activity": "buy a replacement main blueprint",
+        "meta": "50,000 Standing",
+        "mode": null,
+        "live": null,
+        "skip": null,
+        "earns": null,
+        "spends": [{ "currency": "Cephalon Simaris Standing", "amount": "50,000" }],
+        "map": null,
+        "rows": [
+          {
+            "qty": null,
+            "label": "Protea Blueprint",
+            "note": "50,000 Standing",
+            "alt": null,
+            "done": false
+          }
+        ],
+        "conditions": ["Simaris only stocks it once The Deadlock Protocol is done."],
+        "bonuses": [],
+        "disclosures": []
+      }
+    ]
+  }
 }

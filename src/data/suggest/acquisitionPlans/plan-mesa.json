@@ -6,18 +6,97 @@
   "tradeable": false,
   "progress": { "have": 0, "need": 4, "unit": "parts" },
   "badges": [
-    { "text": "key required", "tone": "warn" },
-    { "text": "Circuit bypass", "tone": "circuit" }
+    { "text": "key per run", "tone": "warn" },
+    { "text": "Circuit week 7", "tone": "circuit" }
   ],
   "prices": [
     { "label": "blueprint", "amount": "30,000 cr", "money": false },
     { "label": "built", "amount": "325 p", "money": false }
   ],
+  "routes": [
+    {
+      "name": "Patient Zero key, then Mutalist Alad V",
+      "cost": "30,000 cr main blueprint at the Market; Alad V drops the three parts, a 20,000 cr key per run",
+      "effort": 5,
+      "role": "chosen"
+    },
+    {
+      "name": "Circuit week 7",
+      "cost": "tiers 2, 5, 8 and 10 give every blueprint in one week, after The Duviri Paradox",
+      "effort": 5,
+      "role": null
+    }
+  ],
   "materials": [
-    { "qty": "3", "label": "Orokin Cell", "note": null },
-    { "qty": "1", "label": "Mutalist Alad V Nav Coordinate", "note": null }
+    { "qty": "1,500", "label": "Alloy Plate", "note": "Neuroptics" },
+    { "qty": "2", "label": "Neural Sensors", "note": "Neuroptics" },
+    { "qty": "650", "label": "Polymer Bundle", "note": "350 Neuroptics, 300 Systems" },
+    { "qty": "800", "label": "Plastids", "note": "500 Neuroptics, 300 Chassis" },
+    { "qty": "1", "label": "Morphics", "note": "Chassis" },
+    { "qty": "50", "label": "Oxium", "note": "Chassis" },
+    { "qty": "5,100", "label": "Nano Spores", "note": "1,000 Chassis, 1,600 Systems, 2,500 key" },
+    { "qty": "1", "label": "Argon Crystal", "note": "Systems" },
+    { "qty": "500", "label": "Circuits", "note": "Systems" },
+    { "qty": "750", "label": "Ferrite", "note": "key" },
+    { "qty": "1", "label": "Mutalist Alad V Nav Coordinate", "note": "key" },
+    { "qty": "1", "label": "Orokin Cell", "note": "final build" },
+    { "qty": "120,000", "label": "Credits", "note": "includes one 20,000 key" }
   ],
   "groups": [
+    {
+      "type": "gate",
+      "place": "QUESTS",
+      "sub": null,
+      "activity": "finish Once Awake",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Once Awake",
+          "note": "required to start Patient Zero",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": [],
+      "quest": "Patient Zero"
+    },
+    {
+      "type": "farm",
+      "place": "CODEX",
+      "sub": null,
+      "activity": "Patient Zero quest",
+      "meta": "one key blueprint, reusable",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Mutalist Alad V Assassinate Key Blueprint",
+          "note": "quest reward, reusable",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Every crafted key is used up when the mission starts, and only the host's key is consumed."
+      ],
+      "bonuses": ["In a key-share, every squad member receives the boss drop."],
+      "disclosures": [],
+      "quest": "Patient Zero"
+    },
     {
       "type": "vendor",
       "place": "MARKET",
@@ -31,7 +110,13 @@
       "spends": [],
       "map": null,
       "rows": [
-        { "qty": null, "label": "Mesa Blueprint", "note": null, "alt": null, "done": false }
+        {
+          "qty": null,
+          "label": "Mesa Blueprint",
+          "note": "30,000 cr",
+          "alt": "or Circuit week 7, tier 10",
+          "done": false
+        }
       ],
       "conditions": [
         "Mutalist Alad V only drops component blueprints; Mesa's main blueprint is a Market purchase."
@@ -40,38 +125,11 @@
       "disclosures": []
     },
     {
-      "type": "gate",
-      "place": "PATIENT ZERO",
-      "sub": "Eris Junction chain",
-      "activity": "complete the quest",
-      "meta": "unlocks reusable key blueprint",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Mutalist Alad V Assassinate Key Blueprint",
-          "note": "reusable",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "The blueprint is reusable, but every crafted key is consumed when the mission starts."
-      ],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "foundry",
+      "type": "craft",
       "place": "FOUNDRY",
       "sub": null,
       "activity": "craft an assassination key",
-      "meta": "1h, 20,000 cr each",
+      "meta": "1h",
       "mode": null,
       "live": null,
       "skip": null,
@@ -82,17 +140,13 @@
         {
           "qty": "1",
           "label": "Mutalist Alad V Assassinate Key",
-          "note": "1 Nav Coordinate",
+          "note": "20,000 cr, 1 Mutalist Alad V Nav Coordinate, 6 Nav Coordinate, 2,500 Nano Spores, 750 Ferrite",
           "alt": null,
           "done": false
         }
       ],
-      "conditions": [
-        "Queue several keys if you are farming alone. A key is lost on every mission attempt, including an abort or failure."
-      ],
-      "bonuses": [
-        "In a key-share, only the host supplies a key while every squad member receives the boss drop."
-      ],
+      "conditions": ["Queue one key per run if you are farming alone."],
+      "bonuses": [],
       "disclosures": []
     },
     {
@@ -100,28 +154,40 @@
       "place": "ERIS",
       "sub": null,
       "activity": "Mutalist Alad V Assassination",
-      "meta": "~8 runs for all parts",
+      "meta": "one part per kill",
       "mode": "squad or Specter recommended",
       "live": null,
       "skip": null,
       "earns": null,
       "spends": [],
-      "map": "eris",
+      "map": null,
       "rows": [
         {
           "qty": null,
           "label": "Neuroptics Blueprint",
           "note": "38.72%",
-          "alt": null,
+          "alt": "or Circuit week 7, tier 2",
           "done": false
         },
-        { "qty": null, "label": "Chassis Blueprint", "note": "38.72%", "alt": null, "done": false },
-        { "qty": null, "label": "Systems Blueprint", "note": "22.56%", "alt": null, "done": false }
+        {
+          "qty": null,
+          "label": "Chassis Blueprint",
+          "note": "38.72%",
+          "alt": "or Circuit week 7, tier 5",
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Systems Blueprint",
+          "note": "22.56%",
+          "alt": "or Circuit week 7, tier 8",
+          "done": false
+        }
       ],
       "conditions": [
         "He is invulnerable while the collar is on. Apply Heat, Slash, or Toxin status during that phase; the procs persist and hit together when the collar comes off.",
         "Bring a Specter or squadmate so he has a mind-control target and the vulnerable window lasts longer.",
-        "His Toxin bypasses shields. Use health, overguard, or damage reduction rather than a shield-tank, and consider Antitoxin.",
+        "His Toxin bypasses shields. Use health, overguard, or damage reduction rather than a shield-tank.",
         "Keep Magnetic status on him to limit shield regeneration between vulnerable phases."
       ],
       "bonuses": [
@@ -131,42 +197,19 @@
         {
           "title": "the usual solo-fight mistake",
           "body": "Direct damage only during a brief collar-off window makes this encounter feel impossibly slow. Stack status while he is immune, then let it resolve as the collar comes off."
+        },
+        {
+          "title": "skip the fight: Circuit week 7",
+          "body": "With The Duviri Paradox done, pick Mesa in week 7 of the 11-week normal Circuit rotation. Tier 2 gives Neuroptics, tier 5 Chassis, tier 8 Systems and tier 10 the main blueprint, all guaranteed in one week. That skips the Market purchase, the Patient Zero key and every key craft."
         }
       ]
-    },
-    {
-      "type": "farm",
-      "place": "THE CIRCUIT, DUVIRI",
-      "sub": "Mesa's weekly rotation",
-      "activity": "complete Circuit reward tiers",
-      "meta": "full farm bypass",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": "duviri",
-      "rows": [
-        {
-          "qty": null,
-          "label": "Mesa components + Blueprint",
-          "note": "tiers 2, 5, 8, 10",
-          "alt": "wait for her rotation",
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Requires The Duviri Paradox. Check the in-game weekly Circuit reward path; Mesa is not available every week."
-      ],
-      "bonuses": ["This avoids both the Mutalist Alad V fight and key-coordinate farming."],
-      "disclosures": []
     },
     {
       "type": "foundry",
       "place": "FOUNDRY",
       "sub": null,
       "activity": "build components, then Mesa",
-      "meta": "12h each, then 72h",
+      "meta": "12h each, then 3 days",
       "mode": null,
       "live": null,
       "skip": null,
@@ -174,10 +217,34 @@
       "spends": [],
       "map": null,
       "rows": [
-        { "qty": null, "label": "Neuroptics", "note": null, "alt": null, "done": false },
-        { "qty": null, "label": "Chassis", "note": null, "alt": null, "done": false },
-        { "qty": null, "label": "Systems", "note": null, "alt": null, "done": false },
-        { "qty": null, "label": "Mesa", "note": "3 Orokin Cells", "alt": null, "done": false }
+        {
+          "qty": null,
+          "label": "Neuroptics",
+          "note": "15,000 cr, 1,500 Alloy Plate, 2 Neural Sensors, 350 Polymer Bundle, 500 Plastids",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Chassis",
+          "note": "15,000 cr, 1 Morphics, 50 Oxium, 300 Plastids, 1,000 Nano Spores",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Systems",
+          "note": "15,000 cr, 1 Argon Crystal, 1,600 Nano Spores, 300 Polymer Bundle, 500 Circuits",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Mesa",
+          "note": "25,000 cr, the three parts, 1 Orokin Cell",
+          "alt": null,
+          "done": false
+        }
       ],
       "conditions": [
         "Start the three components in parallel. A free Warframe slot is required to claim Mesa."

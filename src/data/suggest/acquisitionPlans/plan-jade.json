@@ -6,10 +6,24 @@
   "tradeable": false,
   "progress": { "have": 0, "need": 4, "unit": "parts" },
   "badges": [
-    { "text": "pity currency, no cap", "tone": "info" },
-    { "text": "solo quest gate", "tone": "warn" }
+    { "text": "Jade Shadows quest", "tone": "warn" },
+    { "text": "pity currency, no cap", "tone": "info" }
   ],
-  "prices": [{ "label": "built", "amount": "275 p", "money": false }],
+  "prices": [{ "label": "built", "amount": "325 p", "money": false }],
+  "routes": [
+    {
+      "name": "Jade Shadows, then Ascension",
+      "cost": "the quest gives the main blueprint; parts drop at 4.63% or cost 150 Vestigial Motes each",
+      "effort": 3,
+      "role": "chosen"
+    },
+    {
+      "name": "After the quest: Ordis",
+      "cost": "450 Vestigial Motes buys the main blueprint; parts as before, 900 Motes for a whole set",
+      "effort": 4,
+      "role": "afterQuest"
+    }
+  ],
   "materials": [
     { "qty": "1,000", "label": "Circuits", "note": "Neuroptics" },
     { "qty": "750", "label": "Polymer Bundle", "note": "Neuroptics" },
@@ -30,7 +44,7 @@
       "type": "gate",
       "place": "QUESTS",
       "sub": null,
-      "activity": "The New War, then Jade Shadows",
+      "activity": "finish The New War",
       "meta": null,
       "mode": null,
       "live": null,
@@ -45,20 +59,38 @@
           "note": "required to start Jade Shadows",
           "alt": null,
           "done": false
-        },
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": [],
+      "quest": "Jade Shadows"
+    },
+    {
+      "type": "farm",
+      "place": "CODEX",
+      "sub": null,
+      "activity": "Jade Shadows quest",
+      "meta": "solo only, 30-40 min",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
         {
           "qty": null,
-          "label": "Jade Shadows",
-          "note": "solo only, 30-40 min; you play as Stalker",
+          "label": "Jade Blueprint",
+          "note": "quest reward, you play as Stalker",
           "alt": null,
           "done": false
         }
       ],
-      "conditions": [
-        "Completing Jade Shadows mails the Jade main blueprint and unlocks Ascension on Brutus, Uranus."
-      ],
+      "conditions": ["Finishing the quest unlocks Ascension on Brutus, Uranus."],
       "bonuses": [],
-      "disclosures": []
+      "disclosures": [],
+      "quest": "Jade Shadows"
     },
     {
       "type": "farm",
@@ -66,10 +98,10 @@
       "sub": null,
       "activity": "Ascension",
       "meta": "6-8 minutes per run; 11-13 Vestigial Motes normal, 16-18 Steel Path",
-      "mode": "Steel Path recommended, solo or recruiting chat",
+      "mode": "Steel Path pays more Motes; solo or recruiting chat",
       "live": null,
       "skip": null,
-      "earns": null,
+      "earns": { "currency": "Vestigial Motes", "amount": "450" },
       "spends": [],
       "map": null,
       "rows": [
@@ -105,52 +137,24 @@
         }
       ],
       "conditions": [
-        "Evensong, Cantare and Harmony share the same reward table, so any single run has about a 14% chance of some Jade part.",
-        "Always summon the Sister: collect 3 Sister Beacons during the elevator ride for a Sister of Parvos fight worth more motes and a guaranteed arcane on Steel Path.",
-        "Boosters, Nekros' Desecrate and similar loot abilities do not affect part drops or Vestigial Motes; only the Sister's Steel Essence gets boosted."
+        "Cantare, Evensong and Harmony drop from the same table at 4.63% each.",
+        "Always summon the Sister: collect 3 Sister Beacons during the elevator ride for a Sister of Parvos fight worth 5-7 more Motes, or 8-10 and a guaranteed arcane on Steel Path.",
+        "Boosters and loot abilities such as Nekros' Desecrate do not affect part drops or Vestigial Motes; only the Sister's Steel Essence gets boosted."
       ],
       "bonuses": [
-        "Steel Path packs more motes and Eximus density, doubling as a good Riven Sliver and affinity farm.",
-        "Switch to Operator/Drifter and void sling up the elevator shaft to spot the blue/white beacon glow; Titania flying upward also works."
+        "Switch to Operator or Drifter and void sling up the elevator shaft to spot the blue and white beacon glow; Titania flying upward also works."
       ],
       "disclosures": [
         {
           "title": "finding beacons",
-          "body": "Beacons sit on pipes, in side rooms and sometimes the bottom floor; more than 3 spawn, so skip the hard ones. Turning every audio channel down except sound effects makes the beacon chime easy to hear."
+          "body": "Beacons sit on pipes, in side rooms and sometimes the bottom floor. More than 3 spawn, so skip the hard ones. Turning every audio channel down except sound effects makes the beacon chime easy to hear."
         },
         {
           "title": "the capsule can't fail",
           "body": "The capsule is invulnerable while the elevator climbs, so stealth or mobility frames can spend all their time on Boosted Ionic Charges (the bigger, double-outlined ones, which stack up to 50s). If it loses shields during the final escort it just pauses until they regenerate; only deaths fail the mission."
         }
-      ]
-    },
-    {
-      "type": "vendor",
-      "place": "ORDIS, DRIFTER'S CAMP",
-      "sub": null,
-      "activity": "buy whatever parts are still missing",
-      "meta": "450 motes covers a full first set; the quest already pays the main blueprint",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [{ "currency": "Vestigial Motes", "amount": "450" }],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "any missing component blueprint",
-          "note": "150 Vestigial Motes each",
-          "alt": null,
-          "done": false
-        }
       ],
-      "conditions": [
-        "The quest grants the main blueprint outright, so only the three components ever cost motes on a first copy.",
-        "A second copy needs all 900 motes, since the quest's main-blueprint reward doesn't repeat."
-      ],
-      "bonuses": [],
-      "disclosures": []
+      "ref": "Vestigial Motes"
     },
     {
       "type": "foundry",
@@ -189,7 +193,7 @@
         {
           "qty": null,
           "label": "Jade",
-          "note": "25,000 cr, 3 Orokin Cell, 3 days",
+          "note": "25,000 cr, the three parts, 3 Orokin Cell, 3 days",
           "alt": null,
           "done": false
         }
@@ -198,5 +202,65 @@
       "bonuses": [],
       "disclosures": []
     }
-  ]
+  ],
+  "afterQuest": {
+    "effort": 4,
+    "badges": [
+      { "text": "450 Motes for the main", "tone": "warn" },
+      { "text": "pity currency, no cap", "tone": "info" }
+    ],
+    "groups": [
+      {
+        "type": "currency",
+        "place": "BRUTUS, URANUS",
+        "sub": null,
+        "activity": "Ascension",
+        "meta": "11-13 Vestigial Motes a run, 16-18 Steel Path",
+        "mode": null,
+        "live": null,
+        "skip": null,
+        "earns": { "currency": "Vestigial Motes", "amount": "450" },
+        "spends": [],
+        "map": null,
+        "rows": [
+          {
+            "qty": "450",
+            "label": "Vestigial Motes",
+            "note": "the Sister adds 5-7, or 8-10 on Steel Path",
+            "alt": null,
+            "done": false
+          }
+        ],
+        "conditions": [],
+        "bonuses": [],
+        "disclosures": [],
+        "ref": "Vestigial Motes"
+      },
+      {
+        "type": "vendor",
+        "place": "ORDIS, DRIFTER'S CAMP",
+        "sub": null,
+        "activity": "buy the main blueprint",
+        "meta": "450 Vestigial Motes",
+        "mode": null,
+        "live": null,
+        "skip": null,
+        "earns": null,
+        "spends": [{ "currency": "Vestigial Motes", "amount": "450" }],
+        "map": null,
+        "rows": [
+          {
+            "qty": null,
+            "label": "Jade Blueprint",
+            "note": "450 Vestigial Motes",
+            "alt": null,
+            "done": false
+          }
+        ],
+        "conditions": [],
+        "bonuses": [],
+        "disclosures": []
+      }
+    ]
+  }
 }

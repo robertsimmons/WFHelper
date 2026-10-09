@@ -4,21 +4,44 @@
   "effort": 5,
   "source": "unique",
   "tradeable": "imprints only",
-  "progress": { "have": 0, "need": 1, "unit": "companion" },
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "companion"
+  },
   "badges": [
-    { "text": "random breed, 1 of 5", "tone": "warn" },
-    { "text": "48h per roll", "tone": "warn" }
+    {
+      "text": "random breed, 1 of 5",
+      "tone": "warn"
+    },
+    {
+      "text": "48h per attempt",
+      "tone": "warn"
+    }
   ],
   "prices": [
-    { "label": "Incubator Power Core blueprint", "amount": "50,000 cr", "money": false },
-    { "label": "Power Core build, per roll", "amount": "100,000 cr", "money": false }
+    {
+      "label": "Kubrow Egg",
+      "amount": "10 p",
+      "money": false
+    },
+    {
+      "label": "Incubator Power Core blueprint",
+      "amount": "50,000 cr",
+      "money": false
+    }
   ],
   "materials": [
-    { "qty": "4,500", "label": "Nano Spores", "note": "per Incubator Power Core" },
-    { "qty": "2", "label": "Control Module", "note": "per Incubator Power Core" },
-    { "qty": "1", "label": "Argon Crystal", "note": "per Incubator Power Core" },
-    { "qty": "2", "label": "Kubrow Egg", "note": null },
-    { "qty": "2", "label": "Incubator Power Core", "note": null }
+    {
+      "qty": "1",
+      "label": "Kubrow Egg",
+      "note": "per attempt"
+    },
+    {
+      "qty": "1",
+      "label": "Incubator Power Core",
+      "note": "per attempt"
+    }
   ],
   "groups": [
     {
@@ -27,7 +50,7 @@
       "sub": null,
       "activity": "Howl of the Kubrow, then Incubator access",
       "meta": "one-time",
-      "mode": null,
+      "mode": "solo only",
       "live": null,
       "skip": null,
       "earns": null,
@@ -37,7 +60,7 @@
         {
           "qty": null,
           "label": "Howl of the Kubrow",
-          "note": "unlocks after the Venus to Mercury Junction; gives the Incubator and your first Kubrow",
+          "note": "gives the Incubator Segment",
           "alt": null,
           "done": false
         },
@@ -45,39 +68,14 @@
           "qty": "1",
           "label": "free Companion Slot",
           "note": "a Kubrow permanently occupies it",
-          "alt": "consign a wrong breed to the Lotus for 25,000 cr",
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": ["The Mercury Junction task gives one free Power Core."],
-      "disclosures": []
-    },
-    {
-      "type": "foundry",
-      "place": "FOUNDRY",
-      "sub": null,
-      "activity": "build Incubator Power Core",
-      "meta": "8h, 100,000 cr",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Raksa Kubrow",
-          "note": "1 Incubator Power Core",
-          "alt": null,
+          "alt": "consign a spare Kubrow to the Lotus for 25,000 cr",
           "done": false
         }
       ],
       "conditions": [
-        "The blueprint is a reusable 50,000 cr Market purchase; every incubation consumes a core."
+        "During the quest every Kubrow Den drops an egg and the first hatch takes 1 minute, but that Kubrow is still a random breed."
       ],
-      "bonuses": ["Build several cores ahead; Nano Spores are the real cost of rerolling."],
+      "bonuses": [],
       "disclosures": []
     },
     {
@@ -97,27 +95,23 @@
           "qty": null,
           "label": "Raksa Kubrow",
           "note": "random among Huras, Raksa, Sahasa, Sunika, Chesa",
-          "alt": "two Raksa imprints guarantee the breed",
+          "alt": "two Raksa Genetic Code Templates make Raksa much likelier, not certain",
           "done": false
         }
       ],
       "conditions": [
-        "Each breed is a flat 20% per roll with no pity; the incubation can't be cancelled, and the egg and core are spent whatever comes out.",
-        "A new pup stays a puppy until you mature it in the Incubator.",
-        "Its Beast Claw gives no Mastery; the companion itself gives 6,000 at rank 30."
+        "A wrong breed means another egg, another core and another 48 hours; an incubation can't be cancelled.",
+        "Imprints replace the breed roll only; the egg and core are still spent.",
+        "Mature the pup in the Incubator, which is instant, before it can go on missions."
       ],
       "bonuses": [
-        "The Nutrio Incubator Upgrade Segment halves the wait to 24 hours.",
-        "Protect restores 30% of your shields and its own; Hildryn and Harrow players call it close to mandatory."
+        "The Nutrio Incubator Upgrade Segment halves incubation to 24 hours: Tenno Lab research, MR 5 to craft, 100,000 cr, 1 Argon Crystal, 1 Incubator Power Core, 1,200 Oxium.",
+        "Its Beast Claws level but give no Mastery; only the Kubrow counts."
       ],
       "disclosures": [
         {
           "title": "imprints",
-          "body": "A Genetic Code Template is a reusable 50,000 cr Market blueprint; each build is 10,000 cr, 700 Nano Spores, 300 Circuits and 1 Control Module. Imprinting a matured Kubrow takes 1.5 hours and the pet is unusable meanwhile. Two imprints of one breed guarantee it, which helps only once you own a Raksa."
-        },
-        {
-          "title": "how many rolls",
-          "body": "A rough community expectation is about five eggs and five cores for a random Raksa; players report streaks like four Chesa in a row."
+          "body": "Imprints are tradeable. A Genetic Code Template blueprint is 50,000 cr and reusable; each template builds for 10,000 cr, 700 Nano Spores, 300 Circuits and 1 Control Module in 6 hours. Imprinting a matured Kubrow takes 1.5 hours, the Kubrow is unusable meanwhile, and one Kubrow gives at most 2 imprints. Each template gives each trait a 50% weighting, so two matching imprints make the breed likely, not guaranteed."
         }
       ]
     }

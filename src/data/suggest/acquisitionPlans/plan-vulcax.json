@@ -4,42 +4,134 @@
   "effort": 5,
   "source": "standing",
   "tradeable": false,
-  "progress": { "have": 0, "need": 1, "unit": "blueprint" },
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "blueprint"
+  },
   "badges": [
-    { "text": "Old Mate required", "tone": "warn" },
-    { "text": "MR 14", "tone": "info" }
+    {
+      "text": "Old Mate required",
+      "tone": "warn",
+      "rank": {
+        "syndicate": "Solaris United",
+        "level": 5
+      }
+    },
+    {
+      "text": "MR 14",
+      "tone": "info"
+    }
   ],
   "prices": [
-    { "label": "blueprint", "amount": "10,000 standing", "money": false },
-    { "label": "build", "amount": "50,000 cr", "money": false }
+    {
+      "label": "blueprint",
+      "amount": "10,000 standing",
+      "money": false
+    },
+    {
+      "label": "build",
+      "amount": "50,000 cr",
+      "money": false
+    }
   ],
   "materials": [
-    { "qty": "10", "label": "Marquise Veridos", "note": null },
-    { "qty": "10", "label": "Goblite Tears", "note": null },
-    { "qty": "10", "label": "Kriller Thermal Laser", "note": null },
-    { "qty": "5", "label": "Tromyzon Entroplasma", "note": null },
-    { "qty": "435,000", "label": "Credits", "note": null }
+    {
+      "qty": "10",
+      "label": "Marquise Veridos",
+      "note": null
+    },
+    {
+      "qty": "10",
+      "label": "Goblite Tears",
+      "note": null
+    },
+    {
+      "qty": "10",
+      "label": "Kriller Thermal Laser",
+      "note": null
+    },
+    {
+      "qty": "5",
+      "label": "Tromyzon Entroplasma",
+      "note": null
+    },
+    {
+      "qty": "435,000",
+      "label": "Credits",
+      "note": "385,000 Old Mate rank-ups, 50,000 build"
+    }
   ],
   "groups": [
+    {
+      "type": "gate",
+      "place": "FORTUNA, VENUS",
+      "sub": null,
+      "activity": "finish Vox Solaris, then rank Solaris United to Old Mate",
+      "meta": "Rank 5",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Vox Solaris",
+          "note": "unlocks Fortuna",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Solaris United Rank 5, Old Mate",
+          "note": "sacrifices 6 Training, 9 Shelter, 11 Medical, 10 Advances and 5 Familial Debt-Bonds plus 385,000 cr across the five rank-ups",
+          "alt": null,
+          "done": false,
+          "rank": {
+            "syndicate": "Solaris United",
+            "level": 5
+          }
+        },
+        {
+          "qty": null,
+          "label": "Mastery Rank 14",
+          "note": "to equip the Vulcax",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
     {
       "type": "currency",
       "place": "ORB VALLIS, VENUS",
       "sub": null,
-      "activity": "Conservation for Solaris United standing",
-      "meta": "~250,000 standing across 5 rank-ups plus the blueprint",
-      "mode": "solo",
+      "activity": "Solaris United standing for the rank-ups and the blueprint",
+      "meta": "250,000 standing: 240,000 to Old Mate, 10,000 for the blueprint",
+      "mode": null,
       "live": null,
       "skip": null,
-      "earns": { "currency": "Solaris United Standing", "amount": "250,000" },
+      "earns": {
+        "currency": "Solaris United Standing",
+        "amount": "250,000"
+      },
       "spends": [],
       "map": "orb-vallis",
       "rows": [
         {
           "qty": "240,000",
           "label": "rank-ups to Old Mate",
-          "note": "Rank 5; 5,000 / 22,000 / 44,000 / 70,000 / 99,000 per rank, plus Debt-Bonds and 385,000 credits",
+          "note": "5,000 / 22,000 / 44,000 / 70,000 / 99,000 per rank",
           "alt": null,
-          "done": false
+          "done": false,
+          "rank": {
+            "syndicate": "Solaris United",
+            "level": 5
+          }
         },
         {
           "qty": "10,000",
@@ -49,62 +141,42 @@
           "done": false
         }
       ],
-      "conditions": ["The Vulcax needs Mastery Rank 14 to equip."],
-      "bonuses": [
-        "Rank 5 is usually reached anyway for Necramech parts and the Cryotra, Tazicor and Helstrum on the same shelf."
-      ],
+      "conditions": [],
+      "bonuses": [],
       "disclosures": [],
       "ref": "Solaris United Standing"
-    },
-    {
-      "type": "bounty",
-      "place": "ORB VALLIS, VENUS",
-      "sub": null,
-      "activity": "farm Debt-Bonds for the rank-ups",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": "orb-vallis",
-      "rows": [
-        {
-          "qty": null,
-          "label": "Training, Shelter, Medical, Advances and Familial Debt-Bonds",
-          "note": "6 / 9 / 11 / 10 / 5 needed across all 5 rank-ups",
-          "alt": "Ticker's rotating stock",
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": ["Eudico and Solaris United Agent bounties are the usual Rank 5 route."],
-      "disclosures": []
     },
     {
       "type": "vendor",
       "place": "LEGS, FORTUNA",
       "sub": null,
-      "activity": "buy Vulcax blueprint",
-      "meta": "10,000 standing",
+      "activity": "buy blueprint",
+      "meta": "Old Mate",
       "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Solaris United Standing", "amount": "10,000" }],
-      "map": null,
+      "spends": [
+        {
+          "currency": "Solaris United Standing",
+          "amount": "10,000"
+        }
+      ],
+      "map": "fortuna",
       "rows": [
         {
           "qty": null,
           "label": "Vulcax Blueprint",
-          "note": "Rank 5, Old Mate",
+          "note": "10,000 standing",
           "alt": null,
-          "done": false
+          "done": false,
+          "rank": {
+            "syndicate": "Solaris United",
+            "level": 5
+          }
         }
       ],
-      "conditions": [
-        "The free Rank 5 item from the standing vendors may cover this, if the blueprint is eligible."
-      ],
+      "conditions": [],
       "bonuses": [],
       "disclosures": []
     },
@@ -124,15 +196,13 @@
         {
           "qty": null,
           "label": "Vulcax",
-          "note": "50,000 cr, 10 Marquise Veridos, 10 Goblite Tears, 10 Kriller Thermal Laser, 5 Tromyzon Entroplasma",
+          "note": "10 Marquise Veridos, 10 Goblite Tears, 10 Kriller Thermal Laser, 5 Tromyzon Entroplasma",
           "alt": null,
           "done": false
         }
       ],
-      "conditions": ["Takes a companion inventory slot."],
-      "bonuses": [
-        "Levels from the companion's kills on a MOA or Sentinel; robotic weapons share mod slots with your equipped weapon."
-      ],
+      "conditions": ["Takes a Companion inventory slot."],
+      "bonuses": [],
       "disclosures": []
     }
   ]

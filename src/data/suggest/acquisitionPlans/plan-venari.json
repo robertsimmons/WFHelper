@@ -4,20 +4,94 @@
   "effort": 3,
   "source": "repeat",
   "tradeable": false,
-  "progress": { "have": 0, "need": 1, "unit": "companion" },
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "companion"
+  },
   "badges": [
-    { "text": "Khora's passive", "tone": "info" },
-    { "text": "Kavat code gate", "tone": "warn" }
+    {
+      "text": "Khora's passive",
+      "tone": "info"
+    },
+    {
+      "text": "Kavat code gate",
+      "tone": "warn"
+    }
   ],
   "prices": [
-    { "label": "blueprint", "amount": "35,000 cr", "money": false },
-    { "label": "built", "amount": "325 p", "money": false }
+    {
+      "label": "Khora blueprint",
+      "amount": "35,000 cr",
+      "money": false
+    },
+    {
+      "label": "Khora built",
+      "amount": "325 p",
+      "money": false
+    }
   ],
   "materials": [
-    { "qty": "1", "label": "Orokin Cell", "note": null },
-    { "qty": "9", "label": "Kavat Genetic Code", "note": "2 Neuroptics, 5 Chassis, 2 Systems" },
-    { "qty": "35", "label": "Kuaka Spinal Claw", "note": "Neuroptics" },
-    { "qty": "65", "label": "Iradite", "note": "Chassis" }
+    {
+      "qty": "3",
+      "label": "Orokin Cell",
+      "note": "Khora"
+    },
+    {
+      "qty": "9",
+      "label": "Kavat Genetic Code",
+      "note": "2 Neuroptics, 5 Chassis, 2 Systems"
+    },
+    {
+      "qty": "35",
+      "label": "Kuaka Spinal Claw",
+      "note": "Neuroptics"
+    },
+    {
+      "qty": "1,500",
+      "label": "Polymer Bundle",
+      "note": "Neuroptics"
+    },
+    {
+      "qty": "16,000",
+      "label": "Salvage",
+      "note": "Neuroptics"
+    },
+    {
+      "qty": "65",
+      "label": "Iradite",
+      "note": "Chassis"
+    },
+    {
+      "qty": "12,250",
+      "label": "Alloy Plate",
+      "note": "Chassis"
+    },
+    {
+      "qty": "4,300",
+      "label": "Rubedo",
+      "note": "Chassis"
+    },
+    {
+      "qty": "1,000",
+      "label": "Plastids",
+      "note": "Systems"
+    },
+    {
+      "qty": "2,600",
+      "label": "Circuits",
+      "note": "Systems"
+    },
+    {
+      "qty": "11,500",
+      "label": "Ferrite",
+      "note": "Systems"
+    },
+    {
+      "qty": "105,000",
+      "label": "Credits",
+      "note": "35,000 blueprint, 25,000 Khora, 15,000 per component"
+    }
   ],
   "groups": [
     {
@@ -33,11 +107,16 @@
       "spends": [],
       "map": null,
       "rows": [
-        { "qty": null, "label": "The New Strange", "note": "required", "alt": null, "done": false }
+        {
+          "qty": null,
+          "label": "The New Strange",
+          "note": "required for Sanctuary Onslaught",
+          "alt": null,
+          "done": false
+        }
       ],
       "conditions": [
-        "Venari has no blueprint of her own. She spawns automatically with Khora from rank 0, so this whole plan is the Khora farm.",
-        "Completing the quest unlocks Simaris' Sanctuary and normal Sanctuary Onslaught. Parts do not drop from Elite Sanctuary Onslaught."
+        "Venari has no blueprint of her own: she joins the Arsenal when Khora is claimed, so this plan is the Khora farm."
       ],
       "bonuses": [],
       "disclosures": []
@@ -52,14 +131,23 @@
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [],
+      "spends": [
+        {
+          "currency": "Credits",
+          "amount": "35,000"
+        }
+      ],
       "map": null,
       "rows": [
-        { "qty": null, "label": "Khora Blueprint", "note": null, "alt": null, "done": false }
+        {
+          "qty": null,
+          "label": "Khora Blueprint",
+          "note": null,
+          "alt": null,
+          "done": false
+        }
       ],
-      "conditions": [
-        "The main blueprint is a credits Market purchase; it is no longer an Onslaught drop."
-      ],
+      "conditions": [],
       "bonuses": [],
       "disclosures": []
     },
@@ -68,8 +156,8 @@
       "place": "SANCTUARY ONSLAUGHT",
       "sub": "Simaris' Sanctuary",
       "activity": "normal Sanctuary Onslaught",
-      "meta": "~11-14 rotations per part expected",
-      "mode": "public or nuke-frame solo",
+      "meta": "about 11 to 14 rotations per part",
+      "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
@@ -99,11 +187,11 @@
         }
       ],
       "conditions": [
-        "Rewards follow A-A-B-C every two zones: zones 1-2 and 3-4 are A, 5-6 B, and 7-8 C.",
-        "Use normal SO only. Elite SO has different rewards and cannot drop Khora parts."
+        "Rewards follow A-A-B-C every two zones.",
+        "Use normal Sanctuary Onslaught: Elite doesn't drop Khora parts."
       ],
       "bonuses": [
-        "After The Duviri Paradox, The Circuit guarantees Neuroptics at tier 2, Chassis at tier 5, Systems at tier 8, and the main blueprint at tier 10 during Khora's rotation week."
+        "After The Duviri Paradox, The Circuit pays Neuroptics at tier 2, Chassis at tier 5, Systems at tier 8 and the main blueprint at tier 10 on Khora's rotation week."
       ],
       "disclosures": []
     },
@@ -123,25 +211,35 @@
         {
           "qty": null,
           "label": "Neuroptics",
-          "note": "2 Kavat Codes + 35 Kuaka Spinal Claw",
+          "note": "15,000 cr, 2 Kavat Genetic Code, 35 Kuaka Spinal Claw, 1,500 Polymer Bundle, 16,000 Salvage",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Chassis",
-          "note": "5 Kavat Codes + 65 Iradite",
+          "note": "15,000 cr, 5 Kavat Genetic Code, 65 Iradite, 12,250 Alloy Plate, 4,300 Rubedo",
           "alt": null,
           "done": false
         },
-        { "qty": null, "label": "Systems", "note": "2 Kavat Codes", "alt": null, "done": false },
-        { "qty": null, "label": "Khora", "note": "1 Orokin Cell", "alt": null, "done": false }
+        {
+          "qty": null,
+          "label": "Systems",
+          "note": "15,000 cr, 2 Kavat Genetic Code, 1,000 Plastids, 2,600 Circuits, 11,500 Ferrite",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Khora",
+          "note": "25,000 cr, the three components, 3 Orokin Cell",
+          "alt": null,
+          "done": false
+        }
       ],
-      "conditions": [
-        "Build all three components first, then use the Market blueprint to build Khora. Venari joins the Arsenal automatically the moment Khora is claimed."
-      ],
+      "conditions": [],
       "bonuses": [
-        "Venari ranks to 30 separately from Khora and earns her own 6,000 mastery. Venari Prime comes with Khora Prime as a separate 6,000-mastery item, so base Venari still counts toward mastery even if you already own the Prime."
+        "Venari ranks separately from Khora and earns her own Mastery; Venari Prime comes with Khora Prime as another item."
       ],
       "disclosures": []
     }

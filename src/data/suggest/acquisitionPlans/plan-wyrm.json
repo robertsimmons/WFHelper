@@ -4,18 +4,54 @@
   "effort": 2,
   "source": "shop",
   "tradeable": false,
-  "progress": { "have": 0, "need": 1, "unit": "blueprint" },
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "blueprint"
+  },
   "badges": [
-    { "text": "2 companion slots", "tone": "warn" },
-    { "text": "Negate: 75,000 standing", "tone": "info" }
+    {
+      "text": "2 companion slots",
+      "tone": "warn"
+    },
+    {
+      "text": "Negate: 75,000 standing",
+      "tone": "info"
+    }
   ],
-  "prices": [{ "label": "blueprint", "amount": "100,000 cr", "money": false }],
+  "prices": [
+    {
+      "label": "blueprint",
+      "amount": "100,000 cr",
+      "money": false
+    }
+  ],
   "materials": [
-    { "qty": "500", "label": "Alloy Plate", "note": null },
-    { "qty": "400", "label": "Circuits", "note": null },
-    { "qty": "200", "label": "Nano Spores", "note": null },
-    { "qty": "1", "label": "Control Module", "note": null },
-    { "qty": "115,000", "label": "Credits", "note": null }
+    {
+      "qty": "500",
+      "label": "Alloy Plate",
+      "note": null
+    },
+    {
+      "qty": "400",
+      "label": "Circuits",
+      "note": null
+    },
+    {
+      "qty": "200",
+      "label": "Nano Spores",
+      "note": null
+    },
+    {
+      "qty": "1",
+      "label": "Control Module",
+      "note": null
+    },
+    {
+      "qty": "115,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
     {
@@ -31,7 +67,13 @@
       "spends": [],
       "map": null,
       "rows": [
-        { "qty": null, "label": "Wyrm Blueprint", "note": null, "alt": null, "done": false }
+        {
+          "qty": null,
+          "label": "Wyrm Blueprint",
+          "note": null,
+          "alt": null,
+          "done": false
+        }
       ],
       "conditions": [
         "Needs two free Companion slots to claim: one for Wyrm, one for the Laser Rifle it comes with."
@@ -73,7 +115,10 @@
       "mode": null,
       "live": null,
       "skip": null,
-      "earns": { "currency": "Cephalon Simaris Standing", "amount": "75,000" },
+      "earns": {
+        "currency": "Cephalon Simaris Standing",
+        "amount": "75,000"
+      },
       "spends": [],
       "map": null,
       "rows": [
@@ -100,31 +145,32 @@
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Cephalon Simaris Standing", "amount": "75,000" }],
+      "spends": [
+        {
+          "currency": "Cephalon Simaris Standing",
+          "amount": "75,000"
+        }
+      ],
       "map": null,
       "rows": [
         {
           "qty": null,
           "label": "Negate",
-          "note": "Wyrm-exclusive precept: blocks one status effect, then a cooldown",
-          "alt": "tradeable - a friend can hand it to you instead",
+          "note": "blocks one status effect on your Warframe, then a cooldown",
+          "alt": null,
           "done": false
         }
       ],
       "conditions": [
-        "Negate does not replace Primed Sure Footed: it blocks one instance, then goes on cooldown, and a resistance blocking a status effect still consumes the charge.",
-        "Doesn't work while Wyrm is inactive, such as during Titania's Razorwing."
+        "Negate still spends its charge when your Warframe resists the status, as with Primed Sure Footed on a Knockdown.",
+        "It doesn't work while Wyrm is inactive, such as during Titania's Razorwing.",
+        "Negate works on Wyrm Prime too."
       ],
       "bonuses": [
-        "Pair with Manifold Bond (Ostron Rank 3 Trusted, 20,000 standing) - its cooldown reduction also applies to Negate since Update 37.0.",
-        "Put Negate in the bottom-right precept slot; the wiki notes it can block precepts later in priority from firing."
+        "Manifold Bond (Master Teasonai, Ostron Rank 3 Trusted, 20,000 standing) also shortens Negate's cooldown.",
+        "Put Negate in the bottom-right precept slot; it can stop later precepts from firing."
       ],
-      "disclosures": [
-        {
-          "title": "not required, but why anyone builds this today",
-          "body": "Nobody farms Wyrm for its base kit anymore. Negate is the entire reason, and it works identically on base Wyrm and Wyrm Prime."
-        }
-      ]
+      "disclosures": []
     }
   ]
 }

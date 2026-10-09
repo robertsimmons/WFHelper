@@ -4,24 +4,59 @@
   "effort": 9,
   "source": "dojo",
   "tradeable": "imprints only",
-  "progress": { "have": 0, "need": 1, "unit": "companion" },
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "companion"
+  },
   "badges": [
-    { "text": "20 codes minimum", "tone": "warn" },
-    { "text": "random breed without imprints", "tone": "warn" },
-    { "text": "MR 5", "tone": "info" }
+    {
+      "text": "20 codes minimum",
+      "tone": "warn"
+    },
+    {
+      "text": "random breed without imprints",
+      "tone": "warn"
+    }
   ],
   "prices": [
-    { "label": "Kavat Genetic Codes, 20 minimum", "amount": "100 p", "money": false },
-    { "label": "Kavat Starter Kit", "amount": "95 p", "money": false }
+    {
+      "label": "Kavat Genetic Codes, 20 minimum",
+      "amount": "100 p",
+      "money": false
+    },
+    {
+      "label": "Kavat Starter Kit",
+      "amount": "95 p",
+      "money": false
+    }
   ],
   "materials": [
-    { "qty": "60,000", "label": "Alloy Plate", "note": "Upgrade Segment" },
-    { "qty": "2", "label": "Argon Crystal", "note": "1 Upgrade Segment, 1 Incubator Power Core" },
-    { "qty": "4,500", "label": "Nano Spores", "note": "Incubator Power Core" },
-    { "qty": "2", "label": "Control Module", "note": "Incubator Power Core" },
-    { "qty": "30", "label": "Kavat Genetic Code", "note": null },
-    { "qty": "2", "label": "Incubator Power Core", "note": null },
-    { "qty": "115,000", "label": "Credits", "note": null }
+    {
+      "qty": "60,000",
+      "label": "Alloy Plate",
+      "note": "Upgrade Segment"
+    },
+    {
+      "qty": "1",
+      "label": "Argon Crystal",
+      "note": "Upgrade Segment"
+    },
+    {
+      "qty": "20",
+      "label": "Kavat Genetic Code",
+      "note": "10 Upgrade Segment, 10 per incubation attempt"
+    },
+    {
+      "qty": "1",
+      "label": "Incubator Power Core",
+      "note": "per attempt"
+    },
+    {
+      "qty": "115,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
     {
@@ -54,64 +89,16 @@
         {
           "qty": "1",
           "label": "free Companion Slot",
-          "note": "a kavat permanently occupies it",
+          "note": "a Kavat permanently occupies it",
           "alt": null,
           "done": false
         }
       ],
       "conditions": [
-        "The 10 codes used by the Upgrade Segment are consumed; they do not count toward the 10 needed to incubate a kavat.",
-        "The first Incubator Power Core comes from the Venus-to-Mercury Junction. Later attempts consume another crafted core."
+        "The 10 codes the Upgrade Segment consumes don't count toward the 10 an incubation needs."
       ],
       "bonuses": [],
       "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "DEIMOS",
-      "sub": "Horend",
-      "activity": "Capture, scan live Feral Kavats",
-      "meta": "25% per scan",
-      "mode": "solo or full squad",
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": "cambion-drift",
-      "rows": [
-        {
-          "qty": null,
-          "label": "Cross-Matrix Widget",
-          "note": "45% chance for each scan to count twice",
-          "alt": "Cephalon Simaris standing",
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Vector-Thread Widget",
-          "note": "faster scanner use",
-          "alt": "Cephalon Simaris standing",
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Codes only come from scans that land while the Feral Kavat is alive. Corpse scans grant Simaris standing, never codes.",
-        "Horend is the quick repeat: scan the opening packs, complete Capture and extract. Phlegyas and Formido are valid Deimos alternatives; Terrorem can be camped for recurring packs.",
-        "Pack size is squad size plus one, but codes are personal: in a squad every player must scan every cat themselves.",
-        "Do not use ragdolls or wide-area kills. The cats are neutral, cloaked and fragile; sleep, slow, invisibility or Limbo Stasis preserves them for scans."
-      ],
-      "bonuses": [
-        "A full squad increases each pack to five cats. Cross-Matrix is the largest quality-of-life improvement before beginning the farm.",
-        "Dante's Noctua kill-scans without the normal Codex-completion limitation; direct-hit kills only.",
-        "If Sands of Inaros is unfinished, its second stage is a one-time cache of up to 50 safe Feral Kavats. Bring scanners and prepare before completing it."
-      ],
-      "disclosures": [
-        {
-          "title": "the 20-code floor is not a Smeeta guarantee",
-          "body": "Twenty codes only unlock one Random Incubation after building the segment. Random incubation can produce Adarza instead, requiring another 10 codes and another Power Core for every retry. The commonly quoted 50/50 breed split is not officially quantified."
-        }
-      ],
-      "ref": "Cephalon Simaris Standing"
     },
     {
       "type": "vendor",
@@ -123,14 +110,19 @@
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Credits", "amount": "15,000" }],
+      "spends": [
+        {
+          "currency": "Credits",
+          "amount": "15,000"
+        }
+      ],
       "map": null,
       "rows": [
         {
           "qty": null,
           "label": "Kavat Incubator Upgrade Segment Blueprint",
-          "note": "15,000 cr, MR 5 to build",
-          "alt": "or a Hyekka Master drop (Spear, Mars)",
+          "note": "15,000 cr after the Tenno Lab research",
+          "alt": "or a Hyekka Master drop",
           "done": false
         }
       ],
@@ -142,8 +134,8 @@
       "type": "foundry",
       "place": "FOUNDRY",
       "sub": null,
-      "activity": "build the Upgrade Segment and an Incubator Power Core",
-      "meta": "12h and 8h, 100,000 cr each",
+      "activity": "build the Upgrade Segment",
+      "meta": "12h, 100,000 cr",
       "mode": null,
       "live": null,
       "skip": null,
@@ -159,10 +151,7 @@
           "done": false
         }
       ],
-      "conditions": [
-        "The reusable blueprint costs 50,000 credits in the Market. Do not spend resources building a core if the Junction freebie is still available.",
-        "A wrong Random Incubation result consumes another core as well as another 10 codes."
-      ],
+      "conditions": ["A wrong breed costs another 10 codes and another Incubator Power Core."],
       "bonuses": [],
       "disclosures": []
     },
@@ -171,7 +160,7 @@
       "place": "ORBITER",
       "sub": "Incubator",
       "activity": "Random Incubation",
-      "meta": "48h, 10 codes",
+      "meta": "48h, 10 codes + 1 core",
       "mode": null,
       "live": null,
       "skip": null,
@@ -182,25 +171,19 @@
         {
           "qty": null,
           "label": "Smeeta Kavat",
-          "note": "random result without imprints",
+          "note": "random between Smeeta and Adarza; the wiki gives no odds",
           "alt": "use two Smeeta Genetic Code Templates",
           "done": false
         }
       ],
       "conditions": [
-        "Random Incubation cannot be directed to Smeeta. An Adarza result has no pity protection and starts another 10-code attempt.",
-        "Two matching Smeeta imprints replace the breed roulette but do not replace the 10 codes or Power Core.",
-        "Incubation is 48 hours, or 24 hours with the separate Nutrio Incubator Upgrade Segment; rushing costs 15 platinum."
+        "Two Smeeta imprints raise the odds but the wiki doesn't call them a guarantee, and the codes and core are still spent.",
+        "Incubation takes 48 hours, or 24 with the Nutrio Incubator Upgrade Segment; rushing costs 15 platinum."
       ],
       "bonuses": [
-        "Smeeta imprints are tradeable. A mature kavat can make three, and each template has a reusable 50,000-credit blueprint with a 6-hour build time."
+        "Smeeta imprints are tradeable. One Kavat gives up to 3, 1.5 hours each; a template builds from a reusable 50,000 cr blueprint for 10,000 cr, 700 Nano Spores, 300 Circuits and 1 Control Module in 6 hours."
       ],
-      "disclosures": [
-        {
-          "title": "better escape hatch than more code farming",
-          "body": "If the goal is specifically Smeeta, buying or borrowing two Smeeta Genetic Code Templates controls the breed. It is usually less punishing than repeatedly farming codes and waiting through 48-hour random incubations; still budget the full materials for the one imprint incubation."
-        }
-      ]
+      "disclosures": []
     }
   ]
 }

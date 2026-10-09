@@ -4,21 +4,44 @@
   "effort": 5,
   "source": "unique",
   "tradeable": "imprints only",
-  "progress": { "have": 0, "need": 1, "unit": "companion" },
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "companion"
+  },
   "badges": [
-    { "text": "random breed, 1 of 5", "tone": "warn" },
-    { "text": "egg is a rare drop", "tone": "warn" }
+    {
+      "text": "random breed, 1 of 5",
+      "tone": "warn"
+    },
+    {
+      "text": "48h per attempt",
+      "tone": "warn"
+    }
   ],
   "prices": [
-    { "label": "Kubrow Egg", "amount": "10 p", "money": false },
-    { "label": "Incubator Power Core blueprint", "amount": "50,000 cr", "money": false }
+    {
+      "label": "Kubrow Egg",
+      "amount": "10 p",
+      "money": false
+    },
+    {
+      "label": "Incubator Power Core blueprint",
+      "amount": "50,000 cr",
+      "money": false
+    }
   ],
   "materials": [
-    { "qty": "4,500", "label": "Nano Spores", "note": "Incubator Power Core" },
-    { "qty": "2", "label": "Control Module", "note": "Incubator Power Core" },
-    { "qty": "1", "label": "Argon Crystal", "note": "Incubator Power Core" },
-    { "qty": "2", "label": "Kubrow Egg", "note": null },
-    { "qty": "2", "label": "Incubator Power Core", "note": null }
+    {
+      "qty": "1",
+      "label": "Kubrow Egg",
+      "note": "per attempt"
+    },
+    {
+      "qty": "1",
+      "label": "Incubator Power Core",
+      "note": "per attempt"
+    }
   ],
   "groups": [
     {
@@ -37,49 +60,20 @@
         {
           "qty": null,
           "label": "Howl of the Kubrow",
-          "note": "unlocked from the Venus-to-Mercury Junction; gives the Incubator Segment",
+          "note": "gives the Incubator Segment",
           "alt": null,
           "done": false
         },
         {
           "qty": "1",
           "label": "free Companion Slot",
-          "note": "a kubrow permanently occupies it",
-          "alt": null,
+          "note": "a Kubrow permanently occupies it",
+          "alt": "consign a spare Kubrow to the Lotus for 25,000 cr",
           "done": false
         }
       ],
       "conditions": [
-        "On a first playthrough the quest's egg step has a 100% drop from the first den and a 60-second first incubation; that first hatch is still random and may not be Sahasa.",
-        "Consigning an unwanted pet to the Lotus for 25,000 credits is the only way to free a full slot."
-      ],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "foundry",
-      "place": "FOUNDRY",
-      "sub": null,
-      "activity": "build Incubator Power Core",
-      "meta": "8h, 100,000 cr",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Sahasa Kubrow",
-          "note": "1 Incubator Power Core",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "The first core is free from the Venus-to-Mercury Junction (Vox Solaris); after that, buy the reusable blueprint for 50,000 credits and build another for each attempt.",
-        "A wrong Random Incubation result consumes another core as well as another egg."
+        "During the quest every Kubrow Den drops an egg and the first hatch takes 1 minute, but that Kubrow is still a random breed."
       ],
       "bonuses": [],
       "disclosures": []
@@ -100,25 +94,24 @@
         {
           "qty": null,
           "label": "Sahasa Kubrow",
-          "note": "random result among Huras, Raksa, Sahasa, Sunika, Chesa",
-          "alt": "use two Sahasa Genetic Code Templates",
+          "note": "random among Huras, Raksa, Sahasa, Sunika, Chesa",
+          "alt": "two Sahasa Genetic Code Templates make Sahasa much likelier, not certain",
           "done": false
         }
       ],
       "conditions": [
-        "Random Incubation cannot be directed to Sahasa; a wrong breed has no pity protection and starts another egg-and-core attempt.",
-        "Two matching Sahasa imprints replace the breed roulette but do not replace the egg or Power Core.",
-        "Incubation is 48 hours, or 24 hours with the separate Nutrio Incubator Upgrade Segment; rushing costs platinum.",
-        "You can't cancel an incubation once started."
+        "A wrong breed means another egg, another core and another 48 hours; an incubation can't be cancelled.",
+        "Imprints replace the breed roll only; the egg and core are still spent.",
+        "Mature the pup in the Incubator, which is instant, before it can go on missions."
       ],
       "bonuses": [
-        "Sahasa imprints are tradeable. A mature kubrow can give 2, 1.5h each; the Genetic Code Template blueprint is 50,000 credits, reusable, or 15 platinum built.",
-        "Mature it instantly at the Incubator once hatched, then level straight to 30 for the Mastery; there is no gild-and-relevel cycle like a modular pet."
+        "The Nutrio Incubator Upgrade Segment halves incubation to 24 hours: Tenno Lab research, MR 5 to craft, 100,000 cr, 1 Argon Crystal, 1 Incubator Power Core, 1,200 Oxium.",
+        "Its Beast Claws level but give no Mastery; only the Kubrow counts."
       ],
       "disclosures": [
         {
-          "title": "the safer route once anyone you know has one",
-          "body": "Rolling random eggs over and over hoping for Sahasa is the way people get burned: posts of 4-7 duplicates of the wrong breed aren't rare, and the wiki documents no pity system. Two Sahasa imprints from a friend or trade chat make the outcome close to deterministic, at the same egg-and-core cost as one random attempt."
+          "title": "imprints",
+          "body": "Imprints are tradeable. A Genetic Code Template blueprint is 50,000 cr and reusable; each template builds for 10,000 cr, 700 Nano Spores, 300 Circuits and 1 Control Module in 6 hours. Imprinting a matured Kubrow takes 1.5 hours, the Kubrow is unusable meanwhile, and one Kubrow gives at most 2 imprints. Each template gives each trait a 50% weighting, so two matching imprints make the breed likely, not guaranteed."
         }
       ]
     }

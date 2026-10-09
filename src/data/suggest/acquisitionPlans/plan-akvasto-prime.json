@@ -4,19 +4,36 @@
   "effort": 8,
   "source": "relics",
   "tradeable": true,
-  "progress": { "have": 0, "need": 3, "unit": "parts" },
-  "badges": [{ "text": "vaulted", "tone": "warn" }],
+  "progress": {
+    "have": 0,
+    "need": 3,
+    "unit": "parts"
+  },
+  "badges": [
+    {
+      "text": "vaulted",
+      "tone": "warn"
+    }
+  ],
   "prices": [],
   "materials": [
-    { "qty": "20", "label": "Orokin Cell", "note": "Vasto Prime" },
-    { "qty": "45,000", "label": "Credits", "note": null }
+    {
+      "qty": "20",
+      "label": "Orokin Cell",
+      "note": "Vasto Prime"
+    },
+    {
+      "qty": "45,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
     {
       "type": "fissure",
       "place": "ANY VOID FISSURE",
       "sub": null,
-      "activity": "crack the matching vaulted relics",
+      "activity": "crack the matching relics",
       "meta": "Blueprint is the bottleneck",
       "mode": null,
       "live": null,
@@ -35,21 +52,21 @@
         {
           "qty": "2",
           "label": "Vasto Prime Blueprint",
-          "note": "Lith L4 or Meso A6 or Meso D5 or Meso L2 or Meso V8 or Neo S3 or Axi A5 or Axi P5 or Axi S15, Uncommon: 20% Radiant",
+          "note": "Axi A5, Uncommon: 20% Radiant",
           "alt": null,
           "done": false
         },
         {
           "qty": "2",
           "label": "Vasto Prime Barrel",
-          "note": "Lith A5 or Lith K11 or Lith M8 or Lith T11 or Neo D1 or Neo N2 or Axi A5 or Axi M4 or Axi P5 or Axi S7 or Axi V3, Common: 25.33% Intact",
+          "note": "Axi A5, Common: 25.33% Intact",
           "alt": null,
           "done": false
         },
         {
           "qty": "2",
           "label": "Vasto Prime Receiver",
-          "note": "Lith A1 or Lith G11 or Lith V9 or Meso N16 or Meso V2 or Neo B8 or Neo N12 or Neo R5 or Neo T8 or Axi A5, Common: 25.33% Intact",
+          "note": "Axi A5, Common: 25.33% Intact",
           "alt": null,
           "done": false
         },
@@ -63,10 +80,16 @@
       ],
       "conditions": [
         "Akvasto Prime is vaulted: its relics no longer drop from missions.",
+        "Axi A5 is a Baro Ki'Teer exclusive relic; he sells it on some visits only.",
         "Vaulted relics and the parts themselves still trade between players."
       ],
       "bonuses": [],
-      "disclosures": []
+      "disclosures": [
+        {
+          "title": "also in vaulted relics",
+          "body": "Vasto Prime Blueprint: Lith L4, Meso A6, Meso D5, Meso L2, Meso V8, Neo S3, Axi P5, Axi S15; Vasto Prime Barrel: Lith A5, Lith K11, Lith M8, Lith T11, Neo D1, Neo N2, Axi M4, Axi P5, Axi S7, Axi V3; Vasto Prime Receiver: Lith A1, Lith G11, Lith V9, Meso N16, Meso V2, Neo B8, Neo N12, Neo R5, Neo T8."
+        }
+      ]
     },
     {
       "type": "foundry",

@@ -4,19 +4,36 @@
   "effort": 8,
   "source": "relics",
   "tradeable": true,
-  "progress": { "have": 0, "need": 3, "unit": "parts" },
-  "badges": [{ "text": "vaulted", "tone": "warn" }],
+  "progress": {
+    "have": 0,
+    "need": 3,
+    "unit": "parts"
+  },
+  "badges": [
+    {
+      "text": "vaulted",
+      "tone": "warn"
+    }
+  ],
   "prices": [],
   "materials": [
-    { "qty": "20", "label": "Orokin Cell", "note": "Magnus Prime" },
-    { "qty": "45,000", "label": "Credits", "note": null }
+    {
+      "qty": "20",
+      "label": "Orokin Cell",
+      "note": "Magnus Prime"
+    },
+    {
+      "qty": "45,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
     {
       "type": "fissure",
       "place": "ANY VOID FISSURE",
       "sub": null,
-      "activity": "crack the matching vaulted relics",
+      "activity": "crack the matching relics",
       "meta": "Magnus Prime Barrel is the bottleneck",
       "mode": null,
       "live": null,
@@ -35,21 +52,21 @@
         {
           "qty": "2",
           "label": "Magnus Prime Blueprint",
-          "note": "Lith H8 or Lith Z3 or Meso B6 or Meso S15 or Neo N18 or Axi C7 or Axi K10 or Axi M5 or Axi S14 or Axi T10, Common: 25.33% Intact",
+          "note": "Axi M5, Common: 25.33% Intact",
           "alt": null,
           "done": false
         },
         {
           "qty": "2",
           "label": "Magnus Prime Barrel",
-          "note": "Meso M5 or Neo M4 or Axi M2 or Axi M5, Rare: 10% Radiant",
+          "note": "Axi M5, Rare: 10% Radiant",
           "alt": null,
           "done": false
         },
         {
           "qty": "2",
           "label": "Magnus Prime Receiver",
-          "note": "Neo C2 or Neo C3 or Neo G4 or Neo N19 or Neo N22 or Neo T5 or Axi M5 or Axi T8, Uncommon: 20% Radiant",
+          "note": "Axi M5, Uncommon: 20% Radiant",
           "alt": null,
           "done": false
         },
@@ -63,10 +80,16 @@
       ],
       "conditions": [
         "Akmagnus Prime is vaulted: its relics no longer drop from missions.",
+        "Axi M5 is a Baro Ki'Teer exclusive relic; he sells it on some visits only.",
         "Vaulted relics and the parts themselves still trade between players."
       ],
       "bonuses": [],
-      "disclosures": []
+      "disclosures": [
+        {
+          "title": "also in vaulted relics",
+          "body": "Magnus Prime Blueprint: Lith H8, Lith Z3, Meso B6, Meso S15, Neo N18, Axi C7, Axi K10, Axi S14, Axi T10; Magnus Prime Barrel: Meso M5, Neo M4, Axi M2; Magnus Prime Receiver: Neo C2, Neo C3, Neo G4, Neo N19, Neo N22, Neo T5, Axi T8."
+        }
+      ]
     },
     {
       "type": "foundry",

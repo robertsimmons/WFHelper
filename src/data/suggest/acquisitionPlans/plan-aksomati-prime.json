@@ -1,19 +1,34 @@
 {
   "name": "Aksomati Prime",
   "kind": "secondary",
-  "effort": 5,
+  "effort": 8,
   "source": "relics",
   "tradeable": true,
-  "progress": { "have": 0, "need": 4, "unit": "parts" },
-  "badges": [],
+  "progress": {
+    "have": 0,
+    "need": 4,
+    "unit": "parts"
+  },
+  "badges": [
+    {
+      "text": "vaulted",
+      "tone": "warn"
+    }
+  ],
   "prices": [],
-  "materials": [{ "qty": "15,000", "label": "Credits", "note": null }],
+  "materials": [
+    {
+      "qty": "15,000",
+      "label": "Credits",
+      "note": null
+    }
+  ],
   "groups": [
     {
       "type": "fissure",
       "place": "ANY VOID FISSURE",
       "sub": null,
-      "activity": "crack the matching relic era",
+      "activity": "crack the matching vaulted relics",
       "meta": "Link is the bottleneck",
       "mode": null,
       "live": null,
@@ -25,40 +40,38 @@
         {
           "qty": null,
           "label": "Aksomati Prime Blueprint",
-          "note": "Meso I3, Common: 25.33% Intact",
+          "note": "Lith B8 or Lith N8 or Meso I3 or Meso R2 or Neo I3 or Neo N13 or Neo R4 or Axi B4 or Axi G6, Common: 25.33% Intact",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Aksomati Prime Link",
-          "note": "Axi A23, Rare: 10% Radiant",
+          "note": "Axi A8 or Axi A10 or Axi A13 or Axi A14 or Axi A15 or Axi A23, Rare: 10% Radiant",
           "alt": null,
           "done": false
         },
         {
           "qty": "2",
           "label": "Aksomati Prime Barrel",
-          "note": "Neo P11, Uncommon: 20% Radiant",
+          "note": "Lith B7 or Meso D6 or Meso S10 or Neo P11 or Neo S16 or Neo Z5, Uncommon: 20% Radiant",
           "alt": null,
           "done": false
         },
         {
           "qty": "2",
           "label": "Aksomati Prime Receiver",
-          "note": "Lith B12, Common: 25.33% Intact",
+          "note": "Lith B12 or Lith K6 or Lith N6 or Neo B7 or Neo P2 or Neo T5 or Axi D2 or Axi G4 or Axi S13 or Axi W1, Common: 25.33% Intact",
           "alt": null,
           "done": false
         }
       ],
-      "conditions": [],
+      "conditions": [
+        "Aksomati Prime is vaulted: its relics no longer drop from missions.",
+        "Vaulted relics and the parts themselves still trade between players."
+      ],
       "bonuses": [],
-      "disclosures": [
-        {
-          "title": "also in vaulted relics",
-          "body": "Blueprint: Lith B8, Lith N8, Meso R2, Neo I3, Neo N13, Neo R4, Axi B4, Axi G6; Link: Axi A8, Axi A10, Axi A13, Axi A14, Axi A15; Barrel: Lith B7, Meso D6, Meso S10, Neo S16, Neo Z5; Receiver: Lith K6, Lith N6, Neo B7, Neo P2, Neo T5, Axi D2, Axi G4, Axi S13, Axi W1."
-        }
-      ]
+      "disclosures": []
     },
     {
       "type": "foundry",

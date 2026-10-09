@@ -4,26 +4,84 @@
   "effort": 7,
   "source": "bounties",
   "tradeable": false,
-  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "progress": {
+    "have": 0,
+    "need": 4,
+    "unit": "parts"
+  },
   "badges": [
-    { "text": "40 Narmer Isoplast", "tone": "warn" },
-    { "text": "The New War gate", "tone": "warn" }
+    {
+      "text": "40 Narmer Isoplast",
+      "tone": "warn"
+    },
+    {
+      "text": "The New War gate",
+      "tone": "warn"
+    }
   ],
   "prices": [
-    { "label": "blueprint", "amount": "50,000 cr", "money": false },
-    { "label": "build", "amount": "70,000 cr", "money": false }
+    {
+      "label": "blueprint",
+      "amount": "50,000 cr",
+      "money": false
+    },
+    {
+      "label": "build",
+      "amount": "70,000 cr",
+      "money": false
+    }
   ],
   "materials": [
-    { "qty": "10", "label": "Neural Sensors", "note": "Neuroptics" },
-    { "qty": "1,500", "label": "Plastids", "note": "Hespazym Alloy refines" },
-    { "qty": "10", "label": "Morphics", "note": "Hespazym Alloy refines" },
-    { "qty": "12", "label": "Orokin Cell", "note": "Caliban" },
-    { "qty": "40", "label": "Narmer Isoplast", "note": null },
-    { "qty": "100", "label": "Hespazym Alloy", "note": null },
-    { "qty": "20", "label": "Mortus Horn", "note": null },
-    { "qty": "30", "label": "Breath Of The Eidolon", "note": null },
-    { "qty": "30", "label": "Hexenon", "note": "Caliban Systems" },
-    { "qty": "120,000", "label": "Credits", "note": null }
+    {
+      "qty": "10",
+      "label": "Neural Sensors",
+      "note": "Neuroptics"
+    },
+    {
+      "qty": "1,500",
+      "label": "Plastids",
+      "note": "Hespazym Alloy refines"
+    },
+    {
+      "qty": "10",
+      "label": "Morphics",
+      "note": "Hespazym Alloy refines"
+    },
+    {
+      "qty": "12",
+      "label": "Orokin Cell",
+      "note": "Caliban"
+    },
+    {
+      "qty": "40",
+      "label": "Narmer Isoplast",
+      "note": null
+    },
+    {
+      "qty": "100",
+      "label": "Hespazym Alloy",
+      "note": null
+    },
+    {
+      "qty": "20",
+      "label": "Mortus Horn",
+      "note": null
+    },
+    {
+      "qty": "30",
+      "label": "Breath Of The Eidolon",
+      "note": null
+    },
+    {
+      "qty": "30",
+      "label": "Hexenon",
+      "note": "Caliban Systems"
+    },
+    {
+      "qty": "120,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
     {
@@ -42,7 +100,7 @@
         {
           "qty": null,
           "label": "The New War",
-          "note": "long prerequisite chain; needs a Railjack",
+          "note": "needs Prelude to War done, plus a Railjack and an Amp",
           "alt": null,
           "done": false
         }
@@ -64,7 +122,13 @@
       "spends": [],
       "map": null,
       "rows": [
-        { "qty": null, "label": "Caliban Blueprint", "note": null, "alt": null, "done": false }
+        {
+          "qty": null,
+          "label": "Caliban Blueprint",
+          "note": null,
+          "alt": null,
+          "done": false
+        }
       ],
       "conditions": [],
       "bonuses": [],
@@ -158,7 +222,7 @@
       "type": "farm",
       "place": "PLAINS OF EIDOLON, EARTH",
       "sub": null,
-      "activity": "spear-fish and cut at Fisher Hai-Luk; Cetus bounties",
+      "activity": "spear Tralok, then cut them at Fisher Hai-Luk",
       "meta": null,
       "mode": null,
       "live": null,
@@ -170,7 +234,7 @@
         {
           "qty": "20",
           "label": "Tralok Eyes",
-          "note": "ocean, daytime; Tulok or Peram spear",
+          "note": "ocean, daytime; Tulok or Spari spear; 1 eye per fish",
           "alt": null,
           "done": false
         }
@@ -189,7 +253,12 @@
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Solaris United Standing", "amount": "4,000" }],
+      "spends": [
+        {
+          "currency": "Solaris United Standing",
+          "amount": "4,000"
+        }
+      ],
       "map": "fortuna",
       "rows": [
         {
@@ -197,7 +266,11 @@
           "label": "Hespazym Alloy Blueprint",
           "note": "4,000 standing, reusable",
           "alt": null,
-          "done": false
+          "done": false,
+          "rank": {
+            "syndicate": "Solaris United",
+            "level": 2
+          }
         }
       ],
       "conditions": [],

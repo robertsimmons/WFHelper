@@ -10,6 +10,26 @@
     { "text": "Circuit alt", "tone": "circuit" }
   ],
   "prices": [{ "label": "build", "amount": "70,000 cr", "money": false }],
+  "routes": [
+    {
+      "name": "Saya's Vigil, then Plains bounties",
+      "cost": "the quest gives the main blueprint; the three parts drop from Konzu's bounties",
+      "effort": 4,
+      "role": "chosen"
+    },
+    {
+      "name": "After the quest: Simaris, then Plains bounties",
+      "cost": "50,000 Simaris Standing for the main blueprint; the parts still drop from bounties",
+      "effort": 5,
+      "role": "afterQuest"
+    },
+    {
+      "name": "Duviri Circuit week 10",
+      "cost": "all four blueprints guaranteed by tier 10, 3,640 progress",
+      "effort": 3,
+      "role": null
+    }
+  ],
   "materials": [
     { "qty": "2", "label": "Neurodes", "note": "Neuroptics" },
     { "qty": "2", "label": "Morphics", "note": "Systems" },
@@ -35,10 +55,10 @@
   "groups": [
     {
       "type": "gate",
-      "place": "CETUS, EARTH",
+      "place": "QUESTS",
       "sub": null,
-      "activity": "Saya's Vigil",
-      "meta": "solo, beginner-balanced",
+      "activity": "finish Saya's Vigil",
+      "meta": "solo only",
       "mode": null,
       "live": null,
       "skip": null,
@@ -46,34 +66,50 @@
       "spends": [],
       "map": null,
       "rows": [
-        { "qty": null, "label": "Vor's Prize", "note": null, "alt": null, "done": false },
-        {
-          "qty": null,
-          "label": "one Cetus bounty completed",
-          "note": null,
-          "alt": null,
-          "done": false
-        },
         {
           "qty": null,
           "label": "Saya's Vigil",
-          "note": "awards the main blueprint",
-          "alt": "or 50,000 standing at Cephalon Simaris; or Duviri Circuit tier 10, Gara's rotation week",
+          "note": "needs Vor's Prize done and one Plains bounty completed",
+          "alt": null,
           "done": false
         }
       ],
-      "conditions": ["Saya's Vigil is solo-only."],
-      "bonuses": [
-        "The quest awards the Gara main blueprint outright, so only the three components need farming."
-      ],
+      "conditions": [],
+      "bonuses": [],
       "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "CETUS, EARTH",
+      "sub": "Konzu, then Saya",
+      "activity": "finish the quest",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Gara Blueprint",
+          "note": "quest reward",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": [],
+      "quest": "Saya's Vigil"
     },
     {
       "type": "bounty",
       "place": "PLAINS OF EIDOLON, EARTH",
       "sub": "Konzu",
       "activity": "bounty chains, finish to the final stage",
-      "meta": null,
+      "meta": "any rotation can drop every part",
       "mode": null,
       "live": null,
       "skip": null,
@@ -84,22 +120,22 @@
         {
           "qty": null,
           "label": "Chassis Blueprint",
-          "note": "7.37%, Lvl 5-15, final stage",
-          "alt": "or Duviri Circuit tier 5, Gara's rotation week",
+          "note": "Lvl 5-15: 30.56% final stage, 7.52% stage 2",
+          "alt": "or Duviri Circuit tier 5, week 10",
           "done": false
         },
         {
           "qty": null,
           "label": "Systems Blueprint",
-          "note": "9.16%, Lvl 10-30, final stage",
-          "alt": "or Duviri Circuit tier 8, Gara's rotation week",
+          "note": "Lvl 10-30: 25% final stage, 10.08% stage 2",
+          "alt": "or Duviri Circuit tier 8, week 10",
           "done": false
         },
         {
           "qty": null,
           "label": "Neuroptics Blueprint",
-          "note": "8.25-9.38%, Lvl 20-40, final stage",
-          "alt": "or Duviri Circuit tier 2, Gara's rotation week",
+          "note": "Lvl 20-40: 23.53-26.09% final stage, 9.04-10.40% stages 2 and 3",
+          "alt": "or Duviri Circuit tier 2, week 10",
           "done": false
         }
       ],
@@ -135,19 +171,19 @@
           "label": "Coprite Alloy blueprint",
           "note": "2,500 standing",
           "alt": null,
-          "done": false
+          "done": false,
+          "rank": { "syndicate": "Ostron", "level": 1 }
         },
         {
           "qty": null,
           "label": "Esher Devar cutting blueprint",
           "note": "2,500 standing",
           "alt": null,
-          "done": false
+          "done": false,
+          "rank": { "syndicate": "Ostron", "level": 1 }
         }
       ],
-      "conditions": [
-        "At low Mastery Rank the Ostron daily standing cap slows getting these blueprints."
-      ],
+      "conditions": [],
       "bonuses": [],
       "disclosures": []
     },
@@ -197,5 +233,65 @@
       "bonuses": [],
       "disclosures": []
     }
-  ]
+  ],
+  "afterQuest": {
+    "effort": 5,
+    "badges": [
+      { "text": "Simaris 50,000 standing", "tone": "warn" },
+      { "text": "Circuit week 10", "tone": "circuit" }
+    ],
+    "groups": [
+      {
+        "type": "currency",
+        "place": "CEPHALON SIMARIS",
+        "sub": null,
+        "activity": "scan targets with the Synthesis Scanner",
+        "meta": "50,000 Standing, ~3 capped days",
+        "mode": null,
+        "live": null,
+        "skip": null,
+        "earns": { "currency": "Cephalon Simaris Standing", "amount": "50,000" },
+        "spends": [],
+        "map": null,
+        "rows": [
+          {
+            "qty": "50,000",
+            "label": "Simaris Standing",
+            "note": "daily cap 16,000 + 500 per Mastery Rank",
+            "alt": null,
+            "done": false
+          }
+        ],
+        "conditions": [],
+        "bonuses": [],
+        "disclosures": [],
+        "ref": "Cephalon Simaris Standing"
+      },
+      {
+        "type": "vendor",
+        "place": "CEPHALON SIMARIS",
+        "sub": null,
+        "activity": "buy the main blueprint",
+        "meta": "50,000 Standing, repeatable",
+        "mode": null,
+        "live": null,
+        "skip": null,
+        "earns": null,
+        "spends": [{ "currency": "Cephalon Simaris Standing", "amount": "50,000" }],
+        "map": null,
+        "rows": [
+          {
+            "qty": null,
+            "label": "Gara Blueprint",
+            "note": "50,000 Standing",
+            "alt": "Circuit week 10, tier 10",
+            "done": false
+          }
+        ],
+        "conditions": ["Simaris only stocks it once Saya's Vigil is done."],
+        "bonuses": [],
+        "disclosures": []
+      }
+    ]
+  }
 }

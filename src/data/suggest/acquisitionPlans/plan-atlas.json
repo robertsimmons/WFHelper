@@ -4,33 +4,111 @@
   "effort": 4,
   "source": "boss",
   "tradeable": false,
-  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "progress": {
+    "have": 0,
+    "need": 4,
+    "unit": "parts"
+  },
   "badges": [
-    { "text": "Jordas Golem", "tone": "warn" },
-    { "text": "Circuit week 7", "tone": "circuit" }
+    {
+      "text": "Jordas Golem",
+      "tone": "warn"
+    },
+    {
+      "text": "Circuit week 7",
+      "tone": "circuit"
+    }
   ],
   "prices": [],
+  "routes": [
+    {
+      "name": "Jordas Precept, then the Golem",
+      "cost": "the quest gives the main blueprint; the Golem drops the three parts",
+      "effort": 4,
+      "role": "chosen"
+    },
+    {
+      "name": "After the quest: Simaris",
+      "cost": "50,000 Simaris Standing buys the main blueprint; the Golem still drops the parts",
+      "effort": 5,
+      "role": "afterQuest"
+    },
+    {
+      "name": "Circuit week 7",
+      "cost": "tiers 2, 5, 8 and 10 give every blueprint in one week, after The Duviri Paradox",
+      "effort": 5,
+      "role": null
+    }
+  ],
   "materials": [
-    { "qty": "4,600", "label": "Ferrite", "note": "Systems" },
-    { "qty": "3,100", "label": "Polymer Bundle", "note": "1,400 Neuroptics, 1,700 Systems" },
-    { "qty": "5", "label": "Morphics", "note": "Systems" },
-    { "qty": "1,100", "label": "Alloy Plate", "note": "Neuroptics" },
-    { "qty": "800", "label": "Circuits", "note": "Neuroptics" },
-    { "qty": "2", "label": "Orokin Cell", "note": "1 Systems, 1 Atlas" },
-    { "qty": "5", "label": "Neurodes", "note": "Neuroptics" },
-    { "qty": "1,800", "label": "Nano Spores", "note": "Chassis" },
-    { "qty": "1,300", "label": "Cryotic", "note": "Chassis" },
-    { "qty": "700", "label": "Rubedo", "note": "Chassis" },
-    { "qty": "2", "label": "Argon Crystal", "note": "Chassis" },
-    { "qty": "75,000", "label": "Credits", "note": null }
+    {
+      "qty": "4,600",
+      "label": "Ferrite",
+      "note": "Systems"
+    },
+    {
+      "qty": "3,100",
+      "label": "Polymer Bundle",
+      "note": "1,400 Neuroptics, 1,700 Systems"
+    },
+    {
+      "qty": "5",
+      "label": "Morphics",
+      "note": "Systems"
+    },
+    {
+      "qty": "1,100",
+      "label": "Alloy Plate",
+      "note": "Neuroptics"
+    },
+    {
+      "qty": "800",
+      "label": "Circuits",
+      "note": "Neuroptics"
+    },
+    {
+      "qty": "2",
+      "label": "Orokin Cell",
+      "note": "1 Systems, 1 Atlas"
+    },
+    {
+      "qty": "5",
+      "label": "Neurodes",
+      "note": "Neuroptics"
+    },
+    {
+      "qty": "1,800",
+      "label": "Nano Spores",
+      "note": "Chassis"
+    },
+    {
+      "qty": "1,300",
+      "label": "Cryotic",
+      "note": "Chassis"
+    },
+    {
+      "qty": "700",
+      "label": "Rubedo",
+      "note": "Chassis"
+    },
+    {
+      "qty": "2",
+      "label": "Argon Crystal",
+      "note": "Chassis"
+    },
+    {
+      "qty": "75,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
     {
       "type": "gate",
-      "place": "ERIS, PLUTO",
+      "place": "QUESTS",
       "sub": null,
-      "activity": "The Jordas Precept",
-      "meta": "needs the Pluto to Eris Junction and Archwing",
+      "activity": "finish The Jordas Precept",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -40,31 +118,49 @@
       "rows": [
         {
           "qty": null,
-          "label": "The Archwing quest",
-          "note": "unlocks Archwing",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
           "label": "The Jordas Precept",
-          "note": "rewards the Atlas main blueprint and unlocks the Golem node",
+          "note": "unlocks the Jordas Golem fight, flown in Archwing",
           "alt": null,
           "done": false
         }
       ],
-      "conditions": [
-        "Replaying a quest does not re-grant its reward. If the main blueprint is lost or sold, Cephalon Simaris sells a new one for 50,000 standing."
-      ],
+      "conditions": ["Replaying a quest does not re-grant its reward."],
       "bonuses": [],
-      "disclosures": []
+      "disclosures": [],
+      "quest": "The Jordas Precept"
+    },
+    {
+      "type": "farm",
+      "place": "THE JORDAS PRECEPT",
+      "sub": null,
+      "activity": "finish the quest",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Atlas Blueprint",
+          "note": "quest reward",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": [],
+      "quest": "The Jordas Precept"
     },
     {
       "type": "boss",
       "place": "JORDAS GOLEM, ERIS",
       "sub": null,
       "activity": "Assassinate, Archwing",
-      "meta": "about 2 kills each for Neuroptics and Chassis, about 4 for Systems",
+      "meta": "one component blueprint a clear",
       "mode": "solo",
       "live": null,
       "skip": null,
@@ -75,28 +171,36 @@
         {
           "qty": null,
           "label": "Neuroptics Blueprint",
-          "note": "38.72%, Rotation C",
-          "alt": null,
+          "note": "38.72%",
+          "alt": {
+            "text": "or Circuit week 7, tier 2",
+            "spends": []
+          },
           "done": false
         },
         {
           "qty": null,
           "label": "Chassis Blueprint",
-          "note": "38.72%, Rotation C",
-          "alt": null,
+          "note": "38.72%",
+          "alt": {
+            "text": "or Circuit week 7, tier 5",
+            "spends": []
+          },
           "done": false
         },
         {
           "qty": null,
           "label": "Systems Blueprint",
-          "note": "22.56%, Rotation C",
-          "alt": null,
+          "note": "22.56%",
+          "alt": {
+            "text": "or Circuit week 7, tier 8",
+            "spends": []
+          },
           "done": false
         }
       ],
       "conditions": [
-        "Explosive and grenade Archguns (Ayanga, Arbucep) report near-zero damage on the Golem. Bring a direct-fire, high fire-rate Archgun such as Mausolon, modded for Heat and Slash.",
-        "The Golem scales, so a weak build or an uncoordinated squad drags the fight out."
+        "Explosive and grenade Archguns (Ayanga, Arbucep) report near-zero damage on the Golem. Bring a direct-fire, high fire-rate Archgun such as Mausolon, modded for Heat and Slash."
       ],
       "bonuses": ["The node gives no Mastery XP and is not needed for Eris Steel Path completion."],
       "disclosures": [
@@ -156,5 +260,82 @@
       "bonuses": [],
       "disclosures": []
     }
-  ]
+  ],
+  "afterQuest": {
+    "effort": 5,
+    "badges": [
+      {
+        "text": "Simaris 50,000 standing",
+        "tone": "warn"
+      },
+      {
+        "text": "Circuit week 7",
+        "tone": "circuit"
+      }
+    ],
+    "groups": [
+      {
+        "type": "currency",
+        "place": "CEPHALON SIMARIS",
+        "sub": null,
+        "activity": "scan targets with the Synthesis Scanner",
+        "meta": "50,000 Standing",
+        "mode": null,
+        "live": null,
+        "skip": null,
+        "earns": {
+          "currency": "Cephalon Simaris Standing",
+          "amount": "50,000"
+        },
+        "spends": [],
+        "map": null,
+        "rows": [
+          {
+            "qty": "50,000",
+            "label": "Simaris Standing",
+            "note": "daily cap 16,000 + 500 per Mastery Rank",
+            "alt": null,
+            "done": false
+          }
+        ],
+        "conditions": [],
+        "bonuses": [],
+        "disclosures": [],
+        "ref": "Cephalon Simaris Standing"
+      },
+      {
+        "type": "vendor",
+        "place": "CEPHALON SIMARIS",
+        "sub": null,
+        "activity": "buy a replacement main blueprint",
+        "meta": "50,000 Standing",
+        "mode": null,
+        "live": null,
+        "skip": null,
+        "earns": null,
+        "spends": [
+          {
+            "currency": "Cephalon Simaris Standing",
+            "amount": "50,000"
+          }
+        ],
+        "map": null,
+        "rows": [
+          {
+            "qty": null,
+            "label": "Atlas Blueprint",
+            "note": "50,000 Standing",
+            "alt": {
+              "text": "or Circuit week 7, tier 10",
+              "spends": []
+            },
+            "done": false
+          }
+        ],
+        "conditions": ["Simaris only stocks it once The Jordas Precept is done."],
+        "bonuses": [],
+        "disclosures": []
+      }
+    ]
+  }
 }

@@ -6,10 +6,30 @@
   "tradeable": false,
   "progress": { "have": 0, "need": 4, "unit": "parts" },
   "badges": [
-    { "text": "Cove gate", "tone": "warn" },
+    { "text": "Cove gate", "tone": "warn", "rank": { "syndicate": "Solaris United", "level": 4 } },
     { "text": "Circuit alt", "tone": "circuit" }
   ],
   "prices": [{ "label": "build", "amount": "70,000 cr", "money": false }],
+  "routes": [
+    {
+      "name": "Vox Solaris, then Orb Vallis bounties",
+      "cost": "the quest gives the main blueprint; the three parts drop from Eudico's bounties",
+      "effort": 5,
+      "role": "chosen"
+    },
+    {
+      "name": "After the quest: Simaris, then Orb Vallis bounties",
+      "cost": "50,000 Simaris Standing for the main blueprint; the parts still drop from bounties",
+      "effort": 6,
+      "role": "afterQuest"
+    },
+    {
+      "name": "Duviri Circuit week 11",
+      "cost": "all four blueprints guaranteed by tier 10, 3,640 progress",
+      "effort": 3,
+      "role": null
+    }
+  ],
   "materials": [
     { "qty": "5,000", "label": "Nano Spores", "note": "Neuroptics" },
     { "qty": "2,200", "label": "Alloy Plate", "note": "Chassis" },
@@ -23,15 +43,16 @@
     { "qty": "40", "label": "Axidrol Alloy", "note": null },
     { "qty": "40", "label": "Travocyte Alloy", "note": null },
     { "qty": "40", "label": "Venerdo Alloy", "note": null },
+    { "qty": "3,500", "label": "Kuva", "note": "Garuda" },
     { "qty": "70,000", "label": "Credits", "note": null }
   ],
   "groups": [
     {
       "type": "gate",
-      "place": "FORTUNA, VOX SOLARIS",
+      "place": "QUESTS",
       "sub": null,
-      "activity": "finish the Vox Solaris quest",
-      "meta": "one-time; blueprint sent by inbox",
+      "activity": "finish Vox Solaris, then reach Solaris United Cove",
+      "meta": "Cove is only for the Systems gem",
       "mode": null,
       "live": null,
       "skip": null,
@@ -42,17 +63,48 @@
         {
           "qty": null,
           "label": "Vox Solaris",
-          "note": "Garuda Blueprint arrives as a separate inbox message once the quest ends",
+          "note": "needs The Teacher done; solo only",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Solaris United rank 4, Cove",
+          "note": "Marquise Thyst is sold from Cove",
+          "alt": null,
+          "done": false,
+          "rank": { "syndicate": "Solaris United", "level": 4 }
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "FORTUNA, VENUS",
+      "sub": null,
+      "activity": "finish the quest",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Garuda Blueprint",
+          "note": "quest reward",
           "alt": null,
           "done": false
         }
       ],
-      "conditions": [
-        "The main blueprint isn't the quest's on-screen reward; it's sent by Eudico's crew after the fact.",
-        "A lost blueprint costs 50,000 Cephalon Simaris standing to replace."
-      ],
+      "conditions": [],
       "bonuses": [],
-      "disclosures": []
+      "disclosures": [],
+      "quest": "Vox Solaris"
     },
     {
       "type": "currency",
@@ -125,8 +177,8 @@
       "bonuses": [],
       "disclosures": [
         {
-          "title": "the rank-up cost was cut",
-          "body": "Debt-Bond sacrifices for Solaris rank-ups were rebalanced down; Rank 4 (Cove) now asks 5 Advance, 4 Medical and 3 Shelter Debt-Bonds, with earlier ranks needing fewer."
+          "title": "rank-up sacrifices",
+          "body": "Outworlder: 10,000 cr, 2 Training Debt-Bonds. Rapscallion: 25,000 cr, 3 Shelter, 2 Training. Doer: 50,000 cr, 4 Medical, 3 Shelter, 2 Training. Cove: 100,000 cr, 5 Advances, 4 Medical, 3 Shelter."
         }
       ],
       "ref": "Solaris United Standing"
@@ -147,22 +199,22 @@
         {
           "qty": null,
           "label": "Chassis Blueprint",
-          "note": "7.37%, Lvl 5-15 bounty",
-          "alt": "Circuit, Garuda's week",
+          "note": "Lvl 5-15: 27.6% final stage, 12% stage 2",
+          "alt": "or Duviri Circuit tier 5, week 11",
           "done": false
         },
         {
           "qty": null,
           "label": "Systems Blueprint",
-          "note": "6.9%, Lvl 10-30 bounty",
-          "alt": "Circuit, Garuda's week",
+          "note": "Lvl 10-30: 22.5% final stage, 12% stage 2",
+          "alt": "or Duviri Circuit tier 8, week 11",
           "done": false
         },
         {
           "qty": null,
           "label": "Neuroptics Blueprint",
-          "note": "11.11%, Lvl 20-40 bounty",
-          "alt": "Circuit, Garuda's week",
+          "note": "Lvl 20-40: 22.5% final stage, 12% stages 2 and 3",
+          "alt": "or Duviri Circuit tier 2, week 11",
           "done": false
         }
       ],
@@ -171,40 +223,7 @@
         "The Lvl 20-40 bounty is the hardest tier needed; nothing harder unlocks a better chance."
       ],
       "bonuses": [],
-      "disclosures": [
-        {
-          "title": "stage math varies by source",
-          "body": "Community threads report higher final-stage odds (up to 27.6% for Chassis) with a lower chance on earlier stages; current wiki data lists flat per-mission odds instead. Either way the part can drop on any completed stage."
-        }
-      ]
-    },
-    {
-      "type": "currency",
-      "place": "SIPHON OR FLOOD NODE, ANY",
-      "sub": null,
-      "activity": "Kuva Siphon or Flood missions",
-      "meta": "after The War Within",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": { "currency": "Kuva", "amount": "3,500" },
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "3,500",
-          "label": "Kuva",
-          "note": "for the Garuda main build",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "The War Within must be finished first to unlock Kuva Siphons and Floods; without it, all three parts can be built with the main blueprint still stuck."
-      ],
-      "bonuses": [],
-      "disclosures": [],
-      "ref": "Kuva"
+      "disclosures": []
     },
     {
       "type": "foundry",
@@ -248,11 +267,69 @@
           "done": false
         }
       ],
-      "conditions": [
-        "The wiki's rendered recipe table lists these quantities in the wrong columns; the numbers above come from the raw blueprint data."
-      ],
+      "conditions": [],
       "bonuses": [],
       "disclosures": []
     }
-  ]
+  ],
+  "afterQuest": {
+    "effort": 6,
+    "badges": [
+      { "text": "Simaris 50,000 standing", "tone": "warn" },
+      { "text": "Circuit week 11", "tone": "circuit" }
+    ],
+    "groups": [
+      {
+        "type": "currency",
+        "place": "CEPHALON SIMARIS",
+        "sub": null,
+        "activity": "scan targets with the Synthesis Scanner",
+        "meta": "50,000 Standing, ~3 capped days",
+        "mode": null,
+        "live": null,
+        "skip": null,
+        "earns": { "currency": "Cephalon Simaris Standing", "amount": "50,000" },
+        "spends": [],
+        "map": null,
+        "rows": [
+          {
+            "qty": "50,000",
+            "label": "Simaris Standing",
+            "note": "daily cap 16,000 + 500 per Mastery Rank",
+            "alt": null,
+            "done": false
+          }
+        ],
+        "conditions": [],
+        "bonuses": [],
+        "disclosures": [],
+        "ref": "Cephalon Simaris Standing"
+      },
+      {
+        "type": "vendor",
+        "place": "CEPHALON SIMARIS",
+        "sub": null,
+        "activity": "buy the main blueprint",
+        "meta": "50,000 Standing, repeatable",
+        "mode": null,
+        "live": null,
+        "skip": null,
+        "earns": null,
+        "spends": [{ "currency": "Cephalon Simaris Standing", "amount": "50,000" }],
+        "map": null,
+        "rows": [
+          {
+            "qty": null,
+            "label": "Garuda Blueprint",
+            "note": "50,000 Standing",
+            "alt": "Circuit week 11, tier 10",
+            "done": false
+          }
+        ],
+        "conditions": ["Simaris only stocks it once Vox Solaris is done."],
+        "bonuses": [],
+        "disclosures": []
+      }
+    ]
+  }
 }

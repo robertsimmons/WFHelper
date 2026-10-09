@@ -4,38 +4,120 @@
   "effort": 4,
   "source": "standing",
   "tradeable": false,
-  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "progress": {
+    "have": 0,
+    "need": 4,
+    "unit": "parts"
+  },
   "badges": [
-    { "text": "Hex Rank 5", "tone": "warn" },
-    { "text": "MR 14", "tone": "info" }
+    {
+      "text": "Hex Rank 5",
+      "tone": "warn",
+      "rank": {
+        "syndicate": "The Hex",
+        "level": 5
+      }
+    },
+    {
+      "text": "MR 14",
+      "tone": "info"
+    }
   ],
   "prices": [
-    { "label": "blueprints", "amount": "30,000 standing", "money": false },
-    { "label": "build", "amount": "80,000 cr", "money": false }
+    {
+      "label": "blueprints",
+      "amount": "30,000 standing",
+      "money": false
+    },
+    {
+      "label": "build",
+      "amount": "80,000 cr",
+      "money": false
+    }
   ],
   "materials": [
-    { "qty": "1,500", "label": "Alloy Plate", "note": "Barrel" },
-    { "qty": "1,300", "label": "Salvage", "note": "Barrel" },
-    { "qty": "230", "label": "Polymer Bundle", "note": "Barrel" },
-    { "qty": "1,500", "label": "Ferrite", "note": "Receiver" },
-    { "qty": "1", "label": "Argon Crystal", "note": "Receiver" },
-    { "qty": "1,300", "label": "Plastids", "note": "Stock" },
-    { "qty": "1,000", "label": "Rubedo", "note": "Stock" },
-    { "qty": "185", "label": "Efervon Sample", "note": "rank-ups + Receiver" },
-    { "qty": "190", "label": "Hollvanian Pitchweave Fragment", "note": "rank-ups + Stock" },
-    { "qty": "43", "label": "Experimental Arc-Relay", "note": "Rank 2 + Barrel + Stock" },
-    { "qty": "18", "label": "Techrot Motherboard", "note": "Rank 5 + Receiver" },
-    { "qty": "25", "label": "Techrot Chitin", "note": "Rank 4" },
-    { "qty": "25", "label": "Necracoil", "note": "Rank 4" },
-    { "qty": "12", "label": "Entrati Obols", "note": "Rank 2" },
-    { "qty": "465,000", "label": "Credits", "note": null }
+    {
+      "qty": "1,500",
+      "label": "Alloy Plate",
+      "note": "Barrel"
+    },
+    {
+      "qty": "1,300",
+      "label": "Salvage",
+      "note": "Barrel"
+    },
+    {
+      "qty": "230",
+      "label": "Polymer Bundle",
+      "note": "Barrel"
+    },
+    {
+      "qty": "1,500",
+      "label": "Ferrite",
+      "note": "Receiver"
+    },
+    {
+      "qty": "1",
+      "label": "Argon Crystal",
+      "note": "Receiver"
+    },
+    {
+      "qty": "1,300",
+      "label": "Plastids",
+      "note": "Stock"
+    },
+    {
+      "qty": "1,000",
+      "label": "Rubedo",
+      "note": "Stock"
+    },
+    {
+      "qty": "185",
+      "label": "Efervon Sample",
+      "note": "rank-ups + Receiver"
+    },
+    {
+      "qty": "190",
+      "label": "Hollvanian Pitchweave Fragment",
+      "note": "rank-ups + Stock"
+    },
+    {
+      "qty": "43",
+      "label": "Experimental Arc-Relay",
+      "note": "Rank 2 + Barrel + Stock"
+    },
+    {
+      "qty": "18",
+      "label": "Techrot Motherboard",
+      "note": "Rank 5 + Receiver"
+    },
+    {
+      "qty": "25",
+      "label": "Techrot Chitin",
+      "note": "Rank 4"
+    },
+    {
+      "qty": "25",
+      "label": "Necracoil",
+      "note": "Rank 4"
+    },
+    {
+      "qty": "12",
+      "label": "Entrati Obols",
+      "note": "Rank 2"
+    },
+    {
+      "qty": "465,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
     {
       "type": "gate",
       "place": "THE LOTUS EATERS, THEN THE HEX",
       "sub": null,
-      "activity": "The Hex quest chain",
+      "activity": "The Lotus Eaters, The Hex, then MR 14",
       "meta": null,
       "mode": null,
       "live": null,
@@ -46,6 +128,13 @@
       "rows": [
         {
           "qty": null,
+          "label": "The Lotus Eaters",
+          "note": "needs The Duviri Paradox",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
           "label": "The Hex",
           "note": "opens Höllvania Central Mall and The Hex syndicate",
           "alt": null,
@@ -54,7 +143,14 @@
         {
           "qty": null,
           "label": "The Hex Finale",
-          "note": "required for Rank 4",
+          "note": "needed for Rank 4",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Mastery Rank 14",
+          "note": "needed to equip it",
           "alt": null,
           "done": false
         }
@@ -67,12 +163,15 @@
       "type": "currency",
       "place": "HÖLLVANIA",
       "sub": "Central Mall",
-      "activity": "bounties and Hex Treasure trade-ins to Leticia",
-      "meta": "daily cap 16,000 + 500/MR",
+      "activity": "Hex bounties and Hex Treasure trade-ins to Leticia",
+      "meta": "daily cap 16,000 + 500 per MR",
       "mode": null,
       "live": null,
       "skip": null,
-      "earns": { "currency": "The Hex Standing", "amount": "270,000" },
+      "earns": {
+        "currency": "The Hex Standing",
+        "amount": "270,000"
+      },
       "spends": [],
       "map": "hollvania",
       "rows": [
@@ -81,66 +180,92 @@
           "label": "Rank 1 Leftovers",
           "note": "5,000 standing, 10,000 cr, 15 Efervon Sample, 15 Hollvanian Pitchweave Fragment",
           "alt": null,
-          "done": false
+          "done": false,
+          "rank": {
+            "syndicate": "The Hex",
+            "level": 1
+          }
         },
         {
           "qty": null,
           "label": "Rank 2 Fresh Slice",
           "note": "22,000 standing, 25,000 cr, 5 Experimental Arc-Relay, 12 Entrati Obols, 25 Hollvanian Pitchweave Fragment",
           "alt": null,
-          "done": false
+          "done": false,
+          "rank": {
+            "syndicate": "The Hex",
+            "level": 2
+          }
         },
         {
           "qty": null,
           "label": "Rank 3 - 2-For-1",
           "note": "44,000 standing, 50,000 cr, one each of the six small Hex Treasures",
           "alt": null,
-          "done": false
+          "done": false,
+          "rank": {
+            "syndicate": "The Hex",
+            "level": 3
+          }
         },
         {
           "qty": null,
           "label": "Rank 4 - Hot & Fresh",
           "note": "70,000 standing, 100,000 cr, 25 Techrot Chitin, 25 Necracoil, 40 Efervon Sample; Liked with all six KIM members",
           "alt": null,
-          "done": false
+          "done": false,
+          "rank": {
+            "syndicate": "The Hex",
+            "level": 4
+          }
         },
         {
           "qty": null,
           "label": "Rank 5 - Pizza Party",
           "note": "99,000 standing, 200,000 cr, 5 Techrot Motherboard, one each of the six small Hex Treasures",
           "alt": null,
-          "done": false
+          "done": false,
+          "rank": {
+            "syndicate": "The Hex",
+            "level": 5
+          }
         }
       ],
       "conditions": [
-        "KIM chemistry is capped by syndicate rank (Liked needs Rank 3), but chemistry earned while capped is kept, so chat daily from the start.",
-        "Do the daily KIM conversation before ranking up or gifting; either can end that day's pending conversation."
+        "Rank 4 needs The Hex Finale and Liked Chemistry with all six Hex members; Liked unlocks at Rank 3. Chat, gift or run each member's bounty once a day for Chemistry.",
+        "Hold back one of each of the six small treasures; Rank 3 and Rank 5 each eat a full set.",
+        "The 385,000 cr in rank-up fees is on top of the 80,000 cr build."
       ],
       "bonuses": [
-        "Treasures pay Big Bytes Pizza 2,500, Argon Burger Meal 1,500, the other six 750 each. After Rank 5, Temporal Archimedea pays 15,000 for all three missions.",
-        "Parallax's air support charge pings Hex Treasures on the map."
+        "Treasures pay Big Bytes Pizza 2,500, Argon Burger Meal 1,500, the other six 750 each. After Rank 5, all three Temporal Archimedea missions pay 15,000.",
+        "Parallax's air support pings Hex Treasures on the map."
       ],
       "disclosures": [],
       "ref": "The Hex Standing"
     },
     {
       "type": "vendor",
-      "place": "MINERVA, HÖLLVANIA CENTRAL MALL",
-      "sub": null,
+      "place": "MINERVA, THE ROUND TABLE",
+      "sub": "Höllvania Central Mall",
       "activity": "buy EFV-5 Jupiter blueprints",
       "meta": "30,000 standing at Rank 5",
       "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "The Hex Standing", "amount": "30,000" }],
+      "spends": [
+        {
+          "currency": "The Hex Standing",
+          "amount": "30,000"
+        }
+      ],
       "map": null,
       "rows": [
         {
           "qty": null,
           "label": "EFV-5 Jupiter Blueprint",
           "note": "15,000 standing",
-          "alt": "Rank 5's free vendor item, if Minerva's stock is eligible",
+          "alt": null,
           "done": false
         },
         {
@@ -152,7 +277,7 @@
         }
       ],
       "conditions": ["Untradeable, so everything comes from your own standing."],
-      "bonuses": [],
+      "bonuses": ["Buy the EFV-8 Mars from Minerva on the same visit."],
       "disclosures": []
     },
     {
@@ -199,12 +324,7 @@
       ],
       "conditions": [],
       "bonuses": [],
-      "disclosures": [
-        {
-          "title": "the augment",
-          "body": "Overpressured Rounds is a Nightwave tier reward, not a Hex item, and isn't needed for Mastery."
-        }
-      ]
+      "disclosures": []
     }
   ]
 }

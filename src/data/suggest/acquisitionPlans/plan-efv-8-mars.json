@@ -4,36 +4,110 @@
   "effort": 4,
   "source": "standing",
   "tradeable": false,
-  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "progress": {
+    "have": 0,
+    "need": 4,
+    "unit": "parts"
+  },
   "badges": [
-    { "text": "Hex Rank 5", "tone": "warn" },
-    { "text": "MR 14", "tone": "info" }
+    {
+      "text": "Hex Rank 5",
+      "tone": "warn",
+      "rank": {
+        "syndicate": "The Hex",
+        "level": 5
+      }
+    },
+    {
+      "text": "MR 14",
+      "tone": "info"
+    }
   ],
   "prices": [
-    { "label": "blueprints", "amount": "30,000 standing", "money": false },
-    { "label": "build", "amount": "80,000 cr", "money": false }
+    {
+      "label": "blueprints",
+      "amount": "30,000 standing",
+      "money": false
+    },
+    {
+      "label": "build",
+      "amount": "80,000 cr",
+      "money": false
+    }
   ],
   "materials": [
-    { "qty": "600", "label": "Salvage", "note": "Barrel" },
-    { "qty": "500", "label": "Alloy Plate", "note": "Barrel" },
-    { "qty": "300", "label": "Ferrite", "note": "Receiver" },
-    { "qty": "240", "label": "Polymer Bundle", "note": "Stock" },
-    { "qty": "2", "label": "Morphics", "note": "Receiver" },
-    { "qty": "340", "label": "Hollvanian Pitchweave Fragment", "note": "rank-ups + Stock" },
-    { "qty": "155", "label": "Techrot Chitin", "note": "Rank 4 + Barrel + Receiver" },
-    { "qty": "115", "label": "Efervon Sample", "note": "rank-ups + Receiver + Stock" },
-    { "qty": "15", "label": "Experimental Arc-Relay", "note": "Rank 2 + Stock" },
-    { "qty": "7", "label": "Techrot Motherboard", "note": "Rank 5 + Barrel" },
-    { "qty": "25", "label": "Necracoil", "note": "Rank 4" },
-    { "qty": "12", "label": "Entrati Obols", "note": "Rank 2" },
-    { "qty": "465,000", "label": "Credits", "note": null }
+    {
+      "qty": "600",
+      "label": "Salvage",
+      "note": "Barrel"
+    },
+    {
+      "qty": "500",
+      "label": "Alloy Plate",
+      "note": "Barrel"
+    },
+    {
+      "qty": "300",
+      "label": "Ferrite",
+      "note": "Receiver"
+    },
+    {
+      "qty": "240",
+      "label": "Polymer Bundle",
+      "note": "Stock"
+    },
+    {
+      "qty": "2",
+      "label": "Morphics",
+      "note": "Receiver"
+    },
+    {
+      "qty": "340",
+      "label": "Hollvanian Pitchweave Fragment",
+      "note": "rank-ups + Stock"
+    },
+    {
+      "qty": "155",
+      "label": "Techrot Chitin",
+      "note": "Rank 4 + Barrel + Receiver"
+    },
+    {
+      "qty": "115",
+      "label": "Efervon Sample",
+      "note": "rank-ups + Receiver + Stock"
+    },
+    {
+      "qty": "15",
+      "label": "Experimental Arc-Relay",
+      "note": "Rank 2 + Stock"
+    },
+    {
+      "qty": "7",
+      "label": "Techrot Motherboard",
+      "note": "Rank 5 + Barrel"
+    },
+    {
+      "qty": "25",
+      "label": "Necracoil",
+      "note": "Rank 4"
+    },
+    {
+      "qty": "12",
+      "label": "Entrati Obols",
+      "note": "Rank 2"
+    },
+    {
+      "qty": "465,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
     {
       "type": "gate",
       "place": "THE LOTUS EATERS, THEN THE HEX",
       "sub": null,
-      "activity": "The Hex quest chain",
+      "activity": "The Lotus Eaters, The Hex, then MR 14",
       "meta": null,
       "mode": null,
       "live": null,
@@ -59,7 +133,14 @@
         {
           "qty": null,
           "label": "The Hex Finale",
-          "note": "opens after Rank 3; required for Rank 4",
+          "note": "needed for Rank 4",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Mastery Rank 14",
+          "note": "needed to equip it",
           "alt": null,
           "done": false
         }
@@ -72,12 +153,15 @@
       "type": "currency",
       "place": "HÖLLVANIA",
       "sub": "Central Mall",
-      "activity": "top-tier bounty daily, plus Hex Treasures to Leticia",
-      "meta": "~11-12 capped days at MR 14",
-      "mode": "Steel Path",
+      "activity": "Hex bounties and Hex Treasure trade-ins to Leticia",
+      "meta": "daily cap 16,000 + 500 per MR",
+      "mode": null,
       "live": null,
       "skip": null,
-      "earns": { "currency": "The Hex Standing", "amount": "270,000" },
+      "earns": {
+        "currency": "The Hex Standing",
+        "amount": "270,000"
+      },
       "spends": [],
       "map": "hollvania",
       "rows": [
@@ -86,45 +170,65 @@
           "label": "Rank 1 Leftovers",
           "note": "5,000 standing, 10,000 cr, 15 Efervon Sample, 15 Hollvanian Pitchweave Fragment",
           "alt": null,
-          "done": false
+          "done": false,
+          "rank": {
+            "syndicate": "The Hex",
+            "level": 1
+          }
         },
         {
           "qty": null,
           "label": "Rank 2 Fresh Slice",
           "note": "22,000 standing, 25,000 cr, 5 Experimental Arc-Relay, 12 Entrati Obols, 25 Hollvanian Pitchweave Fragment",
           "alt": null,
-          "done": false
+          "done": false,
+          "rank": {
+            "syndicate": "The Hex",
+            "level": 2
+          }
         },
         {
           "qty": null,
           "label": "Rank 3 - 2-For-1",
           "note": "44,000 standing, 50,000 cr, one each of the six small Hex Treasures",
           "alt": null,
-          "done": false
+          "done": false,
+          "rank": {
+            "syndicate": "The Hex",
+            "level": 3
+          }
         },
         {
           "qty": null,
           "label": "Rank 4 - Hot & Fresh",
           "note": "70,000 standing, 100,000 cr, 25 Techrot Chitin, 25 Necracoil, 40 Efervon Sample; Liked with all six Hex members",
           "alt": null,
-          "done": false
+          "done": false,
+          "rank": {
+            "syndicate": "The Hex",
+            "level": 4
+          }
         },
         {
           "qty": null,
           "label": "Rank 5 - Pizza Party",
           "note": "99,000 standing, 200,000 cr, 5 Techrot Motherboard, one each of the six small Hex Treasures",
           "alt": null,
-          "done": false
+          "done": false,
+          "rank": {
+            "syndicate": "The Hex",
+            "level": 5
+          }
         }
       ],
       "conditions": [
-        "Rank 4 needs Liked Chemistry with every member as well as standing. KIM chats, bounties and gifts give Chemistry, not standing.",
+        "Rank 4 needs The Hex Finale and Liked Chemistry with all six Hex members; Liked unlocks at Rank 3. Chat, gift or run each member's bounty once a day for Chemistry.",
         "Hold back one of each of the six small treasures; Rank 3 and Rank 5 each eat a full set.",
         "The 385,000 cr in rank-up fees is on top of the 80,000 cr build."
       ],
       "bonuses": [
-        "Treasures pay Big Bytes Pizza 2,500, Argon Burger Meal 1,500, the others 750; the Air Support treasure tracker pings them all.",
-        "Once you have access, all three Temporal Archimedea missions pay a flat 15,000."
+        "Treasures pay Big Bytes Pizza 2,500, Argon Burger Meal 1,500, the other six 750 each. After Rank 5, all three Temporal Archimedea missions pay 15,000.",
+        "Parallax's air support pings Hex Treasures on the map."
       ],
       "disclosures": [],
       "ref": "The Hex Standing"
@@ -139,7 +243,12 @@
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "The Hex Standing", "amount": "30,000" }],
+      "spends": [
+        {
+          "currency": "The Hex Standing",
+          "amount": "30,000"
+        }
+      ],
       "map": null,
       "rows": [
         {
@@ -205,12 +314,7 @@
       ],
       "conditions": [],
       "bonuses": [],
-      "disclosures": [
-        {
-          "title": "the augment",
-          "body": "Prototype Shock Coils was a reward tier of the Amir's Shockwave Nightwave Mix and isn't needed for Mastery. The Mars can't equip Semi-Pistol Cannonade because its alt-fire is a charge attack."
-        }
-      ]
+      "disclosures": []
     }
   ]
 }

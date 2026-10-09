@@ -4,22 +4,59 @@
   "effort": 3,
   "source": "duviri",
   "tradeable": false,
-  "progress": { "have": 0, "need": 1, "unit": "blueprint" },
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "blueprint"
+  },
   "badges": [
-    { "text": "Maw Feeding needed", "tone": "warn" },
-    { "text": "Pathos Clamp", "tone": "info" }
+    {
+      "text": "Maw Feeding needed",
+      "tone": "warn"
+    },
+    {
+      "text": "Pathos Clamp",
+      "tone": "info"
+    }
   ],
   "prices": [
-    { "label": "blueprint", "amount": "50 Pathos Clamp", "money": false },
-    { "label": "build", "amount": "30,000 cr", "money": false },
-    { "label": "plat shortcut", "amount": "250 p", "money": true }
+    {
+      "label": "blueprint",
+      "amount": "50 Pathos Clamp",
+      "money": false
+    },
+    {
+      "label": "build",
+      "amount": "30,000 cr",
+      "money": false
+    }
   ],
   "materials": [
-    { "qty": "30", "label": "Tasoma Extract", "note": null },
-    { "qty": "30", "label": "Rune Marrow", "note": null },
-    { "qty": "50", "label": "Nacreous Pebble", "note": null },
-    { "qty": "40", "label": "Connla Sprout", "note": null },
-    { "qty": "30,000", "label": "Credits", "note": null }
+    {
+      "qty": "30",
+      "label": "Tasoma Extract",
+      "note": null
+    },
+    {
+      "qty": "30",
+      "label": "Rune Marrow",
+      "note": null
+    },
+    {
+      "qty": "50",
+      "label": "Nacreous Pebble",
+      "note": null
+    },
+    {
+      "qty": "40",
+      "label": "Connla Sprout",
+      "note": null
+    },
+    {
+      "qty": "30,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
     {
@@ -53,19 +90,22 @@
       "type": "currency",
       "place": "DUVIRI",
       "sub": "Isleweaver",
-      "activity": "clear Isleweaver, or the Duviri Experience / Lone Story Orowyrm",
+      "activity": "clear Isleweaver, or the Orowyrm in the Duviri Experience / Lone Story",
       "meta": "50 needed; ignores boosters",
       "mode": "solo or squad",
       "live": null,
       "skip": null,
-      "earns": { "currency": "Pathos Clamp", "amount": "50" },
+      "earns": {
+        "currency": "Pathos Clamp",
+        "amount": "50"
+      },
       "spends": [],
       "map": "duviri",
       "rows": [
         {
           "qty": "10",
           "label": "Isleweaver completion",
-          "note": "15 on Steel Path; needs The Hex quest; drops almost none of Edun's own build materials",
+          "note": "15 on Steel Path; needs The Hex quest",
           "alt": null,
           "done": false
         },
@@ -79,25 +119,17 @@
         {
           "qty": "1",
           "label": "optional Undercroft side portal",
-          "note": "3 each on Steel Path; story-stage portals give nothing",
+          "note": "3 each on Steel Path",
           "alt": null,
           "done": false
         }
       ],
       "conditions": [
         "Pathos Clamps ignore Resource Boosters, Drop Chance Boosters, blessings and Bountiful Harvest.",
-        "Isleweaver drops almost none of Edun's own build materials (no Nacreous Pebble at all), so a Duviri Experience trip is still owed regardless of clamp route."
+        "Nacreous Pebble comes from Maw Feeding in the Duviri Experience, so one trip there is owed whichever route pays the clamps."
       ],
-      "bonuses": [
-        "8-12 minutes for 15 clamps on Steel Path Isleweaver, and it's your own Warframe and Amp, so a bad Teshin's Cave loadout roll doesn't matter.",
-        "Clearing all three optional Undercroft portals on Steel Path gives 24 clamps in about 18-20 minutes."
-      ],
-      "disclosures": [
-        {
-          "title": "which run to pick",
-          "body": "Normal-mode Duviri Experience (10-15 minutes for 10 clamps) beats Steel Path (~30 minutes for 15) unless you also want the arcanes and Steel Essence from the SP Undercroft."
-        }
-      ],
+      "bonuses": [],
+      "disclosures": [],
       "ref": "Pathos Clamp"
     },
     {
@@ -110,20 +142,25 @@
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Pathos Clamp", "amount": "50" }],
+      "spends": [
+        {
+          "currency": "Pathos Clamp",
+          "amount": "50"
+        }
+      ],
       "map": null,
       "rows": [
         {
           "qty": null,
           "label": "Edun Blueprint",
           "note": null,
-          "alt": "250 platinum unlocks both versions outright",
+          "alt": null,
           "done": false
         }
       ],
       "conditions": [
         "Delivers the Warframe-compatible blueprint to the Foundry in the same purchase that unlocks the Drifter version.",
-        "If sold, Cephalon Simaris resells the Warframe blueprint for 100,000 standing."
+        "Cephalon Simaris sells replacement Warframe blueprints for 100,000 standing."
       ],
       "bonuses": [],
       "disclosures": []
@@ -141,16 +178,17 @@
       "spends": [],
       "map": null,
       "rows": [
-        { "qty": null, "label": "Edun", "note": "30,000 credits", "alt": null, "done": false }
+        {
+          "qty": null,
+          "label": "Edun",
+          "note": "30,000 credits",
+          "alt": null,
+          "done": false
+        }
       ],
       "conditions": [],
       "bonuses": [],
-      "disclosures": [
-        {
-          "title": "known issues",
-          "body": "The throw animation steps the frame forward before releasing, so it lands off your aim, worse with attack speed or Tennokai. Heavy-attack-exclusive effects (Killing Blow, Life Strike, True Steel) only apply if you're still in the heavy-attack animation when the spear connects: the explosion essentially never benefits, and Condition Overload gives only 20% per status on the initial hit and nothing on the explosion."
-        }
-      ]
+      "disclosures": []
     }
   ]
 }

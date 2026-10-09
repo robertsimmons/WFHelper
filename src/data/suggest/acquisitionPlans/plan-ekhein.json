@@ -4,28 +4,85 @@
   "effort": 4,
   "source": "standing",
   "tradeable": false,
-  "progress": { "have": 0, "need": 1, "unit": "blueprint" },
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "blueprint"
+  },
   "badges": [
-    { "text": "Cavia Rank 3", "tone": "warn", "rank": { "syndicate": "Cavia", "level": 3 } },
-    { "text": "MR 10", "tone": "info" }
+    {
+      "text": "Cavia Rank 3",
+      "tone": "warn",
+      "rank": {
+        "syndicate": "Cavia",
+        "level": 3
+      }
+    },
+    {
+      "text": "MR 10",
+      "tone": "info"
+    }
   ],
   "prices": [
-    { "label": "standing", "amount": "86,000", "money": false },
-    { "label": "rank-ups", "amount": "85,000 cr", "money": false },
-    { "label": "build", "amount": "25,000 cr", "money": false }
+    {
+      "label": "standing",
+      "amount": "86,000",
+      "money": false
+    },
+    {
+      "label": "rank-ups",
+      "amount": "85,000 cr",
+      "money": false
+    },
+    {
+      "label": "build",
+      "amount": "25,000 cr",
+      "money": false
+    }
   ],
   "materials": [
-    { "qty": "3", "label": "Entrati Lanthorn", "note": null },
-    { "qty": "2,400", "label": "Entrati Obols", "note": null },
-    { "qty": "75", "label": "Necracoil", "note": null },
-    { "qty": "110,000", "label": "Credits", "note": null }
+    {
+      "qty": "3",
+      "label": "Entrati Lanthorn",
+      "note": "Ekhein build"
+    },
+    {
+      "qty": "2,700",
+      "label": "Entrati Obols",
+      "note": "300 Rank 1, 2,400 Ekhein build"
+    },
+    {
+      "qty": "102",
+      "label": "Necracoil",
+      "note": "27 rank-ups, 75 Ekhein build"
+    },
+    {
+      "qty": "1,100",
+      "label": "Rubedo",
+      "note": "Rank 1"
+    },
+    {
+      "qty": "60",
+      "label": "Voidgel Orb",
+      "note": "Rank 2"
+    },
+    {
+      "qty": "2",
+      "label": "Bellow Voca",
+      "note": "Rank 3"
+    },
+    {
+      "qty": "110,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
     {
       "type": "gate",
       "place": "QUESTS",
       "sub": null,
-      "activity": "Heart of Deimos and The New War, then Whispers in the Walls",
+      "activity": "Whispers in the Walls, then MR 10",
       "meta": "unlocks the Sanctum Anatomica and Cavia",
       "mode": null,
       "live": null,
@@ -40,6 +97,13 @@
           "note": "needs Heart of Deimos and The New War",
           "alt": null,
           "done": false
+        },
+        {
+          "qty": null,
+          "label": "Mastery Rank 10",
+          "note": "needed to equip it",
+          "alt": null,
+          "done": false
         }
       ],
       "conditions": [],
@@ -50,12 +114,15 @@
       "type": "currency",
       "place": "ALBRECHT'S LABORATORIES, DEIMOS",
       "sub": null,
-      "activity": "Fibonacci's bounties; collect Voca and hand spares to Loid",
-      "meta": "about a week of capped standing",
+      "activity": "Fibonacci's bounties, Netracells, and spare Voca handed to Loid",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
-      "earns": { "currency": "Cavia Standing", "amount": "86,000" },
+      "earns": {
+        "currency": "Cavia Standing",
+        "amount": "86,000"
+      },
       "spends": [],
       "map": null,
       "rows": [
@@ -65,7 +132,10 @@
           "note": "5,000 standing; 3 Shrill Voca, 300 Entrati Obols, 1,100 Rubedo, 10,000 cr",
           "alt": null,
           "done": false,
-          "rank": { "syndicate": "Cavia", "level": 1 }
+          "rank": {
+            "syndicate": "Cavia",
+            "level": 1
+          }
         },
         {
           "qty": null,
@@ -73,7 +143,10 @@
           "note": "22,000 standing; 5 Shrill Voca, 60 Voidgel Orb, 12 Necracoil, 8 Stela, 25,000 cr",
           "alt": null,
           "done": false,
-          "rank": { "syndicate": "Cavia", "level": 2 }
+          "rank": {
+            "syndicate": "Cavia",
+            "level": 2
+          }
         },
         {
           "qty": null,
@@ -81,22 +154,18 @@
           "note": "44,000 standing; 2 Bellow Voca, 8 Shrill Voca, 15 Necracoil, 16 Stela, 50,000 cr",
           "alt": null,
           "done": false,
-          "rank": { "syndicate": "Cavia", "level": 3 }
-        },
-        {
-          "qty": "15,000",
-          "label": "Ekhein Blueprint",
-          "note": "Bird 3",
-          "alt": null,
-          "done": false
+          "rank": {
+            "syndicate": "Cavia",
+            "level": 3
+          }
         }
       ],
       "conditions": [
-        "The rank-ups and the craft eat 26 Shrill and 2 Bellow Voca; hold those back before handing Voca to Loid."
+        "The rank-ups and the build eat 26 Shrill Voca and 2 Bellow Voca; hold those back before handing Voca to Loid."
       ],
       "bonuses": [
-        "Parallax's Orokin Eye air support or loot-radar mods find Voca without searching every room.",
-        "Netracells pay 5,000 standing each plus a guaranteed Lanthorn, if you already run them."
+        "Netracell missions pay 5,000 standing each.",
+        "A loot detector finds the Voca medallions faster."
       ],
       "disclosures": [],
       "ref": "Cavia Standing"
@@ -111,7 +180,12 @@
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Cavia Standing", "amount": "15,000" }],
+      "spends": [
+        {
+          "currency": "Cavia Standing",
+          "amount": "15,000"
+        }
+      ],
       "map": null,
       "rows": [
         {
@@ -128,10 +202,10 @@
     },
     {
       "type": "farm",
-      "place": "NEX, DEIMOS",
-      "sub": "Albrecht's Laboratories",
-      "activity": "Exterminate; kill the Gruzzling",
-      "meta": "abort and restart if it misses",
+      "place": "ALBRECHT'S LABORATORIES, DEIMOS",
+      "sub": null,
+      "activity": "any mission; collect the Voca medallions",
+      "meta": "8 Voca a mission",
       "mode": null,
       "live": null,
       "skip": null,
@@ -139,12 +213,18 @@
       "spends": [],
       "map": null,
       "rows": [
-        { "qty": "10", "label": "Shrill Voca", "note": "Ekhein build", "alt": null, "done": false }
+        {
+          "qty": "26",
+          "label": "Shrill Voca",
+          "note": "3 + 5 + 8 for the rank-ups, 10 for the build; Fibonacci's tier 1-2 bounties and Loid's 8-hour stock also pay one",
+          "alt": null,
+          "done": false
+        }
       ],
-      "conditions": ["Gruzzlings in Disruption drop Disruption keys, not Lanthorns."],
-      "bonuses": [
-        "Resource boosters raise the Lanthorn drop; Oberon's Smite one-shots Gruzzlings."
+      "conditions": [
+        "Each mission scatters 1 Echo, 2 Bellow and 5 more Voca that are 75% Shrill, 25% Bellow."
       ],
+      "bonuses": [],
       "disclosures": []
     },
     {
@@ -168,7 +248,7 @@
           "done": false
         }
       ],
-      "conditions": [],
+      "conditions": ["The rank-ups also need 24 Stela, which the build list below leaves out."],
       "bonuses": [],
       "disclosures": []
     }

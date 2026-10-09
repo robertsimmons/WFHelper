@@ -4,31 +4,109 @@
   "effort": 4,
   "source": "boss",
   "tradeable": false,
-  "progress": { "have": 0, "need": 9, "unit": "parts" },
+  "progress": {
+    "have": 0,
+    "need": 9,
+    "unit": "parts"
+  },
   "badges": [
-    { "text": "week-long build", "tone": "warn" },
-    { "text": "8 boss parts", "tone": "info" }
+    {
+      "text": "156h build chain",
+      "tone": "warn"
+    },
+    {
+      "text": "8 boss parts",
+      "tone": "info"
+    }
   ],
   "prices": [
-    { "label": "blueprint", "amount": "25,000 cr", "money": false },
-    { "label": "all builds", "amount": "~225,000 cr", "money": false },
-    { "label": "built", "amount": "325 p", "money": false }
+    {
+      "label": "blueprint",
+      "amount": "25,000 cr",
+      "money": false
+    },
+    {
+      "label": "all builds",
+      "amount": "165,000 cr",
+      "money": false
+    },
+    {
+      "label": "built",
+      "amount": "325 p",
+      "money": false
+    }
   ],
   "materials": [
-    { "qty": "1,300", "label": "Rubedo", "note": "Day set" },
-    { "qty": "1,300", "label": "Plastids", "note": "Night set" },
-    { "qty": "1,150", "label": "Ferrite", "note": "Day Neuroptics and Day Chassis" },
-    { "qty": "1,150", "label": "Polymer Bundle", "note": "Night Neuroptics and Night Chassis" },
-    { "qty": "500", "label": "Salvage", "note": "Day Systems" },
-    { "qty": "500", "label": "Nano Spores", "note": "Night Systems" },
-    { "qty": "300", "label": "Alloy Plate", "note": "both Neuroptics" },
-    { "qty": "151", "label": "Gallium", "note": "Day Chassis and Day Systems" },
-    { "qty": "2", "label": "Neural Sensors", "note": "both Neuroptics" },
-    { "qty": "2", "label": "Control Module", "note": "both Systems" },
-    { "qty": "2", "label": "Morphics", "note": "Night Chassis and Night Systems" },
-    { "qty": "2", "label": "Orokin Cell", "note": "one per Aspect" },
-    { "qty": "1", "label": "Forma", "note": null },
-    { "qty": "190,000", "label": "Credits", "note": null }
+    {
+      "qty": "1,300",
+      "label": "Rubedo",
+      "note": "Day set"
+    },
+    {
+      "qty": "1,300",
+      "label": "Plastids",
+      "note": "Night set"
+    },
+    {
+      "qty": "1,150",
+      "label": "Ferrite",
+      "note": "Day Neuroptics and Day Chassis"
+    },
+    {
+      "qty": "1,150",
+      "label": "Polymer Bundle",
+      "note": "Night Neuroptics and Night Chassis"
+    },
+    {
+      "qty": "500",
+      "label": "Salvage",
+      "note": "Day Systems"
+    },
+    {
+      "qty": "500",
+      "label": "Nano Spores",
+      "note": "Night Systems"
+    },
+    {
+      "qty": "300",
+      "label": "Alloy Plate",
+      "note": "both Neuroptics"
+    },
+    {
+      "qty": "151",
+      "label": "Gallium",
+      "note": "Day Chassis and Day Systems"
+    },
+    {
+      "qty": "2",
+      "label": "Neural Sensors",
+      "note": "both Neuroptics"
+    },
+    {
+      "qty": "2",
+      "label": "Control Module",
+      "note": "both Systems"
+    },
+    {
+      "qty": "2",
+      "label": "Morphics",
+      "note": "Night Chassis and Night Systems"
+    },
+    {
+      "qty": "2",
+      "label": "Orokin Cell",
+      "note": "one per Aspect"
+    },
+    {
+      "qty": "1",
+      "label": "Forma",
+      "note": null
+    },
+    {
+      "qty": "190,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
     {
@@ -44,7 +122,13 @@
       "spends": [],
       "map": null,
       "rows": [
-        { "qty": null, "label": "Equinox Blueprint", "note": null, "alt": null, "done": false }
+        {
+          "qty": null,
+          "label": "Equinox Blueprint",
+          "note": null,
+          "alt": null,
+          "done": false
+        }
       ],
       "conditions": [
         "Tyl Regor drops only the Day and Night pieces; the main blueprint is a Market purchase."
@@ -57,8 +141,8 @@
       "place": "TITANIA, URANUS",
       "sub": null,
       "activity": "Assassination, Tyl Regor",
-      "meta": "~10 kills for a full set; 1 in 10 need 16+",
-      "mode": "solo, bring AoE",
+      "meta": "22.56% per Aspect, 25.81% per part",
+      "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
@@ -68,7 +152,7 @@
         {
           "qty": null,
           "label": "Day Aspect Blueprint",
-          "note": "22.56%; slowest",
+          "note": "22.56%",
           "alt": null,
           "done": false
         },
@@ -96,7 +180,7 @@
         {
           "qty": null,
           "label": "Night Aspect Blueprint",
-          "note": "22.56%; slowest",
+          "note": "22.56%",
           "alt": null,
           "done": false
         },
@@ -123,25 +207,18 @@
         }
       ],
       "conditions": [
-        "Every kill drops one Day and one Night blueprint.",
-        "Kill the Manic waves in phases 2 and 3 or Regor does not come back. In phase 3 stay on the top floor; the flooded middle floor is electrified."
+        "Every kill rolls one Day part (Rotation A) and one Night part (Rotation B).",
+        "Kill the Drekar Manic waves in phases 2 and 3 or Regor does not come back. In phase 3 stay on the top floor; the flooded middle floor is electrified."
       ],
-      "bonuses": [
-        "Status procs stick through his invulnerable phases and land once he is vulnerable again."
-      ],
-      "disclosures": [
-        {
-          "title": "older drop rates",
-          "body": "Some databases still list 11.28% per Aspect and one drop per kill. Update 42.0 made every kill drop one piece from each set, and pre-42.0 threads of 20-108 runs no longer apply. Equinox is not in the Duviri Circuit; Tyl Regor is the only source."
-        }
-      ]
+      "bonuses": [],
+      "disclosures": []
     },
     {
       "type": "foundry",
       "place": "FOUNDRY",
       "sub": null,
       "activity": "components, then Aspects, then Equinox",
-      "meta": "156h minimum chain",
+      "meta": "12h each part, 72h each Aspect, 72h Equinox",
       "mode": null,
       "live": null,
       "skip": null,
@@ -214,17 +291,11 @@
         }
       ],
       "conditions": [
-        "Components are 12h and 15,000 cr each. Start each as it drops; most players build the first set while still farming the second.",
-        "The two Aspects can run together, but each needs its own set finished first. She is the only Warframe that needs a Forma.",
-        "Rushing the whole chain costs 300 platinum, close to her 325 platinum Market price, which also includes a Reactor and a slot."
+        "Each part costs 15,000 cr. Start each as it drops; the two Aspects can run together once each has its set.",
+        "Helminth only accepts non-Prime Warframes, so keep this one if you want Rest & Rage subsumed."
       ],
       "bonuses": [],
-      "disclosures": [
-        {
-          "title": "master her before you subsume her",
-          "body": "Base Equinox is separate from Equinox Prime and is the only copy Helminth accepts for Rest & Rage. Players have fed their only copy and had to rebuild; the Helminth menu has a tab listing abilities you have not subsumed yet."
-        }
-      ]
+      "disclosures": []
     }
   ]
 }

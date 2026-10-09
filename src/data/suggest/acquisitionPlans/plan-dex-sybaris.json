@@ -2,22 +2,22 @@
   "name": "Dex Sybaris",
   "kind": "primary",
   "effort": 1,
-  "source": "shop",
+  "source": "unique",
   "tradeable": false,
   "progress": { "have": 0, "need": 1, "unit": "weapon" },
   "badges": [
-    { "text": "Anniversary week only", "tone": "warn" },
+    { "text": "Anniversary alert only", "tone": "warn" },
     { "text": "MR 7 to equip", "tone": "info" }
   ],
   "prices": [],
   "groups": [
     {
-      "type": "gate",
+      "type": "vendor",
       "place": "ANNIVERSARY EVENT",
       "sub": null,
-      "activity": "claim the weekly 'Gifts of the Lotus - Stolen!' alert",
-      "meta": "~1 week, once a year",
-      "mode": "public matchmaking if the mission is awkward solo",
+      "activity": "claim the Anniversary alert",
+      "meta": "once a year",
+      "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
@@ -27,24 +27,17 @@
         {
           "qty": null,
           "label": "Dex Sybaris alert",
-          "note": "check the in-game Anniversary tab; the week shifts every year",
+          "note": "in the in-game Alerts list while the Anniversary runs",
           "alt": null,
           "done": false
         }
       ],
       "conditions": [
-        "The event starts in late February or March and runs about two months; missing the week means waiting about a year for the next Anniversary.",
-        "There is no blueprint, drop table or vendor. The alert is the only source and the weapon is untradeable."
+        "Miss the event and you wait for the next Anniversary.",
+        "No blueprint, drop table or vendor. The alert is the only source and the weapon is untradeable."
       ],
-      "bonuses": [
-        "Claim it every year even if you already own it - each claim gives a free weapon slot, and the weapon arrives with an Orokin Catalyst pre-installed."
-      ],
-      "disclosures": [
-        {
-          "title": "2026 schedule (Reddit-sourced, not on the wiki)",
-          "body": "Dex Sybaris Mar 20-27, Dex Dakra Apr 3-10, Dex Nikana Apr 17-24, Dex Furis May 1-8. The order and weeks shift year to year, so confirm against the in-game Anniversary tab when the 2027 event starts."
-        }
-      ]
+      "bonuses": ["Each claim also gives a free weapon slot and an Orokin Catalyst pre-installed."],
+      "disclosures": []
     }
   ]
 }

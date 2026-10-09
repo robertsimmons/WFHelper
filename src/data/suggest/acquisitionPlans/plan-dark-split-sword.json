@@ -11,7 +11,7 @@
   ],
   "prices": [
     { "label": "blueprints", "amount": "40,000 cr", "money": false },
-    { "label": "builds", "amount": "20,000 cr + Dual Skana", "money": false }
+    { "label": "builds", "amount": "40,000 cr", "money": false }
   ],
   "materials": [
     { "qty": "10", "label": "Mutagen Mass", "note": "Dark Split-Sword" },
@@ -21,7 +21,7 @@
     { "qty": "850", "label": "Ferrite", "note": "Dual Skana" },
     { "qty": "300", "label": "Alloy Plate", "note": "Dual Skana" },
     { "qty": "1", "label": "Forma", "note": null },
-    { "qty": "60,000", "label": "Credits", "note": null }
+    { "qty": "80,000", "label": "Credits", "note": null }
   ],
   "groups": [
     {
@@ -74,7 +74,7 @@
         {
           "qty": null,
           "label": "Dual Skana",
-          "note": "2 Morphics, 300 Polymer Bundle, 850 Ferrite, 300 Alloy Plate",
+          "note": "20,000 cr, 2 Morphics, 300 Polymer Bundle, 850 Ferrite, 300 Alloy Plate",
           "alt": null,
           "done": false
         }
@@ -87,7 +87,7 @@
       "type": "foundry",
       "place": "FOUNDRY",
       "sub": null,
-      "activity": "then",
+      "activity": "build Dark Split-Sword",
       "meta": "12h",
       "mode": null,
       "live": null,
@@ -105,14 +105,13 @@
         }
       ],
       "conditions": [
-        "It doesn't count as melee for Sorties or some Nightwave melee-only acts.",
-        "The form is fixed by the stance slotted in the Arsenal; it can't switch mid-mission."
+        "Heavy Blade and Dual Sword stances share no polarity; a Stance Forma lets either fit."
       ],
       "bonuses": [],
       "disclosures": [
         {
           "title": "fissure trick",
-          "body": "The relic reactant buff never lands on it, so with it as the only weapon equipped the buff always goes to the Warframe for 2x ability Strength and Range."
+          "body": "In Void Fissure missions it doesn't count as a melee weapon for the relic buff. With it as the only weapon equipped, the buff is always the ability Strength and Range one."
         }
       ]
     }

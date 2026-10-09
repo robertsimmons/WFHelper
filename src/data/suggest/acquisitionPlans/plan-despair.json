@@ -4,18 +4,54 @@
   "effort": 7,
   "source": "boss",
   "tradeable": false,
-  "progress": { "have": 0, "need": 1, "unit": "blueprint" },
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "blueprint"
+  },
   "badges": [
-    { "text": "Stalker RNG", "tone": "warn" },
-    { "text": "Death Mark first", "tone": "info" }
+    {
+      "text": "Stalker RNG",
+      "tone": "warn"
+    },
+    {
+      "text": "Death Mark first",
+      "tone": "info"
+    }
   ],
-  "prices": [{ "label": "build", "amount": "15,000 cr", "money": false }],
+  "prices": [
+    {
+      "label": "build",
+      "amount": "15,000 cr",
+      "money": false
+    }
+  ],
   "materials": [
-    { "qty": "5,000", "label": "Ferrite", "note": null },
-    { "qty": "4,500", "label": "Salvage", "note": null },
-    { "qty": "800", "label": "Alloy Plate", "note": null },
-    { "qty": "10", "label": "Morphics", "note": null },
-    { "qty": "15,000", "label": "Credits", "note": null }
+    {
+      "qty": "5,000",
+      "label": "Ferrite",
+      "note": null
+    },
+    {
+      "qty": "4,500",
+      "label": "Salvage",
+      "note": null
+    },
+    {
+      "qty": "800",
+      "label": "Alloy Plate",
+      "note": null
+    },
+    {
+      "qty": "10",
+      "label": "Morphics",
+      "note": null
+    },
+    {
+      "qty": "15,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
     {
@@ -38,8 +74,14 @@
           "alt": {
             "text": "or a Stalker Beacon from Baro Ki'Teer forces the spawn, when he stocks it",
             "spends": [
-              { "currency": "Credits", "amount": "125,000" },
-              { "currency": "Orokin Ducats", "amount": "200" }
+              {
+                "currency": "Credits",
+                "amount": "125,000"
+              },
+              {
+                "currency": "Orokin Ducats",
+                "amount": "200"
+              }
             ]
           },
           "done": false
@@ -50,20 +92,15 @@
         "Spawn chance is 1.5% + 0.5% per marked squad member, 2% solo and 3.5% with four marked. He only appears in roughly the first 5 minutes of a mission.",
         "He cannot spawn in Assassinations, Syndicate missions, Sorties, Archon Hunts, Archwing, Landscapes, Albrecht's Laboratories, Höllvania, Dark Refractory or hubs.",
         "Your Warframe must be rank 10 or higher.",
-        "A beacon is consumed on use, one per mission, so run it in a short mission."
+        "A beacon is consumed on use, one per mission."
       ],
       "bonuses": [
-        "Hyena Pack (Psamathe, Neptune) and The Sergeant (Iliad, Phobos) are the fastest marks. Volt with Shocking Speed, Gauss or Titania burn through the Sergeant.",
-        "Stay marked through your normal missions: the best passive farm is meeting him on Sedna or Hydron runs you were doing anyway."
+        "Fastest marks: the Hyena Pack assassination on Psamathe, Neptune, and The Sergeant on Iliad, Phobos."
       ],
       "disclosures": [
         {
-          "title": "why marks stack but odds do not",
-          "body": "A mark per different boss lets you chain encounters across missions, but the spawn roll is once per mission, so several marks in one mission do not lift the odds above 3.5%."
-        },
-        {
-          "title": "squads of newer players",
-          "body": "Low-rank squads are constantly being marked, so playing with newer players reports the most encounters."
+          "title": "marks stack",
+          "body": "A mark from each different boss stacks. Beating Stalker spends one mark, so you meet him again on another mission."
         }
       ]
     },

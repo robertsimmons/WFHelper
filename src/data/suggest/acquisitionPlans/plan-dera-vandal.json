@@ -6,7 +6,7 @@
   "tradeable": true,
   "progress": { "have": 0, "need": 4, "unit": "parts" },
   "badges": [
-    { "text": "Corpus Invasion rewards only", "tone": "warn" },
+    { "text": "Corpus Invasions only", "tone": "warn" },
     { "text": "MR 7", "tone": "info" }
   ],
   "prices": [{ "label": "build", "amount": "25,000 cr", "money": false }],
@@ -14,10 +14,10 @@
   "groups": [
     {
       "type": "farm",
-      "place": "INVASIONS, ANY NODE",
-      "sub": "Corpus side",
-      "activity": "complete 3 missions for the Corpus on the node offering the part",
-      "meta": "arrives in your inbox when the invasion ends",
+      "place": "INVASIONS",
+      "sub": null,
+      "activity": "side with the Corpus, finish 3 missions on the node",
+      "meta": "watch invasions",
       "mode": null,
       "live": null,
       "skip": null,
@@ -28,44 +28,41 @@
         {
           "qty": null,
           "label": "Dera Vandal Blueprint",
-          "note": null,
-          "alt": "tradeable; MR 7 to receive",
+          "note": "2.76% of the Corpus reward pool",
+          "alt": "trade, MR 7 or higher",
           "done": false
         },
         {
           "qty": null,
           "label": "Dera Vandal Barrel",
-          "note": null,
-          "alt": "tradeable",
+          "note": "2.76% of the Corpus reward pool",
+          "alt": "trade",
           "done": false
         },
         {
           "qty": null,
           "label": "Dera Vandal Receiver",
-          "note": null,
-          "alt": "tradeable",
+          "note": "2.76% of the Corpus reward pool",
+          "alt": "trade",
           "done": false
         },
         {
           "qty": null,
           "label": "Dera Vandal Stock",
-          "note": null,
-          "alt": "tradeable",
+          "note": "2.76% of the Corpus reward pool",
+          "alt": "trade",
           "done": false
         }
       ],
       "conditions": [
-        "Watch invasions for one offering a part.",
-        "Siding with the Grineer never pays these.",
-        "Switching sides mid-invasion resets your progress and forfeits both rewards."
+        "Grineer side never pays any of them. The reward comes to your inbox when the Invasion ends, whichever side wins.",
+        "Switching sides resets your progress and denies both rewards."
       ],
-      "bonuses": [
-        "The Wraith and Vandal pool is shared with Karak Wraith, Latron Wraith, Strun Wraith and Snipetron Vandal, so several can be live at once."
-      ],
+      "bonuses": [],
       "disclosures": [
         {
-          "title": "closing the last gap",
-          "body": "Every component is tradeable, so a missing Receiver is usually cheaper to buy than to wait for."
+          "title": "same pool",
+          "body": "Snipetron Vandal parts share the Corpus reward pool."
         }
       ]
     },
@@ -85,7 +82,7 @@
         {
           "qty": null,
           "label": "Dera Vandal",
-          "note": "Barrel, Receiver and Stock; no other resources",
+          "note": "Blueprint, Barrel, Receiver and Stock",
           "alt": null,
           "done": false
         }

@@ -1,63 +1,101 @@
 {
   "name": "Dorrclave",
   "kind": "melee",
-  "effort": 2,
+  "effort": 3,
   "source": "dojo",
   "tradeable": false,
-  "progress": { "have": 0, "need": 5, "unit": "parts" },
+  "progress": {
+    "have": 0,
+    "need": 5,
+    "unit": "parts"
+  },
   "badges": [
-    { "text": "standing-gated, not RNG", "tone": "info" },
-    { "text": "Dojo room needed", "tone": "warn" }
-  ],
-  "prices": [{ "label": "build", "amount": "20,000 cr", "money": false }],
-  "materials": [{ "qty": "80", "label": "Vainthorn", "note": null }],
-  "groups": [
     {
-      "type": "gate",
-      "place": "DOJO + SYNDICATES",
-      "sub": null,
-      "activity": "build Dagath's Hollow; reach Rank 2 in any faction syndicate",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Dagath's Hollow",
-          "note": "clan Dojo room; no research step",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "any faction syndicate, Rank 2",
-          "note": "Steel Meridian, Arbiters of Hexis, Cephalon Suda, Perrin Sequence, Red Veil or New Loka, whichever you already have",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Solo clans must build the room first; rush costs scale with clan size (reported 15-150 plat)."
-      ],
-      "bonuses": [],
-      "disclosures": []
+      "text": "beacon standing",
+      "tone": "warn"
     },
     {
-      "type": "vendor",
-      "place": "SHRINE OF DAGATH, DOJO",
+      "text": "MR 8",
+      "tone": "info"
+    }
+  ],
+  "prices": [
+    {
+      "label": "blueprints",
+      "amount": "75,000 cr",
+      "money": false
+    },
+    {
+      "label": "builds",
+      "amount": "100,000 cr",
+      "money": false
+    }
+  ],
+  "materials": [
+    {
+      "qty": "80",
+      "label": "Vainthorn",
+      "note": "20 per component"
+    },
+    {
+      "qty": "1,500",
+      "label": "Nano Spores",
+      "note": "Hilt and String"
+    },
+    {
+      "qty": "820",
+      "label": "Plastids",
+      "note": "Hilt and Hook"
+    },
+    {
+      "qty": "5",
+      "label": "Morphics",
+      "note": "Hilt and String"
+    },
+    {
+      "qty": "1,120",
+      "label": "Ferrite",
+      "note": "Hook and Blade"
+    },
+    {
+      "qty": "1,130",
+      "label": "Rubedo",
+      "note": "Hook and Blade"
+    },
+    {
+      "qty": "100",
+      "label": "Oxium",
+      "note": "String"
+    },
+    {
+      "qty": "2",
+      "label": "Argon Crystal",
+      "note": "Blade"
+    },
+    {
+      "qty": "175,000",
+      "label": "Credits",
+      "note": null
+    }
+  ],
+  "groups": [
+    {
       "sub": null,
-      "activity": "buy the main and component blueprints",
-      "meta": null,
+      "meta": "no Research needed, credits only",
       "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
       "spends": [],
       "map": null,
+      "conditions": [
+        "Needs the Dagath's Hollow room built in a Clan Dojo; visit a clan that has it if yours doesn't."
+      ],
+      "bonuses": [],
+      "disclosures": [],
+      "type": "vendor",
+      "place": "CLAN DOJO, DAGATH'S HOLLOW",
+      "activity": "buy every blueprint outright",
       "rows": [
         {
           "qty": null,
@@ -66,39 +104,120 @@
           "alt": null,
           "done": false
         },
-        { "qty": null, "label": "Hilt Blueprint", "note": null, "alt": null, "done": false },
-        { "qty": null, "label": "Hook Blueprint", "note": null, "alt": null, "done": false },
-        { "qty": null, "label": "String Blueprint", "note": null, "alt": null, "done": false },
-        { "qty": null, "label": "Blade Blueprint", "note": null, "alt": null, "done": false }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
+        {
+          "qty": null,
+          "label": "Hilt Blueprint",
+          "note": "15,000 cr",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Hook Blueprint",
+          "note": "15,000 cr",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "String Blueprint",
+          "note": "15,000 cr",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Blade Blueprint",
+          "note": "15,000 cr",
+          "alt": null,
+          "done": false
+        }
+      ]
     },
     {
-      "type": "foundry",
-      "place": "FOUNDRY",
       "sub": null,
-      "activity": "build components, then Dorrclave",
-      "meta": "12h each part, 12h final",
+      "meta": "5,000 standing per beacon",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": {
+        "currency": "Syndicate Standing",
+        "amount": "50,000"
+      },
+      "spends": [],
+      "map": null,
+      "conditions": [
+        "Any of the six main Syndicates (Steel Meridian, Arbiters of Hexis, Cephalon Suda, Perrin Sequence, Red Veil, New Loka) sells the beacon at Rank 2 for 5,000 standing.",
+        "Only the mission host's beacon is consumed."
+      ],
+      "bonuses": [],
+      "disclosures": [],
+      "type": "currency",
+      "place": "RELAY, ANY MAIN SYNDICATE",
+      "activity": "reach Rank 2, then buy Abyssal Beacons",
+      "rows": [
+        {
+          "qty": "10",
+          "label": "Abyssal Beacon",
+          "note": "5,000 standing each, Steel Path",
+          "alt": "14 beacons (70,000 standing) on normal",
+          "done": false
+        }
+      ],
+      "ref": "Syndicate Standing"
+    },
+    {
+      "sub": null,
+      "meta": "12h each",
       "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
       "spends": [],
       "map": null,
-      "rows": [
-        { "qty": null, "label": "Hilt", "note": "20 Vainthorn", "alt": null, "done": false },
-        { "qty": null, "label": "Hook", "note": "20 Vainthorn", "alt": null, "done": false },
-        { "qty": null, "label": "String", "note": "20 Vainthorn", "alt": null, "done": false },
-        { "qty": null, "label": "Blade", "note": "20 Vainthorn", "alt": null, "done": false },
-        { "qty": null, "label": "Dorrclave", "note": "20,000 cr, 12h", "alt": null, "done": false }
-      ],
-      "conditions": [
-        "Each component also needs a share of Nano Spores, Plastids, Morphics, Ferrite, Rubedo, Oxium and Argon Crystal; exact per-component amounts aren't public, so expect to have plenty of these common resources banked already."
-      ],
+      "conditions": [],
       "bonuses": [],
-      "disclosures": []
+      "disclosures": [],
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "activity": "build components, then Dorrclave",
+      "rows": [
+        {
+          "qty": null,
+          "label": "Hilt",
+          "note": "20,000 cr, 20 Vainthorn, 640 Nano Spores, 570 Plastids, 2 Morphics",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Hook",
+          "note": "20,000 cr, 20 Vainthorn, 250 Plastids, 370 Ferrite, 500 Rubedo",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "String",
+          "note": "20,000 cr, 20 Vainthorn, 100 Oxium, 3 Morphics, 860 Nano Spores",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Blade",
+          "note": "20,000 cr, 20 Vainthorn, 750 Ferrite, 630 Rubedo, 2 Argon Crystal",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Dorrclave",
+          "note": "20,000 cr, Hilt, Hook, String, Blade",
+          "alt": null,
+          "done": false
+        }
+      ]
     }
   ]
 }

@@ -1,10 +1,10 @@
 {
   "name": "Dark Sword",
   "kind": "melee",
-  "effort": 3,
+  "effort": 2,
   "source": "shop",
   "tradeable": false,
-  "progress": { "have": 0, "need": 1, "unit": "weapon" },
+  "progress": { "have": 0, "need": 1, "unit": "blueprint" },
   "badges": [
     { "text": "Nightwave", "tone": "warn" },
     { "text": "MR 8", "tone": "info" }
@@ -51,7 +51,7 @@
       "place": "NIGHTWAVE",
       "sub": null,
       "activity": "complete Acts",
-      "meta": "Rank 1 pays 100-150 Cred",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -67,8 +67,8 @@
           "done": false
         }
       ],
-      "conditions": ["Cred expires when the series or intermission ends; spend it first."],
-      "bonuses": [],
+      "conditions": ["Cred expires when the series ends; spend it first."],
+      "bonuses": ["Any duplicate Nightwave-exclusive reward converts to 50 Cred."],
       "disclosures": [],
       "ref": "Nightwave Creds"
     },
@@ -87,7 +87,7 @@
       "rows": [
         { "qty": null, "label": "Dark Sword Blueprint", "note": null, "alt": null, "done": false }
       ],
-      "conditions": ["The blueprint is always in the Cred Offerings; it never rotates out."],
+      "conditions": ["Always in the Offerings, but the store is closed between Nightwave series."],
       "bonuses": [],
       "disclosures": []
     },

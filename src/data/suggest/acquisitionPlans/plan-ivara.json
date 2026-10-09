@@ -4,17 +4,109 @@
   "effort": 4,
   "source": "repeat",
   "tradeable": false,
-  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "progress": {
+    "have": 0,
+    "need": 4,
+    "unit": "parts"
+  },
   "badges": [
-    { "text": "Spy Rotation C", "tone": "warn" },
-    { "text": "Circuit option", "tone": "circuit" }
+    {
+      "text": "Spy Rotation C",
+      "tone": "warn"
+    },
+    {
+      "text": "Circuit week 8",
+      "tone": "circuit"
+    }
   ],
-  "prices": [{ "label": "built", "amount": "325 p", "money": false }],
+  "prices": [
+    {
+      "label": "blueprint",
+      "amount": "35,000 cr",
+      "money": false
+    },
+    {
+      "label": "built",
+      "amount": "325 p",
+      "money": false
+    }
+  ],
+  "routes": [
+    {
+      "name": "Spy vaults on the star chart",
+      "cost": "three clean vaults a run, 22.56% for the part your level tier drops; the main blueprint is 35,000 cr",
+      "effort": 4,
+      "role": "chosen"
+    },
+    {
+      "name": "Spy in Railjack Proxima",
+      "cost": "36% a clean run, but it needs a Railjack",
+      "effort": 4,
+      "role": null
+    },
+    {
+      "name": "The Circuit, week 8",
+      "cost": "Neuroptics at tier 2, Chassis 5, Systems 8, main blueprint 10; no RNG",
+      "effort": 3,
+      "role": null
+    }
+  ],
   "materials": [
-    { "qty": "9", "label": "Nitain Extract", "note": null },
-    { "qty": "2,000", "label": "Cryotic", "note": null },
-    { "qty": "3", "label": "Argon Crystal", "note": null },
-    { "qty": "35,000", "label": "Credits", "note": null }
+    {
+      "qty": "5",
+      "label": "Neurodes",
+      "note": "Neuroptics"
+    },
+    {
+      "qty": "800",
+      "label": "Plastids",
+      "note": "Neuroptics"
+    },
+    {
+      "qty": "2,600",
+      "label": "Polymer Bundle",
+      "note": "Neuroptics"
+    },
+    {
+      "qty": "3",
+      "label": "Argon Crystal",
+      "note": "2 Neuroptics, 1 Systems"
+    },
+    {
+      "qty": "5",
+      "label": "Morphics",
+      "note": "Chassis"
+    },
+    {
+      "qty": "2,000",
+      "label": "Cryotic",
+      "note": "Chassis"
+    },
+    {
+      "qty": "1,700",
+      "label": "Rubedo",
+      "note": "700 Chassis, 1,000 Systems"
+    },
+    {
+      "qty": "9",
+      "label": "Nitain Extract",
+      "note": "4 Chassis, 5 Systems"
+    },
+    {
+      "qty": "5",
+      "label": "Control Module",
+      "note": "Systems"
+    },
+    {
+      "qty": "1",
+      "label": "Orokin Cell",
+      "note": null
+    },
+    {
+      "qty": "105,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
     {
@@ -22,33 +114,38 @@
       "place": "MARKET",
       "sub": null,
       "activity": "buy Ivara Blueprint",
-      "meta": "do this before farming",
+      "meta": "35,000 cr",
       "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Credits", "amount": "35,000" }],
+      "spends": [
+        {
+          "currency": "Credits",
+          "amount": "35,000"
+        }
+      ],
       "map": null,
       "rows": [
         {
           "qty": null,
           "label": "Ivara Blueprint",
           "note": "35,000 cr",
-          "alt": "Circuit reward tier 10",
+          "alt": "or Circuit week 8, tier 10",
           "done": false
         }
       ],
-      "conditions": ["The main blueprint is a Market purchase, not a Tier 3 Spy drop."],
+      "conditions": [],
       "bonuses": [],
       "disclosures": []
     },
     {
       "type": "farm",
       "place": "STAR CHART SPY",
-      "sub": "three successful vaults required",
-      "activity": "complete clean three-vault Spy runs",
-      "meta": "22.56% per clean run",
-      "mode": "solo while learning",
+      "sub": null,
+      "activity": "hack all three vaults in a Spy mission",
+      "meta": "22.56% per clean run, Rotation C",
+      "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
@@ -78,114 +175,28 @@
         }
       ],
       "conditions": [
-        "Ivara parts are Rotation C rewards: all three vaults must be hacked successfully. Failing one vault voids the Ivara roll for that run.",
-        "Alerts and Sorties do not use Ivara's reward tables. Nightmare Spy does count.",
-        "Steel Path uses the same table as normal Spy, so it adds difficulty without improving the part odds."
+        "The parts are Rotation C rewards, so all three vaults must succeed for the roll.",
+        "Alerts and Sorties don't use these tables; Nightmare Spy does count.",
+        "Steel Path uses the same table as normal Spy."
       ],
-      "bonuses": [
-        "Wukong's Cloud Walker is a low-friction vault-learning option; build duration and efficiency.",
-        "Perspicacity auto-hacks consoles, including modes where ciphers are banned."
-      ],
+      "bonuses": [],
       "disclosures": [
         {
-          "title": "learn the vaults first",
-          "body": "Go solo and explore a vault before completing it. A public teammate can fail a vault and waste the Rotation C reward for everyone."
+          "title": "Spy in Railjack Proxima",
+          "body": "36% a clean run, all three vaults still required, and you need a Railjack. Systems: Orvin-Haarc, Venus Proxima. Chassis: Brom Cluster, Neptune Proxima. Neuroptics: Peregrine Axis, Pluto Proxima."
+        },
+        {
+          "title": "The Circuit, week 8",
+          "body": "After The Duviri Paradox, pick Ivara on her week of the 11-week rotation: Neuroptics at tier 2, Chassis at tier 5, Systems at tier 8, main blueprint at tier 10."
         }
       ]
-    },
-    {
-      "type": "farm",
-      "place": "RAILJACK PROXIMA SPY",
-      "sub": "alternative to star-chart Spy",
-      "activity": "complete clean three-vault Spy runs",
-      "meta": "36% per clean run",
-      "mode": "requires a Railjack",
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Ivara Systems Blueprint",
-          "note": "Orvin-Haarc, Venus Proxima",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Ivara Chassis Blueprint",
-          "note": "Brom Cluster, Neptune Proxima",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Ivara Neuroptics Blueprint",
-          "note": "Peregrine Axis, Pluto Proxima",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": ["All three vaults must still succeed for the Rotation C Ivara roll."],
-      "bonuses": [
-        "This is the higher published chance if you already have a comfortable Railjack route."
-      ],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "THE CIRCUIT, DUVIRI",
-      "sub": null,
-      "activity": "choose Ivara during her weekly offering",
-      "meta": "Ivara is week 8 of the 11-week rotation",
-      "mode": "requires The Duviri Paradox",
-      "live": { "state": "waiting", "text": "Check the in-game Circuit rotation" },
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Ivara Neuroptics Blueprint",
-          "note": "Circuit reward tier 2",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Ivara Chassis Blueprint",
-          "note": "Circuit reward tier 5",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Ivara Systems Blueprint",
-          "note": "Circuit reward tier 8",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Ivara Blueprint",
-          "note": "Circuit reward tier 10",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": ["This route provides the whole set at fixed reward tiers with no Spy RNG."],
-      "bonuses": ["Use it if Ivara is offered and you prefer a guaranteed progression path."],
-      "disclosures": []
     },
     {
       "type": "foundry",
       "place": "FOUNDRY",
       "sub": null,
       "activity": "build components, then Ivara",
-      "meta": "12h each, then 72h",
+      "meta": "12h each, then 3 days",
       "mode": null,
       "live": null,
       "skip": null,
@@ -195,17 +206,35 @@
       "rows": [
         {
           "qty": null,
-          "label": "Ivara components",
-          "note": "build in parallel; 9 Nitain Extract, 2,000 Cryotic, 3 Argon Crystal across the whole build",
+          "label": "Ivara Neuroptics",
+          "note": "15,000 cr, 5 Neurodes, 800 Plastids, 2,600 Polymer Bundle, 2 Argon Crystal",
           "alt": null,
           "done": false
         },
-        { "qty": null, "label": "Ivara", "note": "final Foundry build", "alt": null, "done": false }
+        {
+          "qty": null,
+          "label": "Ivara Chassis",
+          "note": "15,000 cr, 5 Morphics, 2,000 Cryotic, 700 Rubedo, 4 Nitain Extract",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Ivara Systems",
+          "note": "15,000 cr, 5 Control Module, 1,000 Rubedo, 5 Nitain Extract, 1 Argon Crystal",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Ivara",
+          "note": "25,000 cr, the three parts, 1 Orokin Cell",
+          "alt": null,
+          "done": false
+        }
       ],
       "conditions": [],
-      "bonuses": [
-        "Run the three component builds in parallel before starting Ivara's 72-hour final build."
-      ],
+      "bonuses": [],
       "disclosures": []
     }
   ]

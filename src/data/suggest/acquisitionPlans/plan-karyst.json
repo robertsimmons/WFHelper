@@ -1,23 +1,85 @@
 {
   "name": "Karyst",
   "kind": "melee",
-  "effort": 3,
+  "effort": 2,
   "source": "shop",
   "tradeable": false,
-  "progress": { "have": 0, "need": 1, "unit": "weapon" },
-  "badges": [{ "text": "Argon decays", "tone": "warn" }],
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "weapon"
+  },
+  "badges": [
+    {
+      "text": "Argon decays",
+      "tone": "warn"
+    }
+  ],
   "prices": [
-    { "label": "blueprint", "amount": "20,000 cr", "money": false },
-    { "label": "build", "amount": "20,000 cr", "money": false }
+    {
+      "label": "blueprint",
+      "amount": "20,000 cr",
+      "money": false
+    },
+    {
+      "label": "build",
+      "amount": "20,000 cr",
+      "money": false
+    }
   ],
   "materials": [
-    { "qty": "1,500", "label": "Salvage", "note": null },
-    { "qty": "800", "label": "Polymer Bundle", "note": null },
-    { "qty": "100", "label": "Oxium", "note": null },
-    { "qty": "1", "label": "Argon Crystal", "note": null },
-    { "qty": "40,000", "label": "Credits", "note": null }
+    {
+      "qty": "1,500",
+      "label": "Salvage",
+      "note": null
+    },
+    {
+      "qty": "800",
+      "label": "Polymer Bundle",
+      "note": null
+    },
+    {
+      "qty": "100",
+      "label": "Oxium",
+      "note": null
+    },
+    {
+      "qty": "1",
+      "label": "Argon Crystal",
+      "note": null
+    },
+    {
+      "qty": "40,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
+    {
+      "type": "gate",
+      "place": "MASTERY RANK",
+      "sub": null,
+      "activity": "reach MR 6",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Mastery Rank 6",
+          "note": "needed to equip it",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
     {
       "type": "vendor",
       "place": "MARKET",
@@ -28,7 +90,12 @@
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [],
+      "spends": [
+        {
+          "currency": "Credits",
+          "amount": "20,000"
+        }
+      ],
       "map": null,
       "rows": [
         {
@@ -39,7 +106,7 @@
           "done": false
         }
       ],
-      "conditions": ["Mastery Rank 6 to equip."],
+      "conditions": [],
       "bonuses": [],
       "disclosures": []
     },
@@ -48,7 +115,7 @@
       "place": "FOUNDRY",
       "sub": null,
       "activity": "build Karyst",
-      "meta": "12h, 20,000 cr",
+      "meta": "12h",
       "mode": null,
       "live": null,
       "skip": null,

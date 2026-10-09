@@ -4,21 +4,59 @@
   "effort": 2,
   "source": "shop",
   "tradeable": false,
-  "progress": { "have": 0, "need": 1, "unit": "blueprint" },
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "blueprint"
+  },
   "badges": [
-    { "text": "Market", "tone": "info" },
-    { "text": "5 Neural Sensors", "tone": "info" }
+    {
+      "text": "Market",
+      "tone": "info"
+    },
+    {
+      "text": "5 Neural Sensors",
+      "tone": "info"
+    }
   ],
   "prices": [
-    { "label": "blueprint", "amount": "40,000 cr", "money": false },
-    { "label": "build", "amount": "20,000 cr", "money": false }
+    {
+      "label": "blueprint",
+      "amount": "40,000 cr",
+      "money": false
+    },
+    {
+      "label": "build",
+      "amount": "20,000 cr",
+      "money": false
+    }
   ],
   "materials": [
-    { "qty": "60,000", "label": "Credits", "note": null },
-    { "qty": "5", "label": "Neural Sensors", "note": null },
-    { "qty": "1,200", "label": "Ferrite", "note": null },
-    { "qty": "900", "label": "Circuits", "note": null },
-    { "qty": "1,200", "label": "Polymer Bundle", "note": null }
+    {
+      "qty": "60,000",
+      "label": "Credits",
+      "note": null
+    },
+    {
+      "qty": "5",
+      "label": "Neural Sensors",
+      "note": null
+    },
+    {
+      "qty": "1,200",
+      "label": "Ferrite",
+      "note": null
+    },
+    {
+      "qty": "900",
+      "label": "Circuits",
+      "note": null
+    },
+    {
+      "qty": "1,200",
+      "label": "Polymer Bundle",
+      "note": null
+    }
   ],
   "groups": [
     {
@@ -31,13 +69,18 @@
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Credits", "amount": "40,000" }],
+      "spends": [
+        {
+          "currency": "Credits",
+          "amount": "40,000"
+        }
+      ],
       "map": null,
       "rows": [
         {
           "qty": null,
           "label": "Kama Blueprint",
-          "note": "40,000 credits",
+          "note": null,
           "alt": null,
           "done": false
         }
@@ -51,7 +94,7 @@
       "place": "FOUNDRY",
       "sub": null,
       "activity": "build Kama",
-      "meta": "20,000 cr, 12h",
+      "meta": "12h",
       "mode": null,
       "live": null,
       "skip": null,
@@ -62,12 +105,12 @@
         {
           "qty": null,
           "label": "Kama",
-          "note": "20,000 credits, 5 Neural Sensors, 1,200 Ferrite, 900 Circuits, 1,200 Polymer Bundle, 12h",
+          "note": "20,000 cr, 5 Neural Sensors, 1,200 Ferrite, 900 Circuits, 1,200 Polymer Bundle",
           "alt": null,
           "done": false
         }
       ],
-      "conditions": ["Dual Kamas consumes Kamas. Rank this one to 30 before building it."],
+      "conditions": ["Dual Kamas consumes two Kamas, so rank this one to 30 before building it."],
       "bonuses": [],
       "disclosures": []
     }

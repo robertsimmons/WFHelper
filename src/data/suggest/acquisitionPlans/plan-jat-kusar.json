@@ -4,20 +4,86 @@
   "effort": 2,
   "source": "dojo",
   "tradeable": false,
-  "progress": { "have": 0, "need": 1, "unit": "blueprint" },
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "blueprint"
+  },
   "badges": [
-    { "text": "Chem Lab", "tone": "warn" },
-    { "text": "MR 11", "tone": "info" }
+    {
+      "text": "Chem Lab",
+      "tone": "warn"
+    },
+    {
+      "text": "MR 11",
+      "tone": "info"
+    }
   ],
-  "prices": [{ "label": "built", "amount": "135,000 cr", "money": false }],
+  "prices": [
+    {
+      "label": "blueprint",
+      "amount": "15,000 cr",
+      "money": false
+    },
+    {
+      "label": "build",
+      "amount": "15,000 cr",
+      "money": false
+    }
+  ],
   "materials": [
-    { "qty": "7", "label": "Detonite Injector", "note": null },
-    { "qty": "7,500", "label": "Salvage", "note": null },
-    { "qty": "2,000", "label": "Rubedo", "note": null },
-    { "qty": "1", "label": "Forma", "note": null },
-    { "qty": "30,000", "label": "Credits", "note": null }
+    {
+      "qty": "7",
+      "label": "Detonite Injector",
+      "note": null
+    },
+    {
+      "qty": "7,500",
+      "label": "Salvage",
+      "note": null
+    },
+    {
+      "qty": "2,000",
+      "label": "Rubedo",
+      "note": null
+    },
+    {
+      "qty": "1",
+      "label": "Forma",
+      "note": null
+    },
+    {
+      "qty": "30,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
+    {
+      "type": "gate",
+      "place": "MASTERY RANK",
+      "sub": null,
+      "activity": "reach MR 11",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Mastery Rank 11",
+          "note": "needed to equip it",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
     {
       "type": "vendor",
       "place": "CLAN DOJO, CHEM LAB",
@@ -28,13 +94,18 @@
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Credits", "amount": "15,000" }],
+      "spends": [
+        {
+          "currency": "Credits",
+          "amount": "15,000"
+        }
+      ],
       "map": null,
       "rows": [
         {
           "qty": null,
           "label": "Jat Kusar Blueprint",
-          "note": "15,000 credits",
+          "note": "research needs Jat Kittag",
           "alt": null,
           "done": false
         }
@@ -48,7 +119,7 @@
       "place": "FOUNDRY",
       "sub": null,
       "activity": "build Jat Kusar",
-      "meta": "1 day (30p rush)",
+      "meta": "24h",
       "mode": null,
       "live": null,
       "skip": null,

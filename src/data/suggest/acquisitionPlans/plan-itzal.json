@@ -1,43 +1,105 @@
 {
   "name": "Itzal",
   "kind": "archwing",
-  "effort": 5,
+  "effort": 3,
   "source": "dojo",
   "tradeable": false,
-  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "progress": {
+    "have": 0,
+    "need": 4,
+    "unit": "parts"
+  },
   "badges": [
-    { "text": "Tenno Lab", "tone": "warn" },
-    { "text": "Archwing quest gate", "tone": "warn" }
+    {
+      "text": "Tenno Lab",
+      "tone": "warn"
+    },
+    {
+      "text": "Archwing quest gate",
+      "tone": "warn"
+    }
   ],
   "prices": [
-    { "label": "blueprints", "amount": "60,000 cr", "money": false },
-    { "label": "built", "amount": "325 p", "money": false }
+    {
+      "label": "blueprints",
+      "amount": "60,000 cr",
+      "money": false
+    },
+    {
+      "label": "built",
+      "amount": "325 p",
+      "money": false
+    }
   ],
   "materials": [
-    { "qty": "900", "label": "Oxium", "note": "180 Harness, 320 Systems, 400 Wings" },
-    { "qty": "1,600", "label": "Ferrite", "note": "700 Harness, 900 Wings" },
-    { "qty": "300", "label": "Rubedo", "note": "Harness" },
-    { "qty": "4", "label": "Tellurium", "note": "2 Harness, 2 Wings" },
-    { "qty": "3", "label": "Control Module", "note": "1 Systems, 2 Itzal" },
-    { "qty": "800", "label": "Salvage", "note": "Systems" },
-    { "qty": "2", "label": "Neurodes", "note": "Systems" },
-    { "qty": "150", "label": "Alloy Plate", "note": "Wings" },
-    { "qty": "130,000", "label": "Credits", "note": null }
+    {
+      "qty": "900",
+      "label": "Oxium",
+      "note": "180 Harness, 320 Systems, 400 Wings"
+    },
+    {
+      "qty": "1,600",
+      "label": "Ferrite",
+      "note": "700 Harness, 900 Wings"
+    },
+    {
+      "qty": "300",
+      "label": "Rubedo",
+      "note": "Harness"
+    },
+    {
+      "qty": "4",
+      "label": "Tellurium",
+      "note": "2 Harness, 2 Wings"
+    },
+    {
+      "qty": "3",
+      "label": "Control Module",
+      "note": "1 Systems, 2 Itzal"
+    },
+    {
+      "qty": "800",
+      "label": "Salvage",
+      "note": "Systems"
+    },
+    {
+      "qty": "2",
+      "label": "Neurodes",
+      "note": "Systems"
+    },
+    {
+      "qty": "150",
+      "label": "Alloy Plate",
+      "note": "Wings"
+    },
+    {
+      "qty": "130,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
     {
       "type": "gate",
-      "place": "MARS JUNCTION",
+      "place": "THE ARCHWING",
       "sub": null,
-      "activity": "complete The Archwing quest",
-      "meta": "unlocks Archwing, Empyrean and the Plexus",
+      "activity": "finish the quest that unlocks Archwing",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
       "spends": [],
       "map": null,
-      "rows": [{ "qty": null, "label": "The Archwing", "note": null, "alt": null, "done": false }],
+      "rows": [
+        {
+          "qty": null,
+          "label": "The Archwing",
+          "note": "the lab sells no Itzal blueprints before this",
+          "alt": null,
+          "done": false
+        }
+      ],
       "conditions": [],
       "bonuses": [],
       "disclosures": []
@@ -52,7 +114,12 @@
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Credits", "amount": "60,000" }],
+      "spends": [
+        {
+          "currency": "Credits",
+          "amount": "60,000"
+        }
+      ],
       "map": null,
       "rows": [
         {
@@ -76,7 +143,13 @@
           "alt": null,
           "done": false
         },
-        { "qty": null, "label": "Wings Blueprint", "note": "15,000 cr", "alt": null, "done": false }
+        {
+          "qty": null,
+          "label": "Wings Blueprint",
+          "note": "15,000 cr",
+          "alt": null,
+          "done": false
+        }
       ],
       "conditions": [],
       "bonuses": [],
@@ -119,12 +192,12 @@
         {
           "qty": null,
           "label": "Itzal",
-          "note": "25,000 cr, 2 Control Modules, one of each component",
+          "note": "25,000 cr, 2 Control Module, one of each component",
           "alt": null,
           "done": false
         }
       ],
-      "conditions": ["Mastery Rank 0 to build and equip."],
+      "conditions": [],
       "bonuses": [],
       "disclosures": []
     }

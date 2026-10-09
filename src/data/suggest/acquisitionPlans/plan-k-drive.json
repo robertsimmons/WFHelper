@@ -4,14 +4,31 @@
   "effort": 6,
   "source": "standing",
   "tradeable": false,
-  "progress": { "have": 0, "need": 5, "unit": "Boards" },
+  "progress": {
+    "have": 0,
+    "need": 5,
+    "unit": "Boards"
+  },
   "badges": [
-    { "text": "Ventkids Logical for Runway", "tone": "warn" },
-    { "text": "Feverspine race rotates daily", "tone": "info" }
+    {
+      "text": "Ventkids Logical for Runway",
+      "tone": "warn",
+      "rank": {
+        "syndicate": "Ventkids",
+        "level": 5
+      }
+    },
+    {
+      "text": "Feverspine race rotates daily",
+      "tone": "info"
+    }
   ],
   "prices": [
-    { "label": "twenty parts, foundry", "amount": "100,000 cr", "money": false },
-    { "label": "rush a part", "amount": "25 p", "money": false }
+    {
+      "label": "twenty parts, foundry",
+      "amount": "100,000 cr",
+      "money": false
+    }
   ],
   "materials": [
     {
@@ -19,40 +36,124 @@
       "label": "Thermal Sludge",
       "note": "20 each: Bad Baby, Flatbelly, Needlenose, Runway"
     },
-    { "qty": "40", "label": "Axidrol Alloy", "note": "Bad Baby" },
-    { "qty": "40", "label": "Venerdo Alloy", "note": "Flatbelly" },
-    { "qty": "80", "label": "Hespazym Alloy", "note": "40 Needlenose, 40 Runway" },
+    {
+      "qty": "40",
+      "label": "Axidrol Alloy",
+      "note": "Bad Baby"
+    },
+    {
+      "qty": "40",
+      "label": "Venerdo Alloy",
+      "note": "Flatbelly"
+    },
+    {
+      "qty": "80",
+      "label": "Hespazym Alloy",
+      "note": "40 Needlenose, 40 Runway"
+    },
     {
       "qty": "285",
       "label": "Scrap",
       "note": "30 Bad Baby, 50 Flatbelly, 40 Needlenose, 40 Runway, 125 for five Coldfusors"
     },
-    { "qty": "10", "label": "Mirewinder Parallel Biode", "note": "Bad Baby" },
-    { "qty": "10", "label": "Recaster Neural Relay", "note": "Flatbelly" },
-    { "qty": "10", "label": "Eye-Eye Rotoblade", "note": "Needlenose" },
-    { "qty": "110", "label": "Kriller Thermal Laser", "note": "10 Runway, 100 for five Beakys" },
-    { "qty": "25", "label": "Ganglion", "note": "Feverspine" },
-    { "qty": "40", "label": "Adramal Alloy", "note": "Feverspine" },
-    { "qty": "50", "label": "Benign Infested Tumor", "note": "Feverspine" },
-    { "qty": "15", "label": "Parasitic Tethermaw", "note": "Feverspine" },
-    { "qty": "75", "label": "Tepa Nodule", "note": "15 per Coldfusor" },
-    { "qty": "325", "label": "Travocyte Alloy", "note": "40 per Coldfusor, 25 per Twin Kavats" },
-    { "qty": "50", "label": "Sapcaddy Venedo Case", "note": "10 per Coldfusor" },
-    { "qty": "125", "label": "Gorgaricus Spore", "note": "25 per Beaky" },
-    { "qty": "25", "label": "Star Amarast", "note": "5 per Beaky" },
-    { "qty": "50", "label": "Scrubber Exa Brain", "note": "10 per Beaky" },
-    { "qty": "150", "label": "Mytocardia Spore", "note": "30 per Twin Kavats" },
-    { "qty": "75", "label": "Heart Noctrul", "note": "15 per Twin Kavats" },
-    { "qty": "100", "label": "Echowinder Anoscopic Sensor", "note": "20 per Twin Kavats" },
-    { "qty": "100,000", "label": "Credits", "note": "5,000 per part build" }
+    {
+      "qty": "10",
+      "label": "Mirewinder Parallel Biode",
+      "note": "Bad Baby"
+    },
+    {
+      "qty": "10",
+      "label": "Recaster Neural Relay",
+      "note": "Flatbelly"
+    },
+    {
+      "qty": "10",
+      "label": "Eye-Eye Rotoblade",
+      "note": "Needlenose"
+    },
+    {
+      "qty": "110",
+      "label": "Kriller Thermal Laser",
+      "note": "10 Runway, 100 for five Beakys"
+    },
+    {
+      "qty": "25",
+      "label": "Ganglion",
+      "note": "Feverspine"
+    },
+    {
+      "qty": "40",
+      "label": "Adramal Alloy",
+      "note": "Feverspine"
+    },
+    {
+      "qty": "50",
+      "label": "Benign Infested Tumor",
+      "note": "Feverspine"
+    },
+    {
+      "qty": "15",
+      "label": "Parasitic Tethermaw",
+      "note": "Feverspine"
+    },
+    {
+      "qty": "75",
+      "label": "Tepa Nodule",
+      "note": "15 per Coldfusor"
+    },
+    {
+      "qty": "325",
+      "label": "Travocyte Alloy",
+      "note": "40 per Coldfusor, 25 per Twin Kavats"
+    },
+    {
+      "qty": "50",
+      "label": "Sapcaddy Venedo Case",
+      "note": "10 per Coldfusor"
+    },
+    {
+      "qty": "125",
+      "label": "Gorgaricus Spore",
+      "note": "25 per Beaky"
+    },
+    {
+      "qty": "25",
+      "label": "Star Amarast",
+      "note": "5 per Beaky"
+    },
+    {
+      "qty": "50",
+      "label": "Scrubber Exa Brain",
+      "note": "10 per Beaky"
+    },
+    {
+      "qty": "150",
+      "label": "Mytocardia Spore",
+      "note": "30 per Twin Kavats"
+    },
+    {
+      "qty": "75",
+      "label": "Heart Noctrul",
+      "note": "15 per Twin Kavats"
+    },
+    {
+      "qty": "100",
+      "label": "Echowinder Anoscopic Sensor",
+      "note": "20 per Twin Kavats"
+    },
+    {
+      "qty": "100,000",
+      "label": "Credits",
+      "note": "5,000 per part build"
+    }
   ],
   "groups": [
     {
       "type": "gate",
-      "place": "FORTUNA, VENUS",
+      "place": "QUESTS",
       "sub": null,
-      "activity": "Ventkids and the Cambion Drift",
-      "meta": "one-time",
+      "activity": "unlock the Ventkids and the Cambion Drift",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -70,7 +171,7 @@
         {
           "qty": null,
           "label": "Heart of Deimos quest",
-          "note": "starting it opens the Cambion Drift, where the Feverspine race runs",
+          "note": "opens the Cambion Drift, where the Feverspine race runs",
           "alt": null,
           "done": false
         }
@@ -123,7 +224,10 @@
       "mode": null,
       "live": null,
       "skip": null,
-      "earns": { "currency": "Ventkids Standing", "amount": "320,000" },
+      "earns": {
+        "currency": "Ventkids Standing",
+        "amount": "320,000"
+      },
       "spends": [],
       "map": "orb-vallis",
       "rows": [
@@ -152,37 +256,68 @@
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Ventkids Standing", "amount": "240,000" }],
+      "spends": [
+        {
+          "currency": "Ventkids Standing",
+          "amount": "240,000"
+        }
+      ],
       "map": "fortuna",
       "rows": [
-        { "qty": null, "label": "Glinty", "note": "5,000 standing", "alt": null, "done": false },
+        {
+          "qty": null,
+          "label": "Glinty",
+          "note": "5,000 standing",
+          "alt": null,
+          "done": false,
+          "rank": {
+            "syndicate": "Ventkids",
+            "level": 1
+          }
+        },
         {
           "qty": null,
           "label": "Whozit",
           "note": "22,000 standing; free pick: Flatbelly Blueprint",
           "alt": null,
-          "done": false
+          "done": false,
+          "rank": {
+            "syndicate": "Ventkids",
+            "level": 2
+          }
         },
         {
           "qty": null,
           "label": "Proper Felon",
           "note": "44,000 standing",
           "alt": null,
-          "done": false
+          "done": false,
+          "rank": {
+            "syndicate": "Ventkids",
+            "level": 3
+          }
         },
         {
           "qty": null,
           "label": "Primo",
           "note": "70,000 standing; free pick: Needlenose Blueprint",
           "alt": null,
-          "done": false
+          "done": false,
+          "rank": {
+            "syndicate": "Ventkids",
+            "level": 4
+          }
         },
         {
           "qty": null,
           "label": "Logical",
           "note": "99,000 standing; free pick: Runway Blueprint",
           "alt": null,
-          "done": false
+          "done": false,
+          "rank": {
+            "syndicate": "Ventkids",
+            "level": 5
+          }
         }
       ],
       "conditions": [
@@ -202,7 +337,12 @@
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Ventkids Standing", "amount": "80,000" }],
+      "spends": [
+        {
+          "currency": "Ventkids Standing",
+          "amount": "80,000"
+        }
+      ],
       "map": "fortuna",
       "rows": [
         {
@@ -363,12 +503,10 @@
         }
       ],
       "conditions": [
-        "No gilding: each board banks 200 Mastery per rank, 6,000 at rank 30",
+        "Each board banks 200 Mastery per rank, 6,000 at rank 30",
         "Your first assembled K-Drive replaces the Bondi, and the last K-Drive you own can never be sold"
       ],
-      "bonuses": [
-        "Roky's Daily Special sells one randomly assembled K-Drive for platinum, worth a look only on a day it rolls a board you lack"
-      ],
+      "bonuses": [],
       "disclosures": []
     }
   ]

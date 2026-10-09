@@ -4,22 +4,81 @@
   "effort": 2,
   "source": "dojo",
   "tradeable": false,
-  "progress": { "have": 0, "need": 1, "unit": "blueprint" },
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "blueprint"
+  },
   "badges": [
-    { "text": "Chem Lab", "tone": "warn" },
-    { "text": "6 Javlok Capacitors", "tone": "info" }
+    {
+      "text": "Chem Lab",
+      "tone": "warn"
+    },
+    {
+      "text": "6 Javlok Capacitors",
+      "tone": "info"
+    }
   ],
   "prices": [
-    { "label": "lab blueprint", "amount": "15,000 cr", "money": false },
-    { "label": "build", "amount": "30,000 cr", "money": false }
+    {
+      "label": "lab blueprint",
+      "amount": "15,000 cr",
+      "money": false
+    },
+    {
+      "label": "build",
+      "amount": "30,000 cr",
+      "money": false
+    }
   ],
   "materials": [
-    { "qty": "5", "label": "Detonite Injector", "note": null },
-    { "qty": "10,000", "label": "Alloy Plate", "note": null },
-    { "qty": "5", "label": "Nitain Extract", "note": null },
-    { "qty": "45,000", "label": "Credits", "note": null }
+    {
+      "qty": "5",
+      "label": "Detonite Injector",
+      "note": null
+    },
+    {
+      "qty": "10,000",
+      "label": "Alloy Plate",
+      "note": null
+    },
+    {
+      "qty": "5",
+      "label": "Nitain Extract",
+      "note": null
+    },
+    {
+      "qty": "45,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
+    {
+      "type": "gate",
+      "place": "MASTERY RANK",
+      "sub": null,
+      "activity": "reach MR 7",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Mastery Rank 7",
+          "note": "needed to equip it",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
     {
       "type": "vendor",
       "place": "CLAN DOJO, CHEM LAB",
@@ -30,13 +89,18 @@
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Credits", "amount": "15,000" }],
+      "spends": [
+        {
+          "currency": "Credits",
+          "amount": "15,000"
+        }
+      ],
       "map": null,
       "rows": [
         {
           "qty": null,
           "label": "Javlok Blueprint",
-          "note": "15,000 cr",
+          "note": "research needs Ignis",
           "alt": null,
           "done": false
         }
@@ -47,8 +111,8 @@
     },
     {
       "type": "farm",
-      "place": "CERES",
-      "sub": null,
+      "place": "NUOVO, CERES",
+      "sub": "Rescue, Grineer Shipyard",
       "activity": "kill Grineer Prosecutors",
       "meta": "6 Capacitors",
       "mode": null,
@@ -67,10 +131,9 @@
         }
       ],
       "conditions": [
-        "Prosecutors only appear where alarms are active. Mobile Defense, Hijack and Rescue are the usual picks; abort and rerun if none spawns.",
-        "Resource and drop chance boosters do not apply to Capacitors."
+        "Prosecutors are likely to spawn after alarms are triggered, and the Lotus warns you when one arrives."
       ],
-      "bonuses": ["Ceres also drops Alloy Plate for the build."],
+      "bonuses": [],
       "disclosures": []
     },
     {
@@ -78,7 +141,7 @@
       "place": "FOUNDRY",
       "sub": null,
       "activity": "build Javlok",
-      "meta": "24h, 30,000 cr",
+      "meta": "24h",
       "mode": null,
       "live": null,
       "skip": null,
@@ -89,12 +152,12 @@
         {
           "qty": null,
           "label": "Javlok",
-          "note": "5 Detonite Injector, 10,000 Alloy Plate, 5 Nitain Extract, 6 Javlok Capacitor",
+          "note": "30,000 cr, 5 Detonite Injector, 10,000 Alloy Plate, 5 Nitain Extract, 6 Javlok Capacitor",
           "alt": null,
           "done": false
         }
       ],
-      "conditions": ["Javlok needs Mastery Rank 7."],
+      "conditions": [],
       "bonuses": [],
       "disclosures": []
     }

@@ -4,38 +4,52 @@
   "effort": 5,
   "source": "repeat",
   "tradeable": false,
-  "progress": { "have": 0, "need": 1, "unit": "weapon" },
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "weapon"
+  },
   "badges": [
-    { "text": "MR 17", "tone": "warn" },
-    { "text": "Batch B rotation", "tone": "warn" }
+    {
+      "text": "MR 17",
+      "tone": "warn"
+    },
+    {
+      "text": "Batch B rotation",
+      "tone": "warn"
+    }
   ],
-  "prices": [{ "label": "Elemental Vice", "amount": "20 p", "money": false }],
-  "materials": [{ "qty": "10", "label": "Live Heartcell", "note": null }],
+  "prices": [],
+  "materials": [
+    {
+      "qty": "10",
+      "label": "Live Heartcell",
+      "note": null
+    }
+  ],
   "groups": [
     {
-      "type": "gate",
-      "place": "STAR CHART",
       "sub": null,
-      "activity": "unlock the Coda system",
-      "meta": "one-time",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
       "spends": [],
       "map": null,
+      "conditions": [
+        "Only one adversary at a time: clear or convert any active Kuva Lich, Sister of Parvos or Coda first."
+      ],
+      "bonuses": [],
+      "disclosures": [],
+      "type": "gate",
+      "place": "MASTERY RANK",
+      "activity": "unlock the Coda system",
       "rows": [
         {
           "qty": null,
           "label": "The Hex",
-          "note": "quest complete; opens Höllvania",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Railjack Intrinsics rank 5",
-          "note": "any one class; Earth Proxima showdown",
+          "note": "every main quest before it done; opens Höllvania",
           "alt": null,
           "done": false
         },
@@ -46,95 +60,62 @@
           "alt": null,
           "done": false
         }
-      ],
-      "conditions": [
-        "Only one adversary at a time: clear or convert any active Kuva Lich, Sister of Parvos, or Coda first.",
-        "MR 17 is checked at the Eleanor purchase, not at Coda spawn: the usual lich MR exemption does not apply here."
-      ],
-      "bonuses": [],
-      "disclosures": []
+      ]
     },
     {
-      "type": "farm",
-      "place": "HÖLLVANIA CENTRAL MALL",
       "sub": null,
-      "activity": "Antivirus Bounty",
-      "meta": "8 Antivirus mods exist",
-      "mode": "Steel Path for standing too",
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "8",
-          "label": "Antivirus mods",
-          "note": "1-in-8 per bounty; tradeable, 3 charges each",
-          "alt": "buy the stragglers, ~10p each",
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Potency mods",
-          "note": "passive Techrot drops; also tradeable",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Four depleted mods of one type transmute into one fresh charged mod of that type.",
-        "The Antivirus Bounty is pinned to the top of the Central Mall board and pays the largest Hex standing of any bounty."
-      ],
-      "bonuses": [
-        "Antivirus and Potency mods drop as public loot off any squadmate's stab, so pubbing tops you up even when your own Coda hasn't spawned."
-      ],
-      "disclosures": []
-    },
-    {
-      "type": "boss",
-      "place": "HÖLLVANIA",
-      "sub": null,
-      "activity": "spawn and disinfect a Coda",
-      "meta": "~3 stabs to 100%",
+      "meta": "tier 7, 7,500 standing plus an Antivirus mod",
       "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
       "spends": [],
       "map": null,
+      "conditions": [
+        "Four spent Antivirus or Potency mods transmute into one fully charged mod of that kind."
+      ],
+      "bonuses": [
+        "Antivirus and Potency mods drop as public loot off any squadmate's stab, so pubbing tops you up even before your own Coda has spawned."
+      ],
+      "disclosures": [],
+      "type": "farm",
+      "place": "HÖLLVANIA CENTRAL MALL",
+      "activity": "Antivirus Bounty",
       "rows": [
         {
-          "qty": null,
-          "label": "spawn via Exterminate, Hell-Scrub or Legacyte Harvest",
-          "note": "kill Techrot for a Mixtape, hack the terminal",
-          "alt": null,
+          "qty": "3",
+          "label": "Antivirus mods",
+          "note": "only 1 of the 8 works on your Coda, so test 3 at once; tradeable, 3 charges each",
+          "alt": "trade for the missing ones",
           "done": false
         },
         {
           "qty": null,
-          "label": "correct Antivirus mercy",
-          "note": "all 3 equipped mods tested at once; no penalty for a wrong guess",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "100% disinfection",
-          "note": "2 Potency mods once the Antivirus is known; missions alone cap at 95%",
+          "label": "Potency mods",
+          "note": "dropped by Techrot in any Höllvania mission; also tradeable",
           "alt": null,
           "done": false
         }
-      ],
+      ]
+    },
+    {
+      "sub": null,
+      "meta": "Mercy stabs fill the Malware Disinfection meter",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
       "conditions": [
         "Duets spawn at 25% per mission, +25% per miss, guaranteed on the 4th.",
         "A Duet that stumbles 3 times unstabbed, or a downed squad, flees the encounter.",
-        "Phases 1 and 3 are hazard-dodging with Transference disabled; phases 2 and 4 are the real fight, and the frontman regenerates until his backup band is dead.",
-        "Bring overguard or invulnerability (Revenant's Mesmer Skin, Nyx's Assimilate, Dante); the Coda's Toxin bypasses shield gating."
+        "Potency mods do nothing unless the correct Antivirus is also equipped.",
+        "Phases 1 and 3 are hazard-dodging with Transference disabled; in phases 2 and 4 the frontman regenerates until his bandmates are dead."
       ],
       "bonuses": [
         "Abort right after a correct-Antivirus stab; the disinfection banks immediately.",
-        "Squadmates who each defeat their own Coda in the same Concert add +1 Heartcell, up to +3, whether they vanquish or convert."
+        "In a squad each Encore drops 1 Live Heartcell, up to 3 with a full squad."
       ],
       "disclosures": [
         {
@@ -142,23 +123,72 @@
           "body": "Duets spawn during bounties too, so one run stacks Hex standing, Antivirus mods and disinfection progress at once."
         },
         {
-          "title": "solo is faster",
-          "body": "A solo Concert is 5-7 minutes; a full squad is 12-20+ because every player's Coda gets its own two-part fight, back to back."
+          "title": "stage hazards",
+          "body": "Three hits from the stage hazards give Stage Fright: you take double damage and the Coda grows stronger. Revenant's Mesmer Skin and Nyx's Absorb make you immune to them."
+        },
+        {
+          "title": "squad Concerts",
+          "body": "Each player's Coda spawns one at a time through an Encore prompt, so the fight repeats for every squadmate."
+        }
+      ],
+      "type": "boss",
+      "place": "HÖLLVANIA",
+      "activity": "spawn and disinfect a Coda",
+      "rows": [
+        {
+          "qty": null,
+          "label": "spawn via Exterminate, Hell-Scrub or Legacyte Harvest",
+          "note": "kill Techrot for a Mixtape, then hack with it",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "find the correct Antivirus",
+          "note": "all 3 equipped mods are tested at once, no penalty for a wrong guess",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "100% disinfection",
+          "note": "a correct stab with 2 Potency mods adds up to 35%; missions alone cap at 95%",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Technocyte Coda Concert",
+          "note": "Railjack skirmish, then the four-phase stage fight; Vanquish it for 10-15 Live Heartcells",
+          "alt": null,
+          "done": false
         }
       ]
     },
     {
-      "type": "vendor",
-      "place": "ELEANOR, HÖLLVANIA CENTRAL MALL",
       "sub": null,
-      "activity": "Browse Merchandise",
       "meta": "Batch B, one copy per 4-day rotation",
       "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Live Heartcell", "amount": "10" }],
+      "spends": [
+        {
+          "currency": "Live Heartcell",
+          "amount": "10"
+        }
+      ],
       "map": null,
+      "conditions": [
+        "Coda Bassocyst is Batch B, alongside Coda Bubonico, Coda Synapse, Coda Tysis, Coda Caustacyst, Coda Hirudo and Coda Pathocyst; Batch A carries no Coda Bassocyst.",
+        "One purchase per weapon per rotation; rotations flip every 4 days at 0:00 UTC.",
+        "An empty weapon slot is required before Eleanor will sell to you."
+      ],
+      "bonuses": [],
+      "disclosures": [],
+      "type": "vendor",
+      "place": "ELEANOR, HÖLLVANIA CENTRAL MALL",
+      "activity": "Browse Merchandise",
       "rows": [
         {
           "qty": "1",
@@ -167,20 +197,10 @@
           "alt": null,
           "done": false
         }
-      ],
-      "conditions": [
-        "Bassocyst is Batch B, alongside Bubonico, Synapse, Tysis, Caustacyst, Hirudo and Pathocyst; Batch A carries no Bassocyst.",
-        "One purchase per weapon per rotation; rotations flip every 4 days at 0:00 UTC.",
-        "An empty weapon slot is required before Eleanor will sell to you."
-      ],
-      "bonuses": ["Any Bassocyst beats no Bassocyst: buy the first roll rather than waiting."],
-      "disclosures": []
+      ]
     },
     {
-      "type": "craft",
-      "place": "ORBITER, MODDING",
       "sub": null,
-      "activity": "optional Valence Fusion toward 60%",
       "meta": "bank copies first",
       "mode": null,
       "live": null,
@@ -188,22 +208,32 @@
       "earns": null,
       "spends": [],
       "map": null,
+      "conditions": [
+        "Fusion takes the higher of the two bonuses × 1.1, capped at 60%.",
+        "Fuse into the copy holding your Forma and Catalyst; the donor's investments, including Elemental Vice, are destroyed.",
+        "Elemental Vice needs the weapon at rank 40 (5 Forma): 50,000 Hex standing at Eleanor's Rank 5, or a Temporal Archimedea or Nightwave drop."
+      ],
+      "bonuses": [],
+      "disclosures": [],
+      "type": "craft",
+      "place": "ORBITER, MODDING",
+      "activity": "optional Valence Fusion toward 60%",
       "rows": [
         {
           "qty": null,
+          "label": "58%+ roll",
+          "note": "rounds up to 60% on its own",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
           "label": "52.8%+ roll",
-          "note": "fuses straight to 60%",
-          "alt": "58%+ already rounds to 60%",
+          "note": "one fusion reaches 60%",
+          "alt": null,
           "done": false
         }
-      ],
-      "conditions": [
-        "Fusion takes the higher of the two bonuses × 1.1, capped at 60%.",
-        "Fuse into the copy holding your Forma and Catalyst; the donor's investments are destroyed.",
-        "Elemental Vice needs the weapon at rank 40 (5 Forma): 50,000 Hex standing at Rank 5, or 20 platinum, or a Temporal Archimedea/Nightwave drop."
-      ],
-      "bonuses": [],
-      "disclosures": []
+      ]
     }
   ]
 }

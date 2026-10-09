@@ -147,7 +147,7 @@
   const details = $derived(suggestion.details);
   const target = $derived(details?.acquisition ?? null);
   const read = $derived(suppliedRead ?? (target ? partsRead(target) : null));
-  const rating = $derived(target ? planRating(target.name) : null);
+  const rating = $derived(target ? (target.rating ?? planRating(target.name)) : null);
   const effort = $derived(suppliedEffort ?? rating?.effort ?? null);
   const badge = $derived(suppliedBadge ?? rating?.badge ?? null);
   const unplanned = $derived(suppliedEffort == null && rating !== null && !rating.planned);

@@ -6,7 +6,11 @@
   "tradeable": false,
   "progress": { "have": 0, "need": 1, "unit": "blueprint" },
   "badges": [
-    { "text": "Vox Solaris Rank 3", "tone": "warn" },
+    {
+      "text": "Vox Solaris Rank 3",
+      "tone": "warn",
+      "rank": { "syndicate": "Vox Solaris", "level": 3 }
+    },
     { "text": "Market blueprint", "tone": "info" }
   ],
   "prices": [
@@ -72,21 +76,24 @@
           "label": "Rank 1",
           "note": "5,000 standing; 1 Vega, 1 Calda, 1 Sola Toroid",
           "alt": null,
-          "done": false
+          "done": false,
+          "rank": { "syndicate": "Vox Solaris", "level": 1 }
         },
         {
           "qty": null,
           "label": "Rank 2",
           "note": "22,000 standing; 1 Gyromag Systems, 1 Vega Toroid",
           "alt": null,
-          "done": false
+          "done": false,
+          "rank": { "syndicate": "Vox Solaris", "level": 2 }
         },
         {
           "qty": null,
           "label": "Rank 3, Hand",
           "note": "44,000 standing; 1 Atmo Systems, 1 Calda Toroid",
           "alt": null,
-          "done": false
+          "done": false,
+          "rank": { "syndicate": "Vox Solaris", "level": 3 }
         }
       ],
       "conditions": [

@@ -174,6 +174,16 @@ export interface PlayerState {
   credits: number | null;
 }
 
+/** All a quest answer reads, cheap enough to build once for a whole sweep. */
+export type QuestState = Pick<PlayerState, "names" | "questsDone">;
+
+export function readQuestState(
+  inventory: RawInventoryData | null,
+  itemDb: Record<string, ItemDbEntry>,
+): QuestState {
+  return { names: buildNameIndex(itemDb ?? {}), questsDone: readCompletedQuests(inventory) };
+}
+
 export function readPlayerState(
   inventory: RawInventoryData | null,
   itemDb: Record<string, ItemDbEntry>,
@@ -235,7 +245,7 @@ function questNames(label: string): string[] {
   return [label, bare, bare.replace(LEADING_THE, "").trim(), `The ${bare}`];
 }
 
-function questPartDone(state: PlayerState, label: string): boolean | null {
+function questPartDone(state: QuestState, label: string): boolean | null {
   for (const name of questNames(label)) {
     const matches = state.names.get(name.trim().toLowerCase());
     if (!matches) continue;
@@ -248,7 +258,7 @@ function questPartDone(state: PlayerState, label: string): boolean | null {
 
 /** Whether every quest a gate row names is finished, or null when the label names
  *  no quest at all. Null is the only answer that leaves the row to the player. */
-export function questDoneForLabel(state: PlayerState, label: string): boolean | null {
+export function questDoneForLabel(state: QuestState, label: string): boolean | null {
   let answer: boolean | null = null;
   for (const part of label.replace(QUEST_CHAIN_PREFIX, "").split(QUEST_CHAIN_SEPARATOR)) {
     const done = questPartDone(state, part.trim());

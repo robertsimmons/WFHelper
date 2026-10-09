@@ -2,7 +2,14 @@ import { groupFacts, planEras, standingOwners } from "./facts.js";
 import { formatGap, resolveCycleLive } from "./live.js";
 import { materialGroups } from "./materials.js";
 import { resourceEntry, type ResourceLookup } from "./resources.js";
-import { altSpends, altText, type AuthoredPlan, type PlanGroup, type PlanRow } from "./schema.js";
+import {
+  altSpends,
+  altText,
+  type AuthoredPlan,
+  type PlanAfterQuest,
+  type PlanGroup,
+  type PlanRow,
+} from "./schema.js";
 import {
   formatQuantity,
   itemsForLabel,
@@ -13,7 +20,9 @@ import {
   readPlayerState,
   type PlayerState,
 } from "./state.js";
-import type { ItemDbEntry } from "../../../../types/inventory.js";
+import { afterQuestRoute } from "./data.js";
+import { rankMet } from "./ranks.js";
+import type { ItemDbEntry, RawInventoryData } from "../../../../types/inventory.js";
 import { foundryBuilds, partDemand, startingBill } from "../parts.js";
 import type { PartPlan, PartState } from "../types.js";
 import type {
@@ -47,6 +56,15 @@ function withRefTips(group: PlanGroup, lookup: ResourceLookup): PlanGroup {
   return { ...group, bonuses: [...new Set([...group.bonuses, ...tips])] };
 }
 
+const QUEST_SPENT = "Quest done; it rewards once";
+
+/** A build a quest already paid out is not where the open route ends up. */
+function isBuildStep(entry: PlanEntry): boolean {
+  return (
+    entry.group.skip === null && (entry.group.type === "craft" || entry.group.type === "foundry")
+  );
+}
+
 /** Stored ticks are keyed by row id, so an authored row keeps the position it
  *  has in the file, and a material row, which moves whenever the store does, is
  *  keyed by its label. */
@@ -54,12 +72,27 @@ function planEntries(
   plan: AuthoredPlan,
   lookup: ResourceLookup,
   quantities: readonly (number | null)[],
+  state: PlayerState,
+  afterQuest: PlanAfterQuest | null,
 ): PlanEntry[] {
-  const authored: PlanEntry[] = plan.groups.map((group, groupIndex) => ({
-    group: withRefTips(group, lookup),
+  const routes: PlanEntry[] = plan.groups.map((group, groupIndex) => ({
+    group: withRefTips(
+      group.quest && questDoneForLabel(state, group.quest) === true
+        ? { ...group, skip: { reason: QUEST_SPENT } }
+        : group,
+      lookup,
+    ),
     id: String(groupIndex),
     rowId: (rowIndex) => `${groupIndex}:${rowIndex}`,
   }));
+  const after: PlanEntry[] = (afterQuest?.groups ?? []).map((group, groupIndex) => ({
+    group: withRefTips(group, lookup),
+    id: `q${groupIndex}`,
+    rowId: (rowIndex) => `q${groupIndex}:${rowIndex}`,
+  }));
+  const step = routes.findIndex(isBuildStep);
+  const before = step === -1 ? routes.length : step;
+  const authored = [...routes.slice(0, before), ...after, ...routes.slice(before)];
   // A material the built parts have already used up is no step left to take.
   const needs = (plan.materials ?? []).flatMap((material, index) => {
     const qty = quantities[index] ?? parseQuantity(material.qty);
@@ -73,9 +106,7 @@ function planEntries(
     id: `m${groupIndex}`,
     rowId: (rowIndex) => `m:${group.rows[rowIndex].label.trim().toLowerCase()}`,
   }));
-  const build = authored.findIndex(
-    (entry) => entry.group.type === "craft" || entry.group.type === "foundry",
-  );
+  const build = authored.findIndex(isBuildStep);
   const at = build === -1 ? authored.length : build;
   return [...authored.slice(0, at), ...materials, ...authored.slice(at)];
 }
@@ -133,15 +164,17 @@ function resolveRow(
   lookup: ResourceLookup,
   answers: { done: Set<string>; cleared: Set<string>; altsTaken: Set<string> },
   part: RowPart | null,
+  inventory: RawInventoryData | null,
 ): RowResult {
   // A part row is sized for every build the card counts, and a copy of the part
   // still in the foundry is one nobody needs to farm again.
   const required = part?.required ?? parseQuantity(row.qty) * (part?.copies ?? 1);
-  // A quest keychain is not an owned item, so the ownership map answers 0 for a
-  // label the quest index can answer properly.
-  const quest = questDoneForLabel(state, row.label);
+  // A quest keychain or a syndicate rank is not an owned item, so the ownership
+  // map answers 0 for a label the quest index or the rank table can answer.
+  const answered =
+    (row.rank ? rankMet(inventory, row.rank) : null) ?? questDoneForLabel(state, row.label);
   const inventoryOwned =
-    quest !== null
+    answered !== null
       ? null
       : lookup(row.label)?.name === CREDITS
         ? state.credits
@@ -155,8 +188,8 @@ function resolveRow(
   // both directions and the authored flag is only where it starts.
   const ticked = answers.done.has(id);
   const cleared = answers.cleared.has(id);
-  const manual = quest === null && !tracked;
-  const done = quest ?? (tracked ? remaining === 0 : ticked || (row.done && !cleared));
+  const manual = answered === null && !tracked;
+  const done = answered ?? (tracked ? remaining === 0 : ticked || (row.done && !cleared));
   const source = manual ? (ticked || cleared ? "manual" : "authored") : "inventory";
 
   const spends: ResolvedSpend[] = row.alt
@@ -267,16 +300,15 @@ export function outstandingOf(
 }
 
 /** The card's part plan and the item it plans, which the plan page sizes to. */
-export interface CardPlan {
+interface CardPlan {
   uniqueName: string;
   parts: PartPlan;
 }
 
-/** Each authored material's figure as the card counts it, or null to keep the
- *  authored one. A recipe material takes the card's own figure, which already
- *  leaves out what built parts consumed; Credits keep the authored purchases and
- *  drop the foundry bill the card no longer owes; anything else the recipe never
- *  asks for is the authored figure once per build. */
+/** Each authored material's figure as the card counts it, or null to keep the authored
+ *  one. A recipe material takes the card's figure, net of what built parts consumed;
+ *  Credits keep authored purchases and drop the foundry bill no longer owed; anything
+ *  the recipe never asks for is the authored figure once per build. */
 function materialQuantities(
   plan: AuthoredPlan,
   card: CardPlan | null,
@@ -328,7 +360,8 @@ export function resolvePlan(
   const parts = card?.parts ?? null;
   const copies = parts?.copies ?? 1;
   const quantities = materialQuantities(plan, card, state, context.itemDb, lookup);
-  const entries = planEntries(plan, lookup, quantities);
+  const afterQuest = afterQuestRoute(plan, state);
+  const entries = planEntries(plan, lookup, quantities, state, afterQuest);
   const planGroups = entries.map((entry) => entry.group);
   let demand: Map<string, number> | null = null;
   let building: Map<string, number> | null = null;
@@ -379,6 +412,7 @@ export function resolvePlan(
         lookup,
         answers,
         part,
+        context.inventory,
       );
       rows.push(result.row);
       isPart.push(part !== null);
@@ -391,7 +425,7 @@ export function resolvePlan(
 
   const earned = new Map<string, number>();
   const spent = new Map<string, number>();
-  // An alias such as Höllars books under its target, so the ledger has one line.
+  // An alias such as Hollars books under its target, so the ledger has one line.
   const ledgerName = (currency: string): string => lookup(currency)?.name ?? currency;
   const add = (table: Map<string, number>, currency: string, value: number): void => {
     const name = ledgerName(currency);
@@ -555,6 +589,7 @@ export function resolvePlan(
           resolved: false,
         },
     badges: plan.badges,
+    afterQuest: afterQuest ? { effort: afterQuest.effort, badges: afterQuest.badges } : null,
     prices: plan.prices,
     groups,
     ledger,

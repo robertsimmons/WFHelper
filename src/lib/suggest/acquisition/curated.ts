@@ -7,6 +7,8 @@ export interface CuratedSource {
   /** Which half of the build this source pays out. */
   parts: "main" | "components" | "both";
   where: string;
+  /** The quest this row only pays out through, such as the key Baro sells. */
+  quest?: string;
 }
 
 /** Everything about a nemesis weapon the app cannot derive from the item DB. */
@@ -51,7 +53,9 @@ function readSources(value: unknown): CuratedSource[] {
     const raw = row as Record<string, unknown>;
     const kind = typeof raw.kind === "string" ? raw.kind : "";
     const where = typeof raw.where === "string" ? raw.where : "";
-    if (kind && where) out.push({ kind, parts: readParts(raw.parts), where });
+    if (!kind || !where) continue;
+    const quest = typeof raw.quest === "string" && raw.quest !== "" ? raw.quest : null;
+    out.push({ kind, parts: readParts(raw.parts), where, ...(quest ? { quest } : {}) });
   }
   return out;
 }

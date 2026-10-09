@@ -1,6 +1,7 @@
 import type { ItemDbEntry, MasteryData, RawInventoryData } from "../../../types/inventory.js";
 import type { RelicDatabase } from "../../../types/relics.js";
 import type { MessageKey } from "../../i18n.js";
+import type { PlanRating } from "./plan/data.js";
 import type { NemesisProgenitor } from "./progenitors.js";
 
 export type AcquisitionKind =
@@ -185,6 +186,8 @@ export interface AcquisitionPath {
 }
 
 export interface AcquisitionTarget {
+  /** The plan's rating for the route the player still has to walk. */
+  rating?: PlanRating | undefined;
   uniqueName: string;
   name: string;
   displayName?: string | undefined;

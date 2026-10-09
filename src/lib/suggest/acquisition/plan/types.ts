@@ -153,6 +153,9 @@ export interface ResolvedPlan {
   tradeable: boolean | string | null;
   progress: ResolvedProgress;
   badges: PlanBadge[];
+  /** The rating of the route left once the plan's quest has paid out; null
+   *  while the quest is still to do or its state is unknown. */
+  afterQuest: { effort: number; badges: PlanBadge[] } | null;
   prices: PlanPrice[];
   groups: ResolvedGroup[];
   ledger: ResolvedLedgerEntry[];

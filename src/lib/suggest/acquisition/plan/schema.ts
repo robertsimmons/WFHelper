@@ -48,9 +48,17 @@ interface PlanProgress {
   unit: string;
 }
 
+/** A syndicate rank the player needs; `syndicate` is the rank table's name. */
+export interface PlanRank {
+  syndicate: string;
+  level: number;
+}
+
 export interface PlanBadge {
   text: string;
   tone: PlanBadgeTone;
+  /** A badge naming a rank stands down once the player holds it. */
+  rank?: PlanRank | null;
 }
 
 export interface PlanPrice {
@@ -97,6 +105,7 @@ export interface PlanRow {
   alt: PlanAlt | null;
   /** Mock in the authored file: resolution recomputes it against inventory. */
   done: boolean;
+  rank?: PlanRank | null;
 }
 
 export interface PlanGroup {
@@ -118,10 +127,19 @@ export interface PlanGroup {
   /** A resource store entry whose tips this group carries, such as the standing
    *  currency a Simaris group earns. */
   ref?: string | null;
+  /** The quest this group's one-time reward comes from. */
+  quest?: string | null;
+}
+
+/** The route once the plan's quest is done and its reward is spent. */
+export interface PlanAfterQuest {
+  effort: number;
+  badges: PlanBadge[];
+  groups: PlanGroup[];
 }
 
 /** A material the plan needs, placed by the resource store rather than by hand. */
-export interface PlanMaterial {
+interface PlanMaterial {
   /** Written like a row quantity: "1,200". */
   qty: string;
   label: string;
@@ -140,6 +158,7 @@ export interface AuthoredPlan {
   prices: PlanPrice[];
   groups: PlanGroup[];
   materials?: PlanMaterial[];
+  afterQuest?: PlanAfterQuest | null;
 }
 
 export function altText(alt: PlanAlt): string {

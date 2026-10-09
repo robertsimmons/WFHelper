@@ -5,6 +5,7 @@ import { relicCost } from "./relics.js";
 import { UNKNOWN_EFFORT, type Ratings } from "./ratings.js";
 import type { RawInventoryData } from "../../../types/inventory.js";
 import type { RelicDatabase } from "../../../types/relics.js";
+import type { PlanAfterQuest, PlanGroupType } from "./plan/schema.js";
 import type { QuestDone } from "./quests.js";
 import type {
   AcquisitionPath,
@@ -95,8 +96,12 @@ export function headlinePath(paths: readonly AcquisitionPath[]): AcquisitionPath
   return paths.find((path) => !isBlueprintPrice(path)) ?? null;
 }
 
+/** The plan rates the route left once its quest has paid out, so that one leads. */
+const AFTER_QUEST_ID = "afterQuest";
+
 /** The Circuit's frame rotation is an alternative, never the farm while one exists. */
 function headlineRank(path: AcquisitionPath): number {
+  if (path.id === AFTER_QUEST_ID) return -1;
   if (isBlueprintPrice(path)) return 2;
   return path.kind === "circuit" && path.covers.length > 0 ? 1 : 0;
 }
@@ -188,6 +193,39 @@ interface PathInputs {
   incarnon?: IncarnonInfo | null;
   /** Absent when the payload carries no quest progress. */
   questDone?: QuestDone | null;
+  /** The plan's route once its quest has paid out, rated by the plan. */
+  afterQuest?: PlanAfterQuest | null;
+}
+
+const ROUTE_KINDS: Partial<Record<PlanGroupType, PathKind>> = {
+  vendor: "vendor",
+  farm: "mission",
+  bounty: "bounty",
+  boss: "boss",
+  relics: "relics",
+  fissure: "relics",
+};
+
+/** Plan effort is 1-10; a path's is 0-1. */
+const PLAN_EFFORT_SCALE = 10;
+
+function afterQuestPath(
+  route: PlanAfterQuest,
+  missing: readonly PartState[],
+): AcquisitionPath | null {
+  const lead = route.groups.find((group) => ROUTE_KINDS[group.type]);
+  const kind = lead ? ROUTE_KINDS[lead.type] : undefined;
+  if (!lead || !kind) return null;
+  const where = lead.activity ? `${lead.place} - ${lead.activity}` : lead.place;
+  return {
+    id: AFTER_QUEST_ID,
+    kind,
+    covers: missing.map((part) => part.name),
+    complete: true,
+    steps: [{ kind, where, parts: missing.map((part) => part.name) }],
+    cost: { credits: null, plat: null, relics: null },
+    effort: route.effort / PLAN_EFFORT_SCALE,
+  };
 }
 
 function sourcesFor(input: PathInputs): CuratedSource[] {
@@ -206,7 +244,9 @@ function curatedPaths(input: PathInputs, missing: readonly PartState[]): Acquisi
     if (kind === "nemesis" && input.nemesis) continue;
     // A finished quest never pays its reward out again, so a part still missing
     // after it has to come from somewhere else.
-    if (kind === "quest" && input.questDone?.(source.where)) continue;
+    if ((kind === "quest" || source.quest) && input.questDone?.(source.quest ?? source.where)) {
+      continue;
+    }
     const covers = coveredBy(kind, source, missing);
     if (covers.length === 0) continue;
     const credits = kind === "market" ? creditsFromWhere(source.where) : null;
@@ -273,6 +313,8 @@ export function buildPaths(input: PathInputs): AcquisitionPath[] {
   }
   const difficulty = input.ratings.effort(input.name);
   const paths = curatedPaths(input, missing);
+  const after = input.afterQuest ? afterQuestPath(input.afterQuest, missing) : null;
+  if (after) paths.push(after);
 
   if (input.nemesis) paths.push(nemesisPath(input, input.nemesis, missing));
   if (input.incarnon && !input.incarnon.owned) paths.push(adapterPath(input, input.incarnon));

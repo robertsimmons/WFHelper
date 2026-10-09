@@ -19,6 +19,8 @@ import {
   type GearEntry,
 } from "./parts.js";
 import { buildPaths, headlinePath } from "./paths.js";
+import { afterQuestRoute, authoredPlan, planQuestDone, planRatingFor } from "./plan/data.js";
+import { readQuestState } from "./plan/state.js";
 import { createQuestDone } from "./quests.js";
 import { createRatings } from "./ratings.js";
 import { baseWeaponName, isBundledWeapon, listWeapons } from "./weapons.js";
@@ -121,6 +123,7 @@ export function resolveAcquisition(ctx: AcquisitionContext): AcquisitionTarget[]
   const isMastered = createMasteryLookup(ctx.mastery);
   const fitted = fittedModularParts(ctx.inventory);
   const questDone = createQuestDone(ctx.inventory, itemDb);
+  const player = { inventory: ctx.inventory, quests: readQuestState(ctx.inventory, itemDb) };
   const isFinished = (uniqueName: string, name: string): boolean =>
     ownsItem(uniqueName, ownership) || fitted.has(uniqueName) || isMastered(uniqueName, name);
   const unreachable = (uniqueName: string, name: string): boolean =>
@@ -259,6 +262,10 @@ export function resolveAcquisition(ctx: AcquisitionContext): AcquisitionTarget[]
   const targets = wanted.map((item): AcquisitionTarget => {
     const parts = (item.build ? plans.get(item.uniqueName) : null) ?? EMPTY_PLAN;
     const isPrime = isPrimeEntry(item.name, item.entry);
+    // A plan that names its quest answers for the curated rows too, so the card,
+    // its sort and its plan page agree on whether the quest route is gone.
+    const plan = authoredPlan(item.name);
+    const planDone = plan ? planQuestDone(plan, player.quests) : null;
     const paths = buildPaths({
       name: item.name,
       isPrime,
@@ -272,7 +279,8 @@ export function resolveAcquisition(ctx: AcquisitionContext): AcquisitionTarget[]
       extraSources: item.extraSources,
       nemesis: item.nemesis,
       incarnon: item.incarnon,
-      questDone,
+      questDone: planDone === null ? questDone : () => planDone,
+      afterQuest: plan ? afterQuestRoute(plan, player.quests) : null,
     });
     return {
       uniqueName: item.uniqueName,
@@ -292,6 +300,7 @@ export function resolveAcquisition(ctx: AcquisitionContext): AcquisitionTarget[]
       tier: ratings.tier(item.name),
       wiki: item.entry.wikiaUrl ?? null,
       effort: headlinePath(paths)?.effort ?? NO_PATH_EFFORT,
+      rating: planRatingFor(item.name, player),
     };
   });
 

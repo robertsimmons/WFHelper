@@ -1,3 +1,4 @@
+import { rankSyndicate, topRank } from "./ranks.js";
 import { resourceEntry, type ResourceLookup } from "./resources.js";
 import { PLAN_BADGE_TONES, PLAN_GROUP_TYPES, PLAN_LIVE_STATES, PLAN_SOURCES } from "./schema.js";
 
@@ -70,6 +71,87 @@ function checkRow(problems: Problems, at: string, value: unknown): void {
   }
   checkAlt(problems, `${at}.alt`, value.alt);
   if (typeof value.done !== "boolean") problems.push(`${at}.done must be a boolean`);
+  checkRank(problems, `${at}.rank`, value.rank);
+}
+
+function checkRank(problems: Problems, at: string, value: unknown): void {
+  if (value === undefined || value === null) return;
+  if (!isRecord(value)) {
+    problems.push(`${at} must be an object or null`);
+    return;
+  }
+  const meta = typeof value.syndicate === "string" ? rankSyndicate(value.syndicate) : null;
+  if (!meta) {
+    problems.push(`${at}.syndicate is not a syndicate in the rank table`);
+    return;
+  }
+  const level = value.level;
+  if (typeof level !== "number" || !Number.isInteger(level) || level < 1 || level > topRank(meta)) {
+    problems.push(`${at}.level must be a whole number 1-${topRank(meta)}`);
+  }
+}
+
+function checkBadges(problems: Problems, at: string, value: unknown): void {
+  if (!Array.isArray(value)) {
+    problems.push(`${at} must be an array`);
+    return;
+  }
+  value.forEach((badge, index) => {
+    if (!isRecord(badge)) {
+      problems.push(`${at}[${index}] must be an object`);
+      return;
+    }
+    checkString(problems, `${at}[${index}].text`, badge.text);
+    if (typeof badge.tone !== "string" || !BADGE_TONES.has(badge.tone)) {
+      problems.push(`${at}[${index}].tone is not a badge tone`);
+    }
+    checkRank(problems, `${at}[${index}].rank`, badge.rank);
+  });
+}
+
+function checkEffort(problems: Problems, at: string, value: unknown): void {
+  if (typeof value !== "number" || !Number.isInteger(value)) {
+    problems.push(`${at} must be a whole number`);
+  } else if (value < 1 || value > 10) {
+    problems.push(`${at} must be 1-10`);
+  }
+}
+
+/** Group types a card can name as the route it leads with. */
+const ROUTE_GROUP_TYPES = new Set(["farm", "bounty", "boss", "vendor", "relics", "fissure"]);
+
+function checkAfterQuest(
+  problems: Problems,
+  value: Record<string, unknown>,
+  itemName: string,
+  lookup: ResourceLookup,
+): void {
+  const after = value.afterQuest;
+  if (after === undefined || after === null) return;
+  if (!isRecord(after)) {
+    problems.push("afterQuest must be an object or null");
+    return;
+  }
+  const groups = Array.isArray(value.groups) ? value.groups : [];
+  if (!groups.some((group) => isRecord(group) && typeof group.quest === "string")) {
+    problems.push("afterQuest needs a group with a quest");
+  }
+  checkEffort(problems, "afterQuest.effort", after.effort);
+  checkBadges(problems, "afterQuest.badges", after.badges);
+  if (!Array.isArray(after.groups) || after.groups.length === 0) {
+    problems.push("afterQuest.groups must be a non-empty array");
+    return;
+  }
+  after.groups.forEach((group, index) => {
+    const at = `afterQuest.groups[${index}]`;
+    checkGroup(problems, at, group, itemName, lookup);
+    if (isRecord(group) && group.quest !== undefined && group.quest !== null) {
+      problems.push(`${at}.quest must be absent: the quest is already done`);
+    }
+  });
+  if (!after.groups.some((group) => isRecord(group) && ROUTE_GROUP_TYPES.has(String(group.type)))) {
+    problems.push("afterQuest.groups needs a farm, bounty, boss, vendor, relics or fissure group");
+  }
 }
 
 function checkDisclosure(problems: Problems, at: string, value: unknown): void {
@@ -224,6 +306,7 @@ function checkGroup(
   checkStringList(problems, `${at}.bonuses`, value.bonuses);
   if (!Array.isArray(value.disclosures)) problems.push(`${at}.disclosures must be an array`);
   else value.disclosures.forEach((d, i) => checkDisclosure(problems, `${at}.disclosures[${i}]`, d));
+  if (value.quest !== undefined) checkNullableString(problems, `${at}.quest`, value.quest);
   checkStoreRefs(problems, at, value, itemName, lookup);
 }
 
@@ -238,11 +321,7 @@ export function validatePlan(value: unknown, lookup: ResourceLookup = resourceEn
   if (typeof value.source !== "string" || !SOURCES.has(value.source)) {
     problems.push("source is not a plan source");
   }
-  if (typeof value.effort !== "number" || !Number.isInteger(value.effort)) {
-    problems.push("effort must be a whole number");
-  } else if (value.effort < 1 || value.effort > 10) {
-    problems.push("effort must be 1-10");
-  }
+  checkEffort(problems, "effort", value.effort);
   if (
     value.tradeable !== null &&
     typeof value.tradeable !== "boolean" &&
@@ -259,20 +338,7 @@ export function validatePlan(value: unknown, lookup: ResourceLookup = resourceEn
     checkString(problems, "progress.unit", value.progress.unit);
   }
 
-  if (!Array.isArray(value.badges)) {
-    problems.push("badges must be an array");
-  } else {
-    value.badges.forEach((badge, index) => {
-      if (!isRecord(badge)) {
-        problems.push(`badges[${index}] must be an object`);
-        return;
-      }
-      checkString(problems, `badges[${index}].text`, badge.text);
-      if (typeof badge.tone !== "string" || !BADGE_TONES.has(badge.tone)) {
-        problems.push(`badges[${index}].tone is not a badge tone`);
-      }
-    });
-  }
+  checkBadges(problems, "badges", value.badges);
 
   if (!Array.isArray(value.prices)) {
     problems.push("prices must be an array");
@@ -306,5 +372,6 @@ export function validatePlan(value: unknown, lookup: ResourceLookup = resourceEn
       );
   }
 
+  checkAfterQuest(problems, value, typeof value.name === "string" ? value.name : "", lookup);
   return problems;
 }

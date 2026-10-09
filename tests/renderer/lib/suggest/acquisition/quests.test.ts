@@ -45,17 +45,24 @@ function resolve(name: string, playerInventory: RawInventoryData | null): Acquis
 }
 
 describe("a finished quest as a route", () => {
-  it("hands the headline to Baro once Sands of Inaros is done", () => {
+  it("hands the headline to the plan's Simaris route once Sands of Inaros is done", () => {
     const open = resolve("Inaros", withQuests(inventory(), []));
     expect(headlinePath(open.paths)?.kind).toBe("quest");
+    expect(open.paths.some((path) => /^Baro Ki'Teer/.test(path.steps[0]?.where ?? ""))).toBe(true);
+    expect(open.rating?.effort).toBe(3);
 
     const done = resolve("Inaros", withQuests(inventory(), [INAROS_QUEST]));
     expect(done.paths.map((path) => path.kind)).not.toContain("quest");
+    // A second quest key pays nothing, so Baro's stock is no route either.
+    expect(done.paths.some((path) => /^Baro Ki'Teer/.test(path.steps[0]?.where ?? ""))).toBe(false);
     const headline = headlinePath(done.paths);
     expect(headline?.kind).toBe("vendor");
-    expect(headline?.steps[0]?.where).toMatch(/^Baro Ki'Teer/);
+    expect(headline?.steps[0]?.where).toMatch(/^CEPHALON SIMARIS/);
     expect(done.effort).toBe(headline?.effort);
     expect(done.effort).toBeGreaterThan(open.effort);
+    expect(done.rating?.effort).toBe(6);
+    expect(done.effort).toBeCloseTo((done.rating?.effort ?? 0) / 10);
+    expect(done.rating?.badge?.text).toMatch(/Simaris/);
   });
 
   it("falls to Simaris standing for a quest blueprint already spent", () => {

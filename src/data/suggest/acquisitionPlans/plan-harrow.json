@@ -16,6 +16,25 @@
       "place": "QUESTS",
       "sub": null,
       "activity": "The War Within, then Chains of Harrow",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "The War Within", "note": "required", "alt": null, "done": false }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "CETUS",
+      "sub": "Onkko",
+      "activity": "Chains of Harrow quest",
       "meta": "solo-only quest",
       "mode": null,
       "live": null,
@@ -24,7 +43,6 @@
       "spends": [],
       "map": null,
       "rows": [
-        { "qty": null, "label": "The War Within", "note": "required", "alt": null, "done": false },
         {
           "qty": null,
           "label": "Harrow Blueprint",
@@ -33,12 +51,10 @@
           "done": false
         }
       ],
-      "conditions": [
-        "After The War Within, speak to Onkko in Cetus to begin Chains of Harrow.",
-        "Cephalon Simaris sells a repeatable main blueprint for 50,000 standing, but the quest gives the first one."
-      ],
+      "conditions": ["After The War Within, speak to Onkko in Cetus to begin Chains of Harrow."],
       "bonuses": [],
-      "disclosures": []
+      "disclosures": [],
+      "quest": "Chains of Harrow"
     },
     {
       "type": "farm",
@@ -210,5 +226,65 @@
       "bonuses": ["The three component builds run in parallel."],
       "disclosures": []
     }
-  ]
+  ],
+  "afterQuest": {
+    "effort": 8,
+    "badges": [
+      { "text": "Defection grind", "tone": "warn" },
+      { "text": "Simaris 50,000 for the main", "tone": "info" }
+    ],
+    "groups": [
+      {
+        "type": "currency",
+        "place": "CEPHALON SIMARIS",
+        "sub": null,
+        "activity": "scan targets with the Synthesis Scanner",
+        "meta": "50,000 Standing, ~3 capped days",
+        "mode": null,
+        "live": null,
+        "skip": null,
+        "earns": { "currency": "Cephalon Simaris Standing", "amount": "50,000" },
+        "spends": [],
+        "map": null,
+        "rows": [
+          {
+            "qty": "50,000",
+            "label": "Simaris Standing",
+            "note": "daily cap 16,000 + 500 per Mastery Rank",
+            "alt": null,
+            "done": false
+          }
+        ],
+        "conditions": [],
+        "bonuses": [],
+        "disclosures": [],
+        "ref": "Cephalon Simaris Standing"
+      },
+      {
+        "type": "vendor",
+        "place": "CEPHALON SIMARIS",
+        "sub": null,
+        "activity": "buy the main blueprint",
+        "meta": "50,000 Standing, repeatable",
+        "mode": null,
+        "live": null,
+        "skip": null,
+        "earns": null,
+        "spends": [{ "currency": "Cephalon Simaris Standing", "amount": "50,000" }],
+        "map": null,
+        "rows": [
+          {
+            "qty": null,
+            "label": "Harrow Blueprint",
+            "note": "50,000 Standing",
+            "alt": "Circuit reward tier 10",
+            "done": false
+          }
+        ],
+        "conditions": [],
+        "bonuses": [],
+        "disclosures": []
+      }
+    ]
+  }
 }

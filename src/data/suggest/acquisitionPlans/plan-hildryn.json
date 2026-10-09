@@ -6,24 +6,50 @@
   "tradeable": false,
   "progress": { "have": 0, "need": 4, "unit": "parts" },
   "badges": [
-    { "text": "Thermia event", "tone": "warn" },
-    { "text": "slow boss", "tone": "warn" }
+    { "text": "Diluted Thermia", "tone": "warn" },
+    {
+      "text": "Vox Solaris Agent",
+      "tone": "warn",
+      "rank": { "syndicate": "Vox Solaris", "level": 2 }
+    }
   ],
-  "prices": [
-    { "label": "blueprint", "amount": "5,000 Vox Solaris standing", "money": false },
-    { "label": "built", "amount": "325 p", "money": false }
+  "prices": [{ "label": "blueprint", "amount": "5,000 Vox Solaris Standing", "money": false }],
+  "routes": [
+    {
+      "name": "Exploiter Orb, Little Duck blueprint",
+      "cost": "6 Diluted Thermia for the Toroids, 5,000 Vox Solaris Standing for the main blueprint; Exploiter drops the part blueprints, Systems at 22.56%",
+      "effort": 9,
+      "role": "chosen"
+    },
+    {
+      "name": "The Circuit, week 11",
+      "cost": "tiers 2, 5, 8 and 10 give every blueprint; the six Lazulite Toroids still come from Exploiter",
+      "effort": 9,
+      "role": null
+    }
   ],
   "materials": [
-    { "qty": "6", "label": "Diluted Thermia", "note": null },
-    { "qty": "6", "label": "Lazulite Toroid", "note": null }
+    { "qty": "6", "label": "Diluted Thermia", "note": "one per Exploiter fight" },
+    { "qty": "6", "label": "Lazulite Toroid", "note": "2 per part" },
+    { "qty": "2", "label": "Nitain Extract", "note": "Chassis" },
+    { "qty": "90", "label": "Thermal Sludge", "note": "Chassis" },
+    { "qty": "2,300", "label": "Rubedo", "note": "Chassis" },
+    { "qty": "1", "label": "Argon Crystal", "note": "Neuroptics" },
+    { "qty": "85", "label": "Mytocardia Spore", "note": "Neuroptics" },
+    { "qty": "1,600", "label": "Circuits", "note": "Neuroptics" },
+    { "qty": "2", "label": "Tellurium", "note": "Systems" },
+    { "qty": "95", "label": "Gorgaricus Spore", "note": "Systems" },
+    { "qty": "1,500", "label": "Plastids", "note": "Systems" },
+    { "qty": "3", "label": "Orokin Cell", "note": "Hildryn" },
+    { "qty": "70,000", "label": "Credits", "note": null }
   ],
   "groups": [
     {
       "type": "gate",
       "place": "FORTUNA, VENUS",
       "sub": "Vox Solaris / Little Duck",
-      "activity": "reach Agent, then buy the main blueprint",
-      "meta": "Rank 2; 5,000 standing",
+      "activity": "reach Agent",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -34,25 +60,65 @@
         {
           "qty": null,
           "label": "Vox Solaris Rank 2: Agent",
-          "note": "1 Gyromag System + 1 Vega Toroid",
+          "note": "rank up with 1 Gyromag Systems and 1 Vega Toroid",
           "alt": null,
-          "done": false
-        },
+          "done": false,
+          "rank": { "syndicate": "Vox Solaris", "level": 2 }
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "currency",
+      "place": "FORTUNA, VENUS",
+      "sub": "Vox Solaris",
+      "activity": "earn standing for the main blueprint",
+      "meta": "5,000 standing",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "Vox Solaris Standing", "amount": "5,000" },
+      "spends": [],
+      "map": "fortuna",
+      "rows": [
         {
-          "qty": null,
-          "label": "Hildryn Blueprint",
-          "note": "Little Duck, 5,000 standing",
+          "qty": "5,000",
+          "label": "Vox Solaris Standing",
+          "note": "a Lazulite Toroid redeems for 12,000",
           "alt": null,
           "done": false
         }
       ],
-      "conditions": [
-        "The old Rank 5 Solaris United / Profit-Taker prerequisite is gone. Rank 2 Vox Solaris is reachable without it.",
-        "Lazulite Toroids redeem for 12,000 Vox Solaris standing each, so the Exploiter farm pays the standing requirement."
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": [],
+      "ref": "Vox Solaris Standing"
+    },
+    {
+      "type": "vendor",
+      "place": "FORTUNA, VENUS",
+      "sub": "Little Duck",
+      "activity": "buy the main blueprint",
+      "meta": "5,000 Vox Solaris Standing",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Vox Solaris Standing", "amount": "5,000" }],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Hildryn Blueprint",
+          "note": null,
+          "alt": "or Circuit week 11, tier 10",
+          "done": false
+        }
       ],
-      "bonuses": [
-        "The Eudico heist bounty is optional matchmaking convenience, not a Hildryn gate."
-      ],
+      "conditions": [],
+      "bonuses": [],
       "disclosures": []
     },
     {
@@ -60,53 +126,51 @@
       "place": "ORB VALLIS, VENUS",
       "sub": "Deck 12, northeast of Harindi Crater",
       "activity": "Exploiter Orb",
-      "meta": "10-16 min per clear; Systems is 22.56%",
-      "mode": "solo viable; premade smoother",
+      "meta": "38.72% Neuroptics and Chassis, 22.56% Systems",
+      "mode": null,
       "live": null,
       "skip": null,
       "earns": { "currency": "Lazulite Toroid", "amount": "6" },
       "spends": [{ "currency": "Diluted Thermia", "amount": "6" }],
-      "map": "deck-12",
+      "map": "orb-vallis",
       "rows": [
         {
           "qty": null,
           "label": "Hildryn Neuroptics Blueprint",
           "note": "38.72%",
-          "alt": "Circuit, when she is in rotation",
+          "alt": "or Circuit week 11, tier 2",
           "done": false
         },
         {
           "qty": null,
           "label": "Hildryn Chassis Blueprint",
           "note": "38.72%",
-          "alt": "Circuit, when she is in rotation",
+          "alt": "or Circuit week 11, tier 5",
           "done": false
         },
         {
           "qty": null,
           "label": "Hildryn Systems Blueprint",
           "note": "22.56%; bottleneck",
-          "alt": "Circuit, when she is in rotation",
+          "alt": "or Circuit week 11, tier 8",
           "done": false
         }
       ],
       "conditions": [
-        "Use a Diluted Thermia at the Thermic Condenser on Deck 12's upper-left balcony to begin.",
-        "You need six Lazulite Toroids regardless of where the blueprints come from. They drop only from Exploiter, never from Circuit.",
-        "An active Resource Booster plus a Retriever companion can double Lazulite, reducing the mandatory clears from six to three. Drop-chance boosters and relay blessings do not help.",
-        "Farm the Toroids before committing a Circuit week: many players finish the blueprints within the required 3-6 kills.",
-        "No event means no new Thermia. The boss remains available only if you already hold Thermia.",
-        "Only the player who inserts Thermia into Deck 12 spends it; recruit chat may find a host with spare keys."
+        "Insert a Diluted Thermia into the Thermic Condenser on Deck 12's upper platform to start. Only the player who inserts it spends it.",
+        "Each part consumes two Lazulite Toroids however you get its blueprint. They drop only from Exploiter.",
+        "Diluted Thermia comes from the recurring Thermia Fractures event. The fight itself runs any time you hold Thermia.",
+        "Resource Boosters and Resourceful Retriever apply to her drops."
       ],
-      "bonuses": [
-        "In phase 1, explode a Thermia canister between both rear vents to thaw both at once.",
-        "Carry orange Thermia cells to the phase-2 door; 24 cells cover all three overheats. Drag ground coolant canisters away from the Orb so she cannot re-cool herself.",
-        "Grab the drop and leave after her self-destruct; the explosion is lethal at long range but does not destroy loot."
-      ],
+      "bonuses": [],
       "disclosures": [
         {
-          "title": "Circuit reduces blueprint RNG, not boss runs",
-          "body": "Circuit tiers 2, 5, 8 and 10 can award Hildryn component blueprints during her rotation, but every component still consumes two Lazulite Toroids. Use it only for a stubborn missing part after the Toroid farm."
+          "title": "the fight",
+          "body": "Phase 1: lob Condensed Thermia Canisters from the Thermia Condensers at her vents and shoot them to melt the ice, then destroy the vents. Phase 2: throw Thermia cells at her to overheat her, three times, then jump on her; 24 cells cover all three. Loot and leave once she self-destructs: the blast is lethal within 300 meters but doesn't destroy the loot."
+        },
+        {
+          "title": "skip the blueprint RNG: Circuit week 11",
+          "body": "With The Duviri Paradox done, pick Hildryn in week 11 of the normal Circuit. Tier 2 gives Neuroptics, tier 5 Chassis, tier 8 Systems and tier 10 the main blueprint. The six Toroids still need Exploiter clears."
         }
       ]
     },
@@ -115,7 +179,7 @@
       "place": "FOUNDRY",
       "sub": null,
       "activity": "build components, then Hildryn",
-      "meta": "12h each, then 72h",
+      "meta": "12h each, then 3 days",
       "mode": null,
       "live": null,
       "skip": null,
@@ -126,35 +190,33 @@
         {
           "qty": null,
           "label": "Neuroptics",
-          "note": "2 Lazulite Toroids plus standard materials",
+          "note": "15,000 cr, 2 Lazulite Toroid, 1 Argon Crystal, 85 Mytocardia Spore, 1,600 Circuits",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Chassis",
-          "note": "2 Lazulite Toroids plus standard materials",
+          "note": "15,000 cr, 2 Lazulite Toroid, 2 Nitain Extract, 90 Thermal Sludge, 2,300 Rubedo",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Systems",
-          "note": "2 Lazulite Toroids plus standard materials",
+          "note": "15,000 cr, 2 Lazulite Toroid, 2 Tellurium, 95 Gorgaricus Spore, 1,500 Plastids",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Hildryn",
-          "note": "build after all components",
+          "note": "25,000 cr, the three parts, 3 Orokin Cell",
           "alt": null,
           "done": false
         }
       ],
-      "conditions": [
-        "Components build in parallel; keep a free Warframe slot for the final claim."
-      ],
+      "conditions": ["Needs a free Warframe slot before the Foundry will let you claim it"],
       "bonuses": [],
       "disclosures": []
     }

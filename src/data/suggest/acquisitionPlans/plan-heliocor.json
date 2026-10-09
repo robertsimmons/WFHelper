@@ -23,11 +23,36 @@
   ],
   "groups": [
     {
+      "type": "gate",
+      "place": "MASTERY RANK",
+      "sub": null,
+      "activity": "reach MR 9",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Mastery Rank 9",
+          "note": "the Foundry won't craft it below this",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
       "type": "currency",
       "place": "CEPHALON SIMARIS",
       "sub": null,
       "activity": "scan targets with the Synthesis Scanner",
-      "meta": "75,000 Standing, ~4 capped days",
+      "meta": "75,000 Standing",
       "mode": null,
       "live": null,
       "skip": null,
@@ -38,7 +63,7 @@
         {
           "qty": "75,000",
           "label": "Simaris Standing",
-          "note": "daily cap 16,000 + 500 per Mastery Rank",
+          "note": null,
           "alt": null,
           "done": false
         }
@@ -63,9 +88,7 @@
       "rows": [
         { "qty": null, "label": "Heliocor Blueprint", "note": null, "alt": null, "done": false }
       ],
-      "conditions": [
-        "Simaris has no ranks, so there is no rank gate. Mastery Rank 9 is needed to use it."
-      ],
+      "conditions": [],
       "bonuses": [],
       "disclosures": []
     },
@@ -104,7 +127,7 @@
       "disclosures": [
         {
           "title": "using it",
-          "body": "It only scans on a killing blow by the hammer, so damage-over-time kills skip the scan. Scans use Synthesis Scanner charges unless you carry the Sol-Battery Widget."
+          "body": "It scans on each killing blow and needs an equipped Synthesis Scanner with a charge. A scanner with the Sol-Battery Widget spends no charges on its scans."
         }
       ]
     }

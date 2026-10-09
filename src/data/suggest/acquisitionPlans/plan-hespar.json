@@ -1,20 +1,20 @@
 {
   "name": "Hespar",
   "kind": "melee",
-  "effort": 6,
+  "effort": 5,
   "source": "repeat",
   "tradeable": "components only",
   "progress": { "have": 0, "need": 3, "unit": "parts" },
   "badges": [
-    { "text": "Rotation C", "tone": "warn" },
-    { "text": "Zariman gate", "tone": "warn" }
+    { "text": "Tier 4 bounty gate", "tone": "warn" },
+    { "text": "every rotation drops", "tone": "info" }
   ],
   "prices": [{ "label": "build total", "amount": "75,000 cr", "money": false }],
   "materials": [
     { "qty": "5,500", "label": "Ferrite", "note": "Hespar Blade" },
     { "qty": "4,200", "label": "Alloy Plate", "note": "Hespar Handle" },
-    { "qty": "150", "label": "Thrax Plasm", "note": "Hespar build" },
-    { "qty": "20", "label": "Voidplume Quill", "note": "Hespar build" },
+    { "qty": "150", "label": "Thrax Plasm", "note": "60 Blade, 40 Handle, 50 Hespar" },
+    { "qty": "20", "label": "Voidplume Quill", "note": "10 Blade, 10 Handle" },
     { "qty": "15", "label": "Voidgel Orb", "note": "Hespar Blade" },
     { "qty": "5", "label": "Entrati Lanthorn", "note": "Hespar Handle" },
     { "qty": "75,000", "label": "Credits", "note": null }
@@ -22,9 +22,9 @@
   "groups": [
     {
       "type": "gate",
-      "place": "ORBITER, THEN THE CODEX",
+      "place": "CHRYSALITH, ZARIMAN",
       "sub": null,
-      "activity": "Angels of the Zariman",
+      "activity": "reach MR 12 and finish Angels of the Zariman",
       "meta": null,
       "mode": null,
       "live": null,
@@ -35,15 +35,20 @@
       "rows": [
         {
           "qty": null,
+          "label": "Mastery Rank 12",
+          "note": "the Foundry won't craft it below this",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
           "label": "Angels of the Zariman",
-          "note": "unlocks the Zariman Ten Zero and its Chrysalith bounties, Void Cascade and Void Armageddon",
+          "note": "needs The New War; opens the Zariman Ten Zero and Quinn's bounties",
           "alt": null,
           "done": false
         }
       ],
-      "conditions": [
-        "The Chrysalith bounty tier that pays the main blueprint likely needs a Holdfasts standing rank too; not confirmed on the wiki."
-      ],
+      "conditions": [],
       "bonuses": [],
       "disclosures": []
     },
@@ -51,8 +56,8 @@
       "type": "bounty",
       "place": "CHRYSALITH, ZARIMAN",
       "sub": "Quinn",
-      "activity": "highest-tier bounty, Lvl 90-95",
-      "meta": "12.99% per stage, ~7 stages expected",
+      "activity": "Tier 4 bounty, Lvl 90-95",
+      "meta": "12.99% per bounty",
       "mode": null,
       "live": null,
       "skip": null,
@@ -62,13 +67,13 @@
       "rows": [
         {
           "qty": null,
-          "label": "Hespar Main Blueprint",
-          "note": "12.99% per stage; untradeable",
+          "label": "Hespar Blueprint",
+          "note": "untradeable; no pity purchase",
           "alt": null,
           "done": false
         }
       ],
-      "conditions": ["The main blueprint cannot be traded; there is no pity purchase for it."],
+      "conditions": ["Only Tier 4 carries it; Tier 5 pays Aeolak parts instead."],
       "bonuses": [],
       "disclosures": []
     },
@@ -77,7 +82,7 @@
       "place": "TUVUL COMMONS, ZARIMAN",
       "sub": null,
       "activity": "Void Cascade",
-      "meta": "A 4.23% / B 4.60% / C 8.33%",
+      "meta": "4.23% A / 4.60% B / 8.33% C",
       "mode": null,
       "live": null,
       "skip": null,
@@ -88,15 +93,13 @@
         {
           "qty": null,
           "label": "Hespar Handle Blueprint",
-          "note": "any rotation, tradeable",
+          "note": "any rotation",
           "alt": "tradeable",
           "done": false
         }
       ],
       "conditions": [],
-      "bonuses": [
-        "The same runs cover Zariman fissures, Narin farming, or Entropic Kuva standing, so this is the easy part of the farm."
-      ],
+      "bonuses": [],
       "disclosures": []
     },
     {
@@ -104,8 +107,8 @@
       "place": "ORO WORKS, ZARIMAN",
       "sub": null,
       "activity": "Void Armageddon",
-      "meta": "A 4.23% / B 4.60% / C 8.33%, all rotations pay since Update 44.0",
-      "mode": "solo or premade recommended",
+      "meta": "4.23% A / 4.60% B / 8.33% C",
+      "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
@@ -115,25 +118,23 @@
         {
           "qty": null,
           "label": "Hespar Blade Blueprint",
-          "note": "any rotation since Update 44.0; tradeable",
+          "note": "any rotation",
           "alt": "tradeable",
           "done": false
         }
       ],
       "conditions": [
-        "Void Armageddon has no Void Fissures and no Thrax spawns; farm Thrax Plasm in Cascade, Flood or Exterminate instead.",
-        "Rotation order is still AABC, so a C roll is the best one; leaving after round 3 forfeits it.",
-        "Public squads commonly leave before round 3; recruit or go solo if you want Rotation C."
+        "Rewards come after every three waves and a Ravenous Void Angel. The rotation order is AABC, so a C roll is the best one."
       ],
       "bonuses": [],
       "disclosures": [
         {
           "title": "skip the downtime",
-          "body": "Interact with the targeted Exodamper to Provoke Assault and start the wave early, then kill the roughly 30 enemies fast to end waves before the 1:05 timer. 12-20 minutes to Rotation C is typical with a fast squad; pubs commonly run 15-20 minutes or worse."
+          "body": "Interact with the targeted Exodamper to Provoke Assault and start the next wave early."
         },
         {
           "title": "guard the Angel and the Relic",
-          "body": "Every round ends with a Ravenous Void Angel killed twice: physical, then Void damage via the Operator's Void Beam (Madurai or Unairu with a hitscan amp is fast; avoid damage-conversion amp arcanes). Once the Angel dies, leftover enemies beeline to the Eternal Relic, so someone should stay near it."
+          "body": "Each Ravenous Void Angel has two health bars: deplete the first, then enter its Void bubble as the Operator to finish its Ethereal form. Leftover enemies beeline to the Eternal Relic, so someone should stay near it."
         }
       ]
     },
@@ -173,9 +174,7 @@
         }
       ],
       "conditions": [],
-      "bonuses": [
-        "Sell spare Handles and Blades if unneeded; farmers commonly end up with piles of them."
-      ],
+      "bonuses": [],
       "disclosures": []
     }
   ]

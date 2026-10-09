@@ -6,36 +6,35 @@
   "tradeable": false,
   "progress": { "have": 0, "need": 4, "unit": "parts" },
   "badges": [
-    { "text": "Fate Pearl pity shop", "tone": "info" },
-    { "text": "Ostron Offworlder", "tone": "warn" }
+    { "text": "hard pity", "tone": "info" },
+    {
+      "text": "Ostron Offworlder",
+      "tone": "warn",
+      "rank": { "syndicate": "Ostron", "level": 1 }
+    }
   ],
   "prices": [
     { "label": "parts + build", "amount": "85,000 cr", "money": false },
     { "label": "worst case", "amount": "317 Fate Pearls", "money": false }
   ],
   "materials": [
-    {
-      "qty": "600",
-      "label": "Ferrite",
-      "note": "100 Barrel, 100 Receiver, 400 Coprite Alloy refine"
-    },
+    { "qty": "200", "label": "Ferrite", "note": "100 Barrel, 100 Receiver" },
     { "qty": "100", "label": "Alloy Plate", "note": "Stock" },
     { "qty": "100", "label": "Cryotic", "note": "Stock" },
-    { "qty": "50", "label": "Rubedo", "note": "Coprite Alloy refine" },
-    { "qty": "47", "label": "Fate Pearl", "note": null },
+    { "qty": "47", "label": "Fate Pearl", "note": "14 per part, 5 Higasa" },
     { "qty": "40", "label": "Grokdrul", "note": "Receiver" },
     { "qty": "20", "label": "Coprite Alloy", "note": "Receiver" },
     { "qty": "25", "label": "Iradite", "note": "Stock" },
-    { "qty": "10", "label": "Esher Devar", "note": null },
+    { "qty": "10", "label": "Esher Devar", "note": "Barrel" },
     { "qty": "85,000", "label": "Credits", "note": null }
   ],
   "groups": [
     {
       "type": "gate",
-      "place": "CETUS, EARTH",
+      "place": "QUESTS",
       "sub": null,
-      "activity": "unlock Saya's Visions",
-      "meta": "one-time",
+      "activity": "Once Awake, then Saya's Vigil",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -45,17 +44,25 @@
       "rows": [
         {
           "qty": null,
-          "label": "Once Awake, then Saya's Vigil",
-          "note": null,
+          "label": "Once Awake",
+          "note": "required",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
-          "label": "Saya's Visions",
-          "note": "talk to Saya, start it from Koumei's Shrine; a Star Chart node on Earth after the first clear",
+          "label": "Saya's Vigil",
+          "note": "required; opens Shrine Defense",
           "alt": null,
           "done": false
+        },
+        {
+          "qty": null,
+          "label": "Ostron rank 1: Offworlder",
+          "note": "unlocks the Esher Devar and Coprite Alloy blueprints",
+          "alt": null,
+          "done": false,
+          "rank": { "syndicate": "Ostron", "level": 1 }
         }
       ],
       "conditions": [],
@@ -65,13 +72,13 @@
     {
       "type": "farm",
       "place": "SAYA'S VISIONS, EARTH",
-      "sub": null,
+      "sub": "Koumei's Shrine",
       "activity": "Shrine Defense",
-      "meta": "14-18 Fate Pearls and 800 Ostron standing a clear",
+      "meta": "14-18 Fate Pearls and 800 Ostron Standing a clear",
       "mode": "normal, not Steel Path",
       "live": null,
       "skip": null,
-      "earns": null,
+      "earns": { "currency": "Fate Pearl", "amount": "317" },
       "spends": [],
       "map": null,
       "rows": [
@@ -118,47 +125,40 @@
       ],
       "conditions": [
         "Don't buy parts early: run until drops fill most of the set, then buy what's missing.",
-        "Fate Pearls are an end-of-mission reward; boosters and Resourceful Retriever do nothing for them.",
-        "Steel Path's Infested Oni ignores most abilities and takes three to four times as long for 25% more pearls."
+        "Fate Pearls are an end-of-mission reward that Resource Boosters don't affect.",
+        "Steel Path pays 20-24 Fate Pearls a clear against 14-18."
       ],
-      "bonuses": [
-        "The same table drops Koumei and Amanata parts, so farm all three together.",
-        "Worst case, buying everything, is about 20 runs of 2-3 minutes."
-      ],
+      "bonuses": ["The same table drops Koumei and Amanata parts, so farm all three together."],
       "disclosures": [
         {
-          "title": "fast clears",
-          "body": "Carry the offering baskets during the kill phase and drop them in the moment the Oni goes invulnerable; the Operator can carry a second one. Destroy Undying Flyer pods, which pause the offering timer. Mirage, Nova, Protea, Wisp and Mesa all clear in 1:30-2 minutes."
+          "title": "faster clears",
+          "body": "Hold the offerings during the Extermination stage and insert them when the objective to remove the Oni's invulnerability appears. Destroy the Undying Flyers' pods, which pause the offering timer."
         }
       ]
     },
     {
       "type": "farm",
-      "place": "PLAINS OF EIDOLON, EARTH",
-      "sub": "Fisher Hai-Luk + Old Man Suumbaat",
-      "activity": "fish, gather and refine",
-      "meta": "refine blueprints 2,500 Ostron standing each at Offworlder",
+      "place": "CETUS, EARTH",
+      "sub": "Fisher Hai-Luk",
+      "activity": "catch Goopolla and cut them for spleens",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Ostron Standing", "amount": "5,000" }],
+      "spends": [],
       "map": "plains-of-eidolon",
       "rows": [
         {
           "qty": "10",
           "label": "Goopolla Spleen",
-          "note": "Barrel; Goopolla fish, any time of day",
-          "alt": "or Thumpers",
+          "note": "Barrel; each Goopolla cut yields one",
+          "alt": null,
           "done": false
         }
       ],
-      "conditions": [
-        "The Esher Devar and Coprite Alloy blueprints need Ostron Offworlder; the Shrine Defense standing covers it."
-      ],
-      "bonuses": [
-        "Iradite: take the highest Cetus bounty, sweep the spawns near the gate, leave and repeat for 12-15 a loop."
-      ],
+      "conditions": [],
+      "bonuses": [],
       "disclosures": []
     },
     {
@@ -166,7 +166,7 @@
       "place": "FOUNDRY",
       "sub": null,
       "activity": "build the three parts, then Higasa",
-      "meta": "24h for Higasa",
+      "meta": "12h each, 24h for Higasa",
       "mode": null,
       "live": null,
       "skip": null,
@@ -198,7 +198,7 @@
         {
           "qty": null,
           "label": "Higasa",
-          "note": "25,000 cr, 5 Fate Pearls",
+          "note": "25,000 cr, 5 Fate Pearls, the three parts",
           "alt": null,
           "done": false
         }

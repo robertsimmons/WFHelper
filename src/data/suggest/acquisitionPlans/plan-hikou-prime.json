@@ -5,13 +5,86 @@
   "source": "relics",
   "tradeable": true,
   "progress": { "have": 0, "need": 3, "unit": "parts" },
-  "badges": [],
+  "badges": [{ "text": "relics from Railjack caches", "tone": "warn" }],
   "prices": [],
   "materials": [
     { "qty": "8", "label": "Orokin Cell", "note": null },
     { "qty": "15,000", "label": "Credits", "note": null }
   ],
   "groups": [
+    {
+      "type": "gate",
+      "place": "MASTERY RANK",
+      "sub": null,
+      "activity": "reach MR 4 and finish The Archwing",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Mastery Rank 4",
+          "note": "the Foundry won't craft it below this",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "The Archwing",
+          "note": "lets you join a squad's Railjack mission",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "CORPUS PROXIMA, RAILJACK",
+      "sub": "Abandoned Derelict Cache",
+      "activity": "board the derelict and hack its marked terminal",
+      "meta": "Rotation B reward",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Axi S8 relic",
+          "note": "Hikou Prime Blueprint; 9.09% in Pluto Proxima and Corpus Veil Proxima",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Axi V10 relic",
+          "note": "Hikou Prime Stars; 9.09% in Pluto Proxima and Corpus Veil Proxima",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Lith C7 relic",
+          "note": "Hikou Prime Pouch; 9.68% in Venus Proxima, 9.09% in Neptune Proxima",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Hikou Prime is never vaulted: its three active relics drop from these caches, not from ordinary mission rewards."
+      ],
+      "bonuses": ["Piloting Intrinsics rank 5 marks the derelict with a waypoint."],
+      "disclosures": []
+    },
     {
       "type": "fissure",
       "place": "ANY VOID FISSURE",
@@ -52,7 +125,7 @@
       "disclosures": [
         {
           "title": "also in vaulted relics",
-          "body": "Blueprint: Lith S1, Meso N2, Neo R1; Stars: Lith F2, Neo N1, Axi S3; Pouch: Meso N6, Axi K1, Axi V2."
+          "body": "Blueprint: Lith S1, Meso N2, Neo R1; Stars: Lith F2, Neo N1, Axi S3; Pouch: Meso N6, Axi K1, Axi V2. Those come from Varzia when Hikou Prime is in her Prime Resurgence, or from trading."
         }
       ]
     },
@@ -61,7 +134,7 @@
       "place": "FOUNDRY",
       "sub": null,
       "activity": "build Hikou Prime",
-      "meta": "12h, MR 4",
+      "meta": "12h",
       "mode": null,
       "live": null,
       "skip": null,

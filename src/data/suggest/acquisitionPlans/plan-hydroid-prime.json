@@ -1,12 +1,20 @@
 {
   "name": "Hydroid Prime",
   "kind": "warframe-prime",
-  "effort": 5,
+  "effort": 8,
   "source": "relics",
   "tradeable": true,
   "progress": { "have": 0, "need": 4, "unit": "parts" },
-  "badges": [],
+  "badges": [{ "text": "vaulted", "tone": "warn" }],
   "prices": [],
+  "routes": [
+    {
+      "name": "Varzia relics, as Hydroid Prime",
+      "cost": "1 Aya a relic during her Prime Resurgence, Rare Systems, 3-day build",
+      "effort": 8,
+      "role": "chosen"
+    }
+  ],
   "materials": [
     { "qty": "5", "label": "Neural Sensors", "note": "Neuroptics" },
     { "qty": "8,750", "label": "Alloy Plate", "note": "Neuroptics" },
@@ -25,11 +33,11 @@
   ],
   "groups": [
     {
-      "type": "fissure",
-      "place": "ANY VOID FISSURE",
-      "sub": null,
-      "activity": "crack the matching relic era",
-      "meta": "Systems is the bottleneck",
+      "type": "currency",
+      "place": "CAMBION DRIFT, DEIMOS",
+      "sub": "Necralisk",
+      "activity": "Level 40-60 bounty, final stage",
+      "meta": "43.48% per final stage",
       "mode": null,
       "live": null,
       "skip": null,
@@ -39,48 +47,102 @@
       "rows": [
         {
           "qty": null,
-          "label": "Hydroid Prime Blueprint",
-          "note": "Meso E8, Uncommon: 20% Radiant",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Hydroid Prime Neuroptics",
-          "note": "Neo N25, Uncommon: 20% Radiant",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Hydroid Prime Chassis",
-          "note": "Axi N14, Common: 25.33% Intact",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Hydroid Prime Systems",
-          "note": "Neo H5, Rare: 10% Radiant",
+          "label": "Aya",
+          "note": "1 per relic; bank it before the window opens",
           "alt": null,
           "done": false
         }
       ],
       "conditions": [],
       "bonuses": [],
-      "disclosures": [
+      "disclosures": [],
+      "ref": "Aya"
+    },
+    {
+      "type": "vendor",
+      "place": "MAROO'S BAZAAR, MARS",
+      "sub": "Varzia",
+      "activity": "buy the Hydroid Prime relics she stocks, 1 Aya each",
+      "meta": "only while Hydroid Prime is in Prime Resurgence",
+      "mode": null,
+      "live": { "state": "blocked", "text": "vaulted; only during her Prime Resurgence" },
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
         {
-          "title": "also in vaulted relics",
-          "body": "Blueprint: Meso B2, Meso N5, Meso Z2, Neo A6, Axi K5; Neuroptics: Neo G1, Axi A3, Axi M3, Axi N4; Chassis: Lith R1, Meso H1, Neo B4, Neo N8, Neo S8, Neo S11, Axi C3, Axi C4; Systems: Neo H1, Neo H2, Neo H3, Axi H3, Axi H4."
+          "qty": null,
+          "label": "Hydroid Prime relics",
+          "note": "buy extra Systems relics: every one carries it as the Rare",
+          "alt": null,
+          "done": false
         }
-      ]
+      ],
+      "conditions": [
+        "Her stock rotates away; relics and Aya you hold never expire.",
+        "Vaulted relics and the parts themselves still trade between players."
+      ],
+      "bonuses": ["Varzia is also in the Market's Prime Resurgence tab."],
+      "disclosures": []
+    },
+    {
+      "type": "fissure",
+      "place": "ANY VOID FISSURE",
+      "sub": null,
+      "activity": "crack the Hydroid Prime relics",
+      "meta": "Systems is the bottleneck",
+      "mode": "Radiant radshare for the Rares",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Hydroid Prime Blueprint",
+          "note": "Lith S20 or Meso B2 or Meso N5 or Meso Z2 or Neo A6 or Axi K5, Uncommon: 20% Radiant",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Hydroid Prime Neuroptics",
+          "note": "Meso E8 or Neo G1 or Axi A3 or Axi M3 or Axi N4, Uncommon: 20% Radiant",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Hydroid Prime Chassis",
+          "note": "Lith R1 or Meso H1 or Neo B4 or Neo N8 or Neo S8 or Neo S11 or Axi C3 or Axi C4 or Axi N14, Common: 25.33% Intact",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Hydroid Prime Systems",
+          "note": "Neo H1 or Neo H2 or Neo H3 or Neo H5 or Axi H3 or Axi H4, Rare: 10% Radiant",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Refine Rare relics to Radiant (100 Void Traces each); leave Chassis relics Intact, since Radiant lowers their Common odds to 16.67%.",
+        "Mission rewards never drop Resurgence relics; Varzia is the only source."
+      ],
+      "bonuses": [
+        "Pick a teammate's identical reward at the reward screen; they get 5 bonus Void Traces."
+      ],
+      "disclosures": []
     },
     {
       "type": "foundry",
       "place": "FOUNDRY",
       "sub": null,
       "activity": "build components, then Hydroid Prime",
-      "meta": "12h each, then 72h",
+      "meta": "12h each, then 3 days",
       "mode": null,
       "live": null,
       "skip": null,
@@ -112,7 +174,7 @@
         {
           "qty": null,
           "label": "Hydroid Prime",
-          "note": "25,000 cr, Neuroptics, Chassis, Systems, 5 Orokin Cell, 3 days",
+          "note": "25,000 cr, the three parts, 5 Orokin Cell",
           "alt": null,
           "done": false
         }

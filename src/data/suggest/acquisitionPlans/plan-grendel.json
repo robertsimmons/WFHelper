@@ -4,52 +4,91 @@
   "effort": 6,
   "source": "unique",
   "tradeable": false,
-  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "progress": {
+    "have": 0,
+    "need": 4,
+    "unit": "parts"
+  },
   "badges": [
-    { "text": "no-mods missions", "tone": "warn" },
-    { "text": "75 Vitus Essence", "tone": "warn" }
+    {
+      "text": "no-mods missions",
+      "tone": "warn"
+    },
+    {
+      "text": "75 Vitus Essence",
+      "tone": "warn"
+    }
   ],
-  "prices": [{ "label": "blueprint", "amount": "35,000 cr", "money": false }],
+  "prices": [
+    {
+      "label": "blueprint",
+      "amount": "35,000 cr",
+      "money": false
+    }
+  ],
   "materials": [
-    { "qty": "3,800", "label": "Alloy Plate", "note": "Neuroptics" },
-    { "qty": "3,500", "label": "Ferrite", "note": "Neuroptics" },
-    { "qty": "1,125", "label": "Circuits", "note": "Systems" },
-    { "qty": "10", "label": "Morphics", "note": "Systems" },
-    { "qty": "5", "label": "Control Module", "note": "Neuroptics" },
-    { "qty": "2", "label": "Argon Crystal", "note": "Neuroptics" },
-    { "qty": "3", "label": "Orokin Cell", "note": "Grendel" },
-    { "qty": "25", "label": "Condroc Wing", "note": null },
-    { "qty": "30", "label": "Kuaka Spinal Claw", "note": null },
-    { "qty": "100", "label": "Fish Oil", "note": null },
-    { "qty": "15", "label": "Murkray Liver", "note": "spear-fish with the Lanzo" },
-    { "qty": "105,000", "label": "Credits", "note": null }
+    {
+      "qty": "3,800",
+      "label": "Alloy Plate",
+      "note": "Neuroptics"
+    },
+    {
+      "qty": "3,500",
+      "label": "Ferrite",
+      "note": "Neuroptics"
+    },
+    {
+      "qty": "1,125",
+      "label": "Circuits",
+      "note": "Systems"
+    },
+    {
+      "qty": "10",
+      "label": "Morphics",
+      "note": "Systems"
+    },
+    {
+      "qty": "5",
+      "label": "Control Module",
+      "note": "Neuroptics"
+    },
+    {
+      "qty": "2",
+      "label": "Argon Crystal",
+      "note": "Neuroptics"
+    },
+    {
+      "qty": "3",
+      "label": "Orokin Cell",
+      "note": "Grendel"
+    },
+    {
+      "qty": "25",
+      "label": "Condroc Wing",
+      "note": null
+    },
+    {
+      "qty": "30",
+      "label": "Kuaka Spinal Claw",
+      "note": null
+    },
+    {
+      "qty": "100",
+      "label": "Fish Oil",
+      "note": null
+    },
+    {
+      "qty": "15",
+      "label": "Murkray Liver",
+      "note": "spear-fish with the Lanzo"
+    },
+    {
+      "qty": "105,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
-    {
-      "type": "gate",
-      "place": "ERIS JUNCTION",
-      "sub": null,
-      "activity": "unlock Arbitrations",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Arbitrations",
-          "note": "Eris Junction on Pluto",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
     {
       "type": "vendor",
       "place": "MARKET",
@@ -63,7 +102,13 @@
       "spends": [],
       "map": null,
       "rows": [
-        { "qty": null, "label": "Grendel Blueprint", "note": null, "alt": null, "done": false }
+        {
+          "qty": null,
+          "label": "Grendel Blueprint",
+          "note": null,
+          "alt": null,
+          "done": false
+        }
       ],
       "conditions": [],
       "bonuses": [],
@@ -78,7 +123,10 @@
       "mode": null,
       "live": null,
       "skip": null,
-      "earns": { "currency": "Vitus Essence", "amount": "75" },
+      "earns": {
+        "currency": "Vitus Essence",
+        "amount": "75"
+      },
       "spends": [],
       "map": null,
       "rows": [
@@ -90,9 +138,9 @@
           "done": false
         }
       ],
-      "conditions": [],
+      "conditions": ["Arbitrations need a rank 30 Warframe, or MR 30 with a Forma-polarized one."],
       "bonuses": [
-        "Rotations have a 7-10% chance of a 3-Vitus bundle, and Shield Drones drop 1 at 6%; Resource Boosters and retriever mods multiply the drone drops."
+        "Rotations have a 10% chance of a 3-Vitus bundle, and Shield Drones drop 1 at 6%; Resource Boosters and retriever mods multiply the drone drops."
       ],
       "disclosures": [],
       "ref": "Vitus Essence"
@@ -107,7 +155,12 @@
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Vitus Essence", "amount": "75" }],
+      "spends": [
+        {
+          "currency": "Vitus Essence",
+          "amount": "75"
+        }
+      ],
       "map": null,
       "rows": [
         {
@@ -117,8 +170,20 @@
           "alt": null,
           "done": false
         },
-        { "qty": null, "label": "Chassis Locator", "note": "25 Vitus", "alt": null, "done": false },
-        { "qty": null, "label": "Systems Locator", "note": "25 Vitus", "alt": null, "done": false }
+        {
+          "qty": null,
+          "label": "Chassis Locator",
+          "note": "25 Vitus",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Systems Locator",
+          "note": "25 Vitus",
+          "alt": null,
+          "done": false
+        }
       ],
       "conditions": [
         "A Locator stays in your inventory until its mission completes, so a failed run costs time, not Vitus."
@@ -168,7 +233,7 @@
       "place": "EUROPA",
       "sub": "Archaeo-freighter, Icefields of Riddah, Mines of Karishh",
       "activity": "the three Locator missions, no mods",
-      "meta": "~1h for all three with the right frame",
+      "meta": null,
       "mode": "solo or premade; no public matchmaking",
       "live": null,
       "skip": null,
@@ -199,8 +264,7 @@
         }
       ],
       "conditions": [
-        "Augment mods still work. Mods, Arcanes, Archon Shards, Invigorations, Incarnon forms, bonus elements, Gear and Operator are disabled.",
-        "Check the Steel Path toggle before launching; it gives level-125 enemies with no mods.",
+        "Level 25-30 enemies. Augment mods still work. Mods, Arcanes, Archon Shards, Invigorations, Incarnon forms, bonus elements, Gear and Operator are disabled.",
         "Companions lose their mods too."
       ],
       "bonuses": ["Every completion guarantees its part; no RNG."],

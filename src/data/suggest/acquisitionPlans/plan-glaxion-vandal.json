@@ -3,38 +3,87 @@
   "kind": "primary",
   "effort": 4,
   "source": "shop",
-  "tradeable": null,
-  "progress": { "have": 0, "need": 475, "unit": "Ducats" },
+  "tradeable": "unranked only, no Forma or Catalyst",
+  "progress": {
+    "have": 0,
+    "need": 475,
+    "unit": "Ducats"
+  },
   "badges": [
-    { "text": "Baro only", "tone": "warn" },
-    { "text": "MR 12", "tone": "info" }
+    {
+      "text": "Baro only",
+      "tone": "warn"
+    },
+    {
+      "text": "MR 12",
+      "tone": "info"
+    }
   ],
-  "prices": [{ "label": "Baro Ki'Teer", "amount": "250,000 cr + 475 Ducats", "money": false }],
-  "materials": [{ "qty": "250,000", "label": "Credits", "note": null }],
+  "prices": [
+    {
+      "label": "Baro Ki'Teer",
+      "amount": "250,000 cr + 475 Ducats",
+      "money": false
+    }
+  ],
+  "materials": [
+    {
+      "qty": "250,000",
+      "label": "Credits",
+      "note": null
+    }
+  ],
   "groups": [
+    {
+      "type": "gate",
+      "place": "MASTERY RANK",
+      "sub": null,
+      "activity": "reach MR 12",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Mastery Rank 12",
+          "note": "needed to equip it",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
     {
       "type": "currency",
       "place": "VOID FISSURES",
       "sub": null,
       "activity": "crack relics, sell Prime parts at a Relay Ducat Kiosk",
-      "meta": "keep 475 banked at all times",
+      "meta": "bank it before the visit that stocks it",
       "mode": null,
       "live": null,
       "skip": null,
-      "earns": { "currency": "Orokin Ducats", "amount": "475" },
+      "earns": {
+        "currency": "Orokin Ducats",
+        "amount": "475"
+      },
       "spends": [],
       "map": null,
       "rows": [
         {
           "qty": "475",
           "label": "Orokin Ducats",
-          "note": "bronze 15, silver 45, gold 100",
+          "note": "common 15, uncommon 45, rare 100",
           "alt": null,
           "done": false
-        },
-        { "qty": "250,000", "label": "Credits", "note": null, "alt": null, "done": false }
+        }
       ],
-      "conditions": ["Ducat Kiosks are in any Relay Concourse, not Maroo's Bazaar."],
+      "conditions": [],
       "bonuses": [],
       "disclosures": [],
       "ref": "Orokin Ducats"
@@ -44,28 +93,33 @@
       "place": "BARO KI'TEER, RELAY",
       "sub": "Concourse",
       "activity": "buy it on a visit that stocks it",
-      "meta": "every two weeks for 48 hours; roughly two to four stocked visits a year",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
       "spends": [
-        { "currency": "Credits", "amount": "250,000" },
-        { "currency": "Orokin Ducats", "amount": "475" }
+        {
+          "currency": "Credits",
+          "amount": "250,000"
+        },
+        {
+          "currency": "Orokin Ducats",
+          "amount": "475"
+        }
       ],
       "map": null,
       "rows": [
         {
           "qty": null,
           "label": "Glaxion Vandal",
-          "note": "arrives built, unranked, no Catalyst",
+          "note": null,
           "alt": null,
           "done": false
         }
       ],
       "conditions": [
-        "Missing a stocked visit means waiting months; his inventory is posted on r/Warframe the moment he lands.",
-        "Keep a free primary weapon slot ready."
+        "Baro's stock changes with each appearance, and this may not be on the next one."
       ],
       "bonuses": [],
       "disclosures": []

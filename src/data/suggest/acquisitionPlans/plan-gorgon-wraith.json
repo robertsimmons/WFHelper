@@ -3,30 +3,83 @@
   "kind": "primary",
   "effort": 6,
   "source": "boss",
-  "tradeable": "duplicate parts",
-  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "tradeable": "parts and blueprint only",
+  "progress": {
+    "have": 0,
+    "need": 4,
+    "unit": "parts"
+  },
   "badges": [
-    { "text": "Razorback Armada event only", "tone": "warn" },
-    { "text": "~11 runs", "tone": "info" }
+    {
+      "text": "Razorback Armada event only",
+      "tone": "warn"
+    },
+    {
+      "text": "~11 runs",
+      "tone": "info"
+    }
   ],
-  "prices": [{ "label": "build", "amount": "25,000 cr", "money": false }],
+  "prices": [
+    {
+      "label": "build",
+      "amount": "25,000 cr",
+      "money": false
+    }
+  ],
   "materials": [
-    { "qty": "3", "label": "Gallium", "note": "per Razorback Cipher, one Cipher per run" },
+    {
+      "qty": "3",
+      "label": "Gallium",
+      "note": "per Razorback Cipher, one Cipher per run"
+    },
     {
       "qty": "1,500",
       "label": "Polymer Bundle",
       "note": "per Razorback Cipher, one Cipher per run"
+    },
+    {
+      "qty": "25,000",
+      "label": "Credits",
+      "note": "Gorgon Wraith build; each Cipher is 1,250 more"
     }
   ],
   "groups": [
     {
       "type": "gate",
+      "place": "MASTERY RANK",
+      "sub": null,
+      "activity": "reach MR 7",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Mastery Rank 7",
+          "note": "needed to craft it, and to receive the blueprint in a trade",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
       "place": "RELAY, RAZORBACK NODE",
       "sub": null,
       "activity": "wait for the Razorback Armada",
-      "meta": "recurring timed event",
+      "meta": "limited-time event",
       "mode": null,
-      "live": null,
+      "live": {
+        "state": "waiting",
+        "text": "event only"
+      },
       "skip": null,
       "earns": null,
       "spends": [],
@@ -48,10 +101,10 @@
     },
     {
       "type": "farm",
-      "place": "SALACIA, NEPTUNE",
+      "place": "ARCHWING, JUPITER OR NEPTUNE",
       "sub": null,
-      "activity": "Archwing, Corpus enemies",
-      "meta": "~12+ ALU a run, about 3 Ciphers",
+      "activity": "Archwing, Cryptographic ALU from enemies",
+      "meta": "4 ALU per Cipher",
       "mode": null,
       "live": null,
       "skip": null,
@@ -67,14 +120,8 @@
           "done": false
         }
       ],
-      "conditions": [
-        "Cryptographic ALU only exists during the event. Steel Path's resource drop bonus raises the chance."
-      ],
-      "bonuses": [
-        "Corpus Archwing enemies over Jupiter drop it too, and rarely Corpus ground enemies on Empyrean ship segments (Venus, Neptune and Veil Proxima).",
-        "Itzal's Cosmic Crush pulls in pickups; ALU blends into dark space backgrounds.",
-        "A beast companion with Resourceful Retriever raises the chance to double ALU."
-      ],
+      "conditions": ["Cryptographic ALU only exists during the event."],
+      "bonuses": ["Empyrean missions in Venus, Neptune and Veil Proxima also drop it."],
       "disclosures": []
     },
     {
@@ -145,8 +192,7 @@
         }
       ],
       "conditions": [
-        "Every squad member is charged a Cipher when anyone uses theirs on the final door, so a four-person squad burns four per run.",
-        "Receiving the Blueprint by trade is gated at Mastery Rank 7; dropped parts are not."
+        "Every squad member is charged a Cipher when anyone uses theirs on the final door, so a four-person squad burns four per run."
       ],
       "bonuses": [
         "The first three completions per event also pay 200,000 credits and a built Orokin Catalyst."
@@ -179,7 +225,7 @@
           "done": false
         }
       ],
-      "conditions": ["Mastery Rank 7 is needed to craft it."],
+      "conditions": [],
       "bonuses": [],
       "disclosures": []
     }

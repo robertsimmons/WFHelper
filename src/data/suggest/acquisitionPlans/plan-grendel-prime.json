@@ -4,33 +4,155 @@
   "effort": 8,
   "source": "relics",
   "tradeable": true,
-  "progress": { "have": 0, "need": 4, "unit": "parts" },
-  "badges": [{ "text": "vaulted", "tone": "warn" }],
+  "progress": {
+    "have": 0,
+    "need": 4,
+    "unit": "parts"
+  },
+  "badges": [
+    {
+      "text": "vaulted",
+      "tone": "warn"
+    }
+  ],
   "prices": [],
   "materials": [
-    { "qty": "2", "label": "Argon Crystal", "note": "Neuroptics" },
-    { "qty": "600", "label": "Cryotic", "note": "Neuroptics" },
-    { "qty": "1,100", "label": "Circuits", "note": "Neuroptics" },
-    { "qty": "4,975", "label": "Nano Spores", "note": "Neuroptics" },
-    { "qty": "2", "label": "Tellurium", "note": "Chassis" },
-    { "qty": "450", "label": "Plastids", "note": "Chassis" },
-    { "qty": "1,425", "label": "Polymer Bundle", "note": "Chassis" },
-    { "qty": "5,500", "label": "Alloy Plate", "note": "Chassis" },
-    { "qty": "2", "label": "Nitain Extract", "note": "Systems" },
-    { "qty": "3", "label": "Neurodes", "note": "Systems" },
-    { "qty": "1,250", "label": "Rubedo", "note": "Systems" },
-    { "qty": "3,800", "label": "Salvage", "note": "Systems" },
-    { "qty": "5", "label": "Orokin Cell", "note": null },
-    { "qty": "70,000", "label": "Credits", "note": null }
+    {
+      "qty": "2",
+      "label": "Argon Crystal",
+      "note": "Neuroptics"
+    },
+    {
+      "qty": "600",
+      "label": "Cryotic",
+      "note": "Neuroptics"
+    },
+    {
+      "qty": "1,100",
+      "label": "Circuits",
+      "note": "Neuroptics"
+    },
+    {
+      "qty": "4,975",
+      "label": "Nano Spores",
+      "note": "Neuroptics"
+    },
+    {
+      "qty": "2",
+      "label": "Tellurium",
+      "note": "Chassis"
+    },
+    {
+      "qty": "450",
+      "label": "Plastids",
+      "note": "Chassis"
+    },
+    {
+      "qty": "1,425",
+      "label": "Polymer Bundle",
+      "note": "Chassis"
+    },
+    {
+      "qty": "5,500",
+      "label": "Alloy Plate",
+      "note": "Chassis"
+    },
+    {
+      "qty": "2",
+      "label": "Nitain Extract",
+      "note": "Systems"
+    },
+    {
+      "qty": "3",
+      "label": "Neurodes",
+      "note": "Systems"
+    },
+    {
+      "qty": "1,250",
+      "label": "Rubedo",
+      "note": "Systems"
+    },
+    {
+      "qty": "3,800",
+      "label": "Salvage",
+      "note": "Systems"
+    },
+    {
+      "qty": "5",
+      "label": "Orokin Cell",
+      "note": null
+    },
+    {
+      "qty": "70,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
+    {
+      "type": "currency",
+      "place": "CAMBION DRIFT, DEIMOS",
+      "sub": "Necralisk",
+      "activity": "Level 40-60 bounty, final stage",
+      "meta": "43.48% per final stage",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Aya",
+          "note": "1 per relic; bank it before the window opens",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": [],
+      "ref": "Aya"
+    },
+    {
+      "type": "vendor",
+      "place": "MAROO'S BAZAAR, MARS",
+      "sub": "Varzia",
+      "activity": "buy the Grendel Prime relics she stocks, 1 Aya each",
+      "meta": "only while Grendel Prime is in Prime Resurgence",
+      "mode": null,
+      "live": {
+        "state": "blocked",
+        "text": "vaulted; only during her Prime Resurgence"
+      },
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Grendel Prime relics",
+          "note": "buy extra Blueprint relics: every one carries it as the Rare",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Her stock rotates away; relics and Aya you hold never expire.",
+        "Vaulted relics and the parts themselves still trade between players."
+      ],
+      "bonuses": ["Varzia is also in the Market's Prime Resurgence tab."],
+      "disclosures": []
+    },
     {
       "type": "fissure",
       "place": "ANY VOID FISSURE",
       "sub": null,
-      "activity": "crack the matching vaulted relics",
+      "activity": "crack the Grendel Prime relics",
       "meta": "Blueprint is the bottleneck",
-      "mode": null,
+      "mode": "Radiant radshare for the Rares",
       "live": null,
       "skip": null,
       "earns": null,
@@ -67,10 +189,12 @@
         }
       ],
       "conditions": [
-        "Grendel Prime is vaulted: its relics no longer drop from missions.",
-        "Vaulted relics and the parts themselves still trade between players."
+        "Refine Rare relics to Radiant (100 Void Traces each); leave relics where your part is Common at Intact, since Radiant lowers Common odds to 16.67%.",
+        "Mission rewards never drop Resurgence relics; Varzia is the only source."
       ],
-      "bonuses": [],
+      "bonuses": [
+        "Pick a teammate's identical reward at the reward screen; they get 5 bonus Void Traces."
+      ],
       "disclosures": []
     },
     {
@@ -78,7 +202,7 @@
       "place": "FOUNDRY",
       "sub": null,
       "activity": "build components, then Grendel Prime",
-      "meta": "12h each, then 72h",
+      "meta": "12h each, then 3 days",
       "mode": null,
       "live": null,
       "skip": null,
@@ -118,6 +242,14 @@
       "conditions": [],
       "bonuses": [],
       "disclosures": []
+    }
+  ],
+  "routes": [
+    {
+      "name": "Varzia relics, as Grendel Prime",
+      "cost": "1 Aya a relic during her Prime Resurgence, Rare Blueprint, 3-day build",
+      "effort": 8,
+      "role": "chosen"
     }
   ]
 }

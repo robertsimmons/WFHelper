@@ -13,13 +13,17 @@
     {
       "text": "vaulted",
       "tone": "warn"
-    },
-    {
-      "text": "Prime Resurgence",
-      "tone": "info"
     }
   ],
   "prices": [],
+  "routes": [
+    {
+      "name": "Varzia relics, as Baza Prime",
+      "cost": "1 Aya a relic during her Prime Resurgence, Rare Stock and Blueprint, 12h build",
+      "effort": 8,
+      "role": "chosen"
+    }
+  ],
   "materials": [
     {
       "qty": "10",
@@ -59,11 +63,11 @@
       "disclosures": []
     },
     {
-      "type": "fissure",
-      "place": "ANY VOID FISSURE",
-      "sub": null,
-      "activity": "crack the matching relic era",
-      "meta": "Stock is the bottleneck",
+      "type": "currency",
+      "place": "CAMBION DRIFT, DEIMOS",
+      "sub": "Necralisk",
+      "activity": "Level 40-60 bounty, final stage",
+      "meta": "43.48% per final stage",
       "mode": null,
       "live": null,
       "skip": null,
@@ -73,45 +77,95 @@
       "rows": [
         {
           "qty": null,
+          "label": "Aya",
+          "note": "1 per relic; bank it before the window opens",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": [],
+      "ref": "Aya"
+    },
+    {
+      "type": "vendor",
+      "place": "MAROO'S BAZAAR, MARS",
+      "sub": "Varzia",
+      "activity": "buy the Baza Prime relics she stocks, 1 Aya each",
+      "meta": "only while Baza Prime is in Prime Resurgence",
+      "mode": null,
+      "live": {
+        "state": "blocked",
+        "text": "vaulted; only during her Prime Resurgence"
+      },
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Baza Prime relics",
+          "note": "buy extra Stock and Blueprint relics: every one carries it as the Rare",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Her stock rotates away; relics and Aya you hold never expire."],
+      "bonuses": ["Varzia is also in the Market's Prime Resurgence tab."],
+      "disclosures": []
+    },
+    {
+      "type": "fissure",
+      "place": "ANY VOID FISSURE",
+      "sub": null,
+      "activity": "crack the Baza Prime relics",
+      "meta": "Stock and Blueprint are the bottleneck",
+      "mode": "Radiant radshare for the Rares",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
           "label": "Baza Prime Blueprint",
-          "note": "Meso I3, Uncommon: 20% Radiant",
+          "note": "Meso I3 or Axi S13, Uncommon: 20% Radiant; Lith B7 or Lith B8 or Meso B4 or Meso B5 or Axi B4, Rare: 10% Radiant",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Baza Prime Barrel",
-          "note": "Neo O4, Uncommon: 20% Radiant",
+          "note": "Lith A4 or Lith S10 or Lith W2 or Neo I3 or Neo N15 or Neo O4 or Axi I2 or Axi Z1, Uncommon: 20% Radiant",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Baza Prime Receiver",
-          "note": "Meso V16, Common: 25.33% Intact",
+          "note": "Lith K7 or Meso C6 or Meso E4 or Meso P2 or Meso V16 or Neo R3 or Axi A15 or Axi N7 or Axi W2, Common: 25.33% Intact",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Baza Prime Stock",
-          "note": "Lith B12, Rare: 10% Radiant",
+          "note": "Lith B9 or Lith B12 or Meso B6 or Neo B7 or Axi B3, Rare: 10% Radiant",
           "alt": null,
           "done": false
         }
       ],
       "conditions": [
-        "Baza Prime is vaulted: its relics no longer drop from missions.",
-        "Varzia sells vaulted relics for Aya only while Baza Prime is in the Prime Resurgence rotation.",
-        "Vaulted relics and the parts themselves still trade between players."
+        "Refine Rare and Uncommon relics to Radiant (100 Void Traces each); leave Common relics Intact, since Radiant lowers their Common odds to 16.67%.",
+        "Mission rewards never drop Resurgence relics; Varzia is the only source."
       ],
-      "bonuses": [],
-      "disclosures": [
-        {
-          "title": "other relics with these parts",
-          "body": "Blueprint: Lith B7, Lith B8, Meso B4, Meso B5, Axi B4, Axi S13; Barrel: Lith A4, Lith S10, Lith W2, Neo I3, Neo N15, Axi I2, Axi Z1; Receiver: Lith K7, Meso C6, Meso E4, Meso P2, Neo R3, Axi A15, Axi N7, Axi W2; Stock: Lith B9, Meso B6, Neo B7, Axi B3."
-        }
-      ]
+      "bonuses": [
+        "Pick a teammate's identical reward at the reward screen; they get 5 bonus Void Traces."
+      ],
+      "disclosures": []
     },
     {
       "type": "foundry",

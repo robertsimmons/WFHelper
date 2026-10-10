@@ -13,13 +13,17 @@
     {
       "text": "vaulted",
       "tone": "warn"
-    },
-    {
-      "text": "Prime Resurgence",
-      "tone": "info"
     }
   ],
   "prices": [],
+  "routes": [
+    {
+      "name": "Varzia relics, as Boar Prime",
+      "cost": "1 Aya a relic during her Prime Resurgence, Rare Stock, 12h build",
+      "effort": 8,
+      "role": "chosen"
+    }
+  ],
   "materials": [
     {
       "qty": "10",
@@ -59,12 +63,66 @@
       "disclosures": []
     },
     {
+      "type": "currency",
+      "place": "CAMBION DRIFT, DEIMOS",
+      "sub": "Necralisk",
+      "activity": "Level 40-60 bounty, final stage",
+      "meta": "43.48% per final stage",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Aya",
+          "note": "1 per relic; bank it before the window opens",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": [],
+      "ref": "Aya"
+    },
+    {
+      "type": "vendor",
+      "place": "MAROO'S BAZAAR, MARS",
+      "sub": "Varzia",
+      "activity": "buy the Boar Prime relics she stocks, 1 Aya each",
+      "meta": "only while Boar Prime is in Prime Resurgence",
+      "mode": null,
+      "live": {
+        "state": "blocked",
+        "text": "vaulted; only during her Prime Resurgence"
+      },
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Boar Prime relics",
+          "note": "buy extra Stock relics: every one carries it as the Rare",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Her stock rotates away; relics and Aya you hold never expire."],
+      "bonuses": ["Varzia is also in the Market's Prime Resurgence tab."],
+      "disclosures": []
+    },
+    {
       "type": "fissure",
       "place": "ANY VOID FISSURE",
       "sub": null,
-      "activity": "crack the matching vaulted relics",
+      "activity": "crack the Boar Prime relics",
       "meta": "Stock is the bottleneck",
-      "mode": null,
+      "mode": "Radiant radshare for the Rares",
       "live": null,
       "skip": null,
       "earns": null,
@@ -101,11 +159,12 @@
         }
       ],
       "conditions": [
-        "Boar Prime is vaulted: its relics no longer drop from missions.",
-        "Varzia sells vaulted relics for Aya only while Boar Prime is in the Prime Resurgence rotation.",
-        "Vaulted relics and the parts themselves still trade between players."
+        "Refine Rare and Uncommon relics to Radiant (100 Void Traces each); leave Common relics Intact, since Radiant lowers their Common odds to 16.67%.",
+        "Mission rewards never drop Resurgence relics; Varzia is the only source."
       ],
-      "bonuses": [],
+      "bonuses": [
+        "Pick a teammate's identical reward at the reward screen; they get 5 bonus Void Traces."
+      ],
       "disclosures": []
     },
     {

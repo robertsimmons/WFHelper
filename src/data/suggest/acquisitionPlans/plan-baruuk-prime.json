@@ -1,57 +1,124 @@
 {
   "name": "Baruuk Prime",
   "kind": "warframe-prime",
-  "effort": 7,
+  "effort": 8,
   "source": "relics",
   "tradeable": true,
-  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "progress": {
+    "have": 0,
+    "need": 4,
+    "unit": "parts"
+  },
   "badges": [
-    { "text": "vaulted", "tone": "warn" },
-    { "text": "Prime Resurgence", "tone": "info" }
+    {
+      "text": "vaulted",
+      "tone": "warn"
+    }
   ],
   "prices": [],
+  "routes": [
+    {
+      "name": "Varzia relics, as Baruuk Prime",
+      "cost": "1 Aya a relic during her Prime Resurgence, Rare Neuroptics and Blueprint, 3-day build",
+      "effort": 8,
+      "role": "chosen"
+    }
+  ],
   "materials": [
-    { "qty": "8", "label": "Neurodes", "note": "Neuroptics" },
-    { "qty": "2", "label": "Nitain Extract", "note": "Neuroptics" },
-    { "qty": "1,050", "label": "Polymer Bundle", "note": "Neuroptics" },
-    { "qty": "3,750", "label": "Alloy Plate", "note": "Neuroptics" },
-    { "qty": "2", "label": "Tellurium", "note": "Chassis" },
-    { "qty": "4", "label": "Control Module", "note": "Chassis" },
-    { "qty": "1,200", "label": "Circuits", "note": "Chassis" },
-    { "qty": "4,250", "label": "Ferrite", "note": "Chassis" },
-    { "qty": "2", "label": "Argon Crystal", "note": "Systems" },
-    { "qty": "5", "label": "Gallium", "note": "Systems" },
-    { "qty": "1,675", "label": "Rubedo", "note": "Systems" },
-    { "qty": "5,250", "label": "Salvage", "note": "Systems" },
-    { "qty": "5", "label": "Orokin Cell", "note": "Baruuk Prime" },
-    { "qty": "70,000", "label": "Credits", "note": null }
+    {
+      "qty": "8",
+      "label": "Neurodes",
+      "note": "Neuroptics"
+    },
+    {
+      "qty": "2",
+      "label": "Nitain Extract",
+      "note": "Neuroptics"
+    },
+    {
+      "qty": "1,050",
+      "label": "Polymer Bundle",
+      "note": "Neuroptics"
+    },
+    {
+      "qty": "3,750",
+      "label": "Alloy Plate",
+      "note": "Neuroptics"
+    },
+    {
+      "qty": "2",
+      "label": "Tellurium",
+      "note": "Chassis"
+    },
+    {
+      "qty": "4",
+      "label": "Control Module",
+      "note": "Chassis"
+    },
+    {
+      "qty": "1,200",
+      "label": "Circuits",
+      "note": "Chassis"
+    },
+    {
+      "qty": "4,250",
+      "label": "Ferrite",
+      "note": "Chassis"
+    },
+    {
+      "qty": "2",
+      "label": "Argon Crystal",
+      "note": "Systems"
+    },
+    {
+      "qty": "5",
+      "label": "Gallium",
+      "note": "Systems"
+    },
+    {
+      "qty": "1,675",
+      "label": "Rubedo",
+      "note": "Systems"
+    },
+    {
+      "qty": "5,250",
+      "label": "Salvage",
+      "note": "Systems"
+    },
+    {
+      "qty": "5",
+      "label": "Orokin Cell",
+      "note": "Baruuk Prime"
+    },
+    {
+      "qty": "70,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
     {
       "type": "currency",
       "place": "CAMBION DRIFT, DEIMOS",
       "sub": "Necralisk",
-      "activity": "Tier 5 bounty, Mother",
-      "meta": "bank Aya before rotation",
-      "mode": "Lv 40-60 or Steel Path",
+      "activity": "Level 40-60 bounty, final stage",
+      "meta": "43.48% per final stage",
+      "mode": null,
       "live": null,
       "skip": null,
-      "earns": { "currency": "Aya", "amount": "20" },
+      "earns": null,
       "spends": [],
       "map": null,
       "rows": [
         {
-          "qty": "20",
+          "qty": null,
           "label": "Aya",
-          "note": "rough one-rotation budget; carries over",
-          "alt": "Cetus tier-5 bounties",
+          "note": "1 per relic; bank it before the window opens",
+          "alt": null,
           "done": false
         }
       ],
-      "conditions": [
-        "Baruuk Prime is currently vaulted: no Baruuk relic drops from missions until a future Prime Resurgence rotation.",
-        "Aya is untradeable, but it has no cap and remains after the rotation ends."
-      ],
+      "conditions": [],
       "bonuses": [],
       "disclosures": [],
       "ref": "Aya"
@@ -59,54 +126,38 @@
     {
       "type": "vendor",
       "place": "MAROO'S BAZAAR, MARS",
-      "sub": null,
-      "activity": "Varzia, 1 Aya per relic",
-      "meta": "only during a Baruuk rotation",
+      "sub": "Varzia",
+      "activity": "buy the Baruuk Prime relics she stocks, 1 Aya each",
+      "meta": "only while Baruuk Prime is in Prime Resurgence",
       "mode": null,
-      "live": { "state": "blocked", "text": "Vaulted; check Prime Resurgence" },
+      "live": {
+        "state": "blocked",
+        "text": "vaulted; only during her Prime Resurgence"
+      },
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Aya", "amount": "20" }],
-      "map": "maroos-bazaar",
+      "spends": [],
+      "map": null,
       "rows": [
         {
-          "qty": "12",
-          "label": "Axi B9",
-          "note": "Blueprint Rare; Neuroptics Uncommon",
-          "alt": "old vaulted B-series relics also work",
-          "done": false
-        },
-        {
-          "qty": "4",
-          "label": "Lith T13",
-          "note": "Chassis Uncommon",
-          "alt": "old vaulted chassis relics also work",
-          "done": false
-        },
-        {
-          "qty": "4",
-          "label": "Neo P8",
-          "note": "Systems Common",
-          "alt": "old vaulted systems relics also work",
+          "qty": null,
+          "label": "Baruuk Prime relics",
+          "note": "buy extra Neuroptics and Blueprint relics: every one carries it as the Rare",
+          "alt": null,
           "done": false
         }
       ],
-      "conditions": [
-        "Prime Resurgence relics are Varzia-only: mission farming cannot produce them.",
-        "Relics are tradeable and never expire, so buy every one you need before the rotation closes."
-      ],
-      "bonuses": [
-        "Varzia is also in the Orbiter Relic Segment and the Prime Resurgence Market tab."
-      ],
+      "conditions": ["Her stock rotates away; relics and Aya you hold never expire."],
+      "bonuses": ["Varzia is also in the Market's Prime Resurgence tab."],
       "disclosures": []
     },
     {
       "type": "fissure",
       "place": "ANY VOID FISSURE",
       "sub": null,
-      "activity": "crack the matching relic era",
-      "meta": "Axi B9 is the bottleneck",
-      "mode": "radshare for Axi B9",
+      "activity": "crack the Baruuk Prime relics",
+      "meta": "Neuroptics and Blueprint are the bottleneck",
+      "mode": "Radiant radshare for the Rares",
       "live": null,
       "skip": null,
       "earns": null,
@@ -116,44 +167,40 @@
         {
           "qty": null,
           "label": "Baruuk Prime Blueprint",
-          "note": "Axi B9, Rare: 10% Radiant",
+          "note": "Lith B10 or Lith B11 or Meso B8 or Meso B9 or Axi B9, Rare: 10% Radiant",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Baruuk Prime Neuroptics",
-          "note": "Axi B9, Uncommon: 20% Radiant",
+          "note": "Axi B9, Uncommon: 20% Radiant; Neo B9 or Axi B5 or Axi B6 or Axi B7 or Axi B8, Rare: 10% Radiant",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Baruuk Prime Chassis",
-          "note": "Lith T13, Uncommon: 20% Radiant",
+          "note": "Lith N15 or Lith P8 or Lith T13 or Meso V9 or Neo A8 or Neo K7 or Neo N23 or Neo S17, Uncommon: 20% Radiant",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Baruuk Prime Systems",
-          "note": "Neo P8, Common: 25.33% Intact",
+          "note": "Meso H4 or Meso H6 or Meso H7 or Meso P14 or Meso R5 or Neo P8 or Axi P7 or Axi W3, Common: 25.33% Intact",
           "alt": null,
           "done": false
         }
       ],
       "conditions": [
-        "Refine Axi B9 to Radiant and run a four-player radshare: four Radiant relics have a 34.39% chance to produce at least one Rare reward.",
-        "Run Neo P8 Intact. Refining lowers its Common Systems chance from 25.33% to 16.67%.",
-        "Collect 10 Reactant before extraction."
+        "Refine Rare and Uncommon relics to Radiant (100 Void Traces each); leave Common relics Intact, since Radiant lowers their Common odds to 16.67%.",
+        "Mission rewards never drop Resurgence relics; Varzia is the only source."
       ],
-      "bonuses": [],
-      "disclosures": [
-        {
-          "title": "one Axi relic cannot give two parts",
-          "body": "Axi B9 contains both the Blueprint and Neuroptics, but each player receives one reward per crack. Keep buying and running it until both parts are secured."
-        }
-      ]
+      "bonuses": [
+        "Pick a teammate's identical reward at the reward screen; they get 5 bonus Void Traces."
+      ],
+      "disclosures": []
     },
     {
       "type": "foundry",

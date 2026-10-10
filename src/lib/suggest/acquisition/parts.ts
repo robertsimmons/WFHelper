@@ -190,6 +190,8 @@ interface ModularGearFacts {
   name: string;
   headLabelKey: MessageKey;
   requiresGilding: boolean;
+  /** Each model is its own Mastery item with its own plan, so each gets a card. */
+  perModel: boolean;
   /** The other parts one build takes, one of each. */
   slots: readonly RegExp[];
 }
@@ -199,36 +201,42 @@ const MODULAR_GEAR: Record<ModularGear, ModularGearFacts> = {
     name: "Moa",
     headLabelKey: "nextUp.modularHeadModels",
     requiresGilding: true,
+    perModel: true,
     slots: [/\/MoaPetParts\/\w*Engine/i, /\/MoaPetParts\/\w*Leg/i, /\/MoaPetParts\/\w*Payload/i],
   },
   hound: {
     name: "Hound",
     headLabelKey: "nextUp.modularHeadModels",
     requiresGilding: true,
+    perModel: true,
     slots: [/\/ZanukaPetPartBody/i, /\/ZanukaPetPartLegs/i, /\/ZanukaPetPartTail/i],
   },
   amp: {
     name: "Amp",
     headLabelKey: "nextUp.modularHeadPrisms",
     requiresGilding: true,
+    perModel: false,
     slots: [/\/OperatorAmplifiers?\/.*Chassis/i, /\/OperatorAmplifiers?\/.*Grip/i],
   },
   kdrive: {
     name: "K-Drive",
     headLabelKey: "nextUp.modularHeadBoards",
     requiresGilding: false,
+    perModel: false,
     slots: [/\/Hoverboard\/.*Engine$/i, /\/Hoverboard\/.*Front$/i, /\/Hoverboard\/.*Jet$/i],
   },
   kitgun: {
     name: "Kitgun",
     headLabelKey: "nextUp.modularHeadChambers",
     requiresGilding: true,
+    perModel: false,
     slots: [/\/(?:SUModular\w*|InfKitGun)\/Handles?\//i, /\/(?:SUModular\w*|InfKitGun)\/Clips?\//i],
   },
   zaw: {
     name: "Zaw",
     headLabelKey: "nextUp.modularHeadStrikes",
     requiresGilding: true,
+    perModel: false,
     slots: [/\/ModularMelee\w*\/Handles?\//i, /\/ModularMelee\w*\/Balance\//i],
   },
 };
@@ -278,7 +286,7 @@ export function fittedModularParts(inventory: RawInventoryData | null): Set<stri
 }
 
 /** One entry per gear type rather than per part, so the card can read
- *  "1 of 4 Models". */
+ *  "1 of 4 Prisms"; a per-model type gets one entry per model instead. */
 export function listModularGear(
   itemDb: Record<string, ItemDbEntry>,
   ownsHead: (uniqueName: string, name: string) => boolean,
@@ -310,18 +318,31 @@ export function listModularGear(
     if (!rows?.length) continue;
     rows.sort((a, b) => a.name.localeCompare(b.name));
     const facts = MODULAR_GEAR[gear];
+    const slots = modularSlots(itemDb, facts.slots);
+    const plan = (heads: ModularHead[]): ModularPlan => ({
+      gear,
+      headLabelKey: facts.headLabelKey,
+      heads,
+      owned: heads.filter((row) => row.owned).length,
+      requiresGilding: facts.requiresGilding,
+      slots,
+    });
+    if (facts.perModel) {
+      for (const row of rows) {
+        out.push({
+          uniqueName: row.uniqueName,
+          name: row.name,
+          entry: itemDb[row.uniqueName] ?? { name: row.name },
+          plan: plan([row]),
+        });
+      }
+      continue;
+    }
     out.push({
       uniqueName: `modular:${gear}`,
       name: facts.name,
       entry: { name: facts.name, imageUrl: rows.find((row) => row.imageUrl)?.imageUrl ?? null },
-      plan: {
-        gear,
-        headLabelKey: facts.headLabelKey,
-        heads: rows,
-        owned: rows.filter((row) => row.owned).length,
-        requiresGilding: facts.requiresGilding,
-        slots: modularSlots(itemDb, facts.slots),
-      },
+      plan: plan(rows),
     });
   }
   return out;

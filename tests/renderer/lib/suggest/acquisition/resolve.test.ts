@@ -259,33 +259,39 @@ describe("resolveAcquisition beyond frames and weapons", () => {
   });
 
   it("never returns a Hound model as a secondary weapon", () => {
-    const hound = find(companions(), "Hound");
+    const hound = find(companions(), "Dorma Hound");
     expect(hound.kind).toBe("modular");
-    expect(companions().map((target) => target.name)).not.toContain("Dorma Hound");
+    expect(hound.weaponClass).toBeNull();
   });
 
-  it("returns one target per modular gear type, not one per head part", () => {
+  it("returns one target per Moa and Hound model, and one per other modular gear type", () => {
     const names = companions().map((target) => target.name);
-    expect(names).toContain("Moa");
-    expect(names).toContain("Hound");
+    expect(names).toEqual(expect.arrayContaining(["Oloro Moa", "Para Moa", "Dorma Hound"]));
     expect(names).toContain("Amp");
     expect(names).toContain("K-Drive");
-    expect(names).not.toContain("Oloro Moa");
+    expect(names).not.toContain("Moa");
+    expect(names).not.toContain("Hound");
     expect(names).not.toContain("Runway");
   });
 
-  it("counts the head parts a card reads its progress off", () => {
-    const moa = find(companions(), "Moa");
-    expect(moa.modular?.gear).toBe("moa");
-    expect(moa.modular?.heads.map((head) => head.name)).toEqual(["Oloro Moa", "Para Moa"]);
-    expect(moa.modular?.owned).toBe(0);
-    expect(moa.modular?.headLabelKey).toBe("nextUp.modularHeadModels");
+  it("gives an unmastered Moa model its own card off its own plan", () => {
+    const lambeo = "/Lotus/Types/Friendly/Pets/MoaPets/MoaPetParts/MoaPetHeadLambeo";
+    const db = { ...companionDb(), [lambeo]: { name: "Lambeo Moa", masterable: true } };
+    const card = find(resolveAcquisition({ itemDb: db, inventory: null }), "Lambeo Moa");
+    expect(card.uniqueName).toBe(lambeo);
+    expect(card.modular?.gear).toBe("moa");
+    expect(card.modular?.heads.map((head) => head.uniqueName)).toEqual([lambeo]);
+    expect(card.modular?.owned).toBe(0);
+    expect(card.modular?.headLabelKey).toBe("nextUp.modularHeadModels");
+    expect(card.rating).toMatchObject({ planned: true, effort: 4 });
+    expect(card.paths[0]).toMatchObject({ id: "plan" });
   });
 
   it("leaves the parts that are only stats and looks out of the count", () => {
     const targets = companions();
     expect(find(targets, "Amp").modular?.heads.map((head) => head.name)).toEqual(["Raplak Prism"]);
-    expect(find(targets, "Moa").modular?.heads).toHaveLength(2);
+    expect(find(targets, "Oloro Moa").modular?.heads).toHaveLength(1);
+    expect(find(targets, "Oloro Moa").modular?.slots.flat()).not.toHaveLength(0);
   });
 
   it("classes an amp prism the item database never flagged masterable", () => {
@@ -296,31 +302,33 @@ describe("resolveAcquisition beyond frames and weapons", () => {
 
   it("gilds everything but the K-Drive", () => {
     const targets = companions();
-    expect(find(targets, "Moa").modular?.requiresGilding).toBe(true);
-    expect(find(targets, "Hound").modular?.requiresGilding).toBe(true);
+    expect(find(targets, "Oloro Moa").modular?.requiresGilding).toBe(true);
+    expect(find(targets, "Dorma Hound").modular?.requiresGilding).toBe(true);
     expect(find(targets, "Amp").modular?.requiresGilding).toBe(true);
     expect(find(targets, "K-Drive").modular?.requiresGilding).toBe(false);
   });
 
-  it("banks the mastery of a head part fitted to a build", () => {
+  it("drops a Moa model whose head part is fitted to a build", () => {
     const ctx = { inventory: inventory({ modularParts: [OLORO_MOA] }) };
-    const moa = find(companions(ctx), "Moa");
-    expect(moa.modular?.owned).toBe(1);
-    expect(moa.modular?.heads.find((head) => head.name === "Oloro Moa")?.owned).toBe(true);
-  });
-
-  it("keeps banked mastery after the build is gone", () => {
-    const mastery = { items: [{ name: "Oloro Moa", status: "mastered" }] } as MasteryData;
-    const moa = find(companions({ mastery }), "Moa");
-    expect(moa.modular?.owned).toBe(1);
-  });
-
-  it("drops a gear type whose every head part is banked", () => {
-    const ctx = { inventory: inventory({ modularParts: [OLORO_MOA, PARA_MOA, DORMA_HOUND] }) };
     const names = companions(ctx).map((target) => target.name);
-    expect(names).not.toContain("Moa");
-    expect(names).not.toContain("Hound");
-    expect(names).toContain("Amp");
+    expect(names).not.toContain("Oloro Moa");
+    expect(names).toContain("Para Moa");
+  });
+
+  it("gives a mastered model no card, even after the build is gone", () => {
+    const mastery = { items: [{ name: "Oloro Moa", status: "mastered" }] } as MasteryData;
+    const names = companions({ mastery }).map((target) => target.name);
+    expect(names).not.toContain("Oloro Moa");
+    expect(names).toContain("Para Moa");
+  });
+
+  it("drops every model once each head part is banked", () => {
+    const ctx = { inventory: inventory({ modularParts: [OLORO_MOA, PARA_MOA, DORMA_HOUND] }) };
+    const targets = companions(ctx);
+    const gears = targets.map((target) => target.modular?.gear);
+    expect(gears).not.toContain("moa");
+    expect(gears).not.toContain("hound");
+    expect(targets.map((target) => target.name)).toContain("Amp");
   });
 
   it("narrows the sweep to a single kind", () => {
@@ -372,7 +380,7 @@ describe("resolveAcquisition beyond frames and weapons", () => {
       steps: [{ kind: "market", where: "MARKET - buy blueprint" }],
     });
     expect(carrier.effort).toBe(0.2);
-    expect(find(companions(), "Moa").paths[0]).toMatchObject({ id: "plan", kind: "vendor" });
+    expect(find(companions(), "Oloro Moa").paths[0]).toMatchObject({ id: "plan", kind: "vendor" });
   });
 
   it("sorts a plan with no route by the plan's effort, never as unknown", () => {

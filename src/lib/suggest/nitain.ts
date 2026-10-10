@@ -1,6 +1,6 @@
 import { ownedComponentCount } from "../../../config/shared/componentNames.js";
 import { ownsItem } from "./acquisition/parts.js";
-import type { AcquisitionTarget, ModularPlan } from "./acquisition/types.js";
+import type { AcquisitionTarget, ModularGear, ModularPlan } from "./acquisition/types.js";
 import type { ItemDbEntry } from "../../types/inventory.js";
 
 /** Nitain the unbuilt game still asks for, by the goal it serves. Each bucket is
@@ -54,13 +54,7 @@ function nitainInModular(
   return total;
 }
 
-function nitainIn(
-  target: AcquisitionTarget,
-  nitain: string,
-  itemDb: Record<string, ItemDbEntry>,
-  ownership: Map<string, number>,
-): number {
-  if (target.modular) return nitainInModular(target.modular, nitain, itemDb, ownership);
+function nitainIn(target: AcquisitionTarget, nitain: string): number {
   let total = 0;
   for (const material of target.parts.materials) {
     if (material.uniqueName === nitain) total += material.required;
@@ -77,8 +71,20 @@ export function nitainNeed(
   let normal = 0;
   let prime = 0;
   let subsume = 0;
+  // A Moa or Hound card per model still draws on one pool of spare slot parts.
+  const modular = new Map<ModularGear, ModularPlan>();
   for (const target of targets) {
-    const count = nitainIn(target, nitain, itemDb, ownership);
+    if (!target.modular) continue;
+    const pool = modular.get(target.modular.gear);
+    modular.set(
+      target.modular.gear,
+      pool ? { ...pool, heads: [...pool.heads, ...target.modular.heads] } : target.modular,
+    );
+  }
+  for (const plan of modular.values()) normal += nitainInModular(plan, nitain, itemDb, ownership);
+  for (const target of targets) {
+    if (target.modular) continue;
+    const count = nitainIn(target, nitain);
     if (count <= 0) continue;
     if (target.needs.includes("mastery")) {
       if (target.isPrime) prime += count;

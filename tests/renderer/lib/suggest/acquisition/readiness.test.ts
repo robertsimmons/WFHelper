@@ -14,6 +14,7 @@ import {
   AKBOLTOP_LINK,
   AKBOLTOP_RECEIVER,
   blueprintOf,
+  CATCHMOON,
   companionDb,
   DORRCLAVE_BLADE,
   DORRCLAVE_BP,
@@ -27,7 +28,6 @@ import {
   MAG_CHASSIS,
   MAG_NEURO,
   MAG_SYSTEMS,
-  OLORO_MOA,
   SPINNEREX,
   SPINNEREX_BLADE,
   SPINNEREX_BP,
@@ -280,13 +280,13 @@ describe("what readiness means where there is no recipe to read", () => {
   it("never calls modular gear ready, and still banks a head part fitted to a build", () => {
     const targets = resolveAcquisition({
       itemDb: companionDb(),
-      inventory: inventory({ modularParts: [OLORO_MOA] }),
+      inventory: inventory({ modularParts: [CATCHMOON] }),
     });
-    const moa = find(targets, "Moa");
-    expect(moa.modular?.owned).toBe(1);
-    expect(partsRead(moa)).toMatchObject({ have: 1, need: 2, ready: false });
-    expect(readyBand(moa)).toBe(1);
-    expect(partsLeft(moa)).toBe(1);
+    const kitgun = find(targets, "Kitgun");
+    expect(kitgun.modular?.owned).toBe(1);
+    expect(partsRead(kitgun)).toMatchObject({ have: 1, need: 2, ready: false });
+    expect(readyBand(kitgun)).toBe(1);
+    expect(partsLeft(kitgun)).toBe(1);
   });
 
   it("never offers gear the account already holds", () => {

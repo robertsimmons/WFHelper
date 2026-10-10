@@ -4,92 +4,143 @@
   "effort": 4,
   "source": "standing",
   "tradeable": false,
-  "progress": { "have": 0, "need": 1, "unit": "blueprint" },
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "blueprint"
+  },
   "badges": [
-    { "text": "Ostron + Solaris ranks", "tone": "warn" },
-    { "text": "rare ore mining", "tone": "warn" }
+    {
+      "text": "Ostron Trusted",
+      "tone": "warn",
+      "rank": {
+        "syndicate": "Ostron",
+        "level": 3
+      }
+    },
+    {
+      "text": "Solaris Rapscallion",
+      "tone": "warn",
+      "rank": {
+        "syndicate": "Solaris United",
+        "level": 2
+      }
+    }
   ],
   "prices": [
-    { "label": "blueprint", "amount": "20,000 cr", "money": false },
-    { "label": "build", "amount": "5,000 cr", "money": false }
+    {
+      "label": "blueprint",
+      "amount": "20,000 cr",
+      "money": false
+    },
+    {
+      "label": "build",
+      "amount": "5,000 cr",
+      "money": false
+    }
   ],
   "materials": [
-    { "qty": "3,000", "label": "Oxium", "note": "Auroxium Alloy" },
-    { "qty": "35", "label": "Morphics", "note": "25 Auroxium Alloy, 10 Hespazym Alloy" },
-    { "qty": "1,500", "label": "Plastids", "note": "Hespazym Alloy" },
-    { "qty": "2", "label": "Argon Crystal", "note": "Tatsu build" },
-    { "qty": "1,200", "label": "Kuva", "note": "Tatsu build" },
-    { "qty": "100", "label": "Auroxium Alloy", "note": null },
-    { "qty": "100", "label": "Hespazym Alloy", "note": null },
-    { "qty": "25,000", "label": "Credits", "note": null }
+    {
+      "qty": "100",
+      "label": "Auroxium Alloy",
+      "note": null
+    },
+    {
+      "qty": "100",
+      "label": "Hespazym Alloy",
+      "note": null
+    },
+    {
+      "qty": "2",
+      "label": "Argon Crystal",
+      "note": null
+    },
+    {
+      "qty": "1,200",
+      "label": "Kuva",
+      "note": null
+    },
+    {
+      "qty": "25,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
     {
-      "type": "vendor",
-      "place": "MARKET",
+      "type": "gate",
+      "place": "MASTERY RANK AND SYNDICATES",
+      "activity": "reach MR 7, Ostron Trusted and Solaris United Rapscallion",
       "sub": null,
-      "activity": "buy blueprint",
-      "meta": "20,000 cr",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
       "spends": [],
       "map": null,
-      "rows": [
-        { "qty": null, "label": "Tatsu Blueprint", "note": null, "alt": null, "done": false }
-      ],
       "conditions": [],
       "bonuses": [],
-      "disclosures": []
+      "disclosures": [],
+      "rows": [
+        {
+          "qty": null,
+          "label": "Mastery Rank 7",
+          "note": "needed to equip it",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Ostron Trusted",
+          "note": "Rank 3; unlocks the Auroxium Alloy blueprint",
+          "alt": null,
+          "done": false,
+          "rank": {
+            "syndicate": "Ostron",
+            "level": 3
+          }
+        },
+        {
+          "qty": null,
+          "label": "Solaris United Rapscallion",
+          "note": "Rank 2; unlocks the Hespazym Alloy blueprint",
+          "alt": null,
+          "done": false,
+          "rank": {
+            "syndicate": "Solaris United",
+            "level": 2
+          }
+        }
+      ]
     },
     {
       "type": "vendor",
-      "place": "OLD MAN SUUMBAAT, CETUS",
+      "place": "MARKET",
       "sub": null,
-      "activity": "buy the Auroxium Alloy blueprint",
-      "meta": "7,000 Ostron standing",
+      "activity": "buy the blueprint",
+      "meta": "20,000 cr",
       "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Ostron Standing", "amount": "7,000" }],
+      "spends": [
+        {
+          "currency": "Credits",
+          "amount": "20,000"
+        }
+      ],
       "map": null,
       "rows": [
         {
           "qty": null,
-          "label": "Auroxium Alloy Blueprint",
-          "note": "reusable; each craft makes 20",
+          "label": "Tatsu Blueprint",
+          "note": null,
           "alt": null,
           "done": false
         }
       ],
-      "conditions": ["Requires Ostron Rank 3 (Trusted) to unlock."],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "vendor",
-      "place": "SMOKEFINGER, FORTUNA",
-      "sub": null,
-      "activity": "buy the Hespazym Alloy blueprint",
-      "meta": "4,000 Solaris United standing",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [{ "currency": "Solaris United Standing", "amount": "4,000" }],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Hespazym Alloy Blueprint",
-          "note": "reusable; each craft makes 20",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": ["Requires Solaris United Rank 2 (Rapscallion) to unlock."],
+      "conditions": [],
       "bonuses": [],
       "disclosures": []
     },
@@ -97,8 +148,8 @@
       "type": "foundry",
       "place": "FOUNDRY",
       "sub": null,
-      "activity": "craft the alloys, then Tatsu",
-      "meta": "12h per alloy craft",
+      "activity": "build Tatsu",
+      "meta": "12h",
       "mode": null,
       "live": null,
       "skip": null,

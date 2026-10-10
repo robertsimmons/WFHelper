@@ -3,35 +3,96 @@
   "kind": "secondary",
   "effort": 4,
   "source": "standing",
-  "tradeable": false,
-  "progress": { "have": 0, "need": 1, "unit": "purchase" },
+  "tradeable": "unranked, no Forma or Catalyst",
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "purchase"
+  },
   "badges": [
-    { "text": "Maxim rank gate", "tone": "warn" },
-    { "text": "MR 11", "tone": "info" }
+    {
+      "text": "Arbiters of Hexis Maxim",
+      "tone": "warn",
+      "rank": {
+        "syndicate": "Arbiters of Hexis",
+        "level": 5
+      }
+    },
+    {
+      "text": "MR 11",
+      "tone": "info"
+    }
   ],
   "prices": [
-    { "label": "standing", "amount": "340,000", "money": false },
-    { "label": "credits", "amount": "940,000 cr", "money": false }
+    {
+      "label": "standing",
+      "amount": "100,000",
+      "money": false
+    },
+    {
+      "label": "credits",
+      "amount": "940,000 cr",
+      "money": false
+    }
   ],
-  "materials": [{ "qty": "940,000", "label": "Credits", "note": null }],
+  "materials": [],
   "groups": [
     {
+      "type": "gate",
+      "place": "ORBITER",
+      "sub": "Syndicate console",
+      "activity": "reach Maxim with Arbiters of Hexis",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Mastery Rank 11",
+          "note": "needed to buy it or take it in a trade",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Arbiters of Hexis Maxim",
+          "note": "Rank 5; the rank-ups cost 940,000 cr in all",
+          "alt": null,
+          "done": false,
+          "rank": {
+            "syndicate": "Arbiters of Hexis",
+            "level": 5
+          }
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
       "type": "currency",
-      "place": "ARBITERS OF HEXIS",
-      "sub": "pledge from the Orbiter",
-      "activity": "earn standing from mission affinity and daily Syndicate Alerts",
+      "place": "ANY MISSION",
+      "sub": null,
+      "activity": "pledge Arbiters of Hexis, earn standing from mission Affinity and Syndicate Medallions",
       "meta": "340,000 standing total to Maxim plus the pistols",
       "mode": null,
       "live": null,
       "skip": null,
-      "earns": { "currency": "Arbiters of Hexis Standing", "amount": "340,000" },
+      "earns": {
+        "currency": "Arbiters of Hexis Standing",
+        "amount": "340,000"
+      },
       "spends": [],
       "map": null,
       "rows": [
         {
           "qty": "500",
           "label": "Alloy Plate",
-          "note": "Rank 0 Initiation sacrifice",
+          "note": "Initiation sacrifice",
           "alt": null,
           "done": false
         },
@@ -40,45 +101,73 @@
           "label": "Gallium",
           "note": "Rank 1 Principled sacrifice",
           "alt": null,
-          "done": false
+          "done": false,
+          "rank": {
+            "syndicate": "Arbiters of Hexis",
+            "level": 1
+          }
         },
         {
           "qty": "1",
           "label": "Forma",
           "note": "Rank 2 Authentic sacrifice",
           "alt": null,
-          "done": false
+          "done": false,
+          "rank": {
+            "syndicate": "Arbiters of Hexis",
+            "level": 2
+          }
         },
         {
           "qty": "1",
           "label": "Orokin Reactor",
           "note": "Rank 3 Lawful sacrifice",
           "alt": null,
-          "done": false
+          "done": false,
+          "rank": {
+            "syndicate": "Arbiters of Hexis",
+            "level": 3
+          }
         },
         {
-          "qty": "5",
+          "qty": "2",
           "label": "Aya",
-          "note": "2 at Rank 4 Crusader, 3 at Rank 5 Maxim",
-          "alt": "Void missions, Zariman and Cambion Drift bounties",
-          "done": false
+          "note": "Rank 4 Crusader sacrifice",
+          "alt": null,
+          "done": false,
+          "rank": {
+            "syndicate": "Arbiters of Hexis",
+            "level": 4
+          }
+        },
+        {
+          "qty": "3",
+          "label": "Aya",
+          "note": "Rank 5 Maxim sacrifice",
+          "alt": null,
+          "done": false,
+          "rank": {
+            "syndicate": "Arbiters of Hexis",
+            "level": 5
+          }
         }
       ],
       "conditions": [
-        "Pledging converts 15% of affinity into Hexis standing. Rank-ups spend the standing and also cost 940,000 credits in total."
+        "Pledging Arbiters of Hexis drains The Perrin Sequence (-50%) and Red Veil (-100%); spend any standing there first.",
+        "Rank up as soon as you can afford it; standing past a rank's maximum is wasted."
       ],
-      "bonuses": [],
+      "bonuses": ["Arbiters standing also gives Cephalon Suda +50%."],
       "disclosures": [
         {
           "title": "why 340,000",
-          "body": "The five rank-ups cost 5,000, 22,000, 44,000, 70,000 and 99,000 standing, 240,000 in all. Maxim holds up to 132,000, so the 100,000 purchase can be banked in one go."
+          "body": "240,000 standing carries the five rank-ups to Maxim (5,000 / 22,000 / 44,000 / 70,000 / 99,000), since each rank-up spends the standing it needs. The 100,000-standing pistols is farmed on top."
         }
       ],
       "ref": "Arbiters of Hexis Standing"
     },
     {
       "type": "vendor",
-      "place": "ARBITERS OF HEXIS ENCLAVE, RELAY",
+      "place": "ARBITERS OF HEXIS OFFERINGS, RELAY",
       "sub": null,
       "activity": "buy the pistols",
       "meta": "100,000 standing",
@@ -86,11 +175,24 @@
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Arbiters of Hexis Standing", "amount": "100,000" }],
+      "spends": [
+        {
+          "currency": "Arbiters of Hexis Standing",
+          "amount": "100,000"
+        }
+      ],
       "map": null,
-      "rows": [{ "qty": null, "label": "Telos Akbolto", "note": null, "alt": null, "done": false }],
+      "rows": [
+        {
+          "qty": null,
+          "label": "Telos Akbolto",
+          "note": "arrives built, no Foundry step",
+          "alt": null,
+          "done": false
+        }
+      ],
       "conditions": [
-        "Mastery Rank 11 is required. The free gift at each rank-up can never be a syndicate weapon."
+        "The free item you pick at Maxim can never be a Syndicate weapon; the Akbolto is always a separate 100,000-standing purchase."
       ],
       "bonuses": [],
       "disclosures": []

@@ -4,25 +4,96 @@
   "effort": 2,
   "source": "dojo",
   "tradeable": false,
-  "progress": { "have": 0, "need": 2, "unit": "builds" },
+  "progress": {
+    "have": 0,
+    "need": 2,
+    "unit": "builds"
+  },
   "badges": [
-    { "text": "Chem Lab", "tone": "warn" },
-    { "text": "Consumes an Amphis", "tone": "warn" }
+    {
+      "text": "Chem Lab",
+      "tone": "warn"
+    },
+    {
+      "text": "Consumes an Amphis",
+      "tone": "warn"
+    }
   ],
   "prices": [
-    { "label": "blueprint", "amount": "15,000 cr", "money": false },
-    { "label": "Amphis blueprint", "amount": "15,000 cr", "money": false },
-    { "label": "build", "amount": "20,000 cr", "money": false }
+    {
+      "label": "blueprint",
+      "amount": "15,000 cr",
+      "money": false
+    },
+    {
+      "label": "Amphis blueprint",
+      "amount": "15,000 cr",
+      "money": false
+    },
+    {
+      "label": "build",
+      "amount": "20,000 cr",
+      "money": false
+    }
   ],
   "materials": [
-    { "qty": "5", "label": "Detonite Injector", "note": "Sydon" },
-    { "qty": "2", "label": "Neurodes", "note": "Amphis" },
-    { "qty": "1,700", "label": "Circuits", "note": "600 Amphis, 1,100 Sydon" },
-    { "qty": "4,500", "label": "Salvage", "note": "500 Amphis, 4,000 Sydon" },
-    { "qty": "600", "label": "Alloy Plate", "note": "Amphis" },
-    { "qty": "80,000", "label": "Credits", "note": null }
+    {
+      "qty": "5",
+      "label": "Detonite Injector",
+      "note": "Sydon"
+    },
+    {
+      "qty": "2",
+      "label": "Neurodes",
+      "note": "Amphis"
+    },
+    {
+      "qty": "1,700",
+      "label": "Circuits",
+      "note": "600 Amphis, 1,100 Sydon"
+    },
+    {
+      "qty": "4,500",
+      "label": "Salvage",
+      "note": "500 Amphis, 4,000 Sydon"
+    },
+    {
+      "qty": "600",
+      "label": "Alloy Plate",
+      "note": "Amphis"
+    },
+    {
+      "qty": "80,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
+    {
+      "type": "gate",
+      "place": "MASTERY RANK",
+      "sub": null,
+      "activity": "reach MR 5",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Mastery Rank 5",
+          "note": "needed to equip it",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
     {
       "type": "vendor",
       "place": "CLAN DOJO, CHEM LAB",
@@ -33,7 +104,12 @@
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Credits", "amount": "15,000" }],
+      "spends": [
+        {
+          "currency": "Credits",
+          "amount": "15,000"
+        }
+      ],
       "map": null,
       "rows": [
         {
@@ -45,7 +121,7 @@
         }
       ],
       "conditions": [
-        "Research cannot be rushed with platinum. The Injector research is a prerequisite, and the build also needs finished Injectors."
+        "Research cannot be rushed with platinum. The build also needs finished Detonite Injectors."
       ],
       "bonuses": [],
       "disclosures": [
@@ -65,14 +141,19 @@
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Credits", "amount": "15,000" }],
+      "spends": [
+        {
+          "currency": "Credits",
+          "amount": "15,000"
+        }
+      ],
       "map": null,
       "rows": [
         {
           "qty": null,
           "label": "Amphis Blueprint",
           "note": null,
-          "alt": "Deimos to Jupiter Junction reward",
+          "alt": null,
           "done": false
         }
       ],
@@ -109,8 +190,7 @@
         }
       ],
       "conditions": [
-        "The Sydon build consumes the Amphis. Rank it to 30 first or you lose its Mastery.",
-        "Mastery Rank 5 is needed for the Amphis and the Sydon."
+        "The Sydon build consumes the Amphis. Rank it to 30 first or you lose its Mastery."
       ],
       "bonuses": [],
       "disclosures": []

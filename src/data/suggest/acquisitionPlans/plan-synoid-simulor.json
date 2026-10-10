@@ -3,96 +3,196 @@
   "kind": "primary",
   "effort": 4,
   "source": "standing",
-  "tradeable": "unranked, no Forma/Catalyst",
-  "progress": { "have": 0, "need": 1, "unit": "purchase" },
+  "tradeable": "unranked, no Forma or Catalyst",
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "purchase"
+  },
   "badges": [
-    { "text": "Genius rank gate", "tone": "warn" },
-    { "text": "MR 12", "tone": "info" }
+    {
+      "text": "Cephalon Suda Genius",
+      "tone": "warn",
+      "rank": {
+        "syndicate": "Cephalon Suda",
+        "level": 5
+      }
+    },
+    {
+      "text": "MR 12",
+      "tone": "info"
+    }
   ],
-  "prices": [{ "label": "weapon", "amount": "125,000 standing", "money": false }],
-  "materials": [{ "qty": "940,000", "label": "Credits", "note": null }],
+  "prices": [
+    {
+      "label": "standing",
+      "amount": "125,000",
+      "money": false
+    },
+    {
+      "label": "credits",
+      "amount": "940,000 cr",
+      "money": false
+    }
+  ],
+  "materials": [],
   "groups": [
     {
-      "type": "currency",
-      "place": "ELITE SANCTUARY ONSLAUGHT",
-      "sub": "or any affinity-heavy mission",
-      "activity": "pledge Cephalon Suda, earn standing from mission affinity and Syndicate Medallions",
-      "meta": "~365,000 standing total to Genius plus the rifle",
-      "mode": "cap out every day",
+      "type": "gate",
+      "place": "ORBITER",
+      "sub": "Syndicate console",
+      "activity": "reach Genius with Cephalon Suda",
+      "meta": null,
+      "mode": null,
       "live": null,
       "skip": null,
-      "earns": { "currency": "Cephalon Suda Standing", "amount": "365,000" },
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Mastery Rank 12",
+          "note": "needed to buy it or take it in a trade",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Cephalon Suda Genius",
+          "note": "Rank 5; the rank-ups cost 940,000 cr in all",
+          "alt": null,
+          "done": false,
+          "rank": {
+            "syndicate": "Cephalon Suda",
+            "level": 5
+          }
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "currency",
+      "place": "ANY MISSION",
+      "sub": null,
+      "activity": "pledge Cephalon Suda, earn standing from mission Affinity and Syndicate Medallions",
+      "meta": "365,000 standing total to Genius plus the weapon",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": {
+        "currency": "Cephalon Suda Standing",
+        "amount": "365,000"
+      },
       "spends": [],
       "map": null,
       "rows": [
         {
           "qty": "500",
           "label": "Circuits",
-          "note": "Rank 0 Initiation sacrifice, plus 10,000 cr",
+          "note": "Initiation sacrifice",
           "alt": null,
           "done": false
         },
         {
           "qty": "2",
           "label": "Control Module",
-          "note": "Rank 1 Competent sacrifice, plus 5,000 standing and 30,000 cr",
+          "note": "Rank 1 Competent sacrifice",
           "alt": null,
-          "done": false
+          "done": false,
+          "rank": {
+            "syndicate": "Cephalon Suda",
+            "level": 1
+          }
         },
         {
           "qty": "1",
           "label": "Forma",
-          "note": "Rank 2 Intriguing sacrifice, plus 22,000 standing and 50,000 cr",
+          "note": "Rank 2 Intriguing sacrifice",
           "alt": null,
-          "done": false
+          "done": false,
+          "rank": {
+            "syndicate": "Cephalon Suda",
+            "level": 2
+          }
         },
         {
           "qty": "1",
           "label": "Orokin Catalyst",
-          "note": "Rank 3 Intelligent sacrifice, plus 44,000 standing and 100,000 cr",
+          "note": "Rank 3 Intelligent sacrifice",
           "alt": null,
-          "done": false
+          "done": false,
+          "rank": {
+            "syndicate": "Cephalon Suda",
+            "level": 3
+          }
         },
         {
           "qty": "2",
           "label": "Aya",
-          "note": "Rank 4 Wise sacrifice, plus 70,000 standing and 250,000 cr",
+          "note": "Rank 4 Wise sacrifice",
           "alt": null,
-          "done": false
+          "done": false,
+          "rank": {
+            "syndicate": "Cephalon Suda",
+            "level": 4
+          }
         },
         {
           "qty": "3",
           "label": "Aya",
-          "note": "Rank 5 Genius sacrifice, plus 99,000 standing and 500,000 cr",
+          "note": "Rank 5 Genius sacrifice",
           "alt": null,
-          "done": false
+          "done": false,
+          "rank": {
+            "syndicate": "Cephalon Suda",
+            "level": 5
+          }
         }
       ],
       "conditions": [
-        "Pledging converts 15% of the affinity you earn into Suda standing; sigils no longer do anything."
+        "Pledging Cephalon Suda drains Red Veil (-50%) and New Loka (-100%); spend any standing there first.",
+        "Rank up as soon as you can afford it; standing past a rank's maximum is wasted."
       ],
-      "bonuses": [],
-      "disclosures": [],
+      "bonuses": ["Suda standing also gives Arbiters of Hexis +50%."],
+      "disclosures": [
+        {
+          "title": "why 365,000",
+          "body": "240,000 standing carries the five rank-ups to Genius (5,000 / 22,000 / 44,000 / 70,000 / 99,000), since each rank-up spends the standing it needs. The 125,000-standing weapon is farmed on top."
+        }
+      ],
       "ref": "Cephalon Suda Standing"
     },
     {
       "type": "vendor",
       "place": "CEPHALON SUDA OFFERINGS, RELAY",
       "sub": null,
-      "activity": "buy the rifle",
+      "activity": "buy the weapon",
       "meta": "125,000 standing",
       "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Cephalon Suda Standing", "amount": "125,000" }],
+      "spends": [
+        {
+          "currency": "Cephalon Suda Standing",
+          "amount": "125,000"
+        }
+      ],
       "map": null,
       "rows": [
-        { "qty": null, "label": "Synoid Simulor", "note": null, "alt": null, "done": false }
+        {
+          "qty": null,
+          "label": "Synoid Simulor",
+          "note": "arrives built, no Foundry step",
+          "alt": null,
+          "done": false
+        }
       ],
       "conditions": [
-        "The free item at Rank 5 can never be a syndicate weapon, so the 125,000 purchase is unavoidable.",
-        "Mastery Rank 12 is required to buy it and to receive it in a trade."
+        "The free item you pick at Genius can never be a Syndicate weapon; the Simulor is always a separate 125,000-standing purchase."
       ],
       "bonuses": [],
       "disclosures": []

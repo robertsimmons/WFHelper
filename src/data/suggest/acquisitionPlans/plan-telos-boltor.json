@@ -3,35 +3,96 @@
   "kind": "primary",
   "effort": 4,
   "source": "standing",
-  "tradeable": "unranked, no Forma/Catalyst",
-  "progress": { "have": 0, "need": 1, "unit": "purchase" },
+  "tradeable": "unranked, no Forma or Catalyst",
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "purchase"
+  },
   "badges": [
-    { "text": "Maxim rank gate", "tone": "warn" },
-    { "text": "MR 12", "tone": "info" }
+    {
+      "text": "Arbiters of Hexis Maxim",
+      "tone": "warn",
+      "rank": {
+        "syndicate": "Arbiters of Hexis",
+        "level": 5
+      }
+    },
+    {
+      "text": "MR 12",
+      "tone": "info"
+    }
   ],
   "prices": [
-    { "label": "standing", "amount": "365,000", "money": false },
-    { "label": "credits", "amount": "940,000 cr", "money": false }
+    {
+      "label": "standing",
+      "amount": "125,000",
+      "money": false
+    },
+    {
+      "label": "credits",
+      "amount": "940,000 cr",
+      "money": false
+    }
   ],
-  "materials": [{ "qty": "940,000", "label": "Credits", "note": null }],
+  "materials": [],
   "groups": [
     {
-      "type": "currency",
-      "place": "ELITE SANCTUARY ONSLAUGHT",
-      "sub": "or Duviri Circuit, stage 4+",
-      "activity": "pledge Arbiters of Hexis, earn standing from mission affinity and Syndicate Medallions",
-      "meta": "365,000 standing total to Maxim plus the rifle",
-      "mode": "leave around round 8 for one clean daily cap",
+      "type": "gate",
+      "place": "ORBITER",
+      "sub": "Syndicate console",
+      "activity": "reach Maxim with Arbiters of Hexis",
+      "meta": null,
+      "mode": null,
       "live": null,
       "skip": null,
-      "earns": { "currency": "Arbiters of Hexis Standing", "amount": "365,000" },
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Mastery Rank 12",
+          "note": "needed to buy it or take it in a trade",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Arbiters of Hexis Maxim",
+          "note": "Rank 5; the rank-ups cost 940,000 cr in all",
+          "alt": null,
+          "done": false,
+          "rank": {
+            "syndicate": "Arbiters of Hexis",
+            "level": 5
+          }
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "currency",
+      "place": "ANY MISSION",
+      "sub": null,
+      "activity": "pledge Arbiters of Hexis, earn standing from mission Affinity and Syndicate Medallions",
+      "meta": "365,000 standing total to Maxim plus the rifle",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": {
+        "currency": "Arbiters of Hexis Standing",
+        "amount": "365,000"
+      },
       "spends": [],
       "map": null,
       "rows": [
         {
           "qty": "500",
           "label": "Alloy Plate",
-          "note": "Rank 0 Initiation sacrifice",
+          "note": "Initiation sacrifice",
           "alt": null,
           "done": false
         },
@@ -40,38 +101,66 @@
           "label": "Gallium",
           "note": "Rank 1 Principled sacrifice",
           "alt": null,
-          "done": false
+          "done": false,
+          "rank": {
+            "syndicate": "Arbiters of Hexis",
+            "level": 1
+          }
         },
         {
           "qty": "1",
           "label": "Forma",
           "note": "Rank 2 Authentic sacrifice",
           "alt": null,
-          "done": false
+          "done": false,
+          "rank": {
+            "syndicate": "Arbiters of Hexis",
+            "level": 2
+          }
         },
         {
           "qty": "1",
           "label": "Orokin Reactor",
-          "note": "Rank 3 Lawful sacrifice; Nightwave sells one for 75 Cred",
+          "note": "Rank 3 Lawful sacrifice",
           "alt": null,
-          "done": false
+          "done": false,
+          "rank": {
+            "syndicate": "Arbiters of Hexis",
+            "level": 3
+          }
         },
         {
-          "qty": "5",
+          "qty": "2",
           "label": "Aya",
-          "note": "2 at Rank 4 Crusader, 3 at Rank 5 Maxim",
+          "note": "Rank 4 Crusader sacrifice",
           "alt": null,
-          "done": false
+          "done": false,
+          "rank": {
+            "syndicate": "Arbiters of Hexis",
+            "level": 4
+          }
+        },
+        {
+          "qty": "3",
+          "label": "Aya",
+          "note": "Rank 5 Maxim sacrifice",
+          "alt": null,
+          "done": false,
+          "rank": {
+            "syndicate": "Arbiters of Hexis",
+            "level": 5
+          }
         }
       ],
       "conditions": [
-        "Rank-ups also cost 940,000 credits in total. Standing caps at 132,000 at Maxim and lower before; earning past a rank's maximum is wasted."
+        "Pledging Arbiters of Hexis drains The Perrin Sequence (-50%) and Red Veil (-100%); spend any standing there first.",
+        "Rank up as soon as you can afford it; standing past a rank's maximum is wasted."
       ],
-      "bonuses": [],
+      "bonuses": ["Arbiters standing also gives Cephalon Suda +50%."],
       "disclosures": [
         {
           "title": "why 365,000",
-          "body": "240,000 standing carries the five rank-ups to Maxim (5,000 / 22,000 / 44,000 / 70,000 / 99,000). The 125,000-standing purchase is then farmed on top; Maxim's bar holds 132,000, enough to bank it."
+          "body": "240,000 standing carries the five rank-ups to Maxim (5,000 / 22,000 / 44,000 / 70,000 / 99,000), since each rank-up spends the standing it needs. The 125,000-standing rifle is farmed on top."
         }
       ],
       "ref": "Arbiters of Hexis Standing"
@@ -86,24 +175,26 @@
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Arbiters of Hexis Standing", "amount": "125,000" }],
+      "spends": [
+        {
+          "currency": "Arbiters of Hexis Standing",
+          "amount": "125,000"
+        }
+      ],
       "map": null,
       "rows": [
         {
           "qty": null,
           "label": "Telos Boltor",
-          "note": "arrives built, no Foundry step; needs a free weapon slot",
+          "note": "arrives built, no Foundry step",
           "alt": null,
           "done": false
         }
       ],
       "conditions": [
-        "The free item you pick at Maxim can never be a Syndicate weapon; the Boltor is always a separate 125,000-standing purchase.",
-        "Mastery Rank 12 is required both to buy it and to receive it in a trade."
+        "The free item you pick at Maxim can never be a Syndicate weapon; the Boltor is always a separate 125,000-standing purchase."
       ],
-      "bonuses": [
-        "Telos Boltace (125,000) and Telos Akbolto (100,000) sell from the same Maxim rank."
-      ],
+      "bonuses": [],
       "disclosures": []
     }
   ]

@@ -5,10 +5,7 @@
   "source": "boss",
   "tradeable": false,
   "progress": { "have": 0, "need": 5, "unit": "Miter parts" },
-  "badges": [
-    { "text": "Lech Kril", "tone": "warn" },
-    { "text": "MR 7", "tone": "info" }
-  ],
+  "badges": [{ "text": "Lech Kril", "tone": "warn" }],
   "prices": [
     { "label": "blueprint", "amount": "20,000 cr", "money": false },
     { "label": "Hikou blueprint", "amount": "15,000 cr", "money": false },
@@ -24,6 +21,31 @@
     { "qty": "85,000", "label": "Credits", "note": null }
   ],
   "groups": [
+    {
+      "type": "gate",
+      "place": "MASTERY RANK",
+      "sub": null,
+      "activity": "reach MR 7 to equip it",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Mastery Rank 7",
+          "note": "needed to equip it",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
     {
       "type": "boss",
       "place": "EXTA, CERES",
@@ -43,13 +65,14 @@
         { "qty": null, "label": "Miter Handle", "note": "16.67%", "alt": null, "done": false },
         { "qty": null, "label": "Miter Chassis", "note": "16.67%", "alt": null, "done": false }
       ],
-      "conditions": [
-        "Kril is invulnerable until a coolant tube breaks. Shoot the blue pack on his back, keep out of melee range so his slam freezes him, then hit him. Four tubes, then he takes full damage.",
-        "Cold procs lengthen his invulnerable windows; Heat thaws him early.",
-        "Staggering him or Proboscis Cernos can break the tube cycle for good; abort and rerun."
-      ],
-      "bonuses": ["The table also pays the Twin Gremlins Blueprint and Frost parts."],
-      "disclosures": []
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": [
+        {
+          "title": "Lech Kril fight",
+          "body": "Kril is invulnerable until you shoot the coolant pack on his back while it glows blue. A loose tube makes him hammer the ground and freeze himself, which is your damage window; he thaws after a little damage or any Heat. Four tubes, then he burns and takes full damage. Cold procs lengthen his invulnerable windows."
+        }
+      ]
     },
     {
       "type": "vendor",
@@ -73,7 +96,7 @@
         },
         { "qty": null, "label": "Hikou Blueprint", "note": "15,000 cr", "alt": null, "done": false }
       ],
-      "conditions": ["Needs Mastery Rank 7."],
+      "conditions": [],
       "bonuses": [],
       "disclosures": []
     },

@@ -5,10 +5,7 @@
   "source": "shop",
   "tradeable": false,
   "progress": { "have": 0, "need": 1, "unit": "weapon" },
-  "badges": [
-    { "text": "Argon decays", "tone": "warn" },
-    { "text": "Nitain: Nightwave buy", "tone": "info" }
-  ],
+  "badges": [{ "text": "Argon decays", "tone": "warn" }],
   "prices": [
     { "label": "blueprint", "amount": "55,000 cr", "money": false },
     { "label": "build", "amount": "20,000 cr", "money": false }
@@ -22,11 +19,11 @@
   ],
   "groups": [
     {
-      "type": "vendor",
-      "place": "MARKET",
+      "type": "gate",
+      "place": "MASTERY RANK",
       "sub": null,
-      "activity": "buy blueprint",
-      "meta": "55,000 cr; MR 8",
+      "activity": "reach MR 8 to equip it",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -36,15 +33,32 @@
       "rows": [
         {
           "qty": null,
-          "label": "Ohma Blueprint",
-          "note": "55,000 credits",
+          "label": "Mastery Rank 8",
+          "note": "needed to equip it",
           "alt": null,
           "done": false
         }
       ],
-      "conditions": [
-        "This file covers the plain Ohma; Prisma Ohma is a separate Mastery item sold by Baro Ki'Teer."
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "MARKET",
+      "sub": null,
+      "activity": "buy the blueprint",
+      "meta": "55,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Credits", "amount": "55,000" }],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Ohma Blueprint", "note": null, "alt": null, "done": false }
       ],
+      "conditions": [],
       "bonuses": [],
       "disclosures": []
     },
@@ -53,7 +67,7 @@
       "place": "FOUNDRY",
       "sub": null,
       "activity": "build Ohma",
-      "meta": "20,000 cr, 12h",
+      "meta": "12h",
       "mode": null,
       "live": null,
       "skip": null,
@@ -64,13 +78,15 @@
         {
           "qty": null,
           "label": "Ohma",
-          "note": "20,000 credits, 12h build",
+          "note": "20,000 cr, 4 Nitain Extract, 15,000 Ferrite, 1,400 Plastids, 2 Argon Crystal",
           "alt": null,
           "done": false
         }
       ],
-      "conditions": [],
-      "bonuses": ["Level it to 30 for Mastery."],
+      "conditions": [
+        "Resources are consumed when the build starts, so Argon decay stops mattering once it's queued."
+      ],
+      "bonuses": [],
       "disclosures": []
     }
   ]

@@ -1,23 +1,31 @@
 {
   "name": "Okina Prime",
   "kind": "melee",
-  "effort": 5,
+  "effort": 8,
   "source": "relics",
   "tradeable": true,
   "progress": { "have": 0, "need": 3, "unit": "parts" },
-  "badges": [],
+  "badges": [{ "text": "vaulted", "tone": "warn" }],
   "prices": [],
+  "routes": [
+    {
+      "name": "Varzia relics, as Okina Prime",
+      "cost": "1 Aya a relic during her Prime Resurgence, Rare Blueprint, 12h build",
+      "effort": 8,
+      "role": "chosen"
+    }
+  ],
   "materials": [
     { "qty": "15", "label": "Orokin Cell", "note": null },
     { "qty": "15,000", "label": "Credits", "note": null }
   ],
   "groups": [
     {
-      "type": "fissure",
-      "place": "ANY VOID FISSURE",
+      "type": "gate",
+      "place": "MASTERY RANK",
       "sub": null,
-      "activity": "crack the matching relic era",
-      "meta": "Blueprint is the bottleneck",
+      "activity": "reach MR 12 to equip it",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -27,41 +35,120 @@
       "rows": [
         {
           "qty": null,
-          "label": "Okina Prime Blueprint",
-          "note": "Neo O4, Rare: 10% Radiant",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "2",
-          "label": "Okina Prime Handle",
-          "note": "Meso V16, Uncommon: 20% Radiant",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "2",
-          "label": "Okina Prime Blade",
-          "note": "Neo P11, Common: 25.33% Intact",
+          "label": "Mastery Rank 12",
+          "note": "needed to equip it",
           "alt": null,
           "done": false
         }
       ],
       "conditions": [],
       "bonuses": [],
-      "disclosures": [
+      "disclosures": []
+    },
+    {
+      "type": "currency",
+      "place": "CAMBION DRIFT, DEIMOS",
+      "sub": "Necralisk",
+      "activity": "Level 40-60 bounty, final stage",
+      "meta": "43.48% per final stage",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
         {
-          "title": "also in vaulted relics",
-          "body": "Blueprint: Lith O4, Neo O2, Neo O3, Axi O6; Handle: Lith Z4, Meso A8, Meso G7, Meso L3, Meso Y1, Neo G8, Neo Z11; Blade: Lith C12, Lith L5, Lith L7, Meso T7, Axi B8, Axi C10, Axi N13."
+          "qty": null,
+          "label": "Aya",
+          "note": "1 per relic; bank it before the window opens",
+          "alt": null,
+          "done": false
         }
-      ]
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": [],
+      "ref": "Aya"
+    },
+    {
+      "type": "vendor",
+      "place": "MAROO'S BAZAAR, MARS",
+      "sub": "Varzia",
+      "activity": "buy the Okina Prime relics she stocks, 1 Aya each",
+      "meta": "only while Okina Prime is in Prime Resurgence",
+      "mode": null,
+      "live": { "state": "blocked", "text": "vaulted; only during her Prime Resurgence" },
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Okina Prime relics",
+          "note": "buy extra Blueprint relics: every one carries it as the Rare",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Her stock rotates away; relics and Aya you hold never expire.",
+        "Vaulted relics and the parts themselves still trade between players."
+      ],
+      "bonuses": ["Varzia is also in the Market's Prime Resurgence tab."],
+      "disclosures": []
+    },
+    {
+      "type": "fissure",
+      "place": "ANY VOID FISSURE",
+      "sub": null,
+      "activity": "crack the Okina Prime relics",
+      "meta": "Blueprint is the bottleneck",
+      "mode": "Radiant radshare for the Rares",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Okina Prime Blueprint",
+          "note": "Lith O4 or Neo O2 or Neo O3 or Neo O4 or Axi O6, Rare: 10% Radiant",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "2",
+          "label": "Okina Prime Handle",
+          "note": "Lith Z4 or Meso A8 or Meso G7 or Meso L3 or Meso V16 or Meso Y1 or Neo G8 or Neo Z11, Uncommon: 20% Radiant",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": "2",
+          "label": "Okina Prime Blade",
+          "note": "Lith C12 or Lith L5 or Lith L7 or Meso T7 or Neo P11 or Axi B8 or Axi C10 or Axi N13, Common: 25.33% Intact",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Refine Rare relics to Radiant (100 Void Traces each); leave Blade relics Intact, since Radiant lowers their Common odds to 16.67%.",
+        "Mission rewards never drop Resurgence relics; Varzia is the only source."
+      ],
+      "bonuses": [
+        "Pick a teammate's identical reward at the reward screen; they get 5 bonus Void Traces."
+      ],
+      "disclosures": []
     },
     {
       "type": "foundry",
       "place": "FOUNDRY",
       "sub": null,
       "activity": "build Okina Prime",
-      "meta": "12h, MR 12",
+      "meta": "12h",
       "mode": null,
       "live": null,
       "skip": null,

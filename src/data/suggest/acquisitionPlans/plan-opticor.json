@@ -5,10 +5,7 @@
   "source": "dojo",
   "tradeable": false,
   "progress": { "have": 0, "need": 1, "unit": "blueprint" },
-  "badges": [
-    { "text": "Energy Lab", "tone": "info" },
-    { "text": "MR 14", "tone": "warn" }
-  ],
+  "badges": [{ "text": "Energy Lab", "tone": "info" }],
   "prices": [
     { "label": "blueprint", "amount": "15,000 cr", "money": false },
     { "label": "build", "amount": "30,000 cr", "money": false }
@@ -21,6 +18,31 @@
     { "qty": "45,000", "label": "Credits", "note": null }
   ],
   "groups": [
+    {
+      "type": "gate",
+      "place": "MASTERY RANK",
+      "sub": null,
+      "activity": "reach MR 14 to equip it",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Mastery Rank 14",
+          "note": "needed to equip it",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
     {
       "type": "vendor",
       "place": "CLAN DOJO, ENERGY LAB",
@@ -36,7 +58,7 @@
       "rows": [
         { "qty": null, "label": "Opticor Blueprint", "note": null, "alt": null, "done": false }
       ],
-      "conditions": ["Mastery Rank 14 is required to use it."],
+      "conditions": [],
       "bonuses": [],
       "disclosures": []
     },
@@ -45,7 +67,7 @@
       "place": "FOUNDRY",
       "sub": null,
       "activity": "build Opticor",
-      "meta": "24h, 30,000 cr",
+      "meta": "24h",
       "mode": null,
       "live": null,
       "skip": null,
@@ -56,7 +78,7 @@
         {
           "qty": null,
           "label": "Opticor",
-          "note": "5 Fieldron, 20 Gallium, 600 Cryotic, 1 Forma",
+          "note": "30,000 cr, 5 Fieldron, 20 Gallium, 600 Cryotic, 1 Forma",
           "alt": null,
           "done": false
         }

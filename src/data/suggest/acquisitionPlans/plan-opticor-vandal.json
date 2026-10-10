@@ -6,17 +6,31 @@
   "tradeable": "unranked only, no Forma or Catalyst",
   "progress": { "have": 0, "need": 100, "unit": "points" },
   "badges": [
-    { "text": "event-gated", "tone": "warn" },
+    { "text": "Thermia Fractures event", "tone": "warn" },
     { "text": "Baro alternative", "tone": "info" }
   ],
   "prices": [{ "label": "Baro Ki'Teer", "amount": "550,000 cr + 650 Ducats", "money": false }],
-  "materials": [{ "qty": "550,000", "label": "Credits", "note": null }],
+  "routes": [
+    {
+      "name": "Thermia Fractures",
+      "cost": "100 event points, 7 per full 4-canister fracture; free, one-time, event windows only",
+      "effort": 3,
+      "role": "chosen"
+    },
+    {
+      "name": "Baro Ki'Teer",
+      "cost": "550,000 cr and 650 Ducats when he stocks it",
+      "effort": 3,
+      "role": null
+    }
+  ],
+  "materials": [],
   "groups": [
     {
       "type": "gate",
       "place": "ORB VALLIS, VENUS",
       "sub": null,
-      "activity": "Vox Solaris quest",
+      "activity": "Vox Solaris quest, reach MR 14",
       "meta": "unlocks Thermia Fractures in the World State Window",
       "mode": null,
       "live": null,
@@ -25,11 +39,16 @@
       "spends": [],
       "map": null,
       "rows": [
-        { "qty": null, "label": "Vox Solaris", "note": "quest", "alt": null, "done": false }
+        { "qty": null, "label": "Vox Solaris", "note": "quest", "alt": null, "done": false },
+        {
+          "qty": null,
+          "label": "Mastery Rank 14",
+          "note": "needed to equip it",
+          "alt": null,
+          "done": false
+        }
       ],
-      "conditions": [
-        "Thermia Fractures only appears in the World State Window once Vox Solaris is complete."
-      ],
+      "conditions": [],
       "bonuses": [],
       "disclosures": []
     },
@@ -38,7 +57,7 @@
       "place": "ORB VALLIS, VENUS",
       "sub": "near the Temple of Profit",
       "activity": "seal Thermia Fractures",
-      "meta": "~15 full 4-canister fractures for 100 points",
+      "meta": "7 points per full 4-canister fracture",
       "mode": null,
       "live": null,
       "skip": null,
@@ -56,18 +75,17 @@
       ],
       "conditions": [
         "Thermia Fractures only run while the event is active; check the World State Window.",
-        "Points carry over permanently between event windows, so partial progress is never lost.",
-        "Recruit through LFG or a clanmate rather than public matchmaking; public squads scatter before a fracture is sealed."
+        "Points carry over between event windows, so partial progress is never lost.",
+        "Get canisters from Coolant Raknoids or the Exploiter Orb patrolling the Temple of Profit."
       ],
       "bonuses": [
-        "Stage up to 4 canisters at a Blink Pad near the fracture before committing them all at once.",
-        "Amesha with Benevolent Decoy stacked three times can solo-defend a canister from the air; stay at max altitude to avoid ground-to-air rockets.",
-        "Filling the leftover Diluted Thermia summons the Exploiter Orb for Hildryn parts, and 35%+ event control doubles Orb Vallis credit rewards."
+        "Feed up to three more canisters in the first 30 seconds to score more per fracture.",
+        "Filling the leftover Diluted Thermia lets you summon the Exploiter Orb for Hildryn parts."
       ],
       "disclosures": [
         {
           "title": "reward track",
-          "body": "5 points: emblem. 25: Amalgam Shotgun Barrage + Amalgam Serration. 50: Amalgam Barrel Diffusion + Amalgam Organ Shatter. 75: sigil. 100: Opticor Vandal with a free weapon slot and a pre-installed Orokin Catalyst. Each tier is a one-time reward with no replacement source once claimed."
+          "body": "5 points: emblem. 25: Amalgam Shotgun Barrage + Amalgam Serration. 50: Amalgam Barrel Diffusion + Amalgam Organ Shatter. 75: sigil. 100: Opticor Vandal with a free weapon slot and a pre-installed Orokin Catalyst. Each tier is a one-time reward."
         }
       ]
     },
@@ -75,8 +93,8 @@
       "type": "vendor",
       "place": "BARO KI'TEER, RELAY",
       "sub": null,
-      "activity": "buy outright when he stocks it",
-      "meta": "irregular rotation; no slot or Catalyst included",
+      "activity": "buy it when he stocks it",
+      "meta": "stock changes every visit; no slot or Catalyst included",
       "mode": null,
       "live": null,
       "skip": null,
@@ -90,12 +108,12 @@
         {
           "qty": null,
           "label": "Opticor Vandal",
-          "note": "alt path if Baro has it in stock",
+          "note": "550,000 cr, 650 Ducats",
           "alt": null,
           "done": false
         }
       ],
-      "conditions": ["Baro's rotation is irregular; check his stock before planning around it."],
+      "conditions": [],
       "bonuses": [],
       "disclosures": []
     }

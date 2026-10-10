@@ -87,7 +87,12 @@
         "currency": "Steel Meridian Standing",
         "amount": "91,000"
       },
-      "spends": [],
+      "spends": [
+        {
+          "currency": "Steel Meridian Standing",
+          "amount": "20,000"
+        }
+      ],
       "map": null,
       "rows": [
         {
@@ -97,6 +102,37 @@
           "alt": null,
           "done": false
         },
+        {
+          "qty": null,
+          "label": "Fluctus Stock Blueprint",
+          "note": "20,000 standing",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": ["Steel Meridian and Red Veil standing each also credit the other at 50%."],
+      "disclosures": [],
+      "ref": "Steel Meridian Standing"
+    },
+    {
+      "type": "vendor",
+      "place": "RELAY",
+      "sub": "Steel Meridian",
+      "activity": "rank Steel Meridian to 3",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [
+        {
+          "currency": "Steel Meridian Standing",
+          "amount": "71,000"
+        }
+      ],
+      "map": null,
+      "rows": [
         {
           "qty": null,
           "label": "Rank 1",
@@ -129,19 +165,11 @@
             "syndicate": "Steel Meridian",
             "level": 3
           }
-        },
-        {
-          "qty": null,
-          "label": "Fluctus Stock Blueprint",
-          "note": "20,000 standing",
-          "alt": null,
-          "done": false
         }
       ],
       "conditions": [],
-      "bonuses": ["Steel Meridian and Red Veil standing each also credit the other at 50%."],
-      "disclosures": [],
-      "ref": "Steel Meridian Standing"
+      "bonuses": [],
+      "disclosures": []
     },
     {
       "type": "currency",
@@ -156,7 +184,12 @@
         "currency": "Red Veil Standing",
         "amount": "91,000"
       },
-      "spends": [],
+      "spends": [
+        {
+          "currency": "Red Veil Standing",
+          "amount": "20,000"
+        }
+      ],
       "map": null,
       "rows": [
         {
@@ -166,6 +199,39 @@
           "alt": null,
           "done": false
         },
+        {
+          "qty": null,
+          "label": "Fluctus Limbs Blueprint",
+          "note": "20,000 standing",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Buy the Limbs before you rank Suda; Suda and Red Veil are opposed (-50% both ways)."
+      ],
+      "bonuses": [],
+      "disclosures": [],
+      "ref": "Red Veil Standing"
+    },
+    {
+      "type": "vendor",
+      "place": "RELAY",
+      "sub": "Red Veil",
+      "activity": "rank Red Veil to 3",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [
+        {
+          "currency": "Red Veil Standing",
+          "amount": "71,000"
+        }
+      ],
+      "map": null,
+      "rows": [
         {
           "qty": null,
           "label": "Rank 1",
@@ -198,21 +264,11 @@
             "syndicate": "Red Veil",
             "level": 3
           }
-        },
-        {
-          "qty": null,
-          "label": "Fluctus Limbs Blueprint",
-          "note": "20,000 standing",
-          "alt": null,
-          "done": false
         }
       ],
-      "conditions": [
-        "Buy the Limbs before you rank Suda; Suda and Red Veil are opposed (-50% both ways)."
-      ],
+      "conditions": [],
       "bonuses": [],
-      "disclosures": [],
-      "ref": "Red Veil Standing"
+      "disclosures": []
     },
     {
       "type": "currency",
@@ -227,7 +283,12 @@
         "currency": "Cephalon Suda Standing",
         "amount": "91,000"
       },
-      "spends": [],
+      "spends": [
+        {
+          "currency": "Cephalon Suda Standing",
+          "amount": "20,000"
+        }
+      ],
       "map": null,
       "rows": [
         {
@@ -237,6 +298,37 @@
           "alt": null,
           "done": false
         },
+        {
+          "qty": null,
+          "label": "Fluctus Barrel Blueprint",
+          "note": "20,000 standing",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Do this syndicate last: ranking Suda burns Red Veil standing at -50%."],
+      "bonuses": [],
+      "disclosures": [],
+      "ref": "Cephalon Suda Standing"
+    },
+    {
+      "type": "vendor",
+      "place": "RELAY",
+      "sub": "Cephalon Suda",
+      "activity": "rank Cephalon Suda to 3",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [
+        {
+          "currency": "Cephalon Suda Standing",
+          "amount": "71,000"
+        }
+      ],
+      "map": null,
+      "rows": [
         {
           "qty": null,
           "label": "Rank 1",
@@ -269,19 +361,11 @@
             "syndicate": "Cephalon Suda",
             "level": 3
           }
-        },
-        {
-          "qty": null,
-          "label": "Fluctus Barrel Blueprint",
-          "note": "20,000 standing",
-          "alt": null,
-          "done": false
         }
       ],
-      "conditions": ["Do this syndicate last: ranking Suda burns Red Veil standing at -50%."],
+      "conditions": [],
       "bonuses": [],
-      "disclosures": [],
-      "ref": "Cephalon Suda Standing"
+      "disclosures": []
     },
     {
       "type": "foundry",

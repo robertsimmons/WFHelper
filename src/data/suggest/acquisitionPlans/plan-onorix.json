@@ -87,7 +87,12 @@
         "currency": "New Loka Standing",
         "amount": "67,000"
       },
-      "spends": [],
+      "spends": [
+        {
+          "currency": "New Loka Standing",
+          "amount": "40,000"
+        }
+      ],
       "map": null,
       "rows": [
         {
@@ -97,6 +102,39 @@
           "alt": null,
           "done": false
         },
+        {
+          "qty": "2",
+          "label": "Onorix Blade",
+          "note": "20,000 standing each",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Earning New Loka standing lowers Cephalon Suda's by the same amount and Steel Meridian's by half as much."
+      ],
+      "bonuses": ["The Perrin Sequence is allied: New Loka standing also gives it half as much."],
+      "disclosures": [],
+      "ref": "New Loka Standing"
+    },
+    {
+      "type": "vendor",
+      "place": "RELAY",
+      "sub": "New Loka",
+      "activity": "rank New Loka to 2",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [
+        {
+          "currency": "New Loka Standing",
+          "amount": "27,000"
+        }
+      ],
+      "map": null,
+      "rows": [
         {
           "qty": null,
           "label": "Rank 1, Humane",
@@ -118,21 +156,11 @@
             "syndicate": "New Loka",
             "level": 2
           }
-        },
-        {
-          "qty": "2",
-          "label": "Onorix Blade",
-          "note": "20,000 standing each",
-          "alt": null,
-          "done": false
         }
       ],
-      "conditions": [
-        "Earning New Loka standing lowers Cephalon Suda's by the same amount and Steel Meridian's by half as much."
-      ],
-      "bonuses": ["The Perrin Sequence is allied: New Loka standing also gives it half as much."],
-      "disclosures": [],
-      "ref": "New Loka Standing"
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
     },
     {
       "type": "currency",
@@ -147,7 +175,12 @@
         "currency": "The Perrin Sequence Standing",
         "amount": "47,000"
       },
-      "spends": [],
+      "spends": [
+        {
+          "currency": "The Perrin Sequence Standing",
+          "amount": "20,000"
+        }
+      ],
       "map": null,
       "rows": [
         {
@@ -157,6 +190,39 @@
           "alt": null,
           "done": false
         },
+        {
+          "qty": null,
+          "label": "Onorix Handle",
+          "note": "20,000 standing",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Earning Perrin standing lowers Steel Meridian's by the same amount and Arbiters of Hexis's by half as much."
+      ],
+      "bonuses": ["New Loka is allied: Perrin standing also gives it half as much."],
+      "disclosures": [],
+      "ref": "The Perrin Sequence Standing"
+    },
+    {
+      "type": "vendor",
+      "place": "RELAY",
+      "sub": "The Perrin Sequence",
+      "activity": "rank The Perrin Sequence to 2",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [
+        {
+          "currency": "The Perrin Sequence Standing",
+          "amount": "27,000"
+        }
+      ],
+      "map": null,
+      "rows": [
         {
           "qty": null,
           "label": "Rank 1, Associate",
@@ -178,21 +244,11 @@
             "syndicate": "The Perrin Sequence",
             "level": 2
           }
-        },
-        {
-          "qty": null,
-          "label": "Onorix Handle",
-          "note": "20,000 standing",
-          "alt": null,
-          "done": false
         }
       ],
-      "conditions": [
-        "Earning Perrin standing lowers Steel Meridian's by the same amount and Arbiters of Hexis's by half as much."
-      ],
-      "bonuses": ["New Loka is allied: Perrin standing also gives it half as much."],
-      "disclosures": [],
-      "ref": "The Perrin Sequence Standing"
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
     },
     {
       "type": "vendor",

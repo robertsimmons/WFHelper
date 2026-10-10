@@ -4,12 +4,32 @@
   "effort": 5,
   "source": "bounties",
   "tradeable": false,
-  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "progress": {
+    "have": 0,
+    "need": 4,
+    "unit": "parts"
+  },
   "badges": [
-    { "text": "Cove gate", "tone": "warn", "rank": { "syndicate": "Solaris United", "level": 4 } },
-    { "text": "Circuit alt", "tone": "circuit" }
+    {
+      "text": "Cove gate",
+      "tone": "warn",
+      "rank": {
+        "syndicate": "Solaris United",
+        "level": 4
+      }
+    },
+    {
+      "text": "Circuit alt",
+      "tone": "circuit"
+    }
   ],
-  "prices": [{ "label": "build", "amount": "70,000 cr", "money": false }],
+  "prices": [
+    {
+      "label": "build",
+      "amount": "70,000 cr",
+      "money": false
+    }
+  ],
   "routes": [
     {
       "name": "Vox Solaris, then Orb Vallis bounties",
@@ -31,20 +51,76 @@
     }
   ],
   "materials": [
-    { "qty": "5,000", "label": "Nano Spores", "note": "Neuroptics" },
-    { "qty": "2,200", "label": "Alloy Plate", "note": "Chassis" },
-    { "qty": "2,400", "label": "Polymer Bundle", "note": "Systems" },
-    { "qty": "2", "label": "Vega Toroid", "note": null },
-    { "qty": "2", "label": "Calda Toroid", "note": null },
-    { "qty": "2", "label": "Sola Toroid", "note": null },
-    { "qty": "6", "label": "Star Amarast", "note": null },
-    { "qty": "3", "label": "Radiant Zodian", "note": null },
-    { "qty": "3", "label": "Marquise Thyst", "note": null },
-    { "qty": "40", "label": "Axidrol Alloy", "note": null },
-    { "qty": "40", "label": "Travocyte Alloy", "note": null },
-    { "qty": "40", "label": "Venerdo Alloy", "note": null },
-    { "qty": "3,500", "label": "Kuva", "note": "Garuda" },
-    { "qty": "70,000", "label": "Credits", "note": null }
+    {
+      "qty": "5,000",
+      "label": "Nano Spores",
+      "note": "Neuroptics"
+    },
+    {
+      "qty": "2,200",
+      "label": "Alloy Plate",
+      "note": "Chassis"
+    },
+    {
+      "qty": "2,400",
+      "label": "Polymer Bundle",
+      "note": "Systems"
+    },
+    {
+      "qty": "2",
+      "label": "Vega Toroid",
+      "note": null
+    },
+    {
+      "qty": "2",
+      "label": "Calda Toroid",
+      "note": null
+    },
+    {
+      "qty": "2",
+      "label": "Sola Toroid",
+      "note": null
+    },
+    {
+      "qty": "6",
+      "label": "Star Amarast",
+      "note": null
+    },
+    {
+      "qty": "3",
+      "label": "Radiant Zodian",
+      "note": null
+    },
+    {
+      "qty": "3",
+      "label": "Marquise Thyst",
+      "note": null
+    },
+    {
+      "qty": "40",
+      "label": "Axidrol Alloy",
+      "note": null
+    },
+    {
+      "qty": "40",
+      "label": "Travocyte Alloy",
+      "note": null
+    },
+    {
+      "qty": "40",
+      "label": "Venerdo Alloy",
+      "note": null
+    },
+    {
+      "qty": "3,500",
+      "label": "Kuva",
+      "note": "Garuda"
+    },
+    {
+      "qty": "70,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
     {
@@ -73,7 +149,10 @@
           "note": "Marquise Thyst is sold from Cove",
           "alt": null,
           "done": false,
-          "rank": { "syndicate": "Solaris United", "level": 4 }
+          "rank": {
+            "syndicate": "Solaris United",
+            "level": 4
+          }
         }
       ],
       "conditions": [],
@@ -115,7 +194,10 @@
       "mode": null,
       "live": null,
       "skip": null,
-      "earns": { "currency": "Solaris United Standing", "amount": "169,000" },
+      "earns": {
+        "currency": "Solaris United Standing",
+        "amount": "169,000"
+      },
       "spends": [],
       "map": "orb-vallis",
       "rows": [
@@ -180,6 +262,105 @@
         }
       ],
       "ref": "Solaris United Standing"
+    },
+    {
+      "type": "vendor",
+      "place": "FORTUNA, VENUS",
+      "sub": null,
+      "activity": "Solaris United rank-ups to Cove",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [
+        {
+          "currency": "Solaris United Standing",
+          "amount": "141,000"
+        }
+      ],
+      "map": "orb-vallis",
+      "rows": [
+        {
+          "qty": null,
+          "label": "rank-ups to Cove",
+          "note": "141,000 standing, Rank 4",
+          "alt": null,
+          "done": false,
+          "rank": {
+            "syndicate": "Solaris United",
+            "level": 4
+          }
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "SMOKEFINGER, FORTUNA",
+      "sub": null,
+      "activity": "buy the refining blueprints",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [
+        {
+          "currency": "Solaris United Standing",
+          "amount": "28,000"
+        }
+      ],
+      "map": "fortuna",
+      "rows": [
+        {
+          "qty": null,
+          "label": "Axidrol Alloy blueprint",
+          "note": "1,000 standing, Neutral; craft twice for 40",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Travocyte Alloy blueprint",
+          "note": "1,000 standing, Neutral; craft twice for 40",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Venerdo Alloy blueprint",
+          "note": "2,000 standing, Rank 1 Outworlder; craft twice for 40",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Star Amarast blueprint",
+          "note": "4,000 standing, Rank 2 Rapscallion; one craft covers 6",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Radiant Zodian blueprint",
+          "note": "8,000 standing, Rank 3 Doer; one craft covers 3",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Marquise Thyst blueprint",
+          "note": "12,000 standing, Rank 4 Cove; one craft covers 3",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
     },
     {
       "type": "bounty",
@@ -272,8 +453,14 @@
   "afterQuest": {
     "effort": 6,
     "badges": [
-      { "text": "Simaris 50,000 standing", "tone": "warn" },
-      { "text": "Circuit week 11", "tone": "circuit" }
+      {
+        "text": "Simaris 50,000 standing",
+        "tone": "warn"
+      },
+      {
+        "text": "Circuit week 11",
+        "tone": "circuit"
+      }
     ],
     "groups": [
       {
@@ -285,7 +472,10 @@
         "mode": null,
         "live": null,
         "skip": null,
-        "earns": { "currency": "Cephalon Simaris Standing", "amount": "50,000" },
+        "earns": {
+          "currency": "Cephalon Simaris Standing",
+          "amount": "50,000"
+        },
         "spends": [],
         "map": null,
         "rows": [
@@ -312,7 +502,12 @@
         "live": null,
         "skip": null,
         "earns": null,
-        "spends": [{ "currency": "Cephalon Simaris Standing", "amount": "50,000" }],
+        "spends": [
+          {
+            "currency": "Cephalon Simaris Standing",
+            "amount": "50,000"
+          }
+        ],
         "map": null,
         "rows": [
           {

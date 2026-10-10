@@ -194,23 +194,9 @@
       "map": "cambion-drift",
       "rows": [
         {
-          "qty": null,
-          "label": "Necraloid Rank 1",
-          "note": "5,000 standing, 10 Orientation Matrix, Zymos Barrel Blueprint, 20 Father Tokens, 150 Void Traces",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Necraloid Rank 2",
-          "note": "22,000 standing, 15 Ballistics Matrix, Sepulcrum Barrel Blueprint, 20 Father Tokens, 250 Void Traces",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Necraloid Rank 3, Odima",
-          "note": "44,000 standing, 15 Animus Matrix, Trumna Barrel Blueprint, 20 Father Tokens, 350 Void Traces",
+          "qty": "71,000",
+          "label": "Orokin Matrix turn-ins to Loid",
+          "note": null,
           "alt": null,
           "done": false
         }
@@ -222,6 +208,62 @@
       "bonuses": [],
       "disclosures": [],
       "ref": "Necraloid Standing"
+    },
+    {
+      "type": "vendor",
+      "place": "LOID, NECRALISK",
+      "sub": null,
+      "activity": "rank Necraloid to 3 (Odima)",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [
+        {
+          "currency": "Necraloid Standing",
+          "amount": "71,000"
+        }
+      ],
+      "map": "necralisk",
+      "rows": [
+        {
+          "qty": null,
+          "label": "Necraloid Rank 1",
+          "note": "5,000 standing, 10 Orientation Matrix, Zymos Barrel Blueprint, 20 Father Tokens, 150 Void Traces",
+          "alt": null,
+          "done": false,
+          "rank": {
+            "syndicate": "Necraloid",
+            "level": 1
+          }
+        },
+        {
+          "qty": null,
+          "label": "Necraloid Rank 2",
+          "note": "22,000 standing, 15 Ballistics Matrix, Sepulcrum Barrel Blueprint, 20 Father Tokens, 250 Void Traces",
+          "alt": null,
+          "done": false,
+          "rank": {
+            "syndicate": "Necraloid",
+            "level": 2
+          }
+        },
+        {
+          "qty": null,
+          "label": "Necraloid Rank 3, Odima",
+          "note": "44,000 standing, 15 Animus Matrix, Trumna Barrel Blueprint, 20 Father Tokens, 350 Void Traces",
+          "alt": null,
+          "done": false,
+          "rank": {
+            "syndicate": "Necraloid",
+            "level": 3
+          }
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
     },
     {
       "type": "vendor",

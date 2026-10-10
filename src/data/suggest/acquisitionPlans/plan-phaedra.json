@@ -109,7 +109,12 @@
         "currency": "The Perrin Sequence Standing",
         "amount": "47,000"
       },
-      "spends": [],
+      "spends": [
+        {
+          "currency": "The Perrin Sequence Standing",
+          "amount": "20,000"
+        }
+      ],
       "map": null,
       "rows": [
         {
@@ -118,28 +123,6 @@
           "note": "10,000 cr, 100 Polymer Bundle",
           "alt": null,
           "done": false
-        },
-        {
-          "qty": null,
-          "label": "Rank 1",
-          "note": "5,000 standing, 30,000 cr, 2 Detonite Ampule",
-          "alt": null,
-          "done": false,
-          "rank": {
-            "syndicate": "The Perrin Sequence",
-            "level": 1
-          }
-        },
-        {
-          "qty": null,
-          "label": "Rank 2, Senior Associate",
-          "note": "22,000 standing, 50,000 cr, 1 Forma",
-          "alt": null,
-          "done": false,
-          "rank": {
-            "syndicate": "The Perrin Sequence",
-            "level": 2
-          }
         },
         {
           "qty": null,
@@ -162,6 +145,51 @@
       "ref": "The Perrin Sequence Standing"
     },
     {
+      "type": "vendor",
+      "place": "RELAY",
+      "sub": "The Perrin Sequence",
+      "activity": "rank The Perrin Sequence to 2",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [
+        {
+          "currency": "The Perrin Sequence Standing",
+          "amount": "27,000"
+        }
+      ],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Rank 1",
+          "note": "5,000 standing, 30,000 cr, 2 Detonite Ampule",
+          "alt": null,
+          "done": false,
+          "rank": {
+            "syndicate": "The Perrin Sequence",
+            "level": 1
+          }
+        },
+        {
+          "qty": null,
+          "label": "Rank 2, Senior Associate",
+          "note": "22,000 standing, 50,000 cr, 1 Forma",
+          "alt": null,
+          "done": false,
+          "rank": {
+            "syndicate": "The Perrin Sequence",
+            "level": 2
+          }
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
       "type": "currency",
       "place": "RELAY",
       "sub": "New Loka",
@@ -174,7 +202,12 @@
         "currency": "New Loka Standing",
         "amount": "47,000"
       },
-      "spends": [],
+      "spends": [
+        {
+          "currency": "New Loka Standing",
+          "amount": "20,000"
+        }
+      ],
       "map": null,
       "rows": [
         {
@@ -184,6 +217,39 @@
           "alt": null,
           "done": false
         },
+        {
+          "qty": null,
+          "label": "Phaedra Stock",
+          "note": "20,000 standing",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [
+        "Usually most of the way there from the Perrin phase, and Perrin keeps rising for free."
+      ],
+      "disclosures": [],
+      "ref": "New Loka Standing"
+    },
+    {
+      "type": "vendor",
+      "place": "RELAY",
+      "sub": "New Loka",
+      "activity": "rank New Loka to 2",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [
+        {
+          "currency": "New Loka Standing",
+          "amount": "27,000"
+        }
+      ],
+      "map": null,
+      "rows": [
         {
           "qty": null,
           "label": "Rank 1",
@@ -205,21 +271,11 @@
             "syndicate": "New Loka",
             "level": 2
           }
-        },
-        {
-          "qty": null,
-          "label": "Phaedra Stock",
-          "note": "20,000 standing",
-          "alt": null,
-          "done": false
         }
       ],
       "conditions": [],
-      "bonuses": [
-        "Usually most of the way there from the Perrin phase, and Perrin keeps rising for free."
-      ],
-      "disclosures": [],
-      "ref": "New Loka Standing"
+      "bonuses": [],
+      "disclosures": []
     },
     {
       "type": "currency",
@@ -234,7 +290,12 @@
         "currency": "Arbiters of Hexis Standing",
         "amount": "47,000"
       },
-      "spends": [],
+      "spends": [
+        {
+          "currency": "Arbiters of Hexis Standing",
+          "amount": "20,000"
+        }
+      ],
       "map": null,
       "rows": [
         {
@@ -244,6 +305,40 @@
           "alt": null,
           "done": false
         },
+        {
+          "qty": null,
+          "label": "Phaedra Barrel",
+          "note": "20,000 standing",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Hexis is opposed to Perrin (-50% both ways), so do it after the Receiver is bought; Perrin may derank, which no longer matters.",
+        "Pledging Hexis drops Red Veil 100%."
+      ],
+      "bonuses": [],
+      "disclosures": [],
+      "ref": "Arbiters of Hexis Standing"
+    },
+    {
+      "type": "vendor",
+      "place": "RELAY",
+      "sub": "Arbiters of Hexis",
+      "activity": "rank Arbiters of Hexis to 2",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [
+        {
+          "currency": "Arbiters of Hexis Standing",
+          "amount": "27,000"
+        }
+      ],
+      "map": null,
+      "rows": [
         {
           "qty": null,
           "label": "Rank 1",
@@ -265,22 +360,11 @@
             "syndicate": "Arbiters of Hexis",
             "level": 2
           }
-        },
-        {
-          "qty": null,
-          "label": "Phaedra Barrel",
-          "note": "20,000 standing",
-          "alt": null,
-          "done": false
         }
       ],
-      "conditions": [
-        "Hexis is opposed to Perrin (-50% both ways), so do it after the Receiver is bought; Perrin may derank, which no longer matters.",
-        "Pledging Hexis drops Red Veil 100%."
-      ],
+      "conditions": [],
       "bonuses": [],
-      "disclosures": [],
-      "ref": "Arbiters of Hexis Standing"
+      "disclosures": []
     },
     {
       "type": "foundry",

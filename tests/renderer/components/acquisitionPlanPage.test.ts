@@ -174,7 +174,7 @@ describe("acquisition plan page", () => {
     expect(sentiment).toBeGreaterThan(unanchored);
     expect(page.indexOf("plan.ledger.length > 0")).toBeGreaterThan(sentiment);
     const tipsView = source("PlanTips.svelte");
-    expect(tipsView).toContain("tip.kind === 'gotcha' ? 'text-warning' : 'text-accent'");
+    expect(tipsView).toContain("tip.kind === 'gotcha' ? 'text-warning' : 'text-text-muted'");
     expect(tipsView).toContain("nextUp.planTipDisputed");
     expect(tipsView).not.toMatch(/<details[^>]*\bopen\b/);
   });

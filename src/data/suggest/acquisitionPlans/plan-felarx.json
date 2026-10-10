@@ -4,22 +4,58 @@
   "effort": 6,
   "source": "standing",
   "tradeable": "blueprint only",
-  "progress": { "have": 0, "need": 1, "unit": "blueprint" },
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "blueprint"
+  },
   "badges": [
     {
       "text": "Holdfasts Rank 3",
       "tone": "warn",
-      "rank": { "syndicate": "The Holdfasts", "level": 3 }
+      "rank": {
+        "syndicate": "The Holdfasts",
+        "level": 3
+      }
     },
-    { "text": "MR 14", "tone": "info" }
+    {
+      "text": "MR 14",
+      "tone": "info"
+    }
   ],
-  "prices": [{ "label": "blueprint", "amount": "8,000 Holdfasts Standing", "money": false }],
+  "prices": [
+    {
+      "label": "blueprint",
+      "amount": "8,000 Holdfasts Standing",
+      "money": false
+    }
+  ],
   "materials": [
-    { "qty": "8,000", "label": "Alloy Plate", "note": null },
-    { "qty": "10", "label": "Voidplume Pinion", "note": null },
-    { "qty": "15", "label": "Voidplume Quill", "note": null },
-    { "qty": "30", "label": "Voidgel Orb", "note": null },
-    { "qty": "30,000", "label": "Credits", "note": null }
+    {
+      "qty": "8,000",
+      "label": "Alloy Plate",
+      "note": null
+    },
+    {
+      "qty": "10",
+      "label": "Voidplume Pinion",
+      "note": null
+    },
+    {
+      "qty": "15",
+      "label": "Voidplume Quill",
+      "note": null
+    },
+    {
+      "qty": "30",
+      "label": "Voidgel Orb",
+      "note": null
+    },
+    {
+      "qty": "30,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
     {
@@ -55,7 +91,10 @@
           "note": "needed to buy the blueprint; rank-ups are below",
           "alt": null,
           "done": false,
-          "rank": { "syndicate": "The Holdfasts", "level": 3 }
+          "rank": {
+            "syndicate": "The Holdfasts",
+            "level": 3
+          }
         }
       ],
       "conditions": [],
@@ -71,34 +110,13 @@
       "mode": null,
       "live": null,
       "skip": null,
-      "earns": { "currency": "Holdfasts Standing", "amount": "79,000" },
+      "earns": {
+        "currency": "Holdfasts Standing",
+        "amount": "79,000"
+      },
       "spends": [],
       "map": null,
       "rows": [
-        {
-          "qty": null,
-          "label": "Rank 1, Fallen",
-          "note": "5,000 standing, 10,000 cr; 5 Voidplume Down, 2,000 Ferrite, 2,000 Alloy Plate",
-          "alt": null,
-          "done": false,
-          "rank": { "syndicate": "The Holdfasts", "level": 1 }
-        },
-        {
-          "qty": null,
-          "label": "Rank 2, Watcher",
-          "note": "22,000 standing, 25,000 cr; 10 Voidplume Vane, 10 Voidgel Orb, 5,000 Alloy Plate",
-          "alt": null,
-          "done": false,
-          "rank": { "syndicate": "The Holdfasts", "level": 2 }
-        },
-        {
-          "qty": null,
-          "label": "Rank 3, Guardian",
-          "note": "44,000 standing, 50,000 cr; 10 Voidplume Crest, 10 Entrati Lanthorn, 5,000 Ferrite",
-          "alt": null,
-          "done": false,
-          "rank": { "syndicate": "The Holdfasts", "level": 3 }
-        },
         {
           "qty": null,
           "label": "Voidplumes turned in to Archimedean Yonta",
@@ -114,6 +132,62 @@
     },
     {
       "type": "vendor",
+      "place": "CHRYSALITH, ZARIMAN",
+      "sub": "Archimedean Yonta",
+      "activity": "rank The Holdfasts to Guardian",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [
+        {
+          "currency": "Holdfasts Standing",
+          "amount": "71,000"
+        }
+      ],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Rank 1, Fallen",
+          "note": "5,000 standing, 10,000 cr; 5 Voidplume Down, 2,000 Ferrite, 2,000 Alloy Plate",
+          "alt": null,
+          "done": false,
+          "rank": {
+            "syndicate": "The Holdfasts",
+            "level": 1
+          }
+        },
+        {
+          "qty": null,
+          "label": "Rank 2, Watcher",
+          "note": "22,000 standing, 25,000 cr; 10 Voidplume Vane, 10 Voidgel Orb, 5,000 Alloy Plate",
+          "alt": null,
+          "done": false,
+          "rank": {
+            "syndicate": "The Holdfasts",
+            "level": 2
+          }
+        },
+        {
+          "qty": null,
+          "label": "Rank 3, Guardian",
+          "note": "44,000 standing, 50,000 cr; 10 Voidplume Crest, 10 Entrati Lanthorn, 5,000 Ferrite",
+          "alt": null,
+          "done": false,
+          "rank": {
+            "syndicate": "The Holdfasts",
+            "level": 3
+          }
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
       "place": "CAVALERO, CHRYSALITH",
       "sub": "The Holdfasts: Guardian (Rank 3)",
       "activity": "buy the Felarx blueprint",
@@ -122,7 +196,12 @@
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Holdfasts Standing", "amount": "8,000" }],
+      "spends": [
+        {
+          "currency": "Holdfasts Standing",
+          "amount": "8,000"
+        }
+      ],
       "map": null,
       "rows": [
         {

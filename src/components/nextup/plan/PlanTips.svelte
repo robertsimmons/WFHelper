@@ -27,7 +27,7 @@
 {#snippet line(tip: ItemTip)}
   <li class="py-px text-text-secondary" data-tip={tip.id}>
     <span
-      class="mr-[7px] font-bold {tip.kind === 'gotcha' ? 'text-warning' : 'text-accent'}"
+      class="mr-[7px] font-bold {tip.kind === 'gotcha' ? 'text-warning' : 'text-text-muted'}"
       aria-hidden="true">&bull;</span
     >{tip.text}
     {#if tip.dispute}

@@ -4,26 +4,88 @@
   "effort": 4,
   "source": "standing",
   "tradeable": false,
-  "progress": { "have": 0, "need": 3, "unit": "blueprints" },
+  "progress": {
+    "have": 0,
+    "need": 3,
+    "unit": "blueprints"
+  },
   "badges": [
-    { "text": "Ventkids Rank 5", "tone": "warn", "rank": { "syndicate": "Ventkids", "level": 5 } },
-    { "text": "MR 8", "tone": "info" }
+    {
+      "text": "Ventkids Rank 5",
+      "tone": "warn",
+      "rank": {
+        "syndicate": "Ventkids",
+        "level": 5
+      }
+    },
+    {
+      "text": "MR 8",
+      "tone": "info"
+    }
   ],
   "prices": [
-    { "label": "blueprints", "amount": "75,000 standing (25,000 free at Rank 5)", "money": false },
-    { "label": "build", "amount": "55,000 cr", "money": false }
+    {
+      "label": "blueprints",
+      "amount": "75,000 standing (25,000 free at Rank 5)",
+      "money": false
+    },
+    {
+      "label": "build",
+      "amount": "55,000 cr",
+      "money": false
+    }
   ],
   "materials": [
-    { "qty": "3", "label": "Orokin Cell", "note": "Kompressa" },
-    { "qty": "10", "label": "Hespazym Alloy", "note": "Barrel" },
-    { "qty": "10", "label": "Goblite Tears", "note": "Barrel" },
-    { "qty": "20", "label": "Longwinder Lathe Coagulant", "note": "Barrel" },
-    { "qty": "35", "label": "Tepa Nodule", "note": "Barrel" },
-    { "qty": "20", "label": "Axidrol Alloy", "note": "Receiver" },
-    { "qty": "6", "label": "Star Amarast", "note": "Receiver" },
-    { "qty": "10", "label": "Tink Dissipator Coil", "note": "Receiver" },
-    { "qty": "40", "label": "Mytocardia Spore", "note": "Receiver" },
-    { "qty": "55,000", "label": "Credits", "note": null }
+    {
+      "qty": "3",
+      "label": "Orokin Cell",
+      "note": "Kompressa"
+    },
+    {
+      "qty": "10",
+      "label": "Hespazym Alloy",
+      "note": "Barrel"
+    },
+    {
+      "qty": "10",
+      "label": "Goblite Tears",
+      "note": "Barrel"
+    },
+    {
+      "qty": "20",
+      "label": "Longwinder Lathe Coagulant",
+      "note": "Barrel"
+    },
+    {
+      "qty": "35",
+      "label": "Tepa Nodule",
+      "note": "Barrel"
+    },
+    {
+      "qty": "20",
+      "label": "Axidrol Alloy",
+      "note": "Receiver"
+    },
+    {
+      "qty": "6",
+      "label": "Star Amarast",
+      "note": "Receiver"
+    },
+    {
+      "qty": "10",
+      "label": "Tink Dissipator Coil",
+      "note": "Receiver"
+    },
+    {
+      "qty": "40",
+      "label": "Mytocardia Spore",
+      "note": "Receiver"
+    },
+    {
+      "qty": "55,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
     {
@@ -67,7 +129,10 @@
       "mode": null,
       "live": null,
       "skip": null,
-      "earns": { "currency": "Ventkids Standing", "amount": "290,000" },
+      "earns": {
+        "currency": "Ventkids Standing",
+        "amount": "290,000"
+      },
       "spends": [],
       "map": "orb-vallis",
       "rows": [
@@ -77,7 +142,10 @@
           "note": "5,000 / 22,000 / 44,000 / 70,000 / 99,000 sacrificed per rank",
           "alt": null,
           "done": false,
-          "rank": { "syndicate": "Ventkids", "level": 5 }
+          "rank": {
+            "syndicate": "Ventkids",
+            "level": 5
+          }
         },
         {
           "qty": "50,000",
@@ -96,13 +164,52 @@
       "type": "vendor",
       "place": "ROKY, VENTKIDS",
       "sub": null,
+      "activity": "rank Ventkids to Logical",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [
+        {
+          "currency": "Ventkids Standing",
+          "amount": "240,000"
+        }
+      ],
+      "map": "orb-vallis",
+      "rows": [
+        {
+          "qty": null,
+          "label": "Ventkids rank-ups to Logical (Rank 5)",
+          "note": "240,000 standing, 5,000 / 22,000 / 44,000 / 70,000 / 99,000 sacrificed per rank",
+          "alt": null,
+          "done": false,
+          "rank": {
+            "syndicate": "Ventkids",
+            "level": 5
+          }
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "ROKY, VENTKIDS",
+      "sub": null,
       "activity": "buy the three blueprints",
       "meta": "Rank 5, Logical",
       "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Ventkids Standing", "amount": "50,000" }],
+      "spends": [
+        {
+          "currency": "Ventkids Standing",
+          "amount": "50,000"
+        }
+      ],
       "map": null,
       "rows": [
         {

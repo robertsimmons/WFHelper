@@ -4,13 +4,35 @@
   "effort": 3,
   "source": "shop",
   "tradeable": "unranked copies only",
-  "progress": { "have": 0, "need": 1, "unit": "sentinel" },
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "sentinel"
+  },
   "badges": [
-    { "text": "Baro only", "tone": "warn" },
-    { "text": "2 Companion slots", "tone": "info" }
+    {
+      "text": "Baro only",
+      "tone": "warn"
+    },
+    {
+      "text": "2 Companion slots",
+      "tone": "info"
+    }
   ],
-  "prices": [{ "label": "Baro Ki'Teer", "amount": "300,000 cr + 500 Ducats", "money": false }],
-  "materials": [{ "qty": "300,000", "label": "Credits", "note": null }],
+  "prices": [
+    {
+      "label": "Baro Ki'Teer",
+      "amount": "300,000 cr + 500 Ducats",
+      "money": false
+    }
+  ],
+  "materials": [
+    {
+      "qty": "300,000",
+      "label": "Credits",
+      "note": null
+    }
+  ],
   "groups": [
     {
       "type": "currency",
@@ -21,7 +43,10 @@
       "mode": "full squad recommended",
       "live": null,
       "skip": null,
-      "earns": { "currency": "Orokin Ducats", "amount": "500" },
+      "earns": {
+        "currency": "Orokin Ducats",
+        "amount": "500"
+      },
       "spends": [],
       "map": null,
       "rows": [
@@ -31,13 +56,18 @@
           "note": "common parts 15, uncommon 45, rare 100",
           "alt": {
             "text": "or 100 Aya at Varzia, 5 Ducats each",
-            "spends": [{ "currency": "Aya", "amount": "100" }]
+            "spends": [
+              {
+                "currency": "Aya",
+                "amount": "100"
+              }
+            ]
           },
           "done": false
         }
       ],
       "conditions": [
-        "Ducats are untradeable; only the Prime parts that sell for them trade.",
+        "Ducats are untradeable.",
         "Maroo's Bazaar has no Ducat Kiosk; use any other Relay."
       ],
       "bonuses": [],
@@ -55,8 +85,14 @@
       "skip": null,
       "earns": null,
       "spends": [
-        { "currency": "Credits", "amount": "300,000" },
-        { "currency": "Orokin Ducats", "amount": "500" }
+        {
+          "currency": "Credits",
+          "amount": "300,000"
+        },
+        {
+          "currency": "Orokin Ducats",
+          "amount": "500"
+        }
       ],
       "map": null,
       "rows": [
@@ -89,7 +125,7 @@
         },
         {
           "title": "other routes",
-          "body": "During TennoCon, Baro's special Relay is open to anyone with a ticket and stocks Prisma Shade. Unranked copies without Forma or Orokin Reactor also trade between players."
+          "body": "During TennoCon, Baro's special Relay is open to anyone with a ticket and stocks Prisma Shade."
         }
       ]
     }

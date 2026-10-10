@@ -24,11 +24,6 @@
       "label": "eight parts, foundry",
       "amount": "400,000 cr",
       "money": false
-    },
-    {
-      "label": "rush a part",
-      "amount": "25 p",
-      "money": false
     }
   ],
   "materials": [
@@ -247,21 +242,21 @@
           "qty": "2",
           "label": "Adlet Core",
           "note": "350 health / 450 shields / 350 armor",
-          "alt": "or buy the blueprint from another player",
+          "alt": null,
           "done": false
         },
         {
           "qty": "2",
           "label": "Cela Bracket",
           "note": "+15% shields, Reflex Denial",
-          "alt": "or buy the blueprint from another player",
+          "alt": null,
           "done": false
         },
         {
           "qty": "2",
           "label": "Frak Stabilizer",
           "note": "Vazarin polarity, Focused Prospectus",
-          "alt": "or buy the blueprint from another player",
+          "alt": null,
           "done": false
         }
       ],
@@ -272,10 +267,7 @@
         "A second Hound sharing a Model you already gilded is worth zero Mastery, whatever its other parts.",
         "The Treasurer vanishes if you take too long, and its Zenith Granum Crown is consumed on every Granum Void entry."
       ],
-      "bonuses": [
-        "Each vanquish also hands over her Tenet weapon and her own fully built Hound.",
-        "Component blueprints trade between players, so a missing Model can be bought; built parts and assembled Hounds never trade."
-      ],
+      "bonuses": ["Each vanquish also hands over her Tenet weapon and her own fully built Hound."],
       "disclosures": [
         {
           "title": "the Granum Void loop",
@@ -453,7 +445,7 @@
       "place": "CAMBION DRIFT, DEIMOS",
       "sub": null,
       "activity": "Entrati standing for the rank-ups and the blueprint",
-      "meta": "79,000 standing: 71,000 rank-ups, 8,000 blueprint",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -463,6 +455,37 @@
       },
       "spends": [],
       "map": "cambion-drift",
+      "rows": [
+        {
+          "qty": "79,000",
+          "label": "Entrati bounty standing",
+          "note": "71,000 for the rank-ups, 8,000 for the blueprint",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": [],
+      "ref": "Entrati Standing"
+    },
+    {
+      "type": "vendor",
+      "place": "NECRALISK, DEIMOS",
+      "sub": "Father",
+      "activity": "rank Entrati up to Associate",
+      "meta": "71,000 standing",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [
+        {
+          "currency": "Entrati Standing",
+          "amount": "71,000"
+        }
+      ],
+      "map": "necralisk",
       "rows": [
         {
           "qty": null,
@@ -500,8 +523,7 @@
       ],
       "conditions": [],
       "bonuses": [],
-      "disclosures": [],
-      "ref": "Entrati Standing"
+      "disclosures": []
     },
     {
       "type": "vendor",

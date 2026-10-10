@@ -4,13 +4,35 @@
   "effort": 3,
   "source": "shop",
   "tradeable": "unranked only",
-  "progress": { "have": 0, "need": 450, "unit": "Ducats" },
+  "progress": {
+    "have": 0,
+    "need": 450,
+    "unit": "Ducats"
+  },
   "badges": [
-    { "text": "Baro only", "tone": "warn" },
-    { "text": "MR 7", "tone": "info" }
+    {
+      "text": "Baro only",
+      "tone": "warn"
+    },
+    {
+      "text": "MR 7",
+      "tone": "info"
+    }
   ],
-  "prices": [{ "label": "Baro Ki'Teer", "amount": "300,000 cr + 450 Ducats", "money": false }],
-  "materials": [{ "qty": "300,000", "label": "Credits", "note": null }],
+  "prices": [
+    {
+      "label": "Baro Ki'Teer",
+      "amount": "300,000 cr + 450 Ducats",
+      "money": false
+    }
+  ],
+  "materials": [
+    {
+      "qty": "300,000",
+      "label": "Credits",
+      "note": null
+    }
+  ],
   "groups": [
     {
       "type": "gate",
@@ -47,7 +69,10 @@
       "mode": null,
       "live": null,
       "skip": null,
-      "earns": { "currency": "Orokin Ducats", "amount": "450" },
+      "earns": {
+        "currency": "Orokin Ducats",
+        "amount": "450"
+      },
       "spends": [],
       "map": null,
       "rows": [
@@ -59,9 +84,7 @@
           "done": false
         }
       ],
-      "conditions": [
-        "Ducats cannot be traded and come only from selling items you own; do not sell every Prime part for platinum first."
-      ],
+      "conditions": ["Ducats come only from selling items you own."],
       "bonuses": [],
       "disclosures": [],
       "ref": "Orokin Ducats"
@@ -77,8 +100,14 @@
       "skip": null,
       "earns": null,
       "spends": [
-        { "currency": "Credits", "amount": "300,000" },
-        { "currency": "Orokin Ducats", "amount": "450" }
+        {
+          "currency": "Credits",
+          "amount": "300,000"
+        },
+        {
+          "currency": "Orokin Ducats",
+          "amount": "450"
+        }
       ],
       "map": null,
       "rows": [

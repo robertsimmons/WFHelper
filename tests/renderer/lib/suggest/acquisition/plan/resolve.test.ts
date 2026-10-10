@@ -278,7 +278,7 @@ describe("currency ledger", () => {
     );
     const plan = resolveShipped(hound);
     const entrati = plan.ledger.find((entry) => entry.currency === "Entrati Standing");
-    expect(entrati).toMatchObject({ earned: null, spent: 8000, paired: false });
+    expect(entrati).toMatchObject({ earned: null, spent: 79000, paired: false });
     expect(plan.groups.every((group) => group.earns?.currency !== "Entrati Standing")).toBe(true);
   });
 

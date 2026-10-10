@@ -16,6 +16,14 @@
     }
   ],
   "prices": [],
+  "routes": [
+    {
+      "name": "Varzia relics, as Ankyros Prime",
+      "cost": "1 Aya a relic during her Prime Resurgence, 2 Blades and 2 Gauntlets, 12-hour build",
+      "effort": 8,
+      "role": "chosen"
+    }
+  ],
   "materials": [
     {
       "qty": "10",
@@ -55,6 +63,60 @@
       "disclosures": []
     },
     {
+      "type": "currency",
+      "place": "CAMBION DRIFT, DEIMOS",
+      "sub": "Necralisk",
+      "activity": "Level 40-60 bounty, final stage",
+      "meta": "43.48% per final stage",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Aya",
+          "note": "1 per relic; bank it before the window opens",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": [],
+      "ref": "Aya"
+    },
+    {
+      "type": "vendor",
+      "place": "MAROO'S BAZAAR, MARS",
+      "sub": "Varzia",
+      "activity": "buy the Ankyros Prime relics she stocks, 1 Aya each",
+      "meta": "only while Ankyros Prime is in Prime Resurgence",
+      "mode": null,
+      "live": {
+        "state": "blocked",
+        "text": "vaulted; only during her Prime Resurgence"
+      },
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Ankyros Prime relics",
+          "note": "buy extra Blade relics: Blade is the bottleneck",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Her stock rotates away; relics and Aya you hold never expire."],
+      "bonuses": ["Varzia is also in the Market's Prime Resurgence tab."],
+      "disclosures": []
+    },
+    {
       "type": "fissure",
       "place": "ANY VOID FISSURE",
       "sub": null,
@@ -89,11 +151,7 @@
           "done": false
         }
       ],
-      "conditions": [
-        "Ankyros Prime is vaulted: its relics no longer drop from missions.",
-        "Vaulted relics and the parts themselves still trade between players.",
-        "Varzia may stock these relics during a Prime Resurgence rotation."
-      ],
+      "conditions": ["Mission rewards never drop Resurgence relics; Varzia is the only source."],
       "bonuses": [],
       "disclosures": []
     },

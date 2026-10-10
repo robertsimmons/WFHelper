@@ -297,11 +297,174 @@
       "role": "chosen"
     },
     {
+      "name": "After the quest: Necraloid",
+      "cost": "Loid's rank rewards give the casing and the main blueprint; 28,000 standing covers Rank 2 and the other three components",
+      "effort": 5,
+      "role": "afterQuest"
+    },
+    {
       "name": "Bonewidow instead",
       "cost": "95,000 Necraloid standing and 85,000 credits; it also comes with the Mausolon",
       "effort": 5,
       "role": null
     }
   ],
-  "afterQuest": null
+  "afterQuest": {
+    "effort": 5,
+    "badges": [
+      {
+        "text": "Necraloid Rank 2",
+        "tone": "warn",
+        "rank": {
+          "syndicate": "Necraloid",
+          "level": 2
+        }
+      },
+      {
+        "text": "28,000 Necraloid standing",
+        "tone": "info"
+      }
+    ],
+    "groups": [
+      {
+        "sub": "Mother, Isolation Vaults",
+        "mode": null,
+        "live": null,
+        "skip": null,
+        "earns": {
+          "currency": "Necraloid Standing",
+          "amount": "28,000"
+        },
+        "spends": [],
+        "map": "cambion-drift",
+        "conditions": [
+          "Orokin Matrices from the vault Necramechs are the only Necraloid standing source."
+        ],
+        "bonuses": [],
+        "disclosures": [],
+        "type": "bounty",
+        "place": "CAMBION DRIFT, DEIMOS",
+        "activity": "kill the vault Necramechs for Orokin Matrices",
+        "meta": "28,000 standing at Loid",
+        "rows": [
+          {
+            "qty": "10",
+            "label": "Orokin Orientation Matrix",
+            "note": "Tier 1 vault, 1 Necramech; 1,000 standing each at Loid",
+            "alt": null,
+            "done": false
+          },
+          {
+            "qty": "15",
+            "label": "Orokin Ballistics Matrix",
+            "note": "Tier 2 vault, 2 Necramechs; 2,500 standing each",
+            "alt": null,
+            "done": false
+          }
+        ],
+        "ref": "Necraloid Standing"
+      },
+      {
+        "sub": null,
+        "mode": null,
+        "live": null,
+        "skip": null,
+        "earns": null,
+        "spends": [
+          {
+            "currency": "Entrati Standing",
+            "amount": "3,000"
+          }
+        ],
+        "map": "necralisk",
+        "conditions": [],
+        "bonuses": [],
+        "disclosures": [],
+        "type": "vendor",
+        "place": "FATHER, NECRALISK",
+        "activity": "buy the barrel blueprints Loid's rank-ups consume",
+        "meta": "Entrati Rank 2",
+        "rows": [
+          {
+            "qty": null,
+            "label": "Zymos Barrel Blueprint",
+            "note": "1,000 standing, Rank 1",
+            "alt": null,
+            "done": false,
+            "rank": {
+              "syndicate": "Entrati",
+              "level": 1
+            }
+          },
+          {
+            "qty": null,
+            "label": "Sepulcrum Barrel Blueprint",
+            "note": "2,000 standing, Rank 2",
+            "alt": null,
+            "done": false,
+            "rank": {
+              "syndicate": "Entrati",
+              "level": 2
+            }
+          }
+        ]
+      },
+      {
+        "sub": null,
+        "mode": null,
+        "live": null,
+        "skip": null,
+        "earns": null,
+        "spends": [
+          {
+            "currency": "Necraloid Standing",
+            "amount": "28,000"
+          }
+        ],
+        "map": "necralisk",
+        "conditions": [],
+        "bonuses": [],
+        "disclosures": [],
+        "type": "vendor",
+        "place": "LOID, NECRALISK",
+        "activity": "rank Necraloid to Clearance: Modus, then buy the blueprints",
+        "meta": "Rank 2",
+        "rows": [
+          {
+            "qty": null,
+            "label": "Clearance: Agnesis",
+            "note": "5,000 standing, 10 Orientation Matrix, Zymos Barrel Blueprint, 20 Father Tokens, 150 Void Traces; free Voidrig Casing Blueprint",
+            "alt": null,
+            "done": false,
+            "rank": {
+              "syndicate": "Necraloid",
+              "level": 1
+            }
+          },
+          {
+            "qty": null,
+            "label": "Clearance: Modus",
+            "note": "22,000 standing, 15 Ballistics Matrix, Sepulcrum Barrel Blueprint, 20 Father Tokens, 250 Void Traces; free Voidrig Blueprint",
+            "alt": null,
+            "done": false,
+            "rank": {
+              "syndicate": "Necraloid",
+              "level": 2
+            }
+          },
+          {
+            "qty": "3",
+            "label": "Voidrig component blueprints",
+            "note": "Engine, Capsule, Weapon Pod; 2,000 standing each at Rank 1",
+            "alt": null,
+            "done": false,
+            "rank": {
+              "syndicate": "Necraloid",
+              "level": 1
+            }
+          }
+        ]
+      }
+    ]
+  }
 }

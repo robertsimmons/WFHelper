@@ -4,13 +4,35 @@
   "effort": 3,
   "source": "shop",
   "tradeable": "unranked only, no Forma or Catalyst",
-  "progress": { "have": 0, "need": 450, "unit": "Ducats" },
+  "progress": {
+    "have": 0,
+    "need": 450,
+    "unit": "Ducats"
+  },
   "badges": [
-    { "text": "Baro only", "tone": "warn" },
-    { "text": "MR 13", "tone": "info" }
+    {
+      "text": "Baro only",
+      "tone": "warn"
+    },
+    {
+      "text": "MR 13",
+      "tone": "info"
+    }
   ],
-  "prices": [{ "label": "Baro Ki'Teer", "amount": "350,000 cr + 450 Ducats", "money": false }],
-  "materials": [{ "qty": "350,000", "label": "Credits", "note": null }],
+  "prices": [
+    {
+      "label": "Baro Ki'Teer",
+      "amount": "350,000 cr + 450 Ducats",
+      "money": false
+    }
+  ],
+  "materials": [
+    {
+      "qty": "350,000",
+      "label": "Credits",
+      "note": null
+    }
+  ],
   "groups": [
     {
       "type": "gate",
@@ -28,7 +50,7 @@
         {
           "qty": null,
           "label": "Mastery Rank 13",
-          "note": "needed to equip it, and for a trade recipient",
+          "note": "needed to equip it",
           "alt": null,
           "done": false
         }
@@ -46,7 +68,10 @@
       "mode": "full squad recommended",
       "live": null,
       "skip": null,
-      "earns": { "currency": "Orokin Ducats", "amount": "450" },
+      "earns": {
+        "currency": "Orokin Ducats",
+        "amount": "450"
+      },
       "spends": [],
       "map": null,
       "rows": [
@@ -56,12 +81,17 @@
           "note": "common parts 15, uncommon 45, rare 100",
           "alt": {
             "text": "or 90 Aya at Varzia, 5 Ducats each",
-            "spends": [{ "currency": "Aya", "amount": "90" }]
+            "spends": [
+              {
+                "currency": "Aya",
+                "amount": "90"
+              }
+            ]
           },
           "done": false
         }
       ],
-      "conditions": ["Ducats are untradeable; only the Prime parts that sell for them trade."],
+      "conditions": ["Ducats are untradeable."],
       "bonuses": [],
       "disclosures": [],
       "ref": "Orokin Ducats"
@@ -77,8 +107,14 @@
       "skip": null,
       "earns": null,
       "spends": [
-        { "currency": "Credits", "amount": "350,000" },
-        { "currency": "Orokin Ducats", "amount": "450" }
+        {
+          "currency": "Credits",
+          "amount": "350,000"
+        },
+        {
+          "currency": "Orokin Ducats",
+          "amount": "450"
+        }
       ],
       "map": null,
       "rows": [
@@ -95,7 +131,7 @@
       "disclosures": [
         {
           "title": "other routes",
-          "body": "During TennoCon, Baro's special Relay is open to anyone with a ticket, and his stock there covers almost everything he has sold. Unranked copies without Forma or Catalyst also trade between players, to a recipient at MR 13."
+          "body": "During TennoCon, Baro's special Relay is open to anyone with a ticket, and his stock there covers almost everything he has sold."
         }
       ]
     }

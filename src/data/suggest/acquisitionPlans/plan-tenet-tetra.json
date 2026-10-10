@@ -4,14 +4,28 @@
   "effort": 8,
   "source": "unique",
   "tradeable": "converted Sister only",
-  "progress": { "have": 0, "need": 1, "unit": "weapon" },
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "weapon"
+  },
   "badges": [
-    { "text": "Sister of Parvos", "tone": "warn" },
-    { "text": "Railjack required", "tone": "warn" }
+    {
+      "text": "Sister of Parvos",
+      "tone": "warn"
+    },
+    {
+      "text": "Railjack required",
+      "tone": "warn"
+    }
   ],
   "prices": [],
   "materials": [
-    { "qty": "1", "label": "Zenith Granum Crown", "note": "one per Granum Void attempt" }
+    {
+      "qty": "1",
+      "label": "Zenith Granum Crown",
+      "note": "one per Granum Void attempt"
+    }
   ],
   "groups": [
     {
@@ -94,7 +108,7 @@
           "qty": "3",
           "label": "charged Requiem mods",
           "note": "one sequence; each has 3 charges",
-          "alt": "buy mods from other players",
+          "alt": null,
           "done": false
         },
         {
@@ -128,14 +142,19 @@
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Zenith Granum Crown", "amount": "1" }],
+      "spends": [
+        {
+          "currency": "Zenith Granum Crown",
+          "amount": "1"
+        }
+      ],
       "map": null,
       "rows": [
         {
           "qty": null,
           "label": "Tenet Tetra Candidate",
           "note": "weapon preview must say Tetra",
-          "alt": "buy a converted Tenet Tetra Sister from another player",
+          "alt": null,
           "done": false
         },
         {
@@ -230,7 +249,7 @@
         }
       ],
       "conditions": [
-        "Choose Vanquish, never Convert. Convert gives you an ally and a tradeable Sister but no weapon. No choice within 20 seconds Vanquishes.",
+        "Choose Vanquish, never Convert. No choice within 20 seconds Vanquishes.",
         "The weapon ignores its normal Mastery Rank requirement."
       ],
       "bonuses": [

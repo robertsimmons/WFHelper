@@ -4,14 +4,27 @@
   "effort": 3,
   "source": "repeat",
   "tradeable": false,
-  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "progress": {
+    "have": 0,
+    "need": 4,
+    "unit": "parts"
+  },
   "badges": [
-    { "text": "Limbo Theorem quest", "tone": "warn" },
-    { "text": "Circuit alt", "tone": "circuit" }
+    {
+      "text": "Limbo Theorem quest",
+      "tone": "warn"
+    },
+    {
+      "text": "Circuit alt",
+      "tone": "circuit"
+    }
   ],
   "prices": [
-    { "label": "blueprint", "amount": "35,000 cr", "money": false },
-    { "label": "built", "amount": "200 p", "money": false }
+    {
+      "label": "blueprint",
+      "amount": "35,000 cr",
+      "money": false
+    }
   ],
   "routes": [
     {
@@ -34,19 +47,71 @@
     }
   ],
   "materials": [
-    { "qty": "150", "label": "Alloy Plate", "note": "Neuroptics" },
-    { "qty": "2", "label": "Neurodes", "note": "Neuroptics" },
-    { "qty": "150", "label": "Polymer Bundle", "note": "Neuroptics" },
-    { "qty": "800", "label": "Rubedo", "note": "500 Neuroptics, 300 Chassis" },
-    { "qty": "1", "label": "Neural Sensors", "note": "Chassis" },
-    { "qty": "1,000", "label": "Ferrite", "note": "Chassis" },
-    { "qty": "1", "label": "Argon Crystal", "note": "Chassis" },
-    { "qty": "1", "label": "Control Module", "note": "Systems" },
-    { "qty": "3", "label": "Morphics", "note": "Systems" },
-    { "qty": "500", "label": "Salvage", "note": "Systems" },
-    { "qty": "220", "label": "Plastids", "note": "Systems" },
-    { "qty": "3", "label": "Orokin Cell", "note": "the Limbo build" },
-    { "qty": "124,500", "label": "Credits", "note": null }
+    {
+      "qty": "150",
+      "label": "Alloy Plate",
+      "note": "Neuroptics"
+    },
+    {
+      "qty": "2",
+      "label": "Neurodes",
+      "note": "Neuroptics"
+    },
+    {
+      "qty": "150",
+      "label": "Polymer Bundle",
+      "note": "Neuroptics"
+    },
+    {
+      "qty": "800",
+      "label": "Rubedo",
+      "note": "500 Neuroptics, 300 Chassis"
+    },
+    {
+      "qty": "1",
+      "label": "Neural Sensors",
+      "note": "Chassis"
+    },
+    {
+      "qty": "1,000",
+      "label": "Ferrite",
+      "note": "Chassis"
+    },
+    {
+      "qty": "1",
+      "label": "Argon Crystal",
+      "note": "Chassis"
+    },
+    {
+      "qty": "1",
+      "label": "Control Module",
+      "note": "Systems"
+    },
+    {
+      "qty": "3",
+      "label": "Morphics",
+      "note": "Systems"
+    },
+    {
+      "qty": "500",
+      "label": "Salvage",
+      "note": "Systems"
+    },
+    {
+      "qty": "220",
+      "label": "Plastids",
+      "note": "Systems"
+    },
+    {
+      "qty": "3",
+      "label": "Orokin Cell",
+      "note": "the Limbo build"
+    },
+    {
+      "qty": "124,500",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
     {
@@ -85,13 +150,24 @@
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Credits", "amount": "35,000" }],
+      "spends": [
+        {
+          "currency": "Credits",
+          "amount": "35,000"
+        }
+      ],
       "map": null,
       "rows": [
-        { "qty": null, "label": "Limbo Blueprint", "note": null, "alt": null, "done": false }
+        {
+          "qty": null,
+          "label": "Limbo Blueprint",
+          "note": null,
+          "alt": null,
+          "done": false
+        }
       ],
       "conditions": [
-        "The quest never gives the main blueprint. The Market tile shows 200 platinum for the built frame; click the tile and use the separate Blueprint button, which costs credits."
+        "The quest never gives the main blueprint. Buy the blueprint with credits from the Market tile's Blueprint button."
       ],
       "bonuses": [],
       "disclosures": []
@@ -113,7 +189,7 @@
           "qty": "3",
           "label": "Proof Fragment",
           "note": "1 per Theorem key; the keys cost 6,500 cr each",
-          "alt": "tradeable",
+          "alt": null,
           "done": false
         }
       ],
@@ -122,9 +198,7 @@
         "Some enemies fly outside the mission area. Chasing them forces an abort, so let them despawn.",
         "The game never says you have enough fragments. Check the Foundry."
       ],
-      "bonuses": [
-        "Fragments are tradeable, so clanmates or recruit chat can hand you the three and skip the Interception."
-      ],
+      "bonuses": [],
       "disclosures": [
         {
           "title": "loadout",
@@ -229,8 +303,14 @@
   "afterQuest": {
     "effort": 4,
     "badges": [
-      { "text": "Simaris 75,000 standing", "tone": "warn" },
-      { "text": "Circuit week 6", "tone": "circuit" }
+      {
+        "text": "Simaris 75,000 standing",
+        "tone": "warn"
+      },
+      {
+        "text": "Circuit week 6",
+        "tone": "circuit"
+      }
     ],
     "groups": [
       {
@@ -242,7 +322,10 @@
         "mode": null,
         "live": null,
         "skip": null,
-        "earns": { "currency": "Cephalon Simaris Standing", "amount": "75,000" },
+        "earns": {
+          "currency": "Cephalon Simaris Standing",
+          "amount": "75,000"
+        },
         "spends": [],
         "map": null,
         "rows": [
@@ -269,7 +352,12 @@
         "live": null,
         "skip": null,
         "earns": null,
-        "spends": [{ "currency": "Cephalon Simaris Standing", "amount": "75,000" }],
+        "spends": [
+          {
+            "currency": "Cephalon Simaris Standing",
+            "amount": "75,000"
+          }
+        ],
         "map": null,
         "rows": [
           {

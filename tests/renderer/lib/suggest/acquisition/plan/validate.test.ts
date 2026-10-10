@@ -17,8 +17,10 @@ import type {
 
 describe("validatePlan", () => {
   it("accepts every plan that ships with the app", () => {
-    const plans = authoredPlans();
-    for (const plan of plans) expect([plan.name, validatePlan(plan)]).toEqual([plan.name, []]);
+    const failures = authoredPlans()
+      .map((plan) => [plan.name, validatePlan(plan)] as const)
+      .filter(([, problems]) => problems.length > 0);
+    expect(failures).toEqual([]);
   });
 
   it("names the field that is wrong", () => {

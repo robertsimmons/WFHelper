@@ -430,11 +430,11 @@ describe("resolving a generated plan", () => {
 
 describe("plan lookup", () => {
   it("lets an authored file beat generation", () => {
-    const khora = authoredPlan("Khora Prime");
-    expect(khora).not.toBeNull();
+    const war = authoredPlan("War Prime");
+    expect(war).not.toBeNull();
     const db = itemDb();
-    const target = { ...targetFor(db, OPEN), name: "Khora Prime" };
-    expect(planFor(target, { itemDb: db, relicDb: OPEN })).toBe(khora);
+    const target = { ...targetFor(db, OPEN), name: "War Prime" };
+    expect(planFor(target, { itemDb: db, relicDb: OPEN })).toBe(war);
   });
 
   it("rates the card off the generated plan and files it under relics", () => {
@@ -498,9 +498,10 @@ describe("plan lookup", () => {
 
 describe("prime overrides", () => {
   it("accepts every shipped override", () => {
-    for (const override of primeOverrides()) {
-      expect([override.name, validatePrimeOverride(override)]).toEqual([override.name, []]);
-    }
+    const failures = primeOverrides()
+      .map((override) => [override.name, validatePrimeOverride(override)] as const)
+      .filter(([, problems]) => problems.length > 0);
+    expect(failures).toEqual([]);
   });
 
   it("takes gates, badges and an effort with its reason", () => {

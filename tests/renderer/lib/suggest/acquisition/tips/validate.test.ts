@@ -54,9 +54,10 @@ const FARM = { group: "farm" as const, place: "KAPPA" };
 
 describe("shipped tips", () => {
   it("validates every tips file against its item's plan", () => {
-    for (const tips of tipsFiles()) {
-      expect([tips.name, validateTips(tips, target)]).toEqual([tips.name, []]);
-    }
+    const failures = tipsFiles()
+      .map((tips) => [tips.name, validateTips(tips, target)] as const)
+      .filter(([, problems]) => problems.length > 0);
+    expect(failures).toEqual([]);
   });
 
   it("validates every dispute against the tips files", () => {

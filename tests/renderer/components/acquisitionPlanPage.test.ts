@@ -191,14 +191,14 @@ describe("acquisition plan page", () => {
   });
 
   it("sets the real-money price apart from the ones that cost time", () => {
-    const plan = structuredClone(authored("Mesa Prime"));
+    const plan = structuredClone(authored("War Prime"));
     plan.prices = [
       { label: "build", amount: "25,000 cr", money: false },
       { label: "bundle", amount: "$1.00", money: true },
     ];
-    const mesa = resolved(plan);
-    expect(mesa.prices.filter((price) => price.money)).toHaveLength(1);
-    expect(mesa.prices.filter((price) => !price.money).length).toBeGreaterThan(0);
+    const war = resolved(plan);
+    expect(war.prices.filter((price) => price.money)).toHaveLength(1);
+    expect(war.prices.filter((price) => !price.money).length).toBeGreaterThan(0);
     const text = source("AcquisitionPlanPage.svelte");
     expect(text).toContain("{#if note.money}");
     expect(text).toContain("border-warning/60");

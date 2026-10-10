@@ -213,7 +213,7 @@ describe("live state", () => {
   });
 
   it("treats a vendor rotation as waiting whatever the player did", () => {
-    const varzia = byPlace(resolve("Mesa Prime"), "MAROO'S BAZAAR, MARS");
+    const varzia = byPlace(resolve("Venari Prime"), "MAROO'S BAZAAR, MARS");
     expect(varzia.live?.state).toBe("waiting");
   });
 

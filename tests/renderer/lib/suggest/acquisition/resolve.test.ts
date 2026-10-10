@@ -444,7 +444,9 @@ describe("resolveAcquisition beyond frames and weapons", () => {
   });
 
   it("keeps a curated frame's routes off the plan, and sets a vaulted Prime's Varzia route beside its relics", () => {
-    const targets = resolveAcquisition(context());
+    const vaulted = relicDb();
+    vaulted.groups["Lith M1"] = { ...vaulted.groups["Lith M1"], vaulted: true, dropping: "none" };
+    const targets = resolveAcquisition(context({ relicDb: vaulted }));
     expect(find(targets, "Mag").paths.some((path) => path.id === "plan")).toBe(false);
     expect(find(targets, "Mag").paths[0].kind).toBe("boss");
     const prime = find(targets, "Mag Prime").paths;

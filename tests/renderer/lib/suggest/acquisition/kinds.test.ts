@@ -24,6 +24,7 @@ function modular(gear: ModularGear): AcquisitionTarget {
 }
 
 const FRAME = target("warframe", null);
+const PRIME_FRAME = { ...FRAME, isPrime: true } as AcquisitionTarget;
 const SUIT = target("archwing", null);
 const RIFLE = target("weapon", "primary");
 const BLADE = target("weapon", "melee");
@@ -35,8 +36,9 @@ const BEAST = target("beast", null);
 const MECH = target("necramech", null);
 
 describe("includeOf", () => {
-  it("reads a frame as a frame and a weapon as its class", () => {
-    expect(includeOf(FRAME)).toBe("warframe");
+  it("reads a frame as prime or normal and a weapon as its class", () => {
+    expect(includeOf(FRAME)).toBe("warframe_normal");
+    expect(includeOf(PRIME_FRAME)).toBe("warframe_prime");
     expect(includeOf(RIFLE)).toBe("primary");
     expect(includeOf(BLADE)).toBe("melee");
   });
@@ -97,15 +99,15 @@ describe("ACQUISITION_INCLUDE_GROUPS", () => {
     ]);
   });
 
-  it("makes Warframes a plain toggle and every other group a dropdown", () => {
+  it("makes every group a dropdown", () => {
     for (const group of ACQUISITION_INCLUDE_GROUPS) {
-      const toggle = group.id === "warframes";
-      expect(group.include === null).toBe(!toggle);
-      expect(group.members.length === 0).toBe(toggle);
+      expect(group.include).toBeNull();
+      expect(group.members.length).toBeGreaterThan(0);
     }
   });
 
   it("farms a sentinel's gun with the pet rather than with the weapons", () => {
+    expect(members("warframes")).toEqual(["warframe_prime", "warframe_normal"]);
     expect(members("weapons")).toEqual(["primary", "secondary", "melee"]);
     expect(members("companions")).toEqual(["sentinel", "companion", "beast", "robotic"]);
     expect(members("archwing")).toEqual(["archwing", "archgun", "archmelee"]);
@@ -124,6 +126,7 @@ describe("ACQUISITION_INCLUDE_GROUPS", () => {
     const boxes = new Set<string>(ACQUISITION_INCLUDES);
     const every = [
       FRAME,
+      PRIME_FRAME,
       SUIT,
       RIFLE,
       BLADE,
@@ -153,9 +156,15 @@ describe("ACQUISITION_INCLUDE_GROUPS", () => {
 
 describe("includesTarget", () => {
   it("keeps only the kinds ticked", () => {
-    const picked: AcquisitionInclude[] = ["warframe"];
+    const picked: AcquisitionInclude[] = ["warframe_normal"];
     expect(includesTarget(picked, FRAME)).toBe(true);
     expect(includesTarget(picked, RIFLE)).toBe(false);
+  });
+
+  it("splits frames into prime and normal", () => {
+    expect(includesTarget(["warframe_prime"], PRIME_FRAME)).toBe(true);
+    expect(includesTarget(["warframe_prime"], FRAME)).toBe(false);
+    expect(includesTarget(["warframe_normal"], PRIME_FRAME)).toBe(false);
   });
 
   it("keeps several kinds at once", () => {
@@ -201,12 +210,12 @@ describe("includesTarget", () => {
   });
 
   it("never hides a target it cannot class", () => {
-    expect(includesTarget(["warframe"], target("weapon", null))).toBe(true);
-    expect(includesTarget(["warframe"], target("modular", null))).toBe(true);
+    expect(includesTarget(["warframe_normal"], target("weapon", null))).toBe(true);
+    expect(includesTarget(["warframe_normal"], target("modular", null))).toBe(true);
   });
 
   it("still reads a selection stored before the groups existed", () => {
-    const stored = ["warframe", "primary", "secondary", "melee", "archwing", "companion"];
+    const stored = ["warframe_normal", "primary", "secondary", "melee", "archwing", "companion"];
     const picked = ACQUISITION_INCLUDES.filter((kind) => stored.includes(kind));
     expect(picked).toHaveLength(stored.length);
     expect(includesTarget(picked, FRAME)).toBe(true);

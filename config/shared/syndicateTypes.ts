@@ -40,4 +40,6 @@ export interface SyndicateMeta {
   /** One-time cost of joining, paid before the rank 1 sacrifice. */
   initiation?: SyndicateSacrifice;
   titles: SyndicateTitle[];
+  /** Ranks with no standing to track; kept for rank gating only. */
+  rankOnly?: boolean;
 }

@@ -18,6 +18,7 @@ import {
 import {
   authoredPlan,
   resolvePlan,
+  type AuthoredPlan,
   type PlanContext,
   type ResolvedGroup,
   type ResolvedPlan,
@@ -51,10 +52,14 @@ const view = (): string => fs.readFileSync(VIEW, "utf8");
 
 const EMPTY: PlanContext = { itemDb: {}, inventory: null, now: Date.UTC(2025, 0, 1) };
 
-function resolved(name: string, context: Partial<PlanContext> = {}): ResolvedPlan {
+function authored(name: string): AuthoredPlan {
   const plan = authoredPlan(name);
   if (!plan) throw new Error(`no plan for ${name}`);
-  return resolvePlan(plan, { ...EMPTY, ...context });
+  return plan;
+}
+
+function resolved(name: string | AuthoredPlan, context: Partial<PlanContext> = {}): ResolvedPlan {
+  return resolvePlan(typeof name === "string" ? authored(name) : name, { ...EMPTY, ...context });
 }
 
 function row(id: string, done: boolean, source: ResolvedRow["source"]): ResolvedRow {
@@ -166,7 +171,12 @@ describe("acquisition plan page", () => {
   });
 
   it("sets the real-money price apart from the ones that cost time", () => {
-    const mesa = resolved("Mesa Prime");
+    const plan = structuredClone(authored("Mesa Prime"));
+    plan.prices = [
+      { label: "build", amount: "25,000 cr", money: false },
+      { label: "bundle", amount: "$1.00", money: true },
+    ];
+    const mesa = resolved(plan);
     expect(mesa.prices.filter((price) => price.money)).toHaveLength(1);
     expect(mesa.prices.filter((price) => !price.money).length).toBeGreaterThan(0);
     const text = source("AcquisitionPlanPage.svelte");
@@ -185,7 +195,7 @@ describe("acquisition plan page", () => {
   });
 
   it("ticks a row by hand, and the tick keeps its place", () => {
-    const id = rowIdOf(resolved("Rhino"), "Neuroptics");
+    const id = rowIdOf(resolved("Rhino"), "Rhino Neuroptics");
     const before = resolved("Rhino", { manualDone: [] })
       .groups.flatMap((entry) => entry.rows)
       .find((entry) => entry.id === id);
@@ -222,10 +232,13 @@ describe("acquisition plan page", () => {
   });
 
   it("lets a tick clear a row an authored plan starts as done", () => {
-    const id = rowIdOf(resolved("Hound"), "The War Within");
-    expect(rowById(resolved("Hound"), id)?.done).toBe(true);
+    const hound = structuredClone(authored("Hound"));
+    const rank = hound.groups[0].rows.find((entry) => entry.label === "Mastery Rank 5");
+    rank!.done = true;
+    const id = rowIdOf(resolved(hound), "Mastery Rank 5");
+    expect(rowById(resolved(hound), id)?.done).toBe(true);
 
-    const cleared = resolved("Hound", { manualCleared: [id] });
+    const cleared = resolved(hound, { manualCleared: [id] });
     expect(rowById(cleared, id)?.done).toBe(false);
     expect(rowById(cleared, id)?.source).toBe("manual");
   });
@@ -234,17 +247,19 @@ describe("acquisition plan page", () => {
     const carriers = resolved("Hound").groups.filter((entry) =>
       entry.facts.some((fact) => fact.kind === "standing"),
     );
-    // Solaris United has an earner and Entrati does not, so one group each:
-    // whoever banks it, and failing that the first group that spends it.
+    // Solaris United and Entrati each have an earner, so one group each:
+    // whoever banks it, never the vendors that spend it.
     expect(carriers.map((entry) => entry.activity)).toEqual([
       "Conservation, plus Bounty 1 for the bonds",
-      "buy the Trapezium Xenorhast refining blueprint",
+      "Entrati standing for the rank-ups and the blueprint",
     ]);
   });
 
   it("leaves the banked line off a group whose own rows name that currency", () => {
     const banks = resolved("Hound").groups.filter((entry) => entry.earns !== null);
-    expect(banks).toEqual([]);
+    // The Orb Vallis group's own row names Solaris United standing; the Entrati
+    // group's rows are its rank-ups, so it keeps its banked line.
+    expect(banks.map((entry) => entry.earns?.currency)).toEqual(["Entrati Standing"]);
   });
 
   it("opens an item with no plan on a plain unknown state", () => {
@@ -402,12 +417,7 @@ describe("temporary ticks on rows the inventory decides", () => {
 });
 
 describe("row quantity text", () => {
-  function counted(
-    done: boolean,
-    tracked: boolean,
-    required: number,
-    owned: number,
-  ): ResolvedRow {
+  function counted(done: boolean, tracked: boolean, required: number, owned: number): ResolvedRow {
     const remaining = Math.max(0, required - owned);
     const text = (done ? required : remaining).toLocaleString("en-US");
     return {

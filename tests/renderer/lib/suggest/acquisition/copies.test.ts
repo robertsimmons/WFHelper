@@ -466,10 +466,10 @@ function foundryRow(target: AcquisitionTarget, held: RawInventoryData, label: st
   return row;
 }
 
-describe("a foundry row naming a bare part tracks the built part", () => {
+describe("a foundry row naming a part tracks the built part", () => {
   it("ticks the Neuroptics foundry row off a built Neuroptics in the inventory", () => {
     const held = inventory({ suits: [NEKROS], misc: { [NEKROS_NEURO]: 1 } });
-    expect(foundryRow(target("Nekros", held), held, "Neuroptics")).toMatchObject({
+    expect(foundryRow(target("Nekros", held), held, "Nekros Neuroptics")).toMatchObject({
       manual: false,
       source: "inventory",
       done: true,
@@ -478,7 +478,7 @@ describe("a foundry row naming a bare part tracks the built part", () => {
 
   it("leaves the Neuroptics foundry row open while only its blueprint is held", () => {
     const held = inventory({ suits: [NEKROS], recipes: { [NEKROS_NEURO_BP]: 1 } });
-    expect(foundryRow(target("Nekros", held), held, "Neuroptics")).toMatchObject({
+    expect(foundryRow(target("Nekros", held), held, "Nekros Neuroptics")).toMatchObject({
       manual: false,
       done: false,
     });
@@ -486,14 +486,14 @@ describe("a foundry row naming a bare part tracks the built part", () => {
 
   it("asks the Neuroptics foundry row for one per build", () => {
     const held = inventory({ misc: { [NEKROS_NEURO]: 1 } });
-    const row = foundryRow(target("Nekros", held), held, "Neuroptics");
+    const row = foundryRow(target("Nekros", held), held, "Nekros Neuroptics");
     expect(row.qty).toMatchObject({ required: 2, owned: 1, remaining: 1 });
     expect(row.done).toBe(false);
   });
 
   it("counts a Neuroptics still in the foundry toward its foundry row", () => {
     const held = inventory({ misc: { [NEKROS_NEURO]: 1 }, foundry: { [NEKROS_NEURO_BP]: 6 } });
-    const row = foundryRow(target("Nekros", held), held, "Neuroptics");
+    const row = foundryRow(target("Nekros", held), held, "Nekros Neuroptics");
     expect(row.qty).toMatchObject({ required: 2, owned: 2, remaining: 0 });
     expect(row.done).toBe(true);
   });

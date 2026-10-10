@@ -1,9 +1,7 @@
-// The Inventory "Safe to sell" question, end to end on production-shaped data:
-// the item DB comes from the real builder over the bundled @wfcd/items and
-// warframe-public-export-plus packages, mastery from the real masteryHelper
-// over raw inventory.json-shaped input, and rows go through the same parse,
-// tab, flag and filter steps InventoryView.svelte runs. The WFM catalog is not
-// loaded, so part tradability falls back to the item DB as it does at startup.
+// "Safe to sell" end to end: the real item DB builder over the bundled packages,
+// the real masteryHelper over inventory.json-shaped input, and InventoryView's
+// parse, tab, flag and filter steps. The WFM catalog is not loaded, so part
+// tradability falls back to the item DB as it does at startup.
 import fs from "node:fs";
 import path from "node:path";
 import { beforeAll, describe, expect, it } from "vitest";
@@ -62,10 +60,8 @@ const CARRIER_CEREBRUM = `${WP}PrimeCarrierCerebrum`;
 const KAVASA_COLLAR_BP = "/Lotus/Types/Recipes/Kubrow/Collars/PrimeKubrowCollarABlueprint";
 const RHINO_CHASSIS_BP = `${WR}RhinoChassisBlueprint`;
 
-/* ---------------------------------------------------------------------------
- * Judgment calls. Each verdict the oracle depends on lives here, so changing
- * one is one edit.
- * ------------------------------------------------------------------------- */
+// Judgment calls. Each verdict the oracle depends on lives here, so changing
+// one is one edit.
 const JUDGMENT = {
   /** One part held as blueprint + built component: the blueprint is the copy
    *  sold, the built component the copy kept. False flips it. */
@@ -229,10 +225,8 @@ beforeAll(() => {
   itemDb = itemDatabase.getRendererLookup() as unknown as Record<string, ItemDbEntry>;
 });
 
-/* ---------------------------------------------------------------------------
- * Matrix model. A family is gear plus the slots its recipes consume; a case is
- * a state per gear and a pile per slot.
- * ------------------------------------------------------------------------- */
+// Matrix model. A family is gear plus the slots its recipes consume; a case is
+// a state per gear and a pile per slot.
 type GearState =
   | "none"
   | "building"
@@ -290,9 +284,7 @@ interface MatrixCase {
 
 const EMPTY: Pile = { bp: 0, comp: 0, building: 0 };
 
-/* ---------------------------------------------------------------------------
- * Oracle. Plain arithmetic over the states, nothing from the app.
- * ------------------------------------------------------------------------- */
+// Oracle. Plain arithmetic over the states, nothing from the app.
 const isMastered = (state: GearState): boolean =>
   state === "built-mastered" || state === "sold-mastered" || state === "two-built-mixed";
 
@@ -345,9 +337,7 @@ function expectedSellable(
   return { bp: pile.bp - keptBp, comp: pile.comp - keptComp };
 }
 
-/* ---------------------------------------------------------------------------
- * Case -> raw inventory.json slices -> pipeline -> per-part comparison.
- * ------------------------------------------------------------------------- */
+// Case to raw inventory.json slices to pipeline to per-part comparison.
 const MAX_RANK_SQUARED = 30 * 30;
 const RANK_5_SQUARED = 5 * 5;
 
@@ -472,9 +462,7 @@ function allPairs(axisCount: number): number[][] {
 
 const pile = (bp = 0, comp = 0, building = 0): Pile => ({ bp, comp, building });
 
-/* ---------------------------------------------------------------------------
- * Families.
- * ------------------------------------------------------------------------- */
+// Families.
 const ALL_STATES: GearState[] = [
   "none",
   "building",
@@ -528,12 +516,10 @@ const AKBRONCO_FAMILY: Family = {
   consumes: [{ consumer: AKBRONCO_GEAR, consumed: BRONCO_GEAR, perBuild: 2 }],
 };
 
-// Weapon parts exist in DE's data under one spelling only (WeaponParts/<Part>,
-// held in MiscItems); there is no unbuilt-blueprint form, so the "mixed
-// spelling" pile is impossible for this family and is not generated. Every
-// other combination of states is reachable (Broncos can be bought, built and
-// sold independently of Akbronco), so nothing else is dropped: the Bronco x
-// Akbronco x keepVariants x pile product is run in full.
+// Weapon parts have one spelling (WeaponParts/<Part> in MiscItems), so no mixed
+// spelling pile is generated. Every other state combination is reachable (Broncos
+// are bought, built and sold apart from Akbronco), so the Bronco x Akbronco x
+// keepVariants x pile product runs in full.
 const AKBRONCO_PILES: Record<string, Array<[Slot, Pile]>> = {
   full: [
     [B_BP, pile(2)],
@@ -809,16 +795,10 @@ const SINGLE_GEAR_FAMILIES = [
   CARRIER_FAMILY,
 ];
 
-/* ---------------------------------------------------------------------------
- * Batching. The pipeline is per inventory and costs ~25ms, and families share
- * no items, so one run carries an Akbronco case plus one case of every
- * single-gear family. Bronco x Akbronco states form 30 groups of 6 runs
- * (keepVariants x pile); group g carries every single-gear family in
- * ALL_STATES[g % 5], so each group still needs only one mastery computation
- * and each state gets 36 runs per family. The guard test below proves no
- * recipe consumes the single-gear families' gear, which is what makes
- * keepVariants and the other riders irrelevant to their verdicts.
- * ------------------------------------------------------------------------- */
+// Batching: families share no items, so each ~25ms run carries an Akbronco case plus
+// one case per single-gear family. Group g of 6 runs (keepVariants x pile) carries
+// them in ALL_STATES[g % 5], one mastery computation per group. The guard test proves
+// no recipe consumes their gear, so keepVariants and other riders cannot sway them.
 const RUNS_PER_GROUP = 6;
 
 interface Rider {
@@ -905,7 +885,9 @@ describe("batching guard", () => {
   it("no recipe consumes a single-gear family's gear, and no two families share an item", () => {
     const gears = new Set(SINGLE_GEAR_FAMILIES.map((spec) => spec.gear.uniqueName));
     const consumed = Object.entries(itemDb).filter(([, entry]) =>
-      (entry.components ?? []).some((component) => component.uniqueName !== undefined && gears.has(component.uniqueName)),
+      (entry.components ?? []).some(
+        (component) => component.uniqueName !== undefined && gears.has(component.uniqueName),
+      ),
     );
     expect(consumed.map(([uniqueName]) => uniqueName)).toEqual([]);
 
@@ -969,7 +951,7 @@ describe("a prime part nothing in the mastery catalogue builds (Kavasa Prime col
 });
 
 describe("the user's real inventory", () => {
-  // Captured by tests/fixtures/safe-to-sell/captureInventorySlice.mjs from
+  // Captured by scripts/safe-to-sell/capture-inventory-slice.mjs from
   // %APPDATA%/wfhelper/api-helper/inventory.json on 2026-10-03.
   const fixture = path.join(__dirname, "../../fixtures/safe-to-sell/user-inventory-slice.json");
   const userInventory = (): Inventory => JSON.parse(fs.readFileSync(fixture, "utf-8"));

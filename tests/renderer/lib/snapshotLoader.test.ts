@@ -15,7 +15,10 @@ vi.mock("../../../src/lib/log.js", () => ({
 }));
 
 import { __test__ as snapshotTest, tryLoadSnapshot } from "../../../src/lib/wfm/snapshotLoader.js";
-import { __test__ as priceCacheTest, getCachedPriceState } from "../../../src/lib/wfm/priceCache.js";
+import {
+  __test__ as priceCacheTest,
+  getCachedPriceState,
+} from "../../../src/lib/wfm/priceCache.js";
 import {
   importSetCatalogFromSnapshotMeta,
   resolveSnapshotSetSlug,

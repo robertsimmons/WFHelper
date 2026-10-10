@@ -382,12 +382,26 @@ describe("resolveAcquisition beyond frames and weapons", () => {
     expect(sortKeys(sahasa, "difficulty")).toEqual([0.5]);
   });
 
-  it("reads a gate-only plan's route off the plan's source", () => {
+  it("leads a plan's route with its first group that names a grind", () => {
     expect(find(companions(), "Voidrig").paths[0]).toMatchObject({
       id: "plan",
-      kind: "vendor",
+      kind: "mission",
       effort: 0.5,
-      steps: [{ where: "HEART OF DEIMOS, THEN THE WAR WITHIN - clear the story gates" }],
+      steps: [{ where: "CODEX - Heart of Deimos quest" }],
+    });
+  });
+
+  it("reads a gate-only plan's route off the plan's source", () => {
+    const db = companionDb();
+    db["/Lotus/Weapons/Tenno/LongGuns/TestZenith/TestZenith"] = {
+      name: "Zenith",
+      masterable: true,
+      productCategory: "LongGuns",
+    };
+    expect(find(companions({ itemDb: db }), "Zenith").paths[0]).toMatchObject({
+      id: "plan",
+      kind: "vendor",
+      steps: [{ where: "DAILY TRIBUTE, ORBITER - log in until a weapon milestone, then pick it" }],
     });
   });
 
@@ -413,19 +427,21 @@ describe("resolveAcquisition beyond frames and weapons", () => {
   it("sweeps the Plexus only while the mastery roster lists it unmastered", () => {
     const plexus = { name: "Plexus", uniqueName: "/Lotus/Types/Game/CrewShip/RailjackHarness" };
     const names = (status: string | null): string[] =>
-      companions(
-        status ? { mastery: { items: [{ ...plexus, status }] } as MasteryData } : {},
-      ).map((target) => target.name);
+      companions(status ? { mastery: { items: [{ ...plexus, status }] } as MasteryData } : {}).map(
+        (target) => target.name,
+      );
     expect(names(null)).not.toContain("Plexus");
     expect(names("mastered")).not.toContain("Plexus");
     expect(names("unranked")).toContain("Plexus");
   });
 
-  it("keeps a curated frame's routes and a Prime's relic path off the plan", () => {
+  it("keeps a curated frame's routes off the plan, and sets a vaulted Prime's Varzia route beside its relics", () => {
     const targets = resolveAcquisition(context());
     expect(find(targets, "Mag").paths.some((path) => path.id === "plan")).toBe(false);
     expect(find(targets, "Mag").paths[0].kind).toBe("boss");
-    expect(find(targets, "Mag Prime").paths.map((path) => path.id)).toEqual(["relics"]);
+    const prime = find(targets, "Mag Prime").paths;
+    expect(prime.map((path) => path.id)).toEqual(["relics", "plan"]);
+    expect(prime[1].kind).toBe("vendor");
   });
 
   it("banks a chamber or strike fitted to a built weapon", () => {

@@ -47,6 +47,19 @@ function resolve(plan: string | AuthoredPlan, overrides: Partial<PlanContext> = 
   });
 }
 
+/** A shipped plan with one row relabelled, for a label shape no shipped plan uses. */
+function relabelled(name: string, from: string, to: string): AuthoredPlan {
+  const plan = structuredClone(load(name));
+  const row = plan.groups.flatMap((group) => group.rows).find((entry) => entry.label === from);
+  if (!row) throw new Error(`no row labelled ${from} on ${name}`);
+  row.label = to;
+  return plan;
+}
+
+function resolveShipped(plan: AuthoredPlan, overrides: Partial<PlanContext> = {}): ResolvedPlan {
+  return resolvePlan(plan, { itemDb: itemDb(), inventory: inventory(), now: NOW, ...overrides });
+}
+
 function byPlace(plan: ResolvedPlan, place: string): ResolvedGroup {
   const group = plan.groups.find((entry) => entry.place === place);
   if (!group) throw new Error(`no group at ${place}`);
@@ -136,7 +149,9 @@ describe("quest gates", () => {
   });
 
   it("matches a label that spells out the word quest", () => {
-    const plan = resolve("Amesha", { inventory: quests({ "The Archwing": true }) });
+    const plan = resolveShipped(relabelled("Amesha", "The Archwing", "The Archwing quest"), {
+      inventory: quests({ "The Archwing": true }),
+    });
     expect(byLabel(plan, "The Archwing quest")).toMatchObject({ done: true, manual: false });
   });
 
@@ -146,13 +161,14 @@ describe("quest gates", () => {
   });
 
   it("needs every leg of a chained gate", () => {
-    const half = resolve("Qorvex", { inventory: quests({ "Heart of Deimos": true }) });
+    const chained = relabelled("Amesha", "The Archwing", "Heart of Deimos, then The New War");
+    const half = resolveShipped(chained, { inventory: quests({ "Heart of Deimos": true }) });
     expect(byLabel(half, "Heart of Deimos, then The New War")).toMatchObject({
       done: false,
       manual: false,
     });
 
-    const both = resolve("Qorvex", {
+    const both = resolveShipped(chained, {
       inventory: quests({ "Heart of Deimos": true, "The New War": true }),
     });
     expect(byLabel(both, "Heart of Deimos, then The New War").done).toBe(true);
@@ -161,13 +177,13 @@ describe("quest gates", () => {
   it("leaves a gate that names no quest to the player", () => {
     const plan = resolve("Hound", { inventory: quests({ "The War Within": true }) });
     const rank = byLabel(plan, "Mastery Rank 5");
-    expect(rank).toMatchObject({ done: true, source: "authored", manual: true });
+    expect(rank).toMatchObject({ done: false, source: "authored", manual: true });
 
-    const cleared = resolve("Hound", {
+    const ticked = resolve("Hound", {
       inventory: quests({ "The War Within": true }),
-      manualCleared: [rank.id],
+      manualDone: [rank.id],
     });
-    expect(byLabel(cleared, "Mastery Rank 5")).toMatchObject({ done: false, source: "manual" });
+    expect(byLabel(ticked, "Mastery Rank 5")).toMatchObject({ done: true, source: "manual" });
   });
 });
 
@@ -197,7 +213,7 @@ describe("live state", () => {
   });
 
   it("treats a vendor rotation as waiting whatever the player did", () => {
-    const varzia = byMap(resolve("Mesa Prime"), "maroos-bazaar");
+    const varzia = byPlace(resolve("Mesa Prime"), "MAROO'S BAZAAR, MARS");
     expect(varzia.live?.state).toBe("waiting");
   });
 
@@ -256,7 +272,11 @@ describe("currency ledger", () => {
   });
 
   it("renders an unpaired spend as an ordinary cost with no phantom earner", () => {
-    const plan = resolve("Hound");
+    const hound = structuredClone(load("Hound"));
+    hound.groups = hound.groups.filter(
+      (group) => !(group.type === "currency" && group.ref === "Entrati Standing"),
+    );
+    const plan = resolveShipped(hound);
     const entrati = plan.ledger.find((entry) => entry.currency === "Entrati Standing");
     expect(entrati).toMatchObject({ earned: null, spent: 8000, paired: false });
     expect(plan.groups.every((group) => group.earns?.currency !== "Entrati Standing")).toBe(true);
@@ -270,13 +290,14 @@ describe("currency ledger", () => {
 
   it("counts a row alt only when that alternative is taken", () => {
     const untaken = resolve("Cyte-09");
-    expect(untaken.groups[1].rows[0].alt).toMatchObject({
+    const bounty = untaken.groups.find((group) => group.type === "bounty");
+    expect(bounty?.rows[0].alt).toMatchObject({
       text: "or 20,000 standing at Amir",
       taken: false,
     });
     expect(untaken.ledger).toEqual([]);
 
-    const taken = resolve("Cyte-09", { altsTaken: ["1:0"] });
+    const taken = resolve("Cyte-09", { altsTaken: [bounty!.rows[0].id] });
     expect(taken.ledger).toEqual([
       {
         currency: "The Hex Standing",
@@ -289,13 +310,14 @@ describe("currency ledger", () => {
   });
 
   it("leaves a plain string alt alone", () => {
-    const plan = resolve("Afuris", { altsTaken: ["0:1"] });
-    expect(plan.groups[0].rows[1].alt).toEqual({
-      text: "one free from the Earth to Venus Junction",
+    const id = byPlace(resolve("Nekros"), "MARKET").rows[0].id;
+    const plan = resolve("Nekros", { altsTaken: [id] });
+    expect(byPlace(plan, "MARKET").rows[0].alt).toEqual({
+      text: "or Circuit week 5, tier 10",
       spends: [],
       taken: true,
     });
-    expect(plan.ledger).toEqual([]);
+    expect(plan.ledger).toEqual(resolve("Nekros").ledger);
   });
 });
 
@@ -441,7 +463,7 @@ describe("plan materials", () => {
 });
 
 describe("credits", () => {
-  /** A Höllvania vendor spending Höllars beside a foundry spending Credits, with the
+  /** A Hollvania vendor spending Hollars beside a foundry spending Credits, with the
    *  total listed once as a Credits material. */
   function creditsPlan(): AuthoredPlan {
     return {

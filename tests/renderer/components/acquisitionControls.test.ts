@@ -51,8 +51,17 @@ describe("AcquisitionControls", () => {
     expect(row()).toContain(
       "group.members.filter((member) => selected.includes(member.include)).length",
     );
-    // Only warframes is a plain toggle, so four buttons carry a count.
-    expect(ACQUISITION_INCLUDE_GROUPS.filter((group) => group.include === null)).toHaveLength(4);
+    expect(ACQUISITION_INCLUDE_GROUPS.filter((group) => group.include === null)).toHaveLength(5);
+  });
+
+  it("tops each dropdown with an All/None row that touches only that dropdown", () => {
+    expect(row()).toContain("data-acquisition-group-all={opened.id}");
+    expect(row()).toContain("members.includes(kind) ? on : selected.includes(kind)");
+    expect(row()).toContain(
+      '{$tr(pickedIn(opened) < opened.members.length ? "common.all" : "common.none")}',
+    );
+    expect(row()).toContain("data-acquisition-sources-all");
+    expect(row()).toContain("storeSources(allSources ? [] : ACQUISITION_SOURCES);");
   });
 
   it("reads an empty selection as every kind rather than as none", () => {
@@ -63,12 +72,8 @@ describe("AcquisitionControls", () => {
 
   it("stores unticking the last box as none, and each filter only touches itself", () => {
     expect(row()).toContain("if (next.length === 0) return [ACQUISITION_NONE];");
-    expect(row()).toContain(
-      'setSuggestionOption("acquisitionKinds", stored(next, ACQUISITION_INCLUDES));',
-    );
-    expect(row()).toContain(
-      'setSuggestionOption("acquisitionSources", stored(next, ACQUISITION_SOURCES));',
-    );
+    expect(row()).toContain("acquisitionKinds: stored(next, ACQUISITION_INCLUDES),");
+    expect(row()).toContain("acquisitionSources: stored(next, ACQUISITION_SOURCES),");
   });
 
   it("offers one global clear for the whole row rather than one per dropdown", () => {

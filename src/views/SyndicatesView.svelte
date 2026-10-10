@@ -51,7 +51,7 @@
   const owned = $derived($componentOwnership);
 
   const cards = $derived(
-    SYNDICATE_RANKS.map((meta): SyndicateCard => {
+    SYNDICATE_RANKS.filter((meta) => !meta.rankOnly).map((meta): SyndicateCard => {
       const status = syndicateStatus(inv, meta);
       const span = status.tierEnd - status.tierStart;
       const goal = $syndicateGoals[meta.tag] ?? null;

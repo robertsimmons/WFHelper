@@ -72,7 +72,7 @@ describe("a finished quest as a route", () => {
     expect(done.parts.missing.map((row) => row.name)).toEqual(["Yareli Blueprint"]);
     const headline = headlinePath(done.paths);
     expect(headline?.kind).toBe("vendor");
-    expect(headline?.steps[0]?.where).toMatch(/Simaris/);
+    expect(headline?.steps[0]?.where).toMatch(/simaris/i);
     expect(sortRow(done, done.effort, "recommended").keys[1]).toBe(headline?.effort);
   });
 

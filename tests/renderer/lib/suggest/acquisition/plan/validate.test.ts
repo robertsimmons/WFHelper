@@ -49,24 +49,27 @@ describe("validatePlan", () => {
   });
 
   it("takes both alt forms", () => {
-    expect(authoredPlan("Cyte-09")?.groups[1].rows[0].alt).toEqual({
+    const cyte = authoredPlan("Cyte-09");
+    const bounty = cyte?.groups.find((group) => group.type === "bounty");
+    expect(bounty?.rows[0].alt).toEqual({
       text: "or 20,000 standing at Amir",
       spends: [{ currency: "The Hex Standing", amount: "20,000" }],
     });
-    expect(authoredPlan("Afuris")?.groups[0].rows[1].alt).toBe(
-      "one free from the Earth to Venus Junction",
-    );
+    const nekros = authoredPlan("Nekros");
+    const market = nekros?.groups.find((group) => group.place === "MARKET");
+    expect(market?.rows[0].alt).toBe("or Circuit week 5, tier 10");
   });
 
   it("rejects an offer alt with a broken amount", () => {
     const plan = structuredClone(authoredPlan("Cyte-09"));
     if (!plan) return;
-    plan.groups[1].rows[0].alt = {
+    const index = plan.groups.findIndex((group) => group.type === "bounty");
+    plan.groups[index].rows[0].alt = {
       text: "or 20,000 standing at Amir",
       spends: [{ currency: "The Hex Standing", amount: "twenty thousand" }],
     };
     expect(validatePlan(plan)).toEqual([
-      "groups[1].rows[0].alt.spends[0].amount must be a grouped number string",
+      `groups[${index}].rows[0].alt.spends[0].amount must be a grouped number string`,
     ]);
   });
 

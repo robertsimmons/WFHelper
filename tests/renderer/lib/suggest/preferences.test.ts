@@ -199,14 +199,22 @@ describe("parseOptions", () => {
   });
 
   it("keeps a narrowed acquisition list exactly as it was picked", () => {
+    expect(parseOptions(JSON.stringify({ acquisitionKinds: ["melee", "warframe_prime"] }))).toEqual(
+      {
+        acquisitionKinds: ["warframe_prime", "melee"],
+      },
+    );
+  });
+
+  it("reads the old single Warframes box as both prime and normal", () => {
     expect(parseOptions(JSON.stringify({ acquisitionKinds: ["melee", "warframe"] }))).toEqual({
-      acquisitionKinds: ["warframe", "melee"],
+      acquisitionKinds: ["warframe_prime", "warframe_normal", "melee"],
     });
   });
 
   it("drops an acquisition kind it does not ship", () => {
-    expect(parseOptions(JSON.stringify({ acquisitionKinds: ["warframe", "zaw"] }))).toEqual({
-      acquisitionKinds: ["warframe"],
+    expect(parseOptions(JSON.stringify({ acquisitionKinds: ["warframe_normal", "zaw"] }))).toEqual({
+      acquisitionKinds: ["warframe_normal"],
     });
   });
 

@@ -4,27 +4,133 @@
   "effort": 8,
   "source": "relics",
   "tradeable": true,
-  "progress": { "have": 0, "need": 4, "unit": "parts" },
-  "badges": [{ "text": "vaulted", "tone": "warn" }],
+  "progress": {
+    "have": 0,
+    "need": 4,
+    "unit": "parts"
+  },
+  "badges": [
+    {
+      "text": "vaulted",
+      "tone": "warn"
+    }
+  ],
   "prices": [],
   "materials": [
-    { "qty": "950", "label": "Oxium", "note": "450 Neuroptics, 500 Chassis" },
-    { "qty": "2", "label": "Neural Sensors", "note": "Neuroptics" },
-    { "qty": "9,000", "label": "Nano Spores", "note": "Neuroptics" },
-    { "qty": "1,100", "label": "Rubedo", "note": "Neuroptics" },
-    { "qty": "2", "label": "Argon Crystal", "note": "Chassis" },
-    { "qty": "2,550", "label": "Circuits", "note": "1,200 Chassis, 1,350 Systems" },
-    { "qty": "3", "label": "Control Module", "note": "Systems" },
-    { "qty": "2", "label": "Orokin Cell", "note": "1 Systems, 1 Trinity Prime" },
-    { "qty": "9,000", "label": "Cryotic", "note": "Systems" },
-    { "qty": "70,000", "label": "Credits", "note": null }
+    {
+      "qty": "950",
+      "label": "Oxium",
+      "note": "450 Neuroptics, 500 Chassis"
+    },
+    {
+      "qty": "2",
+      "label": "Neural Sensors",
+      "note": "Neuroptics"
+    },
+    {
+      "qty": "9,000",
+      "label": "Nano Spores",
+      "note": "Neuroptics"
+    },
+    {
+      "qty": "1,100",
+      "label": "Rubedo",
+      "note": "Neuroptics"
+    },
+    {
+      "qty": "2",
+      "label": "Argon Crystal",
+      "note": "Chassis"
+    },
+    {
+      "qty": "2,550",
+      "label": "Circuits",
+      "note": "1,200 Chassis, 1,350 Systems"
+    },
+    {
+      "qty": "3",
+      "label": "Control Module",
+      "note": "Systems"
+    },
+    {
+      "qty": "2",
+      "label": "Orokin Cell",
+      "note": "1 Systems, 1 Trinity Prime"
+    },
+    {
+      "qty": "9,000",
+      "label": "Cryotic",
+      "note": "Systems"
+    },
+    {
+      "qty": "70,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
+    {
+      "type": "currency",
+      "place": "CAMBION DRIFT, DEIMOS",
+      "sub": "Necralisk",
+      "activity": "Level 40-60 bounty, final stage",
+      "meta": "43.48% per final stage",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Aya",
+          "note": "1 per relic; bank it before the window opens",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": [],
+      "ref": "Aya"
+    },
+    {
+      "type": "vendor",
+      "place": "MAROO'S BAZAAR, MARS",
+      "sub": "Varzia",
+      "activity": "buy the Trinity Prime relics she stocks, 1 Aya each",
+      "meta": "only while Trinity Prime is in Prime Resurgence",
+      "mode": null,
+      "live": {
+        "state": "blocked",
+        "text": "vaulted; only during her Prime Resurgence"
+      },
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Trinity Prime relics",
+          "note": "buy the relics for the parts you still need",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Her stock rotates away; relics and Aya you hold never expire.",
+        "Vaulted relics and the parts themselves still trade between players."
+      ],
+      "bonuses": ["Varzia is also in the Market's Prime Resurgence tab."],
+      "disclosures": []
+    },
     {
       "type": "fissure",
       "place": "ANY VOID FISSURE",
       "sub": null,
-      "activity": "crack the matching vaulted relics",
+      "activity": "crack the Trinity Prime relics",
       "meta": null,
       "mode": null,
       "live": null,
@@ -63,10 +169,12 @@
         }
       ],
       "conditions": [
-        "Trinity Prime is vaulted: its relics no longer drop from missions.",
-        "Vaulted relics and the parts themselves still trade between players."
+        "Radiant relics raise Uncommon odds to 20%; leave Common-part relics Intact, since Radiant lowers Common odds to 16.67%.",
+        "Mission rewards never drop Resurgence relics; Varzia is the only source."
       ],
-      "bonuses": [],
+      "bonuses": [
+        "Pick a teammate's identical reward at the reward screen; they get 5 bonus Void Traces."
+      ],
       "disclosures": []
     },
     {
@@ -106,14 +214,24 @@
         {
           "qty": null,
           "label": "Trinity Prime",
-          "note": "25,000 cr, Neuroptics, Chassis, Systems, 1 Orokin Cell, 3 days",
+          "note": "25,000 cr, the three parts, 1 Orokin Cell",
           "alt": null,
           "done": false
         }
       ],
-      "conditions": [],
+      "conditions": [
+        "Trinity Prime is tied with Vauban Prime for the most Cryotic of any Warframe."
+      ],
       "bonuses": [],
       "disclosures": []
+    }
+  ],
+  "routes": [
+    {
+      "name": "Varzia relics",
+      "cost": "1 Aya a relic during her Prime Resurgence, 3-day build",
+      "effort": 8,
+      "role": "chosen"
     }
   ]
 }

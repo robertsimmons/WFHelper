@@ -4,11 +4,57 @@
   "effort": 6,
   "source": "repeat",
   "tradeable": true,
-  "progress": { "have": 0, "need": 4, "unit": "parts" },
-  "badges": [{ "text": "Invasion RNG", "tone": "warn" }],
-  "prices": [{ "label": "build", "amount": "25,000 cr", "money": false }],
-  "materials": [{ "qty": "25,000", "label": "Credits", "note": null }],
+  "progress": {
+    "have": 0,
+    "need": 4,
+    "unit": "parts"
+  },
+  "badges": [
+    {
+      "text": "Invasion RNG",
+      "tone": "warn"
+    }
+  ],
+  "prices": [
+    {
+      "label": "build",
+      "amount": "25,000 cr",
+      "money": false
+    }
+  ],
+  "materials": [
+    {
+      "qty": "25,000",
+      "label": "Credits",
+      "note": null
+    }
+  ],
   "groups": [
+    {
+      "type": "gate",
+      "place": "MASTERY RANK",
+      "sub": null,
+      "activity": null,
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Mastery Rank 7",
+          "note": "to acquire the blueprint and use it",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
     {
       "type": "farm",
       "place": "INVASIONS, GRINEER SIDE",
@@ -52,18 +98,11 @@
         }
       ],
       "conditions": [
-        "Watch invasions.",
-        "Pick the Grineer side. The Corpus side of the same Invasion pays the Corpus reward, and switching sides mid-Invasion forfeits both.",
-        "Do all three missions in one sitting; if the node's Invasion ends first you get no battle pay.",
-        "Needs Mastery Rank 7 to acquire and use."
+        "Pick the Grineer side. The Corpus side of the same Invasion pays the Corpus reward, and switching sides forfeits both.",
+        "Complete all three missions before the node's Invasion ends, or you get no battle pay."
       ],
       "bonuses": [],
-      "disclosures": [
-        {
-          "title": "why the wait is long",
-          "body": "A new Invasion on a node queues behind the one already running there, so a part can sit behind a long Invasion for days. Infested Outbreaks never offer weapon parts. The Sortie and event routes for the blueprint are no longer available."
-        }
-      ]
+      "disclosures": []
     },
     {
       "type": "foundry",
@@ -81,7 +120,7 @@
         {
           "qty": null,
           "label": "Twin Vipers Wraith",
-          "note": "Blueprint, Barrels, Receivers, Link; rush costs 50 p",
+          "note": "25,000 cr, Barrels, Receivers, Link",
           "alt": null,
           "done": false
         }

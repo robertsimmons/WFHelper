@@ -4,25 +4,103 @@
   "effort": 4,
   "source": "boss",
   "tradeable": false,
-  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "progress": {
+    "have": 0,
+    "need": 4,
+    "unit": "parts"
+  },
   "badges": [
-    { "text": "Nav Beacon key", "tone": "warn" },
-    { "text": "Circuit alt", "tone": "circuit" }
+    {
+      "text": "Nav Beacon key",
+      "tone": "warn"
+    },
+    {
+      "text": "Circuit week 1",
+      "tone": "circuit"
+    }
   ],
-  "prices": [{ "label": "blueprint", "amount": "25,000 cr", "money": false }],
+  "prices": [
+    {
+      "label": "blueprint",
+      "amount": "25,000 cr",
+      "money": false
+    }
+  ],
+  "routes": [
+    {
+      "name": "Ambulas, Hades",
+      "cost": "5 Animo Nav Beacons to enter; the three parts drop from the assassination; 25,000 cr at the Market for the main",
+      "effort": 4,
+      "role": "chosen"
+    },
+    {
+      "name": "Circuit week 1",
+      "cost": "tiers 2, 5, 8 and 10 give every blueprint in one week, after The Duviri Paradox",
+      "effort": 4,
+      "role": null
+    }
+  ],
   "materials": [
-    { "qty": "1,000", "label": "Ferrite", "note": "Chassis" },
-    { "qty": "800", "label": "Rubedo", "note": "Neuroptics and Chassis" },
-    { "qty": "500", "label": "Salvage", "note": "Systems" },
-    { "qty": "220", "label": "Plastids", "note": "Systems" },
-    { "qty": "150", "label": "Alloy Plate", "note": "Neuroptics" },
-    { "qty": "150", "label": "Polymer Bundle", "note": "Neuroptics" },
-    { "qty": "2", "label": "Morphics", "note": "Chassis and Systems" },
-    { "qty": "1", "label": "Neural Sensors", "note": "Neuroptics" },
-    { "qty": "1", "label": "Control Module", "note": "Systems" },
-    { "qty": "1", "label": "Orokin Cell", "note": "Trinity" },
-    { "qty": "5", "label": "Animo Nav Beacon", "note": null },
-    { "qty": "95,000", "label": "Credits", "note": null }
+    {
+      "qty": "1,000",
+      "label": "Ferrite",
+      "note": "Chassis"
+    },
+    {
+      "qty": "800",
+      "label": "Rubedo",
+      "note": "Neuroptics and Chassis"
+    },
+    {
+      "qty": "500",
+      "label": "Salvage",
+      "note": "Systems"
+    },
+    {
+      "qty": "220",
+      "label": "Plastids",
+      "note": "Systems"
+    },
+    {
+      "qty": "150",
+      "label": "Alloy Plate",
+      "note": "Neuroptics"
+    },
+    {
+      "qty": "150",
+      "label": "Polymer Bundle",
+      "note": "Neuroptics"
+    },
+    {
+      "qty": "2",
+      "label": "Morphics",
+      "note": "Chassis and Systems"
+    },
+    {
+      "qty": "1",
+      "label": "Neural Sensors",
+      "note": "Neuroptics"
+    },
+    {
+      "qty": "1",
+      "label": "Control Module",
+      "note": "Systems"
+    },
+    {
+      "qty": "1",
+      "label": "Orokin Cell",
+      "note": "Trinity"
+    },
+    {
+      "qty": "5",
+      "label": "Animo Nav Beacon",
+      "note": null
+    },
+    {
+      "qty": "95,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
     {
@@ -35,10 +113,21 @@
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [],
+      "spends": [
+        {
+          "currency": "Credits",
+          "amount": "25,000"
+        }
+      ],
       "map": null,
       "rows": [
-        { "qty": null, "label": "Trinity Blueprint", "note": null, "alt": null, "done": false }
+        {
+          "qty": null,
+          "label": "Trinity Blueprint",
+          "note": null,
+          "alt": "Circuit week 1, tier 10",
+          "done": false
+        }
       ],
       "conditions": [
         "Ambulas only drops the three component blueprints; the main blueprint is a Market purchase."
@@ -51,52 +140,52 @@
       "place": "HADES, PLUTO",
       "sub": null,
       "activity": "Assassination, Ambulas",
-      "meta": "~4 kills for Systems expected",
-      "mode": "solo or squad, bring crowd control",
+      "meta": null,
+      "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Animo Nav Beacon", "amount": "2" }],
+      "spends": [
+        {
+          "currency": "Animo Nav Beacon",
+          "amount": "2"
+        }
+      ],
       "map": null,
       "rows": [
         {
           "qty": null,
           "label": "Neuroptics Blueprint",
           "note": "38.72%",
-          "alt": null,
+          "alt": "Circuit week 1, tier 2",
           "done": false
         },
-        { "qty": null, "label": "Chassis Blueprint", "note": "38.72%", "alt": null, "done": false },
+        {
+          "qty": null,
+          "label": "Chassis Blueprint",
+          "note": "38.72%",
+          "alt": "Circuit week 1, tier 5",
+          "done": false
+        },
         {
           "qty": null,
           "label": "Systems Blueprint",
-          "note": "22.56%; likely last",
-          "alt": null,
+          "note": "22.56%",
+          "alt": "Circuit week 1, tier 8",
           "done": false
         }
       ],
       "conditions": [
         "Deliver 3 hacked Ambulas solo, or 4 in any squad of 2-4. If a dropship hauls 3 unhacked ones, the ship flees and the mission fails.",
-        "Always have one hacked and protected before the next dropship, which arrives every 90 seconds.",
-        "Every squad member pays their own 5 beacons and gets their own 3 back.",
-        "Kill the repair drones; they undo armor-plate progress."
+        "A dropship arrives every 90 seconds; hack the downed Ambulas and defend it until then.",
+        "Every squad member pays their own 5 beacons and gets 3 back.",
+        "A Remech Osprey repairs a disabled Ambulas to full health."
       ],
-      "bonuses": [
-        "Wide-area crowd control (Frost, Gara, Nova, Vauban, Nyx, Octavia) makes the defend phase trivial; Nova also speeds up the waves.",
-        "Radiation and a punch-through weapon shred it through whichever weak spot faces you."
-      ],
+      "bonuses": [],
       "disclosures": [
         {
           "title": "the fight, step by step",
-          "body": "Strip Ambulas's leg and head plates, drain its health, hack it, then defend it until the dropship takes it to Frohd Bek's ship. The timers cannot be skipped, so travel time to the boss room is the only part you control. Limbo or Wukong let you zone out during the waits."
-        },
-        {
-          "title": "Circuit, if Systems will not drop",
-          "body": "After The Duviri Paradox, the normal Circuit gives Trinity with no RNG and no beacons during her rotation week: Neuroptics at tier 2, Chassis 5, Systems 8, main blueprint 10. Her augment mod is on the same path. Check the rotation before planning around it."
-        },
-        {
-          "title": "old threads are out of date",
-          "body": "Complaints about 20-beacon entry, 4-6 hacked Ambulas and 120-second rounds predate Hotfix 30.3.5 and Update 34.0. If a hacked Ambulas explodes instead of staying down, that was a bug fixed in Hotfix 38.6.2."
+          "body": "Deplete the Ambulas health, hack it, then defend it until the dropship takes it to the capital ship. Hacked Ambulas stay disabled. Deliver enough of them and the ship is destroyed."
         }
       ]
     },
@@ -143,7 +232,7 @@
         }
       ],
       "conditions": [
-        "Each component costs 15,000 cr. Start each as it drops so the 12-hour timers overlap; have a free Warframe slot before claiming Trinity.",
+        "Each component costs 15,000 cr. Have a free Warframe slot before claiming Trinity.",
         "Keep the base frame even if you own Trinity Prime: subsuming Well of Life needs base Trinity."
       ],
       "bonuses": [],

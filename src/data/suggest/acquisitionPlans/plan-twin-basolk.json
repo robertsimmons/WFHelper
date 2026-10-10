@@ -4,27 +4,106 @@
   "effort": 2,
   "source": "shop",
   "tradeable": false,
-  "progress": { "have": 0, "need": 3, "unit": "blueprints" },
+  "progress": {
+    "have": 0,
+    "need": 3,
+    "unit": "blueprints"
+  },
   "badges": [
-    { "text": "eats Atomos + Dual Zoren", "tone": "warn" },
-    { "text": "Market", "tone": "info" }
+    {
+      "text": "eats Atomos + Dual Zoren",
+      "tone": "warn"
+    },
+    {
+      "text": "Market",
+      "tone": "info"
+    }
   ],
   "prices": [
-    { "label": "blueprints", "amount": "60,000 cr", "money": false },
-    { "label": "builds", "amount": "120,000 cr", "money": false }
+    {
+      "label": "blueprints",
+      "amount": "60,000 cr",
+      "money": false
+    },
+    {
+      "label": "builds",
+      "amount": "120,000 cr",
+      "money": false
+    }
   ],
   "materials": [
-    { "qty": "2", "label": "Argon Crystal", "note": "Atomos" },
-    { "qty": "2", "label": "Control Module", "note": "Twin Basolk" },
-    { "qty": "4", "label": "Morphics", "note": "Dual Zoren" },
-    { "qty": "2,400", "label": "Salvage", "note": "1,500 Atomos, 900 Dual Zoren" },
-    { "qty": "1,300", "label": "Polymer Bundle", "note": "Atomos" },
-    { "qty": "800", "label": "Rubedo", "note": "Atomos" },
-    { "qty": "1,100", "label": "Ferrite", "note": "Dual Zoren" },
-    { "qty": "800", "label": "Alloy Plate", "note": "Dual Zoren" },
-    { "qty": "180,000", "label": "Credits", "note": null }
+    {
+      "qty": "2",
+      "label": "Argon Crystal",
+      "note": "Atomos"
+    },
+    {
+      "qty": "2",
+      "label": "Control Module",
+      "note": "Twin Basolk"
+    },
+    {
+      "qty": "4",
+      "label": "Morphics",
+      "note": "Dual Zoren"
+    },
+    {
+      "qty": "2,400",
+      "label": "Salvage",
+      "note": "1,500 Atomos, 900 Dual Zoren"
+    },
+    {
+      "qty": "1,300",
+      "label": "Polymer Bundle",
+      "note": "Atomos"
+    },
+    {
+      "qty": "800",
+      "label": "Rubedo",
+      "note": "Atomos"
+    },
+    {
+      "qty": "1,100",
+      "label": "Ferrite",
+      "note": "Dual Zoren"
+    },
+    {
+      "qty": "800",
+      "label": "Alloy Plate",
+      "note": "Dual Zoren"
+    },
+    {
+      "qty": "180,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
+    {
+      "type": "gate",
+      "place": "MASTERY RANK",
+      "sub": null,
+      "activity": null,
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Mastery Rank 7",
+          "note": "to equip it",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
     {
       "type": "vendor",
       "place": "MARKET",
@@ -96,12 +175,7 @@
         "Each component is its own Mastery item and the recipe destroys it. Level both to 30 before feeding them in."
       ],
       "bonuses": [],
-      "disclosures": [
-        {
-          "title": "keeping your own Atomos",
-          "body": "The Foundry lets you pick which copy it consumes, but you still need a spare."
-        }
-      ]
+      "disclosures": []
     },
     {
       "type": "foundry",
@@ -124,9 +198,7 @@
           "done": false
         }
       ],
-      "conditions": [
-        "Twin Basolk needs MR 7 to equip, above either component, so you can build it before you can use it."
-      ],
+      "conditions": [],
       "bonuses": ["It is the only weapon that can equip the Rift Strike mod."],
       "disclosures": []
     }

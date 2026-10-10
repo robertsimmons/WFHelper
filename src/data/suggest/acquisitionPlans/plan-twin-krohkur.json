@@ -4,25 +4,96 @@
   "effort": 2,
   "source": "dojo",
   "tradeable": false,
-  "progress": { "have": 0, "need": 1, "unit": "blueprint" },
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "blueprint"
+  },
   "badges": [
-    { "text": "Tellurium RNG", "tone": "warn" },
-    { "text": "Chem Lab", "tone": "warn" }
+    {
+      "text": "Tellurium RNG",
+      "tone": "warn"
+    },
+    {
+      "text": "Chem Lab",
+      "tone": "warn"
+    }
   ],
   "prices": [
-    { "label": "blueprint", "amount": "15,000 cr", "money": false },
-    { "label": "build", "amount": "20,000 cr", "money": false }
+    {
+      "label": "blueprints",
+      "amount": "65,000 cr",
+      "money": false
+    },
+    {
+      "label": "builds",
+      "amount": "60,000 cr",
+      "money": false
+    }
   ],
   "materials": [
-    { "qty": "5", "label": "Detonite Injector", "note": null },
-    { "qty": "10", "label": "Tellurium", "note": "2 Krohkurs at 5 each" },
-    { "qty": "16", "label": "Morphics", "note": "2 Krohkurs at 8 each" },
-    { "qty": "250", "label": "Oxium", "note": "2 Krohkurs at 125 each" },
-    { "qty": "8,750", "label": "Alloy Plate", "note": "2 Krohkurs at 4,375 each" },
-    { "qty": "1", "label": "Forma", "note": null },
-    { "qty": "80,000", "label": "Credits", "note": null }
+    {
+      "qty": "5",
+      "label": "Detonite Injector",
+      "note": null
+    },
+    {
+      "qty": "10",
+      "label": "Tellurium",
+      "note": "2 Krohkurs at 5 each"
+    },
+    {
+      "qty": "16",
+      "label": "Morphics",
+      "note": "2 Krohkurs at 8 each"
+    },
+    {
+      "qty": "250",
+      "label": "Oxium",
+      "note": "2 Krohkurs at 125 each"
+    },
+    {
+      "qty": "8,750",
+      "label": "Alloy Plate",
+      "note": "2 Krohkurs at 4,375 each"
+    },
+    {
+      "qty": "1",
+      "label": "Forma",
+      "note": null
+    },
+    {
+      "qty": "125,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
+    {
+      "type": "gate",
+      "place": "MASTERY RANK",
+      "sub": null,
+      "activity": null,
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Mastery Rank 10",
+          "note": "to equip it; each Krohkur needs Mastery Rank 9",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
     {
       "type": "vendor",
       "place": "CLAN DOJO, CHEM LAB",
@@ -33,13 +104,48 @@
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Credits", "amount": "15,000" }],
+      "spends": [
+        {
+          "currency": "Credits",
+          "amount": "15,000"
+        }
+      ],
       "map": null,
       "rows": [
         {
           "qty": null,
           "label": "Twin Krohkur Blueprint",
           "note": "15,000 credits",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "MARKET",
+      "sub": null,
+      "activity": "buy the Krohkur blueprint twice",
+      "meta": "50,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [
+        {
+          "currency": "Credits",
+          "amount": "50,000"
+        }
+      ],
+      "map": null,
+      "rows": [
+        {
+          "qty": "2",
+          "label": "Krohkur Blueprint",
+          "note": "25,000 cr each",
           "alt": null,
           "done": false
         }
@@ -64,7 +170,7 @@
         {
           "qty": "2",
           "label": "Krohkur",
-          "note": "25,000 cr blueprint from the Market (buy twice); each build 20,000 cr, 5 Tellurium, 8 Morphics, 125 Oxium, 4,375 Alloy Plate",
+          "note": "20,000 cr, 5 Tellurium, 8 Morphics, 125 Oxium, 4,375 Alloy Plate each",
           "alt": null,
           "done": false
         },
@@ -77,8 +183,7 @@
         }
       ],
       "conditions": [
-        "Rank the first Krohkur to 30 before crafting the second; both copies are consumed, but Mastery from a weapon sticks once earned.",
-        "Twin Krohkur is untradeable, so there is no shortcut via trading the finished weapon."
+        "Rank the first Krohkur to 30 before crafting the second; both copies are consumed, but Mastery from a weapon sticks once earned."
       ],
       "bonuses": [],
       "disclosures": []

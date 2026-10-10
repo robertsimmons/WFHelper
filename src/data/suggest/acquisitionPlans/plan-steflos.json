@@ -4,26 +4,52 @@
   "effort": 5,
   "source": "repeat",
   "tradeable": "parts only, not the blueprint",
-  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "progress": {
+    "have": 0,
+    "need": 4,
+    "unit": "parts"
+  },
   "badges": [
-    { "text": "Tyana Pass, Rotation B", "tone": "warn" },
-    { "text": "MR 8", "tone": "info" }
+    {
+      "text": "Tyana Pass, Rotation B",
+      "tone": "warn"
+    },
+    {
+      "text": "MR 8",
+      "tone": "info"
+    }
   ],
   "prices": [
-    { "label": "build", "amount": "20,000 cr", "money": false },
-    { "label": "full shop set", "amount": "1,250 Belric", "money": false }
+    {
+      "label": "build",
+      "amount": "20,000 cr",
+      "money": false
+    },
+    {
+      "label": "full shop set",
+      "amount": "1,250 Belric",
+      "money": false
+    }
   ],
   "materials": [
-    { "qty": "4", "label": "Neurodes", "note": null },
-    { "qty": "20,000", "label": "Credits", "note": null }
+    {
+      "qty": "4",
+      "label": "Neurodes",
+      "note": null
+    },
+    {
+      "qty": "20,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
     {
       "type": "gate",
       "place": "DEIMOS, MARS",
       "sub": null,
-      "activity": "finish Heart of Deimos and reach MR 3",
-      "meta": "Otak's message opens Tyana Pass",
+      "activity": "finish Heart of Deimos, reach MR 3, then MR 8 to build it",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -34,7 +60,21 @@
         {
           "qty": null,
           "label": "Heart of Deimos",
-          "note": "Otak then sends the inbox message and Tyana Pass appears on Mars",
+          "note": "required to enter Tyana Pass",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Mastery Rank 3",
+          "note": "required to enter Tyana Pass",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Mastery Rank 8",
+          "note": "the Foundry won't craft it below this",
           "alt": null,
           "done": false
         }
@@ -48,7 +88,7 @@
       "place": "TYANA PASS, MARS",
       "sub": null,
       "activity": "Mirror Defense, stay through Rotation B",
-      "meta": "~17.5 min to the third reward",
+      "meta": "Rotation A pays the blueprint, Rotation B the parts",
       "mode": "public squad on Steel Path",
       "live": null,
       "skip": null,
@@ -63,34 +103,52 @@
           "alt": {
             "text": "or 500 Belric + 300 Rania at Otak",
             "spends": [
-              { "currency": "Belric Crystal Fragment", "amount": "500" },
-              { "currency": "Rania Crystal Fragment", "amount": "300" }
+              {
+                "currency": "Belric Crystal Fragment",
+                "amount": "500"
+              },
+              {
+                "currency": "Rania Crystal Fragment",
+                "amount": "300"
+              }
             ]
           },
           "done": false
         },
         {
           "qty": null,
-          "label": "Barrel",
+          "label": "Steflos Barrel",
           "note": "8%, Rotation B",
           "alt": {
             "text": "or 250 Belric + 150 Rania at Otak",
             "spends": [
-              { "currency": "Belric Crystal Fragment", "amount": "250" },
-              { "currency": "Rania Crystal Fragment", "amount": "150" }
+              {
+                "currency": "Belric Crystal Fragment",
+                "amount": "250"
+              },
+              {
+                "currency": "Rania Crystal Fragment",
+                "amount": "150"
+              }
             ]
           },
           "done": false
         },
         {
           "qty": null,
-          "label": "Receiver",
+          "label": "Steflos Receiver",
           "note": "8%, Rotation B",
           "alt": {
             "text": "or 250 Belric + 150 Rania at Otak",
             "spends": [
-              { "currency": "Belric Crystal Fragment", "amount": "250" },
-              { "currency": "Rania Crystal Fragment", "amount": "150" }
+              {
+                "currency": "Belric Crystal Fragment",
+                "amount": "250"
+              },
+              {
+                "currency": "Rania Crystal Fragment",
+                "amount": "150"
+              }
             ]
           },
           "done": false
@@ -102,8 +160,14 @@
           "alt": {
             "text": "or 250 Belric + 150 Rania at Otak",
             "spends": [
-              { "currency": "Belric Crystal Fragment", "amount": "250" },
-              { "currency": "Rania Crystal Fragment", "amount": "150" }
+              {
+                "currency": "Belric Crystal Fragment",
+                "amount": "250"
+              },
+              {
+                "currency": "Rania Crystal Fragment",
+                "amount": "150"
+              }
             ]
           },
           "done": false

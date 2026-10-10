@@ -4,40 +4,112 @@
   "effort": 5,
   "source": "standing",
   "tradeable": false,
-  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "progress": {
+    "have": 0,
+    "need": 4,
+    "unit": "parts"
+  },
   "badges": [
-    { "text": "4 weekly resets", "tone": "warn" },
-    { "text": "no RNG", "tone": "info" }
+    {
+      "text": "4 weekly resets",
+      "tone": "warn"
+    },
+    {
+      "text": "no RNG",
+      "tone": "info"
+    }
   ],
   "prices": [
-    { "label": "blueprints", "amount": "270 Stock", "money": false },
-    { "label": "built", "amount": "175 p", "money": false }
+    {
+      "label": "blueprints",
+      "amount": "270 Stock",
+      "money": false
+    },
+    {
+      "label": "built",
+      "amount": "175 p",
+      "money": false
+    }
   ],
   "materials": [
-    { "qty": "2", "label": "Argon Crystal", "note": "Neuroptics" },
-    { "qty": "3,000", "label": "Ferrite", "note": "Neuroptics" },
-    { "qty": "1,200", "label": "Rubedo", "note": "Systems" },
-    { "qty": "1,200", "label": "Oxium", "note": "Chassis" },
-    { "qty": "1", "label": "Orokin Cell", "note": "Styanax" },
-    { "qty": "900", "label": "Plastids", "note": "Hespazym Alloy refines" },
-    { "qty": "6", "label": "Morphics", "note": "Hespazym Alloy refines" },
-    { "qty": "40", "label": "Purged Dagonic", "note": "Neuroptics" },
-    { "qty": "5", "label": "Norg Brain", "note": "Neuroptics" },
-    { "qty": "5", "label": "Entrati Lanthorn", "note": "Chassis" },
-    { "qty": "60", "label": "Hespazym Alloy", "note": "Chassis" },
-    { "qty": "20", "label": "Star Crimzian", "note": "Chassis" },
-    { "qty": "5", "label": "Radian Sentirum", "note": "Systems" },
-    { "qty": "400", "label": "Thrax Plasm", "note": "Systems" },
-    { "qty": "15", "label": "Voidplume Quill", "note": "Systems" },
-    { "qty": "70,000", "label": "Credits", "note": null }
+    {
+      "qty": "2",
+      "label": "Argon Crystal",
+      "note": "Neuroptics"
+    },
+    {
+      "qty": "3,000",
+      "label": "Ferrite",
+      "note": "Neuroptics"
+    },
+    {
+      "qty": "1,200",
+      "label": "Rubedo",
+      "note": "Systems"
+    },
+    {
+      "qty": "1,200",
+      "label": "Oxium",
+      "note": "Chassis"
+    },
+    {
+      "qty": "12",
+      "label": "Orokin Cell",
+      "note": "Styanax"
+    },
+    {
+      "qty": "40",
+      "label": "Purged Dagonic",
+      "note": "Neuroptics"
+    },
+    {
+      "qty": "5",
+      "label": "Norg Brain",
+      "note": "Neuroptics"
+    },
+    {
+      "qty": "5",
+      "label": "Entrati Lanthorn",
+      "note": "Chassis"
+    },
+    {
+      "qty": "60",
+      "label": "Hespazym Alloy",
+      "note": "Chassis"
+    },
+    {
+      "qty": "20",
+      "label": "Star Crimzian",
+      "note": "Chassis"
+    },
+    {
+      "qty": "5",
+      "label": "Radian Sentirum",
+      "note": "Systems"
+    },
+    {
+      "qty": "400",
+      "label": "Thrax Plasm",
+      "note": "Systems"
+    },
+    {
+      "qty": "15",
+      "label": "Voidplume Quill",
+      "note": "Systems"
+    },
+    {
+      "qty": "70,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
     {
       "type": "gate",
       "place": "QUESTS",
       "sub": null,
-      "activity": "complete The New War, then Veilbreaker",
-      "meta": "unlocks Kahl's Garrison",
+      "activity": "complete Veilbreaker",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -47,22 +119,14 @@
       "rows": [
         {
           "qty": null,
-          "label": "The New War",
-          "note": "Veilbreaker prerequisite",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
           "label": "Veilbreaker",
-          "note": "solo quest; unlocks Kahl's Garrison",
+          "note": "solo quest; requires The New War and unlocks Kahl's Garrison",
           "alt": null,
           "done": false
         }
       ],
       "conditions": [
-        "Break Narmer is solo-only: you play as Kahl-175, so squads and carries cannot shorten this farm.",
-        "Check the inventory first. Styanax was awarded during two limited promotions and may already be built on older accounts."
+        "Break Narmer is solo-only: you play as Kahl-175, so squads and carries cannot shorten this farm."
       ],
       "bonuses": [],
       "disclosures": []
@@ -76,7 +140,10 @@
       "mode": "complete it every week",
       "live": null,
       "skip": null,
-      "earns": { "currency": "Stock", "amount": "105" },
+      "earns": {
+        "currency": "Stock",
+        "amount": "105"
+      },
       "spends": [],
       "map": null,
       "rows": [
@@ -124,7 +191,12 @@
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Stock", "amount": "270" }],
+      "spends": [
+        {
+          "currency": "Stock",
+          "amount": "270"
+        }
+      ],
       "map": null,
       "rows": [
         {
@@ -202,7 +274,7 @@
         {
           "qty": null,
           "label": "Styanax",
-          "note": "25,000 cr + 1 Orokin Cell",
+          "note": "25,000 cr + 12 Orokin Cell",
           "alt": null,
           "done": false
         }

@@ -4,20 +4,81 @@
   "effort": 4,
   "source": "bounties",
   "tradeable": false,
-  "progress": { "have": 0, "need": 1, "unit": "weapon" },
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "weapon"
+  },
   "badges": [
-    { "text": "Ghoul Purge event", "tone": "warn" },
-    { "text": "MR 7", "tone": "info" }
+    {
+      "text": "Ghoul Purge event",
+      "tone": "warn"
+    },
+    {
+      "text": "MR 7",
+      "tone": "info"
+    }
   ],
-  "prices": [{ "label": "build", "amount": "20,000 cr", "money": false }],
+  "prices": [
+    {
+      "label": "build",
+      "amount": "20,000 cr",
+      "money": false
+    }
+  ],
   "materials": [
-    { "qty": "4,485", "label": "Ferrite", "note": "4,485 build, 800 Coprite Alloy" },
-    { "qty": "2", "label": "Neurodes", "note": null },
-    { "qty": "45", "label": "Grokdrul", "note": "Stubba" },
-    { "qty": "25", "label": "Coprite Alloy", "note": null },
-    { "qty": "20,000", "label": "Credits", "note": null }
+    {
+      "qty": "4,485",
+      "label": "Ferrite",
+      "note": "build"
+    },
+    {
+      "qty": "2",
+      "label": "Neurodes",
+      "note": null
+    },
+    {
+      "qty": "45",
+      "label": "Grokdrul",
+      "note": "Stubba"
+    },
+    {
+      "qty": "25",
+      "label": "Coprite Alloy",
+      "note": null
+    },
+    {
+      "qty": "20,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
+    {
+      "type": "gate",
+      "place": "MASTERY RANK",
+      "sub": null,
+      "activity": "reach MR 7 to build it",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Mastery Rank 7",
+          "note": "the Foundry won't craft it below this",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
     {
       "type": "bounty",
       "place": "PLAINS OF EIDOLON",
@@ -34,7 +95,7 @@
         {
           "qty": null,
           "label": "Stubba Blueprint",
-          "note": "50% per Ghoul Rictus Alpha kill; about 4.7-4.9% per reward roll otherwise",
+          "note": "50% per Ghoul Rictus Alpha kill; 3.57-4.85% per reward roll in the bounty stages otherwise",
           "alt": "Market, or the Maggor Assault Pack",
           "done": false
         }
@@ -59,35 +120,10 @@
       ]
     },
     {
-      "type": "vendor",
-      "place": "OLD MAN SUUMBAAT, CETUS",
-      "sub": null,
-      "activity": "buy Coprite Alloy blueprint",
-      "meta": "Offworlder rank; skip if owned",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [{ "currency": "Ostron Standing", "amount": "2,500" }],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Coprite Alloy Blueprint",
-          "note": null,
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
       "type": "foundry",
       "place": "FOUNDRY",
       "sub": null,
-      "activity": "craft Coprite Alloy twice, then Stubba",
+      "activity": "build Stubba",
       "meta": "1 day",
       "mode": null,
       "live": null,

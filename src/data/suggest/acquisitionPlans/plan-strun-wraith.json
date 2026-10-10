@@ -4,14 +4,61 @@
   "effort": 7,
   "source": "repeat",
   "tradeable": "parts and blueprint",
-  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "progress": {
+    "have": 0,
+    "need": 4,
+    "unit": "parts"
+  },
   "badges": [
-    { "text": "Invasion RNG, 1.11% each", "tone": "warn" },
-    { "text": "MR 10", "tone": "info" }
+    {
+      "text": "Invasion RNG, 1.11% each",
+      "tone": "warn"
+    },
+    {
+      "text": "MR 10",
+      "tone": "info"
+    }
   ],
-  "prices": [{ "label": "build", "amount": "25,000 cr", "money": false }],
-  "materials": [{ "qty": "25,000", "label": "Credits", "note": null }],
+  "prices": [
+    {
+      "label": "build",
+      "amount": "25,000 cr",
+      "money": false
+    }
+  ],
+  "materials": [
+    {
+      "qty": "25,000",
+      "label": "Credits",
+      "note": null
+    }
+  ],
   "groups": [
+    {
+      "type": "gate",
+      "place": "MASTERY RANK",
+      "sub": null,
+      "activity": "reach MR 10 to acquire it",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Mastery Rank 10",
+          "note": "the blueprint can only be acquired from MR 10",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
     {
       "type": "farm",
       "place": "INVASIONS",
@@ -28,7 +75,7 @@
         {
           "qty": null,
           "label": "Strun Wraith Blueprint",
-          "note": "1.11% per Grineer-side invasion; MR 10 to acquire",
+          "note": "1.11% per Grineer-side invasion",
           "alt": null,
           "done": false
         },
@@ -46,7 +93,13 @@
           "alt": null,
           "done": false
         },
-        { "qty": null, "label": "Strun Wraith Stock", "note": "1.11%", "alt": null, "done": false }
+        {
+          "qty": null,
+          "label": "Strun Wraith Stock",
+          "note": "1.11%",
+          "alt": null,
+          "done": false
+        }
       ],
       "conditions": [
         "Only the Grineer side pays Strun Wraith parts; the Corpus side pays Vandal parts and Infested outbreaks pay no weapon parts.",
@@ -60,7 +113,7 @@
       "disclosures": [
         {
           "title": "the wait",
-          "body": "Collecting four specific 1.11% rewards averages about 190 Grineer-side invasion rewards: 22 for the first piece, then 30, 45 and 90 for the last. Months of checking, mostly for the final piece. Every part is tradeable, so buying the missing one from another player is the common shortcut."
+          "body": "Collecting four specific 1.11% rewards averages about 190 Grineer-side invasion rewards: 22 for the first piece, then 30, 45 and 90 for the last. Every part is tradeable, so buying the missing one from another player is the common shortcut."
         },
         {
           "title": "invasion hazards",
@@ -73,7 +126,7 @@
       "place": "FOUNDRY",
       "sub": null,
       "activity": "build Strun Wraith",
-      "meta": "12h, MR 10",
+      "meta": "12h",
       "mode": null,
       "live": null,
       "skip": null,
@@ -81,9 +134,13 @@
       "spends": [],
       "map": null,
       "rows": [
-        { "qty": null, "label": "Strun Wraith Barrel", "note": null, "alt": null, "done": false },
-        { "qty": null, "label": "Strun Wraith Receiver", "note": null, "alt": null, "done": false },
-        { "qty": null, "label": "Strun Wraith Stock", "note": null, "alt": null, "done": false }
+        {
+          "qty": null,
+          "label": "Strun Wraith",
+          "note": "25,000 cr, Blueprint, Barrel, Receiver, Stock",
+          "alt": null,
+          "done": false
+        }
       ],
       "conditions": [],
       "bonuses": [],

@@ -15,15 +15,11 @@
   ],
   "prices": [{ "label": "blueprint", "amount": "8,000 Holdfasts Standing", "money": false }],
   "materials": [
-    { "qty": "15,000", "label": "Alloy Plate", "note": "2,000 Rank 1, 5,000 Rank 2, 8,000 build" },
-    { "qty": "7,000", "label": "Ferrite", "note": "2,000 Rank 1, 5,000 Rank 3" },
-    { "qty": "5", "label": "Voidplume Down", "note": "Rank 1" },
-    { "qty": "10", "label": "Voidplume Crest", "note": "Rank 3" },
-    { "qty": "10", "label": "Voidplume Pinion", "note": "build" },
-    { "qty": "15", "label": "Voidplume Quill", "note": "build" },
-    { "qty": "40", "label": "Voidgel Orb", "note": "10 Rank 2, 30 build" },
-    { "qty": "10", "label": "Entrati Lanthorn", "note": "Rank 3" },
-    { "qty": "115,000", "label": "Credits", "note": null }
+    { "qty": "8,000", "label": "Alloy Plate", "note": null },
+    { "qty": "10", "label": "Voidplume Pinion", "note": null },
+    { "qty": "15", "label": "Voidplume Quill", "note": null },
+    { "qty": "30", "label": "Voidgel Orb", "note": null },
+    { "qty": "30,000", "label": "Credits", "note": null }
   ],
   "groups": [
     {
@@ -52,6 +48,14 @@
           "note": "to equip it; you can build it earlier",
           "alt": null,
           "done": false
+        },
+        {
+          "qty": null,
+          "label": "Holdfasts Rank 3 (Guardian)",
+          "note": "needed to buy the blueprint; rank-ups are below",
+          "alt": null,
+          "done": false,
+          "rank": { "syndicate": "The Holdfasts", "level": 3 }
         }
       ],
       "conditions": [],
@@ -125,7 +129,7 @@
           "qty": null,
           "label": "Felarx Blueprint",
           "note": "tradeable",
-          "alt": "a clanmate can gift or trade the blueprint",
+          "alt": "trade from another player",
           "done": false
         }
       ],

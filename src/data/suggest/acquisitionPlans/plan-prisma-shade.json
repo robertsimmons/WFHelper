@@ -4,74 +4,41 @@
   "effort": 2,
   "source": "shop",
   "tradeable": "unranked copies only",
-  "progress": {
-    "have": 0,
-    "need": 1,
-    "unit": "sentinel"
-  },
+  "progress": { "have": 0, "need": 1, "unit": "sentinel" },
   "badges": [
-    {
-      "text": "Baro Ki'Teer only",
-      "tone": "warn"
-    },
-    {
-      "text": "500 Ducats",
-      "tone": "info"
-    }
+    { "text": "Baro only", "tone": "warn" },
+    { "text": "2 Companion slots", "tone": "info" }
   ],
-  "prices": [
-    {
-      "label": "credits",
-      "amount": "300,000 cr",
-      "money": false
-    },
-    {
-      "label": "Ducats",
-      "amount": "500",
-      "money": false
-    }
-  ],
-  "materials": [
-    {
-      "qty": "300,000",
-      "label": "Credits",
-      "note": null
-    }
-  ],
+  "prices": [{ "label": "Baro Ki'Teer", "amount": "300,000 cr + 500 Ducats", "money": false }],
+  "materials": [{ "qty": "300,000", "label": "Credits", "note": null }],
   "groups": [
     {
       "type": "currency",
-      "place": "VOID FISSURES, ANY",
+      "place": "VOID FISSURES",
       "sub": null,
-      "activity": "open Void Relics for Prime parts, sell the best drop for Ducats",
-      "meta": "stockpile ahead of Baro's visit",
-      "mode": "full squad of four",
+      "activity": "crack relics, sell Prime parts at a Relay Ducat Kiosk",
+      "meta": "bank it before Baro lands",
+      "mode": "full squad recommended",
       "live": null,
       "skip": null,
-      "earns": {
-        "currency": "Orokin Ducats",
-        "amount": "500"
-      },
+      "earns": { "currency": "Orokin Ducats", "amount": "500" },
       "spends": [],
-      "map": "void",
+      "map": null,
       "rows": [
         {
-          "qty": null,
-          "label": "sell duplicate Prime parts first",
-          "note": "gold 100, silver 45, bronze 15 Ducats at the Kiosk",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "open relics, take the highest-value drop",
-          "note": "500 Ducats is five golds or about eleven silvers",
-          "alt": null,
+          "qty": "500",
+          "label": "Orokin Ducats",
+          "note": "common parts 15, uncommon 45, rare 100",
+          "alt": {
+            "text": "or 100 Aya at Varzia, 5 Ducats each",
+            "spends": [{ "currency": "Aya", "amount": "100" }]
+          },
           "done": false
         }
       ],
       "conditions": [
-        "Check warframe.market before scrapping a part; some are worth far more traded."
+        "Ducats are untradeable; only the Prime parts that sell for them trade.",
+        "Maroo's Bazaar has no Ducat Kiosk; use any other Relay."
       ],
       "bonuses": [],
       "disclosures": [],
@@ -79,26 +46,24 @@
     },
     {
       "type": "vendor",
-      "place": "RELAY, CONCOURSE",
-      "sub": null,
-      "activity": "check Baro's rotating stock, then buy if listed",
-      "meta": "every two weeks, rotating stock",
+      "place": "BARO KI'TEER, RELAY",
+      "sub": "Concourse",
+      "activity": "buy it on a visit that stocks it",
+      "meta": "every two weeks for 48 hours; stock rotates",
       "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
       "spends": [
-        {
-          "currency": "Orokin Ducats",
-          "amount": "500"
-        }
+        { "currency": "Credits", "amount": "300,000" },
+        { "currency": "Orokin Ducats", "amount": "500" }
       ],
       "map": null,
       "rows": [
         {
           "qty": null,
           "label": "Prisma Shade",
-          "note": "500 Ducats + 300,000 credits, only when in his stock",
+          "note": "arrives built, no blueprint or foundry step",
           "alt": null,
           "done": false
         },
@@ -110,7 +75,10 @@
           "done": false
         }
       ],
-      "conditions": ["Without two free Companion slots the purchase fails."],
+      "conditions": [
+        "Without two free Companion slots the purchase fails.",
+        "Baro's stock changes each visit, so it may be missing on the next one."
+      ],
       "bonuses": [
         "The purchase includes the Prisma Burst Laser, a separate Mastery item, already built."
       ],
@@ -118,6 +86,10 @@
         {
           "title": "level both for full Mastery",
           "body": "Prisma Shade and the Prisma Burst Laser are separate Mastery items. The Burst Laser levels while equipped on the Sentinel."
+        },
+        {
+          "title": "other routes",
+          "body": "During TennoCon, Baro's special Relay is open to anyone with a ticket and stocks Prisma Shade. Unranked copies without Forma or Orokin Reactor also trade between players."
         }
       ]
     }

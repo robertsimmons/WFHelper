@@ -21,13 +21,13 @@
   ],
   "prices": [
     {
-      "label": "build",
+      "label": "parts + build",
       "amount": "90,000 cr",
       "money": false
     },
     {
       "label": "buy all blueprints",
-      "amount": "317 Fate Pearls",
+      "amount": "270 Fate Pearls",
       "money": false
     }
   ],
@@ -113,7 +113,7 @@
       "place": "SAYA'S VISIONS, EARTH",
       "sub": "Cetus shrine",
       "activity": "Shrine Defense",
-      "meta": "~2 min each",
+      "meta": "14-18 Fate Pearls a clear",
       "mode": "normal; public recommended",
       "live": null,
       "skip": null,
@@ -128,21 +128,30 @@
           "qty": null,
           "label": "Amanata Blueprint",
           "note": "4.09%",
-          "alt": "or 135 Fate Pearls at Koumei's Shrine",
+          "alt": {
+            "text": "or 135 Fate Pearls at Koumei's Shrine",
+            "spends": [{ "currency": "Fate Pearl", "amount": "135" }]
+          },
           "done": false
         },
         {
           "qty": "2",
           "label": "Blade Blueprint",
           "note": "4.09%; two are needed to build",
-          "alt": "or 45 Fate Pearls each at Koumei's Shrine",
+          "alt": {
+            "text": "or 45 Fate Pearls each at Koumei's Shrine",
+            "spends": [{ "currency": "Fate Pearl", "amount": "90" }]
+          },
           "done": false
         },
         {
           "qty": null,
           "label": "Handle Blueprint",
           "note": "4.09%",
-          "alt": "or 45 Fate Pearls at Koumei's Shrine",
+          "alt": {
+            "text": "or 45 Fate Pearls at Koumei's Shrine",
+            "spends": [{ "currency": "Fate Pearl", "amount": "45" }]
+          },
           "done": false
         }
       ],

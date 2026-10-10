@@ -1,7 +1,7 @@
 {
   "name": "Follie",
   "kind": "warframe",
-  "effort": 6,
+  "effort": 5,
   "source": "repeat",
   "tradeable": false,
   "progress": { "have": 0, "need": 4, "unit": "parts" },
@@ -12,6 +12,14 @@
   "prices": [
     { "label": "build", "amount": "75,000 cr", "money": false },
     { "label": "buy all blueprints", "amount": "2,400 Atramentum", "money": false }
+  ],
+  "routes": [
+    {
+      "name": "Follie's Hunt",
+      "cost": "blueprints drop 5% a clear, or 400 Atramentum each and 1,200 for the main; 2,400 buys the set",
+      "effort": 5,
+      "role": "chosen"
+    }
   ],
   "materials": [
     { "qty": "2", "label": "Neurodes", "note": "Neuroptics" },
@@ -56,11 +64,11 @@
       "disclosures": []
     },
     {
-      "type": "farm",
+      "type": "currency",
       "place": "FOLLIE'S HUNT, VESPER RELAY, VENUS",
       "sub": null,
       "activity": "find 3 Shadowgraph Canvases, deliver paint from gold Paint Pools",
-      "meta": "5% each (6% Steel Path)",
+      "meta": "2,400 Atramentum buys the full set",
       "mode": null,
       "live": null,
       "skip": null,
@@ -69,11 +77,45 @@
       "map": null,
       "rows": [
         {
+          "qty": "2,400",
+          "label": "Atramentum",
+          "note": "15 a clear (25 on Steel Path), plus Atramentum Balloons and enemy drops",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Paint Pools force you out of your Warframe into your Operator or Drifter, and you can't Void Sling or Transference while carrying paint.",
+        "Nothing spawns until someone picks up paint, so scout all three canvases first.",
+        "Clear canvas B first: the Drip, Drip, Drip modifier's permanent ink obstructions make it harder to reach later. Canvas A, in the second level's concourse, can wait."
+      ],
+      "bonuses": [
+        "Sprint and Void Mode work together as Operator: you stay invulnerable and move faster, and Follie's clones drain less energy.",
+        "Lavos and Hildryn have no energy cost; high-health or healing frames like Dante, Rhino, Inaros, Wisp and Kullervo also hold up.",
+        "Atramentum Balloons only appear once paint has been delivered and Follie starts her hunt."
+      ],
+      "disclosures": [],
+      "ref": "Atramentum"
+    },
+    {
+      "type": "farm",
+      "place": "FOLLIE'S HUNT, VESPER RELAY, VENUS",
+      "sub": null,
+      "activity": "clear the mission for a Rotation A part roll",
+      "meta": "5% each (6% Steel Path)",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
           "qty": null,
           "label": "Follie Blueprint",
           "note": "5% (6% SP), Rotation A",
           "alt": {
-            "text": "or 1,200 Atramentum at Aspirant Zorba",
+            "text": "or 1,200 Atramentum at Aspirant Zorba, any relay",
             "spends": [{ "currency": "Atramentum", "amount": "1,200" }]
           },
           "done": false
@@ -110,53 +152,7 @@
         }
       ],
       "conditions": [
-        "Rotation A is the only roll per clear; Rotation B is a guaranteed 15 Atramentum (25 on Steel Path). The Enkaus and its three parts share this table at the same rate, so most clears reward something else.",
-        "Paint Pools force you out of your Warframe into your Operator or Drifter, and you can't Void Sling or Transference while carrying paint.",
-        "Nothing spawns until someone picks up paint, so scout all three canvases first.",
-        "Clear canvas B first: the Drip, Drip, Drip modifier's permanent ink obstructions make it harder to reach later. Canvas A, in the second level's concourse, can wait."
-      ],
-      "bonuses": [
-        "Sprint and Void Mode work together as Operator: you stay invulnerable and move faster, and Follie's clones drain less energy.",
-        "Lavos and Hildryn have no energy cost; high-health or healing frames like Dante, Rhino, Inaros, Wisp and Kullervo also hold up.",
-        "Atramentum Balloons only appear once paint has been delivered and Follie starts her hunt."
-      ],
-      "disclosures": [
-        {
-          "title": "the Atramentum math",
-          "body": "The full set costs 2,400 Atramentum bought outright. Rotation B pays 15 a clear (25 on Steel Path), plus balloons and enemy kills."
-        }
-      ]
-    },
-    {
-      "type": "vendor",
-      "place": "VESPER RELAY, VENUS",
-      "sub": "Aspirant Zorba",
-      "activity": "buy missing blueprints",
-      "meta": "400 per component, 1,200 for the main BP",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [{ "currency": "Atramentum", "amount": "2,400" }],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Follie Blueprint",
-          "note": "1,200 Atramentum",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "3",
-          "label": "component blueprints",
-          "note": "400 Atramentum each",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Spend only on the blueprints still missing once you have enough Atramentum for all of them."
+        "Rotation A is the only roll per clear; Rotation B is a guaranteed 15 Atramentum (25 on Steel Path). The Enkaus and its three parts share this table at the same rate, so most clears reward something else."
       ],
       "bonuses": [],
       "disclosures": []

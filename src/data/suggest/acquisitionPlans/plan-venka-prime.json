@@ -9,7 +9,7 @@
     "need": 3,
     "unit": "parts"
   },
-  "badges": [],
+  "badges": [{ "text": "relics from Railjack caches", "tone": "warn" }],
   "prices": [],
   "materials": [
     {
@@ -28,7 +28,7 @@
       "type": "gate",
       "place": "MASTERY RANK",
       "sub": null,
-      "activity": "reach MR 14",
+      "activity": "reach MR 14 and finish The Archwing",
       "meta": null,
       "mode": null,
       "live": null,
@@ -43,10 +43,58 @@
           "note": "needed to equip it",
           "alt": null,
           "done": false
+        },
+        {
+          "qty": null,
+          "label": "The Archwing",
+          "note": "lets you join a squad's Railjack mission",
+          "alt": null,
+          "done": false
         }
       ],
       "conditions": [],
       "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "PROXIMA, RAILJACK",
+      "sub": "Abandoned Derelict Cache",
+      "activity": "board the derelict and hack its marked terminal",
+      "meta": "Rotation B reward",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Axi S8 relic",
+          "note": "Venka Prime Blueprint; 9.09% in Pluto Proxima and Corpus Veil Proxima",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Axi V10 relic",
+          "note": "Venka Prime Gauntlet; 9.09% in Pluto Proxima and Corpus Veil Proxima",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Neo V9 relic",
+          "note": "Venka Prime Blades; 6.52% in Grineer Veil Proxima",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Venka Prime's three active relics drop from these caches, not from ordinary mission rewards."
+      ],
+      "bonuses": ["Piloting Intrinsics rank 5 marks the derelict with a waypoint."],
       "disclosures": []
     },
     {
@@ -89,7 +137,7 @@
       "disclosures": [
         {
           "title": "also in vaulted relics",
-          "body": "Blueprint: Lith C5, Neo B2, Neo N4, Axi O3; Gauntlet: Meso V5, Neo V4, Axi V7, Axi V9; Blades: Lith C2, Lith V4, Lith V6, Meso G1, Meso S7, Neo N7, Axi S5, Axi V5."
+          "body": "Blueprint: Lith C5, Neo B2, Neo N4, Axi O3; Gauntlet: Meso V5, Neo V4, Axi V7, Axi V9; Blades: Lith C2, Lith V4, Lith V6, Meso G1, Meso S7, Neo N7, Axi S5, Axi V5. Those come from Varzia when Venka Prime is in her Prime Resurgence, or from trading."
         }
       ]
     },

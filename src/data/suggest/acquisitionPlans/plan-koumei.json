@@ -1,1 +1,188 @@
-{"name": "Koumei", "kind": "warframe", "effort": 2, "source": "repeat", "tradeable": false, "progress": {"have": 0, "need": 4, "unit": "parts"}, "badges": [{"text": "hard pity", "tone": "info"}, {"text": "Earth", "tone": "info"}], "prices": [{"label": "built", "amount": "325 p", "money": false}], "materials": [{"qty": "102", "label": "Fate Pearl", "note": "Neuroptics, Chassis, Systems and Koumei"}, {"qty": "100", "label": "Rubedo", "note": "Neuroptics"}, {"qty": "1", "label": "Neurodes", "note": "Neuroptics"}, {"qty": "50", "label": "Iradite", "note": "Neuroptics"}, {"qty": "300", "label": "Polymer Bundle", "note": "Chassis"}, {"qty": "30", "label": "Grokdrul", "note": "Chassis"}, {"qty": "10", "label": "Esher Devar", "note": "Chassis"}, {"qty": "150", "label": "Circuits", "note": "Systems"}, {"qty": "1", "label": "Morphics", "note": "Systems"}, {"qty": "10", "label": "Tear Azurite", "note": "Systems"}, {"qty": "70,000", "label": "Credits", "note": null}], "groups": [{"type": "gate", "place": "QUESTS", "sub": null, "activity": "Saya's Vigil, then Once Awake", "meta": null, "mode": null, "live": null, "skip": null, "earns": null, "spends": [], "map": null, "rows": [{"qty": null, "label": "Saya's Vigil", "note": "required", "alt": null, "done": false}, {"qty": null, "label": "Once Awake", "note": "required", "alt": null, "done": false}], "conditions": [], "bonuses": [], "disclosures": []}, {"type": "farm", "place": "SAYA'S VISIONS, EARTH", "sub": "Cetus shrine", "activity": "Shrine Defense", "meta": null, "mode": null, "live": null, "skip": null, "earns": {"currency": "Fate Pearl", "amount": "432"}, "spends": [], "map": "plains-of-eidolon", "rows": [{"qty": null, "label": "Koumei Blueprint", "note": "4.09%", "alt": "or 165 Fate Pearls at Koumei's Shrine", "done": false}, {"qty": null, "label": "Neuroptics Blueprint", "note": "4.09%", "alt": "or 55 Fate Pearls at Koumei's Shrine", "done": false}, {"qty": null, "label": "Chassis Blueprint", "note": "4.09%", "alt": "or 55 Fate Pearls at Koumei's Shrine", "done": false}, {"qty": null, "label": "Systems Blueprint", "note": "4.09%", "alt": "or 55 Fate Pearls at Koumei's Shrine", "done": false}], "conditions": ["Normal rewards 14-18 Pearls per clear, 20-24 on Steel Path. Resource Boosters do not increase them.", "Do not buy a blueprint as soon as you can afford it: wait until your Pearls cover every blueprint still missing, so a later drop cannot duplicate a purchase.", "Save two offerings for the Oni's invulnerable phase; carry one in Warframe and one as Operator, then deposit both at once."], "bonuses": ["The offering timer pauses only while Infested stand in the circle, so area control at both dwellings keeps offerings coming."], "disclosures": [{"title": "the zero-luck ceiling", "body": "Four blueprints cost 330 Pearls, then crafting consumes another 102. At 14-18 Pearls a clear that is roughly 25-30 runs."}]}, {"type": "vendor", "place": "CETUS, EARTH", "sub": "Koumei's Shrine", "activity": "buy missing blueprints", "meta": "hard pity", "mode": null, "live": null, "skip": null, "earns": null, "spends": [{"currency": "Fate Pearl", "amount": "330"}], "map": "plains-of-eidolon", "rows": [{"qty": null, "label": "Koumei Blueprint", "note": "165 Fate Pearls", "alt": null, "done": false}, {"qty": "3", "label": "component blueprints", "note": "55 Fate Pearls each", "alt": null, "done": false}], "conditions": ["Spend only on the blueprints still missing once you have enough Pearls for all of them."], "bonuses": [], "disclosures": []}, {"type": "foundry", "place": "FOUNDRY", "sub": null, "activity": "build components, then Koumei", "meta": "12h each, then 24h", "mode": null, "live": null, "skip": null, "earns": null, "spends": [{"currency": "Fate Pearl", "amount": "102"}], "map": null, "rows": [{"qty": null, "label": "Neuroptics", "note": "15,000 cr, 24 Fate Pearls, 100 Rubedo, 1 Neurodes, 50 Iradite", "alt": null, "done": false}, {"qty": null, "label": "Chassis", "note": "15,000 cr, 24 Fate Pearls, 300 Polymer Bundle, 30 Grokdrul, 10 Esher Devar", "alt": null, "done": false}, {"qty": null, "label": "Systems", "note": "15,000 cr, 24 Fate Pearls, 150 Circuits, 1 Morphics, 10 Tear Azurite", "alt": null, "done": false}, {"qty": null, "label": "Koumei", "note": "25,000 cr, the three parts, 30 Fate Pearls", "alt": null, "done": false}], "conditions": ["Fate Pearls are crafting materials as well as shop currency; reserve 102 after buying any missing blueprints."], "bonuses": [], "disclosures": []}]}
+{
+  "name": "Koumei",
+  "kind": "warframe",
+  "effort": 2,
+  "source": "repeat",
+  "tradeable": false,
+  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "badges": [
+    { "text": "hard pity", "tone": "info" },
+    {
+      "text": "Ostron Offworlder",
+      "tone": "warn",
+      "rank": { "syndicate": "Ostron", "level": 1 }
+    }
+  ],
+  "prices": [
+    { "label": "parts + build", "amount": "70,000 cr", "money": false },
+    { "label": "buy all blueprints", "amount": "330 Fate Pearls", "money": false }
+  ],
+  "materials": [
+    { "qty": "102", "label": "Fate Pearl", "note": "24 per part, 30 Koumei" },
+    { "qty": "100", "label": "Rubedo", "note": "Neuroptics" },
+    { "qty": "1", "label": "Neurodes", "note": "Neuroptics" },
+    { "qty": "50", "label": "Iradite", "note": "Neuroptics" },
+    { "qty": "300", "label": "Polymer Bundle", "note": "Chassis" },
+    { "qty": "30", "label": "Grokdrul", "note": "Chassis" },
+    { "qty": "10", "label": "Esher Devar", "note": "Chassis" },
+    { "qty": "150", "label": "Circuits", "note": "Systems" },
+    { "qty": "1", "label": "Morphics", "note": "Systems" },
+    { "qty": "10", "label": "Tear Azurite", "note": "Systems" },
+    { "qty": "70,000", "label": "Credits", "note": null }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "QUESTS",
+      "sub": null,
+      "activity": "Once Awake, then Saya's Vigil",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Once Awake",
+          "note": "required",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Saya's Vigil",
+          "note": "required; opens Shrine Defense",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Ostron rank 1: Offworlder",
+          "note": "unlocks the Esher Devar blueprint for the Chassis",
+          "alt": null,
+          "done": false,
+          "rank": { "syndicate": "Ostron", "level": 1 }
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "SAYA'S VISIONS, EARTH",
+      "sub": "Koumei's Shrine",
+      "activity": "Shrine Defense",
+      "meta": "14-18 Fate Pearls and 800 Ostron Standing a clear",
+      "mode": "normal, not Steel Path",
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "Fate Pearl", "amount": "432" },
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Koumei Blueprint",
+          "note": "4.09%",
+          "alt": {
+            "text": "or 165 Fate Pearls at Koumei's Shrine",
+            "spends": [{ "currency": "Fate Pearl", "amount": "165" }]
+          },
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Neuroptics Blueprint",
+          "note": "4.09%",
+          "alt": {
+            "text": "or 55 Fate Pearls at Koumei's Shrine",
+            "spends": [{ "currency": "Fate Pearl", "amount": "55" }]
+          },
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Chassis Blueprint",
+          "note": "4.09%",
+          "alt": {
+            "text": "or 55 Fate Pearls at Koumei's Shrine",
+            "spends": [{ "currency": "Fate Pearl", "amount": "55" }]
+          },
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Systems Blueprint",
+          "note": "4.09%",
+          "alt": {
+            "text": "or 55 Fate Pearls at Koumei's Shrine",
+            "spends": [{ "currency": "Fate Pearl", "amount": "55" }]
+          },
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Don't buy parts early: run until drops fill most of the set, then buy what's missing.",
+        "Fate Pearls are an end-of-mission reward that Resource Boosters don't affect, and crafting consumes 102 of them on top of any purchases.",
+        "Steel Path pays 20-24 Fate Pearls a clear against 14-18."
+      ],
+      "bonuses": ["The same table drops Higasa and Amanata parts, so farm all three together."],
+      "disclosures": [
+        {
+          "title": "faster clears",
+          "body": "Hold the offerings during the Extermination stage and insert them when the objective to remove the Oni's invulnerability appears. Destroy the Undying Flyers' pods, which pause the offering timer."
+        }
+      ]
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build the three parts, then Koumei",
+      "meta": "12h each, 24h for Koumei",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Neuroptics",
+          "note": "15,000 cr, 24 Fate Pearls, 100 Rubedo, 1 Neurodes, 50 Iradite",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Chassis",
+          "note": "15,000 cr, 24 Fate Pearls, 300 Polymer Bundle, 30 Grokdrul, 10 Esher Devar",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Systems",
+          "note": "15,000 cr, 24 Fate Pearls, 150 Circuits, 1 Morphics, 10 Tear Azurite",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Koumei",
+          "note": "25,000 cr, 30 Fate Pearls, the three parts",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

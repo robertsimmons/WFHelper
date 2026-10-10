@@ -4,29 +4,19 @@
   "effort": 1,
   "source": "shop",
   "tradeable": false,
-  "progress": {
-    "have": 0,
-    "need": 1,
-    "unit": "weapon"
-  },
+  "progress": { "have": 0, "need": 1, "unit": "weapon" },
   "badges": [
-    {
-      "text": "Daily Tribute milestone",
-      "tone": "warn"
-    },
-    {
-      "text": "no Foundry build",
-      "tone": "info"
-    }
+    { "text": "100 login days", "tone": "warn" },
+    { "text": "Daily Tribute", "tone": "info" }
   ],
   "prices": [],
   "groups": [
     {
       "type": "gate",
-      "place": "DAILY TRIBUTE",
+      "place": "DAILY TRIBUTE, ORBITER",
       "sub": null,
-      "activity": "pick Azima at a weapon milestone (day 100, 300, 500 or 700)",
-      "meta": "earliest possible day 100; worst case day 700",
+      "activity": "log in until a weapon milestone, then pick it",
+      "meta": "milestones at Day 100, 300, 500 and 700",
       "mode": null,
       "live": null,
       "skip": null,
@@ -36,24 +26,29 @@
       "rows": [
         {
           "qty": null,
-          "label": "Azima",
-          "note": "the day 100 pool is Azima, Zenistar or Zenith",
+          "label": "Mastery Rank 6",
+          "note": "needed to equip it",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Azima (login pick)",
+          "note": "offered from Day 100, then every 200 days until you pick it",
           "alt": null,
           "done": false
         }
       ],
       "conditions": [
-        "Login days are cumulative, not consecutive; missing days only delays the milestone, nothing resets.",
-        "A picked weapon leaves the pool and the choice cannot be changed. Sigma & Octantis joins the pool from day 300."
+        "Daily Tribute counts total login days, not a consecutive streak, so missing a day only costs that day."
       ],
       "bonuses": [
-        "Arrives with its own weapon slot and an Orokin Catalyst pre-installed; no Foundry step.",
-        "Taking one weapon at each of days 100, 300, 500 and 700 gets all four, so the order does not matter for Mastery."
+        "Arrives fully built with its own weapon slot and a pre-installed Orokin Catalyst."
       ],
       "disclosures": [
         {
-          "title": "replacement copy",
-          "body": "Cephalon Simaris sells an additional Azima Blueprint for 100,000 standing. The build is 30,000 credits, 4 Morphics, 450 Circuits, 500 Polymer Bundle and 2,750 Salvage, 24 hours."
+          "title": "extra copies from Simaris",
+          "body": "Cephalon Simaris sells additional blueprints for 100,000 Standing (30,000 credits, 4 Morphics, 450 Circuits, 500 Polymer Bundle, 2,750 Salvage, 1 day to build)."
         }
       ]
     }

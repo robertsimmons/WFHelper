@@ -4,41 +4,122 @@
   "effort": 5,
   "source": "shop",
   "tradeable": false,
-  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "progress": {
+    "have": 0,
+    "need": 4,
+    "unit": "parts"
+  },
   "badges": [
-    { "text": "Entrati rank gate", "tone": "warn" },
-    { "text": "blueprints mailed free", "tone": "info" }
+    {
+      "text": "Heart of Deimos quest",
+      "tone": "warn"
+    },
+    {
+      "text": "blueprints mailed free",
+      "tone": "info"
+    }
   ],
-  "prices": [{ "label": "components + build", "amount": "85,000 cr", "money": false }],
+  "prices": [
+    {
+      "label": "components + build",
+      "amount": "85,000 cr",
+      "money": false
+    }
+  ],
   "materials": [
-    { "qty": "10", "label": "Orokin Cell", "note": "Engine" },
-    { "qty": "3", "label": "Morphics", "note": "Capsule" },
-    { "qty": "1,800", "label": "Plastids", "note": "Adramal Alloy" },
-    { "qty": "4,800", "label": "Nano Spores", "note": "Tempered Bapholite" },
-    { "qty": "480", "label": "Rubedo", "note": "Devolved Namalon" },
-    { "qty": "1", "label": "Damaged Necramech Casing", "note": null },
-    { "qty": "1", "label": "Damaged Necramech Engine", "note": null },
-    { "qty": "1", "label": "Damaged Necramech Pod", "note": null },
-    { "qty": "1", "label": "Damaged Necramech Weapon Pod", "note": null },
-    { "qty": "140", "label": "Lucent Teroglobe", "note": null },
-    { "qty": "30", "label": "Faceted Tiametrite", "note": null },
-    { "qty": "30", "label": "Purged Dagonic", "note": null },
-    { "qty": "40", "label": "Purified Heciphron", "note": null },
-    { "qty": "60", "label": "Adramal Alloy", "note": null },
-    { "qty": "60", "label": "Tempered Bapholite", "note": null },
-    { "qty": "60", "label": "Devolved Namalon", "note": null },
-    { "qty": "4", "label": "Parasitic Tethermaw", "note": null },
-    { "qty": "12", "label": "Spinal Core Section", "note": null },
-    { "qty": "3", "label": "Biotic Filter", "note": null },
-    { "qty": "85,000", "label": "Credits", "note": null }
+    {
+      "qty": "10",
+      "label": "Orokin Cell",
+      "note": "Engine"
+    },
+    {
+      "qty": "3",
+      "label": "Morphics",
+      "note": "Capsule"
+    },
+    {
+      "qty": "1",
+      "label": "Damaged Necramech Casing",
+      "note": null
+    },
+    {
+      "qty": "1",
+      "label": "Damaged Necramech Engine",
+      "note": null
+    },
+    {
+      "qty": "1",
+      "label": "Damaged Necramech Pod",
+      "note": null
+    },
+    {
+      "qty": "1",
+      "label": "Damaged Necramech Weapon Pod",
+      "note": null
+    },
+    {
+      "qty": "140",
+      "label": "Lucent Teroglobe",
+      "note": null
+    },
+    {
+      "qty": "30",
+      "label": "Faceted Tiametrite",
+      "note": null
+    },
+    {
+      "qty": "30",
+      "label": "Purged Dagonic",
+      "note": null
+    },
+    {
+      "qty": "40",
+      "label": "Purified Heciphron",
+      "note": null
+    },
+    {
+      "qty": "60",
+      "label": "Adramal Alloy",
+      "note": null
+    },
+    {
+      "qty": "50",
+      "label": "Tempered Bapholite",
+      "note": null
+    },
+    {
+      "qty": "50",
+      "label": "Devolved Namalon",
+      "note": null
+    },
+    {
+      "qty": "4",
+      "label": "Parasitic Tethermaw",
+      "note": null
+    },
+    {
+      "qty": "12",
+      "label": "Spinal Core Section",
+      "note": null
+    },
+    {
+      "qty": "3",
+      "label": "Biotic Filter",
+      "note": null
+    },
+    {
+      "qty": "85,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
     {
       "type": "gate",
-      "place": "HEART OF DEIMOS, THEN THE WAR WITHIN",
+      "place": "CODEX",
       "sub": null,
-      "activity": "clear the story gates",
-      "meta": null,
+      "activity": "finish Once Awake",
+      "meta": "unlocks Heart of Deimos",
       "mode": null,
       "live": null,
       "skip": null,
@@ -48,24 +129,70 @@
       "rows": [
         {
           "qty": null,
-          "label": "Heart of Deimos",
-          "note": "unlocks Cambion Drift, the Necralisk and the Entrati",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "The War Within",
-          "note": "Operator access; needed for vault doors, Requiem Obelisks and Necramech Transference",
+          "label": "Once Awake",
+          "note": "the quest before Heart of Deimos",
           "alt": null,
           "done": false
         }
       ],
       "conditions": [],
-      "bonuses": [
-        "Completing Heart of Deimos mails the Voidrig main blueprint plus all four component blueprints free, retroactively even on an old completion."
+      "bonuses": [],
+      "disclosures": [],
+      "quest": "Heart of Deimos"
+    },
+    {
+      "type": "farm",
+      "place": "CODEX",
+      "sub": null,
+      "activity": "Heart of Deimos quest",
+      "meta": "mails every Voidrig blueprint",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Voidrig Blueprint",
+          "note": "quest reward",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Voidrig Casing Blueprint",
+          "note": "quest reward",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Voidrig Engine Blueprint",
+          "note": "quest reward",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Voidrig Capsule Blueprint",
+          "note": "quest reward",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Voidrig Weapon Pod Blueprint",
+          "note": "quest reward",
+          "alt": null,
+          "done": false
+        }
       ],
-      "disclosures": []
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": [],
+      "quest": "Heart of Deimos"
     },
     {
       "type": "foundry",
@@ -90,7 +217,7 @@
         {
           "qty": null,
           "label": "Engine",
-          "note": "1 Damaged Engine, 50 Tempered Bapholite, 4 Parasitic Tethermaw, 10 Orokin Cells",
+          "note": "1 Damaged Engine, 50 Tempered Bapholite, 4 Parasitic Tethermaw, 10 Orokin Cell",
           "alt": null,
           "done": false
         },
@@ -116,17 +243,20 @@
           "done": false
         }
       ],
-      "conditions": [],
+      "conditions": ["Needs a free Archwing weapon slot; the Mausolon arrives with the Voidrig."],
       "bonuses": [
-        "Collect every material first, then queue all four components at once: one 12-hour wait instead of four run back to back.",
-        "Necraloid still sells all four blueprints as a backstop even though Heart of Deimos mails them free: components 2,000 standing each, main 5,000, at Rank 2 Modus."
+        "Queue all four components at once: one 12-hour wait instead of four back to back.",
+        "The Necraloid also sells the blueprints: components for 2,000 standing each at Rank 1 Agnesis, the main blueprint for 5,000 at Rank 2 Modus."
       ],
-      "disclosures": [
-        {
-          "title": "buying instead of farming",
-          "body": "Built Voidrig components sell for roughly 60-100 platinum each on Warframe Market, and several players find it faster to farm relics for that plat than to farm the mech directly. The trade-off: that route skips the Necramech mods and Entrati rank the quest chain still requires."
-        }
-      ]
+      "disclosures": []
+    }
+  ],
+  "routes": [
+    {
+      "name": "Heart of Deimos, then build Voidrig",
+      "cost": "the quest mails all five Voidrig blueprints; 85,000 credits for the four components and the build",
+      "effort": 5,
+      "role": "chosen"
     }
   ]
 }

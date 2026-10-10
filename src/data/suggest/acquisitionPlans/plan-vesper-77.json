@@ -4,26 +4,83 @@
   "effort": 3,
   "source": "standing",
   "tradeable": "built parts only",
-  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "progress": {
+    "have": 0,
+    "need": 4,
+    "unit": "parts"
+  },
   "badges": [
-    { "text": "Hex Rank 3", "tone": "warn" },
-    { "text": "no RNG", "tone": "info" }
+    {
+      "text": "Hex Rank 3",
+      "tone": "warn",
+      "rank": {
+        "syndicate": "The Hex",
+        "level": 3
+      }
+    },
+    {
+      "text": "no RNG",
+      "tone": "info"
+    }
   ],
   "prices": [
-    { "label": "blueprints", "amount": "30,000 standing", "money": false },
-    { "label": "build", "amount": "80,000 cr", "money": false }
+    {
+      "label": "blueprints",
+      "amount": "30,000 standing",
+      "money": false
+    },
+    {
+      "label": "build",
+      "amount": "80,000 cr",
+      "money": false
+    }
   ],
   "materials": [
-    { "qty": "300", "label": "Salvage", "note": "Receiver" },
-    { "qty": "20", "label": "Polymer Bundle", "note": "Handle" },
-    { "qty": "1", "label": "Argon Crystal", "note": "Barrel" },
-    { "qty": "175", "label": "Efervon Sample", "note": "rank-ups + Receiver + Handle" },
-    { "qty": "80", "label": "Hollvanian Pitchweave Fragment", "note": "rank-ups + Barrel" },
-    { "qty": "25", "label": "Experimental Arc-Relay", "note": "Rank 2 + Barrel" },
-    { "qty": "72", "label": "Techrot Chitin", "note": null },
-    { "qty": "18", "label": "Techrot Motherboard", "note": "Receiver + Handle" },
-    { "qty": "12", "label": "Entrati Obols", "note": "Rank 2" },
-    { "qty": "165,000", "label": "Credits", "note": null }
+    {
+      "qty": "300",
+      "label": "Salvage",
+      "note": "Receiver"
+    },
+    {
+      "qty": "20",
+      "label": "Polymer Bundle",
+      "note": "Handle"
+    },
+    {
+      "qty": "1",
+      "label": "Argon Crystal",
+      "note": "Barrel"
+    },
+    {
+      "qty": "160",
+      "label": "Efervon Sample",
+      "note": "Receiver and Handle"
+    },
+    {
+      "qty": "40",
+      "label": "Hollvanian Pitchweave Fragment",
+      "note": "Barrel"
+    },
+    {
+      "qty": "20",
+      "label": "Experimental Arc-Relay",
+      "note": "Barrel"
+    },
+    {
+      "qty": "72",
+      "label": "Techrot Chitin",
+      "note": "all three parts"
+    },
+    {
+      "qty": "18",
+      "label": "Techrot Motherboard",
+      "note": "Receiver + Handle"
+    },
+    {
+      "qty": "80,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
     {
@@ -67,7 +124,10 @@
       "mode": null,
       "live": null,
       "skip": null,
-      "earns": { "currency": "The Hex Standing", "amount": "101,000" },
+      "earns": {
+        "currency": "The Hex Standing",
+        "amount": "101,000"
+      },
       "spends": [],
       "map": "hollvania",
       "rows": [
@@ -76,21 +136,33 @@
           "label": "Rank 1 Leftovers",
           "note": "5,000 standing, 10,000 cr, 15 Efervon Sample, 15 Hollvanian Pitchweave Fragment",
           "alt": null,
-          "done": false
+          "done": false,
+          "rank": {
+            "syndicate": "The Hex",
+            "level": 1
+          }
         },
         {
           "qty": null,
           "label": "Rank 2 Fresh Slice",
           "note": "22,000 standing, 25,000 cr, 5 Experimental Arc-Relay, 12 Entrati Obols, 25 Hollvanian Pitchweave Fragment",
           "alt": null,
-          "done": false
+          "done": false,
+          "rank": {
+            "syndicate": "The Hex",
+            "level": 2
+          }
         },
         {
           "qty": null,
           "label": "Rank 3 - 2-For-1",
           "note": "44,000 standing, 50,000 cr, one each of six Hex Treasures",
           "alt": null,
-          "done": false
+          "done": false,
+          "rank": {
+            "syndicate": "The Hex",
+            "level": 3
+          }
         }
       ],
       "conditions": [
@@ -110,7 +182,12 @@
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "The Hex Standing", "amount": "30,000" }],
+      "spends": [
+        {
+          "currency": "The Hex Standing",
+          "amount": "30,000"
+        }
+      ],
       "map": null,
       "rows": [
         {
@@ -132,12 +209,7 @@
         "Buying from Amir spends the same standing pool needed for Arthur's rank-ups; rank up first, buy after."
       ],
       "bonuses": [],
-      "disclosures": [
-        {
-          "title": "the drop route",
-          "body": "Main blueprint: 3.70% per Tier 4 Central Mall stage, about 27 stages average. Parts: best is Hell-Scrub rotation C at 5.41% each; Legacyte Harvest tops out at 1.69% and only wins if you kill more than one Legacyte every two minutes including the defense stage. Nearly everyone recommends buying instead."
-        }
-      ]
+      "disclosures": []
     },
     {
       "type": "foundry",

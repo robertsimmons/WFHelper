@@ -4,21 +4,74 @@
   "effort": 6,
   "source": "repeat",
   "tradeable": false,
-  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "progress": {
+    "have": 0,
+    "need": 4,
+    "unit": "parts"
+  },
   "badges": [
-    { "text": "hard pity", "tone": "info" },
-    { "text": "Rotation C", "tone": "warn" }
+    {
+      "text": "hard pity",
+      "tone": "info"
+    },
+    {
+      "text": "Rotation C",
+      "tone": "warn"
+    }
   ],
-  "prices": [{ "label": "built", "amount": "325 p", "money": false }],
+  "prices": [
+    {
+      "label": "built",
+      "amount": "325 p",
+      "money": false
+    }
+  ],
   "materials": [
-    { "qty": "2,500", "label": "Alloy Plate", "note": "Neuroptics" },
-    { "qty": "800", "label": "Polymer Bundle", "note": "Neuroptics" },
-    { "qty": "1,000", "label": "Ferrite", "note": "Chassis" },
-    { "qty": "300", "label": "Rubedo", "note": "Chassis" },
-    { "qty": "5", "label": "Nitain Extract", "note": "Systems" },
-    { "qty": "5,000", "label": "Salvage", "note": "Systems" },
-    { "qty": "20", "label": "Somatic Fibers", "note": null },
-    { "qty": "50", "label": "Voidgel Orb", "note": "20 Chassis + 30 Systems" }
+    {
+      "qty": "2,500",
+      "label": "Alloy Plate",
+      "note": "Neuroptics"
+    },
+    {
+      "qty": "800",
+      "label": "Polymer Bundle",
+      "note": "Neuroptics"
+    },
+    {
+      "qty": "1,000",
+      "label": "Ferrite",
+      "note": "Chassis"
+    },
+    {
+      "qty": "300",
+      "label": "Rubedo",
+      "note": "Chassis"
+    },
+    {
+      "qty": "5",
+      "label": "Nitain Extract",
+      "note": "Systems"
+    },
+    {
+      "qty": "5,000",
+      "label": "Salvage",
+      "note": "Systems"
+    },
+    {
+      "qty": "20",
+      "label": "Somatic Fibers",
+      "note": null
+    },
+    {
+      "qty": "50",
+      "label": "Voidgel Orb",
+      "note": "20 Chassis + 30 Systems"
+    },
+    {
+      "qty": "70,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
     {
@@ -60,11 +113,14 @@
       "place": "CIRCULUS, LUA",
       "sub": null,
       "activity": "Conjunction Survival",
-      "meta": "~3-4h all-buy ceiling",
+      "meta": null,
       "mode": "public squad, 20-minute chunks",
       "live": null,
       "skip": null,
-      "earns": { "currency": "Lua Thrax Plasm", "amount": "475" },
+      "earns": {
+        "currency": "Lua Thrax Plasm",
+        "amount": "475"
+      },
       "spends": [],
       "map": null,
       "rows": [
@@ -72,68 +128,41 @@
           "qty": null,
           "label": "Voruna Blueprint",
           "note": "12.24%, Rotation C at 20m",
-          "alt": "or 125 Plasm at Yonta",
+          "alt": {
+            "text": "or 125 Plasm at Archimedean Yonta, Zariman",
+            "spends": [
+              {
+                "currency": "Lua Thrax Plasm",
+                "amount": "125"
+              }
+            ]
+          },
           "done": false
         },
         {
           "qty": "3",
           "label": "component blueprints",
           "note": "8.16% each, Rotation C at 20m",
-          "alt": "or 75 Plasm each at Yonta",
+          "alt": {
+            "text": "or 75 Plasm at Archimedean Yonta, Zariman",
+            "spends": [
+              {
+                "currency": "Lua Thrax Plasm",
+                "amount": "75"
+              }
+            ]
+          },
           "done": false
         }
       ],
       "conditions": [
-        "Only rotation C can drop Voruna parts: extract on 20/40/60-minute marks, never at 19 minutes.",
-        "Circulus has roughly double Yuvarium's part chances and pays 5 guaranteed Plasm each rotation; use it unless it is beyond your squad.",
-        "Eclipse Thrax need an Operator Void Beam finishing blow. Regroup before five-minute marks so their Plasm pickups do not despawn after 60 seconds.",
-        "The 475 target covers buying all four blueprints (350) plus the 125 Plasm consumed by crafting; subtract only after checking which drops you already have."
-      ],
-      "bonuses": [
-        "Run when Circulus is an Omnia Fissure for relic rewards and its stacking endless-fissure bonus.",
-        "A full squad spawns five Thrax per rotation instead of two solo. Resource Boosters help Plasm dropped by Thrax, not the fixed rotation reward.",
-        "Security Bypasses near life-support towers can speed the mission clock; Orokin Eye or Golden Instinct can locate them."
-      ],
-      "disclosures": [
-        {
-          "title": "the farm is currency, not luck",
-          "body": "Do not chase repeated rotation-C drops. Bank Plasm while you try, then buy every blueprint still missing from Yonta together. This makes the farm finite even with no part drops."
-        }
-      ]
-    },
-    {
-      "type": "vendor",
-      "place": "CHRYSALITH, ZARIMAN",
-      "sub": null,
-      "activity": "Archimedean Yonta",
-      "meta": "pity shop",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [{ "currency": "Lua Thrax Plasm", "amount": "350" }],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Voruna Blueprint",
-          "note": "125 Plasm",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "3",
-          "label": "component blueprints",
-          "note": "75 Plasm each",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Buy only the blueprints that did not drop, while retaining 125 Plasm for Foundry costs."
+        "Only rotation C can drop Voruna parts: extract on the 20, 40 and 60-minute marks, never at 19 minutes.",
+        "Circulus has about double Yuvarium's part chances and pays 5 guaranteed Plasm each rotation (3 in Yuvarium).",
+        "The 475 Plasm target covers buying all four blueprints (350) plus the 125 Plasm the Foundry consumes; buy only the ones that did not drop."
       ],
       "bonuses": [],
-      "disclosures": []
+      "disclosures": [],
+      "ref": "Lua Thrax Plasm"
     },
     {
       "type": "foundry",
@@ -151,21 +180,21 @@
         {
           "qty": null,
           "label": "Neuroptics",
-          "note": "20 Somatic Fibers, 2,500 Alloy Plate, 800 Polymer Bundle, 25 Plasm",
+          "note": "15,000 cr, 20 Somatic Fibers, 2,500 Alloy Plate, 800 Polymer Bundle, 25 Plasm",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Chassis",
-          "note": "20 Voidgel Orbs, 1,000 Ferrite, 300 Rubedo, 25 Plasm",
+          "note": "15,000 cr, 20 Voidgel Orbs, 1,000 Ferrite, 300 Rubedo, 25 Plasm",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Systems",
-          "note": "30 Voidgel Orbs, 5 Nitain, 5,000 Salvage, 25 Plasm",
+          "note": "15,000 cr, 30 Voidgel Orbs, 5 Nitain Extract, 5,000 Salvage, 25 Plasm",
           "alt": null,
           "done": false
         },

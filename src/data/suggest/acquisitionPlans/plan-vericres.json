@@ -4,17 +4,66 @@
   "effort": 2,
   "source": "shop",
   "tradeable": true,
-  "progress": { "have": 0, "need": 1, "unit": "weapon" },
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "weapon"
+  },
   "badges": [
-    { "text": "Baro Ki'Teer only", "tone": "warn" },
-    { "text": "410 Ducats", "tone": "info" }
+    {
+      "text": "Baro Ki'Teer only",
+      "tone": "warn"
+    },
+    {
+      "text": "410 Ducats",
+      "tone": "info"
+    }
   ],
   "prices": [
-    { "label": "credits", "amount": "200,000 cr", "money": false },
-    { "label": "Ducats", "amount": "410", "money": false }
+    {
+      "label": "credits",
+      "amount": "200,000 cr",
+      "money": false
+    },
+    {
+      "label": "Ducats",
+      "amount": "410",
+      "money": false
+    }
   ],
-  "materials": [{ "qty": "200,000", "label": "Credits", "note": null }],
+  "materials": [
+    {
+      "qty": "200,000",
+      "label": "Credits",
+      "note": null
+    }
+  ],
   "groups": [
+    {
+      "type": "gate",
+      "place": "MASTERY RANK",
+      "sub": null,
+      "activity": "reach MR 8",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Mastery Rank 8",
+          "note": "needed to equip it",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
     {
       "type": "currency",
       "place": "VOID FISSURES, ANY",
@@ -24,14 +73,17 @@
       "mode": "fast Capture or Exterminate fissures",
       "live": null,
       "skip": null,
-      "earns": { "currency": "Orokin Ducats", "amount": "410" },
+      "earns": {
+        "currency": "Orokin Ducats",
+        "amount": "410"
+      },
       "spends": [],
       "map": "void",
       "rows": [
         {
           "qty": null,
           "label": "open relics, take the highest-Ducat part",
-          "note": "gold 100, silver 45, bronze 15; former-vault parts 25 or 65",
+          "note": "gold 100, silver 45, bronze 15",
           "alt": null,
           "done": false
         },
@@ -46,7 +98,7 @@
       "conditions": [
         "Baro stays only 48 hours, so have the 410 Ducats and 200,000 credits banked before his visit."
       ],
-      "bonuses": ["Some players buy 45-Ducat junk parts from others for about 2 platinum each."],
+      "bonuses": [],
       "disclosures": [],
       "ref": "Orokin Ducats"
     },
@@ -57,7 +109,10 @@
       "activity": "check Baro's rotating stock, then buy if listed",
       "meta": "arrives every 2 weeks, stays 48h",
       "mode": null,
-      "live": { "state": "waiting", "text": "check the Ducat Kiosk countdown for his next relay" },
+      "live": {
+        "state": "waiting",
+        "text": "check the Ducat Kiosk countdown for his next relay"
+      },
       "skip": null,
       "earns": null,
       "spends": [],
@@ -72,18 +127,10 @@
         }
       ],
       "conditions": [
-        "It appears roughly every four to six months and can't be predicted; buy it the first time it shows up.",
-        "It arrives built with no Orokin Catalyst and needs a free melee slot. MR 8 to equip."
+        "Baro's stock changes every visit and Vericres may not be in it; buy it the first time it shows up."
       ],
-      "bonuses": [
-        "The TennoCon relay sells Baro's full catalogue, but entry needs a paid TennoCon digital ticket."
-      ],
-      "disclosures": [
-        {
-          "title": "a Mastery pickup",
-          "body": "Recaps call it a decent but unremarkable warfan and point to Gunsen Prime, Quassus Prime or Arum Spinosa for actual use."
-        }
-      ]
+      "bonuses": [],
+      "disclosures": []
     }
   ]
 }

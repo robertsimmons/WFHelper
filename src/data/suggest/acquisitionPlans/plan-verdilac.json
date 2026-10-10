@@ -4,18 +4,54 @@
   "effort": 4,
   "source": "bounties",
   "tradeable": false,
-  "progress": { "have": 0, "need": 1, "unit": "blueprint" },
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "blueprint"
+  },
   "badges": [
-    { "text": "Rotation A only", "tone": "warn" },
-    { "text": "MR 13", "tone": "info" }
+    {
+      "text": "Rotation A only",
+      "tone": "warn"
+    },
+    {
+      "text": "MR 13",
+      "tone": "info"
+    }
   ],
-  "prices": [{ "label": "build", "amount": "20,000 cr", "money": false }],
+  "prices": [
+    {
+      "label": "build",
+      "amount": "20,000 cr",
+      "money": false
+    }
+  ],
   "materials": [
-    { "qty": "20", "label": "Mortus Horn", "note": null },
-    { "qty": "10", "label": "Intact Sentient Core", "note": null },
-    { "qty": "12", "label": "Narmer Isoplast", "note": null },
-    { "qty": "6", "label": "Star Amarast", "note": null },
-    { "qty": "20,000", "label": "Credits", "note": null }
+    {
+      "qty": "20",
+      "label": "Mortus Horn",
+      "note": null
+    },
+    {
+      "qty": "10",
+      "label": "Intact Sentient Core",
+      "note": null
+    },
+    {
+      "qty": "12",
+      "label": "Narmer Isoplast",
+      "note": null
+    },
+    {
+      "qty": "6",
+      "label": "Star Amarast",
+      "note": null
+    },
+    {
+      "qty": "20,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
     {
@@ -37,6 +73,13 @@
           "note": "unlocks Narmer Bounties from Konzu and Eudico",
           "alt": null,
           "done": false
+        },
+        {
+          "qty": null,
+          "label": "Mastery Rank 13",
+          "note": "needed to equip it",
+          "alt": null,
+          "done": false
         }
       ],
       "conditions": [],
@@ -49,7 +92,7 @@
       "sub": "or Orb Vallis, Fortuna, same rates",
       "activity": "Narmer Bounties, stages 4 and 5",
       "meta": "rotation A only",
-      "mode": "premade recommended",
+      "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
@@ -59,26 +102,20 @@
         {
           "qty": null,
           "label": "Verdilac Blueprint",
-          "note": "5.45% stage 4, 7.5% stage 5, plus a bonus-stage roll, rotation A only",
+          "note": "5.45% stage 4, 7.5% stage 5, rotation A only",
           "alt": null,
           "done": false
         }
       ],
       "conditions": [
-        "Only Rotation A carries the Verdilac roll; B and C give none. The board cycles A/B/C every 150 minutes, so A is up 2.5 hours out of every 7.5.",
-        "Complete every stage's bonus objective for a third roll from the final-stage table.",
-        "Host migration after extraction can wipe a completed bounty's reward; leave the landscape cleanly once the drop is confirmed."
+        "Only Rotation A carries the Verdilac roll; B and C give none. The board cycles A/B/C every 150 minutes, so A is up 2.5 hours out of every 7.5; farm Isoplast in B and C.",
+        "Complete every stage's bonus objective: all bonus objectives done earns an extra roll on the stage 5 reward table."
       ],
       "bonuses": [
         "Run whichever hub is faster for you; Cetus and Fortuna share one drop table.",
         "Farm Caliban, Korumm and Nepheri at the same time; their parts and the Archon set mods share these same bounties and all need Narmer Isoplast."
       ],
-      "disclosures": [
-        {
-          "title": "no pity system",
-          "body": "About 5 full Rotation-A bounties clears it on average from the roughly 20% combined chance across stage 4, stage 5 and the bonus roll, with bad luck running well past that."
-        }
-      ]
+      "disclosures": []
     },
     {
       "type": "foundry",
@@ -92,7 +129,15 @@
       "earns": null,
       "spends": [],
       "map": null,
-      "rows": [{ "qty": null, "label": "Verdilac", "note": null, "alt": null, "done": false }],
+      "rows": [
+        {
+          "qty": null,
+          "label": "Verdilac",
+          "note": "20,000 cr, 12 Narmer Isoplast, 20 Mortus Horn, 10 Intact Sentient Core, 6 Star Amarast",
+          "alt": null,
+          "done": false
+        }
+      ],
       "conditions": [],
       "bonuses": [],
       "disclosures": []

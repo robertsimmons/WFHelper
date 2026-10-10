@@ -4,24 +4,89 @@
   "effort": 2,
   "source": "dojo",
   "tradeable": false,
-  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "progress": {
+    "have": 0,
+    "need": 4,
+    "unit": "parts"
+  },
   "badges": [
-    { "text": "clan Tenno Lab only", "tone": "warn" },
-    { "text": "no RNG", "tone": "info" }
+    {
+      "text": "clan Tenno Lab only",
+      "tone": "warn"
+    },
+    {
+      "text": "no RNG",
+      "tone": "info"
+    }
   ],
-  "prices": [{ "label": "build", "amount": "70,000 cr", "money": false }],
+  "prices": [
+    {
+      "label": "blueprints",
+      "amount": "80,000 cr",
+      "money": false
+    },
+    {
+      "label": "build",
+      "amount": "70,000 cr",
+      "money": false
+    }
+  ],
   "materials": [
-    { "qty": "1,000", "label": "Ferrite", "note": "Chassis" },
-    { "qty": "800", "label": "Rubedo", "note": "500 Neuroptics, 300 Chassis" },
-    { "qty": "500", "label": "Salvage", "note": "Systems" },
-    { "qty": "220", "label": "Plastids", "note": "Systems" },
-    { "qty": "150", "label": "Alloy Plate", "note": "Neuroptics" },
-    { "qty": "150", "label": "Polymer Bundle", "note": "Neuroptics" },
-    { "qty": "2", "label": "Morphics", "note": "Chassis and Systems" },
-    { "qty": "1", "label": "Neural Sensors", "note": "Neuroptics" },
-    { "qty": "1", "label": "Control Module", "note": "Systems" },
-    { "qty": "1", "label": "Orokin Cell", "note": "Volt" },
-    { "qty": "105,000", "label": "Credits", "note": null }
+    {
+      "qty": "1,000",
+      "label": "Ferrite",
+      "note": "Chassis"
+    },
+    {
+      "qty": "800",
+      "label": "Rubedo",
+      "note": "500 Neuroptics, 300 Chassis"
+    },
+    {
+      "qty": "500",
+      "label": "Salvage",
+      "note": "Systems"
+    },
+    {
+      "qty": "220",
+      "label": "Plastids",
+      "note": "Systems"
+    },
+    {
+      "qty": "150",
+      "label": "Alloy Plate",
+      "note": "Neuroptics"
+    },
+    {
+      "qty": "150",
+      "label": "Polymer Bundle",
+      "note": "Neuroptics"
+    },
+    {
+      "qty": "2",
+      "label": "Morphics",
+      "note": "Chassis and Systems"
+    },
+    {
+      "qty": "1",
+      "label": "Neural Sensors",
+      "note": "Neuroptics"
+    },
+    {
+      "qty": "1",
+      "label": "Control Module",
+      "note": "Systems"
+    },
+    {
+      "qty": "1",
+      "label": "Orokin Cell",
+      "note": "Volt"
+    },
+    {
+      "qty": "150,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
     {
@@ -29,25 +94,52 @@
       "place": "CLAN DOJO, TENNO LAB",
       "sub": null,
       "activity": "buy the blueprints",
-      "meta": "credits",
+      "meta": "80,000 cr",
       "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [],
+      "spends": [
+        {
+          "currency": "Credits",
+          "amount": "80,000"
+        }
+      ],
       "map": null,
       "rows": [
-        { "qty": null, "label": "Volt Blueprint", "note": null, "alt": null, "done": false },
-        { "qty": null, "label": "Neuroptics Blueprint", "note": null, "alt": null, "done": false },
-        { "qty": null, "label": "Chassis Blueprint", "note": null, "alt": null, "done": false },
-        { "qty": null, "label": "Systems Blueprint", "note": null, "alt": null, "done": false }
+        {
+          "qty": null,
+          "label": "Volt Blueprint",
+          "note": "35,000 cr",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Neuroptics Blueprint",
+          "note": "15,000 cr",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Chassis Blueprint",
+          "note": "15,000 cr",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Systems Blueprint",
+          "note": "15,000 cr",
+          "alt": null,
+          "done": false
+        }
       ],
       "conditions": [
-        "Volt is one of three Awakening starters, with Excalibur and Mag. If you picked him at character creation you already have him and this whole plan is done.",
-        "He's the only starter not farmable on the star chart: Excalibur and Mag both drop from bosses. Volt is dojo-only.",
-        "The wiki lists 35,000 cr as the blueprint price, but it's unclear whether that covers the main blueprint alone or all four."
+        "Volt is one of three Awakening starters, with Excalibur and Mag. If you picked him at character creation you already have him and this whole plan is done."
       ],
-      "bonuses": [],
+      "bonuses": ["Teshin also sells Volt complete for 60,000 Conclave standing at Typhoon rank."],
       "disclosures": []
     },
     {
@@ -92,9 +184,7 @@
           "done": false
         }
       ],
-      "conditions": [
-        "Update 42.0 (2026-03-25) cut the main build from 72h to 24h; guides written before March 2026 still say three days."
-      ],
+      "conditions": [],
       "bonuses": [],
       "disclosures": [
         {

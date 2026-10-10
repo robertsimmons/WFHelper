@@ -4,32 +4,102 @@
   "effort": 2,
   "source": "boss",
   "tradeable": false,
-  "progress": { "have": 0, "need": 1, "unit": "blueprint" },
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "blueprint"
+  },
   "badges": [
-    { "text": "Cred shop rotation", "tone": "warn" },
-    { "text": "MR 13 to build", "tone": "info" }
+    {
+      "text": "Cred shop rotation",
+      "tone": "warn"
+    },
+    {
+      "text": "MR 13",
+      "tone": "info"
+    }
   ],
-  "prices": [{ "label": "build", "amount": "20,000 cr", "money": false }],
+  "prices": [
+    {
+      "label": "build",
+      "amount": "20,000 cr",
+      "money": false
+    }
+  ],
   "materials": [
-    { "qty": "15", "label": "Orokin Cell", "note": null },
-    { "qty": "925", "label": "Oxium", "note": null },
-    { "qty": "1", "label": "Enter Nihil's Oubliette", "note": null },
-    { "qty": "60", "label": "Tempered Bapholite", "note": null },
-    { "qty": "10", "label": "Purified Heciphron", "note": null },
-    { "qty": "20,000", "label": "Credits", "note": null }
+    {
+      "qty": "15",
+      "label": "Orokin Cell",
+      "note": null
+    },
+    {
+      "qty": "925",
+      "label": "Oxium",
+      "note": null
+    },
+    {
+      "qty": "1",
+      "label": "Enter Nihil's Oubliette",
+      "note": null
+    },
+    {
+      "qty": "60",
+      "label": "Tempered Bapholite",
+      "note": null
+    },
+    {
+      "qty": "10",
+      "label": "Purified Heciphron",
+      "note": null
+    },
+    {
+      "qty": "20,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
     {
-      "type": "vendor",
-      "place": "NIGHTWAVE CRED OFFERINGS",
-      "sub": "Nora",
-      "activity": "buy the Oubliette and the key",
-      "meta": "120 Cred total",
+      "type": "gate",
+      "place": "MASTERY RANK",
+      "sub": null,
+      "activity": "reach MR 13",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Nightwave Creds", "amount": "120" }],
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Mastery Rank 13",
+          "note": "needed to equip it",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "NIGHTWAVE CRED OFFERINGS",
+      "sub": "Nora",
+      "activity": "buy the Oubliette decoration",
+      "meta": "60 Cred",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [
+        {
+          "currency": "Nightwave Creds",
+          "amount": "60"
+        }
+      ],
       "map": null,
       "rows": [
         {
@@ -41,9 +111,7 @@
         }
       ],
       "conditions": [
-        "A Nightwave series, full season or mini-series, must be running for the shop to open.",
-        "Buy both the week you see them; neither the Oubliette nor the key is permanent stock.",
-        "You can hold only one key at a time."
+        "The Enter Nihil's Oubliette key is bought the same way at 60 Cred; you can hold only one key at a time."
       ],
       "bonuses": [],
       "disclosures": []
@@ -53,8 +121,8 @@
       "place": "ORBITER",
       "sub": "or Clan Dojo",
       "activity": "place the Oubliette, then fight Nihil",
-      "meta": "guaranteed on first win",
-      "mode": "solo only",
+      "meta": null,
+      "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
@@ -64,26 +132,21 @@
         {
           "qty": null,
           "label": "Vitrica Blueprint",
-          "note": "guaranteed on your first win; a Riven on every fight after",
+          "note": "guaranteed on your first win; later wins give a Riven",
           "alt": "or 100,000 standing at Cephalon Simaris, after your first win",
           "done": false
         }
       ],
       "conditions": [
-        "Solo only: being in a squad, even an idle one, stops the fight from starting, and you can't start it from someone else's Orbiter.",
-        "Weapons, abilities and mods are switched off. Dodge by jumping between glass platforms and throw the shards Nihil fires at the correct evidence crystal to drop his invulnerability, then throw shards at Nihil; he has three health bars.",
-        "Pick the crystal by colour, not contents: the correct one is clearer or whiter, the wrong ones reflect blue and red. Some crystals render blank (a known bug); fall back to the colour tell.",
-        "The vertical sword swing is an instant kill that bypasses bleedout and destroys platforms; shards left too long on a platform destroy it too.",
-        "Failing doesn't consume the key, so retry as often as you like."
+        "Solo only: you cannot bring a squad, and the fight starts from your own Orbiter or Clan Dojo.",
+        "Weapons and abilities are switched off; you dodge by jumping between glass platforms.",
+        "Nihil's vertical sword swing is an instant kill that bypasses bleedout."
       ],
-      "bonuses": [
-        "Pause (Esc) is allowed mid-fight.",
-        "Sprint Speed mods, Rolling Guard and a slow-fall option (Zephyr's passive works) help with the platforming; every frame's stats are otherwise flattened for this fight."
-      ],
+      "bonuses": [],
       "disclosures": [
         {
-          "title": "MR 13 is only the build gate",
-          "body": "The fight itself has no Mastery Rank requirement. Do it as soon as you have the key; the blueprint waits in your inventory until you're MR 13."
+          "title": "fight walkthrough",
+          "body": "Nihil starts invincible and has three health bars. Pick up the glass shards he fires that land on platforms and throw them at the floating crystal holding your evidence; the correct one is clearer and whiter, the wrong ones reflect blue and red. Then throw shards back at Nihil to take a third of a bar. A shard left too long destroys its platform. The evidence is the same on every later fight. Pause with Esc is allowed; Sprint Speed mods, Rolling Guard and Zephyr's slow fall help."
         }
       ]
     },
@@ -108,7 +171,7 @@
           "done": false
         }
       ],
-      "conditions": ["Needs MR 13 to build."],
+      "conditions": [],
       "bonuses": [],
       "disclosures": []
     }

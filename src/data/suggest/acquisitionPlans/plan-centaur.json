@@ -81,12 +81,15 @@
       "type": "currency",
       "place": "THE PERRIN SEQUENCE",
       "sub": null,
-      "activity": "pledge Perrin or New Loka; rank both to Rank 3",
-      "meta": "71,000 standing, 180,000 cr, per syndicate",
+      "activity": "pledge Perrin; rank to Rank 3",
+      "meta": "91,000 standing: 71,000 rank-ups, 20,000 Blade",
       "mode": null,
       "live": null,
       "skip": null,
-      "earns": null,
+      "earns": {
+        "currency": "The Perrin Sequence Standing",
+        "amount": "91,000"
+      },
       "spends": [],
       "map": null,
       "rows": [
@@ -118,7 +121,97 @@
             "syndicate": "The Perrin Sequence",
             "level": 3
           }
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": [],
+      "ref": "The Perrin Sequence Standing"
+    },
+    {
+      "type": "vendor",
+      "place": "THE PERRIN SEQUENCE",
+      "sub": null,
+      "activity": "rank The Perrin Sequence to 3, then buy the blade",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [
+        {
+          "currency": "The Perrin Sequence Standing",
+          "amount": "91,000"
+        }
+      ],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Rank 1",
+          "note": "5,000 standing",
+          "alt": null,
+          "done": false,
+          "rank": {
+            "syndicate": "The Perrin Sequence",
+            "level": 1
+          }
         },
+        {
+          "qty": null,
+          "label": "Rank 2",
+          "note": "22,000 standing",
+          "alt": null,
+          "done": false,
+          "rank": {
+            "syndicate": "The Perrin Sequence",
+            "level": 2
+          }
+        },
+        {
+          "qty": null,
+          "label": "Rank 3",
+          "note": "44,000 standing",
+          "alt": null,
+          "done": false,
+          "rank": {
+            "syndicate": "The Perrin Sequence",
+            "level": 3
+          }
+        },
+        {
+          "qty": null,
+          "label": "Centaur Blade",
+          "note": "20,000 standing",
+          "alt": null,
+          "done": false,
+          "rank": {
+            "syndicate": "The Perrin Sequence",
+            "level": 3
+          }
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": [],
+      "ref": "The Perrin Sequence Standing"
+    },
+    {
+      "type": "currency",
+      "place": "NEW LOKA",
+      "sub": null,
+      "activity": "pledge New Loka; rank to Rank 3",
+      "meta": "91,000 standing: 71,000 rank-ups, 20,000 Handle",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": {
+        "currency": "New Loka Standing",
+        "amount": "91,000"
+      },
+      "spends": [],
+      "map": null,
+      "rows": [
         {
           "qty": "2",
           "label": "Fieldron Sample",
@@ -147,22 +240,68 @@
             "syndicate": "New Loka",
             "level": 3
           }
-        },
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": [],
+      "ref": "New Loka Standing"
+    },
+    {
+      "type": "vendor",
+      "place": "NEW LOKA",
+      "sub": null,
+      "activity": "rank New Loka to 3, then buy the handle",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [
+        {
+          "currency": "New Loka Standing",
+          "amount": "91,000"
+        }
+      ],
+      "map": null,
+      "rows": [
         {
           "qty": null,
-          "label": "Centaur Blade",
-          "note": "20,000 Perrin standing",
+          "label": "Rank 1",
+          "note": "5,000 standing",
           "alt": null,
           "done": false,
           "rank": {
-            "syndicate": "The Perrin Sequence",
+            "syndicate": "New Loka",
+            "level": 1
+          }
+        },
+        {
+          "qty": null,
+          "label": "Rank 2",
+          "note": "22,000 standing",
+          "alt": null,
+          "done": false,
+          "rank": {
+            "syndicate": "New Loka",
+            "level": 2
+          }
+        },
+        {
+          "qty": null,
+          "label": "Rank 3",
+          "note": "44,000 standing",
+          "alt": null,
+          "done": false,
+          "rank": {
+            "syndicate": "New Loka",
             "level": 3
           }
         },
         {
           "qty": null,
           "label": "Centaur Handle",
-          "note": "20,000 New Loka standing",
+          "note": "20,000 standing",
           "alt": null,
           "done": false,
           "rank": {
@@ -174,20 +313,20 @@
       "conditions": [],
       "bonuses": [],
       "disclosures": [],
-      "ref": "The Perrin Sequence Standing"
+      "ref": "New Loka Standing"
     },
     {
       "type": "currency",
       "place": "ARBITERS OF HEXIS",
       "sub": null,
       "activity": "pledge Hexis or Cephalon Suda; rank to Rank 3, Lawful",
-      "meta": "71,000 standing, 180,000 cr",
+      "meta": "91,000 standing, 180,000 cr",
       "mode": "switch here only after buying Blade and Handle",
       "live": null,
       "skip": null,
       "earns": {
         "currency": "Arbiters of Hexis Standing",
-        "amount": "71,000"
+        "amount": "91,000"
       },
       "spends": [],
       "map": null,
@@ -220,17 +359,6 @@
             "syndicate": "Arbiters of Hexis",
             "level": 3
           }
-        },
-        {
-          "qty": null,
-          "label": "Centaur Aegis",
-          "note": "20,000 Hexis standing",
-          "alt": null,
-          "done": false,
-          "rank": {
-            "syndicate": "Arbiters of Hexis",
-            "level": 3
-          }
         }
       ],
       "conditions": [
@@ -244,7 +372,7 @@
       "type": "vendor",
       "place": "ARBITERS OF HEXIS",
       "sub": null,
-      "activity": "rank Arbiters of Hexis to 3, Lawful",
+      "activity": "rank Arbiters of Hexis to 3, Lawful, then buy the Aegis",
       "meta": null,
       "mode": null,
       "live": null,
@@ -253,7 +381,7 @@
       "spends": [
         {
           "currency": "Arbiters of Hexis Standing",
-          "amount": "71,000"
+          "amount": "91,000"
         }
       ],
       "map": null,
@@ -290,11 +418,23 @@
             "syndicate": "Arbiters of Hexis",
             "level": 3
           }
+        },
+        {
+          "qty": null,
+          "label": "Centaur Aegis",
+          "note": "20,000 standing",
+          "alt": null,
+          "done": false,
+          "rank": {
+            "syndicate": "Arbiters of Hexis",
+            "level": 3
+          }
         }
       ],
       "conditions": [],
       "bonuses": [],
-      "disclosures": []
+      "disclosures": [],
+      "ref": "Arbiters of Hexis Standing"
     },
     {
       "type": "foundry",

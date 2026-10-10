@@ -4,14 +4,28 @@
   "effort": 2,
   "source": "repeat",
   "tradeable": false,
-  "progress": { "have": 0, "need": 1, "unit": "weapon" },
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "weapon"
+  },
   "badges": [
-    { "text": "1st copy free", "tone": "info" },
-    { "text": "MR 7 to equip", "tone": "info" }
+    {
+      "text": "1st copy free",
+      "tone": "info"
+    }
   ],
   "prices": [
-    { "label": "Simaris blueprint", "amount": "100,000 standing", "money": false },
-    { "label": "build", "amount": "25,000 cr", "money": false }
+    {
+      "label": "Simaris blueprint",
+      "amount": "100,000 standing",
+      "money": false
+    },
+    {
+      "label": "build",
+      "amount": "25,000 cr",
+      "money": false
+    }
   ],
   "groups": [
     {
@@ -36,6 +50,13 @@
           "note": "unlocks The War Within",
           "alt": null,
           "done": false
+        },
+        {
+          "qty": null,
+          "label": "Mastery Rank 7",
+          "note": "needed to equip it",
+          "alt": null,
+          "done": false
         }
       ],
       "quest": "The War Within"
@@ -50,10 +71,7 @@
       "earns": null,
       "spends": [],
       "map": null,
-      "conditions": [
-        "A replay doesn't give a second Scepter.",
-        "Rank it to 30 for Mastery. Equipping needs Mastery Rank 7."
-      ],
+      "conditions": ["A replay doesn't give a second Scepter.", "Rank it to 30 for Mastery."],
       "bonuses": ["The quest also pays an Orvius blueprint."],
       "disclosures": [],
       "type": "farm",
@@ -85,15 +103,40 @@
     }
   ],
   "materials": [
-    { "qty": "5,000", "label": "Kuva", "note": null },
-    { "qty": "2", "label": "Morphics", "note": null },
-    { "qty": "300", "label": "Rubedo", "note": null },
-    { "qty": "2,500", "label": "Salvage", "note": null },
-    { "qty": "25,000", "label": "Credits", "note": null }
+    {
+      "qty": "5,000",
+      "label": "Kuva",
+      "note": null
+    },
+    {
+      "qty": "2",
+      "label": "Morphics",
+      "note": null
+    },
+    {
+      "qty": "300",
+      "label": "Rubedo",
+      "note": null
+    },
+    {
+      "qty": "2,500",
+      "label": "Salvage",
+      "note": null
+    },
+    {
+      "qty": "25,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "afterQuest": {
     "effort": 5,
-    "badges": [{ "text": "Simaris 100,000 standing", "tone": "warn" }],
+    "badges": [
+      {
+        "text": "Simaris 100,000 standing",
+        "tone": "warn"
+      }
+    ],
     "groups": [
       {
         "sub": null,
@@ -102,7 +145,10 @@
         "mode": null,
         "live": null,
         "skip": null,
-        "earns": { "currency": "Cephalon Simaris Standing", "amount": "100,000" },
+        "earns": {
+          "currency": "Cephalon Simaris Standing",
+          "amount": "100,000"
+        },
         "spends": [],
         "map": null,
         "conditions": [],
@@ -129,7 +175,12 @@
         "live": null,
         "skip": null,
         "earns": null,
-        "spends": [{ "currency": "Cephalon Simaris Standing", "amount": "100,000" }],
+        "spends": [
+          {
+            "currency": "Cephalon Simaris Standing",
+            "amount": "100,000"
+          }
+        ],
         "map": null,
         "conditions": ["Simaris only stocks it once The War Within is done."],
         "bonuses": [],

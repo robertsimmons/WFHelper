@@ -4,21 +4,87 @@
   "effort": 2,
   "source": "shop",
   "tradeable": false,
-  "progress": { "have": 0, "need": 2, "unit": "Magnus" },
-  "badges": [{ "text": "Market blueprints", "tone": "info" }],
+  "progress": {
+    "have": 0,
+    "need": 2,
+    "unit": "Magnus"
+  },
+  "badges": [
+    {
+      "text": "Market blueprints",
+      "tone": "info"
+    }
+  ],
   "prices": [
-    { "label": "2 Magnus blueprints", "amount": "40,000 cr", "money": false },
-    { "label": "Akmagnus blueprint", "amount": "50,000 cr", "money": false },
-    { "label": "whole chain", "amount": "160,000 cr", "money": false }
+    {
+      "label": "2 Magnus blueprints",
+      "amount": "40,000 cr",
+      "money": false
+    },
+    {
+      "label": "Akmagnus blueprint",
+      "amount": "50,000 cr",
+      "money": false
+    },
+    {
+      "label": "whole chain",
+      "amount": "160,000 cr",
+      "money": false
+    }
   ],
   "materials": [
-    { "qty": "6", "label": "Orokin Cell", "note": null },
-    { "qty": "1,800", "label": "Salvage", "note": null },
-    { "qty": "800", "label": "Alloy Plate", "note": null },
-    { "qty": "200", "label": "Ferrite", "note": null },
-    { "qty": "160,000", "label": "Credits", "note": null }
+    {
+      "qty": "6",
+      "label": "Orokin Cell",
+      "note": null
+    },
+    {
+      "qty": "1,800",
+      "label": "Salvage",
+      "note": null
+    },
+    {
+      "qty": "800",
+      "label": "Alloy Plate",
+      "note": null
+    },
+    {
+      "qty": "200",
+      "label": "Ferrite",
+      "note": null
+    },
+    {
+      "qty": "160,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
+    {
+      "type": "gate",
+      "place": "MASTERY RANK",
+      "sub": null,
+      "activity": "reach MR 12",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Mastery Rank 12",
+          "note": "Akmagnus; Magnus needs 10",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
     {
       "type": "vendor",
       "place": "MARKET",
@@ -29,7 +95,12 @@
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Credits", "amount": "90,000" }],
+      "spends": [
+        {
+          "currency": "Credits",
+          "amount": "90,000"
+        }
+      ],
       "map": null,
       "rows": [
         {
@@ -80,8 +151,7 @@
         }
       ],
       "conditions": [
-        "Rank one Magnus to 30 before it goes into the Akmagnus; the recipe consumes it and its Mastery is lost otherwise.",
-        "Mastery Rank 10 equips Magnus, 12 equips Akmagnus."
+        "Rank one Magnus to 30 before it goes into the Akmagnus; the recipe consumes it and its Mastery is lost otherwise."
       ],
       "bonuses": [],
       "disclosures": []

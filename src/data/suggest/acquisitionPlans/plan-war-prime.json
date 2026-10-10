@@ -1,1 +1,172 @@
-{"name": "War Prime", "kind": "melee", "effort": 4, "source": "unique", "tradeable": false, "progress": {"have": 0, "need": 1, "unit": "trinket"}, "badges": [{"text": "MR 15", "tone": "info"}, {"text": "only one at a time", "tone": "warn"}], "prices": [{"label": "Hunhow's Trinket", "amount": "12 Emerald + 12 Crimson Talent", "money": false}, {"label": "build", "amount": "15,000 cr", "money": false}], "routes": [{"name": "Both Uranus Proxima nodes, then Hunhow", "cost": "12 Crimson and 12 Emerald Talent buy the trinket", "effort": 4, "role": "chosen"}], "materials": [{"qty": "1", "label": "Orokin Cell", "note": null}, {"qty": "1", "label": "Argon Crystal", "note": null}, {"qty": "5", "label": "Nitain Extract", "note": null}, {"qty": "15,000", "label": "Credits", "note": null}], "groups": [{"type": "gate", "place": "QUESTS", "sub": null, "activity": "finish Jade Shadows: Constellations", "meta": null, "mode": null, "live": null, "skip": null, "earns": null, "spends": [], "map": null, "rows": [{"qty": null, "label": "Jade Shadows: Constellations", "note": "after Jade Shadows; solo, 30-40 min, can't be replayed", "alt": null, "done": false}, {"qty": null, "label": "Mastery Rank 15", "note": "to build War Prime", "alt": null, "done": false}], "conditions": [], "bonuses": [], "disclosures": []}, {"type": "currency", "place": "PONTIS TOWER, URANUS PROXIMA", "sub": "Scoria's Angel", "activity": "side with Vena, kill Ryoku", "meta": "12-16 Crimson Talent a clear, so one run covers it", "mode": "set Solo before entering Pontis Tower to fly your own Railjack", "live": null, "skip": null, "earns": {"currency": "Crimson Talent", "amount": "12"}, "spends": [], "map": null, "rows": [{"qty": "12", "label": "Crimson Talent", "note": "Hunhow's Trinket", "alt": null, "done": false}], "conditions": [], "bonuses": [], "disclosures": [], "ref": "Crimson Talent"}, {"type": "currency", "place": "PONTIS TOWER, URANUS PROXIMA", "sub": "The Kuva Wytch", "activity": "side with Ryoku, kill Vena", "meta": "12-16 Emerald Talent a clear, so one run covers it", "mode": null, "live": null, "skip": null, "earns": {"currency": "Emerald Talent", "amount": "12"}, "spends": [], "map": null, "rows": [{"qty": "12", "label": "Emerald Talent", "note": "Hunhow's Trinket", "alt": null, "done": false}], "conditions": [], "bonuses": [], "disclosures": [], "ref": "Emerald Talent"}, {"type": "vendor", "place": "HUNHOW, PONTIS TOWER", "sub": null, "activity": "buy Hunhow's Trinket", "meta": null, "mode": null, "live": null, "skip": null, "earns": null, "spends": [{"currency": "Crimson Talent", "amount": "12"}, {"currency": "Emerald Talent", "amount": "12"}], "map": null, "rows": [{"qty": null, "label": "Hunhow's Trinket", "note": "12 Emerald + 12 Crimson Talent", "alt": null, "done": false}], "conditions": ["Only one Hunhow's Trinket or War Prime can be owned at a time.", "War Prime cannot be sold for Credits nor traded."], "bonuses": [], "disclosures": []}, {"type": "foundry", "place": "FOUNDRY", "sub": null, "activity": "craft Hunhow's Trinket into War Prime", "meta": "12h", "mode": null, "live": null, "skip": null, "earns": null, "spends": [], "map": null, "rows": [{"qty": null, "label": "War Prime", "note": "15,000 cr, 1 Orokin Cell, 1 Argon Crystal, 5 Nitain Extract; arrives with a weapon slot and an Orokin Catalyst", "alt": null, "done": false}], "conditions": [], "bonuses": [], "disclosures": []}]}
+{
+  "name": "War Prime",
+  "kind": "melee",
+  "effort": 4,
+  "source": "unique",
+  "tradeable": false,
+  "progress": { "have": 0, "need": 1, "unit": "trinket" },
+  "badges": [
+    { "text": "MR 15", "tone": "info" },
+    { "text": "only one at a time", "tone": "warn" }
+  ],
+  "prices": [
+    { "label": "Hunhow's Trinket", "amount": "12 Emerald + 12 Crimson Talent", "money": false },
+    { "label": "build", "amount": "15,000 cr", "money": false }
+  ],
+  "routes": [
+    {
+      "name": "Both Uranus Proxima nodes, then Hunhow",
+      "cost": "12 Crimson and 12 Emerald Talent buy the trinket",
+      "effort": 4,
+      "role": "chosen"
+    }
+  ],
+  "materials": [
+    { "qty": "1", "label": "Orokin Cell", "note": null },
+    { "qty": "1", "label": "Argon Crystal", "note": null },
+    { "qty": "5", "label": "Nitain Extract", "note": null },
+    { "qty": "15,000", "label": "Credits", "note": null }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "QUESTS",
+      "sub": null,
+      "activity": "finish Jade Shadows: Constellations",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Jade Shadows: Constellations",
+          "note": "after Jade Shadows; solo, 30-40 min, can't be replayed",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Mastery Rank 15",
+          "note": "to build War Prime",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "currency",
+      "place": "PONTIS TOWER, URANUS PROXIMA",
+      "sub": "Scoria's Angel",
+      "activity": "side with Vena, kill Ryoku",
+      "meta": "12-16 Crimson Talent a clear, so one run covers it",
+      "mode": "set Solo before entering Pontis Tower to fly your own Railjack",
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "Crimson Talent", "amount": "12" },
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "12",
+          "label": "Crimson Talent",
+          "note": "Hunhow's Trinket",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": [],
+      "ref": "Crimson Talent"
+    },
+    {
+      "type": "currency",
+      "place": "PONTIS TOWER, URANUS PROXIMA",
+      "sub": "The Kuva Wytch",
+      "activity": "side with Ryoku, kill Vena",
+      "meta": "12-16 Emerald Talent a clear, so one run covers it",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "Emerald Talent", "amount": "12" },
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "12",
+          "label": "Emerald Talent",
+          "note": "Hunhow's Trinket",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": [],
+      "ref": "Emerald Talent"
+    },
+    {
+      "type": "vendor",
+      "place": "HUNHOW, PONTIS TOWER",
+      "sub": null,
+      "activity": "buy Hunhow's Trinket",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [
+        { "currency": "Crimson Talent", "amount": "12" },
+        { "currency": "Emerald Talent", "amount": "12" }
+      ],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Hunhow's Trinket",
+          "note": "12 Emerald + 12 Crimson Talent",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Only one Hunhow's Trinket or War Prime can be owned at a time.",
+        "War Prime cannot be sold for Credits nor traded."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "craft Hunhow's Trinket into War Prime",
+      "meta": "12h",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "War Prime",
+          "note": "15,000 cr, 1 Orokin Cell, 1 Argon Crystal, 5 Nitain Extract; arrives with a weapon slot and an Orokin Catalyst",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

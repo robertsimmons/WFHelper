@@ -1,1 +1,176 @@
-{"name": "Kompressa", "kind": "secondary", "effort": 4, "source": "standing", "tradeable": false, "progress": {"have": 0, "need": 3, "unit": "blueprints"}, "badges": [{"text": "Ventkids Rank 5", "tone": "warn", "rank": {"syndicate": "Ventkids", "level": 5}}, {"text": "MR 8", "tone": "info"}], "prices": [{"label": "blueprints", "amount": "75,000 standing (25,000 free at Rank 5)", "money": false}, {"label": "build", "amount": "55,000 cr", "money": false}], "materials": [{"qty": "3", "label": "Orokin Cell", "note": "Kompressa"}, {"qty": "10", "label": "Hespazym Alloy", "note": "Barrel"}, {"qty": "10", "label": "Goblite Tears", "note": "Barrel"}, {"qty": "20", "label": "Longwinder Lathe Coagulant", "note": "Barrel"}, {"qty": "35", "label": "Tepa Nodule", "note": "Barrel"}, {"qty": "20", "label": "Axidrol Alloy", "note": "Receiver"}, {"qty": "6", "label": "Star Amarast", "note": "Receiver"}, {"qty": "10", "label": "Tink Dissipator Coil", "note": "Receiver"}, {"qty": "40", "label": "Mytocardia Spore", "note": "Receiver"}, {"qty": "55,000", "label": "Credits", "note": null}], "groups": [{"type": "gate", "place": "VOX SOLARIS", "sub": null, "activity": "finish Vox Solaris", "meta": null, "mode": null, "live": null, "skip": null, "earns": null, "spends": [], "map": null, "rows": [{"qty": null, "label": "Vox Solaris", "note": "opens Fortuna and the Ventkids", "alt": null, "done": false}, {"qty": null, "label": "Mastery Rank 8", "note": "needed to equip it", "alt": null, "done": false}], "conditions": [], "bonuses": [], "disclosures": []}, {"type": "currency", "place": "ORB VALLIS, VENUS", "sub": "K-Drive", "activity": "earn Ventkids standing", "meta": "240,000 standing sacrificed across 5 rank-ups, then 50,000 for the blueprints", "mode": null, "live": null, "skip": null, "earns": {"currency": "Ventkids Standing", "amount": "290,000"}, "spends": [], "map": "orb-vallis", "rows": [{"qty": "240,000", "label": "Ventkids Rank 5, Logical", "note": "5,000 / 22,000 / 44,000 / 70,000 / 99,000 sacrificed per rank", "alt": null, "done": false, "rank": {"syndicate": "Ventkids", "level": 5}}, {"qty": "50,000", "label": "Blueprint standing", "note": "two of the three blueprints at 25,000 each", "alt": null, "done": false}], "conditions": [], "bonuses": [], "disclosures": [], "ref": "Ventkids Standing"}, {"type": "vendor", "place": "ROKY, VENTKIDS", "sub": null, "activity": "buy the three blueprints", "meta": "Rank 5, Logical", "mode": null, "live": null, "skip": null, "earns": null, "spends": [{"currency": "Ventkids Standing", "amount": "50,000"}], "map": null, "rows": [{"qty": null, "label": "Kompressa Blueprint", "note": "25,000 standing", "alt": null, "done": false}, {"qty": null, "label": "Barrel Blueprint", "note": "25,000 standing", "alt": null, "done": false}, {"qty": null, "label": "Receiver Blueprint", "note": "25,000 standing", "alt": "free as the Rank 5 rank-up item", "done": false}], "conditions": ["One free Rank 5 item comes with the Rank 5 rank-up; take a blueprint to save 25,000 standing."], "bonuses": [], "disclosures": []}, {"type": "foundry", "place": "FOUNDRY", "sub": null, "activity": "build components, then Kompressa", "meta": "12h each", "mode": null, "live": null, "skip": null, "earns": null, "spends": [], "map": null, "rows": [{"qty": null, "label": "Barrel", "note": "15,000 cr, 10 Hespazym Alloy, 10 Goblite Tears, 20 Longwinder Lathe Coagulant, 35 Tepa Nodule", "alt": null, "done": false}, {"qty": null, "label": "Receiver", "note": "15,000 cr, 20 Axidrol Alloy, 6 Star Amarast, 10 Tink Dissipator Coil, 40 Mytocardia Spore", "alt": null, "done": false}, {"qty": null, "label": "Kompressa", "note": "25,000 cr, 3 Orokin Cell, 1 Barrel, 1 Receiver", "alt": null, "done": false}], "conditions": [], "bonuses": [], "disclosures": []}]}
+{
+  "name": "Kompressa",
+  "kind": "secondary",
+  "effort": 4,
+  "source": "standing",
+  "tradeable": false,
+  "progress": { "have": 0, "need": 3, "unit": "blueprints" },
+  "badges": [
+    { "text": "Ventkids Rank 5", "tone": "warn", "rank": { "syndicate": "Ventkids", "level": 5 } },
+    { "text": "MR 8", "tone": "info" }
+  ],
+  "prices": [
+    { "label": "blueprints", "amount": "75,000 standing (25,000 free at Rank 5)", "money": false },
+    { "label": "build", "amount": "55,000 cr", "money": false }
+  ],
+  "materials": [
+    { "qty": "3", "label": "Orokin Cell", "note": "Kompressa" },
+    { "qty": "10", "label": "Hespazym Alloy", "note": "Barrel" },
+    { "qty": "10", "label": "Goblite Tears", "note": "Barrel" },
+    { "qty": "20", "label": "Longwinder Lathe Coagulant", "note": "Barrel" },
+    { "qty": "35", "label": "Tepa Nodule", "note": "Barrel" },
+    { "qty": "20", "label": "Axidrol Alloy", "note": "Receiver" },
+    { "qty": "6", "label": "Star Amarast", "note": "Receiver" },
+    { "qty": "10", "label": "Tink Dissipator Coil", "note": "Receiver" },
+    { "qty": "40", "label": "Mytocardia Spore", "note": "Receiver" },
+    { "qty": "55,000", "label": "Credits", "note": null }
+  ],
+  "groups": [
+    {
+      "type": "gate",
+      "place": "VOX SOLARIS",
+      "sub": null,
+      "activity": "finish Vox Solaris",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Vox Solaris",
+          "note": "opens Fortuna and the Ventkids",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Mastery Rank 8",
+          "note": "needed to equip it",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "currency",
+      "place": "ORB VALLIS, VENUS",
+      "sub": "K-Drive",
+      "activity": "earn Ventkids standing",
+      "meta": "240,000 standing sacrificed across 5 rank-ups, then 50,000 for the blueprints",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "Ventkids Standing", "amount": "290,000" },
+      "spends": [],
+      "map": "orb-vallis",
+      "rows": [
+        {
+          "qty": "240,000",
+          "label": "Ventkids Rank 5, Logical",
+          "note": "5,000 / 22,000 / 44,000 / 70,000 / 99,000 sacrificed per rank",
+          "alt": null,
+          "done": false,
+          "rank": { "syndicate": "Ventkids", "level": 5 }
+        },
+        {
+          "qty": "50,000",
+          "label": "Blueprint standing",
+          "note": "two of the three blueprints at 25,000 each",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": [],
+      "ref": "Ventkids Standing"
+    },
+    {
+      "type": "vendor",
+      "place": "ROKY, VENTKIDS",
+      "sub": null,
+      "activity": "buy the three blueprints",
+      "meta": "Rank 5, Logical",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [{ "currency": "Ventkids Standing", "amount": "50,000" }],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Kompressa Blueprint",
+          "note": "25,000 standing",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Barrel Blueprint",
+          "note": "25,000 standing",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Receiver Blueprint",
+          "note": "25,000 standing",
+          "alt": "free as the Rank 5 rank-up item",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "One free Rank 5 item comes with the Rank 5 rank-up; take a blueprint to save 25,000 standing."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "build components, then Kompressa",
+      "meta": "12h each",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Barrel",
+          "note": "15,000 cr, 10 Hespazym Alloy, 10 Goblite Tears, 20 Longwinder Lathe Coagulant, 35 Tepa Nodule",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Receiver",
+          "note": "15,000 cr, 20 Axidrol Alloy, 6 Star Amarast, 10 Tink Dissipator Coil, 40 Mytocardia Spore",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Kompressa",
+          "note": "25,000 cr, 3 Orokin Cell, 1 Barrel, 1 Receiver",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

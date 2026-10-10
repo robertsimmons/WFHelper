@@ -4,23 +4,69 @@
   "effort": 6,
   "source": "repeat",
   "tradeable": false,
-  "progress": { "have": 0, "need": 1, "unit": "weapon" },
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "weapon"
+  },
   "badges": [
-    { "text": "quest reward", "tone": "info" },
-    { "text": "1,000 Ducats", "tone": "warn" }
+    {
+      "text": "quest reward",
+      "tone": "info"
+    },
+    {
+      "text": "1,000 Ducats",
+      "tone": "warn"
+    }
   ],
   "prices": [
-    { "label": "build", "amount": "30,000 cr", "money": false },
-    { "label": "Ducats needed", "amount": "1,000", "money": false }
+    {
+      "label": "build",
+      "amount": "30,000 cr",
+      "money": false
+    },
+    {
+      "label": "Ducats needed",
+      "amount": "1,000",
+      "money": false
+    }
   ],
   "materials": [
-    { "qty": "750", "label": "Salvage", "note": "Galatine" },
-    { "qty": "500", "label": "Rubedo", "note": "Galatine" },
-    { "qty": "200", "label": "Alloy Plate", "note": "Galatine" },
-    { "qty": "4", "label": "Gallium", "note": "Galatine" },
-    { "qty": "15", "label": "Orokin Cell", "note": "Paracesis" },
-    { "qty": "5", "label": "Eidolon Shard", "note": null },
-    { "qty": "85,000", "label": "Credits", "note": null }
+    {
+      "qty": "750",
+      "label": "Salvage",
+      "note": "Galatine"
+    },
+    {
+      "qty": "500",
+      "label": "Rubedo",
+      "note": "Galatine"
+    },
+    {
+      "qty": "200",
+      "label": "Alloy Plate",
+      "note": "Galatine"
+    },
+    {
+      "qty": "4",
+      "label": "Gallium",
+      "note": "Galatine"
+    },
+    {
+      "qty": "15",
+      "label": "Orokin Cell",
+      "note": "Paracesis"
+    },
+    {
+      "qty": "5",
+      "label": "Eidolon Shard",
+      "note": null
+    },
+    {
+      "qty": "85,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
     {
@@ -42,26 +88,7 @@
           "note": "Chimera Prologue unlocks after it",
           "alt": null,
           "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": [],
-      "quest": "Chimera Prologue"
-    },
-    {
-      "type": "gate",
-      "place": "MASTERY RANK",
-      "sub": null,
-      "activity": "reach MR 10 to build and equip it",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
+        },
         {
           "qty": null,
           "label": "Mastery Rank 10",
@@ -72,7 +99,8 @@
       ],
       "conditions": [],
       "bonuses": [],
-      "disclosures": []
+      "disclosures": [],
+      "quest": "Chimera Prologue"
     },
     {
       "type": "farm",
@@ -109,7 +137,10 @@
       "mode": null,
       "live": null,
       "skip": null,
-      "earns": { "currency": "Orokin Ducats", "amount": "1,000" },
+      "earns": {
+        "currency": "Orokin Ducats",
+        "amount": "1,000"
+      },
       "spends": [],
       "map": null,
       "rows": [
@@ -119,7 +150,12 @@
           "note": "sell Prime parts at the kiosk",
           "alt": {
             "text": "or Prime Resurgence, at 5 Ducats per Aya",
-            "spends": [{ "currency": "Aya", "amount": "200" }]
+            "spends": [
+              {
+                "currency": "Aya",
+                "amount": "200"
+              }
+            ]
           },
           "done": false
         }

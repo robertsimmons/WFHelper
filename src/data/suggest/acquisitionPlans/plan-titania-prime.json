@@ -1,120 +1,166 @@
 {
   "name": "Titania Prime",
   "kind": "warframe-prime",
-  "effort": 6,
+  "effort": 8,
   "source": "relics",
   "tradeable": true,
-  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "progress": {
+    "have": 0,
+    "need": 4,
+    "unit": "parts"
+  },
   "badges": [
-    { "text": "vaulted", "tone": "warn" },
-    { "text": "Prime Resurgence", "tone": "info" }
+    {
+      "text": "vaulted",
+      "tone": "warn"
+    }
   ],
-  "prices": [{ "label": "set, player trade", "amount": "~60–75 p", "money": false }],
+  "prices": [],
+  "routes": [
+    {
+      "name": "Varzia relics, as Titania Prime",
+      "cost": "1 Aya a relic during her Prime Resurgence, Rare Systems, 3-day build",
+      "effort": 8,
+      "role": "chosen"
+    }
+  ],
   "materials": [
-    { "qty": "5,500", "label": "Alloy Plate", "note": "Neuroptics" },
-    { "qty": "6", "label": "Neural Sensors", "note": "Neuroptics" },
-    { "qty": "225", "label": "Oxium", "note": "Neuroptics" },
-    { "qty": "2", "label": "Argon Crystal", "note": "Neuroptics" },
-    { "qty": "2", "label": "Nitain Extract", "note": "Chassis" },
-    { "qty": "4,750", "label": "Nano Spores", "note": "Chassis" },
-    { "qty": "1,400", "label": "Rubedo", "note": "Chassis" },
-    { "qty": "8", "label": "Morphics", "note": "Chassis" },
-    { "qty": "10", "label": "Control Module", "note": "Systems" },
-    { "qty": "3", "label": "Tellurium", "note": "Systems" },
-    { "qty": "4,300", "label": "Ferrite", "note": "Systems" },
-    { "qty": "1,450", "label": "Circuits", "note": "Systems" },
-    { "qty": "5", "label": "Orokin Cell", "note": null },
-    { "qty": "70,000", "label": "Credits", "note": null }
+    {
+      "qty": "5,500",
+      "label": "Alloy Plate",
+      "note": "Neuroptics"
+    },
+    {
+      "qty": "6",
+      "label": "Neural Sensors",
+      "note": "Neuroptics"
+    },
+    {
+      "qty": "225",
+      "label": "Oxium",
+      "note": "Neuroptics"
+    },
+    {
+      "qty": "2",
+      "label": "Argon Crystal",
+      "note": "Neuroptics"
+    },
+    {
+      "qty": "2",
+      "label": "Nitain Extract",
+      "note": "Chassis"
+    },
+    {
+      "qty": "4,750",
+      "label": "Nano Spores",
+      "note": "Chassis"
+    },
+    {
+      "qty": "1,400",
+      "label": "Rubedo",
+      "note": "Chassis"
+    },
+    {
+      "qty": "8",
+      "label": "Morphics",
+      "note": "Chassis"
+    },
+    {
+      "qty": "10",
+      "label": "Control Module",
+      "note": "Systems"
+    },
+    {
+      "qty": "3",
+      "label": "Tellurium",
+      "note": "Systems"
+    },
+    {
+      "qty": "4,300",
+      "label": "Ferrite",
+      "note": "Systems"
+    },
+    {
+      "qty": "1,450",
+      "label": "Circuits",
+      "note": "Systems"
+    },
+    {
+      "qty": "5",
+      "label": "Orokin Cell",
+      "note": null
+    },
+    {
+      "qty": "70,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
     {
       "type": "currency",
       "place": "CAMBION DRIFT, DEIMOS",
       "sub": "Necralisk",
-      "activity": "Tier 5 bounty, Mother",
-      "meta": "bank Aya before rotation",
-      "mode": "Lv 40–60",
+      "activity": "Level 40-60 bounty, final stage",
+      "meta": "43.48% per final stage",
+      "mode": null,
       "live": null,
       "skip": null,
-      "earns": { "currency": "Aya", "amount": "10" },
+      "earns": null,
       "spends": [],
       "map": null,
       "rows": [
         {
-          "qty": "10",
+          "qty": null,
           "label": "Aya",
-          "note": "radshare starting budget; carries over",
-          "alt": "Cetus Tier 5 bounties",
+          "note": "1 per relic; bank it before the window opens",
+          "alt": null,
           "done": false
         }
       ],
-      "conditions": [
-        "Titania Prime is vaulted. Aya cannot buy her relics until Varzia includes Titania in a future Prime Resurgence rotation.",
-        "Aya is untradeable, but it has no cap and remains after the rotation ends.",
-        "Tier-5 Deimos has a 43.48% final-stage Aya reward. Completing bonus objectives lets the final stage roll twice."
-      ],
-      "bonuses": ["Bank Aya now, then spend it as soon as Titania returns to Varzia's stock."],
-      "disclosures": [
-        {
-          "title": "the calendar is the farm",
-          "body": "Varzia changes stock every 28 days at 18:00 UTC and Digital Extremes does not publish the schedule far ahead. Check the live Prime Resurgence rotation before committing; while Titania is absent, stockpile Aya or use player trading."
-        }
-      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": [],
       "ref": "Aya"
     },
     {
       "type": "vendor",
       "place": "MAROO'S BAZAAR, MARS",
-      "sub": null,
-      "activity": "Varzia, 1 Aya per relic",
-      "meta": "only during a Titania rotation",
+      "sub": "Varzia",
+      "activity": "buy the Titania Prime relics she stocks, 1 Aya each",
+      "meta": "only while Titania Prime is in Prime Resurgence",
       "mode": null,
-      "live": { "state": "blocked", "text": "Vaulted; check Prime Resurgence" },
+      "live": {
+        "state": "blocked",
+        "text": "vaulted; only during her Prime Resurgence"
+      },
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Aya", "amount": "10" }],
-      "map": "maroos-bazaar",
+      "spends": [],
+      "map": null,
       "rows": [
-        { "qty": "4", "label": "Lith G11", "note": "Chassis Common", "alt": null, "done": false },
         {
-          "qty": "8",
-          "label": "Lith T11",
-          "note": "Systems Rare; buy extra",
+          "qty": null,
+          "label": "Titania Prime relics",
+          "note": "buy extra Systems relics: every one carries it as the Rare",
           "alt": null,
           "done": false
-        },
-        {
-          "qty": "4",
-          "label": "Meso A6",
-          "note": "Neuroptics Uncommon",
-          "alt": null,
-          "done": false
-        },
-        { "qty": "4", "label": "Axi V11", "note": "Blueprint Uncommon", "alt": null, "done": false }
+        }
       ],
       "conditions": [
-        "These four relics are Varzia's Titania rotation stock; buy only these rather than the wider historical relic list.",
-        "Prime Resurgence relics are Varzia-only. Their ordinary mission-drop entries are replaced by Aya, so missions cannot produce them.",
-        "Buy enough before the rotation closes. Vaulted relics are tradeable and never expire."
+        "Her stock rotates away; relics and Aya you hold never expire.",
+        "Vaulted relics and the parts themselves still trade between players."
       ],
-      "bonuses": [
-        "Varzia is also available from the Orbiter Relic Segment and the Prime Resurgence Market tab.",
-        "If Aya is the constraint, run a rad-stagger with friends: use one person's relic at a time, then buy another only if needed."
-      ],
-      "disclosures": [
-        {
-          "title": "the Systems relic is the budget risk",
-          "body": "Lith T11 is the only listed Varzia relic containing Titania Prime Systems, and it is Rare. There is no pity system; keep Aya available for a long streak."
-        }
-      ]
+      "bonuses": ["Varzia is also in the Market's Prime Resurgence tab."],
+      "disclosures": []
     },
     {
       "type": "fissure",
       "place": "ANY VOID FISSURE",
       "sub": null,
-      "activity": "crack the matching relic era",
-      "meta": "Lith T11 is the bottleneck",
-      "mode": "radshare rares and uncommons",
+      "activity": "crack the Titania Prime relics",
+      "meta": "Systems is the bottleneck",
+      "mode": "Radiant radshare for the Rares",
       "live": null,
       "skip": null,
       "earns": null,
@@ -123,41 +169,39 @@
       "rows": [
         {
           "qty": null,
-          "label": "Titania Prime Chassis",
-          "note": "Lith G11, Common; intact share",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Titania Prime Systems",
-          "note": "Lith T11, Rare; 10% Radiant",
+          "label": "Titania Prime Blueprint",
+          "note": "Lith H3 or Lith M5 or Meso S10 or Neo D2 or Neo P2 or Axi V11, Uncommon: 20% Radiant",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Titania Prime Neuroptics",
-          "note": "Meso A6, Uncommon; 20% Radiant",
+          "note": "Lith G4 or Lith N8 or Lith N10 or Lith T5 or Meso A6 or Meso E4 or Meso P4 or Neo Z6, Uncommon: 20% Radiant",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
-          "label": "Titania Prime Blueprint",
-          "note": "Axi V11, Uncommon; 20% Radiant",
+          "label": "Titania Prime Chassis",
+          "note": "Lith G11 or Lith P4 or Meso I1 or Meso Z4 or Neo M3 or Neo N14 or Axi M2 or Axi S9, Common: 25.33% Intact",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Titania Prime Systems",
+          "note": "Lith T4 or Lith T7 or Lith T8 or Lith T11 or Neo T3 or Axi T5, Rare: 10% Radiant",
           "alt": null,
           "done": false
         }
       ],
       "conditions": [
-        "Refine Lith T11 to Radiant (100 Void Traces) and run a four-player radshare: four Radiant relics give a 34.4% chance of at least one Rare reward.",
-        "Run Lith G11 Intact in a four-player share; its Common Chassis already has roughly a 69% squad chance, so save the traces.",
-        "Collect 10 Reactant before extracting. Use arranged shares, not public squads, for Radiant relics."
+        "Refine Rare relics to Radiant (100 Void Traces each); leave Chassis relics Intact, since Radiant lowers their Common odds to 16.67%.",
+        "Mission rewards never drop Resurgence relics; Varzia is the only source."
       ],
       "bonuses": [
-        "Host with the exact relic name, such as 'LF Lith T11 RAD'; the Relic Segment search may not show Resurgence relics.",
-        "Choose a squadmate's duplicate Titania reward when it appears; you keep the part and they receive extra Void Traces."
+        "Pick a teammate's identical reward at the reward screen; they get 5 bonus Void Traces."
       ],
       "disclosures": []
     },
@@ -166,7 +210,7 @@
       "place": "FOUNDRY",
       "sub": null,
       "activity": "build components, then Titania Prime",
-      "meta": "12h each, then 72h",
+      "meta": "12h each, then 3 days",
       "mode": null,
       "live": null,
       "skip": null,
@@ -198,14 +242,12 @@
         {
           "qty": null,
           "label": "Titania Prime",
-          "note": "25,000 cr, 5 Orokin Cell, 3 days",
+          "note": "25,000 cr, the three parts, 5 Orokin Cell",
           "alt": null,
           "done": false
         }
       ],
-      "conditions": [
-        "Components build in parallel; the final frame takes 72 hours. Keep a free Warframe slot for the claim."
-      ],
+      "conditions": [],
       "bonuses": [],
       "disclosures": []
     }

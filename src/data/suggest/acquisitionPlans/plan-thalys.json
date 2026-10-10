@@ -4,18 +4,54 @@
   "effort": 2,
   "source": "duviri",
   "tradeable": false,
-  "progress": { "have": 0, "need": 1, "unit": "blueprint" },
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "blueprint"
+  },
   "badges": [
-    { "text": "The Hex gate", "tone": "warn" },
-    { "text": "Isleweaver", "tone": "info" }
+    {
+      "text": "The Hex gate",
+      "tone": "warn"
+    },
+    {
+      "text": "Isleweaver",
+      "tone": "info"
+    }
   ],
-  "prices": [{ "label": "build", "amount": "20,000 cr", "money": false }],
+  "prices": [
+    {
+      "label": "build",
+      "amount": "20,000 cr",
+      "money": false
+    }
+  ],
   "materials": [
-    { "qty": "180", "label": "Silphsela", "note": null },
-    { "qty": "150", "label": "Rune Marrow", "note": null },
-    { "qty": "100", "label": "Temporal Dust", "note": null },
-    { "qty": "1,500", "label": "Entrati Obols", "note": null },
-    { "qty": "20,000", "label": "Credits", "note": null }
+    {
+      "qty": "180",
+      "label": "Silphsela",
+      "note": null
+    },
+    {
+      "qty": "150",
+      "label": "Rune Marrow",
+      "note": null
+    },
+    {
+      "qty": "100",
+      "label": "Temporal Dust",
+      "note": null
+    },
+    {
+      "qty": "1,500",
+      "label": "Entrati Obols",
+      "note": null
+    },
+    {
+      "qty": "20,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
     {
@@ -23,7 +59,7 @@
       "place": "THE HEX",
       "sub": null,
       "activity": "complete the quest",
-      "meta": "unlocks Isleweaver in Duviri navigation",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -34,7 +70,14 @@
         {
           "qty": null,
           "label": "The Hex",
-          "note": "the 1999 questline; the real prerequisite",
+          "note": "the 1999 questline; unlocks Isleweaver and the Husk shop",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Mastery Rank 12",
+          "note": "needed to equip it",
           "alt": null,
           "done": false
         }
@@ -47,37 +90,35 @@
       "type": "currency",
       "place": "ISLEWEAVER, DUVIRI",
       "sub": null,
-      "activity": "clear the six objectives, defeat The Fragmented",
-      "meta": "16-20 Scuttler Husk per run, guaranteed",
-      "mode": "check your rolled loadout before choosing difficulty",
+      "activity": "clear an Isleweaver run",
+      "meta": "16-20 Scuttler Husk per run",
+      "mode": null,
       "live": null,
       "skip": null,
-      "earns": { "currency": "Scuttler Husk", "amount": "96" },
+      "earns": {
+        "currency": "Scuttler Husk",
+        "amount": "96"
+      },
       "spends": [],
       "map": "duviri",
       "rows": [
         {
           "qty": "96",
           "label": "Scuttler Husk",
-          "note": "16-20 per run (20-24 SP), not a drop chance",
+          "note": "16-20 per run, 20-24 on Steel Path",
           "alt": null,
           "done": false
         }
       ],
       "conditions": [
-        "Your own Warframe and Arsenal play the whole way; no Drifter, no Companions, no Gear wheel (the Gear key summons your Kaithe instead).",
-        "Resource Boosters do not apply to Scuttler Husks."
+        "You play a rolled Warframe and weapons that change each Duviri spiral, not your Arsenal. No Drifter.",
+        "Gear items cannot be used; the Gear key summons your Kaithe instead."
       ],
       "bonuses": [
-        "Steel Path pays 50% more husks (20-24) and 5 Steel Essence, but only when the Duviri spiral rolled you gear you've actually built; check the loadout before launching, or run normal.",
-        "Isleweaver's end reward table can also hand you Temporal Dust and other build materials incidentally."
+        "Steel Path adds 4 Scuttler Husk and 5 Temporal Dust a run.",
+        "Murmur drops and Entrati Containers can give Entrati Obols and Temporal Dust."
       ],
-      "disclosures": [
-        {
-          "title": "reroll a bad loadout",
-          "body": "Running one stage of The Circuit and backing out rerolls the offered Duviri frames and weapons; the rotation persists a couple of hours."
-        }
-      ],
+      "disclosures": [],
       "ref": "Scuttler Husk"
     },
     {
@@ -90,7 +131,12 @@
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Scuttler Husk", "amount": "96" }],
+      "spends": [
+        {
+          "currency": "Scuttler Husk",
+          "amount": "96"
+        }
+      ],
       "map": null,
       "rows": [
         {
@@ -133,7 +179,7 @@
       "disclosures": [
         {
           "title": "unlocking the Incarnon",
-          "body": "100 kills unlocks Evolution I, which must be manually selected in the Arsenal even though it's the only option. Evolution III (20 Ground Finishers) is the one real speed bump; Vazarin's pull, Vauban, Mag's Pull or Garuda's 1 knock enemies down en masse so you can land the finisher."
+          "body": "100 kills unlocks Incarnon Form. Evolution III needs 20 Ground Finisher attacks."
         }
       ]
     }

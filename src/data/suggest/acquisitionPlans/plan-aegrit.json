@@ -6,7 +6,11 @@
   "tradeable": false,
   "progress": { "have": 0, "need": 1, "unit": "blueprint" },
   "badges": [
-    { "text": "Garrison Rank 4: 3 weeks", "tone": "warn" },
+    {
+      "text": "Garrison Rank 4: 3 weeks",
+      "tone": "warn",
+      "rank": { "syndicate": "Kahl's Garrison", "level": 4 }
+    },
     { "text": "30 Stock", "tone": "info" }
   ],
   "prices": [
@@ -70,7 +74,8 @@
           "label": "weekly mission completions",
           "note": "Rank 1 Shelter to Rank 4 Settlement",
           "alt": null,
-          "done": false
+          "done": false,
+          "rank": { "syndicate": "Kahl's Garrison", "level": 4 }
         },
         {
           "qty": "30",

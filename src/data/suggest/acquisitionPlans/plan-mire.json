@@ -4,23 +4,82 @@
   "effort": 2,
   "source": "shop",
   "tradeable": false,
-  "progress": { "have": 0, "need": 1, "unit": "blueprint" },
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "blueprint"
+  },
   "badges": [
-    { "text": "no RNG farm", "tone": "info" },
-    { "text": "MR 5", "tone": "info" }
+    {
+      "text": "no RNG farm",
+      "tone": "info"
+    }
   ],
   "prices": [
-    { "label": "blueprint", "amount": "15,000 cr", "money": false },
-    { "label": "build", "amount": "20,000 cr", "money": false }
+    {
+      "label": "blueprint",
+      "amount": "15,000 cr",
+      "money": false
+    },
+    {
+      "label": "build",
+      "amount": "20,000 cr",
+      "money": false
+    }
   ],
   "materials": [
-    { "qty": "2", "label": "Neural Sensors", "note": null },
-    { "qty": "1,000", "label": "Ferrite", "note": null },
-    { "qty": "1,500", "label": "Nano Spores", "note": null },
-    { "qty": "2,000", "label": "Alloy Plate", "note": null },
-    { "qty": "35,000", "label": "Credits", "note": null }
+    {
+      "qty": "2",
+      "label": "Neural Sensors",
+      "note": null
+    },
+    {
+      "qty": "1,000",
+      "label": "Ferrite",
+      "note": null
+    },
+    {
+      "qty": "1,500",
+      "label": "Nano Spores",
+      "note": null
+    },
+    {
+      "qty": "2,000",
+      "label": "Alloy Plate",
+      "note": null
+    },
+    {
+      "qty": "35,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
+    {
+      "type": "gate",
+      "place": "MASTERY RANK",
+      "sub": null,
+      "activity": "reach MR 5 to equip it",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Mastery Rank 5",
+          "note": null,
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
     {
       "type": "vendor",
       "place": "MARKET",
@@ -31,18 +90,23 @@
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [],
+      "spends": [
+        {
+          "currency": "Credits",
+          "amount": "15,000"
+        }
+      ],
       "map": null,
       "rows": [
         {
           "qty": null,
           "label": "Mire Blueprint",
-          "note": "15,000 credits",
-          "alt": "Eris Junction reward on Pluto; check the Foundry first",
+          "note": null,
+          "alt": null,
           "done": false
         }
       ],
-      "conditions": ["Coda Mire is a separate Mastery item and needs no Mire to build."],
+      "conditions": [],
       "bonuses": [],
       "disclosures": []
     },
@@ -51,7 +115,7 @@
       "place": "FOUNDRY",
       "sub": null,
       "activity": "build Mire",
-      "meta": "12h",
+      "meta": "12h, 20,000 cr",
       "mode": null,
       "live": null,
       "skip": null,
@@ -62,15 +126,13 @@
         {
           "qty": null,
           "label": "Mire",
-          "note": "20,000 cr, 2 Neural Sensors, 1,000 Ferrite, 1,500 Nano Spores, 2,000 Alloy Plate",
+          "note": "2 Neural Sensors, 1,000 Ferrite, 1,500 Nano Spores, 2,000 Alloy Plate",
           "alt": null,
           "done": false
         }
       ],
       "conditions": [],
-      "bonuses": [
-        "Worth keeping as an exalted-ability stat stick (Khora, Gara, Atlas): high riven disposition, and Red Veil's Toxic Blight augment adds +100% Toxin."
-      ],
+      "bonuses": [],
       "disclosures": []
     }
   ]

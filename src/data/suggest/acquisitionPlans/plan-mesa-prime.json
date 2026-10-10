@@ -1,126 +1,158 @@
 {
   "name": "Mesa Prime",
   "kind": "warframe-prime",
-  "effort": 7,
+  "effort": 8,
   "source": "relics",
   "tradeable": true,
-  "progress": { "have": 1, "need": 4, "unit": "parts" },
-  "badges": [{ "text": "vaulted", "tone": "warn" }],
-  "prices": [
-    { "label": "set, player trade", "amount": "~450 p", "money": false },
-    { "label": "Regal Aya bundle", "amount": "$79.99", "money": true }
+  "progress": {
+    "have": 0,
+    "need": 4,
+    "unit": "parts"
+  },
+  "badges": [
+    {
+      "text": "vaulted",
+      "tone": "warn"
+    }
   ],
+  "prices": [],
   "materials": [
-    { "qty": "1,250", "label": "Ferrite", "note": "Neuroptics" },
-    { "qty": "350", "label": "Rubedo", "note": "Neuroptics" },
-    { "qty": "2", "label": "Neural Sensors", "note": "Neuroptics" },
-    { "qty": "2", "label": "Argon Crystal", "note": "Neuroptics" },
-    { "qty": "450", "label": "Polymer Bundle", "note": "Chassis" },
-    { "qty": "575", "label": "Nano Spores", "note": "Chassis" },
-    { "qty": "3", "label": "Gallium", "note": "Chassis" },
-    { "qty": "2", "label": "Nitain Extract", "note": "Chassis" },
-    { "qty": "5", "label": "Morphics", "note": "Systems" },
-    { "qty": "625", "label": "Salvage", "note": "Systems" },
-    { "qty": "275", "label": "Circuits", "note": "Systems" },
-    { "qty": "3", "label": "Control Module", "note": "Systems" },
-    { "qty": "5", "label": "Orokin Cell", "note": "Blueprint" },
-    { "qty": "70,000", "label": "Credits", "note": null }
+    {
+      "qty": "1,250",
+      "label": "Ferrite",
+      "note": "Neuroptics"
+    },
+    {
+      "qty": "350",
+      "label": "Rubedo",
+      "note": "Neuroptics"
+    },
+    {
+      "qty": "2",
+      "label": "Neural Sensors",
+      "note": "Neuroptics"
+    },
+    {
+      "qty": "2",
+      "label": "Argon Crystal",
+      "note": "Neuroptics"
+    },
+    {
+      "qty": "450",
+      "label": "Polymer Bundle",
+      "note": "Chassis"
+    },
+    {
+      "qty": "575",
+      "label": "Nano Spores",
+      "note": "Chassis"
+    },
+    {
+      "qty": "3",
+      "label": "Gallium",
+      "note": "Chassis"
+    },
+    {
+      "qty": "2",
+      "label": "Nitain Extract",
+      "note": "Chassis"
+    },
+    {
+      "qty": "5",
+      "label": "Morphics",
+      "note": "Systems"
+    },
+    {
+      "qty": "625",
+      "label": "Salvage",
+      "note": "Systems"
+    },
+    {
+      "qty": "275",
+      "label": "Circuits",
+      "note": "Systems"
+    },
+    {
+      "qty": "3",
+      "label": "Control Module",
+      "note": "Systems"
+    },
+    {
+      "qty": "5",
+      "label": "Orokin Cell",
+      "note": null
+    },
+    {
+      "qty": "70,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
     {
       "type": "currency",
-      "place": "CETUS, EARTH",
-      "sub": null,
-      "activity": "Tier 5 bounty, Konzu",
-      "meta": "~55 min at ~20/hr",
-      "mode": "solo, normal",
+      "place": "CAMBION DRIFT, DEIMOS",
+      "sub": "Necralisk",
+      "activity": "Level 40-60 bounty, final stage",
+      "meta": "43.48% per final stage",
+      "mode": null,
       "live": null,
       "skip": null,
-      "earns": { "currency": "Aya", "amount": "18" },
+      "earns": null,
       "spends": [],
-      "map": "plains-of-eidolon",
+      "map": null,
       "rows": [
         {
-          "qty": "18",
+          "qty": null,
           "label": "Aya",
-          "note": "1 Aya per relic",
-          "alt": "or buy Aya from players at 5-8 p each",
+          "note": "1 per relic; bank it before the window opens",
+          "alt": null,
           "done": false
         }
       ],
-      "conditions": [
-        "Check the live Varzia rotation first: if Mesa is currently unvaulted her relics drop from missions normally and this farm is unnecessary"
-      ],
-      "bonuses": [
-        "Volt or Nova, not optional: Speed buffs the escort drone, Nova's portal teleports it. Keep the portal exit near ground level and stay close or the drone refuses it",
-        "Overfarmed Aya trades at 5-8 p, commonly 6 for 36 p, so a long session is a platinum farm too"
-      ],
+      "conditions": [],
+      "bonuses": [],
       "disclosures": [],
       "ref": "Aya"
     },
     {
       "type": "vendor",
       "place": "MAROO'S BAZAAR, MARS",
-      "sub": null,
-      "activity": "Varzia, 1 Aya per relic",
-      "meta": null,
+      "sub": "Varzia",
+      "activity": "buy the Mesa Prime relics she stocks, 1 Aya each",
+      "meta": "only while Mesa Prime is in Prime Resurgence",
       "mode": null,
-      "live": { "state": "waiting", "text": "Mesa rotation, 19d left" },
+      "live": {
+        "state": "blocked",
+        "text": "vaulted; only during her Prime Resurgence"
+      },
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Aya", "amount": "18" }],
-      "map": "maroos-bazaar",
+      "spends": [],
+      "map": null,
       "rows": [
         {
-          "qty": "6",
-          "label": "Vanguard P1",
-          "note": "Blueprint, Common 25.33% intact",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "6",
-          "label": "Axi M1",
-          "note": "Chassis, Common 25.33% intact",
-          "alt": null,
-          "done": true
-        },
-        {
-          "qty": "6",
-          "label": "Lith M3",
-          "note": "Neuroptics, Rare 2% intact",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "6",
-          "label": "Lith D5",
-          "note": "Systems, Uncommon 11% intact",
+          "qty": null,
+          "label": "Mesa Prime relics",
+          "note": "buy extra Neuroptics relics: every one carries it as the Rare",
           "alt": null,
           "done": false
         }
       ],
       "conditions": [
-        "Varzia carries Mesa relics only while a Mesa rotation is live; stock rotates every 28 days at 18:00 UTC",
-        "No mission drops these relics. Farming fissures hoping for Mesa relics is wasted time"
+        "Her stock rotates away; relics and Aya you hold never expire.",
+        "Vaulted relics and the parts themselves still trade between players."
       ],
-      "bonuses": [
-        "Varzia is also on the Orbiter Market console, which saves the trip to Mars every rotation"
-      ],
-      "disclosures": [
-        {
-          "title": "the relics not picked",
-          "body": "Blueprint also sits at Uncommon 11% in Lith C6, Lith D1, Lith N9, Lith P7, Meso P3, Meso R2, Neo Z2 and Neo Z3; Vanguard P1 is the only Common one. Chassis is Common in all ten of its relics, so Axi H4, Lith R1, Lith S10, Meso C4, Meso L2, Neo A3, Neo C1, Neo R4 and Vanguard E1 are interchangeable with Axi M1. Neuroptics is Rare 2% in every relic that holds it: Lith M4, Lith M5, Axi M3, Axi M4 and Vanguard M1 are the same odds as Lith M3. Systems is Uncommon 11% in Neo H3 and Vanguard C1 as well, and Rare 2% in Lith M6, Neo M2 and Neo M3, which are the ones to avoid."
-        }
-      ]
+      "bonuses": ["Varzia is also in the Market's Prime Resurgence tab."],
+      "disclosures": []
     },
     {
       "type": "fissure",
       "place": "ANY VOID FISSURE",
       "sub": null,
-      "activity": "match the relic era; Vanguard runs at Axi tier",
-      "meta": "~24 cracks",
-      "mode": "public squad",
+      "activity": "crack the Mesa Prime relics",
+      "meta": "Neuroptics is the bottleneck",
+      "mode": "Radiant radshare for the Rares",
       "live": null,
       "skip": null,
       "earns": null,
@@ -130,55 +162,47 @@
         {
           "qty": null,
           "label": "Mesa Prime Blueprint",
-          "note": "25.33% Intact",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Mesa Prime Chassis",
-          "note": "25.33% Intact",
+          "note": "Vanguard P1, Common: 25.33% Intact; Lith C6 or Lith D1 or Lith N9 or Lith P7 or Meso P3 or Meso R2 or Neo Z2 or Neo Z3, Uncommon: 20% Radiant",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Mesa Prime Neuroptics",
-          "note": "10% Radiant",
+          "note": "Lith M3 or Lith M4 or Lith M5 or Axi M3 or Axi M4 or Vanguard M1, Rare: 10% Radiant",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Mesa Prime Chassis",
+          "note": "Lith R1 or Lith S10 or Meso C4 or Meso L2 or Neo A3 or Neo C1 or Neo R4 or Axi H4 or Axi M1 or Vanguard E1, Common: 25.33% Intact",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Mesa Prime Systems",
-          "note": "11% Intact",
+          "note": "Lith D5 or Neo H3 or Vanguard C1, Uncommon: 20% Radiant; Lith M6 or Neo M2 or Neo M3, Rare: 10% Radiant",
           "alt": null,
           "done": false
         }
       ],
       "conditions": [
-        "Equip the relic before launch and collect 10 Reactant. Falling short does not consume the relic",
-        "Neuroptics is the Rare slot in every relic that holds it, so it is the part that stalls the set"
+        "Refine Rare and Uncommon relics to Radiant (100 Void Traces each); leave Common relics Intact, since Radiant lowers their Common odds to 16.67%.",
+        "Mission rewards never drop Resurgence relics; Varzia is the only source."
       ],
       "bonuses": [
-        "Radiant the Neuroptics relic: 100 traces turns 2% into 10%. Do the same for a rare-slot Systems relic if you are running one",
-        "Run Vanguard P1 and the Chassis relics Intact. Refining lowers Common odds, which is the wrong direction for both",
-        "A full squad gives four reward rolls to choose from",
-        "Spare Commons sell for 15 ducats each, and Intact is the refinement level that maximises them"
+        "Pick a teammate's identical reward at the reward screen; they get 5 bonus Void Traces."
       ],
-      "disclosures": [
-        {
-          "title": "refinement table",
-          "body": "Intact 0 traces: 25.33% each Common, 11% Uncommon, 2% Rare. Exceptional 25 traces: 23.33 / 13 / 4. Flawless 50 traces: 20 / 17 / 6. Radiant 100 traces: 16.67 / 20 / 10. A crack pays 6-30 traces when you collect 10 Reactant, plus 5 for every squadmate who picks your reward."
-        }
-      ]
+      "disclosures": []
     },
     {
       "type": "foundry",
       "place": "FOUNDRY",
       "sub": null,
-      "activity": "start all three now",
-      "meta": "12h each, 45,000 cr",
+      "activity": "build components, then Mesa Prime",
+      "meta": "12h each, then 3 days",
       "mode": null,
       "live": null,
       "skip": null,
@@ -186,33 +210,46 @@
       "spends": [],
       "map": null,
       "rows": [
-        { "qty": null, "label": "Mesa Prime Neuroptics", "note": null, "alt": null, "done": false },
-        { "qty": null, "label": "Mesa Prime Chassis", "note": null, "alt": null, "done": false },
-        { "qty": null, "label": "Mesa Prime Systems", "note": null, "alt": null, "done": false }
+        {
+          "qty": null,
+          "label": "Mesa Prime Neuroptics",
+          "note": "15,000 cr, 2 Argon Crystal, 2 Neural Sensors, 350 Rubedo, 1,250 Ferrite",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Mesa Prime Chassis",
+          "note": "15,000 cr, 2 Nitain Extract, 3 Gallium, 575 Nano Spores, 450 Polymer Bundle",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Mesa Prime Systems",
+          "note": "15,000 cr, 5 Morphics, 3 Control Module, 275 Circuits, 625 Salvage",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Mesa Prime",
+          "note": "25,000 cr, the three parts, 5 Orokin Cell",
+          "alt": null,
+          "done": false
+        }
       ],
       "conditions": [],
-      "bonuses": ["25 p rushes any one of them, but all three run in parallel anyway"],
-      "disclosures": []
-    },
-    {
-      "type": "foundry",
-      "place": "FOUNDRY",
-      "sub": null,
-      "activity": "then",
-      "meta": "72h, 25,000 cr",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [{ "qty": null, "label": "Mesa Prime", "note": null, "alt": null, "done": false }],
-      "conditions": [
-        "84h of build timers end to end, so the last part dropping is not the last thing standing between you and the frame",
-        "Needs a free Warframe slot before the Foundry will let you claim it"
-      ],
       "bonuses": [],
       "disclosures": []
+    }
+  ],
+  "routes": [
+    {
+      "name": "Varzia relics, as Mesa Prime",
+      "cost": "1 Aya a relic during her Prime Resurgence, Rare Neuroptics, 3-day build",
+      "effort": 8,
+      "role": "chosen"
     }
   ]
 }

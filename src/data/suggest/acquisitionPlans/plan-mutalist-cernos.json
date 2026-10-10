@@ -4,25 +4,92 @@
   "effort": 2,
   "source": "shop",
   "tradeable": false,
-  "progress": { "have": 0, "need": 1, "unit": "blueprint" },
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "blueprint"
+  },
   "badges": [
-    { "text": "consumes a Cernos", "tone": "info" },
-    { "text": "MR 7", "tone": "info" }
+    {
+      "text": "consumes a Cernos",
+      "tone": "info"
+    }
   ],
   "prices": [
-    { "label": "blueprints", "amount": "40,000 cr", "money": false },
-    { "label": "builds", "amount": "30,000 cr", "money": false }
+    {
+      "label": "blueprints",
+      "amount": "40,000 cr",
+      "money": false
+    },
+    {
+      "label": "builds",
+      "amount": "30,000 cr",
+      "money": false
+    }
   ],
   "materials": [
-    { "qty": "3", "label": "Gallium", "note": "for the Cernos" },
-    { "qty": "2,100", "label": "Plastids", "note": "700 for Cernos, 1,400 for Mutalist Cernos" },
-    { "qty": "600", "label": "Polymer Bundle", "note": "for the Cernos" },
-    { "qty": "1,750", "label": "Ferrite", "note": "for the Cernos" },
-    { "qty": "1,200", "label": "Cryotic", "note": null },
-    { "qty": "2,300", "label": "Nano Spores", "note": null },
-    { "qty": "70,000", "label": "Credits", "note": null }
+    {
+      "qty": "3",
+      "label": "Gallium",
+      "note": "for the Cernos"
+    },
+    {
+      "qty": "2,100",
+      "label": "Plastids",
+      "note": "700 for Cernos, 1,400 for Mutalist Cernos"
+    },
+    {
+      "qty": "600",
+      "label": "Polymer Bundle",
+      "note": "for the Cernos"
+    },
+    {
+      "qty": "1,750",
+      "label": "Ferrite",
+      "note": "for the Cernos"
+    },
+    {
+      "qty": "1,200",
+      "label": "Cryotic",
+      "note": null
+    },
+    {
+      "qty": "2,300",
+      "label": "Nano Spores",
+      "note": null
+    },
+    {
+      "qty": "70,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
+    {
+      "type": "gate",
+      "place": "MASTERY RANK",
+      "sub": null,
+      "activity": "reach MR 7 to equip it",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Mastery Rank 7",
+          "note": null,
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
     {
       "type": "vendor",
       "place": "MARKET",
@@ -33,7 +100,12 @@
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [],
+      "spends": [
+        {
+          "currency": "Credits",
+          "amount": "40,000"
+        }
+      ],
       "map": null,
       "rows": [
         {
@@ -71,7 +143,7 @@
         {
           "qty": null,
           "label": "Cernos",
-          "note": "15,000 cr, 3 Gallium, 700 Plastids, 600 Polymer Bundle, 1,750 Ferrite; MR 6",
+          "note": "15,000 cr, 3 Gallium, 700 Plastids, 600 Polymer Bundle, 1,750 Ferrite",
           "alt": null,
           "done": false
         },

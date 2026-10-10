@@ -4,23 +4,86 @@
   "effort": 2,
   "source": "dojo",
   "tradeable": false,
-  "progress": { "have": 0, "need": 1, "unit": "blueprint" },
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "blueprint"
+  },
   "badges": [
-    { "text": "Tenno Lab", "tone": "info" },
-    { "text": "8,600 Salvage", "tone": "warn" }
+    {
+      "text": "Tenno Lab",
+      "tone": "info"
+    },
+    {
+      "text": "8,600 Salvage",
+      "tone": "warn"
+    }
   ],
   "prices": [
-    { "label": "blueprint", "amount": "15,000 cr", "money": false },
-    { "label": "build", "amount": "20,000 cr", "money": false }
+    {
+      "label": "blueprint",
+      "amount": "15,000 cr",
+      "money": false
+    },
+    {
+      "label": "build",
+      "amount": "20,000 cr",
+      "money": false
+    }
   ],
   "materials": [
-    { "qty": "2", "label": "Argon Crystal", "note": null },
-    { "qty": "650", "label": "Cryotic", "note": null },
-    { "qty": "225", "label": "Oxium", "note": null },
-    { "qty": "8,600", "label": "Salvage", "note": null },
-    { "qty": "35,000", "label": "Credits", "note": null }
+    {
+      "qty": "2",
+      "label": "Argon Crystal",
+      "note": null
+    },
+    {
+      "qty": "650",
+      "label": "Cryotic",
+      "note": null
+    },
+    {
+      "qty": "225",
+      "label": "Oxium",
+      "note": null
+    },
+    {
+      "qty": "8,600",
+      "label": "Salvage",
+      "note": null
+    },
+    {
+      "qty": "35,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
+    {
+      "type": "gate",
+      "place": "MASTERY RANK",
+      "sub": null,
+      "activity": "reach MR 8 to equip it",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Mastery Rank 8",
+          "note": null,
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
     {
       "type": "vendor",
       "place": "CLAN DOJO, TENNO LAB",
@@ -31,14 +94,19 @@
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Credits", "amount": "15,000" }],
+      "spends": [
+        {
+          "currency": "Credits",
+          "amount": "15,000"
+        }
+      ],
       "map": null,
       "rows": [
         {
           "qty": null,
           "label": "Masseter Blueprint",
           "note": null,
-          "alt": "or 175 p at the Market",
+          "alt": null,
           "done": false
         }
       ],
@@ -67,7 +135,7 @@
           "done": false
         }
       ],
-      "conditions": ["Equipping needs Mastery Rank 8."],
+      "conditions": [],
       "bonuses": ["Its own Mastery, separate from Masseter Prime."],
       "disclosures": []
     }

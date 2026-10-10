@@ -2,6 +2,7 @@
   import { tr } from "../../lib/i18n.js";
   import {
     planRating,
+    UNRATED,
     type PlanBadge,
     type PlanBadgeTone,
   } from "../../lib/suggest/acquisition/plan/index.js";
@@ -147,7 +148,11 @@
   const details = $derived(suggestion.details);
   const target = $derived(details?.acquisition ?? null);
   const read = $derived(suppliedRead ?? (target ? partsRead(target) : null));
-  const rating = $derived(target ? (target.rating ?? planRating(target.name)) : null);
+  // A Prime's plan can be generated, which only the sweep can do; without its
+  // rating the card is unrated rather than guessed from the authored files.
+  const rating = $derived(
+    target ? (target.rating ?? (target.isPrime ? UNRATED : planRating(target.name))) : null,
+  );
   const effort = $derived(suppliedEffort ?? rating?.effort ?? null);
   const badge = $derived(suppliedBadge ?? rating?.badge ?? null);
   const unplanned = $derived(suppliedEffort == null && rating !== null && !rating.planned);

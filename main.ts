@@ -114,6 +114,7 @@ import {
   HELPER_DOWNLOAD_PROGRESS,
   INVENTORY_UPDATED,
   ITEM_DB_UPDATED,
+  RELIC_DB_UPDATED,
   ARBI_RUN_SAVED,
   PT_RUN_SAVED,
   WARFRAME_UI_SCALE_UPDATED,
@@ -239,7 +240,7 @@ function createWindow(): void {
       nodeIntegration: false,
       sandbox: true,
       // A never-shown window is treated as occluded, which throttles rAF to a
-      // crawl — screenshots come back blank and frame-timed measurements lie.
+      // crawl: screenshots come back blank and frame-timed measurements lie.
       ...(NEVER_SHOW_WINDOW ? { backgroundThrottling: false } : {}),
     },
   });
@@ -543,10 +544,14 @@ function initDataSources(profileStage: ProfileStage): void {
     })
     .catch((err: Error) => log.error("[ItemDB] DE public export refresh failed:", err));
 
-  // Drop tables for the wiki tab: disk cache first, then refresh in background.
+  // Drop tables: disk cache first, then refresh in background. They also carry
+  // relic vault state, so a refresh re-sends the relic database.
   dropData.loadFromDisk();
   void dropData
     .refreshFromUpstream()
+    .then(({ changed }) => {
+      if (changed) popoutIpc.broadcastToRenderers(RELIC_DB_UPDATED);
+    })
     .catch((err: Error) => log.error("[Drops] refresh failed:", err));
 
   const catalogStart = Date.now();

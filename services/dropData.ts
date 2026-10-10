@@ -33,6 +33,9 @@ interface CachePayload {
 // Served rows: the upstream tables plus the bundled dojo research. Only the
 // upstream half is ever written to disk, so the cache stays a pure mirror.
 let rows: DropRow[] = [];
+let upstreamLoaded = false;
+let revision = 0;
+let relicRows: { at: number; byRelic: Map<string, RelicDropRow[]> } | null = null;
 let loadedHash: string | null = null;
 let refreshPromise: Promise<{ changed: boolean }> | null = null;
 
@@ -264,6 +267,37 @@ function loadDojoRows(): DropRow[] {
 /** Rebuilds the served set from upstream rows, so the merge never doubles up. */
 function setServedRows(upstream: DropRow[]): void {
   rows = [...upstream, ...loadDojoRows()];
+  upstreamLoaded = true;
+  revision += 1;
+}
+
+export interface RelicDropRow {
+  place: string;
+  chance: number;
+}
+
+const RELIC_ITEM = /^(.+?) Relic(?: \([^()]*\))?$/;
+
+/** Bumps whenever the served rows change, so a reader can tell its copy is stale. */
+export function dropTablesRevision(): number {
+  return revision;
+}
+
+/** Every row a relic drops from, keyed "<Tier> <Code>"; null until the tables load. */
+export function relicDropRows(): ReadonlyMap<string, readonly RelicDropRow[]> | null {
+  if (!upstreamLoaded) return null;
+  if (relicRows?.at === revision) return relicRows.byRelic;
+  const byRelic = new Map<string, RelicDropRow[]>();
+  for (const row of rows) {
+    const match = RELIC_ITEM.exec(row.item);
+    if (!match) continue;
+    const key = collapseSpace(match[1]);
+    const list = byRelic.get(key) ?? [];
+    list.push({ place: collapseSpace(row.place), chance: row.chance });
+    byRelic.set(key, list);
+  }
+  relicRows = { at: revision, byRelic };
+  return byRelic;
 }
 
 export function loadFromDisk(): boolean {
@@ -387,4 +421,6 @@ export function flattenForTest(data: unknown): DropRow[] {
 export function setRowsForTest(testRows: DropRow[]): void {
   rows = testRows;
   loadedHash = "test";
+  upstreamLoaded = true;
+  revision += 1;
 }

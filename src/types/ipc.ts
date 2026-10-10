@@ -811,6 +811,7 @@ export interface IpcEventMap {
   "inventory-updated": RawInventoryData;
   "inventory-status-updated": InventoryStatus;
   "item-db-updated": undefined;
+  "relic-db-updated": undefined;
   "app-update-status": AppUpdateState;
   "wfm:notification": WfmNotification;
   "helper-download-progress": HelperDownloadProgress;

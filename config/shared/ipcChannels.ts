@@ -10,6 +10,7 @@ export const INVENTORY_STATUS_UPDATED = "inventory-status-updated";
 
 export const DB_GET_ITEM_DATABASE = "get-item-database";
 export const ITEM_DB_UPDATED = "item-db-updated";
+export const RELIC_DB_UPDATED = "relic-db-updated";
 export const GAME_LOCALE_UPDATED = "game-locale-updated";
 export const DB_GET_WORLD_STATE = "get-world-state";
 export const WORLD_STATE_FETCH_ERROR = "world-state-fetch-error";

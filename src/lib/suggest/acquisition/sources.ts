@@ -1,5 +1,5 @@
 import { ACQUISITION_NONE } from "./kinds.js";
-import { planSource } from "./plan/data.js";
+import { authoredPlan, planSource } from "./plan/data.js";
 import type { MessageKey } from "../../i18n.js";
 import type { PlanSource } from "./plan/schema.js";
 import type { AcquisitionTarget } from "./types.js";
@@ -37,5 +37,11 @@ export function includesSource(
 ): boolean {
   if (selected.length === 0) return true;
   if (selected.includes(ACQUISITION_NONE)) return false;
-  return selected.includes(planSource(target.name));
+  return selected.includes(sourceOf(target));
+}
+
+/** A rated Prime with no authored file has a generated plan, and those are relics. */
+function sourceOf(target: AcquisitionTarget): PlanSource {
+  if (authoredPlan(target.name)) return planSource(target.name);
+  return target.isPrime && target.rating?.planned === true ? "relics" : "unique";
 }

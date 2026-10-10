@@ -14,6 +14,16 @@ function nodeKey(text: string): string {
   return text.toLowerCase().replace(/[^a-z0-9]/g, "");
 }
 
+/** "Axi S8 relic" and "Axi S8 Relic (Radiant)" are the relic the inventory holds as "axi s8". */
+function relicKey(label: string): string {
+  return label
+    .replace(/\([^()]*\)/g, " ")
+    .replace(/\brelic\b/i, " ")
+    .replace(/\s+/g, " ")
+    .trim()
+    .toLowerCase();
+}
+
 function relicEra(label: string): string | null {
   const match = RELIC_ERA.exec(label.trim());
   return match ? match[1].toLowerCase() : null;
@@ -56,7 +66,7 @@ function relicsHeldFact(state: PlayerState, rows: PlanRow[]): ResolvedFact | nul
   let counted = 0;
   for (const row of rows) {
     if (!relicEra(row.label)) continue;
-    const owned = state.relics.get(row.label.trim().toLowerCase());
+    const owned = state.relics.get(relicKey(row.label));
     if (owned === undefined) continue;
     counted += 1;
     needed += row.qty ? Number(row.qty.replace(/,/g, "")) : 1;
@@ -82,15 +92,30 @@ function varziaFact(
   if (!trader) return null;
 
   const stock = Array.isArray(trader.inventory) ? trader.inventory : [];
-  const wanted = itemName.toLowerCase();
-  const carried = stock.some((offer) =>
-    String(offer.item ?? "")
-      .toLowerCase()
-      .includes(wanted),
-  );
   const expiry = typeof trader.expiry === "string" ? Date.parse(trader.expiry) : Number.NaN;
   const rotates = Number.isNaN(expiry) ? null : formatGap(expiry - now);
-  const lead = carried ? `${itemName} in stock now` : `${itemName} not in stock`;
+  // A group naming its relics is matched relic by relic; one naming only the
+  // item falls back to the item's name on the shelf.
+  const relics = new Set(
+    group.rows.filter((row) => relicEra(row.label)).map((row) => relicKey(row.label)),
+  );
+  let lead: string;
+  if (relics.size > 0) {
+    const shelf = new Set(stock.map((offer) => relicKey(String(offer.item ?? ""))));
+    const held = [...relics].filter((relic) => shelf.has(relic)).length;
+    lead =
+      held === 0
+        ? "none of these relics in stock"
+        : `${held} of ${relics.size} ${relics.size === 1 ? "relic" : "relics"} in stock now`;
+  } else {
+    const wanted = itemName.toLowerCase();
+    const carried = stock.some((offer) =>
+      String(offer.item ?? "")
+        .toLowerCase()
+        .includes(wanted),
+    );
+    lead = carried ? `${itemName} in stock now` : `${itemName} not in stock`;
+  }
   return {
     kind: "varzia",
     text: rotates ? `${lead}, rotates in ${rotates}` : lead,

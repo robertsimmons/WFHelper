@@ -12,6 +12,7 @@ import {
   INVENTORY_STATUS_UPDATED,
   DB_GET_ITEM_DATABASE,
   ITEM_DB_UPDATED,
+  RELIC_DB_UPDATED,
   GAME_LOCALE_UPDATED,
   DB_GET_WORLD_STATE,
   DB_GET_RELIC_DATABASE,
@@ -226,6 +227,7 @@ try {
       INVENTORY_STATUS_UPDATED,
     ),
     onItemDbUpdated: ipcDataBridge<IpcEventMap["item-db-updated"]>(ipcRenderer, ITEM_DB_UPDATED),
+    onRelicDbUpdated: ipcDataBridge<IpcEventMap["relic-db-updated"]>(ipcRenderer, RELIC_DB_UPDATED),
     onAppUpdateStatus: ipcDataBridge<IpcEventMap["app-update-status"]>(
       ipcRenderer,
       APP_UPDATE_STATUS,

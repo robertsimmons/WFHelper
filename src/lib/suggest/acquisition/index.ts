@@ -20,7 +20,7 @@ import {
   type GearEntry,
 } from "./parts.js";
 import { buildPaths, headlinePath } from "./paths.js";
-import { afterQuestRoute, authoredPlan, planQuestDone, planRatingFor } from "./plan/data.js";
+import { afterQuestRoute, planFor, planQuestDone, ratingOf } from "./plan/data.js";
 import { readQuestState } from "./plan/state.js";
 import { createQuestDone } from "./quests.js";
 import { createRatings } from "./ratings.js";
@@ -283,8 +283,19 @@ export function resolveAcquisition(ctx: AcquisitionContext): AcquisitionTarget[]
     const parts = (item.build ? plans.get(item.uniqueName) : null) ?? EMPTY_PLAN;
     const isPrime = isPrimeEntry(item.name, item.entry);
     // A plan that names its quest answers for the curated rows too, so the card,
-    // its sort and its plan page agree on whether the quest route is gone.
-    const plan = authoredPlan(item.name);
+    // its sort and its plan page agree on whether the quest route is gone. The
+    // rating and route lead never read trader stock, so the sweep passes no world.
+    const plan = planFor(
+      {
+        name: item.name,
+        uniqueName: item.uniqueName,
+        kind: item.kind,
+        weaponClass: item.weaponClass,
+        isPrime,
+        parts,
+      },
+      { itemDb, relicDb: ctx.relicDb, world: null },
+    );
     const planDone = plan ? planQuestDone(plan, player.quests) : null;
     const paths = buildPaths({
       name: item.name,
@@ -321,7 +332,7 @@ export function resolveAcquisition(ctx: AcquisitionContext): AcquisitionTarget[]
       tier: ratings.tier(item.name),
       wiki: item.entry.wikiaUrl ?? null,
       effort: headlinePath(paths)?.effort ?? NO_PATH_EFFORT,
-      rating: planRatingFor(item.name, player),
+      rating: ratingOf(plan, player),
     };
   });
 

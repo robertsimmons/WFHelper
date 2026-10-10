@@ -59,6 +59,7 @@
   import { ensureDropPools } from "../stores/dropPools.js";
   import { toggleUpgradePin, unpinUpgrades, upgradePins } from "../stores/upgradePins.js";
   import { priceCacheRevision } from "../stores/pricing.js";
+  import { relicDb } from "../stores/relics.js";
   import { worldData } from "../stores/world.js";
   import { refreshSimulacrum, scannables, simulacrum } from "../stores/simulacrum.js";
   import { suggestionPreferences } from "../stores/suggestionPrefs.js";
@@ -221,6 +222,7 @@
       itemDb: $itemDb,
       inventory: $inventoryData,
       world: $worldData,
+      relicDb: $relicDb,
       now: resolvedAt,
     }),
   );

@@ -3,6 +3,7 @@ import { normalizeErrorMessage } from "../config/shared/errors";
 import { normalizeDucats } from "../config/shared/numeric";
 import { normalizeWfmSlug } from "../config/shared/wfm";
 import { fallbackNameFromUniqueName } from "../config/shared/displayName";
+import * as dropData from "./dropData";
 import { getOverlay } from "./publicExportSource";
 import { relicRewardChance, relicRewardRarity } from "./relicRarity";
 import {
@@ -36,12 +37,23 @@ interface RelicQuality {
   rewards: RelicReward[];
 }
 
+type RelicDropping = "missions" | "caches" | "none";
+
+interface RelicCache {
+  region: string;
+  chance: number;
+}
+
 interface RelicGroup {
   key: string;
   name: string;
   tier: string;
   code: string;
   vaulted: boolean;
+  /** Where the live drop tables say it drops; null until they load. */
+  dropping?: RelicDropping | null;
+  /** Railjack derelict caches it drops from, best chance per region. */
+  caches?: RelicCache[];
   imageUrl: string | null;
   qualities: Record<string, RelicQuality>;
 }
@@ -253,18 +265,68 @@ function buildRelicDatabase(): RelicDatabase {
   return { groups, byUniqueName };
 }
 
+const CACHE_PLACE = /\(Caches\)\s*\(([^()]+)\)/;
+
+/** "Khufu Envoy (Caches) (Pluto), Rotation B" -> "Pluto Proxima". */
+function cacheRegion(place: string): string | null {
+  const region = CACHE_PLACE.exec(place)?.[1]?.trim();
+  if (!region) return null;
+  return /proxima$/i.test(region) ? region : `${region} Proxima`;
+}
+
+function stampGroup(
+  group: RelicGroup,
+  drops: ReadonlyMap<string, readonly dropData.RelicDropRow[]> | null,
+): RelicGroup {
+  // Requiem relics come off Kuva Siphons, which the tables list only as a random
+  // "Requiem Eterna" roll, so the bundled flag keeps answering for them.
+  if (!drops || group.tier === "Requiem") return { ...group, dropping: null, caches: [] };
+  const rows = drops.get(group.name) ?? [];
+  const best = new Map<string, number>();
+  for (const row of rows) {
+    const region = cacheRegion(row.place);
+    if (region) best.set(region, Math.max(best.get(region) ?? 0, row.chance));
+  }
+  const cacheRows = rows.filter((row) => cacheRegion(row.place) !== null).length;
+  const dropping: RelicDropping =
+    rows.length === 0 ? "none" : cacheRows === rows.length ? "caches" : "missions";
+  return {
+    ...group,
+    vaulted: dropping === "none",
+    dropping,
+    caches: [...best].map(([region, chance]) => ({ region, chance })),
+  };
+}
+
+let _base: RelicDatabase | null = null;
+let _stampedAt = -1;
+
 /** A refreshed DE export can name relics the cached build missed. */
 export function resetRelicDatabase(): void {
+  _base = null;
   _db = null;
 }
 
+/** Vault state is stamped from the live drop tables over the bundled build, and
+ *  restamped whenever those tables change. */
 export function getRelicDatabase(): RelicDatabase {
-  if (!_db) {
+  if (!_base) {
     log.time("[RelicDB] build");
-    _db = buildRelicDatabase();
-    const n = Object.keys(_db.groups).length;
+    _base = buildRelicDatabase();
+    const n = Object.keys(_base.groups).length;
     log.info(`[RelicDB] ${n} relic groups indexed`);
     log.timeEnd("[RelicDB] build");
+    _db = null;
+  }
+  const revision = dropData.dropTablesRevision();
+  if (!_db || _stampedAt !== revision) {
+    const drops = dropData.relicDropRows();
+    const groups: Record<string, RelicGroup> = {};
+    for (const [key, group] of Object.entries(_base.groups)) {
+      groups[key] = stampGroup(group, drops);
+    }
+    _db = { groups, byUniqueName: _base.byUniqueName };
+    _stampedAt = revision;
   }
   return _db;
 }

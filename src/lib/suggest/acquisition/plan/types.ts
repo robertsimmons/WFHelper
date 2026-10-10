@@ -1,4 +1,5 @@
 import type { ItemDbEntry, RawInventoryData } from "../../../../types/inventory.js";
+import type { RelicDatabase } from "../../../../types/relics.js";
 import type { WorldState } from "../../../../types/world.js";
 import type { ResourceLookup } from "./resources.js";
 import type {
@@ -189,6 +190,8 @@ export interface PlanContext {
   itemDb: Record<string, ItemDbEntry>;
   inventory: RawInventoryData | null;
   world?: WorldState | null | undefined;
+  /** What a generated Prime plan reads; without it only authored plans resolve. */
+  relicDb?: RelicDatabase | null | undefined;
   progress?: PlanProgressOverride | undefined;
   /** Row ids the player ticked by hand, for what inventory cannot see. */
   manualDone?: readonly string[] | undefined;

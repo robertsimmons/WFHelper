@@ -1,12 +1,9 @@
 import { activeWindow } from "../format.js";
 import { RELIC_ICON_PATHS } from "../relic/relicConstants.js";
 import { resolveDropArt } from "./dropPools.js";
-import {
-  parseOwnedRelics,
-  relicGroupForDisplayName,
-  relicGroupForUniqueName,
-} from "../relic/relicInventory.js";
+import { parseOwnedRelics, relicGroupForDisplayName } from "../relic/relicInventory.js";
 import { mrInputs, readGroup, referenceTable, rewardUniqueName } from "./relicRead.js";
+import { traderRelics } from "./traderRelics.js";
 import { shippedModule } from "./upgrades.js";
 import { miscItemCount } from "./vosfor.js";
 import { SYNDICATE_RANKS } from "../../data/syndicateRanks.js";
@@ -29,7 +26,7 @@ export const STEEL_PACK_COST = 15;
 export const SYNDICATE_PACK_COST = 20_000;
 
 /** Every vendor that trades standing for a relic pack. */
-export const PACK_SYNDICATES: readonly string[] = [
+const PACK_SYNDICATES: readonly string[] = [
   "SteelMeridianSyndicate",
   "ArbitersSyndicate",
   "CephalonSudaSyndicate",
@@ -82,13 +79,13 @@ export interface VarziaRelic extends RelicPayout {
   aya: number | null;
 }
 
-export interface SyndicateStanding {
+interface SyndicateStanding {
   tag: string;
   name: string;
   standing: number;
 }
 
-export interface RelicPacksSummary {
+interface RelicPacksSummary {
   steelEssence: number | null;
   /** The pack vendor the player has the most standing with; null while no
    *  inventory is read or none of them has a row. */
@@ -125,7 +122,7 @@ function partOrder(a: RelicPart, b: RelicPart): number {
   );
 }
 
-export function payoutReader(sources: MrSources, owned: OwnedCounts): ReadPayout {
+function payoutReader(sources: MrSources, owned: OwnedCounts): ReadPayout {
   const inputs = mrInputs(sources);
   const { itemDb } = sources;
   return (group) => {
@@ -168,7 +165,7 @@ function poolGroup(db: RelicDatabase, name: string): RelicGroup | null {
 
 /** Distinct needed parts a pack could land, counted only off relics the player
  *  holds none of: a held one is already a crack away. */
-export function poolPartCount(payouts: readonly RelicPayout[]): number {
+function poolPartCount(payouts: readonly RelicPayout[]): number {
   const parts = new Set<string>();
   for (const payout of payouts) {
     if (payout.held > 0) continue;
@@ -213,33 +210,21 @@ export function bestPackSyndicate(
   return { ...found, name };
 }
 
-const PROJECTION = "/Projections/";
-
 /** What Varzia has on the shelf right now, as relics. */
-export function varziaStock(
+function varziaStock(
   world: WorldState | null,
   db: RelicDatabase,
   nowMs: number,
   read: ReadPayout,
 ): { expiry: string | null; relics: VarziaRelic[] } {
-  const trader = world?.vaultTrader;
-  if (!trader || !activeWindow(trader.activation, trader.expiry, nowMs)) {
-    return { expiry: null, relics: [] };
-  }
-  const seen = new Set<string>();
+  const shelf = traderRelics(world?.vaultTrader, db, nowMs);
+  if (!shelf) return { expiry: null, relics: [] };
   const relics: VarziaRelic[] = [];
-  for (const entry of trader.inventory ?? []) {
-    const uniqueName = entry.uniqueName ?? "";
-    if (!uniqueName.includes(PROJECTION)) continue;
-    const group =
-      relicGroupForUniqueName(db, uniqueName) ??
-      (entry.item ? relicGroupForDisplayName(db, entry.item) : null);
-    if (!group || seen.has(group.key)) continue;
-    seen.add(group.key);
+  for (const { group, offer } of shelf.relics) {
     const payout = read(group);
-    if (payout) relics.push({ ...payout, aya: typeof entry.aya === "number" ? entry.aya : null });
+    if (payout) relics.push({ ...payout, aya: typeof offer.aya === "number" ? offer.aya : null });
   }
-  return { expiry: trader.expiry ?? null, relics: relics.sort(byWorth) };
+  return { expiry: shelf.expiry, relics: relics.sort(byWorth) };
 }
 
 export function relicPacksSummary(

@@ -49,6 +49,15 @@ async function refreshInventoryModifiedAt(): Promise<void> {
   }
 }
 
+/** Only a relic database something already loaded is re-pulled. */
+async function reloadRelicDb(): Promise<void> {
+  if (!get(relicDb)) return;
+  const relics = await invoke("getRelicDatabase");
+  relicDb.set(relics);
+  const inventory = get(inventoryData);
+  if (relics && inventory) relicOwnedCounts.set(parseOwnedRelics(inventory, relics));
+}
+
 /** Main-process events that outlive whichever view happens to be mounted.
  * App.svelte only calls this and disposes it; none of it is layout. */
 export function initRendererEvents(): () => void {
@@ -116,16 +125,14 @@ export function initRendererEvents(): () => void {
     on("item-db-updated", async () => {
       const db = await invoke("getItemDatabase");
       itemDb.set(db || {});
-      if (get(relicDb)) {
-        const relics = await invoke("getRelicDatabase");
-        relicDb.set(relics);
-        const inventory = get(inventoryData);
-        if (relics && inventory) relicOwnedCounts.set(parseOwnedRelics(inventory, relics));
-      }
+      await reloadRelicDb();
       invoke("getMasteryProgress")
         .then((md) => masteryData.set(md))
         .catch((err) => console.warn("[Mastery] getMasteryProgress failed:", err));
     }),
+
+    // A drop-table refresh restamps every relic's vault state.
+    on("relic-db-updated", () => reloadRelicDb()),
   ];
 
   // The startup inventory load can predate these subscriptions, so seed the mtime.

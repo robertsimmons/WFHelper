@@ -17,12 +17,25 @@ export interface RelicQualityData {
   rewards: RelicReward[];
 }
 
+/** Where the live drop tables say a relic drops: "none" is vaulted. */
+export type RelicDropping = "missions" | "caches" | "none";
+
+export interface RelicCache {
+  /** "Pluto Proxima". */
+  region: string;
+  chance: number;
+}
+
 export interface RelicGroup {
   key: string;
   name: string;
   tier: string;
   code: string;
   vaulted?: boolean;
+  /** Null or absent until the drop tables load; `vaulted` is the bundled flag then. */
+  dropping?: RelicDropping | null;
+  /** Railjack derelict caches it drops from, best chance per region. */
+  caches?: RelicCache[];
   imageUrl: string | null;
   qualities: Partial<Record<RelicQuality, RelicQualityData>>;
   [key: string]: unknown;

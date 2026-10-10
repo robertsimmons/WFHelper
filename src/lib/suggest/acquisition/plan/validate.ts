@@ -357,6 +357,51 @@ function checkGroup(
   checkStoreRefs(problems, at, value, itemName, lookup);
 }
 
+const OVERRIDE_KEYS = new Set(["name", "badges", "gates", "effort"]);
+
+/** Every reason the value is not a Prime override. `generated` answers whether
+ *  the name is a Prime the generator plans; left out, the name goes unchecked. */
+export function validatePrimeOverride(
+  value: unknown,
+  generated?: (name: string) => boolean,
+): string[] {
+  const problems: Problems = [];
+  if (!isRecord(value)) return ["override must be an object"];
+  for (const key of Object.keys(value)) {
+    if (!OVERRIDE_KEYS.has(key)) problems.push(`${key} is not an override field`);
+  }
+  checkString(problems, "name", value.name);
+  if (typeof value.name === "string" && generated && !generated(value.name)) {
+    problems.push(`name "${value.name}" is not a generated Prime`);
+  }
+  if (value.badges !== undefined) checkBadges(problems, "badges", value.badges);
+  if (value.gates !== undefined) {
+    if (!Array.isArray(value.gates) || value.gates.length === 0) {
+      problems.push("gates must be a non-empty array");
+    } else {
+      value.gates.forEach((gate, index) => {
+        const at = `gates[${index}]`;
+        if (!isRecord(gate)) {
+          problems.push(`${at} must be an object`);
+          return;
+        }
+        checkString(problems, `${at}.label`, gate.label);
+        checkNullableString(problems, `${at}.note`, gate.note);
+        checkRank(problems, `${at}.rank`, gate.rank);
+      });
+    }
+  }
+  if (value.effort !== undefined) {
+    if (!isRecord(value.effort)) {
+      problems.push("effort must be an object with a value and a reason");
+    } else {
+      checkEffort(problems, "effort.value", value.effort.value);
+      checkString(problems, "effort.reason", value.effort.reason);
+    }
+  }
+  return problems;
+}
+
 /** Every reason the value is not an authored plan. The renderer is dumb, so a
  *  malformed plan has to be caught here or not at all. */
 export function validatePlan(value: unknown, lookup: ResourceLookup = resourceEntry): string[] {

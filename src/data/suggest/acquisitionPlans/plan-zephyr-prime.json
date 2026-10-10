@@ -4,32 +4,156 @@
   "effort": 8,
   "source": "relics",
   "tradeable": true,
-  "progress": { "have": 0, "need": 4, "unit": "parts" },
-  "badges": [{ "text": "vaulted", "tone": "warn" }],
+  "progress": {
+    "have": 0,
+    "need": 4,
+    "unit": "parts"
+  },
+  "badges": [
+    {
+      "text": "vaulted",
+      "tone": "warn"
+    }
+  ],
   "prices": [],
+  "routes": [
+    {
+      "name": "Varzia relics, as Zephyr Prime",
+      "cost": "1 Aya a relic during her Prime Resurgence, Rare Systems, 3-day build",
+      "effort": 8,
+      "role": "chosen"
+    }
+  ],
   "materials": [
-    { "qty": "3", "label": "Neural Sensors", "note": "Neuroptics" },
-    { "qty": "550", "label": "Oxium", "note": "250 Neuroptics, 300 Chassis" },
-    { "qty": "350", "label": "Plastids", "note": "Neuroptics" },
-    { "qty": "4,250", "label": "Alloy Plate", "note": "Neuroptics" },
-    { "qty": "2", "label": "Nitain Extract", "note": "Chassis" },
-    { "qty": "2", "label": "Tellurium", "note": "Chassis" },
-    { "qty": "3,600", "label": "Ferrite", "note": "Chassis" },
-    { "qty": "2", "label": "Argon Crystal", "note": "Systems" },
-    { "qty": "3", "label": "Neurodes", "note": "Systems" },
-    { "qty": "550", "label": "Cryotic", "note": "Systems" },
-    { "qty": "3,175", "label": "Nano Spores", "note": "Systems" },
-    { "qty": "5", "label": "Orokin Cell", "note": null },
-    { "qty": "70,000", "label": "Credits", "note": null }
+    {
+      "qty": "3",
+      "label": "Neural Sensors",
+      "note": "Neuroptics"
+    },
+    {
+      "qty": "550",
+      "label": "Oxium",
+      "note": "250 Neuroptics, 300 Chassis"
+    },
+    {
+      "qty": "350",
+      "label": "Plastids",
+      "note": "Neuroptics"
+    },
+    {
+      "qty": "4,250",
+      "label": "Alloy Plate",
+      "note": "Neuroptics"
+    },
+    {
+      "qty": "2",
+      "label": "Nitain Extract",
+      "note": "Chassis"
+    },
+    {
+      "qty": "2",
+      "label": "Tellurium",
+      "note": "Chassis"
+    },
+    {
+      "qty": "3,600",
+      "label": "Ferrite",
+      "note": "Chassis"
+    },
+    {
+      "qty": "2",
+      "label": "Argon Crystal",
+      "note": "Systems"
+    },
+    {
+      "qty": "3",
+      "label": "Neurodes",
+      "note": "Systems"
+    },
+    {
+      "qty": "550",
+      "label": "Cryotic",
+      "note": "Systems"
+    },
+    {
+      "qty": "3,175",
+      "label": "Nano Spores",
+      "note": "Systems"
+    },
+    {
+      "qty": "5",
+      "label": "Orokin Cell",
+      "note": null
+    },
+    {
+      "qty": "70,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
     {
-      "type": "fissure",
-      "place": "ANY VOID FISSURE",
-      "sub": null,
-      "activity": "crack the matching vaulted relics",
-      "meta": "Systems is the bottleneck",
+      "sub": "Necralisk",
+      "activity": "Level 40-60 bounty, final stage",
+      "meta": "43.48% per final stage",
       "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Aya",
+          "note": "1 per relic; bank it before the window opens",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": [],
+      "type": "currency",
+      "place": "CAMBION DRIFT, DEIMOS",
+      "ref": "Aya"
+    },
+    {
+      "sub": "Varzia",
+      "activity": "buy the Zephyr Prime relics she stocks, 1 Aya each",
+      "meta": "only while Zephyr Prime is in Prime Resurgence",
+      "mode": null,
+      "live": {
+        "state": "blocked",
+        "text": "vaulted; only during her Prime Resurgence"
+      },
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Zephyr Prime relics",
+          "note": null,
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Her stock rotates away; relics and Aya you hold never expire.",
+        "Vaulted relics and the parts themselves still trade between players."
+      ],
+      "bonuses": ["Varzia is also in the Market's Prime Resurgence tab."],
+      "disclosures": [],
+      "type": "vendor",
+      "place": "MAROO'S BAZAAR, MARS"
+    },
+    {
+      "sub": null,
+      "activity": "crack the matching relics",
+      "meta": "Systems is the bottleneck",
+      "mode": "Radiant radshare for the Rares",
       "live": null,
       "skip": null,
       "earns": null,
@@ -66,18 +190,20 @@
         }
       ],
       "conditions": [
-        "Zephyr Prime is vaulted: its relics no longer drop from missions.",
-        "Vaulted relics and the parts themselves still trade between players."
+        "Refine Rare relics to Radiant (100 Void Traces each); leave Common-part relics Intact, since Radiant lowers their Common odds to 16.67%.",
+        "Mission rewards never drop Resurgence relics; Varzia is the only source."
       ],
-      "bonuses": [],
-      "disclosures": []
+      "bonuses": [
+        "Pick a teammate's identical reward at the reward screen; they get 5 bonus Void Traces."
+      ],
+      "disclosures": [],
+      "type": "fissure",
+      "place": "ANY VOID FISSURE"
     },
     {
-      "type": "foundry",
-      "place": "FOUNDRY",
       "sub": null,
       "activity": "build components, then Zephyr Prime",
-      "meta": "12h each, then 72h",
+      "meta": "12h each, then 3 days",
       "mode": null,
       "live": null,
       "skip": null,
@@ -109,14 +235,16 @@
         {
           "qty": null,
           "label": "Zephyr Prime",
-          "note": "25,000 cr, Neuroptics, Chassis, Systems, 5 Orokin Cell, 3 days",
+          "note": "25,000 cr, the three parts, 5 Orokin Cell",
           "alt": null,
           "done": false
         }
       ],
       "conditions": [],
       "bonuses": [],
-      "disclosures": []
+      "disclosures": [],
+      "type": "foundry",
+      "place": "FOUNDRY"
     }
   ]
 }

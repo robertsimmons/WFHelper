@@ -4,34 +4,84 @@
   "effort": 4,
   "source": "standing",
   "tradeable": false,
-  "progress": { "have": 0, "need": 3, "unit": "blueprints" },
+  "progress": {
+    "have": 0,
+    "need": 3,
+    "unit": "blueprints"
+  },
   "badges": [
-    { "text": "Rank 1 Entrati", "tone": "warn" },
-    { "text": "no RNG", "tone": "info" }
+    {
+      "text": "Entrati Stranger",
+      "tone": "warn",
+      "rank": {
+        "syndicate": "Entrati",
+        "level": 1
+      }
+    },
+    {
+      "text": "MR 11",
+      "tone": "info"
+    }
   ],
   "prices": [
-    { "label": "blueprints + refining", "amount": "13,000 Entrati standing", "money": false },
-    { "label": "built", "amount": "190 p", "money": false }
+    {
+      "label": "blueprints + rank-up",
+      "amount": "9,000 Entrati standing",
+      "money": false
+    },
+    {
+      "label": "build",
+      "amount": "60,000 cr",
+      "money": false
+    }
   ],
   "materials": [
-    { "qty": "4", "label": "Neurodes", "note": "Barrel" },
-    { "qty": "5", "label": "Morphics", "note": "Receiver" },
-    { "qty": "1,600", "label": "Nano Spores", "note": "Tempered Bapholite refine" },
-    { "qty": "600", "label": "Plastids", "note": "Adramal Alloy refine" },
-    { "qty": "20", "label": "Tempered Bapholite", "note": null },
-    { "qty": "20", "label": "Adramal Alloy", "note": null },
-    { "qty": "10", "label": "Purified Heciphron", "note": null },
-    { "qty": "8", "label": "Dendrite Blastoma", "note": null },
-    { "qty": "8", "label": "Pustulent Cognitive Nodule", "note": null },
-    { "qty": "60,000", "label": "Credits", "note": null }
+    {
+      "qty": "4",
+      "label": "Neurodes",
+      "note": "Barrel"
+    },
+    {
+      "qty": "5",
+      "label": "Morphics",
+      "note": "Receiver"
+    },
+    {
+      "qty": "20",
+      "label": "Tempered Bapholite",
+      "note": "Barrel"
+    },
+    {
+      "qty": "20",
+      "label": "Adramal Alloy",
+      "note": "Receiver"
+    },
+    {
+      "qty": "10",
+      "label": "Purified Heciphron",
+      "note": "Barrel and Receiver"
+    },
+    {
+      "qty": "8",
+      "label": "Dendrite Blastoma",
+      "note": "Barrel"
+    },
+    {
+      "qty": "8",
+      "label": "Pustulent Cognitive Nodule",
+      "note": "Receiver"
+    },
+    {
+      "qty": "60,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
     {
-      "type": "gate",
-      "place": "QUESTS",
       "sub": null,
       "activity": "complete Heart of Deimos; reach MR 11",
-      "meta": "Earth-to-Mars Junction",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -49,134 +99,112 @@
         {
           "qty": null,
           "label": "Mastery Rank 11",
-          "note": "required to select, equip, and use Zymos",
+          "note": "needed to equip it",
           "alt": null,
           "done": false
         }
       ],
-      "conditions": [
-        "Zymos is a Father standing purchase, not a Cavia item, enemy drop, or Incarnon weapon.",
-        "MR 11 is a hard wall: you cannot select Zymos as the free Rank 1 reward or equip the finished weapon below it."
-      ],
+      "conditions": [],
       "bonuses": [],
-      "disclosures": []
+      "disclosures": [],
+      "type": "gate",
+      "place": "QUESTS"
     },
     {
-      "type": "currency",
-      "place": "CAMBION DRIFT, DEIMOS",
       "sub": "Necralisk / Entrati",
-      "activity": "Tier-5 Mother bounties; bank Tokens",
-      "meta": "two daily-cap sessions at most",
-      "mode": "daily standing cap",
+      "activity": "Tier 5 Mother bounties; trade Family Tokens to Grandmother",
+      "meta": "5,000 for the rank-up, 4,000 for blueprints",
+      "mode": null,
       "live": null,
       "skip": null,
-      "earns": { "currency": "Entrati Standing", "amount": "13,000" },
+      "earns": {
+        "currency": "Entrati Standing",
+        "amount": "9,000"
+      },
       "spends": [],
       "map": "cambion-drift",
       "rows": [
         {
-          "qty": "5,000",
-          "label": "Entrati standing",
-          "note": "rank Neutral to Stranger",
+          "qty": null,
+          "label": "Entrati Stranger (Rank 1)",
+          "note": "5,000 standing, 6 Benign Infested Tumor, 6 Ferment Bladder",
           "alt": null,
-          "done": false
-        },
-        {
-          "qty": "4,000",
-          "label": "Entrati standing",
-          "note": "Zymos and component blueprints",
-          "alt": "2,000 if Zymos is the free rank-up reward",
-          "done": false
-        },
-        {
-          "qty": "4,000",
-          "label": "Entrati standing",
-          "note": "three reusable Otak refining blueprints",
-          "alt": null,
-          "done": false
+          "done": false,
+          "rank": {
+            "syndicate": "Entrati",
+            "level": 1
+          }
         }
       ],
-      "conditions": [
-        "The Stranger sacrifice is 6 Benign Infested Tumors and 6 Ferment Bladders, obtained by filleting Deimos fish at Daughter."
-      ],
-      "bonuses": ["Claiming Zymos as the Rank 1 reward saves 2,000 standing."],
-      "disclosures": [
-        {
-          "title": "the short calendar gate",
-          "body": "At Rank 0, the 5,000 standing cap forces the rank-up onto one day and the purchases onto the next. At ordinary MR, the remaining 6,000 to 8,000 standing fits comfortably in that second session."
-        }
-      ],
+      "conditions": [],
+      "bonuses": ["Taking Zymos as the free Rank 1 reward saves 2,000 standing."],
+      "disclosures": [],
+      "type": "currency",
+      "place": "CAMBION DRIFT, DEIMOS",
       "ref": "Entrati Standing"
     },
     {
-      "type": "vendor",
-      "place": "NECRALISK, DEIMOS",
-      "sub": "Father and Otak",
-      "activity": "reach Stranger; buy blueprints",
-      "meta": "Rank 1 - Stranger",
+      "sub": "Father",
+      "activity": "buy the blueprints at Rank 1 Stranger",
+      "meta": "4,000 standing",
       "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Entrati Standing", "amount": "8,000" }],
+      "spends": [
+        {
+          "currency": "Entrati Standing",
+          "amount": "4,000"
+        }
+      ],
       "map": null,
       "rows": [
         {
           "qty": null,
           "label": "Zymos Blueprint",
-          "note": "Father; 2,000 standing",
-          "alt": "free Stranger rank-up reward",
-          "done": false
+          "note": "2,000 standing",
+          "alt": "or take it as the free Rank 1 reward",
+          "done": false,
+          "rank": {
+            "syndicate": "Entrati",
+            "level": 1
+          }
         },
         {
           "qty": null,
           "label": "Zymos Barrel Blueprint",
-          "note": "Father; 1,000 standing",
+          "note": "1,000 standing",
           "alt": null,
-          "done": false
+          "done": false,
+          "rank": {
+            "syndicate": "Entrati",
+            "level": 1
+          }
         },
         {
           "qty": null,
           "label": "Zymos Receiver Blueprint",
-          "note": "Father; 1,000 standing",
+          "note": "1,000 standing",
           "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Tempered Bapholite Blueprint",
-          "note": "Otak; 1,000 standing, Neutral",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Adramal Alloy Blueprint",
-          "note": "Otak; 1,000 standing, Neutral",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Purified Heciphron Blueprint",
-          "note": "Otak; 2,000 standing, Stranger",
-          "alt": null,
-          "done": false
+          "done": false,
+          "rank": {
+            "syndicate": "Entrati",
+            "level": 1
+          }
         }
       ],
       "conditions": [
-        "Purified Heciphron's blueprint is Stranger-gated, so buy it only after completing the rank-up.",
-        "If you intend to rank Necraloid, buy a second Barrel Blueprint: Necraloid Rank 1 consumes one. Never sacrifice an in-progress or unclaimed blueprint."
+        "Necraloid Rank 1 consumes a Zymos Barrel Blueprint; buy a second one if you will rank Necraloid."
       ],
       "bonuses": [],
-      "disclosures": []
+      "disclosures": [],
+      "type": "vendor",
+      "place": "NECRALISK, DEIMOS"
     },
     {
-      "type": "foundry",
-      "place": "FOUNDRY",
       "sub": null,
       "activity": "build components, then Zymos",
-      "meta": "12h components, then 12h weapon; MR 11",
+      "meta": "12h each",
       "mode": null,
       "live": null,
       "skip": null,
@@ -187,31 +215,30 @@
         {
           "qty": null,
           "label": "Zymos Barrel",
-          "note": "20,000 cr, 20 Tempered Bapholite, 5 Purified Heciphron, 8 Dendrite Blastoma, 4 Neurodes; 12h",
+          "note": "20,000 cr, 20 Tempered Bapholite, 5 Purified Heciphron, 8 Dendrite Blastoma, 4 Neurodes",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Zymos Receiver",
-          "note": "20,000 cr, 20 Adramal Alloy, 5 Purified Heciphron, 8 Pustulent Cognitive Nodule, 5 Morphics; 12h",
+          "note": "20,000 cr, 20 Adramal Alloy, 5 Purified Heciphron, 8 Pustulent Cognitive Nodule, 5 Morphics",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Zymos",
-          "note": "20,000 cr, Barrel + Receiver; 12h",
+          "note": "20,000 cr, Barrel, Receiver",
           "alt": null,
           "done": false
         }
       ],
-      "conditions": [
-        "The two components build in parallel, then the weapon adds a second 12-hour stage: 24 hours minimum without rushing.",
-        "Refining each material batch takes one minute. Build the two component parts before starting the final weapon."
-      ],
+      "conditions": [],
       "bonuses": [],
-      "disclosures": []
+      "disclosures": [],
+      "type": "foundry",
+      "place": "FOUNDRY"
     }
   ]
 }

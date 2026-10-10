@@ -4,23 +4,86 @@
   "effort": 4,
   "source": "shop",
   "tradeable": false,
-  "progress": { "have": 0, "need": 1, "unit": "weapon" },
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "weapon"
+  },
   "badges": [
-    { "text": "2,800 Cryotic", "tone": "warn" },
-    { "text": "Argon decays daily", "tone": "warn" }
+    {
+      "text": "2,800 Cryotic",
+      "tone": "warn"
+    },
+    {
+      "text": "Argon decays daily",
+      "tone": "warn"
+    }
   ],
   "prices": [
-    { "label": "blueprint", "amount": "20,000 cr", "money": false },
-    { "label": "build", "amount": "20,000 cr", "money": false }
+    {
+      "label": "blueprint",
+      "amount": "20,000 cr",
+      "money": false
+    },
+    {
+      "label": "build",
+      "amount": "20,000 cr",
+      "money": false
+    }
   ],
   "materials": [
-    { "qty": "2,800", "label": "Cryotic", "note": null },
-    { "qty": "900", "label": "Polymer Bundle", "note": null },
-    { "qty": "2", "label": "Nitain Extract", "note": null },
-    { "qty": "2", "label": "Argon Crystal", "note": null },
-    { "qty": "40,000", "label": "Credits", "note": null }
+    {
+      "qty": "2,800",
+      "label": "Cryotic",
+      "note": null
+    },
+    {
+      "qty": "900",
+      "label": "Polymer Bundle",
+      "note": null
+    },
+    {
+      "qty": "2",
+      "label": "Nitain Extract",
+      "note": null
+    },
+    {
+      "qty": "2",
+      "label": "Argon Crystal",
+      "note": null
+    },
+    {
+      "qty": "40,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
+    {
+      "sub": null,
+      "activity": "reach MR 10",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Mastery Rank 10",
+          "note": "needed to equip it",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": [],
+      "type": "gate",
+      "place": "MASTERY RANK"
+    },
     {
       "type": "vendor",
       "place": "MARKET",
@@ -34,7 +97,13 @@
       "spends": [],
       "map": null,
       "rows": [
-        { "qty": null, "label": "Zhuge Blueprint", "note": null, "alt": null, "done": false }
+        {
+          "qty": null,
+          "label": "Zhuge Blueprint",
+          "note": null,
+          "alt": null,
+          "done": false
+        }
       ],
       "conditions": [],
       "bonuses": [],
@@ -61,7 +130,7 @@
           "done": false
         }
       ],
-      "conditions": ["Mastery Rank 10 to build and equip."],
+      "conditions": [],
       "bonuses": [],
       "disclosures": []
     }

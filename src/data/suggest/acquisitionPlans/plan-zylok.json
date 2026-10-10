@@ -4,89 +4,144 @@
   "effort": 3,
   "source": "shop",
   "tradeable": "unranked, recipient MR 6+",
-  "progress": { "have": 0, "need": 1, "unit": "weapon" },
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "weapon"
+  },
   "badges": [
-    { "text": "Baro Ki'Teer only", "tone": "warn" },
-    { "text": "500 Ducats", "tone": "info" }
+    {
+      "text": "Baro only",
+      "tone": "warn"
+    },
+    {
+      "text": "500 Ducats",
+      "tone": "info"
+    }
   ],
   "prices": [
-    { "label": "credits", "amount": "200,000 cr", "money": false },
-    { "label": "Ducats", "amount": "500", "money": false }
+    {
+      "label": "credits",
+      "amount": "200,000 cr",
+      "money": false
+    },
+    {
+      "label": "Ducats",
+      "amount": "500",
+      "money": false
+    }
   ],
-  "materials": [{ "qty": "200,000", "label": "Credits", "note": null }],
+  "materials": [
+    {
+      "qty": "200,000",
+      "label": "Credits",
+      "note": null
+    }
+  ],
   "groups": [
     {
-      "type": "currency",
-      "place": "VOID FISSURES, ANY",
       "sub": null,
-      "activity": "open relics, sell Prime parts for Ducats",
-      "meta": "stockpile ahead of Baro's visit",
+      "activity": "reach MR 6",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
-      "earns": { "currency": "Orokin Ducats", "amount": "500" },
+      "earns": null,
       "spends": [],
-      "map": "void",
+      "map": null,
       "rows": [
         {
           "qty": null,
-          "label": "fast fissures, take the Prime part",
-          "note": null,
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "200,000",
-          "label": "Credits",
-          "note": "Chroma with a credit booster, Profit-Taker or Index runs",
+          "label": "Mastery Rank 6",
+          "note": "needed to equip it",
           "alt": null,
           "done": false
         }
       ],
-      "conditions": [
-        "Ducats come only from trading Prime parts and blueprints at a Ducat Kiosk in a Relay.",
-        "Baro's stock is random, so spending Ducats on his other items can leave you short when the Zylok appears. Keep 500 Ducats and 200,000 credits in reserve."
-      ],
+      "conditions": [],
       "bonuses": [],
       "disclosures": [],
+      "type": "gate",
+      "place": "MASTERY RANK"
+    },
+    {
+      "sub": null,
+      "activity": "crack relics, sell Prime parts at a Relay Ducat Kiosk",
+      "meta": "bank it before Baro lands",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": {
+        "currency": "Orokin Ducats",
+        "amount": "500"
+      },
+      "spends": [],
+      "map": "void",
+      "rows": [
+        {
+          "qty": "500",
+          "label": "Orokin Ducats",
+          "note": "common parts 15, uncommon 45, rare 100",
+          "alt": {
+            "text": "or 100 Aya at Varzia, 5 Ducats each",
+            "spends": [
+              {
+                "currency": "Aya",
+                "amount": "100"
+              }
+            ]
+          },
+          "done": false
+        }
+      ],
+      "conditions": ["Ducats are untradeable; only the Prime parts that sell for them trade."],
+      "bonuses": [],
+      "disclosures": [],
+      "type": "currency",
+      "place": "VOID FISSURES, ANY",
       "ref": "Orokin Ducats"
     },
     {
-      "type": "vendor",
-      "place": "RELAY, CONCOURSE",
-      "sub": null,
-      "activity": "check Baro's rotating stock, then buy if listed",
-      "meta": "arrives every 2 weeks, stays 48h",
+      "sub": "Concourse",
+      "activity": "buy it on a visit that stocks it",
+      "meta": "every two weeks for 48 hours; stock rotates",
       "mode": null,
-      "live": { "state": "waiting", "text": "check the Ducat Kiosk countdown for his next relay" },
+      "live": {
+        "state": "waiting",
+        "text": "check the Ducat Kiosk countdown for his next relay"
+      },
       "skip": null,
       "earns": null,
       "spends": [
-        { "currency": "Orokin Ducats", "amount": "500" },
-        { "currency": "Credits", "amount": "200,000" }
+        {
+          "currency": "Orokin Ducats",
+          "amount": "500"
+        },
+        {
+          "currency": "Credits",
+          "amount": "200,000"
+        }
       ],
       "map": null,
       "rows": [
         {
           "qty": null,
           "label": "Zylok",
-          "note": "built; 200,000 credits + 500 Ducats, only when in his rotating stock",
+          "note": "arrives built, no blueprint or foundry step",
           "alt": null,
           "done": false
         }
       ],
-      "conditions": ["There is no blueprint or build time."],
+      "conditions": ["Baro's stock changes each visit, so it may be missing on the next one."],
       "bonuses": [],
       "disclosures": [
         {
-          "title": "how often it returns",
-          "body": "One tracker says it has come back about three times a year, three to four months apart. A rough pattern, not a promise."
-        },
-        {
           "title": "trading for it",
-          "body": "A Zylok can be traded only unranked with no Forma or Catalyst installed, and the receiver must be Mastery Rank 6 or higher. The Pyrus Project event that first handed it out is over."
+          "body": "A Zylok can be traded only unranked with no Forma or Catalyst installed, and the receiver must be Mastery Rank 6 or higher."
         }
-      ]
+      ],
+      "type": "vendor",
+      "place": "BARO KI'TEER, RELAY"
     }
   ]
 }

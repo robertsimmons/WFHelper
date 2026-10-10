@@ -4,10 +4,20 @@
   "effort": 1,
   "source": "shop",
   "tradeable": false,
-  "progress": { "have": 0, "need": 1, "unit": "weapon" },
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "weapon"
+  },
   "badges": [
-    { "text": "300 login days", "tone": "warn" },
-    { "text": "Daily Tribute", "tone": "info" }
+    {
+      "text": "300 login days",
+      "tone": "warn"
+    },
+    {
+      "text": "Daily Tribute",
+      "tone": "info"
+    }
   ],
   "prices": [],
   "groups": [
@@ -26,6 +36,13 @@
       "rows": [
         {
           "qty": null,
+          "label": "Mastery Rank 10",
+          "note": "needed to equip it",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
           "label": "Sigma & Octantis (login pick)",
           "note": "one of four weapon choices from Day 300 onward; reappears every 200 days if you pick something else",
           "alt": null,
@@ -34,8 +51,7 @@
       ],
       "conditions": [
         "Weapon milestones only start at Day 300; the Day 100 milestone offers Azima, Zenistar and Zenith only.",
-        "Daily Tribute counts total login days, not a consecutive streak, so missing a day only costs that day.",
-        "There is no confirmation prompt on the milestone pick, so a misclick locks in a different weapon for 200 days."
+        "Daily Tribute counts total login days, not a consecutive streak, so missing a day only costs that day."
       ],
       "bonuses": [
         "Arrives fully built with its own weapon slot and a pre-installed Orokin Catalyst.",
@@ -44,7 +60,7 @@
       "disclosures": [
         {
           "title": "the Simaris blueprint is a rebuy only",
-          "body": "Cephalon Simaris sells the blueprint for 100,000 Standing (30,000 credits, 4 Morphics, 450 Circuits, 500 Polymer Bundle, 2,750 Salvage, 1 day to build), but since Update 28.0 it only appears in his Offerings after you've already picked the weapon via Daily Tribute. It cannot skip the login wait, only get you a second copy after selling or losing the first."
+          "body": "Cephalon Simaris sells the blueprint for 100,000 Standing (30,000 credits, 4 Morphics, 450 Circuits, 500 Polymer Bundle, 2,750 Salvage, 1 day to build), but it appears in his Offerings only after you have picked the weapon via Daily Tribute, so it only gets you a second copy."
         }
       ]
     }

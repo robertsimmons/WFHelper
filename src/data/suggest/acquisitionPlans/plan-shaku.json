@@ -24,6 +24,31 @@
   ],
   "groups": [
     {
+      "type": "gate",
+      "place": "MASTERY RANK",
+      "sub": null,
+      "activity": null,
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Mastery Rank 10",
+          "note": "to equip Shaku",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
       "type": "vendor",
       "place": "CLAN DOJO, TENNO LAB",
       "sub": null,
@@ -38,9 +63,7 @@
       "rows": [
         { "qty": null, "label": "Shaku Blueprint", "note": null, "alt": null, "done": false }
       ],
-      "conditions": [
-        "Needs the Shaku researched in the Tenno Lab, which first needs Nami Skyla. Research runs 48h per step and cannot be rushed."
-      ],
+      "conditions": ["The Tenno Lab researches Shaku only after Nami Skyla."],
       "bonuses": [],
       "disclosures": []
     },
@@ -93,7 +116,6 @@
       ],
       "conditions": [
         "Shaku consumes the Ninkondi. Rank it to 30 first or lose its Mastery.",
-        "Ninkondi Prime does not substitute.",
         "Argon Crystals decay in storage; collect them close to the Ninkondi build."
       ],
       "bonuses": [],

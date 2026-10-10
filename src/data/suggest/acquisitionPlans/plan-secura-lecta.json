@@ -3,21 +3,28 @@
   "kind": "melee",
   "effort": 4,
   "source": "standing",
-  "tradeable": "unranked copies without Forma or Catalyst",
-  "progress": { "have": 0, "need": 1, "unit": "weapon" },
+  "tradeable": "unranked, no Forma or Catalyst",
+  "progress": { "have": 0, "need": 1, "unit": "purchase" },
   "badges": [
-    { "text": "125,000 standing", "tone": "warn" },
-    { "text": "Partner rank", "tone": "warn" }
+    {
+      "text": "Perrin Partner",
+      "tone": "warn",
+      "rank": { "syndicate": "The Perrin Sequence", "level": 5 }
+    },
+    { "text": "MR 8", "tone": "info" }
   ],
-  "prices": [{ "label": "purchase", "amount": "125,000 standing", "money": false }],
-  "materials": [{ "qty": "940,000", "label": "Credits", "note": null }],
+  "prices": [
+    { "label": "standing", "amount": "125,000", "money": false },
+    { "label": "credits", "amount": "940,000 cr", "money": false }
+  ],
+  "materials": [{ "qty": "940,000", "label": "Credits", "note": "rank-ups" }],
   "groups": [
     {
       "type": "gate",
-      "place": "ORBITER, SYNDICATES",
-      "sub": null,
-      "activity": "pledge to The Perrin Sequence",
-      "meta": "15% of all affinity converts to standing",
+      "place": "ORBITER",
+      "sub": "Syndicate console",
+      "activity": "reach Partner with The Perrin Sequence",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -27,88 +34,103 @@
       "rows": [
         {
           "qty": null,
-          "label": "The Perrin Sequence pledge",
-          "note": "every mission counts, no special missions",
+          "label": "Mastery Rank 8",
+          "note": "needed to buy it or take it in a trade",
           "alt": null,
           "done": false
+        },
+        {
+          "qty": null,
+          "label": "The Perrin Sequence Partner",
+          "note": "Rank 5",
+          "alt": null,
+          "done": false,
+          "rank": { "syndicate": "The Perrin Sequence", "level": 5 }
         }
       ],
-      "conditions": [
-        "New Loka is allied (+50% Perrin standing) and Arbiters of Hexis is opposed (-50%). Pledge Perrin or New Loka first.",
-        "Steel Meridian is Perrin's enemy (-100%): its standing drains every mission while you are pledged to Perrin or New Loka, uncapped by the daily cap. One player lost about 200,000 in a single mission at rank 5.",
-        "Standing can go negative down to the rank -2 floor (-44,000), which brings Eximus MOA hunters."
-      ],
-      "bonuses": ["You can swap pledges freely with no penalty."],
+      "conditions": [],
+      "bonuses": [],
       "disclosures": []
     },
     {
       "type": "currency",
-      "place": "ANY MISSION, ORBITER",
+      "place": "ANY MISSION",
       "sub": null,
-      "activity": "earn standing and rank up in the syndicate screen",
-      "meta": "the daily cap is the bottleneck",
+      "activity": "pledge The Perrin Sequence, earn standing from mission Affinity and Syndicate Medallions",
+      "meta": "365,000 standing total to Partner plus the whip",
       "mode": null,
       "live": null,
       "skip": null,
-      "earns": { "currency": "The Perrin Sequence Standing", "amount": "125,000" },
+      "earns": { "currency": "The Perrin Sequence Standing", "amount": "365,000" },
       "spends": [],
       "map": null,
       "rows": [
         {
-          "qty": null,
-          "label": "Initiation",
-          "note": "100 Polymer Bundle, 10,000 cr",
+          "qty": "100",
+          "label": "Polymer Bundle",
+          "note": "Initiation sacrifice",
           "alt": null,
           "done": false
         },
         {
-          "qty": "5,000",
-          "label": "Associate",
-          "note": "2 Detonite Ampule, 30,000 cr",
+          "qty": "2",
+          "label": "Detonite Ampule",
+          "note": "Rank 1 Associate sacrifice",
           "alt": null,
-          "done": false
+          "done": false,
+          "rank": { "syndicate": "The Perrin Sequence", "level": 1 }
         },
         {
-          "qty": "22,000",
-          "label": "Senior Associate",
-          "note": "1 Forma, 50,000 cr",
+          "qty": "1",
+          "label": "Forma",
+          "note": "Rank 2 Senior Associate sacrifice",
           "alt": null,
-          "done": false
+          "done": false,
+          "rank": { "syndicate": "The Perrin Sequence", "level": 2 }
         },
         {
-          "qty": "44,000",
-          "label": "Executive",
-          "note": "1 Orokin Reactor, 100,000 cr",
+          "qty": "1",
+          "label": "Orokin Reactor",
+          "note": "Rank 3 Executive sacrifice",
           "alt": null,
-          "done": false
+          "done": false,
+          "rank": { "syndicate": "The Perrin Sequence", "level": 3 }
         },
         {
-          "qty": "70,000",
-          "label": "Senior Executive",
-          "note": "2 Aya, 250,000 cr",
+          "qty": "2",
+          "label": "Aya",
+          "note": "Rank 4 Senior Executive sacrifice",
           "alt": null,
-          "done": false
+          "done": false,
+          "rank": { "syndicate": "The Perrin Sequence", "level": 4 }
         },
         {
-          "qty": "99,000",
-          "label": "Partner",
-          "note": "3 Aya, 500,000 cr",
+          "qty": "3",
+          "label": "Aya",
+          "note": "Rank 5 Partner sacrifice",
           "alt": null,
-          "done": false
+          "done": false,
+          "rank": { "syndicate": "The Perrin Sequence", "level": 5 }
         }
       ],
       "conditions": [
-        "The weapon costs 125,000, above the 99,000 Partner minimum, so you keep farming past the rank-up."
+        "Pledging Perrin drains Arbiters of Hexis (-50%) and Steel Meridian (-100%); spend any standing there first.",
+        "Rank up as soon as you can afford it; standing past a rank's maximum is wasted."
       ],
-      "bonuses": [],
-      "disclosures": [],
+      "bonuses": ["Perrin standing also gives New Loka +50%."],
+      "disclosures": [
+        {
+          "title": "why 365,000",
+          "body": "240,000 standing carries the five rank-ups to Partner (5,000 / 22,000 / 44,000 / 70,000 / 99,000), since each rank-up spends the standing it needs. The 125,000-standing whip is farmed on top."
+        }
+      ],
       "ref": "The Perrin Sequence Standing"
     },
     {
       "type": "vendor",
-      "place": "THE PERRIN SEQUENCE, ORBITER",
+      "place": "PERRIN SEQUENCE OFFERINGS, RELAY",
       "sub": null,
-      "activity": "buy the weapon at Partner",
+      "activity": "buy the whip",
       "meta": "125,000 standing",
       "mode": null,
       "live": null,
@@ -116,17 +138,20 @@
       "earns": null,
       "spends": [{ "currency": "The Perrin Sequence Standing", "amount": "125,000" }],
       "map": null,
-      "rows": [{ "qty": null, "label": "Secura Lecta", "note": null, "alt": null, "done": false }],
-      "conditions": [
-        "It cannot be picked as the free Partner reward; it is a separate standing purchase."
-      ],
-      "bonuses": ["Spending standing can drop your rank, which no longer matters once you own it."],
-      "disclosures": [
+      "rows": [
         {
-          "title": "the credit trait",
-          "body": "Hotfix 42.0.10 nerfed the stalled-gas multi-payout trick. It is now a modest credit bonus, about 2x at MR 8 rising to about 4x at MR 18 and capped."
+          "qty": null,
+          "label": "Secura Lecta",
+          "note": "arrives built, no Foundry step",
+          "alt": null,
+          "done": false
         }
-      ]
+      ],
+      "conditions": [
+        "The free item you pick at Partner can never be a Syndicate weapon; the Lecta is always a separate 125,000-standing purchase."
+      ],
+      "bonuses": [],
+      "disclosures": []
     }
   ]
 }

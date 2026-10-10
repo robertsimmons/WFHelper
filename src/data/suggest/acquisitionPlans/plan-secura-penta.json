@@ -3,24 +3,28 @@
   "kind": "primary",
   "effort": 4,
   "source": "standing",
-  "tradeable": "unranked only",
-  "progress": { "have": 0, "need": 1, "unit": "weapon" },
+  "tradeable": "unranked, no Forma or Catalyst",
+  "progress": { "have": 0, "need": 1, "unit": "purchase" },
   "badges": [
-    { "text": "Perrin Partner", "tone": "warn" },
+    {
+      "text": "Perrin Partner",
+      "tone": "warn",
+      "rank": { "syndicate": "The Perrin Sequence", "level": 5 }
+    },
     { "text": "MR 12", "tone": "info" }
   ],
   "prices": [
     { "label": "standing", "amount": "125,000", "money": false },
-    { "label": "rank-ups", "amount": "940,000 cr", "money": false }
+    { "label": "credits", "amount": "940,000 cr", "money": false }
   ],
-  "materials": [{ "qty": "940,000", "label": "Credits", "note": null }],
+  "materials": [{ "qty": "940,000", "label": "Credits", "note": "rank-ups" }],
   "groups": [
     {
       "type": "gate",
       "place": "ORBITER",
-      "sub": null,
-      "activity": "pledge to The Perrin Sequence at the Syndicate console",
-      "meta": "MR 12 to buy",
+      "sub": "Syndicate console",
+      "activity": "reach Partner with The Perrin Sequence",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -31,21 +35,20 @@
         {
           "qty": null,
           "label": "Mastery Rank 12",
-          "note": "required to purchase",
+          "note": "needed to buy it or take it in a trade",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
-          "label": "Perrin Sequence pledge",
-          "note": "15% of all affinity becomes standing",
+          "label": "The Perrin Sequence Partner",
+          "note": "Rank 5",
           "alt": null,
-          "done": false
+          "done": false,
+          "rank": { "syndicate": "The Perrin Sequence", "level": 5 }
         }
       ],
-      "conditions": [
-        "Pledging loses standing with Steel Meridian and Arbiters of Hexis. Changing pledge later costs another recovery."
-      ],
+      "conditions": [],
       "bonuses": [],
       "disclosures": []
     },
@@ -53,8 +56,8 @@
       "type": "currency",
       "place": "ANY MISSION",
       "sub": null,
-      "activity": "play normally pledged, then the three daily Perrin alerts",
-      "meta": "daily cap 16,000 plus 500 per Mastery Rank",
+      "activity": "pledge The Perrin Sequence, earn standing from mission Affinity and Syndicate Medallions",
+      "meta": "365,000 standing total to Partner plus the launcher",
       "mode": null,
       "live": null,
       "skip": null,
@@ -63,90 +66,71 @@
       "map": null,
       "rows": [
         {
-          "qty": "240,000",
-          "label": "rank-ups",
-          "note": "five rank-ups, each resetting standing to 0",
+          "qty": "100",
+          "label": "Polymer Bundle",
+          "note": "Initiation sacrifice",
           "alt": null,
           "done": false
         },
         {
-          "qty": "125,000",
-          "label": "Secura Penta",
-          "note": "bought at Partner",
+          "qty": "2",
+          "label": "Detonite Ampule",
+          "note": "Rank 1 Associate sacrifice",
           "alt": null,
-          "done": false
+          "done": false,
+          "rank": { "syndicate": "The Perrin Sequence", "level": 1 }
+        },
+        {
+          "qty": "1",
+          "label": "Forma",
+          "note": "Rank 2 Senior Associate sacrifice",
+          "alt": null,
+          "done": false,
+          "rank": { "syndicate": "The Perrin Sequence", "level": 2 }
+        },
+        {
+          "qty": "1",
+          "label": "Orokin Reactor",
+          "note": "Rank 3 Executive sacrifice",
+          "alt": null,
+          "done": false,
+          "rank": { "syndicate": "The Perrin Sequence", "level": 3 }
+        },
+        {
+          "qty": "2",
+          "label": "Aya",
+          "note": "Rank 4 Senior Executive sacrifice",
+          "alt": null,
+          "done": false,
+          "rank": { "syndicate": "The Perrin Sequence", "level": 4 }
+        },
+        {
+          "qty": "3",
+          "label": "Aya",
+          "note": "Rank 5 Partner sacrifice",
+          "alt": null,
+          "done": false,
+          "rank": { "syndicate": "The Perrin Sequence", "level": 5 }
         }
       ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": [],
+      "conditions": [
+        "Pledging Perrin drains Arbiters of Hexis (-50%) and Steel Meridian (-100%); spend any standing there first.",
+        "Rank up as soon as you can afford it; standing past a rank's maximum is wasted."
+      ],
+      "bonuses": ["Perrin standing also gives New Loka +50%."],
+      "disclosures": [
+        {
+          "title": "why 365,000",
+          "body": "240,000 standing carries the five rank-ups to Partner (5,000 / 22,000 / 44,000 / 70,000 / 99,000), since each rank-up spends the standing it needs. The 125,000-standing launcher is farmed on top."
+        }
+      ],
       "ref": "The Perrin Sequence Standing"
     },
     {
       "type": "vendor",
-      "place": "PERRIN SEQUENCE, ORBITER",
+      "place": "PERRIN SEQUENCE OFFERINGS, RELAY",
       "sub": null,
-      "activity": "rank up from Neutral to Partner",
-      "meta": "940,000 cr, 5 Aya",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [{ "currency": "The Perrin Sequence Standing", "amount": "240,000" }],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Initiation",
-          "note": "no standing, 10,000 cr, 100 Polymer Bundle",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Rank 1",
-          "note": "5,000 standing, 30,000 cr, 2 Detonite Ampule",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Rank 2",
-          "note": "22,000 standing, 50,000 cr, 1 Forma",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Rank 3",
-          "note": "44,000 standing, 100,000 cr, 1 Orokin Reactor",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Rank 4",
-          "note": "70,000 standing, 250,000 cr, 2 Aya",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Partner",
-          "note": "99,000 standing, 500,000 cr, 3 Aya",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": ["Each rank-up spends standing, credits and a sacrifice."],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "vendor",
-      "place": "PERRIN SEQUENCE, ORBITER",
-      "sub": null,
-      "activity": "buy the Secura Penta at Partner",
+      "activity": "buy the launcher",
       "meta": "125,000 standing",
       "mode": null,
       "live": null,
@@ -158,21 +142,16 @@
         {
           "qty": null,
           "label": "Secura Penta",
-          "note": "arrives built",
+          "note": "arrives built, no Foundry step",
           "alt": null,
           "done": false
         }
       ],
       "conditions": [
-        "Syndicate weapons cannot be the free pick from ranking up. You need 125,000, not a full rank 5 bar (132,000)."
+        "The free item you pick at Partner can never be a Syndicate weapon; the Penta is always a separate 125,000-standing purchase."
       ],
       "bonuses": [],
-      "disclosures": [
-        {
-          "title": "using it",
-          "body": "Napalm Grenades from Nightwave is what makes the Penta family usable and cannot pair with Tether Grenades, which Perrin sells at rank 4. Secura Penta beats Carmine Penta on stats."
-        }
-      ]
+      "disclosures": []
     }
   ]
 }

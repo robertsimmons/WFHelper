@@ -7,7 +7,7 @@
   "progress": { "have": 0, "need": 1, "unit": "weapon" },
   "badges": [
     { "text": "Energy Lab", "tone": "warn" },
-    { "text": "10 Fieldron Samples", "tone": "info" }
+    { "text": "MR 6", "tone": "info" }
   ],
   "prices": [
     { "label": "blueprint", "amount": "15,000 cr", "money": false },
@@ -21,6 +21,31 @@
     { "qty": "35,000", "label": "Credits", "note": null }
   ],
   "groups": [
+    {
+      "type": "gate",
+      "place": "MASTERY RANK",
+      "sub": null,
+      "activity": null,
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Mastery Rank 6",
+          "note": "to equip it",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
     {
       "type": "vendor",
       "place": "CLAN DOJO, ENERGY LAB",
@@ -61,7 +86,7 @@
           "done": false
         }
       ],
-      "conditions": ["Mastery Rank 6 to equip."],
+      "conditions": [],
       "bonuses": [],
       "disclosures": []
     }

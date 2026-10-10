@@ -3,28 +3,58 @@
   "kind": "melee",
   "effort": 4,
   "source": "standing",
-  "tradeable": true,
-  "progress": { "have": 0, "need": 4, "unit": "pieces" },
+  "tradeable": "parts and blueprint only",
+  "progress": {
+    "have": 0,
+    "need": 4,
+    "unit": "pieces"
+  },
   "badges": [
-    { "text": "Invasion RNG", "tone": "warn" },
-    { "text": "Naberus shop, October", "tone": "info" }
+    {
+      "text": "Invasion RNG",
+      "tone": "warn"
+    },
+    {
+      "text": "Nights of Naberus shop",
+      "tone": "info"
+    }
   ],
   "prices": [
-    { "label": "blueprint", "amount": "125 Mother Tokens", "money": false },
-    { "label": "each part", "amount": "25 Mother Tokens", "money": false },
-    { "label": "build", "amount": "20,000 cr", "money": false }
+    {
+      "label": "blueprint",
+      "amount": "125 Mother Tokens",
+      "money": false
+    },
+    {
+      "label": "each part",
+      "amount": "25 Mother Tokens",
+      "money": false
+    },
+    {
+      "label": "build",
+      "amount": "20,000 cr",
+      "money": false
+    }
   ],
   "materials": [
-    { "qty": "200", "label": "Mother Token", "note": null },
-    { "qty": "20,000", "label": "Credits", "note": null }
+    {
+      "qty": "200",
+      "label": "Mother Token",
+      "note": null
+    },
+    {
+      "qty": "20,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
     {
       "type": "gate",
-      "place": "DEIMOS",
+      "place": "QUESTS, MASTERY RANK",
       "sub": null,
-      "activity": "The War Within quest",
-      "meta": "opens Deimos and the Cambion Drift",
+      "activity": null,
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -32,7 +62,20 @@
       "spends": [],
       "map": null,
       "rows": [
-        { "qty": null, "label": "The War Within", "note": null, "alt": null, "done": false }
+        {
+          "qty": null,
+          "label": "Heart of Deimos",
+          "note": "unlocks the Necralisk, where Daughter sells it",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Mastery Rank 5",
+          "note": "to equip Sheev",
+          "alt": null,
+          "done": false
+        }
       ],
       "conditions": [],
       "bonuses": [],
@@ -43,12 +86,17 @@
       "place": "DAUGHTER, NECRALISK",
       "sub": null,
       "activity": "buy the blueprint and all three parts",
-      "meta": "200 Mother Tokens, Nights of Naberus only",
+      "meta": "200 Mother Tokens",
       "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Mother Token", "amount": "200" }],
+      "spends": [
+        {
+          "currency": "Mother Token",
+          "amount": "200"
+        }
+      ],
       "map": "necralisk",
       "rows": [
         {
@@ -80,12 +128,12 @@
           "done": false
         }
       ],
-      "conditions": ["Only open during the October Nights of Naberus event, which reruns yearly."],
+      "conditions": ["Daughter sells these only during the Nights of Naberus event."],
       "bonuses": [],
       "disclosures": [
         {
           "title": "the Invasion route",
-          "body": "Outside October, the blueprint and each part are Grineer-side Invasion rewards at 1.11% apiece, about 4.4% per payout for any piece; watch invasions. Side with the Grineer, never the Corpus; a Sheev part often shares an invasion with a Corpus-side reward. Completing the invasion's third mission is what pays out, and more missions add nothing."
+          "body": "Outside the event, the blueprint and each part are Grineer-side Invasion rewards at 1.11% apiece, about 4.4% per payout for any piece. An invasion pays after 3 missions for the side you chose."
         }
       ]
     },
@@ -113,6 +161,20 @@
       "conditions": [],
       "bonuses": [],
       "disclosures": []
+    }
+  ],
+  "routes": [
+    {
+      "name": "Nights of Naberus shop",
+      "cost": "200 Mother Tokens buy the blueprint and all three parts, only during the event",
+      "effort": 4,
+      "role": "chosen"
+    },
+    {
+      "name": "Grineer Invasions",
+      "cost": "each of the four pieces is a 1.11% Grineer-side reward, 3 missions per invasion",
+      "effort": 6,
+      "role": null
     }
   ]
 }

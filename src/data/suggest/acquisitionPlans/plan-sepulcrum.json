@@ -6,87 +6,188 @@
   "tradeable": false,
   "progress": { "have": 0, "need": 3, "unit": "parts" },
   "badges": [
-    { "text": "Rank 3 for Xenorhast", "tone": "warn" },
-    { "text": "Heciphron mining", "tone": "warn" }
+    {
+      "text": "Entrati Associate",
+      "tone": "warn",
+      "rank": { "syndicate": "Entrati", "level": 3 }
+    },
+    { "text": "MR 14", "tone": "info" }
   ],
   "prices": [
-    { "label": "blueprints", "amount": "18,000 Entrati Standing", "money": false },
+    { "label": "blueprints", "amount": "8,000 Entrati Standing", "money": false },
     { "label": "build", "amount": "60,000 cr", "money": false }
   ],
   "materials": [
-    { "qty": "5", "label": "Morphics", "note": "Barrel" },
-    { "qty": "1,000", "label": "Salvage", "note": "Travocyte Alloy refines" },
-    { "qty": "200", "label": "Plastids", "note": "Travocyte Alloy refines" },
-    { "qty": "800", "label": "Ferrite", "note": "Coprite Alloy refines" },
-    { "qty": "100", "label": "Rubedo", "note": "Coprite Alloy refines" },
+    { "qty": "30", "label": "Travocyte Alloy", "note": "Barrel" },
+    { "qty": "40", "label": "Coprite Alloy", "note": "Receiver" },
     { "qty": "10", "label": "Purified Heciphron", "note": "Barrel and Receiver" },
     { "qty": "2", "label": "Trapezium Xenorhast", "note": "Receiver" },
     { "qty": "20", "label": "Pustulent Cognitive Nodule", "note": "Barrel" },
     { "qty": "20", "label": "Dendrite Blastoma", "note": "Receiver" },
-    { "qty": "30", "label": "Travocyte Alloy", "note": "Barrel" },
-    { "qty": "40", "label": "Coprite Alloy", "note": "Receiver" },
+    { "qty": "5", "label": "Morphics", "note": "Barrel" },
     { "qty": "1", "label": "Seriglass Shard", "note": null },
     { "qty": "60,000", "label": "Credits", "note": null }
   ],
   "groups": [
     {
-      "type": "currency",
-      "place": "NECRALISK, DEIMOS",
+      "type": "gate",
+      "place": "MASTERY RANK, ENTRATI",
       "sub": null,
-      "activity": "rank up with the Entrati to Associate (Rank 3)",
-      "meta": "44,000 cumulative standing",
+      "activity": null,
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
-      "earns": { "currency": "Entrati Standing", "amount": "44,000" },
+      "earns": null,
       "spends": [],
       "map": null,
       "rows": [
         {
-          "qty": "44,000",
-          "label": "rank-ups to Associate",
-          "note": "cumulative standing",
+          "qty": null,
+          "label": "Mastery Rank 14",
+          "note": "to equip it",
           "alt": null,
           "done": false
+        },
+        {
+          "qty": null,
+          "label": "Entrati Associate",
+          "note": "Rank 2 Acquaintance opens the blueprints; the Receiver needs Trapezium Xenorhast, whose blueprint opens at Rank 3",
+          "alt": null,
+          "done": false,
+          "rank": { "syndicate": "Entrati", "level": 3 }
         }
       ],
-      "conditions": [
-        "Rank 2 alone unlocks Sepulcrum's purchase, but the Receiver can't be built until Rank 3 opens Otak's Xenorhast blueprint, so plan for Rank 3 from the start."
-      ],
+      "conditions": [],
       "bonuses": [],
-      "disclosures": [],
+      "disclosures": []
+    },
+    {
+      "type": "currency",
+      "place": "NECRALISK, DEIMOS",
+      "sub": null,
+      "activity": "rank up with the Entrati to Associate, then buy the blueprints",
+      "meta": "79,000 standing: 71,000 for the rank-ups, 8,000 for the blueprints",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": { "currency": "Entrati Standing", "amount": "79,000" },
+      "spends": [],
+      "map": "necralisk",
+      "rows": [
+        {
+          "qty": "6",
+          "label": "Benign Infested Tumor",
+          "note": "Rank 1 Stranger sacrifice",
+          "alt": null,
+          "done": false,
+          "rank": { "syndicate": "Entrati", "level": 1 }
+        },
+        {
+          "qty": "6",
+          "label": "Ferment Bladder",
+          "note": "Rank 1 Stranger sacrifice",
+          "alt": null,
+          "done": false,
+          "rank": { "syndicate": "Entrati", "level": 1 }
+        },
+        {
+          "qty": "1",
+          "label": "Keratinos Blade Blueprint",
+          "note": "Rank 2 Acquaintance sacrifice",
+          "alt": null,
+          "done": false,
+          "rank": { "syndicate": "Entrati", "level": 2 }
+        },
+        {
+          "qty": "1",
+          "label": "Father Token",
+          "note": "Rank 2 Acquaintance sacrifice",
+          "alt": null,
+          "done": false,
+          "rank": { "syndicate": "Entrati", "level": 2 }
+        },
+        {
+          "qty": "1",
+          "label": "Daughter Token",
+          "note": "Rank 2 Acquaintance sacrifice",
+          "alt": null,
+          "done": false,
+          "rank": { "syndicate": "Entrati", "level": 2 }
+        },
+        {
+          "qty": "3",
+          "label": "Sly Vulpaphyla Tag",
+          "note": "Rank 3 Associate sacrifice",
+          "alt": null,
+          "done": false,
+          "rank": { "syndicate": "Entrati", "level": 3 }
+        },
+        {
+          "qty": "3",
+          "label": "Vizier Predasite Tag",
+          "note": "Rank 3 Associate sacrifice",
+          "alt": null,
+          "done": false,
+          "rank": { "syndicate": "Entrati", "level": 3 }
+        },
+        {
+          "qty": "1",
+          "label": "Mother Token",
+          "note": "Rank 3 Associate sacrifice",
+          "alt": null,
+          "done": false,
+          "rank": { "syndicate": "Entrati", "level": 3 }
+        },
+        {
+          "qty": "1",
+          "label": "Son Token",
+          "note": "Rank 3 Associate sacrifice",
+          "alt": null,
+          "done": false,
+          "rank": { "syndicate": "Entrati", "level": 3 }
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": [
+        {
+          "title": "why 79,000",
+          "body": "The rank-ups cost 5,000, 22,000 and 44,000 standing, and each rank-up spends the standing it needs. Father's blueprints add 8,000, or 4,000 if you take the Sepulcrum Blueprint as the free Rank 2 reward."
+        }
+      ],
       "ref": "Entrati Standing"
     },
     {
       "type": "vendor",
       "place": "FATHER, NECRALISK",
       "sub": null,
-      "activity": "buy blueprints",
-      "meta": "8,000 standing at Rank 2 Acquaintance",
+      "activity": "buy the blueprints at Rank 2 Acquaintance",
+      "meta": "8,000 standing",
       "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
       "spends": [{ "currency": "Entrati Standing", "amount": "8,000" }],
-      "map": null,
+      "map": "necralisk",
       "rows": [
         {
           "qty": null,
           "label": "Sepulcrum Blueprint",
           "note": "4,000 standing",
-          "alt": "claim as the free Rank 2 rank-up reward",
+          "alt": "or take it as the free Rank 2 reward",
           "done": false
         },
         {
           "qty": null,
-          "label": "Barrel Blueprint",
+          "label": "Sepulcrum Barrel Blueprint",
           "note": "2,000 standing",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
-          "label": "Receiver Blueprint",
+          "label": "Sepulcrum Receiver Blueprint",
           "note": "2,000 standing",
           "alt": null,
           "done": false
@@ -95,71 +196,6 @@
       "conditions": [],
       "bonuses": [],
       "disclosures": []
-    },
-    {
-      "type": "vendor",
-      "place": "OTAK, NECRALISK",
-      "sub": null,
-      "activity": "buy refining blueprints",
-      "meta": "10,000 standing total",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [{ "currency": "Entrati Standing", "amount": "10,000" }],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Purified Heciphron Blueprint",
-          "note": "2,000 standing, Rank 1 Neutral; makes 10 per build",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Trapezium Xenorhast Blueprint",
-          "note": "8,000 standing, Rank 3 Associate; makes 3 per build",
-          "alt": "tradeable; buy the refined gem directly to skip Rank 3",
-          "done": false
-        }
-      ],
-      "conditions": [
-        "The Sepulcrum wiki page still lists Isolation Vault bounties as a Xenorhast source, but Hotfix 29.5.9 removed rare Deimos gems from those tables; mine it instead."
-      ],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "currency",
-      "place": "GRANDMOTHER, NECRALISK",
-      "sub": null,
-      "activity": "trade family tokens up to Grandmother Tokens",
-      "meta": "10 Grandmother Tokens buys the single Seriglass Shard",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "10",
-          "label": "Grandmother Token",
-          "note": "200 Mother Tokens, or 40 Father/Daughter/Otak Tokens",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Grandmother's 'Mend the Family' trades cycle every 8 hours and hand out family tokens for spare Deimos resources, gems and fish parts.",
-        "Budget one Seriglass Shard here; the Entrati Rank 5 sacrifice eats a separate one."
-      ],
-      "bonuses": [
-        "Stockpile Grandmother Tokens instead of cashing every family token for standing."
-      ],
-      "disclosures": [],
-      "ref": "Grandmother Token"
     },
     {
       "type": "foundry",
@@ -176,14 +212,14 @@
       "rows": [
         {
           "qty": null,
-          "label": "Barrel",
+          "label": "Sepulcrum Barrel",
           "note": "20,000 cr, 30 Travocyte Alloy, 5 Purified Heciphron, 20 Pustulent Cognitive Nodule, 5 Morphics",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
-          "label": "Receiver",
+          "label": "Sepulcrum Receiver",
           "note": "20,000 cr, 40 Coprite Alloy, 5 Purified Heciphron, 20 Dendrite Blastoma, 2 Trapezium Xenorhast",
           "alt": null,
           "done": false
@@ -196,10 +232,7 @@
           "done": false
         }
       ],
-      "conditions": [
-        "Explosions self-stagger at close range; plan a stagger-immunity solution before using it point-blank.",
-        "Ammo is tight."
-      ],
+      "conditions": [],
       "bonuses": [],
       "disclosures": []
     }

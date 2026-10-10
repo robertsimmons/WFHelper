@@ -4,25 +4,101 @@
   "effort": 6,
   "source": "shop",
   "tradeable": false,
-  "progress": { "have": 0, "need": 30000, "unit": "Cryotic" },
+  "progress": {
+    "have": 0,
+    "need": 30000,
+    "unit": "Cryotic"
+  },
   "badges": [
-    { "text": "30,000 Cryotic", "tone": "warn" },
-    { "text": "Magistar consumed", "tone": "info" }
+    {
+      "text": "30,000 Cryotic",
+      "tone": "warn"
+    },
+    {
+      "text": "Magistar consumed",
+      "tone": "info"
+    }
   ],
   "prices": [
-    { "label": "Sibear blueprint", "amount": "15,000 cr", "money": false },
-    { "label": "Magistar blueprint", "amount": "25,000 cr", "money": false },
-    { "label": "build", "amount": "30,000 cr", "money": false }
+    {
+      "label": "Sibear blueprint",
+      "amount": "15,000 cr",
+      "money": false
+    },
+    {
+      "label": "Magistar blueprint",
+      "amount": "25,000 cr",
+      "money": false
+    },
+    {
+      "label": "Magistar build",
+      "amount": "25,000 cr",
+      "money": false
+    },
+    {
+      "label": "Sibear build",
+      "amount": "30,000 cr",
+      "money": false
+    }
   ],
   "materials": [
-    { "qty": "30,000", "label": "Cryotic", "note": null },
-    { "qty": "50,080", "label": "Alloy Plate", "note": "Sibear 50,000, Magistar 80" },
-    { "qty": "750", "label": "Ferrite", "note": "Magistar" },
-    { "qty": "300", "label": "Rubedo", "note": "Magistar" },
-    { "qty": "3", "label": "Gallium", "note": "Magistar" },
-    { "qty": "70,000", "label": "Credits", "note": null }
+    {
+      "qty": "30,000",
+      "label": "Cryotic",
+      "note": null
+    },
+    {
+      "qty": "50,080",
+      "label": "Alloy Plate",
+      "note": "Sibear 50,000, Magistar 80"
+    },
+    {
+      "qty": "750",
+      "label": "Ferrite",
+      "note": "Magistar"
+    },
+    {
+      "qty": "300",
+      "label": "Rubedo",
+      "note": "Magistar"
+    },
+    {
+      "qty": "3",
+      "label": "Gallium",
+      "note": "Magistar"
+    },
+    {
+      "qty": "95,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
+    {
+      "type": "gate",
+      "place": "MASTERY RANK",
+      "sub": null,
+      "activity": null,
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Mastery Rank 6",
+          "note": "to equip Sibear",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
     {
       "type": "vendor",
       "place": "MARKET",
@@ -60,7 +136,7 @@
       "place": "FOUNDRY",
       "sub": null,
       "activity": "build Magistar, rank it to 30",
-      "meta": null,
+      "meta": "12h",
       "mode": null,
       "live": null,
       "skip": null,
@@ -71,7 +147,7 @@
         {
           "qty": null,
           "label": "Magistar",
-          "note": "3 Gallium, 750 Ferrite, 300 Rubedo, 80 Alloy Plate",
+          "note": "25,000 cr, 3 Gallium, 750 Ferrite, 300 Rubedo, 80 Alloy Plate",
           "alt": null,
           "done": false
         }
@@ -85,7 +161,7 @@
       "place": "FOUNDRY",
       "sub": null,
       "activity": "build Sibear",
-      "meta": "12h, 30,000 cr",
+      "meta": "12h",
       "mode": null,
       "live": null,
       "skip": null,
@@ -96,7 +172,7 @@
         {
           "qty": null,
           "label": "Sibear",
-          "note": "Magistar, 30,000 Cryotic, 50,000 Alloy Plate",
+          "note": "30,000 cr, Magistar, 30,000 Cryotic, 50,000 Alloy Plate",
           "alt": null,
           "done": false
         }

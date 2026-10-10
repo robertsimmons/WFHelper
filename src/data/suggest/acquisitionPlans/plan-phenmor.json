@@ -4,26 +4,66 @@
   "effort": 6,
   "source": "standing",
   "tradeable": "blueprint only",
-  "progress": { "have": 0, "need": 1, "unit": "blueprint" },
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "blueprint"
+  },
   "badges": [
-    { "text": "Holdfasts Rank 2", "tone": "warn" },
-    { "text": "MR 14", "tone": "info" }
+    {
+      "text": "Holdfasts Rank 2",
+      "tone": "warn",
+      "rank": {
+        "syndicate": "The Holdfasts",
+        "level": 2
+      }
+    },
+    {
+      "text": "MR 14",
+      "tone": "info"
+    }
   ],
-  "prices": [{ "label": "blueprint", "amount": "6,000 Holdfasts Standing", "money": false }],
+  "prices": [
+    {
+      "label": "blueprint",
+      "amount": "6,000 Holdfasts Standing",
+      "money": false
+    }
+  ],
   "materials": [
-    { "qty": "6,000", "label": "Alloy Plate", "note": null },
-    { "qty": "15", "label": "Voidplume Pinion", "note": "build requirement" },
-    { "qty": "20", "label": "Voidplume Quill", "note": "build requirement" },
-    { "qty": "15", "label": "Entrati Lanthorn", "note": "build requirement" },
-    { "qty": "30,000", "label": "Credits", "note": null }
+    {
+      "qty": "6,000",
+      "label": "Alloy Plate",
+      "note": null
+    },
+    {
+      "qty": "15",
+      "label": "Voidplume Pinion",
+      "note": null
+    },
+    {
+      "qty": "20",
+      "label": "Voidplume Quill",
+      "note": null
+    },
+    {
+      "qty": "15",
+      "label": "Entrati Lanthorn",
+      "note": null
+    },
+    {
+      "qty": "30,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
     {
       "type": "gate",
-      "place": "QUESTS",
+      "place": "MASTERY RANK, QUESTS",
       "sub": null,
-      "activity": "unlock the Zariman and The Holdfasts",
-      "meta": "The New War → Angels of the Zariman",
+      "activity": "reach MR 14 and finish Angels of the Zariman",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -33,15 +73,15 @@
       "rows": [
         {
           "qty": null,
-          "label": "The New War",
-          "note": "quest prerequisite",
+          "label": "Mastery Rank 14",
+          "note": "needed to equip it; the Foundry still builds it earlier",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Angels of the Zariman",
-          "note": "unlocks Chrysalith",
+          "note": "unlocks the Chrysalith and The Holdfasts; needs The New War",
           "alt": null,
           "done": false
         }
@@ -52,35 +92,46 @@
     },
     {
       "type": "currency",
-      "place": "HALAKO PERIMETER, ZARIMAN",
-      "sub": "Chrysalith: turn Voidplumes in to Archimedean Yonta",
-      "activity": "Exterminate, wake the Angel, then sweep the map",
-      "meta": "~15 dormant Angels for the build",
-      "mode": "public squad",
+      "place": "ZARIMAN TEN ZERO",
+      "sub": "The Holdfasts",
+      "activity": "rank up to Watcher (Rank 2)",
+      "meta": "27,000 standing, 35,000 cr",
+      "mode": null,
       "live": null,
       "skip": null,
-      "earns": { "currency": "Holdfasts Standing", "amount": "6,000" },
+      "earns": {
+        "currency": "Holdfasts Standing",
+        "amount": "33,000"
+      },
       "spends": [],
       "map": null,
       "rows": [
         {
           "qty": null,
-          "label": "Voidplumes turned in to Archimedean Yonta",
-          "note": "Pinion 5,000, Quill 2,500, Crest 2,000, Vane 1,000, Down 500 standing each",
+          "label": "Rank 1, Fallen",
+          "note": "5,000 standing, 10,000 cr, 2,000 Alloy Plate, 2,000 Ferrite, 5 Voidplume Down",
           "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Rank 0 → 1 costs 5,000 standing plus 5 Voidplume Down; Rank 1 → 2 costs 22,000 standing plus 10 Voidplume Vane and 10 Voidgel Orb. The blueprint then costs 6,000 standing."
-      ],
-      "bonuses": [],
-      "disclosures": [
+          "done": false,
+          "rank": {
+            "syndicate": "The Holdfasts",
+            "level": 1
+          }
+        },
         {
-          "title": "Pinions set the practical pace",
-          "body": "The rank gate is short compared with the 15 Pinions. Plan on about 15 Zariman missions with a dormant Angel; this is a long evening or two of focused runs, assuming no host migration losses."
+          "qty": null,
+          "label": "Rank 2, Watcher",
+          "note": "22,000 standing, 25,000 cr, 5,000 Alloy Plate, 10 Voidgel Orb, 10 Voidplume Vane",
+          "alt": null,
+          "done": false,
+          "rank": {
+            "syndicate": "The Holdfasts",
+            "level": 2
+          }
         }
       ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": [],
       "ref": "Holdfasts Standing"
     },
     {
@@ -93,20 +144,23 @@
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Holdfasts Standing", "amount": "6,000" }],
+      "spends": [
+        {
+          "currency": "Holdfasts Standing",
+          "amount": "6,000"
+        }
+      ],
       "map": null,
       "rows": [
         {
           "qty": null,
           "label": "Phenmor Blueprint",
-          "note": "tradeable",
-          "alt": "trade from another player",
+          "note": null,
+          "alt": null,
           "done": false
         }
       ],
-      "conditions": [
-        "Trading the blueprint bypasses the Rank 2 purchase, but it does not avoid the 15 Pinions and other Zariman build materials."
-      ],
+      "conditions": [],
       "bonuses": [],
       "disclosures": []
     },
@@ -115,7 +169,7 @@
       "place": "FOUNDRY",
       "sub": null,
       "activity": "build Phenmor",
-      "meta": "24h, MR 14 to equip",
+      "meta": "24h",
       "mode": null,
       "live": null,
       "skip": null,
@@ -131,9 +185,7 @@
           "done": false
         }
       ],
-      "conditions": [
-        "You may craft Phenmor before Mastery Rank 14, but cannot equip it until then."
-      ],
+      "conditions": [],
       "bonuses": [],
       "disclosures": []
     },
@@ -189,18 +241,11 @@
       "conditions": [
         "Evolution II only counts Incarnon-form kills: charge the gauge with weakpoint hits, use alt-fire to transmute, then kill Eximus units.",
         "Evolution III uses base-form primary fire. Stack magazine size and multishot, reduce damage so the Angel survives, and use Mag's Magnetize or another crowd-control ability to keep shots on its head.",
-        "The Evolution III streak resets on reload and does not persist between missions. Client progress can fail to register, so run solo if a challenge stalls.",
+        "The Evolution III streak resets on reload and does not persist between missions.",
         "Evolution V requires an Incarnon primary, secondary, and melee in one solo mission; Exalted weapons do not qualify."
       ],
-      "bonuses": [
-        "For the common Devouring Attrition build, avoid raising critical chance: its +2000% damage proc triggers on non-critical hits."
-      ],
-      "disclosures": [
-        {
-          "title": "Evolution III is the real wall",
-          "body": "The Angel headshot challenge is much harder than acquiring the rifle without a purpose-built setup. A high magazine, multishot, low-damage base-form build plus Magnetize makes all 20 headshots practical in one Angel fight."
-        }
-      ]
+      "bonuses": [],
+      "disclosures": []
     }
   ]
 }

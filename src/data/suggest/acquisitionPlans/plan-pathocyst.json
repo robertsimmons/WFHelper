@@ -4,24 +4,73 @@
   "effort": 4,
   "source": "boss",
   "tradeable": "blueprint and parts",
-  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "progress": {
+    "have": 0,
+    "need": 4,
+    "unit": "parts"
+  },
   "badges": [
-    { "text": "needs 2 Blades", "tone": "warn" },
-    { "text": "MR 9", "tone": "info" }
+    {
+      "text": "needs 2 Blades",
+      "tone": "warn"
+    },
+    {
+      "text": "MR 9",
+      "tone": "info"
+    }
   ],
-  "prices": [{ "label": "build", "amount": "30,000 cr", "money": false }],
+  "prices": [
+    {
+      "label": "build",
+      "amount": "30,000 cr",
+      "money": false
+    }
+  ],
   "materials": [
-    { "qty": "5", "label": "Neurodes", "note": null },
-    { "qty": "30,000", "label": "Credits", "note": null }
+    {
+      "qty": "5",
+      "label": "Neurodes",
+      "note": null
+    },
+    {
+      "qty": "30,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
+    {
+      "type": "gate",
+      "place": "MASTERY RANK",
+      "sub": null,
+      "activity": "reach MR 9",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Mastery Rank 9",
+          "note": "needed to equip it",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
     {
       "type": "boss",
       "place": "EXEQUIAS, DEIMOS",
       "sub": "Zealoid Prelate",
       "activity": "Assassination",
-      "meta": "about 7 kills on average, 5-10 min each",
-      "mode": "normal, solo is often faster",
+      "meta": "about 7 kills on average",
+      "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
@@ -52,15 +101,10 @@
       ],
       "conditions": [
         "The recipe needs 2 Blades, so one of each part doesn't finish the farm.",
-        "Unlocked by clearing Terrorem; no key is needed.",
-        "Steel Path doesn't improve the drops and makes the boss much tankier.",
         "Desecrate and Pilfering Swarm do nothing to the Prelate.",
         "The part shows as \"?\" until the mission ends, so finish every run."
       ],
-      "bonuses": [
-        "Revenant's Enthrall or Nyx's Mind Control on the Prelate in phase 1 skips straight to phase 2.",
-        "Sell spare Blueprints and Subcortexes to other players."
-      ],
+      "bonuses": [],
       "disclosures": [
         {
           "title": "the fight",

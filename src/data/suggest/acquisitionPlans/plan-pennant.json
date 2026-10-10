@@ -3,26 +3,62 @@
   "kind": "melee",
   "effort": 3,
   "source": "railjack",
-  "tradeable": true,
-  "progress": { "have": 0, "need": 1, "unit": "blueprint" },
+  "tradeable": "blueprint only",
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "blueprint"
+  },
   "badges": [
-    { "text": "Railjack required", "tone": "warn" },
-    { "text": "tradeable blueprint", "tone": "info" }
+    {
+      "text": "Railjack required",
+      "tone": "warn"
+    },
+    {
+      "text": "tradeable blueprint",
+      "tone": "info"
+    }
   ],
-  "prices": [{ "label": "build", "amount": "30,000 cr", "money": false }],
+  "prices": [
+    {
+      "label": "build",
+      "amount": "30,000 cr",
+      "money": false
+    }
+  ],
   "materials": [
-    { "qty": "2", "label": "Tellurium", "note": null },
-    { "qty": "2,100", "label": "Rubedo", "note": null },
-    { "qty": "1,550", "label": "Polymer Bundle", "note": null },
-    { "qty": "5,300", "label": "Ferrite", "note": null },
-    { "qty": "30,000", "label": "Credits", "note": null }
+    {
+      "qty": "2",
+      "label": "Tellurium",
+      "note": null
+    },
+    {
+      "qty": "2,100",
+      "label": "Rubedo",
+      "note": null
+    },
+    {
+      "qty": "1,550",
+      "label": "Polymer Bundle",
+      "note": null
+    },
+    {
+      "qty": "5,300",
+      "label": "Ferrite",
+      "note": null
+    },
+    {
+      "qty": "30,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
     {
       "type": "gate",
       "place": "RAILJACK",
       "sub": null,
-      "activity": "own a Railjack or crew slot; rank Intrinsics for the target node",
+      "activity": "own a Railjack, then reach MR 7",
       "meta": null,
       "mode": null,
       "live": null,
@@ -33,41 +69,30 @@
       "rows": [
         {
           "qty": null,
-          "label": "own Railjack or a crew slot",
-          "note": null,
+          "label": "Rising Tide",
+          "note": "builds the Railjack; needs The War Within",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
-          "label": "Intrinsics Rank 3 (Tactical)",
-          "note": "for Kasio's Rest, Saturn Proxima",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Intrinsics Rank 7 + Chimera Prologue",
-          "note": "for Flexa, Veil Proxima",
+          "label": "Mastery Rank 7",
+          "note": "needed to equip it",
           "alt": null,
           "done": false
         }
       ],
-      "conditions": [
-        "Korm's Belt (Earth Proxima) needs no Intrinsics gate, but its Galleon only spawns on some loads: check the objective list before committing."
-      ],
-      "bonuses": [
-        "Killing the captain rush-style still earns roughly 1 Intrinsic point per kill, so this farm doubles as progress toward the Intrinsics 7 gate."
-      ],
+      "conditions": [],
+      "bonuses": [],
       "disclosures": []
     },
     {
       "type": "boss",
       "place": "KASIO'S REST, SATURN PROXIMA",
-      "sub": "Asteroid Base, always spawns a commander",
-      "activity": "rush to the commander, kill, check the drop, abort if nothing",
-      "meta": "7.31% per weapon, ~13 kills expected",
-      "mode": "solo, rush and abort",
+      "sub": "Asteroid Assassinate",
+      "activity": "kill the target, check the drop, abort and retry if it's empty",
+      "meta": "7.31% per kill, about 14 kills expected",
+      "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
@@ -77,25 +102,14 @@
         {
           "qty": null,
           "label": "Pennant Blueprint",
-          "note": "7.31%, Glacik or Lektro Commander",
+          "note": "7.31% from a Blite Captain, Glacik Commander, Lektro Commander or Pyr Captain",
           "alt": null,
           "done": false
         }
       ],
-      "conditions": [
-        "Loot abilities (Desecrate, Pilfering Swarm, Prowl, Ore Gaze, Pilfering Strangledome, Retrieve) don't work on these targets: there's no double-dip.",
-        "Rush the target and check the drop; abort immediately if it doesn't drop, since fighter/crewship objectives don't matter for this farm."
-      ],
-      "bonuses": [
-        "Quellor's blueprint rolls on the same kill, so you're farming both weapons at once.",
-        "Killing the captain gives roughly 1 Intrinsic point even on an abort."
-      ],
-      "disclosures": [
-        {
-          "title": "other nodes",
-          "body": "Flexa (Veil Proxima) always has a Galleon too, needs Intrinsics 7 and the Chimera Prologue, enemies level 80-90. Korm's Belt (Earth Proxima) has easier level 24-30 enemies and no Intrinsics gate, but its Galleon only spawns on about 40% of loads: check the objective list at load-in and abort to reroll if there's no captain."
-        }
-      ]
+      "conditions": [],
+      "bonuses": ["Quellor Blueprint drops from the same enemies at the same chance."],
+      "disclosures": []
     },
     {
       "type": "foundry",

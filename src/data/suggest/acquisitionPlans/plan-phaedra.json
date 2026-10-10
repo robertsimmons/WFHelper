@@ -1,23 +1,76 @@
 {
   "name": "Phaedra",
   "kind": "archgun",
-  "effort": 3,
+  "effort": 4,
   "source": "standing",
-  "tradeable": false,
-  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "tradeable": "parts only",
+  "progress": {
+    "have": 0,
+    "need": 4,
+    "unit": "parts"
+  },
   "badges": [
-    { "text": "3 syndicates to Rank 2", "tone": "warn" },
-    { "text": "Hexis opposes Perrin", "tone": "warn" }
+    {
+      "text": "3 syndicates to Rank 2",
+      "tone": "warn"
+    },
+    {
+      "text": "Hexis opposes Perrin",
+      "tone": "warn"
+    }
   ],
   "prices": [
-    { "label": "blueprint", "amount": "35,000 cr", "money": false },
-    { "label": "rank-ups", "amount": "270,000 cr + 3 Forma", "money": false }
+    {
+      "label": "blueprint",
+      "amount": "35,000 cr",
+      "money": false
+    }
   ],
   "materials": [
-    { "qty": "2", "label": "Tellurium", "note": null },
-    { "qty": "350,000", "label": "Credits", "note": null }
+    {
+      "qty": "2",
+      "label": "Tellurium",
+      "note": null
+    },
+    {
+      "qty": "80,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
+    {
+      "type": "gate",
+      "place": "MASTERY RANK, QUESTS",
+      "sub": null,
+      "activity": "reach MR 3 and finish The Archwing",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Mastery Rank 3",
+          "note": "needed to equip it",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "The Archwing",
+          "note": "needed to use it in space",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
     {
       "type": "vendor",
       "place": "MARKET",
@@ -31,11 +84,15 @@
       "spends": [],
       "map": null,
       "rows": [
-        { "qty": null, "label": "Phaedra Blueprint", "note": null, "alt": null, "done": false }
+        {
+          "qty": null,
+          "label": "Phaedra Blueprint",
+          "note": null,
+          "alt": null,
+          "done": false
+        }
       ],
-      "conditions": [
-        "The Orbiter's Syndicate console needs MR 3; relay representatives work earlier."
-      ],
+      "conditions": [],
       "bonuses": [],
       "disclosures": []
     },
@@ -48,7 +105,10 @@
       "mode": null,
       "live": null,
       "skip": null,
-      "earns": { "currency": "The Perrin Sequence Standing", "amount": "47,000" },
+      "earns": {
+        "currency": "The Perrin Sequence Standing",
+        "amount": "47,000"
+      },
       "spends": [],
       "map": null,
       "rows": [
@@ -64,20 +124,28 @@
           "label": "Rank 1",
           "note": "5,000 standing, 30,000 cr, 2 Detonite Ampule",
           "alt": null,
-          "done": false
+          "done": false,
+          "rank": {
+            "syndicate": "The Perrin Sequence",
+            "level": 1
+          }
         },
         {
           "qty": null,
           "label": "Rank 2, Senior Associate",
           "note": "22,000 standing, 50,000 cr, 1 Forma",
           "alt": null,
-          "done": false
+          "done": false,
+          "rank": {
+            "syndicate": "The Perrin Sequence",
+            "level": 2
+          }
         },
         {
           "qty": null,
           "label": "Phaedra Receiver",
           "note": "20,000 standing",
-          "alt": "5.64% from Archwing Exterminate on Syrtis, Montes or Caduceus, ~17 runs",
+          "alt": "5.64% from Archwing Exterminate on Montes or Syrtis",
           "done": false
         }
       ],
@@ -102,7 +170,10 @@
       "mode": null,
       "live": null,
       "skip": null,
-      "earns": { "currency": "New Loka Standing", "amount": "47,000" },
+      "earns": {
+        "currency": "New Loka Standing",
+        "amount": "47,000"
+      },
       "spends": [],
       "map": null,
       "rows": [
@@ -118,14 +189,22 @@
           "label": "Rank 1",
           "note": "5,000 standing, 30,000 cr, 2 Fieldron Sample",
           "alt": null,
-          "done": false
+          "done": false,
+          "rank": {
+            "syndicate": "New Loka",
+            "level": 1
+          }
         },
         {
           "qty": null,
           "label": "Rank 2, Bountiful",
           "note": "22,000 standing, 50,000 cr, 1 Forma",
           "alt": null,
-          "done": false
+          "done": false,
+          "rank": {
+            "syndicate": "New Loka",
+            "level": 2
+          }
         },
         {
           "qty": null,
@@ -151,7 +230,10 @@
       "mode": null,
       "live": null,
       "skip": null,
-      "earns": { "currency": "Arbiters of Hexis Standing", "amount": "47,000" },
+      "earns": {
+        "currency": "Arbiters of Hexis Standing",
+        "amount": "47,000"
+      },
       "spends": [],
       "map": null,
       "rows": [
@@ -167,14 +249,22 @@
           "label": "Rank 1",
           "note": "5,000 standing, 30,000 cr, 2 Gallium",
           "alt": null,
-          "done": false
+          "done": false,
+          "rank": {
+            "syndicate": "Arbiters of Hexis",
+            "level": 1
+          }
         },
         {
           "qty": null,
           "label": "Rank 2, Authentic",
           "note": "22,000 standing, 50,000 cr, 1 Forma",
           "alt": null,
-          "done": false
+          "done": false,
+          "rank": {
+            "syndicate": "Arbiters of Hexis",
+            "level": 2
+          }
         },
         {
           "qty": null,
@@ -186,7 +276,7 @@
       ],
       "conditions": [
         "Hexis is opposed to Perrin (-50% both ways), so do it after the Receiver is bought; Perrin may derank, which no longer matters.",
-        "Pledging Hexis drops Red Veil 100%. Negative standing sends Eximus Death Squads, an annoyance rather than a threat."
+        "Pledging Hexis drops Red Veil 100%."
       ],
       "bonuses": [],
       "disclosures": [],

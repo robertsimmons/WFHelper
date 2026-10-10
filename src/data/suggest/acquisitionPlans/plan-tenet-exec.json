@@ -4,20 +4,35 @@
   "effort": 8,
   "source": "unique",
   "tradeable": false,
-  "progress": { "have": 0, "need": 1, "unit": "weapon" },
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "weapon"
+  },
   "badges": [
-    { "text": "MR 16", "tone": "warn" },
-    { "text": "Railjack", "tone": "info" },
-    { "text": "rotation shop", "tone": "warn" }
+    {
+      "text": "MR 16",
+      "tone": "warn"
+    },
+    {
+      "text": "40 Corrupted Holokeys",
+      "tone": "info"
+    }
   ],
   "prices": [],
-  "materials": [{ "qty": "40", "label": "Corrupted Holokey", "note": null }],
+  "materials": [
+    {
+      "qty": "40",
+      "label": "Corrupted Holokey",
+      "note": null
+    }
+  ],
   "groups": [
     {
       "type": "gate",
       "place": "RAILJACK",
       "sub": null,
-      "activity": "unlock Proxima Void Storms",
+      "activity": "build a Railjack and reach the Mastery Rank",
       "meta": "MR 16 to buy",
       "mode": null,
       "live": null,
@@ -29,21 +44,20 @@
         {
           "qty": null,
           "label": "Rising Tide",
-          "note": "Railjack access",
+          "note": "quest; needs The War Within; gives you a Railjack",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Mastery Rank 16",
-          "note": "required by Ergo Glast",
+          "note": "enforced at the purchase, unlike a Sister-dropped Tenet weapon",
           "alt": null,
           "done": false
         }
       ],
       "conditions": [
-        "Tenet Exec never comes from a Sister of Parvos. Do not start a Sister, farm Murmurs, or buy Requiem mods for this weapon.",
-        "A shop-bought Tenet weapon enforces its MR requirement; the Sister-weapon MR bypass does not apply."
+        "Tenet Exec never comes from a Sister of Parvos; Ergo Glast is its only source."
       ],
       "bonuses": [],
       "disclosures": []
@@ -52,65 +66,30 @@
       "type": "vendor",
       "place": "ERGO GLAST, ANY RELAY",
       "sub": null,
-      "activity": "inspect the current Tenet Exec roll",
-      "meta": "refreshes every 4 days, 00:00 UTC",
+      "activity": "Browse Merchandise, buy Tenet Exec",
+      "meta": "one copy per 4-day rotation",
       "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
+      "spends": [
         {
-          "qty": null,
-          "label": "52.8%+ bonus",
-          "note": "one fusion reaches 60%",
-          "alt": "58%+ is already 60%",
-          "done": false
+          "currency": "Corrupted Holokey",
+          "amount": "40"
         }
       ],
-      "conditions": [
-        "Ergo sells exactly one Exec per 4-day rotation for 40 Holokeys. Its displayed element and 25-60% bonus reroll each rotation.",
-        "No Perrin Sequence standing is required; use Browse Merchandise in any Relay.",
-        "The weapon is untradeable and has no Market-platinum or converted-adversary route."
-      ],
-      "bonuses": [
-        "Bank 40-80 keys first, then buy on percentage rather than buying the first low roll you see.",
-        "Elemental Vice can change the bonus element at rank 40; percentage is the lasting decision."
-      ],
-      "disclosures": [
-        {
-          "title": "a low roll costs calendar time",
-          "body": "Only one Exec can be bought per rotation. A 25% first copy takes nine fusions and ten purchases to reach 60%: 400 keys and at least 40 days. Waiting for 52.8% or better turns that into two purchases and one 4-day wait."
-        }
-      ]
-    },
-    {
-      "type": "vendor",
-      "place": "ERGO GLAST, ANY RELAY",
-      "sub": null,
-      "activity": "buy Tenet Exec on a good roll",
-      "meta": "instant; one per rotation",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [{ "currency": "Corrupted Holokey", "amount": "40" }],
       "map": null,
       "rows": [
         {
           "qty": "1",
           "label": "Tenet Exec",
-          "note": "rank 0, direct to inventory",
+          "note": "random element and 25-60% bonus; both reroll every 4 days at 0:00 UTC",
           "alt": null,
           "done": false
         }
       ],
-      "conditions": [
-        "The purchase is instant and does not use the Foundry, but it needs a free weapon slot.",
-        "Impact is a strong natural choice for the slam shockwaves, though it can be changed later with Elemental Vice."
-      ],
-      "bonuses": [],
+      "conditions": ["No Perrin Sequence standing needed."],
+      "bonuses": ["Valence Fusion can raise the bonus later, so any roll works for Mastery."],
       "disclosures": []
     },
     {
@@ -118,7 +97,7 @@
       "place": "ORBITER, MODDING",
       "sub": null,
       "activity": "optional Valence Fusion toward 60%",
-      "meta": "keep the best copy",
+      "meta": "keep spare copies",
       "mode": null,
       "live": null,
       "skip": null,
@@ -129,19 +108,17 @@
         {
           "qty": null,
           "label": "60% bonus",
-          "note": "optional optimization goal",
-          "alt": "keep the first good roll",
+          "note": "optional; the bonus rolls between 25% and 60%",
+          "alt": "stop at the first usable roll",
           "done": false
         }
       ],
       "conditions": [
-        "Fusion sets the result to min(1.1 × the higher bonus, 60%), rounded down to one decimal; any result at 58% or higher becomes 60%.",
-        "Hold copies until a strong roll appears. Fusing two low rolls before a 53% copy arrives wastes a purchase.",
-        "Start the fusion from the invested Exec and use the other as donor. Catalysts, Forma, Exilus adapters, lenses, and Elemental Vice on the donor are destroyed."
+        "Fusion gives 1.1 times the higher bonus, rounded down and capped at 60%. A result of 58% or more becomes 60%, so a donor at 52.8% or better finishes it.",
+        "Start from the Tenet Exec you want to keep. Its Catalysts, Forma, Exilus adapter, Focus lens, and Elemental Vice stay; the donor's are lost. A second copy costs another 40 Holokeys and a 4-day wait.",
+        "Elemental Vice swaps the bonus element only on a rank 40 weapon (5 Forma). It does not change the percentage."
       ],
-      "bonuses": [
-        "At rank 40 (five Forma), Elemental Vice unlocks Valence Override to swap the element freely; it never changes the percentage."
-      ],
+      "bonuses": ["Fusion lets you pick which of the two elements survives."],
       "disclosures": []
     }
   ]

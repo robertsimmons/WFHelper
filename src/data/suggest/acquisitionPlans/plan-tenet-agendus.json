@@ -4,19 +4,35 @@
   "effort": 8,
   "source": "unique",
   "tradeable": false,
-  "progress": { "have": 0, "need": 1, "unit": "weapon" },
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "weapon"
+  },
   "badges": [
-    { "text": "MR 14", "tone": "warn" },
-    { "text": "rotation shop", "tone": "warn" }
+    {
+      "text": "MR 14",
+      "tone": "warn"
+    },
+    {
+      "text": "40 Corrupted Holokeys",
+      "tone": "info"
+    }
   ],
   "prices": [],
-  "materials": [{ "qty": "40", "label": "Corrupted Holokey", "note": null }],
+  "materials": [
+    {
+      "qty": "40",
+      "label": "Corrupted Holokey",
+      "note": null
+    }
+  ],
   "groups": [
     {
       "type": "gate",
       "place": "RAILJACK",
       "sub": null,
-      "activity": "unlock Veil Proxima Void Storms",
+      "activity": "build a Railjack and reach the Mastery Rank",
       "meta": "MR 14 to buy",
       "mode": null,
       "live": null,
@@ -28,21 +44,20 @@
         {
           "qty": null,
           "label": "Rising Tide",
-          "note": "Railjack access",
+          "note": "quest; needs The War Within; gives you a Railjack",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Mastery Rank 14",
-          "note": "required by Ergo Glast",
+          "note": "enforced at the purchase, unlike a Sister-dropped Tenet weapon",
           "alt": null,
           "done": false
         }
       ],
       "conditions": [
-        "Tenet Agendus never comes from a Sister of Parvos. It is not among the weapons a Sister carries, and Ergo Glast's Corrupted Holokey shop is its only source.",
-        "A shop-bought Tenet weapon enforces its MR requirement; the Sister-weapon MR bypass does not apply."
+        "Tenet Agendus never comes from a Sister of Parvos; Ergo Glast is its only source."
       ],
       "bonuses": [],
       "disclosures": []
@@ -51,58 +66,30 @@
       "type": "vendor",
       "place": "ERGO GLAST, ANY RELAY",
       "sub": null,
-      "activity": "inspect the current Tenet Agendus roll",
-      "meta": "refreshes every 4 days",
+      "activity": "Browse Merchandise, buy Tenet Agendus",
+      "meta": "one copy per 4-day rotation",
       "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
+      "spends": [
         {
-          "qty": null,
-          "label": "52.8%+ bonus",
-          "note": "one fusion reaches 60%; Agendus rolls 60% fairly often",
-          "alt": "58%+ is already 60%",
-          "done": false
+          "currency": "Corrupted Holokey",
+          "amount": "40"
         }
       ],
-      "conditions": [
-        "Ergo sells exactly one Agendus per 4-day rotation for 40 Holokeys. Its displayed element and 25-60% bonus reroll each rotation.",
-        "No Perrin Sequence standing is required; use Browse Merchandise in any Relay. The Tenet melee list is always in stock; only the syndicate offerings tab runs out.",
-        "The weapon is untradeable and cannot be bought with platinum."
-      ],
-      "bonuses": [
-        "Take whichever element Ergo offers; Elemental Vice can change it freely once the weapon hits rank 40 (5 Forma)."
-      ],
-      "disclosures": []
-    },
-    {
-      "type": "vendor",
-      "place": "ERGO GLAST, ANY RELAY",
-      "sub": null,
-      "activity": "buy Tenet Agendus on a good roll",
-      "meta": "instant; one per rotation",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [{ "currency": "Corrupted Holokey", "amount": "40" }],
       "map": null,
       "rows": [
         {
           "qty": "1",
           "label": "Tenet Agendus",
-          "note": "rank 0, direct to inventory",
+          "note": "random element and 25-60% bonus; both reroll every 4 days at 0:00 UTC",
           "alt": null,
           "done": false
         }
       ],
-      "conditions": [
-        "The purchase is instant and does not use the Foundry, but it needs a free weapon slot."
-      ],
-      "bonuses": [],
+      "conditions": ["No Perrin Sequence standing needed."],
+      "bonuses": ["Valence Fusion can raise the bonus later, so any roll works for Mastery."],
       "disclosures": []
     },
     {
@@ -110,7 +97,7 @@
       "place": "ORBITER, MODDING",
       "sub": null,
       "activity": "optional Valence Fusion toward 60%",
-      "meta": "keep the best copy",
+      "meta": "keep spare copies",
       "mode": null,
       "live": null,
       "skip": null,
@@ -121,22 +108,18 @@
         {
           "qty": null,
           "label": "60% bonus",
-          "note": "optional optimization goal",
-          "alt": "keep the first good roll",
+          "note": "optional; the bonus rolls between 25% and 60%",
+          "alt": "stop at the first usable roll",
           "done": false
         }
       ],
       "conditions": [
-        "Fusion sets the result to min(1.1 x the higher bonus, 60%), rounded down to one decimal; any result at 58% or higher becomes 60%.",
-        "Start the fusion from the invested Agendus and use the other as donor; the donor's Catalyst, Forma, Exilus adapter, lenses and Elemental Vice are destroyed. A second copy costs another 40 keys."
+        "Fusion gives 1.1 times the higher bonus, rounded down and capped at 60%. A result of 58% or more becomes 60%, so a donor at 52.8% or better finishes it.",
+        "Start from the Tenet Agendus you want to keep. Its Catalysts, Forma, Exilus adapter, Focus lens, and Elemental Vice stay; the donor's are lost. A second copy costs another 40 Holokeys and a 4-day wait.",
+        "Elemental Vice swaps the bonus element only on a rank 40 weapon (5 Forma). It does not change the percentage."
       ],
-      "bonuses": [],
-      "disclosures": [
-        {
-          "title": "the 60% chase is optional",
-          "body": "The heavy attack disk has linear falloff between 10 and 20 m and a 1.0s wind-up; it is not affected by melee-only mods like Primed Pressure Point. Take the first usable Agendus and stop chasing valence unless min-maxing is the goal."
-        }
-      ]
+      "bonuses": ["Fusion lets you pick which of the two elements survives."],
+      "disclosures": []
     }
   ]
 }

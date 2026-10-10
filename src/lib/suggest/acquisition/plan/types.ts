@@ -2,6 +2,7 @@ import type { ItemDbEntry, RawInventoryData } from "../../../../types/inventory.
 import type { RelicDatabase } from "../../../../types/relics.js";
 import type { WorldState } from "../../../../types/world.js";
 import type { ResourceLookup } from "./resources.js";
+import type { ItemTip, TipsLookup } from "../tips/data.js";
 import type {
   PlanBadge,
   PlanDisclosure,
@@ -116,6 +117,8 @@ export interface ResolvedGroup {
   conditions: string[];
   bonuses: string[];
   disclosures: PlanDisclosure[];
+  /** Community tips about this step, strongest first. */
+  tips: ItemTip[];
   facts: ResolvedFact[];
   done: boolean;
   /** Rows still to do; zero on a skipped group. */
@@ -170,6 +173,9 @@ export interface ResolvedPlan {
   routes: ResolvedRoute[];
   prices: PlanPrice[];
   groups: ResolvedGroup[];
+  /** Tips whose step this plan does not have, strongest first. */
+  tips: ItemTip[];
+  sentiment: ItemTip[];
   ledger: ResolvedLedgerEntry[];
   steps: { done: number; total: number };
   /** Fact kinds this plan wanted and the app could not compute. */
@@ -204,4 +210,6 @@ export interface PlanContext {
   now?: number | undefined;
   /** The resource store plan materials resolve against; the shipped one by default. */
   resources?: ResourceLookup | undefined;
+  /** The tips layer; the shipped one by default. */
+  tips?: TipsLookup | undefined;
 }

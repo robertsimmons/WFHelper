@@ -22,6 +22,8 @@ import {
 } from "./state.js";
 import { afterQuestRoute, planQuestDone } from "./data.js";
 import { rankMet } from "./ranks.js";
+import { placeTips, type AnchorGroup } from "../tips/anchor.js";
+import { tipsFor } from "../tips/data.js";
 import type { ItemDbEntry, RawInventoryData } from "../../../../types/inventory.js";
 import { foundryBuilds, partDemand, startingBill } from "../parts.js";
 import type { PartPlan, PartState } from "../types.js";
@@ -49,6 +51,8 @@ interface PlanEntry {
   group: PlanGroup;
   id: string;
   rowId: (rowIndex: number) => string;
+  /** Which route the group walks; null for a group the store builds. */
+  route: AnchorGroup["route"];
 }
 
 function withRefTips(group: PlanGroup, lookup: ResourceLookup): PlanGroup {
@@ -85,11 +89,13 @@ function planEntries(
     ),
     id: String(groupIndex),
     rowId: (rowIndex) => `${groupIndex}:${rowIndex}`,
+    route: "chosen",
   }));
   const after: PlanEntry[] = (afterQuest?.groups ?? []).map((group, groupIndex) => ({
     group: withRefTips(group, lookup),
     id: `q${groupIndex}`,
     rowId: (rowIndex) => `q${groupIndex}:${rowIndex}`,
+    route: "afterQuest",
   }));
   const step = routes.findIndex(isBuildStep);
   const before = step === -1 ? routes.length : step;
@@ -106,6 +112,7 @@ function planEntries(
     group,
     id: `m${groupIndex}`,
     rowId: (rowIndex) => `m:${group.rows[rowIndex].label.trim().toLowerCase()}`,
+    route: null,
   }));
   const build = authored.findIndex(isBuildStep);
   const at = build === -1 ? authored.length : build;
@@ -513,6 +520,10 @@ export function resolvePlan(
   const eras = planEras(planGroups);
   const unresolved = new Set<PlanFactKind>();
   const standingByGroup = standingOwners(planGroups);
+  const tips = placeTips(
+    entries.map((entry) => ({ ...entry.group, route: entry.route })),
+    (context.tips ?? tipsFor)(itemName),
+  );
 
   const groups: ResolvedGroup[] = planGroups.map((group, groupIndex) => {
     const rows = rowsByGroup[groupIndex];
@@ -561,6 +572,7 @@ export function resolvePlan(
       conditions: group.conditions,
       bonuses: group.bonuses,
       disclosures: group.disclosures,
+      tips: tips.groups[groupIndex],
       facts: facts.facts,
       done: doneByGroup[groupIndex],
       remaining: group.skip !== null ? 0 : rows.filter((row) => !row.done).length,
@@ -606,6 +618,8 @@ export function resolvePlan(
     routes: resolveRoutes(plan, planQuestDone(plan, state) === true),
     prices: plan.prices,
     groups,
+    tips: tips.rest,
+    sentiment: tips.sentiment,
     ledger,
     steps: { done, total },
     unresolved: [...unresolved],

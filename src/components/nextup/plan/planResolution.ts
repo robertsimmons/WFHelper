@@ -66,7 +66,7 @@ export function visibleGroups(plan: ResolvedPlan, showDone: boolean): ResolvedGr
  *  while one plan stays open, and written nowhere. */
 export type RowOverrides = Readonly<Record<string, boolean>>;
 
-export interface PlanViewRow extends ResolvedRow {
+interface PlanViewRow extends ResolvedRow {
   /** Ticked for this visit only; it stays drawn until the plan closes. */
   temporary?: boolean;
 }

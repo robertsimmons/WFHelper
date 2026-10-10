@@ -94,6 +94,7 @@ function group(id: string, rows: ResolvedRow[], skip: { reason: string } | null)
     conditions: [],
     bonuses: [],
     disclosures: [],
+    tips: [],
     facts: [],
     done: rows.every((entry) => entry.done),
     remaining: skip ? 0 : rows.filter((entry) => !entry.done).length,
@@ -157,6 +158,25 @@ describe("acquisition plan page", () => {
     // Collapsed: a details element with no open attribute.
     expect(text).toContain("<details");
     expect(text).not.toMatch(/<details[^>]*\bopen\b/);
+  });
+
+  it("draws a step's tips after its conditions and the plan's own tips after every step", () => {
+    const group = source("PlanGroup.svelte");
+    const bonuses = group.indexOf("group.bonuses as bonus");
+    const tips = group.indexOf("<PlanTips tips={group.tips} />");
+    expect(tips).toBeGreaterThan(bonuses);
+    expect(tips).toBeLessThan(group.indexOf("group.disclosures as disclosure"));
+    const page = source("AcquisitionPlanPage.svelte");
+    const steps = page.indexOf("{#each groups as group");
+    const unanchored = page.indexOf("<PlanTips tips={plan.tips}");
+    const sentiment = page.indexOf("tips={plan.sentiment}");
+    expect(unanchored).toBeGreaterThan(steps);
+    expect(sentiment).toBeGreaterThan(unanchored);
+    expect(page.indexOf("plan.ledger.length > 0")).toBeGreaterThan(sentiment);
+    const tipsView = source("PlanTips.svelte");
+    expect(tipsView).toContain("tip.kind === 'gotcha' ? 'text-warning' : 'text-accent'");
+    expect(tipsView).toContain("nextUp.planTipDisputed");
+    expect(tipsView).not.toMatch(/<details[^>]*\bopen\b/);
   });
 
   it("colours each live state as the state it is", () => {

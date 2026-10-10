@@ -12,6 +12,7 @@
   import TierBadge from "../TierBadge.svelte";
   import WikiButton from "../../WikiButton.svelte";
   import PlanGroup from "./PlanGroup.svelte";
+  import PlanTips from "./PlanTips.svelte";
   import {
     tickPlanRow,
     visibleGroups,
@@ -272,6 +273,23 @@
   {#each groups as group (group.id)}
     <PlanGroup {group} {showDone} onToggleDone={toggleDone} {onTakeAlt} />
   {/each}
+
+  {#if plan && plan.tips.length > 0}
+    <div class="border-t border-border-subtle px-0 pb-1 pt-[13px]" data-plan-tips>
+      <PlanTips tips={plan.tips} heading={$tr("nextUp.planTips")} />
+    </div>
+  {/if}
+
+  {#if plan && plan.sentiment.length > 0}
+    <details class="mt-3 border-t border-border-subtle pt-3 text-xs" data-plan-sentiment>
+      <summary class="cursor-pointer list-none text-accent [&::-webkit-details-marker]:hidden"
+        ><span class="mr-[7px] font-bold" aria-hidden="true">&rsaquo;</span>{$tr(
+          "nextUp.planSentiment",
+        )}</summary
+      >
+      <div class="ml-[15px]"><PlanTips tips={plan.sentiment} split={false} /></div>
+    </details>
+  {/if}
 
   {#if plan && plan.ledger.length > 0}
     <div class="mt-4 border-t border-border-subtle pt-3">

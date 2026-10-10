@@ -1,6 +1,7 @@
 <script lang="ts">
   import { tr } from "../../../lib/i18n.js";
   import PlanRow from "./PlanRow.svelte";
+  import PlanTips from "./PlanTips.svelte";
   import { visibleRows } from "./planResolution.js";
   import type {
     PlanLiveState,
@@ -143,6 +144,8 @@
         {/each}
       </ul>
     {/if}
+
+    <PlanTips tips={group.tips} />
 
     {#each group.disclosures as disclosure (disclosure.title)}
       <details class="mt-1.5 text-xs">

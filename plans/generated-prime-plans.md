@@ -8,7 +8,7 @@ A Prime whose parts drop from relics gets its plan built at runtime from live da
 - Effort is 8 when any part needs Varzia (vaulted-only relics); cache-only parts stay 5; otherwise 5.
 - Per-Prime extras live in `src/data/suggest/primeOverrides/<slug>.json`: gates, badges, and an effort only with a stated reason. No tips, conditions, bonuses or disclosures; community tips get their own layer.
 - Primes that are not relic-shaped (Galariak, Sagek, War, Gotva, Venari Prime) keep full authored plans.
-- Precedence: an authored `plan-*.json` always wins; generation only fills a Prime with no file. No plan file is deleted or migrated yet.
+- Precedence: an authored `plan-*.json` always wins; generation only fills a Prime with no file. Ash Prime is migrated; the other relic Prime files go in the tips migration.
 
 ## Live inputs
 
@@ -53,5 +53,4 @@ Trader rotation timing is the live Varzia fact's job (`facts.ts` `varziaFact`, w
 
 ## Later
 
-- Migration: diff each `plan-*-prime.json` against its generated plan, move only leftover gates and badges into `primeOverrides/`, then delete the file.
-- `wfhelper-research/AUTHORING.md`: one line that relic Primes are generated and an override carries only gates, badges and a reasoned effort.
+- Migration (`plans/community-tips-layer.md`, step 8): diff each `plan-*-prime.json` against its generated plan, move leftover gates and badges into `primeOverrides/` and leftover advice into `acquisitionTips/`, then delete the file.

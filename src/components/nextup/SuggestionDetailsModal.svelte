@@ -7,6 +7,7 @@
   import { progenitors as frameProgenitors } from "../../lib/suggest/acquisition/progenitors.js";
   import { tierOrder } from "../../lib/suggest/acquisition/recommend.js";
   import { itemTiers } from "../../lib/suggest/acquisition/tiers.js";
+  import { byStrength, tipsFor } from "../../lib/suggest/acquisition/tips/data.js";
   import { resolveDropArt } from "../../lib/suggest/dropPools.js";
   import { overframeUrl } from "../../lib/suggest/overframe.js";
   import { acquisitionStatuses, pathKindLabel } from "../../lib/suggest/providers/acquisition.js";
@@ -39,6 +40,7 @@
   } from "./chips.js";
   import { plainName, rewardArt } from "./rewardArt.js";
   import AcquisitionTree from "./AcquisitionTree.svelte";
+  import PlanTips from "./plan/PlanTips.svelte";
   import ItemTile from "./ItemTile.svelte";
   import TierBadge from "./TierBadge.svelte";
   import TimeLeft from "./TimeLeft.svelte";
@@ -289,6 +291,14 @@
     (acq?.parts.materials ?? []).filter((row) => row.missing > 0).slice(0, LIST_LIMIT),
   );
   const acqPaths = $derived((acq?.paths ?? []).slice(0, ROUTE_LIMIT));
+  // Strongest first, and what players say about the grind after every how-to.
+  const acqTips = $derived.by(() => {
+    const tips = byStrength(acq ? tipsFor(acq.name) : []);
+    return [
+      ...tips.filter((tip) => tip.kind !== "sentiment"),
+      ...tips.filter((tip) => tip.kind === "sentiment"),
+    ];
+  });
   // A blueprint carries no recipe of its own, so the tree roots at the product
   // it builds. Nothing to root means the flat part and material lists stand in.
   const treeRoot = $derived.by((): string | null => {
@@ -1143,6 +1153,17 @@
               </div>
             {/each}
           </div>
+        {/if}
+
+        {#if acqTips.length > 0}
+          <details data-details-tips>
+            <summary class="{LABEL} cursor-pointer list-none [&::-webkit-details-marker]:hidden"
+              ><span class="mr-[7px] font-bold text-accent" aria-hidden="true">&rsaquo;</span>{$tr(
+                "nextUp.planTips",
+              )}</summary
+            >
+            <PlanTips tips={acqTips} split={false} />
+          </details>
         {/if}
       </div>
     {/if}

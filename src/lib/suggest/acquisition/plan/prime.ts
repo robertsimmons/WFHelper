@@ -288,6 +288,37 @@ function carries(relic: string, parts: readonly FarmPart[], itemName: string): s
     .join(", ");
 }
 
+const PLACES = {
+  mastery: "MASTERY RANK",
+  quests: "QUESTS",
+  caches: "RAILJACK DERELICT CACHES",
+  varzia: "MAROO'S BAZAAR, MARS",
+  baro: "BARO KI'TEER",
+  fissure: "ANY VOID FISSURE",
+  foundry: "FOUNDRY",
+} as const;
+
+function ayaPlace(lookup: ResourceLookup): string {
+  return lookup("Aya")?.best?.place ?? "AYA";
+}
+
+/** Every step a generated plan can hold, without its rows, which change with
+ *  the vault and the traders. What a tip on a generated Prime anchors to. */
+export function generatedSteps(
+  lookup: ResourceLookup = resourceEntry,
+): { type: PlanGroup["type"]; place: string }[] {
+  return [
+    { type: "gate", place: PLACES.mastery },
+    { type: "gate", place: PLACES.quests },
+    { type: "farm", place: PLACES.caches },
+    { type: "currency", place: ayaPlace(lookup) },
+    { type: "vendor", place: PLACES.varzia },
+    { type: "vendor", place: PLACES.baro },
+    { type: "fissure", place: PLACES.fissure },
+    { type: "foundry", place: PLACES.foundry },
+  ];
+}
+
 function gateGroup(masteryReq: number, override: PrimeOverride | null): PlanGroup | null {
   const gates = override?.gates ?? [];
   const rows: PlanRow[] = gates.map((gate) => ({
@@ -298,8 +329,8 @@ function gateGroup(masteryReq: number, override: PrimeOverride | null): PlanGrou
   if (gated) rows.push(row(`Mastery Rank ${masteryReq}`, "the Foundry won't craft it below this"));
   if (rows.length === 0) return null;
   return gates.length === 0
-    ? planGroup("gate", "MASTERY RANK", rows, { activity: `reach MR ${masteryReq} to build it` })
-    : planGroup("gate", "QUESTS", rows);
+    ? planGroup("gate", PLACES.mastery, rows, { activity: `reach MR ${masteryReq} to build it` })
+    : planGroup("gate", PLACES.quests, rows);
 }
 
 function dropsIn(
@@ -326,7 +357,7 @@ function cacheGroup(parts: readonly FarmPart[], itemName: string): PlanGroup | n
     const pays = carries(drop.relic, parts, itemName);
     return row(relicLabel(drop.relic), regions ? `${pays}; ${regions}` : pays);
   });
-  return planGroup("farm", "RAILJACK DERELICT CACHES", rows, {
+  return planGroup("farm", PLACES.caches, rows, {
     activity: "open the loot caches in a Railjack mission in these regions",
   });
 }
@@ -352,8 +383,6 @@ interface VaultRoute {
 
 const NO_VAULT: VaultRoute = { groups: [], varziaRows: 0, aya: null };
 
-const VARZIA_PLACE = "MAROO'S BAZAAR, MARS";
-
 function vaultGroups(
   parts: readonly FarmPart[],
   itemName: string,
@@ -373,7 +402,7 @@ function vaultGroups(
     );
     return {
       groups: [
-        planGroup("vendor", VARZIA_PLACE, rows, {
+        planGroup("vendor", PLACES.varzia, rows, {
           sub: "Varzia",
           activity: "buy any of these relics she stocks, with Aya",
           live: { state: "waiting", text: "Varzia's stock unknown" },
@@ -424,7 +453,7 @@ function vaultGroups(
     : "Varzia is away; not at Baro now";
   if (rows.length > 0) {
     groups.push(
-      planGroup("vendor", VARZIA_PLACE, rows, {
+      planGroup("vendor", PLACES.varzia, rows, {
         sub: "Varzia",
         activity: "buy these relics with Aya",
         live: waiting.length > 0 ? { state: "waiting", text: waitText } : null,
@@ -433,7 +462,7 @@ function vaultGroups(
   }
   if (baroRows.size > 0) {
     groups.push(
-      planGroup("vendor", "BARO KI'TEER", [...baroRows.values()], {
+      planGroup("vendor", PLACES.baro, [...baroRows.values()], {
         sub: live.world?.voidTrader?.location ?? null,
         activity: "buy these relics with Ducats before he leaves",
       }),
@@ -445,17 +474,12 @@ function vaultGroups(
 function ayaGroup(lookup: ResourceLookup, relics: number, aya: number | null): PlanGroup {
   const best = lookup("Aya")?.best ?? null;
   const note = relics === 1 ? "for the relic above" : `for the ${relics} relics above`;
-  return planGroup(
-    "currency",
-    best?.place ?? "AYA",
-    [row("Aya", note, aya ? grouped(aya) : null)],
-    {
-      sub: best?.sub ?? null,
-      activity: best?.activity ?? null,
-      meta: best?.meta ?? null,
-      ref: "Aya",
-    },
-  );
+  return planGroup("currency", ayaPlace(lookup), [row("Aya", note, aya ? grouped(aya) : null)], {
+    sub: best?.sub ?? null,
+    activity: best?.activity ?? null,
+    meta: best?.meta ?? null,
+    ref: "Aya",
+  });
 }
 
 const STATE_LINES: Partial<Record<PartState, string>> = {
@@ -492,7 +516,7 @@ function fissureGroup(itemName: string, parts: readonly FarmPart[]): PlanGroup {
       ? `${shortName(hardest[0][0].name, itemName)} is the bottleneck`
       : null;
   const open = parts.every((part) => part.state === "open");
-  return planGroup("fissure", "ANY VOID FISSURE", rows, {
+  return planGroup("fissure", PLACES.fissure, rows, {
     activity: open ? "crack the matching relic era" : "crack the relics from the steps above",
     meta: bottleneck,
     conditions,
@@ -523,7 +547,7 @@ function foundryGroup(
 ): PlanGroup {
   const main = builds.find((build) => build.main);
   if (!main) {
-    return planGroup("foundry", "FOUNDRY", [row(itemName, "recipe unknown")], {
+    return planGroup("foundry", PLACES.foundry, [row(itemName, "recipe unknown")], {
       activity: `build ${itemName}`,
     });
   }
@@ -539,7 +563,7 @@ function foundryGroup(
   const mr = masteryReq > 0 && masteryReq <= MR_GATE_ABOVE ? `MR ${masteryReq}` : null;
   return planGroup(
     "foundry",
-    "FOUNDRY",
+    PLACES.foundry,
     builds.map((build) =>
       row(
         build.label,

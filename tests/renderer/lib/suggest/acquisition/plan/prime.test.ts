@@ -403,6 +403,29 @@ describe("resolving a generated plan", () => {
       resolved: true,
     });
   });
+
+  it("merges tips into the generated steps and keeps one whose step went away", () => {
+    const db = itemDb();
+    const tip = (id: string, group: "vendor" | "fissure") => ({
+      id,
+      text: id,
+      kind: "tactic" as const,
+      consensus: "common" as const,
+      anchor: { group, ...(group === "vendor" ? { place: "MAROO'S BAZAAR" } : {}) },
+      dispute: null,
+    });
+    const tips = () => [tip("varzia", "vendor"), tip("crack", "fissure")];
+    const resolve = (relics: RelicDatabase) =>
+      resolvePlanFor(
+        { ...targetFor(db, relics), tier: null },
+        { itemDb: db, inventory: null, relicDb: relics, now: NOW, tips },
+      );
+    const vaulted = resolve(PARTLY_VAULTED);
+    expect(vaulted?.groups.find((entry) => entry.type === "vendor")?.tips[0]?.id).toBe("varzia");
+    expect(vaulted?.groups.find((entry) => entry.type === "fissure")?.tips[0]?.id).toBe("crack");
+    const open = resolve(OPEN);
+    expect(open?.tips.map((entry) => entry.id)).toEqual(["varzia"]);
+  });
 });
 
 describe("plan lookup", () => {

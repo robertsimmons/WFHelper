@@ -19,10 +19,10 @@ Facts live in the plan (authored `plan-<slug>.json`, or the generated Prime plan
 
 ## Code
 
-- `src/lib/suggest/acquisition/tips/schema.ts`, `data.ts` (eager glob like `plan/data.ts`, `tipsFor(name)`), `anchor.ts` (`placeTips(plan, tips)` returns per-group tips plus the plan-level rest).
-- `plan/resolve.ts`: `ResolvedGroup.tips`, `ResolvedPlan.tips` (unanchored), `ResolvedPlan.sentiment`. Works the same on a generated plan. Lands after the generated-Prime work, which owns `plan/*` now.
+- `src/lib/suggest/acquisition/tips/`: `schema.ts`; `data.ts` (eager glob, `tipsFor(name)` returns live tips with their open dispute attached); `anchor.ts` (`placeTips(groups, tips)` returns per-group tips, the plan-level rest and sentiment, strongest first).
+- `plan/resolve.ts`: `ResolvedGroup.tips`, `ResolvedPlan.tips` (unanchored), `ResolvedPlan.sentiment`; `PlanContext.tips` swaps the lookup. Store-built material groups take no item tips. Works the same on a generated plan; `plan/prime.ts` `generatedSteps()` lists the steps a generated plan can hold.
 - Resource tips stay in `resources.json` `tips`, rendered on the material's farm group as today. Item tips files hold no material tips.
-- `tips/validate.ts` plus `tests/renderer/lib/suggest/acquisition/tips/validate.test.ts` over every file: name resolves to an authored plan, a generated Prime from the fixture DBs, or a store key; enums real; text non-empty, unique, no em dash; every anchor matches a group (and row) in the item's plan; `removed` entries carry reason and a wiki URL; no live tip repeats a removed text.
+- `tips/validate.ts` (`validateTips`, `validateDisputes`) plus `tests/renderer/lib/suggest/acquisition/tips/validate.test.ts` over every file: name resolves to an authored plan, a relic Prime in the bundled relic table, or a store key; enums real; text non-empty, unique, no em dash, no year or "currently"; ids unique across `tips` and `removed`; every anchor matches a group (and row) in the item's plan; a generated Prime's anchor carries no `row`; `removed` entries carry reason and a wiki URL; no live tip repeats a removed text; a dispute names a live tip, unless confirmed, which names a removed one.
 
 ## Fact or tip
 
@@ -36,21 +36,33 @@ Facts live in the plan (authored `plan-<slug>.json`, or the generated Prime plan
 - In `PlanGroup.svelte`, after conditions and bonuses: up to two `unanimous`/`common` tips inline with their own marker (`gotcha` in warning tone, others in accent), so a tip never reads as a `!` condition. The rest behind "more tips (N)".
 - `AcquisitionPlanPage.svelte`: unanchored tips in a Tips block after the groups, same split. Sentiment in a collapsed "What players say" after that, above the currency ledger.
 - `SuggestionDetailsModal.svelte`: one collapsed Tips disclosure under Routes, strongest first, sentiment last inside it.
-- i18n keys: `nextUp.planTips`, `nextUp.planMoreTips`, `nextUp.planSentiment`. No tips file renders nothing.
+- i18n keys: `nextUp.planTips`, `nextUp.planMoreTips`, `nextUp.planSentiment`, `nextUp.planTipDisputed`. No tips file renders nothing.
 
 ## Migration, per item (fan-out, 16 plans per agent)
 
-1. Read the current plan, `git -C C:/src/personal/wfhelper-next-up show ea2e4f31:src/data/suggest/acquisitionPlans/plan-<slug>.json` (absent means the plan is newer), and `C:/src/personal/wfhelper-research/done/<slug>.md` if it exists (most Primes have none).
-2. Collect candidates: research Tips / "Tips people actually gave", Gotchas, Community sentiment (one or two `sentiment` tips); tip content from both plans' conditions, bonuses, disclosures, mode and notes.
-3. A tip about a curated store material is not the item's: list it in your report under the resource name for the orchestrator to merge.
-4. Dedupe: one tip per piece of advice, the most specific wording, the highest consensus seen. Plan-only tips with no weight are `some`.
-5. Never drop a tip for being wrong: anything you think the wiki contradicts, or that describes patched behavior, stays and gets an open dispute in `disputes.json` with the wiki fact and URL. Drop only exact duplicates, generic advice ("do bounties") and calendar dates.
-6. Set `kind`, `consensus`, `anchor` (required for every non-sentiment tip: the step or material it is about; a tip that fits no step is either sentiment or not worth keeping). Write `acquisitionTips/<slug>.json`.
-7. Strip the moved content from the plan; change no fact. A fact that looks wrong goes in the report, not the plan.
-8. `prettier --write` your files, run the plan and tips validate tests, fix your own failures.
-9. Report one line per slug: `<slug>: ok, N tips, M removed`, then the store-material tips.
+Paths below are under `C:/src/personal/wfhelper-next-up/src/data/suggest/`. Exemplars, read before the first slug: `acquisitionTips/gauss.json` against `plan-gauss.json` and `wfhelper-research/done/gauss.md` (rich research), `acquisitionTips/wrath.json` (two groups sharing a place, disputes in `disputes.json`), `acquisitionTips/ash-prime.json` (a relic Prime whose plan file is gone).
 
-Relic Primes: migrate their tips from the current and pre-pass Prime plans before the generated-Prime pass deletes those files.
+1. Read the current `acquisitionPlans/plan-<slug>.json`, the pre-pass plan `git -C C:/src/personal/wfhelper-next-up show ea2e4f31:src/data/suggest/acquisitionPlans/plan-<slug>.json` (absent means the plan is newer), `C:/src/personal/wfhelper-research/done/<slug>.md` if it exists (most Primes have none), and `acquisitionTips/<slug>.json` if it exists (add to it, never drop from it).
+2. Collect candidates: research "Tips" / "Tips people actually gave", "Gotchas", "Community sentiment"; from both plan versions, every `conditions`, `bonuses`, `disclosures`, `mode` and row `note`/`meta` line that is advice rather than fact (Fact or tip, above).
+3. A tip about a curated store material (a `resources.json` entry with a `kind`: resources, Talents, standings, Aya) is not the item's: list it in your report under the resource name for the orchestrator to merge.
+4. Dedupe: one tip per piece of advice, the most specific wording, the highest consensus seen.
+5. Never drop a tip for being wrong: anything you think the wiki contradicts, or that describes patched behavior, stays and gets an entry appended to `acquisitionTips/disputes.json`: `{ item, tipId, claim, wiki, status: "open" }`, `claim` the wiki fact in one sentence, `wiki` a `https://wiki.warframe.com/w/` URL (a patch-note section anchor is fine). Re-read the file right before appending; other agents append too. Drop only exact duplicates, generic advice ("do bounties"), calendar dates, exploits, build or usage advice for the finished item, unrelated content met in the same mission (codex scans, Signa), and any platinum or player-trade route ("just buy it", "relics still trade").
+6. Write `acquisitionTips/<slug>.json` as `{ name, tips, removed: [] }`, `name` exactly the plan's, tips strongest first. Per tip:
+   - `id`: short kebab-case, unique in the file, never reused.
+   - `text`: one ELI5 imperative sentence; no em dash, year, "currently" or platinum.
+   - `kind`: `tactic`, `gotcha`, `gear` or `sentiment` (one or two sentiment tips at most).
+   - `consensus`: near-unanimous or a highly upvoted correction is `unanimous`; "repeatedly", "several", "multiple" is `common`; "a few", or plan-only advice with no weight, is `some`; one person is `single`.
+   - `anchor`: null for sentiment only. Otherwise `{ group }` with the step's group type, plus `place` (an upper-case substring of its place) whenever another group shares that type, plus `row` (a substring of one of its row labels) only when two groups also share the place (Wrath's two Pontis Tower bosses). `route: "afterQuest"` for a step in `afterQuest.groups`. A tip that fits no step is sentiment or not worth keeping.
+   - Generated Primes anchor by `group` and `place` only, never `row`: `gate`, `farm` (Railjack caches), `currency` (Aya), `vendor` with `MAROO'S BAZAAR` (Varzia) or `BARO KI'TEER`, `fissure`, `foundry`.
+7. Strip the moved content from the plan with Edit, keeping its formatting; set `mode` null when its text moved; change no fact. A fact that looks wrong goes in the report, not the plan.
+8. Relic Primes (`plan-*-prime.json` whose parts drop from relics; Galariak, Sagek, War, Gotva and Venari Prime keep their plans and follow steps 1-7):
+   1. Do steps 1-6 from both plan versions first; the generated plan carries no advice.
+   2. Diff the plan against what `generatePrimePlan` emits (`plans/generated-prime-plans.md`, Groups and Plan fields). Move only what it cannot derive into `primeOverrides/<slug>.json` `{ name, gates?, badges?, effort? }`: gates other than Mastery Rank (quests, syndicate ranks with `rank`); badges other than "vaulted", "relics from Railjack caches", "MR N" and "vault status unknown"; an effort that differs from the rule (8 when any part needs Varzia, else 5) only as `{ value, reason }`. No conditions, bonuses, disclosures or tips in an override; with nothing left over, write no override.
+   3. Delete `acquisitionPlans/plan-<slug>.json`. Relic lists, rarities, recipe, materials, routes and vault conditions go with it; the generator derives them.
+9. `pnpm --dir C:/src/personal/wfhelper-next-up exec prettier --write <your files>`, then `pnpm --dir C:/src/personal/wfhelper-next-up exec vitest run tests/renderer/lib/suggest/acquisition/plan/validate.test.ts tests/renderer/lib/suggest/acquisition/plan/prime.test.ts tests/renderer/lib/suggest/acquisition/tips`; fix your own failures.
+10. Report one line per slug: `<slug>: ok, N tips, M disputes` plus `, override` and `, plan deleted` where they apply; then the store-material tips under each resource name; then suspect facts.
+
+Boundaries: only your slugs' plan, tips and override files, and your own entries in `disputes.json`. No git, no edits to `resources.json`, code or tests, no subagents.
 
 ## Generated Primes
 
@@ -59,6 +71,6 @@ Relic Primes: migrate their tips from the current and pre-pass Prime plans befor
 
 ## Docs and skill
 
-- `warframe-acquisition-research/SKILL.md`: the subagent also writes `C:/src/personal/wfhelper-next-up/src/data/suggest/acquisitionTips/<slug>.json`, additively (read it first, add new tips, raise consensus on new evidence, never delete, never re-add a `removed` text). Its write boundary names both files. A Prune mode works the open disputes in `disputes.json`: it re-checks each against the wiki and Reddit, then either confirms (moves the tip to `removed`, sets the dispute `confirmed`) or rejects (sets `dismissed`).
+- `warframe-acquisition-research/SKILL.md`: the subagent also writes `C:/src/personal/wfhelper-next-up/src/data/suggest/acquisitionTips/<slug>.json`, additively (read it first, add new tips, raise consensus on new evidence, never delete, never re-add a `removed` text). Its write boundary names both files. An item with no plan yet gets no tips file; a Tips backfill mode writes it from `done/<slug>.md` once the plan ships. A Prune mode works the open disputes in `disputes.json`: it re-checks each against the wiki and Reddit, then either confirms (moves the tip to `removed`, sets the dispute `confirmed`) or rejects (sets `dismissed`).
 - `AUTHORING.md`: Tips and Gotchas supply only hard requirements as conditions; never write tips into a plan; never edit `acquisitionTips/`.
 - `VERIFY.md`: fact passes never touch `acquisitionTips/`. A fact that seems to contradict a tip becomes an open entry in `acquisitionTips/disputes.json` (skip it if a dismissed entry for that tip and claim exists).

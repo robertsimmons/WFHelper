@@ -6,18 +6,33 @@
   "tradeable": "blueprint only",
   "progress": { "have": 0, "need": 1, "unit": "blueprint" },
   "badges": [
-    { "text": "Holdfasts Rank 4", "tone": "warn" },
+    {
+      "text": "Holdfasts Rank 4",
+      "tone": "warn",
+      "rank": { "syndicate": "The Holdfasts", "level": 4 }
+    },
     { "text": "MR 14", "tone": "info" }
   ],
   "prices": [{ "label": "blueprint", "amount": "9,000 Holdfasts Standing", "money": false }],
   "materials": [
-    { "qty": "8,000", "label": "Ferrite", "note": null },
-    { "qty": "30", "label": "Voidplume Pinion", "note": "build requirement" },
-    { "qty": "75", "label": "Voidplume Quill", "note": "15 rank-up tribute + 30 for the build" },
+    {
+      "qty": "15,000",
+      "label": "Ferrite",
+      "note": "2,000 Rank 1 tribute, 5,000 Rank 3 tribute, 8,000 build"
+    },
+    {
+      "qty": "7,000",
+      "label": "Alloy Plate",
+      "note": "2,000 Rank 1 tribute, 5,000 Rank 2 tribute"
+    },
+    { "qty": "5", "label": "Voidplume Down", "note": "Rank 1 tribute" },
+    { "qty": "50", "label": "Voidgel Orb", "note": "10 Rank 2 tribute, 40 Rank 4 tribute" },
     { "qty": "10", "label": "Voidplume Crest", "note": "Rank 3 tribute" },
-    { "qty": "50", "label": "Voidgel Orb", "note": "Rank 2 and Rank 4 tributes" },
-    { "qty": "30,000", "label": "Credits", "note": null },
-    { "qty": "100", "label": "Thrax Plasm", "note": null }
+    { "qty": "10", "label": "Entrati Lanthorn", "note": "Rank 3 tribute" },
+    { "qty": "45", "label": "Voidplume Quill", "note": "15 Rank 4 tribute, 30 build" },
+    { "qty": "15", "label": "Voidplume Pinion", "note": "build" },
+    { "qty": "160", "label": "Thrax Plasm", "note": "60 Rank 4 tribute, 100 build" },
+    { "qty": "215,000", "label": "Credits", "note": "185,000 rank tributes, 30,000 build" }
   ],
   "groups": [
     {
@@ -25,7 +40,7 @@
       "place": "QUESTS",
       "sub": null,
       "activity": "unlock the Zariman and The Holdfasts",
-      "meta": "The New War → Angels of the Zariman",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -35,22 +50,28 @@
       "rows": [
         {
           "qty": null,
-          "label": "The New War",
-          "note": "quest prerequisite",
+          "label": "Angels of the Zariman",
+          "note": "needs The New War; unlocks the Chrysalith and The Holdfasts",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
-          "label": "Angels of the Zariman",
-          "note": "unlocks Chrysalith",
+          "label": "Mastery Rank 14",
+          "note": "needed to equip it",
           "alt": null,
           "done": false
+        },
+        {
+          "qty": null,
+          "label": "Holdfasts Rank 4 (Seraph)",
+          "note": "ranks 1 to 3 first; the Rank 4 purchase needs 70,000 standing",
+          "alt": null,
+          "done": false,
+          "rank": { "syndicate": "The Holdfasts", "level": 4 }
         }
       ],
-      "conditions": [
-        "There is no drop-table route: The Holdfasts on the Zariman are the sole source of Praedos' blueprint and its dedicated materials."
-      ],
+      "conditions": [],
       "bonuses": [],
       "disclosures": []
     },
@@ -58,12 +79,12 @@
       "type": "currency",
       "place": "HALAKO PERIMETER, ZARIMAN",
       "sub": "Chrysalith: turn Voidplumes in to Archimedean Yonta",
-      "activity": "Exterminate; finish the objective, then full-clear the map and kill its Angel",
-      "meta": "Rank 4 and 9,000 Standing",
+      "activity": "Exterminate; wake and kill the dormant Void Angel, then sweep the map",
+      "meta": "141,000 to rank up, 9,000 for the blueprint",
       "mode": "solo or public squad",
       "live": null,
       "skip": null,
-      "earns": { "currency": "Holdfasts Standing", "amount": "9,000" },
+      "earns": { "currency": "Holdfasts Standing", "amount": "150,000" },
       "spends": [],
       "map": null,
       "rows": [
@@ -73,18 +94,43 @@
           "note": "Pinion 5,000, Quill 2,500, Crest 2,000, Vane 1,000, Down 500 standing each",
           "alt": null,
           "done": false
-        }
-      ],
-      "conditions": [
-        "Rank 4 (Seraph) requires 99,000 cumulative standing. The rank-up tributes additionally need 5 Down, 10 Vane, 10 Crest, and 15 Quill; bank crafting materials before donating plumes."
-      ],
-      "bonuses": [],
-      "disclosures": [
+        },
         {
-          "title": "this is a standing wall plus 15 Angel kills",
-          "body": "The blueprint is not RNG-gated, but Rank 4 is a multi-day daily-cap grind and 15 Pinions require at least 15 dormant Angels. A thorough Exterminate is the flexible all-in-one route."
+          "qty": null,
+          "label": "Holdfasts Rank 1 (Fallen)",
+          "note": "5,000 standing, 10,000 cr, 5 Voidplume Down, 2,000 Ferrite, 2,000 Alloy Plate",
+          "alt": null,
+          "done": false,
+          "rank": { "syndicate": "The Holdfasts", "level": 1 }
+        },
+        {
+          "qty": null,
+          "label": "Holdfasts Rank 2 (Watcher)",
+          "note": "22,000 standing, 25,000 cr, 10 Voidplume Vane, 10 Voidgel Orb, 5,000 Alloy Plate",
+          "alt": null,
+          "done": false,
+          "rank": { "syndicate": "The Holdfasts", "level": 2 }
+        },
+        {
+          "qty": null,
+          "label": "Holdfasts Rank 3 (Guardian)",
+          "note": "44,000 standing, 50,000 cr, 10 Voidplume Crest, 10 Entrati Lanthorn, 5,000 Ferrite",
+          "alt": null,
+          "done": false,
+          "rank": { "syndicate": "The Holdfasts", "level": 3 }
+        },
+        {
+          "qty": null,
+          "label": "Holdfasts Rank 4 (Seraph)",
+          "note": "70,000 standing, 100,000 cr, 15 Voidplume Quill, 60 Thrax Plasm, 40 Voidgel Orb",
+          "alt": null,
+          "done": false,
+          "rank": { "syndicate": "The Holdfasts", "level": 4 }
         }
       ],
+      "conditions": ["Keep the plumes the tributes and the build need; turn the rest in."],
+      "bonuses": [],
+      "disclosures": [],
       "ref": "Holdfasts Standing"
     },
     {
@@ -109,7 +155,7 @@
         }
       ],
       "conditions": [
-        "Trading skips the Rank 4 blueprint purchase, but it does not skip the Zariman-only materials required to build Praedos."
+        "Trading for the blueprint skips the Rank 4 purchase, but not the build materials."
       ],
       "bonuses": [],
       "disclosures": []
@@ -119,7 +165,7 @@
       "place": "FOUNDRY",
       "sub": null,
       "activity": "build Praedos",
-      "meta": "24h, MR 14 to equip",
+      "meta": "24h",
       "mode": null,
       "live": null,
       "skip": null,
@@ -130,13 +176,13 @@
         {
           "qty": null,
           "label": "Praedos",
-          "note": "30,000 Credits, 15 Voidplume Pinion, 30 Voidplume Quill, 100 Thrax Plasm",
+          "note": "30,000 cr, 15 Voidplume Pinion, 30 Voidplume Quill, 8,000 Ferrite, 100 Thrax Plasm",
           "alt": null,
           "done": false
         }
       ],
       "conditions": [
-        "You may craft Praedos before Mastery Rank 14, but cannot equip it until then. The Foundry result is an unevolved tonfa; its Incarnon progression comes next."
+        "You can craft Praedos before Mastery Rank 14 but cannot equip it until then."
       ],
       "bonuses": [],
       "disclosures": []
@@ -157,15 +203,15 @@
         {
           "qty": "100",
           "label": "Praedos kills",
-          "note": "Evolution I; unlocks Incarnon form",
+          "note": "Evolution I; unlocks Incarnon Form",
           "alt": null,
           "done": false
         },
         {
           "qty": "6",
           "label": "Incarnon Form activations in one mission",
-          "note": "Evolution II; activate at 5x combo then Heavy Attack",
-          "alt": "endless mission with dense spawns",
+          "note": "Evolution II; Heavy Attack at 5x combo",
+          "alt": null,
           "done": false
         },
         {
@@ -186,26 +232,16 @@
           "qty": null,
           "label": "Solo mission with an Incarnon weapon in every slot",
           "note": "Evolution V",
-          "alt": "Genesis-equipped weapons count",
+          "alt": null,
           "done": false
         }
       ],
-      "conditions": [
-        "Apply each unlocked evolution before the next tier begins tracking. Evolution progress otherwise persists across missions.",
-        "Evolution II requires six separate activations in one mission; short Exterminates are a poor fit.",
-        "For Evolution III, the Heavy Attack must hit Thrax Centurions or Legates in their killable state. Void Cascade naturally supplies both targets and Thrax Plasm.",
-        "Evolution V requires three Incarnon weapons and solo completion. Exalted weapons do not qualify; native Incarnons or Incarnon Genesis weapons do."
-      ],
+      "conditions": ["Evolution V: Incarnon Genesis weapons count, an Exalted weapon voids it."],
       "bonuses": [
-        "Choose Drifting Grace at Evolution II and Evolved Ascension at Evolution IV for Praedos' celebrated passive +20% sprint/slide speed and +30% Parkour Velocity.",
-        "Swift Transmute at Evolution IV lowers future Incarnon activation to 3x combo, but gives up the passive parkour option."
+        "Evolved Ascension at Evolution IV gives +30% Parkour Velocity without holding Praedos.",
+        "Swift Transmute at Evolution IV lowers Incarnon Form activation to 3x combo; it replaces Evolved Ascension."
       ],
-      "disclosures": [
-        {
-          "title": "the movement perks are the prize",
-          "body": "Praedos is often equipped without ever being swung: Drifting Grace and Evolved Ascension remain active just by carrying it. The native Incarnon upgrades are a second progression track after crafting, not an adapter farm."
-        }
-      ]
+      "disclosures": []
     }
   ]
 }

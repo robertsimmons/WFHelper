@@ -3,80 +3,142 @@
   "kind": "melee",
   "effort": 2,
   "source": "shop",
-  "tradeable": null,
-  "progress": { "have": 0, "need": 400, "unit": "Ducats" },
+  "tradeable": "unranked only, no Forma or Catalyst",
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "weapon"
+  },
   "badges": [
-    { "text": "Baro only", "tone": "warn" },
-    { "text": "MR 7", "tone": "info" }
+    {
+      "text": "Baro only",
+      "tone": "warn"
+    },
+    {
+      "text": "MR 7",
+      "tone": "info"
+    }
   ],
-  "prices": [{ "label": "Baro Ki'Teer", "amount": "200,000 cr + 400 Ducats", "money": false }],
-  "materials": [{ "qty": "200,000", "label": "Credits", "note": null }],
+  "prices": [
+    {
+      "label": "Baro Ki'Teer",
+      "amount": "200,000 cr + 400 Ducats",
+      "money": false
+    }
+  ],
+  "materials": [
+    {
+      "qty": "200,000",
+      "label": "Credits",
+      "note": null
+    }
+  ],
   "groups": [
     {
-      "type": "currency",
-      "place": "VOID FISSURES",
       "sub": null,
-      "activity": "crack relics, sell Prime parts at a Relay Ducat Kiosk",
-      "meta": "stockpile between visits",
+      "activity": "reach MR 7",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
-      "earns": { "currency": "Orokin Ducats", "amount": "400" },
+      "earns": null,
       "spends": [],
       "map": null,
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": [],
+      "type": "gate",
+      "place": "MASTERY RANK",
+      "rows": [
+        {
+          "qty": null,
+          "note": "needed to equip it",
+          "alt": null,
+          "done": false,
+          "label": "Mastery Rank 7"
+        }
+      ]
+    },
+    {
+      "sub": null,
+      "activity": "crack relics, sell Prime parts at a Relay Ducat Kiosk",
+      "meta": "bank it before Baro lands",
+      "mode": "full squad recommended",
+      "live": null,
+      "skip": null,
+      "earns": {
+        "currency": "Orokin Ducats",
+        "amount": "400"
+      },
+      "spends": [],
+      "map": null,
+      "conditions": [
+        "Ducats are untradeable; only the Prime parts that sell for them trade.",
+        "Maroo's Bazaar has no Ducat Kiosk; use any other Relay."
+      ],
+      "bonuses": [],
+      "disclosures": [],
+      "type": "currency",
+      "place": "VOID FISSURES",
       "rows": [
         {
           "qty": "400",
-          "label": "Orokin Ducats",
-          "note": "common 15, uncommon 45, rare 100",
-          "alt": null,
-          "done": false
-        },
-        { "qty": "200,000", "label": "Credits", "note": null, "alt": null, "done": false }
+          "note": "common parts 15, uncommon 45, rare 100",
+          "alt": {
+            "text": "or 80 Aya at Varzia, 5 Ducats each",
+            "spends": [
+              {
+                "currency": "Aya",
+                "amount": "80"
+              }
+            ]
+          },
+          "done": false,
+          "label": "Orokin Ducats"
+        }
       ],
-      "conditions": [
-        "Ducats cannot be traded and come only from selling items you own; do not sell every Prime part for platinum first."
-      ],
-      "bonuses": [
-        "Credits: Chroma with a credit companion mod in Hollvania safes, the Index and Profit Taker are the repeated suggestions."
-      ],
-      "disclosures": [],
       "ref": "Orokin Ducats"
     },
     {
-      "type": "vendor",
-      "place": "BARO KI'TEER, RELAY",
       "sub": "Concourse",
       "activity": "buy it on a visit that stocks it",
-      "meta": "every two weeks for up to 48 hours",
+      "meta": "every two weeks for 48 hours; stock rotates",
       "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
       "spends": [
-        { "currency": "Credits", "amount": "200,000" },
-        { "currency": "Orokin Ducats", "amount": "400" }
-      ],
-      "map": null,
-      "rows": [
         {
-          "qty": null,
-          "label": "Prisma Machete",
-          "note": "arrives built",
-          "alt": null,
-          "done": false
+          "currency": "Credits",
+          "amount": "200,000"
+        },
+        {
+          "currency": "Orokin Ducats",
+          "amount": "400"
         }
       ],
-      "conditions": [
-        "Baro's stock rotates, so it is not on every visit. Bank the Ducats first.",
-        "The Machete and Machete Wraith are separate items; ranking them gives no Prisma Machete Mastery.",
-        "Its stance slot polarity is Zenurik."
-      ],
+      "map": null,
+      "conditions": ["Baro's stock changes each visit, so it may be missing on the next one."],
       "bonuses": [],
       "disclosures": [
         {
-          "title": "TennoCon",
-          "body": "Baro's TennoCon relay sells his entire catalog to anyone with a ticket, a guaranteed window if you are in."
+          "title": "other routes",
+          "body": "During TennoCon, Baro's special Relay is open to anyone with a ticket, and his stock there covers almost everything he has sold. Unranked copies without Forma or Catalyst also trade between players."
+        },
+        {
+          "title": "stance slot",
+          "body": "The stance slot has Zenurik polarity."
+        }
+      ],
+      "type": "vendor",
+      "place": "BARO KI'TEER, RELAY",
+      "rows": [
+        {
+          "qty": null,
+          "note": "arrives built, no blueprint or foundry step",
+          "alt": null,
+          "done": false,
+          "label": "Prisma Machete"
         }
       ]
     }

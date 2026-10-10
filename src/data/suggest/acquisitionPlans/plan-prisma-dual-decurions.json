@@ -4,73 +4,112 @@
   "effort": 2,
   "source": "shop",
   "tradeable": "unranked only, no Forma or Catalyst",
-  "progress": { "have": 0, "need": 1, "unit": "weapon" },
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "weapon"
+  },
   "badges": [
-    { "text": "Baro rotation", "tone": "warn" },
-    { "text": "MR 1", "tone": "info" }
+    {
+      "text": "Baro only",
+      "tone": "warn"
+    }
   ],
-  "prices": [{ "label": "Baro", "amount": "175,000 cr + 525 Ducats", "money": false }],
-  "materials": [{ "qty": "175,000", "label": "Credits", "note": null }],
+  "prices": [
+    {
+      "label": "Baro Ki'Teer",
+      "amount": "175,000 cr + 525 Ducats",
+      "money": false
+    }
+  ],
+  "materials": [
+    {
+      "qty": "175,000",
+      "label": "Credits",
+      "note": null
+    }
+  ],
   "groups": [
     {
-      "type": "currency",
-      "place": "VOID FISSURES, ANY",
-      "sub": "Relay Ducat Kiosk",
-      "activity": "crack Void Relics, trade Prime parts for Ducats",
-      "meta": "525 Ducats needed",
-      "mode": "squad of four for more reward picks",
+      "sub": null,
+      "activity": "crack relics, sell Prime parts at a Relay Ducat Kiosk",
+      "meta": "bank it before Baro lands",
+      "mode": "full squad recommended",
       "live": null,
       "skip": null,
-      "earns": { "currency": "Orokin Ducats", "amount": "525" },
+      "earns": {
+        "currency": "Orokin Ducats",
+        "amount": "525"
+      },
       "spends": [],
-      "map": "void",
+      "map": null,
+      "conditions": [
+        "Ducats are untradeable; only the Prime parts that sell for them trade.",
+        "Maroo's Bazaar has no Ducat Kiosk; use any other Relay."
+      ],
+      "bonuses": [],
+      "disclosures": [],
+      "type": "currency",
+      "place": "VOID FISSURES",
       "rows": [
         {
           "qty": "525",
-          "label": "Ducats",
-          "note": "trade Prime parts and blueprints at any Relay Ducat Kiosk except Maroo's Bazaar",
-          "alt": null,
-          "done": false
+          "note": "common parts 15, uncommon 45, rare 100",
+          "alt": {
+            "text": "or 105 Aya at Varzia, 5 Ducats each",
+            "spends": [
+              {
+                "currency": "Aya",
+                "amount": "105"
+              }
+            ]
+          },
+          "done": false,
+          "label": "Orokin Ducats"
         }
       ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": [],
       "ref": "Orokin Ducats"
     },
     {
-      "type": "vendor",
-      "place": "RELAY CONCOURSE, ANY",
-      "sub": "Baro Ki'Teer",
-      "activity": "buy the Prisma Dual Decurions outright",
-      "meta": "stock rotates, roughly two or three visits a year",
+      "sub": "Concourse",
+      "activity": "buy it on a visit that stocks it",
+      "meta": "every two weeks for 48 hours; stock rotates",
       "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
       "spends": [
-        { "currency": "Credits", "amount": "175,000" },
-        { "currency": "Orokin Ducats", "amount": "525" }
-      ],
-      "map": null,
-      "rows": [
         {
-          "qty": null,
-          "label": "Prisma Dual Decurions",
-          "note": "arrives built and ready to equip; no Foundry step",
-          "alt": "or a TennoCon relay visit with Baro's Relay Ticket",
-          "done": false
+          "currency": "Credits",
+          "amount": "175,000"
+        },
+        {
+          "currency": "Orokin Ducats",
+          "amount": "525"
         }
       ],
-      "conditions": [
-        "Baro's stock changes every visit; the Prisma Dual Decurions isn't guaranteed even when he is. Check any Ducat Kiosk countdown to see which relay he's visiting.",
-        "Have the 175,000 credits ready too; it catches low-level players out more than the Ducats."
-      ],
+      "map": null,
+      "conditions": ["Baro's stock changes each visit, so it may be missing on the next one."],
       "bonuses": [],
       "disclosures": [
         {
+          "title": "other routes",
+          "body": "During TennoCon, Baro's special Relay is open to anyone with a ticket, and his stock there covers almost everything he has sold. Unranked copies without Forma or Catalyst also trade between players."
+        },
+        {
           "title": "using it as a Heavy Weapon",
-          "body": "Wielding it on the ground needs the Archgun Deployer (inbox reward after Profit-Taker phase 3), plus an Orokin Catalyst and a Gravimag installed on the gun. Otherwise level it in Archwing missions or on a Necramech."
+          "body": "On the ground it needs the Archgun Deployer (inbox reward after Profit-Taker phase 3), and the gun needs an Orokin Catalyst and a Gravimag installed."
+        }
+      ],
+      "type": "vendor",
+      "place": "BARO KI'TEER, RELAY",
+      "rows": [
+        {
+          "qty": null,
+          "note": "arrives built, no blueprint or foundry step",
+          "alt": null,
+          "done": false,
+          "label": "Prisma Dual Decurions"
         }
       ]
     }

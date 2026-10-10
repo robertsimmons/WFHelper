@@ -4,70 +4,139 @@
   "effort": 2,
   "source": "shop",
   "tradeable": "unranked only, no Forma or Catalyst",
-  "progress": { "have": 0, "need": 1, "unit": "weapon" },
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "weapon"
+  },
   "badges": [
-    { "text": "Baro rotation", "tone": "warn" },
-    { "text": "MR 11", "tone": "info" }
+    {
+      "text": "Baro only",
+      "tone": "warn"
+    },
+    {
+      "text": "MR 11",
+      "tone": "info"
+    }
   ],
-  "prices": [{ "label": "Baro", "amount": "220,000 cr + 500 Ducats", "money": false }],
-  "materials": [{ "qty": "220,000", "label": "Credits", "note": null }],
+  "prices": [
+    {
+      "label": "Baro Ki'Teer",
+      "amount": "220,000 cr + 500 Ducats",
+      "money": false
+    }
+  ],
+  "materials": [
+    {
+      "qty": "220,000",
+      "label": "Credits",
+      "note": null
+    }
+  ],
   "groups": [
     {
-      "type": "currency",
-      "place": "VOID FISSURES, ANY",
-      "sub": "Relay Ducat Kiosk",
-      "activity": "crack Void Relics, trade Prime parts for Ducats",
-      "meta": "500 Ducats needed",
-      "mode": "squad of four for more reward picks",
+      "sub": null,
+      "activity": "reach MR 11",
+      "meta": null,
+      "mode": null,
       "live": null,
       "skip": null,
-      "earns": { "currency": "Orokin Ducats", "amount": "500" },
+      "earns": null,
       "spends": [],
-      "map": "void",
-      "rows": [
-        {
-          "qty": "500",
-          "label": "Ducats",
-          "note": "trade Prime parts and blueprints at any Relay Ducat Kiosk except Maroo's Bazaar",
-          "alt": null,
-          "done": false
-        }
-      ],
+      "map": null,
       "conditions": [],
       "bonuses": [],
       "disclosures": [],
+      "type": "gate",
+      "place": "MASTERY RANK",
+      "rows": [
+        {
+          "qty": null,
+          "note": "needed to equip it, and for a trade recipient",
+          "alt": null,
+          "done": false,
+          "label": "Mastery Rank 11"
+        }
+      ]
+    },
+    {
+      "sub": null,
+      "activity": "crack relics, sell Prime parts at a Relay Ducat Kiosk",
+      "meta": "bank it before Baro lands",
+      "mode": "full squad recommended",
+      "live": null,
+      "skip": null,
+      "earns": {
+        "currency": "Orokin Ducats",
+        "amount": "500"
+      },
+      "spends": [],
+      "map": null,
+      "conditions": [
+        "Ducats are untradeable; only the Prime parts that sell for them trade.",
+        "Maroo's Bazaar has no Ducat Kiosk; use any other Relay."
+      ],
+      "bonuses": [],
+      "disclosures": [],
+      "type": "currency",
+      "place": "VOID FISSURES",
+      "rows": [
+        {
+          "qty": "500",
+          "note": "common parts 15, uncommon 45, rare 100",
+          "alt": {
+            "text": "or 100 Aya at Varzia, 5 Ducats each",
+            "spends": [
+              {
+                "currency": "Aya",
+                "amount": "100"
+              }
+            ]
+          },
+          "done": false,
+          "label": "Orokin Ducats"
+        }
+      ],
       "ref": "Orokin Ducats"
     },
     {
-      "type": "vendor",
-      "place": "RELAY CONCOURSE, ANY",
-      "sub": "Baro Ki'Teer",
-      "activity": "buy the Prisma Twin Gremlins outright",
-      "meta": "stock rotates irregularly",
+      "sub": "Concourse",
+      "activity": "buy it on a visit that stocks it",
+      "meta": "every two weeks for 48 hours; stock rotates",
       "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
       "spends": [
-        { "currency": "Credits", "amount": "220,000" },
-        { "currency": "Orokin Ducats", "amount": "500" }
+        {
+          "currency": "Credits",
+          "amount": "220,000"
+        },
+        {
+          "currency": "Orokin Ducats",
+          "amount": "500"
+        }
       ],
       "map": null,
+      "conditions": ["Baro's stock changes each visit, so it may be missing on the next one."],
+      "bonuses": [],
+      "disclosures": [
+        {
+          "title": "other routes",
+          "body": "During TennoCon, Baro's special Relay is open to anyone with a ticket, and his stock there covers almost everything he has sold. Unranked copies without Forma or Catalyst also trade between players, to a recipient at MR 11."
+        }
+      ],
+      "type": "vendor",
+      "place": "BARO KI'TEER, RELAY",
       "rows": [
         {
           "qty": null,
-          "label": "Prisma Twin Gremlins",
-          "note": "arrives built, without an Orokin Catalyst; no Foundry step",
-          "alt": "or a TennoCon relay visit with Baro's Relay Ticket",
-          "done": false
+          "note": "arrives built, no blueprint or foundry step",
+          "alt": null,
+          "done": false,
+          "label": "Prisma Twin Gremlins"
         }
-      ],
-      "conditions": [
-        "Baro's stock changes every visit; gaps between appearances have run eight or nine months.",
-        "MR 11 is needed to equip it, and to receive it in a trade."
-      ],
-      "bonuses": [],
-      "disclosures": []
+      ]
     }
   ]
 }

@@ -3,87 +3,140 @@
   "kind": "melee",
   "effort": 2,
   "source": "shop",
-  "tradeable": true,
-  "progress": { "have": 0, "need": 1, "unit": "weapon" },
+  "tradeable": "unranked only, no Forma or Catalyst",
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "weapon"
+  },
   "badges": [
-    { "text": "Baro Ki'Teer only", "tone": "warn" },
-    { "text": "510 Ducats", "tone": "info" }
+    {
+      "text": "Baro only",
+      "tone": "warn"
+    },
+    {
+      "text": "MR 8",
+      "tone": "info"
+    }
   ],
   "prices": [
-    { "label": "credits", "amount": "175,000 cr", "money": false },
-    { "label": "Ducats", "amount": "510", "money": false }
+    {
+      "label": "Baro Ki'Teer",
+      "amount": "175,000 cr + 510 Ducats",
+      "money": false
+    }
   ],
-  "materials": [{ "qty": "175,000", "label": "Credits", "note": null }],
+  "materials": [
+    {
+      "qty": "175,000",
+      "label": "Credits",
+      "note": null
+    }
+  ],
   "groups": [
     {
-      "type": "currency",
-      "place": "VOID FISSURES, ANY",
       "sub": null,
-      "activity": "open Void Relics for Prime parts, sell the best drop for Ducats",
-      "meta": "stockpile ahead of Baro's visit",
-      "mode": "full squad of four",
+      "activity": "reach MR 8",
+      "meta": null,
+      "mode": null,
       "live": null,
       "skip": null,
-      "earns": { "currency": "Orokin Ducats", "amount": "510" },
+      "earns": null,
       "spends": [],
-      "map": "void",
+      "map": null,
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": [],
+      "type": "gate",
+      "place": "MASTERY RANK",
       "rows": [
         {
           "qty": null,
-          "label": "open relics, take the highest-value drop",
-          "note": "gold 100, silver 45, bronze 15 Ducats at the Kiosk",
+          "note": "needed to equip it",
           "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "sell duplicate Prime parts first",
-          "note": "free Ducats from your existing stash",
-          "alt": null,
-          "done": false
+          "done": false,
+          "label": "Mastery Rank 8"
         }
+      ]
+    },
+    {
+      "sub": null,
+      "activity": "crack relics, sell Prime parts at a Relay Ducat Kiosk",
+      "meta": "bank it before Baro lands",
+      "mode": "full squad recommended",
+      "live": null,
+      "skip": null,
+      "earns": {
+        "currency": "Orokin Ducats",
+        "amount": "510"
+      },
+      "spends": [],
+      "map": null,
+      "conditions": [
+        "Ducats are untradeable; only the Prime parts that sell for them trade.",
+        "Maroo's Bazaar has no Ducat Kiosk; use any other Relay."
       ],
-      "conditions": ["Ducat Kiosks are closed at Maroo's Bazaar; use a regular relay."],
-      "bonuses": [
-        "During Prime Resurgence, Varzia exchanges Aya for Ducats at 5 per Aya; a poor rate, useful only for leftover Aya."
-      ],
-      "disclosures": [
+      "bonuses": [],
+      "disclosures": [],
+      "type": "currency",
+      "place": "VOID FISSURES",
+      "rows": [
         {
-          "title": "build each Prime once first",
-          "body": "If you still need a Prime part for its own build, craft it before selling it for Ducats. Selling it first means farming the part again later."
+          "qty": "510",
+          "note": "common parts 15, uncommon 45, rare 100",
+          "alt": {
+            "text": "or 102 Aya at Varzia, 5 Ducats each",
+            "spends": [
+              {
+                "currency": "Aya",
+                "amount": "102"
+              }
+            ]
+          },
+          "done": false,
+          "label": "Orokin Ducats"
         }
       ],
       "ref": "Orokin Ducats"
     },
     {
-      "type": "vendor",
-      "place": "RELAY, CONCOURSE",
-      "sub": null,
-      "activity": "check Baro's rotating stock, then buy if listed",
-      "meta": "arrives every 2 weeks, stays ~48h",
+      "sub": "Concourse",
+      "activity": "buy it on a visit that stocks it",
+      "meta": "every two weeks for 48 hours; stock rotates",
       "mode": null,
-      "live": { "state": "waiting", "text": "check the Ducat Kiosk countdown for his next relay" },
+      "live": null,
       "skip": null,
       "earns": null,
-      "spends": [],
+      "spends": [
+        {
+          "currency": "Credits",
+          "amount": "175,000"
+        },
+        {
+          "currency": "Orokin Ducats",
+          "amount": "510"
+        }
+      ],
       "map": null,
+      "conditions": ["Baro's stock changes each visit, so it may be missing on the next one."],
+      "bonuses": [],
+      "disclosures": [
+        {
+          "title": "other routes",
+          "body": "During TennoCon, Baro's special Relay is open to anyone with a ticket, and his stock there covers almost everything he has sold. Unranked copies without Forma or Catalyst also trade between players."
+        }
+      ],
+      "type": "vendor",
+      "place": "BARO KI'TEER, RELAY",
       "rows": [
         {
           "qty": null,
-          "label": "Prisma Skana",
-          "note": "175,000 credits + 510 Ducats, only when in his rotating stock",
+          "note": "arrives built, no blueprint or foundry step",
           "alt": null,
-          "done": false
+          "done": false,
+          "label": "Prisma Skana"
         }
-      ],
-      "conditions": [
-        "Baro's stock changes every visit; Prisma Skana isn't guaranteed to be listed, and historical gaps between appearances have stretched to several months.",
-        "It arrives as the finished weapon: no blueprint, no crafting step."
-      ],
-      "bonuses": [
-        "The annual TennoCon relay sells his entire back-catalog for one week, Prisma Skana included, but entry needs a Baro's Relay Ticket from the real-money TennoCon Digital Pack."
-      ],
-      "disclosures": []
+      ]
     }
   ]
 }

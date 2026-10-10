@@ -5,110 +5,90 @@
   "source": "relics",
   "tradeable": true,
   "progress": { "have": 0, "need": 4, "unit": "parts" },
-  "badges": [
-    { "text": "vaulted", "tone": "warn" },
-    { "text": "Prime Resurgence", "tone": "info" }
+  "badges": [{ "text": "vaulted", "tone": "warn" }],
+  "prices": [],
+  "routes": [
+    {
+      "name": "Varzia relics, as Saryn Prime",
+      "cost": "1 Aya a relic during her Prime Resurgence, Rare Chassis, 3-day build",
+      "effort": 8,
+      "role": "chosen"
+    }
   ],
-  "prices": [
-    { "label": "set, player trade", "amount": "~40-80 p", "money": false },
-    { "label": "built, Varzia", "amount": "3 Regal Aya", "money": false }
+  "materials": [
+    { "qty": "1,500", "label": "Alloy Plate", "note": "Neuroptics" },
+    { "qty": "2", "label": "Neural Sensors", "note": "Neuroptics" },
+    { "qty": "3,500", "label": "Salvage", "note": "Neuroptics" },
+    { "qty": "1,950", "label": "Rubedo", "note": "750 Neuroptics, 1,200 Chassis" },
+    { "qty": "6", "label": "Nitain Extract", "note": "3 Chassis, 3 Systems" },
+    { "qty": "4,000", "label": "Nano Spores", "note": "Chassis" },
+    { "qty": "4,000", "label": "Ferrite", "note": "Systems" },
+    { "qty": "500", "label": "Circuits", "note": "Systems" },
+    { "qty": "2", "label": "Orokin Cell", "note": "1 Systems, 1 Saryn Prime" },
+    { "qty": "70,000", "label": "Credits", "note": null }
   ],
   "groups": [
     {
       "type": "currency",
       "place": "CAMBION DRIFT, DEIMOS",
       "sub": "Necralisk",
-      "activity": "Tier 5 bounty, Mother",
-      "meta": "bank Aya before her rotation",
-      "mode": "Lv 40-60; solo",
+      "activity": "Level 40-60 bounty, final stage",
+      "meta": "43.48% per final stage",
+      "mode": null,
       "live": null,
       "skip": null,
-      "earns": { "currency": "Aya", "amount": "20" },
+      "earns": null,
       "spends": [],
       "map": null,
       "rows": [
         {
-          "qty": "20",
+          "qty": null,
           "label": "Aya",
-          "note": "a starting budget; carries between rotations",
-          "alt": "Cetus tier-5 bounty",
+          "note": "1 per relic; bank it before the window opens",
+          "alt": null,
           "done": false
         }
       ],
-      "conditions": [
-        "Saryn Prime is vaulted. Her relics do not return to normal mission drop tables during Prime Resurgence; Varzia sells them only while Saryn is in the active rotation."
-      ],
-      "bonuses": [
-        "Use Cetus level 40-60 with a group if you prefer it; avoid Fortuna for dedicated Aya farming."
-      ],
-      "disclosures": [
-        {
-          "title": "the rotation is the real gate",
-          "body": "The researched rotation is Banshee/Mirage Prime through 2026-10-01, so Saryn relics are not currently for sale. Prime Resurgence changes every 28 days; check Varzia's live stock before spending Aya."
-        }
-      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": [],
       "ref": "Aya"
     },
     {
       "type": "vendor",
       "place": "MAROO'S BAZAAR, MARS",
-      "sub": null,
-      "activity": "Varzia, 1 Aya per relic",
-      "meta": "only during a Saryn rotation",
+      "sub": "Varzia",
+      "activity": "buy the Saryn Prime relics she stocks, 1 Aya each",
+      "meta": "only while Saryn Prime is in Prime Resurgence",
       "mode": null,
-      "live": { "state": "blocked", "text": "Vaulted; check Prime Resurgence" },
+      "live": { "state": "blocked", "text": "vaulted; only during her Prime Resurgence" },
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Aya", "amount": "20" }],
-      "map": "maroos-bazaar",
+      "spends": [],
+      "map": null,
       "rows": [
         {
-          "qty": "12",
-          "label": "Chassis relic",
-          "note": "Neo S13 in Saryn/Valkyr; Lith S17 in Nidus/Saryn",
-          "alt": "use matching relics already owned or buy them from players",
-          "done": false
-        },
-        {
-          "qty": "4",
-          "label": "Blueprint relic",
-          "note": "Lith V6 in Saryn/Valkyr; Axi N12 in Nidus/Saryn",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "2",
-          "label": "Neuroptics relic",
-          "note": "Lith C5 or Axi V9 common; Neo S19 uncommon",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "2",
-          "label": "Systems relic",
-          "note": "Axi S5 or Neo S13 common; Meso M5 common",
+          "qty": null,
+          "label": "Saryn Prime relics",
+          "note": "buy extra Chassis relics: every one carries it as the Rare",
           "alt": null,
           "done": false
         }
       ],
       "conditions": [
-        "The exact relics depend on which Saryn pairing returns. Confirm the stock and part rewards in Varzia's shop before buying.",
-        "Varzia is also available from the Prime Resurgence Market tab or the Orbiter Relic Segment.",
-        "Aya is untradeable, but purchased relics are tradeable and never expire."
+        "Her stock rotates away; relics and Aya you hold never expire.",
+        "Vaulted relics and the parts themselves still trade between players."
       ],
-      "bonuses": [
-        "A friend can spend their Aya on tradeable relics for you.",
-        "If farming Aya is not worth the time, buying the tradeable set is often cheapest while Saryn is active."
-      ],
+      "bonuses": ["Varzia is also in the Market's Prime Resurgence tab."],
       "disclosures": []
     },
     {
       "type": "fissure",
       "place": "ANY VOID FISSURE",
       "sub": null,
-      "activity": "crack the matching relic era",
-      "meta": "the Chassis is the bottleneck",
-      "mode": "four-player radshare for rare parts",
+      "activity": "crack the Saryn Prime relics",
+      "meta": "Chassis is the bottleneck",
+      "mode": "Radiant radshare for the Rares",
       "live": null,
       "skip": null,
       "earns": null,
@@ -117,56 +97,48 @@
       "rows": [
         {
           "qty": null,
-          "label": "Saryn Prime Chassis",
-          "note": "Rare: 10% Radiant; Neo S13 or Lith S17 in Resurgence rotations",
+          "label": "Saryn Prime Blueprint",
+          "note": "Lith V6 or Meso C3 or Axi N6 or Axi N12, Uncommon: 20% Radiant; Lith S4 or Meso S4 or Neo S1, Rare: 10% Radiant",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
-          "label": "Saryn Prime Blueprint",
-          "note": "Lith V6 or Axi N12 Uncommon in Resurgence rotations",
-          "alt": "some old relics hold it as a Rare",
+          "label": "Saryn Prime Neuroptics",
+          "note": "Lith A1 or Meso S5 or Meso S9 or Neo S19 or Neo V4, Uncommon: 20% Radiant; Lith C5 or Axi V9, Common: 25.33% Intact",
+          "alt": null,
           "done": false
         },
         {
           "qty": null,
-          "label": "Saryn Prime Neuroptics",
-          "note": "run Common relics Intact; Neo S19 is Uncommon",
+          "label": "Saryn Prime Chassis",
+          "note": "Lith S17 or Meso S2 or Neo S2 or Neo S10 or Neo S13, Rare: 10% Radiant",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Saryn Prime Systems",
-          "note": "Common in the listed Resurgence relics; run Intact",
+          "note": "Lith H1 or Meso C1 or Meso F1 or Meso M5 or Meso N4 or Neo N5 or Neo S10 or Neo S13 or Axi G1 or Axi S5 or Axi T1, Common: 25.33% Intact",
           "alt": null,
           "done": false
         }
       ],
       "conditions": [
-        "Refine the Chassis relic to Radiant: a 2% Rare becomes 10% for 100 Void Traces. Four matching Radiants have a 34.39% chance to show at least one Rare reward.",
-        "Do not refine relics sought only for Common parts: Radiant lowers a Common reward from 25.33% to 16.67%.",
-        "Every player must collect 10 Reactant before extraction to open their relic."
+        "Refine Rare relics to Radiant (100 Void Traces each); leave Common relics Intact, since Radiant lowers their odds to 16.67%.",
+        "Mission rewards never drop Resurgence relics; Varzia is the only source."
       ],
       "bonuses": [
-        "Host or join an exact-relic radshare in Recruitment chat or the Vaulted Relic Community Discord; solo Radiant averages ten Chassis attempts.",
-        "Only one reward may be selected per fissure. If one relic holds two wanted parts, keep cracking it until both are secured.",
-        "Varzia sells 5 Void Traces for 1 Aya when traces, rather than relics, become the limiting resource."
+        "Pick a teammate's identical reward at the reward screen; they get 5 bonus Void Traces."
       ],
-      "disclosures": [
-        {
-          "title": "avoid wasting rare rolls",
-          "body": "A four-player radshare is best when everyone needs the Chassis or can use its value. If only one player needs it, coordinate fewer Radiants per run so duplicate Rare rewards are less likely to be wasted."
-        }
-      ]
+      "disclosures": []
     },
     {
       "type": "foundry",
       "place": "FOUNDRY",
       "sub": null,
       "activity": "build components, then Saryn Prime",
-      "meta": "12h each, then 72h",
+      "meta": "12h each, then 3 days",
       "mode": null,
       "live": null,
       "skip": null,
@@ -177,17 +149,33 @@
         {
           "qty": null,
           "label": "Saryn Prime Neuroptics",
-          "note": null,
+          "note": "15,000 cr, 1,500 Alloy Plate, 2 Neural Sensors, 3,500 Salvage, 750 Rubedo",
           "alt": null,
           "done": false
         },
-        { "qty": null, "label": "Saryn Prime Chassis", "note": null, "alt": null, "done": false },
-        { "qty": null, "label": "Saryn Prime Systems", "note": null, "alt": null, "done": false },
-        { "qty": null, "label": "Saryn Prime", "note": null, "alt": null, "done": false }
+        {
+          "qty": null,
+          "label": "Saryn Prime Chassis",
+          "note": "15,000 cr, 3 Nitain Extract, 4,000 Nano Spores, 1,200 Rubedo",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Saryn Prime Systems",
+          "note": "15,000 cr, 3 Nitain Extract, 1 Orokin Cell, 4,000 Ferrite, 500 Circuits",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Saryn Prime",
+          "note": "25,000 cr, the three parts, 1 Orokin Cell",
+          "alt": null,
+          "done": false
+        }
       ],
-      "conditions": [
-        "Components build in parallel. Keep a free Warframe slot for the final claim."
-      ],
+      "conditions": [],
       "bonuses": [],
       "disclosures": []
     }

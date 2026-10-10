@@ -7,15 +7,43 @@
   "progress": { "have": 0, "need": 4, "unit": "parts" },
   "badges": [
     { "text": "Judgement Points", "tone": "warn" },
-    { "text": "Systems rare", "tone": "warn" }
+    { "text": "Circuit week 4", "tone": "circuit" }
   ],
   "prices": [
     { "label": "blueprint", "amount": "35,000 cr", "money": false },
     { "label": "built", "amount": "225 p", "money": false }
   ],
+  "routes": [
+    {
+      "name": "Kela De Thaym on Merrow",
+      "cost": "25 Judgement Points a fight, 13 refunded; one component a kill, Systems at 22.56%",
+      "effort": 4,
+      "role": "chosen"
+    },
+    {
+      "name": "The Circuit, week 4",
+      "cost": "Neuroptics at tier 2, Chassis 5, Systems 8, main blueprint 10; no RNG",
+      "effort": 3,
+      "role": null
+    }
+  ],
   "materials": [
+    {
+      "qty": "25",
+      "label": "Judgement Points",
+      "note": "to enter each Kela fight; 13 refunded on a kill"
+    },
+    { "qty": "150", "label": "Circuits", "note": "Neuroptics" },
+    { "qty": "1", "label": "Neural Sensors", "note": "Neuroptics" },
+    { "qty": "300", "label": "Polymer Bundle", "note": "Neuroptics" },
+    { "qty": "950", "label": "Salvage", "note": "400 Neuroptics, 550 Systems" },
+    { "qty": "2", "label": "Morphics", "note": "1 Chassis, 1 Systems" },
+    { "qty": "1,000", "label": "Ferrite", "note": "Chassis" },
+    { "qty": "50", "label": "Rubedo", "note": "Chassis" },
+    { "qty": "1", "label": "Control Module", "note": "Systems" },
+    { "qty": "350", "label": "Plastids", "note": "Systems" },
     { "qty": "1", "label": "Orokin Cell", "note": null },
-    { "qty": "12", "label": "Judgement Points", "note": null }
+    { "qty": "105,000", "label": "Credits", "note": null }
   ],
   "groups": [
     {
@@ -28,57 +56,18 @@
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        { "qty": null, "label": "Saryn Blueprint", "note": null, "alt": null, "done": false }
-      ],
-      "conditions": [
-        "Kela only drops component blueprints; buy the main blueprint from the Market before farming."
-      ],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "gate",
-      "place": "SEDNA",
-      "sub": "Eris Junction",
-      "activity": "unlock Merrow",
-      "meta": "heavy Junction gate",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
+      "spends": [{ "currency": "Credits", "amount": "35,000" }],
       "map": null,
       "rows": [
         {
           "qty": null,
-          "label": "The Rising Tide",
-          "note": "Railjack quest",
+          "label": "Saryn Blueprint",
+          "note": "Kela drops only the component blueprints",
           "alt": null,
           "done": false
-        },
-        {
-          "qty": null,
-          "label": "Sover Strait",
-          "note": "Earth Proxima",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "5",
-          "label": "Vomvalysts",
-          "note": "Plains of Eidolon, night",
-          "alt": null,
-          "done": false
-        },
-        { "qty": null, "label": "Ambulas", "note": "Hades, Pluto", "alt": null, "done": false }
+        }
       ],
-      "conditions": [
-        "The Sedna Junction is on Eris, not Pluto.",
-        "Ambulas needs Animo Nav Beacons from Pluto Corpus proxies."
-      ],
+      "conditions": [],
       "bonuses": [],
       "disclosures": []
     },
@@ -87,8 +76,8 @@
       "place": "MERROW, SEDNA",
       "sub": null,
       "activity": "Assassination, Kela De Thaym",
-      "meta": "~6-12 kills for a set",
-      "mode": "short blocks",
+      "meta": "one component blueprint per kill",
+      "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
@@ -97,69 +86,37 @@
       "rows": [
         {
           "qty": null,
-          "label": "Neuroptics Blueprint",
+          "label": "Saryn Neuroptics Blueprint",
           "note": "38.72%",
           "alt": null,
           "done": false
         },
-        { "qty": null, "label": "Chassis Blueprint", "note": "38.72%", "alt": null, "done": false },
-        { "qty": null, "label": "Systems Blueprint", "note": "22.56%", "alt": null, "done": false }
-      ],
-      "conditions": [
-        "One component blueprint drops on every successful kill; Systems is the usual last piece.",
-        "Bring a beam, punch-through, or wide-AoE weapon for the spinning green targets; the target phases, not Kela's health, are the time sink.",
-        "In phases 2 and 3 all four floor pads light up regardless of squad size. Hit the four green targets in their randomized order to bring Kela back out.",
-        "Kela is immune to Viral status.",
-        "Kela consumes 25 and refunds 13: net cost is 12 points per kill. One Vodyanoi run funds two kills.",
-        "After Kela you have 13 points, below Vodyanoi's 15-point entry check; bank a buffer instead of farming hand-to-mouth.",
-        "Every squad member needs 25 points at Merrow mission start."
-      ],
-      "bonuses": [
-        "Operator Void Mode, frame invisibility, Limbo Cataclysm, or Zephyr Turbulence can neutralize the Orbital Strike phases."
-      ],
-      "disclosures": [
-        {
-          "title": "do not run Sortie Kela for parts",
-          "body": "The Sortie version waives Judgement Points but never drops Saryn components. It can still award Kela's other drops, but it is not a Saryn farm."
-        }
-      ]
-    },
-    {
-      "type": "farm",
-      "place": "THE CIRCUIT, DUVIRI",
-      "sub": "Normal Circuit, Saryn week",
-      "activity": "alternate deterministic route",
-      "meta": "week 4 of 11",
-      "mode": "~23 continuous stages",
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
         {
           "qty": null,
-          "label": "Neuroptics Blueprint",
-          "note": "tier 2",
+          "label": "Saryn Chassis Blueprint",
+          "note": "38.72%",
           "alt": null,
           "done": false
         },
-        { "qty": null, "label": "Chassis Blueprint", "note": "tier 5", "alt": null, "done": false },
-        { "qty": null, "label": "Systems Blueprint", "note": "tier 8", "alt": null, "done": false },
         {
           "qty": null,
-          "label": "Saryn Blueprint",
-          "note": "tier 10",
-          "alt": "3,640 cumulative progress",
+          "label": "Saryn Systems Blueprint",
+          "note": "22.56%",
+          "alt": null,
           "done": false
         }
       ],
       "conditions": [
-        "Requires The Duviri Paradox. Circuit rewards reset Monday 00:00 UTC.",
-        "Only choose this if Saryn's week is live and you want the no-RNG route; missing it means waiting through the 11-week cycle."
+        "Every squad member needs 25 Judgement Points to start; a kill spends 25 and refunds 13, so 12 net.",
+        "Sortie Kela never drops Saryn components."
       ],
-      "bonuses": [],
-      "disclosures": []
+      "bonuses": ["Kela also drops an Orokin Cell at 2.58% and a Twin Kohmak blueprint at 25%."],
+      "disclosures": [
+        {
+          "title": "The Circuit instead, week 4 of 11",
+          "body": "Needs The Duviri Paradox. Pick Saryn on her week and claim Neuroptics at tier 2, Chassis at tier 5, Systems at tier 8 and the main blueprint at tier 10, which is 3,640 Circuit Progress or about 23 continuous stages. Tier rewards claim once a week and reset Monday 00:00 UTC."
+        }
+      ]
     },
     {
       "type": "foundry",
@@ -174,13 +131,37 @@
       "spends": [],
       "map": null,
       "rows": [
-        { "qty": null, "label": "Neuroptics", "note": null, "alt": null, "done": false },
-        { "qty": null, "label": "Chassis", "note": null, "alt": null, "done": false },
-        { "qty": null, "label": "Systems", "note": null, "alt": null, "done": false },
-        { "qty": null, "label": "Saryn", "note": "needs 1 Orokin Cell", "alt": null, "done": false }
+        {
+          "qty": null,
+          "label": "Saryn Neuroptics",
+          "note": "15,000 cr, 150 Circuits, 1 Neural Sensors, 300 Polymer Bundle, 400 Salvage",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Saryn Chassis",
+          "note": "15,000 cr, 1 Morphics, 1,000 Ferrite, 50 Rubedo",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Saryn Systems",
+          "note": "15,000 cr, 1 Control Module, 1 Morphics, 550 Salvage, 350 Plastids",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Saryn",
+          "note": "25,000 cr, the three parts, 1 Orokin Cell",
+          "alt": null,
+          "done": false
+        }
       ],
       "conditions": [
-        "If Chroma is also on your list, farm a second Saryn Systems blueprint: Chroma Systems requires a built Saryn Systems."
+        "Chroma Systems needs a built Saryn Systems, so farm a second one if Chroma is next."
       ],
       "bonuses": [],
       "disclosures": []

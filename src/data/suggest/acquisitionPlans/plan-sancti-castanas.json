@@ -6,7 +6,11 @@
   "tradeable": "unranked, no Forma/Catalyst",
   "progress": { "have": 0, "need": 1, "unit": "purchase" },
   "badges": [
-    { "text": "Flawless rank gate", "tone": "warn" },
+    {
+      "text": "Flawless rank gate",
+      "tone": "warn",
+      "rank": { "syndicate": "New Loka", "level": 5 }
+    },
     { "text": "MR 10", "tone": "info" }
   ],
   "prices": [
@@ -16,11 +20,36 @@
   "materials": [{ "qty": "940,000", "label": "Credits", "note": null }],
   "groups": [
     {
+      "type": "gate",
+      "place": "MASTERY RANK",
+      "sub": null,
+      "activity": "reach MR 10",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Mastery Rank 10",
+          "note": "needed to buy it or receive it in a trade",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
       "type": "currency",
       "place": "NEW LOKA SYNDICATE, ORBITER",
-      "sub": null,
-      "activity": "pledge New Loka (MR 3), earn standing from affinity, Syndicate Alerts and Seeds",
-      "meta": "240,000 standing to Flawless plus 100,000 for the weapon",
+      "sub": "Syndicate console",
+      "activity": "pledge New Loka, earn standing from affinity, Syndicate Alerts and Seeds",
+      "meta": "240,000 standing to Flawless, 100,000 more for the weapon",
       "mode": null,
       "live": null,
       "skip": null,
@@ -31,42 +60,53 @@
         {
           "qty": "1,000",
           "label": "Ferrite",
-          "note": "Rank 0 Initiation sacrifice",
+          "note": "Initiation sacrifice, 10,000 cr",
           "alt": null,
           "done": false
         },
         {
           "qty": "2",
           "label": "Fieldron Sample",
-          "note": "Rank 1 Humane sacrifice",
+          "note": "Rank 1 Humane sacrifice, 5,000 standing, 30,000 cr",
           "alt": null,
-          "done": false
+          "done": false,
+          "rank": { "syndicate": "New Loka", "level": 1 }
         },
         {
           "qty": "1",
           "label": "Forma",
-          "note": "Rank 2 Bountiful sacrifice",
+          "note": "Rank 2 Bountiful sacrifice, 22,000 standing, 50,000 cr",
           "alt": null,
-          "done": false
+          "done": false,
+          "rank": { "syndicate": "New Loka", "level": 2 }
         },
         {
           "qty": "1",
           "label": "Orokin Reactor",
-          "note": "Rank 3 Benevolent sacrifice",
+          "note": "Rank 3 Benevolent sacrifice, 44,000 standing, 100,000 cr",
           "alt": null,
-          "done": false
+          "done": false,
+          "rank": { "syndicate": "New Loka", "level": 3 }
         },
         {
-          "qty": "5",
+          "qty": "2",
           "label": "Aya",
-          "note": "2 at Rank 4 Pure, 3 at Rank 5 Flawless",
-          "alt": "Cetus bounties are fastest, Deimos close behind; or a Syndicate Relic Pack, 20,000 standing at Rank 2",
-          "done": false
+          "note": "Rank 4 Pure sacrifice, 70,000 standing, 250,000 cr",
+          "alt": null,
+          "done": false,
+          "rank": { "syndicate": "New Loka", "level": 4 }
+        },
+        {
+          "qty": "3",
+          "label": "Aya",
+          "note": "Rank 5 Flawless sacrifice, 99,000 standing, 500,000 cr",
+          "alt": null,
+          "done": false,
+          "rank": { "syndicate": "New Loka", "level": 5 }
         }
       ],
       "conditions": [
-        "Helping Steel Meridian halves New Loka standing and Cephalon Suda zeroes it; falling below a rank's minimum demotes you.",
-        "Rank-ups cost 940,000 credits in total, paid once even if you are demoted and re-rank."
+        "A rank-up spends the standing you hold, so the weapon's price is earned on top of the 240,000."
       ],
       "bonuses": [],
       "disclosures": [],
@@ -74,7 +114,7 @@
     },
     {
       "type": "vendor",
-      "place": "NEW LOKA OFFERINGS",
+      "place": "NEW LOKA OFFERINGS, ORBITER",
       "sub": "Syndicate console",
       "activity": "buy Sancti Castanas",
       "meta": "Flawless, 100,000 standing",
@@ -93,10 +133,7 @@
           "done": false
         }
       ],
-      "conditions": [
-        "Flawless can't be the free rank-up gift for a syndicate weapon, so you pay the 100,000.",
-        "Mastery Rank 10 is required to buy it or receive it in a trade."
-      ],
+      "conditions": ["It can't be the free Flawless rank-up gift, so the 100,000 is always paid."],
       "bonuses": [],
       "disclosures": []
     }

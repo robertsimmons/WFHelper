@@ -1,7 +1,7 @@
 {
   "name": "Sarpa",
   "kind": "melee",
-  "effort": 5,
+  "effort": 2,
   "source": "dojo",
   "tradeable": false,
   "progress": { "have": 0, "need": 1, "unit": "blueprint" },
@@ -20,10 +20,35 @@
     { "qty": "2", "label": "Gallium", "note": "Akstiletto" },
     { "qty": "800", "label": "Salvage", "note": "Akstiletto" },
     { "qty": "200", "label": "Alloy Plate", "note": "Akstiletto" },
-    { "qty": "1", "label": "Forma", "note": null },
+    { "qty": "1", "label": "Forma", "note": "Akstiletto" },
     { "qty": "75,000", "label": "Credits", "note": null }
   ],
   "groups": [
+    {
+      "type": "gate",
+      "place": "MASTERY RANK",
+      "sub": null,
+      "activity": "reach MR 8",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Mastery Rank 8",
+          "note": "needed to equip it",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
     {
       "type": "vendor",
       "place": "CLAN DOJO, TENNO LAB",
@@ -42,7 +67,7 @@
       "conditions": [
         "The Sarpa build consumes the Akstiletto. Rank it to 30 first to bank its Mastery."
       ],
-      "bonuses": ["Akstiletto also drops from Axi A7 and Meso V6 relics, which skips the lab."],
+      "bonuses": [],
       "disclosures": []
     },
     {
@@ -69,7 +94,7 @@
       "place": "FOUNDRY",
       "sub": null,
       "activity": "build Akstiletto, then Sarpa",
-      "meta": "20,000 cr each, 12h for Sarpa",
+      "meta": "12h each",
       "mode": null,
       "live": null,
       "skip": null,
@@ -80,14 +105,14 @@
         {
           "qty": null,
           "label": "Akstiletto",
-          "note": "2 Gallium, 800 Salvage, 200 Alloy Plate, 1 Forma",
+          "note": "20,000 cr, 2 Gallium, 800 Salvage, 200 Alloy Plate, 1 Forma",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Sarpa",
-          "note": "1 Akstiletto, 3,300 Cryotic, 1,000 Plastids, 2 Control Module",
+          "note": "20,000 cr, 1 Akstiletto, 3,300 Cryotic, 1,000 Plastids, 2 Control Module",
           "alt": null,
           "done": false
         }

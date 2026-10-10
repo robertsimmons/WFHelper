@@ -5,10 +5,7 @@
   "source": "duviri",
   "tradeable": false,
   "progress": { "have": 0, "need": 1, "unit": "blueprint" },
-  "badges": [
-    { "text": "currency purchase, no RNG", "tone": "info" },
-    { "text": "needs The Hex for Isleweaver", "tone": "warn" }
-  ],
+  "badges": [{ "text": "60 Pathos Clamp, no RNG", "tone": "info" }],
   "prices": [{ "label": "build", "amount": "30,000 cr", "money": false }],
   "materials": [
     { "qty": "60", "label": "Pathos Clamp", "note": null },
@@ -23,7 +20,7 @@
       "type": "gate",
       "place": "MAIN QUESTLINE",
       "sub": null,
-      "activity": "The Duviri Paradox, then The Hex",
+      "activity": "complete The Duviri Paradox",
       "meta": null,
       "mode": null,
       "live": null,
@@ -35,21 +32,12 @@
         {
           "qty": null,
           "label": "The Duviri Paradox",
-          "note": "unlocks Duviri",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "The Hex",
-          "note": "unlocks Isleweaver, the fast Pathos Clamp duet",
+          "note": "unlocks Duviri and Teshin's Cave",
           "alt": null,
           "done": false
         }
       ],
-      "conditions": [
-        "Without The Hex you're stuck fighting the full Duviri Experience Orowyrm for clamps instead of the much shorter Isleweaver duet."
-      ],
+      "conditions": [],
       "bonuses": [],
       "disclosures": []
     },
@@ -57,8 +45,8 @@
       "type": "vendor",
       "place": "TESHIN'S CAVE, DUVIRI",
       "sub": null,
-      "activity": "buy the chamber from the Drifter melee vendor",
-      "meta": null,
+      "activity": "buy Sampotes at the Armory",
+      "meta": "60 Pathos Clamp",
       "mode": null,
       "live": null,
       "skip": null,
@@ -69,13 +57,13 @@
         {
           "qty": null,
           "label": "Sampotes",
-          "note": "grants the Drifter version plus a Warframe blueprint",
+          "note": "unlocks the Drifter version and delivers the Warframe blueprint to the Foundry",
           "alt": null,
           "done": false
         }
       ],
       "conditions": [
-        "If you sell the Warframe blueprint by mistake, Cephalon Simaris resells it for 100,000 standing: don't sell it."
+        "Extra Warframe blueprint copies cost 100,000 standing from Cephalon Simaris."
       ],
       "bonuses": [],
       "disclosures": []
@@ -85,7 +73,7 @@
       "place": "FOUNDRY",
       "sub": null,
       "activity": "build Sampotes",
-      "meta": "1 day, 30,000 cr",
+      "meta": "24h",
       "mode": null,
       "live": null,
       "skip": null,

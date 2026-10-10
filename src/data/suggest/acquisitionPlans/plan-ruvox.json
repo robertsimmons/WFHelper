@@ -13,20 +13,20 @@
   "materials": [
     { "qty": "16", "label": "Gallium", "note": "8 per Blade, built twice" },
     { "qty": "2,800", "label": "Ferrite", "note": "1,400 per Glove, built twice" },
-    { "qty": "8", "label": "Entrati Lanthorn", "note": "build requirement" },
-    { "qty": "9,000", "label": "Entrati Obols", "note": "Blade material" },
-    { "qty": "20", "label": "Bellow Voca", "note": "Blade material" },
-    { "qty": "1,000", "label": "Necracoil", "note": null },
-    { "qty": "8", "label": "Echo Voca", "note": null },
+    { "qty": "8", "label": "Entrati Lanthorn", "note": "2 per Blade and Glove" },
+    { "qty": "9,000", "label": "Entrati Obols", "note": "Blade" },
+    { "qty": "20", "label": "Bellow Voca", "note": "Blade" },
+    { "qty": "1,000", "label": "Necracoil", "note": "Glove" },
+    { "qty": "8", "label": "Echo Voca", "note": "Glove" },
     { "qty": "100,000", "label": "Credits", "note": null }
   ],
   "groups": [
     {
       "type": "gate",
-      "place": "QUESTS",
+      "place": "QUESTS, MASTERY RANK",
       "sub": null,
-      "activity": "The Deadlock Protocol, then Whispers in the Walls",
-      "meta": null,
+      "activity": "finish both quests, reach MR 14",
+      "meta": "opens Sanctum Anatomica and Armatus",
       "mode": null,
       "live": null,
       "skip": null,
@@ -36,20 +36,27 @@
       "rows": [
         {
           "qty": null,
+          "label": "Mastery Rank 14",
+          "note": "needed to equip it",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
           "label": "The Deadlock Protocol",
-          "note": "required",
+          "note": "needed to reach Armatus",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Whispers in the Walls",
-          "note": "required",
+          "note": "needed to reach Armatus",
           "alt": null,
           "done": false
         }
       ],
-      "conditions": ["Whispers in the Walls unlocks Sanctum Anatomica and Armatus."],
+      "conditions": [],
       "bonuses": [],
       "disclosures": []
     },
@@ -58,7 +65,7 @@
       "place": "ARMATUS, DEIMOS",
       "sub": "Sanctum Anatomica",
       "activity": "Disruption",
-      "meta": null,
+      "meta": "5% each, Rotation B only",
       "mode": "farm alongside Dante and Onos in the same session",
       "live": null,
       "skip": null,
@@ -70,85 +77,51 @@
           "qty": null,
           "label": "Ruvox Blueprint",
           "note": "5%, Rotation B",
-          "alt": "or 180 Vessel Capillaries at Loid",
+          "alt": {
+            "text": "or buy from Loid in Sanctum Anatomica",
+            "spends": [{ "currency": "Vessel Capillaries", "amount": "180" }]
+          },
           "done": false
         },
         {
           "qty": "2",
           "label": "Ruvox Blade Blueprint",
           "note": "5%, Rotation B",
-          "alt": "or 45 Vessel Capillaries each at Loid",
+          "alt": {
+            "text": "or buy from Loid, 45 each",
+            "spends": [{ "currency": "Vessel Capillaries", "amount": "90" }]
+          },
           "done": false
         },
         {
           "qty": "2",
           "label": "Ruvox Glove Blueprint",
           "note": "5%, Rotation B",
-          "alt": "or 45 Vessel Capillaries each at Loid",
+          "alt": {
+            "text": "or buy from Loid, 45 each",
+            "spends": [{ "currency": "Vessel Capillaries", "amount": "90" }]
+          },
           "done": false
         }
       ],
       "conditions": [
-        "Disruption is not AABC: a clean round 1, a round 2 with 3+ conduits defended, and a round 3 with 2-3 defended all pay from B; from round 4 on, only a round where at least one conduit is lost pays B; a clean round pays C (Dante) instead.",
-        "Vessel Capillaries are shared with Dante, Onos and Riven Transmuters, so bank them and buy only whichever parts are still missing at the end.",
-        "Onos shares this same 5% Rotation B slot, so its blueprint can drop while you farm Ruvox."
+        "Disruption has no AABC rotation: round 1 pays B with all 4 conduits defended, round 2 with 3-4, round 3 with 2-3, round 4+ with 1-2. Fewer conduits pays A, more pays C (Dante).",
+        "Onos shares this 5% Rotation B table, so its blueprint can drop while you farm Ruvox.",
+        "Vessel Capillaries are shared with Dante, Onos and Riven Transmuters; buy only the parts still missing."
       ],
       "bonuses": [
-        "Steel Path Armatus pays 5-7 Capillaries per Demolisher instead of 2-4.",
-        "Killing a Gruzzling guarantees a Docket, so you don't have to wait on an Eximus drop to open a conduit."
+        "Every Demolisher drops 2-4 Vessel Capillaries (5-7 on Steel Path).",
+        "Killing a Gruzzling guarantees a Docket, which opens a conduit."
       ],
-      "disclosures": [
-        {
-          "title": "the B/C tradeoff",
-          "body": "From round 4 on, a clean round pays C (Dante) and never B. To keep drawing from B you have to let roughly 2 conduits fall each round, which costs you the Demolisher kills, and Capillaries, tied to those conduits. A short, clean run to round 3-4 often nets Ruvox parts and Capillaries better than deliberately bleeding conduits."
-        }
-      ]
-    },
-    {
-      "type": "vendor",
-      "place": "SANCTUM ANATOMICA, DEIMOS",
-      "sub": null,
-      "activity": "Loid",
-      "meta": "pity shop",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [{ "currency": "Vessel Capillaries", "amount": "360" }],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Ruvox Blueprint",
-          "note": "180 Capillaries",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "2",
-          "label": "Ruvox Blade Blueprint",
-          "note": "45 Capillaries each",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "2",
-          "label": "Ruvox Glove Blueprint",
-          "note": "45 Capillaries each",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": ["This is the hard pity ceiling for a complete Ruvox set from scratch."],
-      "bonuses": [],
-      "disclosures": []
+      "disclosures": [],
+      "ref": "Vessel Capillaries"
     },
     {
       "type": "foundry",
       "place": "FOUNDRY",
       "sub": null,
-      "activity": "build components, then Ruvox",
-      "meta": "12h each, two foundry cycles",
+      "activity": "build the Blades and Gloves, then Ruvox",
+      "meta": "12h each",
       "mode": null,
       "live": null,
       "skip": null,
@@ -157,30 +130,28 @@
       "map": null,
       "rows": [
         {
-          "qty": null,
-          "label": "Blade",
-          "note": "20,000 cr, 4,500 Obols, 10 Bellow Voca, 2 Lanthorn, 8 Gallium: build twice",
+          "qty": "2",
+          "label": "Ruvox Blade",
+          "note": "20,000 cr each, 4,500 Entrati Obols, 10 Bellow Voca, 2 Entrati Lanthorn, 8 Gallium",
           "alt": null,
           "done": false
         },
         {
-          "qty": null,
-          "label": "Glove",
-          "note": "20,000 cr, 1,400 Ferrite, 500 Necracoil, 2 Lanthorn, 4 Echo Voca: build twice",
+          "qty": "2",
+          "label": "Ruvox Glove",
+          "note": "20,000 cr each, 1,400 Ferrite, 500 Necracoil, 2 Entrati Lanthorn, 4 Echo Voca",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Ruvox",
-          "note": "20,000 cr, 2 Blades + 2 Gloves",
+          "note": "20,000 cr, 2 Blades, 2 Gloves",
           "alt": null,
           "done": false
         }
       ],
-      "conditions": [
-        "The main Ruvox blueprint can't be bought for credits; it only comes from Armatus or the Loid pity shop."
-      ],
+      "conditions": [],
       "bonuses": [],
       "disclosures": []
     }

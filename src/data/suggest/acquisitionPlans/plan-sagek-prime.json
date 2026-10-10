@@ -13,6 +13,20 @@
     { "label": "full set from Roathe", "amount": "85 Maphica", "money": false },
     { "label": "builds", "amount": "45,000 cr", "money": false }
   ],
+  "routes": [
+    {
+      "name": "Perita Rebellion, Rotation A",
+      "cost": "5.71% a part every 3 Orders, any recall",
+      "effort": 6,
+      "role": "chosen"
+    },
+    {
+      "name": "Roathe's shop",
+      "cost": "85 Maphica for the set, earned in The Descendia",
+      "effort": 7,
+      "role": null
+    }
+  ],
   "materials": [
     { "qty": "1,400", "label": "Agnovidisc", "note": "650 Barrel, 750 Receiver" },
     { "qty": "380", "label": "Laudavi", "note": "160 Barrel, 220 Receiver" },
@@ -24,8 +38,8 @@
       "type": "gate",
       "place": "MAIN QUESTLINE",
       "sub": null,
-      "activity": "complete The Old Peace",
-      "meta": "unlocks the Dark Refractory and La Cathédrale",
+      "activity": "complete The Old Peace, reach MR 14",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -36,10 +50,11 @@
         {
           "qty": null,
           "label": "The Old Peace",
-          "note": "opens The Perita Rebellion and Roathe's shop",
+          "note": "needs The Lotus Eaters first; opens The Perita Rebellion and Roathe's shop",
           "alt": null,
           "done": false
-        }
+        },
+        { "qty": null, "label": "Mastery Rank 14", "note": null, "alt": null, "done": false }
       ],
       "conditions": [],
       "bonuses": [],
@@ -50,7 +65,7 @@
       "place": "DARK REFRACTORY, DEIMOS",
       "sub": "The Perita Rebellion, any recall",
       "activity": "complete Orders; every 3 Orders rolls Rotation A",
-      "meta": "5.71% per part, ~17 rotations each",
+      "meta": "5.71% per part",
       "mode": "Recall: Dactolyst, Hunhullus or Prime Vanguard",
       "live": null,
       "skip": null,
@@ -134,14 +149,9 @@
           "done": false
         }
       ],
-      "conditions": ["MR 14 required."],
+      "conditions": [],
       "bonuses": [],
-      "disclosures": [
-        {
-          "title": "DE's data lists Orokin Cells",
-          "body": "The wiki's main recipe is 15,000 cr, Barrel and Receiver. DE's Public Export also lists 5 Orokin Cell; bring them in case the foundry asks."
-        }
-      ]
+      "disclosures": []
     }
   ]
 }

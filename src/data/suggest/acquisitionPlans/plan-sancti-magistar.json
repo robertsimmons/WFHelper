@@ -4,24 +4,53 @@
   "effort": 4,
   "source": "standing",
   "tradeable": "unranked, no Forma/Catalyst",
-  "progress": { "have": 0, "need": 1, "unit": "weapon" },
+  "progress": { "have": 0, "need": 1, "unit": "purchase" },
   "badges": [
-    { "text": "Rank 5 Flawless", "tone": "warn" },
-    { "text": "no RNG", "tone": "info" }
+    {
+      "text": "Flawless rank gate",
+      "tone": "warn",
+      "rank": { "syndicate": "New Loka", "level": 5 }
+    },
+    { "text": "MR 8", "tone": "info" }
   ],
-  "prices": [],
-  "materials": [
-    { "qty": "5", "label": "Aya", "note": null },
-    { "qty": "940,000", "label": "Credits", "note": null }
+  "prices": [
+    { "label": "standing", "amount": "365,000", "money": false },
+    { "label": "credits", "amount": "940,000 cr", "money": false }
   ],
+  "materials": [{ "qty": "940,000", "label": "Credits", "note": null }],
   "groups": [
     {
+      "type": "gate",
+      "place": "MASTERY RANK",
+      "sub": null,
+      "activity": "reach MR 8",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Mastery Rank 8",
+          "note": "needed to buy it or receive it in a trade",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
       "type": "currency",
-      "place": "HYDRON, SEDNA",
-      "sub": "or Elite Sanctuary Onslaught",
-      "activity": "pledge to New Loka; farm affinity-dense Grineer missions",
-      "meta": "15% of affinity becomes standing",
-      "mode": "any squad",
+      "place": "NEW LOKA SYNDICATE, ORBITER",
+      "sub": "Syndicate console",
+      "activity": "pledge New Loka, earn standing from affinity, Syndicate Alerts and Seeds",
+      "meta": "240,000 standing to Flawless, 125,000 more for the weapon",
+      "mode": null,
       "live": null,
       "skip": null,
       "earns": { "currency": "New Loka Standing", "amount": "365,000" },
@@ -29,22 +58,55 @@
       "map": null,
       "rows": [
         {
-          "qty": null,
-          "label": "pledge to New Loka",
-          "note": "buy the sigil at any Relay enclave",
+          "qty": "1,000",
+          "label": "Ferrite",
+          "note": "Initiation sacrifice, 10,000 cr",
           "alt": null,
           "done": false
         },
         {
-          "qty": "365,000",
-          "label": "New Loka standing",
-          "note": "240,000 for rank-ups, 125,000 for the weapon",
+          "qty": "2",
+          "label": "Fieldron Sample",
+          "note": "Rank 1 Humane sacrifice, 5,000 standing, 30,000 cr",
           "alt": null,
-          "done": false
+          "done": false,
+          "rank": { "syndicate": "New Loka", "level": 1 }
+        },
+        {
+          "qty": "1",
+          "label": "Forma",
+          "note": "Rank 2 Bountiful sacrifice, 22,000 standing, 50,000 cr",
+          "alt": null,
+          "done": false,
+          "rank": { "syndicate": "New Loka", "level": 2 }
+        },
+        {
+          "qty": "1",
+          "label": "Orokin Reactor",
+          "note": "Rank 3 Benevolent sacrifice, 44,000 standing, 100,000 cr",
+          "alt": null,
+          "done": false,
+          "rank": { "syndicate": "New Loka", "level": 3 }
+        },
+        {
+          "qty": "2",
+          "label": "Aya",
+          "note": "Rank 4 Pure sacrifice, 70,000 standing, 250,000 cr",
+          "alt": null,
+          "done": false,
+          "rank": { "syndicate": "New Loka", "level": 4 }
+        },
+        {
+          "qty": "3",
+          "label": "Aya",
+          "note": "Rank 5 Flawless sacrifice, 99,000 standing, 500,000 cr",
+          "alt": null,
+          "done": false,
+          "rank": { "syndicate": "New Loka", "level": 5 }
         }
       ],
       "conditions": [
-        "Perrin Sequence is the only other pledge that also feeds New Loka standing, at 7.5%; every other syndicate pledge feeds it 0%."
+        "A rank-up spends the standing you hold, so the weapon's price is earned on top of the 240,000."
       ],
       "bonuses": [],
       "disclosures": [],
@@ -52,78 +114,28 @@
     },
     {
       "type": "vendor",
-      "place": "RELAY, NEW LOKA ENCLAVE",
-      "sub": null,
-      "activity": "rank up, then buy Sancti Magistar at Flawless",
-      "meta": "125,000 standing at Rank 5",
+      "place": "NEW LOKA OFFERINGS, ORBITER",
+      "sub": "Syndicate console",
+      "activity": "buy Sancti Magistar",
+      "meta": "Flawless, 125,000 standing",
       "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "New Loka Standing", "amount": "365,000" }],
+      "spends": [{ "currency": "New Loka Standing", "amount": "125,000" }],
       "map": null,
       "rows": [
         {
           "qty": null,
-          "label": "Rank 0 Initiation",
-          "note": "1,000 Ferrite, 10,000 credits",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Rank 1 Humane",
-          "note": "5,000 standing, 2 Fieldron Sample, 30,000 credits",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Rank 2 Bountiful",
-          "note": "22,000 standing, 1 Forma, 50,000 credits",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Rank 3 Benevolent",
-          "note": "44,000 standing, 1 Orokin Reactor, 100,000 credits",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Rank 4 Pure",
-          "note": "70,000 standing, 2 Aya, 250,000 credits",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Rank 5 Flawless",
-          "note": "99,000 standing, 3 Aya, 500,000 credits",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
           "label": "Sancti Magistar",
-          "note": "125,000 standing; arrives built, no Foundry step",
+          "note": "arrives built, no Foundry step",
           "alt": null,
           "done": false
         }
       ],
-      "conditions": [
-        "Rank-ups spend the standing you've banked; after hitting Flawless you're back to 0 and still need 125,000 more for the weapon.",
-        "Sancti Magistar is never the free rank-up reward; it is always a 125,000-standing purchase on top of reaching Flawless."
-      ],
+      "conditions": ["It can't be the free Flawless rank-up gift, so the 125,000 is always paid."],
       "bonuses": [],
-      "disclosures": [
-        {
-          "title": "total cost from zero",
-          "body": "About 365,000 New Loka standing, 940,000 credits, 5 Aya, a Forma, an Orokin Reactor, 2 Fieldron Samples and 1,000 Ferrite."
-        }
-      ]
+      "disclosures": []
     }
   ]
 }

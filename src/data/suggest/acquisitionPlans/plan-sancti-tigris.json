@@ -6,7 +6,11 @@
   "tradeable": "unranked, no Forma/Catalyst",
   "progress": { "have": 0, "need": 1, "unit": "purchase" },
   "badges": [
-    { "text": "Flawless rank gate", "tone": "warn" },
+    {
+      "text": "Flawless rank gate",
+      "tone": "warn",
+      "rank": { "syndicate": "New Loka", "level": 5 }
+    },
     { "text": "MR 12", "tone": "info" }
   ],
   "prices": [
@@ -16,12 +20,37 @@
   "materials": [{ "qty": "940,000", "label": "Credits", "note": null }],
   "groups": [
     {
+      "type": "gate",
+      "place": "MASTERY RANK",
+      "sub": null,
+      "activity": "reach MR 12",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Mastery Rank 12",
+          "note": "needed to buy it or receive it in a trade",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
       "type": "currency",
-      "place": "ELITE SANCTUARY ONSLAUGHT",
-      "sub": "or Duviri Circuit",
-      "activity": "pledge New Loka, earn standing from mission affinity and Syndicate Medallions",
-      "meta": "365,000 standing total to Flawless plus the shotgun",
-      "mode": "leave around round 8 for one clean daily cap",
+      "place": "NEW LOKA SYNDICATE, ORBITER",
+      "sub": "Syndicate console",
+      "activity": "pledge New Loka, earn standing from affinity, Syndicate Alerts and Seeds",
+      "meta": "240,000 standing to Flawless, 125,000 more for the weapon",
+      "mode": null,
       "live": null,
       "skip": null,
       "earns": { "currency": "New Loka Standing", "amount": "365,000" },
@@ -31,59 +60,64 @@
         {
           "qty": "1,000",
           "label": "Ferrite",
-          "note": "Rank 0 Initiation sacrifice",
+          "note": "Initiation sacrifice, 10,000 cr",
           "alt": null,
           "done": false
         },
         {
           "qty": "2",
           "label": "Fieldron Sample",
-          "note": "Rank 1 Humane sacrifice; Corpus drop on Venus, Jupiter, Europa, Neptune, Pluto",
+          "note": "Rank 1 Humane sacrifice, 5,000 standing, 30,000 cr",
           "alt": null,
-          "done": false
+          "done": false,
+          "rank": { "syndicate": "New Loka", "level": 1 }
         },
         {
           "qty": "1",
           "label": "Forma",
-          "note": "Rank 2 Bountiful sacrifice",
+          "note": "Rank 2 Bountiful sacrifice, 22,000 standing, 50,000 cr",
           "alt": null,
-          "done": false
+          "done": false,
+          "rank": { "syndicate": "New Loka", "level": 2 }
         },
         {
           "qty": "1",
           "label": "Orokin Reactor",
-          "note": "Rank 3 Benevolent sacrifice; Nightwave sells one for 75 Cred",
+          "note": "Rank 3 Benevolent sacrifice, 44,000 standing, 100,000 cr",
           "alt": null,
-          "done": false
+          "done": false,
+          "rank": { "syndicate": "New Loka", "level": 3 }
         },
         {
-          "qty": "5",
+          "qty": "2",
           "label": "Aya",
-          "note": "2 at Rank 4 Pure, 3 at Rank 5 Flawless",
+          "note": "Rank 4 Pure sacrifice, 70,000 standing, 250,000 cr",
           "alt": null,
-          "done": false
+          "done": false,
+          "rank": { "syndicate": "New Loka", "level": 4 }
+        },
+        {
+          "qty": "3",
+          "label": "Aya",
+          "note": "Rank 5 Flawless sacrifice, 99,000 standing, 500,000 cr",
+          "alt": null,
+          "done": false,
+          "rank": { "syndicate": "New Loka", "level": 5 }
         }
       ],
       "conditions": [
-        "Rank-ups also cost 940,000 credits in total. Rank up as soon as you can afford it; standing past a rank's maximum is wasted."
+        "A rank-up spends the standing you hold, so the weapon's price is earned on top of the 240,000."
       ],
-      "bonuses": [
-        "Red Veil doesn't touch New Loka or Perrin, so it's the clean next pledge once you're done here."
-      ],
-      "disclosures": [
-        {
-          "title": "why 365,000",
-          "body": "240,000 standing carries the five rank-ups to Flawless (5,000 / 22,000 / 44,000 / 70,000 / 99,000). The 125,000-standing purchase is then farmed on top; Flawless's bar holds 132,000, enough to bank it."
-        }
-      ],
+      "bonuses": [],
+      "disclosures": [],
       "ref": "New Loka Standing"
     },
     {
       "type": "vendor",
-      "place": "NEW LOKA OFFERINGS, RELAY",
-      "sub": null,
-      "activity": "buy the shotgun",
-      "meta": "125,000 standing",
+      "place": "NEW LOKA OFFERINGS, ORBITER",
+      "sub": "Syndicate console",
+      "activity": "buy Sancti Tigris",
+      "meta": "Flawless, 125,000 standing",
       "mode": null,
       "live": null,
       "skip": null,
@@ -99,13 +133,8 @@
           "done": false
         }
       ],
-      "conditions": [
-        "The free item you pick at Flawless can never be a Syndicate weapon; the Tigris is always a separate 125,000-standing purchase.",
-        "Mastery Rank 12 is required both to buy it and to receive it in a trade."
-      ],
-      "bonuses": [
-        "Buy everything else you want from New Loka before switching pledges; standing drains once you help Suda."
-      ],
+      "conditions": ["It can't be the free Flawless rank-up gift, so the 125,000 is always paid."],
+      "bonuses": [],
       "disclosures": []
     }
   ]

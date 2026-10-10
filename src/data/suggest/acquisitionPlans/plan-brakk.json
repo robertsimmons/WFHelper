@@ -4,26 +4,72 @@
   "effort": 8,
   "source": "boss",
   "tradeable": false,
-  "progress": { "have": 0, "need": 3, "unit": "parts" },
+  "progress": {
+    "have": 0,
+    "need": 3,
+    "unit": "parts"
+  },
   "badges": [
-    { "text": "Grustrag Three RNG", "tone": "warn" },
-    { "text": "Baro beacons", "tone": "info" }
+    {
+      "text": "Grustrag Three RNG",
+      "tone": "warn"
+    },
+    {
+      "text": "Baro beacons",
+      "tone": "info"
+    }
   ],
   "prices": [
-    { "label": "Grustrag Three Beacon", "amount": "125,000 cr + 200 ducats", "money": false },
-    { "label": "build", "amount": "15,000 cr", "money": false }
+    {
+      "label": "build",
+      "amount": "15,000 cr",
+      "money": false
+    }
   ],
   "materials": [
-    { "qty": "10", "label": "Orokin Cell", "note": null },
-    { "qty": "140,000", "label": "Credits", "note": null }
+    {
+      "qty": "10",
+      "label": "Orokin Cell",
+      "note": null
+    },
+    {
+      "qty": "15,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
     {
       "type": "gate",
+      "place": "MASTERY RANK",
+      "sub": null,
+      "activity": "reach MR 6",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Mastery Rank 6",
+          "note": "needed to equip it",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
       "place": "INVASIONS",
       "sub": null,
-      "activity": "complete 5 Grineer-vs-Corpus Invasions, siding with the Corpus",
-      "meta": "earns the death mark; repeat after each attack",
+      "activity": "side with the Corpus, finish 5 Invasion missions against the Grineer",
+      "meta": "earns the Death Mark; repeat after each attack",
       "mode": null,
       "live": null,
       "skip": null,
@@ -40,37 +86,7 @@
         }
       ],
       "conditions": [
-        "Vay Hek's inbox message confirms the mark. The mark is consumed when the Three attack, so repeat after each attack."
-      ],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "vendor",
-      "place": "BARO KI'TEER, RELAY",
-      "sub": null,
-      "activity": "buy Grustrag Three Beacons whenever stocked",
-      "meta": "125,000 cr + 200 ducats each",
-      "mode": null,
-      "live": { "state": "waiting", "text": "Baro does not stock beacons every visit" },
-      "skip": null,
-      "earns": null,
-      "spends": [
-        { "currency": "Credits", "amount": "125,000" },
-        { "currency": "Orokin Ducats", "amount": "200" }
-      ],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Grustrag Three Beacon",
-          "note": "the one real accelerator; buy as many as you can",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "A beacon doesn't work in Invasion missions. Use it in a normal Grineer mission; only one beacon type works per mission."
+        "Vay Hek's inbox message confirms the mark. It is spent only when the Three spawn and one of you is the target."
       ],
       "bonuses": [],
       "disclosures": []
@@ -92,26 +108,63 @@
           "qty": null,
           "label": "Brakk Blueprint",
           "note": "12.5%, Vem Tabook",
-          "alt": null,
+          "alt": {
+            "text": "or a Grustrag Three Beacon from Baro Ki'Teer forces the spawn, when he stocks it",
+            "spends": [
+              {
+                "currency": "Credits",
+                "amount": "125,000"
+              },
+              {
+                "currency": "Orokin Ducats",
+                "amount": "200"
+              }
+            ]
+          },
           "done": false
         },
         {
           "qty": null,
           "label": "Brakk Barrel",
           "note": "25%, Shik Tal",
-          "alt": null,
+          "alt": {
+            "text": "or a Grustrag Three Beacon from Baro Ki'Teer forces the spawn, when he stocks it",
+            "spends": [
+              {
+                "currency": "Credits",
+                "amount": "125,000"
+              },
+              {
+                "currency": "Orokin Ducats",
+                "amount": "200"
+              }
+            ]
+          },
           "done": false
         },
         {
           "qty": null,
           "label": "Brakk Receiver",
           "note": "25%, Leekter",
-          "alt": null,
+          "alt": {
+            "text": "or a Grustrag Three Beacon from Baro Ki'Teer forces the spawn, when he stocks it",
+            "spends": [
+              {
+                "currency": "Credits",
+                "amount": "125,000"
+              },
+              {
+                "currency": "Orokin Ducats",
+                "amount": "200"
+              }
+            ]
+          },
           "done": false
         }
       ],
       "conditions": [
-        "They can only spawn in the first 5 minutes of a mission, and each marked squad member raises the chance.",
+        "The Three roll to spawn every 10 seconds for the first 5 minutes, and each marked squad member raises the chance.",
+        "A beacon is consumed on use, one per mission, and does nothing in Invasion missions.",
         "No spawns in Assassination, Syndicate, Arena, Sortie, Archimedea, Elite Sanctuary Onslaught, Landscape, Archwing or Empyrean missions.",
         "Being captured fails the mission and attaches a Grustrag Bolt, which halves your damage to Grineer until you craft the free Bolt Release from the inbox.",
         "Parts are untradeable, so every part is farmed yourself."
@@ -140,7 +193,7 @@
           "done": false
         }
       ],
-      "conditions": ["Mastery Rank 6 to equip; not the Kuva Brakk."],
+      "conditions": [],
       "bonuses": [],
       "disclosures": []
     }

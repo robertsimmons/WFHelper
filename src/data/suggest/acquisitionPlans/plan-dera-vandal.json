@@ -3,15 +3,62 @@
   "kind": "primary",
   "effort": 5,
   "source": "repeat",
-  "tradeable": true,
-  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "tradeable": "parts only",
+  "progress": {
+    "have": 0,
+    "need": 4,
+    "unit": "parts"
+  },
   "badges": [
-    { "text": "Corpus Invasions only", "tone": "warn" },
-    { "text": "MR 7", "tone": "info" }
+    {
+      "text": "Corpus Invasions only",
+      "tone": "warn"
+    },
+    {
+      "text": "MR 7",
+      "tone": "info"
+    }
   ],
-  "prices": [{ "label": "build", "amount": "25,000 cr", "money": false }],
-  "materials": [{ "qty": "25,000", "label": "Credits", "note": null }],
+  "prices": [
+    {
+      "label": "build",
+      "amount": "25,000 cr",
+      "money": false
+    }
+  ],
+  "materials": [
+    {
+      "qty": "25,000",
+      "label": "Credits",
+      "note": null
+    }
+  ],
   "groups": [
+    {
+      "type": "gate",
+      "place": "MASTERY RANK",
+      "sub": null,
+      "activity": "reach MR 7",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Mastery Rank 7",
+          "note": "needed to equip it",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
     {
       "type": "farm",
       "place": "INVASIONS",
@@ -29,28 +76,28 @@
           "qty": null,
           "label": "Dera Vandal Blueprint",
           "note": "2.76% of the Corpus reward pool",
-          "alt": "trade, MR 7 or higher",
+          "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Dera Vandal Barrel",
           "note": "2.76% of the Corpus reward pool",
-          "alt": "trade",
+          "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Dera Vandal Receiver",
           "note": "2.76% of the Corpus reward pool",
-          "alt": "trade",
+          "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Dera Vandal Stock",
           "note": "2.76% of the Corpus reward pool",
-          "alt": "trade",
+          "alt": null,
           "done": false
         }
       ],

@@ -4,14 +4,61 @@
   "effort": 5,
   "source": "bounties",
   "tradeable": "parts and blueprint",
-  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "progress": {
+    "have": 0,
+    "need": 4,
+    "unit": "parts"
+  },
   "badges": [
-    { "text": "Invasion RNG", "tone": "warn" },
-    { "text": "MR 7", "tone": "info" }
+    {
+      "text": "Invasion RNG",
+      "tone": "warn"
+    },
+    {
+      "text": "MR 7",
+      "tone": "info"
+    }
   ],
-  "prices": [{ "label": "build", "amount": "25,000 cr", "money": false }],
-  "materials": [{ "qty": "25,000", "label": "Credits", "note": null }],
+  "prices": [
+    {
+      "label": "build",
+      "amount": "25,000 cr",
+      "money": false
+    }
+  ],
+  "materials": [
+    {
+      "qty": "25,000",
+      "label": "Credits",
+      "note": null
+    }
+  ],
   "groups": [
+    {
+      "type": "gate",
+      "place": "MASTERY RANK",
+      "sub": null,
+      "activity": "reach MR 7",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Mastery Rank 7",
+          "note": "needed to acquire the blueprint",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
     {
       "type": "bounty",
       "place": "INVASIONS",
@@ -57,7 +104,6 @@
       "conditions": [
         "Only the Grineer-side pool holds Latron Wraith parts; the Corpus side holds the Vandal parts. Read the reward icon before picking.",
         "Switching sides resets your progress and forfeits the reward, and missions past the third add nothing.",
-        "You need Mastery Rank 7 to acquire the blueprint.",
         "No part can be targeted, so watch invasions for one that offers a part you still need."
       ],
       "bonuses": [],
@@ -68,7 +114,7 @@
         },
         {
           "title": "filling gaps by trade",
-          "body": "Parts and the blueprint are tradeable, which is how players fill the last missing piece. Cryotic Front and Sortie Season 8 are gone and are no longer sources."
+          "body": "Parts and the blueprint are tradeable, which is how players fill the last missing piece."
         }
       ]
     },

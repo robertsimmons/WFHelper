@@ -6,52 +6,43 @@
   "tradeable": false,
   "progress": { "have": 0, "need": 1, "unit": "weapon" },
   "badges": [
-    { "text": "Profit-Taker gate", "tone": "warn" },
-    { "text": "no RNG, 100% drop", "tone": "info" }
+    { "text": "Tenno Lab", "tone": "info" },
+    { "text": "MR 8", "tone": "info" }
   ],
-  "prices": [],
+  "prices": [
+    { "label": "lab blueprint", "amount": "15,000 cr", "money": false },
+    { "label": "build", "amount": "20,000 cr", "money": false }
+  ],
   "materials": [
-    { "qty": "1,200", "label": "Rubedo", "note": "Venerdo Alloy refines" },
-    { "qty": "8", "label": "Gallium", "note": "Venerdo Alloy refines" },
-    { "qty": "2", "label": "Crisma Toroid", "note": "for the build" },
-    { "qty": "80", "label": "Venerdo Alloy", "note": "build" },
-    { "qty": "5", "label": "Radiant Zodian", "note": "build" },
-    { "qty": "5", "label": "Synathid Ecosynth Analyzer", "note": "build" },
-    { "qty": "15,000", "label": "Credits", "note": null }
+    { "qty": "2", "label": "Crisma Toroid", "note": null },
+    { "qty": "80", "label": "Venerdo Alloy", "note": null },
+    { "qty": "5", "label": "Radiant Zodian", "note": null },
+    { "qty": "5", "label": "Synathid Ecosynth Analyzer", "note": null },
+    { "qty": "35,000", "label": "Credits", "note": null }
   ],
   "groups": [
     {
       "type": "gate",
-      "place": "FORTUNA, VENUS",
-      "sub": "Solaris United",
-      "activity": "rank to 5 (Old Mate), then clear Profit-Taker phases 1-3",
-      "meta": "opens the Heists and the Archgun Deployer",
+      "place": "MASTERY RANK",
+      "sub": null,
+      "activity": "reach MR 8",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
       "spends": [],
-      "map": "orb-vallis",
+      "map": null,
       "rows": [
         {
           "qty": null,
-          "label": "Solaris United Rank 5, Old Mate",
-          "note": "daily-capped standing; each rank-up needs a Debt-Bond sacrifice",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Profit-Taker heist, phases 1-3",
-          "note": "phase 3 mails the Archgun Deployer",
+          "label": "Mastery Rank 8",
+          "note": "needed to equip it",
           "alt": null,
           "done": false
         }
       ],
-      "conditions": [
-        "Without the Archgun Deployer (from finishing heist phase 3), Larkspur only works in Archwing, not on the ground.",
-        "Medical Debt-Bonds are the rank-up item that holds most players up; Ticker sometimes sells them in bulk."
-      ],
+      "conditions": [],
       "bonuses": [],
       "disclosures": []
     },
@@ -79,7 +70,7 @@
       "place": "FOUNDRY",
       "sub": null,
       "activity": "build Larkspur",
-      "meta": "12h",
+      "meta": "12h, 20,000 cr",
       "mode": null,
       "live": null,
       "skip": null,
@@ -89,13 +80,6 @@
       "rows": [
         {
           "qty": null,
-          "label": "install an Orokin Catalyst, a Gravimag, and equip the Deployer",
-          "note": "required for ground use; not needed in Archwing",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
           "label": "Larkspur",
           "note": "2 Crisma Toroid, 80 Venerdo Alloy, 5 Radiant Zodian, 5 Synathid Ecosynth Analyzer",
           "alt": null,
@@ -103,7 +87,7 @@
         }
       ],
       "conditions": [
-        "Don't redeem your first Crisma Toroids to Little Duck; you need 2 for Larkspur before spending any on Vox standing."
+        "On the ground it needs an Orokin Catalyst, a Gravimag and the Archgun Deployer, which the Profit-Taker Orb heist's third phase mails to you."
       ],
       "bonuses": [],
       "disclosures": []

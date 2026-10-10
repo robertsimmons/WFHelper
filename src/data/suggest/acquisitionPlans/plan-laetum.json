@@ -4,18 +4,54 @@
   "effort": 5,
   "source": "standing",
   "tradeable": "blueprint only",
-  "progress": { "have": 0, "need": 1, "unit": "blueprint" },
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "blueprint"
+  },
   "badges": [
-    { "text": "Holdfasts Neutral", "tone": "info" },
-    { "text": "MR 14", "tone": "warn" }
+    {
+      "text": "MR 14",
+      "tone": "warn"
+    },
+    {
+      "text": "blueprint tradeable",
+      "tone": "info"
+    }
   ],
-  "prices": [{ "label": "blueprint", "amount": "3,000 Holdfasts Standing", "money": false }],
+  "prices": [
+    {
+      "label": "blueprint",
+      "amount": "3,000 Holdfasts Standing",
+      "money": false
+    }
+  ],
   "materials": [
-    { "qty": "4,000", "label": "Ferrite", "note": null },
-    { "qty": "1", "label": "Voidplume Pinion", "note": "build requirement" },
-    { "qty": "5", "label": "Voidplume Quill", "note": "build requirement" },
-    { "qty": "20", "label": "Voidgel Orb", "note": "build requirement" },
-    { "qty": "30,000", "label": "Credits", "note": null }
+    {
+      "qty": "4,000",
+      "label": "Ferrite",
+      "note": null
+    },
+    {
+      "qty": "1",
+      "label": "Voidplume Pinion",
+      "note": null
+    },
+    {
+      "qty": "5",
+      "label": "Voidplume Quill",
+      "note": null
+    },
+    {
+      "qty": "20",
+      "label": "Voidgel Orb",
+      "note": null
+    },
+    {
+      "qty": "30,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
     {
@@ -23,7 +59,7 @@
       "place": "QUESTS",
       "sub": null,
       "activity": "unlock the Zariman and The Holdfasts",
-      "meta": "The New War → Angels of the Zariman",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -33,22 +69,20 @@
       "rows": [
         {
           "qty": null,
-          "label": "The New War",
-          "note": "quest prerequisite",
+          "label": "Angels of the Zariman",
+          "note": "needs The New War; unlocks the Chrysalith and The Holdfasts",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
-          "label": "Angels of the Zariman",
-          "note": "unlocks Chrysalith",
+          "label": "Mastery Rank 14",
+          "note": "needed to equip it",
           "alt": null,
           "done": false
         }
       ],
-      "conditions": [
-        "Angels of the Zariman is the only progression gate. Cavalero sells Laetum at Holdfasts Neutral; no syndicate rank-up is required."
-      ],
+      "conditions": [],
       "bonuses": [],
       "disclosures": []
     },
@@ -57,11 +91,14 @@
       "place": "HALAKO PERIMETER, ZARIMAN",
       "sub": "Chrysalith: turn Voidplumes in to Archimedean Yonta",
       "activity": "Exterminate, then sweep the map",
-      "meta": "one thorough mission funds the blueprint",
+      "meta": "3,000 standing for the blueprint",
       "mode": "solo or public squad",
       "live": null,
       "skip": null,
-      "earns": { "currency": "Holdfasts Standing", "amount": "16,500" },
+      "earns": {
+        "currency": "Holdfasts Standing",
+        "amount": "3,000"
+      },
       "spends": [],
       "map": null,
       "rows": [
@@ -75,12 +112,7 @@
       ],
       "conditions": [],
       "bonuses": [],
-      "disclosures": [
-        {
-          "title": "the gun is a short Zariman visit",
-          "body": "Halako Perimeter is preferred because it has no timer and lets you finish the objective before a relaxed full-map sweep. The rank grind players warn about belongs to later Holdfasts rewards, not Laetum itself."
-        }
-      ],
+      "disclosures": [],
       "ref": "Holdfasts Standing"
     },
     {
@@ -93,7 +125,12 @@
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Holdfasts Standing", "amount": "3,000" }],
+      "spends": [
+        {
+          "currency": "Holdfasts Standing",
+          "amount": "3,000"
+        }
+      ],
       "map": null,
       "rows": [
         {
@@ -104,9 +141,7 @@
           "done": false
         }
       ],
-      "conditions": [
-        "Neutral has a 5,000 standing capacity, enough to buy the blueprint immediately after one good plume sweep."
-      ],
+      "conditions": [],
       "bonuses": [],
       "disclosures": []
     },
@@ -115,7 +150,7 @@
       "place": "FOUNDRY",
       "sub": null,
       "activity": "build Laetum",
-      "meta": "24h, MR 14 to equip",
+      "meta": "24h",
       "mode": null,
       "live": null,
       "skip": null,
@@ -131,9 +166,7 @@
           "done": false
         }
       ],
-      "conditions": [
-        "You may craft Laetum before Mastery Rank 14, but cannot equip it until then."
-      ],
+      "conditions": ["You can craft Laetum before Mastery Rank 14 but cannot equip it until then."],
       "bonuses": [],
       "disclosures": []
     },
@@ -142,8 +175,8 @@
       "place": "CAVALERO / ARSENAL",
       "sub": null,
       "activity": "complete native Incarnon Evolutions",
-      "meta": "apply a perk before the next tier tracks",
-      "mode": "solo recommended",
+      "meta": null,
+      "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
@@ -161,14 +194,14 @@
           "qty": "8",
           "label": "Eximus kills in Incarnon form",
           "note": "Evolution II",
-          "alt": "Elite Sanctuary Onslaught",
+          "alt": "Elite Sanctuary Onslaught has a high Eximus spawn rate",
           "done": false
         },
         {
           "qty": "8",
           "label": "Void Angel primary-fire headshots without reloading",
           "note": "Evolution III",
-          "alt": "Magnetize makes this much easier",
+          "alt": null,
           "done": false
         },
         {
@@ -182,24 +215,20 @@
           "qty": null,
           "label": "Solo mission with Incarnon weapons in every slot",
           "note": "Evolution V",
-          "alt": "Genesis-equipped weapons count",
+          "alt": null,
           "done": false
         }
       ],
       "conditions": [
         "Return to Cavalero and apply each unlocked perk before the next evolution begins tracking.",
-        "Evolution III uses the untransformed pistol's primary fire. Reloading any weapon breaks the headshot streak; holster Laetum between Angels instead.",
-        "For the fallback Evo III route, use magazine capacity and multishot, reduce damage enough not to kill the Angel early, and let multishot pellets supply the eight headshots.",
-        "Exalted weapons do not qualify for Evolution V. Incarnon Genesis weapons do qualify."
+        "Evolution III needs the pistol's primary fire, not Incarnon form, and reloading any weapon, even the Sirocco amp, resets the streak.",
+        "Evolution V is voided by an Exalted weapon; Incarnon Genesis weapons count."
       ],
-      "bonuses": [
-        "Mag's Magnetize can make Evolution III complete from one shot into a woken Angel; a Mag squadmate can provide the bubble.",
-        "Laetum, Felarx, and Innodem are a convenient native-Incarnon set for Evolution V."
-      ],
+      "bonuses": [],
       "disclosures": [
         {
-          "title": "Evolution III is the real wall",
-          "body": "The weapon itself is a one-evening acquisition. Evo I and II are quick, Evo IV needs Void Flood rotations, and Evo V is one solo mission once your loadout qualifies. The Angel headshots are the frustrating step without Magnetize or a deliberate multishot setup."
+          "title": "making Evolution III easier",
+          "body": "Raise magazine capacity and multishot so one burst lands several headshots. Going Invisible makes the Angel less active."
         }
       ]
     }

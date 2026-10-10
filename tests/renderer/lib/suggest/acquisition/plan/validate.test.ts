@@ -74,7 +74,7 @@ describe("validatePlan", () => {
     expect(planRating("Rhino")).toEqual({
       planned: true,
       effort: 3,
-      badge: { text: "Circuit in 3w", tone: "circuit" },
+      badge: { text: "Circuit week 2", tone: "circuit" },
     });
     expect(planRating("hound")).toMatchObject({ planned: true, effort: 8 });
     expect(planRating("Not A Real Item")).toEqual({ planned: false, effort: null, badge: null });

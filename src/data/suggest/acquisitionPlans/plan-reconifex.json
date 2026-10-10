@@ -4,33 +4,96 @@
   "effort": 6,
   "source": "standing",
   "tradeable": "built components only, not blueprints",
-  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "progress": {
+    "have": 0,
+    "need": 4,
+    "unit": "parts"
+  },
   "badges": [
-    { "text": "Hex Rank 4 gate", "tone": "warn" },
-    { "text": "KIM chemistry needed", "tone": "warn" }
+    {
+      "text": "Hex Rank 4 gate",
+      "tone": "warn",
+      "rank": {
+        "syndicate": "The Hex",
+        "level": 4
+      }
+    },
+    {
+      "text": "KIM chemistry needed",
+      "tone": "warn"
+    }
   ],
   "prices": [
-    { "label": "standing route", "amount": "30,000 standing", "money": false },
-    { "label": "build", "amount": "90,000 cr", "money": false }
+    {
+      "label": "blueprints",
+      "amount": "30,000 standing",
+      "money": false
+    },
+    {
+      "label": "build",
+      "amount": "90,000 cr",
+      "money": false
+    }
   ],
   "materials": [
-    { "qty": "10", "label": "Neural Sensors", "note": "Barrel" },
-    { "qty": "2", "label": "Argon Crystal", "note": "Barrel" },
-    { "qty": "500", "label": "Ferrite", "note": "Receiver" },
-    { "qty": "8", "label": "Orokin Cell", "note": "Stock" },
-    { "qty": "70", "label": "Techrot Chitin", "note": null },
-    { "qty": "60", "label": "Efervon Sample", "note": null },
-    { "qty": "120", "label": "Hollvanian Pitchweave Fragment", "note": null },
-    { "qty": "15", "label": "Experimental Arc-Relay", "note": null },
-    { "qty": "190,000", "label": "Credits", "note": null }
+    {
+      "qty": "2",
+      "label": "Neural Sensors",
+      "note": "Barrel"
+    },
+    {
+      "qty": "1",
+      "label": "Argon Crystal",
+      "note": "Barrel"
+    },
+    {
+      "qty": "500",
+      "label": "Ferrite",
+      "note": "Receiver"
+    },
+    {
+      "qty": "1",
+      "label": "Orokin Cell",
+      "note": "Stock"
+    },
+    {
+      "qty": "70",
+      "label": "Techrot Chitin",
+      "note": "40 Barrel, 30 Stock"
+    },
+    {
+      "qty": "18",
+      "label": "Techrot Motherboard",
+      "note": "10 Barrel, 8 Stock"
+    },
+    {
+      "qty": "60",
+      "label": "Efervon Sample",
+      "note": "Receiver"
+    },
+    {
+      "qty": "120",
+      "label": "Hollvanian Pitchweave Fragment",
+      "note": "60 Receiver, 60 Stock"
+    },
+    {
+      "qty": "15",
+      "label": "Experimental Arc-Relay",
+      "note": "Receiver"
+    },
+    {
+      "qty": "275,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
     {
       "type": "gate",
       "place": "HOLLVANIA",
       "sub": "Central Mall",
-      "activity": "rank The Hex to Rank 4, Hot & Fresh",
-      "meta": "needs Liked chemistry with all six Hex members plus the Hex Finale",
+      "activity": "rank The Hex to Rank 4",
+      "meta": "the ranks cost 141,000 standing and 185,000 Höllars in all",
       "mode": null,
       "live": null,
       "skip": null,
@@ -40,15 +103,15 @@
       "rows": [
         {
           "qty": null,
-          "label": "Rank up to Rank 3",
-          "note": "22,000 then 44,000 standing, Höllars and 1999 resources",
+          "label": "Mastery Rank 14",
+          "note": "to build it",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Liked chemistry with all six Hex members",
-          "note": "daily KIM chats, DirectGiftz gifts, one chemistry bounty per member per day",
+          "note": "unlocks at Rank 3",
           "alt": null,
           "done": false
         },
@@ -64,79 +127,122 @@
           "label": "Rank 4, Hot & Fresh",
           "note": "70,000 standing, 100,000 Höllars, 25 Techrot Chitin, 25 Necracoil, 40 Efervon Sample",
           "alt": null,
-          "done": false
+          "done": false,
+          "rank": {
+            "syndicate": "The Hex",
+            "level": 4
+          }
         }
       ],
       "conditions": [
         "Rank 4 is a story and chemistry gate, not just a standing gate: 70,000 banked standing does nothing until every member is Liked and the Finale is done.",
         "Liked chemistry only unlocks at Rank 3, so build it there before ranking up."
       ],
-      "bonuses": [
-        "DirectGiftz gifts are a no-reading shortcut to chemistry; community wishlist posts list what each member likes.",
-        "Bounties that feature the member you still need earn their chemistry while you farm standing anyway."
-      ],
+      "bonuses": [],
       "disclosures": []
     },
     {
       "type": "currency",
-      "place": "HOLLVANIA",
-      "sub": "Central Mall",
-      "activity": "bounties, Hex Treasures turned in to Lettie, Temporal Archimedea",
-      "meta": "30,000 standing for all four blueprints",
+      "place": "HOLLVANIA CENTRAL MALL",
+      "sub": "The Hex",
+      "activity": "earn Hex Standing",
+      "meta": "171,000 standing total",
       "mode": null,
       "live": null,
       "skip": null,
-      "earns": { "currency": "The Hex Standing", "amount": "30,000" },
+      "earns": {
+        "currency": "The Hex Standing",
+        "amount": "171,000"
+      },
       "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "171,000",
+          "label": "Hex Standing",
+          "note": "141,000 for Ranks 1 to 4, 30,000 for the blueprints",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": [],
+      "ref": "The Hex Standing"
+    },
+    {
+      "type": "vendor",
+      "place": "HOLLVANIA CENTRAL MALL",
+      "sub": "Amir",
+      "activity": "buy all four blueprints",
+      "meta": "30,000 standing",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [
+        {
+          "currency": "The Hex Standing",
+          "amount": "30,000"
+        }
+      ],
       "map": null,
       "rows": [
         {
           "qty": null,
           "label": "Reconifex Blueprint",
-          "note": "15,000 standing at Amir, Rank 4",
+          "note": "15,000 standing",
           "alt": "3.92% per Tier 5 Central Mall bounty, Lvl 105-110",
-          "done": false
+          "done": false,
+          "rank": {
+            "syndicate": "The Hex",
+            "level": 4
+          }
         },
         {
           "qty": null,
-          "label": "Reconifex Barrel",
-          "note": "5,000 standing at Amir",
+          "label": "Reconifex Barrel Blueprint",
+          "note": "5,000 standing",
           "alt": "5.41% at Hell-Scrub rotation C",
-          "done": false
+          "done": false,
+          "rank": {
+            "syndicate": "The Hex",
+            "level": 4
+          }
         },
         {
           "qty": null,
-          "label": "Reconifex Receiver",
-          "note": "5,000 standing at Amir",
+          "label": "Reconifex Receiver Blueprint",
+          "note": "5,000 standing",
           "alt": "5.41% at Hell-Scrub rotation C",
-          "done": false
+          "done": false,
+          "rank": {
+            "syndicate": "The Hex",
+            "level": 4
+          }
         },
         {
           "qty": null,
-          "label": "Reconifex Stock",
-          "note": "5,000 standing at Amir",
+          "label": "Reconifex Stock Blueprint",
+          "note": "5,000 standing",
           "alt": "5.41% at Hell-Scrub rotation C",
-          "done": false
+          "done": false,
+          "rank": {
+            "syndicate": "The Hex",
+            "level": 4
+          }
         }
       ],
-      "conditions": ["Hand in Hex Treasures found during missions to Lettie to top off the cap."],
-      "bonuses": [
-        "Clearing all three Temporal Archimedea missions pays 15,000 standing at once, at Rank 5."
-      ],
-      "disclosures": [
-        {
-          "title": "buy it, don't farm it",
-          "body": "The community's own farm-analysis post opens by saying the standing purchase is the most economical way to get Reconifex. The drop route is 20-minute Hell-Scrub runs at 5.41% per part, or bounty RNG for the main blueprint at 3.92% with a roughly 25-run average."
-        }
-      ],
-      "ref": "The Hex Standing"
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
     },
     {
       "type": "foundry",
       "place": "FOUNDRY",
       "sub": null,
       "activity": "build components, then Reconifex",
-      "meta": "12h each, then 1 day",
+      "meta": "12h each, then 24h",
       "mode": null,
       "live": null,
       "skip": null,
@@ -146,14 +252,14 @@
       "rows": [
         {
           "qty": null,
-          "label": "Barrel",
-          "note": "20,000 cr, 40 Techrot Chitin, 10 Neural Sensors, 2 Argon Crystal",
+          "label": "Reconifex Barrel",
+          "note": "20,000 cr, 40 Techrot Chitin, 10 Techrot Motherboard, 2 Neural Sensors, 1 Argon Crystal",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
-          "label": "Receiver",
+          "label": "Reconifex Receiver",
           "note": "20,000 cr, 60 Efervon Sample, 60 Hollvanian Pitchweave Fragment, 15 Experimental Arc-Relay, 500 Ferrite",
           "alt": null,
           "done": false
@@ -161,15 +267,35 @@
         {
           "qty": null,
           "label": "Reconifex Stock",
-          "note": "20,000 cr, 60 Hollvanian Pitchweave Fragment, 30 Techrot Chitin, 8 Orokin Cell",
+          "note": "20,000 cr, 60 Hollvanian Pitchweave Fragment, 30 Techrot Chitin, 8 Techrot Motherboard, 1 Orokin Cell",
           "alt": null,
           "done": false
         },
-        { "qty": null, "label": "Reconifex", "note": "30,000 cr", "alt": null, "done": false }
+        {
+          "qty": null,
+          "label": "Reconifex",
+          "note": "30,000 cr, the three parts",
+          "alt": null,
+          "done": false
+        }
       ],
       "conditions": [],
       "bonuses": [],
       "disclosures": []
+    }
+  ],
+  "routes": [
+    {
+      "name": "Amir, Hex Rank 4",
+      "effort": 6,
+      "role": "chosen",
+      "cost": "30,000 standing buys the main blueprint and all three parts"
+    },
+    {
+      "name": "Höllvania drops",
+      "effort": 7,
+      "role": null,
+      "cost": "parts 5.41% a Hell-Scrub rotation C, main blueprint 3.92% a Tier 5 bounty"
     }
   ]
 }

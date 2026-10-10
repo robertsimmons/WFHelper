@@ -4,20 +4,60 @@
   "effort": 3,
   "source": "boss",
   "tradeable": false,
-  "progress": { "have": 2, "need": 4, "unit": "parts" },
-  "badges": [{ "text": "Circuit in 3w", "tone": "circuit" }],
+  "progress": {
+    "have": 0,
+    "need": 4,
+    "unit": "parts"
+  },
+  "badges": [
+    {
+      "text": "Circuit week 2",
+      "tone": "circuit"
+    }
+  ],
   "prices": [
-    { "label": "blueprint", "amount": "35,000 cr", "money": false },
-    { "label": "built", "amount": "375 p", "money": false }
+    {
+      "label": "blueprint",
+      "amount": "35,000 cr",
+      "money": false
+    }
   ],
   "materials": [
-    { "qty": "150", "label": "Alloy Plate", "note": "Neuroptics" },
-    { "qty": "700", "label": "Circuits", "note": "Chassis, Systems" },
-    { "qty": "1,200", "label": "Rubedo", "note": null },
-    { "qty": "1,500", "label": "Ferrite", "note": "Chassis, Systems" },
-    { "qty": "250", "label": "Polymer Bundle", "note": "Neuroptics, Systems" },
-    { "qty": "2", "label": "Neurodes", "note": "Neuroptics, Rhino" },
-    { "qty": "105,000", "label": "Credits", "note": null }
+    {
+      "qty": "150",
+      "label": "Alloy Plate",
+      "note": "Neuroptics"
+    },
+    {
+      "qty": "700",
+      "label": "Circuits",
+      "note": "Chassis, Systems"
+    },
+    {
+      "qty": "1,200",
+      "label": "Rubedo",
+      "note": null
+    },
+    {
+      "qty": "1,500",
+      "label": "Ferrite",
+      "note": "Chassis, Systems"
+    },
+    {
+      "qty": "250",
+      "label": "Polymer Bundle",
+      "note": "Neuroptics, Systems"
+    },
+    {
+      "qty": "2",
+      "label": "Neurodes",
+      "note": "Neuroptics, Rhino"
+    },
+    {
+      "qty": "105,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
     {
@@ -33,9 +73,15 @@
       "spends": [],
       "map": null,
       "rows": [
-        { "qty": null, "label": "Rhino Blueprint", "note": null, "alt": null, "done": true }
+        {
+          "qty": null,
+          "label": "Rhino Blueprint",
+          "note": null,
+          "alt": null,
+          "done": false
+        }
       ],
-      "conditions": ["Killing the Jackal never drops this; it is a Market purchase only"],
+      "conditions": ["Killing the Jackal never drops the main blueprint; it is a Market purchase."],
       "bonuses": [],
       "disclosures": []
     },
@@ -44,27 +90,42 @@
       "place": "FOSSA, VENUS",
       "sub": null,
       "activity": "Assassination, Jackal",
-      "meta": "~8 runs",
-      "mode": "solo, normal",
+      "meta": "one Rhino part a clear",
+      "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
       "spends": [],
       "map": null,
       "rows": [
-        { "qty": null, "label": "Neuroptics", "note": "38.7%", "alt": null, "done": false },
-        { "qty": null, "label": "Chassis", "note": "38.7%", "alt": null, "done": true },
-        { "qty": null, "label": "Systems", "note": "22.6%", "alt": null, "done": false }
+        {
+          "qty": null,
+          "label": "Rhino Neuroptics Blueprint",
+          "note": "38.72%",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Rhino Chassis Blueprint",
+          "note": "38.72%",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Rhino Systems Blueprint",
+          "note": "22.56%",
+          "alt": null,
+          "done": false
+        }
       ],
-      "conditions": [
-        "Fossa showing a high level is a Nightmare or Invasion overlay on the same node",
-        "Systems is the rare one and usually the last to drop"
-      ],
-      "bonuses": ["Also clears the Venus Junction task"],
+      "conditions": [],
+      "bonuses": [],
       "disclosures": [
         {
           "title": "how to beat the Jackal",
-          "body": "Break a leg during the stagger phase. New players report doing no damage and assume they are underlevelled; the legs are the damage window."
+          "body": "Its body is invulnerable but its four legs are not. Shoot a leg, survive the Grid Wall and Massive Shockwave, then stab the downed Jackal with the Parazon. Repeat for each leg."
         }
       ]
     },
@@ -72,8 +133,8 @@
       "type": "foundry",
       "place": "FOUNDRY",
       "sub": null,
-      "activity": "start all three now",
-      "meta": "12h each, 45,000 cr",
+      "activity": "build components, then Rhino",
+      "meta": "12h each, then 24h",
       "mode": null,
       "live": null,
       "skip": null,
@@ -81,30 +142,52 @@
       "spends": [],
       "map": null,
       "rows": [
-        { "qty": null, "label": "Neuroptics", "note": null, "alt": null, "done": false },
-        { "qty": null, "label": "Chassis", "note": null, "alt": null, "done": false },
-        { "qty": null, "label": "Systems", "note": null, "alt": null, "done": false }
+        {
+          "qty": null,
+          "label": "Rhino Neuroptics",
+          "note": "15,000 cr, 150 Alloy Plate, 1 Neurodes, 150 Polymer Bundle, 500 Rubedo",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Rhino Chassis",
+          "note": "15,000 cr, 450 Circuits, 1,000 Ferrite, 300 Rubedo",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Rhino Systems",
+          "note": "15,000 cr, 500 Ferrite, 250 Circuits, 100 Polymer Bundle, 400 Rubedo",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Rhino",
+          "note": "25,000 cr, the three parts, 1 Neurodes",
+          "alt": null,
+          "done": false
+        }
       ],
-      "conditions": [],
+      "conditions": ["Needs a free Warframe slot before the Foundry will let you claim it."],
       "bonuses": [],
       "disclosures": []
+    }
+  ],
+  "routes": [
+    {
+      "name": "Jackal assassination",
+      "effort": 3,
+      "role": "chosen",
+      "cost": "one part a clear, Systems is 22.56%; 35,000 cr at the Market for the main"
     },
     {
-      "type": "foundry",
-      "place": "FOUNDRY",
-      "sub": null,
-      "activity": "then",
-      "meta": "24h, 25,000 cr",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [{ "qty": null, "label": "Rhino", "note": null, "alt": null, "done": false }],
-      "conditions": ["Needs a free Warframe slot before the Foundry will let you claim it"],
-      "bonuses": [],
-      "disclosures": []
+      "name": "Circuit week 2",
+      "effort": 4,
+      "role": null,
+      "cost": "Tier 10 rewards give every blueprint, main included, after The Duviri Paradox"
     }
   ]
 }

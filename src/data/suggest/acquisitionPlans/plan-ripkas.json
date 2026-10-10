@@ -4,27 +4,106 @@
   "effort": 3,
   "source": "shop",
   "tradeable": false,
-  "progress": { "have": 0, "need": 3, "unit": "weapons" },
+  "progress": {
+    "have": 0,
+    "need": 3,
+    "unit": "weapons"
+  },
   "badges": [
-    { "text": "Builds two weapons first", "tone": "warn" },
-    { "text": "MR 5", "tone": "info" }
+    {
+      "text": "Builds two weapons first",
+      "tone": "warn"
+    },
+    {
+      "text": "MR 5",
+      "tone": "info"
+    }
   ],
   "prices": [
-    { "label": "blueprint", "amount": "20,000 cr", "money": false },
-    { "label": "build", "amount": "40,000 cr", "money": false }
+    {
+      "label": "blueprint",
+      "amount": "20,000 cr",
+      "money": false
+    },
+    {
+      "label": "build",
+      "amount": "40,000 cr",
+      "money": false
+    }
   ],
   "materials": [
-    { "qty": "600", "label": "Ferrite", "note": "Ankyros" },
-    { "qty": "900", "label": "Nano Spores", "note": "Ankyros" },
-    { "qty": "1,650", "label": "Alloy Plate", "note": "450 Ankyros, 1,200 Dual Cleavers" },
-    { "qty": "1,900", "label": "Salvage", "note": "900 Ankyros, 1,000 Dual Cleavers" },
-    { "qty": "800", "label": "Polymer Bundle", "note": "Dual Cleavers" },
-    { "qty": "5", "label": "Gallium", "note": "Dual Cleavers" },
-    { "qty": "2", "label": "Tellurium", "note": "Ripkas" },
-    { "qty": "1", "label": "Forma", "note": null },
-    { "qty": "150,000", "label": "Credits", "note": null }
+    {
+      "qty": "600",
+      "label": "Ferrite",
+      "note": "Ankyros"
+    },
+    {
+      "qty": "900",
+      "label": "Nano Spores",
+      "note": "Ankyros"
+    },
+    {
+      "qty": "1,650",
+      "label": "Alloy Plate",
+      "note": "450 Ankyros, 1,200 Dual Cleavers"
+    },
+    {
+      "qty": "1,900",
+      "label": "Salvage",
+      "note": "900 Ankyros, 1,000 Dual Cleavers"
+    },
+    {
+      "qty": "800",
+      "label": "Polymer Bundle",
+      "note": "Dual Cleavers"
+    },
+    {
+      "qty": "5",
+      "label": "Gallium",
+      "note": "Dual Cleavers"
+    },
+    {
+      "qty": "2",
+      "label": "Tellurium",
+      "note": "Ripkas"
+    },
+    {
+      "qty": "1",
+      "label": "Forma",
+      "note": null
+    },
+    {
+      "qty": "150,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
+    {
+      "type": "gate",
+      "place": "MASTERY RANK",
+      "sub": null,
+      "activity": "reach MR 5",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Mastery Rank 5",
+          "note": "to build Dual Cleavers and the Ripkas",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
     {
       "type": "vendor",
       "place": "MARKET",
@@ -35,7 +114,12 @@
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Credits", "amount": "60,000" }],
+      "spends": [
+        {
+          "currency": "Credits",
+          "amount": "60,000"
+        }
+      ],
       "map": null,
       "rows": [
         {
@@ -48,7 +132,7 @@
         {
           "qty": null,
           "label": "Dual Cleavers Blueprint",
-          "note": "25,000 cr; Mastery Rank 5 to build",
+          "note": "25,000 cr",
           "alt": null,
           "done": false
         },
@@ -60,7 +144,7 @@
           "done": false
         }
       ],
-      "conditions": ["Dual Cleavers need Mastery Rank 5, so the Ripkas does too."],
+      "conditions": [],
       "bonuses": [],
       "disclosures": []
     },
@@ -111,7 +195,7 @@
       "disclosures": [
         {
           "title": "the Amalgam Ripkas True Steel mod",
-          "body": "It drops from the Ropalolyst assassination on Jupiter (20% of a table of five Amalgam mods, with Wisp parts) and needs the Chimera Prologue done. It is why Nekros players keep a Ripkas, and it is not needed for Mastery."
+          "body": "It drops from the Ropalolyst assassination on Jupiter, which needs the Chimera Prologue: 20% of five Amalgam mods."
         }
       ]
     }

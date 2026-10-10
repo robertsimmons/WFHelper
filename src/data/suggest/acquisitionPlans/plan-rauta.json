@@ -3,25 +3,53 @@
   "kind": "primary",
   "effort": 5,
   "source": "duviri",
-  "tradeable": false,
-  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "tradeable": "parts and/or blueprint",
+  "progress": {
+    "have": 0,
+    "need": 4,
+    "unit": "parts"
+  },
   "badges": [
-    { "text": "Duviri", "tone": "info" },
-    { "text": "mood-gated", "tone": "warn" }
+    {
+      "text": "Duviri",
+      "tone": "info"
+    },
+    {
+      "text": "mood-gated",
+      "tone": "warn"
+    }
   ],
-  "prices": [{ "label": "build", "amount": "20,000 cr", "money": false }],
+  "prices": [
+    {
+      "label": "build",
+      "amount": "20,000 cr",
+      "money": false
+    }
+  ],
   "materials": [
-    { "qty": "30", "label": "Kullervo's Bane", "note": null },
-    { "qty": "10", "label": "Pathos Clamp", "note": null },
-    { "qty": "20,000", "label": "Credits", "note": null }
+    {
+      "qty": "30",
+      "label": "Kullervo's Bane",
+      "note": null
+    },
+    {
+      "qty": "10",
+      "label": "Pathos Clamp",
+      "note": null
+    },
+    {
+      "qty": "20,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
     {
       "type": "gate",
-      "place": "SATURN",
+      "place": "THE DUVIRI PARADOX",
       "sub": null,
-      "activity": "Uranus Junction, then The Duviri Paradox",
-      "meta": "MR 8 to equip",
+      "activity": "finish the quest",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -31,47 +59,72 @@
       "rows": [
         {
           "qty": null,
-          "label": "Uranus Junction",
-          "note": "gates Duviri",
+          "label": "Mastery Rank 8",
+          "note": "to build it",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "The Duviri Paradox",
-          "note": "unlocks Acrithis",
+          "note": "unlocks Duviri, the Dormizone and Acrithis",
           "alt": null,
           "done": false
         }
       ],
       "conditions": ["The quest is solo-only, so another player cannot carry this unlock."],
-      "bonuses": [
-        "The same route earns Kullervo's Bane for Kullervo and Pathos Clamps for other Duviri crafting."
-      ],
+      "bonuses": [],
       "disclosures": []
     },
     {
       "type": "vendor",
       "place": "DORMIZONE",
-      "sub": null,
-      "activity": "Acrithis",
+      "sub": "Acrithis",
+      "activity": "buy the blueprint and parts with Bane",
       "meta": "30 Bane total",
       "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Kullervo's Bane", "amount": "30" }],
+      "spends": [
+        {
+          "currency": "Kullervo's Bane",
+          "amount": "30"
+        }
+      ],
       "map": null,
       "rows": [
-        { "qty": null, "label": "Rauta Blueprint", "note": "12 Bane", "alt": null, "done": false },
-        { "qty": null, "label": "Rauta Barrel", "note": "6 Bane", "alt": null, "done": false },
-        { "qty": null, "label": "Rauta Receiver", "note": "6 Bane", "alt": null, "done": false },
-        { "qty": null, "label": "Rauta Stock", "note": "6 Bane", "alt": null, "done": false }
+        {
+          "qty": null,
+          "label": "Rauta Blueprint",
+          "note": "12 Bane",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Rauta Barrel",
+          "note": "6 Bane",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Rauta Receiver",
+          "note": "6 Bane",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Rauta Stock",
+          "note": "6 Bane",
+          "alt": null,
+          "done": false
+        }
       ],
-      "conditions": [
-        "Kullervo's Bane is untradeable; Acrithis is the only source for every Rauta blueprint and component."
-      ],
-      "bonuses": ["Acrithis also appears in Duviri after a Mood Spiral completes."],
+      "conditions": [],
+      "bonuses": ["Acrithis also wanders Duviri in her carriage."],
       "disclosures": []
     },
     {
@@ -79,7 +132,7 @@
       "place": "FOUNDRY",
       "sub": null,
       "activity": "build Rauta",
-      "meta": "12h, MR 8",
+      "meta": "12h",
       "mode": null,
       "live": null,
       "skip": null,
@@ -87,12 +140,16 @@
       "spends": [],
       "map": null,
       "rows": [
-        { "qty": null, "label": "Rauta Barrel", "note": null, "alt": null, "done": false },
-        { "qty": null, "label": "Rauta Receiver", "note": null, "alt": null, "done": false },
-        { "qty": null, "label": "Rauta Stock", "note": null, "alt": null, "done": false }
+        {
+          "qty": null,
+          "label": "Rauta",
+          "note": "20,000 cr, Barrel, Receiver, Stock, 10 Pathos Clamp",
+          "alt": null,
+          "done": false
+        }
       ],
       "conditions": [],
-      "bonuses": ["The first Orowyrm supplies all 10 Pathos Clamps required for Rauta's build."],
+      "bonuses": ["One Orowyrm chest pays 10 Pathos Clamps, 15 on the Steel Path."],
       "disclosures": []
     }
   ]

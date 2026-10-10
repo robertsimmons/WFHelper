@@ -4,20 +4,62 @@
   "effort": 4,
   "source": "standing",
   "tradeable": "Head and Handle, not the blueprint",
-  "progress": { "have": 0, "need": 3, "unit": "parts" },
+  "progress": {
+    "have": 0,
+    "need": 3,
+    "unit": "parts"
+  },
   "badges": [
-    { "text": "2 syndicates to rank 2", "tone": "warn" },
-    { "text": "MR 6", "tone": "info" }
+    {
+      "text": "Red Veil Rank 2",
+      "tone": "warn",
+      "rank": {
+        "syndicate": "Red Veil",
+        "level": 2
+      }
+    },
+    {
+      "text": "New Loka Rank 2",
+      "tone": "warn",
+      "rank": {
+        "syndicate": "New Loka",
+        "level": 2
+      }
+    }
   ],
   "prices": [
-    { "label": "blueprint", "amount": "35,000 cr", "money": false },
-    { "label": "Head + Handle", "amount": "40,000 standing", "money": false },
-    { "label": "build", "amount": "25,000 cr", "money": false }
+    {
+      "label": "blueprint",
+      "amount": "35,000 cr",
+      "money": false
+    },
+    {
+      "label": "Head + Handle",
+      "amount": "40,000 standing",
+      "money": false
+    },
+    {
+      "label": "build",
+      "amount": "25,000 cr",
+      "money": false
+    }
   ],
   "materials": [
-    { "qty": "300", "label": "Circuits", "note": null },
-    { "qty": "1", "label": "Control Module", "note": null },
-    { "qty": "240,000", "label": "Credits", "note": null }
+    {
+      "qty": "300",
+      "label": "Circuits",
+      "note": null
+    },
+    {
+      "qty": "1",
+      "label": "Control Module",
+      "note": null
+    },
+    {
+      "qty": "240,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
     {
@@ -33,6 +75,13 @@
       "spends": [],
       "map": null,
       "rows": [
+        {
+          "qty": null,
+          "label": "Mastery Rank 6",
+          "note": "to build it",
+          "alt": null,
+          "done": false
+        },
         {
           "qty": null,
           "label": "The Archwing",
@@ -54,7 +103,10 @@
       "mode": null,
       "live": null,
       "skip": null,
-      "earns": { "currency": "Syndicate Standing", "amount": "94,000" },
+      "earns": {
+        "currency": "Syndicate Standing",
+        "amount": "94,000"
+      },
       "spends": [],
       "map": null,
       "rows": [
@@ -77,7 +129,11 @@
           "label": "Red Veil rank 2 (Honored)",
           "note": "22,000 standing; 50,000 cr, 1 Forma",
           "alt": null,
-          "done": false
+          "done": false,
+          "rank": {
+            "syndicate": "Red Veil",
+            "level": 2
+          }
         },
         {
           "qty": null,
@@ -98,12 +154,14 @@
           "label": "New Loka rank 2 (Bountiful)",
           "note": "22,000 standing; 50,000 cr, 1 Forma",
           "alt": null,
-          "done": false
+          "done": false,
+          "rank": {
+            "syndicate": "New Loka",
+            "level": 2
+          }
         }
       ],
-      "conditions": [
-        "Red Veil earns Steel Meridian +50% and costs Cephalon Suda and Arbiters of Hexis. New Loka earns Perrin +50% and costs Steel Meridian."
-      ],
+      "conditions": [],
       "bonuses": [],
       "disclosures": [],
       "ref": "Syndicate Standing"
@@ -118,7 +176,12 @@
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Syndicate Standing", "amount": "40,000" }],
+      "spends": [
+        {
+          "currency": "Syndicate Standing",
+          "amount": "40,000"
+        }
+      ],
       "map": null,
       "rows": [
         {

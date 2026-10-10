@@ -3,24 +3,88 @@
   "kind": "melee",
   "effort": 4,
   "source": "standing",
-  "tradeable": "unranked copies only, with no Forma or Catalyst installed",
-  "progress": { "have": 0, "need": 1, "unit": "purchase" },
+  "tradeable": "unranked, no Forma or Catalyst",
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "purchase"
+  },
   "badges": [
-    { "text": "Exalted rank gate", "tone": "warn" },
-    { "text": "no RNG", "tone": "info" }
+    {
+      "text": "Exalted rank gate",
+      "tone": "warn",
+      "rank": {
+        "syndicate": "Red Veil",
+        "level": 5
+      }
+    },
+    {
+      "text": "MR 8",
+      "tone": "info"
+    }
   ],
-  "prices": [],
+  "prices": [
+    {
+      "label": "standing",
+      "amount": "365,000",
+      "money": false
+    },
+    {
+      "label": "credits",
+      "amount": "940,000 cr",
+      "money": false
+    }
+  ],
   "groups": [
     {
-      "type": "currency",
-      "place": "ELITE SANCTUARY ONSLAUGHT",
-      "sub": null,
-      "activity": "pledge Red Veil, earn standing from mission affinity and Syndicate Medallions",
-      "meta": "365,000 standing total to Exalted plus the dagger",
-      "mode": "leave around round 8 for one clean daily cap",
+      "type": "gate",
+      "place": "RELAY",
+      "sub": "Red Veil offerings",
+      "activity": "reach Exalted with Red Veil",
+      "meta": null,
+      "mode": null,
       "live": null,
       "skip": null,
-      "earns": { "currency": "Red Veil Standing", "amount": "365,000" },
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Mastery Rank 8",
+          "note": "to buy it or receive it in a trade",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Red Veil Rank 5, Exalted",
+          "note": "the ranks and sacrifices are below",
+          "alt": null,
+          "done": false,
+          "rank": {
+            "syndicate": "Red Veil",
+            "level": 5
+          }
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "currency",
+      "place": "ORBITER",
+      "sub": "Syndicate console",
+      "activity": "pledge Red Veil, then rank up to Exalted",
+      "meta": "365,000 standing total, 240,000 for the ranks and 125,000 for the dagger",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": {
+        "currency": "Red Veil Standing",
+        "amount": "365,000"
+      },
       "spends": [],
       "map": null,
       "rows": [
@@ -60,14 +124,12 @@
           "done": false
         }
       ],
-      "conditions": [],
-      "bonuses": [
-        "The Circuit past stage 4, or a Sedna/Adaro stealth Exterminate with Equinox, Ivara or Banshee, also caps you in one or two runs."
-      ],
+      "conditions": ["Rank-ups also cost 940,000 credits in total."],
+      "bonuses": [],
       "disclosures": [
         {
           "title": "why 365,000",
-          "body": "240,000 standing carries the five rank-ups to Exalted. Exalted's own cap is 132,000, which is enough to also bank the 125,000-standing weapon purchase without an extra rank-up cycle."
+          "body": "The five rank-ups cost 5,000, 22,000, 44,000, 70,000 and 99,000 standing, 240,000 in all, and the dagger is a separate 125,000 purchase on top. Exalted holds up to 132,000, enough to bank it."
         }
       ],
       "ref": "Red Veil Standing"
@@ -82,16 +144,34 @@
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Red Veil Standing", "amount": "125,000" }],
+      "spends": [
+        {
+          "currency": "Red Veil Standing",
+          "amount": "125,000"
+        }
+      ],
       "map": null,
       "rows": [
-        { "qty": null, "label": "Rakta Dark Dagger", "note": null, "alt": null, "done": false }
+        {
+          "qty": null,
+          "label": "Rakta Dark Dagger",
+          "note": null,
+          "alt": null,
+          "done": false
+        }
       ],
       "conditions": [
         "The free item you pick at each rank-up can never be a Syndicate weapon; the dagger is always a separate 125,000-standing purchase."
       ],
       "bonuses": [],
       "disclosures": []
+    }
+  ],
+  "materials": [
+    {
+      "qty": "940,000",
+      "label": "Credits",
+      "note": null
     }
   ]
 }

@@ -4,35 +4,105 @@
   "effort": 4,
   "source": "standing",
   "tradeable": false,
-  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "progress": {
+    "have": 0,
+    "need": 4,
+    "unit": "parts"
+  },
   "badges": [
-    { "text": "Hex Rank 4 gate", "tone": "warn" },
-    { "text": "300 Heartstrings pity", "tone": "info" }
+    {
+      "text": "Hex Rank 4 gate",
+      "tone": "warn",
+      "rank": {
+        "syndicate": "The Hex",
+        "level": 4
+      }
+    },
+    {
+      "text": "300 Heartstrings pity",
+      "tone": "info"
+    }
   ],
   "prices": [
-    { "label": "pity route", "amount": "300 Heartstrings", "money": false },
-    { "label": "build", "amount": "70,000 cr", "money": false }
+    {
+      "label": "pity route",
+      "amount": "300 Beating Heartstrings",
+      "money": false
+    },
+    {
+      "label": "build",
+      "amount": "70,000 cr",
+      "money": false
+    }
   ],
   "materials": [
-    { "qty": "1,500", "label": "Alloy Plate", "note": null },
-    { "qty": "700", "label": "Circuits", "note": null },
-    { "qty": "300", "label": "Plastids", "note": null },
-    { "qty": "300", "label": "Salvage", "note": null },
-    { "qty": "3", "label": "Orokin Cell", "note": null },
-    { "qty": "2", "label": "Entrati Lanthorn", "note": null },
-    { "qty": "2", "label": "Bellow Voca", "note": null },
-    { "qty": "260", "label": "Necracoil", "note": null },
-    { "qty": "120", "label": "Efervon Sample", "note": null },
-    { "qty": "600", "label": "Entrati Obols", "note": null },
-    { "qty": "16", "label": "Experimental Arc-Relay", "note": null },
-    { "qty": "70,000", "label": "Credits", "note": null }
+    {
+      "qty": "1,500",
+      "label": "Alloy Plate",
+      "note": null
+    },
+    {
+      "qty": "700",
+      "label": "Circuits",
+      "note": null
+    },
+    {
+      "qty": "300",
+      "label": "Plastids",
+      "note": null
+    },
+    {
+      "qty": "300",
+      "label": "Salvage",
+      "note": null
+    },
+    {
+      "qty": "3",
+      "label": "Orokin Cell",
+      "note": null
+    },
+    {
+      "qty": "2",
+      "label": "Entrati Lanthorn",
+      "note": null
+    },
+    {
+      "qty": "2",
+      "label": "Bellow Voca",
+      "note": null
+    },
+    {
+      "qty": "260",
+      "label": "Necracoil",
+      "note": null
+    },
+    {
+      "qty": "120",
+      "label": "Efervon Sample",
+      "note": null
+    },
+    {
+      "qty": "600",
+      "label": "Entrati Obols",
+      "note": null
+    },
+    {
+      "qty": "16",
+      "label": "Experimental Arc-Relay",
+      "note": null
+    },
+    {
+      "qty": "255,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
     {
       "type": "gate",
       "place": "HOLLVANIA",
       "sub": "Central Mall",
-      "activity": "finish The Hex and rank The Hex to Rank 4, Hot & Fresh",
+      "activity": "finish The Hex and rank The Hex to Rank 4",
       "meta": "opens Stage Defense and Flare's shop in The Round Table",
       "mode": null,
       "live": null,
@@ -41,78 +111,152 @@
       "spends": [],
       "map": null,
       "rows": [
-        { "qty": null, "label": "The Hex", "note": "quest", "alt": null, "done": false },
+        {
+          "qty": null,
+          "label": "Mastery Rank 14",
+          "note": "to build it",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "The Hex",
+          "note": "quest; its Finale needs Liked chemistry with all six Hex members",
+          "alt": null,
+          "done": false
+        },
         {
           "qty": null,
           "label": "Rank 4, Hot & Fresh",
-          "note": "The Hex syndicate",
+          "note": "70,000 standing, 100,000 Höllars, 25 Techrot Chitin, 25 Necracoil, 40 Efervon Sample",
           "alt": null,
-          "done": false
+          "done": false,
+          "rank": {
+            "syndicate": "The Hex",
+            "level": 4
+          }
         }
       ],
-      "conditions": [
-        "Stage Defense at Solstice Square (level 65-70) opens from the NavNow map on any Pom-2 PC, and also comes up as a Höllvania bounty."
-      ],
+      "conditions": ["Rank 4 also needs 185,000 Höllars across Ranks 1 to 4."],
       "bonuses": [],
       "disclosures": []
     },
     {
       "type": "currency",
-      "place": "HOLLVANIA",
-      "sub": "Solstice Square",
-      "activity": "Stage Defense, defend Flare; extract at wave 12",
-      "meta": "3 waves per rotation, A-A-B-C",
-      "mode": "Steel Path recommended",
+      "place": "HOLLVANIA CENTRAL MALL",
+      "sub": "The Hex",
+      "activity": "earn Hex Standing",
+      "meta": "141,000 standing total",
+      "mode": null,
       "live": null,
       "skip": null,
-      "earns": { "currency": "Beating Heartstrings", "amount": "300" },
+      "earns": {
+        "currency": "The Hex Standing",
+        "amount": "141,000"
+      },
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "141,000",
+          "label": "Hex Standing",
+          "note": "Ranks 1 to 4: 5,000, 22,000, 44,000 and 70,000",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": [],
+      "ref": "The Hex Standing"
+    },
+    {
+      "type": "currency",
+      "place": "HOLLVANIA",
+      "sub": "Solstice Square",
+      "activity": "Stage Defense, defend Flare",
+      "meta": "3 waves per rotation, rotations A-A-B-C",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": {
+        "currency": "Beating Heartstrings",
+        "amount": "300"
+      },
       "spends": [],
       "map": null,
       "rows": [
         {
           "qty": null,
           "label": "Riot-848 Blueprint",
-          "note": "120 Heartstrings at Flare",
-          "alt": "0.97% A / 1.98% B / 4.58% C direct drop",
+          "note": "0.97% rotation A, 1.98% B, 4.58% C",
+          "alt": {
+            "text": "or 120 Heartstrings at Flare",
+            "spends": [
+              {
+                "currency": "Beating Heartstrings",
+                "amount": "120"
+              }
+            ]
+          },
           "done": false
         },
         {
           "qty": null,
           "label": "Riot-848 Barrel Blueprint",
-          "note": "60 Heartstrings at Flare",
-          "alt": "0.97% A / 1.98% B / 4.58% C direct drop",
+          "note": "0.97% rotation A, 1.98% B, 4.58% C",
+          "alt": {
+            "text": "or 60 Heartstrings at Flare",
+            "spends": [
+              {
+                "currency": "Beating Heartstrings",
+                "amount": "60"
+              }
+            ]
+          },
           "done": false
         },
         {
           "qty": null,
           "label": "Riot-848 Receiver Blueprint",
-          "note": "60 Heartstrings at Flare",
-          "alt": "0.97% A / 1.98% B / 4.58% C direct drop",
+          "note": "0.97% rotation A, 1.98% B, 4.58% C",
+          "alt": {
+            "text": "or 60 Heartstrings at Flare",
+            "spends": [
+              {
+                "currency": "Beating Heartstrings",
+                "amount": "60"
+              }
+            ]
+          },
           "done": false
         },
         {
           "qty": null,
           "label": "Riot-848 Stock Blueprint",
-          "note": "60 Heartstrings at Flare",
-          "alt": "0.97% A / 1.98% B / 4.58% C direct drop",
+          "note": "0.97% rotation A, 1.98% B, 4.58% C",
+          "alt": {
+            "text": "or 60 Heartstrings at Flare",
+            "spends": [
+              {
+                "currency": "Beating Heartstrings",
+                "amount": "60"
+              }
+            ]
+          },
           "done": false
         }
       ],
       "conditions": [
-        "A failed mission loses every reward, including Heartstrings from finished rotations; Flare can be one-shot by a Blitz Eximus, so extract at wave 12 rather than pushing long runs.",
-        "Temporal Archimedea's Stage Defense stages don't award Heartstrings, and Boosters don't affect them.",
+        "A failed mission loses every reward, including Heartstrings from finished rotations.",
+        "Temporal Archimedea's Stage Defense stages don't award Heartstrings.",
         "Untradeable, so spare part blueprints go to waste."
       ],
       "bonuses": [
         "Every rotation pays 4-9 Heartstrings (7-12 Steel Path), so the set is guaranteed after enough rotations.",
-        "Heartstrings also buy Temple, and the mission drops arcanes (every Scaldra Screamer), relics, Endo and riven slivers."
+        "Heartstrings also buy Temple."
       ],
-      "disclosures": [
-        {
-          "title": "run tips",
-          "body": "Steel Path pays about 1.5x the Heartstrings plus Steel Essence; one player put a full Temple set plus the Riot-848 at 5-6 hours with zero drops, and the Riot-848 alone is under a third of that. Nova and AoE nukes speed waves. Hex standing trinkets always spawn in the same places. Vazarin barely heals Flare; damage reduction works better. Turning off dynamic lighting fixes the frame-rate drops on this tileset."
-        }
-      ],
+      "disclosures": [],
       "ref": "Beating Heartstrings"
     },
     {
@@ -120,7 +264,7 @@
       "place": "FOUNDRY",
       "sub": null,
       "activity": "build components, then Riot-848",
-      "meta": "12h each, then 24h, MR 14",
+      "meta": "12h each, then 24h",
       "mode": null,
       "live": null,
       "skip": null,
@@ -130,14 +274,14 @@
       "rows": [
         {
           "qty": null,
-          "label": "Barrel",
+          "label": "Riot-848 Barrel",
           "note": "15,000 cr, 1,000 Alloy Plate, 300 Plastids, 130 Necracoil, 2 Entrati Lanthorn",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
-          "label": "Receiver",
+          "label": "Riot-848 Receiver",
           "note": "15,000 cr, 120 Efervon Sample, 500 Alloy Plate, 600 Entrati Obols, 700 Circuits",
           "alt": null,
           "done": false
@@ -152,7 +296,7 @@
         {
           "qty": null,
           "label": "Riot-848",
-          "note": "25,000 cr, 3 Orokin Cells",
+          "note": "25,000 cr, the three parts, 3 Orokin Cell",
           "alt": null,
           "done": false
         }

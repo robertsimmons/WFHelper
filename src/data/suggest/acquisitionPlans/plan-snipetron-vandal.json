@@ -4,20 +4,67 @@
   "effort": 5,
   "source": "repeat",
   "tradeable": "parts only",
-  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "progress": {
+    "have": 0,
+    "need": 4,
+    "unit": "parts"
+  },
   "badges": [
-    { "text": "Corpus Invasions only", "tone": "warn" },
-    { "text": "MR 5", "tone": "info" }
+    {
+      "text": "Corpus Invasions only",
+      "tone": "warn"
+    },
+    {
+      "text": "MR 5",
+      "tone": "info"
+    }
   ],
-  "prices": [{ "label": "build", "amount": "25,000 cr", "money": false }],
-  "materials": [{ "qty": "25,000", "label": "Credits", "note": null }],
+  "prices": [
+    {
+      "label": "build",
+      "amount": "25,000 cr",
+      "money": false
+    }
+  ],
+  "materials": [
+    {
+      "qty": "25,000",
+      "label": "Credits",
+      "note": null
+    }
+  ],
   "groups": [
+    {
+      "type": "gate",
+      "place": "MASTERY RANK",
+      "sub": null,
+      "activity": "reach MR 5",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Mastery Rank 5",
+          "note": "needed to equip it",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
     {
       "type": "farm",
       "place": "INVASIONS",
       "sub": null,
       "activity": "side with the Corpus, finish 3 missions on the node",
-      "meta": "watch invasions",
+      "meta": "2.76% each part",
       "mode": null,
       "live": null,
       "skip": null,
@@ -28,44 +75,39 @@
         {
           "qty": null,
           "label": "Snipetron Vandal Blueprint",
-          "note": "2.76% of the Corpus reward pool",
+          "note": "2.76%",
           "alt": "trade, MR 5 or higher",
           "done": false
         },
         {
           "qty": null,
           "label": "Snipetron Vandal Barrel",
-          "note": "2.76% of the Corpus reward pool",
+          "note": "2.76%",
           "alt": "trade",
           "done": false
         },
         {
           "qty": null,
           "label": "Snipetron Vandal Receiver",
-          "note": "2.76% of the Corpus reward pool",
+          "note": "2.76%",
           "alt": "trade",
           "done": false
         },
         {
           "qty": null,
           "label": "Snipetron Vandal Stock",
-          "note": "2.76% of the Corpus reward pool",
+          "note": "2.76%",
           "alt": "trade",
           "done": false
         }
       ],
       "conditions": [
-        "Grineer side never pays any of them. The reward comes to your inbox when the Invasion ends whichever side wins, if the 3 missions were finished first.",
-        "Choosing a side locks it in. Switching resets your progress and denies both rewards.",
-        "Weapon-part Invasions last roughly 9 hours and are easy to miss."
+        "Only the Corpus side pays it; Grineer Invasions never do. Dera Vandal parts share the Corpus pool.",
+        "The reward comes to your inbox when the Invasion ends, whichever side wins.",
+        "Switching sides resets your rating and denies both rewards."
       ],
       "bonuses": [],
-      "disclosures": [
-        {
-          "title": "the odds",
-          "body": "About one specific part per 36 Invasions that roll. Dera Vandal and Sheev parts share the pool. If a reward does not show after finishing, relog before assuming it was lost. Pips on the faction-choice screen show how many of the 3 missions you have done."
-        }
-      ]
+      "disclosures": []
     },
     {
       "type": "foundry",
@@ -83,13 +125,13 @@
         {
           "qty": null,
           "label": "Snipetron Vandal",
-          "note": "Blueprint, Barrel, Receiver and Stock",
+          "note": "25,000 cr, Blueprint, Barrel, Receiver and Stock",
           "alt": null,
           "done": false
         }
       ],
       "conditions": [],
-      "bonuses": ["The build can be rushed for 35 platinum."],
+      "bonuses": [],
       "disclosures": []
     }
   ]

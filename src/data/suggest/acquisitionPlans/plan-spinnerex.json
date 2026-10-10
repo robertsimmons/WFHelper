@@ -1,37 +1,99 @@
 {
   "name": "Spinnerex",
   "kind": "melee",
-  "effort": 2,
+  "effort": 3,
   "source": "duviri",
   "tradeable": false,
-  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "progress": {
+    "have": 0,
+    "need": 4,
+    "unit": "parts"
+  },
   "badges": [
-    { "text": "needs The Hex quest", "tone": "warn" },
-    { "text": "Isleweaver", "tone": "info" }
+    {
+      "text": "needs The Hex quest",
+      "tone": "warn"
+    },
+    {
+      "text": "Isleweaver",
+      "tone": "info"
+    }
   ],
   "prices": [
-    { "label": "parts", "amount": "60,000 cr", "money": false },
-    { "label": "blueprint", "amount": "20,000 cr", "money": false }
+    {
+      "label": "parts",
+      "amount": "60,000 cr",
+      "money": false
+    },
+    {
+      "label": "blueprint",
+      "amount": "20,000 cr",
+      "money": false
+    }
   ],
   "materials": [
-    { "qty": "250", "label": "Temporal Dust", "note": "Blade + String" },
-    { "qty": "2,100", "label": "Entrati Obols", "note": "Blade + String" },
-    { "qty": "150", "label": "Aggristone", "note": "Blade" },
-    { "qty": "75", "label": "Saggen Pearl", "note": "Blade" },
-    { "qty": "250", "label": "Kovnik", "note": "String" },
-    { "qty": "75", "label": "Tasoma Extract", "note": "String" },
-    { "qty": "350", "label": "Necracoil", "note": "Handle" },
-    { "qty": "100", "label": "Connla Sprout", "note": "Handle" },
-    { "qty": "10", "label": "Silphsela", "note": "Handle" },
-    { "qty": "75", "label": "Rune Marrow", "note": "Handle" },
-    { "qty": "80,000", "label": "Credits", "note": null }
+    {
+      "qty": "250",
+      "label": "Temporal Dust",
+      "note": "Blade + String"
+    },
+    {
+      "qty": "2,100",
+      "label": "Entrati Obols",
+      "note": "Blade + String"
+    },
+    {
+      "qty": "150",
+      "label": "Aggristone",
+      "note": "Blade"
+    },
+    {
+      "qty": "75",
+      "label": "Saggen Pearl",
+      "note": "Blade"
+    },
+    {
+      "qty": "250",
+      "label": "Kovnik",
+      "note": "String"
+    },
+    {
+      "qty": "75",
+      "label": "Tasoma Extract",
+      "note": "String"
+    },
+    {
+      "qty": "350",
+      "label": "Necracoil",
+      "note": "Handle"
+    },
+    {
+      "qty": "100",
+      "label": "Connla Sprout",
+      "note": "Handle"
+    },
+    {
+      "qty": "10",
+      "label": "Silphsela",
+      "note": "Handle"
+    },
+    {
+      "qty": "75",
+      "label": "Rune Marrow",
+      "note": "Handle"
+    },
+    {
+      "qty": "80,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
     {
       "type": "gate",
       "place": "DUVIRI",
       "sub": null,
-      "activity": "finish The Duviri Paradox, The Lotus Eaters, then The Hex",
+      "activity": "reach MR 12, finish The Hex",
       "meta": "unlocks the Isleweaver node",
       "mode": null,
       "live": null,
@@ -40,12 +102,17 @@
       "spends": [],
       "map": null,
       "rows": [
-        { "qty": null, "label": "The Duviri Paradox", "note": null, "alt": null, "done": false },
-        { "qty": null, "label": "The Lotus Eaters", "note": null, "alt": null, "done": false },
+        {
+          "qty": null,
+          "label": "Mastery Rank 12",
+          "note": "needed to equip it",
+          "alt": null,
+          "done": false
+        },
         {
           "qty": null,
           "label": "The Hex",
-          "note": "unlocks Isleweaver in the spiral selection",
+          "note": "needs The Duviri Paradox and The Lotus Eaters; unlocks Isleweaver",
           "alt": null,
           "done": false
         }
@@ -58,109 +125,92 @@
       "type": "boss",
       "place": "ISLEWEAVER, DUVIRI",
       "sub": null,
-      "activity": "4 Duviri objectives + 2 Undercroft missions, then Oraxia, then The Fragmented",
-      "meta": "~15 min normal, 20-25 min Steel Path",
-      "mode": "normal, solo",
+      "activity": "4 Duviri objectives and 2 Undercroft missions, then Oraxia, then The Fragmented",
+      "meta": "7.69% each part",
+      "mode": null,
       "live": null,
       "skip": null,
-      "earns": null,
+      "earns": {
+        "currency": "Scuttler Husk",
+        "amount": "96"
+      },
       "spends": [],
       "map": "duviri",
       "rows": [
         {
           "qty": null,
           "label": "Spinnerex Blueprint",
-          "note": "one roll on a 13-item table, 7.69%",
-          "alt": null,
+          "note": "7.69%",
+          "alt": {
+            "text": "or buy from Acrithis or Dominus Thrax in the Dormizone",
+            "spends": [
+              {
+                "currency": "Scuttler Husk",
+                "amount": "48"
+              }
+            ]
+          },
           "done": false
         },
-        { "qty": null, "label": "Spinnerex Blade", "note": "7.69%", "alt": null, "done": false },
-        { "qty": null, "label": "Spinnerex Handle", "note": "7.69%", "alt": null, "done": false },
-        { "qty": null, "label": "Spinnerex String", "note": "7.69%", "alt": null, "done": false }
-      ],
-      "conditions": [
-        "Random Warframe and weapon loadout each run, no companion.",
-        "Wall-cling or go Operator Void Mode during Oraxia's spider phase: Death Scuttlers disable abilities and Operator, and the hanging ones proc Magnetic on contact.",
-        "The forced Undercroft Survival is a flat 5 minutes and the slowest part of a run."
-      ],
-      "bonuses": [
-        "Run normal, solo, unless your loadout is strong: damage attenuation on both bosses makes Steel Path run 20-25 minutes against about 15 for normal, so normal wins on husks per minute.",
-        "Enter Circuit, play one bad-loadout round to reroll, then come back for a better Duviri loadout, or abort after the run ends to keep rewards and keep the rotation."
-      ],
-      "disclosures": []
-    },
-    {
-      "type": "currency",
-      "place": "ISLEWEAVER, DUVIRI",
-      "sub": "The Fragmented (Duet)",
-      "activity": "beat The Fragmented for Scuttler Husks",
-      "meta": "16-20 normal, 20-24 Steel Path; no Resource Booster effect",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": { "currency": "Scuttler Husk", "amount": "20" },
-      "spends": [],
-      "map": "duviri",
-      "rows": [
-        {
-          "qty": "96",
-          "label": "Scuttler Husk",
-          "note": "full pity-shop cost for all four Spinnerex parts",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [
-        "About 5-6 runs guarantees the full set from husks alone; drops usually cut that down."
-      ],
-      "disclosures": [],
-      "ref": "Scuttler Husk"
-    },
-    {
-      "type": "vendor",
-      "place": "DORMIZONE",
-      "sub": "Acrithis or Dominus Thrax",
-      "activity": "buy whatever the drops didn't give",
-      "meta": "48 main, 16 each part",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [{ "currency": "Scuttler Husk", "amount": "96" }],
-      "map": null,
-      "rows": [
         {
           "qty": null,
-          "label": "Spinnerex Blueprint",
-          "note": "48 Husks",
-          "alt": null,
+          "label": "Spinnerex Blade",
+          "note": "7.69%",
+          "alt": {
+            "text": "or buy from Acrithis or Dominus Thrax in the Dormizone",
+            "spends": [
+              {
+                "currency": "Scuttler Husk",
+                "amount": "16"
+              }
+            ]
+          },
           "done": false
         },
-        { "qty": null, "label": "Spinnerex Blade", "note": "16 Husks", "alt": null, "done": false },
         {
           "qty": null,
           "label": "Spinnerex String",
-          "note": "16 Husks",
-          "alt": null,
+          "note": "7.69%",
+          "alt": {
+            "text": "or buy from Acrithis or Dominus Thrax in the Dormizone",
+            "spends": [
+              {
+                "currency": "Scuttler Husk",
+                "amount": "16"
+              }
+            ]
+          },
           "done": false
         },
-        { "qty": null, "label": "Spinnerex Handle", "note": "16 Husks", "alt": null, "done": false }
+        {
+          "qty": null,
+          "label": "Spinnerex Handle",
+          "note": "7.69%",
+          "alt": {
+            "text": "or buy from Acrithis or Dominus Thrax in the Dormizone",
+            "spends": [
+              {
+                "currency": "Scuttler Husk",
+                "amount": "16"
+              }
+            ]
+          },
+          "done": false
+        }
       ],
       "conditions": [
-        "The husk exchange only works with Acrithis or Dominus Thrax in the Dormizone: Acrithis inside Duviri does not offer it."
+        "Each clear pays one roll on a 13-item blueprint table plus 16-20 Scuttler Husk."
       ],
-      "bonuses": [
-        "Spend husks only on what hasn't dropped; the Spinnerex, Oraxia and Scyotid parts all drop naturally, but Thalys and the Captura scenes are shop-only."
-      ],
-      "disclosures": []
+      "bonuses": ["Steel Path adds 4 Scuttler Husk and 5 Temporal Dust a clear."],
+      "disclosures": [],
+      "ref": "Scuttler Husk"
     },
     {
       "type": "foundry",
       "place": "FOUNDRY",
       "sub": null,
       "activity": "build the three parts, then Spinnerex",
-      "meta": "12h each, 20,000 cr each, MR 12",
+      "meta": "12h each, 20,000 cr each",
       "mode": null,
       "live": null,
       "skip": null,
@@ -171,37 +221,35 @@
         {
           "qty": null,
           "label": "Spinnerex Blade",
-          "note": "20,000 cr + materials above",
+          "note": "20,000 cr, 150 Temporal Dust, 1,200 Entrati Obols, 150 Aggristone, 75 Saggen Pearl",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Spinnerex String",
-          "note": "20,000 cr + materials above",
+          "note": "20,000 cr, 100 Temporal Dust, 900 Entrati Obols, 250 Kovnik, 75 Tasoma Extract",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Spinnerex Handle",
-          "note": "20,000 cr + materials above",
+          "note": "20,000 cr, 350 Necracoil, 100 Connla Sprout, 10 Silphsela, 75 Rune Marrow",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Spinnerex",
-          "note": "20,000 cr + the three parts",
+          "note": "20,000 cr, the three parts",
           "alt": null,
           "done": false
         }
       ],
-      "conditions": ["MR 12 required."],
+      "conditions": [],
       "bonuses": [],
-      "disclosures": [
-        { "title": "PvE only", "body": "Hotfix 41.0.7 removed Spinnerex from Conclave." }
-      ]
+      "disclosures": []
     }
   ]
 }

@@ -4,19 +4,41 @@
   "effort": 6,
   "source": "repeat",
   "tradeable": "components only",
-  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "progress": {
+    "have": 0,
+    "need": 4,
+    "unit": "parts"
+  },
   "badges": [
-    { "text": "3 crown tiers", "tone": "warn" },
-    { "text": "Deadlock Protocol gate", "tone": "warn" }
+    {
+      "text": "3 crown tiers",
+      "tone": "warn"
+    },
+    {
+      "text": "Deadlock Protocol gate",
+      "tone": "warn"
+    }
   ],
-  "prices": [{ "label": "build", "amount": "30,000 cr", "money": false }],
-  "materials": [{ "qty": "30,000", "label": "Credits", "note": null }],
+  "prices": [
+    {
+      "label": "build",
+      "amount": "30,000 cr",
+      "money": false
+    }
+  ],
+  "materials": [
+    {
+      "qty": "30,000",
+      "label": "Credits",
+      "note": null
+    }
+  ],
   "groups": [
     {
       "type": "gate",
-      "place": "THE DEADLOCK PROTOCOL",
+      "place": "QUESTS",
       "sub": null,
-      "activity": "complete the quest",
+      "activity": "reach MR 10, complete The Deadlock Protocol",
       "meta": "grants the Xoris",
       "mode": null,
       "live": null,
@@ -27,13 +49,20 @@
       "rows": [
         {
           "qty": null,
+          "label": "Mastery Rank 10",
+          "note": "needed to equip it",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
           "label": "The Deadlock Protocol",
           "note": "unlocks Treasurers, Granum Crowns and the Granum Void",
           "alt": null,
           "done": false
         }
       ],
-      "conditions": ["Without this quest, Treasurers spawn but drop nothing."],
+      "conditions": [],
       "bonuses": [],
       "disclosures": []
     },
@@ -53,14 +82,14 @@
         {
           "qty": null,
           "label": "Stahlta Blueprint",
-          "note": "15%, ~6 kills expected; untradeable",
+          "note": "15%, untradeable",
           "alt": null,
           "done": false
         }
       ],
       "conditions": ["The main blueprint is Jackal-only; it is not sold in the Market."],
       "bonuses": [
-        "Fossa is also a Granum Crown node; linger 2-5 minutes after the Jackal to bank a Normal Crown for a Receiver run."
+        "Fossa is also a Normal Crown node, so a Jackal run can bank a Crown for the Receiver run."
       ],
       "disclosures": []
     },
@@ -87,7 +116,7 @@
       ],
       "conditions": [
         "Only Rotation C (75 kills solo, +25 per extra squad member) drops parts; 25 and 50 kills pay only credits, Endo and Void Traces.",
-        "The Treasurer spawns 2-5 minutes into a non-endless mission and runs if you're slow; the Crown is consumed on interaction, so a failed run costs a Treasurer kill."
+        "The Treasurer spawns 2-5 minutes into a non-endless mission and escapes if you are slow; spending the Crown at a Golden Hand Tribute opens the Granum Void."
       ],
       "bonuses": [],
       "disclosures": []
@@ -114,7 +143,7 @@
         }
       ],
       "conditions": [
-        "Enemy level 16-30 sets the Exemplar crown tier; Laomedeia or Triton, Neptune also work."
+        "Enemy level 16-30 gives an Exemplar Crown; Laomedeia or Triton, Neptune also work."
       ],
       "bonuses": [],
       "disclosures": []
@@ -141,19 +170,10 @@
         }
       ],
       "conditions": [
-        "Enemy level 30+ sets the Zenith crown tier: Acheron or Cypress, Pluto, any Steel Path mission, or any Sister mission also qualify."
+        "Enemy level 30+ gives a Zenith Crown: Acheron or Cypress, Pluto, any Steel Path mission, or any Sister mission also qualify."
       ],
       "bonuses": [],
-      "disclosures": [
-        {
-          "title": "spawn manipulation",
-          "body": "Specters spawn only in fixed spots within a radius around you. Bullet-jump onto a tall rock at the map edge and stay there; they pile up at its base as fast as you kill them. One player reports a full Nightmare Rotation C clear in about 30 seconds this way, no triangle collecting needed."
-        },
-        {
-          "title": "frames that trivialize it",
-          "body": "Mesa's Peacemaker from high ground is the default pick, though specter particles can clog the spawn cap. Octavia with Mallet (plus the second-mallet augment) is called more reliable by some. Revenant's Danse Macabre, Volt's Discharge and Protea's turret also clear it. A 0-forma Xoris (heavy-attack throw, detonate mid-air) works on any frame and is the cheapest reliable method; don't sell it."
-        }
-      ]
+      "disclosures": []
     },
     {
       "type": "foundry",

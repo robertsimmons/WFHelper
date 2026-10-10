@@ -4,27 +4,66 @@
   "effort": 5,
   "source": "standing",
   "tradeable": false,
-  "progress": { "have": 0, "need": 1, "unit": "weapon" },
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "weapon"
+  },
   "badges": [
-    { "text": "New War + Veilbreaker gate", "tone": "warn" },
-    { "text": "Deathless = 30 Stock", "tone": "info" }
+    {
+      "text": "New War + Veilbreaker gate",
+      "tone": "warn"
+    },
+    {
+      "text": "30 Stock, one weekly mission",
+      "tone": "info"
+    }
   ],
   "prices": [
-    { "label": "blueprint", "amount": "30 Stock", "money": false },
-    { "label": "build", "amount": "20,000 cr", "money": false }
+    {
+      "label": "blueprint",
+      "amount": "30 Stock",
+      "money": false
+    },
+    {
+      "label": "build",
+      "amount": "20,000 cr",
+      "money": false
+    }
   ],
   "materials": [
-    { "qty": "13,000", "label": "Alloy Plate", "note": null },
-    { "qty": "6,300", "label": "Rubedo", "note": null },
-    { "qty": "8", "label": "Tellurium", "note": null },
-    { "qty": "20,000", "label": "Credits", "note": null }
+    {
+      "qty": "13,000",
+      "label": "Alloy Plate",
+      "note": null
+    },
+    {
+      "qty": "6,300",
+      "label": "Rubedo",
+      "note": null
+    },
+    {
+      "qty": "2,600",
+      "label": "Kuva",
+      "note": null
+    },
+    {
+      "qty": "8",
+      "label": "Tellurium",
+      "note": null
+    },
+    {
+      "qty": "20,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
     {
       "type": "gate",
       "place": "QUESTS",
       "sub": null,
-      "activity": "complete The New War, then Veilbreaker",
+      "activity": "reach MR 13, complete The New War, then Veilbreaker",
       "meta": "unlocks Kahl's Garrison in the Drifter's Camp, Earth",
       "mode": null,
       "live": null,
@@ -33,6 +72,13 @@
       "spends": [],
       "map": null,
       "rows": [
+        {
+          "qty": null,
+          "label": "Mastery Rank 13",
+          "note": "needed to equip it",
+          "alt": null,
+          "done": false
+        },
         {
           "qty": null,
           "label": "The New War",
@@ -61,14 +107,17 @@
       "mode": "solo only",
       "live": null,
       "skip": null,
-      "earns": { "currency": "Stock", "amount": "105" },
+      "earns": {
+        "currency": "Stock",
+        "amount": "30"
+      },
       "spends": [],
       "map": null,
       "rows": [
         {
           "qty": "1",
           "label": "weekly mission completion",
-          "note": "Rank 1 Shelter to Rank 2 Encampment; also rescues Chipper",
+          "note": "Rank 1 Shelter to Rank 2 Encampment; Chipper joins at Rank 2",
           "alt": null,
           "done": false
         },
@@ -81,21 +130,14 @@
         }
       ],
       "conditions": [
-        "Finishing the mission alone gives zero Stock; all weekly Stock comes from the bonus challenges and blue Stock crates.",
-        "Missions rotate Sneaky Sabotage, Junk Run, then Prison Break at Monday 00:00 UTC, advancing only after you complete the current one.",
-        "Known boss bugs (Sprag replaying her intro in Junk Run; an unfair Ven'kra Tel fight in Prison Break) can void a Deathless run."
+        "Finishing the mission pays no Stock; only the six bonus challenges do, 30 for Deathless and 15 for each of the others.",
+        "Missions rotate Sneaky Sabotage, Junk Run, then Prison Break at Monday 00:00 UTC, advancing only after you complete the current one."
       ],
       "bonuses": [
-        "Deathless is worth exactly 30 Stock by itself and covers the Slaytra in one clean run.",
-        "Challenge progress carries over between runs since Echoes of Veilbreaker, so a bad run doesn't reset collectibles.",
-        "Blue Stock crates give 2 Stock each, up to 5 per run (10 Stock), and respawn on replay, so three quick extracted runs also make 30 without touching the challenges."
+        "Blue Stock crates give 2 Stock each, up to 5 per run, and respawn on replay; they pay only if you extract.",
+        "Challenge progress carries between runs."
       ],
-      "disclosures": [
-        {
-          "title": "Stock is shared across all of Chipper's stock",
-          "body": "Styanax parts, Afentis, Aegrit, Archon mods, ephemeras and Skaut all draw from the same Stock pool; the wiki prices every permanent item once at 980 Stock total, so buy the Slaytra first if you want it before the rest."
-        }
-      ],
+      "disclosures": [],
       "ref": "Stock"
     },
     {
@@ -108,7 +150,12 @@
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Stock", "amount": "30" }],
+      "spends": [
+        {
+          "currency": "Stock",
+          "amount": "30"
+        }
+      ],
       "map": null,
       "rows": [
         {
@@ -119,43 +166,21 @@
           "done": false
         }
       ],
-      "conditions": [
-        "Kahl can't use your mods or loadout, and the machete you use in Sneaky Sabotage is only labelled \"Machete\"; playing with it there doesn't give you the weapon."
-      ],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "currency",
-      "place": "ANY KUVA SIPHON, FLOOD OR RELIC",
-      "sub": null,
-      "activity": "farm Kuva",
-      "meta": "2,600 needed for the build",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": { "currency": "Kuva", "amount": "2,600" },
-      "spends": [],
-      "map": null,
-      "rows": [
-        { "qty": "2,600", "label": "Kuva", "note": "Slaytra build", "alt": null, "done": false }
-      ],
       "conditions": [],
       "bonuses": [],
-      "disclosures": [],
-      "ref": "Kuva"
+      "disclosures": []
     },
     {
       "type": "foundry",
       "place": "FOUNDRY",
       "sub": null,
       "activity": "build Slaytra",
-      "meta": "20,000 cr, 12h (rush 35p)",
+      "meta": "12h, 20,000 cr",
       "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Kuva", "amount": "2,600" }],
+      "spends": [],
       "map": null,
       "rows": [
         {

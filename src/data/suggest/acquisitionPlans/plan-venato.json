@@ -6,8 +6,8 @@
   "tradeable": false,
   "progress": { "have": 0, "need": 1, "unit": "blueprint" },
   "badges": [
-    { "text": "16 Narmer Isoplast", "tone": "warn" },
-    { "text": "Tenno Lab", "tone": "info" }
+    { "text": "Tenno Lab", "tone": "warn" },
+    { "text": "MR 9", "tone": "info" }
   ],
   "prices": [
     { "label": "blueprint", "amount": "15,000 cr", "money": false },
@@ -23,7 +23,7 @@
       "type": "gate",
       "place": "THE NEW WAR",
       "sub": null,
-      "activity": "finish the quest",
+      "activity": "reach MR 9, then finish the quest",
       "meta": null,
       "mode": null,
       "live": null,
@@ -34,8 +34,15 @@
       "rows": [
         {
           "qty": null,
+          "label": "Mastery Rank 9",
+          "note": "needed to equip it",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
           "label": "The New War",
-          "note": "unlocks Narmer Bounties; nothing here works without it",
+          "note": "unlocks Narmer Bounties, the only source of Narmer Isoplast",
           "alt": null,
           "done": false
         }
@@ -57,22 +64,18 @@
       "spends": [{ "currency": "Credits", "amount": "15,000" }],
       "map": null,
       "rows": [
-        {
-          "qty": null,
-          "label": "Venato Blueprint",
-          "note": "15,000 cr",
-          "alt": null,
-          "done": false
-        }
+        { "qty": null, "label": "Venato Blueprint", "note": null, "alt": null, "done": false }
       ],
-      "conditions": ["MR 9 gate to build it."],
+      "conditions": [
+        "Needs the Venato researched in the Tenno Lab, after Nami Skyla and Tonbo. Research is 72h each and cannot be rushed."
+      ],
       "bonuses": [],
       "disclosures": []
     },
     {
       "type": "farm",
       "place": "VEIL PROXIMA",
-      "sub": "Sentient Anomaly (Murex)",
+      "sub": "Murex",
       "activity": "Railjack: board the Murex, kill the 20 Sentients",
       "meta": "1 shard per clear",
       "mode": null,
@@ -93,14 +96,15 @@
           "qty": "5",
           "label": "Exceptional Sentient Core",
           "note": "Sentients aboard the Murex can drop them",
-          "alt": "two Teralysts, 4 each; or Onkko's conversion blueprint, 500 Quills standing",
+          "alt": {
+            "text": "convert Intact Cores with Onkko's reusable blueprint",
+            "spends": [{ "currency": "The Quills Standing", "amount": "500" }]
+          },
           "done": false
         }
       ],
-      "conditions": [
-        "If the Railjack mission fails, you lose the shard even after clearing the Murex; aborting or failing a chain discards earlier rewards from it."
-      ],
-      "bonuses": ["Some players use a worldstate tracker site to find the Murex node."],
+      "conditions": ["The Murex isn't present in Void Storm missions."],
+      "bonuses": [],
       "disclosures": [
         {
           "title": "core conversion",
@@ -131,12 +135,7 @@
       ],
       "conditions": [],
       "bonuses": [],
-      "disclosures": [
-        {
-          "title": "not Venato Prime",
-          "body": "Venato Prime is a separate item with its own relic farm."
-        }
-      ]
+      "disclosures": []
     }
   ]
 }

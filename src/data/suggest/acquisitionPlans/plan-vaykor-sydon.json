@@ -3,20 +3,41 @@
   "kind": "melee",
   "effort": 4,
   "source": "standing",
-  "tradeable": "unranked copies",
-  "progress": { "have": 0, "need": 1, "unit": "purchase" },
+  "tradeable": "unranked, no Forma/Catalyst",
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "purchase"
+  },
   "badges": [
-    { "text": "General rank gate", "tone": "warn" },
-    { "text": "no RNG", "tone": "info" }
+    {
+      "text": "General rank gate",
+      "tone": "warn",
+      "rank": {
+        "syndicate": "Steel Meridian",
+        "level": 5
+      }
+    },
+    {
+      "text": "MR 11",
+      "tone": "info"
+    }
   ],
-  "prices": [],
+  "prices": [
+    {
+      "label": "standing",
+      "amount": "365,000",
+      "money": false
+    }
+  ],
+  "materials": [],
   "groups": [
     {
       "type": "gate",
-      "place": "ORBITER, SYNDICATE CONSOLE",
+      "place": "MASTERY RANK",
       "sub": null,
-      "activity": "join and pledge",
-      "meta": "one-time",
+      "activity": "reach MR 11",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -27,126 +48,130 @@
         {
           "qty": null,
           "label": "Mastery Rank 11",
-          "note": "needed to buy it or take it in a trade",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Pledge Steel Meridian",
-          "note": "join through its representative in any Relay; equip its Sigil",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Pledging Steel Meridian drains New Loka and Perrin Sequence standing, which can demote you there."
-      ],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "currency",
-      "place": "ANY MISSION",
-      "sub": null,
-      "activity": "earn standing from mission affinity and Syndicate Medallions",
-      "meta": "365,000 standing total",
-      "mode": "solo, hit the cap then run the alerts",
-      "live": null,
-      "skip": null,
-      "earns": { "currency": "Steel Meridian Standing", "amount": "365,000" },
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "1,000",
-          "label": "Salvage",
-          "note": "join sacrifice",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "2",
-          "label": "Morphics",
-          "note": "Rank 1 Brave sacrifice",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "1",
-          "label": "Forma",
-          "note": "Rank 2 Valiant sacrifice",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "1",
-          "label": "Orokin Catalyst",
-          "note": "Rank 3 Defender sacrifice",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "940,000",
-          "label": "Credits",
-          "note": "10,000 to join, then 30,000 / 50,000 / 100,000 / 250,000 / 500,000 per rank",
+          "note": "needed to buy it or receive it in a trade",
           "alt": null,
           "done": false
         }
       ],
       "conditions": [],
       "bonuses": [],
-      "disclosures": [
-        {
-          "title": "why 365,000",
-          "body": "240,000 standing carries the five rank-ups to General, since each rank-up spends the standing it needs. The 125,000-standing weapon purchase comes on top of that."
-        }
-      ],
-      "ref": "Steel Meridian Standing"
+      "disclosures": []
     },
     {
       "type": "currency",
-      "place": "CETUS BOUNTIES",
-      "sub": null,
-      "activity": "collect Aya before Protector",
-      "meta": "5 Aya",
+      "place": "STEEL MERIDIAN SYNDICATE, ORBITER",
+      "sub": "Syndicate console",
+      "activity": "pledge Steel Meridian, earn standing from affinity, Syndicate Alerts and Medallions",
+      "meta": "240,000 standing to General, 125,000 more for the weapon",
       "mode": null,
       "live": null,
       "skip": null,
-      "earns": { "currency": "Aya", "amount": "5" },
+      "earns": {
+        "currency": "Steel Meridian Standing",
+        "amount": "365,000"
+      },
       "spends": [],
       "map": null,
       "rows": [
         {
-          "qty": "5",
-          "label": "Aya",
-          "note": "2 at Rank 4 Protector, 3 at Rank 5 General",
-          "alt": "Zariman bounties and Void missions",
+          "qty": "1,000",
+          "label": "Salvage",
+          "note": "Initiation sacrifice, 10,000 cr",
+          "alt": null,
           "done": false
+        },
+        {
+          "qty": "2",
+          "label": "Morphics",
+          "note": "Rank 1 Brave sacrifice, 5,000 standing, 30,000 cr",
+          "alt": null,
+          "done": false,
+          "rank": {
+            "syndicate": "Steel Meridian",
+            "level": 1
+          }
+        },
+        {
+          "qty": "1",
+          "label": "Forma",
+          "note": "Rank 2 Valiant sacrifice, 22,000 standing, 50,000 cr",
+          "alt": null,
+          "done": false,
+          "rank": {
+            "syndicate": "Steel Meridian",
+            "level": 2
+          }
+        },
+        {
+          "qty": "1",
+          "label": "Orokin Catalyst",
+          "note": "Rank 3 Defender sacrifice, 44,000 standing, 100,000 cr",
+          "alt": null,
+          "done": false,
+          "rank": {
+            "syndicate": "Steel Meridian",
+            "level": 3
+          }
+        },
+        {
+          "qty": "2",
+          "label": "Aya",
+          "note": "Rank 4 Protector sacrifice, 70,000 standing, 250,000 cr",
+          "alt": null,
+          "done": false,
+          "rank": {
+            "syndicate": "Steel Meridian",
+            "level": 4
+          }
+        },
+        {
+          "qty": "3",
+          "label": "Aya",
+          "note": "Rank 5 General sacrifice, 99,000 standing, 500,000 cr",
+          "alt": null,
+          "done": false,
+          "rank": {
+            "syndicate": "Steel Meridian",
+            "level": 5
+          }
         }
       ],
-      "conditions": ["Aya is not tradeable, so it must be farmed."],
+      "conditions": [
+        "A rank-up spends the standing you hold, so the weapon's price is earned on top of the 240,000.",
+        "Earning Steel Meridian standing lowers your New Loka and Perrin Sequence standing."
+      ],
       "bonuses": [],
       "disclosures": [],
-      "ref": "Aya"
+      "ref": "Steel Meridian Standing"
     },
     {
       "type": "vendor",
-      "place": "STEEL MERIDIAN OFFERINGS, RELAY",
-      "sub": null,
+      "place": "STEEL MERIDIAN OFFERINGS, ORBITER",
+      "sub": "Syndicate console",
       "activity": "buy the polearm",
-      "meta": "125,000 standing",
+      "meta": "General, 125,000 standing",
       "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Steel Meridian Standing", "amount": "125,000" }],
-      "map": null,
-      "rows": [{ "qty": null, "label": "Vaykor Sydon", "note": null, "alt": null, "done": false }],
-      "conditions": [
-        "The free item you pick on reaching General can never be a Syndicate weapon; the Sydon is always a separate 125,000-standing purchase."
+      "spends": [
+        {
+          "currency": "Steel Meridian Standing",
+          "amount": "125,000"
+        }
       ],
-      "bonuses": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Vaykor Sydon",
+          "note": "arrives built, no Foundry step",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["It can't be the free General rank-up gift, so the 125,000 is always paid."],
+      "bonuses": ["Vaykor Hek and Vaykor Marelok sell from the same General rank."],
       "disclosures": []
     }
   ]

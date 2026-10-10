@@ -7,7 +7,7 @@
   "progress": { "have": 0, "need": 2, "unit": "parts" },
   "badges": [
     { "text": "Deadlock Protocol gate", "tone": "warn" },
-    { "text": "22-30% Granum Void C", "tone": "info" }
+    { "text": "Granum Void rotation C", "tone": "info" }
   ],
   "prices": [
     { "label": "blueprint", "amount": "25,000 cr", "money": false },
@@ -20,10 +20,10 @@
   "groups": [
     {
       "type": "gate",
-      "place": "CODEX",
+      "place": "THE DEADLOCK PROTOCOL",
       "sub": null,
-      "activity": "The Deadlock Protocol",
-      "meta": "needs Saturn's Junction and MR 4",
+      "activity": "reach MR 8, then complete the quest",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -33,15 +33,20 @@
       "rows": [
         {
           "qty": null,
+          "label": "Mastery Rank 8",
+          "note": "needed to equip it",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
           "label": "The Deadlock Protocol",
-          "note": "quest",
+          "note": "quest; Vox Solaris comes first",
           "alt": null,
           "done": false
         }
       ],
-      "conditions": [
-        "Granum Crowns and the Granum Void don't exist for you until the quest is done."
-      ],
+      "conditions": ["The Granum Void can't be entered until the quest is done."],
       "bonuses": [],
       "disclosures": []
     },
@@ -68,7 +73,7 @@
       "type": "farm",
       "place": "SKYRESH, PHOBOS",
       "sub": "Granum Void",
-      "activity": "Capture; spend a Granum Crown, take the next from the Treasurer",
+      "activity": "Capture; kill the Treasurer, spend the Granum Crown at a Golden Hand Tribute",
       "meta": "Rotation C at Rank 3, 75 kills solo",
       "mode": "solo recommended",
       "live": null,
@@ -77,26 +82,18 @@
       "spends": [],
       "map": null,
       "rows": [
-        {
-          "qty": null,
-          "label": "Velox Barrel",
-          "note": "22.22%, about 4 C runs",
-          "alt": null,
-          "done": false
-        }
+        { "qty": null, "label": "Velox Barrel", "note": "22.22%", "alt": null, "done": false }
       ],
       "conditions": [
         "The crown tier decides the loot table, not the node: the Barrel needs a plain Granum Crown from a level 0-15 node.",
-        "The C roll only comes at Rank 3: 75 kills solo, plus 25 per extra squad member."
+        "The C roll only comes at Rank 3: 75 kills solo, plus 25 per extra squad member.",
+        "Tributes won't open with enemies nearby."
       ],
-      "bonuses": [
-        "Protea's Neuroptics and Chassis share these C tables, so farm them together if you need her.",
-        "Recycle the crown every mission: spend it at a Golden Hand Tribute early, then kill that mission's Treasurer on the way out."
-      ],
+      "bonuses": ["Protea's Neuroptics shares this C table."],
       "disclosures": [
         {
           "title": "frame picks",
-          "body": "Octavia is the most-recommended: drop Mallet and Amp at the spawn point and barely move. Mesa's Peacemaker with Primed Flow and full energy, or Revenant's Danse Macabre from a slight rise, are the other standards. Xoris is the no-investment fallback: Charged Throw kills any Specter, and detonating near a trapped Solaris frees them for +20 seconds each. Simaris sells the Xoris again if you sold it. Iliad was named as faster than Skyresh."
+          "body": "Xoris is the wiki's top pick: its Charged Throw instantly kills any Errant Specter, and freeing a trapped Solaris adds 20 seconds. Mesa's Peacemaker with energy kept up, Revenant's Danse Macabre, Octavia's Mallet and Nova's Antimatter Drop also work."
         }
       ]
     },
@@ -104,7 +101,7 @@
       "type": "farm",
       "place": "ADRASTEA, JUPITER",
       "sub": "Extended Granum Void",
-      "activity": "Sabotage; spend an Exemplar Granum Crown, take the next from the Treasurer",
+      "activity": "Sabotage; kill the Treasurer, spend the Exemplar Granum Crown at a Golden Hand Tribute",
       "meta": "Rotation C at Rank 3",
       "mode": "solo recommended",
       "live": null,
@@ -113,25 +110,17 @@
       "spends": [],
       "map": null,
       "rows": [
-        {
-          "qty": null,
-          "label": "Velox Receiver",
-          "note": "29.63%, about 3 C runs",
-          "alt": null,
-          "done": false
-        }
+        { "qty": null, "label": "Velox Receiver", "note": "29.63%", "alt": null, "done": false }
       ],
       "conditions": [
         "Needs an Exemplar Crown from a level 16-30 node; a Zenith Crown never drops either part.",
-        "Tributes won't work with enemies nearby, and one Void per mission.",
-        "Freeing Solaris captives before entering can disable your abilities in the Void, and an unkilled Zanuka Hunter can yank you out.",
-        "Starting on the tile with the giant coin can leave every Tribute inactive; abort and restart."
+        "Freeing Solaris captives before entering can disable your abilities in the Void, and an unkilled Zanuka Hunter can pull you out."
       ],
-      "bonuses": ["Triton (Rescue, Neptune) was named as faster than Adrastea."],
+      "bonuses": ["Protea's Chassis shares this C table."],
       "disclosures": [
         {
           "title": "sustain",
-          "body": "Errant Specters drop no ammo or energy; bring Team Energy Restores or an ammo-efficient weapon."
+          "body": "Errant Specters drop no ammo or energy; bring Team Energy Restores or a weapon with high reserve ammo."
         }
       ]
     },
@@ -140,7 +129,7 @@
       "place": "FOUNDRY",
       "sub": null,
       "activity": "build Velox",
-      "meta": "12h, MR 8",
+      "meta": "12h",
       "mode": null,
       "live": null,
       "skip": null,

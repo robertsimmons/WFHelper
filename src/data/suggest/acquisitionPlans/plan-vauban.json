@@ -13,6 +13,20 @@
     { "label": "blueprint", "amount": "35,000 cr", "money": false },
     { "label": "parts", "amount": "75 Nightwave Creds", "money": false }
   ],
+  "routes": [
+    {
+      "name": "Nightwave Cred offerings",
+      "cost": "75 Nightwave Creds for the three components, main blueprint from the Market",
+      "effort": 2,
+      "role": "chosen"
+    },
+    {
+      "name": "The Circuit, week 4 rotation",
+      "cost": "Tier 2, 5, 8 and 10 rewards, after The Duviri Paradox",
+      "effort": 3,
+      "role": null
+    }
+  ],
   "materials": [
     { "qty": "150", "label": "Alloy Plate", "note": "Neuroptics" },
     { "qty": "1", "label": "Neural Sensors", "note": "Neuroptics" },
@@ -53,7 +67,7 @@
       "place": "NIGHTWAVE",
       "sub": null,
       "activity": "daily and weekly Acts",
-      "meta": "Nightwave rank 1",
+      "meta": "75 Creds",
       "mode": null,
       "live": null,
       "skip": null,
@@ -64,13 +78,13 @@
         {
           "qty": "75",
           "label": "Nightwave Creds",
-          "note": "rank 1 grants 150 in recent seasons",
+          "note": "25 each for Neuroptics, Chassis and Systems",
           "alt": null,
           "done": false
         }
       ],
       "conditions": [
-        "Between seasons the Cred store is closed, and Creds from an ended season expire. Spend them before the season ends."
+        "Nightwave is closed between series, so the components can't be bought until the next one starts."
       ],
       "bonuses": [],
       "disclosures": [],
@@ -111,16 +125,14 @@
           "done": false
         }
       ],
-      "conditions": [
-        "The store is the Cred Offerings prompt in the bottom corner of the Nightwave screen."
-      ],
+      "conditions": [],
       "bonuses": [
-        "Vauban sits in the permanent tab, so buy the limited-time offerings first and pick him up with leftover Creds."
+        "Vauban sits in the Always Available tab, so buy the limited-time offerings first and pick him up with leftover Creds."
       ],
       "disclosures": [
         {
-          "title": "Circuit, when Nightwave is between seasons",
-          "body": "After The Duviri Paradox, pick Vauban in the normal Circuit during week 4 of the rotation, which he shares with Saryn. Neuroptics at tier 2, Chassis 5, Systems 8, main blueprint 10."
+          "title": "Circuit, when Nightwave is closed",
+          "body": "After The Duviri Paradox, pick Vauban in the normal Circuit during week 4 of the rotation, which he shares with Saryn and Nova. Neuroptics at tier 2, Chassis 5, Systems 8, main blueprint 10."
         }
       ]
     },
@@ -167,8 +179,7 @@
         }
       ],
       "conditions": [
-        "Each component costs 15,000 cr; start all three together. Have a free Warframe slot before claiming Vauban.",
-        "This is base Vauban, the one Helminth needs for Tesla Nervos. Vauban Prime's Oxium, Cryotic and Nitain bill does not apply."
+        "Each component costs 15,000 cr; start all three together. Have a free Warframe slot before claiming Vauban."
       ],
       "bonuses": [],
       "disclosures": []

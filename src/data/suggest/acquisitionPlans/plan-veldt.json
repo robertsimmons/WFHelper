@@ -5,7 +5,10 @@
   "source": "dojo",
   "tradeable": false,
   "progress": { "have": 0, "need": 1, "unit": "blueprint" },
-  "badges": [{ "text": "Tenno Lab", "tone": "warn" }],
+  "badges": [
+    { "text": "Tenno Lab", "tone": "warn" },
+    { "text": "MR 8", "tone": "info" }
+  ],
   "prices": [
     { "label": "blueprint", "amount": "15,000 cr", "money": false },
     { "label": "build", "amount": "20,000 cr", "money": false }
@@ -18,6 +21,31 @@
     { "qty": "35,000", "label": "Credits", "note": null }
   ],
   "groups": [
+    {
+      "type": "gate",
+      "place": "MASTERY RANK",
+      "sub": null,
+      "activity": "reach MR 8",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Mastery Rank 8",
+          "note": "needed to equip it",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
     {
       "type": "vendor",
       "place": "CLAN DOJO, TENNO LAB",
@@ -34,8 +62,7 @@
         { "qty": null, "label": "Veldt Blueprint", "note": null, "alt": null, "done": false }
       ],
       "conditions": [
-        "Needs the Veldt researched in the Tenno Lab, which first needs Akstiletto, then Sybaris. Research is 72h each and cannot be rushed.",
-        "The blueprint stays yours after leaving the clan."
+        "Needs the Veldt researched in the Tenno Lab, which first needs Akstiletto, then Sybaris. Research is 72h each and cannot be rushed."
       ],
       "bonuses": [],
       "disclosures": []

@@ -4,24 +4,84 @@
   "effort": 2,
   "source": "boss",
   "tradeable": false,
-  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "progress": {
+    "have": 0,
+    "need": 4,
+    "unit": "parts"
+  },
   "badges": [
-    { "text": "easiest boss", "tone": "info" },
-    { "text": "Circuit alt", "tone": "circuit" }
+    {
+      "text": "easiest boss",
+      "tone": "info"
+    },
+    {
+      "text": "Circuit alt",
+      "tone": "circuit"
+    }
   ],
-  "prices": [{ "label": "blueprint", "amount": "25,000 cr", "money": false }],
+  "prices": [
+    {
+      "label": "blueprint",
+      "amount": "25,000 cr",
+      "money": false
+    }
+  ],
   "materials": [
-    { "qty": "1,000", "label": "Ferrite", "note": "Chassis" },
-    { "qty": "800", "label": "Rubedo", "note": "500 Neuroptics, 300 Chassis" },
-    { "qty": "500", "label": "Salvage", "note": "Systems" },
-    { "qty": "220", "label": "Plastids", "note": "Systems" },
-    { "qty": "150", "label": "Alloy Plate", "note": "Neuroptics" },
-    { "qty": "150", "label": "Polymer Bundle", "note": "Neuroptics" },
-    { "qty": "2", "label": "Morphics", "note": "Chassis and Systems" },
-    { "qty": "1", "label": "Neural Sensors", "note": "Neuroptics" },
-    { "qty": "1", "label": "Control Module", "note": "Systems" },
-    { "qty": "1", "label": "Orokin Cell", "note": "Mag" },
-    { "qty": "95,000", "label": "Credits", "note": null }
+    {
+      "qty": "1,000",
+      "label": "Ferrite",
+      "note": "Chassis"
+    },
+    {
+      "qty": "800",
+      "label": "Rubedo",
+      "note": "500 Neuroptics, 300 Chassis"
+    },
+    {
+      "qty": "500",
+      "label": "Salvage",
+      "note": "Systems"
+    },
+    {
+      "qty": "220",
+      "label": "Plastids",
+      "note": "Systems"
+    },
+    {
+      "qty": "150",
+      "label": "Alloy Plate",
+      "note": "Neuroptics"
+    },
+    {
+      "qty": "150",
+      "label": "Polymer Bundle",
+      "note": "Neuroptics"
+    },
+    {
+      "qty": "2",
+      "label": "Morphics",
+      "note": "Chassis and Systems"
+    },
+    {
+      "qty": "1",
+      "label": "Neural Sensors",
+      "note": "Neuroptics"
+    },
+    {
+      "qty": "1",
+      "label": "Control Module",
+      "note": "Systems"
+    },
+    {
+      "qty": "1",
+      "label": "Orokin Cell",
+      "note": "Mag"
+    },
+    {
+      "qty": "95,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
     {
@@ -36,7 +96,15 @@
       "earns": null,
       "spends": [],
       "map": null,
-      "rows": [{ "qty": null, "label": "Mag Blueprint", "note": null, "alt": null, "done": false }],
+      "rows": [
+        {
+          "qty": null,
+          "label": "Mag Blueprint",
+          "note": null,
+          "alt": null,
+          "done": false
+        }
+      ],
       "conditions": ["The Sergeant never drops this; it's a Market purchase only."],
       "bonuses": [],
       "disclosures": []
@@ -46,7 +114,7 @@
       "place": "ILIAD, PHOBOS",
       "sub": null,
       "activity": "Assassination, The Sergeant",
-      "meta": "~4 kills expected for Systems",
+      "meta": null,
       "mode": "solo or public",
       "live": null,
       "skip": null,
@@ -54,8 +122,20 @@
       "spends": [],
       "map": null,
       "rows": [
-        { "qty": null, "label": "Neuroptics", "note": "38.72%", "alt": null, "done": false },
-        { "qty": null, "label": "Chassis", "note": "38.72%", "alt": null, "done": false },
+        {
+          "qty": null,
+          "label": "Neuroptics",
+          "note": "38.72%",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Chassis",
+          "note": "38.72%",
+          "alt": null,
+          "done": false
+        },
         {
           "qty": null,
           "label": "Systems",
@@ -65,43 +145,15 @@
         }
       ],
       "conditions": [
-        "Base Mag and Mag Prime are separate Mastery items, and this is the only route to the Helminth subsume (Pull): don't sell or skip her if you already own the Prime."
+        "Base Mag and Mag Prime are separate Mastery items; don't skip her if you already own the Prime."
       ],
       "bonuses": [
-        "Magnetic (Cold + Electricity) or Toxin strips his shields fast; his Flash Bang cloak isn't invulnerability, keep hitting where he was.",
-        "A fast frame (Volt, Gauss, Titania) or Excalibur's Exalted Blade clears him in seconds, raising kills per hour."
+        "The Sergeant is vulnerable to damage at all times, and he is weak to Electricity."
       ],
-      "disclosures": []
-    },
-    {
-      "type": "gate",
-      "place": "DUVIRI",
-      "sub": null,
-      "activity": "The Circuit",
-      "meta": "only on Mag's rotation week",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Mag Circuit rewards",
-          "note": "guaranteed parts at Tiers 2, 5, 8 and 10",
-          "alt": "The Sergeant now",
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Finish The Duviri Paradox first, then check whether Mag is the current week's Warframe offering."
-      ],
-      "bonuses": [],
       "disclosures": [
         {
-          "title": "skip Systems RNG entirely",
-          "body": "One Circuit run on Mag's week gives the full set with no drop rate to worry about: the fallback if Systems refuses to drop."
+          "title": "Duviri Circuit",
+          "body": "In the weeks Mag is the rotating Warframe, picking him pays Neuroptics at tier 2, Chassis at tier 5, Systems at tier 8 and the main blueprint at tier 10, which skips the Systems drop rate. Needs The Duviri Paradox."
         }
       ]
     },
@@ -168,6 +220,20 @@
       "conditions": ["Needs a free Warframe slot before the Foundry will let you claim it."],
       "bonuses": [],
       "disclosures": []
+    }
+  ],
+  "routes": [
+    {
+      "name": "The Sergeant boss, Market blueprint",
+      "cost": "25,000 cr blueprint; Neuroptics and Chassis 38.72% a kill, Systems 22.56%",
+      "effort": 2,
+      "role": "chosen"
+    },
+    {
+      "name": "Duviri Circuit, Mag's week",
+      "cost": "Neuroptics at tier 2, Chassis at tier 5, Systems at tier 8, blueprint at tier 10",
+      "effort": 2,
+      "role": null
     }
   ]
 }

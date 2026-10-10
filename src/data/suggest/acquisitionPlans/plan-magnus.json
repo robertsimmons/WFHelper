@@ -4,23 +4,86 @@
   "effort": 2,
   "source": "shop",
   "tradeable": false,
-  "progress": { "have": 0, "need": 1, "unit": "blueprint" },
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "blueprint"
+  },
   "badges": [
-    { "text": "Market blueprint", "tone": "info" },
-    { "text": "MR 10 to equip", "tone": "warn" }
+    {
+      "text": "Market blueprint",
+      "tone": "info"
+    },
+    {
+      "text": "MR 10 to equip",
+      "tone": "warn"
+    }
   ],
   "prices": [
-    { "label": "blueprint", "amount": "20,000 cr", "money": false },
-    { "label": "build", "amount": "25,000 cr", "money": false }
+    {
+      "label": "blueprint",
+      "amount": "20,000 cr",
+      "money": false
+    },
+    {
+      "label": "build",
+      "amount": "25,000 cr",
+      "money": false
+    }
   ],
   "materials": [
-    { "qty": "2", "label": "Orokin Cell", "note": null },
-    { "qty": "400", "label": "Alloy Plate", "note": null },
-    { "qty": "900", "label": "Salvage", "note": null },
-    { "qty": "100", "label": "Ferrite", "note": null },
-    { "qty": "45,000", "label": "Credits", "note": null }
+    {
+      "qty": "2",
+      "label": "Orokin Cell",
+      "note": null
+    },
+    {
+      "qty": "400",
+      "label": "Alloy Plate",
+      "note": null
+    },
+    {
+      "qty": "900",
+      "label": "Salvage",
+      "note": null
+    },
+    {
+      "qty": "100",
+      "label": "Ferrite",
+      "note": null
+    },
+    {
+      "qty": "45,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
+    {
+      "type": "gate",
+      "place": "MASTERY RANK",
+      "sub": null,
+      "activity": "reach MR 10",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Mastery Rank 10",
+          "note": "needed to equip it",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
     {
       "type": "vendor",
       "place": "MARKET",
@@ -31,10 +94,21 @@
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Credits", "amount": "20,000" }],
+      "spends": [
+        {
+          "currency": "Credits",
+          "amount": "20,000"
+        }
+      ],
       "map": null,
       "rows": [
-        { "qty": null, "label": "Magnus Blueprint", "note": null, "alt": null, "done": false }
+        {
+          "qty": null,
+          "label": "Magnus Blueprint",
+          "note": null,
+          "alt": null,
+          "done": false
+        }
       ],
       "conditions": [],
       "bonuses": [],
@@ -62,7 +136,6 @@
         }
       ],
       "conditions": [
-        "Mastery Rank 10 to equip it.",
         "Akmagnus consumes two Magnus; rank one to 30 first, then build a second for the craft."
       ],
       "bonuses": [],

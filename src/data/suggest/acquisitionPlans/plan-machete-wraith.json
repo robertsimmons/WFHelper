@@ -4,14 +4,61 @@
   "effort": 4,
   "source": "shop",
   "tradeable": "unranked only",
-  "progress": { "have": 0, "need": 410, "unit": "Ducats" },
+  "progress": {
+    "have": 0,
+    "need": 410,
+    "unit": "Ducats"
+  },
   "badges": [
-    { "text": "Baro only", "tone": "warn" },
-    { "text": "MR 11", "tone": "info" }
+    {
+      "text": "Baro only",
+      "tone": "warn"
+    },
+    {
+      "text": "MR 11",
+      "tone": "info"
+    }
   ],
-  "prices": [{ "label": "Baro Ki'Teer", "amount": "250,000 cr + 410 Ducats", "money": false }],
-  "materials": [{ "qty": "250,000", "label": "Credits", "note": null }],
+  "prices": [
+    {
+      "label": "Baro Ki'Teer",
+      "amount": "250,000 cr + 410 Ducats",
+      "money": false
+    }
+  ],
+  "materials": [
+    {
+      "qty": "250,000",
+      "label": "Credits",
+      "note": null
+    }
+  ],
   "groups": [
+    {
+      "type": "gate",
+      "place": "MASTERY RANK",
+      "sub": null,
+      "activity": "reach MR 11",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Mastery Rank 11",
+          "note": "needed to equip it, and for a trade recipient",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
     {
       "type": "currency",
       "place": "VOID FISSURES",
@@ -21,20 +68,30 @@
       "mode": "full squad recommended",
       "live": null,
       "skip": null,
-      "earns": { "currency": "Orokin Ducats", "amount": "410" },
+      "earns": {
+        "currency": "Orokin Ducats",
+        "amount": "410"
+      },
       "spends": [],
       "map": null,
       "rows": [
         {
           "qty": "410",
           "label": "Orokin Ducats",
-          "note": "common 15, uncommon 45, rare 100; 25 or 65 for parts demoted after a vaulting",
-          "alt": null,
+          "note": "common parts 15, uncommon 45, rare 100",
+          "alt": {
+            "text": "or 82 Aya at Varzia, 5 Ducats each",
+            "spends": [
+              {
+                "currency": "Aya",
+                "amount": "82"
+              }
+            ]
+          },
           "done": false
-        },
-        { "qty": "250,000", "label": "Credits", "note": null, "alt": null, "done": false }
+        }
       ],
-      "conditions": [],
+      "conditions": ["Ducats are untradeable; only the Prime parts that sell for them trade."],
       "bonuses": [],
       "disclosures": [],
       "ref": "Orokin Ducats"
@@ -50,8 +107,14 @@
       "skip": null,
       "earns": null,
       "spends": [
-        { "currency": "Credits", "amount": "250,000" },
-        { "currency": "Orokin Ducats", "amount": "410" }
+        {
+          "currency": "Credits",
+          "amount": "250,000"
+        },
+        {
+          "currency": "Orokin Ducats",
+          "amount": "410"
+        }
       ],
       "map": null,
       "rows": [
@@ -64,15 +127,14 @@
         }
       ],
       "conditions": [
-        "Only stocked on some visits and can go many months between appearances.",
-        "Don't confuse it with the Prisma Machete (400 Ducats + 200,000 cr); only the Wraith covers this target.",
-        "A Machete Wraith handed out by a Duviri loadout doesn't join your arsenal or give Mastery."
+        "Baro's stock changes each visit, so it may be missing on the next one.",
+        "Don't confuse it with the Prisma Machete (400 Ducats + 200,000 cr); only the Wraith covers this target."
       ],
       "bonuses": [],
       "disclosures": [
         {
-          "title": "finding his next visit",
-          "body": "The Ducat Kiosk in any Relay shows Baro's countdown and next Relay; typing \"when baro\" in Region chat also answers. The TennoCon Baro Relay (normally July, open for a week) carries his entire catalog to anyone holding Baro's Relay Ticket from the digital TennoCon ticket. It is tradeable, so another player can sell you one."
+          "title": "other routes",
+          "body": "During TennoCon, Baro's special Relay is open to anyone with a ticket, and his stock there covers almost everything he has sold. Unranked copies without Forma or Catalyst also trade between players, to a recipient at MR 11."
         }
       ]
     }

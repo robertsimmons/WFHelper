@@ -4,30 +4,140 @@
   "effort": 8,
   "source": "relics",
   "tradeable": true,
-  "progress": { "have": 0, "need": 4, "unit": "parts" },
-  "badges": [{ "text": "vaulted", "tone": "warn" }],
+  "progress": {
+    "have": 0,
+    "need": 4,
+    "unit": "parts"
+  },
+  "badges": [
+    {
+      "text": "vaulted",
+      "tone": "warn"
+    }
+  ],
   "prices": [],
   "materials": [
-    { "qty": "150", "label": "Alloy Plate", "note": "Neuroptics" },
-    { "qty": "2", "label": "Neural Sensors", "note": "Neuroptics" },
-    { "qty": "150", "label": "Polymer Bundle", "note": "Neuroptics" },
-    { "qty": "1,150", "label": "Rubedo", "note": "750 Neuroptics, 400 Chassis" },
-    { "qty": "4", "label": "Morphics", "note": "3 Chassis, 1 Systems" },
-    { "qty": "1,000", "label": "Ferrite", "note": "Chassis" },
-    { "qty": "3", "label": "Control Module", "note": "Systems" },
-    { "qty": "500", "label": "Salvage", "note": "Systems" },
-    { "qty": "500", "label": "Plastids", "note": "Systems" },
-    { "qty": "3", "label": "Orokin Cell", "note": null },
-    { "qty": "70,000", "label": "Credits", "note": null }
+    {
+      "qty": "150",
+      "label": "Alloy Plate",
+      "note": "Neuroptics"
+    },
+    {
+      "qty": "2",
+      "label": "Neural Sensors",
+      "note": "Neuroptics"
+    },
+    {
+      "qty": "150",
+      "label": "Polymer Bundle",
+      "note": "Neuroptics"
+    },
+    {
+      "qty": "1,150",
+      "label": "Rubedo",
+      "note": "750 Neuroptics, 400 Chassis"
+    },
+    {
+      "qty": "4",
+      "label": "Morphics",
+      "note": "3 Chassis, 1 Systems"
+    },
+    {
+      "qty": "1,000",
+      "label": "Ferrite",
+      "note": "Chassis"
+    },
+    {
+      "qty": "3",
+      "label": "Control Module",
+      "note": "Systems"
+    },
+    {
+      "qty": "500",
+      "label": "Salvage",
+      "note": "Systems"
+    },
+    {
+      "qty": "500",
+      "label": "Plastids",
+      "note": "Systems"
+    },
+    {
+      "qty": "3",
+      "label": "Orokin Cell",
+      "note": null
+    },
+    {
+      "qty": "70,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
+    {
+      "type": "currency",
+      "place": "CAMBION DRIFT, DEIMOS",
+      "sub": "Necralisk",
+      "activity": "Level 40-60 bounty, final stage",
+      "meta": "43.48% per final stage",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Aya",
+          "note": "1 per relic; bank it before the window opens",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": [],
+      "ref": "Aya"
+    },
+    {
+      "type": "vendor",
+      "place": "MAROO'S BAZAAR, MARS",
+      "sub": "Varzia",
+      "activity": "buy the Mag Prime relics she stocks, 1 Aya each",
+      "meta": "only while Mag Prime is in Prime Resurgence",
+      "mode": null,
+      "live": {
+        "state": "blocked",
+        "text": "vaulted; only during her Prime Resurgence"
+      },
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Mag Prime relics",
+          "note": "buy extra Blueprint relics: every one carries it as the Rare",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Her stock rotates away; relics and Aya you hold never expire.",
+        "Vaulted relics and the parts themselves still trade between players."
+      ],
+      "bonuses": ["Varzia is also in the Market's Prime Resurgence tab."],
+      "disclosures": []
+    },
     {
       "type": "fissure",
       "place": "ANY VOID FISSURE",
       "sub": null,
-      "activity": "crack the matching vaulted relics",
+      "activity": "crack the Mag Prime relics",
       "meta": "Blueprint is the bottleneck",
-      "mode": null,
+      "mode": "Radiant radshare for the Rares",
       "live": null,
       "skip": null,
       "earns": null,
@@ -64,10 +174,12 @@
         }
       ],
       "conditions": [
-        "Mag Prime is vaulted: its relics no longer drop from missions.",
-        "Vaulted relics and the parts themselves still trade between players."
+        "Refine the Blueprint and Chassis relics to Radiant (100 Void Traces each); leave Systems relics Intact, since Radiant lowers their Common odds to 16.67%.",
+        "Mission rewards never drop Resurgence relics; Varzia is the only source."
       ],
-      "bonuses": [],
+      "bonuses": [
+        "Pick a teammate's identical reward at the reward screen; they get 5 bonus Void Traces."
+      ],
       "disclosures": []
     },
     {
@@ -115,6 +227,14 @@
       "conditions": [],
       "bonuses": [],
       "disclosures": []
+    }
+  ],
+  "routes": [
+    {
+      "name": "Varzia relics, as Mag Prime",
+      "cost": "1 Aya a relic during her Prime Resurgence, Rare Blueprint, 3-day build",
+      "effort": 8,
+      "role": "chosen"
     }
   ]
 }

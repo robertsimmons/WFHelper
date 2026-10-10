@@ -4,29 +4,111 @@
   "effort": 2,
   "source": "shop",
   "tradeable": false,
-  "progress": { "have": 0, "need": 1, "unit": "weapon" },
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "weapon"
+  },
   "badges": [
-    { "text": "no RNG, just time", "tone": "info" },
-    { "text": "MR 9 to equip", "tone": "info" }
+    {
+      "text": "no RNG, just time",
+      "tone": "info"
+    },
+    {
+      "text": "MR 9 to equip",
+      "tone": "info"
+    }
   ],
   "prices": [
-    { "label": "chain total", "amount": "140,000 cr", "money": false },
-    { "label": "market bundle", "amount": "150 p", "money": false }
+    {
+      "label": "chain total",
+      "amount": "140,000 cr",
+      "money": false
+    }
   ],
   "materials": [
-    { "qty": "1", "label": "Orokin Cell", "note": "Bo" },
-    { "qty": "4,900", "label": "Salvage", "note": "900 Bo, 4,000 Kunai" },
-    { "qty": "3,600", "label": "Ferrite", "note": "600 Bo, 3,000 Kunai" },
-    { "qty": "150", "label": "Alloy Plate", "note": "Bo" },
-    { "qty": "5", "label": "Morphics", "note": "Kunai" },
-    { "qty": "6,300", "label": "Nano Spores", "note": "4,000 Kunai, 2,300 Lesion" },
-    { "qty": "2", "label": "Neural Sensors", "note": "Tipedo" },
-    { "qty": "1,600", "label": "Polymer Bundle", "note": "Tipedo" },
-    { "qty": "1,400", "label": "Plastids", "note": "Lesion" },
-    { "qty": "4", "label": "Neurodes", "note": "Lesion" },
-    { "qty": "140,000", "label": "Credits", "note": null }
+    {
+      "qty": "1",
+      "label": "Orokin Cell",
+      "note": "Bo"
+    },
+    {
+      "qty": "4,900",
+      "label": "Salvage",
+      "note": "900 Bo, 4,000 Kunai"
+    },
+    {
+      "qty": "3,600",
+      "label": "Ferrite",
+      "note": "600 Bo, 3,000 Kunai"
+    },
+    {
+      "qty": "150",
+      "label": "Alloy Plate",
+      "note": "Bo"
+    },
+    {
+      "qty": "5",
+      "label": "Morphics",
+      "note": "Kunai"
+    },
+    {
+      "qty": "6,300",
+      "label": "Nano Spores",
+      "note": "4,000 Kunai, 2,300 Lesion"
+    },
+    {
+      "qty": "2",
+      "label": "Neural Sensors",
+      "note": "Tipedo"
+    },
+    {
+      "qty": "1,600",
+      "label": "Polymer Bundle",
+      "note": "Tipedo"
+    },
+    {
+      "qty": "1,400",
+      "label": "Plastids",
+      "note": "Lesion"
+    },
+    {
+      "qty": "4",
+      "label": "Neurodes",
+      "note": "Lesion"
+    },
+    {
+      "qty": "140,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
+    {
+      "type": "gate",
+      "place": "MASTERY RANK",
+      "sub": null,
+      "activity": "reach MR 9",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Mastery Rank 9",
+          "note": "needed to equip it",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
     {
       "type": "vendor",
       "place": "MARKET",
@@ -40,7 +122,13 @@
       "spends": [],
       "map": null,
       "rows": [
-        { "qty": null, "label": "Bo Blueprint", "note": "15,000 cr", "alt": null, "done": false },
+        {
+          "qty": null,
+          "label": "Bo Blueprint",
+          "note": "15,000 cr",
+          "alt": null,
+          "done": false
+        },
         {
           "qty": null,
           "label": "Kunai Blueprint",
@@ -64,8 +152,7 @@
         }
       ],
       "conditions": [
-        "MR3 is needed to equip Tipedo, MR9 for Lesion: only to use them, not to build them.",
-        "Budget three weapon slots for the chain: Bo, Kunai and Tipedo each need to sit claimed in your inventory before the next recipe will accept them."
+        "Bo, Kunai and Tipedo each need to sit claimed in your inventory before the next recipe accepts them, so budget three weapon slots."
       ],
       "bonuses": [],
       "disclosures": []
@@ -126,10 +213,7 @@
           "done": false
         }
       ],
-      "conditions": [
-        "Tipedo Prime does not substitute: the Foundry UI may appear to accept it but will not actually consume it. Build the base Tipedo.",
-        "Bo is double-booked: it also feeds Cadus. Build two Bo if you want both."
-      ],
+      "conditions": ["Bo is double-booked: it also feeds Cadus. Build two Bo if you want both."],
       "bonuses": [],
       "disclosures": []
     },
@@ -159,7 +243,7 @@
         "Rank Tipedo to 30 before feeding it in for its mastery."
       ],
       "bonuses": [
-        "About 140,000 credits and 36 hours end to end (Bo and Kunai in parallel, then Tipedo, then Lesion) versus 150 platinum to buy the finished Lesion outright: that price gap is why nobody rushes this chain."
+        "About 140,000 credits and 36 hours end to end: Bo and Kunai in parallel, then Tipedo, then Lesion."
       ],
       "disclosures": []
     }

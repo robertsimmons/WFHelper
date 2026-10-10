@@ -4,30 +4,140 @@
   "effort": 8,
   "source": "relics",
   "tradeable": true,
-  "progress": { "have": 0, "need": 4, "unit": "parts" },
-  "badges": [{ "text": "vaulted", "tone": "warn" }],
+  "progress": {
+    "have": 0,
+    "need": 4,
+    "unit": "parts"
+  },
+  "badges": [
+    {
+      "text": "vaulted",
+      "tone": "warn"
+    }
+  ],
   "prices": [],
   "materials": [
-    { "qty": "200", "label": "Rubedo", "note": "Neuroptics" },
-    { "qty": "1", "label": "Neural Sensors", "note": "Neuroptics" },
-    { "qty": "400", "label": "Nano Spores", "note": "Neuroptics" },
-    { "qty": "500", "label": "Plastids", "note": "Neuroptics" },
-    { "qty": "2", "label": "Morphics", "note": "1 Chassis, 1 Systems" },
-    { "qty": "1,000", "label": "Polymer Bundle", "note": "Chassis" },
-    { "qty": "500", "label": "Circuits", "note": "300 Chassis, 200 Systems" },
-    { "qty": "1", "label": "Control Module", "note": "Systems" },
-    { "qty": "600", "label": "Ferrite", "note": "Systems" },
-    { "qty": "1", "label": "Orokin Cell", "note": null },
-    { "qty": "70,000", "label": "Credits", "note": null }
+    {
+      "qty": "200",
+      "label": "Rubedo",
+      "note": "Neuroptics"
+    },
+    {
+      "qty": "1",
+      "label": "Neural Sensors",
+      "note": "Neuroptics"
+    },
+    {
+      "qty": "400",
+      "label": "Nano Spores",
+      "note": "Neuroptics"
+    },
+    {
+      "qty": "500",
+      "label": "Plastids",
+      "note": "Neuroptics"
+    },
+    {
+      "qty": "2",
+      "label": "Morphics",
+      "note": "1 Chassis, 1 Systems"
+    },
+    {
+      "qty": "1,000",
+      "label": "Polymer Bundle",
+      "note": "Chassis"
+    },
+    {
+      "qty": "500",
+      "label": "Circuits",
+      "note": "300 Chassis, 200 Systems"
+    },
+    {
+      "qty": "1",
+      "label": "Control Module",
+      "note": "Systems"
+    },
+    {
+      "qty": "600",
+      "label": "Ferrite",
+      "note": "Systems"
+    },
+    {
+      "qty": "1",
+      "label": "Orokin Cell",
+      "note": null
+    },
+    {
+      "qty": "70,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
+    {
+      "type": "currency",
+      "place": "CAMBION DRIFT, DEIMOS",
+      "sub": "Necralisk",
+      "activity": "Level 40-60 bounty, final stage",
+      "meta": "43.48% per final stage",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Aya",
+          "note": "1 per relic; bank it before the window opens",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": [],
+      "ref": "Aya"
+    },
+    {
+      "type": "vendor",
+      "place": "MAROO'S BAZAAR, MARS",
+      "sub": "Varzia",
+      "activity": "buy the Nova Prime relics she stocks, 1 Aya each",
+      "meta": "only while Nova Prime is in Prime Resurgence",
+      "mode": null,
+      "live": {
+        "state": "blocked",
+        "text": "vaulted; only during her Prime Resurgence"
+      },
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Nova Prime relics",
+          "note": "buy extra relics for the Chassis",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Her stock rotates away; relics and Aya you hold never expire.",
+        "Vaulted relics and the parts themselves still trade between players."
+      ],
+      "bonuses": ["Varzia is also in the Market's Prime Resurgence tab."],
+      "disclosures": []
+    },
     {
       "type": "fissure",
       "place": "ANY VOID FISSURE",
       "sub": null,
-      "activity": "crack the matching vaulted relics",
+      "activity": "crack the Nova Prime relics",
       "meta": "Chassis is the bottleneck",
-      "mode": null,
+      "mode": "Radiant radshare for the Rares",
       "live": null,
       "skip": null,
       "earns": null,
@@ -51,7 +161,7 @@
         {
           "qty": null,
           "label": "Nova Prime Chassis",
-          "note": "Lith N1 or Neo N9 or Neo N12 or Neo V1, Rare: 10% Radiant",
+          "note": "Lith N1 or Neo N9 or Neo N12 or Neo T10, Rare: 10% Radiant",
           "alt": null,
           "done": false
         },
@@ -64,8 +174,8 @@
         }
       ],
       "conditions": [
-        "Nova Prime is vaulted: its relics no longer drop from missions.",
-        "Vaulted relics and the parts themselves still trade between players."
+        "Vaulted relics no longer drop from missions; Varzia is the source.",
+        "Refine Uncommon and Rare relics to Radiant (100 Void Traces each); leave Common ones Intact, since Radiant lowers their odds to 16.67%."
       ],
       "bonuses": [],
       "disclosures": []
@@ -115,6 +225,14 @@
       "conditions": [],
       "bonuses": [],
       "disclosures": []
+    }
+  ],
+  "routes": [
+    {
+      "name": "Varzia relics, as Nova Prime",
+      "cost": "1 Aya a relic during her Prime Resurgence, Rare Chassis, 3-day build",
+      "effort": 8,
+      "role": "chosen"
     }
   ]
 }

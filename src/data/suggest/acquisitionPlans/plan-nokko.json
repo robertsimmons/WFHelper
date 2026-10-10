@@ -4,25 +4,88 @@
   "effort": 6,
   "source": "bounties",
   "tradeable": false,
-  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "progress": {
+    "have": 0,
+    "need": 4,
+    "unit": "parts"
+  },
   "badges": [
-    { "text": "Deepmines Bounties", "tone": "info" },
-    { "text": "Rank 4 Gardener gate", "tone": "warn" }
+    {
+      "text": "Deepmines Bounties",
+      "tone": "info"
+    },
+    {
+      "text": "Rank 4 Gardener gate",
+      "tone": "warn"
+    }
   ],
-  "prices": [{ "label": "blueprint", "amount": "25,000 cr", "money": false }],
+  "prices": [],
   "materials": [
-    { "qty": "1,200", "label": "Nano Spores", "note": "500 Neuroptics, 700 Chassis" },
-    { "qty": "500", "label": "Alloy Plate", "note": "Chassis" },
-    { "qty": "250", "label": "Circuits", "note": "Systems" },
-    { "qty": "3", "label": "Neurodes", "note": "Neuroptics" },
-    { "qty": "3", "label": "Gallium", "note": "Chassis" },
-    { "qty": "2", "label": "Argon Crystal", "note": "Systems" },
-    { "qty": "3", "label": "Orokin Cell", "note": "Nokko" },
-    { "qty": "10", "label": "Echowinder Anoscopic Sensor", "note": "Neuroptics" },
-    { "qty": "50", "label": "Tepa Nodule", "note": "Neuroptics" },
-    { "qty": "30", "label": "Thermal Sludge", "note": "Chassis" },
-    { "qty": "40", "label": "Mytocardia Spore", "note": "Systems" },
-    { "qty": "20", "label": "Gorgaricus Spore", "note": "Systems" }
+    {
+      "qty": "1,200",
+      "label": "Nano Spores",
+      "note": "500 Neuroptics, 700 Chassis"
+    },
+    {
+      "qty": "500",
+      "label": "Alloy Plate",
+      "note": "Chassis"
+    },
+    {
+      "qty": "250",
+      "label": "Circuits",
+      "note": "Systems"
+    },
+    {
+      "qty": "3",
+      "label": "Neurodes",
+      "note": "Neuroptics"
+    },
+    {
+      "qty": "3",
+      "label": "Gallium",
+      "note": "Chassis"
+    },
+    {
+      "qty": "2",
+      "label": "Argon Crystal",
+      "note": "Systems"
+    },
+    {
+      "qty": "3",
+      "label": "Orokin Cell",
+      "note": "Nokko"
+    },
+    {
+      "qty": "10",
+      "label": "Echowinder Anoscopic Sensor",
+      "note": "Neuroptics"
+    },
+    {
+      "qty": "50",
+      "label": "Tepa Nodule",
+      "note": "Neuroptics"
+    },
+    {
+      "qty": "30",
+      "label": "Thermal Sludge",
+      "note": "Chassis"
+    },
+    {
+      "qty": "40",
+      "label": "Mytocardia Spore",
+      "note": "Systems"
+    },
+    {
+      "qty": "20",
+      "label": "Gorgaricus Spore",
+      "note": "Systems"
+    },
+    {
+      "qty": "70,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
     {
@@ -30,7 +93,7 @@
       "place": "THE NEW WAR",
       "sub": null,
       "activity": "complete the quest",
-      "meta": "unlocks Nightcap in the Airlock vent",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -41,7 +104,7 @@
         {
           "qty": null,
           "label": "The New War",
-          "note": "required to talk to Nightcap",
+          "note": "required to reach Nightcap and the Deepmines",
           "alt": null,
           "done": false
         }
@@ -55,8 +118,8 @@
       "place": "DEEPMINES, ORB VALLIS",
       "sub": null,
       "activity": "run the bounty tied to the part you're missing",
-      "meta": "no daily cap",
-      "mode": "solo recommended",
+      "meta": null,
+      "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
@@ -66,76 +129,96 @@
         {
           "qty": null,
           "label": "Weed The Garden (Nutrient Plant)",
-          "note": "drops Neuroptics",
+          "note": "Neuroptics Blueprint: 2.5% in Rotation B, 10% in C",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Critter Liberation (Lab)",
-          "note": "drops Chassis; fastest bounty, ~3-5 min",
+          "note": "Chassis Blueprint: 2.5% in Rotation B, 10% in C",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Corporate Restructuring (Forward Base)",
-          "note": "drops Systems",
+          "note": "Systems Blueprint: 2.5% in Rotation B, 10% in C",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Nokko Blueprint",
+          "note": "5% in Rotation C of any of the three",
           "alt": null,
           "done": false
         }
       ],
       "conditions": [
-        "The three bounties unlock in sequence: clearing one opens the next.",
-        "Each completed bounty pays one Tier A (Fergolyte), one Tier B (2.5% part, 5% SP) and one Tier C (10% part, blueprint 5%, 8% SP) reward.",
-        "Fergolyte and mushrooms ignore every booster, drop-chance mod and Retriever/Vacuum-style pet."
+        "Every bounty pays Fergolyte in Rotation A.",
+        "Resource pickups ignore Resource Boosters and the Loyal and Resourceful Retriever mods."
       ],
       "bonuses": [
-        "Hitting every stage bonus objective nearly doubles mushroom income, from ~4 a run to ~9-10.",
-        "A Steel Path variant rotates every 2.5 hours for better rates, but it's only one bounty at a time; target the part you need on normal and take SP only when the rotation lines up."
+        "Steel Path bounties pay a part at 5% in Rotation B and the main blueprint at 8% in C."
       ],
-      "disclosures": [
-        {
-          "title": "run the right bounty",
-          "body": "Running whatever's convenient instead of the bounty that drops your missing part is the single biggest time-waster, and it's why some mushrooms feel falsely rare. Volt (range/strength) and Zenith (shoots through walls to find hidden objectives) are the named frames for clearing these fast."
-        }
-      ]
+      "disclosures": []
     },
     {
       "type": "vendor",
       "place": "THE AIRLOCK, ORB VALLIS",
-      "sub": null,
-      "activity": "Nightcap vendor, Rank 4 Gardener",
-      "meta": "fallback purchase",
+      "sub": "Nightcap",
+      "activity": "buy every blueprint with Fergolyte",
+      "meta": "Rank 4 Gardener",
       "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Fergolyte", "amount": "720" }],
+      "spends": [
+        {
+          "currency": "Fergolyte",
+          "amount": "720"
+        }
+      ],
       "map": "orb-vallis",
       "rows": [
-        { "qty": null, "label": "blueprint", "note": "240 Fergolyte", "alt": null, "done": false },
         {
           "qty": null,
-          "label": "each component",
+          "label": "Nokko Blueprint",
+          "note": "240 Fergolyte",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Nokko Neuroptics Blueprint",
+          "note": "160 Fergolyte",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Nokko Chassis Blueprint",
+          "note": "160 Fergolyte",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Nokko Systems Blueprint",
           "note": "160 Fergolyte",
           "alt": null,
           "done": false
         }
       ],
       "conditions": [
-        "Rank 4 (Gardener) comes from fully analyzing 12 mushroom species in the Field Guide, not from standing; each species takes 3 analyses (18-30 samples total).",
-        "Sample purchases are rank-gated: you can't buy straight to Rank 4, and some species (e.g. Reeking Puffball) only unlock at Rank 5."
+        "Nightcap has no standing: Rank 4 needs twelve mushroom species fully analyzed in the Field Guide, three analyses each.",
+        "Some samples are rank-gated; Reeking Puffball is sold from Rank 5."
       ],
       "bonuses": [
-        "Composting a duplicate mushroom pays 1 Fergolyte once its species is fully analyzed; buying scarce samples at 10 Fergolyte each is the efficient way to reach Rank 4 without target-farming one species."
+        "Composting a duplicate mushroom pays 1 Fergolyte once its species is fully analyzed."
       ],
-      "disclosures": [
-        {
-          "title": "the pity math",
-          "body": "You will almost certainly exhaust the drop-table route before Rank 4 opens, so treat Fergolyte as a slow safety net, not a fast track. The same currency also buys Archgun Arcane Adapters and several arcanes; spend on Nokko parts last."
-        }
-      ]
+      "disclosures": []
     },
     {
       "type": "foundry",
@@ -150,20 +233,52 @@
       "spends": [],
       "map": null,
       "rows": [
-        { "qty": null, "label": "Neuroptics", "note": null, "alt": null, "done": false },
-        { "qty": null, "label": "Chassis", "note": null, "alt": null, "done": false },
-        { "qty": null, "label": "Systems", "note": null, "alt": null, "done": false },
+        {
+          "qty": null,
+          "label": "Nokko Neuroptics",
+          "note": "15,000 cr, 50 Tepa Nodule, 10 Echowinder Anoscopic Sensor, 3 Neurodes, 500 Nano Spores",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Nokko Chassis",
+          "note": "15,000 cr, 30 Thermal Sludge, 500 Alloy Plate, 3 Gallium, 700 Nano Spores",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Nokko Systems",
+          "note": "15,000 cr, 40 Mytocardia Spore, 20 Gorgaricus Spore, 250 Circuits, 2 Argon Crystal",
+          "alt": null,
+          "done": false
+        },
         {
           "qty": null,
           "label": "Nokko",
-          "note": "25,000 cr, 3 Orokin Cells",
+          "note": "25,000 cr, the three parts, 3 Orokin Cell",
           "alt": null,
           "done": false
         }
       ],
-      "conditions": [],
+      "conditions": ["Needs a free Warframe slot before the Foundry will let you claim it."],
       "bonuses": [],
       "disclosures": []
+    }
+  ],
+  "routes": [
+    {
+      "name": "Deepmines bounties",
+      "cost": "each part and the main blueprint drop from Rotation C at 10% and 5%",
+      "effort": 6,
+      "role": "chosen"
+    },
+    {
+      "name": "Nightcap purchase",
+      "cost": "720 Fergolyte for every blueprint, at Rank 4 Gardener",
+      "effort": 6,
+      "role": null
     }
   ]
 }

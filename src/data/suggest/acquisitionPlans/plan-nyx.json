@@ -4,27 +4,89 @@
   "effort": 3,
   "source": "boss",
   "tradeable": false,
-  "progress": { "have": 0, "need": 3, "unit": "parts" },
+  "progress": {
+    "have": 0,
+    "need": 4,
+    "unit": "parts"
+  },
   "badges": [
-    { "text": "Phorid outbreak only", "tone": "warn" },
-    { "text": "Circuit week 3", "tone": "circuit" }
+    {
+      "text": "Phorid outbreak only",
+      "tone": "warn"
+    },
+    {
+      "text": "Circuit week 3",
+      "tone": "circuit"
+    }
   ],
   "prices": [
-    { "label": "blueprint", "amount": "25,000 cr", "money": false },
-    { "label": "built", "amount": "70,000 cr", "money": false }
+    {
+      "label": "blueprint",
+      "amount": "25,000 cr",
+      "money": false
+    },
+    {
+      "label": "built",
+      "amount": "70,000 cr",
+      "money": false
+    }
   ],
   "materials": [
-    { "qty": "1,000", "label": "Ferrite", "note": null },
-    { "qty": "800", "label": "Rubedo", "note": null },
-    { "qty": "500", "label": "Salvage", "note": null },
-    { "qty": "150", "label": "Alloy Plate", "note": null },
-    { "qty": "150", "label": "Polymer Bundle", "note": null },
-    { "qty": "220", "label": "Plastids", "note": null },
-    { "qty": "1", "label": "Neural Sensors", "note": null },
-    { "qty": "2", "label": "Morphics", "note": null },
-    { "qty": "1", "label": "Control Module", "note": null },
-    { "qty": "1", "label": "Orokin Cell", "note": null },
-    { "qty": "95,000", "label": "Credits", "note": null }
+    {
+      "qty": "1,000",
+      "label": "Ferrite",
+      "note": null
+    },
+    {
+      "qty": "800",
+      "label": "Rubedo",
+      "note": null
+    },
+    {
+      "qty": "500",
+      "label": "Salvage",
+      "note": null
+    },
+    {
+      "qty": "150",
+      "label": "Alloy Plate",
+      "note": null
+    },
+    {
+      "qty": "150",
+      "label": "Polymer Bundle",
+      "note": null
+    },
+    {
+      "qty": "220",
+      "label": "Plastids",
+      "note": null
+    },
+    {
+      "qty": "1",
+      "label": "Neural Sensors",
+      "note": null
+    },
+    {
+      "qty": "2",
+      "label": "Morphics",
+      "note": null
+    },
+    {
+      "qty": "1",
+      "label": "Control Module",
+      "note": null
+    },
+    {
+      "qty": "1",
+      "label": "Orokin Cell",
+      "note": null
+    },
+    {
+      "qty": "95,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
     {
@@ -44,7 +106,7 @@
           "qty": null,
           "label": "Nyx Blueprint",
           "note": null,
-          "alt": "Circuit tier 10",
+          "alt": null,
           "done": false
         }
       ],
@@ -58,9 +120,9 @@
       "type": "boss",
       "place": "INFESTED ASSASSINATION NODE",
       "sub": null,
-      "activity": "kill Phorid solo and extract",
-      "meta": "about a minute a run, one part per kill",
-      "mode": "solo",
+      "activity": "kill Phorid and extract",
+      "meta": "one Nyx part a clear",
+      "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
@@ -70,40 +132,32 @@
         {
           "qty": null,
           "label": "Nyx Neuroptics Blueprint",
-          "note": "38.72%, Phorid",
-          "alt": "or Circuit week 3, tier 2",
+          "note": "38.72%",
+          "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Nyx Chassis Blueprint",
-          "note": "38.72%, Phorid",
-          "alt": "or Circuit week 3, tier 5",
+          "note": "38.72%",
+          "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Nyx Systems Blueprint",
-          "note": "22.56%, Phorid",
-          "alt": "or Circuit week 3, tier 8",
+          "note": "22.56%",
+          "alt": null,
           "done": false
         }
       ],
       "conditions": [
-        "Phorid replaces the boss only while an Infested outbreak sits on a planet's Assassination node. If the invasion ends before you finish, the run is lost.",
-        "It spawns when the host walks into its spawn zone, most reliably the high platform. Solo makes you the host.",
-        "Spine Strike is a homing toxin hit that bypasses shields and can one-shot a low-health frame. Bring invisibility or more health and keep moving.",
-        "Systems is the usual last part; 20 attempts for one Systems was reported."
+        "Phorid stands in for the planet's Assassination boss only while an Infested outbreak holds that node.",
+        "Phorid's Spine-Strike fires homing toxin bolts; stay close to it to avoid them.",
+        "Extract after the kill: the part is a mission-completion reward."
       ],
-      "bonuses": [
-        "Infested invasions for Fieldron, Detonite or Mutagen Mass often land on an Assassination node."
-      ],
-      "disclosures": [
-        {
-          "title": "The Circuit when no outbreak is up",
-          "body": "Needs The Duviri Paradox. Nyx is week 3 of the 12-week normal rotation with Ash and Frost, changing Monday 0:00 UTC. Reward track: Neuroptics at tier 2 (400 cumulative progress), Chassis at tier 5 (1,190), Systems at tier 8 (2,430, 16 stages), main blueprint at tier 10 (3,640, 23 stages). Slow but guaranteed; missing the week means waiting out the cycle."
-        }
-      ]
+      "bonuses": [],
+      "disclosures": []
     },
     {
       "type": "foundry",
@@ -147,9 +201,23 @@
           "done": false
         }
       ],
-      "conditions": [],
+      "conditions": ["Needs a free Warframe slot before the Foundry will let you claim it."],
       "bonuses": [],
-      "disclosures": [{ "title": "Nyx Prime", "body": "A separate item and not covered here." }]
+      "disclosures": []
+    }
+  ],
+  "routes": [
+    {
+      "name": "Phorid on an outbreak node",
+      "cost": "Systems is 22.56% a clear; 25,000 cr at the Market for the main",
+      "effort": 3,
+      "role": "chosen"
+    },
+    {
+      "name": "Circuit week 3",
+      "cost": "tiers 2, 5, 8 and 10 give every blueprint in one week, after The Duviri Paradox",
+      "effort": 4,
+      "role": null
     }
   ]
 }

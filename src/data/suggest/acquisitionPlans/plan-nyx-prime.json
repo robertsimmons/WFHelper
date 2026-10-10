@@ -4,23 +4,149 @@
   "effort": 5,
   "source": "relics",
   "tradeable": true,
-  "progress": { "have": 0, "need": 4, "unit": "parts" },
-  "badges": [],
+  "progress": {
+    "have": 0,
+    "need": 4,
+    "unit": "parts"
+  },
+  "badges": [
+    {
+      "text": "relics from Railjack caches",
+      "tone": "warn"
+    }
+  ],
   "prices": [],
   "materials": [
-    { "qty": "150", "label": "Alloy Plate", "note": "Neuroptics" },
-    { "qty": "2", "label": "Neural Sensors", "note": "Neuroptics" },
-    { "qty": "1,000", "label": "Salvage", "note": "Neuroptics" },
-    { "qty": "1,150", "label": "Rubedo", "note": "750 Neuroptics, 400 Chassis" },
-    { "qty": "3", "label": "Gallium", "note": "Chassis" },
-    { "qty": "1,000", "label": "Nano Spores", "note": "Chassis" },
-    { "qty": "3", "label": "Control Module", "note": "Systems" },
-    { "qty": "2", "label": "Orokin Cell", "note": "1 Systems, 1 Nyx Prime" },
-    { "qty": "1,000", "label": "Ferrite", "note": "Systems" },
-    { "qty": "500", "label": "Circuits", "note": "Systems" },
-    { "qty": "70,000", "label": "Credits", "note": null }
+    {
+      "qty": "150",
+      "label": "Alloy Plate",
+      "note": "Neuroptics"
+    },
+    {
+      "qty": "2",
+      "label": "Neural Sensors",
+      "note": "Neuroptics"
+    },
+    {
+      "qty": "1,000",
+      "label": "Salvage",
+      "note": "Neuroptics"
+    },
+    {
+      "qty": "1,150",
+      "label": "Rubedo",
+      "note": "750 Neuroptics, 400 Chassis"
+    },
+    {
+      "qty": "3",
+      "label": "Gallium",
+      "note": "Chassis"
+    },
+    {
+      "qty": "1,000",
+      "label": "Nano Spores",
+      "note": "Chassis"
+    },
+    {
+      "qty": "3",
+      "label": "Control Module",
+      "note": "Systems"
+    },
+    {
+      "qty": "2",
+      "label": "Orokin Cell",
+      "note": "1 Systems, 1 Nyx Prime"
+    },
+    {
+      "qty": "1,000",
+      "label": "Ferrite",
+      "note": "Systems"
+    },
+    {
+      "qty": "500",
+      "label": "Circuits",
+      "note": "Systems"
+    },
+    {
+      "qty": "70,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
+    {
+      "type": "gate",
+      "place": "QUEST",
+      "sub": null,
+      "activity": "finish The Archwing",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "The Archwing",
+          "note": "lets you join a squad's Railjack mission",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "farm",
+      "place": "PROXIMA, RAILJACK",
+      "sub": "Abandoned Derelict Cache",
+      "activity": "board the derelict and hack its marked terminal",
+      "meta": "Rotation B reward",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Neo V9 relic",
+          "note": "Nyx Prime Blueprint; 6.52% in the Grineer nodes of Veil Proxima",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Meso N11 relic",
+          "note": "Nyx Prime Neuroptics; 9.68% in Venus Proxima, 9.09% in Neptune Proxima",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Axi S8 relic",
+          "note": "Nyx Prime Chassis; 9.09% in Pluto Proxima and the Corpus nodes of Veil Proxima",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Lith C7 relic",
+          "note": "Nyx Prime Systems; 9.68% in Venus Proxima, 9.09% in Neptune Proxima",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Nyx Prime is never vaulted: its four active relics drop from these caches, not from ordinary mission rewards."
+      ],
+      "bonuses": ["Piloting Intrinsics rank 5 marks the derelict with a waypoint."],
+      "disclosures": []
+    },
     {
       "type": "fissure",
       "place": "ANY VOID FISSURE",
@@ -68,7 +194,7 @@
       "disclosures": [
         {
           "title": "also in vaulted relics",
-          "body": "Blueprint: Lith B4, Lith S2, Neo V1; Neuroptics: Meso N1, Meso N6; Chassis: Neo N1, Neo R1; Systems: Neo S2, Axi S3."
+          "body": "Blueprint: Lith B4, Lith S2, Neo T10; Neuroptics: Meso N1, Meso N6; Chassis: Neo N1, Neo R1; Systems: Axi S3, Neo S2. Those come from Varzia when Nyx Prime is in her Prime Resurgence, or from trading."
         }
       ]
     },
@@ -117,6 +243,20 @@
       "conditions": [],
       "bonuses": [],
       "disclosures": []
+    }
+  ],
+  "routes": [
+    {
+      "name": "Railjack derelict caches",
+      "cost": "the four active relics drop at 6.52% to 9.68% from Proxima derelicts, Rotation B",
+      "effort": 5,
+      "role": "chosen"
+    },
+    {
+      "name": "Varzia relics, as Nyx Prime",
+      "cost": "1 Aya a relic during her Prime Resurgence, 3-day build",
+      "effort": 8,
+      "role": null
     }
   ]
 }

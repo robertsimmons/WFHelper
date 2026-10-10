@@ -4,20 +4,37 @@
   "effort": 8,
   "source": "relics",
   "tradeable": true,
-  "progress": { "have": 0, "need": 3, "unit": "parts" },
-  "badges": [{ "text": "vaulted", "tone": "warn" }],
+  "progress": {
+    "have": 0,
+    "need": 3,
+    "unit": "parts"
+  },
+  "badges": [
+    {
+      "text": "vaulted",
+      "tone": "warn"
+    }
+  ],
   "prices": [],
   "materials": [
-    { "qty": "15", "label": "Orokin Cell", "note": null },
-    { "qty": "15,000", "label": "Credits", "note": null }
+    {
+      "qty": "15",
+      "label": "Orokin Cell",
+      "note": null
+    },
+    {
+      "qty": "15,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
     {
-      "type": "fissure",
-      "place": "ANY VOID FISSURE",
+      "type": "gate",
+      "place": "MASTERY RANK",
       "sub": null,
-      "activity": "crack the matching vaulted relics",
-      "meta": "Handle is the bottleneck",
+      "activity": "reach MR 14 to build it",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -27,8 +44,90 @@
       "rows": [
         {
           "qty": null,
+          "label": "Mastery Rank 14",
+          "note": "the Foundry won't craft it below this",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "currency",
+      "place": "CAMBION DRIFT, DEIMOS",
+      "sub": "Necralisk",
+      "activity": "Level 40-60 bounty, final stage",
+      "meta": "43.48% per final stage",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Aya",
+          "note": "1 per relic; bank it before the window opens",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": [],
+      "ref": "Aya"
+    },
+    {
+      "type": "vendor",
+      "place": "MAROO'S BAZAAR, MARS",
+      "sub": "Varzia",
+      "activity": "buy the Ninkondi Prime relics she stocks, 1 Aya each",
+      "meta": "only while Ninkondi Prime is in Prime Resurgence",
+      "mode": null,
+      "live": {
+        "state": "blocked",
+        "text": "vaulted; only during her Prime Resurgence"
+      },
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Ninkondi Prime relics",
+          "note": "buy extra relics for the Handle",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Her stock rotates away; relics and Aya you hold never expire.",
+        "Vaulted relics and the parts themselves still trade between players."
+      ],
+      "bonuses": ["Varzia is also in the Market's Prime Resurgence tab."],
+      "disclosures": []
+    },
+    {
+      "type": "fissure",
+      "place": "ANY VOID FISSURE",
+      "sub": null,
+      "activity": "crack the Ninkondi Prime relics",
+      "meta": "Handle is the bottleneck",
+      "mode": "Radiant radshare for the Rares",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
           "label": "Ninkondi Prime Blueprint",
-          "note": "Meso K3 or Meso L1 or Meso T4 or Neo P1 or Neo R2 or Neo S14 or Axi G3 or Axi T9, Common: 25.33% Intact",
+          "note": "Meso K3 or Meso L1 or Meso T4 or Neo O3 or Neo R2 or Neo S14 or Axi G3 or Axi T9, Common: 25.33% Intact",
           "alt": null,
           "done": false
         },
@@ -48,8 +147,8 @@
         }
       ],
       "conditions": [
-        "Ninkondi Prime is vaulted: its relics no longer drop from missions.",
-        "Vaulted relics and the parts themselves still trade between players."
+        "Vaulted relics no longer drop from missions; Varzia is the source.",
+        "Refine Uncommon and Rare relics to Radiant (100 Void Traces each); leave Common ones Intact, since Radiant lowers their odds to 16.67%."
       ],
       "bonuses": [],
       "disclosures": []
@@ -59,7 +158,7 @@
       "place": "FOUNDRY",
       "sub": null,
       "activity": "build Ninkondi Prime",
-      "meta": "12h, MR 14",
+      "meta": "12h",
       "mode": null,
       "live": null,
       "skip": null,
@@ -78,6 +177,14 @@
       "conditions": [],
       "bonuses": [],
       "disclosures": []
+    }
+  ],
+  "routes": [
+    {
+      "name": "Varzia relics, as Ninkondi Prime",
+      "cost": "1 Aya a relic during her Prime Resurgence, Rare Handle, 12h build",
+      "effort": 8,
+      "role": "chosen"
     }
   ]
 }

@@ -4,31 +4,145 @@
   "effort": 8,
   "source": "relics",
   "tradeable": true,
-  "progress": { "have": 0, "need": 4, "unit": "parts" },
-  "badges": [{ "text": "vaulted", "tone": "warn" }],
+  "progress": {
+    "have": 0,
+    "need": 4,
+    "unit": "parts"
+  },
+  "badges": [
+    {
+      "text": "vaulted",
+      "tone": "warn"
+    }
+  ],
   "prices": [],
   "materials": [
-    { "qty": "1", "label": "Morphics", "note": "Harness" },
-    { "qty": "1,000", "label": "Salvage", "note": "Harness" },
-    { "qty": "800", "label": "Rubedo", "note": "300 Harness, 500 Wings" },
-    { "qty": "1", "label": "Control Module", "note": "Systems" },
-    { "qty": "1", "label": "Neural Sensors", "note": "Systems" },
-    { "qty": "500", "label": "Ferrite", "note": "Systems" },
-    { "qty": "500", "label": "Plastids", "note": "Systems" },
-    { "qty": "150", "label": "Alloy Plate", "note": "Wings" },
-    { "qty": "1", "label": "Neurodes", "note": "Wings" },
-    { "qty": "150", "label": "Polymer Bundle", "note": "Wings" },
-    { "qty": "1", "label": "Orokin Cell", "note": null },
-    { "qty": "70,000", "label": "Credits", "note": null }
+    {
+      "qty": "1",
+      "label": "Morphics",
+      "note": "Harness"
+    },
+    {
+      "qty": "1,000",
+      "label": "Salvage",
+      "note": "Harness"
+    },
+    {
+      "qty": "800",
+      "label": "Rubedo",
+      "note": "300 Harness, 500 Wings"
+    },
+    {
+      "qty": "1",
+      "label": "Control Module",
+      "note": "Systems"
+    },
+    {
+      "qty": "1",
+      "label": "Neural Sensors",
+      "note": "Systems"
+    },
+    {
+      "qty": "500",
+      "label": "Ferrite",
+      "note": "Systems"
+    },
+    {
+      "qty": "500",
+      "label": "Plastids",
+      "note": "Systems"
+    },
+    {
+      "qty": "150",
+      "label": "Alloy Plate",
+      "note": "Wings"
+    },
+    {
+      "qty": "1",
+      "label": "Neurodes",
+      "note": "Wings"
+    },
+    {
+      "qty": "150",
+      "label": "Polymer Bundle",
+      "note": "Wings"
+    },
+    {
+      "qty": "1",
+      "label": "Orokin Cell",
+      "note": null
+    },
+    {
+      "qty": "70,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
+    {
+      "type": "currency",
+      "place": "CAMBION DRIFT, DEIMOS",
+      "sub": "Necralisk",
+      "activity": "Level 40-60 bounty, final stage",
+      "meta": "43.48% per final stage",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Aya",
+          "note": "1 per relic; bank it before the window opens",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": [],
+      "ref": "Aya"
+    },
+    {
+      "type": "vendor",
+      "place": "MAROO'S BAZAAR, MARS",
+      "sub": "Varzia",
+      "activity": "buy the Odonata Prime relics she stocks, 1 Aya each",
+      "meta": "only while Odonata Prime is in Prime Resurgence",
+      "mode": null,
+      "live": {
+        "state": "blocked",
+        "text": "vaulted; only during her Prime Resurgence"
+      },
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Odonata Prime relics",
+          "note": "buy extra relics for the Wings",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Her stock rotates away; relics and Aya you hold never expire.",
+        "Vaulted relics and the parts themselves still trade between players."
+      ],
+      "bonuses": ["Varzia is also in the Market's Prime Resurgence tab."],
+      "disclosures": []
+    },
     {
       "type": "fissure",
       "place": "ANY VOID FISSURE",
       "sub": null,
-      "activity": "crack the matching vaulted relics",
-      "meta": null,
-      "mode": null,
+      "activity": "crack the Odonata Prime relics",
+      "meta": "Wings is the bottleneck",
+      "mode": "Radiant radshare for the Rares",
       "live": null,
       "skip": null,
       "earns": null,
@@ -52,7 +166,7 @@
         {
           "qty": null,
           "label": "Odonata Prime Systems",
-          "note": "Lith F2 or Meso O3 or Neo N3 or Axi V1 or Axi V8, Common: 25.33% Intact",
+          "note": "Lith F2 or Meso O3 or Neo N3 or Axi T13 or Axi V8, Common: 25.33% Intact",
           "alt": null,
           "done": false
         },
@@ -65,8 +179,8 @@
         }
       ],
       "conditions": [
-        "Odonata Prime is vaulted: its relics no longer drop from missions.",
-        "Vaulted relics and the parts themselves still trade between players."
+        "Vaulted relics no longer drop from missions; Varzia is the source.",
+        "Refine Uncommon and Rare relics to Radiant (100 Void Traces each); leave Common ones Intact, since Radiant lowers their odds to 16.67%."
       ],
       "bonuses": [],
       "disclosures": []
@@ -116,6 +230,14 @@
       "conditions": [],
       "bonuses": [],
       "disclosures": []
+    }
+  ],
+  "routes": [
+    {
+      "name": "Varzia relics, as Odonata Prime",
+      "cost": "1 Aya a relic during her Prime Resurgence, Rare Wings, 36h build",
+      "effort": 8,
+      "role": "chosen"
     }
   ]
 }

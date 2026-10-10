@@ -4,23 +4,86 @@
   "effort": 2,
   "source": "dojo",
   "tradeable": false,
-  "progress": { "have": 0, "need": 1, "unit": "blueprint" },
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "blueprint"
+  },
   "badges": [
-    { "text": "Energy Lab", "tone": "info" },
-    { "text": "Fieldron x10", "tone": "warn" }
+    {
+      "text": "Energy Lab",
+      "tone": "info"
+    },
+    {
+      "text": "MR 8",
+      "tone": "warn"
+    }
   ],
   "prices": [
-    { "label": "blueprint (lab)", "amount": "15,000 cr", "money": false },
-    { "label": "build", "amount": "25,000 cr", "money": false }
+    {
+      "label": "blueprint (lab)",
+      "amount": "15,000 cr",
+      "money": false
+    },
+    {
+      "label": "build",
+      "amount": "25,000 cr",
+      "money": false
+    }
   ],
   "materials": [
-    { "qty": "10", "label": "Fieldron", "note": null },
-    { "qty": "40", "label": "Thermal Sludge", "note": null },
-    { "qty": "20", "label": "Charamote Sagan Module", "note": null },
-    { "qty": "55", "label": "Venerdo Alloy", "note": null },
-    { "qty": "40,000", "label": "Credits", "note": null }
+    {
+      "qty": "10",
+      "label": "Fieldron",
+      "note": null
+    },
+    {
+      "qty": "40",
+      "label": "Thermal Sludge",
+      "note": null
+    },
+    {
+      "qty": "20",
+      "label": "Charamote Sagan Module",
+      "note": null
+    },
+    {
+      "qty": "55",
+      "label": "Venerdo Alloy",
+      "note": null
+    },
+    {
+      "qty": "40,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
+    {
+      "type": "gate",
+      "place": "MASTERY RANK",
+      "sub": null,
+      "activity": "reach MR 8 to build it",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Mastery Rank 8",
+          "note": "the Foundry won't craft it below this",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
     {
       "type": "vendor",
       "place": "CLAN DOJO, ENERGY LAB",
@@ -31,7 +94,12 @@
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Credits", "amount": "15,000" }],
+      "spends": [
+        {
+          "currency": "Credits",
+          "amount": "15,000"
+        }
+      ],
       "map": null,
       "rows": [
         {
@@ -51,7 +119,7 @@
       "place": "FOUNDRY",
       "sub": null,
       "activity": "build Ocucor",
-      "meta": "25,000 cr, 1 day, MR 8 to equip",
+      "meta": "24h",
       "mode": null,
       "live": null,
       "skip": null,
@@ -62,21 +130,21 @@
         {
           "qty": null,
           "label": "Ocucor",
-          "note": "25,000 cr + 10 Fieldron + 40 Thermal Sludge + 55 Venerdo Alloy + 20 Charamote Sagan Module",
+          "note": "25,000 cr, 10 Fieldron, 40 Thermal Sludge, 55 Venerdo Alloy, 20 Charamote Sagan Module",
           "alt": null,
           "done": false
         }
       ],
-      "conditions": ["Untradeable once built."],
+      "conditions": [],
       "bonuses": [],
       "disclosures": []
     },
     {
       "type": "vendor",
-      "place": "CRED OFFERINGS, NIGHTWAVE",
+      "place": "NIGHTWAVE, CRED OFFERINGS",
       "sub": null,
       "activity": "buy Sentient Surge",
-      "meta": "20 Creds, rotates through the offerings",
+      "meta": "20 Nightwave Creds, while it is in the rotation",
       "mode": null,
       "live": null,
       "skip": null,
@@ -87,25 +155,19 @@
         {
           "qty": null,
           "label": "Sentient Surge",
-          "note": "Ocucor augment; refills 20% magazine per kill, +60% crit/status per active tendril",
-          "alt": "Naberus shop at Daughter, 50 Mother Tokens",
+          "note": "Ocucor augment: at max rank each kill refills 20% of the magazine and each active tendril adds 60% crit and status chance",
+          "alt": "Daughter sells it for 50 Mother Tokens during Nights of Naberus",
           "done": false
         }
       ],
       "conditions": [
-        "Any reload deletes every tendril, including a cancelled reload or holster; host migration also resets the crit/status stacks.",
-        "The bonus is additive with other crit/status mods, not multiplicative; build for base damage."
+        "Any reload deletes every tendril, including a cancelled reload or holster; host migration also resets the crit and status bonus.",
+        "The bonus is additive with other crit and status mods."
       ],
       "bonuses": [
-        "Reload-avoidance mods (Eject Magazine, Synth set, Cyte-09's Resupply) refill ammo without wiping tendrils.",
-        "Wants a buffer/CC frame: Saryn, Volt, Mirage, Rhino, Nova, or Yareli for the auto-aim on Merulina."
+        "Eject Magazine, the Synth set and Cyte-09's Resupply refill ammo without wiping tendrils."
       ],
-      "disclosures": [
-        {
-          "title": "the augment is the actual farm",
-          "body": "The weapon itself is a formality; when Sentient Surge is out of the Cred rotation it is the real cost (200-300p in 2024). The gun is 'ok and serviceable' without it and a top-tier room clearer with it."
-        }
-      ]
+      "disclosures": []
     }
   ]
 }

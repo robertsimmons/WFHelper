@@ -4,25 +4,69 @@
   "effort": 5,
   "source": "railjack",
   "tradeable": false,
-  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "progress": {
+    "have": 0,
+    "need": 4,
+    "unit": "parts"
+  },
   "badges": [
-    { "text": "Railjack caches, 10%", "tone": "warn" },
-    { "text": "Circuit week 5", "tone": "circuit" }
+    {
+      "text": "Railjack caches, 10%",
+      "tone": "warn"
+    },
+    {
+      "text": "Circuit week 5",
+      "tone": "circuit"
+    }
   ],
-  "prices": [{ "label": "blueprint", "amount": "30,000 cr", "money": false }],
+  "prices": [
+    {
+      "label": "blueprint",
+      "amount": "30,000 cr",
+      "money": false
+    }
+  ],
   "materials": [
     {
       "qty": "1,650",
       "label": "Polymer Bundle",
       "note": "150 Neuroptics, 1,000 Chassis, 500 Systems"
     },
-    { "qty": "370", "label": "Alloy Plate", "note": "150 Neuroptics, 220 Systems" },
-    { "qty": "500", "label": "Circuits", "note": "Neuroptics" },
-    { "qty": "1", "label": "Control Module", "note": "Neuroptics" },
-    { "qty": "300", "label": "Rubedo", "note": "Chassis" },
-    { "qty": "2", "label": "Gallium", "note": "1 Chassis, 1 Systems" },
-    { "qty": "2", "label": "Orokin Cell", "note": "1 Systems, 1 Oberon" },
-    { "qty": "100,000", "label": "Credits", "note": null }
+    {
+      "qty": "370",
+      "label": "Alloy Plate",
+      "note": "150 Neuroptics, 220 Systems"
+    },
+    {
+      "qty": "500",
+      "label": "Circuits",
+      "note": "Neuroptics"
+    },
+    {
+      "qty": "1",
+      "label": "Control Module",
+      "note": "Neuroptics"
+    },
+    {
+      "qty": "300",
+      "label": "Rubedo",
+      "note": "Chassis"
+    },
+    {
+      "qty": "2",
+      "label": "Gallium",
+      "note": "1 Chassis, 1 Systems"
+    },
+    {
+      "qty": "2",
+      "label": "Orokin Cell",
+      "note": "1 Systems, 1 Oberon"
+    },
+    {
+      "qty": "100,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
     {
@@ -81,7 +125,7 @@
           "qty": null,
           "label": "Oberon Blueprint",
           "note": null,
-          "alt": "Circuit tier 10",
+          "alt": null,
           "done": false
         }
       ],
@@ -93,8 +137,8 @@
       "type": "farm",
       "place": "EARTH PROXIMA",
       "sub": "Iota Temple, Ogal Cluster, Korm's Belt, Bendar Cluster",
-      "activity": "Point of Interest Resource Cache",
-      "meta": "~10 caches per part expected",
+      "activity": "clear a Point of Interest, then finish the mission",
+      "meta": "hidden cache, Rotation A",
       "mode": null,
       "live": null,
       "skip": null,
@@ -118,28 +162,18 @@
         }
       ],
       "conditions": [
-        "A Point of Interest has a yellow marker. The white markers Piloting rank 5 reveals are derelicts and never drop Oberon.",
-        "Sover Strait never spawns a Point of Interest.",
-        "Drop chance boosters don't affect cache rolls."
+        "The cache is revealed and awarded when the mission completes.",
+        "Sover Strait has no Point of Interest."
       ],
-      "bonuses": ["Railjack salvage pays Endo, so the time isn't wasted."],
-      "disclosures": [
-        {
-          "title": "running it efficiently",
-          "body": "One player boards the outpost while the rest of the squad or the AI gunners kill fighters. Tactical Intrinsic rank 4 (Recall Warp) lets the Omni teleport you back to the Railjack after the cache. AI crew is unreliable at shooting outpost radiators, so a solo player can stall on some Points of Interest. Bad luck can run to ~65 caches per part."
-        },
-        {
-          "title": "Eximus drops",
-          "body": "Overframe lists every part at 0.39% (Systems 0.23%) from Eximus enemies. That is incidental, not a farm."
-        }
-      ]
+      "bonuses": [],
+      "disclosures": []
     },
     {
       "type": "farm",
       "place": "KASIO'S REST, SATURN PROXIMA",
       "sub": null,
       "activity": "Skirmish, two Point of Interest objectives",
-      "meta": "two cache rolls a run",
+      "meta": "hidden cache, Rotation A",
       "mode": null,
       "live": null,
       "skip": null,
@@ -155,9 +189,7 @@
           "done": false
         }
       ],
-      "conditions": [
-        "Clear both yellow objectives before killing the last fighters and crewships, or the mission ends before you roll the cache."
-      ],
+      "conditions": ["The cache is revealed and awarded when the mission completes."],
       "bonuses": [],
       "disclosures": []
     },
@@ -203,14 +235,23 @@
           "done": false
         }
       ],
-      "conditions": ["Needs a free Warframe slot before the Foundry will let you claim it"],
+      "conditions": ["Needs a free Warframe slot before the Foundry will let you claim it."],
       "bonuses": [],
-      "disclosures": [
-        {
-          "title": "the Circuit route",
-          "body": "After The Duviri Paradox, Oberon is week 5 of the 11-week Normal Circuit, shared with Nekros and Valkyr. Neuroptics at tier 2, Chassis at 5, Systems at 8 and the main blueprint at 10, so no Market purchase. One frame per week; the choice resets Monday 00:00 UTC, and picking someone else means waiting a full rotation."
-        }
-      ]
+      "disclosures": []
+    }
+  ],
+  "routes": [
+    {
+      "name": "Railjack Points of Interest",
+      "cost": "each part is a 10% cache roll; 30,000 cr at the Market for the main",
+      "effort": 5,
+      "role": "chosen"
+    },
+    {
+      "name": "Circuit week 5",
+      "cost": "tiers 2, 5, 8 and 10 give every blueprint in one week, after The Duviri Paradox",
+      "effort": 4,
+      "role": null
     }
   ]
 }

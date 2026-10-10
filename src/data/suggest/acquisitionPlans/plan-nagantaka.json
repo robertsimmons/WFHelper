@@ -6,8 +6,8 @@
   "tradeable": false,
   "progress": { "have": 0, "need": 1, "unit": "weapon" },
   "badges": [
-    { "text": "MR 9 blueprint", "tone": "info" },
-    { "text": "4 Gallium", "tone": "info" }
+    { "text": "MR 9", "tone": "warn" },
+    { "text": "Market blueprint", "tone": "info" }
   ],
   "prices": [
     { "label": "blueprint", "amount": "40,000 cr", "money": false },
@@ -22,6 +22,25 @@
   ],
   "groups": [
     {
+      "type": "gate",
+      "place": "MASTERY RANK",
+      "sub": null,
+      "activity": "reach MR 9",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        { "qty": null, "label": "Mastery Rank 9", "note": null, "alt": null, "done": false }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
       "type": "vendor",
       "place": "MARKET",
       "sub": null,
@@ -31,18 +50,18 @@
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [],
+      "spends": [{ "currency": "Credits", "amount": "40,000" }],
       "map": null,
       "rows": [
         {
           "qty": null,
           "label": "Nagantaka Blueprint",
           "note": null,
-          "alt": "or 125 platinum",
+          "alt": null,
           "done": false
         }
       ],
-      "conditions": ["Mastery Rank 9 is required; you don't need to own Garuda."],
+      "conditions": [],
       "bonuses": [],
       "disclosures": []
     },

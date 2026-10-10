@@ -6,37 +6,61 @@
   "tradeable": false,
   "progress": { "have": 0, "need": 4, "unit": "parts" },
   "badges": [
-    { "text": "public recommended", "tone": "warn" },
-    { "text": "RNG boss drops", "tone": "warn" }
+    { "text": "RNG boss drops", "tone": "warn" },
+    { "text": "Circuit week 5", "tone": "circuit" }
   ],
-  "prices": [
-    { "label": "blueprint", "amount": "100,000 cr", "money": false },
-    { "label": "built", "amount": "375 p", "money": false }
+  "prices": [{ "label": "blueprint", "amount": "100,000 cr", "money": false }],
+  "routes": [
+    {
+      "name": "Lephantis on Magnacidium",
+      "cost": "100,000 cr for the main blueprint; each part drops at 33.33%",
+      "effort": 4,
+      "role": "chosen"
+    },
+    {
+      "name": "Circuit week 5",
+      "cost": "tiers 2, 5, 8 and 10 give every blueprint in one week, after The Duviri Paradox",
+      "effort": 4,
+      "role": null
+    }
   ],
   "materials": [
+    { "qty": "150", "label": "Alloy Plate", "note": "Neuroptics" },
     { "qty": "1", "label": "Neural Sensors", "note": "Neuroptics" },
+    { "qty": "150", "label": "Polymer Bundle", "note": "Neuroptics" },
+    { "qty": "800", "label": "Rubedo", "note": "500 Neuroptics, 300 Chassis" },
+    { "qty": "2", "label": "Morphics", "note": "1 Chassis, 1 Systems" },
+    { "qty": "1,000", "label": "Ferrite", "note": "Chassis" },
     { "qty": "1", "label": "Control Module", "note": "Systems" },
-    { "qty": "500", "label": "Plastids", "note": "Systems" },
-    { "qty": "3", "label": "Orokin Cell", "note": null }
+    { "qty": "500", "label": "Salvage", "note": "Systems" },
+    { "qty": "220", "label": "Plastids", "note": "Systems" },
+    { "qty": "3", "label": "Orokin Cell", "note": "Nekros" },
+    { "qty": "170,000", "label": "Credits", "note": null }
   ],
   "groups": [
     {
       "type": "vendor",
       "place": "MARKET",
       "sub": null,
-      "activity": "buy blueprint",
+      "activity": "buy the main blueprint",
       "meta": "100,000 cr",
       "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [],
+      "spends": [{ "currency": "Credits", "amount": "100,000" }],
       "map": null,
       "rows": [
-        { "qty": null, "label": "Nekros Blueprint", "note": null, "alt": null, "done": false }
+        {
+          "qty": null,
+          "label": "Nekros Blueprint",
+          "note": null,
+          "alt": "or Circuit week 5, tier 10",
+          "done": false
+        }
       ],
       "conditions": [
-        "Lephantis drops only the three component blueprints; buy the main blueprint first."
+        "Lephantis drops only the three part blueprints; buy the main blueprint first."
       ],
       "bonuses": [],
       "disclosures": []
@@ -46,7 +70,7 @@
       "place": "MAGNACIDIUM, DEIMOS",
       "sub": null,
       "activity": "Assassination, Lephantis",
-      "meta": "33.33% each; ~3 runs per part expected",
+      "meta": "33.33% each",
       "mode": "public recommended",
       "live": null,
       "skip": null,
@@ -58,26 +82,34 @@
           "qty": null,
           "label": "Neuroptics Blueprint",
           "note": "33.33%",
-          "alt": null,
+          "alt": "or Circuit week 5, tier 2",
           "done": false
         },
-        { "qty": null, "label": "Chassis Blueprint", "note": "33.33%", "alt": null, "done": false },
-        { "qty": null, "label": "Systems Blueprint", "note": "33.33%", "alt": null, "done": false }
+        {
+          "qty": null,
+          "label": "Chassis Blueprint",
+          "note": "33.33%",
+          "alt": "or Circuit week 5, tier 5",
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Systems Blueprint",
+          "note": "33.33%",
+          "alt": "or Circuit week 5, tier 8",
+          "done": false
+        }
       ],
       "conditions": [
-        "The old Orokin Derelict and crafted assassination keys are gone; Magnacidium is a normal Deimos node.",
-        "Extract after the kill: the component is an end-of-mission reward.",
-        "Run normal mode, not Nightmare. Death Detonation can softlock phase 1 on this node."
+        "Extract after the kill: the part is an end-of-mission reward.",
+        "Solo with a Specter, the mission fails if you go 15 minutes without killing an enemy; Lephantis' heads and Specter kills don't count.",
+        "Run normal mode, not Nightmare: Death Detonation on the phase 1 heads can soft-lock the fight."
       ],
       "bonuses": [],
       "disclosures": [
         {
-          "title": "make Lephantis go quickly",
-          "body": "Only the brief pink weak spots are vulnerable. Bring a fast-firing, multishot weapon rather than one huge shot, and use public squads if solo kills are taking more than a few minutes. Slow effects and punch-through make the windows easier to use."
-        },
-        {
-          "title": "do not stall solo",
-          "body": "The mission can auto-fail after 15 minutes without an enemy kill; Lephantis heads do not count. If the fight is dragging, leave to re-gear or queue public instead of waiting out weak spots."
+          "title": "the Circuit route",
+          "body": "After The Duviri Paradox, Nekros is week 5 of the 11-week Normal Circuit, shared with Oberon and Valkyr. Neuroptics at tier 2, Chassis at 5, Systems at 8 and the main blueprint at 10, so no Market purchase. One frame per week; picking someone else means waiting a full rotation."
         }
       ]
     },
@@ -85,7 +117,7 @@
       "type": "foundry",
       "place": "FOUNDRY",
       "sub": null,
-      "activity": "build all components, then Nekros",
+      "activity": "build the parts, then Nekros",
       "meta": "12h each, then 72h",
       "mode": null,
       "live": null,
@@ -94,53 +126,37 @@
       "spends": [],
       "map": null,
       "rows": [
-        { "qty": null, "label": "Neuroptics", "note": "Neural Sensor", "alt": null, "done": false },
-        { "qty": null, "label": "Chassis", "note": null, "alt": null, "done": false },
         {
           "qty": null,
-          "label": "Systems",
-          "note": "Control Module, 500 Plastids",
+          "label": "Nekros Neuroptics",
+          "note": "15,000 cr, 150 Alloy Plate, 1 Neural Sensors, 150 Polymer Bundle, 500 Rubedo",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Nekros Chassis",
+          "note": "15,000 cr, 1 Morphics, 1,000 Ferrite, 300 Rubedo",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Nekros Systems",
+          "note": "15,000 cr, 1 Control Module, 1 Morphics, 500 Salvage, 220 Plastids",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Nekros",
-          "note": "3 Orokin Cells, 25,000 cr",
+          "note": "25,000 cr, the three parts, 3 Orokin Cell",
           "alt": null,
           "done": false
         }
       ],
       "conditions": [
-        "Start all three component crafts together. Have a free Warframe slot before claiming Nekros."
-      ],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "farm",
-      "place": "THE CIRCUIT, DU VIRI",
-      "sub": null,
-      "activity": "weekly Warframe reward path",
-      "meta": "only when Nekros is offered",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Nekros set",
-          "note": "tiers 2, 5, 8, 10",
-          "alt": "deterministic alternative",
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Requires The Duviri Paradox and Nekros to be in the current weekly rotation.",
-        "This avoids boss-drop RNG but a full tier 0-10 path is a substantial continuous run."
+        "Start all three part builds together. Have a free Warframe slot before claiming Nekros."
       ],
       "bonuses": [],
       "disclosures": []

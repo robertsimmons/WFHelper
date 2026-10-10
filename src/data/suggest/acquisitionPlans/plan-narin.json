@@ -13,6 +13,20 @@
     { "label": "all blueprints", "amount": "790 Entropic Kuva", "money": false },
     { "label": "build total", "amount": "70,000 cr", "money": false }
   ],
+  "routes": [
+    {
+      "name": "Entropic Kuva at Cephalon Melica",
+      "cost": "790 Entropic Kuva buys all four blueprints",
+      "effort": 5,
+      "role": "chosen"
+    },
+    {
+      "name": "Zariman mission drops",
+      "cost": "Narin and each part drop from Zariman missions",
+      "effort": 5,
+      "role": null
+    }
+  ],
   "materials": [
     { "qty": "2,900", "label": "Plastids", "note": "Narin Neuroptics" },
     { "qty": "4", "label": "Neural Sensors", "note": "Narin Neuroptics" },
@@ -84,18 +98,12 @@
         }
       ],
       "conditions": [
-        "Entropic Eximus resist non-melee damage by 90% until their shield bubble breaks, and companions do not target them.",
-        "Steel Path gives no extra Kuva per kill; normal mode is as good."
+        "Entropic Eximus take 90% less damage from primary and secondary weapons, and companions do not target them; melee is the reliable way to kill them."
       ],
       "bonuses": [
         "The same runs pay out the part blueprints below, so farm Kuva and drops together."
       ],
-      "disclosures": [
-        {
-          "title": "get more Kuva per hour",
-          "body": "Long endless missions beat short runs: Eximus spawn more the longer you stay, and a Void Angel brings a cluster of 3 to 4. Mobile Defense always has an angel near one objective. Run Omnia fissures so relics crack alongside. Extract solo by holding the elevator panel; otherwise everyone leaves together."
-        }
-      ],
+      "disclosures": [],
       "ref": "Entropic Kuva"
     },
     {
@@ -115,7 +123,10 @@
           "qty": null,
           "label": "Narin Blueprint",
           "note": "one reward per mission",
-          "alt": "400 Entropic Kuva at Cephalon Melica",
+          "alt": {
+            "text": "or 400 Entropic Kuva at Cephalon Melica",
+            "spends": [{ "currency": "Entropic Kuva", "amount": "400" }]
+          },
           "done": false
         }
       ],
@@ -140,7 +151,10 @@
           "qty": null,
           "label": "Narin Chassis Blueprint",
           "note": null,
-          "alt": "130 Entropic Kuva at Cephalon Melica",
+          "alt": {
+            "text": "or 130 Entropic Kuva at Cephalon Melica",
+            "spends": [{ "currency": "Entropic Kuva", "amount": "130" }]
+          },
           "done": false
         }
       ],
@@ -165,7 +179,10 @@
           "qty": null,
           "label": "Narin Neuroptics Blueprint",
           "note": null,
-          "alt": "130 Entropic Kuva at Cephalon Melica",
+          "alt": {
+            "text": "or 130 Entropic Kuva at Cephalon Melica",
+            "spends": [{ "currency": "Entropic Kuva", "amount": "130" }]
+          },
           "done": false
         }
       ],
@@ -190,7 +207,10 @@
           "qty": null,
           "label": "Narin Systems Blueprint",
           "note": null,
-          "alt": "130 Entropic Kuva at Cephalon Melica",
+          "alt": {
+            "text": "or 130 Entropic Kuva at Cephalon Melica",
+            "spends": [{ "currency": "Entropic Kuva", "amount": "130" }]
+          },
           "done": false
         }
       ],
@@ -199,7 +219,7 @@
       "disclosures": [
         {
           "title": "buy instead of waiting on drops",
-          "body": "Cephalon Melica (Yuvan Peak on Earth, or the Chrysalith) sells every blueprint above for Entropic Kuva, so the drop chances above only save Kuva. Players who bought the whole frame report about 90 minutes of Void Cascade fissures."
+          "body": "Cephalon Melica, on Yuvan Peak in Earth's orbit or near the entrance of the Chrysalith, sells every blueprint above for Entropic Kuva: 400 for the main and 130 for each part."
         }
       ]
     },

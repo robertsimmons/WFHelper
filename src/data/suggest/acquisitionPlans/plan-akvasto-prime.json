@@ -16,6 +16,14 @@
     }
   ],
   "prices": [],
+  "routes": [
+    {
+      "name": "Varzia relics, as Akvasto Prime",
+      "cost": "1 Aya a relic during her Prime Resurgence, Rare Blueprint, 12h build",
+      "effort": 8,
+      "role": "chosen"
+    }
+  ],
   "materials": [
     {
       "qty": "20",
@@ -29,6 +37,85 @@
     }
   ],
   "groups": [
+    {
+      "type": "gate",
+      "place": "MASTERY RANK",
+      "sub": null,
+      "activity": "reach MR 12 to build it",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Mastery Rank 12",
+          "note": "the Foundry won't craft it below this",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "currency",
+      "place": "CAMBION DRIFT, DEIMOS",
+      "sub": "Necralisk",
+      "activity": "Level 40-60 bounty, final stage",
+      "meta": "43.48% per final stage",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Aya",
+          "note": "1 per relic; bank it before the window opens",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": [],
+      "ref": "Aya"
+    },
+    {
+      "type": "vendor",
+      "place": "MAROO'S BAZAAR, MARS",
+      "sub": "Varzia",
+      "activity": "buy the Akvasto Prime relics she stocks, 1 Aya each",
+      "meta": "only while Akvasto Prime is in Prime Resurgence",
+      "mode": null,
+      "live": {
+        "state": "blocked",
+        "text": "vaulted; only during her Prime Resurgence"
+      },
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Akvasto Prime relics",
+          "note": "buy extra Blueprint relics: every one carries it as the Rare",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Her stock rotates away; relics and Aya you hold never expire."],
+      "bonuses": ["Varzia is also in the Market's Prime Resurgence tab."],
+      "disclosures": []
+    },
     {
       "type": "fissure",
       "place": "ANY VOID FISSURE",
@@ -80,8 +167,7 @@
       ],
       "conditions": [
         "Akvasto Prime is vaulted: its relics no longer drop from missions.",
-        "Axi A5 is a Baro Ki'Teer exclusive relic; he sells it on some visits only.",
-        "Vaulted relics and the parts themselves still trade between players."
+        "Axi A5 is a Baro Ki'Teer exclusive relic; he sells it on some visits only."
       ],
       "bonuses": [],
       "disclosures": [
@@ -96,7 +182,7 @@
       "place": "FOUNDRY",
       "sub": null,
       "activity": "build components, then Akvasto Prime",
-      "meta": "12h each, then 12h, MR 12",
+      "meta": "12h each, then 12h",
       "mode": null,
       "live": null,
       "skip": null,

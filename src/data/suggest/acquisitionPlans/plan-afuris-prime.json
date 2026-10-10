@@ -4,11 +4,113 @@
   "effort": 8,
   "source": "relics",
   "tradeable": true,
-  "progress": { "have": 0, "need": 4, "unit": "parts" },
-  "badges": [{ "text": "vaulted", "tone": "warn" }],
+  "progress": {
+    "have": 0,
+    "need": 4,
+    "unit": "parts"
+  },
+  "badges": [
+    {
+      "text": "vaulted",
+      "tone": "warn"
+    }
+  ],
   "prices": [],
-  "materials": [{ "qty": "15,000", "label": "Credits", "note": null }],
+  "routes": [
+    {
+      "name": "Varzia relics, as Afuris Prime",
+      "cost": "1 Aya a relic during her Prime Resurgence, Rare Receiver, 12h build",
+      "effort": 8,
+      "role": "chosen"
+    }
+  ],
+  "materials": [
+    {
+      "qty": "15,000",
+      "label": "Credits",
+      "note": null
+    }
+  ],
   "groups": [
+    {
+      "type": "gate",
+      "place": "MASTERY RANK",
+      "sub": null,
+      "activity": "reach MR 12 to build it",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Mastery Rank 12",
+          "note": "the Foundry won't craft it below this",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "currency",
+      "place": "CAMBION DRIFT, DEIMOS",
+      "sub": "Necralisk",
+      "activity": "Level 40-60 bounty, final stage",
+      "meta": "43.48% per final stage",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Aya",
+          "note": "1 per relic; bank it before the window opens",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": [],
+      "ref": "Aya"
+    },
+    {
+      "type": "vendor",
+      "place": "MAROO'S BAZAAR, MARS",
+      "sub": "Varzia",
+      "activity": "buy the Afuris Prime relics she stocks, 1 Aya each",
+      "meta": "only while Afuris Prime is in Prime Resurgence",
+      "mode": null,
+      "live": {
+        "state": "blocked",
+        "text": "vaulted; only during her Prime Resurgence"
+      },
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Afuris Prime relics",
+          "note": "buy extra Receiver relics: every one carries it as the Rare",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Her stock rotates away; relics and Aya you hold never expire."],
+      "bonuses": ["Varzia is also in the Market's Prime Resurgence tab."],
+      "disclosures": []
+    },
     {
       "type": "fissure",
       "place": "ANY VOID FISSURE",
@@ -51,10 +153,7 @@
           "done": false
         }
       ],
-      "conditions": [
-        "Afuris Prime is vaulted: its relics no longer drop from missions.",
-        "Vaulted relics and the parts themselves still trade between players."
-      ],
+      "conditions": ["Afuris Prime is vaulted: its relics no longer drop from missions."],
       "bonuses": [],
       "disclosures": []
     },
@@ -63,7 +162,7 @@
       "place": "FOUNDRY",
       "sub": null,
       "activity": "build Afuris Prime",
-      "meta": "12h, MR 12",
+      "meta": "12h",
       "mode": null,
       "live": null,
       "skip": null,

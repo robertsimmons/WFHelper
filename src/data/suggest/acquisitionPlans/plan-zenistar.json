@@ -7,7 +7,7 @@
   "progress": { "have": 0, "need": 1, "unit": "weapon" },
   "badges": [
     { "text": "Daily Tribute milestone", "tone": "warn" },
-    { "text": "no Foundry build", "tone": "info" }
+    { "text": "MR 6", "tone": "info" }
   ],
   "prices": [],
   "groups": [
@@ -16,7 +16,7 @@
       "place": "DAILY TRIBUTE",
       "sub": null,
       "activity": "pick Zenistar at a weapon milestone (day 100, 300, 500 or 700)",
-      "meta": "earliest day 100; every account has it by day 700",
+      "meta": "offered every 200 days from day 100 until picked",
       "mode": null,
       "live": null,
       "skip": null,
@@ -30,24 +30,21 @@
           "note": "offered from day 100; pick it first to have it soonest",
           "alt": null,
           "done": false
+        },
+        {
+          "qty": null,
+          "label": "Mastery Rank 6",
+          "note": "needed to use it",
+          "alt": null,
+          "done": false
         }
       ],
-      "conditions": [
-        "Login days are cumulative, not consecutive; missing days only delays the milestone.",
-        "The pick is final; no Alt+F4 or other reroll exists."
-      ],
-      "bonuses": [
-        "Arrives fully built with its own weapon slot and an Orokin Catalyst pre-installed.",
-        "Clicking the milestone icons under the login-day counter previews what each upcoming milestone offers."
-      ],
+      "conditions": [],
+      "bonuses": [],
       "disclosures": [
         {
           "title": "replacement copy, not a shortcut",
           "body": "Cephalon Simaris sells a Zenistar Blueprint for 100,000 standing, but only after you've claimed it from Daily Tribute. It builds for 30,000 credits, 4 Morphics, 450 Circuits, 500 Polymer Bundle and 2,750 Salvage over a day, and gives no extra Mastery."
-        },
-        {
-          "title": "cross-save duplicates",
-          "body": "Accounts merged through cross-save can already own all four milestone weapons and still get handed a duplicate at a later milestone; it comes with its own slot."
         }
       ]
     }

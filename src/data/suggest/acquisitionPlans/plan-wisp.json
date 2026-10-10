@@ -6,10 +6,10 @@
   "tradeable": false,
   "progress": { "have": 0, "need": 4, "unit": "blueprints" },
   "badges": [
-    { "text": "story gate", "tone": "warn" },
+    { "text": "Chimera Prologue", "tone": "warn" },
     { "text": "boss farm", "tone": "info" }
   ],
-  "prices": [{ "label": "built", "amount": "325 p", "money": false }],
+  "prices": [],
   "materials": [
     { "qty": "2", "label": "Tellurium", "note": "Neuroptics" },
     { "qty": "950", "label": "Plastids", "note": "Neuroptics" },
@@ -29,8 +29,8 @@
       "type": "gate",
       "place": "QUESTS",
       "sub": null,
-      "activity": "finish the Chimera Prologue chain",
-      "meta": "Operator required",
+      "activity": "finish Chimera Prologue",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -40,24 +40,13 @@
       "rows": [
         {
           "qty": null,
-          "label": "The Second Dream",
-          "note": "required",
-          "alt": null,
-          "done": false
-        },
-        { "qty": null, "label": "The War Within", "note": "required", "alt": null, "done": false },
-        { "qty": null, "label": "The Sacrifice", "note": "required", "alt": null, "done": false },
-        {
-          "qty": null,
           "label": "Chimera Prologue",
-          "note": "unlocks Ropalolyst",
+          "note": "needed to fight Ropalolyst; follows The Second Dream, The War Within and The Sacrifice",
           "alt": null,
           "done": false
         }
       ],
-      "conditions": [
-        "The Ropalolyst node on Jupiter is locked until Chimera Prologue. Its shields require an Operator Amp, so there is no bypassing The Second Dream."
-      ],
+      "conditions": [],
       "bonuses": [],
       "disclosures": []
     },
@@ -66,8 +55,8 @@
       "place": "ROPALOLYST, JUPITER",
       "sub": null,
       "activity": "Assassination",
-      "meta": "~10-20 kills typical",
-      "mode": "solo avoids host migration bugs",
+      "meta": "22.56% Wisp, 25.81% each part",
+      "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
@@ -86,18 +75,14 @@
         { "qty": null, "label": "Systems Blueprint", "note": "25.81%", "alt": null, "done": false }
       ],
       "conditions": [
-        "The main Wisp Blueprint is a boss drop, not a 25,000-credit Market purchase; collect all four blueprints.",
-        "Charge all three capacitor towers before engaging the boss. Strip shields with your Amp, steer it into a charged tower, destroy a Synovia, then fire the Terren Charger within about three seconds.",
-        "Stand at the Terren Charger before breaking the Synovia; missing its short window regenerates the weak point and costs the cycle."
+        "The main Wisp Blueprint is a boss drop, not a Market purchase; collect all four blueprints.",
+        "Its shields need an Operator Amp."
       ],
-      "bonuses": [
-        "Radiation sniper damage helps on the small Synovia. Any Amp works; a better Amp only shortens shield phases.",
-        "Wukong, Titania, or Operator mobility shortens the long approach to the arena."
-      ],
+      "bonuses": [],
       "disclosures": [
         {
-          "title": "finish every boss phase cleanly",
-          "body": "There are three capacitor cycles. Pre-charging all three towers prevents the later add waves from turning a quick farm into a prolonged fight."
+          "title": "the fight",
+          "body": "Charge all three capacitor towers before engaging the boss. Strip shields with your Amp, steer it into a charged tower, destroy a Synovia, then fire the Terren Charger within about three seconds. Stand at the Terren Charger before breaking the Synovia; missing its short window regenerates the weak point."
         }
       ]
     },
@@ -143,9 +128,7 @@
           "done": false
         }
       ],
-      "conditions": [
-        "Wisp Prime does not replace this farm for base-frame Mastery or Helminth's Breach Surge."
-      ],
+      "conditions": [],
       "bonuses": [],
       "disclosures": []
     }

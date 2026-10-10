@@ -5,22 +5,56 @@
   "source": "shop",
   "tradeable": false,
   "progress": { "have": 0, "need": 3, "unit": "parts" },
-  "badges": [
-    { "text": "quest reward", "tone": "info" },
-    { "text": "Simaris buyback", "tone": "warn" }
-  ],
-  "prices": [
-    { "label": "build", "amount": "5,000 cr", "money": false },
-    { "label": "Simaris buyback", "amount": "145,000 standing", "money": false }
+  "badges": [{ "text": "The Deadlock Protocol, MR 4", "tone": "info" }],
+  "prices": [{ "label": "build", "amount": "5,000 cr", "money": false }],
+  "routes": [
+    {
+      "name": "The Deadlock Protocol quest",
+      "cost": "Europa Spy mission, replayable, 30-second build",
+      "effort": 2,
+      "role": "chosen"
+    },
+    {
+      "name": "Simaris replacements",
+      "cost": "145,000 standing, once the quest is done",
+      "effort": 6,
+      "role": "afterQuest"
+    }
   ],
   "materials": [{ "qty": "5,000", "label": "Credits", "note": null }],
   "groups": [
     {
       "type": "gate",
-      "place": "SATURN JUNCTION, THEN THE CODEX",
+      "place": "MASTERY RANK",
       "sub": null,
-      "activity": "unlock and complete The Deadlock Protocol",
-      "meta": "solo, replayable side quest",
+      "activity": "reach MR 4",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Mastery Rank 4",
+          "note": "starts The Deadlock Protocol and is the Xoris's own rank",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": [],
+      "quest": "The Deadlock Protocol"
+    },
+    {
+      "type": "farm",
+      "place": "EUROPA",
+      "sub": "Spy mission",
+      "activity": "The Deadlock Protocol quest",
+      "meta": "replayable, no RNG",
       "mode": "solo",
       "live": null,
       "skip": null,
@@ -30,35 +64,37 @@
       "rows": [
         {
           "qty": null,
-          "label": "Saturn Junction",
-          "note": "reward: The Deadlock Protocol",
+          "label": "Xoris Blueprint",
+          "note": "handed over by Nef Anyo partway through",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
-          "label": "The Deadlock Protocol",
-          "note": "hands you the Xoris blueprint, then the Handle, Core and Blade during its Europa Spy mission",
+          "label": "Xoris Handle",
+          "note": "hack all three vaults in the Spy mission",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Xoris Core",
+          "note": "from the same three vaults",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Xoris Blade",
+          "note": "from the same three vaults",
           "alt": null,
           "done": false
         }
       ],
-      "conditions": ["Needs Mastery Rank 4 to start."],
+      "conditions": [],
       "bonuses": ["The quest also awards the Protea blueprint and the Granum Void Captura scene."],
-      "disclosures": [
-        {
-          "title": "the vault mechanic",
-          "body": "In the Europa Spy mission (\"The Xoris\"), hack all three vaults to get the Handle, Core and Blade. The quest's boss fight against Protea in the Granum Void was nerfed in Update 29.10 (fewer specters, weaker Protea, consistent rewind timing) and is much less brutal than older threads describe."
-        },
-        {
-          "title": "if you sold it",
-          "body": "Cephalon Simaris (any Relay) sells the blueprint back for 100,000 standing and each of the three parts (Handle, Core, Blade) for 15,000, so 145,000 standing total plus the 5,000-credit build. The offering only appears after the quest is done, and it's in Simaris's own menu, not the credit Market."
-        },
-        {
-          "title": "don't sell it",
-          "body": "The near-unanimous regret across threads is selling Xoris after the quest to free a slot, then needing it again for Sisters of Parvos Granum Void runs. It's the only way to free Solaris captives for extra time in the Void, though Mesa, Revenant, Octavia, Volt or an on-call Railjack crew can still reach the kill quota without it."
-        }
-      ]
+      "disclosures": [],
+      "quest": "The Deadlock Protocol"
     },
     {
       "type": "foundry",
@@ -73,18 +109,97 @@
       "spends": [],
       "map": null,
       "rows": [
-        { "qty": null, "label": "Xoris", "note": "5,000 credits", "alt": null, "done": false }
+        {
+          "qty": null,
+          "label": "Xoris",
+          "note": "5,000 cr, the Handle, Core and Blade",
+          "alt": null,
+          "done": false
+        }
       ],
       "conditions": [],
       "bonuses": [
-        "Any Xoris kill in the Granum Void charges a Specter Particle, including the detonation's AoE; a direct throw hit isn't required."
+        "A fully charged throw's detonation frees captured Solaris in the Granum Void and adds 20 seconds to its timer."
       ],
-      "disclosures": [
-        {
-          "title": "self-stagger",
-          "body": "The detonation self-staggers at close range from its 8m radius, independent of any mods. Remove Volatile Rebound and Volatile Quick Return, or run an overguard or knockdown-immune frame. A bait or canister equipped can steal the detonate button by a known bug."
-        }
-      ]
+      "disclosures": []
     }
-  ]
+  ],
+  "afterQuest": {
+    "effort": 6,
+    "badges": [{ "text": "Simaris 145,000 standing", "tone": "warn" }],
+    "groups": [
+      {
+        "type": "currency",
+        "place": "CEPHALON SIMARIS",
+        "sub": null,
+        "activity": "scan targets with the Synthesis Scanner",
+        "meta": "145,000 Standing",
+        "mode": null,
+        "live": null,
+        "skip": null,
+        "earns": { "currency": "Cephalon Simaris Standing", "amount": "145,000" },
+        "spends": [],
+        "map": null,
+        "rows": [
+          {
+            "qty": "145,000",
+            "label": "Simaris Standing",
+            "note": "blueprint and three parts",
+            "alt": null,
+            "done": false
+          }
+        ],
+        "conditions": [],
+        "bonuses": [],
+        "disclosures": [],
+        "ref": "Cephalon Simaris Standing"
+      },
+      {
+        "type": "vendor",
+        "place": "CEPHALON SIMARIS",
+        "sub": null,
+        "activity": "buy replacement blueprint and parts",
+        "meta": "100,000 Standing the blueprint, 15,000 a part",
+        "mode": null,
+        "live": null,
+        "skip": null,
+        "earns": null,
+        "spends": [{ "currency": "Cephalon Simaris Standing", "amount": "145,000" }],
+        "map": null,
+        "rows": [
+          {
+            "qty": null,
+            "label": "Xoris Blueprint",
+            "note": "100,000 Standing",
+            "alt": null,
+            "done": false
+          },
+          {
+            "qty": null,
+            "label": "Xoris Handle",
+            "note": "15,000 Standing",
+            "alt": null,
+            "done": false
+          },
+          {
+            "qty": null,
+            "label": "Xoris Core",
+            "note": "15,000 Standing",
+            "alt": null,
+            "done": false
+          },
+          {
+            "qty": null,
+            "label": "Xoris Blade",
+            "note": "15,000 Standing",
+            "alt": null,
+            "done": false
+          }
+        ],
+        "conditions": ["Simaris only stocks these once The Deadlock Protocol is done."],
+        "bonuses": [],
+        "disclosures": []
+      }
+    ]
+  }
 }

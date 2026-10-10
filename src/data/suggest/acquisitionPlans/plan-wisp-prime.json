@@ -7,37 +7,56 @@
   "progress": { "have": 0, "need": 4, "unit": "parts" },
   "badges": [
     { "text": "vaulted", "tone": "warn" },
-    { "text": "two Rares", "tone": "warn" },
-    { "text": "Prime Resurgence", "tone": "info" }
+    { "text": "Rare Blueprint and Chassis", "tone": "warn" }
   ],
-  "prices": [{ "label": "set, player trade", "amount": "~60 p", "money": false }],
-  "materials": [{ "qty": "5", "label": "Orokin Cell", "note": "Wisp Prime" }],
+  "prices": [],
+  "routes": [
+    {
+      "name": "Varzia relics, as Wisp Prime",
+      "cost": "1 Aya a relic during her Prime Resurgence, Rare Blueprint and Chassis, 3-day build",
+      "effort": 8,
+      "role": "chosen"
+    }
+  ],
+  "materials": [
+    { "qty": "10", "label": "Neurodes", "note": "Neuroptics" },
+    { "qty": "2", "label": "Argon Crystal", "note": "Neuroptics" },
+    { "qty": "1,500", "label": "Rubedo", "note": "Neuroptics" },
+    { "qty": "6,750", "label": "Ferrite", "note": "Neuroptics" },
+    { "qty": "7", "label": "Gallium", "note": "Chassis" },
+    { "qty": "2,150", "label": "Polymer Bundle", "note": "Chassis" },
+    { "qty": "250", "label": "Oxium", "note": "Chassis" },
+    { "qty": "8,750", "label": "Nano Spores", "note": "Chassis" },
+    { "qty": "2", "label": "Nitain Extract", "note": "Systems" },
+    { "qty": "2", "label": "Tellurium", "note": "Systems" },
+    { "qty": "1,350", "label": "Circuits", "note": "Systems" },
+    { "qty": "4,375", "label": "Salvage", "note": "Systems" },
+    { "qty": "5", "label": "Orokin Cell", "note": null },
+    { "qty": "70,000", "label": "Credits", "note": null }
+  ],
   "groups": [
     {
       "type": "currency",
       "place": "CAMBION DRIFT, DEIMOS",
       "sub": "Necralisk",
-      "activity": "Tier 4-5 bounty, Mother",
-      "meta": "bank Aya before rotation",
-      "mode": "complete bonus objectives",
+      "activity": "Level 40-60 bounty, final stage",
+      "meta": "43.48% per final stage",
+      "mode": null,
       "live": null,
       "skip": null,
-      "earns": { "currency": "Aya", "amount": "15" },
+      "earns": null,
       "spends": [],
       "map": null,
       "rows": [
         {
-          "qty": "10",
+          "qty": null,
           "label": "Aya",
-          "note": "typical radshare budget; carries over",
-          "alt": "Cetus tier-4 or tier-5 bounties",
+          "note": "1 per relic; bank it before the window opens",
+          "alt": null,
           "done": false
         }
       ],
-      "conditions": [
-        "Wisp Prime is vaulted: no Wisp relics currently drop from missions or appear in the relic console.",
-        "Aya is untradeable, but has no cap and remains after Prime Resurgence rotations end."
-      ],
+      "conditions": [],
       "bonuses": [],
       "disclosures": [],
       "ref": "Aya"
@@ -45,63 +64,38 @@
     {
       "type": "vendor",
       "place": "MAROO'S BAZAAR, MARS",
-      "sub": null,
-      "activity": "Varzia, 1 Aya per relic",
-      "meta": "only during a Wisp rotation",
+      "sub": "Varzia",
+      "activity": "buy the Wisp Prime relics she stocks, 1 Aya each",
+      "meta": "only while Wisp Prime is in Prime Resurgence",
       "mode": null,
-      "live": { "state": "blocked", "text": "Vaulted; check Prime Resurgence" },
+      "live": { "state": "blocked", "text": "vaulted; only during her Prime Resurgence" },
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Aya", "amount": "15" }],
-      "map": "maroos-bazaar",
+      "spends": [],
+      "map": null,
       "rows": [
         {
-          "qty": "8",
-          "label": "Axi W3 or Axi W4",
-          "note": "Blueprint Rare",
-          "alt": "Meso W3, Meso W4, or Neo W2",
-          "done": false
-        },
-        {
-          "qty": "4",
-          "label": "Neo H4",
-          "note": "Chassis Uncommon",
-          "alt": "Lith W3/W4, Meso W5, or Neo W1 Rare",
-          "done": false
-        },
-        {
-          "qty": "2",
-          "label": "Axi F2",
-          "note": "Neuroptics Uncommon",
-          "alt": "Lith A7/G13/L6, Meso K6, or Neo A13/K6",
-          "done": false
-        },
-        {
-          "qty": "1",
-          "label": "Axi A17",
-          "note": "Systems Common",
-          "alt": "Axi B7, Lith N15/Q1, Meso G10/G7/T7, or Neo D7",
+          "qty": null,
+          "label": "Wisp Prime relics",
+          "note": "buy extra Blueprint and Chassis relics: nearly all carry them as the Rare",
+          "alt": null,
           "done": false
         }
       ],
       "conditions": [
-        "All listed relics are vaulted. Confirm the actual relic IDs in Varzia's shop before spending Aya; she may stock newly issued relics instead.",
-        "Buy the Chassis relic with an Uncommon reward when it is offered: Neo H4 is dramatically cheaper than chasing it as a Rare.",
-        "Relics are tradeable and never expire, so buy enough during the rotation to finish later."
+        "Her stock rotates away; relics and Aya you hold never expire.",
+        "Vaulted relics and the parts themselves still trade between players."
       ],
-      "bonuses": [
-        "Varzia is also available from the Orbiter Relic Segment or Prime Resurgence Market tab.",
-        "A friend may buy tradeable relics with their Aya."
-      ],
+      "bonuses": ["Varzia is also in the Market's Prime Resurgence tab."],
       "disclosures": []
     },
     {
       "type": "fissure",
       "place": "ANY VOID FISSURE",
       "sub": null,
-      "activity": "crack matching relic eras",
-      "meta": "two Rare parts; radshare them",
-      "mode": "four-player radshare",
+      "activity": "crack the Wisp Prime relics",
+      "meta": "Blueprint and Chassis are the bottleneck",
+      "mode": "Radiant radshare for the Rares",
       "live": null,
       "skip": null,
       "earns": null,
@@ -111,55 +105,47 @@
         {
           "qty": null,
           "label": "Wisp Prime Blueprint",
-          "note": "Rare: 10% per Radiant relic",
+          "note": "Axi W3 or Axi W4 or Meso W3 or Meso W4 or Neo W2, Rare: 10% Radiant",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Wisp Prime Chassis",
-          "note": "Neo H4, Uncommon: 20% per Radiant relic",
+          "note": "Neo H4, Uncommon: 20% Radiant; Lith W3 or Lith W4 or Meso W5 or Neo W1, Rare: 10% Radiant",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Wisp Prime Neuroptics",
-          "note": "Uncommon: 20% per Radiant relic",
+          "note": "Axi F2 or Lith A7 or Lith G13 or Lith L6 or Meso K6 or Neo A13 or Neo K6, Uncommon: 20% Radiant",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Wisp Prime Systems",
-          "note": "Common: 25.33% per Intact relic",
+          "note": "Axi A17 or Axi B7 or Lith N15 or Lith Q1 or Meso G7 or Meso G10 or Meso T7 or Neo D7, Common: 25.33% Intact",
           "alt": null,
           "done": false
         }
       ],
       "conditions": [
-        "Refine Blueprint relics to Radiant (100 Void Traces). Four matching Radiant relics give a 34.39% chance that someone opens the Rare reward.",
-        "Use Radiant for the Uncommon Neuroptics and, unless Neo H4 is available, the Rare Chassis. Run Systems Intact: refining lowers a Common reward's chance.",
-        "Get 10 Reactant before extraction. A relic is not consumed below 10 Reactant, but it produces no reward."
+        "Refine Rare relics to Radiant (100 Void Traces each); leave Systems relics Intact, since Radiant lowers their Common odds to 16.67%.",
+        "Mission rewards never drop Resurgence relics; Varzia is the only source."
       ],
       "bonuses": [
-        "Use the Vaulted Relic Community Discord or radshare.xyz for vaulted radshares; regular Recruitment can be thin.",
-        "When another player picks the same wanted reward, choose their copy: you keep the part and they receive extra Void Traces.",
-        "Let enemies corrupt before killing them, and do not start extraction while a teammate is at 9/10 Reactant."
+        "Pick a teammate's identical reward at the reward screen; they get 5 bonus Void Traces."
       ],
-      "disclosures": [
-        {
-          "title": "one relic gives one reward",
-          "body": "A relic may contain multiple Wisp parts, but each crack grants only one selected reward. Continue the matching radshare until every part is secured."
-        }
-      ]
+      "disclosures": []
     },
     {
       "type": "foundry",
       "place": "FOUNDRY",
       "sub": null,
       "activity": "build components, then Wisp Prime",
-      "meta": "12h each, then 72h",
+      "meta": "12h each, then 3 days",
       "mode": null,
       "live": null,
       "skip": null,
@@ -167,21 +153,36 @@
       "spends": [],
       "map": null,
       "rows": [
-        { "qty": null, "label": "Wisp Prime Neuroptics", "note": null, "alt": null, "done": false },
-        { "qty": null, "label": "Wisp Prime Chassis", "note": null, "alt": null, "done": false },
-        { "qty": null, "label": "Wisp Prime Systems", "note": null, "alt": null, "done": false },
+        {
+          "qty": null,
+          "label": "Wisp Prime Neuroptics",
+          "note": "15,000 cr, 10 Neurodes, 2 Argon Crystal, 1,500 Rubedo, 6,750 Ferrite",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Wisp Prime Chassis",
+          "note": "15,000 cr, 7 Gallium, 2,150 Polymer Bundle, 250 Oxium, 8,750 Nano Spores",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Wisp Prime Systems",
+          "note": "15,000 cr, 2 Nitain Extract, 2 Tellurium, 1,350 Circuits, 4,375 Salvage",
+          "alt": null,
+          "done": false
+        },
         {
           "qty": null,
           "label": "Wisp Prime",
-          "note": "25,000 credits; 5 Orokin Cells",
+          "note": "25,000 cr, the three parts, 5 Orokin Cell",
           "alt": null,
           "done": false
         }
       ],
-      "conditions": [
-        "Component blueprints come only from relics; the Prime frame blueprint is not a Market purchase.",
-        "Components build in parallel. Keep a free Warframe slot for the final claim."
-      ],
+      "conditions": [],
       "bonuses": [],
       "disclosures": []
     }

@@ -9,7 +9,10 @@
     { "text": "Bio Lab", "tone": "warn" },
     { "text": "5 Mutagen Mass", "tone": "info" }
   ],
-  "prices": [{ "label": "blueprint", "amount": "50,000 cr", "money": false }],
+  "prices": [
+    { "label": "blueprint", "amount": "50,000 cr", "money": false },
+    { "label": "build", "amount": "30,000 cr", "money": false }
+  ],
   "materials": [
     { "qty": "5", "label": "Mutagen Mass", "note": null },
     { "qty": "8,750", "label": "Salvage", "note": null },
@@ -19,10 +22,35 @@
   ],
   "groups": [
     {
+      "type": "gate",
+      "place": "MASTERY RANK",
+      "sub": null,
+      "activity": "reach MR 7",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Mastery Rank 7",
+          "note": "needed to equip it",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
       "type": "vendor",
       "place": "CLAN DOJO, BIO LAB",
       "sub": null,
-      "activity": "buy the blueprint",
+      "activity": "research the chain and buy the blueprint",
       "meta": "50,000 cr",
       "mode": null,
       "live": null,
@@ -34,7 +62,7 @@
         {
           "qty": null,
           "label": "Pupacyst Blueprint",
-          "note": "50,000 cr",
+          "note": "after Mutagen Mass, Torid, Acrid, Embolist, then Pupacyst research",
           "alt": null,
           "done": false
         }
@@ -59,7 +87,7 @@
         {
           "qty": null,
           "label": "Pupacyst",
-          "note": "5 Mutagen Mass, 8,750 Salvage, 2,250 Rubedo, 1 Forma, 30,000 cr",
+          "note": "30,000 cr, 5 Mutagen Mass, 8,750 Salvage, 2,250 Rubedo, 1 Forma",
           "alt": null,
           "done": false
         }

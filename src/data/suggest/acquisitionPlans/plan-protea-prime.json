@@ -1,12 +1,20 @@
 {
   "name": "Protea Prime",
   "kind": "warframe-prime",
-  "effort": 5,
+  "effort": 8,
   "source": "relics",
   "tradeable": true,
   "progress": { "have": 0, "need": 4, "unit": "parts" },
-  "badges": [],
+  "badges": [{ "text": "vaulted", "tone": "warn" }],
   "prices": [],
+  "routes": [
+    {
+      "name": "Varzia relics, as Protea Prime",
+      "cost": "1 Aya a relic during her Prime Resurgence, Rare Chassis, 3-day build",
+      "effort": 8,
+      "role": "chosen"
+    }
+  ],
   "materials": [
     { "qty": "8", "label": "Neural Sensors", "note": "Neuroptics" },
     { "qty": "10", "label": "Control Module", "note": "Neuroptics" },
@@ -25,11 +33,11 @@
   ],
   "groups": [
     {
-      "type": "fissure",
-      "place": "ANY VOID FISSURE",
-      "sub": null,
-      "activity": "crack the matching relic era",
-      "meta": "Chassis is the bottleneck",
+      "type": "currency",
+      "place": "CAMBION DRIFT, DEIMOS",
+      "sub": "Necralisk",
+      "activity": "Level 40-60 bounty, final stage",
+      "meta": "43.48% per final stage",
       "mode": null,
       "live": null,
       "skip": null,
@@ -39,41 +47,95 @@
       "rows": [
         {
           "qty": null,
-          "label": "Protea Prime Blueprint",
-          "note": "Neo O4, Common: 25.33% Intact",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Protea Prime Neuroptics",
-          "note": "Axi A23, Uncommon: 20% Radiant",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Protea Prime Chassis",
-          "note": "Neo P11, Rare: 10% Radiant",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Protea Prime Systems",
-          "note": "Meso I3, Uncommon: 20% Radiant",
+          "label": "Aya",
+          "note": "1 per relic; bank it before the window opens",
           "alt": null,
           "done": false
         }
       ],
       "conditions": [],
       "bonuses": [],
-      "disclosures": [
+      "disclosures": [],
+      "ref": "Aya"
+    },
+    {
+      "type": "vendor",
+      "place": "MAROO'S BAZAAR, MARS",
+      "sub": "Varzia",
+      "activity": "buy the Protea Prime relics she stocks, 1 Aya each",
+      "meta": "only while Protea Prime is in Prime Resurgence",
+      "mode": null,
+      "live": { "state": "blocked", "text": "vaulted; only during her Prime Resurgence" },
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
         {
-          "title": "also in vaulted relics",
-          "body": "Blueprint: Lith W4, Meso K7, Meso V10, Meso V14, Meso W4, Neo C6, Axi N13, Axi V13, Vanguard C1; Neuroptics: Lith D7, Lith O4, Meso T8, Neo D9, Neo P6, Axi S16, Axi T12, Vanguard E1; Chassis: Meso P17, Neo P7, Axi P7, Axi P8, Vanguard M1; Systems: Lith P9, Meso P15, Meso P16, Neo P9, Axi P9, Vanguard P1."
+          "qty": null,
+          "label": "Protea Prime relics",
+          "note": "buy extra Chassis relics: every one carries it as the Rare",
+          "alt": null,
+          "done": false
         }
-      ]
+      ],
+      "conditions": [
+        "Her stock rotates away; relics and Aya you hold never expire.",
+        "Vaulted relics and the parts themselves still trade between players."
+      ],
+      "bonuses": ["Varzia is also in the Market's Prime Resurgence tab."],
+      "disclosures": []
+    },
+    {
+      "type": "fissure",
+      "place": "ANY VOID FISSURE",
+      "sub": null,
+      "activity": "crack the Protea Prime relics",
+      "meta": "Chassis is the bottleneck",
+      "mode": "Radiant radshare for the Rares",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Protea Prime Blueprint",
+          "note": "Axi N13 or Axi V13 or Lith W4 or Meso K7 or Meso V10 or Meso V14 or Meso W4 or Neo C6 or Neo O4, Common: 25.33% Intact",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Protea Prime Neuroptics",
+          "note": "Axi A23 or Axi S16 or Axi T12 or Lith D7 or Lith O4 or Meso T8 or Neo D9 or Neo P6, Uncommon: 20% Radiant",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Protea Prime Chassis",
+          "note": "Axi P7 or Axi P8 or Meso P17 or Neo P7 or Neo P11, Rare: 10% Radiant",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Protea Prime Systems",
+          "note": "Meso I3, Uncommon: 20% Radiant; Axi P9 or Lith P9 or Meso P15 or Meso P16 or Neo P9, Rare: 10% Radiant",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Refine Neuroptics, Chassis and Systems relics to Radiant (100 Void Traces each); leave Blueprint relics Intact, since Radiant lowers their Common odds to 16.67%.",
+        "Mission rewards never drop Resurgence relics; Varzia is the only source."
+      ],
+      "bonuses": [
+        "Pick a teammate's identical reward at the reward screen; they get 5 bonus Void Traces."
+      ],
+      "disclosures": []
     },
     {
       "type": "foundry",
@@ -112,7 +174,7 @@
         {
           "qty": null,
           "label": "Protea Prime",
-          "note": "25,000 cr, Neuroptics, Chassis, Systems, 5 Orokin Cell, 3 days",
+          "note": "25,000 cr, the three parts, 5 Orokin Cell",
           "alt": null,
           "done": false
         }

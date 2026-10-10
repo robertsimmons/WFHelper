@@ -1,9 +1,9 @@
 {
   "name": "Prova Vandal",
   "kind": "melee",
-  "effort": 3,
+  "effort": 4,
   "source": "shop",
-  "tradeable": "unranked, no Forma/Catalyst",
+  "tradeable": "unranked only, no Forma or Catalyst",
   "progress": { "have": 0, "need": 410, "unit": "Ducats" },
   "badges": [
     { "text": "Baro only", "tone": "warn" },
@@ -13,11 +13,36 @@
   "materials": [{ "qty": "250,000", "label": "Credits", "note": null }],
   "groups": [
     {
+      "type": "gate",
+      "place": "MASTERY RANK",
+      "sub": null,
+      "activity": "reach MR 8",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Mastery Rank 8",
+          "note": "needed to equip it",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
       "type": "currency",
       "place": "VOID FISSURES",
       "sub": null,
       "activity": "crack relics, sell Prime parts at a Relay Ducat Kiosk",
-      "meta": "keep 410 banked before Baro lands",
+      "meta": "bank it before the visit that stocks it",
       "mode": null,
       "live": null,
       "skip": null,
@@ -28,20 +53,14 @@
         {
           "qty": "410",
           "label": "Orokin Ducats",
-          "note": "common part 15, uncommon 45, rare 100",
+          "note": "common 15, uncommon 45, rare 100",
           "alt": null,
           "done": false
-        },
-        { "qty": "250,000", "label": "Credits", "note": null, "alt": null, "done": false }
+        }
       ],
       "conditions": [],
       "bonuses": [],
-      "disclosures": [
-        {
-          "title": "closed routes",
-          "body": "Operation Breeding Grounds awarded it and The Gradivus Dilemma never did. Neither is a source now. Trade works only for unranked copies with no Forma or Catalyst, and the buyer must be MR 3 or higher."
-        }
-      ],
+      "disclosures": [],
       "ref": "Orokin Ducats"
     },
     {
@@ -49,7 +68,7 @@
       "place": "BARO KI'TEER, RELAY",
       "sub": "Concourse",
       "activity": "buy it on a visit that stocks it",
-      "meta": "every two weeks for about 48 hours",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -61,7 +80,7 @@
       "map": null,
       "rows": [{ "qty": null, "label": "Prova Vandal", "note": null, "alt": null, "done": false }],
       "conditions": [
-        "His stock changes each visit and this weapon is not on every one. A long absence is not a removal; it has returned repeatedly."
+        "Baro's stock changes with each appearance, and this may not be on the next one."
       ],
       "bonuses": [],
       "disclosures": []

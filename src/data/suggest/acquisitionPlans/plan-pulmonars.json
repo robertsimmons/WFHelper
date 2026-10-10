@@ -6,7 +6,7 @@
   "tradeable": false,
   "progress": { "have": 0, "need": 1, "unit": "blueprint" },
   "badges": [
-    { "text": "two open worlds", "tone": "warn" },
+    { "text": "Deimos materials", "tone": "warn" },
     { "text": "MR 11", "tone": "info" }
   ],
   "prices": [
@@ -16,7 +16,6 @@
   "materials": [
     { "qty": "2", "label": "Argon Crystal", "note": null },
     { "qty": "24,000", "label": "Nano Spores", "note": null },
-    { "qty": "480", "label": "Rubedo", "note": "Devolved Namalon refines" },
     { "qty": "24", "label": "Parasitic Tethermaw", "note": null },
     { "qty": "60", "label": "Devolved Namalon", "note": null },
     { "qty": "65,000", "label": "Credits", "note": null }
@@ -26,8 +25,8 @@
       "type": "gate",
       "place": "NECRALISK, DEIMOS",
       "sub": "Entrati",
-      "activity": "reach Entrati Rank 1, Stranger",
-      "meta": "gates the Devolved Namalon blueprint",
+      "activity": "finish Heart of Deimos, reach Entrati Rank 1 and MR 11",
+      "meta": "Rank 1 unlocks the Devolved Namalon blueprint",
       "mode": null,
       "live": null,
       "skip": null,
@@ -35,9 +34,30 @@
       "spends": [],
       "map": "necralisk",
       "rows": [
-        { "qty": null, "label": "Entrati Rank 1", "note": "Stranger", "alt": null, "done": false }
+        {
+          "qty": null,
+          "label": "Heart of Deimos",
+          "note": "unlocks the Necralisk and Entrati",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Entrati Rank 1",
+          "note": "Stranger",
+          "alt": null,
+          "done": false,
+          "rank": { "syndicate": "Entrati", "level": 1 }
+        },
+        {
+          "qty": null,
+          "label": "Mastery Rank 11",
+          "note": "needed to equip it",
+          "alt": null,
+          "done": false
+        }
       ],
-      "conditions": ["A fresh Deimos player has to earn some Entrati standing first."],
+      "conditions": [],
       "bonuses": [],
       "disclosures": []
     },
@@ -51,45 +71,13 @@
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [],
+      "spends": [{ "currency": "Credits", "amount": "50,000" }],
       "map": null,
       "rows": [
         {
           "qty": null,
           "label": "Pulmonars Blueprint",
-          "note": "50,000 credits",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "vendor",
-      "place": "NECRALISK, DEIMOS",
-      "sub": "Otak and Daughter",
-      "activity": "buy the Namalon refine blueprint and a fishing spear",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": "necralisk",
-      "rows": [
-        {
-          "qty": null,
-          "label": "Devolved Namalon Blueprint",
-          "note": "Otak, 2,000 cr, Entrati Rank 1; reusable, 20 per craft",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Spari Spear",
-          "note": "Daughter, 500 cr, Entrati Rank 0",
+          "note": "50,000 cr",
           "alt": null,
           "done": false
         }
@@ -102,7 +90,7 @@
       "type": "foundry",
       "place": "FOUNDRY",
       "sub": null,
-      "activity": "refine Namalon three times, then build Pulmonars",
+      "activity": "build Pulmonars",
       "meta": "12h",
       "mode": null,
       "live": null,
@@ -114,12 +102,12 @@
         {
           "qty": null,
           "label": "Pulmonars",
-          "note": "15,000 cr, 2 Argon Crystal, 24 Parasitic Tethermaw, 60 Devolved Namalon, 24,000 Nano Spores; 12h",
+          "note": "15,000 cr, 2 Argon Crystal, 24 Parasitic Tethermaw, 60 Devolved Namalon, 24,000 Nano Spores",
           "alt": null,
           "done": false
         }
       ],
-      "conditions": ["The three Namalon crafts need 480 Rubedo in total."],
+      "conditions": [],
       "bonuses": [],
       "disclosures": []
     }

@@ -3,7 +3,7 @@
   "kind": "primary",
   "effort": 4,
   "source": "shop",
-  "tradeable": "unranked only",
+  "tradeable": "unranked only, no Forma or Catalyst",
   "progress": { "have": 0, "need": 450, "unit": "Ducats" },
   "badges": [
     { "text": "Baro only", "tone": "warn" },
@@ -13,11 +13,36 @@
   "materials": [{ "qty": "300,000", "label": "Credits", "note": null }],
   "groups": [
     {
+      "type": "gate",
+      "place": "MASTERY RANK",
+      "sub": null,
+      "activity": "reach MR 10",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Mastery Rank 10",
+          "note": "needed to equip it",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
       "type": "currency",
       "place": "VOID FISSURES",
       "sub": null,
       "activity": "crack relics, sell Prime parts at a Relay Ducat Kiosk",
-      "meta": "stockpile between visits",
+      "meta": "bank it before the visit that stocks it",
       "mode": null,
       "live": null,
       "skip": null,
@@ -28,11 +53,10 @@
         {
           "qty": "450",
           "label": "Orokin Ducats",
-          "note": "common 15, uncommon 45, rare 100; 25 or 65 for vaulted parts at lower rarity",
+          "note": "common 15, uncommon 45, rare 100",
           "alt": null,
           "done": false
-        },
-        { "qty": "300,000", "label": "Credits", "note": null, "alt": null, "done": false }
+        }
       ],
       "conditions": [],
       "bonuses": [],
@@ -44,7 +68,7 @@
       "place": "BARO KI'TEER, RELAY",
       "sub": "Concourse",
       "activity": "buy it on a visit that stocks it",
-      "meta": "every two weeks for 48 hours; two to four stocked visits a year",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -54,27 +78,12 @@
         { "currency": "Orokin Ducats", "amount": "450" }
       ],
       "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Quanta Vandal",
-          "note": "arrives built; keep a free weapon slot",
-          "alt": null,
-          "done": false
-        }
-      ],
+      "rows": [{ "qty": null, "label": "Quanta Vandal", "note": null, "alt": null, "done": false }],
       "conditions": [
-        "The Kiosk countdown only says when Baro arrives, not what he sells; check the r/Warframe inventory post the day he lands.",
-        "MR 10 to buy and level it.",
-        "The Tenet Quanta is a separate item with its own Mastery; owning one doesn't cover the other."
+        "Baro's stock changes with each appearance, and this may not be on the next one."
       ],
       "bonuses": [],
-      "disclosures": [
-        {
-          "title": "TennoCon",
-          "body": "Baro's TennoCon relay sells his entire catalog to anyone with access, a guaranteed window if you're in."
-        }
-      ]
+      "disclosures": []
     }
   ]
 }

@@ -1,109 +1,115 @@
 {
   "name": "Pyrana Prime",
   "kind": "secondary",
-  "effort": 9,
+  "effort": 8,
   "source": "relics",
   "tradeable": true,
   "progress": { "have": 0, "need": 3, "unit": "parts" },
   "badges": [
     { "text": "vaulted", "tone": "warn" },
-    { "text": "Prime Resurgence", "tone": "info" },
     { "text": "MR 13", "tone": "warn" }
   ],
-  "prices": [{ "label": "built, Varzia", "amount": "Regal Aya", "money": false }],
+  "prices": [],
+  "routes": [
+    {
+      "name": "Varzia relics, as Pyrana Prime",
+      "cost": "1 Aya a relic during her Prime Resurgence, Rare Blueprint, 12h build",
+      "effort": 8,
+      "role": "chosen"
+    }
+  ],
   "materials": [
-    { "qty": "1", "label": "Orokin Cell", "note": null },
+    { "qty": "10", "label": "Orokin Cell", "note": null },
     { "qty": "15,000", "label": "Credits", "note": null }
   ],
   "groups": [
     {
-      "type": "currency",
-      "place": "PLAINS OF EIDOLON, EARTH",
-      "sub": "Cetus",
-      "activity": "Tier 5 bounty, Konzu",
-      "meta": "bank Aya while vaulted",
-      "mode": "Lv 40-60",
+      "type": "gate",
+      "place": "MASTERY RANK",
+      "sub": null,
+      "activity": "reach MR 13",
+      "meta": null,
+      "mode": null,
       "live": null,
       "skip": null,
-      "earns": { "currency": "Aya", "amount": "60" },
+      "earns": null,
       "spends": [],
-      "map": "plains-of-eidolon",
+      "map": null,
       "rows": [
         {
-          "qty": "60",
-          "label": "Aya",
-          "note": "rough relic budget; carries over forever",
-          "alt": "Deimos Tier 5 bounties or syndicate relic packs",
+          "qty": null,
+          "label": "Mastery Rank 13",
+          "note": "needed to equip it",
+          "alt": null,
           "done": false
         }
       ],
-      "conditions": [
-        "Pyrana Prime is vaulted and is not currently in Prime Resurgence, so no relevant relic can be earned or bought for Aya until its rotation returns."
-      ],
-      "bonuses": [
-        "Volt speeds the escort drone and rescue target; Nova's Wormhole can move a drone. Titania is strong for pure traversal."
-      ],
-      "disclosures": [
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": [],
+      "ref": null
+    },
+    {
+      "type": "currency",
+      "place": "CAMBION DRIFT, DEIMOS",
+      "sub": "Necralisk",
+      "activity": "Level 40-60 bounty, final stage",
+      "meta": "43.48% per final stage",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
         {
-          "title": "the calendar is the gate",
-          "body": "Varzia changes stock every 28 days at 18:00 UTC. Check her Next Offering before acting: Prime Resurgence order is not predictable, and missing a Pyrana window can mean a long wait."
+          "qty": null,
+          "label": "Aya",
+          "note": "1 per relic; bank it before the window opens",
+          "alt": null,
+          "done": false
         }
       ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": [],
       "ref": "Aya"
     },
     {
       "type": "vendor",
       "place": "MAROO'S BAZAAR, MARS",
-      "sub": null,
-      "activity": "Varzia, 1 Aya per relic",
-      "meta": "only during a Pyrana rotation",
+      "sub": "Varzia",
+      "activity": "buy the Pyrana Prime relics she stocks, 1 Aya each",
+      "meta": "only while Pyrana Prime is in Prime Resurgence",
       "mode": null,
-      "live": { "state": "blocked", "text": "Vaulted; check Prime Resurgence" },
+      "live": { "state": "blocked", "text": "vaulted; only during her Prime Resurgence" },
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Aya", "amount": "60" }],
-      "map": "maroos-bazaar",
+      "spends": [],
+      "map": null,
       "rows": [
         {
-          "qty": "40",
-          "label": "Meso P6 or Lith P7",
-          "note": "Blueprint, Rare",
-          "alt": "old vaulted Blueprint relics also work",
-          "done": false
-        },
-        {
-          "qty": "8",
-          "label": "Lith L3 or Neo A9",
-          "note": "Barrel, Common",
-          "alt": "old vaulted Barrel relics also work",
-          "done": false
-        },
-        {
-          "qty": "12",
-          "label": "Axi D3 or Lith D5",
-          "note": "Receiver, Uncommon",
-          "alt": "old vaulted Receiver relics also work",
+          "qty": null,
+          "label": "Pyrana Prime relics",
+          "note": "buy extra Blueprint relics: every one carries it as the Rare",
+          "alt": null,
           "done": false
         }
       ],
       "conditions": [
-        "The Limbo/Trinity rotation sold Meso P6, Lith L3, and Axi D3. The Limbo/Mesa rotation sold Lith P7, Neo A9, and Lith D5. Confirm the actual current IDs in Varzia's shop.",
-        "Relics bought during Prime Resurgence are tradeable and never expire. Stockpile during the window, then crack them whenever you are ready.",
-        "If you already own old relics, the Blueprint is in Axi P1/P2/P3, Lith P1/P2/P7, or Meso P1/P6; Barrel and Receiver have additional old-relic sources."
+        "Her stock rotates away; relics and Aya you hold never expire.",
+        "Vaulted relics and the parts themselves still trade between players."
       ],
-      "bonuses": [
-        "Varzia is also available from the Orbiter Relic Segment and the Prime Resurgence Market tab.",
-        "A tradeable completed set is the alternative if waiting on the rotation or farming Aya is not worthwhile."
-      ],
+      "bonuses": ["Varzia is also in the Market's Prime Resurgence tab."],
       "disclosures": []
     },
     {
       "type": "fissure",
       "place": "ANY VOID FISSURE",
       "sub": null,
-      "activity": "crack matching vaulted relics",
+      "activity": "crack the Pyrana Prime relics",
       "meta": "Blueprint is the bottleneck",
-      "mode": "four-player radshare",
+      "mode": "Radiant radshare for the Rares",
       "live": null,
       "skip": null,
       "earns": null,
@@ -113,47 +119,40 @@
         {
           "qty": null,
           "label": "Pyrana Prime Blueprint",
-          "note": "Meso P6 or Lith P7, Rare: 10% Radiant",
+          "note": "Axi P1 or Axi P2 or Axi P3 or Lith P1 or Lith P2 or Lith P7 or Meso P1 or Meso P6, Rare: 10% Radiant",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Pyrana Prime Barrel",
-          "note": "Lith L3 or Neo A9, Common: run Intact",
+          "note": "Axi A8 or Axi C4 or Lith L2 or Lith L3 or Meso E2 or Meso N7 or Neo A2 or Neo A9 or Neo V7, Common: 25.33% Intact",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Pyrana Prime Receiver",
-          "note": "Axi D3 or Lith D5, Uncommon: 20% Radiant",
+          "note": "Axi C3 or Axi D3 or Axi K3 or Lith D5 or Neo C1 or Neo G2 or Neo Z2, Uncommon: 20% Radiant",
           "alt": null,
           "done": false
         }
       ],
       "conditions": [
-        "Refine the Blueprint and Receiver relics to Radiant (100 Void Traces). Four matching Radiant relics give a 34.39% chance of at least one Rare reward per run.",
-        "Keep the Barrel relic Intact: refining reduces its Common chance. Use a dedicated vaulted-relic radshare, not a public fissure with mismatched relics.",
-        "Collect 10 Reactant before extraction. Fast full-squad Capture or Exterminate fissures are efficient; Void Cascade is a slower but lower-reset alternative."
+        "Refine Blueprint and Receiver relics to Radiant (100 Void Traces each); leave Barrel relics Intact, since Radiant lowers their Common odds to 16.67%.",
+        "Mission rewards never drop Resurgence relics; Varzia is the only source."
       ],
       "bonuses": [
-        "Farm Void Traces on current fissures before the vaulted batch; buying 5 Traces for 1 Aya from Varzia is a poor exchange.",
-        "Choose another player's duplicate reward whenever it appears; you retain the item and they receive bonus Void Traces."
+        "Pick a teammate's identical reward at the reward screen; they get 5 bonus Void Traces."
       ],
-      "disclosures": [
-        {
-          "title": "verify the radshare",
-          "body": "A squadmate can silently bring the wrong relic. Confirm the relic name and refinement before every run; one unmatched relic materially reduces the gold-slot odds."
-        }
-      ]
+      "disclosures": []
     },
     {
       "type": "foundry",
       "place": "FOUNDRY",
       "sub": null,
       "activity": "build Pyrana Prime",
-      "meta": "12h, MR 13",
+      "meta": "12h",
       "mode": null,
       "live": null,
       "skip": null,
@@ -164,17 +163,13 @@
         {
           "qty": null,
           "label": "Pyrana Prime",
-          "note": "15,000 cr, 1 Orokin Cell, Blueprint, Barrel, Receiver",
+          "note": "15,000 cr, Barrel, Receiver, 10 Orokin Cell",
           "alt": null,
           "done": false
         }
       ],
-      "conditions": [
-        "Crafting needs Mastery Rank 13 and takes 12 hours. Keep a free secondary weapon slot for the claim."
-      ],
-      "bonuses": [
-        "Buying the finished weapon from Varzia with Regal Aya bypasses the MR requirement."
-      ],
+      "conditions": [],
+      "bonuses": [],
       "disclosures": []
     }
   ]

@@ -11,7 +11,6 @@
   ],
   "prices": [{ "label": "build", "amount": "20,000 cr", "money": false }],
   "materials": [
-    { "qty": "480", "label": "Rubedo", "note": "Devolved Namalon refines" },
     { "qty": "5", "label": "Scintillant", "note": null },
     { "qty": "60", "label": "Devolved Namalon", "note": null },
     { "qty": "15", "label": "Spinal Core Section", "note": null },
@@ -23,8 +22,8 @@
       "type": "gate",
       "place": "NECRALISK, DEIMOS",
       "sub": null,
-      "activity": "finish Heart of Deimos",
-      "meta": "MR 5 for the Tier 5 bounty",
+      "activity": "finish Heart of Deimos, reach MR 5",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -38,11 +37,23 @@
           "note": "opens the Necralisk and Cambion Drift bounties",
           "alt": null,
           "done": false
+        },
+        {
+          "qty": null,
+          "label": "Mastery Rank 5",
+          "note": "for the Level 40-60 bounty",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Mastery Rank 8",
+          "note": "needed to equip it",
+          "alt": null,
+          "done": false
         }
       ],
-      "conditions": [
-        "Mother's Level 40-60 (Tier 5) bounty tier needs Mastery Rank 5; the Steel Path Necralisk bounty needs MR 10 plus Steel Path unlocked and drops the blueprint at the same rate."
-      ],
+      "conditions": [],
       "bonuses": [],
       "disclosures": []
     },
@@ -50,7 +61,7 @@
       "type": "bounty",
       "place": "CAMBION DRIFT, DEIMOS",
       "sub": "Mother, Necralisk",
-      "activity": "Level 40-60 (Tier 5) bounty, any rotation",
+      "activity": "Level 40-60 bounty, any rotation",
       "meta": "43.48% final stage, 22.22% stage 4",
       "mode": null,
       "live": null,
@@ -62,48 +73,13 @@
         {
           "qty": null,
           "label": "Quassus Blueprint",
-          "note": "43.48% on the final stage, 22.22% on stage 4, all three reward rotations",
-          "alt": "Steel Path Necralisk bounty, same rates",
+          "note": "43.48% on the final stage, 22.22% on stage 4, all three rotations",
+          "alt": "Steel Path bounty, same rates",
           "done": false
         }
       ],
-      "conditions": ["Bounty rewards are not boosted by Resource or Drop Chance boosters."],
-      "bonuses": [
-        "Xaku's own Tier 5 bounty is the same track and also needs 5 Scintillant, so farm both signature items at once."
-      ],
-      "disclosures": [
-        {
-          "title": "expect about two final stages",
-          "body": "The blueprint has been a running community meme for years - most players clear it in 1-3 Tier 5 runs and end up with spare copies while farming Xaku parts."
-        }
-      ]
-    },
-    {
-      "type": "craft",
-      "place": "OTAK, NECRALISK",
-      "sub": null,
-      "activity": "buy the reusable Devolved Namalon blueprint, then build 3x",
-      "meta": "2,000 Entrati standing; 20 per build",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [{ "currency": "Entrati Standing", "amount": "2,000" }],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Devolved Namalon blueprint",
-          "note": "reusable, one-time purchase",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Needs Entrati Rank 1 (Stranger) to unlock Otak's blueprint offer.",
-        "Namalon and Lucent Teroglobe are mined in the Cambion Drift with a mining tool bought from Father."
-      ],
-      "bonuses": [],
+      "conditions": ["The Steel Path bounty needs MR 10 and The Steel Path unlocked."],
+      "bonuses": ["Xaku Chassis Blueprint drops from the same stages, 13.04% on the final stage."],
       "disclosures": []
     },
     {

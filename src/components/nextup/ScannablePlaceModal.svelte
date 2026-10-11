@@ -1,5 +1,8 @@
 <script lang="ts">
   import { tr } from "../../lib/i18n.js";
+  import { mapPins, pinsForNeeds, type PlacedPin } from "../../lib/maps/pins.js";
+  import { baseMap } from "../../lib/maps/registry.js";
+  import MapView from "../maps/MapView.svelte";
   import type {
     ScannablePlaceCard,
     ScannablePlaceItem,
@@ -20,6 +23,28 @@
 
   const { card, title, onClose }: Props = $props();
 
+  const SCANNABLE_PIN_FILES = import.meta.glob("../../data/maps/pins/scannables-*.json", {
+    eager: true,
+    import: "default",
+  });
+  const SCANNABLE_PIN_IDS: ReadonlySet<string> = new Set(
+    Object.values(SCANNABLE_PIN_FILES).flatMap((pins) =>
+      Array.isArray(pins) ? pins.map((pin: { id?: unknown }) => pin.id).filter(isString) : [],
+    ),
+  );
+  // CHIP_TONE has four tones for five kinds, so fish takes the info tone.
+  const PIN_COLOR: Readonly<Record<string, string>> = {
+    fragment: "var(--success)",
+    somachord: "var(--warning)",
+    prex: "var(--danger)",
+    fish: "var(--info)",
+    object: "var(--text-muted)",
+  };
+
+  function isString(value: unknown): value is string {
+    return typeof value === "string";
+  }
+
   const CHIP = "rounded-[var(--radius-sm)] border border-border px-1.5 py-0.5 text-[0.6875rem]";
   const GRID = "grid min-w-0 grid-cols-[repeat(auto-fill,minmax(13rem,1fr))] gap-2";
 
@@ -34,6 +59,17 @@
       items: card.items.filter((item) => item.group === group),
     })).filter((section) => section.items.length > 0),
   );
+
+  const map = $derived(baseMap(place?.mapKey));
+  const placed = $derived.by((): PlacedPin[] => {
+    if (!map || !place?.mapKey) return [];
+    const names = new Map(card.items.map((item) => [item.entry.type, item.entry.name]));
+    const scannables = mapPins(place.mapKey).filter((pin) => SCANNABLE_PIN_IDS.has(pin.id));
+    return pinsForNeeds(scannables, [...names.keys()]).map(({ pin, refs }) => ({
+      pin,
+      refs: refs.map((type) => names.get(type) ?? type),
+    }));
+  });
 
   function progress(item: ScannablePlaceItem): string {
     const { scanned, required } = item.entry;
@@ -63,6 +99,32 @@
     </div>
 
     <div class="flex flex-col gap-3">
+      {#if map?.imageUrl}
+        <div
+          class="flex flex-col overflow-hidden rounded-[var(--radius-sm)] border border-border"
+          data-scannable-place-map={map.key}
+        >
+          <div class="h-[420px] min-w-0">
+            <MapView
+              imageUrl={map.imageUrl}
+              size={map.size}
+              alt={map.name}
+              pins={placed}
+              colors={{}}
+              kindColors={PIN_COLOR}
+              backdrop={map.backdrop}
+            />
+          </div>
+          <div
+            class="flex justify-between gap-3 border-t border-border bg-bg-surface px-3.5 py-1.5
+                   text-[0.6875rem] text-text-muted"
+          >
+            <span>{map.credit}</span>
+            <span>{$tr("nextUp.farmMapPinsShown", { count: placed.length })}</span>
+          </div>
+        </div>
+      {/if}
+
       {#if place && (place.run || place.gear.length > 0 || place.gates.length > 0)}
         <div class="flex flex-wrap items-center gap-1 pl-2" data-scannable-place-gates>
           {#if place.run}

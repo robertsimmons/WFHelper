@@ -126,7 +126,6 @@ Possibly its own top-level feature, one band or tab per group.
 
 ## Misc
 - read the wiki for a brief farm snapshot per mod, the way `weapons.json` does for weapons, so the app answers it without the wiki.
-- Deep/Temporal Archimedea should say whether you own the frames and weapons that week wants. Nothing in world state names them; `api.warframestat.us/pc/deepArchimedea` does, which means a new feed.
 - Baro stock should flag what is new since his last visit. Needs visit history the app does not keep.
 - estimate the time a farm costs, not just its difficulty band.
 - Bird 3 and Yonta offer little once their permanent stock is excluded. Revisit whether "worth the trip" should include standing rotations.

@@ -204,14 +204,16 @@ describe("acquisition plan page", () => {
     expect(text).toContain("border-warning/60");
   });
 
-  it("draws a map link disabled while no map has shipped", () => {
-    const hound = resolved("Hound");
-    const mapped = hound.groups.filter((group) => group.map !== null);
+  it("draws a map link disabled until its map has shipped, and opens it once it has", () => {
+    const unshipped = resolved("AX-52");
+    const mapped = unshipped.groups.filter((group) => group.map !== null);
     expect(mapped.length).toBeGreaterThan(0);
     for (const group of mapped) expect(group.mapReady).toBe(false);
     const text = source("PlanGroup.svelte");
-    expect(text).toContain("{#if group.map}");
-    expect(text).toContain("disabled={!group.mapReady}");
+    expect(text).toContain("{#if group.map && group.mapReady}");
+    expect(text).toContain("onclick={() => onOpenMap(map)}");
+    expect(text).toContain('{$tr("nextUp.planMapMissing", { map: group.map })}');
+    expect(source("AcquisitionPlanPage.svelte")).toContain("<FarmMapModal {plan} mapKey={openMap}");
   });
 
   it("ticks a row by hand, and the tick keeps its place", () => {

@@ -33,6 +33,19 @@ export const PLAN_SOURCES = [
 
 export type PlanSource = (typeof PLAN_SOURCES)[number];
 
+/** The open worlds and landscapes a harvestable resource or a group can name. */
+export const PLAN_MAP_KEYS = [
+  "plains-of-eidolon",
+  "orb-vallis",
+  "cambion-drift",
+  "duviri",
+  "hollvania",
+  "kullervos-hold",
+  "archarbor",
+] as const;
+
+export type PlanMapKey = (typeof PLAN_MAP_KEYS)[number];
+
 export const PLAN_LIVE_STATES = ["open", "blocked", "waiting"] as const;
 
 export type PlanLiveState = (typeof PLAN_LIVE_STATES)[number];

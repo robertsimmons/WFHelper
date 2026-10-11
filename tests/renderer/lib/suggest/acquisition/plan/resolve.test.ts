@@ -355,9 +355,17 @@ describe("progress", () => {
 });
 
 describe("maps", () => {
-  it("marks every map link as not ready yet", () => {
+  it("marks a map link ready only where a shipped map draws it", () => {
     const plan = resolve("Kullervo");
-    for (const group of plan.groups) expect(group.mapReady).toBe(false);
+    const hold = plan.groups.filter((group) => group.map === "kullervos-hold");
+    expect(hold.length).toBeGreaterThan(0);
+    for (const group of hold) expect(group.mapReady).toBe(true);
+    for (const group of plan.groups.filter((entry) => entry.map === null)) {
+      expect(group.mapReady).toBe(false);
+    }
+    for (const group of resolve("AX-52").groups.filter((entry) => entry.map !== null)) {
+      expect(group.mapReady).toBe(false);
+    }
   });
 });
 

@@ -111,7 +111,7 @@ export interface ResolvedGroup {
   earns: ResolvedFlow | null;
   spends: ResolvedFlow[];
   map: string | null;
-  /** Maps ship later; an absent one renders disabled rather than vanishing. */
+  /** A map not shipped yet renders disabled rather than vanishing. */
   mapReady: boolean;
   rows: ResolvedRow[];
   conditions: string[];

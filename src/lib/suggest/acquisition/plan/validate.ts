@@ -4,11 +4,14 @@ import {
   PLAN_BADGE_TONES,
   PLAN_GROUP_TYPES,
   PLAN_LIVE_STATES,
+  PLAN_MAP_KEYS,
   PLAN_ROUTE_ROLES,
   PLAN_SOURCES,
 } from "./schema.js";
 
 const GROUP_TYPES = new Set<string>(PLAN_GROUP_TYPES);
+const MAP_KEYS = new Set<string>(PLAN_MAP_KEYS);
+const MAPLESS_GROUP_TYPES = new Set(["vendor", "gate"]);
 const ROUTE_ROLES = new Set<string>(PLAN_ROUTE_ROLES);
 const SOURCES = new Set<string>(PLAN_SOURCES);
 const LIVE_STATES = new Set<string>(PLAN_LIVE_STATES);
@@ -28,6 +31,13 @@ function checkString(problems: Problems, at: string, value: unknown): void {
 function checkNullableString(problems: Problems, at: string, value: unknown): void {
   if (value === null) return;
   if (typeof value !== "string" || value === "") problems.push(`${at} must be a string or null`);
+}
+
+function checkMapKey(problems: Problems, at: string, value: unknown): void {
+  if (value === null) return;
+  if (typeof value !== "string" || !MAP_KEYS.has(value)) {
+    problems.push(`${at} must be a map key or null`);
+  }
 }
 
 function checkStringList(problems: Problems, at: string, value: unknown): void {
@@ -321,7 +331,10 @@ function checkGroup(
   checkNullableString(problems, `${at}.activity`, value.activity);
   checkNullableString(problems, `${at}.meta`, value.meta);
   checkNullableString(problems, `${at}.mode`, value.mode);
-  checkNullableString(problems, `${at}.map`, value.map);
+  checkMapKey(problems, `${at}.map`, value.map);
+  if (typeof value.type === "string" && MAPLESS_GROUP_TYPES.has(value.type) && value.map !== null) {
+    problems.push(`${at}.map must be null on a ${value.type} group`);
+  }
 
   if (value.live !== null) {
     if (!isRecord(value.live)) {
@@ -397,6 +410,35 @@ export function validatePrimeOverride(
     } else {
       checkEffort(problems, "effort.value", value.effort.value);
       checkString(problems, "effort.reason", value.effort.reason);
+    }
+  }
+  return problems;
+}
+
+const STORE_META_KEYS = new Set(["coverage", "conflicts"]);
+
+/** Every reason a table shaped like resources.json breaks the map and harvest
+ *  rules, each prefixed with the entry it names. */
+export function validateResources(table: unknown): string[] {
+  const problems: Problems = [];
+  if (!isRecord(table)) return ["resource store must be an object"];
+  for (const [name, entry] of Object.entries(table)) {
+    if (STORE_META_KEYS.has(name)) continue;
+    if (!isRecord(entry)) {
+      problems.push(`${name} must be an object`);
+      continue;
+    }
+    if (typeof entry.alias === "string") continue;
+    checkMapKey(problems, `${name}.map`, entry.map);
+    if (entry.harvestable === true && entry.map === null) {
+      problems.push(`${name}.map must name a map key when harvestable`);
+    }
+    if (entry.kind === "craft") {
+      if (entry.harvestable !== false)
+        problems.push(`${name}.harvestable must be false on a craft`);
+      if (!Array.isArray(entry.recipe) || entry.recipe.length === 0) {
+        problems.push(`${name}.recipe must be a non-empty array on a craft`);
+      }
     }
   }
   return problems;

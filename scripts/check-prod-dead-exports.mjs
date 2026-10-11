@@ -29,6 +29,10 @@ const ALLOWLIST = new Set([
   // Schema guard for the authored plan JSON; the renderer trusts what it reads.
   "authoredPlans",
   "validatePlan",
+  "validateResources",
+  "validatePrimeOverride",
+  // Name-keyed rating against a fixture player; prod rates through ratingOf.
+  "planRatingFor",
   // Builds a resource store from a fixture table so plan tests do not ride on shipped data.
   "resourceLookup",
 ]);

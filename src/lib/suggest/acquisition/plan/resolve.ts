@@ -1,3 +1,4 @@
+import { baseMapKey } from "../../../maps/registry.js";
 import { groupFacts, planEras, standingOwners } from "./facts.js";
 import { formatGap, resolveCycleLive } from "./live.js";
 import { materialGroups } from "./materials.js";
@@ -40,9 +41,6 @@ import type {
   ResolvedRow,
   ResolvedSpend,
 } from "./types.js";
-
-/** No map has shipped yet, so every map link renders disabled. */
-const MAPS_READY = new Set<string>();
 
 const LEADING_AMOUNT = /^([\d,]+)\b/;
 const CREDITS = "Credits";
@@ -567,7 +565,7 @@ export function resolvePlan(
         flow(spend.currency, spend.amount, parseQuantity(spend.amount) * copies),
       ),
       map: group.map,
-      mapReady: group.map !== null && MAPS_READY.has(group.map),
+      mapReady: baseMapKey(group.map) !== null,
       rows,
       conditions: group.conditions,
       bonuses: group.bonuses,

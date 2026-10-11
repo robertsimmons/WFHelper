@@ -8,6 +8,7 @@
   } from "../../../lib/suggest/acquisition/plan/index.js";
   import { componentOwnership, itemDb } from "../../../stores/data.js";
   import CraftingTree from "../../CraftingTree.svelte";
+  import FarmMapModal from "../../maps/FarmMapModal.svelte";
   import ItemImage from "../../ItemImage.svelte";
   import TierBadge from "../TierBadge.svelte";
   import WikiButton from "../../WikiButton.svelte";
@@ -82,6 +83,7 @@
   let showDone = $state(false);
   // Page-local so closing the plan, or keying it to another pin, drops them.
   let overrides = $state<RowOverrides>({});
+  let openMap = $state<string | null>(null);
 
   const plan = $derived(resolved ? withRowOverrides(resolved, overrides) : null);
 
@@ -271,7 +273,13 @@
   {/if}
 
   {#each groups as group (group.id)}
-    <PlanGroup {group} {showDone} onToggleDone={toggleDone} {onTakeAlt} />
+    <PlanGroup
+      {group}
+      {showDone}
+      onToggleDone={toggleDone}
+      {onTakeAlt}
+      onOpenMap={(map) => (openMap = map)}
+    />
   {/each}
 
   {#if plan && plan.tips.length > 0}
@@ -323,5 +331,9 @@
     <p class="mt-3 text-xs text-text-muted">
       {$tr("nextUp.planUnchecked", { facts: unchecked })}
     </p>
+  {/if}
+
+  {#if plan && openMap}
+    <FarmMapModal {plan} mapKey={openMap} onClose={() => (openMap = null)} />
   {/if}
 </div>

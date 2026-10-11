@@ -8,7 +8,9 @@ import {
   planRating,
   planSource,
   validatePlan,
+  validateResources,
 } from "../../../../../../src/lib/suggest/acquisition/plan/index.js";
+import shippedResources from "../../../../../../src/data/suggest/acquisitionPlans/resources.json";
 import type { AuthoredPlan } from "../../../../../../src/lib/suggest/acquisition/plan/index.js";
 import type {
   PlanGroup,
@@ -21,6 +23,21 @@ describe("validatePlan", () => {
       .map((plan) => [plan.name, validatePlan(plan)] as const)
       .filter(([, problems]) => problems.length > 0);
     expect(failures).toEqual([]);
+  });
+
+  it("accepts every resource store entry that ships with the app", () => {
+    expect(validateResources(shippedResources)).toEqual([]);
+  });
+
+  it("takes only a listed map key, and none on a vendor or gate group", () => {
+    const plan = rhinoPlan();
+    plan.groups[1].map = "cetus";
+    plan.groups[2].map = "cambion-drift";
+    plan.groups[2].type = "vendor";
+    expect(validatePlan(plan, resources())).toEqual([
+      "groups[1].map must be a map key or null",
+      "groups[2].map must be null on a vendor group",
+    ]);
   });
 
   it("names the field that is wrong", () => {
@@ -209,6 +226,38 @@ describe("validatePlan against the resource store", () => {
     plan.materials = [{ qty: "1", label: "Ghost", note: null }];
     expect(validatePlan(plan, resources())).toEqual([
       'materials[0].label "Ghost" is not in the resource store',
+    ]);
+  });
+});
+
+describe("validateResources", () => {
+  const recipe = [{ qty: 10, label: "Veridos" }];
+
+  it("requires a listed map key on a harvestable entry", () => {
+    expect(
+      validateResources({
+        coverage: {},
+        Veridos: { kind: "farm", harvestable: true, map: "plains-of-eidolon" },
+        Ferrite: { kind: "farm", harvestable: true, map: null },
+        Argon: { kind: "farm", harvestable: false, map: "void" },
+        Ghost: { alias: "Veridos" },
+      }),
+    ).toEqual([
+      "Ferrite.map must name a map key when harvestable",
+      "Argon.map must be a map key or null",
+    ]);
+  });
+
+  it("keeps a craft unharvestable and requires its recipe", () => {
+    expect(
+      validateResources({
+        "Marquise Veridos": { kind: "craft", harvestable: false, map: null, recipe },
+        "Pyrotic Alloy": { kind: "craft", harvestable: true, map: "orb-vallis", recipe },
+        "Esher Devar": { kind: "craft", harvestable: false, map: null, recipe: [] },
+      }),
+    ).toEqual([
+      "Pyrotic Alloy.harvestable must be false on a craft",
+      "Esher Devar.recipe must be a non-empty array on a craft",
     ]);
   });
 });

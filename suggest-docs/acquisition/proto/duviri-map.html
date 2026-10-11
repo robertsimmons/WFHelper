@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Duviri Farm Map</title>
+<style>
+:root {
+  --bg-deep: #060a12; --bg-base: #0a0e17; --bg-surface: #111827; --bg-raised: #1a2234; --bg-hover: #1f2b3f;
+  --accent: #d4a843; --accent-glow: rgba(212,168,67,.15);
+  --text-primary: #e8e4dc; --text-secondary: #8b93a5; --text-muted: #8d9ab3;
+  --border: rgba(212,168,67,.1); --border-strong: rgba(212,168,67,.25); --border-subtle: rgba(255,255,255,.12);
+  --radius-sm: .28rem; --radius-md: .42rem;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; background: var(--bg-base); color: var(--text-primary);
+  font: 14px/1.35 "Barlow", system-ui, sans-serif; overflow: hidden; }
+.app { display: grid; grid-template-rows: auto 1fr auto; height: 100vh; }
+.label { font-size: .75rem; font-weight: 600; text-transform: uppercase; letter-spacing: .1em; line-height: 1.2; }
+.sub { font-weight: 400; text-transform: none; letter-spacing: .02em; color: var(--text-secondary); margin-left: 9px; }
+header { display: flex; align-items: center; gap: 14px; padding: 10px 14px; background: var(--bg-surface);
+  border-bottom: 1px solid var(--border); flex-wrap: wrap; }
+header .label { color: var(--accent); }
+.plans { display: flex; gap: 6px; flex-wrap: wrap; }
+.chip { background: var(--bg-raised); color: var(--text-secondary); border: 1px solid var(--border);
+  border-radius: var(--radius-sm); padding: 4px 10px; font: inherit; font-size: .8125rem; cursor: pointer; }
+.chip:hover { background: var(--bg-hover); color: var(--text-primary); }
+.chip.on { background: var(--accent-glow); border-color: var(--border-strong); color: var(--accent); }
+.chip small { color: var(--text-muted); margin-left: 5px; }
+main { display: grid; grid-template-columns: 1fr 380px; min-height: 0; }
+.map { position: relative; overflow: hidden; background: var(--bg-deep); cursor: grab; user-select: none; touch-action: none; }
+.map.drag { cursor: grabbing; }
+.map img { position: absolute; left: 0; top: 0; width: 4000px; height: 4000px; transform-origin: 0 0;
+  max-width: none; pointer-events: none; image-rendering: auto; }
+.map svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.pin { cursor: pointer; }
+.pin:hover .shape { stroke: #fff; stroke-width: 2.5; }
+.tools { position: absolute; top: 10px; left: 10px; display: flex; gap: 6px; }
+.tools button { background: rgba(17,24,39,.92); color: var(--text-primary); border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm); font: inherit; font-size: .8125rem; padding: 4px 10px; cursor: pointer; min-width: 30px; }
+.tools button:hover { background: var(--bg-hover); }
+.tip { position: absolute; pointer-events: none; background: var(--bg-deep); border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm); padding: 6px 9px; font-size: .8125rem; max-width: 280px; display: none; z-index: 5; }
+.tip b { display: block; font-weight: 600; }
+.tip .n { color: var(--text-secondary); }
+.tip .r { color: var(--text-muted); font-size: .75rem; margin-top: 2px; }
+aside { background: var(--bg-surface); border-left: 1px solid var(--border); display: flex; flex-direction: column; min-height: 0; }
+.side-head { display: flex; align-items: center; justify-content: space-between; padding: 10px 14px; border-bottom: 1px solid var(--border); }
+.side-head button { background: none; border: 1px solid var(--border); color: var(--text-secondary); border-radius: var(--radius-sm);
+  font: inherit; font-size: .75rem; padding: 2px 9px; cursor: pointer; }
+.side-head button:hover { color: var(--text-primary); background: var(--bg-hover); }
+.rows { overflow-y: auto; padding: 6px 0; }
+.row { display: grid; grid-template-columns: 12px 1fr auto; gap: 4px 10px; align-items: start; padding: 8px 14px;
+  border-bottom: 1px solid rgba(255,255,255,.04); }
+.row.off .name, .row.off .qty { color: var(--text-muted); }
+.row.off .sw { opacity: .3; }
+.sw { width: 12px; height: 12px; border-radius: 50%; margin-top: 3px; border: 1px solid rgba(0,0,0,.6); }
+.top { display: flex; align-items: baseline; gap: 8px; min-width: 0; }
+.name { background: none; border: 0; padding: 0; color: var(--text-primary); font: inherit; font-weight: 600; cursor: pointer; text-align: left; }
+.name:hover { color: var(--accent); }
+.qty { color: var(--accent); font-variant-numeric: tabular-nums; font-size: .8125rem; }
+.meta { grid-column: 2 / 4; font-size: .75rem; color: var(--text-muted); }
+.meta .k { color: var(--text-secondary); }
+.where { grid-column: 2 / 4; font-size: .75rem; color: var(--text-secondary); }
+.nopins { font-size: .6875rem; text-transform: uppercase; letter-spacing: .08em; color: #f8a171; border: 1px solid rgba(248,161,113,.3);
+  border-radius: var(--radius-sm); padding: 0 5px; }
+.tog { position: relative; width: 30px; height: 16px; border-radius: 8px; background: var(--bg-raised); border: 1px solid var(--border-subtle);
+  cursor: pointer; padding: 0; margin-top: 2px; }
+.tog::after { content: ""; position: absolute; top: 2px; left: 2px; width: 10px; height: 10px; border-radius: 50%; background: var(--text-muted); transition: left .12s; }
+.tog.on { background: var(--accent-glow); border-color: var(--border-strong); }
+.tog.on::after { left: 16px; background: var(--accent); }
+.tog:disabled { opacity: .35; cursor: default; }
+footer { padding: 5px 14px; font-size: .6875rem; color: var(--text-muted); background: var(--bg-surface); border-top: 1px solid var(--border);
+  display: flex; justify-content: space-between; }
+</style>
+</head>
+<body>
+<div class="app">
+  <header>
+    <div class="label">Duviri map<span class="sub">plans that need Duviri harvestables</span></div>
+    <div class="plans" id="plans"></div>
+  </header>
+  <main>
+    <div class="map" id="map">
+      <img id="img" src="../../../assets/maps/duviri.webp" alt="Duviri map" draggable="false">
+      <svg id="pins"></svg>
+      <div class="tools">
+        <button id="fit" title="Fit map to view">Fit</button>
+        <button id="zin" title="Zoom in">+</button>
+        <button id="zout" title="Zoom out">&minus;</button>
+      </div>
+      <div class="tip" id="tip"></div>
+    </div>
+    <aside>
+      <div class="side-head">
+        <div class="label" id="sideTitle">Resources</div>
+        <button id="all">All</button>
+      </div>
+      <div class="rows" id="rows"></div>
+    </aside>
+  </main>
+  <footer><span>Map and marker data: wiki.warframe.com (CC BY-NC-SA)</span><span id="status"></span></footer>
+</div>
+<script>
+const PINS = [{"id":"duviri-fishing-01","position":[1531.75,1386.5],"kind":"fishing","label":"Fishing spot","refs":["Nacreous Pebble","Maw Fang","Ariette Scale"],"note":null},{"id":"duviri-fishing-02","position":[1874.75,2682],"kind":"fishing","label":"Fishing spot","refs":["Nacreous Pebble","Maw Fang","Ariette Scale"],"note":null},{"id":"duviri-fishing-03","position":[1959.4812790155718,2275.911563596552],"kind":"fishing","label":"Fishing spot","refs":["Nacreous Pebble","Maw Fang","Ariette Scale"],"note":null},{"id":"duviri-fishing-04","position":[2045.1295878867923,2470.189151727556],"kind":"fishing","label":"Fishing spot","refs":["Nacreous Pebble","Maw Fang","Ariette Scale"],"note":null},{"id":"duviri-fishing-05","position":[1637.659305228044,2497.2359861079412],"kind":"fishing","label":"Fishing spot","refs":["Nacreous Pebble","Maw Fang","Ariette Scale"],"note":null},{"id":"duviri-fishing-06","position":[516.7624745258938,2261.592651277524],"kind":"fishing","label":"Fishing spot","refs":["Nacreous Pebble","Maw Fang","Ariette Scale"],"note":null},{"id":"duviri-fishing-07","position":[365.75,1812.875],"kind":"fishing","label":"Fishing spot","refs":["Nacreous Pebble","Maw Fang","Ariette Scale"],"note":null},{"id":"duviri-fishing-08","position":[1265.75,1584],"kind":"fishing","label":"Fishing spot","refs":["Nacreous Pebble","Maw Fang","Ariette Scale"],"note":null},{"id":"duviri-fishing-09","position":[2256.499129510836,1725.5021063372692],"kind":"fishing","label":"Fishing spot","refs":["Nacreous Pebble","Maw Fang","Ariette Scale"],"note":null},{"id":"duviri-fishing-10","position":[2445.26363769073,1347.833913289208],"kind":"fishing","label":"Fishing spot","refs":["Nacreous Pebble","Maw Fang","Ariette Scale"],"note":null},{"id":"duviri-fishing-11","position":[2776.985106414869,1628.466917072619],"kind":"fishing","label":"Fishing spot","refs":["Nacreous Pebble","Maw Fang","Ariette Scale"],"note":null},{"id":"duviri-fishing-12","position":[3159.25,1592.25],"kind":"fishing","label":"Fishing spot","refs":["Nacreous Pebble","Maw Fang","Ariette Scale"],"note":null},{"id":"duviri-fishing-13","position":[2835.9401342962974,414.7181271659102],"kind":"fishing","label":"Fishing spot","refs":["Nacreous Pebble","Maw Fang","Ariette Scale"],"note":null},{"id":"duviri-fishing-14","position":[1369.9310002012876,2690.364525719517],"kind":"fishing","label":"Fishing spot","refs":["Nacreous Pebble","Maw Fang","Ariette Scale"],"note":null},{"id":"duviri-cave-01","position":[2895.625,725.4375],"kind":"cave","label":"Cave entrance, Custos Arch","refs":["Tasoma Extract"],"note":null},{"id":"duviri-cave-02","position":[2042.1243840667491,1618.5674221360073],"kind":"cave","label":"Cave entrance, Fair Shores Hamlet","refs":["Tasoma Extract"],"note":null},{"id":"duviri-cave-03","position":[1323.703894381217,1508.2587642709057],"kind":"cave","label":"Cave entrance, Moirai Crossing (cave 2)","refs":["Tasoma Extract"],"note":null},{"id":"duviri-cave-04","position":[1319.5502381193749,1103.8732416756968],"kind":"cave","label":"Cave entrance, Primrose Village (cave 2)","refs":["Tasoma Extract"],"note":null},{"id":"duviri-cave-05","position":[971.5647173503162,1115.1073939311855],"kind":"cave","label":"Cave entrance, Primrose Village (cave 1)","refs":["Tasoma Extract"],"note":null},{"id":"duviri-cave-06","position":[1844.8415921157023,1810.9004666187482],"kind":"cave","label":"Cave entrance, Watershed Hamlet","refs":["Tasoma Extract"],"note":null},{"id":"duviri-cave-07","position":[3094,266],"kind":"cave","label":"Cave entrance, Chamber of the Muses","refs":["Tasoma Extract"],"note":null},{"id":"duviri-cave-08","position":[599.6265504461923,962.3723291948911],"kind":"cave","label":"Cave entrance, The King's Palace","refs":["Tasoma Extract"],"note":null},{"id":"duviri-cave-09","position":[307.5914498161482,833.6788950189396],"kind":"cave","label":"Cave entrance, The King's Palace","refs":["Tasoma Extract"],"note":null},{"id":"duviri-cave-10","position":[1153.291160115259,1153.291160115259],"kind":"cave","label":"Cave entrance, Primrose Village (cave 2)","refs":["Tasoma Extract"],"note":null},{"id":"duviri-cave-11","position":[1241.6795077635775,1180.1612178003477],"kind":"cave","label":"Cave entrance, Primrose Village (cave 2)","refs":["Tasoma Extract"],"note":null},{"id":"duviri-cave-12","position":[1068.4383463728732,1067.7312395916867],"kind":"cave","label":"Cave entrance, Primrose Village (cave 1)","refs":["Tasoma Extract"],"note":null},{"id":"duviri-cave-13","position":[1362.594767346477,1307.4404384139264],"kind":"cave","label":"Cave entrance, Moirai Crossing (cave 2)","refs":["Tasoma Extract"],"note":null},{"id":"duviri-cave-14","position":[1410.6780284671622,1376.736902970208],"kind":"cave","label":"Cave entrance, Moirai Crossing (cave 2)","refs":["Tasoma Extract"],"note":null},{"id":"duviri-cave-15","position":[1110.9994780251122,1344],"kind":"cave","label":"Cave entrance, Moirai Crossing (cave 1)","refs":["Tasoma Extract"],"note":null},{"id":"duviri-cave-16","position":[1287,2947],"kind":"cave","label":"Cave entrance, Farbreeze Hamlet","refs":["Tasoma Extract"],"note":null},{"id":"duviri-cave-17","position":[1046,3000],"kind":"cave","label":"Cave entrance, Farbreeze Hamlet","refs":["Tasoma Extract"],"note":null},{"id":"duviri-cave-18","position":[1966.1104050891956,1497.2986091625146],"kind":"cave","label":"Cave entrance, Fair Shores Hamlet","refs":["Tasoma Extract"],"note":null},{"id":"duviri-cave-19","position":[1779.7877682465403,1888.6822125492686],"kind":"cave","label":"Cave entrance, Watershed Hamlet","refs":["Tasoma Extract"],"note":null},{"id":"duviri-cave-20","position":[2596.5,1553],"kind":"cave","label":"Cave entrance, Soprano Springs","refs":["Tasoma Extract"],"note":null},{"id":"duviri-cave-21","position":[2573,1499.5],"kind":"cave","label":"Cave entrance, Soprano Springs","refs":["Tasoma Extract"],"note":null},{"id":"duviri-cave-22","position":[3189.758689932516,972.271824131503],"kind":"cave","label":"Cave entrance, Titan's Rest","refs":["Tasoma Extract"],"note":null},{"id":"duviri-cave-23","position":[2738.6245635354985,760.1397897755386],"kind":"cave","label":"Cave entrance, Custos Arch","refs":["Tasoma Extract"],"note":null},{"id":"duviri-cave-24","position":[3050,331.5],"kind":"cave","label":"Cave entrance, Chamber of the Muses","refs":["Tasoma Extract"],"note":null},{"id":"duviri-cave-25","position":[1579.6765543676192,2679.9346686062804],"kind":"cave","label":"Cave entrance","refs":["Tasoma Extract"],"note":"Under the pool with hanging moss"},{"id":"duviri-cave-26","position":[1992.5,1661.5],"kind":"cave","label":"Cave entrance, Fair Shores Hamlet","refs":["Tasoma Extract"],"note":null},{"id":"duviri-cave-27","position":[2111.021400970402,1543.913834430552],"kind":"cave","label":"Cave entrance, Fair Shores Hamlet","refs":["Tasoma Extract"],"note":null},{"id":"duviri-cave-28","position":[1908,1795.5],"kind":"cave","label":"Cave entrance, Watershed Hamlet","refs":["Tasoma Extract"],"note":null},{"id":"duviri-cave-29","position":[3259.762261269984,940.4520189781082],"kind":"cave","label":"Cave entrance, Titan's Rest","refs":["Tasoma Extract"],"note":null},{"id":"duviri-cave-30","position":[2918.936792738068,871.8626612030131],"kind":"cave","label":"Cave entrance, Custos Arch","refs":["Tasoma Extract"],"note":null},{"id":"duviri-cave-31","position":[2991.4152378096896,266.2257031167352],"kind":"cave","label":"Cave entrance, Chamber of the Muses","refs":["Tasoma Extract"],"note":null},{"id":"duviri-cave-32","position":[722.6631303726516,1962.928424573856],"kind":"cave","label":"Cave entrance, The Citadel","refs":["Tasoma Extract"],"note":null},{"id":"duviri-cave-33","position":[1139.8561312727147,3272.4901833313425],"kind":"cave","label":"Cave entrance, Thrax Garden","refs":["Tasoma Extract"],"note":null},{"id":"duviri-cave-34","position":[976,3092],"kind":"cave","label":"Cave entrance, Thrax Garden","refs":["Tasoma Extract"],"note":null},{"id":"duviri-yao-shrub-01","position":[3117.0209761074407,845.3360590511686],"kind":"resource","label":"Yao Shrub, Titan's Rest","refs":["Yao Shrub"],"note":"Snow, outdoors, any spiral"},{"id":"duviri-connla-sprout-01","position":[1929.340852467495,2632.91209974811],"kind":"resource","label":"Connla Sprout, Lunaro Court","refs":["Connla Sprout"],"note":"Near water, any spiral"},{"id":"duviri-connla-sprout-02","position":[2015.2516197071197,2326.3912731516307],"kind":"resource","label":"Connla Sprout, Neighbor's Outlook","refs":["Connla Sprout"],"note":"Near water, any spiral"},{"id":"duviri-eevani-01","position":[1739.1465619763921,3628.0954268972546],"kind":"resource","label":"Eevani, Archarbor","refs":["Eevani"],"note":"Joy, Envy, Sorrow spirals only"},{"id":"duviri-eevani-02","position":[324.99712913811686,1816.0060842652613],"kind":"resource","label":"Eevani, The Amphitheater","refs":["Eevani"],"note":"Joy, Envy, Anger, Fear spirals only"},{"id":"duviri-silphsela-01","position":[745.2899515917649,2613.480172816262],"kind":"resource","label":"Silphsela, Royalstead Pastures","refs":["Silphsela"],"note":"Hill slopes and island edges, any spiral"},{"id":"duviri-silphsela-02","position":[913.7208261802812,1904.4013238091788],"kind":"resource","label":"Silphsela, Mathila's Farm","refs":["Silphsela"],"note":"Hill slopes and island edges, any spiral"},{"id":"duviri-silphsela-03","position":[1216.546399281472,1382.656399124987],"kind":"resource","label":"Silphsela, Moirai Crossing","refs":["Silphsela"],"note":"Hill slopes and island edges, any spiral"},{"id":"duviri-silphsela-04","position":[1072.1782284529213,1149.966955803549],"kind":"resource","label":"Silphsela, Primrose Village","refs":["Silphsela"],"note":"Hill slopes and island edges, any spiral"},{"id":"duviri-silphsela-05","position":[422.2250322011978,2993.0384269384917],"kind":"resource","label":"Silphsela, Upperhaven","refs":["Silphsela"],"note":"Hill slopes and island edges, any spiral"},{"id":"duviri-silphsela-06","position":[1188.7262661937357,3054.673217045471],"kind":"resource","label":"Silphsela, Farbreeze Hamlet","refs":["Silphsela"],"note":"Hill slopes and island edges, any spiral"},{"id":"duviri-silphsela-07","position":[1035.086012889402,3418.7384376680147],"kind":"resource","label":"Silphsela, Thrax Gardens","refs":["Silphsela"],"note":"Hill slopes and island edges, any spiral"},{"id":"duviri-kovnik-01","position":[1369.125644255111,2403.764534118709],"kind":"resource","label":"Kovnik, Northwind Village","refs":["Kovnik"],"note":"Grassland, any spiral"},{"id":"duviri-kovnik-02","position":[930.6443480654176,1905.4652888511102],"kind":"resource","label":"Kovnik, Mathila's Farm","refs":["Kovnik"],"note":"Grassland, any spiral"},{"id":"duviri-kovnik-03","position":[1167.0781832660841,3056.208786365805],"kind":"resource","label":"Kovnik, Farbreeze Hamlet","refs":["Kovnik"],"note":"Grassland, any spiral"},{"id":"duviri-kovnik-04","position":[765.1495198340897,2677.934033755589],"kind":"resource","label":"Kovnik, Royalstead Pastures","refs":["Kovnik"],"note":"Grassland, any spiral"},{"id":"duviri-saggen-pearl-01","position":[2878.400754966857,1537.3324956925749],"kind":"resource","label":"Saggen Pearl, Soprano Springs","refs":["Saggen Pearl"],"note":"Beside buildings, any spiral"},{"id":"duviri-saggen-pearl-02","position":[3240.0457882413143,1198.446999745016],"kind":"resource","label":"Saggen Pearl, Thornguard Barracks","refs":["Saggen Pearl"],"note":"Beside buildings, any spiral"},{"id":"duviri-saggen-pearl-03","position":[1098.2895830956618,1151.3640341679627],"kind":"resource","label":"Saggen Pearl, Primrose Village","refs":["Saggen Pearl"],"note":"Beside buildings, any spiral"},{"id":"duviri-dracroot-01","position":[2842.4784555502374,1536.5944218522345],"kind":"resource","label":"Dracroot, Soprano Springs","refs":["Dracroot"],"note":"Any spiral"},{"id":"duviri-dracroot-02","position":[1580,1168],"kind":"resource","label":"Dracroot, Artisan Hamlet","refs":["Dracroot"],"note":"On hillsides, any spiral"},{"id":"duviri-dracroot-03","position":[2045.6942866779461,1356.9886512634384],"kind":"resource","label":"Dracroot, Fair Shores Hamlet","refs":["Dracroot"],"note":"On hillsides, any spiral"},{"id":"duviri-dracroot-04","position":[2992.475897981469,910.7535341682733],"kind":"resource","label":"Dracroot, Chamber of the Muses","refs":["Dracroot"],"note":"Any spiral"},{"id":"duviri-dracroot-05","position":[1580.5517589856343,1643.2809187426772],"kind":"resource","label":"Dracroot, Watershed Hamlet","refs":["Dracroot"],"note":"By the cliffs, any spiral"},{"id":"duviri-dracroot-06","position":[1197.2830283819776,1382.4931106167733],"kind":"resource","label":"Dracroot, Moirai Crossing","refs":["Dracroot"],"note":"On hillsides, any spiral"},{"id":"duviri-dracroot-07","position":[2247.1669391625715,1777.7314097395279],"kind":"resource","label":"Dracroot, Lonesome Outlook","refs":["Dracroot"],"note":"Any spiral"},{"id":"duviri-yao-shrub-02","position":[3421.6381898004133,1254.0518668726052],"kind":"resource","label":"Yao Shrub","refs":["Yao Shrub"],"note":null},{"id":"duviri-yao-shrub-03","position":[2804,588.5],"kind":"resource","label":"Yao Shrub, Custos Arch","refs":["Yao Shrub"],"note":"Any spiral"},{"id":"duviri-yao-shrub-04","position":[2833.7304256050893,803.9804102091047],"kind":"resource","label":"Yao Shrub","refs":["Yao Shrub"],"note":null},{"id":"duviri-yao-shrub-05","position":[3073,1168],"kind":"resource","label":"Yao Shrub, Netherbarrow Crossing","refs":["Yao Shrub"],"note":"Snow, any spiral"},{"id":"duviri-yao-shrub-06","position":[3215.214534055232,1516.036938863958],"kind":"resource","label":"Yao Shrub, Soprano Springs","refs":["Yao Shrub"],"note":"Snow, any spiral"},{"id":"duviri-yao-shrub-07","position":[3436.7482847915467,1505.3728908511032],"kind":"resource","label":"Yao Shrub","refs":["Yao Shrub"],"note":null},{"id":"duviri-yao-shrub-08","position":[3087,650],"kind":"resource","label":"Yao Shrub","refs":["Yao Shrub"],"note":null},{"id":"duviri-yao-shrub-09","position":[2773.2727958136393,337.9970414071697],"kind":"resource","label":"Yao Shrub, Netherbarrow","refs":["Yao Shrub"],"note":"Snow, any spiral"},{"id":"duviri-yao-shrub-10","position":[2631.5,569.5],"kind":"resource","label":"Yao Shrub, Fort Wyrmsoul","refs":["Yao Shrub"],"note":"Any spiral"},{"id":"duviri-yao-shrub-11","position":[3508.6638482476487,1274.9135264793451],"kind":"resource","label":"Yao Shrub","refs":["Yao Shrub"],"note":null},{"id":"duviri-yao-shrub-12","position":[2820.6489501531382,445.47727214752496],"kind":"resource","label":"Yao Shrub, Netherbarrow","refs":["Yao Shrub"],"note":"Snow, any spiral"},{"id":"duviri-yao-shrub-13","position":[3094,1333],"kind":"resource","label":"Yao Shrub, Netherbarrow Crossing","refs":["Yao Shrub"],"note":"Snow, any spiral"},{"id":"duviri-yao-shrub-14","position":[3405,1078],"kind":"resource","label":"Yao Shrub, east of Thornguard Barracks","refs":["Yao Shrub"],"note":"Snow, any spiral"},{"id":"duviri-yao-shrub-15","position":[3435.124743004248,1100.258151526268],"kind":"resource","label":"Yao Shrub, east of Thornguard Barracks","refs":["Yao Shrub"],"note":"Snow, any spiral"},{"id":"duviri-yao-shrub-16","position":[3502,1139],"kind":"resource","label":"Yao Shrub, east of Thornguard Barracks","refs":["Yao Shrub"],"note":"Snow, any spiral"},{"id":"duviri-yao-shrub-17","position":[3157,1369],"kind":"resource","label":"Yao Shrub","refs":["Yao Shrub"],"note":null},{"id":"duviri-yao-shrub-18","position":[3350.2719292618617,1359.0592334405442],"kind":"resource","label":"Yao Shrub","refs":["Yao Shrub"],"note":null},{"id":"duviri-yao-shrub-19","position":[3118.9998194517416,987.0012979377827],"kind":"resource","label":"Yao Shrub","refs":["Yao Shrub"],"note":null},{"id":"duviri-yao-shrub-20","position":[2985.4048301696034,1395.8287860622447],"kind":"resource","label":"Yao Shrub","refs":["Yao Shrub"],"note":null},{"id":"duviri-yao-shrub-21","position":[3071.5,1543],"kind":"resource","label":"Yao Shrub","refs":["Yao Shrub"],"note":null},{"id":"duviri-eevani-03","position":[1693,3526.75],"kind":"resource","label":"Eevani","refs":["Eevani"],"note":null},{"id":"duviri-eevani-04","position":[1667.7113434284722,3746.6052801169217],"kind":"resource","label":"Eevani","refs":["Eevani"],"note":null},{"id":"duviri-eevani-05","position":[1508.2587642709057,3528.816391511465],"kind":"resource","label":"Eevani","refs":["Eevani"],"note":null},{"id":"duviri-eevani-06","position":[1769.534719919335,3751.9085809758208],"kind":"resource","label":"Eevani","refs":["Eevani"],"note":null},{"id":"duviri-eevani-07","position":[1794.2834572608642,3647.610330750805],"kind":"resource","label":"Eevani","refs":["Eevani"],"note":null},{"id":"duviri-eevani-08","position":[1854.0339802711276,3583.2636136628294],"kind":"resource","label":"Eevani","refs":["Eevani"],"note":null},{"id":"duviri-kovnik-05","position":[1825.3961556330723,3606.5981374419853],"kind":"resource","label":"Kovnik","refs":["Kovnik"],"note":null},{"id":"duviri-eevani-09","position":[1887.2679989868952,3468.005208329422],"kind":"resource","label":"Eevani","refs":["Eevani"],"note":null},{"id":"duviri-eevani-10","position":[1850.1448929746014,3675.1874952170806],"kind":"resource","label":"Eevani","refs":["Eevani"],"note":null},{"id":"duviri-eevani-11","position":[451.375,1933.25],"kind":"resource","label":"Eevani","refs":["Eevani"],"note":null},{"id":"duviri-dracroot-08","position":[358.75,1860.625],"kind":"resource","label":"Dracroot","refs":["Dracroot"],"note":null},{"id":"duviri-kovnik-06","position":[331.5,1856.75],"kind":"resource","label":"Kovnik","refs":["Kovnik"],"note":null},{"id":"duviri-dracroot-09","position":[204.875,1812.625],"kind":"resource","label":"Dracroot","refs":["Dracroot"],"note":null},{"id":"duviri-eevani-12","position":[192,1745.75],"kind":"resource","label":"Eevani","refs":["Eevani"],"note":null},{"id":"duviri-silphsela-08","position":[257.75,1753.625],"kind":"resource","label":"Silphsela","refs":["Silphsela"],"note":null},{"id":"duviri-dracroot-10","position":[360.625,1735.625],"kind":"resource","label":"Dracroot","refs":["Dracroot"],"note":null},{"id":"duviri-ueymag-01","position":[3333.75,633.25],"kind":"resource","label":"Ueymag","refs":["Ueymag"],"note":null},{"id":"duviri-ueymag-02","position":[2876,434],"kind":"resource","label":"Ueymag","refs":["Ueymag"],"note":null},{"id":"duviri-ueymag-03","position":[3478.1698683089794,207.09389854001012],"kind":"resource","label":"Ueymag","refs":["Ueymag"],"note":null},{"id":"duviri-ueymag-04","position":[3786.5,251.25],"kind":"resource","label":"Ueymag","refs":["Ueymag"],"note":null},{"id":"duviri-ueymag-05","position":[3305.375,466.375],"kind":"resource","label":"Ueymag","refs":["Ueymag"],"note":null},{"id":"duviri-ueymag-06","position":[3142.875,221.25],"kind":"resource","label":"Ueymag","refs":["Ueymag"],"note":null},{"id":"duviri-ueymag-07","position":[3125.625,479.5],"kind":"resource","label":"Ueymag","refs":["Ueymag"],"note":null},{"id":"duviri-ueymag-08","position":[3033.75,264],"kind":"resource","label":"Ueymag","refs":["Ueymag"],"note":null},{"id":"duviri-ueymag-09","position":[3449.6204320185725,367.6955262170047],"kind":"resource","label":"Ueymag","refs":["Ueymag"],"note":null},{"id":"duviri-ueymag-10","position":[3619.25,209.75],"kind":"resource","label":"Ueymag","refs":["Ueymag"],"note":null},{"id":"duviri-ueymag-11","position":[3705.239533417509,337.9970414071697],"kind":"resource","label":"Ueymag","refs":["Ueymag"],"note":null},{"id":"duviri-ueymag-12","position":[3390.5770157894954,193.747258045114],"kind":"resource","label":"Ueymag","refs":["Ueymag"],"note":null},{"id":"duviri-ueymag-13","position":[3346.7363953559293,697.2072862499358],"kind":"resource","label":"Ueymag","refs":["Ueymag"],"note":null},{"id":"duviri-ueymag-14","position":[3342.5267671506203,555.8956137690284],"kind":"resource","label":"Ueymag","refs":["Ueymag"],"note":null},{"id":"duviri-ueymag-15","position":[3086,333],"kind":"resource","label":"Ueymag","refs":["Ueymag"],"note":null},{"id":"duviri-ueymag-16","position":[3090.056633785213,213.89980130893065],"kind":"resource","label":"Ueymag","refs":["Ueymag"],"note":null},{"id":"duviri-ueymag-17","position":[3399.7694039449207,588.3128419472076],"kind":"resource","label":"Ueymag","refs":["Ueymag"],"note":null},{"id":"duviri-ueymag-18","position":[2930.25,308.5],"kind":"resource","label":"Ueymag","refs":["Ueymag"],"note":null},{"id":"duviri-ueymag-19","position":[3186.5,269.75],"kind":"resource","label":"Ueymag","refs":["Ueymag"],"note":null},{"id":"duviri-ueymag-20","position":[3873,386.5],"kind":"resource","label":"Ueymag","refs":["Ueymag"],"note":null},{"id":"duviri-tasoma-01","position":[1502.9554634120066,2741.4529906602447],"kind":"resource","label":"Tasoma Extract","refs":["Tasoma Extract"],"note":null},{"id":"duviri-tasoma-02","position":[1196.2478970723416,3005.203820042827],"kind":"resource","label":"Tasoma Extract","refs":["Tasoma Extract"],"note":null},{"id":"duviri-tasoma-03","position":[1288.8788854077793,2933.2557050570954],"kind":"resource","label":"Tasoma Extract","refs":["Tasoma Extract"],"note":null},{"id":"duviri-tasoma-04","position":[3015.1033149794384,305.8236828631818],"kind":"resource","label":"Tasoma Extract","refs":["Tasoma Extract"],"note":null},{"id":"duviri-tasoma-05","position":[2826.1290277073335,635.3354428961129],"kind":"resource","label":"Tasoma Extract","refs":["Tasoma Extract"],"note":null},{"id":"duviri-tasoma-06","position":[2902.1430066848875,820.243866176395],"kind":"resource","label":"Tasoma Extract","refs":["Tasoma Extract"],"note":null},{"id":"duviri-tasoma-07","position":[2876.3336091715787,778.1710126957955],"kind":"resource","label":"Tasoma Extract","refs":["Tasoma Extract"],"note":null},{"id":"duviri-tasoma-08","position":[2905,761],"kind":"resource","label":"Tasoma Extract","refs":["Tasoma Extract"],"note":null},{"id":"duviri-tasoma-09","position":[3144.1503025459833,920.6530291048848],"kind":"resource","label":"Tasoma Extract","refs":["Tasoma Extract"],"note":null},{"id":"duviri-tasoma-10","position":[3133.190147437592,856.306312016909],"kind":"resource","label":"Tasoma Extract","refs":["Tasoma Extract"],"note":null},{"id":"duviri-tasoma-11","position":[1810.5,1947.5],"kind":"resource","label":"Tasoma Extract","refs":["Tasoma Extract"],"note":null},{"id":"duviri-tasoma-12","position":[1919.5,1879],"kind":"resource","label":"Tasoma Extract","refs":["Tasoma Extract"],"note":null},{"id":"duviri-tasoma-13","position":[2019.320190373483,1628.9972471585088],"kind":"resource","label":"Tasoma Extract","refs":["Tasoma Extract"],"note":null},{"id":"duviri-tasoma-14","position":[1351.4578355427889,1354.9933694487215],"kind":"resource","label":"Tasoma Extract","refs":["Tasoma Extract"],"note":null},{"id":"duviri-tasoma-15","position":[1396.182339452838,1391.762922070422],"kind":"resource","label":"Tasoma Extract","refs":["Tasoma Extract"],"note":null},{"id":"duviri-tasoma-16","position":[1262.1856044179872,1108.03632611932],"kind":"resource","label":"Tasoma Extract","refs":["Tasoma Extract"],"note":null},{"id":"duviri-tasoma-17","position":[474.64542687146997,850.1191276815267],"kind":"resource","label":"Tasoma Extract","refs":["Tasoma Extract"],"note":null},{"id":"duviri-tasoma-18","position":[380.6002249736592,863.2006031334778],"kind":"resource","label":"Tasoma Extract","refs":["Tasoma Extract"],"note":null},{"id":"duviri-tasoma-19","position":[1112.6325201970324,3187.637369588956],"kind":"resource","label":"Tasoma Extract","refs":["Tasoma Extract"],"note":null},{"id":"duviri-tasoma-20","position":[1085.9392392072402,3212.7396603210786],"kind":"resource","label":"Tasoma Extract","refs":["Tasoma Extract"],"note":null},{"id":"duviri-tasoma-21","position":[1221.3501878044642,2924.416870292264],"kind":"resource","label":"Tasoma Extract","refs":["Tasoma Extract"],"note":null},{"id":"duviri-tasoma-22","position":[1151.346616466996,3035.609411633848],"kind":"resource","label":"Tasoma Extract","refs":["Tasoma Extract"],"note":null},{"id":"duviri-tasoma-23","position":[1086.4695692931302,3021.290499314821],"kind":"resource","label":"Tasoma Extract","refs":["Tasoma Extract"],"note":null},{"id":"duviri-tasoma-24","position":[810.6979246273669,2022.8557245623824],"kind":"resource","label":"Tasoma Extract","refs":["Tasoma Extract"],"note":null},{"id":"duviri-ueymag-21","position":[1931.6872069462238,550.5583049959909],"kind":"resource","label":"Ueymag","refs":["Ueymag"],"note":null},{"id":"duviri-dracroot-11","position":[1930.8746258887963,587.9948369181425],"kind":"resource","label":"Dracroot","refs":["Dracroot"],"note":null},{"id":"duviri-ueymag-22","position":[1914.8451634531705,471.64188252878773],"kind":"resource","label":"Ueymag","refs":["Ueymag"],"note":null},{"id":"duviri-ueymag-23","position":[1803.8291871776273,330.9266373862485],"kind":"resource","label":"Ueymag","refs":["Ueymag"],"note":null},{"id":"duviri-dracroot-12","position":[1810.1933598375615,359.2119043201267],"kind":"resource","label":"Dracroot","refs":["Dracroot"],"note":null},{"id":"duviri-ueymag-24","position":[1706.248592460054,492.14565591489276],"kind":"resource","label":"Ueymag","refs":["Ueymag"],"note":null},{"id":"duviri-ueymag-25","position":[1703.420306421478,441.9427339280085],"kind":"resource","label":"Ueymag","refs":["Ueymag"],"note":null},{"id":"duviri-dracroot-13","position":[1737.3615024615174,463.15460978171643],"kind":"resource","label":"Dracroot","refs":["Dracroot"],"note":null},{"id":"duviri-dracroot-14","position":[1720.3905869976147,439.113311116846],"kind":"resource","label":"Dracroot","refs":["Dracroot"],"note":null},{"id":"duviri-dracroot-15","position":[1680.0857826423219,565.6817740990447],"kind":"resource","label":"Dracroot","refs":["Dracroot"],"note":null},{"id":"duviri-ueymag-26","position":[1641.1952623924872,599.625886655248],"kind":"resource","label":"Ueymag","refs":["Ueymag"],"note":null},{"id":"duviri-ueymag-27","position":[1667.3580016671342,636.3970987543091],"kind":"resource","label":"Ueymag","refs":["Ueymag"],"note":null},{"id":"duviri-tasoma-25","position":[1717.5632885622297,668.9210236296412],"kind":"resource","label":"Tasoma Extract","refs":["Tasoma Extract"],"note":null},{"id":"duviri-dracroot-16","position":[1579.676408084577,617.3038880803838],"kind":"resource","label":"Dracroot","refs":["Dracroot"],"note":null},{"id":"duviri-ueymag-28","position":[1694.934742874899,333.756060197411],"kind":"resource","label":"Ueymag","refs":["Ueymag"],"note":null},{"id":"duviri-dracroot-17","position":[1574.7268722455262,414.36590135720525],"kind":"resource","label":"Dracroot","refs":["Dracroot"],"note":null},{"id":"duviri-ueymag-29","position":[1595.2328278137659,419.315316930039],"kind":"resource","label":"Ueymag","refs":["Ueymag"],"note":null},{"id":"duviri-dracroot-18","position":[1682.914139223983,408.0026041174706],"kind":"resource","label":"Dracroot","refs":["Dracroot"],"note":null},{"id":"duviri-ueymag-30","position":[1810.9004666187482,695.7953959558674],"kind":"resource","label":"Ueymag","refs":["Ueymag"],"note":null},{"id":"duviri-ueymag-31","position":[1851.2056236894664,629.3270266288599],"kind":"resource","label":"Ueymag","refs":["Ueymag"],"note":null},{"id":"duviri-ueymag-32","position":[1753.624887885723,663.2698116031748],"kind":"resource","label":"Ueymag","refs":["Ueymag"],"note":null},{"id":"duviri-dracroot-19","position":[1759.9888489164018,679.532271884049],"kind":"resource","label":"Dracroot","refs":["Dracroot"],"note":null},{"id":"duviri-ueymag-33","position":[2420.4997505925307,289],"kind":"resource","label":"Ueymag","refs":["Ueymag"],"note":null},{"id":"duviri-ueymag-34","position":[2356.125,551.125],"kind":"resource","label":"Ueymag","refs":["Ueymag"],"note":null},{"id":"duviri-fishing-15","position":[1549.624510970319,2686.6522151182876],"kind":"fishing","label":"Fishing spot","refs":["Nacreous Pebble","Maw Fang","Ariette Scale"],"note":null},{"id":"duviri-yao-shrub-22","position":[3346.8875256410493,870.8388199843075],"kind":"resource","label":"Yao Shrub","refs":["Yao Shrub"],"note":null},{"id":"duviri-dracroot-20","position":[3180.9198551676836,276.8323048345333],"kind":"resource","label":"Dracroot","refs":["Dracroot"],"note":null},{"id":"duviri-tasoma-26","position":[3012.981994635879,294.15642097360376],"kind":"resource","label":"Tasoma Extract","refs":["Tasoma Extract"],"note":null},{"id":"duviri-dracroot-21","position":[3355.221676730168,697.2072862499358],"kind":"resource","label":"Dracroot","refs":["Dracroot"],"note":null},{"id":"duviri-connla-sprout-03","position":[1642.6090526963499,2624.7803717644642],"kind":"resource","label":"Connla Sprout","refs":["Connla Sprout"],"note":null}];
+const PLANS = [{"id":"plan-argo-vel","name":"Argo & Vel","resources":[{"name":"Silphsela","qty":20},{"name":"Kovnik","qty":40},{"name":"Aggristone","qty":150}]},{"id":"plan-azothane","name":"Azothane","resources":[{"name":"Maw Fang","qty":5},{"name":"Yao Shrub","qty":40},{"name":"Saggen Pearl","qty":100}]},{"id":"plan-cinta","name":"Cinta","resources":[{"name":"Eevani","qty":40},{"name":"Ariette Scale","qty":100},{"name":"Maw Fang","qty":6},{"name":"Kovnik","qty":40},{"name":"Connla Sprout","qty":40},{"name":"Aggristone","qty":160},{"name":"Saggen Pearl","qty":75},{"name":"Yao Shrub","qty":40},{"name":"Dracroot","qty":60},{"name":"Silphsela","qty":20},{"name":"Tasoma Extract","qty":20}]},{"id":"plan-edun","name":"Edun","resources":[{"name":"Tasoma Extract","qty":30},{"name":"Nacreous Pebble","qty":50},{"name":"Connla Sprout","qty":40}]},{"id":"plan-kullervo","name":"Kullervo","resources":[{"name":"Ueymag","qty":200},{"name":"Nacreous Pebble","qty":125},{"name":"Ariette Scale","qty":360},{"name":"Connla Sprout","qty":100},{"name":"Kovnik","qty":100},{"name":"Eevani","qty":100},{"name":"Saggen Pearl","qty":100},{"name":"Aggristone","qty":100},{"name":"Tasoma Extract","qty":50}]},{"id":"plan-oraxia","name":"Oraxia","resources":[{"name":"Kovnik","qty":200},{"name":"Aggristone","qty":200},{"name":"Tasoma Extract","qty":75}]},{"id":"plan-sampotes","name":"Sampotes","resources":[{"name":"Aggristone","qty":150},{"name":"Kovnik","qty":40},{"name":"Silphsela","qty":20}]},{"id":"plan-scyotid","name":"Scyotid","resources":[{"name":"Kovnik","qty":300},{"name":"Connla Sprout","qty":200},{"name":"Saggen Pearl","qty":150},{"name":"Aggristone","qty":300},{"name":"Silphsela","qty":20}]},{"id":"plan-spinnerex","name":"Spinnerex","resources":[{"name":"Aggristone","qty":150},{"name":"Saggen Pearl","qty":75},{"name":"Kovnik","qty":250},{"name":"Tasoma Extract","qty":75},{"name":"Connla Sprout","qty":100},{"name":"Silphsela","qty":10}]},{"id":"plan-sun-moon","name":"Sun & Moon","resources":[{"name":"Kovnik","qty":100},{"name":"Silphsela","qty":45}]},{"id":"plan-syam","name":"Syam","resources":[{"name":"Dracroot","qty":30},{"name":"Eevani","qty":30},{"name":"Maw Fang","qty":4}]},{"id":"plan-thalys","name":"Thalys","resources":[{"name":"Silphsela","qty":180}]}];
+const RES = {"Aggristone":{"best":{"place":"DUVIRI","sub":"Open landscape","activity":"Destroy Aggristone Formations","meta":null}},"Ariette Scale":{"best":{"place":"DUVIRI","sub":"Maw Feeding fishing spot","activity":"Maw Feeding","meta":null}},"Connla Sprout":{"best":{"place":"DUVIRI","sub":"Lunaro Court","activity":"Harvest Connla plant nodes near water and caves","meta":"densest spot"}},"Dracroot":{"best":{"place":"DUVIRI","sub":"Cliffs on the central island: Lonesome Outlook, Fair Shores Hamlet, Watershed Hamlet, Hermit Landing, Moirai Crossing","activity":"Cut Dracroot plants","meta":null}},"Eevani":{"best":{"place":"DUVIRI","sub":"Archarbor","activity":"Harvest Eevani plants; Joy, Sorrow or Envy moods","meta":"much higher quantity than the Amphitheater"}},"Kovnik":{"best":{"place":"DUVIRI","sub":"Lunaro Court","activity":"Harvest Kovnik plant nodes near water","meta":"all moods"}},"Maw Fang":{"best":{"place":"DUVIRI","sub":"Maw Feeding platforms next to ponds","activity":"Feed the Maw in The Duviri Experience","meta":"one spot is reusable, no need to move between ponds"}},"Nacreous Pebble":{"best":{"place":"DUVIRI","sub":"Maw Feeding","activity":"fish any Maw Feeding spot","meta":null}},"Saggen Pearl":{"best":{"place":"DUVIRI","sub":"Blinkpads","activity":"Collect from Blinkpads; most regions in all moods","meta":null}},"Silphsela":{"best":{"place":"DUVIRI","sub":"Sun Silph plants on hillsides, thickest in the snowy region near Titan's Rest","activity":"Gather the seeds floating around each plant","meta":"4 floating seeds per plant, 3 more burst within 8 m"}},"Tasoma Extract":{"best":{"place":"DUVIRI","sub":"Caves","activity":"Harvest Tasoma nodes inside caves","meta":"2-4 per node"}},"Ueymag":{"best":{"place":"DUVIRI","sub":"Kullervo's Hold","activity":"Harvest the U-shaped cactus","meta":"Anger, Fear or Sorrow spirals"}},"Yao Shrub":{"best":{"place":"DUVIRI","sub":"Snowy areas: Titan's Rest, Soprano Springs, Netherbarrow, Netherbarrow Crossing, Custos Arch, Throneguard Barracks","activity":"Break shrubs above ground, any Cycle","meta":"3-5 per plant"}}};
+const COLORS = {"Aggristone":"#78716c","Ariette Scale":"#3b82f6","Connla Sprout":"#4ade80","Dracroot":"#ef4444","Eevani":"#a78bfa","Kovnik":"#2dd4bf","Maw Fang":"#94a3b8","Nacreous Pebble":"#fb923c","Saggen Pearl":"#e8e4dc","Silphsela":"#a3e635","Tasoma Extract":"#f472b6","Ueymag":"#facc15","Yao Shrub":"#7dd3fc"};
+</script>
+<script>
+const SIZE = 4000;
+const NS = 'http://www.w3.org/2000/svg';
+const $ = (id) => document.getElementById(id);
+const mapEl = $('map'), img = $('img'), svg = $('pins'), tip = $('tip');
+const view = { s: 0.2, x: 0, y: 0 };
+const state = { plan: null, on: new Set() };
+const KIND_WORD = { resource: 'harvest', fishing: 'fishing', cave: 'cave' };
+
+const pinsFor = (name) => PINS.filter((p) => p.refs.includes(name));
+
+function whereText(name) {
+  const best = RES[name]?.best;
+  if (!best) return '';
+  const parts = [best.place !== 'DUVIRI' ? best.place : null, best.sub, best.activity, best.meta].filter(Boolean);
+  return parts.join(' · ');
+}
+
+function pinSummary(name) {
+  const counts = {};
+  for (const p of pinsFor(name)) counts[p.kind] = (counts[p.kind] ?? 0) + 1;
+  const words = { resource: ['spot', 'spots'], fishing: ['fishing spot', 'fishing spots'], cave: ['cave entrance', 'cave entrances'] };
+  return Object.entries(counts).map(([k, n]) => `${n} ${words[k][n === 1 ? 0 : 1]}`).join(' + ');
+}
+
+function kindOf(name) {
+  const kinds = [...new Set(pinsFor(name).map((p) => p.kind))];
+  if (kinds.includes('fishing')) return 'fishing';
+  return kinds.includes('resource') || kinds.length === 0 ? 'harvest' : KIND_WORD[kinds[0]];
+}
+
+function renderPlans() {
+  const box = $('plans');
+  box.innerHTML = '';
+  for (const plan of PLANS) {
+    const b = document.createElement('button');
+    b.className = 'chip' + (plan.id === state.plan.id ? ' on' : '');
+    b.innerHTML = `${plan.name}<small>${plan.resources.length}</small>`;
+    b.title = plan.id;
+    b.onclick = () => selectPlan(plan.id);
+    box.append(b);
+  }
+}
+
+function selectPlan(id) {
+  state.plan = PLANS.find((p) => p.id === id);
+  state.on = new Set(state.plan.resources.map((r) => r.name).filter((n) => pinsFor(n).length > 0));
+  renderPlans();
+  renderRows();
+  renderPins();
+}
+
+function renderRows() {
+  const rows = $('rows');
+  rows.innerHTML = '';
+  $('sideTitle').innerHTML = `Resources<span class="sub">${state.plan.name}</span>`;
+  for (const r of state.plan.resources) {
+    const count = pinsFor(r.name).length;
+    const on = state.on.has(r.name);
+    const row = document.createElement('div');
+    row.className = 'row' + (on ? '' : ' off');
+    row.innerHTML = `
+      <span class="sw" style="background:${COLORS[r.name]}"></span>
+      <div class="top"><button class="name" title="Show only ${r.name}">${r.name}</button>
+        <span class="qty">×${r.qty.toLocaleString('en-US')}</span>
+        ${count === 0 ? '<span class="nopins">no pins</span>' : ''}</div>
+      <button class="tog${on ? ' on' : ''}" aria-pressed="${on}" title="Show or hide pins" ${count === 0 ? 'disabled' : ''}></button>
+      <div class="meta"><span class="k">${kindOf(r.name)}</span> · ${count === 0 ? 'no wiki markers' : pinSummary(r.name)}</div>
+      <div class="where">${whereText(r.name)}</div>`;
+    row.querySelector('.name').onclick = () => {
+      state.on = count > 0 ? new Set([r.name]) : new Set();
+      renderRows(); renderPins();
+    };
+    row.querySelector('.tog').onclick = () => {
+      if (state.on.has(r.name)) state.on.delete(r.name); else state.on.add(r.name);
+      renderRows(); renderPins();
+    };
+    rows.append(row);
+  }
+}
+
+$('all').onclick = () => {
+  state.on = new Set(state.plan.resources.map((r) => r.name).filter((n) => pinsFor(n).length > 0));
+  renderRows(); renderPins();
+};
+
+let drawn = [];
+
+function wedge(r, a0, a1) {
+  const p = (a) => `${(r * Math.sin(a)).toFixed(2)},${(-r * Math.cos(a)).toFixed(2)}`;
+  return `M0,0 L${p(a0)} A${r},${r} 0 ${a1 - a0 > Math.PI ? 1 : 0} 1 ${p(a1)} Z`;
+}
+
+function pinNode(pin, colors) {
+  const g = document.createElementNS(NS, 'g');
+  g.setAttribute('class', 'pin');
+  const r = pin.kind === 'cave' ? 6 : 7;
+  let shape;
+  if (pin.kind === 'cave') {
+    shape = document.createElementNS(NS, 'rect');
+    Object.entries({ x: -r, y: -r, width: 2 * r, height: 2 * r, rx: 1.5, transform: 'rotate(45)' }).forEach(([k, v]) => shape.setAttribute(k, v));
+    shape.setAttribute('fill', colors[0]);
+  } else {
+    shape = document.createElementNS(NS, 'circle');
+    shape.setAttribute('r', r);
+    shape.setAttribute('fill', colors[0]);
+  }
+  shape.setAttribute('class', 'shape');
+  shape.setAttribute('stroke', pin.kind === 'fishing' ? '#e8e4dc' : '#060a12');
+  shape.setAttribute('stroke-width', pin.kind === 'fishing' ? 2 : 1.5);
+  g.append(shape);
+  if (colors.length > 1 && pin.kind !== 'cave') {
+    const step = (2 * Math.PI) / colors.length;
+    colors.forEach((c, i) => {
+      if (i === 0) return;
+      const path = document.createElementNS(NS, 'path');
+      path.setAttribute('d', wedge(r - 1, i * step, (i + 1) * step));
+      path.setAttribute('fill', c);
+      path.setAttribute('pointer-events', 'none');
+      g.append(path);
+    });
+  }
+  g.addEventListener('mouseenter', () => showTip(pin));
+  g.addEventListener('mousemove', moveTip);
+  g.addEventListener('mouseleave', () => (tip.style.display = 'none'));
+  return g;
+}
+
+function renderPins() {
+  svg.innerHTML = '';
+  drawn = [];
+  const needed = state.plan.resources.map((r) => r.name);
+  const order = (kind) => ({ cave: 0, resource: 1, fishing: 2 })[kind];
+  const visible = PINS
+    .map((pin) => ({ pin, refs: pin.refs.filter((n) => needed.includes(n) && state.on.has(n)) }))
+    .filter((v) => v.refs.length > 0)
+    .sort((a, b) => order(a.pin.kind) - order(b.pin.kind));
+  for (const { pin, refs } of visible) {
+    const node = pinNode(pin, refs.map((n) => COLORS[n]));
+    svg.append(node);
+    drawn.push({ pin, node });
+  }
+  $('status').textContent = `${visible.length} pins shown`;
+  place();
+}
+
+function showTip(pin) {
+  const needed = state.plan.resources.map((r) => r.name);
+  const refs = pin.refs.filter((n) => needed.includes(n));
+  tip.innerHTML = `<b>${pin.label}</b>${pin.note ? `<div class="n">${pin.note}</div>` : ''}` +
+    `<div class="r">${KIND_WORD[pin.kind]} · ${refs.join(', ')}</div>`;
+  tip.style.display = 'block';
+}
+
+function moveTip(e) {
+  const box = mapEl.getBoundingClientRect();
+  let x = e.clientX - box.left + 14, y = e.clientY - box.top + 14;
+  if (x + tip.offsetWidth > box.width - 6) x = e.clientX - box.left - tip.offsetWidth - 14;
+  if (y + tip.offsetHeight > box.height - 6) y = e.clientY - box.top - tip.offsetHeight - 14;
+  tip.style.left = `${x}px`;
+  tip.style.top = `${y}px`;
+}
+
+function place() {
+  img.style.transform = `translate(${view.x}px, ${view.y}px) scale(${view.s})`;
+  for (const { pin, node } of drawn) {
+    const sx = view.x + pin.position[0] * view.s;
+    const sy = view.y + (SIZE - pin.position[1]) * view.s;
+    node.setAttribute('transform', `translate(${sx.toFixed(1)},${sy.toFixed(1)})`);
+  }
+}
+
+function fit() {
+  const w = mapEl.clientWidth, h = mapEl.clientHeight;
+  view.s = Math.min(w, h) / SIZE;
+  view.x = (w - SIZE * view.s) / 2;
+  view.y = (h - SIZE * view.s) / 2;
+  place();
+}
+
+function zoomAt(factor, cx, cy) {
+  const s = Math.min(2, Math.max(0.05, view.s * factor));
+  const k = s / view.s;
+  view.x = cx - (cx - view.x) * k;
+  view.y = cy - (cy - view.y) * k;
+  view.s = s;
+  place();
+}
+
+mapEl.addEventListener('wheel', (e) => {
+  e.preventDefault();
+  const box = mapEl.getBoundingClientRect();
+  zoomAt(Math.exp(-e.deltaY * 0.0015), e.clientX - box.left, e.clientY - box.top);
+}, { passive: false });
+
+let drag = null;
+mapEl.addEventListener('pointerdown', (e) => {
+  if (e.target.closest('.tools')) return;
+  drag = { x: e.clientX, y: e.clientY, vx: view.x, vy: view.y };
+  mapEl.classList.add('drag');
+  mapEl.setPointerCapture(e.pointerId);
+});
+mapEl.addEventListener('pointermove', (e) => {
+  if (!drag) return;
+  view.x = drag.vx + e.clientX - drag.x;
+  view.y = drag.vy + e.clientY - drag.y;
+  place();
+});
+const endDrag = () => { drag = null; mapEl.classList.remove('drag'); };
+mapEl.addEventListener('pointerup', endDrag);
+mapEl.addEventListener('pointercancel', endDrag);
+
+$('fit').onclick = fit;
+$('zin').onclick = () => zoomAt(1.4, mapEl.clientWidth / 2, mapEl.clientHeight / 2);
+$('zout').onclick = () => zoomAt(1 / 1.4, mapEl.clientWidth / 2, mapEl.clientHeight / 2);
+window.addEventListener('resize', fit);
+
+selectPlan(PLANS.some((p) => p.id === 'plan-kullervo') ? 'plan-kullervo' : PLANS[0].id);
+fit();
+
+</script>
+</body>
+</html>

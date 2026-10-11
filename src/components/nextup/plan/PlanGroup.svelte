@@ -14,9 +14,10 @@
     showDone: boolean;
     onToggleDone: (rowId: string, done: boolean) => void;
     onTakeAlt: (rowId: string) => void;
+    onOpenMap: (map: string) => void;
   }
 
-  const { group, showDone, onToggleDone, onTakeAlt }: Props = $props();
+  const { group, showDone, onToggleDone, onTakeAlt, onOpenMap }: Props = $props();
 
   const LIVE_TONE: Record<PlanLiveState, string> = {
     open: "text-success",
@@ -111,11 +112,21 @@
             >{$tr("nextUp.planSpends", { amount: spend.amount, currency: spend.currency })}</span
           >
         {/each}
-        {#if group.map}
+        {#if group.map && group.mapReady}
+          {@const map = group.map}
+          <button
+            class="cursor-pointer rounded-[3px] border border-border-subtle px-1.5 py-px
+                 text-[0.6875rem] text-text-secondary transition-[border-color,color] duration-150
+                 hover:border-accent hover:text-text-primary"
+            title={$tr("nextUp.planMapOpen", { map })}
+            data-plan-map={map}
+            onclick={() => onOpenMap(map)}>{$tr("nextUp.planMap")}</button
+          >
+        {:else if group.map}
           <button
             class="cursor-not-allowed rounded-[3px] border border-border-subtle px-1.5 py-px
                  text-[0.6875rem] text-text-muted"
-            disabled={!group.mapReady}
+            disabled
             title={$tr("nextUp.planMapMissing", { map: group.map })}>{$tr("nextUp.planMap")}</button
           >
         {/if}

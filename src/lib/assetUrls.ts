@@ -119,6 +119,13 @@ export const PLANET_ICON_URLS = {
   duviri: new URL("../../assets/world-icons/zariman.webp", import.meta.url).href,
 } as const;
 
+export const MAP_IMAGE_URLS = {
+  duviri: new URL("../../assets/maps/duviri.webp", import.meta.url).href,
+  "orb-vallis": new URL("../../assets/maps/orb-vallis.webp", import.meta.url).href,
+  "cambion-drift": new URL("../../assets/maps/cambion-drift.webp", import.meta.url).href,
+  "plains-of-eidolon": new URL("../../assets/maps/plains-of-eidolon.webp", import.meta.url).href,
+} as const;
+
 /** By ExportRegions planet name; only the planets the world icons already draw. */
 export const STAR_CHART_PLANET_ART: Readonly<Record<string, string>> = {
   Earth: PLANET_ICON_URLS.earth,

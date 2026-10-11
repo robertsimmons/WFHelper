@@ -120,7 +120,7 @@ Possibly its own top-level feature, one band or tab per group.
 - **Groups:** Somachords, Frame Fighter data, Cephalon fragments, the themed fragment sets (Eidolon, Fortuna, Glass, Ghoul, Albrecht, Duviri and the rest), lore cards, codex enemy and object scans, Simulacrum enemies, Simaris synthesis targets.
 - **Progress:** fragments are the inventory's `LoreFragmentScans` (`Progress` and `Region`) against `reqScans` in `ExportCodex.json`, which also lists the ones never found. Enemies are the profile's codex scans (`codexProfile`) against `codexScanRequirements.json`. A group with no game data falls back to marking off by hand, or OCR as the other OCR features do.
 - **Suggestions:** where to go for the most progress per run, with an ELI5 how-to, e.g. "take Helios with Investigator to X, pick up the Somachord by the air supply in the middle of the map".
-- **Browse:** each group lists what is had and missing, and any item can be picked as the target, which steers the suggestions to it.
+- **Browse:** each group lists what is had and missing.
 - **Simulacrum enemies** is the first band, spec in `simulacrum-scans-plan.md`. Wildlife, objects, fragments, Somachords and Frame Fighter data are later bands.
 - **Later:** Captura scenes, decorations, every other collectible.
 

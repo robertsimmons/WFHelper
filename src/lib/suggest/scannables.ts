@@ -1,16 +1,18 @@
 import type { CodexRow } from "../codexScans.js";
 import type { RawInventoryData, RawLoreFragmentScan } from "../../types/inventory.js";
-import type { Suggestion } from "../../types/suggest.js";
+export const SCAN_GROUPS = ["somachords", "fragments", "prex", "frameFighter", "objects"] as const;
+export type ScanGroup = (typeof SCAN_GROUPS)[number];
 
-export const SCAN_CATEGORIES = [
-  "simulacrum",
-  "objects",
-  "somachords",
-  "fragments",
-  "frameFighter",
-] as const;
+export const SCAN_CATEGORIES = ["simulacrum", "all", ...SCAN_GROUPS] as const;
 export type ScanCategory = (typeof SCAN_CATEGORIES)[number];
-export type ScannableCategory = Exclude<ScanCategory, "simulacrum">;
+export type PlaceCategory = Exclude<ScanCategory, "simulacrum">;
+export const PLACE_CATEGORIES: readonly PlaceCategory[] = ["all", ...SCAN_GROUPS];
+
+/** The codex keeps Prex cards among the lore fragments; only the path tells them apart. */
+const PREX_PATH = "/lotus/types/lore/fragments/lorecardfragments/";
+
+/** The missing-entry buckets the codex sections map onto, before Prex splits out. */
+export type ScannableCategory = "objects" | "somachords" | "fragments" | "frameFighter";
 
 const BY_SECTION: Readonly<Partial<Record<string, ScannableCategory>>> = {
   objects: "objects",
@@ -108,16 +110,20 @@ export function missingScannables(
   return out;
 }
 
-export function scannableSuggestions(entries: readonly ScannableEntry[]): Suggestion[] {
-  return entries.map((entry, index) => ({
-    id: `scannable:${entry.type}`,
-    category: "simulacrum",
-    title: entry.name,
-    why: "",
-    signals: { value: 1, effort: 0, urgency: 0 },
-    score: 0,
-    fingerprint: entry.type,
-    order: index,
-    details: { scannable: entry },
-  }));
+export function isPrex(type: string): boolean {
+  return type.toLowerCase().startsWith(PREX_PATH);
+}
+
+export function scanGroups(missing: MissingScannables): Record<ScanGroup, ScannableEntry[]> {
+  return {
+    somachords: missing.somachords,
+    fragments: missing.fragments.filter((entry) => !isPrex(entry.type)),
+    prex: missing.fragments.filter((entry) => isPrex(entry.type)),
+    frameFighter: missing.frameFighter,
+    objects: missing.objects,
+  };
+}
+
+export function groupsFor(category: PlaceCategory): readonly ScanGroup[] {
+  return category === "all" ? SCAN_GROUPS : [category];
 }

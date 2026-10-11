@@ -5,10 +5,12 @@
 
   const LABELS: Record<ScanCategory, MessageKey> = {
     simulacrum: "nextUp.scanCategorySimulacrum",
-    objects: "nextUp.scanCategoryObjects",
+    all: "common.all",
     somachords: "nextUp.scanCategorySomachords",
     fragments: "nextUp.scanCategoryFragments",
+    prex: "nextUp.scanCategoryPrex",
     frameFighter: "nextUp.scanCategoryFrameFighter",
+    objects: "nextUp.scanCategoryObjects",
   };
 
   const BUTTON =

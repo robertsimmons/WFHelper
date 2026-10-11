@@ -3,7 +3,8 @@ import type { AcquisitionInclude } from "../lib/suggest/acquisition/kinds.js";
 import type { AcquisitionSourcePick } from "../lib/suggest/acquisition/sources.js";
 import type { AcquisitionSort } from "../lib/suggest/acquisition/sort.js";
 import type { AcquisitionTarget, PlatPriceLookup } from "../lib/suggest/acquisition/types.js";
-import type { ScanCategory, ScannableEntry } from "../lib/suggest/scannables.js";
+import type { ScannablePlaceCard } from "../lib/suggest/scannablePlaces.js";
+import type { ScanCategory } from "../lib/suggest/scannables.js";
 import type { SimulacrumCard } from "../lib/suggest/simulacrum.js";
 import type { UpgradeCard } from "../lib/suggest/upgrades.js";
 import type { TrackerState } from "../lib/world/dailies.js";
@@ -313,8 +314,8 @@ export interface SuggestionDetails {
   relicPacks?: boolean | undefined;
   /** One place to run for codex scans; the section is fed outside the engine. */
   simulacrum?: SimulacrumCard | undefined;
-  /** One codex entry the scanning section's other categories still miss. */
-  scannable?: ScannableEntry | undefined;
+  /** One place to run for the codex entries the scanning section's other categories miss. */
+  scannablePlace?: ScannablePlaceCard | undefined;
 }
 
 /** The facts a relic card and its modal both draw, rather than a sentence. */

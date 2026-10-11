@@ -1,9 +1,11 @@
 import { describe, expect, it } from "vitest";
 
 import {
+  SCAN_GROUPS,
+  groupsFor,
   loreFragmentScans,
   missingScannables,
-  scannableSuggestions,
+  scanGroups,
   type LoreScan,
   type MissingScannables,
   type ScannableCategory,
@@ -155,17 +157,22 @@ describe("loreFragmentScans", () => {
   });
 });
 
-describe("scannableSuggestions", () => {
-  it("keeps the given order", () => {
-    const { somachords } = missingScannables(
-      [row("/song/b", "Beta", 0, 4), row("/song/a", "Alpha", 0, 4)],
-      EXTRAS,
+describe("scanGroups", () => {
+  const PREX = "/Lotus/Types/Lore/Fragments/LoreCardFragments/AshLoreCardFragment";
+
+  it("splits Prex cards out of the lore fragments by type path", () => {
+    const out = scanGroups(
+      missingScannables([row("/frag/earth", "Earth", 0, 3), row(PREX, "Ash Prex", 0, 1)], {
+        ...EXTRAS,
+        [PREX]: { section: "loreFragments" },
+      }),
     );
-    const suggestions = scannableSuggestions(somachords);
-    expect(suggestions.map((s) => [s.title, s.order])).toEqual([
-      ["Alpha", 0],
-      ["Beta", 1],
-    ]);
-    expect(suggestions[0]?.details?.scannable?.type).toBe("/song/a");
+    expect(out.fragments.map((entry) => entry.name)).toEqual(["Earth"]);
+    expect(out.prex.map((entry) => entry.name)).toEqual(["Ash Prex"]);
+  });
+
+  it("reads All as every group and a group category as itself", () => {
+    expect(groupsFor("all")).toEqual(SCAN_GROUPS);
+    expect(groupsFor("prex")).toEqual(["prex"]);
   });
 });

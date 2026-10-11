@@ -161,8 +161,8 @@
             <RelicPacksCard />
           {:else if suggestion.details?.simulacrum}
             <SimulacrumCard card={suggestion.details.simulacrum} />
-          {:else if suggestion.details?.scannable}
-            <ScannableCard entry={suggestion.details.scannable} />
+          {:else if suggestion.details?.scannablePlace}
+            <ScannableCard card={suggestion.details.scannablePlace} />
           {:else if suggestion.details?.upgrade}
             <UpgradeCard
               {suggestion}

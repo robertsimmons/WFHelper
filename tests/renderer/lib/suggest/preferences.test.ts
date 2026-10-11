@@ -151,6 +151,13 @@ describe("parseOptions", () => {
     expect(parseOptions(raw)).toEqual({ relicGoal: "ducats", relicEras: ["Neo"] });
   });
 
+  it("keeps every scan category, old and new, and drops an unknown one", () => {
+    for (const scanCategory of ["objects", "frameFighter", "all", "prex"]) {
+      expect(parseOptions(JSON.stringify({ scanCategory }))).toEqual({ scanCategory });
+    }
+    expect(parseOptions(JSON.stringify({ scanCategory: "plants" }))).toEqual({});
+  });
+
   it("loads an MR goal and ignores the retired relic sort", () => {
     const raw = JSON.stringify({ relicGoal: "mr", relicSort: "mr" });
     expect(parseOptions(raw)).toEqual({ relicGoal: "mr" });

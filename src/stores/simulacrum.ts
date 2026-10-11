@@ -2,12 +2,16 @@ import { derived, writable } from "svelte/store";
 
 import { reportCodexScanProgress } from "../lib/codexScanProgress.js";
 import { invoke } from "../lib/ipc.js";
+import { placeSuggestions, scannablePlaceCards } from "../lib/suggest/scannablePlaces.js";
+import { SCANNABLE_PLACES } from "../lib/suggest/scannablePlacesData.js";
 import {
+  PLACE_CATEGORIES,
+  groupsFor,
   loreFragmentScans,
-  scannableSuggestions,
+  scanGroups,
   type LoreScan,
   type MissingScannables,
-  type ScannableCategory,
+  type PlaceCategory,
 } from "../lib/suggest/scannables.js";
 import { loadSimulacrumFeed } from "../lib/suggest/simulacrumLazy.js";
 import { simulacrumSuggestions } from "../lib/suggest/simulacrumView.js";
@@ -16,7 +20,7 @@ import type { Suggestion } from "../types/suggest.js";
 
 interface SimulacrumState {
   suggestions: Suggestion[];
-  /** The section's other categories, one entry per missing codex entry. */
+  /** Every codex entry the section's place cards still miss. */
   scannablesOf: (lore: readonly LoreScan[]) => MissingScannables;
   factionOf: (type: string) => string | null;
   enemyImage: (image: string | null) => string | null;
@@ -62,13 +66,12 @@ export async function refreshSimulacrum(): Promise<void> {
 /** Recomputed on every inventory read, since lore progress lives there. */
 export const scannables = derived(
   [simulacrum, inventoryData],
-  ([$simulacrum, $inventory]): Record<ScannableCategory, Suggestion[]> => {
-    const missing = $simulacrum.scannablesOf(loreFragmentScans($inventory));
-    return {
-      objects: scannableSuggestions(missing.objects),
-      somachords: scannableSuggestions(missing.somachords),
-      fragments: scannableSuggestions(missing.fragments),
-      frameFighter: scannableSuggestions(missing.frameFighter),
-    };
+  ([$simulacrum, $inventory]): Record<PlaceCategory, Suggestion[]> => {
+    const missing = scanGroups($simulacrum.scannablesOf(loreFragmentScans($inventory)));
+    const byCategory = PLACE_CATEGORIES.map((category) => [
+      category,
+      placeSuggestions(scannablePlaceCards(missing, SCANNABLE_PLACES, groupsFor(category))),
+    ]);
+    return Object.fromEntries(byCategory) as Record<PlaceCategory, Suggestion[]>;
   },
 );

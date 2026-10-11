@@ -115,11 +115,9 @@ export function ownedValenceWeapons(
   return owned.sort((a, b) => b.percent - a.percent || a.name.localeCompare(b.name));
 }
 
-/**
- * The best copy of each valence weapon, keyed by lowercased English name, which
- * is what the wiki-sourced vendor tables name their rows by. Fusion always works
- * from the better of two copies, so a second, worse copy changes nothing.
- */
+/** The best copy of each valence weapon, keyed by lowercased English name, which
+ *  is what the wiki-sourced vendor tables name their rows by. Fusion always works
+ *  from the better of two copies, so a second, worse copy changes nothing. */
 export function ownedValenceByName(
   inventory: RawInventoryData | null,
   itemDb: Record<string, ItemDbEntry>,

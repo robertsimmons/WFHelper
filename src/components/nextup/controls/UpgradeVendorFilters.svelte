@@ -23,6 +23,9 @@
     "font-display text-[0.6875rem] font-semibold leading-none transition-colors duration-150";
   const BUTTON_ON = "border-accent bg-bg-surface text-accent";
   const BUTTON_OFF = "border-border bg-bg-surface text-text-muted hover:border-border-strong";
+  const ALL_ROW =
+    "mb-0.5 cursor-pointer select-none whitespace-nowrap rounded-t-[var(--radius-sm)] border-b " +
+    "border-border px-1 py-0.5 text-left text-xs text-text-secondary hover:bg-bg-hover";
 
   const option = $derived(OPTION[kind]);
   const picked = $derived<readonly string[]>($suggestionPreferences.options[option]);
@@ -52,6 +55,17 @@
       entry === id ? !picked.includes(entry) : picked.includes(entry),
     );
     setSuggestionOption(option, next);
+  }
+
+  function toggleGroup(ids: readonly { id: string }[]): void {
+    const on = pickedIn(ids) < ids.length;
+    const members = ids.map((entry) => entry.id);
+    setSuggestionOption(
+      option,
+      UPGRADE_VENDOR_OPTIONS.filter((entry) =>
+        members.includes(entry) ? on : picked.includes(entry),
+      ),
+    );
   }
 
   function clear(): void {
@@ -143,6 +157,14 @@
     data-upgrade-vendor-panel={opened.id}
     style="top: {top}px; left: {left}px;"
   >
+    <button
+      type="button"
+      class={ALL_ROW}
+      data-upgrade-vendor-group-all={opened.id}
+      onclick={() => toggleGroup(opened.options)}
+    >
+      {$tr(pickedIn(opened.options) < opened.options.length ? "common.all" : "common.none")}
+    </button>
     {#each opened.options as entry (entry.id)}
       <label
         class="flex cursor-pointer select-none items-center gap-1.5 whitespace-nowrap rounded-[var(--radius-sm)]

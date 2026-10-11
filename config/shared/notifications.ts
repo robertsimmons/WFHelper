@@ -1,3 +1,4 @@
+import type { CodexScanLogRow } from "./codexScanLog";
 import type { TradeMatchPayload, TradeNotificationStatus } from "./tradeMatch";
 
 // The tuple is the source of both the union and the runtime guard that revives
@@ -17,7 +18,11 @@ export interface NotificationEntry {
   kind: NotificationKind;
   title: string;
   body: string;
+  /** Per-row scan deltas behind a Scanning Progress entry. */
+  codexScans?: CodexScanLogRow[];
 }
+
+export type NotificationDetail = Pick<NotificationEntry, "codexScans">;
 
 // Producers the channel layer routes. "test" labels a webhook test fire, which
 // is why it is the one source missing from ROUTABLE_NOTIFICATION_SOURCES.

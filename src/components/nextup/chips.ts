@@ -70,11 +70,9 @@ export const COUNT_TITLE = {
   built: "nextUp.tileBuilt",
 } as const satisfies Record<keyof typeof COUNT_LABEL, MessageKey>;
 
-/**
- * What a tile counts. An unread inventory is no counts at all rather than a
- * zero, and a foundry with nothing running says nothing. A read inventory
- * holding none does report its zero, which is a fact the player can act on.
- */
+/** What a tile counts. An unread inventory is no counts at all rather than a
+ *  zero, and a foundry with nothing running says nothing. A read inventory
+ *  holding none does report its zero, which is a fact the player can act on. */
 export function tileCounts(owned: OwnedReward | null | undefined): TileCount[] {
   if (!owned) return [];
   const counts: TileCount[] = [
@@ -91,11 +89,9 @@ export function tileCounts(owned: OwnedReward | null | undefined): TileCount[] {
   return counts;
 }
 
-/**
- * Whether a tile with nothing left owed reads dimmed. Only gear does, and only
- * where the tile was actually told the item is gear: a resource is always worth
- * more, so an unstated stacking rule keeps full contrast.
- */
+/** Whether a tile with nothing left owed reads dimmed. Only gear does, and only
+ *  where the tile was actually told the item is gear: a resource is always worth
+ *  more, so an unstated stacking rule keeps full contrast. */
 export function tileDims(
   have: boolean | undefined,
   stacks: boolean | null | undefined,
@@ -112,11 +108,9 @@ export interface TileStatus {
   count?: number | null | undefined;
 }
 
-/**
- * The tag a tile wears, and the only reason it may dim. A caller that knows the
- * status says so; otherwise gear with nothing left owed reads as owned, counted
- * off everything the tile was told is held.
- */
+/** The tag a tile wears, and the only reason it may dim. A caller that knows the
+ *  status says so; otherwise gear with nothing left owed reads as owned, counted
+ *  off everything the tile was told is held. */
 export function tileStatus(
   status: TileStatus | null | undefined,
   have: boolean | undefined,
@@ -262,12 +256,9 @@ export function valencePercent(bonus: number): string {
   return bonus.toFixed(1);
 }
 
-/**
- * What the offered percentage reads as. Only the two verdicts where the offer
- * itself puts the cap in reach read as good: a copy the player already holds
- * over the threshold finishes on any second copy, so that offer's percentage is
- * incidental rather than the reason to buy.
- */
+/** What the offered percentage reads as. Only the two verdicts where the offer
+ *  itself puts the cap in reach read as good: a held copy over the threshold
+ *  finishes on any second copy, so that offer's percentage is incidental. */
 const VALENCE_TONE: Record<ValenceVerdict, string> = {
   caps: TONE.good,
   ready: TONE.good,

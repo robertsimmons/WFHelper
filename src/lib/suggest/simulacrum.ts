@@ -26,13 +26,11 @@ export interface SimulacrumStop {
   alternatives: CodexStarChartNode[];
 }
 
-/** `regulars` cards hold faction-only gaps no place card's stop reached. A
- *  `railjack` card is one Proxima region: scanning there fills the codex even
- *  though the Simulacrum cannot spawn the enemy. An `activity` card is a game
- *  mode or bounty run from `place` (The Descendia, a Narmer bounty); one with no
- *  node (Archon Hunt, Isleweaver) lists its gaps flat, and a rotating one has no
- *  place. */
-export type SimulacrumCardKind =
+/** `regulars`: faction-only gaps no place card's stop reached. `railjack`: one Proxima
+ *  region, where scanning fills the codex though the Simulacrum cannot spawn the enemy.
+ *  `activity`: a mode or bounty run from `place` (The Descendia, a Narmer bounty); with
+ *  no node (Archon Hunt, Isleweaver) gaps list flat, and a rotating one has no place. */
+type SimulacrumCardKind =
   | "planet"
   | "tileSet"
   | "railjack"
@@ -42,7 +40,7 @@ export type SimulacrumCardKind =
   | "unplaced";
 
 /** How hard a card is to run, easiest first; cards rank by tier before anything else. */
-export const SIMULACRUM_TIERS = [
+const SIMULACRUM_TIERS = [
   "normal",
   "openWorld",
   "archwing",
@@ -56,7 +54,7 @@ export const SIMULACRUM_TIERS = [
   "unplaced",
 ] as const;
 
-export type SimulacrumTier = (typeof SIMULACRUM_TIERS)[number];
+type SimulacrumTier = (typeof SIMULACRUM_TIERS)[number];
 
 type NodeTier = Extract<
   SimulacrumTier,
@@ -165,7 +163,7 @@ export function nodeTier(node: CodexStarChartNode): NodeTier {
   return mission === "free roam" ? "openWorld" : "normal";
 }
 
-export type MissionGroup = "good" | "tough" | "niche";
+type MissionGroup = "good" | "tough" | "niche";
 
 const MISSION_GROUPS: Record<string, MissionGroup> = {
   exterminate: "good",
@@ -183,7 +181,7 @@ const MISSION_GROUPS: Record<string, MissionGroup> = {
 const GROUP_RANK: Record<MissionGroup, number> = { good: 0, tough: 1, niche: 2 };
 
 /** Exact mission type only: Mirror, Stage and Shrine Defense are modes of their own. */
-export const missionGroup = (node: CodexStarChartNode): MissionGroup =>
+const missionGroup = (node: CodexStarChartNode): MissionGroup =>
   MISSION_GROUPS[normMission(node.missionType)] ?? "niche";
 
 type Resolution =

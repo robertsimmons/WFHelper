@@ -67,11 +67,9 @@ function isGameToken(name: string): boolean {
   return name.includes("_") || /^[A-Z][A-Z0-9]*$/.test(name);
 }
 
-/**
- * Element key a damage-type icon token names, or null when the token only tints
- * the word beside it. An unlisted `DT_` token falls back to its own tail, so a
- * damage type DE adds tomorrow reads as a name instead of leaking or vanishing.
- */
+/** Element key a damage-type icon token names, or null when the token only tints
+ *  the word beside it. An unlisted `DT_` token falls back to its own tail, so a
+ *  damage type DE adds tomorrow reads as a name instead of leaking or vanishing. */
 export function damageTypeElement(token: string): string | null {
   if (!token.startsWith("DT_")) return null;
   if (TINT_SUFFIX.test(token)) return null;
@@ -108,11 +106,9 @@ export function stripGameTokens(raw: string, options: GameMarkupOptions = {}): s
   return collapse(replaced);
 }
 
-/**
- * Icon tokens out of a join key. A key has usually been case-folded already, which
- * hides a shouted token from the prose guard; a key is never prose, so every
- * token in one is markup.
- */
+/** Icon tokens out of a join key. A key has usually been case-folded already, which
+ *  hides a shouted token from the prose guard; a key is never prose, so every
+ *  token in one is markup. */
 export function stripGameTokensFromKey(raw: string): string {
   return stripGameTokens(
     raw.replace(TOKEN_RE, (_match, name: string) => `<${name.toUpperCase()}>`),

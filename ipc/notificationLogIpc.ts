@@ -9,15 +9,20 @@ import {
   NOTIFICATION_HISTORY_GET,
   NOTIFICATION_HISTORY_REMOVE,
 } from "../config/shared/ipcChannels";
-import type { NotificationKind } from "../config/shared/notifications";
+import type { NotificationDetail, NotificationKind } from "../config/shared/notifications";
 
 const log = withScope("notificationLogIpc");
 
 // Every caller is already on a notification path, so a failed write costs the
 // history entry only and must never take the notification down with it.
-export function recordNotification(kind: NotificationKind, title: string, body: string): void {
+export function recordNotification(
+  kind: NotificationKind,
+  title: string,
+  body: string,
+  detail?: NotificationDetail,
+): void {
   try {
-    const entry = notificationLog.record(kind, title, body);
+    const entry = notificationLog.record(kind, title, body, detail);
     const win = ctx.mainWindow;
     if (win && !win.isDestroyed()) win.webContents.send(NOTIFICATION_HISTORY_ADDED, entry);
   } catch (err) {

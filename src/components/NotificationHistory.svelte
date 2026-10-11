@@ -1,13 +1,17 @@
 <script lang="ts">
   import ModalShell from "./ModalShell.svelte";
+  import ScanProgressModal from "../modals/ScanProgressModal.svelte";
   import { locale, tr } from "../lib/i18n.js";
   import {
     clearNotificationHistory,
     notificationHistory,
     removeNotificationEntry,
   } from "../stores/notifications.js";
+  import type { NotificationEntry } from "../../config/shared/notifications.js";
 
   let { onClose }: { onClose: () => void } = $props();
+
+  let scanEntry = $state<NotificationEntry | null>(null);
 
   // Formatted at render, never stored: a language switch has to repaint it.
   function formatAt(at: string, code: string): string {
@@ -50,15 +54,33 @@
             data-notification-kind={entry.kind}
           >
             <span class="notification-dot mt-1.5" aria-hidden="true"></span>
-            <div class="min-w-0">
-              <div class="flex items-baseline justify-between gap-2">
-                <span class="truncate text-sm text-text-primary">{entry.title}</span>
-                <span class="shrink-0 text-[11px] text-text-muted"
-                  >{formatAt(entry.at, $locale)}</span
-                >
+            {#if entry.codexScans}
+              <button
+                type="button"
+                class="notification-detail-btn min-w-0 text-left"
+                data-notification-detail
+                title={$tr("notifications.scanDetails")}
+                onclick={() => (scanEntry = entry)}
+              >
+                <span class="flex items-baseline justify-between gap-2">
+                  <span class="truncate text-sm text-text-primary">{entry.title}</span>
+                  <span class="flex shrink-0 items-baseline gap-1 text-[11px] text-text-muted"
+                    >{formatAt(entry.at, $locale)}<span aria-hidden="true">&rsaquo;</span></span
+                  >
+                </span>
+                <span class="block break-words text-xs text-text-muted">{entry.body}</span>
+              </button>
+            {:else}
+              <div class="min-w-0">
+                <div class="flex items-baseline justify-between gap-2">
+                  <span class="truncate text-sm text-text-primary">{entry.title}</span>
+                  <span class="shrink-0 text-[11px] text-text-muted"
+                    >{formatAt(entry.at, $locale)}</span
+                  >
+                </div>
+                <p class="m-0 break-words text-xs text-text-muted">{entry.body}</p>
               </div>
-              <p class="m-0 break-words text-xs text-text-muted">{entry.body}</p>
-            </div>
+            {/if}
             <button
               class="btn-secondary btn-sm !px-1.5 !py-0.5 text-xs"
               data-notification-remove
@@ -73,12 +95,27 @@
   </div>
 </ModalShell>
 
+{#if scanEntry}
+  <ScanProgressModal entry={scanEntry} onClose={() => (scanEntry = null)} />
+{/if}
+
 <style>
   .notification-panel {
     width: min(540px, calc(100vw - 3rem));
     padding: 1rem;
   }
   /* One dot per kind; the list has no room for a legend column. */
+  .notification-detail-btn {
+    border: 0;
+    padding: 0;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    cursor: pointer;
+  }
+  .notification-detail-btn:hover .text-text-primary {
+    color: var(--accent);
+  }
   .notification-dot {
     width: 0.5rem;
     height: 0.5rem;

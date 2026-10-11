@@ -24,7 +24,7 @@ export function platPrice(reward: RelicReward): number | null {
   return entry?.status === "ok" ? entry.median : null;
 }
 
-export interface MrInputs {
+interface MrInputs {
   ownership: Map<string, number>;
   pending: Map<string, number>;
   mastered: Set<string>;

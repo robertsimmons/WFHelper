@@ -5,7 +5,7 @@ type Handler = (event: unknown, ...args: unknown[]) => unknown;
 const h = vi.hoisted(() => ({
   handlers: new Map<string, Handler>(),
   dispatched: [] as unknown[],
-  sent: [] as { title: string; body: string }[],
+  sent: [] as { title: string; body: string; detail?: unknown }[],
   stored: null as unknown,
   writes: 0,
   account: "aaaaaaaaaaaaaaaaaaaaaaaa" as string | null,
@@ -21,8 +21,8 @@ vi.mock("../../ipc/ipcSecurity", () => ({
 }));
 
 vi.mock("../../ipc/worldStateIpc", () => ({
-  sendDesktopNotificationRaw: (title: string, body: string) => {
-    h.sent.push({ title, body });
+  sendDesktopNotificationRaw: (title: string, body: string, _kind?: string, detail?: unknown) => {
+    h.sent.push(detail ? { title, body, detail } : { title, body });
   },
 }));
 
@@ -39,6 +39,7 @@ vi.mock("../../services/codexProfile", () => ({
 }));
 
 vi.mock("../../services/codexScanLog", () => ({
+  backfillCodexScanHistory: () => {},
   appendCodexScanLog: (line: unknown) => {
     h.logged.push(line);
   },
@@ -118,9 +119,17 @@ describe("codex scan progress IPC", () => {
     );
     expect(h.dispatched).toEqual([]);
     handler({}, { fetchedAt: 2, rows: [{ type: TYPE, scanned: 20, complete: true }] });
+    const rows = [
+      { type: TYPE, name: null, before: 5, after: 20, required: null, completedNow: true },
+    ];
     expect(h.sent).toEqual([
-      { title: "Scanning Progress", body: "1 enemy completed, 15 new scans" },
+      {
+        title: "Scanning Progress",
+        body: "1 enemy completed, 15 new scans",
+        detail: { codexScans: rows },
+      },
     ]);
+    expect((h.logged[0] as { rows: unknown }).rows).toEqual(rows);
     expect(h.dispatched).toEqual([
       { source: "codexScans", title: "Scanning Progress", body: "1 enemy completed, 15 new scans" },
     ]);

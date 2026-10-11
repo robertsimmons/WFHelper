@@ -46,12 +46,9 @@ interface BuiltinTrackerDef extends TrackerDef {
   labelKey: MessageKey;
 }
 
-/**
- * Netracells and both Archimedea modes draw on one weekly allowance of five
- * reward-bearing runs - the game's single 0/5 counter - not a budget each. The
- * allowance is counted under the Netracell row, whose stepper spends it
- * directly; the two Archimedea rows spend one run each on completion.
- */
+/** Netracells and both Archimedea modes share one weekly allowance of five reward
+ *  runs (the game's single 0/5 counter). It is counted under the Netracell row, whose
+ *  stepper spends it directly; each Archimedea row spends one run on completion. */
 export const WEEKLY_VAULT_LIMIT = 5;
 export const VAULT_ALLOWANCE_TASK = "netracells";
 export const VAULT_RUN_SPENDERS: readonly string[] = ["deepArchimedea", "temporalArchimedea"];

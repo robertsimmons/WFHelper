@@ -17,7 +17,7 @@ export interface CodexProgressSnapshot {
   raw?: Record<string, number>;
 }
 
-export interface CodexProgressDiff {
+interface CodexProgressDiff {
   completed: number;
   newScans: number;
   snapshot: CodexProgressSnapshot;

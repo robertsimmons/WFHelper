@@ -136,9 +136,12 @@ const LEGACY_FORMA_KEY = "mastery:forma";
 const LEGACY_MODE_KEY = "mastery:mode";
 /** The boolean the Forma entry in `masteryKinds` replaced. */
 const LEGACY_FORMA_OPTION = "masteryForma";
+/** The one Warframes box that split into prime and normal. */
+const LEGACY_WARFRAME_INCLUDE = "warframe";
+const WARFRAME_INCLUDES: readonly AcquisitionInclude[] = ["warframe_prime", "warframe_normal"];
 /** Every kind the acquisition row offered before it grouped them. */
 const LEGACY_ACQUISITION_INCLUDES: readonly AcquisitionInclude[] = [
-  "warframe",
+  ...WARFRAME_INCLUDES,
   "primary",
   "secondary",
   "melee",
@@ -356,7 +359,10 @@ export function parseOptions(raw: string | null): Partial<SuggestionOptions> {
   if (Array.isArray(kinds)) {
     if (kinds.includes(ACQUISITION_NONE)) options.acquisitionKinds = [ACQUISITION_NONE];
     else {
-      const picked = ACQUISITION_INCLUDES.filter((kind) => kinds.includes(kind));
+      const stored = kinds.includes(LEGACY_WARFRAME_INCLUDE)
+        ? [...kinds, ...WARFRAME_INCLUDES]
+        : kinds;
+      const picked = ACQUISITION_INCLUDES.filter((kind) => stored.includes(kind));
       options.acquisitionKinds = readsAsAll(picked) ? [] : picked;
     }
   }

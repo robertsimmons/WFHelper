@@ -57,11 +57,9 @@ function grow(node: Element, from: Box): void {
   );
 }
 
-/**
- * Takes a copy of the node onto a layer of its own, frozen where it stands, so
- * the grid reflows under it the moment the click lands rather than when the
- * flight ends.
- */
+/** Takes a copy of the node onto a layer of its own, frozen where it stands, so
+ *  the grid reflows under it the moment the click lands rather than when the
+ *  flight ends. */
 export function liftCard(node: Element | null | undefined): CardFlight {
   if (!node || FLIGHT_MS === 0) return STILL;
   const from = box(node);

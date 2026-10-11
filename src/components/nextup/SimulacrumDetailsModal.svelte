@@ -1,6 +1,10 @@
 <script lang="ts">
   import { tr } from "../../lib/i18n.js";
-  import type { SimulacrumCard, SimulacrumGap, SimulacrumStop } from "../../lib/suggest/simulacrum.js";
+  import type {
+    SimulacrumCard,
+    SimulacrumGap,
+    SimulacrumStop,
+  } from "../../lib/suggest/simulacrum.js";
   import { nodeWhere, stopLabel, stopProgress } from "../../lib/suggest/simulacrumView.js";
   import { CHIP_TONE, TONE } from "./chips.js";
   import SimulacrumGapTile from "./SimulacrumGapTile.svelte";

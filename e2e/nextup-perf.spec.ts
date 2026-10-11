@@ -148,6 +148,16 @@ async function toggleSamples(page: Page, attribute: string): Promise<Sample[]> {
   return samples;
 }
 
+async function clickSamples(page: Page, selector: string): Promise<Sample[]> {
+  const samples: Sample[] = [];
+  for (let run = 0; run < RUNS; run += 1) {
+    samples.push(await measure(page, { type: "click", selector }));
+    await page.locator(selector).click();
+    await page.waitForTimeout(200);
+  }
+  return samples;
+}
+
 async function sectionSamples(
   page: Page,
   id: string,
@@ -261,11 +271,11 @@ test("Next Up render cost: cold entry, re-entry, paging and every filter control
       reentry.push(await measure(page, { type: "nav" }));
     }
 
-    await expect(page.locator("[data-acquisition-kind]").first()).toBeVisible({ timeout: 30_000 });
+    await expect(page.locator("[data-acquisition-select-all]")).toBeVisible({ timeout: 30_000 });
     // Paged before the filters narrow anything, so the section still has the
     // second page the arrows need.
     pager = await pagerSamples(page, "acquisition");
-    toggle = await toggleSamples(page, "data-acquisition-kind");
+    toggle = await clickSamples(page, "[data-acquisition-select-all]");
     section = await sectionSamples(page, "acquisition");
     // Tasks and relics need live world state, so neither is guaranteed a card.
     taskKind = await toggleSamples(page, "data-task-kind");

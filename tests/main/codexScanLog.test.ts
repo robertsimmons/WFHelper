@@ -2,6 +2,8 @@ import { describe, expect, it } from "vitest";
 
 import {
   appendCappedLines,
+  recentCodexScanLines,
+  reviveCodexScanRows,
   codexScanLogLine,
   diffRawScans,
   rawScanCounts,
@@ -80,5 +82,48 @@ describe("appendCappedLines", () => {
   it("trims to the cap, dropping the oldest lines", () => {
     const existing = ["1", "2", "3"].map((n) => `{"n":${n}}`).join("\n") + "\n";
     expect(appendCappedLines(existing, '{"n":4}', 3)).toBe('{"n":2}\n{"n":3}\n{"n":4}\n');
+  });
+});
+
+const DETAIL = {
+  type: BUTCHER,
+  name: "Butcher",
+  before: 5,
+  after: 20,
+  required: 20,
+  completedNow: true,
+};
+
+describe("reviveCodexScanRows", () => {
+  it("keeps valid rows and drops malformed ones", () => {
+    expect(
+      reviveCodexScanRows([DETAIL, { ...DETAIL, after: -1 }, { ...DETAIL, required: "x" }, null]),
+    ).toEqual([DETAIL]);
+  });
+
+  it("is null for a non-list or a list with nothing usable", () => {
+    expect(reviveCodexScanRows("rows")).toBeNull();
+    expect(reviveCodexScanRows([{ type: BUTCHER }])).toBeNull();
+  });
+});
+
+describe("recentCodexScanLines", () => {
+  const line = (fetchedAt: number, rows: unknown[]): string =>
+    JSON.stringify({ at: new Date(fetchedAt).toISOString(), fetchedAt, rows, raw: [] });
+
+  it("reads the newest lines, skipping rowless and broken ones", () => {
+    const text = [
+      line(1, [DETAIL]),
+      line(2, [DETAIL]),
+      "{not json",
+      line(3, []),
+      line(4, [{ ...DETAIL, after: 21 }]),
+      "",
+    ].join("\n");
+
+    expect(recentCodexScanLines(text, 4)).toEqual([
+      { at: new Date(2).toISOString(), fetchedAt: 2, rows: [DETAIL] },
+      { at: new Date(4).toISOString(), fetchedAt: 4, rows: [{ ...DETAIL, after: 21 }] },
+    ]);
   });
 });

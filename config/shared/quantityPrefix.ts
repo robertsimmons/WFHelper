@@ -1,9 +1,7 @@
-/** Reward and drop-table names carry their count in the name: "2X Forma
- *  Blueprint", "4000 Endo", "15,000 Credits", "6000 x Kuva", "10k Kuva", and now
- *  and then twice over ("2X 3,000 Credits Cache"). An "x" or "k" belongs to the
- *  prefix only when whitespace follows it, so "1500 Kuva" keeps its K. No real
- *  item name opens with a count, but "X3lp Glyph" does open with an x, so a
- *  leading "x2" is never one. */
+/** Reward names carry their count: "2X Forma Blueprint", "15,000 Credits", "6000 x
+ *  Kuva", "10k Kuva", now and then twice ("2X 3,000 Credits Cache"). An "x" or "k" is
+ *  prefix only when whitespace follows, so "1500 Kuva" keeps its K. No item name opens
+ *  with a count, but "X3lp Glyph" opens with an x, so a leading "x2" is never one. */
 const QUANTITY_PREFIX = /^(\d[\d,]*)\s*([xk])?\s+/i;
 
 /** A bare number the name owns rather than counts: how long a booster runs

@@ -1,8 +1,7 @@
-// Crawls the overframe.gg arsenal pages named by its sitemap and builds
-// src/data/suggest/overframeItems.json, popularMods.json and mods.json, then
-// the build crawl behind arcanes.json.
+// Crawls the overframe.gg arsenal pages in its sitemap into src/data/suggest/
+// overframeItems.json, popularMods.json and mods.json, then the build crawl behind
+// arcanes.json. A cold run is ~2400 requests at 1/s; the cache makes it resumable.
 // Usage: node scripts/suggest/fetch-overframe-items.mjs [--limit N] [--retry-empty]
-// A cold run is ~2400 requests at one per second; the cache makes it resumable.
 
 import fs from "node:fs";
 import path from "node:path";

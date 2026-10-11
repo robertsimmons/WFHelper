@@ -210,11 +210,9 @@ function planPin(
 
   const resources: PlannerResource[] = [...state.resources.entries()].map(([uniqueName, tally]) => {
     const held = ownedComponentCount(uniqueName, pool);
-    // Allocated: take this pin's share of the pile so the rows below a shared
-    // material add up to the total row. Independent: the row must report the
-    // whole pile, uncapped - it is an answer about this item on its own, and
-    // capping it at `needed` would make a deep stock indistinguishable from a
-    // bare sufficiency.
+    // Allocated: take this pin's share so the rows under a shared material add up
+    // to the total row. Independent: report the whole pile uncapped, since capping
+    // at `needed` would make a deep stock look like a bare sufficiency.
     const owned = allocate ? Math.min(held, tally.needed) : held;
     if (allocate) consumeOwned(pool, uniqueName, owned);
     return {
@@ -251,13 +249,10 @@ interface MasteryPlanOptions {
   allocate?: boolean;
 }
 
-// One plan per pin. Allocated, owned parts AND raw materials are handed to pins
-// in order, so a single spare cannot satisfy two of them - what the planner tab
-// needs to answer "if I build these in this order, what runs out". A sweep that
-// pins every unbuilt item in the game instead asks a separate question of each
-// row, so it turns allocation off: an item's ownership figures must not depend
-// on what else happened to be in the same call. The total row always measures
-// the summed need once against the untouched inventory pool.
+// One plan per pin. Allocated, owned parts and materials go to pins in order, so one
+// spare cannot satisfy two ("build these in order, what runs out"). A sweep pinning
+// every unbuilt item turns allocation off so a row never depends on its call-mates.
+// The total row measures the summed need once against the untouched pool.
 export function buildMasteryPlan(
   pins: readonly PlannerPin[],
   itemDb: Record<string, ItemDbEntry>,

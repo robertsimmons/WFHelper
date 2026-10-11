@@ -194,11 +194,9 @@ export interface SuggestionReward {
    *  place: prime components reach the relic tables under a recipe path no
    *  manifest entry carries. Last resort, behind every itemDb join. */
   imageUrl?: string | undefined;
-  /**
-   * Set where the reward is one of several kinds and which one is not knowable
-   * in advance: every kind it can be, best chance first. `name` is then the
-   * family's own plural label, which resolves no art and names no member.
-   */
+  /** Set where the reward is one of several kinds and which one is not knowable
+   *  in advance: every kind it can be, best chance first. `name` is then the
+   *  family's own plural label, which resolves no art and names no member. */
   oneOf?: SuggestionReward[] | undefined;
   /** Median plat, where the reward is a relic drop the market prices. */
   platinum?: number | null | undefined;

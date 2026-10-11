@@ -222,8 +222,8 @@
           <div class="detail-tags">
             {#if item.isPrime}<span class="detail-tag prime">{$tr("common.prime")}</span>{/if}
             {#if item.vaulted}<span class="detail-tag vaulted">{$tr("common.vaulted")}</span>{/if}
-            {#if item.status === "mastered" || item.parentMastered === true}<span class="detail-tag mastered"
-                >{$tr("common.mastered")}</span
+            {#if item.status === "mastered" || item.parentMastered === true}<span
+                class="detail-tag mastered">{$tr("common.mastered")}</span
               >{/if}
             {#if item.status === "progress"}<span class="detail-tag progress"
                 >{$tr("common.inProgress")}</span

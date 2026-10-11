@@ -188,8 +188,8 @@ interface ItemEntry {
   browseWfUrl?: string | null;
   isPrime: boolean;
   masteryReq: number;
-  masterable?: boolean;
-  tradable?: boolean;
+  masterable?: boolean | undefined;
+  tradable?: boolean | undefined;
   vaulted: boolean;
   exalted?: boolean;
   description: string;
@@ -205,8 +205,8 @@ interface ItemEntry {
   wikiaUrl?: string | null;
   components?: ComponentEntry[];
   drops?: DropEntry[];
-  mod?: ModFacts;
-  arcane?: ArcaneFacts;
+  mod?: ModFacts | undefined;
+  arcane?: ArcaneFacts | undefined;
   vendors?: StoredVendorSource[];
   isBuildComponent?: boolean;
   componentOf?: string;

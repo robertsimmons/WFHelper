@@ -116,7 +116,7 @@ export interface ComponentEntry {
   /** `/Lotus/Language/...` key this name came from, for game-language lookup. */
   nameKey?: string | null;
   imageName?: string;
-  tradable?: boolean;
+  tradable?: boolean | undefined;
   ducats?: number;
   itemCount?: number;
   drops?: DropEntry[];
@@ -133,11 +133,11 @@ export interface RendererItemEntry {
   category: string;
   imageUrl: string | null;
   isPrime: boolean;
-  tradable?: boolean;
+  tradable?: boolean | undefined;
   masteryReq: number;
   vaulted: boolean;
   exalted?: boolean;
-  masterable?: boolean;
+  masterable?: boolean | undefined;
   type: string;
   isBuildComponent: boolean;
   /** DE's name for the built part where `name` is the blueprint that makes it. */
@@ -150,7 +150,7 @@ export interface RendererItemEntry {
     name: string;
     displayName?: string;
     uniqueName: string;
-    tradable?: boolean;
+    tradable?: boolean | undefined;
     itemCount: number;
     drops: DropEntry[];
   }[];

@@ -18,7 +18,7 @@ interface StoredVendorRank {
 
 export interface StoredVendorSource {
   name?: string;
-  nameKey?: string;
+  nameKey?: string | undefined;
   id?: UpgradeVendorId;
   cost?: StoredVendorCost;
   rank?: StoredVendorRank;

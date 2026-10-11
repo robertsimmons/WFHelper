@@ -1,7 +1,7 @@
 import { assertMainRendererSender, handleAuthorized } from "./ipcSecurity";
 import { sendDesktopNotificationRaw } from "./worldStateIpc";
 import { cachedCodexScans, codexAccountId } from "../services/codexProfile";
-import { appendCodexScanLog } from "../services/codexScanLog";
+import { appendCodexScanLog, backfillCodexScanHistory } from "../services/codexScanLog";
 import { codexScanLogLine, rawScanCounts } from "../config/shared/codexScanLog";
 import { createJsonCache } from "../services/jsonCache";
 import { dispatch } from "../services/notificationChannels";
@@ -101,18 +101,19 @@ function onProgress(payload: ProgressPayload): boolean {
   if (previous && payload.fetchedAt <= previous.fetchedAt) return false;
 
   const diff = diffCodexProgress(previous, payload.fetchedAt, payload.rows);
-  if (diff.completed > 0 || diff.newScans > 0) {
-    // English on purpose: the body is kept in the notification history.
-    const body = codexProgressBody(diff.completed, diff.newScans);
-    dispatch({ source: "codexScans", title: CODEX_PROGRESS_TITLE, body }, () =>
-      sendDesktopNotificationRaw(CODEX_PROGRESS_TITLE, body),
-    );
-  }
   // The service cache is the list the renderer just built rows from; any other
   // fetchedAt means it moved on, so the previous raw list is carried over.
   const cached = cachedCodexScans();
   const raw = cached?.fetchedAt === payload.fetchedAt ? rawScanCounts(cached.scans) : null;
   const line = codexScanLogLine(previous, payload.fetchedAt, payload.rows, raw, new Date());
+  if (diff.completed > 0 || diff.newScans > 0) {
+    // English on purpose: the body is kept in the notification history.
+    const body = codexProgressBody(diff.completed, diff.newScans);
+    const detail = line && line.rows.length > 0 ? { codexScans: line.rows } : undefined;
+    dispatch({ source: "codexScans", title: CODEX_PROGRESS_TITLE, body }, () =>
+      sendDesktopNotificationRaw(CODEX_PROGRESS_TITLE, body, "app", detail),
+    );
+  }
   if (line) appendCodexScanLog(line);
   const keptRaw = raw ?? previous?.raw;
   if (keptRaw) diff.snapshot.raw = keptRaw;
@@ -122,6 +123,7 @@ function onProgress(payload: ProgressPayload): boolean {
 }
 
 export function register(): void {
+  backfillCodexScanHistory();
   handleAuthorized(CODEX_SCAN_PROGRESS, assertMainRendererSender, (_event, payload: unknown) => {
     const parsed = parsePayload(payload);
     return parsed ? onProgress(parsed) : false;

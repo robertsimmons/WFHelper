@@ -54,7 +54,7 @@ function gainFactor(signals: SuggestionSignals): number {
 }
 
 /** Worth against gain: a tie-break inside a band, never the band itself. Gain
- *  filters — a half-gain offer of a great reward is still a great reward. */
+ *  filters: a half-gain offer of a great reward is still a great reward. */
 export function effectiveWorth(signals: SuggestionSignals): number {
   return worthOf(signals) * gainFactor(signals);
 }

@@ -249,11 +249,10 @@ function stockArt(
   return undefined;
 }
 
-/** What the card pictures. The rolls are ordered by gain, so the head of them is
- *  the offer worth buying, and the art comes off that offer's own identity: a
- *  fall back to the head of the curated table pictured a different weapon from
- *  the one the field row names. A live manifest is the stall's real stock, so
- *  the best of that stands for it ahead of anything curated. */
+/** What the card pictures. Rolls are ordered by gain, so the head is the offer worth
+ *  buying and the art is that offer's own (the curated table's head pictured a weapon
+ *  other than the one the field row names). A live manifest is the stall's real
+ *  stock, so its best stands ahead of anything curated. */
 function rewardFor(
   taskId: string,
   nowMs: number,

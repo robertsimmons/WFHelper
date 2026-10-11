@@ -3,7 +3,7 @@ import { assertAuthorizedSender, assertMainRendererSender } from "./ipcSecurity"
 import { asRecord } from "./ipcValidators";
 import { recordNotification } from "./notificationLogIpc";
 import { broadcastToRenderers } from "./popoutIpc";
-import type { NotificationKind } from "../config/shared/notifications";
+import type { NotificationDetail, NotificationKind } from "../config/shared/notifications";
 import { withScope } from "../services/logger";
 import { dispatch } from "../services/notificationChannels";
 import * as worldStateParser from "../services/worldStateParser";
@@ -413,8 +413,9 @@ export function sendDesktopNotificationRaw(
   title: string,
   body: string,
   kind: NotificationKind = "app",
+  detail?: NotificationDetail,
 ): void {
-  recordNotification(kind, title, body);
+  recordNotification(kind, title, body, detail);
   try {
     if (!canSendNotifications()) return;
     // A trade body names the other player and main.log is what people attach to

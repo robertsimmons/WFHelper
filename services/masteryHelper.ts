@@ -710,7 +710,10 @@ function resolveDisplayCategoryInfo(
   return { category: "Other", source: "fallback:Other" };
 }
 
-function isAmpPrismMasterableOverride(item: { name?: string }, uniqueName: string): boolean {
+function isAmpPrismMasterableOverride(
+  item: { name?: string | undefined },
+  uniqueName: string,
+): boolean {
   if (!/\/OperatorAmplifiers?\//i.test(uniqueName)) return false;
   // Builds keep the prism at .../Barrel/<part>, the Mote preset as a bare leaf.
   if (!/\/Barrel\/|Barrel$/i.test(uniqueName)) return false;

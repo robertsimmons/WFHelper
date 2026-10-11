@@ -33,22 +33,18 @@ function tail(name: string): string {
   return words(name).slice(-2).join(" ").toLowerCase();
 }
 
-/**
- * Whether two names are the same thing in two grades. A modifier is a prefix,
- * so a Tauforged Amber Archon Shard ends with the plain Amber one's whole name
- * while an Azure shard does not.
- */
+/** Whether two names are the same thing in two grades. A modifier is a prefix,
+ *  so a Tauforged Amber Archon Shard ends with the plain Amber one's whole name
+ *  while an Azure shard does not. */
 function sameKind(a: string, b: string): boolean {
   const left = a.toLowerCase();
   const right = b.toLowerCase();
   return left === right || left.endsWith(` ${right}`) || right.endsWith(` ${left}`);
 }
 
-/**
- * Everything the reward could turn out to be. `oneOf` only carries one member
- * per modifier grade, which is one colour of a pool that pays several, so the
- * drop rows fill the rest of the family in wherever the provider listed them.
- */
+/** Everything the reward could turn out to be. `oneOf` only carries one member
+ *  per modifier grade, which is one colour of a pool that pays several, so the
+ *  drop rows fill the rest of the family in wherever the provider listed them. */
 function familyMembers(
   reward: SuggestionReward,
   pool: readonly (SuggestionPoolRow | string)[],
@@ -98,12 +94,9 @@ export const REDUCED_MOTION =
 /** Past this the cycle stops being a set and becomes a slideshow. */
 const MAX_CYCLE = 12;
 
-/**
- * How a reward's art reads. `pair` is the case where the colour is knowable and
- * only the grade is not, so the plain and modified pictures together are the
- * whole uncertainty. `cycle` is the case where the family spans several kinds,
- * where no two pictures are the set and the art steps through it instead.
- */
+/** How a reward's art reads. `pair`: the colour is knowable and only the grade is
+ *  not, so the plain and modified pictures together are the whole uncertainty.
+ *  `cycle`: the family spans several kinds, so the art steps through it. */
 type RewardArtMode = "single" | "pair" | "cycle";
 
 export interface RewardArt {
@@ -111,16 +104,10 @@ export interface RewardArt {
   pieces: ArtPiece[];
 }
 
-/**
- * Art for each member that has any, one picture per distinct image. Two names
- * the database resolves to the same icon are one frame, not two: a rotation
- * that repeats a picture reads as stuck, and two identical frames in a pair
- * read as that one item rather than as a choice between kinds.
- *
- * The provider's own art is the last resort behind every itemDb join, so a
- * member the database cannot place still gets a picture rather than dropping
- * out of the family.
- */
+/** One picture per distinct image: a repeated picture reads as a stuck rotation, or
+ *  as one item rather than a choice. The provider's art is the last resort behind
+ *  every itemDb join, so a member the database cannot place still gets a picture
+ *  rather than dropping out of the family. */
 function resolve(
   itemDb: Record<string, ItemDbEntry>,
   members: readonly SuggestionReward[],
@@ -142,11 +129,9 @@ function resolve(
   return out;
 }
 
-/**
- * What a card draws for its reward: one picture where the reward is one thing,
- * a plain-and-modified pair where only the grade is unknown, and the whole
- * family in rotation where the kind is unknown too.
- */
+/** What a card draws for its reward: one picture where the reward is one thing,
+ *  a plain-and-modified pair where only the grade is unknown, and the whole
+ *  family in rotation where the kind is unknown too. */
 export function rewardArt(
   itemDb: Record<string, ItemDbEntry>,
   reward: SuggestionReward | null | undefined,

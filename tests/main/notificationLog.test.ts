@@ -166,3 +166,80 @@ describe("notification log", () => {
     expect(log.getAll()[0]).toMatchObject({ title: "Still returned" });
   });
 });
+
+const SCAN_ROW = {
+  type: "/Lotus/Types/Enemies/Grineer/Butcher",
+  name: "Butcher",
+  before: 5,
+  after: 20,
+  required: 20,
+  completedNow: true,
+};
+
+function scanEntry(id: string, at: string): NotificationEntry {
+  return {
+    id,
+    at,
+    kind: "app",
+    title: "Scanning Progress",
+    body: "1 enemy completed, 15 new scans",
+    codexScans: [SCAN_ROW],
+  };
+}
+
+describe("notification log scan detail", () => {
+  it("keeps scan detail through a reload and drops malformed rows", async () => {
+    const first = await importLog();
+    first.record("app", "Scanning Progress", "15 new scans", { codexScans: [SCAN_ROW] });
+
+    const stored = JSON.parse(fs.readFileSync(logFile, "utf8")) as Array<Record<string, unknown>>;
+    stored[0].codexScans = [SCAN_ROW, { type: "", before: 1 }, "junk"];
+    stored.push({ ...stored[0], id: "b", codexScans: "nope" });
+    fs.writeFileSync(logFile, JSON.stringify(stored));
+
+    const [plain, detailed] = (await importLog()).getAll();
+    expect(detailed.codexScans).toEqual([SCAN_ROW]);
+    expect(plain).not.toHaveProperty("codexScans");
+  });
+
+  it("backfills in timestamp order, inside the cap", async () => {
+    const minute = (index: number): string =>
+      new Date(Date.UTC(2026, 0, 1, 0, index * 2)).toISOString();
+    const seeded = Array.from({ length: 199 }, (_, index) => ({
+      id: `n${index}`,
+      at: minute(index),
+      kind: "app",
+      title: `n${index}`,
+      body: "",
+    }));
+    fs.writeFileSync(logFile, JSON.stringify(seeded));
+    const log = await importLog();
+    const between = new Date(Date.UTC(2026, 0, 1, 0, 1)).toISOString();
+
+    expect(
+      log.backfill([scanEntry("old", "2000-01-01T00:00:00.000Z"), scanEntry("new", between)]),
+    ).toBe(2);
+
+    const ids = log.getAll().map((entry) => entry.id);
+    expect(ids).toHaveLength(200);
+    expect(ids.slice(-3)).toEqual(["n1", "new", "n0"]);
+    expect(ids).not.toContain("old");
+  });
+
+  it("skips ids it already holds", async () => {
+    const log = await importLog();
+    const entry = scanEntry("codex-1", "2026-01-01T00:00:00.000Z");
+    expect(log.backfill([entry])).toBe(1);
+    expect(log.backfill([entry])).toBe(0);
+    expect((await importLog()).getAll()).toHaveLength(1);
+  });
+
+  it("attaches detail to the live entry for the same event instead of a twin", async () => {
+    const log = await importLog();
+    const live = log.record("app", "Scanning Progress", "1 enemy completed, 15 new scans");
+
+    expect(log.backfill([scanEntry("codex-1", live.at)])).toBe(1);
+
+    expect(log.getAll()).toEqual([{ ...live, codexScans: [SCAN_ROW] }]);
+  });
+});

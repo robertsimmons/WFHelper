@@ -23,7 +23,7 @@ function oddsCell(cell) {
 }
 
 /** Each collection is a `!rowspan=2|...<br>Name` header, a row of arcane cells
- *  per rarity column, then a row of `'''45%''' (... × 2)` odds cells. */
+ *  per rarity column, then a row of `'''45%''' (... x 2)` odds cells (the x is U+00D7). */
 export function parseLoidCollections(loidText) {
   const body = section(loidText, "<section begin=loidogoffer/>", "<section end=loidogoffer");
   const columns = [...body.matchAll(/Icon(\w+)\.png\|class=icon\]\]/g)].map((m) => m[1]);

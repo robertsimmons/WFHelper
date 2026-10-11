@@ -9,11 +9,10 @@ interface BannerArt {
   /** Overrides the side `bannerAside` infers, for art whose subject does not
    *  sit on the edge the anchor pulls towards. */
   aside?: "start" | "end" | "center";
-  /** Px of picture hung off one edge and cropped. The art is a hair narrower
-   *  than the band it covers, so `position` alone can move nothing: widening it
-   *  slides the subject sideways (positive keeps the left edge, negative the
-   *  right) and overflows the fixed height, which is what gives `position`'s y
-   *  something to pan over. */
+  /** Px of picture hung off one edge and cropped. The art is a hair narrower than
+   *  its band, so `position` alone moves nothing: widening slides the subject (positive
+   *  keeps the left edge, negative the right) and overflows the fixed height, which
+   *  gives `position`'s y something to pan over. */
   widen?: number;
 }
 

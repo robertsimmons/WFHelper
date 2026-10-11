@@ -1,5 +1,5 @@
 // Regenerates user-inventory-slice.json from the api-helper's inventory.json:
-//   node tests/fixtures/safe-to-sell/captureInventorySlice.mjs <path-to-inventory.json>
+//   node scripts/safe-to-sell/capture-inventory-slice.mjs <path-to-inventory.json>
 // Keeps only Prime-pathed rows of the collections the safe-to-sell pipeline
 // reads, and only the fields it reads from them.
 import fs from "node:fs";
@@ -24,7 +24,7 @@ const COLLECTIONS = [
 const FIELDS = ["ItemType", "ItemCount", "XP", "Features", "Polarized"];
 
 const source = process.argv[2];
-if (!source) throw new Error("usage: captureInventorySlice.mjs <inventory.json>");
+if (!source) throw new Error("usage: capture-inventory-slice.mjs <inventory.json>");
 const inventory = JSON.parse(fs.readFileSync(source, "utf-8"));
 
 const pick = (entry) =>
@@ -40,6 +40,7 @@ for (const key of COLLECTIONS) {
 // Foundry builds can spend any blueprint, so every pending build is kept.
 slice.PendingRecipes = (inventory.PendingRecipes ?? []).map((row) => ({ ItemType: row.ItemType }));
 
-const out = path.join(path.dirname(fileURLToPath(import.meta.url)), "user-inventory-slice.json");
+const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../..");
+const out = path.join(repoRoot, "tests/fixtures/safe-to-sell/user-inventory-slice.json");
 fs.writeFileSync(out, `${JSON.stringify(slice, null, 1)}\n`);
 console.log(`wrote ${out}`);

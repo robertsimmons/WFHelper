@@ -36,6 +36,9 @@
     "font-display text-[0.6875rem] font-semibold leading-none transition-colors duration-150";
   const BUTTON_ON = "border-accent bg-bg-surface text-accent";
   const BUTTON_OFF = "border-border bg-bg-surface text-text-muted hover:border-border-strong";
+  const ALL_ROW =
+    "mb-0.5 cursor-pointer select-none whitespace-nowrap rounded-t-[var(--radius-sm)] border-b " +
+    "border-border px-1 py-0.5 text-left text-xs text-text-secondary hover:bg-bg-hover";
 
   const options = $derived($suggestionPreferences.options);
 
@@ -81,10 +84,7 @@
     return next.length === every.length ? [] : [...next];
   }
 
-  function toggleInclude(include: AcquisitionInclude): void {
-    const next = ACQUISITION_INCLUDES.filter((kind) =>
-      kind === include ? !selected.includes(kind) : selected.includes(kind),
-    );
+  function storeIncludes(next: readonly AcquisitionInclude[]): void {
     // After "None" the other row is empty too, and a pick there would still show nothing.
     setSuggestionOptions({
       acquisitionKinds: stored(next, ACQUISITION_INCLUDES),
@@ -92,14 +92,43 @@
     });
   }
 
-  function toggleSource(source: PlanSource): void {
-    const next = ACQUISITION_SOURCES.filter((entry) =>
-      entry === source ? !sources.includes(entry) : sources.includes(entry),
-    );
+  function storeSources(next: readonly PlanSource[]): void {
     setSuggestionOptions({
       acquisitionSources: stored(next, ACQUISITION_SOURCES),
       ...(next.length > 0 && selected.length === 0 ? { acquisitionKinds: [] } : {}),
     });
+  }
+
+  function toggleInclude(include: AcquisitionInclude): void {
+    storeIncludes(
+      ACQUISITION_INCLUDES.filter((kind) =>
+        kind === include ? !selected.includes(kind) : selected.includes(kind),
+      ),
+    );
+  }
+
+  function toggleSource(source: PlanSource): void {
+    storeSources(
+      ACQUISITION_SOURCES.filter((entry) =>
+        entry === source ? !sources.includes(entry) : sources.includes(entry),
+      ),
+    );
+  }
+
+  function toggleGroup(group: AcquisitionIncludeGroup): void {
+    const on = pickedIn(group) < group.members.length;
+    const members = group.members.map((member) => member.include);
+    storeIncludes(
+      ACQUISITION_INCLUDES.filter((kind) =>
+        members.includes(kind) ? on : selected.includes(kind),
+      ),
+    );
+  }
+
+  const allSources = $derived(sources.length === ACQUISITION_SOURCES.length);
+
+  function toggleSources(): void {
+    storeSources(allSources ? [] : ACQUISITION_SOURCES);
   }
 
   const cleared = $derived(selected.length === 0 || sources.length === 0);
@@ -268,6 +297,14 @@
     data-acquisition-group-panel={opened.id}
     style="top: {top}px; left: {left}px;"
   >
+    <button
+      type="button"
+      class={ALL_ROW}
+      data-acquisition-group-all={opened.id}
+      onclick={() => toggleGroup(opened)}
+    >
+      {$tr(pickedIn(opened) < opened.members.length ? "common.all" : "common.none")}
+    </button>
     {#each opened.members as member (member.include)}
       <label
         class="flex cursor-pointer select-none items-center gap-1.5 whitespace-nowrap rounded-[var(--radius-sm)]
@@ -293,6 +330,9 @@
     data-acquisition-sources-panel
     style="top: {top}px; left: {left}px;"
   >
+    <button type="button" class={ALL_ROW} data-acquisition-sources-all onclick={toggleSources}>
+      {$tr(allSources ? "common.none" : "common.all")}
+    </button>
     {#each ACQUISITION_SOURCE_OPTIONS as option (option.source)}
       <label
         class="flex cursor-pointer select-none items-center gap-1.5 whitespace-nowrap rounded-[var(--radius-sm)]

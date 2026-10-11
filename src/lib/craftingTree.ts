@@ -55,11 +55,10 @@ export const MAX_EXPAND_DEPTH = 3;
 /** Common resource path prefixes - never recurse into these sub-trees. */
 const LEAF_RESOURCE_PREFIXES = ["/Lotus/Types/Items/MiscItems/", "/Lotus/Types/Items/Research/"];
 
-// DE's ExportResources rows reach the item database under this category, and
-// hundreds of them carry a conversion recipe: the Sentient Core ladder, cut
-// gems and refined alloys, Ayatan stars, the Necramech resource-parts. Owning a
-// recipe must never promote one of those to a crafted component of whatever
-// asks for it - the category is the only thing that separates the two.
+// ExportResources rows land under this category, and hundreds carry a conversion
+// recipe (Sentient Cores, cut gems, refined alloys, Ayatan stars, Necramech parts).
+// A recipe must never promote one to a crafted component of whatever asks for it;
+// the category is the only thing that separates the two.
 const RESOURCE_CATEGORIES = new Set(["resource", "resources"]);
 
 export function isResourceEntry(entry: ItemDbEntry | undefined): boolean {

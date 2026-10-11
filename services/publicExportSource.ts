@@ -53,8 +53,8 @@ interface CachePayload {
   /** Hashed manifest filename per export - lets us skip unchanged downloads. */
   index: Partial<Record<OverlayKey, string>>;
   exports: Partial<Record<OverlayKey, KeyedExport>>;
-  imagesIndex?: string;
-  images?: Record<string, string>;
+  imagesIndex?: string | undefined;
+  images?: Record<string, string> | undefined;
 }
 
 let overlay: PublicExportOverlay | null = null;

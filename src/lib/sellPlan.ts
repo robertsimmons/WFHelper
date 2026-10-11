@@ -4,7 +4,7 @@ import { pendingRecipeCounts, withoutFoundryPending } from "../../config/shared/
 import { buildClaimResolver, type RecipeClaim } from "./recipeClaims.js";
 import type { ItemDbEntry, MasteryData, MasteryStatus } from "../types/inventory.js";
 
-export interface SellVerdict {
+interface SellVerdict {
   /** Copies of this spelling held back for gear still owed mastery. */
   reserved: number;
   sellable: number;

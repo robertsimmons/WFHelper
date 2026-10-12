@@ -82,7 +82,7 @@ export function pinKinds(placed: readonly PlacedPin[]): Map<string, Map<string, 
 }
 
 /** How a need reads in the sidebar: the first kind here that it has a pin of. */
-const KIND_PRIORITY = ["mining", "fishing", "resource", "cave"];
+const KIND_PRIORITY = ["mining", "fishing", "resource"];
 
 const kindRank = (kind: string): number => {
   const rank = KIND_PRIORITY.indexOf(kind);
@@ -95,7 +95,6 @@ export function orderedKinds(counts: ReadonlyMap<string, number>): string[] {
 }
 
 const DRAW_ORDER: Readonly<Record<string, number>> = {
-  cave: 0,
   mining: 0,
   resource: 1,
   fishing: 2,
@@ -145,8 +144,8 @@ export function fanOffsets(placed: readonly PlacedPin[]): Map<string, [number, n
 
 const drawRank = (kind: string): number => DRAW_ORDER[kind] ?? 1;
 
-/** Only pins that serve a needed name, caves and mining areas drawn first so a
- *  harvest pin on top of a cave mouth stays clickable. */
+/** Only pins that serve a needed name, mining areas drawn first so a harvest
+ *  pin on top of one stays clickable. */
 export function pinsForNeeds(pins: readonly MapPin[], names: readonly string[]): PlacedPin[] {
   const wanted = names.map((name) => name.trim().toLowerCase());
   return pins

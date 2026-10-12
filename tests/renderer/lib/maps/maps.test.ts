@@ -125,7 +125,7 @@ describe("map pins", () => {
     expect(mapPins("kullervos-hold")).toEqual(duviri);
     const ids = new Set(duviri.map((entry) => entry.id));
     expect(ids.has("duviri-blinkpad-01")).toBe(true);
-    expect(ids.has("duviri-cave-01")).toBe(true);
+    expect(ids.has("duviri-tasoma-01")).toBe(true);
     expect([...ids].some((id) => !id.startsWith("duviri-"))).toBe(true);
     expect(duviri.find((entry) => entry.id === "duviri-blinkpad-01")?.refs).toEqual([
       "Saggen Pearl",
@@ -133,15 +133,15 @@ describe("map pins", () => {
     expect(mapPins("hollvania")).toEqual([]);
   });
 
-  it("keeps only pins serving a need, refs in need order, caves drawn first", () => {
+  it("keeps only pins serving a need, refs in need order, mining areas drawn first", () => {
     const pins = [
       pin("fish", "fishing", ["Nacreous Pebble", "Maw Fang", "Ariette Scale"]),
       pin("lore", "fragment", ["/Lotus/Types/Lore/Fragments/X"]),
-      pin("cave", "cave", ["tasoma extract"]),
+      pin("mine", "mining", ["tasoma extract"]),
       pin("pearl", "resource", ["Saggen Pearl"]),
     ];
     const placed = pinsForNeeds(pins, ["Ariette Scale", "Tasoma Extract", "Maw Fang"]);
-    expect(placed.map((entry) => entry.pin.id)).toEqual(["cave", "fish"]);
+    expect(placed.map((entry) => entry.pin.id)).toEqual(["mine", "fish"]);
     expect(placed[0].refs).toEqual(["Tasoma Extract"]);
     expect(placed[1].refs).toEqual(["Ariette Scale", "Maw Fang"]);
     const kinds = pinKinds(placed);
@@ -155,16 +155,16 @@ describe("map pins", () => {
       refs: ["Kovnik"],
     });
     const fans = fanOffsets([
-      at("cave", "cave", 10, 20),
-      at("cave-fishing", "fishing", 10, 20),
+      at("mine", "mining", 10, 20),
+      at("mine-fishing", "fishing", 10, 20),
       at("lone", "resource", 10, 21),
       at("a", "resource", 5, 5),
       at("b", "resource", 5, 5),
       at("c", "resource", 5, 5),
     ]);
     expect(fans.has("lone")).toBe(false);
-    const [cx, cy] = fans.get("cave") ?? [0, 0];
-    const [fx, fy] = fans.get("cave-fishing") ?? [0, 0];
+    const [cx, cy] = fans.get("mine") ?? [0, 0];
+    const [fx, fy] = fans.get("mine-fishing") ?? [0, 0];
     expect(cx).toBeLessThan(0);
     expect(fx).toBeGreaterThan(0);
     expect(Math.hypot(fx - cx, fy - cy)).toBeGreaterThanOrEqual(16);
@@ -175,16 +175,15 @@ describe("map pins", () => {
     expect(new Set(trio.map(([x, y]) => `${x.toFixed(2)},${y.toFixed(2)}`)).size).toBe(3);
   });
 
-  it("names a need by mining, then fishing, then harvest, then cave", () => {
+  it("names a need by mining, then fishing, then harvest, then any other kind", () => {
     const kinds = (...names: string[]) => new Map(names.map((name) => [name, 1]));
-    expect(orderedKinds(kinds("cave", "fishing", "mining"))).toEqual(["mining", "fishing", "cave"]);
-    expect(orderedKinds(kinds("cave", "resource", "fishing"))).toEqual([
+    expect(orderedKinds(kinds("resource", "fishing", "mining"))).toEqual([
+      "mining",
       "fishing",
       "resource",
-      "cave",
     ]);
-    expect(orderedKinds(kinds("cave", "resource"))[0]).toBe("resource");
-    expect(orderedKinds(kinds("cave"))[0]).toBe("cave");
+    expect(orderedKinds(kinds("fragment", "resource"))).toEqual(["resource", "fragment"]);
+    expect(orderedKinds(kinds("fragment"))[0]).toBe("fragment");
   });
 
   it("draws a pinless need's name as text, so it cannot solo an empty map", () => {
@@ -293,7 +292,7 @@ describe("pin fills", () => {
 
   it("caps the slices and flags the refs it leaves out", () => {
     const refs = Object.keys(colors);
-    const paint = pinFills({ pin: pin("cave", "cave", refs), refs }, colors);
+    const paint = pinFills({ pin: pin("mine", "mining", refs), refs }, colors);
     expect(paint.fills).toEqual(refs.slice(0, MAX_PIN_FILLS).map((ref) => colors[ref]));
     expect(paint.more).toBe(true);
     expect(pinFills({ pin: pin("one", "resource", ["R1"]), refs: ["R1"] }, colors)).toEqual({
@@ -383,17 +382,26 @@ describe("shipped maps", () => {
 
   // The store's own mechanism text classifies refs, so a new fish part or ore is
   // covered the day it is added; a hand list here would drift from the store.
-  it.each(farmFiles)("no fishing or cave pin in farm-$key.json mixes fish with ore", ({ raw }) => {
-    const how = (ref: string): string => resourceEntry(ref)?.best?.how?.toLowerCase() ?? "";
-    const mixed: string[] = [];
-    for (const entry of raw as { id: string; kind: string; refs: string[] }[]) {
-      const fish = entry.refs.filter((ref) => how(ref).startsWith("fishing"));
-      const ore = entry.refs.filter((ref) => how(ref).startsWith("mining"));
-      if (entry.kind === "fishing" && ore.length > 0) mixed.push(`${entry.id}: ${ore.join(", ")}`);
-      if ((entry.kind === "cave" || entry.kind === "mining") && fish.length > 0) {
-        mixed.push(`${entry.id}: ${fish.join(", ")}`);
-      }
-    }
-    expect(mixed).toEqual([]);
+  it.each(farmFiles)("farm-$key.json has no cave pins; the base map draws caves", ({ raw }) => {
+    const caves = (raw as { id: string; kind: string }[]).filter((entry) => entry.kind === "cave");
+    expect(caves.map((entry) => entry.id)).toEqual([]);
   });
+
+  it.each(farmFiles)(
+    "no fishing or mining pin in farm-$key.json mixes fish with ore",
+    ({ raw }) => {
+      const how = (ref: string): string => resourceEntry(ref)?.best?.how?.toLowerCase() ?? "";
+      const mixed: string[] = [];
+      for (const entry of raw as { id: string; kind: string; refs: string[] }[]) {
+        const fish = entry.refs.filter((ref) => how(ref).startsWith("fishing"));
+        const ore = entry.refs.filter((ref) => how(ref).startsWith("mining"));
+        if (entry.kind === "fishing" && ore.length > 0)
+          mixed.push(`${entry.id}: ${ore.join(", ")}`);
+        if (entry.kind === "mining" && fish.length > 0) {
+          mixed.push(`${entry.id}: ${fish.join(", ")}`);
+        }
+      }
+      expect(mixed).toEqual([]);
+    },
+  );
 });

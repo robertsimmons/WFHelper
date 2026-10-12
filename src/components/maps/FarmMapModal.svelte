@@ -21,12 +21,10 @@
     mining: "nextUp.farmMapKindMining",
     fishing: "nextUp.farmMapKindFishing",
     resource: "nextUp.farmMapKindResource",
-    cave: "nextUp.farmMapKindCave",
   };
   const SUMMARY: Readonly<Record<string, [MessageKey, MessageKey]>> = {
     resource: ["nextUp.farmMapSpot", "nextUp.farmMapSpots"],
     fishing: ["nextUp.farmMapFishingSpot", "nextUp.farmMapFishingSpots"],
-    cave: ["nextUp.farmMapCave", "nextUp.farmMapCaves"],
     mining: ["nextUp.farmMapMiningArea", "nextUp.farmMapMiningAreas"],
   };
 

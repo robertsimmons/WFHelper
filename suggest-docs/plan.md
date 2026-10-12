@@ -98,7 +98,7 @@ Each is shippable alone, in order.
 | # | Slice | Notes | Status |
 |---|---|---|---|
 | 9 | Build import to full step plan | | |
-| 11 | Scannables: track and collect scannable things | Spec below | |
+| 11 | Scannables: track and collect scannable things | `scannables-plan.md`, `simulacrum-scans-plan.md` | |
 
 ### Relic routes for Primes
 
@@ -121,7 +121,8 @@ Possibly its own top-level feature, one band or tab per group.
 - **Progress:** fragments are the inventory's `LoreFragmentScans` (`Progress` and `Region`) against `reqScans` in `ExportCodex.json`, which also lists the ones never found. Enemies are the profile's codex scans (`codexProfile`) against `codexScanRequirements.json`. A group with no game data falls back to marking off by hand, or OCR as the other OCR features do.
 - **Suggestions:** where to go for the most progress per run, with an ELI5 how-to, e.g. "take Helios with Investigator to X, pick up the Somachord by the air supply in the middle of the map".
 - **Browse:** each group lists what is had and missing.
-- **Simulacrum enemies** is the first band, spec in `simulacrum-scans-plan.md`. Wildlife, objects, fragments, Somachords and Frame Fighter data are later bands.
+- **Simulacrum enemies:** spec in `simulacrum-scans-plan.md`.
+- **Places:** wildlife, objects, fragments, Prex, Somachords and Frame Fighter, spec in `scannables-plan.md`.
 - **Later:** Captura scenes, decorations, every other collectible.
 
 ## Misc

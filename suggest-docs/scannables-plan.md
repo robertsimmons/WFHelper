@@ -51,7 +51,7 @@ interface ScannablePlace {
 └────────────────────────────┘
 ```
 
-Click opens a modal: gates, steps, then every missing item as a tile grouped by group, with scans and wiki link. The pinned map joins the modal top when the shared MapView lands.
+Click opens a modal: the place's map with its missing items pinned and coloured by kind, gates, steps, then every missing item as a tile grouped by group, with scans and wiki link.
 
 ## Files
 

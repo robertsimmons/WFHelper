@@ -227,12 +227,22 @@ or Invasion overlay.
 
 ### Maps
 
-Built for from the start, dark until the map phase lands. Every harvestable resource points at
-the map for its location, so one map serves every item that farms there and the set stays small.
+A group's map button opens that map with pins for everything the whole plan still needs to gather
+there. Every resource starts on; each toggles, a name solos it, All restores. Pins for anything the
+plan doesn't need are never drawn. A gatherable with no fixed spot shows its where-text, tagged
+"anywhere".
 
-A resource-farm group carries a map link whether or not the map exists yet; an absent one renders
-disabled. The app can list every location a plan references that has no map, so the map phase
-starts from a work list rather than a survey.
+- **Maps:** Duviri, Orb Vallis, Cambion Drift, Plains of Eidolon, on the wiki's 4k images.
+  Kullervo's Hold and the Archarbor open Duviri. A key with no map renders the button disabled.
+- **Listed:** only resource-store entries that are harvestable on that map. Currency, boss drops
+  and rewards stay in the plan, off the map.
+- **Pins:** `src/data/maps/pins/<owner>-<key>.json` on the wiki DataMaps grid (4000x4000, origin
+  bottom-left), from its markers where it has them, otherwise authored and noted "approximate".
+  Containers with known spawn points get pins. Caves are already drawn on the base images, so no
+  cave pins.
+- **Guards:** map keys come from `PLAN_MAP_KEYS`; vendor and gate groups carry none; a harvestable
+  resource names a map; a craft is never harvestable and always has a recipe; every farm pin ref is
+  a harvestable resource on its map.
 
 ## Phase 7 — Research fan-out
 
@@ -241,7 +251,7 @@ list is covered first.
 
 ## Later
 
-- Maps themselves — the open-world resource spots and Duviri first, in reference order.
+- Maps for Hollvania and any other map key plans reference that has no base map yet.
 - A time estimate on a step where the community states a real one.
 - "I just want to farm something useful" — the aggregate of every material every unbuilt item
   needs, which the part plans already compute.

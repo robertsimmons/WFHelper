@@ -10,6 +10,7 @@ import type {
   DropSearchResult,
 } from "../config/shared/dropTypes";
 import { normalizeErrorMessage } from "../config/shared/errors";
+import type { RelicSourceRow } from "../config/shared/relicSources";
 import { createJsonCache } from "./jsonCache";
 import { withScope } from "./logger";
 import { correctedDropRarity } from "./relicRarity";
@@ -19,9 +20,9 @@ const log = withScope("dropData");
 const INFO_URL = "https://drops.warframestat.us/data/info.json";
 const ALL_URL = "https://drops.warframestat.us/data/all.json";
 
-// Bumped when a row gains a field: an older cache has no kind, and the flatten
-// is the only place that can derive one.
-const CACHE_VERSION = 2;
+// Bumped when a row gains a field: an older cache lacks it, and the flatten is
+// the only place that can derive one.
+const CACHE_VERSION = 3;
 
 interface CachePayload {
   version: number;
@@ -81,6 +82,7 @@ function pushRow(
   place: string,
   r: Reward,
   kind: DropKind,
+  gameMode?: string,
 ): void {
   if (!item || !place) return;
   const raw = typeof r.chance === "number" ? r.chance : Number(r.chance);
@@ -91,6 +93,7 @@ function pushRow(
     rarity: correctedDropRarity(place, chance, r.rarity || ""),
     chance,
     kind,
+    ...(gameMode ? { gameMode } : {}),
   });
 }
 
@@ -100,13 +103,14 @@ function pushRewardContainer(
   basePlace: string,
   rewards: Reward[] | Record<string, Reward[]>,
   kind: DropKind,
+  gameMode?: string,
 ): void {
   const emit = (place: string, list: Reward[]): void => {
     for (const r of list) {
       let p = place;
       if (r.rotation) p += `, Rotation ${r.rotation}`;
       if (r.stage) p += ` (${r.stage})`;
-      pushRow(out, rewardName(r), p, r, kind);
+      pushRow(out, rewardName(r), p, r, kind, gameMode);
     }
   };
   if (Array.isArray(rewards)) {
@@ -144,6 +148,8 @@ const BOUNTY_KEYS = [
   "hexRewards",
 ] as const;
 
+const CACHES_NODE = /^(.+) \(Caches\)$/;
+
 function flatten(data: AllData): DropRow[] {
   const out: DropRow[] = [];
 
@@ -151,7 +157,10 @@ function flatten(data: AllData): DropRow[] {
   for (const [planet, nodes] of Object.entries(data.missionRewards || {})) {
     for (const [node, info] of Object.entries(nodes || {})) {
       const place = `${node} (${planet})`;
-      pushRewardContainer(out, place, (info?.rewards as Reward[]) || [], "mission");
+      // A Railjack cache node's own mode is just "Caches"; the mission is its sibling's.
+      const base = CACHES_NODE.exec(node)?.[1];
+      const gameMode = (base && nodes[base]?.gameMode) || info?.gameMode;
+      pushRewardContainer(out, place, (info?.rewards as Reward[]) || [], "mission", gameMode);
     }
   }
   for (const relic of data.relics || []) {
@@ -271,12 +280,9 @@ function setServedRows(upstream: DropRow[]): void {
   revision += 1;
 }
 
-export interface RelicDropRow {
-  place: string;
-  chance: number;
-}
+export type RelicDropRow = RelicSourceRow;
 
-const RELIC_ITEM = /^(.+?) Relic(?: \([^()]*\))?$/;
+const RELIC_ITEM = /^(.+?) Relic(?: \(([^()]*)\))?$/;
 
 /** Bumps whenever the served rows change, so a reader can tell its copy is stale. */
 export function dropTablesRevision(): number {
@@ -293,7 +299,13 @@ export function relicDropRows(): ReadonlyMap<string, readonly RelicDropRow[]> | 
     if (!match) continue;
     const key = collapseSpace(match[1]);
     const list = byRelic.get(key) ?? [];
-    list.push({ place: collapseSpace(row.place), chance: row.chance });
+    list.push({
+      place: collapseSpace(row.place),
+      chance: row.chance,
+      kind: row.kind,
+      gameMode: row.gameMode ?? null,
+      refinement: match[2] ?? null,
+    });
     byRelic.set(key, list);
   }
   relicRows = { at: revision, byRelic };

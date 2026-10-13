@@ -20,6 +20,8 @@ export interface DropRow {
   rarity: string;
   chance: number;
   kind: DropKind;
+  /** The star-chart node's mission type, on mission-table rows only. */
+  gameMode?: string;
 }
 
 export type DropSearchMode = "item" | "place" | "enemy";

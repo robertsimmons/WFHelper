@@ -41,6 +41,7 @@
   import { plainName, rewardArt } from "./rewardArt.js";
   import AcquisitionTree from "./AcquisitionTree.svelte";
   import PlanTips from "./plan/PlanTips.svelte";
+  import RelicSourcesSection from "./RelicSourcesSection.svelte";
   import ItemTile from "./ItemTile.svelte";
   import TierBadge from "./TierBadge.svelte";
   import TimeLeft from "./TimeLeft.svelte";
@@ -1153,6 +1154,10 @@
               </div>
             {/each}
           </div>
+        {/if}
+
+        {#if acq.isPrime && acq.parts.missing.length > 0}
+          <RelicSourcesSection missing={acq.parts.missing} />
         {/if}
 
         {#if acqTips.length > 0}

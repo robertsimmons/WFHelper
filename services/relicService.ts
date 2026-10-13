@@ -2,6 +2,7 @@ import { withScope } from "./logger";
 import { normalizeErrorMessage } from "../config/shared/errors";
 import { normalizeDucats } from "../config/shared/numeric";
 import { normalizeWfmSlug } from "../config/shared/wfm";
+import { relicSource, type RelicSource } from "../config/shared/relicSources";
 import { fallbackNameFromUniqueName } from "../config/shared/displayName";
 import * as dropData from "./dropData";
 import { getOverlay } from "./publicExportSource";
@@ -54,6 +55,8 @@ interface RelicGroup {
   dropping?: RelicDropping | null;
   /** Railjack derelict caches it drops from, best chance per region. */
   caches?: RelicCache[];
+  /** Every drop-table row it drops from; null until the tables load. */
+  sources?: RelicSource[] | null;
   imageUrl: string | null;
   qualities: Record<string, RelicQuality>;
 }
@@ -278,10 +281,14 @@ function stampGroup(
   group: RelicGroup,
   drops: ReadonlyMap<string, readonly dropData.RelicDropRow[]> | null,
 ): RelicGroup {
+  if (!drops) return { ...group, dropping: null, caches: [], sources: null };
+  const rows = drops.get(group.name) ?? [];
   // Requiem relics come off Kuva Siphons, which the tables list only as a random
   // "Requiem Eterna" roll, so the bundled flag keeps answering for them.
-  if (!drops || group.tier === "Requiem") return { ...group, dropping: null, caches: [] };
-  const rows = drops.get(group.name) ?? [];
+  if (group.tier === "Requiem") {
+    const sources = rows.length > 0 ? rows.map(relicSource) : null;
+    return { ...group, dropping: null, caches: [], sources };
+  }
   const best = new Map<string, number>();
   for (const row of rows) {
     const region = cacheRegion(row.place);
@@ -295,6 +302,7 @@ function stampGroup(
     vaulted: dropping === "none",
     dropping,
     caches: [...best].map(([region, chance]) => ({ region, chance })),
+    sources: rows.map(relicSource),
   };
 }
 

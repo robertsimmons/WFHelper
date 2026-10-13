@@ -124,7 +124,7 @@
         <aside class="flex min-h-0 flex-col border-l border-border bg-bg-surface">
           <div class="flex items-center justify-between border-b border-border px-3.5 py-2.5">
             <span class="text-xs font-semibold uppercase leading-[1.2] tracking-[0.1em]"
-              >{$tr("nextUp.farmMapResources")}</span
+              >{$tr("nav.resources")}</span
             >
             <button
               class="cursor-pointer rounded-[var(--radius-sm)] border border-border px-[9px] py-0.5
@@ -132,7 +132,7 @@
                      hover:bg-bg-hover hover:text-text-primary"
               title={$tr("nextUp.farmMapAllTitle")}
               aria-pressed={chosen === null}
-              onclick={() => (chosen = null)}>{$tr("nextUp.farmMapAll")}</button
+              onclick={() => (chosen = null)}>{$tr("common.all")}</button
             >
           </div>
 

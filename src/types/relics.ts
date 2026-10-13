@@ -1,3 +1,7 @@
+import type { RelicSource } from "../../config/shared/relicSources.js";
+
+export type { RelicSource };
+
 export type RelicQuality = "intact" | "exceptional" | "flawless" | "radiant";
 
 export interface RelicReward {
@@ -36,6 +40,8 @@ export interface RelicGroup {
   dropping?: RelicDropping | null;
   /** Railjack derelict caches it drops from, best chance per region. */
   caches?: RelicCache[];
+  /** Every drop-table row it drops from; null or absent until the tables load. */
+  sources?: RelicSource[] | null;
   imageUrl: string | null;
   qualities: Partial<Record<RelicQuality, RelicQualityData>>;
   [key: string]: unknown;

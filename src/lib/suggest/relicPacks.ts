@@ -264,7 +264,7 @@ export function relicPacksSummary(
   return summary;
 }
 
-export function relicArt(row: RelicPayout): string | null {
+export function relicArt(row: Pick<RelicPayout, "imageUrl" | "tier">): string | null {
   return (
     row.imageUrl ?? RELIC_ICON_PATHS[row.tier.toLowerCase()] ?? RELIC_ICON_PATHS["default"] ?? null
   );

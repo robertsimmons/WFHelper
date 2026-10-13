@@ -115,7 +115,23 @@ describe("dropData.flatten", () => {
       rarity: "Rare",
       chance: 7,
       kind: "mission",
+      gameMode: "Survival",
     });
+  });
+
+  it("gives a Railjack cache node its sibling node's game mode", () => {
+    const cached = flattenForTest({
+      missionRewards: {
+        Pluto: {
+          "Khufu Envoy": { gameMode: "Skirmish", rewards: [] },
+          "Khufu Envoy (Caches)": {
+            gameMode: "Caches",
+            rewards: { A: [{ itemName: "Meso Z98 Relic", rarity: "Rare", chance: 9 }] },
+          },
+        },
+      },
+    });
+    expect(cached[0]?.gameMode).toBe("Skirmish");
   });
 
   it("tags every row with the table it came from", () => {
@@ -253,7 +269,7 @@ describe("dropData.searchDrops enemy mode", () => {
 
 // Matches CACHE_VERSION in services/dropData.ts; a bump must fail loudly here.
 const CACHED_UPSTREAM = {
-  version: 2,
+  version: 3,
   hash: "cachedhash",
   updatedAt: "",
   rows: [

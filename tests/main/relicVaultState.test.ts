@@ -41,7 +41,7 @@ describe("relic vault state from the drop tables", () => {
 
   it("keeps the bundled flag until the tables load, then restamps on every change", () => {
     const before = getRelicDatabase().groups["Meso Z98"];
-    expect(before).toMatchObject({ dropping: null, vaulted: false });
+    expect(before).toMatchObject({ dropping: null, vaulted: false, sources: null });
 
     dropData.setRowsForTest([
       row("Khufu Envoy (Caches) (Pluto), Rotation B", 9.68),
@@ -57,16 +57,44 @@ describe("relic vault state from the drop tables", () => {
       ],
     });
 
-    dropData.setRowsForTest([row("Hepit (Void), Rotation A", 14.29)]);
+    expect(getRelicDatabase().groups["Meso Z98"]?.sources).toHaveLength(3);
+
+    dropData.setRowsForTest([
+      row("Hepit (Void), Rotation A", 14.29),
+      {
+        ...row("Mot (Void), Rotation C", 7.5),
+        item: "Meso Z98 Relic (Radiant)",
+        gameMode: "Survival",
+      },
+    ]);
     expect(getRelicDatabase().groups["Meso Z98"]).toMatchObject({
       dropping: "missions",
       vaulted: false,
+      sources: [
+        {
+          place: "Hepit (Void)",
+          kind: "mission",
+          missionType: null,
+          rotation: "A",
+          chance: 14.29,
+          refinement: null,
+        },
+        {
+          place: "Mot (Void)",
+          kind: "mission",
+          missionType: "Survival",
+          rotation: "C",
+          chance: 7.5,
+          refinement: "Radiant",
+        },
+      ],
     });
 
     dropData.setRowsForTest([]);
     expect(getRelicDatabase().groups["Meso Z98"]).toMatchObject({
       dropping: "none",
       vaulted: true,
+      sources: [],
     });
   });
 });

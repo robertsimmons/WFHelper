@@ -248,7 +248,7 @@ export function computeGroupDucatonator(
   return ducatEv / platEv;
 }
 
-function relicGroupSlug(groupKey: string): string {
+export function relicGroupSlug(groupKey: string): string {
   const normalized = groupKey
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, "_")

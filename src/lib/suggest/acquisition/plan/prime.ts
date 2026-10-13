@@ -152,6 +152,11 @@ function dropsFor(index: RelicIndex, uniqueName: string, name: string): RelicDro
   return index.byName.get(partKey(name)) ?? [];
 }
 
+/** Every relic that pays the part, by group name. */
+export function relicsPaying(db: RelicDatabase, uniqueName: string, name: string): string[] {
+  return dropsFor(relicIndex(db), uniqueName, name).map((drop) => drop.relic);
+}
+
 /** The recipe tree flattened into what a plan lists: drops to farm, builds in
  *  the order the foundry takes them, and the materials each build eats. A
  *  material the store does not name is still listed, bare. */

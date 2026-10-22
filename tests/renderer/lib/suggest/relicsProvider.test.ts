@@ -487,6 +487,26 @@ describe("relicsProvider MR goal", () => {
     expect(relicsProvider.collect(mrContext({}, [MAG, WUKONG]))).toEqual([]);
   });
 
+  it("drops a relic whose held refinement pays no needed part, rather than advise selling", () => {
+    const ctx = mrContext();
+    const group = database?.groups["Meso F3"] as RelicGroup;
+    group.qualities.radiant = {
+      uniqueName: RADIANT,
+      rewards: [mrReward("Forma Blueprint", 50, "Common", 0)],
+    };
+    setCachedPrice("forma_blueprint", 20);
+    expect(relicsProvider.collect(ctx)).toEqual([]);
+    const plat = relicsProvider.collect({ ...ctx, prefs: context(null).prefs })[0];
+    expect(plat?.reward?.name).toBe("Forma Blueprint");
+  });
+
+  it("counts the relic across every refinement held", () => {
+    expect(relicsProvider.collect(mrContext())[0]?.details?.relic).toMatchObject({
+      count: 2,
+      total: 6,
+    });
+  });
+
   it("drops a mastered item's part from the count", () => {
     const draft = relicsProvider.collect(mrContext({}, [WUKONG]))[0];
     expect(draft?.reward?.name).toBe("Mag Prime Chassis");

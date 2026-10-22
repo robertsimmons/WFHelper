@@ -171,6 +171,9 @@ export interface TrackerCompletion {
   count: number;
   /** What that row reads once this card is done with it. */
   target: number;
+  /** Charges the inventory sync already read off the shared vault allowance,
+   *  for a row whose tick spends from it. */
+  autoUsed?: number | undefined;
 }
 
 /** Raw provider signals, each 0..1; the scorer owns how they combine. */
@@ -223,6 +226,8 @@ export interface SuggestionPoolRow {
   /** Median plat; null where the market has not priced it. */
   platinum?: number | null | undefined;
   ducats?: number | null | undefined;
+  /** warframe.market slug the price was read under. */
+  urlName?: string | null | undefined;
   status?: RelicRewardStatus | null | undefined;
   /** Copies held, as `relicMr` counts them; null where unplaceable. */
   ownedCount?: number | null | undefined;
@@ -322,6 +327,8 @@ export interface SuggestionDetails {
 export interface RelicFacts {
   /** Copies held at the refinement this suggestion is about. */
   count: number;
+  /** Copies held across every refinement. */
+  total: number;
   quality: RelicQuality;
   /** Node the live fissure is on. */
   node: string;

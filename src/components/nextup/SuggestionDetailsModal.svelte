@@ -4,6 +4,7 @@
   import { activeWindow, formatNumber } from "../../lib/format.js";
   import { tr } from "../../lib/i18n.js";
   import { send } from "../../lib/ipc.js";
+  import { openOnWfm } from "../../lib/priceLoader.js";
   import { progenitors as frameProgenitors } from "../../lib/suggest/acquisition/progenitors.js";
   import { tierOrder } from "../../lib/suggest/acquisition/recommend.js";
   import { itemTiers } from "../../lib/suggest/acquisition/tiers.js";
@@ -32,7 +33,6 @@
     TONE,
     cardClock,
     missionChipTone,
-    timeLeftText,
     valencePercent,
     valenceTone,
     winChip,
@@ -53,7 +53,6 @@
   import type {
     RelicGoal,
     RelicRarity,
-    RelicRewardStatus,
     RewardWorth,
     Suggestion,
     SuggestionCategory,
@@ -76,7 +75,6 @@
     daily: "nextUp.detailsRuns",
     weekly: "nextUp.detailsRuns",
     nightwave: "nextUp.detailsRuns",
-    relics: "nextUp.detailsRuns",
     acquisition: "nextUp.acqParts",
   };
 
@@ -173,6 +171,7 @@
     status: TileStatus | null;
     platinum: number | null;
     ducats: number | null;
+    urlName: string | null;
   }
 
   /** One value the header strip carries. Position and colour say what it is; the
@@ -260,11 +259,7 @@
   );
   // A stall's pool is what it is holding, not what drops off anything.
   const poolLabel = $derived<MessageKey>(
-    suggestion.category === "vendor"
-      ? "nextUp.detailsStock"
-      : relic
-        ? "nextUp.acqParts"
-        : "nextUp.detailsPool",
+    suggestion.category === "vendor" ? "nextUp.detailsStock" : "nextUp.detailsPool",
   );
   const missions = $derived(details?.missions ?? []);
   const options = $derived(details?.options ?? []);
@@ -491,19 +486,16 @@
       status: row.status ? { kind: row.status, count: row.ownedCount ?? null } : null,
       platinum: row.platinum ?? null,
       ducats: row.ducats ?? null,
+      urlName: row.urlName ?? null,
     };
   }
 
-  const STATUS_RANK: Record<RelicRewardStatus, number> = { needed: 0, owned: 1, mastered: 2 };
-  const RARITY_RANK: Record<RelicRarity, number> = { rare: 0, uncommon: 1, common: 2 };
+  const RARITY_RANK: Record<RelicRarity, number> = { common: 0, uncommon: 1, rare: 2 };
 
-  /** What is still needed first, then the rarest, then the priciest. */
+  /** The in-game reward screen's order, which the fixed three-wide grid turns
+   *  into commons on top and the rare bottom right. */
   function relicPartScore(row: PoolTile): number[] {
-    return [
-      row.status ? STATUS_RANK[row.status.kind] : UNRATED_RANK,
-      row.rarity ? RARITY_RANK[row.rarity] : UNRATED_RANK,
-      -(row.platinum ?? -1),
-    ];
+    return [row.rarity ? RARITY_RANK[row.rarity] : UNRATED_RANK, -(row.chance ?? 0)];
   }
 
   function compareRelicParts(a: PoolTile, b: PoolTile): number {
@@ -706,17 +698,28 @@
     status={row.status}
     rarity={row.rarity}
     cost={row.cost}
+    fades={!relic}
     stretch
   >
     {#snippet actions()}
       <!-- A relic drop's colour is its rarity, which is all its chance says. -->
       {#if relic}
+        {@const plat =
+          row.platinum === null
+            ? "-"
+            : $tr("nextUp.acqPlatEach", { plat: String(Math.round(row.platinum)) })}
         <span class="ml-auto flex shrink-0 gap-2 pl-2 tabular-nums {TONE.quiet}">
-          <span
-            >{row.platinum === null
-              ? "-"
-              : $tr("nextUp.acqPlatEach", { plat: String(Math.round(row.platinum)) })}</span
-          >
+          {#if row.urlName}
+            <button
+              type="button"
+              class="cursor-pointer underline underline-offset-2 transition-colors duration-150
+                     hover:text-accent"
+              title={$tr("common.openOnWarframeMarket")}
+              onclick={() => openOnWfm(row.urlName)}>{plat}</button
+            >
+          {:else}
+            <span>{plat}</span>
+          {/if}
           <span
             >{row.ducats === null
               ? "-"
@@ -736,31 +739,21 @@
 <!-- What the activity pays and asks for, whether or not the week offers a pick. -->
 {#snippet factRows()}
   {#if relic}
-    <div class={ROW}>
-      <span class={LABEL}>{$tr("nextUp.relicAdviceHeading")}</span>
-      <span class="flex flex-wrap gap-1.5">
-        {#each adviceChips as chip (chip.goal)}
-          <span
-            class="{CHIP} {chip.goal === $suggestionPreferences.options.relicGoal
-              ? 'font-semibold text-text-primary'
-              : TONE.quiet}">{chip.text}</span
-          >
-        {/each}
-      </span>
-    </div>
-    <!-- Every live fissure of the tier, not just its mission types. -->
-    <div class={ROW}>
-      <span class={LABEL}>{$tr("nextUp.detailsRuns")}</span>
-      <span class="flex flex-wrap items-center gap-1.5">
-        {#each relic.missions as mission, index (index)}
-          <span
-            class="{CHIP} {missionChipTone(mission.opinion)}"
-            title={timeLeftText(mission.expiry, $cardClock) ?? ""}
-            >{mission.missionType} · {mission.node}</span
-          >
-        {/each}
-        <TimeLeft expiry={details?.expiry} nowMs={$cardClock} />
-      </span>
+    <span class="flex flex-wrap gap-1.5" title={$tr("nextUp.relicAdviceHeading")}>
+      {#each adviceChips as chip (chip.goal)}
+        <span
+          class="{CHIP} {chip.goal === $suggestionPreferences.options.relicGoal
+            ? 'font-semibold text-text-primary'
+            : TONE.quiet}">{chip.text}</span
+        >
+      {/each}
+    </span>
+    <!-- Three wide, so the commons fill the top row and the rare lands bottom
+         right, as the reward screen lays them out. -->
+    <div class="mt-2 grid grid-cols-3 gap-2">
+      {#each poolTiles as row, index (index)}
+        {@render poolRow(row)}
+      {/each}
     </div>
   {/if}
 
@@ -775,7 +768,7 @@
     </div>
   {/if}
 
-  {#if poolTiles.length > 0 && valenceRows.length === 0}
+  {#if poolTiles.length > 0 && valenceRows.length === 0 && !relic}
     <div class={ROW}>
       <span class={LABEL}>{$tr(poolLabel)}</span>
       <div class={TILE_GRID}>
@@ -816,7 +809,7 @@
 <ModalShell ariaLabel={suggestion.title} {onClose}>
   <!-- Wider than the shared panel: this one lists whole drop tables, and three
        tracks of full item names is what they take. -->
-  <div class="detail-panel w-[1180px] max-w-[95vw] p-4">
+  <div class="detail-panel {relic ? 'w-[960px]' : 'w-[1180px]'} max-w-[95vw] p-4">
     <div class="mb-3 flex items-start justify-between gap-2">
       <!-- Inset by a tile's own padding, so the header letter and every tile
            letter below it share one column. -->
@@ -897,7 +890,7 @@
     {:else}
       <div class="flex gap-4">
         <div class="flex min-w-0 flex-1 flex-col gap-1">
-          {#if rewardTile && !familyOnly}
+          {#if rewardTile && !familyOnly && !relic}
             <ItemTile
               name={rewardTile.name}
               showArt={false}
@@ -911,7 +904,7 @@
 
           {@render factRows()}
         </div>
-        {#if artPieces.length > 0}
+        {#if artPieces.length > 0 && !relic}
           <span
             class="relative flex h-28 w-28 shrink-0 items-center justify-center overflow-hidden
                    rounded-[var(--radius-md)] bg-bg-deep"
@@ -1156,8 +1149,8 @@
           </div>
         {/if}
 
-        {#if acq.isPrime && acq.parts.missing.length > 0}
-          <RelicSourcesSection missing={acq.parts.missing} />
+        {#if acq.isPrime && acq.parts.sourcing.length > 0}
+          <RelicSourcesSection missing={acq.parts.sourcing} />
         {/if}
 
         {#if acqTips.length > 0}

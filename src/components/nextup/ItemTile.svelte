@@ -51,6 +51,8 @@
     status?: TileStatus | null | undefined;
     /** Colours the name, for a relic drop. */
     rarity?: RelicRarity | null | undefined;
+    /** False keeps an owned or mastered tile at full contrast. */
+    fades?: boolean;
     size?: "sm" | "md";
     stretch?: boolean;
     /** Buttons and labels; they sit under the name, never beside it. */
@@ -74,6 +76,7 @@
     have = undefined,
     status = null,
     rarity = null,
+    fades = true,
     size = "sm",
     stretch = false,
     actions,
@@ -112,7 +115,7 @@
   );
   const tagChip = $derived(tag ? statusChip(tag) : null);
   // Only a tile whose tag says why it is faded ever fades.
-  const dim = $derived(statusDims(tag));
+  const dim = $derived(fades && statusDims(tag));
   const counts = $derived(tileCounts(owned));
   const costs = $derived(cost ?? []);
   const wins = $derived((statuses ?? []).map((status) => ({ status, chip: winChip(status) })));

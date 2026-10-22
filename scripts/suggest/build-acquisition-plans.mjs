@@ -1,7 +1,6 @@
-// Writes a plan file for every sweep-suggestable item lacking one, from the data the
-// sweep reads: the item database and curated source tables. Relic Primes are planned
-// at runtime, so they are only reported. Existing plans are never touched. Needs
-// `pnpm run build:main` first (compiled services).
+// Writes a plan for every sweep-suggestable item lacking one, from the item database
+// and curated source tables. Relic Primes are planned at runtime, so only reported.
+// Existing plans are never touched. Needs `pnpm run build:main` first.
 // Usage: node scripts/suggest/build-acquisition-plans.mjs [--dry] [--only "Name,Name"]
 
 import fs from "node:fs";

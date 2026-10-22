@@ -154,10 +154,27 @@ describe("suggestion details modal, relics", () => {
     expect(text).toContain("if (!quality) return [];");
   });
 
-  it("lists every live fissure of the tier as an opinion chip", () => {
+  it("draws no runs row, row labels or headline reward", () => {
     const text = source();
-    expect(text).toContain("{#each relic.missions as mission, index (index)}");
-    expect(text).toContain("{missionChipTone(mission.opinion)}");
+    expect(text).not.toContain("relic.missions");
+    expect(text).not.toMatch(/relics: "nextUp\.detailsRuns"/);
+    const relicRows = /\{#snippet factRows\(\)\}\s*\{#if relic\}[\s\S]*?\{\/if\}/.exec(text)?.[0];
+    expect(relicRows).toBeDefined();
+    expect(relicRows).not.toContain("{LABEL}");
+    expect(text).toContain("{#if rewardTile && !familyOnly && !relic}");
+    expect(text).toContain("{#if artPieces.length > 0 && !relic}");
+  });
+
+  it("lays the parts out three wide in reward-screen order, none faded", () => {
+    const text = source();
+    expect(text).toContain("{ common: 0, uncommon: 1, rare: 2 }");
+    expect(text).toContain('<div class="mt-2 grid grid-cols-3 gap-2">');
+    expect(text).toContain("fades={!relic}");
+  });
+
+  it("links each part's plat to warframe.market and leaves ducats plain", () => {
+    const text = source();
+    expect(text).toContain("onclick={() => openOnWfm(row.urlName)}>{plat}</button");
   });
 
   it("tags every part with its status and colours it by rarity, never by chance", () => {

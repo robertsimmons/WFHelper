@@ -186,13 +186,11 @@ function neededHeadline(held: Held, read: GroupRead): RelicReward | null {
   return best;
 }
 
-/** What the card pictures: the drop the goal is actually chasing. */
+/** What the card pictures: the drop the goal is actually chasing. MR never
+ *  falls back to a payout part, which would read as advice to sell. */
 function headlineReward(held: Held, goal: RelicGoal, read: GroupRead): RelicReward | null {
-  if (goal === "mr") {
-    const needed = neededHeadline(held, read);
-    if (needed) return needed;
-  }
-  const payout: PayoutGoal = goal === "mr" ? "platinum" : goal;
+  if (goal === "mr") return neededHeadline(held, read);
+  const payout: PayoutGoal = goal;
   let best: RelicReward | null = null;
   let bestValue = -Infinity;
   for (const reward of held.rewards) {
@@ -250,6 +248,7 @@ function poolRows(
       rarity: relicRarity(held.quality, reward),
       platinum: platPrice(reward),
       ducats: normalizeDucats(reward.ducats),
+      urlName: reward.urlName,
       status: mr?.status ?? null,
       ownedCount: mr?.ownedCount ?? null,
     };
@@ -259,12 +258,14 @@ function poolRows(
 /** Both payouts, whichever goal the player picked: the card compares them. */
 function relicFacts(
   held: Held,
+  total: number,
   missions: RelicMission[],
   read: GroupRead,
   payoff: string | null,
 ): RelicFacts {
   return {
     count: held.count,
+    total,
     quality: held.quality,
     node: missions[0]?.node ?? "",
     platinum: expectedValue(held.rewards, "platinum"),
@@ -307,6 +308,8 @@ function payoffWhy(
 interface Candidate {
   group: RelicGroup;
   held: Held;
+  /** Copies held across every refinement. */
+  total: number;
   missions: RelicMission[];
   read: GroupRead;
   value: number;
@@ -404,7 +407,9 @@ function candidates(
     if (goal === "mr" && read.mr.value <= 0) continue;
     const held = bestHeld(group, counts, goal, read.advice);
     if (!held) continue;
-    rows.push({ group, held, missions, read, value: goalValue(goal, held, read) });
+    if (goal === "mr" && !neededHeadline(held, read)) continue;
+    const total = QUALITY_MODES.reduce((sum, quality) => sum + counts[quality], 0);
+    rows.push({ group, held, total, missions, read, value: goalValue(goal, held, read) });
   }
 
   return rows
@@ -465,51 +470,53 @@ function relicDrafts(ctx: SuggestionContext): SuggestionDraft[] {
   const goal = prefs.options.relicGoal;
   const fissures = fissuresByTier(prefs, world, nowMs);
 
-  return candidates(ctx, goal, fissures).map(({ group, held, missions, read, value }, order) => {
-    const fissure = missions[0] as RelicMission;
-    const art = headlineReward(held, goal, read);
-    const payoff = payoffWhy(held, goal, read.mr, t);
-    return {
-      id: `relics:${group.key}`,
-      order,
-      category: "relics" as const,
-      title: t(fissure.isHard ? "nextUp.relicTitleSp" : "nextUp.relicTitleNormal", {
-        relic: group.name,
-      }),
-      why: [
-        t("nextUp.whyRelicRefinement", {
-          count: String(held.count),
-          quality: t(`relics.quality.${held.quality}` as MessageKey),
+  return candidates(ctx, goal, fissures).map(
+    ({ group, held, total, missions, read, value }, order) => {
+      const fissure = missions[0] as RelicMission;
+      const art = headlineReward(held, goal, read);
+      const payoff = payoffWhy(held, goal, read.mr, t);
+      return {
+        id: `relics:${group.key}`,
+        order,
+        category: "relics" as const,
+        title: t(fissure.isHard ? "nextUp.relicTitleSp" : "nextUp.relicTitleNormal", {
+          relic: group.name,
         }),
-        t("nextUp.whyRelicFissure", { mission: fissure.missionType, node: fissure.node }),
-        ...(payoff ? [payoff] : []),
-      ].join(" - "),
-      reward: art ? partReward(art, held.quality, ctx.itemDb) : undefined,
-      signals: {
-        value,
-        effort: effortFor(fissure),
-        urgency: urgencyFromExpiry(fissure.expiry, nowMs) * FISSURE_URGENCY,
-      },
-      // The window and the refinement are what the card is about, so a
-      // dismissal lifts once the fissure rotates or the goal changes; on MR a
-      // part landing changes it too.
-      fingerprint: [
-        goal,
-        held.quality,
-        fissure.node,
-        fissure.expiry,
-        ...(goal === "mr" ? [read.mr.needed] : []),
-      ].join("|"),
-      deprioritized: activity === "low",
-      wiki: group.name,
-      details: {
-        pool: poolRows(prefs, held, ctx.itemDb, read),
-        missions: missionTypes(missions),
-        expiry: fissure.expiry,
-        relic: relicFacts(held, missions, read, payoff),
-      },
-    };
-  });
+        why: [
+          t("nextUp.whyRelicRefinement", {
+            count: String(held.count),
+            quality: t(`relics.quality.${held.quality}` as MessageKey),
+          }),
+          t("nextUp.whyRelicFissure", { mission: fissure.missionType, node: fissure.node }),
+          ...(payoff ? [payoff] : []),
+        ].join(" - "),
+        reward: art ? partReward(art, held.quality, ctx.itemDb) : undefined,
+        signals: {
+          value,
+          effort: effortFor(fissure),
+          urgency: urgencyFromExpiry(fissure.expiry, nowMs) * FISSURE_URGENCY,
+        },
+        // The window and the refinement are what the card is about, so a
+        // dismissal lifts once the fissure rotates or the goal changes; on MR a
+        // part landing changes it too.
+        fingerprint: [
+          goal,
+          held.quality,
+          fissure.node,
+          fissure.expiry,
+          ...(goal === "mr" ? [read.mr.needed] : []),
+        ].join("|"),
+        deprioritized: activity === "low",
+        wiki: group.name,
+        details: {
+          pool: poolRows(prefs, held, ctx.itemDb, read),
+          missions: missionTypes(missions),
+          expiry: fissure.expiry,
+          relic: relicFacts(held, total, missions, read, payoff),
+        },
+      };
+    },
+  );
 }
 
 export const relicsProvider: SuggestionProvider = {

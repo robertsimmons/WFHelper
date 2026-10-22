@@ -116,8 +116,8 @@ describe("SuggestionCard relic face", () => {
     const text = card();
     const face = text.slice(text.indexOf("{#if relic}"), text.indexOf("<!-- One fixed row"));
     expect(face.length).toBeGreaterThan(0);
-    expect(face.match(/\bh-4\b/g)?.length).toBeGreaterThanOrEqual(2);
-    expect(face.match(/\{RELIC_LINE\}/g)?.length).toBe(2);
+    expect(face.match(/\bh-4\b/g)?.length).toBeGreaterThanOrEqual(3);
+    expect(face.match(/\{RELIC_LINE\}/g)?.length).toBe(1);
     expect(face).toContain("<TimeLeft expiry={details?.expiry} nowMs={$cardClock} reserve />");
     // An unpriced payoff draws an empty line rather than a sentence standing in.
     expect(text).toContain('const relicPayoff = $derived(relic?.payoff ?? "");');
@@ -130,8 +130,14 @@ describe("SuggestionCard relic face", () => {
   it("names the goal's advised refinement in one plain word, always", () => {
     const text = card();
     expect(text).toContain("relic?.advice[$suggestionPreferences.options.relicGoal]");
-    expect(text).toContain("{RELIC_LINE} {TONE.plain}");
     expect(text).not.toContain("adviceDiffers");
     expect(text).not.toContain("nextUp.relicAdviceDiffers");
+  });
+
+  it("always draws both prices and the relics held across every refinement", () => {
+    const text = card();
+    expect(text).toContain("part.platinum === null || part.platinum === undefined");
+    expect(text).toContain("part.ducats === null || part.ducats === undefined");
+    expect(text).toContain('$tr("nextUp.relicInv", { count: String(relic.total) })');
   });
 });

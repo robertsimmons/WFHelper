@@ -100,7 +100,7 @@ describe("ItemTile", () => {
 
   it("dims only behind a tag that says why", () => {
     const text = code(tile());
-    expect(text).toContain("const dim = $derived(statusDims(tag));");
+    expect(text).toContain("const dim = $derived(fades && statusDims(tag));");
     expect(text).not.toContain("tileDims(");
     expect(text).toContain("{#if tagChip}");
     // The tag sits outside the faded columns, so the root itself never fades.

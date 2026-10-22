@@ -337,7 +337,15 @@
   function markDone(target: number): void {
     if (done) return;
     done = true;
-    setTimeout(() => onComplete(target), DONE_DWELL_MS);
+    setTimeout(() => {
+      try {
+        onComplete(target);
+      } finally {
+        // A card the completion leaves in the feed is the same keyed instance, so
+        // it has to drop the mark to read the progress it now has.
+        done = false;
+      }
+    }, DONE_DWELL_MS);
   }
 
   function openDetails(): void {
@@ -571,16 +579,16 @@
           <span class="min-w-0 truncate {rarityTextClass(part.rarity)}" title={partName}
             >{partName}</span
           >
-          {#if part.platinum !== null && part.platinum !== undefined}
-            <span class="shrink-0 tabular-nums {TONE.quiet}"
-              >{$tr("nextUp.acqPlatEach", { plat: String(Math.round(part.platinum)) })}</span
-            >
-          {/if}
-          {#if part.ducats !== null && part.ducats !== undefined}
-            <span class="shrink-0 tabular-nums {TONE.quiet}"
-              >{$tr("world.baro.ducatsShort", { count: String(Math.round(part.ducats)) })}</span
-            >
-          {/if}
+          <span class="shrink-0 tabular-nums {TONE.quiet}"
+            >{part.platinum === null || part.platinum === undefined
+              ? "-"
+              : $tr("nextUp.acqPlatEach", { plat: String(Math.round(part.platinum)) })}</span
+          >
+          <span class="shrink-0 tabular-nums {TONE.quiet}"
+            >{part.ducats === null || part.ducats === undefined
+              ? "-"
+              : $tr("world.baro.ducatsShort", { count: String(Math.round(part.ducats)) })}</span
+          >
         {/if}
       </div>
       <p class="{RELIC_LINE} {TONE.quiet}" title={relicPayoff}>{relicPayoff}</p>
@@ -592,9 +600,14 @@
         </span>
         <TimeLeft expiry={details?.expiry} nowMs={$cardClock} reserve />
       </div>
-      <p class="{RELIC_LINE} {TONE.plain}" title={$tr("nextUp.relicAdviceHeading")}>
-        {relicAdvice}
-      </p>
+      <div class="flex h-4 min-w-0 items-center gap-1.5 text-xs leading-4">
+        <span class="min-w-0 flex-1 truncate {TONE.plain}" title={$tr("nextUp.relicAdviceHeading")}
+          >{relicAdvice}</span
+        >
+        <span class="shrink-0 tabular-nums {TONE.quiet}"
+          >{$tr("nextUp.relicInv", { count: String(relic.total) })}</span
+        >
+      </div>
     {:else}
       <!-- One fixed row for what the card is about: the state as a chip, then
            either the offer's own fields or the line the provider wrote. -->

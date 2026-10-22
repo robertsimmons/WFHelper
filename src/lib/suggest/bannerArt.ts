@@ -128,6 +128,13 @@ const TASK_ART: Record<string, BannerArt> = {
     undefined,
     NUDGE_RIGHT,
   ),
+  // A tall portrait: widened so her face sits right of the reward art, panned down to it.
+  marie: banner(
+    new URL("../../../assets/nextup/marie.webp", import.meta.url).href,
+    "0% 11%",
+    "start",
+    50,
+  ),
   palladino: banner(
     new URL("../../../assets/nextup/palladino.webp", import.meta.url).href,
     "100% 50%",

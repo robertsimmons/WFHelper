@@ -1,6 +1,7 @@
 import { get } from "svelte/store";
 
 import { overframeRankingsRevision } from "../../../stores/overframeRankings.js";
+import { exchangeDone } from "../../../stores/vendorExchange.js";
 import { activeWindow, nextDailyResetUtc, nextWeeklyResetUtc } from "../../format.js";
 import type { MessageKey } from "../../i18n.js";
 import {
@@ -20,7 +21,14 @@ import { bestWorth, rewardValue, rewardWorth } from "../rewards.js";
 import { urgencyFromExpiry } from "../score.js";
 import { UNPLACED_WORTH, UNRESOLVED_WORTH, bandFloor } from "../worthLadder.js";
 import { setValenceRows, valenceDoc, valenceOffersFor, type ValenceOffer } from "../valence.js";
+import {
+  exchangeLedger,
+  exchangeWindow,
+  vendorExchange,
+  type ExchangeVendor,
+} from "../vendorExchange.js";
 import { vendorOffers, type VendorOffer } from "../vendorOffers.js";
+import { acquisitionTargets } from "./acquisition.js";
 import { resolveRewardUniqueName } from "../../bountyRewards.js";
 import type {
   RewardWorth,
@@ -29,6 +37,7 @@ import type {
   SuggestionPreferences,
   SuggestionProvider,
   SuggestionReward,
+  TrackerCompletion,
 } from "../../../types/suggest.js";
 import type { ItemDbEntry } from "../../../types/inventory.js";
 import type { VaultTrader, WorldState } from "../../../types/world.js";
@@ -40,7 +49,6 @@ type VendorId =
   | "palladino"
   | "acrithis"
   | "bird3"
-  | "yonta"
   | "tenetMelee"
   | "codaWeapons";
 
@@ -51,7 +59,6 @@ const VENDOR_IDS: readonly string[] = [
   "palladino",
   "acrithis",
   "bird3",
-  "yonta",
   "tenetMelee",
   "codaWeapons",
 ];
@@ -289,6 +296,8 @@ function vendorKeys(ctx: SuggestionContext): readonly unknown[] {
     valenceDoc(),
     // Rolls carry a tier letter, and a refreshed overframe table moves them.
     get(overframeRankingsRevision),
+    get(exchangeDone),
+    acquisitionTargets(ctx),
   ];
 }
 
@@ -366,6 +375,89 @@ function vendorDrafts(ctx: SuggestionContext): SuggestionDraft[] {
   return drafts;
 }
 
+const EXCHANGE_VENDORS: readonly ExchangeVendor[] = ["yonta", "marie"];
+
+const EXCHANGE_TITLE: Record<ExchangeVendor, MessageKey> = {
+  yonta: "nextUp.exchangeYonta",
+  marie: "nextUp.exchangeMarie",
+};
+
+const EXCHANGE_WIKI: Record<ExchangeVendor, string> = {
+  yonta: "Archimedean Yonta",
+  marie: "Marie Leroux",
+};
+
+const KUVA = "/Lotus/Types/Items/MiscItems/Kuva";
+
+/** The weekly Kuva trade is the World tab's own task, so its tick is that row's. */
+function yontaTask(ctx: SuggestionContext, now: Date): TrackerCompletion | null {
+  const task = trackerList(ctx.tracker).find((entry) => entry.id === "yonta");
+  if (!task || ctx.tracker.hidden.includes(task.id)) return null;
+  const periodKey = trackerPeriodKey(task.period, now, trackerExpiries(ctx.world));
+  const count = trackerCount(ctx.tracker, task.id, periodKey, ctx.nowMs);
+  return count >= task.target ? null : { taskId: task.id, periodKey, count, target: task.target };
+}
+
+/** Yonta and Marie are worth a trip only while something they could stock is still
+ *  short and the spare pays for it, so neither card stands on a schedule alone. */
+function exchangeDrafts(ctx: SuggestionContext): SuggestionDraft[] {
+  const { prefs, nowMs, t } = ctx;
+  if (!ctx.inventory) return [];
+  const now = new Date(nowMs);
+  const done = get(exchangeDone);
+  const ledger = exchangeLedger(
+    ctx.inventory,
+    ctx.itemDb,
+    acquisitionTargets(ctx),
+    t("nextUp.exchangeRankUp"),
+  );
+  const drafts: SuggestionDraft[] = [];
+
+  for (const vendor of EXCHANGE_VENDORS) {
+    const activity = prefs.activities[vendor] ?? "normal";
+    if (activity === "never") continue;
+    const window = exchangeWindow(vendor, nowMs);
+    const weekly = vendor === "yonta" ? yontaTask(ctx, now) : null;
+    const exchange = vendorExchange(vendor, ledger, window, {
+      kuvaOpen: weekly !== null,
+      dismissed: done[vendor] === window.key,
+    });
+    if (!exchange) continue;
+
+    const buyable = exchange.offers.filter((offer) => offer.affordable);
+    const lead = buyable[0];
+    const expiry = lead ? window.expiry : nextWeeklyResetUtc(now).toISOString();
+    const worths = [
+      ...buyable.map((offer) => rewardValue(prefs, offer.name)),
+      ...(exchange.kuva ? [rewardValue(prefs, "Kuva")] : []),
+    ].filter((value): value is number => value !== null);
+
+    drafts.push({
+      id: `vendors:${vendor}`,
+      category: "vendor",
+      title: t(EXCHANGE_TITLE[vendor]),
+      why: "",
+      reward: lead
+        ? { name: lead.name, uniqueName: lead.uniqueName }
+        : { name: "Kuva", uniqueName: KUVA },
+      signals: {
+        value: worths.length > 0 ? Math.max(...worths) : UNPLACED_WORTH,
+        effort: 0,
+        urgency: urgencyFromExpiry(expiry, nowMs),
+      },
+      fingerprint: [lead ? window.key : "", exchange.kuva ? (weekly?.periodKey ?? "") : ""].join(
+        "|",
+      ),
+      deprioritized: activity === "low",
+      ...(exchange.kuva && weekly ? { complete: weekly } : {}),
+      wiki: EXCHANGE_WIKI[vendor],
+      details: { expiry, exchange },
+    });
+  }
+
+  return drafts;
+}
+
 export const vendorsProvider: SuggestionProvider = {
   id: "vendors",
 
@@ -375,7 +467,7 @@ export const vendorsProvider: SuggestionProvider = {
   collect(ctx: SuggestionContext): SuggestionDraft[] {
     const keys = vendorKeys(ctx);
     if (cached && keys.every((key, index) => cached?.keys[index] === key)) return cached.drafts;
-    const drafts = vendorDrafts(ctx);
+    const drafts = [...vendorDrafts(ctx), ...exchangeDrafts(ctx)];
     cached = { keys, drafts };
     return drafts;
   },

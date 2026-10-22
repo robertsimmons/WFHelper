@@ -3,7 +3,7 @@ import { resolveRewardUniqueName } from "../../bountyRewards.js";
 import { buildOwnership, ownsItem } from "../acquisition/parts.js";
 import type { AcquisitionTarget } from "../acquisition/types.js";
 import { FULL_GAIN, NO_GAIN, PARTIAL_GAIN, leastGain, masteryGain } from "../gain.js";
-import { nitainNeed, type NitainNeed } from "../nitain.js";
+import { resourceNeed, type ResourceNeed } from "../resourceNeed.js";
 import { NIGHTWAVE_ACTIVITY } from "../preferences.js";
 import { acquisitionTargets } from "./acquisition.js";
 import { rewardValue } from "../rewards.js";
@@ -40,7 +40,7 @@ const NITAIN_BUCKETS: ReadonlyArray<readonly ["normal" | "prime" | "subsume", Me
 ];
 
 /** What each goal still asks for, as the card and the details both read it. */
-export function nitainNeedSegments(need: NitainNeed, t: SuggestionContext["t"]): WhySegment[] {
+export function nitainNeedSegments(need: ResourceNeed, t: SuggestionContext["t"]): WhySegment[] {
   return NITAIN_BUCKETS.filter(([bucket]) => need[bucket] > 0).map(([bucket, key]) => ({
     text: t(key, { count: String(need[bucket]) }),
   }));
@@ -163,7 +163,7 @@ export interface NightwaveOfferRow {
   /** Copies one purchase grants. */
   bundle: number;
   /** Nitain only, once the sweep has named what is unbuilt. */
-  need?: NitainNeed | undefined;
+  need?: ResourceNeed | undefined;
 }
 
 const rows = new Map<string, NightwaveOfferRow>();
@@ -243,12 +243,12 @@ function nitainNeedFor(
   targets: readonly AcquisitionTarget[],
   itemDb: Record<string, ItemDbEntry>,
   ownership: Map<string, number>,
-): NitainNeed | null {
+): ResourceNeed | null {
   const item = entryFor("Nitain Extract", itemDb);
-  return item ? nitainNeed(targets, item.uniqueName, itemDb, ownership) : null;
+  return item ? resourceNeed(targets, item.uniqueName, itemDb, ownership) : null;
 }
 
-function needTotal(need: NitainNeed): number {
+function needTotal(need: ResourceNeed): number {
   return need.normal + need.prime + need.subsume;
 }
 
@@ -273,7 +273,7 @@ function stockDraft(
   offer: StapleOffer,
   ctx: SuggestionContext,
   ownership: Map<string, number>,
-  nitain: NitainNeed | null,
+  nitain: ResourceNeed | null,
   low: boolean,
 ): SuggestionDraft | null {
   const { prefs, itemDb, t } = ctx;

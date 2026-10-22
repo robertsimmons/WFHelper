@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { formatNumber } from "../../lib/format.js";
   import { tr } from "../../lib/i18n.js";
   import {
     planRating,
@@ -8,6 +9,7 @@
   } from "../../lib/suggest/acquisition/plan/index.js";
   import { itemTiers } from "../../lib/suggest/acquisition/tiers.js";
   import { bannerAside, bannerFor } from "../../lib/suggest/bannerArt.js";
+  import { resolveDropArt } from "../../lib/suggest/dropPools.js";
   import { CARD_HEIGHT } from "../../lib/suggest/grid.js";
   import {
     acquisitionStatuses,
@@ -18,6 +20,7 @@
   import { itemDb } from "../../stores/data.js";
   import { overframeRankingsRevision } from "../../stores/overframeRankings.js";
   import { nightwaveArt, suggestionPreferences } from "../../stores/suggestionPrefs.js";
+  import { markExchangeDone } from "../../stores/vendorExchange.js";
   import {
     CHIP_TONE,
     TONE,
@@ -80,6 +83,10 @@
   const ACQUISITION_ART_HEIGHT = ART_HEIGHT - 20;
 
   const RELIC_LINE = "m-0 h-4 min-w-0 truncate text-xs leading-4";
+
+  const EXCHANGE_LINE = "flex h-4 min-w-0 items-center gap-1.5 text-xs leading-4";
+
+  const LINE_ICON = "flex h-4 w-4 shrink-0 items-center justify-center overflow-hidden";
 
   const MISSION_CHIP =
     "shrink-0 rounded-[var(--radius-sm)] border border-border px-1 text-[0.625rem] " +
@@ -154,7 +161,21 @@
     target ? (target.rating ?? (target.isPrime ? UNRATED : planRating(target.name))) : null,
   );
   const effort = $derived(suppliedEffort ?? rating?.effort ?? null);
-  const badge = $derived(suppliedBadge ?? rating?.badge ?? null);
+  const exchange = $derived(details?.exchange ?? null);
+  const exchangeBuys = $derived((exchange?.offers ?? []).filter((offer) => offer.affordable));
+  const badge = $derived(
+    suppliedBadge ??
+      rating?.badge ??
+      (exchange
+        ? {
+            text:
+              exchange.hours === 24
+                ? $tr("nextUp.exchangeDaily")
+                : $tr("nextUp.exchangeHours", { hours: String(exchange.hours) }),
+            tone: "info" as const,
+          }
+        : null),
+  );
   const unplanned = $derived(suppliedEffort == null && rating !== null && !rating.planned);
   // The meter holds its place whether or not anything has rated the item, so an
   // unrated one reads as unknown rather than as easy.
@@ -185,6 +206,22 @@
   const relic = $derived(suggestion.category === "relics" ? (details?.relic ?? null) : null);
   const artHeight = $derived(
     relic ? RELIC_ART_HEIGHT : target ? ACQUISITION_ART_HEIGHT : ART_HEIGHT,
+  );
+  /** Two fixed lines: the Kuva trade keeps the second whenever it is open, and
+   *  whatever does not fit is counted on the line before it. */
+  const exchangeLines = $derived.by(() => {
+    if (!exchange) return [];
+    const room = exchange.kuva ? 1 : 2;
+    const shown = exchangeBuys.slice(0, room);
+    const more = exchangeBuys.length - shown.length;
+    return shown.map((offer, index) => ({
+      offer,
+      art: resolveDropArt($itemDb, offer.name, offer.uniqueName)?.imageUrl ?? null,
+      more: index === shown.length - 1 ? more : 0,
+    }));
+  });
+  const kuvaArt = $derived(
+    exchange?.kuva ? (resolveDropArt($itemDb, "Kuva")?.imageUrl ?? null) : null,
   );
   const part = $derived(relic ? (suggestion.reward ?? null) : null);
   // The same name the art resolved, so the line and the picture never disagree.
@@ -334,12 +371,19 @@
   let done = $state(false);
   let detailsOpen = $state(false);
 
-  function markDone(target: number): void {
+  /** A vendor's offers are done for their window in Next Up alone; only the Kuva
+   *  trade is the World tab's task. */
+  function finish(target: number): void {
+    if (exchange && exchangeBuys.length > 0) markExchangeDone(exchange.vendor, exchange.window);
+    else onComplete(target);
+  }
+
+  function markDone(target: number, action: (target: number) => void = finish): void {
     if (done) return;
     done = true;
     setTimeout(() => {
       try {
-        onComplete(target);
+        action(target);
       } finally {
         // A card the completion leaves in the feed is the same keyed instance, so
         // it has to drop the mark to read the progress it now has.
@@ -362,6 +406,11 @@
   function clickDone(event: MouseEvent, target: number): void {
     event.stopPropagation();
     markDone(target);
+  }
+
+  function clickKuvaDone(event: MouseEvent, target: number): void {
+    event.stopPropagation();
+    markDone(target, onComplete);
   }
 
   function clickAddRun(event: MouseEvent, next: number): void {
@@ -519,7 +568,7 @@
         {/if}
       </div>
       <span class="flex h-6 items-center gap-2">
-        {#if complete}
+        {#if complete || exchange}
           <button
             class="flex h-6 w-6 cursor-pointer items-center justify-center rounded border
                    transition-colors duration-150 {done
@@ -528,7 +577,7 @@
             disabled={done}
             title={done ? $tr("nextUp.doneMarked") : $tr("nextUp.done")}
             aria-label={done ? $tr("nextUp.doneMarked") : $tr("nextUp.done")}
-            onclick={(event) => clickDone(event, complete.target)}
+            onclick={(event) => clickDone(event, complete?.target ?? 0)}
           >
             <svg viewBox="0 0 16 16" class="h-3.5 w-3.5" aria-hidden="true">
               <path
@@ -608,6 +657,66 @@
           >{$tr("nextUp.relicInv", { count: String(relic.total) })}</span
         >
       </div>
+    {:else if exchange}
+      {#each exchangeLines as line (line.offer.uniqueName)}
+        <div class={EXCHANGE_LINE}>
+          <span class={LINE_ICON}>
+            <ItemImage src={line.art} alt={line.offer.name} cls="max-h-4 max-w-4" eager />
+          </span>
+          <span class="min-w-0 flex-1 truncate text-text-primary" title={line.offer.name}
+            >{line.offer.name}</span
+          >
+          {#if line.offer.kind === "upgrade"}
+            <span class="shrink-0 {TONE.quiet}">{$tr("nextUp.exchangeUnowned")}</span>
+          {:else}
+            <span class="shrink-0 {TONE.plain}">{$tr("nextUp.exchangeShortLabel")}</span>
+            <span class="shrink-0 tabular-nums {TONE.warn}">{formatNumber(line.offer.short)}</span>
+          {/if}
+          {#if line.more > 0}
+            <span
+              class="{MISSION_CHIP} tabular-nums {TONE.quiet}"
+              title={$tr("nextUp.exchangeMoreTitle")}>+{line.more}</span
+            >
+          {/if}
+        </div>
+      {/each}
+      {#if exchange.kuva}
+        <div class={EXCHANGE_LINE}>
+          <span class={LINE_ICON}>
+            <ItemImage src={kuvaArt} alt={$tr("nextUp.exchangeKuva")} cls="max-h-4 max-w-4" eager />
+          </span>
+          <span class="min-w-0 flex-1 truncate text-text-primary">{$tr("nextUp.exchangeKuva")}</span
+          >
+          <span class="shrink-0 {TONE.plain}">{$tr("nextUp.exchangeGivesLabel")}</span>
+          <span class="shrink-0 tabular-nums {TONE.good}"
+            >{formatNumber(exchange.kuva.quantity)}</span
+          >
+          <!-- The card's own Done stands for the offers, so the trade keeps a tick. -->
+          {#if complete && exchangeBuys.length > 0}
+            <button
+              class="flex h-4 w-4 shrink-0 cursor-pointer items-center justify-center rounded border
+                     border-border bg-bg-base text-text-muted transition-colors duration-150
+                     hover:border-border-strong hover:text-text-primary disabled:cursor-default
+                     disabled:opacity-40"
+              disabled={done}
+              title={$tr("nextUp.done")}
+              aria-label={$tr("nextUp.done")}
+              onclick={(event) => clickKuvaDone(event, complete.target)}
+            >
+              <svg viewBox="0 0 16 16" class="h-2.5 w-2.5" aria-hidden="true">
+                <path
+                  d="M3.2 8.4 6.3 11.6 12.8 4.6"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </button>
+          {/if}
+        </div>
+      {/if}
     {:else}
       <!-- One fixed row for what the card is about: the state as a chip, then
            either the offer's own fields or the line the provider wrote. -->

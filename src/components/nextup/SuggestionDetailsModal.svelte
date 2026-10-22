@@ -41,6 +41,7 @@
   import { plainName, rewardArt } from "./rewardArt.js";
   import AcquisitionTree from "./AcquisitionTree.svelte";
   import PlanTips from "./plan/PlanTips.svelte";
+  import ExchangeTables from "./ExchangeTables.svelte";
   import RelicSourcesSection from "./RelicSourcesSection.svelte";
   import ItemTile from "./ItemTile.svelte";
   import TierBadge from "./TierBadge.svelte";
@@ -278,8 +279,12 @@
   // The real stock wins wherever world state carries one; the curated table only
   // names vendors it cannot describe.
   const offers = $derived(
-    pool.length > 0 || valenceRows.length > 0 ? [] : liveVendorOffers(taskId, $cardClock),
+    pool.length > 0 || valenceRows.length > 0 || details?.exchange
+      ? []
+      : liveVendorOffers(taskId, $cardClock),
   );
+  const exchange = $derived(details?.exchange ?? null);
+  const panelWidth = $derived(relic ? "w-[960px]" : exchange ? "w-[800px]" : "w-[1180px]");
   const acqParts = $derived(
     acq?.parts.known ? [...(acq.parts.main ? [acq.parts.main] : []), ...acq.parts.components] : [],
   );
@@ -326,7 +331,8 @@
    *  holds the slot and leaves the column one letter. */
   const rewardTile = $derived.by(() => {
     void $overframeRankingsRevision;
-    return suggestion.reward ? itemTile(suggestion.reward) : null;
+    // A vendor's offer tiles already name the reward.
+    return suggestion.reward && !details?.exchange ? itemTile(suggestion.reward) : null;
   });
 
   /** What the stall charges for what the card is about: Nora's Creds, Darvo's
@@ -418,6 +424,15 @@
     for (const status of acq ? acquisitionStatuses(acq) : []) {
       const chip = winChip(status);
       out.push({ value: $tr(chip.label), title: $tr(chip.label), tone: chip.tone });
+    }
+    if (exchange) {
+      const rotation =
+        exchange.hours === 24
+          ? $tr("nextUp.exchangeDaily")
+          : $tr("nextUp.exchangeHours", { hours: String(exchange.hours) });
+      out.push({ value: rotation, title: rotation, tone: CHIP_TONE.plain });
+      const rule = $tr("nextUp.exchangeRule");
+      out.push({ value: rule, title: rule, tone: CHIP_TONE.plain });
     }
     if (credRow?.need) {
       for (const segment of nitainNeedSegments(credRow.need, $tr)) {
@@ -809,7 +824,7 @@
 <ModalShell ariaLabel={suggestion.title} {onClose}>
   <!-- Wider than the shared panel: this one lists whole drop tables, and three
        tracks of full item names is what they take. -->
-  <div class="detail-panel {relic ? 'w-[960px]' : 'w-[1180px]'} max-w-[95vw] p-4">
+  <div class="detail-panel {panelWidth} max-w-[95vw] p-4">
     <div class="mb-3 flex items-start justify-between gap-2">
       <!-- Inset by a tile's own padding, so the header letter and every tile
            letter below it share one column. -->
@@ -887,7 +902,7 @@
         {/each}
         {@render factRows()}
       </div>
-    {:else}
+    {:else if !exchange}
       <div class="flex gap-4">
         <div class="flex min-w-0 flex-1 flex-col gap-1">
           {#if rewardTile && !familyOnly && !relic}
@@ -956,6 +971,10 @@
           {/each}
         </div>
       </div>
+    {/if}
+
+    {#if exchange}
+      <ExchangeTables {exchange} />
     {/if}
 
     {#if options.length > 0}

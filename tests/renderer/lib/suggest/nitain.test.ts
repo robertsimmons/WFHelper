@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 
 import { resolveAcquisition } from "../../../../src/lib/suggest/acquisition/index.js";
 import { buildOwnership } from "../../../../src/lib/suggest/acquisition/parts.js";
-import { nitainNeed } from "../../../../src/lib/suggest/nitain.js";
+import { resourceNeed } from "../../../../src/lib/suggest/resourceNeed.js";
 import { inventory } from "./acquisition/fixtures.js";
 import {
   DORMA,
@@ -27,10 +27,10 @@ function need(
   itemDb: Record<string, ItemDbEntry> = nitainDb(),
 ) {
   const targets = resolveAcquisition({ itemDb, inventory: held, mastery });
-  return nitainNeed(targets, NITAIN, itemDb, buildOwnership(held, itemDb));
+  return resourceNeed(targets, NITAIN, itemDb, buildOwnership(held, itemDb));
 }
 
-describe("nitainNeed", () => {
+describe("resourceNeed", () => {
   it("splits what is unbuilt into mastery, Prime and subsume", () => {
     expect(need(inventory({ suits: [NEKROS] }))).toEqual({
       normal: 10,

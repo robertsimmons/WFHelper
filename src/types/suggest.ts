@@ -7,6 +7,7 @@ import type { ScannablePlaceCard } from "../lib/suggest/scannablePlaces.js";
 import type { ScanCategory } from "../lib/suggest/scannables.js";
 import type { SimulacrumCard } from "../lib/suggest/simulacrum.js";
 import type { UpgradeCard } from "../lib/suggest/upgrades.js";
+import type { ExchangeDetails } from "../lib/suggest/vendorExchange.js";
 import type { TrackerState } from "../lib/world/dailies.js";
 import type { DropRow } from "../../config/shared/dropTypes.js";
 import type { RelicAdvice, RelicRarity, RelicRewardStatus } from "../../config/shared/relicMr.js";
@@ -317,6 +318,8 @@ export interface SuggestionDetails {
   vosfor?: boolean | undefined;
   /** The relics band's lead card, the same way. */
   relicPacks?: boolean | undefined;
+  /** A resource vendor's needed offers and the spare that pays for them. */
+  exchange?: ExchangeDetails | undefined;
   /** One place to run for codex scans; the section is fed outside the engine. */
   simulacrum?: SimulacrumCard | undefined;
   /** One place to run for the codex entries the scanning section's other categories miss. */

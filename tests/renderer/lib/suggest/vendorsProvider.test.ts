@@ -435,7 +435,23 @@ describe("vendorsProvider", () => {
     // Her table runs to two dozen offers; the adapter at the top of it is the
     // whole of what she is worth.
     expect(acrithis?.signals.value).toBeCloseTo(worth("Primary Arcane Adapter"), 10);
-    expect(draft(context(), "vendors:yonta")?.signals.value).toBeCloseTo(worth("Kuva"), 10);
+  });
+
+  it("shows Yonta only for what spare resources buy, ticking the weekly task off the Kuva trade", () => {
+    const PINION = "/Lotus/Types/Gameplay/Zariman/Resources/VoidAngelItem";
+    const held = (count: number) =>
+      context({
+        inventory: {
+          MiscItems: [{ ItemType: PINION, ItemCount: count }],
+          Affiliations: [{ Tag: "ZarimanSyndicate", Title: 5 }],
+        } as unknown as SuggestionContext["inventory"],
+      });
+    expect(draft(context(), "vendors:yonta")).toBeUndefined();
+    expect(draft(held(4), "vendors:yonta")).toBeUndefined();
+    const yonta = draft(held(5), "vendors:yonta");
+    expect(yonta?.details?.exchange?.kuva?.quantity).toBe(35000);
+    expect(yonta?.complete?.taskId).toBe("yonta");
+    expect(yonta?.signals.value).toBeCloseTo(worth("Kuva"), 10);
   });
 
   it("keeps a stall worth a resource the player already has plenty of", () => {

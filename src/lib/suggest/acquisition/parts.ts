@@ -353,6 +353,7 @@ const EMPTY_PLAN: PartPlan = {
   main: null,
   components: [],
   missing: [],
+  sourcing: [],
   materials: [],
   credits: 0,
   copies: 1,
@@ -393,6 +394,7 @@ function toPartPlan(
   copies: number,
   building: ReadonlyMap<string, number>,
   foundry: boolean,
+  underway: (part: string) => number,
 ): PartPlan {
   if (!planned.hasRecipe) return EMPTY_PLAN;
   const mainRow = planned.components.find((component) => component.isBlueprint) ?? null;
@@ -407,6 +409,9 @@ function toPartPlan(
       ),
     );
   const missing = [...(main ? [main] : []), ...components].filter((part) => part.missing > 0);
+  const sourcing = missing
+    .map((part) => ({ ...part, missing: Math.max(0, part.missing - underway(part.uniqueName)) }))
+    .filter((part) => part.missing > 0);
   // A part still in the foundry is held toward the plan but cannot go into a build yet.
   const inHand = components.every(
     (part) => part.owned - part.building >= Math.ceil(part.required / copies),
@@ -416,12 +421,30 @@ function toPartPlan(
     main,
     components,
     missing,
+    sourcing,
     materials: planned.resources.map(materialState),
     credits: planned.credits,
     copies,
     foundry,
     buildable: planned.craftableNow && inHand,
   };
+}
+
+/** One per part per build the plan is sized for, so two builds of a three-part
+ *  frame count eight. */
+export function totalParts(parts: PartPlan): number {
+  return ((parts.main ? 1 : 0) + parts.components.length) * parts.copies;
+}
+
+/** Builds' worth of each part held; a part needed twice per build counts only
+ *  once both are in. */
+export function ownedParts(parts: PartPlan): number {
+  let have = 0;
+  for (const part of [...(parts.main ? [parts.main] : []), ...parts.components]) {
+    const perBuild = Math.max(1, Math.ceil(part.required / parts.copies));
+    have += Math.min(parts.copies, Math.floor(part.owned / perBuild));
+  }
+  return have;
 }
 
 /** A part's blueprint is not the part. The alias that reads "X" and "XBlueprint" as one
@@ -456,6 +479,7 @@ function planPins(
   held: Map<string, number>,
   building: ReadonlyMap<string, number>,
   foundry: boolean,
+  underway: (part: string) => number,
   out: Map<string, PartPlan>,
 ): void {
   const pins: PlannerPin[] = targets.map((target) => ({
@@ -468,7 +492,10 @@ function planPins(
   }));
   const plan = buildMasteryPlan(pins, itemDb, held, { allocate: false });
   plan.items.forEach((item, index) => {
-    out.set(item.uniqueName, toPartPlan(item, pins[index]?.copies ?? 1, building, foundry));
+    out.set(
+      item.uniqueName,
+      toPartPlan(item, pins[index]?.copies ?? 1, building, foundry, underway),
+    );
   });
 }
 
@@ -557,6 +584,14 @@ export function buildPartPlans(
     withBuilding.set(uniqueName, (withBuilding.get(uniqueName) ?? 0) + count);
   }
   const counted = (target: PartPlanTarget): boolean => (target.copies ?? 0) > 0;
+  // A plan that leaves the foundry out still owes no drop for a part it is making.
+  const underway =
+    (foundry: boolean) =>
+    (part: string): number => {
+      const blueprint = itemDb[part]?.recipe?.blueprintUniqueName;
+      const held = blueprint && blueprint !== part ? (ownership.get(blueprint) ?? 0) : 0;
+      return foundry ? held : held + (building.get(part) ?? 0);
+    };
 
   const out = new Map<string, PartPlan>();
   planPins(
@@ -565,8 +600,9 @@ export function buildPartPlans(
     pool,
     new Map(),
     false,
+    underway(false),
     out,
   );
-  planPins(targets.filter(counted), itemDb, withBuilding, building, true, out);
+  planPins(targets.filter(counted), itemDb, withBuilding, building, true, underway(true), out);
   return out;
 }

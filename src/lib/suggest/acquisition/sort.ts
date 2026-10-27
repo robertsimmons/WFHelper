@@ -1,8 +1,12 @@
-import { headlinePath } from "./paths.js";
+import { masteryXp } from "./masteryXp.js";
+import { ownedParts, totalParts } from "./parts.js";
+import { headlinePath, isBlueprintPrice } from "./paths.js";
 import { effortValue } from "./ratings.js";
 import { tierOrder, tierScore } from "./recommend.js";
+import { subsumeValue } from "./subsumes.js";
 import { itemTierScore } from "./tiers.js";
-import type { AcquisitionTarget, PlatCost } from "./types.js";
+import { traderAt } from "./traders.js";
+import type { AcquisitionPath, AcquisitionTarget, PlatCost } from "./types.js";
 import type { SortDirection } from "../../../types/filters.js";
 
 export const ACQUISITION_SORTS = ["recommended", "difficulty", "tier", "plat"] as const;
@@ -49,11 +53,13 @@ function priceFor(target: AcquisitionTarget): number {
 }
 
 const READY_BAND = 0;
-const WORK_BAND = 1;
+const BUILD_BAND = 1;
+const WORK_BAND = 2;
+const PLAT_BAND = 3;
 
 /** Every part is in hand and the foundry will take it: nothing left to farm. */
 const READY_EFFORT = 0.05;
-/** Every part is in hand but the raw materials are not. */
+/** Every part or its blueprint is in hand, but the foundry is still owed work. */
 const MATERIALS_EFFORT = 0.35;
 
 function isReady(target: AcquisitionTarget): boolean {
@@ -61,9 +67,21 @@ function isReady(target: AcquisitionTarget): boolean {
   return !target.modular && parts.known && parts.buildable;
 }
 
-/** The foundry would take it now, or there is still work to do. */
+/** Every part or its blueprint and every material is in hand: only sub-builds left. */
+function isBuildOnly(target: AcquisitionTarget): boolean {
+  const parts = target.parts;
+  return (
+    !target.modular &&
+    parts.known &&
+    parts.sourcing.length === 0 &&
+    parts.materials.every((material) => material.missing === 0)
+  );
+}
+
+/** The foundry would take it now, only builds are left, or there is still a farm. */
 export function readyBand(target: AcquisitionTarget): number {
-  return isReady(target) ? READY_BAND : WORK_BAND;
+  if (isReady(target)) return READY_BAND;
+  return isBuildOnly(target) ? BUILD_BAND : WORK_BAND;
 }
 
 /** What the rest of the build costs on its cheapest route. Null where nothing
@@ -71,7 +89,7 @@ export function readyBand(target: AcquisitionTarget): number {
 export function remainingEffort(target: AcquisitionTarget): number | null {
   if (headlinePath(target.paths)) return target.effort;
   const parts = target.parts;
-  if (target.modular || !parts.known || parts.missing.length > 0) return planEffort(target);
+  if (target.modular || !parts.known || parts.sourcing.length > 0) return planEffort(target);
   return parts.buildable ? READY_EFFORT : MATERIALS_EFFORT;
 }
 
@@ -91,9 +109,78 @@ export function partsLeft(target: AcquisitionTarget): number | null {
   return target.parts.known ? target.parts.missing.length : null;
 }
 
+/** A rank-30 frame's mastery, the unit every other need is weighed in. */
+const FRAME_MASTERY_XP = 6000;
+/** Tier score 1 (best) lifts mastery by a fifth, 5 (worst) cuts it by a fifth. */
+const TIER_LIFT = 0.2;
+const MID_TIER_SCORE = 3;
+/** A gear type has no part count, so it reads as halfway there. */
+const MODULAR_CLOSENESS = 0.5;
+/** Nothing is free, and a near-zero farm would swamp every other term. */
+const MIN_DIFFICULTY = 0.05;
+
+function tierMultiplier(target: AcquisitionTarget): number {
+  const score = tierScore(target.tier, itemTierScore(target.name));
+  return score === null ? 1 : 1 + ((MID_TIER_SCORE - score) / 2) * TIER_LIFT;
+}
+
+/** Incarnon and Prime-upgrade needs win nothing toward building the thing. */
+function worth(target: AcquisitionTarget): number {
+  let total = 0;
+  if (target.needs.includes("mastery")) {
+    total += (masteryXp(target) / FRAME_MASTERY_XP) * tierMultiplier(target);
+  }
+  if (target.needs.includes("subsume")) total += subsumeValue(target.name);
+  return total;
+}
+
+function closeness(target: AcquisitionTarget): number {
+  if (target.modular || !target.parts.known) return MODULAR_CLOSENESS;
+  return (ownedParts(target.parts) + 1) / (totalParts(target.parts) + 1);
+}
+
+/** A route only Baro or Varzia sells walks while they are in and stock it. */
+function traderOnly(path: AcquisitionPath): boolean {
+  return path.steps.length > 0 && path.steps.every((step) => traderAt(step.where) !== null);
+}
+
+function walkable(path: AcquisitionPath): boolean {
+  if (path.kind === "trade" || isBlueprintPrice(path)) return false;
+  if (traderOnly(path) && !path.stocked) return false;
+  return (path.cost.relics?.stranded.length ?? 0) === 0;
+}
+
+/** The route the headline would lead with if plat were off the table. */
+export function inGamePath(paths: readonly AcquisitionPath[]): AcquisitionPath | null {
+  return paths.find(walkable) ?? null;
+}
+
+/** Nothing in game walks it now, but the market finishes it. */
+function platOnly(target: AcquisitionTarget): boolean {
+  if (!headlinePath(target.paths) || inGamePath(target.paths)) return false;
+  return target.paths.some(
+    (path) => path.kind === "trade" && completionPlat(path.cost.plat) !== null,
+  );
+}
+
+/** A trade is the plat alternative, never the farm the score weighs. */
+function farmDifficulty(target: AcquisitionTarget): number | null {
+  if (!headlinePath(target.paths)) return remainingEffort(target);
+  return inGamePath(target.paths)?.effort ?? null;
+}
+
+/** Still farming orders by what the build wins for how close and how cheap it
+ *  is; negated so the best reads lowest. Null where no difficulty is known. */
+export function farmScore(target: AcquisitionTarget): number | null {
+  const difficulty = farmDifficulty(target);
+  if (difficulty === null) return null;
+  return -((worth(target) * closeness(target)) / Math.max(MIN_DIFFICULTY, difficulty));
+}
+
 /** What a mode orders by, first key first. Lower sorts earlier; null is unknown
- *  and sorts last within its own key. Recommended leads with what the foundry
- *  would take now, then the cheapest work left, then tier. */
+ *  and sorts last within its own key. Recommended bands ready, then only builds
+ *  left, then still farming, then plat only; the first two order by the cheapest
+ *  work left, then tier, still farming by its farm score, and plat only by plat. */
 export function sortKeys(target: AcquisitionTarget, sort: AcquisitionSort): (number | null)[] {
   switch (sort) {
     case "difficulty":
@@ -102,13 +189,18 @@ export function sortKeys(target: AcquisitionTarget, sort: AcquisitionSort): (num
       return [tierOrder(target.tier)];
     case "plat":
       return [platFor(target)];
-    default:
+    default: {
+      const band = readyBand(target);
+      if (band === WORK_BAND) {
+        return platOnly(target) ? [PLAT_BAND, platFor(target)] : [band, farmScore(target)];
+      }
       return [
-        readyBand(target),
+        band,
         remainingEffort(target),
         partsLeft(target),
         tierScore(target.tier, itemTierScore(target.name)),
       ];
+    }
   }
 }
 

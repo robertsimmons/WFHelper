@@ -3,6 +3,7 @@ import { curated, type CuratedLookup, type CuratedSource } from "./curated.js";
 import { nemesisSteps } from "./nemesis.js";
 import { relicCost } from "./relics.js";
 import { UNKNOWN_EFFORT, type Ratings } from "./ratings.js";
+import { markStocked, soldRelics, type TraderShelves } from "./traders.js";
 import type { RawInventoryData } from "../../../types/inventory.js";
 import type { RelicDatabase } from "../../../types/relics.js";
 import type { PlanAfterQuest, PlanGroup, PlanGroupType, PlanSource } from "./plan/schema.js";
@@ -87,7 +88,7 @@ function coveredBy(
 }
 
 /** A Market path short of the whole build is a blueprint price, not a route. */
-function isBlueprintPrice(path: AcquisitionPath): boolean {
+export function isBlueprintPrice(path: AcquisitionPath): boolean {
   return path.kind === "market" && !path.complete;
 }
 
@@ -198,6 +199,8 @@ interface PathInputs {
   afterQuest?: PlanAfterQuest | null;
   /** The authored plan, the route for an item no table or derivation sources. */
   plan?: PlanRoute | null;
+  /** What Baro and Varzia stock now; absent is unknown stock. */
+  traders?: TraderShelves | null;
 }
 
 type PlanRoute = Pick<PlanAfterQuest, "effort" | "groups"> & { source?: PlanSource };
@@ -298,7 +301,14 @@ function curatedPaths(input: PathInputs, missing: readonly PartState[]): Acquisi
       makePath(
         `${kind}:${index++}`,
         kind,
-        [{ kind, where: source.where, parts: covers.map((part) => part.name) }],
+        [
+          {
+            kind,
+            where: source.where,
+            parts: covers.map((part) => part.name),
+            ...(source.quest ? { quest: source.quest } : {}),
+          },
+        ],
         covers,
         missing.length,
         difficulty,
@@ -350,7 +360,7 @@ function wholeItem(name: string): PartState {
 
 export function buildPaths(input: PathInputs): AcquisitionPath[] {
   const missing =
-    input.wanted && !input.parts.known ? [wholeItem(input.name)] : input.parts.missing;
+    input.wanted && !input.parts.known ? [wholeItem(input.name)] : input.parts.sourcing;
   if (missing.length === 0) {
     const incarnon = input.incarnon;
     return incarnon && !incarnon.owned ? [adapterPath(input, incarnon)] : [];
@@ -372,7 +382,8 @@ export function buildPaths(input: PathInputs): AcquisitionPath[] {
   // A Prime handed over whole, such as Venari Prime with Khora Prime, has no
   // parts for a relic to drop.
   if (input.isPrime && input.parts.known) {
-    const relics = relicCost(missing, input.inventory, input.relicDb);
+    const sold = soldRelics(input.traders ?? null);
+    const relics = relicCost(missing, input.inventory, input.relicDb, sold);
     paths.push(
       makePath(
         "relics",
@@ -416,6 +427,11 @@ export function buildPaths(input: PathInputs): AcquisitionPath[] {
   }
 
   excusePurchasableBlueprint(paths, missing, difficulty);
+  markStocked(paths, input.traders ?? null, {
+    itemName: input.name,
+    missing,
+    relicDb: input.relicDb,
+  });
   paths.sort(
     (a, b) => headlineRank(a) - headlineRank(b) || a.effort - b.effort || a.id.localeCompare(b.id),
   );

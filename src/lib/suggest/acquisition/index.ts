@@ -19,11 +19,13 @@ import {
   PLEXUS,
   type GearEntry,
 } from "./parts.js";
+import { createMaxRankLookup } from "./masteryXp.js";
 import { buildPaths, headlinePath } from "./paths.js";
 import { afterQuestRoute, planFor, planQuestDone, ratingOf } from "./plan/data.js";
 import { readQuestState } from "./plan/state.js";
 import { createQuestDone } from "./quests.js";
 import { createRatings } from "./ratings.js";
+import { traderShelves } from "./traders.js";
 import { baseWeaponName, isBundledWeapon, listWeapons } from "./weapons.js";
 import type { ItemDbEntry } from "../../../types/inventory.js";
 import type {
@@ -45,6 +47,7 @@ const EMPTY_PLAN: PartPlan = {
   main: null,
   components: [],
   missing: [],
+  sourcing: [],
   materials: [],
   credits: 0,
   copies: 1,
@@ -122,6 +125,7 @@ export function resolveAcquisition(ctx: AcquisitionContext): AcquisitionTarget[]
   const ratings = createRatings(ctx.ratings, lookup);
   const incarnonFor = createIncarnonLookup(ctx.inventory, itemDb);
   const isMastered = createMasteryLookup(ctx.mastery);
+  const maxRankOf = createMaxRankLookup(ctx.mastery);
   const fitted = fittedModularParts(ctx.inventory);
   const questDone = createQuestDone(ctx.inventory, itemDb);
   const player = { inventory: ctx.inventory, quests: readQuestState(ctx.inventory, itemDb) };
@@ -131,6 +135,9 @@ export function resolveAcquisition(ctx: AcquisitionContext): AcquisitionTarget[]
     !ownsItem(uniqueName, ownership) && isUnobtainableItem({ uniqueName, name });
   const only = ctx.only ? new Set(ctx.only.map((name) => name.toLowerCase())) : null;
   const kinds = ctx.kinds ? new Set(ctx.kinds) : null;
+  const world = ctx.world ?? null;
+  const now = ctx.now ?? Date.now();
+  const traders = traderShelves(world, ctx.relicDb, now);
 
   const wanted: Wanted[] = [];
 
@@ -283,8 +290,7 @@ export function resolveAcquisition(ctx: AcquisitionContext): AcquisitionTarget[]
     const parts = (item.build ? plans.get(item.uniqueName) : null) ?? EMPTY_PLAN;
     const isPrime = isPrimeEntry(item.name, item.entry);
     // A plan that names its quest answers for the curated rows too, so the card,
-    // its sort and its plan page agree on whether the quest route is gone. The
-    // rating and route lead never read trader stock, so the sweep passes no world.
+    // its sort and its plan page agree on whether the quest route is gone.
     const plan = planFor(
       {
         name: item.name,
@@ -294,9 +300,10 @@ export function resolveAcquisition(ctx: AcquisitionContext): AcquisitionTarget[]
         isPrime,
         parts,
       },
-      { itemDb, relicDb: ctx.relicDb, world: null },
+      { itemDb, relicDb: ctx.relicDb, world, now },
     );
     const planDone = plan ? planQuestDone(plan, player.quests) : null;
+    const maxRank = maxRankOf(item.uniqueName, item.name);
     const paths = buildPaths({
       name: item.name,
       isPrime,
@@ -313,6 +320,7 @@ export function resolveAcquisition(ctx: AcquisitionContext): AcquisitionTarget[]
       questDone: planDone === null ? questDone : () => planDone,
       afterQuest: plan ? afterQuestRoute(plan, player.quests) : null,
       plan,
+      traders,
     });
     return {
       uniqueName: item.uniqueName,
@@ -326,6 +334,7 @@ export function resolveAcquisition(ctx: AcquisitionContext): AcquisitionTarget[]
       nemesis: item.nemesis,
       incarnon: item.incarnon,
       needs: item.needs,
+      ...(maxRank !== null ? { maxRank } : {}),
       parts,
       paths,
       difficulty: ratings.effortLabel(item.name),

@@ -6,18 +6,15 @@ import { isSubsumableFrame } from "../../helminth.js";
 import { overframeRankingsRevision } from "../../../stores/overframeRankings.js";
 import { resolveAcquisition } from "../acquisition/index.js";
 import { includesTarget } from "../acquisition/kinds.js";
+import { ownedParts, totalParts } from "../acquisition/parts.js";
 import { headlinePath } from "../acquisition/paths.js";
 import { compareAcquisition, remainingEffort, sortRow } from "../acquisition/sort.js";
 import { includesSource } from "../acquisition/sources.js";
+import { traderStockKey } from "../acquisition/traders.js";
 import { advances, needsGain } from "../gain.js";
 import { clamp01 } from "../score.js";
 import type { MessageKey } from "../../i18n.js";
-import type {
-  AcquisitionPath,
-  AcquisitionTarget,
-  PartPlan,
-  PathKind,
-} from "../acquisition/types.js";
+import type { AcquisitionPath, AcquisitionTarget, PathKind } from "../acquisition/types.js";
 import type {
   ChoiceStatus,
   SuggestionContext,
@@ -60,23 +57,6 @@ const KIND_LABEL: Record<PathKind, MessageKey> = {
 
 export function pathKindLabel(kind: PathKind): MessageKey {
   return KIND_LABEL[kind];
-}
-
-/** One per part per build the plan is sized for, so two builds of a three-part
- *  frame count eight. */
-function totalParts(parts: PartPlan): number {
-  return ((parts.main ? 1 : 0) + parts.components.length) * parts.copies;
-}
-
-/** Builds' worth of each part held; a part needed twice per build counts only
- *  once both are in. */
-function ownedParts(parts: PartPlan): number {
-  let have = 0;
-  for (const part of [...(parts.main ? [parts.main] : []), ...parts.components]) {
-    const perBuild = Math.max(1, Math.ceil(part.required / parts.copies));
-    have += Math.min(parts.copies, Math.floor(part.owned / perBuild));
-  }
-  return have;
 }
 
 /** The progress read under the card's art. */
@@ -196,7 +176,7 @@ function whySegments(target: AcquisitionTarget, t: SuggestionContext["t"]): WhyS
   if (state)
     out.push(ready && target.parts.buildable ? { text: state, tone: "good" } : { text: state });
   // A build already in hand needs no route: there is nothing left to walk.
-  if (!ready) {
+  if (!ready && !(target.parts.known && target.parts.sourcing.length === 0)) {
     const route = routeText(target, t);
     out.push(headlinePath(target.paths) ? { text: route } : { text: route, tone: "bad" });
   }
@@ -231,6 +211,9 @@ export function acquisitionTargets(ctx: SuggestionContext): AcquisitionTarget[] 
     prefs.acquisitionEffort,
     // A refreshed overframe table changes every tier the sweep just cached.
     get(overframeRankingsRevision),
+    // Each world fetch is a new object, but only a trader arriving, leaving or
+    // restocking moves a route.
+    traderStockKey(ctx.world, ctx.nowMs),
   ] as const;
   if (cached && keys.every((key, index) => cached?.keys[index] === key)) return cached.targets;
   const targets = resolveAcquisition({
@@ -241,6 +224,8 @@ export function acquisitionTargets(ctx: SuggestionContext): AcquisitionTarget[] 
     plat: ctx.plat,
     ratings: acquisitionRatings(prefs),
     curatedWeapons,
+    world: ctx.world,
+    now: ctx.nowMs,
   });
   cached = { keys, targets };
   return targets;

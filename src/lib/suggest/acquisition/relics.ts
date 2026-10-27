@@ -1,7 +1,7 @@
 import { componentUniqueNameAliases } from "../../../../config/shared/componentNames.js";
 import { parseOwnedRelics } from "../../relic/relicInventory.js";
 import type { RawInventoryData } from "../../../types/inventory.js";
-import type { RelicDatabase } from "../../../types/relics.js";
+import type { RelicDatabase, RelicGroup } from "../../../types/relics.js";
 import type { PartState, RelicCost, RelicHolding } from "./types.js";
 
 /** "Mag Prime Neuroptics Blueprint" -> "mag prime neuroptics". */
@@ -29,19 +29,29 @@ function matcher(part: PartState): PartMatcher {
   };
 }
 
+/** Unknown vault state reads as still dropping. */
+function stillDrops(group: RelicGroup): boolean {
+  if (group.dropping) return group.dropping !== "none";
+  return group.vaulted !== true;
+}
+
 /** Relic counts the player holds against the parts a Prime is still short of.
- *  Without a relic database the path still stands; only the counts are unknown. */
+ *  Without a relic database the path still stands; only the counts are unknown.
+ *  A vaulted relic a trader sells now, by group name in `sold`, is in reach. */
 export function relicCost(
   missing: readonly PartState[],
   inventory: RawInventoryData | null,
   relicDb: RelicDatabase | null | undefined,
+  sold: ReadonlySet<string> = new Set(),
 ): RelicCost {
   const needed = missing.reduce((sum, part) => sum + part.missing, 0);
-  if (!relicDb) return { known: false, held: 0, needed, rows: [] };
+  if (!relicDb) return { known: false, held: 0, needed, rows: [], stranded: [] };
 
   const owned = parseOwnedRelics(inventory, relicDb);
   const matchers = missing.map(matcher);
   const rows: RelicHolding[] = [];
+  const paid = new Set<string>();
+  const reachable = new Set<string>();
   let held = 0;
 
   for (const [groupKey, group] of Object.entries(relicDb.groups)) {
@@ -61,10 +71,16 @@ export function relicCost(
       }
     }
     if (hit.size === 0) continue;
-    for (const part of hit) rows.push({ relic: group.name, part, held: copies });
+    const open = copies > 0 || stillDrops(group) || sold.has(group.name);
+    for (const part of hit) {
+      rows.push({ relic: group.name, part, held: copies });
+      paid.add(part);
+      if (open) reachable.add(part);
+    }
     held += copies;
   }
 
   rows.sort((a, b) => b.held - a.held || a.relic.localeCompare(b.relic));
-  return { known: true, held, needed, rows };
+  const stranded = [...paid].filter((part) => !reachable.has(part));
+  return { known: true, held, needed, rows, stranded };
 }

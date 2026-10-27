@@ -4,6 +4,7 @@ import { resolveAcquisition } from "../../../../../src/lib/suggest/acquisition/i
 import {
   ACQUISITION_SORTS,
   compareAcquisition,
+  farmScore,
   partsLeft,
   platFor,
   sortKeys,
@@ -11,13 +12,16 @@ import {
   type AcquisitionSort,
   type SortRow,
 } from "../../../../../src/lib/suggest/acquisition/sort.js";
-import { itemDb } from "./fixtures.js";
+import { inventory, itemDb, LITH_M1, MAGP_BP, relicDb } from "./fixtures.js";
 import type {
+  AcquisitionKind,
   AcquisitionPath,
   AcquisitionTarget,
   ModularPlan,
+  NeedReason,
   PartPlan,
   PartState,
+  PathKind,
 } from "../../../../../src/lib/suggest/acquisition/types.js";
 
 interface Shape {
@@ -30,14 +34,20 @@ interface Shape {
   recipe?: boolean;
   /** Blueprints still to find. */
   missing?: number;
+  /** Parts the recipe has in all, the missing ones included; defaults to them. */
+  total?: number;
+  needs?: NeedReason[];
+  kind?: AcquisitionKind;
   buildable?: boolean;
+  /** Materials the remaining builds are still short of. */
+  short?: number;
   heads?: { total: number; owned: number };
 }
 
-function path(plat: number | null): AcquisitionPath {
+function path(plat: number | null, effort = 0.5, kind: PathKind = "market"): AcquisitionPath {
   return {
-    id: "market",
-    kind: "market",
+    id: kind,
+    kind,
     covers: [],
     complete: true,
     steps: [],
@@ -46,17 +56,41 @@ function path(plat: number | null): AcquisitionPath {
       plat: { set: plat, setSlug: null, parts: [], partsTotal: null },
       relics: null,
     },
-    effort: 0.5,
+    effort,
   };
 }
 
 function parts(shape: Shape): PartPlan {
+  const absent = shape.missing ?? 0;
+  const components = Array.from(
+    { length: Math.max(absent, shape.total ?? absent) },
+    (_, index): PartState => ({
+      uniqueName: `/${shape.name}/part${index}`,
+      name: `Part ${index}`,
+      role: "component",
+      required: 1,
+      owned: index < absent ? 0 : 1,
+      building: 0,
+      missing: index < absent ? 1 : 0,
+    }),
+  );
+  const missing = components.slice(0, absent);
+  const short = shape.short ?? 0;
   return {
     known: shape.recipe ?? false,
     main: null,
-    components: [],
-    missing: Array.from({ length: shape.missing ?? 0 }, () => ({}) as PartState),
-    materials: [],
+    components,
+    missing,
+    sourcing: missing,
+    materials: [
+      {
+        uniqueName: "/Plastids",
+        name: "Plastids",
+        required: 100,
+        owned: 100 - short,
+        missing: short,
+      },
+    ],
     credits: 0,
     copies: 1,
     foundry: false,
@@ -85,15 +119,15 @@ function targetFor(shape: Shape): AcquisitionTarget {
     uniqueName: `/${shape.name}`,
     name: shape.name,
     imageUrl: null,
-    kind: "warframe",
-    weaponClass: null,
+    kind: shape.kind ?? "warframe",
+    weaponClass: shape.kind === "weapon" ? "primary" : null,
     modular: shape.heads ? modular(shape.heads) : null,
     isPrime: false,
     nemesis: null,
     incarnon: null,
-    needs: ["mastery"],
+    needs: shape.needs ?? ["mastery"],
     parts: parts(shape),
-    paths: shape.plat === undefined ? [] : [path(shape.plat)],
+    paths: shape.plat === undefined ? [] : [path(shape.plat, shape.effort ?? 0.5)],
     difficulty: shape.difficulty ?? null,
     tier: shape.tier ?? null,
     wiki: null,
@@ -167,9 +201,9 @@ describe("recommended", () => {
 
   it("sorts two blueprints short behind one blueprint short", () => {
     const rows = [
-      row({ name: "ThreeShort", tier: "S", recipe: true, missing: 3 }),
-      row({ name: "OneShort", tier: "D", recipe: true, missing: 1 }),
-      row({ name: "TwoShort", tier: "S", recipe: true, missing: 2 }),
+      row({ name: "ThreeShort", tier: "B", recipe: true, missing: 3, total: 4, plat: 10 }),
+      row({ name: "OneShort", tier: "B", recipe: true, missing: 1, total: 4, plat: 10 }),
+      row({ name: "TwoShort", tier: "B", recipe: true, missing: 2, total: 4, plat: 10 }),
     ];
     expect(order(rows, "recommended")).toEqual(["OneShort", "TwoShort", "ThreeShort"]);
   });
@@ -209,7 +243,7 @@ describe("recommended", () => {
     expect(order(rows, "recommended")).toEqual(["EasyD", "GrimS"]);
   });
 
-  it("breaks a route tie on parts left, then on tier", () => {
+  it("weighs parts in hand and tier against each other at the same route", () => {
     const rows = [
       row({ name: "TwoS", tier: "S", recipe: true, missing: 2, plat: 10, effort: 0.4 }),
       row({ name: "OneD", tier: "D", recipe: true, missing: 1, plat: 10, effort: 0.4 }),
@@ -234,6 +268,118 @@ describe("recommended", () => {
     ];
     expect(order(rows, "recommended")).toEqual(["UnratedReady", "RatedShort"]);
   });
+
+  it("puts a target with only sub-builds left ahead of a cheap farm", () => {
+    const rows = [
+      row({ name: "CheapFarm", tier: "S", recipe: true, missing: 1, plat: 10, effort: 0.1 }),
+      row({ name: "BuildsLeft", tier: "D", recipe: true }),
+    ];
+    expect(order(rows, "recommended")).toEqual(["BuildsLeft", "CheapFarm"]);
+    expect(sortKeys(rows[1]!.target, "recommended")[0]).toBe(1);
+  });
+
+  it("keeps a target short on materials behind a cheap farm", () => {
+    const rows = [
+      row({ name: "ShortMaterials", tier: "S", recipe: true, short: 40 }),
+      row({ name: "CheapFarm", tier: "D", recipe: true, missing: 1, plat: 10, effort: 0.1 }),
+    ];
+    expect(order(rows, "recommended")).toEqual(["CheapFarm", "ShortMaterials"]);
+    expect(sortKeys(rows[0]!.target, "recommended")[0]).toBe(2);
+  });
+});
+
+describe("still farming at the same difficulty", () => {
+  const farm = { recipe: true, total: 4, plat: 10, effort: 0.4 } as const;
+
+  it("puts the top subsume three parts in ahead of a mid subsume one part in", () => {
+    const rows = [
+      row({ ...farm, name: "Khora", needs: ["mastery", "subsume"], missing: 3 }),
+      row({ ...farm, name: "Grendel", needs: ["subsume"], missing: 1 }),
+    ];
+    expect(order(rows, "recommended")).toEqual(["Grendel", "Khora"]);
+  });
+
+  it("puts a near-worthless subsume three parts in behind that mastery frame", () => {
+    const rows = [
+      row({ ...farm, name: "Caliban", needs: ["subsume"], missing: 1 }),
+      row({ ...farm, name: "Khora", needs: ["mastery", "subsume"], missing: 3 }),
+    ];
+    expect(order(rows, "recommended")).toEqual(["Khora", "Caliban"]);
+  });
+
+  it("puts a frame ahead of a rank-30 weapon at the same parts and tier", () => {
+    const rows = [
+      row({ ...farm, name: "Rifle", tier: "B", kind: "weapon", missing: 1 }),
+      row({ ...farm, name: "Frame", tier: "B", missing: 1 }),
+    ];
+    expect(order(rows, "recommended")).toEqual(["Frame", "Rifle"]);
+  });
+});
+
+describe("plat only", () => {
+  /** Mag Prime with its blueprint in hand, short only the Neuroptics a vaulted relic pays. */
+  function vaultedMagPrime(misc: Record<string, number> = {}): AcquisitionTarget {
+    const db = relicDb();
+    db.groups["Lith M1"]!.dropping = "none";
+    const [target] = resolveAcquisition({
+      itemDb: itemDb(),
+      inventory: inventory({ recipes: { [MAGP_BP]: 1 }, misc }),
+      relicDb: db,
+      plat: (name) => (name === "Mag Prime Set" ? 60 : null),
+      only: ["Mag Prime"],
+    });
+    return target!;
+  }
+
+  function plat(name: string, price: number | null): { target: AcquisitionTarget; effort: number } {
+    const entry = row({ name, recipe: true, missing: 1, total: 4 });
+    entry.target.paths = [path(price, 0.15, "trade")];
+    return entry;
+  }
+
+  it("puts a vaulted Prime with no relic held behind a normal farm", () => {
+    const prime = vaultedMagPrime();
+    expect(prime.parts.sourcing.map((part) => part.name)).toEqual(["Mag Prime Neuroptics"]);
+    const farm = row({ name: "Farm", recipe: true, missing: 1, total: 4, plat: 10, effort: 0.9 });
+    expect(order([{ target: prime, effort: prime.effort }, farm], "recommended")).toEqual([
+      "Farm",
+      "Mag Prime",
+    ]);
+    expect(sortKeys(prime, "recommended")).toEqual([3, 60]);
+  });
+
+  it("keeps it farming on the relic route once a relic for the part is held", () => {
+    const prime = vaultedMagPrime({ [LITH_M1]: 1 });
+    const relics = prime.paths.find((entry) => entry.kind === "relics")!;
+    const trade = prime.paths.find((entry) => entry.kind === "trade")!;
+    expect(relics.effort).toBeGreaterThan(trade.effort);
+    expect(sortKeys(prime, "recommended")[0]).toBe(2);
+    expect(farmScore(prime)).toBeCloseTo(farmScore({ ...prime, paths: [relics] })!);
+    const atTrade = farmScore({ ...prime, paths: [{ ...trade, kind: "mission" }] })!;
+    expect(farmScore(prime)).not.toBeCloseTo(atTrade);
+  });
+
+  it("orders plat-only items by plat, cheaper first", () => {
+    const rows = [plat("Dear", 90), plat("Cheap", 30)];
+    expect(order(rows, "recommended")).toEqual(["Cheap", "Dear"]);
+    expect(sortKeys(rows[1]!.target, "recommended")).toEqual([3, 30]);
+  });
+
+  it("leaves an unpriced trade still farming with no score", () => {
+    expect(sortKeys(plat("Unpriced", null).target, "recommended")).toEqual([2, null]);
+  });
+
+  it("leaves the plat sort reading plat alone", () => {
+    const rows = [
+      plat("PlatOnly", 50),
+      row({ name: "Farm", recipe: true, missing: 1, total: 4, plat: 20, effort: 0.6 }),
+      plat("PlatCheap", 10),
+    ];
+    for (const entry of rows) {
+      expect(sortKeys(entry.target, "plat")).toEqual([platFor(entry.target)]);
+    }
+    expect(order(rows, "plat")).toEqual(["PlatCheap", "Farm", "PlatOnly"]);
+  });
 });
 
 describe("sortKeys", () => {
@@ -242,10 +388,15 @@ describe("sortKeys", () => {
     expect(sortKeys(unknown, "difficulty")).toEqual([null]);
     expect(sortKeys(unknown, "tier")).toEqual([null]);
     expect(sortKeys(unknown, "plat")).toEqual([null]);
-    expect(sortKeys(unknown, "recommended").slice(1)).toEqual([null, null, null]);
+    expect(sortKeys(unknown, "recommended").slice(1)).toEqual([null]);
   });
 
-  it("orders the recommended keys ready, then work left, then parts left, then tier", () => {
+  it("orders a build-only target by work left, then parts left, then tier", () => {
+    const target = row({ name: "Keys", tier: "B", recipe: true }).target;
+    expect(sortKeys(target, "recommended")).toEqual([1, 0.35, 0, 3]);
+  });
+
+  it("orders a farm by its negated score: worth times closeness over difficulty", () => {
     const target = row({
       name: "Keys",
       tier: "B",
@@ -254,7 +405,9 @@ describe("sortKeys", () => {
       plat: 40,
       effort: 0.3,
     }).target;
-    expect(sortKeys(target, "recommended")).toEqual([1, 0.3, 2, 3]);
+    const [band, score] = sortKeys(target, "recommended");
+    expect(band).toBe(2);
+    expect(score).toBeCloseTo(-((1 * (1 / 3)) / 0.3));
   });
 });
 

@@ -13,6 +13,7 @@ import {
   ACQUISITION_ACTIVITY,
   acquisitionProvider,
   acquisitionStatuses,
+  acquisitionTargets,
 } from "../../../../src/lib/suggest/providers/acquisition.js";
 import {
   BRATON,
@@ -404,5 +405,24 @@ describe("acquisitionProvider pins", () => {
       pins: [BRATON],
     };
     expect(pinnedEntries(shape)).toEqual([]);
+  });
+});
+
+describe("acquisitionTargets cache", () => {
+  const OPEN = { activation: "2026-09-04T00:00:00Z", expiry: "2026-09-06T00:00:00Z" };
+
+  function withBaro(base: SuggestionContext, items: string[], nowMs = NOW): SuggestionContext {
+    const inventory = items.map((item) => ({ item }));
+    return { ...base, nowMs, world: { voidTrader: { ...OPEN, inventory } } };
+  }
+
+  it("re-sweeps on a trader restock or window close, never on a bare world refresh", () => {
+    const base = context();
+    const first = acquisitionTargets(withBaro(base, ["Mag"]));
+    expect(acquisitionTargets(withBaro(base, ["Mag"]))).toBe(first);
+    const restocked = acquisitionTargets(withBaro(base, ["Volt"]));
+    expect(restocked).not.toBe(first);
+    const closed = acquisitionTargets(withBaro(base, ["Volt"], Date.parse(OPEN.expiry)));
+    expect(closed).not.toBe(restocked);
   });
 });

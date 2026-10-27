@@ -174,6 +174,36 @@ describe("a component blueprint is not the component", () => {
     expect(readiness(spinnerex)).toEqual({ ready: false, left: 2 });
   });
 
+  it("sources only the parts whose blueprint is neither held nor cooking", () => {
+    const ctx = {
+      inventory: inventory({
+        recipes: {
+          [SPINNEREX_BP]: 1,
+          [blueprintOf(SPINNEREX_BLADE)]: 1,
+          [blueprintOf(SPINNEREX_STRING)]: 1,
+        },
+        pending: [blueprintOf(SPINNEREX_STRING)],
+      }),
+    };
+    const spinnerex = find(techrot(ctx), "Spinnerex");
+    expect(missingNames(spinnerex)).toEqual([
+      "Spinnerex Blade",
+      "Spinnerex String",
+      "Spinnerex Handle",
+    ]);
+    expect(spinnerex.parts.sourcing.map((row) => row.name)).toEqual(["Spinnerex Handle"]);
+    for (const path of spinnerex.paths) expect(path.covers).not.toContain("Spinnerex Blade");
+  });
+
+  it("asks for no route once every missing part's blueprint is in hand", () => {
+    const ctx = {
+      inventory: inventory({ recipes: { [SPINNEREX_BP]: 1, ...SPINNEREX_PART_BPS } }),
+    };
+    const spinnerex = find(techrot(ctx), "Spinnerex");
+    expect(spinnerex.parts.sourcing).toEqual([]);
+    expect(spinnerex.paths).toEqual([]);
+  });
+
   it("still reads a Prime part the inventory spells as a blueprint as the part", () => {
     const ctx = {
       inventory: inventory({
@@ -273,7 +303,7 @@ describe("what readiness means where there is no recipe to read", () => {
     const bramma = find(resolveAcquisition({ itemDb: weaponDb(), inventory: null }), "Kuva Bramma");
     expect(bramma.parts.known).toBe(false);
     expect(partsRead(bramma)).toBeNull();
-    expect(readyBand(bramma)).toBe(1);
+    expect(readyBand(bramma)).toBe(2);
     expect(partsLeft(bramma)).toBeNull();
   });
 
@@ -285,7 +315,7 @@ describe("what readiness means where there is no recipe to read", () => {
     const kitgun = find(targets, "Kitgun");
     expect(kitgun.modular?.owned).toBe(1);
     expect(partsRead(kitgun)).toMatchObject({ have: 1, need: 2, ready: false });
-    expect(readyBand(kitgun)).toBe(1);
+    expect(readyBand(kitgun)).toBe(2);
     expect(partsLeft(kitgun)).toBe(1);
   });
 

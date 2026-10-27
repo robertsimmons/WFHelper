@@ -8,7 +8,7 @@ export const MAG_CHASSIS = "/Lotus/Types/Recipes/Warframes/MagChassisComponent";
 export const MAG_SYSTEMS = "/Lotus/Types/Recipes/Warframes/MagSystemsComponent";
 
 export const MAGP = "/Lotus/Powersuits/Mag/MagPrime";
-const MAGP_BP = "/Lotus/Types/Recipes/Warframes/MagPrimeBlueprint";
+export const MAGP_BP = "/Lotus/Types/Recipes/Warframes/MagPrimeBlueprint";
 export const MAGP_NEURO = "/Lotus/Types/Recipes/Warframes/MagPrimeNeuropticsComponent";
 
 const VOLT = "/Lotus/Powersuits/Volt/Volt";

@@ -3,7 +3,7 @@ import { describe, expect, it } from "vitest";
 import { resolveAcquisition } from "../../../../../src/lib/suggest/acquisition/index.js";
 import { headlinePath } from "../../../../../src/lib/suggest/acquisition/paths.js";
 import { createQuestDone } from "../../../../../src/lib/suggest/acquisition/quests.js";
-import { sortRow } from "../../../../../src/lib/suggest/acquisition/sort.js";
+import { remainingEffort } from "../../../../../src/lib/suggest/acquisition/sort.js";
 import { frame, inventory, part } from "./fixtures.js";
 import type { ItemDbEntry, RawInventoryData } from "../../../../../src/types/inventory.js";
 import type { AcquisitionTarget } from "../../../../../src/lib/suggest/acquisition/types.js";
@@ -73,7 +73,7 @@ describe("a finished quest as a route", () => {
     const headline = headlinePath(done.paths);
     expect(headline?.kind).toBe("vendor");
     expect(headline?.steps[0]?.where).toMatch(/simaris/i);
-    expect(sortRow(done, done.effort, "recommended").keys[1]).toBe(headline?.effort);
+    expect(remainingEffort(done)).toBe(headline?.effort);
   });
 
   it("keeps the quest where the payload says nothing about quests", () => {

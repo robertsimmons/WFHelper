@@ -1,5 +1,6 @@
 import type { ItemDbEntry, MasteryData, RawInventoryData } from "../../../types/inventory.js";
 import type { RelicDatabase } from "../../../types/relics.js";
+import type { WorldState } from "../../../types/world.js";
 import type { MessageKey } from "../../i18n.js";
 import type { PlanRating } from "./plan/data.js";
 import type { NemesisProgenitor } from "./progenitors.js";
@@ -124,6 +125,9 @@ export interface PartPlan {
   components: PartState[];
   /** Every part still short, the main blueprint included. */
   missing: PartState[];
+  /** What a drop or trade still has to supply: a missing part whose own blueprint
+   *  is in hand or in the foundry only needs building. */
+  sourcing: PartState[];
   materials: MaterialState[];
   /** Foundry bill for every build the plan is sized for, component recipes included. */
   credits: number;
@@ -141,6 +145,8 @@ export interface PathStep {
   where: string;
   /** Names of the parts this step yields; empty means the whole item. */
   parts: string[];
+  /** The quest a curated row buys its way into, such as Baro's quest key. */
+  quest?: string | undefined;
 }
 
 export interface PlatCost {
@@ -165,6 +171,8 @@ export interface RelicCost {
   held: number;
   needed: number;
   rows: RelicHolding[];
+  /** Parts a relic pays, but none held or still dropping does. */
+  stranded: string[];
 }
 
 export interface PathCost {
@@ -184,6 +192,8 @@ export interface AcquisitionPath {
   cost: PathCost;
   /** 0 trivial .. 1 grim. The path list sorts ascending on it. */
   effort: number;
+  /** Set where every step is at a trader who is in and stocks what it buys. */
+  stocked?: boolean | undefined;
 }
 
 export interface AcquisitionTarget {
@@ -205,6 +215,8 @@ export interface AcquisitionTarget {
   incarnon: IncarnonInfo | null;
   /** Never empty: a target with nothing left to win is not returned at all. */
   needs: NeedReason[];
+  /** The roster's max rank; absent where it has no row for the item. */
+  maxRank?: number | undefined;
   parts: PartPlan;
   paths: AcquisitionPath[];
   /** Curated or supplied difficulty word; null when nothing has rated it. */
@@ -238,4 +250,8 @@ export interface AcquisitionContext {
   only?: readonly string[] | undefined;
   /** Restricts the sweep to these kinds; every one of them otherwise. */
   kinds?: readonly AcquisitionKind[] | undefined;
+  /** Trader stock; absent reads as unknown, which no trader route walks on. */
+  world?: WorldState | null | undefined;
+  /** The clock trader windows are read against; defaults to now. */
+  now?: number | undefined;
 }

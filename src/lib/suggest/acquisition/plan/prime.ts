@@ -303,6 +303,9 @@ const PLACES = {
   foundry: "FOUNDRY",
 } as const;
 
+/** Where a step walks only while the trader there stocks what it buys. */
+export const TRADER_PLACES: readonly string[] = [PLACES.varzia, PLACES.baro];
+
 function ayaPlace(lookup: ResourceLookup): string {
   return lookup("Aya")?.best?.place ?? "AYA";
 }

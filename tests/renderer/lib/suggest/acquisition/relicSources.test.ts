@@ -71,7 +71,9 @@ describe("aabcRound", () => {
     expect(aabcRound(source({ rotation: "C", missionType: "Void Cascade" }))).toBe("C");
     expect(aabcRound(source({ rotation: "B", missionType: "Spy" }))).toBeNull();
     expect(aabcRound(source({ rotation: "B", missionType: "Mobile Defense" }))).toBeNull();
-    expect(aabcRound(source({ rotation: "A", kind: "caches", missionType: "Skirmish" }))).toBeNull();
+    expect(
+      aabcRound(source({ rotation: "A", kind: "caches", missionType: "Skirmish" })),
+    ).toBeNull();
     expect(aabcRound(source({ rotation: null, missionType: "Survival" }))).toBeNull();
     expect(aabcRound(source({ rotation: "A", missionType: null }))).toBeNull();
     expect(aabcRound(source({ rotation: "A", kind: "bounty", missionType: null }))).toBeNull();

@@ -266,7 +266,9 @@ describe("resolveAcquisition beyond frames and weapons", () => {
 
   it("returns one target per Moa, Hound and K-Drive model, and one per other modular gear type", () => {
     const names = companions().map((target) => target.name);
-    expect(names).toEqual(expect.arrayContaining(["Oloro Moa", "Para Moa", "Dorma Hound", "Runway"]));
+    expect(names).toEqual(
+      expect.arrayContaining(["Oloro Moa", "Para Moa", "Dorma Hound", "Runway"]),
+    );
     expect(names).toContain("Amp");
     expect(names).not.toContain("Moa");
     expect(names).not.toContain("Hound");

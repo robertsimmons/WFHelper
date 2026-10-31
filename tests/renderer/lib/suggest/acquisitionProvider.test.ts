@@ -34,7 +34,11 @@ import {
   MAGP,
 } from "./acquisition/fixtures.js";
 import type { Translator } from "../../../../src/lib/i18n.js";
-import type { ItemDbEntry, MasteryData, RawInventoryData } from "../../../../src/types/inventory.js";
+import type {
+  ItemDbEntry,
+  MasteryData,
+  RawInventoryData,
+} from "../../../../src/types/inventory.js";
 import type { RelicDatabase } from "../../../../src/types/relics.js";
 import type {
   ActivityPref,

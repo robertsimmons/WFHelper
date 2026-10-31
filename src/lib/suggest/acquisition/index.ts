@@ -70,7 +70,11 @@ function frameNeeds(owned: boolean, subsumable: boolean, subsumed: boolean): Nee
 /** Mastery keeps one copy and the Helminth eats another, so a frame owing both
  *  is two builds, unless the owned Prime is the copy kept and one build is
  *  levelled then fed. A build already in the foundry has claimed one of them. */
-function copiesToBuild(needs: readonly NeedReason[], inFoundry: number, primeOwned: boolean): number {
+function copiesToBuild(
+  needs: readonly NeedReason[],
+  inFoundry: number,
+  primeOwned: boolean,
+): number {
   const both = needs.includes("mastery") && needs.includes("subsume");
   const wanted = both ? (primeOwned ? 1 : 2) : needs.length > 0 ? 1 : 0;
   return Math.max(0, wanted - inFoundry);
@@ -147,7 +151,9 @@ export function resolveAcquisition(ctx: AcquisitionContext): AcquisitionTarget[]
     const frames = listFrames(itemDb);
     const ownedPrimes = new Set(
       frames
-        .filter((frame) => isPrimeEntry(frame.name, frame.entry) && ownsItem(frame.uniqueName, ownership))
+        .filter(
+          (frame) => isPrimeEntry(frame.name, frame.entry) && ownsItem(frame.uniqueName, ownership),
+        )
         .map((frame) => frame.name.toLowerCase()),
     );
     for (const frame of frames) {

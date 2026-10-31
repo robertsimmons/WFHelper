@@ -32,14 +32,12 @@ describe("relicSource", () => {
   });
 
   it("files a Railjack cache row under its node", () => {
-    expect(relicSource(row("Khufu Envoy (Caches) (Pluto), Rotation A", "Skirmish"))).toMatchObject(
-      {
-        place: "Khufu Envoy (Pluto)",
-        kind: "caches",
-        missionType: "Skirmish",
-        rotation: "A",
-      },
-    );
+    expect(relicSource(row("Khufu Envoy (Caches) (Pluto), Rotation A", "Skirmish"))).toMatchObject({
+      place: "Khufu Envoy (Pluto)",
+      kind: "caches",
+      missionType: "Skirmish",
+      rotation: "A",
+    });
   });
 
   it("keeps a bounty stage as the table states it and reads no mission type", () => {

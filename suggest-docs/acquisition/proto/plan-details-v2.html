@@ -1,0 +1,980 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Plan Details v2</title>
+<style>
+:root {
+  --bg-body: #0b0d14;
+  --bg-surface: #12151f;
+  --bg-card: #1a1e2b;
+  --bg-card-hover: #222738;
+  --bg-input: #262b3b;
+  --bg-hero: #0d0d1a;
+  --border-default: #2c3244;
+  --border-subtle: #20253a;
+  --text-primary: #e0e0e0;
+  --text-heading: #f0f0f0;
+  --text-muted: #9e9eb8;
+  --text-faint: #606078;
+  --accent: #e0b23c;
+  --accent-blue: #5b9cf6;
+  --accent-green: #4caf50;
+  --accent-red: #ef5350;
+  --accent-orange: #ffb74d;
+  --badge-green-bg: #1b3a1b;
+  --badge-orange-bg: #3a2a10;
+  --badge-blue-bg: #152a3a;
+  --shadow-card: 0 2px 8px rgba(0,0,0,0.3);
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--bg-body); color: var(--text-primary);
+  font: 17px/1.65 -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+.wrap { max-width: 1100px; margin: 0 auto; padding: 24px 16px 80px; }
+.bar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 10px; }
+.bar .label { color: var(--text-muted); margin-right: 4px; min-width: 52px; }
+.tab {
+  background: var(--bg-card); border: 1px solid var(--border-default); color: var(--text-primary);
+  border-radius: 6px; padding: 4px 12px; font: inherit; cursor: pointer;
+}
+.tab[aria-pressed="true"] { border-color: var(--accent); color: var(--accent); }
+.head { display: flex; gap: 16px; align-items: center; margin: 18px 0; }
+.art {
+  width: 88px; height: 56px; border-radius: 6px; background: var(--bg-card);
+  border: 1px solid var(--border-subtle); display: flex; align-items: center; justify-content: center;
+  color: var(--text-faint); font-size: 0.8em; text-align: center; line-height: 1.2;
+}
+.head h1 { margin: 0; font-size: 1.5em; color: var(--text-heading); display: flex; flex-wrap: wrap; gap: 10px; align-items: baseline; }
+.eff { font-size: 0.55em; font-weight: 600; background: var(--badge-blue-bg); color: var(--accent-blue); }
+.links a { color: var(--accent-blue); margin-right: 12px; text-decoration: none; font-size: 0.88em; }
+.links { margin-left: 4px; }
+.muted { color: var(--text-muted); }
+.faint { color: var(--text-faint); }
+.done { color: var(--text-faint); text-decoration: line-through; }
+.chip {
+  display: inline-block; padding: 0 8px; border-radius: 4px; background: var(--bg-input);
+  color: var(--text-muted); font-size: 0.88em; margin: 2px 4px 2px 0; white-space: nowrap;
+}
+.chip.warn { background: var(--badge-orange-bg); color: var(--accent-orange); }
+.chip.ok { background: var(--badge-green-bg); color: var(--accent-green); }
+.chip.gate { background: transparent; border: 1px dashed var(--border-default); color: var(--text-muted); }
+.qty { font-variant-numeric: tabular-nums; color: var(--text-heading); }
+.drawer {
+  margin: 6px 0 4px 34px; padding: 10px 14px; background: var(--bg-surface);
+  border-left: 3px solid var(--accent); border-radius: 0 6px 6px 0; font-size: 0.92em;
+}
+.drawer h4 { margin: 8px 0 2px; font-size: 0.88em; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; }
+.drawer ul { margin: 0; padding-left: 18px; }
+.drawer a { color: var(--accent-blue); text-decoration: none; margin-right: 14px; }
+.clickable { cursor: pointer; }
+.clickable:hover { background: var(--bg-card-hover); }
+.gated { opacity: 0.5; }
+
+/* progress + pips */
+.pg { display: inline-flex; gap: 6px; align-items: center; vertical-align: middle; white-space: nowrap; }
+.pgbar { width: 72px; height: 6px; background: var(--bg-input); border-radius: 3px; overflow: hidden; display: inline-block; }
+.pgbar i { display: block; height: 100%; background: var(--accent-green); }
+.pips { display: inline-flex; flex-wrap: wrap; gap: 4px; vertical-align: middle; }
+.pip {
+  font-size: 0.78em; padding: 0 6px; border-radius: 4px; border: 1px solid var(--border-default);
+  color: var(--text-muted); white-space: nowrap; line-height: 1.6;
+}
+.pip.on { background: var(--badge-green-bg); border-color: transparent; color: var(--accent-green); }
+
+/* picker */
+.picker { margin-top: 8px; padding: 8px 10px; background: var(--bg-card); border: 1px solid var(--border-default); border-radius: 6px; }
+.pk-head { margin-bottom: 4px; }
+.pk-row { display: grid; grid-template-columns: 22px 1fr auto; gap: 8px; align-items: baseline; padding: 1px 4px; border-radius: 4px; cursor: pointer; }
+.pk-row:hover { background: var(--bg-card-hover); }
+.pk-group { margin: 8px 0 2px; font-size: 0.8em; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; }
+.pk-cur { font-variant-numeric: tabular-nums; }
+
+/* three beats */
+.beat { margin-bottom: 18px; }
+.beat h2 { font-size: 1em; margin: 0 0 6px; color: var(--text-heading); display: flex; gap: 10px; align-items: baseline; }
+.beat h2 .n { color: var(--accent); }
+.line { display: grid; grid-template-columns: 24px 1fr auto; gap: 10px; align-items: baseline; padding: 4px 8px; border-radius: 6px; }
+.line .box { width: 16px; height: 16px; border: 1px solid var(--text-faint); border-radius: 3px; display: inline-block; transform: translateY(3px); }
+.line .box.on { background: var(--accent-green); border-color: var(--accent-green); }
+.line .where { color: var(--text-muted); text-align: right; }
+.donebox { margin-top: 14px; }
+.donebox .toggle { color: var(--text-faint); padding: 2px 8px; border-radius: 6px; display: inline-block; }
+.mapbtn {
+  font: inherit; font-size: 0.75em; background: var(--badge-blue-bg); color: var(--accent-blue); border: 0;
+  border-radius: 4px; padding: 0 6px; margin-left: 4px; cursor: pointer; vertical-align: middle; line-height: 1.6;
+}
+.treebtn { font: inherit; font-size: 0.8em; background: transparent; color: var(--accent-blue); border: 1px solid var(--border-default); border-radius: 4px; padding: 0 8px; cursor: pointer; font-weight: 400; }
+.next { box-shadow: inset 3px 0 0 var(--accent); background: rgba(224,178,60,0.06); }
+.nexttag { color: var(--accent); font-size: 0.75em; text-transform: uppercase; letter-spacing: 0.08em; margin-right: 6px; }
+.tripline { display: grid; grid-template-columns: 24px 1fr; gap: 10px; align-items: baseline; padding: 4px 8px; border-radius: 6px; }
+.tripline .place { color: var(--text-heading); margin-right: 8px; }
+.tchip { display: inline-block; padding: 0 8px; border-radius: 4px; background: var(--bg-input); margin: 2px 4px 2px 0; cursor: pointer; white-space: nowrap; font-size: 0.92em; }
+.tchip:hover { background: var(--bg-card-hover); }
+.tchip.sel { outline: 1px solid var(--accent); }
+.tchip.isnext { outline: 1px solid var(--accent); color: var(--text-heading); }
+.notes { margin-top: 28px; padding: 12px 16px; background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: 8px; color: var(--text-muted); }
+@media (max-width: 640px) {
+  .line { grid-template-columns: 24px 1fr; }
+  .line .where { grid-column: 2; text-align: left; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="bar" id="items"></div>
+  <div class="bar" id="statuses"></div>
+  <div id="view"></div>
+  <div class="notes" id="notes"></div>
+</div>
+<script>
+const WIKI = (name) => `https://wiki.warframe.com/w/${encodeURIComponent(name.replace(/ /g, "_"))}`;
+const WFM = (name) => `https://warframe.market/items/${name.toLowerCase().replace(/[^a-z0-9]+/g, "_")}`;
+const fmt = (n) => Math.round(n).toLocaleString("en-US");
+const EFFORT = { 1: "Quick", 2: "Quick", 3: "Some grind", 4: "Some grind", 5: "Long grind", 6: "Long grind", 7: "Very long grind" };
+const MAPS = { "orb-vallis": "Orb Vallis", "plains-of-eidolon": "Plains of Eidolon", "cambion-drift": "Cambion Drift", duviri: "Duviri" };
+
+// verb, where, sub, rate, trip, common, map, other
+const RES = {};
+function R(name, verb, where, sub, rate, trip, common, map, other) {
+  RES[name] = { verb, where, sub, rate, trip: trip ?? where, common: !!common, map, other };
+}
+const C = 1, V = "Fortuna / Orb Vallis", P = "Cetus / Plains", N = "Necralisk / Cambion Drift", RJ = "Railjack", D = "Duviri", AL = "Sanctum Anatomica, Deimos";
+R("Alloy Plate", "Farm", "Gabii, Ceres", "Dark Sector Survival", "~1,000 per 10-15 min", null, C, null, ["Zariman Void Cascade, containers"]);
+R("Polymer Bundle", "Farm", "Assur, Uranus", "Dark Sector Survival", null, null, C, null, ["Ophelia, Uranus Survival"]);
+R("Rubedo", "Farm", "Zeugma, Phobos", "Dark Sector Survival", "~250 per 5 min", null, C, null, ["Valefor, Europa Excavation"]);
+R("Circuits", "Farm", "Gabii, Ceres", "Dark Sector Survival", null, null, C, null, ["Seimeni, Ceres Defense"]);
+R("Morphics", "Farm", "Wahiba, Mars", "Dark Sector Survival", null, null, C, null, ["Hellas, Mars caches"]);
+R("Control Module", "Farm", "Teshub, Void", "Exterminate", "1-4 per pickup", null, C, null, ["Hepit, Void Capture"]);
+R("Gallium", "Farm", "Assur, Uranus", "Dark Sector Survival", null, null, C, null, ["Wahiba, Mars Survival"]);
+R("Orokin Cell", "Farm", "Gabii, Ceres", "Dark Sector Survival", null, null, C, null, ["Piscinas, Saturn Survival", "Lephantis, Deimos"]);
+R("Nano Spores", "Farm", "Akkad, Eris", "Defense", "~3,000 per 5 waves", null, C, null, ["Piscinas, Saturn Survival"]);
+R("Argon Crystal", "Farm", "Hepit, Void", "Capture", "1-4 per run", null, C, null, ["Ukko, Void Capture", "Mot, Void Survival"]);
+R("Neurodes", "Farm", "Lua", "Conjunction Survival", null, null, C, null, ["Mariana, Earth Exterminate"]);
+R("Cryotic", "Farm", "Hieracon, Pluto", "Excavation", "100 per excavator", null, C, null, ["Everest, Earth Excavation"]);
+R("Ferrite", "Farm", "Apollodorus, Mercury", "Survival", "~4,000 per 10 min", null, C, null, ["Ani, Void Survival"]);
+R("Neural Sensors", "Farm", "Themisto, Jupiter", "Alad V", null, null, C, null, ["Elara, Jupiter Survival"]);
+R("Plastids", "Farm", "Ophelia, Uranus", "Survival", null, null, C, null, ["Cambion Drift bounties, cysts"]);
+R("Salvage", "Farm", "Carme, Jupiter", "Mobile Defense", "up to ~3,000 a run", null, C, null, ["Elara, Jupiter Survival"]);
+R("Credits", "Farm", "The Index, Neptune", "High Risk", "250,000 per win", null, C, null, ["Orb Vallis Profit-Taker"]);
+R("Thermal Sludge", "Loot", "Orb Vallis", "Corpus camps", null, V, 0, "orb-vallis", ["Vallis bounties, stage 1"]);
+R("Axidrol Alloy", "Refine", "Fortuna", "Smokefinger blueprint", "20 per refine", V);
+R("Scrap", "Fish", "Orb Vallis", "any Servofish, dismantle at The Business", "1-8 per fish", V, 0, "orb-vallis");
+R("Mirewinder Parallel Biode", "Fish", "Orb Vallis", "caves, Mirewinder Bait", "1 per fish", V, 0, "orb-vallis", ["Vallis containers"]);
+R("Tepa Nodule", "Harvest", "Orb Vallis", "cave plant clusters", "3-4 per harvest", V, 0, "orb-vallis", ["Eudico bounties"]);
+R("Travocyte Alloy", "Refine", "Fortuna", "Smokefinger blueprint", "20 per refine", V);
+R("Sapcaddy Venedo Case", "Fish", "Orb Vallis", "lakes, cold", "1 per fish", V, 0, "orb-vallis", ["Vallis containers"]);
+R("Gorgaricus Spore", "Shoot", "Orb Vallis", "purple sacs under mushroom caps", null, V, 0, "orb-vallis", ["Vallis bounties and containers"]);
+R("Kriller Thermal Laser", "Fish", "Orb Vallis", "lakes, warm, Kriller Bait", "1 per fish", V, 0, "orb-vallis", ["Vallis containers"]);
+R("Star Amarast", "Refine", "Fortuna", "Smokefinger blueprint", "6 per refine", V);
+R("Scrubber Exa Brain", "Fish", "Orb Vallis", "caves", "1 per fish", V, 0, "orb-vallis", ["Vallis containers"]);
+R("Mytocardia Spore", "Shoot", "Orb Vallis", "Mytocardia sacs, mushroom forest", "1-3 per sac", V, 0, "orb-vallis", ["Vallis bounties"]);
+R("Heart Noctrul", "Refine", "Fortuna", "Smokefinger blueprint", "10 per refine", V);
+R("Echowinder Anoscopic Sensor", "Fish", "Orb Vallis", "lakes, warm", "1 per fish", V, 0, "orb-vallis");
+R("Nullstones", "Farm", "Proxima", "Skirmish", "7.14%", RJ);
+R("Asterite", "Farm", "Empyrean", "any Railjack mission, asteroids", null, RJ);
+R("Carbides", "Farm", "Seimeni, Ceres", "Dark Sector Defense", "100+ by wave 20", "Seimeni, Ceres", 0, null, ["Railjack Skirmish fighters"]);
+R("Ticor Plate", "Farm", "Earth Proxima", "Skirmish, kill every fighter", "37.5% per Kosma", RJ, 0, null, ["Saturn Proxima Skirmish"]);
+R("Isos", "Farm", "Venus Proxima", "Corpus Railjack", "22.11% per ship", RJ, 0, null, ["Neptune Proxima", "Pluto Proxima"]);
+R("Grokdrul", "Break drums", "Plains of Eidolon", "Grineer camps", "up to 5 per drum", P, 0, "plains-of-eidolon", ["Plains bounties"]);
+R("Pyrotic Alloy", "Refine", "Cetus", "Old Man Suumbaat blueprint", "20 per refine", P);
+R("Iradite", "Break", "Plains of Eidolon", "Iradite deposits, low ground", null, P, 0, "plains-of-eidolon", ["Plains bounties"]);
+R("Coprite Alloy", "Refine", "Cetus", "Old Man Suumbaat blueprint", "20 per refine", P);
+R("Cetus Wisp", "Grab", "Plains of Eidolon", "lake shores, night", "6-8 at night", P, 0, "plains-of-eidolon", ["The Quills, Cetus"]);
+R("Charc Electroplax", "Fish", "Plains of Eidolon", "lake, night, cut at Hai-Luk", "1 per eel", P, 0, "plains-of-eidolon", ["Thumper drops"]);
+R("Esher Devar", "Refine", "Cetus", "Old Man Suumbaat blueprint", "10 per refine", P);
+R("Nosam Cutter", "Buy", "Cetus", "Old Man Suumbaat", null, P);
+R("Purified Heciphron", "Refine", "Necralisk", "Otak blueprint", "10 per refine", N);
+R("Trapezium Xenorhast", "Refine", "Necralisk", "Otak blueprint", "3 per refine", N);
+R("Pustulent Cognitive Nodule", "Fish", "Cambion Drift", "Aquapulmo or Cryptosuctus, fillet at Daughter", "1-2 per fish", N, 0, "cambion-drift", ["Requiem Obelisks, cysts"]);
+R("Dendrite Blastoma", "Fish", "Cambion Drift", "caves, fillet at Daughter", "1 per fish", N, 0, "cambion-drift", ["Spitia cysts"]);
+R("Seriglass Shard", "Buy", "Necralisk", "Grandmother, 10 Grandmother Tokens", null, N);
+R("Faceted Tiametrite", "Refine", "Necralisk", "Otak blueprint", "10 per refine", N);
+R("Stellated Necrathene", "Refine", "Necralisk", "Otak blueprint", "6 per refine", N);
+R("Kovnik", "Harvest", "Duviri", "Lunaro Court, near water", null, D, 0, "duviri");
+R("Aggristone", "Break", "Duviri", "Aggristone formations", null, D, 0, "duviri", ["Spiral objectives", "Circuit tiers"]);
+R("Tasoma Extract", "Harvest", "Duviri", "cave nodes", "2-4 per node", D, 0, "duviri");
+R("Temporal Dust", "Farm", "Isleweaver, Duviri", "end reward", "20 per drop, 7.69%", D, 0, null, ["Isleweaver Murmur kills"]);
+R("Necracoil", "Farm", "Albrecht's Laboratories", "Entrati Lab bounty 75-80, final stage", "15 per drop, 8.26%", AL, 0, null, ["Cambire, Deimos Alchemy", "Munio, Deimos Defense"]);
+R("Entrati Obols", "Farm", "Albrecht's Laboratories", "Alchemy bounty, kill what spawns", "~2,500 per 10 min", AL, 0, null, ["Isleweaver, Murmur kills", "Entrati Lab bounty, Rotation C"]);
+R("Entrati Lanthorn", "Farm", "Sanctum Anatomica", "Netracell", "guaranteed per run", AL, 0, null, ["Albrecht's Labs, Gruzzlings", "Zariman Exterminate"]);
+R("Bellow Voca", "Loot", "Albrecht's Laboratories", "Exterminate pickups", null, AL, 0, null, ["Necralisk restock", "Cambion Drift bounties"]);
+R("Echo Voca", "Loot", "Albrecht's Laboratories", "Exterminate pickups", null, AL);
+R("Oxium", "Farm", "Io, Jupiter", "Defense, Oxium Ospreys", null, null, C, null, ["Callisto, Jupiter Interception"]);
+R("Titanium", "Farm", "Earth Proxima", "any Railjack mission, wreckage", null, RJ);
+R("Gallos Rods", "Farm", "Saturn Proxima", "Skirmish", null, RJ);
+R("Marquise Thyst", "Refine", "Fortuna", "Smokefinger blueprint", null, V);
+R("Star Crimzian", "Refine", "Fortuna", "Smokefinger blueprint", null, V);
+const x2 = (...ks) => ks.flatMap((k) => [k, k]);
+const bp = (k) => "bp:" + k;
+const built = (k) => "built:" + k;
+const quest = (o) => ({ t: "quest", beat: "buy", verb: "Finish", ...o });
+const buy = (o) => ({ t: "buy", beat: "buy", verb: "Buy", ...o });
+const earn = (o) => ({ t: "earn", beat: "farm", verb: "Earn", ...o });
+const drop = (o) => ({ t: "drop", beat: "farm", ...o });
+const grind = (o) => ({ t: "grind", beat: "farm", verb: "Run", ...o });
+const shopbuy = (o) => ({ t: "shopbuy", beat: "buy", verb: "Buy", ...o });
+const mat = (what, o = {}) => ({ t: "mat", beat: "farm", what, ...o });
+const mats = (...names) => names.map((n) => mat(n));
+const build = (what, m, o = {}) => ({ t: "build", beat: "build", verb: "Build", what, mats: m, key: built(what), ...o });
+const PARTS = (pctMain, pct, extra = {}) => [
+  { key: bp("Main"), name: "Blueprint", pct: pctMain, ...extra },
+  { key: bp("Neuroptics"), name: "Neuroptics", pct },
+  { key: bp("Chassis"), name: "Chassis", pct },
+  { key: bp("Systems"), name: "Systems", pct },
+];
+const FRAME_NEEDS = [bp("Main"), built("Neuroptics"), built("Chassis"), built("Systems")];
+const ALLBP = [bp("Main"), bp("Neuroptics"), bp("Chassis"), bp("Systems")];
+const FRAME_KEYS = [...ALLBP, built("Neuroptics"), built("Chassis"), built("Systems")];
+const FRAME_WARES = (item, main, part, o = {}) => [
+  { id: item + "-main", item, name: ITEM_NAMES[item] + " Blueprint", key: bp("Main"), price: main, ...o },
+  ...["Neuroptics", "Chassis", "Systems"].map((p) => ({ id: item + "-" + p, item, name: p + " Blueprint", key: bp(p), price: part })),
+];
+const ITEM_NAMES = { sirius: "Sirius & Orion", oraxia: "Oraxia", dante: "Dante", citrine: "Citrine" };
+
+const SHOPS = {
+  hunhow: {
+    vendor: "Hunhow", where: "Pontis Tower", runWord: "clears", unit: "Talent", pooled: 14, perText: "12-16 Talent a clear, 18-22 Steel Path",
+    curs: [{ cur: "Crimson Talent", short: "Crimson" }, { cur: "Emerald Talent", short: "Emerald" }],
+    wares: [
+      ...FRAME_WARES("sirius", { any: 275 }, { any: 90 }, { quest: "quest:Constellations" }),
+      { id: "pride", item: "pride", name: "Pride Blueprint", key: bp("Pride"), price: { "Emerald Talent": 90 } },
+      { id: "pride-handle", item: "pride", name: "Pride Handle Blueprint", key: bp("Pride Handle"), price: { "Emerald Talent": 45 } },
+      { id: "pride-blade", item: "pride", name: "Pride Blade Blueprint", key: bp("Pride Blade"), qty: 2, price: { "Emerald Talent": 45 } },
+      { id: "wrath", item: "wrath", name: "Wrath Blueprint", key: bp("Wrath"), price: { "Crimson Talent": 90 } },
+      { id: "wrath-handle", item: "wrath", name: "Wrath Handle Blueprint", key: bp("Wrath Handle"), price: { "Crimson Talent": 45 } },
+      { id: "wrath-blade", item: "wrath", name: "Wrath Blade Blueprint", key: bp("Wrath Blade"), qty: 2, price: { "Crimson Talent": 45 } },
+      { id: "syan", item: "cosmetic", name: "Jade's Victory Syandana Blueprint", price: { "Emerald Talent": 50 } },
+      { id: "bfl", item: "cosmetic", name: "Bloodfrenzy Liset Skin", price: { "Crimson Talent": 100 } },
+      { id: "vis", item: "cosmetic", name: "Viserakta Ephemera", price: { "Crimson Talent": 100 } },
+      { id: "bsl", item: "cosmetic", name: "Bladeswarm Liset Skin", price: { "Emerald Talent": 100 } },
+      { id: "syn", item: "cosmetic", name: "Syndir Ephemera", price: { "Emerald Talent": 60 } },
+      { id: "sas", item: "cosmetic", name: "Scoria's Angel Scene", price: { "Crimson Talent": 50 } },
+      { id: "kws", item: "cosmetic", name: "Kuva Wytch Scene", price: { any: 25 } },
+    ],
+  },
+  loid: {
+    vendor: "Loid", where: "Sanctum Anatomica", runWord: "runs", unit: "Capillaries", perText: "Demolishers drop 2-4 each, 5-7 Steel Path",
+    curs: [{ cur: "Vessel Capillaries", short: "Capillaries", demo: 3 }],
+    wares: [
+      ...FRAME_WARES("dante", { "Vessel Capillaries": 270 }, { "Vessel Capillaries": 90 }),
+      { id: "ruvox", item: "ruvox", name: "Ruvox Blueprint", key: bp("Ruvox"), price: { "Vessel Capillaries": 180 } },
+      { id: "ruvox-blade", item: "ruvox", name: "Ruvox Blade Blueprint", key: bp("Ruvox Blade"), qty: 2, price: { "Vessel Capillaries": 45 } },
+      { id: "ruvox-glove", item: "ruvox", name: "Ruvox Glove Blueprint", key: bp("Ruvox Glove"), qty: 2, price: { "Vessel Capillaries": 45 } },
+      { id: "onos", item: "onos", name: "Onos Blueprint", key: bp("Onos"), price: { "Vessel Capillaries": 360 } },
+    ],
+  },
+  acrithis: {
+    vendor: "Acrithis", where: "Dormizone", runWord: "runs", unit: "Husks", perText: "~18 Husks a run",
+    curs: [{ cur: "Scuttler Husk", short: "Husks", per: 18 }],
+    wares: FRAME_WARES("oraxia", { "Scuttler Husk": 60 }, { "Scuttler Husk": 20 }),
+  },
+  otak: {
+    vendor: "Otak", where: "Necralisk", runWord: "runs", unit: "fragments", together: true, perText: "~45 of each fragment a run",
+    curs: [{ cur: "Rania Crystal Fragment", short: "Rania", per: 45 }, { cur: "Belric Crystal Fragment", short: "Belric", per: 45 }],
+    wares: [
+      { id: "citrine-main", item: "citrine", name: "Citrine Blueprint", key: bp("Main"), price: { "Rania Crystal Fragment": 500, "Belric Crystal Fragment": 500 } },
+      { id: "citrine-neu", item: "citrine", name: "Neuroptics Blueprint", key: bp("Neuroptics"), price: { "Rania Crystal Fragment": 350, "Belric Crystal Fragment": 350 } },
+      { id: "citrine-cha", item: "citrine", name: "Chassis Blueprint", key: bp("Chassis"), price: { "Rania Crystal Fragment": 350, "Belric Crystal Fragment": 350 } },
+      { id: "citrine-sys", item: "citrine", name: "Systems Blueprint", key: bp("Systems"), price: { "Rania Crystal Fragment": 350, "Belric Crystal Fragment": 300 } },
+    ],
+  },
+};
+
+const INV = {
+  hunhow: {
+    partway: { has: ["quest:Constellations", bp("Main"), ...x2(bp("Neuroptics")), bp("Chassis"), bp("Pride Blade"), bp("Wrath Handle")],
+      cur: { "Crimson Talent": 96, "Emerald Talent": 44 }, allCommon: true,
+      mats: { Asterite: 90, Carbides: true, Nullstones: 4, Titanium: 1200, "Marquise Thyst": 5 } },
+    almost: { has: ["quest:Constellations", ...x2(bp("Main"), bp("Neuroptics"), bp("Chassis"), built("Neuroptics"), built("Chassis")), bp("Systems"),
+      bp("Pride"), bp("Pride Handle"), ...x2(bp("Pride Blade")), built("Pride Blade"), built("Pride Handle"),
+      bp("Wrath"), bp("Wrath Handle"), bp("Wrath Blade"), built("Wrath Blade")],
+      cur: { "Crimson Talent": 50, "Emerald Talent": 26 }, allMats: true },
+  },
+  loid: {
+    partway: { has: [bp("Neuroptics"), bp("Ruvox Blade"), bp("Ruvox Glove")], cur: { "Vessel Capillaries": 130 }, allCommon: true,
+      mats: { "Alloy Plate": 3200, "Entrati Obols": 9000, "Entrati Lanthorn": 3, "Bellow Voca": true, Necracoil: 150, "Echo Voca": 4 } },
+    almost: { has: [...x2(...ALLBP, built("Neuroptics"), built("Systems")),
+      bp("Ruvox"), ...x2(bp("Ruvox Blade"), bp("Ruvox Glove")), built("Ruvox Blade"), built("Ruvox Glove")],
+      cur: { "Vessel Capillaries": 200 }, allMats: true },
+  },
+};
+
+const ITEMS = {
+  badbaby: {
+    name: "Bad Baby", effort: 2, tradeable: false,
+    steps: [
+      earn({ what: "Ventkids Standing", cur: "Ventkids Standing", where: "Orb Vallis", sub: "K-Drive races", rate: "200 per gate + 10 per second left",
+        trip: V, map: "orb-vallis",
+        detail: { notes: ["Entry costs 5 standing per gate."], other: ["Cambion Drift K-Drive races", "Vallis trick chains, 25% of points"] } }),
+      buy({ what: "Bad Baby Blueprint", key: bp("Bad Baby"), where: "Roky, Fortuna", cost: { cur: "Ventkids Standing", amt: 5000 }, trip: V,
+        detail: { notes: ["Only the board earns Mastery: 6,000 at rank 30."] } }),
+      buy({ what: "Coldfusor Blueprint", key: bp("Coldfusor"), where: "Roky, Fortuna", cost: { cur: "Ventkids Standing", amt: 5000 }, trip: V, tag: "reactor",
+        detail: { notes: ["Any reactor works. Cosmetic only.", "Arc Twelve 10,000, Hothead 15,000, Highbrow 15,000"] } }),
+      buy({ what: "Beaky Blueprint", key: bp("Beaky"), where: "Roky, Fortuna", cost: { cur: "Ventkids Standing", amt: 5000 }, trip: V, tag: "nose",
+        detail: { notes: ["Any nose works. Cosmetic only.", "Wingnut, Dink-A-Donk, Two-Sloops at the same prices"] } }),
+      buy({ what: "Twin Kavats Blueprint", key: bp("Twin Kavats"), where: "Roky, Fortuna", cost: { cur: "Ventkids Standing", amt: 5000 }, trip: V, tag: "jet",
+        detail: { notes: ["Any jet works. Cosmetic only.", "Step Tens, Fatboys, Thugs at the same prices"] } }),
+      ...mats("Thermal Sludge", "Scrap", "Mirewinder Parallel Biode", "Tepa Nodule", "Sapcaddy Venedo Case", "Gorgaricus Spore",
+        "Kriller Thermal Laser", "Scrubber Exa Brain", "Mytocardia Spore", "Echowinder Anoscopic Sensor",
+        "Axidrol Alloy", "Travocyte Alloy", "Star Amarast", "Heart Noctrul", "Credits"),
+      build("Bad Baby", { "Thermal Sludge": 20, "Axidrol Alloy": 40, Scrap: 30, "Mirewinder Parallel Biode": 10, Credits: 5000 },
+        { time: "1h", needs: [bp("Bad Baby")], hot: "queue all four at once" }),
+      build("Coldfusor", { "Tepa Nodule": 15, Scrap: 25, "Travocyte Alloy": 40, "Sapcaddy Venedo Case": 10, Credits: 5000 }, { time: "1h", needs: [bp("Coldfusor")] }),
+      build("Beaky", { "Gorgaricus Spore": 25, "Kriller Thermal Laser": 20, "Star Amarast": 5, "Scrubber Exa Brain": 10, Credits: 5000 }, { time: "1h", needs: [bp("Beaky")] }),
+      build("Twin Kavats", { "Mytocardia Spore": 30, "Heart Noctrul": 15, "Travocyte Alloy": 25, "Echowinder Anoscopic Sensor": 20, Credits: 5000 }, { time: "1h", needs: [bp("Twin Kavats")] }),
+      build("Assembled", {}, { verb: "Assemble", label: "Bad Baby at Roky", needs: [built("Bad Baby"), built("Coldfusor"), built("Beaky"), built("Twin Kavats")],
+        detail: { notes: ["Your first K-Drive replaces the Bondi.", "Your last K-Drive can't be sold."] } }),
+    ],
+    inv: {
+      partway: { has: [bp("Bad Baby"), bp("Coldfusor")], cur: { "Ventkids Standing": 3200 },
+        mats: { Credits: true, Scrap: true, "Thermal Sludge": 12, "Axidrol Alloy": 40, "Tepa Nodule": 15, "Mytocardia Spore": 9, "Travocyte Alloy": 20 } },
+      almost: { has: [bp("Bad Baby"), bp("Coldfusor"), bp("Beaky"), bp("Twin Kavats"), built("Bad Baby"), built("Coldfusor"), built("Beaky")], allMats: true },
+    },
+  },
+  sirius: {
+    name: "Sirius & Orion", effort: 4, tradeable: false, copies: 2, shop: "hunhow", inv: INV.hunhow,
+    steps: [
+      quest({ what: "Jade Shadows: Constellations", key: "quest:Constellations", where: "Quest", sub: "gives Sirius & Orion Blueprint", trip: "Quest",
+        detail: { notes: ["Claim Hunhow's inbox message after."] } }),
+      grind({ what: "Scoria's Angel or Kuva Wytch", where: "Pontis Tower, Uranus Proxima", sub: "Railjack", rate: "14.29% each blueprint",
+        trip: "Pontis Tower, Uranus Proxima", parts: PARTS(14.29, 14.29, { quest: "quest:Constellations" }),
+        detail: { notes: ["Scoria's Angel: side with Vena, kill Ryoku. Pays Crimson.", "Kuva Wytch: side with Ryoku, kill Vena. Pays Emerald.",
+          "12-16 Talent a clear, 18-22 Steel Path, plus Ramsled targets.", "Don't buy blueprints early: a later clear may drop them.",
+          "Wrath shares the drop pool.", "Each clear also rolls an arcane."] } }),
+      shopbuy({ where: "Hunhow, Pontis Tower", trip: "Pontis Tower, Uranus Proxima" }),
+      ...mats("Nullstones", "Asterite", "Ticor Plate", "Isos", "Carbides",
+        "Rubedo", "Polymer Bundle", "Alloy Plate", "Circuits", "Morphics", "Control Module", "Gallium", "Orokin Cell", "Credits"),
+      build("Neuroptics", { Credits: 15000, Circuits: 250, Gallium: 5, Nullstones: 5, Asterite: 75 }, { time: "12h", needs: [bp("Neuroptics")] }),
+      build("Chassis", { Credits: 15000, Rubedo: 600, "Alloy Plate": 400, Carbides: 600, "Ticor Plate": 500 }, { time: "12h", needs: [bp("Chassis")] }),
+      build("Systems", { Credits: 15000, "Polymer Bundle": 500, Morphics: 30, "Control Module": 20, Isos: 100 }, { time: "12h", needs: [bp("Systems")] }),
+      build("Sirius & Orion", { Credits: 25000, "Orokin Cell": 3 }, { time: "3 days", needs: FRAME_NEEDS }),
+    ],
+  },
+  pride: {
+    name: "Pride", effort: 4, tradeable: false, shop: "hunhow", inv: INV.hunhow,
+    steps: [
+      grind({ what: "The Kuva Wytch", where: "Pontis Tower, Uranus Proxima", sub: "side with Ryoku, kill Vena", rate: "14.29% each blueprint",
+        trip: "Pontis Tower, Uranus Proxima",
+        parts: [{ key: bp("Pride"), name: "Blueprint", pct: 14.29 }, { key: bp("Pride Blade"), name: "Blade", pct: 14.29 }, { key: bp("Pride Handle"), name: "Handle", pct: 14.29 }],
+        detail: { notes: ["12-16 Emerald a clear, plus up to 4 for green Orowyrm targets."] } }),
+      grind({ what: "Scoria's Angel", where: "Pontis Tower, Uranus Proxima", sub: "side with Vena, kill Ryoku", rate: "14.29%",
+        trip: "Pontis Tower, Uranus Proxima", parts: [{ key: bp("Wrath Blade"), name: "Wrath Blade", pct: 14.29 }],
+        detail: { notes: ["Pride's recipe needs a Wrath Blade.", "12-16 Crimson a clear, plus up to 4 for green Ramsled targets."] } }),
+      shopbuy({ where: "Hunhow, Pontis Tower", trip: "Pontis Tower, Uranus Proxima" }),
+      ...mats("Ticor Plate", "Titanium", "Gallos Rods", "Carbides", "Marquise Thyst", "Star Crimzian",
+        "Alloy Plate", "Oxium", "Salvage", "Credits"),
+      build("Pride Blade", { Credits: 25000, "Alloy Plate": 400, Oxium: 250, "Marquise Thyst": 5, "Ticor Plate": 250 }, { time: "12h", needs: [bp("Pride Blade")] }),
+      build("Wrath Blade", { Credits: 25000, "Alloy Plate": 400, Oxium: 250, "Star Crimzian": 3, "Ticor Plate": 250 }, { time: "12h", needs: [bp("Wrath Blade")] }),
+      build("Pride Handle", { Credits: 20000, Salvage: 1250, Titanium: 3000, Carbides: 300, "Gallos Rods": 50 }, { time: "23h", needs: [bp("Pride Handle")] }),
+      build("Pride", { Credits: 20000 }, { time: "23h", needs: [bp("Pride"), built("Pride Blade"), built("Wrath Blade"), built("Pride Handle")] }),
+    ],
+  },
+  wrath: {
+    name: "Wrath", effort: 4, tradeable: false, shop: "hunhow", inv: INV.hunhow,
+    steps: [
+      grind({ what: "Scoria's Angel", where: "Pontis Tower, Uranus Proxima", sub: "side with Vena, kill Ryoku", rate: "14.29% each blueprint",
+        trip: "Pontis Tower, Uranus Proxima",
+        parts: [{ key: bp("Wrath"), name: "Blueprint", pct: 14.29 }, { key: bp("Wrath Blade"), name: "Blade", pct: 14.29 }, { key: bp("Wrath Handle"), name: "Handle", pct: 14.29 }],
+        detail: { notes: ["12-16 Crimson a clear, plus up to 4 for green Ramsled targets."] } }),
+      grind({ what: "The Kuva Wytch", where: "Pontis Tower, Uranus Proxima", sub: "side with Ryoku, kill Vena", rate: "14.29%",
+        trip: "Pontis Tower, Uranus Proxima", parts: [{ key: bp("Pride Blade"), name: "Pride Blade", pct: 14.29 }],
+        detail: { notes: ["Wrath's recipe needs a Pride Blade.", "12-16 Emerald a clear, plus up to 4 for green Orowyrm targets."] } }),
+      shopbuy({ where: "Hunhow, Pontis Tower", trip: "Pontis Tower, Uranus Proxima" }),
+      ...mats("Ticor Plate", "Titanium", "Gallos Rods", "Carbides", "Marquise Thyst", "Star Crimzian",
+        "Alloy Plate", "Oxium", "Salvage", "Credits"),
+      build("Wrath Blade", { Credits: 25000, "Alloy Plate": 400, Oxium: 250, "Star Crimzian": 3, "Ticor Plate": 250 }, { time: "12h", needs: [bp("Wrath Blade")] }),
+      build("Pride Blade", { Credits: 25000, "Alloy Plate": 400, Oxium: 250, "Marquise Thyst": 5, "Ticor Plate": 250 }, { time: "12h", needs: [bp("Pride Blade")] }),
+      build("Wrath Handle", { Credits: 20000, Salvage: 1250, Titanium: 3000, Carbides: 300, "Gallos Rods": 50 }, { time: "23h", needs: [bp("Wrath Handle")] }),
+      build("Wrath", { Credits: 20000 }, { time: "23h", needs: [bp("Wrath"), built("Wrath Blade"), built("Pride Blade"), built("Wrath Handle")] }),
+    ],
+  },
+  hydroid: {
+    name: "Hydroid", effort: 4, tradeable: false, copies: 2,
+    steps: [
+      buy({ what: "Hydroid Blueprint", key: bp("Main"), where: "Market", cost: { cur: "Credits", amt: 50000 }, trip: "Market",
+        detail: { other: ["Circuit week 6, tier 10"] } }),
+      drop({ verb: "Kill", what: "Vay Hek", where: "Oro, Earth", sub: "Assassination", runWord: "kills", trip: "Oro, Earth",
+        parts: [{ key: bp("Neuroptics"), name: "Neuroptics", pct: 38.72 }, { key: bp("Chassis"), name: "Chassis", pct: 38.72 }, { key: bp("Systems"), name: "Systems", pct: 22.56 }],
+        detail: { notes: ["Drone phases: weak spots open only during the 10 s Propaganda Broadcast.", "Invulnerable again after losing 35% health."],
+          other: ["Circuit week 6: Neuroptics tier 2, Chassis tier 5, Systems tier 8", "Mix sources: Vay Hek for two, Circuit for the third"] } }),
+      ...mats("Polymer Bundle", "Nano Spores", "Alloy Plate", "Rubedo", "Argon Crystal", "Gallium", "Orokin Cell", "Control Module", "Credits"),
+      build("Neuroptics", { Credits: 15000, "Alloy Plate": 150, "Control Module": 1, "Polymer Bundle": 150, "Argon Crystal": 2 }, { time: "12h", needs: [bp("Neuroptics")] }),
+      build("Chassis", { Credits: 15000, "Argon Crystal": 2, "Polymer Bundle": 1000, Rubedo: 300, "Nano Spores": 1200 }, { time: "12h", needs: [bp("Chassis")] }),
+      build("Systems", { Credits: 15000, "Orokin Cell": 1, Gallium: 4, "Polymer Bundle": 500, "Alloy Plate": 220 }, { time: "12h", needs: [bp("Systems")] }),
+      build("Hydroid", { Credits: 25000, "Orokin Cell": 1 }, { time: "3 days", needs: FRAME_NEEDS, hot: "free Warframe slot" }),
+    ],
+    inv: {
+      partway: { has: [bp("Main"), ...x2(bp("Neuroptics")), bp("Chassis")], allCommon: true, mats: { "Nano Spores": 800 } },
+      almost: { has: [...x2(...ALLBP, built("Neuroptics"), built("Systems"))], allMats: true },
+    },
+  },
+  gara: {
+    name: "Gara", effort: 4, tradeable: false, copies: 2,
+    steps: [
+      quest({ what: "Saya's Vigil", key: "quest:Saya", where: "Cetus, Earth", sub: "gives Gara Blueprint", trip: P,
+        detail: { notes: ["Talk to Konzu, then Saya."], other: ["Circuit week 10: all four by tier 10"] } }),
+      drop({ verb: "Run", what: "Konzu bounties", where: "Plains of Eidolon", sub: "finish the final stage", trip: P, map: "plains-of-eidolon", noEta: true,
+        parts: [{ key: bp("Chassis"), name: "Chassis", pct: 30.56, tag: "Lvl 5-15" }, { key: bp("Systems"), name: "Systems", pct: 25, tag: "Lvl 10-30" },
+          { key: bp("Neuroptics"), name: "Neuroptics", pct: 25, tag: "Lvl 20-40" }],
+        detail: { notes: ["Chassis: Lvl 5-15, 30.56% final stage, 7.52% stage 2", "Systems: Lvl 10-30, 25% final, 10.08% stage 2",
+          "Neuroptics: Lvl 20-40, 23.53-26.09% final, 9-10% stages 2 and 3", "Exit through the Cetus gate or the rewards are lost."],
+          other: ["Circuit week 10: Neuroptics tier 2, Chassis tier 5, Systems tier 8"] } }),
+      earn({ what: "Simaris Standing", cur: "Cephalon Simaris Standing", where: "Cephalon Simaris, any Relay", sub: "Synthesis scans", rate: "16,000 + 500 per MR a day", trip: "Relay" }),
+      buy({ what: "Gara Blueprint", key: bp("Main"), quest: "quest:Saya", where: "Cephalon Simaris", cost: { cur: "Cephalon Simaris Standing", amt: 50000 }, trip: "Relay",
+        detail: { notes: ["Simaris stocks it after Saya's Vigil."], other: ["Circuit week 10, tier 10"] } }),
+      earn({ what: "Ostron Standing", cur: "Ostron Standing", where: "Cetus, Earth", sub: "Conservation", trip: P, map: "plains-of-eidolon",
+        detail: { other: ["Fish turn-ins", "Plains bounties"] } }),
+      buy({ what: "Pyrotic Alloy Blueprint", key: bp("Pyrotic"), once: true, where: "Old Man Suumbaat", cost: { cur: "Ostron Standing", amt: 500 }, trip: P }),
+      buy({ what: "Coprite Alloy Blueprint", key: bp("Coprite"), once: true, where: "Old Man Suumbaat", cost: { cur: "Ostron Standing", amt: 2500 }, trip: P,
+        detail: { notes: ["Needs Ostron rank 1."] } }),
+      buy({ what: "Esher Devar Blueprint", key: bp("Esher"), once: true, where: "Old Man Suumbaat", cost: { cur: "Ostron Standing", amt: 2500 }, trip: P,
+        detail: { notes: ["Needs Ostron rank 1."] } }),
+      ...mats("Grokdrul", "Iradite", "Cetus Wisp", "Charc Electroplax"),
+      mat("Nosam Cutter", { fixed: 1, detail: { notes: ["Mining tool, buy once."] } }),
+      mat("Pyrotic Alloy", { craft: { bp: bp("Pyrotic"), per: 90, mats: { Rubedo: 250, Cryotic: 1000 } } }),
+      mat("Coprite Alloy", { craft: { bp: bp("Coprite"), per: 120, mats: { Rubedo: 300, Ferrite: 2400 } } }),
+      mat("Esher Devar", { craft: { bp: bp("Esher") } }),
+      ...mats("Neurodes", "Morphics", "Circuits", "Rubedo", "Cryotic", "Ferrite", "Orokin Cell", "Credits"),
+      build("Neuroptics", { Credits: 15000, Neurodes: 2, Grokdrul: 65, "Pyrotic Alloy": 90, Circuits: 700 }, { time: "12h", needs: [bp("Neuroptics")] }),
+      build("Chassis", { Credits: 15000, "Cetus Wisp": 2, "Coprite Alloy": 120, Iradite: 55, Rubedo: 800 }, { time: "12h", needs: [bp("Chassis")] }),
+      build("Systems", { Credits: 15000, Morphics: 2, "Charc Electroplax": 35, "Esher Devar": 25, Circuits: 850 }, { time: "12h", needs: [bp("Systems")] }),
+      build("Gara", { Credits: 25000, "Orokin Cell": 3 }, { time: "3 days", needs: FRAME_NEEDS }),
+    ],
+    inv: {
+      partway: { has: ["quest:Saya", bp("Main"), ...x2(bp("Chassis")), bp("Systems"), bp("Pyrotic")],
+        cur: { "Ostron Standing": 3000, "Cephalon Simaris Standing": 18000 }, allCommon: true,
+        mats: { Grokdrul: 30, Iradite: true, "Cetus Wisp": 4, "Nosam Cutter": 1, "Pyrotic Alloy": 40 } },
+      almost: { has: ["quest:Saya", ...x2(bp("Main"), bp("Chassis"), bp("Systems"), built("Chassis"), built("Systems")), bp("Neuroptics"),
+        bp("Pyrotic"), bp("Coprite"), bp("Esher")], allMats: true },
+    },
+  },
+  sepulcrum: {
+    name: "Sepulcrum", effort: 5, tradeable: false,
+    steps: [
+      earn({ what: "Entrati Standing", cur: "Entrati Standing", where: "Cambion Drift, Deimos", sub: "Tier 5 bounties, Mother", rate: "2-3 runs hit the daily cap",
+        trip: N, map: "cambion-drift",
+        detail: { notes: ["Father sells these at Entrati Rank 2.", "Rank 1: 5,000 standing, 6 Benign Infested Tumor, 6 Ferment Bladder",
+          "Rank 2: 22,000 standing, Keratinos Blade Blueprint, Father Token, Daughter Token",
+          "Rank 3: 44,000 standing, 3 Sly Vulpaphyla Tag, 3 Vizier Predasite Tag, Mother Token, Son Token",
+          "Rank 2 reward can be the Sepulcrum Blueprint, saving 4,000."],
+          other: ["Family Tokens to Grandmother at 1.5x", "Hand in gems, fish, captures for tokens"] } }),
+      buy({ what: "Sepulcrum Blueprint", key: bp("Sepulcrum"), where: "Father, Necralisk", cost: { cur: "Entrati Standing", amt: 4000 }, trip: N,
+        detail: { other: ["Free as the Rank 2 reward"] } }),
+      buy({ what: "Barrel Blueprint", key: bp("Barrel"), where: "Father, Necralisk", cost: { cur: "Entrati Standing", amt: 2000 }, trip: N }),
+      buy({ what: "Receiver Blueprint", key: bp("Receiver"), where: "Father, Necralisk", cost: { cur: "Entrati Standing", amt: 2000 }, trip: N }),
+      ...mats("Pustulent Cognitive Nodule", "Dendrite Blastoma", "Purified Heciphron", "Trapezium Xenorhast", "Seriglass Shard", "Travocyte Alloy", "Coprite Alloy",
+        "Morphics", "Credits"),
+      build("Barrel", { Credits: 20000, "Travocyte Alloy": 30, "Purified Heciphron": 5, "Pustulent Cognitive Nodule": 20, Morphics: 5 }, { time: "12h", needs: [bp("Barrel")] }),
+      build("Receiver", { Credits: 20000, "Coprite Alloy": 40, "Purified Heciphron": 5, "Dendrite Blastoma": 20, "Trapezium Xenorhast": 2 }, { time: "12h", needs: [bp("Receiver")] }),
+      build("Sepulcrum", { Credits: 20000, "Seriglass Shard": 1 }, { time: "12h", needs: [bp("Sepulcrum"), built("Barrel"), built("Receiver")] }),
+    ],
+    inv: {
+      partway: { has: [bp("Barrel")], cur: { "Entrati Standing": 3500 }, allCommon: true,
+        mats: { "Coprite Alloy": true, "Pustulent Cognitive Nodule": 12, "Purified Heciphron": 10 } },
+      almost: { has: [bp("Sepulcrum"), bp("Barrel"), bp("Receiver")], allMats: true },
+    },
+  },
+  oraxia: {
+    name: "Oraxia", effort: 3, tradeable: false, copies: 2, shop: "acrithis",
+    steps: [
+      grind({ what: "Isleweaver", where: "Duviri", sub: "kill The Fragmented", rate: "7.69% each blueprint", trip: "Isleweaver, Duviri", parts: PARTS(7.69, 7.69),
+        detail: { notes: ["4 Duviri objectives, 2 Undercroft missions, Oraxia, then The Fragmented.", "Random Warframe and weapons, no Drifter.",
+          "16-20 Husks a run, 20-24 Steel Path.", "Don't buy early: a later run may drop it."] } }),
+      shopbuy({ where: "Acrithis, Dormizone", trip: "Dormizone", detail: { notes: ["Husk exchange shows only in the Dormizone."] } }),
+      mat("Temporal Dust", { trip: "Isleweaver, Duviri" }),
+      mat("Entrati Obols", { where: "Isleweaver, Duviri", sub: "Murmur kills, Entrati containers", rate: null, trip: "Isleweaver, Duviri",
+        detail: { other: ["Albrecht's Labs Alchemy bounty, ~2,500 per 10 min"] } }),
+      ...mats("Kovnik", "Aggristone", "Tasoma Extract", "Necracoil", "Neural Sensors", "Morphics", "Argon Crystal", "Orokin Cell", "Credits"),
+      build("Neuroptics", { Credits: 15000, "Temporal Dust": 50, "Entrati Obols": 1500, Kovnik: 200, "Neural Sensors": 4 }, { time: "12h", needs: [bp("Neuroptics")] }),
+      build("Chassis", { Credits: 15000, "Temporal Dust": 50, Necracoil: 400, Aggristone: 200, Morphics: 2 }, { time: "12h", needs: [bp("Chassis")] }),
+      build("Systems", { Credits: 15000, "Temporal Dust": 50, "Entrati Obols": 800, "Tasoma Extract": 75, "Argon Crystal": 2 }, { time: "12h", needs: [bp("Systems")] }),
+      build("Oraxia", { Credits: 25000, "Orokin Cell": 3 }, { time: "3 days", needs: FRAME_NEEDS }),
+    ],
+    inv: {
+      partway: { has: [bp("Chassis")], cur: { "Scuttler Husk": 52 }, allCommon: true,
+        mats: { Kovnik: true, "Temporal Dust": 60, "Entrati Obols": 1100, Aggristone: 120 } },
+      almost: { has: [...x2(bp("Main"), bp("Neuroptics"), bp("Chassis"), built("Neuroptics"), built("Chassis")), bp("Systems")],
+        cur: { "Scuttler Husk": 12 }, allMats: true },
+    },
+  },
+  dante: {
+    name: "Dante", effort: 3, tradeable: false, copies: 2, noPrime: true, shop: "loid", inv: INV.loid,
+    steps: [
+      grind({ what: "Armatus Disruption to Rotation C", where: "Armatus, Deimos", sub: "Sanctum Anatomica", rate: "6.82% main, 4.55% each part",
+        trip: AL, parts: PARTS(6.82, 4.55),
+        detail: { notes: ["Kill the Demolisher after each conduit: 2-4 Capillaries, 5-7 Steel Path.",
+          "Rotation C: 4 conduits held in round 3, or 3-4 from round 4 on.", "Don't buy early: a later C may drop it."] } }),
+      shopbuy({ where: "Loid, Sanctum Anatomica", trip: AL }),
+      ...mats("Entrati Lanthorn", "Bellow Voca", "Necracoil", "Entrati Obols",
+        "Alloy Plate", "Plastids", "Circuits", "Control Module", "Neural Sensors", "Orokin Cell", "Credits"),
+      build("Neuroptics", { Credits: 15000, "Entrati Lanthorn": 3, "Control Module": 10, "Bellow Voca": 4, "Neural Sensors": 4 }, { time: "12h", needs: [bp("Neuroptics")] }),
+      build("Chassis", { Credits: 15000, "Entrati Lanthorn": 2, "Alloy Plate": 8000, "Entrati Obols": 12000, Plastids: 2000 }, { time: "12h", needs: [bp("Chassis")] }),
+      build("Systems", { Credits: 15000, "Entrati Lanthorn": 3, Circuits: 4000, "Entrati Obols": 9000, Necracoil: 450 }, { time: "12h", needs: [bp("Systems")] }),
+      build("Dante", { Credits: 25000, "Orokin Cell": 3 }, { time: "72h", needs: FRAME_NEEDS }),
+    ],
+  },
+  ruvox: {
+    name: "Ruvox", effort: 3, tradeable: false, shop: "loid", inv: INV.loid,
+    qty: { [bp("Ruvox Blade")]: 2, [built("Ruvox Blade")]: 2, [bp("Ruvox Glove")]: 2, [built("Ruvox Glove")]: 2 },
+    steps: [
+      grind({ what: "Armatus Disruption to Rotation B", where: "Armatus, Deimos", sub: "Sanctum Anatomica", rate: "5% each blueprint",
+        trip: AL, parts: [{ key: bp("Ruvox"), name: "Blueprint", pct: 5 }, { key: bp("Ruvox Blade"), name: "Blade", pct: 5 }, { key: bp("Ruvox Glove"), name: "Glove", pct: 5 }],
+        detail: { notes: ["Rotation B: 4 conduits held in round 1, 3-4 in round 2, 2-3 in round 3, 1-2 from round 4 on.",
+          "Kill the Demolisher after each conduit: 2-4 Capillaries, 5-7 Steel Path.", "A Gruzzling kill guarantees a Docket."] } }),
+      shopbuy({ where: "Loid, Sanctum Anatomica", trip: AL }),
+      ...mats("Entrati Lanthorn", "Bellow Voca", "Echo Voca", "Necracoil", "Entrati Obols", "Gallium", "Ferrite", "Credits"),
+      build("Ruvox Blade", { Credits: 20000, "Entrati Obols": 4500, "Bellow Voca": 10, "Entrati Lanthorn": 2, Gallium: 8 }, { time: "12h", needs: [bp("Ruvox Blade")] }),
+      build("Ruvox Glove", { Credits: 20000, Ferrite: 1400, Necracoil: 500, "Entrati Lanthorn": 2, "Echo Voca": 4 }, { time: "12h", needs: [bp("Ruvox Glove")] }),
+      build("Ruvox", { Credits: 20000 }, { time: "12h", needs: [bp("Ruvox"), built("Ruvox Blade"), built("Ruvox Glove")] }),
+    ],
+  },
+  onos: {
+    name: "Onos", effort: 3, tradeable: false, shop: "loid", inv: INV.loid,
+    steps: [
+      grind({ what: "Armatus Disruption to Rotation B", where: "Armatus, Deimos", sub: "Sanctum Anatomica", rate: "5%",
+        trip: AL, parts: [{ key: bp("Onos"), name: "Blueprint", pct: 5 }],
+        detail: { notes: ["Rotation B: 4 conduits held in round 1, 3-4 in round 2, 2-3 in round 3, 1-2 from round 4 on.",
+          "Only Armatus carries Onos.", "Kill the Demolisher after each conduit: 2-4 Capillaries, 5-7 Steel Path."] } }),
+      shopbuy({ where: "Loid, Sanctum Anatomica", trip: AL }),
+      ...mats("Entrati Lanthorn", "Necracoil", "Salvage", "Argon Crystal", "Credits"),
+      build("Onos", { Credits: 20000, Salvage: 3000, Necracoil: 400, "Argon Crystal": 2, "Entrati Lanthorn": 6 }, { time: "12h", needs: [bp("Onos")] }),
+    ],
+  },
+  citrine: {
+    name: "Citrine", effort: 7, tradeable: false, copies: 2, shop: "otak",
+    steps: [
+      grind({ what: "Tyana Pass Mirror Defense", where: "Tyana Pass, Mars", sub: "to Rotation C, 4th reward", rate: "9.3% main, 6.1% each part",
+        trip: "Tyana Pass, Mars", hot: "low drop rate", parts: PARTS(9.3, 6.1),
+        detail: { notes: ["Rewards go A, A, B, C: stay for the 4th.", "10 of each fragment a rotation, 15 Steel Path.",
+          "Citrine's Remnants: 5 a set, 7 Steel Path, alternating type.", "Don't buy early: a later C may drop it."] } }),
+      shopbuy({ where: "Otak, Necralisk", trip: N }),
+      ...mats("Faceted Tiametrite", "Stellated Necrathene",
+        "Rubedo", "Salvage", "Argon Crystal", "Cryotic", "Alloy Plate", "Nano Spores", "Circuits", "Polymer Bundle", "Gallium", "Morphics", "Orokin Cell", "Credits"),
+      build("Neuroptics", { Credits: 15000, Rubedo: 1000, Salvage: 1500, "Faceted Tiametrite": 15, "Argon Crystal": 2 }, { time: "12h", needs: [bp("Neuroptics")] }),
+      build("Chassis", { Credits: 15000, Cryotic: 1200, "Alloy Plate": 3000, "Stellated Necrathene": 6, "Nano Spores": 2000 }, { time: "12h", needs: [bp("Chassis")] }),
+      build("Systems", { Credits: 15000, Circuits: 1500, "Polymer Bundle": 1500, Gallium: 3, Morphics: 2 }, { time: "12h", needs: [bp("Systems")] }),
+      build("Citrine", { Credits: 30000, "Orokin Cell": 3 }, { time: "3 days", needs: FRAME_NEEDS }),
+    ],
+    inv: {
+      partway: { has: [bp("Neuroptics")], cur: { "Rania Crystal Fragment": 420, "Belric Crystal Fragment": 380 }, allCommon: true,
+        mats: { "Faceted Tiametrite": true } },
+      almost: { has: [...x2(bp("Main"), bp("Neuroptics"), bp("Chassis"), built("Neuroptics"), built("Chassis")), bp("Systems")],
+        cur: { "Rania Crystal Fragment": 320, "Belric Crystal Fragment": 280 }, allMats: true },
+    },
+  },
+};
+const COPIES = {
+  need2: { label: "Need 2", n: 2, tag: "2 copies: subsume + keep" },
+  haveone: { label: "Have one built", n: 1, tag: "1 more: have one", questDone: true },
+  subsumed: { label: "Already subsumed", n: 1, tag: "1 to keep: subsumed", questDone: true },
+  prime: { label: "Own the Prime", n: 1, tag: "1 copy: Prime owned" },
+};
+const STATUSES = { nothing: "Nothing", partway: "Partway", almost: "Almost done" };
+let itemKey = "badbaby", status = "nothing", copiesMode = "need2", open = null, showDone = false;
+const PICKS = {};
+
+const ETA = {};
+function dropEta(list) {
+  if (!list.length) return 0;
+  const key = JSON.stringify(list);
+  if (ETA[key] != null) return ETA[key];
+  let seed = 7;
+  const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+  const T = 1500;
+  let total = 0;
+  for (let t = 0; t < T; t++) {
+    const left = list.map((x) => x.n);
+    let rem = left.reduce((a, b) => a + b, 0), runs = 0;
+    while (rem > 0 && runs < 5000) {
+      runs++;
+      let r = rnd() * 100;
+      for (let i = 0; i < list.length; i++) {
+        if (r < list[i].pct) { if (left[i] > 0) { left[i]--; rem--; } break; }
+        r -= list[i].pct;
+      }
+    }
+    total += runs;
+  }
+  return (ETA[key] = Math.round(total / T));
+}
+
+function getPicks(shop) {
+  const k = [shop, status, copiesMode].join("|");
+  // Holds the units flipped away from the default: every non-cosmetic unit starts picked.
+  return (PICKS[k] ??= new Set());
+}
+function pick(id) {
+  const s = getPicks(ITEMS[itemKey].shop);
+  if (s.has(id)) s.delete(id); else s.add(id);
+  render();
+}
+
+function shopState(ctx) {
+  const sh = SHOPS[ctx.item.shop], flipped = getPicks(ctx.item.shop);
+  const isPicked = (w) => (w.item !== "cosmetic") !== flipped.has(w.id);
+  const wares = sh.wares.flatMap((w) => {
+    const cosmetic = w.item === "cosmetic";
+    const qty = cosmetic ? 1 : ITEMS[w.item].copies ? COPIES[copiesMode].n : w.qty ?? 1;
+    const got = cosmetic ? 0 : ctx.count(w.key), fromQuest = !cosmetic && w.quest && !ctx.count(w.quest) ? 1 : 0;
+    return Array.from({ length: qty }, (_, i) => {
+      const ownedText = i < got ? "owned" : i < got + fromQuest ? "quest reward" : null;
+      return { ...w, id: qty > 1 ? `${w.id}-${i + 1}` : w.id, label: qty > 1 ? `${w.name} #${i + 1}` : w.name, owned: !!ownedText, ownedText };
+    });
+  });
+  const picked = wares.filter((w) => !w.owned && isPicked(w));
+  const pickedCount = {};
+  for (const w of picked) if (w.key) pickedCount[w.key] = (pickedCount[w.key] ?? 0) + 1;
+  const need = {};
+  let any = 0;
+  for (const c of sh.curs) need[c.cur] = 0;
+  for (const w of picked) for (const [c, a] of Object.entries(w.price)) { if (c === "any") any += a; else need[c] += a; }
+  const lines = sh.curs.map((c) => {
+    const have = ctx.cur(c.cur), gap = Math.max(0, need[c.cur] - have);
+    return { ...c, have, need: need[c.cur], gap, runs: c.per ? Math.ceil(gap / c.per) : 0, demos: c.demo ? Math.ceil(gap / c.demo) : 0 };
+  });
+  const sum = (f) => lines.reduce((a, l) => a + l[f], 0);
+  let pool = null;
+  if (sh.pooled) {
+    // Single-currency shortfalls can't be paid with the other Talent, so the pooled gap never drops below their sum.
+    const have = sum("have"), need = sum("need") + any, gap = Math.max(sum("gap"), need - have, 0);
+    pool = { have, need, any, gap, runs: Math.ceil(gap / sh.pooled) };
+  }
+  const runs = pool ? pool.runs : sh.together ? Math.max(...lines.map((l) => l.runs)) : sum("runs");
+  const covered = pool ? pool.gap === 0 : lines.every((l) => l.gap === 0);
+  return { sh, wares, picked, pickedCount, isPicked, lines, pool, runs, demos: sum("demos"), covered };
+}
+
+function makeCtx(item) {
+  const cm = COPIES[copiesMode];
+  const target = item.copies ? cm.n : 1;
+  const inv = item.inv[status] ?? {};
+  const onceKeys = new Set(item.steps.filter((s) => s.once).map((s) => s.key));
+  const counts = {};
+  for (const k of inv.has ?? []) counts[k] = (counts[k] ?? 0) + 1;
+  for (const k of FRAME_KEYS) if (counts[k]) counts[k] = Math.max(0, counts[k] - (2 - cm.n));
+  const count = (k) => (cm.questDone && k.startsWith("quest:") ? 1 : counts[k] ?? 0);
+  const goal = (k) => (onceKeys.has(k) || k.startsWith("quest:") ? 1 : item.qty?.[k] ?? target);
+  const ctx = { item, target, count, goal, sh: SHOPS[item.shop], cur: (c) => inv.cur?.[c] ?? 0 };
+  ctx.owned = (k) => count(k) >= goal(k);
+  ctx.want = (k, questKey) => Math.max(0, goal(k) - count(k) - (questKey && !count(questKey) ? 1 : 0));
+  const steps = item.steps.map((s, idx) => ({ ...s, idx: String(idx) }));
+  const need = {};
+  const add = (m, q) => { if (q > 0) need[m] = (need[m] ?? 0) + q; };
+  for (const s of steps) {
+    if (s.t === "build") { const left = ctx.want(s.key); for (const [m, q] of Object.entries(s.mats)) add(m, q * left); }
+    if (s.t === "buy" && s.cost.cur === "Credits") add("Credits", s.cost.amt * ctx.want(s.key, s.quest));
+    if (s.t === "mat" && s.fixed) add(s.what, s.fixed);
+  }
+  const haveMat = (m) => {
+    const v = inv.mats?.[m];
+    if (v === true) return Infinity;
+    if (typeof v === "number") return v;
+    return inv.allMats || (inv.allCommon && RES[m]?.common) ? Infinity : 0;
+  };
+  for (const s of steps) {
+    if (s.t !== "mat" || !s.craft?.mats) continue;
+    const short = Math.max(0, (need[s.what] ?? 0) - haveMat(s.what));
+    const f = s.craft.per ? short / s.craft.per : (short > 0 ? 1 : 0);
+    for (const [m, q] of Object.entries(s.craft.mats)) add(m, Math.ceil(q * f));
+  }
+  ctx.need = need;
+  ctx.haveMat = haveMat;
+  for (const s of steps) {
+    if (s.t === "mat") {
+      const r = RES[s.what] ?? {};
+      for (const f of ["verb", "where", "sub", "rate", "trip", "map", "common"]) if (!(f in s)) s[f] = r[f];
+      s.trip = s.trip ?? s.where;
+      s.detail = s.detail ?? { other: r.other };
+      s.need = need[s.what] ?? 0;
+      const h = haveMat(s.what);
+      s.have = Math.min(h, s.need);
+      s.done = h >= s.need;
+      if (!s.done && s.craft && !ctx.owned(s.craft.bp)) { s.block = true; s.gate = "buy the blueprint first"; }
+    }
+    if (s.t === "buy") {
+      s.qty = ctx.want(s.key, s.quest);
+      s.done = s.qty === 0;
+      s.costAll = s.cost.amt * s.qty;
+      if (!s.done && s.cost.cur !== "Credits") {
+        const b = ctx.cur(s.cost.cur);
+        if (b < s.cost.amt) { s.block = true; s.gate = `need ${fmt(s.cost.amt - b)} more`; }
+      }
+    }
+    if (s.t === "quest") s.done = count(s.key) > 0;
+    if (s.t === "drop") {
+      s.lacking = s.parts.filter((p) => ctx.want(p.key) > 0);
+      s.done = s.lacking.length === 0;
+      s.eta = dropEta(s.lacking.map((p) => ({ pct: p.pct, n: ctx.want(p.key) })));
+    }
+  }
+  for (const s of steps) {
+    if (s.t === "earn") {
+      s.need = steps.filter((b) => b.t === "buy" && b.cost.cur === s.cur).reduce((a, b) => a + b.costAll, 0);
+      const bal = ctx.cur(s.cur);
+      s.have = Math.min(bal, s.need);
+      s.done = bal >= s.need;
+    }
+    if (s.t === "build") {
+      s.qty = ctx.want(s.key);
+      s.done = s.qty === 0;
+      if (!s.done) {
+        if (s.needs.some((k) => k.startsWith("bp:") && !count(k))) s.gate = "needs blueprint";
+        else if (s.needs.some((k) => k.startsWith("built:") && !count(k))) s.gate = "needs parts";
+        else if (Object.keys(s.mats).some((m) => haveMat(m) < (need[m] ?? 0))) s.gate = "needs mats";
+        s.block = !!s.gate;
+      }
+    }
+  }
+  if (item.shop) {
+    const st = (ctx.shop = shopState(ctx));
+    for (const s of steps) {
+      if (s.t === "grind") {
+        s.lacking = s.parts.filter((p) => ctx.want(p.key, p.quest) > 0);
+        const unpicked = s.lacking.map((p) => ({ pct: p.pct, n: ctx.want(p.key, p.quest) - (st.pickedCount[p.key] ?? 0) })).filter((p) => p.n > 0);
+        s.done = s.lacking.length === 0 || (st.covered && unpicked.length === 0);
+        s.dropEta = dropEta(s.lacking.map((p) => ({ pct: p.pct, n: ctx.want(p.key, p.quest) })));
+        s.runs = Math.max(st.runs, dropEta(unpicked));
+      }
+      if (s.t === "shopbuy") {
+        s.done = st.picked.length === 0;
+        s.block = !s.done && !st.covered;
+      }
+    }
+  }
+  ctx.steps = steps;
+  ctx.rows = rowsOf(steps);
+  const todo = ctx.rows.filter((r) => !r.done);
+  ctx.next = todo.find((r) => !r.block) ?? todo[0] ?? null;
+  return ctx;
+}
+
+// Real lines plus one virtual Basics line, placed just before the first build.
+function rowsOf(steps) {
+  const commons = steps.filter((s) => s.t === "mat" && s.common);
+  const rows = steps.filter((s) => !(s.t === "mat" && s.common));
+  if (!commons.length) return rows;
+  const left = commons.filter((s) => !s.done);
+  const basics = { t: "basics", idx: "basics", beat: "farm", trip: "Basics", verb: "Top up", what: "basics", list: commons, left, done: left.length === 0 };
+  const at = rows.findIndex((s) => s.t === "build");
+  rows.splice(at < 0 ? rows.length : at, 0, basics);
+  return rows;
+}
+function bar(have, need, showQty = true) {
+  const pct = need ? Math.min(100, (have / need) * 100) : 100;
+  return `<span class="pg"><span class="pgbar"><i style="width:${pct}%"></i></span>${showQty
+    ? `<span class="qty">${have > 0 ? fmt(have) + " / " : ""}${fmt(need)}</span>` : ""}</span>`;
+}
+const mapBtn = (s) => (s.map ? `<button class="mapbtn" title="${MAPS[s.map]} map" onclick="event.stopPropagation()">Map</button>` : "");
+const curShort = (c) => (c === "Credits" ? "cr" : c.endsWith("Standing") ? "Standing" : c);
+const times = (n) => (n > 1 ? ` <span class="qty">×${n}</span>` : "");
+const chips = (s) => (s.hot ? `<span class="chip warn">${s.hot}</span>` : "") + (s.gate ? `<span class="chip gate">${s.gate}</span>` : "");
+const allDone = () => `<div class="muted">All done.</div>`;
+
+function pips(parts, ctx) {
+  return `<span class="pips">${parts.map((p) => {
+    const want = ctx.want(p.key, p.quest), got = ctx.count(p.key);
+    if (ctx.owned(p.key)) return `<span class="pip on">${p.name}</span>`;
+    if (!want) return `<span class="pip">${p.name} from quest</span>`;
+    const g = ctx.goal(p.key);
+    const prog = g > 1 && got > 0 ? ` ${got}/${g}` : "";
+    return `<span class="pip">${p.name}${prog} ${p.tag ?? p.pct + "%"}</span>`;
+  }).join("")}</span>`;
+}
+
+function matText(s, verb = true) {
+  const v = verb ? s.verb + " " : "";
+  if (s.have > 0) return `${v}${s.what} ${bar(s.have, s.need)}`;
+  return `${v}<span class="qty">${fmt(s.need)}</span> ${s.what}${s.need >= 1000 ? " " + bar(0, s.need, false) : ""}`;
+}
+
+function balance(ctx) {
+  const p = ctx.shop.pool;
+  if (p) return `${ctx.sh.unit} ${p.need ? bar(p.need - p.gap, p.need) : `<span class="qty">${fmt(p.have)}</span>`}`;
+  return ctx.shop.lines.map((l) => `${l.short} ${l.need ? bar(l.have, l.need) : `<span class="qty">${fmt(l.have)}</span>`}`).join(" ");
+}
+function pickedCost(ctx) {
+  const p = ctx.shop.pool;
+  return [...ctx.shop.lines.filter((l) => l.need).map((l) => `${fmt(l.need)} ${l.short}`),
+    p?.any ? `${fmt(p.any)} either` : ""].filter(Boolean).join(" + ");
+}
+
+function title(s, ctx) {
+  const sh = ctx.sh;
+  switch (s.t) {
+    case "mat": return matText(s) + mapBtn(s);
+    case "earn": return `Earn ${s.what} ${bar(s.have, s.need)}${mapBtn(s)}`;
+    case "buy": return `Buy ${s.what}${times(s.qty)}${s.tag ? ` <span class="faint">${s.tag}</span>` : ""}`;
+    case "quest": return `Finish ${s.what}`;
+    case "drop": return `${s.verb} ${s.what}${s.noEta ? "" : ` <span class="chip">~${s.eta} ${s.runWord ?? "runs"}</span>`}${mapBtn(s)} ${pips(s.parts, ctx)}`;
+    case "grind": {
+      const runChip = s.runs ? `<span class="chip ${s.runs > 15 ? "warn" : ""}">~${s.runs} ${sh.runWord}</span>` : "";
+      const demoChip = ctx.shop.demos ? `<span class="chip">about ${fmt(ctx.shop.demos)} Demolishers</span>` : "";
+      return `Run ${s.what} ${runChip}${demoChip} ${pips(s.parts, ctx)}`;
+    }
+    case "shopbuy": {
+      const n = ctx.shop.picked.length;
+      return s.block ? `Buy when ${sh.unit} ${/s$/.test(sh.unit) ? "cover" : "covers"} your picks` : `Buy ${n} pick${n === 1 ? "" : "s"} at ${sh.vendor}`;
+    }
+    case "build": return `${s.verb} ${s.label ?? s.what}${times(s.qty)}`;
+    case "basics": return `Basics ${s.left.map((m) => `<span class="chip">${matText(m, false)}</span>`).join("")}`;
+  }
+  return s.what;
+}
+function doneTitle(s, ctx) {
+  if (s.t === "basics") return "Basics";
+  if (s.t === "shopbuy") return `Buy at ${ctx.sh.vendor}`;
+  if (s.t === "grind") return `Run ${s.what}`;
+  return `${s.verb ?? ""} ${s.label ?? s.what}`;
+}
+function meta(s, ctx) {
+  switch (s.t) {
+    case "buy": return `${s.where} · ${fmt(s.cost.amt)} ${curShort(s.cost.cur)}${s.qty > 1 ? " each" : ""}`;
+    case "grind": return balance(ctx);
+    case "shopbuy": return `${s.where} · ${pickedCost(ctx)}`;
+    case "build": return s.time ?? s.where ?? "";
+    case "basics": return `${s.left.length} common`;
+  }
+  return s.where ?? "";
+}
+
+function picker(ctx) {
+  const st = ctx.shop, sh = st.sh;
+  const price = (w) => Object.entries(w.price).map(([c, a]) =>
+    `${fmt(a)} ${c === "any" ? "either" : sh.curs.find((x) => x.cur === c).short}`).join(" + ");
+  const row = (w) => (w.owned
+    ? `<div class="pk-row"><input type="checkbox" checked disabled><span class="done">${w.label}</span><span class="faint">${w.ownedText}</span></div>`
+    : `<label class="pk-row"><input type="checkbox" ${st.isPicked(w) ? "checked" : ""} onchange="pick('${w.id}')">
+      <span>${w.label}</span><span class="qty">${price(w)}</span></label>`);
+  const groups = new Map();
+  for (const w of st.wares) {
+    const g = w.item === "cosmetic" ? "Cosmetics" : ITEMS[w.item].name;
+    if (!groups.has(g)) groups.set(g, []);
+    groups.get(g).push(w);
+  }
+  const also = Object.entries(ITEMS).filter(([k, it]) => it.shop === ctx.item.shop && k !== itemKey).map(([, it]) => it.name);
+  const covered = ' <span class="chip ok">covered</span>';
+  const p = st.pool;
+  const lines = p
+    ? `<div class="pk-cur">Have ${st.lines.map((l) => `${fmt(l.have)} ${l.short}`).join(", ")}. Need ${[
+        ...st.lines.filter((l) => l.need).map((l) => `${fmt(l.need)} ${l.short}-only`), p.any ? `${fmt(p.any)} either` : ""].filter(Boolean).join(", ") || "nothing"}.</div>
+      <div class="pk-cur">${p.gap ? `${sh.unit} short: ${fmt(p.gap)} (~${p.runs} ${sh.runWord} at ${sh.pooled})${st.lines.some((l) => l.gap)
+        ? `, at least ${st.lines.filter((l) => l.gap).map((l) => `${fmt(l.gap)} ${l.short}`).join(" and ")}` : ""}` : `${sh.unit}${covered}`}</div>`
+    : st.lines.map((l) => `<div class="pk-cur">${l.short}: have ${fmt(l.have)}, need ${fmt(l.need)}${l.gap
+      ? `, short ${fmt(l.gap)} (${l.demo ? `about ${fmt(l.demos)} Demolishers` : `~${l.runs} ${sh.runWord}`})` : covered}</div>`).join("");
+  return `<div class="picker"><div class="pk-head"><b>${sh.vendor}</b> <span class="muted">${sh.where}</span>
+    ${also.length ? `<span class="chip">Also: ${also.join(", ")}</span>` : ""} <span class="faint">${sh.perText}</span>${lines}</div>
+    ${[...groups].map(([g, list]) => `<div class="pk-group">${g}</div>${list.map(row).join("")}`).join("")}</div>`;
+}
+
+const wikiName = (s, ctx) => (["mat", "earn", "quest"].includes(s.t) ? s.what : ctx.item.name);
+function drawer(s, ctx) {
+  if (s.t === "basics") {
+    return `<div class="drawer">${s.list.map((m) => `<div>${m.done ? `<span class="done">${m.what}</span>` : matText(m, false)}
+      <span class="muted">· ${m.where}, ${m.sub}</span> <a href="${WIKI(m.what)}" target="_blank">Wiki</a></div>`).join("")}</div>`;
+  }
+  const d = s.detail ?? {};
+  const facts = [s.sub, s.rate, s.t === "buy" ? `${fmt(s.cost.amt)} ${curShort(s.cost.cur)}` : null, s.time].filter(Boolean);
+  let extra = "";
+  if (s.t === "build") {
+    extra = `<h4>Needs</h4>${Object.entries(s.mats).map(([m, q]) =>
+      `<span class="chip ${ctx.haveMat(m) >= (ctx.need[m] ?? 0) ? "ok" : ""}">${fmt(q * Math.max(1, s.qty))} ${m}</span>`).join("") || '<span class="muted">the four parts</span>'}`;
+  }
+  if (s.t === "grind" && s.lacking.length) extra = `<h4>Drops alone</h4><div>~${s.dropEta} ${ctx.sh.runWord} for what's left</div>`;
+  if (s.t === "grind" || s.t === "shopbuy") extra += `<h4>Shop</h4>${picker(ctx)}`;
+  return `<div class="drawer">
+    ${s.where ? `<div><b>${s.where}</b> ${facts.map((f) => `<span class="chip">${f}</span>`).join("")}${mapBtn(s)}</div>` : ""}
+    ${d.notes ? `<h4>Notes</h4><ul>${d.notes.map((n) => `<li>${n}</li>`).join("")}</ul>` : ""}
+    ${d.other?.length ? `<h4>Other spots</h4><ul>${d.other.map((n) => `<li>${n}</li>`).join("")}</ul>` : ""}
+    ${extra}
+    <div style="margin-top:6px"><a href="${WIKI(wikiName(s, ctx))}" target="_blank">Wiki</a></div></div>`;
+}
+const BEATS = [["buy", "Get blueprints"], ["farm", "Farm"], ["build", "Build"]];
+
+function lineA(s, ctx) {
+  const isNext = ctx.next === s;
+  return `<div class="line clickable ${s.block && !s.done ? "gated" : ""} ${isNext ? "next" : ""}" onclick="toggle('${s.idx}')">
+    <span class="box ${s.done ? "on" : ""}"></span>
+    <span class="${s.done ? "done" : ""}">${isNext ? '<span class="nexttag">Next</span>' : ""}${s.done ? doneTitle(s, ctx) : title(s, ctx) + " " + chips(s)}</span>
+    <span class="where">${s.done ? "" : meta(s, ctx)}</span></div>${open === s.idx ? drawer(s, ctx) : ""}`;
+}
+
+function beats(ctx, farmBody) {
+  let n = 0;
+  return BEATS.map(([beat, name]) => {
+    const rows = ctx.rows.filter((r) => r.beat === beat && !r.done);
+    if (!rows.length) return "";
+    const body = beat === "farm" && farmBody ? farmBody(rows) : rows.map((r) => lineA(r, ctx)).join("");
+    return `<div class="beat"><h2><span class="n">${++n}</span>${name}</h2>${body}</div>`;
+  }).join("") || allDone();
+}
+
+function renderD(ctx) {
+  return beats(ctx, (rows) => {
+    const groups = new Map();
+    for (const r of rows) {
+      const k = r.t === "basics" ? "~basics" : r.trip ?? r.where ?? r.idx;
+      if (!groups.has(k)) groups.set(k, []);
+      groups.get(k).push(r);
+    }
+    return [...groups.values()].map((g) => (g.length === 1 ? lineA(g[0], ctx) : tripLine(g, ctx))).join("");
+  });
+}
+function tripLine(g, ctx) {
+  const hasNext = g.includes(ctx.next);
+  const sel = g.find((s) => s.idx === open);
+  const chip = (s) => `<span class="tchip ${s.idx === open ? "sel" : ""} ${s === ctx.next ? "isnext" : ""} ${s.block ? "gated" : ""}"
+    onclick="toggle('${s.idx}')">${s.t === "mat" ? matText(s) + mapBtn(s) : title(s, ctx)}</span>`;
+  return `<div class="tripline ${hasNext ? "next" : ""}"><span class="box" style="width:16px;height:16px;border:1px solid var(--text-faint);border-radius:3px;display:inline-block;transform:translateY(3px)"></span>
+    <span>${hasNext ? '<span class="nexttag">Next</span>' : ""}<span class="place">${g[0].trip ?? g[0].where}</span>${g.map(chip).join("")}</span></div>
+    ${sel ? drawer(sel, ctx) : ""}`;
+}
+
+function doneBox(ctx) {
+  const list = ctx.rows.filter((r) => r.done);
+  if (!list.length) return "";
+  return `<div class="donebox"><span class="toggle clickable" onclick="showDone=!showDone;render()">${showDone ? "▾" : "▸"} ${list.length} done</span>
+    ${showDone ? list.map((s) => lineA(s, ctx)).join("") : ""}</div>`;
+}
+
+function head(ctx) {
+  const it = ctx.item;
+  const copyTag = it.copies ? `<span class="chip ${copiesMode === "need2" ? "" : "ok"}">${COPIES[copiesMode].tag}</span>` : "";
+  return `<div class="head"><div class="art">${it.name}</div><div>
+    <h1>${it.name}<span class="chip eff">${EFFORT[it.effort]}</span></h1>
+    <div>${copyTag}<span class="links"><a href="${WIKI(it.name)}" target="_blank">Wiki</a>${it.tradeable ? `<a href="${WFM(it.name)}" target="_blank">warframe.market</a>` : ""}<button class="treebtn">Crafting tree</button></span></div>
+  </div></div>`;
+}
+
+const NOTES = "Status sets what the player already has. Done lines vanish into the N done disclosure. Copies applies to Warframes only.";
+
+function set(k, v) {
+  if (k === "item") {
+    itemKey = v; showDone = false;
+    if (ITEMS[v].noPrime && copiesMode === "prime") copiesMode = "need2";
+  }
+  if (k === "status") { status = v; showDone = false; }
+  if (k === "copies") { copiesMode = v; showDone = false; }
+  open = null;
+  render();
+}
+function toggle(id) { open = open === id ? null : id; render(); }
+
+function render() {
+  const item = ITEMS[itemKey];
+  const btns = (label, key, entries, cur) => `<span class="label">${label}</span>` + entries.map(([k, v]) =>
+    `<button class="tab" aria-pressed="${k === cur}" onclick="set('${key}','${k}')">${v}</button>`).join("");
+  const copies = Object.entries(COPIES).filter(([k]) => !(k === "prime" && item.noPrime)).map(([k, c]) => [k, c.label]);
+  document.getElementById("items").innerHTML = btns("Item", "item", Object.entries(ITEMS).map(([k, it]) => [k, it.name]), itemKey);
+  document.getElementById("statuses").innerHTML = btns("Status", "status", Object.entries(STATUSES), status)
+    + (item.copies ? `<span style="width:16px"></span>` + btns("Copies", "copies", copies, copiesMode) : "");
+  const ctx = makeCtx(item);
+  document.getElementById("view").innerHTML = head(ctx) + renderD(ctx) + doneBox(ctx);
+  document.getElementById("notes").textContent = NOTES;
+}
+render();
+</script>
+</body>
+</html>

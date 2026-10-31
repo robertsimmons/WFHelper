@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Plan Details Options</title>
+<style>
+:root {
+  --bg-body: #0b0d14;
+  --bg-surface: #12151f;
+  --bg-card: #1a1e2b;
+  --bg-card-hover: #222738;
+  --bg-input: #262b3b;
+  --bg-hero: #0d0d1a;
+  --border-default: #2c3244;
+  --border-subtle: #20253a;
+  --text-primary: #e0e0e0;
+  --text-heading: #f0f0f0;
+  --text-muted: #9e9eb8;
+  --text-faint: #606078;
+  --accent: #e0b23c;
+  --accent-blue: #5b9cf6;
+  --accent-green: #4caf50;
+  --accent-red: #ef5350;
+  --accent-orange: #ffb74d;
+  --badge-green-bg: #1b3a1b;
+  --badge-orange-bg: #3a2a10;
+  --badge-blue-bg: #152a3a;
+  --shadow-card: 0 2px 8px rgba(0,0,0,0.3);
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--bg-body); color: var(--text-primary);
+  font: 17px/1.65 -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+.wrap { max-width: 1100px; margin: 0 auto; padding: 24px 16px 80px; }
+.bar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 20px; }
+.bar .label { color: var(--text-muted); margin-right: 4px; }
+.tab {
+  background: var(--bg-card); border: 1px solid var(--border-default); color: var(--text-primary);
+  border-radius: 6px; padding: 4px 12px; font: inherit; cursor: pointer;
+}
+.tab[aria-pressed="true"] { border-color: var(--accent); color: var(--accent); }
+.pitch { color: var(--text-muted); margin: 0 0 18px; }
+.head { display: flex; gap: 16px; align-items: center; margin-bottom: 18px; }
+.art {
+  width: 88px; height: 56px; border-radius: 6px; background: var(--bg-card);
+  border: 1px solid var(--border-subtle); display: flex; align-items: center; justify-content: center;
+  color: var(--text-faint); font-size: 0.88em;
+}
+.head h1 { margin: 0; font-size: 1.5em; color: var(--text-heading); }
+.head .sub { color: var(--text-muted); }
+.tier { color: var(--accent); font-weight: 700; margin-left: 6px; }
+.links a { color: var(--accent-blue); margin-left: 12px; text-decoration: none; font-size: 0.88em; }
+.muted { color: var(--text-muted); }
+.faint { color: var(--text-faint); }
+.done { color: var(--text-faint); text-decoration: line-through; }
+.chip {
+  display: inline-block; padding: 0 8px; border-radius: 4px; background: var(--bg-input);
+  color: var(--text-muted); font-size: 0.88em; margin: 2px 4px 2px 0; white-space: nowrap;
+}
+.chip.warn { background: var(--badge-orange-bg); color: var(--accent-orange); }
+.chip.ok { background: var(--badge-green-bg); color: var(--accent-green); }
+.qty { font-variant-numeric: tabular-nums; color: var(--text-heading); }
+.drawer {
+  margin: 6px 0 4px 34px; padding: 10px 14px; background: var(--bg-surface);
+  border-left: 3px solid var(--accent); border-radius: 0 6px 6px 0; font-size: 0.92em;
+}
+.drawer h4 { margin: 6px 0 2px; font-size: 0.88em; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; }
+.drawer ul { margin: 0; padding-left: 18px; }
+.drawer a { color: var(--accent-blue); text-decoration: none; margin-right: 14px; }
+.clickable { cursor: pointer; }
+.clickable:hover { background: var(--bg-card-hover); }
+
+/* A: three beats */
+.beat { margin-bottom: 18px; }
+.beat h2 { font-size: 1em; margin: 0 0 6px; color: var(--text-heading); display: flex; gap: 10px; align-items: baseline; }
+.beat h2 .n { color: var(--accent); }
+.line { display: grid; grid-template-columns: 24px 1fr auto; gap: 10px; align-items: baseline; padding: 4px 8px; border-radius: 6px; }
+.line .box { width: 16px; height: 16px; border: 1px solid var(--text-faint); border-radius: 3px; display: inline-block; transform: translateY(3px); }
+.line .box.on { background: var(--accent-green); border-color: var(--accent-green); }
+.line .where { color: var(--text-muted); }
+
+/* B: do this now */
+.now {
+  background: var(--bg-card); border: 1px solid var(--accent); border-radius: 10px;
+  padding: 16px 20px; box-shadow: var(--shadow-card); margin-bottom: 18px;
+}
+.now .kicker { color: var(--accent); font-size: 0.88em; text-transform: uppercase; letter-spacing: 0.08em; }
+.now .verb { font-size: 1.45em; color: var(--text-heading); margin: 2px 0; }
+.now .where { font-size: 1.1em; }
+.now .actions { margin-top: 10px; display: flex; gap: 8px; }
+.btn { background: var(--accent); color: var(--bg-body); border: 0; border-radius: 6px; padding: 4px 14px; font: inherit; font-weight: 600; cursor: pointer; }
+.btn.ghost { background: transparent; color: var(--text-muted); border: 1px solid var(--border-default); font-weight: 400; }
+.later { display: grid; grid-template-columns: 28px 1fr auto; gap: 10px; padding: 4px 8px; border-radius: 6px; }
+.later .num { color: var(--text-faint); text-align: right; }
+
+/* C: tiles by trip */
+.trip { margin-bottom: 18px; }
+.trip-head { display: flex; gap: 10px; align-items: baseline; margin-bottom: 6px; }
+.trip-head b { color: var(--text-heading); }
+.tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 8px; }
+.tile {
+  background: var(--bg-card); border: 1px solid var(--border-default); border-radius: 8px;
+  padding: 8px 10px; box-shadow: var(--shadow-card); cursor: pointer; min-height: 84px;
+  display: flex; flex-direction: column; gap: 2px;
+}
+.tile:hover { background: var(--bg-card-hover); }
+.tile.sel { border-color: var(--accent); }
+.tile .name { color: var(--text-heading); font-weight: 600; line-height: 1.3; }
+.tile .icon { width: 28px; height: 28px; border-radius: 4px; background: var(--bg-input); }
+.timeline { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
+.timeline .node { background: var(--bg-card); border: 1px solid var(--border-default); border-radius: 6px; padding: 2px 10px; }
+.timeline .arrow { color: var(--text-faint); }
+.notes { margin-top: 28px; padding: 12px 16px; background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: 8px; color: var(--text-muted); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="bar" id="options"></div>
+  <div class="bar" id="items"></div>
+  <p class="pitch" id="pitch"></p>
+  <div id="view"></div>
+  <div class="notes" id="notes"></div>
+</div>
+<script>
+const WIKI = (name) => `https://wiki.warframe.com/w/${encodeURIComponent(name.replace(/ /g, "_"))}`;
+const WFM = (name) => `https://warframe.market/items/${name.toLowerCase().replace(/ /g, "_")}`;
+
+const ITEMS = {
+  nikana: {
+    name: "Dragon Nikana", tier: "A", art: "Dragon Nikana",
+    head: ["45,000 cr blueprints", "not tradeable"],
+    warn: ["Tenno Lab in your clan's Dojo"],
+    steps: [
+      { beat: "buy", verb: "Buy", what: "Nikana Blueprint", where: "Clan Dojo", sub: "Tenno Lab", cost: "15,000 cr", trip: "Clan Dojo",
+        detail: { notes: ["Your clan needs the Tenno Lab built and the Nikana researched."] } },
+      { beat: "buy", verb: "Buy", what: "Dragon Nikana Blueprint", where: "Market", cost: "30,000 cr", trip: "Market" },
+      { beat: "farm", verb: "Farm", what: "Argon Crystal", qty: 4, where: "Hepit, Void", sub: "Capture", rate: "1-4 per run", trip: "Hepit, Void", hot: "decays daily: farm it last",
+        detail: { notes: ["Max-range Xaku or Limbo pulls more from the Argon Pegmatite deposits.", "Unused crystals decay each day, so farm right before you build."],
+          other: ["Any Void mission, containers", "Void Survival: more time, more deposits"] } },
+      { beat: "farm", common: true, what: "Oxium", qty: 150, where: "Io, Jupiter", sub: "Defense", rate: "~80 per 10 waves", trip: "Io, Jupiter",
+        detail: { other: ["Corpus Ospreys anywhere"] } },
+      { beat: "farm", common: true, what: "Alloy Plate", qty: 500, where: "Gabii, Ceres", sub: "Dark Sector Survival", rate: "~1,000 per 10-15 min", trip: "Gabii, Ceres" },
+      { beat: "farm", common: true, what: "Orokin Cell", qty: 1, where: "Gabii, Ceres", sub: "Dark Sector Survival", trip: "Gabii, Ceres" },
+      { beat: "farm", common: true, what: "Morphics", qty: 1, where: "Wahiba, Mars", sub: "Dark Sector Survival", trip: "Wahiba, Mars" },
+      { beat: "farm", common: true, what: "Neural Sensors", qty: 1, where: "Themisto, Jupiter", sub: "Alad V", trip: "Themisto, Jupiter" },
+      { beat: "farm", common: true, what: "Neurodes", qty: 1, where: "Lua", sub: "Conjunction Survival", trip: "Lua" },
+      { beat: "farm", common: true, what: "Forma", qty: 1, where: "Any Void Fissure", sub: "relic reward", trip: "Void Fissure" },
+      { beat: "farm", common: true, what: "Credits", qty: 55000, where: "The Index, Neptune", sub: "High Risk", rate: "250,000 per win", trip: "The Index" },
+      { beat: "build", verb: "Build", what: "Nikana", time: "12h", done: true },
+      { beat: "build", verb: "Level", what: "Nikana to 30", hot: "before you build Dragon Nikana",
+        detail: { notes: ["The craft eats the Nikana. Unranked, its Mastery is lost until you build another."] } },
+      { beat: "build", verb: "Build", what: "Dragon Nikana", time: "12h" },
+    ],
+  },
+  gauss: {
+    name: "Gauss", tier: "B", art: "Gauss",
+    head: ["30,000 cr blueprint", "not tradeable"],
+    warn: [],
+    steps: [
+      { beat: "buy", verb: "Buy", what: "Gauss Blueprint", where: "Market", cost: "30,000 cr", trip: "Market" },
+      { beat: "farm", verb: "Run", what: "Neuroptics, Chassis, Systems", where: "Kappa, Sedna", sub: "Disruption", rate: "7.84% each, Rotation C", trip: "Kappa, Sedna", hot: "the long pole",
+        detail: { notes: ["Rotation C is round 4+ of a Disruption run. Leave after a C reward or keep going.", "Squads defend conduits faster than solo."], other: ["Any Disruption node rolls the same table"] } },
+      { beat: "farm", verb: "Buy + mine", what: "Radian Sentirum", qty: 3, where: "Cetus, Earth", sub: "Old Man Suumbaat", trip: "Cetus / Plains" },
+      { beat: "farm", verb: "Buy + mine", what: "Heart Nyth", qty: 3, where: "Cetus, Earth", sub: "Old Man Suumbaat", trip: "Cetus / Plains" },
+      { beat: "farm", verb: "Buy + mine", what: "Star Crimzian", qty: 6, where: "Cetus, Earth", sub: "Old Man Suumbaat", trip: "Cetus / Plains" },
+      { beat: "farm", verb: "Break drums", what: "Grokdrul", qty: 55, where: "Plains of Eidolon", sub: "Grineer camps", rate: "up to 5 per drum", trip: "Cetus / Plains" },
+      { beat: "farm", verb: "Buy + mine", what: "Radiant Zodian", qty: 3, where: "Fortuna, Venus", sub: "Smokefinger", trip: "Fortuna / Vallis" },
+      { beat: "farm", verb: "Buy + mine", what: "Marquise Thyst", qty: 3, where: "Fortuna, Venus", sub: "Smokefinger", trip: "Fortuna / Vallis" },
+      { beat: "farm", verb: "Shoot sacs", what: "Mytocardia Spore", qty: 70, where: "Orb Vallis", sub: "mushroom forest", rate: "1-3 per sac", trip: "Fortuna / Vallis" },
+      { beat: "farm", verb: "Loot", what: "Thermal Sludge", qty: 85, where: "Orb Vallis", sub: "Corpus camps", trip: "Fortuna / Vallis" },
+      { beat: "farm", common: true, what: "Argon Crystal", qty: 1, where: "Hepit, Void", sub: "Capture", trip: "Hepit, Void" },
+      { beat: "farm", common: true, what: "Rubedo", qty: 1600, where: "Zeugma, Phobos", sub: "Dark Sector Survival", trip: "Zeugma, Phobos" },
+      { beat: "farm", common: true, what: "Salvage", qty: 6200, where: "Carme, Jupiter", sub: "Mobile Defense", trip: "Carme, Jupiter" },
+      { beat: "farm", common: true, what: "Alloy Plate", qty: 2950, where: "Gabii, Ceres", sub: "Dark Sector Survival", trip: "Gabii, Ceres" },
+      { beat: "farm", common: true, what: "Orokin Cell", qty: 3, where: "Gabii, Ceres", sub: "Dark Sector Survival", trip: "Gabii, Ceres" },
+      { beat: "farm", common: true, what: "Credits", qty: 100000, where: "The Index, Neptune", sub: "High Risk", trip: "The Index" },
+      { beat: "build", verb: "Build", what: "Neuroptics, Chassis, Systems", time: "12h each" },
+      { beat: "build", verb: "Build", what: "Gauss", time: "3 days" },
+    ],
+  },
+};
+const fmt = (n) => n.toLocaleString("en-US");
+const verbOf = (s) => s.verb ?? "Farm";
+let option = "A", itemKey = "nikana", open = null;
+
+const OPTIONS = {
+  A: { name: "A: Buy, farm, build",
+    pitch: "Three fixed beats, one line per real job. Basics you stock anyway fold into one line. Click any line for where, rates, other spots and links." },
+  B: { name: "B: Do this now",
+    pitch: "One big card says the next thing to do. Everything after it is a one-liner. Click any line for depth." },
+  C: { name: "C: Trips",
+    pitch: "Tiles grouped by where you go, so one trip picks up everything there. The build chain sits underneath as a strip." },
+};
+
+function head(item) {
+  return `<div class="head"><div class="art">${item.art}</div><div>
+    <h1>${item.name}<span class="tier">${item.tier}</span>
+      <span class="links"><a href="${WIKI(item.name)}" target="_blank">Wiki</a></span></h1>
+    <div class="sub">${item.head.join(" · ")}
+      ${item.warn.map((w) => `<span class="chip warn">${w}</span>`).join("")}</div></div></div>`;
+}
+
+function label(s) {
+  const qty = s.qty ? `<span class="qty">${fmt(s.qty)}</span> ` : "";
+  return `${qty}${s.what}`;
+}
+
+function drawer(s) {
+  const d = s.detail ?? {};
+  const facts = [s.sub, s.rate, s.cost, s.time].filter(Boolean);
+  return `<div class="drawer">
+    ${s.where ? `<div><b>${s.where}</b> ${facts.map((f) => `<span class="chip">${f}</span>`).join("")}</div>` : ""}
+    ${d.notes ? `<h4>Notes</h4><ul>${d.notes.map((n) => `<li>${n}</li>`).join("")}</ul>` : ""}
+    ${d.other ? `<h4>Other spots</h4><ul>${d.other.map((n) => `<li>${n}</li>`).join("")}</ul>` : ""}
+    <div style="margin-top:6px"><a href="${WIKI(s.what.split(",")[0].replace(/ to \d+$/, ""))}" target="_blank">Wiki</a>
+      <a href="${WFM(s.what)}" target="_blank">warframe.market</a></div></div>`;
+}
+
+function toggle(id) { open = open === id ? null : id; render(); }
+
+function renderA(item) {
+  const beats = [["buy", "Buy blueprints"], ["farm", "Farm"], ["build", "Build"]];
+  return beats.map(([beat, title], i) => {
+    const steps = item.steps.map((s, idx) => ({ ...s, idx })).filter((s) => s.beat === beat);
+    const real = steps.filter((s) => !s.common);
+    const basics = steps.filter((s) => s.common);
+    const line = (s) => `<div class="line clickable" onclick="toggle(${s.idx})">
+        <span class="box ${s.done ? "on" : ""}"></span>
+        <span class="${s.done ? "done" : ""}">${s.verb && beat !== "farm" ? s.verb + " " : ""}${label(s)}
+          ${s.hot ? `<span class="chip warn">${s.hot}</span>` : ""}</span>
+        <span class="where">${s.where ?? s.time ?? ""}${s.cost ? " · " + s.cost : ""}</span></div>
+        ${open === s.idx ? drawer(s) : ""}`;
+    const basicsLine = basics.length === 0 ? "" : `<div class="line clickable" onclick="toggle('basics')">
+        <span class="box"></span>
+        <span>Basics ${basics.map((s) => `<span class="chip">${fmt(s.qty)} ${s.what}</span>`).join("")}</span>
+        <span class="where">${basics.length} common</span></div>
+        ${open === "basics" ? `<div class="drawer">${basics.map((s) => `<div>${label(s)} <span class="muted">· ${s.where}, ${s.sub}</span></div>`).join("")}</div>` : ""}`;
+    return `<div class="beat"><h2><span class="n">${i + 1}</span>${title}</h2>${real.map(line).join("")}${basicsLine}</div>`;
+  }).join("");
+}
+
+function renderB(item) {
+  const steps = item.steps.map((s, idx) => ({ ...s, idx }));
+  const real = steps.filter((s) => !s.common);
+  const basics = steps.filter((s) => s.common);
+  const now = real.find((s) => !s.done);
+  const rest = real.filter((s) => s !== now && !s.done);
+  const card = `<div class="now"><div class="kicker">Do this now</div>
+    <div class="verb">${verbOf(now)} ${label(now)}</div>
+    <div class="where">${now.where ?? now.time ?? ""} ${now.sub ? `<span class="muted">· ${now.sub}</span>` : ""}</div>
+    <div>${[now.rate, now.cost].filter(Boolean).map((f) => `<span class="chip">${f}</span>`).join("")}
+      ${now.hot ? `<span class="chip warn">${now.hot}</span>` : ""}</div>
+    <div class="actions"><button class="btn">Done</button><button class="btn ghost" onclick="toggle(${now.idx})">Details</button></div>
+    ${open === now.idx ? drawer(now) : ""}</div>`;
+  const later = rest.map((s, i) => `<div class="later clickable" onclick="toggle(${s.idx})">
+      <span class="num">${i + 2}</span>
+      <span>${verbOf(s)} ${label(s)} ${s.hot ? `<span class="chip warn">${s.hot}</span>` : ""}</span>
+      <span class="muted">${s.where ?? s.time ?? ""}</span></div>${open === s.idx ? drawer(s) : ""}`).join("");
+  const basicsLine = basics.length === 0 ? "" : `<div class="later clickable" onclick="toggle('basics')">
+      <span class="num">${rest.length + 2}</span>
+      <span>Top up basics ${basics.map((s) => `<span class="chip">${fmt(s.qty)} ${s.what}</span>`).join("")}</span>
+      <span class="muted">${basics.length} common</span></div>
+      ${open === "basics" ? `<div class="drawer">${basics.map((s) => `<div>${label(s)} <span class="muted">· ${s.where}, ${s.sub}</span></div>`).join("")}</div>` : ""}`;
+  const doneCount = real.filter((s) => s.done).length;
+  return card + `<div class="muted" style="margin-bottom:4px">Then${doneCount ? ` <span class="faint">(${doneCount} done)</span>` : ""}</div>` + later + basicsLine;
+}
+
+function renderC(item) {
+  const steps = item.steps.map((s, idx) => ({ ...s, idx }));
+  const gather = steps.filter((s) => s.beat !== "build");
+  const trips = new Map();
+  for (const s of gather) {
+    const key = s.common ? "Basics" : s.trip;
+    if (!trips.has(key)) trips.set(key, []);
+    trips.get(key).push(s);
+  }
+  const ordered = [...trips.entries()].sort(([a], [b]) => (a === "Basics") - (b === "Basics"));
+  const tile = (s) => `<div class="tile ${open === s.idx ? "sel" : ""}" onclick="toggle(${s.idx})">
+      <div class="icon"></div>
+      <div class="name">${s.qty ? `<span class="qty">${fmt(s.qty)}</span> ` : ""}${s.what}</div>
+      <div class="muted" style="font-size:0.88em;line-height:1.3">${s.common ? s.where : (s.verb && s.verb !== "Farm" ? s.verb + ", " : "") + (s.sub ?? s.cost ?? "")}</div>
+      ${s.hot ? `<span class="chip warn">${s.hot}</span>` : ""}</div>`;
+  const tripHtml = ordered.map(([name, list]) => {
+    const sel = list.find((s) => s.idx === open);
+    return `<div class="trip"><div class="trip-head"><b>${name}</b>
+      <span class="muted">${name === "Basics" ? "you likely stock these" : list.length === 1 ? "" : list.length + " things here"}</span></div>
+      <div class="tiles">${list.map(tile).join("")}</div>${sel ? drawer(sel) : ""}</div>`;
+  }).join("");
+  const builds = steps.filter((s) => s.beat === "build");
+  const strip = `<div class="trip"><div class="trip-head"><b>Foundry</b></div><div class="timeline">${builds.map((s) =>
+    `<span class="node clickable ${s.done ? "done" : ""}" onclick="toggle(${s.idx})">${s.verb} ${s.what}${s.time ? ` <span class="muted">${s.time}</span>` : ""}</span>`).join('<span class="arrow">→</span>')}</div>
+    ${builds.find((s) => s.idx === open) ? drawer(builds.find((s) => s.idx === open)) : ""}</div>`;
+  return tripHtml + strip;
+}
+
+const NOTES = `What the current page does that these drop: a numbered step for every material, two disclosure links ("Other spots", "notes") under every step,
+a Parts list that repeats the steps, and a location-first heading with the item pushed to the right edge. All of that depth is still one click away in each option.`;
+
+function render() {
+  document.getElementById("options").innerHTML = `<span class="label">Option</span>` + Object.entries(OPTIONS).map(([k, o]) =>
+    `<button class="tab" aria-pressed="${k === option}" onclick="option='${k}';open=null;render()">${o.name}</button>`).join("");
+  document.getElementById("items").innerHTML = `<span class="label">Item</span>` + Object.entries(ITEMS).map(([k, it]) =>
+    `<button class="tab" aria-pressed="${k === itemKey}" onclick="itemKey='${k}';open=null;render()">${it.name}</button>`).join("");
+  document.getElementById("pitch").textContent = OPTIONS[option].pitch;
+  const item = ITEMS[itemKey];
+  document.getElementById("view").innerHTML = head(item) + { A: renderA, B: renderB, C: renderC }[option](item);
+  document.getElementById("notes").textContent = NOTES;
+}
+render();
+</script>
+</body>
+</html>

@@ -1222,6 +1222,68 @@ describe("dailiesProvider ranking against progress", () => {
   });
 });
 
+describe("dailiesProvider shared vault allowance", () => {
+  const weeklyKey = `weekly:${nextWeeklyResetUtc(new Date(NOW)).toISOString()}`;
+
+  function withProgress(progress: Record<string, number>): SuggestionContext {
+    const entries = Object.fromEntries(
+      Object.entries(progress).map(([id, count]) => [id, { key: weeklyKey, count }]),
+    );
+    return context({ tracker: tracker({ progress: entries }) });
+  }
+
+  function vaultInventory(spent: number): RawInventoryData {
+    return {
+      EntratiVaultCountLastPeriod: spent,
+      EntratiVaultCountResetDate: { $date: { $numberLong: String(NOW + 24 * 60 * 60_000) } },
+    } as unknown as RawInventoryData;
+  }
+
+  it("retires an Archimedea mode once it is done for the week", () => {
+    const collected = ids(withProgress({ temporalArchimedea: 1, netracells: 2 }));
+    expect(collected).not.toContain("dailies:temporalArchimedea");
+    expect(collected).toContain("dailies:deepArchimedea");
+    expect(collected).toContain("dailies:netracells");
+  });
+
+  it("retires both Archimedea modes when fewer than two charges remain", () => {
+    const collected = ids(withProgress({ netracells: 4 }));
+    expect(collected).not.toContain("dailies:deepArchimedea");
+    expect(collected).not.toContain("dailies:temporalArchimedea");
+    expect(collected).toContain("dailies:netracells");
+  });
+
+  it("offers both Archimedea modes while two charges remain", () => {
+    const collected = ids(withProgress({ netracells: 3 }));
+    expect(collected).toContain("dailies:deepArchimedea");
+    expect(collected).toContain("dailies:temporalArchimedea");
+  });
+
+  it("retires an Archimedea mode the inventory sync leaves short of charges", () => {
+    const collected = ids(context({ inventory: vaultInventory(4) }));
+    expect(collected).not.toContain("dailies:deepArchimedea");
+    expect(collected).toContain("dailies:netracells");
+  });
+
+  it("offers Netracells until no charge is left", () => {
+    const four = draft(withProgress({ netracells: 4 }), "dailies:netracells");
+    expect(four?.progress).toEqual({ current: 4, required: 5 });
+    expect(ids(withProgress({ netracells: 5 }))).not.toContain("dailies:netracells");
+  });
+
+  it("ticks an Archimedea mode off on its own row, carrying the synced charges", () => {
+    const deep = draft(context({ inventory: vaultInventory(1) }), "dailies:deepArchimedea");
+    expect(deep?.progress).toBeUndefined();
+    expect(deep?.complete).toEqual({
+      taskId: "deepArchimedea",
+      periodKey: weeklyKey,
+      count: 0,
+      target: 1,
+      autoUsed: 1,
+    });
+  });
+});
+
 describe("dailiesProvider under a server-wide affinity boost", () => {
   const HOUR = 60 * 60_000;
 

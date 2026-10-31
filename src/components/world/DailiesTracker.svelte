@@ -41,8 +41,9 @@
     trackerList,
     trackerPeriodKey,
     vaultRunsUsed,
+    ARCHIMEDEA_RUN_COST,
+    ARCHIMEDEA_TASKS,
     VAULT_ALLOWANCE_TASK,
-    VAULT_RUN_SPENDERS,
     WEEKLY_VAULT_LIMIT,
     type TrackerGroup,
     type TrackerState,
@@ -119,6 +120,8 @@
     auto: boolean;
     /** Runs the inventory sync accounts for; manual clicks cannot go below. */
     autoCount: number;
+    /** An unticked Archimedea mode the shared allowance can no longer pay for. */
+    short: boolean;
     hidden: boolean;
     custom: boolean;
     /** Nightwave acts and alerts rotate away, so they are not customisable. */
@@ -135,6 +138,9 @@
     const autoTask = auto[base.id];
     const autoCount = autoTask?.count ?? 0;
     const count = Math.max(trackerCount(tracker, base.id, base.periodKey, nowMs), autoCount);
+    const vaultUsed = ARCHIMEDEA_TASKS.includes(base.id)
+      ? vaultRunsUsed(tracker, base.periodKey, nowMs, auto[VAULT_ALLOWANCE_TASK]?.count ?? 0)
+      : 0;
     return {
       kind: "task",
       count,
@@ -142,19 +148,11 @@
       done: count >= target,
       auto: autoCount >= target,
       autoCount,
-      // The two Archimedea rows count against the shared allowance, so what they
-      // show is the whole of it - runs the sync found and runs ticked off by hand.
-      progress: VAULT_RUN_SPENDERS.includes(base.id)
-        ? {
-            current: vaultRunsUsed(
-              tracker,
-              base.periodKey,
-              nowMs,
-              auto[VAULT_ALLOWANCE_TASK]?.count ?? 0,
-            ),
-            required: WEEKLY_VAULT_LIMIT,
-          }
-        : autoTask?.progress,
+      short:
+        ARCHIMEDEA_TASKS.includes(base.id) &&
+        count < target &&
+        WEEKLY_VAULT_LIMIT - vaultUsed < ARCHIMEDEA_RUN_COST,
+      progress: autoTask?.progress,
       hidden: tracker.hidden.includes(base.id),
       custom: false,
       dynamic: false,
@@ -357,7 +355,7 @@
   }
 
   function toggleDone(row: Row): void {
-    if (row.auto) return;
+    if (row.auto || row.short) return;
     commit(
       setTrackerCount(
         tracker,
@@ -468,12 +466,19 @@
               <!-- No period key means the tick would never be read back, so the row waits. -->
               {@const locked = row.periodKey === null && !row.custom}
               <div class="dailies-row" class:dailies-row--off={row.hidden}>
-                <label class="dailies-label" title={row.auto ? $tr("dailies.autoTracked") : null}>
+                <label
+                  class="dailies-label"
+                  title={row.auto
+                    ? $tr("dailies.autoTracked")
+                    : row.short
+                      ? $tr("dailies.vaultChargesShort", { cost: String(ARCHIMEDEA_RUN_COST) })
+                      : null}
+                >
                   <input
                     type="checkbox"
                     class:dailies-check--auto={row.auto}
                     checked={row.done}
-                    disabled={row.auto || locked}
+                    disabled={row.auto || locked || row.short}
                     data-task={row.id}
                     onchange={() => toggleDone(row)}
                   />

@@ -163,7 +163,13 @@ export function dismissSuggestion(id: string, fingerprint: string): void {
 /** Ticks a tracked task off from the feed, exactly as the World tab would. */
 export function completeTask(completion: TrackerCompletion, count: number): void {
   setTrackerState(
-    setTrackerCount(get(trackerState), completion.taskId, completion.periodKey, count),
+    setTrackerCount(
+      get(trackerState),
+      completion.taskId,
+      completion.periodKey,
+      count,
+      completion.autoUsed,
+    ),
   );
 }
 

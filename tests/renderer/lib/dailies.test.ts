@@ -2,7 +2,9 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { en } from "../../../src/i18n/en.js";
 import {
+  ARCHIMEDEA_RUN_COST,
   BUILTIN_TASKS,
+  WEEKLY_VAULT_LIMIT,
   addCustomTask,
   expiryPeriodKey,
   loadTracker,
@@ -17,6 +19,7 @@ import {
   trackerGroup,
   trackerList,
   trackerPeriodKey,
+  vaultRunsUsed,
   type TrackerExpiries,
   type TrackerState,
 } from "../../../src/lib/world/dailies.js";
@@ -142,6 +145,60 @@ describe("trackerCount", () => {
     const state = setTrackerCount(emptyState(), "spIncursions", "daily:x", -4);
 
     expect(trackerCount(state, "spIncursions", "daily:x", NOW)).toBe(0);
+  });
+});
+
+describe("shared vault allowance", () => {
+  const WEEK = "weekly:x";
+
+  function used(state: TrackerState, autoUsed = 0): number {
+    return vaultRunsUsed(state, WEEK, NOW, autoUsed);
+  }
+
+  it("spends two charges when an Archimedea mode is ticked and refunds them on untick", () => {
+    let state = setTrackerCount(emptyState(), "netracells", WEEK, 1);
+    state = setTrackerCount(state, "deepArchimedea", WEEK, 1);
+
+    expect(trackerCount(state, "deepArchimedea", WEEK, NOW)).toBe(1);
+    expect(used(state)).toBe(1 + ARCHIMEDEA_RUN_COST);
+
+    state = setTrackerCount(state, "deepArchimedea", WEEK, 0);
+    expect(trackerCount(state, "deepArchimedea", WEEK, NOW)).toBe(0);
+    expect(used(state)).toBe(1);
+  });
+
+  it("charges each mode once however many times it is ticked", () => {
+    let state = setTrackerCount(emptyState(), "temporalArchimedea", WEEK, 1);
+    state = setTrackerCount(state, "temporalArchimedea", WEEK, 1);
+    state = setTrackerCount(state, "temporalArchimedea", WEEK, 3);
+
+    expect(trackerCount(state, "temporalArchimedea", WEEK, NOW)).toBe(1);
+    expect(used(state)).toBe(ARCHIMEDEA_RUN_COST);
+  });
+
+  it("clamps the allowance to its limit and to zero", () => {
+    let state = setTrackerCount(emptyState(), "netracells", WEEK, 4);
+    state = setTrackerCount(state, "deepArchimedea", WEEK, 1);
+    expect(used(state)).toBe(WEEKLY_VAULT_LIMIT);
+
+    let refunded = setTrackerCount(emptyState(), "deepArchimedea", WEEK, 1);
+    refunded = setTrackerCount(refunded, "netracells", WEEK, 0);
+    refunded = setTrackerCount(refunded, "deepArchimedea", WEEK, 0);
+    expect(used(refunded)).toBe(0);
+  });
+
+  it("steps from the inventory-synced count where it is further along", () => {
+    const state = setTrackerCount(emptyState(), "deepArchimedea", WEEK, 1, 2);
+
+    expect(used(state, 2)).toBe(2 + ARCHIMEDEA_RUN_COST);
+    expect(trackerCount(state, "netracells", WEEK, NOW)).toBe(2 + ARCHIMEDEA_RUN_COST);
+  });
+
+  it("never reads below what the inventory sync reports", () => {
+    const state = setTrackerCount(emptyState(), "netracells", WEEK, 1);
+
+    expect(used(state, 3)).toBe(3);
+    expect(used(state, 9)).toBe(WEEKLY_VAULT_LIMIT);
   });
 });
 

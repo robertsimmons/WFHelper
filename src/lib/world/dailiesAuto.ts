@@ -1,7 +1,7 @@
 import { toFiniteNumber } from "../../../config/shared/numeric.js";
 import { DAY_MS, nextDailyResetUtc, nextWeeklyResetUtc, WEEK_MS } from "../format.js";
 import type { MessageKey } from "../i18n.js";
-import { VAULT_ALLOWANCE_TASK, VAULT_RUN_SPENDERS, WEEKLY_VAULT_LIMIT } from "./dailies.js";
+import { VAULT_ALLOWANCE_TASK } from "./dailies.js";
 import type { RawInventoryData } from "../../types/inventory.js";
 import type { WorldState } from "../../types/world.js";
 
@@ -105,10 +105,6 @@ function conquestScore(inv: RawInventoryData, field: string, nowMs: number): Aut
     count: 0,
     detail: { key: "dailies.conquestScore", params: { score: String(score) } },
   };
-}
-
-function vaultProgress(spent: number): { current: number; required: number } {
-  return { current: Math.min(spent, WEEKLY_VAULT_LIMIT), required: WEEKLY_VAULT_LIMIT };
 }
 
 /** Remaining-pool fields (DailyAffiliation*, DailyFocus): 0 means capped. */
@@ -221,13 +217,6 @@ export function autoTrackerState(
   if (deep) out.deepArchimedea = deep;
   const temporal = conquestScore(inv, "EchoesHexConquestCacheScoreMission", nowMs);
   if (temporal) out.temporalArchimedea = temporal;
-  // Both Archimedea modes are paid out of the same allowance, so their rows show
-  // what is left of it rather than a target of their own.
-  if (spent !== null) {
-    for (const id of VAULT_RUN_SPENDERS) {
-      out[id] = { ...out[id], count: out[id]?.count ?? 0, progress: vaultProgress(spent) };
-    }
-  }
 
   const now = new Date(nowMs);
   const weekStartMs = nextWeeklyResetUtc(now).getTime() - WEEK_MS;

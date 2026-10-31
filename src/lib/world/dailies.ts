@@ -46,13 +46,14 @@ interface BuiltinTrackerDef extends TrackerDef {
   labelKey: MessageKey;
 }
 
-/** Netracells and both Archimedea modes share one weekly allowance of five reward
- *  runs (the game's single 0/5 counter). It is counted under the Netracell row, whose
- *  stepper spends it directly; each Archimedea row spends one run on completion. */
+/** Netracells and both Archimedea modes share one weekly allowance of five charges
+ *  (the game's single 0/5 counter), counted under the Netracell row. A Netracell
+ *  costs one; each Archimedea mode pays out once a week and costs two, so its own
+ *  row is a weekly checkbox whose tick spends from the allowance. */
 export const WEEKLY_VAULT_LIMIT = 5;
 export const VAULT_ALLOWANCE_TASK = "netracells";
-export const VAULT_RUN_SPENDERS: readonly string[] = ["deepArchimedea", "temporalArchimedea"];
-export const VAULT_RUN_TASKS: readonly string[] = [VAULT_ALLOWANCE_TASK, ...VAULT_RUN_SPENDERS];
+export const ARCHIMEDEA_TASKS: readonly string[] = ["deepArchimedea", "temporalArchimedea"];
+export const ARCHIMEDEA_RUN_COST = 2;
 
 const STORAGE_KEY = "world-dailies";
 const MAX_CUSTOM_TASKS = 30;
@@ -451,8 +452,8 @@ function entryCount(state: TrackerState, id: string, key: string): number {
 }
 
 /** `autoUsed` is what the inventory sync already read off the shared allowance;
- *  a spender steps from that where it is further along, or a run the game has
- *  already reported would swallow the one being ticked off. */
+ *  an Archimedea tick steps from that where it is further along, or a run the
+ *  game has already reported would swallow the one being ticked off. */
 export function setTrackerCount(
   state: TrackerState,
   id: string,
@@ -461,11 +462,13 @@ export function setTrackerCount(
   autoUsed = 0,
 ): TrackerState {
   const key = periodKey ?? state.progress[id]?.key ?? "";
-  const clamped = Math.max(0, Math.min(Math.trunc(count), MAX_TARGET));
+  const archimedea = ARCHIMEDEA_TASKS.includes(id);
+  const clamped = Math.max(0, Math.min(Math.trunc(count), archimedea ? 1 : MAX_TARGET));
   const progress = { ...state.progress, [id]: { key, count: clamped } };
-  if (VAULT_RUN_SPENDERS.includes(id)) {
+  if (archimedea) {
     const used = Math.max(entryCount(state, VAULT_ALLOWANCE_TASK, key), autoUsed);
-    const spent = used + clamped - entryCount(state, id, key);
+    const before = Math.min(entryCount(state, id, key), 1);
+    const spent = used + (clamped - before) * ARCHIMEDEA_RUN_COST;
     progress[VAULT_ALLOWANCE_TASK] = {
       key,
       count: Math.max(0, Math.min(spent, WEEKLY_VAULT_LIMIT)),

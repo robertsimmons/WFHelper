@@ -9,9 +9,9 @@ import {
   trackerList,
   trackerPeriodKey,
   vaultRunsUsed,
+  ARCHIMEDEA_RUN_COST,
+  ARCHIMEDEA_TASKS,
   VAULT_ALLOWANCE_TASK,
-  VAULT_RUN_SPENDERS,
-  VAULT_RUN_TASKS,
   WEEKLY_VAULT_LIMIT,
   type TrackerGroup,
 } from "../../world/dailies.js";
@@ -472,11 +472,11 @@ function dailyDrafts(ctx: SuggestionContext): SuggestionDraft[] {
   const expiries = trackerExpiries(world);
   const boost = affinityBoost(world, nowMs);
   const drafts: SuggestionDraft[] = [];
-  // Netracells and both Archimedea modes pay out of one weekly allowance of
-  // five runs, so what is left of it is what any of them is still worth doing,
-  // and all three cards draw that one count rather than a budget each.
+  // Netracells and both Archimedea modes pay out of one weekly allowance of five
+  // charges, so a mode the charges left cannot cover is not on offer.
   const vaultKey = trackerPeriodKey("weekly", now, expiries);
-  const vaultUsed = vaultRunsUsed(tracker, vaultKey, nowMs, auto[VAULT_ALLOWANCE_TASK]?.count ?? 0);
+  const vaultAuto = auto[VAULT_ALLOWANCE_TASK]?.count ?? 0;
+  const vaultUsed = vaultRunsUsed(tracker, vaultKey, nowMs, vaultAuto);
   const vaultLeft = WEEKLY_VAULT_LIMIT - vaultUsed;
 
   for (const task of trackerList(tracker)) {
@@ -492,15 +492,12 @@ function dailyDrafts(ctx: SuggestionContext): SuggestionDraft[] {
       trackerCount(tracker, task.id, periodKey, nowMs),
       auto[task.id]?.count ?? 0,
     );
-    // The two Archimedea rows are limited by the shared allowance rather than by
-    // a count of their own, so a run of one leaves the rest of the week offered.
-    const vaultTask = VAULT_RUN_TASKS.includes(task.id);
-    const remaining = VAULT_RUN_SPENDERS.includes(task.id)
-      ? Math.min(task.target, vaultLeft)
-      : task.target - done;
+    const allowance = task.id === VAULT_ALLOWANCE_TASK;
+    const archimedea = ARCHIMEDEA_TASKS.includes(task.id);
+    const remaining = task.target - done;
     if (remaining <= 0) continue;
-    // A spent allowance retires all three, whatever each row's own count reads.
-    if (vaultLeft <= 0 && vaultTask) continue;
+    if (allowance && vaultLeft <= 0) continue;
+    if (archimedea && vaultLeft < ARCHIMEDEA_RUN_COST) continue;
 
     const live = task.label ? {} : trackerLive(task.id, world, t, nowMs);
     const expiry = live.expiry ?? periodResetIso(task.period, now);
@@ -581,24 +578,25 @@ function dailyDrafts(ctx: SuggestionContext): SuggestionDraft[] {
       // once a better one comes round rather than riding out the whole season.
       fingerprint: reward ? `${period}|${reward.name}` : period,
       deprioritized: activity === "low",
-      progress: vaultTask
+      progress: allowance
         ? { current: vaultUsed, required: WEEKLY_VAULT_LIMIT }
         : task.target > 1
           ? { current: done, required: task.target }
           : undefined,
-      // All three vault cards tick and step the shared count itself, in its own
-      // units: a run of a spender spends one of the five, not a week of them.
-      complete: vaultTask
+      complete: allowance
         ? {
             taskId: VAULT_ALLOWANCE_TASK,
             periodKey: vaultKey,
             count: vaultUsed,
-            target:
-              task.id === VAULT_ALLOWANCE_TASK
-                ? WEEKLY_VAULT_LIMIT
-                : Math.min(vaultUsed + 1, WEEKLY_VAULT_LIMIT),
+            target: WEEKLY_VAULT_LIMIT,
           }
-        : { taskId: task.id, periodKey, count: done, target: task.target },
+        : {
+            taskId: task.id,
+            periodKey,
+            count: done,
+            target: task.target,
+            autoUsed: archimedea ? vaultAuto : undefined,
+          },
       wiki: task.wiki,
       details: detailsFor(prefs, missionNames, pool, expiry, options),
     });

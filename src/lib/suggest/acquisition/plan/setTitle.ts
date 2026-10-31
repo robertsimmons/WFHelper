@@ -13,7 +13,7 @@ interface SetGroup {
 }
 
 /** What a collapsed set's line reads, before translation. */
-export type SetTitle =
+type SetTitle =
   | { kind: "titled"; title: string; vendor: string | null }
   | { kind: "buyBlueprints" | "buy"; vendor: string }
   | { kind: "buildParts" }
@@ -26,7 +26,7 @@ export function isPartSet(group: { type: string; rows: readonly unknown[] }): bo
 }
 
 /** "HOK, CETUS" sells as Hok: the vendor is the place before its first comma. */
-export const setVendor = (place: string): string => place.split(",")[0].trim();
+const setVendor = (place: string): string => place.split(",")[0].trim();
 
 export function setTitle(group: SetGroup, itemName: string): SetTitle {
   const vendor = group.type === "vendor" ? setVendor(group.place) : null;

@@ -385,7 +385,7 @@ function partState(
 }
 
 /** Copies of a part still to get: those wanted, less those built and held. */
-export function partShort(part: PartState): number {
+function partShort(part: PartState): number {
   return Math.max(0, part.missing - part.held);
 }
 
@@ -621,7 +621,7 @@ function treeItems(node: CraftingTreeNode, out: Set<string>): Set<string> {
   return out;
 }
 
-export interface BuildTotals {
+interface BuildTotals {
   credits: number;
   minTime: number;
   maxTime: number;

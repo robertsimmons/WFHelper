@@ -73,6 +73,11 @@
       "note": null
     },
     {
+      "qty": "1",
+      "label": "Nosam Cutter",
+      "note": "one cutter is reused for every vein"
+    },
+    {
       "qty": "1,000",
       "label": "Cryotic",
       "note": "Pyrotic Alloy refines"
@@ -81,11 +86,6 @@
       "qty": "2,400",
       "label": "Ferrite",
       "note": "Coprite Alloy refines"
-    },
-    {
-      "qty": "1",
-      "label": "Nosam Cutter",
-      "note": null
     },
     {
       "qty": "65",
@@ -159,7 +159,7 @@
       "type": "bounty",
       "place": "PLAINS OF EIDOLON, EARTH",
       "sub": "Konzu",
-      "activity": "bounty chains, finish to the final stage",
+      "activity": "Level 5-40 bounties",
       "meta": "any rotation can drop every part",
       "mode": null,
       "live": null,
@@ -191,84 +191,9 @@
         }
       ],
       "conditions": [
+        "Run each bounty chain to the final stage.",
         "Bounty rewards only bank when you exit through the Cetus gate or complete the bounty; aborting loses them."
       ],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "vendor",
-      "place": "OLD MAN SUUMBAAT, CETUS",
-      "sub": null,
-      "activity": "buy the reusable refinement blueprints",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [
-        {
-          "currency": "Ostron Standing",
-          "amount": "5,500"
-        }
-      ],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Pyrotic Alloy blueprint",
-          "note": null,
-          "alt": null,
-          "done": false,
-          "buy": {
-            "price": [
-              {
-                "currency": "Ostron Standing",
-                "amount": "500"
-              }
-            ]
-          }
-        },
-        {
-          "qty": null,
-          "label": "Coprite Alloy blueprint",
-          "note": null,
-          "alt": null,
-          "done": false,
-          "buy": {
-            "price": [
-              {
-                "currency": "Ostron Standing",
-                "amount": "2,500"
-              }
-            ],
-            "rank": {
-              "syndicate": "Ostron",
-              "level": 1
-            }
-          }
-        },
-        {
-          "qty": null,
-          "label": "Esher Devar cutting blueprint",
-          "note": null,
-          "alt": null,
-          "done": false,
-          "buy": {
-            "price": [
-              {
-                "currency": "Ostron Standing",
-                "amount": "2,500"
-              }
-            ],
-            "rank": {
-              "syndicate": "Ostron",
-              "level": 1
-            }
-          }
-        }
-      ],
-      "conditions": [],
       "bonuses": [],
       "disclosures": []
     },
@@ -336,7 +261,7 @@
         "type": "currency",
         "place": "CEPHALON SIMARIS",
         "sub": null,
-        "activity": "scan targets with the Synthesis Scanner",
+        "activity": "Earn Simaris Standing",
         "meta": "~3 capped days",
         "mode": null,
         "live": null,
@@ -356,7 +281,7 @@
             "done": false
           }
         ],
-        "conditions": [],
+        "conditions": ["Scan targets with the Synthesis Scanner."],
         "bonuses": [],
         "disclosures": [],
         "ref": "Cephalon Simaris Standing"

@@ -106,6 +106,8 @@ export interface PartState {
   owned: number;
   /** Copies the foundry is still making, which no drop needs to replace. */
   building: number;
+  /** The part's own blueprints in hand: got, though not yet built. */
+  held: number;
   missing: number;
 }
 

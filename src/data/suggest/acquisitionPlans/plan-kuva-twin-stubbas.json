@@ -3,6 +3,7 @@
   "kind": "secondary",
   "effort": 9,
   "source": "unique",
+  "sequence": true,
   "tradeable": "converted Lich only",
   "progress": {
     "have": 0,
@@ -22,11 +23,49 @@
   "prices": [],
   "groups": [
     {
-      "type": "relics",
-      "place": "KUVA SIPHON OR KUVA FLOOD, ANY",
+      "type": "boss",
+      "place": "CASSINI, SATURN",
       "sub": null,
-      "activity": "collect Requiem Mods",
-      "meta": "3 mods per Lich",
+      "activity": "spawn a Lich with Kuva Twin Stubbas",
+      "meta": "spawn Kuva Larvlings, a fast Capture",
+      "mode": "solo",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Kuva Twin Stubbas Larvling",
+          "note": "the downed Larvling shows its weapon before you Mercy it",
+          "alt": null,
+          "done": false,
+          "task": true
+        },
+        {
+          "qty": null,
+          "label": "Progenitor Warframe",
+          "note": "the Warframe you Mercy with sets the bonus element",
+          "alt": null,
+          "done": false,
+          "task": true
+        }
+      ],
+      "conditions": [
+        "After the screen flashes yellow, kill 15 enemies within about 30 seconds to spawn the Larvling.",
+        "If it is not Kuva Twin Stubbas, ignore it and finish the mission: that weapon will not show again until every other Kuva weapon has been shown. Aborting does not remove it.",
+        "You cannot Mercy a Larvling while you have an active Lich, Sister or Coda."
+      ],
+      "bonuses": ["The whole squad gets 100 Kuva when a Larvling goes down, Mercied or not."],
+      "disclosures": []
+    },
+    {
+      "type": "relics",
+      "place": "KUVA SIPHON, ANY PLANET",
+      "sub": null,
+      "activity": "get Requiem mods: crack Requiem relics",
+      "meta": "collect Requiem Mods, 3 mods per Lich",
       "mode": null,
       "live": null,
       "skip": null,
@@ -39,7 +78,8 @@
           "label": "Requiem mods",
           "note": "every Lich needs a sequence of 3; each mod has 3 charges",
           "alt": "Palladino sells retired Requiem I-IV relics at 10 Riven Slivers each, 10 of each a week",
-          "done": false
+          "done": false,
+          "task": true
         },
         {
           "qty": null,
@@ -58,46 +98,10 @@
     },
     {
       "type": "boss",
-      "place": "CASSINI, SATURN",
-      "sub": null,
-      "activity": "spawn Kuva Larvlings until one previews Kuva Twin Stubbas",
-      "meta": "a fast Capture",
-      "mode": "solo",
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Kuva Twin Stubbas Larvling",
-          "note": "the downed Larvling shows its weapon before you Mercy it",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Progenitor Warframe",
-          "note": "the Warframe you Mercy with sets the bonus element",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "After the screen flashes yellow, kill 10 enemies within 1 minute (10 more per extra Tenno) to spawn the Larvling.",
-        "If it is not Kuva Twin Stubbas, ignore it and finish the mission: that weapon will not show again until every other Kuva weapon has been shown. Aborting does not remove it.",
-        "You cannot Mercy a Larvling while you have an active Lich, Sister or Coda."
-      ],
-      "bonuses": ["The whole squad gets 100 Kuva when a Larvling goes down, Mercied or not."],
-      "disclosures": []
-    },
-    {
-      "type": "boss",
       "place": "LICH INFLUENCE NODES",
       "sub": "Earth through Kuva Fortress",
-      "activity": "kill Thralls, learn the mods, test the sequence",
-      "meta": null,
+      "activity": "find the Requiem sequence",
+      "meta": "Mercy Thralls",
       "mode": null,
       "live": null,
       "skip": null,
@@ -110,14 +114,16 @@
           "label": "Requiem Murmurs",
           "note": "Mercy Thralls on your Lich's planets; they reveal the 3 mods, not the order",
           "alt": null,
-          "done": false
+          "done": false,
+          "task": true
         },
         {
           "qty": null,
           "label": "Correct sequence",
           "note": "test it on the Lich with the Parazon",
           "alt": null,
-          "done": false
+          "done": false,
+          "task": true
         }
       ],
       "conditions": [
@@ -135,8 +141,8 @@
       "type": "boss",
       "place": "SATURN PROXIMA",
       "sub": "Kuva Lich Confrontation",
-      "activity": "Railjack Skirmish, then Vanquish",
-      "meta": null,
+      "activity": "defeat the Lich",
+      "meta": "Railjack Skirmish",
       "mode": null,
       "live": null,
       "skip": null,
@@ -154,41 +160,16 @@
       ],
       "conditions": [
         "Pick Vanquish, not Convert: Convert gives no weapon.",
-        "The weapon ignores its Mastery requirement but needs a weapon slot."
+        "The weapon ignores its Mastery requirement but needs a weapon slot.",
+        "The Confrontation node needs one Railjack Intrinsic at rank 5."
       ],
       "bonuses": ["A vanquish has a 25% chance to drop a Requiem Ultimatum."],
-      "disclosures": []
-    },
-    {
-      "type": "craft",
-      "place": "ORBITER, MODDING",
-      "sub": null,
-      "activity": "optional Valence Fusion toward 60%",
-      "meta": "needs spare copies",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
+      "disclosures": [
         {
-          "qty": null,
-          "label": "60% bonus",
-          "note": "fuse two copies of Kuva Twin Stubbas",
-          "alt": "stop at your first usable roll",
-          "done": false
+          "title": "Valence Fusion toward 60%",
+          "body": "Fuse two copies of Kuva Twin Stubbas; stop at your first usable roll. Fusion multiplies the higher bonus by 1.1, rounded down, capped at 60%; 58% or more becomes 60%. Start from the copy you want to keep; the donor's Catalyst, Forma and Exilus adapter are lost. Fusion lets you pick which copy's element survives. Elemental Vice, from Eleanor of The Hex, swaps the element freely once the weapon is rank 40 (5 Forma)."
         }
-      ],
-      "conditions": [
-        "Fusion multiplies the higher bonus by 1.1, rounded down, capped at 60%; 58% or more becomes 60%.",
-        "Start from the copy you want to keep; the donor's Catalyst, Forma and Exilus adapter are lost."
-      ],
-      "bonuses": [
-        "Fusion lets you pick which copy's element survives.",
-        "Elemental Vice, from Eleanor of The Hex, swaps the element freely once the weapon is rank 40 (5 Forma)."
-      ],
-      "disclosures": []
+      ]
     }
   ]
 }

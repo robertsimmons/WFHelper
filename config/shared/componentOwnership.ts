@@ -10,6 +10,7 @@ const DEFAULT_OWNED_COUNT = 1;
  *  which the per-ItemType sum then adds up. */
 const STACKED_COLLECTIONS = [
   "MiscItems",
+  "Consumables",
   "Recipes",
   "FusionTreasures",
   "RawUpgrades",

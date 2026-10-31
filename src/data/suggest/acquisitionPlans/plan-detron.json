@@ -43,7 +43,7 @@
       "type": "farm",
       "place": "INVASIONS",
       "sub": null,
-      "activity": "side with the Grineer, finish 5 Invasion missions against the Corpus",
+      "activity": "Invasion missions",
       "meta": "earns the Death Mark; repeat after each Hunter fight",
       "mode": null,
       "live": null,
@@ -57,10 +57,12 @@
           "label": "Invasion missions",
           "note": "fighting the Corpus, siding with the Grineer",
           "alt": "skip if using Baro's beacons",
-          "done": false
+          "done": false,
+          "task": true
         }
       ],
       "conditions": [
+        "Side with the Grineer and finish 5 Invasion missions against the Corpus.",
         "Alad V's inbox message confirms the mark. It is spent only when the Hunter spawns and one of you kills the other."
       ],
       "bonuses": [],
@@ -70,7 +72,7 @@
       "type": "boss",
       "place": "ANY CORPUS MISSION",
       "sub": null,
-      "activity": "play the first 5 minutes of the mission, then kill the Zanuka Hunter",
+      "activity": "Zanuka Hunter",
       "meta": "or Void Fissures and Steel Path",
       "mode": null,
       "live": null,
@@ -138,6 +140,7 @@
         }
       ],
       "conditions": [
+        "Play the first 5 minutes of the mission, then kill the Zanuka Hunter.",
         "The Hunter has a 1.5% chance to spawn in the first 5 minutes, plus 0.5% per marked squad member. A failed roll doesn't spend the mark.",
         "Each kill drops one item: a part, the Blueprint or the Scimitar Avionics Blueprint (17.65%, useless here), so duplicates happen.",
         "A beacon is consumed on use, one per mission, and does nothing in Invasion missions.",

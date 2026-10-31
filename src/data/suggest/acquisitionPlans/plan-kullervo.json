@@ -4,6 +4,7 @@
   "effort": 7,
   "source": "duviri",
   "tradeable": false,
+  "shop": "acrithis",
   "progress": {
     "have": 0,
     "need": 4,
@@ -98,7 +99,7 @@
       "type": "boss",
       "place": "DUVIRI",
       "sub": "Kullervo's Hold",
-      "activity": "The Duviri Experience, Kullervo then the Orowyrm",
+      "activity": "The Duviri Experience",
       "meta": "8-10 runs, 13-17 min each",
       "mode": null,
       "live": {
@@ -122,6 +123,7 @@
         }
       ],
       "conditions": [
+        "Kill Kullervo, then the Orowyrm.",
         "Bane pays out only if the Kullervo boss and the Orowyrm both die in the same run; killing Kullervo and leaving gives nothing",
         "Kullervo's Hold does not exist during Joy or Envy, so two of the five 2-hour mood windows are dead time",
         "Steel Path pays 6-8 Bane a run instead of 4-6",
@@ -145,97 +147,11 @@
       ]
     },
     {
-      "type": "vendor",
-      "place": "DORMIZONE",
-      "sub": null,
-      "activity": "Acrithis",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [
-        {
-          "currency": "Kullervo's Bane",
-          "amount": "42"
-        }
-      ],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Kullervo Blueprint",
-          "note": null,
-          "alt": null,
-          "done": false,
-          "buy": {
-            "price": [
-              {
-                "currency": "Kullervo's Bane",
-                "amount": "15"
-              }
-            ]
-          }
-        },
-        {
-          "qty": null,
-          "label": "Neuroptics Blueprint",
-          "note": null,
-          "alt": null,
-          "done": false,
-          "buy": {
-            "price": [
-              {
-                "currency": "Kullervo's Bane",
-                "amount": "9"
-              }
-            ]
-          }
-        },
-        {
-          "qty": null,
-          "label": "Chassis Blueprint",
-          "note": null,
-          "alt": null,
-          "done": false,
-          "buy": {
-            "price": [
-              {
-                "currency": "Kullervo's Bane",
-                "amount": "9"
-              }
-            ]
-          }
-        },
-        {
-          "qty": null,
-          "label": "Systems Blueprint",
-          "note": null,
-          "alt": null,
-          "done": false,
-          "buy": {
-            "price": [
-              {
-                "currency": "Kullervo's Bane",
-                "amount": "9"
-              }
-            ]
-          }
-        }
-      ],
-      "conditions": [],
-      "bonuses": [
-        "She also wanders Duviri in her carriage and stands at The King's Palace after a Mood Spiral completes",
-        "She sells 100,000 credits for 15 Bane"
-      ],
-      "disclosures": []
-    },
-    {
       "type": "foundry",
       "place": "FOUNDRY",
       "sub": null,
-      "activity": "start all three now",
-      "meta": "12h each, 45,000 cr",
+      "activity": "build components, then Kullervo",
+      "meta": "12h each, then 3 days",
       "mode": null,
       "live": null,
       "skip": null,
@@ -246,46 +162,28 @@
         {
           "qty": null,
           "label": "Neuroptics",
-          "note": null,
+          "note": "15,000 cr, 50 Lamentus, 50 Tasoma Extract, 100 Saggen Pearl, 100 Connla Sprout",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Chassis",
-          "note": null,
+          "note": "15,000 cr, 125 Nacreous Pebble, 100 Kovnik, 75 Rune Marrow, 100 Ueymag",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Systems",
-          "note": null,
+          "note": "15,000 cr, 100 Aggristone, 100 Eevani, 360 Ariette Scale, 100 Ueymag",
           "alt": null,
           "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "foundry",
-      "place": "FOUNDRY",
-      "sub": null,
-      "activity": "then",
-      "meta": "72h, 30,000 cr",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
+        },
         {
           "qty": null,
           "label": "Kullervo",
-          "note": "eats the 10 Pathos Clamps",
+          "note": "30,000 cr, the three parts, 10 Pathos Clamp",
           "alt": null,
           "done": false
         }

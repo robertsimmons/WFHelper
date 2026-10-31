@@ -1,8 +1,10 @@
-import type { ItemDbEntry, RawInventoryData } from "../../../../types/inventory.js";
+import type { ItemDbEntry, MasteryData, RawInventoryData } from "../../../../types/inventory.js";
 import type { RelicDatabase } from "../../../../types/relics.js";
 import type { WorldState } from "../../../../types/world.js";
 import type { ResourceLookup } from "./resources.js";
+import type { ResolvedShop } from "../shops/picker.js";
 import type { ItemTip, TipsLookup } from "../tips/data.js";
+import type { NeedReason } from "../types.js";
 import type {
   PlanBadge,
   PlanDisclosure,
@@ -102,6 +104,10 @@ export interface ResolvedRow {
   manual: boolean;
   /** What the ledger still owes for this row while it is open; absent is nothing. */
   owes?: ResolvedOwed[] | undefined;
+  /** A common resource the store marks, which folds into the Basics line. */
+  common?: boolean | undefined;
+  /** Where else the resource store says the row's resource comes from. */
+  other?: string[] | undefined;
 }
 
 /** An amount still to pay, keyed by the ledger's name for the currency. */
@@ -137,6 +143,7 @@ export interface ResolvedGroup {
   place: string;
   sub: string | null;
   activity: string | null;
+  title?: string | null | undefined;
   meta: string | null;
   mode: string | null;
   live: ResolvedLive | null;
@@ -153,6 +160,8 @@ export interface ResolvedGroup {
   /** Community tips about this step, strongest first. */
   tips: ItemTip[];
   facts: ResolvedFact[];
+  /** The quest whose one-time reward the group hands over. */
+  quest?: string | null | undefined;
   done: boolean;
   /** Rows still to do; zero on a skipped group. */
   remaining: number;
@@ -210,6 +219,14 @@ export interface ResolvedPlan {
   tips: ItemTip[];
   sentiment: ItemTip[];
   ledger: ResolvedLedgerEntry[];
+  /** Builds the card counts: two for a Warframe both kept and subsumed. */
+  copies: number;
+  /** The items the plan's build steps make, which the build totals read. */
+  builds: string[];
+  /** Why the card wants the item, when the card says. */
+  needs?: readonly NeedReason[] | undefined;
+  shop: ResolvedShop | null;
+  sequence: boolean;
   steps: { done: number; total: number };
   /** Fact kinds this plan wanted and the app could not compute. */
   unresolved: PlanFactKind[];
@@ -228,6 +245,8 @@ export interface PlanProgressOverride {
 export interface PlanContext {
   itemDb: Record<string, ItemDbEntry>;
   inventory: RawInventoryData | null;
+  /** What sizes the builds a shared shop's other items still owe. */
+  mastery?: MasteryData | null | undefined;
   world?: WorldState | null | undefined;
   /** What a generated Prime plan reads; without it only authored plans resolve. */
   relicDb?: RelicDatabase | null | undefined;
@@ -245,4 +264,6 @@ export interface PlanContext {
   resources?: ResourceLookup | undefined;
   /** The tips layer; the shipped one by default. */
   tips?: TipsLookup | undefined;
+  /** Per shop key, the unit ids the player flipped away from their default pick. */
+  shopPicks?: Readonly<Record<string, readonly string[]>> | undefined;
 }

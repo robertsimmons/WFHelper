@@ -13,7 +13,7 @@ import {
   withRowOverrides,
   type RowOverrides,
 } from "../../../src/components/nextup/plan/planResolution.js";
-import { planSteps, type PlanStep } from "../../../src/components/nextup/plan/planSteps.js";
+import { planSteps, type PlanLine } from "../../../src/components/nextup/plan/planSteps.js";
 import { en } from "../../../src/i18n/en.js";
 import {
   authoredPlan,
@@ -118,13 +118,20 @@ function rowById(plan: ResolvedPlan, id: string): ResolvedRow | undefined {
   return plan.groups.flatMap((group) => group.rows).find((row) => row.id === id);
 }
 
-/** The step that draws a plan row, as a line of its own or folded into its title. */
-function stepOf(plan: ResolvedPlan, id: string): PlanStep | undefined {
-  return planSteps(plan, { t }).find(
-    (step) =>
-      step.rows.some((line) => line.ids.includes(id)) ||
-      step.folded?.rows.some((fold) => fold.id === id) === true,
-  );
+/** Every line the model draws, open or done, with Basics opened into its chips. */
+function allLines(plan: ResolvedPlan): PlanLine[] {
+  const model = planSteps(plan, { t });
+  return [
+    ...model.sections.flatMap((section) =>
+      section.entries.flatMap((entry) => (entry.kind === "trip" ? entry.lines : [entry])),
+    ),
+    ...model.done,
+  ].flatMap((entry) => (entry.kind === "basics" ? entry.chips : [entry]));
+}
+
+/** The line that ticks a plan row. */
+function lineOf(plan: ResolvedPlan, id: string): PlanLine | undefined {
+  return allLines(plan).find((entry) => entry.rowIds.includes(id));
 }
 
 /** The source with every block gated on the page's controls cut out, which is
@@ -163,53 +170,52 @@ describe("acquisition plan page", () => {
     expect(page).toContain("max-w-[640px]");
   });
 
-  it("lays the body out as steps, then parts, then tips", () => {
+  it("lays the body out as steps, then tips, with no parts tree", () => {
     const body = nextup("AcquisitionBody.svelte");
     const steps = body.indexOf("<PlanSteps");
-    const parts = body.indexOf("<AcquisitionTree");
     const extra = body.indexOf("{@render extra?.()}");
     const tips = body.indexOf("data-details-tips");
     const sentiment = body.indexOf("data-plan-sentiment");
     expect(steps).toBeGreaterThan(-1);
-    expect([steps, parts, extra, tips, sentiment]).toEqual(
-      [steps, parts, extra, tips, sentiment].sort((a, b) => a - b),
+    expect([steps, extra, tips, sentiment]).toEqual(
+      [steps, extra, tips, sentiment].sort((a, b) => a - b),
     );
+    expect(body).not.toContain("AcquisitionTree");
     expect(body).not.toMatch(/<details[^>]*\bopen\b/);
   });
 
-  it("keeps a skipped step listed, dimmed and with its reason", () => {
+  it("files a skipped step under done, with nothing left to tick", () => {
     const sarpa = resolved("Sarpa");
-    const skipped = sarpa.groups.filter((entry) => entry.skip !== null);
-    expect(skipped.length).toBeGreaterThan(0);
-    const steps = planSteps(sarpa, { t });
-    for (const entry of skipped) {
-      const step = steps.find((candidate) => candidate.id === entry.id);
-      expect(step).toMatchObject({ done: true, skip: entry.skip?.reason });
-    }
-    const text = source("PlanSteps.svelte");
-    expect(text).toContain("{#if step.skip}");
-    expect(text).toMatch(/step\.done\s*\?\s*'opacity-\[0\.42\]'/);
+    const model = planSteps(sarpa, { t });
+    const ids = sarpa.groups
+      .filter((entry) => entry.skip !== null)
+      .flatMap((entry) => entry.rows.map((row) => row.id));
+    expect(ids.length).toBeGreaterThan(0);
+    const open = allLines(sarpa).filter((entry) => !entry.done);
+    expect(open.some((entry) => entry.rowIds.some((id) => ids.includes(id)))).toBe(false);
+    expect(model.done.length).toBeGreaterThan(0);
   });
 
-  it("keeps conditions, bonuses and a step's tips one collapsed click down", () => {
+  it("keeps a line's notes, disclosures and tips in its collapsed drawer", () => {
     const text = source("PlanSteps.svelte");
-    const notes = text.indexOf("data-step-notes");
-    expect(notes).toBeGreaterThan(-1);
+    expect(text).toMatch(/\{#if openId === entry\.id\}\s*<StepDrawer/);
+    const drawer = source("StepDrawer.svelte");
     for (const part of [
-      "step.conditions as condition",
-      "step.bonuses as bonus",
-      "<PlanTips tips={step.tips}",
+      "drawer.notes",
+      "drawer.other",
+      "drawer.disclosures as disclosure",
+      "<PlanTips tips={drawer.tips}",
     ]) {
-      expect(text.indexOf(part)).toBeGreaterThan(notes);
+      expect(drawer).toContain(part);
+      expect(source("StepLine.svelte")).not.toContain(part);
     }
-    expect(text).toContain("step.disclosures as disclosure");
-    expect(text).not.toMatch(/<details[^>]*\bopen\b/);
+    expect(drawer).not.toMatch(/<details[^>]*\bopen\b/);
     const tipsView = source("PlanTips.svelte");
     expect(tipsView).toContain("tip.kind === 'gotcha' ? 'text-warning' : 'text-text-muted'");
     expect(tipsView).toContain("nextUp.planTipDisputed");
   });
 
-  it("carries a group's mode, spends, meta and row notes onto its step", () => {
+  it("carries a group's mode, meta and row notes into each line's drawer", () => {
     const farm = planGroup(
       "vendor",
       "EARTH",
@@ -224,31 +230,13 @@ describe("acquisition plan page", () => {
       },
     );
     const plan: AuthoredPlan = { ...authored("Rhino"), groups: [farm] };
-    const [step] = planSteps(resolved(plan), { t });
-    expect(step.tags).toEqual(
-      expect.arrayContaining(["solo", "keep spare copies", "spends 5,000 Credits"]),
-    );
-    const neurodes = step.rows.find((line) => line.label === "Neurodes");
-    expect(neurodes?.notes).toEqual(["from the boss"]);
-  });
-
-  it("puts the currency ledger behind a disclosure on both surfaces", () => {
-    const text = source("PlanSteps.svelte");
-    expect(text).toContain("data-plan-ledger");
-    expect(text).toContain("nextUp.planOutstanding");
-    expect(text).toContain("nextUp.planToSpend");
-    expect(text).toContain("nextUp.planBanked");
-  });
-
-  it("colours each live state as the state it is", () => {
-    const text = source("PlanSteps.svelte");
-    for (const [state, tone] of [
-      ["open", "text-success"],
-      ["blocked", "text-danger"],
-      ["waiting", "text-warning"],
-    ]) {
-      expect(text).toMatch(new RegExp(`${state}:\\s*"${tone}"`));
-    }
+    const lines = allLines(resolved(plan)).filter((entry) => entry.kind === "buy");
+    expect(lines).toHaveLength(1);
+    expect(lines[0].drawer.rates).toEqual(expect.arrayContaining(["solo", "keep spare copies"]));
+    expect(lines[0].drawer.parts.map((part) => [part.label, part.note])).toEqual([
+      ["Neurodes", "from the boss"],
+      ["Rubedo", null],
+    ]);
   });
 
   it("sets the real-money price apart from the ones that cost time", () => {
@@ -282,6 +270,11 @@ describe("acquisition plan page", () => {
     for (const text of [
       source("AcquisitionPlanPage.svelte"),
       source("PlanSteps.svelte"),
+      source("StepLine.svelte"),
+      source("StepTitle.svelte"),
+      source("StepDrawer.svelte"),
+      source("ShopPicker.svelte"),
+      source("AcquisitionLinks.svelte"),
       nextup("AcquisitionBody.svelte"),
     ]) {
       const keys = [...text.matchAll(/\$tr\(\s*"([\w.]+)"/g)].map((match) => match[1]);
@@ -291,23 +284,30 @@ describe("acquisition plan page", () => {
 });
 
 describe("interactive and read-only steps", () => {
-  const CONTROLS = [
-    "data-step-tick",
-    "data-fold-tick",
-    "data-row-tick",
-    "data-alt-take",
-    "data-plan-map",
+  const CONTROLS = ["data-row-tick", "data-alt-take"];
+  const STEP_FILES = [
+    "PlanSteps.svelte",
+    "StepLine.svelte",
+    "StepTitle.svelte",
+    "StepDrawer.svelte",
   ];
 
   it("draws every control only where the page passed its controls", () => {
-    const text = source("PlanSteps.svelte");
+    const text = STEP_FILES.map(source).join("\n");
     for (const control of CONTROLS) expect(text).toContain(control);
-    const plain = readOnly(text);
+    const plain = STEP_FILES.map((file) => readOnly(source(file))).join("\n");
     for (const control of CONTROLS) expect(plain).not.toContain(control);
     // What the steps say stays: the read-only body is the same body.
-    for (const kept of ["step.title", "row.label", "alt.label", "data-plan-ledger"]) {
+    // Maps open on every surface, the modal included.
+    for (const kept of ["entry.title", "alt.label", "data-plan-done", "data-plan-map"]) {
       expect(plain).toContain(kept);
     }
+    // Shop picks are a stored per-shop preference, editable on every surface.
+    expect(source("ShopPicker.svelte")).toContain("disabled={held}");
+    expect(source("StepDrawer.svelte")).toContain(
+      "onToggle={(unitId) => toggleShopPick(shop.key, unitId)}",
+    );
+    expect(source("AcquisitionPlanPage.svelte")).not.toContain("toggleShopPick");
   });
 
   it("hands the controls to the plan page and none to the modal", () => {
@@ -316,24 +316,17 @@ describe("interactive and read-only steps", () => {
     const body = /<AcquisitionBody[^>]*\/>/.exec(modal)?.[0];
     expect(body).toBeDefined();
     expect(body).not.toContain("controls");
-    expect(nextup("AcquisitionBody.svelte")).toContain(
-      "<PlanSteps {plan} {buildable} {controls} />",
-    );
+    expect(nextup("AcquisitionBody.svelte")).toContain("<PlanSteps {plan} {controls}");
   });
 
-  it("never offers a tick on a step the player covered another way", () => {
-    expect(source("PlanSteps.svelte")).toContain(
-      "{@const ticks = controls && step.skip === null ? controls : null}",
-    );
+  it("only offers a tick on a line that has rows to tick", () => {
+    expect(source("StepLine.svelte")).toContain("{#if controls && entry.rowIds.length > 0}");
   });
 
-  it("ticks a manual row and the step it sits on follows", () => {
+  it("ticks a manual row and the line it sits on follows", () => {
     const id = rowIdOf(resolved("Rhino"), "Rhino Neuroptics");
-    const before = stepOf(resolved("Rhino", { manualDone: [] }), id);
-    expect(before).toBeDefined();
-    const line = before?.rows.find((entry) => entry.ids.includes(id));
-    const fold = before?.folded?.rows.find((entry) => entry.id === id);
-    expect(line?.done ?? fold?.done).toBe(false);
+    const before = lineOf(resolved("Rhino", { manualDone: [] }), id);
+    expect(before?.done).toBe(false);
 
     const persist = vi.fn();
     const base = resolved("Rhino");
@@ -342,10 +335,10 @@ describe("interactive and read-only steps", () => {
 
     const after = resolved("Rhino", { manualDone: [id] });
     expect(rowById(after, id)).toMatchObject({ done: true, source: "manual", manual: true });
-    const step = stepOf(after, id);
-    const ticked = step?.rows.find((entry) => entry.ids.includes(id));
-    const tickedFold = step?.folded?.rows.find((entry) => entry.id === id);
-    expect(ticked?.done ?? tickedFold?.done).toBe(true);
+    // The row is one part of the foundry's set: its part follows, the set waits.
+    const set = lineOf(after, id);
+    expect(set?.drawer.parts.find((part) => part.id === id)?.done).toBe(true);
+    expect(set?.count).toMatchObject({ have: 1 });
   });
 
   it("ticks every row a merged line stands for at once", () => {
@@ -359,9 +352,10 @@ describe("interactive and read-only steps", () => {
     expect(persist).toHaveBeenCalledWith("b", true);
   });
 
-  it("takes an alternative from its step, and the ledger counts it", () => {
+  it("takes an alternative from its line, and the ledger counts it", () => {
     const plan = resolved("Cyte-09");
-    const offers = planSteps(plan, { t }).flatMap((step) => step.alts.filter((alt) => alt.offer));
+    const alts = (from: ResolvedPlan) => allLines(from).flatMap((entry) => entry.drawer.alts);
+    const offers = alts(plan).filter((alt) => alt.offer);
     expect(offers.length).toBeGreaterThan(0);
     const [offer] = offers;
     expect(offer.taken).toBe(false);
@@ -370,45 +364,47 @@ describe("interactive and read-only steps", () => {
     expect(plan.ledger.find((line) => line.currency === currency)).toBeUndefined();
 
     const taken = resolved("Cyte-09", { altsTaken: [offer.id] });
-    const again = planSteps(taken, { t }).flatMap((step) => step.alts);
+    const again = alts(taken);
     expect(again.find((alt) => alt.id === offer.id)?.taken).toBe(true);
     const line = taken.ledger.find((entry) => entry.currency === currency);
     expect(line?.spent).toBe(priced?.alt?.spends[0].value);
     expect(line?.paired).toBe(false);
-    expect(source("PlanSteps.svelte")).toContain("onclick={() => controls.onTakeAlt(alt.id)}");
+    expect(source("StepDrawer.svelte")).toContain("onclick={() => controls.onTakeAlt(alt.id)}");
   });
 
-  it("puts the map on the step whose group has one, disabled until it ships", () => {
+  it("puts the map in the drawer of a line whose group has one, drawn once it ships", () => {
     const plan = resolved("AX-52");
     const mapped = plan.groups.filter((entry) => entry.map !== null);
     expect(mapped.length).toBeGreaterThan(0);
-    const steps = planSteps(plan, { t });
+    const maps = allLines(plan).flatMap((entry) => (entry.drawer.map ? [entry.drawer.map] : []));
     for (const entry of mapped) {
-      expect(steps.find((step) => step.id === entry.id)?.map).toEqual({
-        key: entry.map,
-        ready: false,
-      });
+      expect(maps).toContainEqual({ key: entry.map, ready: false });
     }
-    const text = source("PlanSteps.svelte");
-    expect(text).toContain("{#if controls && step.map}");
-    expect(text).toContain("onclick={() => controls.onOpenMap(map)}");
-    expect(text).toContain('$tr("nextUp.planMapMissing", { map })');
-    const page = source("AcquisitionPlanPage.svelte");
-    expect(page).toContain("onOpenMap: (map) => (openMap = map)");
-    expect(page).toContain("<FarmMapModal {plan} mapKey={openMap}");
+    const drawer = source("StepDrawer.svelte");
+    expect(drawer).toContain("{#if map?.ready}");
+    expect(drawer).toContain("onclick={() => onOpenMap(key)}");
+    // Lines and Basics chips carry their own button where a map can open.
+    const title = source("StepTitle.svelte");
+    expect(title).toContain("{#if onOpenMap && line.drawer.map?.ready}");
+    expect(title.match(/\{@render mapButton\(/g)).toHaveLength(2);
+    expect(source("StepLine.svelte")).toContain("<StepTitle {entry} {onOpenMap} />");
+    // The shared steps own the map, so the modal and the plan page both open it.
+    expect(source("AcquisitionPlanPage.svelte")).not.toContain("FarmMapModal");
+    expect(source("PlanSteps.svelte")).toContain(
+      "<FarmMapModal {plan} mapKey={openMap} onClose={() => (openMap = null)} />",
+    );
   });
 
-  it("keeps a material step ticked this visit rather than dropping it from under the cursor", () => {
+  it("moves a material ticked this visit to the done list rather than dropping it", () => {
     const material = (rows: ResolvedRow[]) => ({
       ...resolved("Rhino"),
+      shop: null,
       groups: [group("m0", rows, null), group("1", [row("x", false, "authored")], null)],
     });
-    const covered = material([row("inv", true, "inventory")]);
-    expect(planSteps(covered, { t }).map((step) => step.id)).toEqual(["1"]);
-
     const open = material([row("inv", false, "inventory")]);
+    expect(planSteps(open, { t }).done).toEqual([]);
     const view = withRowOverrides(open, tickPlanRow(open, {}, "inv", true, vi.fn()));
-    expect(planSteps(view, { t }).map((step) => step.id)).toEqual(["m0", "1"]);
+    expect(planSteps(view, { t }).done.map((entry) => entry.id)).toEqual(["inv"]);
   });
 });
 
@@ -421,8 +417,8 @@ describe("standing on the plan", () => {
     // whoever banks it, never the vendors that spend it. Ostron, which only the
     // Cetus refining blueprint costs, has no earner, so it sits on that vendor.
     expect(carriers.map((entry) => entry.activity)).toEqual([
-      "Conservation, plus Bounty 1 for the bonds",
-      "Entrati standing for the rank-ups and the blueprint",
+      "Earn Solaris United Standing",
+      "Earn Entrati Standing",
       "buy the blueprint",
     ]);
   });
@@ -556,26 +552,26 @@ describe("temporary ticks on rows the inventory decides", () => {
   });
 });
 
-describe("build totals under the parts", () => {
-  it("carries the crafting tree's totals and used-for list, collapsed, after PARTS", () => {
+describe("build totals in the Build drawer", () => {
+  it("hands the crafting tree's totals and used-for list to a Build line's drawer", () => {
     const body = nextup("AcquisitionBody.svelte");
-    expect(body).toContain("computeCraftingSummary(tree)");
-    expect(body).toContain("buildCraftingTree(root, $itemDb, $componentOwnership)");
-    const parts = body.indexOf("<AcquisitionTree");
+    expect(body).toContain("buildTotals(");
+    expect(body).toContain("plan?.copies ?? 1");
+    expect(body).toContain(
+      "<PlanSteps {plan} {controls} {lead} totals={build ? totals : undefined} />",
+    );
     const totals = body.indexOf("data-build-totals");
-    expect(totals).toBeGreaterThan(parts);
-    expect(totals).toBeLessThan(body.indexOf("{@render extra?.()}"));
-    const block = body.slice(totals, body.indexOf("</details>", totals));
+    const block = body.slice(totals, body.indexOf("</ul>", totals));
+    expect(source("StepDrawer.svelte")).toContain('{#if entry.section === "build" && totals}');
     for (const shown of [
-      "build.summary.totalCredits",
-      "build.summary.minBuildTime",
-      "build.summary.maxBuildTime",
+      "build.credits",
+      "build.minTime",
+      "build.maxTime",
       "build.usedFor as usage",
       "data-build-used-for",
     ]) {
       expect(block).toContain(shown);
     }
-    expect(body).toMatch(/<details class="text-xs" data-build-totals>/);
     expect(body).not.toMatch(/<details[^>]*\bopen\b/);
     for (const key of ["nextUp.buildTotals", "nextUp.buildMinTime", "nextUp.buildMaxTime"]) {
       expect(en).toHaveProperty(key);

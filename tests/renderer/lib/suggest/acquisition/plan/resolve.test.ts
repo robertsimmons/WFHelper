@@ -110,8 +110,14 @@ describe("done", () => {
   });
 
   it("takes a manual tick on a row inventory cannot see", () => {
-    const fossa = byPlace(resolve(rhinoPlan(), { manualDone: ["1:0"] }), "FOSSA, VENUS");
+    const fossa = byPlace(resolve(rhinoPlan(), { manualDone: ["1:0:neuroptics"] }), "FOSSA, VENUS");
     expect(fossa.rows[0]).toMatchObject({ done: true, source: "manual" });
+  });
+
+  it("ignores a stored tick whose row moved or was renamed", () => {
+    const stale = ["1:0", "1:0:chassis", "0:0:neuroptics"];
+    const fossa = byPlace(resolve(rhinoPlan(), { manualDone: stale }), "FOSSA, VENUS");
+    expect(fossa.rows[0]).toMatchObject({ done: false, manual: true });
   });
 });
 
@@ -253,24 +259,26 @@ describe("live state", () => {
 
 describe("currency ledger", () => {
   it("pairs the farm that banks with the vendor that spends", () => {
-    const plan = resolve("Kullervo");
-    const bane = plan.ledger.find((entry) => entry.currency === "Kullervo's Bane");
-    expect(bane).toEqual({
-      currency: "Kullervo's Bane",
-      earned: 42,
-      spent: 42,
-      outstanding: 42,
+    const plan = resolve("Basmu");
+    const tokens = plan.ledger.find((entry) => entry.currency === "Mother Token");
+    expect(tokens).toEqual({
+      currency: "Mother Token",
+      earned: 125,
+      spent: 125,
+      outstanding: 125,
       paired: true,
     });
-    // The group's own rows name the Bane, so its header does not restate it.
-    expect(byMap(plan, "kullervos-hold").earns).toBeNull();
+    // The group's own rows name the tokens, so its header does not restate them.
+    expect(byPlace(plan, "CAMBION DRIFT, DEIMOS").earns).toBeNull();
   });
 
   it("drops what is already bought out of the total still to bank", () => {
-    const vendor = load("Kullervo").groups.findIndex((group) => group.type === "vendor");
-    const plan = resolve("Kullervo", { manualDone: [`${vendor}:0`] });
-    const bane = plan.ledger.find((entry) => entry.currency === "Kullervo's Bane");
-    expect(bane?.outstanding).toBe(27);
+    const groups = load("Sheev").groups;
+    const vendor = groups.findIndex((group) => group.type === "vendor");
+    const label = groups[vendor].rows[0].label.toLowerCase();
+    const plan = resolve("Sheev", { manualDone: [`${vendor}:0:${label}`] });
+    const tokens = plan.ledger.find((entry) => entry.currency === "Mother Token");
+    expect(tokens?.outstanding).toBe(75);
   });
 
   it("renders an unpaired spend as an ordinary cost with no phantom earner", () => {
@@ -285,9 +293,9 @@ describe("currency ledger", () => {
   });
 
   it("pairs a spent currency the plan lists as a material with that material", () => {
-    const plan = resolve("Rauta");
-    const bane = plan.ledger.find((entry) => entry.currency === "Kullervo's Bane");
-    expect(bane).toMatchObject({ earned: 30, spent: 30, paired: true });
+    const plan = resolve("Sheev");
+    const tokens = plan.ledger.find((entry) => entry.currency === "Mother Token");
+    expect(tokens).toMatchObject({ earned: 200, spent: 200, paired: true });
   });
 
   it("counts a row alt only when that alternative is taken", () => {
@@ -458,8 +466,13 @@ describe("plan materials", () => {
   });
 
   it("keeps authored row ids where the file put them and keys material rows by label", () => {
-    const resolved = resolveWith(authored(), { manualDone: ["2:0", "m:cetus wisp lens"] });
-    expect(byLabel(resolved, "Odd Foundry Part")).toMatchObject({ id: "2:0", done: true });
+    const resolved = resolveWith(authored(), {
+      manualDone: ["2:0:odd foundry part", "m:cetus wisp lens"],
+    });
+    expect(byLabel(resolved, "Odd Foundry Part")).toMatchObject({
+      id: "2:0:odd foundry part",
+      done: true,
+    });
     expect(byLabel(resolved, "Cetus Wisp Lens")).toMatchObject({
       id: "m:cetus wisp lens",
       done: true,

@@ -149,7 +149,7 @@
       "type": "currency",
       "place": "CETUS, EARTH",
       "sub": null,
-      "activity": "Sentient Cores turned in to Onkko",
+      "activity": "Earn The Quills Standing",
       "meta": null,
       "mode": null,
       "live": null,
@@ -164,7 +164,7 @@
         {
           "qty": "202,000",
           "label": "The Quills standing",
-          "note": "141,000 of it burns on rank-ups, 21,000 buys the four Prisms, Scaffolds and Braces, 40,000 gilds the eight Amps",
+          "note": "141,000 of it burns on rank-ups, 21,000 buys the four Prisms, Scaffolds and Braces, 40,000 gilds the eight Amps; turn Sentient Cores in to Onkko",
           "alt": null,
           "done": false
         }
@@ -179,6 +179,7 @@
       "place": "QUILL ONKKO, CETUS",
       "sub": null,
       "activity": "The Quills rank-ups to Instrument",
+      "title": "Quills rank-ups",
       "meta": null,
       "mode": null,
       "live": null,
@@ -293,7 +294,7 @@
       "disclosures": [
         {
           "title": "earning Quills standing",
-          "body": "Quills standing comes only from turning in Sentient Cores to Onkko: Intact 250, Exceptional 750, Flawless 1,500, and Narmer Isoplast 2,000. Rank 30 or gilded Amps can also be donated to Onkko for standing."
+          "body": "Quills standing comes only from turning in Sentient Cores to Onkko: Intact 250, Exceptional 750, Flawless 1,500. Rank 30 or gilded Amps can also be donated to Onkko for standing."
         }
       ]
     },
@@ -301,7 +302,7 @@
       "type": "currency",
       "place": "ORB VALLIS, VENUS",
       "sub": null,
-      "activity": "Toroids turned in to Little Duck",
+      "activity": "Earn Vox Solaris Standing",
       "meta": null,
       "mode": null,
       "live": null,
@@ -316,13 +317,15 @@
         {
           "qty": "150,000",
           "label": "Vox Solaris standing",
-          "note": "141,000 of it burns on rank-ups, 9,000 buys the three Prisms",
+          "note": "141,000 of it burns on rank-ups, 9,000 buys the three Prisms; turn Toroids in to Little Duck",
           "alt": null,
           "done": false
         }
       ],
       "conditions": [],
-      "bonuses": [],
+      "bonuses": [
+        "Little Duck pays 1,000 for a Vega, Calda or Sola Toroid, 2,000 for a Narmer Isoplast, 6,000 for a Crisma and 12,000 for a Lazulite."
+      ],
       "disclosures": [],
       "ref": "Vox Solaris Standing"
     },
@@ -331,6 +334,7 @@
       "place": "LITTLE DUCK, FORTUNA",
       "sub": null,
       "activity": "Vox Solaris rank-ups to Instrument",
+      "title": "Vox Solaris rank-ups",
       "meta": null,
       "mode": null,
       "live": null,
@@ -450,6 +454,7 @@
       "place": "QUILL ONKKO, CETUS",
       "sub": null,
       "activity": "buy four Prisms and a cheap Scaffold and Brace per Prism",
+      "title": "Prisms, Scaffold and Brace",
       "meta": null,
       "mode": null,
       "live": null,
@@ -476,7 +481,8 @@
               }
             ]
           },
-          "done": false
+          "done": false,
+          "task": true
         },
         {
           "qty": null,
@@ -612,6 +618,7 @@
       "place": "LITTLE DUCK, FORTUNA",
       "sub": null,
       "activity": "buy three Prisms",
+      "title": "Prisms",
       "meta": null,
       "mode": null,
       "live": null,
@@ -697,6 +704,7 @@
       "place": "FOUNDRY",
       "sub": null,
       "activity": "queue all twenty-one parts at once",
+      "title": "Amp parts",
       "meta": "1h each, 5,000 cr each",
       "mode": null,
       "live": null,
@@ -800,7 +808,9 @@
               }
             ],
             "each": true
-          }
+          },
+          "assembled": true,
+          "task": true
         }
       ],
       "conditions": [
@@ -815,6 +825,7 @@
       "place": "QUILL ONKKO, CETUS",
       "sub": null,
       "activity": "gild at rank 30",
+      "title": "Gild Amps",
       "meta": "40,000 in all",
       "mode": null,
       "live": null,
@@ -841,7 +852,8 @@
                 "amount": "5,000"
               }
             ]
-          }
+          },
+          "task": true
         },
         {
           "qty": null,
@@ -856,7 +868,8 @@
                 "amount": "5,000"
               }
             ]
-          }
+          },
+          "task": true
         },
         {
           "qty": null,
@@ -871,7 +884,8 @@
                 "amount": "5,000"
               }
             ]
-          }
+          },
+          "task": true
         },
         {
           "qty": null,
@@ -886,7 +900,8 @@
                 "amount": "5,000"
               }
             ]
-          }
+          },
+          "task": true
         },
         {
           "qty": null,
@@ -901,7 +916,8 @@
                 "amount": "5,000"
               }
             ]
-          }
+          },
+          "task": true
         },
         {
           "qty": null,
@@ -916,7 +932,8 @@
                 "amount": "5,000"
               }
             ]
-          }
+          },
+          "task": true
         },
         {
           "qty": null,
@@ -931,7 +948,8 @@
                 "amount": "5,000"
               }
             ]
-          }
+          },
+          "task": true
         },
         {
           "qty": null,
@@ -946,7 +964,8 @@
                 "amount": "5,000"
               }
             ]
-          }
+          },
+          "task": true
         }
       ],
       "conditions": [

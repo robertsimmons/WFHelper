@@ -73,6 +73,20 @@ function isBuildComponentEntry(uniqueName: string, entry: ItemDbEntry | undefine
   return entry?.isBuildComponent === true || PART_PATH.test(uniqueName);
 }
 
+// Hand-off for "open this in the foundry's crafting tree": the caller sets the
+// active item and flags the request, and the item modal takes it as it swaps in.
+let craftingTreeRequested = false;
+
+export function requestCraftingTree(): void {
+  craftingTreeRequested = true;
+}
+
+export function takeCraftingTreeRequest(): boolean {
+  const requested = craftingTreeRequested;
+  craftingTreeRequested = false;
+  return requested;
+}
+
 interface CraftingTreeOptions {
   /** Open a resource that is cooked from other resources - cut gems, refined
    *  alloys - instead of stopping at it. Off leaves every other caller's tree

@@ -64,7 +64,7 @@
       "type": "bounty",
       "place": "CAMBION DRIFT, DEIMOS",
       "sub": null,
-      "activity": "tranq a Sly, then lure Infested onto it",
+      "activity": "Vulpaphyla capture",
       "meta": "common subspecies",
       "mode": null,
       "live": null,
@@ -78,10 +78,12 @@
           "label": "Weakened Sly Vulpaphyla",
           "note": "capture only after Infested hit it",
           "alt": null,
-          "done": false
+          "done": false,
+          "task": true
         }
       ],
       "conditions": [
+        "Tranq a Sly, then lure Infested onto it.",
         "A Sly the Infested haven't hit gives only Sly Vulpaphyla Tags and nothing in Son's Revivification menu."
       ],
       "bonuses": ["A Perfect capture pays 3 Sly Vulpaphyla Tags, Good 2, Bad 1."],
@@ -118,7 +120,8 @@
                 "amount": "5,000"
               }
             ]
-          }
+          },
+          "task": true
         }
       ],
       "conditions": [

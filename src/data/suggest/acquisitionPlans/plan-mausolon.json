@@ -179,28 +179,28 @@
       "rows": [
         {
           "qty": null,
-          "label": "Casing",
+          "label": "Voidrig Casing",
           "note": "1 Damaged Casing, 60 Adramal Alloy, 30 Faceted Tiametrite, 140 Lucent Teroglobe",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
-          "label": "Engine",
+          "label": "Voidrig Engine",
           "note": "1 Damaged Engine, 50 Tempered Bapholite, 4 Parasitic Tethermaw, 10 Orokin Cells",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
-          "label": "Capsule",
+          "label": "Voidrig Capsule",
           "note": "1 Damaged Pod, 3 Morphics, 12 Spinal Core Section, 50 Devolved Namalon",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
-          "label": "Weapon Pod",
+          "label": "Voidrig Weapon Pod",
           "note": "1 Damaged Weapon Pod, 3 Biotic Filter, 40 Purified Heciphron, 30 Purged Dagonic",
           "alt": null,
           "done": false
@@ -259,13 +259,15 @@
         "spends": [],
         "map": "cambion-drift",
         "conditions": [
+          "Kill the vault Necramechs and turn the Orokin Matrices in to Loid.",
+          "Kill the vault Necramechs for Orokin Matrices.",
           "Orokin Matrices from the vault Necramechs are the only Necraloid standing source."
         ],
         "bonuses": [],
         "disclosures": [],
         "type": "bounty",
         "place": "CAMBION DRIFT, DEIMOS",
-        "activity": "kill the vault Necramechs for Orokin Matrices",
+        "activity": "Earn Necraloid Standing",
         "meta": null,
         "rows": [
           {
@@ -406,9 +408,49 @@
             }
           },
           {
-            "qty": "3",
-            "label": "Voidrig component blueprints",
-            "note": "Engine, Capsule, Weapon Pod",
+            "qty": null,
+            "label": "Voidrig Engine Blueprint",
+            "note": null,
+            "alt": null,
+            "done": false,
+            "buy": {
+              "price": [
+                {
+                  "currency": "Necraloid Standing",
+                  "amount": "2,000"
+                }
+              ],
+              "each": true,
+              "rank": {
+                "syndicate": "Necraloid",
+                "level": 1
+              }
+            }
+          },
+          {
+            "qty": null,
+            "label": "Voidrig Capsule Blueprint",
+            "note": null,
+            "alt": null,
+            "done": false,
+            "buy": {
+              "price": [
+                {
+                  "currency": "Necraloid Standing",
+                  "amount": "2,000"
+                }
+              ],
+              "each": true,
+              "rank": {
+                "syndicate": "Necraloid",
+                "level": 1
+              }
+            }
+          },
+          {
+            "qty": null,
+            "label": "Voidrig Weapon Pod Blueprint",
+            "note": null,
             "alt": null,
             "done": false,
             "buy": {

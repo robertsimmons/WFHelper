@@ -43,7 +43,7 @@
       "type": "farm",
       "place": "INVASIONS",
       "sub": null,
-      "activity": "side with the Corpus, finish 5 Invasion missions against the Grineer",
+      "activity": "Invasion missions",
       "meta": "earns the Death Mark; repeat after each attack",
       "mode": null,
       "live": null,
@@ -57,10 +57,12 @@
           "label": "Invasion missions",
           "note": "fighting the Grineer, siding with the Corpus",
           "alt": "skip if using Baro's beacons",
-          "done": false
+          "done": false,
+          "task": true
         }
       ],
       "conditions": [
+        "Side with the Corpus and finish 5 Invasion missions against the Grineer.",
         "Vay Hek's inbox message confirms the mark. It is spent only when the Three spawn and one of you is the target."
       ],
       "bonuses": [],
@@ -70,7 +72,7 @@
       "type": "boss",
       "place": "ANY GRINEER MISSION",
       "sub": null,
-      "activity": "play the first 5 minutes of the mission, then kill the Three",
+      "activity": "The Grustrag Three",
       "meta": "Leekter, Shik Tal, Vem Tabook",
       "mode": "squad with the mark",
       "live": null,
@@ -138,6 +140,7 @@
         }
       ],
       "conditions": [
+        "Play the first 5 minutes of the mission, then kill the Three.",
         "The Three roll to spawn every 10 seconds for the first 5 minutes, and each marked squad member raises the chance.",
         "A beacon is consumed on use, one per mission, and does nothing in Invasion missions.",
         "No spawns in Assassination, Syndicate, Arena, Sortie, Archimedea, Elite Sanctuary Onslaught, Landscape, Archwing or Empyrean missions.",

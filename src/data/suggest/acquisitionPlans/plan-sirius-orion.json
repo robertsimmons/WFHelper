@@ -4,6 +4,7 @@
   "effort": 4,
   "source": "railjack",
   "tradeable": false,
+  "shop": "hunhow",
   "progress": {
     "have": 0,
     "need": 4,
@@ -111,7 +112,7 @@
       "type": "farm",
       "place": "INBOX",
       "sub": null,
-      "activity": "claim Hunhow's message once the quest ends",
+      "activity": "Hunhow's message",
       "meta": null,
       "mode": null,
       "live": null,
@@ -128,7 +129,7 @@
           "done": false
         }
       ],
-      "conditions": [],
+      "conditions": ["Claim Hunhow's message once the quest ends."],
       "bonuses": [],
       "disclosures": [],
       "quest": "Jade Shadows: Constellations"
@@ -137,7 +138,7 @@
       "type": "boss",
       "place": "PONTIS TOWER, URANUS PROXIMA",
       "sub": "Scoria's Angel",
-      "activity": "side with Vena, kill Ryoku",
+      "activity": "Assassination, Ryoku",
       "meta": "one blueprint a clear, 14.29% each",
       "mode": null,
       "live": null,
@@ -153,49 +154,25 @@
           "qty": null,
           "label": "Neuroptics Blueprint",
           "note": "14.29%",
-          "alt": {
-            "text": "or 90 Talent at Hunhow",
-            "spends": [
-              {
-                "currency": "Crimson Talent",
-                "amount": "90"
-              }
-            ]
-          },
+          "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Chassis Blueprint",
           "note": "14.29%",
-          "alt": {
-            "text": "or 90 Talent at Hunhow",
-            "spends": [
-              {
-                "currency": "Crimson Talent",
-                "amount": "90"
-              }
-            ]
-          },
+          "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Systems Blueprint",
           "note": "14.29%",
-          "alt": {
-            "text": "or 90 Talent at Hunhow",
-            "spends": [
-              {
-                "currency": "Crimson Talent",
-                "amount": "90"
-              }
-            ]
-          },
+          "alt": null,
           "done": false
         }
       ],
-      "conditions": ["Hunhow takes Crimson or Emerald Talent"],
+      "conditions": ["Side with Vena.", "Hunhow takes Crimson or Emerald Talent"],
       "bonuses": [
         "12-16 Crimson Talent a clear, 18-22 on Steel Path",
         "up to 4 more for every Ramsled target, 12 on Steel Path",
@@ -209,7 +186,7 @@
       "type": "boss",
       "place": "PONTIS TOWER, URANUS PROXIMA",
       "sub": "The Kuva Wytch",
-      "activity": "side with Ryoku, kill Vena",
+      "activity": "Assassination, Vena",
       "meta": "one blueprint a clear, 14.29% each",
       "mode": null,
       "live": null,
@@ -225,49 +202,25 @@
           "qty": null,
           "label": "Neuroptics Blueprint",
           "note": "14.29%",
-          "alt": {
-            "text": "or 90 Talent at Hunhow",
-            "spends": [
-              {
-                "currency": "Emerald Talent",
-                "amount": "90"
-              }
-            ]
-          },
+          "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Chassis Blueprint",
           "note": "14.29%",
-          "alt": {
-            "text": "or 90 Talent at Hunhow",
-            "spends": [
-              {
-                "currency": "Emerald Talent",
-                "amount": "90"
-              }
-            ]
-          },
+          "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Systems Blueprint",
           "note": "14.29%",
-          "alt": {
-            "text": "or 90 Talent at Hunhow",
-            "spends": [
-              {
-                "currency": "Emerald Talent",
-                "amount": "90"
-              }
-            ]
-          },
+          "alt": null,
           "done": false
         }
       ],
-      "conditions": ["Hunhow takes Crimson or Emerald Talent"],
+      "conditions": ["Side with Ryoku.", "Hunhow takes Crimson or Emerald Talent"],
       "bonuses": [
         "12-16 Emerald Talent a clear, 18-22 on Steel Path",
         "up to 4 more for every Orowyrm target, 12 on Steel Path",
@@ -341,7 +294,7 @@
         "type": "boss",
         "place": "PONTIS TOWER, URANUS PROXIMA",
         "sub": "Scoria's Angel",
-        "activity": "side with Vena, kill Ryoku",
+        "activity": "Assassination, Ryoku",
         "meta": "14.29% a clear",
         "mode": null,
         "live": null,
@@ -357,19 +310,11 @@
             "qty": null,
             "label": "Sirius & Orion Blueprint",
             "note": "14.29%",
-            "alt": {
-              "text": "or 275 Talent at Hunhow",
-              "spends": [
-                {
-                  "currency": "Crimson Talent",
-                  "amount": "275"
-                }
-              ]
-            },
+            "alt": null,
             "done": false
           }
         ],
-        "conditions": ["Hunhow takes Crimson or Emerald Talent"],
+        "conditions": ["Side with Vena.", "Hunhow takes Crimson or Emerald Talent"],
         "bonuses": ["12-16 Crimson Talent a clear, 18-22 on Steel Path"],
         "disclosures": [],
         "ref": "Crimson Talent"
@@ -378,7 +323,7 @@
         "type": "boss",
         "place": "PONTIS TOWER, URANUS PROXIMA",
         "sub": "The Kuva Wytch",
-        "activity": "side with Ryoku, kill Vena",
+        "activity": "Assassination, Vena",
         "meta": "14.29% a clear",
         "mode": null,
         "live": null,
@@ -394,19 +339,11 @@
             "qty": null,
             "label": "Sirius & Orion Blueprint",
             "note": "14.29%",
-            "alt": {
-              "text": "or 275 Talent at Hunhow",
-              "spends": [
-                {
-                  "currency": "Emerald Talent",
-                  "amount": "275"
-                }
-              ]
-            },
+            "alt": null,
             "done": false
           }
         ],
-        "conditions": ["Hunhow takes Crimson or Emerald Talent"],
+        "conditions": ["Side with Ryoku.", "Hunhow takes Crimson or Emerald Talent"],
         "bonuses": ["12-16 Emerald Talent a clear, 18-22 on Steel Path"],
         "disclosures": [],
         "ref": "Emerald Talent"

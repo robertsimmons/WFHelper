@@ -28,6 +28,7 @@ import { dropPools } from "./dropPools.js";
 import { masteryData } from "./mastery.js";
 import { priceCacheRevision } from "./pricing.js";
 import { relicDb } from "./relics.js";
+import { exchangeDone } from "./vendorExchange.js";
 import { suggestionPreferences } from "./suggestionPrefs.js";
 import { worldData } from "./world.js";
 import type { PlatPriceLookup } from "../lib/suggest/acquisition/types.js";
@@ -106,6 +107,8 @@ export const suggestionFeed: Readable<SuggestionFeed> = derived(
     acquisitionPins,
     tr,
     clockStore(CLOCK_MS),
+    // Read by the vendors provider through get(); listed so a tick recomputes at once.
+    exchangeDone,
   ],
   (inputs) => {
     if (memo && inputs.every((value, index) => memo?.inputs[index] === value)) {

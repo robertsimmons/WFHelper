@@ -39,7 +39,7 @@
       "type": "currency",
       "place": "NIGHTWAVE",
       "sub": null,
-      "activity": "rank up the current series' tiers",
+      "activity": "Series rank-ups",
       "meta": "50 Cred per beacon",
       "mode": null,
       "live": null,
@@ -50,13 +50,16 @@
       "rows": [
         {
           "qty": null,
-          "label": "Nightwave Cred",
+          "label": "Nightwave Creds",
           "note": "the Wolf Beacon is a permanent Cred Offering",
           "alt": null,
           "done": false
         }
       ],
-      "conditions": ["Cred is series-specific and can only be spent on that series' offerings."],
+      "conditions": [
+        "Rank up the current series' tiers.",
+        "Cred is series-specific and can only be spent on that series' offerings."
+      ],
       "bonuses": [],
       "disclosures": [],
       "ref": "Nightwave Creds"
@@ -65,7 +68,7 @@
       "type": "boss",
       "place": "ANY MISSION WITH ASSASSINS",
       "sub": null,
-      "activity": "equip a Wolf Beacon, then kill the Wolf of Saturn Six",
+      "activity": "Wolf of Saturn Six",
       "meta": "25% per kill for each of the four",
       "mode": null,
       "live": null,
@@ -104,6 +107,7 @@
         }
       ],
       "conditions": [
+        "Equip a Wolf Beacon, then kill the Wolf of Saturn Six.",
         "A Wolf Beacon only works where the Wolf can normally appear, and only one beacon can be used per mission across the squad.",
         "He is immune to status effects, so favor critical chance and damage over status.",
         "He is level-capped at 60 solo and 75 in public squads."

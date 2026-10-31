@@ -5,7 +5,10 @@ import {
   withoutFoundryPending,
 } from "../../../../../config/shared/foundryPending.js";
 import { toFiniteNumber } from "../../../../../config/shared/numeric.js";
+import { SYNDICATE_RANKS } from "../../../../data/syndicateRanks.js";
 import { dailyStandingCap } from "../../../syndicates/rankup.js";
+import { rankSyndicate } from "./ranks.js";
+import type { ResourceLookup } from "./resources.js";
 import type { ItemDbEntry, RawInventoryData } from "../../../../types/inventory.js";
 
 const GROUPED = /^\d{1,3}(?:,\d{3})*$|^\d+$/;
@@ -13,6 +16,7 @@ const BLUEPRINT_SUFFIX = / blueprint$/i;
 const RELIC_SUFFIX = / relic$/i;
 const RELIC_QUALITY_SUFFIX = /\s*\((intact|exceptional|flawless|radiant)\)$/i;
 const STANDING_SUFFIX = / standing$/i;
+const CREDITS = /^credits$/i;
 const QUEST_SUFFIX = / quest$/i;
 const LEADING_THE = /^the /i;
 const QUEST_CHAIN_PREFIX = /^all main quests through /i;
@@ -31,9 +35,14 @@ export function formatQuantity(value: number): string {
   return Math.max(0, Math.round(value)).toLocaleString("en-US");
 }
 
+/** "Höllvanian" in the item database and "Hollvanian" in a plan name the same thing. */
+function nameKey(name: string): string {
+  return name.normalize("NFD").replace(/\p{M}/gu, "").replace(/[‘’]/g, "'").trim().toLowerCase();
+}
+
 function addName(index: Map<string, string[]>, name: unknown, uniqueName: string): void {
   if (typeof name !== "string" || name === "") return;
-  const key = name.trim().toLowerCase();
+  const key = nameKey(name);
   const rows = index.get(key);
   if (rows) {
     if (!rows.includes(uniqueName)) rows.push(uniqueName);
@@ -63,11 +72,7 @@ function buildRelicIndex(
   )) {
     const raw = itemDb[uniqueName]?.name;
     if (typeof raw !== "string") continue;
-    const key = raw
-      .replace(RELIC_QUALITY_SUFFIX, "")
-      .replace(RELIC_SUFFIX, "")
-      .trim()
-      .toLowerCase();
+    const key = nameKey(raw.replace(RELIC_QUALITY_SUFFIX, "").replace(RELIC_SUFFIX, ""));
     held.set(key, (held.get(key) ?? 0) + count);
   }
   return held;
@@ -122,7 +127,7 @@ function buildPendingIndex(
       ? uniqueName
       : [...endByBlueprint.keys()].find((key) => itemDb[key]?.buildsProduct === uniqueName);
     const endsAt = blueprint ? (endByBlueprint.get(blueprint) ?? null) : null;
-    const key = name.replace(BLUEPRINT_SUFFIX, "").trim().toLowerCase();
+    const key = nameKey(name.replace(BLUEPRINT_SUFFIX, ""));
     const held = pending.get(key);
     // The blueprint and what it builds land on the same key; the product is the
     // name the player recognises, and the blueprint is the one with the clock.
@@ -134,10 +139,12 @@ function buildPendingIndex(
   return pending;
 }
 
-function readStanding(inventory: RawInventoryData | null): Map<string, number> {
-  const balances = new Map<string, number>();
+/** Null when the payload carries no affiliations; a syndicate missing from one
+ *  that does was never joined, which is a balance of none. */
+function readStanding(inventory: RawInventoryData | null): Map<string, number> | null {
   const rows = inventory?.Affiliations;
-  if (!Array.isArray(rows)) return balances;
+  if (!Array.isArray(rows)) return null;
+  const balances = new Map<string, number>();
   for (const row of rows) {
     if (!row || typeof row !== "object") continue;
     const record = row as { Tag?: unknown; Standing?: unknown };
@@ -161,13 +168,34 @@ export function readCompletedQuests(inventory: RawInventoryData | null): Set<str
   return finished;
 }
 
+/** The parts of each built modular item: a Zaw, an Amp, a MOA. */
+function readAssemblies(inventory: Record<string, unknown>): string[][] {
+  return Object.values(inventory)
+    .filter(Array.isArray)
+    .flat()
+    .flatMap((entry: unknown) => {
+      const parts = (entry as { ModularParts?: unknown } | null)?.ModularParts;
+      return Array.isArray(parts) ? [parts.filter((part) => typeof part === "string")] : [];
+    });
+}
+
+/** A part built into a modular item is a copy the player holds. */
+function withInstalledParts(
+  owned: Map<string, number>,
+  assemblies: readonly string[][],
+): Map<string, number> {
+  for (const part of assemblies.flat()) owned.set(part, (owned.get(part) ?? 0) + 1);
+  return owned;
+}
+
 /** Everything resolution reads off the player, indexed once per plan. */
 export interface PlayerState {
   owned: Map<string, number>;
+  assemblies: string[][];
   names: Map<string, string[]>;
   relics: Map<string, number>;
   pending: Map<string, PendingBuild>;
-  standing: Map<string, number>;
+  standing: Map<string, number> | null;
   standingCap: number;
   questsDone: Set<string>;
   /** Null when the payload carries no balance, which is unknown rather than broke. */
@@ -195,8 +223,10 @@ export function readPlayerState(
         (uniqueName) => db[uniqueName]?.reusableBlueprint === true,
       )
     : {};
+  const assemblies = readAssemblies(usable);
   return {
-    owned: aggregateComponentOwnership(usable),
+    owned: withInstalledParts(aggregateComponentOwnership(usable), assemblies),
+    assemblies,
     names: buildNameIndex(db),
     relics: buildRelicIndex(inventory, db),
     pending: buildPendingIndex(inventory, db),
@@ -217,7 +247,7 @@ function candidates(label: string, itemName: string): string[] {
 /** Copies of what a row asks for, or null when nothing in the inventory answers
  *  the label. Null is unknown, and an unknown row is never silently done. */
 export function ownedForLabel(state: PlayerState, label: string, itemName: string): number | null {
-  const relic = state.relics.get(label.replace(RELIC_SUFFIX, "").trim().toLowerCase());
+  const relic = state.relics.get(nameKey(label.replace(RELIC_SUFFIX, "")));
   if (relic !== undefined) return relic;
 
   const matches = itemsForLabel(state, label, itemName);
@@ -235,12 +265,22 @@ export function blueprintFor(
   itemDb: Record<string, ItemDbEntry>,
   label: string,
 ): { held: number; reusable: boolean } | null {
-  const matches = state.names.get(`${label.trim().toLowerCase()} blueprint`);
+  const matches = state.names.get(nameKey(`${label} blueprint`));
   if (!matches) return null;
   return {
     held: matches.reduce((sum, uniqueName) => sum + (state.owned.get(uniqueName) ?? 0), 0),
     reusable: matches.some((uniqueName) => itemDb[uniqueName]?.reusableBlueprint === true),
   };
+}
+
+/** Built modular items holding any part the labels name. */
+export function assembledFrom(
+  state: PlayerState,
+  labels: readonly string[],
+  itemName: string,
+): number {
+  const parts = new Set(labels.flatMap((label) => itemsForLabel(state, label, itemName) ?? []));
+  return state.assemblies.filter((assembly) => assembly.some((part) => parts.has(part))).length;
 }
 
 /** The item database rows a label names, or null when it names none. */
@@ -250,7 +290,7 @@ export function itemsForLabel(
   itemName: string,
 ): readonly string[] | null {
   for (const candidate of candidates(label, itemName)) {
-    const matches = state.names.get(candidate.trim().toLowerCase());
+    const matches = state.names.get(nameKey(candidate));
     if (matches) return matches;
   }
   return null;
@@ -263,7 +303,7 @@ function questNames(label: string): string[] {
 
 function questPartDone(state: QuestState, label: string): boolean | null {
   for (const name of questNames(label)) {
-    const matches = state.names.get(name.trim().toLowerCase());
+    const matches = state.names.get(nameKey(name));
     if (!matches) continue;
     const keychains = matches.filter((uniqueName) => QUEST_KEYCHAIN.test(uniqueName));
     if (keychains.length === 0) continue;
@@ -290,33 +330,50 @@ export function pendingBuildFor(
   itemName: string,
 ): PendingBuild | null {
   for (const candidate of candidates(label, itemName)) {
-    const match = state.pending.get(candidate.trim().toLowerCase());
+    const match = state.pending.get(nameKey(candidate));
     if (match) return match;
   }
   return null;
 }
 
-const SYNDICATE_TAGS: Record<string, string> = {
-  ostrons: "CetusSyndicate",
-  ostron: "CetusSyndicate",
-  holdfasts: "ZarimanSyndicate",
-  "solaris united": "SolarisSyndicate",
-  entrati: "EntratiSyndicate",
-  "the holdfasts": "ZarimanSyndicate",
-  "the hex": "HexSyndicate",
-  cavia: "EntratiLabSyndicate",
-  ventkids: "VentKidsSyndicate",
+/** Standing the rank table has no row for: Simaris has no ranks, and "Syndicate
+ *  Standing" is paid by whichever faction syndicate the player stands best with. */
+const UNRANKED_TAGS: Record<string, readonly string[]> = {
+  simaris: ["LibrarySyndicate"],
+  "cephalon simaris": ["LibrarySyndicate"],
+  ostrons: ["CetusSyndicate"],
+  syndicate: SYNDICATE_RANKS.filter((meta) => meta.kind === "normal").map((meta) => meta.tag),
 };
 
-/** "Solaris United standing" -> the affiliation tag that holds its balance. */
-function standingTag(currency: string): string | null {
-  if (!STANDING_SUFFIX.test(currency)) return null;
+/** "Solaris United standing" -> the affiliation tags that can pay it. */
+function standingTags(currency: string): readonly string[] {
+  if (!STANDING_SUFFIX.test(currency)) return [];
   const name = currency.replace(STANDING_SUFFIX, "").trim();
-  return SYNDICATE_TAGS[name.toLowerCase()] ?? name;
+  const ranked = rankSyndicate(name);
+  return ranked ? [ranked.tag] : (UNRANKED_TAGS[name.toLowerCase()] ?? []);
 }
 
+/** Null for a currency that is not standing, or a payload with no affiliations. */
 export function standingBalance(state: PlayerState, currency: string): number | null {
-  const tag = standingTag(currency);
-  if (!tag) return null;
-  return state.standing.get(tag) ?? null;
+  const tags = standingTags(currency);
+  const standing = state.standing;
+  if (tags.length === 0 || !standing) return null;
+  return Math.max(...tags.map((tag) => standing.get(tag) ?? 0));
+}
+
+/** What the player holds of anything a plan counts: standing, credits or items.
+ *  Null when nothing the app reads answers the label. */
+export function balanceFor(state: PlayerState, label: string, itemName: string): number | null {
+  if (CREDITS.test(label.trim())) return state.credits;
+  return standingBalance(state, label) ?? ownedForLabel(state, label, itemName);
+}
+
+/** The one read of what a plan names, through the resource store's spelling. */
+export function readLabel(
+  state: PlayerState,
+  label: string,
+  itemName: string,
+  lookup: ResourceLookup,
+): number | null {
+  return balanceFor(state, lookup(label)?.name ?? label, itemName);
 }

@@ -30,6 +30,8 @@ export interface ResourceEntry {
   /** Null on an auto-drafted entry nobody has curated yet. */
   kind: ResourceKind | null;
   harvestable: boolean;
+  /** A star-chart staple every build draws on, read as one Basics line. */
+  common: boolean;
   map: string | null;
   best: ResourceSource | null;
   alternates: ResourceSource[];
@@ -118,6 +120,7 @@ function buildTable(source: unknown): Map<string, ResourceEntry> {
       spelled: name,
       kind: typeof raw.kind === "string" && KINDS.has(raw.kind) ? (raw.kind as ResourceKind) : null,
       harvestable: raw.harvestable === true,
+      common: raw.common === true,
       map: typeof raw.map === "string" ? raw.map : null,
       best: readSource(raw.best),
       alternates: readList(raw.alternates, readSource),

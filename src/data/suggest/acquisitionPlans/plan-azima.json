@@ -4,10 +4,20 @@
   "effort": 1,
   "source": "shop",
   "tradeable": false,
-  "progress": { "have": 0, "need": 1, "unit": "weapon" },
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "weapon"
+  },
   "badges": [
-    { "text": "100 login days", "tone": "warn" },
-    { "text": "Daily Tribute", "tone": "info" }
+    {
+      "text": "100 login days",
+      "tone": "warn"
+    },
+    {
+      "text": "Daily Tribute",
+      "tone": "info"
+    }
   ],
   "prices": [],
   "groups": [
@@ -15,7 +25,7 @@
       "type": "gate",
       "place": "DAILY TRIBUTE, ORBITER",
       "sub": null,
-      "activity": "log in until a weapon milestone, then pick it",
+      "activity": "Daily Tribute milestone",
       "meta": "milestones at Day 100, 300, 500 and 700",
       "mode": null,
       "live": null,
@@ -29,17 +39,19 @@
           "label": "Mastery Rank 6",
           "note": "needed to equip it",
           "alt": null,
-          "done": false
+          "done": false,
+          "task": true
         },
         {
           "qty": null,
-          "label": "Azima (login pick)",
-          "note": "offered from Day 100, then every 200 days until you pick it",
+          "label": "Azima",
+          "note": "login pick; offered from Day 100, then every 200 days until you pick it",
           "alt": null,
           "done": false
         }
       ],
       "conditions": [
+        "Log in until a weapon milestone, then pick Azima.",
         "Daily Tribute counts total login days, not a consecutive streak, so missing a day only costs that day."
       ],
       "bonuses": [

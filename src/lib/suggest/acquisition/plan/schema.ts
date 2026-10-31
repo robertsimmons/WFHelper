@@ -44,8 +44,6 @@ export const PLAN_MAP_KEYS = [
   "archarbor",
 ] as const;
 
-type PlanMapKey = (typeof PLAN_MAP_KEYS)[number];
-
 export const PLAN_LIVE_STATES = ["open", "blocked", "waiting"] as const;
 
 export type PlanLiveState = (typeof PLAN_LIVE_STATES)[number];
@@ -142,6 +140,10 @@ export interface PlanRow {
   pick?: PlanPick | null;
   /** What the row costs. A group's spends split across its rows by these. */
   buy?: PlanPurchase | null;
+  /** A step only the player can answer; it names no item. */
+  task?: boolean;
+  /** The row counts built modular items holding any part the plan's rows name. */
+  assembled?: boolean;
 }
 
 export interface PlanGroup {
@@ -165,6 +167,8 @@ export interface PlanGroup {
   ref?: string | null;
   /** The quest this group's one-time reward comes from. */
   quest?: string | null;
+  /** What a set of two or more rows reads as, such as "Strike blueprints". */
+  title?: string | null;
 }
 
 /** The route once the plan's quest is done and its reward is spent. */
@@ -212,6 +216,10 @@ export interface AuthoredPlan {
   materials?: PlanMaterial[];
   afterQuest?: PlanAfterQuest | null;
   routes?: PlanRoute[];
+  /** The key of the shop file that sells the item's blueprints. */
+  shop?: string;
+  /** Each group opens the next, so the steps run in order and never share a trip. */
+  sequence?: boolean;
 }
 
 export function altText(alt: PlanAlt): string {

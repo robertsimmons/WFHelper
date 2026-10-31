@@ -48,8 +48,8 @@
     {
       "type": "currency",
       "place": "HALAKO PERIMETER, ZARIMAN",
-      "sub": "Chrysalith: turn Voidplumes in to Archimedean Yonta",
-      "activity": "Exterminate; wake and kill the dormant Void Angel, then sweep the map",
+      "sub": "Archimedean Yonta",
+      "activity": "Earn Holdfasts Standing",
       "meta": "5,000 to rank up, 5,500 for the blueprint",
       "mode": "solo or public squad",
       "live": null,
@@ -63,13 +63,16 @@
       "rows": [
         {
           "qty": null,
-          "label": "Voidplumes turned in to Archimedean Yonta",
-          "note": "Pinion 5,000, Quill 2,500, Crest 2,000, Vane 1,000, Down 500 each",
+          "label": "Holdfasts standing",
+          "note": "Voidplumes turned in to Archimedean Yonta: Pinion 5,000, Quill 2,500, Crest 2,000, Vane 1,000, Down 500 each",
           "alt": null,
           "done": false
         }
       ],
-      "conditions": [],
+      "conditions": [
+        "Run Exterminate, wake and kill the dormant Void Angel, then sweep the map for Voidplumes.",
+        "Turn the Voidplumes in to Archimedean Yonta in the Chrysalith."
+      ],
       "bonuses": [],
       "disclosures": [],
       "ref": "Holdfasts Standing"
@@ -203,35 +206,40 @@
           "label": "Innodem kills",
           "note": "Evolution I; unlocks Incarnon Form",
           "alt": null,
-          "done": false
+          "done": false,
+          "task": true
         },
         {
           "qty": "6",
           "label": "Incarnon Form activations in one mission",
           "note": "Evolution II",
           "alt": null,
-          "done": false
+          "done": false,
+          "task": true
         },
         {
           "qty": "3",
           "label": "Heavy Attacks on Thrax Centurions or Legates",
           "note": "Evolution III",
           "alt": "Void Cascade",
-          "done": false
+          "done": false,
+          "task": true
         },
         {
           "qty": "12",
           "label": "Void Flood Ruptures closed",
           "note": "Evolution IV",
           "alt": null,
-          "done": false
+          "done": false,
+          "task": true
         },
         {
           "qty": null,
           "label": "Solo mission with an Incarnon weapon in every slot",
           "note": "Evolution V",
           "alt": null,
-          "done": false
+          "done": false,
+          "task": true
         }
       ],
       "conditions": ["Evolution V: Incarnon Genesis weapons count, an Exalted weapon voids it."],

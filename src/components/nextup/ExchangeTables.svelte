@@ -52,7 +52,7 @@
       name: label(offer.name, offer.uniqueName),
       art: art(offer.name, offer.uniqueName),
     })),
-    ...(exchange.kuva ? [{ key: "kuva", name: $tr("nextUp.exchangeKuva"), art: art("Kuva") }] : []),
+    ...(exchange.kuva ? [{ key: "kuva", name: $tr("stats.resource.kuva"), art: art("Kuva") }] : []),
   ]);
   const matCols = $derived(`${LEAD} repeat(${columns.length}, minmax(0,6rem))`);
 </script>
@@ -109,9 +109,9 @@
     {#if exchange.kuva}
       <div class={ROW} style="grid-template-columns: {OFFER_COLS}" data-exchange-offer="kuva">
         <span class="flex min-w-0 items-center gap-2">
-          {@render icon(art("Kuva"), $tr("nextUp.exchangeKuva"), "h-7 w-7")}
+          {@render icon(art("Kuva"), $tr("stats.resource.kuva"), "h-7 w-7")}
           <span class="min-w-0 truncate text-sm text-text-primary"
-            >{$tr("nextUp.exchangeKuva")}</span
+            >{$tr("stats.resource.kuva")}</span
           >
         </span>
         <span class="{NUM} text-text-primary">{count(exchange.kuva.held)}</span>
@@ -119,7 +119,7 @@
         <span class="{NUM} {TONE.plain}">-</span>
         <span class="{NUM} {TONE.good}">x{count(exchange.kuva.quantity)}</span>
         <span class="flex"
-          ><span class="{TAG} {CHIP_TONE.plain}">{$tr("nextUp.exchangeWeekly")}</span></span
+          ><span class="{TAG} {CHIP_TONE.plain}">{$tr("dailies.groupWeekly")}</span></span
         >
       </div>
     {/if}

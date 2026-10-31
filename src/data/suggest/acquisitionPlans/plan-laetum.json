@@ -53,8 +53,8 @@
     {
       "type": "currency",
       "place": "HALAKO PERIMETER, ZARIMAN",
-      "sub": "Chrysalith: turn Voidplumes in to Archimedean Yonta",
-      "activity": "Exterminate, then sweep the map",
+      "sub": "Archimedean Yonta",
+      "activity": "Earn Holdfasts Standing",
       "meta": null,
       "mode": null,
       "live": null,
@@ -68,13 +68,16 @@
       "rows": [
         {
           "qty": null,
-          "label": "Voidplumes turned in to Archimedean Yonta",
-          "note": "Pinion 5,000, Quill 2,500, Crest 2,000, Vane 1,000, Down 500 each",
+          "label": "Holdfasts standing",
+          "note": "Voidplumes turned in to Archimedean Yonta: Pinion 5,000, Quill 2,500, Crest 2,000, Vane 1,000, Down 500 each",
           "alt": null,
           "done": false
         }
       ],
-      "conditions": [],
+      "conditions": [
+        "Run Exterminate, then sweep the map for Voidplumes.",
+        "Turn the Voidplumes in to Archimedean Yonta in the Chrysalith."
+      ],
       "bonuses": [],
       "disclosures": [],
       "ref": "Holdfasts Standing"
@@ -160,35 +163,40 @@
           "label": "Laetum kills",
           "note": "Evolution I; unlocks Incarnon form",
           "alt": null,
-          "done": false
+          "done": false,
+          "task": true
         },
         {
           "qty": "8",
           "label": "Eximus kills in Incarnon form",
           "note": "Evolution II",
           "alt": "Elite Sanctuary Onslaught has a high Eximus spawn rate",
-          "done": false
+          "done": false,
+          "task": true
         },
         {
           "qty": "8",
           "label": "Void Angel primary-fire headshots without reloading",
           "note": "Evolution III",
           "alt": null,
-          "done": false
+          "done": false,
+          "task": true
         },
         {
           "qty": "12",
           "label": "Void Flood Ruptures closed",
           "note": "Evolution IV",
           "alt": null,
-          "done": false
+          "done": false,
+          "task": true
         },
         {
           "qty": null,
           "label": "Solo mission with Incarnon weapons in every slot",
           "note": "Evolution V",
           "alt": null,
-          "done": false
+          "done": false,
+          "task": true
         }
       ],
       "conditions": [

@@ -3,6 +3,7 @@
   "kind": "companion",
   "effort": 8,
   "source": "standing",
+  "sequence": true,
   "tradeable": "blueprints only",
   "progress": {
     "have": 0,
@@ -45,41 +46,20 @@
       "role": null
     }
   ],
-  "materials": [],
-  "groups": [
+  "materials": [
     {
-      "type": "relics",
-      "place": "KUVA SIPHON, ANY",
-      "sub": null,
-      "activity": "Requiem relics",
-      "meta": "3 mods a Sister",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "3",
-          "label": "Requiem mods, one full sequence",
-          "note": "any Hound kill also drops a Requiem relic 5% of the time",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Each Sister needs her own three-Requiem sequence, equipped in the right order before she can be vanquished."
-      ],
-      "bonuses": [],
-      "disclosures": []
-    },
+      "qty": "1",
+      "label": "Zenith Granum Crown",
+      "note": "one per Granum Void attempt"
+    }
+  ],
+  "groups": [
     {
       "type": "boss",
       "place": "HYDRA, PLUTO",
-      "sub": null,
-      "activity": "Capture, then the Granum Void",
-      "meta": "a Sister per attempt",
+      "sub": "Corpus Ship, Capture",
+      "activity": "spawn a Sister whose Hound has the Dorma Model",
+      "meta": "Nightmare Granum Void, a Sister per Candidate",
       "mode": "solo, normal, not Steel Path",
       "live": null,
       "skip": null,
@@ -89,27 +69,150 @@
       "rows": [
         {
           "qty": null,
-          "label": "Dorma Model",
+          "label": "Sister Candidate",
+          "note": "any weapon; her Hound's Model is rolled when you Mercy her, one of three",
+          "alt": null,
+          "done": false,
+          "task": true
+        }
+      ],
+      "conditions": [
+        "Open the Nightmare Granum Void and inspect Sister Candidates.",
+        "Kill the Treasurer when it appears. Spend the Crown at a Golden Hand Tribute, then kill 25 Errant Specters (25 more per extra squadmate) for Nightmare Rank 1. A Candidate then appears on the Corpus Ship.",
+        "Only the last player to damage her can Mercy her, so run solo. You cannot Mercy while any Lich, Sister, or Coda is active. A Candidate can flee, so catch her first."
+      ],
+      "bonuses": [],
+      "disclosures": [
+        {
+          "title": "the fast Sister loop",
+          "body": "Solo, normal, not Steel Path, Capture on Hydra, Pluto. A squad raises the kill requirement inside the Granum Void by 25 per player, so run it alone. Waypoint a Golden Hand Tribute first, kill the capture target, then come back and offer the Zenith crown; if no Tribute has shown up halfway through the tile, restart, and a Tribute within roughly 200m of extraction can mean the Candidate never spawns. Inside the Void, Xoris heavy attacks charge it; detonating it on a captive Solaris adds 20 seconds, and Specter Particles add 5. Kill the Treasurer every cycle for the next crown, and hit Replay on the end screen to re-run."
+        }
+      ]
+    },
+    {
+      "type": "relics",
+      "place": "KUVA SIPHON, ANY PLANET",
+      "sub": null,
+      "activity": "get Requiem mods: crack Requiem relics",
+      "meta": "Requiem Eterna Relics, 3 mods per Sister",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "3",
+          "label": "charged Requiem mods",
+          "note": "one sequence; each has 3 charges",
+          "alt": null,
+          "done": false,
+          "task": true
+        },
+        {
+          "qty": null,
+          "label": "Oull",
+          "note": "wildcard Requiem; optional",
+          "alt": "when you land the full correct sequence, 25% to drop",
+          "done": false
+        }
+      ],
+      "conditions": [
+        "A Kuva Flood always drops an Eterna Relic, and each of your Sister's Hounds has a 5% chance to drop a Requiem Relic.",
+        "Open them in a Requiem Fissure on the Kuva Fortress. They cannot be refined with Void Traces and hold only the eight Requiem mods, never Oull.",
+        "Each solved sequence uses one charge from every equipped mod. A mod with no charges is Defiled and unusable.",
+        "Palladino sells the retired Requiem I-IV relics for 10 Riven Slivers each, 10 per week of each."
+      ],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "boss",
+      "place": "SISTER INFLUENCE NODES",
+      "sub": "Venus through Pluto",
+      "activity": "find the Requiem sequence",
+      "meta": "Mercy Hounds, reveal all 3 Requiems, then find their order",
+      "mode": "squad shares Murmurs",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": "3",
+          "label": "revealed Requiems",
+          "note": "Murmurs reveal the mods, not their order",
+          "alt": null,
+          "done": false,
+          "task": true
+        },
+        {
+          "qty": null,
+          "label": "correct Parazon sequence",
+          "note": "sends the Sister to Neptune Proxima",
+          "alt": null,
+          "done": false,
+          "task": true
+        }
+      ],
+      "conditions": [
+        "Mercy Hounds on your Sister's nodes. Each one adds a Murmur and fills her rage meter.",
+        "Do not stab your Sister until one Requiem is revealed. After that, equip the known mods on your Parazon and stab every time she is down.",
+        "A wrong stab stops at the first wrong mod, ranks the Sister up (Venus, Phobos, Jupiter, Neptune, Pluto), and gives the squad 10 Murmurs.",
+        "Kill her Hound before her health runs out; a Hound alive at that point self-destructs and gives no Murmur.",
+        "Each node under her influence takes about 0.7% of your mission credits. You get it all back when she is defeated.",
+        "Let her stumble three times without stabbing and she leaves without ranking up."
+      ],
+      "bonuses": [
+        "Each stab makes her drop 7,000 to 10,000 credits.",
+        "A Requiem Ultimatum forces your Sister out on one of her nodes. Palladino sells one a week for 10 Riven Slivers; use it solo, since a squad can spawn a teammate's Sister instead."
+      ],
+      "disclosures": [
+        {
+          "title": "the safe four-stab routine",
+          "body": "Put the first revealed Requiem in slot 1 with any two others behind it. If the stab fails, move it to slot 2, then slot 3. Put each later reveal in the first slot not ruled out. The fourth stab is guaranteed."
+        },
+        {
+          "title": "the same routine with Oull",
+          "body": "Put Oull in slot 1 and the first known Requiem in slot 2; swap them if it fails. If the known one failed slot 1, move it to slot 3. Put the second reveal in the first unknown slot, and move it to slot 2 if it fails. The last stab fixes the order. Replace Oull with the third reveal once you have it."
+        }
+      ]
+    },
+    {
+      "type": "boss",
+      "place": "NEPTUNE PROXIMA",
+      "sub": "Sister Confrontation",
+      "activity": "defeat the Sister",
+      "meta": "Railjack Skirmish, choose Vanquish",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Dorma Hound",
           "note": "on her own prebuilt Hound, or as her random component blueprint",
           "alt": null,
           "done": false
         }
       ],
       "conditions": [
-        "Vanquish, never convert: a converted Sister hands over no Hound and no component blueprint.",
-        "Her Hound's Model is rolled when she is created, one of three.",
-        "A Parazon Mercy on the downed Candidate is what creates the Sister in the first place.",
-        "The Treasurer escapes if you take too long, and a crown is spent on every Granum Void entry."
+        "Clear the crewships and Security Nodes, board her ship, kill her Hound and two Warframe Specters, then beat her single health bar.",
+        "Choose Vanquish, never Convert: a converted Sister hands over no Hound and no component blueprint. No choice within 20 seconds Vanquishes.",
+        "Check her Hound's Model once she appears; only a Dorma Hound is this one.",
+        "The Confrontation node needs one Railjack Intrinsic at rank 3."
       ],
       "bonuses": [
+        "Everything she taxed comes back, and every squad member gets a Corrupted Holokey.",
         "Each vanquish also hands over her Tenet weapon, whatever Model her Hound carries.",
-        "Every squad member who vanquishes with her gets a random Hound component blueprint."
+        "Every vanquish also drops one random Hound component blueprint."
       ],
       "disclosures": [
-        {
-          "title": "the fast Sister loop",
-          "body": "Solo, normal, not Steel Path, Capture on Hydra, Pluto. A squad raises the kill requirement inside the Granum Void by 25 per player, so run it alone. Waypoint a Golden Hand Tribute first, kill the capture target, then come back and offer the Zenith crown; if no Tribute has shown up halfway through the tile, restart, and a Tribute within roughly 200m of extraction can mean the Candidate never spawns. Inside the Void, Xoris heavy attacks charge it; detonating it on a captive Solaris adds 20 seconds, and Specter Particles add 5. Kill the Treasurer every cycle for the next crown, and hit Replay on the end screen to re-run."
-        },
         {
           "title": "you don't need to build one",
           "body": "The prebuilt Hound a vanquished Sister leaves in your Foundry works exactly like one you build, including for Mastery once gilded. Check which Model each new Sister's Hound carries before committing to the fight. If you build from a dropped blueprint, the Dorma Model costs 50,000 credits, 5 Spectral Debris, 5 Gallium, 2 Radian Sentirum and 10 Mirewinder Parallel Biodes over 24h, and you still need a Core, Bracket and Stabilizer, each its own Sister blueprint drop."
@@ -147,7 +250,7 @@
       "type": "currency",
       "place": "ORB VALLIS, VENUS",
       "sub": null,
-      "activity": "Conservation, plus Bounty 1 for the bonds",
+      "activity": "Earn Solaris United Standing",
       "meta": null,
       "mode": null,
       "live": null,
@@ -189,6 +292,7 @@
         }
       ],
       "conditions": [
+        "Conservation, plus Bounty 1 for the bonds.",
         "Doer is the rank gilding needs; ranking further to Cove buys nothing this plan needs."
       ],
       "bonuses": [],
@@ -318,7 +422,8 @@
                 "amount": "5,000"
               }
             ]
-          }
+          },
+          "task": true
         }
       ],
       "conditions": [

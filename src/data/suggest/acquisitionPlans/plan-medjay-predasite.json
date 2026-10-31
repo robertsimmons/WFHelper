@@ -74,7 +74,7 @@
       "type": "currency",
       "place": "CAMBION DRIFT, DEIMOS",
       "sub": null,
-      "activity": "Entrati standing for the rank-ups, kit and gild",
+      "activity": "Earn Entrati Standing",
       "meta": null,
       "mode": null,
       "live": null,
@@ -95,6 +95,7 @@
         }
       ],
       "conditions": [
+        "The standing pays for the rank-ups, kit and gild.",
         "Rank 1 Stranger covers the capture and revivify; Rank 3 only gates the gild."
       ],
       "bonuses": [],
@@ -185,70 +186,6 @@
       "type": "vendor",
       "place": "SON, NECRALISK",
       "sub": null,
-      "activity": "buy the Mutagen and Antigen blueprints",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [
-        {
-          "currency": "Entrati Standing",
-          "amount": "2,500"
-        }
-      ],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Leptosam Mutagen Blueprint",
-          "note": null,
-          "alt": "pricier Mutagens at Ranks 2-4",
-          "done": false,
-          "buy": {
-            "price": [
-              {
-                "currency": "Entrati Standing",
-                "amount": "1,250"
-              }
-            ],
-            "rank": {
-              "syndicate": "Entrati",
-              "level": 1
-            }
-          }
-        },
-        {
-          "qty": null,
-          "label": "Iranon Antigen Blueprint",
-          "note": null,
-          "alt": "pricier Antigens at Ranks 2-4",
-          "done": false,
-          "buy": {
-            "price": [
-              {
-                "currency": "Entrati Standing",
-                "amount": "1,250"
-              }
-            ],
-            "rank": {
-              "syndicate": "Entrati",
-              "level": 1
-            }
-          }
-        }
-      ],
-      "conditions": [
-        "Mutagen and Antigen change resistances, polarity and looks; any pair gives the same Mastery."
-      ],
-      "bonuses": [],
-      "disclosures": [],
-      "ref": "Entrati Standing"
-    },
-    {
-      "type": "vendor",
-      "place": "SON, NECRALISK",
-      "sub": null,
       "activity": "buy the capture kit",
       "meta": null,
       "mode": null,
@@ -284,7 +221,7 @@
       "type": "bounty",
       "place": "CAMBION DRIFT, DEIMOS",
       "sub": "Vome cycle",
-      "activity": "conservation at a Predasite call point during Vome",
+      "activity": "Conservation",
       "meta": "rare",
       "mode": "Vome",
       "live": null,
@@ -298,10 +235,12 @@
           "label": "Weakened Medjay Predasite",
           "note": "capture only after Infested damage it",
           "alt": null,
-          "done": false
+          "done": false,
+          "task": true
         }
       ],
       "conditions": [
+        "Use a Predasite call point during Vome.",
         "The Medjay Predasite appears only during Vome.",
         "A healthy capture gives only Medjay Predasite Tags, not a companion input; it must be Weakened by Infested, before or after tranquilizing it.",
         "Predasites take two tranq shots and resist Warframe abilities, with sleep duration cut to a quarter."
@@ -340,7 +279,8 @@
                 "amount": "5,000"
               }
             ]
-          }
+          },
+          "task": true
         },
         {
           "qty": null,

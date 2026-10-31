@@ -4,6 +4,7 @@
   "effort": 3,
   "source": "duviri",
   "tradeable": false,
+  "shop": "teshin",
   "progress": {
     "have": 0,
     "need": 1,
@@ -63,7 +64,7 @@
       "type": "currency",
       "place": "DUVIRI",
       "sub": "Isleweaver",
-      "activity": "clear Isleweaver, or the Duviri Experience / Lone Story Orowyrm",
+      "activity": "Isleweaver",
       "meta": "50 needed; ignores boosters",
       "mode": null,
       "live": null,
@@ -80,24 +81,28 @@
           "label": "Isleweaver completion",
           "note": "15 on Steel Path; needs The Hex quest",
           "alt": null,
-          "done": false
+          "done": false,
+          "task": true
         },
         {
           "qty": "10",
           "label": "Orowyrm kill (Duviri Experience / Lone Story)",
           "note": "15 on Steel Path",
           "alt": null,
-          "done": false
+          "done": false,
+          "task": true
         },
         {
           "qty": "1",
           "label": "optional Undercroft side portal",
           "note": "3 each on Steel Path; story-stage portals give nothing",
           "alt": null,
-          "done": false
+          "done": false,
+          "task": true
         }
       ],
       "conditions": [
+        "Clear Isleweaver, or kill the Orowyrm in the Duviri Experience or Lone Story.",
         "Isleweaver gives you randomly generated Warframes and weapons, not your own.",
         "Pathos Clamps ignore Resource Boosters, Drop Chance Boosters, blessings and Bountiful Harvest: there is no way to multiply them.",
         "Maw Fang drops only in The Duviri Experience, not the Lone Story or the Circuit, so run at least one Experience for the 5 Fangs."
@@ -105,39 +110,6 @@
       "bonuses": [],
       "disclosures": [],
       "ref": "Pathos Clamp"
-    },
-    {
-      "type": "vendor",
-      "place": "TESHIN'S CAVE",
-      "sub": null,
-      "activity": "buy the blueprint at the melee rack",
-      "meta": "50 Pathos Clamp",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [
-        {
-          "currency": "Pathos Clamp",
-          "amount": "50"
-        }
-      ],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Azothane Blueprint",
-          "note": null,
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Delivers the Warframe-compatible blueprint to the Foundry in the same purchase that unlocks the Drifter version.",
-        "If sold, Cephalon Simaris resells the Warframe blueprint for 100,000 standing."
-      ],
-      "bonuses": [],
-      "disclosures": []
     },
     {
       "type": "foundry",

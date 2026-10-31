@@ -78,7 +78,7 @@
       "type": "bounty",
       "place": "CAMBION DRIFT, DEIMOS",
       "sub": "Fass cycle",
-      "activity": "conservation at a Vulpaphyla call point during Fass",
+      "activity": "Conservation",
       "meta": "rare capture",
       "mode": "Fass",
       "live": null,
@@ -92,10 +92,12 @@
           "label": "Weakened Panzer Vulpaphyla",
           "note": "capture only after Infested damage it",
           "alt": null,
-          "done": false
+          "done": false,
+          "task": true
         }
       ],
       "conditions": [
+        "Use a Vulpaphyla call point during Fass.",
         "Panzers appear only during Fass.",
         "A Panzer takes 3 tranq shots to subdue.",
         "A healthy capture awards Panzer Vulpaphyla Tags, not a companion input; it must be Weakened by Infested, before or after tranquilizing it."
@@ -134,7 +136,8 @@
                 "amount": "5,000"
               }
             ]
-          }
+          },
+          "task": true
         },
         {
           "qty": null,

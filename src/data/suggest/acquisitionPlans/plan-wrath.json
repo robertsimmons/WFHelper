@@ -4,6 +4,7 @@
   "effort": 4,
   "source": "railjack",
   "tradeable": false,
+  "shop": "hunhow",
   "progress": {
     "have": 0,
     "need": 4,
@@ -81,7 +82,7 @@
       "type": "boss",
       "place": "PONTIS TOWER, URANUS PROXIMA",
       "sub": "Scoria's Angel",
-      "activity": "side with Vena, kill Ryoku",
+      "activity": "Ryoku fight",
       "meta": "one blueprint a clear, 14.29% each",
       "mode": null,
       "live": null,
@@ -97,49 +98,25 @@
           "qty": null,
           "label": "Wrath Blueprint",
           "note": "14.29%",
-          "alt": {
-            "text": "or 90 Crimson Talent at Hunhow",
-            "spends": [
-              {
-                "currency": "Crimson Talent",
-                "amount": "90"
-              }
-            ]
-          },
+          "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Wrath Blade Blueprint",
           "note": "14.29%",
-          "alt": {
-            "text": "or 45 Crimson Talent at Hunhow",
-            "spends": [
-              {
-                "currency": "Crimson Talent",
-                "amount": "45"
-              }
-            ]
-          },
+          "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Wrath Handle Blueprint",
           "note": "14.29%",
-          "alt": {
-            "text": "or 45 Crimson Talent at Hunhow",
-            "spends": [
-              {
-                "currency": "Crimson Talent",
-                "amount": "45"
-              }
-            ]
-          },
+          "alt": null,
           "done": false
         }
       ],
-      "conditions": [],
+      "conditions": ["Side with Vena, then kill Ryoku."],
       "bonuses": [
         "Each clear pays 12-16 Crimson Talent, plus up to 4 more (12 on Steel Path) for shooting every green target in the Ramsled flight.",
         "The other four blueprints in the pool are Sirius & Orion parts.",
@@ -152,7 +129,7 @@
       "type": "boss",
       "place": "PONTIS TOWER, URANUS PROXIMA",
       "sub": "The Kuva Wytch",
-      "activity": "side with Ryoku, kill Vena",
+      "activity": "Vena fight",
       "meta": "14.29% a clear",
       "mode": null,
       "live": null,
@@ -168,19 +145,14 @@
           "qty": null,
           "label": "Pride Blade Blueprint",
           "note": "14.29%",
-          "alt": {
-            "text": "or 45 Emerald Talent at Hunhow",
-            "spends": [
-              {
-                "currency": "Emerald Talent",
-                "amount": "45"
-              }
-            ]
-          },
+          "alt": null,
           "done": false
         }
       ],
-      "conditions": ["Wrath's recipe needs this Pride Blade, and Scoria's Angel never drops it."],
+      "conditions": [
+        "Side with Ryoku, then kill Vena.",
+        "Wrath's recipe needs this Pride Blade, and Scoria's Angel never drops it."
+      ],
       "bonuses": [
         "Each clear pays 12-16 Emerald Talent, plus up to 4 more (12 on Steel Path) for shooting every green target in the Orowyrm flight."
       ],

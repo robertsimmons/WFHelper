@@ -89,7 +89,7 @@
       "type": "currency",
       "place": "STEEL MERIDIAN SYNDICATE, ORBITER",
       "sub": "Syndicate console",
-      "activity": "pledge, rank to 2 (Valiant), buy the Receiver",
+      "activity": "Earn Steel Meridian Standing",
       "meta": null,
       "mode": null,
       "live": null,
@@ -187,7 +187,7 @@
           }
         }
       ],
-      "conditions": [],
+      "conditions": ["Pledge, rank to 2 (Valiant), then buy the Receiver."],
       "bonuses": ["Steel Meridian standing also raises Red Veil's by 50%."],
       "disclosures": [],
       "ref": "Steel Meridian Standing"
@@ -257,7 +257,7 @@
       "type": "currency",
       "place": "RED VEIL SYNDICATE, ORBITER",
       "sub": "Syndicate console",
-      "activity": "pledge, rank to 2 (Honored), buy the Stock",
+      "activity": "Earn Red Veil Standing",
       "meta": null,
       "mode": null,
       "live": null,
@@ -355,7 +355,10 @@
           }
         }
       ],
-      "conditions": ["Earning Red Veil standing lowers Cephalon Suda by 50%."],
+      "conditions": [
+        "Pledge, rank to 2 (Honored), then buy the Stock.",
+        "Earning Red Veil standing lowers Cephalon Suda by 50%."
+      ],
       "bonuses": [],
       "disclosures": [],
       "ref": "Red Veil Standing"
@@ -425,7 +428,7 @@
       "type": "currency",
       "place": "CEPHALON SUDA, ORBITER",
       "sub": "Syndicate console",
-      "activity": "pledge, rank to 2 (Intriguing), buy the Barrel",
+      "activity": "Earn Cephalon Suda Standing",
       "meta": null,
       "mode": null,
       "live": null,
@@ -523,7 +526,10 @@
           }
         }
       ],
-      "conditions": ["Earning Suda standing lowers Red Veil by 50%."],
+      "conditions": [
+        "Pledge, rank to 2 (Intriguing), then buy the Barrel.",
+        "Earning Suda standing lowers Red Veil by 50%."
+      ],
       "bonuses": [],
       "disclosures": [],
       "ref": "Cephalon Suda Standing"

@@ -4,6 +4,7 @@
   "effort": 8,
   "source": "repeat",
   "tradeable": "parts only",
+  "shop": "otak",
   "progress": {
     "have": 0,
     "need": 4,
@@ -43,7 +44,7 @@
       "type": "farm",
       "place": "TYANA PASS, MARS",
       "sub": null,
-      "activity": "Mirror Defense: defend Rania's crystal on Mars, cross the Void tunnel, defend Belric's on Venus",
+      "activity": "Mirror Defense",
       "meta": "one rotation is about 6 min; rewards follow AABC",
       "mode": null,
       "live": null,
@@ -56,80 +57,33 @@
           "qty": null,
           "label": "Corufell Blueprint",
           "note": "Rotation A, 10%; rounds 1, 2, 5, 6",
-          "alt": {
-            "text": "or buy from Otak",
-            "spends": [
-              {
-                "currency": "Rania Crystal Fragment",
-                "amount": "500"
-              },
-              {
-                "currency": "Belric Crystal Fragment",
-                "amount": "300"
-              }
-            ]
-          },
+          "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Barrel",
           "note": "Rotation B, 8%; rounds 3, 7, 11",
-          "alt": {
-            "text": "or buy from Otak",
-            "spends": [
-              {
-                "currency": "Rania Crystal Fragment",
-                "amount": "250"
-              },
-              {
-                "currency": "Belric Crystal Fragment",
-                "amount": "150"
-              }
-            ]
-          },
+          "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Receiver",
           "note": "Rotation B, 8%; rounds 3, 7, 11",
-          "alt": {
-            "text": "or buy from Otak",
-            "spends": [
-              {
-                "currency": "Rania Crystal Fragment",
-                "amount": "250"
-              },
-              {
-                "currency": "Belric Crystal Fragment",
-                "amount": "150"
-              }
-            ]
-          },
+          "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Handle",
           "note": "Rotation B, 8%; rounds 3, 7, 11",
-          "alt": {
-            "text": "or buy from Otak",
-            "spends": [
-              {
-                "currency": "Rania Crystal Fragment",
-                "amount": "250"
-              },
-              {
-                "currency": "Belric Crystal Fragment",
-                "amount": "150"
-              }
-            ]
-          },
+          "alt": null,
           "done": false
         }
       ],
       "conditions": [
+        "Defend Rania's crystal on Mars, cross the Void tunnel, then defend Belric's on Venus.",
         "Corufell's blueprint is Rotation A and its parts are Rotation B; C holds none of it.",
         "Warframe abilities and weapons can't heal the crystals; only 50 collected Remnants do. Damage reduction works, usually capped near 50%.",
         "Fragments are shared with Citrine, Steflos and the Tyana Pass arcanes, so costs stack fast if you farm those too."

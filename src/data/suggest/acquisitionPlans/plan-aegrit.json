@@ -4,6 +4,7 @@
   "effort": 5,
   "source": "standing",
   "tradeable": false,
+  "shop": "chipper",
   "progress": {
     "have": 0,
     "need": 1,
@@ -54,7 +55,7 @@
       "type": "currency",
       "place": "DRIFTER'S CAMP, EARTH",
       "sub": "Kahl's Garrison",
-      "activity": "Break Narmer weekly mission (solo, as Kahl)",
+      "activity": "Break Narmer weekly mission",
       "meta": "one rank per weekly completion",
       "mode": "solo only",
       "live": null,
@@ -86,6 +87,7 @@
         }
       ],
       "conditions": [
+        "Played solo, as Kahl.",
         "The Garrison ranks once per completed weekly mission; replaying can't speed up reaching Rank 4.",
         "Finishing the mission alone gives zero Stock; weekly Stock comes from the bonus challenges (up to 105) and blue Stock crates.",
         "The weekly mission only rotates after you complete it, so skipping a week leaves the same one waiting.",
@@ -106,44 +108,6 @@
         }
       ],
       "ref": "Stock"
-    },
-    {
-      "type": "vendor",
-      "place": "CHIPPER, DRIFTER'S CAMP",
-      "sub": "Kahl's Garrison",
-      "activity": "buy the blueprint",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [
-        {
-          "currency": "Stock",
-          "amount": "30"
-        }
-      ],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Aegrit Blueprint",
-          "note": "not sold in the Market",
-          "alt": null,
-          "done": false,
-          "buy": {
-            "price": [
-              {
-                "currency": "Stock",
-                "amount": "30"
-              }
-            ]
-          }
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
     },
     {
       "type": "currency",

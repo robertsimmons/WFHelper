@@ -82,7 +82,7 @@
       "type": "currency",
       "place": "RELAY",
       "sub": "Steel Meridian",
-      "activity": "pledge, rank to 3 (Defender), buy the Stock",
+      "activity": "Earn Steel Meridian Standing",
       "meta": "1 Forma, 1 Orokin Catalyst",
       "mode": null,
       "live": null,
@@ -116,7 +116,8 @@
                 "amount": "10,000"
               }
             ]
-          }
+          },
+          "task": true
         },
         {
           "qty": null,
@@ -134,7 +135,7 @@
           }
         }
       ],
-      "conditions": [],
+      "conditions": ["Pledge, rank to 3 (Defender), then buy the Stock."],
       "bonuses": ["Steel Meridian and Red Veil standing each also credit the other at 50%."],
       "disclosures": [],
       "ref": "Steel Meridian Standing"
@@ -144,6 +145,7 @@
       "place": "RELAY",
       "sub": "Steel Meridian",
       "activity": "rank Steel Meridian to 3",
+      "title": "Steel Meridian rank-ups",
       "meta": null,
       "mode": null,
       "live": null,
@@ -235,7 +237,7 @@
       "type": "currency",
       "place": "RELAY",
       "sub": "Red Veil",
-      "activity": "rank to 3 (Esteemed), buy the Limbs",
+      "activity": "Earn Red Veil Standing",
       "meta": "1 Forma, 1 Orokin Catalyst",
       "mode": null,
       "live": null,
@@ -269,7 +271,8 @@
                 "amount": "10,000"
               }
             ]
-          }
+          },
+          "task": true
         },
         {
           "qty": null,
@@ -288,6 +291,7 @@
         }
       ],
       "conditions": [
+        "Rank to 3 (Esteemed), then buy the Limbs.",
         "Buy the Limbs before you rank Suda; Suda and Red Veil are opposed (-50% both ways)."
       ],
       "bonuses": [],
@@ -299,6 +303,7 @@
       "place": "RELAY",
       "sub": "Red Veil",
       "activity": "rank Red Veil to 3",
+      "title": "Red Veil rank-ups",
       "meta": null,
       "mode": null,
       "live": null,
@@ -390,7 +395,7 @@
       "type": "currency",
       "place": "RELAY",
       "sub": "Cephalon Suda",
-      "activity": "switch pledge, rank to 3 (Intelligent), buy the Barrel",
+      "activity": "Earn Cephalon Suda Standing",
       "meta": "1 Forma, 1 Orokin Catalyst",
       "mode": null,
       "live": null,
@@ -424,7 +429,8 @@
                 "amount": "10,000"
               }
             ]
-          }
+          },
+          "task": true
         },
         {
           "qty": null,
@@ -442,7 +448,10 @@
           }
         }
       ],
-      "conditions": ["Do this syndicate last: ranking Suda burns Red Veil standing at -50%."],
+      "conditions": [
+        "Switch pledge, rank to 3 (Intelligent), then buy the Barrel.",
+        "Do this syndicate last: ranking Suda burns Red Veil standing at -50%."
+      ],
       "bonuses": [],
       "disclosures": [],
       "ref": "Cephalon Suda Standing"
@@ -452,6 +461,7 @@
       "place": "RELAY",
       "sub": "Cephalon Suda",
       "activity": "rank Cephalon Suda to 3",
+      "title": "Cephalon Suda rank-ups",
       "meta": null,
       "mode": null,
       "live": null,

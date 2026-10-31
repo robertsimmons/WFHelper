@@ -4,6 +4,7 @@
   "effort": 4,
   "source": "standing",
   "tradeable": false,
+  "shop": "flare",
   "progress": {
     "have": 0,
     "need": 4,
@@ -165,7 +166,7 @@
       "type": "currency",
       "place": "HOLLVANIA",
       "sub": "Solstice Square",
-      "activity": "Stage Defense, defend Flare",
+      "activity": "Stage Defense",
       "meta": "3 waves per rotation, rotations A-A-B-C",
       "mode": null,
       "live": null,
@@ -181,64 +182,33 @@
           "qty": null,
           "label": "Riot-848 Blueprint",
           "note": "0.97% rotation A, 1.98% B, 4.58% C",
-          "alt": {
-            "text": "or 120 Heartstrings at Flare",
-            "spends": [
-              {
-                "currency": "Beating Heartstrings",
-                "amount": "120"
-              }
-            ]
-          },
+          "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Riot-848 Barrel Blueprint",
           "note": "0.97% rotation A, 1.98% B, 4.58% C",
-          "alt": {
-            "text": "or 60 Heartstrings at Flare",
-            "spends": [
-              {
-                "currency": "Beating Heartstrings",
-                "amount": "60"
-              }
-            ]
-          },
+          "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Riot-848 Receiver Blueprint",
           "note": "0.97% rotation A, 1.98% B, 4.58% C",
-          "alt": {
-            "text": "or 60 Heartstrings at Flare",
-            "spends": [
-              {
-                "currency": "Beating Heartstrings",
-                "amount": "60"
-              }
-            ]
-          },
+          "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Riot-848 Stock Blueprint",
           "note": "0.97% rotation A, 1.98% B, 4.58% C",
-          "alt": {
-            "text": "or 60 Heartstrings at Flare",
-            "spends": [
-              {
-                "currency": "Beating Heartstrings",
-                "amount": "60"
-              }
-            ]
-          },
+          "alt": null,
           "done": false
         }
       ],
       "conditions": [
+        "Defend Flare.",
         "A failed mission loses every reward, including Heartstrings from finished rotations.",
         "Temporal Archimedea's Stage Defense stages don't award Heartstrings."
       ],

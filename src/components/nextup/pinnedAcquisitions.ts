@@ -19,9 +19,9 @@ export interface PinnedEntry {
 // Only the count is read, so a step's title never has to be translated here.
 const KEYS: Translator = (key) => key;
 
-/** The step the card names: the first one the plan's steps still have open. */
-export function nextStep(plan: ResolvedPlan, buildable: boolean, t: Translator = KEYS): StepAt {
-  return stepProgress(planSteps(plan, { t, buildable }));
+/** The step the card names: the first line the plan still has open. */
+export function nextStep(plan: ResolvedPlan, t: Translator = KEYS): StepAt {
+  return stepProgress(planSteps(plan, { t }));
 }
 
 /** What a pin is stored as, which is what the resolver named the item. */
@@ -46,8 +46,7 @@ export function pinnedAcquisitions(
     const suggestion = byKey.get(uniqueName);
     if (!suggestion) return [];
     const plan = plans[uniqueName];
-    const buildable = suggestion.details?.acquisition?.parts.buildable === true;
-    return [{ uniqueName, suggestion, steps: plan ? nextStep(plan, buildable, t) : null }];
+    return [{ uniqueName, suggestion, steps: plan ? nextStep(plan, t) : null }];
   });
 }
 

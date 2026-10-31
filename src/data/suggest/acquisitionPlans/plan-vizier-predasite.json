@@ -113,73 +113,10 @@
       "ref": "Entrati Standing"
     },
     {
-      "type": "vendor",
-      "place": "SON, NECRALISK",
-      "sub": null,
-      "activity": "buy the Mutagen and Antigen blueprints",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [
-        {
-          "currency": "Entrati Standing",
-          "amount": "2,500"
-        }
-      ],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Leptosam Mutagen Blueprint",
-          "note": null,
-          "alt": null,
-          "done": false,
-          "buy": {
-            "price": [
-              {
-                "currency": "Entrati Standing",
-                "amount": "1,250"
-              }
-            ],
-            "rank": {
-              "syndicate": "Entrati",
-              "level": 1
-            }
-          }
-        },
-        {
-          "qty": null,
-          "label": "Iranon Antigen Blueprint",
-          "note": null,
-          "alt": null,
-          "done": false,
-          "buy": {
-            "price": [
-              {
-                "currency": "Entrati Standing",
-                "amount": "1,250"
-              }
-            ],
-            "rank": {
-              "syndicate": "Entrati",
-              "level": 1
-            }
-          }
-        }
-      ],
-      "conditions": [
-        "The Mutagen and Antigen only set resistances, tail and head looks and the first polarity."
-      ],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
       "type": "bounty",
       "place": "CAMBION DRIFT, DEIMOS",
       "sub": null,
-      "activity": "tranq a Vizier, then lure Infested onto it",
+      "activity": "Conservation",
       "meta": "common subspecies",
       "mode": null,
       "live": null,
@@ -193,10 +130,12 @@
           "label": "Weakened Vizier Predasite",
           "note": "capture only after Infested hit it",
           "alt": null,
-          "done": false
+          "done": false,
+          "task": true
         }
       ],
       "conditions": [
+        "Tranq a Vizier, then lure Infested onto it.",
         "A Vizier the Infested haven't hit gives only Vizier Predasite Tags and nothing in Son's Revivification menu."
       ],
       "bonuses": ["A rank 30 Predasite donated to Son pays 10 Son Tokens, 15 if gilded."],
@@ -233,7 +172,8 @@
                 "amount": "5,000"
               }
             ]
-          }
+          },
+          "task": true
         }
       ],
       "conditions": [

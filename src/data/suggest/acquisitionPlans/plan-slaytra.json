@@ -4,6 +4,7 @@
   "effort": 5,
   "source": "standing",
   "tradeable": false,
+  "shop": "chipper",
   "progress": {
     "have": 0,
     "need": 1,
@@ -63,7 +64,7 @@
       "type": "currency",
       "place": "DRIFTER'S CAMP, EARTH",
       "sub": "Kahl's Garrison",
-      "activity": "Break Narmer weekly mission (solo, as Kahl)",
+      "activity": "Break Narmer",
       "meta": null,
       "mode": "solo only",
       "live": null,
@@ -95,6 +96,7 @@
         }
       ],
       "conditions": [
+        "Run the weekly mission solo, as Kahl.",
         "Finishing the mission pays no Stock; only the six bonus challenges do, 30 for Deathless and 15 for each of the others.",
         "Missions rotate Sneaky Sabotage, Junk Run, then Prison Break at Monday 00:00 UTC, advancing only after you complete the current one."
       ],
@@ -104,44 +106,6 @@
       ],
       "disclosures": [],
       "ref": "Stock"
-    },
-    {
-      "type": "vendor",
-      "place": "CHIPPER, DRIFTER'S CAMP",
-      "sub": "Kahl's Garrison",
-      "activity": "buy the blueprint",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [
-        {
-          "currency": "Stock",
-          "amount": "30"
-        }
-      ],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Slaytra Blueprint",
-          "note": null,
-          "alt": null,
-          "done": false,
-          "buy": {
-            "price": [
-              {
-                "currency": "Stock",
-                "amount": "30"
-              }
-            ]
-          }
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
     },
     {
       "type": "foundry",

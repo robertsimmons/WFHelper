@@ -3,6 +3,7 @@
   "kind": "secondary",
   "effort": 8,
   "source": "unique",
+  "sequence": true,
   "tradeable": "converted Sister only",
   "progress": {
     "have": 0,
@@ -29,11 +30,55 @@
   ],
   "groups": [
     {
+      "type": "boss",
+      "place": "HYDRA, PLUTO",
+      "sub": "Corpus Ship, Capture",
+      "activity": "spawn a Sister with Tenet Detron",
+      "meta": "Nightmare Granum Void, at most 11 Candidates to land a chosen weapon",
+      "mode": "solo",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Tenet Detron Candidate",
+          "note": "weapon preview must say Tenet Detron",
+          "alt": null,
+          "done": false,
+          "task": true
+        },
+        {
+          "qty": null,
+          "label": "progenitor of choice",
+          "note": "its element becomes the weapon's bonus damage and sets the Sister's abilities",
+          "alt": "Elemental Vice swaps the element later at rank 40",
+          "done": false,
+          "task": true
+        }
+      ],
+      "conditions": [
+        "Open the Nightmare Granum Void and inspect Sister Candidates.",
+        "Kill the Treasurer when it appears. Spend the Crown at a Golden Hand Tribute, then kill 25 Errant Specters (25 more per extra squadmate) for Nightmare Rank 1. A Candidate then appears on the Corpus Ship.",
+        "Stand near the downed Candidate to see her weapon. If it is not the Detron, leave her and finish the mission.",
+        "Only the last player to damage her can Mercy her, so run solo. You cannot Mercy while any Lich, Sister, or Coda is active. A Candidate can flee, so catch her first."
+      ],
+      "bonuses": [],
+      "disclosures": [
+        {
+          "title": "the only reliable weapon reroll",
+          "body": "Finishing the mission without Mercy puts that weapon on a reject list, so it will not show again until every weapon has appeared. Skip every Candidate that is not the one you want."
+        }
+      ]
+    },
+    {
       "type": "relics",
-      "place": "KUVA SIPHON OR KUVA FLOOD, ANY",
+      "place": "KUVA SIPHON, ANY PLANET",
       "sub": null,
-      "activity": "earn and crack Requiem Eterna Relics",
-      "meta": "3 mods per Sister",
+      "activity": "get Requiem mods: crack Requiem relics",
+      "meta": "Requiem Eterna Relics, 3 mods per Sister",
       "mode": null,
       "live": null,
       "skip": null,
@@ -46,7 +91,8 @@
           "label": "charged Requiem mods",
           "note": "one sequence; each has 3 charges",
           "alt": null,
-          "done": false
+          "done": false,
+          "task": true
         },
         {
           "qty": null,
@@ -72,51 +118,10 @@
     },
     {
       "type": "boss",
-      "place": "HYDRA, PLUTO",
-      "sub": "Corpus Ship, Capture",
-      "activity": "open the Nightmare Granum Void and inspect Sister Candidates",
-      "meta": "at most 11 Candidates to land a chosen weapon",
-      "mode": "solo",
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Tenet Detron Candidate",
-          "note": "weapon preview must say Tenet Detron",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "progenitor of choice",
-          "note": "its element becomes the weapon's bonus damage and sets the Sister's abilities",
-          "alt": "Elemental Vice swaps the element later at rank 40",
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Kill the Treasurer when it appears. Spend the Crown at a Golden Hand Tribute, then kill 25 Errant Specters (25 more per extra squadmate) for Nightmare Rank 1. A Candidate then appears on the Corpus Ship.",
-        "Stand near the downed Candidate to see her weapon. If it is not the Detron, leave her and finish the mission.",
-        "Only the last player to damage her can Mercy her, so run solo. You cannot Mercy while any Lich, Sister, or Coda is active. A Candidate can flee, so catch her first."
-      ],
-      "bonuses": [],
-      "disclosures": [
-        {
-          "title": "the only reliable weapon reroll",
-          "body": "Finishing the mission without Mercy puts that weapon on a reject list, so it will not show again until every weapon has appeared. Skip every Candidate that is not the one you want."
-        }
-      ]
-    },
-    {
-      "type": "boss",
       "place": "SISTER INFLUENCE NODES",
       "sub": "Venus through Pluto",
-      "activity": "Mercy Hounds, reveal mods, and test the sequence",
-      "meta": "reveal all 3 Requiems, then find their order",
+      "activity": "find the Requiem sequence",
+      "meta": "Mercy Hounds, reveal all 3 Requiems, then find their order",
       "mode": "squad shares Murmurs",
       "live": null,
       "skip": null,
@@ -129,14 +134,16 @@
           "label": "revealed Requiems",
           "note": "Murmurs reveal the mods, not their order",
           "alt": null,
-          "done": false
+          "done": false,
+          "task": true
         },
         {
           "qty": null,
           "label": "correct Parazon sequence",
           "note": "sends the Sister to Neptune Proxima",
           "alt": null,
-          "done": false
+          "done": false,
+          "task": true
         }
       ],
       "conditions": [
@@ -166,8 +173,8 @@
       "type": "boss",
       "place": "NEPTUNE PROXIMA",
       "sub": "Sister Confrontation",
-      "activity": "Railjack Skirmish; defeat the Sister and Vanquish her",
-      "meta": "choose Vanquish",
+      "activity": "defeat the Sister",
+      "meta": "Railjack Skirmish, choose Vanquish",
       "mode": null,
       "live": null,
       "skip": null,
@@ -186,43 +193,20 @@
       "conditions": [
         "Clear the crewships and Security Nodes, board her ship, kill her Hound and two Warframe Specters, then beat her single health bar.",
         "Choose Vanquish, never Convert. No choice within 20 seconds Vanquishes.",
-        "The weapon ignores its normal Mastery Rank requirement."
+        "The weapon ignores its normal Mastery Rank requirement.",
+        "The Confrontation node needs one Railjack Intrinsic at rank 3."
       ],
       "bonuses": [
         "Everything she taxed comes back, every squad member gets a Corrupted Holokey, and a vanquish has a 25% chance to drop a Requiem Ultimatum.",
         "If she carries an Ephemera you get it. Vanquishing also gives you her Hound.",
         "An unclaimed Tenet weapon in the Foundry sells for 10,000 credits."
       ],
-      "disclosures": []
-    },
-    {
-      "type": "craft",
-      "place": "ORBITER, MODDING",
-      "sub": null,
-      "activity": "optional Valence Fusion toward 60%",
-      "meta": "keep spare copies",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
+      "disclosures": [
         {
-          "qty": null,
-          "label": "60% bonus",
-          "note": "optional; the bonus rolls between 25% and 60%",
-          "alt": "stop at the first usable roll",
-          "done": false
+          "title": "Valence Fusion toward 60%",
+          "body": "Optional; the bonus rolls between 25% and 60%; stop at the first usable roll. Fusion gives 1.1 times the higher bonus, rounded down and capped at 60%. A result of 58% or more becomes 60%, so a donor at 52.8% or better finishes it. Start from the Tenet Detron you want to keep. Its Catalysts, Forma, Exilus adapter, Focus lens, and Elemental Vice stay; the donor's are lost. Claim the donor from the Foundry first, since unclaimed copies cannot be fused. Elemental Vice swaps the bonus element only on a rank 40 weapon (5 Forma). It does not change the percentage. Fusion lets you pick which of the two elements survives."
         }
-      ],
-      "conditions": [
-        "Fusion gives 1.1 times the higher bonus, rounded down and capped at 60%. A result of 58% or more becomes 60%, so a donor at 52.8% or better finishes it.",
-        "Start from the Tenet Detron you want to keep. Its Catalysts, Forma, Exilus adapter, Focus lens, and Elemental Vice stay; the donor's are lost. Claim the donor from the Foundry first, since unclaimed copies cannot be fused.",
-        "Elemental Vice swaps the bonus element only on a rank 40 weapon (5 Forma). It does not change the percentage."
-      ],
-      "bonuses": ["Fusion lets you pick which of the two elements survives."],
-      "disclosures": []
+      ]
     }
   ]
 }

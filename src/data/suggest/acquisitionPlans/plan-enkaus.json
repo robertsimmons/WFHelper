@@ -4,6 +4,7 @@
   "effort": 5,
   "source": "repeat",
   "tradeable": false,
+  "shop": "zorba",
   "progress": {
     "have": 0,
     "need": 4,
@@ -88,7 +89,7 @@
       "type": "currency",
       "place": "VESPER RELAY, VENUS",
       "sub": "Follie's Hunt",
-      "activity": "carry Paint to Shadowgraph Canvases, pop Atramentum Balloons",
+      "activity": "Shadowgraph Canvases",
       "meta": "up to 2,400 Atramentum for the full set",
       "mode": null,
       "live": null,
@@ -109,6 +110,7 @@
         }
       ],
       "conditions": [
+        "Carry Paint to Shadowgraph Canvases and pop Atramentum Balloons.",
         "Solo needs only 2 Paint per canvas; a full squad needs 6.",
         "No Void Sling or Transference while carrying Paint.",
         "Canvas C is always on the bottom floor and A in the top concourse; Drip, Drip, Drip walls routes off from 50% progress."
@@ -128,7 +130,7 @@
       "type": "farm",
       "place": "VESPER RELAY, VENUS",
       "sub": "Follie's Hunt",
-      "activity": "clear the mission for a Rotation A part roll",
+      "activity": "Rotation A clear",
       "meta": "5% normal, 6% Steel Path, per item",
       "mode": null,
       "live": null,
@@ -141,64 +143,33 @@
           "qty": null,
           "label": "Enkaus Blueprint",
           "note": "5%/6%, shares the table with Follie's four parts and junk",
-          "alt": {
-            "text": "or 1,200 Atramentum at Zorba",
-            "spends": [
-              {
-                "currency": "Atramentum",
-                "amount": "1,200"
-              }
-            ]
-          },
+          "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Enkaus Barrel",
           "note": "5%/6%",
-          "alt": {
-            "text": "or 400 Atramentum at Zorba",
-            "spends": [
-              {
-                "currency": "Atramentum",
-                "amount": "400"
-              }
-            ]
-          },
+          "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Enkaus Receiver",
           "note": "5%/6%",
-          "alt": {
-            "text": "or 400 Atramentum at Zorba",
-            "spends": [
-              {
-                "currency": "Atramentum",
-                "amount": "400"
-              }
-            ]
-          },
+          "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Enkaus Stock",
           "note": "5%/6%",
-          "alt": {
-            "text": "or 400 Atramentum at Zorba",
-            "spends": [
-              {
-                "currency": "Atramentum",
-                "amount": "400"
-              }
-            ]
-          },
+          "alt": null,
           "done": false
         }
       ],
       "conditions": [
+        "Clear the mission for a Rotation A part roll.",
         "Zorba prices the main blueprint at three times a component; if a drop comes, you want it to be the main blueprint.",
         "Air Support is disabled, no Focus orbs spawn, and enemies are immune to mercy finishers and Loki's decoy."
       ],

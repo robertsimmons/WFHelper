@@ -104,7 +104,7 @@
       "type": "currency",
       "place": "ORB VALLIS, VENUS",
       "sub": null,
-      "activity": "bounties, mining turn-ins, later Conservation",
+      "activity": "Earn Solaris United Standing",
       "meta": null,
       "mode": "solo",
       "live": null,
@@ -132,66 +132,30 @@
           "label": "part blueprints",
           "note": "Lambeo 1,000, three others 500 each",
           "alt": null,
-          "done": false
+          "done": false,
+          "task": true
         },
         {
           "qty": "6,000",
           "label": "refining blueprints",
           "note": "reusable",
           "alt": null,
-          "done": false
+          "done": false,
+          "task": true
         },
         {
           "qty": "5,000",
           "label": "gild",
           "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "task": true
         }
       ],
-      "conditions": [],
+      "conditions": ["Bounties and mining turn-ins, later Conservation."],
       "bonuses": [],
       "disclosures": [],
       "ref": "Solaris United Standing"
-    },
-    {
-      "type": "vendor",
-      "place": "SMOKEFINGER, FORTUNA",
-      "sub": null,
-      "activity": "buy the refining blueprints",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [
-        {
-          "currency": "Solaris United Standing",
-          "amount": "6,000"
-        }
-      ],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "refining blueprints",
-          "note": null,
-          "alt": null,
-          "done": false,
-          "buy": {
-            "price": [
-              {
-                "currency": "Solaris United Standing",
-                "amount": "6,000"
-              }
-            ],
-            "reusable": true
-          }
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
     },
     {
       "type": "vendor",
@@ -228,6 +192,10 @@
                 "amount": "10,000"
               }
             ]
+          },
+          "rank": {
+            "syndicate": "Solaris United",
+            "level": 1
           }
         },
         {
@@ -247,6 +215,10 @@
                 "amount": "25,000"
               }
             ]
+          },
+          "rank": {
+            "syndicate": "Solaris United",
+            "level": 2
           }
         },
         {
@@ -266,6 +238,10 @@
                 "amount": "50,000"
               }
             ]
+          },
+          "rank": {
+            "syndicate": "Solaris United",
+            "level": 3
           }
         }
       ],
@@ -280,6 +256,7 @@
       "place": "LEGS, FORTUNA",
       "sub": null,
       "activity": "buy the four part blueprints",
+      "title": "Part blueprints",
       "meta": null,
       "mode": null,
       "live": null,
@@ -295,7 +272,7 @@
       "rows": [
         {
           "qty": null,
-          "label": "Lambeo Model",
+          "label": "Lambeo Moa Blueprint",
           "note": "Stasis Field, Shockwave Actuators",
           "alt": null,
           "done": false,
@@ -377,7 +354,7 @@
       "rows": [
         {
           "qty": null,
-          "label": "Lambeo Model",
+          "label": "Lambeo Moa",
           "note": "20 Gorgaricus Spore, 10 Heart Noctrul, 30 Venerdo Alloy, 2 Morphics",
           "alt": null,
           "done": false
@@ -413,6 +390,7 @@
       "place": "LEGS, FORTUNA",
       "sub": null,
       "activity": "Configure a MOA Companion, then gild at rank 30",
+      "title": "Assemble and gild",
       "meta": null,
       "mode": null,
       "live": null,
@@ -439,7 +417,8 @@
                 "amount": "4,000"
               }
             ]
-          }
+          },
+          "task": true
         },
         {
           "qty": null,
@@ -458,7 +437,8 @@
               "syndicate": "Solaris United",
               "level": 3
             }
-          }
+          },
+          "task": true
         }
       ],
       "conditions": [

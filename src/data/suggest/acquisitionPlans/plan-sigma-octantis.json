@@ -25,7 +25,7 @@
       "type": "gate",
       "place": "DAILY TRIBUTE, ORBITER",
       "sub": null,
-      "activity": "log in until a weapon milestone, then pick it",
+      "activity": "Login weapon milestone",
       "meta": "milestones at Day 300, 500 and 700",
       "mode": null,
       "live": null,
@@ -39,17 +39,19 @@
           "label": "Mastery Rank 10",
           "note": "needed to equip it",
           "alt": null,
-          "done": false
+          "done": false,
+          "task": true
         },
         {
           "qty": null,
-          "label": "Sigma & Octantis (login pick)",
-          "note": "one of four weapon choices from Day 300 onward; reappears every 200 days if you pick something else",
+          "label": "Sigma & Octantis",
+          "note": "login pick; one of four weapon choices from Day 300 onward; reappears every 200 days if you pick something else",
           "alt": null,
           "done": false
         }
       ],
       "conditions": [
+        "Log in until a weapon milestone, then pick Sigma & Octantis.",
         "Weapon milestones only start at Day 300; the Day 100 milestone offers Azima, Zenistar and Zenith only.",
         "Daily Tribute counts total login days, not a consecutive streak, so missing a day only costs that day."
       ],

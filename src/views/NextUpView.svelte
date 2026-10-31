@@ -55,7 +55,9 @@
     setPlanRowDone,
     togglePlanAltTaken,
   } from "../stores/acquisitionPlanProgress.js";
+  import { shopPicks } from "../stores/shopPicks.js";
   import { inventoryData, itemDb } from "../stores/data.js";
+  import { masteryData } from "../stores/mastery.js";
   import { ensureDropPools } from "../stores/dropPools.js";
   import { toggleUpgradePin, unpinUpgrades, upgradePins } from "../stores/upgradePins.js";
   import { priceCacheRevision } from "../stores/pricing.js";
@@ -221,9 +223,11 @@
     resolvePinnedPlans(planInputs, {
       itemDb: $itemDb,
       inventory: $inventoryData,
+      mastery: $masteryData,
       world: $worldData,
       relicDb: $relicDb,
       now: resolvedAt,
+      shopPicks: $shopPicks,
     }),
   );
 
@@ -341,7 +345,6 @@
             tier={openTarget.tier}
             uniqueName={openPlan}
             art={openArt}
-            buildable={openTarget.parts.buildable}
             onRefresh={() => void refreshFromInventory()}
             onToggleDone={tickRow}
             onTakeAlt={takeAlt}

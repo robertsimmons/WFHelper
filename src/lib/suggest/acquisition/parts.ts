@@ -7,7 +7,11 @@ import {
   pendingRecipeCounts,
   withoutFoundryPending,
 } from "../../../../config/shared/foundryPending.js";
-import { buildCraftingTree, type CraftingTreeNode } from "../../craftingTree.js";
+import {
+  buildCraftingTree,
+  computeCraftingSummary,
+  type CraftingTreeNode,
+} from "../../craftingTree.js";
 import { buildMasteryPlan, type PlannedItem, type PlannerPin } from "../../masteryPlanner.js";
 import type { ItemDbEntry, RawInventoryData } from "../../../types/inventory.js";
 import type { MessageKey } from "../../i18n.js";
@@ -365,6 +369,7 @@ function partState(
   component: PlannedItem["components"][number],
   role: PartState["role"],
   building: number,
+  held: number,
 ): PartState {
   return {
     uniqueName: component.uniqueName,
@@ -374,8 +379,14 @@ function partState(
     required: component.needed,
     owned: component.owned,
     building,
+    held,
     missing: component.missing,
   };
+}
+
+/** Copies of a part still to get: those wanted, less those built and held. */
+export function partShort(part: PartState): number {
+  return Math.max(0, part.missing - part.held);
 }
 
 function materialState(resource: PlannedItem["resources"][number]): MaterialState {
@@ -394,11 +405,12 @@ function toPartPlan(
   copies: number,
   building: ReadonlyMap<string, number>,
   foundry: boolean,
+  blueprints: (part: string) => number,
   underway: (part: string) => number,
 ): PartPlan {
   if (!planned.hasRecipe) return EMPTY_PLAN;
   const mainRow = planned.components.find((component) => component.isBlueprint) ?? null;
-  const main = mainRow ? partState(mainRow, "main", 0) : null;
+  const main = mainRow ? partState(mainRow, "main", 0, 0) : null;
   const components = planned.components
     .filter((component) => !component.isBlueprint)
     .map((component) =>
@@ -406,11 +418,12 @@ function toPartPlan(
         component,
         "component",
         Math.min(component.owned, building.get(component.uniqueName) ?? 0),
+        blueprints(component.uniqueName),
       ),
     );
   const missing = [...(main ? [main] : []), ...components].filter((part) => part.missing > 0);
   const sourcing = missing
-    .map((part) => ({ ...part, missing: Math.max(0, part.missing - underway(part.uniqueName)) }))
+    .map((part) => ({ ...part, missing: Math.max(0, partShort(part) - underway(part.uniqueName)) }))
     .filter((part) => part.missing > 0);
   // A part still in the foundry is held toward the plan but cannot go into a build yet.
   const inHand = components.every(
@@ -436,13 +449,14 @@ export function totalParts(parts: PartPlan): number {
   return ((parts.main ? 1 : 0) + parts.components.length) * parts.copies;
 }
 
-/** Builds' worth of each part held; a part needed twice per build counts only
- *  once both are in. */
+/** Builds' worth of each part got, built or as its blueprint; a part needed twice
+ *  per build counts only once both are in. */
 export function ownedParts(parts: PartPlan): number {
   let have = 0;
   for (const part of [...(parts.main ? [parts.main] : []), ...parts.components]) {
     const perBuild = Math.max(1, Math.ceil(part.required / parts.copies));
-    have += Math.min(parts.copies, Math.floor(part.owned / perBuild));
+    const got = part.required - partShort(part);
+    have += Math.min(parts.copies, Math.floor(got / perBuild));
   }
   return have;
 }
@@ -479,6 +493,7 @@ function planPins(
   held: Map<string, number>,
   building: ReadonlyMap<string, number>,
   foundry: boolean,
+  blueprints: (part: string) => number,
   underway: (part: string) => number,
   out: Map<string, PartPlan>,
 ): void {
@@ -494,7 +509,7 @@ function planPins(
   plan.items.forEach((item, index) => {
     out.set(
       item.uniqueName,
-      toPartPlan(item, pins[index]?.copies ?? 1, building, foundry, underway),
+      toPartPlan(item, pins[index]?.copies ?? 1, building, foundry, blueprints, underway),
     );
   });
 }
@@ -584,25 +599,60 @@ export function buildPartPlans(
     withBuilding.set(uniqueName, (withBuilding.get(uniqueName) ?? 0) + count);
   }
   const counted = (target: PartPlanTarget): boolean => (target.copies ?? 0) > 0;
+  const blueprints = (part: string): number => {
+    const blueprint = itemDb[part]?.recipe?.blueprintUniqueName;
+    return blueprint && blueprint !== part ? (ownership.get(blueprint) ?? 0) : 0;
+  };
   // A plan that leaves the foundry out still owes no drop for a part it is making.
-  const underway =
-    (foundry: boolean) =>
-    (part: string): number => {
-      const blueprint = itemDb[part]?.recipe?.blueprintUniqueName;
-      const held = blueprint && blueprint !== part ? (ownership.get(blueprint) ?? 0) : 0;
-      return foundry ? held : held + (building.get(part) ?? 0);
-    };
+  const making = (part: string): number => building.get(part) ?? 0;
 
   const out = new Map<string, PartPlan>();
-  planPins(
-    targets.filter((target) => !counted(target)),
-    itemDb,
-    pool,
-    new Map(),
-    false,
-    underway(false),
-    out,
-  );
-  planPins(targets.filter(counted), itemDb, withBuilding, building, true, underway(true), out);
+  const uncounted = targets.filter((target) => !counted(target));
+  planPins(uncounted, itemDb, pool, new Map(), false, blueprints, making, out);
+  planPins(targets.filter(counted), itemDb, withBuilding, building, true, blueprints, () => 0, out);
   return out;
+}
+
+function treeItems(node: CraftingTreeNode, out: Set<string>): Set<string> {
+  for (const child of node.children) {
+    out.add(child.uniqueName);
+    treeItems(child, out);
+  }
+  return out;
+}
+
+export interface BuildTotals {
+  credits: number;
+  minTime: number;
+  maxTime: number;
+  usedFor: CraftingTreeNode["usedFor"];
+}
+
+/** The foundry bill and time for `copies` builds of every root, minus any root
+ *  another one's recipe already makes. Copies are what is still to build, so a
+ *  built copy of `item` counts toward none of them. Builds run side by side for
+ *  the minimum and one after another for the maximum. */
+export function buildTotals(
+  roots: readonly string[],
+  item: string | null,
+  copies: number,
+  itemDb: Record<string, ItemDbEntry>,
+  ownership: ReadonlyMap<string, number>,
+): BuildTotals | null {
+  const pool = new Map(ownership);
+  if (item) pool.delete(item);
+  const trees = roots.flatMap(
+    (root) => buildCraftingTree(root, itemDb, pool, { count: copies }) ?? [],
+  );
+  const inside = new Set<string>();
+  for (const tree of trees) treeItems(tree, inside);
+  const tops = trees.filter((tree) => !inside.has(tree.uniqueName));
+  if (tops.length === 0) return null;
+  const sums = tops.map(computeCraftingSummary);
+  return {
+    credits: sums.reduce((sum, entry) => sum + entry.totalCredits, 0),
+    minTime: Math.max(...sums.map((entry) => entry.minBuildTime)),
+    maxTime: sums.reduce((sum, entry) => sum + entry.maxBuildTime, 0),
+    usedFor: (tops.find((tree) => tree.uniqueName === item) ?? tops[0]).usedFor,
+  };
 }

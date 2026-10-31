@@ -108,7 +108,7 @@ function totalNeeds(needs: readonly MaterialNeed[], lookup: ResourceLookup): Map
   return totals;
 }
 
-function sourceText(source: ResourceSource): string {
+export function sourceText(source: ResourceSource): string {
   const price = (source.buy?.price ?? []).map((spend) => `${spend.amount} ${spend.currency}`);
   const detail = [source.sub, source.activity, ...price].filter(
     (part): part is string => part !== null,
@@ -147,15 +147,6 @@ function purchaseSpends(rows: readonly PlanRow[]): PlanCurrency[] {
 
 function shared(values: readonly (string | null)[]): string | null {
   return values.every((value) => value === values[0]) ? (values[0] ?? null) : null;
-}
-
-function otherSpots(members: readonly Total[]): string | null {
-  const listed = members.filter((member) => (member.entry?.alternates.length ?? 0) > 0);
-  if (listed.length === 0) return null;
-  const spots = (member: Total): string =>
-    (member.entry?.alternates ?? []).map(sourceText).join("; ");
-  if (members.length === 1) return spots(listed[0]);
-  return listed.map((member) => `${member.label}: ${spots(member)}`).join(". ");
 }
 
 /** Materials group under the mission the resource store names, so the same
@@ -216,8 +207,6 @@ export function materialGroups(
     }
     if (group.rows.some((row) => row.buy)) group.spends = purchaseSpends(group.rows);
     group.bonuses = [...new Set(members.flatMap((member) => member.entry?.tips ?? []))];
-    const spots = otherSpots(members);
-    if (spots) group.disclosures.push({ title: "Other spots", body: spots });
     return group;
   });
   return [

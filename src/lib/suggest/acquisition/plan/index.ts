@@ -1,14 +1,14 @@
 import { planFor } from "./data.js";
 import { resolvePlan } from "./resolve.js";
 import type { PlanContext, ResolvedPlan } from "./types.js";
-import type { AcquisitionKind, PartPlan, WeaponClass } from "../types.js";
+import type { AcquisitionKind, NeedReason, PartPlan, WeaponClass } from "../types.js";
 
 export { authoredPlan, authoredPlans, planFor, planRating, planSource, UNRATED } from "./data.js";
 export { generatePrimePlan } from "./prime.js";
 export { primeOverrides } from "./primeOverrides.js";
 export { earnsFlow, outstandingOf, resolvePlan } from "./resolve.js";
 export { validatePlan, validatePrimeOverride, validateResources } from "./validate.js";
-export type { AuthoredPlan, PlanBadge, PlanBadgeTone, PlanLiveState } from "./schema.js";
+export type { AuthoredPlan, PlanBadge, PlanBadgeTone } from "./schema.js";
 export type { ItemTip } from "../tips/data.js";
 export type {
   PlanContext,
@@ -31,6 +31,7 @@ export interface PlanTarget {
   kind?: AcquisitionKind | undefined;
   weaponClass?: WeaponClass | null | undefined;
   isPrime?: boolean | undefined;
+  needs?: readonly NeedReason[] | undefined;
 }
 
 /** Null for an item nothing can plan; it reads as unknown. An authored file wins
@@ -47,5 +48,5 @@ export function resolvePlanFor(target: PlanTarget, context: PlanContext): Resolv
     target.uniqueName && target.parts
       ? { uniqueName: target.uniqueName, parts: target.parts }
       : null;
-  return resolvePlan(authored, context, target.tier, card);
+  return { ...resolvePlan(authored, context, target.tier, card), needs: target.needs };
 }

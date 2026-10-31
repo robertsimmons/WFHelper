@@ -3,6 +3,7 @@
   "kind": "primary",
   "effort": 5,
   "source": "repeat",
+  "sequence": true,
   "tradeable": false,
   "progress": {
     "have": 0,
@@ -26,7 +27,7 @@
   "groups": [
     {
       "sub": null,
-      "meta": "tier 7, an Antivirus mod",
+      "meta": "Antivirus Bounty, tier 7, an Antivirus mod",
       "mode": null,
       "live": null,
       "skip": null,
@@ -47,27 +48,29 @@
       "disclosures": [],
       "type": "farm",
       "place": "HÖLLVANIA CENTRAL MALL",
-      "activity": "Antivirus Bounty",
+      "activity": "get Antivirus mods",
       "rows": [
         {
           "qty": "3",
           "label": "Antivirus mods",
           "note": "only 1 of the 8 works on your Coda, so test 3 at once; tradeable, 3 charges each",
           "alt": null,
-          "done": false
+          "done": false,
+          "task": true
         },
         {
           "qty": null,
           "label": "Potency mods",
           "note": "dropped by Techrot in any Höllvania mission; also tradeable",
           "alt": null,
-          "done": false
+          "done": false,
+          "task": true
         }
       ]
     },
     {
       "sub": null,
-      "meta": "Mercy stabs fill the Malware Disinfection meter",
+      "meta": "Technocyte Coda, Mercy stabs fill the Malware Disinfection meter",
       "mode": null,
       "live": null,
       "skip": null,
@@ -93,35 +96,39 @@
       ],
       "type": "boss",
       "place": "HÖLLVANIA",
-      "activity": "spawn and disinfect a Coda",
+      "activity": "defeat the Technocyte Coda",
       "rows": [
         {
           "qty": null,
           "label": "spawn via Exterminate, Hell-Scrub or Legacyte Harvest",
           "note": "kill Techrot for a Mixtape, then hack with it",
           "alt": null,
-          "done": false
+          "done": false,
+          "task": true
         },
         {
           "qty": null,
           "label": "find the correct Antivirus",
           "note": "all 3 equipped mods are tested at once, no penalty for a wrong guess",
           "alt": null,
-          "done": false
+          "done": false,
+          "task": true
         },
         {
           "qty": null,
           "label": "100% disinfection",
           "note": "a correct stab with 2 Potency mods adds up to 35%; missions alone cap at 95%",
           "alt": null,
-          "done": false
+          "done": false,
+          "task": true
         },
         {
           "qty": null,
           "label": "Technocyte Coda Concert",
           "note": "Railjack skirmish, then the four-phase stage fight; Vanquish it for 10-15 Live Heartcells",
           "alt": null,
-          "done": false
+          "done": false,
+          "task": true
         }
       ]
     },
@@ -145,7 +152,12 @@
         "An empty weapon slot is required before Eleanor will sell to you."
       ],
       "bonuses": [],
-      "disclosures": [],
+      "disclosures": [
+        {
+          "title": "Valence Fusion toward 60%",
+          "body": "Optional; bank copies first. A 58%+ roll rounds up to 60% on its own; a 52.8%+ roll one fusion reaches 60%. Fusion takes the higher of the two bonuses × 1.1, capped at 60%. Fuse into the copy holding your Forma and Catalyst; the donor's investments, including Elemental Vice, are destroyed. Elemental Vice needs the weapon at rank 40 (5 Forma): 50,000 Hex standing at Eleanor's Rank 5, or a Temporal Archimedea or Nightwave drop."
+        }
+      ],
       "type": "vendor",
       "place": "ELEANOR, HÖLLVANIA CENTRAL MALL",
       "activity": "Browse Merchandise",
@@ -154,42 +166,6 @@
           "qty": "1",
           "label": "Coda Hema",
           "note": "random element, 25-60% bonus",
-          "alt": null,
-          "done": false
-        }
-      ]
-    },
-    {
-      "sub": null,
-      "meta": "bank copies first",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "conditions": [
-        "Fusion takes the higher of the two bonuses × 1.1, capped at 60%.",
-        "Fuse into the copy holding your Forma and Catalyst; the donor's investments, including Elemental Vice, are destroyed.",
-        "Elemental Vice needs the weapon at rank 40 (5 Forma): 50,000 Hex standing at Eleanor's Rank 5, or a Temporal Archimedea or Nightwave drop."
-      ],
-      "bonuses": [],
-      "disclosures": [],
-      "type": "craft",
-      "place": "ORBITER, MODDING",
-      "activity": "optional Valence Fusion toward 60%",
-      "rows": [
-        {
-          "qty": null,
-          "label": "58%+ roll",
-          "note": "rounds up to 60% on its own",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "52.8%+ roll",
-          "note": "one fusion reaches 60%",
           "alt": null,
           "done": false
         }

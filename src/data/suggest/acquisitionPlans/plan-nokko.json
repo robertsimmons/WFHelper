@@ -4,6 +4,7 @@
   "effort": 6,
   "source": "bounties",
   "tradeable": false,
+  "shop": "nightcap",
   "progress": {
     "have": 0,
     "need": 4,
@@ -88,7 +89,7 @@
       "type": "bounty",
       "place": "DEEPMINES, ORB VALLIS",
       "sub": null,
-      "activity": "run the bounty tied to the part you're missing",
+      "activity": "Deepmines bounties",
       "meta": null,
       "mode": null,
       "live": null,
@@ -102,21 +103,24 @@
           "label": "Weed The Garden (Nutrient Plant)",
           "note": "Neuroptics Blueprint: 2.5% in Rotation B, 10% in C",
           "alt": null,
-          "done": false
+          "done": false,
+          "task": true
         },
         {
           "qty": null,
           "label": "Critter Liberation (Lab)",
           "note": "Chassis Blueprint: 2.5% in Rotation B, 10% in C",
           "alt": null,
-          "done": false
+          "done": false,
+          "task": true
         },
         {
           "qty": null,
           "label": "Corporate Restructuring (Forward Base)",
           "note": "Systems Blueprint: 2.5% in Rotation B, 10% in C",
           "alt": null,
-          "done": false
+          "done": false,
+          "task": true
         },
         {
           "qty": null,
@@ -127,99 +131,12 @@
         }
       ],
       "conditions": [
+        "Run the bounty tied to the part you're missing.",
         "Every bounty pays Fergolyte in Rotation A.",
         "Resource pickups ignore Resource Boosters and the Loyal and Resourceful Retriever mods."
       ],
       "bonuses": [
         "Steel Path bounties pay a part at 5% in Rotation B and the main blueprint at 8% in C."
-      ],
-      "disclosures": []
-    },
-    {
-      "type": "vendor",
-      "place": "THE AIRLOCK, ORB VALLIS",
-      "sub": "Nightcap",
-      "activity": "buy every blueprint with Fergolyte",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [
-        {
-          "currency": "Fergolyte",
-          "amount": "720"
-        }
-      ],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Nokko Blueprint",
-          "note": null,
-          "alt": null,
-          "done": false,
-          "buy": {
-            "price": [
-              {
-                "currency": "Fergolyte",
-                "amount": "240"
-              }
-            ]
-          }
-        },
-        {
-          "qty": null,
-          "label": "Nokko Neuroptics Blueprint",
-          "note": null,
-          "alt": null,
-          "done": false,
-          "buy": {
-            "price": [
-              {
-                "currency": "Fergolyte",
-                "amount": "160"
-              }
-            ]
-          }
-        },
-        {
-          "qty": null,
-          "label": "Nokko Chassis Blueprint",
-          "note": null,
-          "alt": null,
-          "done": false,
-          "buy": {
-            "price": [
-              {
-                "currency": "Fergolyte",
-                "amount": "160"
-              }
-            ]
-          }
-        },
-        {
-          "qty": null,
-          "label": "Nokko Systems Blueprint",
-          "note": null,
-          "alt": null,
-          "done": false,
-          "buy": {
-            "price": [
-              {
-                "currency": "Fergolyte",
-                "amount": "160"
-              }
-            ]
-          }
-        }
-      ],
-      "conditions": [
-        "Nightcap has no standing: Rank 4 needs twelve mushroom species fully analyzed in the Field Guide, three analyses each.",
-        "Some samples are rank-gated; Reeking Puffball is sold from Rank 5."
-      ],
-      "bonuses": [
-        "Composting a duplicate mushroom pays 1 Fergolyte once its species is fully analyzed."
       ],
       "disclosures": []
     },

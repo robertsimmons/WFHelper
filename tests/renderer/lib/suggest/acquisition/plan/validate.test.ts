@@ -54,6 +54,37 @@ describe("validatePlan", () => {
     expect(validatePlan(unknown, resources())).toEqual(["source is not a plan source"]);
   });
 
+  it("rejects two sets on a route that read the same title, until one has a title", () => {
+    const ranks = (title?: string): PlanGroup => ({
+      ...rhinoPlan().groups[0],
+      place: "RELAY",
+      rows: ["Rank 1", "Rank 2"].map((label) => ({
+        qty: null,
+        label,
+        note: null,
+        alt: null,
+        done: false,
+      })),
+      ...(title ? { title } : {}),
+    });
+    const plan = { ...rhinoPlan(), groups: [ranks(), ranks(), ...rhinoPlan().groups] };
+    expect(validatePlan(plan, resources())).toEqual([
+      "groups[1] reads the same set title as groups[0]; give one a title",
+    ]);
+    const titled = {
+      ...plan,
+      groups: [ranks(), ranks("Red Veil rank-ups"), ...rhinoPlan().groups],
+    };
+    expect(validatePlan(titled, resources())).toEqual([]);
+  });
+
+  it("takes sequence only as a boolean", () => {
+    expect(validatePlan({ ...rhinoPlan(), sequence: true }, resources())).toEqual([]);
+    expect(validatePlan({ ...rhinoPlan(), sequence: "yes" }, resources())).toEqual([
+      "sequence must be a boolean",
+    ]);
+  });
+
   it("reads an item with no plan as unique", () => {
     expect(planSource("Rhino")).toBe(authoredPlan("Rhino")?.source);
     expect(planSource("Not A Real Item")).toBe("unique");

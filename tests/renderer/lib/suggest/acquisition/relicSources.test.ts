@@ -61,6 +61,7 @@ function part(name: string, uniqueName: string, missing = 1): PartState {
     required: 1,
     owned: 1 - missing,
     building: 0,
+    held: 0,
     missing,
   };
 }

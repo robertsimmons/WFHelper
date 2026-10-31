@@ -4,6 +4,7 @@
   "effort": 3,
   "source": "duviri",
   "tradeable": false,
+  "shop": "teshin",
   "progress": {
     "have": 0,
     "need": 1,
@@ -75,21 +76,24 @@
           "label": "Isleweaver, Steel Path",
           "note": "requires The Hex",
           "alt": null,
-          "done": false
+          "done": false,
+          "task": true
         },
         {
           "qty": "24",
           "label": "Duviri Experience, Steel Path, all 3 side portals",
           "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "task": true
         },
         {
           "qty": "15",
           "label": "Orowyrm chest, Steel Path, no side portals",
           "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "task": true
         }
       ],
       "conditions": [
@@ -106,38 +110,6 @@
         }
       ],
       "ref": "Pathos Clamp"
-    },
-    {
-      "type": "vendor",
-      "place": "TESHIN'S CAVE, DUVIRI",
-      "sub": null,
-      "activity": "buy the blueprint",
-      "meta": "unlocks the Drifter-usable Syam immediately and mails the Warframe-compatible blueprint",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [
-        {
-          "currency": "Pathos Clamp",
-          "amount": "50"
-        }
-      ],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Syam Blueprint",
-          "note": null,
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Acrithis does not sell Syam: her stock is Reactors, Catalysts, Adapters, Forma, Kuva and Rivens, not weapons."
-      ],
-      "bonuses": [],
-      "disclosures": []
     },
     {
       "type": "foundry",

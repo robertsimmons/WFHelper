@@ -104,7 +104,7 @@
       "type": "currency",
       "place": "ORB VALLIS, VENUS",
       "sub": null,
-      "activity": "Conservation, rare Kubrodons",
+      "activity": "Earn Solaris United Standing",
       "meta": null,
       "mode": null,
       "live": null,
@@ -121,61 +121,25 @@
           "label": "rank-ups, blueprints and gilds",
           "note": "71,000 rank-ups, 12,500 parts, 20,000 gilds",
           "alt": null,
-          "done": false
+          "done": false,
+          "task": true
         },
         {
           "qty": "8,000",
           "label": "refining blueprints",
           "note": "reusable",
           "alt": null,
-          "done": false
+          "done": false,
+          "task": true
         }
       ],
       "conditions": [
+        "Conservation, especially rare Kubrodons.",
         "Rank-ups consume standing on top of the ceiling, so Doer costs 71,000 earned, not 44,000"
       ],
       "bonuses": [],
       "disclosures": [],
       "ref": "Solaris United Standing"
-    },
-    {
-      "type": "vendor",
-      "place": "SMOKEFINGER, FORTUNA",
-      "sub": null,
-      "activity": "buy the refining blueprints",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [
-        {
-          "currency": "Solaris United Standing",
-          "amount": "8,000"
-        }
-      ],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "refining blueprints",
-          "note": null,
-          "alt": null,
-          "done": false,
-          "buy": {
-            "price": [
-              {
-                "currency": "Solaris United Standing",
-                "amount": "8,000"
-              }
-            ],
-            "reusable": true
-          }
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
     },
     {
       "type": "vendor",
@@ -212,6 +176,10 @@
                 "amount": "5,000"
               }
             ]
+          },
+          "rank": {
+            "syndicate": "Solaris United",
+            "level": 1
           }
         },
         {
@@ -227,6 +195,10 @@
                 "amount": "22,000"
               }
             ]
+          },
+          "rank": {
+            "syndicate": "Solaris United",
+            "level": 2
           }
         },
         {
@@ -261,6 +233,7 @@
       "place": "LEGS, FORTUNA",
       "sub": null,
       "activity": "buy the sixteen blueprints",
+      "title": "Part blueprints",
       "meta": null,
       "mode": null,
       "live": null,
@@ -276,28 +249,28 @@
       "rows": [
         {
           "qty": null,
-          "label": "Para Model",
+          "label": "Para Moa Blueprint",
           "note": "Whiplash Mine, Anti-Grav Grenade",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
-          "label": "Lambeo Model",
+          "label": "Lambeo Moa Blueprint",
           "note": "Stasis Field, Shockwave Actuators",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
-          "label": "Oloro Model",
+          "label": "Oloro Moa Blueprint",
           "note": "Security Override, Tractor Beam",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
-          "label": "Nychus Model",
+          "label": "Nychus Moa Blueprint",
           "note": "Blast Shield, Hard Engage",
           "alt": null,
           "done": false
@@ -383,7 +356,8 @@
           "label": "Models",
           "note": "Para, Lambeo, Oloro, Nychus",
           "alt": null,
-          "done": false
+          "done": false,
+          "task": true
         },
         {
           "qty": "4",
@@ -440,7 +414,9 @@
               }
             ],
             "each": true
-          }
+          },
+          "assembled": true,
+          "task": true
         }
       ],
       "conditions": [
@@ -455,6 +431,7 @@
       "place": "LEGS, FORTUNA",
       "sub": null,
       "activity": "gild at rank 30",
+      "title": "Gild MOAs",
       "meta": "10 bonds each",
       "mode": null,
       "live": null,
@@ -473,28 +450,32 @@
           "label": "Para, gilded",
           "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "task": true
         },
         {
           "qty": null,
           "label": "Lambeo, gilded",
           "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "task": true
         },
         {
           "qty": null,
           "label": "Oloro, gilded",
           "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "task": true
         },
         {
           "qty": null,
           "label": "Nychus, gilded",
           "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "task": true
         }
       ],
       "conditions": [

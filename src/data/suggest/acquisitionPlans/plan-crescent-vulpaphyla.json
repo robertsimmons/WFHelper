@@ -68,7 +68,7 @@
       "type": "bounty",
       "place": "CAMBION DRIFT, DEIMOS",
       "sub": "Vome cycle",
-      "activity": "tranq a Crescent, then let Infested damage it",
+      "activity": "Conservation",
       "meta": "rare capture, night only",
       "mode": null,
       "live": null,
@@ -82,10 +82,12 @@
           "label": "Weakened Crescent Vulpaphyla",
           "note": "capture it only after Infested have damaged it",
           "alt": null,
-          "done": false
+          "done": false,
+          "task": true
         }
       ],
       "conditions": [
+        "Tranq a Crescent, then let Infested damage it.",
         "Crescent only appears during Vome (night). Panzer is the Fass one.",
         "A wild Crescent must take Infested damage before capture; a clean capture gives only tags and nothing in Son's Revivification menu."
       ],
@@ -123,7 +125,8 @@
                 "amount": "5,000"
               }
             ]
-          }
+          },
+          "task": true
         }
       ],
       "conditions": [

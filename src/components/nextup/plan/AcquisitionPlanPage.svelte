@@ -7,11 +7,10 @@
   } from "../../../lib/suggest/acquisition/plan/index.js";
   import { byStrength, tipsFor } from "../../../lib/suggest/acquisition/tips/data.js";
   import { itemDb } from "../../../stores/data.js";
-  import FarmMapModal from "../../maps/FarmMapModal.svelte";
   import ItemImage from "../../ItemImage.svelte";
   import AcquisitionBody from "../AcquisitionBody.svelte";
   import TierBadge from "../TierBadge.svelte";
-  import WikiButton from "../../WikiButton.svelte";
+  import AcquisitionLinks from "./AcquisitionLinks.svelte";
   import { tickPlanRows, withRowOverrides, type RowOverrides } from "./planResolution.js";
   import { planSteps, stepProgress, type PlanStepControls } from "./planSteps.js";
 
@@ -23,8 +22,6 @@
     /** The pinned item, which keys what the player ticked and roots the tree. */
     uniqueName: string;
     art: string | null;
-    /** The card's own foundry read, for a plan that lists no materials. */
-    buildable: boolean;
     onRefresh: () => void;
     onToggleDone: (rowId: string, done: boolean) => void;
     onTakeAlt: (rowId: string) => void;
@@ -36,7 +33,6 @@
     tier,
     uniqueName,
     art,
-    buildable,
     onRefresh,
     onToggleDone,
     onTakeAlt,
@@ -78,7 +74,6 @@
 
   // Page-local so closing the plan, or keying it to another pin, drops them.
   let overrides = $state<RowOverrides>({});
-  let openMap = $state<string | null>(null);
 
   const plan = $derived(resolved ? withRowOverrides(resolved, overrides) : null);
 
@@ -87,7 +82,6 @@
       if (resolved) overrides = tickPlanRows(resolved, overrides, rowIds, done, onToggleDone);
     },
     onTakeAlt: (rowId) => onTakeAlt(rowId),
-    onOpenMap: (map) => (openMap = map),
   };
 
   const entry = $derived($itemDb[uniqueName] ?? null);
@@ -109,7 +103,7 @@
     });
   });
   // The pinned card counts the same steps, so the two always name the same one.
-  const current = $derived(plan ? stepProgress(planSteps(plan, { t: $tr, buildable })) : null);
+  const current = $derived(plan ? stepProgress(planSteps(plan, { t: $tr })) : null);
   // Once the quest has paid out, the route left is what the header rates.
   const rating = $derived(plan ? (plan.afterQuest ?? plan) : null);
   const effortLabel = $derived(rating ? $tr("nextUp.planEffort", { effort: rating.effort }) : "");
@@ -161,8 +155,8 @@
       <div class="flex items-baseline gap-2">
         <span class="text-[1.3125rem] font-semibold leading-[1.15]">{name}</span>
         <TierBadge {tier} size="md" chip />
-        <span class="shrink-0 self-center"><WikiButton fallbackName={name} /></span>
       </div>
+      <div class="mt-[5px]"><AcquisitionLinks {name} root={treeRoot} {plan} /></div>
 
       {#if plan}
         <div class="mt-[5px] flex flex-wrap items-center gap-[7px] text-xs text-text-secondary">
@@ -245,17 +239,13 @@
   {/if}
 
   <div class="mt-3">
-    <AcquisitionBody {plan} root={treeRoot} {buildable} {tips} {controls} {unplanned} />
+    <AcquisitionBody {plan} root={treeRoot} {tips} {controls} {unplanned} />
   </div>
 
   {#if unchecked}
     <p class="mt-3 text-xs text-text-muted">
       {$tr("nextUp.planUnchecked", { facts: unchecked })}
     </p>
-  {/if}
-
-  {#if plan && openMap}
-    <FarmMapModal {plan} mapKey={openMap} onClose={() => (openMap = null)} />
   {/if}
 </div>
 

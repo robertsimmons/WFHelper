@@ -4,6 +4,7 @@
   "effort": 3,
   "source": "duviri",
   "tradeable": false,
+  "shop": "teshin",
   "progress": {
     "have": 0,
     "need": 1,
@@ -63,7 +64,7 @@
       "type": "currency",
       "place": "DUVIRI",
       "sub": "Isleweaver",
-      "activity": "clear Isleweaver, or the Orowyrm in the Duviri Experience / Lone Story",
+      "activity": "Isleweaver",
       "meta": "50 needed; ignores boosters",
       "mode": "solo or squad",
       "live": null,
@@ -80,63 +81,34 @@
           "label": "Isleweaver completion",
           "note": "15 on Steel Path; needs The Hex quest",
           "alt": null,
-          "done": false
+          "done": false,
+          "task": true
         },
         {
           "qty": "10",
           "label": "Orowyrm kill (Duviri Experience / Lone Story)",
           "note": "15 on Steel Path",
           "alt": null,
-          "done": false
+          "done": false,
+          "task": true
         },
         {
           "qty": "1",
           "label": "optional Undercroft side portal",
           "note": "3 each on Steel Path",
           "alt": null,
-          "done": false
+          "done": false,
+          "task": true
         }
       ],
       "conditions": [
+        "Clear Isleweaver, or kill the Orowyrm in the Duviri Experience or Lone Story.",
         "Pathos Clamps ignore Resource Boosters, Drop Chance Boosters, blessings and Bountiful Harvest.",
         "Nacreous Pebble comes from Maw Feeding in the Duviri Experience, so one trip there is owed whichever route pays the clamps."
       ],
       "bonuses": [],
       "disclosures": [],
       "ref": "Pathos Clamp"
-    },
-    {
-      "type": "vendor",
-      "place": "TESHIN'S CAVE",
-      "sub": null,
-      "activity": "buy the blueprint at the armory rack",
-      "meta": "50 Pathos Clamp",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [
-        {
-          "currency": "Pathos Clamp",
-          "amount": "50"
-        }
-      ],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Edun Blueprint",
-          "note": null,
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Delivers the Warframe-compatible blueprint to the Foundry in the same purchase that unlocks the Drifter version.",
-        "Cephalon Simaris sells replacement Warframe blueprints for 100,000 standing."
-      ],
-      "bonuses": [],
-      "disclosures": []
     },
     {
       "type": "foundry",

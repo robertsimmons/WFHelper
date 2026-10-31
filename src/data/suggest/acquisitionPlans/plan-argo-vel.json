@@ -4,6 +4,7 @@
   "effort": 3,
   "source": "duviri",
   "tradeable": false,
+  "shop": "teshin",
   "progress": {
     "have": 0,
     "need": 1,
@@ -52,9 +53,9 @@
   "groups": [
     {
       "type": "currency",
-      "place": "DUVIRI",
-      "sub": "Isleweaver",
-      "activity": "kill the Fragmented, loot the end chest",
+      "place": "ISLEWEAVER, DUVIRI",
+      "sub": null,
+      "activity": "Isleweaver end chest",
       "meta": "10 clamps normal, 15 Steel Path",
       "mode": null,
       "live": null,
@@ -74,7 +75,7 @@
           "done": false
         }
       ],
-      "conditions": [],
+      "conditions": ["Kill the Fragmented, then loot the end chest."],
       "bonuses": [
         "Each of the three Steel Path Undercroft side portals pays 3 clamps; the Orowyrm chest pays 15."
       ],
@@ -85,38 +86,6 @@
         }
       ],
       "ref": "Pathos Clamp"
-    },
-    {
-      "type": "vendor",
-      "place": "DUVIRI",
-      "sub": "Teshin's Cave",
-      "activity": "buy Argo & Vel",
-      "meta": "60 Pathos Clamps",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [
-        {
-          "currency": "Pathos Clamp",
-          "amount": "60"
-        }
-      ],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Argo & Vel blueprint (Warframe version)",
-          "note": "also unlocks the Drifter version",
-          "alt": "100,000 standing at Cephalon Simaris for a replacement blueprint",
-          "done": false
-        }
-      ],
-      "conditions": [
-        "The clamp purchase unlocks the Drifter weapon outright but only gives the Warframe blueprint; it still needs building."
-      ],
-      "bonuses": [],
-      "disclosures": []
     },
     {
       "type": "foundry",

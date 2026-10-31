@@ -23,8 +23,10 @@
   import { valenceRowsFor } from "../../lib/suggest/valence.js";
   import { codaBatch } from "../../lib/world/dailiesLive.js";
   import { planProgress, planProgressFor } from "../../stores/acquisitionPlanProgress.js";
+  import { shopPicks } from "../../stores/shopPicks.js";
   import { componentOwnership, foundryPending, inventoryData, itemDb } from "../../stores/data.js";
   import { relicDb } from "../../stores/relics.js";
+  import { masteryData } from "../../stores/mastery.js";
   import { overframeRankingsRevision } from "../../stores/overframeRankings.js";
   import { suggestionPreferences } from "../../stores/suggestionPrefs.js";
   import { worldData } from "../../stores/world.js";
@@ -42,6 +44,7 @@
   } from "./chips.js";
   import { plainName, rewardArt } from "./rewardArt.js";
   import AcquisitionBody from "./AcquisitionBody.svelte";
+  import AcquisitionLinks from "./plan/AcquisitionLinks.svelte";
   import ExchangeTables from "./ExchangeTables.svelte";
   import { resolvePinnedPlans } from "./plan/planResolution.js";
   import RelicSourcesSection from "./RelicSourcesSection.svelte";
@@ -354,9 +357,11 @@
       {
         itemDb: $itemDb,
         inventory: $inventoryData,
+        mastery: $masteryData,
         world: $worldData,
         relicDb: $relicDb,
         now: openedAt,
+        shopPicks: $shopPicks,
       },
     );
     return plans[key] ?? null;
@@ -481,7 +486,7 @@
     if (exchange) {
       const rotation =
         exchange.hours === 24
-          ? $tr("nextUp.exchangeDaily")
+          ? $tr("dailies.groupDaily")
           : $tr("nextUp.exchangeHours", { hours: String(exchange.hours) });
       out.push({ value: rotation, title: rotation, tone: CHIP_TONE.plain });
       const rule = $tr("nextUp.exchangeRule");
@@ -918,7 +923,7 @@
                and the title starts where the names do. -->
           <span class={TIER_SLOT}><TierBadge tier={headerTier} size="md" /></span>
           <h3 class="m-0 truncate font-display text-lg text-text-primary">{suggestion.title}</h3>
-          {#if suggestion.wiki}
+          {#if suggestion.wiki && !acq}
             <span class="shrink-0"><WikiButton fallbackName={suggestion.wiki} /></span>
           {/if}
           <span class="shrink-0">{@render overframeLink(suggestion.wiki)}</span>
@@ -947,6 +952,11 @@
           <!-- Under the title, past the tier slot it starts after. -->
           <span class="pl-12 text-xs text-text-secondary" data-details-effort
             >{$tr("nextUp.planEffort", { effort: (plan.afterQuest ?? plan).effort })}</span
+          >
+        {/if}
+        {#if acq}
+          <span class="pl-12"
+            ><AcquisitionLinks name={suggestion.wiki ?? acq.name} root={treeRoot} {plan} /></span
           >
         {/if}
       </span>
@@ -1085,14 +1095,7 @@
 
     {#if acq}
       <div class="mt-3 border-t border-border pt-3">
-        <AcquisitionBody
-          {plan}
-          root={treeRoot}
-          buildable={acq.parts.buildable}
-          tips={acqTips}
-          {unplanned}
-          {extra}
-        />
+        <AcquisitionBody {plan} root={treeRoot} tips={acqTips} {unplanned} {extra} {lead} />
       </div>
     {/if}
   </div>
@@ -1176,7 +1179,7 @@
   {/if}
 {/snippet}
 
-{#snippet extra()}
+{#snippet lead()}
   {#if acq}
     {#if acq.nemesis}
       <div class={ROW}>
@@ -1207,7 +1210,11 @@
         </div>
       </div>
     {/if}
+  {/if}
+{/snippet}
 
+{#snippet extra()}
+  {#if acq}
     {#if partTiles.length > 0 && !treeRoot}
       <div class="flex flex-col gap-1">
         <span class={LABEL}>{$tr("nextUp.acqParts")}</span>

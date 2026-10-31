@@ -31,6 +31,9 @@ const ALLOWLIST = new Set([
   "validatePlan",
   "validateResources",
   "validatePrimeOverride",
+  // Schema guard for the authored shop JSON, parallel to the plan guard.
+  "authoredShops",
+  "validateShop",
   // Loaders the tips schema guard walks; the renderer reads tips through tipsFor.
   "tipsFiles",
   "tipDisputes",

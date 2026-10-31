@@ -123,7 +123,7 @@
       "type": "bounty",
       "place": "CAMBION DRIFT, DEIMOS",
       "sub": "Mother, Isolation Vaults",
-      "activity": "kill the vault Necramechs for Orokin Matrices and damaged parts",
+      "activity": "Earn Necraloid Standing",
       "meta": "1, 2 or 3 Necramechs by vault tier",
       "mode": null,
       "live": null,
@@ -166,6 +166,8 @@
         }
       ],
       "conditions": [
+        "Kill the vault Necramechs and turn the Orokin Matrices in to Loid.",
+        "Kill the vault Necramechs for Orokin Matrices and damaged parts.",
         "Orokin Matrices traded to Loid are the only Necraloid standing source.",
         "Each tier unlocks only after the one below it is cleared once.",
         "Three failed Requiem Cipher attempts lock that vault for good and forfeit its bonus reward.",
@@ -335,9 +337,69 @@
           }
         },
         {
-          "qty": "4",
-          "label": "Bonewidow component blueprints",
-          "note": "Casing, Engine, Capsule, Weapon Pod",
+          "qty": null,
+          "label": "Bonewidow Casing Blueprint",
+          "note": null,
+          "alt": null,
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Necraloid Standing",
+                "amount": "3,500"
+              }
+            ],
+            "rank": {
+              "syndicate": "Necraloid",
+              "level": 2
+            },
+            "each": true
+          }
+        },
+        {
+          "qty": null,
+          "label": "Bonewidow Engine Blueprint",
+          "note": null,
+          "alt": null,
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Necraloid Standing",
+                "amount": "3,500"
+              }
+            ],
+            "rank": {
+              "syndicate": "Necraloid",
+              "level": 2
+            },
+            "each": true
+          }
+        },
+        {
+          "qty": null,
+          "label": "Bonewidow Capsule Blueprint",
+          "note": null,
+          "alt": null,
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Necraloid Standing",
+                "amount": "3,500"
+              }
+            ],
+            "rank": {
+              "syndicate": "Necraloid",
+              "level": 2
+            },
+            "each": true
+          }
+        },
+        {
+          "qty": null,
+          "label": "Bonewidow Weapon Pod Blueprint",
+          "note": null,
           "alt": null,
           "done": false,
           "buy": {
@@ -379,185 +441,6 @@
       "disclosures": []
     },
     {
-      "type": "vendor",
-      "place": "OTAK, NECRALISK",
-      "sub": null,
-      "activity": "buy the refining blueprints",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [
-        {
-          "currency": "Entrati Standing",
-          "amount": "8,000"
-        }
-      ],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Tempered Bapholite Blueprint",
-          "note": null,
-          "alt": null,
-          "done": false,
-          "buy": {
-            "price": [
-              {
-                "currency": "Entrati Standing",
-                "amount": "1,000"
-              }
-            ]
-          }
-        },
-        {
-          "qty": null,
-          "label": "Adramal Alloy Blueprint",
-          "note": null,
-          "alt": null,
-          "done": false,
-          "buy": {
-            "price": [
-              {
-                "currency": "Entrati Standing",
-                "amount": "1,000"
-              }
-            ]
-          }
-        },
-        {
-          "qty": null,
-          "label": "Devolved Namalon Blueprint",
-          "note": null,
-          "alt": null,
-          "done": false,
-          "buy": {
-            "price": [
-              {
-                "currency": "Entrati Standing",
-                "amount": "2,000"
-              }
-            ],
-            "rank": {
-              "syndicate": "Entrati",
-              "level": 1
-            }
-          }
-        },
-        {
-          "qty": null,
-          "label": "Thaumic Distillate Blueprint",
-          "note": null,
-          "alt": null,
-          "done": false,
-          "buy": {
-            "price": [
-              {
-                "currency": "Entrati Standing",
-                "amount": "4,000"
-              }
-            ],
-            "rank": {
-              "syndicate": "Entrati",
-              "level": 2
-            }
-          }
-        }
-      ],
-      "conditions": [],
-      "bonuses": [
-        "Trading any Drift gems and ores to Otak earns Otak Tokens, which buy Namalon when the veins go cold."
-      ],
-      "disclosures": []
-    },
-    {
-      "type": "vendor",
-      "place": "SMOKEFINGER, FORTUNA",
-      "sub": null,
-      "activity": "buy the Goblite Tears refining blueprint",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [
-        {
-          "currency": "Solaris United Standing",
-          "amount": "2,000"
-        }
-      ],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Goblite Tears Blueprint",
-          "note": null,
-          "alt": null,
-          "done": false,
-          "buy": {
-            "price": [
-              {
-                "currency": "Solaris United Standing",
-                "amount": "2,000"
-              }
-            ],
-            "rank": {
-              "syndicate": "Solaris United",
-              "level": 1
-            }
-          }
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": [],
-      "ref": "Solaris United Standing"
-    },
-    {
-      "type": "vendor",
-      "place": "OLD MAN SUUMBAAT, CETUS",
-      "sub": null,
-      "activity": "buy the Star Crimzian refining blueprint",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [
-        {
-          "currency": "Ostron Standing",
-          "amount": "7,500"
-        }
-      ],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Star Crimzian Blueprint",
-          "note": null,
-          "alt": null,
-          "done": false,
-          "buy": {
-            "price": [
-              {
-                "currency": "Ostron Standing",
-                "amount": "7,500"
-              }
-            ],
-            "rank": {
-              "syndicate": "Ostron",
-              "level": 3
-            }
-          }
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": [],
-      "ref": "Ostron Standing"
-    },
-    {
       "type": "foundry",
       "place": "FOUNDRY",
       "sub": null,
@@ -572,28 +455,28 @@
       "rows": [
         {
           "qty": null,
-          "label": "Casing",
+          "label": "Bonewidow Casing",
           "note": "Damaged Casing, 100 Tempered Bapholite, 20 Thaumic Distillate, 15 Goblite Tears",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
-          "label": "Engine",
+          "label": "Bonewidow Engine",
           "note": "Damaged Engine, 120 Adramal Alloy, 2 Cranial Foremount, 750 Titanium",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
-          "label": "Capsule",
+          "label": "Bonewidow Capsule",
           "note": "Damaged Pod, 4 Scintillant, 20 Biotic Filter, 6 Star Crimzian",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
-          "label": "Weapon Pod",
+          "label": "Bonewidow Weapon Pod",
           "note": "Damaged Weapon Pod, 6 Spinal Core Section, 80 Devolved Namalon, 45 Scrap",
           "alt": null,
           "done": false

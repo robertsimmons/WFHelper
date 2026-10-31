@@ -9,7 +9,8 @@ import {
 import {
   planSteps,
   stepProgress,
-  type PlanStep,
+  type PlanLine,
+  type PlanModel,
 } from "../../../src/components/nextup/plan/planSteps.js";
 import {
   resolvePlanFor,
@@ -20,7 +21,6 @@ import type { Suggestion } from "../../../src/types/suggest.js";
 
 const t: Translator = (key) => key;
 const NOW = Date.parse("2026-10-10T00:00:00Z");
-const VOX_SOLARIS = "/Lotus/Types/Keys/SolarisQuest/SolarisQuestKeyChain";
 
 function suggestion(uniqueName: string | null, name = "Rhino"): Suggestion {
   return {
@@ -35,43 +35,73 @@ function suggestion(uniqueName: string | null, name = "Rhino"): Suggestion {
   };
 }
 
-/** Bad Baby with Vox Solaris done, so the first step is behind the player. */
-function badBaby(): ResolvedPlan {
+function resolveBadBaby(manualDone: readonly string[]): ResolvedPlan {
   const plan = resolvePlanFor(
     { name: "Bad Baby", tier: null },
-    {
-      itemDb: { [VOX_SOLARIS]: { name: "Vox Solaris", category: "Key" } },
-      inventory: { QuestKeys: [{ ItemType: VOX_SOLARIS, Completed: true }] },
-      now: NOW,
-    },
+    { itemDb: {}, inventory: null, manualDone, now: NOW },
   );
   if (!plan) throw new Error("no Bad Baby plan");
   return plan;
 }
 
-function steps(done: boolean[]): PlanStep[] {
-  return done.map((entry, index) => ({ id: String(index), done: entry }) as PlanStep);
+/** Bad Baby with its first line ticked, so that line is behind the player. */
+function badBaby(): ResolvedPlan {
+  const first = openLines(planSteps(resolveBadBaby([]), { t }))[0];
+  if (!first) throw new Error("Bad Baby draws no lines");
+  return resolveBadBaby(first.rowIds);
+}
+
+function openLines(model: PlanModel): PlanLine[] {
+  return model.sections.flatMap((section) =>
+    section.entries.flatMap((entry) => (entry.kind === "trip" ? entry.lines : [entry])),
+  );
+}
+
+function model(open: number, done: number): PlanModel {
+  const lines = (count: number) =>
+    Array.from({ length: count }, (_, index) => ({ id: String(index) }) as PlanLine);
+  return {
+    sections: open > 0 ? [{ key: "farm", entries: lines(open) }] : [],
+    done: lines(done),
+    shop: null,
+    copies: 1,
+  };
 }
 
 describe("step counter", () => {
-  it("points at the first step still open, wherever it sits", () => {
-    expect(stepProgress(steps([true, false, true, false]))).toEqual({ step: 2, total: 4 });
+  it("points at the first line still open, after every line done", () => {
+    expect(stepProgress(model(2, 2))).toEqual({ step: 3, total: 4 });
   });
 
-  it("stops at the last step once every step is done", () => {
-    expect(stepProgress(steps([true, true]))).toEqual({ step: 2, total: 2 });
+  it("counts every line a trip carries", () => {
+    const trip = model(0, 1);
+    trip.sections = [
+      {
+        key: "farm",
+        entries: [{ kind: "trip", id: "t", place: "P", lines: model(0, 2).done, next: true }],
+      },
+    ];
+    expect(stepProgress(trip)).toEqual({ step: 2, total: 3 });
+  });
+
+  it("stops at the last line once every line is done", () => {
+    expect(stepProgress(model(0, 2))).toEqual({ step: 2, total: 2 });
   });
 
   it("reads an empty plan as nothing to do", () => {
-    expect(stepProgress([])).toEqual({ step: 0, total: 0 });
+    expect(stepProgress(model(0, 0))).toEqual({ step: 0, total: 0 });
   });
 
-  it("names the same step the plan's numbered steps open on", () => {
+  it("names the line the plan marks next, after the ticked one", () => {
     const plan = badBaby();
     const drawn = planSteps(plan, { t });
-    const first = drawn.findIndex((step) => !step.done);
-    expect(first).toBeGreaterThan(0);
-    expect(nextStep(plan, false, t)).toEqual({ step: first + 1, total: drawn.length });
+    expect(drawn.done.length).toBeGreaterThan(0);
+    const next = openLines(drawn).find((entry) => entry.next);
+    expect(next?.done).toBe(false);
+    expect(nextStep(plan, t)).toEqual({
+      step: drawn.done.length + 1,
+      total: drawn.done.length + openLines(drawn).length,
+    });
   });
 });
 

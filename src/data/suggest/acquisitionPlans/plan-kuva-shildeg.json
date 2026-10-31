@@ -3,6 +3,7 @@
   "kind": "melee",
   "effort": 9,
   "source": "unique",
+  "sequence": true,
   "tradeable": "converted Lich only",
   "progress": {
     "have": 0,
@@ -22,11 +23,57 @@
   "prices": [],
   "groups": [
     {
-      "type": "relics",
-      "place": "KUVA SIPHON OR KUVA FLOOD, ANY",
+      "type": "boss",
+      "place": "CASSINI, SATURN",
       "sub": null,
-      "activity": "earn and crack Requiem Eterna Relics",
-      "meta": "3 mods per Lich",
+      "activity": "spawn a Lich with Kuva Shildeg",
+      "meta": "spawn Kuva Larvlings, at most 21 Larvlings to land a chosen weapon",
+      "mode": "solo",
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Kuva Shildeg Larvling",
+          "note": "weapon preview must say Kuva Shildeg",
+          "alt": null,
+          "done": false,
+          "task": true
+        },
+        {
+          "qty": null,
+          "label": "progenitor of choice",
+          "note": "its element becomes the weapon's bonus damage and sets the Lich's abilities",
+          "alt": "Elemental Vice swaps the element later at rank 40",
+          "done": false,
+          "task": true
+        }
+      ],
+      "conditions": [
+        "Run any regular level 20+ Grineer mission. When the screen flashes, kill 15 enemies within about 30 seconds to spawn the Larvling; each extra squadmate raises the count. On a Capture the flash comes after the target is captured.",
+        "Stand within 3 meters of the downed Larvling to see its weapon. If it is not the Shildeg, skip it and finish the mission.",
+        "Only the last player to damage it can Mercy it (hold X), so run solo. You cannot Mercy while any Lich, Sister, or Coda is active.",
+        "Fissures, Invasions, quests, and Dark Sectors never spawn Larvlings; Steel Path missions do."
+      ],
+      "bonuses": [
+        "Everyone in the squad gets 100 Kuva when a Larvling goes down, even if nobody Mercies it."
+      ],
+      "disclosures": [
+        {
+          "title": "the only reliable weapon reroll",
+          "body": "Finishing the mission without Mercy puts that weapon on a reject list, so it will not show again until every weapon has appeared. Aborting does not count. Taking any weapon clears the list. Skip every Larvling that is not the Shildeg."
+        }
+      ]
+    },
+    {
+      "type": "relics",
+      "place": "KUVA SIPHON, ANY PLANET",
+      "sub": null,
+      "activity": "get Requiem mods: crack Requiem relics",
+      "meta": "Requiem Eterna Relics, 3 mods per Lich",
       "mode": null,
       "live": null,
       "skip": null,
@@ -39,7 +86,8 @@
           "label": "charged Requiem mods",
           "note": "one sequence; each has 3 charges",
           "alt": null,
-          "done": false
+          "done": false,
+          "task": true
         },
         {
           "qty": null,
@@ -60,54 +108,10 @@
     },
     {
       "type": "boss",
-      "place": "CASSINI, SATURN",
-      "sub": null,
-      "activity": "Capture; spawn and inspect Kuva Larvlings",
-      "meta": "at most 21 Larvlings to land a chosen weapon",
-      "mode": "solo",
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Kuva Shildeg Larvling",
-          "note": "weapon preview must say Kuva Shildeg",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "progenitor of choice",
-          "note": "its element becomes the weapon's bonus damage and sets the Lich's abilities",
-          "alt": "Elemental Vice swaps the element later at rank 40",
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Run any regular level 20+ Grineer mission. When the screen flashes, kill at least 10 enemies within a minute to spawn the Larvling; each extra squadmate raises the count. On a Capture the flash comes after the target is captured.",
-        "Stand within 3 meters of the downed Larvling to see its weapon. If it is not the Shildeg, skip it and finish the mission.",
-        "Only the last player to damage it can Mercy it (hold X), so run solo. You cannot Mercy while any Lich, Sister, or Coda is active.",
-        "Fissures, Invasions, quests, and Dark Sectors never spawn Larvlings; Steel Path missions do."
-      ],
-      "bonuses": [
-        "Everyone in the squad gets 100 Kuva when a Larvling goes down, even if nobody Mercies it."
-      ],
-      "disclosures": [
-        {
-          "title": "the only reliable weapon reroll",
-          "body": "Finishing the mission without Mercy puts that weapon on a reject list, so it will not show again until every weapon has appeared. Aborting does not count. Taking any weapon clears the list. Skip every Larvling that is not the Shildeg."
-        }
-      ]
-    },
-    {
-      "type": "boss",
       "place": "LICH INFLUENCE NODES",
       "sub": "Earth through Kuva Fortress",
-      "activity": "Mercy Thralls, reveal mods, and test the sequence",
-      "meta": "reveal all 3 Requiems, then find their order",
+      "activity": "find the Requiem sequence",
+      "meta": "Mercy Thralls, reveal all 3 Requiems, then find their order",
       "mode": null,
       "live": null,
       "skip": null,
@@ -120,14 +124,16 @@
           "label": "revealed Requiems",
           "note": "Murmurs reveal the mods, not their order",
           "alt": null,
-          "done": false
+          "done": false,
+          "task": true
         },
         {
           "qty": null,
           "label": "correct Parazon sequence",
           "note": "sends the Lich to Saturn Proxima",
           "alt": null,
-          "done": false
+          "done": false,
+          "task": true
         }
       ],
       "conditions": [
@@ -157,8 +163,8 @@
       "type": "boss",
       "place": "SATURN PROXIMA",
       "sub": "Kuva Lich Confrontation",
-      "activity": "Railjack Skirmish; defeat the Lich and Vanquish it",
-      "meta": "choose Vanquish",
+      "activity": "defeat the Lich",
+      "meta": "Railjack Skirmish, choose Vanquish",
       "mode": null,
       "live": null,
       "skip": null,
@@ -177,45 +183,18 @@
       "conditions": [
         "Clear the fighters and Gokstad Crewships, board the Grineer Galleon, and beat the Lich's single health bar.",
         "Choose Vanquish, never Convert. No choice within 20 seconds Vanquishes.",
-        "The weapon ignores its normal Mastery Rank requirement."
+        "The weapon ignores its normal Mastery Rank requirement.",
+        "The Confrontation node needs one Railjack Intrinsic at rank 5."
       ],
       "bonuses": [
         "Everything your Lich taxed comes back, and a vanquish has a 25% chance to drop a Requiem Ultimatum.",
         "If your Lich carries an Ephemera you get it, and the first vanquish earns the Old Blood Emblem."
       ],
-      "disclosures": []
-    },
-    {
-      "type": "craft",
-      "place": "ORBITER, MODDING",
-      "sub": null,
-      "activity": "optional Valence Fusion toward 60%",
-      "meta": "keep spare copies",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "60% bonus",
-          "note": "optional; the bonus rolls between 25% and 60%",
-          "alt": "stop at the first usable roll",
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Fusion gives 1.1 times the higher bonus, rounded down and capped at 60%. A result of 58% or more becomes 60%, so a donor at 52.8% or better finishes it.",
-        "Start from the Shildeg you want to keep. Its Catalysts, Forma, Exilus adapter, Focus lens, and Elemental Vice stay; the donor's are lost. Claim the donor from the Foundry first, since unclaimed copies cannot be fused.",
-        "Elemental Vice swaps the bonus element only on a rank 40 weapon (5 Forma). It does not change the percentage."
-      ],
-      "bonuses": [
-        "Fusion lets you pick which of the two elements survives.",
-        "Unclaimed copies in the Foundry sell for 10,000 credits."
-      ],
       "disclosures": [
+        {
+          "title": "Valence Fusion toward 60%",
+          "body": "Optional; the bonus rolls between 25% and 60%; stop at the first usable roll. Fusion gives 1.1 times the higher bonus, rounded down and capped at 60%. A result of 58% or more becomes 60%, so a donor at 52.8% or better finishes it. Start from the Shildeg you want to keep. Its Catalysts, Forma, Exilus adapter, Focus lens, and Elemental Vice stay; the donor's are lost. Claim the donor from the Foundry first, since unclaimed copies cannot be fused. Elemental Vice swaps the bonus element only on a rank 40 weapon (5 Forma). It does not change the percentage. Fusion lets you pick which of the two elements survives. Unclaimed copies in the Foundry sell for 10,000 credits."
+        },
         {
           "title": "a 60% chase is several Liches",
           "body": "The bonus rolls evenly from 25% to 60%, so 60% takes several full Lich cycles. A Kuva weapon gives Mastery only once, so extra copies are only for fusing."

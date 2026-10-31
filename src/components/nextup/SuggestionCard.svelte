@@ -170,7 +170,7 @@
         ? {
             text:
               exchange.hours === 24
-                ? $tr("nextUp.exchangeDaily")
+                ? $tr("dailies.groupDaily")
                 : $tr("nextUp.exchangeHours", { hours: String(exchange.hours) }),
             tone: "info" as const,
           }
@@ -683,9 +683,9 @@
       {#if exchange.kuva}
         <div class={EXCHANGE_LINE}>
           <span class={LINE_ICON}>
-            <ItemImage src={kuvaArt} alt={$tr("nextUp.exchangeKuva")} cls="max-h-4 max-w-4" eager />
+            <ItemImage src={kuvaArt} alt={$tr("stats.resource.kuva")} cls="max-h-4 max-w-4" eager />
           </span>
-          <span class="min-w-0 flex-1 truncate text-text-primary">{$tr("nextUp.exchangeKuva")}</span
+          <span class="min-w-0 flex-1 truncate text-text-primary">{$tr("stats.resource.kuva")}</span
           >
           <span class="shrink-0 {TONE.plain}">{$tr("nextUp.exchangeGivesLabel")}</span>
           <span class="shrink-0 tabular-nums {TONE.good}"

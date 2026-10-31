@@ -49,7 +49,7 @@
       "type": "currency",
       "place": "RELAY, RED VEIL AND NEW LOKA",
       "sub": null,
-      "activity": "pledge one, rank it to 2, then switch",
+      "activity": "Earn Syndicate Standing",
       "meta": null,
       "mode": null,
       "live": null,
@@ -74,7 +74,8 @@
                 "amount": "10,000"
               }
             ]
-          }
+          },
+          "task": true
         },
         {
           "qty": null,
@@ -89,10 +90,11 @@
                 "amount": "10,000"
               }
             ]
-          }
+          },
+          "task": true
         }
       ],
-      "conditions": [],
+      "conditions": ["Pledge Red Veil or New Loka, rank it to 2, then switch to the other."],
       "bonuses": [],
       "disclosures": [],
       "ref": "Syndicate Standing"
@@ -102,6 +104,7 @@
       "place": "RELAY, RED VEIL AND NEW LOKA",
       "sub": null,
       "activity": "rank Red Veil and New Loka to 2",
+      "title": "Red Veil and New Loka rank-ups",
       "meta": null,
       "mode": null,
       "live": null,
@@ -132,6 +135,10 @@
                 "amount": "30,000"
               }
             ]
+          },
+          "rank": {
+            "syndicate": "Red Veil",
+            "level": 1
           }
         },
         {
@@ -174,6 +181,10 @@
                 "amount": "30,000"
               }
             ]
+          },
+          "rank": {
+            "syndicate": "New Loka",
+            "level": 1
           }
         },
         {
@@ -209,6 +220,7 @@
       "place": "RELAY, SYNDICATE ENCLAVES",
       "sub": null,
       "activity": "buy Head and Handle",
+      "title": "Head and Handle",
       "meta": null,
       "mode": null,
       "live": null,

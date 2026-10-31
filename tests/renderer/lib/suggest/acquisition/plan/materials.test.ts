@@ -99,17 +99,6 @@ describe("materialGroups", () => {
     expect(gabii.bonuses).toEqual(["Nekros Desecrate", "Resource booster"]);
   });
 
-  it("lists alternates under Other spots rather than dropping them", () => {
-    const [alone] = materialGroups([need("Alloy Plate", 1)], resources());
-    expect(alone.disclosures).toEqual([
-      { title: "Other spots", body: "DRACO, CERES (Interception); TESSERA, VENUS" },
-    ]);
-    const [shared] = materialGroups([need("Rubedo", 1), need("Alloy Plate", 1)], resources());
-    expect(shared.disclosures).toEqual([
-      { title: "Other spots", body: "Alloy Plate: DRACO, CERES (Interception); TESSERA, VENUS" },
-    ]);
-  });
-
   it("expands a craft into its recipe and builds it where the store says", () => {
     const groups = materialGroups(
       [need("Cetus Wisp Lens", 3), need("Rubedo", 100, "for the barrel")],

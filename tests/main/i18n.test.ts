@@ -41,6 +41,7 @@ const ALLOWED_TWINS = new Set([
   "nextUp.acqReadyToBuild",
   "nextUp.detailsMissions",
   "nextUp.detailsProgressValue",
+  "nextUp.exchangeNeeded",
   "nextUp.factBoss",
   "nextUp.factNode",
   "nextUp.kindGroupCompanions",

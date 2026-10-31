@@ -1,6 +1,9 @@
 import { figuresIn, isCreditFigure, readPrices } from "./priceText.js";
 import { rankSyndicate, rankTitle, topRank } from "./ranks.js";
 import { resourceEntry, resourceLookup, type ResourceLookup } from "./resources.js";
+import { isPartSet, setTitle, setTitleKey } from "./setTitle.js";
+import { shopFor } from "../shops/data.js";
+import type { AuthoredShop } from "../shops/schema.js";
 import {
   PLAN_BADGE_TONES,
   PLAN_GROUP_TYPES,
@@ -165,6 +168,12 @@ function checkRow(problems: Problems, at: string, value: unknown, build = false)
   if (typeof value.done !== "boolean") problems.push(`${at}.done must be a boolean`);
   checkRank(problems, `${at}.rank`, value.rank);
   checkPick(problems, `${at}.pick`, value.pick);
+  if (value.assembled !== undefined && typeof value.assembled !== "boolean") {
+    problems.push(`${at}.assembled must be a boolean`);
+  }
+  if (value.task !== undefined && typeof value.task !== "boolean") {
+    problems.push(`${at}.task must be a boolean`);
+  }
 }
 
 function checkPick(problems: Problems, at: string, value: unknown): void {
@@ -182,7 +191,7 @@ function checkPick(problems: Problems, at: string, value: unknown): void {
   value.spends.forEach((spend, index) => checkCurrency(problems, `${at}.spends[${index}]`, spend));
 }
 
-function checkRank(problems: Problems, at: string, value: unknown): void {
+export function checkRank(problems: Problems, at: string, value: unknown): void {
   if (value === undefined || value === null) return;
   if (!isRecord(value)) {
     problems.push(`${at} must be an object or null`);
@@ -257,7 +266,9 @@ function checkAfterQuest(
       problems.push(`${at}.quest must be absent: the quest is already done`);
     }
   });
-  if (!after.groups.some((group) => isRecord(group) && ROUTE_GROUP_TYPES.has(String(group.type)))) {
+  // A shop plan's purchases live in the shop, so banking its currency is the route.
+  const routeTypes = value.shop ? new Set([...ROUTE_GROUP_TYPES, "currency"]) : ROUTE_GROUP_TYPES;
+  if (!after.groups.some((group) => isRecord(group) && routeTypes.has(String(group.type)))) {
     problems.push("afterQuest.groups needs a farm, bounty, boss, vendor, relics or fissure group");
   }
 }
@@ -470,6 +481,7 @@ function checkGroup(
   if (!Array.isArray(value.disclosures)) problems.push(`${at}.disclosures must be an array`);
   else value.disclosures.forEach((d, i) => checkDisclosure(problems, `${at}.disclosures[${i}]`, d));
   if (value.quest !== undefined) checkNullableString(problems, `${at}.quest`, value.quest);
+  if (value.title !== undefined) checkNullableString(problems, `${at}.title`, value.title);
   checkStoreRefs(problems, at, value, itemName, lookup);
 }
 
@@ -563,7 +575,11 @@ function checkSource(
 
 /** Every reason the value is not an authored plan. The renderer is dumb, so a
  *  malformed plan has to be caught here or not at all. */
-export function validatePlan(value: unknown, lookup: ResourceLookup = resourceEntry): string[] {
+export function validatePlan(
+  value: unknown,
+  lookup: ResourceLookup = resourceEntry,
+  shops: (key: string) => AuthoredShop | null = shopFor,
+): string[] {
   const problems: Problems = [];
   if (!isRecord(value)) return ["plan must be an object"];
 
@@ -623,7 +639,61 @@ export function validatePlan(value: unknown, lookup: ResourceLookup = resourceEn
       );
   }
 
-  checkAfterQuest(problems, value, typeof value.name === "string" ? value.name : "", lookup);
+  if (value.sequence !== undefined && typeof value.sequence !== "boolean") {
+    problems.push("sequence must be a boolean");
+  }
+
+  const itemName = typeof value.name === "string" ? value.name : "";
+  checkSetTitles(problems, "groups", value.groups, itemName);
+  if (isRecord(value.afterQuest)) {
+    checkSetTitles(problems, "afterQuest.groups", value.afterQuest.groups, itemName);
+  }
+  checkAfterQuest(problems, value, itemName, lookup);
   checkRoutes(problems, value);
+  checkShop(problems, value, shops);
   return problems;
+}
+
+/** Two collapsed sets on one route must not read the same title. */
+function checkSetTitles(problems: Problems, at: string, groups: unknown, itemName: string): void {
+  if (!Array.isArray(groups)) return;
+  const seen = new Map<string, number>();
+  groups.forEach((group, index) => {
+    if (!isRecord(group) || typeof group.type !== "string" || typeof group.place !== "string") {
+      return;
+    }
+    if (!Array.isArray(group.rows) || !isPartSet({ type: group.type, rows: group.rows })) return;
+    const rows = group.rows.filter(isRecord).map((row) => ({
+      label: typeof row.label === "string" ? row.label : "",
+      blueprint: isRecord(row.buy) && row.buy.blueprint === true,
+    }));
+    const title = typeof group.title === "string" ? group.title : null;
+    const key = setTitleKey(
+      setTitle({ type: group.type, place: group.place, title, rows }, itemName),
+    );
+    const first = seen.get(key);
+    if (first === undefined) seen.set(key, index);
+    else
+      problems.push(
+        `${at}[${index}] reads the same set title as ${at}[${first}]; give one a title`,
+      );
+  });
+}
+
+/** A plan names a shop that sells its own blueprints. */
+function checkShop(
+  problems: Problems,
+  value: Record<string, unknown>,
+  shops: (key: string) => AuthoredShop | null,
+): void {
+  if (value.shop === undefined) return;
+  if (typeof value.shop !== "string" || value.shop === "") {
+    problems.push("shop must be a shop key");
+    return;
+  }
+  const shop = shops(value.shop);
+  if (!shop) problems.push(`shop "${value.shop}" has no shop file`);
+  else if (!shop.wares.some((ware) => ware.item === value.name)) {
+    problems.push(`shop "${value.shop}" sells nothing for ${String(value.name)}`);
+  }
 }

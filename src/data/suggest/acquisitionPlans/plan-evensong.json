@@ -4,6 +4,7 @@
   "effort": 3,
   "source": "repeat",
   "tradeable": false,
+  "shop": "ordis",
   "progress": {
     "have": 0,
     "need": 1,
@@ -54,7 +55,7 @@
       "type": "farm",
       "place": "BRUTUS, URANUS",
       "sub": null,
-      "activity": "clear Ascension; throw Boosted Ionic Charges up the elevator",
+      "activity": "Ascension",
       "meta": "4.63% blueprint drop per completion; pity currency drops every run",
       "mode": null,
       "live": null,
@@ -67,19 +68,12 @@
           "qty": null,
           "label": "Evensong Blueprint",
           "note": "4.63% per completion, direct drop",
-          "alt": {
-            "text": "or Ordis, Drifter's Camp",
-            "spends": [
-              {
-                "currency": "Vestigial Motes",
-                "amount": "300"
-              }
-            ]
-          },
+          "alt": null,
           "done": false
         }
       ],
       "conditions": [
+        "Throw Boosted Ionic Charges up the elevator.",
         "The extraction capsule is invulnerable during the ride, so killing enemies there doesn't move it; throwing Ionic Charges does.",
         "Boosted Ionic Charges (larger, two marker outlines) speed the elevator 3x for 10 seconds, stacking up to 50 seconds of duration.",
         "Collect the 3 Sister Beacons in the shaft to summon a Sister of Parvos for 5-7 more motes (8-10 on Steel Path) and a 33% arcane chance (guaranteed on Steel Path)."

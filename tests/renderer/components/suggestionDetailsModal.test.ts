@@ -166,10 +166,20 @@ describe("suggestion details modal, acquisition", () => {
     const text = source();
     const extra = text.indexOf("{#snippet extra()}");
     expect(extra).toBeGreaterThan(-1);
-    for (const part of ["acq.nemesis", "pickedProgenitor", "<RelicSourcesSection"]) {
-      expect(text.indexOf(part, extra)).toBeGreaterThan(extra);
-    }
+    expect(text.indexOf("<RelicSourcesSection", extra)).toBeGreaterThan(extra);
     expect(text).toContain("tips={acqTips}");
+  });
+
+  it("hands the nemesis and its progenitors to the first step's drawer", () => {
+    const text = source();
+    const lead = text.indexOf("{#snippet lead()}");
+    const extra = text.indexOf("{#snippet extra()}");
+    expect(lead).toBeGreaterThan(-1);
+    for (const part of ["acq.nemesis", "pickedProgenitor"]) {
+      expect(text.indexOf(part, lead)).toBeGreaterThan(lead);
+      expect(text.indexOf(part, lead)).toBeLessThan(extra);
+    }
+    expect(text).toContain("{unplanned} {extra} {lead} />");
   });
 
   it("draws the item once, in one narrow column", () => {
@@ -179,10 +189,12 @@ describe("suggestion details modal, acquisition", () => {
     expect(text).not.toContain("nextUp.acqFoundryCredits");
   });
 
-  it("keeps a finished step listed and muted", () => {
+  it("keeps finished lines behind one done disclosure, struck through", () => {
     const text = steps();
-    expect(text).toContain("data-step-done={step.done}");
-    expect(text).toMatch(/step\.done\s*\?\s*'opacity-\[0\.42\]'/);
+    expect(text).toContain("data-plan-done");
+    expect(text).toContain("{#each model.done as entry (entry.id)}");
+    const line = fs.readFileSync(path.join(path.dirname(MODAL), "plan", "StepLine.svelte"), "utf8");
+    expect(line).toMatch(/entry\.done \? "text-text-muted line-through"/);
   });
 
   it("names every key the steps resolve", () => {

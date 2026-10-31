@@ -138,7 +138,8 @@
           "label": "Requiem mods, one full sequence",
           "note": "from Requiem Eterna relics in Kuva Siphons; each Hound kill also has a 5% chance to drop one",
           "alt": null,
-          "done": false
+          "done": false,
+          "task": true
         }
       ],
       "conditions": [
@@ -151,7 +152,7 @@
       "type": "boss",
       "place": "HYDRA, PLUTO",
       "sub": null,
-      "activity": "Capture, then the Granum Void",
+      "activity": "Capture, Granum Void",
       "meta": "one blueprint per Sister",
       "mode": null,
       "live": null,
@@ -162,21 +163,21 @@
       "rows": [
         {
           "qty": null,
-          "label": "Bhaira Model",
+          "label": "Bhaira Hound",
           "note": "Null Audit precept, Lacerten weapon",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
-          "label": "Dorma Model",
+          "label": "Dorma Hound",
           "note": "Repo Audit precept, Batoten weapon",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
-          "label": "Hec Model",
+          "label": "Hec Hound",
           "note": "Equilibrium Audit precept, Akaten weapon",
           "alt": null,
           "done": false
@@ -204,6 +205,7 @@
         }
       ],
       "conditions": [
+        "Run the Capture, then the Granum Void.",
         "Vanquish, never convert: a converted Sister hands over no Hound and no component blueprint.",
         "Every vanquish drops one random Hound component blueprint, so eight parts need at least eight Sisters.",
         "The Hound a vanquished Sister mails you arrives fully built but ungilded, and still needs rank 30, gilding, then rank 30 again to earn Mastery.",
@@ -226,7 +228,7 @@
       "type": "currency",
       "place": "ORB VALLIS, VENUS",
       "sub": null,
-      "activity": "Conservation, plus Bounty 1 for the bonds",
+      "activity": "Earn Solaris United Standing",
       "meta": null,
       "mode": null,
       "live": null,
@@ -279,7 +281,10 @@
           "done": false
         }
       ],
-      "conditions": ["Doer is needed only to gild; assembly at Legs costs no standing at all"],
+      "conditions": [
+        "Conservation, plus Bounty 1 for the bonds.",
+        "Doer is needed only to gild; assembly at Legs costs no standing at all"
+      ],
       "bonuses": [],
       "disclosures": [],
       "ref": "Solaris United Standing"
@@ -386,53 +391,10 @@
       "disclosures": []
     },
     {
-      "type": "vendor",
-      "place": "SMOKEFINGER, FORTUNA",
-      "sub": null,
-      "activity": "buy the Marquise Thyst refining blueprint",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [
-        {
-          "currency": "Solaris United Standing",
-          "amount": "12,000"
-        }
-      ],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Marquise Thyst Blueprint",
-          "note": null,
-          "alt": null,
-          "done": false,
-          "buy": {
-            "price": [
-              {
-                "currency": "Solaris United Standing",
-                "amount": "12,000"
-              }
-            ],
-            "rank": {
-              "syndicate": "Solaris United",
-              "level": 4
-            }
-          }
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": [],
-      "ref": "Solaris United Standing"
-    },
-    {
       "type": "currency",
       "place": "CAMBION DRIFT, DEIMOS",
       "sub": null,
-      "activity": "Entrati standing for the rank-ups and the blueprint",
+      "activity": "Earn Entrati Standing",
       "meta": null,
       "mode": null,
       "live": null,
@@ -449,10 +411,11 @@
           "label": "Entrati bounty standing",
           "note": "71,000 for the rank-ups, 8,000 for the blueprint",
           "alt": null,
-          "done": false
+          "done": false,
+          "task": true
         }
       ],
-      "conditions": [],
+      "conditions": ["The standing pays for the rank-ups and the blueprint."],
       "bonuses": [],
       "disclosures": [],
       "ref": "Entrati Standing"
@@ -538,49 +501,6 @@
       "disclosures": []
     },
     {
-      "type": "vendor",
-      "place": "OTAK, NECRALISK",
-      "sub": null,
-      "activity": "buy the Trapezium Xenorhast refining blueprint",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [
-        {
-          "currency": "Entrati Standing",
-          "amount": "8,000"
-        }
-      ],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Trapezium Xenorhast Blueprint",
-          "note": null,
-          "alt": null,
-          "done": false,
-          "buy": {
-            "price": [
-              {
-                "currency": "Entrati Standing",
-                "amount": "8,000"
-              }
-            ],
-            "rank": {
-              "syndicate": "Entrati",
-              "level": 3
-            }
-          }
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": [],
-      "ref": "Entrati Standing"
-    },
-    {
       "type": "foundry",
       "place": "FOUNDRY",
       "sub": null,
@@ -595,14 +515,14 @@
       "rows": [
         {
           "qty": null,
-          "label": "Bhaira Model",
+          "label": "Bhaira Hound",
           "note": "50,000 cr, 5 Spectral Debris, 5 Gallium, 2 Marquise Thyst, 10 Eye-Eye Rotoblade",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
-          "label": "Hec Model",
+          "label": "Hec Hound",
           "note": "50,000 cr, 5 Spectral Debris, 5 Gallium, 2 Trapezium Xenorhast, 10 Sapcaddy Venedo Case",
           "alt": null,
           "done": false
@@ -662,7 +582,9 @@
               }
             ],
             "each": true
-          }
+          },
+          "assembled": true,
+          "task": true
         }
       ],
       "conditions": [

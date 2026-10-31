@@ -43,7 +43,7 @@
       "type": "currency",
       "place": "VOID FISSURES, ANY",
       "sub": null,
-      "activity": "open Void Relics for Prime parts, sell the best drop for Ducats",
+      "activity": "Earn Orokin Ducats",
       "meta": null,
       "mode": null,
       "live": null,
@@ -60,17 +60,22 @@
           "label": "open relics, take the highest-Ducat part",
           "note": "gold 100, silver 45, bronze 15",
           "alt": null,
-          "done": false
+          "done": false,
+          "task": true
         },
         {
           "qty": null,
           "label": "sell duplicate Prime parts at the Kiosk",
           "note": "about five gold or nine silver parts",
           "alt": null,
-          "done": false
+          "done": false,
+          "task": true
         }
       ],
-      "conditions": ["Baro stays only 48 hours."],
+      "conditions": [
+        "Open Void Relics for Prime parts and sell the best drop for Ducats.",
+        "Baro stays only 48 hours."
+      ],
       "bonuses": [],
       "disclosures": [],
       "ref": "Orokin Ducats"

@@ -413,7 +413,7 @@ describe("resolveAcquisition beyond frames and weapons", () => {
     expect(find(companions({ itemDb: db }), "Zenith").paths[0]).toMatchObject({
       id: "plan",
       kind: "vendor",
-      steps: [{ where: "DAILY TRIBUTE, ORBITER - log in until a weapon milestone, then pick it" }],
+      steps: [{ where: "DAILY TRIBUTE, ORBITER - Login milestone" }],
     });
   });
 

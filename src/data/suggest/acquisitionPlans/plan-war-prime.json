@@ -4,6 +4,7 @@
   "effort": 4,
   "source": "unique",
   "tradeable": false,
+  "shop": "hunhow",
   "progress": {
     "have": 0,
     "need": 1,
@@ -62,7 +63,7 @@
       "type": "currency",
       "place": "PONTIS TOWER, URANUS PROXIMA",
       "sub": "Scoria's Angel",
-      "activity": "side with Vena, kill Ryoku",
+      "activity": "Ryoku fight",
       "meta": "12-16 Crimson Talent a clear, so one run covers it",
       "mode": null,
       "live": null,
@@ -82,7 +83,7 @@
           "done": false
         }
       ],
-      "conditions": [],
+      "conditions": ["Side with Vena, then kill Ryoku."],
       "bonuses": [],
       "disclosures": [],
       "ref": "Crimson Talent"
@@ -91,7 +92,7 @@
       "type": "currency",
       "place": "PONTIS TOWER, URANUS PROXIMA",
       "sub": "The Kuva Wytch",
-      "activity": "side with Ryoku, kill Vena",
+      "activity": "Vena fight",
       "meta": "12-16 Emerald Talent a clear, so one run covers it",
       "mode": null,
       "live": null,
@@ -111,44 +112,10 @@
           "done": false
         }
       ],
-      "conditions": [],
+      "conditions": ["Side with Ryoku, then kill Vena."],
       "bonuses": [],
       "disclosures": [],
       "ref": "Emerald Talent"
-    },
-    {
-      "type": "vendor",
-      "place": "HUNHOW, PONTIS TOWER",
-      "sub": null,
-      "activity": "buy Hunhow's Trinket",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [
-        {
-          "currency": "Crimson Talent",
-          "amount": "12"
-        },
-        {
-          "currency": "Emerald Talent",
-          "amount": "12"
-        }
-      ],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Hunhow's Trinket",
-          "note": "12 Emerald + 12 Crimson Talent",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": ["Only one Hunhow's Trinket or War Prime can be owned at a time."],
-      "bonuses": [],
-      "disclosures": []
     },
     {
       "type": "foundry",

@@ -71,6 +71,7 @@ function parts(shape: Shape): PartPlan {
       required: 1,
       owned: index < absent ? 0 : 1,
       building: 0,
+      held: 0,
       missing: index < absent ? 1 : 0,
     }),
   );

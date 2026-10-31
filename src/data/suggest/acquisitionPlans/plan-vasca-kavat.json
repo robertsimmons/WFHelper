@@ -38,7 +38,7 @@
       "type": "bounty",
       "place": "PLAINS OF EIDOLON, EARTH",
       "sub": null,
-      "activity": "take your Kavat out at night and let a wild Vasca bite it",
+      "activity": "Vasca Kavat infection",
       "meta": "night only",
       "mode": null,
       "live": {
@@ -55,10 +55,12 @@
           "label": "Vasca imprint",
           "note": "apply one Genetic Code Template on the Orbiter after each infection",
           "alt": null,
-          "done": false
+          "done": false,
+          "task": true
         }
       ],
       "conditions": [
+        "Take your Kavat out at night and let a wild Vasca bite it.",
         "A Kavat downed in one hit doesn't get infected; a bitten one glows red.",
         "Two imprints means infecting the same Kavat twice or two Kavats once. One Kavat gives up to 3 imprints.",
         "Making the imprint cures the infection and consumes the template."
@@ -86,7 +88,8 @@
           "label": "Vasca imprint",
           "note": "consumed",
           "alt": null,
-          "done": false
+          "done": false,
+          "task": true
         },
         {
           "qty": null,

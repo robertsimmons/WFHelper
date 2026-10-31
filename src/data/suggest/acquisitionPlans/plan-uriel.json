@@ -4,6 +4,7 @@
   "effort": 6,
   "source": "boss",
   "tradeable": false,
+  "shop": "roathe",
   "progress": {
     "have": 0,
     "need": 3,
@@ -100,7 +101,7 @@
       "type": "boss",
       "place": "DESCENDIA, DARK REFRACTORY",
       "sub": "Infernum 21, Roathe's Oblivion",
-      "activity": "fight Roathe at the Infernum 21 checkpoint",
+      "activity": "Roathe fight",
       "meta": "12.5% per component; ~8 kills expected per specific part",
       "mode": null,
       "live": null,
@@ -116,49 +117,26 @@
           "qty": null,
           "label": "Uriel Neuroptics",
           "note": "12.5%, shared pool with Vinquibus parts",
-          "alt": {
-            "text": "or 25 Maphica at Roathe",
-            "spends": [
-              {
-                "currency": "Maphica",
-                "amount": "25"
-              }
-            ]
-          },
+          "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Uriel Chassis",
           "note": "12.5%, shared pool with Vinquibus parts",
-          "alt": {
-            "text": "or 25 Maphica at Roathe",
-            "spends": [
-              {
-                "currency": "Maphica",
-                "amount": "25"
-              }
-            ]
-          },
+          "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Uriel Systems",
           "note": "12.5%, shared pool with Vinquibus parts",
-          "alt": {
-            "text": "or 25 Maphica at Roathe",
-            "spends": [
-              {
-                "currency": "Maphica",
-                "amount": "25"
-              }
-            ]
-          },
+          "alt": null,
           "done": false
         }
       ],
       "conditions": [
+        "Fight Roathe at the Infernum 21 checkpoint.",
         "Progress resets every Monday 00:00 UTC. Descend once to reach the Infernum 21 checkpoint, then fight Roathe there as often as you like.",
         "Each kill drops one Uriel component or one Vinquibus blueprint or component, so some kills give nothing for Uriel.",
         "There is no self-revive; only another Tenno can revive you."
@@ -234,7 +212,7 @@
         "type": "currency",
         "place": "DESCENDIA, DARK REFRACTORY",
         "sub": null,
-        "activity": "descend the tower and break containers",
+        "activity": "Descendia run",
         "meta": "75 Maphica",
         "mode": null,
         "live": null,
@@ -254,50 +232,12 @@
             "done": false
           }
         ],
-        "conditions": [],
+        "conditions": ["Descend the tower and break containers."],
         "bonuses": [
           "Marie Leroux in La Cathédrale sells 10 a day for Agnovidisc, Laudavi or Servoris."
         ],
         "disclosures": [],
         "ref": "Maphica"
-      },
-      {
-        "type": "vendor",
-        "place": "ROATHE, LA CATHÉDRALE",
-        "sub": "Sanctum Anatomica",
-        "activity": "buy the main blueprint",
-        "meta": "75 Maphica",
-        "mode": null,
-        "live": null,
-        "skip": null,
-        "earns": null,
-        "spends": [
-          {
-            "currency": "Maphica",
-            "amount": "75"
-          }
-        ],
-        "map": null,
-        "rows": [
-          {
-            "qty": null,
-            "label": "Uriel Blueprint",
-            "note": null,
-            "alt": null,
-            "done": false,
-            "buy": {
-              "price": [
-                {
-                  "currency": "Maphica",
-                  "amount": "75"
-                }
-              ]
-            }
-          }
-        ],
-        "conditions": [],
-        "bonuses": [],
-        "disclosures": []
       }
     ]
   }

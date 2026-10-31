@@ -120,11 +120,10 @@ function openOnPlan(target: AcquisitionTarget, held: RawInventoryData, label: st
   const plan = resolvePlanFor(target, { itemDb, inventory: held, now: NOW });
   const row = plan?.groups.flatMap((group) => group.rows).find((entry) => entry.label === label);
   if (!plan || !row) return false;
-  const listed = planSteps(plan, { t: (key) => key }).some(
-    (step) =>
-      step.rows.some((line) => line.ids.includes(row.id)) ||
-      step.folded?.rows.some((fold) => fold.id === row.id) === true,
-  );
+  const listed = planSteps(plan, { t: (key) => key })
+    .sections.flatMap((section) => section.entries)
+    .flatMap((entry) => (entry.kind === "trip" ? entry.lines : [entry]))
+    .some((line) => line.rowIds.includes(row.id));
   return listed && !row.done;
 }
 

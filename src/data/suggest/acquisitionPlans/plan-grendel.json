@@ -4,6 +4,7 @@
   "effort": 6,
   "source": "unique",
   "tradeable": false,
+  "shop": "arbitration-honors",
   "progress": {
     "have": 0,
     "need": 4,
@@ -164,80 +165,10 @@
       "ref": "Vitus Essence"
     },
     {
-      "type": "vendor",
-      "place": "ARBITRATION HONORS",
-      "sub": "Arbiters of Hexis room, any Relay",
-      "activity": "buy the three Locators",
-      "meta": "25 Vitus each",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [
-        {
-          "currency": "Vitus Essence",
-          "amount": "75"
-        }
-      ],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Neuroptics Locator",
-          "note": null,
-          "alt": null,
-          "done": false,
-          "buy": {
-            "price": [
-              {
-                "currency": "Vitus Essence",
-                "amount": "25"
-              }
-            ]
-          }
-        },
-        {
-          "qty": null,
-          "label": "Chassis Locator",
-          "note": null,
-          "alt": null,
-          "done": false,
-          "buy": {
-            "price": [
-              {
-                "currency": "Vitus Essence",
-                "amount": "25"
-              }
-            ]
-          }
-        },
-        {
-          "qty": null,
-          "label": "Systems Locator",
-          "note": null,
-          "alt": null,
-          "done": false,
-          "buy": {
-            "price": [
-              {
-                "currency": "Vitus Essence",
-                "amount": "25"
-              }
-            ]
-          }
-        }
-      ],
-      "conditions": [
-        "A Locator stays in your inventory until its mission completes, so a failed run costs time, not Vitus."
-      ],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
       "type": "farm",
       "place": "EUROPA",
       "sub": "Archaeo-freighter, Icefields of Riddah, Mines of Karishh",
-      "activity": "the three Locator missions, no mods",
+      "activity": "Locator missions",
       "meta": null,
       "mode": "solo or premade; no public matchmaking",
       "live": null,
@@ -269,6 +200,7 @@
         }
       ],
       "conditions": [
+        "Run the three Locator missions, with no mods.",
         "Level 25-30 enemies. Augment mods still work. Mods, Arcanes, Archon Shards, Invigorations, Incarnon forms, bonus elements, Gear and Operator are disabled.",
         "Companions lose their mods too."
       ],

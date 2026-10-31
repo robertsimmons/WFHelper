@@ -1,8 +1,14 @@
 import { baseMapKey } from "../../../maps/registry.js";
 import { groupFacts, planEras, standingOwners } from "./facts.js";
 import { formatGap, resolveCycleLive } from "./live.js";
-import { materialGroups } from "./materials.js";
-import { resourceEntry, type ResourceLookup, type ResourceSource } from "./resources.js";
+import { materialGroups, sourceText } from "./materials.js";
+import { resolveShop } from "./shop.js";
+import {
+  resourceEntry,
+  type ResourceEntry,
+  type ResourceLookup,
+  type ResourceSource,
+} from "./resources.js";
 import {
   altSpends,
   altText,
@@ -15,6 +21,8 @@ import {
   type PlanRow,
 } from "./schema.js";
 import {
+  assembledFrom,
+  balanceFor,
   blueprintFor,
   formatQuantity,
   itemsForLabel,
@@ -22,8 +30,8 @@ import {
   parseQuantity,
   pendingBuildFor,
   questDoneForLabel,
+  readLabel,
   readPlayerState,
-  standingBalance,
   type PlayerState,
 } from "./state.js";
 import { afterQuestRoute, planQuestDone } from "./data.js";
@@ -50,7 +58,6 @@ import type {
 } from "./types.js";
 
 const CREDITS = "Credits";
-const STANDING_CURRENCY = / standing$/i;
 
 interface PlanEntry {
   group: PlanGroup;
@@ -93,9 +100,13 @@ function boughtBy(
   };
 }
 
-/** Stored ticks are keyed by row id, so an authored row keeps the position it
- *  has in the file, and a material row, which moves whenever the store does, is
- *  keyed by its label. */
+/** An authored row's id carries its label beside its position, so a tick stored
+ *  before the file moved or renamed the row matches nothing rather than another row. */
+const rowKey = (group: string, rowIndex: number, label: string): string =>
+  `${group}:${rowIndex}:${label.trim().toLowerCase()}`;
+
+/** Stored ticks are keyed by row id: an authored row by position and label, and a
+ *  material row, which moves whenever the store does, by its label alone. */
 function planEntries(
   plan: AuthoredPlan,
   lookup: ResourceLookup,
@@ -111,13 +122,13 @@ function planEntries(
       lookup,
     ),
     id: String(groupIndex),
-    rowId: (rowIndex) => `${groupIndex}:${rowIndex}`,
+    rowId: (rowIndex) => rowKey(String(groupIndex), rowIndex, group.rows[rowIndex].label),
     route: "chosen",
   }));
   const after: PlanEntry[] = (afterQuest?.groups ?? []).map((group, groupIndex) => ({
     group: withRefTips(group, lookup),
     id: `q${groupIndex}`,
-    rowId: (rowIndex) => `q${groupIndex}:${rowIndex}`,
+    rowId: (rowIndex) => rowKey(`q${groupIndex}`, rowIndex, group.rows[rowIndex].label),
     route: "afterQuest",
   }));
   const step = routes.findIndex(isBuildStep);
@@ -233,12 +244,11 @@ function partForRow(
   return null;
 }
 
-/** How a part row counts: `required` overrides the authored figure, and
- *  `building` and `held` add to what the label's own items hold. */
-interface RowPart {
-  required: number | null;
-  building: number;
-  held: number;
+/** A row the card's part plan sizes: every build still owed, and what the player
+ *  has toward them. */
+interface RowCount {
+  required: number;
+  owned: number;
   copies: number;
 }
 
@@ -249,24 +259,16 @@ function resolveRow(
   state: PlayerState,
   lookup: ResourceLookup,
   answers: { done: Set<string>; cleared: Set<string>; altsTaken: Set<string> },
-  part: RowPart | null,
+  part: RowCount | null,
   inventory: RawInventoryData | null,
 ): RowResult {
-  // A part row is sized for every build the card counts, and a copy of the part
-  // still in the foundry is one nobody needs to farm again.
-  const required = part?.required ?? parseQuantity(row.qty) * (part?.copies ?? 1);
+  const required = part?.required ?? parseQuantity(row.qty);
   // A quest keychain or a syndicate rank is not an owned item, so the ownership
   // map answers 0 for a label the quest index or the rank table can answer.
   const answered =
     (row.rank ? rankMet(inventory, row.rank) : null) ?? questDoneForLabel(state, row.label);
-  const inventoryOwned =
-    answered !== null
-      ? null
-      : lookup(row.label)?.name === CREDITS
-        ? state.credits
-        : ownedForLabel(state, row.label, itemName);
   const owned =
-    inventoryOwned === null ? null : inventoryOwned + (part?.building ?? 0) + (part?.held ?? 0);
+    answered !== null ? null : (part?.owned ?? readLabel(state, row.label, itemName, lookup));
   const tracked = owned !== null;
   const remaining = Math.max(0, required - (owned ?? 0));
 
@@ -280,6 +282,8 @@ function resolveRow(
 
   const spends = row.alt ? resolvedSpends(altSpends(row.alt)) : [];
   const pick = row.pick && !done ? resolvePick(row.pick, inventory) : null;
+  const entry = lookup(row.label);
+  const other = entry?.alternates.map(sourceText) ?? [];
 
   return {
     done,
@@ -303,6 +307,8 @@ function resolveRow(
       done,
       source,
       manual,
+      ...(entry?.common ? { common: true } : {}),
+      ...(other.length > 0 ? { other } : {}),
     },
   };
 }
@@ -415,6 +421,11 @@ interface CardPlan {
   parts: PartPlan;
 }
 
+/** A reusable buy of the thing itself, not of a blueprint, is a tool no build uses up. */
+function reusableTool(entry: ResourceEntry | null): boolean {
+  return entry?.best?.buy?.reusable === true && entry.kind !== "craft";
+}
+
 /** Each authored material's figure as the card counts it, or null to keep the authored
  *  one. A recipe material takes the card's figure, net of what built parts consumed;
  *  Credits keep authored purchases and drop the foundry bill no longer owed; anything
@@ -432,7 +443,8 @@ function materialQuantities(
   const start = startingBill(card.uniqueName, itemDb, copies);
   const onCard = new Map(card.parts.materials.map((row) => [row.uniqueName, row.required]));
   return materials.map((material) => {
-    const authored = parseQuantity(material.qty) * copies;
+    const authored =
+      parseQuantity(material.qty) * (reusableTool(lookup(material.label)) ? 1 : copies);
     if (lookup(material.label)?.name === CREDITS) {
       return Math.max(0, authored - (start.credits - card.parts.credits));
     }
@@ -448,6 +460,28 @@ function materialQuantities(
 function namesCurrency(group: PlanGroup, currency: string): boolean {
   const needle = currency.toLowerCase();
   return group.rows.some((row) => row.label.toLowerCase().includes(needle));
+}
+
+/** What each open build step makes: the first item its label names that has a
+ *  recipe, or that a named blueprint builds. */
+function buildItems(
+  groups: readonly PlanGroup[],
+  state: PlayerState,
+  itemDb: Record<string, ItemDbEntry>,
+  itemName: string,
+): string[] {
+  const made = groups
+    .filter((group) => group.skip === null && (group.type === "foundry" || group.type === "craft"))
+    .flatMap((group) => group.rows)
+    .map((row) =>
+      (itemsForLabel(state, row.label, itemName) ?? [])
+        .map((uniqueName) =>
+          itemDb[uniqueName]?.recipe ? uniqueName : itemDb[uniqueName]?.buildsProduct,
+        )
+        .find((uniqueName) => uniqueName !== undefined && itemDb[uniqueName]?.recipe),
+    )
+    .filter((uniqueName): uniqueName is string => uniqueName !== undefined);
+  return [...new Set(made)];
 }
 
 /** A finished quest has spent the chosen route's one-time reward. */
@@ -491,8 +525,8 @@ export function resolvePlan(
   // Aspect) is not on the card, so it is sized from what the sub-assemblies
   // still to build need. A row naming its blueprint is covered by the built
   // part too.
-  const nestedPart = (matches: readonly string[] | null): RowPart | null => {
-    if (!card || !parts?.known || !matches) return null;
+  const nestedPart = (label: string, matches: readonly string[]): RowCount | null => {
+    if (!card || !parts?.known) return null;
     demand ??= partDemand(card.uniqueName, context.inventory, context.itemDb, parts);
     building ??= parts.foundry ? foundryBuilds(context.inventory, context.itemDb) : new Map();
     for (const uniqueName of matches) {
@@ -500,21 +534,30 @@ export function resolvePlan(
       const part = product && demand.has(product) ? product : uniqueName;
       const required = demand.get(part);
       if (required === undefined) continue;
-      return {
-        required,
-        building: building.get(part) ?? 0,
-        held: matches.includes(part) ? 0 : (state.owned.get(part) ?? 0),
-        copies,
-      };
+      const held = matches.includes(part) ? 0 : (state.owned.get(part) ?? 0);
+      const owned = (ownedForLabel(state, label, itemName) ?? 0) + (building.get(part) ?? 0);
+      return { required, owned: owned + held, copies };
     }
     return null;
   };
-  const partOf = (label: string): RowPart | null => {
+  // Copies are what is still to build, so a built copy of the item counts for
+  // none of them. Getting a part counts its blueprint in hand; building it does not.
+  const partOf = (label: string, build: boolean): RowCount | null => {
     const matches = itemsForLabel(state, label, itemName);
-    const match = partForRow(parts, context.itemDb, matches);
-    if (match && parts) return { required: null, building: match.building, held: 0, copies };
-    return nestedPart(matches);
+    if (!card || !parts?.known || !matches) return null;
+    if (matches.includes(card.uniqueName)) return { required: copies, owned: 0, copies };
+    const part = partForRow(parts, context.itemDb, matches);
+    if (part)
+      return { required: part.required, owned: part.owned + (build ? 0 : part.held), copies };
+    return nestedPart(label, matches);
   };
+
+  const partLabels = planGroups.flatMap((group) => group.rows).map((row) => row.label);
+  const assembled = (row: PlanRow): RowCount => ({
+    required: parseQuantity(row.qty),
+    owned: assembledFrom(state, partLabels, itemName),
+    copies: 1,
+  });
 
   const rowsByGroup: ResolvedRow[][] = [];
   const partRows: boolean[][] = [];
@@ -524,8 +567,9 @@ export function resolvePlan(
     const rows: ResolvedRow[] = [];
     const isPart: boolean[] = [];
     let allDone = true;
+    const build = group.type === "foundry" || group.type === "craft";
     group.rows.forEach((row, rowIndex) => {
-      const part = partOf(row.label);
+      const part = row.assembled ? assembled(row) : partOf(row.label, build);
       const result = resolveRow(
         row,
         entries[groupIndex].rowId(rowIndex),
@@ -567,11 +611,12 @@ export function resolvePlan(
     owes.push({ currency: ledgerName(currency), value });
   };
 
-  // Authored costs are one build's. A part row still owes only the builds it is
-  // short for; every other row owes all of them.
+  // Authored costs are one build's, but a reusable purchase is made once.
+  const buys = (row: ResolvedRow): number => (row.purchase?.reusable ? 1 : copies);
+  // A part row still owes only the builds it is short for; every other row owes all of them.
   const openCopies = (groupIndex: number, rowIndex: number): number => {
     const row = rowsByGroup[groupIndex][rowIndex];
-    if (!partRows[groupIndex][rowIndex] || !row.qty) return copies;
+    if (!partRows[groupIndex][rowIndex] || !row.qty) return buys(row);
     const perBuild = row.qty.required / copies;
     if (perBuild <= 0) return copies;
     return Math.max(1, Math.ceil(row.qty.remaining / perBuild));
@@ -585,20 +630,19 @@ export function resolvePlan(
     const owes: ResolvedOwed[] = [];
     for (const spend of group.spends) {
       const authored = parseQuantity(spend.amount);
-      const shares = rowShares(group, spend.currency, authored, ledgerName);
       // A reusable blueprint already held costs nothing, here or in the totals.
-      const settled =
-        shares?.reduce(
-          (sum, share, rowIndex) => sum + (rows[rowIndex].purchase?.owned ? share : 0),
-          0,
-        ) ?? 0;
-      const total = authored - settled;
-      add(spent, spend.currency, total * copies);
+      const shares = rowShares(group, spend.currency, authored, ledgerName)?.map((share, index) =>
+        rows[index].purchase?.owned ? 0 : share,
+      );
+      add(
+        spent,
+        spend.currency,
+        shares
+          ? shares.reduce((sum, share, index) => sum + share * buys(rows[index]), 0)
+          : authored * copies,
+      );
       if (group.skip !== null) continue;
       if (shares) {
-        rows.forEach((row, rowIndex) => {
-          if (row.purchase?.owned) shares[rowIndex] = 0;
-        });
         rows.forEach((_, rowIndex) => {
           owe(
             rowOwes[rowIndex],
@@ -608,7 +652,7 @@ export function resolvePlan(
         });
       } else {
         const open = rows.map((_, rowIndex) => openCopies(groupIndex, rowIndex));
-        owe(owes, spend.currency, total * Math.max(1, ...open));
+        owe(owes, spend.currency, authored * Math.max(1, ...open));
       }
     }
     rows.forEach((row, rowIndex) => {
@@ -667,11 +711,7 @@ export function resolvePlan(
     const live = resolveLive(group, itemName, state, context, now);
     const earns = group.earns && !namesCurrency(group, group.earns.currency) ? group.earns : null;
     const earnedTotal = earns ? (outstanding.get(ledgerName(earns.currency)) ?? 0) : 0;
-    // A read inventory with no row for the syndicate is one the player never joined.
-    const held = earns
-      ? (standingBalance(state, earns.currency) ??
-        (context.inventory && STANDING_CURRENCY.test(earns.currency) ? 0 : null))
-      : null;
+    const held = earns ? balanceFor(state, ledgerName(earns.currency), itemName) : null;
     const owes = groupOwes[groupIndex];
 
     return {
@@ -680,6 +720,7 @@ export function resolvePlan(
       place: group.place,
       sub: group.sub,
       activity: group.activity,
+      title: group.title ?? null,
       meta: group.meta,
       mode: group.mode,
       live,
@@ -705,6 +746,7 @@ export function resolvePlan(
       disclosures: group.disclosures,
       tips: tips.groups[groupIndex],
       facts: facts.facts,
+      quest: group.quest ?? null,
       done: doneByGroup[groupIndex],
       remaining: group.skip !== null ? 0 : rows.filter((row) => !row.done).length,
       ...(owes.length > 0 ? { owes } : {}),
@@ -719,6 +761,14 @@ export function resolvePlan(
     outstanding: outstanding.get(currency) ?? 0,
     paired: earned.has(currency),
   }));
+
+  const materialRows = groups
+    .filter((_, index) => entries[index].route === null)
+    .flatMap((group) => group.rows);
+  const crafting = (currency: string): number =>
+    materialRows
+      .filter((row) => ledgerName(row.label) === ledgerName(currency))
+      .reduce((sum, row) => sum + (row.qty?.required ?? 0), 0);
 
   let total = 0;
   let done = 0;
@@ -752,6 +802,13 @@ export function resolvePlan(
     tips: tips.rest,
     sentiment: tips.sentiment,
     ledger,
+    copies,
+    builds: buildItems(planGroups, state, context.itemDb, itemName),
+    shop: resolveShop(plan, groups, state, context, {
+      crafting,
+      got: (label) => partOf(label, false)?.owned ?? null,
+    }),
+    sequence: plan.sequence === true,
     steps: { done, total },
     unresolved: [...unresolved],
   };

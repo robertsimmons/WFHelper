@@ -129,9 +129,9 @@
       "note": "700 each for Plague Keewar and Plague Kripath"
     },
     {
-      "qty": "216,000",
+      "qty": "222,500",
       "label": "Credits",
-      "note": "55,000 strikes, 110,000 Peye and Jai, 44,000 forging, 7,000 Plague blueprints"
+      "note": "55,000 strikes, 110,000 Peye and Jai, 44,000 forging, 13,500 Plague blueprints"
     }
   ],
   "groups": [
@@ -139,7 +139,7 @@
       "type": "currency",
       "place": "PLAINS OF EIDOLON, EARTH",
       "sub": null,
-      "activity": "conservation, fishing, mining or bounties for Ostron standing",
+      "activity": "Earn Ostron Standing",
       "meta": "71,000 to Trusted, 11,000 for blueprints, 55,000 for eleven gilds",
       "mode": null,
       "live": null,
@@ -154,7 +154,7 @@
         {
           "qty": "137,000",
           "label": "Ostron standing",
-          "note": null,
+          "note": "conservation, fishing, mining or bounties",
           "alt": null,
           "done": false
         }
@@ -172,6 +172,7 @@
       "place": "CETUS, EARTH",
       "sub": null,
       "activity": "rank Ostron to Trusted",
+      "title": "Ostron rank-ups",
       "meta": null,
       "mode": null,
       "live": null,
@@ -263,7 +264,8 @@
       "type": "vendor",
       "place": "HOK, CETUS",
       "sub": null,
-      "activity": "buy the nine Ostron strikes plus a Peye Grip and Jai Link",
+      "activity": "buy the Ostron Strike blueprints",
+      "title": "Strike blueprints",
       "meta": null,
       "mode": null,
       "live": null,
@@ -272,14 +274,14 @@
       "spends": [
         {
           "currency": "Ostron Standing",
-          "amount": "11,000"
+          "amount": "9,000"
         }
       ],
       "map": null,
       "rows": [
         {
           "qty": null,
-          "label": "Balla Strike Blueprint",
+          "label": "Balla Blueprint",
           "note": "one-handed Dagger, two-handed Staff",
           "alt": null,
           "done": false,
@@ -294,7 +296,7 @@
         },
         {
           "qty": null,
-          "label": "Ooltha Strike Blueprint",
+          "label": "Ooltha Blueprint",
           "note": "one-handed Sword, two-handed Staff",
           "alt": null,
           "done": false,
@@ -309,7 +311,7 @@
         },
         {
           "qty": null,
-          "label": "Kronsh Strike Blueprint",
+          "label": "Kronsh Blueprint",
           "note": "one-handed Machete, two-handed Polearm",
           "alt": null,
           "done": false,
@@ -324,7 +326,7 @@
         },
         {
           "qty": null,
-          "label": "Dehtat Strike Blueprint",
+          "label": "Dehtat Blueprint",
           "note": "one-handed Rapier, two-handed Polearm",
           "alt": null,
           "done": false,
@@ -339,7 +341,7 @@
         },
         {
           "qty": null,
-          "label": "Mewan Strike Blueprint",
+          "label": "Mewan Blueprint",
           "note": "one-handed Sword, two-handed Polearm",
           "alt": null,
           "done": false,
@@ -354,7 +356,7 @@
         },
         {
           "qty": null,
-          "label": "Cyath Strike Blueprint",
+          "label": "Cyath Blueprint",
           "note": "one-handed Machete, two-handed Polearm",
           "alt": null,
           "done": false,
@@ -369,7 +371,7 @@
         },
         {
           "qty": null,
-          "label": "Sepfahn Strike Blueprint",
+          "label": "Sepfahn Blueprint",
           "note": "one-handed Nikana, two-handed Staff",
           "alt": null,
           "done": false,
@@ -384,7 +386,7 @@
         },
         {
           "qty": null,
-          "label": "Rabvee Strike Blueprint",
+          "label": "Rabvee Blueprint",
           "note": "one-handed Machete, two-handed Hammer",
           "alt": null,
           "done": false,
@@ -399,7 +401,7 @@
         },
         {
           "qty": null,
-          "label": "Dokrahm Strike Blueprint",
+          "label": "Dokrahm Blueprint",
           "note": "one-handed Scythe, two-handed Heavy Blade",
           "alt": null,
           "done": false,
@@ -411,10 +413,34 @@
               }
             ]
           }
-        },
+        }
+      ],
+      "conditions": ["Only the Strike banks Mastery; the Grip and Link never do."],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "HOK, CETUS",
+      "sub": null,
+      "activity": "buy a Peye Grip and Jai Link blueprint",
+      "title": "Grip and Link blueprints",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [
+        {
+          "currency": "Ostron Standing",
+          "amount": "2,000"
+        }
+      ],
+      "map": null,
+      "rows": [
         {
           "qty": null,
-          "label": "Peye Grip Blueprint",
+          "label": "Peye Blueprint",
           "note": "one-handed; trades damage for speed",
           "alt": "Laka, Korb or Kwath one-handed; Jayap, Seekalla, Kroostra or Shtung two-handed; all Neutral, 1,000",
           "done": false,
@@ -429,7 +455,7 @@
         },
         {
           "qty": null,
-          "label": "Jai Link Blueprint",
+          "label": "Jai Blueprint",
           "note": "every material is a shared Plains material",
           "alt": "Ruhang, same rank and cost",
           "done": false,
@@ -444,7 +470,6 @@
         }
       ],
       "conditions": [
-        "Only the Strike banks Mastery; the Grip and Link never do.",
         "The Grip's handedness picks the weapon class for good: a forged Zaw can never be taken apart.",
         "Hok also sells better links: Ruhang II and Jai II at Offworlder (2,000), Vargeet and Ekwana Ruhang and Jai at Visitor (5,000), their II versions at Trusted (7,500), and Vargeet and Ekwana Ruhang II and Jai II at Surah (10,000)."
       ],
@@ -455,22 +480,22 @@
       "type": "currency",
       "place": "CETUS, EARTH",
       "sub": "Konzu",
-      "activity": "Plague Star bounties for Operational Supply standing",
+      "activity": "Earn Operational Supply Standing",
       "meta": "active only during Operation: Plague Star",
       "mode": null,
       "live": null,
       "skip": null,
       "earns": {
         "currency": "Operational Supply Standing",
-        "amount": "10,000"
+        "amount": "13,000"
       },
       "spends": [],
       "map": null,
       "rows": [
         {
-          "qty": "10,000",
+          "qty": "13,000",
           "label": "Operational Supply standing",
-          "note": null,
+          "note": "6,000 for the rank-ups, 7,000 for the Plague strikes",
           "alt": null,
           "done": false
         }
@@ -489,8 +514,9 @@
     {
       "type": "vendor",
       "place": "CETUS, EARTH",
-      "sub": "Konzu",
+      "sub": "Nakak",
       "activity": "rank Operational Supply to Champion",
+      "title": "Operational Supply rank-ups",
       "meta": null,
       "mode": null,
       "live": null,
@@ -510,6 +536,10 @@
           "note": "10 Grokdrul",
           "alt": null,
           "done": false,
+          "rank": {
+            "syndicate": "Operational Supply",
+            "level": 1
+          },
           "buy": {
             "price": [
               {
@@ -529,6 +559,10 @@
           "note": "10 Iradite",
           "alt": null,
           "done": false,
+          "rank": {
+            "syndicate": "Operational Supply",
+            "level": 2
+          },
           "buy": {
             "price": [
               {
@@ -548,6 +582,10 @@
           "note": "10 Nistlepod; the Plague strikes' rank",
           "alt": null,
           "done": false,
+          "rank": {
+            "syndicate": "Operational Supply",
+            "level": 3
+          },
           "buy": {
             "price": [
               {
@@ -571,7 +609,8 @@
       "place": "NAKAK, CETUS",
       "sub": null,
       "activity": "buy the Plague Keewar and Plague Kripath strikes",
-      "meta": "Champion",
+      "title": "Plague strike blueprints",
+      "meta": null,
       "mode": null,
       "live": {
         "state": "waiting",
@@ -582,7 +621,7 @@
       "spends": [
         {
           "currency": "Operational Supply Standing",
-          "amount": "4,000"
+          "amount": "7,000"
         }
       ],
       "map": null,
@@ -602,6 +641,10 @@
           },
           "done": false,
           "buy": {
+            "rank": {
+              "syndicate": "Operational Supply",
+              "level": 3
+            },
             "price": [
               {
                 "currency": "Operational Supply Standing",
@@ -629,14 +672,18 @@
           },
           "done": false,
           "buy": {
+            "rank": {
+              "syndicate": "Operational Supply",
+              "level": 3
+            },
             "price": [
               {
                 "currency": "Operational Supply Standing",
-                "amount": "2,000"
+                "amount": "5,000"
               },
               {
                 "currency": "Credits",
-                "amount": "3,500"
+                "amount": "10,000"
               }
             ]
           }
@@ -653,6 +700,7 @@
       "place": "FOUNDRY",
       "sub": null,
       "activity": "build eleven strikes, eleven Peye Grips and eleven Jai Links",
+      "title": "Zaw parts",
       "meta": "5,000 cr and 1h each",
       "mode": null,
       "live": null,
@@ -663,91 +711,91 @@
       "rows": [
         {
           "qty": null,
-          "label": "Balla Strike",
+          "label": "Balla",
           "note": "20 Nistlepod, 15 Fish Scales, 10 Tear Azurite, 60 Pyrotic Alloy",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
-          "label": "Ooltha Strike",
+          "label": "Ooltha",
           "note": "20 Iradite, 25 Fish Scales, 10 Tear Azurite, 60 Pyrotic Alloy",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
-          "label": "Kronsh Strike",
+          "label": "Kronsh",
           "note": "20 Grokdrul, 45 Fish Scales, 10 Esher Devar, 60 Coprite Alloy",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
-          "label": "Dehtat Strike",
+          "label": "Dehtat",
           "note": "2 Maprico, 45 Fish Scales, 40 Fersteel Alloy, 8 Marquise Veridos",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
-          "label": "Mewan Strike",
+          "label": "Mewan",
           "note": "1 Cetus Wisp, 55 Fish Scales, 6 Marquise Veridos, 20 Fersteel Alloy",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
-          "label": "Cyath Strike",
+          "label": "Cyath",
           "note": "1 Breath of the Eidolon (bounty-only), 55 Fish Scales, 6 Marquise Veridos, 20 Fersteel Alloy",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
-          "label": "Sepfahn Strike",
+          "label": "Sepfahn",
           "note": "15 Condroc Wing, 55 Fish Scales, 10 Tear Azurite, 60 Coprite Alloy",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
-          "label": "Rabvee Strike",
+          "label": "Rabvee",
           "note": "35 Grokdrul, 50 Fish Scales, 10 Esher Devar, 20 Fersteel Alloy",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
-          "label": "Dokrahm Strike",
+          "label": "Dokrahm",
           "note": "25 Nistlepod, 45 Fish Scales, 7 Marquise Veridos, 60 Pyrotic Alloy",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
-          "label": "Plague Keewar Strike",
+          "label": "Plague Keewar",
           "note": "1,600 Nano Spores, 700 Plastids, 10 Esher Devar, 60 Coprite Alloy",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
-          "label": "Plague Kripath Strike",
+          "label": "Plague Kripath",
           "note": "1,600 Nano Spores, 700 Plastids, 10 Tear Azurite, 60 Pyrotic Alloy",
           "alt": null,
           "done": false
         },
         {
           "qty": "11",
-          "label": "Peye Grip",
+          "label": "Peye",
           "note": "20 Iradite, 50 Fish Oil, 850 Alloy Plate, 60 Pyrotic Alloy each",
           "alt": null,
           "done": false
         },
         {
           "qty": "11",
-          "label": "Jai Link",
+          "label": "Jai",
           "note": "10 Nistlepod, 20 Pyrotic Alloy, 2 Condroc Wing, 5 Khut-Khut Venom Sac each",
           "alt": null,
           "done": false
@@ -759,7 +807,7 @@
     },
     {
       "type": "vendor",
-      "place": "HOK'S ANVIL, CETUS",
+      "place": "HOK, CETUS",
       "sub": null,
       "activity": "forge each Strike, Grip and Link into a Zaw",
       "meta": "instant",
@@ -784,7 +832,9 @@
               }
             ],
             "each": true
-          }
+          },
+          "assembled": true,
+          "task": true
         }
       ],
       "conditions": ["Once built, a Zaw can never be disassembled to return its parts."],
@@ -793,9 +843,10 @@
     },
     {
       "type": "vendor",
-      "place": "HOK'S ANVIL, CETUS",
+      "place": "HOK, CETUS",
       "sub": null,
-      "activity": "level to 30, gild, level to 30 again",
+      "activity": "gild each Zaw at Hok",
+      "title": "Gild Zaws",
       "meta": "2 Cetus Wisp",
       "mode": null,
       "live": null,
@@ -822,7 +873,8 @@
                 "amount": "5,000"
               }
             ]
-          }
+          },
+          "task": true
         },
         {
           "qty": null,
@@ -837,7 +889,8 @@
                 "amount": "5,000"
               }
             ]
-          }
+          },
+          "task": true
         },
         {
           "qty": null,
@@ -852,7 +905,8 @@
                 "amount": "5,000"
               }
             ]
-          }
+          },
+          "task": true
         },
         {
           "qty": null,
@@ -867,7 +921,8 @@
                 "amount": "5,000"
               }
             ]
-          }
+          },
+          "task": true
         },
         {
           "qty": null,
@@ -882,7 +937,8 @@
                 "amount": "5,000"
               }
             ]
-          }
+          },
+          "task": true
         },
         {
           "qty": null,
@@ -897,7 +953,8 @@
                 "amount": "5,000"
               }
             ]
-          }
+          },
+          "task": true
         },
         {
           "qty": null,
@@ -912,7 +969,8 @@
                 "amount": "5,000"
               }
             ]
-          }
+          },
+          "task": true
         },
         {
           "qty": null,
@@ -927,7 +985,8 @@
                 "amount": "5,000"
               }
             ]
-          }
+          },
+          "task": true
         },
         {
           "qty": null,
@@ -942,7 +1001,8 @@
                 "amount": "5,000"
               }
             ]
-          }
+          },
+          "task": true
         },
         {
           "qty": null,
@@ -957,7 +1017,8 @@
                 "amount": "5,000"
               }
             ]
-          }
+          },
+          "task": true
         },
         {
           "qty": null,
@@ -972,7 +1033,8 @@
                 "amount": "5,000"
               }
             ]
-          }
+          },
+          "task": true
         }
       ],
       "conditions": [

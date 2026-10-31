@@ -4,7 +4,7 @@ import type { ItemDbEntry } from "../../types/inventory.js";
 
 /** A part the plan's foundry builds that the item's own recipe never names: a
  *  K-Drive's reactor, nose and jet. */
-export interface PlanOnlyPart {
+interface PlanOnlyPart {
   name: string;
   /** Null when no item carries the name, which still draws as a line. */
   uniqueName: string | null;

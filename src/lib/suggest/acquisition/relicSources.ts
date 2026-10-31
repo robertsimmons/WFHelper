@@ -63,10 +63,7 @@ export function aabcRound(source: RelicSource): AabcRound | null {
 }
 
 /** A bounty is an open-world run. */
-export function sourceOpinion(
-  prefs: SuggestionPreferences,
-  source: RelicSource,
-): MissionOpinion | null {
+function sourceOpinion(prefs: SuggestionPreferences, source: RelicSource): MissionOpinion | null {
   if (source.kind === "bounty") return missionOpinion(prefs, "Open World");
   if (source.kind !== "mission" && source.kind !== "caches") return null;
   return missionOpinion(prefs, source.missionType);

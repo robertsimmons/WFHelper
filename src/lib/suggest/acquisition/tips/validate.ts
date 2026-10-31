@@ -37,7 +37,7 @@ export interface TipsTarget {
   rows: boolean;
 }
 
-export type TipsTargetLookup = (name: string) => TipsTarget | null;
+type TipsTargetLookup = (name: string) => TipsTarget | null;
 
 export function authoredTarget(plan: AuthoredPlan): TipsTarget {
   return {

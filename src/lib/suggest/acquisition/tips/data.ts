@@ -41,7 +41,7 @@ export function tipDisputes(): TipDispute[] {
   return [...DISPUTES];
 }
 
-export function tipsFile(name: string): TipsFile | null {
+function tipsFile(name: string): TipsFile | null {
   return BY_NAME.get(key(name)) ?? null;
 }
 
@@ -56,10 +56,7 @@ export function byStrength<T extends Pick<Tip, "consensus">>(tips: readonly T[])
 
 /** Every live tip for an item, each with its open dispute. Empty for an item
  *  nobody has written tips for. */
-export function itemTips(
-  file: TipsFile | null,
-  disputes: readonly TipDispute[] = DISPUTES,
-): ItemTip[] {
+function itemTips(file: TipsFile | null, disputes: readonly TipDispute[] = DISPUTES): ItemTip[] {
   if (!file) return [];
   const item = key(file.name);
   const open = new Map(

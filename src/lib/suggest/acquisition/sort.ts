@@ -151,7 +151,7 @@ function walkable(path: AcquisitionPath): boolean {
 }
 
 /** The route the headline would lead with if plat were off the table. */
-export function inGamePath(paths: readonly AcquisitionPath[]): AcquisitionPath | null {
+function inGamePath(paths: readonly AcquisitionPath[]): AcquisitionPath | null {
   return paths.find(walkable) ?? null;
 }
 

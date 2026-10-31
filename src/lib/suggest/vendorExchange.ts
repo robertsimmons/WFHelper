@@ -69,7 +69,7 @@ interface ExchangeCost extends ExchangePrice {
   covers: boolean;
 }
 
-export interface ExchangeOfferRow {
+interface ExchangeOfferRow {
   uniqueName: string;
   name: string;
   quantity: number;
@@ -95,7 +95,7 @@ interface ExchangeKuva {
   spare: number;
 }
 
-export interface ExchangeMat {
+interface ExchangeMat {
   uniqueName: string;
   name: string;
   held: number;

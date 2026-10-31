@@ -31,6 +31,9 @@ const ALLOWLIST = new Set([
   "validatePlan",
   "validateResources",
   "validatePrimeOverride",
+  // Loaders the tips schema guard walks; the renderer reads tips through tipsFor.
+  "tipsFiles",
+  "tipDisputes",
   // Name-keyed rating against a fixture player; prod rates through ratingOf.
   "planRatingFor",
   // Builds a resource store from a fixture table so plan tests do not ride on shipped data.

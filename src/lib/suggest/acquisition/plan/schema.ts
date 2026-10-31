@@ -44,7 +44,7 @@ export const PLAN_MAP_KEYS = [
   "archarbor",
 ] as const;
 
-export type PlanMapKey = (typeof PLAN_MAP_KEYS)[number];
+type PlanMapKey = (typeof PLAN_MAP_KEYS)[number];
 
 export const PLAN_LIVE_STATES = ["open", "blocked", "waiting"] as const;
 
@@ -177,10 +177,10 @@ export interface PlanAfterQuest {
 /** `chosen` is the route the groups walk; `afterQuest` is the one `afterQuest` walks. */
 export const PLAN_ROUTE_ROLES = ["chosen", "afterQuest"] as const;
 
-export type PlanRouteRole = (typeof PLAN_ROUTE_ROLES)[number];
+type PlanRouteRole = (typeof PLAN_ROUTE_ROLES)[number];
 
 /** One in-game way to get the item, as the overview names it. */
-export interface PlanRoute {
+interface PlanRoute {
   name: string;
   /** One line: what taking it costs. */
   cost: string;

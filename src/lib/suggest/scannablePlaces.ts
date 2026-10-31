@@ -1,8 +1,8 @@
 import { SCAN_GROUPS, type ScanGroup, type ScannableEntry } from "./scannables.js";
 import type { Suggestion } from "../../types/suggest.js";
 
-export const PLACE_KINDS = ["landscape", "planet", "tileset", "stop", "drop"] as const;
-export type ScannablePlaceKind = (typeof PLACE_KINDS)[number];
+const PLACE_KINDS = ["landscape", "planet", "tileset", "stop", "drop"] as const;
+type ScannablePlaceKind = (typeof PLACE_KINDS)[number];
 
 export interface ScannablePool {
   group: ScanGroup;
@@ -33,7 +33,7 @@ export interface ScannablePlaceItem {
   remaining: number;
 }
 
-export interface ScannableGroupCount {
+interface ScannableGroupCount {
   group: ScanGroup;
   count: number;
 }

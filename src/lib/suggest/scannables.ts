@@ -110,7 +110,7 @@ export function missingScannables(
   return out;
 }
 
-export function isPrex(type: string): boolean {
+function isPrex(type: string): boolean {
   return type.toLowerCase().startsWith(PREX_PATH);
 }
 

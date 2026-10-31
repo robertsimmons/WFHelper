@@ -5,7 +5,7 @@ import type { VaultTrader, VaultTraderInventoryItem } from "../../types/world.js
 
 const PROJECTION = "/Projections/";
 
-export interface TraderRelic {
+interface TraderRelic {
   group: RelicGroup;
   offer: VaultTraderInventoryItem;
 }

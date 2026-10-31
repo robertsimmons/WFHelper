@@ -16,7 +16,6 @@ export type {
   PlanProgressOverride,
   ResolvedGroup,
   ResolvedPlan,
-  ResolvedRoute,
   ResolvedRow,
 } from "./types.js";
 

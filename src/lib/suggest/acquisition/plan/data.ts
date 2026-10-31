@@ -43,7 +43,7 @@ export function planSource(name: string): PlanSource {
 }
 
 /** What finding a plan reads off a card; a generated Prime needs every field. */
-export interface PlanLookupTarget {
+interface PlanLookupTarget {
   name: string;
   uniqueName?: string | undefined;
   kind?: AcquisitionKind | undefined;
@@ -53,7 +53,7 @@ export interface PlanLookupTarget {
 }
 
 /** The live data a generated plan is built from. */
-export interface PlanLive {
+interface PlanLive {
   itemDb: Record<string, ItemDbEntry>;
   relicDb?: RelicDatabase | null | undefined;
   world?: WorldState | null | undefined;
@@ -144,14 +144,11 @@ export function afterQuestRoute(plan: AuthoredPlan, quests: QuestState): PlanAft
 }
 
 /** A badge naming a rank the player already holds says nothing to them. */
-export function openBadges(
-  badges: readonly PlanBadge[],
-  inventory: RawInventoryData | null,
-): PlanBadge[] {
+function openBadges(badges: readonly PlanBadge[], inventory: RawInventoryData | null): PlanBadge[] {
   return badges.filter((badge) => !badge.rank || rankMet(inventory, badge.rank) !== true);
 }
 
-export interface PlayerRead {
+interface PlayerRead {
   inventory: RawInventoryData | null;
   quests: QuestState;
 }

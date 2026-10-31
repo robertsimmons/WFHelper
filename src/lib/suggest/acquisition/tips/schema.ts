@@ -5,16 +5,16 @@ import type { PlanGroupType } from "../plan/schema.js";
 
 export const TIP_KINDS = ["tactic", "gotcha", "gear", "sentiment"] as const;
 
-export type TipKind = (typeof TIP_KINDS)[number];
+type TipKind = (typeof TIP_KINDS)[number];
 
 /** Strongest first: the order tips render in. */
 export const TIP_CONSENSUS = ["unanimous", "common", "some", "single"] as const;
 
-export type TipConsensus = (typeof TIP_CONSENSUS)[number];
+type TipConsensus = (typeof TIP_CONSENSUS)[number];
 
 export const DISPUTE_STATUSES = ["open", "confirmed", "dismissed"] as const;
 
-export type DisputeStatus = (typeof DISPUTE_STATUSES)[number];
+type DisputeStatus = (typeof DISPUTE_STATUSES)[number];
 
 /** The step a tip is about, matched by meaning rather than position, so a
  *  reordered or regenerated plan keeps it on the right step. */
@@ -39,7 +39,7 @@ export interface Tip {
 
 /** A tip the wiki was confirmed to contradict. It never renders; it keeps the
  *  same text from being written back. */
-export interface RemovedTip {
+interface RemovedTip {
   id: string;
   text: string;
   reason: string;

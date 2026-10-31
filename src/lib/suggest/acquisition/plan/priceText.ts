@@ -4,7 +4,7 @@ import { resourceEntry, type ResourceLookup } from "./resources.js";
 import type { PlanCurrency, PlanRank } from "./schema.js";
 
 /** What a bare figure or rank in the text is taken to mean. */
-export interface PriceHints {
+interface PriceHints {
   /** The standing currency a bare "5,000 standing" is paid in. */
   standing: string | null;
   /** The syndicate a bare "Rank 2" or rank title belongs to. */
@@ -12,7 +12,7 @@ export interface PriceHints {
 }
 
 /** A price or rank lifted out of authored text, and the text that is left. */
-export interface PriceRead {
+interface PriceRead {
   text: string | null;
   price: PlanCurrency[];
   rank: PlanRank | null;

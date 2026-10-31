@@ -18,12 +18,12 @@ export type PlanStepState =
   | { kind: "live"; text: string; tone: PlanLiveState };
 
 /** `done` is a bought blueprint already held; `warn` a rank still to reach. */
-export interface PlanStepTag {
+interface PlanStepTag {
   text: string;
   tone: "done" | "warn" | null;
 }
 
-export interface PlanStepRow {
+interface PlanStepRow {
   key: string;
   /** Every plan row this line stands for; a merged line ticks them together. */
   ids: string[];
@@ -38,7 +38,7 @@ export interface PlanStepRow {
   notes: string[];
 }
 
-export interface PlanStepAlt {
+interface PlanStepAlt {
   id: string;
   label: string;
   text: string;
@@ -48,7 +48,7 @@ export interface PlanStepAlt {
 }
 
 /** A row the step's title already says, kept so the plan page can still tick it. */
-export interface PlanStepFold {
+interface PlanStepFold {
   id: string;
   label: string;
   done: boolean;
@@ -96,7 +96,7 @@ const isBuild = (group: ResolvedGroup): boolean =>
   group.type === "foundry" || (group.type === "craft" && !isMaterialGroup(group));
 
 /** "ROKY, FORTUNA" reads as "Roky, Fortuna"; a token carrying a digit is a code. */
-export function placeName(place: string): string {
+function placeName(place: string): string {
   return place
     .split(/(\s+)/)
     .map((word) =>
@@ -156,7 +156,7 @@ export function displayOrder(groups: readonly ResolvedGroup[]): ResolvedGroup[] 
 }
 
 /** What PlanRow prints for a rank-up pick: the reward still ahead, or its price. */
-export function pickText(row: ResolvedRow, t: Translator): string | null {
+function pickText(row: ResolvedRow, t: Translator): string | null {
   if (!row.pick) return null;
   return row.pick.state === "spent" ? spendsText(row.pick.spends, t) : t("nextUp.planPickReward");
 }
@@ -183,7 +183,7 @@ interface RowDraft extends PlanStepRow {
 
 /** A material's price rides beside its count; any other row's price is its value.
  *  The plan page shows every row's price as a tag. */
-export function purchaseTags(row: ResolvedRow, withPrice: boolean, t: Translator): PlanStepTag[] {
+function purchaseTags(row: ResolvedRow, withPrice: boolean, t: Translator): PlanStepTag[] {
   const purchase = row.purchase;
   if (!purchase) return [];
   const tags: PlanStepTag[] = [];

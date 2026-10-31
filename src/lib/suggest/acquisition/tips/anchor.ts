@@ -36,7 +36,7 @@ export function anchorIndex(groups: readonly AnchorGroup[], anchor: TipAnchor): 
   return found[0]?.index ?? -1;
 }
 
-export interface PlacedTips<T> {
+interface PlacedTips<T> {
   /** Aligned with the groups handed in, strongest first. */
   groups: T[][];
   /** Anchored tips whose step this plan does not have. */

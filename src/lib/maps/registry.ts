@@ -1,6 +1,6 @@
 import { MAP_IMAGE_URLS } from "../assetUrls.js";
 
-export interface BaseMap {
+interface BaseMap {
   key: string;
   name: string;
   imageUrl: string;

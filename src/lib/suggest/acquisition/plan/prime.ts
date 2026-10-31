@@ -25,7 +25,7 @@ export interface PrimeTarget {
   parts: PartPlan;
 }
 
-export interface PrimeLive {
+interface PrimeLive {
   itemDb: Record<string, ItemDbEntry>;
   relicDb: RelicDatabase | null | undefined;
   /** Null is unknown trader stock, never an empty shelf. */

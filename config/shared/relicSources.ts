@@ -1,6 +1,6 @@
 import type { DropKind } from "./dropTypes";
 
-export type RelicSourceKind = "mission" | "caches" | "bounty" | "quest" | "other";
+type RelicSourceKind = "mission" | "caches" | "bounty" | "quest" | "other";
 
 /** One drop-table row a relic drops from. */
 export interface RelicSource {

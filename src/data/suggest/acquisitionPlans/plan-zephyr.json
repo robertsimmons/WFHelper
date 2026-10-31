@@ -4,23 +4,79 @@
   "effort": 2,
   "source": "dojo",
   "tradeable": false,
-  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "progress": {
+    "have": 0,
+    "need": 4,
+    "unit": "parts"
+  },
   "badges": [
-    { "text": "Tenno Lab", "tone": "warn" },
-    { "text": "600 Oxium", "tone": "info" }
+    {
+      "text": "Tenno Lab",
+      "tone": "warn"
+    },
+    {
+      "text": "600 Oxium",
+      "tone": "info"
+    }
   ],
-  "prices": [{ "label": "blueprints", "amount": "80,000 cr", "money": false }],
+  "prices": [
+    {
+      "label": "blueprints",
+      "amount": "80,000 cr",
+      "money": false
+    }
+  ],
   "materials": [
-    { "qty": "600", "label": "Oxium", "note": "200 per part" },
-    { "qty": "150", "label": "Circuits", "note": "Neuroptics" },
-    { "qty": "700", "label": "Polymer Bundle", "note": "Neuroptics and Systems" },
-    { "qty": "500", "label": "Salvage", "note": "Neuroptics" },
-    { "qty": "900", "label": "Nano Spores", "note": "Chassis" },
-    { "qty": "50", "label": "Rubedo", "note": "Chassis" },
-    { "qty": "1", "label": "Control Module", "note": "Systems" },
-    { "qty": "400", "label": "Plastids", "note": "Systems" },
-    { "qty": "1", "label": "Orokin Cell", "note": "Zephyr" },
-    { "qty": "150,000", "label": "Credits", "note": null }
+    {
+      "qty": "600",
+      "label": "Oxium",
+      "note": "200 per part"
+    },
+    {
+      "qty": "150",
+      "label": "Circuits",
+      "note": "Neuroptics"
+    },
+    {
+      "qty": "700",
+      "label": "Polymer Bundle",
+      "note": "Neuroptics and Systems"
+    },
+    {
+      "qty": "500",
+      "label": "Salvage",
+      "note": "Neuroptics"
+    },
+    {
+      "qty": "900",
+      "label": "Nano Spores",
+      "note": "Chassis"
+    },
+    {
+      "qty": "50",
+      "label": "Rubedo",
+      "note": "Chassis"
+    },
+    {
+      "qty": "1",
+      "label": "Control Module",
+      "note": "Systems"
+    },
+    {
+      "qty": "400",
+      "label": "Plastids",
+      "note": "Systems"
+    },
+    {
+      "qty": "1",
+      "label": "Orokin Cell",
+      "note": "Zephyr"
+    },
+    {
+      "qty": "150,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
     {
@@ -33,22 +89,44 @@
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Credits", "amount": "80,000" }],
+      "spends": [
+        {
+          "currency": "Credits",
+          "amount": "80,000"
+        }
+      ],
       "map": null,
       "rows": [
         {
           "qty": null,
           "label": "Zephyr Blueprint",
-          "note": "35,000 cr",
+          "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Credits",
+                "amount": "35,000"
+              }
+            ]
+          }
         },
         {
           "qty": "3",
           "label": "component blueprints",
-          "note": "15,000 cr each",
+          "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Credits",
+                "amount": "15,000"
+              }
+            ],
+            "each": true
+          }
         }
       ],
       "conditions": [],

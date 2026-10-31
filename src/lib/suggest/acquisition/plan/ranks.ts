@@ -21,6 +21,13 @@ export function topRank(meta: SyndicateMeta): number {
   return meta.titles.reduce((max, title) => Math.max(max, title.level), 0);
 }
 
+/** The rank table spells titles in capitals; plan text reads "Proper Felon". */
+export function rankTitle(rank: PlanRank): string {
+  const title = rankSyndicate(rank.syndicate)?.titles.find((entry) => entry.level === rank.level);
+  if (!title) return `Rank ${rank.level}`;
+  return title.name.toLowerCase().replace(/\b\w/g, (letter) => letter.toUpperCase());
+}
+
 /** Null when the payload carries no standing at all, which is unknown. */
 export function rankMet(inventory: RawInventoryData | null, rank: PlanRank): boolean | null {
   const meta = rankSyndicate(rank.syndicate);

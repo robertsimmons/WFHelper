@@ -30,39 +30,6 @@
   "groups": [
     {
       "sub": null,
-      "activity": "finish the prerequisite quest",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": [],
-      "type": "gate",
-      "place": "THE SECOND DREAM",
-      "rows": [
-        {
-          "qty": null,
-          "label": "The Second Dream",
-          "note": "unlocks The War Within",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Mastery Rank 7",
-          "note": "needed to equip it",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "quest": "The War Within"
-    },
-    {
-      "sub": null,
       "activity": "finish the quest",
       "meta": "one-time, guaranteed",
       "mode": null,
@@ -141,7 +108,7 @@
       {
         "sub": null,
         "activity": "scan targets with the Synthesis Scanner",
-        "meta": "100,000 Standing",
+        "meta": null,
         "mode": null,
         "live": null,
         "skip": null,
@@ -170,7 +137,7 @@
       {
         "sub": null,
         "activity": "buy the blueprint back",
-        "meta": "100,000 Standing",
+        "meta": null,
         "mode": null,
         "live": null,
         "skip": null,
@@ -191,9 +158,17 @@
           {
             "qty": null,
             "label": "Broken Scepter Blueprint",
-            "note": "100,000 Standing",
+            "note": null,
             "alt": null,
-            "done": false
+            "done": false,
+            "buy": {
+              "price": [
+                {
+                  "currency": "Cephalon Simaris Standing",
+                  "amount": "100,000"
+                }
+              ]
+            }
           }
         ]
       },

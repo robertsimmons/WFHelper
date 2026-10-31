@@ -4,21 +4,55 @@
   "effort": 2,
   "source": "shop",
   "tradeable": false,
-  "progress": { "have": 0, "need": 1, "unit": "weapon" },
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "weapon"
+  },
   "badges": [
-    { "text": "Market only", "tone": "info" },
-    { "text": "MR 2", "tone": "info" }
+    {
+      "text": "Market only",
+      "tone": "info"
+    }
   ],
   "prices": [
-    { "label": "blueprint", "amount": "40,000 cr", "money": false },
-    { "label": "build", "amount": "25,000 cr", "money": false }
+    {
+      "label": "blueprint",
+      "amount": "40,000 cr",
+      "money": false
+    },
+    {
+      "label": "build",
+      "amount": "25,000 cr",
+      "money": false
+    }
   ],
   "materials": [
-    { "qty": "3", "label": "Neurodes", "note": null },
-    { "qty": "4", "label": "Gallium", "note": null },
-    { "qty": "3,000", "label": "Nano Spores", "note": null },
-    { "qty": "1,200", "label": "Rubedo", "note": null },
-    { "qty": "65,000", "label": "Credits", "note": null }
+    {
+      "qty": "3",
+      "label": "Neurodes",
+      "note": null
+    },
+    {
+      "qty": "4",
+      "label": "Gallium",
+      "note": null
+    },
+    {
+      "qty": "3,000",
+      "label": "Nano Spores",
+      "note": null
+    },
+    {
+      "qty": "1,200",
+      "label": "Rubedo",
+      "note": null
+    },
+    {
+      "qty": "65,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
     {
@@ -26,7 +60,7 @@
       "place": "MARKET",
       "sub": null,
       "activity": "buy the blueprint",
-      "meta": "40,000 cr",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -37,9 +71,17 @@
         {
           "qty": null,
           "label": "Ballistica Blueprint",
-          "note": "40,000 cr",
+          "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Credits",
+                "amount": "40,000"
+              }
+            ]
+          }
         }
       ],
       "conditions": [],

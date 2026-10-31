@@ -4,68 +4,109 @@
   "effort": 4,
   "source": "railjack",
   "tradeable": false,
-  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "progress": {
+    "have": 0,
+    "need": 4,
+    "unit": "parts"
+  },
   "badges": [
-    { "text": "Constellations quest", "tone": "warn" },
-    { "text": "a blueprint every clear", "tone": "info" }
+    {
+      "text": "Constellations quest",
+      "tone": "warn"
+    },
+    {
+      "text": "a blueprint every clear",
+      "tone": "info"
+    }
   ],
   "prices": [],
   "routes": [
     {
-      "name": "Constellations, then Scoria's Angel",
+      "name": "Constellations, then Uranus Proxima",
       "cost": "the quest gives the main blueprint; parts drop, or 90 Talent each at Hunhow",
       "effort": 4,
       "role": "chosen"
     },
     {
-      "name": "After the quest: Scoria's Angel",
+      "name": "After the quest: Uranus Proxima",
       "cost": "the main blueprint drops too, or 275 Talent; 545 Talent buys the whole set",
       "effort": 5,
       "role": "afterQuest"
     }
   ],
   "materials": [
-    { "qty": "600", "label": "Rubedo", "note": "Chassis" },
-    { "qty": "500", "label": "Polymer Bundle", "note": "Systems" },
-    { "qty": "400", "label": "Alloy Plate", "note": "Chassis" },
-    { "qty": "250", "label": "Circuits", "note": "Neuroptics" },
-    { "qty": "30", "label": "Morphics", "note": "Systems" },
-    { "qty": "20", "label": "Control Module", "note": "Systems" },
-    { "qty": "5", "label": "Gallium", "note": "Neuroptics" },
-    { "qty": "5", "label": "Nullstones", "note": "Neuroptics" },
-    { "qty": "75", "label": "Asterite", "note": "Neuroptics" },
-    { "qty": "600", "label": "Carbides", "note": "Chassis" },
-    { "qty": "500", "label": "Ticor Plate", "note": "Chassis" },
-    { "qty": "100", "label": "Isos", "note": "Systems" },
-    { "qty": "3", "label": "Orokin Cell", "note": "Sirius & Orion" },
-    { "qty": "70,000", "label": "Credits", "note": null }
+    {
+      "qty": "600",
+      "label": "Rubedo",
+      "note": "Chassis"
+    },
+    {
+      "qty": "500",
+      "label": "Polymer Bundle",
+      "note": "Systems"
+    },
+    {
+      "qty": "400",
+      "label": "Alloy Plate",
+      "note": "Chassis"
+    },
+    {
+      "qty": "250",
+      "label": "Circuits",
+      "note": "Neuroptics"
+    },
+    {
+      "qty": "30",
+      "label": "Morphics",
+      "note": "Systems"
+    },
+    {
+      "qty": "20",
+      "label": "Control Module",
+      "note": "Systems"
+    },
+    {
+      "qty": "5",
+      "label": "Gallium",
+      "note": "Neuroptics"
+    },
+    {
+      "qty": "5",
+      "label": "Nullstones",
+      "note": "Neuroptics"
+    },
+    {
+      "qty": "75",
+      "label": "Asterite",
+      "note": "Neuroptics"
+    },
+    {
+      "qty": "600",
+      "label": "Carbides",
+      "note": "Chassis"
+    },
+    {
+      "qty": "500",
+      "label": "Ticor Plate",
+      "note": "Chassis"
+    },
+    {
+      "qty": "100",
+      "label": "Isos",
+      "note": "Systems"
+    },
+    {
+      "qty": "3",
+      "label": "Orokin Cell",
+      "note": "Sirius & Orion"
+    },
+    {
+      "qty": "70,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
-    {
-      "type": "gate",
-      "place": "QUESTS",
-      "sub": null,
-      "activity": "finish Jade Shadows: Constellations",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Jade Shadows: Constellations",
-          "note": "needs Jade Shadows, which needs The New War; solo, 30-40 min, can't be replayed",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
     {
       "type": "farm",
       "place": "INBOX",
@@ -101,7 +142,10 @@
       "mode": null,
       "live": null,
       "skip": null,
-      "earns": { "currency": "Crimson Talent", "amount": "270" },
+      "earns": {
+        "currency": "Crimson Talent",
+        "amount": "270"
+      },
       "spends": [],
       "map": null,
       "rows": [
@@ -110,8 +154,13 @@
           "label": "Neuroptics Blueprint",
           "note": "14.29%",
           "alt": {
-            "text": "or 90 Crimson Talent at Hunhow",
-            "spends": [{ "currency": "Crimson Talent", "amount": "90" }]
+            "text": "or 90 Talent at Hunhow",
+            "spends": [
+              {
+                "currency": "Crimson Talent",
+                "amount": "90"
+              }
+            ]
           },
           "done": false
         },
@@ -120,8 +169,13 @@
           "label": "Chassis Blueprint",
           "note": "14.29%",
           "alt": {
-            "text": "or 90 Crimson Talent at Hunhow",
-            "spends": [{ "currency": "Crimson Talent", "amount": "90" }]
+            "text": "or 90 Talent at Hunhow",
+            "spends": [
+              {
+                "currency": "Crimson Talent",
+                "amount": "90"
+              }
+            ]
           },
           "done": false
         },
@@ -130,22 +184,98 @@
           "label": "Systems Blueprint",
           "note": "14.29%",
           "alt": {
-            "text": "or 90 Crimson Talent at Hunhow",
-            "spends": [{ "currency": "Crimson Talent", "amount": "90" }]
+            "text": "or 90 Talent at Hunhow",
+            "spends": [
+              {
+                "currency": "Crimson Talent",
+                "amount": "90"
+              }
+            ]
           },
           "done": false
         }
       ],
-      "conditions": [
-        "The Kuva Wytch (side with Ryoku, kill Vena) drops the same blueprints and pays Emerald Talent, which Hunhow also takes for them."
-      ],
+      "conditions": ["Hunhow takes Crimson or Emerald Talent"],
       "bonuses": [
-        "Each clear pays 12-16 Crimson Talent, plus up to 4 more (12 on Steel Path) for shooting every green target in the Ramsled flight.",
-        "Wrath's three parts share the pool, so the same clears progress Wrath.",
-        "Each clear also rolls one of four arcanes: Primary Compression, Arcane Sculptor, Secondary Cryogenic or Melee Assimilation."
+        "12-16 Crimson Talent a clear, 18-22 on Steel Path",
+        "up to 4 more for every Ramsled target, 12 on Steel Path",
+        "Wrath's three parts share the pool",
+        "one arcane a clear: Primary Compression, Arcane Sculptor, Secondary Cryogenic or Melee Assimilation"
       ],
       "disclosures": [],
       "ref": "Crimson Talent"
+    },
+    {
+      "type": "boss",
+      "place": "PONTIS TOWER, URANUS PROXIMA",
+      "sub": "The Kuva Wytch",
+      "activity": "side with Ryoku, kill Vena",
+      "meta": "one blueprint a clear, 14.29% each",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": {
+        "currency": "Emerald Talent",
+        "amount": "270"
+      },
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Neuroptics Blueprint",
+          "note": "14.29%",
+          "alt": {
+            "text": "or 90 Talent at Hunhow",
+            "spends": [
+              {
+                "currency": "Emerald Talent",
+                "amount": "90"
+              }
+            ]
+          },
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Chassis Blueprint",
+          "note": "14.29%",
+          "alt": {
+            "text": "or 90 Talent at Hunhow",
+            "spends": [
+              {
+                "currency": "Emerald Talent",
+                "amount": "90"
+              }
+            ]
+          },
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Systems Blueprint",
+          "note": "14.29%",
+          "alt": {
+            "text": "or 90 Talent at Hunhow",
+            "spends": [
+              {
+                "currency": "Emerald Talent",
+                "amount": "90"
+              }
+            ]
+          },
+          "done": false
+        }
+      ],
+      "conditions": ["Hunhow takes Crimson or Emerald Talent"],
+      "bonuses": [
+        "12-16 Emerald Talent a clear, 18-22 on Steel Path",
+        "up to 4 more for every Orowyrm target, 12 on Steel Path",
+        "Pride's three parts share the pool",
+        "one arcane a clear: Primary Compression, Arcane Sculptor, Secondary Cryogenic or Melee Assimilation"
+      ],
+      "disclosures": [],
+      "ref": "Emerald Talent"
     },
     {
       "type": "foundry",
@@ -170,14 +300,14 @@
         {
           "qty": null,
           "label": "Chassis",
-          "note": "15,000 cr, 600 Rubedo, 400 Alloy Plate",
+          "note": "15,000 cr, 600 Rubedo, 400 Alloy Plate, 600 Carbides, 500 Ticor Plate",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Systems",
-          "note": "15,000 cr, 500 Polymer Bundle, 30 Morphics, 20 Control Module",
+          "note": "15,000 cr, 500 Polymer Bundle, 30 Morphics, 20 Control Module, 100 Isos",
           "alt": null,
           "done": false
         },
@@ -197,8 +327,14 @@
   "afterQuest": {
     "effort": 5,
     "badges": [
-      { "text": "275 Talent for the main", "tone": "warn" },
-      { "text": "a blueprint every clear", "tone": "info" }
+      {
+        "text": "275 Talent for the main",
+        "tone": "warn"
+      },
+      {
+        "text": "a blueprint every clear",
+        "tone": "info"
+      }
     ],
     "groups": [
       {
@@ -210,7 +346,10 @@
         "mode": null,
         "live": null,
         "skip": null,
-        "earns": { "currency": "Crimson Talent", "amount": "275" },
+        "earns": {
+          "currency": "Crimson Talent",
+          "amount": "275"
+        },
         "spends": [],
         "map": null,
         "rows": [
@@ -219,18 +358,58 @@
             "label": "Sirius & Orion Blueprint",
             "note": "14.29%",
             "alt": {
-              "text": "or 275 Crimson Talent at Hunhow",
-              "spends": [{ "currency": "Crimson Talent", "amount": "275" }]
+              "text": "or 275 Talent at Hunhow",
+              "spends": [
+                {
+                  "currency": "Crimson Talent",
+                  "amount": "275"
+                }
+              ]
             },
             "done": false
           }
         ],
-        "conditions": [
-          "The Kuva Wytch drops it too and pays Emerald Talent, which Hunhow also takes for it."
-        ],
-        "bonuses": [],
+        "conditions": ["Hunhow takes Crimson or Emerald Talent"],
+        "bonuses": ["12-16 Crimson Talent a clear, 18-22 on Steel Path"],
         "disclosures": [],
         "ref": "Crimson Talent"
+      },
+      {
+        "type": "boss",
+        "place": "PONTIS TOWER, URANUS PROXIMA",
+        "sub": "The Kuva Wytch",
+        "activity": "side with Ryoku, kill Vena",
+        "meta": "14.29% a clear",
+        "mode": null,
+        "live": null,
+        "skip": null,
+        "earns": {
+          "currency": "Emerald Talent",
+          "amount": "275"
+        },
+        "spends": [],
+        "map": null,
+        "rows": [
+          {
+            "qty": null,
+            "label": "Sirius & Orion Blueprint",
+            "note": "14.29%",
+            "alt": {
+              "text": "or 275 Talent at Hunhow",
+              "spends": [
+                {
+                  "currency": "Emerald Talent",
+                  "amount": "275"
+                }
+              ]
+            },
+            "done": false
+          }
+        ],
+        "conditions": ["Hunhow takes Crimson or Emerald Talent"],
+        "bonuses": ["12-16 Emerald Talent a clear, 18-22 on Steel Path"],
+        "disclosures": [],
+        "ref": "Emerald Talent"
       }
     ]
   }

@@ -9,12 +9,7 @@
     "need": 2,
     "unit": "Vastos"
   },
-  "badges": [
-    {
-      "text": "MR 8",
-      "tone": "info"
-    }
-  ],
+  "badges": [],
   "prices": [
     {
       "label": "blueprint",
@@ -61,36 +56,11 @@
   ],
   "groups": [
     {
-      "type": "gate",
-      "place": "MASTERY RANK",
-      "sub": null,
-      "activity": "reach MR 8",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Mastery Rank 8",
-          "note": "needed to equip it",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
       "type": "vendor",
       "place": "MARKET",
       "sub": null,
       "activity": "buy the blueprints",
-      "meta": "50,000 cr, plus 30,000 cr per Vasto",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -106,16 +76,33 @@
         {
           "qty": null,
           "label": "Akvasto Blueprint",
-          "note": "50,000 cr",
+          "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Credits",
+                "amount": "50,000"
+              }
+            ]
+          }
         },
         {
           "qty": "2",
           "label": "Vasto Blueprint",
-          "note": "30,000 cr each",
+          "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Credits",
+                "amount": "30,000"
+              }
+            ],
+            "each": true
+          }
         }
       ],
       "conditions": [],

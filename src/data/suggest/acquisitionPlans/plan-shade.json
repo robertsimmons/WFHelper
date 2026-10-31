@@ -60,36 +60,11 @@
   ],
   "groups": [
     {
-      "type": "gate",
-      "place": "ORBITER",
-      "sub": null,
-      "activity": "free two Companion slots before claiming",
-      "meta": "2 slots",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": "2",
-          "label": "free Companion slots",
-          "note": "one for Shade, one for its Burst Laser",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": ["The claim fails without the second slot."],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
       "type": "vendor",
       "place": "MARKET",
       "sub": null,
       "activity": "buy the Shade Blueprint",
-      "meta": "100,000 cr",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -102,7 +77,15 @@
           "label": "Shade Blueprint",
           "note": "no separate component blueprints",
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Credits",
+                "amount": "100,000"
+              }
+            ]
+          }
         }
       ],
       "conditions": [],

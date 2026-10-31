@@ -60,36 +60,11 @@
   ],
   "groups": [
     {
-      "type": "gate",
-      "place": "MASTERY RANK",
-      "sub": null,
-      "activity": "reach MR 5",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Mastery Rank 5",
-          "note": "needed to equip it",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
       "type": "currency",
       "place": "CEPHALON SIMARIS",
       "sub": null,
       "activity": "scan targets with the Synthesis Scanner",
-      "meta": "75,000 Standing",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -118,7 +93,7 @@
       "place": "CEPHALON SIMARIS",
       "sub": null,
       "activity": "buy blueprint",
-      "meta": "75,000 Standing",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -136,7 +111,15 @@
           "label": "Simulor Blueprint",
           "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Cephalon Simaris Standing",
+                "amount": "75,000"
+              }
+            ]
+          }
         }
       ],
       "conditions": [],

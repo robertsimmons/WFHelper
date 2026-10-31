@@ -221,6 +221,47 @@ describe("validatePlan against the resource store", () => {
     ]);
   });
 
+  it("rejects a price or a syndicate rank written into a note, meta or activity", () => {
+    const plan = rhino();
+    plan.groups[0].rows[0].note = "reactor, 5,000 standing";
+    plan.groups[0].meta = "Solaris United Outworlder";
+    plan.groups[1].activity = "buy it for 20 platinum";
+    plan.groups[1].rows[1].note = "Doer";
+    expect(validatePlan(plan, resources())).toEqual([
+      'groups[0].meta writes "Solaris United Outworlder" as text; use the structured fields',
+      'groups[0].rows[0].note writes "5,000 standing" as text; use the structured fields',
+      'groups[1].activity writes "20 platinum" as text; use the structured fields',
+      'groups[1].rows[1].note writes "Doer" as text; use the structured fields',
+    ]);
+  });
+
+  it("lets a foundry line name its credits and a step name a rank a row carries", () => {
+    const plan = rhino();
+    plan.groups[3].meta = "12h, 25,000 cr";
+    plan.groups[3].rows[0].note = "25,000 cr, the three parts";
+    plan.groups[0].activity = "rank Ostron to Rank 2";
+    plan.groups[0].rows[0].buy = {
+      price: [{ currency: "Credits", amount: "25,000" }],
+      rank: { syndicate: "Ostron", level: 2 },
+    };
+    expect(validatePlan(plan, resources())).toEqual([]);
+    plan.groups[0].rows[0].buy.rank = { syndicate: "Ostron", level: 3 };
+    expect(validatePlan(plan, resources())).toEqual([
+      'groups[0].activity writes "Rank 2" as text; use the structured fields',
+    ]);
+  });
+
+  it("checks a row's purchase like any other spend", () => {
+    const plan = rhino();
+    plan.groups[0].rows[0].buy = { price: [{ currency: "Nobody Standing", amount: "1,0" }] };
+    plan.groups[1].rows[0].buy = { price: [], reusable: true };
+    expect(validatePlan(plan, resources())).toEqual([
+      "groups[0].rows[0].buy.price[0].amount must be a grouped number string",
+      'groups[0].rows[0].buy.price[0].currency "Nobody Standing" is not in the resource store',
+      "groups[1].rows[0].buy needs a price or a rank",
+    ]);
+  });
+
   it("rejects an alias whose target is missing", () => {
     const plan = rhino();
     plan.materials = [{ qty: "1", label: "Ghost", note: null }];
@@ -258,6 +299,50 @@ describe("validateResources", () => {
     ).toEqual([
       "Pyrotic Alloy.harvestable must be false on a craft",
       "Esher Devar.recipe must be a non-empty array on a craft",
+    ]);
+  });
+
+  it("keeps prices and ranks out of a source's text, except a craft's foundry credits", () => {
+    const source = { place: "FORTUNA, VENUS", sub: "Smokefinger", how: null };
+    expect(
+      validateResources({
+        Credits: { kind: "currency", harvestable: false, map: null },
+        "Solaris United Standing": { kind: "standing", harvestable: false, map: null },
+        "Venerdo Alloy": {
+          kind: "craft",
+          harvestable: false,
+          map: null,
+          recipe,
+          best: {
+            ...source,
+            activity: "buy the blueprint",
+            meta: "20 per craft, 1 minute, 1,000 credits",
+            buy: {
+              price: [{ currency: "Solaris United Standing", amount: "2,000" }],
+              rank: { syndicate: "Solaris United", level: 1 },
+              reusable: true,
+            },
+          },
+        },
+        "Atmo Systems": {
+          kind: "farm",
+          harvestable: false,
+          map: null,
+          best: { ...source, activity: "Buy at Rank 2, Agent", meta: "2,500 standing each" },
+          alternates: [
+            {
+              ...source,
+              activity: "buy",
+              meta: null,
+              buy: { price: [{ currency: "Credit", amount: "1" }] },
+            },
+          ],
+        },
+      }),
+    ).toEqual([
+      'Atmo Systems.best.activity writes "Rank 2" as text; use the structured fields',
+      'Atmo Systems.best.meta writes "2,500 standing" as text; use the structured fields',
+      'Atmo Systems.alternates[0].buy.price[0].currency "Credit" is not a store spelling',
     ]);
   });
 });

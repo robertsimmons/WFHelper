@@ -4,14 +4,28 @@
   "effort": 5,
   "source": "repeat",
   "tradeable": false,
-  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "progress": {
+    "have": 0,
+    "need": 4,
+    "unit": "parts"
+  },
   "badges": [
-    { "text": "790 Entropic Kuva buys it all", "tone": "info" },
-    { "text": "Zariman gate", "tone": "warn" }
+    {
+      "text": "790 Entropic Kuva buys it all",
+      "tone": "info"
+    }
   ],
   "prices": [
-    { "label": "all blueprints", "amount": "790 Entropic Kuva", "money": false },
-    { "label": "build total", "amount": "70,000 cr", "money": false }
+    {
+      "label": "all blueprints",
+      "amount": "790 Entropic Kuva",
+      "money": false
+    },
+    {
+      "label": "build total",
+      "amount": "70,000 cr",
+      "money": false
+    }
   ],
   "routes": [
     {
@@ -28,54 +42,78 @@
     }
   ],
   "materials": [
-    { "qty": "2,900", "label": "Plastids", "note": "Narin Neuroptics" },
-    { "qty": "4", "label": "Neural Sensors", "note": "Narin Neuroptics" },
-    { "qty": "6", "label": "Entrati Lanthorn", "note": "Narin Neuroptics" },
-    { "qty": "400", "label": "Thrax Plasm", "note": "Narin Neuroptics" },
-    { "qty": "3,300", "label": "Alloy Plate", "note": "Narin Chassis" },
-    { "qty": "1,200", "label": "Polymer Bundle", "note": "Narin Chassis" },
-    { "qty": "800", "label": "Cryotic", "note": "Narin Chassis" },
-    { "qty": "10", "label": "Morphics", "note": "Narin Chassis" },
-    { "qty": "55", "label": "Voidgel Orb", "note": "Narin Systems" },
-    { "qty": "2", "label": "Argon Crystal", "note": "Narin Systems" },
-    { "qty": "2,100", "label": "Circuits", "note": "Narin Systems" },
-    { "qty": "10", "label": "Control Module", "note": "Narin Systems" },
-    { "qty": "1", "label": "Orokin Cell", "note": "Narin build" },
-    { "qty": "70,000", "label": "Credits", "note": null }
+    {
+      "qty": "2,900",
+      "label": "Plastids",
+      "note": "Narin Neuroptics"
+    },
+    {
+      "qty": "4",
+      "label": "Neural Sensors",
+      "note": "Narin Neuroptics"
+    },
+    {
+      "qty": "6",
+      "label": "Entrati Lanthorn",
+      "note": "Narin Neuroptics"
+    },
+    {
+      "qty": "400",
+      "label": "Thrax Plasm",
+      "note": "Narin Neuroptics"
+    },
+    {
+      "qty": "3,300",
+      "label": "Alloy Plate",
+      "note": "Narin Chassis"
+    },
+    {
+      "qty": "1,200",
+      "label": "Polymer Bundle",
+      "note": "Narin Chassis"
+    },
+    {
+      "qty": "800",
+      "label": "Cryotic",
+      "note": "Narin Chassis"
+    },
+    {
+      "qty": "10",
+      "label": "Morphics",
+      "note": "Narin Chassis"
+    },
+    {
+      "qty": "55",
+      "label": "Voidgel Orb",
+      "note": "Narin Systems"
+    },
+    {
+      "qty": "2",
+      "label": "Argon Crystal",
+      "note": "Narin Systems"
+    },
+    {
+      "qty": "2,100",
+      "label": "Circuits",
+      "note": "Narin Systems"
+    },
+    {
+      "qty": "10",
+      "label": "Control Module",
+      "note": "Narin Systems"
+    },
+    {
+      "qty": "1",
+      "label": "Orokin Cell",
+      "note": "Narin build"
+    },
+    {
+      "qty": "70,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
-    {
-      "type": "gate",
-      "place": "ORBITER, THEN THE CODEX",
-      "sub": null,
-      "activity": "Angels of the Zariman, then Whispers in the Walls",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Angels of the Zariman",
-          "note": "opens every Zariman node, so the mission drops below",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Whispers in the Walls",
-          "note": "with Angels of the Zariman, unlocks Cephalon Melica's shop",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
     {
       "type": "currency",
       "place": "ZARIMAN",
@@ -85,7 +123,10 @@
       "mode": null,
       "live": null,
       "skip": null,
-      "earns": { "currency": "Entropic Kuva", "amount": "790" },
+      "earns": {
+        "currency": "Entropic Kuva",
+        "amount": "790"
+      },
       "spends": [],
       "map": null,
       "rows": [
@@ -123,7 +164,12 @@
           "note": "one reward per mission",
           "alt": {
             "text": "or 400 Entropic Kuva at Cephalon Melica",
-            "spends": [{ "currency": "Entropic Kuva", "amount": "400" }]
+            "spends": [
+              {
+                "currency": "Entropic Kuva",
+                "amount": "400"
+              }
+            ]
           },
           "done": false
         }
@@ -151,7 +197,12 @@
           "note": null,
           "alt": {
             "text": "or 130 Entropic Kuva at Cephalon Melica",
-            "spends": [{ "currency": "Entropic Kuva", "amount": "130" }]
+            "spends": [
+              {
+                "currency": "Entropic Kuva",
+                "amount": "130"
+              }
+            ]
           },
           "done": false
         }
@@ -179,7 +230,12 @@
           "note": null,
           "alt": {
             "text": "or 130 Entropic Kuva at Cephalon Melica",
-            "spends": [{ "currency": "Entropic Kuva", "amount": "130" }]
+            "spends": [
+              {
+                "currency": "Entropic Kuva",
+                "amount": "130"
+              }
+            ]
           },
           "done": false
         }
@@ -207,7 +263,12 @@
           "note": null,
           "alt": {
             "text": "or 130 Entropic Kuva at Cephalon Melica",
-            "spends": [{ "currency": "Entropic Kuva", "amount": "130" }]
+            "spends": [
+              {
+                "currency": "Entropic Kuva",
+                "amount": "130"
+              }
+            ]
           },
           "done": false
         }

@@ -90,10 +90,22 @@ interface PlanSkip {
   reason: string;
 }
 
-interface PlanCurrency {
+export interface PlanCurrency {
   currency: string;
   /** Written the way it renders: "42", "141,000". */
   amount: string;
+}
+
+/** What buying something costs. `rank` is the rank the vendor wants first; a
+ *  `reusable` blueprint is bought once and kept, so owning it settles the price.
+ *  An `each` price is paid once per unit of the row's quantity; a `blueprint` price
+ *  buys the blueprint the row's item is crafted from. */
+export interface PlanPurchase {
+  price: PlanCurrency[];
+  rank?: PlanRank | null;
+  reusable?: boolean;
+  each?: boolean;
+  blueprint?: boolean;
 }
 
 export interface PlanDisclosure {
@@ -110,6 +122,13 @@ interface PlanAltOffer {
   spends: PlanCurrency[];
 }
 
+/** The row's item is the free pick a rank-up grants. The group's spends leave its
+ *  price out; it is owed only once the rank is held and the item is not. */
+export interface PlanPick {
+  rank: PlanRank;
+  spends: PlanCurrency[];
+}
+
 export interface PlanRow {
   /** Null for a single item; "150" or "1,200" for a quantity. */
   qty: string | null;
@@ -118,7 +137,11 @@ export interface PlanRow {
   alt: PlanAlt | null;
   /** Mock in the authored file: resolution recomputes it against inventory. */
   done: boolean;
+  /** The rank the row reaches, which is what marks it done. */
   rank?: PlanRank | null;
+  pick?: PlanPick | null;
+  /** What the row costs. A group's spends split across its rows by these. */
+  buy?: PlanPurchase | null;
 }
 
 export interface PlanGroup {

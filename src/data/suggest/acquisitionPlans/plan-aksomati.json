@@ -75,36 +75,11 @@
   ],
   "groups": [
     {
-      "type": "gate",
-      "place": "MASTERY RANK",
-      "sub": null,
-      "activity": "reach MR 9",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Mastery Rank 9",
-          "note": "needed to equip it",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
       "type": "vendor",
       "place": "CLAN DOJO, TENNO LAB",
       "sub": null,
       "activity": "buy the Akstiletto blueprint",
-      "meta": "15,000 cr",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -122,7 +97,15 @@
           "label": "Akstiletto Blueprint",
           "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Credits",
+                "amount": "15,000"
+              }
+            ]
+          }
         }
       ],
       "conditions": ["The Aksomati recipe consumes the Akstiletto, a separate Mastery item."],
@@ -134,7 +117,7 @@
       "place": "MARKET",
       "sub": null,
       "activity": "buy blueprint",
-      "meta": "20,000 cr",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -147,7 +130,15 @@
           "label": "Aksomati Blueprint",
           "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Credits",
+                "amount": "20,000"
+              }
+            ]
+          }
         }
       ],
       "conditions": [],

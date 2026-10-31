@@ -56,36 +56,11 @@
   ],
   "groups": [
     {
-      "type": "gate",
-      "place": "MASTERY RANK",
-      "sub": null,
-      "activity": "reach MR 4",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Mastery Rank 4",
-          "note": "needed to equip it",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
       "type": "vendor",
       "place": "MARKET",
       "sub": null,
       "activity": "buy blueprint",
-      "meta": "20,000 cr",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -103,7 +78,15 @@
           "label": "Akzani Blueprint",
           "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Credits",
+                "amount": "20,000"
+              }
+            ]
+          }
         }
       ],
       "conditions": [],

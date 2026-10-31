@@ -13,10 +13,6 @@
     {
       "text": "Market only",
       "tone": "info"
-    },
-    {
-      "text": "MR 5",
-      "tone": "info"
     }
   ],
   "prices": [
@@ -60,31 +56,6 @@
   ],
   "groups": [
     {
-      "type": "gate",
-      "place": "MASTERY RANK",
-      "sub": null,
-      "activity": null,
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Mastery Rank 5",
-          "note": "to equip it",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
       "type": "vendor",
       "place": "MARKET",
       "sub": null,
@@ -100,16 +71,33 @@
         {
           "qty": "2",
           "label": "Viper Blueprint",
-          "note": "20,000 cr each",
+          "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Credits",
+                "amount": "20,000"
+              }
+            ],
+            "each": true
+          }
         },
         {
           "qty": null,
           "label": "Twin Vipers Blueprint",
-          "note": "15,000 cr",
+          "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Credits",
+                "amount": "15,000"
+              }
+            ]
+          }
         }
       ],
       "conditions": [],

@@ -11,14 +11,6 @@
   },
   "badges": [
     {
-      "text": "Hex Rank 4 gate",
-      "tone": "warn",
-      "rank": {
-        "syndicate": "The Hex",
-        "level": 4
-      }
-    },
-    {
       "text": "390 Heartstrings pity",
       "tone": "info"
     }
@@ -104,47 +96,11 @@
   ],
   "groups": [
     {
-      "type": "gate",
-      "place": "HOLLVANIA",
-      "sub": "Central Mall",
-      "activity": "finish The Hex and rank The Hex to Rank 4",
-      "meta": "opens Stage Defense and Flare's shop in The Round Table",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "The Hex",
-          "note": "quest; its Finale needs Liked chemistry with all six Hex members",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Rank 4, Hot & Fresh",
-          "note": "70,000 standing, 100,000 Höllars, 25 Techrot Chitin, 25 Necracoil, 40 Efervon Sample",
-          "alt": null,
-          "done": false,
-          "rank": {
-            "syndicate": "The Hex",
-            "level": 4
-          }
-        }
-      ],
-      "conditions": ["Rank 4 also needs 185,000 Höllars across Ranks 1 to 4."],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
       "type": "currency",
       "place": "HOLLVANIA CENTRAL MALL",
       "sub": "The Hex",
       "activity": "earn Hex Standing",
-      "meta": "141,000 standing total",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -189,12 +145,20 @@
         {
           "qty": null,
           "label": "rank-ups to Hot & Fresh (Rank 4)",
-          "note": "141,000 standing, Ranks 1 to 4: 5,000, 22,000, 44,000 and 70,000",
+          "note": "Ranks 1 to 4: 5,000, 22,000, 44,000 and 70,000",
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "The Hex",
             "level": 4
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "The Hex Standing",
+                "amount": "141,000"
+              }
+            ]
           }
         }
       ],

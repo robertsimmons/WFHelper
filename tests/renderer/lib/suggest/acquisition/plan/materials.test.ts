@@ -133,3 +133,71 @@ describe("materialGroups", () => {
     expect(groups[1].rows[0].label).toBe("Mystery Goo");
   });
 });
+
+describe("vendor purchases", () => {
+  const smokefinger = (activity: string, amount: string, level: number | null) => ({
+    place: "FORTUNA, VENUS",
+    sub: "Smokefinger",
+    activity,
+    meta: null,
+    buy: {
+      price: [{ currency: "Solaris United Standing", amount }],
+      ...(level ? { rank: { syndicate: "Solaris United", level } } : {}),
+      reusable: true,
+    },
+  });
+  const craft = (best: unknown) => ({
+    kind: "craft",
+    harvestable: false,
+    map: null,
+    best,
+    recipe: [{ qty: 1, label: "Ore" }],
+  });
+  const store = resourceLookup({
+    Ore: { kind: "farm", best: { place: "ORB VALLIS, VENUS", sub: null, activity: "mine" } },
+    "Venerdo Alloy": craft(smokefinger("buy the blueprint", "2,000", 1)),
+    "Travocyte Alloy": craft(smokefinger("Buy the blueprint", "1,000", null)),
+    "Star Amarast": craft(smokefinger("buy the blueprint", "4,000", 2)),
+    "Heart Noctrul": craft(smokefinger("buy the blueprint", "1,000", null)),
+    "Atmo Systems": {
+      kind: "farm",
+      best: {
+        place: "FORTUNA, VENUS",
+        sub: "Little Duck",
+        activity: "buy from Little Duck",
+        buy: { price: [{ currency: "Vox Solaris Standing", amount: "2,500" }], each: true },
+      },
+    },
+  });
+  const needs = ["Venerdo Alloy", "Travocyte Alloy", "Star Amarast", "Heart Noctrul"].map((label) =>
+    need(label, 5),
+  );
+
+  it("puts everything one vendor sells in one step, one row per material", () => {
+    const groups = materialGroups(needs, store);
+    const vendor = groups.filter((group) => group.sub === "Smokefinger");
+    expect(vendor).toHaveLength(1);
+    expect(vendor[0].type).toBe("craft");
+    expect(vendor[0].rows.map((row) => row.label)).toEqual([
+      "Venerdo Alloy",
+      "Travocyte Alloy",
+      "Star Amarast",
+      "Heart Noctrul",
+    ]);
+    expect(vendor[0].rows[0].buy).toEqual({
+      price: [{ currency: "Solaris United Standing", amount: "2,000" }],
+      rank: { syndicate: "Solaris United", level: 1 },
+      reusable: true,
+      blueprint: true,
+    });
+    expect(vendor[0].spends).toEqual([{ currency: "Solaris United Standing", amount: "8,000" }]);
+  });
+
+  it("prices a bought material per unit and skips a vendor the plan already buys from", () => {
+    const [duck] = materialGroups([need("Atmo Systems", 3)], store);
+    expect(duck.rows[0].buy).toMatchObject({ each: true });
+    expect(duck.spends).toEqual([{ currency: "Vox Solaris Standing", amount: "7,500" }]);
+    const covered = materialGroups(needs, store, (_label, source) => source.sub === "Smokefinger");
+    expect(covered.flatMap((group) => group.rows).every((row) => !row.buy)).toBe(true);
+  });
+});

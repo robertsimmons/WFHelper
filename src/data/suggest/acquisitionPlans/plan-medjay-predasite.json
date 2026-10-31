@@ -13,14 +13,6 @@
     {
       "text": "Vome only, must be Weakened",
       "tone": "warn"
-    },
-    {
-      "text": "Entrati Rank 3 to gild",
-      "tone": "warn",
-      "rank": {
-        "syndicate": "Entrati",
-        "level": 3
-      }
     }
   ],
   "prices": [
@@ -79,43 +71,11 @@
   ],
   "groups": [
     {
-      "type": "gate",
-      "place": "NECRALISK, DEIMOS",
-      "sub": null,
-      "activity": "unlock Son's revivification menu",
-      "meta": "one-time",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Heart of Deimos",
-          "note": "opens the Necralisk and Son",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "1",
-          "label": "Companion slot",
-          "note": "claiming the revivified Medjay Predasite needs it",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
       "type": "currency",
       "place": "CAMBION DRIFT, DEIMOS",
       "sub": null,
       "activity": "Entrati standing for the rank-ups, kit and gild",
-      "meta": "80,150 standing: 71,000 rank-ups, 2,500 blueprints, 1,650 kit, 5,000 gild",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -162,34 +122,58 @@
         {
           "qty": null,
           "label": "Entrati Rank 1, Stranger",
-          "note": "5,000 standing, 6 Benign Infested Tumor, 6 Ferment Bladder",
+          "note": "6 Benign Infested Tumor, 6 Ferment Bladder",
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "Entrati",
             "level": 1
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Entrati Standing",
+                "amount": "5,000"
+              }
+            ]
           }
         },
         {
           "qty": null,
           "label": "Entrati Rank 2, Acquaintance",
-          "note": "22,000 standing, Keratinos Blade Blueprint, 1 Father Token, 1 Daughter Token",
+          "note": "Keratinos Blade Blueprint, 1 Father Token, 1 Daughter Token",
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "Entrati",
             "level": 2
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Entrati Standing",
+                "amount": "22,000"
+              }
+            ]
           }
         },
         {
           "qty": null,
           "label": "Entrati Rank 3, Associate",
-          "note": "44,000 standing, 3 Sly Vulpaphyla Tag, 3 Vizier Predasite Tag, 1 Mother Token, 1 Son Token",
+          "note": "3 Sly Vulpaphyla Tag, 3 Vizier Predasite Tag, 1 Mother Token, 1 Son Token",
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "Entrati",
             "level": 3
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Entrati Standing",
+                "amount": "44,000"
+              }
+            ]
           }
         }
       ],
@@ -202,7 +186,7 @@
       "place": "SON, NECRALISK",
       "sub": null,
       "activity": "buy the Mutagen and Antigen blueprints",
-      "meta": "2,500 standing",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -218,23 +202,39 @@
         {
           "qty": null,
           "label": "Leptosam Mutagen Blueprint",
-          "note": "1,250 standing",
+          "note": null,
           "alt": "pricier Mutagens at Ranks 2-4",
           "done": false,
-          "rank": {
-            "syndicate": "Entrati",
-            "level": 1
+          "buy": {
+            "price": [
+              {
+                "currency": "Entrati Standing",
+                "amount": "1,250"
+              }
+            ],
+            "rank": {
+              "syndicate": "Entrati",
+              "level": 1
+            }
           }
         },
         {
           "qty": null,
           "label": "Iranon Antigen Blueprint",
-          "note": "1,250 standing",
+          "note": null,
           "alt": "pricier Antigens at Ranks 2-4",
           "done": false,
-          "rank": {
-            "syndicate": "Entrati",
-            "level": 1
+          "buy": {
+            "price": [
+              {
+                "currency": "Entrati Standing",
+                "amount": "1,250"
+              }
+            ],
+            "rank": {
+              "syndicate": "Entrati",
+              "level": 1
+            }
           }
         }
       ],
@@ -250,7 +250,7 @@
       "place": "SON, NECRALISK",
       "sub": null,
       "activity": "buy the capture kit",
-      "meta": "1,650 standing",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -266,7 +266,7 @@
         {
           "qty": null,
           "label": "Capture kit",
-          "note": "500 Tranq Rifle, 1,000 Predasite Echo-Lure, 150 Predasite Pheromone Gland; Rank 1",
+          "note": "500 Tranq Rifle, 1,000 Predasite Echo-Lure, 150 Predasite Pheromone Gland",
           "alt": null,
           "done": false,
           "rank": {
@@ -314,7 +314,7 @@
       "place": "SON, NECRALISK",
       "sub": null,
       "activity": "revivify, then gild at rank 30",
-      "meta": "5,000 cr now; 10 Son Tokens and 5,000 standing to gild",
+      "meta": "10 Son Tokens to gild",
       "mode": null,
       "live": null,
       "skip": null,
@@ -330,19 +330,35 @@
         {
           "qty": null,
           "label": "Medjay Predasite, revivified",
-          "note": "Weakened Medjay Predasite + Mutagen + Antigen + 5,000 credits",
+          "note": "Weakened Medjay Predasite, Mutagen, Antigen",
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Credits",
+                "amount": "5,000"
+              }
+            ]
+          }
         },
         {
           "qty": null,
           "label": "Medjay Predasite, gilded",
-          "note": "rank 30 first; 10 Son Tokens and 5,000 standing",
+          "note": "rank 30 first; 10 Son Tokens",
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "Entrati",
             "level": 3
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Entrati Standing",
+                "amount": "5,000"
+              }
+            ]
           }
         }
       ],

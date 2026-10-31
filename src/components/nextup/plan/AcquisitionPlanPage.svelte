@@ -1,25 +1,19 @@
 <script lang="ts">
-  import { buildCraftingTree } from "../../../lib/craftingTree.js";
   import { tr, type MessageKey } from "../../../lib/i18n.js";
   import type {
     PlanBadgeTone,
     PlanFactKind,
     ResolvedPlan,
   } from "../../../lib/suggest/acquisition/plan/index.js";
-  import { componentOwnership, itemDb } from "../../../stores/data.js";
-  import CraftingTree from "../../CraftingTree.svelte";
+  import { byStrength, tipsFor } from "../../../lib/suggest/acquisition/tips/data.js";
+  import { itemDb } from "../../../stores/data.js";
   import FarmMapModal from "../../maps/FarmMapModal.svelte";
   import ItemImage from "../../ItemImage.svelte";
+  import AcquisitionBody from "../AcquisitionBody.svelte";
   import TierBadge from "../TierBadge.svelte";
   import WikiButton from "../../WikiButton.svelte";
-  import PlanGroup from "./PlanGroup.svelte";
-  import PlanTips from "./PlanTips.svelte";
-  import {
-    tickPlanRow,
-    visibleGroups,
-    withRowOverrides,
-    type RowOverrides,
-  } from "./planResolution.js";
+  import { tickPlanRows, withRowOverrides, type RowOverrides } from "./planResolution.js";
+  import { planSteps, stepProgress, type PlanStepControls } from "./planSteps.js";
 
   interface Props {
     /** Null for an item nobody has written a plan for, which reads as unknown. */
@@ -29,6 +23,8 @@
     /** The pinned item, which keys what the player ticked and roots the tree. */
     uniqueName: string;
     art: string | null;
+    /** The card's own foundry read, for a plan that lists no materials. */
+    buildable: boolean;
     onRefresh: () => void;
     onToggleDone: (rowId: string, done: boolean) => void;
     onTakeAlt: (rowId: string) => void;
@@ -40,6 +36,7 @@
     tier,
     uniqueName,
     art,
+    buildable,
     onRefresh,
     onToggleDone,
     onTakeAlt,
@@ -79,17 +76,19 @@
     return "bg-[color:var(--effort-grim)]";
   }
 
-  let showTree = $state(false);
-  let showDone = $state(false);
   // Page-local so closing the plan, or keying it to another pin, drops them.
   let overrides = $state<RowOverrides>({});
   let openMap = $state<string | null>(null);
 
   const plan = $derived(resolved ? withRowOverrides(resolved, overrides) : null);
 
-  function toggleDone(rowId: string, done: boolean): void {
-    if (resolved) overrides = tickPlanRow(resolved, overrides, rowId, done, onToggleDone);
-  }
+  const controls: PlanStepControls = {
+    onToggleDone: (rowIds, done) => {
+      if (resolved) overrides = tickPlanRows(resolved, overrides, rowIds, done, onToggleDone);
+    },
+    onTakeAlt: (rowId) => onTakeAlt(rowId),
+    onOpenMap: (map) => (openMap = map),
+  };
 
   const entry = $derived($itemDb[uniqueName] ?? null);
   // A blueprint has no recipe of its own; the tree roots at what it builds.
@@ -98,9 +97,7 @@
     const product = entry?.buildsProduct;
     return product && $itemDb[product]?.recipe ? product : null;
   });
-  const tree = $derived(
-    showTree && treeRoot ? buildCraftingTree(treeRoot, $itemDb, $componentOwnership) : null,
-  );
+  const tips = $derived(byStrength(tipsFor(name)));
 
   const progressText = $derived.by((): string => {
     if (!plan) return "";
@@ -111,6 +108,8 @@
       unit: plan.progress.unit,
     });
   });
+  // The pinned card counts the same steps, so the two always name the same one.
+  const current = $derived(plan ? stepProgress(planSteps(plan, { t: $tr, buildable })) : null);
   // Once the quest has paid out, the route left is what the header rates.
   const rating = $derived(plan ? (plan.afterQuest ?? plan) : null);
   const effortLabel = $derived(rating ? $tr("nextUp.planEffort", { effort: rating.effort }) : "");
@@ -133,7 +132,6 @@
       money: false,
     })),
   ]);
-  const groups = $derived(plan ? visibleGroups(plan, showDone) : []);
   // A lone route still open is the header's own rating said twice.
   const routes = $derived.by(() => {
     const all = plan?.routes ?? [];
@@ -144,22 +142,11 @@
   );
 </script>
 
-<div class="flex flex-col gap-0 pb-10">
+<!-- One column as wide as the details modal's, so both read the same body. -->
+<div class="flex max-w-[640px] flex-col gap-0 pb-10">
   <div class="mb-[18px] mt-3 flex flex-wrap gap-[7px]">
     {#if plan}
       <button class={BUTTON} onclick={onRefresh}>{$tr("nextUp.planRefresh")}</button>
-    {/if}
-    <button
-      class={BUTTON}
-      disabled={treeRoot === null}
-      aria-pressed={showTree}
-      onclick={() => (showTree = !showTree)}
-      >{$tr(showTree ? "nextUp.planHideTree" : "nextUp.planShowTree")}</button
-    >
-    {#if plan}
-      <button class={BUTTON} aria-pressed={showDone} onclick={() => (showDone = !showDone)}
-        >{$tr(showDone ? "nextUp.planHideDone" : "nextUp.planShowDone")}</button
-      >
     {/if}
   </div>
 
@@ -207,24 +194,15 @@
           <span class="text-xs {plan.progress.ready ? 'text-success' : 'text-text-secondary'}"
             >{progressText}</span
           >
-          {#if plan.steps.total > 0}
+          {#if current && current.total > 0}
             <span class="text-xs text-text-muted"
-              >{$tr("nextUp.planStep", {
-                step: Math.min(plan.steps.done + 1, plan.steps.total),
-                total: plan.steps.total,
-              })}</span
+              >{$tr("nextUp.planStep", { step: current.step, total: current.total })}</span
             >
           {/if}
         </div>
       {/if}
     </div>
   </div>
-
-  {#if showTree && tree}
-    <div class="mb-3 h-[420px] overflow-hidden rounded-[var(--radius-md)] border border-border">
-      <CraftingTree {tree} />
-    </div>
-  {/if}
 
   {#if routes.length > 0}
     <ul
@@ -266,66 +244,9 @@
     </ul>
   {/if}
 
-  {#if !plan}
-    <div class="empty-state" data-plan-none>
-      <p>{$tr("nextUp.planNone")}</p>
-    </div>
-  {/if}
-
-  {#each groups as group (group.id)}
-    <PlanGroup
-      {group}
-      {showDone}
-      onToggleDone={toggleDone}
-      {onTakeAlt}
-      onOpenMap={(map) => (openMap = map)}
-    />
-  {/each}
-
-  {#if plan && plan.tips.length > 0}
-    <div class="border-t border-border-subtle px-0 pb-1 pt-[13px]" data-plan-tips>
-      <PlanTips tips={plan.tips} heading={$tr("nextUp.planTips")} />
-    </div>
-  {/if}
-
-  {#if plan && plan.sentiment.length > 0}
-    <details class="mt-3 border-t border-border-subtle pt-3 text-xs" data-plan-sentiment>
-      <summary class="cursor-pointer list-none text-accent [&::-webkit-details-marker]:hidden"
-        ><span class="mr-[7px] font-bold" aria-hidden="true">&rsaquo;</span>{$tr(
-          "nextUp.planSentiment",
-        )}</summary
-      >
-      <div class="ml-[15px]"><PlanTips tips={plan.sentiment} split={false} /></div>
-    </details>
-  {/if}
-
-  {#if plan && plan.ledger.length > 0}
-    <div class="mt-4 border-t border-border-subtle pt-3">
-      <h3 class="m-0 mb-1.5 text-xs font-semibold uppercase tracking-[0.1em] text-text-secondary">
-        {$tr("nextUp.planCurrency")}
-      </h3>
-      <ul class="m-0 list-none p-0 text-xs">
-        {#each plan.ledger as line, index (index)}
-          <li class="flex items-baseline gap-[9px] py-px">
-            <span class="min-w-[13rem] text-text-primary">{line.currency}</span>
-            {#if line.earned !== null}
-              <span class="tabular-nums text-text-muted"
-                >{$tr("nextUp.planBanked", { amount: line.earned.toLocaleString("en-US") })}</span
-              >
-            {/if}
-            <span class="tabular-nums text-text-muted"
-              >{$tr("nextUp.planToSpend", { amount: line.spent.toLocaleString("en-US") })}</span
-            >
-            <span class="tabular-nums text-accent"
-              >{$tr("nextUp.planOutstanding", {
-                amount: line.outstanding.toLocaleString("en-US"),
-              })}</span
-            >
-          </li>
-        {/each}
-      </ul>
-    </div>
-  {/if}
+  <div class="mt-3">
+    <AcquisitionBody {plan} root={treeRoot} {buildable} {tips} {controls} {unplanned} />
+  </div>
 
   {#if unchecked}
     <p class="mt-3 text-xs text-text-muted">
@@ -337,3 +258,9 @@
     <FarmMapModal {plan} mapKey={openMap} onClose={() => (openMap = null)} />
   {/if}
 </div>
+
+{#snippet unplanned()}
+  <div class="empty-state" data-plan-none>
+    <p>{$tr("nextUp.planNone")}</p>
+  </div>
+{/snippet}

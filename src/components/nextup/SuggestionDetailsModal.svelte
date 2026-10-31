@@ -22,7 +22,9 @@
   import { rewardWorth } from "../../lib/suggest/rewards.js";
   import { valenceRowsFor } from "../../lib/suggest/valence.js";
   import { codaBatch } from "../../lib/world/dailiesLive.js";
-  import { componentOwnership, foundryPending, itemDb } from "../../stores/data.js";
+  import { planProgress, planProgressFor } from "../../stores/acquisitionPlanProgress.js";
+  import { componentOwnership, foundryPending, inventoryData, itemDb } from "../../stores/data.js";
+  import { relicDb } from "../../stores/relics.js";
   import { overframeRankingsRevision } from "../../stores/overframeRankings.js";
   import { suggestionPreferences } from "../../stores/suggestionPrefs.js";
   import { worldData } from "../../stores/world.js";
@@ -39,9 +41,9 @@
     type TileStatus,
   } from "./chips.js";
   import { plainName, rewardArt } from "./rewardArt.js";
-  import AcquisitionTree from "./AcquisitionTree.svelte";
-  import PlanTips from "./plan/PlanTips.svelte";
+  import AcquisitionBody from "./AcquisitionBody.svelte";
   import ExchangeTables from "./ExchangeTables.svelte";
+  import { resolvePinnedPlans } from "./plan/planResolution.js";
   import RelicSourcesSection from "./RelicSourcesSection.svelte";
   import ItemTile from "./ItemTile.svelte";
   import TierBadge from "./TierBadge.svelte";
@@ -250,6 +252,37 @@
   const details = $derived(suggestion.details);
   const acq = $derived(details?.acquisition ?? null);
   const relic = $derived(details?.relic ?? null);
+  /** The card's plat line, split so each number can open its own market page. */
+  const headerPlat = $derived.by(() => {
+    const plat = acq?.paths.find((path) => path.cost.plat !== null)?.cost.plat ?? null;
+    if (!plat) return null;
+    const set = plat.set;
+    const parts = plat.partsTotal;
+    const both = set !== null && parts !== null && parts < set;
+    const key = both
+      ? "nextUp.acqPlatPartsSet"
+      : set !== null
+        ? "nextUp.acqPlatSet"
+        : parts !== null
+          ? "nextUp.acqPlatParts"
+          : null;
+    if (!key) return null;
+    // Markers in place of the numbers survive any word order a locale uses.
+    const text = both
+      ? $tr(key, { parts: "\u0000parts\u0000", plat: "\u0000set\u0000" })
+      : $tr(key, { plat: set !== null ? "\u0000set\u0000" : "\u0000parts\u0000" });
+    const only = plat.parts.length === 1 ? plat.parts[0] : null;
+    const partsTitle = plat.parts
+      .map((row) => `${row.name} ${row.plat === null ? "-" : `${Math.round(row.plat)}p`}`)
+      .join("\n");
+    return text.split("\u0000").map((piece, index) => {
+      if (index % 2 === 0) return { text: piece, slug: null, title: null };
+      if (piece === "set") {
+        return { text: String(Math.round(set ?? 0)), slug: plat.setSlug, title: null };
+      }
+      return { text: String(Math.round(parts ?? 0)), slug: only?.slug ?? null, title: partsTitle };
+    });
+  });
   // The family label names no member, so its members are what the reader picks
   // an art pair from and what the possibilities list draws.
   const rewardMembers = $derived<readonly SuggestionReward[]>(suggestion.reward?.oneOf ?? []);
@@ -284,7 +317,9 @@
       : liveVendorOffers(taskId, $cardClock),
   );
   const exchange = $derived(details?.exchange ?? null);
-  const panelWidth = $derived(relic ? "w-[960px]" : exchange ? "w-[800px]" : "w-[1180px]");
+  const panelWidth = $derived(
+    relic ? "w-[960px]" : acq ? "w-[640px]" : exchange ? "w-[800px]" : "w-[1180px]",
+  );
   const acqParts = $derived(
     acq?.parts.known ? [...(acq.parts.main ? [acq.parts.main] : []), ...acq.parts.components] : [],
   );
@@ -307,6 +342,24 @@
     if (entry?.recipe) return acq?.uniqueName ?? null;
     const product = entry?.buildsProduct;
     return product && $itemDb[product]?.recipe ? product : null;
+  });
+  /** One instant for every live fact the steps resolve, as the plan page does. */
+  const openedAt = Date.now();
+  /** The same resolution the plan page reads, keyed the way a pin is. */
+  const plan = $derived.by(() => {
+    if (!acq) return null;
+    const key = suggestion.reward?.uniqueName ?? acq.uniqueName;
+    const plans = resolvePinnedPlans(
+      [{ uniqueName: key, target: acq, answers: planProgressFor($planProgress, key) }],
+      {
+        itemDb: $itemDb,
+        inventory: $inventoryData,
+        world: $worldData,
+        relicDb: $relicDb,
+        now: openedAt,
+      },
+    );
+    return plans[key] ?? null;
   });
   const progenitors = $derived(acq?.nemesis?.progenitors ?? []);
   let pickedElement = $state("");
@@ -751,6 +804,37 @@
   </ItemTile>
 {/snippet}
 
+{#snippet artBox()}
+  <span
+    class="relative flex h-28 w-28 shrink-0 items-center justify-center overflow-hidden
+           rounded-[var(--radius-md)] bg-bg-deep"
+  >
+    {#if artPieces.length > 1}
+      <!-- Stair-stepped: the drop is one of these and no single picture is the
+           truth. -->
+      {#each artPieces as piece, index (index)}
+        <ItemImage
+          src={piece.imageUrl}
+          fallbackSrc={piece.fallbackUrl}
+          alt={piece.name}
+          cls="absolute inset-0 m-auto max-h-20 max-w-20 {index === 0
+            ? '-translate-x-3 -translate-y-3'
+            : 'translate-x-3 translate-y-3'}"
+          eager
+        />
+      {/each}
+    {:else if artPieces[0]}
+      <ItemImage
+        src={artPieces[0].imageUrl}
+        fallbackSrc={artPieces[0].fallbackUrl}
+        alt={artPieces[0].name}
+        cls="max-h-28 max-w-28"
+        eager
+      />
+    {/if}
+  </span>
+{/snippet}
+
 <!-- What the activity pays and asks for, whether or not the week offers a pick. -->
 {#snippet factRows()}
   {#if relic}
@@ -828,19 +912,48 @@
     <div class="mb-3 flex items-start justify-between gap-2">
       <!-- Inset by a tile's own padding, so the header letter and every tile
            letter below it share one column. -->
-      <span class="flex min-w-0 items-center gap-2 pl-2">
-        <!-- The same slot every tile below keeps, so the letters share a column
-             and the title starts where the names do. -->
-        <span class={TIER_SLOT}><TierBadge tier={headerTier} size="md" /></span>
-        <h3 class="m-0 truncate font-display text-lg text-text-primary">{suggestion.title}</h3>
-        {#if suggestion.wiki}
-          <span class="shrink-0"><WikiButton fallbackName={suggestion.wiki} /></span>
+      <span class="flex min-w-0 flex-col gap-1">
+        <span class="flex min-w-0 items-center gap-2 pl-2">
+          <!-- The same slot every tile below keeps, so the letters share a column
+               and the title starts where the names do. -->
+          <span class={TIER_SLOT}><TierBadge tier={headerTier} size="md" /></span>
+          <h3 class="m-0 truncate font-display text-lg text-text-primary">{suggestion.title}</h3>
+          {#if suggestion.wiki}
+            <span class="shrink-0"><WikiButton fallbackName={suggestion.wiki} /></span>
+          {/if}
+          <span class="shrink-0">{@render overframeLink(suggestion.wiki)}</span>
+          {#if headerPlat}
+            <span class="shrink-0 text-xs text-text-secondary tabular-nums" data-details-plat>
+              {#each headerPlat as segment, index (index)}
+                {#if segment.slug}
+                  {@const slug = segment.slug}
+                  <button
+                    type="button"
+                    class="cursor-pointer underline underline-offset-2 transition-colors duration-150
+                           hover:text-accent"
+                    title={$tr("common.openOnWarframeMarket")}
+                    onclick={() => openOnWfm(slug)}>{segment.text}</button
+                  >
+                {:else if segment.title}
+                  <span title={segment.title}>{segment.text}</span>
+                {:else}{segment.text}{/if}
+              {/each}
+            </span>
+          {/if}
+          <!-- Urgency reads as a pill, in the one place every view keeps it. -->
+          <TimeLeft expiry={details?.expiry} nowMs={$cardClock} reserve />
+        </span>
+        {#if plan}
+          <!-- Under the title, past the tier slot it starts after. -->
+          <span class="pl-12 text-xs text-text-secondary" data-details-effort
+            >{$tr("nextUp.planEffort", { effort: (plan.afterQuest ?? plan).effort })}</span
+          >
         {/if}
-        <span class="shrink-0">{@render overframeLink(suggestion.wiki)}</span>
-        <!-- Urgency reads as a pill, in the one place every view keeps it. -->
-        <TimeLeft expiry={details?.expiry} nowMs={$cardClock} reserve />
       </span>
-      <span class="flex shrink-0 items-center gap-2">
+      <span class="flex shrink-0 items-start gap-2">
+        {#if acq && artPieces.length > 0}
+          {@render artBox()}
+        {/if}
         {#if onWorkOnThis}
           <button
             class="flex h-6 shrink-0 cursor-pointer items-center rounded-[var(--radius-sm)]
@@ -905,7 +1018,8 @@
     {:else if !exchange}
       <div class="flex gap-4">
         <div class="flex min-w-0 flex-1 flex-col gap-1">
-          {#if rewardTile && !familyOnly && !relic}
+          <!-- An acquisition's title is the item, and its steps say what is held. -->
+          {#if rewardTile && !familyOnly && !relic && !acq}
             <ItemTile
               name={rewardTile.name}
               showArt={false}
@@ -919,35 +1033,8 @@
 
           {@render factRows()}
         </div>
-        {#if artPieces.length > 0 && !relic}
-          <span
-            class="relative flex h-28 w-28 shrink-0 items-center justify-center overflow-hidden
-                   rounded-[var(--radius-md)] bg-bg-deep"
-          >
-            {#if artPieces.length > 1}
-              <!-- Stair-stepped: the drop is one of these and no single picture
-                   is the truth. -->
-              {#each artPieces as piece, index (index)}
-                <ItemImage
-                  src={piece.imageUrl}
-                  fallbackSrc={piece.fallbackUrl}
-                  alt={piece.name}
-                  cls="absolute inset-0 m-auto max-h-20 max-w-20 {index === 0
-                    ? '-translate-x-3 -translate-y-3'
-                    : 'translate-x-3 translate-y-3'}"
-                  eager
-                />
-              {/each}
-            {:else}
-              <ItemImage
-                src={artPieces[0].imageUrl}
-                fallbackSrc={artPieces[0].fallbackUrl}
-                alt={artPieces[0].name}
-                cls="max-h-28 max-w-28"
-                eager
-              />
-            {/if}
-          </span>
+        {#if artPieces.length > 0 && !relic && !acq}
+          {@render artBox()}
         {/if}
       </div>
     {/if}
@@ -997,192 +1084,169 @@
     {/if}
 
     {#if acq}
-      <div class="mt-3 flex flex-col gap-3 border-t border-border pt-3">
-        <!-- The whole bill at a glance: what is still short, nested the way the
-             foundry nests it, with the prices and counts pinned beside it. -->
-        {#if treeRoot}
-          <AcquisitionTree target={acq} root={treeRoot} />
-        {/if}
-
-        {#if (acq.parts.known && !treeRoot) || acq.nemesis}
-          <div class="flex flex-col">
-            {#if acq.parts.known && !treeRoot}
-              <div class={ROW}>
-                <span class={LABEL}>{$tr("common.foundry")}</span>
-                <!-- Green is buildable now; plain is still short. -->
-                <span
-                  class="{CHIP} w-fit tabular-nums {acq.parts.buildable
-                    ? CHIP_TONE.good
-                    : CHIP_TONE.plain}"
-                  >{$tr("nextUp.acqFoundryCredits", {
-                    credits: formatNumber(acq.parts.credits),
-                  })}</span
-                >
-              </div>
-            {/if}
-
-            {#if acq.nemesis}
-              <div class={ROW}>
-                <span class={LABEL}>{$tr("nextUp.acqNemesis")}</span>
-                <span class="text-sm capitalize text-text-primary">{acq.nemesis.family}</span>
-              </div>
-            {/if}
-          </div>
-        {/if}
-
-        {#if pickedProgenitor}
-          <div class="flex flex-col gap-1">
-            <span class={LABEL}>{$tr("nextUp.acqProgenitors")}</span>
-            <span class="flex flex-wrap gap-1.5">
-              {#each progenitors as row (row.element)}
-                <button
-                  class="{CHIP} cursor-pointer transition-colors duration-150 {row.element ===
-                  pickedProgenitor.element
-                    ? 'border-accent bg-accent text-bg-base'
-                    : 'text-text-secondary hover:text-text-primary'}"
-                  aria-pressed={row.element === pickedProgenitor.element}
-                  onclick={() => (pickedElement = row.element)}>{row.element}</button
-                >
-              {/each}
-            </span>
-            <div class={TILE_GRID}>
-              {#each progenitorTiles as tile, index (index)}
-                {@render itemRow(tile)}
-              {/each}
-            </div>
-          </div>
-        {/if}
-
-        {#if partTiles.length > 0 && !treeRoot}
-          <div class="flex flex-col gap-1">
-            <span class={LABEL}>{$tr("nextUp.acqParts")}</span>
-            <div class="flex flex-col gap-1.5">
-              {#each partTiles as tile (tile.key)}
-                <ItemTile
-                  name={tile.label}
-                  imageUrl={tile.imageUrl}
-                  tier={tile.tier}
-                  owned={tile.owned}
-                  required={tile.required}
-                  have={tile.have}
-                  stretch
-                />
-              {/each}
-            </div>
-          </div>
-        {/if}
-
-        {#if materialTiles.length > 0 && !treeRoot}
-          <div class="flex flex-col gap-1">
-            <span class={LABEL}>{$tr("nextUp.detailsMaterials")}</span>
-            <div class={TILE_GRID}>
-              {#each materialTiles as tile (tile.key)}
-                <ItemTile
-                  name={tile.label}
-                  imageUrl={tile.imageUrl}
-                  tier={tile.tier}
-                  owned={tile.owned}
-                  required={tile.required}
-                  stretch
-                />
-              {/each}
-            </div>
-          </div>
-        {/if}
-
-        {#if acqPaths.length > 0}
-          <div class="flex flex-col gap-2">
-            <span class={LABEL}>{$tr("nextUp.detailsRoutes")}</span>
-            {#each acqPaths as path (path.id)}
-              <div
-                class="flex flex-col gap-1.5 rounded-[var(--radius-md)] border border-border p-2"
-              >
-                <div class="flex flex-wrap items-center justify-between gap-x-3 gap-y-1">
-                  <strong class="font-display text-sm text-text-primary"
-                    >{$tr(pathKindLabel(path.kind))}</strong
-                  >
-                  <span class="flex flex-wrap gap-1.5">
-                    {#each costChips(path) as chip (chip)}
-                      <span class="{CHIP} tabular-nums text-text-secondary">{chip}</span>
-                    {/each}
-                  </span>
-                </div>
-
-                <!-- The one sanctioned sentence in the feed: a farm route the
-                     player has to follow step by step. -->
-                {#if path.steps.length === 1}
-                  <p class="m-0 text-sm leading-snug text-text-secondary">{path.steps[0].where}</p>
-                {:else}
-                  <ol
-                    class="m-0 flex list-decimal flex-col gap-1 pl-5 text-sm leading-snug
-                           text-text-secondary"
-                  >
-                    {#each path.steps as step, index (index)}
-                      <li>{step.where}</li>
-                    {/each}
-                  </ol>
-                {/if}
-
-                {#if !path.complete && path.covers.length > 0}
-                  <span class="flex flex-wrap gap-1.5">
-                    {#each path.covers as part (part)}
-                      <span class="{CHIP} text-text-secondary">{part}</span>
-                    {/each}
-                  </span>
-                {/if}
-
-                {#if path.cost.relics?.known && path.cost.relics.rows.length > 0}
-                  <div class={TILE_GRID}>
-                    {#each path.cost.relics.rows.slice(0, LIST_LIMIT) as row (row.relic + row.part)}
-                      <ItemTile
-                        name={row.relic}
-                        showArt={false}
-                        tier={itemTiers(row.relic)}
-                        owned={{ owned: row.held }}
-                        stretch
-                      >
-                        <span class="truncate text-[0.6875rem] text-text-secondary">{row.part}</span
-                        >
-                      </ItemTile>
-                    {/each}
-                  </div>
-                {/if}
-
-                {#if path.cost.plat && path.cost.plat.parts.length > 1}
-                  <div class={TILE_GRID}>
-                    {#each path.cost.plat.parts as row (row.name)}
-                      <ItemTile
-                        name={row.name}
-                        showArt={false}
-                        tier={itemTiers(row.name)}
-                        cost={row.plat === null
-                          ? []
-                          : [$tr("nextUp.acqPlatEach", { plat: String(Math.round(row.plat)) })]}
-                        stretch
-                      />
-                    {/each}
-                  </div>
-                {/if}
-              </div>
-            {/each}
-          </div>
-        {/if}
-
-        {#if acq.isPrime && acq.parts.sourcing.length > 0}
-          <RelicSourcesSection missing={acq.parts.sourcing} />
-        {/if}
-
-        {#if acqTips.length > 0}
-          <details data-details-tips>
-            <summary class="{LABEL} cursor-pointer list-none [&::-webkit-details-marker]:hidden"
-              ><span class="mr-[7px] font-bold text-accent" aria-hidden="true">&rsaquo;</span>{$tr(
-                "nextUp.planTips",
-              )}</summary
-            >
-            <PlanTips tips={acqTips} split={false} />
-          </details>
-        {/if}
+      <div class="mt-3 border-t border-border pt-3">
+        <AcquisitionBody
+          {plan}
+          root={treeRoot}
+          buildable={acq.parts.buildable}
+          tips={acqTips}
+          {unplanned}
+          {extra}
+        />
       </div>
     {/if}
   </div>
 </ModalShell>
+
+{#snippet unplanned()}
+  {#if acqPaths.length > 0}
+    <!-- Only an item nobody planned falls back to the routes. -->
+    <div class="flex flex-col gap-2" data-details-routes>
+      <span class={LABEL}>{$tr("nextUp.detailsRoutes")}</span>
+      {#each acqPaths as path (path.id)}
+        <div class="flex flex-col gap-1.5 rounded-[var(--radius-md)] border border-border p-2">
+          <div class="flex flex-wrap items-center justify-between gap-x-3 gap-y-1">
+            <strong class="font-display text-sm text-text-primary"
+              >{$tr(pathKindLabel(path.kind))}</strong
+            >
+            <span class="flex flex-wrap gap-1.5">
+              {#each costChips(path) as chip (chip)}
+                <span class="{CHIP} tabular-nums text-text-secondary">{chip}</span>
+              {/each}
+            </span>
+          </div>
+
+          <!-- The one sanctioned sentence in the feed: a farm route the
+                     player has to follow step by step. -->
+          {#if path.steps.length === 1}
+            <p class="m-0 text-sm leading-snug text-text-secondary">{path.steps[0].where}</p>
+          {:else}
+            <ol
+              class="m-0 flex list-decimal flex-col gap-1 pl-5 text-sm leading-snug
+                           text-text-secondary"
+            >
+              {#each path.steps as step, index (index)}
+                <li>{step.where}</li>
+              {/each}
+            </ol>
+          {/if}
+
+          {#if !path.complete && path.covers.length > 0}
+            <span class="flex flex-wrap gap-1.5">
+              {#each path.covers as part (part)}
+                <span class="{CHIP} text-text-secondary">{part}</span>
+              {/each}
+            </span>
+          {/if}
+
+          {#if path.cost.relics?.known && path.cost.relics.rows.length > 0}
+            <div class={TILE_GRID}>
+              {#each path.cost.relics.rows.slice(0, LIST_LIMIT) as row (row.relic + row.part)}
+                <ItemTile
+                  name={row.relic}
+                  showArt={false}
+                  tier={itemTiers(row.relic)}
+                  owned={{ owned: row.held }}
+                  stretch
+                >
+                  <span class="truncate text-[0.6875rem] text-text-secondary">{row.part}</span>
+                </ItemTile>
+              {/each}
+            </div>
+          {/if}
+
+          {#if path.cost.plat && path.cost.plat.parts.length > 1}
+            <div class={TILE_GRID}>
+              {#each path.cost.plat.parts as row (row.name)}
+                <ItemTile
+                  name={row.name}
+                  showArt={false}
+                  tier={itemTiers(row.name)}
+                  cost={row.plat === null
+                    ? []
+                    : [$tr("nextUp.acqPlatEach", { plat: String(Math.round(row.plat)) })]}
+                  stretch
+                />
+              {/each}
+            </div>
+          {/if}
+        </div>
+      {/each}
+    </div>
+  {/if}
+{/snippet}
+
+{#snippet extra()}
+  {#if acq}
+    {#if acq.nemesis}
+      <div class={ROW}>
+        <span class={LABEL}>{$tr("nextUp.acqNemesis")}</span>
+        <span class="text-sm capitalize text-text-primary">{acq.nemesis.family}</span>
+      </div>
+    {/if}
+
+    {#if pickedProgenitor}
+      <div class="flex flex-col gap-1">
+        <span class={LABEL}>{$tr("nextUp.acqProgenitors")}</span>
+        <span class="flex flex-wrap gap-1.5">
+          {#each progenitors as row (row.element)}
+            <button
+              class="{CHIP} cursor-pointer transition-colors duration-150 {row.element ===
+              pickedProgenitor.element
+                ? 'border-accent bg-accent text-bg-base'
+                : 'text-text-secondary hover:text-text-primary'}"
+              aria-pressed={row.element === pickedProgenitor.element}
+              onclick={() => (pickedElement = row.element)}>{row.element}</button
+            >
+          {/each}
+        </span>
+        <div class={TILE_GRID}>
+          {#each progenitorTiles as tile, index (index)}
+            {@render itemRow(tile)}
+          {/each}
+        </div>
+      </div>
+    {/if}
+
+    {#if partTiles.length > 0 && !treeRoot}
+      <div class="flex flex-col gap-1">
+        <span class={LABEL}>{$tr("nextUp.acqParts")}</span>
+        <div class="flex flex-col gap-1.5">
+          {#each partTiles as tile (tile.key)}
+            <ItemTile
+              name={tile.label}
+              imageUrl={tile.imageUrl}
+              tier={tile.tier}
+              owned={tile.owned}
+              required={tile.required}
+              have={tile.have}
+              stretch
+            />
+          {/each}
+        </div>
+      </div>
+    {/if}
+
+    {#if materialTiles.length > 0 && !treeRoot}
+      <div class="flex flex-col gap-1">
+        <span class={LABEL}>{$tr("nextUp.detailsMaterials")}</span>
+        <div class={TILE_GRID}>
+          {#each materialTiles as tile (tile.key)}
+            <ItemTile
+              name={tile.label}
+              imageUrl={tile.imageUrl}
+              tier={tile.tier}
+              owned={tile.owned}
+              required={tile.required}
+              stretch
+            />
+          {/each}
+        </div>
+      </div>
+    {/if}
+
+    {#if acq.isPrime && acq.parts.sourcing.length > 0}
+      <RelicSourcesSection missing={acq.parts.sourcing} />
+    {/if}
+  {/if}
+{/snippet}

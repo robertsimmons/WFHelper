@@ -99,7 +99,7 @@
       "place": "CLAN DOJO, DAGATH'S HOLLOW",
       "sub": null,
       "activity": "buy every blueprint outright",
-      "meta": "15,000 cr each, credits only",
+      "meta": "credits only",
       "mode": null,
       "live": null,
       "skip": null,
@@ -110,30 +110,62 @@
         {
           "qty": null,
           "label": "Dagath Blueprint",
-          "note": "15,000 cr",
+          "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Credits",
+                "amount": "15,000"
+              }
+            ]
+          }
         },
         {
           "qty": null,
           "label": "Dagath Neuroptics Blueprint",
-          "note": "15,000 cr",
+          "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Credits",
+                "amount": "15,000"
+              }
+            ]
+          }
         },
         {
           "qty": null,
           "label": "Dagath Chassis Blueprint",
-          "note": "15,000 cr",
+          "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Credits",
+                "amount": "15,000"
+              }
+            ]
+          }
         },
         {
           "qty": null,
           "label": "Dagath Systems Blueprint",
-          "note": "15,000 cr",
+          "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Credits",
+                "amount": "15,000"
+              }
+            ]
+          }
         }
       ],
       "conditions": ["Needs the Dagath's Hollow room built in a Clan Dojo."],
@@ -144,8 +176,8 @@
       "type": "currency",
       "place": "RELAY, ANY MAIN SYNDICATE",
       "sub": null,
-      "activity": "reach Rank 2, then buy Abyssal Beacons",
-      "meta": "5,000 standing per beacon",
+      "activity": "buy Abyssal Beacons from any main syndicate",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -159,9 +191,18 @@
         {
           "qty": "13",
           "label": "Abyssal Beacon",
-          "note": "5,000 standing each, Steel Path",
+          "note": "Steel Path",
           "alt": "17 beacons (85,000 standing) on normal",
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Syndicate Standing",
+                "amount": "5,000"
+              }
+            ],
+            "each": true
+          }
         }
       ],
       "conditions": [
@@ -193,9 +234,17 @@
         {
           "qty": null,
           "label": "beacon purchases",
-          "note": "65,000 standing, 13 at 5,000 each, Steel Path",
+          "note": "13 at 5,000 each, Steel Path",
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Syndicate Standing",
+                "amount": "65,000"
+              }
+            ]
+          }
         }
       ],
       "conditions": [],

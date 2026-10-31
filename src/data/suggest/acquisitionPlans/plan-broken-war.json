@@ -4,47 +4,51 @@
   "effort": 2,
   "source": "repeat",
   "tradeable": "parts only, not the blueprint",
-  "progress": { "have": 0, "need": 1, "unit": "weapon" },
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "weapon"
+  },
   "badges": [
-    { "text": "1st copy free", "tone": "info" },
-    { "text": "2nd copy: Stalker RNG", "tone": "warn" }
+    {
+      "text": "1st copy free",
+      "tone": "info"
+    },
+    {
+      "text": "2nd copy: Stalker RNG",
+      "tone": "warn"
+    }
   ],
   "prices": [
-    { "label": "build", "amount": "20,000 cr", "money": false },
-    { "label": "Simaris parts", "amount": "150,000 standing", "money": false }
+    {
+      "label": "build",
+      "amount": "20,000 cr",
+      "money": false
+    },
+    {
+      "label": "Simaris parts",
+      "amount": "150,000 standing",
+      "money": false
+    }
   ],
   "materials": [
-    { "qty": "2", "label": "Nitain Extract", "note": null },
-    { "qty": "1", "label": "Forma", "note": null },
-    { "qty": "20,000", "label": "Credits", "note": null }
+    {
+      "qty": "2",
+      "label": "Nitain Extract",
+      "note": null
+    },
+    {
+      "qty": "1",
+      "label": "Forma",
+      "note": null
+    },
+    {
+      "qty": "20,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
-    {
-      "sub": null,
-      "activity": "finish the prerequisite quest",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": [],
-      "type": "gate",
-      "place": "NATAH",
-      "rows": [
-        {
-          "qty": null,
-          "label": "Natah",
-          "note": "unlocks The Second Dream",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "quest": "The Second Dream"
-    },
     {
       "sub": null,
       "activity": "finish the quest",
@@ -89,43 +93,23 @@
   "afterQuest": {
     "effort": 7,
     "badges": [
-      { "text": "Stalker RNG", "tone": "warn" },
-      { "text": "MR 10", "tone": "info" }
+      {
+        "text": "Stalker RNG",
+        "tone": "warn"
+      }
     ],
     "groups": [
       {
         "sub": null,
-        "activity": "reach MR 10 to build another copy",
+        "activity": "scan targets with the Synthesis Scanner",
         "meta": null,
         "mode": null,
         "live": null,
         "skip": null,
-        "earns": null,
-        "spends": [],
-        "map": null,
-        "conditions": [],
-        "bonuses": [],
-        "disclosures": [],
-        "type": "gate",
-        "place": "MASTERY RANK",
-        "rows": [
-          {
-            "qty": null,
-            "label": "Mastery Rank 10",
-            "note": "the Foundry won't build it below that",
-            "alt": null,
-            "done": false
-          }
-        ]
-      },
-      {
-        "sub": null,
-        "activity": "scan targets with the Synthesis Scanner",
-        "meta": "150,000 Standing",
-        "mode": null,
-        "live": null,
-        "skip": null,
-        "earns": { "currency": "Cephalon Simaris Standing", "amount": "150,000" },
+        "earns": {
+          "currency": "Cephalon Simaris Standing",
+          "amount": "150,000"
+        },
         "spends": [],
         "map": null,
         "conditions": [],
@@ -149,27 +133,49 @@
         "place": "CEPHALON SIMARIS",
         "sub": null,
         "activity": "buy the War Hilt and Blades",
-        "meta": "50,000 Standing each",
+        "meta": null,
         "mode": null,
         "live": null,
         "skip": null,
         "earns": null,
-        "spends": [{ "currency": "Cephalon Simaris Standing", "amount": "150,000" }],
+        "spends": [
+          {
+            "currency": "Cephalon Simaris Standing",
+            "amount": "150,000"
+          }
+        ],
         "map": null,
         "rows": [
           {
             "qty": "1",
             "label": "War Hilt",
-            "note": "50,000 Standing",
+            "note": null,
             "alt": "0.5% drop from Conculysts, Ortholysts, Summulysts and Aerolysts",
-            "done": false
+            "done": false,
+            "buy": {
+              "price": [
+                {
+                  "currency": "Cephalon Simaris Standing",
+                  "amount": "50,000"
+                }
+              ]
+            }
           },
           {
             "qty": "2",
             "label": "War Blade",
-            "note": "50,000 Standing each",
+            "note": null,
             "alt": "0.5% drop from the same enemies",
-            "done": false
+            "done": false,
+            "buy": {
+              "price": [
+                {
+                  "currency": "Cephalon Simaris Standing",
+                  "amount": "50,000"
+                }
+              ],
+              "each": true
+            }
           }
         ],
         "conditions": [],

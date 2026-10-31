@@ -71,31 +71,6 @@
   ],
   "groups": [
     {
-      "type": "gate",
-      "place": "MASTERY RANK",
-      "sub": null,
-      "activity": "reach MR 6",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Mastery Rank 6",
-          "note": "needed to equip it",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
       "type": "vendor",
       "place": "CLAN DOJO, TENNO LAB",
       "sub": null,
@@ -116,9 +91,17 @@
         {
           "qty": null,
           "label": "Dual Raza Blueprint",
-          "note": "15,000 credits",
+          "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Credits",
+                "amount": "15,000"
+              }
+            ]
+          }
         }
       ],
       "conditions": [],
@@ -130,7 +113,7 @@
       "place": "MARKET",
       "sub": null,
       "activity": "buy the blueprints",
-      "meta": "40,000 cr each",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -143,14 +126,31 @@
           "label": "Kama Blueprint",
           "note": "a blueprint is consumed per build, so buy it twice",
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Credits",
+                "amount": "40,000"
+              }
+            ],
+            "each": true
+          }
         },
         {
           "qty": null,
           "label": "Dual Kamas Blueprint",
           "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Credits",
+                "amount": "40,000"
+              }
+            ]
+          }
         }
       ],
       "conditions": [],

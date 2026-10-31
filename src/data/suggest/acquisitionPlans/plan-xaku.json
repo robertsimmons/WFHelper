@@ -13,14 +13,6 @@
     {
       "text": "no blueprint pity",
       "tone": "warn"
-    },
-    {
-      "text": "Vox Solaris Operative",
-      "tone": "warn",
-      "rank": {
-        "syndicate": "Vox Solaris",
-        "level": 1
-      }
     }
   ],
   "prices": [],
@@ -112,32 +104,6 @@
   ],
   "groups": [
     {
-      "type": "gate",
-      "place": "CODEX",
-      "sub": null,
-      "activity": "finish Once Awake",
-      "meta": "unlocks Heart of Deimos",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Once Awake",
-          "note": "the quest before Heart of Deimos",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": [],
-      "quest": "Heart of Deimos"
-    },
-    {
       "type": "farm",
       "place": "CODEX",
       "sub": null,
@@ -162,35 +128,6 @@
       "bonuses": [],
       "disclosures": [],
       "quest": "Heart of Deimos"
-    },
-    {
-      "type": "gate",
-      "place": "VOX SOLARIS",
-      "sub": null,
-      "activity": "reach Operative",
-      "meta": "needed to buy Gyromag Systems",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Vox Solaris Rank 1, Operative",
-          "note": "Solaris United Rank 5, Old Mate, also works",
-          "alt": null,
-          "done": false,
-          "rank": {
-            "syndicate": "Vox Solaris",
-            "level": 1
-          }
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
     },
     {
       "type": "bounty",
@@ -301,7 +238,7 @@
         "place": "CEPHALON SIMARIS",
         "sub": null,
         "activity": "scan targets with the Synthesis Scanner",
-        "meta": "50,000 Standing, ~3 capped days",
+        "meta": "~3 capped days",
         "mode": null,
         "live": null,
         "skip": null,
@@ -330,7 +267,7 @@
         "place": "CEPHALON SIMARIS",
         "sub": null,
         "activity": "buy a replacement main blueprint",
-        "meta": "50,000 Standing",
+        "meta": null,
         "mode": null,
         "live": null,
         "skip": null,
@@ -346,9 +283,17 @@
           {
             "qty": null,
             "label": "Xaku Blueprint",
-            "note": "50,000 Standing",
+            "note": null,
             "alt": null,
-            "done": false
+            "done": false,
+            "buy": {
+              "price": [
+                {
+                  "currency": "Cephalon Simaris Standing",
+                  "amount": "50,000"
+                }
+              ]
+            }
           }
         ],
         "conditions": ["Simaris only stocks it once Heart of Deimos is done."],

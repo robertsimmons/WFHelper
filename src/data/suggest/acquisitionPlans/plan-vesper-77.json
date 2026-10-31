@@ -11,14 +11,6 @@
   },
   "badges": [
     {
-      "text": "Hex Rank 3",
-      "tone": "warn",
-      "rank": {
-        "syndicate": "The Hex",
-        "level": 3
-      }
-    },
-    {
       "text": "no RNG",
       "tone": "info"
     }
@@ -84,38 +76,6 @@
   ],
   "groups": [
     {
-      "type": "gate",
-      "place": "THE LOTUS EATERS, THEN THE HEX",
-      "sub": null,
-      "activity": "The Hex quest chain",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "The Lotus Eaters",
-          "note": "needs The Duviri Paradox",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "The Hex",
-          "note": "unlocks Höllvania Central Mall and The Hex syndicate",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
       "type": "currency",
       "place": "HÖLLVANIA",
       "sub": null,
@@ -167,34 +127,70 @@
         {
           "qty": null,
           "label": "Rank 1 Leftovers",
-          "note": "5,000 standing, 10,000 cr, 15 Efervon Sample, 15 Hollvanian Pitchweave Fragment",
+          "note": "15 Efervon Sample, 15 Hollvanian Pitchweave Fragment",
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "The Hex",
             "level": 1
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "The Hex Standing",
+                "amount": "5,000"
+              },
+              {
+                "currency": "Credits",
+                "amount": "10,000"
+              }
+            ]
           }
         },
         {
           "qty": null,
           "label": "Rank 2 Fresh Slice",
-          "note": "22,000 standing, 25,000 cr, 5 Experimental Arc-Relay, 12 Entrati Obols, 25 Hollvanian Pitchweave Fragment",
+          "note": "5 Experimental Arc-Relay, 12 Entrati Obols, 25 Hollvanian Pitchweave Fragment",
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "The Hex",
             "level": 2
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "The Hex Standing",
+                "amount": "22,000"
+              },
+              {
+                "currency": "Credits",
+                "amount": "25,000"
+              }
+            ]
           }
         },
         {
           "qty": null,
           "label": "Rank 3 - 2-For-1",
-          "note": "44,000 standing, 50,000 cr, one each of six Hex Treasures",
+          "note": "one each of six Hex Treasures",
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "The Hex",
             "level": 3
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "The Hex Standing",
+                "amount": "44,000"
+              },
+              {
+                "currency": "Credits",
+                "amount": "50,000"
+              }
+            ]
           }
         }
       ],
@@ -207,7 +203,7 @@
       "place": "AMIR, HÖLLVANIA CENTRAL MALL",
       "sub": null,
       "activity": "buy Vesper 77 blueprints",
-      "meta": "30,000 standing at Rank 3",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -223,16 +219,33 @@
         {
           "qty": null,
           "label": "Main Blueprint",
-          "note": "15,000 standing",
+          "note": null,
           "alt": "or Tier 4 Central Mall bounty drop, 3.70% per stage",
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "The Hex Standing",
+                "amount": "15,000"
+              }
+            ]
+          }
         },
         {
           "qty": "3",
           "label": "Barrel, Receiver and Handle Blueprints",
-          "note": "5,000 standing each",
+          "note": null,
           "alt": "or Hell-Scrub/Legacyte Harvest drops, best 5.41% Hell-Scrub rotation C",
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "The Hex Standing",
+                "amount": "5,000"
+              }
+            ],
+            "each": true
+          }
         }
       ],
       "conditions": [

@@ -4,23 +4,90 @@
   "effort": 2,
   "source": "dojo",
   "tradeable": false,
-  "progress": { "have": 0, "need": 4, "unit": "parts" },
-  "badges": [{ "text": "Tenno Lab", "tone": "warn" }],
-  "prices": [{ "label": "blueprint", "amount": "35,000 cr", "money": false }],
+  "progress": {
+    "have": 0,
+    "need": 4,
+    "unit": "parts"
+  },
+  "badges": [
+    {
+      "text": "Tenno Lab",
+      "tone": "warn"
+    }
+  ],
+  "prices": [
+    {
+      "label": "blueprint",
+      "amount": "35,000 cr",
+      "money": false
+    }
+  ],
   "materials": [
-    { "qty": "6", "label": "Nitain Extract", "note": null },
-    { "qty": "1,400", "label": "Circuits", "note": null },
-    { "qty": "1", "label": "Neural Sensors", "note": null },
-    { "qty": "2,600", "label": "Polymer Bundle", "note": null },
-    { "qty": "1", "label": "Morphics", "note": null },
-    { "qty": "900", "label": "Ferrite", "note": null },
-    { "qty": "50", "label": "Rubedo", "note": null },
-    { "qty": "2", "label": "Argon Crystal", "note": null },
-    { "qty": "2", "label": "Neurodes", "note": null },
-    { "qty": "8,000", "label": "Salvage", "note": null },
-    { "qty": "4,000", "label": "Plastids", "note": null },
-    { "qty": "1", "label": "Orokin Cell", "note": null },
-    { "qty": "150,000", "label": "Credits", "note": null }
+    {
+      "qty": "6",
+      "label": "Nitain Extract",
+      "note": null
+    },
+    {
+      "qty": "1,400",
+      "label": "Circuits",
+      "note": null
+    },
+    {
+      "qty": "1",
+      "label": "Neural Sensors",
+      "note": null
+    },
+    {
+      "qty": "2,600",
+      "label": "Polymer Bundle",
+      "note": null
+    },
+    {
+      "qty": "1",
+      "label": "Morphics",
+      "note": null
+    },
+    {
+      "qty": "900",
+      "label": "Ferrite",
+      "note": null
+    },
+    {
+      "qty": "50",
+      "label": "Rubedo",
+      "note": null
+    },
+    {
+      "qty": "2",
+      "label": "Argon Crystal",
+      "note": null
+    },
+    {
+      "qty": "2",
+      "label": "Neurodes",
+      "note": null
+    },
+    {
+      "qty": "8,000",
+      "label": "Salvage",
+      "note": null
+    },
+    {
+      "qty": "4,000",
+      "label": "Plastids",
+      "note": null
+    },
+    {
+      "qty": "1",
+      "label": "Orokin Cell",
+      "note": null
+    },
+    {
+      "qty": "150,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
     {
@@ -28,7 +95,7 @@
       "place": "CLAN DOJO, TENNO LAB",
       "sub": null,
       "activity": "buy the four blueprints",
-      "meta": "35,000 cr main, 15,000 cr per part",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -39,16 +106,33 @@
         {
           "qty": null,
           "label": "Wukong Blueprint",
-          "note": "35,000 cr",
+          "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Credits",
+                "amount": "35,000"
+              }
+            ]
+          }
         },
         {
           "qty": "3",
           "label": "component blueprints",
-          "note": "15,000 cr each",
+          "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Credits",
+                "amount": "15,000"
+              }
+            ],
+            "each": true
+          }
         }
       ],
       "conditions": [],

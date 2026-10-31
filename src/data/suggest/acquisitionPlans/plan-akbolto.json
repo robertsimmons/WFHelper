@@ -11,10 +11,6 @@
   },
   "badges": [
     {
-      "text": "MR 8",
-      "tone": "info"
-    },
-    {
       "text": "3 builds",
       "tone": "info"
     }
@@ -60,31 +56,6 @@
   ],
   "groups": [
     {
-      "type": "gate",
-      "place": "MASTERY RANK",
-      "sub": null,
-      "activity": "reach MR 8",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Mastery Rank 8",
-          "note": "needed to equip it",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
       "type": "vendor",
       "place": "MARKET",
       "sub": null,
@@ -105,23 +76,49 @@
         {
           "qty": null,
           "label": "Akbolto Blueprint",
-          "note": "15,000 cr",
+          "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Credits",
+                "amount": "15,000"
+              }
+            ]
+          }
         },
         {
           "qty": "2",
           "label": "Bolto Blueprint",
-          "note": "15,000 cr each, one per Bolto",
+          "note": "one per Bolto",
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Credits",
+                "amount": "15,000"
+              }
+            ],
+            "each": true
+          }
         },
         {
           "qty": "2",
           "label": "Lato",
-          "note": "10,000 cr each, one per Bolto",
+          "note": "one per Bolto",
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Credits",
+                "amount": "10,000"
+              }
+            ],
+            "each": true
+          }
         }
       ],
       "conditions": [],

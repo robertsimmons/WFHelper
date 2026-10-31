@@ -4,11 +4,28 @@
   "effort": 2,
   "source": "shop",
   "tradeable": false,
-  "progress": { "have": 0, "need": 1, "unit": "weapon" },
-  "badges": [{ "text": "Market", "tone": "info" }],
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "weapon"
+  },
+  "badges": [
+    {
+      "text": "Market",
+      "tone": "info"
+    }
+  ],
   "prices": [
-    { "label": "blueprint", "amount": "15,000 cr", "money": false },
-    { "label": "build", "amount": "25,000 cr", "money": false }
+    {
+      "label": "blueprint",
+      "amount": "15,000 cr",
+      "money": false
+    },
+    {
+      "label": "build",
+      "amount": "25,000 cr",
+      "money": false
+    }
   ],
   "routes": [
     {
@@ -25,11 +42,31 @@
     }
   ],
   "materials": [
-    { "qty": "2", "label": "Neurodes", "note": null },
-    { "qty": "100", "label": "Alloy Plate", "note": null },
-    { "qty": "900", "label": "Salvage", "note": null },
-    { "qty": "600", "label": "Polymer Bundle", "note": null },
-    { "qty": "40,000", "label": "Credits", "note": null }
+    {
+      "qty": "2",
+      "label": "Neurodes",
+      "note": null
+    },
+    {
+      "qty": "100",
+      "label": "Alloy Plate",
+      "note": null
+    },
+    {
+      "qty": "900",
+      "label": "Salvage",
+      "note": null
+    },
+    {
+      "qty": "600",
+      "label": "Polymer Bundle",
+      "note": null
+    },
+    {
+      "qty": "40,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
     {
@@ -37,20 +74,33 @@
       "place": "MARKET",
       "sub": null,
       "activity": "buy the blueprint",
-      "meta": "15,000 cr",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Credits", "amount": "15,000" }],
+      "spends": [
+        {
+          "currency": "Credits",
+          "amount": "15,000"
+        }
+      ],
       "map": null,
       "rows": [
         {
           "qty": null,
           "label": "Boltor Blueprint",
-          "note": "15,000 cr",
+          "note": null,
           "alt": "free built Boltor from the Venus to Mercury Junction",
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Credits",
+                "amount": "15,000"
+              }
+            ]
+          }
         }
       ],
       "conditions": [],

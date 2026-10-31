@@ -9,20 +9,7 @@
     "need": 1,
     "unit": "blueprint"
   },
-  "badges": [
-    {
-      "text": "Holdfasts Rank 3",
-      "tone": "warn",
-      "rank": {
-        "syndicate": "The Holdfasts",
-        "level": 3
-      }
-    },
-    {
-      "text": "MR 14",
-      "tone": "info"
-    }
-  ],
+  "badges": [],
   "prices": [
     {
       "label": "blueprint",
@@ -59,54 +46,11 @@
   ],
   "groups": [
     {
-      "type": "gate",
-      "place": "ANGELS OF THE ZARIMAN",
-      "sub": null,
-      "activity": "finish the quest, reach Mastery Rank 14",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Angels of the Zariman",
-          "note": "needs The New War first; unlocks the Zariman and The Holdfasts",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Mastery Rank 14",
-          "note": "to equip it; you can build it earlier",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Holdfasts Rank 3 (Guardian)",
-          "note": "needed to buy the blueprint; rank-ups are below",
-          "alt": null,
-          "done": false,
-          "rank": {
-            "syndicate": "The Holdfasts",
-            "level": 3
-          }
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
       "type": "currency",
       "place": "HALAKO PERIMETER, ZARIMAN",
       "sub": "Chrysalith: turn Voidplumes in to Archimedean Yonta",
       "activity": "Exterminate; sweep the map after the objective",
-      "meta": "79,000 standing to Guardian and the blueprint",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -120,7 +64,7 @@
         {
           "qty": null,
           "label": "Voidplumes turned in to Archimedean Yonta",
-          "note": "Pinion 5,000, Quill 2,500, Crest 2,000, Vane 1,000, Down 500 standing each",
+          "note": "Pinion 5,000, Quill 2,500, Crest 2,000, Vane 1,000, Down 500 each",
           "alt": null,
           "done": false
         }
@@ -151,34 +95,70 @@
         {
           "qty": null,
           "label": "Rank 1, Fallen",
-          "note": "5,000 standing, 10,000 cr; 5 Voidplume Down, 2,000 Ferrite, 2,000 Alloy Plate",
+          "note": "5 Voidplume Down, 2,000 Ferrite, 2,000 Alloy Plate",
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "The Holdfasts",
             "level": 1
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Holdfasts Standing",
+                "amount": "5,000"
+              },
+              {
+                "currency": "Credits",
+                "amount": "10,000"
+              }
+            ]
           }
         },
         {
           "qty": null,
           "label": "Rank 2, Watcher",
-          "note": "22,000 standing, 25,000 cr; 10 Voidplume Vane, 10 Voidgel Orb, 5,000 Alloy Plate",
+          "note": "10 Voidplume Vane, 10 Voidgel Orb, 5,000 Alloy Plate",
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "The Holdfasts",
             "level": 2
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Holdfasts Standing",
+                "amount": "22,000"
+              },
+              {
+                "currency": "Credits",
+                "amount": "25,000"
+              }
+            ]
           }
         },
         {
           "qty": null,
           "label": "Rank 3, Guardian",
-          "note": "44,000 standing, 50,000 cr; 10 Voidplume Crest, 10 Entrati Lanthorn, 5,000 Ferrite",
+          "note": "10 Voidplume Crest, 10 Entrati Lanthorn, 5,000 Ferrite",
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "The Holdfasts",
             "level": 3
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Holdfasts Standing",
+                "amount": "44,000"
+              },
+              {
+                "currency": "Credits",
+                "amount": "50,000"
+              }
+            ]
           }
         }
       ],
@@ -191,7 +171,7 @@
       "place": "CAVALERO, CHRYSALITH",
       "sub": "The Holdfasts: Guardian (Rank 3)",
       "activity": "buy the Felarx blueprint",
-      "meta": "8,000 Standing",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -209,7 +189,15 @@
           "label": "Felarx Blueprint",
           "note": "tradeable",
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Holdfasts Standing",
+                "amount": "8,000"
+              }
+            ]
+          }
         }
       ],
       "conditions": ["You must reach Guardian to buy it yourself."],

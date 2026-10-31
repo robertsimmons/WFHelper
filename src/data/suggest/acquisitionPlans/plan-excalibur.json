@@ -4,12 +4,28 @@
   "effort": 3,
   "source": "boss",
   "tradeable": false,
-  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "progress": {
+    "have": 0,
+    "need": 4,
+    "unit": "parts"
+  },
   "badges": [
-    { "text": "Systems RNG", "tone": "warn" },
-    { "text": "Circuit week 1", "tone": "circuit" }
+    {
+      "text": "Systems RNG",
+      "tone": "warn"
+    },
+    {
+      "text": "Circuit week 1",
+      "tone": "circuit"
+    }
   ],
-  "prices": [{ "label": "blueprint", "amount": "35,000 cr", "money": false }],
+  "prices": [
+    {
+      "label": "blueprint",
+      "amount": "35,000 cr",
+      "money": false
+    }
+  ],
   "routes": [
     {
       "name": "Lieutenant Lech Kril, War",
@@ -31,17 +47,61 @@
     }
   ],
   "materials": [
-    { "qty": "800", "label": "Rubedo", "note": "500 Neuroptics, 300 Chassis" },
-    { "qty": "1,000", "label": "Ferrite", "note": "Chassis" },
-    { "qty": "500", "label": "Salvage", "note": "Systems" },
-    { "qty": "220", "label": "Plastids", "note": "Systems" },
-    { "qty": "150", "label": "Alloy Plate", "note": "Neuroptics" },
-    { "qty": "150", "label": "Polymer Bundle", "note": "Neuroptics" },
-    { "qty": "2", "label": "Morphics", "note": "1 Chassis, 1 Systems" },
-    { "qty": "1", "label": "Neural Sensors", "note": "Neuroptics" },
-    { "qty": "1", "label": "Control Module", "note": "Systems" },
-    { "qty": "1", "label": "Orokin Cell", "note": "Excalibur" },
-    { "qty": "105,000", "label": "Credits", "note": null }
+    {
+      "qty": "800",
+      "label": "Rubedo",
+      "note": "500 Neuroptics, 300 Chassis"
+    },
+    {
+      "qty": "1,000",
+      "label": "Ferrite",
+      "note": "Chassis"
+    },
+    {
+      "qty": "500",
+      "label": "Salvage",
+      "note": "Systems"
+    },
+    {
+      "qty": "220",
+      "label": "Plastids",
+      "note": "Systems"
+    },
+    {
+      "qty": "150",
+      "label": "Alloy Plate",
+      "note": "Neuroptics"
+    },
+    {
+      "qty": "150",
+      "label": "Polymer Bundle",
+      "note": "Neuroptics"
+    },
+    {
+      "qty": "2",
+      "label": "Morphics",
+      "note": "1 Chassis, 1 Systems"
+    },
+    {
+      "qty": "1",
+      "label": "Neural Sensors",
+      "note": "Neuroptics"
+    },
+    {
+      "qty": "1",
+      "label": "Control Module",
+      "note": "Systems"
+    },
+    {
+      "qty": "1",
+      "label": "Orokin Cell",
+      "note": "Excalibur"
+    },
+    {
+      "qty": "105,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
     {
@@ -49,12 +109,17 @@
       "place": "MARKET",
       "sub": null,
       "activity": "buy blueprint",
-      "meta": "35,000 cr",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Credits", "amount": "35,000" }],
+      "spends": [
+        {
+          "currency": "Credits",
+          "amount": "35,000"
+        }
+      ],
       "map": null,
       "rows": [
         {
@@ -62,7 +127,15 @@
           "label": "Excalibur Blueprint",
           "note": null,
           "alt": "Circuit tier 10",
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Credits",
+                "amount": "35,000"
+              }
+            ]
+          }
         }
       ],
       "conditions": [

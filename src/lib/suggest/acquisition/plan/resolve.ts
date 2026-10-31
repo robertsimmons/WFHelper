@@ -2,16 +2,20 @@ import { baseMapKey } from "../../../maps/registry.js";
 import { groupFacts, planEras, standingOwners } from "./facts.js";
 import { formatGap, resolveCycleLive } from "./live.js";
 import { materialGroups } from "./materials.js";
-import { resourceEntry, type ResourceLookup } from "./resources.js";
+import { resourceEntry, type ResourceLookup, type ResourceSource } from "./resources.js";
 import {
   altSpends,
   altText,
   type AuthoredPlan,
   type PlanAfterQuest,
+  type PlanCurrency,
   type PlanGroup,
+  type PlanPick,
+  type PlanPurchase,
   type PlanRow,
 } from "./schema.js";
 import {
+  blueprintFor,
   formatQuantity,
   itemsForLabel,
   ownedForLabel,
@@ -19,10 +23,11 @@ import {
   pendingBuildFor,
   questDoneForLabel,
   readPlayerState,
+  standingBalance,
   type PlayerState,
 } from "./state.js";
 import { afterQuestRoute, planQuestDone } from "./data.js";
-import { rankMet } from "./ranks.js";
+import { rankMet, rankTitle } from "./ranks.js";
 import { placeTips, type AnchorGroup } from "../tips/anchor.js";
 import { tipsFor } from "../tips/data.js";
 import type { ItemDbEntry, RawInventoryData } from "../../../../types/inventory.js";
@@ -36,14 +41,16 @@ import type {
   ResolvedLedgerEntry,
   ResolvedLive,
   ResolvedOwed,
+  ResolvedPick,
   ResolvedPlan,
+  ResolvedPurchase,
   ResolvedRoute,
   ResolvedRow,
   ResolvedSpend,
 } from "./types.js";
 
-const LEADING_AMOUNT = /^([\d,]+)\b/;
 const CREDITS = "Credits";
+const STANDING_CURRENCY = / standing$/i;
 
 interface PlanEntry {
   group: PlanGroup;
@@ -66,6 +73,24 @@ function isBuildStep(entry: PlanEntry): boolean {
   return (
     entry.group.skip === null && (entry.group.type === "craft" || entry.group.type === "foundry")
   );
+}
+
+/** A material's blueprint the plan already buys by hand: a row naming it, or a
+ *  spending group at the store's vendor ("SMOKEFINGER, FORTUNA" for Smokefinger). */
+function boughtBy(
+  entries: readonly PlanEntry[],
+): (label: string, source: ResourceSource) => boolean {
+  const labels = new Set(
+    entries.flatMap((entry) => entry.group.rows.map((row) => row.label.trim().toLowerCase())),
+  );
+  const vendors = entries
+    .filter((entry) => entry.group.spends.length > 0)
+    .map((entry) => `${entry.group.place} ${entry.group.sub ?? ""}`.toLowerCase());
+  return (label, source) => {
+    if (labels.has(`${label.trim().toLowerCase()} blueprint`)) return true;
+    const vendor = source.sub?.trim().toLowerCase();
+    return Boolean(vendor) && vendors.some((where) => where.includes(vendor ?? ""));
+  };
 }
 
 /** Stored ticks are keyed by row id, so an authored row keeps the position it
@@ -106,34 +131,89 @@ function planEntries(
       : [];
   });
   if (needs.length === 0) return authored;
-  const materials: PlanEntry[] = materialGroups(needs, lookup).map((group, groupIndex) => ({
-    group,
-    id: `m${groupIndex}`,
-    rowId: (rowIndex) => `m:${group.rows[rowIndex].label.trim().toLowerCase()}`,
-    route: null,
-  }));
+  const materials: PlanEntry[] = materialGroups(needs, lookup, boughtBy(authored)).map(
+    (group, groupIndex) => ({
+      group,
+      id: `m${groupIndex}`,
+      rowId: (rowIndex) => `m:${group.rows[rowIndex].label.trim().toLowerCase()}`,
+      route: null,
+    }),
+  );
   const build = authored.findIndex(isBuildStep);
   const at = build === -1 ? authored.length : build;
   return [...authored.slice(0, at), ...materials, ...authored.slice(at)];
 }
 
-/** Per-row shares of a group's spend, but only when the row notes add up to the
+/** Per-row shares of a group's spend, but only when the rows' prices add up to the
  *  group total exactly. A decomposition that does not check out is not used, so
- *  the ledger never invents a split. */
-function rowShares(group: PlanGroup, total: number): number[] | null {
+ *  the ledger never invents a split. A pick row's price is outside the total. */
+function rowShares(
+  group: PlanGroup,
+  currency: string,
+  total: number,
+  ledgerName: (currency: string) => string,
+): number[] | null {
   const shares: number[] = [];
   for (const row of group.rows) {
-    const match = LEADING_AMOUNT.exec(row.note ?? "");
-    if (!match) return null;
-    shares.push(Number(match[1].replace(/,/g, "")));
+    if (row.pick) {
+      shares.push(0);
+      continue;
+    }
+    if (!row.buy) return null;
+    const times = row.buy.each ? parseQuantity(row.qty) : 1;
+    const price = row.buy.price.find(
+      (spend) => ledgerName(spend.currency) === ledgerName(currency),
+    );
+    shares.push(price ? parseQuantity(price.amount) * times : 0);
   }
   const sum = shares.reduce((carry, value) => carry + value, 0);
   return sum === total ? shares : null;
 }
 
+/** A row's purchase, read against the player. A reusable blueprint is settled
+ *  once held, whether the store or DE's item data says it is reusable. */
+function resolvePurchase(
+  buy: PlanPurchase,
+  label: string,
+  state: PlayerState,
+  itemDb: Record<string, ItemDbEntry>,
+  inventory: RawInventoryData | null,
+): ResolvedPurchase {
+  const blueprint = buy.blueprint === true;
+  const held = blueprint ? blueprintFor(state, itemDb, label) : null;
+  const reusable = buy.reusable === true || held?.reusable === true;
+  return {
+    price: resolvedSpends(buy.price),
+    each: buy.each === true,
+    rank: buy.rank ? rankTitle(buy.rank) : null,
+    rankMet: buy.rank ? rankMet(inventory, buy.rank) : null,
+    blueprint,
+    reusable,
+    owned: reusable && (held?.held ?? 0) > 0,
+  };
+}
+
 interface RowResult {
   row: ResolvedRow;
   done: boolean;
+}
+
+function resolvedSpends(spends: readonly PlanCurrency[]): ResolvedSpend[] {
+  return spends.map((spend) => ({
+    currency: spend.currency,
+    amount: spend.amount,
+    value: parseQuantity(spend.amount),
+  }));
+}
+
+/** Holding the rank without the item means the pick went to something else. */
+function resolvePick(pick: PlanPick, inventory: RawInventoryData | null): ResolvedPick {
+  const met = rankMet(inventory, pick.rank);
+  return {
+    state: met === null ? "unknown" : met ? "spent" : "ahead",
+    rank: rankTitle(pick.rank),
+    spends: resolvedSpends(pick.spends),
+  };
 }
 
 /** The card's part a row farms or builds; a blueprint row lands on the part its
@@ -198,13 +278,8 @@ function resolveRow(
   const done = answered ?? (tracked ? remaining === 0 : ticked || (row.done && !cleared));
   const source = manual ? (ticked || cleared ? "manual" : "authored") : "inventory";
 
-  const spends: ResolvedSpend[] = row.alt
-    ? altSpends(row.alt).map((spend) => ({
-        currency: spend.currency,
-        amount: spend.amount,
-        value: parseQuantity(spend.amount),
-      }))
-    : [];
+  const spends = row.alt ? resolvedSpends(altSpends(row.alt)) : [];
+  const pick = row.pick && !done ? resolvePick(row.pick, inventory) : null;
 
   return {
     done,
@@ -224,6 +299,7 @@ function resolveRow(
               tracked,
             },
       alt: row.alt ? { text: altText(row.alt), spends, taken: answers.altsTaken.has(id) } : null,
+      ...(pick ? { pick } : {}),
       done,
       source,
       manual,
@@ -274,6 +350,34 @@ function resolveLive(
 
 function flow(currency: string, authored: string, value: number): ResolvedFlow {
   return { currency, amount: formatQuantity(value), authoredAmount: authored, value };
+}
+
+/** The group's authored spends, plus the price of any rank-up pick already gone. */
+function groupSpends(
+  group: PlanGroup,
+  rows: readonly ResolvedRow[],
+  copies: number,
+  ledgerName: (currency: string) => string,
+): ResolvedFlow[] {
+  const flows = group.spends.map((spend) =>
+    flow(spend.currency, spend.amount, parseQuantity(spend.amount) * copies),
+  );
+  if (group.skip !== null) return flows;
+  for (const row of rows) {
+    if (row.pick?.state !== "spent") continue;
+    for (const spend of row.pick.spends) {
+      const at = flows.findIndex(
+        (entry) => ledgerName(entry.currency) === ledgerName(spend.currency),
+      );
+      const value = spend.value * copies;
+      if (at === -1) flows.push(flow(spend.currency, spend.amount, value));
+      else {
+        const { currency, authoredAmount } = flows[at];
+        flows[at] = flow(currency, authoredAmount, flows[at].value + value);
+      }
+    }
+  }
+  return flows;
 }
 
 /** What a farm still has to bank: the plan's outstanding spend in its currency,
@@ -432,6 +536,15 @@ export function resolvePlan(
         part,
         context.inventory,
       );
+      if (row.buy) {
+        result.row.purchase = resolvePurchase(
+          row.buy,
+          row.label,
+          state,
+          context.itemDb,
+          context.inventory,
+        );
+      }
       rows.push(result.row);
       isPart.push(part !== null);
       if (!result.done) allDone = false;
@@ -450,6 +563,7 @@ export function resolvePlan(
     table.set(name, (table.get(name) ?? 0) + value);
   };
   const owe = (owes: ResolvedOwed[], currency: string, value: number): void => {
+    if (value === 0) return;
     owes.push({ currency: ledgerName(currency), value });
   };
 
@@ -470,11 +584,21 @@ export function resolvePlan(
     const rowOwes: ResolvedOwed[][] = rows.map(() => []);
     const owes: ResolvedOwed[] = [];
     for (const spend of group.spends) {
-      const total = parseQuantity(spend.amount);
+      const authored = parseQuantity(spend.amount);
+      const shares = rowShares(group, spend.currency, authored, ledgerName);
+      // A reusable blueprint already held costs nothing, here or in the totals.
+      const settled =
+        shares?.reduce(
+          (sum, share, rowIndex) => sum + (rows[rowIndex].purchase?.owned ? share : 0),
+          0,
+        ) ?? 0;
+      const total = authored - settled;
       add(spent, spend.currency, total * copies);
       if (group.skip !== null) continue;
-      const shares = rowShares(group, total);
       if (shares) {
+        rows.forEach((row, rowIndex) => {
+          if (row.purchase?.owned) shares[rowIndex] = 0;
+        });
         rows.forEach((_, rowIndex) => {
           owe(
             rowOwes[rowIndex],
@@ -488,8 +612,11 @@ export function resolvePlan(
       }
     }
     rows.forEach((row, rowIndex) => {
-      if (!row.alt?.taken) return;
-      for (const spend of row.alt.spends) {
+      const extra = [
+        ...(row.alt?.taken ? row.alt.spends : []),
+        ...(row.pick?.state === "spent" && group.skip === null ? row.pick.spends : []),
+      ];
+      for (const spend of extra) {
         add(spent, spend.currency, spend.value * copies);
         owe(rowOwes[rowIndex], spend.currency, spend.value * openCopies(groupIndex, rowIndex));
       }
@@ -540,6 +667,11 @@ export function resolvePlan(
     const live = resolveLive(group, itemName, state, context, now);
     const earns = group.earns && !namesCurrency(group, group.earns.currency) ? group.earns : null;
     const earnedTotal = earns ? (outstanding.get(ledgerName(earns.currency)) ?? 0) : 0;
+    // A read inventory with no row for the syndicate is one the player never joined.
+    const held = earns
+      ? (standingBalance(state, earns.currency) ??
+        (context.inventory && STANDING_CURRENCY.test(earns.currency) ? 0 : null))
+      : null;
     const owes = groupOwes[groupIndex];
 
     return {
@@ -553,17 +685,18 @@ export function resolvePlan(
       live,
       skip: group.skip,
       earns: earns
-        ? earnsFlow(
-            earns.currency,
-            earns.amount,
-            ledgerName(earns.currency),
-            parseQuantity(earns.amount) * copies,
-            earnedTotal,
-          )
+        ? {
+            ...earnsFlow(
+              earns.currency,
+              earns.amount,
+              ledgerName(earns.currency),
+              parseQuantity(earns.amount) * copies,
+              earnedTotal,
+            ),
+            ...(held === null ? {} : { held }),
+          }
         : null,
-      spends: group.spends.map((spend) =>
-        flow(spend.currency, spend.amount, parseQuantity(spend.amount) * copies),
-      ),
+      spends: groupSpends(group, rows, copies, ledgerName),
       map: group.map,
       mapReady: baseMapKey(group.map) !== null,
       rows,

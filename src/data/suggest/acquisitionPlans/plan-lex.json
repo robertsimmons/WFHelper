@@ -13,10 +13,6 @@
     {
       "text": "credits only",
       "tone": "info"
-    },
-    {
-      "text": "MR 3",
-      "tone": "info"
     }
   ],
   "prices": [
@@ -35,36 +31,11 @@
   ],
   "groups": [
     {
-      "type": "gate",
-      "place": "MASTERY RANK",
-      "sub": null,
-      "activity": "reach MR 3",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Mastery Rank 3",
-          "note": "needed to buy and equip it",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
       "type": "vendor",
       "place": "MARKET",
       "sub": null,
       "activity": "buy the built Lex",
-      "meta": "50,000 cr",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -77,7 +48,15 @@
           "label": "Lex",
           "note": "built, no blueprint",
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Credits",
+                "amount": "50,000"
+              }
+            ]
+          }
         }
       ],
       "conditions": [],

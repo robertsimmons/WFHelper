@@ -4,82 +4,89 @@
   "effort": 5,
   "source": "shop",
   "tradeable": false,
-  "progress": { "have": 0, "need": 1, "unit": "blueprint" },
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "blueprint"
+  },
   "badges": [
-    { "text": "Deimos materials", "tone": "warn" },
-    { "text": "MR 11", "tone": "info" }
+    {
+      "text": "Deimos materials",
+      "tone": "warn"
+    }
   ],
   "prices": [
-    { "label": "blueprint", "amount": "50,000 cr", "money": false },
-    { "label": "build", "amount": "15,000 cr", "money": false }
+    {
+      "label": "blueprint",
+      "amount": "50,000 cr",
+      "money": false
+    },
+    {
+      "label": "build",
+      "amount": "15,000 cr",
+      "money": false
+    }
   ],
   "materials": [
-    { "qty": "2", "label": "Argon Crystal", "note": null },
-    { "qty": "24,000", "label": "Nano Spores", "note": null },
-    { "qty": "24", "label": "Parasitic Tethermaw", "note": null },
-    { "qty": "60", "label": "Devolved Namalon", "note": null },
-    { "qty": "65,000", "label": "Credits", "note": null }
+    {
+      "qty": "2",
+      "label": "Argon Crystal",
+      "note": null
+    },
+    {
+      "qty": "24,000",
+      "label": "Nano Spores",
+      "note": null
+    },
+    {
+      "qty": "24",
+      "label": "Parasitic Tethermaw",
+      "note": null
+    },
+    {
+      "qty": "60",
+      "label": "Devolved Namalon",
+      "note": null
+    },
+    {
+      "qty": "65,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
-    {
-      "type": "gate",
-      "place": "NECRALISK, DEIMOS",
-      "sub": "Entrati",
-      "activity": "finish Heart of Deimos, reach Entrati Rank 1 and MR 11",
-      "meta": "Rank 1 unlocks the Devolved Namalon blueprint",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Heart of Deimos",
-          "note": "unlocks the Necralisk and Entrati",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Entrati Rank 1",
-          "note": "Stranger",
-          "alt": null,
-          "done": false,
-          "rank": { "syndicate": "Entrati", "level": 1 }
-        },
-        {
-          "qty": null,
-          "label": "Mastery Rank 11",
-          "note": "needed to equip it",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
     {
       "type": "vendor",
       "place": "MARKET",
       "sub": null,
       "activity": "buy the Pulmonars blueprint",
-      "meta": "50,000 cr",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Credits", "amount": "50,000" }],
+      "spends": [
+        {
+          "currency": "Credits",
+          "amount": "50,000"
+        }
+      ],
       "map": null,
       "rows": [
         {
           "qty": null,
           "label": "Pulmonars Blueprint",
-          "note": "50,000 cr",
+          "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Credits",
+                "amount": "50,000"
+              }
+            ]
+          }
         }
       ],
       "conditions": [],

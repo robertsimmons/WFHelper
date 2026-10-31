@@ -4,21 +4,55 @@
   "effort": 1,
   "source": "shop",
   "tradeable": false,
-  "progress": { "have": 0, "need": 1, "unit": "blueprint" },
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "blueprint"
+  },
   "badges": [
-    { "text": "Market", "tone": "info" },
-    { "text": "MR 2", "tone": "info" }
+    {
+      "text": "Market",
+      "tone": "info"
+    }
   ],
   "prices": [
-    { "label": "blueprint", "amount": "15,000 cr", "money": false },
-    { "label": "build", "amount": "30,000 cr", "money": false }
+    {
+      "label": "blueprint",
+      "amount": "15,000 cr",
+      "money": false
+    },
+    {
+      "label": "build",
+      "amount": "30,000 cr",
+      "money": false
+    }
   ],
   "materials": [
-    { "qty": "3", "label": "Gallium", "note": null },
-    { "qty": "750", "label": "Salvage", "note": null },
-    { "qty": "300", "label": "Rubedo", "note": null },
-    { "qty": "80", "label": "Alloy Plate", "note": null },
-    { "qty": "45,000", "label": "Credits", "note": null }
+    {
+      "qty": "3",
+      "label": "Gallium",
+      "note": null
+    },
+    {
+      "qty": "750",
+      "label": "Salvage",
+      "note": null
+    },
+    {
+      "qty": "300",
+      "label": "Rubedo",
+      "note": null
+    },
+    {
+      "qty": "80",
+      "label": "Alloy Plate",
+      "note": null
+    },
+    {
+      "qty": "45,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
     {
@@ -26,15 +60,34 @@
       "place": "MARKET",
       "sub": null,
       "activity": "buy the blueprint",
-      "meta": "15,000 cr",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Credits", "amount": "15,000" }],
+      "spends": [
+        {
+          "currency": "Credits",
+          "amount": "15,000"
+        }
+      ],
       "map": null,
       "rows": [
-        { "qty": null, "label": "Fragor Blueprint", "note": null, "alt": null, "done": false }
+        {
+          "qty": null,
+          "label": "Fragor Blueprint",
+          "note": null,
+          "alt": null,
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Credits",
+                "amount": "15,000"
+              }
+            ]
+          }
+        }
       ],
       "conditions": ["Fragor Prime is a separate Mastery item and does not cover this one."],
       "bonuses": [],

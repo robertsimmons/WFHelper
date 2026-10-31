@@ -9,24 +9,7 @@
     "need": 3,
     "unit": "parts"
   },
-  "badges": [
-    {
-      "text": "Red Veil Rank 2",
-      "tone": "warn",
-      "rank": {
-        "syndicate": "Red Veil",
-        "level": 2
-      }
-    },
-    {
-      "text": "New Loka Rank 2",
-      "tone": "warn",
-      "rank": {
-        "syndicate": "New Loka",
-        "level": 2
-      }
-    }
-  ],
+  "badges": [],
   "prices": [
     {
       "label": "blueprint",
@@ -63,43 +46,11 @@
   ],
   "groups": [
     {
-      "type": "gate",
-      "place": "ORBITER",
-      "sub": null,
-      "activity": "The Archwing quest",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Mastery Rank 6",
-          "note": "to build it",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "The Archwing",
-          "note": "Archmelee only works in Archwing missions",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
       "type": "currency",
       "place": "RELAY, RED VEIL AND NEW LOKA",
       "sub": null,
       "activity": "pledge one, rank it to 2, then switch",
-      "meta": "47,000 standing each",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -113,16 +64,32 @@
         {
           "qty": null,
           "label": "Red Veil initiation",
-          "note": "500 Alloy Plate, 10,000 cr",
+          "note": "500 Alloy Plate",
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Credits",
+                "amount": "10,000"
+              }
+            ]
+          }
         },
         {
           "qty": null,
           "label": "New Loka initiation",
-          "note": "1,000 Ferrite, 10,000 cr",
+          "note": "1,000 Ferrite",
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Credits",
+                "amount": "10,000"
+              }
+            ]
+          }
         }
       ],
       "conditions": [],
@@ -151,37 +118,85 @@
         {
           "qty": null,
           "label": "Red Veil rank 1 (Respected)",
-          "note": "5,000 standing; 30,000 cr, 2 Gallium",
+          "note": "2 Gallium",
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Syndicate Standing",
+                "amount": "5,000"
+              },
+              {
+                "currency": "Credits",
+                "amount": "30,000"
+              }
+            ]
+          }
         },
         {
           "qty": null,
           "label": "Red Veil rank 2 (Honored)",
-          "note": "22,000 standing; 50,000 cr, 1 Forma",
+          "note": "1 Forma",
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "Red Veil",
             "level": 2
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Syndicate Standing",
+                "amount": "22,000"
+              },
+              {
+                "currency": "Credits",
+                "amount": "50,000"
+              }
+            ]
           }
         },
         {
           "qty": null,
           "label": "New Loka rank 1 (Humane)",
-          "note": "5,000 standing; 30,000 cr, 2 Fieldron Sample",
+          "note": "2 Fieldron Sample",
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Syndicate Standing",
+                "amount": "5,000"
+              },
+              {
+                "currency": "Credits",
+                "amount": "30,000"
+              }
+            ]
+          }
         },
         {
           "qty": null,
           "label": "New Loka rank 2 (Bountiful)",
-          "note": "22,000 standing; 50,000 cr, 1 Forma",
+          "note": "1 Forma",
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "New Loka",
             "level": 2
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Syndicate Standing",
+                "amount": "22,000"
+              },
+              {
+                "currency": "Credits",
+                "amount": "50,000"
+              }
+            ]
           }
         }
       ],
@@ -194,7 +209,7 @@
       "place": "RELAY, SYNDICATE ENCLAVES",
       "sub": null,
       "activity": "buy Head and Handle",
-      "meta": "20,000 standing each",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -210,23 +225,55 @@
         {
           "qty": null,
           "label": "Rathbone Head",
-          "note": "New Loka, rank 2",
+          "note": "New Loka",
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Syndicate Standing",
+                "amount": "20,000"
+              }
+            ],
+            "rank": {
+              "syndicate": "New Loka",
+              "level": 2
+            }
+          }
         },
         {
           "qty": null,
           "label": "Rathbone Handle",
-          "note": "Red Veil, rank 2",
+          "note": "Red Veil",
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Syndicate Standing",
+                "amount": "20,000"
+              }
+            ],
+            "rank": {
+              "syndicate": "Red Veil",
+              "level": 2
+            }
+          }
         },
         {
           "qty": null,
           "label": "Rathbone Blueprint",
-          "note": "Market, 35,000 cr",
+          "note": "Market",
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Credits",
+                "amount": "35,000"
+              }
+            ]
+          }
         }
       ],
       "conditions": [],

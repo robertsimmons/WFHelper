@@ -17,7 +17,7 @@
     upgradePinnedNode,
     upgradeSuggestionNode,
   } from "./cardFlight.js";
-  import { nextStep, type PinnedEntry } from "./pinnedAcquisitions.js";
+  import type { PinnedEntry } from "./pinnedAcquisitions.js";
   import type { PinnedUpgrade } from "./pinnedUpgrades.js";
   import { rewardArt } from "./rewardArt.js";
   import StateChip from "./StateChip.svelte";
@@ -137,7 +137,7 @@
               {#if entry.steps && entry.steps.total > 0}
                 <span class={SUB}
                   >{$tr("nextUp.pinnedStepCount", {
-                    step: nextStep(entry.steps),
+                    step: entry.steps.step,
                     total: entry.steps.total,
                   })}</span
                 >

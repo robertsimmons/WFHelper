@@ -1,0 +1,318 @@
+{
+  "name": "Feverspine",
+  "kind": "kdrive",
+  "effort": 3,
+  "source": "repeat",
+  "tradeable": false,
+  "progress": {
+    "have": 0,
+    "need": 4,
+    "unit": "parts"
+  },
+  "badges": [
+    {
+      "text": "Feverspine race rotates daily",
+      "tone": "info"
+    }
+  ],
+  "prices": [
+    {
+      "label": "four parts, foundry",
+      "amount": "20,000 cr",
+      "money": false
+    }
+  ],
+  "materials": [
+    {
+      "qty": "25",
+      "label": "Ganglion",
+      "note": "board"
+    },
+    {
+      "qty": "40",
+      "label": "Adramal Alloy",
+      "note": "board"
+    },
+    {
+      "qty": "50",
+      "label": "Benign Infested Tumor",
+      "note": "board"
+    },
+    {
+      "qty": "15",
+      "label": "Parasitic Tethermaw",
+      "note": "board"
+    },
+    {
+      "qty": "25",
+      "label": "Scrap",
+      "note": "Coldfusor"
+    },
+    {
+      "qty": "15",
+      "label": "Tepa Nodule",
+      "note": "Coldfusor"
+    },
+    {
+      "qty": "65",
+      "label": "Travocyte Alloy",
+      "note": "Coldfusor 40, Twin Kavats 25"
+    },
+    {
+      "qty": "10",
+      "label": "Sapcaddy Venedo Case",
+      "note": "Coldfusor"
+    },
+    {
+      "qty": "25",
+      "label": "Gorgaricus Spore",
+      "note": "Beaky"
+    },
+    {
+      "qty": "20",
+      "label": "Kriller Thermal Laser",
+      "note": "Beaky"
+    },
+    {
+      "qty": "5",
+      "label": "Star Amarast",
+      "note": "Beaky"
+    },
+    {
+      "qty": "10",
+      "label": "Scrubber Exa Brain",
+      "note": "Beaky"
+    },
+    {
+      "qty": "30",
+      "label": "Mytocardia Spore",
+      "note": "Twin Kavats"
+    },
+    {
+      "qty": "15",
+      "label": "Heart Noctrul",
+      "note": "Twin Kavats"
+    },
+    {
+      "qty": "20",
+      "label": "Echowinder Anoscopic Sensor",
+      "note": "Twin Kavats"
+    },
+    {
+      "qty": "20,000",
+      "label": "Credits",
+      "note": "5,000 per part build"
+    }
+  ],
+  "groups": [
+    {
+      "type": "farm",
+      "place": "CAMBION DRIFT, DEIMOS",
+      "sub": "Grandmother's K-Drive races",
+      "activity": "finish the race \"Dead Drop\"",
+      "meta": "on rotation some days",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": "cambion-drift",
+      "rows": [
+        {
+          "qty": null,
+          "label": "Feverspine Blueprint",
+          "note": "no standing cost",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Only 5 of the 8 Cambion Drift races are active at a time and the set changes at the daily reset",
+        "A Cambion Drift race only drops its part while you hold no blueprint for it; owning the built board does not block a repeat"
+      ],
+      "bonuses": ["The race also pays Ventkids standing like any other"],
+      "disclosures": [
+        {
+          "title": "the Infested reactor, nose and jet",
+          "body": "Other Cambion Drift races drop Gristlebuck (reactor), Nodulite (nose) and Steeba (jet) for no standing. Building the Feverspine on those instead of Roky's Neutral parts saves 15,000 Ventkids standing, at the cost of waiting on the race rotation and farming Deimos materials: Gristlebuck 20 Pustulite, 10 Ocular Stem-Root, 40 Tempered Bapholite, 10 Pustulent Cognitive Nodule; Nodulite 5 Stellated Necrathene, 30 Ganglion, 5 Ocular Stem-Root, 10 Sporulate Sac; Steeba 35 Pustulite, 25 Parasitic Tethermaw, 10 Goblite Tears, 20 Saturated Muscle Mass; 5,000 cr each."
+        }
+      ]
+    },
+    {
+      "type": "vendor",
+      "place": "ROKY, FORTUNA",
+      "sub": null,
+      "activity": "buy the reactor, nose and jet blueprints",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [
+        {
+          "currency": "Ventkids Standing",
+          "amount": "15,000"
+        }
+      ],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Coldfusor Blueprint",
+          "note": "reactor",
+          "alt": null,
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Ventkids Standing",
+                "amount": "5,000"
+              }
+            ]
+          }
+        },
+        {
+          "qty": null,
+          "label": "Beaky Blueprint",
+          "note": "nose",
+          "alt": null,
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Ventkids Standing",
+                "amount": "5,000"
+              }
+            ]
+          }
+        },
+        {
+          "qty": null,
+          "label": "Twin Kavats Blueprint",
+          "note": "jet",
+          "alt": null,
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Ventkids Standing",
+                "amount": "5,000"
+              }
+            ]
+          }
+        }
+      ],
+      "conditions": ["Only the board earns Mastery; reactor, nose and jet are purely cosmetic"],
+      "bonuses": [],
+      "disclosures": [
+        {
+          "title": "the other parts Roky sells",
+          "body": "Reactors: Coldfusor (Neutral, 5,000), Arc Twelve (Whozit, 10,000), Hothead (Primo, 15,000), Highbrow (Logical, 15,000). Noses: Beaky, Wingnut, Dink-A-Donk, Two-Sloops at the same ranks and prices. Jets: Twin Kavats, Step Tens, Fatboys, Thugs likewise. None of them changes stats or Mastery."
+        }
+      ]
+    },
+    {
+      "type": "currency",
+      "place": "ORB VALLIS, VENUS",
+      "sub": null,
+      "activity": "K-Drive races and trick chains",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": {
+        "currency": "Ventkids Standing",
+        "amount": "15,000"
+      },
+      "spends": [],
+      "map": "orb-vallis",
+      "rows": [
+        {
+          "qty": "15,000",
+          "label": "blueprints",
+          "note": "Roky's reactor, nose and jet; none with the Infested race parts",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [],
+      "bonuses": [],
+      "disclosures": [],
+      "ref": "Ventkids Standing"
+    },
+    {
+      "type": "foundry",
+      "place": "FOUNDRY",
+      "sub": null,
+      "activity": "queue all four parts at once",
+      "meta": "1h each, 20,000 cr",
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "Feverspine",
+          "note": "25 Ganglion, 40 Adramal Alloy, 50 Benign Infested Tumor, 15 Parasitic Tethermaw",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Coldfusor",
+          "note": "15 Tepa Nodule, 25 Scrap, 40 Travocyte Alloy, 10 Sapcaddy Venedo Case",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Beaky",
+          "note": "25 Gorgaricus Spore, 20 Kriller Thermal Laser, 5 Star Amarast, 10 Scrubber Exa Brain",
+          "alt": null,
+          "done": false
+        },
+        {
+          "qty": null,
+          "label": "Twin Kavats",
+          "note": "30 Mytocardia Spore, 15 Heart Noctrul, 25 Travocyte Alloy, 20 Echowinder Anoscopic Sensor",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": ["Every part is the same 1 h and 5,000 credits"],
+      "bonuses": [],
+      "disclosures": []
+    },
+    {
+      "type": "vendor",
+      "place": "ROKY, FORTUNA",
+      "sub": null,
+      "activity": "Assemble K-Drive",
+      "meta": null,
+      "mode": null,
+      "live": null,
+      "skip": null,
+      "earns": null,
+      "spends": [],
+      "map": null,
+      "rows": [
+        {
+          "qty": null,
+          "label": "assembled Feverspine",
+          "note": "with a reactor, nose and jet",
+          "alt": null,
+          "done": false
+        }
+      ],
+      "conditions": [
+        "Each board banks 200 Mastery per rank, 6,000 at rank 30",
+        "Your first assembled K-Drive replaces the Bondi, and the last K-Drive you own can never be sold"
+      ],
+      "bonuses": [],
+      "disclosures": []
+    }
+  ]
+}

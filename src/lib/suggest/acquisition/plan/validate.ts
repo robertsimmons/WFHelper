@@ -1,5 +1,6 @@
-import { rankSyndicate, topRank } from "./ranks.js";
-import { resourceEntry, type ResourceLookup } from "./resources.js";
+import { figuresIn, isCreditFigure, readPrices } from "./priceText.js";
+import { rankSyndicate, rankTitle, topRank } from "./ranks.js";
+import { resourceEntry, resourceLookup, type ResourceLookup } from "./resources.js";
 import {
   PLAN_BADGE_TONES,
   PLAN_GROUP_TYPES,
@@ -7,6 +8,7 @@ import {
   PLAN_MAP_KEYS,
   PLAN_ROUTE_ROLES,
   PLAN_SOURCES,
+  type PlanRank,
 } from "./schema.js";
 
 const GROUP_TYPES = new Set<string>(PLAN_GROUP_TYPES);
@@ -76,19 +78,108 @@ function checkAlt(problems: Problems, at: string, value: unknown): void {
   value.spends.forEach((spend, index) => checkCurrency(problems, `${at}.spends[${index}]`, spend));
 }
 
-function checkRow(problems: Problems, at: string, value: unknown): void {
+/** A price or rank belongs in `buy`, `spends`, `rank` or `pick`, never in prose. A
+ *  build line may still name its foundry credits. */
+function checkProse(problems: Problems, at: string, value: unknown, credits: boolean): void {
+  if (typeof value !== "string") return;
+  const stray = figuresIn(value).filter((figure) => !(credits && isCreditFigure(figure)));
+  // A clause that is a rank title and nothing else ("Doer") is a rank too.
+  const read = readPrices(value, { standing: null, syndicate: null }, { keepCredits: credits });
+  if (read.rank && stray.length === 0) stray.push(rankTitle(read.rank));
+  if (stray.length > 0) {
+    problems.push(`${at} writes "${stray.join('", "')}" as text; use the structured fields`);
+  }
+}
+
+const PRICED = /(?:standing|platinum|plat|credits|cr)$/i;
+
+/** The ranks a group's rows carry, as structure: reached, picked or required. */
+function groupRanks(group: Record<string, unknown>): PlanRank[] {
+  if (!Array.isArray(group.rows)) return [];
+  return group.rows.flatMap((row) => {
+    if (!isRecord(row)) return [];
+    const pick = isRecord(row.pick) ? row.pick.rank : null;
+    const buy = isRecord(row.buy) ? row.buy.rank : null;
+    return [row.rank, pick, buy].filter(
+      (rank): rank is PlanRank =>
+        isRecord(rank) && typeof rank.syndicate === "string" && typeof rank.level === "number",
+    );
+  });
+}
+
+/** A step's action may name the rank it works toward, as long as a row carries that
+ *  rank as structure; a price never belongs there. */
+function checkActivity(problems: Problems, at: string, group: Record<string, unknown>): void {
+  if (typeof group.activity !== "string") return;
+  const ranks = groupRanks(group);
+  const backed = (figure: string): boolean => {
+    const level = /rank\s+(-?\d)/i.exec(figure);
+    const text = figure.toLowerCase();
+    return ranks.some((rank) =>
+      level ? Number(level[1]) === rank.level : text.includes(rankTitle(rank).toLowerCase()),
+    );
+  };
+  const stray = figuresIn(group.activity).filter(
+    (figure) => PRICED.test(figure) || !backed(figure),
+  );
+  if (stray.length > 0) {
+    problems.push(`${at} writes "${stray.join('", "')}" as text; use the structured fields`);
+  }
+}
+
+function checkPurchase(problems: Problems, at: string, value: unknown): void {
+  if (value === undefined || value === null) return;
+  if (!isRecord(value)) {
+    problems.push(`${at} must be an object or null`);
+    return;
+  }
+  if (!Array.isArray(value.price)) {
+    problems.push(`${at}.price must be an array`);
+    return;
+  }
+  value.price.forEach((price, index) => checkCurrency(problems, `${at}.price[${index}]`, price));
+  checkRank(problems, `${at}.rank`, value.rank);
+  if (value.price.length === 0 && (value.rank === undefined || value.rank === null)) {
+    problems.push(`${at} needs a price or a rank`);
+  }
+  for (const flag of ["reusable", "each", "blueprint"]) {
+    if (value[flag] !== undefined && typeof value[flag] !== "boolean") {
+      problems.push(`${at}.${flag} must be a boolean`);
+    }
+  }
+}
+
+function checkRow(problems: Problems, at: string, value: unknown, build = false): void {
   if (!isRecord(value)) {
     problems.push(`${at} must be an object`);
     return;
   }
   checkString(problems, `${at}.label`, value.label);
   checkNullableString(problems, `${at}.note`, value.note);
+  checkProse(problems, `${at}.note`, value.note, build);
+  checkPurchase(problems, `${at}.buy`, value.buy);
   if (value.qty !== null && (typeof value.qty !== "string" || !QUANTITY.test(value.qty))) {
     problems.push(`${at}.qty must be a grouped number string or null`);
   }
   checkAlt(problems, `${at}.alt`, value.alt);
   if (typeof value.done !== "boolean") problems.push(`${at}.done must be a boolean`);
   checkRank(problems, `${at}.rank`, value.rank);
+  checkPick(problems, `${at}.pick`, value.pick);
+}
+
+function checkPick(problems: Problems, at: string, value: unknown): void {
+  if (value === undefined || value === null) return;
+  if (!isRecord(value)) {
+    problems.push(`${at} must be an object or null`);
+    return;
+  }
+  if (value.rank === undefined || value.rank === null) problems.push(`${at}.rank is required`);
+  else checkRank(problems, `${at}.rank`, value.rank);
+  if (!Array.isArray(value.spends) || value.spends.length === 0) {
+    problems.push(`${at}.spends must be a non-empty array`);
+    return;
+  }
+  value.spends.forEach((spend, index) => checkCurrency(problems, `${at}.spends[${index}]`, spend));
 }
 
 function checkRank(problems: Problems, at: string, value: unknown): void {
@@ -248,10 +339,19 @@ function flowCurrencies(value: Record<string, unknown>): [string, unknown][] {
   }
   if (!Array.isArray(value.rows)) return flows;
   value.rows.forEach((row, index) => {
-    if (!isRecord(row) || !isRecord(row.alt) || !Array.isArray(row.alt.spends)) return;
-    row.alt.spends.forEach((spend, at) => {
-      if (isRecord(spend)) flows.push([`rows[${index}].alt.spends[${at}]`, spend.currency]);
-    });
+    if (!isRecord(row)) return;
+    if (isRecord(row.buy) && Array.isArray(row.buy.price)) {
+      row.buy.price.forEach((price, at) => {
+        if (isRecord(price)) flows.push([`rows[${index}].buy.price[${at}]`, price.currency]);
+      });
+    }
+    for (const field of ["alt", "pick"]) {
+      const offer = row[field];
+      if (!isRecord(offer) || !Array.isArray(offer.spends)) continue;
+      offer.spends.forEach((spend, at) => {
+        if (isRecord(spend)) flows.push([`rows[${index}].${field}.spends[${at}]`, spend.currency]);
+      });
+    }
   });
   return flows;
 }
@@ -331,6 +431,9 @@ function checkGroup(
   checkNullableString(problems, `${at}.activity`, value.activity);
   checkNullableString(problems, `${at}.meta`, value.meta);
   checkNullableString(problems, `${at}.mode`, value.mode);
+  const build = value.type === "foundry" || value.type === "craft";
+  checkActivity(problems, `${at}.activity`, value);
+  checkProse(problems, `${at}.meta`, value.meta, build);
   checkMapKey(problems, `${at}.map`, value.map);
   if (typeof value.type === "string" && MAPLESS_GROUP_TYPES.has(value.type) && value.map !== null) {
     problems.push(`${at}.map must be null on a ${value.type} group`);
@@ -359,7 +462,7 @@ function checkGroup(
   if (!Array.isArray(value.rows) || value.rows.length === 0) {
     problems.push(`${at}.rows must be a non-empty array`);
   } else {
-    value.rows.forEach((row, index) => checkRow(problems, `${at}.rows[${index}]`, row));
+    value.rows.forEach((row, index) => checkRow(problems, `${at}.rows[${index}]`, row, build));
   }
 
   checkStringList(problems, `${at}.conditions`, value.conditions);
@@ -370,7 +473,7 @@ function checkGroup(
   checkStoreRefs(problems, at, value, itemName, lookup);
 }
 
-const OVERRIDE_KEYS = new Set(["name", "badges", "gates", "effort"]);
+const OVERRIDE_KEYS = new Set(["name", "badges", "effort"]);
 
 /** Every reason the value is not a Prime override. `generated` answers whether
  *  the name is a Prime the generator plans; left out, the name goes unchecked. */
@@ -388,22 +491,6 @@ export function validatePrimeOverride(
     problems.push(`name "${value.name}" is not a generated Prime`);
   }
   if (value.badges !== undefined) checkBadges(problems, "badges", value.badges);
-  if (value.gates !== undefined) {
-    if (!Array.isArray(value.gates) || value.gates.length === 0) {
-      problems.push("gates must be a non-empty array");
-    } else {
-      value.gates.forEach((gate, index) => {
-        const at = `gates[${index}]`;
-        if (!isRecord(gate)) {
-          problems.push(`${at} must be an object`);
-          return;
-        }
-        checkString(problems, `${at}.label`, gate.label);
-        checkNullableString(problems, `${at}.note`, gate.note);
-        checkRank(problems, `${at}.rank`, gate.rank);
-      });
-    }
-  }
   if (value.effort !== undefined) {
     if (!isRecord(value.effort)) {
       problems.push("effort must be an object with a value and a reason");
@@ -422,6 +509,7 @@ const STORE_META_KEYS = new Set(["coverage", "conflicts"]);
 export function validateResources(table: unknown): string[] {
   const problems: Problems = [];
   if (!isRecord(table)) return ["resource store must be an object"];
+  const lookup = resourceLookup(table);
   for (const [name, entry] of Object.entries(table)) {
     if (STORE_META_KEYS.has(name)) continue;
     if (!isRecord(entry)) {
@@ -440,8 +528,37 @@ export function validateResources(table: unknown): string[] {
         problems.push(`${name}.recipe must be a non-empty array on a craft`);
       }
     }
+    const sources: [string, unknown][] = [
+      ["best", entry.best],
+      ...(Array.isArray(entry.alternates) ? entry.alternates : []).map(
+        (source, index): [string, unknown] => [`alternates[${index}]`, source],
+      ),
+    ];
+    for (const [where, source] of sources) {
+      if (isRecord(source)) checkSource(problems, `${name}.${where}`, source, entry.kind, lookup);
+    }
   }
   return problems;
+}
+
+/** A crafted entry's meta may carry its foundry credits; nothing else may price in prose. */
+function checkSource(
+  problems: Problems,
+  at: string,
+  source: Record<string, unknown>,
+  kind: unknown,
+  lookup: ResourceLookup,
+): void {
+  checkProse(problems, `${at}.activity`, source.activity, false);
+  checkProse(problems, `${at}.meta`, source.meta, kind === "craft");
+  checkPurchase(problems, `${at}.buy`, source.buy);
+  if (!isRecord(source.buy) || !Array.isArray(source.buy.price)) return;
+  source.buy.price.forEach((price, index) => {
+    const currency = isRecord(price) ? price.currency : null;
+    if (typeof currency === "string" && lookup(currency)?.spelled !== currency) {
+      problems.push(`${at}.buy.price[${index}].currency "${currency}" is not a store spelling`);
+    }
+  });
 }
 
 /** Every reason the value is not an authored plan. The renderer is dumb, so a

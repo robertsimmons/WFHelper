@@ -70,36 +70,11 @@
   ],
   "groups": [
     {
-      "type": "gate",
-      "place": "THE ARCHWING",
-      "sub": null,
-      "activity": "finish the quest that unlocks Archwing",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "The Archwing",
-          "note": "the lab sells no Amesha blueprints before this",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
       "type": "vendor",
       "place": "CLAN DOJO, TENNO LAB",
       "sub": null,
       "activity": "buy the blueprints",
-      "meta": "60,000 cr",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -115,9 +90,18 @@
         {
           "qty": "4",
           "label": "Amesha blueprints",
-          "note": "main, Harness, Systems and Wings; 15,000 cr each",
+          "note": "main, Harness, Systems and Wings",
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Credits",
+                "amount": "15,000"
+              }
+            ],
+            "each": true
+          }
         }
       ],
       "conditions": [],

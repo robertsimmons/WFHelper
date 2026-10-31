@@ -9,20 +9,7 @@
     "need": 1,
     "unit": "purchase"
   },
-  "badges": [
-    {
-      "text": "General rank gate",
-      "tone": "warn",
-      "rank": {
-        "syndicate": "Steel Meridian",
-        "level": 5
-      }
-    },
-    {
-      "text": "MR 11",
-      "tone": "info"
-    }
-  ],
+  "badges": [],
   "prices": [
     {
       "label": "standing",
@@ -33,36 +20,11 @@
   "materials": [],
   "groups": [
     {
-      "type": "gate",
-      "place": "MASTERY RANK",
-      "sub": null,
-      "activity": "reach MR 11",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Mastery Rank 11",
-          "note": "needed to buy it",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
       "type": "currency",
       "place": "STEEL MERIDIAN SYNDICATE, ORBITER",
       "sub": "Syndicate console",
       "activity": "pledge Steel Meridian, earn standing from affinity, Syndicate Alerts and Medallions",
-      "meta": "240,000 standing to General, 125,000 more for the weapon",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -76,63 +38,131 @@
         {
           "qty": "1,000",
           "label": "Salvage",
-          "note": "Initiation sacrifice, 10,000 cr",
+          "note": "Initiation sacrifice",
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Credits",
+                "amount": "10,000"
+              }
+            ]
+          }
         },
         {
           "qty": "2",
           "label": "Morphics",
-          "note": "Rank 1 Brave sacrifice, 5,000 standing, 30,000 cr",
+          "note": "sacrifice",
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "Steel Meridian",
             "level": 1
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Steel Meridian Standing",
+                "amount": "5,000"
+              },
+              {
+                "currency": "Credits",
+                "amount": "30,000"
+              }
+            ]
           }
         },
         {
           "qty": "1",
           "label": "Forma",
-          "note": "Rank 2 Valiant sacrifice, 22,000 standing, 50,000 cr",
+          "note": "sacrifice",
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "Steel Meridian",
             "level": 2
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Steel Meridian Standing",
+                "amount": "22,000"
+              },
+              {
+                "currency": "Credits",
+                "amount": "50,000"
+              }
+            ]
           }
         },
         {
           "qty": "1",
           "label": "Orokin Catalyst",
-          "note": "Rank 3 Defender sacrifice, 44,000 standing, 100,000 cr",
+          "note": "sacrifice",
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "Steel Meridian",
             "level": 3
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Steel Meridian Standing",
+                "amount": "44,000"
+              },
+              {
+                "currency": "Credits",
+                "amount": "100,000"
+              }
+            ]
           }
         },
         {
           "qty": "2",
           "label": "Aya",
-          "note": "Rank 4 Protector sacrifice, 70,000 standing, 250,000 cr",
+          "note": "sacrifice",
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "Steel Meridian",
             "level": 4
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Steel Meridian Standing",
+                "amount": "70,000"
+              },
+              {
+                "currency": "Credits",
+                "amount": "250,000"
+              }
+            ]
           }
         },
         {
           "qty": "3",
           "label": "Aya",
-          "note": "Rank 5 General sacrifice, 99,000 standing, 500,000 cr",
+          "note": "sacrifice",
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "Steel Meridian",
             "level": 5
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Steel Meridian Standing",
+                "amount": "99,000"
+              },
+              {
+                "currency": "Credits",
+                "amount": "500,000"
+              }
+            ]
           }
         }
       ],
@@ -165,56 +195,96 @@
         {
           "qty": null,
           "label": "Rank 1, Brave",
-          "note": "5,000 standing",
+          "note": null,
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "Steel Meridian",
             "level": 1
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Steel Meridian Standing",
+                "amount": "5,000"
+              }
+            ]
           }
         },
         {
           "qty": null,
           "label": "Rank 2, Valiant",
-          "note": "22,000 standing",
+          "note": null,
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "Steel Meridian",
             "level": 2
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Steel Meridian Standing",
+                "amount": "22,000"
+              }
+            ]
           }
         },
         {
           "qty": null,
           "label": "Rank 3, Defender",
-          "note": "44,000 standing",
+          "note": null,
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "Steel Meridian",
             "level": 3
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Steel Meridian Standing",
+                "amount": "44,000"
+              }
+            ]
           }
         },
         {
           "qty": null,
           "label": "Rank 4, Protector",
-          "note": "70,000 standing",
+          "note": null,
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "Steel Meridian",
             "level": 4
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Steel Meridian Standing",
+                "amount": "70,000"
+              }
+            ]
           }
         },
         {
           "qty": null,
           "label": "Rank 5, General",
-          "note": "99,000 standing",
+          "note": null,
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "Steel Meridian",
             "level": 5
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Steel Meridian Standing",
+                "amount": "99,000"
+              }
+            ]
           }
         }
       ],
@@ -227,7 +297,7 @@
       "place": "STEEL MERIDIAN OFFERINGS, ORBITER",
       "sub": "Syndicate console",
       "activity": "buy the polearm",
-      "meta": "General, 125,000 standing",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -245,7 +315,15 @@
           "label": "Vaykor Sydon",
           "note": "arrives built, no Foundry step",
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Steel Meridian Standing",
+                "amount": "125,000"
+              }
+            ]
+          }
         }
       ],
       "conditions": ["It can't be the free General rank-up gift, so the 125,000 is always paid."],

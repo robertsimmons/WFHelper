@@ -9,20 +9,7 @@
     "need": 3,
     "unit": "blueprints"
   },
-  "badges": [
-    {
-      "text": "Entrati Stranger",
-      "tone": "warn",
-      "rank": {
-        "syndicate": "Entrati",
-        "level": 1
-      }
-    },
-    {
-      "text": "MR 11",
-      "tone": "info"
-    }
-  ],
+  "badges": [],
   "prices": [
     {
       "label": "blueprints + rank-up",
@@ -79,38 +66,6 @@
   ],
   "groups": [
     {
-      "sub": null,
-      "activity": "complete Heart of Deimos; reach MR 11",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Heart of Deimos",
-          "note": "unlocks Necralisk and Entrati",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Mastery Rank 11",
-          "note": "needed to equip it",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": [],
-      "type": "gate",
-      "place": "QUESTS"
-    },
-    {
       "sub": "Necralisk / Entrati",
       "activity": "Tier 5 Mother bounties; trade Family Tokens to Grandmother",
       "meta": "5,000 for the rank-up, 4,000 for blueprints",
@@ -160,12 +115,20 @@
         {
           "qty": null,
           "label": "Entrati Stranger (Rank 1)",
-          "note": "5,000 standing, 6 Benign Infested Tumor, 6 Ferment Bladder",
+          "note": "6 Benign Infested Tumor, 6 Ferment Bladder",
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "Entrati",
             "level": 1
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Entrati Standing",
+                "amount": "5,000"
+              }
+            ]
           }
         }
       ],
@@ -176,7 +139,7 @@
     {
       "sub": "Father",
       "activity": "buy the blueprints at Rank 1 Stranger",
-      "meta": "4,000 standing",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -192,34 +155,58 @@
         {
           "qty": null,
           "label": "Zymos Blueprint",
-          "note": "2,000 standing",
+          "note": null,
           "alt": "or take it as the free Rank 1 reward",
           "done": false,
-          "rank": {
-            "syndicate": "Entrati",
-            "level": 1
+          "buy": {
+            "price": [
+              {
+                "currency": "Entrati Standing",
+                "amount": "2,000"
+              }
+            ],
+            "rank": {
+              "syndicate": "Entrati",
+              "level": 1
+            }
           }
         },
         {
           "qty": null,
           "label": "Zymos Barrel Blueprint",
-          "note": "1,000 standing",
+          "note": null,
           "alt": null,
           "done": false,
-          "rank": {
-            "syndicate": "Entrati",
-            "level": 1
+          "buy": {
+            "price": [
+              {
+                "currency": "Entrati Standing",
+                "amount": "1,000"
+              }
+            ],
+            "rank": {
+              "syndicate": "Entrati",
+              "level": 1
+            }
           }
         },
         {
           "qty": null,
           "label": "Zymos Receiver Blueprint",
-          "note": "1,000 standing",
+          "note": null,
           "alt": null,
           "done": false,
-          "rank": {
-            "syndicate": "Entrati",
-            "level": 1
+          "buy": {
+            "price": [
+              {
+                "currency": "Entrati Standing",
+                "amount": "1,000"
+              }
+            ],
+            "rank": {
+              "syndicate": "Entrati",
+              "level": 1
+            }
           }
         }
       ],

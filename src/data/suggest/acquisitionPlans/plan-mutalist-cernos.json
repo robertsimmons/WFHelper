@@ -66,36 +66,11 @@
   ],
   "groups": [
     {
-      "type": "gate",
-      "place": "MASTERY RANK",
-      "sub": null,
-      "activity": "reach MR 7 to equip it",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Mastery Rank 7",
-          "note": null,
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
       "type": "vendor",
       "place": "MARKET",
       "sub": null,
       "activity": "buy the Cernos and Mutalist Cernos blueprints",
-      "meta": "20,000 cr each",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -111,16 +86,32 @@
         {
           "qty": null,
           "label": "Cernos Blueprint",
-          "note": "20,000 credits",
+          "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Credits",
+                "amount": "20,000"
+              }
+            ]
+          }
         },
         {
           "qty": null,
           "label": "Mutalist Cernos Blueprint",
-          "note": "20,000 credits",
+          "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Credits",
+                "amount": "20,000"
+              }
+            ]
+          }
         }
       ],
       "conditions": ["The recipe eats a built Cernos, so buy both blueprints up front."],

@@ -215,6 +215,8 @@ export interface AcquisitionTarget {
   incarnon: IncarnonInfo | null;
   /** Never empty: a target with nothing left to win is not returned at all. */
   needs: NeedReason[];
+  /** From the mastery roster; owning the item does not make it mastered. */
+  mastered: boolean;
   /** The roster's max rank; absent where it has no row for the item. */
   maxRank?: number | undefined;
   parts: PartPlan;

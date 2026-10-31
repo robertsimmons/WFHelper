@@ -13,10 +13,6 @@
     {
       "text": "Stalker RNG",
       "tone": "warn"
-    },
-    {
-      "text": "MR 10",
-      "tone": "info"
     }
   ],
   "prices": [
@@ -60,32 +56,6 @@
   ],
   "groups": [
     {
-      "type": "gate",
-      "place": "MASTERY RANK",
-      "sub": null,
-      "activity": "reach MR 10",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Mastery Rank 10",
-          "note": "needed to build War and extra Broken Wars",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": [],
-      "quest": null
-    },
-    {
       "type": "boss",
       "place": "ANY MISSION",
       "sub": "Stalker",
@@ -128,7 +98,7 @@
       "place": "SANCTUARY, CEPHALON SIMARIS",
       "sub": null,
       "activity": "buy the War Hilt and Blades with standing",
-      "meta": "150,000 standing total",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -144,16 +114,33 @@
         {
           "qty": "1",
           "label": "War Hilt",
-          "note": "50,000 standing",
+          "note": null,
           "alt": "0.50% drop from Summulysts, Aerolysts, Ortholysts and Conculysts",
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Cephalon Simaris Standing",
+                "amount": "50,000"
+              }
+            ]
+          }
         },
         {
           "qty": "2",
           "label": "War Blade",
-          "note": "50,000 standing each",
+          "note": null,
           "alt": "same 0.50% drop, same enemies",
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Cephalon Simaris Standing",
+                "amount": "50,000"
+              }
+            ],
+            "each": true
+          }
         }
       ],
       "conditions": [

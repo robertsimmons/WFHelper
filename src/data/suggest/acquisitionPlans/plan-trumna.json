@@ -9,24 +9,7 @@
     "need": 4,
     "unit": "parts"
   },
-  "badges": [
-    {
-      "text": "Entrati Associate",
-      "tone": "warn",
-      "rank": {
-        "syndicate": "Entrati",
-        "level": 3
-      }
-    },
-    {
-      "text": "Ostron Trusted",
-      "tone": "warn",
-      "rank": {
-        "syndicate": "Ostron",
-        "level": 3
-      }
-    }
-  ],
+  "badges": [],
   "prices": [
     {
       "label": "blueprints",
@@ -113,58 +96,11 @@
   ],
   "groups": [
     {
-      "type": "gate",
-      "place": "MASTERY RANK, SYNDICATES",
-      "sub": null,
-      "activity": null,
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Mastery Rank 13",
-          "note": "to equip it",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Entrati Associate",
-          "note": "Father sells the blueprints from here",
-          "alt": null,
-          "done": false,
-          "rank": {
-            "syndicate": "Entrati",
-            "level": 3
-          }
-        },
-        {
-          "qty": null,
-          "label": "Ostron Trusted",
-          "note": "Marquise Veridos and Auroxium Alloy need it",
-          "alt": null,
-          "done": false,
-          "rank": {
-            "syndicate": "Ostron",
-            "level": 3
-          }
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
       "type": "currency",
       "place": "NECRALISK, DEIMOS",
       "sub": null,
       "activity": "rank up with the Entrati to Associate, then buy the blueprints",
-      "meta": "83,500 standing: 71,000 for the rank-ups, 12,500 for the blueprints",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -178,7 +114,7 @@
         {
           "qty": "6",
           "label": "Benign Infested Tumor",
-          "note": "Rank 1 Stranger sacrifice",
+          "note": "sacrifice",
           "alt": null,
           "done": false,
           "rank": {
@@ -189,7 +125,7 @@
         {
           "qty": "6",
           "label": "Ferment Bladder",
-          "note": "Rank 1 Stranger sacrifice",
+          "note": "sacrifice",
           "alt": null,
           "done": false,
           "rank": {
@@ -200,7 +136,7 @@
         {
           "qty": "1",
           "label": "Keratinos Blade Blueprint",
-          "note": "Rank 2 Acquaintance sacrifice",
+          "note": "sacrifice",
           "alt": null,
           "done": false,
           "rank": {
@@ -211,7 +147,7 @@
         {
           "qty": "1",
           "label": "Father Token",
-          "note": "Rank 2 Acquaintance sacrifice",
+          "note": "sacrifice",
           "alt": null,
           "done": false,
           "rank": {
@@ -222,7 +158,7 @@
         {
           "qty": "1",
           "label": "Daughter Token",
-          "note": "Rank 2 Acquaintance sacrifice",
+          "note": "sacrifice",
           "alt": null,
           "done": false,
           "rank": {
@@ -233,7 +169,7 @@
         {
           "qty": "3",
           "label": "Sly Vulpaphyla Tag",
-          "note": "Rank 3 Associate sacrifice",
+          "note": "sacrifice",
           "alt": null,
           "done": false,
           "rank": {
@@ -244,7 +180,7 @@
         {
           "qty": "3",
           "label": "Vizier Predasite Tag",
-          "note": "Rank 3 Associate sacrifice",
+          "note": "sacrifice",
           "alt": null,
           "done": false,
           "rank": {
@@ -255,7 +191,7 @@
         {
           "qty": "1",
           "label": "Mother Token",
-          "note": "Rank 3 Associate sacrifice",
+          "note": "sacrifice",
           "alt": null,
           "done": false,
           "rank": {
@@ -266,7 +202,7 @@
         {
           "qty": "1",
           "label": "Son Token",
-          "note": "Rank 3 Associate sacrifice",
+          "note": "sacrifice",
           "alt": null,
           "done": false,
           "rank": {
@@ -306,34 +242,58 @@
         {
           "qty": null,
           "label": "Entrati Rank 1, Stranger",
-          "note": "5,000 standing",
+          "note": null,
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "Entrati",
             "level": 1
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Entrati Standing",
+                "amount": "5,000"
+              }
+            ]
           }
         },
         {
           "qty": null,
           "label": "Entrati Rank 2, Acquaintance",
-          "note": "22,000 standing",
+          "note": null,
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "Entrati",
             "level": 2
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Entrati Standing",
+                "amount": "22,000"
+              }
+            ]
           }
         },
         {
           "qty": null,
           "label": "Entrati Rank 3, Associate",
-          "note": "44,000 standing",
+          "note": null,
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "Entrati",
             "level": 3
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Entrati Standing",
+                "amount": "44,000"
+              }
+            ]
           }
         }
       ],
@@ -346,7 +306,7 @@
       "place": "FATHER, NECRALISK",
       "sub": null,
       "activity": "buy the blueprints",
-      "meta": "12,500 standing",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -362,45 +322,77 @@
         {
           "qty": null,
           "label": "Trumna Blueprint",
-          "note": "5,000 standing",
+          "note": null,
           "alt": "or take it as a rank-up reward",
           "done": false,
-          "rank": {
-            "syndicate": "Entrati",
-            "level": 3
+          "buy": {
+            "price": [
+              {
+                "currency": "Entrati Standing",
+                "amount": "5,000"
+              }
+            ],
+            "rank": {
+              "syndicate": "Entrati",
+              "level": 3
+            }
           }
         },
         {
           "qty": null,
           "label": "Trumna Barrel Blueprint",
-          "note": "2,500 standing",
+          "note": null,
           "alt": null,
           "done": false,
-          "rank": {
-            "syndicate": "Entrati",
-            "level": 3
+          "buy": {
+            "price": [
+              {
+                "currency": "Entrati Standing",
+                "amount": "2,500"
+              }
+            ],
+            "rank": {
+              "syndicate": "Entrati",
+              "level": 3
+            }
           }
         },
         {
           "qty": null,
           "label": "Trumna Receiver Blueprint",
-          "note": "2,500 standing",
+          "note": null,
           "alt": null,
           "done": false,
-          "rank": {
-            "syndicate": "Entrati",
-            "level": 3
+          "buy": {
+            "price": [
+              {
+                "currency": "Entrati Standing",
+                "amount": "2,500"
+              }
+            ],
+            "rank": {
+              "syndicate": "Entrati",
+              "level": 3
+            }
           }
         },
         {
           "qty": null,
           "label": "Trumna Stock Blueprint",
-          "note": "2,500 standing",
+          "note": null,
           "alt": null,
           "done": false,
-          "rank": {
-            "syndicate": "Entrati",
-            "level": 3
+          "buy": {
+            "price": [
+              {
+                "currency": "Entrati Standing",
+                "amount": "2,500"
+              }
+            ],
+            "rank": {
+              "syndicate": "Entrati",
+              "level": 3
+            }
           }
         }
       ],

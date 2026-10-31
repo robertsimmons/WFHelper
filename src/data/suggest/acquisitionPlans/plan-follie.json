@@ -4,14 +4,28 @@
   "effort": 5,
   "source": "repeat",
   "tradeable": false,
-  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "progress": {
+    "have": 0,
+    "need": 4,
+    "unit": "parts"
+  },
   "badges": [
-    { "text": "forced Operator", "tone": "warn" },
-    { "text": "Chains of Harrow", "tone": "info" }
+    {
+      "text": "forced Operator",
+      "tone": "warn"
+    }
   ],
   "prices": [
-    { "label": "build", "amount": "75,000 cr", "money": false },
-    { "label": "buy all blueprints", "amount": "2,400 Atramentum", "money": false }
+    {
+      "label": "build",
+      "amount": "75,000 cr",
+      "money": false
+    },
+    {
+      "label": "buy all blueprints",
+      "amount": "2,400 Atramentum",
+      "money": false
+    }
   ],
   "routes": [
     {
@@ -22,47 +36,78 @@
     }
   ],
   "materials": [
-    { "qty": "2", "label": "Neurodes", "note": "Neuroptics" },
-    { "qty": "3", "label": "Gallium", "note": "Neuroptics" },
-    { "qty": "150", "label": "Cryotic", "note": "Neuroptics" },
-    { "qty": "2", "label": "Neural Sensors", "note": "Neuroptics" },
-    { "qty": "800", "label": "Alloy Plate", "note": "Chassis" },
-    { "qty": "2", "label": "Argon Crystal", "note": "Chassis" },
-    { "qty": "800", "label": "Ferrite", "note": "Chassis" },
-    { "qty": "600", "label": "Salvage", "note": "Chassis" },
-    { "qty": "250", "label": "Circuits", "note": "Systems" },
-    { "qty": "500", "label": "Polymer Bundle", "note": "Systems" },
-    { "qty": "4", "label": "Morphics", "note": "Systems" },
-    { "qty": "50", "label": "Oxium", "note": "Systems" },
-    { "qty": "3", "label": "Orokin Cell", "note": "final build" },
-    { "qty": "75,000", "label": "Credits", "note": null }
+    {
+      "qty": "2",
+      "label": "Neurodes",
+      "note": "Neuroptics"
+    },
+    {
+      "qty": "3",
+      "label": "Gallium",
+      "note": "Neuroptics"
+    },
+    {
+      "qty": "150",
+      "label": "Cryotic",
+      "note": "Neuroptics"
+    },
+    {
+      "qty": "2",
+      "label": "Neural Sensors",
+      "note": "Neuroptics"
+    },
+    {
+      "qty": "800",
+      "label": "Alloy Plate",
+      "note": "Chassis"
+    },
+    {
+      "qty": "2",
+      "label": "Argon Crystal",
+      "note": "Chassis"
+    },
+    {
+      "qty": "800",
+      "label": "Ferrite",
+      "note": "Chassis"
+    },
+    {
+      "qty": "600",
+      "label": "Salvage",
+      "note": "Chassis"
+    },
+    {
+      "qty": "250",
+      "label": "Circuits",
+      "note": "Systems"
+    },
+    {
+      "qty": "500",
+      "label": "Polymer Bundle",
+      "note": "Systems"
+    },
+    {
+      "qty": "4",
+      "label": "Morphics",
+      "note": "Systems"
+    },
+    {
+      "qty": "50",
+      "label": "Oxium",
+      "note": "Systems"
+    },
+    {
+      "qty": "3",
+      "label": "Orokin Cell",
+      "note": "final build"
+    },
+    {
+      "qty": "75,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
-    {
-      "type": "gate",
-      "place": "QUESTS",
-      "sub": null,
-      "activity": "Chains of Harrow",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Chains of Harrow",
-          "note": "unlocks Follie's Hunt",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": ["Aspirant Zorba stands in any relay, outside the Arbiters of Hexis room."],
-      "bonuses": [],
-      "disclosures": []
-    },
     {
       "type": "currency",
       "place": "FOLLIE'S HUNT, VESPER RELAY, VENUS",
@@ -72,7 +117,10 @@
       "mode": null,
       "live": null,
       "skip": null,
-      "earns": { "currency": "Atramentum", "amount": "2,400" },
+      "earns": {
+        "currency": "Atramentum",
+        "amount": "2,400"
+      },
       "spends": [],
       "map": null,
       "rows": [
@@ -112,7 +160,12 @@
           "note": "5% (6% SP), Rotation A",
           "alt": {
             "text": "or 1,200 Atramentum at Aspirant Zorba, any relay",
-            "spends": [{ "currency": "Atramentum", "amount": "1,200" }]
+            "spends": [
+              {
+                "currency": "Atramentum",
+                "amount": "1,200"
+              }
+            ]
           },
           "done": false
         },
@@ -122,7 +175,12 @@
           "note": "5% (6% SP), Rotation A",
           "alt": {
             "text": "or 400 Atramentum at Aspirant Zorba",
-            "spends": [{ "currency": "Atramentum", "amount": "400" }]
+            "spends": [
+              {
+                "currency": "Atramentum",
+                "amount": "400"
+              }
+            ]
           },
           "done": false
         },
@@ -132,7 +190,12 @@
           "note": "5% (6% SP), Rotation A",
           "alt": {
             "text": "or 400 Atramentum at Aspirant Zorba",
-            "spends": [{ "currency": "Atramentum", "amount": "400" }]
+            "spends": [
+              {
+                "currency": "Atramentum",
+                "amount": "400"
+              }
+            ]
           },
           "done": false
         },
@@ -142,7 +205,12 @@
           "note": "5% (6% SP), Rotation A",
           "alt": {
             "text": "or 400 Atramentum at Aspirant Zorba",
-            "spends": [{ "currency": "Atramentum", "amount": "400" }]
+            "spends": [
+              {
+                "currency": "Atramentum",
+                "amount": "400"
+              }
+            ]
           },
           "done": false
         }

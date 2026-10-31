@@ -4,19 +4,55 @@
   "effort": 2,
   "source": "shop",
   "tradeable": false,
-  "progress": { "have": 0, "need": 2, "unit": "Broncos" },
+  "progress": {
+    "have": 0,
+    "need": 2,
+    "unit": "Broncos"
+  },
   "badges": [
-    { "text": "Market only", "tone": "info" },
-    { "text": "MR 2", "tone": "info" }
+    {
+      "text": "Market only",
+      "tone": "info"
+    }
   ],
-  "prices": [{ "label": "total", "amount": "110,000 cr", "money": false }],
+  "prices": [
+    {
+      "label": "total",
+      "amount": "110,000 cr",
+      "money": false
+    }
+  ],
   "materials": [
-    { "qty": "4", "label": "Neurodes", "note": "two Broncos" },
-    { "qty": "2,400", "label": "Alloy Plate", "note": "two Broncos" },
-    { "qty": "1,400", "label": "Ferrite", "note": "two Broncos" },
-    { "qty": "1,600", "label": "Polymer Bundle", "note": "two Broncos" },
-    { "qty": "1", "label": "Orokin Cell", "note": "Akbronco" },
-    { "qty": "110,000", "label": "Credits", "note": null }
+    {
+      "qty": "4",
+      "label": "Neurodes",
+      "note": "two Broncos"
+    },
+    {
+      "qty": "2,400",
+      "label": "Alloy Plate",
+      "note": "two Broncos"
+    },
+    {
+      "qty": "1,400",
+      "label": "Ferrite",
+      "note": "two Broncos"
+    },
+    {
+      "qty": "1,600",
+      "label": "Polymer Bundle",
+      "note": "two Broncos"
+    },
+    {
+      "qty": "1",
+      "label": "Orokin Cell",
+      "note": "Akbronco"
+    },
+    {
+      "qty": "110,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
     {
@@ -35,16 +71,33 @@
         {
           "qty": "2",
           "label": "Bronco Blueprint",
-          "note": "15,000 cr each",
+          "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Credits",
+                "amount": "15,000"
+              }
+            ],
+            "each": true
+          }
         },
         {
           "qty": null,
           "label": "Akbronco Blueprint",
-          "note": "20,000 cr",
+          "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Credits",
+                "amount": "20,000"
+              }
+            ]
+          }
         }
       ],
       "conditions": [],

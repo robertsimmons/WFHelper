@@ -41,10 +41,10 @@
   ],
   "groups": [
     {
-      "type": "gate",
-      "place": "MASTERY RANK",
+      "type": "vendor",
+      "place": "MARKET",
       "sub": null,
-      "activity": "reach MR 3",
+      "activity": "buy blueprint and two built Lex",
       "meta": null,
       "mode": null,
       "live": null,
@@ -55,42 +55,34 @@
       "rows": [
         {
           "qty": null,
-          "label": "Mastery Rank 3",
-          "note": "needed to equip it",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "vendor",
-      "place": "MARKET",
-      "sub": null,
-      "activity": "buy blueprint and two built Lex",
-      "meta": "120,000 cr",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
           "label": "Aklex Blueprint",
-          "note": "20,000 cr",
+          "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Credits",
+                "amount": "20,000"
+              }
+            ]
+          }
         },
         {
           "qty": "2",
           "label": "Lex",
-          "note": "50,000 cr each, built",
+          "note": "built",
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Credits",
+                "amount": "50,000"
+              }
+            ],
+            "each": true
+          }
         }
       ],
       "conditions": ["The recipe consumes two Lex, not one."],

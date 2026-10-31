@@ -69,10 +69,7 @@ describe("resolving a plan with tips", () => {
     const resolved = resolvePlan(gauss, { itemDb: {}, inventory: null });
     const kappa = resolved.groups.find((group) => group.place === "KAPPA, SEDNA");
     expect(kappa?.tips.map((entry) => entry.id)).toContain("keep-conduits");
-    expect(resolved.groups.find((group) => group.type === "gate")?.tips[0]?.id).toBe(
-      "gems-from-clanmates",
-    );
-    expect(resolved.tips).toEqual([]);
+    expect(resolved.tips.map((entry) => entry.id)).toEqual(["gems-from-clanmates"]);
     expect(resolved.sentiment.map((entry) => entry.kind)).toEqual(["sentiment", "sentiment"]);
   });
 

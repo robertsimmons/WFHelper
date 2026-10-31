@@ -60,10 +60,10 @@
   ],
   "groups": [
     {
-      "type": "gate",
-      "place": "MASTERY RANK",
+      "type": "vendor",
+      "place": "MARKET",
       "sub": null,
-      "activity": "reach MR 7",
+      "activity": "buy blueprint",
       "meta": null,
       "mode": null,
       "live": null,
@@ -74,35 +74,18 @@
       "rows": [
         {
           "qty": null,
-          "label": "Mastery Rank 7",
-          "note": "needed to equip it",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "vendor",
-      "place": "MARKET",
-      "sub": null,
-      "activity": "buy blueprint",
-      "meta": "25,000 cr",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
           "label": "Dual Keres Blueprint",
-          "note": "25,000 credits",
+          "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Credits",
+                "amount": "25,000"
+              }
+            ]
+          }
         }
       ],
       "conditions": [],

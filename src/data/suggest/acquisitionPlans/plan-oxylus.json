@@ -11,14 +11,6 @@
   },
   "badges": [
     {
-      "text": "Old Mate required",
-      "tone": "warn",
-      "rank": {
-        "syndicate": "Solaris United",
-        "level": 5
-      }
-    },
-    {
       "text": "Longwinders need warm weather",
       "tone": "warn"
     }
@@ -64,54 +56,11 @@
   ],
   "groups": [
     {
-      "type": "gate",
-      "place": "FORTUNA, VENUS",
-      "sub": null,
-      "activity": "finish Vox Solaris, then rank Solaris United to Old Mate",
-      "meta": "Rank 5",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Vox Solaris",
-          "note": "unlocks Fortuna",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Solaris United Rank 5, Old Mate",
-          "note": "sacrifices 6 Training, 9 Shelter, 11 Medical, 10 Advances and 5 Familial Debt-Bonds plus 385,000 cr across the five rank-ups",
-          "alt": null,
-          "done": false,
-          "rank": {
-            "syndicate": "Solaris United",
-            "level": 5
-          }
-        },
-        {
-          "qty": "2",
-          "label": "2 free Companion slots",
-          "note": "one for Oxylus, one for its Multron",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": ["Free both slots before claiming it from the Foundry."],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
       "type": "currency",
       "place": "ORB VALLIS, VENUS",
       "sub": null,
       "activity": "Solaris United standing for the rank-ups, tools and blueprints",
-      "meta": "263,500 standing",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -136,9 +85,16 @@
         {
           "qty": "20,000",
           "label": "Oxylus blueprint",
-          "note": "Legs sells it at Old Mate",
+          "note": "Legs sells it",
           "alt": "or claim it as the free Rank 5 vendor item",
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [],
+            "rank": {
+              "syndicate": "Solaris United",
+              "level": 5
+            }
+          }
         },
         {
           "qty": "3,500",
@@ -174,12 +130,20 @@
         {
           "qty": null,
           "label": "rank-ups to Old Mate",
-          "note": "240,000 standing, 5,000 / 22,000 / 44,000 / 70,000 / 99,000 per rank",
+          "note": "5,000 / 22,000 / 44,000 / 70,000 / 99,000 per rank",
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "Solaris United",
             "level": 5
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Solaris United Standing",
+                "amount": "240,000"
+              }
+            ]
           }
         }
       ],
@@ -208,40 +172,88 @@
         {
           "qty": null,
           "label": "Shockprod Fishing Spear",
-          "note": "500 standing, Neutral, The Business",
+          "note": "The Business",
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Solaris United Standing",
+                "amount": "500"
+              }
+            ]
+          }
         },
         {
           "qty": null,
           "label": "Axidrol Alloy Blueprint",
-          "note": "1,000 standing, Neutral, Smokefinger",
+          "note": "Smokefinger",
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Solaris United Standing",
+                "amount": "1,000"
+              }
+            ]
+          }
         },
         {
           "qty": null,
           "label": "Goblite Tears Blueprint",
-          "note": "2,000 standing, Outworlder, Smokefinger",
+          "note": "Smokefinger",
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Solaris United Standing",
+                "amount": "2,000"
+              }
+            ],
+            "rank": {
+              "syndicate": "Solaris United",
+              "level": 1
+            }
+          }
         },
         {
           "qty": null,
           "label": "Longwinder Bait",
-          "note": "200 standing each, Rapscallion, The Business",
+          "note": "The Business",
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Solaris United Standing",
+                "amount": "200"
+              }
+            ],
+            "rank": {
+              "syndicate": "Solaris United",
+              "level": 2
+            }
+          }
         },
         {
           "qty": null,
           "label": "Oxylus Blueprint",
-          "note": "20,000 standing, Old Mate, The Business",
+          "note": "The Business",
           "alt": "claim it as the free Rank 5 vendor item",
           "done": false,
-          "rank": {
-            "syndicate": "Solaris United",
-            "level": 5
+          "buy": {
+            "price": [
+              {
+                "currency": "Solaris United Standing",
+                "amount": "20,000"
+              }
+            ],
+            "rank": {
+              "syndicate": "Solaris United",
+              "level": 5
+            }
           }
         }
       ],

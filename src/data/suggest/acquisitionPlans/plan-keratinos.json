@@ -4,69 +4,90 @@
   "effort": 2,
   "source": "standing",
   "tradeable": false,
-  "progress": { "have": 0, "need": 5, "unit": "parts" },
+  "progress": {
+    "have": 0,
+    "need": 5,
+    "unit": "parts"
+  },
   "badges": [
-    { "text": "no RNG", "tone": "info" },
-    { "text": "MR 9", "tone": "warn" }
+    {
+      "text": "no RNG",
+      "tone": "info"
+    }
   ],
   "prices": [
-    { "label": "build", "amount": "100,000 cr", "money": false },
-    { "label": "standing", "amount": "3,000", "money": false }
+    {
+      "label": "build",
+      "amount": "100,000 cr",
+      "money": false
+    },
+    {
+      "label": "standing",
+      "amount": "3,000",
+      "money": false
+    }
   ],
   "materials": [
-    { "qty": "8", "label": "Gallium", "note": "Blade" },
-    { "qty": "8", "label": "Neurodes", "note": "Gauntlet" },
-    { "qty": "80", "label": "Adramal Alloy", "note": "Blade" },
-    { "qty": "12", "label": "Purged Dagonic", "note": "Blade" },
-    { "qty": "48", "label": "Pustulite", "note": "Blade" },
-    { "qty": "40", "label": "Ferment Bladder", "note": "Gauntlet" },
-    { "qty": "12", "label": "Waxen Sebum Deposit", "note": "Gauntlet" },
-    { "qty": "32", "label": "Ganglion", "note": "Gauntlet" },
-    { "qty": "100,000", "label": "Credits", "note": null }
+    {
+      "qty": "8",
+      "label": "Gallium",
+      "note": "Blade"
+    },
+    {
+      "qty": "8",
+      "label": "Neurodes",
+      "note": "Gauntlet"
+    },
+    {
+      "qty": "80",
+      "label": "Adramal Alloy",
+      "note": "Blade"
+    },
+    {
+      "qty": "12",
+      "label": "Purged Dagonic",
+      "note": "Blade"
+    },
+    {
+      "qty": "48",
+      "label": "Pustulite",
+      "note": "Blade"
+    },
+    {
+      "qty": "40",
+      "label": "Ferment Bladder",
+      "note": "Gauntlet"
+    },
+    {
+      "qty": "12",
+      "label": "Waxen Sebum Deposit",
+      "note": "Gauntlet"
+    },
+    {
+      "qty": "32",
+      "label": "Ganglion",
+      "note": "Gauntlet"
+    },
+    {
+      "qty": "100,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
-    {
-      "type": "gate",
-      "place": "NECRALISK, DEIMOS",
-      "sub": null,
-      "activity": "Heart of Deimos, then MR 9",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Heart of Deimos",
-          "note": "opens Father and Entrati standing",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Mastery Rank 9",
-          "note": "to equip",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
     {
       "type": "currency",
       "place": "CAMBION DRIFT, DEIMOS",
       "sub": null,
       "activity": "turn Entrati Family Tokens in to Grandmother",
-      "meta": "Rank 0 - Neutral, no rank-up needed",
+      "meta": "no rank-up needed",
       "mode": null,
       "live": null,
       "skip": null,
-      "earns": { "currency": "Entrati Standing", "amount": "3,000" },
+      "earns": {
+        "currency": "Entrati Standing",
+        "amount": "3,000"
+      },
       "spends": [],
       "map": "cambion-drift",
       "rows": [
@@ -88,34 +109,65 @@
       "place": "FATHER, NECRALISK",
       "sub": null,
       "activity": "buy the blueprints",
-      "meta": "Rank 0 - Neutral",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Entrati Standing", "amount": "3,000" }],
+      "spends": [
+        {
+          "currency": "Entrati Standing",
+          "amount": "3,000"
+        }
+      ],
       "map": null,
       "rows": [
         {
           "qty": null,
           "label": "Keratinos Blueprint",
-          "note": "1,000 standing",
+          "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Entrati Standing",
+                "amount": "1,000"
+              }
+            ]
+          }
         },
         {
           "qty": "2",
           "label": "Keratinos Blade Blueprint",
-          "note": "500 standing each",
+          "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Entrati Standing",
+                "amount": "500"
+              }
+            ],
+            "each": true
+          }
         },
         {
           "qty": "2",
           "label": "Keratinos Gauntlet Blueprint",
-          "note": "500 standing each",
+          "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Entrati Standing",
+                "amount": "500"
+              }
+            ],
+            "each": true
+          }
         }
       ],
       "conditions": [

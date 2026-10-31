@@ -4,11 +4,23 @@ import {
   acquisitionKey,
   nextStep,
   pinnedAcquisitions,
-  stepCount,
   withoutPinned,
-  type PlanSteps,
 } from "../../../src/components/nextup/pinnedAcquisitions.js";
+import {
+  planSteps,
+  stepProgress,
+  type PlanStep,
+} from "../../../src/components/nextup/plan/planSteps.js";
+import {
+  resolvePlanFor,
+  type ResolvedPlan,
+} from "../../../src/lib/suggest/acquisition/plan/index.js";
+import type { Translator } from "../../../src/lib/i18n.js";
 import type { Suggestion } from "../../../src/types/suggest.js";
+
+const t: Translator = (key) => key;
+const NOW = Date.parse("2026-10-10T00:00:00Z");
+const VOX_SOLARIS = "/Lotus/Types/Keys/SolarisQuest/SolarisQuestKeyChain";
 
 function suggestion(uniqueName: string | null, name = "Rhino"): Suggestion {
   return {
@@ -23,28 +35,43 @@ function suggestion(uniqueName: string | null, name = "Rhino"): Suggestion {
   };
 }
 
-const PLAN: PlanSteps = {
-  groups: [
-    { rows: [{ done: true }, { done: false }] },
-    { rows: [{ done: true }, {}, { done: false }] },
-  ],
-};
+/** Bad Baby with Vox Solaris done, so the first step is behind the player. */
+function badBaby(): ResolvedPlan {
+  const plan = resolvePlanFor(
+    { name: "Bad Baby", tier: null },
+    {
+      itemDb: { [VOX_SOLARIS]: { name: "Vox Solaris", category: "Key" } },
+      inventory: { QuestKeys: [{ ItemType: VOX_SOLARIS, Completed: true }] },
+      now: NOW,
+    },
+  );
+  if (!plan) throw new Error("no Bad Baby plan");
+  return plan;
+}
+
+function steps(done: boolean[]): PlanStep[] {
+  return done.map((entry, index) => ({ id: String(index), done: entry }) as PlanStep);
+}
 
 describe("step counter", () => {
-  it("counts every row of every group", () => {
-    expect(stepCount(PLAN)).toEqual({ done: 2, total: 5 });
+  it("points at the first step still open, wherever it sits", () => {
+    expect(stepProgress(steps([true, false, true, false]))).toEqual({ step: 2, total: 4 });
+  });
+
+  it("stops at the last step once every step is done", () => {
+    expect(stepProgress(steps([true, true]))).toEqual({ step: 2, total: 2 });
   });
 
   it("reads an empty plan as nothing to do", () => {
-    expect(stepCount({ groups: [] })).toEqual({ done: 0, total: 0 });
+    expect(stepProgress([])).toEqual({ step: 0, total: 0 });
   });
 
-  it("points at the first row still open", () => {
-    expect(nextStep({ done: 2, total: 5 })).toBe(3);
-  });
-
-  it("stops at the last step once every row is ticked", () => {
-    expect(nextStep({ done: 5, total: 5 })).toBe(5);
+  it("names the same step the plan's numbered steps open on", () => {
+    const plan = badBaby();
+    const drawn = planSteps(plan, { t });
+    const first = drawn.findIndex((step) => !step.done);
+    expect(first).toBeGreaterThan(0);
+    expect(nextStep(plan, false, t)).toEqual({ step: first + 1, total: drawn.length });
   });
 });
 
@@ -66,9 +93,10 @@ describe("pinned acquisitions", () => {
     expect(entry?.steps).toBeNull();
   });
 
-  it("counts the steps of the plan for that item", () => {
-    const [entry] = pinnedAcquisitions(["/a"], [suggestion("/a")], { "/a": PLAN });
-    expect(entry?.steps).toEqual({ done: 2, total: 5 });
+  it("counts the steps the plan page draws for that item", () => {
+    const plan = badBaby();
+    const [entry] = pinnedAcquisitions(["/a"], [suggestion("/a")], { "/a": plan }, t);
+    expect(entry?.steps).toEqual(stepProgress(planSteps(plan, { t })));
   });
 
   it("names a pin by the uniqueName the resolver used", () => {

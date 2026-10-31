@@ -17,14 +17,6 @@
     {
       "text": "must be Weakened",
       "tone": "warn"
-    },
-    {
-      "text": "Rank 1 Entrati",
-      "tone": "info",
-      "rank": {
-        "syndicate": "Entrati",
-        "level": 1
-      }
     }
   ],
   "prices": [
@@ -73,45 +65,6 @@
   ],
   "groups": [
     {
-      "type": "gate",
-      "place": "NECRALISK, DEIMOS",
-      "sub": null,
-      "activity": "unlock Son's revivification menu",
-      "meta": "Heart of Deimos",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Heart of Deimos",
-          "note": "opens the Necralisk and Son",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Entrati: Stranger",
-          "note": "Rank 1, for the Mutagen and Antigen",
-          "alt": null,
-          "done": false,
-          "rank": {
-            "syndicate": "Entrati",
-            "level": 1
-          }
-        }
-      ],
-      "conditions": [
-        "Claiming the revivified Crescent needs a free Companion slot.",
-        "A Crescent is only made by Son revivifying a captured Weakened one."
-      ],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
       "type": "bounty",
       "place": "CAMBION DRIFT, DEIMOS",
       "sub": "Vome cycle",
@@ -144,7 +97,7 @@
       "place": "SON, NECRALISK",
       "sub": null,
       "activity": "revivify, then gild",
-      "meta": "5,000 cr now; 10 Son Tokens + 5,000 standing later",
+      "meta": "10 Son Tokens to gild",
       "mode": null,
       "live": null,
       "skip": null,
@@ -160,9 +113,17 @@
         {
           "qty": null,
           "label": "Crescent Vulpaphyla, revivified",
-          "note": "Weakened Crescent + one Mutagen + one Antigen + 5,000 credits",
+          "note": "Weakened Crescent, one Mutagen, one Antigen",
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Credits",
+                "amount": "5,000"
+              }
+            ]
+          }
         }
       ],
       "conditions": [

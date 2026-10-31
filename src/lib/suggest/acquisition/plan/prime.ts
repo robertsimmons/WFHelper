@@ -79,8 +79,6 @@ const RARITIES = ["Common", "Uncommon", "Rare"];
 const ERAS = ["Lith", "Meso", "Neo", "Axi", "Requiem", "Vanguard"];
 const VAULTED_EFFORT = 8;
 const OPEN_EFFORT = 5;
-/** AUTHORING's rule: a lower Mastery Rank is no gate worth a step. */
-const MR_GATE_ABOVE = 2;
 
 /** "Mag Prime Neuroptics Blueprint" and "Mag Prime Neuroptics" are one drop. */
 function partKey(value: string): string {
@@ -294,8 +292,6 @@ function carries(relic: string, parts: readonly FarmPart[], itemName: string): s
 }
 
 const PLACES = {
-  mastery: "MASTERY RANK",
-  quests: "QUESTS",
   caches: "RAILJACK DERELICT CACHES",
   varzia: "MAROO'S BAZAAR, MARS",
   baro: "BARO KI'TEER",
@@ -316,8 +312,6 @@ export function generatedSteps(
   lookup: ResourceLookup = resourceEntry,
 ): { type: PlanGroup["type"]; place: string }[] {
   return [
-    { type: "gate", place: PLACES.mastery },
-    { type: "gate", place: PLACES.quests },
     { type: "farm", place: PLACES.caches },
     { type: "currency", place: ayaPlace(lookup) },
     { type: "vendor", place: PLACES.varzia },
@@ -325,20 +319,6 @@ export function generatedSteps(
     { type: "fissure", place: PLACES.fissure },
     { type: "foundry", place: PLACES.foundry },
   ];
-}
-
-function gateGroup(masteryReq: number, override: PrimeOverride | null): PlanGroup | null {
-  const gates = override?.gates ?? [];
-  const rows: PlanRow[] = gates.map((gate) => ({
-    ...row(gate.label, gate.note),
-    ...(gate.rank ? { rank: gate.rank } : {}),
-  }));
-  const gated = masteryReq > MR_GATE_ABOVE;
-  if (gated) rows.push(row(`Mastery Rank ${masteryReq}`, "the Foundry won't craft it below this"));
-  if (rows.length === 0) return null;
-  return gates.length === 0
-    ? planGroup("gate", PLACES.mastery, rows, { activity: `reach MR ${masteryReq} to build it` })
-    : planGroup("gate", PLACES.quests, rows);
 }
 
 function dropsIn(
@@ -550,7 +530,6 @@ function buildNote(build: Build, itemName: string, lookup: ResourceLookup): stri
 function foundryGroup(
   itemName: string,
   builds: readonly Build[],
-  masteryReq: number,
   lookup: ResourceLookup,
 ): PlanGroup {
   const main = builds.find((build) => build.main);
@@ -568,7 +547,6 @@ function foundryGroup(
       : times.length === 1
         ? `${hours(times[0])}${each}, then `
         : `${times.map(hours).join(" / ")}, then `;
-  const mr = masteryReq > 0 && masteryReq <= MR_GATE_ABOVE ? `MR ${masteryReq}` : null;
   return planGroup(
     "foundry",
     PLACES.foundry,
@@ -581,7 +559,7 @@ function foundryGroup(
     ),
     {
       activity: before.length > 0 ? `build components, then ${itemName}` : `build ${itemName}`,
-      meta: [`${lead}${hours(main.seconds)}`, mr].filter(Boolean).join(", "),
+      meta: `${lead}${hours(main.seconds)}`,
     },
   );
 }
@@ -629,11 +607,7 @@ function farmFromCard(target: PrimeTarget): Walk["farm"] {
   }));
 }
 
-function badgesFor(
-  parts: readonly FarmPart[],
-  masteryReq: number,
-  override: PrimeOverride | null,
-): PlanBadge[] {
+function badgesFor(parts: readonly FarmPart[], override: PrimeOverride | null): PlanBadge[] {
   const badges: PlanBadge[] = [];
   if (parts.some((part) => part.state === "unknown")) {
     badges.push({ text: "vault status unknown", tone: "info" });
@@ -642,7 +616,7 @@ function badgesFor(
     badges.push({ text: "vaulted", tone: "warn" });
   else if (parts.some((part) => part.state === "caches")) {
     badges.push({ text: "relics from Railjack caches", tone: "warn" });
-  } else if (masteryReq > MR_GATE_ABOVE) badges.push({ text: `MR ${masteryReq}`, tone: "info" });
+  }
   const seen = new Set(badges.map((badge) => badge.text));
   for (const badge of override?.badges ?? []) {
     if (!seen.has(badge.text)) badges.push(badge);
@@ -683,17 +657,15 @@ export function generatePrimePlan(target: PrimeTarget, live: PrimeLive): Authore
   });
   if (parts.length === 0 || parts.every((part) => part.drops.length === 0)) return null;
 
-  const masteryReq = live.itemDb[target.uniqueName]?.masteryReq ?? 0;
   const vault = vaultGroups(parts, target.name, live, db, now);
   const [varzia, ...rest] = vault.groups;
   const groups = [
-    gateGroup(masteryReq, override),
     cacheGroup(parts, target.name),
     vault.varziaRows > 0 ? ayaGroup(lookup, vault.varziaRows, vault.aya) : null,
     varzia ?? null,
     ...rest,
     fissureGroup(target.name, parts),
-    foundryGroup(target.name, walk.builds, masteryReq, lookup),
+    foundryGroup(target.name, walk.builds, lookup),
   ].filter((group): group is PlanGroup => group !== null);
 
   const vaulted = parts.some((part) => part.state === "vaulted");
@@ -706,7 +678,7 @@ export function generatePrimePlan(target: PrimeTarget, live: PrimeLive): Authore
     effort,
     tradeable: tradeableOf(parts, live.itemDb),
     progress: { have: 0, need: Math.max(need, 1), unit: "parts" },
-    badges: badgesFor(parts, masteryReq, override),
+    badges: badgesFor(parts, override),
     prices: [],
     routes: [
       {

@@ -9,20 +9,7 @@
     "need": 4,
     "unit": "parts"
   },
-  "badges": [
-    {
-      "text": "Necraloid Rank 2 to buy",
-      "tone": "warn",
-      "rank": {
-        "syndicate": "Necraloid",
-        "level": 2
-      }
-    },
-    {
-      "text": "MR 11",
-      "tone": "info"
-    }
-  ],
+  "badges": [],
   "prices": [
     {
       "label": "Loid set",
@@ -54,50 +41,11 @@
   ],
   "groups": [
     {
-      "type": "gate",
-      "place": "QUESTS",
-      "sub": null,
-      "activity": "clear the Deimos story gates",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Heart of Deimos",
-          "note": "unlocks the Necralisk, Entrati and Isolation Vaults",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "The War Within",
-          "note": "unlocks Loid's Necraloid backroom",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Mastery Rank 11",
-          "note": "to equip the Arum Spinosa",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
       "type": "vendor",
       "place": "FATHER AND OTAK, NECRALISK",
       "sub": null,
       "activity": "rank Entrati to 3 and buy the blueprints it gates",
-      "meta": "Entrati Rank 3, Associate",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -113,37 +61,87 @@
         {
           "qty": null,
           "label": "Zymos Barrel Blueprint",
-          "note": "Father, 1,000 standing, Entrati Rank 1; sacrificed for Necraloid Rank 1",
+          "note": "Father; Necraloid sacrifice",
           "alt": null,
-          "done": false
+          "done": false,
+          "rank": {
+            "syndicate": "Necraloid",
+            "level": 1
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Entrati Standing",
+                "amount": "1,000"
+              }
+            ],
+            "rank": {
+              "syndicate": "Entrati",
+              "level": 1
+            }
+          }
         },
         {
           "qty": null,
           "label": "Sepulcrum Barrel Blueprint",
-          "note": "Father, 2,000 standing, Entrati Rank 2; sacrificed for Necraloid Rank 2",
+          "note": "Father; Necraloid sacrifice",
           "alt": null,
-          "done": false
+          "done": false,
+          "rank": {
+            "syndicate": "Necraloid",
+            "level": 2
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Entrati Standing",
+                "amount": "2,000"
+              }
+            ],
+            "rank": {
+              "syndicate": "Entrati",
+              "level": 2
+            }
+          }
         },
         {
           "qty": null,
           "label": "Trapezium Xenorhast Blueprint",
-          "note": "Otak, 8,000 standing, Entrati Rank 3; reusable, 3 gems per build",
+          "note": "Otak; 3 gems per build",
           "alt": null,
           "done": false,
-          "rank": {
-            "syndicate": "Entrati",
-            "level": 3
+          "buy": {
+            "price": [
+              {
+                "currency": "Entrati Standing",
+                "amount": "8,000"
+              }
+            ],
+            "reusable": true,
+            "rank": {
+              "syndicate": "Entrati",
+              "level": 3
+            }
           }
         },
         {
           "qty": null,
           "label": "Cabochon Embolos Blueprint",
-          "note": "Otak, 8,000 standing, Entrati Rank 3; reusable, 3 gems per build",
+          "note": "Otak; 3 gems per build",
           "alt": null,
           "done": false,
-          "rank": {
-            "syndicate": "Entrati",
-            "level": 3
+          "buy": {
+            "price": [
+              {
+                "currency": "Entrati Standing",
+                "amount": "8,000"
+              }
+            ],
+            "reusable": true,
+            "rank": {
+              "syndicate": "Entrati",
+              "level": 3
+            }
           }
         }
       ],
@@ -252,23 +250,39 @@
         {
           "qty": null,
           "label": "Necraloid Rank 1",
-          "note": "5,000 standing, 10 Orientation Matrix, 20 Father Tokens, Zymos Barrel Blueprint, 150 Void Traces",
+          "note": "10 Orientation Matrix, 20 Father Tokens, Zymos Barrel Blueprint, 150 Void Traces",
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "Necraloid",
             "level": 1
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Necraloid Standing",
+                "amount": "5,000"
+              }
+            ]
           }
         },
         {
           "qty": null,
           "label": "Necraloid Rank 2, Modus",
-          "note": "22,000 standing, 15 Ballistics Matrix, 20 Father Tokens, Sepulcrum Barrel Blueprint, 250 Void Traces",
+          "note": "15 Ballistics Matrix, 20 Father Tokens, Sepulcrum Barrel Blueprint, 250 Void Traces",
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "Necraloid",
             "level": 2
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Necraloid Standing",
+                "amount": "22,000"
+              }
+            ]
           }
         }
       ],
@@ -292,9 +306,17 @@
         {
           "qty": null,
           "label": "Sunpoint Plasma Drill",
-          "note": "Smokefinger in Fortuna, 2,500 Solaris United standing at Rank 0",
+          "note": "Smokefinger in Fortuna",
           "alt": "Advanced Nosam Cutter, 1,000 Ostron standing at Rank 4",
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Solaris United Standing",
+                "amount": "2,500"
+              }
+            ]
+          }
         }
       ],
       "conditions": [],

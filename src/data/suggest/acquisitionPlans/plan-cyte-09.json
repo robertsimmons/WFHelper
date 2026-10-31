@@ -11,10 +11,6 @@
   },
   "badges": [
     {
-      "text": "The Hex quest",
-      "tone": "warn"
-    },
-    {
       "text": "Höllvania bounties",
       "tone": "info"
     }
@@ -99,39 +95,6 @@
   ],
   "groups": [
     {
-      "type": "gate",
-      "place": "QUESTS",
-      "sub": null,
-      "activity": "finish The Duviri Paradox and The Lotus Eaters",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "The Duviri Paradox",
-          "note": null,
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "The Lotus Eaters",
-          "note": "needs Whispers in the Walls",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": [],
-      "quest": "The Hex"
-    },
-    {
       "type": "farm",
       "place": "THE HEX",
       "sub": null,
@@ -162,7 +125,7 @@
       "place": "HOLLVANIA",
       "sub": "Central Mall",
       "activity": "bounty board, mall garage",
-      "meta": "60,000 standing for all three",
+      "meta": null,
       "mode": "normal, solo or group",
       "live": null,
       "skip": null,
@@ -218,7 +181,8 @@
       ],
       "conditions": [
         "Each part sits on its own level tier, and mission types rotate, so the bounty holding the part you need may not be on the board this rotation.",
-        "Amir sells the parts only from The Hex Rank 2, Fresh Slice."
+        "Amir sells the parts only from The Hex Rank 2, Fresh Slice.",
+        "60,000 standing for all three."
       ],
       "bonuses": [],
       "disclosures": []
@@ -272,23 +236,14 @@
   ],
   "afterQuest": {
     "effort": 6,
-    "badges": [
-      {
-        "text": "Hex Rank 4, 50,000 standing",
-        "tone": "warn",
-        "rank": {
-          "syndicate": "The Hex",
-          "level": 4
-        }
-      }
-    ],
+    "badges": [],
     "groups": [
       {
         "type": "currency",
         "place": "HOLLVANIA CENTRAL MALL",
         "sub": "The Hex",
         "activity": "earn Hex Standing",
-        "meta": "50,000 Standing",
+        "meta": null,
         "mode": null,
         "live": null,
         "skip": null,
@@ -317,7 +272,7 @@
         "place": "HOLLVANIA CENTRAL MALL",
         "sub": "Amir",
         "activity": "buy a replacement main blueprint",
-        "meta": "50,000 Standing",
+        "meta": null,
         "mode": null,
         "live": null,
         "skip": null,
@@ -333,7 +288,7 @@
           {
             "qty": null,
             "label": "Cyte-09 Blueprint",
-            "note": "Rank 4, Hot & Fresh",
+            "note": null,
             "alt": null,
             "done": false,
             "rank": {

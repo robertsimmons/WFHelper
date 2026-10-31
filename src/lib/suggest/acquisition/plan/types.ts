@@ -55,6 +55,33 @@ interface ResolvedAlt {
   taken: boolean;
 }
 
+/** `ahead` is a rank still to reach, `spent` a rank held without the item, and
+ *  `unknown` a payload with no standing, which reads like `ahead`. */
+type ResolvedPickState = "ahead" | "spent" | "unknown";
+
+export interface ResolvedPick {
+  state: ResolvedPickState;
+  /** The rank's title, such as "Whozit". */
+  rank: string;
+  /** What buying it costs; owed only while `spent`. */
+  spends: ResolvedSpend[];
+}
+
+export interface ResolvedPurchase {
+  /** One purchase's price; an `each` price is paid per unit of the row. */
+  price: ResolvedSpend[];
+  each: boolean;
+  /** The title of the rank the vendor wants, such as "Outworlder"; null for none. */
+  rank: string | null;
+  /** Null when the payload carries no standing to answer it. */
+  rankMet: boolean | null;
+  /** The price buys the blueprint the row's item is crafted from. */
+  blueprint: boolean;
+  reusable: boolean;
+  /** A reusable blueprint the player already holds, so nothing is left to pay. */
+  owned: boolean;
+}
+
 /** Where a row's done flag came from. An untracked row falls back to the authored
  *  flag until the player ticks it. */
 type ResolvedDoneSource = "inventory" | "manual" | "authored";
@@ -65,6 +92,10 @@ export interface ResolvedRow {
   note: string | null;
   qty: ResolvedQuantity | null;
   alt: ResolvedAlt | null;
+  /** Absent on a row no rank-up pick covers, and on a done row. */
+  pick?: ResolvedPick | undefined;
+  /** Absent on a row nothing is bought for. */
+  purchase?: ResolvedPurchase | undefined;
   done: boolean;
   source: ResolvedDoneSource;
   /** True when only the player can answer whether this is done. */
@@ -96,6 +127,8 @@ export interface ResolvedFlow {
    *  once nothing is outstanding. */
   ledger?: string | undefined;
   full?: number | undefined;
+  /** The standing the player already holds; absent for a currency no balance answers. */
+  held?: number | undefined;
 }
 
 export interface ResolvedGroup {

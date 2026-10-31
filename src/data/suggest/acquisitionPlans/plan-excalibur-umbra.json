@@ -4,26 +4,54 @@
   "effort": 2,
   "source": "unique",
   "tradeable": false,
-  "progress": { "have": 0, "need": 1, "unit": "frame" },
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "frame"
+  },
   "badges": [
-    { "text": "long quest chain", "tone": "warn" },
-    { "text": "no RNG", "tone": "info" }
+    {
+      "text": "no RNG",
+      "tone": "info"
+    }
   ],
-  "prices": [{ "label": "build", "amount": "10,000 cr", "money": false }],
+  "prices": [
+    {
+      "label": "build",
+      "amount": "10,000 cr",
+      "money": false
+    }
+  ],
   "materials": [
-    { "qty": "1,600", "label": "Alloy Plate", "note": null },
-    { "qty": "1", "label": "Orokin Cell", "note": null },
-    { "qty": "1,200", "label": "Nano Spores", "note": null },
-    { "qty": "10,000", "label": "Credits", "note": null }
+    {
+      "qty": "1,600",
+      "label": "Alloy Plate",
+      "note": null
+    },
+    {
+      "qty": "1",
+      "label": "Orokin Cell",
+      "note": null
+    },
+    {
+      "qty": "1,200",
+      "label": "Nano Spores",
+      "note": null
+    },
+    {
+      "qty": "10,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
     {
-      "type": "gate",
-      "place": "ORBITER, THEN THE CODEX",
+      "type": "vendor",
+      "place": "THE QUILLS, CETUS",
       "sub": null,
-      "activity": "finish Apostasy Prologue",
-      "meta": "solo only",
-      "mode": "solo",
+      "activity": "build a 1-1-1 Amp before the Operator fights",
+      "meta": null,
+      "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
@@ -32,33 +60,46 @@
       "rows": [
         {
           "qty": null,
-          "label": "Apostasy Prologue",
-          "note": "needs Chains of Harrow, which needs The War Within; start it by touching the Lotus's helmet in your Personal Quarters",
+          "label": "Raplak Prism",
+          "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [],
+            "rank": {
+              "syndicate": "The Quills",
+              "level": 1
+            }
+          }
+        },
+        {
+          "qty": null,
+          "label": "Pencha Scaffold",
+          "note": null,
+          "alt": null,
+          "done": false,
+          "buy": {
+            "price": [],
+            "rank": {
+              "syndicate": "The Quills",
+              "level": 1
+            }
+          }
+        },
+        {
+          "qty": null,
+          "label": "Clapkra Brace",
+          "note": null,
+          "alt": null,
+          "done": false,
+          "buy": {
+            "price": [],
+            "rank": {
+              "syndicate": "The Quills",
+              "level": 1
+            }
+          }
         }
-      ],
-      "conditions": ["The Sacrifice unlocks in the Codex once Apostasy Prologue is done."],
-      "bonuses": [],
-      "disclosures": [],
-      "quest": "The Sacrifice"
-    },
-    {
-      "type": "vendor",
-      "place": "THE QUILLS, CETUS",
-      "sub": null,
-      "activity": "build a 1-1-1 Amp before the Operator fights",
-      "meta": "Mote rank",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        { "qty": null, "label": "Raplak Prism", "note": "Mote", "alt": null, "done": false },
-        { "qty": null, "label": "Pencha Scaffold", "note": "Mote", "alt": null, "done": false },
-        { "qty": null, "label": "Clapkra Brace", "note": "Mote", "alt": null, "done": false }
       ],
       "conditions": [],
       "bonuses": [

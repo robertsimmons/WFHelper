@@ -114,32 +114,6 @@
   ],
   "groups": [
     {
-      "type": "gate",
-      "place": "MASTERY RANK",
-      "sub": null,
-      "activity": "reach MR 4",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Mastery Rank 4",
-          "note": "required to start The Deadlock Protocol",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": [],
-      "quest": "The Deadlock Protocol"
-    },
-    {
       "type": "farm",
       "place": "CODEX",
       "sub": null,
@@ -190,21 +164,21 @@
         {
           "qty": null,
           "label": "Neuroptics Blueprint",
-          "note": "11.11% at Rank 3, Granum Crown from a level 0-15 Corpus Ship",
+          "note": "11.11% at rank three, Granum Crown from a level 0-15 Corpus Ship",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Chassis Blueprint",
-          "note": "11.11% at Rank 3, Exemplar Granum Crown from a level 16-30 Corpus Ship",
+          "note": "11.11% at rank three, Exemplar Granum Crown from a level 16-30 Corpus Ship",
           "alt": null,
           "done": false
         },
         {
           "qty": null,
           "label": "Systems Blueprint",
-          "note": "11.11% at Rank 3, Zenith Granum Crown from a level 30+ Corpus Ship",
+          "note": "11.11% at rank three, Zenith Granum Crown from a level 30+ Corpus Ship",
           "alt": null,
           "done": false
         }
@@ -291,7 +265,7 @@
         "place": "CEPHALON SIMARIS",
         "sub": null,
         "activity": "scan targets with the Synthesis Scanner",
-        "meta": "50,000 Standing",
+        "meta": null,
         "mode": null,
         "live": null,
         "skip": null,
@@ -320,7 +294,7 @@
         "place": "CEPHALON SIMARIS",
         "sub": null,
         "activity": "buy a replacement main blueprint",
-        "meta": "50,000 Standing",
+        "meta": null,
         "mode": null,
         "live": null,
         "skip": null,
@@ -336,9 +310,17 @@
           {
             "qty": null,
             "label": "Protea Blueprint",
-            "note": "50,000 Standing",
+            "note": null,
             "alt": null,
-            "done": false
+            "done": false,
+            "buy": {
+              "price": [
+                {
+                  "currency": "Cephalon Simaris Standing",
+                  "amount": "50,000"
+                }
+              ]
+            }
           }
         ],
         "conditions": ["Simaris only stocks it once The Deadlock Protocol is done."],

@@ -11,14 +11,6 @@
   },
   "badges": [
     {
-      "text": "Hex Rank 4 gate",
-      "tone": "warn",
-      "rank": {
-        "syndicate": "The Hex",
-        "level": 4
-      }
-    },
-    {
       "text": "KIM chemistry needed",
       "tone": "warn"
     }
@@ -89,64 +81,11 @@
   ],
   "groups": [
     {
-      "type": "gate",
-      "place": "HOLLVANIA",
-      "sub": "Central Mall",
-      "activity": "rank The Hex to Rank 4",
-      "meta": "the ranks cost 141,000 standing and 185,000 Höllars in all",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Mastery Rank 14",
-          "note": "to build it",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Liked chemistry with all six Hex members",
-          "note": "unlocks at Rank 3",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "The Hex Finale",
-          "note": "required before Rank 4 unlocks",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Rank 4, Hot & Fresh",
-          "note": "70,000 standing, 100,000 Höllars, 25 Techrot Chitin, 25 Necracoil, 40 Efervon Sample",
-          "alt": null,
-          "done": false,
-          "rank": {
-            "syndicate": "The Hex",
-            "level": 4
-          }
-        }
-      ],
-      "conditions": [
-        "Rank 4 is a story and chemistry gate, not just a standing gate: 70,000 banked standing does nothing until every member is Liked and the Finale is done.",
-        "Liked chemistry only unlocks at Rank 3, so build it there before ranking up."
-      ],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
       "type": "currency",
       "place": "HOLLVANIA CENTRAL MALL",
       "sub": "The Hex",
       "activity": "earn Hex Standing",
-      "meta": "171,000 standing total",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -184,6 +123,10 @@
         {
           "currency": "The Hex Standing",
           "amount": "141,000"
+        },
+        {
+          "currency": "Höllars",
+          "amount": "185,000"
         }
       ],
       "map": null,
@@ -191,12 +134,20 @@
         {
           "qty": null,
           "label": "rank-ups to Hot & Fresh (Rank 4)",
-          "note": "141,000 standing, Ranks 1 to 4",
+          "note": "Ranks 1 to 4",
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "The Hex",
             "level": 4
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "The Hex Standing",
+                "amount": "141,000"
+              }
+            ]
           }
         }
       ],
@@ -209,7 +160,7 @@
       "place": "HOLLVANIA CENTRAL MALL",
       "sub": "Amir",
       "activity": "buy all four blueprints",
-      "meta": "30,000 standing",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -225,45 +176,77 @@
         {
           "qty": null,
           "label": "Reconifex Blueprint",
-          "note": "15,000 standing",
+          "note": null,
           "alt": "3.92% per Tier 5 Central Mall bounty, Lvl 105-110",
           "done": false,
-          "rank": {
-            "syndicate": "The Hex",
-            "level": 4
+          "buy": {
+            "price": [
+              {
+                "currency": "The Hex Standing",
+                "amount": "15,000"
+              }
+            ],
+            "rank": {
+              "syndicate": "The Hex",
+              "level": 4
+            }
           }
         },
         {
           "qty": null,
           "label": "Reconifex Barrel Blueprint",
-          "note": "5,000 standing",
+          "note": null,
           "alt": "5.41% at Hell-Scrub rotation C",
           "done": false,
-          "rank": {
-            "syndicate": "The Hex",
-            "level": 4
+          "buy": {
+            "price": [
+              {
+                "currency": "The Hex Standing",
+                "amount": "5,000"
+              }
+            ],
+            "rank": {
+              "syndicate": "The Hex",
+              "level": 4
+            }
           }
         },
         {
           "qty": null,
           "label": "Reconifex Receiver Blueprint",
-          "note": "5,000 standing",
+          "note": null,
           "alt": "5.41% at Hell-Scrub rotation C",
           "done": false,
-          "rank": {
-            "syndicate": "The Hex",
-            "level": 4
+          "buy": {
+            "price": [
+              {
+                "currency": "The Hex Standing",
+                "amount": "5,000"
+              }
+            ],
+            "rank": {
+              "syndicate": "The Hex",
+              "level": 4
+            }
           }
         },
         {
           "qty": null,
           "label": "Reconifex Stock Blueprint",
-          "note": "5,000 standing",
+          "note": null,
           "alt": "5.41% at Hell-Scrub rotation C",
           "done": false,
-          "rank": {
-            "syndicate": "The Hex",
-            "level": 4
+          "buy": {
+            "price": [
+              {
+                "currency": "The Hex Standing",
+                "amount": "5,000"
+              }
+            ],
+            "rank": {
+              "syndicate": "The Hex",
+              "level": 4
+            }
           }
         }
       ],

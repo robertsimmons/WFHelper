@@ -61,36 +61,11 @@
   ],
   "groups": [
     {
-      "type": "gate",
-      "place": "MASTERY RANK",
-      "sub": null,
-      "activity": "reach MR 12",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Mastery Rank 12",
-          "note": "Akmagnus; Magnus needs 10",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
       "type": "vendor",
       "place": "MARKET",
       "sub": null,
       "activity": "buy blueprints",
-      "meta": "90,000 cr",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -106,16 +81,33 @@
         {
           "qty": "2",
           "label": "Magnus Blueprint",
-          "note": "20,000 cr each",
+          "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Credits",
+                "amount": "20,000"
+              }
+            ],
+            "each": true
+          }
         },
         {
           "qty": null,
           "label": "Akmagnus Blueprint",
-          "note": "50,000 cr",
+          "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Credits",
+                "amount": "50,000"
+              }
+            ]
+          }
         }
       ],
       "conditions": [],

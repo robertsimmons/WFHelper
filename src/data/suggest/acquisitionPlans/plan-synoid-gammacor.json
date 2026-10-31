@@ -9,20 +9,7 @@
     "need": 1,
     "unit": "purchase"
   },
-  "badges": [
-    {
-      "text": "Cephalon Suda Genius",
-      "tone": "warn",
-      "rank": {
-        "syndicate": "Cephalon Suda",
-        "level": 5
-      }
-    },
-    {
-      "text": "MR 7",
-      "tone": "info"
-    }
-  ],
+  "badges": [],
   "prices": [
     {
       "label": "standing",
@@ -38,47 +25,11 @@
   "materials": [],
   "groups": [
     {
-      "type": "gate",
-      "place": "ORBITER",
-      "sub": "Syndicate console",
-      "activity": "reach Genius with Cephalon Suda",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Mastery Rank 7",
-          "note": "needed to buy it",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Cephalon Suda Genius",
-          "note": "Rank 5; the rank-ups cost 940,000 cr in all",
-          "alt": null,
-          "done": false,
-          "rank": {
-            "syndicate": "Cephalon Suda",
-            "level": 5
-          }
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
       "type": "currency",
       "place": "ANY MISSION",
       "sub": null,
       "activity": "pledge Cephalon Suda, earn standing from mission Affinity and Syndicate Medallions",
-      "meta": "340,000 standing total to Genius plus the pistol",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -99,7 +50,7 @@
         {
           "qty": "2",
           "label": "Control Module",
-          "note": "Rank 1 Competent sacrifice",
+          "note": "sacrifice",
           "alt": null,
           "done": false,
           "rank": {
@@ -110,7 +61,7 @@
         {
           "qty": "1",
           "label": "Forma",
-          "note": "Rank 2 Intriguing sacrifice",
+          "note": "sacrifice",
           "alt": null,
           "done": false,
           "rank": {
@@ -121,7 +72,7 @@
         {
           "qty": "1",
           "label": "Orokin Catalyst",
-          "note": "Rank 3 Intelligent sacrifice",
+          "note": "sacrifice",
           "alt": null,
           "done": false,
           "rank": {
@@ -132,7 +83,7 @@
         {
           "qty": "2",
           "label": "Aya",
-          "note": "Rank 4 Wise sacrifice",
+          "note": "sacrifice",
           "alt": null,
           "done": false,
           "rank": {
@@ -143,7 +94,7 @@
         {
           "qty": "3",
           "label": "Aya",
-          "note": "Rank 5 Genius sacrifice",
+          "note": "sacrifice",
           "alt": null,
           "done": false,
           "rank": {
@@ -186,56 +137,96 @@
         {
           "qty": null,
           "label": "Rank 1, Competent",
-          "note": "5,000 standing",
+          "note": null,
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "Cephalon Suda",
             "level": 1
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Cephalon Suda Standing",
+                "amount": "5,000"
+              }
+            ]
           }
         },
         {
           "qty": null,
           "label": "Rank 2, Intriguing",
-          "note": "22,000 standing",
+          "note": null,
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "Cephalon Suda",
             "level": 2
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Cephalon Suda Standing",
+                "amount": "22,000"
+              }
+            ]
           }
         },
         {
           "qty": null,
           "label": "Rank 3, Intelligent",
-          "note": "44,000 standing",
+          "note": null,
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "Cephalon Suda",
             "level": 3
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Cephalon Suda Standing",
+                "amount": "44,000"
+              }
+            ]
           }
         },
         {
           "qty": null,
           "label": "Rank 4, Wise",
-          "note": "70,000 standing",
+          "note": null,
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "Cephalon Suda",
             "level": 4
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Cephalon Suda Standing",
+                "amount": "70,000"
+              }
+            ]
           }
         },
         {
           "qty": null,
           "label": "Rank 5, Genius",
-          "note": "99,000 standing",
+          "note": null,
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "Cephalon Suda",
             "level": 5
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Cephalon Suda Standing",
+                "amount": "99,000"
+              }
+            ]
           }
         }
       ],
@@ -248,7 +239,7 @@
       "place": "CEPHALON SUDA OFFERINGS, RELAY",
       "sub": null,
       "activity": "buy the pistol",
-      "meta": "100,000 standing",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -266,7 +257,15 @@
           "label": "Synoid Gammacor",
           "note": "arrives built, no Foundry step",
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Cephalon Suda Standing",
+                "amount": "100,000"
+              }
+            ]
+          }
         }
       ],
       "conditions": [

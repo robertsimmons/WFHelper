@@ -4,83 +4,100 @@
   "effort": 2,
   "source": "repeat",
   "tradeable": false,
-  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "progress": {
+    "have": 0,
+    "need": 4,
+    "unit": "parts"
+  },
   "badges": [
-    { "text": "hard pity", "tone": "info" },
     {
-      "text": "Ostron Offworlder",
-      "tone": "warn",
-      "rank": { "syndicate": "Ostron", "level": 1 }
+      "text": "hard pity",
+      "tone": "info"
     }
   ],
   "prices": [
-    { "label": "parts + build", "amount": "70,000 cr", "money": false },
-    { "label": "buy all blueprints", "amount": "330 Fate Pearls", "money": false }
+    {
+      "label": "parts + build",
+      "amount": "70,000 cr",
+      "money": false
+    },
+    {
+      "label": "buy all blueprints",
+      "amount": "330 Fate Pearls",
+      "money": false
+    }
   ],
   "materials": [
-    { "qty": "102", "label": "Fate Pearl", "note": "24 per part, 30 Koumei" },
-    { "qty": "100", "label": "Rubedo", "note": "Neuroptics" },
-    { "qty": "1", "label": "Neurodes", "note": "Neuroptics" },
-    { "qty": "50", "label": "Iradite", "note": "Neuroptics" },
-    { "qty": "300", "label": "Polymer Bundle", "note": "Chassis" },
-    { "qty": "30", "label": "Grokdrul", "note": "Chassis" },
-    { "qty": "10", "label": "Esher Devar", "note": "Chassis" },
-    { "qty": "150", "label": "Circuits", "note": "Systems" },
-    { "qty": "1", "label": "Morphics", "note": "Systems" },
-    { "qty": "10", "label": "Tear Azurite", "note": "Systems" },
-    { "qty": "70,000", "label": "Credits", "note": null }
+    {
+      "qty": "102",
+      "label": "Fate Pearl",
+      "note": "24 per part, 30 Koumei"
+    },
+    {
+      "qty": "100",
+      "label": "Rubedo",
+      "note": "Neuroptics"
+    },
+    {
+      "qty": "1",
+      "label": "Neurodes",
+      "note": "Neuroptics"
+    },
+    {
+      "qty": "50",
+      "label": "Iradite",
+      "note": "Neuroptics"
+    },
+    {
+      "qty": "300",
+      "label": "Polymer Bundle",
+      "note": "Chassis"
+    },
+    {
+      "qty": "30",
+      "label": "Grokdrul",
+      "note": "Chassis"
+    },
+    {
+      "qty": "10",
+      "label": "Esher Devar",
+      "note": "Chassis"
+    },
+    {
+      "qty": "150",
+      "label": "Circuits",
+      "note": "Systems"
+    },
+    {
+      "qty": "1",
+      "label": "Morphics",
+      "note": "Systems"
+    },
+    {
+      "qty": "10",
+      "label": "Tear Azurite",
+      "note": "Systems"
+    },
+    {
+      "qty": "70,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
-    {
-      "type": "gate",
-      "place": "QUESTS",
-      "sub": null,
-      "activity": "Once Awake, then Saya's Vigil",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Once Awake",
-          "note": "required",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Saya's Vigil",
-          "note": "required; opens Shrine Defense",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Ostron rank 1: Offworlder",
-          "note": "unlocks the Esher Devar blueprint for the Chassis",
-          "alt": null,
-          "done": false,
-          "rank": { "syndicate": "Ostron", "level": 1 }
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
     {
       "type": "farm",
       "place": "SAYA'S VISIONS, EARTH",
       "sub": "Koumei's Shrine",
       "activity": "Shrine Defense",
-      "meta": "14-18 Fate Pearls and 800 Ostron Standing a clear",
+      "meta": "14-18 Fate Pearls a clear",
       "mode": null,
       "live": null,
       "skip": null,
-      "earns": { "currency": "Fate Pearl", "amount": "432" },
+      "earns": {
+        "currency": "Fate Pearl",
+        "amount": "432"
+      },
       "spends": [],
       "map": null,
       "rows": [
@@ -90,7 +107,12 @@
           "note": "4.09%",
           "alt": {
             "text": "or 165 Fate Pearls at Koumei's Shrine",
-            "spends": [{ "currency": "Fate Pearl", "amount": "165" }]
+            "spends": [
+              {
+                "currency": "Fate Pearl",
+                "amount": "165"
+              }
+            ]
           },
           "done": false
         },
@@ -100,7 +122,12 @@
           "note": "4.09%",
           "alt": {
             "text": "or 55 Fate Pearls at Koumei's Shrine",
-            "spends": [{ "currency": "Fate Pearl", "amount": "55" }]
+            "spends": [
+              {
+                "currency": "Fate Pearl",
+                "amount": "55"
+              }
+            ]
           },
           "done": false
         },
@@ -110,7 +137,12 @@
           "note": "4.09%",
           "alt": {
             "text": "or 55 Fate Pearls at Koumei's Shrine",
-            "spends": [{ "currency": "Fate Pearl", "amount": "55" }]
+            "spends": [
+              {
+                "currency": "Fate Pearl",
+                "amount": "55"
+              }
+            ]
           },
           "done": false
         },
@@ -120,7 +152,12 @@
           "note": "4.09%",
           "alt": {
             "text": "or 55 Fate Pearls at Koumei's Shrine",
-            "spends": [{ "currency": "Fate Pearl", "amount": "55" }]
+            "spends": [
+              {
+                "currency": "Fate Pearl",
+                "amount": "55"
+              }
+            ]
           },
           "done": false
         }
@@ -129,7 +166,10 @@
         "Fate Pearls are an end-of-mission reward that Resource Boosters don't affect, and crafting consumes 102 of them on top of any purchases.",
         "Steel Path pays 20-24 Fate Pearls a clear against 14-18."
       ],
-      "bonuses": ["The same table drops Higasa and Amanata parts, so farm all three together."],
+      "bonuses": [
+        "The same table drops Higasa and Amanata parts, so farm all three together.",
+        "Each clear also pays 800 Ostron standing."
+      ],
       "disclosures": []
     },
     {

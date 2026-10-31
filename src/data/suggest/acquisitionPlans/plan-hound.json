@@ -13,10 +13,6 @@
     {
       "text": "vanquish, never convert",
       "tone": "warn"
-    },
-    {
-      "text": "MR 5",
-      "tone": "info"
     }
   ],
   "prices": [
@@ -125,59 +121,6 @@
   ],
   "groups": [
     {
-      "type": "gate",
-      "place": "STAR CHART",
-      "sub": null,
-      "activity": "quests and access",
-      "meta": "one-time",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "The War Within",
-          "note": null,
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Call of the Tempestarii",
-          "note": null,
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Mastery Rank 5",
-          "note": null,
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Railjack, Intrinsics rank 3",
-          "note": "for the Neptune Proxima showdown",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "2",
-          "label": "free Companion slots",
-          "note": "one for the Hound, one for its Model weapon",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": ["Legs does not sell Hound parts; he only assembles and gilds."],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
       "type": "relics",
       "place": "KUVA SIPHON, ANY",
       "sub": null,
@@ -284,7 +227,7 @@
       "place": "ORB VALLIS, VENUS",
       "sub": null,
       "activity": "Conservation, plus Bounty 1 for the bonds",
-      "meta": "185,000 cr",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -292,7 +235,12 @@
         "currency": "Solaris United Standing",
         "amount": "168,000"
       },
-      "spends": [],
+      "spends": [
+        {
+          "currency": "Credits",
+          "amount": "185,000"
+        }
+      ],
       "map": "orb-vallis",
       "rows": [
         {
@@ -326,7 +274,7 @@
         {
           "qty": "5",
           "label": "Advances Debt-Bond",
-          "note": "Cove rank-up only",
+          "note": "for Cove only",
           "alt": "or Ticker",
           "done": false
         }
@@ -357,45 +305,77 @@
         {
           "qty": null,
           "label": "Outworlder",
-          "note": "5,000 standing, 2 Training",
+          "note": "2 Training",
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "Solaris United",
             "level": 1
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Solaris United Standing",
+                "amount": "5,000"
+              }
+            ]
           }
         },
         {
           "qty": null,
           "label": "Rapscallion",
-          "note": "22,000 standing, 2 Training + 3 Shelter",
+          "note": "2 Training, 3 Shelter",
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "Solaris United",
             "level": 2
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Solaris United Standing",
+                "amount": "22,000"
+              }
+            ]
           }
         },
         {
           "qty": null,
           "label": "Doer",
-          "note": "44,000 standing, 2 Training + 3 Shelter + 4 Medical",
+          "note": "2 Training, 3 Shelter, 4 Medical",
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "Solaris United",
             "level": 3
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Solaris United Standing",
+                "amount": "44,000"
+              }
+            ]
           }
         },
         {
           "qty": null,
           "label": "Cove",
-          "note": "70,000 standing, 3 Shelter + 4 Medical + 5 Advances",
+          "note": "3 Shelter, 4 Medical, 5 Advances",
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "Solaris United",
             "level": 4
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Solaris United Standing",
+                "amount": "70,000"
+              }
+            ]
           }
         }
       ],
@@ -410,7 +390,7 @@
       "place": "SMOKEFINGER, FORTUNA",
       "sub": null,
       "activity": "buy the Marquise Thyst refining blueprint",
-      "meta": "Solaris United Cove",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -426,12 +406,20 @@
         {
           "qty": null,
           "label": "Marquise Thyst Blueprint",
-          "note": "12,000 standing, Cove",
+          "note": null,
           "alt": null,
           "done": false,
-          "rank": {
-            "syndicate": "Solaris United",
-            "level": 4
+          "buy": {
+            "price": [
+              {
+                "currency": "Solaris United Standing",
+                "amount": "12,000"
+              }
+            ],
+            "rank": {
+              "syndicate": "Solaris United",
+              "level": 4
+            }
           }
         }
       ],
@@ -474,7 +462,7 @@
       "place": "NECRALISK, DEIMOS",
       "sub": "Father",
       "activity": "rank Entrati up to Associate",
-      "meta": "71,000 standing",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -490,34 +478,58 @@
         {
           "qty": null,
           "label": "Entrati Rank 1, Stranger",
-          "note": "5,000 standing, 6 Benign Infested Tumor, 6 Ferment Bladder",
+          "note": "6 Benign Infested Tumor, 6 Ferment Bladder",
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "Entrati",
             "level": 1
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Entrati Standing",
+                "amount": "5,000"
+              }
+            ]
           }
         },
         {
           "qty": null,
           "label": "Entrati Rank 2, Acquaintance",
-          "note": "22,000 standing, Keratinos Blade Blueprint, 1 Father Token, 1 Daughter Token",
+          "note": "Keratinos Blade Blueprint, 1 Father Token, 1 Daughter Token",
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "Entrati",
             "level": 2
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Entrati Standing",
+                "amount": "22,000"
+              }
+            ]
           }
         },
         {
           "qty": null,
           "label": "Entrati Rank 3, Associate",
-          "note": "44,000 standing, 3 Sly Vulpaphyla Tag, 3 Vizier Predasite Tag, 1 Mother Token, 1 Son Token",
+          "note": "3 Sly Vulpaphyla Tag, 3 Vizier Predasite Tag, 1 Mother Token, 1 Son Token",
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "Entrati",
             "level": 3
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Entrati Standing",
+                "amount": "44,000"
+              }
+            ]
           }
         }
       ],
@@ -530,7 +542,7 @@
       "place": "OTAK, NECRALISK",
       "sub": null,
       "activity": "buy the Trapezium Xenorhast refining blueprint",
-      "meta": "Entrati Associate",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -546,12 +558,20 @@
         {
           "qty": null,
           "label": "Trapezium Xenorhast Blueprint",
-          "note": "8,000 standing, Associate",
+          "note": null,
           "alt": null,
           "done": false,
-          "rank": {
-            "syndicate": "Entrati",
-            "level": 3
+          "buy": {
+            "price": [
+              {
+                "currency": "Entrati Standing",
+                "amount": "8,000"
+              }
+            ],
+            "rank": {
+              "syndicate": "Entrati",
+              "level": 3
+            }
           }
         }
       ],
@@ -620,7 +640,7 @@
       "place": "LEGS, FORTUNA",
       "sub": null,
       "activity": "Build Hound",
-      "meta": "4,000 cr each, instant",
+      "meta": "instant",
       "mode": null,
       "live": null,
       "skip": null,
@@ -633,7 +653,16 @@
           "label": "assembled Hound",
           "note": "Bhaira and Hec",
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Credits",
+                "amount": "4,000"
+              }
+            ],
+            "each": true
+          }
         }
       ],
       "conditions": [

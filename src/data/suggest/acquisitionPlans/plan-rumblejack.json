@@ -32,41 +32,6 @@
   ],
   "groups": [
     {
-      "type": "gate",
-      "place": "QUEST",
-      "sub": null,
-      "activity": "finish Prelude to War",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Prelude to War",
-          "note": "Chimera Prologue, Erra and The Maker; The New War also needs a Railjack (Rising Tide builds one) and an Amp (the free Mote Amp counts)",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Mastery Rank 8",
-          "note": "needed to equip it",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "No Necramech or Paracesis is needed; the quest lends a Necramech for its short section."
-      ],
-      "bonuses": [],
-      "disclosures": [],
-      "quest": "The New War"
-    },
-    {
       "type": "farm",
       "place": "THE CODEX",
       "sub": "The New War",
@@ -112,7 +77,7 @@
         "place": "CEPHALON SIMARIS",
         "sub": null,
         "activity": "scan targets with the Synthesis Scanner",
-        "meta": "100,000 Standing",
+        "meta": null,
         "mode": null,
         "live": null,
         "skip": null,
@@ -141,7 +106,7 @@
         "place": "CEPHALON SIMARIS",
         "sub": null,
         "activity": "buy another Rumblejack",
-        "meta": "100,000 Standing",
+        "meta": null,
         "mode": null,
         "live": null,
         "skip": null,
@@ -157,9 +122,17 @@
           {
             "qty": null,
             "label": "Rumblejack",
-            "note": "100,000 Standing",
+            "note": null,
             "alt": null,
-            "done": false
+            "done": false,
+            "buy": {
+              "price": [
+                {
+                  "currency": "Cephalon Simaris Standing",
+                  "amount": "100,000"
+                }
+              ]
+            }
           }
         ],
         "conditions": ["Simaris only stocks these once The New War is done."],

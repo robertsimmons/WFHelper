@@ -4,10 +4,8 @@
 import { beforeAll, describe, expect, it } from "vitest";
 
 import * as itemDatabase from "../../../../../services/itemDatabase";
-import {
-  visibleRows,
-  withRowOverrides,
-} from "../../../../../src/components/nextup/plan/planResolution.js";
+import { withRowOverrides } from "../../../../../src/components/nextup/plan/planResolution.js";
+import { planSteps } from "../../../../../src/components/nextup/plan/planSteps.js";
 import { resolveAcquisition } from "../../../../../src/lib/suggest/acquisition/index.js";
 import { resolvePlanFor } from "../../../../../src/lib/suggest/acquisition/plan/index.js";
 import {
@@ -117,10 +115,17 @@ function planRow(target: AcquisitionTarget, held: RawInventoryData, label: strin
   return row;
 }
 
-function shownOnPlan(target: AcquisitionTarget, held: RawInventoryData, label: string): boolean {
+/** Whether the row reads as still to do in the plan's steps, as the pinned plan page draws them. */
+function openOnPlan(target: AcquisitionTarget, held: RawInventoryData, label: string): boolean {
   const plan = resolvePlanFor(target, { itemDb, inventory: held, now: NOW });
-  const group = plan?.groups.find((entry) => entry.rows.some((row) => row.label === label));
-  return group ? visibleRows(group, false).some((row) => row.label === label) : false;
+  const row = plan?.groups.flatMap((group) => group.rows).find((entry) => entry.label === label);
+  if (!plan || !row) return false;
+  const listed = planSteps(plan, { t: (key) => key }).some(
+    (step) =>
+      step.rows.some((line) => line.ids.includes(row.id)) ||
+      step.folded?.rows.some((fold) => fold.id === row.id) === true,
+  );
+  return listed && !row.done;
 }
 
 /** One build's worth of everything the Nekros recipe asks for. */
@@ -173,7 +178,7 @@ describe("a frame owing its mastery and its subsume is two builds", () => {
     const row = planRow(nekros, held, "Neuroptics Blueprint");
     expect(row.qty).toMatchObject({ required: 2, owned: 1, remaining: 1 });
     expect(row.done).toBe(false);
-    expect(shownOnPlan(nekros, held, "Neuroptics Blueprint")).toBe(true);
+    expect(openOnPlan(nekros, held, "Neuroptics Blueprint")).toBe(true);
   });
 
   it("leaves the mastery and subsume chips meaning what they meant", () => {
@@ -240,7 +245,7 @@ describe("a frame owing only one of its two wins is one build", () => {
     const held = inventory({ suits: [NEKROS], misc: { [NEKROS_NEURO]: 1 } });
     const nekros = target("Nekros", held);
     expect(planRow(nekros, held, "Neuroptics Blueprint")).toMatchObject({ done: true });
-    expect(shownOnPlan(nekros, held, "Neuroptics Blueprint")).toBe(false);
+    expect(openOnPlan(nekros, held, "Neuroptics Blueprint")).toBe(false);
   });
 
   it("never leaves mastery open on a subsumed frame, since the Helminth takes only a mastered one", () => {
@@ -385,7 +390,7 @@ describe("the plan's material rows say what the card says", () => {
     const row = planRow(nekros, held, "Neural Sensors");
     expect(row.qty).toMatchObject({ required: 2, owned: 1, remaining: 1 });
     expect(row.done).toBe(false);
-    expect(shownOnPlan(nekros, held, "Neural Sensors")).toBe(true);
+    expect(openOnPlan(nekros, held, "Neural Sensors")).toBe(true);
   });
 
   it("doubles the Credits row with two builds", () => {
@@ -514,7 +519,7 @@ describe("a part inside an Equinox Aspect is sized from the Aspects still to bui
     const row = planRow(equinox, held, "Night Neuroptics Blueprint");
     expect(row.qty).toMatchObject({ required: 2, owned: 1, remaining: 1 });
     expect(row.done).toBe(false);
-    expect(shownOnPlan(equinox, held, "Night Neuroptics Blueprint")).toBe(true);
+    expect(openOnPlan(equinox, held, "Night Neuroptics Blueprint")).toBe(true);
     expect(foundryRow(equinox, held, "Night Neuroptics").qty).toMatchObject({
       required: 2,
       owned: 0,
@@ -555,6 +560,6 @@ describe("a part inside an Equinox Aspect is sized from the Aspects still to bui
     const held = inventory({ misc: { [NIGHT_ASPECT]: 2 } });
     const equinox = target("Equinox", held);
     expect(planRow(equinox, held, "Night Neuroptics Blueprint")).toMatchObject({ done: true });
-    expect(shownOnPlan(equinox, held, "Night Neuroptics Blueprint")).toBe(false);
+    expect(openOnPlan(equinox, held, "Night Neuroptics Blueprint")).toBe(false);
   });
 });

@@ -11,10 +11,6 @@
   },
   "badges": [
     {
-      "text": "Heart of Deimos quest",
-      "tone": "warn"
-    },
-    {
       "text": "blueprints mailed free",
       "tone": "info"
     }
@@ -114,57 +110,6 @@
     }
   ],
   "groups": [
-    {
-      "type": "gate",
-      "place": "QUESTS",
-      "sub": null,
-      "activity": "finish The War Within",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "The War Within",
-          "note": "needed to pilot a Necramech, so to level it for Mastery",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "gate",
-      "place": "CODEX",
-      "sub": null,
-      "activity": "finish Once Awake",
-      "meta": "unlocks Heart of Deimos",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Once Awake",
-          "note": "the quest before Heart of Deimos",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": [],
-      "quest": "Heart of Deimos"
-    },
     {
       "type": "farm",
       "place": "CODEX",
@@ -291,14 +236,6 @@
     "effort": 5,
     "badges": [
       {
-        "text": "Necraloid Rank 2",
-        "tone": "warn",
-        "rank": {
-          "syndicate": "Necraloid",
-          "level": 2
-        }
-      },
-      {
         "text": "33,000 Necraloid standing",
         "tone": "info"
       }
@@ -323,19 +260,19 @@
         "type": "bounty",
         "place": "CAMBION DRIFT, DEIMOS",
         "activity": "kill the vault Necramechs for Orokin Matrices",
-        "meta": "33,000 standing at Loid",
+        "meta": null,
         "rows": [
           {
             "qty": "10",
             "label": "Orokin Orientation Matrix",
-            "note": "Tier 1 vault, 1 Necramech; 1,000 standing each at Loid",
+            "note": "Tier 1 vault, 1 Necramech; 1,000 each at Loid",
             "alt": null,
             "done": false
           },
           {
             "qty": "15",
             "label": "Orokin Ballistics Matrix",
-            "note": "Tier 2 vault, 2 Necramechs; 2,500 standing each",
+            "note": "Tier 2 vault, 2 Necramechs; 2,500 each",
             "alt": null,
             "done": false
           }
@@ -361,28 +298,44 @@
         "type": "vendor",
         "place": "FATHER, NECRALISK",
         "activity": "buy the barrel blueprints Loid's rank-ups consume",
-        "meta": "Entrati Rank 2",
+        "meta": null,
         "rows": [
           {
             "qty": null,
             "label": "Zymos Barrel Blueprint",
-            "note": "1,000 standing, Rank 1",
+            "note": null,
             "alt": null,
             "done": false,
-            "rank": {
-              "syndicate": "Entrati",
-              "level": 1
+            "buy": {
+              "price": [
+                {
+                  "currency": "Entrati Standing",
+                  "amount": "1,000"
+                }
+              ],
+              "rank": {
+                "syndicate": "Entrati",
+                "level": 1
+              }
             }
           },
           {
             "qty": null,
             "label": "Sepulcrum Barrel Blueprint",
-            "note": "2,000 standing, Rank 2",
+            "note": null,
             "alt": null,
             "done": false,
-            "rank": {
-              "syndicate": "Entrati",
-              "level": 2
+            "buy": {
+              "price": [
+                {
+                  "currency": "Entrati Standing",
+                  "amount": "2,000"
+                }
+              ],
+              "rank": {
+                "syndicate": "Entrati",
+                "level": 2
+              }
             }
           }
         ]
@@ -406,39 +359,64 @@
         "type": "vendor",
         "place": "LOID, NECRALISK",
         "activity": "rank Necraloid to Clearance: Modus, then buy the blueprints",
-        "meta": "Rank 2",
+        "meta": null,
         "rows": [
           {
             "qty": null,
             "label": "Clearance: Agnesis",
-            "note": "5,000 standing, 10 Orientation Matrix, Zymos Barrel Blueprint, 20 Father Tokens, 150 Void Traces; free Voidrig Casing Blueprint",
+            "note": "10 Orientation Matrix, Zymos Barrel Blueprint, 20 Father Tokens, 150 Void Traces; free Voidrig Casing Blueprint",
             "alt": null,
             "done": false,
             "rank": {
               "syndicate": "Necraloid",
               "level": 1
+            },
+            "buy": {
+              "price": [
+                {
+                  "currency": "Necraloid Standing",
+                  "amount": "5,000"
+                }
+              ]
             }
           },
           {
             "qty": null,
             "label": "Clearance: Modus",
-            "note": "22,000 standing, 15 Ballistics Matrix, Sepulcrum Barrel Blueprint, 20 Father Tokens, 250 Void Traces; free Voidrig Blueprint",
+            "note": "15 Ballistics Matrix, Sepulcrum Barrel Blueprint, 20 Father Tokens, 250 Void Traces; free Voidrig Blueprint",
             "alt": null,
             "done": false,
             "rank": {
               "syndicate": "Necraloid",
               "level": 2
+            },
+            "buy": {
+              "price": [
+                {
+                  "currency": "Necraloid Standing",
+                  "amount": "22,000"
+                }
+              ]
             }
           },
           {
             "qty": "3",
             "label": "Voidrig component blueprints",
-            "note": "Engine, Capsule, Weapon Pod; 2,000 standing each at Rank 1",
+            "note": "Engine, Capsule, Weapon Pod",
             "alt": null,
             "done": false,
-            "rank": {
-              "syndicate": "Necraloid",
-              "level": 1
+            "buy": {
+              "price": [
+                {
+                  "currency": "Necraloid Standing",
+                  "amount": "2,000"
+                }
+              ],
+              "each": true,
+              "rank": {
+                "syndicate": "Necraloid",
+                "level": 1
+              }
             }
           }
         ]

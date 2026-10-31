@@ -1,17 +1,9 @@
-import type { PlanBadge, PlanRank } from "./schema.js";
-
-/** A gate a generated Prime plan cannot derive, such as the quest Railjack relics need. */
-export interface PrimeGate {
-  label: string;
-  note: string | null;
-  rank?: PlanRank | null;
-}
+import type { PlanBadge } from "./schema.js";
 
 /** What live data cannot say about one relic Prime. Tips stay out of it. */
 export interface PrimeOverride {
   name: string;
   badges?: PlanBadge[];
-  gates?: PrimeGate[];
   effort?: { value: number; reason: string };
 }
 

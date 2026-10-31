@@ -90,38 +90,11 @@
   ],
   "groups": [
     {
-      "type": "gate",
-      "place": "QUESTS",
-      "sub": null,
-      "activity": "complete The New Strange",
-      "meta": "unlocks Sanctuary Onslaught",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "The New Strange",
-          "note": "required for Sanctuary Onslaught",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Venari has no blueprint of her own: she joins the Arsenal when Khora is claimed, so this plan is the Khora farm."
-      ],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
       "type": "vendor",
       "place": "MARKET",
       "sub": null,
       "activity": "buy blueprint",
-      "meta": "35,000 cr",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -139,7 +112,15 @@
           "label": "Khora Blueprint",
           "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Credits",
+                "amount": "35,000"
+              }
+            ]
+          }
         }
       ],
       "conditions": [],

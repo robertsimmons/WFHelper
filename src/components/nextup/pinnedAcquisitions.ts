@@ -1,13 +1,11 @@
+import type { Translator } from "../../lib/i18n.js";
+import type { ResolvedPlan } from "../../lib/suggest/acquisition/plan/index.js";
 import type { Suggestion } from "../../types/suggest.js";
+import { planSteps, stepProgress } from "./plan/planSteps.js";
 
-/** The part of a resolved plan a pinned card counts: every row of every group,
- *  whatever else the group carries. */
-export interface PlanSteps {
-  groups: readonly { rows: readonly { done?: boolean | undefined }[] }[];
-}
-
-interface StepCount {
-  done: number;
+/** Where the player stands in the plan's numbered steps. */
+interface StepAt {
+  step: number;
   total: number;
 }
 
@@ -15,24 +13,15 @@ export interface PinnedEntry {
   uniqueName: string;
   suggestion: Suggestion;
   /** Null until a plan has been resolved for the item. */
-  steps: StepCount | null;
+  steps: StepAt | null;
 }
 
-export function stepCount(plan: PlanSteps): StepCount {
-  let done = 0;
-  let total = 0;
-  for (const group of plan.groups) {
-    for (const row of group.rows) {
-      total += 1;
-      if (row.done === true) done += 1;
-    }
-  }
-  return { done, total };
-}
+// Only the count is read, so a step's title never has to be translated here.
+const KEYS: Translator = (key) => key;
 
-/** The step the player is on, which is the last one once every row is ticked. */
-export function nextStep(steps: StepCount): number {
-  return Math.min(steps.done + 1, steps.total);
+/** The step the card names: the first one the plan's steps still have open. */
+export function nextStep(plan: ResolvedPlan, buildable: boolean, t: Translator = KEYS): StepAt {
+  return stepProgress(planSteps(plan, { t, buildable }));
 }
 
 /** What a pin is stored as, which is what the resolver named the item. */
@@ -45,7 +34,8 @@ export function acquisitionKey(suggestion: Suggestion): string | null {
 export function pinnedAcquisitions(
   pins: readonly string[],
   suggestions: readonly Suggestion[],
-  plans: Readonly<Record<string, PlanSteps>> = {},
+  plans: Readonly<Record<string, ResolvedPlan>> = {},
+  t: Translator = KEYS,
 ): PinnedEntry[] {
   const byKey = new Map<string, Suggestion>();
   for (const suggestion of suggestions) {
@@ -56,7 +46,8 @@ export function pinnedAcquisitions(
     const suggestion = byKey.get(uniqueName);
     if (!suggestion) return [];
     const plan = plans[uniqueName];
-    return [{ uniqueName, suggestion, steps: plan ? stepCount(plan) : null }];
+    const buildable = suggestion.details?.acquisition?.parts.buildable === true;
+    return [{ uniqueName, suggestion, steps: plan ? nextStep(plan, buildable, t) : null }];
   });
 }
 

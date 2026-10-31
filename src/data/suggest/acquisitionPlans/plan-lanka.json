@@ -4,59 +4,77 @@
   "effort": 2,
   "source": "dojo",
   "tradeable": false,
-  "progress": { "have": 0, "need": 1, "unit": "blueprint" },
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "blueprint"
+  },
   "badges": [
-    { "text": "5 Fieldron, 20 Gallium", "tone": "warn" },
-    { "text": "Energy Lab", "tone": "info" }
+    {
+      "text": "5 Fieldron, 20 Gallium",
+      "tone": "warn"
+    },
+    {
+      "text": "Energy Lab",
+      "tone": "info"
+    }
   ],
   "prices": [
-    { "label": "blueprint", "amount": "15,000 cr", "money": false },
-    { "label": "build", "amount": "30,000 cr", "money": false }
+    {
+      "label": "blueprint",
+      "amount": "15,000 cr",
+      "money": false
+    },
+    {
+      "label": "build",
+      "amount": "30,000 cr",
+      "money": false
+    }
   ],
   "materials": [
-    { "qty": "5", "label": "Fieldron", "note": null },
-    { "qty": "20", "label": "Gallium", "note": null },
-    { "qty": "600", "label": "Alloy Plate", "note": null },
-    { "qty": "1", "label": "Forma", "note": null },
-    { "qty": "45,000", "label": "Credits", "note": null }
+    {
+      "qty": "5",
+      "label": "Fieldron",
+      "note": null
+    },
+    {
+      "qty": "20",
+      "label": "Gallium",
+      "note": null
+    },
+    {
+      "qty": "600",
+      "label": "Alloy Plate",
+      "note": null
+    },
+    {
+      "qty": "1",
+      "label": "Forma",
+      "note": null
+    },
+    {
+      "qty": "45,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
-    {
-      "type": "gate",
-      "place": "MASTERY RANK",
-      "sub": null,
-      "activity": "reach MR 10",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Mastery Rank 10",
-          "note": "needed to equip it",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
     {
       "type": "vendor",
       "place": "CLAN DOJO, ENERGY LAB",
       "sub": null,
       "activity": "buy the blueprint",
-      "meta": "15,000 cr",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Credits", "amount": "15,000" }],
+      "spends": [
+        {
+          "currency": "Credits",
+          "amount": "15,000"
+        }
+      ],
       "map": null,
       "rows": [
         {
@@ -64,7 +82,15 @@
           "label": "Lanka Blueprint",
           "note": "consumed on build",
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Credits",
+                "amount": "15,000"
+              }
+            ]
+          }
         }
       ],
       "conditions": [],

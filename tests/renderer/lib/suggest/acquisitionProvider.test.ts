@@ -34,7 +34,7 @@ import {
   MAGP,
 } from "./acquisition/fixtures.js";
 import type { Translator } from "../../../../src/lib/i18n.js";
-import type { ItemDbEntry, RawInventoryData } from "../../../../src/types/inventory.js";
+import type { ItemDbEntry, MasteryData, RawInventoryData } from "../../../../src/types/inventory.js";
 import type { RelicDatabase } from "../../../../src/types/relics.js";
 import type {
   ActivityPref,
@@ -59,6 +59,11 @@ interface Shape {
   activities?: Record<string, ActivityPref>;
   options?: Partial<SuggestionOptions>;
   pins?: string[];
+  mastery?: MasteryData | null;
+}
+
+function roster(status: "mastered" | "progress"): MasteryData {
+  return { items: [{ uniqueName: MAG, name: "Mag", status }], stats: {} } as MasteryData;
 }
 
 function context(shape: Shape = {}): SuggestionContext {
@@ -67,7 +72,7 @@ function context(shape: Shape = {}): SuggestionContext {
     inventory: shape.inventory ?? null,
     itemDb: shape.itemDb ?? itemDb(),
     inventoryModifiedAt: null,
-    mastery: null,
+    mastery: shape.mastery ?? null,
     relicDb: shape.relicDb ?? null,
     plat: null,
     tracker: tracker(),
@@ -340,11 +345,21 @@ describe("acquisitionStatuses", () => {
       { win: "mastery", done: false },
       { win: "subsume", done: false },
     ]);
-    const owned = draftFor(collect({ inventory: inventory({ suits: [MAG] }) }), MAG);
-    expect(statusesOf(owned)).toEqual([
+    const mastered = draftFor(
+      collect({ inventory: inventory({ suits: [MAG] }), mastery: roster("mastered") }),
+      MAG,
+    );
+    expect(statusesOf(mastered)).toEqual([
       { win: "mastery", done: true },
       { win: "subsume", done: false },
     ]);
+  });
+
+  it("reads an owned frame still at rank 0 as not mastered", () => {
+    const owned = { inventory: inventory({ suits: [MAG] }) };
+    expect(statusesOf(draftFor(collect(owned), MAG))[0]).toEqual({ win: "mastery", done: false });
+    const levelling = draftFor(collect({ ...owned, mastery: roster("progress") }), MAG);
+    expect(statusesOf(levelling)[0]).toEqual({ win: "mastery", done: false });
   });
 
   it("draws nothing for a frame the Helminth refuses", () => {

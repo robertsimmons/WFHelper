@@ -9,20 +9,7 @@
     "need": 3,
     "unit": "parts"
   },
-  "badges": [
-    {
-      "text": "Entrati Associate",
-      "tone": "warn",
-      "rank": {
-        "syndicate": "Entrati",
-        "level": 3
-      }
-    },
-    {
-      "text": "MR 14",
-      "tone": "info"
-    }
-  ],
+  "badges": [],
   "prices": [
     {
       "label": "blueprints",
@@ -84,47 +71,11 @@
   ],
   "groups": [
     {
-      "type": "gate",
-      "place": "MASTERY RANK, ENTRATI",
-      "sub": null,
-      "activity": null,
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Mastery Rank 14",
-          "note": "to equip it",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Entrati Associate",
-          "note": "Rank 2 Acquaintance opens the blueprints; the Receiver needs Trapezium Xenorhast, whose blueprint opens at Rank 3",
-          "alt": null,
-          "done": false,
-          "rank": {
-            "syndicate": "Entrati",
-            "level": 3
-          }
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
       "type": "currency",
       "place": "NECRALISK, DEIMOS",
       "sub": null,
       "activity": "rank up with the Entrati to Associate, then buy the blueprints",
-      "meta": "79,000 standing: 71,000 for the rank-ups, 8,000 for the blueprints",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -138,7 +89,7 @@
         {
           "qty": "6",
           "label": "Benign Infested Tumor",
-          "note": "Rank 1 Stranger sacrifice",
+          "note": "sacrifice",
           "alt": null,
           "done": false,
           "rank": {
@@ -149,7 +100,7 @@
         {
           "qty": "6",
           "label": "Ferment Bladder",
-          "note": "Rank 1 Stranger sacrifice",
+          "note": "sacrifice",
           "alt": null,
           "done": false,
           "rank": {
@@ -160,7 +111,7 @@
         {
           "qty": "1",
           "label": "Keratinos Blade Blueprint",
-          "note": "Rank 2 Acquaintance sacrifice",
+          "note": "sacrifice",
           "alt": null,
           "done": false,
           "rank": {
@@ -171,7 +122,7 @@
         {
           "qty": "1",
           "label": "Father Token",
-          "note": "Rank 2 Acquaintance sacrifice",
+          "note": "sacrifice",
           "alt": null,
           "done": false,
           "rank": {
@@ -182,7 +133,7 @@
         {
           "qty": "1",
           "label": "Daughter Token",
-          "note": "Rank 2 Acquaintance sacrifice",
+          "note": "sacrifice",
           "alt": null,
           "done": false,
           "rank": {
@@ -193,7 +144,7 @@
         {
           "qty": "3",
           "label": "Sly Vulpaphyla Tag",
-          "note": "Rank 3 Associate sacrifice",
+          "note": "sacrifice",
           "alt": null,
           "done": false,
           "rank": {
@@ -204,7 +155,7 @@
         {
           "qty": "3",
           "label": "Vizier Predasite Tag",
-          "note": "Rank 3 Associate sacrifice",
+          "note": "sacrifice",
           "alt": null,
           "done": false,
           "rank": {
@@ -215,7 +166,7 @@
         {
           "qty": "1",
           "label": "Mother Token",
-          "note": "Rank 3 Associate sacrifice",
+          "note": "sacrifice",
           "alt": null,
           "done": false,
           "rank": {
@@ -226,7 +177,7 @@
         {
           "qty": "1",
           "label": "Son Token",
-          "note": "Rank 3 Associate sacrifice",
+          "note": "sacrifice",
           "alt": null,
           "done": false,
           "rank": {
@@ -266,34 +217,58 @@
         {
           "qty": null,
           "label": "Entrati Rank 1, Stranger",
-          "note": "5,000 standing",
+          "note": null,
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "Entrati",
             "level": 1
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Entrati Standing",
+                "amount": "5,000"
+              }
+            ]
           }
         },
         {
           "qty": null,
           "label": "Entrati Rank 2, Acquaintance",
-          "note": "22,000 standing",
+          "note": null,
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "Entrati",
             "level": 2
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Entrati Standing",
+                "amount": "22,000"
+              }
+            ]
           }
         },
         {
           "qty": null,
           "label": "Entrati Rank 3, Associate",
-          "note": "44,000 standing",
+          "note": null,
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "Entrati",
             "level": 3
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Entrati Standing",
+                "amount": "44,000"
+              }
+            ]
           }
         }
       ],
@@ -305,8 +280,8 @@
       "type": "vendor",
       "place": "FATHER, NECRALISK",
       "sub": null,
-      "activity": "buy the blueprints at Rank 2 Acquaintance",
-      "meta": "8,000 standing",
+      "activity": "buy the blueprints",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -322,23 +297,59 @@
         {
           "qty": null,
           "label": "Sepulcrum Blueprint",
-          "note": "4,000 standing",
+          "note": null,
           "alt": "or take it as the free Rank 2 reward",
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Entrati Standing",
+                "amount": "4,000"
+              }
+            ],
+            "rank": {
+              "syndicate": "Entrati",
+              "level": 2
+            }
+          }
         },
         {
           "qty": null,
           "label": "Sepulcrum Barrel Blueprint",
-          "note": "2,000 standing",
+          "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Entrati Standing",
+                "amount": "2,000"
+              }
+            ],
+            "rank": {
+              "syndicate": "Entrati",
+              "level": 2
+            }
+          }
         },
         {
           "qty": null,
           "label": "Sepulcrum Receiver Blueprint",
-          "note": "2,000 standing",
+          "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Entrati Standing",
+                "amount": "2,000"
+              }
+            ],
+            "rank": {
+              "syndicate": "Entrati",
+              "level": 2
+            }
+          }
         }
       ],
       "conditions": [],

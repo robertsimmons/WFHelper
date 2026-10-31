@@ -4,18 +4,55 @@
   "effort": 2,
   "source": "shop",
   "tradeable": false,
-  "progress": { "have": 0, "need": 1, "unit": "weapon" },
-  "badges": [{ "text": "Market or Junction", "tone": "info" }],
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "weapon"
+  },
+  "badges": [
+    {
+      "text": "Market or Junction",
+      "tone": "info"
+    }
+  ],
   "prices": [
-    { "label": "blueprint", "amount": "20,000 cr", "money": false },
-    { "label": "build", "amount": "25,000 cr", "money": false }
+    {
+      "label": "blueprint",
+      "amount": "20,000 cr",
+      "money": false
+    },
+    {
+      "label": "build",
+      "amount": "25,000 cr",
+      "money": false
+    }
   ],
   "materials": [
-    { "qty": "2", "label": "Neurodes", "note": null },
-    { "qty": "200", "label": "Alloy Plate", "note": null },
-    { "qty": "750", "label": "Salvage", "note": null },
-    { "qty": "120", "label": "Polymer Bundle", "note": null },
-    { "qty": "45,000", "label": "Credits", "note": null }
+    {
+      "qty": "2",
+      "label": "Neurodes",
+      "note": null
+    },
+    {
+      "qty": "200",
+      "label": "Alloy Plate",
+      "note": null
+    },
+    {
+      "qty": "750",
+      "label": "Salvage",
+      "note": null
+    },
+    {
+      "qty": "120",
+      "label": "Polymer Bundle",
+      "note": null
+    },
+    {
+      "qty": "45,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
     {
@@ -23,7 +60,7 @@
       "place": "MARKET",
       "sub": null,
       "activity": "buy the blueprint",
-      "meta": "20,000 cr",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -34,9 +71,17 @@
         {
           "qty": null,
           "label": "Kraken Blueprint",
-          "note": "20,000 cr",
+          "note": null,
           "alt": "or the Mars to Phobos Junction completion reward",
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Credits",
+                "amount": "20,000"
+              }
+            ]
+          }
         }
       ],
       "conditions": [],

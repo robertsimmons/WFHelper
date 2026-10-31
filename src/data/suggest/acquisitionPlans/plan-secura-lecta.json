@@ -9,20 +9,7 @@
     "need": 1,
     "unit": "purchase"
   },
-  "badges": [
-    {
-      "text": "Perrin Partner",
-      "tone": "warn",
-      "rank": {
-        "syndicate": "The Perrin Sequence",
-        "level": 5
-      }
-    },
-    {
-      "text": "MR 8",
-      "tone": "info"
-    }
-  ],
+  "badges": [],
   "prices": [
     {
       "label": "standing",
@@ -38,47 +25,11 @@
   "materials": [],
   "groups": [
     {
-      "type": "gate",
-      "place": "ORBITER",
-      "sub": "Syndicate console",
-      "activity": "reach Partner with The Perrin Sequence",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Mastery Rank 8",
-          "note": "needed to buy it",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "The Perrin Sequence Partner",
-          "note": "Rank 5",
-          "alt": null,
-          "done": false,
-          "rank": {
-            "syndicate": "The Perrin Sequence",
-            "level": 5
-          }
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
       "type": "currency",
       "place": "ANY MISSION",
       "sub": null,
       "activity": "pledge The Perrin Sequence, earn standing from mission Affinity and Syndicate Medallions",
-      "meta": "365,000 standing total to Partner plus the whip",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -92,63 +43,111 @@
         {
           "qty": "100",
           "label": "Polymer Bundle",
-          "note": "Initiation sacrifice, 10,000 cr",
+          "note": "Initiation sacrifice",
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Credits",
+                "amount": "10,000"
+              }
+            ]
+          }
         },
         {
           "qty": "2",
           "label": "Detonite Ampule",
-          "note": "Rank 1 Associate sacrifice, 30,000 cr",
+          "note": "sacrifice",
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "The Perrin Sequence",
             "level": 1
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Credits",
+                "amount": "30,000"
+              }
+            ]
           }
         },
         {
           "qty": "1",
           "label": "Forma",
-          "note": "Rank 2 Senior Associate sacrifice, 50,000 cr",
+          "note": "sacrifice",
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "The Perrin Sequence",
             "level": 2
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Credits",
+                "amount": "50,000"
+              }
+            ]
           }
         },
         {
           "qty": "1",
           "label": "Orokin Reactor",
-          "note": "Rank 3 Executive sacrifice, 100,000 cr",
+          "note": "sacrifice",
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "The Perrin Sequence",
             "level": 3
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Credits",
+                "amount": "100,000"
+              }
+            ]
           }
         },
         {
           "qty": "2",
           "label": "Aya",
-          "note": "Rank 4 Senior Executive sacrifice, 250,000 cr",
+          "note": "sacrifice",
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "The Perrin Sequence",
             "level": 4
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Credits",
+                "amount": "250,000"
+              }
+            ]
           }
         },
         {
           "qty": "3",
           "label": "Aya",
-          "note": "Rank 5 Partner sacrifice, 500,000 cr",
+          "note": "sacrifice",
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "The Perrin Sequence",
             "level": 5
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Credits",
+                "amount": "500,000"
+              }
+            ]
           }
         }
       ],
@@ -186,56 +185,96 @@
         {
           "qty": null,
           "label": "Rank 1, Associate",
-          "note": "5,000 standing",
+          "note": null,
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "The Perrin Sequence",
             "level": 1
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "The Perrin Sequence Standing",
+                "amount": "5,000"
+              }
+            ]
           }
         },
         {
           "qty": null,
           "label": "Rank 2, Senior Associate",
-          "note": "22,000 standing",
+          "note": null,
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "The Perrin Sequence",
             "level": 2
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "The Perrin Sequence Standing",
+                "amount": "22,000"
+              }
+            ]
           }
         },
         {
           "qty": null,
           "label": "Rank 3, Executive",
-          "note": "44,000 standing",
+          "note": null,
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "The Perrin Sequence",
             "level": 3
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "The Perrin Sequence Standing",
+                "amount": "44,000"
+              }
+            ]
           }
         },
         {
           "qty": null,
           "label": "Rank 4, Senior Executive",
-          "note": "70,000 standing",
+          "note": null,
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "The Perrin Sequence",
             "level": 4
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "The Perrin Sequence Standing",
+                "amount": "70,000"
+              }
+            ]
           }
         },
         {
           "qty": null,
           "label": "Rank 5, Partner",
-          "note": "99,000 standing",
+          "note": null,
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "The Perrin Sequence",
             "level": 5
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "The Perrin Sequence Standing",
+                "amount": "99,000"
+              }
+            ]
           }
         }
       ],
@@ -248,7 +287,7 @@
       "place": "PERRIN SEQUENCE OFFERINGS, RELAY",
       "sub": null,
       "activity": "buy the whip",
-      "meta": "125,000 standing",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -266,7 +305,15 @@
           "label": "Secura Lecta",
           "note": "arrives built, no Foundry step",
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "The Perrin Sequence Standing",
+                "amount": "125,000"
+              }
+            ]
+          }
         }
       ],
       "conditions": [

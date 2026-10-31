@@ -4,16 +4,24 @@
   "effort": 9,
   "source": "boss",
   "tradeable": false,
-  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "progress": {
+    "have": 0,
+    "need": 4,
+    "unit": "parts"
+  },
   "badges": [
-    { "text": "Diluted Thermia", "tone": "warn" },
     {
-      "text": "Vox Solaris Agent",
-      "tone": "warn",
-      "rank": { "syndicate": "Vox Solaris", "level": 2 }
+      "text": "Diluted Thermia",
+      "tone": "warn"
     }
   ],
-  "prices": [{ "label": "blueprint", "amount": "5,000 Vox Solaris Standing", "money": false }],
+  "prices": [
+    {
+      "label": "blueprint",
+      "amount": "5,000 Vox Solaris Standing",
+      "money": false
+    }
+  ],
   "routes": [
     {
       "name": "Exploiter Orb, Little Duck blueprint",
@@ -29,57 +37,86 @@
     }
   ],
   "materials": [
-    { "qty": "6", "label": "Diluted Thermia", "note": "one per Exploiter fight" },
-    { "qty": "6", "label": "Lazulite Toroid", "note": "2 per part" },
-    { "qty": "2", "label": "Nitain Extract", "note": "Chassis" },
-    { "qty": "90", "label": "Thermal Sludge", "note": "Chassis" },
-    { "qty": "2,300", "label": "Rubedo", "note": "Chassis" },
-    { "qty": "1", "label": "Argon Crystal", "note": "Neuroptics" },
-    { "qty": "85", "label": "Mytocardia Spore", "note": "Neuroptics" },
-    { "qty": "1,600", "label": "Circuits", "note": "Neuroptics" },
-    { "qty": "2", "label": "Tellurium", "note": "Systems" },
-    { "qty": "95", "label": "Gorgaricus Spore", "note": "Systems" },
-    { "qty": "1,500", "label": "Plastids", "note": "Systems" },
-    { "qty": "3", "label": "Orokin Cell", "note": "Hildryn" },
-    { "qty": "70,000", "label": "Credits", "note": null }
+    {
+      "qty": "6",
+      "label": "Diluted Thermia",
+      "note": "one per Exploiter fight"
+    },
+    {
+      "qty": "6",
+      "label": "Lazulite Toroid",
+      "note": "2 per part"
+    },
+    {
+      "qty": "2",
+      "label": "Nitain Extract",
+      "note": "Chassis"
+    },
+    {
+      "qty": "90",
+      "label": "Thermal Sludge",
+      "note": "Chassis"
+    },
+    {
+      "qty": "2,300",
+      "label": "Rubedo",
+      "note": "Chassis"
+    },
+    {
+      "qty": "1",
+      "label": "Argon Crystal",
+      "note": "Neuroptics"
+    },
+    {
+      "qty": "85",
+      "label": "Mytocardia Spore",
+      "note": "Neuroptics"
+    },
+    {
+      "qty": "1,600",
+      "label": "Circuits",
+      "note": "Neuroptics"
+    },
+    {
+      "qty": "2",
+      "label": "Tellurium",
+      "note": "Systems"
+    },
+    {
+      "qty": "95",
+      "label": "Gorgaricus Spore",
+      "note": "Systems"
+    },
+    {
+      "qty": "1,500",
+      "label": "Plastids",
+      "note": "Systems"
+    },
+    {
+      "qty": "3",
+      "label": "Orokin Cell",
+      "note": "Hildryn"
+    },
+    {
+      "qty": "70,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
-    {
-      "type": "gate",
-      "place": "FORTUNA, VENUS",
-      "sub": "Vox Solaris / Little Duck",
-      "activity": "reach Agent",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Vox Solaris Rank 2: Agent",
-          "note": "rank up with 1 Gyromag Systems and 1 Vega Toroid",
-          "alt": null,
-          "done": false,
-          "rank": { "syndicate": "Vox Solaris", "level": 2 }
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
     {
       "type": "currency",
       "place": "FORTUNA, VENUS",
       "sub": "Vox Solaris",
       "activity": "earn standing for the main blueprint",
-      "meta": "5,000 standing",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
-      "earns": { "currency": "Vox Solaris Standing", "amount": "5,000" },
+      "earns": {
+        "currency": "Vox Solaris Standing",
+        "amount": "5,000"
+      },
       "spends": [],
       "map": null,
       "rows": [
@@ -101,12 +138,17 @@
       "place": "FORTUNA, VENUS",
       "sub": "Little Duck",
       "activity": "buy the main blueprint",
-      "meta": "5,000 Vox Solaris Standing",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Vox Solaris Standing", "amount": "5,000" }],
+      "spends": [
+        {
+          "currency": "Vox Solaris Standing",
+          "amount": "5,000"
+        }
+      ],
       "map": null,
       "rows": [
         {
@@ -114,7 +156,15 @@
           "label": "Hildryn Blueprint",
           "note": null,
           "alt": "or Circuit week 11, tier 10",
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Vox Solaris Standing",
+                "amount": "5,000"
+              }
+            ]
+          }
         }
       ],
       "conditions": [],
@@ -130,8 +180,16 @@
       "mode": null,
       "live": null,
       "skip": null,
-      "earns": { "currency": "Lazulite Toroid", "amount": "6" },
-      "spends": [{ "currency": "Diluted Thermia", "amount": "6" }],
+      "earns": {
+        "currency": "Lazulite Toroid",
+        "amount": "6"
+      },
+      "spends": [
+        {
+          "currency": "Diluted Thermia",
+          "amount": "6"
+        }
+      ],
       "map": "orb-vallis",
       "rows": [
         {

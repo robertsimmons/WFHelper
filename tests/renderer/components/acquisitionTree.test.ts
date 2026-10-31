@@ -21,13 +21,14 @@ const NEXTUP = path.join(
 );
 
 const tree = (): string => fs.readFileSync(path.join(NEXTUP, "AcquisitionTree.svelte"), "utf8");
+const body = (): string => fs.readFileSync(path.join(NEXTUP, "AcquisitionBody.svelte"), "utf8");
 const modal = (): string =>
   fs.readFileSync(path.join(NEXTUP, "SuggestionDetailsModal.svelte"), "utf8");
 
 describe("acquisition tree", () => {
   it("counts what the player holds off the never-depleted ownership map", () => {
     const text = tree();
-    expect(text).toContain("buildCraftingTree(root, $itemDb, $componentOwnership, {");
+    expect(text).toContain("buildCraftingTree(root, $itemDb, $componentOwnership, OPTIONS)");
     // The resolver's own part rows are drained by a shared allocation pool, so
     // a count read off them reads as zero held.
     for (const drained of ["target.parts.materials", "target.parts.components", "parts.main"]) {
@@ -35,33 +36,41 @@ describe("acquisition tree", () => {
     }
   });
 
-  it("opens a branch that is short and closes one that is covered", () => {
+  it("keeps every part closed until the player opens it", () => {
     const text = tree();
-    // The length of the tree is itself the headache read, so nothing the player
-    // has finished with takes up a line until they ask for it.
-    expect(text).toContain("return opened.get(path) ?? (depth === 0 || node.missing > 0);");
-    expect(text).toContain("onclick={() => toggle(path, node, depth)}");
+    expect(text).toContain("{@const open = opened.get(path) ?? false}");
+    expect(text).toContain("onclick={() => opened.set(path, !open)}");
     expect(text).toContain("aria-expanded={open}");
   });
 
-  it("leaves an unpriced route blank rather than printing a zero", () => {
+  it("draws a name and a have/need count, nothing else", () => {
     const text = tree();
-    expect(text).toContain("{#if platSet !== null}");
-    expect(text).toContain("{#if platParts !== null}");
-    expect(text).not.toMatch(/plat\??\.\s*set\s*\?\?\s*0/);
-    expect(text).not.toMatch(/partsTotal\s*\?\?\s*0/);
-  });
-
-  it("never invents an in-game market price the app does not hold", () => {
-    const text = tree();
-    for (const absent of ["platinumCost", "creditsCost", "marketPrice"]) {
+    for (const absent of [
+      "formatBuildTime",
+      "buildPrice",
+      "buildTime",
+      "creditsShort",
+      "nextUp.treeInOrder",
+      "nextUp.treeInParallel",
+      "nextUp.treePerCraft",
+      "acqPlatEach",
+      "computeCraftingSummary",
+    ]) {
       expect(text).not.toContain(absent);
     }
+    expect(text).toContain("{formatNumber(node.owned)}/{formatNumber(node.count)}");
+  });
+
+  it("lists the parts the plan builds that the recipe does not", () => {
+    const text = tree();
+    expect(text).toContain("planOnlyParts(plan, tree, $itemDb)");
+    expect(text).toContain("partLeaf(part)");
   });
 
   it("stands the flat part and material lists down once it has a root", () => {
     const text = modal();
-    expect(text).toContain("<AcquisitionTree target={acq} root={treeRoot} />");
+    expect(text).toMatch(/<AcquisitionBody\s+\{plan\}\s+root=\{treeRoot\}/);
+    expect(body()).toContain("<AcquisitionTree {root} {plan} />");
     // Nothing is cut when there is no recipe to walk: the old lists stay as the
     // fallback, which is also what keeps their labels honest.
     expect(text).toContain("{#if partTiles.length > 0 && !treeRoot}");

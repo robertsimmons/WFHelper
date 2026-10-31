@@ -4,12 +4,28 @@
   "effort": 4,
   "source": "boss",
   "tradeable": false,
-  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "progress": {
+    "have": 0,
+    "need": 4,
+    "unit": "parts"
+  },
   "badges": [
-    { "text": "RNG boss drops", "tone": "warn" },
-    { "text": "Circuit week 5", "tone": "circuit" }
+    {
+      "text": "RNG boss drops",
+      "tone": "warn"
+    },
+    {
+      "text": "Circuit week 5",
+      "tone": "circuit"
+    }
   ],
-  "prices": [{ "label": "blueprint", "amount": "100,000 cr", "money": false }],
+  "prices": [
+    {
+      "label": "blueprint",
+      "amount": "100,000 cr",
+      "money": false
+    }
+  ],
   "routes": [
     {
       "name": "Lephantis on Magnacidium",
@@ -25,17 +41,61 @@
     }
   ],
   "materials": [
-    { "qty": "150", "label": "Alloy Plate", "note": "Neuroptics" },
-    { "qty": "1", "label": "Neural Sensors", "note": "Neuroptics" },
-    { "qty": "150", "label": "Polymer Bundle", "note": "Neuroptics" },
-    { "qty": "800", "label": "Rubedo", "note": "500 Neuroptics, 300 Chassis" },
-    { "qty": "2", "label": "Morphics", "note": "1 Chassis, 1 Systems" },
-    { "qty": "1,000", "label": "Ferrite", "note": "Chassis" },
-    { "qty": "1", "label": "Control Module", "note": "Systems" },
-    { "qty": "500", "label": "Salvage", "note": "Systems" },
-    { "qty": "220", "label": "Plastids", "note": "Systems" },
-    { "qty": "3", "label": "Orokin Cell", "note": "Nekros" },
-    { "qty": "170,000", "label": "Credits", "note": null }
+    {
+      "qty": "150",
+      "label": "Alloy Plate",
+      "note": "Neuroptics"
+    },
+    {
+      "qty": "1",
+      "label": "Neural Sensors",
+      "note": "Neuroptics"
+    },
+    {
+      "qty": "150",
+      "label": "Polymer Bundle",
+      "note": "Neuroptics"
+    },
+    {
+      "qty": "800",
+      "label": "Rubedo",
+      "note": "500 Neuroptics, 300 Chassis"
+    },
+    {
+      "qty": "2",
+      "label": "Morphics",
+      "note": "1 Chassis, 1 Systems"
+    },
+    {
+      "qty": "1,000",
+      "label": "Ferrite",
+      "note": "Chassis"
+    },
+    {
+      "qty": "1",
+      "label": "Control Module",
+      "note": "Systems"
+    },
+    {
+      "qty": "500",
+      "label": "Salvage",
+      "note": "Systems"
+    },
+    {
+      "qty": "220",
+      "label": "Plastids",
+      "note": "Systems"
+    },
+    {
+      "qty": "3",
+      "label": "Orokin Cell",
+      "note": "Nekros"
+    },
+    {
+      "qty": "170,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
     {
@@ -43,12 +103,17 @@
       "place": "MARKET",
       "sub": null,
       "activity": "buy the main blueprint",
-      "meta": "100,000 cr",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Credits", "amount": "100,000" }],
+      "spends": [
+        {
+          "currency": "Credits",
+          "amount": "100,000"
+        }
+      ],
       "map": null,
       "rows": [
         {
@@ -56,7 +121,15 @@
           "label": "Nekros Blueprint",
           "note": null,
           "alt": "or Circuit week 5, tier 10",
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Credits",
+                "amount": "100,000"
+              }
+            ]
+          }
         }
       ],
       "conditions": [

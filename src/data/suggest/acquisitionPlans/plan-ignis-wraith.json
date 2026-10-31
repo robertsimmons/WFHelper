@@ -13,10 +13,6 @@
     {
       "text": "Chem Lab",
       "tone": "warn"
-    },
-    {
-      "text": "MR 9",
-      "tone": "info"
     }
   ],
   "prices": [
@@ -60,36 +56,11 @@
   ],
   "groups": [
     {
-      "type": "gate",
-      "place": "MASTERY RANK",
-      "sub": null,
-      "activity": "reach MR 9",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Mastery Rank 9",
-          "note": "needed to equip it",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
       "type": "vendor",
       "place": "CLAN DOJO, CHEM LAB",
       "sub": null,
       "activity": "buy the blueprint at the Chem Lab",
-      "meta": "20,000 cr",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -107,7 +78,15 @@
           "label": "Ignis Wraith Blueprint",
           "note": null,
           "alt": "or 12 Advances Debt-Bonds from Ticker in Fortuna during Star Days",
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Credits",
+                "amount": "20,000"
+              }
+            ]
+          }
         }
       ],
       "conditions": [],

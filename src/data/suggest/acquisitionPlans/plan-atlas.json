@@ -104,32 +104,6 @@
   ],
   "groups": [
     {
-      "type": "gate",
-      "place": "QUESTS",
-      "sub": null,
-      "activity": "finish The Jordas Precept",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "The Jordas Precept",
-          "note": "unlocks the Jordas Golem fight, flown in Archwing",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": ["Replaying a quest does not re-grant its reward."],
-      "bonuses": [],
-      "disclosures": [],
-      "quest": "The Jordas Precept"
-    },
-    {
       "type": "farm",
       "place": "THE JORDAS PRECEPT",
       "sub": null,
@@ -273,7 +247,7 @@
         "place": "CEPHALON SIMARIS",
         "sub": null,
         "activity": "scan targets with the Synthesis Scanner",
-        "meta": "50,000 Standing",
+        "meta": null,
         "mode": null,
         "live": null,
         "skip": null,
@@ -302,7 +276,7 @@
         "place": "CEPHALON SIMARIS",
         "sub": null,
         "activity": "buy a replacement main blueprint",
-        "meta": "50,000 Standing",
+        "meta": null,
         "mode": null,
         "live": null,
         "skip": null,
@@ -318,12 +292,20 @@
           {
             "qty": null,
             "label": "Atlas Blueprint",
-            "note": "50,000 Standing",
+            "note": null,
             "alt": {
               "text": "or Circuit week 7, tier 10",
               "spends": []
             },
-            "done": false
+            "done": false,
+            "buy": {
+              "price": [
+                {
+                  "currency": "Cephalon Simaris Standing",
+                  "amount": "50,000"
+                }
+              ]
+            }
           }
         ],
         "conditions": ["Simaris only stocks it once The Jordas Precept is done."],

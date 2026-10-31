@@ -9,16 +9,7 @@
     "need": 8,
     "unit": "Prisms"
   },
-  "badges": [
-    {
-      "text": "Quills and Vox Solaris to Instrument",
-      "tone": "warn"
-    },
-    {
-      "text": "The War Within gate",
-      "tone": "warn"
-    }
-  ],
+  "badges": [],
   "prices": [
     {
       "label": "rank-ups, both syndicates",
@@ -155,50 +146,11 @@
   ],
   "groups": [
     {
-      "type": "gate",
-      "place": "CETUS, EARTH",
-      "sub": null,
-      "activity": "quests that open both amp vendors",
-      "meta": "one-time",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Saya's Vigil",
-          "note": "needed with The War Within for the Mote Amp",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "The War Within",
-          "note": "opens The Quills behind Konzu's board; only the Operator can enter",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Vox Solaris quest",
-          "note": "opens Little Duck in Fortuna, who also needs one talk with Onkko first",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": ["Onkko and Little Duck only deal with the Operator or the Drifter"],
-      "bonuses": ["The Quills hand over the Mote Amp, the first Prism, on your first visit"],
-      "disclosures": []
-    },
-    {
       "type": "currency",
       "place": "CETUS, EARTH",
       "sub": null,
       "activity": "Sentient Cores turned in to Onkko",
-      "meta": "202,000 Standing",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -227,7 +179,7 @@
       "place": "QUILL ONKKO, CETUS",
       "sub": null,
       "activity": "The Quills rank-ups to Instrument",
-      "meta": "430,000 cr",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -243,45 +195,93 @@
         {
           "qty": null,
           "label": "Mote",
-          "note": "5,000 standing, 10 Intact Sentient Cores, 30,000 cr",
+          "note": "10 Intact Sentient Cores",
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "The Quills",
             "level": 1
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "The Quills Standing",
+                "amount": "5,000"
+              },
+              {
+                "currency": "Credits",
+                "amount": "30,000"
+              }
+            ]
           }
         },
         {
           "qty": null,
           "label": "Observer",
-          "note": "22,000 standing, 20 Intact Sentient Cores, 50,000 cr",
+          "note": "20 Intact Sentient Cores",
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "The Quills",
             "level": 2
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "The Quills Standing",
+                "amount": "22,000"
+              },
+              {
+                "currency": "Credits",
+                "amount": "50,000"
+              }
+            ]
           }
         },
         {
           "qty": null,
           "label": "Adherent",
-          "note": "44,000 standing, 10 Eidolon Shards, 100,000 cr",
+          "note": "10 Eidolon Shards",
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "The Quills",
             "level": 3
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "The Quills Standing",
+                "amount": "44,000"
+              },
+              {
+                "currency": "Credits",
+                "amount": "100,000"
+              }
+            ]
           }
         },
         {
           "qty": null,
           "label": "Instrument",
-          "note": "70,000 standing, 20 Eidolon Shards, 250,000 cr",
+          "note": "20 Eidolon Shards",
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "The Quills",
             "level": 4
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "The Quills Standing",
+                "amount": "70,000"
+              },
+              {
+                "currency": "Credits",
+                "amount": "250,000"
+              }
+            ]
           }
         }
       ],
@@ -302,7 +302,7 @@
       "place": "ORB VALLIS, VENUS",
       "sub": null,
       "activity": "Toroids turned in to Little Duck",
-      "meta": "150,000 Standing",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -331,7 +331,7 @@
       "place": "LITTLE DUCK, FORTUNA",
       "sub": null,
       "activity": "Vox Solaris rank-ups to Instrument",
-      "meta": "900,000 cr",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -347,45 +347,93 @@
         {
           "qty": null,
           "label": "Operative",
-          "note": "5,000 standing, 1 each Calda, Vega and Sola Toroid, 50,000 cr",
+          "note": "1 each Calda, Vega and Sola Toroid",
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "Vox Solaris",
             "level": 1
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Vox Solaris Standing",
+                "amount": "5,000"
+              },
+              {
+                "currency": "Credits",
+                "amount": "50,000"
+              }
+            ]
           }
         },
         {
           "qty": null,
           "label": "Agent",
-          "note": "22,000 standing, 1 Gyromag Systems, 1 Vega Toroid, 100,000 cr",
+          "note": "1 Gyromag Systems, 1 Vega Toroid",
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "Vox Solaris",
             "level": 2
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Vox Solaris Standing",
+                "amount": "22,000"
+              },
+              {
+                "currency": "Credits",
+                "amount": "100,000"
+              }
+            ]
           }
         },
         {
           "qty": null,
           "label": "Hand",
-          "note": "44,000 standing, 1 Atmo Systems, 1 Calda Toroid, 250,000 cr",
+          "note": "1 Atmo Systems, 1 Calda Toroid",
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "Vox Solaris",
             "level": 3
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Vox Solaris Standing",
+                "amount": "44,000"
+              },
+              {
+                "currency": "Credits",
+                "amount": "250,000"
+              }
+            ]
           }
         },
         {
           "qty": null,
           "label": "Instrument",
-          "note": "70,000 standing, 1 Repeller Systems, 1 Sola Toroid, 500,000 cr",
+          "note": "1 Repeller Systems, 1 Sola Toroid",
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "Vox Solaris",
             "level": 4
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Vox Solaris Standing",
+                "amount": "70,000"
+              },
+              {
+                "currency": "Credits",
+                "amount": "500,000"
+              }
+            ]
           }
         }
       ],
@@ -402,7 +450,7 @@
       "place": "QUILL ONKKO, CETUS",
       "sub": null,
       "activity": "buy four Prisms and a cheap Scaffold and Brace per Prism",
-      "meta": "21,000 Quills standing",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -418,51 +466,133 @@
         {
           "qty": null,
           "label": "Mote Amp",
-          "note": "free on first visit; blueprint 500 standing at Neutral if lost",
-          "alt": null,
+          "note": "free on first visit",
+          "alt": {
+            "text": "blueprint if lost",
+            "spends": [
+              {
+                "currency": "The Quills Standing",
+                "amount": "500"
+              }
+            ]
+          },
           "done": false
         },
         {
           "qty": null,
           "label": "Raplak Prism",
-          "note": "1,000 standing, Mote",
+          "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "The Quills Standing",
+                "amount": "1,000"
+              }
+            ],
+            "rank": {
+              "syndicate": "The Quills",
+              "level": 1
+            }
+          }
         },
         {
           "qty": null,
           "label": "Shwaak Prism",
-          "note": "1,500 standing, Observer",
+          "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "The Quills Standing",
+                "amount": "1,500"
+              }
+            ],
+            "rank": {
+              "syndicate": "The Quills",
+              "level": 2
+            }
+          }
         },
         {
           "qty": null,
           "label": "Granmu Prism",
-          "note": "2,000 standing, Adherent",
+          "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "The Quills Standing",
+                "amount": "2,000"
+              }
+            ],
+            "rank": {
+              "syndicate": "The Quills",
+              "level": 3
+            }
+          }
         },
         {
           "qty": null,
           "label": "Rahn Prism",
-          "note": "2,500 standing, Instrument",
+          "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "The Quills Standing",
+                "amount": "2,500"
+              }
+            ],
+            "rank": {
+              "syndicate": "The Quills",
+              "level": 4
+            }
+          }
         },
         {
           "qty": "7",
           "label": "Pencha Scaffold",
-          "note": "1,000 standing each, Mote",
+          "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "The Quills Standing",
+                "amount": "1,000"
+              }
+            ],
+            "rank": {
+              "syndicate": "The Quills",
+              "level": 1
+            },
+            "each": true
+          }
         },
         {
           "qty": "7",
           "label": "Clapkra Brace",
-          "note": "1,000 standing each, Mote",
+          "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "The Quills Standing",
+                "amount": "1,000"
+              }
+            ],
+            "rank": {
+              "syndicate": "The Quills",
+              "level": 1
+            },
+            "each": true
+          }
         }
       ],
       "conditions": [
@@ -482,7 +612,7 @@
       "place": "LITTLE DUCK, FORTUNA",
       "sub": null,
       "activity": "buy three Prisms",
-      "meta": "3,000 standing each",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -498,23 +628,59 @@
         {
           "qty": null,
           "label": "Cantic Prism",
-          "note": "3,000 standing, Agent",
+          "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Vox Solaris Standing",
+                "amount": "3,000"
+              }
+            ],
+            "rank": {
+              "syndicate": "Vox Solaris",
+              "level": 2
+            }
+          }
         },
         {
           "qty": null,
           "label": "Lega Prism",
-          "note": "3,000 standing, Hand",
+          "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Vox Solaris Standing",
+                "amount": "3,000"
+              }
+            ],
+            "rank": {
+              "syndicate": "Vox Solaris",
+              "level": 3
+            }
+          }
         },
         {
           "qty": null,
           "label": "Klamora Prism",
-          "note": "3,000 standing, Instrument",
+          "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Vox Solaris Standing",
+                "amount": "3,000"
+              }
+            ],
+            "rank": {
+              "syndicate": "Vox Solaris",
+              "level": 4
+            }
+          }
         }
       ],
       "conditions": [],
@@ -612,7 +778,7 @@
       "place": "QUILL ONKKO, CETUS",
       "sub": null,
       "activity": "Amp Assembly",
-      "meta": "4,000 cr each",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -625,7 +791,16 @@
           "label": "assembled Amp",
           "note": "one per bought Prism; the Mote Amp comes assembled",
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Credits",
+                "amount": "4,000"
+              }
+            ],
+            "each": true
+          }
         }
       ],
       "conditions": [
@@ -640,7 +815,7 @@
       "place": "QUILL ONKKO, CETUS",
       "sub": null,
       "activity": "gild at rank 30",
-      "meta": "5,000 standing each, 40,000 in all",
+      "meta": "40,000 in all",
       "mode": null,
       "live": null,
       "skip": null,
@@ -658,56 +833,120 @@
           "label": "Mote, gilded",
           "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "The Quills Standing",
+                "amount": "5,000"
+              }
+            ]
+          }
         },
         {
           "qty": null,
           "label": "Raplak, gilded",
           "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "The Quills Standing",
+                "amount": "5,000"
+              }
+            ]
+          }
         },
         {
           "qty": null,
           "label": "Shwaak, gilded",
           "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "The Quills Standing",
+                "amount": "5,000"
+              }
+            ]
+          }
         },
         {
           "qty": null,
           "label": "Granmu, gilded",
           "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "The Quills Standing",
+                "amount": "5,000"
+              }
+            ]
+          }
         },
         {
           "qty": null,
           "label": "Rahn, gilded",
           "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "The Quills Standing",
+                "amount": "5,000"
+              }
+            ]
+          }
         },
         {
           "qty": null,
           "label": "Cantic, gilded",
           "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "The Quills Standing",
+                "amount": "5,000"
+              }
+            ]
+          }
         },
         {
           "qty": null,
           "label": "Lega, gilded",
           "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "The Quills Standing",
+                "amount": "5,000"
+              }
+            ]
+          }
         },
         {
           "qty": null,
           "label": "Klamora, gilded",
           "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "The Quills Standing",
+                "amount": "5,000"
+              }
+            ]
+          }
         }
       ],
       "conditions": [

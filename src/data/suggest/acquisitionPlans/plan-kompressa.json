@@ -9,20 +9,7 @@
     "need": 3,
     "unit": "blueprints"
   },
-  "badges": [
-    {
-      "text": "Ventkids Rank 5",
-      "tone": "warn",
-      "rank": {
-        "syndicate": "Ventkids",
-        "level": 5
-      }
-    },
-    {
-      "text": "MR 8",
-      "tone": "info"
-    }
-  ],
+  "badges": [],
   "prices": [
     {
       "label": "blueprints",
@@ -89,43 +76,11 @@
   ],
   "groups": [
     {
-      "type": "gate",
-      "place": "VOX SOLARIS",
-      "sub": null,
-      "activity": "finish Vox Solaris",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Vox Solaris",
-          "note": "opens Fortuna and the Ventkids",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Mastery Rank 8",
-          "note": "needed to equip it",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
       "type": "currency",
       "place": "ORB VALLIS, VENUS",
       "sub": "K-Drive",
       "activity": "earn Ventkids standing",
-      "meta": "240,000 standing sacrificed across 5 rank-ups, then 50,000 for the blueprints",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -150,7 +105,7 @@
         {
           "qty": "50,000",
           "label": "Blueprint standing",
-          "note": "two of the three blueprints at 25,000 each",
+          "note": "two of the three blueprints at 25,000 each; all three if the Logical pick went elsewhere",
           "alt": null,
           "done": false
         }
@@ -181,12 +136,20 @@
         {
           "qty": null,
           "label": "Ventkids rank-ups to Logical (Rank 5)",
-          "note": "240,000 standing, 5,000 / 22,000 / 44,000 / 70,000 / 99,000 sacrificed per rank",
+          "note": "5,000 / 22,000 / 44,000 / 70,000 / 99,000 sacrificed per rank",
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "Ventkids",
             "level": 5
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Ventkids Standing",
+                "amount": "240,000"
+              }
+            ]
           }
         }
       ],
@@ -199,7 +162,7 @@
       "place": "ROKY, VENTKIDS",
       "sub": null,
       "activity": "buy the three blueprints",
-      "meta": "Rank 5, Logical",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -215,23 +178,51 @@
         {
           "qty": null,
           "label": "Kompressa Blueprint",
-          "note": "25,000 standing",
+          "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Ventkids Standing",
+                "amount": "25,000"
+              }
+            ]
+          }
         },
         {
           "qty": null,
           "label": "Barrel Blueprint",
-          "note": "25,000 standing",
+          "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Ventkids Standing",
+                "amount": "25,000"
+              }
+            ]
+          }
         },
         {
           "qty": null,
           "label": "Receiver Blueprint",
-          "note": "25,000 standing",
-          "alt": "free as the Rank 5 rank-up item",
-          "done": false
+          "note": null,
+          "alt": null,
+          "done": false,
+          "pick": {
+            "rank": {
+              "syndicate": "Ventkids",
+              "level": 5
+            },
+            "spends": [
+              {
+                "currency": "Ventkids Standing",
+                "amount": "25,000"
+              }
+            ]
+          }
         }
       ],
       "conditions": [],

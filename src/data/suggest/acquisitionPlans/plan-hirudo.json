@@ -4,28 +4,76 @@
   "effort": 1,
   "source": "shop",
   "tradeable": false,
-  "progress": { "have": 0, "need": 1, "unit": "blueprint" },
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "blueprint"
+  },
   "badges": [
-    { "text": "no RNG farm", "tone": "info" },
-    { "text": "consumes a Kogake", "tone": "info" }
+    {
+      "text": "no RNG farm",
+      "tone": "info"
+    },
+    {
+      "text": "consumes a Kogake",
+      "tone": "info"
+    }
   ],
-  "prices": [{ "label": "build", "amount": "90,000 cr", "money": false }],
+  "prices": [
+    {
+      "label": "build",
+      "amount": "90,000 cr",
+      "money": false
+    }
+  ],
   "materials": [
-    { "qty": "400", "label": "Rubedo", "note": "Kogake" },
-    { "qty": "3", "label": "Morphics", "note": "Kogake" },
-    { "qty": "1,200", "label": "Ferrite", "note": "Kogake" },
-    { "qty": "500", "label": "Alloy Plate", "note": "Kogake" },
-    { "qty": "3", "label": "Nitain Extract", "note": "Hirudo" },
-    { "qty": "1,100", "label": "Plastids", "note": "Hirudo" },
-    { "qty": "4,600", "label": "Nano Spores", "note": "Hirudo" },
-    { "qty": "90,000", "label": "Credits", "note": null }
+    {
+      "qty": "400",
+      "label": "Rubedo",
+      "note": "Kogake"
+    },
+    {
+      "qty": "3",
+      "label": "Morphics",
+      "note": "Kogake"
+    },
+    {
+      "qty": "1,200",
+      "label": "Ferrite",
+      "note": "Kogake"
+    },
+    {
+      "qty": "500",
+      "label": "Alloy Plate",
+      "note": "Kogake"
+    },
+    {
+      "qty": "3",
+      "label": "Nitain Extract",
+      "note": "Hirudo"
+    },
+    {
+      "qty": "1,100",
+      "label": "Plastids",
+      "note": "Hirudo"
+    },
+    {
+      "qty": "4,600",
+      "label": "Nano Spores",
+      "note": "Hirudo"
+    },
+    {
+      "qty": "90,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
     {
-      "type": "gate",
-      "place": "MASTERY RANK",
+      "type": "vendor",
+      "place": "MARKET",
       "sub": null,
-      "activity": "reach MR 7",
+      "activity": "buy the Hirudo and Kogake blueprints",
       "meta": null,
       "mode": null,
       "live": null,
@@ -36,42 +84,33 @@
       "rows": [
         {
           "qty": null,
-          "label": "Mastery Rank 7",
-          "note": "the Foundry won't craft it below this",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "vendor",
-      "place": "MARKET",
-      "sub": null,
-      "activity": "buy the Hirudo and Kogake blueprints",
-      "meta": "15,000 cr each",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
           "label": "Hirudo Blueprint",
-          "note": "15,000 credits",
+          "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Credits",
+                "amount": "15,000"
+              }
+            ]
+          }
         },
         {
           "qty": null,
           "label": "Kogake Blueprint",
-          "note": "15,000 credits",
+          "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Credits",
+                "amount": "15,000"
+              }
+            ]
+          }
         }
       ],
       "conditions": ["The Hirudo recipe consumes a built Kogake, so buy both blueprints up front."],

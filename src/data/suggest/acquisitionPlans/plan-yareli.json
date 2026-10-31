@@ -108,41 +108,6 @@
   ],
   "groups": [
     {
-      "type": "gate",
-      "place": "FORTUNA, VENUS",
-      "sub": "Ventkids Clubhouse",
-      "activity": "complete Vox Solaris; reach Mastery Rank 3",
-      "meta": "unlocks The Waverider",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Vox Solaris",
-          "note": "required; grants the loaner Bondi K-Drive",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Mastery Rank 3",
-          "note": "required for the Waverider inbox message",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "The Waverider is solo-only. Start it from the Codex after the inbox message arrives, then speak to Boon."
-      ],
-      "bonuses": [],
-      "disclosures": [],
-      "quest": "The Waverider"
-    },
-    {
       "type": "farm",
       "place": "ORB VALLIS, VENUS",
       "sub": "The Waverider #1 comic",
@@ -185,7 +150,7 @@
       "place": "CLAN DOJO",
       "sub": "Ventkids' Bash Lab",
       "activity": "buy the component blueprints",
-      "meta": "45,000 credits",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -201,23 +166,47 @@
         {
           "qty": null,
           "label": "Yareli Neuroptics Blueprint",
-          "note": "15,000 credits",
+          "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Credits",
+                "amount": "15,000"
+              }
+            ]
+          }
         },
         {
           "qty": null,
           "label": "Yareli Chassis Blueprint",
-          "note": "15,000 credits",
+          "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Credits",
+                "amount": "15,000"
+              }
+            ]
+          }
         },
         {
           "qty": null,
           "label": "Yareli Systems Blueprint",
-          "note": "15,000 credits",
+          "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Credits",
+                "amount": "15,000"
+              }
+            ]
+          }
         }
       ],
       "conditions": ["The Bash Lab is its own dojo room, not the Tenno, Energy, Bio, or Chem Lab."],
@@ -287,7 +276,7 @@
         "place": "CEPHALON SIMARIS",
         "sub": null,
         "activity": "scan targets with the Synthesis Scanner",
-        "meta": "50,000 Standing, ~3 capped days",
+        "meta": "~3 capped days",
         "mode": null,
         "live": null,
         "skip": null,
@@ -316,7 +305,7 @@
         "place": "CEPHALON SIMARIS",
         "sub": null,
         "activity": "buy a replacement main blueprint",
-        "meta": "50,000 Standing",
+        "meta": null,
         "mode": null,
         "live": null,
         "skip": null,
@@ -332,9 +321,17 @@
           {
             "qty": null,
             "label": "Yareli Blueprint",
-            "note": "50,000 Standing",
+            "note": null,
             "alt": null,
-            "done": false
+            "done": false,
+            "buy": {
+              "price": [
+                {
+                  "currency": "Cephalon Simaris Standing",
+                  "amount": "50,000"
+                }
+              ]
+            }
           }
         ],
         "conditions": ["Simaris only stocks it once The Waverider is done."],

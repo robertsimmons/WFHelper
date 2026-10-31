@@ -13,14 +13,6 @@
     {
       "text": "must be Weakened",
       "tone": "warn"
-    },
-    {
-      "text": "Entrati Rank 1",
-      "tone": "info",
-      "rank": {
-        "syndicate": "Entrati",
-        "level": 1
-      }
     }
   ],
   "prices": [
@@ -69,51 +61,6 @@
   ],
   "groups": [
     {
-      "type": "gate",
-      "place": "NECRALISK, DEIMOS",
-      "sub": null,
-      "activity": "unlock Son's revivification menu",
-      "meta": "Heart of Deimos",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Heart of Deimos",
-          "note": "opens the Necralisk and Son",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Entrati: Stranger",
-          "note": "for the cheapest Mutagen and Antigen",
-          "alt": null,
-          "done": false,
-          "rank": {
-            "syndicate": "Entrati",
-            "level": 1
-          }
-        },
-        {
-          "qty": "1",
-          "label": "free Companion Slot",
-          "note": "claiming the revivified Sly needs it",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "A Sly can't be built or bought finished; Son revivifies a captured Weakened animal."
-      ],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
       "type": "bounty",
       "place": "CAMBION DRIFT, DEIMOS",
       "sub": null,
@@ -145,7 +92,7 @@
       "place": "SON, NECRALISK",
       "sub": null,
       "activity": "revivify, then gild at rank 30",
-      "meta": "5,000 cr now; 10 Son Tokens and 5,000 standing to gild",
+      "meta": "10 Son Tokens to gild",
       "mode": null,
       "live": null,
       "skip": null,
@@ -161,9 +108,17 @@
         {
           "qty": null,
           "label": "Sly Vulpaphyla, revivified",
-          "note": "Weakened Sly + Mutagen + Antigen + 5,000 credits",
+          "note": "Weakened Sly, Mutagen, Antigen",
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Credits",
+                "amount": "5,000"
+              }
+            ]
+          }
         }
       ],
       "conditions": [

@@ -48,59 +48,6 @@
   "materials": [],
   "groups": [
     {
-      "type": "gate",
-      "place": "STAR CHART",
-      "sub": null,
-      "activity": "quests and access",
-      "meta": "one-time",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "The War Within",
-          "note": null,
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Call of the Tempestarii",
-          "note": null,
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "The Deadlock Protocol",
-          "note": "Granum Crowns only appear after it",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Mastery Rank 5",
-          "note": null,
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Railjack, Intrinsics rank 3",
-          "note": "for the Neptune Proxima confrontation",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": ["Legs does not sell Hound parts; he only assembles and gilds."],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
       "type": "relics",
       "place": "KUVA SIPHON, ANY",
       "sub": null,
@@ -201,7 +148,7 @@
       "place": "ORB VALLIS, VENUS",
       "sub": null,
       "activity": "Conservation, plus Bounty 1 for the bonds",
-      "meta": "76,000 standing",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -269,34 +216,70 @@
         {
           "qty": null,
           "label": "Outworlder",
-          "note": "5,000 standing, 10,000 cr, 2 Training",
+          "note": "2 Training",
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "Solaris United",
             "level": 1
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Solaris United Standing",
+                "amount": "5,000"
+              },
+              {
+                "currency": "Credits",
+                "amount": "10,000"
+              }
+            ]
           }
         },
         {
           "qty": null,
           "label": "Rapscallion",
-          "note": "22,000 standing, 25,000 cr, 2 Training + 3 Shelter",
+          "note": "2 Training, 3 Shelter",
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "Solaris United",
             "level": 2
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Solaris United Standing",
+                "amount": "22,000"
+              },
+              {
+                "currency": "Credits",
+                "amount": "25,000"
+              }
+            ]
           }
         },
         {
           "qty": null,
           "label": "Doer",
-          "note": "44,000 standing, 50,000 cr, 2 Training + 3 Shelter + 4 Medical",
+          "note": "2 Training, 3 Shelter, 4 Medical",
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "Solaris United",
             "level": 3
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Solaris United Standing",
+                "amount": "44,000"
+              },
+              {
+                "currency": "Credits",
+                "amount": "50,000"
+              }
+            ]
           }
         }
       ],
@@ -309,7 +292,7 @@
       "place": "LEGS, FORTUNA",
       "sub": null,
       "activity": "gild at rank 30",
-      "meta": "5,000 standing + 10 bonds",
+      "meta": "10 bonds",
       "mode": null,
       "live": null,
       "skip": null,
@@ -325,9 +308,17 @@
         {
           "qty": null,
           "label": "Hec Hound, gilded",
-          "note": "and its Akaten; 10 Training Debt-Bonds, 5,000 standing",
+          "note": "and its Akaten; 10 Training Debt-Bonds",
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Solaris United Standing",
+                "amount": "5,000"
+              }
+            ]
+          }
         }
       ],
       "conditions": [

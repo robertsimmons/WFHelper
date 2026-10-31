@@ -11,14 +11,6 @@
   },
   "badges": [
     {
-      "text": "Entrati Rank 5",
-      "tone": "warn",
-      "rank": {
-        "syndicate": "Entrati",
-        "level": 5
-      }
-    },
-    {
       "text": "no RNG",
       "tone": "info"
     }
@@ -38,45 +30,11 @@
   ],
   "groups": [
     {
-      "type": "gate",
-      "place": "QUESTS",
-      "sub": null,
-      "activity": "Heart of Deimos",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Heart of Deimos",
-          "note": "unlocks Necralisk and Entrati",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Mastery Rank 8",
-          "note": "needed to equip it",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Cedo has no boss-drop or relic farm. Everything comes from Entrati standing and Father in the Necralisk."
-      ],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
       "type": "currency",
       "place": "CAMBION DRIFT, DEIMOS",
       "sub": "Necralisk / Entrati",
       "activity": "bounties and Family Token turn-ins",
-      "meta": "260,000 standing total",
+      "meta": null,
       "mode": "daily standing cap",
       "live": null,
       "skip": null,
@@ -90,7 +48,7 @@
         {
           "qty": "240,000",
           "label": "Entrati standing",
-          "note": "rank Neutral to Family (Rank 5)",
+          "note": null,
           "alt": null,
           "done": false
         },
@@ -133,12 +91,20 @@
         {
           "qty": null,
           "label": "Entrati rank-ups to Family (Rank 5)",
-          "note": "240,000 standing, from Neutral",
+          "note": null,
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "Entrati",
             "level": 5
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Entrati Standing",
+                "amount": "240,000"
+              }
+            ]
           }
         }
       ],
@@ -151,7 +117,7 @@
       "place": "NECRALISK, DEIMOS",
       "sub": null,
       "activity": "rank Entrati; buy from Father",
-      "meta": "Rank 5 - Family",
+      "meta": "- Family",
       "mode": null,
       "live": null,
       "skip": null,
@@ -167,23 +133,40 @@
         {
           "qty": null,
           "label": "Cedo Blueprint",
-          "note": "5,000 standing; Rank 4 - Friend",
+          "note": "- Friend",
           "alt": null,
           "done": false,
-          "rank": {
-            "syndicate": "Entrati",
-            "level": 4
+          "buy": {
+            "price": [
+              {
+                "currency": "Entrati Standing",
+                "amount": "5,000"
+              }
+            ],
+            "rank": {
+              "syndicate": "Entrati",
+              "level": 4
+            }
           }
         },
         {
           "qty": "3",
           "label": "Cedo components",
-          "note": "5,000 standing each; Rank 5 - Family",
+          "note": "- Family",
           "alt": null,
           "done": false,
-          "rank": {
-            "syndicate": "Entrati",
-            "level": 5
+          "buy": {
+            "price": [
+              {
+                "currency": "Entrati Standing",
+                "amount": "5,000"
+              }
+            ],
+            "each": true,
+            "rank": {
+              "syndicate": "Entrati",
+              "level": 5
+            }
           }
         }
       ],

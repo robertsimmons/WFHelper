@@ -47,15 +47,6 @@ function resolve(plan: string | AuthoredPlan, overrides: Partial<PlanContext> = 
   });
 }
 
-/** A shipped plan with one row relabelled, for a label shape no shipped plan uses. */
-function relabelled(name: string, from: string, to: string): AuthoredPlan {
-  const plan = structuredClone(load(name));
-  const row = plan.groups.flatMap((group) => group.rows).find((entry) => entry.label === from);
-  if (!row) throw new Error(`no row labelled ${from} on ${name}`);
-  row.label = to;
-  return plan;
-}
-
 function resolveShipped(plan: AuthoredPlan, overrides: Partial<PlanContext> = {}): ResolvedPlan {
   return resolvePlan(plan, { itemDb: itemDb(), inventory: inventory(), now: NOW, ...overrides });
 }
@@ -124,16 +115,25 @@ describe("done", () => {
   });
 });
 
+/** Rhino behind a gate group, the shape a gate-sourced plan still ships. */
+function gatedPlan(...labels: string[]): AuthoredPlan {
+  const base = rhinoPlan();
+  const rows = labels.map((label) => ({ qty: null, label, note: null, alt: null, done: false }));
+  return { ...base, groups: [planGroup("gate", "QUESTS", rows), ...base.groups] };
+}
+
+const HOUND_GATES = gatedPlan("The War Within", "Call of the Tempestarii", "Mastery Rank 5");
+
 describe("quest gates", () => {
   it("settles a finished quest off the inventory", () => {
-    const plan = resolve("Hound", { inventory: quests({ "The War Within": true }) });
+    const plan = resolve(HOUND_GATES, { inventory: quests({ "The War Within": true }) });
     const row = byLabel(plan, "The War Within");
     expect(row).toMatchObject({ done: true, source: "inventory", manual: false });
     expect(row.qty).toBeNull();
   });
 
   it("keeps a started quest not done and out of the player's hands", () => {
-    const plan = resolve("Hound", {
+    const plan = resolve(HOUND_GATES, {
       inventory: quests({ "The War Within": true, "Call of the Tempestarii": false }),
     });
     expect(byLabel(plan, "Call of the Tempestarii")).toMatchObject({
@@ -144,42 +144,44 @@ describe("quest gates", () => {
   });
 
   it("reads a quest the payload never mentions as unstarted", () => {
-    const plan = resolve("Hound", { inventory: quests({ "The War Within": true }) });
+    const plan = resolve(HOUND_GATES, { inventory: quests({ "The War Within": true }) });
     expect(byLabel(plan, "Call of the Tempestarii")).toMatchObject({ done: false, manual: false });
   });
 
   it("matches a label that spells out the word quest", () => {
-    const plan = resolveShipped(relabelled("Amesha", "The Archwing", "The Archwing quest"), {
+    const plan = resolve(gatedPlan("The Archwing quest"), {
       inventory: quests({ "The Archwing": true }),
     });
     expect(byLabel(plan, "The Archwing quest")).toMatchObject({ done: true, manual: false });
   });
 
   it("matches a quest DE names with a leading The", () => {
-    const plan = resolve("Nautilus", { inventory: quests({ "The Rising Tide": true }) });
+    const plan = resolve(gatedPlan("Rising Tide"), {
+      inventory: quests({ "The Rising Tide": true }),
+    });
     expect(byLabel(plan, "Rising Tide")).toMatchObject({ done: true, manual: false });
   });
 
   it("needs every leg of a chained gate", () => {
-    const chained = relabelled("Amesha", "The Archwing", "Heart of Deimos, then The New War");
-    const half = resolveShipped(chained, { inventory: quests({ "Heart of Deimos": true }) });
+    const chained = gatedPlan("Heart of Deimos, then The New War");
+    const half = resolve(chained, { inventory: quests({ "Heart of Deimos": true }) });
     expect(byLabel(half, "Heart of Deimos, then The New War")).toMatchObject({
       done: false,
       manual: false,
     });
 
-    const both = resolveShipped(chained, {
+    const both = resolve(chained, {
       inventory: quests({ "Heart of Deimos": true, "The New War": true }),
     });
     expect(byLabel(both, "Heart of Deimos, then The New War").done).toBe(true);
   });
 
   it("leaves a gate that names no quest to the player", () => {
-    const plan = resolve("Hound", { inventory: quests({ "The War Within": true }) });
+    const plan = resolve(HOUND_GATES, { inventory: quests({ "The War Within": true }) });
     const rank = byLabel(plan, "Mastery Rank 5");
     expect(rank).toMatchObject({ done: false, source: "authored", manual: true });
 
-    const ticked = resolve("Hound", {
+    const ticked = resolve(HOUND_GATES, {
       inventory: quests({ "The War Within": true }),
       manualDone: [rank.id],
     });

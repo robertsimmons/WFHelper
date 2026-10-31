@@ -4,10 +4,20 @@
   "effort": 6,
   "source": "repeat",
   "tradeable": false,
-  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "progress": {
+    "have": 0,
+    "need": 4,
+    "unit": "parts"
+  },
   "badges": [
-    { "text": "The Glast Gambit quest", "tone": "warn" },
-    { "text": "Circuit week 9", "tone": "circuit" }
+    {
+      "text": "The Glast Gambit quest",
+      "tone": "warn"
+    },
+    {
+      "text": "Circuit week 9",
+      "tone": "circuit"
+    }
   ],
   "prices": [],
   "routes": [
@@ -31,45 +41,63 @@
     }
   ],
   "materials": [
-    { "qty": "8,600", "label": "Polymer Bundle", "note": "2,600 Neuroptics, 6,000 Chassis" },
-    { "qty": "11,000", "label": "Nano Spores", "note": "5,000 Chassis, 6,000 Systems" },
-    { "qty": "2,400", "label": "Plastids", "note": "1,000 Neuroptics, 1,400 Chassis" },
-    { "qty": "10", "label": "Mutagen Sample", "note": "Neuroptics" },
-    { "qty": "3", "label": "Neural Sensors", "note": "Neuroptics" },
-    { "qty": "3", "label": "Neurodes", "note": "Chassis" },
-    { "qty": "3,500", "label": "Circuits", "note": "Systems" },
-    { "qty": "14", "label": "Morphics", "note": "Systems" },
-    { "qty": "6", "label": "Orokin Cell", "note": "Systems" },
-    { "qty": "2,000", "label": "Kuva", "note": "Nidus" },
-    { "qty": "70,000", "label": "Credits", "note": null }
+    {
+      "qty": "8,600",
+      "label": "Polymer Bundle",
+      "note": "2,600 Neuroptics, 6,000 Chassis"
+    },
+    {
+      "qty": "11,000",
+      "label": "Nano Spores",
+      "note": "5,000 Chassis, 6,000 Systems"
+    },
+    {
+      "qty": "2,400",
+      "label": "Plastids",
+      "note": "1,000 Neuroptics, 1,400 Chassis"
+    },
+    {
+      "qty": "10",
+      "label": "Mutagen Sample",
+      "note": "Neuroptics"
+    },
+    {
+      "qty": "3",
+      "label": "Neural Sensors",
+      "note": "Neuroptics"
+    },
+    {
+      "qty": "3",
+      "label": "Neurodes",
+      "note": "Chassis"
+    },
+    {
+      "qty": "3,500",
+      "label": "Circuits",
+      "note": "Systems"
+    },
+    {
+      "qty": "14",
+      "label": "Morphics",
+      "note": "Systems"
+    },
+    {
+      "qty": "6",
+      "label": "Orokin Cell",
+      "note": "Systems"
+    },
+    {
+      "qty": "2,000",
+      "label": "Kuva",
+      "note": "Nidus"
+    },
+    {
+      "qty": "70,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
-    {
-      "type": "gate",
-      "place": "QUESTS",
-      "sub": null,
-      "activity": "finish The War Within",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "The War Within",
-          "note": "then talk to Ergo Glast in any relay to start The Glast Gambit",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": [],
-      "quest": "The Glast Gambit"
-    },
     {
       "type": "farm",
       "place": "RELAY",
@@ -202,8 +230,14 @@
   "afterQuest": {
     "effort": 6,
     "badges": [
-      { "text": "Simaris 50,000 standing", "tone": "warn" },
-      { "text": "Circuit week 9", "tone": "circuit" }
+      {
+        "text": "Simaris 50,000 standing",
+        "tone": "warn"
+      },
+      {
+        "text": "Circuit week 9",
+        "tone": "circuit"
+      }
     ],
     "groups": [
       {
@@ -211,11 +245,14 @@
         "place": "CEPHALON SIMARIS",
         "sub": null,
         "activity": "scan targets with the Synthesis Scanner",
-        "meta": "50,000 Standing",
+        "meta": null,
         "mode": null,
         "live": null,
         "skip": null,
-        "earns": { "currency": "Cephalon Simaris Standing", "amount": "50,000" },
+        "earns": {
+          "currency": "Cephalon Simaris Standing",
+          "amount": "50,000"
+        },
         "spends": [],
         "map": null,
         "rows": [
@@ -237,20 +274,33 @@
         "place": "CEPHALON SIMARIS",
         "sub": null,
         "activity": "buy another main blueprint",
-        "meta": "50,000 Standing",
+        "meta": null,
         "mode": null,
         "live": null,
         "skip": null,
         "earns": null,
-        "spends": [{ "currency": "Cephalon Simaris Standing", "amount": "50,000" }],
+        "spends": [
+          {
+            "currency": "Cephalon Simaris Standing",
+            "amount": "50,000"
+          }
+        ],
         "map": null,
         "rows": [
           {
             "qty": null,
             "label": "Nidus Blueprint",
-            "note": "50,000 Standing",
+            "note": null,
             "alt": "or Circuit week 9, tier 10",
-            "done": false
+            "done": false,
+            "buy": {
+              "price": [
+                {
+                  "currency": "Cephalon Simaris Standing",
+                  "amount": "50,000"
+                }
+              ]
+            }
           }
         ],
         "conditions": [],

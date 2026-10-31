@@ -4,9 +4,19 @@
   "effort": 2,
   "source": "shop",
   "tradeable": false,
-  "progress": { "have": 0, "need": 3, "unit": "parts" },
-  "badges": [{ "text": "The Deadlock Protocol, MR 4", "tone": "info" }],
-  "prices": [{ "label": "build", "amount": "5,000 cr", "money": false }],
+  "progress": {
+    "have": 0,
+    "need": 3,
+    "unit": "parts"
+  },
+  "badges": [],
+  "prices": [
+    {
+      "label": "build",
+      "amount": "5,000 cr",
+      "money": false
+    }
+  ],
   "routes": [
     {
       "name": "The Deadlock Protocol quest",
@@ -21,34 +31,14 @@
       "role": "afterQuest"
     }
   ],
-  "materials": [{ "qty": "5,000", "label": "Credits", "note": null }],
-  "groups": [
+  "materials": [
     {
-      "type": "gate",
-      "place": "MASTERY RANK",
-      "sub": null,
-      "activity": "reach MR 4",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Mastery Rank 4",
-          "note": "starts The Deadlock Protocol and is the Xoris's own rank",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": [],
-      "quest": "The Deadlock Protocol"
-    },
+      "qty": "5,000",
+      "label": "Credits",
+      "note": null
+    }
+  ],
+  "groups": [
     {
       "type": "farm",
       "place": "EUROPA",
@@ -126,18 +116,26 @@
   ],
   "afterQuest": {
     "effort": 6,
-    "badges": [{ "text": "Simaris 145,000 standing", "tone": "warn" }],
+    "badges": [
+      {
+        "text": "Simaris 145,000 standing",
+        "tone": "warn"
+      }
+    ],
     "groups": [
       {
         "type": "currency",
         "place": "CEPHALON SIMARIS",
         "sub": null,
         "activity": "scan targets with the Synthesis Scanner",
-        "meta": "145,000 Standing",
+        "meta": null,
         "mode": null,
         "live": null,
         "skip": null,
-        "earns": { "currency": "Cephalon Simaris Standing", "amount": "145,000" },
+        "earns": {
+          "currency": "Cephalon Simaris Standing",
+          "amount": "145,000"
+        },
         "spends": [],
         "map": null,
         "rows": [
@@ -159,41 +157,78 @@
         "place": "CEPHALON SIMARIS",
         "sub": null,
         "activity": "buy replacement blueprint and parts",
-        "meta": "100,000 Standing the blueprint, 15,000 a part",
+        "meta": null,
         "mode": null,
         "live": null,
         "skip": null,
         "earns": null,
-        "spends": [{ "currency": "Cephalon Simaris Standing", "amount": "145,000" }],
+        "spends": [
+          {
+            "currency": "Cephalon Simaris Standing",
+            "amount": "145,000"
+          }
+        ],
         "map": null,
         "rows": [
           {
             "qty": null,
             "label": "Xoris Blueprint",
-            "note": "100,000 Standing",
+            "note": null,
             "alt": null,
-            "done": false
+            "done": false,
+            "buy": {
+              "price": [
+                {
+                  "currency": "Cephalon Simaris Standing",
+                  "amount": "100,000"
+                }
+              ]
+            }
           },
           {
             "qty": null,
             "label": "Xoris Handle",
-            "note": "15,000 Standing",
+            "note": null,
             "alt": null,
-            "done": false
+            "done": false,
+            "buy": {
+              "price": [
+                {
+                  "currency": "Cephalon Simaris Standing",
+                  "amount": "15,000"
+                }
+              ]
+            }
           },
           {
             "qty": null,
             "label": "Xoris Core",
-            "note": "15,000 Standing",
+            "note": null,
             "alt": null,
-            "done": false
+            "done": false,
+            "buy": {
+              "price": [
+                {
+                  "currency": "Cephalon Simaris Standing",
+                  "amount": "15,000"
+                }
+              ]
+            }
           },
           {
             "qty": null,
             "label": "Xoris Blade",
-            "note": "15,000 Standing",
+            "note": null,
             "alt": null,
-            "done": false
+            "done": false,
+            "buy": {
+              "price": [
+                {
+                  "currency": "Cephalon Simaris Standing",
+                  "amount": "15,000"
+                }
+              ]
+            }
           }
         ],
         "conditions": ["Simaris only stocks these once The Deadlock Protocol is done."],

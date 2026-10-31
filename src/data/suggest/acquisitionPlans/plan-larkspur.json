@@ -4,62 +4,90 @@
   "effort": 2,
   "source": "dojo",
   "tradeable": false,
-  "progress": { "have": 0, "need": 1, "unit": "weapon" },
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "weapon"
+  },
   "badges": [
-    { "text": "Tenno Lab", "tone": "info" },
-    { "text": "MR 8", "tone": "info" }
+    {
+      "text": "Tenno Lab",
+      "tone": "info"
+    }
   ],
   "prices": [
-    { "label": "lab blueprint", "amount": "15,000 cr", "money": false },
-    { "label": "build", "amount": "20,000 cr", "money": false }
+    {
+      "label": "lab blueprint",
+      "amount": "15,000 cr",
+      "money": false
+    },
+    {
+      "label": "build",
+      "amount": "20,000 cr",
+      "money": false
+    }
   ],
   "materials": [
-    { "qty": "2", "label": "Crisma Toroid", "note": null },
-    { "qty": "80", "label": "Venerdo Alloy", "note": null },
-    { "qty": "5", "label": "Radiant Zodian", "note": null },
-    { "qty": "5", "label": "Synathid Ecosynth Analyzer", "note": null },
-    { "qty": "35,000", "label": "Credits", "note": null }
+    {
+      "qty": "2",
+      "label": "Crisma Toroid",
+      "note": null
+    },
+    {
+      "qty": "80",
+      "label": "Venerdo Alloy",
+      "note": null
+    },
+    {
+      "qty": "5",
+      "label": "Radiant Zodian",
+      "note": null
+    },
+    {
+      "qty": "5",
+      "label": "Synathid Ecosynth Analyzer",
+      "note": null
+    },
+    {
+      "qty": "35,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
-    {
-      "type": "gate",
-      "place": "MASTERY RANK",
-      "sub": null,
-      "activity": "reach MR 8",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Mastery Rank 8",
-          "note": "needed to equip it",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
     {
       "type": "vendor",
       "place": "CLAN DOJO, TENNO LAB",
       "sub": null,
       "activity": "buy the blueprint",
-      "meta": "15,000 cr",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Credits", "amount": "15,000" }],
+      "spends": [
+        {
+          "currency": "Credits",
+          "amount": "15,000"
+        }
+      ],
       "map": null,
       "rows": [
-        { "qty": null, "label": "Larkspur Blueprint", "note": null, "alt": null, "done": false }
+        {
+          "qty": null,
+          "label": "Larkspur Blueprint",
+          "note": null,
+          "alt": null,
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Credits",
+                "amount": "15,000"
+              }
+            ]
+          }
+        }
       ],
       "conditions": [],
       "bonuses": [],

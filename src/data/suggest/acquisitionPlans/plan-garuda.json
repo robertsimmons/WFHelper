@@ -11,14 +11,6 @@
   },
   "badges": [
     {
-      "text": "Cove gate",
-      "tone": "warn",
-      "rank": {
-        "syndicate": "Solaris United",
-        "level": 4
-      }
-    },
-    {
       "text": "Circuit alt",
       "tone": "circuit"
     }
@@ -124,42 +116,6 @@
   ],
   "groups": [
     {
-      "type": "gate",
-      "place": "QUESTS",
-      "sub": null,
-      "activity": "finish Vox Solaris, then reach Solaris United Cove",
-      "meta": "Cove is only for the Systems gem",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Vox Solaris",
-          "note": "needs The Teacher done; solo only",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Solaris United rank 4, Cove",
-          "note": "Marquise Thyst is sold from Cove",
-          "alt": null,
-          "done": false,
-          "rank": {
-            "syndicate": "Solaris United",
-            "level": 4
-          }
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
       "type": "farm",
       "place": "FORTUNA, VENUS",
       "sub": null,
@@ -190,7 +146,7 @@
       "place": "ORB VALLIS, VENUS",
       "sub": null,
       "activity": "Conservation and bounties for Solaris United standing",
-      "meta": "push to Rank 4 (Cove)",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -204,51 +160,83 @@
         {
           "qty": "141,000",
           "label": "rank-ups to Cove",
-          "note": "Rank 4",
+          "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "rank": {
+            "syndicate": "Solaris United",
+            "level": 4
+          }
         },
         {
           "qty": "1,000",
           "label": "Axidrol Alloy blueprint",
-          "note": "Neutral; craft twice for 40",
+          "note": "craft twice for 40",
           "alt": null,
           "done": false
         },
         {
           "qty": "1,000",
           "label": "Travocyte Alloy blueprint",
-          "note": "Neutral; craft twice for 40",
+          "note": "craft twice for 40",
           "alt": null,
           "done": false
         },
         {
           "qty": "2,000",
           "label": "Venerdo Alloy blueprint",
-          "note": "Rank 1 Outworlder; craft twice for 40",
+          "note": "craft twice for 40",
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [],
+            "rank": {
+              "syndicate": "Solaris United",
+              "level": 1
+            }
+          }
         },
         {
           "qty": "4,000",
           "label": "Star Amarast blueprint",
-          "note": "Rank 2 Rapscallion; one craft covers 6",
+          "note": "one craft covers 6",
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [],
+            "rank": {
+              "syndicate": "Solaris United",
+              "level": 2
+            }
+          }
         },
         {
           "qty": "8,000",
           "label": "Radiant Zodian blueprint",
-          "note": "Rank 3 Doer; one craft covers 3",
+          "note": "one craft covers 3",
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [],
+            "rank": {
+              "syndicate": "Solaris United",
+              "level": 3
+            }
+          }
         },
         {
           "qty": "12,000",
           "label": "Marquise Thyst blueprint",
-          "note": "Rank 4 Cove; one craft covers 3",
+          "note": "one craft covers 3",
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [],
+            "rank": {
+              "syndicate": "Solaris United",
+              "level": 4
+            }
+          }
         }
       ],
       "conditions": [
@@ -284,12 +272,20 @@
         {
           "qty": null,
           "label": "rank-ups to Cove",
-          "note": "141,000 standing, Rank 4",
+          "note": null,
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "Solaris United",
             "level": 4
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Solaris United Standing",
+                "amount": "141,000"
+              }
+            ]
           }
         }
       ],
@@ -318,44 +314,108 @@
         {
           "qty": null,
           "label": "Axidrol Alloy blueprint",
-          "note": "1,000 standing, Neutral; craft twice for 40",
+          "note": "craft twice for 40",
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Solaris United Standing",
+                "amount": "1,000"
+              }
+            ]
+          }
         },
         {
           "qty": null,
           "label": "Travocyte Alloy blueprint",
-          "note": "1,000 standing, Neutral; craft twice for 40",
+          "note": "craft twice for 40",
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Solaris United Standing",
+                "amount": "1,000"
+              }
+            ]
+          }
         },
         {
           "qty": null,
           "label": "Venerdo Alloy blueprint",
-          "note": "2,000 standing, Rank 1 Outworlder; craft twice for 40",
+          "note": "craft twice for 40",
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Solaris United Standing",
+                "amount": "2,000"
+              }
+            ],
+            "rank": {
+              "syndicate": "Solaris United",
+              "level": 1
+            }
+          }
         },
         {
           "qty": null,
           "label": "Star Amarast blueprint",
-          "note": "4,000 standing, Rank 2 Rapscallion; one craft covers 6",
+          "note": "one craft covers 6",
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Solaris United Standing",
+                "amount": "4,000"
+              }
+            ],
+            "rank": {
+              "syndicate": "Solaris United",
+              "level": 2
+            }
+          }
         },
         {
           "qty": null,
           "label": "Radiant Zodian blueprint",
-          "note": "8,000 standing, Rank 3 Doer; one craft covers 3",
+          "note": "one craft covers 3",
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Solaris United Standing",
+                "amount": "8,000"
+              }
+            ],
+            "rank": {
+              "syndicate": "Solaris United",
+              "level": 3
+            }
+          }
         },
         {
           "qty": null,
           "label": "Marquise Thyst blueprint",
-          "note": "12,000 standing, Rank 4 Cove; one craft covers 3",
+          "note": "one craft covers 3",
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Solaris United Standing",
+                "amount": "12,000"
+              }
+            ],
+            "rank": {
+              "syndicate": "Solaris United",
+              "level": 4
+            }
+          }
         }
       ],
       "conditions": [],
@@ -468,7 +528,7 @@
         "place": "CEPHALON SIMARIS",
         "sub": null,
         "activity": "scan targets with the Synthesis Scanner",
-        "meta": "50,000 Standing, ~3 capped days",
+        "meta": "~3 capped days",
         "mode": null,
         "live": null,
         "skip": null,
@@ -497,7 +557,7 @@
         "place": "CEPHALON SIMARIS",
         "sub": null,
         "activity": "buy the main blueprint",
-        "meta": "50,000 Standing, repeatable",
+        "meta": "repeatable",
         "mode": null,
         "live": null,
         "skip": null,
@@ -513,9 +573,17 @@
           {
             "qty": null,
             "label": "Garuda Blueprint",
-            "note": "50,000 Standing",
+            "note": null,
             "alt": "Circuit week 11, tier 10",
-            "done": false
+            "done": false,
+            "buy": {
+              "price": [
+                {
+                  "currency": "Cephalon Simaris Standing",
+                  "amount": "50,000"
+                }
+              ]
+            }
           }
         ],
         "conditions": ["Simaris only stocks it once Vox Solaris is done."],

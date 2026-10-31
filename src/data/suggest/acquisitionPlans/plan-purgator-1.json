@@ -9,24 +9,11 @@
     "need": 4,
     "unit": "blueprints"
   },
-  "badges": [
-    {
-      "text": "Hex Rank 5",
-      "tone": "warn",
-      "rank": {
-        "syndicate": "The Hex",
-        "level": 5
-      }
-    },
-    {
-      "text": "MR 14",
-      "tone": "info"
-    }
-  ],
+  "badges": [],
   "prices": [
     {
       "label": "blueprints",
-      "amount": "30,000 standing",
+      "amount": "30,000 standing (15,000 free at Rank 5)",
       "money": false
     },
     {
@@ -104,38 +91,6 @@
   ],
   "groups": [
     {
-      "type": "gate",
-      "place": "THE HEX",
-      "sub": null,
-      "activity": "finish The Hex, reach MR 14",
-      "meta": "unlocks Höllvania and The Hex syndicate",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Mastery Rank 14",
-          "note": "needed to equip it",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "The Hex",
-          "note": "needs The Duviri Paradox and The Lotus Eaters",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": ["The Hex Finale, a Rank 4 requirement, is not skippable."],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
       "type": "currency",
       "place": "HÖLLVANIA",
       "sub": null,
@@ -146,15 +101,15 @@
       "skip": null,
       "earns": {
         "currency": "The Hex Standing",
-        "amount": "270,000"
+        "amount": "255,000"
       },
       "spends": [],
       "map": "hollvania",
       "rows": [
         {
-          "qty": "270,000",
+          "qty": "255,000",
           "label": "The Hex standing",
-          "note": null,
+          "note": "15,000 more if the Pizza Party pick went elsewhere",
           "alt": null,
           "done": false
         }
@@ -191,56 +146,116 @@
         {
           "qty": null,
           "label": "Rank 1, Leftovers",
-          "note": "5,000 standing, 15 Efervon Sample, 15 Hollvanian Pitchweave Fragment, 10,000 cr",
+          "note": "15 Efervon Sample, 15 Hollvanian Pitchweave Fragment",
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "The Hex",
             "level": 1
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "The Hex Standing",
+                "amount": "5,000"
+              },
+              {
+                "currency": "Credits",
+                "amount": "10,000"
+              }
+            ]
           }
         },
         {
           "qty": null,
           "label": "Rank 2, Fresh Slice",
-          "note": "22,000 standing, 5 Experimental Arc-Relay, 12 Entrati Obols, 25 Hollvanian Pitchweave Fragment, 25,000 cr",
+          "note": "5 Experimental Arc-Relay, 12 Entrati Obols, 25 Hollvanian Pitchweave Fragment",
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "The Hex",
             "level": 2
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "The Hex Standing",
+                "amount": "22,000"
+              },
+              {
+                "currency": "Credits",
+                "amount": "25,000"
+              }
+            ]
           }
         },
         {
           "qty": null,
           "label": "Rank 3, 2-For-1",
-          "note": "44,000 standing, one each of the six 750-standing Hex Treasures, 50,000 cr",
+          "note": "one each of the six 750-standing Hex Treasures",
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "The Hex",
             "level": 3
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "The Hex Standing",
+                "amount": "44,000"
+              },
+              {
+                "currency": "Credits",
+                "amount": "50,000"
+              }
+            ]
           }
         },
         {
           "qty": null,
           "label": "Rank 4, Hot & Fresh",
-          "note": "70,000 standing, 25 Techrot Chitin, 25 Necracoil, 40 Efervon Sample, 100,000 cr; Liked with all six members and The Hex Finale",
+          "note": "25 Techrot Chitin, 25 Necracoil, 40 Efervon Sample; Liked with all six members and The Hex Finale",
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "The Hex",
             "level": 4
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "The Hex Standing",
+                "amount": "70,000"
+              },
+              {
+                "currency": "Credits",
+                "amount": "100,000"
+              }
+            ]
           }
         },
         {
           "qty": null,
           "label": "Rank 5, Pizza Party",
-          "note": "99,000 standing, 5 Techrot Motherboard, the six treasures again, 200,000 cr",
+          "note": "5 Techrot Motherboard, the six treasures again",
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "The Hex",
             "level": 5
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "The Hex Standing",
+                "amount": "99,000"
+              },
+              {
+                "currency": "Credits",
+                "amount": "200,000"
+              }
+            ]
           }
         }
       ],
@@ -253,7 +268,7 @@
       "place": "MINERVA, HÖLLVANIA CENTRAL MALL",
       "sub": null,
       "activity": "buy Purgator 1 blueprints",
-      "meta": "Rank 5, 30,000 standing",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -261,7 +276,7 @@
       "spends": [
         {
           "currency": "The Hex Standing",
-          "amount": "30,000"
+          "amount": "15,000"
         }
       ],
       "map": null,
@@ -269,30 +284,66 @@
         {
           "qty": null,
           "label": "Purgator 1 Blueprint",
-          "note": "15,000 standing",
-          "alt": "take it as the one free Rank 5 vendor item",
-          "done": false
+          "note": null,
+          "alt": null,
+          "done": false,
+          "pick": {
+            "rank": {
+              "syndicate": "The Hex",
+              "level": 5
+            },
+            "spends": [
+              {
+                "currency": "The Hex Standing",
+                "amount": "15,000"
+              }
+            ]
+          }
         },
         {
           "qty": null,
           "label": "Barrel Blueprint",
-          "note": "5,000 standing",
+          "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "The Hex Standing",
+                "amount": "5,000"
+              }
+            ]
+          }
         },
         {
           "qty": null,
           "label": "Receiver Blueprint",
-          "note": "5,000 standing",
+          "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "The Hex Standing",
+                "amount": "5,000"
+              }
+            ]
+          }
         },
         {
           "qty": null,
           "label": "Stock Blueprint",
-          "note": "5,000 standing",
+          "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "The Hex Standing",
+                "amount": "5,000"
+              }
+            ]
+          }
         }
       ],
       "conditions": ["Minerva appears at Rank 4 but won't sell until Rank 5."],

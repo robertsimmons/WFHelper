@@ -61,7 +61,6 @@ describe("a quest that has paid out", () => {
     const plan = resolve("Inaros", questsDone([SANDS]));
     const skipped = plan.groups.filter((group) => group.skip !== null);
     expect(skipped.map((group) => group.place)).toEqual([
-      "MASTERY RANK",
       "RELAY",
       "BARO KI'TEER",
       "FOUNDRY",
@@ -86,7 +85,7 @@ describe("a quest that has paid out", () => {
       expect(plan.groups.some((group) => group.skip !== null)).toBe(false);
       expect(rating("Inaros", playerInventory)).toMatchObject({
         effort: 3,
-        badge: { text: "Baro visit + MR 5" },
+        badge: { text: "Circuit week 8" },
       });
     }
   });
@@ -122,10 +121,10 @@ describe("syndicate ranks", () => {
   });
 
   it("stands a rank badge down once the player holds the rank", () => {
-    expect(rating("Dual Viciss", standing("HexSyndicate", 4)).badge?.text).toBe("Hex Rank 5");
-    expect(rating("Dual Viciss", standing("HexSyndicate", 5)).badge?.text).not.toBe("Hex Rank 5");
-    expect(rating("Dual Viciss", standing("HexSyndicate", top)).badge?.text).not.toBe("Hex Rank 5");
-    expect(rating("Dual Viciss", inventory()).badge?.text).toBe("Hex Rank 5");
+    const nightcap = (title: number) => standing("NightcapJournalSyndicate", title);
+    expect(rating("Arbucep", nightcap(2)).badge?.text).toBe("Rank 3 pity");
+    expect(rating("Arbucep", nightcap(3)).badge?.text).not.toBe("Rank 3 pity");
+    expect(rating("Arbucep", inventory()).badge?.text).toBe("Rank 3 pity");
   });
 
   it("resolves rank rows from the player's rank", () => {

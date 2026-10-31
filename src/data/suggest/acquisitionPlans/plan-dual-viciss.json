@@ -11,14 +11,6 @@
   },
   "badges": [
     {
-      "text": "Hex Rank 5",
-      "tone": "warn",
-      "rank": {
-        "syndicate": "The Hex",
-        "level": 5
-      }
-    },
-    {
       "text": "parts tradeable",
       "tone": "info"
     }
@@ -84,47 +76,6 @@
   ],
   "groups": [
     {
-      "type": "gate",
-      "place": "THE LOTUS EATERS, THEN THE HEX",
-      "sub": null,
-      "activity": "The Hex quest chain",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "The Lotus Eaters",
-          "note": "needs The Duviri Paradox",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "The Hex",
-          "note": "unlocks Höllvania and The Hex syndicate",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Mastery Rank 14",
-          "note": "needed to equip it",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "The Hex Finale (a Rank 4 requirement) locks the game for 15+ minutes and is not skippable."
-      ],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
       "type": "currency",
       "place": "HÖLLVANIA",
       "sub": null,
@@ -165,12 +116,24 @@
         {
           "qty": null,
           "label": "Rank 5 (Pizza Party)",
-          "note": "99,000 standing, 200,000 cr",
+          "note": null,
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "The Hex",
             "level": 5
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "The Hex Standing",
+                "amount": "99,000"
+              },
+              {
+                "currency": "Credits",
+                "amount": "200,000"
+              }
+            ]
           }
         }
       ],
@@ -208,12 +171,20 @@
         {
           "qty": null,
           "label": "rank-ups to Pizza Party (Rank 5)",
-          "note": "240,000 standing, Ranks 1 to 5",
+          "note": "Ranks 1 to 5",
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "The Hex",
             "level": 5
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "The Hex Standing",
+                "amount": "240,000"
+              }
+            ]
           }
         }
       ],
@@ -225,8 +196,8 @@
       "type": "vendor",
       "place": "MINERVA, HÖLLVANIA",
       "sub": null,
-      "activity": "buy blueprints at Rank 5",
-      "meta": "35,000 standing total",
+      "activity": "buy the blueprints",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -242,23 +213,61 @@
         {
           "qty": "2",
           "label": "Dual Viciss Blade Blueprint",
-          "note": "5,000 standing each",
+          "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "The Hex Standing",
+                "amount": "5,000"
+              }
+            ],
+            "each": true,
+            "rank": {
+              "syndicate": "The Hex",
+              "level": 5
+            }
+          }
         },
         {
           "qty": "2",
           "label": "Dual Viciss Hilt Blueprint",
-          "note": "5,000 standing each",
+          "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "The Hex Standing",
+                "amount": "5,000"
+              }
+            ],
+            "each": true,
+            "rank": {
+              "syndicate": "The Hex",
+              "level": 5
+            }
+          }
         },
         {
           "qty": null,
           "label": "Dual Viciss Blueprint",
-          "note": "15,000 standing",
+          "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "The Hex Standing",
+                "amount": "15,000"
+              }
+            ],
+            "rank": {
+              "syndicate": "The Hex",
+              "level": 5
+            }
+          }
         }
       ],
       "conditions": [

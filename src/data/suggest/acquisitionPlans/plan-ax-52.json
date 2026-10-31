@@ -11,14 +11,6 @@
   },
   "badges": [
     {
-      "text": "Hex Rank 4",
-      "tone": "warn",
-      "rank": {
-        "syndicate": "The Hex",
-        "level": 4
-      }
-    },
-    {
       "text": "no RNG",
       "tone": "info"
     }
@@ -63,33 +55,6 @@
     }
   ],
   "groups": [
-    {
-      "type": "gate",
-      "place": "THE CODEX",
-      "sub": null,
-      "activity": "the 1999 quest chain",
-      "meta": "unlocks Höllvania and The Hex",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "The Hex",
-          "note": "needs The Duviri Paradox and The Lotus Eaters, which needs Whispers in the Walls",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Starting The Hex locks you out of every other activity for about 90 minutes."
-      ],
-      "bonuses": [],
-      "disclosures": []
-    },
     {
       "type": "currency",
       "place": "HOLLVANIA CENTRAL MALL",
@@ -147,45 +112,77 @@
         {
           "qty": null,
           "label": "Rank 1 Leftovers",
-          "note": "5,000 standing, 10,000 Höllars, 15 Efervon Sample, 15 Hollvanian Pitchweave Fragment",
+          "note": "10,000 Höllars, 15 Efervon Sample, 15 Hollvanian Pitchweave Fragment",
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "The Hex",
             "level": 1
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "The Hex Standing",
+                "amount": "5,000"
+              }
+            ]
           }
         },
         {
           "qty": null,
           "label": "Rank 2 Fresh Slice",
-          "note": "22,000 standing, 25,000 Höllars, 5 Experimental Arc-Relay, 12 Entrati Obols, 25 Hollvanian Pitchweave Fragment",
+          "note": "25,000 Höllars, 5 Experimental Arc-Relay, 12 Entrati Obols, 25 Hollvanian Pitchweave Fragment",
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "The Hex",
             "level": 2
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "The Hex Standing",
+                "amount": "22,000"
+              }
+            ]
           }
         },
         {
           "qty": null,
           "label": "Rank 3 2-For-1",
-          "note": "44,000 standing, 50,000 Höllars, one each of six 750-standing Hex Treasures",
+          "note": "50,000 Höllars, one each of six 750-standing Hex Treasures",
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "The Hex",
             "level": 3
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "The Hex Standing",
+                "amount": "44,000"
+              }
+            ]
           }
         },
         {
           "qty": null,
           "label": "Rank 4 Hot & Fresh",
-          "note": "70,000 standing, 100,000 Höllars, 25 Techrot Chitin, 25 Necracoil, 40 Efervon Sample",
+          "note": "100,000 Höllars, 25 Techrot Chitin, 25 Necracoil, 40 Efervon Sample",
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "The Hex",
             "level": 4
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "The Hex Standing",
+                "amount": "70,000"
+              }
+            ]
           }
         }
       ],
@@ -198,7 +195,7 @@
       "place": "AMIR, HOLLVANIA CENTRAL MALL",
       "sub": null,
       "activity": "buy the AX-52 blueprint",
-      "meta": "Rank 4 required",
+      "meta": "required",
       "mode": null,
       "live": null,
       "skip": null,
@@ -214,12 +211,20 @@
         {
           "qty": null,
           "label": "AX-52 Blueprint",
-          "note": "30,000 standing",
+          "note": null,
           "alt": null,
           "done": false,
-          "rank": {
-            "syndicate": "The Hex",
-            "level": 4
+          "buy": {
+            "price": [
+              {
+                "currency": "The Hex Standing",
+                "amount": "30,000"
+              }
+            ],
+            "rank": {
+              "syndicate": "The Hex",
+              "level": 4
+            }
           }
         }
       ],

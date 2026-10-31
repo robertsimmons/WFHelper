@@ -9,24 +9,7 @@
     "need": 3,
     "unit": "parts"
   },
-  "badges": [
-    {
-      "text": "Red Veil rank 2",
-      "tone": "warn",
-      "rank": {
-        "syndicate": "Red Veil",
-        "level": 2
-      }
-    },
-    {
-      "text": "Steel Meridian rank 2",
-      "tone": "warn",
-      "rank": {
-        "syndicate": "Steel Meridian",
-        "level": 2
-      }
-    }
-  ],
+  "badges": [],
   "prices": [
     {
       "label": "blueprint",
@@ -63,61 +46,11 @@
   ],
   "groups": [
     {
-      "type": "gate",
-      "place": "MASTERY RANK, RED VEIL AND STEEL MERIDIAN",
-      "sub": null,
-      "activity": "reach MR 4, join both syndicates and rank each to 2",
-      "meta": "180,000 cr across the rank-ups",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Mastery Rank 4",
-          "note": "to equip",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Red Veil rank 2 (Honored)",
-          "note": "initiation 500 Alloy Plate, 10,000 cr; rank 1 5,000 standing, 30,000 cr, 2 Gallium; rank 2 22,000 standing, 50,000 cr, 1 Forma",
-          "alt": null,
-          "done": false,
-          "rank": {
-            "syndicate": "Red Veil",
-            "level": 2
-          }
-        },
-        {
-          "qty": null,
-          "label": "Steel Meridian rank 2 (Valiant)",
-          "note": "initiation 1,000 Salvage, 10,000 cr; rank 1 5,000 standing, 30,000 cr, 2 Morphics; rank 2 22,000 standing, 50,000 cr, 1 Forma",
-          "alt": null,
-          "done": false,
-          "rank": {
-            "syndicate": "Steel Meridian",
-            "level": 2
-          }
-        }
-      ],
-      "conditions": [
-        "A rank-up spends the standing it costs, so each syndicate needs 5,000 + 22,000 for the ranks and 20,000 more for its part.",
-        "Pledging to Red Veil lowers Cephalon Suda by 50% and Arbiters of Hexis by 100%; pledging to Steel Meridian lowers New Loka by 50% and Perrin Sequence by 100%."
-      ],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
       "type": "currency",
       "place": "RELAY, ORBITER TERMINAL",
       "sub": null,
       "activity": "pledge Red Veil until its standing is done, then switch to Steel Meridian",
-      "meta": "47,000 standing in each",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -148,7 +81,7 @@
       "place": "RELAY, ORBITER TERMINAL",
       "sub": null,
       "activity": "pledge Steel Meridian",
-      "meta": "47,000 standing in each",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -197,23 +130,39 @@
         {
           "qty": null,
           "label": "Red Veil rank-ups to Honored",
-          "note": "27,000 standing, 5,000 and 22,000",
+          "note": "5,000 and 22,000",
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "Red Veil",
             "level": 2
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Red Veil Standing",
+                "amount": "27,000"
+              }
+            ]
           }
         },
         {
           "qty": null,
           "label": "Steel Meridian rank-ups to Valiant",
-          "note": "27,000 standing, 5,000 and 22,000",
+          "note": "5,000 and 22,000",
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "Steel Meridian",
             "level": 2
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Steel Meridian Standing",
+                "amount": "27,000"
+              }
+            ]
           }
         }
       ],
@@ -226,7 +175,7 @@
       "place": "RELAY, SYNDICATE ENCLAVES",
       "sub": null,
       "activity": "buy Blade and Handle",
-      "meta": "20,000 standing each",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -246,16 +195,40 @@
         {
           "qty": null,
           "label": "Kaszas Blade",
-          "note": "Red Veil, rank 2",
+          "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Red Veil Standing",
+                "amount": "20,000"
+              }
+            ],
+            "rank": {
+              "syndicate": "Red Veil",
+              "level": 2
+            }
+          }
         },
         {
           "qty": null,
           "label": "Kaszas Handle",
-          "note": "Steel Meridian, rank 2",
+          "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Steel Meridian Standing",
+                "amount": "20,000"
+              }
+            ],
+            "rank": {
+              "syndicate": "Steel Meridian",
+              "level": 2
+            }
+          }
         }
       ],
       "conditions": [],
@@ -267,7 +240,7 @@
       "place": "MARKET",
       "sub": null,
       "activity": "buy the Kaszas Blueprint",
-      "meta": "35,000 cr",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -285,7 +258,15 @@
           "label": "Kaszas Blueprint",
           "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Credits",
+                "amount": "35,000"
+              }
+            ]
+          }
         }
       ],
       "conditions": [],

@@ -108,46 +108,6 @@
   ],
   "groups": [
     {
-      "type": "gate",
-      "place": "CODEX",
-      "sub": null,
-      "activity": "The Deadlock Protocol, a Railjack and MR 4",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "The Deadlock Protocol",
-          "note": "quest prerequisite",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "built Railjack and Reliquary Key",
-          "note": "quest prerequisite",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Mastery Rank 4",
-          "note": "quest prerequisite",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": [],
-      "quest": "Call of the Tempestarii"
-    },
-    {
       "type": "farm",
       "place": "CODEX",
       "sub": null,
@@ -291,7 +251,7 @@
         "place": "CEPHALON SIMARIS",
         "sub": null,
         "activity": "scan targets with the Synthesis Scanner",
-        "meta": "50,000 Standing, ~3 capped days",
+        "meta": "~3 capped days",
         "mode": null,
         "live": null,
         "skip": null,
@@ -320,7 +280,7 @@
         "place": "CEPHALON SIMARIS",
         "sub": null,
         "activity": "buy the main blueprint",
-        "meta": "50,000 Standing, repeatable",
+        "meta": "repeatable",
         "mode": null,
         "live": null,
         "skip": null,
@@ -336,9 +296,17 @@
           {
             "qty": null,
             "label": "Sevagoth Blueprint",
-            "note": "50,000 Standing",
+            "note": null,
             "alt": null,
-            "done": false
+            "done": false,
+            "buy": {
+              "price": [
+                {
+                  "currency": "Cephalon Simaris Standing",
+                  "amount": "50,000"
+                }
+              ]
+            }
           }
         ],
         "conditions": ["Simaris only stocks it once Call of the Tempestarii is done."],

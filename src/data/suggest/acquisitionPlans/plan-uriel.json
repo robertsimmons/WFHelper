@@ -69,32 +69,6 @@
   ],
   "groups": [
     {
-      "type": "gate",
-      "place": "MAIN QUESTLINE",
-      "sub": null,
-      "activity": "The Lotus Eaters",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "The Lotus Eaters",
-          "note": "needed for The Old Peace",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": [],
-      "quest": "The Old Peace"
-    },
-    {
       "type": "farm",
       "place": "CODEX",
       "sub": null,
@@ -308,9 +282,17 @@
           {
             "qty": null,
             "label": "Uriel Blueprint",
-            "note": "75 Maphica",
+            "note": null,
             "alt": null,
-            "done": false
+            "done": false,
+            "buy": {
+              "price": [
+                {
+                  "currency": "Maphica",
+                  "amount": "75"
+                }
+              ]
+            }
           }
         ],
         "conditions": [],

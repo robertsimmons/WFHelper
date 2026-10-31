@@ -143,6 +143,55 @@ describe("suggestion details modal", () => {
   });
 });
 
+describe("suggestion details modal, acquisition", () => {
+  const steps = (): string =>
+    fs.readFileSync(path.join(path.dirname(MODAL), "plan", "PlanSteps.svelte"), "utf8");
+
+  it("leads with the steps off the plan page's own resolution", () => {
+    const text = source();
+    expect(text).toContain("resolvePinnedPlans(");
+    expect(text).toContain("planProgressFor($planProgress, key)");
+    expect(text).toMatch(/<AcquisitionBody\s+\{plan\}\s+root=\{treeRoot\}/);
+    expect(text).not.toContain("<PlanSteps");
+    expect(text).not.toContain("<AcquisitionTree");
+  });
+
+  it("falls back to the routes only for an item with no plan", () => {
+    const text = source();
+    expect(text).toMatch(/\{#snippet unplanned\(\)\}\s*\{#if acqPaths\.length > 0\}/);
+    expect(text).toContain("data-details-routes");
+  });
+
+  it("keeps its own extras after the parts and before the tips", () => {
+    const text = source();
+    const extra = text.indexOf("{#snippet extra()}");
+    expect(extra).toBeGreaterThan(-1);
+    for (const part of ["acq.nemesis", "pickedProgenitor", "<RelicSourcesSection"]) {
+      expect(text.indexOf(part, extra)).toBeGreaterThan(extra);
+    }
+    expect(text).toContain("tips={acqTips}");
+  });
+
+  it("draws the item once, in one narrow column", () => {
+    const text = source();
+    expect(text).toContain('acq ? "w-[640px]"');
+    expect(text).toContain("{#if acq && artPieces.length > 0}");
+    expect(text).not.toContain("nextUp.acqFoundryCredits");
+  });
+
+  it("keeps a finished step listed and muted", () => {
+    const text = steps();
+    expect(text).toContain("data-step-done={step.done}");
+    expect(text).toMatch(/step\.done\s*\?\s*'opacity-\[0\.42\]'/);
+  });
+
+  it("names every key the steps resolve", () => {
+    const keys = [...steps().matchAll(/\$tr\(\s*"([\w.]+)"/g)].map((match) => match[1]);
+    expect(keys.length).toBeGreaterThan(0);
+    expect(keys.filter((key) => !(key in en))).toEqual([]);
+  });
+});
+
 describe("suggestion details modal, relics", () => {
   it("advises a refinement per goal, leaving MR out when nothing is needed", () => {
     const text = source();
@@ -161,8 +210,8 @@ describe("suggestion details modal, relics", () => {
     const relicRows = /\{#snippet factRows\(\)\}\s*\{#if relic\}[\s\S]*?\{\/if\}/.exec(text)?.[0];
     expect(relicRows).toBeDefined();
     expect(relicRows).not.toContain("{LABEL}");
-    expect(text).toContain("{#if rewardTile && !familyOnly && !relic}");
-    expect(text).toContain("{#if artPieces.length > 0 && !relic}");
+    expect(text).toContain("{#if rewardTile && !familyOnly && !relic && !acq}");
+    expect(text).toContain("{#if artPieces.length > 0 && !relic && !acq}");
   });
 
   it("lays the parts out three wide in reward-screen order, none faded", () => {

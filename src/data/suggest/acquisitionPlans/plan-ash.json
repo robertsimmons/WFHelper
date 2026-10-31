@@ -99,43 +99,11 @@
   ],
   "groups": [
     {
-      "type": "gate",
-      "place": "RAILJACK",
-      "sub": null,
-      "activity": "rank any Railjack Intrinsic",
-      "meta": "rank 3 for Neptune Proxima, rank 5 for Pluto Proxima",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Railjack Intrinsic rank 3",
-          "note": "opens Neptune Proxima",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Railjack Intrinsic rank 5",
-          "note": "opens Pluto Proxima",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
       "type": "vendor",
       "place": "MARKET",
       "sub": null,
       "activity": "buy blueprint",
-      "meta": "35,000 cr",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -153,7 +121,15 @@
           "label": "Ash Blueprint",
           "note": null,
           "alt": "Circuit tier 10",
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Credits",
+                "amount": "35,000"
+              }
+            ]
+          }
         }
       ],
       "conditions": [],

@@ -11,14 +11,6 @@
   },
   "badges": [
     {
-      "text": "Entrati Rank 3 to gild",
-      "tone": "warn",
-      "rank": {
-        "syndicate": "Entrati",
-        "level": 3
-      }
-    },
-    {
       "text": "must be Weakened",
       "tone": "info"
     }
@@ -69,43 +61,11 @@
   ],
   "groups": [
     {
-      "type": "gate",
-      "place": "NECRALISK, DEIMOS",
-      "sub": null,
-      "activity": "unlock Son's revivification menu",
-      "meta": "Heart of Deimos",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Heart of Deimos",
-          "note": "opens the Necralisk and Son",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "1",
-          "label": "free Companion Slot",
-          "note": "claiming the revivified Vizier needs it",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
       "type": "currency",
       "place": "NECRALISK, DEIMOS",
       "sub": null,
       "activity": "rank Entrati to Associate",
-      "meta": "Rank 3 gates the gild; Rank 1 covers the revivify",
+      "meta": "Associate gates the gild; Stranger covers the revivify",
       "mode": null,
       "live": null,
       "skip": null,
@@ -157,7 +117,7 @@
       "place": "SON, NECRALISK",
       "sub": null,
       "activity": "buy the Mutagen and Antigen blueprints",
-      "meta": "2,500 standing",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -173,16 +133,40 @@
         {
           "qty": null,
           "label": "Leptosam Mutagen Blueprint",
-          "note": "1,250 standing, Stranger",
+          "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Entrati Standing",
+                "amount": "1,250"
+              }
+            ],
+            "rank": {
+              "syndicate": "Entrati",
+              "level": 1
+            }
+          }
         },
         {
           "qty": null,
           "label": "Iranon Antigen Blueprint",
-          "note": "1,250 standing, Stranger",
+          "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Entrati Standing",
+                "amount": "1,250"
+              }
+            ],
+            "rank": {
+              "syndicate": "Entrati",
+              "level": 1
+            }
+          }
         }
       ],
       "conditions": [
@@ -223,7 +207,7 @@
       "place": "SON, NECRALISK",
       "sub": null,
       "activity": "revivify, then gild at rank 30",
-      "meta": "5,000 cr now; 10 Son Tokens and 5,000 standing to gild",
+      "meta": "10 Son Tokens to gild",
       "mode": null,
       "live": null,
       "skip": null,
@@ -239,9 +223,17 @@
         {
           "qty": null,
           "label": "Vizier Predasite, revivified",
-          "note": "Weakened Vizier + Mutagen + Antigen + 5,000 credits",
+          "note": "Weakened Vizier, Mutagen, Antigen",
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Credits",
+                "amount": "5,000"
+              }
+            ]
+          }
         }
       ],
       "conditions": [

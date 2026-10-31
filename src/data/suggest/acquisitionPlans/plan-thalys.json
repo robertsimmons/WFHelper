@@ -11,10 +11,6 @@
   },
   "badges": [
     {
-      "text": "The Hex gate",
-      "tone": "warn"
-    },
-    {
       "text": "Isleweaver",
       "tone": "info"
     }
@@ -54,38 +50,6 @@
     }
   ],
   "groups": [
-    {
-      "type": "gate",
-      "place": "THE HEX",
-      "sub": null,
-      "activity": "complete the quest",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "The Hex",
-          "note": "the 1999 questline; unlocks Isleweaver and the Husk shop",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Mastery Rank 12",
-          "note": "needed to equip it",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
     {
       "type": "currency",
       "place": "ISLEWEAVER, DUVIRI",
@@ -142,9 +106,17 @@
         {
           "qty": null,
           "label": "Thalys Blueprint",
-          "note": "96 Scuttler Husk",
+          "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Scuttler Husk",
+                "amount": "96"
+              }
+            ]
+          }
         }
       ],
       "conditions": [

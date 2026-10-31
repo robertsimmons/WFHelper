@@ -17,14 +17,6 @@
     {
       "text": "must be Weakened",
       "tone": "warn"
-    },
-    {
-      "text": "Entrati Stranger",
-      "tone": "info",
-      "rank": {
-        "syndicate": "Entrati",
-        "level": 1
-      }
     }
   ],
   "prices": [
@@ -83,51 +75,6 @@
   ],
   "groups": [
     {
-      "type": "gate",
-      "place": "NECRALISK, DEIMOS",
-      "sub": null,
-      "activity": "unlock Son's conservation offerings",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Heart of Deimos",
-          "note": "unlocks Entrati and Son",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Entrati Rank 1, Stranger",
-          "note": "Echo-Lure, Mutagen and Antigen blueprints",
-          "alt": null,
-          "done": false,
-          "rank": {
-            "syndicate": "Entrati",
-            "level": 1
-          }
-        },
-        {
-          "qty": "1",
-          "label": "Companion slot",
-          "note": "claiming the revivified Panzer needs it",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "A Panzer cannot be built from a Market blueprint or bought complete; Son revivifies a captured Weakened animal."
-      ],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
       "type": "bounty",
       "place": "CAMBION DRIFT, DEIMOS",
       "sub": "Fass cycle",
@@ -161,7 +108,7 @@
       "place": "SON, NECRALISK",
       "sub": null,
       "activity": "revivify, then gild at rank 30",
-      "meta": "5,000 cr now; gild for Mastery",
+      "meta": "gild for Mastery",
       "mode": null,
       "live": null,
       "skip": null,
@@ -177,19 +124,35 @@
         {
           "qty": null,
           "label": "Panzer Vulpaphyla, revivified",
-          "note": "Weakened Panzer + Adra Mutagen + Desus Antigen + 5,000 credits",
+          "note": "Weakened Panzer, Adra Mutagen, Desus Antigen",
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Credits",
+                "amount": "5,000"
+              }
+            ]
+          }
         },
         {
           "qty": null,
           "label": "Panzer Vulpaphyla, gilded",
-          "note": "rank 30 first; 10 Son Tokens and 5,000 standing",
+          "note": "rank 30 first; 10 Son Tokens",
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "Entrati",
             "level": 2
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Entrati Standing",
+                "amount": "5,000"
+              }
+            ]
           }
         }
       ],

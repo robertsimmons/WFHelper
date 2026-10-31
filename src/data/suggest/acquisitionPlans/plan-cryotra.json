@@ -11,14 +11,6 @@
   },
   "badges": [
     {
-      "text": "Rank 5 Old Mate",
-      "tone": "warn",
-      "rank": {
-        "syndicate": "Solaris United",
-        "level": 5
-      }
-    },
-    {
       "text": "10,000 standing blueprint",
       "tone": "info"
     }
@@ -64,47 +56,11 @@
   ],
   "groups": [
     {
-      "type": "gate",
-      "place": "FORTUNA, VENUS",
-      "sub": null,
-      "activity": "finish Vox Solaris, then rank Solaris United to Old Mate",
-      "meta": "Rank 5",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Vox Solaris",
-          "note": "unlocks Legs' shop",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Solaris United Rank 5, Old Mate",
-          "note": "the climb from Neutral sacrifices 6 Training, 9 Shelter, 11 Medical, 10 Advances and 5 Familial Debt-Bonds",
-          "alt": "Debt-Bonds come from Fortuna bounties, Ticker and Profit-Taker drops",
-          "done": false,
-          "rank": {
-            "syndicate": "Solaris United",
-            "level": 5
-          }
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
       "type": "currency",
       "place": "ORB VALLIS, VENUS",
       "sub": null,
       "activity": "Conservation or mining for Solaris United standing",
-      "meta": "250,000 standing",
+      "meta": null,
       "mode": "solo",
       "live": null,
       "skip": null,
@@ -156,12 +112,20 @@
         {
           "qty": null,
           "label": "rank-ups to Old Mate",
-          "note": "240,000 standing, 5,000 / 22,000 / 44,000 / 70,000 / 99,000 per rank",
+          "note": "5,000 / 22,000 / 44,000 / 70,000 / 99,000 per rank",
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "Solaris United",
             "level": 5
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Solaris United Standing",
+                "amount": "240,000"
+              }
+            ]
           }
         }
       ],
@@ -174,7 +138,7 @@
       "place": "LEGS, FORTUNA",
       "sub": null,
       "activity": "buy Cryotra blueprint",
-      "meta": "10,000 standing",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -190,9 +154,16 @@
         {
           "qty": null,
           "label": "Cryotra Blueprint",
-          "note": "Rank 5, Old Mate",
+          "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [],
+            "rank": {
+              "syndicate": "Solaris United",
+              "level": 5
+            }
+          }
         }
       ],
       "conditions": [],

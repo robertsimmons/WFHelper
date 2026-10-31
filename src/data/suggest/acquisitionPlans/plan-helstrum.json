@@ -11,14 +11,6 @@
   },
   "badges": [
     {
-      "text": "Old Mate required",
-      "tone": "warn",
-      "rank": {
-        "syndicate": "Solaris United",
-        "level": 5
-      }
-    },
-    {
       "text": "10,000 standing blueprint",
       "tone": "info"
     }
@@ -64,47 +56,11 @@
   ],
   "groups": [
     {
-      "type": "gate",
-      "place": "FORTUNA, VENUS",
-      "sub": null,
-      "activity": "finish Vox Solaris, then rank Solaris United to Old Mate",
-      "meta": "Rank 5",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Vox Solaris",
-          "note": "unlocks Fortuna",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Solaris United Rank 5, Old Mate",
-          "note": "sacrifices 6 Training, 9 Shelter, 11 Medical, 10 Advances and 5 Familial Debt-Bonds plus 385,000 cr across the five rank-ups",
-          "alt": null,
-          "done": false,
-          "rank": {
-            "syndicate": "Solaris United",
-            "level": 5
-          }
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
       "type": "currency",
       "place": "ORB VALLIS, VENUS",
       "sub": null,
       "activity": "Solaris United standing for the rank-ups and the blueprint",
-      "meta": "250,000 standing: 240,000 to Old Mate, 10,000 for the blueprint",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -160,12 +116,20 @@
         {
           "qty": null,
           "label": "rank-ups to Old Mate",
-          "note": "240,000 standing, 5,000 / 22,000 / 44,000 / 70,000 / 99,000 per rank",
+          "note": "5,000 / 22,000 / 44,000 / 70,000 / 99,000 per rank",
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "Solaris United",
             "level": 5
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Solaris United Standing",
+                "amount": "240,000"
+              }
+            ]
           }
         }
       ],
@@ -194,12 +158,20 @@
         {
           "qty": null,
           "label": "Helstrum Blueprint",
-          "note": "10,000 standing",
+          "note": null,
           "alt": null,
           "done": false,
-          "rank": {
-            "syndicate": "Solaris United",
-            "level": 5
+          "buy": {
+            "price": [
+              {
+                "currency": "Solaris United Standing",
+                "amount": "10,000"
+              }
+            ],
+            "rank": {
+              "syndicate": "Solaris United",
+              "level": 5
+            }
           }
         }
       ],

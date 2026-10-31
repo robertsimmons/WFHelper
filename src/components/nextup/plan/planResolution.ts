@@ -9,7 +9,6 @@ import {
   type ResolvedPlan,
   type ResolvedRow,
 } from "../../../lib/suggest/acquisition/plan/index.js";
-import { formatQuantity } from "../../../lib/suggest/acquisition/plan/state.js";
 
 /** What the player has answered by hand on one item's plan. */
 interface PlanAnswers {
@@ -45,23 +44,6 @@ export function resolvePinnedPlans(
   return plans;
 }
 
-/** What the plan has left to do. A row inventory covers vanishes rather than
- *  standing struck through; a row only the player can answer keeps its tick, so
- *  ticking one is never a one-way door. A row ticked this visit stays put rather
- *  than vanishing from under the cursor. */
-export function visibleRows(group: ResolvedGroup, showDone: boolean): PlanViewRow[] {
-  const rows: readonly PlanViewRow[] = group.rows;
-  if (showDone) return [...rows];
-  return rows.filter((row) => row.temporary === true || !(row.done && row.source === "inventory"));
-}
-
-/** A skipped group stands whether or not it has a row left, because its reason
- *  is what makes the plan read complete. */
-export function visibleGroups(plan: ResolvedPlan, showDone: boolean): ResolvedGroup[] {
-  if (showDone) return [...plan.groups];
-  return plan.groups.filter((group) => group.skip !== null || visibleRows(group, false).length > 0);
-}
-
 /** What the player ticked on rows the inventory decides, by row id. Held only
  *  while one plan stays open, and written nowhere. */
 export type RowOverrides = Readonly<Record<string, boolean>>;
@@ -95,6 +77,17 @@ export function tickPlanRow(
     return overrides;
   }
   return { ...overrides, [rowId]: done };
+}
+
+/** One tick on a step line that stands for several rows answers all of them. */
+export function tickPlanRows(
+  plan: ResolvedPlan,
+  overrides: RowOverrides,
+  rowIds: readonly string[],
+  done: boolean,
+  persist: (rowId: string, done: boolean) => void,
+): RowOverrides {
+  return rowIds.reduce((next, id) => tickPlanRow(plan, next, id, done, persist), overrides);
 }
 
 /** The plan as the page draws it, with every count that reads done-ness redone
@@ -133,17 +126,11 @@ export function withRowOverrides(plan: ResolvedPlan, overrides: RowOverrides): R
     const outstanding = owed.get(earns.ledger) ?? 0;
     return {
       ...group,
-      earns: earnsFlow(earns.currency, earns.authoredAmount, earns.ledger, earns.full, outstanding),
+      earns: {
+        ...earns,
+        ...earnsFlow(earns.currency, earns.authoredAmount, earns.ledger, earns.full, outstanding),
+      },
     };
   });
   return { ...plan, groups: flowing, ledger, steps: { done, total } };
-}
-
-/** A tracked count still short of a multi-unit need reads as how far along it
- *  is; anything else keeps the resolver's text. */
-export function rowQuantityText(row: ResolvedRow): string {
-  const qty = row.qty;
-  if (!qty) return "";
-  if (row.done || !qty.tracked || qty.required <= 1) return qty.text;
-  return `${formatQuantity(Math.min(qty.owned, qty.required))} / ${qty.requiredText}`;
 }

@@ -11,10 +11,6 @@
   },
   "badges": [
     {
-      "text": "quest-gated",
-      "tone": "warn"
-    },
-    {
       "text": "Circuit week 10",
       "tone": "circuit"
     }
@@ -99,48 +95,11 @@
   ],
   "groups": [
     {
-      "type": "gate",
-      "place": "CETUS, EARTH",
-      "sub": "The Quills",
-      "activity": "The War Within, then Quills Rank 2",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "The War Within",
-          "note": "opens The Quills",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Observer, Quills Rank 2",
-          "note": "unlocks Mask of the Revenant",
-          "alt": null,
-          "done": false,
-          "rank": {
-            "syndicate": "The Quills",
-            "level": 2
-          }
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": [],
-      "quest": "Mask of the Revenant"
-    },
-    {
       "type": "currency",
       "place": "CETUS, EARTH",
       "sub": "Onkko",
       "activity": "trade Sentient Cores for standing",
-      "meta": "27,000 standing, 30 Cores, 80,000 cr",
+      "meta": "30 Cores",
       "mode": null,
       "live": null,
       "skip": null,
@@ -156,7 +115,19 @@
           "label": "Quills standing",
           "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "The Quills Standing",
+                "amount": "27,000"
+              },
+              {
+                "currency": "Credits",
+                "amount": "80,000"
+              }
+            ]
+          }
         }
       ],
       "conditions": [
@@ -193,23 +164,47 @@
         {
           "qty": null,
           "label": "Rank 1, Mote",
-          "note": "5,000 standing; 10 Intact Sentient Core, 30,000 cr",
+          "note": "10 Intact Sentient Core",
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "The Quills",
             "level": 1
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "The Quills Standing",
+                "amount": "5,000"
+              },
+              {
+                "currency": "Credits",
+                "amount": "30,000"
+              }
+            ]
           }
         },
         {
           "qty": null,
           "label": "Rank 2, Observer",
-          "note": "22,000 standing; 20 Intact Sentient Core, 50,000 cr",
+          "note": "20 Intact Sentient Core",
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "The Quills",
             "level": 2
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "The Quills Standing",
+                "amount": "22,000"
+              },
+              {
+                "currency": "Credits",
+                "amount": "50,000"
+              }
+            ]
           }
         }
       ],
@@ -392,7 +387,7 @@
         "place": "CEPHALON SIMARIS",
         "sub": null,
         "activity": "scan targets with the Synthesis Scanner",
-        "meta": "50,000 Standing, ~3 capped days",
+        "meta": "~3 capped days",
         "mode": null,
         "live": null,
         "skip": null,
@@ -421,7 +416,7 @@
         "place": "CEPHALON SIMARIS",
         "sub": null,
         "activity": "buy the main blueprint",
-        "meta": "50,000 Standing, repeatable",
+        "meta": "repeatable",
         "mode": null,
         "live": null,
         "skip": null,
@@ -437,9 +432,17 @@
           {
             "qty": null,
             "label": "Revenant Blueprint",
-            "note": "50,000 Standing",
+            "note": null,
             "alt": "Circuit week 10, tier 10",
-            "done": false
+            "done": false,
+            "buy": {
+              "price": [
+                {
+                  "currency": "Cephalon Simaris Standing",
+                  "amount": "50,000"
+                }
+              ]
+            }
           }
         ],
         "conditions": ["Simaris only stocks it once Mask of the Revenant is done."],

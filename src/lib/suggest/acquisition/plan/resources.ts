@@ -1,4 +1,5 @@
 import table from "../../../../data/suggest/acquisitionPlans/resources.json";
+import type { PlanCurrency, PlanPurchase, PlanRank } from "./schema.js";
 
 export interface ResourceSource {
   place: string;
@@ -8,6 +9,8 @@ export interface ResourceSource {
    *  enemy. Null when nothing stated a mechanism. */
   how: string | null;
   meta: string | null;
+  /** On a crafted entry, what its blueprint costs; on anything else, one unit. */
+  buy: PlanPurchase | null;
 }
 
 const RESOURCE_KINDS = ["farm", "craft", "standing", "currency"] as const;
@@ -53,6 +56,32 @@ function readSource(value: unknown): ResourceSource | null {
     activity: typeof raw.activity === "string" ? raw.activity : null,
     how: typeof raw.how === "string" ? raw.how : null,
     meta: typeof raw.meta === "string" ? raw.meta : null,
+    buy: readPurchase(raw.buy),
+  };
+}
+
+function readCurrency(value: unknown): PlanCurrency | null {
+  if (!value || typeof value !== "object") return null;
+  const raw = value as Record<string, unknown>;
+  if (typeof raw.currency !== "string" || typeof raw.amount !== "string") return null;
+  return { currency: raw.currency, amount: raw.amount };
+}
+
+function readRank(value: unknown): PlanRank | null {
+  if (!value || typeof value !== "object") return null;
+  const raw = value as Record<string, unknown>;
+  if (typeof raw.syndicate !== "string" || typeof raw.level !== "number") return null;
+  return { syndicate: raw.syndicate, level: raw.level };
+}
+
+function readPurchase(value: unknown): PlanPurchase | null {
+  if (!value || typeof value !== "object") return null;
+  const raw = value as Record<string, unknown>;
+  return {
+    price: readList(raw.price, readCurrency),
+    rank: readRank(raw.rank),
+    reusable: raw.reusable === true,
+    each: raw.each === true,
   };
 }
 

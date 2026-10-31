@@ -11,10 +11,6 @@
   },
   "badges": [
     {
-      "text": "3 syndicates to Rank 3",
-      "tone": "warn"
-    },
-    {
       "text": "no RNG",
       "tone": "info"
     }
@@ -49,7 +45,7 @@
       "place": "CLAN DOJO, TENNO LAB",
       "sub": null,
       "activity": "buy the blueprint",
-      "meta": "15,000 cr",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -67,7 +63,15 @@
           "label": "Fluctus Blueprint",
           "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Credits",
+                "amount": "15,000"
+              }
+            ]
+          }
         }
       ],
       "conditions": [],
@@ -79,7 +83,7 @@
       "place": "RELAY",
       "sub": "Steel Meridian",
       "activity": "pledge, rank to 3 (Defender), buy the Stock",
-      "meta": "91,000 standing, 190,000 cr, 1 Forma, 1 Orokin Catalyst",
+      "meta": "1 Forma, 1 Orokin Catalyst",
       "mode": null,
       "live": null,
       "skip": null,
@@ -91,6 +95,10 @@
         {
           "currency": "Steel Meridian Standing",
           "amount": "20,000"
+        },
+        {
+          "currency": "Credits",
+          "amount": "190,000"
         }
       ],
       "map": null,
@@ -98,16 +106,32 @@
         {
           "qty": null,
           "label": "Initiation",
-          "note": "10,000 cr, 1,000 Salvage",
+          "note": "1,000 Salvage",
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Credits",
+                "amount": "10,000"
+              }
+            ]
+          }
         },
         {
           "qty": null,
           "label": "Fluctus Stock Blueprint",
-          "note": "20,000 standing",
+          "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Steel Meridian Standing",
+                "amount": "20,000"
+              }
+            ]
+          }
         }
       ],
       "conditions": [],
@@ -136,34 +160,70 @@
         {
           "qty": null,
           "label": "Rank 1",
-          "note": "5,000 standing, 30,000 cr, 2 Morphics",
+          "note": "2 Morphics",
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "Steel Meridian",
             "level": 1
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Steel Meridian Standing",
+                "amount": "5,000"
+              },
+              {
+                "currency": "Credits",
+                "amount": "30,000"
+              }
+            ]
           }
         },
         {
           "qty": null,
           "label": "Rank 2",
-          "note": "22,000 standing, 50,000 cr, 1 Forma",
+          "note": "1 Forma",
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "Steel Meridian",
             "level": 2
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Steel Meridian Standing",
+                "amount": "22,000"
+              },
+              {
+                "currency": "Credits",
+                "amount": "50,000"
+              }
+            ]
           }
         },
         {
           "qty": null,
           "label": "Rank 3, Defender",
-          "note": "44,000 standing, 100,000 cr, 1 Orokin Catalyst",
+          "note": "1 Orokin Catalyst",
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "Steel Meridian",
             "level": 3
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Steel Meridian Standing",
+                "amount": "44,000"
+              },
+              {
+                "currency": "Credits",
+                "amount": "100,000"
+              }
+            ]
           }
         }
       ],
@@ -176,7 +236,7 @@
       "place": "RELAY",
       "sub": "Red Veil",
       "activity": "rank to 3 (Esteemed), buy the Limbs",
-      "meta": "91,000 standing, 190,000 cr, 1 Forma, 1 Orokin Catalyst",
+      "meta": "1 Forma, 1 Orokin Catalyst",
       "mode": null,
       "live": null,
       "skip": null,
@@ -188,6 +248,10 @@
         {
           "currency": "Red Veil Standing",
           "amount": "20,000"
+        },
+        {
+          "currency": "Credits",
+          "amount": "190,000"
         }
       ],
       "map": null,
@@ -195,16 +259,32 @@
         {
           "qty": null,
           "label": "Initiation",
-          "note": "10,000 cr, 500 Alloy Plate",
+          "note": "500 Alloy Plate",
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Credits",
+                "amount": "10,000"
+              }
+            ]
+          }
         },
         {
           "qty": null,
           "label": "Fluctus Limbs Blueprint",
-          "note": "20,000 standing",
+          "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Red Veil Standing",
+                "amount": "20,000"
+              }
+            ]
+          }
         }
       ],
       "conditions": [
@@ -235,34 +315,70 @@
         {
           "qty": null,
           "label": "Rank 1",
-          "note": "5,000 standing, 30,000 cr, 2 Gallium",
+          "note": "2 Gallium",
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "Red Veil",
             "level": 1
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Red Veil Standing",
+                "amount": "5,000"
+              },
+              {
+                "currency": "Credits",
+                "amount": "30,000"
+              }
+            ]
           }
         },
         {
           "qty": null,
           "label": "Rank 2",
-          "note": "22,000 standing, 50,000 cr, 1 Forma",
+          "note": "1 Forma",
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "Red Veil",
             "level": 2
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Red Veil Standing",
+                "amount": "22,000"
+              },
+              {
+                "currency": "Credits",
+                "amount": "50,000"
+              }
+            ]
           }
         },
         {
           "qty": null,
           "label": "Rank 3, Esteemed",
-          "note": "44,000 standing, 100,000 cr, 1 Orokin Catalyst",
+          "note": "1 Orokin Catalyst",
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "Red Veil",
             "level": 3
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Red Veil Standing",
+                "amount": "44,000"
+              },
+              {
+                "currency": "Credits",
+                "amount": "100,000"
+              }
+            ]
           }
         }
       ],
@@ -275,7 +391,7 @@
       "place": "RELAY",
       "sub": "Cephalon Suda",
       "activity": "switch pledge, rank to 3 (Intelligent), buy the Barrel",
-      "meta": "91,000 standing, 190,000 cr, 1 Forma, 1 Orokin Catalyst",
+      "meta": "1 Forma, 1 Orokin Catalyst",
       "mode": null,
       "live": null,
       "skip": null,
@@ -287,6 +403,10 @@
         {
           "currency": "Cephalon Suda Standing",
           "amount": "20,000"
+        },
+        {
+          "currency": "Credits",
+          "amount": "190,000"
         }
       ],
       "map": null,
@@ -294,16 +414,32 @@
         {
           "qty": null,
           "label": "Initiation",
-          "note": "10,000 cr, 500 Circuits",
+          "note": "500 Circuits",
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Credits",
+                "amount": "10,000"
+              }
+            ]
+          }
         },
         {
           "qty": null,
           "label": "Fluctus Barrel Blueprint",
-          "note": "20,000 standing",
+          "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Cephalon Suda Standing",
+                "amount": "20,000"
+              }
+            ]
+          }
         }
       ],
       "conditions": ["Do this syndicate last: ranking Suda burns Red Veil standing at -50%."],
@@ -332,34 +468,70 @@
         {
           "qty": null,
           "label": "Rank 1",
-          "note": "5,000 standing, 30,000 cr, 2 Control Modules",
+          "note": "2 Control Modules",
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "Cephalon Suda",
             "level": 1
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Cephalon Suda Standing",
+                "amount": "5,000"
+              },
+              {
+                "currency": "Credits",
+                "amount": "30,000"
+              }
+            ]
           }
         },
         {
           "qty": null,
           "label": "Rank 2",
-          "note": "22,000 standing, 50,000 cr, 1 Forma",
+          "note": "1 Forma",
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "Cephalon Suda",
             "level": 2
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Cephalon Suda Standing",
+                "amount": "22,000"
+              },
+              {
+                "currency": "Credits",
+                "amount": "50,000"
+              }
+            ]
           }
         },
         {
           "qty": null,
           "label": "Rank 3, Intelligent",
-          "note": "44,000 standing, 100,000 cr, 1 Orokin Catalyst",
+          "note": "1 Orokin Catalyst",
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "Cephalon Suda",
             "level": 3
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Cephalon Suda Standing",
+                "amount": "44,000"
+              },
+              {
+                "currency": "Credits",
+                "amount": "100,000"
+              }
+            ]
           }
         }
       ],

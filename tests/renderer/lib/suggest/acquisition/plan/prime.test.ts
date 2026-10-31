@@ -337,31 +337,24 @@ describe("generatePrimePlan", () => {
     expect(plan?.badges[0]).toEqual({ text: "vault status unknown", tone: "info" });
   });
 
-  it("gates a Mastery Rank above 2 and leaves a lower one in the foundry line", () => {
-    const gated = generate(OPEN, {}, { masteryReq: 14 });
-    expect(types(gated)[0]).toBe("gate MASTERY RANK");
-    expect(gated?.groups[0]?.rows[0]?.label).toBe("Mastery Rank 14");
-    expect(gated?.badges).toEqual([{ text: "MR 14", tone: "info" }]);
-
-    const low = generate(OPEN, {}, { masteryReq: 2 });
-    expect(types(low)).toEqual(["fissure ANY VOID FISSURE", "foundry FOUNDRY"]);
-    expect(low?.groups[1]?.meta).toBe("12h, then 72h, MR 2");
+  it("states no Mastery Rank anywhere, high or low", () => {
+    for (const masteryReq of [14, 2]) {
+      const plan = generate(OPEN, {}, { masteryReq });
+      expect(types(plan)).toEqual(["fissure ANY VOID FISSURE", "foundry FOUNDRY"]);
+      expect(plan?.groups[1]?.meta).toBe("12h, then 72h");
+      expect(plan?.badges).toEqual([]);
+    }
   });
 
-  it("merges an override's gates, badges and stated effort", () => {
+  it("merges an override's badges and stated effort", () => {
     const override: PrimeOverride = {
       name: NAME,
       badges: [{ text: "comes with Testkavat Prime", tone: "info" }],
-      gates: [{ label: "The Archwing", note: "Railjack needs it" }],
       effort: { value: 6, reason: "the Rare drops at 2%" },
     };
     const world = { vaultTrader: trader(["Neo T1"]) };
     const plan = generate(PARTLY_VAULTED, world, { masteryReq: 8, override });
-    expect(types(plan)[0]).toBe("gate QUESTS");
-    expect(plan?.groups[0]?.rows.map((row) => row.label)).toEqual([
-      "The Archwing",
-      "Mastery Rank 8",
-    ]);
+    expect(plan?.groups.some((group) => group.type === "gate")).toBe(false);
     expect(plan?.badges).toEqual([
       { text: "vaulted", tone: "warn" },
       { text: "comes with Testkavat Prime", tone: "info" },
@@ -504,15 +497,17 @@ describe("prime overrides", () => {
     expect(failures).toEqual([]);
   });
 
-  it("takes gates, badges and an effort with its reason", () => {
+  it("takes badges and an effort with its reason, and no gates", () => {
     expect(
       validatePrimeOverride({
         name: NAME,
         badges: [{ text: "comes with Testkavat Prime", tone: "info" }],
-        gates: [{ label: "The Archwing", note: null }],
         effort: { value: 6, reason: "the Rare drops at 2%" },
       }),
     ).toEqual([]);
+    expect(
+      validatePrimeOverride({ name: NAME, gates: [{ label: "The Archwing", note: null }] }),
+    ).toEqual(["gates is not an override field"]);
   });
 
   it("rejects an effort with no reason, a tip, and a name the generator does not plan", () => {

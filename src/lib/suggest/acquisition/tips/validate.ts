@@ -75,8 +75,9 @@ function checkAnchor(
     if (value !== null) problems.push(`${at} must be null on a sentiment tip`);
     return;
   }
+  if (value === null) return;
   if (!isRecord(value)) {
-    problems.push(`${at} must name the step the tip is about`);
+    problems.push(`${at} must name the step the tip is about, or be null`);
     return;
   }
   for (const field of Object.keys(value)) {

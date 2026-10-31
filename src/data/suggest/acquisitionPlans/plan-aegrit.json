@@ -11,14 +11,6 @@
   },
   "badges": [
     {
-      "text": "Garrison Rank 4: 3 weeks",
-      "tone": "warn",
-      "rank": {
-        "syndicate": "Kahl's Garrison",
-        "level": 4
-      }
-    },
-    {
       "text": "30 Stock",
       "tone": "info"
     }
@@ -59,45 +51,6 @@
   ],
   "groups": [
     {
-      "type": "gate",
-      "place": "QUESTS",
-      "sub": null,
-      "activity": "complete The New War, then Veilbreaker",
-      "meta": "unlocks Kahl's Garrison in the Drifter's Camp, Earth",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "The New War",
-          "note": "Veilbreaker prerequisite",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Veilbreaker",
-          "note": "unlocks Kahl's Garrison and Chipper",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Mastery Rank 11",
-          "note": "needed to equip it",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
       "type": "currency",
       "place": "DRIFTER'S CAMP, EARTH",
       "sub": "Kahl's Garrison",
@@ -116,7 +69,7 @@
         {
           "qty": "3",
           "label": "weekly mission completions",
-          "note": "Rank 1 Shelter to Rank 4 Settlement",
+          "note": null,
           "alt": null,
           "done": false,
           "rank": {
@@ -159,7 +112,7 @@
       "place": "CHIPPER, DRIFTER'S CAMP",
       "sub": "Kahl's Garrison",
       "activity": "buy the blueprint",
-      "meta": "Rank 4 Settlement",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -175,9 +128,17 @@
         {
           "qty": null,
           "label": "Aegrit Blueprint",
-          "note": "30 Stock, not sold in the Market",
+          "note": "not sold in the Market",
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Stock",
+                "amount": "30"
+              }
+            ]
+          }
         }
       ],
       "conditions": [],

@@ -4,9 +4,24 @@
   "effort": 2,
   "source": "repeat",
   "tradeable": false,
-  "progress": { "have": 0, "need": 1, "unit": "quest" },
-  "badges": [{ "text": "The Teacher quest", "tone": "info" }],
-  "prices": [{ "label": "replacement copy", "amount": "100,000 standing", "money": false }],
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "quest"
+  },
+  "badges": [
+    {
+      "text": "The Teacher quest",
+      "tone": "info"
+    }
+  ],
+  "prices": [
+    {
+      "label": "replacement copy",
+      "amount": "100,000 standing",
+      "money": false
+    }
+  ],
   "routes": [
     {
       "name": "The Teacher",
@@ -22,32 +37,6 @@
     }
   ],
   "groups": [
-    {
-      "type": "gate",
-      "place": "QUEST",
-      "sub": null,
-      "activity": "finish Vor's Prize first",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Vor's Prize",
-          "note": "The Teacher unlocks after it",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": ["The quest can't be started while the Backrooms is your base of operations."],
-      "bonuses": [],
-      "disclosures": [],
-      "quest": "The Teacher"
-    },
     {
       "type": "farm",
       "place": "THE CODEX",
@@ -77,18 +66,26 @@
   ],
   "afterQuest": {
     "effort": 5,
-    "badges": [{ "text": "Simaris 100,000 standing", "tone": "warn" }],
+    "badges": [
+      {
+        "text": "Simaris 100,000 standing",
+        "tone": "warn"
+      }
+    ],
     "groups": [
       {
         "type": "currency",
         "place": "CEPHALON SIMARIS",
         "sub": null,
         "activity": "scan targets with the Synthesis Scanner",
-        "meta": "100,000 Standing",
+        "meta": null,
         "mode": null,
         "live": null,
         "skip": null,
-        "earns": { "currency": "Cephalon Simaris Standing", "amount": "100,000" },
+        "earns": {
+          "currency": "Cephalon Simaris Standing",
+          "amount": "100,000"
+        },
         "spends": [],
         "map": null,
         "rows": [
@@ -110,20 +107,33 @@
         "place": "CEPHALON SIMARIS",
         "sub": null,
         "activity": "buy another Thornbak",
-        "meta": "100,000 Standing",
+        "meta": null,
         "mode": null,
         "live": null,
         "skip": null,
         "earns": null,
-        "spends": [{ "currency": "Cephalon Simaris Standing", "amount": "100,000" }],
+        "spends": [
+          {
+            "currency": "Cephalon Simaris Standing",
+            "amount": "100,000"
+          }
+        ],
         "map": null,
         "rows": [
           {
             "qty": null,
             "label": "Thornbak",
-            "note": "100,000 Standing",
+            "note": null,
             "alt": null,
-            "done": false
+            "done": false,
+            "buy": {
+              "price": [
+                {
+                  "currency": "Cephalon Simaris Standing",
+                  "amount": "100,000"
+                }
+              ]
+            }
           }
         ],
         "conditions": ["Simaris only stocks it once The Teacher is done."],

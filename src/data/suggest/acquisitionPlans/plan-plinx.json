@@ -11,14 +11,6 @@
   },
   "badges": [
     {
-      "text": "Vox Solaris rank 1",
-      "tone": "warn",
-      "rank": {
-        "syndicate": "Vox Solaris",
-        "level": 1
-      }
-    },
-    {
       "text": "10 Gyromag Systems",
       "tone": "info"
     }
@@ -64,56 +56,11 @@
   ],
   "groups": [
     {
-      "type": "gate",
-      "place": "FORTUNA, VENUS",
-      "sub": null,
-      "activity": "Mastery Rank 6, The War Within, then Vox Solaris rank 1",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Mastery Rank 6",
-          "note": "needed to equip it",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "The War Within",
-          "note": "lets you talk to Little Duck as the Operator",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Vox Solaris rank 1, Operative",
-          "note": "5,000 standing, 50,000 cr, 1 Vega Toroid, 1 Calda Toroid, 1 Sola Toroid",
-          "alt": null,
-          "done": false,
-          "rank": {
-            "syndicate": "Vox Solaris",
-            "level": 1
-          }
-        }
-      ],
-      "conditions": [
-        "The rank-up consumes one toroid of each common type, so don't trade them all in for standing."
-      ],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
       "type": "vendor",
       "place": "MARKET",
       "sub": null,
       "activity": "buy the blueprint",
-      "meta": "20,000 cr",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -131,7 +78,15 @@
           "label": "Plinx Blueprint",
           "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Credits",
+                "amount": "20,000"
+              }
+            ]
+          }
         }
       ],
       "conditions": [],

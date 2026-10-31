@@ -40,31 +40,6 @@
   ],
   "groups": [
     {
-      "type": "gate",
-      "place": "MASTERY RANK",
-      "sub": null,
-      "activity": "reach MR 4",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Mastery Rank 4",
-          "note": "needed to equip it",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
       "type": "currency",
       "place": "VOID FISSURES, ANY",
       "sub": null,
@@ -121,9 +96,17 @@
         {
           "qty": null,
           "label": "Viper Wraith",
-          "note": "75,000 credits + 400 Ducats, only when in his rotating stock",
+          "note": "400 Ducats, only when in his rotating stock",
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Credits",
+                "amount": "75,000"
+              }
+            ]
+          }
         }
       ],
       "conditions": [

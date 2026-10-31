@@ -90,14 +90,15 @@ describe("validateTips", () => {
     ]);
   });
 
-  it("anchors every non-sentiment tip and never a sentiment one", () => {
+  it("lets any tip go unanchored but never anchors a sentiment one", () => {
     const value = file([
       tip({ anchor: null }) as never,
       tip({ id: "b", text: "Worth it.", kind: "sentiment" }) as never,
+      tip({ id: "c", text: "Go early.", anchor: "FORTUNA" }) as never,
     ]);
     expect(validateTips(value, target)).toEqual([
-      "tips[0].anchor must name the step the tip is about",
       "tips[1].anchor must be null on a sentiment tip",
+      "tips[2].anchor must name the step the tip is about, or be null",
     ]);
   });
 

@@ -4,12 +4,28 @@
   "effort": 4,
   "source": "bounties",
   "tradeable": false,
-  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "progress": {
+    "have": 0,
+    "need": 4,
+    "unit": "parts"
+  },
   "badges": [
-    { "text": "materials grind", "tone": "warn" },
-    { "text": "Circuit alt", "tone": "circuit" }
+    {
+      "text": "materials grind",
+      "tone": "warn"
+    },
+    {
+      "text": "Circuit alt",
+      "tone": "circuit"
+    }
   ],
-  "prices": [{ "label": "build", "amount": "70,000 cr", "money": false }],
+  "prices": [
+    {
+      "label": "build",
+      "amount": "70,000 cr",
+      "money": false
+    }
+  ],
   "routes": [
     {
       "name": "Saya's Vigil, then Plains bounties",
@@ -31,53 +47,88 @@
     }
   ],
   "materials": [
-    { "qty": "2", "label": "Neurodes", "note": "Neuroptics" },
-    { "qty": "2", "label": "Morphics", "note": "Systems" },
-    { "qty": "1,550", "label": "Circuits", "note": null },
+    {
+      "qty": "2",
+      "label": "Neurodes",
+      "note": "Neuroptics"
+    },
+    {
+      "qty": "2",
+      "label": "Morphics",
+      "note": "Systems"
+    },
+    {
+      "qty": "1,550",
+      "label": "Circuits",
+      "note": null
+    },
     {
       "qty": "1,350",
       "label": "Rubedo",
       "note": "800 Chassis, 250 Pyrotic Alloy refines, 300 Coprite Alloy refines"
     },
-    { "qty": "3", "label": "Orokin Cell", "note": null },
-    { "qty": "1,000", "label": "Cryotic", "note": "Pyrotic Alloy refines" },
-    { "qty": "2,400", "label": "Ferrite", "note": "Coprite Alloy refines" },
-    { "qty": "1", "label": "Nosam Cutter", "note": null },
-    { "qty": "65", "label": "Grokdrul", "note": "Neuroptics" },
-    { "qty": "90", "label": "Pyrotic Alloy", "note": "Neuroptics" },
-    { "qty": "55", "label": "Iradite", "note": "Chassis" },
-    { "qty": "120", "label": "Coprite Alloy", "note": "Chassis" },
-    { "qty": "2", "label": "Cetus Wisp", "note": "Chassis" },
-    { "qty": "35", "label": "Charc Electroplax", "note": "Systems" },
-    { "qty": "25", "label": "Esher Devar", "note": "Systems" },
-    { "qty": "70,000", "label": "Credits", "note": null }
+    {
+      "qty": "3",
+      "label": "Orokin Cell",
+      "note": null
+    },
+    {
+      "qty": "1,000",
+      "label": "Cryotic",
+      "note": "Pyrotic Alloy refines"
+    },
+    {
+      "qty": "2,400",
+      "label": "Ferrite",
+      "note": "Coprite Alloy refines"
+    },
+    {
+      "qty": "1",
+      "label": "Nosam Cutter",
+      "note": null
+    },
+    {
+      "qty": "65",
+      "label": "Grokdrul",
+      "note": "Neuroptics"
+    },
+    {
+      "qty": "90",
+      "label": "Pyrotic Alloy",
+      "note": "Neuroptics"
+    },
+    {
+      "qty": "55",
+      "label": "Iradite",
+      "note": "Chassis"
+    },
+    {
+      "qty": "120",
+      "label": "Coprite Alloy",
+      "note": "Chassis"
+    },
+    {
+      "qty": "2",
+      "label": "Cetus Wisp",
+      "note": "Chassis"
+    },
+    {
+      "qty": "35",
+      "label": "Charc Electroplax",
+      "note": "Systems"
+    },
+    {
+      "qty": "25",
+      "label": "Esher Devar",
+      "note": "Systems"
+    },
+    {
+      "qty": "70,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
-    {
-      "type": "gate",
-      "place": "QUESTS",
-      "sub": null,
-      "activity": "finish Saya's Vigil",
-      "meta": "solo only",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Saya's Vigil",
-          "note": "needs Vor's Prize done and one Plains bounty completed",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
     {
       "type": "farm",
       "place": "CETUS, EARTH",
@@ -150,36 +201,71 @@
       "place": "OLD MAN SUUMBAAT, CETUS",
       "sub": null,
       "activity": "buy the reusable refinement blueprints",
-      "meta": "5,500 standing total",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Ostron Standing", "amount": "5,500" }],
+      "spends": [
+        {
+          "currency": "Ostron Standing",
+          "amount": "5,500"
+        }
+      ],
       "map": null,
       "rows": [
         {
           "qty": null,
           "label": "Pyrotic Alloy blueprint",
-          "note": "500 standing",
+          "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Ostron Standing",
+                "amount": "500"
+              }
+            ]
+          }
         },
         {
           "qty": null,
           "label": "Coprite Alloy blueprint",
-          "note": "2,500 standing",
+          "note": null,
           "alt": null,
           "done": false,
-          "rank": { "syndicate": "Ostron", "level": 1 }
+          "buy": {
+            "price": [
+              {
+                "currency": "Ostron Standing",
+                "amount": "2,500"
+              }
+            ],
+            "rank": {
+              "syndicate": "Ostron",
+              "level": 1
+            }
+          }
         },
         {
           "qty": null,
           "label": "Esher Devar cutting blueprint",
-          "note": "2,500 standing",
+          "note": null,
           "alt": null,
           "done": false,
-          "rank": { "syndicate": "Ostron", "level": 1 }
+          "buy": {
+            "price": [
+              {
+                "currency": "Ostron Standing",
+                "amount": "2,500"
+              }
+            ],
+            "rank": {
+              "syndicate": "Ostron",
+              "level": 1
+            }
+          }
         }
       ],
       "conditions": [],
@@ -236,8 +322,14 @@
   "afterQuest": {
     "effort": 5,
     "badges": [
-      { "text": "Simaris 50,000 standing", "tone": "warn" },
-      { "text": "Circuit week 10", "tone": "circuit" }
+      {
+        "text": "Simaris 50,000 standing",
+        "tone": "warn"
+      },
+      {
+        "text": "Circuit week 10",
+        "tone": "circuit"
+      }
     ],
     "groups": [
       {
@@ -245,11 +337,14 @@
         "place": "CEPHALON SIMARIS",
         "sub": null,
         "activity": "scan targets with the Synthesis Scanner",
-        "meta": "50,000 Standing, ~3 capped days",
+        "meta": "~3 capped days",
         "mode": null,
         "live": null,
         "skip": null,
-        "earns": { "currency": "Cephalon Simaris Standing", "amount": "50,000" },
+        "earns": {
+          "currency": "Cephalon Simaris Standing",
+          "amount": "50,000"
+        },
         "spends": [],
         "map": null,
         "rows": [
@@ -271,20 +366,33 @@
         "place": "CEPHALON SIMARIS",
         "sub": null,
         "activity": "buy the main blueprint",
-        "meta": "50,000 Standing, repeatable",
+        "meta": "repeatable",
         "mode": null,
         "live": null,
         "skip": null,
         "earns": null,
-        "spends": [{ "currency": "Cephalon Simaris Standing", "amount": "50,000" }],
+        "spends": [
+          {
+            "currency": "Cephalon Simaris Standing",
+            "amount": "50,000"
+          }
+        ],
         "map": null,
         "rows": [
           {
             "qty": null,
             "label": "Gara Blueprint",
-            "note": "50,000 Standing",
+            "note": null,
             "alt": "Circuit week 10, tier 10",
-            "done": false
+            "done": false,
+            "buy": {
+              "price": [
+                {
+                  "currency": "Cephalon Simaris Standing",
+                  "amount": "50,000"
+                }
+              ]
+            }
           }
         ],
         "conditions": ["Simaris only stocks it once Saya's Vigil is done."],

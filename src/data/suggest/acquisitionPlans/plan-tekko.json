@@ -13,10 +13,6 @@
     {
       "text": "3,300 Polymer Bundle",
       "tone": "warn"
-    },
-    {
-      "text": "MR 6",
-      "tone": "info"
     }
   ],
   "prices": [
@@ -80,36 +76,11 @@
   ],
   "groups": [
     {
-      "type": "gate",
-      "place": "MASTERY RANK",
-      "sub": null,
-      "activity": "reach MR 6",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Mastery Rank 6",
-          "note": "needed to equip it",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
       "type": "vendor",
       "place": "MARKET",
       "sub": null,
       "activity": "buy both blueprints",
-      "meta": "40,000 cr",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -125,16 +96,32 @@
         {
           "qty": null,
           "label": "Ankyros Blueprint",
-          "note": "15,000 cr",
+          "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Credits",
+                "amount": "15,000"
+              }
+            ]
+          }
         },
         {
           "qty": null,
           "label": "Tekko Blueprint",
-          "note": "25,000 cr",
+          "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Credits",
+                "amount": "25,000"
+              }
+            ]
+          }
         }
       ],
       "conditions": [],

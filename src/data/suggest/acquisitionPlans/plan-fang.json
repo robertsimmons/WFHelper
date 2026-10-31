@@ -4,21 +4,59 @@
   "effort": 2,
   "source": "shop",
   "tradeable": false,
-  "progress": { "have": 0, "need": 1, "unit": "blueprint" },
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "blueprint"
+  },
   "badges": [
-    { "text": "Market", "tone": "info" },
-    { "text": "1 Morphics", "tone": "info" }
+    {
+      "text": "Market",
+      "tone": "info"
+    },
+    {
+      "text": "1 Morphics",
+      "tone": "info"
+    }
   ],
   "prices": [
-    { "label": "blueprint", "amount": "20,000 cr", "money": false },
-    { "label": "build", "amount": "20,000 cr", "money": false }
+    {
+      "label": "blueprint",
+      "amount": "20,000 cr",
+      "money": false
+    },
+    {
+      "label": "build",
+      "amount": "20,000 cr",
+      "money": false
+    }
   ],
   "materials": [
-    { "qty": "1", "label": "Morphics", "note": null },
-    { "qty": "600", "label": "Polymer Bundle", "note": null },
-    { "qty": "600", "label": "Ferrite", "note": null },
-    { "qty": "900", "label": "Nano Spores", "note": null },
-    { "qty": "40,000", "label": "Credits", "note": null }
+    {
+      "qty": "1",
+      "label": "Morphics",
+      "note": null
+    },
+    {
+      "qty": "600",
+      "label": "Polymer Bundle",
+      "note": null
+    },
+    {
+      "qty": "600",
+      "label": "Ferrite",
+      "note": null
+    },
+    {
+      "qty": "900",
+      "label": "Nano Spores",
+      "note": null
+    },
+    {
+      "qty": "40,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
     {
@@ -26,12 +64,17 @@
       "place": "MARKET",
       "sub": null,
       "activity": "buy the Fang Blueprint",
-      "meta": "20,000 cr",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Credits", "amount": "20,000" }],
+      "spends": [
+        {
+          "currency": "Credits",
+          "amount": "20,000"
+        }
+      ],
       "map": null,
       "rows": [
         {
@@ -39,7 +82,15 @@
           "label": "Fang Blueprint",
           "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Credits",
+                "amount": "20,000"
+              }
+            ]
+          }
         }
       ],
       "conditions": ["Fang Prime is a separate Mastery item and does not cover this one."],
@@ -56,15 +107,28 @@
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Credits", "amount": "20,000" }],
+      "spends": [
+        {
+          "currency": "Credits",
+          "amount": "20,000"
+        }
+      ],
       "map": null,
       "rows": [
         {
           "qty": null,
           "label": "Fang",
-          "note": "20,000 cr, 1 Morphics, 600 Polymer Bundle, 600 Ferrite, 900 Nano Spores",
+          "note": "1 Morphics, 600 Polymer Bundle, 600 Ferrite, 900 Nano Spores",
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Credits",
+                "amount": "20,000"
+              }
+            ]
+          }
         }
       ],
       "conditions": [],

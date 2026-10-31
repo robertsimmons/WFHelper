@@ -4,82 +4,95 @@
   "effort": 2,
   "source": "repeat",
   "tradeable": false,
-  "progress": { "have": 0, "need": 4, "unit": "parts" },
+  "progress": {
+    "have": 0,
+    "need": 4,
+    "unit": "parts"
+  },
   "badges": [
-    { "text": "hard pity", "tone": "info" },
     {
-      "text": "Ostron Offworlder",
-      "tone": "warn",
-      "rank": { "syndicate": "Ostron", "level": 1 }
+      "text": "hard pity",
+      "tone": "info"
     }
   ],
   "prices": [
-    { "label": "parts + build", "amount": "85,000 cr", "money": false },
-    { "label": "worst case", "amount": "317 Fate Pearls", "money": false }
+    {
+      "label": "parts + build",
+      "amount": "85,000 cr",
+      "money": false
+    },
+    {
+      "label": "worst case",
+      "amount": "317 Fate Pearls",
+      "money": false
+    }
   ],
   "materials": [
-    { "qty": "200", "label": "Ferrite", "note": "100 Barrel, 100 Receiver" },
-    { "qty": "100", "label": "Alloy Plate", "note": "Stock" },
-    { "qty": "100", "label": "Cryotic", "note": "Stock" },
-    { "qty": "47", "label": "Fate Pearl", "note": "14 per part, 5 Higasa" },
-    { "qty": "40", "label": "Grokdrul", "note": "Receiver" },
-    { "qty": "20", "label": "Coprite Alloy", "note": "Receiver" },
-    { "qty": "25", "label": "Iradite", "note": "Stock" },
-    { "qty": "10", "label": "Esher Devar", "note": "Barrel" },
-    { "qty": "10", "label": "Goopolla Spleen", "note": "Barrel" },
-    { "qty": "85,000", "label": "Credits", "note": null }
+    {
+      "qty": "200",
+      "label": "Ferrite",
+      "note": "100 Barrel, 100 Receiver"
+    },
+    {
+      "qty": "100",
+      "label": "Alloy Plate",
+      "note": "Stock"
+    },
+    {
+      "qty": "100",
+      "label": "Cryotic",
+      "note": "Stock"
+    },
+    {
+      "qty": "47",
+      "label": "Fate Pearl",
+      "note": "14 per part, 5 Higasa"
+    },
+    {
+      "qty": "40",
+      "label": "Grokdrul",
+      "note": "Receiver"
+    },
+    {
+      "qty": "20",
+      "label": "Coprite Alloy",
+      "note": "Receiver"
+    },
+    {
+      "qty": "25",
+      "label": "Iradite",
+      "note": "Stock"
+    },
+    {
+      "qty": "10",
+      "label": "Esher Devar",
+      "note": "Barrel"
+    },
+    {
+      "qty": "10",
+      "label": "Goopolla Spleen",
+      "note": "Barrel"
+    },
+    {
+      "qty": "85,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
-    {
-      "type": "gate",
-      "place": "QUESTS",
-      "sub": null,
-      "activity": "Once Awake, then Saya's Vigil",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Once Awake",
-          "note": "required",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Saya's Vigil",
-          "note": "required; opens Shrine Defense",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Ostron rank 1: Offworlder",
-          "note": "unlocks the Esher Devar and Coprite Alloy blueprints",
-          "alt": null,
-          "done": false,
-          "rank": { "syndicate": "Ostron", "level": 1 }
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
     {
       "type": "farm",
       "place": "SAYA'S VISIONS, EARTH",
       "sub": "Koumei's Shrine",
       "activity": "Shrine Defense",
-      "meta": "14-18 Fate Pearls and 800 Ostron Standing a clear",
+      "meta": "14-18 Fate Pearls a clear",
       "mode": null,
       "live": null,
       "skip": null,
-      "earns": { "currency": "Fate Pearl", "amount": "317" },
+      "earns": {
+        "currency": "Fate Pearl",
+        "amount": "317"
+      },
       "spends": [],
       "map": null,
       "rows": [
@@ -89,7 +102,12 @@
           "note": "4.09%",
           "alt": {
             "text": "or 135 Fate Pearls at Koumei's Shrine",
-            "spends": [{ "currency": "Fate Pearl", "amount": "135" }]
+            "spends": [
+              {
+                "currency": "Fate Pearl",
+                "amount": "135"
+              }
+            ]
           },
           "done": false
         },
@@ -99,7 +117,12 @@
           "note": "4.09%",
           "alt": {
             "text": "or 45 Fate Pearls at Koumei's Shrine",
-            "spends": [{ "currency": "Fate Pearl", "amount": "45" }]
+            "spends": [
+              {
+                "currency": "Fate Pearl",
+                "amount": "45"
+              }
+            ]
           },
           "done": false
         },
@@ -109,7 +132,12 @@
           "note": "4.09%",
           "alt": {
             "text": "or 45 Fate Pearls at Koumei's Shrine",
-            "spends": [{ "currency": "Fate Pearl", "amount": "45" }]
+            "spends": [
+              {
+                "currency": "Fate Pearl",
+                "amount": "45"
+              }
+            ]
           },
           "done": false
         },
@@ -119,13 +147,21 @@
           "note": "4.09%",
           "alt": {
             "text": "or 45 Fate Pearls at Koumei's Shrine",
-            "spends": [{ "currency": "Fate Pearl", "amount": "45" }]
+            "spends": [
+              {
+                "currency": "Fate Pearl",
+                "amount": "45"
+              }
+            ]
           },
           "done": false
         }
       ],
       "conditions": ["Steel Path pays 20-24 Fate Pearls a clear against 14-18."],
-      "bonuses": ["The same table drops Koumei and Amanata parts, so farm all three together."],
+      "bonuses": [
+        "The same table drops Koumei and Amanata parts, so farm all three together.",
+        "Each clear also pays 800 Ostron standing."
+      ],
       "disclosures": []
     },
     {

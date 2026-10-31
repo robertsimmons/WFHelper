@@ -11,10 +11,6 @@
   },
   "badges": [
     {
-      "text": "3 syndicates to Rank 2",
-      "tone": "warn"
-    },
-    {
       "text": "no RNG",
       "tone": "info"
     }
@@ -54,7 +50,7 @@
       "place": "CLAN DOJO, TENNO LAB",
       "sub": null,
       "activity": "buy the blueprint at the Tenno Lab",
-      "meta": "15,000 cr",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -72,7 +68,15 @@
           "label": "Velocitus Blueprint",
           "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Credits",
+                "amount": "15,000"
+              }
+            ]
+          }
         }
       ],
       "conditions": [
@@ -86,7 +90,7 @@
       "place": "STEEL MERIDIAN SYNDICATE, ORBITER",
       "sub": "Syndicate console",
       "activity": "pledge, rank to 2 (Valiant), buy the Receiver",
-      "meta": "47,000 standing, 90,000 cr",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -105,41 +109,81 @@
         {
           "qty": "1,000",
           "label": "Salvage",
-          "note": "Initiation sacrifice, 10,000 cr",
+          "note": "Initiation sacrifice",
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Credits",
+                "amount": "10,000"
+              }
+            ]
+          }
         },
         {
           "qty": "2",
           "label": "Morphics",
-          "note": "Rank 1 Brave sacrifice, 5,000 standing, 30,000 cr",
+          "note": "sacrifice",
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "Steel Meridian",
             "level": 1
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Steel Meridian Standing",
+                "amount": "5,000"
+              },
+              {
+                "currency": "Credits",
+                "amount": "30,000"
+              }
+            ]
           }
         },
         {
           "qty": "1",
           "label": "Forma",
-          "note": "Rank 2 Valiant sacrifice, 22,000 standing, 50,000 cr",
+          "note": "sacrifice",
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "Steel Meridian",
             "level": 2
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Steel Meridian Standing",
+                "amount": "22,000"
+              },
+              {
+                "currency": "Credits",
+                "amount": "50,000"
+              }
+            ]
           }
         },
         {
           "qty": null,
           "label": "Velocitus Receiver Blueprint",
-          "note": "20,000 standing",
+          "note": null,
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "Steel Meridian",
             "level": 2
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Steel Meridian Standing",
+                "amount": "20,000"
+              }
+            ]
           }
         }
       ],
@@ -169,23 +213,39 @@
         {
           "qty": null,
           "label": "Rank 1, Brave",
-          "note": "5,000 standing",
+          "note": null,
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "Steel Meridian",
             "level": 1
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Steel Meridian Standing",
+                "amount": "5,000"
+              }
+            ]
           }
         },
         {
           "qty": null,
           "label": "Rank 2, Valiant",
-          "note": "22,000 standing",
+          "note": null,
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "Steel Meridian",
             "level": 2
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Steel Meridian Standing",
+                "amount": "22,000"
+              }
+            ]
           }
         }
       ],
@@ -198,7 +258,7 @@
       "place": "RED VEIL SYNDICATE, ORBITER",
       "sub": "Syndicate console",
       "activity": "pledge, rank to 2 (Honored), buy the Stock",
-      "meta": "47,000 standing, 90,000 cr",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -217,41 +277,81 @@
         {
           "qty": "500",
           "label": "Alloy Plate",
-          "note": "Initiation sacrifice, 10,000 cr",
+          "note": "Initiation sacrifice",
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Credits",
+                "amount": "10,000"
+              }
+            ]
+          }
         },
         {
           "qty": "2",
           "label": "Gallium",
-          "note": "Rank 1 Respected sacrifice, 5,000 standing, 30,000 cr",
+          "note": "sacrifice",
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "Red Veil",
             "level": 1
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Red Veil Standing",
+                "amount": "5,000"
+              },
+              {
+                "currency": "Credits",
+                "amount": "30,000"
+              }
+            ]
           }
         },
         {
           "qty": "1",
           "label": "Forma",
-          "note": "Rank 2 Honored sacrifice, 22,000 standing, 50,000 cr",
+          "note": "sacrifice",
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "Red Veil",
             "level": 2
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Red Veil Standing",
+                "amount": "22,000"
+              },
+              {
+                "currency": "Credits",
+                "amount": "50,000"
+              }
+            ]
           }
         },
         {
           "qty": null,
           "label": "Velocitus Stock Blueprint",
-          "note": "20,000 standing",
+          "note": null,
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "Red Veil",
             "level": 2
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Red Veil Standing",
+                "amount": "20,000"
+              }
+            ]
           }
         }
       ],
@@ -281,23 +381,39 @@
         {
           "qty": null,
           "label": "Rank 1, Respected",
-          "note": "5,000 standing",
+          "note": null,
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "Red Veil",
             "level": 1
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Red Veil Standing",
+                "amount": "5,000"
+              }
+            ]
           }
         },
         {
           "qty": null,
           "label": "Rank 2, Honored",
-          "note": "22,000 standing",
+          "note": null,
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "Red Veil",
             "level": 2
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Red Veil Standing",
+                "amount": "22,000"
+              }
+            ]
           }
         }
       ],
@@ -310,7 +426,7 @@
       "place": "CEPHALON SUDA, ORBITER",
       "sub": "Syndicate console",
       "activity": "pledge, rank to 2 (Intriguing), buy the Barrel",
-      "meta": "47,000 standing, 90,000 cr",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -329,41 +445,81 @@
         {
           "qty": "500",
           "label": "Circuits",
-          "note": "Initiation sacrifice, 10,000 cr",
+          "note": "Initiation sacrifice",
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Credits",
+                "amount": "10,000"
+              }
+            ]
+          }
         },
         {
           "qty": "2",
           "label": "Control Module",
-          "note": "Rank 1 Competent sacrifice, 5,000 standing, 30,000 cr",
+          "note": "sacrifice",
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "Cephalon Suda",
             "level": 1
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Cephalon Suda Standing",
+                "amount": "5,000"
+              },
+              {
+                "currency": "Credits",
+                "amount": "30,000"
+              }
+            ]
           }
         },
         {
           "qty": "1",
           "label": "Forma",
-          "note": "Rank 2 Intriguing sacrifice, 22,000 standing, 50,000 cr",
+          "note": "sacrifice",
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "Cephalon Suda",
             "level": 2
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Cephalon Suda Standing",
+                "amount": "22,000"
+              },
+              {
+                "currency": "Credits",
+                "amount": "50,000"
+              }
+            ]
           }
         },
         {
           "qty": null,
           "label": "Velocitus Barrel Blueprint",
-          "note": "20,000 standing",
+          "note": null,
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "Cephalon Suda",
             "level": 2
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Cephalon Suda Standing",
+                "amount": "20,000"
+              }
+            ]
           }
         }
       ],
@@ -393,23 +549,39 @@
         {
           "qty": null,
           "label": "Rank 1, Competent",
-          "note": "5,000 standing",
+          "note": null,
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "Cephalon Suda",
             "level": 1
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Cephalon Suda Standing",
+                "amount": "5,000"
+              }
+            ]
           }
         },
         {
           "qty": null,
           "label": "Rank 2, Intriguing",
-          "note": "22,000 standing",
+          "note": null,
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "Cephalon Suda",
             "level": 2
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Cephalon Suda Standing",
+                "amount": "22,000"
+              }
+            ]
           }
         }
       ],

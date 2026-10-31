@@ -703,7 +703,19 @@
         "sub": "Nakak",
         "activity": "buy the blueprint during Operation: Plague Star",
         "how": "vendor",
-        "meta": "3,000 Operational Supply standing + 5,000 credits"
+        "meta": null,
+        "buy": {
+          "price": [
+            {
+              "currency": "Operational Supply Standing",
+              "amount": "3,000"
+            },
+            {
+              "currency": "Credits",
+              "amount": "5,000"
+            }
+          ]
+        }
       },
       {
         "place": "NIGHTWAVE",
@@ -1025,7 +1037,20 @@
       "sub": "Smokefinger",
       "activity": "buy the blueprint",
       "how": null,
-      "meta": "12,000 standing, Solaris United Cove; 3 per craft"
+      "meta": "3 per craft",
+      "buy": {
+        "price": [
+          {
+            "currency": "Solaris United Standing",
+            "amount": "12,000"
+          }
+        ],
+        "rank": {
+          "syndicate": "Solaris United",
+          "level": 4
+        },
+        "reusable": true
+      }
     },
     "alternates": [],
     "tips": [],
@@ -1046,15 +1071,40 @@
       "sub": "Old Man Suumbaat",
       "activity": "buy the blueprint",
       "how": null,
-      "meta": "3 per craft; Ostron rank Surah, 10,000 standing"
+      "meta": "3 per craft",
+      "buy": {
+        "price": [
+          {
+            "currency": "Ostron Standing",
+            "amount": "10,000"
+          }
+        ],
+        "rank": {
+          "syndicate": "Ostron",
+          "level": 4
+        }
+      }
     },
     "alternates": [
       {
         "place": "CETUS, EARTH",
         "sub": "Nakak",
-        "activity": "Buy during Operation: Plague Star",
+        "activity": "buy during Operation: Plague Star",
         "how": "vendor",
-        "meta": "750 Operational Supply standing + 1,500cr each"
+        "meta": null,
+        "buy": {
+          "price": [
+            {
+              "currency": "Operational Supply Standing",
+              "amount": "750"
+            },
+            {
+              "currency": "Credits",
+              "amount": "1,500"
+            }
+          ],
+          "each": true
+        }
       }
     ],
     "tips": [],
@@ -1075,7 +1125,19 @@
       "sub": "Otak",
       "activity": "buy the blueprint",
       "how": null,
-      "meta": "3 per craft; Entrati rank Associate, 8,000 standing"
+      "meta": "3 per craft",
+      "buy": {
+        "price": [
+          {
+            "currency": "Entrati Standing",
+            "amount": "8,000"
+          }
+        ],
+        "rank": {
+          "syndicate": "Entrati",
+          "level": 3
+        }
+      }
     },
     "alternates": [],
     "tips": [],
@@ -1262,7 +1324,19 @@
       "sub": "Old Man Suumbaat",
       "activity": "buy the blueprint",
       "how": null,
-      "meta": "2,500 standing, Ostron Offworlder; 20 per craft"
+      "meta": "20 per craft",
+      "buy": {
+        "price": [
+          {
+            "currency": "Ostron Standing",
+            "amount": "2,500"
+          }
+        ],
+        "rank": {
+          "syndicate": "Ostron",
+          "level": 1
+        }
+      }
     },
     "alternates": [
       {
@@ -1297,9 +1371,21 @@
     "best": {
       "place": "CETUS, EARTH",
       "sub": "Old Man Suumbaat",
-      "activity": "Buy the blueprint (Ostron Visitor, 5,000 standing)",
+      "activity": "buy the blueprint",
       "how": "vendor",
-      "meta": "20 per craft, 1 minute, 1,000 credits"
+      "meta": "20 per craft, 1 minute, 1,000 credits",
+      "buy": {
+        "price": [
+          {
+            "currency": "Ostron Standing",
+            "amount": "5,000"
+          }
+        ],
+        "rank": {
+          "syndicate": "Ostron",
+          "level": 2
+        }
+      }
     },
     "alternates": [],
     "tips": [],
@@ -1328,7 +1414,19 @@
       "sub": "Old Man Suumbaat",
       "activity": "buy the blueprint",
       "how": null,
-      "meta": "20 per craft; Ostron rank Trusted, 7,500 standing"
+      "meta": "20 per craft",
+      "buy": {
+        "price": [
+          {
+            "currency": "Ostron Standing",
+            "amount": "7,500"
+          }
+        ],
+        "rank": {
+          "syndicate": "Ostron",
+          "level": 3
+        }
+      }
     },
     "alternates": [],
     "tips": [],
@@ -1357,7 +1455,20 @@
       "sub": "Smokefinger",
       "activity": "buy the blueprint",
       "how": null,
-      "meta": "20 per craft; Solaris United Outworlder, 2,000 standing"
+      "meta": "20 per craft",
+      "buy": {
+        "price": [
+          {
+            "currency": "Solaris United Standing",
+            "amount": "2,000"
+          }
+        ],
+        "rank": {
+          "syndicate": "Solaris United",
+          "level": 1
+        },
+        "reusable": true
+      }
     },
     "alternates": [],
     "tips": [],
@@ -1386,7 +1497,16 @@
       "sub": "Smokefinger",
       "activity": "buy the blueprint",
       "how": null,
-      "meta": "20 per refine; 1,000 Solaris United standing, Neutral"
+      "meta": "20 per refine",
+      "buy": {
+        "price": [
+          {
+            "currency": "Solaris United Standing",
+            "amount": "1,000"
+          }
+        ],
+        "reusable": true
+      }
     },
     "alternates": [],
     "tips": [],
@@ -1415,7 +1535,16 @@
       "sub": "Smokefinger",
       "activity": "buy the blueprint",
       "how": null,
-      "meta": "20 per craft; Solaris United Neutral, 1,000 standing"
+      "meta": "20 per craft",
+      "buy": {
+        "price": [
+          {
+            "currency": "Solaris United Standing",
+            "amount": "1,000"
+          }
+        ],
+        "reusable": true
+      }
     },
     "alternates": [],
     "tips": [],
@@ -1442,9 +1571,17 @@
     "best": {
       "place": "CETUS, EARTH",
       "sub": "Old Man Suumbaat",
-      "activity": "Buy the blueprint (Ostron Neutral, 500 standing)",
+      "activity": "buy the blueprint",
       "how": "vendor",
-      "meta": "20 per craft, 1 minute, 1,000 credits"
+      "meta": "20 per craft, 1 minute, 1,000 credits",
+      "buy": {
+        "price": [
+          {
+            "currency": "Ostron Standing",
+            "amount": "500"
+          }
+        ]
+      }
     },
     "alternates": [],
     "tips": [],
@@ -1473,7 +1610,20 @@
       "sub": "Smokefinger",
       "activity": "buy the blueprint",
       "how": null,
-      "meta": "20 per refine; 4,000 Solaris United standing, Rank 2 Rapscallion"
+      "meta": "20 per refine",
+      "buy": {
+        "price": [
+          {
+            "currency": "Solaris United Standing",
+            "amount": "4,000"
+          }
+        ],
+        "rank": {
+          "syndicate": "Solaris United",
+          "level": 2
+        },
+        "reusable": true
+      }
     },
     "alternates": [],
     "tips": [],
@@ -1502,7 +1652,15 @@
       "sub": "Otak",
       "activity": "buy the blueprint",
       "how": null,
-      "meta": "1,000 standing, Entrati Neutral; 20 per craft"
+      "meta": "20 per craft",
+      "buy": {
+        "price": [
+          {
+            "currency": "Entrati Standing",
+            "amount": "1,000"
+          }
+        ]
+      }
     },
     "alternates": [],
     "tips": ["Adramalium is mined from yellow lesions on the Cambion Drift."],
@@ -1533,9 +1691,21 @@
     "best": {
       "place": "NECRALISK, DEIMOS",
       "sub": "Otak",
-      "activity": "Buy the blueprint (Entrati Stranger, 2,000 standing)",
+      "activity": "buy the blueprint",
       "how": "vendor",
-      "meta": "20 per craft, 1 minute"
+      "meta": "20 per craft, 1 minute",
+      "buy": {
+        "price": [
+          {
+            "currency": "Entrati Standing",
+            "amount": "2,000"
+          }
+        ],
+        "rank": {
+          "syndicate": "Entrati",
+          "level": 1
+        }
+      }
     },
     "alternates": [],
     "tips": [],
@@ -1566,9 +1736,21 @@
     "best": {
       "place": "NECRALISK, DEIMOS",
       "sub": "Otak",
-      "activity": "Buy the blueprint (Entrati Acquaintance, 4,000 standing)",
+      "activity": "buy the blueprint",
       "how": "vendor",
-      "meta": "20 per craft, 1 minute, 1,000 credits"
+      "meta": "20 per craft, 1 minute, 1,000 credits",
+      "buy": {
+        "price": [
+          {
+            "currency": "Entrati Standing",
+            "amount": "4,000"
+          }
+        ],
+        "rank": {
+          "syndicate": "Entrati",
+          "level": 2
+        }
+      }
     },
     "alternates": [],
     "tips": [],
@@ -1821,7 +2003,16 @@
       "sub": "Smokefinger",
       "activity": "buy the blueprint",
       "how": null,
-      "meta": "1,000 standing, Solaris United Neutral; 10 per craft"
+      "meta": "10 per craft",
+      "buy": {
+        "price": [
+          {
+            "currency": "Solaris United Standing",
+            "amount": "1,000"
+          }
+        ],
+        "reusable": true
+      }
     },
     "alternates": [],
     "tips": [],
@@ -1840,9 +2031,18 @@
     "best": {
       "place": "FORTUNA, VENUS",
       "sub": "Smokefinger",
-      "activity": "Buy the blueprint (Solaris United Neutral, 1,000 standing)",
+      "activity": "buy the blueprint",
       "how": "vendor",
-      "meta": "10 per craft, 1 minute, 1,000 credits"
+      "meta": "10 per craft, 1 minute, 1,000 credits",
+      "buy": {
+        "price": [
+          {
+            "currency": "Solaris United Standing",
+            "amount": "1,000"
+          }
+        ],
+        "reusable": true
+      }
     },
     "alternates": [],
     "tips": [],
@@ -1859,11 +2059,24 @@
     "harvestable": false,
     "map": null,
     "best": {
-      "place": "ORB VALLIS, VENUS",
+      "place": "FORTUNA, VENUS",
       "sub": "Smokefinger",
       "activity": "buy the blueprint",
       "how": null,
-      "meta": "10 per craft; Solaris United rank Outworlder, 2,000 standing"
+      "meta": "10 per craft",
+      "buy": {
+        "price": [
+          {
+            "currency": "Solaris United Standing",
+            "amount": "2,000"
+          }
+        ],
+        "rank": {
+          "syndicate": "Solaris United",
+          "level": 1
+        },
+        "reusable": true
+      }
     },
     "alternates": [],
     "tips": [],
@@ -1882,9 +2095,22 @@
     "best": {
       "place": "FORTUNA, VENUS",
       "sub": "Smokefinger",
-      "activity": "Buy the blueprint (Solaris United Rapscallion, 4,000 standing)",
+      "activity": "buy the blueprint",
       "how": "vendor",
-      "meta": "6 per craft, 1 minute, 5,000 credits"
+      "meta": "6 per craft, 1 minute, 5,000 credits",
+      "buy": {
+        "price": [
+          {
+            "currency": "Solaris United Standing",
+            "amount": "4,000"
+          }
+        ],
+        "rank": {
+          "syndicate": "Solaris United",
+          "level": 2
+        },
+        "reusable": true
+      }
     },
     "alternates": [],
     "tips": [],
@@ -2342,9 +2568,18 @@
     "best": {
       "place": "RELAY, ANY MAIN SYNDICATE",
       "sub": null,
-      "activity": "Reach Rank 2, buy Abyssal Beacons",
+      "activity": "buy Abyssal Beacons",
       "how": "vendor",
-      "meta": "5,000 standing per beacon"
+      "meta": "any main syndicate's second rank",
+      "buy": {
+        "price": [
+          {
+            "currency": "Syndicate Standing",
+            "amount": "5,000"
+          }
+        ],
+        "each": true
+      }
     },
     "alternates": [],
     "tips": [
@@ -2361,7 +2596,19 @@
       "sub": "Son",
       "activity": "buy the blueprint",
       "how": "vendor",
-      "meta": "1,250 Entrati Standing at Stranger rank; 1 per craft; grants Heat and Puncture resistance"
+      "meta": "1 per craft; grants Heat and Puncture resistance",
+      "buy": {
+        "price": [
+          {
+            "currency": "Entrati Standing",
+            "amount": "1,250"
+          }
+        ],
+        "rank": {
+          "syndicate": "Entrati",
+          "level": 1
+        }
+      }
     },
     "alternates": [],
     "tips": [],
@@ -2725,7 +2972,19 @@
         "sub": "Nightcap",
         "activity": "buy from Nightcap",
         "how": "vendor",
-        "meta": "10 Fergolyte, Rank 2 Curious"
+        "meta": null,
+        "buy": {
+          "price": [
+            {
+              "currency": "Fergolyte",
+              "amount": "10"
+            }
+          ],
+          "rank": {
+            "syndicate": "Nightcap",
+            "level": 2
+          }
+        }
       }
     ],
     "tips": []
@@ -2768,7 +3027,19 @@
       "sub": "Otak",
       "activity": "buy the blueprint",
       "how": null,
-      "meta": "8,000 standing, Entrati Associate; 3 per craft"
+      "meta": "3 per craft",
+      "buy": {
+        "price": [
+          {
+            "currency": "Entrati Standing",
+            "amount": "8,000"
+          }
+        ],
+        "rank": {
+          "syndicate": "Entrati",
+          "level": 3
+        }
+      }
     },
     "alternates": [],
     "tips": [],
@@ -2795,9 +3066,21 @@
       {
         "place": "CETUS, EARTH",
         "sub": "The Quills (Onkko)",
-        "activity": "Buy from The Quills",
+        "activity": "buy from The Quills",
         "how": "vendor",
-        "meta": "2,000 standing at Rank 5 Architect"
+        "meta": null,
+        "buy": {
+          "price": [
+            {
+              "currency": "The Quills Standing",
+              "amount": "2,000"
+            }
+          ],
+          "rank": {
+            "syndicate": "The Quills",
+            "level": 5
+          }
+        }
       }
     ],
     "tips": [
@@ -3028,9 +3311,17 @@
       {
         "place": "NECRALISK, DEIMOS",
         "sub": "Father",
-        "activity": "Buy from Father",
+        "activity": "buy from Father",
         "how": "vendor",
-        "meta": "2,000 Entrati Standing"
+        "meta": null,
+        "buy": {
+          "price": [
+            {
+              "currency": "Entrati Standing",
+              "amount": "2,000"
+            }
+          ]
+        }
       }
     ],
     "tips": [
@@ -3053,9 +3344,17 @@
       {
         "place": "NECRALISK, DEIMOS",
         "sub": "Father",
-        "activity": "Buy from Father",
+        "activity": "buy from Father",
         "how": "vendor",
-        "meta": "2,000 Entrati standing"
+        "meta": null,
+        "buy": {
+          "price": [
+            {
+              "currency": "Entrati Standing",
+              "amount": "2,000"
+            }
+          ]
+        }
       }
     ],
     "tips": ["Father sells it for standing, so a capped Entrati day buys one without any RNG."]
@@ -3075,9 +3374,17 @@
       {
         "place": "NECRALISK, DEIMOS",
         "sub": "Father",
-        "activity": "Buy from Father",
+        "activity": "buy from Father",
         "how": "vendor",
-        "meta": "2,000 Entrati standing"
+        "meta": null,
+        "buy": {
+          "price": [
+            {
+              "currency": "Entrati Standing",
+              "amount": "2,000"
+            }
+          ]
+        }
       }
     ],
     "tips": []
@@ -3097,9 +3404,21 @@
       {
         "place": "NECRALISK, DEIMOS",
         "sub": "Loid",
-        "activity": "Buy from Loid",
+        "activity": "buy from Loid",
         "how": "vendor",
-        "meta": "2,500 Necraloid standing, Rank 1"
+        "meta": null,
+        "buy": {
+          "price": [
+            {
+              "currency": "Necraloid Standing",
+              "amount": "2,500"
+            }
+          ],
+          "rank": {
+            "syndicate": "Necraloid",
+            "level": 1
+          }
+        }
       }
     ],
     "tips": []
@@ -3119,9 +3438,17 @@
       {
         "place": "NECRALISK, DEIMOS",
         "sub": "Father",
-        "activity": "Buy from Father",
+        "activity": "buy from Father",
         "how": "vendor",
-        "meta": "2,000 Entrati standing"
+        "meta": null,
+        "buy": {
+          "price": [
+            {
+              "currency": "Entrati Standing",
+              "amount": "2,000"
+            }
+          ]
+        }
       }
     ],
     "tips": []
@@ -3135,7 +3462,19 @@
       "sub": "Loid",
       "activity": "buy from Loid",
       "how": "vendor",
-      "meta": "2,500 Necraloid standing, Rank 1 Clearance: Agnesis"
+      "meta": null,
+      "buy": {
+        "price": [
+          {
+            "currency": "Necraloid Standing",
+            "amount": "2,500"
+          }
+        ],
+        "rank": {
+          "syndicate": "Necraloid",
+          "level": 1
+        }
+      }
     },
     "alternates": [
       {
@@ -3155,9 +3494,21 @@
     "best": {
       "place": "NECRALISK, DEIMOS",
       "sub": "Loid",
-      "activity": "Buy from Loid at Rank 1",
+      "activity": "buy from Loid",
       "how": "vendor",
-      "meta": "2,500 Necraloid standing"
+      "meta": null,
+      "buy": {
+        "price": [
+          {
+            "currency": "Necraloid Standing",
+            "amount": "2,500"
+          }
+        ],
+        "rank": {
+          "syndicate": "Necraloid",
+          "level": 1
+        }
+      }
     },
     "alternates": [
       {
@@ -3201,7 +3552,19 @@
       "sub": "Son",
       "activity": "buy the blueprint",
       "how": null,
-      "meta": "1,250 standing, Entrati Stranger; Vazarin polarity"
+      "meta": "Vazarin polarity",
+      "buy": {
+        "price": [
+          {
+            "currency": "Entrati Standing",
+            "amount": "1,250"
+          }
+        ],
+        "rank": {
+          "syndicate": "Entrati",
+          "level": 1
+        }
+      }
     },
     "alternates": [],
     "tips": [],
@@ -3361,7 +3724,15 @@
         "sub": "Nightcap",
         "activity": "buy from Nightcap",
         "how": "vendor",
-        "meta": "10 Fergolyte, Rank 0 Neutral"
+        "meta": null,
+        "buy": {
+          "price": [
+            {
+              "currency": "Fergolyte",
+              "amount": "10"
+            }
+          ]
+        }
       }
     ],
     "tips": []
@@ -3569,9 +3940,21 @@
     "best": {
       "place": "CETUS, EARTH",
       "sub": "Old Man Suumbaat",
-      "activity": "Buy the blueprint (Ostron Offworlder, 2,500 standing)",
+      "activity": "buy the blueprint",
       "how": "vendor",
-      "meta": "10 per craft, 1 minute, 1,000 credits"
+      "meta": "10 per craft, 1 minute, 1,000 credits",
+      "buy": {
+        "price": [
+          {
+            "currency": "Ostron Standing",
+            "amount": "2,500"
+          }
+        ],
+        "rank": {
+          "syndicate": "Ostron",
+          "level": 1
+        }
+      }
     },
     "alternates": [],
     "tips": [],
@@ -3592,7 +3975,15 @@
       "sub": "Otak",
       "activity": "buy the blueprint",
       "how": null,
-      "meta": "10 per refine; 1,000 Entrati standing, Neutral"
+      "meta": "10 per refine",
+      "buy": {
+        "price": [
+          {
+            "currency": "Entrati Standing",
+            "amount": "1,000"
+          }
+        ]
+      }
     },
     "alternates": [],
     "tips": [],
@@ -3633,9 +4024,21 @@
       {
         "place": "FORTUNA, VENUS",
         "sub": "Nightcap",
-        "activity": "Buy from Nightcap",
+        "activity": "buy from Nightcap",
         "how": "vendor",
-        "meta": "10 Fergolyte, Rank 2 Curious"
+        "meta": null,
+        "buy": {
+          "price": [
+            {
+              "currency": "Fergolyte",
+              "amount": "10"
+            }
+          ],
+          "rank": {
+            "syndicate": "Nightcap",
+            "level": 2
+          }
+        }
       },
       {
         "place": "DEEPMINES, VENUS",
@@ -3737,9 +4140,21 @@
       {
         "place": "FORTUNA, VENUS",
         "sub": "Nightcap",
-        "activity": "Buy from Nightcap",
+        "activity": "buy from Nightcap",
         "how": "vendor",
-        "meta": "10 Fergolyte, Rank 2 Curious"
+        "meta": null,
+        "buy": {
+          "price": [
+            {
+              "currency": "Fergolyte",
+              "amount": "10"
+            }
+          ],
+          "rank": {
+            "syndicate": "Nightcap",
+            "level": 2
+          }
+        }
       },
       {
         "place": "DEEPMINES, VENUS",
@@ -3787,17 +4202,34 @@
     "best": {
       "place": "MARKET",
       "sub": null,
-      "activity": "Buy the blueprint (50,000 credits, reusable)",
+      "activity": "buy the blueprint",
       "how": "vendor",
-      "meta": "6 hours, 10,000 credits"
+      "meta": "6 hours, 10,000 credits",
+      "buy": {
+        "price": [
+          {
+            "currency": "Credits",
+            "amount": "50,000"
+          }
+        ],
+        "reusable": true
+      }
     },
     "alternates": [
       {
         "place": "MARKET",
         "sub": null,
-        "activity": "Buy a built template",
+        "activity": "buy a built template",
         "how": "vendor",
-        "meta": "15 Platinum"
+        "meta": null,
+        "buy": {
+          "price": [
+            {
+              "currency": "Platinum",
+              "amount": "15"
+            }
+          ]
+        }
       }
     ],
     "tips": [],
@@ -3858,14 +4290,30 @@
         "sub": null,
         "activity": "Research, then buy the blueprint and craft",
         "how": "research",
-        "meta": "35,000 credits; build is 10 Gyromag Systems, 5 Atmo Systems, 2 Repeller Systems"
+        "meta": "build is 10 Gyromag Systems, 5 Atmo Systems, 2 Repeller Systems",
+        "buy": {
+          "price": [
+            {
+              "currency": "Credits",
+              "amount": "35,000"
+            }
+          ]
+        }
       },
       {
         "place": "MARKET",
         "sub": null,
-        "activity": "Buy",
+        "activity": "buy",
         "how": "vendor",
-        "meta": "20 platinum"
+        "meta": null,
+        "buy": {
+          "price": [
+            {
+              "currency": "Platinum",
+              "amount": "20"
+            }
+          ]
+        }
       }
     ],
     "tips": []
@@ -3899,9 +4347,18 @@
     "best": {
       "place": "FORTUNA, VENUS",
       "sub": "Little Duck",
-      "activity": "Buy from Little Duck",
+      "activity": "buy from Little Duck",
       "how": "vendor",
-      "meta": "1,000 Vox Solaris standing each"
+      "meta": null,
+      "buy": {
+        "price": [
+          {
+            "currency": "Vox Solaris Standing",
+            "amount": "1,000"
+          }
+        ],
+        "each": true
+      }
     },
     "alternates": [
       {
@@ -3925,15 +4382,40 @@
       "sub": "Old Man Suumbaat",
       "activity": "buy the blueprint",
       "how": null,
-      "meta": "3 per craft; Ostron rank Surah, 10,000 standing"
+      "meta": "3 per craft",
+      "buy": {
+        "price": [
+          {
+            "currency": "Ostron Standing",
+            "amount": "10,000"
+          }
+        ],
+        "rank": {
+          "syndicate": "Ostron",
+          "level": 4
+        }
+      }
     },
     "alternates": [
       {
         "place": "CETUS, EARTH",
         "sub": "Nakak",
-        "activity": "Buy during Operation: Plague Star",
+        "activity": "buy during Operation: Plague Star",
         "how": "vendor",
-        "meta": "750 Operational Supply standing + 1,500cr each"
+        "meta": null,
+        "buy": {
+          "price": [
+            {
+              "currency": "Operational Supply Standing",
+              "amount": "750"
+            },
+            {
+              "currency": "Credits",
+              "amount": "1,500"
+            }
+          ],
+          "each": true
+        }
       }
     ],
     "tips": [],
@@ -4046,17 +4528,33 @@
     "best": {
       "place": "MARKET",
       "sub": null,
-      "activity": "Buy the blueprint (50,000 credits)",
+      "activity": "buy the blueprint",
       "how": "vendor",
-      "meta": "8 hours, 100,000 credits"
+      "meta": "8 hours, 100,000 credits",
+      "buy": {
+        "price": [
+          {
+            "currency": "Credits",
+            "amount": "50,000"
+          }
+        ]
+      }
     },
     "alternates": [
       {
         "place": "MARKET",
         "sub": null,
-        "activity": "Buy a built core",
+        "activity": "buy a built core",
         "how": "vendor",
-        "meta": "35 Platinum"
+        "meta": null,
+        "buy": {
+          "price": [
+            {
+              "currency": "Platinum",
+              "amount": "35"
+            }
+          ]
+        }
       },
       {
         "place": "MERCURY",
@@ -4258,9 +4756,17 @@
       {
         "place": "MARKET",
         "sub": null,
-        "activity": "Buy a Kubrow Egg",
+        "activity": "buy a Kubrow Egg",
         "how": "vendor purchase",
-        "meta": "10 Platinum"
+        "meta": null,
+        "buy": {
+          "price": [
+            {
+              "currency": "Platinum",
+              "amount": "10"
+            }
+          ]
+        }
       }
     ],
     "tips": [
@@ -4459,7 +4965,15 @@
         "sub": null,
         "activity": "Buy a spare",
         "how": "vendor",
-        "meta": "25,000 standing"
+        "meta": null,
+        "buy": {
+          "price": [
+            {
+              "currency": "Cephalon Simaris Standing",
+              "amount": "25,000"
+            }
+          ]
+        }
       }
     ],
     "tips": []
@@ -4500,9 +5014,21 @@
     "best": {
       "place": "CETUS, EARTH",
       "sub": "Old Man Suumbaat",
-      "activity": "Buy the blueprint (Ostron Visitor, 5,000 standing)",
+      "activity": "buy the blueprint",
       "how": "vendor",
-      "meta": "10 per craft, 1 minute, 2,500 credits"
+      "meta": "10 per craft, 1 minute, 2,500 credits",
+      "buy": {
+        "price": [
+          {
+            "currency": "Ostron Standing",
+            "amount": "5,000"
+          }
+        ],
+        "rank": {
+          "syndicate": "Ostron",
+          "level": 2
+        }
+      }
     },
     "alternates": [],
     "tips": [],
@@ -4943,9 +5469,17 @@
     "best": {
       "place": "CETUS, EARTH",
       "sub": "Old Man Suumbaat",
-      "activity": "Buy the cutter (Ostron Neutral, 500 standing)",
+      "activity": "buy the cutter",
       "how": "vendor",
-      "meta": null
+      "meta": null,
+      "buy": {
+        "price": [
+          {
+            "currency": "Ostron Standing",
+            "amount": "500"
+          }
+        ]
+      }
     },
     "alternates": [],
     "tips": []
@@ -5059,9 +5593,17 @@
       {
         "place": "MARKET",
         "sub": null,
-        "activity": "Buy the finished Catalyst",
+        "activity": "buy the finished Catalyst",
         "how": "vendor",
-        "meta": "20 platinum"
+        "meta": null,
+        "buy": {
+          "price": [
+            {
+              "currency": "Platinum",
+              "amount": "20"
+            }
+          ]
+        }
       }
     ],
     "tips": [],
@@ -5107,9 +5649,17 @@
       {
         "place": "RELAYS, ANY",
         "sub": "Baro Ki'Teer",
-        "activity": "Buy a Void Surplus",
+        "activity": "buy a Void Surplus",
         "how": "vendor",
-        "meta": "50,000 cr; 2% chance of 1,000 Ducats"
+        "meta": "2% chance of 1,000 Ducats",
+        "buy": {
+          "price": [
+            {
+              "currency": "Credits",
+              "amount": "50,000"
+            }
+          ]
+        }
       }
     ],
     "tips": [
@@ -5136,9 +5686,17 @@
       {
         "place": "MARKET",
         "sub": null,
-        "activity": "Buy directly",
+        "activity": "buy directly",
         "how": "vendor",
-        "meta": "20 Platinum"
+        "meta": null,
+        "buy": {
+          "price": [
+            {
+              "currency": "Platinum",
+              "amount": "20"
+            }
+          ]
+        }
       },
       {
         "place": "SORTIE",
@@ -5184,7 +5742,15 @@
       "sub": "Otak",
       "activity": "buy the blueprint",
       "how": null,
-      "meta": "10 per craft; Entrati Neutral, 1,000 standing"
+      "meta": "10 per craft",
+      "buy": {
+        "price": [
+          {
+            "currency": "Entrati Standing",
+            "amount": "1,000"
+          }
+        ]
+      }
     },
     "alternates": [],
     "tips": [],
@@ -5205,7 +5771,19 @@
       "sub": "Otak",
       "activity": "buy the blueprint",
       "how": null,
-      "meta": "10 per refine; 2,000 Entrati standing, Rank 1 Stranger"
+      "meta": "10 per refine",
+      "buy": {
+        "price": [
+          {
+            "currency": "Entrati Standing",
+            "amount": "2,000"
+          }
+        ],
+        "rank": {
+          "syndicate": "Entrati",
+          "level": 1
+        }
+      }
     },
     "alternates": [],
     "tips": [],
@@ -5292,7 +5870,20 @@
       "sub": "Smokefinger",
       "activity": "buy the blueprint",
       "how": null,
-      "meta": "3 per craft; Solaris United Rank 3 Doer, 8,000 standing"
+      "meta": "3 per craft",
+      "buy": {
+        "price": [
+          {
+            "currency": "Solaris United Standing",
+            "amount": "8,000"
+          }
+        ],
+        "rank": {
+          "syndicate": "Solaris United",
+          "level": 3
+        },
+        "reusable": true
+      }
     },
     "alternates": [],
     "tips": [],
@@ -5348,9 +5939,21 @@
       {
         "place": "FORTUNA, VENUS",
         "sub": "Nightcap",
-        "activity": "Buy from Nightcap at Rank 2, Curious",
+        "activity": "buy from Nightcap",
         "how": "vendor",
-        "meta": "10 Fergolyte"
+        "meta": null,
+        "buy": {
+          "price": [
+            {
+              "currency": "Fergolyte",
+              "amount": "10"
+            }
+          ],
+          "rank": {
+            "syndicate": "Nightcap",
+            "level": 2
+          }
+        }
       }
     ],
     "tips": []
@@ -5652,7 +6255,14 @@
       "sub": "Cave hotspots; fillet at Daughter",
       "activity": "Fish Myxostomata during Vome with Processed Vome Residue",
       "how": "fishing",
-      "meta": "needs Entrati rank 4 for the bait"
+      "meta": "bait",
+      "buy": {
+        "price": [],
+        "rank": {
+          "syndicate": "Entrati",
+          "level": 4
+        }
+      }
     },
     "alternates": [
       {
@@ -5733,9 +6343,21 @@
       {
         "place": "FORTUNA, VENUS",
         "sub": "Nightcap",
-        "activity": "Buy from Nightcap",
+        "activity": "buy from Nightcap",
         "how": "vendor",
-        "meta": "10 Fergolyte, Rank 2 Curious"
+        "meta": null,
+        "buy": {
+          "price": [
+            {
+              "currency": "Fergolyte",
+              "amount": "10"
+            }
+          ],
+          "rank": {
+            "syndicate": "Nightcap",
+            "level": 2
+          }
+        }
       },
       {
         "place": "ORB VALLIS, VENUS",
@@ -5756,7 +6378,19 @@
       "sub": "Old Man Suumbaat",
       "activity": "buy the blueprint",
       "how": null,
-      "meta": "6 per craft; Ostron rank Trusted, 7,500 standing"
+      "meta": "6 per craft",
+      "buy": {
+        "price": [
+          {
+            "currency": "Ostron Standing",
+            "amount": "7,500"
+          }
+        ],
+        "rank": {
+          "syndicate": "Ostron",
+          "level": 3
+        }
+      }
     },
     "alternates": [],
     "tips": [],
@@ -5777,7 +6411,19 @@
       "sub": "Otak",
       "activity": "buy the blueprint",
       "how": null,
-      "meta": "6 per craft; Entrati rank Acquaintance, 4,000 standing"
+      "meta": "6 per craft",
+      "buy": {
+        "price": [
+          {
+            "currency": "Entrati Standing",
+            "amount": "4,000"
+          }
+        ],
+        "rank": {
+          "syndicate": "Entrati",
+          "level": 2
+        }
+      }
     },
     "alternates": [],
     "tips": [],
@@ -5919,7 +6565,15 @@
       "sub": "Old Man Suumbaat",
       "activity": "buy the blueprint",
       "how": null,
-      "meta": "10 per craft; Ostron rank Neutral, 500 standing"
+      "meta": "10 per craft",
+      "buy": {
+        "price": [
+          {
+            "currency": "Ostron Standing",
+            "amount": "500"
+          }
+        ]
+      }
     },
     "alternates": [],
     "tips": [],
@@ -5967,9 +6621,17 @@
     "best": {
       "place": "NECRALISK, DEIMOS",
       "sub": "Otak",
-      "activity": "Buy the blueprint at Entrati Rank 0",
+      "activity": "buy the blueprint",
       "how": "vendor",
-      "meta": "1,000 Entrati standing; 20 per refine"
+      "meta": "20 per refine",
+      "buy": {
+        "price": [
+          {
+            "currency": "Entrati Standing",
+            "amount": "1,000"
+          }
+        ]
+      }
     },
     "alternates": [],
     "tips": [],
@@ -6116,17 +6778,33 @@
     "best": {
       "place": "NECRALISK, DEIMOS",
       "sub": "Son",
-      "activity": "Buy from Son",
+      "activity": "buy from Son",
       "how": "vendor",
-      "meta": "500 Entrati standing"
+      "meta": null,
+      "buy": {
+        "price": [
+          {
+            "currency": "Entrati Standing",
+            "amount": "500"
+          }
+        ]
+      }
     },
     "alternates": [
       {
         "place": "FORTUNA, VENUS",
         "sub": "The Business",
-        "activity": "Buy from The Business",
+        "activity": "buy from The Business",
         "how": "vendor",
-        "meta": "500 Solaris United standing"
+        "meta": null,
+        "buy": {
+          "price": [
+            {
+              "currency": "Solaris United Standing",
+              "amount": "500"
+            }
+          ]
+        }
       }
     ],
     "tips": []
@@ -6308,9 +6986,21 @@
       {
         "place": "FORTUNA, VENUS",
         "sub": "Nightcap",
-        "activity": "Buy from Nightcap",
+        "activity": "buy from Nightcap",
         "how": "vendor",
-        "meta": "10 Fergolyte, Rank 2 Curious"
+        "meta": null,
+        "buy": {
+          "price": [
+            {
+              "currency": "Fergolyte",
+              "amount": "10"
+            }
+          ],
+          "rank": {
+            "syndicate": "Nightcap",
+            "level": 2
+          }
+        }
       }
     ],
     "tips": []
@@ -6510,9 +7200,21 @@
     "best": {
       "place": "NECRALISK, DEIMOS",
       "sub": "Son",
-      "activity": "Buy from Son",
+      "activity": "buy from Son",
       "how": "vendor",
-      "meta": "150 Entrati standing, Stranger rank"
+      "meta": null,
+      "buy": {
+        "price": [
+          {
+            "currency": "Entrati Standing",
+            "amount": "150"
+          }
+        ],
+        "rank": {
+          "syndicate": "Entrati",
+          "level": 1
+        }
+      }
     },
     "alternates": [],
     "tips": []
@@ -7161,7 +7863,7 @@
       "sub": "Nora Night",
       "activity": "Rank up through Nightwave Acts",
       "how": "Creds paid at certain ranks, 15 per prestige rank past 30",
-      "meta": "10,000 standing per rank"
+      "meta": "10,000 per Nightwave rank"
     },
     "alternates": [],
     "tips": [
@@ -7701,7 +8403,15 @@
         "sub": "Rank 5 faction syndicate",
         "activity": "Buy a 200 Vosfor pack",
         "how": "vendor, needs Whispers in the Walls",
-        "meta": "30,000 standing for 200"
+        "meta": "200 per pack",
+        "buy": {
+          "price": [
+            {
+              "currency": "Syndicate Standing",
+              "amount": "30,000"
+            }
+          ]
+        }
       },
       {
         "place": "DEIMOS",
@@ -7868,9 +8578,22 @@
     "best": {
       "place": "FORTUNA, VENUS",
       "sub": "Little Duck",
-      "activity": "Buy from Little Duck at Rank 2, Agent",
+      "activity": "buy from Little Duck",
       "how": "vendor",
-      "meta": "2,500 Vox Solaris standing each"
+      "meta": null,
+      "buy": {
+        "price": [
+          {
+            "currency": "Vox Solaris Standing",
+            "amount": "2,500"
+          }
+        ],
+        "rank": {
+          "syndicate": "Vox Solaris",
+          "level": 2
+        },
+        "each": true
+      }
     },
     "alternates": [
       {
@@ -8048,9 +8771,22 @@
     "best": {
       "place": "FORTUNA, VENUS",
       "sub": "Little Duck",
-      "activity": "Buy from Little Duck at Rank 3, Hand",
+      "activity": "buy from Little Duck",
       "how": "vendor",
-      "meta": "5,000 Vox Solaris standing each"
+      "meta": null,
+      "buy": {
+        "price": [
+          {
+            "currency": "Vox Solaris Standing",
+            "amount": "5,000"
+          }
+        ],
+        "rank": {
+          "syndicate": "Vox Solaris",
+          "level": 3
+        },
+        "each": true
+      }
     },
     "alternates": [
       {
@@ -8273,7 +9009,7 @@
       {
         "place": "GRANUM VOID, ZARIMAN",
         "sub": null,
-        "activity": "Rank 1 reward",
+        "activity": "run reward",
         "how": "reward",
         "meta": "5, 10 or 15 by tier"
       }
@@ -8354,9 +9090,22 @@
     "best": {
       "place": "NECRALISK, DEIMOS",
       "sub": "Son",
-      "activity": "Buy from Son",
+      "activity": "buy from Son",
       "how": "vendor",
-      "meta": "1,000 Entrati standing, Stranger rank; reusable"
+      "meta": null,
+      "buy": {
+        "price": [
+          {
+            "currency": "Entrati Standing",
+            "amount": "1,000"
+          }
+        ],
+        "rank": {
+          "syndicate": "Entrati",
+          "level": 1
+        },
+        "reusable": true
+      }
     },
     "alternates": [],
     "tips": []
@@ -8368,9 +9117,22 @@
     "best": {
       "place": "NECRALISK, DEIMOS",
       "sub": "Son",
-      "activity": "Buy from Son",
+      "activity": "buy from Son",
       "how": "vendor",
-      "meta": "150 Entrati standing, Stranger rank; one use"
+      "meta": null,
+      "buy": {
+        "price": [
+          {
+            "currency": "Entrati Standing",
+            "amount": "150"
+          }
+        ],
+        "rank": {
+          "syndicate": "Entrati",
+          "level": 1
+        },
+        "reusable": false
+      }
     },
     "alternates": [],
     "tips": []
@@ -8382,9 +9144,22 @@
     "best": {
       "place": "NECRALISK, DEIMOS",
       "sub": "Son",
-      "activity": "Buy from Son",
+      "activity": "buy from Son",
       "how": "vendor",
-      "meta": "1,000 Entrati standing, Stranger rank; reusable"
+      "meta": null,
+      "buy": {
+        "price": [
+          {
+            "currency": "Entrati Standing",
+            "amount": "1,000"
+          }
+        ],
+        "rank": {
+          "syndicate": "Entrati",
+          "level": 1
+        },
+        "reusable": true
+      }
     },
     "alternates": [],
     "tips": []
@@ -8398,7 +9173,19 @@
       "sub": "Son",
       "activity": "buy the blueprint",
       "how": "vendor",
-      "meta": "1,250 Entrati Standing at Stranger rank; 1 per craft; grants Heat and Puncture resistance"
+      "meta": "1 per craft; grants Heat and Puncture resistance",
+      "buy": {
+        "price": [
+          {
+            "currency": "Entrati Standing",
+            "amount": "1,250"
+          }
+        ],
+        "rank": {
+          "syndicate": "Entrati",
+          "level": 1
+        }
+      }
     },
     "alternates": [],
     "tips": [],
@@ -8431,7 +9218,19 @@
       "sub": "Son",
       "activity": "buy the blueprint",
       "how": "vendor",
-      "meta": "1,250 Entrati Standing at Stranger rank; 1 per craft; Vazarin polarity"
+      "meta": "1 per craft; Vazarin polarity",
+      "buy": {
+        "price": [
+          {
+            "currency": "Entrati Standing",
+            "amount": "1,250"
+          }
+        ],
+        "rank": {
+          "syndicate": "Entrati",
+          "level": 1
+        }
+      }
     },
     "alternates": [],
     "tips": [],

@@ -222,7 +222,7 @@ const MODULAR_GEAR: Record<ModularGear, ModularGearFacts> = {
     name: "K-Drive",
     headLabelKey: "nextUp.modularHeadBoards",
     requiresGilding: false,
-    perModel: false,
+    perModel: true,
     slots: [/\/Hoverboard\/.*Engine$/i, /\/Hoverboard\/.*Front$/i, /\/Hoverboard\/.*Jet$/i],
   },
   kitgun: {

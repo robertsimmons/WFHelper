@@ -13,10 +13,6 @@
     {
       "text": "Rotation C",
       "tone": "warn"
-    },
-    {
-      "text": "two syndicate ranks",
-      "tone": "warn"
     }
   ],
   "prices": [
@@ -105,51 +101,11 @@
   ],
   "groups": [
     {
-      "type": "gate",
-      "place": "SYNDICATES",
-      "sub": null,
-      "activity": "reach Ostron Rank 4 and Solaris United Rank 4",
-      "meta": "for the rare gem blueprints",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Ostron Rank 4 (Surah)",
-          "note": null,
-          "alt": null,
-          "done": false,
-          "rank": {
-            "syndicate": "Ostron",
-            "level": 4
-          }
-        },
-        {
-          "qty": null,
-          "label": "Solaris United Rank 4 (Cove)",
-          "note": null,
-          "alt": null,
-          "done": false,
-          "rank": {
-            "syndicate": "Solaris United",
-            "level": 4
-          }
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
       "type": "vendor",
       "place": "MARKET",
       "sub": null,
       "activity": "buy blueprint",
-      "meta": "30,000 cr",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -167,7 +123,15 @@
           "label": "Gauss Blueprint",
           "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Credits",
+                "amount": "30,000"
+              }
+            ]
+          }
         }
       ],
       "conditions": [

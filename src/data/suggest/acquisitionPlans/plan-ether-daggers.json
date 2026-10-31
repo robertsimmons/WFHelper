@@ -4,12 +4,24 @@
   "effort": 3,
   "source": "repeat",
   "tradeable": false,
-  "progress": { "have": 0, "need": 1, "unit": "weapon" },
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "weapon"
+  },
   "badges": [
-    { "text": "Stolen Dreams", "tone": "info" },
-    { "text": "MR 6", "tone": "info" }
+    {
+      "text": "Stolen Dreams",
+      "tone": "info"
+    }
   ],
-  "prices": [{ "label": "build", "amount": "20,000 cr", "money": false }],
+  "prices": [
+    {
+      "label": "build",
+      "amount": "20,000 cr",
+      "money": false
+    }
+  ],
   "routes": [
     {
       "name": "Stolen Dreams",
@@ -25,38 +37,33 @@
     }
   ],
   "materials": [
-    { "qty": "5", "label": "Morphics", "note": null },
-    { "qty": "600", "label": "Polymer Bundle", "note": null },
-    { "qty": "600", "label": "Ferrite", "note": null },
-    { "qty": "1,200", "label": "Nano Spores", "note": null },
-    { "qty": "20,000", "label": "Credits", "note": null }
+    {
+      "qty": "5",
+      "label": "Morphics",
+      "note": null
+    },
+    {
+      "qty": "600",
+      "label": "Polymer Bundle",
+      "note": null
+    },
+    {
+      "qty": "600",
+      "label": "Ferrite",
+      "note": null
+    },
+    {
+      "qty": "1,200",
+      "label": "Nano Spores",
+      "note": null
+    },
+    {
+      "qty": "20,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
-    {
-      "type": "gate",
-      "place": "MASTERY RANK",
-      "sub": null,
-      "activity": "reach MR 6 to craft them",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Mastery Rank 6",
-          "note": "the Foundry won't craft them below that",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
     {
       "type": "farm",
       "place": "STOLEN DREAMS",
@@ -111,18 +118,26 @@
   ],
   "afterQuest": {
     "effort": 5,
-    "badges": [{ "text": "Simaris 100,000 standing", "tone": "warn" }],
+    "badges": [
+      {
+        "text": "Simaris 100,000 standing",
+        "tone": "warn"
+      }
+    ],
     "groups": [
       {
         "type": "currency",
         "place": "CEPHALON SIMARIS",
         "sub": null,
         "activity": "scan targets with the Synthesis Scanner",
-        "meta": "100,000 Standing",
+        "meta": null,
         "mode": null,
         "live": null,
         "skip": null,
-        "earns": { "currency": "Cephalon Simaris Standing", "amount": "100,000" },
+        "earns": {
+          "currency": "Cephalon Simaris Standing",
+          "amount": "100,000"
+        },
         "spends": [],
         "map": null,
         "rows": [
@@ -144,26 +159,45 @@
         "place": "CEPHALON SIMARIS",
         "sub": null,
         "activity": "buy the blueprint back",
-        "meta": "100,000 Standing",
+        "meta": null,
         "mode": null,
         "live": null,
         "skip": null,
         "earns": null,
-        "spends": [{ "currency": "Cephalon Simaris Standing", "amount": "100,000" }],
+        "spends": [
+          {
+            "currency": "Cephalon Simaris Standing",
+            "amount": "100,000"
+          }
+        ],
         "map": null,
         "rows": [
           {
             "qty": null,
             "label": "Ether Daggers Blueprint",
-            "note": "100,000 Standing",
+            "note": null,
             "alt": {
               "text": "or Operation: Plague Star, 3,000 Operational Supply Standing and 5,000 cr at Nakak in Cetus",
               "spends": [
-                { "currency": "Operational Supply Standing", "amount": "3,000" },
-                { "currency": "Credits", "amount": "5,000" }
+                {
+                  "currency": "Operational Supply Standing",
+                  "amount": "3,000"
+                },
+                {
+                  "currency": "Credits",
+                  "amount": "5,000"
+                }
               ]
             },
-            "done": false
+            "done": false,
+            "buy": {
+              "price": [
+                {
+                  "currency": "Cephalon Simaris Standing",
+                  "amount": "100,000"
+                }
+              ]
+            }
           }
         ],
         "conditions": ["Simaris only stocks these once Stolen Dreams is done."],

@@ -11,13 +11,12 @@
   },
   "badges": [
     {
-      "text": "New War + Veilbreaker gate",
-      "tone": "warn"
-    },
-    {
       "text": "30 Stock, one weekly mission",
       "tone": "info",
-      "rank": { "syndicate": "Kahl's Garrison", "level": 2 }
+      "rank": {
+        "syndicate": "Kahl's Garrison",
+        "level": 2
+      }
     }
   ],
   "prices": [
@@ -61,50 +60,11 @@
   ],
   "groups": [
     {
-      "type": "gate",
-      "place": "QUESTS",
-      "sub": null,
-      "activity": "reach MR 13, complete The New War, then Veilbreaker",
-      "meta": "unlocks Kahl's Garrison in the Drifter's Camp, Earth",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Mastery Rank 13",
-          "note": "needed to equip it",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "The New War",
-          "note": "Veilbreaker prerequisite",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Veilbreaker",
-          "note": "unlocks Kahl's Garrison and Chipper",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
       "type": "currency",
       "place": "DRIFTER'S CAMP, EARTH",
       "sub": "Kahl's Garrison",
       "activity": "Break Narmer weekly mission (solo, as Kahl)",
-      "meta": "one completion reaches Rank 2 Encampment",
+      "meta": null,
       "mode": "solo only",
       "live": null,
       "skip": null,
@@ -118,10 +78,13 @@
         {
           "qty": "1",
           "label": "weekly mission completion",
-          "note": "Rank 1 Shelter to Rank 2 Encampment; Chipper joins at Rank 2",
+          "note": "Chipper joins",
           "alt": null,
           "done": false,
-          "rank": { "syndicate": "Kahl's Garrison", "level": 2 }
+          "rank": {
+            "syndicate": "Kahl's Garrison",
+            "level": 2
+          }
         },
         {
           "qty": "30",
@@ -147,7 +110,7 @@
       "place": "CHIPPER, DRIFTER'S CAMP",
       "sub": "Kahl's Garrison",
       "activity": "buy the blueprint",
-      "meta": "Rank 2 Encampment",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -163,9 +126,17 @@
         {
           "qty": null,
           "label": "Slaytra Blueprint",
-          "note": "30 Stock",
+          "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Stock",
+                "amount": "30"
+              }
+            ]
+          }
         }
       ],
       "conditions": [],

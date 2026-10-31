@@ -11,14 +11,6 @@
   },
   "badges": [
     {
-      "text": "Vox Solaris Rank 3",
-      "tone": "warn",
-      "rank": {
-        "syndicate": "Vox Solaris",
-        "level": 3
-      }
-    },
-    {
       "text": "Market blueprint",
       "tone": "info"
     }
@@ -69,50 +61,11 @@
   ],
   "groups": [
     {
-      "type": "gate",
-      "place": "QUESTS + CETUS",
-      "sub": null,
-      "activity": "open Vox Solaris",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Vox Solaris quest and The War Within",
-          "note": null,
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "talk to Onkko in Cetus once",
-          "note": "then Little Duck in Fortuna, as your Operator or Drifter",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Mastery Rank 8",
-          "note": "to equip it",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": ["Little Duck only talks to your Operator or Drifter, not your Warframe."],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
       "type": "currency",
       "place": "ORB VALLIS, VENUS",
       "sub": "Spaceport, Enrichment Labs, Temple of Profit",
       "activity": "farm Toroids and turn them in to Little Duck",
-      "meta": "Vox Solaris to Rank 3 (Hand)",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -169,34 +122,70 @@
         {
           "qty": null,
           "label": "Rank 1",
-          "note": "5,000 standing, 50,000 cr; 1 Vega, 1 Calda, 1 Sola Toroid",
+          "note": "1 Vega, 1 Calda, 1 Sola Toroid",
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "Vox Solaris",
             "level": 1
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Vox Solaris Standing",
+                "amount": "5,000"
+              },
+              {
+                "currency": "Credits",
+                "amount": "50,000"
+              }
+            ]
           }
         },
         {
           "qty": null,
           "label": "Rank 2",
-          "note": "22,000 standing, 100,000 cr; 1 Gyromag Systems, 1 Vega Toroid",
+          "note": "1 Gyromag Systems, 1 Vega Toroid",
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "Vox Solaris",
             "level": 2
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Vox Solaris Standing",
+                "amount": "22,000"
+              },
+              {
+                "currency": "Credits",
+                "amount": "100,000"
+              }
+            ]
           }
         },
         {
           "qty": null,
           "label": "Rank 3, Hand",
-          "note": "44,000 standing, 250,000 cr; 1 Atmo Systems, 1 Calda Toroid",
+          "note": "1 Atmo Systems, 1 Calda Toroid",
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "Vox Solaris",
             "level": 3
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Vox Solaris Standing",
+                "amount": "44,000"
+              },
+              {
+                "currency": "Credits",
+                "amount": "250,000"
+              }
+            ]
           }
         }
       ],
@@ -225,9 +214,17 @@
         {
           "qty": null,
           "label": "Little Duck purchases",
-          "note": "13,500 standing: 1 Gyromag Systems at 1,000, 1 Atmo Systems at 2,500, 2 Repeller Systems at 5,000 each",
+          "note": "1 Gyromag Systems, 1 Atmo Systems, 2 Repeller Systems",
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Vox Solaris Standing",
+                "amount": "13,500"
+              }
+            ]
+          }
         }
       ],
       "conditions": [],

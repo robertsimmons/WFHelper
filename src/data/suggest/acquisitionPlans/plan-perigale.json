@@ -40,45 +40,6 @@
   ],
   "groups": [
     {
-      "type": "gate",
-      "place": "QUESTS",
-      "sub": null,
-      "activity": "Mastery Rank 8, The War Within, then Angels of the Zariman",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Mastery Rank 8",
-          "note": "needed to equip it",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "The War Within",
-          "note": "unlocks Conjunction Survival on Lua",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Angels of the Zariman",
-          "note": "unlocks Yonta in the Chrysalith; needs The New War",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
       "type": "farm",
       "place": "CIRCULUS, LUA",
       "sub": null,
@@ -188,9 +149,17 @@
         {
           "qty": null,
           "label": "Perigale",
-          "note": "Barrel, Receiver, Stock, 50 Lua Thrax Plasm, 20,000 cr",
+          "note": "Barrel, Receiver, Stock, 20,000 cr",
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Lua Thrax Plasm",
+                "amount": "50"
+              }
+            ]
+          }
         }
       ],
       "conditions": [],

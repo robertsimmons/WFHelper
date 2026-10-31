@@ -227,7 +227,7 @@
     }),
   );
 
-  const pinned = $derived(pinnedAcquisitions($acquisitionPins, acquisitionFeed, plans));
+  const pinned = $derived(pinnedAcquisitions($acquisitionPins, acquisitionFeed, plans, $tr));
   const openEntry = $derived(pinned.find((entry) => entry.uniqueName === openPlan) ?? null);
   const openResolved = $derived(openPlan === null ? null : (plans[openPlan] ?? null));
   const openTarget = $derived(openEntry?.suggestion.details?.acquisition ?? null);
@@ -341,6 +341,7 @@
             tier={openTarget.tier}
             uniqueName={openPlan}
             art={openArt}
+            buildable={openTarget.parts.buildable}
             onRefresh={() => void refreshFromInventory()}
             onToggleDone={tickRow}
             onTakeAlt={takeAlt}

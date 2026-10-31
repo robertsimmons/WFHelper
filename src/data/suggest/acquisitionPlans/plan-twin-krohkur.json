@@ -70,31 +70,6 @@
   ],
   "groups": [
     {
-      "type": "gate",
-      "place": "MASTERY RANK",
-      "sub": null,
-      "activity": null,
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Mastery Rank 10",
-          "note": "to equip it; each Krohkur needs Mastery Rank 9",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
       "type": "vendor",
       "place": "CLAN DOJO, CHEM LAB",
       "sub": null,
@@ -115,9 +90,17 @@
         {
           "qty": null,
           "label": "Twin Krohkur Blueprint",
-          "note": "15,000 credits",
+          "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Credits",
+                "amount": "15,000"
+              }
+            ]
+          }
         }
       ],
       "conditions": [],
@@ -129,7 +112,7 @@
       "place": "MARKET",
       "sub": null,
       "activity": "buy the Krohkur blueprint twice",
-      "meta": "50,000 cr",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -145,9 +128,18 @@
         {
           "qty": "2",
           "label": "Krohkur Blueprint",
-          "note": "25,000 cr each",
+          "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Credits",
+                "amount": "25,000"
+              }
+            ],
+            "each": true
+          }
         }
       ],
       "conditions": [],

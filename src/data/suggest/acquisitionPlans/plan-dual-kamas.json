@@ -65,7 +65,7 @@
       "place": "MARKET",
       "sub": null,
       "activity": "buy blueprints",
-      "meta": "40,000 cr each",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -78,14 +78,31 @@
           "label": "Kama Blueprint",
           "note": "a blueprint is consumed per build, so buy it twice",
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Credits",
+                "amount": "40,000"
+              }
+            ],
+            "each": true
+          }
         },
         {
           "qty": null,
           "label": "Dual Kamas Blueprint",
           "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Credits",
+                "amount": "40,000"
+              }
+            ]
+          }
         }
       ],
       "conditions": [],

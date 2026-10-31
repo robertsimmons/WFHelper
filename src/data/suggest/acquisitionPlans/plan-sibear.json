@@ -75,10 +75,10 @@
   ],
   "groups": [
     {
-      "type": "gate",
-      "place": "MASTERY RANK",
+      "type": "vendor",
+      "place": "MARKET",
       "sub": null,
-      "activity": null,
+      "activity": "buy two blueprints",
       "meta": null,
       "mode": null,
       "live": null,
@@ -89,42 +89,33 @@
       "rows": [
         {
           "qty": null,
-          "label": "Mastery Rank 6",
-          "note": "to equip Sibear",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "vendor",
-      "place": "MARKET",
-      "sub": null,
-      "activity": "buy two blueprints",
-      "meta": "40,000 cr",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
           "label": "Sibear Blueprint",
-          "note": "15,000 credits",
+          "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Credits",
+                "amount": "15,000"
+              }
+            ]
+          }
         },
         {
           "qty": null,
           "label": "Magistar Blueprint",
-          "note": "25,000 credits",
+          "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Credits",
+                "amount": "25,000"
+              }
+            ]
+          }
         }
       ],
       "conditions": [],

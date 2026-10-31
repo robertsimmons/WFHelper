@@ -13,10 +13,6 @@
     {
       "text": "Cavia bounties",
       "tone": "info"
-    },
-    {
-      "text": "quest-gated",
-      "tone": "warn"
     }
   ],
   "prices": [
@@ -78,39 +74,6 @@
     }
   ],
   "groups": [
-    {
-      "type": "gate",
-      "place": "QUESTS",
-      "sub": null,
-      "activity": "Heart of Deimos and The New War",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Heart of Deimos",
-          "note": "needed for Whispers in the Walls",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "The New War",
-          "note": "needed for Whispers in the Walls",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": [],
-      "quest": "Whispers in the Walls"
-    },
     {
       "type": "farm",
       "place": "CODEX",
@@ -261,14 +224,6 @@
     "effort": 6,
     "badges": [
       {
-        "text": "Cavia Rank 4",
-        "tone": "warn",
-        "rank": {
-          "syndicate": "Cavia",
-          "level": 4
-        }
-      },
-      {
         "text": "50,000 standing for the main",
         "tone": "info"
       }
@@ -279,7 +234,7 @@
         "place": "ALBRECHT'S LABORATORIES, DEIMOS",
         "sub": null,
         "activity": "Fibonacci's bounties; collect Voca and hand spares to Loid",
-        "meta": "Echo 2,000, Bellow 1,000, Shrill 500 standing a Voca",
+        "meta": "Echo 2,000, Bellow 1,000, Shrill 500 a Voca",
         "mode": null,
         "live": null,
         "skip": null,
@@ -293,45 +248,93 @@
           {
             "qty": null,
             "label": "Rank 1, Assistant",
-            "note": "5,000 standing; 3 Shrill Voca, 300 Entrati Obols, 1,100 Rubedo, 10,000 cr",
+            "note": "3 Shrill Voca, 300 Entrati Obols, 1,100 Rubedo",
             "alt": null,
             "done": false,
             "rank": {
               "syndicate": "Cavia",
               "level": 1
+            },
+            "buy": {
+              "price": [
+                {
+                  "currency": "Cavia Standing",
+                  "amount": "5,000"
+                },
+                {
+                  "currency": "Credits",
+                  "amount": "10,000"
+                }
+              ]
             }
           },
           {
             "qty": null,
             "label": "Rank 2, Researcher",
-            "note": "22,000 standing; 5 Shrill Voca, 60 Voidgel Orb, 12 Necracoil, 8 Stela, 25,000 cr",
+            "note": "5 Shrill Voca, 60 Voidgel Orb, 12 Necracoil, 8 Stela",
             "alt": null,
             "done": false,
             "rank": {
               "syndicate": "Cavia",
               "level": 2
+            },
+            "buy": {
+              "price": [
+                {
+                  "currency": "Cavia Standing",
+                  "amount": "22,000"
+                },
+                {
+                  "currency": "Credits",
+                  "amount": "25,000"
+                }
+              ]
             }
           },
           {
             "qty": null,
             "label": "Rank 3, Colleague",
-            "note": "44,000 standing; 2 Bellow Voca, 8 Shrill Voca, 15 Necracoil, 16 Stela, 50,000 cr",
+            "note": "2 Bellow Voca, 8 Shrill Voca, 15 Necracoil, 16 Stela",
             "alt": null,
             "done": false,
             "rank": {
               "syndicate": "Cavia",
               "level": 3
+            },
+            "buy": {
+              "price": [
+                {
+                  "currency": "Cavia Standing",
+                  "amount": "44,000"
+                },
+                {
+                  "currency": "Credits",
+                  "amount": "50,000"
+                }
+              ]
             }
           },
           {
             "qty": null,
             "label": "Rank 4, Scholar",
-            "note": "70,000 standing; 1 Echo Voca, 10 Bellow Voca, 1,500 Entrati Obols, 5 Entrati Lanthorn, 100,000 cr",
+            "note": "1 Echo Voca, 10 Bellow Voca, 1,500 Entrati Obols, 5 Entrati Lanthorn",
             "alt": null,
             "done": false,
             "rank": {
               "syndicate": "Cavia",
               "level": 4
+            },
+            "buy": {
+              "price": [
+                {
+                  "currency": "Cavia Standing",
+                  "amount": "70,000"
+                },
+                {
+                  "currency": "Credits",
+                  "amount": "100,000"
+                }
+              ]
             }
           }
         ],
@@ -349,7 +352,7 @@
         "place": "BIRD 3, SANCTUM ANATOMICA",
         "sub": null,
         "activity": "buy the main blueprint",
-        "meta": "Rank 4, Scholar",
+        "meta": null,
         "mode": null,
         "live": null,
         "skip": null,
@@ -365,9 +368,17 @@
           {
             "qty": null,
             "label": "Qorvex Blueprint",
-            "note": "50,000 standing",
+            "note": null,
             "alt": null,
-            "done": false
+            "done": false,
+            "buy": {
+              "price": [
+                {
+                  "currency": "Cavia Standing",
+                  "amount": "50,000"
+                }
+              ]
+            }
           }
         ],
         "conditions": [],

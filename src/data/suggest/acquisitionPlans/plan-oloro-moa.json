@@ -11,14 +11,6 @@
   },
   "badges": [
     {
-      "text": "Doer gate",
-      "tone": "warn",
-      "rank": {
-        "syndicate": "Solaris United",
-        "level": 3
-      }
-    },
-    {
       "text": "gild, then 0-30 again",
       "tone": "info"
     }
@@ -104,40 +96,6 @@
   ],
   "groups": [
     {
-      "type": "gate",
-      "place": "FORTUNA, VENUS",
-      "sub": null,
-      "activity": "finish Vox Solaris",
-      "meta": "one-time",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Vox Solaris",
-          "note": "unlocks Legs and Solaris United standing",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "1",
-          "label": "free Robotic slot",
-          "note": "for the assembled MOA",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "A MOA has no weapon of its own; it needs a Robotic weapon you own, or one of Legs' blueprints (Cryotra, Tazicor, Vulcax, Helstrum)."
-      ],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
       "type": "currency",
       "place": "ORB VALLIS, VENUS",
       "sub": null,
@@ -156,9 +114,13 @@
         {
           "qty": "71,000",
           "label": "rank-ups to Doer",
-          "note": "Rank 3",
+          "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "rank": {
+            "syndicate": "Solaris United",
+            "level": 3
+          }
         },
         {
           "qty": "3,500",
@@ -177,7 +139,7 @@
         {
           "qty": "6,000",
           "label": "refining blueprints",
-          "note": "reusable, 1,000 at Neutral, 2,000 for Venerdo and Goblite at Outworlder",
+          "note": "reusable",
           "alt": null,
           "done": false
         }
@@ -208,9 +170,18 @@
         {
           "qty": null,
           "label": "refining blueprints",
-          "note": "6,000 standing, reusable, 1,000 at Neutral, 2,000 for Venerdo and Goblite at Outworlder",
+          "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Solaris United Standing",
+                "amount": "6,000"
+              }
+            ],
+            "reusable": true
+          }
         }
       ],
       "conditions": [],
@@ -222,7 +193,7 @@
       "place": "FORTUNA, VENUS",
       "sub": null,
       "activity": "Solaris United rank-ups to Doer",
-      "meta": "85,000 cr",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -238,23 +209,59 @@
         {
           "qty": null,
           "label": "Outworlder",
-          "note": "5,000 standing, 2 Training, 10,000 cr",
+          "note": "2 Training",
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Solaris United Standing",
+                "amount": "5,000"
+              },
+              {
+                "currency": "Credits",
+                "amount": "10,000"
+              }
+            ]
+          }
         },
         {
           "qty": null,
           "label": "Rapscallion",
-          "note": "22,000 standing, 2 Training + 3 Shelter, 25,000 cr",
+          "note": "2 Training, 3 Shelter",
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Solaris United Standing",
+                "amount": "22,000"
+              },
+              {
+                "currency": "Credits",
+                "amount": "25,000"
+              }
+            ]
+          }
         },
         {
           "qty": null,
           "label": "Doer",
-          "note": "44,000 standing, 2 Training + 3 Shelter + 4 Medical, 50,000 cr",
+          "note": "2 Training, 3 Shelter, 4 Medical",
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Solaris United Standing",
+                "amount": "44,000"
+              },
+              {
+                "currency": "Credits",
+                "amount": "50,000"
+              }
+            ]
+          }
         }
       ],
       "conditions": [
@@ -268,7 +275,7 @@
       "place": "LEGS, FORTUNA",
       "sub": null,
       "activity": "buy the four part blueprints",
-      "meta": "3,500 standing",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -284,30 +291,66 @@
         {
           "qty": null,
           "label": "Oloro Model",
-          "note": "2,000 standing, Rapscallion",
+          "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Solaris United Standing",
+                "amount": "2,000"
+              }
+            ],
+            "rank": {
+              "syndicate": "Solaris United",
+              "level": 2
+            }
+          }
         },
         {
           "qty": null,
           "label": "Drex Core",
-          "note": "500 standing, Neutral",
+          "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Solaris United Standing",
+                "amount": "500"
+              }
+            ]
+          }
         },
         {
           "qty": null,
           "label": "Trux Gyro",
-          "note": "500 standing, Neutral",
+          "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Solaris United Standing",
+                "amount": "500"
+              }
+            ]
+          }
         },
         {
           "qty": null,
           "label": "Drimper Bracket",
-          "note": "500 standing, Neutral, no extra polarity",
+          "note": "no extra polarity",
           "alt": "Tian Bracket, +1 Vazarin",
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Solaris United Standing",
+                "amount": "500"
+              }
+            ]
+          }
         }
       ],
       "conditions": ["Only the Model earns Mastery; Core, Gyro and Bracket are stats and looks."],
@@ -365,7 +408,7 @@
       "place": "LEGS, FORTUNA",
       "sub": null,
       "activity": "Configure a MOA Companion, then gild at rank 30",
-      "meta": "4,000 cr now; 10 bonds and 5,000 standing later",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -381,16 +424,36 @@
         {
           "qty": null,
           "label": "Oloro Moa, assembled",
-          "note": "4,000 credits, instant",
+          "note": "instant",
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Credits",
+                "amount": "4,000"
+              }
+            ]
+          }
         },
         {
           "qty": null,
           "label": "Oloro Moa, gilded",
-          "note": "10 Training Debt-Bonds, 5,000 standing, Doer",
+          "note": "10 Training Debt-Bonds",
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Solaris United Standing",
+                "amount": "5,000"
+              }
+            ],
+            "rank": {
+              "syndicate": "Solaris United",
+              "level": 3
+            }
+          }
         }
       ],
       "conditions": [

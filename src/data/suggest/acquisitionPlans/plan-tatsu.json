@@ -9,24 +9,7 @@
     "need": 1,
     "unit": "blueprint"
   },
-  "badges": [
-    {
-      "text": "Ostron Trusted",
-      "tone": "warn",
-      "rank": {
-        "syndicate": "Ostron",
-        "level": 3
-      }
-    },
-    {
-      "text": "Solaris Rapscallion",
-      "tone": "warn",
-      "rank": {
-        "syndicate": "Solaris United",
-        "level": 2
-      }
-    }
-  ],
+  "badges": [],
   "prices": [
     {
       "label": "blueprint",
@@ -68,58 +51,11 @@
   ],
   "groups": [
     {
-      "type": "gate",
-      "place": "MASTERY RANK AND SYNDICATES",
-      "activity": "reach MR 7, Ostron Trusted and Solaris United Rapscallion",
-      "sub": null,
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": [],
-      "rows": [
-        {
-          "qty": null,
-          "label": "Mastery Rank 7",
-          "note": "needed to equip it",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Ostron Trusted",
-          "note": "Rank 3; unlocks the Auroxium Alloy blueprint",
-          "alt": null,
-          "done": false,
-          "rank": {
-            "syndicate": "Ostron",
-            "level": 3
-          }
-        },
-        {
-          "qty": null,
-          "label": "Solaris United Rapscallion",
-          "note": "Rank 2; unlocks the Hespazym Alloy blueprint",
-          "alt": null,
-          "done": false,
-          "rank": {
-            "syndicate": "Solaris United",
-            "level": 2
-          }
-        }
-      ]
-    },
-    {
       "type": "vendor",
       "place": "MARKET",
       "sub": null,
       "activity": "buy the blueprint",
-      "meta": "20,000 cr",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -137,7 +73,15 @@
           "label": "Tatsu Blueprint",
           "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Credits",
+                "amount": "20,000"
+              }
+            ]
+          }
         }
       ],
       "conditions": [],

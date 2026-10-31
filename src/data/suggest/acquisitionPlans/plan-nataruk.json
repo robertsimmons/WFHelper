@@ -4,10 +4,20 @@
   "effort": 3,
   "source": "repeat",
   "tradeable": false,
-  "progress": { "have": 0, "need": 1, "unit": "weapon" },
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "weapon"
+  },
   "badges": [
-    { "text": "The New War reward", "tone": "warn" },
-    { "text": "built + Catalyst", "tone": "info" }
+    {
+      "text": "The New War reward",
+      "tone": "warn"
+    },
+    {
+      "text": "built + Catalyst",
+      "tone": "info"
+    }
   ],
   "prices": [],
   "routes": [
@@ -25,34 +35,6 @@
     }
   ],
   "groups": [
-    {
-      "type": "gate",
-      "place": "QUEST",
-      "sub": null,
-      "activity": "finish Prelude to War",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Prelude to War",
-          "note": "Chimera Prologue, Erra and The Maker; The New War also needs a Railjack (Rising Tide builds one) and an Amp (the free Mote Amp counts)",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "No Necramech or Paracesis is needed; the quest lends a Necramech for its short section."
-      ],
-      "bonuses": [],
-      "disclosures": [],
-      "quest": "The New War"
-    },
     {
       "type": "farm",
       "place": "THE CODEX",
@@ -89,18 +71,26 @@
   ],
   "afterQuest": {
     "effort": 5,
-    "badges": [{ "text": "Simaris 100,000 standing", "tone": "warn" }],
+    "badges": [
+      {
+        "text": "Simaris 100,000 standing",
+        "tone": "warn"
+      }
+    ],
     "groups": [
       {
         "type": "currency",
         "place": "CEPHALON SIMARIS",
         "sub": null,
         "activity": "scan targets with the Synthesis Scanner",
-        "meta": "100,000 Standing",
+        "meta": null,
         "mode": null,
         "live": null,
         "skip": null,
-        "earns": { "currency": "Cephalon Simaris Standing", "amount": "100,000" },
+        "earns": {
+          "currency": "Cephalon Simaris Standing",
+          "amount": "100,000"
+        },
         "spends": [],
         "map": null,
         "rows": [
@@ -122,20 +112,33 @@
         "place": "CEPHALON SIMARIS",
         "sub": null,
         "activity": "buy another Nataruk",
-        "meta": "100,000 Standing",
+        "meta": null,
         "mode": null,
         "live": null,
         "skip": null,
         "earns": null,
-        "spends": [{ "currency": "Cephalon Simaris Standing", "amount": "100,000" }],
+        "spends": [
+          {
+            "currency": "Cephalon Simaris Standing",
+            "amount": "100,000"
+          }
+        ],
         "map": null,
         "rows": [
           {
             "qty": null,
             "label": "Nataruk",
-            "note": "100,000 Standing",
+            "note": null,
             "alt": null,
-            "done": false
+            "done": false,
+            "buy": {
+              "price": [
+                {
+                  "currency": "Cephalon Simaris Standing",
+                  "amount": "100,000"
+                }
+              ]
+            }
           }
         ],
         "conditions": ["Simaris only stocks these once The New War is done."],

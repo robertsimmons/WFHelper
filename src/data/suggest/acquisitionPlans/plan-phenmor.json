@@ -9,20 +9,7 @@
     "need": 1,
     "unit": "blueprint"
   },
-  "badges": [
-    {
-      "text": "Holdfasts Rank 2",
-      "tone": "warn",
-      "rank": {
-        "syndicate": "The Holdfasts",
-        "level": 2
-      }
-    },
-    {
-      "text": "MR 14",
-      "tone": "info"
-    }
-  ],
+  "badges": [],
   "prices": [
     {
       "label": "blueprint",
@@ -59,54 +46,11 @@
   ],
   "groups": [
     {
-      "type": "gate",
-      "place": "MASTERY RANK, QUESTS",
-      "sub": null,
-      "activity": "reach MR 14 and finish Angels of the Zariman",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Mastery Rank 14",
-          "note": "needed to equip it; the Foundry still builds it earlier",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Angels of the Zariman",
-          "note": "unlocks the Chrysalith and The Holdfasts; needs The New War",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Holdfasts Rank 2 (Watcher)",
-          "note": "needed to buy the blueprint; rank-ups are below",
-          "alt": null,
-          "done": false,
-          "rank": {
-            "syndicate": "The Holdfasts",
-            "level": 2
-          }
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
       "type": "currency",
       "place": "ZARIMAN TEN ZERO",
       "sub": "The Holdfasts",
-      "activity": "rank up to Watcher (Rank 2)",
-      "meta": "27,000 standing, 35,000 cr",
+      "activity": "rank up to Watcher",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -122,7 +66,19 @@
           "label": "Holdfasts standing",
           "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Holdfasts Standing",
+                "amount": "27,000"
+              },
+              {
+                "currency": "Credits",
+                "amount": "35,000"
+              }
+            ]
+          }
         }
       ],
       "conditions": [],
@@ -151,23 +107,47 @@
         {
           "qty": null,
           "label": "Rank 1, Fallen",
-          "note": "5,000 standing, 10,000 cr, 2,000 Alloy Plate, 2,000 Ferrite, 5 Voidplume Down",
+          "note": "2,000 Alloy Plate, 2,000 Ferrite, 5 Voidplume Down",
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "The Holdfasts",
             "level": 1
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Holdfasts Standing",
+                "amount": "5,000"
+              },
+              {
+                "currency": "Credits",
+                "amount": "10,000"
+              }
+            ]
           }
         },
         {
           "qty": null,
           "label": "Rank 2, Watcher",
-          "note": "22,000 standing, 25,000 cr, 5,000 Alloy Plate, 10 Voidgel Orb, 10 Voidplume Vane",
+          "note": "5,000 Alloy Plate, 10 Voidgel Orb, 10 Voidplume Vane",
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "The Holdfasts",
             "level": 2
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Holdfasts Standing",
+                "amount": "22,000"
+              },
+              {
+                "currency": "Credits",
+                "amount": "25,000"
+              }
+            ]
           }
         }
       ],
@@ -180,7 +160,7 @@
       "place": "CAVALERO, CHRYSALITH",
       "sub": "The Holdfasts: Watcher (Rank 2)",
       "activity": "buy the Phenmor blueprint",
-      "meta": "6,000 Standing",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -198,7 +178,15 @@
           "label": "Phenmor Blueprint",
           "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Holdfasts Standing",
+                "amount": "6,000"
+              }
+            ]
+          }
         }
       ],
       "conditions": [],

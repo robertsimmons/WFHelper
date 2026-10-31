@@ -264,14 +264,13 @@ describe("resolveAcquisition beyond frames and weapons", () => {
     expect(hound.weaponClass).toBeNull();
   });
 
-  it("returns one target per Moa and Hound model, and one per other modular gear type", () => {
+  it("returns one target per Moa, Hound and K-Drive model, and one per other modular gear type", () => {
     const names = companions().map((target) => target.name);
-    expect(names).toEqual(expect.arrayContaining(["Oloro Moa", "Para Moa", "Dorma Hound"]));
+    expect(names).toEqual(expect.arrayContaining(["Oloro Moa", "Para Moa", "Dorma Hound", "Runway"]));
     expect(names).toContain("Amp");
-    expect(names).toContain("K-Drive");
     expect(names).not.toContain("Moa");
     expect(names).not.toContain("Hound");
-    expect(names).not.toContain("Runway");
+    expect(names).not.toContain("K-Drive");
   });
 
   it("gives an unmastered Moa model its own card off its own plan", () => {
@@ -305,7 +304,7 @@ describe("resolveAcquisition beyond frames and weapons", () => {
     expect(find(targets, "Oloro Moa").modular?.requiresGilding).toBe(true);
     expect(find(targets, "Dorma Hound").modular?.requiresGilding).toBe(true);
     expect(find(targets, "Amp").modular?.requiresGilding).toBe(true);
-    expect(find(targets, "K-Drive").modular?.requiresGilding).toBe(false);
+    expect(find(targets, "Runway").modular?.requiresGilding).toBe(false);
   });
 
   it("drops a Moa model whose head part is fitted to a build", () => {
@@ -342,10 +341,13 @@ describe("resolveAcquisition beyond frames and weapons", () => {
     );
   });
 
-  it("still names the head parts a K-Drive needs no gilding for", () => {
-    const board = find(companions(), "K-Drive");
+  it("gives each K-Drive board its own card", () => {
+    const board = find(companions(), "Runway");
+    expect(board.uniqueName).toBe(RUNWAY);
     expect(board.modular?.heads.map((head) => head.uniqueName)).toEqual([RUNWAY]);
     expect(board.modular?.headLabelKey).toBe("nextUp.modularHeadBoards");
+    expect(board.rating).toMatchObject({ planned: true, effort: 6 });
+    expect(board.paths[0]).toMatchObject({ id: "plan", kind: "vendor" });
     expect(find(companions(), "Amp").modular?.heads[0].uniqueName).toBe(RAPLAK_PRISM);
   });
 

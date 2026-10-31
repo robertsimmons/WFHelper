@@ -60,32 +60,6 @@
   ],
   "groups": [
     {
-      "type": "gate",
-      "place": "QUESTS",
-      "sub": null,
-      "activity": "finish Erra",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Erra",
-          "note": "needs Chimera Prologue",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": [],
-      "quest": "Erra"
-    },
-    {
       "type": "farm",
       "place": "ERRA",
       "sub": null,
@@ -110,31 +84,6 @@
       "bonuses": [],
       "disclosures": [],
       "quest": "Erra"
-    },
-    {
-      "type": "gate",
-      "place": "QUESTS",
-      "sub": null,
-      "activity": "finish Veilbreaker",
-      "meta": "unlocks Archon Hunts",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Veilbreaker",
-          "note": "Archon Hunts also need a rank 30 Warframe",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
     },
     {
       "type": "farm",
@@ -230,7 +179,7 @@
         "place": "CEPHALON SIMARIS",
         "sub": null,
         "activity": "scan targets with the Synthesis Scanner",
-        "meta": "100,000 Standing",
+        "meta": null,
         "mode": null,
         "live": null,
         "skip": null,
@@ -259,7 +208,7 @@
         "place": "CEPHALON SIMARIS",
         "sub": null,
         "activity": "buy a replacement main blueprint",
-        "meta": "100,000 Standing",
+        "meta": null,
         "mode": null,
         "live": null,
         "skip": null,
@@ -275,9 +224,17 @@
           {
             "qty": null,
             "label": "Shedu Blueprint",
-            "note": "100,000 Standing",
+            "note": null,
             "alt": null,
-            "done": false
+            "done": false,
+            "buy": {
+              "price": [
+                {
+                  "currency": "Cephalon Simaris Standing",
+                  "amount": "100,000"
+                }
+              ]
+            }
           }
         ],
         "conditions": ["Simaris only stocks it once Erra is done."],

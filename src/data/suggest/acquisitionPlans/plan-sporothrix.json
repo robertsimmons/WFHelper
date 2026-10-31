@@ -9,20 +9,7 @@
     "need": 4,
     "unit": "parts"
   },
-  "badges": [
-    {
-      "text": "Necraloid Rank 3 to buy",
-      "tone": "warn",
-      "rank": {
-        "syndicate": "Necraloid",
-        "level": 3
-      }
-    },
-    {
-      "text": "MR 13",
-      "tone": "info"
-    }
-  ],
+  "badges": [],
   "prices": [
     {
       "label": "Loid set",
@@ -49,50 +36,11 @@
   ],
   "groups": [
     {
-      "type": "gate",
-      "place": "QUESTS",
-      "sub": null,
-      "activity": "clear the Deimos story gates",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Heart of Deimos",
-          "note": "unlocks the Necralisk, Entrati and Isolation Vaults",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "The War Within",
-          "note": "unlocks Loid's Necraloid backroom",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Mastery Rank 13",
-          "note": "to equip the Sporothrix",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
       "type": "vendor",
       "place": "FATHER, NECRALISK",
       "sub": null,
       "activity": "buy the barrel blueprints Loid's rank-ups consume",
-      "meta": "Entrati Rank 3 for Trumna",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -108,23 +56,71 @@
         {
           "qty": null,
           "label": "Zymos Barrel Blueprint",
-          "note": "1,000 standing, Rank 1; sacrificed for Necraloid Rank 1",
+          "note": "Necraloid sacrifice",
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Entrati Standing",
+                "amount": "1,000"
+              }
+            ],
+            "rank": {
+              "syndicate": "Entrati",
+              "level": 1
+            }
+          },
+          "rank": {
+            "syndicate": "Necraloid",
+            "level": 1
+          }
         },
         {
           "qty": null,
           "label": "Sepulcrum Barrel Blueprint",
-          "note": "2,000 standing, Rank 2; sacrificed for Necraloid Rank 2",
+          "note": "Necraloid sacrifice",
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Entrati Standing",
+                "amount": "2,000"
+              }
+            ],
+            "rank": {
+              "syndicate": "Entrati",
+              "level": 2
+            }
+          },
+          "rank": {
+            "syndicate": "Necraloid",
+            "level": 2
+          }
         },
         {
           "qty": null,
           "label": "Trumna Barrel Blueprint",
-          "note": "2,500 standing, Rank 3 Associate; sacrificed for Necraloid Rank 3",
+          "note": "Necraloid sacrifice",
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Entrati Standing",
+                "amount": "2,500"
+              }
+            ],
+            "rank": {
+              "syndicate": "Entrati",
+              "level": 3
+            }
+          },
+          "rank": {
+            "syndicate": "Necraloid",
+            "level": 3
+          }
         }
       ],
       "conditions": [
@@ -250,34 +246,58 @@
         {
           "qty": null,
           "label": "Necraloid Rank 1",
-          "note": "5,000 standing, 10 Orientation Matrix, 20 Father Tokens, Zymos Barrel Blueprint, 150 Void Traces",
+          "note": "10 Orientation Matrix, 20 Father Tokens, Zymos Barrel Blueprint, 150 Void Traces",
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "Necraloid",
             "level": 1
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Necraloid Standing",
+                "amount": "5,000"
+              }
+            ]
           }
         },
         {
           "qty": null,
           "label": "Necraloid Rank 2",
-          "note": "22,000 standing, 15 Ballistics Matrix, 20 Father Tokens, Sepulcrum Barrel Blueprint, 250 Void Traces",
+          "note": "15 Ballistics Matrix, 20 Father Tokens, Sepulcrum Barrel Blueprint, 250 Void Traces",
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "Necraloid",
             "level": 2
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Necraloid Standing",
+                "amount": "22,000"
+              }
+            ]
           }
         },
         {
           "qty": null,
           "label": "Necraloid Rank 3, Odima",
-          "note": "44,000 standing, 15 Animus Matrix, 20 Father Tokens, Trumna Barrel Blueprint, 350 Void Traces",
+          "note": "15 Animus Matrix, 20 Father Tokens, Trumna Barrel Blueprint, 350 Void Traces",
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "Necraloid",
             "level": 3
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Necraloid Standing",
+                "amount": "44,000"
+              }
+            ]
           }
         }
       ],

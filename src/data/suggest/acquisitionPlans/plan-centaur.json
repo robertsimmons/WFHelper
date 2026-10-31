@@ -11,10 +11,6 @@
   },
   "badges": [
     {
-      "text": "3 syndicates to Rank 3",
-      "tone": "warn"
-    },
-    {
       "text": "opposed factions",
       "tone": "warn"
     }
@@ -28,36 +24,11 @@
   ],
   "groups": [
     {
-      "type": "gate",
-      "place": "MASTERY RANK",
-      "sub": null,
-      "activity": "reach MR 8",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Mastery Rank 8",
-          "note": "to equip Centaur",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
       "type": "vendor",
       "place": "MARKET",
       "sub": null,
       "activity": "buy blueprint",
-      "meta": "35,000 cr",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -70,7 +41,15 @@
           "label": "Centaur Blueprint",
           "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Credits",
+                "amount": "35,000"
+              }
+            ]
+          }
         }
       ],
       "conditions": [],
@@ -82,7 +61,7 @@
       "place": "THE PERRIN SEQUENCE",
       "sub": null,
       "activity": "pledge Perrin; rank to Rank 3",
-      "meta": "91,000 standing: 71,000 rank-ups, 20,000 Blade",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -96,14 +75,18 @@
         {
           "qty": "2",
           "label": "Detonite Ampule",
-          "note": "Perrin Rank 1 sacrifice",
+          "note": "sacrifice",
           "alt": null,
-          "done": false
+          "done": false,
+          "rank": {
+            "syndicate": "The Perrin Sequence",
+            "level": 1
+          }
         },
         {
           "qty": "1",
           "label": "Forma",
-          "note": "Perrin Rank 2 sacrifice",
+          "note": "sacrifice",
           "alt": null,
           "done": false,
           "rank": {
@@ -114,7 +97,7 @@
         {
           "qty": "1",
           "label": "Orokin Reactor",
-          "note": "Perrin Rank 3 sacrifice",
+          "note": "sacrifice",
           "alt": null,
           "done": false,
           "rank": {
@@ -149,45 +132,77 @@
         {
           "qty": null,
           "label": "Rank 1",
-          "note": "5,000 standing",
+          "note": null,
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "The Perrin Sequence",
             "level": 1
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "The Perrin Sequence Standing",
+                "amount": "5,000"
+              }
+            ]
           }
         },
         {
           "qty": null,
           "label": "Rank 2",
-          "note": "22,000 standing",
+          "note": null,
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "The Perrin Sequence",
             "level": 2
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "The Perrin Sequence Standing",
+                "amount": "22,000"
+              }
+            ]
           }
         },
         {
           "qty": null,
           "label": "Rank 3",
-          "note": "44,000 standing",
+          "note": null,
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "The Perrin Sequence",
             "level": 3
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "The Perrin Sequence Standing",
+                "amount": "44,000"
+              }
+            ]
           }
         },
         {
           "qty": null,
           "label": "Centaur Blade",
-          "note": "20,000 standing",
+          "note": null,
           "alt": null,
           "done": false,
-          "rank": {
-            "syndicate": "The Perrin Sequence",
-            "level": 3
+          "buy": {
+            "price": [
+              {
+                "currency": "The Perrin Sequence Standing",
+                "amount": "20,000"
+              }
+            ],
+            "rank": {
+              "syndicate": "The Perrin Sequence",
+              "level": 3
+            }
           }
         }
       ],
@@ -201,7 +216,7 @@
       "place": "NEW LOKA",
       "sub": null,
       "activity": "pledge New Loka; rank to Rank 3",
-      "meta": "91,000 standing: 71,000 rank-ups, 20,000 Handle",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -215,14 +230,18 @@
         {
           "qty": "2",
           "label": "Fieldron Sample",
-          "note": "New Loka Rank 1 sacrifice",
+          "note": "sacrifice",
           "alt": null,
-          "done": false
+          "done": false,
+          "rank": {
+            "syndicate": "New Loka",
+            "level": 1
+          }
         },
         {
           "qty": "1",
           "label": "Forma",
-          "note": "New Loka Rank 2 sacrifice",
+          "note": "sacrifice",
           "alt": null,
           "done": false,
           "rank": {
@@ -233,7 +252,7 @@
         {
           "qty": "1",
           "label": "Orokin Reactor",
-          "note": "New Loka Rank 3 sacrifice",
+          "note": "sacrifice",
           "alt": null,
           "done": false,
           "rank": {
@@ -268,45 +287,77 @@
         {
           "qty": null,
           "label": "Rank 1",
-          "note": "5,000 standing",
+          "note": null,
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "New Loka",
             "level": 1
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "New Loka Standing",
+                "amount": "5,000"
+              }
+            ]
           }
         },
         {
           "qty": null,
           "label": "Rank 2",
-          "note": "22,000 standing",
+          "note": null,
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "New Loka",
             "level": 2
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "New Loka Standing",
+                "amount": "22,000"
+              }
+            ]
           }
         },
         {
           "qty": null,
           "label": "Rank 3",
-          "note": "44,000 standing",
+          "note": null,
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "New Loka",
             "level": 3
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "New Loka Standing",
+                "amount": "44,000"
+              }
+            ]
           }
         },
         {
           "qty": null,
           "label": "Centaur Handle",
-          "note": "20,000 standing",
+          "note": null,
           "alt": null,
           "done": false,
-          "rank": {
-            "syndicate": "New Loka",
-            "level": 3
+          "buy": {
+            "price": [
+              {
+                "currency": "New Loka Standing",
+                "amount": "20,000"
+              }
+            ],
+            "rank": {
+              "syndicate": "New Loka",
+              "level": 3
+            }
           }
         }
       ],
@@ -320,7 +371,7 @@
       "place": "ARBITERS OF HEXIS",
       "sub": null,
       "activity": "pledge Hexis or Cephalon Suda; rank to Rank 3, Lawful",
-      "meta": "91,000 standing, 180,000 cr",
+      "meta": null,
       "mode": "switch here only after buying Blade and Handle",
       "live": null,
       "skip": null,
@@ -328,20 +379,29 @@
         "currency": "Arbiters of Hexis Standing",
         "amount": "91,000"
       },
-      "spends": [],
+      "spends": [
+        {
+          "currency": "Credits",
+          "amount": "180,000"
+        }
+      ],
       "map": null,
       "rows": [
         {
           "qty": "2",
           "label": "Gallium",
-          "note": "Rank 1 sacrifice",
+          "note": "sacrifice",
           "alt": null,
-          "done": false
+          "done": false,
+          "rank": {
+            "syndicate": "Arbiters of Hexis",
+            "level": 1
+          }
         },
         {
           "qty": "1",
           "label": "Forma",
-          "note": "Rank 2 sacrifice",
+          "note": "sacrifice",
           "alt": null,
           "done": false,
           "rank": {
@@ -352,7 +412,7 @@
         {
           "qty": "1",
           "label": "Orokin Reactor",
-          "note": "Rank 3 sacrifice",
+          "note": "sacrifice",
           "alt": null,
           "done": false,
           "rank": {
@@ -389,45 +449,77 @@
         {
           "qty": null,
           "label": "Rank 1, Principled",
-          "note": "5,000 standing",
+          "note": null,
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "Arbiters of Hexis",
             "level": 1
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Arbiters of Hexis Standing",
+                "amount": "5,000"
+              }
+            ]
           }
         },
         {
           "qty": null,
           "label": "Rank 2, Authentic",
-          "note": "22,000 standing",
+          "note": null,
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "Arbiters of Hexis",
             "level": 2
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Arbiters of Hexis Standing",
+                "amount": "22,000"
+              }
+            ]
           }
         },
         {
           "qty": null,
           "label": "Rank 3, Lawful",
-          "note": "44,000 standing",
+          "note": null,
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "Arbiters of Hexis",
             "level": 3
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Arbiters of Hexis Standing",
+                "amount": "44,000"
+              }
+            ]
           }
         },
         {
           "qty": null,
           "label": "Centaur Aegis",
-          "note": "20,000 standing",
+          "note": null,
           "alt": null,
           "done": false,
-          "rank": {
-            "syndicate": "Arbiters of Hexis",
-            "level": 3
+          "buy": {
+            "price": [
+              {
+                "currency": "Arbiters of Hexis Standing",
+                "amount": "20,000"
+              }
+            ],
+            "rank": {
+              "syndicate": "Arbiters of Hexis",
+              "level": 3
+            }
           }
         }
       ],

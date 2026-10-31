@@ -49,52 +49,11 @@
   ],
   "groups": [
     {
-      "type": "gate",
-      "place": "ORBITER",
-      "sub": null,
-      "activity": "Incubator access",
-      "meta": "one-time",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Howl of the Kubrow",
-          "note": "unlocks the Incubator",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Mastery Rank 5",
-          "note": "to craft the Kavat Incubator Upgrade Segment",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": "1",
-          "label": "free Companion Slot",
-          "note": "a Kavat permanently occupies it",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "The 10 codes the Upgrade Segment consumes don't count toward the 10 an incubation needs."
-      ],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
       "type": "vendor",
       "place": "CLAN DOJO, TENNO LAB",
       "sub": null,
       "activity": "buy the blueprint at the Tenno Lab",
-      "meta": "15,000 cr",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -110,9 +69,17 @@
         {
           "qty": null,
           "label": "Kavat Incubator Upgrade Segment Blueprint",
-          "note": "15,000 cr",
+          "note": null,
           "alt": "or a Hyekka Master drop",
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Credits",
+                "amount": "15,000"
+              }
+            ]
+          }
         }
       ],
       "conditions": [],

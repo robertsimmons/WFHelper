@@ -9,20 +9,7 @@
     "need": 1,
     "unit": "purchase"
   },
-  "badges": [
-    {
-      "text": "Exalted rank gate",
-      "tone": "warn",
-      "rank": {
-        "syndicate": "Red Veil",
-        "level": 5
-      }
-    },
-    {
-      "text": "MR 12",
-      "tone": "info"
-    }
-  ],
+  "badges": [],
   "prices": [
     {
       "label": "standing",
@@ -38,47 +25,11 @@
   "materials": [],
   "groups": [
     {
-      "type": "gate",
-      "place": "RELAY",
-      "sub": "Red Veil offerings",
-      "activity": "reach Exalted with Red Veil",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Mastery Rank 12",
-          "note": "to buy it",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Red Veil Rank 5, Exalted",
-          "note": "the ranks and sacrifices are below",
-          "alt": null,
-          "done": false,
-          "rank": {
-            "syndicate": "Red Veil",
-            "level": 5
-          }
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
       "type": "currency",
       "place": "ORBITER",
       "sub": "Syndicate console",
       "activity": "pledge Red Veil, then rank up to Exalted",
-      "meta": "365,000 standing total, 240,000 for the ranks and 125,000 for the bow",
+      "meta": "240,000 for the ranks and 125,000 for the bow",
       "mode": null,
       "live": null,
       "skip": null,
@@ -92,37 +43,93 @@
         {
           "qty": "500",
           "label": "Alloy Plate",
-          "note": "Rank 0 Initiation sacrifice, 10,000 cr",
+          "note": "Initiation sacrifice",
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Credits",
+                "amount": "10,000"
+              }
+            ]
+          }
         },
         {
           "qty": "2",
           "label": "Gallium",
-          "note": "Rank 1 Respected sacrifice, 30,000 cr",
+          "note": "sacrifice",
           "alt": null,
-          "done": false
+          "done": false,
+          "rank": {
+            "syndicate": "Red Veil",
+            "level": 1
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Credits",
+                "amount": "30,000"
+              }
+            ]
+          }
         },
         {
           "qty": "1",
           "label": "Forma",
-          "note": "Rank 2 Honored sacrifice, 50,000 cr",
+          "note": "sacrifice",
           "alt": null,
-          "done": false
+          "done": false,
+          "rank": {
+            "syndicate": "Red Veil",
+            "level": 2
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Credits",
+                "amount": "50,000"
+              }
+            ]
+          }
         },
         {
           "qty": "1",
           "label": "Orokin Catalyst",
-          "note": "Rank 3 Esteemed sacrifice, 100,000 cr",
+          "note": "sacrifice",
           "alt": null,
-          "done": false
+          "done": false,
+          "rank": {
+            "syndicate": "Red Veil",
+            "level": 3
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Credits",
+                "amount": "100,000"
+              }
+            ]
+          }
         },
         {
           "qty": "5",
           "label": "Aya",
-          "note": "2 at Rank 4 Revered, 3 at Rank 5 Exalted; 250,000 cr and 500,000 cr",
+          "note": "2 for Revered, 3 for Exalted",
           "alt": null,
-          "done": false
+          "done": false,
+          "rank": {
+            "syndicate": "Red Veil",
+            "level": 5
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Credits",
+                "amount": "750,000"
+              }
+            ]
+          }
         }
       ],
       "conditions": [],
@@ -156,56 +163,96 @@
         {
           "qty": null,
           "label": "Rank 1, Respected",
-          "note": "5,000 standing",
+          "note": null,
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "Red Veil",
             "level": 1
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Red Veil Standing",
+                "amount": "5,000"
+              }
+            ]
           }
         },
         {
           "qty": null,
           "label": "Rank 2, Honored",
-          "note": "22,000 standing",
+          "note": null,
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "Red Veil",
             "level": 2
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Red Veil Standing",
+                "amount": "22,000"
+              }
+            ]
           }
         },
         {
           "qty": null,
           "label": "Rank 3, Esteemed",
-          "note": "44,000 standing",
+          "note": null,
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "Red Veil",
             "level": 3
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Red Veil Standing",
+                "amount": "44,000"
+              }
+            ]
           }
         },
         {
           "qty": null,
           "label": "Rank 4, Revered",
-          "note": "70,000 standing",
+          "note": null,
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "Red Veil",
             "level": 4
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Red Veil Standing",
+                "amount": "70,000"
+              }
+            ]
           }
         },
         {
           "qty": null,
           "label": "Rank 5, Exalted",
-          "note": "99,000 standing",
+          "note": null,
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "Red Veil",
             "level": 5
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Red Veil Standing",
+                "amount": "99,000"
+              }
+            ]
           }
         }
       ],
@@ -218,7 +265,7 @@
       "place": "RED VEIL OFFERINGS, RELAY",
       "sub": null,
       "activity": "buy the bow",
-      "meta": "125,000 standing",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -236,7 +283,15 @@
           "label": "Rakta Cernos",
           "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Red Veil Standing",
+                "amount": "125,000"
+              }
+            ]
+          }
         }
       ],
       "conditions": [

@@ -120,47 +120,6 @@
   ],
   "groups": [
     {
-      "type": "gate",
-      "place": "QUESTS",
-      "sub": null,
-      "activity": "clear the story gates",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Heart of Deimos",
-          "note": "opens Cambion Drift, the Necralisk and the Entrati",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "The War Within",
-          "note": "needed to pilot Bonewidow, so to level Ironbride for Mastery",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "one free Archwing weapon slot",
-          "note": "Bonewidow also hands over a Mausolon",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Ironbride has no blueprint or drop; it is Bonewidow's Exalted Ironbride ability weapon and arrives with the Necramech."
-      ],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
       "type": "bounty",
       "place": "CAMBION DRIFT, DEIMOS",
       "sub": "Mother, Isolation Vaults",
@@ -179,23 +138,31 @@
         {
           "qty": "10",
           "label": "Orokin Orientation Matrix",
-          "note": "Rank 1 sacrifice; 1,000 standing each at Loid",
+          "note": "sacrifice for the first Necraloid rank; 1,000 each at Loid",
           "alt": "or Arcana vault bounties, 12.5% for 2",
           "done": false
         },
         {
           "qty": "15",
           "label": "Orokin Ballistics Matrix",
-          "note": "Rank 2 sacrifice; 2,500 standing each",
+          "note": "sacrifice for the second Necraloid rank; 2,500 each",
           "alt": null,
-          "done": false
+          "done": false,
+          "rank": {
+            "syndicate": "Necraloid",
+            "level": 2
+          }
         },
         {
           "qty": "15",
           "label": "Orokin Animus Matrix",
-          "note": "Rank 3 sacrifice; 5,000 standing each",
+          "note": "sacrifice for the third Necraloid rank; 5,000 each",
           "alt": null,
-          "done": false
+          "done": false,
+          "rank": {
+            "syndicate": "Necraloid",
+            "level": 3
+          }
         }
       ],
       "conditions": [
@@ -213,7 +180,7 @@
       "place": "FATHER, NECRALISK",
       "sub": null,
       "activity": "buy the barrel blueprints Loid's rank-ups consume",
-      "meta": "Entrati Rank 3 for Trumna",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -229,23 +196,59 @@
         {
           "qty": null,
           "label": "Zymos Barrel Blueprint",
-          "note": "1,000 standing, Rank 1",
+          "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Entrati Standing",
+                "amount": "1,000"
+              }
+            ],
+            "rank": {
+              "syndicate": "Entrati",
+              "level": 1
+            }
+          }
         },
         {
           "qty": null,
           "label": "Sepulcrum Barrel Blueprint",
-          "note": "2,000 standing, Rank 2",
+          "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Entrati Standing",
+                "amount": "2,000"
+              }
+            ],
+            "rank": {
+              "syndicate": "Entrati",
+              "level": 2
+            }
+          }
         },
         {
           "qty": null,
           "label": "Trumna Barrel Blueprint",
-          "note": "2,500 standing, Rank 3 Associate",
+          "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Entrati Standing",
+                "amount": "2,500"
+              }
+            ],
+            "rank": {
+              "syndicate": "Entrati",
+              "level": 3
+            }
+          }
         }
       ],
       "conditions": [
@@ -261,7 +264,7 @@
       "place": "LOID, NECRALISK",
       "sub": null,
       "activity": "rank Necraloid to Clearance: Odima, then buy the blueprints",
-      "meta": "Rank 3",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -277,49 +280,98 @@
         {
           "qty": null,
           "label": "Clearance: Agnesis",
-          "note": "5,000 standing, 10 Orientation Matrix, Zymos Barrel Blueprint, 20 Father Tokens, 150 Void Traces",
+          "note": "10 Orientation Matrix, Zymos Barrel Blueprint, 20 Father Tokens, 150 Void Traces",
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "Necraloid",
             "level": 1
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Necraloid Standing",
+                "amount": "5,000"
+              }
+            ]
           }
         },
         {
           "qty": null,
           "label": "Clearance: Modus",
-          "note": "22,000 standing, 15 Ballistics Matrix, Sepulcrum Barrel Blueprint, 20 Father Tokens, 250 Void Traces",
+          "note": "15 Ballistics Matrix, Sepulcrum Barrel Blueprint, 20 Father Tokens, 250 Void Traces",
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "Necraloid",
             "level": 2
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Necraloid Standing",
+                "amount": "22,000"
+              }
+            ]
           }
         },
         {
           "qty": null,
           "label": "Clearance: Odima",
-          "note": "44,000 standing, 15 Animus Matrix, Trumna Barrel Blueprint, 20 Father Tokens, 350 Void Traces",
+          "note": "15 Animus Matrix, Trumna Barrel Blueprint, 20 Father Tokens, 350 Void Traces",
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "Necraloid",
             "level": 3
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Necraloid Standing",
+                "amount": "44,000"
+              }
+            ]
           }
         },
         {
           "qty": "4",
           "label": "Bonewidow component blueprints",
-          "note": "Casing, Engine, Capsule, Weapon Pod; 3,500 standing each at Rank 2",
+          "note": "Casing, Engine, Capsule, Weapon Pod",
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Necraloid Standing",
+                "amount": "3,500"
+              }
+            ],
+            "rank": {
+              "syndicate": "Necraloid",
+              "level": 2
+            },
+            "each": true
+          }
         },
         {
           "qty": null,
           "label": "Bonewidow Blueprint",
-          "note": "10,000 standing at Rank 3",
+          "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Necraloid Standing",
+                "amount": "10,000"
+              }
+            ],
+            "rank": {
+              "syndicate": "Necraloid",
+              "level": 3
+            }
+          }
         }
       ],
       "conditions": [],
@@ -331,7 +383,7 @@
       "place": "OTAK, NECRALISK",
       "sub": null,
       "activity": "buy the refining blueprints",
-      "meta": "Entrati Rank 2",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -347,30 +399,70 @@
         {
           "qty": null,
           "label": "Tempered Bapholite Blueprint",
-          "note": "1,000 standing, Rank 0",
+          "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Entrati Standing",
+                "amount": "1,000"
+              }
+            ]
+          }
         },
         {
           "qty": null,
           "label": "Adramal Alloy Blueprint",
-          "note": "1,000 standing, Rank 0",
+          "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Entrati Standing",
+                "amount": "1,000"
+              }
+            ]
+          }
         },
         {
           "qty": null,
           "label": "Devolved Namalon Blueprint",
-          "note": "2,000 standing, Rank 1",
+          "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Entrati Standing",
+                "amount": "2,000"
+              }
+            ],
+            "rank": {
+              "syndicate": "Entrati",
+              "level": 1
+            }
+          }
         },
         {
           "qty": null,
           "label": "Thaumic Distillate Blueprint",
-          "note": "4,000 standing, Rank 2",
+          "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Entrati Standing",
+                "amount": "4,000"
+              }
+            ],
+            "rank": {
+              "syndicate": "Entrati",
+              "level": 2
+            }
+          }
         }
       ],
       "conditions": [],
@@ -384,7 +476,7 @@
       "place": "SMOKEFINGER, FORTUNA",
       "sub": null,
       "activity": "buy the Goblite Tears refining blueprint",
-      "meta": "Solaris United Outworlder",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -400,9 +492,21 @@
         {
           "qty": null,
           "label": "Goblite Tears Blueprint",
-          "note": "2,000 standing, Rank 1",
+          "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Solaris United Standing",
+                "amount": "2,000"
+              }
+            ],
+            "rank": {
+              "syndicate": "Solaris United",
+              "level": 1
+            }
+          }
         }
       ],
       "conditions": [],
@@ -415,7 +519,7 @@
       "place": "OLD MAN SUUMBAAT, CETUS",
       "sub": null,
       "activity": "buy the Star Crimzian refining blueprint",
-      "meta": "Ostron Trusted",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -431,9 +535,21 @@
         {
           "qty": null,
           "label": "Star Crimzian Blueprint",
-          "note": "7,500 standing, Rank 3",
+          "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Ostron Standing",
+                "amount": "7,500"
+              }
+            ],
+            "rank": {
+              "syndicate": "Ostron",
+              "level": 3
+            }
+          }
         }
       ],
       "conditions": [],

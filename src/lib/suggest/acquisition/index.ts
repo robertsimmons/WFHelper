@@ -68,9 +68,11 @@ function frameNeeds(owned: boolean, subsumable: boolean, subsumed: boolean): Nee
 }
 
 /** Mastery keeps one copy and the Helminth eats another, so a frame owing both
- *  is two builds. A build already in the foundry has claimed one of them. */
-function copiesToBuild(needs: readonly NeedReason[], inFoundry: number): number {
-  const wanted = (needs.includes("mastery") ? 1 : 0) + (needs.includes("subsume") ? 1 : 0);
+ *  is two builds, unless the owned Prime is the copy kept and one build is
+ *  levelled then fed. A build already in the foundry has claimed one of them. */
+function copiesToBuild(needs: readonly NeedReason[], inFoundry: number, primeOwned: boolean): number {
+  const both = needs.includes("mastery") && needs.includes("subsume");
+  const wanted = both ? (primeOwned ? 1 : 2) : needs.length > 0 ? 1 : 0;
   return Math.max(0, wanted - inFoundry);
 }
 
@@ -142,7 +144,13 @@ export function resolveAcquisition(ctx: AcquisitionContext): AcquisitionTarget[]
   const wanted: Wanted[] = [];
 
   if (!kinds || kinds.has("warframe")) {
-    for (const frame of listFrames(itemDb)) {
+    const frames = listFrames(itemDb);
+    const ownedPrimes = new Set(
+      frames
+        .filter((frame) => isPrimeEntry(frame.name, frame.entry) && ownsItem(frame.uniqueName, ownership))
+        .map((frame) => frame.name.toLowerCase()),
+    );
+    for (const frame of frames) {
       if (only && !only.has(frame.name.toLowerCase())) continue;
       if (unreachable(frame.uniqueName, frame.name)) continue;
       const subsumable = isSubsumableFrame(frame.name);
@@ -167,7 +175,13 @@ export function resolveAcquisition(ctx: AcquisitionContext): AcquisitionTarget[]
         incarnon: null,
         extraSources: [],
         build: true,
-        copies: subsumable ? copiesToBuild(needs, building.get(frame.uniqueName) ?? 0) : null,
+        copies: subsumable
+          ? copiesToBuild(
+              needs,
+              building.get(frame.uniqueName) ?? 0,
+              ownedPrimes.has(`${frame.name.toLowerCase()} prime`),
+            )
+          : null,
       });
     }
   }
@@ -334,6 +348,7 @@ export function resolveAcquisition(ctx: AcquisitionContext): AcquisitionTarget[]
       nemesis: item.nemesis,
       incarnon: item.incarnon,
       needs: item.needs,
+      mastered: isMastered(item.uniqueName, item.name),
       ...(maxRank !== null ? { maxRank } : {}),
       parts,
       paths,

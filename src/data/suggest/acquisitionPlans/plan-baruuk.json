@@ -11,10 +11,6 @@
   },
   "badges": [
     {
-      "text": "Vox Solaris gate",
-      "tone": "warn"
-    },
-    {
       "text": "Circuit week 11",
       "tone": "circuit"
     }
@@ -109,43 +105,11 @@
   ],
   "groups": [
     {
-      "type": "gate",
-      "place": "FORTUNA, VENUS",
-      "sub": null,
-      "activity": "The War Within, then Vox Solaris",
-      "meta": "unlocks Little Duck",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "The War Within",
-          "note": null,
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Vox Solaris quest",
-          "note": "speak to Onkko once first",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": ["Little Duck only talks to the Operator or Drifter."],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
       "type": "currency",
       "place": "FORTUNA, VENUS",
       "sub": "Little Duck",
       "activity": "bounties and toroid turn-ins for Vox Solaris",
-      "meta": "Rank 3, Hand",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -159,9 +123,21 @@
         {
           "qty": null,
           "label": "blueprint purchases",
-          "note": "20,000 standing, all four",
+          "note": "all four",
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Vox Solaris Standing",
+                "amount": "20,000"
+              }
+            ],
+            "rank": {
+              "syndicate": "Vox Solaris",
+              "level": 3
+            }
+          }
         }
       ],
       "conditions": [],
@@ -195,12 +171,20 @@
         {
           "qty": null,
           "label": "rank-ups to Hand",
-          "note": "71,000 standing, Rank 3",
+          "note": null,
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "Vox Solaris",
             "level": 3
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Vox Solaris Standing",
+                "amount": "71,000"
+              }
+            ]
           }
         }
       ],
@@ -213,7 +197,7 @@
       "place": "ORB VALLIS, VENUS",
       "sub": null,
       "activity": "conservation or mining for Solaris United",
-      "meta": "Rank 4, Cove",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -229,7 +213,14 @@
           "label": "Solaris United standing",
           "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [],
+            "rank": {
+              "syndicate": "Solaris United",
+              "level": 4
+            }
+          }
         }
       ],
       "conditions": [
@@ -260,12 +251,20 @@
         {
           "qty": null,
           "label": "rank-ups to Cove",
-          "note": "141,000 standing, Rank 4",
+          "note": null,
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "Solaris United",
             "level": 4
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Solaris United Standing",
+                "amount": "141,000"
+              }
+            ]
           }
         }
       ],
@@ -278,7 +277,7 @@
       "place": "LITTLE DUCK, FORTUNA",
       "sub": null,
       "activity": "buy the blueprints",
-      "meta": "20,000 standing total",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -294,30 +293,78 @@
         {
           "qty": null,
           "label": "Baruuk Blueprint",
-          "note": "5,000 standing, Rank 2 (Agent)",
+          "note": "(Agent)",
           "alt": "or Duviri Circuit tier 10, week 11",
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Vox Solaris Standing",
+                "amount": "5,000"
+              }
+            ],
+            "rank": {
+              "syndicate": "Vox Solaris",
+              "level": 2
+            }
+          }
         },
         {
           "qty": null,
           "label": "Neuroptics Blueprint",
-          "note": "5,000 standing, Rank 3 (Hand)",
+          "note": "(Hand)",
           "alt": "or Duviri Circuit tier 2, week 11",
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Vox Solaris Standing",
+                "amount": "5,000"
+              }
+            ],
+            "rank": {
+              "syndicate": "Vox Solaris",
+              "level": 3
+            }
+          }
         },
         {
           "qty": null,
           "label": "Chassis Blueprint",
-          "note": "5,000 standing, Rank 3 (Hand)",
+          "note": "(Hand)",
           "alt": "or Duviri Circuit tier 5, week 11",
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Vox Solaris Standing",
+                "amount": "5,000"
+              }
+            ],
+            "rank": {
+              "syndicate": "Vox Solaris",
+              "level": 3
+            }
+          }
         },
         {
           "qty": null,
           "label": "Systems Blueprint",
-          "note": "5,000 standing, Rank 3 (Hand)",
+          "note": "(Hand)",
           "alt": "or Duviri Circuit tier 8, week 11",
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Vox Solaris Standing",
+                "amount": "5,000"
+              }
+            ],
+            "rank": {
+              "syndicate": "Vox Solaris",
+              "level": 3
+            }
+          }
         }
       ],
       "conditions": [

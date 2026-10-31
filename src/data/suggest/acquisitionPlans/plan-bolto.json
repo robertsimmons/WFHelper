@@ -13,10 +13,6 @@
     {
       "text": "Market only",
       "tone": "info"
-    },
-    {
-      "text": "MR 7",
-      "tone": "info"
     }
   ],
   "prices": [
@@ -55,36 +51,11 @@
   ],
   "groups": [
     {
-      "type": "gate",
-      "place": "MASTERY RANK",
-      "sub": null,
-      "activity": "reach MR 7 to build it",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Mastery Rank 7",
-          "note": "the Foundry won't craft it below this",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
       "type": "vendor",
       "place": "MARKET",
       "sub": null,
       "activity": "buy the blueprint",
-      "meta": "15,000 cr",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -100,15 +71,31 @@
         {
           "qty": null,
           "label": "Bolto Blueprint",
-          "note": "15,000 cr",
+          "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Credits",
+                "amount": "15,000"
+              }
+            ]
+          }
         },
         {
           "qty": null,
           "label": "Lato",
-          "note": "only if you started with Kunai: 10,000 cr, not in the total",
-          "alt": null,
+          "note": null,
+          "alt": {
+            "text": "if you started with Kunai",
+            "spends": [
+              {
+                "currency": "Credits",
+                "amount": "10,000"
+              }
+            ]
+          },
           "done": false
         }
       ],

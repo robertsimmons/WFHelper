@@ -9,20 +9,7 @@
     "need": 1,
     "unit": "blueprint"
   },
-  "badges": [
-    {
-      "text": "Holdfasts Rank 4",
-      "tone": "warn",
-      "rank": {
-        "syndicate": "The Holdfasts",
-        "level": 4
-      }
-    },
-    {
-      "text": "MR 14",
-      "tone": "info"
-    }
-  ],
+  "badges": [],
   "prices": [
     {
       "label": "blueprint",
@@ -59,49 +46,6 @@
   ],
   "groups": [
     {
-      "type": "gate",
-      "place": "QUESTS",
-      "sub": null,
-      "activity": "unlock the Zariman and The Holdfasts",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Angels of the Zariman",
-          "note": "needs The New War; unlocks the Chrysalith and The Holdfasts",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Mastery Rank 14",
-          "note": "needed to equip it",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Holdfasts Rank 4 (Seraph)",
-          "note": "ranks 1 to 3 first; the Rank 4 purchase needs 70,000 standing",
-          "alt": null,
-          "done": false,
-          "rank": {
-            "syndicate": "The Holdfasts",
-            "level": 4
-          }
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
       "type": "currency",
       "place": "HALAKO PERIMETER, ZARIMAN",
       "sub": "Chrysalith: turn Voidplumes in to Archimedean Yonta",
@@ -120,7 +64,7 @@
         {
           "qty": null,
           "label": "Voidplumes turned in to Archimedean Yonta",
-          "note": "Pinion 5,000, Quill 2,500, Crest 2,000, Vane 1,000, Down 500 standing each",
+          "note": "Pinion 5,000, Quill 2,500, Crest 2,000, Vane 1,000, Down 500 each",
           "alt": null,
           "done": false
         }
@@ -151,45 +95,93 @@
         {
           "qty": null,
           "label": "Holdfasts Rank 1 (Fallen)",
-          "note": "5,000 standing, 10,000 cr, 5 Voidplume Down, 2,000 Ferrite, 2,000 Alloy Plate",
+          "note": "5 Voidplume Down, 2,000 Ferrite, 2,000 Alloy Plate",
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "The Holdfasts",
             "level": 1
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Holdfasts Standing",
+                "amount": "5,000"
+              },
+              {
+                "currency": "Credits",
+                "amount": "10,000"
+              }
+            ]
           }
         },
         {
           "qty": null,
           "label": "Holdfasts Rank 2 (Watcher)",
-          "note": "22,000 standing, 25,000 cr, 10 Voidplume Vane, 10 Voidgel Orb, 5,000 Alloy Plate",
+          "note": "10 Voidplume Vane, 10 Voidgel Orb, 5,000 Alloy Plate",
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "The Holdfasts",
             "level": 2
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Holdfasts Standing",
+                "amount": "22,000"
+              },
+              {
+                "currency": "Credits",
+                "amount": "25,000"
+              }
+            ]
           }
         },
         {
           "qty": null,
           "label": "Holdfasts Rank 3 (Guardian)",
-          "note": "44,000 standing, 50,000 cr, 10 Voidplume Crest, 10 Entrati Lanthorn, 5,000 Ferrite",
+          "note": "10 Voidplume Crest, 10 Entrati Lanthorn, 5,000 Ferrite",
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "The Holdfasts",
             "level": 3
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Holdfasts Standing",
+                "amount": "44,000"
+              },
+              {
+                "currency": "Credits",
+                "amount": "50,000"
+              }
+            ]
           }
         },
         {
           "qty": null,
           "label": "Holdfasts Rank 4 (Seraph)",
-          "note": "70,000 standing, 100,000 cr, 15 Voidplume Quill, 60 Thrax Plasm, 40 Voidgel Orb",
+          "note": "15 Voidplume Quill, 60 Thrax Plasm, 40 Voidgel Orb",
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "The Holdfasts",
             "level": 4
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Holdfasts Standing",
+                "amount": "70,000"
+              },
+              {
+                "currency": "Credits",
+                "amount": "100,000"
+              }
+            ]
           }
         }
       ],
@@ -202,7 +194,7 @@
       "place": "CAVALERO, CHRYSALITH",
       "sub": "The Holdfasts: Seraph (Rank 4)",
       "activity": "buy the Praedos blueprint",
-      "meta": "9,000 Standing",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -220,7 +212,15 @@
           "label": "Praedos Blueprint",
           "note": "tradeable",
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Holdfasts Standing",
+                "amount": "9,000"
+              }
+            ]
+          }
         }
       ],
       "conditions": [],

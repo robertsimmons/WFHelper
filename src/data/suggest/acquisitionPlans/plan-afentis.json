@@ -4,59 +4,65 @@
   "effort": 5,
   "source": "standing",
   "tradeable": false,
-  "progress": { "have": 0, "need": 1, "unit": "blueprint" },
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "blueprint"
+  },
   "badges": [
     {
       "text": "4 weekly resets",
       "tone": "warn",
-      "rank": { "syndicate": "Kahl's Garrison", "level": 5 }
+      "rank": {
+        "syndicate": "Kahl's Garrison",
+        "level": 5
+      }
     },
-    { "text": "no RNG", "tone": "info" }
+    {
+      "text": "no RNG",
+      "tone": "info"
+    }
   ],
   "prices": [
-    { "label": "blueprint", "amount": "60 Stock", "money": false },
-    { "label": "build", "amount": "20,000 cr", "money": false }
+    {
+      "label": "blueprint",
+      "amount": "60 Stock",
+      "money": false
+    },
+    {
+      "label": "build",
+      "amount": "20,000 cr",
+      "money": false
+    }
   ],
   "materials": [
-    { "qty": "8,000", "label": "Ferrite", "note": null },
-    { "qty": "3,500", "label": "Rubedo", "note": null },
-    { "qty": "1,200", "label": "Cryotic", "note": null },
-    { "qty": "2", "label": "Argon Crystal", "note": null },
-    { "qty": "20,000", "label": "Credits", "note": null }
+    {
+      "qty": "8,000",
+      "label": "Ferrite",
+      "note": null
+    },
+    {
+      "qty": "3,500",
+      "label": "Rubedo",
+      "note": null
+    },
+    {
+      "qty": "1,200",
+      "label": "Cryotic",
+      "note": null
+    },
+    {
+      "qty": "2",
+      "label": "Argon Crystal",
+      "note": null
+    },
+    {
+      "qty": "20,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
-    {
-      "type": "gate",
-      "place": "QUESTS",
-      "sub": null,
-      "activity": "complete The New War, then Veilbreaker",
-      "meta": "unlocks Kahl's Garrison",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "The New War",
-          "note": "Veilbreaker prerequisite",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Veilbreaker",
-          "note": "unlocks Kahl's Garrison at Rank 1 Shelter",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
     {
       "type": "currency",
       "place": "DRIFTER'S CAMP, EARTH",
@@ -66,17 +72,23 @@
       "mode": "solo only",
       "live": null,
       "skip": null,
-      "earns": { "currency": "Stock", "amount": "105" },
+      "earns": {
+        "currency": "Stock",
+        "amount": "105"
+      },
       "spends": [],
       "map": null,
       "rows": [
         {
           "qty": "4",
           "label": "weekly mission completions",
-          "note": "Rank 1 Shelter to Rank 5 Home",
+          "note": null,
           "alt": null,
           "done": false,
-          "rank": { "syndicate": "Kahl's Garrison", "level": 5 }
+          "rank": {
+            "syndicate": "Kahl's Garrison",
+            "level": 5
+          }
         },
         {
           "qty": "60",
@@ -106,20 +118,33 @@
       "place": "DRIFTER'S CAMP, EARTH",
       "sub": "Kahl's Garrison / Chipper",
       "activity": "buy the Afentis blueprint",
-      "meta": "Rank 5 Home",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [{ "currency": "Stock", "amount": "60" }],
+      "spends": [
+        {
+          "currency": "Stock",
+          "amount": "60"
+        }
+      ],
       "map": null,
       "rows": [
         {
           "qty": null,
           "label": "Afentis Blueprint",
-          "note": "60 Stock",
+          "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Stock",
+                "amount": "60"
+              }
+            ]
+          }
         }
       ],
       "conditions": ["Chipper's shop shows your Garrison rank; the Syndicate terminal does not."],

@@ -11,14 +11,6 @@
   },
   "badges": [
     {
-      "text": "Entrati Rank 3",
-      "tone": "warn",
-      "rank": {
-        "syndicate": "Entrati",
-        "level": 3
-      }
-    },
-    {
       "text": "no RNG",
       "tone": "info"
     }
@@ -104,42 +96,6 @@
   ],
   "groups": [
     {
-      "type": "gate",
-      "place": "QUESTS",
-      "sub": null,
-      "activity": "unlock the Entrati",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Heart of Deimos",
-          "note": "unlocks Necralisk and Entrati",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Entrati Rank 3 (Associate)",
-          "note": "the component blueprints need it",
-          "alt": null,
-          "done": false,
-          "rank": {
-            "syndicate": "Entrati",
-            "level": 3
-          }
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
       "type": "currency",
       "place": "CAMBION DRIFT, DEIMOS",
       "sub": "Necralisk / Entrati",
@@ -189,34 +145,58 @@
         {
           "qty": null,
           "label": "Entrati Stranger (Rank 1)",
-          "note": "5,000 standing, 6 Benign Infested Tumor, 6 Ferment Bladder",
+          "note": "6 Benign Infested Tumor, 6 Ferment Bladder",
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "Entrati",
             "level": 1
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Entrati Standing",
+                "amount": "5,000"
+              }
+            ]
           }
         },
         {
           "qty": null,
           "label": "Entrati Acquaintance (Rank 2)",
-          "note": "22,000 standing, Keratinos Blade Blueprint, 1 Father Token, 1 Daughter Token",
+          "note": "Keratinos Blade Blueprint, 1 Father Token, 1 Daughter Token",
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "Entrati",
             "level": 2
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Entrati Standing",
+                "amount": "22,000"
+              }
+            ]
           }
         },
         {
           "qty": null,
           "label": "Entrati Associate (Rank 3)",
-          "note": "44,000 standing, 3 Sly Vulpaphyla Tag, 3 Vizier Predasite Tag, 1 Mother Token, 1 Son Token",
+          "note": "3 Sly Vulpaphyla Tag, 3 Vizier Predasite Tag, 1 Mother Token, 1 Son Token",
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "Entrati",
             "level": 3
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Entrati Standing",
+                "amount": "44,000"
+              }
+            ]
           }
         }
       ],
@@ -229,7 +209,7 @@
       "place": "NECRALISK, DEIMOS",
       "sub": "Father and Otak",
       "activity": "buy the frame and gem-refining blueprints",
-      "meta": "36,500 standing",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -245,52 +225,99 @@
         {
           "qty": null,
           "label": "Keratinos Blade Blueprint",
-          "note": "Father; 500 standing; the Rank 2 sacrifice",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Lavos Blueprint",
-          "note": "Father; 5,000 standing",
+          "note": "Father; Entrati sacrifice",
           "alt": null,
           "done": false,
           "rank": {
             "syndicate": "Entrati",
             "level": 2
+          },
+          "buy": {
+            "price": [
+              {
+                "currency": "Entrati Standing",
+                "amount": "500"
+              }
+            ]
+          }
+        },
+        {
+          "qty": null,
+          "label": "Lavos Blueprint",
+          "note": "Father",
+          "alt": null,
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Entrati Standing",
+                "amount": "5,000"
+              }
+            ],
+            "rank": {
+              "syndicate": "Entrati",
+              "level": 2
+            }
           }
         },
         {
           "qty": "3",
           "label": "Lavos component blueprints",
-          "note": "Father; 5,000 standing each",
+          "note": "Father",
           "alt": null,
           "done": false,
-          "rank": {
-            "syndicate": "Entrati",
-            "level": 3
+          "buy": {
+            "price": [
+              {
+                "currency": "Entrati Standing",
+                "amount": "5,000"
+              }
+            ],
+            "each": true,
+            "rank": {
+              "syndicate": "Entrati",
+              "level": 3
+            }
           }
         },
         {
           "qty": null,
           "label": "Trapezium Xenorhast X3 Blueprint",
-          "note": "Otak; 8,000 standing, reusable",
+          "note": "Otak",
           "alt": null,
           "done": false,
-          "rank": {
-            "syndicate": "Entrati",
-            "level": 3
+          "buy": {
+            "price": [
+              {
+                "currency": "Entrati Standing",
+                "amount": "8,000"
+              }
+            ],
+            "reusable": true,
+            "rank": {
+              "syndicate": "Entrati",
+              "level": 3
+            }
           }
         },
         {
           "qty": null,
           "label": "Cabochon Embolos X3 Blueprint",
-          "note": "Otak; 8,000 standing, reusable",
+          "note": "Otak",
           "alt": null,
           "done": false,
-          "rank": {
-            "syndicate": "Entrati",
-            "level": 3
+          "buy": {
+            "price": [
+              {
+                "currency": "Entrati Standing",
+                "amount": "8,000"
+              }
+            ],
+            "reusable": true,
+            "rank": {
+              "syndicate": "Entrati",
+              "level": 3
+            }
           }
         }
       ],

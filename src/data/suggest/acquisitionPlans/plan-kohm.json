@@ -4,28 +4,66 @@
   "effort": 2,
   "source": "shop",
   "tradeable": false,
-  "progress": { "have": 0, "need": 1, "unit": "blueprint" },
+  "progress": {
+    "have": 0,
+    "need": 1,
+    "unit": "blueprint"
+  },
   "badges": [
-    { "text": "Market", "tone": "info" },
-    { "text": "Argon decays", "tone": "warn" }
+    {
+      "text": "Market",
+      "tone": "info"
+    },
+    {
+      "text": "Argon decays",
+      "tone": "warn"
+    }
   ],
   "prices": [
-    { "label": "blueprint", "amount": "20,000 cr", "money": false },
-    { "label": "build", "amount": "20,000 cr", "money": false }
+    {
+      "label": "blueprint",
+      "amount": "20,000 cr",
+      "money": false
+    },
+    {
+      "label": "build",
+      "amount": "20,000 cr",
+      "money": false
+    }
   ],
   "materials": [
-    { "qty": "2,500", "label": "Salvage", "note": null },
-    { "qty": "500", "label": "Oxium", "note": null },
-    { "qty": "500", "label": "Cryotic", "note": null },
-    { "qty": "2", "label": "Argon Crystal", "note": null },
-    { "qty": "40,000", "label": "Credits", "note": null }
+    {
+      "qty": "2,500",
+      "label": "Salvage",
+      "note": null
+    },
+    {
+      "qty": "500",
+      "label": "Oxium",
+      "note": null
+    },
+    {
+      "qty": "500",
+      "label": "Cryotic",
+      "note": null
+    },
+    {
+      "qty": "2",
+      "label": "Argon Crystal",
+      "note": null
+    },
+    {
+      "qty": "40,000",
+      "label": "Credits",
+      "note": null
+    }
   ],
   "groups": [
     {
-      "type": "gate",
-      "place": "MASTERY RANK",
+      "type": "vendor",
+      "place": "MARKET",
       "sub": null,
-      "activity": "reach MR 5",
+      "activity": "buy blueprint",
       "meta": null,
       "mode": null,
       "live": null,
@@ -34,26 +72,21 @@
       "spends": [],
       "map": null,
       "rows": [
-        { "qty": null, "label": "Mastery Rank 5", "note": "to equip", "alt": null, "done": false }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
-      "type": "vendor",
-      "place": "MARKET",
-      "sub": null,
-      "activity": "buy blueprint",
-      "meta": "20,000 cr",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        { "qty": null, "label": "Kohm Blueprint", "note": null, "alt": null, "done": false }
+        {
+          "qty": null,
+          "label": "Kohm Blueprint",
+          "note": null,
+          "alt": null,
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Credits",
+                "amount": "20,000"
+              }
+            ]
+          }
+        }
       ],
       "conditions": [
         "Kuva Kohm is a separate Mastery item from a Kuva Lich; this is the base shotgun."

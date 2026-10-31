@@ -55,36 +55,11 @@
   ],
   "groups": [
     {
-      "type": "gate",
-      "place": "MASTERY RANK",
-      "sub": null,
-      "activity": "reach MR 5",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Mastery Rank 5",
-          "note": "needed to equip it",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
       "type": "vendor",
       "place": "MARKET",
       "sub": null,
       "activity": "buy the Fomorian Disruptor blueprint",
-      "meta": "5,000 cr, reusable",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -102,7 +77,16 @@
           "label": "Fomorian Disruptor Blueprint",
           "note": "Gear tab",
           "alt": "or free in your inbox once a Fomorian Sabotage appears",
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Credits",
+                "amount": "5,000"
+              }
+            ],
+            "reusable": true
+          }
         }
       ],
       "conditions": [

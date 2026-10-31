@@ -60,38 +60,6 @@
   ],
   "groups": [
     {
-      "type": "gate",
-      "place": "HEART OF DEIMOS",
-      "sub": null,
-      "activity": "finish the quest",
-      "meta": "unlocks Mother's bounties",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Heart of Deimos",
-          "note": "Mother gives bounties in the Necralisk and out in the Cambion Drift",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "Mastery Rank 11",
-          "note": "to build it",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": ["Titanium, Isos and Nullstones come from Railjack missions."],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
       "type": "currency",
       "place": "CAMBION DRIFT, DEIMOS",
       "sub": null,
@@ -144,9 +112,17 @@
         {
           "qty": null,
           "label": "Basmu Blueprint",
-          "note": "125 Mother Tokens",
+          "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Mother Token",
+                "amount": "125"
+              }
+            ]
+          }
         }
       ],
       "conditions": [],

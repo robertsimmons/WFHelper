@@ -13,10 +13,6 @@
     {
       "text": "40 Narmer Isoplast",
       "tone": "warn"
-    },
-    {
-      "text": "The New War gate",
-      "tone": "warn"
     }
   ],
   "prices": [
@@ -95,36 +91,11 @@
   ],
   "groups": [
     {
-      "type": "gate",
-      "place": "THE NEW WAR",
-      "sub": null,
-      "activity": "finish the quest",
-      "meta": "unlocks Narmer Bounties",
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "The New War",
-          "note": "needs Prelude to War done, plus a Railjack and an Amp",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": ["Narmer Bounties have no Mastery Rank gate."],
-      "disclosures": []
-    },
-    {
       "type": "vendor",
       "place": "MARKET",
       "sub": null,
       "activity": "buy blueprint",
-      "meta": "50,000 cr",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -137,7 +108,15 @@
           "label": "Caliban Blueprint",
           "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Credits",
+                "amount": "50,000"
+              }
+            ]
+          }
         }
       ],
       "conditions": [],
@@ -192,7 +171,7 @@
       "place": "SMOKEFINGER, FORTUNA",
       "sub": null,
       "activity": "buy the Hespazym Alloy refining blueprint",
-      "meta": "Solaris United rank 2",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -208,12 +187,21 @@
         {
           "qty": null,
           "label": "Hespazym Alloy Blueprint",
-          "note": "4,000 standing, reusable",
+          "note": null,
           "alt": null,
           "done": false,
-          "rank": {
-            "syndicate": "Solaris United",
-            "level": 2
+          "buy": {
+            "price": [
+              {
+                "currency": "Solaris United Standing",
+                "amount": "4,000"
+              }
+            ],
+            "reusable": true,
+            "rank": {
+              "syndicate": "Solaris United",
+              "level": 2
+            }
           }
         }
       ],

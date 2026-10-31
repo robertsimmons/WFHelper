@@ -100,33 +100,6 @@
   ],
   "groups": [
     {
-      "type": "gate",
-      "place": "QUESTS",
-      "sub": null,
-      "activity": "complete Veilbreaker",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Veilbreaker",
-          "note": "solo quest; requires The New War and unlocks Kahl's Garrison",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Break Narmer is solo-only: you play as Kahl-175, so squads and carries cannot shorten this farm."
-      ],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
       "type": "currency",
       "place": "DRIFTER'S CAMP, EARTH",
       "sub": "Kahl's Garrison",
@@ -145,9 +118,13 @@
         {
           "qty": "4",
           "label": "weekly mission completions",
-          "note": "Rank 1 Shelter to Rank 5 Home",
+          "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "rank": {
+            "syndicate": "Kahl's Garrison",
+            "level": 5
+          }
         },
         {
           "qty": "270",
@@ -193,30 +170,58 @@
         {
           "qty": null,
           "label": "Systems Blueprint",
-          "note": "60 Stock; Rank 2 Encampment",
+          "note": "60 Stock",
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [],
+            "rank": {
+              "syndicate": "Kahl's Garrison",
+              "level": 2
+            }
+          }
         },
         {
           "qty": null,
           "label": "Neuroptics Blueprint",
-          "note": "60 Stock; Rank 3 Fort",
+          "note": "60 Stock",
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [],
+            "rank": {
+              "syndicate": "Kahl's Garrison",
+              "level": 3
+            }
+          }
         },
         {
           "qty": null,
           "label": "Chassis Blueprint",
-          "note": "60 Stock; Rank 4 Settlement",
+          "note": "60 Stock",
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [],
+            "rank": {
+              "syndicate": "Kahl's Garrison",
+              "level": 4
+            }
+          }
         },
         {
           "qty": null,
           "label": "Styanax Blueprint",
-          "note": "90 Stock; Rank 5 Home",
+          "note": "90 Stock",
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [],
+            "rank": {
+              "syndicate": "Kahl's Garrison",
+              "level": 5
+            }
+          }
         }
       ],
       "conditions": ["Chipper appears at Rank 2.", "Styanax is not in the Circuit."],

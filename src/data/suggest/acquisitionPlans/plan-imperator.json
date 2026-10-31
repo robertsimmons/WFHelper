@@ -11,10 +11,6 @@
   },
   "badges": [
     {
-      "text": "The Archwing quest",
-      "tone": "info"
-    },
-    {
       "text": "free with the Odonata",
       "tone": "info"
     }
@@ -199,7 +195,7 @@
         "place": "CEPHALON SIMARIS",
         "sub": null,
         "activity": "scan targets with the Synthesis Scanner",
-        "meta": "100,000 Standing",
+        "meta": null,
         "mode": null,
         "live": null,
         "skip": null,
@@ -228,7 +224,7 @@
         "place": "CEPHALON SIMARIS",
         "sub": null,
         "activity": "buy the Imperator blueprint",
-        "meta": "100,000 Standing",
+        "meta": null,
         "mode": null,
         "live": null,
         "skip": null,
@@ -244,9 +240,17 @@
           {
             "qty": null,
             "label": "Imperator Blueprint",
-            "note": "100,000 Standing",
+            "note": null,
             "alt": null,
-            "done": false
+            "done": false,
+            "buy": {
+              "price": [
+                {
+                  "currency": "Cephalon Simaris Standing",
+                  "amount": "100,000"
+                }
+              ]
+            }
           }
         ],
         "conditions": ["Simaris only stocks these once The Archwing is done."],

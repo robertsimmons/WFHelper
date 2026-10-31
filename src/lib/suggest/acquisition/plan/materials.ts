@@ -4,7 +4,8 @@ import {
   type ResourceLookup,
   type ResourceSource,
 } from "./resources.js";
-import type { PlanGroup, PlanGroupType, PlanRow } from "./schema.js";
+import type { PlanCurrency, PlanGroup, PlanGroupType, PlanPurchase, PlanRow } from "./schema.js";
+import { formatQuantity, parseQuantity } from "./state.js";
 
 interface MaterialNeed {
   label: string;
@@ -108,8 +109,44 @@ function totalNeeds(needs: readonly MaterialNeed[], lookup: ResourceLookup): Map
 }
 
 function sourceText(source: ResourceSource): string {
-  const detail = [source.sub, source.activity].filter((part): part is string => part !== null);
+  const price = (source.buy?.price ?? []).map((spend) => `${spend.amount} ${spend.currency}`);
+  const detail = [source.sub, source.activity, ...price].filter(
+    (part): part is string => part !== null,
+  );
   return detail.length > 0 ? `${source.place} (${detail.join(", ")})` : source.place;
+}
+
+/** What a material's best source charges, as the row carries it: a crafted
+ *  material's price buys its blueprint, anything else's buys one unit. */
+function rowPurchase(entry: ResourceEntry | null): PlanPurchase | null {
+  const buy = entry?.best?.buy;
+  if (!buy) return null;
+  const blueprint = entry?.kind === "craft";
+  return {
+    price: buy.price,
+    ...(buy.rank ? { rank: buy.rank } : {}),
+    ...(buy.reusable ? { reusable: true } : {}),
+    ...(blueprint ? { blueprint: true } : { each: true }),
+  };
+}
+
+/** A group's spends: each row's price, once for a blueprint and per unit otherwise. */
+function purchaseSpends(rows: readonly PlanRow[]): PlanCurrency[] {
+  const totals = new Map<string, number>();
+  for (const row of rows) {
+    const times = row.buy?.each ? parseQuantity(row.qty) : 1;
+    for (const spend of row.buy?.price ?? []) {
+      totals.set(
+        spend.currency,
+        (totals.get(spend.currency) ?? 0) + parseQuantity(spend.amount) * times,
+      );
+    }
+  }
+  return [...totals].map(([currency, value]) => ({ currency, amount: formatQuantity(value) }));
+}
+
+function shared(values: readonly (string | null)[]): string | null {
+  return values.every((value) => value === values[0]) ? (values[0] ?? null) : null;
 }
 
 function otherSpots(members: readonly Total[]): string | null {
@@ -122,11 +159,14 @@ function otherSpots(members: readonly Total[]): string | null {
 }
 
 /** Materials group under the mission the resource store names, so the same
- *  resource reads the same way in every plan that needs it. A crafted resource
- *  adds its recipe to the farm and is built where the store says. */
+ *  resource reads the same way in every plan that needs it. Everything one vendor
+ *  sells is one step, whatever each purchase is for. A crafted resource adds its
+ *  recipe to the farm and is built where the store says. */
 export function materialGroups(
   needs: readonly MaterialNeed[],
   lookup: ResourceLookup = resourceEntry,
+  /** True when the plan already buys this material's source by hand, so it is not bought twice. */
+  bought: (label: string, source: ResourceSource) => boolean = () => false,
 ): PlanGroup[] {
   const totals = totalNeeds(needs, lookup);
 
@@ -134,17 +174,18 @@ export function materialGroups(
   for (const total of totals.values()) {
     const { entry } = total;
     const best = entry?.best ?? null;
-    const type: PlanGroupType = entry?.kind === "craft" ? "craft" : "farm";
-    const place = best?.place ?? (type === "craft" ? "FOUNDRY" : "MATERIALS");
-    const key = `${type}|${place}|${best?.sub ?? ""}|${best?.activity ?? ""}`;
+    const craft = entry?.kind === "craft";
+    const place = best?.place ?? (craft ? "FOUNDRY" : "MATERIALS");
+    const buy = best && bought(total.label, best) ? null : rowPurchase(entry);
+    const key = buy
+      ? `buy|${place}|${best?.sub ?? ""}`
+      : `${craft ? "craft" : "farm"}|${place}|${best?.sub ?? ""}|${best?.activity ?? ""}`;
     let bucket = buckets.get(key);
     if (!bucket) {
       bucket = {
         members: [],
-        group: planGroup(type, place, [], {
+        group: planGroup(craft ? "craft" : "farm", place, [], {
           sub: best?.sub ?? null,
-          activity: best?.activity ?? null,
-          meta: best?.meta ?? null,
           map: entry?.harvestable ? entry.map : null,
         }),
       };
@@ -157,10 +198,23 @@ export function materialGroups(
       note: total.note,
       alt: null,
       done: false,
+      ...(buy ? { buy } : {}),
     });
   }
 
   const groups = [...buckets.values()].map(({ group, members }) => {
+    const sources = members.map((member) => member.entry?.best ?? null);
+    if (members.some((member) => member.entry?.kind === "craft")) group.type = "craft";
+    group.activity = shared(sources.map((source) => source?.activity ?? null));
+    group.meta = shared(sources.map((source) => source?.meta ?? null));
+    // A meta the members do not share is each one's own, so it moves to the row.
+    if (group.meta === null) {
+      group.rows.forEach((row, index) => {
+        const own = sources[index]?.meta ?? null;
+        if (own) row.note = row.note ? `${row.note}; ${own}` : own;
+      });
+    }
+    if (group.rows.some((row) => row.buy)) group.spends = purchaseSpends(group.rows);
     group.bonuses = [...new Set(members.flatMap((member) => member.entry?.tips ?? []))];
     const spots = otherSpots(members);
     if (spots) group.disclosures.push({ title: "Other spots", body: spots });

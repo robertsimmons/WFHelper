@@ -227,6 +227,22 @@ export function ownedForLabel(state: PlayerState, label: string, itemName: strin
   return total;
 }
 
+/** The blueprint a material is crafted from, by its exact "<label> Blueprint" name:
+ *  how many the player holds, and whether DE marks it reusable. Null when the item
+ *  database names no such blueprint. */
+export function blueprintFor(
+  state: PlayerState,
+  itemDb: Record<string, ItemDbEntry>,
+  label: string,
+): { held: number; reusable: boolean } | null {
+  const matches = state.names.get(`${label.trim().toLowerCase()} blueprint`);
+  if (!matches) return null;
+  return {
+    held: matches.reduce((sum, uniqueName) => sum + (state.owned.get(uniqueName) ?? 0), 0),
+    reusable: matches.some((uniqueName) => itemDb[uniqueName]?.reusableBlueprint === true),
+  };
+}
+
 /** The item database rows a label names, or null when it names none. */
 export function itemsForLabel(
   state: PlayerState,
@@ -289,6 +305,7 @@ const SYNDICATE_TAGS: Record<string, string> = {
   "the holdfasts": "ZarimanSyndicate",
   "the hex": "HexSyndicate",
   cavia: "EntratiLabSyndicate",
+  ventkids: "VentKidsSyndicate",
 };
 
 /** "Solaris United standing" -> the affiliation tag that holds its balance. */

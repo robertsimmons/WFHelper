@@ -114,37 +114,11 @@
   ],
   "groups": [
     {
-      "type": "gate",
-      "place": "QUESTS",
-      "sub": null,
-      "activity": "finish Once Awake",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Once Awake",
-          "note": "required to start Patient Zero",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": [],
-      "quest": "Patient Zero"
-    },
-    {
       "type": "farm",
       "place": "CODEX",
       "sub": null,
       "activity": "Patient Zero quest",
-      "meta": "one key blueprint, reusable",
+      "meta": "one key blueprint",
       "mode": null,
       "live": null,
       "skip": null,
@@ -172,7 +146,7 @@
       "place": "MARKET",
       "sub": null,
       "activity": "buy blueprint",
-      "meta": "30,000 cr",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -183,9 +157,17 @@
         {
           "qty": null,
           "label": "Mesa Blueprint",
-          "note": "30,000 cr",
+          "note": null,
           "alt": "or Circuit week 7, tier 10",
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Credits",
+                "amount": "30,000"
+              }
+            ]
+          }
         }
       ],
       "conditions": [

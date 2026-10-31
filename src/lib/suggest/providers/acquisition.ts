@@ -97,7 +97,7 @@ export function partsRead(target: AcquisitionTarget): PartsRead | null {
 export function acquisitionStatuses(target: AcquisitionTarget): ChoiceStatus[] {
   if (target.kind !== "warframe" || !isSubsumableFrame(target.name)) return [];
   return [
-    { win: "mastery", done: !target.needs.includes("mastery") },
+    { win: "mastery", done: target.mastered },
     { win: "subsume", done: !target.needs.includes("subsume") },
   ];
 }

@@ -60,45 +60,11 @@
   ],
   "groups": [
     {
-      "type": "gate",
-      "place": "MASTERY RANK, QUESTS",
-      "sub": null,
-      "activity": "reach MR 9 and finish The Second Dream",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "Mastery Rank 9",
-          "note": "needed to equip it",
-          "alt": null,
-          "done": false
-        },
-        {
-          "qty": null,
-          "label": "The Second Dream",
-          "note": "unlocks the Operator and Void Mode",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [
-        "Only an Operator Void Mode attack kills the Vomvalyst energy form; Warframe weapons alone flip the shell to energy form and drop nothing."
-      ],
-      "bonuses": [],
-      "disclosures": []
-    },
-    {
       "type": "vendor",
       "place": "MARKET",
       "sub": null,
       "activity": "buy blueprint",
-      "meta": "25,000 cr",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
@@ -111,7 +77,15 @@
           "label": "Phantasma Blueprint",
           "note": null,
           "alt": null,
-          "done": false
+          "done": false,
+          "buy": {
+            "price": [
+              {
+                "currency": "Credits",
+                "amount": "25,000"
+              }
+            ]
+          }
         }
       ],
       "conditions": [],

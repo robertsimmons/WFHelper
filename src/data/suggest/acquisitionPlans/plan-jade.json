@@ -103,32 +103,6 @@
   ],
   "groups": [
     {
-      "type": "gate",
-      "place": "QUESTS",
-      "sub": null,
-      "activity": "finish The New War",
-      "meta": null,
-      "mode": null,
-      "live": null,
-      "skip": null,
-      "earns": null,
-      "spends": [],
-      "map": null,
-      "rows": [
-        {
-          "qty": null,
-          "label": "The New War",
-          "note": "required to start Jade Shadows",
-          "alt": null,
-          "done": false
-        }
-      ],
-      "conditions": [],
-      "bonuses": [],
-      "disclosures": [],
-      "quest": "Jade Shadows"
-    },
-    {
       "type": "farm",
       "place": "CODEX",
       "sub": null,
@@ -343,9 +317,17 @@
           {
             "qty": null,
             "label": "Jade Blueprint",
-            "note": "450 Vestigial Motes",
+            "note": null,
             "alt": null,
-            "done": false
+            "done": false,
+            "buy": {
+              "price": [
+                {
+                  "currency": "Vestigial Motes",
+                  "amount": "450"
+                }
+              ]
+            }
           }
         ],
         "conditions": [],

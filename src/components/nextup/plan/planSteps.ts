@@ -8,9 +8,20 @@ import type {
   ResolvedPlan,
   ResolvedRow,
 } from "../../../lib/suggest/acquisition/plan/index.js";
+import { isCredits } from "../../../lib/suggest/acquisition/plan/resources.js";
 import type { PlanDisclosure } from "../../../lib/suggest/acquisition/plan/schema.js";
-import { isPartSet, setTitle } from "../../../lib/suggest/acquisition/plan/setTitle.js";
-import type { ResolvedOwed, ResolvedSpend } from "../../../lib/suggest/acquisition/plan/types.js";
+import {
+  isPartSet,
+  setGoods,
+  setTitle,
+  type SetGoods,
+} from "../../../lib/suggest/acquisition/plan/setTitle.js";
+import type {
+  ResolvedCraft,
+  ResolvedOwed,
+  ResolvedQuest,
+  ResolvedSpend,
+} from "../../../lib/suggest/acquisition/plan/types.js";
 import {
   farmNeed,
   type ResolvedShop,
@@ -71,6 +82,8 @@ export interface PlanLine {
   title: string;
   /** The place a farm line shares a trip by. */
   place: string;
+  /** What the line shows beside its title for where it happens. */
+  tag: string;
   cost: string | null;
   count: PlanCount | null;
   /** A drop's pickups, or a currency's rank-ups. */
@@ -126,35 +139,47 @@ interface StepOptions {
   t: Translator;
 }
 
-const STANDING = /standing$/i;
 const DROP_TYPES = new Set(["farm", "bounty", "boss", "relics", "fissure"]);
 const SECTIONS: readonly PlanSectionKey[] = ["get", "farm", "build"];
 
 const isMaterialGroup = (group: ResolvedGroup): boolean => group.id.startsWith("m");
 
-/** "ROKY, FORTUNA" reads as "Roky, Fortuna"; a token carrying a digit is a code. */
+const MINOR_WORDS = new Set(["of", "the", "and", "a", "an", "in", "on", "at", "to", "for"]);
+
+/** "PLAINS OF EIDOLON, EARTH" reads as "Plains of Eidolon, Earth": each comma-separated
+ *  name title-cased, a minor word lowercase past its first word; a token carrying a digit is a code. */
 function placeName(place: string): string {
   return place
-    .split(/(\s+)/)
-    .map((word) =>
-      /\d/.test(word) || word.trim() === ""
-        ? word
-        : word.charAt(0).toUpperCase() + word.slice(1).toLowerCase(),
+    .split(",")
+    .map((name) =>
+      name
+        .split(/(\s+)/)
+        .map((word, index, words) => {
+          if (/\d/.test(word) || word.trim() === "") return word;
+          const lower = word.toLowerCase();
+          const first = words.slice(0, index).every((before) => before.trim() === "");
+          return !first && MINOR_WORDS.has(lower)
+            ? lower
+            : word.charAt(0).toUpperCase() + lower.slice(1);
+        })
+        .join(""),
     )
-    .join("");
+    .join(",");
 }
 
 function capitalized(text: string): string {
   return text.charAt(0).toUpperCase() + text.slice(1);
 }
 
-function priceText(currency: string, value: number, t: Translator): string {
-  const amount = formatNumber(value);
-  return STANDING.test(currency) ? t("dailies.standing", { amount }) : `${amount} ${currency}`;
+/** "50K Cephalon Simaris Standing": a price names what pays it. */
+function priceText(currency: string, value: number): string {
+  return `${formatNumber(value)} ${currency}`;
 }
 
-function spendsText(spends: readonly (ResolvedSpend | ResolvedOwed)[], t: Translator): string {
-  return spends.map((spend) => priceText(spend.currency, spend.value, t)).join(", ");
+function spendsText(spends: readonly (ResolvedSpend | ResolvedOwed)[]): string | null {
+  const shown = spends.filter((spend) => !isCredits(spend.currency));
+  if (shown.length === 0) return null;
+  return shown.map((spend) => priceText(spend.currency, spend.value)).join(", ");
 }
 
 /** "Feverspine Blueprint" on the Feverspine plan is just its blueprint. */
@@ -226,7 +251,7 @@ function shopCount(shop: ResolvedShop, currency: string): PlanCount {
 }
 
 /** A line farming a shop currency counts the plan's need of it; any other its
- *  own flow, or its one row. */
+ *  own flow while the plan still owes it, or its one row. */
 function farmCount(
   group: ResolvedGroup,
   plan: ResolvedPlan,
@@ -234,8 +259,54 @@ function farmCount(
 ): PlanCount | null {
   if (farms && plan.shop) return shopCount(plan.shop, farms);
   const earns = group.earns;
-  if (earns) return { have: earns.held ?? null, need: earns.value };
+  if (earns) return paidOff(group, plan) ? null : { have: earns.held ?? null, need: earns.value };
   return group.rows.length === 1 ? rowCount(group.rows[0]) : null;
+}
+
+const owedIn = (owes: readonly ResolvedOwed[] | undefined, ledger: string): number =>
+  (owes ?? []).filter((owed) => owed.currency === ledger).reduce((sum, owed) => sum + owed.value, 0);
+
+function spendPart(id: string, label: string, value: number, done: boolean): PlanPart {
+  return { id, label, done, note: null, cost: null, count: done ? null : { have: null, need: value } };
+}
+
+/** What a banked currency pays for: one row per debt the plan counts in it, so the
+ *  open rows add up to the line's count. */
+function spendParts(plan: ResolvedPlan, ledger: string, t: Translator): PlanPart[] {
+  return plan.groups.flatMap((group) => {
+    const rows = group.rows.flatMap((row) => {
+      const value = owedIn(row.owes, ledger);
+      const label =
+        row.craft && row.purchase?.blueprint
+          ? t("nextUp.partBlueprint", { name: row.label })
+          : row.label;
+      return value > 0 ? [spendPart(row.id, label, value, group.done || row.done)] : [];
+    });
+    const own = owedIn(group.owes, ledger);
+    const goods = group.rows.map((row) => row.label).join(", ");
+    return own > 0 ? [spendPart(group.id, goods, own, group.done), ...rows] : rows;
+  });
+}
+
+/** A line banking its group's flow lists what the currency pays for in place of the
+ *  rows authored as figures in it, whose notes stay in the drawer. */
+function earnDrawer(
+  group: ResolvedGroup,
+  plan: ResolvedPlan,
+  rows: readonly ResolvedRow[],
+  pickups: readonly ResolvedRow[],
+  t: Translator,
+): Partial<PlanDrawer> {
+  const ledger = group.earns?.ledger ?? group.earns?.currency ?? "";
+  const figures = rows.filter((row) => !pickups.includes(row) && row.note);
+  return {
+    parts: [...spendParts(plan, ledger, t), ...drawerParts(pickups)],
+    notes: [
+      ...figures.map((row) => `${row.label}: ${row.note}`),
+      ...group.conditions,
+      ...group.bonuses,
+    ],
+  };
 }
 
 /** A count with nothing needed draws nothing. */
@@ -250,7 +321,7 @@ const covered = (count: PlanCount | null): boolean =>
  *  plan's need of the currency is met. */
 function farmDone(group: ResolvedGroup, farms: string, count: PlanCount | null): boolean {
   if (group.skip !== null) return true;
-  return group.rows.every((row) => row.done || row.label === farms) && covered(count);
+  return group.rows.every((row) => row.done || row.task || row.label === farms) && covered(count);
 }
 
 function drawer(
@@ -294,8 +365,10 @@ function line(
   fields: Pick<PlanLine, "id" | "kind" | "section" | "title" | "done" | "drawer"> &
     Partial<PlanLine>,
 ): PlanLine {
+  const place = fields.place ?? placeName(group.place);
   return {
-    place: placeName(group.place),
+    place,
+    tag: place,
     cost: null,
     count: null,
     parts: [],
@@ -327,19 +400,166 @@ const rowNotes = (row: ResolvedRow, group: ResolvedGroup): string[] => [
 
 function rowCost(row: ResolvedRow, group: ResolvedGroup, t: Translator): string | null {
   if (row.pick) {
-    return row.pick.state === "spent" ? spendsText(row.pick.spends, t) : t("nextUp.planPickReward");
+    return row.pick.state === "spent" ? spendsText(row.pick.spends) : t("nextUp.planPickReward");
   }
   const price = row.purchase?.price ?? [];
   if (price.length > 0) {
-    const text = spendsText(price, t);
-    return row.purchase?.each ? t("nextUp.stepEach", { price: text }) : text;
+    const text = spendsText(price);
+    const units = row.qty?.required ?? 1;
+    return text && row.purchase?.each && units > 1 ? t("nextUp.stepEach", { price: text }) : text;
   }
-  if (row.owes?.length) return spendsText(row.owes, t);
-  return group.rows.length === 1 && group.spends.length > 0 ? spendsText(group.spends, t) : null;
+  if (row.owes?.length) return spendsText(row.owes);
+  return group.rows.length === 1 && group.spends.length > 0 ? spendsText(group.spends) : null;
 }
 
-/** A material farms in Farm; a crafted one whose blueprint is bought also buys
- *  that blueprint in Get. A shop currency counts the plan's whole need of it. */
+/** A material farms in Farm, and a shop currency counts the plan's whole need of it. */
+function farmMaterialLine(
+  group: ResolvedGroup,
+  row: ResolvedRow,
+  plan: ResolvedPlan,
+  t: Translator,
+): PlanLine {
+  const farms = shopCurrency(plan, row.label);
+  const count = farms && plan.shop ? shopCount(plan.shop, farms) : rowCount(row);
+  const fields = {
+    id: row.id,
+    count,
+    cost: row.purchase ? rowCost(row, group, t) : null,
+    farms,
+    rowIds: [row.id],
+    done: farms ? covered(count) : row.done,
+    drawer: { notes: rowNotes(row, group), other: row.other ?? [] },
+  };
+  if (row.currency) return earnLineOf(group, t, { ...fields, currency: row.label, parts: [] });
+  return line(group, {
+    ...fields,
+    kind: "material",
+    section: "farm",
+    title: row.label,
+    count: shown(count),
+    picker: farms !== null,
+    drawer: drawer(group, row.label, fields.drawer),
+  });
+}
+
+interface EarnFields {
+  id: string;
+  currency: string;
+  count: PlanCount | null;
+  cost: string | null;
+  farms: string | null;
+  rowIds: string[];
+  parts: PlanPart[];
+  done: boolean;
+  drawer: Partial<PlanDrawer>;
+}
+
+/** "Earn ..." or "farm Kuva" only says to earn the currency, which the title already does. */
+function restates(activity: string, currency: string): boolean {
+  const [verb, ...rest] = activity.toLowerCase().split(/\s+/);
+  return verb === "earn" || rest.join(" ") === currency.toLowerCase();
+}
+
+/** "Kuva Flood, Kuva Flood Node": how a currency banks, then where. */
+function earnTag(group: ResolvedGroup, currency: string): string {
+  const activity =
+    group.activity && !restates(group.activity, currency) ? capitalized(group.activity) : null;
+  return [activity, placeName(group.place)].filter(Boolean).join(", ");
+}
+
+/** Every "Earn X" line, authored or drawn from the store, reads one way. */
+function earnLineOf(group: ResolvedGroup, t: Translator, fields: EarnFields): PlanLine {
+  const { currency, ...rest } = fields;
+  return line(group, {
+    ...rest,
+    kind: "earn",
+    section: "farm",
+    title: t("nextUp.stepEarn", { currency }),
+    tag: earnTag(group, currency),
+    count: shown(rest.count),
+    picker: rest.farms !== null,
+    drawer: drawer(group, currency, rest.drawer),
+  });
+}
+
+const CRAFT_STEP = { refine: "nextUp.stepRefine", build: "nextUp.stepBuild" } as const;
+
+/** Getting a crafted material's blueprint in Get: bought, got where the store says
+ *  it drops (one per craft unless reusable), or nothing where the plan buys it by
+ *  hand. Done once held or no longer needed. */
+function blueprintLine(
+  group: ResolvedGroup,
+  row: ResolvedRow,
+  craft: ResolvedCraft,
+  t: Translator,
+): PlanLine | null {
+  const purchase = row.purchase;
+  const fields = { id: `${row.id}:bp`, rowIds: [], live: null, drawer: drawer(group, row.label) };
+  const need = craft.blueprints?.need ?? 1;
+  if (purchase?.blueprint) {
+    const price = spendsText(purchase.price);
+    return line(group, {
+      ...fields,
+      kind: "buy",
+      section: "get",
+      title: t(need > 1 ? "nextUp.lineBuyBlueprints" : "nextUp.lineBuyBlueprint", {
+        name: row.label,
+      }),
+      cost: price && need > 1 ? t("nextUp.stepEach", { price }) : price,
+      count: need > 1 ? { have: null, need } : null,
+      done: purchase.owned || row.done,
+      blocked: purchase.rankMet === false,
+    });
+  }
+  if (!craft.blueprints) return null;
+  const { held } = craft.blueprints;
+  const count = { have: held === null ? null : Math.min(held, need), need };
+  return line(group, {
+    ...fields,
+    kind: "buy",
+    section: "get",
+    title: t(need > 1 ? "nextUp.lineGetBlueprints" : "nextUp.lineGetBlueprint", {
+      name: row.label,
+    }),
+    count: need > 1 ? count : null,
+    done: row.done || covered(count),
+  });
+}
+
+/** A crafted material is made in Build from parts its own rows farm, after its
+ *  blueprint is got. */
+function craftLines(
+  group: ResolvedGroup,
+  row: ResolvedRow,
+  craft: ResolvedCraft,
+  t: Translator,
+): PlanLine[] {
+  const make = line(group, {
+    id: row.id,
+    kind: "build",
+    section: "build",
+    title: t(CRAFT_STEP[craft.verb], { name: row.label }),
+    place: t("common.foundry"),
+    count: shown(rowCount(row)),
+    rowIds: [row.id],
+    done: row.done,
+    drawer: drawer(group, row.label, {
+      where: null,
+      rates: group.meta ? [group.meta] : [],
+      notes: rowNotes(row, group),
+      map: null,
+    }),
+  });
+  const blueprint = row.quest ? null : blueprintLine(group, row, craft, t);
+  return blueprint ? [blueprint, make] : [make];
+}
+
+/** A material the store prices at a vendor is bought, not farmed: a tool or a unit
+ *  paid in a currency. A currency itself is earned. */
+const isBoughtMaterial = (row: ResolvedRow, plan: ResolvedPlan): boolean =>
+  (row.purchase?.price.length ?? 0) > 0 && !row.currency && !shopCurrency(plan, row.label);
+
+/** A material a quest hands over is got on that quest's step, so it has no line of its own. */
 function materialLines(
   group: ResolvedGroup,
   plan: ResolvedPlan,
@@ -347,36 +567,12 @@ function materialLines(
   commons: Set<string>,
 ): PlanLine[] {
   return group.rows.flatMap((row) => {
+    if (isCredits(row.label)) return [];
+    if (row.craft) return craftLines(group, row, row.craft, t);
+    if (row.quest) return [];
+    if (isBoughtMaterial(row, plan)) return buyLines(group, [row], plan, t, false);
     if (row.common) commons.add(row.id);
-    const purchase = row.purchase;
-    const farms = shopCurrency(plan, row.label);
-    const count = farms && plan.shop ? shopCount(plan.shop, farms) : rowCount(row);
-    const farm = line(group, {
-      id: row.id,
-      kind: "material",
-      section: "farm",
-      title: row.label,
-      count: shown(count),
-      cost: purchase && !purchase.blueprint ? rowCost(row, group, t) : null,
-      picker: farms !== null,
-      farms,
-      rowIds: [row.id],
-      done: farms ? covered(count) : row.done,
-      drawer: drawer(group, row.label, { notes: rowNotes(row, group), other: row.other ?? [] }),
-    });
-    if (!purchase?.blueprint) return [farm];
-    const buy = line(group, {
-      id: `${row.id}:bp`,
-      kind: "buy",
-      section: "get",
-      title: t("nextUp.lineBuyBlueprint", { name: row.label }),
-      cost: spendsText(purchase.price, t),
-      rowIds: [],
-      done: purchase.owned || row.done,
-      blocked: purchase.rankMet === false,
-      drawer: drawer(group, row.label),
-    });
-    return [buy, farm];
+    return [farmMaterialLine(group, row, plan, t)];
   });
 }
 
@@ -395,8 +591,10 @@ function sharedPrice(rows: readonly ResolvedRow[]): ResolvedSpend[] | null {
 function openTotal(rows: readonly ResolvedRow[]): ResolvedOwed[] {
   const totals = new Map<string, number>();
   for (const row of rows.filter((entry) => !entry.done)) {
+    const unit = unitCount(row);
+    const times = row.purchase?.each ? unit.need - (unit.have ?? 0) : 1;
     for (const spend of row.purchase?.price ?? []) {
-      totals.set(spend.currency, (totals.get(spend.currency) ?? 0) + spend.value);
+      totals.set(spend.currency, (totals.get(spend.currency) ?? 0) + spend.value * times);
     }
   }
   return [...totals].map(([currency, value]) => ({ currency, value }));
@@ -409,10 +607,41 @@ function unitCount(row: ResolvedRow): PlanCount {
   return { have: row.done ? need : owned, need };
 }
 
+const GOODS = {
+  rankUps: "nextUp.goodsRankUps",
+  blueprints: "nextUp.goodsBlueprints",
+  parts: "nextUp.goodsParts",
+} as const;
+
+/** "Buy Necraloid rank-ups + Cortege blueprints": a buy step names what it buys;
+ *  its vendor shows in the tag and drawer. */
+function buyGoodsTitle(goods: readonly SetGoods[], t: Translator): string {
+  const name = goods.map((entry) => t(GOODS[entry.kind], { name: entry.name })).join(" + ");
+  return t("nextUp.lineBuy", { name });
+}
+
+const syndicateKey = (name: string): string =>
+  name
+    .trim()
+    .replace(/\s+standing$/i, "")
+    .replace(/^the\s+/i, "")
+    .toLowerCase();
+
+/** A rank-up is paid in its own syndicate's standing, or not priced at all; any
+ *  other ranked row is an item a rank-up consumes. */
+function isRankUp(row: ResolvedRow): boolean {
+  if (!row.rank || row.paidAt) return false;
+  const syndicate = syndicateKey(row.rank.syndicate);
+  const price = row.purchase?.price ?? [];
+  return price.length === 0 || price.some((spend) => syndicateKey(spend.currency) === syndicate);
+}
+
 function partSetTitle(group: ResolvedGroup, itemName: string, t: Translator): string {
   const rows = group.rows.map((row) => ({
     label: row.label,
     blueprint: row.purchase?.blueprint ?? false,
+    rankUp: isRankUp(row) ? (row.rank?.syndicate ?? null) : null,
+    sacrifice: Boolean(row.rank) && !isRankUp(row),
   }));
   const title = setTitle({ ...group, rows }, itemName);
   switch (title.kind) {
@@ -420,10 +649,8 @@ function partSetTitle(group: ResolvedGroup, itemName: string, t: Translator): st
       return title.vendor === null
         ? title.title
         : t("nextUp.setAt", { title: title.title, vendor: placeName(title.vendor) });
-    case "buyBlueprints":
-      return t("nextUp.stepBuyBlueprintsAt", { place: placeName(title.vendor) });
     case "buy":
-      return t("nextUp.stepBuyAt", { place: placeName(title.vendor) });
+      return buyGoodsTitle(title.goods, t);
     case "buildPartsThen":
       return t("nextUp.stepBuildPartsThen", { name: title.item });
     case "buildParts":
@@ -441,7 +668,7 @@ function partSetLine(group: ResolvedGroup, plan: ResolvedPlan, t: Translator, do
     have: units.reduce((sum, unit) => sum + (unit.have ?? 0), 0),
     need: units.reduce((sum, unit) => sum + unit.need, 0),
   };
-  const total = openTotal(group.rows);
+  const sharedText = shared ? spendsText(shared) : null;
   const open = group.rows.filter((row) => !row.done);
   return line(group, {
     id: group.id,
@@ -449,10 +676,8 @@ function partSetLine(group: ResolvedGroup, plan: ResolvedPlan, t: Translator, do
     section: build ? "build" : "get",
     title: partSetTitle(group, plan.name, t),
     cost: shared
-      ? t("nextUp.stepEach", { price: spendsText(shared, t) })
-      : total.length > 0
-        ? spendsText(total, t)
-        : null,
+      ? sharedText && t("nextUp.stepEach", { price: sharedText })
+      : spendsText(openTotal(group.rows)),
     count,
     done: done || open.length === 0,
     blocked: open.length > 0 && open.every((row) => row.purchase?.rankMet === false),
@@ -466,8 +691,14 @@ function partSetLine(group: ResolvedGroup, plan: ResolvedPlan, t: Translator, do
   });
 }
 
-function buyLines(group: ResolvedGroup, plan: ResolvedPlan, t: Translator, done: boolean) {
-  return group.rows.map((row) => {
+function buyLines(
+  group: ResolvedGroup,
+  rows: readonly ResolvedRow[],
+  plan: ResolvedPlan,
+  t: Translator,
+  done: boolean,
+) {
+  return rows.map((row) => {
     const count = rowCount(row);
     return line(group, {
       id: row.id,
@@ -479,7 +710,10 @@ function buyLines(group: ResolvedGroup, plan: ResolvedPlan, t: Translator, done:
       rowIds: [row.id],
       done: done || row.done,
       blocked: row.purchase?.rankMet === false,
-      drawer: drawer(group, plan.name, { notes: rowNotes(row, group) }),
+      drawer: drawer(group, isMaterialGroup(group) ? row.label : plan.name, {
+        notes: rowNotes(row, group),
+        other: row.other ?? [],
+      }),
     });
   });
 }
@@ -500,53 +734,213 @@ function buildLines(group: ResolvedGroup, t: Translator, done: boolean): PlanLin
   });
 }
 
-/** The currency a banking group pays into: its own, or a shop currency a row names. */
+/** The currency a banking group pays into: its own, a shop currency a row names,
+ *  or on a currency group with no figure, the currency a row names. */
 function bankedCurrency(group: ResolvedGroup, plan: ResolvedPlan): string | null {
   if (group.earns) return group.earns.ledger ?? group.earns.currency;
-  return group.rows.find((row) => shopCurrency(plan, row.label))?.label ?? null;
+  const sold = group.rows.find((row) => shopCurrency(plan, row.label))?.label;
+  const named = group.type === "currency" ? group.rows.find((row) => row.currency)?.label : null;
+  return sold ?? named ?? null;
+}
+
+/** The rows a currency group's own currency buys, each its own buy step. */
+const boughtRows = (group: ResolvedGroup): ResolvedRow[] =>
+  group.rows.filter((row) => group.buys?.includes(row.id));
+
+const labelKey = (label: string): string => label.trim().toLowerCase();
+
+/** A row naming the currency its line counts restates the line's count. */
+const isCurrencyRow = (row: ResolvedRow, currency: string | null): boolean =>
+  labelKey(row.label) === labelKey(currency ?? "");
+
+/** A thing the player picks up on the trip: no currency, purchase, rank, or item
+ *  a rank-up sacrifices. */
+const isPickup = (row: ResolvedRow): boolean =>
+  !row.currency && !row.purchase && !row.rank && !row.paidAt;
+
+/** A drop is picked up on the trip even when a rank-up sacrifices it. */
+const isDrop = (row: ResolvedRow): boolean =>
+  !row.currency && !row.purchase && (!row.rank || Boolean(row.paidAt));
+
+/** What the plan buys: a priced row, or any row of a vendor. */
+function boughtLabels(plan: ResolvedPlan): Set<string> {
+  const rows = plan.groups.flatMap((group) =>
+    group.rows.filter((row) => row.purchase || group.type === "vendor"),
+  );
+  return new Set(rows.map((row) => labelKey(row.label)));
+}
+
+/** What a currency's rows hold beyond the currency itself: a task names no item,
+ *  and a row the plan buys elsewhere is what the currency pays for. */
+function earnPickups(plan: ResolvedPlan, rows: readonly ResolvedRow[], currency: string | null) {
+  const bought = boughtLabels(plan);
+  return rows.filter(
+    (row) => !row.task && !bought.has(labelKey(row.label)) && !isCurrencyRow(row, currency),
+  );
+}
+
+/** A line's pickups, one chip per thing: none repeats the title or another chip. */
+function pickupParts(
+  rows: readonly ResolvedRow[],
+  title: string,
+  picked: (row: ResolvedRow) => boolean,
+  label: (row: ResolvedRow) => string,
+) {
+  const seen = new Set([labelKey(title)]);
+  const parts: PlanPart[] = [];
+  for (const row of rows.filter(picked)) {
+    const key = labelKey(label(row));
+    const first = parts.find((part) => labelKey(part.label) === key);
+    if (first) first.done &&= row.done;
+    else if (!seen.has(key)) parts.push(rowPart(row, label(row)));
+    seen.add(key);
+  }
+  return parts;
+}
+
+/** The rows a line stands for, in its drawer: every row, chipped or not, with its
+ *  note, count and price; a row paid at a rank-up is named on the rank-up. */
+function drawerParts(rows: readonly ResolvedRow[]): PlanPart[] {
+  return rows
+    .filter((row) => !row.paidAt)
+    .map((row) => ({
+      ...rowPart(row),
+      cost: row.purchase?.price.length ? spendsText(row.purchase.price) : null,
+      count: rowCount(row),
+    }));
 }
 
 function earnLine(group: ResolvedGroup, plan: ResolvedPlan, t: Translator, done: boolean) {
   const currency = bankedCurrency(group, plan);
   const farms = shopCurrency(plan, currency);
-  const single = group.rows.length === 1 ? rowCount(group.rows[0]) : null;
+  const rows = group.rows.filter((row) => !group.buys?.includes(row.id));
   const count = farmCount(group, plan, farms);
-  const parts = group.rows.filter((row) => row.label !== currency).map((row) => rowPart(row));
-  return line(group, {
+  const title = currency
+    ? t("nextUp.stepEarn", { currency })
+    : capitalized(group.activity ?? placeName(group.place));
+  const counted = !group.earns && !farms && rows.length === 1 && rowCount(rows[0]) !== null;
+  const picks = counted
+    ? []
+    : pickupParts(earnPickups(plan, rows, currency), title, isPickup, (row) => row.label);
+  const fields = {
     id: group.id,
+    count,
+    cost: null,
+    parts: picks,
+    farms,
+    rowIds: rows.map((row) => row.id),
+    done: farms ? farmDone(group, farms, count) : done || paidOff(group, plan) || covered(count),
+    drawer:
+      group.earns && !farms
+        ? earnDrawer(group, plan, rows, earnPickups(plan, rows, currency).filter(isPickup), t)
+        : {
+            parts: counted ? [] : drawerParts(rows.filter((row) => !isCurrencyRow(row, currency))),
+            notes: [
+              ...rows.flatMap((row) => (isCurrencyRow(row, currency) && row.note ? [row.note] : [])),
+              ...group.conditions,
+              ...group.bonuses,
+            ],
+          },
+  };
+  if (currency) return earnLineOf(group, t, { ...fields, currency });
+  return line(group, {
+    ...fields,
     kind: "earn",
     section: "farm",
-    title: currency
-      ? t("nextUp.stepEarn", { currency })
-      : capitalized(group.activity ?? placeName(group.place)),
+    title,
     count: shown(count),
-    parts: parts.length > 1 || !single ? parts : [],
     picker: farms !== null,
-    farms,
-    done: farms ? farmDone(group, farms, count) : done || paidOff(group, plan) || covered(count),
-    drawer: drawer(group, currency ?? plan.name),
+    drawer: drawer(group, plan.name, fields.drawer),
   });
 }
 
-/** A sequence step reads as its action, with its pickups held in the drawer. */
-function dropLine(group: ResolvedGroup, plan: ResolvedPlan, done: boolean): PlanLine {
+/** A sequence step reads as its action, with its pickups held in the drawer. A
+ *  row it buys is its own buy step. */
+function dropLine(
+  group: ResolvedGroup,
+  plan: ResolvedPlan,
+  t: Translator,
+  done: boolean,
+): PlanLine {
   const farms = shopCurrency(plan, bankedCurrency(group, plan));
   const count = farmCount(group, plan, farms);
-  const parts = group.rows
-    .filter((row) => row.label !== farms)
-    .map((row) => rowPart(row, shortLabel(row.label, plan.name)));
-  const title = plan.sequence ? (group.activity ?? group.sub) : (group.sub ?? group.activity);
+  const title = capitalized(
+    (plan.sequence ? (group.activity ?? group.sub) : (group.sub ?? group.activity)) ??
+      placeName(group.place),
+  );
+  const rows = group.rows.filter((row) => row.label !== farms && !row.purchase);
+  const short = (row: ResolvedRow): string => shortLabel(row.label, plan.name);
+  const picks = pickupParts(rows, title, isDrop, short);
+  const steps = rows.filter((row) => !row.paidAt).map((row) => rowPart(row, short(row)));
+  const banks = group.earns !== null && !farms;
+  const banked = (): boolean =>
+    rows.every((row) => row.done || row.task || !isDrop(row)) && (count === null || covered(count));
   return line(group, {
     id: group.id,
     kind: "drop",
     section: "farm",
-    title: capitalized(title ?? placeName(group.place)),
+    title,
     count: shown(count),
-    parts: plan.sequence ? [] : parts,
+    parts: plan.sequence ? [] : picks,
     picker: farms !== null,
     farms,
-    done: farms ? farmDone(group, farms, count) : done,
-    drawer: drawer(group, plan.name, { parts: plan.sequence ? parts : [] }),
+    rowIds: group.rows.filter((row) => !row.purchase).map((row) => row.id),
+    done: farms ? farmDone(group, farms, count) : done || (banks && banked()),
+    drawer: drawer(
+      group,
+      plan.name,
+      plan.sequence
+        ? { parts: steps }
+        : banks
+          ? earnDrawer(group, plan, rows, rows.filter(isDrop), t)
+          : { parts: drawerParts(rows) },
+    ),
+  });
+}
+
+/** Every drop group a quest pays out from, in plan order. */
+function questGroups(plan: ResolvedPlan, quest: string): ResolvedGroup[] {
+  const key = questKey(quest);
+  return plan.groups.filter(
+    (group) => group.quest && DROP_TYPES.has(group.type) && questKey(group.quest) === key,
+  );
+}
+
+/** Where a further group of a quest step happens and how, as one drawer note. */
+function groupNote(group: ResolvedGroup, wiki: string): string {
+  const { where, rates } = drawer(group, wiki);
+  return [where, ...rates].filter(Boolean).join(" | ");
+}
+
+/** Every group a quest pays out from is that quest's one step in Get, its pickups
+ *  named in full; the drawer holds each group's place and every row. Done once the
+ *  quest is, or once every pickup is held. */
+function questStepLine(groups: readonly ResolvedGroup[], quest: string, t: Translator): PlanLine {
+  const [host, ...rest] = groups;
+  const title = t("nextUp.stepDoQuest", { quest });
+  const rows = groups.flatMap((group) => group.rows.filter((row) => !row.purchase));
+  const parts = pickupParts(rows, title, isDrop, (row) => row.label);
+  const finished = groups.every((group) => group.done || group.skip !== null);
+  const base = drawer(host, quest);
+  return line(host, {
+    id: host.id,
+    kind: "quest",
+    section: "get",
+    title,
+    parts,
+    rowIds: rows.map((row) => row.id),
+    done: finished || (parts.length > 0 && parts.every((part) => part.done)),
+    drawer: {
+      ...base,
+      notes: [
+        ...base.notes,
+        ...rest.flatMap((group) => [groupNote(group, quest), ...group.conditions, ...group.bonuses]),
+      ],
+      disclosures: groups.flatMap((group) => group.disclosures),
+      tips: groups.flatMap((group) => group.tips),
+      map: base.map ?? drawer(rest.find((group) => group.map) ?? host, quest).map,
+      parts: drawerParts(rows),
+    },
   });
 }
 
@@ -574,9 +968,20 @@ function openGroupLines(
     return [partSetLine(group, plan, t, done)];
   }
   if (build) return buildLines(group, t, done);
-  if (group.type === "vendor") return buyLines(group, plan, t, done);
-  if (group.type === "currency") return [earnLine(group, plan, t, done)];
-  if (DROP_TYPES.has(group.type)) return [dropLine(group, plan, done)];
+  if (group.type === "vendor") return buyLines(group, group.rows, plan, t, done);
+  if (group.type === "currency") {
+    return [earnLine(group, plan, t, done), ...buyLines(group, boughtRows(group), plan, t, done)];
+  }
+  if (DROP_TYPES.has(group.type)) {
+    const bought = group.rows.filter((row) => row.purchase);
+    const host = group.quest ? questGroup(plan, group.quest) : undefined;
+    const buys = buyLines(group, bought, plan, t, done);
+    if (!group.quest || !host || !DROP_TYPES.has(host.type)) {
+      return [dropLine(group, plan, t, done), ...buys];
+    }
+    if (host !== group) return buys;
+    return [questStepLine(questGroups(plan, group.quest), group.quest, t), ...buys];
+  }
   const title =
     group.type === "gate"
       ? group.rows.map((row) => row.label).join(", ")
@@ -600,7 +1005,7 @@ function totalText(line: ShopTotal, t: Translator): string {
   const need =
     line.currency === null
       ? t("nextUp.pickEither", { amount: formatNumber(line.need) })
-      : priceText(line.currency, line.need, t);
+      : priceText(line.currency, line.need);
   if (line.short === null) return need;
   const status =
     line.short === 0
@@ -611,19 +1016,45 @@ function totalText(line: ShopTotal, t: Translator): string {
 
 /** What the plan's picks and crafting take, currency by currency. */
 function shopCost(shop: ResolvedShop, t: Translator): string | null {
-  const parts = shop.own.totals.filter((line) => line.need > 0).map((line) => totalText(line, t));
+  const parts = shop.own.totals
+    .filter((line) => line.need > 0 && !(line.currency && isCredits(line.currency)))
+    .map((line) => totalText(line, t));
   return parts.length > 0 ? parts.join(" + ") : null;
+}
+
+/** A drawer with only a wiki link and what the caller adds. */
+function bareDrawer(wiki: string, extra: Partial<PlanDrawer> = {}): PlanDrawer {
+  return {
+    where: null,
+    rates: [],
+    notes: [],
+    other: [],
+    disclosures: [],
+    tips: [],
+    alts: [],
+    parts: [],
+    lead: false,
+    map: null,
+    wiki,
+    ...extra,
+  };
 }
 
 /** Buying the plan's picks: open while any is left, held back until the
  *  balances cover them. */
-function shopLine(shop: ResolvedShop, t: Translator): PlanLine {
+function shopLine(shop: ResolvedShop, itemName: string, t: Translator): PlanLine {
+  const [ware, ...more] = shop.ownNames;
+  const goods = setGoods(
+    shop.ownNames.map((label) => ({ label, blueprint: false })),
+    itemName,
+  );
   return {
     id: `shop:${shop.key}`,
     kind: "shop",
     section: "get",
-    title: t("nextUp.stepBuyAt", { place: shop.vendor }),
+    title: more.length === 0 ? t("nextUp.lineBuy", { name: ware }) : buyGoodsTitle(goods, t),
     place: shop.place,
+    tag: shop.place,
     cost: shopCost(shop, t),
     count: null,
     parts: [],
@@ -635,19 +1066,10 @@ function shopLine(shop: ResolvedShop, t: Translator): PlanLine {
     done: shop.own.picks === 0,
     blocked: shop.own.covered === false,
     next: false,
-    drawer: {
+    drawer: bareDrawer(buildWikiUrl(shop.vendor), {
       where: `${shop.vendor}, ${shop.place}`,
-      rates: [],
       notes: shop.notes,
-      other: [],
-      disclosures: [],
-      tips: [],
-      alts: [],
-      parts: [],
-      lead: false,
-      map: null,
-      wiki: buildWikiUrl(shop.vendor),
-    },
+    }),
   };
 }
 
@@ -658,6 +1080,7 @@ function basicsLine(chips: PlanLine[], t: Translator): PlanLine {
     kind: "basics",
     title: t("nextUp.lineBasics"),
     place: "",
+    tag: "",
     cost: null,
     count: null,
     parts: [],
@@ -717,16 +1140,137 @@ function farmEntries(lines: readonly PlanLine[]): PlanEntry[] {
   );
 }
 
+/** "2 Gallium, 30K Credits": a sacrificed item and what of its price the rank-up's
+ *  own price does not already say. */
+function sacrificeText(row: ResolvedRow, rankUp: ResolvedRow): string {
+  const own = new Set((rankUp.purchase?.price ?? []).map((spend) => spend.currency));
+  const price = (row.purchase?.price ?? []).filter((spend) => !own.has(spend.currency));
+  const item = row.qty ? `${formatNumber(row.qty.required)} ${row.label}` : row.label;
+  const text = spendsText(price);
+  return [item, ...(text ? [text] : [])].join(", ");
+}
+
+/** A rank-up row's note carries the items it sacrifices, which the plan lists
+ *  elsewhere; those rows then appear nowhere else. */
+function withSacrifices(plan: ResolvedPlan): ResolvedPlan {
+  const rows = plan.groups.flatMap((group) => group.rows);
+  const paid = new Map<string, string[]>();
+  for (const row of rows) {
+    const rankUp = row.paidAt ? rows.find((entry) => entry.id === row.paidAt) : undefined;
+    if (rankUp) paid.set(rankUp.id, [...(paid.get(rankUp.id) ?? []), sacrificeText(row, rankUp)]);
+  }
+  if (paid.size === 0) return plan;
+  const noted = (row: ResolvedRow): ResolvedRow => {
+    const items = paid.get(row.id);
+    if (!items) return row;
+    return { ...row, note: [row.note, items.join("; ")].filter(Boolean).join("; ") };
+  };
+  return {
+    ...plan,
+    groups: plan.groups.map((group) => ({ ...group, rows: group.rows.map(noted) })),
+  };
+}
+
+const questKey = (name: string): string =>
+  labelKey(name)
+    .replace(/^the /, "")
+    .replace(/ quest$/, "");
+
+/** What a quest hands over for a material: its blueprint when crafted, else the material. */
+function questPart(row: ResolvedRow, t: Translator): PlanPart {
+  if (!row.craft) return rowPart(row);
+  const need = row.craft.blueprints?.need ?? 1;
+  const held = row.craft.blueprints?.held ?? null;
+  const count = { have: held === null ? null : Math.min(held, need), need };
+  return {
+    ...rowPart(row, t("nextUp.partBlueprint", { name: row.label })),
+    id: `${row.id}:bp`,
+    done: row.done || covered(count),
+    count: need > 1 ? count : null,
+  };
+}
+
+/** The plan's own step for a quest: the first drop paying out from it, or a gate naming it. */
+function questGroup(plan: ResolvedPlan, quest: string): ResolvedGroup | undefined {
+  const key = questKey(quest);
+  return plan.groups.find(
+    (group) =>
+      (group.quest && DROP_TYPES.has(group.type) && questKey(group.quest) === key) ||
+      (group.type === "gate" && group.rows.some((row) => questKey(row.label) === key)),
+  );
+}
+
+function questLine(quest: ResolvedQuest, parts: PlanPart[], t: Translator): PlanLine {
+  return {
+    id: `quest:${questKey(quest.name)}`,
+    kind: "quest",
+    section: "get",
+    title: t("nextUp.stepDoQuest", { quest: quest.name }),
+    place: "",
+    tag: "",
+    cost: null,
+    count: null,
+    parts,
+    chips: [],
+    live: null,
+    picker: false,
+    farms: null,
+    rowIds: [],
+    done: quest.done === true || parts.every((part) => part.done),
+    blocked: false,
+    next: false,
+    drawer: bareDrawer(buildWikiUrl(quest.name), { parts }),
+  };
+}
+
+/** Everything one quest hands over is picked up on one step: the plan's own step
+ *  for that quest, else "Do <quest>" leading Get. */
+function withQuestPickups(lines: PlanLine[], plan: ResolvedPlan, t: Translator): PlanLine[] {
+  const byQuest = new Map<string, { quest: ResolvedQuest; parts: PlanPart[] }>();
+  for (const row of plan.groups.flatMap((group) => group.rows)) {
+    if (!row.quest) continue;
+    const key = questKey(row.quest.name);
+    const entry = byQuest.get(key) ?? { quest: row.quest, parts: [] };
+    entry.parts.push(questPart(row, t));
+    byQuest.set(key, entry);
+  }
+  const out = [...lines];
+  for (const { quest, parts } of byQuest.values()) {
+    const group = questGroup(plan, quest.name);
+    const at = group ? out.findIndex((entry) => entry.id === group.id) : -1;
+    if (at === -1) {
+      out.unshift(questLine(quest, parts, t));
+      continue;
+    }
+    const host = out[at];
+    const shown = new Set([host.title, ...host.parts.map((part) => part.label)].map(labelKey));
+    const added = parts.filter((part) => !shown.has(labelKey(part.label)));
+    const got = quest.done === true || added.every((part) => part.done);
+    out[at] = {
+      ...host,
+      parts: [...host.parts, ...added],
+      done: host.done && got,
+      drawer: { ...host.drawer, parts: [...host.drawer.parts, ...added] },
+    };
+  }
+  return out;
+}
+
 /** The plan as three sections, get, farm and build, in the order a player walks
  *  them. Done lines leave their section for the done list, and the first open
  *  line the player can act on is marked next. */
-export function planSteps(plan: ResolvedPlan, options: StepOptions): PlanModel {
+export function planSteps(resolved: ResolvedPlan, options: StepOptions): PlanModel {
   const { t } = options;
+  const plan = withSacrifices(resolved);
   const commons = new Set<string>();
-  const lines = oneCountPerCurrency(
-    displayOrder(plan.groups).flatMap((group) => groupLines(group, plan, t, commons)),
+  const lines = withQuestPickups(
+    oneCountPerCurrency(
+      displayOrder(plan.groups).flatMap((group) => groupLines(group, plan, t, commons)),
+    ),
+    plan,
+    t,
   );
-  if (plan.shop && plan.shop.ownWares > 0) lines.push(shopLine(plan.shop, t));
+  if (plan.shop && plan.shop.ownWares > 0) lines.push(shopLine(plan.shop, plan.name, t));
   const chips = lines.filter((entry) => commons.has(entry.id));
   const rest = lines.filter((entry) => !commons.has(entry.id));
   const ordered = SECTIONS.flatMap((section) => {
@@ -746,7 +1290,7 @@ export function planSteps(plan: ResolvedPlan, options: StepOptions): PlanModel {
   return {
     sections,
     done: ordered.filter((entry) => entry.done),
-    shop: plan.shop,
+    shop: plan.shop?.picker ? plan.shop : null,
     copies: plan.copies,
   };
 }

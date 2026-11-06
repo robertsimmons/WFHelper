@@ -55,6 +55,8 @@ export interface ResolvedShop {
   own: ShopSum;
   /** The plan's own wares still to buy. */
   ownWares: number;
+  /** Their names, one per ware. */
+  ownNames: string[];
   /** The other plans that buy here. */
   also: string[];
 }
@@ -213,6 +215,7 @@ export function pickShop(input: ShopPickInput): ResolvedShop {
     all: sumOf(input, picked, () => 0),
     own: sumOf(input, counted, input.crafting),
     ownWares: own.length,
+    ownNames: [...new Set(own.map((unit) => unit.ware))],
     also: [...input.also],
   };
 }

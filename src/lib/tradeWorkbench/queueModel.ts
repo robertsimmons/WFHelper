@@ -108,23 +108,30 @@ export function buildSelectionSafetyContext(input: SelectionSafetyInput): Safety
     keepVariants: input.keepVariants,
   });
 
-  const pinnedRequirements = new Map<string, number>();
-  for (const pin of input.pins) {
-    for (const part of input.itemDb[pin]?.components ?? []) {
-      const uniqueName = typeof part.uniqueName === "string" ? part.uniqueName : "";
-      if (!uniqueName) continue;
-      const count = typeof part.itemCount === "number" ? Math.floor(part.itemCount) : 1;
-      const need = count > 0 ? count : 1;
-      pinnedRequirements.set(uniqueName, (pinnedRequirements.get(uniqueName) ?? 0) + need);
-    }
-  }
-
   return buildSafetyContext({
     itemDb: input.itemDb,
     settings: input.settings,
     sellPlan,
-    pinnedRequirements,
+    pinnedRequirements: pinnedRequirements(input.itemDb, input.pins),
   });
+}
+
+/** uniqueName -> units the pinned mastery goals' components ask for. */
+export function pinnedRequirements(
+  itemDb: Record<string, ItemDbEntry>,
+  pins: readonly string[],
+): Map<string, number> {
+  const requirements = new Map<string, number>();
+  for (const pin of pins) {
+    for (const part of itemDb[pin]?.components ?? []) {
+      const uniqueName = typeof part.uniqueName === "string" ? part.uniqueName : "";
+      if (!uniqueName) continue;
+      const count = typeof part.itemCount === "number" ? Math.floor(part.itemCount) : 1;
+      const need = count > 0 ? count : 1;
+      requirements.set(uniqueName, (requirements.get(uniqueName) ?? 0) + need);
+    }
+  }
+  return requirements;
 }
 
 function rowRank(item: ParsedItem): number | null {

@@ -41,6 +41,8 @@ interface Shape {
   buildable?: boolean;
   /** Materials the remaining builds are still short of. */
   short?: number;
+  /** The material that is short; a staple by default. */
+  material?: string;
   heads?: { total: number; owned: number };
 }
 
@@ -85,8 +87,8 @@ function parts(shape: Shape): PartPlan {
     sourcing: missing,
     materials: [
       {
-        uniqueName: "/Plastids",
-        name: "Plastids",
+        uniqueName: `/${shape.material ?? "Plastids"}`,
+        name: shape.material ?? "Plastids",
         required: 100,
         owned: 100 - short,
         missing: short,
@@ -96,6 +98,7 @@ function parts(shape: Shape): PartPlan {
     copies: 1,
     foundry: false,
     buildable: shape.buildable ?? false,
+    foundryOnly: absent === 0 && short === 0,
   };
 }
 
@@ -279,13 +282,22 @@ describe("recommended", () => {
     expect(sortKeys(rows[1]!.target, "recommended")[0]).toBe(1);
   });
 
-  it("keeps a target short on materials behind a cheap farm", () => {
+  it("keeps a target short on a real farm behind a cheap farm", () => {
     const rows = [
-      row({ name: "ShortMaterials", tier: "S", recipe: true, short: 40 }),
+      row({ name: "ShortMaterials", tier: "S", recipe: true, short: 3_000, material: "Cryotic" }),
       row({ name: "CheapFarm", tier: "D", recipe: true, missing: 1, plat: 10, effort: 0.1 }),
     ];
     expect(order(rows, "recommended")).toEqual(["CheapFarm", "ShortMaterials"]);
     expect(sortKeys(rows[0]!.target, "recommended")[0]).toBe(2);
+  });
+
+  it("puts a target short only on staples ahead of a cheap farm", () => {
+    const rows = [
+      row({ name: "CheapFarm", tier: "D", recipe: true, missing: 1, plat: 10, effort: 0.1 }),
+      row({ name: "ShortStaples", tier: "S", recipe: true, short: 40_000 }),
+    ];
+    expect(order(rows, "recommended")).toEqual(["ShortStaples", "CheapFarm"]);
+    expect(sortKeys(rows[1]!.target, "recommended")[0]).toBe(2);
   });
 });
 
@@ -394,7 +406,7 @@ describe("sortKeys", () => {
 
   it("orders a build-only target by work left, then parts left, then tier", () => {
     const target = row({ name: "Keys", tier: "B", recipe: true }).target;
-    expect(sortKeys(target, "recommended")).toEqual([1, 0.35, 0, 3]);
+    expect(sortKeys(target, "recommended")).toEqual([1, 0.05, 0, 3]);
   });
 
   it("orders a farm by its negated score: worth times closeness over difficulty", () => {

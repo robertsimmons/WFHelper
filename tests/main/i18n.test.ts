@@ -59,6 +59,10 @@ const ALLOWED_TWINS = new Set([
   "nextUp.settingsBad",
   "nextUp.settingsGood",
   "nextUp.whyToday",
+  "syndicates.turnInSafeOfHeld",
+  "syndicates.turnInTagOtherRank",
+  "syndicates.turnInTagRank",
+  "syndicates.turnInTagShop",
 ]);
 
 function sourceFiles(dir: string, out: string[] = []): string[] {

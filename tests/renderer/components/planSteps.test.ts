@@ -6,11 +6,14 @@ import {
   type PlanLine,
   type PlanModel,
 } from "../../../src/components/nextup/plan/planSteps.js";
+import { withRowOverrides } from "../../../src/components/nextup/plan/planResolution.js";
 import * as itemDatabase from "../../../services/itemDatabase";
 import { farmNeed } from "../../../src/lib/suggest/acquisition/shops/picker.js";
 import { en } from "../../../src/i18n/en.js";
 import { resolveAcquisition } from "../../../src/lib/suggest/acquisition/index.js";
 import { frame, part } from "../lib/suggest/acquisition/fixtures.js";
+import { resources } from "../lib/suggest/acquisition/plan/fixtures.js";
+import { resourceLookup } from "../../../src/lib/suggest/acquisition/plan/resources.js";
 import {
   authoredPlan,
   resolvePlan,
@@ -40,6 +43,7 @@ const SIRIUS_NEURO = "/Lotus/Types/Recipes/WarframeRecipes/SiriusOrionHelmetBlue
 const WRATH = "/Lotus/Weapons/Tenno/Melee/HeavyScythe/TnOrionSiriusScythe/TnOrionScytheWeapon";
 const CAPILLARIES = "/Lotus/Types/Gameplay/EntratiLab/Resources/VesselCapillaries";
 const DANTE_NEURO = "/Lotus/Types/Recipes/WarframeRecipes/PagemasterHelmetBlueprint";
+const DUCATS = "/Lotus/Types/Items/MiscItems/PrimeBucks";
 
 const DB: Record<string, ItemDbEntry> = {
   [CRIMSON]: { name: "Crimson Talent" },
@@ -48,6 +52,7 @@ const DB: Record<string, ItemDbEntry> = {
   [WRATH]: { name: "Wrath" },
   [CAPILLARIES]: { name: "Vessel Capillaries" },
   [DANTE_NEURO]: { name: "Dante Neuroptics Blueprint" },
+  [DUCATS]: { name: "Orokin Ducats" },
 };
 
 function shipped(name: string, context: Partial<PlanContext> = {}, copies = 1): ResolvedPlan {
@@ -90,9 +95,9 @@ describe("the three sections", () => {
     ]);
     const basics = farm.entries[farm.entries.length - 1] as PlanLine;
     expect(basics.kind).toBe("basics");
-    expect(basics.chips.map((chip) => chip.title)).toEqual(
-      expect.arrayContaining(["Polymer Bundle", "Orokin Cell", "Credits"]),
-    );
+    const titles = basics.chips.map((chip) => chip.title);
+    expect(titles).toEqual(expect.arrayContaining(["Polymer Bundle", "Orokin Cell"]));
+    expect(titles).not.toContain("Credits");
     expect(build.entries.every((entry) => (entry as PlanLine).blocked)).toBe(true);
   });
 
@@ -106,7 +111,7 @@ describe("the three sections", () => {
     const model = planSteps(shipped("Gara"), { t });
     const farm = model.sections.find((section) => section.key === "farm");
     const trips = farm?.entries.filter((entry) => entry.kind === "trip") ?? [];
-    const plains = trips.find((entry) => entry.place === "Plains Of Eidolon, Earth");
+    const plains = trips.find((entry) => entry.place === "Plains of Eidolon, Earth");
     expect(plains?.kind === "trip" && plains.lines.map((entry) => entry.title)).toEqual(
       expect.arrayContaining(["Konzu", "Grokdrul", "Cetus Wisp"]),
     );
@@ -117,11 +122,56 @@ describe("the three sections", () => {
     expect(lone).toBeDefined();
   });
 
-  it("buys a crafted material's blueprint in Get and farms the material in Farm", () => {
+  it("buys a crafted material's blueprint in Get, farms its parts and builds it in Build", () => {
     const model = planSteps(shipped("Sepulcrum"), { t });
     const buy = lineTitled(model, "Buy Coprite Alloy Blueprint");
     expect(buy).toMatchObject({ section: "get", rowIds: [] });
-    expect(lineTitled(model, "Coprite Alloy").section).toBe("farm");
+    expect(lineTitled(model, "Build Coprite Alloy").section).toBe("build");
+    expect(lineTitled(model, "Coprun").section).toBe("farm");
+    expect(open(model).some((entry) => entry.title === "Coprite Alloy")).toBe(false);
+  });
+
+  describe("a consumed material blueprint is bought once per craft", () => {
+    const store = resourceLookup({
+      Ore: { kind: "farm", best: { place: "CAMBION DRIFT, DEIMOS", sub: null, activity: "mine" } },
+      Batch: {
+        kind: "craft",
+        yield: 3,
+        best: {
+          place: "NECRALISK, DEIMOS",
+          sub: "Son",
+          activity: "buy the blueprint",
+          buy: { price: [{ currency: "Entrati Standing", amount: "1,250" }] },
+        },
+        recipe: [{ qty: 1, label: "Ore" }],
+      },
+    });
+    const buyLine = (qty: string) => {
+      const plan = fixture(
+        [],
+        { materials: [{ qty, label: "Batch", note: null }] },
+        {
+          resources: store,
+        },
+      );
+      return open(planSteps(plan, { t })).find((entry) => entry.id.endsWith(":bp"));
+    };
+
+    it("reads as one purchase for one craft", () => {
+      expect(buyLine("3")).toMatchObject({
+        title: "Buy Batch Blueprint",
+        cost: "1.3K Entrati Standing",
+        count: null,
+      });
+    });
+
+    it("counts and prices each purchase for more than one craft", () => {
+      expect(buyLine("4")).toMatchObject({
+        title: "Buy Batch Blueprints",
+        cost: "1.3K Entrati Standing each",
+        count: { have: null, need: 2 },
+      });
+    });
   });
 
   it("counts a standing need-only until the balance is read, then have and need", () => {
@@ -136,14 +186,43 @@ describe("the three sections", () => {
     });
   });
 
+  it("counts an item currency need-only until the inventory is read, never as 0", () => {
+    const unread = lineTitled(planSteps(shipped("Supra Vandal"), { t }), "Earn Orokin Ducats");
+    expect(unread.count).toEqual({ have: null, need: 500 });
+    const read = shipped("Supra Vandal", {
+      inventory: { MiscItems: [{ ItemType: DUCATS, ItemCount: 120 }] },
+    });
+    expect(lineTitled(planSteps(read, { t }), "Earn Orokin Ducats").count).toEqual({
+      have: 120,
+      need: 500,
+    });
+    const broke = shipped("Supra Vandal", { inventory: {} });
+    expect(lineTitled(planSteps(broke, { t }), "Earn Orokin Ducats").count).toEqual({
+      have: 0,
+      need: 500,
+    });
+  });
+
+  it("prices a set of per-unit blueprints at every unit still to buy", () => {
+    const buy = lineTitled(planSteps(shipped("Keratinos"), { t }), "Buy Keratinos blueprints");
+    expect(buy.cost).toBe("3K Entrati Standing");
+  });
+
+  it("never makes credits a step, a chip or a price", () => {
+    const model = planSteps(shipped("Arum Spinosa"), { t });
+    expect(open(model).some((entry) => entry.kind === "basics")).toBe(false);
+    const buy = lineTitled(planSteps(shipped("Argonak"), { t }), "Buy Argonak Blueprint");
+    expect(buy.cost).toBeNull();
+  });
+
   it("files a ticked line under done and moves next on, and the counter follows", () => {
     const before = planSteps(shipped("Bad Baby"), { t });
     const first = open(before).find((entry) => entry.next);
-    expect(first?.title).toBe("Buy blueprints at Roky");
+    expect(first?.title).toBe("Buy Bad Baby blueprints");
     const after = planSteps(shipped("Bad Baby", { manualDone: first?.rowIds ?? [] }), { t });
     // Every blueprint bought leaves no Ventkids standing owed, so that banks too.
     expect(after.done.map((entry) => entry.title)).toEqual([
-      "Buy blueprints at Roky",
+      "Buy Bad Baby blueprints",
       "Earn Ventkids Standing",
     ]);
     expect(open(after).find((entry) => entry.next)?.title).toBe("Buy Axidrol Alloy Blueprint");
@@ -206,7 +285,7 @@ describe("a shared shop", () => {
   it("buys at Hunhow in Get, one unit per build owed, with the other items it serves", () => {
     const sirius = stocked("Sirius & Orion", { inventory: talent(0, 0) });
     const model = planSteps(sirius, { t });
-    expect(lineTitled(model, "Buy at Hunhow").section).toBe("get");
+    expect(lineTitled(model, "Buy Sirius & Orion blueprints").section).toBe("get");
     expect(model.copies).toBe(2);
     expect(model.shop?.also).toEqual(["Pride", "War Prime", "Wrath"]);
     expect(units(sirius, "Sirius & Orion").map((unit) => unit.id)).toEqual([
@@ -273,18 +352,18 @@ describe("a shared shop", () => {
     });
     const model = planSteps(short, { t });
     const totals = short.shop?.own.totals ?? [];
-    expect(lineTitled(model, "Buy at Hunhow").blocked).toBe(true);
+    expect(lineTitled(model, "Buy Sirius & Orion blueprints").blocked).toBe(true);
     expect(lineTitled(model, "Scoria's Angel").count).toEqual({
       have: 100,
       need: farmNeed(totals, "Crimson Talent"),
     });
-    expect(open(model).find((entry) => entry.next)?.title).not.toBe("Buy at Hunhow");
+    expect(open(model).find((entry) => entry.next)?.title).not.toBe("Buy Sirius & Orion blueprints");
 
     const rich = stocked("Sirius & Orion", {
       inventory: talent(5_000, 5_000, { Melee: [{ ItemType: WRATH }] }),
       shopPicks: { hunhow: flipped },
     });
-    expect(lineTitled(planSteps(rich, { t }), "Buy at Hunhow").blocked).toBe(false);
+    expect(lineTitled(planSteps(rich, { t }), "Buy Sirius & Orion blueprints").blocked).toBe(false);
   });
 
   it("reads a single-currency shop with no per-run yield as runs unknown", () => {
@@ -308,7 +387,7 @@ describe("a shared shop", () => {
     expect(citrine.shop?.key).toBe("otak");
     expect(citrine.shop?.all.totals.every((line) => line.currency !== null)).toBe(true);
     const get = planSteps(citrine, { t }).sections[0].entries;
-    expect(get.map((entry) => (entry as PlanLine).title)).toContain("Buy at Otak");
+    expect(get.map((entry) => (entry as PlanLine).title)).toContain("Buy Citrine blueprints");
   });
 });
 
@@ -548,9 +627,9 @@ describe("a set of parts", () => {
     );
 
   it("collapses one step over several parts into one counted line, priced each when shared", () => {
-    const set = lineTitled(planSteps(hok([strikeIds[1]]), { t }), "Buy blueprints at Hok");
+    const set = lineTitled(planSteps(hok([strikeIds[1]]), { t }), "Buy Testblade blueprints");
     expect(set.count).toEqual({ have: 1, need: 3 });
-    expect(set.cost).toBe("1K standing each");
+    expect(set.cost).toBe("1K Ostron Standing each");
     expect(set.rowIds).toEqual(strikeIds);
     expect(set.drawer.parts.map((part) => [part.label, part.done, part.cost])).toEqual([
       ["Balla Strike Blueprint", false, null],
@@ -560,10 +639,13 @@ describe("a set of parts", () => {
   });
 
   it("totals the open parts and prices each in the drawer when prices differ", () => {
-    const ranks = lineTitled(planSteps(hok(), { t }), "Buy at Hok");
+    const ranks = lineTitled(planSteps(hok(), { t }), "Buy Testblade parts");
     expect(ranks.count).toEqual({ have: 0, need: 2 });
-    expect(ranks.cost).toBe("3K standing");
-    expect(ranks.drawer.parts.map((part) => part.cost)).toEqual(["1K standing", "2K standing"]);
+    expect(ranks.cost).toBe("3K Ostron Standing");
+    expect(ranks.drawer.parts.map((part) => part.cost)).toEqual([
+      "1K Ostron Standing",
+      "2K Ostron Standing",
+    ]);
   });
 
   it("counts a part's quantity as its units, and builds in Build", () => {
@@ -595,7 +677,7 @@ describe("a set of parts", () => {
 
   it("is done once every part is", () => {
     const model = planSteps(hok(strikeIds), { t });
-    expect(model.done.map((entry) => entry.title)).toEqual(["Buy blueprints at Hok"]);
+    expect(model.done.map((entry) => entry.title)).toEqual(["Buy Testblade blueprints"]);
   });
 
   it("draws a Zaw's blueprints, ranks, builds and gilds as one line each", () => {
@@ -615,7 +697,10 @@ describe("a set of parts", () => {
     ]);
     expect(sets).toContainEqual(["Gild Zaws at Hok", 11, "gild each Zaw at Hok"]);
     const build = model.sections.find((section) => section.key === "build");
-    expect(build?.entries).toHaveLength(1);
+    const own = build?.entries.filter(
+      (entry) => entry.kind !== "trip" && entry.rowIds.every((id) => !id.startsWith("m:")),
+    );
+    expect(own?.map((entry) => entry.kind !== "trip" && entry.title)).toEqual(["Zaw parts"]);
   });
 });
 
@@ -651,5 +736,1101 @@ describe("a built modular item", () => {
     const build = lineTitled(planSteps(plan, { t }), "Build parts");
     expect(build.drawer.parts.map((part) => part.done)).toEqual([true, false]);
     expect(build.drawer.parts[1].count).toEqual({ have: 1, need: 2 });
+  });
+});
+
+/** Fluctus through the card's own resolution: three relay syndicates, each selling
+ *  one part for standing behind a climb to rank 3. */
+describe("parts bought with standing", () => {
+  const SYNDICATES = {
+    "Steel Meridian": { tag: "SteelMeridianSyndicate", part: "Stock" },
+    "Red Veil": { tag: "RedVeilSyndicate", part: "Limbs" },
+    "Cephalon Suda": { tag: "CephalonSudaSyndicate", part: "Barrel" },
+  } as const;
+  type Syndicate = keyof typeof SYNDICATES;
+  const ALL = Object.keys(SYNDICATES) as Syndicate[];
+  let db: Record<string, ItemDbEntry> = {};
+
+  beforeAll(() => {
+    itemDatabase.buildDatabase();
+    db = itemDatabase.getRendererLookup() as unknown as Record<string, ItemDbEntry>;
+  });
+
+  interface Player {
+    titles?: Partial<Record<Syndicate, number>>;
+    standing?: Partial<Record<Syndicate, number>>;
+    held?: Syndicate[];
+  }
+
+  function builtPart(syndicate: Syndicate): string {
+    const name = `Fluctus ${SYNDICATES[syndicate].part}`;
+    const found = Object.keys(db).find((uniqueName) => db[uniqueName].name === name);
+    if (!found) throw new Error(`no ${name} in the item database`);
+    return found;
+  }
+
+  function fluctus({ titles = {}, standing = {}, held = [] }: Player = {}): ResolvedPlan {
+    const inventory: RawInventoryData = {
+      Affiliations: ALL.map((name) => ({
+        Tag: SYNDICATES[name].tag,
+        Title: titles[name] ?? 0,
+        Standing: standing[name] ?? 0,
+      })),
+      MiscItems: held.map((name) => ({ ItemType: builtPart(name), ItemCount: 1 })),
+    };
+    const target = resolveAcquisition({ itemDb: db, inventory, only: ["Fluctus"] })[0];
+    const plan = target && resolvePlanFor(target, { itemDb: db, inventory, now: NOW });
+    if (!plan) throw new Error("no plan for Fluctus");
+    return plan;
+  }
+
+  const buy = (model: PlanModel, syndicate: Syndicate): PlanLine =>
+    lineTitled(model, `Buy Fluctus ${SYNDICATES[syndicate].part} Blueprint`);
+  const earn = (model: PlanModel, syndicate: Syndicate): PlanLine =>
+    lineTitled(model, `Earn ${syndicate} Standing`);
+  const rankUps = (model: PlanModel, syndicate: Syndicate): PlanLine =>
+    lineTitled(model, `${syndicate} rank-ups at Relay`);
+
+  it("buys each part as its own step in Get, priced in its standing", () => {
+    const model = planSteps(fluctus(), { t });
+    for (const syndicate of ALL) {
+      expect(buy(model, syndicate)).toMatchObject({
+        kind: "buy",
+        section: "get",
+        cost: `20K ${syndicate} Standing`,
+        done: false,
+      });
+    }
+  });
+
+  it("keeps the earn line to the standing owed, its chips no longer the part", () => {
+    const model = planSteps(fluctus(), { t });
+    const line = earn(model, "Steel Meridian");
+    // The initiation is a priced task, a spend: the drawer keeps it, no chip.
+    expect(line.parts).toEqual([]);
+    expect(line.drawer.parts.map((entry) => entry.label)).toEqual([
+      "Fluctus Stock Blueprint",
+      "Rank 1",
+      "Rank 2",
+      "Rank 3, Defender",
+    ]);
+    expect(line.rowIds).not.toContain(buy(model, "Steel Meridian").rowIds[0]);
+    expect(line.count).toEqual({ have: 0, need: 91_000 });
+  });
+
+  it("blocks a part while its syndicate's rank is unmet", () => {
+    const model = planSteps(fluctus(), { t });
+    for (const syndicate of ALL) expect(buy(model, syndicate).blocked).toBe(true);
+  });
+
+  it("opens the parts once the ranks are met, the rank-ups done", () => {
+    const model = planSteps(
+      fluctus({ titles: { "Steel Meridian": 3, "Red Veil": 3, "Cephalon Suda": 3 } }),
+      { t },
+    );
+    for (const syndicate of ALL) {
+      expect(buy(model, syndicate)).toMatchObject({ done: false, blocked: false });
+      expect(rankUps(model, syndicate).done).toBe(true);
+      expect(earn(model, syndicate)).toMatchObject({
+        done: false,
+        count: { have: 0, need: 20_000 },
+      });
+    }
+  });
+
+  it("files a hated syndicate's steps under done once its part is owned", () => {
+    const model = planSteps(fluctus({ titles: { "Cephalon Suda": -2 }, held: ["Cephalon Suda"] }), {
+      t,
+    });
+    expect(model.done).toEqual(
+      expect.arrayContaining([
+        buy(model, "Cephalon Suda"),
+        earn(model, "Cephalon Suda"),
+        rankUps(model, "Cephalon Suda"),
+      ]),
+    );
+    for (const syndicate of ["Steel Meridian", "Red Veil"] as const) {
+      expect(open(model)).toEqual(
+        expect.arrayContaining([
+          buy(model, syndicate),
+          earn(model, syndicate),
+          rankUps(model, syndicate),
+        ]),
+      );
+    }
+  });
+
+  it("leaves no standing step open once every part is owned", () => {
+    const model = planSteps(fluctus({ held: ALL }), { t });
+    for (const syndicate of ALL) {
+      expect(
+        [buy(model, syndicate), earn(model, syndicate), rankUps(model, syndicate)].every(
+          (line) => line.done,
+        ),
+      ).toBe(true);
+    }
+  });
+
+  it("banks the earn line once the standing held covers what is owed", () => {
+    const banked = planSteps(fluctus({ standing: { "Steel Meridian": 100_000 } }), { t });
+    expect(earn(banked, "Steel Meridian")).toMatchObject({
+      done: true,
+      count: { have: 100_000, need: 91_000 },
+    });
+    const short = planSteps(fluctus({ standing: { "Steel Meridian": 5_000 } }), { t });
+    expect(earn(short, "Steel Meridian")).toMatchObject({
+      done: false,
+      count: { have: 5_000, need: 91_000 },
+    });
+  });
+
+  it("settles the rank-ups when the part is ticked on the page", () => {
+    const plan = fluctus();
+    const stock = buy(planSteps(plan, { t }), "Steel Meridian").rowIds[0];
+    const model = planSteps(withRowOverrides(plan, { [stock]: true }), { t });
+    expect(rankUps(model, "Steel Meridian").done).toBe(true);
+    expect(earn(model, "Steel Meridian").done).toBe(true);
+    expect(rankUps(model, "Red Veil").done).toBe(false);
+  });
+});
+
+describe("a crafted material", () => {
+  let db: Record<string, ItemDbEntry> = {};
+
+  beforeAll(() => {
+    itemDatabase.buildDatabase();
+    db = itemDatabase.getRendererLookup() as unknown as Record<string, ItemDbEntry>;
+  });
+
+  function unique(name: string): string {
+    const found = Object.entries(db).find(([, entry]) => entry.name === name);
+    if (!found) throw new Error(`no item named ${name}`);
+    return found[0];
+  }
+
+  /** The inventory holding each named item, in the list DE files it under. */
+  function holding(held: Record<string, number>): RawInventoryData {
+    const items = Object.entries(held).map(([name, count]) => ({
+      ItemType: unique(name),
+      ItemCount: count,
+    }));
+    return {
+      MiscItems: items.filter((item) => !/\/Types\/Recipes\//i.test(item.ItemType)),
+      Recipes: items.filter((item) => /\/Types\/Recipes\//i.test(item.ItemType)),
+    } as RawInventoryData;
+  }
+
+  function steps(name: string, held: Record<string, number> = {}): PlanModel {
+    const plan = authoredPlan(name);
+    if (!plan) throw new Error(`no plan for ${name}`);
+    const parts = { known: false, copies: 1 } as PartPlan;
+    const resolved = resolvePlan(plan, { itemDb: db, inventory: holding(held), now: NOW }, null, {
+      uniqueName: name,
+      parts,
+    });
+    return planSteps(resolved, { t });
+  }
+
+  const all = (model: PlanModel): PlanLine[] => [...open(model), ...model.done];
+
+  it("refines a gem in Build, before the item's own build, and never farms the gem itself", () => {
+    const model = steps("Korumm");
+    const titles = all(model)
+      .filter((entry) => entry.section === "build")
+      .map((entry) => entry.title);
+    expect(titles.indexOf("Refine Radiant Zodian")).toBeLessThan(titles.indexOf("Build Korumm"));
+    expect(lineTitled(model, "Refine Radiant Zodian")).toMatchObject({
+      kind: "build",
+      count: { have: 0, need: 6 },
+      place: "Foundry",
+      done: false,
+    });
+    expect(all(model).some((entry) => entry.title === "Radiant Zodian")).toBe(false);
+  });
+
+  it("farms a refined gem's raw part at its own spot, with its map", () => {
+    const zodian = lineTitled(steps("Korumm"), "Zodian");
+    expect(zodian).toMatchObject({ section: "farm", place: "Orb Vallis, Venus" });
+    expect(zodian.count).toEqual({ have: 0, need: 6 });
+    expect(zodian.drawer.map?.key).toBe("orb-vallis");
+  });
+
+  it("builds an alloy with the build verb", () => {
+    expect(lineTitled(steps("Korumm"), "Build Coprite Alloy").section).toBe("build");
+  });
+
+  it("asks parts only for the crafts the held product leaves short", () => {
+    const partial = steps("Korumm", { "Radiant Zodian": 2 });
+    expect(lineTitled(partial, "Refine Radiant Zodian").count).toEqual({ have: 2, need: 6 });
+    expect(lineTitled(partial, "Zodian").count).toEqual({ have: 0, need: 6 });
+    expect(lineTitled(steps("Korumm", { "Radiant Zodian": 3 }), "Zodian").count).toEqual({
+      have: 0,
+      need: 3,
+    });
+  });
+
+  it("settles the refine, its parts and the blueprint buy once the product is all held", () => {
+    const model = steps("Korumm", { "Radiant Zodian": 6 });
+    expect(lineTitled(model, "Refine Radiant Zodian").done).toBe(true);
+    expect(lineTitled(model, "Zodian").done).toBe(true);
+    expect(lineTitled(model, "Buy Radiant Zodian Blueprint").done).toBe(true);
+  });
+
+  it("settles the blueprint buy alone once the reusable blueprint is held", () => {
+    const model = steps("Korumm", { "Radiant Zodian Blueprint": 1 });
+    expect(lineTitled(model, "Buy Radiant Zodian Blueprint").done).toBe(true);
+    expect(lineTitled(model, "Refine Radiant Zodian").done).toBe(false);
+    expect(lineTitled(model, "Zodian").done).toBe(false);
+  });
+
+  describe("a rank-up ranked only for reusable blueprints", () => {
+    const BLUEPRINTS = [
+      "Star Amarast Blueprint",
+      "Radiant Zodian Blueprint",
+      "Marquise Thyst Blueprint",
+      "Axidrol Alloy Blueprint",
+      "Travocyte Alloy Blueprint",
+      "Venerdo Alloy Blueprint",
+    ];
+    const held = (names: readonly string[]) =>
+      Object.fromEntries(names.map((name) => [name, 1] as const));
+    const rankUp = (names: readonly string[]): PlanLine =>
+      lineTitled(steps("Garuda", held(names)), "Buy rank-ups to Cove");
+
+    it("stays open while none of what it unlocks is held", () => {
+      expect(rankUp([]).done).toBe(false);
+    });
+
+    it("stays open while one unlocked blueprint is still to buy", () => {
+      expect(rankUp(BLUEPRINTS.slice(1)).done).toBe(false);
+    });
+
+    it("settles once every blueprint it unlocks is held, the products still to make", () => {
+      const model = steps("Garuda", held(BLUEPRINTS));
+      expect(lineTitled(model, "Buy rank-ups to Cove").done).toBe(true);
+      expect(lineTitled(model, "Refine Radiant Zodian").done).toBe(false);
+    });
+  });
+
+  it("gets a dropped blueprint in Get, one per craft still short", () => {
+    const model = steps("Synapse");
+    expect(lineTitled(model, "Get Forma Blueprints")).toMatchObject({
+      section: "get",
+      count: { have: 0, need: 2 },
+      place: "Any Void Fissure",
+      rowIds: [],
+    });
+    expect(lineTitled(model, "Build Forma").count).toEqual({ have: 0, need: 2 });
+    const one = steps("Synapse", { Forma: 1 });
+    expect(lineTitled(one, "Get Forma Blueprint")).toMatchObject({ count: null, done: false });
+    expect(
+      lineTitled(steps("Synapse", { Forma: 1, "Forma Blueprint": 1 }), "Get Forma Blueprint").done,
+    ).toBe(true);
+    const held = steps("Synapse", { Forma: 2 });
+    expect(lineTitled(held, "Build Forma").done).toBe(true);
+    expect(lineTitled(held, "Get Forma Blueprint").done).toBe(true);
+  });
+});
+
+describe("a nested craft", () => {
+  const plan = (): AuthoredPlan =>
+    ({
+      ...authoredPlan("Korumm"),
+      name: "Lens Rig",
+      materials: [{ qty: "4", label: "Veridos Lens", note: null }],
+      groups: [
+        {
+          ...authoredPlan("Korumm")!.groups[1],
+          rows: [{ qty: null, label: "Lens Rig", note: null, alt: null, done: false }],
+        },
+      ],
+    }) as AuthoredPlan;
+
+  it("refines the inner craft before building the outer one, both before the item", () => {
+    const resolved = resolvePlan(plan(), {
+      itemDb: {},
+      inventory: null,
+      now: NOW,
+      resources: resources(),
+    });
+    const titles = open(planSteps(resolved, { t }))
+      .filter((entry) => entry.section === "build")
+      .map((entry) => entry.title);
+    expect(titles).toEqual(["Refine Marquise Veridos", "Build Veridos Lens", "Build Lens Rig"]);
+  });
+});
+
+describe("a farm line's chips", () => {
+  let db: Record<string, ItemDbEntry> = {};
+
+  beforeAll(() => {
+    itemDatabase.buildDatabase();
+    db = itemDatabase.getRendererLookup() as unknown as Record<string, ItemDbEntry>;
+  });
+
+  function steps(name: string): PlanModel {
+    const plan = authoredPlan(name);
+    if (!plan) throw new Error(`no plan for ${name}`);
+    const parts = { known: false, copies: 1 } as PartPlan;
+    const resolved = resolvePlan(plan, { itemDb: db, inventory: null, now: NOW }, null, {
+      uniqueName: name,
+      parts,
+    });
+    return planSteps(resolved, { t });
+  }
+
+  const all = (model: PlanModel): PlanLine[] => [...open(model), ...model.done];
+  const chips = (entry: PlanLine): string[] => entry.parts.map((part) => part.label);
+  const drawn = (entry: PlanLine): string[] => entry.drawer.parts.map((part) => part.label);
+  const note = (entry: PlanLine, label: string): string | null =>
+    entry.drawer.parts.find((part) => part.label === label)?.note ?? null;
+  const earnOf = (model: PlanModel, currency: string): PlanLine =>
+    lineTitled(model, `Earn ${currency}`);
+  const holding = (model: PlanModel, label: string): PlanLine => {
+    const found = all(model).find((entry) => drawn(entry).includes(label));
+    if (!found) throw new Error(`no line holds ${label}`);
+    return found;
+  };
+
+  describe("a currency is never a chip", () => {
+    it("counts the line's own currency instead of naming it, and draws the part it buys", () => {
+      const line = earnOf(steps("Supra Vandal"), "Orokin Ducats");
+      expect(chips(line)).toEqual([]);
+      expect(line.count?.need).toBe(500);
+      expect(drawn(line)).toEqual(["Supra Vandal"]);
+    });
+
+    it("titles a currency group with no figure by the currency its row names, its note in the drawer", () => {
+      const line = earnOf(steps("Venari Prime"), "Aya");
+      expect(chips(line)).toEqual([]);
+      expect(line.drawer.rates).toContain("Level 40-60 bounty, final stage");
+      expect(line.drawer.notes).toContain("1 per relic");
+      expect(chips(earnOf(steps("Wolf Sledge"), "Nightwave Creds"))).toEqual([]);
+    });
+
+    it("keeps its activity as the title when no row names a currency", () => {
+      const line = lineTitled(steps("Vizier Predasite"), "Rank Entrati to Associate");
+      expect(chips(line)).toEqual([]);
+      expect(drawn(line)).toHaveLength(3);
+    });
+  });
+
+  describe("a rank-up's cost is paid at the rank-up", () => {
+    it("moves each sacrifice onto the rank it buys, without its credits", () => {
+      const ranks = holding(steps("Vaykor Hek"), "Rank 1, Brave");
+      expect(note(ranks, "Rank 1, Brave")).toBe("2 Morphics");
+      expect(note(ranks, "Rank 4, Protector")).toBe("2 Aya");
+      expect(note(ranks, "Rank 5, General")).toBe("3 Aya");
+    });
+
+    it("leaves the earn line no chip, its drawer the rank-ups and part it pays for, unpriced in credits", () => {
+      const line = earnOf(steps("Vaykor Hek"), "Steel Meridian Standing");
+      expect(chips(line)).toEqual([]);
+      expect(drawn(line)).toEqual(["Rank 1, Brave", "Rank 2, Valiant", "Rank 3, Defender", "Rank 4, Protector", "Rank 5, General", "Vaykor Hek"]);
+      expect(line.drawer.parts[0].cost).toBeNull();
+    });
+
+    it("joins several sacrifices for one rank on its note", () => {
+      const ranks = holding(steps("Trumna"), "Entrati Rank 1, Stranger");
+      expect(note(ranks, "Entrati Rank 1, Stranger")).toBe(
+        "6 Benign Infested Tumor; 6 Ferment Bladder",
+      );
+    });
+
+    it("keeps a row restating the rank-up in the earn drawer, off the rank-up's note", () => {
+      const model = steps("Garuda");
+      const line = earnOf(model, "Solaris United Standing");
+      expect(chips(line)).toEqual([]);
+      expect(drawn(line)).toEqual([
+        "rank-ups to Cove",
+        "Star Amarast Blueprint",
+        "Radiant Zodian Blueprint",
+        "Marquise Thyst Blueprint",
+        "Axidrol Alloy Blueprint",
+        "Travocyte Alloy Blueprint",
+        "Venerdo Alloy Blueprint",
+      ]);
+      expect(lineTitled(model, "Buy rank-ups to Cove").drawer.notes).toEqual([]);
+    });
+
+    it("keeps a sacrifice in the earn drawer notes when no vendor ranks its syndicate", () => {
+      const gallium: PlanRow = {
+        ...row("Gallium"),
+        qty: "2",
+        rank: { syndicate: "Red Veil", level: 1 },
+      };
+      const earns: PlanGroup = {
+        ...group("currency", "ORBITER", "Earn Red Veil Standing", [gallium]),
+        earns: { currency: "Red Veil Standing", amount: "5,000" },
+      };
+      const line = earnOf(planSteps(fixture([earns]), { t }), "Red Veil Standing");
+      expect(chips(line)).toEqual([]);
+      expect(line.drawer.notes).toEqual(["Gallium: Gallium note"]);
+    });
+  });
+
+  describe("a standing line counts what it banks", () => {
+    it("counts rows naming the standing on the line, each kept in the drawer", () => {
+      const line = earnOf(steps("Cedo"), "Entrati Standing");
+      expect(chips(line)).toEqual([]);
+      expect(line.count).toEqual({ have: null, need: 260_000 });
+      expect(drawn(line)).toEqual([
+        "Entrati rank-ups to Family (Rank 5)",
+        "Cedo Blueprint",
+        "Cedo Barrel",
+        "Cedo Receiver",
+        "Cedo Stock",
+      ]);
+    });
+
+    it("counts a standing row with no figure from what the plan spends", () => {
+      const line = earnOf(steps("Innodem"), "Holdfasts Standing");
+      expect(chips(line)).toEqual([]);
+      expect(line.count).toEqual({ have: null, need: 10_500 });
+    });
+
+    it("drops a row the plan buys elsewhere, which is what the standing pays for", () => {
+      const line = earnOf(steps("Snipetron"), "Operational Supply Standing");
+      expect(chips(line)).toEqual([]);
+      expect(line.count).toEqual({ have: null, need: 4_000 });
+      expect(drawn(line)).toContain("Snipetron Blueprint");
+    });
+  });
+
+  describe("a spending category is never a chip", () => {
+    it.each([
+      ["Moa", "Solaris United Standing"],
+      ["Garuda", "Solaris United Standing"],
+      ["Kompressa", "Ventkids Standing"],
+      ["Flatbelly", "Ventkids Standing"],
+      ["Aegrit", "Stock"],
+      ["Tazicor", "Solaris United Standing"],
+    ])("%s banks %s with every category in the drawer", (name, currency) => {
+      const line = earnOf(steps(name), currency);
+      expect(chips(line)).toEqual([]);
+      expect(line.drawer.parts.length).toBeGreaterThan(0);
+    });
+  });
+
+  describe("a real pickup stays a chip", () => {
+    it("keeps the Debt-Bonds a standing trip collects", () => {
+      expect(chips(earnOf(steps("Bhaira Hound"), "Solaris United Standing"))).toEqual([
+        "Training Debt-Bond",
+        "Shelter Debt-Bond",
+        "Medical Debt-Bond",
+      ]);
+    });
+
+    it("keeps the blueprints a currency's mission drops", () => {
+      expect(chips(earnOf(steps("Temple"), "Beating Heartstrings"))).toHaveLength(4);
+    });
+
+    it("keeps a capture task on a drop line, which is what the trip picks up", () => {
+      const line = lineTitled(steps("Crescent Vulpaphyla"), "Vome cycle");
+      expect(chips(line)).toEqual(["Weakened Crescent Vulpaphyla"]);
+    });
+  });
+
+  describe("a drop line", () => {
+    it("drops a chip that repeats the line's title", () => {
+      const line = lineTitled(steps("Brakk"), "Invasion missions");
+      expect(chips(line)).toEqual([]);
+      expect(line.count?.need).toBe(5);
+    });
+
+    it("makes a purchase its own buy step with its price, off the farm line", () => {
+      const price = [{ currency: "Solaris United Standing", amount: "2,500" }];
+      const veins = group("farm", "CAMBION DRIFT, DEIMOS", "Teal veins", [
+        row("Sunpoint Plasma Drill", price),
+        row("Xenorhast"),
+      ]);
+      const model = planSteps(fixture([veins]), { t });
+      const line = lineTitled(model, "Teal veins");
+      expect(line.parts.map((part) => part.label)).toEqual(["Xenorhast"]);
+      expect(line.drawer.parts.map((part) => part.label)).not.toContain("Sunpoint Plasma Drill");
+      const drill = lineTitled(model, "Buy Sunpoint Plasma Drill");
+      expect(drill).toMatchObject({
+        kind: "buy",
+        section: "get",
+        cost: "2.5K Solaris United Standing",
+      });
+      expect(line.rowIds).not.toContain(drill.rowIds[0]);
+    });
+
+    it("buys the Arum Spinosa drill from Smokefinger, a tool bought once", () => {
+      const drill = lineTitled(steps("Arum Spinosa"), "Buy Sunpoint Plasma Drill");
+      expect(drill).toMatchObject({ section: "get", cost: "2.5K Solaris United Standing" });
+    });
+
+    it("draws two rows of one thing as one chip, done only when both are", () => {
+      const drops = group("farm", "FOSSA, VENUS", "Assassination", [
+        row("Neuroptics Blueprint"),
+        { ...row("Neuroptics Blueprint"), done: true },
+      ]);
+      const line = lineTitled(planSteps(fixture([drops]), { t }), "Assassination");
+      expect(line.parts).toMatchObject([{ label: "Neuroptics Blueprint", done: false }]);
+    });
+  });
+
+  describe("a lumped purchase", () => {
+    it("buys the Exergis Little Duck parts once each, at the store's price", () => {
+      const model = steps("Exergis");
+      expect(all(model).some((entry) => /purchases/.test(entry.title))).toBe(false);
+      expect(lineTitled(model, "Buy Repeller Systems").cost).toBe("5K Vox Solaris Standing each");
+      expect(lineTitled(model, "Buy Gyromag Systems").cost).toBe("1K Vox Solaris Standing");
+      expect(earnOf(model, "Vox Solaris Standing").count?.need).toBe(84_500);
+    });
+
+    it("banks the Baruuk Vox Solaris standing with no chip restating the blueprints", () => {
+      const line = earnOf(steps("Baruuk"), "Vox Solaris Standing");
+      expect(chips(line)).toEqual([]);
+      expect(line.count?.need).toBe(94_500);
+    });
+  });
+});
+
+describe("a quest's rewards", () => {
+  let db: Record<string, ItemDbEntry> = {};
+
+  beforeAll(() => {
+    itemDatabase.buildDatabase();
+    db = itemDatabase.getRendererLookup() as unknown as Record<string, ItemDbEntry>;
+  });
+
+  function unique(name: string, pattern = /./): string {
+    const found = Object.entries(db).find(
+      ([key, entry]) => entry.name === name && pattern.test(key),
+    );
+    if (!found) throw new Error(`no item named ${name}`);
+    return found[0];
+  }
+
+  function steps(name: string, inventory: RawInventoryData | null = null): PlanModel {
+    const plan = authoredPlan(name);
+    if (!plan) throw new Error(`no plan for ${name}`);
+    const parts = { known: false, copies: 1 } as PartPlan;
+    const resolved = resolvePlan(plan, { itemDb: db, inventory, now: NOW }, null, {
+      uniqueName: name,
+      parts,
+    });
+    return planSteps(resolved, { t });
+  }
+
+  const all = (model: PlanModel): PlanLine[] => [...open(model), ...model.done];
+  const chips = (entry: PlanLine): string[] => entry.parts.map((part) => part.label);
+  const shrine = (model: PlanModel): PlanLine => lineTitled(model, "Do The Silver Grove");
+  const APOTHICS = [
+    "Nightfall Apothic Blueprint",
+    "Twilight Apothic Blueprint",
+    "Sunrise Apothic Blueprint",
+  ];
+  const questDone = (): RawInventoryData =>
+    ({
+      QuestKeys: [{ ItemType: unique("The Silver Grove", /KeyChain/), Completed: true }],
+    }) as unknown as RawInventoryData;
+
+  it("puts every blueprint a quest hands over on the plan's own step for that quest", () => {
+    const model = steps("Titania");
+    expect(chips(shrine(model))).toEqual(expect.arrayContaining(APOTHICS));
+    expect(all(model).some((entry) => /Apothic Blueprint/.test(entry.title))).toBe(false);
+    expect(all(model).some((entry) => /quests/i.test(entry.tag))).toBe(false);
+  });
+
+  it("keeps the step open while the quest is still to do", () => {
+    const line = shrine(steps("Titania", {}));
+    expect(line.done).toBe(false);
+    expect(
+      line.parts.filter((part) => APOTHICS.includes(part.label)).map((part) => part.done),
+    ).toEqual([false, false, false]);
+  });
+
+  it("settles the step once the quest is done", () => {
+    expect(shrine(steps("Titania", questDone())).done).toBe(true);
+  });
+
+  it("ticks each blueprint already held and leaves the step open for the rest", () => {
+    const inventory = {
+      Recipes: [{ ItemType: unique("Nightfall Apothic Blueprint"), ItemCount: 1 }],
+    } as unknown as RawInventoryData;
+    const line = shrine(steps("Titania", inventory));
+    const done = Object.fromEntries(line.parts.map((part) => [part.label, part.done]));
+    expect(done).toMatchObject({
+      "Nightfall Apothic Blueprint": true,
+      "Twilight Apothic Blueprint": false,
+      "Sunrise Apothic Blueprint": false,
+    });
+    expect(line.done).toBe(false);
+  });
+
+  it("puts an uncrafted quest reward on the quest's step as itself", () => {
+    const model = steps("Octavia");
+    expect(chips(lineTitled(model, "Do Octavia's Anthem"))).toContain("Mandachord");
+    expect(all(model).some((entry) => entry.title === "Mandachord")).toBe(false);
+  });
+
+  describe("with no step of the plan's own for the quest", () => {
+    const KEY = "/Lotus/Types/Keys/TestGrove/TestGroveKeyChainItem";
+    const TONICS = { Alpha: "/Test/AlphaTonic", Beta: "/Test/BetaTonic" };
+    const DB_OWN: Record<string, ItemDbEntry> = {
+      [KEY]: { name: "The Test Grove" },
+      [TONICS.Alpha]: { name: "Alpha Tonic" },
+      [TONICS.Beta]: { name: "Beta Tonic" },
+      [`${TONICS.Alpha}Blueprint`]: { name: "Alpha Tonic Blueprint" },
+      [`${TONICS.Beta}Blueprint`]: { name: "Beta Tonic Blueprint" },
+    };
+    const tonic = {
+      kind: "craft",
+      best: { place: "QUESTS", sub: "The Test Grove", activity: null, how: "quest reward" },
+      recipe: [{ qty: 2, label: "Herb" }],
+    };
+    const store = resourceLookup({
+      Herb: { kind: "farm", best: { place: "EARTH", sub: null, activity: "pick" } },
+      "Alpha Tonic": tonic,
+      "Beta Tonic": tonic,
+    });
+    const model = (inventory: RawInventoryData | null): PlanModel =>
+      planSteps(
+        fixture(
+          [],
+          {
+            materials: [
+              { qty: "1", label: "Alpha Tonic", note: null },
+              { qty: "1", label: "Beta Tonic", note: null },
+            ],
+          },
+          { resources: store, itemDb: DB_OWN, inventory },
+        ),
+        { t },
+      );
+    const quest = (inventory: RawInventoryData | null = null): PlanLine =>
+      lineTitled(model(inventory), "Do The Test Grove");
+    const recipes = (...keys: string[]) =>
+      ({
+        Recipes: keys.map((ItemType) => ({ ItemType, ItemCount: 1 })),
+      }) as unknown as RawInventoryData;
+
+    it("leads Get with one step for the quest, holding both blueprints and no bare place", () => {
+      const steps = model(null);
+      const line = lineTitled(steps, "Do The Test Grove");
+      expect(line).toMatchObject({ section: "get", kind: "quest", tag: "", done: false });
+      expect(chips(line)).toEqual(["Alpha Tonic Blueprint", "Beta Tonic Blueprint"]);
+      expect(steps.sections[0].entries[0]).toBe(line);
+      expect(lineTitled(steps, "Refine Alpha Tonic").section).toBe("build");
+    });
+
+    it("stays open while one blueprint is still to get", () => {
+      const line = quest(recipes(`${TONICS.Alpha}Blueprint`));
+      expect(line.parts.map((part) => part.done)).toEqual([true, false]);
+      expect(line.done).toBe(false);
+    });
+
+    it("settles once every blueprint is held", () => {
+      expect(quest(recipes(`${TONICS.Alpha}Blueprint`, `${TONICS.Beta}Blueprint`)).done).toBe(true);
+    });
+
+    it("settles once the quest is done", () => {
+      const inventory = {
+        QuestKeys: [{ ItemType: KEY, Completed: true }],
+      } as unknown as RawInventoryData;
+      expect(quest(inventory).done).toBe(true);
+    });
+  });
+});
+
+describe("an earn line", () => {
+  let db: Record<string, ItemDbEntry> = {};
+
+  beforeAll(() => {
+    itemDatabase.buildDatabase();
+    db = itemDatabase.getRendererLookup() as unknown as Record<string, ItemDbEntry>;
+  });
+
+  function steps(name: string): PlanModel {
+    const plan = authoredPlan(name);
+    if (!plan) throw new Error(`no plan for ${name}`);
+    const parts = { known: false, copies: 1 } as PartPlan;
+    const resolved = resolvePlan(plan, { itemDb: db, inventory: null, now: NOW }, null, {
+      uniqueName: name,
+      parts,
+    });
+    return planSteps(resolved, { t });
+  }
+
+  const KUVA_1K: PlanCurrency[] = [{ currency: "Kuva", amount: "1,000" }];
+  const vendor = (): PlanGroup => ({
+    ...group("vendor", "NAKAK", "buy it", [row("Thing", KUVA_1K)]),
+    spends: KUVA_1K,
+  });
+  const earner = (): PlanGroup => ({
+    ...group("currency", "KUVA FLOOD NODE", "Kuva Flood", [row("Kuva")]),
+    earns: { currency: "Kuva", amount: "1,000" },
+  });
+  const kuva = (groups: PlanGroup[]): PlanLine =>
+    lineTitled(planSteps(fixture(groups), { t }), "Earn Kuva");
+
+  it("tags the line with how the currency banks, then where", () => {
+    expect(kuva([earner(), vendor()]).tag).toBe("Kuva Flood, Kuva Flood Node");
+    expect(lineTitled(steps("Aegrit"), "Earn Stock").tag).toBe(
+      "Break Narmer weekly mission, Drifter's Camp, Earth",
+    );
+  });
+
+  it("leaves out an activity that only restates the title", () => {
+    expect(lineTitled(steps("Mara Detron"), "Earn Orokin Ducats").tag).toBe("Void Fissures, Any");
+    expect(lineTitled(steps("Aegrit"), "Earn Kuva").tag).toBe("Any Kuva Siphon, Flood Or Relic");
+  });
+
+  it("reads the same whether the plan authors it or the store supplies it", () => {
+    const pick = (entry: PlanLine) => ({
+      kind: entry.kind,
+      section: entry.section,
+      title: entry.title,
+      tag: entry.tag,
+      count: entry.count,
+      place: entry.place,
+      wiki: entry.drawer.wiki,
+    });
+    expect(pick(kuva([vendor()]))).toEqual(pick(kuva([earner(), vendor()])));
+  });
+
+  it("joins a supplied earn line to the trip at its place", () => {
+    const model = steps("Ironbride");
+    const trip = model.sections
+      .flatMap((section) => section.entries)
+      .find((entry) => entry.kind === "trip" && entry.place === "Cambion Drift, Deimos");
+    const titles = trip?.kind === "trip" ? trip.lines.map((entry) => entry.title) : [];
+    expect(titles).toEqual(
+      expect.arrayContaining(["Mother, Isolation Vaults", "Earn Entrati Standing"]),
+    );
+  });
+});
+
+describe("a rank-up's sacrifice that drops on a trip", () => {
+  let db: Record<string, ItemDbEntry> = {};
+
+  beforeAll(() => {
+    itemDatabase.buildDatabase();
+    db = itemDatabase.getRendererLookup() as unknown as Record<string, ItemDbEntry>;
+  });
+
+  const model = (): PlanModel => {
+    const plan = authoredPlan("Ironbride");
+    if (!plan) throw new Error("no plan for Ironbride");
+    const parts = { known: false, copies: 1 } as PartPlan;
+    const resolved = resolvePlan(plan, { itemDb: db, inventory: null, now: NOW }, null, {
+      uniqueName: "Ironbride",
+      parts,
+    });
+    return planSteps(resolved, { t });
+  };
+  const MATRICES = [
+    "Orokin Orientation Matrix",
+    "Orokin Ballistics Matrix",
+    "Orokin Animus Matrix",
+  ];
+
+  it("stays a pickup on the line it drops from", () => {
+    const vault = lineTitled(model(), "Mother, Isolation Vaults");
+    expect(vault.parts.map((part) => part.label)).toEqual(MATRICES);
+  });
+
+  it("is named once on the rank-up that takes it", () => {
+    const parts = open(model()).flatMap((entry) => entry.drawer.parts);
+    const note = (label: string) => parts.find((part) => part.label === label)?.note ?? "";
+    expect(note("Clearance: Agnesis")).toBe(
+      "Zymos Barrel Blueprint, 20 Father Tokens, 150 Void Traces; 10 Orokin Orientation Matrix",
+    );
+    for (const [rank, matrix] of [
+      ["Clearance: Modus", "Ballistics Matrix"],
+      ["Clearance: Odima", "Animus Matrix"],
+    ]) {
+      expect(note(rank).split(matrix).length - 1).toBe(1);
+    }
+  });
+});
+
+describe("an alias of Credits", () => {
+  let db: Record<string, ItemDbEntry> = {};
+
+  beforeAll(() => {
+    itemDatabase.buildDatabase();
+    db = itemDatabase.getRendererLookup() as unknown as Record<string, ItemDbEntry>;
+  });
+
+  const texts = (model: PlanModel): string[] =>
+    [...open(model), ...model.done].flatMap((entry) => [
+      entry.title,
+      entry.tag,
+      entry.cost ?? "",
+      ...entry.parts.map((part) => `${part.label} ${part.cost ?? ""}`),
+      ...entry.chips.map((chip) => chip.title),
+      ...entry.drawer.parts.map((part) => part.cost ?? ""),
+    ]);
+
+  it("is dropped from a price and never farmed, the way Credits are", () => {
+    const price: PlanCurrency[] = [
+      { currency: "Ostron Standing", amount: "1,000" },
+      { currency: "Höllars", amount: "5,000" },
+    ];
+    const shop = {
+      ...group("vendor", "CETUS, EARTH", "buy it", [row("Thing", price)]),
+      spends: price,
+    };
+    const model = planSteps(fixture([shop]), { t });
+    expect(lineTitled(model, "Buy Thing").cost).toBe("1K Ostron Standing");
+    expect(texts(model).some((text) => /h[öo]llars|credits/i.test(text))).toBe(false);
+  });
+
+  it.each(["AX-52", "Reconifex"])("shows nowhere on %s", (name) => {
+    const plan = authoredPlan(name);
+    if (!plan) throw new Error(`no plan for ${name}`);
+    const parts = { known: false, copies: 1 } as PartPlan;
+    const resolved = resolvePlan(plan, { itemDb: db, inventory: null, now: NOW }, null, {
+      uniqueName: name,
+      parts,
+    });
+    expect(texts(planSteps(resolved, { t })).some((text) => /h[öo]llars/i.test(text))).toBe(false);
+  });
+});
+
+describe("a group a quest pays out", () => {
+  let db: Record<string, ItemDbEntry> = {};
+
+  beforeAll(() => {
+    itemDatabase.buildDatabase();
+    db = itemDatabase.getRendererLookup() as unknown as Record<string, ItemDbEntry>;
+  });
+
+  function unique(name: string, pattern = /./): string {
+    const found = Object.entries(db).find(
+      ([key, entry]) => entry.name === name && pattern.test(key),
+    );
+    if (!found) throw new Error(`no item named ${name}`);
+    return found[0];
+  }
+
+  function steps(name: string, inventory: RawInventoryData | null = null): PlanModel {
+    const plan = authoredPlan(name);
+    if (!plan) throw new Error(`no plan for ${name}`);
+    const parts = { known: false, copies: 1 } as PartPlan;
+    const resolved = resolvePlan(plan, { itemDb: db, inventory, now: NOW }, null, {
+      uniqueName: name,
+      parts,
+    });
+    return planSteps(resolved, { t });
+  }
+
+  const all = (model: PlanModel): PlanLine[] => [...open(model), ...model.done];
+  const saya = (inventory: RawInventoryData | null = null): PlanLine =>
+    lineTitled(steps("Gara", inventory), "Do Saya's Vigil");
+
+  it("leads Get as Do <quest>, its pickup named in full, tagged where the quest runs", () => {
+    const model = steps("Gara");
+    const line = saya();
+    expect(model.sections[0].entries[0]).toBe(lineTitled(model, "Do Saya's Vigil"));
+    expect(line).toMatchObject({ kind: "quest", section: "get", tag: "Cetus, Earth" });
+    expect(line.parts.map((part) => part.label)).toEqual(["Gara Blueprint"]);
+    expect(all(model).some((entry) => entry.title === "Konzu, then Saya")).toBe(false);
+  });
+
+  it("keeps the group's where and activity in its drawer, with the pickup's note", () => {
+    const { drawer } = saya();
+    expect(drawer.where).toBe("Cetus, Earth, Konzu, then Saya");
+    expect(drawer.rates).toContain("finish the quest");
+    expect(drawer.parts).toMatchObject([{ label: "Gara Blueprint", note: "quest reward" }]);
+    expect(drawer.wiki).toContain("Saya's_Vigil");
+  });
+
+  it("stays open while the quest is still to do and the pickup is not held", () => {
+    expect(saya({}).done).toBe(false);
+  });
+
+  it("settles once the quest is done", () => {
+    const inventory = {
+      QuestKeys: [{ ItemType: unique("Saya's Vigil", /KeyChain/), Completed: true }],
+    } as unknown as RawInventoryData;
+    expect(saya(inventory).done).toBe(true);
+  });
+
+  it("is one step per quest: every group the quest pays out folds into it", () => {
+    const model = steps("Chroma");
+    expect(all(model).filter((entry) => entry.title === "Do The New Strange")).toHaveLength(1);
+    expect(all(model).some((entry) => entry.title === "Uranus, Neptune, Pluto")).toBe(false);
+  });
+
+  it("leaves a group that is no drop as its own step, ahead where the plan puts it", () => {
+    const model = steps("Inaros");
+    const get = model.sections[0].entries.map((entry) =>
+      entry.kind === "trip" ? "" : entry.title,
+    );
+    expect(get.indexOf("Buy Sands of Inaros Blueprint")).toBeLessThan(
+      get.indexOf("Do Sands of Inaros"),
+    );
+  });
+
+  it("takes the quest's other pickups onto the same step, chips and drawer alike", () => {
+    const line = lineTitled(steps("Titania"), "Do The Silver Grove");
+    const drawn = line.drawer.parts.map((part) => part.label);
+    expect(drawn).toEqual(expect.arrayContaining(line.parts.map((part) => part.label)));
+    expect(drawn).toContain("Nightfall Apothic Blueprint");
+  });
+});
+
+describe("a store material bought at a vendor", () => {
+  let db: Record<string, ItemDbEntry> = {};
+
+  beforeAll(() => {
+    itemDatabase.buildDatabase();
+    db = itemDatabase.getRendererLookup() as unknown as Record<string, ItemDbEntry>;
+  });
+
+  const gara = (): PlanModel => {
+    const plan = authoredPlan("Gara");
+    if (!plan) throw new Error("no plan for Gara");
+    const parts = { known: false, copies: 1 } as PartPlan;
+    const resolved = resolvePlan(plan, { itemDb: db, inventory: null, now: NOW }, null, {
+      uniqueName: "Gara",
+      parts,
+    });
+    return planSteps(resolved, { t });
+  };
+
+  const OSTRON_500 = [{ currency: "Ostron Standing", amount: "500" }];
+  const store = resourceLookup({
+    Cutter: {
+      kind: "farm",
+      best: {
+        place: "CETUS, EARTH",
+        sub: "Suumbaat",
+        activity: "buy",
+        buy: { price: OSTRON_500, reusable: true },
+      },
+    },
+    Gland: {
+      kind: "farm",
+      best: { place: "NECRALISK, DEIMOS", sub: "Son", activity: "buy", buy: { price: OSTRON_500 } },
+    },
+    Ore: { kind: "farm", best: { place: "CETUS, EARTH", sub: null, activity: "mine" } },
+  });
+  const model = (qty: string, label: string): PlanModel =>
+    planSteps(
+      fixture([], { materials: [{ qty, label, note: `${label} note` }] }, { resources: store }),
+      { t },
+    );
+
+  it("buys a reusable tool once in Get, at its price and no count", () => {
+    const line = lineTitled(model("1", "Cutter"), "Buy Cutter");
+    expect(line).toMatchObject({ kind: "buy", section: "get", cost: "500 Ostron Standing" });
+    expect(line.count).toBeNull();
+    expect(line.drawer.notes).toContain("Cutter note");
+  });
+
+  it("buys a single unit at its bare price", () => {
+    expect(lineTitled(model("1", "Gland"), "Buy Gland").cost).toBe("500 Ostron Standing");
+  });
+
+  it("counts and prices each unit when more than one is bought", () => {
+    const line = lineTitled(model("3", "Gland"), "Buy Gland");
+    expect(line).toMatchObject({ cost: "500 Ostron Standing each", count: { need: 3 } });
+  });
+
+  it("keeps a material with no price a farm line", () => {
+    expect(lineTitled(model("5", "Ore"), "Ore")).toMatchObject({
+      kind: "material",
+      section: "farm",
+    });
+  });
+
+  it("never farms the tool, and its standing still counts toward the earn line", () => {
+    const steps = gara();
+    expect(lineTitled(steps, "Buy Nosam Cutter").cost).toBe("500 Ostron Standing");
+    expect(open(steps).some((entry) => entry.title === "Nosam Cutter")).toBe(false);
+    expect(lineTitled(steps, "Earn Ostron Standing").count?.need).toBe(6_000);
+  });
+});
+
+describe("a price", () => {
+  const vendor = (currency: string, amount: string): PlanLine => {
+    const price = [{ currency, amount }];
+    const shop = { ...group("vendor", "RELAY", "buy it", [row("Thing", price)]), spends: price };
+    return lineTitled(planSteps(fixture([shop]), { t }), "Buy Thing");
+  };
+
+  it("names the standing that pays it", () => {
+    expect(vendor("Cephalon Simaris Standing", "50,000").cost).toBe(
+      "50K Cephalon Simaris Standing",
+    );
+    expect(vendor("Ostron Standing", "2,500").cost).toBe("2.5K Ostron Standing");
+  });
+
+  it("names any other currency the same way", () => {
+    expect(vendor("Live Heartcell", "10").cost).toBe("10 Live Heartcell");
+  });
+});
+
+describe("a chipped row's facts", () => {
+  const drop = (rows: PlanRow[]): PlanLine =>
+    lineTitled(
+      planSteps(fixture([group("farm", "FOSSA, VENUS", "Assassination", rows)]), { t }),
+      "Assassination",
+    );
+
+  it("keeps every chip's note in the drawer, the chip still on the line", () => {
+    const line = drop([row("Neuroptics Blueprint"), row("Chassis Blueprint")]);
+    expect(line.parts.map((part) => part.label)).toEqual([
+      "Neuroptics Blueprint",
+      "Chassis Blueprint",
+    ]);
+    expect(line.drawer.parts.map((part) => [part.label, part.note])).toEqual([
+      ["Neuroptics Blueprint", "Neuroptics Blueprint note"],
+      ["Chassis Blueprint", "Chassis Blueprint note"],
+    ]);
+  });
+
+  it("keeps a chip's done state and count in the drawer", () => {
+    const line = drop([
+      { ...row("Neuroptics Blueprint"), done: true },
+      { ...row("Lens"), qty: "3" },
+    ]);
+    expect(line.drawer.parts).toMatchObject([
+      { label: "Neuroptics Blueprint", done: true },
+      { label: "Lens", done: false, count: { need: 3 } },
+    ]);
+  });
+
+  it("keeps an earn line's chips in its drawer", () => {
+    const db = (() => {
+      itemDatabase.buildDatabase();
+      return itemDatabase.getRendererLookup() as unknown as Record<string, ItemDbEntry>;
+    })();
+    const plan = authoredPlan("Bhaira Hound");
+    if (!plan) throw new Error("no plan for Bhaira Hound");
+    const parts = { known: false, copies: 1 } as PartPlan;
+    const resolved = resolvePlan(plan, { itemDb: db, inventory: null, now: NOW }, null, {
+      uniqueName: "Bhaira Hound",
+      parts,
+    });
+    const line = lineTitled(planSteps(resolved, { t }), "Earn Solaris United Standing");
+    const drawn = line.drawer.parts.map((part) => part.label);
+    expect(line.parts.length).toBeGreaterThan(0);
+    expect(drawn).toEqual(expect.arrayContaining(line.parts.map((part) => part.label)));
+  });
+});
+
+describe("a place name", () => {
+  const tag = (place: string): string =>
+    lineTitled(planSteps(fixture([group("farm", place, "Hunt", [row("Lens")])]), { t }), "Hunt")
+      .tag;
+
+  it.each([
+    ["PLAINS OF EIDOLON, EARTH", "Plains of Eidolon, Earth"],
+    ["THE QUILLS, CETUS", "The Quills, Cetus"],
+    ["MINERVA, THE ROUND TABLE", "Minerva, The Round Table"],
+    ["RELAY, RED VEIL AND NEW LOKA", "Relay, Red Veil and New Loka"],
+    ["BARO KI'TEER, RELAY", "Baro Ki'teer, Relay"],
+    ["LA CATHÉDRALE, SANCTUM ANATOMICA", "La Cathédrale, Sanctum Anatomica"],
+    ["BIRD 3, SANCTUM ANATOMICA", "Bird 3, Sanctum Anatomica"],
+  ])("reads %s as %s", (place, expected) => {
+    expect(tag(place)).toBe(expected);
   });
 });

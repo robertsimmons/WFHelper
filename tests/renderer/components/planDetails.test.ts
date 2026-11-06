@@ -189,7 +189,7 @@ describe("a plan's share of a shop", () => {
       ),
       shopPicks: { acrithis: otherHusk },
     });
-    const buy = titled(planSteps(oraxia, { t }), "Buy at Acrithis");
+    const buy = titled(planSteps(oraxia, { t }), "Buy Oraxia Chassis Blueprint");
     expect(buy).toMatchObject({ cost: "20 Scuttler Husk covered", blocked: false, next: true });
     expect(oraxia.shop?.all.totals.find((line) => line.currency === "Kullervo's Bane")).toEqual({
       currency: "Kullervo's Bane",
@@ -212,7 +212,7 @@ describe("a plan's share of a shop", () => {
   it("totals every pick in its currency, per currency, and the farm row counts the same", () => {
     const kullervo = stocked("Kullervo", { inventory: held({ [HUSK]: 89, [BANE]: 14 }) });
     const model = planSteps(kullervo, { t });
-    expect(titled(model, "Buy at Acrithis")?.cost).toBe("114 Kullervo's Bane short 100");
+    expect(titled(model, "Buy Kullervo blueprints")?.cost).toBe("114 Kullervo's Bane short 100");
     expect(titled(model, "Kullervo's Hold")?.count).toEqual({ have: 14, need: 114 });
     expect(kullervo.shop?.all.totals.map((line) => [line.currency, line.balance])).toEqual([
       ["Scuttler Husk", 89],
@@ -225,7 +225,7 @@ describe("a plan's share of a shop", () => {
     const model = planSteps(amanata, { t });
     const pearls = amanata.shop?.all.totals[0].need ?? 0;
     expect(amanata.shop?.own.totals[0]).toMatchObject({ need: pearls + 47, balance: 17 });
-    expect(titled(model, "Buy at Koumei's Shrine")?.cost).toContain("Fate Pearl");
+    expect(titled(model, "Buy Amanata blueprints")?.cost).toContain("Fate Pearl");
     expect(titled(model, "Cetus shrine")?.count).toEqual({ have: 17, need: pearls + 47 });
     expect(titled(model, "Fate Pearl")).toBeUndefined();
   });

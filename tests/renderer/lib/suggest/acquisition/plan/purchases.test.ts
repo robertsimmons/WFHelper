@@ -92,11 +92,11 @@ describe("a material bought from a vendor", () => {
     });
     expect(rows.map((row) => row.owes)).toEqual([
       [{ currency: SOLARIS, value: 2_000 }],
-      [{ currency: SOLARIS, value: 1_000 }],
+      [{ currency: SOLARIS, value: 65_000 }],
     ]);
     expect(resolved.ledger.find((entry) => entry.currency === SOLARIS)).toMatchObject({
-      spent: 3_000,
-      outstanding: 3_000,
+      spent: 67_000,
+      outstanding: 67_000,
     });
   });
 
@@ -105,15 +105,15 @@ describe("a material bought from a vendor", () => {
     expect(rows[0].purchase).toMatchObject({ owned: true, rankMet: true });
     expect(rows[0].owes).toBeUndefined();
     expect(resolved.ledger.find((entry) => entry.currency === SOLARIS)).toMatchObject({
-      spent: 1_000,
-      outstanding: 1_000,
+      spent: 65_000,
+      outstanding: 65_000,
     });
   });
 
-  it("still owes a held blueprint nothing marks reusable", () => {
+  it("still owes a held blueprint nothing marks reusable, once per craft", () => {
     const { rows } = vendorRows(player([TRAVOCYTE_BP]));
     expect(rows[1].purchase).toMatchObject({ reusable: false, owned: false });
-    expect(rows[1].owes).toEqual([{ currency: SOLARIS, value: 1_000 }]);
+    expect(rows[1].owes).toEqual([{ currency: SOLARIS, value: 65_000 }]);
   });
 
   it("takes reusable from the item data when the store does not say", () => {

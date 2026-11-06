@@ -1,4 +1,7 @@
-import { describe, expect, it } from "vitest";
+import { beforeAll, describe, expect, it } from "vitest";
+
+import * as itemDatabase from "../../../../../../services/itemDatabase";
+import type { ItemDbEntry, RawInventoryData } from "../../../../../../src/types/inventory.js";
 
 import {
   building,
@@ -13,6 +16,7 @@ import {
 import {
   authoredPlan,
   resolvePlan,
+  settleRanks,
 } from "../../../../../../src/lib/suggest/acquisition/plan/index.js";
 import type {
   AuthoredPlan,
@@ -23,6 +27,10 @@ import type {
 } from "../../../../../../src/lib/suggest/acquisition/plan/index.js";
 import { planGroup } from "../../../../../../src/lib/suggest/acquisition/plan/materials.js";
 import type { PlanGroup } from "../../../../../../src/lib/suggest/acquisition/plan/schema.js";
+import type { PartPlan } from "../../../../../../src/lib/suggest/acquisition/types.js";
+import { buildPartPlans } from "../../../../../../src/lib/suggest/acquisition/parts.js";
+import { resourceEntry } from "../../../../../../src/lib/suggest/acquisition/plan/resources.js";
+import store from "../../../../../../src/data/suggest/acquisitionPlans/resources.json";
 
 const NOW = Date.parse("2026-01-01T00:00:00Z");
 const MINUTE = 60_000;
@@ -268,8 +276,11 @@ describe("currency ledger", () => {
       outstanding: 125,
       paired: true,
     });
-    // The group's own rows name the tokens, so its header does not restate them.
-    expect(byPlace(plan, "CAMBION DRIFT, DEIMOS").earns).toBeNull();
+    // A row naming the tokens does not stand the flow down: the flow is the count.
+    expect(byPlace(plan, "CAMBION DRIFT, DEIMOS").earns).toMatchObject({
+      currency: "Mother Token",
+      value: 125,
+    });
   });
 
   it("drops what is already bought out of the total still to bank", () => {
@@ -281,15 +292,109 @@ describe("currency ledger", () => {
     expect(tokens?.outstanding).toBe(75);
   });
 
-  it("renders an unpaired spend as an ordinary cost with no phantom earner", () => {
+  it("farms a spend nothing earns from the resource store, with no authored earner", () => {
     const hound = structuredClone(load("Hound"));
     hound.groups = hound.groups.filter(
       (group) => !(group.type === "currency" && group.ref === "Entrati Standing"),
     );
     const plan = resolveShipped(hound);
     const entrati = plan.ledger.find((entry) => entry.currency === "Entrati Standing");
-    expect(entrati).toMatchObject({ earned: null, spent: 79000, paired: false });
+    expect(entrati).toMatchObject({ earned: 79000, spent: 79000, paired: true });
     expect(plan.groups.every((group) => group.earns?.currency !== "Entrati Standing")).toBe(true);
+    const farm = plan.groups
+      .flatMap((group) => group.rows)
+      .find((row) => row.label === "Entrati Standing");
+    expect(farm?.qty?.required).toBe(79000);
+  });
+
+  describe("a spend nothing earns is farmed for every copy the plan builds", () => {
+    const sized = (name: string, copies: number): ResolvedPlan =>
+      resolvePlan(load(name), { itemDb: itemDb(), inventory: inventory(), now: NOW }, null, {
+        uniqueName: name,
+        parts: { known: false, copies } as PartPlan,
+      });
+    const farmed = (plan: ResolvedPlan, currency: string) => ({
+      ledger: plan.ledger.find((entry) => entry.currency === currency),
+      required: byLabel(plan, currency).qty?.required,
+    });
+
+    it.each([
+      [1, 19000],
+      [2, 22000],
+    ])("buys a one-use blueprint again per copy and a reusable one once (%i)", (copies, need) => {
+      // Arum Spinosa: Father's barrel blueprints are 3,000 a build; the gem blueprints are 16,000 once.
+      const entrati = farmed(sized("Arum Spinosa", copies), "Entrati Standing");
+      expect(entrati.ledger).toMatchObject({ earned: need, spent: need, paired: true });
+      expect(entrati.required).toBe(need);
+    });
+
+    it.each([1, 2])("buys a reusable tool once whatever the copies (%i)", (copies) => {
+      const solaris = farmed(sized("Arum Spinosa", copies), "Solaris United Standing");
+      expect(solaris.ledger).toMatchObject({ earned: 2500, spent: 2500, paired: true });
+      expect(solaris.required).toBe(2500);
+    });
+
+    it.each([
+      [1, 7500],
+      [2, 15000],
+    ])("spends a figure the rows do not itemize once per copy (%i)", (copies, need) => {
+      const hex = farmed(sized("Coda Hema", copies), "The Hex Standing");
+      expect(hex.ledger).toMatchObject({ earned: need, spent: need, paired: true });
+      expect(hex.required).toBe(need);
+    });
+  });
+
+  describe("a material row sized for every copy is paid for once", () => {
+    let db: Record<string, ItemDbEntry> = {};
+
+    beforeAll(() => {
+      itemDatabase.buildDatabase();
+      db = itemDatabase.getRendererLookup() as unknown as Record<string, ItemDbEntry>;
+    });
+
+    function carded(name: string, copies: number): ResolvedPlan {
+      const uniqueName = Object.keys(db).find((key) => db[key].name === name && db[key].recipe);
+      if (!uniqueName) throw new Error(`no ${name} in the item database`);
+      const target = { uniqueName, name, entry: db[uniqueName], copies };
+      const parts = buildPartPlans([target], db, new Map(), new Map()).get(uniqueName);
+      if (!parts?.known) throw new Error(`no part plan for ${name}`);
+      return resolvePlan(load(name), { itemDb: db, inventory: {}, now: NOW }, null, {
+        uniqueName,
+        parts,
+      });
+    }
+
+    it.each([
+      [1, 5, 12500],
+      [2, 10, 25000],
+    ])("buys Galvacord's Atmo Systems at Little Duck per unit (%i)", (copies, atmo, standing) => {
+      const plan = carded("Galvacord", copies);
+      const row = byLabel(plan, "Atmo Systems");
+      expect(row.qty?.required).toBe(atmo);
+      const vox = plan.ledger.find((entry) => entry.currency === "Vox Solaris Standing");
+      expect(vox).toMatchObject({ earned: standing, spent: standing, paired: true });
+      expect(byLabel(plan, "Vox Solaris Standing").qty?.required).toBe(standing);
+      const shop = plan.groups.find((group) => group.rows.includes(row));
+      expect(shop?.spends.map((spend) => spend.value)).toEqual([standing]);
+    });
+
+    it("marks a bought material blueprint reusable exactly when DE's item data does", () => {
+      const reusable = new Map(
+        Object.values(db)
+          .filter((entry) => entry.name?.endsWith(" Blueprint"))
+          .map((entry) => [entry.name, entry.reusableBlueprint === true] as const),
+      );
+      const disagree = Object.keys(store)
+        .map((name) => resourceEntry(name))
+        .filter((entry) => entry?.kind === "craft" && entry.best?.buy)
+        .filter((entry) => reusable.has(`${entry?.name} Blueprint`))
+        .filter(
+          (entry) =>
+            (entry?.best?.buy?.reusable === true) !== reusable.get(`${entry?.name} Blueprint`),
+        )
+        .map((entry) => entry?.name);
+      expect(disagree).toEqual([]);
+    });
   });
 
   it("pairs a spent currency the plan lists as a material with that material", () => {
@@ -541,5 +646,192 @@ describe("credits", () => {
     const row = byLabel(resolve(creditsPlan()), "Credits");
     expect(row).toMatchObject({ done: false, manual: true });
     expect(row.qty?.tracked).toBe(false);
+  });
+});
+
+/** Fluctus: one part per relay syndicate, each a standing group buying the part and
+ *  a rank-up group climbing to rank 3, resolved against the real item database. */
+describe("standing purchases", () => {
+  const SYNDICATES = {
+    "Steel Meridian": { tag: "SteelMeridianSyndicate", part: "Stock" },
+    "Red Veil": { tag: "RedVeilSyndicate", part: "Limbs" },
+    "Cephalon Suda": { tag: "CephalonSudaSyndicate", part: "Barrel" },
+  } as const;
+  type Syndicate = keyof typeof SYNDICATES;
+  const ALL = Object.keys(SYNDICATES) as Syndicate[];
+  let db: Record<string, ItemDbEntry> = {};
+
+  beforeAll(() => {
+    itemDatabase.buildDatabase();
+    db = itemDatabase.getRendererLookup() as unknown as Record<string, ItemDbEntry>;
+  });
+
+  function builtPart(syndicate: Syndicate): string {
+    const name = `Fluctus ${SYNDICATES[syndicate].part}`;
+    const found = Object.keys(db).find((uniqueName) => db[uniqueName].name === name);
+    if (!found) throw new Error(`no ${name} in the item database`);
+    return found;
+  }
+
+  interface Player {
+    titles?: Partial<Record<Syndicate, number>>;
+    standing?: Partial<Record<Syndicate, number>>;
+    held?: Syndicate[];
+  }
+
+  function fluctus({ titles = {}, standing = {}, held = [] }: Player = {}): ResolvedPlan {
+    const inventory: RawInventoryData = {
+      Affiliations: ALL.map((name) => ({
+        Tag: SYNDICATES[name].tag,
+        Title: titles[name] ?? 0,
+        Standing: standing[name] ?? 0,
+      })),
+      MiscItems: held.map((name) => ({ ItemType: builtPart(name), ItemCount: 1 })),
+    };
+    return resolvePlan(load("Fluctus"), { itemDb: db, inventory, now: NOW });
+  }
+
+  const earning = (plan: ResolvedPlan, syndicate: Syndicate): ResolvedGroup =>
+    plan.groups.find((group) => group.activity === `Earn ${syndicate} Standing`) as ResolvedGroup;
+  const ranking = (plan: ResolvedPlan, syndicate: Syndicate): ResolvedGroup =>
+    plan.groups.find((group) => group.title === `${syndicate} rank-ups`) as ResolvedGroup;
+  const part = (plan: ResolvedPlan, syndicate: Syndicate): ResolvedRow =>
+    byLabel(plan, `Fluctus ${SYNDICATES[syndicate].part} Blueprint`);
+  const owed = (plan: ResolvedPlan, syndicate: Syndicate): number =>
+    plan.ledger.find((entry) => entry.currency === `${syndicate} Standing`)?.outstanding ?? 0;
+
+  it("lists the part each standing group buys", () => {
+    const plan = fluctus();
+    for (const syndicate of ALL) {
+      expect(earning(plan, syndicate).buys).toEqual([part(plan, syndicate).id]);
+    }
+  });
+
+  it("holds a part behind the top rank its syndicate climbs to while that rank is unmet", () => {
+    const plan = fluctus();
+    expect(part(plan, "Steel Meridian").purchase).toMatchObject({
+      rank: "Defender",
+      rankMet: false,
+    });
+    expect(part(plan, "Cephalon Suda").purchase).toMatchObject({
+      rank: "Intelligent",
+      rankMet: false,
+    });
+  });
+
+  it("owes every rank-up and every part while nothing is owned and no rank is met", () => {
+    const plan = fluctus();
+    for (const syndicate of ALL) {
+      expect(ranking(plan, syndicate).done).toBe(false);
+      expect(earning(plan, syndicate).done).toBe(false);
+      expect(owed(plan, syndicate)).toBe(91_000);
+    }
+  });
+
+  it("owes only the parts once the ranks are met", () => {
+    const plan = fluctus({ titles: { "Steel Meridian": 3, "Red Veil": 3, "Cephalon Suda": 3 } });
+    for (const syndicate of ALL) {
+      expect(ranking(plan, syndicate).done).toBe(true);
+      expect(part(plan, syndicate).purchase?.rankMet).toBe(true);
+      expect(earning(plan, syndicate).done).toBe(false);
+      expect(owed(plan, syndicate)).toBe(20_000);
+    }
+  });
+
+  it("settles a syndicate whose part is owned, even hated, and leaves the others open", () => {
+    const plan = fluctus({ titles: { "Cephalon Suda": -2 }, held: ["Cephalon Suda"] });
+    const suda = ranking(plan, "Cephalon Suda");
+    expect(suda.done).toBe(true);
+    expect(suda.rows.every((row) => row.done)).toBe(true);
+    expect(earning(plan, "Cephalon Suda")).toMatchObject({ done: true, remaining: 0 });
+    expect(byLabel(plan, "Initiation").done).toBe(false);
+    expect(owed(plan, "Cephalon Suda")).toBe(0);
+    expect(owed(plan, "Steel Meridian")).toBe(91_000);
+    expect(ranking(plan, "Red Veil").done).toBe(false);
+  });
+
+  it("settles every standing group and rank-up once every part is owned", () => {
+    const plan = fluctus({ held: ALL });
+    for (const syndicate of ALL) {
+      expect(ranking(plan, syndicate).done).toBe(true);
+      expect(earning(plan, syndicate).done).toBe(true);
+      expect(owed(plan, syndicate)).toBe(0);
+    }
+  });
+
+  it("counts a settled group's unticked rows as done steps", () => {
+    const none = fluctus();
+    const all = fluctus({ held: ALL });
+    expect(all.steps.total).toBe(none.steps.total);
+    const open = all.groups.filter((group) => !group.done && group.skip === null);
+    const left = open.reduce((sum, group) => sum + group.rows.filter((row) => !row.done).length, 0);
+    expect(all.steps.done).toBe(all.steps.total - left);
+  });
+
+  it("lists a rank-gated part bought in standing as the standing group's buy", () => {
+    const plan = resolvePlan(load("Velocitus"), { itemDb: db, inventory: null, now: NOW });
+    const group = earning(plan as ResolvedPlan, "Steel Meridian");
+    expect(group.buys).toEqual(["1:3:velocitus receiver blueprint"]);
+    expect(group.done).toBe(false);
+  });
+
+  it("settles rank-ups listed inside the standing group once the weapon they buy is held", () => {
+    const hek = Object.keys(db).find((uniqueName) => db[uniqueName].name === "Vaykor Hek");
+    const inventory: RawInventoryData = {
+      Affiliations: [{ Tag: "SteelMeridianSyndicate", Title: 0, Standing: 0 }],
+      LongGuns: [{ ItemType: hek }],
+    } as RawInventoryData;
+    const plan = resolvePlan(load("Vaykor Hek"), { itemDb: db, inventory, now: NOW });
+    const ranked = plan.groups.flatMap((group) => group.rows).filter((row) => row.unlocks);
+    expect(ranked.length).toBeGreaterThan(0);
+    expect(ranked.every((row) => row.done)).toBe(true);
+    expect(owed(plan, "Steel Meridian")).toBe(0);
+  });
+});
+
+describe("settling rank-ups", () => {
+  const row = (id: string, extra: Partial<ResolvedRow> = {}): ResolvedRow => ({
+    id,
+    label: id,
+    note: null,
+    qty: null,
+    alt: null,
+    done: false,
+    source: "authored",
+    manual: true,
+    ...extra,
+  });
+  const owned = (id: string, held: boolean): ResolvedRow =>
+    row(id, {
+      purchase: {
+        price: [],
+        each: false,
+        rank: null,
+        rankMet: false,
+        blueprint: true,
+        reusable: true,
+        owned: held,
+      },
+    });
+  const settled = (rows: ResolvedRow[], skip: unknown = null): boolean =>
+    settleRanks([
+      { skip: null, rows: [row("rank", { unlocks: rows.map((entry) => entry.id) })] },
+      { skip, rows },
+    ])[0][0].done;
+
+  it("keeps a rank-up open while a purchase it unlocks is neither done nor held", () => {
+    expect(settled([owned("a", true), owned("b", false)])).toBe(false);
+  });
+
+  it("settles a rank-up once every purchase it unlocks is a held reusable blueprint", () => {
+    expect(settled([owned("a", true), owned("b", true)])).toBe(true);
+  });
+
+  it("settles a rank-up once every purchase it unlocks is done", () => {
+    expect(settled([row("a", { done: true }), owned("b", true)])).toBe(true);
+  });
+
+  it("settles a rank-up whose purchases sit in a skipped group", () => {
+    expect(settled([owned("a", false)], { reason: "quest done" })).toBe(true);
   });
 });

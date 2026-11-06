@@ -10,6 +10,7 @@ import {
 import {
   buildCraftingTree,
   computeCraftingSummary,
+  LEAF_RESOURCE_PREFIXES,
   type CraftingTreeNode,
 } from "../../craftingTree.js";
 import { buildMasteryPlan, type PlannedItem, type PlannerPin } from "../../masteryPlanner.js";
@@ -363,6 +364,7 @@ const EMPTY_PLAN: PartPlan = {
   copies: 1,
   foundry: false,
   buildable: false,
+  foundryOnly: false,
 };
 
 function partState(
@@ -389,7 +391,30 @@ function partShort(part: PartState): number {
   return Math.max(0, part.missing - part.held);
 }
 
-function materialState(resource: PlannedItem["resources"][number]): MaterialState {
+function isCommonResource(uniqueName: string): boolean {
+  return LEAF_RESOURCE_PREFIXES.some((prefix) => uniqueName.startsWith(prefix));
+}
+
+/** Spent per build, its blueprint makes a part, such as a Necramech casing. */
+export function isSingleUsePart(uniqueName: string, itemDb: Record<string, ItemDbEntry>): boolean {
+  const recipe = itemDb[uniqueName]?.recipe;
+  return recipe !== undefined && recipe.reusableBlueprint !== true && !isCommonResource(uniqueName);
+}
+
+/** A part or blueprint of the build that the planner billed as a material
+ *  because the recipe stops at it below the top level. */
+function isBuildPart(uniqueName: string, itemDb: Record<string, ItemDbEntry>): boolean {
+  return (
+    RECIPE_PATH.test(uniqueName) ||
+    itemDb[uniqueName]?.buildsProduct !== undefined ||
+    isSingleUsePart(uniqueName, itemDb)
+  );
+}
+
+function materialState(
+  resource: PlannedItem["resources"][number],
+  itemDb: Record<string, ItemDbEntry>,
+): MaterialState {
   return {
     uniqueName: resource.uniqueName,
     name: resource.name,
@@ -397,11 +422,13 @@ function materialState(resource: PlannedItem["resources"][number]): MaterialStat
     required: resource.needed,
     owned: resource.owned,
     missing: resource.missing,
+    ...(isBuildPart(resource.uniqueName, itemDb) ? { part: true as const } : {}),
   };
 }
 
 function toPartPlan(
   planned: PlannedItem,
+  itemDb: Record<string, ItemDbEntry>,
   copies: number,
   building: ReadonlyMap<string, number>,
   foundry: boolean,
@@ -429,18 +456,44 @@ function toPartPlan(
   const inHand = components.every(
     (part) => part.owned - part.building >= Math.ceil(part.required / copies),
   );
+  const materials = planned.resources.map((resource) => materialState(resource, itemDb));
   return {
     known: true,
     main,
     components,
     missing,
     sourcing,
-    materials: planned.resources.map(materialState),
+    materials,
     credits: planned.credits,
     copies,
     foundry,
     buildable: planned.craftableNow && inHand,
+    foundryOnly: sourcing.length === 0 && materials.every((material) => material.missing === 0),
   };
+}
+
+/** Plans held back only by a material short in stock, which may yet be cooked
+ *  from what is held. */
+function shortOnMaterials(plan: PartPlan | undefined): boolean {
+  return !!plan?.known && plan.sourcing.length === 0 && !plan.foundryOnly;
+}
+
+/** Re-bills those plans with every conversion worked down to uncraftable inputs. */
+function settleConversions(
+  pins: readonly PlannerPin[],
+  itemDb: Record<string, ItemDbEntry>,
+  held: Map<string, number>,
+  out: Map<string, PartPlan>,
+): void {
+  const short = pins.filter((pin) => shortOnMaterials(out.get(pin.uniqueName)));
+  if (short.length === 0) return;
+  const plan = buildMasteryPlan(short, itemDb, held, { allocate: false, expandConversions: true });
+  for (const item of plan.items) {
+    const parts = out.get(item.uniqueName);
+    if (!parts) continue;
+    const covered = item.resources.every((resource) => resource.missing === 0);
+    out.set(item.uniqueName, { ...parts, foundryOnly: covered });
+  }
 }
 
 /** One per part per build the plan is sized for, so two builds of a three-part
@@ -465,7 +518,7 @@ export function ownedParts(parts: PartPlan): number {
  *  pile holds only for a part farmed whole (Prime parts arrive as "...Blueprint"). Where
  *  a recipe builds the part they are separate items, else the card claims a build with no
  *  components. Only the plan drops them; vendor and Nightwave passes still count them. */
-function withoutPartBlueprints(
+export function withoutPartBlueprints(
   ownership: Map<string, number>,
   itemDb: Record<string, ItemDbEntry>,
 ): Map<string, number> {
@@ -509,9 +562,10 @@ function planPins(
   plan.items.forEach((item, index) => {
     out.set(
       item.uniqueName,
-      toPartPlan(item, pins[index]?.copies ?? 1, building, foundry, blueprints, underway),
+      toPartPlan(item, itemDb, pins[index]?.copies ?? 1, building, foundry, blueprints, underway),
     );
   });
+  settleConversions(pins, itemDb, held, out);
 }
 
 const RECIPE_PATH = /\/Types\/Recipes\//i;

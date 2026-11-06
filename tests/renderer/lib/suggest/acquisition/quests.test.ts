@@ -4,6 +4,7 @@ import { resolveAcquisition } from "../../../../../src/lib/suggest/acquisition/i
 import { headlinePath } from "../../../../../src/lib/suggest/acquisition/paths.js";
 import { createQuestDone } from "../../../../../src/lib/suggest/acquisition/quests.js";
 import { remainingEffort } from "../../../../../src/lib/suggest/acquisition/sort.js";
+import { standingTedium } from "../../../../../src/lib/suggest/acquisition/standing.js";
 import { frame, inventory, part } from "./fixtures.js";
 import type { ItemDbEntry, RawInventoryData } from "../../../../../src/types/inventory.js";
 import type { AcquisitionTarget } from "../../../../../src/lib/suggest/acquisition/types.js";
@@ -59,9 +60,9 @@ describe("a finished quest as a route", () => {
     expect(headline?.kind).toBe("vendor");
     expect(headline?.steps[0]?.where).toMatch(/^CEPHALON SIMARIS/);
     expect(done.effort).toBe(headline?.effort);
-    expect(done.effort).toBeGreaterThan(open.effort);
     expect(done.rating?.effort).toBe(6);
-    expect(done.effort).toBeCloseTo((done.rating?.effort ?? 0) / 10);
+    // A route bought with standing is rated by which standing, not by its author.
+    expect(done.effort).toBe(standingTedium("Cephalon Simaris Standing"));
     expect(done.rating?.badge?.text).toMatch(/Simaris/);
   });
 

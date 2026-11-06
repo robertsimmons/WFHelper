@@ -167,6 +167,7 @@ function planPin(
   budget: Map<string, number>,
   pool: Map<string, number>,
   allocate: boolean,
+  expandConversions: boolean,
 ): PlannedItem {
   const base = {
     uniqueName: pin.uniqueName,
@@ -177,7 +178,10 @@ function planPin(
   };
 
   const copies = Math.max(1, pin.copies ?? 1);
-  const tree = buildCraftingTree(pin.uniqueName, itemDb, budget, { count: copies });
+  const tree = buildCraftingTree(pin.uniqueName, itemDb, budget, {
+    count: copies,
+    expandConversions,
+  });
   if (!tree) {
     return {
       ...base,
@@ -247,6 +251,8 @@ interface MasteryPlanOptions {
   /** Hand one pool out pin by pin (the default), or measure every pin against
    *  the full inventory on its own. */
   allocate?: boolean;
+  /** Bill a converted resource short in stock as what it is cooked from. */
+  expandConversions?: boolean;
 }
 
 // One plan per pin. Allocated, owned parts and materials go to pins in order, so one
@@ -271,7 +277,14 @@ export function buildMasteryPlan(
     // still spends from one pile, but nothing carries to the next pin.
     const budget = shared?.budget ?? new Map(ownership);
     const materials = shared?.pool ?? new Map(ownership);
-    const planned = planPin(pin, itemDb, budget, materials, allocate);
+    const planned = planPin(
+      pin,
+      itemDb,
+      budget,
+      materials,
+      allocate,
+      options.expandConversions === true,
+    );
     items.push(planned);
     totalCredits += planned.credits;
     if (planned.craftableNow && planned.hasRecipe) craftableCount += 1;

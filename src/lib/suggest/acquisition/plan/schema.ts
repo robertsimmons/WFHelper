@@ -104,6 +104,8 @@ export interface PlanPurchase {
   reusable?: boolean;
   each?: boolean;
   blueprint?: boolean;
+  /** Purchases a price makes when it is not per unit; one when absent. */
+  count?: number;
 }
 
 export interface PlanDisclosure {

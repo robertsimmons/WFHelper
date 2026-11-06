@@ -579,6 +579,7 @@
       "Rare and Reinforced Corpus storage containers drop finished ones too.",
       "Invasion rewards only pay when the invasion ends, which can take a day or more, so start early."
     ],
+    "yield": 1,
     "recipe": [
       {
         "qty": 10,
@@ -2624,6 +2625,7 @@
       "how": "vendor",
       "meta": "1 per craft; grants Heat and Puncture resistance",
       "buy": {
+        "reusable": true,
         "price": [
           {
             "currency": "Entrati Standing",
@@ -3246,7 +3248,6 @@
   "Cryotic": {
     "kind": "farm",
     "harvestable": false,
-    "common": true,
     "map": null,
     "best": {
       "place": "HIERACON, PLUTO",
@@ -3582,6 +3583,7 @@
       "how": null,
       "meta": "Vazarin polarity",
       "buy": {
+        "reusable": true,
         "price": [
           {
             "currency": "Entrati Standing",
@@ -3670,6 +3672,7 @@
       "Rare and Reinforced Grineer storage containers drop finished ones too.",
       "Do not craft Injectors from Ampules as your main supply; each craft drains Plastids fast."
     ],
+    "yield": 1,
     "recipe": [
       {
         "qty": 10,
@@ -4563,6 +4566,7 @@
       "how": "vendor",
       "meta": "8 hours, 100,000 credits",
       "buy": {
+        "reusable": true,
         "price": [
           {
             "currency": "Credits",
@@ -5213,6 +5217,7 @@
       "Clear Exterminate, Capture and Assassinate Infested invasions with a fast frame such as Titania, and skip Sabotage invasions.",
       "Finished Mass from invasions and bounties skips crafting but does not help the research step, which needs raw Mutagen Samples."
     ],
+    "yield": 1,
     "recipe": [
       {
         "qty": 10,
@@ -5667,7 +5672,7 @@
     "best": {
       "place": "RELAYS, ANY",
       "sub": null,
-      "activity": "Sell Prime parts and blueprints at the Void Trader kiosk",
+      "activity": "Trade Prime parts at a Ducat Kiosk",
       "how": "vendor",
       "meta": "common 15, uncommon 45, rare 100 per part"
     },
@@ -6543,10 +6548,10 @@
     "harvestable": false,
     "map": null,
     "best": {
-      "place": "THE SILVER GROVE",
-      "sub": null,
+      "place": "QUESTS",
+      "sub": "The Silver Grove",
       "activity": "quest reward blueprint",
-      "how": null,
+      "how": "quest reward",
       "meta": "1 per craft"
     },
     "alternates": [],
@@ -6876,10 +6881,10 @@
     "harvestable": false,
     "map": null,
     "best": {
-      "place": "THE SILVER GROVE",
-      "sub": null,
+      "place": "QUESTS",
+      "sub": "The Silver Grove",
       "activity": "quest reward blueprint",
-      "how": null,
+      "how": "quest reward",
       "meta": "1 per craft"
     },
     "alternates": [],
@@ -9215,6 +9220,7 @@
       "how": "vendor",
       "meta": "1 per craft; grants Heat and Puncture resistance",
       "buy": {
+        "reusable": true,
         "price": [
           {
             "currency": "Entrati Standing",
@@ -9260,6 +9266,7 @@
       "how": "vendor",
       "meta": "1 per craft; Vazarin polarity",
       "buy": {
+        "reusable": true,
         "price": [
           {
             "currency": "Entrati Standing",

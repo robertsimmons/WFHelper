@@ -1,6 +1,9 @@
 import {
   earnsFlow,
+  groupDone,
   outstandingOf,
+  settleRanks,
+  stepCount,
   resolvePlanFor,
   type PlanContext,
   type PlanTarget,
@@ -94,27 +97,20 @@ export function tickPlanRows(
  *  over the overrides, so a later re-resolve never wins over a tick. */
 export function withRowOverrides(plan: ResolvedPlan, overrides: RowOverrides): ResolvedPlan {
   if (Object.keys(overrides).length === 0) return plan;
-  const groups = plan.groups.map((group): ResolvedGroup => {
-    const rows = group.rows.map((row): PlanViewRow => {
+  const ticked = plan.groups.map((group) => ({
+    ...group,
+    rows: group.rows.map((row): PlanViewRow => {
       const done = overrides[row.id];
       if (row.manual || done === undefined) return row;
       return { ...row, done, temporary: true };
-    });
-    const remaining = group.skip !== null ? 0 : rows.filter((row) => !row.done).length;
-    return {
-      ...group,
-      rows,
-      done: group.skip !== null || rows.every((row) => row.done),
-      remaining,
-    };
+    }),
+  }));
+  const settled = settleRanks(ticked);
+  const groups = ticked.map((group, index): ResolvedGroup => {
+    const rows = settled[index];
+    const done = groupDone({ ...group, rows });
+    return { ...group, rows, done, remaining: done ? 0 : rows.filter((row) => !row.done).length };
   });
-  let total = 0;
-  let done = 0;
-  for (const group of groups) {
-    if (group.skip !== null) continue;
-    total += group.rows.length;
-    done += group.rows.filter((row) => row.done).length;
-  }
   const owed = outstandingOf(groups);
   const ledger = plan.ledger.map((entry) => ({
     ...entry,
@@ -132,5 +128,5 @@ export function withRowOverrides(plan: ResolvedPlan, overrides: RowOverrides): R
       },
     };
   });
-  return { ...plan, groups: flowing, ledger, steps: { done, total } };
+  return { ...plan, groups: flowing, ledger, steps: stepCount(groups) };
 }

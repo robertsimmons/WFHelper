@@ -185,7 +185,10 @@ describe("acquisition plan page", () => {
   });
 
   it("files a skipped step under done, with nothing left to tick", () => {
-    const sarpa = resolved("Sarpa");
+    const sarpa: ResolvedPlan = {
+      ...resolved("Sarpa"),
+      groups: [group("0", [row("a", false, "authored")], { reason: "owned elsewhere" })],
+    };
     const model = planSteps(sarpa, { t });
     const ids = sarpa.groups
       .filter((entry) => entry.skip !== null)
@@ -423,11 +426,13 @@ describe("standing on the plan", () => {
     ]);
   });
 
-  it("leaves the banked line off a group whose own rows name that currency", () => {
+  it("keeps the banked line on a group whose own rows name that currency", () => {
     const banks = resolved("Hound").groups.filter((entry) => entry.earns !== null);
-    // The Orb Vallis group's own row names Solaris United standing; the Entrati
-    // group's rows are its rank-ups, so it keeps its banked line.
-    expect(banks.map((entry) => entry.earns?.currency)).toEqual(["Entrati Standing"]);
+    // A row naming the currency is no chip, so the flow is the line's only count.
+    expect(banks.map((entry) => entry.earns?.currency)).toEqual([
+      "Solaris United Standing",
+      "Entrati Standing",
+    ]);
   });
 });
 

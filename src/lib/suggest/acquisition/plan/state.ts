@@ -368,6 +368,16 @@ export function balanceFor(state: PlayerState, label: string, itemName: string):
   return standingBalance(state, label) ?? ownedForLabel(state, label, itemName);
 }
 
+/** A currency balance: unknown, not zero, until an inventory has been read. */
+export function readBalance(
+  state: PlayerState,
+  inventory: RawInventoryData | null,
+  currency: string,
+  itemName: string,
+): number | null {
+  return inventory ? balanceFor(state, currency, itemName) : null;
+}
+
 /** The one read of what a plan names, through the resource store's spelling. */
 export function readLabel(
   state: PlayerState,

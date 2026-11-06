@@ -14,7 +14,7 @@
   const { entry, open, onToggle, controls, onOpenMap }: Props = $props();
 
   const BOX = "relative top-[3px] inline-block h-4 w-4 rounded-[3px] border";
-  const meta = $derived(entry.cost ?? (entry.kind === "basics" ? null : entry.place) ?? null);
+  const meta = $derived(entry.cost ?? (entry.tag || null));
 </script>
 
 <div

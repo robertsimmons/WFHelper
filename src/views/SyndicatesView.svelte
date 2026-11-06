@@ -14,8 +14,13 @@
     type SyndicateGoalPlan,
     type SyndicateStatus,
   } from "../lib/syndicates/rankup.js";
+  import { turnInsBySyndicate, type TurnInReservation } from "../lib/syndicates/turnIns.js";
+  import { pinnedRequirements } from "../lib/tradeWorkbench/queueModel.js";
+  import type { ExchangeVendor } from "../lib/suggest/vendorExchange.js";
   import { SYNDICATE_RANKS } from "../data/syndicateRanks.js";
   import { componentOwnership, inventoryData, itemDb } from "../stores/data.js";
+  import { masteryData } from "../stores/mastery.js";
+  import { masteryPins } from "../stores/masteryPins.js";
   import { activeItem } from "../stores/modals.js";
   import {
     clearSyndicateGoals,
@@ -86,6 +91,16 @@
   );
 
   const totals = $derived(aggregateNeeds(plans, inv, owned));
+
+  const turnIns = $derived(
+    turnInsBySyndicate({
+      itemDb: db,
+      inventory: inv,
+      mastery: $masteryData,
+      owned,
+      pinned: pinnedRequirements(db, $masteryPins),
+    }),
+  );
   const conflicts = $derived(alignmentConflicts(plans.map((plan) => plan.meta)));
   const hasGoals = $derived(Object.keys($syndicateGoals).length > 0);
 
@@ -93,6 +108,37 @@
     const entry = db[itemType];
     if (!entry) return;
     activeItem.set(buildParsedItemFromDb(itemType, entry, owned));
+  }
+
+  const VENDOR_KEYS: Record<ExchangeVendor, MessageKey> = {
+    yonta: "syndicates.turnInVendorYonta",
+    marie: "syndicates.turnInVendorMarie",
+  };
+
+  function reservationTag(reservation: TurnInReservation, tag: string): string {
+    const { params } = reservation;
+    switch (reservation.kind) {
+      case "rank":
+        return params.tag === tag
+          ? $tr("syndicates.turnInTagRank", { level: String(params.level) })
+          : $tr("syndicates.turnInTagOtherRank", {
+              syndicate: NAME_BY_TAG.get(String(params.tag)) ?? String(params.tag),
+              level: String(params.level),
+            });
+      case "pinned":
+        return $tr("syndicates.turnInTagPinned");
+      case "exchange":
+        return $tr("syndicates.turnInTagExchange", {
+          vendor: $tr(VENDOR_KEYS[params.vendor as ExchangeVendor]),
+          item: String(params.item),
+        });
+      case "shop":
+        return $tr("syndicates.turnInTagShop", { item: String(params.item) });
+      case "recipe":
+        return String(params.item);
+      case "fishParts":
+        return String(params.part);
+    }
   }
 
   function toggleGoal(tag: string, level: number, currentGoal: number | null): void {
@@ -105,6 +151,22 @@
     send("open-external", buildWikiUrl(name));
   }
 </script>
+
+{#snippet itemLink(itemType: string, name: string)}
+  {@const label = db[itemType]?.displayName ?? name}
+  <span class="h-4 w-4 shrink-0">
+    <ItemImage src={db[itemType]?.imageUrl ?? null} alt={label} auditKey={name} cls="h-4 w-4" />
+  </span>
+  {#if db[itemType]}
+    <button type="button" class="link-btn" onclick={() => openItem(itemType)}>
+      {label}
+    </button>
+  {:else}
+    <button type="button" class="link-btn" onclick={() => openWiki(name)}>
+      {label}
+    </button>
+  {/if}
+{/snippet}
 
 <section class="view active" data-syndicates-view>
   <div class="view-header">
@@ -282,6 +344,78 @@
                         </div>
                       </div>
                     {/each}
+
+                    {@const turnIn = turnIns.get(card.meta.tag)}
+                    {#if turnIn}
+                      {@const heldBack = turnIn.rows.filter((row) => row.safe < row.held)}
+                      <div
+                        class="flex flex-col gap-1 border-t border-[color:var(--ui-panel-border)] pt-2"
+                        data-syndicate-turn-in
+                      >
+                        <div class="flex flex-wrap items-baseline gap-x-2 text-xs">
+                          <span class="font-semibold text-text-secondary">
+                            {$tr("syndicates.turnIn")}
+                          </span>
+                          <span class="ml-auto text-text-muted">
+                            {$tr("syndicates.turnInSafeStanding", {
+                              amount: formatNumber(turnIn.safeStanding),
+                            })}
+                          </span>
+                        </div>
+
+                        <div class="flex flex-wrap gap-x-3 gap-y-1">
+                          {#each turnIn.rows as row (row.itemType)}
+                            <span class="flex items-center gap-1 text-xs">
+                              {@render itemLink(row.itemType, row.name)}
+                              <span class="text-text-secondary">
+                                {$tr("syndicates.turnInSafeOfHeld", {
+                                  safe: formatNumber(row.safe),
+                                  held: formatNumber(row.held),
+                                })}
+                              </span>
+                              {#if row.safe > 0}
+                                <span class="text-text-muted">
+                                  {$tr("syndicates.turnInStanding", {
+                                    amount: formatNumber(row.safe * row.standingPerUnit),
+                                  })}
+                                </span>
+                              {:else}
+                                <span class="text-text-muted">-</span>
+                              {/if}
+                            </span>
+                          {/each}
+                        </div>
+
+                        {#if heldBack.length > 0}
+                          <details class="text-xs">
+                            <summary
+                              class="cursor-pointer list-none text-text-muted [&::-webkit-details-marker]:hidden"
+                              ><span class="mr-[7px] font-bold" aria-hidden="true">&rsaquo;</span
+                              >{$tr("syndicates.turnInHeldBack", {
+                                count: heldBack.length,
+                              })}</summary
+                            >
+                            <div class="mt-1 flex flex-col gap-1">
+                              {#each heldBack as row (row.itemType)}
+                                <span class="flex flex-wrap items-center gap-x-2 gap-y-1">
+                                  <span class="flex items-center gap-1">
+                                    {@render itemLink(row.itemType, row.name)}
+                                    <span class="text-text-secondary">
+                                      {formatNumber(row.held - row.safe)}
+                                    </span>
+                                  </span>
+                                  {#each row.reservations as reservation, index (index)}
+                                    <span class="text-text-muted">
+                                      {reservationTag(reservation, card.meta.tag)}
+                                    </span>
+                                  {/each}
+                                </span>
+                              {/each}
+                            </div>
+                          </details>
+                        {/if}
+                      </div>
+                    {/if}
                   </ThemedPanel>
                 </article>
               {/each}

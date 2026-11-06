@@ -118,6 +118,8 @@ export interface MaterialState {
   required: number;
   owned: number;
   missing: number;
+  /** One of the build's own parts, which its routes already weigh. */
+  part?: true | undefined;
 }
 
 export interface PartPlan {
@@ -139,6 +141,9 @@ export interface PartPlan {
   foundry: boolean;
   /** The foundry would take one build right now. */
   buildable: boolean;
+  /** No part to source and every uncraftable input in hand: conversions and
+   *  sub-builds are only foundry work. */
+  foundryOnly: boolean;
 }
 
 export interface PathStep {

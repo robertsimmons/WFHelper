@@ -144,3 +144,13 @@ export function resourceLookup(source: unknown): ResourceLookup {
 }
 
 export const resourceEntry: ResourceLookup = resourceLookup(table);
+
+/** Credits, under any name the store aliases to them, are never a cost worth showing. */
+export function isCredits(label: string, lookup: ResourceLookup = resourceEntry): boolean {
+  return (lookup(label)?.name ?? label).trim().toLowerCase() === "credits";
+}
+
+/** The quest a source hands its item over in, or null for any other source. */
+export function sourceQuest(source: ResourceSource | null): string | null {
+  return source?.how === "quest reward" ? source.sub : null;
+}

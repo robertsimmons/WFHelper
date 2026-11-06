@@ -1,7 +1,9 @@
 import { toMarketSlug } from "../../marketNaming.js";
 import { curated, type CuratedLookup, type CuratedSource } from "./curated.js";
+import { materialsEffort } from "./materialEffort.js";
 import { nemesisSteps } from "./nemesis.js";
 import { relicCost } from "./relics.js";
+import { standingNeed, type StandingNeed } from "./standing.js";
 import { UNKNOWN_EFFORT, type Ratings } from "./ratings.js";
 import { markStocked, soldRelics, type TraderShelves } from "./traders.js";
 import type { RawInventoryData } from "../../../types/inventory.js";
@@ -436,6 +438,12 @@ export function buildPaths(input: PathInputs): AcquisitionPath[] {
   }
 
   excusePurchasableBlueprint(paths, missing, difficulty);
+  const route = input.afterQuest ?? input.plan;
+  const standing = route
+    ? standingNeed(route.groups, input.name, missing, input.parts.known, input.inventory)
+    : null;
+  if (standing) rateStanding(paths, standing);
+  rateMaterials(paths, materialsEffort(input.parts.materials));
   markStocked(paths, input.traders ?? null, {
     itemName: input.name,
     missing,
@@ -445,6 +453,27 @@ export function buildPaths(input: PathInputs): AcquisitionPath[] {
     (a, b) => headlineRank(a) - headlineRank(b) || a.effort - b.effort || a.id.localeCompare(b.id),
   );
   return paths;
+}
+
+function isPlanRoute(path: AcquisitionPath): boolean {
+  return path.id === PLAN_ID || path.id === AFTER_QUEST_ID;
+}
+
+/** A route bought with standing is as hard as that standing is to earn, whatever
+ *  its author or the table rated it; the plan's route is never easier than the
+ *  standing it still needs. */
+function rateStanding(paths: AcquisitionPath[], standing: StandingNeed): void {
+  for (const path of paths) {
+    if (path.kind !== "vendor" && !isPlanRoute(path)) continue;
+    const bought = path.covers.length > 0 && path.covers.every((name) => standing.covers.has(name));
+    if (bought) path.effort = standing.effort + (path.complete ? 0 : PARTIAL_PENALTY);
+    else if (isPlanRoute(path)) path.effort = Math.max(path.effort, standing.effort);
+  }
+}
+
+/** Every route still has to farm the build's materials, so none is easier than that. */
+function rateMaterials(paths: AcquisitionPath[], effort: number): void {
+  for (const path of paths) path.effort = Math.max(path.effort, effort);
 }
 
 /** A farm short only of what the Market sells still finishes the item. */

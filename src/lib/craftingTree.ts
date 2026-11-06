@@ -53,7 +53,10 @@ const MAX_DEPTH = 5;
 export const MAX_EXPAND_DEPTH = 3;
 
 /** Common resource path prefixes - never recurse into these sub-trees. */
-const LEAF_RESOURCE_PREFIXES = ["/Lotus/Types/Items/MiscItems/", "/Lotus/Types/Items/Research/"];
+export const LEAF_RESOURCE_PREFIXES = [
+  "/Lotus/Types/Items/MiscItems/",
+  "/Lotus/Types/Items/Research/",
+];
 
 // ExportResources rows land under this category, and hundreds carry a conversion
 // recipe (Sentient Cores, cut gems, refined alloys, Ayatan stars, Necramech parts).
@@ -88,8 +91,8 @@ export function takeCraftingTreeRequest(): boolean {
 }
 
 interface CraftingTreeOptions {
-  /** Open a resource that is cooked from other resources - cut gems, refined
-   *  alloys - instead of stopping at it. Off leaves every other caller's tree
+  /** Open every resource that is cooked from others - cut gems, refined alloys,
+   *  Forma - down to what cannot be crafted. Off leaves every other caller's tree
    *  exactly as it was. */
   expandConversions?: boolean;
   /** Draw a part's own blueprint as a separate row, and read every row's count
@@ -149,10 +152,11 @@ function isLeafResource(
   itemDb: Record<string, ItemDbEntry>,
   expandConversions = false,
 ): boolean {
+  if (expandConversions) return false;
   if (LEAF_RESOURCE_PREFIXES.some((p) => uniqueName.startsWith(p))) return true;
   const entry = itemDb[uniqueName];
   if (isBuildComponentEntry(uniqueName, entry)) return false;
-  return !expandConversions && isResourceEntry(entry);
+  return isResourceEntry(entry);
 }
 
 /** Two spellings of one inventory pile - the game never hands out both. */

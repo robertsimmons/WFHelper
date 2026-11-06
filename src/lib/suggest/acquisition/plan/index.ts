@@ -7,6 +7,7 @@ export { authoredPlan, authoredPlans, planFor, planRating, planSource, UNRATED }
 export { generatePrimePlan } from "./prime.js";
 export { primeOverrides } from "./primeOverrides.js";
 export { earnsFlow, outstandingOf, resolvePlan } from "./resolve.js";
+export { groupDone, settleRanks, stepCount } from "./settle.js";
 export { validatePlan, validatePrimeOverride, validateResources } from "./validate.js";
 export type { AuthoredPlan, PlanBadge, PlanBadgeTone } from "./schema.js";
 export type { ItemTip } from "../tips/data.js";

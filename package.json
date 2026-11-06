@@ -46,6 +46,7 @@
     "typecheck:tests": "tsc -p tsconfig.tests.json",
     "typecheck:e2e": "tsc -p tsconfig.e2e.json",
     "test:main": "vitest run tests/main",
+    "plan:text": "node scripts/plan-text.mjs",
     "test:dbwin": "node scripts/dbwin-regression/run.mjs",
     "test:reward-scan": "node scripts/reward-scan-e2e/run-check.cjs",
     "test:keyhook": "node scripts/keyhook-regression/run.mjs",
@@ -78,7 +79,8 @@
     "pets:build": "node scripts/pets/build-pet-traits.mjs",
     "vosfor:build": "node scripts/suggest/build-vosfor.mjs",
     "relic-packs:build": "node scripts/suggest/build-relic-packs.mjs",
-    "vendor-exchange:build": "node scripts/suggest/build-vendor-exchange.mjs"
+    "vendor-exchange:build": "node scripts/suggest/build-vendor-exchange.mjs",
+    "syndicate-turnins:build": "node scripts/suggest/build-syndicate-turnins.mjs"
   },
   "keywords": [
     "warframe",

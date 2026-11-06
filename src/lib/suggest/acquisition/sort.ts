@@ -1,3 +1,4 @@
+import { materialsEffort } from "./materialEffort.js";
 import { masteryXp } from "./masteryXp.js";
 import { ownedParts, totalParts } from "./parts.js";
 import { headlinePath, isBlueprintPrice } from "./paths.js";
@@ -57,25 +58,17 @@ const BUILD_BAND = 1;
 const WORK_BAND = 2;
 const PLAT_BAND = 3;
 
-/** Every part is in hand and the foundry will take it: nothing left to farm. */
+/** Every part is in hand and only the foundry is left: nothing to farm. */
 const READY_EFFORT = 0.05;
-/** Every part or its blueprint is in hand, but the foundry is still owed work. */
-const MATERIALS_EFFORT = 0.35;
 
 function isReady(target: AcquisitionTarget): boolean {
   const parts = target.parts;
   return !target.modular && parts.known && parts.buildable;
 }
 
-/** Every part or its blueprint and every material is in hand: only sub-builds left. */
+/** Every part or its blueprint and every uncraftable input is in hand: only foundry work left. */
 function isBuildOnly(target: AcquisitionTarget): boolean {
-  const parts = target.parts;
-  return (
-    !target.modular &&
-    parts.known &&
-    parts.sourcing.length === 0 &&
-    parts.materials.every((material) => material.missing === 0)
-  );
+  return !target.modular && target.parts.known && target.parts.foundryOnly;
 }
 
 /** The foundry would take it now, only builds are left, or there is still a farm. */
@@ -89,8 +82,12 @@ export function readyBand(target: AcquisitionTarget): number {
 export function remainingEffort(target: AcquisitionTarget): number | null {
   if (headlinePath(target.paths)) return target.effort;
   const parts = target.parts;
-  if (target.modular || !parts.known || parts.sourcing.length > 0) return planEffort(target);
-  return parts.buildable ? READY_EFFORT : MATERIALS_EFFORT;
+  if (target.modular || !parts.known || parts.sourcing.length > 0) {
+    const plan = planEffort(target);
+    return plan === null ? null : Math.max(plan, materialsEffort(parts.materials));
+  }
+  if (parts.buildable || parts.foundryOnly) return READY_EFFORT;
+  return Math.max(READY_EFFORT, materialsEffort(parts.materials));
 }
 
 /** Plan effort is 1-10; a sort key's is 0-1. */

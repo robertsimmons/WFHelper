@@ -53,6 +53,7 @@ const EMPTY_PLAN: PartPlan = {
   copies: 1,
   foundry: false,
   buildable: false,
+  foundryOnly: false,
 };
 
 function isPrimeEntry(name: string, entry: ItemDbEntry): boolean {
@@ -60,7 +61,7 @@ function isPrimeEntry(name: string, entry: ItemDbEntry): boolean {
 }
 
 /** Owning it and subsuming it are separate wins, and each is its own reason to farm. */
-function frameNeeds(owned: boolean, subsumable: boolean, subsumed: boolean): NeedReason[] {
+export function frameNeeds(owned: boolean, subsumable: boolean, subsumed: boolean): NeedReason[] {
   const needs: NeedReason[] = [];
   if (!owned) needs.push("mastery");
   if (subsumable && !subsumed) needs.push("subsume");
@@ -70,7 +71,7 @@ function frameNeeds(owned: boolean, subsumable: boolean, subsumed: boolean): Nee
 /** Mastery keeps one copy and the Helminth eats another, so a frame owing both
  *  is two builds, unless the owned Prime is the copy kept and one build is
  *  levelled then fed. A build already in the foundry has claimed one of them. */
-function copiesToBuild(
+export function copiesToBuild(
   needs: readonly NeedReason[],
   inFoundry: number,
   primeOwned: boolean,

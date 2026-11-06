@@ -1,6 +1,12 @@
 import { describe, expect, it } from "vitest";
-import { materialGroups } from "../../../../../../src/lib/suggest/acquisition/plan/materials.js";
-import { resourceLookup } from "../../../../../../src/lib/suggest/acquisition/plan/resources.js";
+import {
+  craftVerb,
+  materialGroups,
+} from "../../../../../../src/lib/suggest/acquisition/plan/materials.js";
+import {
+  resourceEntry,
+  resourceLookup,
+} from "../../../../../../src/lib/suggest/acquisition/plan/resources.js";
 import { resources } from "./fixtures.js";
 
 const need = (label: string, qty: number) => ({ label, qty, note: null });
@@ -188,5 +194,167 @@ describe("vendor purchases", () => {
     expect(duck.spends).toEqual([{ currency: "Vox Solaris Standing", amount: "7,500" }]);
     const covered = materialGroups(needs, store, (_label, source) => source.sub === "Smokefinger");
     expect(covered.flatMap((group) => group.rows).every((row) => !row.buy)).toBe(true);
+  });
+});
+
+describe("a consumed blueprint is bought once per craft", () => {
+  const consumed = (amount: string, currency: string, yields: number) => ({
+    kind: "craft",
+    harvestable: false,
+    map: null,
+    yield: yields,
+    best: {
+      place: "NECRALISK, DEIMOS",
+      sub: "Son",
+      activity: "buy the blueprint",
+      buy: { price: [{ currency, amount }] },
+    },
+    recipe: [{ qty: 1, label: "Ore" }],
+  });
+  const store = resourceLookup({
+    Ore: { kind: "farm", best: { place: "CAMBION DRIFT, DEIMOS", sub: null, activity: "mine" } },
+    Mutagen: consumed("1,250", "Entrati Standing", 1),
+    Batch: consumed("1,250", "Entrati Standing", 3),
+    Core: consumed("50,000", "Credits", 1),
+  });
+  const bought = (label: string, qty: number, held = 0) => {
+    const owned = (name: string): number => (name === label ? held : 0);
+    const groups = materialGroups([need(label, qty)], store, () => false, owned);
+    const group = groups.find((entry) => entry.rows.some((row) => row.label === label));
+    const row = group?.rows.find((entry) => entry.label === label);
+    return { count: row?.buy?.count, spends: group?.spends };
+  };
+
+  it.each([
+    [1, 1, "1,250"],
+    [2, 2, "2,500"],
+  ])("buys a yield-one blueprint per unit at %i copies", (qty, count, amount) => {
+    expect(bought("Mutagen", qty)).toEqual({
+      count,
+      spends: [{ currency: "Entrati Standing", amount }],
+    });
+  });
+
+  it.each([
+    [3, 1, "1,250"],
+    [6, 2, "2,500"],
+    [4, 2, "2,500"],
+  ])("buys a yield-three blueprint per whole batch of %i", (qty, count, amount) => {
+    expect(bought("Batch", qty)).toEqual({
+      count,
+      spends: [{ currency: "Entrati Standing", amount }],
+    });
+  });
+
+  it("buys only for the crafts still short of what is held", () => {
+    expect(bought("Batch", 6, 4).count).toBe(1);
+    expect(bought("Mutagen", 2, 2).count).toBe(0);
+  });
+
+  it("counts a Credits-priced blueprint the same way", () => {
+    expect(bought("Core", 2)).toEqual({
+      count: 2,
+      spends: [{ currency: "Credits", amount: "100,000" }],
+    });
+  });
+
+  it.each([1, 2])("buys the shipped, reusable Adra Mutagen blueprint once (%i)", (qty) => {
+    const groups = materialGroups([need("Adra Mutagen", qty)], resourceEntry);
+    const group = groups.find((entry) => entry.rows.some((row) => row.label === "Adra Mutagen"));
+    expect(group?.spends).toEqual([{ currency: "Entrati Standing", amount: "1,250" }]);
+  });
+});
+
+describe("crafted product the player holds", () => {
+  const holding =
+    (held: Record<string, number>) =>
+    (label: string): number =>
+      held[label] ?? 0;
+  const rows = (needs: ReturnType<typeof need>[], held: Record<string, number>) =>
+    materialGroups(needs, resources(), () => false, holding(held)).flatMap((group) => group.rows);
+  const qty = (needs: ReturnType<typeof need>[], held: Record<string, number>) =>
+    Object.fromEntries(rows(needs, held).map((row) => [row.label, row.qty] as const));
+
+  it("asks the full recipe when none of the product is held", () => {
+    expect(qty([need("Marquise Veridos", 15)], {}).Veridos).toBe("20");
+  });
+
+  it("asks parts only for the crafts still short when some is held", () => {
+    expect(qty([need("Marquise Veridos", 15)], { "Marquise Veridos": 6 }).Veridos).toBe("10");
+  });
+
+  it("rounds what is still short up to whole crafts by yield", () => {
+    expect(qty([need("Marquise Veridos", 15)], { "Marquise Veridos": 4 }).Veridos).toBe("20");
+    expect(qty([need("Marquise Veridos", 15)], { "Marquise Veridos": 5 }).Veridos).toBe("10");
+  });
+
+  it("asks no parts, and starts the parts done, once the product is all held", () => {
+    const parts = rows([need("Marquise Veridos", 15)], { "Marquise Veridos": 15 });
+    expect(parts.find((row) => row.label === "Veridos")).toMatchObject({ qty: "0", done: true });
+    expect(parts.find((row) => row.label === "Marquise Veridos")?.done).toBe(false);
+  });
+
+  it("nets a nested craft at every depth", () => {
+    expect(qty([need("Veridos Lens", 4)], { "Veridos Lens": 1 })).toEqual({
+      "Veridos Lens": "4",
+      "Marquise Veridos": "2",
+      Veridos: "10",
+      Rubedo: "50",
+    });
+    expect(
+      qty([need("Veridos Lens", 4)], { "Veridos Lens": 1, "Marquise Veridos": 2 }).Veridos,
+    ).toBe("0");
+    expect(qty([need("Veridos Lens", 4)], { "Veridos Lens": 4 })).toEqual({
+      "Veridos Lens": "4",
+      "Marquise Veridos": "0",
+      Veridos: "0",
+      Rubedo: "0",
+    });
+  });
+
+  it("nets a part two crafts share by each craft's own holding", () => {
+    const needs = [need("Veridos Lens", 3), need("Cetus Wisp Lens", 4)];
+    expect(qty(needs, {}).Rubedo).toBe("58");
+    expect(qty(needs, { "Veridos Lens": 3 }).Rubedo).toBe("8");
+    expect(qty(needs, { "Cetus Wisp Lens": 4 }).Rubedo).toBe("50");
+  });
+
+  it("lists a craft after the crafts its recipe holds", () => {
+    const crafted = rows([need("Veridos Lens", 4)], {}).filter((row) =>
+      ["Veridos Lens", "Marquise Veridos"].includes(row.label),
+    );
+    expect(crafted.map((row) => row.label)).toEqual(["Marquise Veridos", "Veridos Lens"]);
+  });
+});
+
+describe("craft verb", () => {
+  it("refines a single-input craft and builds any other", () => {
+    const store = resources();
+    const verb = (label: string) => {
+      const entry = store(label);
+      if (!entry) throw new Error(`no ${label}`);
+      return craftVerb(entry);
+    };
+    expect(verb("Marquise Veridos")).toBe("refine");
+    expect(verb("Veridos Lens")).toBe("build");
+  });
+
+  it("refines every shipped gem and builds every shipped alloy and Forma", () => {
+    const verb = (label: string) => {
+      const entry = resourceEntry(label);
+      if (!entry) throw new Error(`no ${label}`);
+      return craftVerb(entry);
+    };
+    expect(["Radiant Zodian", "Marquise Thyst", "Cabochon Embolos"].map(verb)).toEqual([
+      "refine",
+      "refine",
+      "refine",
+    ]);
+    expect(["Coprite Alloy", "Forma", "Mutagen Mass", "Devolved Namalon"].map(verb)).toEqual([
+      "build",
+      "build",
+      "build",
+      "build",
+    ]);
   });
 });

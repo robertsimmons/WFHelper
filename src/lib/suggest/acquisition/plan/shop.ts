@@ -1,9 +1,9 @@
 import { resolveAcquisition } from "../index.js";
 import { shopFor, shopUsers } from "../shops/data.js";
 import { pickShop, type ResolvedShop } from "../shops/picker.js";
-import { COSMETIC, type ShopWare } from "../shops/schema.js";
-import { balanceFor, itemsForLabel, type PlayerState } from "./state.js";
-import type { AuthoredPlan } from "./schema.js";
+import { COSMETIC, type AuthoredShop, type ShopWare } from "../shops/schema.js";
+import { itemsForLabel, readBalance, type PlayerState } from "./state.js";
+import type { AuthoredPlan, PlanGroupType } from "./schema.js";
 import type { PlanContext, ResolvedGroup } from "./types.js";
 
 const BLUEPRINT = /\s+blueprint$/i;
@@ -90,6 +90,29 @@ function buildsOwed(context: PlanContext, items: readonly string[]): (item: stri
   return (item) => owed.get(item) ?? 0;
 }
 
+/** A shop the plan resolves; `picker` is false for a plain buy. */
+export interface PlanShop extends ResolvedShop {
+  picker: boolean;
+}
+
+const DROPS: ReadonlySet<PlanGroupType> = new Set(["farm", "bounty", "boss", "relics", "fissure"]);
+
+const BUILDS: ReadonlySet<PlanGroupType> = new Set(["foundry", "craft"]);
+
+/** The item also drops: a group lists one of its wares, or a drop group pays a
+ *  shop currency. Build rows name the product, so they never count. */
+function alsoDrops(plan: AuthoredPlan, shop: AuthoredShop): boolean {
+  const currencies = new Set(shop.currencies.map((currency) => currency.name));
+  const wares = shop.wares.filter((ware) => ware.item === plan.name);
+  const listsWare = (group: AuthoredPlan["groups"][number]): boolean =>
+    !BUILDS.has(group.type) &&
+    group.rows.some((row) => wares.some((ware) => sameWare(row.label, ware.name, ware.item)));
+  return plan.groups.some(
+    (group) =>
+      listsWare(group) || (DROPS.has(group.type) && currencies.has(group.earns?.currency ?? "")),
+  );
+}
+
 export function resolveShop(
   plan: AuthoredPlan,
   groups: readonly ResolvedGroup[],
@@ -99,8 +122,9 @@ export function resolveShop(
     crafting: (currency: string) => number;
     /** What the card counts the player has of a ware it sizes; null for any other. */
     got: (label: string) => number | null;
+    copies: number;
   },
-): ResolvedShop | null {
+): PlanShop | null {
   const { crafting, got } = sizing;
   const key = plan.shop;
   const shop = key ? shopFor(key) : null;
@@ -108,24 +132,41 @@ export function resolveShop(
   const items = [...new Set(shop.wares.map((ware) => ware.item))].filter(
     (item) => item !== COSMETIC,
   );
-  const builds = buildsOwed(context, items);
   const uses = (ware: ShopWare, item: string): number => recipeUses(state, context, ware, item);
   const own = (ware: ShopWare): boolean => uses(ware, plan.name) > 0;
-  return pickShop({
+  const held = (ware: ShopWare) => {
+    const rows = own(ware) ? heldByRows(groups, ware) : { owned: 0, quest: 0 };
+    return {
+      owned: Math.max(rows.owned, got(ware.name) ?? heldInInventory(state, context, ware)),
+      quest: rows.quest,
+    };
+  };
+  const balance = (currency: string) => readBalance(state, context.inventory, currency, currency);
+  if (!alsoDrops(plan, shop)) {
+    const resolved = pickShop({
+      key,
+      shop: { ...shop, wares: shop.wares.filter(own) },
+      own,
+      crafting,
+      wanted: (ware) => uses(ware, plan.name) * sizing.copies,
+      held,
+      balance,
+      flipped: [],
+      also: [],
+    });
+    return { ...resolved, picker: false };
+  }
+  const builds = buildsOwed(context, items);
+  const resolved = pickShop({
     key,
     shop,
     own,
     crafting,
     wanted: (ware) => items.reduce((sum, item) => sum + uses(ware, item) * builds(item), 0),
-    held: (ware) => {
-      const rows = own(ware) ? heldByRows(groups, ware) : { owned: 0, quest: 0 };
-      return {
-        owned: Math.max(rows.owned, got(ware.name) ?? heldInInventory(state, context, ware)),
-        quest: rows.quest,
-      };
-    },
-    balance: (currency) => (context.inventory ? balanceFor(state, currency, currency) : null),
+    held,
+    balance,
     flipped: context.shopPicks?.[key] ?? [],
     also: shopUsers(key).filter((name) => name !== plan.name),
   });
+  return { ...resolved, picker: true };
 }

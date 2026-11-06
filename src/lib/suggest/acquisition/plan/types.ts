@@ -2,7 +2,7 @@ import type { ItemDbEntry, MasteryData, RawInventoryData } from "../../../../typ
 import type { RelicDatabase } from "../../../../types/relics.js";
 import type { WorldState } from "../../../../types/world.js";
 import type { ResourceLookup } from "./resources.js";
-import type { ResolvedShop } from "../shops/picker.js";
+import type { PlanShop } from "./shop.js";
 import type { ItemTip, TipsLookup } from "../tips/data.js";
 import type { NeedReason } from "../types.js";
 import type {
@@ -11,6 +11,7 @@ import type {
   PlanGroupType,
   PlanLiveState,
   PlanPrice,
+  PlanRank,
   PlanSource,
 } from "./schema.js";
 
@@ -108,6 +109,32 @@ export interface ResolvedRow {
   common?: boolean | undefined;
   /** Where else the resource store says the row's resource comes from. */
   other?: string[] | undefined;
+  /** On a rank-up, the purchases it is climbed for; done once they all are. */
+  unlocks?: string[] | undefined;
+  /** The rank the row reaches. */
+  rank?: PlanRank | undefined;
+  /** A step only the player can answer; it names no item. */
+  task?: boolean | undefined;
+  /** The row names a currency or a standing, not an item. */
+  currency?: boolean | undefined;
+  /** On an item a rank-up sacrifices, the rank-up row that takes it. */
+  paidAt?: string | undefined;
+  /** On a material the foundry makes from its recipe. */
+  craft?: ResolvedCraft | undefined;
+  /** On a material the store says a quest hands over: its blueprint when crafted. */
+  quest?: ResolvedQuest | undefined;
+}
+
+export interface ResolvedQuest {
+  name: string;
+  /** Null where the item database names no such quest. */
+  done: boolean | null;
+}
+
+export interface ResolvedCraft {
+  verb: "refine" | "build";
+  /** Blueprints still to find and how many are held; null where a purchase buys it. */
+  blueprints: { need: number; held: number | null } | null;
 }
 
 /** An amount still to pay, keyed by the ledger's name for the currency. */
@@ -163,7 +190,9 @@ export interface ResolvedGroup {
   /** The quest whose one-time reward the group hands over. */
   quest?: string | null | undefined;
   done: boolean;
-  /** Rows still to do; zero on a skipped group. */
+  /** On a currency group, the rows its own currency buys; done once they all are. */
+  buys?: string[] | undefined;
+  /** Rows still to do; zero on a done group. */
   remaining: number;
   /** What the ledger owes for the group as a whole while it is open, where its
    *  spend does not split across its rows. */
@@ -225,7 +254,7 @@ export interface ResolvedPlan {
   builds: string[];
   /** Why the card wants the item, when the card says. */
   needs?: readonly NeedReason[] | undefined;
-  shop: ResolvedShop | null;
+  shop: PlanShop | null;
   sequence: boolean;
   steps: { done: number; total: number };
   /** Fact kinds this plan wanted and the app could not compute. */

@@ -40,6 +40,93 @@ describe("validatePlan", () => {
     ]);
   });
 
+  describe("a task priced in its own group's currency", () => {
+    const earning = (row: PlanRow): PlanGroup => ({
+      ...rhinoPlan().groups[1],
+      type: "currency",
+      earns: { currency: "Vox Solaris Standing", amount: "20,000" },
+      ref: "Vox Solaris Standing",
+      rows: [row],
+    });
+    const task = (currency: string): PlanRow => ({
+      qty: null,
+      label: "blueprint purchases",
+      note: null,
+      alt: null,
+      done: false,
+      task: true,
+      buy: { price: [{ currency, amount: "20,000" }] },
+    });
+
+    it("rejects a currency group's task that lumps what its currency buys", () => {
+      const plan = rhinoPlan();
+      plan.groups[1] = earning(task("Vox Solaris Standing"));
+      expect(validatePlan(plan)).toEqual([
+        "groups[1].rows[0] is a task priced in the group's own currency; price the rows it buys instead",
+      ]);
+    });
+
+    it("accepts a currency group's task priced in another currency, such as an initiation", () => {
+      const plan = rhinoPlan();
+      plan.groups[1] = earning(task("Credits"));
+      expect(validatePlan(plan)).toEqual([]);
+    });
+
+    it("accepts a currency group's own purchase row, which is no task", () => {
+      const plan = rhinoPlan();
+      plan.groups[1] = earning({ ...task("Vox Solaris Standing"), task: false });
+      expect(validatePlan(plan)).toEqual([]);
+    });
+
+    it("accepts a priced task at a vendor, such as a gild", () => {
+      const plan = rhinoPlan();
+      plan.groups[1] = { ...earning(task("Vox Solaris Standing")), type: "vendor", earns: null };
+      expect(validatePlan(plan)).toEqual([]);
+    });
+  });
+
+  describe("a per-unit price", () => {
+    const vendor = (each: boolean): PlanGroup => ({
+      ...rhinoPlan().groups[1],
+      type: "vendor",
+      map: null,
+      earns: null,
+      spends: [{ currency: "Entrati Standing", amount: "2,000" }],
+      rows: [
+        {
+          qty: "2",
+          label: "Keratinos Blades Blueprint",
+          note: null,
+          alt: null,
+          done: false,
+          buy: { price: [{ currency: "Entrati Standing", amount: "500" }], ...(each && { each }) },
+        },
+        {
+          qty: null,
+          label: "Keratinos Blueprint",
+          note: null,
+          alt: null,
+          done: false,
+          buy: { price: [{ currency: "Entrati Standing", amount: "1,000" }] },
+        },
+      ],
+    });
+
+    it("rejects a row whose price only adds up to the group's spend per unit", () => {
+      const plan = rhinoPlan();
+      plan.groups[1] = vendor(false);
+      expect(validatePlan(plan)).toEqual([
+        'groups[1] spends 2,000 Entrati Standing only if its rows\' prices are per unit; mark them "each"',
+      ]);
+    });
+
+    it("accepts the row once it is marked each", () => {
+      const plan = rhinoPlan();
+      plan.groups[1] = vendor(true);
+      expect(validatePlan(plan)).toEqual([]);
+    });
+  });
+
   it("names the field that is wrong", () => {
     const plan = rhinoPlan();
     (plan.groups[1] as { type: string }).type = "shopping";

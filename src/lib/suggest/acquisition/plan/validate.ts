@@ -2,6 +2,7 @@ import { figuresIn, isCreditFigure, readPrices } from "./priceText.js";
 import { rankSyndicate, rankTitle, topRank } from "./ranks.js";
 import { resourceEntry, resourceLookup, type ResourceLookup } from "./resources.js";
 import { isPartSet, setTitle, setTitleKey } from "./setTitle.js";
+import { parseQuantity } from "./state.js";
 import { shopFor } from "../shops/data.js";
 import type { AuthoredShop } from "../shops/schema.js";
 import {
@@ -423,6 +424,76 @@ function checkMaterial(
   }
 }
 
+/** A task priced in the currency its own group earns restates purchases the plan
+ *  makes elsewhere, so the same buy shows twice. */
+function checkLumpedSpend(problems: Problems, at: string, group: Record<string, unknown>): void {
+  const earns = isRecord(group.earns) ? group.earns.currency : null;
+  const own = [earns, group.ref].filter((name): name is string => typeof name === "string");
+  if (group.type !== "currency" || own.length === 0 || !Array.isArray(group.rows)) return;
+  group.rows.forEach((row, index) => {
+    if (!isRecord(row) || row.task !== true || !isRecord(row.buy)) return;
+    const price = Array.isArray(row.buy.price) ? row.buy.price : [];
+    const lumped = price.some(
+      (spend) =>
+        isRecord(spend) && typeof spend.currency === "string" && own.includes(spend.currency),
+    );
+    if (lumped) {
+      problems.push(
+        `${at}.rows[${index}] is a task priced in the group's own currency; price the rows it buys instead`,
+      );
+    }
+  });
+}
+
+/** A group's spend in one currency, summed over its bought rows: `each` rows per
+ *  unit, and the rest per unit too when `perUnit` reads every price that way. */
+function rowsSpend(
+  rows: readonly Record<string, unknown>[],
+  currency: string,
+  ledger: (name: string) => string,
+  perUnit: boolean,
+): number {
+  let sum = 0;
+  for (const row of rows) {
+    if (row.pick || !isRecord(row.buy) || !Array.isArray(row.buy.price)) continue;
+    const price = row.buy.price.find(
+      (entry) =>
+        isRecord(entry) &&
+        typeof entry.currency === "string" &&
+        ledger(entry.currency) === currency,
+    );
+    if (!isRecord(price) || typeof price.amount !== "string") continue;
+    const each = row.buy.each === true || (perUnit && row.buy.blueprint !== true);
+    const qty = typeof row.qty === "string" ? row.qty : null;
+    sum += parseQuantity(price.amount) * (each ? parseQuantity(qty) : 1);
+  }
+  return sum;
+}
+
+/** A per-unit price missing `each`: the group's spend matches its rows only once
+ *  their prices are read per unit. */
+function checkMissingEach(
+  problems: Problems,
+  at: string,
+  group: Record<string, unknown>,
+  lookup: ResourceLookup,
+): void {
+  if (!Array.isArray(group.spends) || !Array.isArray(group.rows)) return;
+  const rows = group.rows.filter(isRecord);
+  const ledger = (name: string): string => lookup(name)?.name ?? name;
+  for (const spend of group.spends.filter(isRecord)) {
+    if (typeof spend.currency !== "string" || typeof spend.amount !== "string") continue;
+    const currency = ledger(spend.currency);
+    const total = parseQuantity(spend.amount);
+    const authored = rowsSpend(rows, currency, ledger, false);
+    if (authored !== total && rowsSpend(rows, currency, ledger, true) === total) {
+      problems.push(
+        `${at} spends ${spend.amount} ${spend.currency} only if its rows' prices are per unit; mark them "each"`,
+      );
+    }
+  }
+}
+
 function checkGroup(
   problems: Problems,
   at: string,
@@ -474,6 +545,8 @@ function checkGroup(
     problems.push(`${at}.rows must be a non-empty array`);
   } else {
     value.rows.forEach((row, index) => checkRow(problems, `${at}.rows[${index}]`, row, build));
+    checkLumpedSpend(problems, at, value);
+    checkMissingEach(problems, at, value, lookup);
   }
 
   checkStringList(problems, `${at}.conditions`, value.conditions);

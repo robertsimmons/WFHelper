@@ -242,6 +242,10 @@ export function neededOffers(vendor: ExchangeVendor, ledger: ExchangeLedger): Ex
     .sort((a, b) => Number(b.affordable) - Number(a.affordable) || b.short - a.short);
 }
 
+export function exchangeOffers(vendor: ExchangeVendor): readonly ExchangeOffer[] {
+  return TABLE[vendor].offers;
+}
+
 /** Kuva is always worth having, so the weekly trade only asks for spare Pinions. */
 function kuvaTrade(ledger: ExchangeLedger): ExchangeKuva | null {
   const kuva = TABLE.yonta.kuva;

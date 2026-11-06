@@ -252,22 +252,27 @@
       "disclosures": []
     },
     {
-      "type": "farm",
-      "place": "CAMBION DRIFT, DEIMOS",
-      "sub": "teal veins",
-      "activity": "mine Xenorhast and Embolos",
-      "meta": "rare gems",
+      "type": "vendor",
+      "place": "SMOKEFINGER, FORTUNA",
+      "sub": null,
+      "activity": "buy a drill for the rare gems",
+      "meta": null,
       "mode": null,
       "live": null,
       "skip": null,
       "earns": null,
-      "spends": [],
-      "map": "cambion-drift",
+      "spends": [
+        {
+          "currency": "Solaris United Standing",
+          "amount": "2,500"
+        }
+      ],
+      "map": null,
       "rows": [
         {
           "qty": null,
           "label": "Sunpoint Plasma Drill",
-          "note": "Smokefinger in Fortuna",
+          "note": "mines Xenorhast and Embolos from Cambion Drift teal veins",
           "alt": "Advanced Nosam Cutter, 1,000 Ostron standing at Rank 4",
           "done": false,
           "buy": {
@@ -276,7 +281,8 @@
                 "currency": "Solaris United Standing",
                 "amount": "2,500"
               }
-            ]
+            ],
+            "reusable": true
           }
         }
       ],
